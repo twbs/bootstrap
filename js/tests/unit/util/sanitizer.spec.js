@@ -1,6 +1,59 @@
-import { DefaultAllowlist, sanitizeHtml } from '../../../src/util/sanitizer.js'
+import { DefaultAllowlist, allowedUrl, sanitizeHtml } from '../../../src/util/sanitizer.js'
 
 describe('Sanitizer', () => {
+  describe('allowedUrl', () => {
+    it('should accept these valid URLs', () => {
+      const validUrls = [
+        '',
+        'http://abc',
+        'HTTP://abc',
+        'https://abc',
+        'HTTPS://abc',
+        'ftp://abc',
+        'FTP://abc',
+        'mailto:me@example.com',
+        'MAILTO:me@example.com',
+        'tel:123-123-1234',
+        'TEL:123-123-1234',
+        'sip:me@example.com',
+        'SIP:me@example.com',
+        '#anchor',
+        '/page1.md',
+        'http://JavaScript/my.js',
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/', // Truncated.
+        'data:video/webm;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/',
+        'data:audio/opus;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/',
+        'unknown-scheme:abc'
+      ]
+
+      for (const url of validUrls) {
+        expect(allowedUrl(url)).toEqual(true)
+      }
+    })
+
+    it('should not accept these invalid URLs', () => {
+      const invalidUrls = [
+        // eslint-disable-next-line no-script-url
+        'javascript:evil()',
+        // eslint-disable-next-line no-script-url
+        'JavaScript:abc',
+        ' javascript:abc',
+        ' \n Java\n Script:abc',
+        '&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;',
+        '&#106&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;',
+        '&#106 &#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;',
+        '&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058',
+        '&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A;',
+        'jav&#x09;ascript:alert();',
+        'jav\u0000ascript:alert();'
+      ]
+
+      for (const url of invalidUrls) {
+        expect(allowedUrl(url)).toEqual(false)
+      }
+    })
+  })
+
   describe('sanitizeHtml', () => {
     it('should return the same on empty string', () => {
       const empty = ''
