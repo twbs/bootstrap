@@ -1,8 +1,16 @@
-import { DefaultAllowlist, allowedUrl, sanitizeHtml } from '../../../src/util/sanitizer.js'
+import { DefaultAllowlist, sanitizeHtml } from '../../../src/util/sanitizer.js'
 
 describe('Sanitizer', () => {
-  describe('allowedUrl', () => {
-    it('should accept these valid URLs', () => {
+  describe('sanitizeHtml', () => {
+    it('should return the same on empty string', () => {
+      const empty = ''
+
+      const result = sanitizeHtml(empty, DefaultAllowlist, null)
+
+      expect(result).toEqual(empty)
+    })
+
+    it('should retain tags with valid URLs', () => {
       const validUrls = [
         '',
         'http://abc',
@@ -27,12 +35,23 @@ describe('Sanitizer', () => {
       ]
 
       for (const url of validUrls) {
-        expect(allowedUrl(url)).toEqual(true)
+        const template = [
+          '<div>',
+          `  <a href="${url}">Click me</a>`,
+          '  <span>Some content</span>',
+          '</div>'
+        ].join('')
+
+        const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+        expect(result).toContain(`href="${url}"`)
       }
     })
 
-    it('should not accept these invalid URLs', () => {
+    it('should sanitize template by removing tags with XSS', () => {
       const invalidUrls = [
+        // eslint-disable-next-line no-script-url
+        'javascript:alert(7)',
         // eslint-disable-next-line no-script-url
         'javascript:evil()',
         // eslint-disable-next-line no-script-url
@@ -49,31 +68,17 @@ describe('Sanitizer', () => {
       ]
 
       for (const url of invalidUrls) {
-        expect(allowedUrl(url)).toEqual(false)
+        const template = [
+          '<div>',
+          `  <a href="${url}">Click me</a>`,
+          '  <span>Some content</span>',
+          '</div>'
+        ].join('')
+
+        const result = sanitizeHtml(template, DefaultAllowlist, null)
+
+        expect(result).not.toContain(`href="${url}"`)
       }
-    })
-  })
-
-  describe('sanitizeHtml', () => {
-    it('should return the same on empty string', () => {
-      const empty = ''
-
-      const result = sanitizeHtml(empty, DefaultAllowlist, null)
-
-      expect(result).toEqual(empty)
-    })
-
-    it('should sanitize template by removing tags with XSS', () => {
-      const template = [
-        '<div>',
-        '  <a href="javascript:alert(7)">Click me</a>',
-        '  <span>Some content</span>',
-        '</div>'
-      ].join('')
-
-      const result = sanitizeHtml(template, DefaultAllowlist, null)
-
-      expect(result).not.toContain('href="javascript:alert(7)')
     })
 
     it('should sanitize template and work with multiple regex', () => {

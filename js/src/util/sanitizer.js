@@ -25,14 +25,12 @@ const uriAttributes = new Set([
 // eslint-disable-next-line unicorn/better-regex
 const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i
 
-export const allowedUrl = url => Boolean(SAFE_URL_PATTERN.test(url))
-
 const allowedAttribute = (attribute, allowedAttributeList) => {
   const attributeName = attribute.nodeName.toLowerCase()
 
   if (allowedAttributeList.includes(attributeName)) {
     if (uriAttributes.has(attributeName)) {
-      return allowedUrl(attribute.nodeValue)
+      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue))
     }
 
     return true
