@@ -21,7 +21,7 @@
 
 <div class="bd-example-snippet bd-code-snippet">
   {{- if eq $show_preview true -}}
-  <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example{{ with $class }} {{ . }}{{ end }}">
+  <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example m-0 border-0{{ with $class }} {{ . }}{{ end }}">
     {{- $input -}}
   </div>
   {{- end -}}

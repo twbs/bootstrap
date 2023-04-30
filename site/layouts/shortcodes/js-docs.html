@@ -26,12 +26,18 @@
   {{- $match = replace $match $capture_start "" -}}
   {{- $match = replace $match $capture_end "" -}}
 
-  <div class="bd-example-snippet bd-code-snippet">
-    <div class="bd-clipboard">
-      <button type="button" class="btn-clipboard" title="Copy to clipboard">
-        <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
-      </button>
+  <div class="bd-example-snippet bd-code-snippet bd-file-ref">
+    <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="{{ .Site.Params.repo }}/blob/v{{ .Site.Params.current_version }}/{{ $file | replaceRE `\\` "/" }}">
+        {{- $file -}}
+      </a>
+      <div class="d-flex ms-auto">
+        <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+          <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
+        </button>
+      </div>
     </div>
+
     {{- $unindent := 0 -}}
     {{- $found := false -}}
     {{- $first_line:= index (split $match "\n") 0 -}}
