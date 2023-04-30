@@ -5,42 +5,6 @@
  * --------------------------------------------------------------------------
  */
 
-const uriAttributes = new Set([
-  'background',
-  'cite',
-  'href',
-  'itemtype',
-  'longdesc',
-  'poster',
-  'src',
-  'xlink:href'
-])
-
-/**
- * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
- * contexts.
- *
- * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
- */
-// eslint-disable-next-line unicorn/better-regex
-const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i
-
-const allowedAttribute = (attribute, allowedAttributeList) => {
-  const attributeName = attribute.nodeName.toLowerCase()
-
-  if (allowedAttributeList.includes(attributeName)) {
-    if (uriAttributes.has(attributeName)) {
-      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue))
-    }
-
-    return true
-  }
-
-  // Check if a regular expression validates the attribute.
-  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp)
-    .some(regex => regex.test(attributeName))
-}
-
 // js-docs-start allow-list
 const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
 
@@ -79,6 +43,42 @@ export const DefaultAllowlist = {
 }
 // js-docs-end allow-list
 
+const uriAttributes = new Set([
+  'background',
+  'cite',
+  'href',
+  'itemtype',
+  'longdesc',
+  'poster',
+  'src',
+  'xlink:href'
+])
+
+/**
+ * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
+ * contexts.
+ *
+ * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
+ */
+// eslint-disable-next-line unicorn/better-regex
+const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i
+
+const allowedAttribute = (attribute, allowedAttributeList) => {
+  const attributeName = attribute.nodeName.toLowerCase()
+
+  if (allowedAttributeList.includes(attributeName)) {
+    if (uriAttributes.has(attributeName)) {
+      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue))
+    }
+
+    return true
+  }
+
+  // Check if a regular expression validates the attribute.
+  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp)
+    .some(regex => regex.test(attributeName))
+}
+
 export function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
   if (!unsafeHtml.length) {
     return unsafeHtml
@@ -97,7 +97,6 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
 
     if (!Object.keys(allowList).includes(elementName)) {
       element.remove()
-
       continue
     }
 
