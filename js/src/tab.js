@@ -162,6 +162,7 @@ class Tab extends BaseComponent {
 
     let nextActiveElement
     const children = this._getChildren().filter(element => !isDisabled(element))
+
     if ([HOME_KEY, END_KEY].includes(event.key)) {
       nextActiveElement = children[event.key === HOME_KEY ? 0 : children.length - 1]
     } else {
