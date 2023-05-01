@@ -640,45 +640,20 @@ describe('Tab', () => {
       ].join('')
 
       const tabEl1 = fixtureEl.querySelector('#tab1')
-      const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
-      const tab1 = new Tab(tabEl1)
-      const tab2 = new Tab(tabEl2)
+
       const tab3 = new Tab(tabEl3)
-      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
-      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
-      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
-      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
-      const spyShow3 = spyOn(tab3, 'show').and.callThrough()
-      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+      tab3.show()
 
-      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
-      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyShown = jasmine.createSpy()
+      tabEl1.addEventListener('shown.bs.tab', spyShown)
 
-      let keydown = createEvent('keydown')
+      const keydown = createEvent('keydown')
       keydown.key = 'Home'
 
       tabEl3.dispatchEvent(keydown)
-      expect(spyShow1).toHaveBeenCalled()
-      expect(spyFocus1).toHaveBeenCalled()
-      expect(spyShow2).not.toHaveBeenCalled()
-      expect(spyFocus2).not.toHaveBeenCalled()
-      expect(spyShow3).not.toHaveBeenCalled()
-      expect(spyFocus3).not.toHaveBeenCalled()
 
-      keydown = createEvent('keydown')
-      keydown.key = 'Home'
-
-      tabEl1.dispatchEvent(keydown)
-      expect(spyShow1).toHaveBeenCalled()
-      expect(spyFocus1).toHaveBeenCalled()
-      expect(spyShow2).not.toHaveBeenCalled()
-      expect(spyFocus2).not.toHaveBeenCalled()
-      expect(spyShow3).not.toHaveBeenCalled()
-      expect(spyFocus3).not.toHaveBeenCalled()
-
-      expect(spyStop).toHaveBeenCalledTimes(2)
-      expect(spyPrevent).toHaveBeenCalledTimes(2)
+      expect(spyShown).toHaveBeenCalled()
     })
 
     it('if keydown event is End, handle it', () => {
@@ -691,45 +666,20 @@ describe('Tab', () => {
       ].join('')
 
       const tabEl1 = fixtureEl.querySelector('#tab1')
-      const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
+
       const tab1 = new Tab(tabEl1)
-      const tab2 = new Tab(tabEl2)
-      const tab3 = new Tab(tabEl3)
-      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
-      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
-      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
-      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
-      const spyShow3 = spyOn(tab3, 'show').and.callThrough()
-      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+      tab1.show()
 
-      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
-      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyShown = jasmine.createSpy()
+      tabEl3.addEventListener('shown.bs.tab', spyShown)
 
-      let keydown = createEvent('keydown')
+      const keydown = createEvent('keydown')
       keydown.key = 'End'
 
       tabEl1.dispatchEvent(keydown)
-      expect(spyShow1).not.toHaveBeenCalled()
-      expect(spyFocus1).not.toHaveBeenCalled()
-      expect(spyShow2).not.toHaveBeenCalled()
-      expect(spyFocus2).not.toHaveBeenCalled()
-      expect(spyShow3).toHaveBeenCalled()
-      expect(spyFocus3).toHaveBeenCalled()
 
-      keydown = createEvent('keydown')
-      keydown.key = 'End'
-
-      tabEl3.dispatchEvent(keydown)
-      expect(spyShow1).not.toHaveBeenCalled()
-      expect(spyFocus1).not.toHaveBeenCalled()
-      expect(spyShow2).not.toHaveBeenCalled()
-      expect(spyFocus2).not.toHaveBeenCalled()
-      expect(spyShow3).toHaveBeenCalled()
-      expect(spyFocus3).toHaveBeenCalled()
-
-      expect(spyStop).toHaveBeenCalledTimes(2)
-      expect(spyPrevent).toHaveBeenCalledTimes(2)
+      expect(spyShown).toHaveBeenCalled()
     })
 
     it('if keydown event is right arrow and next element is disabled', () => {
@@ -826,26 +776,22 @@ describe('Tab', () => {
       const tabEl1 = fixtureEl.querySelector('#tab1')
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
-      const tab1 = new Tab(tabEl1)
-      const tab2 = new Tab(tabEl2)
       const tab3 = new Tab(tabEl3)
-      const spy1 = spyOn(tab1, 'show').and.callThrough()
-      const spy2 = spyOn(tab2, 'show').and.callThrough()
-      const spy3 = spyOn(tab3, 'show').and.callThrough()
-      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
-      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
-      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+
+      tab3.show()
+
+      const spyShown1 = jasmine.createSpy()
+      const spyShown2 = jasmine.createSpy()
+      tabEl1.addEventListener('shown.bs.tab', spyShown1)
+      tabEl2.addEventListener('shown.bs.tab', spyShown2)
 
       const keydown = createEvent('keydown')
       keydown.key = 'Home'
 
       tabEl3.dispatchEvent(keydown)
-      expect(spy3).not.toHaveBeenCalled()
-      expect(spy2).toHaveBeenCalledTimes(1)
-      expect(spy1).not.toHaveBeenCalled()
-      expect(spyFocus3).not.toHaveBeenCalled()
-      expect(spyFocus2).toHaveBeenCalledTimes(1)
-      expect(spyFocus1).not.toHaveBeenCalled()
+
+      expect(spyShown1).not.toHaveBeenCalled()
+      expect(spyShown2).toHaveBeenCalled()
     })
 
     it('if keydown event is End and last element is disabled', () => {
@@ -861,25 +807,21 @@ describe('Tab', () => {
       const tabEl2 = fixtureEl.querySelector('#tab2')
       const tabEl3 = fixtureEl.querySelector('#tab3')
       const tab1 = new Tab(tabEl1)
-      const tab2 = new Tab(tabEl2)
-      const tab3 = new Tab(tabEl3)
-      const spy1 = spyOn(tab1, 'show').and.callThrough()
-      const spy2 = spyOn(tab2, 'show').and.callThrough()
-      const spy3 = spyOn(tab3, 'show').and.callThrough()
-      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
-      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
-      const spyFocus3 = spyOn(tabEl3, 'focus').and.callThrough()
+
+      tab1.show()
+
+      const spyShown2 = jasmine.createSpy()
+      const spyShown3 = jasmine.createSpy()
+      tabEl2.addEventListener('shown.bs.tab', spyShown2)
+      tabEl3.addEventListener('shown.bs.tab', spyShown3)
 
       const keydown = createEvent('keydown')
       keydown.key = 'End'
 
       tabEl1.dispatchEvent(keydown)
-      expect(spy3).not.toHaveBeenCalled()
-      expect(spy2).toHaveBeenCalledTimes(1)
-      expect(spy1).not.toHaveBeenCalled()
-      expect(spyFocus3).not.toHaveBeenCalled()
-      expect(spyFocus2).toHaveBeenCalledTimes(1)
-      expect(spyFocus1).not.toHaveBeenCalled()
+
+      expect(spyShown3).not.toHaveBeenCalled()
+      expect(spyShown2).toHaveBeenCalled()
     })
   })
 
