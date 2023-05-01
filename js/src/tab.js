@@ -160,8 +160,9 @@ class Tab extends BaseComponent {
     event.stopPropagation()// stopPropagation/preventDefault both added to support up/down keys without scrolling the page
     event.preventDefault()
 
-    let nextActiveElement
     const children = this._getChildren().filter(element => !isDisabled(element))
+    let nextActiveElement
+
     if ([HOME_KEY, END_KEY].includes(event.key)) {
       nextActiveElement = children[event.key === HOME_KEY ? 0 : children.length - 1]
     } else {
