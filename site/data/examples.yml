@@ -64,6 +64,8 @@
       description: "Create custom buttons for just about any use case with utilities."
     - name: Jumbotrons
       description: "Create modernized versions of the classic Bootstrap component."
+    - name: Collapse
+      description: "Create a collapse in four directions"
 
 - category: Custom Components
   description: "Brand-new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework."
