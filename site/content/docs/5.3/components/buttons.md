@@ -14,15 +14,15 @@ Bootstrap has a base `.btn` class that sets up basic styles such as padding and 
 <button type="button" class="btn">Base class</button>
 {{< /example >}}
 
-The `.btn` class is intended to be used in conjunction with our additional predefined button styles, or to serve as a basis for your own custom styles.
+The `.btn` class is intended to be used in conjunction with our button variants, or to serve as a basis for your own custom styles.
 
 {{< callout warning >}}
 If you are using the `.btn` class on its own, remember to at least define some explicit `:focus` and/or `:focus-visible` styles.
 {{< /callout >}}
 
-## Predefined styles
+## Variants
 
-Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.
+Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control.
 
 {{< example >}}
 {{< buttons.inline >}}
