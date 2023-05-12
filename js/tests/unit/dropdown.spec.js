@@ -75,6 +75,7 @@ describe('Dropdown', () => {
           resolve()
         })
 
+        expect().nothing()
         dropdown.show()
       })
     })
