@@ -5,7 +5,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1051;
+  z-index: $zindex-fixed;
 }
 
 .fixed-bottom {
@@ -13,7 +13,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $zindex-fixed;
+  z-index: $zindex-sticky;
 }
 
 // Responsive sticky top and bottom
@@ -24,7 +24,7 @@
     .sticky#{$infix}-top {
       position: sticky;
       top: 0;
-      z-index: 1051;
+      z-index: $zindex-fixed;
     }
 
     .sticky#{$infix}-bottom {
