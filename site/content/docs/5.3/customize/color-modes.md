@@ -23,7 +23,7 @@ For example, to change the color mode of a dropdown menu, add `data-bs-theme="li
 
 {{< example class="d-flex justify-content-between" >}}
 <div class="dropdown" data-bs-theme="light">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
     Default dropdown
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
@@ -37,7 +37,7 @@ For example, to change the color mode of a dropdown menu, add `data-bs-theme="li
 </div>
 
 <div class="dropdown" data-bs-theme="dark">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
     Dark dropdown
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark">
