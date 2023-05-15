@@ -1,29 +1,20 @@
 {{- /*
-  Usage: `scss-docs name="name" file="file/_location.scss"`
+  Usage: `js-docs name="name" file="file/_location.js`
 
-  Prints everything between `// scss-docs-start "name"` and `// scss-docs-end "name"`
+  Prints everything between `// js-docs-start "name"` and `// js-docs-end "name"`
   comments in the docs.
-
-  Optional parameters:
-    * strip-default: Remove the ` !default` flag from variable assignments - default: `true`
 */ -}}
 
 {{- $name := .Get "name" -}}
 {{- $file := .Get "file" -}}
-{{- $strip_default := .Get "strip-default" | default "true" -}}
 
 {{- /* If any parameters are missing, print an error and exit */ -}}
 {{- if or (not $name) (not $file) -}}
   {{- errorf "%s: %q: Missing required parameters! Got: name=%q file=%q!" .Position .Name $name $file -}}
 {{- else -}}
-  {{- $capture_start := printf "// scss-docs-start %s\n" $name -}}
-  {{- $capture_end := printf "// scss-docs-end %s" $name -}}
+  {{- $capture_start := printf "// js-docs-start %s\n" $name -}}
+  {{- $capture_end := printf "// js-docs-end %s" $name -}}
   {{- $regex := printf `%s((?:.|\n)*)%s` $capture_start $capture_end -}}
-
-  {{- /*
-    TODO: figure out why we can't do the following and get the first group (the only capturing one)...
-    $regex := printf `(?:// scss-docs-start %s\n)((?:.|\n)*)(?:\n// scss-docs-end %s)` $name $name
-  */ -}}
 
   {{- $match := findRE $regex (readFile $file) -}}
   {{- $match = index $match 0 -}}
@@ -34,10 +25,6 @@
 
   {{- $match = replace $match $capture_start "" -}}
   {{- $match = replace $match $capture_end "" -}}
-
-  {{- if (ne $strip_default "false") -}}
-    {{- $match = replace $match " !default" "" -}}
-  {{- end -}}
 
   <div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
@@ -50,6 +37,7 @@
         </button>
       </div>
     </div>
+
     {{- $unindent := 0 -}}
     {{- $found := false -}}
     {{- $first_line:= index (split $match "\n") 0 -}}
@@ -71,6 +59,6 @@
     {{- else -}}
       {{- $output = $match -}}
     {{- end -}}
-    {{- highlight $output "scss" "" -}}
+    {{- highlight $output "js" "" -}}
   </div>
 {{- end -}}
