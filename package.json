@@ -108,7 +108,7 @@
     "@babel/preset-env": "^7.21.5",
     "@popperjs/core": "^2.11.7",
     "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-replace": "^5.0.2",
     "autoprefixer": "^10.4.14",
