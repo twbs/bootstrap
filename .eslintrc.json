@@ -90,6 +90,7 @@
     "unicorn/no-unused-properties": "error",
     "unicorn/numeric-separators-style": "off",
     "unicorn/prefer-array-flat": "off",
+    "unicorn/prefer-at": "off",
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-module": "off",
     "unicorn/prefer-query-selector": "off",
