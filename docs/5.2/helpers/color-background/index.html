@@ -141,6 +141,10 @@
 </svg>
 
 
+<div class="d-block px-3 py-2 text-center text-bold skippy">
+  <a href="https://getbootstrap.com/" class="text-white text-decoration-none">There's a newer version of Bootstrap!</a>
+</div>
+
     <header class="navbar navbar-expand-lg navbar-dark bd-navbar sticky-top">
   <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
     <div class="bd-navbar-toggle">
@@ -158,9 +162,9 @@
     </a>
 
     <div class="d-flex">
-      
+
         <div class="bd-search" id="docsearch" data-bd-docs-version="5.2"></div>
-      
+
 
       <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
         <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
@@ -218,7 +222,7 @@
             <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
             <hr class="d-lg-none text-white-50">
           </li>
-          
+
 
 <li class="nav-item dropdown">
   <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
@@ -254,7 +258,7 @@
 </header>
 
 
-    
+
   <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
     <aside class="bd-sidebar">
       <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
@@ -480,7 +484,7 @@
 
       </div>
 
-      
+
         <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-muted">
           <button class="btn btn-link link-dark p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
             On this page
@@ -497,10 +501,10 @@
 </nav>
           </div>
         </div>
-      
+
 
       <div class="bd-content ps-lg-2">
-        
+
 
         <h2 id="overview">Overview <a class="anchor-link" href="#overview" aria-label="Link to this section: Overview"></a></h2>
 <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2">Added in v5.2.0</small>
@@ -669,12 +673,12 @@
 <script src="/docs/5.2/assets/js/docs.min.js"></script>
 
 <script>
-  
+
   document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', event => {
       const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
 
-      
+
       const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).join(' ')
 
       const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
@@ -718,7 +722,7 @@ ${htmlSnippet.replace(/^/gm, '    ')}
 </script>
 
 
-    
+
   <div class="position-fixed"><input type="text" tabindex="-1"></div>
 
   </body>
