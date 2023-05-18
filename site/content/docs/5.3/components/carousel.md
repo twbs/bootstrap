@@ -372,6 +372,7 @@ Call carousel manually with:
 ```js
 const carousel = new bootstrap.Carousel('#myCarousel')
 ```
+To obtain a valid reference to the carousel, make sure that it has been loaded by placing the code inside a `$(window).on("load", function()}` rather than a `$(document).ready(function()}`
 
 ### Options
 
