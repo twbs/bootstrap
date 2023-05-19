@@ -1896,7 +1896,7 @@ progress {
 }
 .table-bordered > :not(caption) > * > * {
   border-width: 0 var(--bs-border-width);
-}
+} 
 
 .table-borderless > :not(caption) > * > * {
   border-bottom-width: 0;
@@ -1906,6 +1906,11 @@ progress {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: var(--bs-table-striped-bg);
+  color: var(--bs-table-striped-color);
+}
+
+.table-striped-inverse > tbody > tr:nth-of-type(even) > * {
   --bs-table-accent-bg: var(--bs-table-striped-bg);
   color: var(--bs-table-striped-color);
 }
