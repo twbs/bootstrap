@@ -1,0 +1,22 @@
+name: Issue Opened
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issue-opened:
+    permissions:
+      # allow julien-deramond/update-issue-body to update issues
+      issues: write
+    if: github.repository == 'twbs/bootstrap'
+    runs-on: ubuntu-latest
+    steps:
+      - name: update issue body
+        uses: julien-deramond/update-issue-body@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            <hr>
+
+            _**Kind reminder for contributors:** As stated in our [Contributing Guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md#issues-assignment), we don't assign issues in this repository._
