@@ -731,7 +731,7 @@ $table-cell-padding-x-sm:     .25rem !default;
 $table-cell-vertical-align:   top !default;
 
 $table-color:                 var(--#{$prefix}body-color) !default;
-$table-bg:                    transparent !default;
+$table-bg:                    var(--#{$prefix}body-bg) !default;
 $table-accent-bg:             transparent !default;
 
 $table-th-font-weight:        null !default;
