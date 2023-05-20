@@ -109,8 +109,17 @@
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 // For rows
+// odd
 .table-striped {
-  > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
+  > tbody > tr:nth-of-type(odd) > * {
+    --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
+    --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
+  }
+}
+
+// even
+.table-striped-inverse {
+  > tbody > tr:nth-of-type(even) > * {
     --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
     --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
   }
