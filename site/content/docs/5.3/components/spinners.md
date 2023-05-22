@@ -96,8 +96,8 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 {{< example >}}
 <div class="d-flex align-items-center">
-  <strong>Loading...</strong>
-  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+  <strong role="status">Loading...</strong>
+  <div class="spinner-border ms-auto" aria-hidden="true"></div>
 </div>
 {{< /example >}}
 
