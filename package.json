@@ -145,7 +145,7 @@
     "rtlcss": "^4.0.0",
     "sass": "^1.54.9",
     "shelljs": "^0.8.5",
-    "stylelint": "^14.11.0",
+    "stylelint": "^14.16.1",
     "stylelint-config-twbs-bootstrap": "^6.0.0",
     "terser": "^5.16.1",
     "vnu-jar": "22.9.29"
