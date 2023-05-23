@@ -7,6 +7,10 @@ toc: true
 added: "5.3"
 ---
 
+{{< callout >}}
+**Try it yourself!** Download the source code and working demo for using Bootstrap with Stylelint, and the color modes from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/color-modes). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/color-modes?file=index.html).
+{{< /callout >}}
+
 ## Dark mode
 
 **Bootstrap now supports color modes, starting with dark mode!** With v5.3.0 you can implement your own color mode toggler (see below for an example from Bootstrap's docs) and apply the different color modes as you see fit. We support a light mode (default) and now dark mode. Color modes can be toggled globally on the `<html>` element, or on specific components and elements, thanks to the `data-bs-theme` attribute.
@@ -177,13 +181,61 @@ For example, you can create a "blue theme" with the selector `data-bs-theme="blu
 
 To allow visitors or users to toggle color modes, you'll need to create a toggle element to control the `data-bs-theme` attribute on the root element, `<html>`. We've built a toggler in our documentation that initially defers to a user's current system color mode, but provides an option to override that and pick a specific color mode.
 
-Here's a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it's implemented using HTML and CSS from our own components. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
+Here's a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it's implemented using HTML and CSS from our own components. It is suggested to include the JavaScript at the top of your page to reduce potential screen flickering during reloading of your site. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.
 
 {{< example lang="js" show_preview="false" >}}
 {{< js.inline >}}
 {{- readFile (path.Join "site/static/docs" .Site.Params.docs_version "assets/js/color-modes.js") -}}
 {{< /js.inline >}}
 {{< /example >}}
+
+## Adding theme colors
+
+Adding a new color in `$theme-colors` is not enough for some of our components like [alerts]({{< docsref "/components/alerts" >}}) and [list groups]({{< docsref "/components/list-group" >}}). New colors must also be defined in `$theme-colors-text`, `$theme-colors-bg-subtle`, and `$theme-colors-border-subtle` for light theme; but also in `$theme-colors-text-dark`, `$theme-colors-bg-subtle-dark`, and `$theme-colors-border-subtle-dark` for dark theme.
+
+This is a manual process because Sass cannot generate its own Sass variables from an existing variable or map. In future versions of Bootstrap, we'll revisit this setup to reduce the duplication.
+
+```scss
+// Required
+@import "functions";
+@import "variables";
+@import "variables-dark";
+
+// Add a custom color to $theme-colors
+$custom-colors: (
+  "custom-color": #712cf9
+);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "maps";
+@import "mixins";
+@import "utilities";
+
+// Add a custom color to new theme maps
+
+// Light mode
+$custom-colors-text: ("custom-color": #712cf9);
+$custom-colors-bg-subtle: ("custom-color": #e1d2fe);
+$custom-colors-border-subtle: ("custom-color": #bfa1fc);
+
+$theme-colors-text: map-merge($theme-colors-text, $custom-colors-text);
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $custom-colors-bg-subtle);
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $custom-colors-border-subtle);
+
+// Dark mode
+$custom-colors-text-dark: ("custom-color": #e1d2f2);
+$custom-colors-bg-subtle-dark: ("custom-color": #8951fa);
+$custom-colors-border-subtle-dark: ("custom-color": #e1d2f2);
+
+$theme-colors-text-dark: map-merge($theme-colors-text-dark, $custom-colors-text-dark);
+$theme-colors-bg-subtle-dark: map-merge($theme-colors-bg-subtle-dark, $custom-colors-bg-subtle-dark);
+$theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $custom-colors-border-subtle-dark);
+
+// Remainder of Bootstrap imports
+@import "root";
+@import "reboot";
+// etc
+```
 
 ## CSS
 
@@ -199,7 +251,7 @@ CSS variables for our dark color mode are partially generated from dark mode spe
 
 {{< scss-docs name="sass-dark-mode-vars" file="scss/_variables-dark.scss" >}}
 
-### Sass mixin
+### Sass mixins
 
 Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the `data-bs-theme` attribute selector or media query with the customizable `color-mode()` mixin. See the [Sass usage section](#building-with-sass) for more details.
 

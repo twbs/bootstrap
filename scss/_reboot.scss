@@ -87,7 +87,7 @@ hr {
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  color: var(--#{$prefix}heading-color, inherit);
+  color: var(--#{$prefix}heading-color);
 }
 
 h1 {

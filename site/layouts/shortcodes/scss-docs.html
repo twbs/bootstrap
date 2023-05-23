@@ -39,7 +39,7 @@
     {{- $match = replace $match " !default" "" -}}
   {{- end -}}
 
-  <div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+  <div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
       <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="{{ .Site.Params.repo }}/blob/v{{ .Site.Params.current_version }}/{{ $file | replaceRE `\\` "/" }}">
         {{- $file -}}
