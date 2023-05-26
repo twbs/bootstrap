@@ -161,7 +161,8 @@
     "!scss/tests/**"
   ],
   "hugo-bin": {
-    "buildTags": "extended"
+    "buildTags": "extended",
+    "downloadRepo": ""
   },
   "jspm": {
     "registry": "npm",
