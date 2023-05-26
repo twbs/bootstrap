@@ -29,6 +29,10 @@ disableKinds:           ["404", "taxonomy", "term", "RSS"]
 publishDir:             "_site"
 
 module:
+  hugoVersion:
+    extended: true
+    max: "0.112.3"
+    min: "0.112.3"
   mounts:
     - source:           dist
       target:           static/docs/5.3/dist
