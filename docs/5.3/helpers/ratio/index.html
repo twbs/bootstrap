@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Use generated pseudo elements to make an element maintain the aspect ratio of your choosing. Perfect for responsively handling video or slideshow embeds based on the width of the parent.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/helpers/ratio.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/helpers/ratio.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -557,7 +557,7 @@
     <li><a href="#example">Example</a></li>
     <li><a href="#aspect-ratios">Aspect ratios</a></li>
     <li><a href="#custom-ratios">Custom ratios</a></li>
-    <li><a href="#sass-map">Sass map</a></li>
+    <li><a href="#sass-maps">Sass maps</a></li>
   </ul>
 </nav>
           </div>
@@ -576,7 +576,7 @@
 
 <h2 id="example">Example <a class="anchor-link" href="#example" aria-label="Link to this section: Example"></a></h2>
 <p>Wrap any embed, like an <code>&lt;iframe&gt;</code>, in a parent element with <code>.ratio</code> and an aspect ratio class. The immediate child element is automatically sized thanks to our universal selector <code>.ratio &gt; *</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="ratio ratio-16x9">
   <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
 </div>
@@ -596,7 +596,7 @@
 
 <h2 id="aspect-ratios">Aspect ratios <a class="anchor-link" href="#aspect-ratios" aria-label="Link to this section: Aspect ratios"></a></h2>
 <p>Aspect ratios can be customized with modifier classes. By default the following ratio classes are provided:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-ratios">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-ratios">
 <div class="ratio ratio-1x1">
   <div>1x1</div>
 </div>
@@ -635,7 +635,7 @@
 <h2 id="custom-ratios">Custom ratios <a class="anchor-link" href="#custom-ratios" aria-label="Link to this section: Custom ratios"></a></h2>
 <p>Each <code>.ratio-*</code> class includes a CSS custom property (or CSS variable) in the selector. You can override this CSS variable to create custom aspect ratios on the fly with some quick math on your part.</p>
 <p>For example, to create a 2x1 aspect ratio, set <code>--bs-aspect-ratio: 50%</code> on the <code>.ratio</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-ratios">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-ratios">
 <div class="ratio" style="--bs-aspect-ratio: 50%;">
   <div>2x1</div>
 </div>
@@ -659,7 +659,7 @@
 </span></span><span class="line"><span class="cl">    <span class="na">--bs-aspect-ratio</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span> <span class="c1">// 2x1
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-ratios bd-example-ratios-breakpoint">
+</span></span></code></pre></div><div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-ratios bd-example-ratios-breakpoint">
 <div class="ratio ratio-4x3">
   <div>4x3, then 2x1</div>
 </div>
@@ -677,11 +677,11 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>4x3, then 2x1<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<h2 id="sass-map">Sass map <a class="anchor-link" href="#sass-map" aria-label="Link to this section: Sass map"></a></h2>
+<h2 id="sass-maps">Sass maps <a class="anchor-link" href="#sass-maps" aria-label="Link to this section: Sass maps"></a></h2>
 <p>Within <code>_variables.scss</code>, you can change the aspect ratios you want to use. Here&rsquo;s our default <code>$ratio-aspect-ratios</code> map. Modify the map as you like and recompile your Sass to put them to use.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -711,7 +711,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -760,7 +760,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -788,10 +788,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

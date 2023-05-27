@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/components/list-group.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/components/list-group.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -573,7 +573,7 @@
         <li><a href="#variables">Variables</a></li>
         <li><a href="#sass-variables">Sass variables</a></li>
         <li><a href="#sass-mixins">Sass mixins</a></li>
-        <li><a href="#sass-loop">Sass loop</a></li>
+        <li><a href="#sass-loops">Sass loops</a></li>
       </ul>
     </li>
     <li><a href="#javascript-behavior">JavaScript behavior</a>
@@ -596,7 +596,7 @@
 
         <h2 id="basic-example">Basic example <a class="anchor-link" href="#basic-example" aria-label="Link to this section: Basic example"></a></h2>
 <p>The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group">
   <li class="list-group-item">An item</li>
   <li class="list-group-item">A second item</li>
@@ -624,7 +624,7 @@
 
 <h2 id="active-items">Active items <a class="anchor-link" href="#active-items" aria-label="Link to this section: Active items"></a></h2>
 <p>Add <code>.active</code> to a <code>.list-group-item</code> to indicate the current active selection.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group">
   <li class="list-group-item active" aria-current="true">An active item</li>
   <li class="list-group-item">A second item</li>
@@ -652,7 +652,7 @@
 
 <h2 id="disabled-items">Disabled items <a class="anchor-link" href="#disabled-items" aria-label="Link to this section: Disabled items"></a></h2>
 <p>Add <code>.disabled</code> to a <code>.list-group-item</code> to make it <em>appear</em> disabled. Note that some elements with <code>.disabled</code> will also require custom JavaScript to fully disable their click events (e.g., links).</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group">
   <li class="list-group-item disabled" aria-disabled="true">A disabled item</li>
   <li class="list-group-item">A second item</li>
@@ -681,7 +681,7 @@
 <h2 id="links-and-buttons">Links and buttons <a class="anchor-link" href="#links-and-buttons" aria-label="Link to this section: Links and buttons"></a></h2>
 <p>Use <code>&lt;a&gt;</code>s or <code>&lt;button&gt;</code>s to create <em>actionable</em> list group items with hover, disabled, and active states by adding <code>.list-group-item-action</code>. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like <code>&lt;li&gt;</code>s or <code>&lt;div&gt;</code>s) don&rsquo;t provide a click or tap affordance.</p>
 <p>Be sure to <strong>not use the standard <code>.btn</code> classes here</strong>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
     The current link item
@@ -712,7 +712,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>With <code>&lt;button&gt;</code>s, you can also make use of the <code>disabled</code> attribute instead of the <code>.disabled</code> class. Sadly, <code>&lt;a&gt;</code>s don&rsquo;t support the disabled attribute.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="list-group">
   <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
     The current button
@@ -744,7 +744,7 @@
 
 <h2 id="flush">Flush <a class="anchor-link" href="#flush" aria-label="Link to this section: Flush"></a></h2>
 <p>Add <code>.list-group-flush</code> to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group list-group-flush">
   <li class="list-group-item">An item</li>
   <li class="list-group-item">A second item</li>
@@ -773,7 +773,7 @@
 <h2 id="numbered">Numbered <a class="anchor-link" href="#numbered" aria-label="Link to this section: Numbered"></a></h2>
 <p>Add the <code>.list-group-numbered</code> modifier class (and optionally use an <code>&lt;ol&gt;</code> element) to opt into numbered list group items. Numbers are generated via CSS (as opposed to a <code>&lt;ol&gt;</code>s default browser styling) for better placement inside list group items and to allow for better customization.</p>
 <p>Numbers are generated by <code>counter-reset</code> on the <code>&lt;ol&gt;</code>, and then styled and placed with a <code>::before</code> pseudo-element on the <code>&lt;li&gt;</code> with <code>counter-increment</code> and <code>content</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ol class="list-group list-group-numbered">
   <li class="list-group-item">A list item</li>
   <li class="list-group-item">A list item</li>
@@ -796,7 +796,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>These work great with custom content as well.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ol class="list-group list-group-numbered">
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
@@ -857,7 +857,7 @@
 <h2 id="horizontal">Horizontal <a class="anchor-link" href="#horizontal" aria-label="Link to this section: Horizontal"></a></h2>
 <p>Add <code>.list-group-horizontal</code> to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant <code>.list-group-horizontal-{sm|md|lg|xl|xxl}</code> to make a list group horizontal starting at that breakpoint&rsquo;s <code>min-width</code>. Currently <strong>horizontal list groups cannot be combined with flush list groups.</strong></p>
 <p><strong>ProTip:</strong> Want equal-width list group items when horizontal? Add <code>.flex-fill</code> to each list group item.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 
 <ul class="list-group list-group-horizontal">
   <li class="list-group-item">An item</li>
@@ -932,11 +932,11 @@
 
 <h2 id="variants">Variants <a class="anchor-link" href="#variants" aria-label="Link to this section: Variants"></a></h2>
 <div class="bd-callout bd-callout-info">
-<strong>Heads up!</strong> As of v5.3.0, the <code>list-group-item-variant()</code> Sass mixin is deprecated. List group item variants now have their CSS variables overridden in <a href="#sass-loop">the Sass loop</a>.
+<strong>Heads up!</strong> As of v5.3.0, the <code>list-group-item-variant()</code> Sass mixin is deprecated. List group item variants now have their CSS variables overridden in <a href="#sass-loops">a Sass loop</a>.
 </div>
 
 <p>Use contextual classes to style list items with a stateful background and color.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group">
   <li class="list-group-item">A simple default list group item</li>
 
@@ -974,7 +974,7 @@
 
 <h3 id="for-links-and-buttons">For links and buttons <a class="anchor-link" href="#for-links-and-buttons" aria-label="Link to this section: For links and buttons"></a></h3>
 <p>Contextual classes also work with <code>.list-group-item-action</code> for <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements. Note the addition of the hover styles here not present in the previous example. Also supported is the <code>.active</code> state; apply it to indicate an active selection on a contextual list group item.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>
 
@@ -1016,7 +1016,7 @@
 
 <h2 id="with-badges">With badges <a class="anchor-link" href="#with-badges" aria-label="Link to this section: With badges"></a></h2>
 <p>Add badges to any list group item to show unread counts, activity, and more with the help of some <a href="/docs/5.3/utilities/flex/">utilities</a>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     A list item
@@ -1058,7 +1058,7 @@
 
 <h2 id="custom-content">Custom content <a class="anchor-link" href="#custom-content" aria-label="Link to this section: Custom content"></a></h2>
 <p>Add nearly any HTML within, even for linked list groups like the one below, with the help of <a href="/docs/5.3/utilities/flex/">flexbox utilities</a>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
     <div class="d-flex w-100 justify-content-between">
@@ -1124,7 +1124,7 @@
 
 <h2 id="checkboxes-and-radios">Checkboxes and radios <a class="anchor-link" href="#checkboxes-and-radios" aria-label="Link to this section: Checkboxes and radios"></a></h2>
 <p>Place Bootstrap&rsquo;s checkboxes and radios within list group items and customize as needed. You can use them without <code>&lt;label&gt;</code>s, but please remember to include an <code>aria-label</code> attribute and value for accessibility.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group">
   <li class="list-group-item">
     <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
@@ -1164,7 +1164,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group">
   <li class="list-group-item">
     <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
@@ -1205,7 +1205,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>You can use <code>.stretched-link</code> on <code>&lt;label&gt;</code>s to make the whole list group item clickable.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="list-group">
   <li class="list-group-item">
     <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">
@@ -1250,9 +1250,9 @@
 <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Added in v5.2.0</small>
 
 <p>As part of Bootstrap&rsquo;s evolving CSS variables approach, list groups now use local CSS variables on <code>.list-group</code> for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_list-group.scss">scss/_list-group.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_list-group.scss">scss/_list-group.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1276,9 +1276,9 @@
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}list-group-active-bg</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$list-group-active-bg</span><span class="si">}</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}list-group-active-border-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$list-group-active-border-color</span><span class="si">}</span><span class="p">;</span></span></span></code></pre></div></div>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1315,9 +1315,9 @@
 <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">Deprecated in v5.3.0</small>
 
 <p>Used in combination with <code>$theme-colors</code> to generate the <a href="#variants">contextual variant classes</a> for <code>.list-group-item</code>s.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/mixins/_list-group.scss">scss/mixins/_list-group.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/mixins/_list-group.scss">scss/mixins/_list-group.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1344,11 +1344,11 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></div>
-<h3 id="sass-loop">Sass loop <a class="anchor-link" href="#sass-loop" aria-label="Link to this section: Sass loop"></a></h3>
+<h3 id="sass-loops">Sass loops <a class="anchor-link" href="#sass-loops" aria-label="Link to this section: Sass loops"></a></h3>
 <p>Loop that generates the modifier classes with an overriding of CSS variables.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_list-group.scss">scss/_list-group.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_list-group.scss">scss/_list-group.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1561,7 +1561,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1610,7 +1610,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1638,10 +1638,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

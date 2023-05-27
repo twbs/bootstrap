@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Link utilities are used to stylize your anchors to adjust their color, opacity, underline offset, underline color, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v5.3</small><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/utilities/link.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v5.3</small><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/utilities/link.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -563,9 +563,9 @@
       </ul>
     </li>
     <li><a href="#colored-links">Colored links</a></li>
-    <li><a href="#sass">Sass</a>
+    <li><a href="#css">CSS</a>
       <ul>
-        <li><a href="#utilities-api">Utilities API</a></li>
+        <li><a href="#sass-utilities-api">Sass utilities API</a></li>
       </ul>
     </li>
   </ul>
@@ -579,7 +579,7 @@
 
         <h2 id="link-opacity">Link opacity <a class="anchor-link" href="#link-opacity" aria-label="Link to this section: Link opacity"></a></h2>
 <p>Change the alpha opacity of the link <code>rgba()</code> color value with utilities. Please be aware that changes to a color&rsquo;s opacity can lead to links with <a href="/docs/5.3/getting-started/accessibility/#color-contrast"><em>insufficient</em> contrast</a>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <p><a class="link-opacity-10" href="#">Link opacity 10</a></p>
 <p><a class="link-opacity-25" href="#">Link opacity 25</a></p>
 <p><a class="link-opacity-50" href="#">Link opacity 50</a></p>
@@ -602,7 +602,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;link-opacity-100&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Link opacity 100<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>You can even change the opacity level on hover.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <p><a class="link-opacity-10-hover" href="#">Link hover opacity 10</a></p>
 <p><a class="link-opacity-25-hover" href="#">Link hover opacity 25</a></p>
 <p><a class="link-opacity-50-hover" href="#">Link hover opacity 50</a></p>
@@ -627,7 +627,7 @@
 <h2 id="link-underlines">Link underlines <a class="anchor-link" href="#link-underlines" aria-label="Link to this section: Link underlines"></a></h2>
 <h3 id="underline-color">Underline color <a class="anchor-link" href="#underline-color" aria-label="Link to this section: Underline color"></a></h3>
 <p>Change the underline&rsquo;s color independent of the link text color.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 
 <p><a href="#" class="link-underline-primary">Primary underline</a></p>
 <p><a href="#" class="link-underline-secondary">Secondary underline</a></p>
@@ -658,7 +658,7 @@
 
 <h3 id="underline-offset">Underline offset <a class="anchor-link" href="#underline-offset" aria-label="Link to this section: Underline offset"></a></h3>
 <p>Change the underline&rsquo;s distance from your text. Offset is set in <code>em</code> units to automatically scale with the element&rsquo;s current <code>font-size</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <p><a href="#">Default link</a></p>
 <p><a class="link-offset-1" href="#">Offset 1 link</a></p>
 <p><a class="link-offset-2" href="#">Offset 2 link</a></p>
@@ -680,7 +680,7 @@
 
 <h3 id="underline-opacity">Underline opacity <a class="anchor-link" href="#underline-opacity" aria-label="Link to this section: Underline opacity"></a></h3>
 <p>Change the underline&rsquo;s opacity. Requires adding <code>.link-underline</code> to first set an <code>rgba()</code> color we use to then modify the alpha opacity.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <p><a class="link-offset-2 link-underline link-underline-opacity-0" href="#">Underline opacity 0</a></p>
 <p><a class="link-offset-2 link-underline link-underline-opacity-10" href="#">Underline opacity 10</a></p>
 <p><a class="link-offset-2 link-underline link-underline-opacity-25" href="#">Underline opacity 25</a></p>
@@ -706,7 +706,7 @@
 
 <h3 id="hover-variants">Hover variants <a class="anchor-link" href="#hover-variants" aria-label="Link to this section: Hover variants"></a></h3>
 <p>Just like the <code>.link-opacity-*-hover</code> utilities, <code>.link-offset</code> and <code>.link-underline-opacity</code> utilities include <code>:hover</code> variants by default. Mix and match to create unique link styles.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
   Underline opacity 0
 </a>
@@ -726,7 +726,7 @@
 
 <h2 id="colored-links">Colored links <a class="anchor-link" href="#colored-links" aria-label="Link to this section: Colored links"></a></h2>
 <p><a href="/docs/5.3/helpers/colored-links/">Colored link helpers</a> have been updated to pair with our link utilities. Use the new utilities to modify the link opacity, underline opacity, and underline offset.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 
 <p><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Primary link</a></p>
 <p><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Secondary link</a></p>
@@ -761,13 +761,13 @@
 <strong>Accessibility tip:</strong> Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies like screen readers. Please ensure the meaning is obvious from the content itself (e.g., the visible text) or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.
 </div>
 
-<h2 id="sass">Sass <a class="anchor-link" href="#sass" aria-label="Link to this section: Sass"></a></h2>
+<h2 id="css">CSS <a class="anchor-link" href="#css" aria-label="Link to this section: CSS"></a></h2>
 <p>In addition to the following Sass functionality, consider reading about our included <a href="/docs/5.3/customize/css-variables/">CSS custom properties</a> (aka CSS variables) for colors and more.</p>
-<h3 id="utilities-api">Utilities API <a class="anchor-link" href="#utilities-api" aria-label="Link to this section: Utilities API"></a></h3>
+<h3 id="sass-utilities-api">Sass utilities API <a class="anchor-link" href="#sass-utilities-api" aria-label="Link to this section: Sass utilities API"></a></h3>
 <p>Link utilities are declared in our utilities API in <code>scss/_utilities.scss</code>. <a href="/docs/5.3/utilities/api/#using-the-api">Learn how to use the utilities API.</a></p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_utilities.scss">scss/_utilities.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_utilities.scss">scss/_utilities.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -838,7 +838,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -887,7 +887,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -915,10 +915,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

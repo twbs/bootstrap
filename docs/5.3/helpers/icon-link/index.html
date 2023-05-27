@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Quickly create stylized hyperlinks with Bootstrap Icons or other icons.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v5.3</small><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/helpers/icon-link.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v5.3</small><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/helpers/icon-link.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -558,8 +558,8 @@
     <li><a href="#customize">Customize</a>
       <ul>
         <li><a href="#css-variables">CSS variables</a></li>
-        <li><a href="#sass">Sass</a></li>
-        <li><a href="#utilities">Utilities</a></li>
+        <li><a href="#sass-variables">Sass variables</a></li>
+        <li><a href="#sass-utilities-api">Sass utilities API</a></li>
       </ul>
     </li>
   </ul>
@@ -579,7 +579,7 @@ When icons are purely decorative, they should be hidden from assistive technolog
 
 <h2 id="example">Example <a class="anchor-link" href="#example" aria-label="Link to this section: Example"></a></h2>
 <p>Take a regular <code>&lt;a&gt;</code> element, add <code>.icon-link</code>, and insert an icon on either the left or right of your link text. The icon is automatically sized, placed, and colored.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <a class="icon-link" href="#">
   <svg class="bi" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
   Icon link
@@ -599,7 +599,7 @@ When icons are purely decorative, they should be hidden from assistive technolog
 </span></span><span class="line"><span class="cl">  Icon link
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <a class="icon-link" href="#">
   Icon link
   <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
@@ -621,7 +621,7 @@ When icons are purely decorative, they should be hidden from assistive technolog
 
 <h2 id="style-on-hover">Style on hover <a class="anchor-link" href="#style-on-hover" aria-label="Link to this section: Style on hover"></a></h2>
 <p>Add <code>.icon-link-hover</code> to move the icon to the right on hover.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <a class="icon-link icon-link-hover" href="#">
   Icon link
   <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
@@ -646,7 +646,7 @@ When icons are purely decorative, they should be hidden from assistive technolog
 <h3 id="css-variables">CSS variables <a class="anchor-link" href="#css-variables" aria-label="Link to this section: CSS variables"></a></h3>
 <p>Modify the <code>--bs-link-*</code> and <code>--bs-icon-link-*</code> CSS variables as needed to change the default appearance.</p>
 <p>Customize the hover <code>transform</code> by overriding the <code>--bs-icon-link-transform</code> CSS variable:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="#">
   <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
   Icon link
@@ -667,7 +667,7 @@ When icons are purely decorative, they should be hidden from assistive technolog
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>Customize the color by overriding the <code>--bs-link-*</code> CSS variable:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
   Icon link
   <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
@@ -687,11 +687,11 @@ When icons are purely decorative, they should be hidden from assistive technolog
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;bi&#34;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;&lt;</span><span class="nt">use</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&#34;#arrow-right&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">use</span><span class="p">&gt;&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<h3 id="sass">Sass <a class="anchor-link" href="#sass" aria-label="Link to this section: Sass"></a></h3>
+<h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
 <p>Customize the icon link Sass variables to modify all icon link styles across your Bootstrap-powered project.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -703,9 +703,9 @@ When icons are purely decorative, they should be hidden from assistive technolog
 </span></span><span class="line"><span class="cl"><span class="nv">$icon-link-icon-transition</span><span class="o">:</span>   <span class="mf">.2</span><span class="kt">s</span> <span class="ni">ease-in-out</span> <span class="ni">transform</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$icon-link-icon-transform</span><span class="o">:</span>    <span class="nf">translate3d</span><span class="p">(</span><span class="mf">.25</span><span class="kt">em</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="p">);</span>
 </span></span></code></pre></div></div>
-<h3 id="utilities">Utilities <a class="anchor-link" href="#utilities" aria-label="Link to this section: Utilities"></a></h3>
+<h3 id="sass-utilities-api">Sass utilities API <a class="anchor-link" href="#sass-utilities-api" aria-label="Link to this section: Sass utilities API"></a></h3>
 <p>Modify icon links with any of <a href="/docs/5.3/utilities/link/">our link utilities</a> for modifying underline color and offset.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <a class="icon-link icon-link-hover link-success link-underline-success link-underline-opacity-25" href="#">
   Icon link
   <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
@@ -742,7 +742,7 @@ When icons are purely decorative, they should be hidden from assistive technolog
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -791,7 +791,7 @@ When icons are purely decorative, they should be hidden from assistive technolog
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -819,10 +819,10 @@ When icons are purely decorative, they should be hidden from assistive technolog
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

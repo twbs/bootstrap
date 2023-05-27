@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Create consistent cross-browser and cross-device checkboxes and radios with our completely rewritten checks component.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/forms/checks-radios.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/forms/checks-radios.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -596,7 +596,7 @@
 <p>Structurally, our <code>&lt;input&gt;</code>s and <code>&lt;label&gt;</code>s are sibling elements as opposed to an <code>&lt;input&gt;</code> within a <code>&lt;label&gt;</code>. This is slightly more verbose as you must specify <code>id</code> and <code>for</code> attributes to relate the <code>&lt;input&gt;</code> and <code>&lt;label&gt;</code>. We use the sibling selector (<code>~</code>) for all our <code>&lt;input&gt;</code> states, like <code>:checked</code> or <code>:disabled</code>. When combined with the <code>.form-check-label</code> class, we can easily style the text for each item based on the <code>&lt;input&gt;</code>&rsquo;s state.</p>
 <p>Our checks use custom Bootstrap icons to indicate checked or indeterminate states.</p>
 <h2 id="checks">Checks <a class="anchor-link" href="#checks" aria-label="Link to this section: Checks"></a></h2>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
@@ -634,7 +634,7 @@
 
 <h3 id="indeterminate">Indeterminate <a class="anchor-link" href="#indeterminate" aria-label="Link to this section: Indeterminate"></a></h3>
 <p>Checkboxes can utilize the <code>:indeterminate</code> pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-indeterminate">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-indeterminate">
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
   <label class="form-check-label" for="flexCheckIndeterminate">
@@ -660,7 +660,7 @@
 
 <h3 id="disabled">Disabled <a class="anchor-link" href="#disabled" aria-label="Link to this section: Disabled"></a></h3>
 <p>Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s are automatically styled to match with a lighter color to help indicate the input&rsquo;s state.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-indeterminate">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-indeterminate">
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminateDisabled" disabled>
   <label class="form-check-label" for="flexCheckIndeterminateDisabled">
@@ -709,7 +709,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <h2 id="radios">Radios <a class="anchor-link" href="#radios" aria-label="Link to this section: Radios"></a></h2>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
@@ -747,7 +747,7 @@
 
 <h3 id="disabled-1">Disabled <a class="anchor-link" href="#disabled-1" aria-label="Link to this section: Disabled"></a></h3>
 <p>Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s are automatically styled to match with a lighter color to help indicate the input&rsquo;s state.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
   <label class="form-check-label" for="flexRadioDisabled">
@@ -785,7 +785,7 @@
 
 <h2 id="switches">Switches <a class="anchor-link" href="#switches" aria-label="Link to this section: Switches"></a></h2>
 <p>A switch has the markup of a custom checkbox but uses the <code>.form-switch</code> class to render a toggle switch. Consider using <code>role=&quot;switch&quot;</code> to more accurately convey the nature of the control to assistive technologies that support this role. In older assistive technologies, it will simply be announced as a regular checkbox as a fallback. Switches also support the <code>disabled</code> attribute.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
   <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
@@ -831,7 +831,7 @@
 
 <h2 id="default-stacked">Default (stacked) <a class="anchor-link" href="#default-stacked" aria-label="Link to this section: Default (stacked)"></a></h2>
 <p>By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with <code>.form-check</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
   <label class="form-check-label" for="defaultCheck1">
@@ -867,7 +867,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
   <label class="form-check-label" for="exampleRadios1">
@@ -917,7 +917,7 @@
 
 <h2 id="inline">Inline <a class="anchor-link" href="#inline" aria-label="Link to this section: Inline"></a></h2>
 <p>Group checkboxes or radios on the same horizontal row by adding <code>.form-check-inline</code> to any <code>.form-check</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
   <label class="form-check-label" for="inlineCheckbox1">1</label>
@@ -953,7 +953,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;inlineCheckbox3&#34;</span><span class="p">&gt;</span>3 (disabled)<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
   <label class="form-check-label" for="inlineRadio1">1</label>
@@ -991,7 +991,7 @@
 
 <h2 id="reverse">Reverse <a class="anchor-link" href="#reverse" aria-label="Link to this section: Reverse"></a></h2>
 <p>Put your checkboxes, radios, and switches on the opposite side with the <code>.form-check-reverse</code> modifier class.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="form-check form-check-reverse">
   <input class="form-check-input" type="checkbox" value="" id="reverseCheck1">
   <label class="form-check-label" for="reverseCheck1">
@@ -1039,7 +1039,7 @@
 
 <h2 id="without-labels">Without labels <a class="anchor-link" href="#without-labels" aria-label="Link to this section: Without labels"></a></h2>
 <p>Omit the wrapping <code>.form-check</code> for checkboxes and radios that have no label text. Remember to still provide some form of accessible name for assistive technologies (for instance, using <code>aria-label</code>). See the <a href="/docs/5.3/forms/overview/#accessibility">forms overview accessibility</a> section for details.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div>
   <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
 </div>
@@ -1068,7 +1068,7 @@
 <h2 id="toggle-buttons">Toggle buttons <a class="anchor-link" href="#toggle-buttons" aria-label="Link to this section: Toggle buttons"></a></h2>
 <p>Create button-like checkboxes and radio buttons by using <code>.btn</code> styles rather than <code>.form-check-label</code> on the <code>&lt;label&gt;</code> elements. These toggle buttons can further be grouped in a <a href="/docs/5.3/components/button-group/">button group</a> if needed.</p>
 <h3 id="checkbox-toggle-buttons">Checkbox toggle buttons <a class="anchor-link" href="#checkbox-toggle-buttons" aria-label="Link to this section: Checkbox toggle buttons"></a></h3>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
 <label class="btn btn-primary" for="btn-check">Single toggle</label>
 </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
@@ -1084,7 +1084,7 @@
       </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">&#34;off&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span><span class="p">&gt;</span>Single toggle<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
 <label class="btn btn-primary" for="btn-check-2">Checked</label>
 </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
@@ -1100,7 +1100,7 @@
       </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;btn-check-2&#34;</span> <span class="na">checked</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">&#34;off&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;btn-check-2&#34;</span><span class="p">&gt;</span>Checked<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off" disabled>
 <label class="btn btn-primary" for="btn-check-3">Disabled</label>
 </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
@@ -1121,7 +1121,7 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 </div>
 
 <h3 id="radio-toggle-buttons">Radio toggle buttons <a class="anchor-link" href="#radio-toggle-buttons" aria-label="Link to this section: Radio toggle buttons"></a></h3>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
 <label class="btn btn-secondary" for="option1">Checked</label>
 
@@ -1157,7 +1157,7 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 
 <h3 id="outlined-styles">Outlined styles <a class="anchor-link" href="#outlined-styles" aria-label="Link to this section: Outlined styles"></a></h3>
 <p>Different variants of <code>.btn</code>, such at the various outlined styles, are supported.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
 <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label><br>
 
@@ -1194,9 +1194,9 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 <h2 id="css">CSS <a class="anchor-link" href="#css" aria-label="Link to this section: CSS"></a></h2>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
 <p>Variables for checks:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1237,9 +1237,9 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 </span></span><span class="line"><span class="cl"><span class="nv">$form-check-inline-margin-end</span><span class="o">:</span>    <span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
 </span></span></code></pre></div></div>
 <p>Variables for switches:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1276,7 +1276,7 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1325,7 +1325,7 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1353,10 +1353,10 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 
