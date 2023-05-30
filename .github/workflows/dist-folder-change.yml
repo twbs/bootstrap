@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Dependabot changed /dist folder
-        if: ${{ github.actor == dependabot[bot] }}
+        if: ${{ github.actor == 'dependabot[bot]' }}
         uses: actions/github-script@v3
         with:
           script: |
