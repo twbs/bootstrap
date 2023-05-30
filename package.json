@@ -112,7 +112,7 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-replace": "^5.0.2",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.14",
     "bundlewatch": "^0.3.3",
     "clean-css-cli": "^5.6.2",
     "cross-env": "^7.0.3",
