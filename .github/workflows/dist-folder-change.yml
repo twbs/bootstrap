@@ -5,6 +5,9 @@ on:
     paths:
       - "dist/**"
 
+env:
+  NODE: 18
+
 jobs:
   dist-folder-change:
     runs-on: ubuntu-latest
