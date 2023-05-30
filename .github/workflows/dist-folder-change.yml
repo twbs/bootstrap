@@ -1,0 +1,17 @@
+name: /dist folder change
+
+on:
+  push:
+    paths: "/dist/**"
+
+jobs:
+  dist-folder-change:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Dependabot changed /dist folder
+        # if: ${{ github.actor == dependabot[bot] }}
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Dependabot changed /dist folder')
