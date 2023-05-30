@@ -125,7 +125,7 @@
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.102.2",
     "ip": "^1.1.8",
-    "karma": "^6.4.1",
+    "karma": "^6.4.2",
     "jquery": "^3.7.0",
     "karma-browserstack-launcher": "1.6.0",
     "karma-chrome-launcher": "^3.1.1",
