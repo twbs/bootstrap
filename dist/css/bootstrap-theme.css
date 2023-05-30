@@ -2512,6 +2512,28 @@ h1 {
 .btn-toggle.btn-secondary.active {
   background-color: #27283c;
 }
+.btn-toggle.btn-warning {
+  color: #fff;
+  background: #121421;
+}
+.btn-toggle.btn-warning:before,
+.btn-toggle.btn-warning:after {
+  color: #fff;
+}
+.btn-toggle.btn-warning.active {
+  background-color: #f7a35c;
+}
+.btn-toggle.btn-danger {
+  color: #fff;
+  background: #121421;
+}
+.btn-toggle.btn-danger:before,
+.btn-toggle.btn-danger:after {
+  color: #fff;
+}
+.btn-toggle.btn-danger.active {
+  background-color: #d9534f;
+}
 .text-no-data {
   color: #1c2f48;
 }
