@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/components/dropdowns.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/components/dropdowns.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -628,7 +628,7 @@
 
         <h2 id="overview">Overview <a class="anchor-link" href="#overview" aria-label="Link to this section: Overview"></a></h2>
 <p>Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They&rsquo;re made interactive with the included Bootstrap dropdown JavaScript plugin. They&rsquo;re toggled by clicking, not by hovering; this is <a href="https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/">an intentional design decision</a>.</p>
-<p>Dropdowns are built on a third party library, <a href="https://popper.js.org/">Popper</a>, which provides dynamic positioning and viewport detection. Be sure to include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js">popper.min.js</a> before Bootstrap&rsquo;s JavaScript or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper. Popper isn&rsquo;t used to position dropdowns in navbars though as dynamic positioning isn&rsquo;t required.</p>
+<p>Dropdowns are built on a third party library, <a href="https://popper.js.org/">Popper</a>, which provides dynamic positioning and viewport detection. Be sure to include <a href="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js">popper.min.js</a> before Bootstrap&rsquo;s JavaScript or use <code>bootstrap.bundle.min.js</code> / <code>bootstrap.bundle.js</code> which contains Popper. Popper isn&rsquo;t used to position dropdowns in navbars though as dynamic positioning isn&rsquo;t required.</p>
 <h2 id="accessibility">Accessibility <a class="anchor-link" href="#accessibility" aria-label="Link to this section: Accessibility"></a></h2>
 <p>The <a href="https://www.w3.org/TR/wai-aria/"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr></a> standard defines an actual <a href="https://www.w3.org/TR/wai-aria/#menu"><code>role=&quot;menu&quot;</code> widget</a>, but this is specific to application-like menus which trigger actions or functions. <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus can only contain menu items, checkbox menu items, radio button menu items, radio button groups, and sub-menus.</p>
 <p>Bootstrap&rsquo;s dropdowns, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create dropdowns that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the <code>role</code> and <code>aria-</code> attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.</p>
@@ -637,7 +637,7 @@
 <p>Wrap the dropdown&rsquo;s toggle (your button or link) and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Ideally, you should use a <code>&lt;button&gt;</code> element as the dropdown trigger, but the plugin will work with <code>&lt;a&gt;</code> elements as well. The examples shown here use semantic <code>&lt;ul&gt;</code> elements where appropriate, but custom markup is supported.</p>
 <h3 id="single-button">Single button <a class="anchor-link" href="#single-button" aria-label="Link to this section: Single button"></a></h3>
 <p>Any single <code>.btn</code> can be turned into a dropdown toggle with some markup changes. Here&rsquo;s how you can put them to work with <code>&lt;button&gt;</code> elements:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown button
@@ -670,7 +670,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>While <code>&lt;button&gt;</code> is the recommended control for a dropdown toggle, there might be situations where you have to use an <code>&lt;a&gt;</code> element. If you do, we recommend adding a <code>role=&quot;button&quot;</code> attribute to appropriately convey control&rsquo;s purpose to assistive technologies such as screen readers.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown link
@@ -982,7 +982,7 @@
   </p>
 </div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown button
@@ -1019,7 +1019,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>And putting it to use in a navbar:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -1082,7 +1082,7 @@
 
 <h3 id="centered">Centered <a class="anchor-link" href="#centered" aria-label="Link to this section: Centered"></a></h3>
 <p>Make the dropdown menu centered below the toggle with <code>.dropdown-center</code> on the parent element.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropdown-center">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Centered dropdown
@@ -1169,7 +1169,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span></code></pre></div><h3 id="dropup-centered">Dropup centered <a class="anchor-link" href="#dropup-centered" aria-label="Link to this section: Dropup centered"></a></h3>
 <p>Make the dropup menu centered above the toggle with <code>.dropup-center</code> on the parent element.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropup-center dropup">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Centered dropup
@@ -1309,7 +1309,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span></code></pre></div><h2 id="menu-items">Menu items <a class="anchor-link" href="#menu-items" aria-label="Link to this section: Menu items"></a></h2>
 <p>You can use <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code> elements as dropdown items.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown
@@ -1342,7 +1342,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>You can also create non-interactive dropdown items with <code>.dropdown-item-text</code>. Feel free to style further with custom CSS or text utilities.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="dropdown-menu">
   <li><span class="dropdown-item-text">Dropdown item text</span></li>
   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -1368,7 +1368,7 @@
 
 <h3 id="active">Active <a class="anchor-link" href="#active" aria-label="Link to this section: Active"></a></h3>
 <p>Add <code>.active</code> to items in the dropdown to <strong>style them as active</strong>. To convey the active state to assistive technologies, use the <code>aria-current</code> attribute — using the <code>page</code> value for the current page, or <code>true</code> for the current item in a set.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Regular link</a></li>
   <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
@@ -1392,7 +1392,7 @@
 
 <h3 id="disabled">Disabled <a class="anchor-link" href="#disabled" aria-label="Link to this section: Disabled"></a></h3>
 <p>Add <code>.disabled</code> to items in the dropdown to <strong>style them as disabled</strong>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Regular link</a></li>
   <li><a class="dropdown-item disabled">Disabled link</a></li>
@@ -1421,7 +1421,7 @@
 <strong>Heads up!</strong> Dropdowns are positioned thanks to Popper except when they are contained in a navbar.
 </div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     Right-aligned menu example
@@ -1456,7 +1456,7 @@
 <h3 id="responsive-alignment">Responsive alignment <a class="anchor-link" href="#responsive-alignment" aria-label="Link to this section: Responsive alignment"></a></h3>
 <p>If you want to use responsive alignment, disable dynamic positioning by adding the <code>data-bs-display=&quot;static&quot;</code> attribute and use the responsive variation classes.</p>
 <p>To align <strong>right</strong> the dropdown menu with the given breakpoint or larger, add <code>.dropdown-menu{-sm|-md|-lg|-xl|-xxl}-end</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
     Left-aligned but right aligned when large screen
@@ -1489,7 +1489,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>To align <strong>left</strong> the dropdown menu with the given breakpoint or larger, add <code>.dropdown-menu-end</code> and <code>.dropdown-menu{-sm|-md|-lg|-xl|-xxl}-start</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
     Right-aligned but left aligned when large screen
@@ -1524,7 +1524,7 @@
 <p>Note that you don&rsquo;t need to add a <code>data-bs-display=&quot;static&quot;</code> attribute to dropdown buttons in navbars, since Popper isn&rsquo;t used in navbars.</p>
 <h3 id="alignment-options">Alignment options <a class="anchor-link" href="#alignment-options" aria-label="Link to this section: Alignment options"></a></h3>
 <p>Taking most of the options shown above, here&rsquo;s a small kitchen sink demo of various dropdown alignment options in one place.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="btn-group">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown
@@ -1691,7 +1691,7 @@
 <h2 id="menu-content">Menu content <a class="anchor-link" href="#menu-content" aria-label="Link to this section: Menu content"></a></h2>
 <h3 id="headers">Headers <a class="anchor-link" href="#headers" aria-label="Link to this section: Headers"></a></h3>
 <p>Add a header to label sections of actions in any dropdown menu.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="dropdown-menu">
   <li><h6 class="dropdown-header">Dropdown header</h6></li>
   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -1715,7 +1715,7 @@
 
 <h3 id="dividers">Dividers <a class="anchor-link" href="#dividers" aria-label="Link to this section: Dividers"></a></h3>
 <p>Separate groups of related menu items with a divider.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Action</a></li>
   <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -1743,7 +1743,7 @@
 
 <h3 id="text">Text <a class="anchor-link" href="#text" aria-label="Link to this section: Text"></a></h3>
 <p>Place any freeform text within a dropdown menu with text and use <a href="/docs/5.3/utilities/spacing/">spacing utilities</a>. Note that you&rsquo;ll likely need additional sizing styles to constrain the menu width.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropdown-menu p-4 text-body-secondary" style="max-width: 200px;">
   <p>
     Some example text that's free-flowing within the dropdown menu.
@@ -1773,7 +1773,7 @@
 
 <h3 id="forms">Forms <a class="anchor-link" href="#forms" aria-label="Link to this section: Forms"></a></h3>
 <p>Put a form within a dropdown menu, or make it into a dropdown menu, and use <a href="/docs/5.3/utilities/spacing/">margin or padding utilities</a> to give it the negative space you require.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropdown-menu">
   <form class="px-4 py-3">
     <div class="mb-3">
@@ -1833,7 +1833,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;dropdown-item&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Forgot password?<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="dropdown">
   <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
     Dropdown form
@@ -1895,7 +1895,7 @@
 
 <h2 id="dropdown-options">Dropdown options <a class="anchor-link" href="#dropdown-options" aria-label="Link to this section: Dropdown options"></a></h2>
 <p>Use <code>data-bs-offset</code> or <code>data-bs-reference</code> to change the location of the dropdown.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="d-flex">
   <div class="dropdown me-1">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
@@ -1959,7 +1959,7 @@
 
 <h3 id="auto-close-behavior">Auto close behavior <a class="anchor-link" href="#auto-close-behavior" aria-label="Link to this section: Auto close behavior"></a></h3>
 <p>By default, the dropdown menu is closed when clicking inside or outside the dropdown menu. You can use the <code>autoClose</code> option to change this behavior of the dropdown.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="btn-group">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
     Default dropdown
@@ -2062,9 +2062,9 @@
 <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Added in v5.2.0</small>
 
 <p>As part of Bootstrap&rsquo;s evolving CSS variables approach, dropdowns now use local CSS variables on <code>.dropdown-menu</code> for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_dropdown.scss">scss/_dropdown.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_dropdown.scss">scss/_dropdown.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -2105,9 +2105,9 @@
 </div>
 
 <p>Customization through CSS variables can be seen on the <code>.dropdown-menu-dark</code> class where we override specific values without adding duplicate CSS selectors.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_dropdown.scss">scss/_dropdown.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_dropdown.scss">scss/_dropdown.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -2127,9 +2127,9 @@
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}dropdown-header-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$dropdown-dark-header-color</span><span class="si">}</span><span class="p">;</span></span></span></code></pre></div></div>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
 <p>Variables for all dropdowns:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -2170,9 +2170,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1">// fusv-enable
 </span></span></span></code></pre></div></div>
 <p>Variables for the <a href="#dark-dropdowns">dark dropdown</a>:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -2192,9 +2192,9 @@
 </span></span><span class="line"><span class="cl"><span class="nv">$dropdown-dark-header-color</span><span class="o">:</span>        <span class="nv">$gray-500</span><span class="p">;</span>
 </span></span></code></pre></div></div>
 <p>Variables for the CSS-based carets that indicate a dropdown&rsquo;s interactivity:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -2206,9 +2206,9 @@
 </span></span></code></pre></div></div>
 <h3 id="sass-mixins">Sass mixins <a class="anchor-link" href="#sass-mixins" aria-label="Link to this section: Sass mixins"></a></h3>
 <p>Mixins are used to generate the CSS-based carets and can be found in <code>scss/mixins/_caret.scss</code>.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/mixins/_caret.scss">scss/mixins/_caret.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/mixins/_caret.scss">scss/mixins/_caret.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -2458,7 +2458,7 @@ Dropdowns must have <code>data-bs-toggle=&quot;dropdown&quot;</code> on their tr
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -2507,7 +2507,7 @@ Dropdowns must have <code>data-bs-toggle=&quot;dropdown&quot;</code> on their tr
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -2535,10 +2535,10 @@ Dropdowns must have <code>data-bs-toggle=&quot;dropdown&quot;</code> on their tr
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

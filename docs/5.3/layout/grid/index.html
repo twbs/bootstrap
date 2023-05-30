@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined classes.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/layout/grid.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/layout/grid.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -600,7 +600,7 @@
 <strong>New to or unfamiliar with flexbox?</strong> <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background">Read this CSS Tricks flexbox guide</a> for background, terminology, guidelines, and code snippets.
 </div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row">
     <div class="col">
@@ -658,7 +658,7 @@
 <p><strong>Gutters are also responsive and customizable.</strong> <a href="/docs/5.3/layout/gutters/">Gutter classes are available</a> across all breakpoints, with all the same sizes as our <a href="/docs/5.3/utilities/spacing/">margin and padding spacing</a>. Change horizontal gutters with <code>.gx-*</code> classes, vertical gutters with <code>.gy-*</code>, or all gutters with <code>.g-*</code> classes. <code>.g-0</code> is also available to remove gutters.</p>
 </li>
 <li>
-<p><strong>Sass variables, maps, and mixins power the grid.</strong> If you don&rsquo;t want to use the predefined grid classes in Bootstrap, you can use our <a href="#sass">grid&rsquo;s source Sass</a> to create your own with more semantic markup. We also include some CSS custom properties to consume these Sass variables for even greater flexibility for you.</p>
+<p><strong>Sass variables, maps, and mixins power the grid.</strong> If you don&rsquo;t want to use the predefined grid classes in Bootstrap, you can use our <a href="#sass-variables">grid&rsquo;s source Sass</a> to create your own with more semantic markup. We also include some CSS custom properties to consume these Sass variables for even greater flexibility for you.</p>
 </li>
 </ul>
 <p>Be aware of the limitations and <a href="https://github.com/philipwalton/flexbugs">bugs around flexbox</a>, like the <a href="https://github.com/philipwalton/flexbugs#flexbug-9">inability to use some HTML elements as flex containers</a>.</p>
@@ -750,7 +750,7 @@
 <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 <h3 id="equal-width">Equal-width <a class="anchor-link" href="#equal-width" aria-label="Link to this section: Equal-width"></a></h3>
 <p>For example, here are two grid layouts that apply to every device and viewport, from <code>xs</code> to <code>xxl</code>. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row">
     <div class="col">
@@ -806,7 +806,7 @@
 
 <h3 id="setting-one-column-width">Setting one column width <a class="anchor-link" href="#setting-one-column-width" aria-label="Link to this section: Setting one column width"></a></h3>
 <p>Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row">
     <div class="col">
@@ -868,7 +868,7 @@
 
 <h3 id="variable-width-content">Variable width content <a class="anchor-link" href="#variable-width-content" aria-label="Link to this section: Variable width content"></a></h3>
 <p>Use <code>col-{breakpoint}-auto</code> classes to size columns based on the natural width of their content.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row justify-content-md-center">
     <div class="col col-lg-2">
@@ -932,7 +932,7 @@
 <p>Bootstrap&rsquo;s grid includes six tiers of predefined classes for building complex responsive layouts. Customize the size of your columns on extra small, small, medium, large, or extra large devices however you see fit.</p>
 <h3 id="all-breakpoints">All breakpoints <a class="anchor-link" href="#all-breakpoints" aria-label="Link to this section: All breakpoints"></a></h3>
 <p>For grids that are the same from the smallest of devices to the largest, use the <code>.col</code> and <code>.col-*</code> classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to <code>.col</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row">
     <div class="col">col</div>
@@ -970,7 +970,7 @@
 
 <h3 id="stacked-to-horizontal">Stacked to horizontal <a class="anchor-link" href="#stacked-to-horizontal" aria-label="Link to this section: Stacked to horizontal"></a></h3>
 <p>Using a single set of <code>.col-sm-*</code> classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (<code>sm</code>).</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row">
     <div class="col-sm-8">col-sm-8</div>
@@ -1006,7 +1006,7 @@
 
 <h3 id="mix-and-match">Mix and match <a class="anchor-link" href="#mix-and-match" aria-label="Link to this section: Mix and match"></a></h3>
 <p>Don&rsquo;t want your columns to simply stack in some grid tiers? Use a combination of different classes for each tier as needed. See the example below for a better idea of how it all works.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
   <div class="row">
@@ -1061,7 +1061,7 @@
 <h3 id="row-columns">Row columns <a class="anchor-link" href="#row-columns" aria-label="Link to this section: Row columns"></a></h3>
 <p>Use the responsive <code>.row-cols-*</code> classes to quickly set the number of columns that best render your content and layout. Whereas normal <code>.col-*</code> classes apply to the individual columns (e.g., <code>.col-md-4</code>), the row columns classes are set on the parent <code>.row</code> as a shortcut. With <code>.row-cols-auto</code> you can give the columns their natural width.</p>
 <p>Use these row columns classes to quickly create basic grid layouts or to control your card layouts.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row row-cols-2">
     <div class="col">Column</div>
@@ -1089,7 +1089,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row row-cols-3">
     <div class="col">Column</div>
@@ -1117,7 +1117,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row row-cols-auto">
     <div class="col">Column</div>
@@ -1145,7 +1145,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row row-cols-4">
     <div class="col">Column</div>
@@ -1173,7 +1173,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row row-cols-4">
     <div class="col">Column</div>
@@ -1201,7 +1201,7 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
     <div class="col">Column</div>
@@ -1241,7 +1241,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h2 id="nesting">Nesting <a class="anchor-link" href="#nesting" aria-label="Link to this section: Nesting"></a></h2>
 <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns within an existing <code>.col-sm-*</code> column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="container text-center">
   <div class="row">
     <div class="col-sm-3">
@@ -1294,9 +1294,9 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nv">$grid-columns</span><span class="o">:</span>      <span class="mi">12</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$grid-gutter-width</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">rem</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$grid-row-columns</span><span class="o">:</span>  <span class="mi">6</span><span class="p">;</span>
-</span></span></code></pre></div><div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+</span></span></code></pre></div><div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1311,9 +1311,9 @@
 </span></span><span class="line"><span class="cl">  <span class="na">xxl</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span>
 </span></span><span class="line"><span class="cl"><span class="p">);</span>
 </span></span></code></pre></div></div>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1375,7 +1375,7 @@
 </span></span><span class="line"><span class="cl">    <span class="k">@include</span><span class="nd"> make-col</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+</span></span></code></pre></div><div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="example-container">
   <div class="example-row">
     <div class="example-content-main">Main content</div>
@@ -1438,7 +1438,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1487,7 +1487,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1515,10 +1515,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

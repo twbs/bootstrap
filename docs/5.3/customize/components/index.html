@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Learn how and why we build nearly all our components responsively and with base and modifier classes.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/customize/components.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/customize/components.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -573,9 +573,9 @@
 <h2 id="modifiers">Modifiers <a class="anchor-link" href="#modifiers" aria-label="Link to this section: Modifiers"></a></h2>
 <p>Many of Bootstrap&rsquo;s components are built with a base-modifier class approach. This means the bulk of the styling is contained to a base class (e.g., <code>.btn</code>) while style variations are confined to modifier classes (e.g., <code>.btn-danger</code>). These modifier classes are built from the <code>$theme-colors</code> map to make customizing the number and name of our modifier classes.</p>
 <p>Here are two examples of how we loop over the <code>$theme-colors</code> map to generate modifiers to the <code>.alert</code> and <code>.list-group</code> components.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_alert.scss">scss/_alert.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_alert.scss">scss/_alert.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -591,9 +591,9 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></div>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_list-group.scss">scss/_list-group.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_list-group.scss">scss/_list-group.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -621,9 +621,9 @@
 </span></span></code></pre></div></div>
 <h2 id="responsive">Responsive <a class="anchor-link" href="#responsive" aria-label="Link to this section: Responsive"></a></h2>
 <p>These Sass loops aren&rsquo;t limited to color maps, either. You can also generate responsive variations of your components. Take for example our responsive alignment of the dropdowns where we mix an <code>@each</code> loop for the <code>$grid-breakpoints</code> Sass map with a media query include.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_dropdown.scss">scss/_dropdown.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_dropdown.scss">scss/_dropdown.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -657,9 +657,9 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></div>
 <p>Should you modify your <code>$grid-breakpoints</code>, your changes will apply to all the loops iterating over that map.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -674,7 +674,7 @@
 </span></span><span class="line"><span class="cl">  <span class="na">xxl</span><span class="o">:</span> <span class="mi">1400</span><span class="kt">px</span>
 </span></span><span class="line"><span class="cl"><span class="p">);</span>
 </span></span></code></pre></div></div>
-<p>For more information and examples on how to modify our Sass maps and variables, please refer to <a href="/docs/5.3/layout/grid/#sass">the Sass section of the Grid documentation</a>.</p>
+<p>For more information and examples on how to modify our Sass maps and variables, please refer to <a href="/docs/5.3/layout/grid/#css">the CSS section of the Grid documentation</a>.</p>
 <h2 id="creating-your-own">Creating your own <a class="anchor-link" href="#creating-your-own" aria-label="Link to this section: Creating your own"></a></h2>
 <p>We encourage you to adopt these guidelines when building with Bootstrap to create your own components. We&rsquo;ve extended this approach ourselves to the custom components in our documentation and examples. Components like our callouts are built just like our provided components with base and modifier classes.</p>
 <div class="bd-example">
@@ -721,7 +721,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -770,7 +770,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -798,10 +798,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

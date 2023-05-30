@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A slideshow component for cycling through elements—images or slides of text—like a carousel.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/components/carousel.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/components/carousel.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -612,7 +612,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
 <h2 id="basic-examples">Basic examples <a class="anchor-link" href="#basic-examples" aria-label="Link to this section: Basic examples"></a></h2>
 <p>Here is a basic example of a carousel with three slides. Note the previous/next controls. We recommend using <code>&lt;button&gt;</code> elements, but you can also use <code>&lt;a&gt;</code> elements with <code>role=&quot;button&quot;</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -670,7 +670,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <p><strong>You must add the <code>.active</code> class to one of the slides</strong>, otherwise the carousel will not be visible. Also be sure to set a unique <code>id</code> on the <code>.carousel</code> for optional controls, especially if you&rsquo;re using multiple carousels on a single page. Control and indicator elements must have a <code>data-bs-target</code> attribute (or <code>href</code> for links) that matches the <code>id</code> of the <code>.carousel</code> element.</p>
 <h3 id="indicators">Indicators <a class="anchor-link" href="#indicators" aria-label="Link to this section: Indicators"></a></h3>
 <p>You can add indicators to the carousel, alongside the previous/next controls. The indicators let users jump directly to a particular slide.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleIndicators" class="carousel slide">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -736,7 +736,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
 <h3 id="captions">Captions <a class="anchor-link" href="#captions" aria-label="Link to this section: Captions"></a></h3>
 <p>You can add captions to your slides with the <code>.carousel-caption</code> element within any <code>.carousel-item</code>. They can be easily hidden on smaller viewports, as shown below, with optional <a href="/docs/5.3/utilities/display/">display utilities</a>. We hide them initially with <code>.d-none</code> and bring them back on medium-sized devices with <code>.d-md-block</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleCaptions" class="carousel slide">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -826,7 +826,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
 <h3 id="crossfade">Crossfade <a class="anchor-link" href="#crossfade" aria-label="Link to this section: Crossfade"></a></h3>
 <p>Add <code>.carousel-fade</code> to your carousel to animate slides with a fade transition instead of a slide. Depending on your carousel content (e.g., text only slides), you may want to add <code>.bg-body</code> or some custom CSS to the <code>.carousel-item</code>s for proper crossfading.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleFade" class="carousel slide carousel-fade">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -888,7 +888,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
 </div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -943,7 +943,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>When the <code>ride</code> option is set to <code>true</code>, rather than <code>carousel</code>, the carousel won&rsquo;t automatically start to cycle on page load. Instead, it will only start after the first user interaction.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -999,7 +999,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
 <h3 id="individual-carousel-item-interval">Individual <code>.carousel-item</code> interval <a class="anchor-link" href="#individual-carousel-item-interval" aria-label="Link to this section: Individual .carousel-item interval"></a></h3>
 <p>Add <code>data-bs-interval=&quot;&quot;</code> to a <code>.carousel-item</code> to change the amount of time to delay between automatically cycling to the next item.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
@@ -1055,7 +1055,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
 <h3 id="autoplaying-carousels-without-controls">Autoplaying carousels without controls <a class="anchor-link" href="#autoplaying-carousels-without-controls" aria-label="Link to this section: Autoplaying carousels without controls"></a></h3>
 <p>Here&rsquo;s a carousel with slides only. Note the presence of the <code>.d-block</code> and <code>.w-100</code> on carousel images to prevent browser default image alignment.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -1095,7 +1095,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 
 <h2 id="disable-touch-swiping">Disable touch swiping <a class="anchor-link" href="#disable-touch-swiping" aria-label="Link to this section: Disable touch swiping"></a></h2>
 <p>Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled by setting the <code>touch</code> option to <code>false</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -1159,7 +1159,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   </p>
 </div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div id="carouselExampleDark" class="carousel carousel-dark slide">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -1252,9 +1252,9 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <h2 id="css">CSS <a class="anchor-link" href="#css" aria-label="Link to this section: CSS"></a></h2>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
 <p>Variables for all carousels:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1289,9 +1289,9 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 </span></span><span class="line"><span class="cl"><span class="nv">$carousel-transition</span><span class="o">:</span>                <span class="ni">transform</span> <span class="nv">$carousel-transition-duration</span> <span class="ni">ease-in-out</span><span class="p">;</span> <span class="c1">// Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
 </span></span></span></code></pre></div></div>
 <p>Variables for the <a href="#dark-variant">dark carousel</a>:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1470,7 +1470,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1519,7 +1519,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1547,10 +1547,10 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

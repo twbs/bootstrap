@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Indicate the current page&rsquo;s location within a navigational hierarchy that automatically adds separators via CSS.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/components/breadcrumb.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/components/breadcrumb.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -573,7 +573,7 @@
 
         <h2 id="example">Example <a class="anchor-link" href="#example" aria-label="Link to this section: Example"></a></h2>
 <p>Use an ordered or unordered list with linked list items to create a minimally styled breadcrumb. Use our utilities to add additional styles as desired.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item active" aria-current="page">Home</li>
@@ -627,7 +627,7 @@
 
 <h2 id="dividers">Dividers <a class="anchor-link" href="#dividers" aria-label="Link to this section: Dividers"></a></h2>
 <p>Dividers are automatically added in CSS through <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before"><code>::before</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content"><code>content</code></a>. They can be changed by modifying a local CSS custom property <code>--bs-breadcrumb-divider</code>, or through the <code>$breadcrumb-divider</code> Sass variable — and <code>$breadcrumb-divider-flipped</code> for its RTL counterpart, if needed. We default to our Sass variable, which is set as a fallback to the custom property. This way, you get a global divider that you can override without recompiling CSS at any time.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -658,7 +658,7 @@
 <strong>Inlined SVG requires properly escaped characters.</strong> Some reserved characters, such as <code>&lt;</code>, <code>&gt;</code> and <code>#</code>, must be URL-encoded or escaped. We do this with the <code>$breadcrumb-divider</code> variable using our <a href="/docs/5.3/customize/sass/#escape-svg"><code>escape-svg()</code> Sass function</a>. When customizing the CSS variable, you must handle this yourself. Read <a href="https://codepen.io/kevinweber/pen/dXWoRw">Kevin Weber&rsquo;s explanations on CodePen</a> for more info.
 </div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -684,7 +684,7 @@
 
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="nv">$breadcrumb-divider</span><span class="o">:</span> <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;8&#39; height=&#39;8&#39;&gt;&lt;path d=&#39;M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z&#39; fill=&#39;</span><span class="si">#{</span><span class="nv">$breadcrumb-divider-color</span><span class="si">}</span><span class="sx">&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
 </span></span></code></pre></div><p>You can also remove the divider setting <code>--bs-breadcrumb-divider: '';</code> (empty strings in CSS custom properties counts as a value), or setting the Sass variable to <code>$breadcrumb-divider: none;</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -717,9 +717,9 @@
 <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Added in v5.2.0</small>
 
 <p>As part of Bootstrap&rsquo;s evolving CSS variables approach, breadcrumbs now use local CSS variables on <code>.breadcrumb</code> for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_breadcrumb.scss">scss/_breadcrumb.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_breadcrumb.scss">scss/_breadcrumb.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -735,9 +735,9 @@
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}breadcrumb-item-padding-x</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$breadcrumb-item-padding-x</span><span class="si">}</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}breadcrumb-item-active-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$breadcrumb-active-color</span><span class="si">}</span><span class="p">;</span></span></span></code></pre></div></div>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -772,7 +772,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -821,7 +821,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -849,10 +849,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

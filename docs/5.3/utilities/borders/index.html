@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/utilities/borders.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/utilities/borders.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -578,7 +578,7 @@
         <li><a href="#sass-variables">Sass variables</a></li>
         <li><a href="#sass-maps">Sass maps</a></li>
         <li><a href="#sass-mixins">Sass mixins</a></li>
-        <li><a href="#utilities-api">Utilities API</a></li>
+        <li><a href="#sass-utilities-api">Sass utilities API</a></li>
       </ul>
     </li>
   </ul>
@@ -594,7 +594,7 @@
 <p>Use border utilities to add or remove an element&rsquo;s borders. Choose from all borders or one at a time.</p>
 <h3 id="additive">Additive <a class="anchor-link" href="#additive" aria-label="Link to this section: Additive"></a></h3>
 <p>Add borders to custom elements:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-border-utils">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-border-utils">
 <span class="border"></span>
 <span class="border-top"></span>
 <span class="border-end"></span>
@@ -618,7 +618,7 @@
 
 <h3 id="subtractive">Subtractive <a class="anchor-link" href="#subtractive" aria-label="Link to this section: Subtractive"></a></h3>
 <p>Or remove borders:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-border-utils">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-border-utils">
 <span class="border border-0"></span>
 <span class="border border-top-0"></span>
 <span class="border border-end-0"></span>
@@ -646,7 +646,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </div>
 
 <p>Change the border color using utilities built on our theme colors.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-border-utils">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-border-utils">
 
 <span class="border border-primary"></span>
 <span class="border border-primary-subtle"></span>
@@ -696,7 +696,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;border border-white&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>Or modify the default <code>border-color</code> of a component:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="mb-4">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
   <input type="email" class="form-control border-success" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -745,7 +745,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span></code></pre></div><p>We use an RGB version of our <code>--bs-success</code> (with the value of <code>25, 135, 84</code>) CSS variable and attached a second CSS variable, <code>--bs-border-opacity</code>, for the alpha transparency (with a default value <code>1</code> thanks to a local CSS variable). That means anytime you use <code>.border-success</code> now, your computed <code>color</code> value is <code>rgba(25, 135, 84, 1)</code>. The local CSS variable inside each <code>.border-*</code> class avoids inheritance issues so nested instances of the utilities don&rsquo;t automatically have a modified alpha transparency.</p>
 <h3 id="example">Example <a class="anchor-link" href="#example" aria-label="Link to this section: Example"></a></h3>
 <p>To change that opacity, override <code>--bs-border-opacity</code> via custom styles or inline styles.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="border border-success p-2 mb-2">This is default success border</div>
 <div class="border border-success p-2" style="--bs-border-opacity: .5;">This is 50% opacity success border</div>
 </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
@@ -762,7 +762,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;border border-success p-2&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;--bs-border-opacity: .5;&#34;</span><span class="p">&gt;</span>This is 50% opacity success border<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>Or, choose from any of the <code>.border-opacity</code> utilities:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="border border-success p-2 mb-2">This is default success border</div>
 <div class="border border-success p-2 mb-2 border-opacity-75">This is 75% opacity success border</div>
 <div class="border border-success p-2 mb-2 border-opacity-50">This is 50% opacity success border</div>
@@ -785,7 +785,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;border border-success p-2 border-opacity-10&#34;</span><span class="p">&gt;</span>This is 10% opacity success border<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <h2 id="width">Width <a class="anchor-link" href="#width" aria-label="Link to this section: Width"></a></h2>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-border-utils">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-border-utils">
 <span class="border border-1"></span>
 <span class="border border-2"></span>
 <span class="border border-3"></span>
@@ -809,7 +809,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 
 <h2 id="radius">Radius <a class="anchor-link" href="#radius" aria-label="Link to this section: Radius"></a></h2>
 <p>Add classes to an element to easily round its corners.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-rounded-utils">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-rounded-utils">
 <svg class="bd-placeholder-img rounded" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example rounded image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example rounded image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
 <svg class="bd-placeholder-img rounded-top" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example top rounded image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example top rounded image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
 <svg class="bd-placeholder-img rounded-end" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example right rounded image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example right rounded image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
@@ -837,7 +837,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 
 <h3 id="sizes">Sizes <a class="anchor-link" href="#sizes" aria-label="Link to this section: Sizes"></a></h3>
 <p>Use the scaling classes for larger or smaller rounded corners. Sizes range from <code>0</code> to <code>5</code>, and can be configured by modifying the utilities API.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-rounded-utils">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-rounded-utils">
 <svg class="bd-placeholder-img rounded-0" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example non-rounded image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example non-rounded image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
 <svg class="bd-placeholder-img rounded-1" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example small rounded image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example small rounded image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
 <svg class="bd-placeholder-img rounded-2" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example default rounded image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example default rounded image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
@@ -861,7 +861,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;rounded-4&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;...&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;rounded-5&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-rounded-utils">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-rounded-utils">
 <svg class="bd-placeholder-img rounded-bottom-1" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example small rounded image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example small rounded image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
 <svg class="bd-placeholder-img rounded-start-2" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example default left rounded image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example default left rounded image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
 <svg class="bd-placeholder-img rounded-end-circle" width="75" height="75" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Example right completely round image: 75x75" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Example right completely round image</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">75x75</text></svg>
@@ -887,9 +887,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 <h3 id="variables">Variables <a class="anchor-link" href="#variables" aria-label="Link to this section: Variables"></a></h3>
 <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Added in v5.2.0</small>
 
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_root.scss">scss/_root.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_root.scss">scss/_root.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -908,9 +908,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}border-radius-2xl</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="n">border-radius-xxl</span><span class="p">);</span> <span class="c1">// Deprecated in v5.3.0 for consistency
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="na">--#{$prefix}border-radius-pill</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$border-radius-pill</span><span class="si">}</span><span class="p">;</span></span></span></code></pre></div></div>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -928,9 +928,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl"><span class="nv">$border-color</span><span class="o">:</span>                <span class="nv">$gray-300</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$border-color-translucent</span><span class="o">:</span>    <span class="nf">rgba</span><span class="p">(</span><span class="nv">$black</span><span class="o">,</span> <span class="mf">.175</span><span class="p">);</span>
 </span></span></code></pre></div></div>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -944,9 +944,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl"><span class="nv">$border-radius-pill</span><span class="o">:</span>          <span class="mi">50</span><span class="kt">rem</span><span class="p">;</span>
 </span></span></code></pre></div></div>
 <p>Variables for setting <code>border-color</code> in <code>.border-*-subtle</code> utilities in light and dark mode:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -961,9 +961,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl"><span class="nv">$light-border-subtle</span><span class="o">:</span>     <span class="nv">$gray-200</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$dark-border-subtle</span><span class="o">:</span>      <span class="nv">$gray-500</span><span class="p">;</span>
 </span></span></code></pre></div></div>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables-dark.scss">scss/_variables-dark.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables-dark.scss">scss/_variables-dark.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -980,9 +980,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span></code></pre></div></div>
 <h3 id="sass-maps">Sass maps <a class="anchor-link" href="#sass-maps" aria-label="Link to this section: Sass maps"></a></h3>
 <p>Color mode adaptive border colors are also available as a Sass map:</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_maps.scss">scss/_maps.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_maps.scss">scss/_maps.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -999,9 +999,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl">  <span class="s2">&#34;dark&#34;</span><span class="o">:</span> <span class="nv">$dark-border-subtle</span><span class="o">,</span>
 </span></span><span class="line"><span class="cl"><span class="p">);</span>
 </span></span></code></pre></div></div>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_maps.scss">scss/_maps.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_maps.scss">scss/_maps.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1018,9 +1018,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl">  <span class="s2">&#34;dark&#34;</span><span class="o">:</span> <span class="nv">$dark-border-subtle-dark</span><span class="o">,</span>
 </span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
 <h3 id="sass-mixins">Sass mixins <a class="anchor-link" href="#sass-mixins" aria-label="Link to this section: Sass mixins"></a></h3>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/mixins/_border-radius.scss">scss/mixins/_border-radius.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/mixins/_border-radius.scss">scss/mixins/_border-radius.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1087,11 +1087,11 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></div>
-<h3 id="utilities-api">Utilities API <a class="anchor-link" href="#utilities-api" aria-label="Link to this section: Utilities API"></a></h3>
+<h3 id="sass-utilities-api">Sass utilities API <a class="anchor-link" href="#sass-utilities-api" aria-label="Link to this section: Sass utilities API"></a></h3>
 <p>Border utilities are declared in our utilities API in <code>scss/_utilities.scss</code>. <a href="/docs/5.3/utilities/api/#using-the-api">Learn how to use the utilities API.</a></p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_utilities.scss">scss/_utilities.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_utilities.scss">scss/_utilities.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1163,9 +1163,9 @@ Border utilities like <code>.border-*</code> that generated from our original <c
 </span></span><span class="line"><span class="cl">    <span class="nt">100</span><span class="nd">:</span> <span class="nt">1</span>
 </span></span><span class="line"><span class="cl">  <span class="o">)</span>
 </span></span><span class="line"><span class="cl"><span class="o">),</span></span></span></code></pre></div></div>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_utilities.scss">scss/_utilities.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_utilities.scss">scss/_utilities.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1263,7 +1263,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1312,7 +1312,7 @@ Border utilities like <code>.border-*</code> that generated from our original <c
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1340,10 +1340,10 @@ Border utilities like <code>.border-*</code> that generated from our original <c
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Give textual form controls like &lt;input&gt;s and &lt;textarea&gt;s an upgrade with custom styles, sizing, focus states, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/forms/form-control.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/forms/form-control.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -578,7 +578,7 @@
 
         <h2 id="example">Example <a class="anchor-link" href="#example" aria-label="Link to this section: Example"></a></h2>
 <p>Form controls are styled with a mix of Sass and CSS variables, allowing them to adapt to color modes and support any customization method.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -608,7 +608,7 @@
 
 <h2 id="sizing">Sizing <a class="anchor-link" href="#sizing" aria-label="Link to this section: Sizing"></a></h2>
 <p>Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
 <input class="form-control" type="text" placeholder="Default input" aria-label="default input example">
 <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example">
@@ -633,7 +633,7 @@ Form text should be explicitly associated with the form control it relates to us
 </div>
 
 <p>Form text below inputs can be styled with <code>.form-text</code>. If a block-level element will be used, a top margin is added for easy spacing from the inputs above.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <label for="inputPassword5" class="form-label">Password</label>
 <input type="password" id="inputPassword5" class="form-control" aria-labelledby="passwordHelpBlock">
 <div id="passwordHelpBlock" class="form-text">
@@ -656,7 +656,7 @@ Form text should be explicitly associated with the form control it relates to us
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>Inline text can use any typical inline HTML element (be it a <code>&lt;span&gt;</code>, <code>&lt;small&gt;</code>, or something else) with nothing more than the <code>.form-text</code> class.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="row g-3 align-items-center">
   <div class="col-auto">
     <label for="inputPassword6" class="col-form-label">Password</label>
@@ -696,7 +696,7 @@ Form text should be explicitly associated with the form control it relates to us
 
 <h2 id="disabled">Disabled <a class="anchor-link" href="#disabled" aria-label="Link to this section: Disabled"></a></h2>
 <p>Add the <code>disabled</code> boolean attribute on an input to give it a grayed out appearance, remove pointer events, and prevent focusing.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
 <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
 </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
@@ -714,7 +714,7 @@ Form text should be explicitly associated with the form control it relates to us
 
 <h2 id="readonly">Readonly <a class="anchor-link" href="#readonly" aria-label="Link to this section: Readonly"></a></h2>
 <p>Add the <code>readonly</code> boolean attribute on an input to prevent modification of the input&rsquo;s value. <code>readonly</code> inputs can still be focused and selected, while <code>disabled</code> inputs cannot.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
 </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
@@ -730,7 +730,7 @@ Form text should be explicitly associated with the form control it relates to us
 
 <h2 id="readonly-plain-text">Readonly plain text <a class="anchor-link" href="#readonly-plain-text" aria-label="Link to this section: Readonly plain text"></a></h2>
 <p>If you want to have <code>&lt;input readonly&gt;</code> elements in your form styled as plain text, replace <code>.form-control</code> with <code>.form-control-plaintext</code> to remove the default form field styling and preserve the correct <code>margin</code> and <code>padding</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
   <div class="mb-3 row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
@@ -766,7 +766,7 @@ Form text should be explicitly associated with the form control it relates to us
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <form class="row g-3">
   <div class="col-auto">
     <label for="staticEmail2" class="visually-hidden">Email</label>
@@ -805,7 +805,7 @@ Form text should be explicitly associated with the form control it relates to us
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <h2 id="file-input">File input <a class="anchor-link" href="#file-input" aria-label="Link to this section: File input"></a></h2>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="mb-3">
   <label for="formFile" class="form-label">Default file input example</label>
   <input class="form-control" type="file" id="formFile">
@@ -859,7 +859,7 @@ Form text should be explicitly associated with the form control it relates to us
 
 <h2 id="color">Color <a class="anchor-link" href="#color" aria-label="Link to this section: Color"></a></h2>
 <p>Set the <code>type=&quot;color&quot;</code> and add <code>.form-control-color</code> to the <code>&lt;input&gt;</code>. We use the modifier class to set fixed <code>height</code>s and override some inconsistencies between browsers.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <label for="exampleColorInput" class="form-label">Color picker</label>
 <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
 </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
@@ -878,7 +878,7 @@ Form text should be explicitly associated with the form control it relates to us
 <h2 id="datalists">Datalists <a class="anchor-link" href="#datalists" aria-label="Link to this section: Datalists"></a></h2>
 <p>Datalists allow you to create a group of <code>&lt;option&gt;</code>s that can be accessed (and autocompleted) from within an <code>&lt;input&gt;</code>. These are similar to <code>&lt;select&gt;</code> elements, but come with more menu styling limitations and differences. While most browsers and operating systems include some support for <code>&lt;datalist&gt;</code> elements, their styling is inconsistent at best.</p>
 <p>Learn more about <a href="https://caniuse.com/datalist">support for datalist elements</a>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <label for="exampleDataList" class="form-label">Datalist example</label>
 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
 <datalist id="datalistOptions">
@@ -911,9 +911,9 @@ Form text should be explicitly associated with the form control it relates to us
 <h2 id="css">CSS <a class="anchor-link" href="#css" aria-label="Link to this section: CSS"></a></h2>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
 <p><code>$input-*</code> are shared across most of our form controls (and not buttons).</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -972,9 +972,9 @@ Form text should be explicitly associated with the form control it relates to us
 </span></span><span class="line"><span class="cl"><span class="nv">$form-color-width</span><span class="o">:</span>                      <span class="mi">3</span><span class="kt">rem</span><span class="p">;</span>
 </span></span></code></pre></div></div>
 <p><code>$form-label-*</code> and <code>$form-text-*</code> are for our <code>&lt;label&gt;</code>s and <code>.form-text</code> component.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -986,9 +986,9 @@ Form text should be explicitly associated with the form control it relates to us
 </span></span><span class="line"><span class="cl"><span class="nv">$form-label-font-weight</span><span class="o">:</span>                <span class="n">null</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$form-label-color</span><span class="o">:</span>                      <span class="n">null</span><span class="p">;</span>
 </span></span></code></pre></div></div>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1001,9 +1001,9 @@ Form text should be explicitly associated with the form control it relates to us
 </span></span><span class="line"><span class="cl"><span class="nv">$form-text-color</span><span class="o">:</span>                       <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="n">secondary-color</span><span class="p">);</span>
 </span></span></code></pre></div></div>
 <p><code>$form-file-*</code> are for file input.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1030,7 +1030,7 @@ Form text should be explicitly associated with the form control it relates to us
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1079,7 +1079,7 @@ Form text should be explicitly associated with the form control it relates to us
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1107,10 +1107,10 @@ Form text should be explicitly associated with the form control it relates to us
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

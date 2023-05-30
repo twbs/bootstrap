@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/components/toasts.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/components/toasts.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -604,7 +604,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <h3 id="basic">Basic <a class="anchor-link" href="#basic" aria-label="Link to this section: Basic"></a></h3>
 <p>To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use <code>display: flex</code>, allowing easy alignment of content thanks to our margin and flexbox utilities.</p>
 <p>Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your &ldquo;toasted&rdquo; content and strongly encourage a dismiss button.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"/></svg>
@@ -676,11 +676,14 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>We use the following JavaScript to trigger our live toast demo:</p>
-<div class="bd-example-snippet bd-code-snippet">
-    <div class="bd-clipboard">
-      <button type="button" class="btn-clipboard" title="Copy to clipboard">
-        <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
-      </button>
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
+    <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/assets/js/snippets.js">site/assets/js/snippets.js</a>
+      <div class="d-flex ms-auto">
+        <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+          <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
+        </button>
+      </div>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">toastTrigger</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;liveToastBtn&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">toastLiveExample</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;liveToast&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
@@ -692,7 +695,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
 <h3 id="translucent">Translucent <a class="anchor-link" href="#translucent" aria-label="Link to this section: Translucent"></a></h3>
 <p>Toasts are slightly translucent to blend in with what&rsquo;s below them.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bg-dark">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bg-dark">
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"/></svg>
@@ -728,7 +731,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 
 <h3 id="stacking">Stacking <a class="anchor-link" href="#stacking" aria-label="Link to this section: Stacking"></a></h3>
 <p>You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="toast-container position-static">
   <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
@@ -792,7 +795,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 
 <h3 id="custom-content">Custom content <a class="anchor-link" href="#custom-content" aria-label="Link to this section: Custom content"></a></h3>
 <p>Customize your toasts by removing sub-components, tweaking them with <a href="/docs/5.3/utilities/api/">utilities</a>, or by adding your own markup. Here we&rsquo;ve created a simpler toast by removing the default <code>.toast-header</code>, adding a custom hide icon from <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>, and using some <a href="/docs/5.3/utilities/flex/">flexbox utilities</a> to adjust the layout.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="d-flex">
     <div class="toast-body">
@@ -821,7 +824,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>Alternatively, you can also add additional controls and components to toasts.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-body">
     Hello, world! This is a toast message.
@@ -853,7 +856,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 
 <h3 id="color-schemes">Color schemes <a class="anchor-link" href="#color-schemes" aria-label="Link to this section: Color schemes"></a></h3>
 <p>Building on the above example, you can create different toast color schemes with our <a href="/docs/5.3/utilities/colors/">color</a> and <a href="/docs/5.3/utilities/background/">background</a> utilities. Here we&rsquo;ve added <code>.text-bg-primary</code> to the <code>.toast</code>, and then added <code>.btn-close-white</code> to our close button. For a crisp edge, we remove the default border with <code>.border-0</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="d-flex">
     <div class="toast-body">
@@ -883,7 +886,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 
 <h2 id="placement">Placement <a class="anchor-link" href="#placement" aria-label="Link to this section: Placement"></a></h2>
 <p>Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you&rsquo;re only ever going to show one toast at a time, put the positioning styles right on the <code>.toast</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <form>
   <div class="mb-3">
     <label for="selectToastPlacement">Toast placement</label>
@@ -958,7 +961,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>For systems that generate more notifications, consider using a wrapping element so they can easily stack.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-toasts p-0">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-toasts p-0">
 <div aria-live="polite" aria-atomic="true" class="position-relative">
   <!-- Position it: -->
   <!-- - `.toast-container` for spacing between toasts -->
@@ -1037,7 +1040,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-toasts d-flex">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-toasts d-flex">
 <!-- Flexbox container for aligning the toasts -->
 <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
 
@@ -1090,7 +1093,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;alert&#34;</span> <span class="na">aria-live</span><span class="o">=</span><span class="s">&#34;assertive&#34;</span> <span class="na">aria-atomic</span><span class="o">=</span><span class="s">&#34;true&#34;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>When using <code>autohide: false</code>, you must add a close button to allow users to dismiss the toast.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
 <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
   <div class="toast-header">
     <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"/></svg>
@@ -1130,9 +1133,9 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2">Added in v5.2.0</small>
 
 <p>As part of Bootstrap&rsquo;s evolving CSS variables approach, toasts now use local CSS variables on <code>.toast</code> for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_toasts.scss">scss/_toasts.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_toasts.scss">scss/_toasts.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1154,9 +1157,9 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}toast-header-bg</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$toast-header-background-color</span><span class="si">}</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}toast-header-border-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$toast-header-border-color</span><span class="si">}</span><span class="p">;</span></span></span></code></pre></div></div>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1312,7 +1315,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1361,7 +1364,7 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1389,10 +1392,10 @@ Previously, our scripts dynamically added the <code>.hide</code> class to comple
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Gutters are the padding between your columns, used to responsively space and align content in the Bootstrap grid system.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/layout/gutters.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/layout/gutters.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -583,7 +583,7 @@
 </ul>
 <h2 id="horizontal-gutters">Horizontal gutters <a class="anchor-link" href="#horizontal-gutters" aria-label="Link to this section: Horizontal gutters"></a></h2>
 <p><code>.gx-*</code> classes can be used to control the horizontal gutter widths. The <code>.container</code> or <code>.container-fluid</code> parent may need to be adjusted if larger gutters are used too to avoid unwanted overflow, using a matching padding utility. For example, in the following example we&rsquo;ve increased the padding with <code>.px-4</code>:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-cols">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-cols">
 <div class="container px-4 text-center">
   <div class="row gx-5">
     <div class="col">
@@ -616,7 +616,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
 
 <p>An alternative solution is to add a wrapper around the <code>.row</code> with the <code>.overflow-hidden</code> class:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-cols">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-cols">
 <div class="container overflow-hidden text-center">
   <div class="row gx-5">
     <div class="col">
@@ -650,7 +650,7 @@
 
 <h2 id="vertical-gutters">Vertical gutters <a class="anchor-link" href="#vertical-gutters" aria-label="Link to this section: Vertical gutters"></a></h2>
 <p><code>.gy-*</code> classes can be used to control the vertical gutter widths within a row when columns wrap to new lines. Like the horizontal gutters, the vertical gutters can cause some overflow below the <code>.row</code> at the end of a page. If this occurs, you add a wrapper around <code>.row</code> with the <code>.overflow-hidden</code> class:</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-cols">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-cols">
 <div class="container overflow-hidden text-center">
   <div class="row gy-5">
     <div class="col-6">
@@ -696,7 +696,7 @@
 
 <h2 id="horizontal--vertical-gutters">Horizontal &amp; vertical gutters <a class="anchor-link" href="#horizontal--vertical-gutters" aria-label="Link to this section: Horizontal &amp; vertical gutters"></a></h2>
 <p>Use <code>.g-*</code> classes to control the horizontal and vertical grid gutters. In the example below, we use a smaller gutter width, so there isn&rsquo;t a need for the <code>.overflow-hidden</code> wrapper class.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-cols">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-cols">
 <div class="container text-center">
   <div class="row g-2">
     <div class="col-6">
@@ -742,7 +742,7 @@
 
 <h2 id="row-columns-gutters">Row columns gutters <a class="anchor-link" href="#row-columns-gutters" aria-label="Link to this section: Row columns gutters"></a></h2>
 <p>Gutter classes can also be added to <a href="/docs/5.3/layout/grid/#row-columns">row columns</a>. In the following example, we use responsive row columns and responsive gutter classes.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-cols">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-cols">
 <div class="container text-center">
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
     <div class="col">
@@ -826,7 +826,7 @@
 <p>The gutters between columns in our predefined grid classes can be removed with <code>.g-0</code>. This removes the negative <code>margin</code>s from <code>.row</code> and the horizontal <code>padding</code> from all immediate children columns.</p>
 <p><strong>Need an edge-to-edge design?</strong> Drop the parent <code>.container</code> or <code>.container-fluid</code> and add <code>.mx-0</code> to the <code>.row</code> to prevent overflow.</p>
 <p>In practice, here&rsquo;s how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example bd-example-row">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-row">
 <div class="row g-0 text-center">
   <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
@@ -874,7 +874,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -923,7 +923,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -951,10 +951,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v4 to v5.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/migration.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/migration.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -555,6 +555,7 @@
   <ul>
     <li><a href="#v530">v5.3.0</a>
       <ul>
+        <li><a href="#helpers">Helpers</a></li>
         <li><a href="#utilities">Utilities</a></li>
       </ul>
     </li>
@@ -564,7 +565,7 @@
         <li><a href="#color-modes">Color modes</a></li>
         <li><a href="#typography">Typography</a></li>
         <li><a href="#components">Components</a></li>
-        <li><a href="#helpers">Helpers</a></li>
+        <li><a href="#helpers-1">Helpers</a></li>
         <li><a href="#utilities-1">Utilities</a></li>
         <li><a href="#docs">Docs</a></li>
         <li><a href="#tooling">Tooling</a></li>
@@ -632,7 +633,7 @@
       </ul>
     </li>
     <li><a href="#utilities-3">Utilities</a></li>
-    <li><a href="#helpers-1">Helpers</a></li>
+    <li><a href="#helpers-2">Helpers</a></li>
     <li><a href="#javascript">JavaScript</a></li>
   </ul>
 </nav>
@@ -645,6 +646,10 @@
 
         <h2 id="v530">v5.3.0 <a class="anchor-link" href="#v530" aria-label="Link to this section: v5.3.0"></a></h2>
 <p>If you&rsquo;re migrating from our previous alpha releases of v5.3.0, please review their changes in addition to this section.</p>
+<h3 id="helpers">Helpers <a class="anchor-link" href="#helpers" aria-label="Link to this section: Helpers"></a></h3>
+<ul>
+<li><a href="/docs/5.3/helpers/colored-links/">Colored links</a> once again have <code>!important</code> so they work better with our newly added link utilities.</li>
+</ul>
 <h3 id="utilities">Utilities <a class="anchor-link" href="#utilities" aria-label="Link to this section: Utilities"></a></h3>
 <ul>
 <li>Added new <code>.d-inline-grid</code> <a href="/docs/5.3/utilities/display/">display utility</a>.</li>
@@ -701,7 +706,7 @@
 <p>Navs now have new <code>:focus-visible</code> styles that better match our custom button focus styles.</p>
 </li>
 </ul>
-<h3 id="helpers">Helpers <a class="anchor-link" href="#helpers" aria-label="Link to this section: Helpers"></a></h3>
+<h3 id="helpers-1">Helpers <a class="anchor-link" href="#helpers-1" aria-label="Link to this section: Helpers"></a></h3>
 <ul>
 <li>
 <p>Added new <code>.icon-link</code> helper to quickly place and align Bootstrap Icons alongside a textual link. Icon links support our new link utilities, too.</p>
@@ -816,7 +821,7 @@
 <p>Alert variants are now styled via CSS variables.</p>
 </li>
 <li>
-<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The <code>.alert-variant()</code> mixin is now deprecated. We now <a href="/docs/5.3/components/alerts/#sass-loop">use the Sass loop</a> directly to modify the component&rsquo;s default CSS variables for each variant.</p>
+<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The <code>.alert-variant()</code> mixin is now deprecated. We now <a href="/docs/5.3/components/alerts/#sass-loops">use a Sass loop</a> directly to modify the component&rsquo;s default CSS variables for each variant.</p>
 </li>
 </ul>
 <h4 id="list-group">List group <a class="anchor-link" href="#list-group" aria-label="Link to this section: List group"></a></h4>
@@ -825,7 +830,7 @@
 <p>List group item variants are now styled via CSS variables.</p>
 </li>
 <li>
-<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The <code>.list-group-variant()</code> mixin is now deprecated. We now <a href="/docs/5.3/components/list-group/#sass-loop">use the Sass loop</a> directly to modify the component&rsquo;s default CSS variables for each variant.</p>
+<p><span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The <code>.list-group-variant()</code> mixin is now deprecated. We now <a href="/docs/5.3/components/list-group/#sass-loops">use a Sass loop</a> directly to modify the component&rsquo;s default CSS variables for each variant.</p>
 </li>
 </ul>
 <h4 id="dropdowns">Dropdowns <a class="anchor-link" href="#dropdowns" aria-label="Link to this section: Dropdowns"></a></h4>
@@ -1505,7 +1510,7 @@
 <p>Extended the <code>.visually-hidden-focusable</code> helper to also work on containers, using <code>:focus-within</code>.</p>
 </li>
 </ul>
-<h2 id="helpers-1">Helpers <a class="anchor-link" href="#helpers-1" aria-label="Link to this section: Helpers"></a></h2>
+<h2 id="helpers-2">Helpers <a class="anchor-link" href="#helpers-2" aria-label="Link to this section: Helpers"></a></h2>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> <strong>Responsive embed helpers have been renamed to <a href="/docs/5.3/helpers/ratio/">ratio helpers</a></strong> with new class names and improved behaviors, as well as a helpful CSS variable.</p>
@@ -1568,7 +1573,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1617,7 +1622,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1645,10 +1650,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 

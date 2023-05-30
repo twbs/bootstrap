@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Bootstrap now supports color modes, or themes, as of v5.3.0. Explore our default light color mode and the new dark mode, or create your own using our styles as your template.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.111.3">
+<meta name="generator" content="Hugo 0.112.5">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v5.3</small><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/content/docs/5.3/customize/color-modes.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v5.3</small><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/content/docs/5.3/customize/color-modes.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -564,11 +564,12 @@
     </li>
     <li><a href="#custom-color-modes">Custom color modes</a></li>
     <li><a href="#javascript">JavaScript</a></li>
+    <li><a href="#adding-theme-colors">Adding theme colors</a></li>
     <li><a href="#css">CSS</a>
       <ul>
         <li><a href="#variables">Variables</a></li>
         <li><a href="#sass-variables">Sass variables</a></li>
-        <li><a href="#sass-mixin">Sass mixin</a></li>
+        <li><a href="#sass-mixins">Sass mixins</a></li>
       </ul>
     </li>
   </ul>
@@ -580,12 +581,16 @@
       <div class="bd-content ps-lg-2">
         
 
-        <h2 id="dark-mode">Dark mode <a class="anchor-link" href="#dark-mode" aria-label="Link to this section: Dark mode"></a></h2>
+        <div class="bd-callout bd-callout-info">
+<strong>Try it yourself!</strong> Download the source code and working demo for using Bootstrap with Stylelint, and the color modes from the <a href="https://github.com/twbs/examples/tree/main/color-modes">twbs/examples repository</a>. You can also <a href="https://stackblitz.com/github/twbs/examples/tree/main/color-modes?file=index.html">open the example in StackBlitz</a>.
+</div>
+
+<h2 id="dark-mode">Dark mode <a class="anchor-link" href="#dark-mode" aria-label="Link to this section: Dark mode"></a></h2>
 <p><strong>Bootstrap now supports color modes, starting with dark mode!</strong> With v5.3.0 you can implement your own color mode toggler (see below for an example from Bootstrap&rsquo;s docs) and apply the different color modes as you see fit. We support a light mode (default) and now dark mode. Color modes can be toggled globally on the <code>&lt;html&gt;</code> element, or on specific components and elements, thanks to the <code>data-bs-theme</code> attribute.</p>
 <p>Alternatively, you can also switch to a media query implementation thanks to our color mode mixin—see <a href="#building-with-sass">the usage section for details</a>. Heads up though—this eliminates your ability to change themes on a per-component basis as shown below.</p>
 <h2 id="example">Example <a class="anchor-link" href="#example" aria-label="Link to this section: Example"></a></h2>
 <p>For example, to change the color mode of a dropdown menu, add <code>data-bs-theme=&quot;light&quot;</code> or <code>data-bs-theme=&quot;dark&quot;</code> to the parent <code>.dropdown</code>. Now, no matter the global color mode, these dropdowns will display with the specified theme value.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example d-flex justify-content-between">
+<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 d-flex justify-content-between">
 <div class="dropdown" data-bs-theme="light">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
     Default dropdown
@@ -676,11 +681,11 @@
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Bootstrap demo<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css&#34;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello, world!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>Bootstrap does not yet ship with a built-in color mode picker, but you can use the one from our own documentation if you like. <a href="#javascript">Learn more in the JavaScript section.</a></p>
@@ -720,9 +725,9 @@
 </span></span></code></pre></div><h2 id="custom-color-modes">Custom color modes <a class="anchor-link" href="#custom-color-modes" aria-label="Link to this section: Custom color modes"></a></h2>
 <p>While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own <code>data-bs-theme</code> selector with a custom value as the name of your color mode, then modify our Sass and CSS variables as needed. We opted to create a separate <code>_variables-dark.scss</code> stylesheet to house Bootstrap&rsquo;s dark mode specific Sass variables, but that&rsquo;s not required for you.</p>
 <p>For example, you can create a &ldquo;blue theme&rdquo; with the selector <code>data-bs-theme=&quot;blue&quot;</code>. In your custom Sass or CSS file, add the new selector and override any global or component CSS variables as needed. If you&rsquo;re using Sass, you can also use Sass&rsquo;s functions within your CSS variable overrides.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/site/assets/scss/_content.scss">site/assets/scss/_content.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/site/assets/scss/_content.scss">site/assets/scss/_content.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -775,7 +780,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span></code></pre></div><h2 id="javascript">JavaScript <a class="anchor-link" href="#javascript" aria-label="Link to this section: JavaScript"></a></h2>
 <p>To allow visitors or users to toggle color modes, you&rsquo;ll need to create a toggle element to control the <code>data-bs-theme</code> attribute on the root element, <code>&lt;html&gt;</code>. We&rsquo;ve built a toggler in our documentation that initially defers to a user&rsquo;s current system color mode, but provides an option to override that and pick a specific color mode.</p>
-<p>Here&rsquo;s a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it&rsquo;s implemented using HTML and CSS from our own components. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.</p>
+<p>Here&rsquo;s a look at the JavaScript that powers it. Feel free to inspect our own documentation navbar to see how it&rsquo;s implemented using HTML and CSS from our own components. It is suggested to include the JavaScript at the top of your page to reduce potential screen flickering during reloading of your site. Note that if you decide to use media queries for your color modes, your JavaScript may need to be modified or removed if you prefer an implicit control.</p>
 <div class="bd-example-snippet bd-code-snippet"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="cm">/*!
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * Color mode toggler for Bootstrap&#39;s docs (https://getbootstrap.com/)
 </span></span></span><span class="line"><span class="cl"><span class="cm"> * Copyright 2011-2023 The Bootstrap Authors
@@ -785,9 +790,11 @@
 </span></span><span class="line"><span class="cl"><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="s1">&#39;use strict&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">storedTheme</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">getStoredTheme</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">setStoredTheme</span> <span class="o">=</span> <span class="nx">theme</span> <span class="p">=&gt;</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">,</span> <span class="nx">theme</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">getPreferredTheme</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">storedTheme</span> <span class="o">=</span> <span class="nx">getStoredTheme</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">storedTheme</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="nx">storedTheme</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -795,7 +802,7 @@
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="p">(</span><span class="s1">&#39;(prefers-color-scheme: dark)&#39;</span><span class="p">).</span><span class="nx">matches</span> <span class="o">?</span> <span class="s1">&#39;dark&#39;</span> <span class="o">:</span> <span class="s1">&#39;light&#39;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">setTheme</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">theme</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">setTheme</span> <span class="o">=</span> <span class="nx">theme</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">theme</span> <span class="o">===</span> <span class="s1">&#39;auto&#39;</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="p">(</span><span class="s1">&#39;(prefers-color-scheme: dark)&#39;</span><span class="p">).</span><span class="nx">matches</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;data-bs-theme&#39;</span><span class="p">,</span> <span class="s1">&#39;dark&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -834,7 +841,8 @@
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="nb">window</span><span class="p">.</span><span class="nx">matchMedia</span><span class="p">(</span><span class="s1">&#39;(prefers-color-scheme: dark)&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">storedTheme</span> <span class="o">!==</span> <span class="s1">&#39;light&#39;</span> <span class="o">||</span> <span class="nx">storedTheme</span> <span class="o">!==</span> <span class="s1">&#39;dark&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">storedTheme</span> <span class="o">=</span> <span class="nx">getStoredTheme</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">storedTheme</span> <span class="o">!==</span> <span class="s1">&#39;light&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">storedTheme</span> <span class="o">!==</span> <span class="s1">&#39;dark&#39;</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">setTheme</span><span class="p">(</span><span class="nx">getPreferredTheme</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">})</span>
@@ -846,7 +854,7 @@
 </span></span><span class="line"><span class="cl">      <span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">toggle</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">toggle</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="kr">const</span> <span class="nx">theme</span> <span class="o">=</span> <span class="nx">toggle</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">&#39;data-bs-theme-value&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">&#39;theme&#39;</span><span class="p">,</span> <span class="nx">theme</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">setStoredTheme</span><span class="p">(</span><span class="nx">theme</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">          <span class="nx">setTheme</span><span class="p">(</span><span class="nx">theme</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">          <span class="nx">showActiveTheme</span><span class="p">(</span><span class="nx">theme</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="p">})</span>
@@ -854,12 +862,54 @@
 </span></span><span class="line"><span class="cl">  <span class="p">})</span>
 </span></span><span class="line"><span class="cl"><span class="p">})()</span></span></span></code></pre></div></div>
 
-<h2 id="css">CSS <a class="anchor-link" href="#css" aria-label="Link to this section: CSS"></a></h2>
+<h2 id="adding-theme-colors">Adding theme colors <a class="anchor-link" href="#adding-theme-colors" aria-label="Link to this section: Adding theme colors"></a></h2>
+<p>Adding a new color in <code>$theme-colors</code> is not enough for some of our components like <a href="/docs/5.3/components/alerts/">alerts</a> and <a href="/docs/5.3/components/list-group/">list groups</a>. New colors must also be defined in <code>$theme-colors-text</code>, <code>$theme-colors-bg-subtle</code>, and <code>$theme-colors-border-subtle</code> for light theme; but also in <code>$theme-colors-text-dark</code>, <code>$theme-colors-bg-subtle-dark</code>, and <code>$theme-colors-border-subtle-dark</code> for dark theme.</p>
+<p>This is a manual process because Sass cannot generate its own Sass variables from an existing variable or map. In future versions of Bootstrap, we&rsquo;ll revisit this setup to reduce the duplication.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="c1">// Required
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">@import</span> <span class="s2">&#34;functions&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;variables&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;variables-dark&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Add a custom color to $theme-colors
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$custom-colors</span><span class="o">:</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;custom-color&#34;</span><span class="o">:</span> <span class="mh">#712cf9</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$theme-colors</span><span class="o">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$theme-colors</span><span class="o">,</span> <span class="nv">$custom-colors</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;maps&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;mixins&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;utilities&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Add a custom color to new theme maps
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Light mode
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$custom-colors-text</span><span class="o">:</span> <span class="p">(</span><span class="s2">&#34;custom-color&#34;</span><span class="o">:</span> <span class="mh">#712cf9</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$custom-colors-bg-subtle</span><span class="o">:</span> <span class="p">(</span><span class="s2">&#34;custom-color&#34;</span><span class="o">:</span> <span class="mh">#e1d2fe</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$custom-colors-border-subtle</span><span class="o">:</span> <span class="p">(</span><span class="s2">&#34;custom-color&#34;</span><span class="o">:</span> <span class="mh">#bfa1fc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$theme-colors-text</span><span class="o">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$theme-colors-text</span><span class="o">,</span> <span class="nv">$custom-colors-text</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$theme-colors-bg-subtle</span><span class="o">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$theme-colors-bg-subtle</span><span class="o">,</span> <span class="nv">$custom-colors-bg-subtle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$theme-colors-border-subtle</span><span class="o">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$theme-colors-border-subtle</span><span class="o">,</span> <span class="nv">$custom-colors-border-subtle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Dark mode
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nv">$custom-colors-text-dark</span><span class="o">:</span> <span class="p">(</span><span class="s2">&#34;custom-color&#34;</span><span class="o">:</span> <span class="mh">#e1d2f2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$custom-colors-bg-subtle-dark</span><span class="o">:</span> <span class="p">(</span><span class="s2">&#34;custom-color&#34;</span><span class="o">:</span> <span class="mh">#8951fa</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$custom-colors-border-subtle-dark</span><span class="o">:</span> <span class="p">(</span><span class="s2">&#34;custom-color&#34;</span><span class="o">:</span> <span class="mh">#e1d2f2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$theme-colors-text-dark</span><span class="o">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$theme-colors-text-dark</span><span class="o">,</span> <span class="nv">$custom-colors-text-dark</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$theme-colors-bg-subtle-dark</span><span class="o">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$theme-colors-bg-subtle-dark</span><span class="o">,</span> <span class="nv">$custom-colors-bg-subtle-dark</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$theme-colors-border-subtle-dark</span><span class="o">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$theme-colors-border-subtle-dark</span><span class="o">,</span> <span class="nv">$custom-colors-border-subtle-dark</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Remainder of Bootstrap imports
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">@import</span> <span class="s2">&#34;root&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">@import</span> <span class="s2">&#34;reboot&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// etc
+</span></span></span></code></pre></div><h2 id="css">CSS <a class="anchor-link" href="#css" aria-label="Link to this section: CSS"></a></h2>
 <h3 id="variables">Variables <a class="anchor-link" href="#variables" aria-label="Link to this section: Variables"></a></h3>
 <p>Dozens of root level CSS variables are repeated as overrides for dark mode. These are scoped to the color mode selector, which defaults to <code>data-bs-theme</code> but <a href="#building-with-sass">can be configured</a> to use a <code>prefers-color-scheme</code> media query. Use these variables as a guideline for generating your own new color modes.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_root.scss">scss/_root.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_root.scss">scss/_root.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -895,9 +945,7 @@
 </span></span><span class="line"><span class="cl">  <span class="na">--#{$prefix}#{$color}-border-subtle</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$value</span><span class="si">}</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">@if</span> <span class="nv">$headings-color-dark</span> <span class="o">!=</span> <span class="n">null</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="na">--#{$prefix}heading-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$headings-color-dark</span><span class="si">}</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}heading-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$headings-color-dark</span><span class="si">}</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}link-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$link-color-dark</span><span class="si">}</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}link-hover-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$link-hover-color-dark</span><span class="si">}</span><span class="p">;</span>
@@ -915,9 +963,9 @@
 </span></span><span class="line"><span class="cl"><span class="na">--#{$prefix}form-invalid-border-color</span><span class="o">:</span> <span class="si">#{</span><span class="nv">$form-invalid-border-color-dark</span><span class="si">}</span><span class="p">;</span></span></span></code></pre></div></div>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
 <p>CSS variables for our dark color mode are partially generated from dark mode specific Sass variables in <code>_variables-dark.scss</code>. This also includes some custom overrides for changing the colors of embedded SVGs used throughout our components.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/_variables-dark.scss">scss/_variables-dark.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/_variables-dark.scss">scss/_variables-dark.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -965,7 +1013,7 @@
 </span></span><span class="line"><span class="cl"><span class="nv">$body-emphasis-color-dark</span><span class="o">:</span>          <span class="nv">$white</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$border-color-dark</span><span class="o">:</span>                 <span class="nv">$gray-700</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$border-color-translucent-dark</span><span class="o">:</span>     <span class="nf">rgba</span><span class="p">(</span><span class="nv">$white</span><span class="o">,</span> <span class="mf">.15</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="nv">$headings-color-dark</span><span class="o">:</span>               <span class="n">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$headings-color-dark</span><span class="o">:</span>               <span class="ni">inherit</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$link-color-dark</span><span class="o">:</span>                   <span class="nf">tint-color</span><span class="p">(</span><span class="nv">$primary</span><span class="o">,</span> <span class="mi">40</span><span class="kt">%</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$link-hover-color-dark</span><span class="o">:</span>             <span class="nf">shift-color</span><span class="p">(</span><span class="nv">$link-color-dark</span><span class="o">,</span> <span class="o">-</span><span class="nv">$link-shade-percentage</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$code-color-dark</span><span class="o">:</span>                   <span class="nf">tint-color</span><span class="p">(</span><span class="nv">$code-color</span><span class="o">,</span> <span class="mi">40</span><span class="kt">%</span><span class="p">);</span>
@@ -999,11 +1047,11 @@
 </span></span><span class="line"><span class="cl"><span class="nv">$accordion-button-icon-dark</span><span class="o">:</span>         <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 16 16&#39; fill=&#39;</span><span class="si">#{</span><span class="nv">$accordion-icon-color-dark</span><span class="si">}</span><span class="sx">&#39;&gt;&lt;path fill-rule=&#39;evenodd&#39; d=&#39;M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">$accordion-button-active-icon-dark</span><span class="o">:</span>  <span class="sx">url(&#34;data:image/svg+xml,&lt;svg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 16 16&#39; fill=&#39;</span><span class="si">#{</span><span class="nv">$accordion-icon-active-color-dark</span><span class="si">}</span><span class="sx">&#39;&gt;&lt;path fill-rule=&#39;evenodd&#39; d=&#39;M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z&#39;/&gt;&lt;/svg&gt;&#34;)</span><span class="p">;</span>
 </span></span></code></pre></div></div>
-<h3 id="sass-mixin">Sass mixin <a class="anchor-link" href="#sass-mixin" aria-label="Link to this section: Sass mixin"></a></h3>
+<h3 id="sass-mixins">Sass mixins <a class="anchor-link" href="#sass-mixins" aria-label="Link to this section: Sass mixins"></a></h3>
 <p>Styles for dark mode, and any custom color modes you create, can be scoped appropriately to the <code>data-bs-theme</code> attribute selector or media query with the customizable <code>color-mode()</code> mixin. See the <a href="#building-with-sass">Sass usage section</a> for more details.</p>
-<div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+<div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0-alpha3/scss/mixins/_color-mode.scss">scss/mixins/_color-mode.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.0/scss/mixins/_color-mode.scss">scss/mixins/_color-mode.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1046,7 +1094,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.0-alpha3.</li>
+          <li class="mb-2">Currently v5.3.0.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1095,7 +1143,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1123,10 +1171,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0-alpha3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.0\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\-alpha3\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap@5\.3\.0\/dist\/js\/bootstrap\.bundle\.min\.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 
