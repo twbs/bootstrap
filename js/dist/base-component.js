@@ -21,7 +21,7 @@
    * Constants
    */
 
-  const VERSION = '5.3.0-alpha2';
+  const VERSION = '5.3.0';
 
   /**
    * Class definition
