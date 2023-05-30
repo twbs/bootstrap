@@ -31,7 +31,8 @@
   // Wrap programmatically code blocks and add copy btn.
   document.querySelectorAll('.highlight')
     .forEach(element => {
-      if (!element.closest('.bd-example-snippet')) { // Ignore examples made be shortcode
+      // Ignore examples made by shortcode
+      if (!element.closest('.bd-example-snippet')) {
         element.insertAdjacentHTML('beforebegin', btnHtml)
         element.previousElementSibling.append(element)
       }
