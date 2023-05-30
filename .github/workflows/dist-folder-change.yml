@@ -2,7 +2,8 @@ name: /dist folder change
 
 on:
   push:
-    paths: "/dist/**"
+    paths:
+      - "dist/**"
 
 jobs:
   dist-folder-change:
