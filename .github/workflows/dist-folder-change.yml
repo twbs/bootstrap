@@ -2,20 +2,50 @@ name: /dist folder change
 
 on:
   push:
-    paths:
-      - "dist/**"
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
 
 env:
+  FORCE_COLOR: 2
   NODE: 18
+
+permissions:
+  contents: read
 
 jobs:
   dist-folder-change:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Dependabot changed /dist folder
+      - name: Clone repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.NODE }}"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run dist
+        run: npm run dist
+
+      - name: Get git diff
+        id: git-diff
+        # run: echo "::set-output name=git-diff::$(git diff --quiet HEAD~1 HEAD -- apps/api/src || echo true)"
+        run: echo "::set-output name=git-diff::$(git diff --quiet origin/main origin/${GITHUB_HEAD_REF} -- dist/ || echo true)"
+
+      - name: Dependabot check /dist folder
         if: ${{ github.actor == 'dependabot[bot]' }}
         uses: actions/github-script@v3
+        if: ${{ steps.git-diff.outputs.git-diff == 'true' }}
+        run: git diff origin/main origin/${GITHUB_HEAD_REF} dist/
         with:
           script: |
             core.setFailed('Dependabot changed /dist folder')
