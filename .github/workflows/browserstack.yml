@@ -1,0 +1,46 @@
+name: BrowserStack
+
+on:
+  push:
+    branches:
+      - "**"
+      - "!dependabot/**"
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 2
+  NODE: 18
+
+permissions:
+  contents: read
+
+jobs:
+  browserstack:
+    runs-on: ubuntu-latest
+    if: github.repository == 'twbs/bootstrap'
+    timeout-minutes: 30
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "${{ env.NODE }}"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run dist
+        run: npm run dist
+
+      - name: Run BrowserStack tests
+        run: npm run js-test-cloud
+        env:
+          BROWSER_STACK_ACCESS_KEY: "${{ secrets.BROWSER_STACK_ACCESS_KEY }}"
+          BROWSER_STACK_USERNAME: "${{ secrets.BROWSER_STACK_USERNAME }}"
+          GITHUB_SHA: "${{ github.sha }}"
