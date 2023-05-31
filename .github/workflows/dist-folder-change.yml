@@ -25,6 +25,11 @@ jobs:
           path: main
           persist-credentials: false
 
+      - name: Checkout main
+        uses: actions/checkout@v3
+        with:
+          path: main
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
