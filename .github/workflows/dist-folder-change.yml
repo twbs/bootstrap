@@ -39,7 +39,7 @@ jobs:
       - name: Get git diff
         id: git-diff
         # run: echo "::set-output name=git-diff::$(git diff --quiet HEAD~1 HEAD -- apps/api/src || echo true)"
-        run: echo "::set-output name=git-diff::$(git diff --quiet origin/main origin/${GITHUB_HEAD_REF} -- dist/ || echo true)"
+        run: echo "::set-output name=git-diff::$(git diff --quiet main ${GITHUB_HEAD_REF} -- dist/ || echo true)"
 
       - name: Dependabot check /dist folder
         if: ${{ github.actor == 'dependabot[bot]' && steps.git-diff.outputs.git-diff == 'true' }}
@@ -50,4 +50,4 @@ jobs:
 
       - name: Show diff
         if: ${{ github.actor == 'dependabot[bot]' && steps.git-diff.outputs.git-diff == 'true' }}
-        run: git diff origin/main origin/${GITHUB_HEAD_REF} dist/
+        run: git diff main ${GITHUB_HEAD_REF} dist/
