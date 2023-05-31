@@ -42,9 +42,8 @@ jobs:
         run: echo "::set-output name=git-diff::$(git diff --quiet origin/main origin/${GITHUB_HEAD_REF} -- dist/ || echo true)"
 
       - name: Dependabot check /dist folder
-        if: ${{ github.actor == 'dependabot[bot]' }}
+        if: ${{ github.actor == 'dependabot[bot]' && steps.git-diff.outputs.git-diff == 'true' }}
         uses: actions/github-script@v3
-        if: ${{ steps.git-diff.outputs.git-diff == 'true' }}
         run: git diff origin/main origin/${GITHUB_HEAD_REF} dist/
         with:
           script: |
