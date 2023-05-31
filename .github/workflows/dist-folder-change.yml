@@ -2,8 +2,8 @@ name: /dist folder change
 
 on:
   push:
-    branches:
-      - main
+    # branches:
+    #   - main
   pull_request:
   workflow_dispatch:
 
