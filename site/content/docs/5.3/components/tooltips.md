@@ -177,13 +177,11 @@ The required markup for a tooltip is only a `data` attribute and `title` on the 
 
 Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
 
-<div class="tooltip-demo">
-{{< example >}}
+{{< example class="tooltip-demo" stackblitz_add_js="true" >}}
 <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Disabled tooltip">
   <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>
 {{< /example >}}
-</div>
 
 ### Options
 
