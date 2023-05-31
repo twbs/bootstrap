@@ -43,7 +43,7 @@ jobs:
           echo "::set-output name=git-diff::$(git diff --quiet origin/main HEAD -- dist/ || echo true)"
 
       - name: Show diff
-         if: ${{ github.actor == 'dependabot[bot]' && steps.git-diff.outputs.git-diff == 'true' }}
+        if: ${{ github.actor == 'dependabot[bot]' && steps.git-diff.outputs.git-diff == 'true' }}
         run: |
           git fetch origin main
           git diff origin/main HEAD -- dist/
