@@ -1335,6 +1335,19 @@ describe('Tooltip', () => {
 
       expect(tooltip._getTitle()).toEqual('test')
     })
+
+    it('should call title function with correct this value', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-foo="bar"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        title() {
+          return this.dataset.foo
+        }
+      })
+
+      expect(tooltip._getTitle()).toEqual('bar')
+    })
   })
 
   describe('getInstance', () => {
