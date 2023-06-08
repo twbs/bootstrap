@@ -53,7 +53,7 @@ Change the style of `.nav`s component with modifiers and utilities. Mix and matc
 
 ### Horizontal alignment
 
-Change the horizontal alignment of your nav with [flexbox utilities]({{< docsref "/layout/grid#horizontal-alignment" >}}). By default, navs are left-aligned, but you can easily change them to center or right aligned.
+Change the horizontal alignment of your nav with [flexbox utilities]({{< docsref "/utilities/flex#justify-content" >}}). By default, navs are left-aligned, but you can easily change them to center or right-aligned.
 
 Centered with `.justify-content-center`:
 
