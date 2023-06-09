@@ -1,7 +1,7 @@
-import Dropdown from '../../src/dropdown'
-import EventHandler from '../../src/dom/event-handler'
-import { noop } from '../../src/util/index'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import EventHandler from '../../src/dom/event-handler.js'
+import Dropdown from '../../src/dropdown.js'
+import { noop } from '../../src/util/index.js'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Dropdown', () => {
   let fixtureEl
@@ -55,6 +55,29 @@ describe('Dropdown', () => {
 
       expect(dropdownBySelector._element).toEqual(btnDropdown)
       expect(dropdownByElement._element).toEqual(btnDropdown)
+    })
+
+    it('should work on invalid markup', () => {
+      return new Promise(resolve => {
+        // TODO: REMOVE in v6
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const dropdownElem = fixtureEl.querySelector('.dropdown-menu')
+        const dropdown = new Dropdown(dropdownElem)
+
+        dropdownElem.addEventListener('shown.bs.dropdown', () => {
+          resolve()
+        })
+
+        expect().nothing()
+        dropdown.show()
+      })
     })
 
     it('should create offset modifier correctly when offset option is a function', () => {

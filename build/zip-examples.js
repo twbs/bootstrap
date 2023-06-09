@@ -3,13 +3,13 @@
 /*!
  * Script to create the built examples zip archive;
  * requires the `zip` command to be present!
- * Copyright 2020-2022 The Bootstrap Authors
+ * Copyright 2020-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
 'use strict'
 
-const path = require('path')
+const path = require('node:path')
 const sh = require('shelljs')
 
 const pkg = require('../package.json')
@@ -84,7 +84,7 @@ for (const file of sh.find(`${distFolder}/**/*.html`)) {
 }
 
 // create the zip file
-sh.exec(`zip -r9 "${distFolder}.zip" "${distFolder}"`)
+sh.exec(`zip -qr9 "${distFolder}.zip" "${distFolder}"`)
 
 // remove the folder we created
 sh.rm('-rf', distFolder)

@@ -39,7 +39,7 @@
   // Prevent double borders when buttons are next to each other
   > :not(.btn-check:first-child) + .btn,
   > .btn-group:not(:first-child) {
-    margin-left: -$btn-border-width;
+    margin-left: calc(#{$btn-border-width} * -1); // stylelint-disable-line function-disallowed-list
   }
 
   // Reset rounded corners
@@ -126,7 +126,7 @@
 
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) {
-    margin-top: -$btn-border-width;
+    margin-top: calc(#{$btn-border-width} * -1); // stylelint-disable-line function-disallowed-list
   }
 
   // Reset rounded corners

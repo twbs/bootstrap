@@ -1,6 +1,6 @@
-import Collapse from '../../src/collapse'
-import EventHandler from '../../src/dom/event-handler'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
+import Collapse from '../../src/collapse.js'
+import EventHandler from '../../src/dom/event-handler.js'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Collapse', () => {
   let fixtureEl
@@ -277,25 +277,25 @@ describe('Collapse', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div id="parentGroup" class="accordion">',
-          '  <div id="parentHeader" class="accordion-header">',
-          '    <button data-bs-target="#parentContent" data-bs-toggle="collapse" role="button" class="accordion-toggle">Parent</button>',
+          '  <div class="accordion-header">',
+          '    <button data-bs-target="#parentContent" data-bs-toggle="collapse" class="accordion-toggle">Parent</button>',
           '  </div>',
-          '  <div id="parentContent" class="accordion-collapse collapse" aria-labelledby="parentHeader" data-bs-parent="#parentGroup">',
+          '  <div id="parentContent" class="accordion-collapse collapse" data-bs-parent="#parentGroup">',
           '    <div class="accordion-body">',
           '      <div id="childGroup" class="accordion">',
           '        <div class="accordion-item">',
-          '          <div id="childHeader1" class="accordion-header">',
-          '            <button data-bs-target="#childContent1" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 1</button>',
+          '          <div class="accordion-header">',
+          '            <button data-bs-target="#childContent1" data-bs-toggle="collapse" class="accordion-toggle">Child 1</button>',
           '          </div>',
-          '          <div id="childContent1" class="accordion-collapse collapse" aria-labelledby="childHeader1" data-bs-parent="#childGroup">',
+          '          <div id="childContent1" class="accordion-collapse collapse" data-bs-parent="#childGroup">',
           '            <div>content</div>',
           '          </div>',
           '        </div>',
           '        <div class="accordion-item">',
-          '          <div id="childHeader2" class="accordion-header">',
-          '            <button data-bs-target="#childContent2" data-bs-toggle="collapse" role="button" class="accordion-toggle">Child 2</button>',
+          '          <div class="accordion-header">',
+          '            <button data-bs-target="#childContent2" data-bs-toggle="collapse" class="accordion-toggle">Child 2</button>',
           '          </div>',
-          '          <div id="childContent2" class="accordion-collapse collapse" aria-labelledby="childHeader2" data-bs-parent="#childGroup">',
+          '          <div id="childContent2" class="accordion-collapse collapse" data-bs-parent="#childGroup">',
           '            <div>content</div>',
           '          </div>',
           '        </div>',
@@ -338,12 +338,12 @@ describe('Collapse', () => {
         fixtureEl.innerHTML = [
           '<div class="accordion" id="accordionExample">',
           '  <div class="accordion-item">',
-          '    <h2 class="accordion-header" id="headingOne">',
+          '    <h2 class="accordion-header">',
           '      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">',
           '        Accordion Item #1',
           '      </button>',
           '    </h2>',
-          '    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">',
+          '    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">',
           '      <div class="accordion-body">',
           '        <nav>',
           '          <div class="nav nav-tabs" id="nav-tab" role="tablist">',
@@ -640,11 +640,11 @@ describe('Collapse', () => {
           '<div id="accordion">',
           '  <div class="item">',
           '    <a id="linkTrigger" data-bs-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
-          '    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-bs-parent="#accordion"></div>',
+          '    <div id="collapseOne" class="collapse" role="tabpanel" data-bs-parent="#accordion"></div>',
           '  </div>',
           '  <div class="item">',
           '    <a id="linkTriggerTwo" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
-          '    <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-bs-parent="#accordion"></div>',
+          '    <div id="collapseTwo" class="collapse show" role="tabpanel" data-bs-parent="#accordion"></div>',
           '  </div>',
           '</div>'
         ].join('')
@@ -699,13 +699,13 @@ describe('Collapse', () => {
           '    <div class="col-lg-6">',
           '      <div class="item">',
           '        <a id="linkTrigger" data-bs-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
-          '        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-bs-parent="#accordion"></div>',
+          '        <div id="collapseOne" class="collapse" role="tabpanel" data-bs-parent="#accordion"></div>',
           '      </div>',
           '    </div>',
           '    <div class="col-lg-6">',
           '      <div class="item">',
           '        <a id="linkTriggerTwo" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
-          '        <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-bs-parent="#accordion"></div>',
+          '        <div id="collapseTwo" class="collapse show" role="tabpanel" data-bs-parent="#accordion"></div>',
           '      </div>',
           '    </div>',
           '  </div>',
@@ -829,18 +829,18 @@ describe('Collapse', () => {
           '<div id="accordion">',
           '  <div class="item">',
           '    <a id="linkTrigger" data-bs-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
-          '    <div id="collapseOne" data-bs-parent="#accordion" class="collapse" role="tabpanel" aria-labelledby="headingThree">',
+          '    <div id="collapseOne" data-bs-parent="#accordion" class="collapse" role="tabpanel">',
           '      <div id="nestedAccordion">',
           '        <div class="item">',
           '          <a id="nestedLinkTrigger" data-bs-toggle="collapse" href="#nestedCollapseOne" aria-expanded="false" aria-controls="nestedCollapseOne"></a>',
-          '          <div id="nestedCollapseOne" data-bs-parent="#nestedAccordion" class="collapse" role="tabpanel" aria-labelledby="headingThree"></div>',
+          '          <div id="nestedCollapseOne" data-bs-parent="#nestedAccordion" class="collapse" role="tabpanel"></div>',
           '        </div>',
           '      </div>',
           '    </div>',
           '  </div>',
           '  <div class="item">',
           '    <a id="linkTriggerTwo" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
-          '    <div id="collapseTwo" data-bs-parent="#accordion" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"></div>',
+          '    <div id="collapseTwo" data-bs-parent="#accordion" class="collapse show" role="tabpanel"></div>',
           '  </div>',
           '</div>'
         ].join('')
@@ -887,17 +887,17 @@ describe('Collapse', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<a id="trigger1" role="button" data-bs-toggle="collapse" href="#test1"></a>',
-          '<a id="trigger2" role="button" data-bs-toggle="collapse" href="#test2"></a>',
+          '<a id="trigger2" role="button" data-bs-toggle="collapse" href="#0/my/id"></a>',
           '<a id="trigger3" role="button" data-bs-toggle="collapse" href=".multi"></a>',
           '<div id="test1" class="multi"></div>',
-          '<div id="test2" class="multi"></div>'
+          '<div id="0/my/id" class="multi"></div>'
         ].join('')
 
         const trigger1 = fixtureEl.querySelector('#trigger1')
         const trigger2 = fixtureEl.querySelector('#trigger2')
         const trigger3 = fixtureEl.querySelector('#trigger3')
         const target1 = fixtureEl.querySelector('#test1')
-        const target2 = fixtureEl.querySelector('#test2')
+        const target2 = fixtureEl.querySelector(`#${CSS.escape('0/my/id')}`)
 
         const target2Shown = () => {
           expect(trigger1).not.toHaveClass('collapsed')

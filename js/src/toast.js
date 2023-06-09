@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.1): toast.js
+ * Bootstrap toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, reflow } from './util/index'
-import EventHandler from './dom/event-handler'
-import BaseComponent from './base-component'
-import { enableDismissTrigger } from './util/component-functions'
+import BaseComponent from './base-component.js'
+import EventHandler from './dom/event-handler.js'
+import { enableDismissTrigger } from './util/component-functions.js'
+import { defineJQueryPlugin, reflow } from './util/index.js'
 
 /**
  * Constants
@@ -153,15 +153,20 @@ class Toast extends BaseComponent {
   _onInteraction(event, isInteracting) {
     switch (event.type) {
       case 'mouseover':
-      case 'mouseout':
+      case 'mouseout': {
         this._hasMouseInteraction = isInteracting
         break
+      }
+
       case 'focusin':
-      case 'focusout':
+      case 'focusout': {
         this._hasKeyboardInteraction = isInteracting
         break
-      default:
+      }
+
+      default: {
         break
+      }
     }
 
     if (isInteracting) {

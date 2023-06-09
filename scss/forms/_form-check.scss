@@ -27,11 +27,14 @@
 }
 
 .form-check-input {
+  --#{$prefix}form-check-bg: #{$form-check-input-bg};
+
   width: $form-check-input-width;
   height: $form-check-input-width;
   margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
   vertical-align: top;
-  background-color: $form-check-input-bg;
+  background-color: var(--#{$prefix}form-check-bg);
+  background-image: var(--#{$prefix}form-check-bg-image);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -65,17 +68,17 @@
 
     &[type="checkbox"] {
       @if $enable-gradients {
-        background-image: escape-svg($form-check-input-checked-bg-image), var(--#{$prefix}gradient);
+        --#{$prefix}form-check-bg-image: #{escape-svg($form-check-input-checked-bg-image)}, var(--#{$prefix}gradient);
       } @else {
-        background-image: escape-svg($form-check-input-checked-bg-image);
+        --#{$prefix}form-check-bg-image: #{escape-svg($form-check-input-checked-bg-image)};
       }
     }
 
     &[type="radio"] {
       @if $enable-gradients {
-        background-image: escape-svg($form-check-radio-checked-bg-image), var(--#{$prefix}gradient);
+        --#{$prefix}form-check-bg-image: #{escape-svg($form-check-radio-checked-bg-image)}, var(--#{$prefix}gradient);
       } @else {
-        background-image: escape-svg($form-check-radio-checked-bg-image);
+        --#{$prefix}form-check-bg-image: #{escape-svg($form-check-radio-checked-bg-image)};
       }
     }
   }
@@ -85,9 +88,9 @@
     border-color: $form-check-input-indeterminate-border-color;
 
     @if $enable-gradients {
-      background-image: escape-svg($form-check-input-indeterminate-bg-image), var(--#{$prefix}gradient);
+      --#{$prefix}form-check-bg-image: #{escape-svg($form-check-input-indeterminate-bg-image)}, var(--#{$prefix}gradient);
     } @else {
-      background-image: escape-svg($form-check-input-indeterminate-bg-image);
+      --#{$prefix}form-check-bg-image: #{escape-svg($form-check-input-indeterminate-bg-image)};
     }
   }
 
@@ -121,24 +124,26 @@
   padding-left: $form-switch-padding-start;
 
   .form-check-input {
+    --#{$prefix}form-switch-bg: #{escape-svg($form-switch-bg-image)};
+
     width: $form-switch-width;
     margin-left: $form-switch-padding-start * -1;
-    background-image: escape-svg($form-switch-bg-image);
+    background-image: var(--#{$prefix}form-switch-bg);
     background-position: left center;
     @include border-radius($form-switch-border-radius);
     @include transition($form-switch-transition);
 
     &:focus {
-      background-image: escape-svg($form-switch-focus-bg-image);
+      --#{$prefix}form-switch-bg: #{escape-svg($form-switch-focus-bg-image)};
     }
 
     &:checked {
       background-position: $form-switch-checked-bg-position;
 
       @if $enable-gradients {
-        background-image: escape-svg($form-switch-checked-bg-image), var(--#{$prefix}gradient);
+        --#{$prefix}form-switch-bg: #{escape-svg($form-switch-checked-bg-image)}, var(--#{$prefix}gradient);
       } @else {
-        background-image: escape-svg($form-switch-checked-bg-image);
+        --#{$prefix}form-switch-bg: #{escape-svg($form-switch-checked-bg-image)};
       }
     }
   }
@@ -170,6 +175,14 @@
       pointer-events: none;
       filter: none;
       opacity: $form-check-btn-check-disabled-opacity;
+    }
+  }
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .form-switch .form-check-input:not(:checked):not(:focus) {
+      --#{$prefix}form-switch-bg: #{escape-svg($form-switch-bg-image-dark)};
     }
   }
 }

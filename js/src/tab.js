@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.2.1): tab.js
+ * Bootstrap tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElementFromSelector, getNextActiveElement, isDisabled } from './util/index'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
-import BaseComponent from './base-component'
+import BaseComponent from './base-component.js'
+import EventHandler from './dom/event-handler.js'
+import SelectorEngine from './dom/selector-engine.js'
+import { defineJQueryPlugin, getNextActiveElement, isDisabled } from './util/index.js'
 
 /**
  * Constants
@@ -38,13 +38,12 @@ const CLASS_DROPDOWN = 'dropdown'
 
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 const SELECTOR_DROPDOWN_MENU = '.dropdown-menu'
-const SELECTOR_DROPDOWN_ITEM = '.dropdown-item'
 const NOT_SELECTOR_DROPDOWN_TOGGLE = ':not(.dropdown-toggle)'
 
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]'
 const SELECTOR_OUTER = '.nav-item, .list-group-item'
 const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_DROPDOWN_TOGGLE}, .list-group-item${NOT_SELECTOR_DROPDOWN_TOGGLE}, [role="tab"]${NOT_SELECTOR_DROPDOWN_TOGGLE}`
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]' // todo:v6: could be only `tab`
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]' // TODO: could only be `tab` in v6
 const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`
 
 const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="pill"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="list"]`
@@ -60,7 +59,7 @@ class Tab extends BaseComponent {
 
     if (!this._parent) {
       return
-      // todo: should Throw exception on v6
+      // TODO: should throw exception in v6
       // throw new TypeError(`${element.outerHTML} has not a valid parent ${SELECTOR_INNER_ELEM}`)
     }
 
@@ -107,7 +106,7 @@ class Tab extends BaseComponent {
 
     element.classList.add(CLASS_NAME_ACTIVE)
 
-    this._activate(getElementFromSelector(element)) // Search and activate/show the proper section
+    this._activate(SelectorEngine.getElementFromSelector(element)) // Search and activate/show the proper section
 
     const complete = () => {
       if (element.getAttribute('role') !== 'tab') {
@@ -115,7 +114,6 @@ class Tab extends BaseComponent {
         return
       }
 
-      element.focus()
       element.removeAttribute('tabindex')
       element.setAttribute('aria-selected', true)
       this._toggleDropDown(element, true)
@@ -135,7 +133,7 @@ class Tab extends BaseComponent {
     element.classList.remove(CLASS_NAME_ACTIVE)
     element.blur()
 
-    this._deactivate(getElementFromSelector(element)) // Search and deactivate the shown section too
+    this._deactivate(SelectorEngine.getElementFromSelector(element)) // Search and deactivate the shown section too
 
     const complete = () => {
       if (element.getAttribute('role') !== 'tab') {
@@ -163,6 +161,7 @@ class Tab extends BaseComponent {
     const nextActiveElement = getNextActiveElement(this._getChildren().filter(element => !isDisabled(element)), event.target, isNext, true)
 
     if (nextActiveElement) {
+      nextActiveElement.focus({ preventScroll: true })
       Tab.getOrCreateInstance(nextActiveElement).show()
     }
   }
@@ -204,7 +203,7 @@ class Tab extends BaseComponent {
   }
 
   _setInitialAttributesOnTargetPanel(child) {
-    const target = getElementFromSelector(child)
+    const target = SelectorEngine.getElementFromSelector(child)
 
     if (!target) {
       return
@@ -213,7 +212,7 @@ class Tab extends BaseComponent {
     this._setAttributeIfNotExists(target, 'role', 'tabpanel')
 
     if (child.id) {
-      this._setAttributeIfNotExists(target, 'aria-labelledby', `#${child.id}`)
+      this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`)
     }
   }
 
@@ -232,7 +231,6 @@ class Tab extends BaseComponent {
 
     toggle(SELECTOR_DROPDOWN_TOGGLE, CLASS_NAME_ACTIVE)
     toggle(SELECTOR_DROPDOWN_MENU, CLASS_NAME_SHOW)
-    toggle(SELECTOR_DROPDOWN_ITEM, CLASS_NAME_ACTIVE)
     outerElem.setAttribute('aria-expanded', open)
   }
 

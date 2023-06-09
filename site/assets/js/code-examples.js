@@ -4,8 +4,7 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
+ * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -14,24 +13,26 @@
 
 (() => {
   'use strict'
+
   // Insert copy to clipboard button before .highlight
   const btnTitle = 'Copy to clipboard'
   const btnEdit = 'Edit on StackBlitz'
 
   const btnHtml = [
     '<div class="bd-code-snippet">',
-    '   <div class="bd-clipboard">',
-    '      <button type="button" class="btn-clipboard">',
-    '        <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
-    '      </button>',
-    '   </div>',
+    '  <div class="bd-clipboard">',
+    '    <button type="button" class="btn-clipboard">',
+    '      <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
+    '    </button>',
+    '  </div>',
     '</div>'
   ].join('')
 
-  // wrap programmatically code blocks and add copy btn.
+  // Wrap programmatically code blocks and add copy btn.
   document.querySelectorAll('.highlight')
     .forEach(element => {
-      if (!element.closest('.bd-example-snippet')) { // Ignore examples made be shortcode
+      // Ignore examples made by shortcode
+      if (!element.closest('.bd-example-snippet')) {
         element.insertAdjacentHTML('beforebegin', btnHtml)
         element.previousElementSibling.append(element)
       }
@@ -52,11 +53,12 @@
   snippetButtonTooltip('.btn-edit', btnEdit)
 
   const clipboard = new ClipboardJS('.btn-clipboard', {
-    target: trigger => trigger.closest('.bd-code-snippet').querySelector('.highlight')
+    target: trigger => trigger.closest('.bd-code-snippet').querySelector('.highlight'),
+    text: trigger => trigger.closest('.bd-code-snippet').querySelector('.highlight').textContent.trimEnd()
   })
 
   clipboard.on('success', event => {
-    const iconFirstChild = event.trigger.querySelector('.bi').firstChild
+    const iconFirstChild = event.trigger.querySelector('.bi').firstElementChild
     const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
     const namespace = 'http://www.w3.org/1999/xlink'
     const originalXhref = iconFirstChild.getAttributeNS(namespace, 'href')

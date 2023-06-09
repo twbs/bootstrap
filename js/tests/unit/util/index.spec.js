@@ -1,6 +1,6 @@
-import * as Util from '../../../src/util/index'
-import { clearFixture, getFixture } from '../../helpers/fixture'
-import { noop } from '../../../src/util/index'
+import * as Util from '../../../src/util/index.js'
+import { noop } from '../../../src/util/index.js'
+import { clearFixture, getFixture } from '../../helpers/fixture.js'
 
 describe('Util', () => {
   let fixtureEl
@@ -19,119 +19,6 @@ describe('Util', () => {
       const uid2 = Util.getUID('bs')
 
       expect(uid).not.toEqual(uid2)
-    })
-  })
-
-  describe('getSelectorFromElement', () => {
-    it('should get selector from data-bs-target', () => {
-      fixtureEl.innerHTML = [
-        '<div id="test" data-bs-target=".target"></div>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
-    })
-
-    it('should get selector from href if no data-bs-target set', () => {
-      fixtureEl.innerHTML = [
-        '<a id="test" href=".target"></a>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
-    })
-
-    it('should get selector from href if data-bs-target equal to #', () => {
-      fixtureEl.innerHTML = [
-        '<a id="test" data-bs-target="#" href=".target"></a>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
-    })
-
-    it('should return null if a selector from a href is a url without an anchor', () => {
-      fixtureEl.innerHTML = [
-        '<a id="test" data-bs-target="#" href="foo/bar.html"></a>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toBeNull()
-    })
-
-    it('should return the anchor if a selector from a href is a url', () => {
-      fixtureEl.innerHTML = [
-        '<a id="test" data-bs-target="#" href="foo/bar.html#target"></a>',
-        '<div id="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toEqual('#target')
-    })
-
-    it('should return null if selector not found', () => {
-      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toBeNull()
-    })
-
-    it('should return null if no selector', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const testEl = fixtureEl.querySelector('div')
-
-      expect(Util.getSelectorFromElement(testEl)).toBeNull()
-    })
-  })
-
-  describe('getElementFromSelector', () => {
-    it('should get element from data-bs-target', () => {
-      fixtureEl.innerHTML = [
-        '<div id="test" data-bs-target=".target"></div>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
-    })
-
-    it('should get element from href if no data-bs-target set', () => {
-      fixtureEl.innerHTML = [
-        '<a id="test" href=".target"></a>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
-    })
-
-    it('should return null if element not found', () => {
-      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getElementFromSelector(testEl)).toBeNull()
-    })
-
-    it('should return null if no selector', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const testEl = fixtureEl.querySelector('div')
-
-      expect(Util.getElementFromSelector(testEl)).toBeNull()
     })
   })
 
@@ -630,6 +517,25 @@ describe('Util', () => {
       const spy = jasmine.createSpy('spy')
       Util.execute(spy)
       expect(spy).toHaveBeenCalled()
+    })
+
+    it('should execute if arg is function & return the result', () => {
+      const functionFoo = (num1, num2 = 10) => num1 + num2
+      const resultFoo = Util.execute(functionFoo, [4, 5])
+      expect(resultFoo).toBe(9)
+
+      const resultFoo1 = Util.execute(functionFoo, [4])
+      expect(resultFoo1).toBe(14)
+
+      const functionBar = () => 'foo'
+      const resultBar = Util.execute(functionBar)
+      expect(resultBar).toBe('foo')
+    })
+
+    it('should not execute if arg is not function & return default argument', () => {
+      const foo = 'bar'
+      expect(Util.execute(foo)).toBe('bar')
+      expect(Util.execute(foo, [], 4)).toBe(4)
     })
   })
 

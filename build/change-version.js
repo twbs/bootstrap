@@ -2,15 +2,14 @@
 
 /*!
  * Script to update version number references in the project.
- * Copyright 2017-2022 The Bootstrap Authors
- * Copyright 2017-2022 Twitter, Inc.
+ * Copyright 2017-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
 'use strict'
 
-const fs = require('fs').promises
-const path = require('path')
+const fs = require('node:fs').promises
+const path = require('node:path')
 const globby = require('globby')
 
 const VERBOSE = process.argv.includes('--verbose')
@@ -36,9 +35,17 @@ function regExpQuoteReplacement(string) {
 
 async function replaceRecursively(file, oldVersion, newVersion) {
   const originalString = await fs.readFile(file, 'utf8')
-  const newString = originalString.replace(
-    new RegExp(regExpQuote(oldVersion), 'g'), regExpQuoteReplacement(newVersion)
-  )
+  const newString = originalString
+    .replace(
+      new RegExp(regExpQuote(oldVersion), 'g'),
+      regExpQuoteReplacement(newVersion)
+    )
+    // Also replace the version used by the rubygem,
+    // which is using periods (`.`) instead of hyphens (`-`)
+    .replace(
+      new RegExp(regExpQuote(oldVersion.replace(/-/g, '.')), 'g'),
+      regExpQuoteReplacement(newVersion.replace(/-/g, '.'))
+    )
 
   // No need to move any further if the strings are identical
   if (originalString === newString) {
@@ -56,22 +63,35 @@ async function replaceRecursively(file, oldVersion, newVersion) {
   await fs.writeFile(file, newString, 'utf8')
 }
 
+function showUsage(args) {
+  console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
+  console.error('Got arguments:', args)
+  process.exit(1)
+}
+
 async function main(args) {
   let [oldVersion, newVersion] = args
 
   if (!oldVersion || !newVersion) {
-    console.error('USAGE: change-version old_version new_version [--verbose] [--dry[-run]]')
-    console.error('Got arguments:', args)
-    process.exit(1)
+    showUsage(args)
   }
 
-  // Strip any leading `v` from arguments because otherwise we will end up with duplicate `v`s
-  [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => arg.startsWith('v') ? arg.slice(1) : arg)
+  // Strip any leading `v` from arguments because
+  // otherwise we will end up with duplicate `v`s
+  [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => {
+    return arg.startsWith('v') ? arg.slice(1) : arg
+  })
+
+  if (oldVersion === newVersion) {
+    showUsage(args)
+  }
 
   try {
     const files = await globby(GLOB, GLOBBY_OPTIONS)
 
-    await Promise.all(files.map(file => replaceRecursively(file, oldVersion, newVersion)))
+    await Promise.all(
+      files.map(file => replaceRecursively(file, oldVersion, newVersion))
+    )
   } catch (error) {
     console.error(error)
     process.exit(1)

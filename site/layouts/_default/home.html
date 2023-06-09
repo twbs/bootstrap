@@ -1,7 +1,15 @@
 {{ define "main" }}
   <main>
     {{ partial "home/masthead" . }}
-    {{ partial "home/masthead-followup" . }}
+    <div class="container-xxl bd-gutter masthead-followup">
+      {{ partial "home/get-started" . }}
+      {{ partial "home/customize" . }}
+      {{ partial "home/css-variables" . }}
+      {{ partial "home/components-utilities" . }}
+      {{ partial "home/plugins" . }}
+      {{ partial "home/icons" . }}
+      {{ partial "home/themes" . }}
+    </div>
   </main>
 
   {{ .Content }}
