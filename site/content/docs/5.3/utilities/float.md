@@ -16,6 +16,8 @@ These utility classes float an element to the left or right, or disable floating
 <div class="float-none">Don't float on all viewport sizes</div>
 {{< /example >}}
 
+Use the [clearfix helper]({{< docsref "/helpers/clearfix" >}}) on a parent element to clear floats.
+
 ## Responsive
 
 Responsive variations also exist for each `float` value.
