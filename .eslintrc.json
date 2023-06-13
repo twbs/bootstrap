@@ -10,7 +10,7 @@
   "rules": {
     "arrow-body-style": "off",
     "capitalized-comments": "off",
-    "comma-dangle": [
+    "commgle": [
       "error",
       "never"
     ],
