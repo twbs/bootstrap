@@ -12,6 +12,8 @@
     "capitalized-comments": "off",
     "comma-dangle": [
       "error",
+
+      
       "never"
     ],
     "indent": [
