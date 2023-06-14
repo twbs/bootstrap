@@ -131,7 +131,7 @@ If you want to style your text, you should use the following classes instead:
 - `.text-decoration-underline` will apply the same styles as `<u>`.
 - `.text-decoration-line-through` will apply the same styles as `<s>`.
 
-While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance, while `<i>` is mostly for voice, technical terms, etc.
+While not shown above, feel free to use `<strong>` and `<em>` in HTML5. `<strong>` is meant to highlight words or phrases without conveying additional importance, while `<em>` is mostly for voice, technical terms, etc.
 
 ## Text utilities
 
