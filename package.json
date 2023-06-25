@@ -100,7 +100,7 @@
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
   },
   "peerDependencies": {
-    "@popperjs/core": "^2.11.7"
+    "@popperjs/core": "^2.11.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.5",
@@ -178,7 +178,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "@popperjs/core": "^2.11.7"
+      "@popperjs/core": "^2.11.8"
     }
   }
 }
