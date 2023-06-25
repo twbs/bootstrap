@@ -37,14 +37,13 @@ class Alert extends BaseComponent {
   close() {
     const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE)
 
-    if (closeEvent.defaultPrevented) {
-      return
+    if (!(closeEvent.defaultPrevented)) {
+      this._element.classList.remove(CLASS_NAME_SHOW)
+
+      const isAnimated = this._element.classList.contains(CLASS_NAME_FADE)
+      this._queueCallback(() => this._destroyElement(), this._element, isAnimated)
     }
-
-    this._element.classList.remove(CLASS_NAME_SHOW)
-
-    const isAnimated = this._element.classList.contains(CLASS_NAME_FADE)
-    this._queueCallback(() => this._destroyElement(), this._element, isAnimated)
+   
   }
 
   // Private
@@ -59,12 +58,8 @@ class Alert extends BaseComponent {
     return this.each(function () {
       const data = Alert.getOrCreateInstance(this)
 
-      if (typeof config !== 'string') {
-        return
-      }
-
-      if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-        throw new TypeError(`No method named "${config}"`)
+      if (typeof config == 'string' && (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+        throw new TypeError(`No method named "${config}"`))
       }
 
       data[config](this)
