@@ -35,6 +35,10 @@ const imgFiles = [
   'bootstrap-logo-white.svg'
 ]
 
+const staticJsFiles = [
+  'color-modes.js'
+]
+
 sh.config.fatal = true
 
 if (!sh.test('-d', rootDocsDir)) {
@@ -52,7 +56,9 @@ sh.mkdir('-p', [
   distFolder,
   `${distFolder}/assets/brand/`,
   `${distFolder}/assets/dist/css/`,
-  `${distFolder}/assets/dist/js/`
+  `${distFolder}/assets/dist/js/`,
+  `${distFolder}/assets/dist/js/`,
+  `${distFolder}/assets/js/`
 ])
 
 sh.cp('-Rf', `${docsDir}/examples/*`, distFolder)
@@ -67,6 +73,10 @@ for (const file of jsFiles) {
 
 for (const file of imgFiles) {
   sh.cp('-f', `${docsDir}/assets/brand/${file}`, `${distFolder}/assets/brand/`)
+}
+
+for (const file of staticJsFiles) {
+  sh.cp('-f', `${docsDir}/assets/js/${file}`, `${distFolder}/assets/js/`)
 }
 
 sh.rm(`${distFolder}/index.html`)

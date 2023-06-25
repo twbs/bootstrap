@@ -190,6 +190,8 @@ Force your `.nav`'s contents to extend the full available width one of two modif
 
 When using a `<nav>`-based navigation, you can safely omit `.nav-item` as only `.nav-link` is required for styling `<a>` elements.
 
+Force your `.nav`'s contents to extend the full available width with one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
+
 {{< example >}}
 <nav class="nav nav-pills nav-fill">
   <a class="nav-link active" aria-current="page" href="#">Active</a>
