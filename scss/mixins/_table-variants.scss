@@ -17,7 +17,6 @@
     --#{$prefix}table-hover-bg: #{$hover-bg};
     --#{$prefix}table-hover-color: #{color-contrast($hover-bg)};
 
-    color: var(--#{$prefix}table-color);
     border-color: var(--#{$prefix}table-border-color);
   }
 }
