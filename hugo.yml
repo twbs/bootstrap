@@ -8,6 +8,8 @@ security:
     getenv:
       - ^HUGO_
       - NETLIFY
+  gotemplates:
+    allowActionJSTmpl: true
 
 markup:
   goldmark:
