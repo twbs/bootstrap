@@ -1814,6 +1814,81 @@ describe('Dropdown', () => {
       })
     })
 
+    it('should cycle and focus on the last item when using ArrowUp for the first time, respectively with ArrowDown', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a id="item1" class="dropdown-item" href="#">A link</a>',
+          '    <a id="item2" class="dropdown-item" href="#">Another link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const triggerItem1 = fixtureEl.querySelector('#item1')
+        const triggerItem2 = fixtureEl.querySelector('#item2')
+
+        const keydown = createEvent('keydown')
+        keydown.key = 'ArrowDown'
+
+        const keydown2 = createEvent('keydown')
+        keydown2.key = 'ArrowUp'
+
+        triggerDropdown.dispatchEvent(keydown)
+        triggerItem1.dispatchEvent(keydown2)
+
+        setTimeout(() => {
+          expect(document.activeElement).toEqual(triggerItem2, 'item2 is focused')
+          triggerItem2.dispatchEvent(keydown)
+
+          setTimeout(() => {
+            expect(document.activeElement).toEqual(triggerItem1, 'item1 is focused')
+            resolve()
+          }, 20)
+        }, 20)
+      })
+    })
+
+    it('should not cycle and stay focus on the first item when using ArrowUp and respectively with last item and ArrowDown', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-cycling="false">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a id="item1" class="dropdown-item" href="#">A link</a>',
+          '    <a id="item2" class="dropdown-item" href="#">Another link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const triggerItem1 = fixtureEl.querySelector('#item1')
+        const triggerItem2 = fixtureEl.querySelector('#item2')
+
+        const keydown = createEvent('keydown')
+        keydown.key = 'ArrowDown'
+
+        const keydown2 = createEvent('keydown')
+        keydown2.key = 'ArrowUp'
+
+        triggerDropdown.dispatchEvent(keydown)
+        triggerItem1.dispatchEvent(keydown2)
+
+        setTimeout(() => {
+          expect(document.activeElement).toEqual(triggerItem1, 'item1 is focused')
+          triggerItem1.dispatchEvent(keydown)
+          triggerItem2.dispatchEvent(keydown)
+
+          setTimeout(() => {
+            expect(document.activeElement).toEqual(triggerItem2, 'item2 is focused')
+            resolve()
+          }, 20)
+        }, 20)
+      })
+    })
+
     it('should not close the dropdown if the user clicks on a text field within dropdown-menu', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
