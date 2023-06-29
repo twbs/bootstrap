@@ -20,18 +20,19 @@
 
   const btnHtml = [
     '<div class="bd-code-snippet">',
-    '   <div class="bd-clipboard">',
-    '      <button type="button" class="btn-clipboard">',
-    '        <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
-    '      </button>',
-    '   </div>',
+    '  <div class="bd-clipboard">',
+    '    <button type="button" class="btn-clipboard">',
+    '      <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
+    '    </button>',
+    '  </div>',
     '</div>'
   ].join('')
 
   // Wrap programmatically code blocks and add copy btn.
   document.querySelectorAll('.highlight')
     .forEach(element => {
-      if (!element.closest('.bd-example-snippet')) { // Ignore examples made be shortcode
+      // Ignore examples made by shortcode
+      if (!element.closest('.bd-example-snippet')) {
         element.insertAdjacentHTML('beforebegin', btnHtml)
         element.previousElementSibling.append(element)
       }
