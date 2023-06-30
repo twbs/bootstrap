@@ -33,13 +33,13 @@
   height: $form-check-input-width;
   margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
   vertical-align: top;
+  appearance: none;
   background-color: var(--#{$prefix}form-check-bg);
   background-image: var(--#{$prefix}form-check-bg-image);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   border: $form-check-input-border;
-  appearance: none;
   print-color-adjust: exact; // Keep themed appearance for print
   @include transition($form-check-transition);
 
