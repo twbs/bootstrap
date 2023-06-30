@@ -14,6 +14,7 @@
   font-weight: $form-select-font-weight;
   line-height: $form-select-line-height;
   color: $form-select-color;
+  appearance: none;
   background-color: $form-select-bg;
   background-image: var(--#{$prefix}form-select-bg-img), var(--#{$prefix}form-select-bg-icon, none);
   background-repeat: no-repeat;
@@ -23,7 +24,6 @@
   @include border-radius($form-select-border-radius, 0);
   @include box-shadow($form-select-box-shadow);
   @include transition($form-select-transition);
-  appearance: none;
 
   &:focus {
     border-color: $form-select-focus-border-color;
