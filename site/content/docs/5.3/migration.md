@@ -495,7 +495,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 - <span class="badge bg-danger">Breaking</span> **Consolidated native and custom form elements.** Checkboxes, radios, selects, and other inputs that had native and custom classes in v4 have been consolidated. Now nearly all our form elements are entirely custom, most without the need for custom HTML.
   - `.custom-control.custom-checkbox` is now `.form-check`.
-  - `.custom-control.custom-custom-radio` is now `.form-check`.
+  - `.custom-control.custom-radio` is now `.form-check`.
   - `.custom-control.custom-switch` is now `.form-check.form-switch`.
   - `.custom-select` is now `.form-select`.
   - `.custom-file` and `.form-file` have been replaced by custom styles on top of `.form-control`.
