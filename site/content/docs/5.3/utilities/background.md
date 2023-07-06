@@ -6,6 +6,10 @@ group: utilities
 toc: true
 ---
 
+{{< callout info >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
+{{< /callout >}}
+
 ## Background color
 
 Similar to the contextual text color classes, set the background of an element to any contextual class. Background utilities **do not set `color`**, so in some cases you'll want to use `.text-*` [color utilities]({{< docsref "/utilities/colors" >}}).
@@ -139,7 +143,7 @@ Color mode background colors are also available as a Sass map:
 
 {{< scss-docs name="gradient-mixins" file="scss/mixins/_gradients.scss" >}}
 
-## Utilities API
+### Sass utilities API
 
 Background utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

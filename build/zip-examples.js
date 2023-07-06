@@ -34,6 +34,9 @@ const imgFiles = [
   'bootstrap-logo.svg',
   'bootstrap-logo-white.svg'
 ]
+const staticJsFiles = [
+  'color-modes.js'
+]
 
 sh.config.fatal = true
 
@@ -52,7 +55,8 @@ sh.mkdir('-p', [
   distFolder,
   `${distFolder}/assets/brand/`,
   `${distFolder}/assets/dist/css/`,
-  `${distFolder}/assets/dist/js/`
+  `${distFolder}/assets/dist/js/`,
+  `${distFolder}/assets/js/`
 ])
 
 sh.cp('-Rf', `${docsDir}/examples/*`, distFolder)
@@ -67,6 +71,10 @@ for (const file of jsFiles) {
 
 for (const file of imgFiles) {
   sh.cp('-f', `${docsDir}/assets/brand/${file}`, `${distFolder}/assets/brand/`)
+}
+
+for (const file of staticJsFiles) {
+  sh.cp('-f', `${docsDir}/assets/js/${file}`, `${distFolder}/assets/js/`)
 }
 
 sh.rm(`${distFolder}/index.html`)
@@ -84,7 +92,7 @@ for (const file of sh.find(`${distFolder}/**/*.html`)) {
 }
 
 // create the zip file
-sh.exec(`zip -r9 "${distFolder}.zip" "${distFolder}"`)
+sh.exec(`zip -qr9 "${distFolder}.zip" "${distFolder}"`)
 
 // remove the folder we created
 sh.rm('-rf', distFolder)

@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): tab.js
+ * Bootstrap tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getNextActiveElement, isDisabled } from './util/index.js'
+import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-import BaseComponent from './base-component.js'
+import { defineJQueryPlugin, getNextActiveElement, isDisabled } from './util/index.js'
 
 /**
  * Constants
@@ -43,7 +43,7 @@ const NOT_SELECTOR_DROPDOWN_TOGGLE = ':not(.dropdown-toggle)'
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]'
 const SELECTOR_OUTER = '.nav-item, .list-group-item'
 const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_DROPDOWN_TOGGLE}, .list-group-item${NOT_SELECTOR_DROPDOWN_TOGGLE}, [role="tab"]${NOT_SELECTOR_DROPDOWN_TOGGLE}`
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]' // todo:v6: could be only `tab`
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]' // TODO: could only be `tab` in v6
 const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`
 
 const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="pill"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="list"]`
@@ -59,7 +59,7 @@ class Tab extends BaseComponent {
 
     if (!this._parent) {
       return
-      // todo: should Throw exception on v6
+      // TODO: should throw exception in v6
       // throw new TypeError(`${element.outerHTML} has not a valid parent ${SELECTOR_INNER_ELEM}`)
     }
 
@@ -212,7 +212,7 @@ class Tab extends BaseComponent {
     this._setAttributeIfNotExists(target, 'role', 'tabpanel')
 
     if (child.id) {
-      this._setAttributeIfNotExists(target, 'aria-labelledby', `#${child.id}`)
+      this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`)
     }
   }
 

@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions, import/no-unassigned-import */
+
 import Tooltip from '../../dist/tooltip'
 import '../../dist/carousel'
 

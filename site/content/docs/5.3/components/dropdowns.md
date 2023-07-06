@@ -661,7 +661,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 {{< example >}}
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Regular link</a></li>
-  <li><a class="dropdown-item disabled">Disabled link</a></li>
+  <li><a class="dropdown-item disabled" aria-disabled="true">Disabled link</a></li>
   <li><a class="dropdown-item" href="#">Another link</a></li>
 </ul>
 {{< /example >}}
@@ -1025,7 +1025,7 @@ Variables for the CSS-based carets that indicate a dropdown's interactivity:
 
 {{< scss-docs name="caret-variables" file="scss/_variables.scss" >}}
 
-### Mixins
+### Sass mixins
 
 Mixins are used to generate the CSS-based carets and can be found in `scss/mixins/_caret.scss`.
 
@@ -1057,7 +1057,7 @@ Add `data-bs-toggle="dropdown"` to a link or button to toggle a dropdown.
 ### Via JavaScript
 
 {{< callout warning >}}
-Dropdowns must have `data-bs-toggle="dropdown"` on their trigger element, regardless of using the Data API or JavaScript.
+Dropdowns must have `data-bs-toggle="dropdown"` on their trigger element, regardless of whether you call your dropdown via JavaScript or use the data-api.
 {{< /callout >}}
 
 Call the dropdowns via JavaScript:

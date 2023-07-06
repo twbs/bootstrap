@@ -12,7 +12,7 @@ on:
       - v4-dev
       - "!dependabot/**"
   schedule:
-    - cron: "0 2 * * 5"
+    - cron: "0 2 * * 4"
   workflow_dispatch:
 
 jobs:
@@ -20,8 +20,6 @@ jobs:
     name: Analyze
     runs-on: ubuntu-latest
     permissions:
-      actions: read
-      contents: read
       security-events: write
 
     steps:

@@ -31,6 +31,13 @@ restrictions:
   Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
 
+## Issues assignment
+
+The core team will be looking at the open issues, analyze them, and provide guidance on how to proceed. **Issues won't be assigned to anyone outside the core team.** However, contributors are welcome to participate in the discussion and provide their input on how to best solve the issue, and even submit a PR if they want to. Please wait that the issue is ready to be worked on before submitting a PR, we don't want to waste your time.
+
+Please keep in mind that the core team is small, has limited resources and that we are not always able to respond immediately. We will try to provide feedback as soon as possible, but please be patient. If you don't get a response immediately, it doesn't mean that we are ignoring you or that we don't care about your issue or PR. We will get back to you as soon as we can.
+
+
 ## Issues and labels
 
 Our bug tracker utilizes several labels to help organize and identify issues. Here's what they represent and how we use them:

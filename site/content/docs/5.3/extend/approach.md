@@ -18,7 +18,7 @@ We'll dive into each of these more throughout, but at a high level, here's what 
 - Components should be responsive and mobile-first
 - Components should be built with a base class and extended via modifier classes
 - Component states should obey a common z-index scale
-- Whenever possible, prefer a HTML and CSS implementation over JavaScript
+- Whenever possible, prefer an HTML and CSS implementation over JavaScript
 - Whenever possible, use utilities over custom styles
 - Whenever possible, avoid enforcing strict HTML requirements (children selectors)
 

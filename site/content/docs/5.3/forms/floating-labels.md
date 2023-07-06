@@ -173,8 +173,8 @@ When working with the Bootstrap grid system, be sure to place form elements with
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="form-floating-variables" file="scss/_variables.scss" >}}

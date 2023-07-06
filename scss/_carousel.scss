@@ -165,7 +165,6 @@
   margin-right: $carousel-control-width;
   margin-bottom: 1rem;
   margin-left: $carousel-control-width;
-  list-style: none;
 
   [data-bs-target] {
     box-sizing: content-box;
@@ -231,8 +230,15 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .carousel {
-      @include carousel-dark();
+    @if $color-mode-type == "media-query" {
+      .carousel {
+        @include carousel-dark();
+      }
+    } @else {
+      .carousel,
+      &.carousel {
+        @include carousel-dark();
+      }
     }
   }
 }

@@ -655,9 +655,9 @@ And say you want to vertically center the content next to the image:
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Utilities API
+### Sass utilities API
 
 Flexbox utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

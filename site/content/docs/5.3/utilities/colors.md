@@ -6,6 +6,10 @@ group: utilities
 toc: true
 ---
 
+{{< callout info >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
+{{< /callout >}}
+
 ## Colors
 
 Colorize text with color utilities. If you want to colorize links, you can use the [`.link-*` helper classes]({{< docsref "/helpers/colored-links" >}}) which have `:hover` and `:focus` states.
@@ -21,9 +25,8 @@ Color utilities like `.text-*` that generated from our original `$theme-colors` 
 <p class="text-{{ .name }}-emphasis">.text-{{ .name }}-emphasis</p>
 {{- end -}}
 {{< /colors.inline >}}
-<p class="text-body">.text-body</p>
-<p class="text-body-secondary">.text-body-secondary</p>
 
+<p class="text-body">.text-body</p>
 <p class="text-body-emphasis">.text-body-emphasis</p>
 <p class="text-body-secondary">.text-body-secondary</p>
 <p class="text-body-tertiary">.text-body-tertiary</p>
@@ -39,11 +42,7 @@ Color utilities like `.text-*` that generated from our original `$theme-colors` 
 {{< /callout >}}
 
 {{< callout warning >}}
-**Deprecation:** With the addition of the expanded theme colors and variables, the `.text-body-secondary` utility has been deprecated as of v5.3.0. Its default value has also has been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
-{{< /callout >}}
-
-{{< callout info >}}
-{{< partial "callouts/warning-color-assistive-technologies.md" >}}
+**Deprecation:** With the addition of the expanded theme colors and variables, the `.text-muted` utility has been deprecated as of v5.3.0. Its default value has also been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
 {{< /callout >}}
 
 ## Opacity
@@ -135,7 +134,7 @@ Color mode adaptive text colors are also available as a Sass map:
 
 {{< scss-docs name="theme-text-dark-map" file="scss/_maps.scss" >}}
 
-### Utilities API
+### Sass utilities API
 
 Color utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

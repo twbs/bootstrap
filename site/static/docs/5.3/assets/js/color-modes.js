@@ -7,9 +7,11 @@
 (() => {
   'use strict'
 
-  const storedTheme = localStorage.getItem('theme')
+  const getStoredTheme = () => localStorage.getItem('theme')
+  const setStoredTheme = theme => localStorage.setItem('theme', theme)
 
   const getPreferredTheme = () => {
+    const storedTheme = getStoredTheme()
     if (storedTheme) {
       return storedTheme
     }
@@ -17,7 +19,7 @@
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   }
 
-  const setTheme = function (theme) {
+  const setTheme = theme => {
     if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.setAttribute('data-bs-theme', 'dark')
     } else {
@@ -29,6 +31,11 @@
 
   const showActiveTheme = (theme, focus = false) => {
     const themeSwitcher = document.querySelector('#bd-theme')
+
+    if (!themeSwitcher) {
+      return
+    }
+
     const themeSwitcherText = document.querySelector('#bd-theme-text')
     const activeThemeIcon = document.querySelector('.theme-icon-active use')
     const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
@@ -51,7 +58,8 @@
   }
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (storedTheme !== 'light' || storedTheme !== 'dark') {
+    const storedTheme = getStoredTheme()
+    if (storedTheme !== 'light' && storedTheme !== 'dark') {
       setTheme(getPreferredTheme())
     }
   })
@@ -63,7 +71,7 @@
       .forEach(toggle => {
         toggle.addEventListener('click', () => {
           const theme = toggle.getAttribute('data-bs-theme-value')
-          localStorage.setItem('theme', theme)
+          setStoredTheme(theme)
           setTheme(theme)
           showActiveTheme(theme, true)
         })

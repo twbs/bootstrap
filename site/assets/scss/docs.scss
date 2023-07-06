@@ -28,8 +28,8 @@
 @import "../../../scss/mixins";
 
 // fusv-disable
-$enable-grid-classes: false; // stylelint-disable-line scss/dollar-variable-default
-$enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
+$enable-grid-classes: false;
+$enable-cssgrid: true;
 // fusv-enable
 @import "../../../scss/grid";
 
@@ -52,6 +52,7 @@ $enable-cssgrid: true; // stylelint-disable-line scss/dollar-variable-default
 @import "colors";
 @import "clipboard-js";
 @import "placeholder-img";
+@import "scrolling";
 
 // Load docs dependencies
 @import "syntax";
