@@ -124,7 +124,7 @@ Reset a text or link's color with `.text-reset`, so that it inherits the color f
 
 {{< example >}}
 <p class="text-body-secondary">
-  Muted text with a <a href="#" class="text-reset">reset link</a>.
+  Secondary body text with a <a href="#" class="text-reset">reset link</a>.
 </p>
 {{< /example >}}
 
