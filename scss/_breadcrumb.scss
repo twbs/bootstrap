@@ -9,6 +9,11 @@
   --#{$prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
   --#{$prefix}breadcrumb-item-padding-x: #{$breadcrumb-item-padding-x};
   --#{$prefix}breadcrumb-item-active-color: #{$breadcrumb-active-color};
+  --#{$prefix}breadcrumb-link-color: #{$breadcrumb-link-color};
+  --#{$prefix}breadcrumb-link-decoration: #{$breadcrumb-link-decoration};
+  --#{$prefix}breadcrumb-link-hover-color: #{$breadcrumb-link-hover-color};
+  --#{$prefix}breadcrumb-link-hover-decoration: #{$breadcrumb-link-hover-decoration};
+  --#{$prefix}breadcrumb-link-text-color: #{$breadcrumb-link-text-color};
   // scss-docs-end breadcrumb-css-vars
 
   display: flex;
@@ -19,6 +24,7 @@
   list-style: none;
   background-color: var(--#{$prefix}breadcrumb-bg);
   @include border-radius(var(--#{$prefix}breadcrumb-border-radius));
+  color: var(--#{$prefix}breadcrumb-link-text-color);
 }
 
 .breadcrumb-item {
@@ -36,5 +42,15 @@
 
   &.active {
     color: var(--#{$prefix}breadcrumb-item-active-color);
+  }
+
+  a {
+    color: var(--#{$prefix}breadcrumb-link-color);
+    text-decoration: var(--#{$prefix}breadcrumb-link-decoration);
+  }
+
+  a:hover {
+    color: var(--#{$prefix}breadcrumb-link-hover-color);
+    text-decoration: var(--#{$prefix}breadcrumb-link-hover-decoration);
   }
 }

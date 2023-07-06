@@ -1634,6 +1634,11 @@ $breadcrumb-active-color:           var(--#{$prefix}secondary-color) !default;
 $breadcrumb-divider:                quote("/") !default;
 $breadcrumb-divider-flipped:        $breadcrumb-divider !default;
 $breadcrumb-border-radius:          null !default;
+$breadcrumb-link-color:             var(--#{$prefix}link-color) !default;
+$breadcrumb-link-decoration:        var(--#{$prefix}link-decoration) !default;
+$breadcrumb-link-hover-color:       var(--#{$prefix}link-hover-color) !default;
+$breadcrumb-link-hover-decoration:  var(--#{$prefix}link-hover-decoration) !default;
+$breadcrumb-link-text-color:        var(--#{$prefix}secondary-color) !default;
 // scss-docs-end breadcrumb-variables
 
 // Carousel
