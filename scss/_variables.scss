@@ -705,6 +705,10 @@ $hr-border-color:             null !default; // Allows for inherited colors
 $hr-border-width:             var(--#{$prefix}border-width) !default;
 $hr-opacity:                  .25 !default;
 
+// scss-docs-start vr-variables
+$vr-border-width:             var(--#{$prefix}border-width) !default;
+// scss-docs-end vr-variables
+
 $legend-margin-bottom:        .5rem !default;
 $legend-font-size:            1.5rem !default;
 $legend-font-weight:          null !default;
