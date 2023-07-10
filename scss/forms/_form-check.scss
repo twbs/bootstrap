@@ -48,8 +48,7 @@
   }
 
   &[type="radio"] {
-    // stylelint-disable-next-line property-disallowed-list
-    border-radius: $form-check-radio-border-radius;
+    @include border-radius($form-check-input-border-radius);
   }
 
   &:active {
