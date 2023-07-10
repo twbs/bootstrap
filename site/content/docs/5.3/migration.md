@@ -498,7 +498,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
   - `.custom-control.custom-radio` is now `.form-check`.
   - `.custom-control.custom-switch` is now `.form-check.form-switch`.
   - `.custom-select` is now `.form-select`.
-  - `.custom-file` and `.form-file` have been replaced by custom styles on top of `.form-control`.
+  - `.custom-file` and `.form-control-file` have been replaced by custom styles on top of `.form-control`.
   - `.custom-range` is now `.form-range`.
   - Dropped native `.form-control-file` and `.form-control-range`.
 
