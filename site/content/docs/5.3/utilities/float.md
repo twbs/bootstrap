@@ -16,6 +16,8 @@ These utility classes float an element to the left or right, or disable floating
 <div class="float-none">Don't float on all viewport sizes</div>
 {{< /example >}}
 
+Use the [clearfix helper]({{< docsref "/helpers/clearfix" >}}) on a parent element to clear floats.
+
 ## Responsive
 
 Responsive variations also exist for each `float` value.
@@ -39,9 +41,9 @@ Here are all the support classes:
 {{< /float.inline >}}
 {{< /markdown >}}
 
-## Sass
+## CSS
 
-### Utilities API
+### Sass utilities API
 
 Float utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

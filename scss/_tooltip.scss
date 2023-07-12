@@ -17,7 +17,6 @@
 
   z-index: var(--#{$prefix}tooltip-zindex);
   display: block;
-  padding: var(--#{$prefix}tooltip-arrow-height);
   margin: var(--#{$prefix}tooltip-margin);
   @include deprecate("`$tooltip-margin`", "v5", "v5.x", true);
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
@@ -45,7 +44,7 @@
 }
 
 .bs-tooltip-top .tooltip-arrow {
-  bottom: 0;
+  bottom: calc(-1 * var(--#{$prefix}tooltip-arrow-height)); // stylelint-disable-line function-disallowed-list
 
   &::before {
     top: -1px;
@@ -56,7 +55,7 @@
 
 /* rtl:begin:ignore */
 .bs-tooltip-end .tooltip-arrow {
-  left: 0;
+  left: calc(-1 * var(--#{$prefix}tooltip-arrow-height)); // stylelint-disable-line function-disallowed-list
   width: var(--#{$prefix}tooltip-arrow-height);
   height: var(--#{$prefix}tooltip-arrow-width);
 
@@ -70,7 +69,7 @@
 /* rtl:end:ignore */
 
 .bs-tooltip-bottom .tooltip-arrow {
-  top: 0;
+  top: calc(-1 * var(--#{$prefix}tooltip-arrow-height)); // stylelint-disable-line function-disallowed-list
 
   &::before {
     bottom: -1px;
@@ -81,7 +80,7 @@
 
 /* rtl:begin:ignore */
 .bs-tooltip-start .tooltip-arrow {
-  right: 0;
+  right: calc(-1 * var(--#{$prefix}tooltip-arrow-height)); // stylelint-disable-line function-disallowed-list
   width: var(--#{$prefix}tooltip-arrow-height);
   height: var(--#{$prefix}tooltip-arrow-width);
 

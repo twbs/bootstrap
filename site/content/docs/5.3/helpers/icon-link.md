@@ -3,7 +3,6 @@ layout: docs
 title: Icon link
 description: Quickly create stylized hyperlinks with Bootstrap Icons or other icons.
 group: helpers
-aliases: "/docs/5.3/icon-link/"
 toc: true
 added: 5.3
 ---
@@ -71,13 +70,13 @@ Customize the color by overriding the `--bs-link-*` CSS variable:
 </a>
 {{< /example >}}
 
-### Sass
+### Sass variables
 
 Customize the icon link Sass variables to modify all icon link styles across your Bootstrap-powered project.
 
 {{< scss-docs name="icon-link-variables" file="scss/_variables.scss" >}}
 
-### Utilities
+### Sass utilities API
 
 Modify icon links with any of [our link utilities]({{< docsref "/utilities/link/" >}}) for modifying underline color and offset.
 

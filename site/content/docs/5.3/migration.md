@@ -7,9 +7,21 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.3.0
+
+If you're migrating from our previous alpha releases of v5.3.0, please review their changes in addition to this section.
+
+### Helpers
+
+- [Colored links]({{< docsref "/helpers/colored-links" >}}) once again have `!important` so they work better with our newly added link utilities.
+
+### Utilities
+
+- Added new `.d-inline-grid` [display utility]({{< docsref "/utilities/display" >}}).
+
 ## v5.3.0-alpha2
 
-If you're migrating from our previous alpha release of v5.3.0, please reviewing the changes listed below.
+If you're migrating from our previous alpha release of v5.3.0, please review the changes listed below.
 
 ### CSS variables
 
@@ -140,13 +152,13 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - Alert variants are now styled via CSS variables.
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.alert-variant()` mixin is now deprecated. We now [use the Sass loop]({{< docsref "/components/alerts#sass-loop" >}}) directly to modify the component's default CSS variables for each variant.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.alert-variant()` mixin is now deprecated. We now [use a Sass loop]({{< docsref "/components/alerts#sass-loops" >}}) directly to modify the component's default CSS variables for each variant.
 
 #### List group
 
 - List group item variants are now styled via CSS variables.
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.list-group-variant()` mixin is now deprecated. We now [use the Sass loop]({{< docsref "/components/list-group#sass-loop" >}}) directly to modify the component's default CSS variables for each variant.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.list-group-variant()` mixin is now deprecated. We now [use a Sass loop]({{< docsref "/components/list-group#sass-loops" >}}) directly to modify the component's default CSS variables for each variant.
 
 #### Dropdowns
 
@@ -483,10 +495,10 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 - <span class="badge bg-danger">Breaking</span> **Consolidated native and custom form elements.** Checkboxes, radios, selects, and other inputs that had native and custom classes in v4 have been consolidated. Now nearly all our form elements are entirely custom, most without the need for custom HTML.
   - `.custom-control.custom-checkbox` is now `.form-check`.
-  - `.custom-control.custom-custom-radio` is now `.form-check`.
+  - `.custom-control.custom-radio` is now `.form-check`.
   - `.custom-control.custom-switch` is now `.form-check.form-switch`.
   - `.custom-select` is now `.form-select`.
-  - `.custom-file` and `.form-file` have been replaced by custom styles on top of `.form-control`.
+  - `.custom-file` and `.form-control-file` have been replaced by custom styles on top of `.form-control`.
   - `.custom-range` is now `.form-range`.
   - Dropped native `.form-control-file` and `.form-control-range`.
 
