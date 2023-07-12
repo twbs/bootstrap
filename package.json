@@ -103,7 +103,7 @@
     "@popperjs/core": "^2.11.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.22.5",
+    "@babel/cli": "^7.22.6",
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
     "@popperjs/core": "^2.11.8",
