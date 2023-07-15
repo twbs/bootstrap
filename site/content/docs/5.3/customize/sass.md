@@ -223,6 +223,34 @@ $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 // etc
 ```
 
+To remove breakpoints from `$navbar-breakpoints`, use `map-remove` on `$navbar-breakpoints` or `$grid-breakpoints`. Be aware that the initial breakpoint is always skipped by the `navbar-expand-` class generation loop:
+
+```scss
+// Required
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+// $navbar-breakpoints MUST be a sub-map of $grid-breakpoints and it is defined
+// equal to it by default.
+// The following $navbar-breakpoints will be: sm, md, lg.
+// Since the first breakpoint is regarded as the base collapsed mode it will be
+// skipped and the resulting navbar classes will be:
+// - navbar-expand-md
+// - navbar-expand-lg
+// - navbar-expand
+$navbar-breakpoints: map-remove($navbar-breakpoints, "xs", "xl", "xxl");
+
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// Optional
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+// etc
+```
+
 ## Required keys
 
 Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
