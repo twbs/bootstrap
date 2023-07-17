@@ -139,11 +139,11 @@ class Modal extends BaseComponent {
   }
 
   dispose() {
-    this._element.addEventListener(EVENT_HIDDEN, () => {
+    EventHandler.on(this._element, EVENT_HIDDEN, () => {
       EventHandler.off(window, EVENT_KEY)
       EventHandler.off(this._dialog, EVENT_KEY)
 
-      this._backdrop.dispose()
+      this._backdrop?.dispose()
       this._focustrap.deactivate()
 
       super.dispose()
