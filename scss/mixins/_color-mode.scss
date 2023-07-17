@@ -27,6 +27,11 @@
         #{$selector}[data-bs-theme="#{$mode}"] {
           @content;
         }
+      } @else if str-index($selector, $substring: "::") != null {
+        [data-bs-theme="#{$mode}"] #{$selector},
+        #{str-replace($selector, "::", "[data-bs-theme=\"#{$mode}\"]::")} {
+          @content;
+        }
       } @else {
         [data-bs-theme="#{$mode}"] #{$selector},
         #{$selector}[data-bs-theme="#{$mode}"] {
