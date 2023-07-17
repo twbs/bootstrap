@@ -84,7 +84,8 @@
     }
   }
 
-  > :disabled ~ label {
+  > :disabled ~ label,
+  > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
     color: $form-floating-label-disabled-color;
 
     &::after {
