@@ -1,7 +1,7 @@
 // scss-docs-start color-mode-mixin
-@mixin color-mode($mode: light, $root: false) {
-  @if $color-mode-type == "media-query" {
-    @if $root == true {
+@mixin color-mode($mode: light, $selector: null) {
+  @if $color-mode-type == media-query {
+    @if $selector == null {
       @media (prefers-color-scheme: $mode) {
         :root {
           @content;
@@ -9,12 +9,30 @@
       }
     } @else {
       @media (prefers-color-scheme: $mode) {
-        @content;
+        #{$selector} {
+          @content;
+        }
       }
     }
   } @else {
-    [data-bs-theme="#{$mode}"] {
-      @content;
+    @if $selector == null {
+      [data-bs-theme="#{$mode}"] {
+        @content;
+      }
+    } @else {
+      $tmp: str-replace($selector, " ", "[data-bs-theme=\"#{$mode}\"] ");
+      @if $tmp != $selector {
+        #{$tmp},
+        [data-bs-theme="#{$mode}"] #{$selector},
+        #{$selector}[data-bs-theme="#{$mode}"] {
+          @content;
+        }
+      } @else {
+        [data-bs-theme="#{$mode}"] #{$selector},
+        #{$selector}[data-bs-theme="#{$mode}"] {
+          @content;
+        }
+      }
     }
   }
 }

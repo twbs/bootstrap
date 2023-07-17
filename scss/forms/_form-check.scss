@@ -180,9 +180,7 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode(dark) {
-    .form-switch .form-check-input:not(:checked):not(:focus) {
-      --#{$prefix}form-switch-bg: #{escape-svg($form-switch-bg-image-dark)};
-    }
+  @include color-mode(dark, ".form-switch .form-check-input:not(:checked):not(:focus)") {
+    --#{$prefix}form-switch-bg: #{escape-svg($form-switch-bg-image-dark)};
   }
 }
