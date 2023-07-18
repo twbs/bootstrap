@@ -129,22 +129,6 @@ A switch has the markup of a custom checkbox but uses the `.form-switch` class t
 </div>
 {{< /example >}}
 
-{{< example >}}
-<div class="form-check form-switch">
-  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3">
-  <label class="form-check-label" for="flexRadioDefault3">
-    Radio switch
-  </label>
-</div>
-<div class="form-check form-switch">
-  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4" checked>
-  <label class="form-check-label" for="flexRadioDefault4">
-    Checked radio switch
-  </label>
-</div>
-{{< /example >}}
-
-
 ## Default (stacked)
 
 By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with `.form-check`.
