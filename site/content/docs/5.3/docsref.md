@@ -30,18 +30,26 @@ sitemap_exclude: true
 
 ## Code example
 
+<div class="bd-example">
+  The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
+</div>
+
 ```scss
 .test {
   --color: blue;
 }
 ```
 
-<div class="bd-example">
-  The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
-</div>
-
 {{< example >}}
 <div class="test">This is a test.</div>
+{{< /example >}}
+
+{{< example show_preview=false >}}
+<div class="test">This is a markup only test.</div>
+{{< /example >}}
+
+{{< example show_markup=false >}}
+<div class="test">This is a preview only test.</div>
 {{< /example >}}
 
 {{< scss-docs name="variable-gradient" file="scss/_variables.scss" >}}

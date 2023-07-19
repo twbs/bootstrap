@@ -243,9 +243,9 @@ Each `.btn-*` modifier class updates the appropriate CSS variables to minimize a
 
 Here's an example of building a custom `.btn-*` modifier class as we do for the buttons unique to our docs by reassigning Bootstrap's CSS variables with a mixture of our own CSS and Sass variables.
 
-<div class="bd-example">
+{{< example show_markup=false >}}
   <button type="button" class="btn btn-bd-primary">Custom button</button>
-</div>
+{{< /example >}}
 
 {{< scss-docs name="btn-css-vars-example" file="site/assets/scss/_buttons.scss" >}}
 
