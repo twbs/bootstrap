@@ -23,7 +23,7 @@
 <div class="bd-example-snippet bd-code-snippet">
   {{- if eq $show_preview true -}}
   <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example m-0 border-0{{ with $class }} {{ . }}{{ end }}">
-    {{- replaceRE `(?U)class="(.*) skip"` `class="$1"` $input | safeHTML -}}
+    {{- replaceRE `(?U)class="(.*) skip(.*)"` `class="$1$2"` $input | safeHTML -}}
   </div>
   {{- end -}}
 
@@ -45,7 +45,7 @@
     {{- $content = replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>` `<img src="..." class="$1" alt="...">` $content -}}
     {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
     {{- $content = replaceRE ` (class=" *?")` "" $content -}}
-    {{- $content = replaceRE (printf `(?U)class="(.*) skip"(.*)>(?:[\s\S]*)<\/%s>` $skip_tag) (printf "class=\"$1\"$2>...</%s>" $skip_tag) $content -}}
+    {{- $content = replaceRE (printf `(?U)class="(.*) skip(?:.*)"(.*)>(?:[\s\S]*)<\/%s>` $skip_tag) (printf "class=\"$1\"$2>...</%s>" $skip_tag) $content -}}
     {{- highlight (trim $content "\n") $lang "" -}}
   {{- end -}}
 </div>

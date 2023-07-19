@@ -22,33 +22,33 @@ Use contextual classes to color tables, table rows or individual cells.
 **Heads up!** Because of the more complicated CSS used to generate our table variants, they most likely won't see color mode adaptive styling until v6.
 {{< /callout >}}
 
-<div class="bd-example">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Class</th>
-        <th scope="col">Heading</th>
-        <th scope="col">Heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Default</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-      {{< table.inline >}}
-      {{- range (index $.Site.Data "theme-colors") }}
-        <tr class="table-{{ .name }}">
-          <th scope="row">{{ .name | title }}</th>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-      {{- end -}}
-      {{< /table.inline >}}
-    </tbody>
-  </table>
-</div>
+{{< example show_markup=false >}}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Class</th>
+      <th scope="col">Heading</th>
+      <th scope="col">Heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Default</th>
+      <td>Cell</td>
+      <td>Cell</td>
+    </tr>
+    {{< table.inline >}}
+    {{- range (index $.Site.Data "theme-colors") }}
+    <tr class="table-{{ .name }}">
+      <th scope="row">{{ .name | title }}</th>
+      <td>Cell</td>
+      <td>Cell</td>
+    </tr>
+    {{- end -}}
+    {{< /table.inline >}}
+  </tbody>
+</table>
+{{< /example >}}
 
 {{< highlight html >}}
 <!-- On tables -->{{< table.inline >}}

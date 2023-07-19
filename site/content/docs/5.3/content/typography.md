@@ -22,25 +22,14 @@ These styles can be found within `_reboot.scss`, and the global variables are de
 
 All HTML headings, `<h1>` through `<h6>`, are available.
 
-{{< bs-table >}}
-| Heading | Example |
-| --- | --- |
-| `<h1></h1>` | <span class="h1">h1. Bootstrap heading</span> |
-| `<h2></h2>` | <span class="h2">h2. Bootstrap heading</span> |
-| `<h3></h3>` | <span class="h3">h3. Bootstrap heading</span> |
-| `<h4></h4>` | <span class="h4">h4. Bootstrap heading</span> |
-| `<h5></h5>` | <span class="h5">h5. Bootstrap heading</span> |
-| `<h6></h6>` | <span class="h6">h6. Bootstrap heading</span> |
-{{< /bs-table >}}
-
-```html
+{{< example >}}
 <h1>h1. Bootstrap heading</h1>
 <h2>h2. Bootstrap heading</h2>
 <h3>h3. Bootstrap heading</h3>
 <h4>h4. Bootstrap heading</h4>
 <h5>h5. Bootstrap heading</h5>
 <h6>h6. Bootstrap heading</h6>
-```
+{{< /example >}}
 
 `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.
 
@@ -68,23 +57,14 @@ Use the included utility classes to recreate the small secondary heading text fr
 
 Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style.
 
-<div class="bd-example">
-  <div class="display-1 pb-3 mb-3 border-bottom">Display 1</div>
-  <div class="display-2 pb-3 mb-3 border-bottom">Display 2</div>
-  <div class="display-3 pb-3 mb-3 border-bottom">Display 3</div>
-  <div class="display-4 pb-3 mb-3 border-bottom">Display 4</div>
-  <div class="display-5 pb-3 mb-3 border-bottom">Display 5</div>
-  <div class="display-6">Display 6</div>
-</div>
-
-```html
-<h1 class="display-1">Display 1</h1>
-<h1 class="display-2">Display 2</h1>
-<h1 class="display-3">Display 3</h1>
-<h1 class="display-4">Display 4</h1>
-<h1 class="display-5">Display 5</h1>
-<h1 class="display-6">Display 6</h1>
-```
+{{< example skip="h1" >}}
+<h1 class="display-1 skip pb-3 border-bottom">Display 1</h1>
+<h1 class="display-2 skip pb-3 border-bottom">Display 2</h1>
+<h1 class="display-3 skip pb-3 border-bottom">Display 3</h1>
+<h1 class="display-4 skip pb-3 border-bottom">Display 4</h1>
+<h1 class="display-5 skip pb-3 border-bottom">Display 5</h1>
+<h1 class="display-6 skip">Display 6</h1>
+{{< /example >}}
 
 Display headings are configured via the `$display-font-sizes` Sass map and two variables, `$display-font-weight` and `$display-line-height`.
 

@@ -40,15 +40,11 @@ For more information and examples on how to modify our Sass maps and variables, 
 
 We encourage you to adopt these guidelines when building with Bootstrap to create your own components. We've extended this approach ourselves to the custom components in our documentation and examples. Components like our callouts are built just like our provided components with base and modifier classes.
 
-<div class="bd-example">
-  <div class="bd-callout my-0">
+{{< example >}}
+  <div class="callout skip bd-callout my-0">
     <strong>This is a callout.</strong> We built it custom for our docs so our messages to you stand out. It has three variants via modifier classes.
   </div>
-</div>
-
-```html
-<div class="callout">...</div>
-```
+{{< /example >}}
 
 In your CSS, you'd have something like the following where the bulk of the styling is done via `.callout`. Then, the unique styles between each variant is controlled via modifier class.
 

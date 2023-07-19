@@ -55,7 +55,7 @@ ${htmlSnippet.replace(/^/gm, '    ')}
   </body>
 </html>`
 
-    const jsSnippetContent = jsSnippet ? '{{ os.ReadFile "site/assets/js/snippets.js" }}' : null
+    const jsSnippetContent = jsSnippet ? '{{ os.ReadFile "site/assets/js/snippets.js" }};\n{{ os.ReadFile "site/static/docs/5.3/assets/js/validate-forms.js" }}' : null
     const project = {
       files: {
         'index.html': markup,

@@ -21,10 +21,10 @@
   }
 
   .bd-code-snippet {
+    --bs-border-radius: .5rem;
+
     margin: 0;
-    border-color: var(--bs-border-color-translucent);
     border-width: 1px;
-    @include border-radius(.5rem);
   }
 
   .highlight {
@@ -33,8 +33,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    background-color: rgba(var(--bs-body-color-rgb), .075);
-    @include border-radius(calc(.5rem - 1px));
 
     @include media-breakpoint-up(lg) {
       padding-right: 4rem;
@@ -45,12 +43,6 @@
       margin: .625rem 0;
       overflow: hidden;
     }
-  }
-  .btn-clipboard {
-    position: absolute;
-    top: -.625rem;
-    right: 0;
-    background-color: transparent;
   }
 
   #carbonads { // stylelint-disable-line selector-max-id
