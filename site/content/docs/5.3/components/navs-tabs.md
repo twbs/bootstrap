@@ -375,18 +375,18 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active skip" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+  <skip class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
     <p>This is some placeholder content the <strong>Home tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-  </div>
-  <div class="tab-pane fade skip" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+  </skip>
+  <skip class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <p>This is some placeholder content the <strong>Profile tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-  </div>
-  <div class="tab-pane fade skip" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+  </skip>
+  <skip class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
     <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-  </div>
-  <div class="tab-pane fade skip" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
+  </skip>
+  <skip class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
     <p>This is some placeholder content the <strong>Disabled tab's</strong> associated content.</p>
-  </div>
+  </skip>
 </div>
 {{< /example >}}
 

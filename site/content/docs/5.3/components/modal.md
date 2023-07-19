@@ -38,28 +38,8 @@ Keep reading for demos and usage guidelines.
 
 Below is a _static_ modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
-<div class="bd-example bg-body-tertiary">
-  <div class="modal position-static d-block" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-```html
-<div class="modal" tabindex="-1">
+{{< example class="bg-body-tertiary" >}}
+<div class="modal position-static d-block" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -76,7 +56,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
     </div>
   </div>
 </div>
-```
+{{< /example >}}
 
 {{< callout info >}}
 In the above static example, we use `<h5>`, to avoid issues with the heading hierarchy in the documentation page. Structurally, however, a modal dialog represents its own separate document/context, so the `.modal-title` should ideally be an `<h1>`. If necessary, you can use the [font size utilities]({{< docsref "/utilities/text#font-size" >}}) to control the heading's appearance. All the following live examples use this approach.
@@ -100,9 +80,9 @@ Toggle a working modal demo by clicking the button below. It will slide down and
         <h1 class="modal-title fs-5" id="exampleModalLiveLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body skip">
+      <skip class="modal-body">
         <p>Woo-hoo, you're reading this text in a modal!</p>
-      </div>
+      </skip>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
@@ -112,60 +92,17 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 </div>
 {{< /example >}}
 
-<div class="modal fade" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLiveLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Woo-hoo, you're reading this text in a modal!</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLive">
-    Launch demo modal
-  </button>
-</div>
-
-```html
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
 ### Static backdrop
 
 When backdrop is set to static, the modal will not close when clicking outside of it. Click the button below to try it.
 
+{{< example >}}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
 <div class="modal fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -173,9 +110,9 @@ When backdrop is set to static, the modal will not close when clicking outside o
         <h1 class="modal-title fs-5" id="staticBackdropLiveLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <skip class="modal-body">
         <p>I will not close if you click outside of me. Don't even try to press escape key.</p>
-      </div>
+      </skip>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Understood</button>
@@ -183,45 +120,21 @@ When backdrop is set to static, the modal will not close when clicking outside o
     </div>
   </div>
 </div>
-
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
-    Launch static backdrop modal
-  </button>
-</div>
-
-```html
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-```
+{{< /example >}}
 
 ### Scrolling long content
 
 When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
 
+{{< example >}}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog">
+  <skip class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLongTitle">Modal title</h1>
@@ -235,19 +148,21 @@ When modals become too long for the user's viewport or device, they scroll indep
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
-
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
-    Launch demo modal
-  </button>
-</div>
+{{< /example >}}
 
 You can also create a scrollable modal that allows scroll the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
 
+{{< example >}}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">
+  Launch demo modal
+</button>
+
+<!-- Scrollable modal -->
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <skip class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalScrollableTitle">Modal title</h1>
@@ -263,28 +178,25 @@ You can also create a scrollable modal that allows scroll the modal body by addi
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
-
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">
-    Launch demo modal
-  </button>
-</div>
-
-```html
-<!-- Scrollable modal -->
-<div class="modal-dialog modal-dialog-scrollable">
-  ...
-</div>
-```
+{{< /example >}}
 
 ### Vertically centered
 
 Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
+{{< example >}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+  Vertically centered modal
+</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+  Vertically centered scrollable modal
+</button>
+
+<!-- Vertically centered modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <skip class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalCenterTitle">Modal title</h1>
@@ -298,11 +210,12 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
 
+<!-- Vertically centered scrollable modal -->
 <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <skip class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalCenteredScrollableTitle">Modal title</h1>
@@ -318,41 +231,26 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
-
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-    Vertically centered modal
-  </button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
-    Vertically centered scrollable modal
-  </button>
-</div>
-
-```html
-<!-- Vertically centered modal -->
-<div class="modal-dialog modal-dialog-centered">
-  ...
-</div>
-
-<!-- Vertically centered scrollable modal -->
-<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-  ...
-</div>
-```
+{{< /example >}}
 
 ### Tooltips and popovers
 
 [Tooltips]({{< docsref "/components/tooltips" >}}) and [popovers]({{< docsref "/components/popovers" >}}) can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
 
+{{< example stackblitz_add_js=true >}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalPopovers">
+  Launch demo modal
+</button>
+
 <div class="modal fade" id="exampleModalPopovers" tabindex="-1" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <skip class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalPopoversLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      </skip>
       <div class="modal-body">
         <h2 class="fs-5">Popover in a modal</h2>
         <p>This <button class="btn btn-secondary" data-bs-toggle="popover" title="Popover title" data-bs-content="Popover body content is set in this attribute." data-bs-container="#exampleModalPopovers">button</button> triggers a popover on click.</p>
@@ -360,41 +258,31 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
         <h2 class="fs-5">Tooltips in a modal</h2>
         <p><a href="#" data-bs-toggle="tooltip" title="Tooltip" data-bs-container="#exampleModalPopovers">This link</a> and <a href="#" data-bs-toggle="tooltip" title="Tooltip" data-bs-container="#exampleModalPopovers">that link</a> have tooltips on hover.</p>
       </div>
-      <div class="modal-footer">
+      <skip class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </skip>
     </div>
   </div>
 </div>
-
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalPopovers">
-    Launch demo modal
-  </button>
-</div>
-
-```html
-<div class="modal-body">
-  <h2 class="fs-5">Popover in a modal</h2>
-  <p>This <button class="btn btn-secondary" data-bs-toggle="popover" title="Popover title" data-bs-content="Popover body content is set in this attribute.">button</button> triggers a popover on click.</p>
-  <hr>
-  <h2 class="fs-5">Tooltips in a modal</h2>
-  <p><a href="#" data-bs-toggle="tooltip" title="Tooltip">This link</a> and <a href="#" data-bs-toggle="tooltip" title="Tooltip">that link</a> have tooltips on hover.</p>
-</div>
-```
+{{< /example >}}
 
 ### Using the grid
 
 Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` within the `.modal-body`. Then, use the normal grid system classes as you would anywhere else.
 
+{{< example >}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gridSystemModal">
+  Launch demo modal
+</button>
+
 <div class="modal fade" id="gridSystemModal" tabindex="-1" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <skip class="modal-header">
         <h1 class="modal-title fs-5" id="gridModalLabel">Grids in modals</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      </skip>
       <div class="modal-body">
         <div class="container-fluid bd-example-row">
           <div class="row">
@@ -423,50 +311,14 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
           </div>
         </div>
       </div>
-      <div class="modal-footer">
+      <skip class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </skip>
     </div>
   </div>
 </div>
-
-<div class="bd-example">
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#gridSystemModal">
-  Launch demo modal
-</button>
-</div>
-
-```html
-<div class="modal-body">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4">.col-md-4</div>
-      <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
-    </div>
-    <div class="row">
-      <div class="col-md-3 ms-auto">.col-md-3 .ms-auto</div>
-      <div class="col-md-2 ms-auto">.col-md-2 .ms-auto</div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 ms-auto">.col-md-6 .ms-auto</div>
-    </div>
-    <div class="row">
-      <div class="col-sm-9">
-        Level 1: .col-sm-9
-        <div class="row">
-          <div class="col-8 col-sm-6">
-            Level 2: .col-8 .col-sm-6
-          </div>
-          <div class="col-4 col-sm-6">
-            Level 2: .col-4 .col-sm-6
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-```
+{{< /example >}}
 
 ### Varying modal content
 
@@ -592,20 +444,13 @@ Modals have three optional sizes, available via modifier classes to be placed on
 
 Our default modal without modifier class constitutes the "medium" size modal.
 
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalXl">Extra large modal</button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLg">Large modal</button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalSm">Small modal</button>
-</div>
-
-```html
-<div class="modal-dialog modal-xl">...</div>
-<div class="modal-dialog modal-lg">...</div>
-<div class="modal-dialog modal-sm">...</div>
-```
+{{< example >}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalXl">Extra large modal</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLg">Large modal</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalSm">Small modal</button>
 
 <div class="modal fade" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <skip class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalXlLabel">Extra large modal</h1>
@@ -615,11 +460,11 @@ Our default modal without modifier class constitutes the "medium" size modal.
         ...
       </div>
     </div>
-  </div>
+  </skip>
 </div>
 
 <div class="modal fade" id="exampleModalLg" tabindex="-1" aria-labelledby="exampleModalLgLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <skip class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalLgLabel">Large modal</h1>
@@ -629,11 +474,11 @@ Our default modal without modifier class constitutes the "medium" size modal.
         ...
       </div>
     </div>
-  </div>
+  </skip>
 </div>
 
 <div class="modal fade" id="exampleModalSm" tabindex="-1" aria-labelledby="exampleModalSmLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <skip class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalSmLabel">Small modal</h1>
@@ -643,8 +488,9 @@ Our default modal without modifier class constitutes the "medium" size modal.
         ...
       </div>
     </div>
-  </div>
+  </skip>
 </div>
+{{< /example >}}
 
 ## Fullscreen Modal
 
@@ -661,24 +507,16 @@ Another override is the option to pop up a modal that covers the user viewport, 
 | `.modal-fullscreen-xxl-down` | `1400px` |
 {{< /bs-table >}}
 
-<div class="bd-example">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">Full screen</button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenSm">Full screen below sm</button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenMd">Full screen below md</button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenLg">Full screen below lg</button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenXl">Full screen below xl</button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenXxl">Full screen below xxl</button>
-</div>
-
-```html
-<!-- Full screen modal -->
-<div class="modal-dialog modal-fullscreen-sm-down">
-  ...
-</div>
-```
+{{< example >}}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">Full screen</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenSm">Full screen below sm</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenMd">Full screen below md</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenLg">Full screen below lg</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenXl">Full screen below xl</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreenXxl">Full screen below xxl</button>
 
 <div class="modal fade" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
+  <skip class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">Full screen modal</h1>
@@ -691,11 +529,11 @@ Another override is the option to pop up a modal that covers the user viewport, 
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenSm" tabindex="-1" aria-labelledby="exampleModalFullscreenSmLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-sm-down">
+  <skip class="modal-dialog modal-fullscreen-sm-down">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalFullscreenSmLabel">Full screen below sm</h1>
@@ -708,11 +546,11 @@ Another override is the option to pop up a modal that covers the user viewport, 
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenMd" tabindex="-1" aria-labelledby="exampleModalFullscreenMdLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-md-down">
+  <skip class="modal-dialog modal-fullscreen-md-down">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalFullscreenMdLabel">Full screen below md</h1>
@@ -725,11 +563,11 @@ Another override is the option to pop up a modal that covers the user viewport, 
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenLg" tabindex="-1" aria-labelledby="exampleModalFullscreenLgLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-lg-down">
+  <skip class="modal-dialog modal-fullscreen-lg-down">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalFullscreenLgLabel">Full screen below lg</h1>
@@ -742,11 +580,11 @@ Another override is the option to pop up a modal that covers the user viewport, 
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenXl" tabindex="-1" aria-labelledby="exampleModalFullscreenXlLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-xl-down">
+  <skip class="modal-dialog modal-fullscreen-xl-down">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalFullscreenXlLabel">Full screen below xl</h1>
@@ -759,11 +597,11 @@ Another override is the option to pop up a modal that covers the user viewport, 
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenXxl" tabindex="-1" aria-labelledby="exampleModalFullscreenXxlLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-xxl-down">
+  <skip class="modal-dialog modal-fullscreen-xxl-down">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalFullscreenXxlLabel">Full screen below xxl</h1>
@@ -776,8 +614,9 @@ Another override is the option to pop up a modal that covers the user viewport, 
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
+  </skip>
 </div>
+{{< /example >}}
 
 ## CSS
 

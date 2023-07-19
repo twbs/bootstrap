@@ -4,9 +4,6 @@ title: Validation
 description: Provide valuable, actionable feedback to your users with HTML5 form validation, via browser default behaviors or custom styles and JavaScript.
 group: forms
 toc: true
-extra_js:
-  - src: "/docs/5.3/assets/js/validate-forms.js"
-    async: true
 ---
 
 {{< callout warning >}}
@@ -101,11 +98,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 </form>
 {{< /example >}}
 
-{{< example lang="js" show_preview="false" >}}
-{{< js.inline >}}
-{{- readFile (path.Join "site/static/docs" .Site.Params.docs_version "assets/js/validate-forms.js") -}}
-{{< /js.inline >}}
-{{< /example >}}
+{{< js-docs name="forms-validation" file="site/assets/js/snippets.js" >}}
 
 ## Browser defaults
 

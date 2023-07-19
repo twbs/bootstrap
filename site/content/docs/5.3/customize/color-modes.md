@@ -150,8 +150,8 @@ For example, you can create a "blue theme" with the selector `data-bs-theme="blu
 
 {{< scss-docs name="custom-color-mode" file="site/assets/scss/_content.scss" >}}
 
-{{< example class="p-0" skip="section" >}}
-<section class="p-4 text-body bg-body skip" data-bs-theme="blue">
+{{< example class="p-0" >}}
+<skip class="p-4 text-body bg-body" data-bs-theme="blue">
   <div class="h4">Example blue theme</div>
   <p>Some paragraph text to show how the blue theme might look with written copy.</p>
 
@@ -170,7 +170,7 @@ For example, you can create a "blue theme" with the selector `data-bs-theme="blu
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
-</section>
+</skip>
 {{< /example >}}
 
 ## JavaScript
