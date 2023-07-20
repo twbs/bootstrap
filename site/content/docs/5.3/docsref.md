@@ -44,6 +44,10 @@ sitemap_exclude: true
 <div class="test">This is a test.</div>
 {{< /example >}}
 
+{{< example class=bg-warning >}}
+<div class="test">This is a test.</div>
+{{< /example >}}
+
 {{< example show_preview=false >}}
 <div class="test">This is a markup only test.</div>
 {{< /example >}}

@@ -52,11 +52,13 @@
   // Instantiate all toasts in docs pages only
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
-      const toast = new bootstrap.Toast(toastNode, {
-        autohide: false
-      })
+      if (toastNode.id !== 'liveToast') {
+        const toast = new bootstrap.Toast(toastNode, {
+          autohide: false
+        })
 
-      toast.show()
+        toast.show()
+      }
     })
 
   // Instantiate all toasts in docs pages only

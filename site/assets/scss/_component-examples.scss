@@ -44,7 +44,10 @@
     margin-right: 0;
     margin-left: 0;
     border-width: 1px;
-    @include border-radius(var(--bs-border-radius));
+
+    &:not(:first-child) {
+      @include border-radius(var(--bs-border-radius));
+    }
   }
 
   + p {
