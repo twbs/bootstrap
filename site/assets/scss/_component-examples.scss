@@ -220,15 +220,16 @@
 
 // scss-docs-start custom-tooltip
 .custom-tooltip {
-  --bs-tooltip-bg: var(--bs-primary);
+  --bs-tooltip-bg: var(--bd-violet-bg);
+  --bs-tooltip-color: var(--bs-white);
 }
 // scss-docs-end custom-tooltip
 
 // scss-docs-start custom-popovers
 .custom-popover {
   --bs-popover-max-width: 200px;
-  --bs-popover-border-color: var(--bs-primary);
-  --bs-popover-header-bg: var(--bs-primary);
+  --bs-popover-border-color: var(--bd-violet-bg);
+  --bs-popover-header-bg: var(--bd-violet-bg);
   --bs-popover-header-color: var(--bs-white);
   --bs-popover-body-padding-x: 1rem;
   --bs-popover-body-padding-y: .5rem;
