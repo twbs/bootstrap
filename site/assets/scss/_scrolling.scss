@@ -3,8 +3,11 @@
 main {
   a,
   button,
+  h2,
+  h3,
+  h4,
   [tabindex="0"] {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 80px;
     scroll-margin-bottom: 100px;
   }
 }

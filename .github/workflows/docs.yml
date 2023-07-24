@@ -2,8 +2,8 @@ name: Docs
 
 on:
   push:
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
@@ -40,9 +40,6 @@ jobs:
 
       - name: Validate HTML
         run: npm run docs-vnu
-
-      - name: Check for unused templates
-        run: npm run docs-check-unused-templates
 
       - name: Run linkinator
         uses: JustinBeckwith/linkinator-action@v1

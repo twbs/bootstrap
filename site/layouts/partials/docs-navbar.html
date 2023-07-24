@@ -8,7 +8,7 @@
       </button>
     </div>
     {{- else }}
-      <div class="d-lg-none" style="width: 1.5rem;"></div>
+      <div class="d-lg-none" style="width: 4.25rem;"></div>
     {{- end }}
 
     <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
@@ -16,9 +16,7 @@
     </a>
 
     <div class="d-flex">
-      {{ if eq .Layout "docs" }}
-        <div class="bd-search" id="docsearch" data-bd-docs-version="{{ .Site.Params.docs_version }}"></div>
-      {{ end }}
+      <div class="bd-search" id="docsearch" data-bd-docs-version="{{ .Site.Params.docs_version }}"></div>
 
       <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
         <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>

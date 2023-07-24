@@ -1,5 +1,5 @@
-import Tab from '../../src/tab'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import Tab from '../../src/tab.js'
+import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Tab', () => {
   let fixtureEl
@@ -514,7 +514,7 @@ describe('Tab', () => {
       expect(tabPanel.hasAttribute('tabindex')).toBeFalse()
       expect(tabPanel.hasAttribute('tabindex2')).toBeFalse()
 
-      expect(tabPanel.getAttribute('aria-labelledby')).toEqual('#foo')
+      expect(tabPanel.getAttribute('aria-labelledby')).toEqual('foo')
       expect(tabPanel2.hasAttribute('aria-labelledby')).toBeFalse()
     })
   })
@@ -630,6 +630,58 @@ describe('Tab', () => {
       expect(spyPrevent).toHaveBeenCalledTimes(2)
     })
 
+    it('if keydown event is Home, handle it', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+
+      const tab3 = new Tab(tabEl3)
+      tab3.show()
+
+      const spyShown = jasmine.createSpy()
+      tabEl1.addEventListener('shown.bs.tab', spyShown)
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'Home'
+
+      tabEl3.dispatchEvent(keydown)
+
+      expect(spyShown).toHaveBeenCalled()
+    })
+
+    it('if keydown event is End, handle it', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+
+      const tab1 = new Tab(tabEl1)
+      tab1.show()
+
+      const spyShown = jasmine.createSpy()
+      tabEl3.addEventListener('shown.bs.tab', spyShown)
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'End'
+
+      tabEl1.dispatchEvent(keydown)
+
+      expect(spyShown).toHaveBeenCalled()
+    })
+
     it('if keydown event is right arrow and next element is disabled', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
@@ -710,6 +762,66 @@ describe('Tab', () => {
       expect(spyFocus3).not.toHaveBeenCalled()
       expect(spyFocus2).not.toHaveBeenCalled()
       expect(spyFocus1).toHaveBeenCalledTimes(1)
+    })
+
+    it('if keydown event is Home and first element is disabled', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link disabled" data-bs-toggle="tab" disabled></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tab3 = new Tab(tabEl3)
+
+      tab3.show()
+
+      const spyShown1 = jasmine.createSpy()
+      const spyShown2 = jasmine.createSpy()
+      tabEl1.addEventListener('shown.bs.tab', spyShown1)
+      tabEl2.addEventListener('shown.bs.tab', spyShown2)
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'Home'
+
+      tabEl3.dispatchEvent(keydown)
+
+      expect(spyShown1).not.toHaveBeenCalled()
+      expect(spyShown2).toHaveBeenCalled()
+    })
+
+    it('if keydown event is End and last element is disabled', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab3" class="nav-link" data-bs-toggle="tab" disabled></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tabEl3 = fixtureEl.querySelector('#tab3')
+      const tab1 = new Tab(tabEl1)
+
+      tab1.show()
+
+      const spyShown2 = jasmine.createSpy()
+      const spyShown3 = jasmine.createSpy()
+      tabEl2.addEventListener('shown.bs.tab', spyShown2)
+      tabEl3.addEventListener('shown.bs.tab', spyShown3)
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'End'
+
+      tabEl1.dispatchEvent(keydown)
+
+      expect(spyShown3).not.toHaveBeenCalled()
+      expect(spyShown2).toHaveBeenCalled()
     })
   })
 

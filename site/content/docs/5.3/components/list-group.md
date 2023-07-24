@@ -62,7 +62,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">A second link item</a>
   <a href="#" class="list-group-item list-group-item-action">A third link item</a>
   <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-  <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+  <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
 </div>
 {{< /example >}}
 
@@ -157,7 +157,7 @@ Add `.list-group-horizontal` to change the layout of list group items from verti
 ## Variants
 
 {{< callout info >}}
-**Heads up!** As of v5.3.0, the `list-group-item-variant()` Sass mixin is deprecated. List group item variants now have their CSS variables overridden in [the Sass loop](#sass-loop).
+**Heads up!** As of v5.3.0, the `list-group-item-variant()` Sass mixin is deprecated. List group item variants now have their CSS variables overridden in [a Sass loop](#sass-loops).
 {{< /callout >}}
 
 Use contextual classes to style list items with a stateful background and color.
@@ -325,7 +325,7 @@ Used in combination with `$theme-colors` to generate the [contextual variant cla
 
 {{< scss-docs name="list-group-mixin" file="scss/mixins/_list-group.scss" >}}
 
-### Sass loop
+### Sass loops
 
 Loop that generates the modifier classes with an overriding of CSS variables.
 
