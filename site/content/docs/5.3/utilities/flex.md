@@ -80,47 +80,38 @@ Responsive variations also exist for `flex-direction`.
 
 Use `justify-content` utilities on flexbox containers to change the alignment of flex items on the main axis (the x-axis to start, y-axis if `flex-direction: column`). Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `evenly`.
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex justify-content-start mb-3">
-    <div class="p-2 bd-highlight">Justify</div>
-    <div class="p-2 bd-highlight">Content</div>
-    <div class="p-2 bd-highlight">Start</div>
-  </div>
-  <div class="d-flex justify-content-end mb-3">
-    <div class="p-2 bd-highlight">Justify</div>
-    <div class="p-2 bd-highlight">Content</div>
-    <div class="p-2 bd-highlight">End</div>
-  </div>
-  <div class="d-flex justify-content-center mb-3">
-    <div class="p-2 bd-highlight">Justify</div>
-    <div class="p-2 bd-highlight">Content</div>
-    <div class="p-2 bd-highlight">Center</div>
-  </div>
-  <div class="d-flex justify-content-between mb-3">
-    <div class="p-2 bd-highlight">Justify</div>
-    <div class="p-2 bd-highlight">Content</div>
-    <div class="p-2 bd-highlight">Between</div>
-  </div>
-  <div class="d-flex justify-content-around mb-3">
-    <div class="p-2 bd-highlight">Justify</div>
-    <div class="p-2 bd-highlight">Content</div>
-    <div class="p-2 bd-highlight">Around</div>
-  </div>
-  <div class="d-flex justify-content-evenly">
-    <div class="p-2 bd-highlight">Justify</div>
-    <div class="p-2 bd-highlight">Content</div>
-    <div class="p-2 bd-highlight">Evenly</div>
-  </div>
-</div>
-
-```html
-<div class="d-flex justify-content-start">...</div>
-<div class="d-flex justify-content-end">...</div>
-<div class="d-flex justify-content-center">...</div>
-<div class="d-flex justify-content-between">...</div>
-<div class="d-flex justify-content-around">...</div>
-<div class="d-flex justify-content-evenly">...</div>
-```
+{{< example class=bd-example-flex >}}
+<skip class="d-flex justify-content-start mb-3">
+  <div class="p-2 bd-highlight">Justify</div>
+  <div class="p-2 bd-highlight">Content</div>
+  <div class="p-2 bd-highlight">Start</div>
+</skip>
+<skip class="d-flex justify-content-end mb-3">
+  <div class="p-2 bd-highlight">Justify</div>
+  <div class="p-2 bd-highlight">Content</div>
+  <div class="p-2 bd-highlight">End</div>
+</skip>
+<skip class="d-flex justify-content-center mb-3">
+  <div class="p-2 bd-highlight">Justify</div>
+  <div class="p-2 bd-highlight">Content</div>
+  <div class="p-2 bd-highlight">Center</div>
+</skip>
+<skip class="d-flex justify-content-between mb-3">
+  <div class="p-2 bd-highlight">Justify</div>
+  <div class="p-2 bd-highlight">Content</div>
+  <div class="p-2 bd-highlight">Between</div>
+</skip>
+<skip class="d-flex justify-content-around mb-3">
+  <div class="p-2 bd-highlight">Justify</div>
+  <div class="p-2 bd-highlight">Content</div>
+  <div class="p-2 bd-highlight">Around</div>
+</skip>
+<skip class="d-flex justify-content-evenly">
+  <div class="p-2 bd-highlight">Justify</div>
+  <div class="p-2 bd-highlight">Content</div>
+  <div class="p-2 bd-highlight">Evenly</div>
+</skip>
+{{< /example >}}
 
 Responsive variations also exist for `justify-content`.
 
@@ -141,41 +132,33 @@ Responsive variations also exist for `justify-content`.
 
 Use `align-items` utilities on flexbox containers to change the alignment of flex items on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex align-items-start mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-  <div class="d-flex align-items-end mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-  <div class="d-flex align-items-center mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-  <div class="d-flex align-items-baseline mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-  <div class="d-flex align-items-stretch" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-</div>
-
-```html
-<div class="d-flex align-items-start">...</div>
-<div class="d-flex align-items-end">...</div>
-<div class="d-flex align-items-center">...</div>
-<div class="d-flex align-items-baseline">...</div>
-<div class="d-flex align-items-stretch">...</div>
-```
+{{< example class=bd-example-flex >}}
+<skip class="d-flex align-items-start mb-3" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+<skip class="d-flex align-items-end mb-3" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+<skip class="d-flex align-items-center mb-3" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+<skip class="d-flex align-items-baseline mb-3" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+<skip class="d-flex align-items-stretch" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+{{< /example >}}
 
 Responsive variations also exist for `align-items`.
 
@@ -195,41 +178,37 @@ Responsive variations also exist for `align-items`.
 
 Use `align-self` utilities on flexbox items to individually change their alignment on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from the same options as `align-items`: `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="align-self-start p-2">Aligned flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-  <div class="d-flex mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="align-self-end p-2">Aligned flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-  <div class="d-flex mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="align-self-center p-2">Aligned flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-  <div class="d-flex mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="align-self-baseline p-2">Aligned flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-  <div class="d-flex" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="align-self-stretch p-2">Aligned flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
+{{< example class=bd-example-flex >}}
+<div class="d-flex mb-3" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="align-self-start p-2">Aligned flex item</div>
+  <div class="p-2">Flex item</div>
 </div>
 
-```html
-<div class="align-self-start">Aligned flex item</div>
-<div class="align-self-end">Aligned flex item</div>
-<div class="align-self-center">Aligned flex item</div>
-<div class="align-self-baseline">Aligned flex item</div>
-<div class="align-self-stretch">Aligned flex item</div>
-```
+<div class="d-flex mb-3" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="align-self-end p-2">Aligned flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+
+<div class="d-flex mb-3" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="align-self-center p-2">Aligned flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+
+<div class="d-flex mb-3" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="align-self-baseline p-2">Aligned flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+
+<div class="d-flex" style="height: 100px">
+  <div class="p-2">Flex item</div>
+  <div class="align-self-stretch p-2">Aligned flex item</div>
+  <div class="p-2">Flex item</div>
+</div>
+{{< /example >}}
 
 Responsive variations also exist for `align-self`.
 
@@ -345,72 +324,53 @@ Vertically move one flex item to the top or bottom of a container by mixing `ali
 
 Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, wrapping with `.flex-wrap`, or reverse wrapping with `.flex-wrap-reverse`.
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex flex-nowrap" style="width: 8rem;">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-</div>
+{{< example class=bd-example-flex >}}
+<skip class="d-flex flex-nowrap" style="width: 8rem;">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+{{< /example >}}
 
-```html
-<div class="d-flex flex-nowrap">
-  ...
-</div>
-```
+{{< example class=bd-example-flex >}}
+<skip class="d-flex flex-wrap">
+  <div class="p-2">Flex item 1</div>
+  <div class="p-2">Flex item 2</div>
+  <div class="p-2">Flex item 3</div>
+  <div class="p-2">Flex item 4</div>
+  <div class="p-2">Flex item 5</div>
+  <div class="p-2">Flex item 6</div>
+  <div class="p-2">Flex item 7</div>
+  <div class="p-2">Flex item 8</div>
+  <div class="p-2">Flex item 9</div>
+  <div class="p-2">Flex item 10</div>
+  <div class="p-2">Flex item 11</div>
+  <div class="p-2">Flex item 12</div>
+  <div class="p-2">Flex item 13</div>
+  <div class="p-2">Flex item 14</div>
+</skip>
+{{< /example >}}
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex flex-wrap">
-    <div class="p-2">Flex item 1</div>
-    <div class="p-2">Flex item 2</div>
-    <div class="p-2">Flex item 3</div>
-    <div class="p-2">Flex item 4</div>
-    <div class="p-2">Flex item 5</div>
-    <div class="p-2">Flex item 6</div>
-    <div class="p-2">Flex item 7</div>
-    <div class="p-2">Flex item 8</div>
-    <div class="p-2">Flex item 9</div>
-    <div class="p-2">Flex item 10</div>
-    <div class="p-2">Flex item 11</div>
-    <div class="p-2">Flex item 12</div>
-    <div class="p-2">Flex item 13</div>
-    <div class="p-2">Flex item 14</div>
-  </div>
-</div>
-
-```html
-<div class="d-flex flex-wrap">
-  ...
-</div>
-```
-
-<div class="bd-example bd-example-flex">
-  <div class="d-flex flex-wrap-reverse">
-    <div class="p-2">Flex item 1</div>
-    <div class="p-2">Flex item 2</div>
-    <div class="p-2">Flex item 3</div>
-    <div class="p-2">Flex item 4</div>
-    <div class="p-2">Flex item 5</div>
-    <div class="p-2">Flex item 6</div>
-    <div class="p-2">Flex item 7</div>
-    <div class="p-2">Flex item 8</div>
-    <div class="p-2">Flex item 9</div>
-    <div class="p-2">Flex item 10</div>
-    <div class="p-2">Flex item 11</div>
-    <div class="p-2">Flex item 12</div>
-    <div class="p-2">Flex item 13</div>
-    <div class="p-2">Flex item 14</div>
-  </div>
-</div>
-
-```html
-<div class="d-flex flex-wrap-reverse">
-  ...
-</div>
-```
-
+{{< example class=bd-example-flex >}}
+<skip class="d-flex flex-wrap-reverse">
+  <div class="p-2">Flex item 1</div>
+  <div class="p-2">Flex item 2</div>
+  <div class="p-2">Flex item 3</div>
+  <div class="p-2">Flex item 4</div>
+  <div class="p-2">Flex item 5</div>
+  <div class="p-2">Flex item 6</div>
+  <div class="p-2">Flex item 7</div>
+  <div class="p-2">Flex item 8</div>
+  <div class="p-2">Flex item 9</div>
+  <div class="p-2">Flex item 10</div>
+  <div class="p-2">Flex item 11</div>
+  <div class="p-2">Flex item 12</div>
+  <div class="p-2">Flex item 13</div>
+  <div class="p-2">Flex item 14</div>
+</skip>
+{{< /example >}}
 
 Responsive variations also exist for `flex-wrap`.
 
@@ -466,151 +426,125 @@ Use `align-content` utilities on flexbox containers to align flex items _togethe
 
 **Heads up!** This property has no effect on single rows of flex items.
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex align-content-start flex-wrap mb-3" style="height: 200px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-</div>
+{{< example class=bd-example-flex >}}
+<skip class="d-flex align-content-start flex-wrap mb-3" style="height: 200px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+{{< /example >}}
 
-```html
-<div class="d-flex align-content-start flex-wrap">
-  ...
-</div>
-```
+{{< example class=bd-example-flex >}}
+<skip class="d-flex align-content-end flex-wrap mb-3" style="height: 200px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+{{< /example >}}
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex align-content-end flex-wrap mb-3" style="height: 200px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-</div>
+{{< example class=bd-example-flex >}}
+<skip class="d-flex align-content-center flex-wrap mb-3" style="height: 200px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+{{< /example >}}
 
-```html
-<div class="d-flex align-content-end flex-wrap">...</div>
-```
+{{< example class=bd-example-flex >}}
+<skip class="d-flex align-content-between flex-wrap mb-3" style="height: 200px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+{{< /example >}}
 
-<div class="bd-example bd-example-flex">
-  <div class="d-flex align-content-center flex-wrap mb-3" style="height: 200px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-</div>
+{{< example class=bd-example-flex >}}
+<skip class="d-flex align-content-around flex-wrap mb-3" style="height: 200px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+{{< /example >}}
 
-```html
-<div class="d-flex align-content-center flex-wrap">...</div>
-```
-
-<div class="bd-example bd-example-flex">
-  <div class="d-flex align-content-between flex-wrap mb-3" style="height: 200px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-</div>
-
-```html
-<div class="d-flex align-content-between flex-wrap">...</div>
-```
-
-<div class="bd-example bd-example-flex">
-  <div class="d-flex align-content-around flex-wrap mb-3" style="height: 200px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-</div>
-
-```html
-<div class="d-flex align-content-around flex-wrap">...</div>
-```
-
-<div class="bd-example bd-example-flex">
-  <div class="d-flex align-content-stretch flex-wrap mb-3" style="height: 200px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-  </div>
-</div>
-
-```html
-<div class="d-flex align-content-stretch flex-wrap">...</div>
-```
+{{< example class=bd-example-flex >}}
+<skip class="d-flex align-content-stretch flex-wrap mb-3" style="height: 200px">
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+  <div class="p-2">Flex item</div>
+</skip>
+{{< /example >}}
 
 Responsive variations also exist for `align-content`.
 

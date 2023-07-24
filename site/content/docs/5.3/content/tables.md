@@ -116,50 +116,29 @@ These hoverable rows can also be combined with the striped rows variant:
 
 Highlight a table row or cell by adding a `.table-active` class.
 
-<div class="bd-example">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-active">
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2" class="table-active">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-```html
+{{< example skip=tr >}}
 <table class="table">
   <thead>
-    ...
+    <skip>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </skip>
   </thead>
   <tbody>
-    <tr class="table-active">
-      ...
-    </tr>
-    <tr>
-      ...
-    </tr>
+    <skip class="table-active">
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </skip>
+    <skip>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </skip>
     <tr>
       <th scope="row">3</th>
       <td colspan="2" class="table-active">Larry the Bird</td>
@@ -167,52 +146,31 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
   </tbody>
 </table>
-```
+{{< /example >}}
 
-<div class="bd-example">
-  <table class="table table-dark">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-active">
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2" class="table-active">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-```html
+{{< example skip=tr >}}
 <table class="table table-dark">
   <thead>
-    ...
+    <skip>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </skip>
   </thead>
   <tbody>
-    <tr class="table-active">
-      ...
-    </tr>
-    <tr>
-      ...
-    </tr>
+    <skip class="table-active">
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </skip>
+    <skip>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </skip>
     <tr>
       <th scope="row">3</th>
       <td colspan="2" class="table-active">Larry the Bird</td>
@@ -220,7 +178,7 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
   </tbody>
 </table>
-```
+{{< /example >}}
 
 ## How do the variants and accented tables work?
 
@@ -268,34 +226,34 @@ Add `.table-sm` to make any `.table` more compact by cutting all cell `padding` 
 
 Add a thicker border, darker between table groups—`<thead>`, `<tbody>`, and `<tfoot>`—with `.table-group-divider`. Customize the color by changing the `border-top-color` (which we don't currently provide a utility class for at this time).
 
-{{< example >}}
+{{< example skip=tr >}}
 <table class="table">
   <thead>
-    <tr>
+    <skip>
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
-    </tr>
+    </skip>
   </thead>
   <tbody class="table-group-divider">
-    <tr>
+    <skip>
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
-    </tr>
+    </skip>
   </tbody>
 </table>
 {{< /example >}}
@@ -303,147 +261,101 @@ Add a thicker border, darker between table groups—`<thead>`, `<tbody>`, and `<
 ## Vertical alignment
 
 Table cells of `<thead>` are always vertical aligned to the bottom. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the top by default. Use the [vertical align]({{< docsref "/utilities/vertical-align" >}}) classes to re-align where needed.
-
-<div class="bd-example">
-  <div class="table-responsive">
-    <table class="table align-middle">
-      <thead>
-        <tr>
-          <th scope="col" class="w-25">Heading 1</th>
-          <th scope="col" class="w-25">Heading 2</th>
-          <th scope="col" class="w-25">Heading 3</th>
-          <th scope="col" class="w-25">Heading 4</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-          <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-          <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
-        </tr>
-        <tr class="align-bottom">
-          <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-          <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-          <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
-        </tr>
-        <tr>
-          <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-          <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-          <td class="align-top">This cell is aligned to the top.</td>
-          <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-```html
+{{< example skip=tr >}}
 <div class="table-responsive">
   <table class="table align-middle">
     <thead>
-      <tr>
-        ...
-      </tr>
+      <skip>
+        <th scope="col" class="w-25">Heading 1</th>
+        <th scope="col" class="w-25">Heading 2</th>
+        <th scope="col" class="w-25">Heading 3</th>
+        <th scope="col" class="w-25">Heading 4</th>
+      </skip>
     </thead>
     <tbody>
+      <skip>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+      </skip>
+      <skip class="align-bottom">
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+      </skip>
       <tr>
-        ...
-      </tr>
-      <tr class="align-bottom">
-        ...
-      </tr>
-      <tr>
-        <td>...</td>
-        <td>...</td>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
         <td class="align-top">This cell is aligned to the top.</td>
-        <td>...</td>
+        <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
       </tr>
     </tbody>
   </table>
 </div>
-```
+{{< /example >}}
 
 ## Nesting
 
 Border styles, active styles, and table variants are not inherited by nested tables.
 
-<div class="bd-example">
+{{< example skip=tr >}}
 <table class="table table-striped table-bordered">
   <thead>
-    <tr>
+    <skip>
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
-    </tr>
+    </skip>
   </thead>
   <tbody>
-    <tr>
+    <skip>
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-    </tr>
+    </skip>
     <tr>
       <td colspan="4">
         <table class="table mb-0">
           <thead>
-            <tr>
+            <skip>
               <th scope="col">Header</th>
               <th scope="col">Header</th>
               <th scope="col">Header</th>
-            </tr>
+            </skip>
           </thead>
           <tbody>
-            <tr>
+            <skip>
               <th scope="row">A</th>
               <td>First</td>
               <td>Last</td>
-            </tr>
-            <tr>
+            </skip>
+            <skip>
               <th scope="row">B</th>
               <td>First</td>
               <td>Last</td>
-            </tr>
-            <tr>
+            </skip>
+            <skip>
               <th scope="row">C</th>
               <td>First</td>
               <td>Last</td>
-            </tr>
+            </skip>
           </tbody>
         </table>
       </td>
     </tr>
-    <tr>
+    <skip>
       <th scope="row">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
-    </tr>
+    </skip>
   </tbody>
 </table>
-</div>
-
-```html
-<table class="table table-striped table-bordered">
-  <thead>
-    ...
-  </thead>
-  <tbody>
-    ...
-    <tr>
-      <td colspan="4">
-        <table class="table mb-0">
-          ...
-        </table>
-      </td>
-    </tr>
-    ...
-  </tbody>
-</table>
-```
+{{< /example >}}
 
 ## How nesting works
 
@@ -457,173 +369,125 @@ Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be
 
 Similar to tables and dark tables, use the modifier classes `.table-light` or `.table-dark` to make `<thead>`s appear light or dark gray.
 
-<div class="bd-example">
+{{< example skip=tr >}}
 <table class="table">
   <thead class="table-light">
-    <tr>
+    <skip>
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
-    </tr>
+    </skip>
   </thead>
   <tbody>
-    <tr>
+    <skip>
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
-    </tr>
+    </skip>
   </tbody>
 </table>
-</div>
+{{< /example >}}
 
-```html
-<table class="table">
-  <thead class="table-light">
-    ...
-  </thead>
-  <tbody>
-    ...
-  </tbody>
-</table>
-```
-
-<div class="bd-example">
+{{< example skip=tr >}}
 <table class="table">
   <thead class="table-dark">
-    <tr>
+    <skip>
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
-    </tr>
+    </skip>
   </thead>
   <tbody>
-    <tr>
+    <skip>
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
-    </tr>
+    </skip>
   </tbody>
 </table>
-</div>
-
-```html
-<table class="table">
-  <thead class="table-dark">
-    ...
-  </thead>
-  <tbody>
-    ...
-  </tbody>
-</table>
-```
+{{< /example >}}
 
 ### Table foot
 
-<div class="bd-example">
+{{< example skip=tr >}}
 <table class="table">
   <thead class="table-light">
-    <tr>
+    <skip>
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
-    </tr>
+    </skip>
   </thead>
   <tbody>
-    <tr>
+    <skip>
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
-    </tr>
+    </skip>
   </tbody>
   <tfoot>
-    <tr>
+    <skip>
       <td>Footer</td>
       <td>Footer</td>
       <td>Footer</td>
       <td>Footer</td>
-    </tr>
+    </skip>
   </tfoot>
 </table>
-</div>
-
-```html
-<table class="table">
-  <thead>
-    ...
-  </thead>
-  <tbody>
-    ...
-  </tbody>
-  <tfoot>
-    ...
-  </tfoot>
-</table>
-```
+{{< /example >}}
 
 ### Captions
 
 A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it's about and decide if they want to read it.
 
-<div class="bd-example">
-  <table class="table">
-    <caption>List of users</caption>
-    {{< partial "table-content" >}}
-  </table>
-</div>
-
-```html
-<table class="table table-sm">
+{{< example >}}
+<table class="table">
   <caption>List of users</caption>
-  <thead>
-    ...
-  </thead>
-  <tbody>
-    ...
-  </tbody>
+{{< partial "table-content" >}}
 </table>
-```
+{{< /example >}}
 
 You can also put the `<caption>` on the top of the table with `.caption-top`.
 
@@ -675,72 +539,64 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
 
 Across every breakpoint, use `.table-responsive` for horizontally scrolling tables.
 
-<div class="bd-example">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-```html
+{{< example skip=table >}}
 <div class="table-responsive">
-  <table class="table">
-    ...
-  </table>
+  <skip class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </skip>
 </div>
-```
+{{< /example >}}
 
 ### Breakpoint specific
 
@@ -748,80 +604,66 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
 
 **These tables may appear broken until their responsive styles apply at specific viewport widths.**
 
-{{< tables.inline >}}
+{{< example skip=table >}}
+{{< table.inline >}}
 {{ range $.Site.Data.breakpoints }}
-{{ if not (eq . "xs") }}
-<div class="bd-example">
-  <div class="table-responsive{{ .abbr }}">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-          <th scope="col">Heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+{{ if not (eq .breakpoint "xs") }}
+<div class="table-responsive{{ .abbr }}{{ if not (eq .breakpoint "xxl") }} mb-4{{ end }}">
+  <skip class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </skip>
 </div>
 {{ end -}}
 {{- end -}}
-{{< /tables.inline >}}
-
-{{< highlight html >}}
-{{< tables.inline >}}
-{{- range $.Site.Data.breakpoints -}}
-{{- if not (eq . "xs") }}
-<div class="table-responsive{{ .abbr }}">
-  <table class="table">
-    ...
-  </table>
-</div>
-{{ end -}}
-{{- end -}}
-{{< /tables.inline >}}
-{{< /highlight >}}
+{{< /table.inline >}}
+{{< /example >}}
 
 ## CSS
 

@@ -143,7 +143,7 @@ The `<hr>` element has been simplified. Similar to browser defaults, `<hr>`s are
 
 All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `margin-bottom: 1rem`. Nested lists have no `margin-bottom`. We've also reset the `padding-left` on `<ul>` and `<ol>` elements.
 
-<div class="bd-example">
+{{< example show_markup=false >}}
 {{< markdown >}}
 * All lists have their top margin removed
 * And their bottom margin normalized
@@ -157,21 +157,21 @@ All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `
 3. It has the same overall look
 4. As the previous unordered list
 {{< /markdown >}}
-</div>
+{{< /example >}}
 
 For simpler styling, clear hierarchy, and better spacing, description lists have updated `margin`s. `<dd>`s reset `margin-left` to `0` and add `margin-bottom: .5rem`. `<dt>`s are **bolded**.
 
-<div class="bd-example">
-  <dl>
-    <dt>Description lists</dt>
-    <dd>A description list is perfect for defining terms.</dd>
-    <dt>Term</dt>
-    <dd>Definition for the term.</dd>
-    <dd>A second definition for the same term.</dd>
-    <dt>Another term</dt>
-    <dd>Definition for this other term.</dd>
-  </dl>
-</div>
+{{< example show_markup=false >}}
+<dl>
+  <dt>Description lists</dt>
+  <dd>A description list is perfect for defining terms.</dd>
+  <dt>Term</dt>
+  <dd>Definition for the term.</dd>
+  <dd>A second definition for the same term.</dd>
+  <dt>Another term</dt>
+  <dd>Definition for this other term.</dd>
+</dl>
+{{< /example >}}
 
 ## Inline code
 
@@ -273,7 +273,8 @@ These changes, and more, are demonstrated below.
 {{< partial "callouts/warning-input-support.md" >}}
 {{< /callout >}}
 
-<form class="bd-example">
+{{< example show_markup=false >}}
+<form>
   <fieldset>
     <legend>Example legend</legend>
     <p>
@@ -394,6 +395,7 @@ These changes, and more, are demonstrated below.
     </p>
   </fieldset>
 </form>
+{{< /example >}}
 
 ### Pointers on buttons
 
@@ -409,54 +411,54 @@ Reboot includes an enhancement for `role="button"` to change the default cursor 
 
 The `<address>` element is updated to reset the browser default `font-style` from `italic` to `normal`. `line-height` is also now inherited, and `margin-bottom: 1rem` has been added. `<address>`s are for presenting contact information for the nearest ancestor (or an entire body of work). Preserve formatting by ending lines with `<br>`.
 
-<div class="bd-example">
-  <address>
-    <strong>ACME Corporation</strong><br>
-    1123 Fictional St,<br>
-    San Francisco, CA 94103<br>
-    <abbr title="Phone">P:</abbr> (123) 456-7890
-  </address>
+{{< example show_markup=false >}}
+<address>
+  <strong>ACME Corporation</strong><br>
+  1123 Fictional St,<br>
+  San Francisco, CA 94103<br>
+  <abbr title="Phone">P:</abbr> (123) 456-7890
+</address>
 
-  <address>
-    <strong>Full Name</strong><br>
-    <a href="mailto:first.last@example.com">first.last@example.com</a>
-  </address>
-</div>
+<address>
+  <strong>Full Name</strong><br>
+  <a href="mailto:first.last@example.com">first.last@example.com</a>
+</address>
+{{< /example >}}
 
 ### Blockquote
 
 The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem` for something more consistent with other elements.
 
-<div class="bd-example">
-  <blockquote class="blockquote">
-    <p>A well-known quote, contained in a blockquote element.</p>
-  </blockquote>
-  <p>Someone famous in <cite title="Source Title">Source Title</cite></p>
-</div>
+{{< example show_markup=false >}}
+<blockquote class="blockquote">
+  <p>A well-known quote, contained in a blockquote element.</p>
+</blockquote>
+<p>Someone famous in <cite title="Source Title">Source Title</cite></p>
+{{< /example >}}
 
 ### Inline elements
 
 The `<abbr>` element receives basic styling to make it stand out amongst paragraph text.
 
-<div class="bd-example">
-  The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
-</div>
+{{< example show_markup=false >}}
+The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.
+{{< /example >}}
 
 ### Summary
 
 The default `cursor` on summary is `text`, so we reset that to `pointer` to convey that the element can be interacted with by clicking on it.
 
-<div class="bd-example">
-  <details>
-    <summary>Some details</summary>
-    <p>More info about the details.</p>
-  </details>
+{{< example show_markup=false >}}
+<details>
+  <summary>Some details</summary>
+  <p>More info about the details.</p>
+</details>
 
-  <details open>
-    <summary>Even more details</summary>
-    <p>Here are even more details about the details.</p>
-  </details>
-</div>
+<details open>
+  <summary>Even more details</summary>
+  <p>Here are even more details about the details.</p>
+</details>
+{{< /example >}}
 
 ## HTML5 `[hidden]` attribute
 
