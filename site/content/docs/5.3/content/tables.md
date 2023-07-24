@@ -482,45 +482,72 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 
 A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it's about and decide if they want to read it.
 
-{{< example >}}
+{{< example skip=tr >}}
 <table class="table">
   <caption>List of users</caption>
-{{< partial "table-content" >}}
+  <thead>
+    <skip>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </skip>
+  </thead>
+  <tbody>
+    <skip>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </skip>
+    <skip>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </skip>
+    <skip>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </skip>
+  </tbody>
 </table>
 {{< /example >}}
 
 You can also put the `<caption>` on the top of the table with `.caption-top`.
 
-{{< example >}}
+{{< example skip=tr >}}
 <table class="table caption-top">
   <caption>List of users</caption>
   <thead>
-    <tr>
+    <skip>
       <th scope="col">#</th>
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Handle</th>
-    </tr>
+    </skip>
   </thead>
   <tbody>
-    <tr>
+    <skip>
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
-    </tr>
-    <tr>
+    </skip>
+    <skip>
       <th scope="row">3</th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
-    </tr>
+    </skip>
   </tbody>
 </table>
 {{< /example >}}

@@ -36,8 +36,9 @@
     .forEach(element => {
       // Ignore examples made by shortcode
       if (!element.closest('.bd-example-snippet')) {
-        element.insertAdjacentHTML('beforebegin', btnHtml.replace('html', element.querySelector('pre > code').getAttribute('data-lang')))
+        element.insertAdjacentHTML('beforebegin', btnHtml)
         element.previousElementSibling.append(element)
+        element.previousElementSibling.querySelector('small').innerHTML = element.querySelector('pre > code').getAttribute('data-lang')
       }
     })
 
