@@ -38,7 +38,7 @@
       if (!element.closest('.bd-example-snippet')) {
         element.insertAdjacentHTML('beforebegin', btnHtml)
         element.previousElementSibling.append(element)
-        element.previousElementSibling.querySelector('small').innerHTML = element.querySelector('pre > code').getAttribute('data-lang')
+        element.previousElementSibling.querySelector('small').textContent = element.querySelector('pre > code').getAttribute('data-lang')
       }
     })
 
