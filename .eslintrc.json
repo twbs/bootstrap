@@ -96,7 +96,6 @@
     "unicorn/prefer-dom-node-dataset": "off",
     "unicorn/prefer-module": "off",
     "unicorn/prefer-query-selector": "off",
-    "unicorn/prefer-spread": "off",
     "unicorn/prefer-string-replace-all": "off",
     "unicorn/prevent-abbreviations": "off"
   },
