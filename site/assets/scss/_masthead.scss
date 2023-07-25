@@ -23,8 +23,25 @@
   .bd-code-snippet {
     --bs-border-radius: .5rem;
 
+    position: relative;
     margin: 0;
     border-width: 1px;
+  }
+
+  .highlight-toolbar {
+    padding: 0 !important; // stylelint-disable-line declaration-no-important
+
+    > :first-child {
+      display: none;
+    }
+
+    > :last-child {
+      position: absolute;
+      top: 50%;
+      right: .75rem;
+      z-index: 1;
+      transform: translateY(-50%);
+    }
   }
 
   .highlight {
@@ -33,6 +50,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    background-color: rgba(var(--bs-body-color-rgb), .075);
+    border: 0;
+    @include border-radius(subtract(var(--bs-border-radius), 1px));
 
     @include media-breakpoint-up(lg) {
       padding-right: 4rem;

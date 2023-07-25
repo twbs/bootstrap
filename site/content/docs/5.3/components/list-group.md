@@ -362,7 +362,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
     </div>
   </div>
 </div>
-  {{< /example >}}
+{{< /example >}}
 
 ### Using data attributes
 

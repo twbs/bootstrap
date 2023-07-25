@@ -26,7 +26,7 @@
   // Open in StackBlitz logic
   document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', event => {
-      const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
+      const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML.replace(/"\/docs\//g, '"https://getbootstrap.com/docs/')
 
       // Get extra classes for this example
       const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).join(' ')
