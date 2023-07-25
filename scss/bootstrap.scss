@@ -1,6 +1,7 @@
+@import "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap";
+
 @import "mixins/banner";
 @include bsBanner("");
-
 
 // scss-docs-start import-stack
 // Configuration
@@ -39,7 +40,7 @@
 @import "modal";
 @import "tooltip";
 @import "popover";
-@import "carousel";
+//@import "carousel";
 @import "spinners";
 @import "offcanvas";
 @import "placeholders";
