@@ -139,7 +139,7 @@ The gutters between columns in our predefined grid classes can be removed with `
 
 **Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid` and add `.mx-0` to the `.row` to prevent overflow.
 
-In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
+In practice, here's how it looks. Note that you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
 
 {{< example class="bd-example-row" >}}
 <div class="row g-0 text-center">
