@@ -191,7 +191,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
                loader: 'postcss-loader',
                options: {
                  postcssOptions: {
-                   plugins: () => [
+                   plugins: [
                      autoprefixer
                    ]
                  }
