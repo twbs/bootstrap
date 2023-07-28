@@ -102,6 +102,73 @@ Place any checkbox or radio option within an input group's addon instead of text
 </div>
 {{< /example >}}
 
+## Range
+
+Use range in input group. The example adds two classes `.flex-nowrap` and `.w-100`.
+
+`.flex-nowrap` is added to `.input-group`.
+
+`.w-100` is added to `.input-group-text`.
+
+{{< example >}}
+<div class="input-group mb-3">
+  <label for="customRange1" class="input-group-text">Example</label>
+  <span class="input-group-text">
+    <input type="range" class="form-range" id="customRange1">
+  </span>
+</div>
+<div class="input-group mb-3 flex-nowrap">
+  <label for="customRange2" class="input-group-text">Example</label>
+  <span class="input-group-text w-100">
+    <input type="range" class="form-range" id="customRange2">
+  </span>
+</div>
+
+<div class="input-group mb-3">
+  <label for="disabledRange1" class="input-group-text">Disabled</label>
+  <span class="input-group-text">
+    <input type="range" class="form-range" id="disabledRange1" disabled>
+  </span>
+</div>
+<div class="input-group mb-3 flex-nowrap">
+  <label for="disabledRange2" class="input-group-text">Disabled</label>
+  <span class="input-group-text w-100">
+    <input type="range" class="form-range" id="disabledRange2" disabled>
+  </span>
+</div>
+{{< /example >}}
+
+Min &	Max & Steps and different Value. The following example minimum value is 0.
+
+{{< example >}}
+<div class="input-group mb-3 flex-nowrap">
+  <label for="customRange3" class="input-group-text">Min &amp; Max</label>
+  <span class="input-group-text w-100">
+  <input type="range" class="form-range" min="0" max="5" id="customRange3">
+  </span>
+</div>
+
+<div class="input-group mb-3 flex-nowrap">
+  <label for="customRange4" class="input-group-text">Steps</label>
+  <span class="input-group-text w-100">
+<input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange4">
+  </span>
+</div>
+
+<div class="input-group mb-3 flex-nowrap">
+  <label for="customRange5" class="input-group-text">Value = 1.5</label>
+  <span class="input-group-text w-100">
+<input type="range" class="form-range" min="0" max="5" step="0.5" value="1.5" id="customRange5">
+  </span>
+</div>
+<div class="input-group mb-3 flex-nowrap">
+  <label for="customRange6" class="input-group-text">Value = 4.5</label>
+  <span class="input-group-text w-100">
+<input type="range" class="form-range" min="0" max="5" step="0.5" value="4" id="customRange6">
+  </span>
+</div>
+{{< /example >}}
+
 ## Multiple inputs
 
 While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
