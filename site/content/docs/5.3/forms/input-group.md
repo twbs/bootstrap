@@ -151,20 +151,20 @@ Min &	Max & Steps and different Value. The following example minimum value is 0.
 <div class="input-group mb-3 flex-nowrap">
   <label for="customRange4" class="input-group-text">Steps</label>
   <span class="input-group-text w-100">
-<input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange4">
+  <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange4">
   </span>
 </div>
 
 <div class="input-group mb-3 flex-nowrap">
   <label for="customRange5" class="input-group-text">Value = 1.5</label>
   <span class="input-group-text w-100">
-<input type="range" class="form-range" min="0" max="5" step="0.5" value="1.5" id="customRange5">
+  <input type="range" class="form-range" min="0" max="5" step="0.5" value="1.5" id="customRange5">
   </span>
 </div>
 <div class="input-group mb-3 flex-nowrap">
   <label for="customRange6" class="input-group-text">Value = 4.5</label>
   <span class="input-group-text w-100">
-<input type="range" class="form-range" min="0" max="5" step="0.5" value="4" id="customRange6">
+  <input type="range" class="form-range" min="0" max="5" step="0.5" value="4" id="customRange6">
   </span>
 </div>
 {{< /example >}}
