@@ -42,7 +42,7 @@ Using horizontal margin utilities like `.ms-auto` as spacers:
 {{< example class="bd-example-flex" >}}
 <div class="hstack gap-3">
   <div class="p-2">First item</div>
-  <div class="p-2">Second item</div>
+  <div class="p-2 ms-auto">Second item</div>
   <div class="p-2">Third item</div>
 </div>
 {{< /example >}}
@@ -52,7 +52,7 @@ And with [vertical rules]({{< docsref "/helpers/vertical-rule" >}}):
 {{< example class="bd-example-flex" >}}
 <div class="hstack gap-3">
   <div class="p-2">First item</div>
-  <div class="p-2">Second item</div>
+  <div class="p-2 ms-auto">Second item</div>
   <div class="vr"></div>
   <div class="p-2">Third item</div>
 </div>

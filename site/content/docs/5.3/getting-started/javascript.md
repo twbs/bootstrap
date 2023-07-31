@@ -118,9 +118,7 @@ All infinitive events provide [`preventDefault()`](https://developer.mozilla.org
 const myModal = document.querySelector('#myModal')
 
 myModal.addEventListener('show.bs.modal', event => {
-  if (!data) {
-    return event.preventDefault() // stops modal from being shown
-  }
+  return event.preventDefault() // stops modal from being shown
 })
 ```
 

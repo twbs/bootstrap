@@ -17,8 +17,9 @@
   {{- errorf "%s: %q: Missing required parameters! Got: name=%q file=%q!" .Position .Name $name $file -}}
 {{- else -}}
   {{- $capture_start := printf "// scss-docs-start %s\n" $name -}}
-  {{- $capture_end := printf "// scss-docs-end %s" $name -}}
+  {{- $capture_end := printf "// scss-docs-end %s\n" $name -}}
   {{- $regex := printf `%s((?:.|\n)*)%s` $capture_start $capture_end -}}
+  {{- $regex_nested := printf `// scss-docs-.*\n` -}}
 
   {{- /*
     TODO: figure out why we can't do the following and get the first group (the only capturing one)...
@@ -35,11 +36,16 @@
   {{- $match = replace $match $capture_start "" -}}
   {{- $match = replace $match $capture_end "" -}}
 
+  {{- $match_nested := findRE $regex_nested $match -}}
+  {{- range $to_remove := $match_nested -}}
+    {{- $match = replace $match $to_remove "" -}}
+  {{- end -}}
+
   {{- if (ne $strip_default "false") -}}
     {{- $match = replace $match " !default" "" -}}
   {{- end -}}
 
-  <div class="bd-example-snippet bd-code-snippet bd-scss-docs">
+  <div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
       <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="{{ .Site.Params.repo }}/blob/v{{ .Site.Params.current_version }}/{{ $file | replaceRE `\\` "/" }}">
         {{- $file -}}
