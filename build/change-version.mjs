@@ -6,11 +6,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-'use strict'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import globby from 'globby'
 
-const fs = require('node:fs').promises
-const path = require('node:path')
-const globby = require('globby')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const VERBOSE = process.argv.includes('--verbose')
 const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-run')

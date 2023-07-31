@@ -1,10 +1,12 @@
-'use strict'
+import path from 'node:path'
+import process from 'node:process'
+import { fileURLToPath } from 'node:url'
+import { babel } from '@rollup/plugin-babel'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import banner from './banner.mjs'
 
-const path = require('node:path')
-const { babel } = require('@rollup/plugin-babel')
-const { nodeResolve } = require('@rollup/plugin-node-resolve')
-const replace = require('@rollup/plugin-replace')
-const banner = require('./banner.js')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const BUNDLE = process.env.BUNDLE === 'true'
 const ESM = process.env.ESM === 'true'
@@ -54,4 +56,4 @@ if (!ESM) {
   rollupConfig.output.name = 'bootstrap'
 }
 
-module.exports = rollupConfig
+export default rollupConfig
