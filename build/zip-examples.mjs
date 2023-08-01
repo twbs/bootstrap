@@ -15,16 +15,14 @@ import sh from 'shelljs'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const pkgJson = path.join(__dirname, '../package.json')
-const pkgJsonString = await fs.readFile(pkgJson, 'utf8')
-
-const pkg = JSON.parse(pkgJsonString)
+const pkg = JSON.parse(await fs.readFile(pkgJson, 'utf8'))
 
 const versionShort = pkg.config.version_short
 const distFolder = `bootstrap-${pkg.version}-examples`
 const rootDocsDir = '_site'
 const docsDir = `${rootDocsDir}/docs/${versionShort}/`
 
-// these are the files we need in the examples
+// These are the files we need in the examples
 const cssFiles = [
   'bootstrap.min.css',
   'bootstrap.min.css.map',
