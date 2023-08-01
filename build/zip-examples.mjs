@@ -22,7 +22,7 @@ const distFolder = `bootstrap-${pkg.version}-examples`
 const rootDocsDir = '_site'
 const docsDir = `${rootDocsDir}/docs/${versionShort}/`
 
-// These are the files we need in the examples
+// these are the files we need in the examples
 const cssFiles = [
   'bootstrap.min.css',
   'bootstrap.min.css.map',
