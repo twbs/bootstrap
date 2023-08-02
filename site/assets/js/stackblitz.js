@@ -28,12 +28,12 @@ document.querySelectorAll('.btn-edit').forEach(btn => {
     // Get extra classes for this example
     const classes = Array.from(exampleEl.classList).join(' ')
 
-    sdk.openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
+    openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
   })
 })
 
-sdk.openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
-  const markup = `<!doctype html>
+const openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
+  const indexHtml = `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -44,18 +44,17 @@ sdk.openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
     <${'script'} src="${jsBundleCdn}"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
-
-    <!-- Example Code -->
-${htmlSnippet.replace(/^/gm, '    ')}
-    <!-- End Example Code -->
+    <!-- Example Code Start-->
+${htmlSnippet.trimStart().replace(/^/gm, '    ').replace(/^ {4}$/gm, '').trimEnd()}
+    <!-- Example Code End -->
   </body>
-</html>`
+</html>
+`
 
-  const jsSnippetContent = jsSnippet ? jsSnippetFile : null
   const project = {
     files: {
-      'index.html': markup,
-      'index.js': jsSnippetContent
+      'index.html': indexHtml,
+      ...(jsSnippet && { 'index.js': jsSnippetFile })
     },
     title: 'Bootstrap Example',
     description: `Official example from ${window.location.href}`,
