@@ -84,11 +84,8 @@ You can also use the CDN to fetch any of our [additional builds listed in the Co
 
 ## JS components
 
-Curious which components explicitly require our JavaScript and Popper? Click the show components link below. If you're at all unsure about the general page structure, keep reading for an example page template.
+Curious which components explicitly require our JavaScript and Popper? If you're at all unsure about the general page structure, keep reading for an example page template.
 
-<details>
-<summary class="bd-summary-link mb-3">Show components requiring JavaScript</summary>
-{{< markdown >}}
 - Alerts for dismissing
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
@@ -101,8 +98,6 @@ Curious which components explicitly require our JavaScript and Popper? Click the
 - Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
 - Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/))
-{{< /markdown >}}
-</details>
 
 ## Important globals
 
