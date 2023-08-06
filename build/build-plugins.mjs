@@ -6,13 +6,15 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-'use strict'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { babel } from '@rollup/plugin-babel'
+import globby from 'globby'
+import { rollup } from 'rollup'
+import banner from './banner.mjs'
 
-const path = require('node:path')
-const rollup = require('rollup')
-const globby = require('globby')
-const { babel } = require('@rollup/plugin-babel')
-const banner = require('./banner.js')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const sourcePath = path.resolve(__dirname, '../js/src/').replace(/\\/g, '/')
 const jsFiles = globby.sync(`${sourcePath}/**/*.js`)
@@ -37,7 +39,7 @@ for (const file of jsFiles) {
 const build = async plugin => {
   const globals = {}
 
-  const bundle = await rollup.rollup({
+  const bundle = await rollup({
     input: plugin.src,
     plugins: [
       babel({
