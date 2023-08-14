@@ -1,4 +1,4 @@
-// stylelint-disable selector-max-type
+// stylelint-disable selector-max-type, selector-no-qualifying-type
 
 .bd-toc {
   @include media-breakpoint-up(lg) {
@@ -20,19 +20,24 @@
 
       ul {
         padding-left: 1rem;
-        margin-top: .25rem;
       }
     }
 
-    li {
-      margin-bottom: .25rem;
-    }
-
     a {
+      display: block;
+      padding: .125rem 0 .125rem .75rem;
       color: inherit;
+      text-decoration: none;
+      border-left: .125rem solid transparent;
 
-      &:not(:hover) {
-        text-decoration: none;
+      &:hover,
+      &.active {
+        color: var(--bd-toc-color);
+        border-left-color: var(--bd-toc-color);
+      }
+
+      &.active {
+        font-weight: 500;
       }
 
       code {
@@ -52,15 +57,16 @@
   }
 
   @include media-breakpoint-down(md) {
-    border: 1px solid $border-color;
-    @include border-radius(.4rem);
+    color: var(--bs-body-color);
+    border: 1px solid var(--bs-border-color);
+    @include border-radius(var(--bs-border-radius));
 
     &:hover,
     &:focus,
     &:active,
     &[aria-expanded="true"] {
       color: var(--bd-violet);
-      background-color: $white;
+      background-color: var(--bs-body-bg);
       border-color: var(--bd-violet);
     }
 
@@ -74,10 +80,10 @@
 .bd-toc-collapse {
   @include media-breakpoint-down(md) {
     nav {
-      padding: 1.25rem;
-      background-color: var(--bs-gray-100);
-      border: 1px solid $border-color;
-      @include border-radius(.25rem);
+      padding: 1.25rem 1.25rem 1.25rem 1rem;
+      background-color: var(--bs-tertiary-bg);
+      border: 1px solid var(--bs-border-color);
+      @include border-radius(var(--bs-border-radius));
     }
   }
 

@@ -1,13 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): util/focustrap.js
+ * Bootstrap util/focustrap.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler'
-import SelectorEngine from '../dom/selector-engine'
-import Config from './config'
+import EventHandler from '../dom/event-handler.js'
+import SelectorEngine from '../dom/selector-engine.js'
+import Config from './config.js'
 
 /**
  * Constants
@@ -24,13 +24,13 @@ const TAB_NAV_FORWARD = 'forward'
 const TAB_NAV_BACKWARD = 'backward'
 
 const Default = {
-  trapElement: null, // The element to trap focus inside of
-  autofocus: true
+  autofocus: true,
+  trapElement: null // The element to trap focus inside of
 }
 
 const DefaultType = {
-  trapElement: 'element',
-  autofocus: 'boolean'
+  autofocus: 'boolean',
+  trapElement: 'element'
 }
 
 /**

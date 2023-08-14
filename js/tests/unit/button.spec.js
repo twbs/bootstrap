@@ -1,5 +1,5 @@
-import Button from '../../src/button'
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import Button from '../../src/button.js'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Button', () => {
   let fixtureEl
@@ -100,14 +100,14 @@ describe('Button', () => {
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
 
-      spyOn(button, 'toggle')
+      const spy = spyOn(button, 'toggle')
 
       jQueryMock.fn.button = Button.jQueryInterface
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
 
-      expect(button.toggle).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should create new button instance and call toggle', () => {

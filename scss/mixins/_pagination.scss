@@ -5,6 +5,6 @@
   --#{$prefix}pagination-padding-x: #{$padding-x};
   --#{$prefix}pagination-padding-y: #{$padding-y};
   @include rfs($font-size, --#{$prefix}pagination-font-size);
-  --#{$prefix}pagination-border-radius: #{$border-radius}; // stylelint-disable-line custom-property-empty-line-before
+  --#{$prefix}pagination-border-radius: #{$border-radius};
 }
 // scss-docs-end pagination-mixin

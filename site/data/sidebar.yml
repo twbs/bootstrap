@@ -12,6 +12,7 @@
     - title: JavaScript
     - title: Webpack
     - title: Parcel
+    - title: Vite
     - title: Accessibility
     - title: RFS
     - title: RTL
@@ -25,6 +26,7 @@
     - title: Sass
     - title: Options
     - title: Color
+    - title: Color modes
     - title: Components
     - title: CSS variables
     - title: Optimize
@@ -100,14 +102,17 @@
   icon_color: orange
   pages:
     - title: Clearfix
+    - title: Color & background
     - title: Colored links
-    - title: Ratio
+    - title: Focus ring
+    - title: Icon link
     - title: Position
+    - title: Ratio
     - title: Stacks
-    - title: Visually hidden
     - title: Stretched link
     - title: Text truncation
     - title: Vertical rule
+    - title: Visually hidden
 
 - title: Utilities
   icon: braces-asterisk
@@ -121,6 +126,8 @@
     - title: Flex
     - title: Float
     - title: Interactions
+    - title: Link
+    - title: Object fit
     - title: Opacity
     - title: Overflow
     - title: Position
@@ -130,6 +137,7 @@
     - title: Text
     - title: Vertical align
     - title: Visibility
+    - title: Z-index
 
 - title: Extend
   icon: tools
