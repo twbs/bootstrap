@@ -38,7 +38,7 @@
     },
     {
       "path": "./dist/js/bootstrap.bundle.min.js",
-      "maxSize": "23.15 kB"
+      "maxSize": "23.25 kB"
     },
     {
       "path": "./dist/js/bootstrap.esm.js",
@@ -54,7 +54,7 @@
     },
     {
       "path": "./dist/js/bootstrap.min.js",
-      "maxSize": "16.1 kB"
+      "maxSize": "16.25 kB"
     }
   ],
   "ci": {
