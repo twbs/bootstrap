@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): util/template-factory.js
+ * Bootstrap util/template-factory.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { DefaultAllowlist, sanitizeHtml } from './sanitizer'
-import { getElement, isElement } from '../util/index'
-import SelectorEngine from '../dom/selector-engine'
-import Config from './config'
+import SelectorEngine from '../dom/selector-engine.js'
+import Config from './config.js'
+import { DefaultAllowlist, sanitizeHtml } from './sanitizer.js'
+import { execute, getElement, isElement } from './index.js'
 
 /**
  * Constants
@@ -17,28 +17,28 @@ import Config from './config'
 const NAME = 'TemplateFactory'
 
 const Default = {
-  extraClass: '',
-  template: '<div></div>',
+  allowList: DefaultAllowlist,
   content: {}, // { selector : text ,  selector2 : text2 , }
+  extraClass: '',
   html: false,
   sanitize: true,
   sanitizeFn: null,
-  allowList: DefaultAllowlist
+  template: '<div></div>'
 }
 
 const DefaultType = {
-  extraClass: '(string|function)',
-  template: 'string',
+  allowList: 'object',
   content: 'object',
+  extraClass: '(string|function)',
   html: 'boolean',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
-  allowList: 'object'
+  template: 'string'
 }
 
 const DefaultContentType = {
-  selector: '(string|element)',
-  entry: '(string|element|function|null)'
+  entry: '(string|element|function|null)',
+  selector: '(string|element)'
 }
 
 /**
@@ -143,7 +143,7 @@ class TemplateFactory extends Config {
   }
 
   _resolvePossibleFunction(arg) {
-    return typeof arg === 'function' ? arg(this) : arg
+    return execute(arg, [this])
   }
 
   _putElementInTemplate(element, templateElement) {

@@ -11,6 +11,17 @@
     margin-left: -.25rem;
     overflow-y: auto;
   }
+
+  @include media-breakpoint-down(lg) {
+    .offcanvas-lg {
+      border-right-color: var(--bs-border-color);
+      box-shadow: var(--bs-box-shadow-lg);
+    }
+  }
+}
+
+.bd-links-heading {
+  color: var(--bs-emphasis-color);
 }
 
 .bd-links-nav {
@@ -35,16 +46,16 @@
 .bd-links-link {
   padding: .1875rem .5rem;
   margin-top: .125rem;
-  margin-left: 1rem;
-  color: rgba($black, .65);
+  margin-left: 1.125rem;
+  color: var(--bs-body-color);
   text-decoration: if($link-decoration == none, null, none);
 
   &:hover,
   &:focus,
   &.active {
-    color: rgba($black, .85);
+    color: var(--bs-emphasis-color);
     text-decoration: if($link-hover-decoration == underline, none, null);
-    background-color: rgba(var(--bd-violet-rgb), .1);
+    background-color: var(--bd-sidebar-link-bg);
   }
 
   &.active {

@@ -1,13 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): util/swipe.js
+ * Bootstrap util/swipe.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import Config from './config'
-import EventHandler from '../dom/event-handler'
-import { execute } from './index'
+import EventHandler from '../dom/event-handler.js'
+import Config from './config.js'
+import { execute } from './index.js'
 
 /**
  * Constants
@@ -26,15 +26,15 @@ const CLASS_NAME_POINTER_EVENT = 'pointer-event'
 const SWIPE_THRESHOLD = 40
 
 const Default = {
+  endCallback: null,
   leftCallback: null,
-  rightCallback: null,
-  endCallback: null
+  rightCallback: null
 }
 
 const DefaultType = {
+  endCallback: '(function|null)',
   leftCallback: '(function|null)',
-  rightCallback: '(function|null)',
-  endCallback: '(function|null)'
+  rightCallback: '(function|null)'
 }
 
 /**

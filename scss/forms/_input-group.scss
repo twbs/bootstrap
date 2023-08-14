@@ -10,7 +10,8 @@
   width: 100%;
 
   > .form-control,
-  > .form-select {
+  > .form-select,
+  > .form-floating {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
     width: 1%;
@@ -19,8 +20,9 @@
 
   // Bring the "active" form control to the top of surrounding elements
   > .form-control:focus,
-  > .form-select:focus {
-    z-index: 3;
+  > .form-select:focus,
+  > .form-floating:focus-within {
+    z-index: 5;
   }
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
@@ -31,7 +33,7 @@
     z-index: 2;
 
     &:focus {
-      z-index: 3;
+      z-index: 5;
     }
   }
 }
@@ -96,15 +98,19 @@
 // stylelint-disable-next-line no-duplicate-selectors
 .input-group {
   &:not(.has-validation) {
-    > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
-    > .dropdown-toggle:nth-last-child(n + 3) {
+    > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
+    > .dropdown-toggle:nth-last-child(n + 3),
+    > .form-floating:not(:last-child) > .form-control,
+    > .form-floating:not(:last-child) > .form-select {
       @include border-end-radius(0);
     }
   }
 
   &.has-validation {
-    > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu),
-    > .dropdown-toggle:nth-last-child(n + 4) {
+    > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
+    > .dropdown-toggle:nth-last-child(n + 4),
+    > .form-floating:nth-last-child(n + 3) > .form-control,
+    > .form-floating:nth-last-child(n + 3) > .form-select {
       @include border-end-radius(0);
     }
   }
@@ -115,7 +121,12 @@
   }
 
   > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
-    margin-left: -$input-border-width;
+    margin-left: calc(#{$input-border-width} * -1); // stylelint-disable-line function-disallowed-list
+    @include border-start-radius(0);
+  }
+
+  > .form-floating:not(:first-child) > .form-control,
+  > .form-floating:not(:first-child) > .form-select {
     @include border-start-radius(0);
   }
 }

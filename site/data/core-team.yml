@@ -10,17 +10,20 @@
 - name: GeoSot
   user: geosot
 
+- name: Patrick H. Lauke
+  user: patrickhlauke
+
+- name: Julien Déramond
+  user: julien-deramond
+
+- name: Gaël Poupard
+  user: ffoodd
+
 - name: Rohit Sharma
   user: rohit2sharma95
 
 - name: alpadev
   user: alpadev
-
-- name: Gaël Poupard
-  user: ffoodd
-
-- name: Patrick H. Lauke
-  user: patrickhlauke
 
 - name: Martijn Cuppens
   user: martijncuppens
