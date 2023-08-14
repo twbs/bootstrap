@@ -77,9 +77,9 @@ $utilities: map-merge(
       property: box-shadow,
       class: shadow,
       values: (
-        null: $box-shadow,
-        sm: $box-shadow-sm,
-        lg: $box-shadow-lg,
+        null: var(--#{$prefix}box-shadow),
+        sm: var(--#{$prefix}box-shadow-sm),
+        lg: var(--#{$prefix}box-shadow-lg),
         none: none,
       )
     ),
