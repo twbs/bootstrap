@@ -35,6 +35,8 @@
 @each $display, $font-size in $display-font-sizes {
   .display-#{$display} {
     @include font-size($font-size);
+    font-family: $display-font-family;
+    font-style: $display-font-style;
     font-weight: $display-font-weight;
     line-height: $display-line-height;
   }

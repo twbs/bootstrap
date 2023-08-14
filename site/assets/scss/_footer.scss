@@ -4,12 +4,12 @@
 
 .bd-footer {
   a {
-    color: $gray-700;
+    color: var(--bs-body-color);
     text-decoration: none;
 
     &:hover,
     &:focus {
-      color: $link-color;
+      color: var(--bs-link-hover-color);
       text-decoration: underline;
     }
   }

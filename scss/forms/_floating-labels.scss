@@ -5,6 +5,7 @@
   > .form-control-plaintext,
   > .form-select {
     height: $form-floating-height;
+    min-height: $form-floating-height;
     line-height: $form-floating-line-height;
   }
 
@@ -12,8 +13,13 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
     height: 100%; // allow textareas
     padding: $form-floating-padding-y $form-floating-padding-x;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     pointer-events: none;
     border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
     transform-origin: 0 0;
@@ -50,14 +56,24 @@
   > .form-control-plaintext,
   > .form-select {
     ~ label {
-      opacity: $form-floating-label-opacity;
+      color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
       transform: $form-floating-label-transform;
+
+      &::after {
+        position: absolute;
+        inset: $form-floating-padding-y ($form-floating-padding-x * .5);
+        z-index: -1;
+        height: $form-floating-label-height;
+        content: "";
+        background-color: $input-bg;
+        @include border-radius($input-border-radius);
+      }
     }
   }
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
   > .form-control:-webkit-autofill {
     ~ label {
-      opacity: $form-floating-label-opacity;
+      color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
       transform: $form-floating-label-transform;
     }
   }
@@ -65,6 +81,15 @@
   > .form-control-plaintext {
     ~ label {
       border-width: $input-border-width 0; // Required to properly position label text - as explained above
+    }
+  }
+
+  > :disabled ~ label,
+  > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
+    color: $form-floating-label-disabled-color;
+
+    &::after {
+      background-color: $input-disabled-bg;
     }
   }
 }
