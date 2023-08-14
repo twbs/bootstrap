@@ -75,20 +75,14 @@ You can also use the CDN to fetch any of our [additional builds listed in the Co
 ## Next steps
 
 - Read a bit more about some [important global environment settings](#important-globals) that Bootstrap utilizes.
-
 - Read about what's included in Bootstrap in our [contents section]({{< docsref "/getting-started/contents/" >}}) and the list of [components that require JavaScript](#js-components) below.
-
 - Need a little more power? Consider building with Bootstrap by [including the source files via package manager]({{< docsref "/getting-started/download#package-managers" >}}).
-
 - Looking to use Bootstrap as a module with `<script type="module">`? Please refer to our [using Bootstrap as a module]({{< docsref "/getting-started/javascript#using-bootstrap-as-a-module" >}}) section.
 
 ## JS components
 
-Curious which components explicitly require our JavaScript and Popper? Click the show components link below. If you're at all unsure about the general page structure, keep reading for an example page template.
+Curious which components explicitly require our JavaScript and Popper? If you're at all unsure about the general page structure, keep reading for an example page template.
 
-<details>
-<summary class="bd-summary-link mb-3">Show components requiring JavaScript</summary>
-{{< markdown >}}
 - Alerts for dismissing
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
@@ -101,8 +95,6 @@ Curious which components explicitly require our JavaScript and Popper? Click the
 - Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
 - Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/))
-{{< /markdown >}}
-</details>
 
 ## Important globals
 
