@@ -4,7 +4,8 @@
   },
   "checkRunSettings": {
     "vulnerableCheckRunConclusionLevel": "failure",
-    "displayMode": "diff"
+    "displayMode": "diff",
+    "useMendCheckNames": true
   },
   "issueSettings": {
     "minSeverityLevel": "LOW",
