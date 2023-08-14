@@ -1,12 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): util/component-functions.js
+ * Bootstrap util/component-functions.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import EventHandler from '../dom/event-handler'
-import { getElementFromSelector, isDisabled } from './index'
+import EventHandler from '../dom/event-handler.js'
+import SelectorEngine from '../dom/selector-engine.js'
+import { isDisabled } from './index.js'
 
 const enableDismissTrigger = (component, method = 'hide') => {
   const clickEvent = `click.dismiss${component.EVENT_KEY}`
@@ -21,7 +22,7 @@ const enableDismissTrigger = (component, method = 'hide') => {
       return
     }
 
-    const target = getElementFromSelector(this) || this.closest(`.${name}`)
+    const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}`)
     const instance = component.getOrCreateInstance(target)
 
     // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method

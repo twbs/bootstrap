@@ -1,6 +1,6 @@
-import Backdrop from '../../../src/util/backdrop'
-import { getTransitionDurationFromElement } from '../../../src/util/index'
-import { clearFixture, getFixture } from '../../helpers/fixture'
+import Backdrop from '../../../src/util/backdrop.js'
+import { getTransitionDurationFromElement } from '../../../src/util/index.js'
+import { clearFixture, getFixture } from '../../helpers/fixture.js'
 
 const CLASS_BACKDROP = '.modal-backdrop'
 const CLASS_NAME_FADE = 'fade'

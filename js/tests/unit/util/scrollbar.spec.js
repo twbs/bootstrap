@@ -1,6 +1,6 @@
-import { clearBodyAndDocument, clearFixture, getFixture } from '../../helpers/fixture'
-import Manipulator from '../../../src/dom/manipulator'
-import ScrollBarHelper from '../../../src/util/scrollbar'
+import Manipulator from '../../../src/dom/manipulator.js'
+import ScrollBarHelper from '../../../src/util/scrollbar.js'
+import { clearBodyAndDocument, clearFixture, getFixture } from '../../helpers/fixture.js'
 
 describe('ScrollBar', () => {
   let fixtureEl
