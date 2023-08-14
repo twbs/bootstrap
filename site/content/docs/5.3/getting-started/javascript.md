@@ -22,7 +22,8 @@ A better alternative for those using this type of frameworks is to use a framewo
   {{< callout >}}
   **Try it yourself!** Download the source code and working demo for using Bootstrap with React, Next.js, and React Bootstrap from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/react-nextjs). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/react-nextjs?file=src%2Fpages%2Findex.tsx).
   {{< /callout >}}
-- Vue: [BootstrapVue](https://bootstrap-vue.org/) (currently only supports Vue 2 and Bootstrap 4)
+- Vue: [BootstrapVue](https://bootstrap-vue.org/) (Bootstrap 4)
+- Vue 3: [BootstrapVueNext](https://bootstrap-vue-next.github.io/bootstrap-vue-next/) (Bootstrap 5, currently in alpha)
 - Angular: [ng-bootstrap](https://ng-bootstrap.github.io/)
 
 ## Using Bootstrap as a module
