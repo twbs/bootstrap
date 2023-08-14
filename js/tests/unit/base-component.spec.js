@@ -1,7 +1,7 @@
-import BaseComponent from '../../src/base-component'
-import { clearFixture, getFixture } from '../helpers/fixture'
-import EventHandler from '../../src/dom/event-handler'
-import { noop } from '../../src/util'
+import BaseComponent from '../../src/base-component.js'
+import EventHandler from '../../src/dom/event-handler.js'
+import { noop } from '../../src/util/index.js'
+import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 class DummyClass extends BaseComponent {
   constructor(element) {
@@ -108,11 +108,11 @@ describe('Base Component', () => {
 
       it('should de-register element event listeners', () => {
         createInstance()
-        spyOn(EventHandler, 'off')
+        const spy = spyOn(EventHandler, 'off')
 
         instance.dispose()
 
-        expect(EventHandler.off).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY)
+        expect(spy).toHaveBeenCalledWith(element, DummyClass.EVENT_KEY)
       })
     })
 

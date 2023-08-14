@@ -1,6 +1,6 @@
-import Alert from '../../src/alert'
-import { getTransitionDurationFromElement } from '../../src/util/index'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture'
+import Alert from '../../src/alert.js'
+import { getTransitionDurationFromElement } from '../../src/util/index.js'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Alert', () => {
   let fixtureEl
@@ -148,14 +148,14 @@ describe('Alert', () => {
       const alertEl = fixtureEl.querySelector('.alert')
       const alert = new Alert(alertEl)
 
-      spyOn(alert, 'close')
+      const spy = spyOn(alert, 'close')
 
       jQueryMock.fn.alert = Alert.jQueryInterface
       jQueryMock.elements = [alertEl]
 
       jQueryMock.fn.alert.call(jQueryMock, 'close')
 
-      expect(alert.close).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
 
     it('should create new alert instance and call close', () => {

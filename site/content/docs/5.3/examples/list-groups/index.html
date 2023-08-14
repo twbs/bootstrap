@@ -1,0 +1,225 @@
+---
+layout: examples
+title: List groups
+extra_css:
+  - "list-groups.css"
+body_class: ""
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="calendar-event" viewBox="0 0 16 16">
+    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+  </symbol>
+
+  <symbol id="alarm" viewBox="0 0 16 16">
+    <path d="M8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5z"/>
+    <path d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
+  </symbol>
+
+  <symbol id="list-check" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+</svg>
+
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+      <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+      <div class="d-flex gap-2 w-100 justify-content-between">
+        <div>
+          <h6 class="mb-0">List group item heading</h6>
+          <p class="mb-0 opacity-75">Some placeholder content in a paragraph.</p>
+        </div>
+        <small class="opacity-50 text-nowrap">now</small>
+      </div>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+      <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+      <div class="d-flex gap-2 w-100 justify-content-between">
+        <div>
+          <h6 class="mb-0">Another title here</h6>
+          <p class="mb-0 opacity-75">Some placeholder content in a paragraph that goes a little longer so it wraps to a new line.</p>
+        </div>
+        <small class="opacity-50 text-nowrap">3d</small>
+      </div>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+      <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+      <div class="d-flex gap-2 w-100 justify-content-between">
+        <div>
+          <h6 class="mb-0">Third heading</h6>
+          <p class="mb-0 opacity-75">Some placeholder content in a paragraph.</p>
+        </div>
+        <small class="opacity-50 text-nowrap">1w</small>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="b-example-divider"></div>
+
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="list-group">
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked>
+      <span>
+        First checkbox
+        <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+      <span>
+        Second checkbox
+        <small class="d-block text-body-secondary">Some other text goes here</small>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="checkbox" value="">
+      <span>
+        Third checkbox
+        <small class="d-block text-body-secondary">And we end with another snippet of text</small>
+      </span>
+    </label>
+  </div>
+
+  <div class="list-group">
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios1" value="" checked>
+      <span>
+        First radio
+        <small class="d-block text-body-secondary">With support text underneath to add more detail</small>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios2" value="">
+      <span>
+        Second radio
+        <small class="d-block text-body-secondary">Some other text goes here</small>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-2">
+      <input class="form-check-input flex-shrink-0" type="radio" name="listGroupRadios" id="listGroupRadios3" value="">
+      <span>
+        Third radio
+        <small class="d-block text-body-secondary">And we end with another snippet of text</small>
+      </span>
+    </label>
+  </div>
+</div>
+
+<div class="b-example-divider"></div>
+
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="list-group">
+    <label class="list-group-item d-flex gap-3">
+      <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked style="font-size: 1.375em;">
+      <span class="pt-1 form-checked-content">
+        <strong>Finish sales report</strong>
+        <small class="d-block text-body-secondary">
+          <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"/></svg>
+          1:00–2:00pm
+        </small>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-3">
+      <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+      <span class="pt-1 form-checked-content">
+        <strong>Weekly All Hands</strong>
+        <small class="d-block text-body-secondary">
+          <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"/></svg>
+          2:00–2:30pm
+        </small>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-3">
+      <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+      <span class="pt-1 form-checked-content">
+        <strong>Out of office</strong>
+        <small class="d-block text-body-secondary">
+          <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#alarm"/></svg>
+          Tomorrow
+        </small>
+      </span>
+    </label>
+    <label class="list-group-item d-flex gap-3 bg-body-tertiary">
+      <input class="form-check-input form-check-input-placeholder bg-body-tertiary flex-shrink-0 pe-none" disabled type="checkbox" value="" style="font-size: 1.375em;">
+      <span class="pt-1 form-checked-content">
+        <span contenteditable="true" class="w-100">Add new task...</span>
+        <small class="d-block text-body-secondary">
+          <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#list-check"/></svg>
+          Choose list...
+        </small>
+      </span>
+    </label>
+  </div>
+</div>
+
+<div class="b-example-divider"></div>
+
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="list-group list-group-checkable d-grid gap-2 border-0">
+    <input class="list-group-item-check pe-none" type="radio" name="listGroupCheckableRadios" id="listGroupCheckableRadios1" value="" checked>
+    <label class="list-group-item rounded-3 py-3" for="listGroupCheckableRadios1">
+      First radio
+      <span class="d-block small opacity-50">With support text underneath to add more detail</span>
+    </label>
+
+    <input class="list-group-item-check pe-none" type="radio" name="listGroupCheckableRadios" id="listGroupCheckableRadios2" value="">
+    <label class="list-group-item rounded-3 py-3" for="listGroupCheckableRadios2">
+      Second radio
+      <span class="d-block small opacity-50">Some other text goes here</span>
+    </label>
+
+    <input class="list-group-item-check pe-none" type="radio" name="listGroupCheckableRadios" id="listGroupCheckableRadios3" value="">
+    <label class="list-group-item rounded-3 py-3" for="listGroupCheckableRadios3">
+      Third radio
+      <span class="d-block small opacity-50">And we end with another snippet of text</span>
+    </label>
+
+    <input class="list-group-item-check pe-none" type="radio" name="listGroupCheckableRadios" id="listGroupCheckableRadios4" value="" disabled>
+    <label class="list-group-item rounded-3 py-3" for="listGroupCheckableRadios4">
+      Fourth disabled radio
+      <span class="d-block small opacity-50">This option is disabled</span>
+    </label>
+  </div>
+</div>
+
+<div class="b-example-divider"></div>
+
+<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="list-group list-group-radio d-grid gap-2 border-0">
+    <div class="position-relative">
+      <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid1" value="" checked>
+      <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid1">
+        <strong class="fw-semibold">First radio</strong>
+        <span class="d-block small opacity-75">With support text underneath to add more detail</span>
+      </label>
+    </div>
+
+    <div class="position-relative">
+      <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid2" value="">
+      <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid2">
+        <strong class="fw-semibold">Second radio</strong>
+        <span class="d-block small opacity-75">Some other text goes here</span>
+      </label>
+    </div>
+
+    <div class="position-relative">
+      <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid3" value="">
+      <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid3">
+        <strong class="fw-semibold">Third radio</strong>
+        <span class="d-block small opacity-75">And we end with another snippet of text</span>
+      </label>
+    </div>
+
+    <div class="position-relative">
+      <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="listGroupRadioGrid" id="listGroupRadioGrid4" value="" disabled>
+      <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid4">
+        <strong class="fw-semibold">Fourth disabled radio</strong>
+        <span class="d-block small opacity-75">This option is disabled</span>
+      </label>
+    </div>
+  </div>
+</div>

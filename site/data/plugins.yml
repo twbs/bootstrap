@@ -27,7 +27,7 @@
   link: components/offcanvas/
 
 - name: Popover
-  description: Create custom overlays. Built on Popper.js.
+  description: Create custom overlays. Built on Popper.
   link: components/popovers/
 
 - name: Scrollspy
@@ -43,5 +43,5 @@
   link: components/toasts/
 
 - name: Tooltip
-  description: Replace browser tooltips with custom ones. Built on Popper.js.
+  description: Replace browser tooltips with custom ones. Built on Popper.
   link: components/tooltips/

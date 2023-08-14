@@ -1,8 +1,6 @@
-/* Test helpers */
-
-import { clearFixture, createEvent, getFixture } from '../../helpers/fixture'
-import { enableDismissTrigger } from '../../../src/util/component-functions'
-import BaseComponent from '../../../src/base-component'
+import BaseComponent from '../../../src/base-component.js'
+import { enableDismissTrigger } from '../../../src/util/component-functions.js'
+import { clearFixture, createEvent, getFixture } from '../../helpers/fixture.js'
 
 class DummyClass2 extends BaseComponent {
   static get NAME() {
@@ -37,8 +35,8 @@ describe('Plugin functions', () => {
         '</div>'
       ].join('')
 
-      spyOn(DummyClass2, 'getOrCreateInstance').and.callThrough()
-      spyOn(DummyClass2.prototype, 'testMethod')
+      const spyGet = spyOn(DummyClass2, 'getOrCreateInstance').and.callThrough()
+      const spyTest = spyOn(DummyClass2.prototype, 'testMethod')
       const componentWrapper = fixtureEl.querySelector('#foo')
       const btnClose = fixtureEl.querySelector('[data-bs-dismiss="test"]')
       const event = createEvent('click')
@@ -46,8 +44,8 @@ describe('Plugin functions', () => {
       enableDismissTrigger(DummyClass2, 'testMethod')
       btnClose.dispatchEvent(event)
 
-      expect(DummyClass2.getOrCreateInstance).toHaveBeenCalledWith(componentWrapper)
-      expect(DummyClass2.prototype.testMethod).toHaveBeenCalled()
+      expect(spyGet).toHaveBeenCalledWith(componentWrapper)
+      expect(spyTest).toHaveBeenCalled()
     })
 
     it('if data-bs-dismiss="PluginName" hasn\'t got "data-bs-target", "getOrCreateInstance" has to be initialized by closest "plugin.Name" class', () => {
@@ -57,8 +55,8 @@ describe('Plugin functions', () => {
         '</div>'
       ].join('')
 
-      spyOn(DummyClass2, 'getOrCreateInstance').and.callThrough()
-      spyOn(DummyClass2.prototype, 'hide')
+      const spyGet = spyOn(DummyClass2, 'getOrCreateInstance').and.callThrough()
+      const spyHide = spyOn(DummyClass2.prototype, 'hide')
       const componentWrapper = fixtureEl.querySelector('#foo')
       const btnClose = fixtureEl.querySelector('[data-bs-dismiss="test"]')
       const event = createEvent('click')
@@ -66,8 +64,8 @@ describe('Plugin functions', () => {
       enableDismissTrigger(DummyClass2)
       btnClose.dispatchEvent(event)
 
-      expect(DummyClass2.getOrCreateInstance).toHaveBeenCalledWith(componentWrapper)
-      expect(DummyClass2.prototype.hide).toHaveBeenCalled()
+      expect(spyGet).toHaveBeenCalledWith(componentWrapper)
+      expect(spyHide).toHaveBeenCalled()
     })
 
     it('if data-bs-dismiss="PluginName" is disabled, must not trigger function', () => {
@@ -77,14 +75,14 @@ describe('Plugin functions', () => {
         '</div>'
       ].join('')
 
-      spyOn(DummyClass2, 'getOrCreateInstance').and.callThrough()
+      const spy = spyOn(DummyClass2, 'getOrCreateInstance').and.callThrough()
       const btnClose = fixtureEl.querySelector('[data-bs-dismiss="test"]')
       const event = createEvent('click')
 
       enableDismissTrigger(DummyClass2)
       btnClose.dispatchEvent(event)
 
-      expect(DummyClass2.getOrCreateInstance).not.toHaveBeenCalled()
+      expect(spy).not.toHaveBeenCalled()
     })
 
     it('should prevent default when the trigger is <a> or <area>', () => {
@@ -98,11 +96,11 @@ describe('Plugin functions', () => {
       const event = createEvent('click')
 
       enableDismissTrigger(DummyClass2)
-      spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spy = spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
       btnClose.dispatchEvent(event)
 
-      expect(Event.prototype.preventDefault).toHaveBeenCalled()
+      expect(spy).toHaveBeenCalled()
     })
   })
 })
