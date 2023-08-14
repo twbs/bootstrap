@@ -87,37 +87,42 @@ hr {
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  color: var(--#{$prefix}heading-color);
 }
 
 h1 {
   @extend %heading;
   @include font-size($h1-font-size);
+  color: var(--#{$prefix}heading-color);
 }
 
 h2 {
   @extend %heading;
   @include font-size($h2-font-size);
+  color: var(--#{$prefix}heading-color);
 }
 
 h3 {
   @extend %heading;
   @include font-size($h3-font-size);
+  color: var(--#{$prefix}heading-color);
 }
 
 h4 {
   @extend %heading;
   @include font-size($h4-font-size);
+  color: var(--#{$prefix}heading-color);
 }
 
 h5 {
   @extend %heading;
   @include font-size($h5-font-size);
+  color: var(--#{$prefix}heading-color);
 }
 
 h6 {
   @extend %heading;
   @include font-size($h6-font-size);
+  color: var(--#{$prefix}heading-color);
 }
 
 

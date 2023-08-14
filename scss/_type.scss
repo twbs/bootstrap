@@ -2,29 +2,39 @@
 // Headings
 //
 .h1 {
-  @extend h1;
+  @extend %heading;
 }
 
 .h2 {
-  @extend h2;
+  @extend %heading;
 }
 
 .h3 {
-  @extend h3;
+  @extend %heading;
 }
 
 .h4 {
-  @extend h4;
+  @extend %heading;
 }
 
 .h5 {
-  @extend h5;
+  @extend %heading;
 }
 
 .h6 {
-  @extend h6;
+  @extend %heading;
 }
 
+@each $key, $value in $font-sizes {
+  .h#{$key} {
+    @extend %heading;
+    @include font-size($value);
+
+    :not(a) {
+      color: $value;
+    }
+  }
+}
 
 .lead {
   @include font-size($lead-font-size);
@@ -72,7 +82,6 @@
     margin-right: $list-inline-padding;
   }
 }
-
 
 //
 // Misc
