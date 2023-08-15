@@ -349,6 +349,8 @@ For a complete list of changes, [see the v5.2.0 project on GitHub](https://githu
 
 Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.com/2021/08/04/bootstrap-5-1-0/)
 
+## v5.0.0
+
 <hr class="my-5">
 
 {{< callout info >}}
