@@ -351,7 +351,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 ## v5.0.0
 
-<hr class="my-5">
+<hr class="mb-4">
 
 {{< callout info >}}
 **Hey there!** Changes to our first major release of Bootstrap 5, v5.0.0, are documented below. They don't reflect the additional changes shown above.
