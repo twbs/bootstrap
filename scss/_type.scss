@@ -6,8 +6,8 @@
     @extend %heading;
     @include font-size($value);
 
-    :not(a) {
-      color: $value;
+    &:not(a) {
+      color: var(--#{$prefix}heading-color);
     }
   }
 }
