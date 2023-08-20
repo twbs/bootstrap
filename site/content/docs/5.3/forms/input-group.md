@@ -102,6 +102,84 @@ Place any checkbox or radio option within an input group's addon instead of text
 </div>
 {{< /example >}}
 
+### Toggle buttons
+
+{{< example >}}
+<div class="input-group input-group-sm mb-3">
+  <span class="input-group-text">Speed</span>
+  <span class="input-group-text column-gap-1">
+    <input type="checkbox" class="btn-check" id="speed_sm_xs">
+    <label class="btn btn-sm" for="speed_sm_xs">faster</label>
+    <input type="checkbox" class="btn-check" id="speed_sm_base" checked>
+    <label class="btn btn-sm" for="speed_sm_base">default</label>
+    <input type="checkbox" class="btn-check" id="speed_sm_xl">
+    <label class="btn btn-sm" for="speed_sm_xl">slower</label>
+  </span>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text">Speed</span>
+  <span class="input-group-text column-gap-1">
+    <input type="checkbox" class="btn-check" id="speed_xs">
+    <label class="btn" for="speed_xs">faster</label>
+    <input type="checkbox" class="btn-check" id="speed_base" checked>
+    <label class="btn" for="speed_base">default</label>
+    <input type="checkbox" class="btn-check" id="speed_xl">
+    <label class="btn" for="speed_xl">slower</label>
+  </span>
+</div>
+
+<div class="input-group input-group-lg mb-3">
+  <span class="input-group-text">Speed</span>
+  <span class="input-group-text column-gap-1">
+    <input type="checkbox" class="btn-check" id="speed_lg_xs">
+    <label class="btn btn-lg" for="speed_lg_xs">faster</label>
+    <input type="checkbox" class="btn-check" id="speed_lg_base" checked>
+    <label class="btn btn-lg" for="speed_lg_base">default</label>
+    <input type="checkbox" class="btn-check" id="speed_lg_xl">
+    <label class="btn btn-lg" for="speed_lg_xl">slower</label>
+  </span>
+</div>
+{{< /example >}}
+
+{{< example >}}
+<div class="input-group input-group-sm mb-3">
+  <span class="input-group-text">Speed</span>
+  <span class="input-group-text">
+    <input type="radio" class="btn-check" name="speed_sm" id="radio_sm_xs">
+    <label class="btn btn-sm" for="radio_sm_xs">faster</label>
+    <input type="radio" class="btn-check" name="speed_sm" id="radio_sm_base" checked>
+    <label class="btn btn-sm" for="radio_sm_base">default</label>
+    <input type="radio" class="btn-check" name="speed_sm" id="radio_sm_xl">
+    <label class="btn btn-sm" for="radio_sm_xl">slower</label>
+  </span>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text">Speed</span>
+  <span class="input-group-text">
+    <input type="radio" class="btn-check" name="speed" id="radio_xs">
+    <label class="btn" for="radio_xs">faster</label>
+    <input type="radio" class="btn-check" name="speed" id="radio_base" checked>
+    <label class="btn" for="radio_base">default</label>
+    <input type="radio" class="btn-check" name="speed" id="radio_xl">
+    <label class="btn" for="radio_xl">slower</label>
+  </span>
+</div>
+
+<div class="input-group input-group-lg mb-3">
+  <span class="input-group-text">Speed</span>
+  <span class="input-group-text">
+    <input type="radio" class="btn-check" name="speed_lg" id="radio_lg_xs">
+    <label class="btn btn-lg" for="radio_lg_xs">faster</label>
+    <input type="radio" class="btn-check" name="speed_lg" id="radio_lg_base" checked>
+    <label class="btn btn-lg" for="radio_lg_base">default</label>
+    <input type="radio" class="btn-check" name="speed_lg" id="radio_lg_xl">
+    <label class="btn btn-lg" for="radio_lg_xl">slower</label>
+  </span>
+</div>
+{{< /example >}}
+
 ## Multiple inputs
 
 While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
