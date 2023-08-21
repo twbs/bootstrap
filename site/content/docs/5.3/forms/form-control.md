@@ -173,6 +173,14 @@ Learn more about [support for datalist elements](https://caniuse.com/datalist).
 
 ## CSS
 
+### Variables
+
+{{< added-in "5.3.2" >}}
+
+As part of Bootstrap's evolving CSS variables approach, form controls now use local CSS variables on `.form-control` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="form-control-css-vars" file="scss/forms/_form-control.scss" >}}
+
 ### Sass variables
 
 `$input-*` are shared across most of our form controls (and not buttons).
