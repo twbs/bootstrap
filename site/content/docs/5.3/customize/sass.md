@@ -14,12 +14,12 @@ Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means 
 
 ```text
 your-project/
-├── scss
+├── scss/
 │   └── custom.scss
 └── node_modules/
-│   └── bootstrap
-│       ├── js
-│       └── scss
+│   └── bootstrap/
+│       ├── js/
+│       └── scss/
 └── index.html
 ```
 
@@ -27,11 +27,11 @@ If you've downloaded our source files and aren't using a package manager, you'll
 
 ```text
 your-project/
-├── scss
+├── scss/
 │   └── custom.scss
 ├── bootstrap/
-│   ├── js
-│   └── scss
+│   ├── js/
+│   └── scss/
 └── index.html
 ```
 
@@ -104,7 +104,7 @@ sass --watch ./scss/custom.scss ./css/custom.css
 Learn more about your options at [sass-lang.com/install](https://sass-lang.com/install) and [compiling with VS Code](https://code.visualstudio.com/docs/languages/css#_transpiling-sass-and-less-into-css).
 
 {{< callout info >}}
-**Using Bootstrap with another build tool?** Consider reading our guides for compiling with [WebPack]({{< docsref "/getting-started/webpack" >}}), [Parcel]({{< docsref "/getting-started/parcel" >}}), or [Vite]({{< docsref "/getting-started/vite" >}}). We also have production-ready demos in [our examples repository on GitHub](https://github.com/twbs/examples).
+**Using Bootstrap with another build tool?** Consider reading our guides for compiling with [Webpack]({{< docsref "/getting-started/webpack" >}}), [Parcel]({{< docsref "/getting-started/parcel" >}}), or [Vite]({{< docsref "/getting-started/vite" >}}). We also have production-ready demos in [our examples repository on GitHub](https://github.com/twbs/examples).
 {{< /callout >}}
 
 ## Including
