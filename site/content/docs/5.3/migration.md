@@ -666,7 +666,6 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 ### Utilities
 
 - <span class="badge bg-danger">Breaking</span> Renamed several utilities to use logical property names instead of directional names with the addition of RTL support:
-  - Renamed `.left-*` and `.right-*` to `.start-*` and `.end-*`.
   - Renamed `.float-left` and `.float-right` to `.float-start` and `.float-end`.
   - Renamed `.border-left` and `.border-right` to `.border-start` and `.border-end`.
   - Renamed `.rounded-left` and `.rounded-right` to `.rounded-start` and `.rounded-end`.
