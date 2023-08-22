@@ -6,10 +6,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-'use strict'
-
-const { execFile, spawn } = require('node:child_process')
-const vnu = require('vnu-jar')
+import { execFile, spawn } from 'node:child_process'
+import vnu from 'vnu-jar'
 
 execFile('java', ['-version'], (error, stdout, stderr) => {
   if (error) {
