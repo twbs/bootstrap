@@ -21,7 +21,7 @@
   appearance: none; // Fix appearance for date inputs in Safari
   background-color: $input-bg;
   background-clip: padding-box;
-  border: $input-border-width solid $input-border-color;
+  border: $input-border-width solid var(--#{$prefix}input-border-color, $input-border-color);
 
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius, 0);
@@ -41,7 +41,7 @@
   &:focus {
     color: $input-focus-color;
     background-color: $input-focus-bg;
-    border-color: $input-focus-border-color;
+    border-color: var(--#{$prefix}input-focus-border-color, $input-focus-border-color);
     outline: 0;
     @if $enable-shadows {
       @include box-shadow($input-box-shadow, $input-focus-box-shadow);
@@ -165,7 +165,7 @@
 }
 
 .form-control-color {
-  width: $form-color-width;
+  width: var(--#{$prefix}form-color-width, $form-color-width);
   padding: var(--#{$prefix}form-control-padding-y);
 
   &:not(:disabled):not([readonly]) {

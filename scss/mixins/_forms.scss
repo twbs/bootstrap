@@ -57,7 +57,9 @@
 
   .form-control {
     @include form-validation-state-selector($state) {
-      border-color: $border-color;
+      --#{$prefix}input-border-color: #{$border-color};
+      --#{$prefix}input-focus-border-color: #{$border-color};
+      --#{$prefix}input-focus-box-shadow: #{$focus-box-shadow};
 
       @if $enable-validation-icons {
         padding-right: $input-height-inner;
@@ -65,11 +67,6 @@
         background-repeat: no-repeat;
         background-position: right $input-height-inner-quarter center;
         background-size: $input-height-inner-half $input-height-inner-half;
-      }
-
-      &:focus {
-        border-color: $border-color;
-        box-shadow: $focus-box-shadow;
       }
     }
   }
@@ -86,7 +83,9 @@
 
   .form-select {
     @include form-validation-state-selector($state) {
-      border-color: $border-color;
+      --#{$prefix}form-select-border-color: #{$border-color};
+      --#{$prefix}form-select-focus-border-color: #{$border-color};
+      --#{$prefix}form-select-focus-box-shadow: #{$focus-box-shadow};
 
       @if $enable-validation-icons {
         &:not([multiple]):not([size]),
@@ -97,33 +96,23 @@
           background-size: $form-select-bg-size, $form-select-feedback-icon-size;
         }
       }
-
-      &:focus {
-        border-color: $border-color;
-        box-shadow: $focus-box-shadow;
-      }
     }
   }
 
   .form-control-color {
     @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
-        width: add($form-color-width, $input-height-inner);
+        --#{$prefix}form-color-width: #{add($form-color-width, $input-height-inner)};
       }
     }
   }
 
   .form-check-input {
     @include form-validation-state-selector($state) {
+      --#{$prefix}form-check-focus-box-shadow: #{$focus-box-shadow};
+      --#{$prefix}form-check-checked-bg-color: #{$color};
+
       border-color: $border-color;
-
-      &:checked {
-        background-color: $color;
-      }
-
-      &:focus {
-        box-shadow: $focus-box-shadow;
-      }
 
       ~ .form-check-label {
         color: $color;

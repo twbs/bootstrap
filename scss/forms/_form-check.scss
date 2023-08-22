@@ -35,11 +35,11 @@
   &:focus {
     border-color: $form-check-input-focus-border;
     outline: 0;
-    box-shadow: $form-check-input-focus-box-shadow;
+    box-shadow: var(--#{$prefix}form-check-focus-box-shadow, $form-check-input-focus-box-shadow);
   }
 
   &:checked {
-    background-color: $form-check-input-checked-bg-color;
+    background-color: var(--#{$prefix}form-check-checked-bg-color, $form-check-input-checked-bg-color);
     @if $enable-gradients {
       background-image: var(--#{$prefix}form-check-checked-bg-image, escape-svg($form-check-input-checked-bg-image), var(--#{$prefix}gradient));
     } @else {
