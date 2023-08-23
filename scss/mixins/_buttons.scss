@@ -39,15 +39,15 @@
 @mixin button-outline-variant(
   $color,
   $color-hover: color-contrast($color),
-  $active-background: $color,
-  $active-border: $color,
+  $active-background: if($color-hover == $color-contrast-light, shade-color($color, $btn-active-bg-shade-amount), tint-color($color, $btn-active-bg-tint-amount)),
+  $active-border: $active-background,
   $active-color: color-contrast($active-background)
 ) {
   --#{$prefix}btn-color: #{$color};
   --#{$prefix}btn-border-color: #{$color};
   --#{$prefix}btn-hover-color: #{$color-hover};
-  --#{$prefix}btn-hover-bg: #{$active-background};
-  --#{$prefix}btn-hover-border-color: #{$active-border};
+  --#{$prefix}btn-hover-bg: #{$color};
+  --#{$prefix}btn-hover-border-color: #{$color};
   --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
   --#{$prefix}btn-active-color: #{$active-color};
   --#{$prefix}btn-active-bg: #{$active-background};

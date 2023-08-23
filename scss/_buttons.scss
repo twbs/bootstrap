@@ -156,7 +156,19 @@
 
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
-    @include button-outline-variant($value);
+    @if $color == "light" {
+      @include button-outline-variant(
+        $value,
+        $active-background: shade-color($value, $btn-active-bg-shade-amount)
+      );
+    } @else if $color == "dark" {
+      @include button-outline-variant(
+        $value,
+        $active-background: tint-color($value, $btn-active-bg-tint-amount)
+      );
+    } @else {
+      @include button-outline-variant($value);
+    }
   }
 }
 // scss-docs-end btn-variant-loops
