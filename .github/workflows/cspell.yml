@@ -28,7 +28,7 @@ jobs:
           persist-credentials: false
 
       - name: Run cspell
-        uses: streetsidesoftware/cspell-action@v2
+        uses: streetsidesoftware/cspell-action@v3
         with:
           config: ".cspell.json"
           files: "**/*.md"
