@@ -119,15 +119,6 @@
   --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
   --#{$prefix}focus-ring-color: #{$focus-ring-color};
   // scss-docs-end root-focus-variables
-
-  // scss-docs-start root-form-validation-variables
-  --#{$prefix}form-valid-color: #{$form-valid-color};
-  --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
-  --#{$prefix}form-valid-icon: #{$form-feedback-icon-valid};
-  --#{$prefix}form-invalid-color: #{$form-invalid-color};
-  --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
-  --#{$prefix}form-invalid-icon: #{$form-feedback-icon-invalid};
-  // scss-docs-end root-form-validation-variables
 }
 
 @if $enable-dark-mode {
@@ -176,13 +167,6 @@
 
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
-
-    --#{$prefix}form-valid-color: #{$form-valid-color-dark};
-    --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
-    --#{$prefix}form-valid-icon: #{$form-feedback-icon-valid-dark};
-    --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
-    --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
-    --#{$prefix}form-invalid-icon: #{$form-feedback-icon-invalid-dark};
     // scss-docs-end root-dark-mode-vars
   }
 }

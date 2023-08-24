@@ -1,3 +1,25 @@
+:root {
+  // scss-docs-start root-form-validation-variables
+  --#{$prefix}form-valid-color: #{$form-valid-color};
+  --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
+  --#{$prefix}form-valid-icon: #{$form-feedback-icon-valid};
+  --#{$prefix}form-invalid-color: #{$form-invalid-color};
+  --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
+  --#{$prefix}form-invalid-icon: #{$form-feedback-icon-invalid};
+  // scss-docs-end root-form-validation-variables
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark, true) {
+    --#{$prefix}form-valid-color: #{$form-valid-color-dark};
+    --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
+    --#{$prefix}form-valid-icon: #{$form-feedback-icon-valid-dark};
+    --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
+    --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
+    --#{$prefix}form-invalid-icon: #{$form-feedback-icon-invalid-dark};
+  }
+}
+
 @import "forms/labels";
 @import "forms/form-text";
 @import "forms/form-control";

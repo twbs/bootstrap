@@ -357,7 +357,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 
 As part of Bootstrap's evolving CSS variables approach, forms now use local CSS variables for validation for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-{{< scss-docs name="root-form-validation-variables" file="scss/_root.scss" >}}
+{{< scss-docs name="root-form-validation-variables" file="scss/_forms.scss" >}}
 
 These variables are also color mode adaptive, meaning they change color while in dark mode.
 
