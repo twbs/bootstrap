@@ -47,3 +47,16 @@ jobs:
             echo "$SASS_VARS_FOUND"
             exit 1
           fi
+
+      - name: Check built CSS files for PostCSS parser
+        shell: bash
+        run: |
+          POSTCSS_ISSUE_FOUND=$(find "dist-sass/css/" -type f -name "*.css" -print0 | xargs -0 --no-run-if-empty grep -F "\) \* -" || true)
+          if [[ -z "$POSTCSS_ISSUE_FOUND" ]]; then
+            echo "All good, no PostCSS issue found!"
+            exit 0
+          else
+            echo "Found $(echo "$POSTCSS_ISSUE_FOUND" | wc -l | bc) PostCSS issue:"
+            echo "$POSTCSS_ISSUE_FOUND"
+            exit 1
+          fi
