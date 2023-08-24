@@ -176,11 +176,8 @@
   width: 1.5em;
   height: 1.5em;
   vertical-align: middle;
-  mask-image: var(--#{$prefix}navbar-toggler-icon-bg);
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: 100%;
   background-color: var(--#{$prefix}navbar-toggler-icon-color);
+  mask: var(--#{$prefix}navbar-toggler-icon-bg) no-repeat center 100%;
 }
 
 .navbar-nav-scroll {
