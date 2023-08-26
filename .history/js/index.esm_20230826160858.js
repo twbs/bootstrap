@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
-console.log("Yihe Yene Contribution New");
+console.log("Yihe Yene Contribu")
 
 export { default as Alert } from './src/alert.js'
 export { default as Button } from './src/button.js'
