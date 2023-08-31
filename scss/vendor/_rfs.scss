@@ -53,9 +53,11 @@ $enable-rfs: true !default;
 $rfs-base-value-unit: unit($rfs-base-value);
 
 @function divide($dividend, $divisor, $precision: 10) {
+  $dividend-unit: unit($dividend);
+  $divisor-unit: unit($divisor);
   $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
-  $dividend: abs($dividend);
-  $divisor: abs($divisor);
+  $dividend: if($dividend-unit == "%", abs(calc($dividend / 1%)), abs($dividend));
+  $divisor: if($divisor-unit == "%", abs(calc($divisor / 1%)), abs($divisor));
   @if $dividend == 0 {
     @return 0;
   }
@@ -80,8 +82,6 @@ $rfs-base-value-unit: unit($rfs-base-value);
     }
   }
   $result: $result * $factor * $sign;
-  $dividend-unit: unit($dividend);
-  $divisor-unit: unit($divisor);
   $unit-map: (
     "px": 1px,
     "rem": 1rem,
