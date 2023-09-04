@@ -50,6 +50,12 @@ If you're using our compiled JavaScript and prefer to include Popper separately,
 <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
 ```
 
+{{< callout warning >}}
+**Heads up!** We use and advise to use [jsDelivr](https://www.jsdelivr.com/) in our documentation. However, in some cases, like in some specific countries or environments, you might need to use other CDN providers, such as [unpkg](https://unpkg.com/).
+
+In this case, you can replace `https://cdn.jsdelivr.net/npm/` with `https://unpkg.com/`.
+{{< /callout >}}
+
 ## Package managers
 
 Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a [Sass compiler]({{< docsref "/getting-started/contribute#sass" >}}) and [Autoprefixer](https://github.com/postcss/autoprefixer)** for a setup that matches our official compiled versions.
