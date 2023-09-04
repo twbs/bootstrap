@@ -29,9 +29,9 @@
 .form-check-input {
   --#{$prefix}form-check-bg: #{$form-check-input-bg};
 
+  flex-shrink: 0;
   width: $form-check-input-width;
   height: $form-check-input-width;
-  flex-shrink: 0;
   margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
   vertical-align: top;
   appearance: none;
@@ -42,7 +42,6 @@
   background-size: contain;
   border: $form-check-input-border;
   print-color-adjust: exact; // Keep themed appearance for print
-  
   @include transition($form-check-transition);
 
   &[type="checkbox"] {
