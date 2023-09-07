@@ -223,7 +223,7 @@ $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 // etc
 ```
 
-To remove breakpoints from `$navbar-breakpoints`, use `map-remove` on `$navbar-breakpoints` or `$grid-breakpoints`. Be aware that the initial breakpoint is always skipped by the `navbar-expand-` class generation loop:
+To remove breakpoints from `$navbar-breakpoints`, use `map-remove` on `$grid-breakpoints` before importing the `maps` file. Be aware that the initial breakpoint is always skipped by the `navbar-expand-` class generation loop:
 
 ```scss
 // Required
