@@ -361,6 +361,7 @@ caption {
 th {
   font-weight: $table-th-font-weight; // 1
   text-align: -webkit-match-parent; // 2
+  text-align: match-parent; // 2
   text-align: inherit; // 3
 }
 
