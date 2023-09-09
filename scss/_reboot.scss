@@ -56,6 +56,7 @@ body {
   text-align: var(--#{$prefix}body-text-align);
   background-color: var(--#{$prefix}body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
+  text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
 // scss-docs-end reboot-body-rules
