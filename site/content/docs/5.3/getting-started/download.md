@@ -51,9 +51,13 @@ If you're using our compiled JavaScript and prefer to include Popper separately,
 ```
 
 {{< callout warning >}}
-**Heads up!** We use and advise to use [jsDelivr](https://www.jsdelivr.com/) in our documentation. However, in some cases, like in some specific countries or environments, you might need to use other CDN providers, such as [unpkg](https://unpkg.com/).
+**Heads up!** We use and advise to use [jsDelivr](https://www.jsdelivr.com/) in our documentation. However, in some cases, like in some specific countries or environments, you might need to use other CDN providers, such as [cdnjs](https://cdnjs.com/) or [unpkg](https://unpkg.com/).
 
-In this case, you can replace `https://cdn.jsdelivr.net/npm/` with `https://unpkg.com/`.
+You'll find the same files on these CDN providers, albeit with different URLs.
+
+While changing the URLs, you'll also need to update the `integrity` attribute. Tools like [SRI Hash Generator](https://www.srihash.org/) can help you generate the correct values.
+
+Easier, this [cdnjs Bootstrap direct link](https://cdnjs.com/libraries/bootstrap) provides a ready-to-use HTML snippet for each version of Bootstrap where you can just copy and paste the script tag.
 {{< /callout >}}
 
 ## Package managers
