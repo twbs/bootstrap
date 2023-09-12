@@ -29,7 +29,7 @@
     height: $form-range-thumb-height;
     margin-top: ($form-range-track-height - $form-range-thumb-height) * .5; // Webkit specific
     appearance: none;
-    @include gradient-bg($form-range-thumb-bg);
+    @include gradient-bg(var(--#{$prefix}form-range-thumb-bg, $form-range-thumb-bg));
     border: $form-range-thumb-border;
     @include border-radius($form-range-thumb-border-radius);
     @include box-shadow($form-range-thumb-box-shadow);
@@ -55,7 +55,7 @@
     width: $form-range-thumb-width;
     height: $form-range-thumb-height;
     appearance: none;
-    @include gradient-bg($form-range-thumb-bg);
+    @include gradient-bg(var(--#{$prefix}form-range-thumb-bg, $form-range-thumb-bg));
     border: $form-range-thumb-border;
     @include border-radius($form-range-thumb-border-radius);
     @include box-shadow($form-range-thumb-box-shadow);
@@ -72,20 +72,13 @@
     color: transparent;
     cursor: $form-range-track-cursor;
     background-color: $form-range-track-bg;
-    border-color: transparent; // Firefox specific?
+    border-color: transparent;
     @include border-radius($form-range-track-border-radius);
     @include box-shadow($form-range-track-box-shadow);
   }
 
   &:disabled {
+    --#{$prefix}form-range-thumb-bg: #{$form-range-thumb-disabled-bg};
     pointer-events: none;
-
-    &::-webkit-slider-thumb {
-      background-color: $form-range-thumb-disabled-bg;
-    }
-
-    &::-moz-range-thumb {
-      background-color: $form-range-thumb-disabled-bg;
-    }
   }
 }

@@ -20,19 +20,19 @@
   background-repeat: no-repeat;
   background-position: $form-select-bg-position;
   background-size: $form-select-bg-size;
-  border: $form-select-border-width solid $form-select-border-color;
+  border: $form-select-border-width solid var(--#{$prefix}form-select-border-color, $form-select-border-color);
   @include border-radius($form-select-border-radius, 0);
   @include box-shadow($form-select-box-shadow);
   @include transition($form-select-transition);
 
   &:focus {
-    border-color: $form-select-focus-border-color;
+    border-color: var(--#{$prefix}form-select-focus-border-color, $form-select-focus-border-color);
     outline: 0;
     @if $enable-shadows {
-      @include box-shadow($form-select-box-shadow, $form-select-focus-box-shadow);
+      @include box-shadow($form-select-box-shadow, var(--#{$prefix}form-select-focus-box-shadow, $form-select-focus-box-shadow));
     } @else {
       // Avoid using mixin so we can pass custom focus shadow properly
-      box-shadow: $form-select-focus-box-shadow;
+      box-shadow: var(--#{$prefix}form-select-focus-box-shadow, $form-select-focus-box-shadow);
     }
   }
 

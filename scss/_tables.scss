@@ -12,6 +12,7 @@
   --#{$prefix}table-color: #{$table-color};
   --#{$prefix}table-bg: #{$table-bg};
   --#{$prefix}table-border-color: #{$table-border-color};
+  --#{$prefix}table-border-width: #{$table-border-width};
   --#{$prefix}table-accent-bg: #{$table-accent-bg};
   --#{$prefix}table-striped-color: #{$table-striped-color};
   --#{$prefix}table-striped-bg: #{$table-striped-bg};
@@ -19,9 +20,10 @@
   --#{$prefix}table-active-bg: #{$table-active-bg};
   --#{$prefix}table-hover-color: #{$table-hover-color};
   --#{$prefix}table-hover-bg: #{$table-hover-bg};
+  --#{$prefix}table-cell-padding: #{$table-cell-padding-y $table-cell-padding-x};
 
   width: 100%;
-  margin-bottom: $spacer;
+  margin-bottom: $table-margin-bottom;
   vertical-align: $table-cell-vertical-align;
   border-color: var(--#{$prefix}table-border-color);
 
@@ -31,11 +33,11 @@
   // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
-    padding: $table-cell-padding-y $table-cell-padding-x;
+    padding: var(--#{$prefix}table-cell-padding);
     // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
     color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
     background-color: var(--#{$prefix}table-bg);
-    border-bottom-width: $table-border-width;
+    border-bottom-width: var(--#{$prefix}table-border-width);
     box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}table-accent-bg)));
   }
 
@@ -49,7 +51,7 @@
 }
 
 .table-group-divider {
-  border-top: calc(#{$table-border-width} * 2) solid $table-group-separator-color; // stylelint-disable-line function-disallowed-list
+  border-top: calc(var(--#{$prefix}table-border-width) * 2) solid $table-group-separator-color; // stylelint-disable-line function-disallowed-list
 }
 
 //
@@ -66,10 +68,7 @@
 //
 
 .table-sm {
-  // stylelint-disable-next-line selector-max-universal
-  > :not(caption) > * > * {
-    padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
-  }
+  --#{$prefix}table-cell-padding: #{$table-cell-padding-y-sm $table-cell-padding-x-sm};
 }
 
 
@@ -84,11 +83,11 @@
 
 .table-bordered {
   > :not(caption) > * {
-    border-width: $table-border-width 0;
+    border-width: var(--#{$prefix}table-border-width) 0;
 
     // stylelint-disable-next-line selector-max-universal
     > * {
-      border-width: 0 $table-border-width;
+      border-width: 0 var(--#{$prefix}table-border-width);
     }
   }
 }

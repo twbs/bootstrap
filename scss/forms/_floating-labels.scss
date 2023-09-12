@@ -65,7 +65,7 @@
         z-index: -1;
         height: $form-floating-label-height;
         content: "";
-        background-color: $input-bg;
+        background-color: var(--#{$prefix}form-floating-input-bg, $input-bg);
         @include border-radius($input-border-radius);
       }
     }
@@ -86,10 +86,7 @@
 
   > :disabled ~ label,
   > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
+    --#{$prefix}form-floating-input-bg: #{$input-disabled-bg};
     color: $form-floating-label-disabled-color;
-
-    &::after {
-      background-color: $input-disabled-bg;
-    }
   }
 }
