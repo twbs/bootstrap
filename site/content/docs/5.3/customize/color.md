@@ -382,6 +382,8 @@ All these colors are available as a Sass map, `$theme-colors`.
 
 {{< scss-docs name="theme-colors-map" file="scss/_variables.scss" >}}
 
+{{< scss-docs name="theme-colors-dark-map" file="scss/_maps.scss" >}}
+
 Check out [our Sass maps and loops docs]({{< docsref "/customize/sass#maps-and-loops" >}}) for how to modify these colors.
 
 ### All colors

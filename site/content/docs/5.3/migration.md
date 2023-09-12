@@ -7,6 +7,14 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v5.3.2
+
+If you're migrating from our previous release of v5.3.0, please review its changes in addition to this section.
+
+### Color modes
+
+- Added a Sass map to customize theme colors CSS variables for dark mode.
+
 ## v5.3.0
 
 If you're migrating from our previous alpha releases of v5.3.0, please review their changes in addition to this section.
