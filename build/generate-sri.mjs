@@ -9,20 +9,21 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-'use strict'
+import crypto from 'node:crypto'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import sh from 'shelljs'
 
-const crypto = require('node:crypto')
-const fs = require('node:fs')
-const path = require('node:path')
-const sh = require('shelljs')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 sh.config.fatal = true
 
-const configFile = path.join(__dirname, '../config.yml')
+const configFile = path.join(__dirname, '../hugo.yml')
 
 // Array of objects which holds the files to generate SRI hashes for.
 // `file` is the path from the root folder
-// `configPropertyName` is the config.yml variable's name of the file
+// `configPropertyName` is the hugo.yml variable's name of the file
 const files = [
   {
     file: 'dist/css/bootstrap.min.css',
@@ -46,18 +47,18 @@ const files = [
   }
 ]
 
-for (const file of files) {
-  fs.readFile(file.file, 'utf8', (error, data) => {
+for (const { file, configPropertyName } of files) {
+  fs.readFile(file, 'utf8', (error, data) => {
     if (error) {
       throw error
     }
 
-    const algo = 'sha384'
-    const hash = crypto.createHash(algo).update(data, 'utf8').digest('base64')
-    const integrity = `${algo}-${hash}`
+    const algorithm = 'sha384'
+    const hash = crypto.createHash(algorithm).update(data, 'utf8').digest('base64')
+    const integrity = `${algorithm}-${hash}`
 
-    console.log(`${file.configPropertyName}: ${integrity}`)
+    console.log(`${configPropertyName}: ${integrity}`)
 
-    sh.sed('-i', new RegExp(`^(\\s+${file.configPropertyName}:\\s+["'])\\S*(["'])`), `$1${integrity}$2`, configFile)
+    sh.sed('-i', new RegExp(`^(\\s+${configPropertyName}:\\s+["'])\\S*(["'])`), `$1${integrity}$2`, configFile)
   })
 }
