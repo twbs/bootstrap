@@ -56,7 +56,7 @@
 @mixin row-cols($count) {
   > * {
     flex: 0 0 auto;
-    width: divide(100%, $count);
+    width: percentage(divide(1, $count));
   }
 }
 
