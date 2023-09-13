@@ -50,15 +50,13 @@ If you're using our compiled JavaScript and prefer to include Popper separately,
 <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
 ```
 
-{{< callout warning >}}
-**Heads up!** We use and advise to use [jsDelivr](https://www.jsdelivr.com/) in our documentation. However, in some cases, like in some specific countries or environments, you might need to use other CDN providers, such as [cdnjs](https://cdnjs.com/) or [unpkg](https://unpkg.com/).
+### Alternative CDNs
 
-You'll find the same files on these CDN providers, albeit with different URLs.
+We recommend [jsDelivr](https://www.jsdelivr.com/) and use it ourselves in our documentation. However, in some cases—like in some specific countries or environments—you may need to use other CDN providers like [cdnjs](https://cdnjs.com/) or [unpkg](https://unpkg.com/).
 
-While changing the URLs, you'll also need to update the `integrity` attribute. Tools like [SRI Hash Generator](https://www.srihash.org/) can help you generate the correct values.
+You'll find the same files on these CDN providers, albeit with different URLs. When changing the URLs, you'll also need to update the `integrity` attribute. Tools like [SRI Hash Generator](https://www.srihash.org/) can help you generate the correct values.
 
-Easier, this [cdnjs Bootstrap direct link](https://cdnjs.com/libraries/bootstrap) provides a ready-to-use HTML snippet for each version of Bootstrap where you can just copy and paste the script tag.
-{{< /callout >}}
+With cdnjs, you can [use this direct Bootstrap package link](https://cdnjs.com/libraries/bootstrap) to copy and paste ready-to-use HTML snippets for each dist file from any version of Bootstrap.
 
 ## Package managers
 
