@@ -3,11 +3,11 @@ layout: examples
 title: قالب لوحة القيادة
 direction: rtl
 extra_css:
-  - "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+  - "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css"
   - "../dashboard/dashboard.rtl.css"
 extra_js:
-  - src: "https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"
-    integrity: "sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG"
+  - src: "https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
+    integrity: "sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp"
   - src: "dashboard.js"
 ---
 
@@ -85,7 +85,7 @@ extra_js:
 <div class="container-fluid">
   <div class="row">
     <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-      <div class="offcanvas-lg offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+      <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="يغلق"></button>

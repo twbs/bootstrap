@@ -73,7 +73,7 @@
     border-left: 0;
 
     @include media-breakpoint-down(lg) {
-      box-shadow: $box-shadow-lg;
+      box-shadow: var(--bs-box-shadow-lg);
     }
   }
 
