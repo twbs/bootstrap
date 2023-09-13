@@ -16,7 +16,7 @@
   $active-color: color-contrast($active-background),
   $disabled-background: $background,
   $disabled-border: $border,
-  $disabled-color: color-contrast($disabled-background)
+  $disabled-color: $color
 ) {
   --#{$prefix}btn-color: #{$color};
   --#{$prefix}btn-bg: #{$background};
@@ -24,7 +24,7 @@
   --#{$prefix}btn-hover-color: #{$hover-color};
   --#{$prefix}btn-hover-bg: #{$hover-background};
   --#{$prefix}btn-hover-border-color: #{$hover-border};
-  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
+  --#{$prefix}btn-focus-shadow-rgb: var(--#{$prefix}primary-border-subtle);
   --#{$prefix}btn-active-color: #{$active-color};
   --#{$prefix}btn-active-bg: #{$active-background};
   --#{$prefix}btn-active-border-color: #{$active-border};

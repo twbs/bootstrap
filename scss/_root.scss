@@ -18,6 +18,18 @@
     --#{$prefix}#{$color}: #{$value};
   }
 
+  @each $color, $value in $on-theme-colors {
+    --#{$prefix}on-#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-hover {
+    --#{$prefix}#{$color}-hover: #{$value};
+  }
+
+  @each $color, $value in $theme-colors-active {
+    --#{$prefix}#{$color}-active: #{$value};
+  }
+
   @each $color, $value in $theme-colors-rgb {
     --#{$prefix}#{$color}-rgb: #{$value};
   }
@@ -153,6 +165,18 @@
 
     @each $color, $value in $theme-colors-dark {
       --#{$prefix}#{$color}: #{$value};
+    }
+
+    @each $color, $value in $on-theme-colors-dark {
+      --#{$prefix}on-#{$color}: #{$value};
+    }
+
+    @each $color, $value in $theme-colors-hover-dark {
+      --#{$prefix}#{$color}-hover: #{$value};
+    }
+
+    @each $color, $value in $theme-colors-active-dark {
+      --#{$prefix}#{$color}-active: #{$value};
     }
 
     @each $color, $value in $theme-colors-rgb-dark {
