@@ -29,6 +29,7 @@
 .form-check-input {
   --#{$prefix}form-check-bg: #{$form-check-input-bg};
 
+  flex-shrink: 0;
   width: $form-check-input-width;
   height: $form-check-input-width;
   margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
