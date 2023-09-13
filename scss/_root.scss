@@ -91,6 +91,7 @@
   }
 
   --#{$prefix}code-color: #{$code-color};
+  --#{$prefix}highlight-color: #{$mark-color};
   --#{$prefix}highlight-bg: #{$mark-bg};
 
   // scss-docs-start root-border-var
@@ -171,6 +172,8 @@
     --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
     --#{$prefix}code-color: #{$code-color-dark};
+    --#{$prefix}highlight-color: #{$mark-color-dark};
+    --#{$prefix}highlight-bg: #{$mark-bg-dark};
 
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
