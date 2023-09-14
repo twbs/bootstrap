@@ -54,10 +54,14 @@ If you're using our compiled JavaScript and prefer to include Popper separately,
 
 We recommend [jsDelivr](https://www.jsdelivr.com/) and use it ourselves in our documentation. However, in some cases—like in some specific countries or environments—you may need to use other CDN providers like [cdnjs](https://cdnjs.com/) or [unpkg](https://unpkg.com/).
 
-You'll find the same files on these CDN providers, albeit with different URLs. **If the SRI hashes differ, you shouldn't use the files from that CDN, because it means that the file was modified by someone.**
-Note that you should compare same length hashes, e.g. sha-384 with sha-384, otherwise it's expected for them to be different. As such, you can use [SRI Hash Generator](https://www.srihash.org/) to make sure the hashes are the same for a given file.
-
 With cdnjs, you can [use this direct Bootstrap package link](https://cdnjs.com/libraries/bootstrap) to copy and paste ready-to-use HTML snippets for each dist file from any version of Bootstrap.
+
+You'll find the same files on these CDN providers, albeit with different URLs. **If the SRI hashes differ, you shouldn't use the files from that CDN, because it means that the file was modified by someone.**
+Note that you should compare same length hashes, e.g. sha-384 with sha-384, otherwise it's expected for them to be different. As such, you can use [SRI Hash Generator](https://www.srihash.org/) to make sure the hashes are the same for a given file. Alternatively, you can achieve the same from the CLI assuming you have OpenSSL installed, for example:
+
+```sh
+openssl dgst -sha384 -binary bootstrap.min.js | openssl base64 -A
+```
 
 ## Package managers
 
