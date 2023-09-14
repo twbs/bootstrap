@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Track and review changes to the Bootstrap source files, documentation, and components to help you migrate from v4 to v5.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.115.4">
+<meta name="generator" content="Hugo 0.118.2">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -20,7 +20,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.1/site/content/docs/5.3/migration.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.2/site/content/docs/5.3/migration.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -599,42 +599,46 @@
       </ul>
     </li>
     <li><a href="#v510">v5.1.0</a></li>
-    <li><a href="#dependencies">Dependencies</a></li>
-    <li><a href="#browser-support">Browser support</a></li>
-    <li><a href="#documentation-changes">Documentation changes</a></li>
-    <li><a href="#sass">Sass</a></li>
-    <li><a href="#color-system">Color system</a></li>
-    <li><a href="#grid-updates">Grid updates</a></li>
-    <li><a href="#content-reboot-etc">Content, Reboot, etc</a></li>
-    <li><a href="#rtl">RTL</a></li>
-    <li><a href="#forms-1">Forms</a></li>
-    <li><a href="#components-2">Components</a>
+    <li><a href="#v500">v5.0.0</a>
       <ul>
-        <li><a href="#accordion">Accordion</a></li>
-        <li><a href="#alerts">Alerts</a></li>
-        <li><a href="#badges">Badges</a></li>
-        <li><a href="#breadcrumbs">Breadcrumbs</a></li>
-        <li><a href="#buttons">Buttons</a></li>
-        <li><a href="#card">Card</a></li>
-        <li><a href="#carousel">Carousel</a></li>
-        <li><a href="#close-button-1">Close button</a></li>
-        <li><a href="#collapse">Collapse</a></li>
-        <li><a href="#dropdowns-1">Dropdowns</a></li>
-        <li><a href="#jumbotron">Jumbotron</a></li>
-        <li><a href="#list-group-1">List group</a></li>
-        <li><a href="#navs-and-tabs">Navs and tabs</a></li>
-        <li><a href="#navbars">Navbars</a></li>
-        <li><a href="#offcanvas">Offcanvas</a></li>
-        <li><a href="#pagination">Pagination</a></li>
-        <li><a href="#popovers">Popovers</a></li>
-        <li><a href="#spinners">Spinners</a></li>
-        <li><a href="#toasts">Toasts</a></li>
-        <li><a href="#tooltips">Tooltips</a></li>
+        <li><a href="#dependencies">Dependencies</a></li>
+        <li><a href="#browser-support">Browser support</a></li>
+        <li><a href="#documentation-changes">Documentation changes</a></li>
+        <li><a href="#sass">Sass</a></li>
+        <li><a href="#color-system">Color system</a></li>
+        <li><a href="#grid-updates">Grid updates</a></li>
+        <li><a href="#content-reboot-etc">Content, Reboot, etc</a></li>
+        <li><a href="#rtl">RTL</a></li>
+        <li><a href="#forms-1">Forms</a></li>
+        <li><a href="#components-2">Components</a>
+          <ul>
+            <li><a href="#accordion">Accordion</a></li>
+            <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#badges">Badges</a></li>
+            <li><a href="#breadcrumbs">Breadcrumbs</a></li>
+            <li><a href="#buttons">Buttons</a></li>
+            <li><a href="#card">Card</a></li>
+            <li><a href="#carousel">Carousel</a></li>
+            <li><a href="#close-button-1">Close button</a></li>
+            <li><a href="#collapse">Collapse</a></li>
+            <li><a href="#dropdowns-1">Dropdowns</a></li>
+            <li><a href="#jumbotron">Jumbotron</a></li>
+            <li><a href="#list-group-1">List group</a></li>
+            <li><a href="#navs-and-tabs">Navs and tabs</a></li>
+            <li><a href="#navbars">Navbars</a></li>
+            <li><a href="#offcanvas">Offcanvas</a></li>
+            <li><a href="#pagination">Pagination</a></li>
+            <li><a href="#popovers">Popovers</a></li>
+            <li><a href="#spinners">Spinners</a></li>
+            <li><a href="#toasts">Toasts</a></li>
+            <li><a href="#tooltips">Tooltips</a></li>
+          </ul>
+        </li>
+        <li><a href="#utilities-3">Utilities</a></li>
+        <li><a href="#helpers-2">Helpers</a></li>
+        <li><a href="#javascript">JavaScript</a></li>
       </ul>
     </li>
-    <li><a href="#utilities-3">Utilities</a></li>
-    <li><a href="#helpers-2">Helpers</a></li>
-    <li><a href="#javascript">JavaScript</a></li>
   </ul>
 </nav>
           </div>
@@ -1023,19 +1027,20 @@
 </li>
 </ul>
 <p>Want more information? <a href="https://blog.getbootstrap.com/2021/08/04/bootstrap-5-1-0/">Read the v5.1.0 blog post.</a></p>
-<hr class="my-5">
+<h2 id="v500">v5.0.0 <a class="anchor-link" href="#v500" aria-label="Link to this section: v5.0.0"></a></h2>
+<hr class="mb-4">
 <div class="bd-callout bd-callout-info">
 <strong>Hey there!</strong> Changes to our first major release of Bootstrap 5, v5.0.0, are documented below. They don&rsquo;t reflect the additional changes shown above.
 </div>
 
-<h2 id="dependencies">Dependencies <a class="anchor-link" href="#dependencies" aria-label="Link to this section: Dependencies"></a></h2>
+<h3 id="dependencies">Dependencies <a class="anchor-link" href="#dependencies" aria-label="Link to this section: Dependencies"></a></h3>
 <ul>
 <li>Dropped jQuery.</li>
 <li>Upgraded from Popper v1.x to Popper v2.x.</li>
 <li>Replaced Libsass with Dart Sass as our Sass compiler given Libsass was deprecated.</li>
 <li>Migrated from Jekyll to Hugo for building our documentation</li>
 </ul>
-<h2 id="browser-support">Browser support <a class="anchor-link" href="#browser-support" aria-label="Link to this section: Browser support"></a></h2>
+<h3 id="browser-support">Browser support <a class="anchor-link" href="#browser-support" aria-label="Link to this section: Browser support"></a></h3>
 <ul>
 <li>Dropped Internet Explorer 10 and 11</li>
 <li>Dropped Microsoft Edge &lt; 16 (Legacy Edge)</li>
@@ -1045,7 +1050,7 @@
 <li>Dropped Chrome &lt; 60</li>
 </ul>
 <hr class="my-5">
-<h2 id="documentation-changes">Documentation changes <a class="anchor-link" href="#documentation-changes" aria-label="Link to this section: Documentation changes"></a></h2>
+<h3 id="documentation-changes">Documentation changes <a class="anchor-link" href="#documentation-changes" aria-label="Link to this section: Documentation changes"></a></h3>
 <ul>
 <li>Redesigned homepage, docs layout, and footer.</li>
 <li>Added <a href="/docs/5.3/getting-started/parcel/">new Parcel guide</a>.</li>
@@ -1057,7 +1062,7 @@
 <li>Redesigned the navbar and added a new subnav to make it easier to get around our sites and docs versions.</li>
 <li>Added new keyboard shortcut for the search field: <kbd><kbd>Ctrl</kbd> + <kbd>/</kbd></kbd>.</li>
 </ul>
-<h2 id="sass">Sass <a class="anchor-link" href="#sass" aria-label="Link to this section: Sass"></a></h2>
+<h3 id="sass">Sass <a class="anchor-link" href="#sass" aria-label="Link to this section: Sass"></a></h3>
 <ul>
 <li>
 <p>We&rsquo;ve ditched the default Sass map merges to make it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like <code>$theme-colors</code>. Check out how to deal with <a href="/docs/5.3/customize/sass/#maps-and-loops">Sass maps</a>.</p>
@@ -1114,7 +1119,7 @@
 <p>The <code>border-radius()</code> mixin now has a default value.</p>
 </li>
 </ul>
-<h2 id="color-system">Color system <a class="anchor-link" href="#color-system" aria-label="Link to this section: Color system"></a></h2>
+<h3 id="color-system">Color system <a class="anchor-link" href="#color-system" aria-label="Link to this section: Color system"></a></h3>
 <ul>
 <li>
 <p>The color system which worked with <code>color-level()</code> and <code>$theme-color-interval</code> was removed in favor of a new color system. All <code>lighten()</code> and <code>darken()</code> functions in our codebase are replaced by <code>tint-color()</code> and <code>shade-color()</code>. These functions will mix the color with either white or black instead of changing its lightness by a fixed amount. The <code>shift-color()</code> will either tint or shade a color depending on whether its weight parameter is positive or negative. <a href="https://github.com/twbs/bootstrap/pull/30622">See #30622</a> for more details.</p>
@@ -1129,7 +1134,7 @@
 <p>To support our color system, we&rsquo;ve added new custom <code>tint-color()</code> and <code>shade-color()</code> functions to mix our colors appropriately.</p>
 </li>
 </ul>
-<h2 id="grid-updates">Grid updates <a class="anchor-link" href="#grid-updates" aria-label="Link to this section: Grid updates"></a></h2>
+<h3 id="grid-updates">Grid updates <a class="anchor-link" href="#grid-updates" aria-label="Link to this section: Grid updates"></a></h3>
 <ul>
 <li>
 <p><strong>New breakpoint!</strong> Added new <code>xxl</code> breakpoint for <code>1400px</code> and up. No changes to all other breakpoints.</p>
@@ -1160,7 +1165,7 @@
 <p>Updated the <code>make-col</code> mixin to default to equal columns without a specified size.</p>
 </li>
 </ul>
-<h2 id="content-reboot-etc">Content, Reboot, etc <a class="anchor-link" href="#content-reboot-etc" aria-label="Link to this section: Content, Reboot, etc"></a></h2>
+<h3 id="content-reboot-etc">Content, Reboot, etc <a class="anchor-link" href="#content-reboot-etc" aria-label="Link to this section: Content, Reboot, etc"></a></h3>
 <ul>
 <li>
 <p><strong><a href="/docs/5.3/getting-started/rfs/">RFS</a> is now enabled by default.</strong> Headings using the <code>font-size()</code> mixin will automatically adjust their <code>font-size</code> to scale with the viewport. <em>This feature was previously opt-in with v4.</em></p>
@@ -1208,11 +1213,11 @@
 <p>Added <code>$enable-smooth-scroll</code>, which applies <code>scroll-behavior: smooth</code> globally—except for users asking for reduced motion through <code>prefers-reduced-motion</code> media query. <a href="https://github.com/twbs/bootstrap/pull/31877">See #31877</a></p>
 </li>
 </ul>
-<h2 id="rtl">RTL <a class="anchor-link" href="#rtl" aria-label="Link to this section: RTL"></a></h2>
+<h3 id="rtl">RTL <a class="anchor-link" href="#rtl" aria-label="Link to this section: RTL"></a></h3>
 <ul>
 <li>Horizontal direction specific variables, utilities, and mixins have all been renamed to use logical properties like those found in flexbox layouts—e.g., <code>start</code> and <code>end</code> in lieu of <code>left</code> and <code>right</code>.</li>
 </ul>
-<h2 id="forms-1">Forms <a class="anchor-link" href="#forms-1" aria-label="Link to this section: Forms"></a></h2>
+<h3 id="forms-1">Forms <a class="anchor-link" href="#forms-1" aria-label="Link to this section: Forms"></a></h3>
 <ul>
 <li>
 <p><strong>Added new floating forms!</strong> We&rsquo;ve promoted the Floating labels example to fully supported form components. <a href="/docs/5.3/forms/floating-labels/">See the new Floating labels page.</a></p>
@@ -1255,15 +1260,15 @@
 </li>
 </ul>
 <hr class="my-5">
-<h2 id="components-2">Components <a class="anchor-link" href="#components-2" aria-label="Link to this section: Components"></a></h2>
+<h3 id="components-2">Components <a class="anchor-link" href="#components-2" aria-label="Link to this section: Components"></a></h3>
 <ul>
 <li>Unified <code>padding</code> values for alerts, breadcrumbs, cards, dropdowns, list groups, modals, popovers, and tooltips to be based on our <code>$spacer</code> variable. <a href="https://github.com/twbs/bootstrap/pull/30564">See #30564</a>.</li>
 </ul>
-<h3 id="accordion">Accordion <a class="anchor-link" href="#accordion" aria-label="Link to this section: Accordion"></a></h3>
+<h4 id="accordion">Accordion <a class="anchor-link" href="#accordion" aria-label="Link to this section: Accordion"></a></h4>
 <ul>
 <li>Added <a href="/docs/5.3/components/accordion/">new accordion component</a>.</li>
 </ul>
-<h3 id="alerts">Alerts <a class="anchor-link" href="#alerts" aria-label="Link to this section: Alerts"></a></h3>
+<h4 id="alerts">Alerts <a class="anchor-link" href="#alerts" aria-label="Link to this section: Alerts"></a></h4>
 <ul>
 <li>
 <p>Alerts now have <a href="/docs/5.3/components/alerts/#icons">examples with icons</a>.</p>
@@ -1272,7 +1277,7 @@
 <p>Removed custom styles for <code>&lt;hr&gt;</code>s in each alert since they already use <code>currentColor</code>.</p>
 </li>
 </ul>
-<h3 id="badges">Badges <a class="anchor-link" href="#badges" aria-label="Link to this section: Badges"></a></h3>
+<h4 id="badges">Badges <a class="anchor-link" href="#badges" aria-label="Link to this section: Badges"></a></h4>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> Dropped all <code>.badge-*</code> color classes for background utilities (e.g., use <code>.bg-primary</code> instead of <code>.badge-primary</code>).</p>
@@ -1287,7 +1292,7 @@
 <p>Increased default padding for badges from <code>.25em</code>/<code>.5em</code> to <code>.35em</code>/<code>.65em</code>.</p>
 </li>
 </ul>
-<h3 id="breadcrumbs">Breadcrumbs <a class="anchor-link" href="#breadcrumbs" aria-label="Link to this section: Breadcrumbs"></a></h3>
+<h4 id="breadcrumbs">Breadcrumbs <a class="anchor-link" href="#breadcrumbs" aria-label="Link to this section: Breadcrumbs"></a></h4>
 <ul>
 <li>
 <p>Simplified the default appearance of breadcrumbs by removing <code>padding</code>, <code>background-color</code>, and <code>border-radius</code>.</p>
@@ -1296,7 +1301,7 @@
 <p>Added new CSS custom property <code>--bs-breadcrumb-divider</code> for easy customization without needing to recompile CSS.</p>
 </li>
 </ul>
-<h3 id="buttons">Buttons <a class="anchor-link" href="#buttons" aria-label="Link to this section: Buttons"></a></h3>
+<h4 id="buttons">Buttons <a class="anchor-link" href="#buttons" aria-label="Link to this section: Buttons"></a></h4>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> <strong><a href="/docs/5.3/forms/checks-radios/#toggle-buttons">Toggle buttons</a>, with checkboxes or radios, no longer require JavaScript and have new markup.</strong> We no longer require a wrapping element, add <code>.btn-check</code> to the <code>&lt;input&gt;</code>, and pair it with any <code>.btn</code> classes on the <code>&lt;label&gt;</code>. <a href="https://github.com/twbs/bootstrap/pull/30650">See #30650</a>. <em>The docs for this has moved from our Buttons page to the new Forms section.</em></p>
@@ -1314,7 +1319,7 @@
 <p>Disabled buttons now have <code>pointer-events: none;</code>.</p>
 </li>
 </ul>
-<h3 id="card">Card <a class="anchor-link" href="#card" aria-label="Link to this section: Card"></a></h3>
+<h4 id="card">Card <a class="anchor-link" href="#card" aria-label="Link to this section: Card"></a></h4>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> Dropped <code>.card-deck</code> in favor of our grid. Wrap your cards in column classes and add a parent <code>.row-cols-*</code> container to recreate card decks (but with more control over responsive alignment).</p>
@@ -1326,7 +1331,7 @@
 <p><span class="badge bg-danger">Breaking</span> Replaced the <code>.card</code> based accordion with a <a href="/docs/5.3/components/accordion/">new Accordion component</a>.</p>
 </li>
 </ul>
-<h3 id="carousel">Carousel <a class="anchor-link" href="#carousel" aria-label="Link to this section: Carousel"></a></h3>
+<h4 id="carousel">Carousel <a class="anchor-link" href="#carousel" aria-label="Link to this section: Carousel"></a></h4>
 <ul>
 <li>
 <p>Added new <a href="/docs/5.3/components/carousel/#dark-variant"><code>.carousel-dark</code> variant</a> for dark text, controls, and indicators (great for lighter backgrounds).</p>
@@ -1335,7 +1340,7 @@
 <p>Replaced chevron icons for carousel controls with new SVGs from <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>.</p>
 </li>
 </ul>
-<h3 id="close-button-1">Close button <a class="anchor-link" href="#close-button-1" aria-label="Link to this section: Close button"></a></h3>
+<h4 id="close-button-1">Close button <a class="anchor-link" href="#close-button-1" aria-label="Link to this section: Close button"></a></h4>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> Renamed <code>.close</code> to <code>.btn-close</code> for a less generic name.</p>
@@ -1347,11 +1352,11 @@
 <p>Added new <code>.btn-close-white</code> variant that uses <code>filter: invert(1)</code> to enable higher contrast dismiss icons against darker backgrounds.</p>
 </li>
 </ul>
-<h3 id="collapse">Collapse <a class="anchor-link" href="#collapse" aria-label="Link to this section: Collapse"></a></h3>
+<h4 id="collapse">Collapse <a class="anchor-link" href="#collapse" aria-label="Link to this section: Collapse"></a></h4>
 <ul>
 <li>Removed scroll anchoring for accordions.</li>
 </ul>
-<h3 id="dropdowns-1">Dropdowns <a class="anchor-link" href="#dropdowns-1" aria-label="Link to this section: Dropdowns"></a></h3>
+<h4 id="dropdowns-1">Dropdowns <a class="anchor-link" href="#dropdowns-1" aria-label="Link to this section: Dropdowns"></a></h4>
 <ul>
 <li>
 <p>Added new <code>.dropdown-menu-dark</code> variant and associated variables for on-demand dark dropdowns.</p>
@@ -1378,28 +1383,28 @@
 <p>Dropdowns now support <code>.dropdown-item</code>s wrapped in <code>&lt;li&gt;</code>s.</p>
 </li>
 </ul>
-<h3 id="jumbotron">Jumbotron <a class="anchor-link" href="#jumbotron" aria-label="Link to this section: Jumbotron"></a></h3>
+<h4 id="jumbotron">Jumbotron <a class="anchor-link" href="#jumbotron" aria-label="Link to this section: Jumbotron"></a></h4>
 <ul>
 <li><span class="badge bg-danger">Breaking</span> Dropped the jumbotron component as it can be replicated with utilities. <a href="/docs/5.3/examples/jumbotron/">See our new Jumbotron example for a demo.</a></li>
 </ul>
-<h3 id="list-group-1">List group <a class="anchor-link" href="#list-group-1" aria-label="Link to this section: List group"></a></h3>
+<h4 id="list-group-1">List group <a class="anchor-link" href="#list-group-1" aria-label="Link to this section: List group"></a></h4>
 <ul>
 <li>Added new <a href="/docs/5.3/components/list-group/#numbered"><code>.list-group-numbered</code> modifier</a> to list groups.</li>
 </ul>
-<h3 id="navs-and-tabs">Navs and tabs <a class="anchor-link" href="#navs-and-tabs" aria-label="Link to this section: Navs and tabs"></a></h3>
+<h4 id="navs-and-tabs">Navs and tabs <a class="anchor-link" href="#navs-and-tabs" aria-label="Link to this section: Navs and tabs"></a></h4>
 <ul>
 <li>Added new <code>null</code> variables for <code>font-size</code>, <code>font-weight</code>, <code>color</code>, and <code>:hover</code> <code>color</code> to the <code>.nav-link</code> class.</li>
 </ul>
-<h3 id="navbars">Navbars <a class="anchor-link" href="#navbars" aria-label="Link to this section: Navbars"></a></h3>
+<h4 id="navbars">Navbars <a class="anchor-link" href="#navbars" aria-label="Link to this section: Navbars"></a></h4>
 <ul>
 <li><span class="badge bg-danger">Breaking</span> Navbars now require a container within (to drastically simplify spacing requirements and CSS required).</li>
 <li><span class="badge bg-danger">Breaking</span> The <code>.active</code> class can no longer be applied to <code>.nav-item</code>s, it must be applied directly on <code>.nav-link</code>s.</li>
 </ul>
-<h3 id="offcanvas">Offcanvas <a class="anchor-link" href="#offcanvas" aria-label="Link to this section: Offcanvas"></a></h3>
+<h4 id="offcanvas">Offcanvas <a class="anchor-link" href="#offcanvas" aria-label="Link to this section: Offcanvas"></a></h4>
 <ul>
 <li>Added the new <a href="/docs/5.3/components/offcanvas/">offcanvas component</a>.</li>
 </ul>
-<h3 id="pagination">Pagination <a class="anchor-link" href="#pagination" aria-label="Link to this section: Pagination"></a></h3>
+<h4 id="pagination">Pagination <a class="anchor-link" href="#pagination" aria-label="Link to this section: Pagination"></a></h4>
 <ul>
 <li>
 <p>Pagination links now have customizable <code>margin-left</code> that are dynamically rounded on all corners when separated from one another.</p>
@@ -1408,7 +1413,7 @@
 <p>Added <code>transition</code>s to pagination links.</p>
 </li>
 </ul>
-<h3 id="popovers">Popovers <a class="anchor-link" href="#popovers" aria-label="Link to this section: Popovers"></a></h3>
+<h4 id="popovers">Popovers <a class="anchor-link" href="#popovers" aria-label="Link to this section: Popovers"></a></h4>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> Renamed <code>.arrow</code> to <code>.popover-arrow</code> in our default popover template.</p>
@@ -1417,7 +1422,7 @@
 <p>Renamed <code>whiteList</code> option to <code>allowList</code>.</p>
 </li>
 </ul>
-<h3 id="spinners">Spinners <a class="anchor-link" href="#spinners" aria-label="Link to this section: Spinners"></a></h3>
+<h4 id="spinners">Spinners <a class="anchor-link" href="#spinners" aria-label="Link to this section: Spinners"></a></h4>
 <ul>
 <li>
 <p>Spinners now honor <code>prefers-reduced-motion: reduce</code> by slowing down animations. <a href="https://github.com/twbs/bootstrap/pull/31882">See #31882</a>.</p>
@@ -1426,7 +1431,7 @@
 <p>Improved spinner vertical alignment.</p>
 </li>
 </ul>
-<h3 id="toasts">Toasts <a class="anchor-link" href="#toasts" aria-label="Link to this section: Toasts"></a></h3>
+<h4 id="toasts">Toasts <a class="anchor-link" href="#toasts" aria-label="Link to this section: Toasts"></a></h4>
 <ul>
 <li>
 <p>Toasts can now be <a href="/docs/5.3/components/toasts/#placement">positioned</a> in a <code>.toast-container</code> with the help of <a href="/docs/5.3/utilities/position/">positioning utilities</a>.</p>
@@ -1438,7 +1443,7 @@
 <p>Removed <code>overflow: hidden</code> from toasts and replaced with proper <code>border-radius</code>s with <code>calc()</code> functions.</p>
 </li>
 </ul>
-<h3 id="tooltips">Tooltips <a class="anchor-link" href="#tooltips" aria-label="Link to this section: Tooltips"></a></h3>
+<h4 id="tooltips">Tooltips <a class="anchor-link" href="#tooltips" aria-label="Link to this section: Tooltips"></a></h4>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> Renamed <code>.arrow</code> to <code>.tooltip-arrow</code> in our default tooltip template.</p>
@@ -1450,12 +1455,11 @@
 <p><span class="badge bg-danger">Breaking</span> Renamed <code>whiteList</code> option to <code>allowList</code>.</p>
 </li>
 </ul>
-<h2 id="utilities-3">Utilities <a class="anchor-link" href="#utilities-3" aria-label="Link to this section: Utilities"></a></h2>
+<h3 id="utilities-3">Utilities <a class="anchor-link" href="#utilities-3" aria-label="Link to this section: Utilities"></a></h3>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> Renamed several utilities to use logical property names instead of directional names with the addition of RTL support:</p>
 <ul>
-<li>Renamed <code>.left-*</code> and <code>.right-*</code> to <code>.start-*</code> and <code>.end-*</code>.</li>
 <li>Renamed <code>.float-left</code> and <code>.float-right</code> to <code>.float-start</code> and <code>.float-end</code>.</li>
 <li>Renamed <code>.border-left</code> and <code>.border-right</code> to <code>.border-start</code> and <code>.border-end</code>.</li>
 <li>Renamed <code>.rounded-left</code> and <code>.rounded-right</code> to <code>.rounded-start</code> and <code>.rounded-end</code>.</li>
@@ -1510,7 +1514,7 @@
 <p>Extended the <code>.visually-hidden-focusable</code> helper to also work on containers, using <code>:focus-within</code>.</p>
 </li>
 </ul>
-<h2 id="helpers-2">Helpers <a class="anchor-link" href="#helpers-2" aria-label="Link to this section: Helpers"></a></h2>
+<h3 id="helpers-2">Helpers <a class="anchor-link" href="#helpers-2" aria-label="Link to this section: Helpers"></a></h3>
 <ul>
 <li>
 <p><span class="badge bg-danger">Breaking</span> <strong>Responsive embed helpers have been renamed to <a href="/docs/5.3/helpers/ratio/">ratio helpers</a></strong> with new class names and improved behaviors, as well as a helpful CSS variable.</p>
@@ -1533,7 +1537,7 @@
 <p><code>bootstrap-utilities.css</code> now also includes our helpers. Helpers don&rsquo;t need to be imported in custom builds anymore.</p>
 </li>
 </ul>
-<h2 id="javascript">JavaScript <a class="anchor-link" href="#javascript" aria-label="Link to this section: JavaScript"></a></h2>
+<h3 id="javascript">JavaScript <a class="anchor-link" href="#javascript" aria-label="Link to this section: JavaScript"></a></h3>
 <ul>
 <li>
 <p><strong>Dropped jQuery dependency</strong> and rewrote plugins to be in regular JavaScript.</p>
@@ -1573,7 +1577,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.1.</li>
+          <li class="mb-2">Currently v5.3.2.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1622,7 +1626,7 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1651,10 +1655,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.1\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.2\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.1\/dist\/js\/bootstrap.bundle.min.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.2\/dist\/js\/bootstrap.bundle.min.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 
