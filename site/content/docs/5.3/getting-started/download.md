@@ -54,7 +54,7 @@ If you're using our compiled JavaScript and prefer to include Popper separately,
 
 We recommend [jsDelivr](https://www.jsdelivr.com/) and use it ourselves in our documentation. However, in some cases—like in some specific countries or environments—you may need to use other CDN providers like [cdnjs](https://cdnjs.com/) or [unpkg](https://unpkg.com/).
 
-You'll find the same files on these CDN providers, albeit with different URLs. When changing the URLs, you'll also need to update the `integrity` attribute. Tools like [SRI Hash Generator](https://www.srihash.org/) can help you generate the correct values.
+You'll find the same files on these CDN providers, albeit with different URLs.
 
 With cdnjs, you can [use this direct Bootstrap package link](https://cdnjs.com/libraries/bootstrap) to copy and paste ready-to-use HTML snippets for each dist file from any version of Bootstrap.
 
