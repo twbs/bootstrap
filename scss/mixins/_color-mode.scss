@@ -13,6 +13,7 @@
       }
     }
   } @else {
+    :root[data-bs-theme="#{$mode}"] [data-bs-theme="body"],
     [data-bs-theme="#{$mode}"] {
       @content;
     }
