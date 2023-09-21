@@ -1,0 +1,53 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# clj-watson scans dependencies in a clojure deps.edn
+# seeking for vulnerable direct/transitive dependencies and
+# build a report with all the information needed to help you
+# understand how the vulnerability manifest in your software.
+# More details at https://github.com/clj-holmes/clj-watson 
+
+name: clj-watson
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ master ]
+  schedule:
+    - cron: '19 10 * * 0'
+
+permissions:
+  contents: read
+
+jobs:
+  clj-holmes:
+    name: Run clj-watson scanning
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Dependency scan
+        uses: clj-holmes/clj-watson-action@b4c3623c4d603932e60e6012a3a1db7bc60058c2
+        with:
+          clj-watson-sha: "65d928c"
+          clj-watson-tag: "v4.0.1"
+          database-strategy: github-advisory
+          aliases: clojure-lsp,test 
+          deps-edn-path: deps.edn
+          suggest-fix: true
+          output-type: sarif
+          output-file: clj-watson-results.sarif
+          fail-on-result: false
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{github.workspace}}/clj-watson-results.sarif
+          wait-for-processing: true

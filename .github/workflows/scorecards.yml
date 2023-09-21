@@ -1,0 +1,55 @@
+name: Scorecards supply-chain security
+on:
+  # Only the default branch is supported.
+  branch_protection_rule:
+  schedule:
+    - cron: '35 8 * * 1'
+  push:
+    branches: [ master ]
+
+# Declare default permissions as read only.
+permissions: read-all
+
+jobs:
+  analysis:
+    name: Scorecards analysis
+    runs-on: ubuntu-latest
+    permissions:
+      # Needed to upload the results to code-scanning dashboard.
+      security-events: write
+      actions: read
+      contents: read
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        with:
+          persist-credentials: false
+
+      - name: "Run analysis"
+        uses: ossf/scorecard-action@80e868c13c90f172d68d1f4501dee99e2479f7af # v2.1.3
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          # Read-only PAT token. To create it,
+          # follow the steps in https://github.com/ossf/scorecard-action#pat-token-creation.
+          repo_token: ${{ secrets.SCORECARD_READ_TOKEN }}
+          # Publish the results to enable scorecard badges. For more details, see
+          # https://github.com/ossf/scorecard-action#publishing-results.
+          # For private repositories, `publish_results` will automatically be set to `false`,
+          # regardless of the value entered here.
+          publish_results: true
+
+      # Upload the results as artifacts (optional).
+      - name: "Upload artifact"
+        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
+        with:
+          name: SARIF file
+          path: results.sarif
+          retention-days: 5
+
+      # Upload the results to GitHub's code scanning dashboard.
+      - name: "Upload to code-scanning"
+        uses: github/codeql-action/upload-sarif@83f0fe6c4988d98a455712a27f0255212bba9bd4 # v2.3.6
+        with:
+          sarif_file: results.sarif

@@ -1,0 +1,40 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+#
+# Sobelow is a security-focused static analysis tool for the Phoenix framework. https://sobelow.io/
+#
+# To use this workflow, you must have GitHub Advanced Security (GHAS) enabled for your repository.
+#
+# Instructions:
+# 2. Follow the annotated workflow below and make any necessary modifications then save the workflow to your repository
+#    and review the "Security" tab once the action has run.
+name: Sobelow
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]  
+  schedule:
+    - cron: '45 13 * * 2'
+
+permissions:
+  contents: read
+
+jobs:
+  security-scan:
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3 
+      - id: run-action
+        uses: sobelow/action@85a7af55ecfe77cbecbae704398af72df079165e
+      - name: Upload report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif

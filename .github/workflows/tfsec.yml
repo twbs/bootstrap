@@ -1,0 +1,38 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: tfsec
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]  
+  schedule:
+    - cron: '39 23 * * 0'
+
+jobs:
+  tfsec:
+    name: Run tfsec sarif report
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+
+      - name: Run tfsec
+        uses: tfsec/tfsec-sarif-action@21ded20e8ca120cd9d3d6ab04ef746477542a608
+        with:
+          sarif_file: tfsec.sarif         
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: tfsec.sarif  

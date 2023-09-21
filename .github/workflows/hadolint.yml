@@ -1,0 +1,47 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# hadoint is a Dockerfile linter written in Haskell
+# that helps you build best practice Docker images.
+# More details at https://github.com/hadolint/hadolint
+
+name: Hadolint
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ master ]
+  schedule:
+    - cron: '20 13 * * 4'
+
+permissions:
+  contents: read
+
+jobs:
+  hadolint:
+    name: Run hadolint scanning
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run hadolint
+        uses: hadolint/hadolint-action@d292784f8f3eacda47060b259a580467b0ba410c
+        with:
+          dockerfile: ./Dockerfile
+          format: sarif
+          output-file: hadolint-results.sarif
+          no-fail: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: hadolint-results.sarif
+          wait-for-processing: true

@@ -1,0 +1,96 @@
+# This workflow will deploy source code on Cloud Run when a commit is pushed to the master branch
+#
+# Overview:
+#
+# 1. Authenticate to Google Cloud
+# 2. Deploy it to Cloud Run
+#
+# To configure this workflow:
+#
+# 1. Ensure the required Google Cloud APIs are enabled:
+#
+#    Cloud Run            run.googleapis.com
+#    Cloud Build          cloudbuild.googleapis.com
+#    Artifact Registry    artifactregistry.googleapis.com
+#
+# 2. Create and configure Workload Identity Federation for GitHub (https://github.com/google-github-actions/auth#setting-up-workload-identity-federation)
+#
+# 3. Ensure the required IAM permissions are granted
+#
+#    Cloud Run
+#      roles/run.admin
+#      roles/iam.serviceAccountUser     (to act as the Cloud Run runtime service account)
+#
+#    Cloud Build
+#      roles/cloudbuild.builds.editor
+#
+#    Cloud Storage
+#      roles/storage.objectAdmin
+#
+#    Artifact Registry
+#      roles/artifactregistry.admin     (project or repository level)
+#
+#    NOTE: You should always follow the principle of least privilege when assigning IAM roles
+#
+# 4. Create GitHub secrets for WIF_PROVIDER and WIF_SERVICE_ACCOUNT
+#
+# 5. Change the values for the SERVICE and REGION environment variables (below).
+#
+# For more support on how to run this workflow, please visit https://github.com/marketplace/actions/deploy-to-cloud-run
+#
+# Further reading:
+#   Cloud Run runtime service account   - https://cloud.google.com/run/docs/securing/service-identity
+#   Cloud Run IAM permissions           - https://cloud.google.com/run/docs/deploying-source-code#permissions_required_to_deploy
+#   Cloud Run builds from source        - https://cloud.google.com/run/docs/deploying-source-code
+#   Principle of least privilege        - https://cloud.google.com/blog/products/identity-security/dont-get-pwned-practicing-the-principle-of-least-privilege
+
+name: Deploy to Cloud Run from Source
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  PROJECT_ID: YOUR_PROJECT_ID # TODO: update Google Cloud project id
+  SERVICE: YOUR_SERVICE_NAME # TODO: update Cloud Run service name
+  REGION: YOUR_SERVICE_REGION # TODO: update Cloud Run service region
+
+jobs:
+  deploy:
+    # Add 'id-token' with the intended permissions for workload identity federation
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}' # e.g. - projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}' # e.g. - my-service-account@my-project.iam.gserviceaccount.com
+
+      # NOTE: Alternative option - authentication via credentials json
+      # - name: Google Auth
+      #   id: auth
+      #   uses: 'google-github-actions/auth@v0'
+      #   with:
+      #     credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v1
+        with:
+          service: ${{ env.SERVICE }}
+          region: ${{ env.REGION }}
+          # NOTE: If required, update to the appropriate source folder
+          source: ./
+
+      # If required, use the Cloud Run url output in later steps
+      - name: Show Output
+        run: echo ${{ steps.deploy.outputs.url }}

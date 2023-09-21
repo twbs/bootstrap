@@ -1,0 +1,157 @@
+# This workflow will build and push an application to a Azure Kubernetes Service (AKS) cluster when you push your code
+#
+# This workflow assumes you have already created the target AKS cluster and have created an Azure Container Registry (ACR)
+# For instructions see:
+#   - https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal
+#   - https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal
+#   - https://github.com/Azure/aks-create-action
+#
+# To configure this workflow:
+#
+# 1. Set the following secrets in your repository (instructions for getting these 
+#    https://docs.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-cli%2Clinux):
+#    - AZURE_CLIENT_ID
+#    - AZURE_TENANT_ID
+#    - AZURE_SUBSCRIPTION_ID
+#
+# 2. Set the following environment variables (or replace the values below):
+#    - AZURE_CONTAINER_REGISTRY (name of your container registry / ACR)
+#    - CONTAINER_NAME (name of the container image you would like to push up to your ACR)
+#    - RESOURCE_GROUP (where your cluster is deployed)
+#    - CLUSTER_NAME (name of your AKS cluster)
+#    - IMAGE_PULL_SECRET_NAME (name of the ImagePullSecret that will be created to pull your ACR image)
+#
+# 3. Choose the appropriate render engine for the bake step https://github.com/Azure/k8s-bake. The config below assumes Kustomize.
+#    Set your kustomizationPath and kubectl-version to suit your configuration.
+#    - KUSTOMIZE_PATH (the path where your Kustomize manifests are located)
+#
+# For more information on GitHub Actions for Azure, refer to https://github.com/Azure/Actions
+# For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
+# For more options with the actions used below please refer to https://github.com/Azure/login
+
+name: Build and deploy an app to AKS with Kustomize
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  AZURE_CONTAINER_REGISTRY: "your-azure-container-registry"
+  CONTAINER_NAME: "your-container-name"
+  RESOURCE_GROUP: "your-resource-group"
+  CLUSTER_NAME: "your-cluster-name"
+  IMAGE_PULL_SECRET_NAME: "your-image-pull-secret-name"
+  KUSTOMIZE_PATH: "your-kustomize-path"
+
+jobs:
+  buildImage:
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+    # Checks out the repository this file is in
+    - uses: actions/checkout@v3
+
+    # Logs in with your Azure credentials
+    - name: Azure login
+      uses: azure/login@v1.4.7
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      
+    # Builds and pushes an image up to your Azure Container Registry
+    - name: Build and push image to ACR
+      run: |
+        az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
+  
+  createSecret:
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+    # Logs in with your Azure credentials
+    - name: Azure login
+      uses: azure/login@v1.4.7
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    # Retrieves your Azure Kubernetes Service cluster's kubeconfig file
+    - name: Get K8s context
+      uses: azure/aks-set-context@v3.2
+      with:
+        resource-group: ${{ env.RESOURCE_GROUP }}
+        cluster-name: ${{ env.CLUSTER_NAME }}
+
+    # Retrieves the credentials for pulling images from your Azure Container Registry
+    - name: Get ACR credentials
+      run: |
+        az acr update -n ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} --admin-enabled true
+        ACR_USERNAME=$(az acr credential show -g ${{ env.RESOURCE_GROUP }} -n ${{ env.AZURE_CONTAINER_REGISTRY }} --query username -o tsv)
+        ACR_PASSWORD=$(az acr credential show -g ${{ env.RESOURCE_GROUP }} -n ${{ env.AZURE_CONTAINER_REGISTRY }} --query passwords[0].value -o tsv)
+        echo "::add-mask::${ACR_USERNAME}"
+        echo "::set-output name=username::${ACR_USERNAME}"
+        echo "::add-mask::${ACR_PASSWORD}"
+        echo "::set-output name=password::${ACR_PASSWORD}"
+      id: get-acr-creds
+
+    # Creates a kubernetes secret on your Azure Kubernetes Service cluster that matches up to the credentials from the last step
+    - name: Create K8s secret for pulling image from ACR
+      uses: Azure/k8s-create-secret@v4.0
+      with:
+        container-registry-url: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io
+        container-registry-username: ${{ steps.get-acr-creds.outputs.username }}
+        container-registry-password: ${{ steps.get-acr-creds.outputs.password }}
+        secret-name: ${{ env.IMAGE_PULL_SECRET_NAME }}  
+  
+  deploy:
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    needs: [buildImage, createSecret]
+    steps:
+    # Checks out the repository this file is in
+    - uses: actions/checkout@v3
+
+    # Logs in with your Azure credentials
+    - name: Azure login
+      uses: azure/login@v1.4.7
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    # Retrieves your Azure Kubernetes Service cluster's kubeconfig file
+    - name: Get K8s context
+      uses: azure/aks-set-context@v3.2
+      with:
+        resource-group: ${{ env.RESOURCE_GROUP }}
+        cluster-name: ${{ env.CLUSTER_NAME }}
+
+    # Runs Kustomize to create manifest files
+    - name: Bake deployment
+      uses: azure/k8s-bake@v2.4
+      with:
+        renderEngine: 'kustomize'
+        kustomizationPath: ${{ env.KUSTOMIZE_PATH }}
+        kubectl-version: latest
+      id: bake
+
+    # Deploys application based on manifest files from previous step
+    - name: Deploy application
+      uses: Azure/k8s-deploy@v4.9
+      with:
+        action: deploy
+        manifests: ${{ steps.bake.outputs.manifestsBundle }}
+        images: |
+          ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+        imagepullsecrets: |
+          ${{ env.IMAGE_PULL_SECRET_NAME }}

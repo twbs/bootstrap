@@ -1,0 +1,46 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow integrates Pyre with GitHub's
+# Code Scanning feature.
+#
+# Pyre is a performant type checker for Python compliant with
+# PEP 484. Pyre can analyze codebases with millions of lines
+# of code incrementally – providing instantaneous feedback
+# to developers as they write code.
+#
+# See https://pyre-check.org
+
+name: Pyre
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "dev1" ]
+  pull_request:
+    branches: [ "dev1" ]
+
+permissions:
+    contents: read
+
+jobs:
+  pyre:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Run Pyre
+        uses: facebook/pyre-action@6dc86fc8f40e0f15cdd8a59d9f93294cf72a0863
+        with:
+          # To customize these inputs:
+          # See https://github.com/facebook/pyre-action#inputs
+          repo-directory: './'
+          requirements-path: 'requirements.txt'

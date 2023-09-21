@@ -1,0 +1,118 @@
+name: Build and deploy Docker app to Azure
+on:
+  push:
+    branches:
+      - master
+
+env:
+  APPNAME: laudatecorpus-test
+  APPLICATIONPATH: Application
+  HOSTINGPLAN: laudatecorpus-test
+  DOCKERFILEPATH: "Application"
+  REGISTRYSKU: "Standard"
+  REGISTRYNAME: "laudatecorpustestacr"
+  REGISTRYLOCATION: "South Central US"
+  IMAGENAME: "laudatecorpustestdd39"
+  RESOURCEGROUPNAME: laudatecorpus-test-rg
+  LOCATION: South Central US
+  APPINSIGHTSLOCATION: South Central US
+  SUBSCRIPTIONID: 61b13ccd-f2e5-4c34-b07e-4b775682f41b
+  SKU: S1 Standard
+  NODE_VERSION: 8.11.1
+
+jobs:
+  build:
+    name: Build and push Application to ACR
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Azure authentication
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - uses: azure/arm-deploy@v1
+      id: createAcr
+      with:
+        subscriptionId: ${{ env.SUBSCRIPTIONID }}
+        resourceGroupName: ${{ env.RESOURCEGROUPNAME }}
+        template: ./ArmTemplates/containerRegistry-template.json
+        parameters: registryName="${{ env.REGISTRYNAME }}" registryLocation="${{ env.REGISTRYLOCATION }}" registrySku="${{ env.REGISTRYSKU }}"
+
+    - name: Fetch ACR credentials
+      id: acrCredentials
+      continue-on-error: false
+      run: |
+          echo "::set-output name=acr_username::`az acr credential show -n ${{ env.REGISTRYNAME }} --query username`"
+          echo "::set-output name=acr_password::`az acr credential show -n ${{ env.REGISTRYNAME }} --query passwords[0].value`"
+          echo "::add-mask::`az acr credential show -n ${{ env.REGISTRYNAME }} --query passwords[0].value`"
+
+    - name: ACR authentication
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.REGISTRYNAME }}.azurecr.io
+        username: ${{ steps.acrCredentials.outputs.acr_username }}
+        password: ${{ steps.acrCredentials.outputs.acr_password }}
+
+    - name: Docker Build & Push to ACR
+      run: |
+        docker login ${{ env.REGISTRYNAME }}.azurecr.io --username ${{ steps.acrCredentials.outputs.acr_username }} --password ${{ steps.acrCredentials.outputs.acr_password }}
+        docker build "$GITHUB_WORKSPACE/${{env.DOCKERFILEPATH}}" -f  "${{env.DOCKERFILEPATH}}/Dockerfile" -t ${{ env.REGISTRYNAME }}.azurecr.io/${{ env.IMAGENAME }}:${{ github.sha }}
+        docker push ${{ env.REGISTRYNAME }}.azurecr.io/${{ env.IMAGENAME }}:${{ github.sha }}
+
+  deploy:
+    name: Deploy application to AKS
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Azure authentication
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - uses: azure/arm-deploy@v1
+      id: deploy
+      with:
+        subscriptionId: ${{ env.SUBSCRIPTIONID }}
+        resourceGroupName: ${{ env.RESOURCEGROUPNAME }}
+        template: ./ArmTemplates/container-webapp-template.json
+        parameters: webAppName="${{ env.APPNAME }}" hostingPlanName="${{ env.HOSTINGPLAN }}" sku="${{ env.SKU }}" appInsightsLocation="${{ env.APPINSIGHTSLOCATION }}" registryName="${{ env.REGISTRYNAME }}" imageName="${{ env.IMAGENAME }}" registryLocation="${{ env.REGISTRYLOCATION }}" registrySku="${{ env.REGISTRYSKU }}" 
+
+    - name: Get ACR credentials
+      id: getACRCred
+      run: |
+           echo "::set-output name=acr_username::`az acr credential show -n ${{ env.REGISTRYNAME }} --query username | xargs`"
+           echo "::set-output name=acr_password::`az acr credential show -n ${{ env.REGISTRYNAME }} --query passwords[0].value | xargs`"
+           echo "::add-mask::`az acr credential show -n ${{ env.REGISTRYNAME }} --query passwords[0].value | xargs`" 
+
+    - name: 'Deploy to Azure Web App for Container'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: ${{ env.APPNAME }} 
+        images: ${{ env.REGISTRYNAME }}.azurecr.io/${{ env.IMAGENAME }}:${{ github.sha }}
+
+# Job to run functional tests
+  FunctionalTests:
+    name: Run Functional tests
+    runs-on: windows-latest
+    needs: Deploy
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    # Run functional tests
+    - name: set up test environment and run tests
+      continue-on-error: false
+      run: |
+        cd Application
+        npm install
+        cd ../Tests
+        npm install
+        gulp functionaltest --webAppUrl https://${{ env.APPNAME }}.azurewebsites.net/
