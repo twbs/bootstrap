@@ -8,7 +8,7 @@
           {{ if eq .Title "Examples" }}
           <div class="d-flex flex-column flex-md-row gap-3">
             <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">
-              <svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
+              <svg class="bi me-2" aria-hidden="true"><use href="#box-seam"></use></svg>
               Download examples
             </a>
             <a href="{{ .Site.Params.download.source }}" class="btn btn-lg bd-btn-lg btn-outline-secondary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">

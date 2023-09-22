@@ -22,7 +22,7 @@
     '<div class="bd-code-snippet">',
     '  <div class="bd-clipboard">',
     '    <button type="button" class="btn-clipboard">',
-    '      <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
+    '      <svg class="bi" role="img" aria-label="Copy"><use href="#clipboard"/></svg>',
     '    </button>',
     '  </div>',
     '</div>'

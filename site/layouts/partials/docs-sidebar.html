@@ -19,7 +19,7 @@
       <li class="bd-links-group py-2">
         <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
           {{- if $group.icon }}
-            <svg class="bi me-2"{{- if $group.icon_color }} style="color: var(--bs-{{ $group.icon_color }});"{{- end }} aria-hidden="true"><use xlink:href="#{{ $group.icon }}"></use></svg>
+            <svg class="bi me-2"{{- if $group.icon_color }} style="color: var(--bs-{{ $group.icon_color }});"{{- end }} aria-hidden="true"><use href="#{{ $group.icon }}"></use></svg>
           {{- end }}
           {{ $group.title }}
         </strong>

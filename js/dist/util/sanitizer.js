@@ -53,7 +53,7 @@
   };
   // js-docs-end allow-list
 
-  const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href']);
+  const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'href']);
 
   /**
    * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation

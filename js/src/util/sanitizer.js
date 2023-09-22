@@ -51,7 +51,7 @@ const uriAttributes = new Set([
   'longdesc',
   'poster',
   'src',
-  'xlink:href'
+  'href'
 ])
 
 /**
