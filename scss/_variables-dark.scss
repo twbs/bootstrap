@@ -53,6 +53,8 @@ $headings-color-dark:               inherit !default;
 $link-color-dark:                   tint-color($primary, 40%) !default;
 $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
 $code-color-dark:                   tint-color($code-color, 40%) !default;
+$mark-color-dark:                   $body-color-dark !default;
+$mark-bg-dark:                      $yellow-800 !default;
 
 
 //
