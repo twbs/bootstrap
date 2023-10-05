@@ -29,19 +29,17 @@
 
   setTheme(getPreferredTheme())
 
-  const showActiveTheme = (theme, focus = false) => {
-    const themeSwitcher = document.querySelector('#bd-theme')
-
+  const showActiveTheme = (theme, focus = false, themeSwitcher = document.querySelector('#bd-theme')) => {
     if (!themeSwitcher) {
       return
     }
 
     const themeSwitcherText = document.querySelector('#bd-theme-text')
-    const activeThemeIcon = document.querySelector('.theme-icon-active use')
-    const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+    const activeThemeIcon = themeSwitcher.parentElement.querySelector('.theme-icon-active use')
+    const btnToActive = themeSwitcher.parentElement.querySelector(`[data-bs-theme-value="${theme}"]`)
     const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
 
-    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+    themeSwitcher.parentElement.querySelectorAll('[data-bs-theme-value]').forEach(element => {
       element.classList.remove('active')
       element.setAttribute('aria-pressed', 'false')
     })
@@ -49,7 +47,7 @@
     btnToActive.classList.add('active')
     btnToActive.setAttribute('aria-pressed', 'true')
     activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-    const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
+    const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})${btnToActive.closest('.highlight-toolbar') ? ' (local)' : ''}`
     themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
 
     if (focus) {
@@ -71,9 +69,15 @@
       .forEach(toggle => {
         toggle.addEventListener('click', () => {
           const theme = toggle.getAttribute('data-bs-theme-value')
-          setStoredTheme(theme)
-          setTheme(theme)
-          showActiveTheme(theme, true)
+
+          if (toggle.closest('.highlight-toolbar')) {
+            toggle.closest('.highlight-toolbar').previousElementSibling.setAttribute('data-bs-theme', theme)
+            showActiveTheme(theme, true, toggle.closest('.dropdown-menu').previousElementSibling)
+          } else {
+            setStoredTheme(theme)
+            setTheme(theme)
+            showActiveTheme(theme, true)
+          }
         })
       })
   })
