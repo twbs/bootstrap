@@ -356,11 +356,11 @@ Opt into darker dropdowns to match a dark navbar or custom style by adding `.dro
 {{< callout-deprecated-dark-variants "dropdown-menu" >}}
 
 {{< example >}}
-<div class="dropdown">
+<div class="dropdown" data-bs-theme="dark">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown button
   </button>
-  <ul class="dropdown-menu dropdown-menu-dark">
+  <ul class="dropdown-menu">
     <li><a class="dropdown-item active" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -373,7 +373,7 @@ Opt into darker dropdowns to match a dark navbar or custom style by adding `.dro
 And putting it to use in a navbar:
 
 {{< example >}}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -385,7 +385,7 @@ And putting it to use in a navbar:
           <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </button>
-          <ul class="dropdown-menu dropdown-menu-dark">
+          <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
