@@ -148,25 +148,14 @@
   }
 }
 
-@include color-mode() {
+@include color-mode(light, true) {
   --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon)};
   --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon)};
 }
 
 @if $enable-dark-mode {
-  @include color-mode(dark) {
+  @include color-mode(dark, true) {
     --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon-dark)};
     --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon-dark)};
   }
 }
-
-/*
-[data-bs-theme="light"] .accordion
-[data-bs-theme="light"].accordion
-[data-bs-theme="dark"] .accordion
-[data-bs-theme="dark"].accordion
-
-accordion data-bs-theme="dark"
-  <div data-bs-theme="light">
-    accordion
-*/
