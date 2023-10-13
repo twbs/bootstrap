@@ -13,8 +13,15 @@
       }
     }
   } @else {
-    [data-bs-theme="#{$mode}"] {
-      @content;
+    @if $mode == "light" {
+      :root,
+      [data-bs-theme="#{$mode}"] {
+        @content;
+      }
+    } @else {
+      [data-bs-theme="#{$mode}"] {
+        @content;
+      }
     }
   }
 }
