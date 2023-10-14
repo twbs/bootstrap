@@ -314,6 +314,58 @@ After running `npm run build` again, there will be a new file `dist/main.css`, w
    <body>
 ```
 
+### Remove unused CSS
+
+To remove unused CSS from the final bundle, you can use the `purgecss-webpack-plugin`. This plugin helps eliminate CSS that is not used in your application, reducing the size of your CSS files.
+
+First, install the plugin:
+
+```sh
+npm install --save-dev purgecss-webpack-plugin
+```
+
+Then instantiate and use the plugin in the Webpack configuration.
+
+```diff
+--- a/webpack/webpack.config.js
++++ b/webpack/webpack.config.js
+@@ -1,9 +1,15 @@
+ 'use strict'
+
+ const path = require('path')
++const glob = require("glob");
+ const autoprefixer = require('autoprefixer')
+ const HtmlWebpackPlugin = require('html-webpack-plugin')
+ const miniCssExtractPlugin = require('mini-css-extract-plugin')
++const {PurgeCSSPlugin} = require("purgecss-webpack-plugin");
++
++const PATHS = {
++  src: path.join(__dirname, "src"),
++};
+
+ module.exports = {
+   mode: 'development',
+@@ -19,7 +25,13 @@ module.exports = {
+   },
+   plugins: [
+     new HtmlWebpackPlugin({ template: './src/index.html' }),
+-    new miniCssExtractPlugin()
++    new miniCssExtractPlugin(),
++    new PurgeCSSPlugin({
++      paths: glob.sync(`${PATHS.src}/**/*`, {nodir: true}),
++      safelist: {
++        deep: [/dropdown-menu$/]
++      },
++    })
+   ],
+   module: {
+     rules: [
+```
+
+In the example, the `paths` parameter tells the plugin where to look for HTML files and only keep the CSS classes used in those files. The `safelist` option lets you specify which classes to keep, even if they're not directly used in your code.
+
+Make sure to adjust the `paths` and `safelist` to match your project's structure and requirements. For more details, check the [plugin's documentation](https://purgecss.com/plugins/webpack.html).
+
 ### Extracting SVG files
 
 Bootstrap's CSS includes multiple references to SVG files via inline `data:` URIs. If you define a Content Security Policy for your project that blocks `data:` URIs for images, then these SVG files will not load. You can get around this problem by extracting the inline SVG files using Webpack's asset modules feature.
