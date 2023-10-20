@@ -23,7 +23,7 @@ Click the accordions below to expand/collapse the accordion content.
 
 To render an accordion that's expanded by default:
 - add the `.show` class on the `.accordion-collapse` element.
-- drop the `collapse` class from the `.accordion-button` element and set its `aria-expanded` to `true`.
+- drop the `.collapsed` class from the `.accordion-button` element and set its `aria-expanded` attribute to `true`.
 
 {{< example >}}
 <div class="accordion" id="accordionExample">
