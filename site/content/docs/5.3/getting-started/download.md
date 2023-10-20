@@ -50,6 +50,24 @@ If you're using our compiled JavaScript and prefer to include Popper separately,
 <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
 ```
 
+### Alternative CDNs
+
+We recommend [jsDelivr](https://www.jsdelivr.com/) and use it ourselves in our documentation. However, in some cases—like in some specific countries or environments—you may need to use other CDN providers like [cdnjs](https://cdnjs.com/) or [unpkg](https://unpkg.com/).
+
+You'll find the same files on these CDN providers, albeit with different URLs. With cdnjs, you can [use this direct Bootstrap package link](https://cdnjs.com/libraries/bootstrap) to copy and paste ready-to-use HTML snippets for each dist file from any version of Bootstrap.
+
+{{< callout warning>}}
+**If the SRI hashes differ for a given file, you shouldn't use the files from that CDN, because it means that the file was modified by someone else.**
+{{< /callout >}}
+
+Note that you should compare same length hashes, e.g. `sha384` with `sha384`, otherwise it's expected for them to be different.
+As such, you can use an online tool like [SRI Hash Generator](https://www.srihash.org/) to make sure that the hashes are the same for a given file.
+Alternatively, assuming you have OpenSSL installed, you can achieve the same from the CLI, for example:
+
+```sh
+openssl dgst -sha384 -binary bootstrap.min.js | openssl base64 -A
+```
+
 ## Package managers
 
 Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a [Sass compiler]({{< docsref "/getting-started/contribute#sass" >}}) and [Autoprefixer](https://github.com/postcss/autoprefixer)** for a setup that matches our official compiled versions.

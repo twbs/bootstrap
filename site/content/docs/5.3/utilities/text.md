@@ -15,10 +15,11 @@ Easily realign text to components with text alignment classes. For start, end, a
 <p class="text-center">Center aligned text on all viewport sizes.</p>
 <p class="text-end">End aligned text on all viewport sizes.</p>
 
-<p class="text-sm-start">Start aligned text on viewports sized SM (small) or wider.</p>
-<p class="text-md-start">Start aligned text on viewports sized MD (medium) or wider.</p>
-<p class="text-lg-start">Start aligned text on viewports sized LG (large) or wider.</p>
-<p class="text-xl-start">Start aligned text on viewports sized XL (extra-large) or wider.</p>
+<p class="text-sm-end">End aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-end">End aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-end">End aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-end">End aligned text on viewports sized XL (extra large) or wider.</p>
+<p class="text-xxl-end">End aligned text on viewports sized XXL (extra extra large) or wider.</p>
 {{< /example >}}
 
 {{< callout info >}}
@@ -123,7 +124,7 @@ Reset a text or link's color with `.text-reset`, so that it inherits the color f
 
 {{< example >}}
 <p class="text-body-secondary">
-  Muted text with a <a href="#" class="text-reset">reset link</a>.
+  Secondary body text with a <a href="#" class="text-reset">reset link</a>.
 </p>
 {{< /example >}}
 

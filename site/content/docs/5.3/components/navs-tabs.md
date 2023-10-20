@@ -31,7 +31,7 @@ To convey the active state to assistive technologies, use the `aria-current` att
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -43,7 +43,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
   <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled">Disabled</a>
+  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
 </nav>
 {{< /example >}}
 
@@ -53,7 +53,7 @@ Change the style of `.nav`s component with modifiers and utilities. Mix and matc
 
 ### Horizontal alignment
 
-Change the horizontal alignment of your nav with [flexbox utilities]({{< docsref "/layout/grid#horizontal-alignment" >}}). By default, navs are left-aligned, but you can easily change them to center or right aligned.
+Change the horizontal alignment of your nav with [flexbox utilities]({{< docsref "/utilities/flex#justify-content" >}}). By default, navs are left-aligned, but you can easily change them to center or right-aligned.
 
 Centered with `.justify-content-center`:
 
@@ -69,7 +69,7 @@ Centered with `.justify-content-center`:
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -88,7 +88,7 @@ Right-aligned with `.justify-content-end`:
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -109,7 +109,7 @@ Stack your navigation by changing the flex item direction with the `.flex-column
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -121,7 +121,7 @@ As always, vertical navigation is possible without `<ul>`s, too.
   <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled">Disabled</a>
+  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
 </nav>
 {{< /example >}}
 
@@ -141,7 +141,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -162,7 +162,7 @@ Take that same HTML, but use `.nav-pills` instead:
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -183,7 +183,7 @@ Take that same HTML, but use `.nav-underline` instead:
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -204,7 +204,7 @@ Force your `.nav`'s contents to extend the full available width with one of two 
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -216,7 +216,7 @@ When using a `<nav>`-based navigation, you can safely omit `.nav-item` as only `
   <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Much longer nav link</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled">Disabled</a>
+  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
 </nav>
 {{< /example >}}
 
@@ -234,7 +234,7 @@ For equal-width elements, use `.nav-justified`. All horizontal space will be occ
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -246,7 +246,7 @@ Similar to the `.nav-fill` example using a `<nav>`-based navigation.
   <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Much longer nav link</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled">Disabled</a>
+  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
 </nav>
 
 {{< /example >}}
@@ -259,7 +259,7 @@ If you need responsive nav variations, consider using a series of [flexbox utili
   <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Active</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Longer nav link</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
-  <a class="flex-sm-fill text-sm-center nav-link disabled">Disabled</a>
+  <a class="flex-sm-fill text-sm-center nav-link disabled" aria-disabled="true">Disabled</a>
 </nav>
 {{< /example >}}
 
@@ -294,7 +294,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -320,7 +320,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {{< /example >}}
@@ -567,7 +567,7 @@ And with vertical pills. Ideally, for vertical tabs, you should also add `aria-o
 
 Dynamic tabbed interfaces, as described in the [ARIA Authoring Practices Guide tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/), require `role="tablist"`, `role="tab"`, `role="tabpanel"`, and additional `aria-` attributes in order to convey their structure, functionality, and current state to users of assistive technologies (such as screen readers). As a best practice, we recommend using `<button>` elements for the tabs, as these are controls that trigger a dynamic change, rather than links that navigate to a new page or location.
 
-In line with the ARIA Authoring Practices pattern, only the currently active tab receives keyboard focus. When the JavaScript plugin is initialized, it will set `tabindex="-1"` on all inactive tab controls. Once the currently active tab has focus, the cursor keys activate the previous/next tab, with the plugin changing the [roving `tabindex`](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/) accordingly. However, note that the JavaScript plugin does not distinguish between horizontal and vertical tab lists when it comes to cursor key interactions: regardless of the tab list's orientation, both the up *and* left cursor go to the previous tab, and down *and* right cursor go to the next tab.
+In line with the ARIA Authoring Practices pattern, only the currently active tab receives keyboard focus. When the JavaScript plugin is initialized, it will set `tabindex="-1"` on all inactive tab controls. Once the currently active tab has focus, the cursor keys activate the previous/next tab. The <kbd>Home</kbd> and <kbd>End</kbd> keys activate the first and last tabs, respectively. The plugin will change the [roving `tabindex`](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/) accordingly. However, note that the JavaScript plugin does not distinguish between horizontal and vertical tab lists when it comes to cursor key interactions: regardless of the tab list's orientation, both the up *and* left cursor go to the previous tab, and down *and* right cursor go to the next tab.
 
 {{< callout warning >}}
 In general, to facilitate keyboard navigation, it's recommended to make the tab panels themselves focusable as well, unless the first element containing meaningful content inside the tab panel is already focusable. The JavaScript plugin does not try to handle this aspect—where appropriate, you'll need to explicitly make your tab panels focusable by adding `tabindex="0"` in your markup.
