@@ -549,7 +549,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 
 <div class="bd-example">
 <table class="table">
-  <thead class="table-light">
+  <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">First</th>
