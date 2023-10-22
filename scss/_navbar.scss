@@ -7,6 +7,7 @@
   // scss-docs-start navbar-css-vars
   --#{$prefix}navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
   --#{$prefix}navbar-padding-y: #{$navbar-padding-y};
+  --#{$prefix}navbar-border-radius: #{$navbar-border-radius};
   --#{$prefix}navbar-color: #{$navbar-light-color};
   --#{$prefix}navbar-hover-color: #{$navbar-light-hover-color};
   --#{$prefix}navbar-disabled-color: #{$navbar-light-disabled-color};
@@ -33,6 +34,7 @@
   align-items: center;
   justify-content: space-between; // space out brand from logo
   padding: var(--#{$prefix}navbar-padding-y) var(--#{$prefix}navbar-padding-x);
+  @include border-radius(var(--#{$prefix}navbar-border-radius));
   @include gradient-bg();
 
   // Because flex properties aren't inherited, we need to redeclare these first
