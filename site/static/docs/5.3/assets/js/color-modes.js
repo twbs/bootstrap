@@ -19,27 +19,29 @@
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   }
 
-  const setTheme = theme => {
+  const setTheme = (theme, element = document.documentElement) => {
     if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-bs-theme', 'dark')
+      element.setAttribute('data-bs-theme', 'dark')
     } else {
-      document.documentElement.setAttribute('data-bs-theme', theme)
+      element.setAttribute('data-bs-theme', theme)
     }
   }
 
   setTheme(getPreferredTheme())
 
-  const showActiveTheme = (theme, focus = false, themeSwitcher = document.querySelector('#bd-theme')) => {
+  const showActiveTheme = (theme, focus = false, selectedToggler = document.querySelector('#bd-theme')) => {
+    const themeSwitcher = selectedToggler.closest('.dropdown')
     if (!themeSwitcher) {
       return
     }
 
+    const themeSwitcherButton = themeSwitcher.querySelector('.dropdown-toggle')
     const themeSwitcherText = document.querySelector('#bd-theme-text')
-    const activeThemeIcon = themeSwitcher.parentElement.querySelector('.theme-icon-active use')
-    const btnToActive = themeSwitcher.parentElement.querySelector(`[data-bs-theme-value="${theme}"]`)
+    const activeThemeIcon = themeSwitcher.querySelector('.theme-icon-active use')
+    const btnToActive = themeSwitcher.querySelector(`[data-bs-theme-value="${theme}"]`)
     const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
 
-    themeSwitcher.parentElement.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+    themeSwitcher.querySelectorAll('[data-bs-theme-value]').forEach(element => {
       element.classList.remove('active')
       element.setAttribute('aria-pressed', 'false')
     })
@@ -48,10 +50,10 @@
     btnToActive.setAttribute('aria-pressed', 'true')
     activeThemeIcon.setAttribute('href', svgOfActiveBtn)
     const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})${btnToActive.closest('.highlight-toolbar') ? ' (local)' : ''}`
-    themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+    themeSwitcherButton.setAttribute('aria-label', themeSwitcherLabel)
 
     if (focus) {
-      themeSwitcher.focus()
+      themeSwitcherButton.focus()
     }
   }
 
@@ -70,8 +72,8 @@
         toggle.addEventListener('click', () => {
           const theme = toggle.getAttribute('data-bs-theme-value')
 
-          if (toggle.closest('.highlight-toolbar')) {
-            toggle.closest('.highlight-toolbar').previousElementSibling.setAttribute('data-bs-theme', theme)
+          if (toggle.closest('.bd-code-snippet')) {
+            setTheme(theme, toggle.closest('.bd-code-snippet').firstChild)
             showActiveTheme(theme, true, toggle.closest('.dropdown-menu').previousElementSibling)
           } else {
             setStoredTheme(theme)
