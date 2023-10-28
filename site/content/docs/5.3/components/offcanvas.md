@@ -328,6 +328,7 @@ const bsOffcanvas = new bootstrap.Offcanvas('#myOffcanvas')
 {{< bs-table "table" >}}
 | Method | Description |
 | --- | --- |
+| `dispose` | Destroys an element's offcanvas. |
 | `getInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element. |
 | `getOrCreateInstance` | *Static* method which allows you to get the offcanvas instance associated with a DOM element, or create a new one in case it wasn't initialized. |
 | `hide` | Hides an offcanvas element. **Returns to the caller before the offcanvas element has actually been hidden** (i.e. before the `hidden.bs.offcanvas` event occurs). |
