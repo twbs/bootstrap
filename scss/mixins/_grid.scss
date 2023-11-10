@@ -138,7 +138,7 @@
           }
         }
 
-        // Start with `1` because `0` is and invalid value.
+        // Start with `1` because `0` is an invalid value.
         // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
         @for $i from 1 through ($columns - 1) {
           .g-start#{$infix}-#{$i} {
