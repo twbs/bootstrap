@@ -22,7 +22,7 @@ Background utilities like `.bg-*` that generated from our original `$theme-color
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <div class="p-3 mb-2 bg-{{ .name }}{{ if .contrast_color }} text-{{ .contrast_color }}{{ else }} text-white{{ end }}">.bg-{{ .name }}</div>
-<div class="p-3 mb-2 bg-{{ .name }}-subtle text-emphasis-{{ .name }}">.bg-{{ .name }}-subtle</div>
+<div class="p-3 mb-2 bg-{{ .name }}-subtle text-{{ .name }}-emphasis">.bg-{{ .name }}-subtle</div>
 {{- end -}}
 {{< /colors.inline >}}
 <p class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</p>
