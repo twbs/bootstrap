@@ -376,7 +376,7 @@ $utilities: map-merge(
     "margin-end": (
       responsive: true,
       property: margin-right,
-      class: 'm#{$end-sm}',
+      class: 'm#{$e}',
       values: map-merge($spacers, (auto: auto))
     ),
     "margin-bottom": (
@@ -388,7 +388,7 @@ $utilities: map-merge(
     "margin-start": (
       responsive: true,
       property: margin-left,
-      class: 'm#{$start-sm}',
+      class: 'm#{$s}',
       values: map-merge($spacers, (auto: auto))
     ),
     // Negative margin utilities
@@ -419,7 +419,7 @@ $utilities: map-merge(
     "negative-margin-end": (
       responsive: true,
       property: margin-right,
-      class: 'm#{$end-sm}',
+      class: 'm#{$e}',
       values: $negative-spacers
     ),
     "negative-margin-bottom": (
@@ -431,7 +431,7 @@ $utilities: map-merge(
     "negative-margin-start": (
       responsive: true,
       property: margin-left,
-      class: 'm#{$start-sm}',
+      class: 'm#{$s}',
       values: $negative-spacers
     ),
     // Padding utilities
@@ -462,7 +462,7 @@ $utilities: map-merge(
     "padding-end": (
       responsive: true,
       property: padding-right,
-      class: 'p#{$end-sm}',
+      class: 'p#{$e}',
       values: $spacers
     ),
     "padding-bottom": (
@@ -474,7 +474,7 @@ $utilities: map-merge(
     "padding-start": (
       responsive: true,
       property: padding-left,
-      class: 'p#{$start-sm}',
+      class: 'p#{$s}',
       values: $spacers
     ),
     // Gap utility
