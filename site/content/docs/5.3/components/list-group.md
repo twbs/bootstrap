@@ -62,7 +62,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">A second link item</a>
   <a href="#" class="list-group-item list-group-item-action">A third link item</a>
   <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-  <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+  <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
 </div>
 {{< /example >}}
 
@@ -117,21 +117,21 @@ These work great with custom content as well.
       <div class="fw-bold">Subheading</div>
       Content for list item
     </div>
-    <span class="badge bg-primary rounded-pill">14</span>
+    <span class="badge text-bg-primary rounded-pill">14</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Subheading</div>
       Content for list item
     </div>
-    <span class="badge bg-primary rounded-pill">14</span>
+    <span class="badge text-bg-primary rounded-pill">14</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Subheading</div>
       Content for list item
     </div>
-    <span class="badge bg-primary rounded-pill">14</span>
+    <span class="badge text-bg-primary rounded-pill">14</span>
   </li>
 </ol>
 {{< /example >}}
@@ -200,15 +200,15 @@ Add badges to any list group item to show unread counts, activity, and more with
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     A list item
-    <span class="badge bg-primary rounded-pill">14</span>
+    <span class="badge text-bg-primary rounded-pill">14</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     A second list item
-    <span class="badge bg-primary rounded-pill">2</span>
+    <span class="badge text-bg-primary rounded-pill">2</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     A third list item
-    <span class="badge bg-primary rounded-pill">1</span>
+    <span class="badge text-bg-primary rounded-pill">1</span>
   </li>
 </ul>
 {{< /example >}}

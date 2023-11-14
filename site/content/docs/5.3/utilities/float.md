@@ -16,15 +16,18 @@ These utility classes float an element to the left or right, or disable floating
 <div class="float-none">Don't float on all viewport sizes</div>
 {{< /example >}}
 
+Use the [clearfix helper]({{< docsref "/helpers/clearfix" >}}) on a parent element to clear floats.
+
 ## Responsive
 
 Responsive variations also exist for each `float` value.
 
 {{< example >}}
-<div class="float-sm-start">Float start on viewports sized SM (small) or wider</div><br>
-<div class="float-md-start">Float start on viewports sized MD (medium) or wider</div><br>
-<div class="float-lg-start">Float start on viewports sized LG (large) or wider</div><br>
-<div class="float-xl-start">Float start on viewports sized XL (extra-large) or wider</div><br>
+<div class="float-sm-end">Float end on viewports sized SM (small) or wider</div><br>
+<div class="float-md-end">Float end on viewports sized MD (medium) or wider</div><br>
+<div class="float-lg-end">Float end on viewports sized LG (large) or wider</div><br>
+<div class="float-xl-end">Float end on viewports sized XL (extra large) or wider</div><br>
+<div class="float-xxl-end">Float end on viewports sized XXL (extra extra large) or wider</div><br>
 {{< /example >}}
 
 Here are all the support classes:
