@@ -1745,3 +1745,5 @@ $kbd-bg:                            var(--#{$prefix}body-color) !default;
 $nested-kbd-font-weight:            null !default; // Deprecated in v5.2.0, removing in v6
 
 $pre-color:                         null !default;
+
+@import "variables-dark"; // TODO: can be removed safely in v6, only here to avoid breaking changes in v5.3
