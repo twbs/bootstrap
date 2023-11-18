@@ -338,18 +338,18 @@ Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap a
 
 ### Color schemes
 
-A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light`, `dark`, and custom color schemes. See [the color modes documentation]({{< docsref "/customize/color-modes" >}}) for information on our color mode mixin.
+A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light` and `dark` color schemes. See [the color modes documentation]({{< docsref "/customize/color-modes" >}}) for information on our color mode mixin.
 
 {{< scss-docs name="mixin-color-scheme" file="scss/mixins/_color-scheme.scss" >}}
 
 ```scss
 .custom-element {
-  @include color-scheme(dark) {
-    // Insert dark mode styles here
+  @include color-scheme(light) {
+    // Insert light mode styles here
   }
 
-  @include color-scheme(custom-named-scheme) {
-    // Insert custom color scheme styles here
+  @include color-scheme(dark) {
+    // Insert dark mode styles here
   }
 }
 ```
