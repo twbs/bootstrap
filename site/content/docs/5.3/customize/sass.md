@@ -256,6 +256,11 @@ In practice, you'd call the function and pass in the color and weight parameters
 .custom-element-2 {
   color: shade-color($danger, 30%);
 }
+
+.custom-element-3 {
+  color: shift-color($success, 40%);
+  background-color: shift-color($success, -60%);
+}
 ```
 
 ### Color contrast
