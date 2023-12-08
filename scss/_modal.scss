@@ -204,6 +204,12 @@
   }
 }
 
+@include media-breakpoint-up(xxl) {
+  .modal-xxl {
+    --#{$prefix}modal-width: #{$modal-xxl};
+  }
+}
+
 // scss-docs-start modal-fullscreen-loop
 @each $breakpoint in map-keys($grid-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
