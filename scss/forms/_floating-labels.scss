@@ -65,7 +65,7 @@
         z-index: -1;
         height: $form-floating-label-height;
         content: "";
-        background-color: $input-bg;
+        background-color: transparent;
         @include border-radius($input-border-radius);
       }
     }
