@@ -193,13 +193,15 @@
 
 @include media-breakpoint-up(lg) {
   .modal-lg,
-  .modal-xl {
+  .modal-xl,
+  .modal-xxl {
     --#{$prefix}modal-width: #{$modal-lg};
   }
 }
 
 @include media-breakpoint-up(xl) {
-  .modal-xl {
+  .modal-xl,
+  .modal-xxl {
     --#{$prefix}modal-width: #{$modal-xl};
   }
 }
