@@ -244,6 +244,8 @@ Next to the [Sass maps]({{< docsref "/customize/color#color-sass-maps" >}}) we h
 
 You can lighten or darken colors with Bootstrap's `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass' native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn't lead to the desired effect.
 
+`shift-color()` combines these two functions by shading the color if the weight is positive and tinting the color if the weight is negative.
+
 {{< scss-docs name="color-functions" file="scss/_functions.scss" >}}
 
 In practice, you'd call the function and pass in the color and weight parameters.
@@ -255,6 +257,11 @@ In practice, you'd call the function and pass in the color and weight parameters
 
 .custom-element-2 {
   color: shade-color($danger, 30%);
+}
+
+.custom-element-3 {
+  color: shift-color($success, 40%);
+  background-color: shift-color($success, -60%);
 }
 ```
 
