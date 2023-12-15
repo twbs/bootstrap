@@ -489,23 +489,13 @@ fieldset {
   border: 0; // 2
 }
 
-// 1. By using `float: left`, the legend will behave like a block element.
-//    This way the border of a fieldset wraps around the legend if present.
-// 2. Fix wrapping bug.
-//    See https://github.com/twbs/bootstrap/issues/29712
-
 legend {
-  float: left; // 1
   width: 100%;
   padding: 0;
   margin-bottom: $legend-margin-bottom;
   @include font-size($legend-font-size);
   font-weight: $legend-font-weight;
   line-height: inherit;
-
-  + * {
-    clear: left; // 2
-  }
 }
 
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
