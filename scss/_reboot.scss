@@ -56,6 +56,7 @@ body {
   text-align: var(--#{$prefix}body-text-align);
   background-color: var(--#{$prefix}body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
+  text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
 // scss-docs-end reboot-body-rules
@@ -355,13 +356,14 @@ caption {
 }
 
 // 1. Removes font-weight bold by inheriting
-// 2. Matches default `<td>` alignment by inheriting `text-align`.
-// 3. Fix alignment for Safari
+// 2. Fix alignment for Safari
+// 3. Matches default `<td>` alignment by inheriting `text-align`.
 
 th {
   font-weight: $table-th-font-weight; // 1
-  text-align: inherit; // 2
-  text-align: -webkit-match-parent; // 3
+  text-align: -webkit-match-parent; // 2
+  text-align: match-parent; // 2
+  text-align: inherit; // 3
 }
 
 thead,
