@@ -79,7 +79,7 @@
 //
 // When borders are added on all sides of the cells, the corners can render odd when
 // these borders do not have the same color or if they are semi-transparent.
-// Therefor we add top and border bottoms to the `tr`s and left and right borders
+// Therefore we add top and border bottoms to the `tr`s and left and right borders
 // to the `td`s or `th`s
 
 .table-bordered {
