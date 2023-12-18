@@ -19,14 +19,14 @@ When icons are purely decorative, they should be hidden from assistive technolog
 
 Take a regular `<a>` element, add `.icon-link`, and insert an icon on either the left or right of your link text. The icon is automatically sized, placed, and colored.
 
-{{< example >}}
+{{< example stackblitz_add_icons="true" >}}
 <a class="icon-link" href="#">
   <svg class="bi" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
   Icon link
 </a>
 {{< /example >}}
 
-{{< example >}}
+{{< example stackblitz_add_icons="true" >}}
 <a class="icon-link" href="#">
   Icon link
   <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
@@ -37,7 +37,7 @@ Take a regular `<a>` element, add `.icon-link`, and insert an icon on either the
 
 Add `.icon-link-hover` to move the icon to the right on hover.
 
-{{< example >}}
+{{< example stackblitz_add_icons="true" >}}
 <a class="icon-link icon-link-hover" href="#">
   Icon link
   <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
@@ -54,7 +54,7 @@ Modify the `--bs-link-*` and `--bs-icon-link-*` CSS variables as needed to chang
 
 Customize the hover `transform` by overriding the `--bs-icon-link-transform` CSS variable:
 
-{{< example >}}
+{{< example stackblitz_add_icons="true" >}}
 <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="#">
   <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
   Icon link
@@ -63,7 +63,7 @@ Customize the hover `transform` by overriding the `--bs-icon-link-transform` CSS
 
 Customize the color by overriding the `--bs-link-*` CSS variable:
 
-{{< example >}}
+{{< example stackblitz_add_icons="true" >}}
 <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;" href="#">
   Icon link
   <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
@@ -80,7 +80,7 @@ Customize the icon link Sass variables to modify all icon link styles across you
 
 Modify icon links with any of [our link utilities]({{< docsref "/utilities/link/" >}}) for modifying underline color and offset.
 
-{{< example >}}
+{{< example stackblitz_add_icons="true" >}}
 <a class="icon-link icon-link-hover link-success link-underline-success link-underline-opacity-25" href="#">
   Icon link
   <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
