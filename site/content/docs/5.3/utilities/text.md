@@ -31,7 +31,7 @@ Note that we don't provide utility classes for justified text. While, aesthetica
 Wrap text with a `.text-wrap` class.
 
 {{< example >}}
-<div class="badge bg-primary text-wrap" style="width: 6rem;">
+<div class="badge text-bg-primary text-wrap" style="width: 6rem;">
   This text should wrap.
 </div>
 {{< /example >}}

@@ -63,7 +63,7 @@ Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-t
 
 ### Images
 
-`.card-img-top` places an image to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
+`.card-img-top` and `.card-img-bottom` respectively set the top and bottom corners rounded to match the card's borders. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
 
 {{< example >}}
 <div class="card" style="width: 18rem;">

@@ -258,7 +258,7 @@ $enable-important-utilities: false;
           .desaturated-color-blue {
             --bs-color-opacity: 1;
             // Sass compilation will put a leading zero so we want to keep that one
-            // stylelint-disable-next-line stylistic/number-leading-zero
+            // stylelint-disable-next-line @stylistic/number-leading-zero
             --bs-color-saturation: 0.25;
             color: hsla(192deg, var(--bs-color-saturation), 0, var(--bs-color-opacity));
           }
