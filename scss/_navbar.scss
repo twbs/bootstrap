@@ -100,9 +100,11 @@
   margin-bottom: 0;
   list-style: none;
 
-  .show > .nav-link,
-  .nav-link.active {
-    color: var(--#{$prefix}navbar-active-color);
+  .nav-link {
+    &.active,
+    &.show {
+      color: var(--#{$prefix}navbar-active-color);
+    }
   }
 
   .dropdown-menu {
@@ -264,7 +266,8 @@
   @include deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
 }
 
-.navbar-dark {
+.navbar-dark,
+.navbar[data-bs-theme="dark"] {
   // scss-docs-start navbar-dark-css-vars
   --#{$prefix}navbar-color: #{$navbar-dark-color};
   --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};
@@ -279,7 +282,7 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .navbar {
+    .navbar-toggler-icon {
       --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
     }
   }

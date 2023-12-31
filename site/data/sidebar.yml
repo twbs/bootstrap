@@ -104,6 +104,8 @@
     - title: Clearfix
     - title: Color & background
     - title: Colored links
+    - title: Focus ring
+    - title: Icon link
     - title: Position
     - title: Ratio
     - title: Stacks
@@ -124,6 +126,7 @@
     - title: Flex
     - title: Float
     - title: Interactions
+    - title: Link
     - title: Object fit
     - title: Opacity
     - title: Overflow

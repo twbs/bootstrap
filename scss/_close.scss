@@ -4,6 +4,7 @@
 // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
 
 .btn-close {
+  // scss-docs-start close-css-vars
   --#{$prefix}btn-close-color: #{$btn-close-color};
   --#{$prefix}btn-close-bg: #{ escape-svg($btn-close-bg) };
   --#{$prefix}btn-close-opacity: #{$btn-close-opacity};
@@ -12,6 +13,7 @@
   --#{$prefix}btn-close-focus-opacity: #{$btn-close-focus-opacity};
   --#{$prefix}btn-close-disabled-opacity: #{$btn-close-disabled-opacity};
   --#{$prefix}btn-close-white-filter: #{$btn-close-white-filter};
+  // scss-docs-end close-css-vars
 
   box-sizing: content-box;
   width: $btn-close-width;

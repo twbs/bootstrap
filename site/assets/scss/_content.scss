@@ -3,12 +3,13 @@
 //
 
 .bd-content {
-  // Offset content from fixed navbar when jumping to headings
-  > :target {
-    padding-top: 5rem;
-    margin-top: -5rem;
+  > h2,
+  > h3,
+  > h4 {
+    --bs-heading-color: var(--bs-emphasis-color);
   }
 
+  // Offset content from fixed navbar when jumping to headings
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
@@ -102,6 +103,7 @@
 }
 
 .bd-title {
+  --bs-heading-color: var(--bs-emphasis-color);
   @include font-size(3rem);
 }
 
@@ -115,26 +117,6 @@
   height: 1em;
   vertical-align: -.125em;
   fill: currentcolor;
-}
-
-.icon-link {
-  display: flex;
-  align-items: center;
-  text-decoration-color: rgba($primary, .5);
-  text-underline-offset: .5rem;
-  backface-visibility: hidden;
-
-  .bi {
-    width: 1.5em;
-    height: 1.5em;
-    transition: .2s ease-in-out transform; // stylelint-disable-line property-disallowed-list
-  }
-
-  &:hover {
-    .bi {
-      transform: translate3d(5px, 0, 0);
-    }
-  }
 }
 
 .border-lg-start {

@@ -9,12 +9,12 @@
   display: block;
   width: 100%;
   padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
-  -moz-padding-start: subtract($form-select-padding-x, 3px); // See https://github.com/twbs/bootstrap/issues/32636
   font-family: $form-select-font-family;
   @include font-size($form-select-font-size);
   font-weight: $form-select-font-weight;
   line-height: $form-select-line-height;
   color: $form-select-color;
+  appearance: none;
   background-color: $form-select-bg;
   background-image: var(--#{$prefix}form-select-bg-img), var(--#{$prefix}form-select-bg-icon, none);
   background-repeat: no-repeat;
@@ -24,7 +24,6 @@
   @include border-radius($form-select-border-radius, 0);
   @include box-shadow($form-select-box-shadow);
   @include transition($form-select-transition);
-  appearance: none;
 
   &:focus {
     border-color: $form-select-focus-border-color;

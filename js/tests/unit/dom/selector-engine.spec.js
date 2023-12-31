@@ -1,5 +1,5 @@
-import SelectorEngine from '../../../src/dom/selector-engine'
-import { clearFixture, getFixture } from '../../helpers/fixture'
+import SelectorEngine from '../../../src/dom/selector-engine.js'
+import { clearFixture, getFixture } from '../../helpers/fixture.js'
 
 describe('SelectorEngine', () => {
   let fixtureEl
@@ -352,6 +352,18 @@ describe('SelectorEngine', () => {
         '<div id="test" data-bs-target=".target"></div>',
         '<div class="target"></div>',
         '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+    })
+
+    it('should get elements if several ids are given', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target="#target1,#target2"></div>',
+        '<div class="target" id="target1"></div>',
+        '<div class="target" id="target2"></div>'
       ].join('')
 
       const testEl = fixtureEl.querySelector('#test')

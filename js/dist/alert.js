@@ -1,25 +1,22 @@
 /*!
-  * Bootstrap alert.js v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap alert.js v5.3.2 (https://getbootstrap.com/)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./util/index'), require('./dom/event-handler'), require('./base-component'), require('./util/component-functions')) :
-  typeof define === 'function' && define.amd ? define(['./util/index', './dom/event-handler', './base-component', './util/component-functions'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Alert = factory(global.Index, global.EventHandler, global.BaseComponent, global.ComponentFunctions));
-})(this, (function (index, EventHandler, BaseComponent, componentFunctions) { 'use strict';
-
-  const _interopDefaultLegacy = e => e && typeof e === 'object' && 'default' in e ? e : { default: e };
-
-  const EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
-  const BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./base-component.js'), require('./dom/event-handler.js'), require('./util/component-functions.js'), require('./util/index.js')) :
+  typeof define === 'function' && define.amd ? define(['./base-component', './dom/event-handler', './util/component-functions', './util/index'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Alert = factory(global.BaseComponent, global.EventHandler, global.ComponentFunctions, global.Index));
+})(this, (function (BaseComponent, EventHandler, componentFunctions_js, index_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): alert.js
+   * Bootstrap alert.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
+
+
   /**
    * Constants
    */
@@ -31,68 +28,61 @@
   const EVENT_CLOSED = `closed${EVENT_KEY}`;
   const CLASS_NAME_FADE = 'fade';
   const CLASS_NAME_SHOW = 'show';
+
   /**
    * Class definition
    */
 
-  class Alert extends BaseComponent__default.default {
+  class Alert extends BaseComponent {
     // Getters
     static get NAME() {
       return NAME;
-    } // Public
+    }
 
-
+    // Public
     close() {
-      const closeEvent = EventHandler__default.default.trigger(this._element, EVENT_CLOSE);
-
+      const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
       if (closeEvent.defaultPrevented) {
         return;
       }
-
       this._element.classList.remove(CLASS_NAME_SHOW);
-
       const isAnimated = this._element.classList.contains(CLASS_NAME_FADE);
-
       this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
-    } // Private
+    }
 
-
+    // Private
     _destroyElement() {
       this._element.remove();
-
-      EventHandler__default.default.trigger(this._element, EVENT_CLOSED);
+      EventHandler.trigger(this._element, EVENT_CLOSED);
       this.dispose();
-    } // Static
+    }
 
-
+    // Static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Alert.getOrCreateInstance(this);
-
         if (typeof config !== 'string') {
           return;
         }
-
         if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
           throw new TypeError(`No method named "${config}"`);
         }
-
         data[config](this);
       });
     }
-
   }
+
   /**
    * Data API implementation
    */
 
+  componentFunctions_js.enableDismissTrigger(Alert, 'close');
 
-  componentFunctions.enableDismissTrigger(Alert, 'close');
   /**
    * jQuery
    */
 
-  index.defineJQueryPlugin(Alert);
+  index_js.defineJQueryPlugin(Alert);
 
   return Alert;
 

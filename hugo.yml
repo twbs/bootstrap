@@ -1,0 +1,91 @@
+languageCode:           "en"
+title:                  "Bootstrap"
+baseURL:                "https://getbootstrap.com"
+
+security:
+  enableInlineShortcodes: true
+  funcs:
+    getenv:
+      - ^HUGO_
+      - NETLIFY
+  gotemplates:
+    allowActionJSTmpl: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe:           true
+  highlight:
+    noClasses:          false
+  tableOfContents:
+    startLevel:         2
+    endLevel:           6
+
+buildDrafts:            true
+buildFuture:            true
+
+enableRobotsTXT:        true
+metaDataFormat:         "yaml"
+disableKinds:           ["404", "taxonomy", "term", "RSS"]
+
+publishDir:             "_site"
+
+module:
+  mounts:
+    - source:           dist
+      target:           static/docs/5.3/dist
+    - source:           site/assets
+      target:           assets
+    - source:           site/content
+      target:           content
+    - source:           site/data
+      target:           data
+    - source:           site/layouts
+      target:           layouts
+    - source:           site/static
+      target:           static
+    - source:           site/static/docs/5.3/assets/img/favicons/apple-touch-icon.png
+      target:           static/apple-touch-icon.png
+    - source:           site/static/docs/5.3/assets/img/favicons/favicon.ico
+      target:           static/favicon.ico
+
+params:
+  subtitle:             "The most popular HTML, CSS, and JS library in the world."
+  description:          "Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins."
+  authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
+
+  current_version:      "5.3.2"
+  current_ruby_version: "5.3.2"
+  docs_version:         "5.3"
+  rfs_version:          "v10.0.0"
+  github_org:           "https://github.com/twbs"
+  repo:                 "https://github.com/twbs/bootstrap"
+  twitter:              "getbootstrap"
+  opencollective:       "https://opencollective.com/bootstrap"
+  blog:                 "https://blog.getbootstrap.com/"
+  themes:               "https://themes.getbootstrap.com/"
+  icons:                "https://icons.getbootstrap.com/"
+  swag:                 "https://cottonbureau.com/people/bootstrap"
+
+  download:
+    source:             "https://github.com/twbs/bootstrap/archive/v5.3.2.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.3.2/bootstrap-5.3.2-dist.zip"
+    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.3.2/bootstrap-5.3.2-examples.zip"
+
+  cdn:
+    # See https://www.srihash.org for info on how to generate the hashes
+    css:              "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    css_hash:         "sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    css_rtl:          "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
+    css_rtl_hash:     "sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
+    js:               "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    js_hash:          "sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    js_bundle_hash:   "sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    popper:           "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    popper_hash:      "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    popper_esm:       "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js"
+
+  anchors:
+    min: 2
+    max: 5

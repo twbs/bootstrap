@@ -4,8 +4,7 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
+ * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -15,9 +14,10 @@
 
   // Scroll the active sidebar link into view
   const sidenav = document.querySelector('.bd-sidebar')
-  if (sidenav) {
+  const sidenavActiveLink = document.querySelector('.bd-links-nav .active')
+
+  if (sidenav && sidenavActiveLink) {
     const sidenavHeight = sidenav.clientHeight
-    const sidenavActiveLink = document.querySelector('.bd-links-nav .active')
     const sidenavActiveLinkTop = sidenavActiveLink.offsetTop
     const sidenavActiveLinkHeight = sidenavActiveLink.clientHeight
     const viewportTop = sidenavActiveLinkTop

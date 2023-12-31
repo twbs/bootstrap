@@ -1,5 +1,5 @@
-import Button from '../../src/button'
-import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
+import Button from '../../src/button.js'
+import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
 
 describe('Button', () => {
   let fixtureEl
