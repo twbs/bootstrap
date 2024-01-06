@@ -182,7 +182,6 @@
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     .list-group-flush.list-group-horizontal#{$infix} {
-      @include border-radius(0);
 
       > .list-group-item {
         border-width: 0 var(--#{$prefix}list-group-border-width) 0 0;
