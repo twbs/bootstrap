@@ -162,13 +162,11 @@ As part of Bootstrap's evolving CSS variables approach, alerts now use local CSS
 
 {{< deprecated-in "5.3.0" >}}
 
-Used in combination with `$theme-colors` to create contextual modifier classes for our alerts.
-
 {{< scss-docs name="alert-variant-mixin" file="scss/mixins/_alert.scss" >}}
 
 ### Sass loops
 
-Loop that generates the modifier classes with the `alert-variant()` mixin.
+Loop that generates the modifier classes with an overriding of CSS variables.
 
 {{< scss-docs name="alert-modifiers" file="scss/_alert.scss" >}}
 
