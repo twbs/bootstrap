@@ -61,7 +61,7 @@
 
       &::after {
         position: absolute;
-        inset: $form-floating-padding-y ($form-floating-padding-x * .5);
+        inset: $form-floating-padding-y calc($form-floating-padding-x * .5); // stylelint-disable-line function-disallowed-list
         z-index: -1;
         height: $form-floating-label-height;
         content: "";

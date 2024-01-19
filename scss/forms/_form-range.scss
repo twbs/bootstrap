@@ -27,7 +27,8 @@
   &::-webkit-slider-thumb {
     width: $form-range-thumb-width;
     height: $form-range-thumb-height;
-    margin-top: ($form-range-track-height - $form-range-thumb-height) * .5; // Webkit specific
+    // Webkit specific
+    margin-top: calc(subtract($form-range-track-height, $form-range-thumb-height) * .5); // stylelint-disable-line function-disallowed-list
     appearance: none;
     @include gradient-bg($form-range-thumb-bg);
     border: $form-range-thumb-border;

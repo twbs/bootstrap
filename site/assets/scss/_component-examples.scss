@@ -3,7 +3,7 @@
 //
 
 .bd-code-snippet {
-  margin: 0 ($bd-gutter-x * -.5) 1rem;
+  margin: 0 calc($bd-gutter-x * -.5) 1rem; // stylelint-disable-line function-disallowed-list
   border: solid var(--bs-border-color);
   border-width: 1px 0;
 
@@ -20,7 +20,7 @@
 
   position: relative;
   padding: var(--bd-example-padding);
-  margin: 0 ($bd-gutter-x * -.5) 1rem;
+  margin: 0 calc($bd-gutter-x * -.5) 1rem; // stylelint-disable-line function-disallowed-list
   border: solid var(--bs-border-color);
   border-width: 1px 0;
   @include clearfix();
@@ -348,7 +348,7 @@
 
 .highlight {
   position: relative;
-  padding: .75rem ($bd-gutter-x * .5);
+  padding: .75rem calc($bd-gutter-x * .5); // stylelint-disable-line function-disallowed-list
   background-color: var(--bd-pre-bg);
 
   @include media-breakpoint-up(md) {

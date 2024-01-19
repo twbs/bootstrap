@@ -10,7 +10,7 @@
 
   .form-check-input {
     float: left;
-    margin-left: $form-check-padding-start * -1;
+    margin-left: calc($form-check-padding-start * -1); // stylelint-disable-line function-disallowed-list
   }
 }
 
@@ -21,7 +21,7 @@
 
   .form-check-input {
     float: right;
-    margin-right: $form-check-padding-start * -1;
+    margin-right: calc($form-check-padding-start * -1); // stylelint-disable-line function-disallowed-list
     margin-left: 0;
   }
 }
@@ -32,7 +32,8 @@
   flex-shrink: 0;
   width: $form-check-input-width;
   height: $form-check-input-width;
-  margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
+  // line-height minus check height
+  margin-top: calc(subtract($line-height-base, $form-check-input-width) * .5); // stylelint-disable-line function-disallowed-list
   vertical-align: top;
   appearance: none;
   background-color: var(--#{$prefix}form-check-bg);
@@ -128,7 +129,7 @@
     --#{$prefix}form-switch-bg: #{escape-svg($form-switch-bg-image)};
 
     width: $form-switch-width;
-    margin-left: $form-switch-padding-start * -1;
+    margin-left: calc($form-switch-padding-start * -1); // stylelint-disable-line function-disallowed-list
     background-image: var(--#{$prefix}form-switch-bg);
     background-position: left center;
     @include border-radius($form-switch-border-radius, 0);
@@ -154,7 +155,7 @@
     padding-left: 0;
 
     .form-check-input {
-      margin-right: $form-switch-padding-start * -1;
+      margin-right: calc($form-switch-padding-start * -1); // stylelint-disable-line function-disallowed-list
       margin-left: 0;
     }
   }

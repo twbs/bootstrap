@@ -95,7 +95,7 @@
 }
 
 .blockquote-footer {
-  margin-top: -$blockquote-margin-y;
+  margin-top: calc(-1 * $blockquote-margin-y); // stylelint-disable-line function-disallowed-list
   margin-bottom: $blockquote-margin-y;
   @include font-size($blockquote-footer-font-size);
   color: $blockquote-footer-color;

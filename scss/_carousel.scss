@@ -198,9 +198,9 @@
 
 .carousel-caption {
   position: absolute;
-  right: (100% - $carousel-caption-width) * .5;
+  right: calc(subtract(100%, $carousel-caption-width) * .5); // stylelint-disable-line function-disallowed-list
   bottom: $carousel-caption-spacer;
-  left: (100% - $carousel-caption-width) * .5;
+  left: calc(subtract(100%, $carousel-caption-width) * .5); // stylelint-disable-line function-disallowed-list
   padding-top: $carousel-caption-padding-y;
   padding-bottom: $carousel-caption-padding-y;
   color: $carousel-caption-color;
