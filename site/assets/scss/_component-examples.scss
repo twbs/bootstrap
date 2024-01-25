@@ -3,7 +3,7 @@
 //
 
 .bd-code-snippet {
-  margin: 0 calc($bd-gutter-x * -.5) 1rem; // stylelint-disable-line function-disallowed-list
+  margin: 0 calc($bd-gutter-x * -.5) 1rem;
   border: solid var(--bs-border-color);
   border-width: 1px 0;
 
@@ -20,7 +20,7 @@
 
   position: relative;
   padding: var(--bd-example-padding);
-  margin: 0 calc($bd-gutter-x * -.5) 1rem; // stylelint-disable-line function-disallowed-list
+  margin: 0 calc($bd-gutter-x * -.5) 1rem;
   border: solid var(--bs-border-color);
   border-width: 1px 0;
   @include clearfix();
@@ -93,13 +93,13 @@
   .fixed-top,
   .sticky-top {
     position: static;
-    margin: calc(var(--bd-example-padding) * -1) calc(var(--bd-example-padding) * -1) var(--bd-example-padding); // stylelint-disable-line function-disallowed-list
+    margin: calc(var(--bd-example-padding) * -1) calc(var(--bd-example-padding) * -1) var(--bd-example-padding);
   }
 
   .fixed-bottom,
   .sticky-bottom {
     position: static;
-    margin: var(--bd-example-padding) calc(var(--bd-example-padding) * -1) calc(var(--bd-example-padding) * -1); // stylelint-disable-line function-disallowed-list
+    margin: var(--bd-example-padding) calc(var(--bd-example-padding) * -1) calc(var(--bd-example-padding) * -1);
 
   }
 
@@ -348,7 +348,7 @@
 
 .highlight {
   position: relative;
-  padding: .75rem calc($bd-gutter-x * .5); // stylelint-disable-line function-disallowed-list
+  padding: .75rem calc($bd-gutter-x * .5);
   background-color: var(--bd-pre-bg);
 
   @include media-breakpoint-up(md) {

@@ -85,7 +85,7 @@
 
 .input-group-lg > .form-select,
 .input-group-sm > .form-select {
-  padding-right: add($form-select-padding-x, $form-select-indicator-padding);
+  padding-right: calc(with-unit($form-select-padding-x) + with-unit($form-select-indicator-padding));
 }
 
 
@@ -121,7 +121,7 @@
   }
 
   > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
-    margin-left: calc($input-border-width * -1); // stylelint-disable-line function-disallowed-list
+    margin-left: calc($input-border-width * -1);
     @include border-start-radius(0);
   }
 

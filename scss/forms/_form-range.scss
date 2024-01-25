@@ -6,7 +6,7 @@
 
 .form-range {
   width: 100%;
-  height: add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2);
+  height: calc(with-unit($form-range-thumb-height) + with-unit($form-range-thumb-focus-box-shadow-width) * 2);
   padding: 0; // Need to reset padding
   appearance: none;
   background-color: transparent;
@@ -27,8 +27,7 @@
   &::-webkit-slider-thumb {
     width: $form-range-thumb-width;
     height: $form-range-thumb-height;
-    // Webkit specific
-    margin-top: calc(subtract($form-range-track-height, $form-range-thumb-height) * .5); // stylelint-disable-line function-disallowed-list
+    margin-top: calc((with-unit($form-range-track-height) - with-unit($form-range-thumb-height)) * .5); // Webkit specific
     appearance: none;
     @include gradient-bg($form-range-thumb-bg);
     border: $form-range-thumb-border;

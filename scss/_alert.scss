@@ -49,8 +49,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    z-index: calc($stretched-link-z-index + 1); // stylelint-disable-line function-disallowed-list
-    padding: calc($alert-padding-y * 1.25) $alert-padding-x; // stylelint-disable-line function-disallowed-list
+    z-index: calc($stretched-link-z-index + 1);
+    padding: calc($alert-padding-y * 1.25) $alert-padding-x;
   }
 }
 

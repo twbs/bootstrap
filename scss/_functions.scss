@@ -218,6 +218,18 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 }
 // scss-docs-end color-functions
 
+// Ensure that the value has a unit
+// Useful for `calc()` with addition or subtraction with potentially `null` or unitless values
+@function with-unit($value, $fallback: 1px) {
+  @if $value == null {
+    $value: 0;
+  }
+  @if type-of($value) == number and unitless($value) {
+    $value: calc($value * $fallback);
+  }
+  @return $value;
+}
+
 // Return valid calc
 @function add($value1, $value2, $return-calc: true) {
   @if $value1 == null {

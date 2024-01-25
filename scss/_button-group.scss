@@ -39,7 +39,7 @@
   // Prevent double borders when buttons are next to each other
   > :not(.btn-check:first-child) + .btn,
   > .btn-group:not(:first-child) {
-    margin-left: calc($btn-border-width * -1); // stylelint-disable-line function-disallowed-list
+    margin-left: calc($btn-border-width * -1);
   }
 
   // Reset rounded corners
@@ -73,8 +73,8 @@
 //
 
 .dropdown-toggle-split {
-  padding-right: calc($btn-padding-x * .75); // stylelint-disable-line function-disallowed-list
-  padding-left: calc($btn-padding-x * .75); // stylelint-disable-line function-disallowed-list
+  padding-right: calc($btn-padding-x * .75);
+  padding-left: calc($btn-padding-x * .75);
 
   &::after,
   .dropup &::after,
@@ -88,13 +88,13 @@
 }
 
 .btn-sm + .dropdown-toggle-split {
-  padding-right: calc($btn-padding-x-sm * .75); // stylelint-disable-line function-disallowed-list
-  padding-left: calc($btn-padding-x-sm * .75); // stylelint-disable-line function-disallowed-list
+  padding-right: calc($btn-padding-x-sm * .75);
+  padding-left: calc($btn-padding-x-sm * .75);
 }
 
 .btn-lg + .dropdown-toggle-split {
-  padding-right: calc($btn-padding-x-lg * .75); // stylelint-disable-line function-disallowed-list
-  padding-left: calc($btn-padding-x-lg * .75); // stylelint-disable-line function-disallowed-list
+  padding-right: calc($btn-padding-x-lg * .75);
+  padding-left: calc($btn-padding-x-lg * .75);
 }
 
 
@@ -126,7 +126,7 @@
 
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) {
-    margin-top: calc($btn-border-width * -1); // stylelint-disable-line function-disallowed-list
+    margin-top: calc($btn-border-width * -1);
   }
 
   // Reset rounded corners
