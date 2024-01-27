@@ -804,3 +804,24 @@ $utilities: map-merge(
   ),
   $utilities
 );
+
+// .float-clear class
+.float-clear::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+// .float-clear-start class
+.float-clear-start::after {
+  content: "";
+  display: table;
+  clear: left;
+}
+
+// .float-clear-end class
+.float-clear-end::after {
+  content: "";
+  display: table;
+  clear: right;
+}
