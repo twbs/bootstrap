@@ -152,13 +152,13 @@ Learn more by reading the new [color modes documentation]({{< docsref "/customiz
 
 - Alert variants are now styled via CSS variables.
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.alert-variant()` mixin is now deprecated. We now [use a Sass loop]({{< docsref "/components/alerts#sass-loops" >}}) directly to modify the component's default CSS variables for each variant.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `alert-variant()` mixin is now deprecated. We now [use a Sass loop]({{< docsref "/components/alerts#sass-loops" >}}) directly to modify the component's default CSS variables for each variant.
 
 #### List group
 
 - List group item variants are now styled via CSS variables.
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.list-group-variant()` mixin is now deprecated. We now [use a Sass loop]({{< docsref "/components/list-group#sass-loops" >}}) directly to modify the component's default CSS variables for each variant.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `list-group-item-variant()` mixin is now deprecated. We now [use a Sass loop]({{< docsref "/components/list-group#sass-loops" >}}) directly to modify the component's default CSS variables for each variant.
 
 #### Dropdowns
 
@@ -397,7 +397,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 - <span class="badge text-bg-danger">Breaking</span> Media query mixins parameters have changed for a more logical approach.
   - `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint (e.g., `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` targets viewports smaller than `lg`).
-  - Similarly, the second parameter in `media-breakpoint-between()` also uses the breakpoint itself instead of the next breakpoint (e.g., `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` targets viewports between `sm` and `lg`).
+  - Similarly, the second parameter in `media-breakpoint-between()` also uses the breakpoint itself instead of the next breakpoint (e.g., `media-breakpoint-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` targets viewports between `sm` and `lg`).
 
 - <span class="badge text-bg-danger">Breaking</span> Removed print styles and `$enable-print-styles` variable. Print display classes are still around. [See #28339](https://github.com/twbs/bootstrap/pull/28339).
 
