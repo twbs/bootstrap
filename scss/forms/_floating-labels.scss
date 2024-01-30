@@ -1,4 +1,6 @@
 .form-floating {
+  --#{$prefix}form-floating-input-padding-t: #{$form-floating-input-padding-t};
+  --#{$prefix}form-floating-input-padding-b: #{$form-floating-input-padding-b};
   position: relative;
 
   > .form-control,
@@ -38,19 +40,19 @@
 
     &:focus,
     &:not(:placeholder-shown) {
-      padding-top: $form-floating-input-padding-t;
-      padding-bottom: $form-floating-input-padding-b;
+      padding-top: var(--#{$prefix}form-floating-input-padding-t);
+      padding-bottom: var(--#{$prefix}form-floating-input-padding-b);
     }
     // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
     &:-webkit-autofill {
-      padding-top: $form-floating-input-padding-t;
-      padding-bottom: $form-floating-input-padding-b;
+      padding-top: var(--#{$prefix}form-floating-input-padding-t);
+      padding-bottom: var(--#{$prefix}form-floating-input-padding-b);
     }
   }
 
   > .form-select {
-    padding-top: $form-floating-select-padding-t;
-    padding-bottom: $form-floating-select-padding-b;
+    padding-top: var(--#{$prefix}form-floating-input-padding-t);
+    padding-bottom: var(--#{$prefix}form-floating-input-padding-b);
   }
 
   > .form-control:focus,
@@ -69,6 +71,10 @@
   }
   > textarea:focus,
   > textarea:not(:placeholder-shown) {
+    // textareas require additional top padding to prevent label from overlapping text,
+    // and additional bottom padding for when text is scrolled.
+    --#{$prefix}form-floating-input-padding-t: #{$form-floating-textarea-padding-t};
+    --#{$prefix}form-floating-input-padding-b: #{$form-floating-textarea-padding-b};
     ~ label::after {
       position: absolute;
       inset: $form-floating-padding-y ($form-floating-padding-x * .5);
