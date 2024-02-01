@@ -92,7 +92,7 @@
   &:first-of-type {
     @include border-top-radius(var(--#{$prefix}accordion-border-radius));
 
-    .accordion-button {
+    > .accordion-header .accordion-button {
       @include border-top-radius(var(--#{$prefix}accordion-inner-border-radius));
     }
   }
@@ -105,13 +105,13 @@
   &:last-of-type {
     @include border-bottom-radius(var(--#{$prefix}accordion-border-radius));
 
-    .accordion-button {
+    > .accordion-header .accordion-button {
       &.collapsed {
         @include border-bottom-radius(var(--#{$prefix}accordion-inner-border-radius));
       }
     }
 
-    .accordion-collapse {
+    > .accordion-collapse {
       @include border-bottom-radius(var(--#{$prefix}accordion-border-radius));
     }
   }
@@ -127,11 +127,7 @@
 // Remove borders and border-radius to keep accordion items edge-to-edge.
 
 .accordion-flush {
-  .accordion-collapse {
-    border-width: 0;
-  }
-
-  .accordion-item {
+  > .accordion-item {
     border-right: 0;
     border-left: 0;
     @include border-radius(0);
@@ -139,11 +135,17 @@
     &:first-child { border-top: 0; }
     &:last-child { border-bottom: 0; }
 
-    .accordion-button {
+    // stylelint-disable selector-max-class
+    > .accordion-header .accordion-button {
       &,
       &.collapsed {
         @include border-radius(0);
       }
+    }
+    // stylelint-enable selector-max-class
+
+    > .accordion-collapse {
+      @include border-radius(0);
     }
   }
 }
