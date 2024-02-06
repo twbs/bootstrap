@@ -1,5 +1,25 @@
 :root,
+[data-bs-theme] {
+  color: var(--#{$prefix}body-color);
+  background-color: var(--#{$prefix}body-bg);
+}
+
+// Note that some of these variables could be extracted into `:root` only selector since they are not modified by other color modes!
+
+/*
+:root {
+  // ...
+  --#{$prefix}box-shadow: #{$box-shadow};
+  --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
+  --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
+  --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
+  // ...
+*/
+
+:root,
 [data-bs-theme="light"] {
+  color-scheme: light;
+
   // Note: Custom variable values only support SassScript inside `#{}`.
 
   // Colors
