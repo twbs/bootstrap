@@ -51,6 +51,7 @@
         "SwitchCase": 1
       }
     ],
+    "logical-assignment-operators": "off",
     "max-params": [
       "warn",
       5
