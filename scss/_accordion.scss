@@ -20,7 +20,6 @@
   --#{$prefix}accordion-btn-icon-transform: #{$accordion-icon-transform};
   --#{$prefix}accordion-btn-icon-transition: #{$accordion-icon-transition};
   --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon)};
-  --#{$prefix}accordion-btn-focus-border-color: #{$accordion-button-focus-border-color};
   --#{$prefix}accordion-btn-focus-box-shadow: #{$accordion-button-focus-box-shadow};
   --#{$prefix}accordion-body-padding-x: #{$accordion-body-padding-x};
   --#{$prefix}accordion-body-padding-y: #{$accordion-body-padding-y};
@@ -74,7 +73,6 @@
 
   &:focus {
     z-index: 3;
-    border-color: var(--#{$prefix}accordion-btn-focus-border-color);
     outline: 0;
     box-shadow: var(--#{$prefix}accordion-btn-focus-box-shadow);
   }

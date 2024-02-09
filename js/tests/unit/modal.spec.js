@@ -1,7 +1,9 @@
 import EventHandler from '../../src/dom/event-handler.js'
 import Modal from '../../src/modal.js'
 import ScrollBarHelper from '../../src/util/scrollbar.js'
-import { clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
+import {
+  clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock
+} from '../helpers/fixture.js'
 
 describe('Modal', () => {
   let fixtureEl
