@@ -29,7 +29,7 @@ const getSelector = element => {
     selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null
   }
 
-  return selector?.split(',').map(sel => parseSelector(sel)).join(',')
+  return selector ? selector.split(',').map(sel => parseSelector(sel)).join(',') : null
 }
 
 const SelectorEngine = {
