@@ -23,6 +23,9 @@ Adjust the `overflow` property on the fly with four default values and classes. 
   <div class="overflow-scroll p-3 bg-body-tertiary" style="max-width: 260px; max-height: 100px;">
     This is an example of using <code>.overflow-scroll</code> on an element with set width and height dimensions.
   </div>
+  <div class="overflow-clip p-3 bg-body-tertiary" style="max-width: 260px; max-height: 100px;">
+    This is an example of using <code>.overflow-clip</code> on an element with set width and height dimensions.
+  </div>
 </div>
 
 ```html
@@ -30,6 +33,7 @@ Adjust the `overflow` property on the fly with four default values and classes. 
 <div class="overflow-hidden">...</div>
 <div class="overflow-visible">...</div>
 <div class="overflow-scroll">...</div>
+<div class="overflow-clip">...</div>
 ```
 
 ### `overflow-x`
@@ -53,6 +57,10 @@ Adjust the `overflow-x` property to affect the overflow of content horizontally.
     <div><code>.overflow-x-scroll</code> example on an element</div>
     <div> with set width and height dimensions.</div>
   </div>
+  <div class="overflow-x-clip p-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;white-space: nowrap;">
+    <div><code>.overflow-x-clip</code> example on an element</div>
+    <div> with set width and height dimensions.</div>
+  </div>
 </div>
 
 ```html
@@ -60,6 +68,7 @@ Adjust the `overflow-x` property to affect the overflow of content horizontally.
 <div class="overflow-x-hidden">...</div>
 <div class="overflow-x-visible">...</div>
 <div class="overflow-x-scroll">...</div>
+<div class="overflow-x-clip">...</div>
 ```
 
 ### `overflow-y`
@@ -79,6 +88,9 @@ Adjust the `overflow-y` property to affect the overflow of content vertically.
   <div class="overflow-y-scroll p-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;">
     <code>.overflow-y-scroll</code> example on an element with set width and height dimensions.
   </div>
+  <div class="overflow-y-clip p-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;">
+    <code>.overflow-y-clip</code> example on an element with set width and height dimensions.
+  </div>
 </div>
 
 ```html
@@ -86,6 +98,7 @@ Adjust the `overflow-y` property to affect the overflow of content vertically.
 <div class="overflow-y-hidden">...</div>
 <div class="overflow-y-visible">...</div>
 <div class="overflow-y-scroll">...</div>
+<div class="overflow-y-clip">...</div>
 ```
 
 Using Sass variables, you may customize the overflow utilities by changing the `$overflows` variable in `_variables.scss`.
