@@ -140,7 +140,7 @@
     "lockfile-lint": "^4.13.1",
     "nodemon": "^3.0.3",
     "npm-run-all2": "^6.1.2",
-    "postcss": "^8.4.34",
+    "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",
     "rollup": "^4.9.6",
     "rollup-plugin-istanbul": "^5.0.0",
