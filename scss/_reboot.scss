@@ -87,7 +87,7 @@ hr {
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  color: var(--#{$prefix}heading-color, inherit);
+  color: var(--#{$prefix}heading-color);
 }
 
 h1 {
@@ -217,6 +217,7 @@ small {
 
 mark {
   padding: $mark-padding;
+  color: var(--#{$prefix}highlight-color);
   background-color: var(--#{$prefix}highlight-bg);
 }
 
@@ -524,15 +525,15 @@ legend {
   height: auto;
 }
 
-// 1. Correct the outline style in Safari.
-// 2. This overrides the extra rounded corners on search inputs in iOS so that our
+// 1. This overrides the extra rounded corners on search inputs in iOS so that our
 //    `.form-control` class can properly style them. Note that this cannot simply
 //    be added to `.form-control` as it's not specific enough. For details, see
 //    https://github.com/twbs/bootstrap/issues/11586.
+// 2. Correct the outline style in Safari.
 
 [type="search"] {
-  outline-offset: -2px; // 1
-  -webkit-appearance: textfield; // 2
+  -webkit-appearance: textfield; // 1
+  outline-offset: -2px; // 2
 }
 
 // 1. A few input types should stay LTR

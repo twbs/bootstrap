@@ -359,6 +359,30 @@ describe('SelectorEngine', () => {
       expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
     })
 
+    it('should get elements if several ids are given', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target="#target1,#target2"></div>',
+        '<div class="target" id="target1"></div>',
+        '<div class="target" id="target2"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+    })
+
+    it('should get elements if several ids with special chars are given', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-bs-target="#j_id11:exampleModal,#j_id22:exampleModal"></div>',
+        '<div class="target" id="j_id11:exampleModal"></div>',
+        '<div class="target" id="j_id22:exampleModal"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+    })
+
     it('should get elements in array, from href if no data-bs-target set', () => {
       fixtureEl.innerHTML = [
         '<a id="test" href=".target"></a>',
