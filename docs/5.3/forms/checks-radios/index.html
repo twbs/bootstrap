@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Create consistent cross-browser and cross-device checkboxes and radios with our completely rewritten checks component.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.118.2">
+<meta name="generator" content="Hugo 0.122.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -20,7 +20,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 <link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 
@@ -281,21 +281,21 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
               <li>
                 <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                  <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
                   Light
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                  <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
                   Dark
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
                 </button>
               </li>
               <li>
                 <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                  <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
                   Auto
                   <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
                 </button>
@@ -531,7 +531,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.2/site/content/docs/5.3/forms/checks-radios.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.3/site/content/docs/5.3/forms/checks-radios.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -596,7 +596,9 @@
 <p>Structurally, our <code>&lt;input&gt;</code>s and <code>&lt;label&gt;</code>s are sibling elements as opposed to an <code>&lt;input&gt;</code> within a <code>&lt;label&gt;</code>. This is slightly more verbose as you must specify <code>id</code> and <code>for</code> attributes to relate the <code>&lt;input&gt;</code> and <code>&lt;label&gt;</code>. We use the sibling selector (<code>~</code>) for all our <code>&lt;input&gt;</code> states, like <code>:checked</code> or <code>:disabled</code>. When combined with the <code>.form-check-label</code> class, we can easily style the text for each item based on the <code>&lt;input&gt;</code>&rsquo;s state.</p>
 <p>Our checks use custom Bootstrap icons to indicate checked or indeterminate states.</p>
 <h2 id="checks">Checks <a class="anchor-link" href="#checks" aria-label="Link to this section: Checks"></a></h2>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
@@ -609,7 +611,8 @@
     Checked checkbox
   </label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -630,18 +633,22 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;flexCheckChecked&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    Checked checkbox
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h3 id="indeterminate">Indeterminate <a class="anchor-link" href="#indeterminate" aria-label="Link to this section: Indeterminate"></a></h3>
 <p>Checkboxes can utilize the <code>:indeterminate</code> pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-indeterminate">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0 bd-example-indeterminate">
+    
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
   <label class="form-check-label" for="flexCheckIndeterminate">
     Indeterminate checkbox
   </label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" data-sb-js-snippet="true" title="Try it on StackBlitz">
@@ -656,11 +663,14 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;flexCheckIndeterminate&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    Indeterminate checkbox
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h3 id="disabled">Disabled <a class="anchor-link" href="#disabled" aria-label="Link to this section: Disabled"></a></h3>
 <p>Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s are automatically styled to match with a lighter color to help indicate the input&rsquo;s state.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bd-example-indeterminate">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0 bd-example-indeterminate">
+    
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminateDisabled" disabled>
   <label class="form-check-label" for="flexCheckIndeterminateDisabled">
@@ -679,7 +689,8 @@
     Disabled checked checkbox
   </label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" data-sb-js-snippet="true" title="Try it on StackBlitz">
@@ -706,10 +717,13 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;flexCheckCheckedDisabled&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    Disabled checked checkbox
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h2 id="radios">Radios <a class="anchor-link" href="#radios" aria-label="Link to this section: Radios"></a></h2>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
@@ -722,7 +736,8 @@
     Default checked radio
   </label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -743,11 +758,14 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;flexRadioDefault2&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    Default checked radio
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h3 id="disabled-1">Disabled <a class="anchor-link" href="#disabled-1" aria-label="Link to this section: Disabled"></a></h3>
 <p>Add the <code>disabled</code> attribute and the associated <code>&lt;label&gt;</code>s are automatically styled to match with a lighter color to help indicate the input&rsquo;s state.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
   <label class="form-check-label" for="flexRadioDisabled">
@@ -760,7 +778,8 @@
     Disabled checked radio
   </label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -781,11 +800,14 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;flexRadioCheckedDisabled&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    Disabled checked radio
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h2 id="switches">Switches <a class="anchor-link" href="#switches" aria-label="Link to this section: Switches"></a></h2>
 <p>A switch has the markup of a custom checkbox but uses the <code>.form-switch</code> class to render a toggle switch. Consider using <code>role=&quot;switch&quot;</code> to more accurately convey the nature of the control to assistive technologies that support this role. In older assistive technologies, it will simply be announced as a regular checkbox as a fallback. Switches also support the <code>disabled</code> attribute.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
   <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
@@ -802,7 +824,8 @@
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
   <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -827,11 +850,14 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check form-switch&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-input&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;switch&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;flexSwitchCheckCheckedDisabled&#34;</span> <span class="na">checked</span> <span class="na">disabled</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;flexSwitchCheckCheckedDisabled&#34;</span><span class="p">&gt;</span>Disabled checked switch checkbox input<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h2 id="default-stacked">Default (stacked) <a class="anchor-link" href="#default-stacked" aria-label="Link to this section: Default (stacked)"></a></h2>
 <p>By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with <code>.form-check</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
   <label class="form-check-label" for="defaultCheck1">
@@ -844,7 +870,8 @@
     Disabled checkbox
   </label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -865,9 +892,12 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;defaultCheck2&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    Disabled checkbox
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
   <label class="form-check-label" for="exampleRadios1">
@@ -886,7 +916,8 @@
     Disabled radio
   </label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -913,11 +944,14 @@
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;exampleRadios3&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    Disabled radio
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h2 id="inline">Inline <a class="anchor-link" href="#inline" aria-label="Link to this section: Inline"></a></h2>
 <p>Group checkboxes or radios on the same horizontal row by adding <code>.form-check-inline</code> to any <code>.form-check</code>.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
   <label class="form-check-label" for="inlineCheckbox1">1</label>
@@ -930,7 +964,8 @@
   <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
   <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -951,9 +986,12 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check form-check-inline&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-input&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;inlineCheckbox3&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;option3&#34;</span> <span class="na">disabled</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;inlineCheckbox3&#34;</span><span class="p">&gt;</span>3 (disabled)<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
   <label class="form-check-label" for="inlineRadio1">1</label>
@@ -966,7 +1004,8 @@
   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
   <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -987,11 +1026,14 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check form-check-inline&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-input&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;radio&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;inlineRadioOptions&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;inlineRadio3&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;option3&#34;</span> <span class="na">disabled</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;inlineRadio3&#34;</span><span class="p">&gt;</span>3 (disabled)<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h2 id="reverse">Reverse <a class="anchor-link" href="#reverse" aria-label="Link to this section: Reverse"></a></h2>
 <p>Put your checkboxes, radios, and switches on the opposite side with the <code>.form-check-reverse</code> modifier class.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div class="form-check form-check-reverse">
   <input class="form-check-input" type="checkbox" value="" id="reverseCheck1">
   <label class="form-check-label" for="reverseCheck1">
@@ -1009,7 +1051,8 @@
   <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
   <label class="form-check-label" for="flexSwitchCheckReverse">Reverse switch checkbox input</label>
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -1035,11 +1078,14 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check form-switch form-check-reverse&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-input&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;flexSwitchCheckReverse&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-label&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;flexSwitchCheckReverse&#34;</span><span class="p">&gt;</span>Reverse switch checkbox input<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h2 id="without-labels">Without labels <a class="anchor-link" href="#without-labels" aria-label="Link to this section: Without labels"></a></h2>
 <p>Omit the wrapping <code>.form-check</code> for checkboxes and radios that have no label text. Remember to still provide some form of accessible name for assistive technologies (for instance, using <code>aria-label</code>). See the <a href="/docs/5.3/forms/overview/#accessibility">forms overview accessibility</a> section for details.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <div>
   <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
 </div>
@@ -1047,7 +1093,8 @@
 <div>
   <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="...">
 </div>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -1063,12 +1110,15 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;form-check-input&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;radio&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;radioNoLabel&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;radioNoLabel1&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;...&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h2 id="toggle-buttons">Toggle buttons <a class="anchor-link" href="#toggle-buttons" aria-label="Link to this section: Toggle buttons"></a></h2>
 <p>Create button-like checkboxes and radio buttons by using <code>.btn</code> styles rather than <code>.form-check-label</code> on the <code>&lt;label&gt;</code> elements. These toggle buttons can further be grouped in a <a href="/docs/5.3/components/button-group/">button group</a> if needed.</p>
 <h3 id="checkbox-toggle-buttons">Checkbox toggle buttons <a class="anchor-link" href="#checkbox-toggle-buttons" aria-label="Link to this section: Checkbox toggle buttons"></a></h3>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
 <label class="btn btn-primary" for="btn-check">Single toggle</label>
 
@@ -1077,7 +1127,8 @@
 
 <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off" disabled>
 <label class="btn btn-primary" for="btn-check-3">Disabled</label>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -1094,9 +1145,12 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;btn-check-2&#34;</span><span class="p">&gt;</span>Checked<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;btn-check-3&#34;</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">&#34;off&#34;</span> <span class="na">disabled</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;btn-check-3&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-primary&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;btn-check-3&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
 <label class="btn" for="btn-check-4">Single toggle</label>
 
@@ -1105,7 +1159,8 @@
 
 <input type="checkbox" class="btn-check" id="btn-check-6" autocomplete="off" disabled>
 <label class="btn" for="btn-check-6">Disabled</label>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -1122,14 +1177,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;btn-check-5&#34;</span><span class="p">&gt;</span>Checked<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;checkbox&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;btn-check-6&#34;</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">&#34;off&#34;</span> <span class="na">disabled</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;btn-check-6&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;btn-check-6&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <div class="bd-callout bd-callout-info">
 Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/components/buttons/#button-plugin">button plugin toggle buttons</a>. However, they are conveyed differently by assistive technologies: the checkbox toggles will be announced by screen readers as &ldquo;checked&rdquo;/&ldquo;not checked&rdquo; (since, despite their appearance, they are fundamentally still checkboxes), whereas the button plugin toggle buttons will be announced as &ldquo;button&rdquo;/&ldquo;button pressed&rdquo;. The choice between these two approaches will depend on the type of toggle you are creating, and whether or not the toggle will make sense to users when announced as a checkbox or as an actual button.
 </div>
 
 <h3 id="radio-toggle-buttons">Radio toggle buttons <a class="anchor-link" href="#radio-toggle-buttons" aria-label="Link to this section: Radio toggle buttons"></a></h3>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
 <label class="btn btn-secondary" for="option1">Checked</label>
 
@@ -1141,7 +1199,8 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 
 <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
 <label class="btn btn-secondary" for="option4">Radio</label>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -1161,9 +1220,12 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-secondary&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;option3&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;radio&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;options&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;option4&#34;</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">&#34;off&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-secondary&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;option4&#34;</span><span class="p">&gt;</span>Radio<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-secondary&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;option4&#34;</span><span class="p">&gt;</span>Radio<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" checked>
 <label class="btn" for="option5">Checked</label>
 
@@ -1175,7 +1237,8 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 
 <input type="radio" class="btn-check" name="options-base" id="option8" autocomplete="off">
 <label class="btn" for="option8">Radio</label>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -1195,11 +1258,14 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;option7&#34;</span><span class="p">&gt;</span>Disabled<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;radio&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;options-base&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;option8&#34;</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">&#34;off&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;option8&#34;</span><span class="p">&gt;</span>Radio<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;option8&#34;</span><span class="p">&gt;</span>Radio<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h3 id="outlined-styles">Outlined styles <a class="anchor-link" href="#outlined-styles" aria-label="Link to this section: Outlined styles"></a></h3>
-<p>Different variants of <code>.btn</code>, such at the various outlined styles, are supported.</p>
-<div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+<p>Different variants of <code>.btn</code>, such as the various outlined styles, are supported.</p>
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
 <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
 <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label><br>
 
@@ -1211,7 +1277,8 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 
 <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
 <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
-</div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+
+  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">html</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
@@ -1231,14 +1298,15 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-outline-success&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;success-outlined&#34;</span><span class="p">&gt;</span>Checked success radio<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;radio&#34;</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn-check&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;options-outlined&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;danger-outlined&#34;</span> <span class="na">autocomplete</span><span class="o">=</span><span class="s">&#34;off&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-outline-danger&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;danger-outlined&#34;</span><span class="p">&gt;</span>Danger radio<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;btn btn-outline-danger&#34;</span> <span class="na">for</span><span class="o">=</span><span class="s">&#34;danger-outlined&#34;</span><span class="p">&gt;</span>Danger radio<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span></span></span></code></pre></div>
+</div>
 
 <h2 id="css">CSS <a class="anchor-link" href="#css" aria-label="Link to this section: CSS"></a></h2>
 <h3 id="sass-variables">Sass variables <a class="anchor-link" href="#sass-variables" aria-label="Link to this section: Sass variables"></a></h3>
 <p>Variables for checks:</p>
 <div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.2/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.3/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1281,7 +1349,7 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
 <p>Variables for switches:</p>
 <div class="bd-example-snippet bd-code-snippet bd-file-ref">
     <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.2/scss/_variables.scss">scss/_variables.scss</a>
+      <a class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small" href="https://github.com/twbs/bootstrap/blob/v5.3.3/scss/_variables.scss">scss/_variables.scss</a>
       <div class="d-flex ms-auto">
         <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
@@ -1318,7 +1386,7 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.2.</li>
+          <li class="mb-2">Currently v5.3.3.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1367,7 +1435,7 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
@@ -1396,20 +1464,20 @@ Visually, these checkbox toggle buttons are identical to the <a href="/docs/5.3/
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.2\/dist\/css\/bootstrap.min.css" rel="stylesheet">
+    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.2\/dist\/js\/bootstrap.bundle.min.js"></${'script'}>
+    <${'script'} src="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.3\/dist\/js\/bootstrap.bundle.min.js"></${'script'}>
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
 
-    <!-- Example Code -->
+    \x3C!-- Example Code -->
 ${htmlSnippet.replace(/^/gm, '    ')}
-    <!-- End Example Code -->
+    \x3C!-- End Example Code -->
   </body>
 </html>`
 
-    const jsSnippetContent = jsSnippet ? '\/\/ NOTICE!!! Initially embedded in our docs this JavaScript\n\/\/ file contains elements that can help you create reproducible\n\/\/ use cases in StackBlitz for instance.\n\/\/ In a real project please adapt this content to your needs.\n\/\/ \u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\n\n\/*!\n * JavaScript for Bootstrap\u0027s docs (https:\/\/getbootstrap.com\/)\n * Copyright 2011-2023 The Bootstrap Authors\n * Licensed under the Creative Commons Attribution 3.0 Unported License.\n * For details, see https:\/\/creativecommons.org\/licenses\/by\/3.0\/.\n *\/\n\n\/* global bootstrap: false *\/\n\n(() =\u003e {\n  \u0027use strict\u0027\n\n  \/\/ --------\n  \/\/ Tooltips\n  \/\/ --------\n  \/\/ Instantiate all tooltips in a docs or StackBlitz\n  document.querySelectorAll(\u0027[data-bs-toggle=\u0022tooltip\u0022]\u0027)\n    .forEach(tooltip =\u003e {\n      new bootstrap.Tooltip(tooltip)\n    })\n\n  \/\/ --------\n  \/\/ Popovers\n  \/\/ --------\n  \/\/ Instantiate all popovers in docs or StackBlitz\n  document.querySelectorAll(\u0027[data-bs-toggle=\u0022popover\u0022]\u0027)\n    .forEach(popover =\u003e {\n      new bootstrap.Popover(popover)\n    })\n\n  \/\/ -------------------------------\n  \/\/ Toasts\n  \/\/ -------------------------------\n  \/\/ Used by \u0027Placement\u0027 example in docs or StackBlitz\n  const toastPlacement = document.getElementById(\u0027toastPlacement\u0027)\n  if (toastPlacement) {\n    document.getElementById(\u0027selectToastPlacement\u0027).addEventListener(\u0027change\u0027, function () {\n      if (!toastPlacement.dataset.originalClass) {\n        toastPlacement.dataset.originalClass = toastPlacement.className\n      }\n\n      toastPlacement.className = \u0060${toastPlacement.dataset.originalClass} ${this.value}\u0060\n    })\n  }\n\n  \/\/ Instantiate all toasts in docs pages only\n  document.querySelectorAll(\u0027.bd-example .toast\u0027)\n    .forEach(toastNode =\u003e {\n      const toast = new bootstrap.Toast(toastNode, {\n        autohide: false\n      })\n\n      toast.show()\n    })\n\n  \/\/ Instantiate all toasts in docs pages only\n  \/\/ js-docs-start live-toast\n  const toastTrigger = document.getElementById(\u0027liveToastBtn\u0027)\n  const toastLiveExample = document.getElementById(\u0027liveToast\u0027)\n\n  if (toastTrigger) {\n    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)\n    toastTrigger.addEventListener(\u0027click\u0027, () =\u003e {\n      toastBootstrap.show()\n    })\n  }\n  \/\/ js-docs-end live-toast\n\n  \/\/ -------------------------------\n  \/\/ Alerts\n  \/\/ -------------------------------\n  \/\/ Used in \u0027Show live alert\u0027 example in docs or StackBlitz\n\n  \/\/ js-docs-start live-alert\n  const alertPlaceholder = document.getElementById(\u0027liveAlertPlaceholder\u0027)\n  const appendAlert = (message, type) =\u003e {\n    const wrapper = document.createElement(\u0027div\u0027)\n    wrapper.innerHTML = [\n      \u0060\u003cdiv class=\u0022alert alert-${type} alert-dismissible\u0022 role=\u0022alert\u0022\u003e\u0060,\n      \u0060   \u003cdiv\u003e${message}\u003c\/div\u003e\u0060,\n      \u0027   \u003cbutton type=\u0022button\u0022 class=\u0022btn-close\u0022 data-bs-dismiss=\u0022alert\u0022 aria-label=\u0022Close\u0022\u003e\u003c\/button\u003e\u0027,\n      \u0027\u003c\/div\u003e\u0027\n    ].join(\u0027\u0027)\n\n    alertPlaceholder.append(wrapper)\n  }\n\n  const alertTrigger = document.getElementById(\u0027liveAlertBtn\u0027)\n  if (alertTrigger) {\n    alertTrigger.addEventListener(\u0027click\u0027, () =\u003e {\n      appendAlert(\u0027Nice, you triggered this alert message!\u0027, \u0027success\u0027)\n    })\n  }\n  \/\/ js-docs-end live-alert\n\n  \/\/ --------\n  \/\/ Carousels\n  \/\/ --------\n  \/\/ Instantiate all non-autoplaying carousels in docs or StackBlitz\n  document.querySelectorAll(\u0027.carousel:not([data-bs-ride=\u0022carousel\u0022])\u0027)\n    .forEach(carousel =\u003e {\n      bootstrap.Carousel.getOrCreateInstance(carousel)\n    })\n\n  \/\/ -------------------------------\n  \/\/ Checks \u0026 Radios\n  \/\/ -------------------------------\n  \/\/ Indeterminate checkbox example in docs and StackBlitz\n  document.querySelectorAll(\u0027.bd-example-indeterminate [type=\u0022checkbox\u0022]\u0027)\n    .forEach(checkbox =\u003e {\n      if (checkbox.id.includes(\u0027Indeterminate\u0027)) {\n        checkbox.indeterminate = true\n      }\n    })\n\n  \/\/ -------------------------------\n  \/\/ Links\n  \/\/ -------------------------------\n  \/\/ Disable empty links in docs examples only\n  document.querySelectorAll(\u0027.bd-content [href=\u0022#\u0022]\u0027)\n    .forEach(link =\u003e {\n      link.addEventListener(\u0027click\u0027, event =\u003e {\n        event.preventDefault()\n      })\n    })\n\n  \/\/ -------------------------------\n  \/\/ Modal\n  \/\/ -------------------------------\n  \/\/ Modal \u0027Varying modal content\u0027 example in docs and StackBlitz\n  \/\/ js-docs-start varying-modal-content\n  const exampleModal = document.getElementById(\u0027exampleModal\u0027)\n  if (exampleModal) {\n    exampleModal.addEventListener(\u0027show.bs.modal\u0027, event =\u003e {\n      \/\/ Button that triggered the modal\n      const button = event.relatedTarget\n      \/\/ Extract info from data-bs-* attributes\n      const recipient = button.getAttribute(\u0027data-bs-whatever\u0027)\n      \/\/ If necessary, you could initiate an Ajax request here\n      \/\/ and then do the updating in a callback.\n\n      \/\/ Update the modal\u0027s content.\n      const modalTitle = exampleModal.querySelector(\u0027.modal-title\u0027)\n      const modalBodyInput = exampleModal.querySelector(\u0027.modal-body input\u0027)\n\n      modalTitle.textContent = \u0060New message to ${recipient}\u0060\n      modalBodyInput.value = recipient\n    })\n  }\n  \/\/ js-docs-end varying-modal-content\n\n  \/\/ -------------------------------\n  \/\/ Offcanvas\n  \/\/ -------------------------------\n  \/\/ \u0027Offcanvas components\u0027 example in docs only\n  const myOffcanvas = document.querySelectorAll(\u0027.bd-example-offcanvas .offcanvas\u0027)\n  if (myOffcanvas) {\n    myOffcanvas.forEach(offcanvas =\u003e {\n      offcanvas.addEventListener(\u0027show.bs.offcanvas\u0027, event =\u003e {\n        event.preventDefault()\n      }, false)\n    })\n  }\n})()\n' : null
+    const jsSnippetContent = jsSnippet ? '\/\/ NOTICE!!! Initially embedded in our docs this JavaScript\n\/\/ file contains elements that can help you create reproducible\n\/\/ use cases in StackBlitz for instance.\n\/\/ In a real project please adapt this content to your needs.\n\/\/ \u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\n\n\/*!\n * JavaScript for Bootstrap\u0027s docs (https:\/\/getbootstrap.com\/)\n * Copyright 2011-2024 The Bootstrap Authors\n * Licensed under the Creative Commons Attribution 3.0 Unported License.\n * For details, see https:\/\/creativecommons.org\/licenses\/by\/3.0\/.\n *\/\n\n\/* global bootstrap: false *\/\n\n(() =\u003e {\n  \u0027use strict\u0027\n\n  \/\/ --------\n  \/\/ Tooltips\n  \/\/ --------\n  \/\/ Instantiate all tooltips in a docs or StackBlitz\n  document.querySelectorAll(\u0027[data-bs-toggle=\u0022tooltip\u0022]\u0027)\n    .forEach(tooltip =\u003e {\n      new bootstrap.Tooltip(tooltip)\n    })\n\n  \/\/ --------\n  \/\/ Popovers\n  \/\/ --------\n  \/\/ Instantiate all popovers in docs or StackBlitz\n  document.querySelectorAll(\u0027[data-bs-toggle=\u0022popover\u0022]\u0027)\n    .forEach(popover =\u003e {\n      new bootstrap.Popover(popover)\n    })\n\n  \/\/ -------------------------------\n  \/\/ Toasts\n  \/\/ -------------------------------\n  \/\/ Used by \u0027Placement\u0027 example in docs or StackBlitz\n  const toastPlacement = document.getElementById(\u0027toastPlacement\u0027)\n  if (toastPlacement) {\n    document.getElementById(\u0027selectToastPlacement\u0027).addEventListener(\u0027change\u0027, function () {\n      if (!toastPlacement.dataset.originalClass) {\n        toastPlacement.dataset.originalClass = toastPlacement.className\n      }\n\n      toastPlacement.className = \u0060${toastPlacement.dataset.originalClass} ${this.value}\u0060\n    })\n  }\n\n  \/\/ Instantiate all toasts in docs pages only\n  document.querySelectorAll(\u0027.bd-example .toast\u0027)\n    .forEach(toastNode =\u003e {\n      const toast = new bootstrap.Toast(toastNode, {\n        autohide: false\n      })\n\n      toast.show()\n    })\n\n  \/\/ Instantiate all toasts in docs pages only\n  \/\/ js-docs-start live-toast\n  const toastTrigger = document.getElementById(\u0027liveToastBtn\u0027)\n  const toastLiveExample = document.getElementById(\u0027liveToast\u0027)\n\n  if (toastTrigger) {\n    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)\n    toastTrigger.addEventListener(\u0027click\u0027, () =\u003e {\n      toastBootstrap.show()\n    })\n  }\n  \/\/ js-docs-end live-toast\n\n  \/\/ -------------------------------\n  \/\/ Alerts\n  \/\/ -------------------------------\n  \/\/ Used in \u0027Show live alert\u0027 example in docs or StackBlitz\n\n  \/\/ js-docs-start live-alert\n  const alertPlaceholder = document.getElementById(\u0027liveAlertPlaceholder\u0027)\n  const appendAlert = (message, type) =\u003e {\n    const wrapper = document.createElement(\u0027div\u0027)\n    wrapper.innerHTML = [\n      \u0060\u003cdiv class=\u0022alert alert-${type} alert-dismissible\u0022 role=\u0022alert\u0022\u003e\u0060,\n      \u0060   \u003cdiv\u003e${message}\u003c\/div\u003e\u0060,\n      \u0027   \u003cbutton type=\u0022button\u0022 class=\u0022btn-close\u0022 data-bs-dismiss=\u0022alert\u0022 aria-label=\u0022Close\u0022\u003e\u003c\/button\u003e\u0027,\n      \u0027\u003c\/div\u003e\u0027\n    ].join(\u0027\u0027)\n\n    alertPlaceholder.append(wrapper)\n  }\n\n  const alertTrigger = document.getElementById(\u0027liveAlertBtn\u0027)\n  if (alertTrigger) {\n    alertTrigger.addEventListener(\u0027click\u0027, () =\u003e {\n      appendAlert(\u0027Nice, you triggered this alert message!\u0027, \u0027success\u0027)\n    })\n  }\n  \/\/ js-docs-end live-alert\n\n  \/\/ --------\n  \/\/ Carousels\n  \/\/ --------\n  \/\/ Instantiate all non-autoplaying carousels in docs or StackBlitz\n  document.querySelectorAll(\u0027.carousel:not([data-bs-ride=\u0022carousel\u0022])\u0027)\n    .forEach(carousel =\u003e {\n      bootstrap.Carousel.getOrCreateInstance(carousel)\n    })\n\n  \/\/ -------------------------------\n  \/\/ Checks \u0026 Radios\n  \/\/ -------------------------------\n  \/\/ Indeterminate checkbox example in docs and StackBlitz\n  document.querySelectorAll(\u0027.bd-example-indeterminate [type=\u0022checkbox\u0022]\u0027)\n    .forEach(checkbox =\u003e {\n      if (checkbox.id.includes(\u0027Indeterminate\u0027)) {\n        checkbox.indeterminate = true\n      }\n    })\n\n  \/\/ -------------------------------\n  \/\/ Links\n  \/\/ -------------------------------\n  \/\/ Disable empty links in docs examples only\n  document.querySelectorAll(\u0027.bd-content [href=\u0022#\u0022]\u0027)\n    .forEach(link =\u003e {\n      link.addEventListener(\u0027click\u0027, event =\u003e {\n        event.preventDefault()\n      })\n    })\n\n  \/\/ -------------------------------\n  \/\/ Modal\n  \/\/ -------------------------------\n  \/\/ Modal \u0027Varying modal content\u0027 example in docs and StackBlitz\n  \/\/ js-docs-start varying-modal-content\n  const exampleModal = document.getElementById(\u0027exampleModal\u0027)\n  if (exampleModal) {\n    exampleModal.addEventListener(\u0027show.bs.modal\u0027, event =\u003e {\n      \/\/ Button that triggered the modal\n      const button = event.relatedTarget\n      \/\/ Extract info from data-bs-* attributes\n      const recipient = button.getAttribute(\u0027data-bs-whatever\u0027)\n      \/\/ If necessary, you could initiate an Ajax request here\n      \/\/ and then do the updating in a callback.\n\n      \/\/ Update the modal\u0027s content.\n      const modalTitle = exampleModal.querySelector(\u0027.modal-title\u0027)\n      const modalBodyInput = exampleModal.querySelector(\u0027.modal-body input\u0027)\n\n      modalTitle.textContent = \u0060New message to ${recipient}\u0060\n      modalBodyInput.value = recipient\n    })\n  }\n  \/\/ js-docs-end varying-modal-content\n\n  \/\/ -------------------------------\n  \/\/ Offcanvas\n  \/\/ -------------------------------\n  \/\/ \u0027Offcanvas components\u0027 example in docs only\n  const myOffcanvas = document.querySelectorAll(\u0027.bd-example-offcanvas .offcanvas\u0027)\n  if (myOffcanvas) {\n    myOffcanvas.forEach(offcanvas =\u003e {\n      offcanvas.addEventListener(\u0027show.bs.offcanvas\u0027, event =\u003e {\n        event.preventDefault()\n      }, false)\n    })\n  }\n})()\n' : null
     const project = {
       files: {
         'index.html': markup,
