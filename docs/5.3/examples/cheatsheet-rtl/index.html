@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.118.2">
+    <meta name="generator" content="Hugo 0.122.0">
     <title>ورقة الغش · Bootstrap v5.3</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cheatsheet-rtl/">
@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-<link href="/docs/5.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv" crossorigin="anonymous">
+<link href="/docs/5.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -140,21 +140,21 @@
       <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
             Light
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
           </button>
         </li>
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
             Dark
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
           </button>
         </li>
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-            <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
+            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
             Auto
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
           </button>
@@ -177,7 +177,7 @@
   <nav class="small" id="toc">
     <ul class="list-unstyled">
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">المحتوى</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">المحتوى</button>
         <ul class="list-unstyled ps-3 collapse" id="contents-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#typography">النصوص</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#images">الصور</a></li>
@@ -186,7 +186,7 @@
         </ul>
       </li>
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">النماذج</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">النماذج</button>
         <ul class="list-unstyled ps-3 collapse" id="forms-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#overview">نظرة عامة</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#disabled-forms">الحقول المعطلة</a></li>
@@ -197,7 +197,7 @@
         </ul>
       </li>
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">مكونات</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">مكونات</button>
         <ul class="list-unstyled ps-3 collapse" id="components-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#accordion">المطوية</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#alerts">الإنذارات</a></li>
@@ -235,34 +235,48 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <p class="display-1">العرض 1</p>
         <p class="display-2">العرض 2</p>
         <p class="display-3">العرض 3</p>
         <p class="display-4">العرض 4</p>
         <p class="display-5">العرض 5</p>
         <p class="display-6">العرض 6</p>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <p class="h1">عنوان 1</p>
         <p class="h2">عنوان 2</p>
         <p class="h3">عنوان 3</p>
         <p class="h4">عنوان 4</p>
         <p class="h5">عنوان 5</p>
         <p class="h6">عنوان 6</p>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <p class="lead">
           هذه قطعة إملائية متميزة، فهي مصممة لتكون بارزة من بين القطع الإملائية الأخرى.
         </p>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <p>يمكنك استخدام تصنيف mark <mark>لتحديد</mark> نص.</p>
         <p><del>من المفترض أن يتم التعامل مع هذا السطر كنص محذوف.</del></p>
         <p><s>من المفترض أن يتم التعامل مع هذا السطر على أنه لم يعد دقيقًا.</s></p>
@@ -271,23 +285,35 @@
         <p><small>من المفترض أن يتم التعامل مع هذا السطر على أنه يحوي تفاصيل صغيرة.</small></p>
         <p><strong>هذا السطر يحوي نص عريض.</strong></p>
         <p><em>هذا السطر يحوي نص مائل.</em></p>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <hr>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <blockquote class="blockquote">
           <p>إقتباس مبهر، موضوع في عنصر blockquote</p>
           <footer class="blockquote-footer">شخص مشهور في <cite title= "عنوان المصدر"> عنوان المصدر </cite></footer>
         </blockquote>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <ul class="list-unstyled">
           <li>هذه قائمة عناصر.</li>
           <li>بالرغم من أنها مصممة كي لا تظهر كذلك.</li>
@@ -302,16 +328,22 @@
           </li>
           <li>قد يكون هذا التصميم مفيدًا في بعض الأحيان.</li>
         </ul>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <ul class="list-inline">
           <li class="list-inline-item">هذا عنصر في قائمة.</li>
           <li class="list-inline-item">وهذا أيضًا.</li>
           <li class="list-inline-item">لكنهم يظهرون متجاورين.</li>
         </ul>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -322,14 +354,22 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <svg class="bd-placeholder-img bd-placeholder-img-lg img-fluid" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: صورة مستجيبة" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">صورة مستجيبة</text></svg>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <svg class="bd-placeholder-img img-thumbnail" width="200" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="صورة عنصر نائب مربع عام مع حدود بيضاء حولها ، مما يجعلها تشبه صورة تم التقاطها بكاميرا فورية قديمة: 200x200" preserveAspectRatio="xMidYMid slice" focusable="false"><title>صورة عنصر نائب مربع عام مع حدود بيضاء حولها ، مما يجعلها تشبه صورة تم التقاطها بكاميرا فورية قديمة</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">200x200</text></svg>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -340,7 +380,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <table class="table table-striped">
           <thead>
           <tr>
@@ -370,10 +412,14 @@
           </tr>
           </tbody>
         </table>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <table class="table table-dark table-borderless">
           <thead>
           <tr>
@@ -403,10 +449,14 @@
           </tr>
           </tbody>
         </table>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <table class="table table-hover">
           <thead>
           <tr>
@@ -464,10 +514,14 @@
           </tr>
           </tbody>
         </table>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <table class="table table-sm table-bordered">
           <thead>
           <tr>
@@ -497,7 +551,9 @@
           </tr>
           </tbody>
         </table>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -508,12 +564,16 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <figure class="figure">
           <svg class="bd-placeholder-img figure-img img-fluid rounded" width="400" height="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 400x300" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">400x300</text></svg>
           <figcaption class="figure-caption">شرح للصورة أعلاه.</figcaption>
         </figure>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -529,7 +589,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <form>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">البريد الإلكتروني</label>
@@ -578,7 +640,9 @@
           </div>
           <button type="submit" class="btn btn-primary">إرسال</button>
         </form>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -589,7 +653,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <form>
           <fieldset disabled aria-label="مثال على مجموعة الحقول المعطلة">
             <div class="mb-3">
@@ -636,7 +702,9 @@
             <button type="submit" class="btn btn-primary">إرسال</button>
           </fieldset>
         </form>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -647,7 +715,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="mb-3">
           <input class="form-control form-control-lg" type="text" placeholder="حقل إدخال كبير" aria-label=".form-control-lg مثال">
         </div>
@@ -662,10 +732,14 @@
         <div class="mb-3">
           <input type="file" class="form-control form-control-lg" aria-label="مثال على إدخال ملف كبير">
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="mb-3">
           <input class="form-control form-control-sm" type="text" placeholder="حقل إدخال صغير" aria-label=".form-control-sm مثال">
         </div>
@@ -680,7 +754,9 @@
         <div class="mb-3">
           <input type="file" class="form-control form-control-sm" aria-label="مثال على إدخال ملف صغير">
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -691,7 +767,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">أنا اسمي</span>
           <input type="text" class="form-control" placeholder="فلان الفلاني" aria-label="الاسم" aria-describedby="basic-addon1">
@@ -714,7 +792,9 @@
           <span class="input-group-text">مع textarea</span>
           <textarea class="form-control" aria-label="مع textarea"></textarea>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -725,7 +805,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <form>
           <div class="form-floating mb-3">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -736,7 +818,9 @@
             <label for="floatingPassword">كلمة السر</label>
           </div>
         </form>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -747,7 +831,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <form class="row g-3">
           <div class="col-md-4">
             <label for="validationServer01" class="form-label">الاسم الاول</label>
@@ -812,7 +898,9 @@
             <button class="btn btn-primary" type="submit">إرسال النموذج</button>
           </div>
         </form>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -828,7 +916,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
             <h4 class="accordion-header">
@@ -867,7 +957,9 @@
             </div>
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -878,7 +970,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
           تنبيه primary بسيط مع <a href="#" class="alert-link">رابط مثال</a>. أعطها نقرة إذا أردت.
@@ -912,17 +1006,23 @@
           تنبيه dark بسيط مع <a href="#" class="alert-link">رابط مثال</a>. أعطها نقرة إذا أردت.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="قريب"></button>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="alert alert-success" role="alert">
           <h4 class="alert-heading">أحسنت!</h4>
           <p>لقد نجحت في قراءة رسالة التنبيه المهمة هذه. سيتم تشغيل نص المثال هذا لفترة أطول قليلاً حتى تتمكن من رؤية كيفية عمل التباعد داخل التنبيه مع هذا النوع من المحتوى.</p>
           <hr>
           <p class="mb-0">كلما احتجت إلى ذلك ، تأكد من استخدام أدوات الهامش للحفاظ على الأشياء لطيفة ومرتبة.</p>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -933,7 +1033,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <p class="h1">مثال على عنوان <span class="badge bg-primary">جديد</span></p>
         <p class="h2">مثال على عنوان <span class="badge bg-secondary">جديد</span></p>
         <p class="h3">مثال على عنوان <span class="badge bg-success">جديد</span></p>
@@ -942,10 +1044,14 @@
         <p class="h6">مثال على عنوان <span class="badge text-bg-info">جديد</span></p>
         <p class="h6">مثال على عنوان <span class="badge text-bg-light">جديد</span></p>
         <p class="h6">مثال على عنوان <span class="badge bg-dark">جديد</span></p>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         
         <span class="badge rounded-pill bg-primary">Primary</span>
         <span class="badge rounded-pill bg-secondary">Secondary</span>
@@ -955,7 +1061,9 @@
         <span class="badge rounded-pill text-bg-info">Info</span>
         <span class="badge rounded-pill text-bg-light">Light</span>
         <span class="badge rounded-pill bg-dark">Dark</span>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -966,7 +1074,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <nav aria-label="فتات الخبز">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
@@ -974,7 +1084,9 @@
             <li class="breadcrumb-item active" aria-current="page">البيانات</li>
           </ol>
         </nav>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -985,7 +1097,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         
         <button type="button" class="btn btn-primary">Primary</button>
         <button type="button" class="btn btn-secondary">Secondary</button>
@@ -997,10 +1111,14 @@
         <button type="button" class="btn btn-dark">Dark</button>
 
         <button type="button" class="btn btn-link">رابط</button>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         
         <button type="button" class="btn btn-outline-primary">Primary</button>
         <button type="button" class="btn btn-outline-secondary">Secondary</button>
@@ -1010,14 +1128,20 @@
         <button type="button" class="btn btn-outline-info">Info</button>
         <button type="button" class="btn btn-outline-light">Light</button>
         <button type="button" class="btn btn-outline-dark">Dark</button>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <button type="button" class="btn btn-primary btn-sm">زر صغير</button>
         <button type="button" class="btn btn-primary">زر قياسي</button>
         <button type="button" class="btn btn-primary btn-lg">زر كبير</button>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1028,7 +1152,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="btn-toolbar" role="toolbar" aria-label="شريط أدوات مع مجموعات أزرار">
           <div class="btn-group me-2" role="group" aria-label="المجموعة الأولى">
             <button type="button" class="btn btn-secondary">1</button>
@@ -1045,7 +1171,9 @@
             <button type="button" class="btn btn-secondary">8</button>
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1056,7 +1184,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="row  row-cols-1 row-cols-md-2 g-4">
           <div class="col">
             <div class="card">
@@ -1117,7 +1247,9 @@
             </div>
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1128,7 +1260,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="الشريحة الأولى"></button>
@@ -1167,7 +1301,9 @@
             <span class="visually-hidden">التالي</span>
           </button>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1178,7 +1314,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="btn-group w-100 align-items-center justify-content-between flex-wrap">
           <div class="dropdown">
             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1220,10 +1358,14 @@
             </ul>
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="btn-group">
           <button type="button" class="btn btn-primary">Primary</button>
           <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1290,10 +1432,14 @@
             <li><a class="dropdown-item" href="#">شيء آخر هنا</a></li>
           </ul>
         </div><!-- /btn-group -->
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="btn-group w-100 align-items-center justify-content-between flex-wrap">
           <div class="dropend">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1335,10 +1481,14 @@
             </ul>
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="btn-group">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -1353,7 +1503,9 @@
             </ul>
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1364,7 +1516,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <ul class="list-group">
           <li class="list-group-item disabled" aria-disabled="true">عنصر معطل</li>
           <li class="list-group-item">عنصر ثاني</li>
@@ -1372,10 +1526,14 @@
           <li class="list-group-item">عنصر رابع</li>
           <li class="list-group-item">وعنصر خامس أيضًا</li>
         </ul>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <ul class="list-group list-group-flush">
           <li class="list-group-item">عنصر</li>
           <li class="list-group-item">عنصر ثاني</li>
@@ -1383,10 +1541,14 @@
           <li class="list-group-item">عنصر رابع</li>
           <li class="list-group-item">وعنصر خامس أيضًا</li>
         </ul>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action">عنصر مجموعة قائمة default بسيط</a>
           
@@ -1399,7 +1561,9 @@
           <a href="#" class="list-group-item list-group-item-action list-group-item-light">عنصر مجموعة قائمة light بسيط</a>
           <a href="#" class="list-group-item list-group-item-action list-group-item-dark">عنصر مجموعة قائمة dark بسيط</a>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1410,7 +1574,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="d-flex justify-content-between flex-wrap">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDefault">
             إطلاق صندوق عائم تجريبي
@@ -1425,7 +1591,9 @@
             صندوق عائم يملأ الشاشة
           </button>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1436,17 +1604,23 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <nav class="nav">
           <a class="nav-link active" aria-current="page" href="#">نشط</a>
           <a class="nav-link" href="#">رابط</a>
           <a class="nav-link" href="#">رابط</a>
           <a class="nav-link disabled" aria-disabled="true">معطل</a>
         </nav>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <nav>
           <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">الصفحة الرئيسية</button>
@@ -1465,10 +1639,14 @@
             <p class="px-3">محتوى لتوضيح كيف يعمل التبويب. هذا المحتوى مرتبط بتبويب الاتصال بنا. أمامنا بعض التحدّيات الصعبة. لكن لا يمكننا أن نعتمد على التطورات التكنولوجية وحدها في ميدان قوى السوق الحرة، بل يجب وضع معايير جدوى جديدة لشركات البناء ومعايير أعلى لجدوى التكييف من أجل تحفيز الحلول المستدامة قانونيًا.</p>
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">نشط</a>
@@ -1483,7 +1661,9 @@
             <a class="nav-link disabled" aria-disabled="true">معطل</a>
           </li>
         </ul>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1494,7 +1674,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -1573,7 +1755,9 @@
             </div>
           </div>
         </nav>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1584,7 +1768,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <nav aria-label="مثال ترقيم الصفحات">
           <ul class="pagination pagination-sm">
             <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -1594,10 +1780,14 @@
             <li class="page-item"><a class="page-link" href="#">3</a></li>
           </ul>
         </nav>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <nav aria-label="مثال قياسي لترقيم الصفحات">
           <ul class="pagination">
             <li class="page-item">
@@ -1615,10 +1805,14 @@
             </li>
           </ul>
         </nav>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <nav aria-label="مثال آخر لترقيم الصفحات">
           <ul class="pagination pagination-lg flex-wrap">
             <li class="page-item disabled">
@@ -1634,7 +1828,9 @@
             </li>
           </ul>
         </nav>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1645,14 +1841,20 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="عنوان الصندوق المنبثق" data-bs-content="وإليك بعض المحتويات الرائعة. إنه آسر للغاية. أليس كذلك؟">
         انقر لعرض/إخفاء الصندوق المنبثق
         </button>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="نجمٌ و لكنه ليس في السماء، بل في أعماق البحار و المحيطات!">
           انبثاق إلى الأعلى
         </button>
@@ -1665,7 +1867,9 @@
         <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="نجمٌ و لكنه ليس في السماء، بل في أعماق البحار و المحيطات!">
           انبثاق إلى اليمين
         </button>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1676,7 +1880,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="progress mb-3" role="progressbar" aria-label="مثال مع عنوان" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
           <div class="progress-bar">0%</div>
         </div>
@@ -1692,10 +1898,14 @@
         <div class="progress" role="progressbar" aria-label="مثال خطر مع عنوان" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
           <div class="progress-bar bg-danger w-100">100%</div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         <div class="progress-stacked">
           <div class="progress" role="progressbar" aria-label="القسم الأول - مثال افتراضي" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar"></div>
@@ -1704,7 +1914,9 @@
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"></div>
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1759,7 +1971,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">جار التحميل...</span>
@@ -1785,10 +1999,14 @@
         <div class="spinner-border text-dark" role="status">
           <span class="visually-hidden">جار التحميل...</span>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
 
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0">
+    
         
         <div class="spinner-grow text-primary" role="status">
           <span class="visually-hidden">جار التحميل...</span>
@@ -1814,7 +2032,9 @@
         <div class="spinner-grow text-dark" role="status">
           <span class="visually-hidden">جار التحميل...</span>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1825,7 +2045,9 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 bg-dark p-5 align-items-center">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0 bg-dark p-5 align-items-center">
+    
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
             <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007aff"/></svg>
@@ -1837,7 +2059,9 @@
             مرحبًا بالعالم! هذه رسالة إشعار.
           </div>
         </div>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1848,13 +2072,17 @@
       </div>
 
       <div>
-        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example m-0 border-0 tooltip-demo">
+        <div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example m-0 border-0 tooltip-demo">
+    
         <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="تلميح يظهر في الأعلى">تلميح يظهر في الأعلى</button>
         <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="تلميح يظهر على اليسار">تلميح يظهر على اليسار</button>
         <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="تلميح يظهر في الأسفل">تلميح يظهر في الأسفل</button>
         <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="تلميح يظهر على اليمين">تلميح يظهر على اليمين</button>
         <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>تلميح</em> <u>مع</u> <b>HTML</b>">تلميح مع HTML</button>
-        </div></div>
+        
+  </div>
+</div>
 
       </div>
     </article>
@@ -1942,7 +2170,7 @@
     </div>
   </div>
 </div>
-<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="../cheatsheet/cheatsheet.js"></script></body>
 </html>
