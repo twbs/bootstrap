@@ -1,0 +1,13 @@
+# https://gohugo.io/functions/resources/tocss/#installation-overview
+
+[build.environment]
+DART_SASS_VERSION = "1.71.1"
+
+[build]
+command = """\
+  curl -LJO https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz && \
+  tar -xf dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz && \
+  rm dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz && \
+  export PATH=/opt/build/repo/dart-sass:$PATH && \
+  npm run netlify \
+  """
