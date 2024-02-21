@@ -35,6 +35,9 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+
       - name: Build docs
         run: npm run docs-build
 

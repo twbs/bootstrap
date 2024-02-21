@@ -12,7 +12,7 @@
 
 {{- if (ne .Page.Layout "examples") }}
 {{- $targetDocsCssPath := path.Join "/docs" .Site.Params.docs_version "assets/css/docs.css" -}}
-{{- $sassOptions := dict "targetPath" $targetDocsCssPath "outputStyle" "expanded" "precision" 6 -}}
+{{- $sassOptions := dict "transpiler" "dartsass" "targetPath" $targetDocsCssPath "outputStyle" "expanded" -}}
 {{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
 
 {{ if eq hugo.Environment "production" -}}
