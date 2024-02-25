@@ -53,13 +53,13 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
         output.push(
           '<div class="m-2 position-relative">',
           ' <div class="img-thumbnail mx-auto d-flex align-items-center justify-content-center overflow-hidden sponsor">',
-          '  <img class="img-fluid d-block" src="' + sponsorAccount.imageUrl + '" alt="' + sponsorAccount.name + '">',
+          `  <img class="img-fluid d-block" src="${sponsorAccount.imageUrl}" alt="${sponsorAccount.name}">`,
           ' </div>',
           ' <h3 class="h6 pt-2">',
         )
 
         if (sponsorAccount.website) {
-          output.push('<a href="' + sponsorAccount.website + '" class="stretched-link text-reset" title="' + sponsorAccount.name + '"target="_blank" rel="nofollow noopener noreferrer">' + sponsorAccount.name + '</a>')
+          output.push(`<a href="${sponsorAccount.website}" class="stretched-link text-reset" title="${sponsorAccount.name}" target="_blank" rel="nofollow noopener noreferrer">${sponsorAccount.name}</a>`)
         } else {
           output.push(sponsorAccount.name)
         }
@@ -87,11 +87,11 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
 
         if (backerAccount.website) {
           output.push(
-            '<a href="' + backerAccount.website + '" class="stretched-link text-reset" title="' + backerAccount.name + '" target="_blank" rel="nofollow noopener noreferrer">'
+            `<a href="${backerAccount.website}" class="stretched-link text-reset" title="${backerAccount.name}" target="_blank" rel="nofollow noopener noreferrer">`
           )
         }
 
-        output.push('<img src="' + backerAccount.imageUrl + '" alt="' + backerAccount.name + '" class="img-fluid d-block">')
+        output.push(`<img src="${backerAccount.imageUrl}" alt="${backerAccount.name}" class="img-fluid d-block">`)
 
         if (backerAccount.website) {
           output.push('</a>')
