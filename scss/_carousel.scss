@@ -132,19 +132,11 @@
   background-size: 100% 100%;
 }
 
-/* rtl:options: {
-  "autoRename": true,
-  "stringMap":[ {
-    "name"    : "prev-next",
-    "search"  : "prev",
-    "replace" : "next"
-  } ]
-} */
 .carousel-control-prev-icon {
-  background-image: escape-svg($carousel-control-prev-icon-bg);
+  background-image: escape-svg($carousel-control-prev-icon-bg) #{"/*rtl:" + escape-svg($carousel-control-next-icon-bg) + "*/"};
 }
 .carousel-control-next-icon {
-  background-image: escape-svg($carousel-control-next-icon-bg);
+  background-image: escape-svg($carousel-control-next-icon-bg) #{"/*rtl:" + escape-svg($carousel-control-prev-icon-bg) + "*/"};
 }
 
 // Optional indicator pips/controls
@@ -165,7 +157,6 @@
   margin-right: $carousel-control-width;
   margin-bottom: 1rem;
   margin-left: $carousel-control-width;
-  list-style: none;
 
   [data-bs-target] {
     box-sizing: content-box;
@@ -231,8 +222,15 @@
 
 @if $enable-dark-mode {
   @include color-mode(dark) {
-    .carousel {
-      @include carousel-dark();
+    @if $color-mode-type == "media-query" {
+      .carousel {
+        @include carousel-dark();
+      }
+    } @else {
+      .carousel,
+      &.carousel {
+        @include carousel-dark();
+      }
     }
   }
 }

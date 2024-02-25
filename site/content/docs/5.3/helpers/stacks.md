@@ -10,7 +10,7 @@ added: "5.1"
 Stacks offer a shortcut for applying a number of flexbox properties to quickly and easily create layouts in Bootstrap. All credit for the concept and implementation goes to the open source [Pylon project](https://almonk.github.io/pylon/).
 
 {{< callout warning >}}
-Heads up! Support for gap utilities with flexbox was recently added to Safari, so consider verifying your intended browser support. Grid layout should have no issues. [Read more](https://caniuse.com/flexbox-gap).
+**Heads up!** Support for gap utilities with flexbox was recently added to Safari, so consider verifying your intended browser support. Grid layout should have no issues. [Read more](https://caniuse.com/flexbox-gap).
 {{< /callout >}}
 
 ## Vertical
@@ -42,7 +42,7 @@ Using horizontal margin utilities like `.ms-auto` as spacers:
 {{< example class="bd-example-flex" >}}
 <div class="hstack gap-3">
   <div class="p-2">First item</div>
-  <div class="p-2">Second item</div>
+  <div class="p-2 ms-auto">Second item</div>
   <div class="p-2">Third item</div>
 </div>
 {{< /example >}}
@@ -52,7 +52,7 @@ And with [vertical rules]({{< docsref "/helpers/vertical-rule" >}}):
 {{< example class="bd-example-flex" >}}
 <div class="hstack gap-3">
   <div class="p-2">First item</div>
-  <div class="p-2">Second item</div>
+  <div class="p-2 ms-auto">Second item</div>
   <div class="vr"></div>
   <div class="p-2">Third item</div>
 </div>

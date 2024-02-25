@@ -4,8 +4,9 @@
   <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
 {{- end }}
 
-{{ if eq .Page.Layout "docs" -}}
 <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+
+{{ if eq .Page.Layout "docs" -}}
 <script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
 {{- end }}
 

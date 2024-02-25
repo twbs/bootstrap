@@ -37,13 +37,21 @@ Modify the `--bs-focus-ring-*` CSS variables as needed to change the default app
 
 {{< scss-docs name="root-focus-variables" file="scss/_root.scss" >}}
 
-### Sass
+By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values. Modify them to change the default appearance.
+
+{{< example >}}
+<a href="#" class="d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" style="--bs-focus-ring-x: 10px; --bs-focus-ring-y: 10px; --bs-focus-ring-blur: 4px">
+  Blurry offset focus ring
+</a>
+{{< /example >}}
+
+### Sass variables
 
 Customize the focus ring Sass variables to modify all usage of the focus ring styles across your Bootstrap-powered project.
 
 {{< scss-docs name="focus-ring-variables" file="scss/_variables.scss" >}}
 
-### Utilities
+### Sass utilities API
 
 In addition to `.focus-ring`, we have several `.focus-ring-*` utilities to modify the helper class defaults. Modify the color with any of our [theme colors]({{< docsref "/customize/color#theme-colors" >}}). Note that the light and dark variants may not be visible on all background colors given current color mode support.
 

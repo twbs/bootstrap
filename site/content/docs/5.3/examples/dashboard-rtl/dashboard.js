@@ -1,9 +1,7 @@
-/* globals Chart:false, feather:false */
+/* globals Chart:false */
 
 (() => {
   'use strict'
-
-  feather.replace({ 'aria-hidden': 'true' })
 
   // Graphs
   const ctx = document.getElementById('myChart')
@@ -38,15 +36,13 @@
       }]
     },
     options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false
-          }
-        }]
-      },
-      legend: {
-        display: false
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          boxPadding: 3
+        }
       }
     }
   })
