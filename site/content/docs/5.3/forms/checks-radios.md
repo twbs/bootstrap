@@ -305,7 +305,7 @@ Visually, these checkbox toggle buttons are identical to the [button plugin togg
 
 ### Outlined styles
 
-Different variants of `.btn`, such at the various outlined styles, are supported.
+Different variants of `.btn`, such as the various outlined styles, are supported.
 
 {{< example >}}
 <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">

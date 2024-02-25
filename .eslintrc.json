@@ -51,6 +51,7 @@
         "SwitchCase": 1
       }
     ],
+    "logical-assignment-operators": "off",
     "max-params": [
       "warn",
       5
@@ -75,6 +76,7 @@
       "error",
       "after"
     ],
+    "prefer-object-has-own": "off",
     "prefer-template": "error",
     "semi": [
       "error",

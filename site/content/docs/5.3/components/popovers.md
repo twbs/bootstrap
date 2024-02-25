@@ -249,7 +249,7 @@ const popover = new bootstrap.Popover(element, {
 const popover = bootstrap.Popover.getOrCreateInstance('#example') // Returns a Bootstrap popover instance
 
 // setContent example
-myPopover.setContent({
+popover.setContent({
   '.popover-header': 'another title',
   '.popover-body': 'another content'
 })
