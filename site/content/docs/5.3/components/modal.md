@@ -874,5 +874,5 @@ myModalEl.addEventListener('hide.bs.modal', event => {
   if (!valid) {
     return event.preventDefault();
   }
-}
+})
 ```
