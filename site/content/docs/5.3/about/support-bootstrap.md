@@ -11,21 +11,21 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
 ## Sponsors
 
 {{< sponsors.inline >}}
-<div id="sponsorList" class="d-flex flex-wrap mx-n2 text-center"></div>
+<div id="sponsorList" class="d-flex flex-wrap gap-3 text-center mt-3"></div>
 {{< /sponsors.inline >}}
 
 ## Backers
 
 {{< backers.inline >}}
-<div id="backerList" class="d-flex flex-wrap mx-n1 text-center"></div>
+<div id="backerList" class="d-flex flex-wrap gap-3 text-center mt-3"></div>
 {{< /backers.inline >}}
 
 ## Services
 
 {{< services.inline >}}
-<div class="d-flex mx-n3 flex-wrap">
+<div class="d-flex flex-wrap gap-3 mt-3">
   {{- range (index $.Site.Data "services") }}
-    <div class="m-3 position-relative">
+    <div class="position-relative">
       {{ if .website -}}
         <a href="{{ .website }}" class="stretched-link text-reset" title="{{ .name }}" target="_blank" rel="nofollow noopener noreferrer">
       {{ end -}}
@@ -51,7 +51,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
         var sponsorAccount = sponsor.fromAccount
 
         output.push(
-          '<div class="m-2 position-relative">',
+          '<div class="position-relative">',
           ' <div class="img-thumbnail mx-auto d-flex align-items-center justify-content-center overflow-hidden sponsor">',
           `  <img class="img-fluid d-block" src="${sponsorAccount.imageUrl}" alt="${sponsorAccount.name}">`,
           ' </div>',
@@ -81,7 +81,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
         var backerAccount = backer.fromAccount
 
         output.push(
-          '<div class="m-1 position-relative">',
+          '<div class="position-relative">',
           ' <div class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden sponsor">'
         )
 
