@@ -17,14 +17,6 @@ $theme-colors-rgb: map-loop($theme-colors, to-rgb, "$value") !default;
 $on-theme-colors: map-loop($theme-colors, color-contrast, "$value") !default;
 // scss-docs-end theme-colors-rgb
 
-// scss-docs-start theme-colors-rgb
-$theme-colors-hover: map-loop($theme-colors, test-modify, "$value", 15%) !default;
-// scss-docs-end theme-colors-rgb
-
-// scss-docs-start theme-colors-rgb
-$theme-colors-active: map-loop($theme-colors, test-modify, "$value", 20%) !default;
-// scss-docs-end theme-colors-rgb
-
 // scss-docs-start theme-text-map
 $theme-colors-text: (
   "primary": $primary-text-emphasis,
@@ -66,8 +58,6 @@ $theme-colors-border-subtle: (
 
 $theme-colors-dark: null !default;
 $on-theme-colors-dark: null !default;
-$theme-colors-hover-dark: null !default;
-$theme-colors-active-dark: null !default;
 $theme-colors-rgb-dark: null !default;
 $theme-colors-text-dark: null !default;
 $theme-colors-bg-subtle-dark: null !default;
@@ -93,14 +83,6 @@ $theme-colors-border-subtle-dark: null !default;
 
   // scss-docs-start theme-colors-rgb
   $on-theme-colors-dark: map-loop($theme-colors-dark, color-contrast, "$value") !default;
-  // scss-docs-end theme-colors-rgb
-
-  // scss-docs-start theme-colors-rgb
-  $theme-colors-hover-dark: map-loop($theme-colors-dark, test-modify, "$value", 15%) !default;
-  // scss-docs-end theme-colors-rgb
-
-  // scss-docs-start theme-colors-rgb
-  $theme-colors-active-dark: map-loop($theme-colors-dark, test-modify, "$value", 20%) !default;
   // scss-docs-end theme-colors-rgb
 
   // scss-docs-start theme-text-dark-map
