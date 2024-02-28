@@ -475,7 +475,7 @@ Bootstrap doesn't include `color` and `background-color` utilities for every col
 
 1. To start, make sure you've imported our functions, variables, mixins, and utilities.
 2. Use our `map-merge-multiple()` function to quickly merge multiple Sass maps together in a new map.
-3. Merge this new combined map to extend any utility with a `{color}-{level}` class name.
+3. Use our [mixins for modifying the utilities map]({{< docsref "/utilities/api#modify-defaults" >}}) to merge the values to the existing ones
 
 Here's an example that generates text color utilities (e.g., `.text-purple-500`) using the above steps.
 
@@ -489,22 +489,7 @@ Here's an example that generates text color utilities (e.g., `.text-purple-500`)
 
 $all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans);
 
-$utilities: map-merge(
-  $utilities,
-  (
-    "color": map-merge(
-      map-get($utilities, "color"),
-      (
-        values: map-merge(
-          map-get(map-get($utilities, "color"), "values"),
-          (
-            $all-colors
-          ),
-        ),
-      ),
-    ),
-  )
-);
+@include utilities-add-values('color', $all-colors);
 
 @import "bootstrap/scss/utilities/api";
 ```

@@ -1,0 +1,128 @@
+//
+// Helper functions and mixins for manipulating the utilities map
+//
+
+// Helper function to create a map from a list or string
+// so we can manipulate utility values consistently
+@function map-from($list-or-string) {
+  $map: ();
+
+  @each $item in $list-or-string {
+    $map: map-merge(
+      $map,
+      ($item: $item)
+    );
+  }
+
+  @return $map;
+}
+
+// Gets the map of options for a given utility
+@function utilities-get-options($utility-name) {
+  @return map-get($utilities, $utility-name);
+}
+
+// Gets the value of a specific option for a given utility
+@function utilities-get-option($utility-name, $option-name) {
+  $utility-options: utilities-get-options($utility-name);
+
+  @if ($utility-options) {
+    @return map-get(
+      $utility-options,
+      $option-name
+    );
+  }
+
+  @return null;
+}
+
+// Returns a map of the values for the utility
+@function utilities-get-values($utility-name) {
+  $utility-values: utilities-get-option($utility-name, values);
+
+  @if (type-of($utility-values) != map) {
+    @return map-from($utility-values);
+  }
+
+  @return $utility-values;
+}
+
+// Gets a specific value for the given utility
+@function utilities-get-value($utility-name, $value-name) {
+  $utility-values: utilities-get-values($utility-name);
+
+  @return map-get(
+    $utility-values,
+    $value-name
+  );
+}
+
+// Set options for a given utility, merged with the existing ones by default.
+// To completely replace the existing options, set the 3rd `$merge` parameter to false
+@mixin utilities-set-options($utility-name, $options, $merge: true) {
+  @if ($merge) {
+    $utility-options: utilities-get-options($utility-name);
+
+    // Allows the mixin to create a new utility when setting an unknown utility name
+    // Important: The variable needs to have the same name as the function argument
+    // here, so that we can have a single merge call at the end of the function
+    $options: if(
+      $utility-options,
+      map-merge(
+        utilities-get-options($utility-name),
+        $options
+      ),
+      $options
+    );
+  }
+
+  $utilities: map-merge(
+    $utilities,
+    ($utility-name: $options)
+  ) !global; // !global ensures we modify the global $utilities map
+}
+
+// Set a specific option to a new value for the given utility
+@mixin utilities-set-option($utility-name, $option-name, $value) {
+  @include utilities-set-options($utility-name, ($option-name: $value));
+}
+
+// Add new values to a given utility
+//
+// If you want to completely reconfigure the values use `utilities-set-option` to provide a new map for the `values` option
+@mixin utilities-add-values($utility-name, $values) {
+  $utility-values: utilities-get-values($utility-name);
+
+  @include utilities-set-option(
+    $utility-name,
+    values,
+    map-merge(
+      $utility-values,
+      $values
+    )
+  );
+}
+
+// Remove specific values from a given utility
+@mixin utilities-remove-values($utility-name, $value-names...) {
+  $utility-values: utilities-get-values($utility-name);
+
+  @include utilities-set-option(
+    $utility-name,
+    values,
+    map-remove(
+      $utility-values,
+      $value-names...
+    )
+  );
+}
+
+// Add a new utility to the utilities map
+@mixin utilities-add($utility-name, $utility) {
+  @include utilities-set-options($utility-name, $utility, false);
+}
+
+// Remove a utility from the utilities map
+@mixin utilities-remove($utility-names...) {
+  $utilities: map-remove($utilities, $utility-names...) !global;
+}

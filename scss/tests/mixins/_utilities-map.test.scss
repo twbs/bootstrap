@@ -1,0 +1,343 @@
+@mixin before {
+  $utilities: (
+    "flex": (
+      responsive: true,
+      property: flex,
+      values: (fill: 1 1 auto)
+    ),
+    "align": (
+      property: vertical-align,
+      class: align,
+      values:  baseline top
+    ),
+    "margin": (
+      property: margin,
+      class: margin,
+      values: auto
+    )
+  ) !global;
+}
+
+@import "../../mixins/utilities-map";
+
+@include describe("utilities") {
+
+  @include describe("utilities-get-options") {
+
+    @include it("Returns the options for the given utility") {
+      @include before ();
+      @include assert-equal(
+        utilities-get-options("flex"),
+        (
+          responsive: true,
+          property: flex,
+          values: (fill: 1 1 auto)
+        ));
+    }
+
+    @include it("Return null if the utility does not exist") {
+      @include before ();
+      @include assert-equal(
+        utilities-get-options("non-existing"),
+        null
+      );
+    }
+  }
+
+  @include describe("utilities-get-option") {
+    @include it("Returns the option for the given utility") {
+      @include before ();
+      @include assert-equal(
+        utilities-get-option(flex, responsive),
+        true
+      );
+    }
+
+    @include it("Returns null if the option is not present") {
+      @include before ();
+      @include assert-equal(
+        utilities-get-option(flex, non-existing),
+        null
+      );
+    }
+
+    @include it("Returns null if the utility is not present") {
+      @include before ();
+      @include assert-equal(
+        utilities-get-option(non-existing, responsive),
+        null
+      );
+    }
+  }
+
+  @include describe("utilities-get-value") {
+    @include describe("utilities with map of values") {
+      @include it("Returns the value for the given utility") {
+        @include before ();
+        @include assert-equal(
+          utilities-get-value(flex, fill),
+          1 1 auto
+        );
+      }
+
+      @include it("Returns null if the value does not exist for the utility") {
+        @include before ();
+        @include assert-equal(
+          utilities-get-value(flex, non-existing),
+          null
+        );
+      }
+    }
+
+    @include describe("utilities with list of values") {
+      @include it("Returns the value if it is in the list") {
+        @include before ();
+        @include assert-equal(
+          utilities-get-value(align, top),
+          top
+        );
+      }
+
+      @include it("Returns null if the value is not in the list") {
+        @include before ();
+        @include assert-equal(
+          utilities-get-value(align, non-existing),
+          null
+        );
+      }
+    }
+
+    @include describe("utilities with single value") {
+      @include it("Returns the value if it is the one set") {
+        @include before ();
+        @include assert-equal(
+          utilities-get-value(margin, auto),
+          auto
+        );
+      }
+
+      @include it("Returns null if it is not the value set") {
+        @include before ();
+        @include assert-equal(
+          utilities-get-value(margin, non-existing),
+          null
+        );
+      }
+    }
+  }
+
+  @include describe("utilities-set-options") {
+    @include it("Merges the options with the existing ones") {
+      @include before ();
+
+      @include utilities-set-options(flex, (
+        responsive: false,
+        rtl: true
+      ));
+
+      // Unedited options are still present
+      @include assert-equal(utilities-get-option(flex, property), flex, "property");
+      @include assert-equal(utilities-get-option(flex, values), (fill: 1 1 auto), "values");
+      // And the updated options have their new values
+      @include assert-equal(utilities-get-option(flex, responsive), false, "responsive");
+      @include assert-equal(utilities-get-option(flex, rtl), true, "rtl");
+    }
+
+    @include it("Creates the options if none exist") {
+
+      @include assert-equal(utilities-get-option(unknown, responsive), null);
+
+      @include utilities-set-options(unknown, (
+        responsive: true
+      ));
+
+      @include assert-equal(utilities-get-option(unknown, responsive), true);
+    }
+
+    @include describe("$merge: false") {
+      @include it("Completely replaces the options") {
+        @include utilities-set-options(flex, (
+          values: auto none
+        ), $merge: false);
+
+        @include assert-equal(utilities-get-options(flex), (
+          values: auto none
+        ));
+      }
+    }
+  }
+
+  @include describe("utilities-set-option") {
+    @include it("sets a specific option for the utility") {
+      @include before ();
+
+      @include utilities-set-option(flex, responsive, false);
+
+      @include assert-equal(utilities-get-option(flex, responsive), false);
+    }
+  }
+
+  @include describe("utilities-add-values") {
+    @include describe("utilities with map of values") {
+      @include it("Merges a new map values with the old ones") {
+
+        @include before ();
+
+        @include utilities-add-values(flex, (
+          auto: auto,
+          none: none
+        ));
+
+        @include assert-equal(utilities-get-option(flex, values), (
+          fill: 1 1 auto,
+          auto: auto,
+          none: none
+        ));
+      }
+    }
+    @include describe("utilities with list values") {
+      @include it("Creates a map and merges the new values") {
+        @include before ();
+
+        @include utilities-add-values(align, (
+          middle: middle
+        ));
+
+        @include assert-equal(utilities-get-option(align, values), (
+          baseline: baseline,
+          top: top,
+          middle: middle
+        ));
+      }
+    }
+    @include describe("utilities with single value") {
+      @include it("Creates a map and merges the new values") {
+        @include before ();
+
+        @include utilities-add-values(margin, (
+          5pct: 5%
+        ));
+
+        @include assert-equal(utilities-get-option(margin, values), (
+          auto: auto,
+          5pct: 5%
+        ));
+      }
+    }
+  }
+
+  @include describe("utilities-remove-values") {
+    @include describe("utilities with map of values") {
+      @include it("removes the value with the given key") {
+        @include before ();
+
+        @include utilities-remove-values(flex, fill);
+
+        @include assert-equal(utilities-get-option(flex, values),());
+      }
+    }
+    @include describe("utilities with list of values") {
+      @include it("removes the value and creates a map") {
+        @include before ();
+
+        @include utilities-remove-values(align, top);
+
+        @include assert-equal(
+          utilities-get-option(align, values),
+          (
+            baseline: baseline
+          )
+        );
+      }
+    }
+    @include describe("utilities with single value") {
+      @include it("removes the value and creates a map") {
+        @include before ();
+
+        @include utilities-remove-values(margin, auto);
+
+        @include assert-equal(
+          utilities-get-option(margin, values),
+          ()
+        );
+      }
+    }
+    @include describe("$values...") {
+      @include it("allows to remove multiple values") {
+        @include before ();
+
+        @include utilities-remove-values(align, baseline, top);
+
+        @include assert-equal(utilities-get-option(align, values),());
+      }
+
+      @include it("ignores unknown values") {
+        @include before ();
+
+        @include utilities-remove-values(flex, unknown, fill, non-existing);
+
+        @include assert-equal(utilities-get-option(flex, values), ());
+      }
+    }
+  }
+
+  @include describe("utilities-add") {
+    @include it("adds the utility") {
+      @include before ();
+
+      @include utilities-add(z-index, (
+        class: z,
+        property: z-index,
+        values: (-1, 0, 1, 2, 3)
+      ));
+
+      @include assert-equal(utilities-get-options(z-index), (
+        class: z,
+        property: z-index,
+        values: (-1, 0, 1, 2, 3)
+      ));
+    }
+
+    @include it("overrides an existing utility") {
+      @include before ();
+
+      @include utilities-add("flex", (
+        class: flex,
+        values: auto none
+      ));
+
+      @include assert-equal(utilities-get-options(flex), (
+        class: flex,
+        values: auto none
+      ));
+    }
+  }
+
+  @include describe("utilities-remove") {
+
+    @include it("removes a single utility") {
+      @include before ();
+
+      @include utilities-remove(align);
+
+      @include assert-equal(utilities-get-options(align), null);
+    }
+
+    @include it("removes a multiple utility") {
+      @include before ();
+
+      @include utilities-remove(align, margin);
+
+      @include assert-equal(utilities-get-options(align), null);
+      @include assert-equal(utilities-get-options(margin), null);
+    }
+
+    @include it("ignores non existing utilities") {
+      @include before ();
+
+      @include utilities-remove(unknown, flex, non-existing);
+
+      @include assert-equal(utilities-get-options(flex), null);
+    }
+  }
+}

@@ -5,7 +5,7 @@ $bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%); // stylelint-disable-
 $bd-accent:        #ffe484;
 
 $bd-gutter-x: 3rem;
-$bd-callout-variants: info, warning, danger !default;
+$bd-callout-variants: info, warning, danger, success !default;
 
 :root,
 [data-bs-theme="light"] {

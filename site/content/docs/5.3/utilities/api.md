@@ -12,19 +12,19 @@ Bootstrap utilities are generated with our utility API and can be used to modify
 The `$utilities` map contains all our utilities and is later merged with your custom `$utilities` map, if present. The utility map contains a keyed list of utility groups which accept the following options:
 
 {{< bs-table "table table-utilities" >}}
-| Option | Type | Default&nbsp;value | Description |
-| --- | --- | --- | --- |
-| [`property`](#property) | **Required** | – | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins). |
-| [`values`](#values) | **Required** | – | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, `class` is not prepended to the class name. |
-| [`class`](#class) | Optional | null | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. If not provided and `property` is a string, the `values` keys are used for the `class` names. |
-| [`css-var`](#css-variable-utilities) | Optional | `false` | Boolean to generate CSS variables instead of CSS rules. |
-| [`css-variable-name`](#css-variable-utilities) | Optional | null | Custom un-prefixed name for the CSS variable inside the ruleset. |
-| [`local-vars`](#local-css-variables) | Optional | null | Map of local CSS variables to generate in addition to the CSS rules. |
-| [`state`](#states) | Optional | null | List of pseudo-class variants (e.g., `:hover` or `:focus`) to generate. |
-| [`responsive`](#responsive) | Optional | `false` | Boolean indicating if responsive classes should be generated. |
-| `rfs` | Optional | `false` | Boolean to enable [fluid rescaling with RFS]({{< docsref "/getting-started/rfs" >}}). |
-| [`print`](#print) | Optional | `false` | Boolean indicating if print classes need to be generated. |
-| `rtl` | Optional | `true` | Boolean indicating if utility should be kept in RTL. |
+| Option                                         | Type         | Default&nbsp;value | Description                                                                                                                                                                                                                                          |
+| ---------------------------------------------- | ------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`property`](#property)                        | **Required** | –                  | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins).                                                                                                                                            |
+| [`values`](#values)                            | **Required** | –                  | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, `class` is not prepended to the class name.                                                                                     |
+| [`class`](#class)                              | Optional     | null               | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. If not provided and `property` is a string, the `values` keys are used for the `class` names. |
+| [`css-var`](#css-variable-utilities)           | Optional     | `false`            | Boolean to generate CSS variables instead of CSS rules.                                                                                                                                                                                              |
+| [`css-variable-name`](#css-variable-utilities) | Optional     | null               | Custom un-prefixed name for the CSS variable inside the ruleset.                                                                                                                                                                                     |
+| [`local-vars`](#local-css-variables)           | Optional     | null               | Map of local CSS variables to generate in addition to the CSS rules.                                                                                                                                                                                 |
+| [`state`](#states)                             | Optional     | null               | List of pseudo-class variants (e.g., `:hover` or `:focus`) to generate.                                                                                                                                                                              |
+| [`responsive`](#responsive)                    | Optional     | `false`            | Boolean indicating if responsive classes should be generated.                                                                                                                                                                                        |
+| `rfs`                                          | Optional     | `false`            | Boolean to enable [fluid rescaling with RFS]({{< docsref "/getting-started/rfs" >}}).                                                                                                                                                                |
+| [`print`](#print)                              | Optional     | `false`            | Boolean indicating if print classes need to be generated.                                                                                                                                                                                            |
+| `rtl`                                          | Optional     | `true`             | Boolean indicating if utility should be kept in RTL.                                                                                                                                                                                                 |
 {{< /bs-table >}}
 
 ## API explained
@@ -366,25 +366,54 @@ All utilities generated by the API include `!important` to ensure they override 
 
 ## Using the API
 
-Now that you're familiar with how the utilities API works, learn how to add your own custom classes and modify our default utilities.
+{{< callout success >}}
+**New in v5.3.x!** We've added new mixins and functions to better help you use our utilities API. These replace our previous guidance of using Sass's built-in `map-merge()` function and add new functionality for [composing components with utilities](#get-values-and-options).
+{{< /callout >}}
 
-### Override utilities
+Now that you're familiar with how the utilities API works, you can use it to modify our default utilities and even add your own custom utilities. This can be done in three ways:
 
-Override existing utilities by using the same key. For example, if you want additional responsive overflow utility classes, you can do this:
+1. [Creating your own `$utilities` map](#add-or-override-utilities) that gets automatically merged with our default `$utilities` map.
+2. [Modify our defaults using mixins](#modify-defaults) to add or remove utilities, update specific options, or modify utility values.
+3. You can also use functions to [get specific utility values](#get-values-and-options) for your own use in your Sass.
+
+### Add or override utilities
+
+Add new keys to create your own utilities and override existing utilities by using the same key.
+
+If your code declares a `$utilities` map before importing `bootstrap/scss/utilities`, it'll be merged with our default map. Add new keys to create your own utilities and override existing utilities by using the same key.
 
 ```scss
 $utilities: (
+  // Add a new cursor utility
+  "cursor": (
+    property: cursor,
+    class: cursor,
+    responsive: true,
+    values: auto pointer grab,
+  ),
+  // Redefine the existing overflow utility
   "overflow": (
     responsive: true,
     property: overflow,
     values: visible hidden scroll auto,
   ),
 );
+
+@import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/utilities/api';
 ```
 
-### Add utilities
+### Modify defaults
 
-New utilities can be added to the default `$utilities` map with a `map-merge`. Make sure our required Sass files and `_utilities.scss` are imported first, then use the `map-merge` to add your additional utilities. For example, here's how to add a responsive `cursor` utility with three values.
+After importing `bootstrap/scss/utilities`, you can use mixins to:
+
+- Add or remove utilities
+- Update utilities options, like `responsive`, `class`, `rtl`, etc
+- Add, remove or update utility values
+
+#### Add and remove utilities
+
+The `utilities-add()` and `utilities-remove()` mixins let you add and remove utilities from the configuration. Adding an existing utility will completely override it.
 
 ```scss
 @import "bootstrap/scss/functions";
@@ -394,24 +423,25 @@ New utilities can be added to the default `$utilities` map with a `map-merge`. M
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 
-$utilities: map-merge(
-  $utilities,
-  (
-    "cursor": (
-      property: cursor,
-      class: cursor,
-      responsive: true,
-      values: auto pointer grab,
-    )
-  )
-);
+// Adds a new cursor utility
+@include utilities-add(cursor, (
+  property: cursor,
+  class: cursor,
+  responsive: true,
+  values: auto pointer grab,
+));
+
+// Removes user-select and shadow
+@include utilities-remove(user-select, shadow);
 
 @import "bootstrap/scss/utilities/api";
 ```
 
-### Modify utilities
+#### Update utility options
 
-Modify existing utilities in the default `$utilities` map with `map-get` and `map-merge` functions. In the example below, we're adding an additional value to the `width` utilities. Start with an initial `map-merge` and then specify which utility you want to modify. From there, fetch the nested `"width"` map with `map-get` to access and modify the utility's options and values.
+The `utilities-set-option()` and `utilities-set-options()` mixins let you configure one or several options of a utility. `utilities-set-options()` will merge the new options with the existing ones by default, but you can provide a third `$merge: false` argument to completely override them.
+
+If the utility does not exist, both mixins will create a new one.
 
 ```scss
 @import "bootstrap/scss/functions";
@@ -421,25 +451,93 @@ Modify existing utilities in the default `$utilities` map with `map-get` and `ma
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 
-$utilities: map-merge(
-  $utilities,
-  (
-    "width": map-merge(
-      map-get($utilities, "width"),
-      (
-        values: map-merge(
-          map-get(map-get($utilities, "width"), "values"),
-          (10: 10%),
-        ),
-      ),
-    ),
-  )
-);
+// Modify existing overflow utility to be responsive
+@include utilities-set-option(overflow, responsive, true);
 
-@import "bootstrap/scss/utilities/api";
+// Change an existing utility's class name
+@include utilities-set-option(margin-start, class, ml);
+
+// Make an existing utility responsive and override its values
+@include utilities-set-options(line-height, (
+  responsive: true,
+  values: (
+    1: 1,
+    1.25: 1.25,
+    1.5: 1.5
+    inherit: inherit
+  )
+));
+
+@import 'bootstrap/scss/utilities/api';
 ```
 
-#### Enable responsive
+#### Update utility values
+
+If you want to keep most of the default values for a utility and just add, remove, or update a few, replacing the `values` option can be overkill. Use the `utilities-add-values()` and `utilities-remove-values()` mixins to help you make more targeted updates.
+
+```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+@import 'bootstrap/scss/utilities';
+
+// Adds new values to the flex utility
+@include utilities-add-values(flex, (
+  none: none,
+  auto: auto
+));
+
+// Remove specific values from the flex-direction utility
+@include utilities-remove-values(flex-direction, row-reverse, column-reverse);
+
+@import 'bootstrap/scss/utilities/api';
+```
+
+### Get values and options
+
+Use the `utilities-get-value()` function to get a specific value of a utility. This allows you to use and manipulate specific values from our utilities, like with Sass functions or `calc()`. It also lets you access values that can be modified by other utilities, like how `.bg-*`, `.text-*` and `.border-*` can be affected by `.bg-opacity-*`, `.text-opacity-*` or `.border-opacity-*` respectively.
+
+```scss
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+@import "bootstrap/scss/utilities";
+
+// The box will be configurable with the bg-opacity and text-opacity classes
+.box {
+  padding: map-get($spacers, 3);
+  color: utilities-get-value(color, body);
+  background: utilities-get-value(background-color, body);
+  border: utilities-get-value(border, null);
+}
+```
+
+This outputs the following:
+
+```css
+.box {
+  padding: 1rem;
+  color: rgba(var(--bs-body-color-rgb), var(--bs-text-opacity));
+  background: rgba(var(--bs-body-bg-rgb), var(--bs-bg-opacity));
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+}
+```
+
+This is likely the function you'll use the most, but you can also:
+
+- Access all the values of a utility with `utilities-get-values()`, which will always return a map to simplify their processing
+- Access a specific option with `utilities-get-option()`
+- Access all of a utility's options with `utilities-get-options()`
+
+## Practical examples
+
+### Enable responsive
 
 You can enable responsive classes for an existing set of utilities that are not currently responsive by default. For example, to make the `border` classes responsive:
 
@@ -449,16 +547,10 @@ You can enable responsive classes for an existing set of utilities that are not 
 @import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
+
 @import "bootstrap/scss/utilities";
 
-$utilities: map-merge(
-  $utilities, (
-    "border": map-merge(
-      map-get($utilities, "border"),
-      ( responsive: true ),
-    ),
-  )
-);
+@include utilities-set-option(border, responsive, true);
 
 @import "bootstrap/scss/utilities/api";
 ```
@@ -495,33 +587,9 @@ This will now generate responsive variations of `.border` and `.border-0` for ea
 }
 ```
 
-#### Rename utilities
+### Rename utilities
 
-Missing v4 utilities, or used to another naming convention? The utilities API can be used to override the resulting `class` of a given utility—for example, to rename `.ms-*` utilities to oldish `.ml-*`:
-
-```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
-
-$utilities: map-merge(
-  $utilities, (
-    "margin-start": map-merge(
-      map-get($utilities, "margin-start"),
-      ( class: ml ),
-    ),
-  )
-);
-
-@import "bootstrap/scss/utilities/api";
-```
-
-### Remove utilities
-
-Remove any of the default utilities with the [`map-remove()` Sass function](https://sass-lang.com/documentation/modules/map#remove).
+Missing v4 utilities or another naming convention? Override the `class` option to change the output of a given utility. For example, to rename `.ms-*` utilities to `.ml-*`:
 
 ```scss
 @import "bootstrap/scss/functions";
@@ -529,84 +597,30 @@ Remove any of the default utilities with the [`map-remove()` Sass function](http
 @import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
+
 @import "bootstrap/scss/utilities";
 
-// Remove multiple utilities with a comma-separated list
-$utilities: map-remove($utilities, "width", "float");
+@include utilities-set-option(margin-start, class, ml);
 
 @import "bootstrap/scss/utilities/api";
 ```
 
-You can also use the [`map-merge()` Sass function](https://sass-lang.com/documentation/modules/map#merge) and set the group key to `null` to remove the utility.
-
-```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
-
-$utilities: map-merge(
-  $utilities,
-  (
-    "width": null
-  )
-);
-
-@import "bootstrap/scss/utilities/api";
-```
-
-### Add, remove, modify
-
-You can add, remove, and modify many utilities all at once with the [`map-merge()` Sass function](https://sass-lang.com/documentation/modules/map#merge). Here's how you can combine the previous examples into one larger map.
-
-```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
-
-$utilities: map-merge(
-  $utilities,
-  (
-    // Remove the `width` utility
-    "width": null,
-
-    // Make an existing utility responsive
-    "border": map-merge(
-      map-get($utilities, "border"),
-      ( responsive: true ),
-    ),
-
-    // Add new utilities
-    "cursor": (
-      property: cursor,
-      class: cursor,
-      responsive: true,
-      values: auto pointer grab,
-    )
-  )
-);
-
-@import "bootstrap/scss/utilities/api";
-```
-
-#### Remove utility in RTL
+### Remove utility in RTL
 
 Some edge cases make [RTL styling difficult](https://rtlstyling.com/posts/rtl-styling#common-things-that-might-not-work-for-rtl), such as line breaks in Arabic. Thus utilities can be dropped from RTL output by setting the `rtl` option to `false`:
 
 ```scss
-$utilities: (
-  "word-wrap": (
-    property: word-wrap word-break,
-    class: text,
-    values: (break: break-word),
-    rtl: false
-  ),
-);
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+@import "bootstrap/scss/utilities";
+
+@include utilities-set-option(word-wrap, rtl, false);
+
+@import "bootstrap/scss/utilities/api";
 ```
 
 Output:
