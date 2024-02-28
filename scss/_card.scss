@@ -38,6 +38,14 @@
   @include border-radius(var(--#{$prefix}card-border-radius));
   @include box-shadow(var(--#{$prefix}card-box-shadow));
 
+  > :first-child {
+    @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
+  }
+
+  > :last-child {
+    @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
+  }
+
   > hr {
     margin-right: 0;
     margin-left: 0;
@@ -54,14 +62,6 @@
     &:last-child  {
       border-bottom-width: 0;
     }
-  }
-
-  > :first-child {
-    @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
-  }
-
-  > :last-child {
-    @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
   }
 
   // Due to specificity of the above selector (`.card > .list-group`), we must
@@ -163,10 +163,15 @@
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
 }
 
-.card-img-top,
+// Todo in v6: Remove safely `.card-img-top` and `.card-img-bottom` since the border-radii are handled via `:first-child` and `:last-child`
+.card-img,
+.card-img-top {
+  @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
+}
+
+.card-img,
 .card-img-bottom {
-  @include deprecate("`.card-img-top`", "v5.3.0", "v6.0.0", true);
-  @include deprecate("`.card-img-bottom`", "v5.3.0", "v6.0.0", true);
+  @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
 }
 
 
@@ -201,11 +206,13 @@
         &:not(:last-child) {
           @include border-end-radius(0);
 
+          .card-img-top,
           > :first-child {
             // stylelint-disable-next-line property-disallowed-list
             border-top-right-radius: 0;
           }
 
+          .card-img-bottom,
           > :last-child {
             // stylelint-disable-next-line property-disallowed-list
             border-bottom-right-radius: 0;
@@ -215,11 +222,13 @@
         &:not(:first-child) {
           @include border-start-radius(0);
 
+          .card-img-top,
           > :first-child {
             // stylelint-disable-next-line property-disallowed-list
             border-top-left-radius: 0;
           }
 
+          .card-img-bottom,
           > :last-child {
             // stylelint-disable-next-line property-disallowed-list
             border-bottom-left-radius: 0;
