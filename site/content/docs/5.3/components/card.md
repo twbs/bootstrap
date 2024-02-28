@@ -64,10 +64,10 @@ Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-t
 ### Images
 
 {{< callout warning >}}
-**New in v5.3.0:** Rounded corners are now handled directly by the child depending on its place. `.card-img-top` and `.card-img-bottom` have been deprecated. These classes will be removed in v6.
+**New in v5.3.0:** Rounded corners are now handled directly by the child depending on its place. `.card-img-top` and `.card-img-bottom` will be deprecated with v6.
 {{< /callout >}}
 
-`.card-img` extends an image to full card width. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
+`.card-img-top` and `.card-img-bottom` respectively set the top and bottom corners rounded to match the card's borders. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
 
 {{< example >}}
 <div class="card" style="width: 18rem;">
@@ -313,7 +313,7 @@ Add some navigation to a card's header (or block) with Bootstrap's [nav componen
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
   </div>
@@ -336,7 +336,7 @@ Add some navigation to a card's header (or block) with Bootstrap's [nav componen
         <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
       </li>
     </ul>
   </div>

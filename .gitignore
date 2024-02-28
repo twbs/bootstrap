@@ -38,5 +38,6 @@ Thumbs.db
 *.komodoproject
 
 # Folders to ignore
+/dist-sass/
 /js/coverage/
 /node_modules/

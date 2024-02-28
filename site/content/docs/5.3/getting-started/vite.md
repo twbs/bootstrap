@@ -15,9 +15,9 @@ thumbnail: guides/bootstrap-vite@2x.png
 
 ## Setup
 
-We're building a Vite project with Bootstrap from scratch, so there are some prerequisites and up front steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
+We're building a Vite project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
-1. **Create a project folder and setup npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
+1. **Create a project folder and set up npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
    ```sh
    mkdir my-project && cd my-project
@@ -42,7 +42,7 @@ We're building a Vite project with Bootstrap from scratch, so there are some pre
    npm i --save-dev sass
    ```
 
-Now that we have all the necessary dependencies installed and setup, we can get to work creating the project files and importing Bootstrap.
+Now that we have all the necessary dependencies installed and set up, we can get to work creating the project files and importing Bootstrap.
 
 ## Project structure
 
@@ -78,10 +78,10 @@ With dependencies installed and our project folder ready for us to start coding,
 
    <!-- eslint-skip -->
    ```js
-   const path = require('path')
+   import { resolve } from 'path'
 
    export default {
-     root: path.resolve(__dirname, 'src'),
+     root: resolve(__dirname, 'src'),
      build: {
        outDir: '../dist'
      },
@@ -170,7 +170,7 @@ In the next and final section to this guide, we’ll import all of Bootstrap’s
 
    *[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins.*
 
-3. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this.
+3. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this:
 
    <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/vite-dev-server-bootstrap.png" alt="Vite dev server running with Bootstrap">
 

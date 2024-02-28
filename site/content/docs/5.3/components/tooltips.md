@@ -157,7 +157,7 @@ const tooltip = new bootstrap.Tooltip('#example', {
 The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).
 
 {{< callout warning >}}
-**Keep tooltips accessible to keyboard and assistive technology users** by only adding them to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). While other HTML elements can be made focusable by adding `tabindex="0"`, this can create annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce tooltips in this situation. Additionally, do not rely solely on `hover` as the trigger for your tooltips as this will make theme impossible to trigger for keyboard users.
+**Keep tooltips accessible to keyboard and assistive technology users** by only adding them to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). While other HTML elements can be made focusable by adding `tabindex="0"`, this can create annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce tooltips in this situation. Additionally, do not rely solely on `hover` as the trigger for your tooltips as this will make them impossible to trigger for keyboard users.
 {{< /callout >}}
 
 ```html
@@ -165,7 +165,7 @@ The required markup for a tooltip is only a `data` attribute and `title` on the 
 <a href="#" data-bs-toggle="tooltip" data-bs-title="Some tooltip text!">Hover over me</a>
 
 <!-- Generated markup by the plugin -->
-<div class="tooltip bs-tooltip-top" role="tooltip">
+<div class="tooltip bs-tooltip-auto" role="tooltip">
   <div class="tooltip-arrow"></div>
   <div class="tooltip-inner">
     Some tooltip text!
@@ -177,13 +177,11 @@ The required markup for a tooltip is only a `data` attribute and `title` on the 
 
 Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
 
-<div class="tooltip-demo">
-{{< example >}}
+{{< example class="tooltip-demo" stackblitz_add_js="true" >}}
 <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-title="Disabled tooltip">
   <button class="btn btn-primary" type="button" disabled>Disabled button</button>
 </span>
 {{< /example >}}
-</div>
 
 ### Options
 

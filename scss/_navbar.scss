@@ -266,7 +266,8 @@
   @include deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
 }
 
-.navbar-dark {
+.navbar-dark,
+.navbar[data-bs-theme="dark"] {
   // scss-docs-start navbar-dark-css-vars
   --#{$prefix}navbar-color: #{$navbar-dark-color};
   --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};

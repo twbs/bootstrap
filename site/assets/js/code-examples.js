@@ -4,7 +4,7 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2023 The Bootstrap Authors
+ * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -20,18 +20,19 @@
 
   const btnHtml = [
     '<div class="bd-code-snippet">',
-    '   <div class="bd-clipboard">',
-    '      <button type="button" class="btn-clipboard">',
-    '        <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
-    '      </button>',
-    '   </div>',
+    '  <div class="bd-clipboard">',
+    '    <button type="button" class="btn-clipboard">',
+    '      <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
+    '    </button>',
+    '  </div>',
     '</div>'
   ].join('')
 
   // Wrap programmatically code blocks and add copy btn.
   document.querySelectorAll('.highlight')
     .forEach(element => {
-      if (!element.closest('.bd-example-snippet')) { // Ignore examples made be shortcode
+      // Ignore examples made by shortcode
+      if (!element.closest('.bd-example-snippet')) {
         element.insertAdjacentHTML('beforebegin', btnHtml)
         element.previousElementSibling.append(element)
       }
