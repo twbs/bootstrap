@@ -64,7 +64,7 @@ $font-family-sans-serif:
   // Android
   Roboto,
   // older macOS and iOS
-  "Helvetica Neue"
+  "Helvetica Neue",
   // Linux
   "Noto Sans",
   "Liberation Sans",
