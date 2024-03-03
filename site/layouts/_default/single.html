@@ -5,7 +5,7 @@
         <div class="col-xl-8">
           <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
           <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
-          {{ if eq .Title "Examples" }}
+          {{ if eq .Title "Examples" -}}
           <div class="d-flex flex-column flex-md-row gap-3">
             <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold">
               <svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
@@ -15,7 +15,7 @@
               Download source code
             </a>
           </div>
-          {{ end }}
+          {{- end }}
         </div>
         <div class="col-xl-4 d-lg-flex justify-content-xl-end">
           {{ partial "ads" . }}
@@ -41,10 +41,14 @@
             </p>
             <a href="{{ .Site.Params.themes }}" class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
           </div>
-          <img class="d-block img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage.png,
-                                                              /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage@2x.png 2x"
-                                                        src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage.png"
-                                                        alt="Bootstrap Themes" width="1150" height="320" loading="lazy">
+          <img class="d-block img-fluid mt-3 mx-auto"
+               srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage.png,
+                       /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage@2x.png 2x"
+               src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage.png"
+               alt="Bootstrap Themes"
+               width="1150"
+               height="320"
+               loading="lazy">
         </div>
       {{ end }}
     </div>

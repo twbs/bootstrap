@@ -6,9 +6,9 @@
 {{- $versions_link := "" -}}
 {{- if and (eq .Layout "docs") (eq $page_version .Site.Params.docs_version) -}}
   {{- $versions_link = printf "%s/%s/" $group_slug $page_slug -}}
-{{- else if (eq .Layout "single") }}
+{{- else if (eq .Layout "single") -}}
   {{- $versions_link = printf "%s/" $page_slug -}}
-{{- end }}
+{{- end -}}
 
 {{- $added_in_51 := eq (string .Page.Params.added) "5.1" -}}
 {{- $added_in_52 := eq (string .Page.Params.added) "5.2" -}}
