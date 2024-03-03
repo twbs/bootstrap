@@ -1,9 +1,6 @@
 <!doctype html>
 <html {{ if eq .Page.Params.direction "rtl" }}lang="ar" dir="rtl"{{ else }}lang="en"{{ end }}{{ with .Page.Params.html_class }} class="{{ . }}"{{ end }} data-bs-theme="auto">
   <head>
-    {{- $colorModeJS := printf "/docs/%s/assets/js/color-modes.js" $.Site.Params.docs_version -}}
-    <script src="{{ $colorModeJS | relURL }}"></script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -16,6 +13,9 @@
     {{ with .Params.robots -}}
     <meta name="robots" content="{{ . }}">
     {{- end }}
+
+    {{- $colorModeJS := printf "/docs/%s/assets/js/color-modes.js" $.Site.Params.docs_version -}}
+    <script src="{{ $colorModeJS }}"></script>
 
     {{ partial "stylesheet" . }}
     {{ partial "favicons" . }}
