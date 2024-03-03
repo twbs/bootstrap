@@ -18,7 +18,7 @@
 {{- end }}
 
 {{- $colorModeJS := printf "/docs/%s/assets/js/color-modes.js" $.Site.Params.docs_version -}}
-<script src="{{ $colorModeJS | relURL }}"></script>
+<script src="{{ $colorModeJS }}"></script>
 
 {{ partial "stylesheet" . }}
 {{ partial "favicons" . }}
