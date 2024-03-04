@@ -7,11 +7,11 @@
           <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
           {{ if eq .Title "Examples" }}
           <div class="d-flex flex-column flex-md-row gap-3">
-            <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">
+            <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold">
               <svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
               Download examples
             </a>
-            <a href="{{ .Site.Params.download.source }}" class="btn btn-lg bd-btn-lg btn-outline-secondary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">
+            <a href="{{ .Site.Params.download.source }}" class="btn btn-lg bd-btn-lg btn-outline-secondary">
               Download source code
             </a>
           </div>

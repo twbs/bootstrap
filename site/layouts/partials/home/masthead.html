@@ -14,7 +14,7 @@
         <div class="d-inline-block v-align-middle fs-5">
           {{ highlight (printf ("npm i bootstrap@%s") .Site.Params.current_version) "sh" "" }}
         </div>
-        <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
+        <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold">
           <svg class="bi me-2" aria-hidden="true"><use xlink:href="#book-half"></use></svg>
           Read the docs
         </a>
