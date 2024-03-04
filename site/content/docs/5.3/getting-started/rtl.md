@@ -170,7 +170,7 @@ After running Sass then RTLCSS, each selector in your CSS files will be prepende
 
 ## The breadcrumb case
 
-The [breadcrumb separator]({{< docsref "/components/breadcrumb" >}}/#changing-the-separator) is the only case requiring its own brand-new variable— namely `$breadcrumb-divider-flipped` —defaulting to `$breadcrumb-divider`.
+The [breadcrumb separator]({{< docsref "/components/breadcrumb#dividers" >}}) is the only case requiring its own brand-new variable— namely `$breadcrumb-divider-flipped` —defaulting to `$breadcrumb-divider`.
 
 ## Additional resources
 
