@@ -4,7 +4,8 @@ title: Icon link
 description: Quickly create stylized hyperlinks with Bootstrap Icons or other icons.
 group: helpers
 toc: true
-added: 5.3
+added:
+  version: "5.3"
 ---
 
 The icon link helper component modifies our default link styles to enhance their appearance and quickly align any pairing of icon and text. Alignment is set via inline flexbox styling and a default `gap` value. We stylize the underline with a custom offset and color. Icons are automatically sized to `1em` to best match their associated text's `font-size`.
