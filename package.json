@@ -128,7 +128,7 @@
     "ip": "^2.0.1",
     "jasmine": "^5.1.0",
     "jquery": "^3.7.1",
-    "karma": "^6.4.2",
+    "karma": "^6.4.3",
     "karma-browserstack-launcher": "1.4.0",
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage-istanbul-reporter": "^3.0.3",
