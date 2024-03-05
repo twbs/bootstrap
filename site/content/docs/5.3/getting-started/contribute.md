@@ -5,6 +5,9 @@ description: Help develop Bootstrap with our documentation build scripts and tes
 group: getting-started
 toc: true
 aliases: "/docs/5.3/getting-started/build-tools/"
+added:
+  show_badge: false
+  version: "5.1"
 ---
 
 ## Tooling setup
