@@ -69,3 +69,12 @@
     background: escape-svg($dropdown-active-icon) no-repeat .4rem .6rem/.75rem .75rem;
   }
 }
+
+.bd-announcement {
+  color: $white;
+  background-color: $bd-purple;
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
+}
