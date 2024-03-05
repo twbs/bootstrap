@@ -37,7 +37,7 @@ These breakpoints are customizable via Sass—you'll find them in a Sass map in 
 
 {{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
 
-For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).
+For more information and examples on how to modify our Sass maps and variables, please refer to [the CSS section of the Grid documentation]({{< docsref "/layout/grid#css" >}}).
 
 ## Media queries
 

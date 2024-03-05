@@ -6,7 +6,7 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2023 The Bootstrap Authors
+ * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -60,6 +60,7 @@
     })
 
   // Instantiate all toasts in docs pages only
+  // js-docs-start live-toast
   const toastTrigger = document.getElementById('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
 
@@ -69,14 +70,15 @@
       toastBootstrap.show()
     })
   }
+  // js-docs-end live-toast
 
   // -------------------------------
   // Alerts
   // -------------------------------
-  // Used in 'Show live toast' example in docs or StackBlitz
-  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-  const alertTrigger = document.getElementById('liveAlertBtn')
+  // Used in 'Show live alert' example in docs or StackBlitz
 
+  // js-docs-start live-alert
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
   const appendAlert = (message, type) => {
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
@@ -89,11 +91,13 @@
     alertPlaceholder.append(wrapper)
   }
 
+  const alertTrigger = document.getElementById('liveAlertBtn')
   if (alertTrigger) {
     alertTrigger.addEventListener('click', () => {
       appendAlert('Nice, you triggered this alert message!', 'success')
     })
   }
+  // js-docs-end live-alert
 
   // --------
   // Carousels
@@ -130,6 +134,7 @@
   // Modal
   // -------------------------------
   // Modal 'Varying modal content' example in docs and StackBlitz
+  // js-docs-start varying-modal-content
   const exampleModal = document.getElementById('exampleModal')
   if (exampleModal) {
     exampleModal.addEventListener('show.bs.modal', event => {
@@ -137,6 +142,8 @@
       const button = event.relatedTarget
       // Extract info from data-bs-* attributes
       const recipient = button.getAttribute('data-bs-whatever')
+      // If necessary, you could initiate an Ajax request here
+      // and then do the updating in a callback.
 
       // Update the modal's content.
       const modalTitle = exampleModal.querySelector('.modal-title')
@@ -146,6 +153,7 @@
       modalBodyInput.value = recipient
     })
   }
+  // js-docs-end varying-modal-content
 
   // -------------------------------
   // Offcanvas

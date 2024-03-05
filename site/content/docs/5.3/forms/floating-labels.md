@@ -89,7 +89,7 @@ Add the `disabled` boolean attribute on an input, a textarea or a select to give
   <label for="floatingTextareaDisabled">Comments</label>
 </div>
 <div class="form-floating mb-3">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled></textarea>
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled>Disabled textarea with some text inside</textarea>
   <label for="floatingTextarea2Disabled">Comments</label>
 </div>
 <div class="form-floating">

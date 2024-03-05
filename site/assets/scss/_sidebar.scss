@@ -15,7 +15,7 @@
   @include media-breakpoint-down(lg) {
     .offcanvas-lg {
       border-right-color: var(--bs-border-color);
-      box-shadow: $box-shadow-lg;
+      box-shadow: var(--bs-box-shadow-lg);
     }
   }
 }

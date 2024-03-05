@@ -69,7 +69,7 @@ $utilities: map-merge(
       print: true,
       property: display,
       class: d,
-      values: inline inline-block block grid table table-row table-cell flex inline-flex none
+      values: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex none
     ),
     // scss-docs-end utils-display
     // scss-docs-start utils-shadow
@@ -77,9 +77,9 @@ $utilities: map-merge(
       property: box-shadow,
       class: shadow,
       values: (
-        null: $box-shadow,
-        sm: $box-shadow-sm,
-        lg: $box-shadow-lg,
+        null: var(--#{$prefix}box-shadow),
+        sm: var(--#{$prefix}box-shadow-sm),
+        lg: var(--#{$prefix}box-shadow-lg),
         none: none,
       )
     ),

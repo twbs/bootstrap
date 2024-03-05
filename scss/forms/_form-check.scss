@@ -29,17 +29,18 @@
 .form-check-input {
   --#{$prefix}form-check-bg: #{$form-check-input-bg};
 
+  flex-shrink: 0;
   width: $form-check-input-width;
   height: $form-check-input-width;
   margin-top: ($line-height-base - $form-check-input-width) * .5; // line-height minus check height
   vertical-align: top;
+  appearance: none;
   background-color: var(--#{$prefix}form-check-bg);
   background-image: var(--#{$prefix}form-check-bg-image);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   border: $form-check-input-border;
-  appearance: none;
   print-color-adjust: exact; // Keep themed appearance for print
   @include transition($form-check-transition);
 
@@ -130,7 +131,7 @@
     margin-left: $form-switch-padding-start * -1;
     background-image: var(--#{$prefix}form-switch-bg);
     background-position: left center;
-    @include border-radius($form-switch-border-radius);
+    @include border-radius($form-switch-border-radius, 0);
     @include transition($form-switch-transition);
 
     &:focus {

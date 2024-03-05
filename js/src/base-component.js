@@ -6,15 +6,15 @@
  */
 
 import Data from './dom/data.js'
-import { executeAfterTransition, getElement } from './util/index.js'
 import EventHandler from './dom/event-handler.js'
 import Config from './util/config.js'
+import { executeAfterTransition, getElement } from './util/index.js'
 
 /**
  * Constants
  */
 
-const VERSION = '5.3.0-alpha1'
+const VERSION = '5.3.3'
 
 /**
  * Class definition
