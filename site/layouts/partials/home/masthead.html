@@ -5,7 +5,13 @@
         <strong class="d-sm-inline-block p-2 me-2 mb-2 mb-lg-0 rounded-3 masthead-notice">New in v5.3</strong>
         <span class="text-body-secondary">Color mode support, expanded color palette, and more!</span>
       </a>
-      <img src="/docs/{{ .Site.Params.docs_version }}/assets/brand/bootstrap-logo-shadow.png" width="200" height="165" alt="Bootstrap" class="d-none d-sm-block mx-auto mb-3">
+      <img class="d-none d-sm-block mx-auto mb-3"
+           srcset="/docs/{{ .Site.Params.docs_version }}/assets/brand/bootstrap-logo-shadow.png,
+                   /docs/{{ .Site.Params.docs_version }}/assets/brand/bootstrap-logo-shadow@2x.png 2x"
+           src="/docs/{{ .Site.Params.docs_version }}/assets/brand/bootstrap-logo-shadow.png"
+           alt="Bootstrap"
+           width="200"
+           height="165">
       <h1 class="mb-3 fw-semibold lh-1">Build fast, responsive sites with&nbsp;Bootstrap</h1>
       <p class="lead mb-4">
         Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.
