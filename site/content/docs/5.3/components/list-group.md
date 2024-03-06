@@ -336,22 +336,22 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 {{< example >}}
 <div class="row">
   <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="tab" href="#list-home" role="tab" aria-controls="list-home">Home</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="tab" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="tab" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="tab" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
+    <div class="list-group" id="list-tab2" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-home-list2" data-bs-toggle="tab" href="#list-home2" role="tab" aria-controls="list-home2">Home</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list2" data-bs-toggle="tab" href="#list-profile2" role="tab" aria-controls="list-profile2">Profile</a>
+      <a class="list-group-item list-group-item-action" id="list-messages-list2" data-bs-toggle="tab" href="#list-messages2" role="tab" aria-controls="list-messages2">Messages</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list2" data-bs-toggle="tab" href="#list-settings2" role="tab" aria-controls="list-settings2">Settings</a>
     </div>
   </div>
   <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+    <div class="tab-content" id="nav-tabContent2">
+      <div class="tab-pane fade show active" id="list-home2" role="tabpanel" aria-labelledby="list-home-list2">
       {{ rendering }}
         <p>Some placeholder content in a paragraph relating to "Home". And some more content, used here just to pad out and fill this tab panel. In production, you would obviously have more real content here. And not just text. It could be anything, really. Text, images, forms.</p>
       {{ end }}
       {{ code }}...{{ end }}
       </div>
-      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+      <div class="tab-pane fade" id="list-profile2" role="tabpanel" aria-labelledby="list-profile-list2">
       {{ rendering }}
         <p>Some placeholder content in a paragraph relating to "Profile". And some more content, used here just to pad out and fill this tab panel. In production, you would obviously have more real content here. And not just text. It could be anything, really. Text, images, forms.</p>
       {{ end }}
@@ -359,13 +359,13 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
         <p class="test">Lorem ipsum</p>
       {{ end }}
       </div>
-      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+      <div class="tab-pane fade" id="list-messages2" role="tabpanel" aria-labelledby="list-messages-list2">
       {{ rendering }}
         <p>Some placeholder content in a paragraph relating to "Messages". And some more content, used here just to pad out and fill this tab panel. In production, you would obviously have more real content here. And not just text. It could be anything, really. Text, images, forms.</p>
       {{ end }}
       {{ code }}{{ end }}
       </div>
-      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+      <div class="tab-pane fade" id="list-settings2" role="tabpanel" aria-labelledby="list-settings-list2">
       {{ rendering }}
         <p>Some placeholder content in a paragraph relating to "Settings". And some more content, used here just to pad out and fill this tab panel. In production, you would obviously have more real content here. And not just text. It could be anything, really. Text, images, forms.</p>
       {{ end }}
