@@ -70,12 +70,12 @@ const config = {
   browserDisconnectTolerance: 3,
   browserDisconnectTimeout: 180_000,
   browserNoActivityTimeout: 400_000,
-  retryLimit: 3,
+  retryLimit: 2,
   concurrency: 5,
   client: {
     clearContext: false,
     jasmine: {
-      timeoutInterval: 180_000
+      timeoutInterval: 120_000
     }
   },
   files: [
