@@ -413,14 +413,14 @@ Enable tabbable list item via JavaScript (each list item needs to be activated i
 
 ```js
 const triggerTabList = document.querySelectorAll('#myTab a')
-triggerTabList.forEach(triggerEl => {
+for (const triggerEl of triggerTabList) {
   const tabTrigger = new bootstrap.Tab(triggerEl)
 
   triggerEl.addEventListener('click', event => {
     event.preventDefault()
     tabTrigger.show()
   })
-})
+}
 ```
 
 You can activate individual list item in several ways:
@@ -491,10 +491,10 @@ If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events 
 
 ```js
 const tabElms = document.querySelectorAll('a[data-bs-toggle="list"]')
-tabElms.forEach(tabElm => {
+for (const tabElm of tabElms) {
   tabElm.addEventListener('shown.bs.tab', event => {
     event.target // newly activated tab
     event.relatedTarget // previous active tab
   })
-})
+}
 ```

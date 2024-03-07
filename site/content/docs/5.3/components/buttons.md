@@ -223,10 +223,10 @@ const bsButton = new bootstrap.Button('#myButton')
 For example, to toggle all buttons
 
 ```js
-document.querySelectorAll('.btn').forEach(buttonElement => {
+for (const buttonElement of document.querySelectorAll('.btn')) {
   const button = bootstrap.Button.getOrCreateInstance(buttonElement)
   button.toggle()
-})
+}
 ```
 
 ## CSS

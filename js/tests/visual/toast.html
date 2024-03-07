@@ -55,14 +55,20 @@
       /* global bootstrap: false */
 
       window.addEventListener('load', () => {
-        document.querySelectorAll('.toast').forEach(toastEl => new bootstrap.Toast(toastEl))
+        for (const toastEl of document.querySelectorAll('.toast')) {
+          new bootstrap.Toast(toastEl)
+        }
 
         document.getElementById('btnShowToast').addEventListener('click', () => {
-          document.querySelectorAll('.toast').forEach(toastEl => bootstrap.Toast.getInstance(toastEl).show())
+          for (const toastEl of document.querySelectorAll('.toast')) {
+            bootstrap.Toast.getInstance(toastEl).show()
+          }
         })
 
         document.getElementById('btnHideToast').addEventListener('click', () => {
-          document.querySelectorAll('.toast').forEach(toastEl => bootstrap.Toast.getInstance(toastEl).hide())
+          for (const toastEl of document.querySelectorAll('.toast')) {
+            bootstrap.Toast.getInstance(toastEl).hide()
+          }
         })
       })
     </script>

@@ -4,34 +4,30 @@
   'use strict'
 
   // Tooltip and popover demos
-  document.querySelectorAll('.tooltip-demo')
-    .forEach(tooltip => {
-      new bootstrap.Tooltip(tooltip, {
-        selector: '[data-bs-toggle="tooltip"]'
-      })
+  for (const tooltip of document.querySelectorAll('.tooltip-demo')) {
+    new bootstrap.Tooltip(tooltip, {
+      selector: '[data-bs-toggle="tooltip"]'
+    })
+  }
+
+  for (const popover of document.querySelectorAll('[data-bs-toggle="popover"]')) {
+    new bootstrap.Popover(popover)
+  }
+
+  for (const toastNode of document.querySelectorAll('.toast')) {
+    const toast = new bootstrap.Toast(toastNode, {
+      autohide: false
     })
 
-  document.querySelectorAll('[data-bs-toggle="popover"]')
-    .forEach(popover => {
-      new bootstrap.Popover(popover)
-    })
-
-  document.querySelectorAll('.toast')
-    .forEach(toastNode => {
-      const toast = new bootstrap.Toast(toastNode, {
-        autohide: false
-      })
-
-      toast.show()
-    })
+    toast.show()
+  }
 
   // Disable empty links and submit buttons
-  document.querySelectorAll('[href="#"], [type="submit"]')
-    .forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault()
-      })
+  for (const link of document.querySelectorAll('[href="#"], [type="submit"]')) {
+    link.addEventListener('click', event => {
+      event.preventDefault()
     })
+  }
 
   function setActiveItem() {
     const { hash } = window.location

@@ -613,14 +613,14 @@ Enable tabbable tabs via JavaScript (each tab needs to be activated individually
 
 ```js
 const triggerTabList = document.querySelectorAll('#myTab button')
-triggerTabList.forEach(triggerEl => {
+for (const triggerEl of triggerTabList) {
   const tabTrigger = new bootstrap.Tab(triggerEl)
 
   triggerEl.addEventListener('click', event => {
     event.preventDefault()
     tabTrigger.show()
   })
-})
+}
 ```
 
 You can activate individual tabs in several ways:

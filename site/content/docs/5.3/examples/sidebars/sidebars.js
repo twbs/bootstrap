@@ -2,7 +2,7 @@
 (() => {
   'use strict'
   const tooltipTriggerList = [...document.querySelectorAll('[data-bs-toggle="tooltip"]')]
-  tooltipTriggerList.forEach(tooltipTriggerEl => {
+  for (const tooltipTriggerEl of tooltipTriggerList) {
     new bootstrap.Tooltip(tooltipTriggerEl)
-  })
+  }
 })()

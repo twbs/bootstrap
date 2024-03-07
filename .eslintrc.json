@@ -164,8 +164,7 @@
       },
       "rules": {
         "no-console": "off",
-        "no-new": "off",
-        "unicorn/no-array-for-each": "off"
+        "no-new": "off"
       }
     },
     {
@@ -192,8 +191,7 @@
         "ecmaVersion": 2019
       },
       "rules": {
-        "no-new": "off",
-        "unicorn/no-array-for-each": "off"
+        "no-new": "off"
       }
     },
     {

@@ -35,7 +35,9 @@
     <script>
       /* global bootstrap: false */
 
-      document.querySelectorAll('[data-bs-toggle="popover"]').forEach(popoverEl => new bootstrap.Popover(popoverEl))
+      for (const popoverEl of document.querySelectorAll('[data-bs-toggle="popover"]')) {
+        new bootstrap.Popover(popoverEl)
+      }
     </script>
   </body>
 </html>

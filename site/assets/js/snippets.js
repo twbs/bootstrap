@@ -20,19 +20,17 @@
   // Tooltips
   // --------
   // Instantiate all tooltips in a docs or StackBlitz
-  document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    .forEach(tooltip => {
-      new bootstrap.Tooltip(tooltip)
-    })
+  for (const tooltip of document.querySelectorAll('[data-bs-toggle="tooltip"]')) {
+    new bootstrap.Tooltip(tooltip)
+  }
 
   // --------
   // Popovers
   // --------
   // Instantiate all popovers in docs or StackBlitz
-  document.querySelectorAll('[data-bs-toggle="popover"]')
-    .forEach(popover => {
-      new bootstrap.Popover(popover)
-    })
+  for (const popover of document.querySelectorAll('[data-bs-toggle="popover"]')) {
+    new bootstrap.Popover(popover)
+  }
 
   // -------------------------------
   // Toasts
@@ -50,14 +48,13 @@
   }
 
   // Instantiate all toasts in docs pages only
-  document.querySelectorAll('.bd-example .toast')
-    .forEach(toastNode => {
-      const toast = new bootstrap.Toast(toastNode, {
-        autohide: false
-      })
-
-      toast.show()
+  for (const toastNode of document.querySelectorAll('.bd-example .toast')) {
+    const toast = new bootstrap.Toast(toastNode, {
+      autohide: false
     })
+
+    toast.show()
+  }
 
   // Instantiate all toasts in docs pages only
   // js-docs-start live-toast
@@ -103,32 +100,29 @@
   // Carousels
   // --------
   // Instantiate all non-autoplaying carousels in docs or StackBlitz
-  document.querySelectorAll('.carousel:not([data-bs-ride="carousel"])')
-    .forEach(carousel => {
-      bootstrap.Carousel.getOrCreateInstance(carousel)
-    })
+  for (const carousel of document.querySelectorAll('.carousel:not([data-bs-ride="carousel"])')) {
+    bootstrap.Carousel.getOrCreateInstance(carousel)
+  }
 
   // -------------------------------
   // Checks & Radios
   // -------------------------------
   // Indeterminate checkbox example in docs and StackBlitz
-  document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
-    .forEach(checkbox => {
-      if (checkbox.id.includes('Indeterminate')) {
-        checkbox.indeterminate = true
-      }
-    })
+  for (const checkbox of document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')) {
+    if (checkbox.id.includes('Indeterminate')) {
+      checkbox.indeterminate = true
+    }
+  }
 
   // -------------------------------
   // Links
   // -------------------------------
   // Disable empty links in docs examples only
-  document.querySelectorAll('.bd-content [href="#"]')
-    .forEach(link => {
-      link.addEventListener('click', event => {
-        event.preventDefault()
-      })
+  for (const link of document.querySelectorAll('.bd-content [href="#"]')) {
+    link.addEventListener('click', event => {
+      event.preventDefault()
     })
+  }
 
   // -------------------------------
   // Modal
@@ -161,10 +155,10 @@
   // 'Offcanvas components' example in docs only
   const myOffcanvas = document.querySelectorAll('.bd-example-offcanvas .offcanvas')
   if (myOffcanvas) {
-    myOffcanvas.forEach(offcanvas => {
+    for (const offcanvas of myOffcanvas) {
       offcanvas.addEventListener('show.bs.offcanvas', event => {
         event.preventDefault()
       }, false)
-    })
+    }
   }
 })()

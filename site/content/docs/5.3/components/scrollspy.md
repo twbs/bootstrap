@@ -333,13 +333,13 @@ Scrollspy is not limited to nav components and list groups, so it will work on a
 Target elements that aren’t visible will be ignored and their corresponding nav items won't receive an `.active` class. Scrollspy instances initialized in a non-visible wrapper will ignore all target elements. Use the `refresh` method to check for observable elements once the wrapper becomes visible.
 
 ```js
-document.querySelectorAll('#nav-tab>[data-bs-toggle="tab"]').forEach(el => {
+for (const el of document.querySelectorAll('#nav-tab > [data-bs-toggle="tab"]')) {
   el.addEventListener('shown.bs.tab', () => {
     const target = el.getAttribute('data-bs-target')
     const scrollElem = document.querySelector(`${target} [data-bs-spy="scroll"]`)
     bootstrap.ScrollSpy.getOrCreateInstance(scrollElem).refresh()
   })
-})
+}
 ```
 
 ## Usage
@@ -406,9 +406,9 @@ Here's an example using the refresh method:
 
 ```js
 const dataSpyList = document.querySelectorAll('[data-bs-spy="scroll"]')
-dataSpyList.forEach(dataSpyEl => {
+for (const dataSpyEl of dataSpyList) {
   bootstrap.ScrollSpy.getInstance(dataSpyEl).refresh()
-})
+}
 ```
 
 ### Events

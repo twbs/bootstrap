@@ -113,7 +113,9 @@
       })
       targetTooltip.show()
 
-      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => new bootstrap.Tooltip(tooltipEl))
+      for (const tooltipEl of document.querySelectorAll('[data-bs-toggle="tooltip"]')) {
+        new bootstrap.Tooltip(tooltipEl)
+      }
     </script>
 
     <script>

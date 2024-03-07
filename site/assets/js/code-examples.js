@@ -29,14 +29,13 @@
   ].join('')
 
   // Wrap programmatically code blocks and add copy btn.
-  document.querySelectorAll('.highlight')
-    .forEach(element => {
-      // Ignore examples made by shortcode
-      if (!element.closest('.bd-example-snippet')) {
-        element.insertAdjacentHTML('beforebegin', btnHtml)
-        element.previousElementSibling.append(element)
-      }
-    })
+  for (const element of document.querySelectorAll('.highlight')) {
+    // Ignore examples made by shortcode
+    if (!element.closest('.bd-example-snippet')) {
+      element.insertAdjacentHTML('beforebegin', btnHtml)
+      element.previousElementSibling.append(element)
+    }
+  }
 
   /**
    *
@@ -44,9 +43,9 @@
    * @param {string} title
    */
   function snippetButtonTooltip(selector, title) {
-    document.querySelectorAll(selector).forEach(btn => {
+    for (const btn of document.querySelectorAll(selector)) {
       bootstrap.Tooltip.getOrCreateInstance(btn, { title })
-    })
+    }
   }
 
   snippetButtonTooltip('.btn-clipboard', btnTitle)
