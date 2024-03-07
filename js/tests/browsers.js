@@ -67,11 +67,11 @@ const browsers = {
       device: 'iPhone 12',
       real_mobile: true
     },
-    pixel2: {
+    pixel3: {
       base: 'BrowserStack',
       os: 'android',
-      os_version: '8.0',
-      device: 'Google Pixel 2',
+      os_version: '9.0',
+      device: 'Google Pixel 3',
       real_mobile: true
     }
   },
