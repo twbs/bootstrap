@@ -346,30 +346,24 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
   <div class="col-8">
     <div class="tab-content" id="nav-tabContent2">
       <div class="tab-pane fade show active" id="list-home2" role="tabpanel" aria-labelledby="list-home-list2">
-      {{ rendering }}
+      {{ skip ... }}
         <p>Some placeholder content in a paragraph relating to "Home". And some more content, used here just to pad out and fill this tab panel. In production, you would obviously have more real content here. And not just text. It could be anything, really. Text, images, forms.</p>
-      {{ end }}
-      {{ code }}...{{ end }}
+      {{ /skip }}
       </div>
       <div class="tab-pane fade" id="list-profile2" role="tabpanel" aria-labelledby="list-profile-list2">
-      {{ rendering }}
+      {{ skip     <p class="test">Lorem Ipsum</p>}}
         <p>Some placeholder content in a paragraph relating to "Profile". And some more content, used here just to pad out and fill this tab panel. In production, you would obviously have more real content here. And not just text. It could be anything, really. Text, images, forms.</p>
-      {{ end }}
-      {{ code }}
-        <p class="test">Lorem ipsum</p>
-      {{ end }}
+      {{ /skip }}
       </div>
       <div class="tab-pane fade" id="list-messages2" role="tabpanel" aria-labelledby="list-messages-list2">
-      {{ rendering }}
+      {{ skip }}
         <p>Some placeholder content in a paragraph relating to "Messages". And some more content, used here just to pad out and fill this tab panel. In production, you would obviously have more real content here. And not just text. It could be anything, really. Text, images, forms.</p>
-      {{ end }}
-      {{ code }}{{ end }}
+      {{ /skip }}
       </div>
       <div class="tab-pane fade" id="list-settings2" role="tabpanel" aria-labelledby="list-settings-list2">
-      {{ rendering }}
+      {{ skip ... }}
         <p>Some placeholder content in a paragraph relating to "Settings". And some more content, used here just to pad out and fill this tab panel. In production, you would obviously have more real content here. And not just text. It could be anything, really. Text, images, forms.</p>
-      {{ end }}
-      {{ code }}...{{ end }}
+      {{ /skip }}
       </div>
     </div>
   </div>
