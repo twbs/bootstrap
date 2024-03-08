@@ -46,4 +46,4 @@ sitemap_exclude: true
 
 {{< scss-docs name="variable-gradient" file="scss/_variables.scss" >}}
 
-{{< js-docs name="live-toast" file="site/assets/js/snippets.js" >}}
+{{< js-docs name="live-toast" file="site/assets/js/partials/snippets.js" >}}
