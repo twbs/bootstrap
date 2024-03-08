@@ -214,3 +214,11 @@
 .btn-sm {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
 }
+
+//
+// Buttons with `a` tag
+//
+a.btn {
+  display: flex;
+  align-items: center;
+}
