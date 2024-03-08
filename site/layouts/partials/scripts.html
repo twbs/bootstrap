@@ -1,4 +1,4 @@
-{{ if eq hugo.Environment "production" -}}
+{{ if hugo.IsProduction -}}
   <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }}></script>
 {{ else -}}
   <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
@@ -15,7 +15,7 @@
 {{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version "assets/js/docs.js" -}}
 {{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
 
-{{- if eq hugo.Environment "production" -}}
+{{- if hugo.IsProduction -}}
   {{- $docsJs = $docsJs | resources.Minify -}}
 {{- end }}
 
