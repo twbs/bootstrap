@@ -4,7 +4,7 @@ title: Bootstrap and Vite
 description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Vite.
 group: getting-started
 toc: true
-thumbnail: guides/bootstrap-vite@2x.png
+thumbnail: guides/bootstrap-vite.png
 added:
   show_badge: false
   version: "5.2"

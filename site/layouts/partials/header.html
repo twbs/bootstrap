@@ -7,6 +7,8 @@
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="{{ .Site.Params.docs_version }}">
 
+{{ partial "header-preload-thumbnail" . }}
+
 <title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.subtitle | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
 
 <link rel="canonical" href="{{ .Permalink }}">
