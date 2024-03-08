@@ -67,7 +67,7 @@
 {{ end }}
 {{ define "footer" }}
   {{ range .Page.Params.extra_js -}}
-    <script{{ with .async }} async{{ end }} src="{{ .src }}"></script>
+    <script{{ with .async }} async{{ end }}{{ with .defer }} defer{{ end }} src="{{ .src }}"></script>
   {{- end -}}
   <div class="position-fixed" aria-hidden="true"><input type="text" tabindex="-1"></div>
 {{ end }}
