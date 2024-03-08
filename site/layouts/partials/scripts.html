@@ -1,7 +1,7 @@
 {{ if hugo.IsProduction -}}
-  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }}></script>
+  <script defer src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }}></script>
 {{ else -}}
-  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+  <script defer src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
 {{- end }}
 
 {{- $esbuildOptions := dict "target" "es2019" -}}
@@ -12,11 +12,11 @@
 {{- end }}
 
 {{- $applicationJs := resources.Get "js/application.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/application.js") }}
-<script src="{{ $applicationJs.RelPermalink }}"></script>
+<script defer src="{{ $applicationJs.RelPermalink }}"></script>
 
 {{- if (ne .Page.Layout "examples") -}}
 {{- $searchJs := resources.Get "js/search.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/search.js") }}
-<script async src="{{ $searchJs.RelPermalink }}"></script>
+<script defer src="{{ $searchJs.RelPermalink }}"></script>
 {{- end -}}
 
 {{ if eq .Page.Layout "docs" -}}
@@ -29,5 +29,5 @@
 -}}
 {{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
 {{- $stackblitzJs := resources.Get "js/stackblitz.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/stackblitz.js") }}
-<script async src="{{ $stackblitzJs.RelPermalink }}"></script>
+<script defer src="{{ $stackblitzJs.RelPermalink }}"></script>
 {{- end -}}
