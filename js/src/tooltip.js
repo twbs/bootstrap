@@ -48,7 +48,7 @@ const EVENT_FOCUSIN = 'focusin'
 const EVENT_FOCUSOUT = 'focusout'
 const EVENT_MOUSEENTER = 'mouseenter'
 const EVENT_MOUSELEAVE = 'mouseleave'
-const EVENT_KEYUP = 'keyup'
+const EVENT_KEYDOWN = 'keydown'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -219,12 +219,6 @@ class Tooltip extends BaseComponent {
     this._popper = this._createPopper(tip)
 
     tip.classList.add(CLASS_NAME_SHOW)
-
-    EventHandler.on(document, EVENT_KEYUP, this._config.selector, event => {
-      if (event.key === ESCAPE_KEY) {
-        this.hide()
-      }
-    })
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
@@ -482,6 +476,12 @@ class Tooltip extends BaseComponent {
         })
       }
     }
+
+    EventHandler.on(document, EVENT_KEYDOWN, this._config.selector, event => {
+      if (event.key === ESCAPE_KEY) {
+        this.hide()
+      }
+    })
 
     this._hideModalHandler = () => {
       if (this._element) {
