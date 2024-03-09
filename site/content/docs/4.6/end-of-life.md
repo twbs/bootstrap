@@ -1,15 +1,17 @@
 ---
 layout: docs
-title: End of Life Status for Bootstrap 3 & 4
-description: Bootstrap 3 was released over a decade ago in August 2013, and Bootstrap 4 over six years ago in January 2018. Since then, millions of people have learned Bootstrap, prototyped with it, and shipped some amazing sites and apps with it. While Bootstrap 5 is continuing that journey with developers all over the world, there are still tons of those teams living on an older version of Bootstrap with limited to no support. Until now.
+title: End of Life Status Bootstrap 4
+description: Get ongoing support, security fixes, and more with Bootstrap 4 thanks to Never-Ending Support from the folks at HeroDevs.
 group: end-of-life
 aliases: "/end-of-life/"
 toc: true
 ---
 
+Bootstrap 3 was released over a decade ago in August 2013, and Bootstrap 4 over six years ago in January 2018. Since then, millions of people have learned Bootstrap, prototyped with it, and shipped some amazing sites and apps with it. While Bootstrap 5 is continuing that journey with developers all over the world, there are still tons of those teams living on an older version of Bootstrap with limited to no support. Until now.
+
 Bootstrap 3 reached end of life July 24, 2019, followed by Bootstrap 4 on January 1, 2023. As such, neither version receives new features, updates, or security fixes. However, both are still available on all existing distribution channels (CDNs, package managers, GitHub, etc).
 
-We strongly recommend folks start out on or [upgrade](https://getbootstrap.com/docs/5.0/migration/) to the [latest version of Bootstrap (v5.x)](https://getbootstrap.com/), but for those who can’t upgrade just yet and have compliance or security requirements, we’re introducing [Never-Ending Support for Bootstrap 3 and 4 with HeroDevs](https://www.herodevs.com/support/nes-bootstrap?utm_source=Bootstrap_site&utm_medium=Banner&utm_campaign=v3and4_eol).
+We strongly recommend folks start out on or [upgrade](https://getbootstrap.com/docs/5.3/migration/) to the [latest version of Bootstrap (v5.x)](https://getbootstrap.com/), but for those who can’t upgrade just yet and have compliance or security requirements, we’re introducing [Never-Ending Support for Bootstrap 3 and 4 with HeroDevs](https://www.herodevs.com/support/nes-bootstrap?utm_source=Bootstrap_site&utm_medium=Banner&utm_campaign=v3and4_eol).
 
 <a href="https://www.herodevs.com/support/nes-bootstrap?utm_source=Bootstrap_site&utm_medium=Banner&utm_campaign=v3and4_eol" class="btn btn-bd-primary">Purchase Bootstrap NES</a>
 
