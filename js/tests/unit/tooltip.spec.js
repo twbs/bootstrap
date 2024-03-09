@@ -974,6 +974,28 @@ describe('Tooltip', () => {
       })
     })
 
+    it('should hide a tooltip when the escape key is pressed', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        const keyDownEsc = createEvent('keydown')
+        keyDownEsc.key = 'Escape'
+
+        const spy = spyOn(tooltip, 'hide')
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          document.dispatchEvent(keyDownEsc)
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        tooltip.show()
+      })
+    })
+
     it('should hide a tooltip on mobile', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'

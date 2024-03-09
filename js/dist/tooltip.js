@@ -52,6 +52,7 @@
   const TRIGGER_FOCUS = 'focus';
   const TRIGGER_CLICK = 'click';
   const TRIGGER_MANUAL = 'manual';
+  const ESCAPE_KEY = 'Escape';
   const EVENT_HIDE = 'hide';
   const EVENT_HIDDEN = 'hidden';
   const EVENT_SHOW = 'show';
@@ -62,6 +63,7 @@
   const EVENT_FOCUSOUT = 'focusout';
   const EVENT_MOUSEENTER = 'mouseenter';
   const EVENT_MOUSELEAVE = 'mouseleave';
+  const EVENT_KEYDOWN = 'keydown';
   const AttachmentMap = {
     AUTO: 'auto',
     TOP: 'top',
@@ -115,7 +117,7 @@
   class Tooltip extends BaseComponent {
     constructor(element, config) {
       if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
+        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)');
       }
       super(element, config);
 
@@ -413,6 +415,11 @@
           });
         }
       }
+      EventHandler.on(document, EVENT_KEYDOWN, this._config.selector, event => {
+        if (event.key === ESCAPE_KEY) {
+          this.hide();
+        }
+      });
       this._hideModalHandler = () => {
         if (this._element) {
           this.hide();
