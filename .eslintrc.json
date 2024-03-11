@@ -210,9 +210,6 @@
       "extends": "plugin:markdown/recommended",
       "parserOptions": {
         "sourceType": "module"
-      },
-      "rules": {
-        "unicorn/prefer-node-protocol": "off"
       }
     }
   ]

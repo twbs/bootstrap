@@ -79,7 +79,7 @@ With dependencies installed and our project folder ready for us to start coding,
    ```js
    'use strict'
 
-   const path = require('path')
+   const path = require('node:path')
    const HtmlWebpackPlugin = require('html-webpack-plugin')
 
    module.exports = {
@@ -154,7 +154,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
    ```js
    'use strict'
 
-   const path = require('path')
+   const path = require('node:path')
    const autoprefixer = require('autoprefixer')
    const HtmlWebpackPlugin = require('html-webpack-plugin')
 
