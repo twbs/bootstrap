@@ -208,9 +208,10 @@
     },
     {
       "files": [
-        "**/*.md/*.js"
+        "**/*.md/*.js",
+        "**/*.md/*.mjs"
       ],
-      "extends": "plugin:markdown/recommended",
+      "extends": "plugin:markdown/recommended-legacy",
       "parserOptions": {
         "sourceType": "module"
       },
