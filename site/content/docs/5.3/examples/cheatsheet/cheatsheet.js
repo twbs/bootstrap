@@ -14,8 +14,8 @@
     new bootstrap.Popover(popover)
   }
 
-  for (const toastNode of document.querySelectorAll('.toast')) {
-    const toast = new bootstrap.Toast(toastNode, {
+  for (const toastEl of document.querySelectorAll('.toast')) {
+    const toast = new bootstrap.Toast(toastEl, {
       autohide: false
     })
 

@@ -48,8 +48,8 @@
   }
 
   // Instantiate all toasts in docs pages only
-  for (const toastNode of document.querySelectorAll('.bd-example .toast')) {
-    const toast = new bootstrap.Toast(toastNode, {
+  for (const toastEl of document.querySelectorAll('.bd-example .toast')) {
+    const toast = new bootstrap.Toast(toastEl, {
       autohide: false
     })
 

@@ -39,8 +39,8 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 <script type="module">
   import { Toast } from 'bootstrap.esm.min.js'
 
-  for (const toastNode of document.querySelectorAll('.toast')) {
-    new Toast(toastNode))
+  for (const toastEl of document.querySelectorAll('.toast')) {
+    new Toast(toastEl))
   }
 </script>
 ```
