@@ -112,8 +112,7 @@
         "sourceType": "module"
       },
       "rules": {
-        "no-console": "off",
-        "unicorn/prefer-top-level-await": "off"
+        "no-console": "off"
       }
     },
     {

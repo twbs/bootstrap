@@ -81,33 +81,25 @@ function showUsage(args) {
   process.exit(1)
 }
 
-async function main(args) {
-  let [oldVersion, newVersion] = args
+const args = process.argv.slice(2)
+let [oldVersion, newVersion] = args
 
-  if (!oldVersion || !newVersion) {
-    showUsage(args)
-  }
-
-  // Strip any leading `v` from arguments because
-  // otherwise we will end up with duplicate `v`s
-  [oldVersion, newVersion] = [oldVersion, newVersion].map(arg => {
-    return arg.startsWith('v') ? arg.slice(1) : arg
-  })
-
-  if (oldVersion === newVersion) {
-    showUsage(args)
-  }
-
-  bumpNpmVersion(newVersion)
-
-  try {
-    await Promise.all(
-      FILES.map(file => replaceRecursively(file, oldVersion, newVersion))
-    )
-  } catch (error) {
-    console.error(error)
-    process.exit(1)
-  }
+if (!oldVersion || !newVersion) {
+  showUsage(args)
 }
 
-main(process.argv.slice(2))
+// Strip any leading `v` from arguments because
+// otherwise we will end up with duplicate `v`s
+[oldVersion, newVersion] = [oldVersion, newVersion].map(arg => {
+  return arg.startsWith('v') ? arg.slice(1) : arg
+})
+
+if (oldVersion === newVersion) {
+  showUsage(args)
+}
+
+bumpNpmVersion(newVersion)
+
+await Promise.all(
+  FILES.map(file => replaceRecursively(file, oldVersion, newVersion))
+)

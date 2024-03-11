@@ -87,19 +87,12 @@ const build = async plugin => {
   console.log(`Built ${plugin.className}`)
 }
 
-(async () => {
-  try {
-    const basename = path.basename(__filename)
-    const timeLabel = `[${basename}] finished`
+const basename = path.basename(__filename)
+const timeLabel = `[${basename}] finished`
 
-    console.log('Building individual plugins...')
-    console.time(timeLabel)
+console.log('Building individual plugins...')
+console.time(timeLabel)
 
-    await Promise.all(Object.values(resolvedPlugins).map(plugin => build(plugin)))
+await Promise.all(Object.values(resolvedPlugins).map(plugin => build(plugin)))
 
-    console.timeEnd(timeLabel)
-  } catch (error) {
-    console.error(error)
-    process.exit(1)
-  }
-})()
+console.timeEnd(timeLabel)
