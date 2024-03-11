@@ -67,7 +67,6 @@
       }
     ],
     "no-console": "error",
-    "no-negated-condition": "off",
     "object-curly-spacing": [
       "error",
       "always"
@@ -87,6 +86,7 @@
     "unicorn/filename-case": "off",
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-method-this-argument": "off",
+    "unicorn/no-negated-condition": "off",
     "unicorn/no-null": "off",
     "unicorn/no-typeof-undefined": "off",
     "unicorn/no-unused-properties": "error",
