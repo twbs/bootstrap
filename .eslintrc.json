@@ -206,10 +206,7 @@
       "files": [
         "**/*.md/*.js"
       ],
-      "extends": "plugin:markdown/recommended",
-      "parserOptions": {
-        "sourceType": "module"
-      }
+      "extends": "plugin:markdown/recommended"
     }
   ]
 }

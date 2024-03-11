@@ -160,7 +160,7 @@ In addition to the `getInstance` and `getOrCreateInstance` methods, all plugin c
 const modal = new bootstrap.Modal('#myModal')
 const dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
 const offcanvas = bootstrap.Offcanvas.getInstance('#myOffcanvas')
-const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
+const myAlert = bootstrap.Alert.getOrCreateInstance('#myAlert')
 ```
 
 ### Asynchronous functions and transitions

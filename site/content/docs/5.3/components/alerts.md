@@ -215,8 +215,8 @@ This makes an alert listen for click events on descendant elements which have th
 Basic usage:
 
 ```js
-const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
-alert.close()
+const myAlert = bootstrap.Alert.getOrCreateInstance('#myAlert')
+myAlert.close()
 ```
 
 ### Events
