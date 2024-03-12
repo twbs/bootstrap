@@ -10,13 +10,11 @@
           <svg class="bi" style="width: 20px; height: 20px;"><use xlink:href="#arrow-right-short"></use></svg>
         </span>
       </a>
-      <img class="d-none d-sm-block mx-auto mb-3"
-           srcset="/docs/{{ .Site.Params.docs_version }}/assets/brand/bootstrap-logo-shadow.png,
-                   /docs/{{ .Site.Params.docs_version }}/assets/brand/bootstrap-logo-shadow@2x.png 2x"
-           src="/docs/{{ .Site.Params.docs_version }}/assets/brand/bootstrap-logo-shadow.png"
-           alt="Bootstrap"
-           width="200"
-           height="165">
+      {{ partial "responsive-img" (dict "context" .
+        "imgPath" "/assets/brand/bootstrap-logo-shadow.png"
+        "alt" "Bootstrap"
+        "classes" "d-none d-sm-block mb-3"
+        "lazyload" false) }}
       <h1 class="mb-3 fw-semibold lh-1">Build fast, responsive sites with&nbsp;Bootstrap</h1>
       <p class="lead mb-4">
         Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.
