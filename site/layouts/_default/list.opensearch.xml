@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
   <ShortName>{{ .Site.Title }}</ShortName>
-  <Description>Search {{ .Site.Title }} documentation</Description>
+  <Description>Search {{ .Site.Title }} Documentation</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image type="image/x-icon" width="16" height="16">{{ (printf "/docs/%s/assets/img/favicons/favicon.ico" .Site.Params.docs_version) | absURL }}</Image>
-  <Url type="text/html" method="get" template="{{ (printf "/docs/%s/getting-started/introduction/" .Site.Params.docs_version) | absURL }}#search={searchTerms}"/>
+  <Image type="image/x-icon" width="16" height="16">{{ (urls.JoinPath "/docs" .Site.Params.docs_version "assets/img/favicons/favicon.ico") | absURL }}</Image>
+  <Url type="text/html" method="get" template="{{ "/" | absURL }}#search={searchTerms}"/>
 </OpenSearchDescription>

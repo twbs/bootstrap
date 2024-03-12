@@ -39,6 +39,9 @@ outputs:
   home:
     - HTML
     - OpenSearch
+  page:
+    - HTML
+    - OpenSearch
 
 publishDir:             "_site"
 
