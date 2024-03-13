@@ -15,6 +15,12 @@
 <script defer src="{{ $applicationJs.RelPermalink }}"></script>
 
 {{- if (ne .Page.Layout "examples") -}}
+{{- $esbuildParams := dict
+  "apiKey" .Site.Params.algolia.apiKey
+  "appId" .Site.Params.algolia.appId
+  "indexName" .Site.Params.algolia.indexName
+-}}
+{{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
 {{- $searchJs := resources.Get "js/search.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/search.js") }}
 <script defer src="{{ $searchJs.RelPermalink }}"></script>
 {{- end -}}
