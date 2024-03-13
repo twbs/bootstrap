@@ -73,6 +73,11 @@ params:
   analytics:
     fathom_site:        "ITUSEYJG"
 
+  algolia:
+    appId:              "AK7KMZKZHQ"
+    apiKey:             "3151f502c7b9e9dafd5e6372b691a24e"
+    indexName:          "bootstrap"
+
   download:
     source:             "https://github.com/twbs/bootstrap/archive/v5.3.3.zip"
     dist:               "https://github.com/twbs/bootstrap/releases/download/v5.3.3/bootstrap-5.3.3-dist.zip"

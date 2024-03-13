@@ -10,7 +10,7 @@
 <link rel="canonical" href="{{ .Permalink }}">
 
 {{ if (ne .Page.Layout "examples") -}}
-<link rel="preconnect" href="https://ak7kmzkzhq-dsn.algolia.net" crossorigin>
+<link rel="preconnect" href="https://{{ .Site.Params.algolia.appId | lower }}-dsn.algolia.net" crossorigin>
 {{- end }}
 
 <title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.subtitle | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
