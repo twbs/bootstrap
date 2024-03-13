@@ -67,6 +67,9 @@ params:
   icons:                "https://icons.getbootstrap.com/"
   swag:                 "https://cottonbureau.com/people/bootstrap"
 
+  analytics:
+    fathom_site:        "ITUSEYJG"
+
   download:
     source:             "https://github.com/twbs/bootstrap/archive/v5.3.3.zip"
     dist:               "https://github.com/twbs/bootstrap/releases/download/v5.3.3/bootstrap-5.3.3-dist.zip"
