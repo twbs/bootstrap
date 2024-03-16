@@ -29,7 +29,9 @@
 {{- $snippetsFile := resources.Get "js/snippets.js" | js.Build $esbuildOptions -}}
 {{- $esbuildParams := dict
   "cssCdn" .Site.Params.cdn.css
+  "cssCdnHash" .Site.Params.cdn.css_hash
   "jsBundleCdn" .Site.Params.cdn.js_bundle
+  "jsBundleCdnHash" .Site.Params.cdn.js_bundle_hash
   "docsVersion" .Site.Params.docs_version
   "jsSnippetFile" $snippetsFile.Content
 -}}
