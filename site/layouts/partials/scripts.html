@@ -28,6 +28,7 @@
 {{ if eq .Page.Layout "docs" -}}
 {{- $snippetsFile := resources.Get "js/snippets.js" | js.Build $esbuildOptions -}}
 {{- $esbuildParams := dict
+  "isNetlify" (eq (getenv "NETLIFY") "true")
   "cssCdn" .Site.Params.cdn.css
   "cssCdnHash" .Site.Params.cdn.css_hash
   "jsBundleCdn" .Site.Params.cdn.js_bundle
