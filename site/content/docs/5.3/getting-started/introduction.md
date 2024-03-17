@@ -50,7 +50,7 @@ Get started by including Bootstrap's production-ready CSS and JavaScript via CDN
    </html>
    ```
 
-   You can also include [Popper](https://popper.js.org/) and our JS separately. If you don't plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper.
+   You can also include [Popper](https://popper.js.org/docs/v2/) and our JS separately. If you don't plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Popper.
 
    ```html
    <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
@@ -75,34 +75,26 @@ You can also use the CDN to fetch any of our [additional builds listed in the Co
 ## Next steps
 
 - Read a bit more about some [important global environment settings](#important-globals) that Bootstrap utilizes.
-
 - Read about what's included in Bootstrap in our [contents section]({{< docsref "/getting-started/contents/" >}}) and the list of [components that require JavaScript](#js-components) below.
-
 - Need a little more power? Consider building with Bootstrap by [including the source files via package manager]({{< docsref "/getting-started/download#package-managers" >}}).
-
 - Looking to use Bootstrap as a module with `<script type="module">`? Please refer to our [using Bootstrap as a module]({{< docsref "/getting-started/javascript#using-bootstrap-as-a-module" >}}) section.
 
 ## JS components
 
-Curious which components explicitly require our JavaScript and Popper? Click the show components link below. If you're at all unsure about the general page structure, keep reading for an example page template.
+Curious which components explicitly require our JavaScript and Popper? If you're at all unsure about the general page structure, keep reading for an example page template.
 
-<details>
-<summary class="bd-summary-link mb-3">Show components requiring JavaScript</summary>
-{{< markdown >}}
 - Alerts for dismissing
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
 - Collapse for toggling visibility of content
-- Dropdowns for displaying and positioning (also requires [Popper](https://popper.js.org/))
+- Dropdowns for displaying and positioning (also requires [Popper](https://popper.js.org/docs/v2/))
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse and Offcanvas plugins to implement responsive behaviors
 - Navs with the Tab plugin for toggling content panes
 - Offcanvases for displaying, positioning, and scroll behavior
 - Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
-- Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/))
-{{< /markdown >}}
-</details>
+- Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/docs/v2/))
 
 ## Important globals
 
@@ -154,7 +146,8 @@ For improved cross-browser rendering, we use [Reboot]({{< docsref "/content/rebo
 Stay up-to-date on the development of Bootstrap and reach out to the community with these helpful resources.
 
 - Read and subscribe to [The Official Bootstrap Blog]({{< param blog >}}).
-- Ask and explore [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions).
+- Ask questions and explore [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions).
+- Discuss, ask questions, and more on [the community Discord](https://discord.gg/bZUvakRU3M) or [Bootstrap subreddit](https://www.reddit.com/r/bootstrap/).
 - Chat with fellow Bootstrappers in IRC. On the `irc.libera.chat` server, in the `#bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5)).
 - Developers should use the keyword `bootstrap` on packages that modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/search?q=keywords:bootstrap) or similar delivery mechanisms for maximum discoverability.

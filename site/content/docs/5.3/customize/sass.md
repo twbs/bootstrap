@@ -101,7 +101,7 @@ npm install -g sass
 sass --watch ./scss/custom.scss ./css/custom.css
 ```
 
-Learn more about your options at [sass-lang.com/install](https://sass-lang.com/install) and [compiling with VS Code](https://code.visualstudio.com/docs/languages/css#_transpiling-sass-and-less-into-css).
+Learn more about your options at [sass-lang.com/install](https://sass-lang.com/install/) and [compiling with VS Code](https://code.visualstudio.com/docs/languages/css#_transpiling-sass-and-less-into-css).
 
 {{< callout info >}}
 **Using Bootstrap with another build tool?** Consider reading our guides for compiling with [Webpack]({{< docsref "/getting-started/webpack" >}}), [Parcel]({{< docsref "/getting-started/parcel" >}}), or [Vite]({{< docsref "/getting-started/vite" >}}). We also have production-ready demos in [our examples repository on GitHub](https://github.com/twbs/examples).
@@ -244,6 +244,8 @@ Next to the [Sass maps]({{< docsref "/customize/color#color-sass-maps" >}}) we h
 
 You can lighten or darken colors with Bootstrap's `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass' native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn't lead to the desired effect.
 
+`shift-color()` combines these two functions by shading the color if the weight is positive and tinting the color if the weight is negative.
+
 {{< scss-docs name="color-functions" file="scss/_functions.scss" >}}
 
 In practice, you'd call the function and pass in the color and weight parameters.
@@ -255,6 +257,11 @@ In practice, you'd call the function and pass in the color and weight parameters
 
 .custom-element-2 {
   color: shade-color($danger, 30%);
+}
+
+.custom-element-3 {
+  color: shift-color($success, 40%);
+  background-color: shift-color($success, -60%);
 }
 ```
 
@@ -338,18 +345,18 @@ Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap a
 
 ### Color schemes
 
-A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light`, `dark`, and custom color schemes. See [the color modes documentation]({{< docsref "/customize/color-modes" >}}) for information on our color mode mixin.
+A shorthand mixin for the `prefers-color-scheme` media query is available with support for `light` and `dark` color schemes. See [the color modes documentation]({{< docsref "/customize/color-modes" >}}) for information on our color mode mixin.
 
 {{< scss-docs name="mixin-color-scheme" file="scss/mixins/_color-scheme.scss" >}}
 
 ```scss
 .custom-element {
-  @include color-scheme(dark) {
-    // Insert dark mode styles here
+  @include color-scheme(light) {
+    // Insert light mode styles here
   }
 
-  @include color-scheme(custom-named-scheme) {
-    // Insert custom color scheme styles here
+  @include color-scheme(dark) {
+    // Insert dark mode styles here
   }
 }
 ```
