@@ -14,7 +14,7 @@
 import sdk from '@stackblitz/sdk'
 // https://gohugo.io/hugo-pipes/js/#options
 import {
-  cssCdn, cssCdnHash, docsVersion, jsBundleCdn, jsBundleCdnHash, jsSnippetFile, isNetlify
+  cssCdn, cssCdnHash, docsCss, jsBundleCdn, jsBundleCdnHash, jsSnippetFile, isNetlify
 } from '@params' // eslint-disable-line import/no-unresolved
 
 // Open in StackBlitz logic
@@ -39,7 +39,7 @@ const openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="${cssCdn}" rel="stylesheet"${!isNetlify ? `integrity="${cssCdnHash}" crossorigin="anonymous"` : ''}>
-    <link href="https://getbootstrap.com/docs/${docsVersion}/assets/css/docs.css" rel="stylesheet">
+    <link href="docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
     <${'script'} defer src="${jsBundleCdn}"${!isNetlify ? `integrity="${jsBundleCdnHash}" crossorigin="anonymous"` : ''}></${'script'}>
   </head>
@@ -54,7 +54,8 @@ ${htmlSnippet.trimStart().replace(/^/gm, '    ').replace(/^ {4}$/gm, '').trimEnd
   const project = {
     files: {
       'index.html': indexHtml,
-      ...(jsSnippet && { 'index.js': jsSnippetFile })
+      ...(jsSnippet && { 'index.js': jsSnippetFile }),
+      'docs.css': docsCss
     },
     title: 'Bootstrap Example',
     description: `Official example from ${window.location.href}`,

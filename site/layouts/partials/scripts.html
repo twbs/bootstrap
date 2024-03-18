@@ -7,8 +7,12 @@
 {{- $esbuildOptions := dict "target" "es2019" -}}
 {{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version -}}
 
+{{- $sassOptions := dict "outputStyle" "expanded" "precision" 6 -}}
+{{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
+
 {{- if hugo.IsProduction -}}
   {{- $esbuildOptions = merge $esbuildOptions (dict "minify" "true") -}}
+  {{- $sassOptions = merge $sassOptions (dict "outputStyle" "compressed") -}}
 {{- end }}
 
 {{- $applicationJs := resources.Get "js/application.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/application.js") }}
@@ -26,14 +30,16 @@
 {{- end -}}
 
 {{ if eq .Page.Layout "docs" -}}
+{{- $docsCss := resources.Get "scss/docs.scss" | toCSS $sassOptions | postCSS $postcssOptions -}}
 {{- $snippetsFile := resources.Get "js/snippets.js" | js.Build $esbuildOptions -}}
+
 {{- $esbuildParams := dict
   "isNetlify" (eq (getenv "NETLIFY") "true")
   "cssCdn" .Site.Params.cdn.css
   "cssCdnHash" .Site.Params.cdn.css_hash
+  "docsCss" $docsCss.Content
   "jsBundleCdn" .Site.Params.cdn.js_bundle
   "jsBundleCdnHash" .Site.Params.cdn.js_bundle_hash
-  "docsVersion" .Site.Params.docs_version
   "jsSnippetFile" $snippetsFile.Content
 -}}
 {{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
