@@ -408,31 +408,31 @@ And putting it to use in a navbar:
 Make the dropdown menu centered below the toggle with `.dropdown-center` on the parent element.
 
 {{< example >}}
-<div class="d-inline-grid d-md-inline-flex gap-4">
-  <div class="dropdown-center">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Centered dropdown
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Action two</a></li>
-      <li><a class="dropdown-item" href="#">Action three</a></li>
-    </ul>
-  </div>
+<div class="dropdown-center">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Centered dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
+{{< /example >}}
 
-  <div class="btn-group dropdown-center">
-    <button class="btn btn-secondary" type="button">
-      Centered dropdown
-    </button>
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="visually-hidden">Toggle Dropdown</span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Action two</a></li>
-      <li><a class="dropdown-item" href="#">Action three</a></li>
-    </ul>
-  </div>
+{{< example >}}
+<div class="btn-group dropdown-center">
+  <button class="btn btn-secondary" type="button">
+    Split dropdown
+  </button>
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
 </div>
 {{< /example >}}
 
