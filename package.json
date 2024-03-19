@@ -82,7 +82,7 @@
     "docs-serve": "hugo server --port 9001 --disableFastRender --noHTTPCache --renderToMemory --printPathWarnings --printUnusedTemplates",
     "docs-serve-only": "npx sirv-cli _site --port 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
-    "update-deps": "ncu -u -x jasmine,karma-browserstack-launcher,karma-rollup-preprocessor",
+    "update-deps": "ncu -u -x karma-browserstack-launcher,karma-rollup-preprocessor",
     "release": "npm-run-all dist release-sri docs-build release-zip*",
     "release-sri": "node build/generate-sri.mjs",
     "release-version": "node build/change-version.mjs",
@@ -103,9 +103,9 @@
     "@popperjs/core": "^2.11.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.9",
+    "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.1",
-    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-env": "^7.24.1",
     "@docsearch/js": "^3.6.0",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.0.4",
