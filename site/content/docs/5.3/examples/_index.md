@@ -21,12 +21,12 @@ aliases: "/examples/"
   {{ range $i, $example := $entry.examples -}}
     {{- $len := len $entry.examples -}}
     {{ if (eq $i 0) }}<div class="row">{{ end }}
-      {{ if $entry.external }}
+      {{ if $entry.external -}}
         <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="{{ $.Site.Params.github_org }}{{ $example.url }}/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="{{ urls.JoinPath $.Site.Params.github_org $example.url }}" target="_blank" rel="noopener">
                 {{ $example.name }}
               </a>
             </h3>
@@ -43,23 +43,29 @@ aliases: "/examples/"
             </p>
           </div>
         </div>
-      {{ else }}
+      {{ else -}}
         <div class="col-sm-6 col-md-3 mb-3">
-          <a class="d-block link-offset-1" href="/docs/{{ $.Site.Params.docs_version }}/examples/{{ $example.name | urlize }}/"{{ if in $example.name "RTL" }} hreflang="ar"{{ end }}>
-            <img class="img-thumbnail mb-3" srcset="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png,
-                                                    /docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}@2x.png 2x"
-                                            src="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+          <a class="d-block link-offset-1" href="{{ urls.JoinPath "/docs" $.Site.Params.docs_version "/examples" ($example.name | urlize) "/"}}"{{ if in $example.name "RTL" }} hreflang="ar"{{ end }}>
+            {{ $imageBasePath := urls.JoinPath "/docs" $.Site.Params.docs_version "assets/img/examples" -}}
+            {{- $imgPath := urls.JoinPath $imageBasePath (printf "%s%s" ($example.name | urlize) ".png") -}}
+            {{- $imgPath2x := urls.JoinPath $imageBasePath (printf "%s%s" ($example.name | urlize) "@2x.png") -}}
+            {{- with (imageConfig (path.Join "/site/static" $imgPath)) -}}
+            <img class="img-thumbnail mb-3"
+                 srcset="{{ $imgPath }}, {{ $imgPath2x }} 2x"
+                 src="{{ $imgPath }}"
+                 alt=""
+                 width="{{ .Width }}"
+                 height="{{ .Height }}"
+                 loading="lazy">
+            {{- end }}
             <h3 class="h5 mb-1">
               {{ $example.name }}
             </h3>
           </a>
           <p class="text-body-secondary">{{ $example.description }}</p>
         </div>
-      {{ end }}
-    {{ if (eq (add $i 1) $len) }}</div>{{ end }}
+      {{- end }}
+    {{ if (eq (add $i 1) $len) }}</div>{{ end -}}
   {{ end -}}
 </div>
 {{ end -}}
