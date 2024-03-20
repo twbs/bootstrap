@@ -61,7 +61,6 @@ params:
   github_org:           "https://github.com/twbs"
   repo:                 "https://github.com/twbs/bootstrap"
   twitter:              "getbootstrap"
-  slack:                "https://bootstrap-slack.herokuapp.com/"
   opencollective:       "https://opencollective.com/bootstrap"
   blog:                 "https://blog.getbootstrap.com/"
   expo:                 "https://expo.getbootstrap.com/"
