@@ -2,14 +2,17 @@ name: CSS (node-sass)
 
 on:
   push:
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
-  NODE: 16
+  NODE: 20
+
+permissions:
+  contents: read
 
 jobs:
   css:
@@ -17,10 +20,12 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "${{ env.NODE }}"
 
@@ -29,3 +34,16 @@ jobs:
           npx --package node-sass@latest node-sass --version
           npx --package node-sass@latest node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist-sass/css/
           ls -Al dist-sass/css
+
+      - name: Check built CSS files for Sass variables
+        shell: bash
+        run: |
+          SASS_VARS_FOUND=$(find "dist-sass/css/" -type f -name "*.css" -print0 | xargs -0 --no-run-if-empty grep -F "\$" || true)
+          if [[ -z "$SASS_VARS_FOUND" ]]; then
+            echo "All good, no Sass variables found!"
+            exit 0
+          else
+            echo "Found $(echo "$SASS_VARS_FOUND" | wc -l | bc) Sass variables:"
+            echo "$SASS_VARS_FOUND"
+            exit 1
+          fi

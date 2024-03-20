@@ -1,10 +1,12 @@
 .toast {
   // scss-docs-start toast-css-vars
+  --#{$prefix}toast-zindex: #{$zindex-toast};
   --#{$prefix}toast-padding-x: #{$toast-padding-x};
   --#{$prefix}toast-padding-y: #{$toast-padding-y};
+  --#{$prefix}toast-spacing: #{$toast-spacing};
   --#{$prefix}toast-max-width: #{$toast-max-width};
   @include rfs($toast-font-size, --#{$prefix}toast-font-size);
-  --#{$prefix}toast-color: #{$toast-color}; // stylelint-disable-line custom-property-empty-line-before
+  --#{$prefix}toast-color: #{$toast-color};
   --#{$prefix}toast-bg: #{$toast-background-color};
   --#{$prefix}toast-border-width: #{$toast-border-width};
   --#{$prefix}toast-border-color: #{$toast-border-color};
@@ -17,7 +19,7 @@
 
   width: var(--#{$prefix}toast-max-width);
   max-width: 100%;
-  @include font-size($toast-font-size);
+  @include font-size(var(--#{$prefix}toast-font-size));
   color: var(--#{$prefix}toast-color);
   pointer-events: auto;
   background-color: var(--#{$prefix}toast-bg);
@@ -36,14 +38,16 @@
 }
 
 .toast-container {
+  --#{$prefix}toast-zindex: #{$zindex-toast};
+
   position: absolute;
-  z-index: $zindex-toast;
+  z-index: var(--#{$prefix}toast-zindex);
   width: max-content;
   max-width: 100%;
   pointer-events: none;
 
   > :not(:last-child) {
-    margin-bottom: $toast-spacing;
+    margin-bottom: var(--#{$prefix}toast-spacing);
   }
 }
 
@@ -58,7 +62,7 @@
   @include border-top-radius(calc(var(--#{$prefix}toast-border-radius) - var(--#{$prefix}toast-border-width)));
 
   .btn-close {
-    margin-right: calc(var(--#{$prefix}toast-padding-x) * -.5); // stylelint-disable-line function-disallowed-list
+    margin-right: calc(-.5 * var(--#{$prefix}toast-padding-x)); // stylelint-disable-line function-disallowed-list
     margin-left: var(--#{$prefix}toast-padding-x);
   }
 }

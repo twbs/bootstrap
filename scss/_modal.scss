@@ -41,7 +41,6 @@
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  pointer-events: none;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
@@ -127,14 +126,13 @@
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: var(--#{$prefix}modal-header-padding);
   border-bottom: var(--#{$prefix}modal-header-border-width) solid var(--#{$prefix}modal-header-border-color);
   @include border-top-radius(var(--#{$prefix}modal-inner-border-radius));
 
   .btn-close {
     padding: calc(var(--#{$prefix}modal-header-padding-y) * .5) calc(var(--#{$prefix}modal-header-padding-x) * .5);
-    margin: calc(var(--#{$prefix}modal-header-padding-y) * -.5) calc(var(--#{$prefix}modal-header-padding-x) * -.5) calc(var(--#{$prefix}modal-header-padding-y) * -.5) auto;
+    margin: calc(-.5 * var(--#{$prefix}modal-header-padding-y)) calc(-.5 * var(--#{$prefix}modal-header-padding-x)) calc(-.5 * var(--#{$prefix}modal-header-padding-y)) auto;
   }
 }
 
@@ -176,25 +174,16 @@
 
 // Scale up the modal
 @include media-breakpoint-up(sm) {
+  .modal {
+    --#{$prefix}modal-margin: #{$modal-dialog-margin-y-sm-up};
+    --#{$prefix}modal-box-shadow: #{$modal-content-box-shadow-sm-up};
+  }
+
   // Automatically set modal's width for larger viewports
   .modal-dialog {
-    --#{$prefix}modal-margin: #{$modal-dialog-margin-y-sm-up};
-
     max-width: var(--#{$prefix}modal-width);
     margin-right: auto;
     margin-left: auto;
-  }
-
-  .modal-dialog-scrollable {
-    height: calc(100% - var(--#{$prefix}modal-margin) * 2);
-  }
-
-  .modal-dialog-centered {
-    min-height: calc(100% - var(--#{$prefix}modal-margin) * 2);
-  }
-
-  .modal-content {
-    --#{$prefix}modal-box-shadow: #{$modal-content-box-shadow-sm-up};
   }
 
   .modal-sm {

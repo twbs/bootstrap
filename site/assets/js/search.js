@@ -2,52 +2,54 @@
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 
-(function () {
-  'use strict'
+/*!
+ * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
+ * Copyright 2024 The Bootstrap Authors
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ * For details, see https://creativecommons.org/licenses/by/3.0/.
+ */
 
-  var inputElement = document.getElementById('search-input')
+import docsearch from '@docsearch/js'
+// https://gohugo.io/hugo-pipes/js/#options
+// eslint-disable-next-line import/no-unresolved
+import { appId, apiKey, indexName } from '@params';
 
-  if (!window.docsearch || !inputElement) {
+(() => {
+  const searchElement = document.getElementById('docsearch')
+
+  if (!searchElement) {
     return
   }
 
-  var siteDocsVersion = inputElement.getAttribute('data-bd-docs-version')
+  const siteDocsVersion = searchElement.getAttribute('data-bd-docs-version')
 
-  document.addEventListener('keydown', function (event) {
-    if (event.ctrlKey && event.key === '/') {
-      event.preventDefault()
-      inputElement.focus()
-    }
-  })
-
-  window.docsearch({
-    apiKey: '5990ad008512000bba2cf951ccf0332f',
-    indexName: 'bootstrap',
-    inputSelector: '#search-input',
-    algoliaOptions: {
-      facetFilters: ['version:' + siteDocsVersion]
+  docsearch({
+    apiKey,
+    indexName,
+    appId,
+    container: searchElement,
+    searchParameters: {
+      facetFilters: [`version:${siteDocsVersion}`]
     },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        var liveUrl = 'https://getbootstrap.com/'
+    transformItems(items) {
+      return items.map(item => {
+        const liveUrl = 'https://getbootstrap.com/'
 
-        hit.url = window.location.origin.startsWith(liveUrl) ?
+        item.url = window.location.origin.startsWith(liveUrl) ?
           // On production, return the result as is
-          hit.url :
-          // On development or Netlify, replace `hit.url` with a trailing slash,
+          item.url :
+          // On development or Netlify, replace `item.url` with a trailing slash,
           // so that the result link is relative to the server root
-          hit.url.replace(liveUrl, '/')
+          item.url.replace(liveUrl, '/')
 
         // Prevent jumping to first header
-        if (hit.anchor === 'content') {
-          hit.url = hit.url.replace(/#content$/, '')
-          hit.anchor = null
+        if (item.anchor === 'content') {
+          item.url = item.url.replace(/#content$/, '')
+          item.anchor = null
         }
 
-        return hit
+        return item
       })
-    },
-    // Set debug to `true` if you want to inspect the dropdown
-    debug: false
+    }
   })
 })()

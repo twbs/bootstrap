@@ -1,84 +1,24 @@
 /*!
-  * Bootstrap button.js v5.1.3 (https://getbootstrap.com/)
-  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap button.js v5.3.3 (https://getbootstrap.com/)
+  * Copyright 2011-2024 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/event-handler.js'), require('./base-component.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/event-handler', './base-component'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Button = factory(global.EventHandler, global.Base));
-})(this, (function (EventHandler, BaseComponent) { 'use strict';
-
-  const _interopDefaultLegacy = e => e && typeof e === 'object' && 'default' in e ? e : { default: e };
-
-  const EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
-  const BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./base-component.js'), require('./dom/event-handler.js'), require('./util/index.js')) :
+  typeof define === 'function' && define.amd ? define(['./base-component', './dom/event-handler', './util/index'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Button = factory(global.BaseComponent, global.EventHandler, global.Index));
+})(this, (function (BaseComponent, EventHandler, index_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): util/index.js
+   * Bootstrap button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
 
-  const getjQuery = () => {
-    const {
-      jQuery
-    } = window;
-
-    if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
-      return jQuery;
-    }
-
-    return null;
-  };
-
-  const DOMContentLoadedCallbacks = [];
-
-  const onDOMContentLoaded = callback => {
-    if (document.readyState === 'loading') {
-      // add listener on the first call when the document is in loading state
-      if (!DOMContentLoadedCallbacks.length) {
-        document.addEventListener('DOMContentLoaded', () => {
-          DOMContentLoadedCallbacks.forEach(callback => callback());
-        });
-      }
-
-      DOMContentLoadedCallbacks.push(callback);
-    } else {
-      callback();
-    }
-  };
-
-  const defineJQueryPlugin = plugin => {
-    onDOMContentLoaded(() => {
-      const $ = getjQuery();
-      /* istanbul ignore if */
-
-      if ($) {
-        const name = plugin.NAME;
-        const JQUERY_NO_CONFLICT = $.fn[name];
-        $.fn[name] = plugin.jQueryInterface;
-        $.fn[name].Constructor = plugin;
-
-        $.fn[name].noConflict = () => {
-          $.fn[name] = JQUERY_NO_CONFLICT;
-          return plugin.jQueryInterface;
-        };
-      }
-    });
-  };
 
   /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.3): button.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /**
-   * ------------------------------------------------------------------------
    * Constants
-   * ------------------------------------------------------------------------
    */
 
   const NAME = 'button';
@@ -88,57 +28,50 @@
   const CLASS_NAME_ACTIVE = 'active';
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="button"]';
   const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
+
   /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
+   * Class definition
    */
 
-  class Button extends BaseComponent__default.default {
+  class Button extends BaseComponent {
     // Getters
     static get NAME() {
       return NAME;
-    } // Public
+    }
 
-
+    // Public
     toggle() {
       // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
       this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE));
-    } // Static
+    }
 
-
+    // Static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Button.getOrCreateInstance(this);
-
         if (config === 'toggle') {
           data[config]();
         }
       });
     }
-
   }
+
   /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
+   * Data API implementation
    */
 
-
-  EventHandler__default.default.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
+  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
     event.preventDefault();
     const button = event.target.closest(SELECTOR_DATA_TOGGLE);
     const data = Button.getOrCreateInstance(button);
     data.toggle();
   });
+
   /**
-   * ------------------------------------------------------------------------
    * jQuery
-   * ------------------------------------------------------------------------
-   * add .Button to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(Button);
+  index_js.defineJQueryPlugin(Button);
 
   return Button;
 

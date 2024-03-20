@@ -8,7 +8,7 @@
   --#{$prefix}nav-link-padding-x: #{$nav-link-padding-x};
   --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
   @include rfs($nav-link-font-size, --#{$prefix}nav-link-font-size);
-  --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight}; // stylelint-disable-line custom-property-empty-line-before
+  --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight};
   --#{$prefix}nav-link-color: #{$nav-link-color};
   --#{$prefix}nav-link-hover-color: #{$nav-link-hover-color};
   --#{$prefix}nav-link-disabled-color: #{$nav-link-disabled-color};
@@ -28,6 +28,8 @@
   font-weight: var(--#{$prefix}nav-link-font-weight);
   color: var(--#{$prefix}nav-link-color);
   text-decoration: if($link-decoration == none, null, none);
+  background: none;
+  border: 0;
   @include transition($nav-link-transition);
 
   &:hover,
@@ -36,8 +38,14 @@
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
+  &:focus-visible {
+    outline: 0;
+    box-shadow: $nav-link-focus-box-shadow;
+  }
+
   // Disabled state lightens text
-  &.disabled {
+  &.disabled,
+  &:disabled {
     color: var(--#{$prefix}nav-link-disabled-color);
     pointer-events: none;
     cursor: default;
@@ -62,8 +70,7 @@
   border-bottom: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
 
   .nav-link {
-    margin-bottom: calc(var(--#{$prefix}nav-tabs-border-width) * -1); // stylelint-disable-line function-disallowed-list
-    background: none;
+    margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
     border: var(--#{$prefix}nav-tabs-border-width) solid transparent;
     @include border-top-radius(var(--#{$prefix}nav-tabs-border-radius));
 
@@ -72,12 +79,6 @@
       // Prevents active .nav-link tab overlapping focus outline of previous/next .nav-link
       isolation: isolate;
       border-color: var(--#{$prefix}nav-tabs-link-hover-border-color);
-    }
-
-    &.disabled {
-      color: var(--#{$prefix}nav-link-disabled-color);
-      background-color: transparent;
-      border-color: transparent;
     }
   }
 
@@ -90,7 +91,7 @@
 
   .dropdown-menu {
     // Make dropdown border overlap tab border
-    margin-top: calc(var(--#{$prefix}nav-tabs-border-width) * -1); // stylelint-disable-line function-disallowed-list
+    margin-top: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
     // Remove the top rounded corners here since there is a hard edge above the menu
     @include border-top-radius(0);
   }
@@ -109,8 +110,6 @@
   // scss-docs-end nav-pills-css-vars
 
   .nav-link {
-    background: none;
-    border: 0;
     @include border-radius(var(--#{$prefix}nav-pills-border-radius));
   }
 
@@ -118,6 +117,39 @@
   .show > .nav-link {
     color: var(--#{$prefix}nav-pills-link-active-color);
     @include gradient-bg(var(--#{$prefix}nav-pills-link-active-bg));
+  }
+}
+
+
+//
+// Underline
+//
+
+.nav-underline {
+  // scss-docs-start nav-underline-css-vars
+  --#{$prefix}nav-underline-gap: #{$nav-underline-gap};
+  --#{$prefix}nav-underline-border-width: #{$nav-underline-border-width};
+  --#{$prefix}nav-underline-link-active-color: #{$nav-underline-link-active-color};
+  // scss-docs-end nav-underline-css-vars
+
+  gap: var(--#{$prefix}nav-underline-gap);
+
+  .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: var(--#{$prefix}nav-underline-border-width) solid transparent;
+
+    &:hover,
+    &:focus {
+      border-bottom-color: currentcolor;
+    }
+  }
+
+  .nav-link.active,
+  .show > .nav-link {
+    font-weight: $font-weight-bold;
+    color: var(--#{$prefix}nav-underline-link-active-color);
+    border-bottom-color: currentcolor;
   }
 }
 

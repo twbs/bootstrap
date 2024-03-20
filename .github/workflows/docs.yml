@@ -2,14 +2,17 @@ name: Docs
 
 on:
   push:
-    branches-ignore:
-      - "dependabot/**"
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
 env:
   FORCE_COLOR: 2
-  NODE: 16
+  NODE: 20
+
+permissions:
+  contents: read
 
 jobs:
   docs:
@@ -17,10 +20,12 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "${{ env.NODE }}"
           cache: npm

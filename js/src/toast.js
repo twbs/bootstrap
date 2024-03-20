@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): toast.js
+ * Bootstrap toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, reflow } from './util/index'
-import EventHandler from './dom/event-handler'
-import BaseComponent from './base-component'
-import { enableDismissTrigger } from './util/component-functions'
+import BaseComponent from './base-component.js'
+import EventHandler from './dom/event-handler.js'
+import { enableDismissTrigger } from './util/component-functions.js'
+import { defineJQueryPlugin, reflow } from './util/index.js'
 
 /**
  * Constants
@@ -100,7 +100,7 @@ class Toast extends BaseComponent {
   }
 
   hide() {
-    if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
+    if (!this.isShown()) {
       return
     }
 
@@ -123,11 +123,15 @@ class Toast extends BaseComponent {
   dispose() {
     this._clearTimeout()
 
-    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
+    if (this.isShown()) {
       this._element.classList.remove(CLASS_NAME_SHOW)
     }
 
     super.dispose()
+  }
+
+  isShown() {
+    return this._element.classList.contains(CLASS_NAME_SHOW)
   }
 
   // Private
@@ -149,15 +153,20 @@ class Toast extends BaseComponent {
   _onInteraction(event, isInteracting) {
     switch (event.type) {
       case 'mouseover':
-      case 'mouseout':
+      case 'mouseout': {
         this._hasMouseInteraction = isInteracting
         break
+      }
+
       case 'focusin':
-      case 'focusout':
+      case 'focusout': {
         this._hasKeyboardInteraction = isInteracting
         break
-      default:
+      }
+
+      default: {
         break
+      }
     }
 
     if (isInteracting) {

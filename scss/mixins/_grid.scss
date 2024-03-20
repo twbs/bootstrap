@@ -51,12 +51,12 @@
 // Row columns
 //
 // Specify on a parent element(e.g., .row) to force immediate children into NN
-// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// number of columns. Supports wrapping to new lines, but does not do a Masonry
 // style grid.
 @mixin row-cols($count) {
   > * {
     flex: 0 0 auto;
-    width: divide(100%, $count);
+    width: percentage(divide(1, $count));
   }
 }
 
@@ -138,7 +138,7 @@
           }
         }
 
-        // Start with `1` because `0` is and invalid value.
+        // Start with `1` because `0` is an invalid value.
         // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
         @for $i from 1 through ($columns - 1) {
           .g-start#{$infix}-#{$i} {

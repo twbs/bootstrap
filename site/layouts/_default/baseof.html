@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="auto">
   <head>
     {{ partial "header" . }}
   </head>
   {{ block "body_override" . }}<body>{{ end }}
     {{ partial "skippy" . }}
+    {{ partial "icons" . }}
 
     {{ partial "docs-navbar" . }}
 
