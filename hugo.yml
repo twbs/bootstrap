@@ -8,8 +8,6 @@ security:
     getenv:
       - ^HUGO_
       - NETLIFY
-  gotemplates:
-    allowActionJSTmpl: true
 
 markup:
   goldmark:
@@ -20,6 +18,9 @@ markup:
   tableOfContents:
     startLevel:         2
     endLevel:           6
+
+build:
+  noJSConfigInAssets:   true
 
 buildDrafts:            true
 buildFuture:            true
@@ -44,6 +45,8 @@ module:
       target:           layouts
     - source:           site/static
       target:           static
+    - source:           node_modules/@docsearch/css
+      target:           assets/scss/@docsearch/css
     - source:           site/static/docs/5.3/assets/img/favicons/apple-touch-icon.png
       target:           static/apple-touch-icon.png
     - source:           site/static/docs/5.3/assets/img/favicons/favicon.ico
@@ -69,6 +72,11 @@ params:
 
   analytics:
     fathom_site:        "ITUSEYJG"
+
+  algolia:
+    appId:              "AK7KMZKZHQ"
+    apiKey:             "3151f502c7b9e9dafd5e6372b691a24e"
+    indexName:          "bootstrap"
 
   download:
     source:             "https://github.com/twbs/bootstrap/archive/v5.3.3.zip"

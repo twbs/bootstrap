@@ -199,6 +199,15 @@
     },
     {
       "files": [
+        "site/assets/js/**"
+      ],
+      "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2020
+      }
+    },
+    {
+      "files": [
         "**/*.md"
       ],
       "plugins": [
