@@ -7,13 +7,15 @@
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="{{ .Site.Params.docs_version }}">
 
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{ if (ne .Page.Layout "examples") -}}
+<link rel="preconnect" href="https://{{ .Site.Params.algolia.appId | lower }}-dsn.algolia.net" crossorigin>
+{{- end }}
+
 {{ partial "header-preload-thumbnail" . }}
 
 <title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.subtitle | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
-
-<link rel="canonical" href="{{ .Permalink }}">
-
-<link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin>
 
 {{ with .Params.robots -}}
 <meta name="robots" content="{{ . }}">
