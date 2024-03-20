@@ -8,20 +8,35 @@
 
 import { execFile } from 'node:child_process'
 import fs from 'node:fs/promises'
+import path from 'node:path'
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
+import { globby } from 'globby'
+
+const pkg = new URL('../package.json', import.meta.url)
+
+// eslint-disable camelcase
+const { config: { version_short } } = JSON.parse(await fs.readFile(pkg, 'utf8'))
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const VERBOSE = process.argv.includes('--verbose')
 const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-run')
 
 // These are the files we only care about replacing the version
-const FILES = [
+const GLOB = [
   'README.md',
   'hugo.yml',
   'js/src/base-component.js',
   'package.js',
   'scss/mixins/_banner.scss',
-  'site/data/docs-versions.yml'
+  'site/data/docs-versions.yml',
+  'site/**/*.md'
 ]
+const GLOBBY_OPTIONS = {
+  cwd: path.join(__dirname, '..'),
+  gitignore: true
+}
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
@@ -33,6 +48,9 @@ function regExpQuoteReplacement(string) {
 }
 
 async function replaceRecursively(file, oldVersion, newVersion) {
+  // aliases:(?:\s"|\n\s*-")?.*|(?:\n\s*-\s?")\/docs\/5\.3.*
+  // regex to limit search in front matter: ---\n.*?\n--- (gs)
+
   const originalString = await fs.readFile(file, 'utf8')
   const newString = originalString
     .replace(
@@ -101,8 +119,10 @@ async function main(args) {
   bumpNpmVersion(newVersion)
 
   try {
+    const files = await globby(GLOB, GLOBBY_OPTIONS)
+
     await Promise.all(
-      FILES.map(file => replaceRecursively(file, oldVersion, newVersion))
+      files.map(file => replaceRecursively(file, oldVersion, newVersion))
     )
   } catch (error) {
     console.error(error)
