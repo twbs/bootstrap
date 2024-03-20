@@ -5,6 +5,7 @@ extra_css:
   - "../cheatsheet/cheatsheet.rtl.css"
 extra_js:
   - src: "../cheatsheet/cheatsheet.js"
+    defer: true
 body_class: "bg-body-tertiary"
 direction: rtl
 ---
@@ -23,7 +24,7 @@ direction: rtl
   <nav class="small" id="toc">
     <ul class="list-unstyled">
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">المحتوى</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">المحتوى</button>
         <ul class="list-unstyled ps-3 collapse" id="contents-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#typography">النصوص</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#images">الصور</a></li>
@@ -32,7 +33,7 @@ direction: rtl
         </ul>
       </li>
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">النماذج</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">النماذج</button>
         <ul class="list-unstyled ps-3 collapse" id="forms-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#overview">نظرة عامة</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#disabled-forms">الحقول المعطلة</a></li>
@@ -43,7 +44,7 @@ direction: rtl
         </ul>
       </li>
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">مكونات</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">مكونات</button>
         <ul class="list-unstyled ps-3 collapse" id="components-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#accordion">المطوية</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#alerts">الإنذارات</a></li>
