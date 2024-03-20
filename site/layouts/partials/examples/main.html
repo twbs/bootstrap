@@ -7,7 +7,7 @@
       <p>
         <strong>RTL is still experimental</strong> and will evolve with feedback. Spotted something or have an improvement to suggest?
       </p>
-      <p><a href="{{ $.Site.Params.repo }}/issues/new/choose">Please open an issue.</a></p>
+      <p><a href="{{ urls.JoinPath $.Site.Params.repo "issues/new/choose" }}">Please open an issue.</a></p>
     </div>
   {{ end -}}
   {{ range $i, $example := $entry.examples -}}
@@ -24,11 +24,9 @@
             </h3>
             <p class="text-body-secondary">{{ $example.description }}</p>
             <p>
-              {{- $indexPath := "index.html" -}}
-              {{- if $example.indexPath -}}
-                {{- $indexPath = $example.indexPath -}}
-              {{- end }}
-              <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs{{ $example.url }}?file={{ $indexPath | urlquery }}" target="_blank" rel="noopener">
+              {{- $indexPath := default "index.html" $example.indexPath -}}
+              {{- $stackBlitzUrl := printf "%s%s%s" (urls.JoinPath "https://stackblitz.com/github/twbs" $example.url) "?file=" ($indexPath | urlquery) }}
+              <a class="icon-link small link-secondary link-offset-1" href="{{ $stackBlitzUrl }}" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
                 Edit in StackBlitz
               </a>
@@ -37,10 +35,12 @@
         </div>
       {{ else -}}
         <div class="col-sm-6 col-md-3 mb-3">
-          <a class="d-block link-offset-1" href="{{ urls.JoinPath "/docs" $.Site.Params.docs_version "/examples" ($example.name | urlize) "/"}}"{{ if in $example.name "RTL" }} hreflang="ar"{{ end }}>
+          {{- $exampleNameUrlized := $example.name | urlize -}}
+          {{- $exampleUrl := urls.JoinPath "/docs" $.Site.Params.docs_version "/examples" $exampleNameUrlized "/" }}
+          <a class="d-block link-offset-1" href="{{ $exampleUrl }}"{{ if in $example.name "RTL" }} hreflang="ar"{{ end }}>
             {{ $imageBasePath := urls.JoinPath "/docs" $.Site.Params.docs_version "assets/img/examples" -}}
-            {{- $imgPath := urls.JoinPath $imageBasePath (printf "%s%s" ($example.name | urlize) ".png") -}}
-            {{- $imgPath2x := urls.JoinPath $imageBasePath (printf "%s%s" ($example.name | urlize) "@2x.png") -}}
+            {{- $imgPath := urls.JoinPath $imageBasePath (printf "%s.png" $exampleNameUrlized) -}}
+            {{- $imgPath2x := urls.JoinPath $imageBasePath (printf "%s@2x.png" $exampleNameUrlized) -}}
             {{- with (imageConfig (path.Join "/site/static" $imgPath)) -}}
             <img class="img-thumbnail mb-3"
                  srcset="{{ $imgPath }}, {{ $imgPath2x }} 2x"
