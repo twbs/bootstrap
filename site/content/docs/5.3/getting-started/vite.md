@@ -5,6 +5,9 @@ description: The official guide for how to include and bundle Bootstrap's CSS an
 group: getting-started
 toc: true
 thumbnail: guides/bootstrap-vite@2x.png
+added:
+  show_badge: false
+  version: "5.2"
 ---
 
 <img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png" width="2000" height="1000" alt="">

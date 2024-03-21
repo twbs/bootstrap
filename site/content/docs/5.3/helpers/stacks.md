@@ -4,7 +4,8 @@ title: Stacks
 description: Shorthand helpers that build on top of our flexbox utilities to make component layout faster and easier than ever.
 group: helpers
 toc: true
-added: "5.1"
+added:
+  version: "5.1"
 ---
 
 Stacks offer a shortcut for applying a number of flexbox properties to quickly and easily create layouts in Bootstrap. All credit for the concept and implementation goes to the open source [Pylon project](https://almonk.github.io/pylon/).
