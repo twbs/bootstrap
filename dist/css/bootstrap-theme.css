@@ -59,7 +59,7 @@
   \*------------------------------------*/
 }
 .select2-container--bootstrap .select2-selection {
-  font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+  font-family: "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #fff;
   background-color: #121421;
@@ -73,7 +73,7 @@
   border-radius: 12px;
 }
 .select2-container--bootstrap .select2-search--dropdown .select2-search__field {
-  font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+  font-family: "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   color: #fff;
   background-color: #121421;
@@ -162,7 +162,7 @@
 .select2-container--bootstrap .select2-results__group {
   display: block;
   padding: 6px 12px;
-  font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+  font-family: "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.42857143;
   color: #00b1ff;
@@ -241,7 +241,7 @@
 .select2-container--bootstrap .select2-results > .select2-results__options {
   max-height: 200px;
   overflow-y: auto;
-  font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+  font-family: "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .select2-container--bootstrap .select2-selection--single {
   height: 34px;
@@ -1699,7 +1699,7 @@ fieldset[disabled] .btn-inverse.active {
 .main .page-header > h1 {
   margin-top: 0;
   overflow: hidden;
-  font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace;
+  font-family: "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   text-overflow: ellipsis;
   white-space: nowrap;
