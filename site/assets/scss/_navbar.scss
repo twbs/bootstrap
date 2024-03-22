@@ -57,6 +57,10 @@
       color: $white;
     }
 
+    &:focus-visible {
+      outline: auto;
+    }
+
     &.active {
       font-weight: 600;
       color: $white;
