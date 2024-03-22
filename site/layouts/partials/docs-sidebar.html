@@ -36,7 +36,8 @@
     {{- else }}
       <li class="bd-links-span-all mt-1 mb-3 mx-4 border-top"></li>
       <li class="bd-links-span-all">
-        <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/" class="bd-links-link d-inline-block rounded small {{ if $is_active_group }} active{{ end }}"{{ if $is_active_group }} aria-current="page"{{ end }}>
+        {{- $href := urls.JoinPath "/docs" $.Site.Params.docs_version $group_slug "/" }}
+        <a href="{{ $href }}" class="bd-links-link d-inline-block rounded small{{ if $is_active_group }} active{{ end }}"{{ if $is_active_group }} aria-current="page"{{ end }}>
           {{ $group.title }}
         </a>
       </li>
