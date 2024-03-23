@@ -179,6 +179,30 @@ describe('Offcanvas', () => {
         offCanvas.show()
       })
     })
+
+    it('should not call `hide` on resize, if `hideNotFixedOnWindowResizing` is false', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas-lg"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, {
+          hideNotFixedOnWindowResizing: false
+        })
+
+        const spy = spyOn(offCanvas, 'hide').and.callThrough()
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          const resizeEvent = createEvent('resize')
+          offCanvasEl.style.removeProperty('position')
+
+          window.dispatchEvent(resizeEvent)
+          expect(spy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
   })
 
   describe('config', () => {
@@ -192,10 +216,11 @@ describe('Offcanvas', () => {
       expect(offCanvas._backdrop._config.isVisible).toBeTrue()
       expect(offCanvas._config.keyboard).toBeTrue()
       expect(offCanvas._config.scroll).toBeFalse()
+      expect(offCanvas._config.hideNotFixedOnWindowResizing).toBeTrue()
     })
 
     it('should read data attributes and override default config', () => {
-      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false"></div>'
+      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false" data-bs-hide-not-fixed-on-window-resizing="false"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
@@ -204,6 +229,7 @@ describe('Offcanvas', () => {
       expect(offCanvas._backdrop._config.isVisible).toBeFalse()
       expect(offCanvas._config.keyboard).toBeFalse()
       expect(offCanvas._config.scroll).toBeTrue()
+      expect(offCanvas._config.hideNotFixedOnWindowResizing).toBeFalse()
     })
 
     it('given a config object must override data attributes', () => {
@@ -213,11 +239,13 @@ describe('Offcanvas', () => {
       const offCanvas = new Offcanvas(offCanvasEl, {
         backdrop: true,
         keyboard: true,
-        scroll: false
+        scroll: false,
+        hideNotFixedOnWindowResizing: false
       })
       expect(offCanvas._config.backdrop).toBeTrue()
       expect(offCanvas._config.keyboard).toBeTrue()
       expect(offCanvas._config.scroll).toBeFalse()
+      expect(offCanvas._config.hideNotFixedOnWindowResizing).toBeFalse()
     })
   })
 

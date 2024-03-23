@@ -49,13 +49,15 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
 const Default = {
   backdrop: true,
   keyboard: true,
-  scroll: false
+  scroll: false,
+  hideNotFixedOnWindowResizing: true
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
-  scroll: 'boolean'
+  scroll: 'boolean',
+  hideNotFixedOnWindowResizing: 'boolean'
 }
 
 /**
@@ -266,7 +268,10 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 EventHandler.on(window, EVENT_RESIZE, () => {
   for (const element of SelectorEngine.find('[aria-modal][class*=show][class*=offcanvas-]')) {
     if (getComputedStyle(element).position !== 'fixed') {
-      Offcanvas.getOrCreateInstance(element).hide()
+      const data = Offcanvas.getOrCreateInstance(element)
+      if (data._config.hideNotFixedOnWindowResizing) {
+        data.hide()
+      }
     }
   }
 })
