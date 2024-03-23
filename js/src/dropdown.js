@@ -71,6 +71,7 @@ const PLACEMENT_BOTTOMCENTER = 'bottom'
 const Default = {
   autoClose: true,
   boundary: 'clippingParents',
+  cycling: true,
   display: 'dynamic',
   offset: [0, 2],
   popperConfig: null,
@@ -80,6 +81,7 @@ const Default = {
 const DefaultType = {
   autoClose: '(boolean|string)',
   boundary: '(string|element)',
+  cycling: 'boolean',
   display: 'string',
   offset: '(array|string|function)',
   popperConfig: '(null|object|function)',
@@ -331,9 +333,8 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // if target isn't included in items (e.g. when expanding the dropdown)
-    // allow cycling to get the last item in case key equals ARROW_UP_KEY
-    getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus()
+    // Allow cycling with up and down arrows
+    getNextActiveElement(items, target, key === ARROW_DOWN_KEY, this._config.cycling || !items.includes(target)).focus()
   }
 
   // Static
