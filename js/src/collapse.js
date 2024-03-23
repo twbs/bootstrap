@@ -32,6 +32,7 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_COLLAPSE = 'collapse'
 const CLASS_NAME_COLLAPSING = 'collapsing'
+const CLASS_NAME_TRIGGER_COLLAPSING = `trigger-${CLASS_NAME_COLLAPSING}`
 const CLASS_NAME_COLLAPSED = 'collapsed'
 const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`
 const CLASS_NAME_HORIZONTAL = 'collapse-horizontal'
@@ -183,11 +184,7 @@ class Collapse extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
-      const element = SelectorEngine.getElementFromSelector(trigger)
-
-      if (element && !this._isShown(element)) {
-        this._addAriaAndCollapsedClass([trigger], false)
-      }
+      trigger.classList.add(CLASS_NAME_TRIGGER_COLLAPSING)
     }
 
     this._isTransitioning = true
@@ -196,6 +193,16 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._element.classList.add(CLASS_NAME_COLLAPSE)
+
+      for (const trigger of this._triggerArray) {
+        const element = SelectorEngine.getElementFromSelector(trigger)
+        trigger.classList.remove(CLASS_NAME_TRIGGER_COLLAPSING)
+
+        if (element && !this._isShown(element)) {
+          this._addAriaAndCollapsedClass([trigger], false)
+        }
+      }
+
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
