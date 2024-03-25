@@ -654,6 +654,29 @@ Add `.active` to items in the dropdown to **style them as active**. To convey th
 </ul>
 {{< /example >}}
 
+### Click Color
+
+By adding the class name of the Buttons Variants,you can adjust the background color of the items option when the mouse is pressed.
+
+Note that when items contains the `.active` class, the background style does not change.
+
+{{< example >}}
+<ul class="dropdown-menu">
+  <li><a class="dropdown-item btn" href="#">btn</a></li>
+  <li><a class="dropdown-item btn active" href="#" aria-current="true">Active btn</a></li>
+
+  <li><a class="dropdown-item btn btn-primary" href="#">btn-primary</a></li>
+  <li><a class="dropdown-item btn btn-secondary" href="#">btn-secondary</a></li>
+  <li><a class="dropdown-item btn btn-success" href="#">btn-success</a></li>
+  <li><a class="dropdown-item btn btn-danger" href="#">btn-danger</a></li>
+  <li><a class="dropdown-item btn btn-warning" href="#">btn-warning</a></li>
+  <li><a class="dropdown-item btn btn-info" href="#">btn-info</a></li>
+  <li><a class="dropdown-item btn btn-light" href="#">btn-light</a></li>
+  <li><a class="dropdown-item btn btn-dark" href="#">btn-dark</a></li>
+  <li><a class="dropdown-item btn btn-link" href="#">btn-link</a></li>
+</ul>
+{{< /example >}}
+
 ### Disabled
 
 Add `.disabled` to items in the dropdown to **style them as disabled**.
