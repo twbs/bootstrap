@@ -1,2 +1,9 @@
-{{- $pageToReference := path.Join "docs" $.Site.Params.docs_version (.Get 0) -}}
+{{- $urlPath := .Get "urlPath" -}}
+
+{{- if and (not $urlPath) (index .Params 0) -}}
+  {{- $urlPath = index .Params 0 -}}
+{{- end -}}
+
+{{- $pageToReference := path.Join "docs" $.Site.Params.docs_version $urlPath -}}
+
 {{- relref . $pageToReference | relURL -}}
