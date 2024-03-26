@@ -1,0 +1,14 @@
+{{- with $.Page.Params.thumbnail -}}
+  {{- $imgExt := path.Ext $.Page.Params.thumbnail -}}
+  {{- $imgDir := path.Dir $.Page.Params.thumbnail -}}
+  {{- $imgBasePath := path.Join "/docs" $.Site.Params.docs_version "assets/img" $imgDir -}}
+  {{- $imgFilename := urls.JoinPath $imgBasePath (printf "%s%s" (path.BaseName $.Page.Params.thumbnail) $imgExt) -}}
+  {{- $imgFilename2x := urls.JoinPath $imgBasePath (printf "%s@2x%s" (path.BaseName $.Page.Params.thumbnail) $imgExt) -}}
+  {{- $localImgPath := path.Join "/site/static" $imgFilename -}}
+  {{- $localImgPath2x := path.Join "/site/static" $imgFilename2x -}}
+  {{- if (not (and (fileExists $localImgPath) (fileExists $localImgPath2x))) -}}
+    {{- errorf "File does not exist! %s or %s" $localImgPath $localImgPath2x -}}
+  {{- else -}}
+    <link rel="preload" href="{{ $imgFilename }}" imagesrcset="{{ $imgFilename }}, {{ $imgFilename2x }} 2x" as="image">
+  {{- end -}}
+{{- end -}}

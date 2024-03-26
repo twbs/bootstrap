@@ -13,6 +13,8 @@
 <link rel="preconnect" href="https://{{ .Site.Params.algolia.appId | lower }}-dsn.algolia.net" crossorigin>
 {{- end }}
 
+{{ partial "header-preload-thumbnail" . }}
+
 <title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.subtitle | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
 
 {{ with .Params.robots -}}
