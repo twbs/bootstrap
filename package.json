@@ -113,7 +113,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.5",
     "@stackblitz/sdk": "^1.9.0",
-    "autoprefixer": "^10.4.18",
+    "autoprefixer": "^10.4.19",
     "bundlewatch": "^0.3.3",
     "clean-css-cli": "^5.6.3",
     "clipboard": "^2.0.11",
