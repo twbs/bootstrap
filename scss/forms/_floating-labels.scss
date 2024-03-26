@@ -1,4 +1,6 @@
 .form-floating {
+  --#{$prefix}form-floating-input-padding-t: #{$form-floating-input-padding-t};
+  --#{$prefix}form-floating-input-padding-b: #{$form-floating-input-padding-b};
   position: relative;
 
   > .form-control,
@@ -14,6 +16,7 @@
     top: 0;
     left: 0;
     z-index: 2;
+    max-width: 100%;
     height: 100%; // allow textareas
     padding: $form-floating-padding-y $form-floating-padding-x;
     overflow: hidden;
@@ -37,19 +40,19 @@
 
     &:focus,
     &:not(:placeholder-shown) {
-      padding-top: $form-floating-input-padding-t;
-      padding-bottom: $form-floating-input-padding-b;
+      padding-top: var(--#{$prefix}form-floating-input-padding-t);
+      padding-bottom: var(--#{$prefix}form-floating-input-padding-b);
     }
     // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
     &:-webkit-autofill {
-      padding-top: $form-floating-input-padding-t;
-      padding-bottom: $form-floating-input-padding-b;
+      padding-top: var(--#{$prefix}form-floating-input-padding-t);
+      padding-bottom: var(--#{$prefix}form-floating-input-padding-b);
     }
   }
 
   > .form-select {
-    padding-top: $form-floating-input-padding-t;
-    padding-bottom: $form-floating-input-padding-b;
+    padding-top: var(--#{$prefix}form-floating-input-padding-t);
+    padding-bottom: var(--#{$prefix}form-floating-input-padding-b);
   }
 
   > .form-control:focus,
@@ -58,16 +61,6 @@
   > .form-select {
     ~ label {
       transform: $form-floating-label-transform;
-
-      &::after {
-        position: absolute;
-        inset: $form-floating-padding-y ($form-floating-padding-x * .5);
-        z-index: -1;
-        height: $form-floating-label-height;
-        content: "";
-        background-color: $input-bg;
-        @include border-radius($input-border-radius);
-      }
     }
   }
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
@@ -75,6 +68,25 @@
     ~ label {
       transform: $form-floating-label-transform;
     }
+  }
+  > textarea:focus,
+  > textarea:not(:placeholder-shown) {
+    // textareas require additional top padding to prevent label from overlapping text,
+    // and additional bottom padding for when text is scrolled.
+    --#{$prefix}form-floating-input-padding-t: #{$form-floating-textarea-padding-t};
+    --#{$prefix}form-floating-input-padding-b: #{$form-floating-textarea-padding-b};
+    ~ label::after {
+      position: absolute;
+      inset: $form-floating-padding-y ($form-floating-padding-x * .5);
+      z-index: -1;
+      height: $form-floating-label-height;
+      content: "";
+      background-color: $input-bg;
+      @include border-radius($input-border-radius);
+    }
+  }
+  > textarea:disabled ~ label::after {
+    background-color: $input-disabled-bg;
   }
 
   > .form-control-plaintext {
@@ -86,9 +98,5 @@
   > :disabled ~ label,
   > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
     color: $form-floating-label-disabled-color;
-
-    &::after {
-      background-color: $input-disabled-bg;
-    }
   }
 }
