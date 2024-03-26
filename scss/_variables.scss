@@ -1262,6 +1262,7 @@ $dropdown-link-disabled-color:      var(--#{$prefix}tertiary-color) !default;
 $dropdown-item-padding-y:           $spacer * .25 !default;
 $dropdown-item-padding-x:           $spacer !default;
 
+$dropdown-header-font-size:         $font-size-sm !default;
 $dropdown-header-color:             $gray-600 !default;
 $dropdown-header-padding-x:         $dropdown-item-padding-x !default;
 $dropdown-header-padding-y:         $dropdown-padding-y !default;
