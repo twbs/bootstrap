@@ -806,6 +806,10 @@ Variables for all navbars:
 
 {{< scss-docs name="navbar-variables" file="scss/_variables.scss" >}}
 
+Deprecated variables for the [light navbar](#color-schemes):
+
+{{< scss-docs name="navbar-deprecated-variables" file="scss/_variables.scss" >}}
+
 Variables for the [dark navbar](#color-schemes):
 
 {{< scss-docs name="navbar-dark-variables" file="scss/_variables.scss" >}}
