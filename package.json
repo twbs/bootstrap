@@ -163,9 +163,6 @@
     "scss/**/*.scss",
     "!scss/tests/**"
   ],
-  "hugo-bin": {
-    "buildTags": "extended"
-  },
   "jspm": {
     "registry": "npm",
     "main": "js/bootstrap",
