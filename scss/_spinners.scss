@@ -79,7 +79,7 @@
   @media (prefers-reduced-motion: reduce) {
     .spinner-border,
     .spinner-grow {
-      --#{$prefix}spinner-animation-speed: #{$spinner-animation-speed * 2};
+      --#{$prefix}spinner-animation-speed: #{calc($spinner-animation-speed * 2)};
     }
   }
 }

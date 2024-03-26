@@ -32,7 +32,7 @@
 }
 
 .figure-img {
-  margin-bottom: $spacer * .5;
+  margin-bottom: calc($spacer * .5);
   line-height: 1;
 }
 

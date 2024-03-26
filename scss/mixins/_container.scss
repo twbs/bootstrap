@@ -4,8 +4,8 @@
   --#{$prefix}gutter-x: #{$gutter};
   --#{$prefix}gutter-y: 0;
   width: 100%;
-  padding-right: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
-  padding-left: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+  padding-right: calc(var(--#{$prefix}gutter-x) * .5);
+  padding-left: calc(var(--#{$prefix}gutter-x) * .5);
   margin-right: auto;
   margin-left: auto;
 }

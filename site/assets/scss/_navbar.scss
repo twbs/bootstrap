@@ -48,8 +48,8 @@
 
   .navbar-toggler,
   .nav-link {
-    padding-right: $spacer * .25;
-    padding-left: $spacer * .25;
+    padding-right: calc($spacer * .25);
+    padding-left: calc($spacer * .25);
     color: rgba($white, .85);
 
     &:hover,

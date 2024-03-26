@@ -190,9 +190,9 @@
 
 .carousel-caption {
   position: absolute;
-  right: (100% - $carousel-caption-width) * .5;
+  right: calc((100% - with-unit($carousel-caption-width)) * .5);
   bottom: $carousel-caption-spacer;
-  left: (100% - $carousel-caption-width) * .5;
+  left: calc((100% - with-unit($carousel-caption-width)) * .5);
   padding-top: $carousel-caption-padding-y;
   padding-bottom: $carousel-caption-padding-y;
   color: $carousel-caption-color;
