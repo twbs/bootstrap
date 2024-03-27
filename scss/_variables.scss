@@ -1494,6 +1494,38 @@ $badge-padding-x:                   .65em !default;
 $badge-border-radius:               var(--#{$prefix}border-radius) !default;
 // scss-docs-end badge-variables
 
+// Chips
+
+// scss-docs-start chip-variables
+$chip-gap:                           map-get($spacers, 1) !default;
+$chip-font-shift:                    $spacer * .1 !default;
+$chip-font-weight:                   $font-weight-normal !default;
+$chip-border-width:                  $border-width !default;
+$chip-border-radius:                 $border-radius !default;
+
+$chip-padding-x:                     $spacer * .65 !default;
+$chip-padding-y:                     $spacer * .45 !default;
+$chip-icon-size:                     $spacer * 1.2 !default;
+$chip-icon-margin-start:             -$spacer * .35 !default;
+$chip-close-margin-end:              -$spacer * .3 !default;
+$chip-close-margin-start:            $spacer * .2 !default;
+$chip-font-size:                     $font-size-base !default;
+
+$chip-active-color:                  $component-active-color !default;
+$chip-disabled-color:                $gray-500 !default;
+$chip-border-color:                  $gray-500 !default;
+$chip-active-decoration-color:       $component-active-bg !default;
+// scss-docs-end chip-variables
+
+// scss-docs-start chip-sm-variables
+$chip-padding-x-sm:                  $spacer * .4 !default;
+$chip-padding-y-sm:                  $spacer * .25 !default;
+$chip-icon-size-sm:                  $spacer !default;
+$chip-icon-margin-start-sm:          -$spacer * .1 !default;
+$chip-close-margin-end-sm:           -$spacer * .25 !default;
+$chip-close-margin-start-sm:         0 !default;
+$chip-font-size-sm:                  $font-size-sm !default;
+// scss-docs-end chip-sm-variables
 
 // Modals
 
