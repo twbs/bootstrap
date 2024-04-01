@@ -5,7 +5,7 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-// Note that this file is not published; we only include it in scrpts.html
+// Note that this file is not published; we only include it in scripts.html
 // for StackBlitz to work
 
 /* eslint-disable import/no-unresolved */
