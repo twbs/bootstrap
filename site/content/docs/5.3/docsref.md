@@ -5,7 +5,8 @@ description: Examples of Bootstrap's documentation-specific components and style
 aliases: "/docsref/"
 toc: true
 robots: noindex,follow
-sitemap_exclude: true
+sitemap:
+  exclude: true
 ---
 
 ## Buttons
