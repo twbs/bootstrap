@@ -15,8 +15,8 @@
 <img class="{{ delimit $classes " " }}"
      srcset="{{ $imgPath }}, {{ $imgPath2x }} 2x"
      src="{{ $imgPath }}"
-     alt="{{ $.alt }}"
-     {{ if eq $lazy true }}loading="lazy"{{ end }}
+     alt="{{ $.alt }}"{{ if eq $lazy true }}
+     loading="lazy"{{ end }}
      width="{{ .Width }}"
      height="{{ .Height }}">
 {{- end }}
