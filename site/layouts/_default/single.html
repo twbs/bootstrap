@@ -29,6 +29,7 @@
       {{ .Content }}
 
       {{ if eq .Title "Examples" -}}
+        {{ partial "examples/main" . }}
         {{ partial "examples/bs-themes" . }}
       {{- end }}
     </div>
