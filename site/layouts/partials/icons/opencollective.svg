@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg"{{ with .width }} width="{{ . }}"{{ end }}{{ with .height }} height="{{ . }}"{{ end }} fill="currentColor" fill-rule="evenodd"{{ with .class }} class="{{ . }}"{{ end }} viewBox="0 0 40 41" role="img"><title>{{ with .title }}{{ . }}{{ else }}Open Collective{{ end }}</title><path fill-opacity=".4" d="M32.8 21c0 2.4-.8 4.9-2 6.9l5.1 5.1c2.5-3.4 4.1-7.6 4.1-12 0-4.6-1.6-8.8-4-12.2L30.7 14c1.2 2 2 4.3 2 7z"/><path d="M20 33.7a12.8 12.8 0 0 1 0-25.6c2.6 0 5 .7 7 2.1L32 5a20 20 0 1 0 .1 31.9l-5-5.2a13 13 0 0 1-7 2z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ .width | default 16  }}" height="{{ .height | default 16 }}" fill="currentColor"{{ with .class }} class="{{ . }}"{{ end }} viewBox="0 0 16 16">
+  <path fill-opacity=".4" d="M12.995 8.195c0 .937-.312 1.912-.78 2.693l1.99 1.99c.976-1.327 1.6-2.966 1.6-4.683 0-1.795-.624-3.434-1.561-4.76l-2.068 2.028c.468.781.78 1.679.78 2.732z"/>
+  <path d="M8 13.151a4.995 4.995 0 1 1 0-9.99c1.015 0 1.951.273 2.732.82l1.95-2.03a7.805 7.805 0 1 0 .04 12.449l-1.951-2.03a5.07 5.07 0 0 1-2.732.781z"/>
+</svg>
