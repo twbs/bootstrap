@@ -153,7 +153,7 @@
     "shelljs": "^0.8.5",
     "stylelint": "^16.3.0",
     "stylelint-config-twbs-bootstrap": "^14.0.0",
-    "terser": "^5.29.2",
+    "terser": "^5.30.1",
     "vnu-jar": "23.4.11"
   },
   "files": [
