@@ -1059,6 +1059,8 @@ $form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For f
 $form-range-thumb-active-bg:               tint-color($component-active-bg, 70%) !default;
 $form-range-thumb-disabled-bg:             var(--#{$prefix}secondary-color) !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$form-range-thumb-color :                  #000;
+
 // scss-docs-end form-range-variables
 
 // scss-docs-start form-file-variables

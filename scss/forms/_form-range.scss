@@ -2,7 +2,7 @@
 //
 // Style range inputs the same across browsers. Vendor-specific rules for pseudo
 // elements cannot be mixed. As such, there are no shared styles for focus or
-// active states on prefixed selectors.
+// active states on prefixed selectors
 
 .form-range {
   width: 100%;
@@ -29,7 +29,7 @@
     height: $form-range-thumb-height;
     margin-top: ($form-range-track-height - $form-range-thumb-height) * .5; // Webkit specific
     appearance: none;
-    background: linear-gradient(to right, #000 0%, #000 50%, #FFF 50%, #FFF 100%);
+    @include gradient-bg($form-range-thumb-color);
     border: $form-range-thumb-border;
     @include border-radius($form-range-thumb-border-radius);
     @include box-shadow($form-range-thumb-box-shadow);
