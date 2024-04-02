@@ -29,7 +29,7 @@
     height: $form-range-thumb-height;
     margin-top: ($form-range-track-height - $form-range-thumb-height) * .5; // Webkit specific
     appearance: none;
-    @include gradient-bg($form-range-thumb-bg);
+    background: linear-gradient(to right, #000 0%, #000 50%, #FFF 50%, #FFF 100%);
     border: $form-range-thumb-border;
     @include border-radius($form-range-thumb-border-radius);
     @include box-shadow($form-range-thumb-box-shadow);
