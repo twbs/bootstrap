@@ -630,6 +630,10 @@ $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
 $line-height-lg:              2 !default;
 
+$letter-spacing-base:         normal !default;
+$letter-spacing-sm:           -.025em !default;
+$letter-spacing-lg:           .025em !default;
+
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;
 $h3-font-size:                $font-size-base * 1.75 !default;
@@ -655,6 +659,7 @@ $headings-font-family:        null !default;
 $headings-font-style:         null !default;
 $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
+$headings-letter-spacing:     null !default;
 $headings-color:              inherit !default;
 // scss-docs-end headings-variables
 
@@ -668,10 +673,11 @@ $display-font-sizes: (
   6: 2.5rem
 ) !default;
 
-$display-font-family: null !default;
-$display-font-style:  null !default;
-$display-font-weight: 300 !default;
-$display-line-height: $headings-line-height !default;
+$display-font-family:     null !default;
+$display-font-style:      null !default;
+$display-font-weight:     300 !default;
+$display-line-height:     $headings-line-height !default;
+$display-letter-spacing:  null !default;
 // scss-docs-end display-headings
 
 // scss-docs-start type-variables
@@ -791,6 +797,7 @@ $input-btn-padding-x:         .75rem !default;
 $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
+$input-btn-letter-spacing:    null !default;
 
 $input-btn-focus-width:         $focus-ring-width !default;
 $input-btn-focus-color-opacity: $focus-ring-opacity !default;
@@ -821,6 +828,7 @@ $btn-padding-x:               $input-btn-padding-x !default;
 $btn-font-family:             $input-btn-font-family !default;
 $btn-font-size:               $input-btn-font-size !default;
 $btn-line-height:             $input-btn-line-height !default;
+$btn-letter-spacing:          $input-btn-letter-spacing !default;
 $btn-white-space:             null !default; // Set to `nowrap` to prevent text wrapping
 
 $btn-padding-y-sm:            $input-btn-padding-y-sm !default;
@@ -888,6 +896,7 @@ $input-font-family:                     $input-btn-font-family !default;
 $input-font-size:                       $input-btn-font-size !default;
 $input-font-weight:                     $font-weight-base !default;
 $input-line-height:                     $input-btn-line-height !default;
+$input-letter-spacing:                  $input-btn-letter-spacing !default;
 
 $input-padding-y-sm:                    $input-btn-padding-y-sm !default;
 $input-padding-x-sm:                    $input-btn-padding-x-sm !default;
@@ -1004,6 +1013,7 @@ $form-select-font-size:             $input-font-size !default;
 $form-select-indicator-padding:     $form-select-padding-x * 3 !default; // Extra padding for background-image
 $form-select-font-weight:           $input-font-weight !default;
 $form-select-line-height:           $input-line-height !default;
+$form-select-letter-spacing:        $input-letter-spacing !default;
 $form-select-color:                 $input-color !default;
 $form-select-bg:                    $input-bg !default;
 $form-select-disabled-color:        null !default;
