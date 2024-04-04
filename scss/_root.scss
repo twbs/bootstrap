@@ -54,6 +54,7 @@
   @include rfs($font-size-base, --#{$prefix}body-font-size);
   --#{$prefix}body-font-weight: #{$font-weight-base};
   --#{$prefix}body-line-height: #{$line-height-base};
+  --#{$prefix}body-letter-spacing: #{$letter-spacing-base};
   @if $body-text-align != null {
     --#{$prefix}body-text-align: #{$body-text-align};
   }
