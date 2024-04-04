@@ -52,9 +52,9 @@ body {
   @include font-size(var(--#{$prefix}body-font-size));
   font-weight: var(--#{$prefix}body-font-weight);
   line-height: var(--#{$prefix}body-line-height);
-  letter-spacing: var(--#{$prefix}body-letter-spacing);
   color: var(--#{$prefix}body-color);
   text-align: var(--#{$prefix}body-text-align);
+  letter-spacing: var(--#{$prefix}body-letter-spacing);
   background-color: var(--#{$prefix}body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
@@ -88,8 +88,8 @@ hr {
   font-style: $headings-font-style;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  letter-spacing: $headings-letter-spacing;
   color: var(--#{$prefix}heading-color);
+  letter-spacing: $headings-letter-spacing;
 }
 
 h1 {

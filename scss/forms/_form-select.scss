@@ -13,8 +13,8 @@
   @include font-size($form-select-font-size);
   font-weight: $form-select-font-weight;
   line-height: $form-select-line-height;
-  letter-spacing: $form-select-letter-spacing;
   color: $form-select-color;
+  letter-spacing: $form-select-letter-spacing;
   appearance: none;
   background-color: $form-select-bg;
   background-image: var(--#{$prefix}form-select-bg-img), var(--#{$prefix}form-select-bg-icon, none);

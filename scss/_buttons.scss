@@ -10,8 +10,8 @@
   @include rfs($btn-font-size, --#{$prefix}btn-font-size);
   --#{$prefix}btn-font-weight: #{$btn-font-weight};
   --#{$prefix}btn-line-height: #{$btn-line-height};
-  --#{$prefix}btn-letter-spacing: #{$btn-letter-spacing};
   --#{$prefix}btn-color: #{$btn-color};
+  --#{$prefix}btn-letter-spacing: #{$btn-letter-spacing};
   --#{$prefix}btn-bg: transparent;
   --#{$prefix}btn-border-width: #{$btn-border-width};
   --#{$prefix}btn-border-color: transparent;
@@ -28,10 +28,10 @@
   @include font-size(var(--#{$prefix}btn-font-size));
   font-weight: var(--#{$prefix}btn-font-weight);
   line-height: var(--#{$prefix}btn-line-height);
-  letter-spacing: var(--#{$prefix}btn-letter-spacing);
   color: var(--#{$prefix}btn-color);
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
+  letter-spacing: var(--#{$prefix}btn-letter-spacing);
   white-space: $btn-white-space;
   vertical-align: middle;
   cursor: if($enable-button-pointers, pointer, null);
