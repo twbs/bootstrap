@@ -34,3 +34,19 @@
   padding-bottom: add($input-padding-y-sm, $input-border-width);
   @include font-size($input-font-size-sm);
 }
+
+.col-md-form-label{
+  margin-bottom: $form-label-margin-bottom;
+  @include font-size($form-label-font-size);
+  font-style: $form-label-font-style;
+  font-weight: $form-label-font-weight;
+  color: $form-label-color;
+}
+@media (min-width:768px) {
+  .col-md-form-label{
+    padding-top: $input-padding-y;
+    padding-bottom: $input-padding-y;
+    margin-bottom: 0;
+    line-height: $input-line-height;
+  }
+}
