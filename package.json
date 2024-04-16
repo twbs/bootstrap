@@ -120,7 +120,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-xo": "^0.44.0",
-    "eslint-plugin-html": "^8.0.0",
+    "eslint-plugin-html": "^8.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-markdown": "^4.0.1",
     "eslint-plugin-unicorn": "^52.0.0",
