@@ -145,7 +145,7 @@
     "npm-run-all2": "^6.1.2",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
-    "rollup": "^4.14.3",
+    "rollup": "^4.16.3",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.1.1",
     "sass": "^1.75.0",
@@ -153,7 +153,7 @@
     "shelljs": "^0.8.5",
     "stylelint": "^16.3.1",
     "stylelint-config-twbs-bootstrap": "^14.1.0",
-    "terser": "^5.30.3",
+    "terser": "^5.30.4",
     "vnu-jar": "23.4.11"
   },
   "files": [
