@@ -2112,6 +2112,13 @@ progress {
   color: var(--bs-secondary-color);
 }
 
+.inline-form .form-text {
+  display: block; 
+  margin-top: 0.25rem; 
+  font-size: 0.875em;
+  color: var(--bs-secondary-color);
+}
+
 .form-control {
   display: block;
   width: 100%;
