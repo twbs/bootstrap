@@ -169,38 +169,41 @@ class Modal extends BaseComponent {
   }
 
   _showElement(relatedTarget) {
-    // try to append dynamic modal
     if (!document.body.contains(this._element)) {
-      document.body.append(this._element)
+      document.body.append(this._element);
     }
 
-    this._element.style.display = 'block'
-    this._element.removeAttribute('aria-hidden')
-    this._element.setAttribute('aria-modal', true)
-    this._element.setAttribute('role', 'dialog')
-    this._element.scrollTop = 0
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
 
-    const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog)
+    this._element.style.display = "block";
+    this._element.removeAttribute("aria-hidden");
+    this._element.setAttribute("aria-modal", "true");
+    this._element.setAttribute("role", "dialog");
+    this._element.scrollTop = 0;
+
+    const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog);
     if (modalBody) {
-      modalBody.scrollTop = 0
+      modalBody.scrollTop = 0;
     }
 
-    reflow(this._element)
+    reflow(this._element);
 
-    this._element.classList.add(CLASS_NAME_SHOW)
+    this._element.classList.add(CLASS_NAME_SHOW);
+
+    if (this._config.focus) {
+      this._focustrap.activate();
+    }
+
+    window.scrollTo(0, scrollPosition);
 
     const transitionComplete = () => {
-      if (this._config.focus) {
-        this._focustrap.activate()
-      }
-
-      this._isTransitioning = false
+      this._isTransitioning = false;
       EventHandler.trigger(this._element, EVENT_SHOWN, {
-        relatedTarget
-      })
-    }
+        relatedTarget,
+      });
+    };
 
-    this._queueCallback(transitionComplete, this._dialog, this._isAnimated())
+    this._queueCallback(transitionComplete, this._dialog, this._isAnimated());
   }
 
   _addEventListeners() {
