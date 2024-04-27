@@ -4,12 +4,20 @@
 // elements cannot be mixed. As such, there are no shared styles for focus or
 // active states on prefixed selectors.
 
+@import "../variables";
+
 .form-range {
   width: 100%;
   height: add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2);
   padding: 0; // Need to reset padding
   appearance: none;
   background-color: transparent;
+
+  &::-moz-range-thumb, &::-webkit-slider-thumb {
+    @if $enable-radius == false {
+      border-radius: 0; // Explicitly set to 0 when border radius is disabled
+    }
+  }
 
   &:focus {
     outline: 0;
