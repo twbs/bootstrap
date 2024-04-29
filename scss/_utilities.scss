@@ -4,6 +4,25 @@ $utilities: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $utilities: map-merge(
   (
+    // scss-docs-end utils-overflow
+    // scss-docs-start utils-display
+    "object-position": (
+      responsive: true,
+      print: true,
+      property: object-position,
+      class: object-position,
+      values: (
+        center: center,
+        tleft: top left,
+        tright: top right,
+        tcenter: top center,
+        bleft: bottom left,
+        bright: bottom right,
+        bcenter: bottom center,
+      )
+    ),
+
+  
     // scss-docs-start utils-vertical-align
     "align": (
       property: vertical-align,
