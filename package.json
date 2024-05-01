@@ -145,7 +145,7 @@
     "npm-run-all2": "^6.1.2",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
-    "rollup": "^4.16.3",
+    "rollup": "^4.17.2",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.1.1",
     "sass": "^1.75.0",
