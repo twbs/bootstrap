@@ -8,7 +8,7 @@ toc: true
 
 ## How it works
 
-The collapse JavaScript plugin is used to show and hide content. Buttons, anchors or checkboxes are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+The collapse JavaScript plugin is used to show and hide content. Buttons, anchors and many other elements can be used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
 
 {{< callout info >}}
 {{< partial "callouts/info-prefersreducedmotion.md" >}}
@@ -22,7 +22,7 @@ Click the buttons below to show and hide another element via class changes:
 - `.collapsing` is applied during transitions
 - `.collapse.show` shows content
 
-Generally, we recommend using a `<button>` with the `data-bs-target` attribute. While not recommended from a semantic point of view, you can also use an `<a>` link with the `href` attribute (and a `role="button"`) or a checkbox. In all cases, the `data-bs-toggle="collapse"` is required.
+Generally, we recommend using a `<button>` with the `data-bs-target` attribute. While not recommended from a semantic point of view, you can also use an `<a>` link with the `href` attribute (and a `role="button"`), an input with `type="checkbox"` or even a `<div>` tag. In all cases, the `data-bs-toggle="collapse"` is required.
 
 {{< example >}}
 <p class="d-inline-flex gap-1">
@@ -32,7 +32,6 @@ Generally, we recommend using a `<button>` with the `data-bs-target` attribute. 
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Button with data-bs-target
   </button>
-  <input class="form-check-input" type="checkbox" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 </p>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
@@ -66,8 +65,8 @@ Please note that while the example below has a `min-height` set to avoid excessi
 
 ## Multiple toggles and targets
 
-A `<button>`, `<a>` or checkbox element can show and hide multiple elements by referencing them with a selector in its `data-bs-target` or `href` attribute.
-Conversely, multiple `<button>`, `<a>` or checkbox elements can show and hide the same element if they each reference it with their `data-bs-target` or `href` attribute.
+A `<button>` or `<a>` element can show and hide multiple elements by referencing them with a selector in its `data-bs-target` or `href` attribute.
+Conversely, multiple `<button>` or `<a>` elements can show and hide the same element if they each reference it with their `data-bs-target` or `href` attribute.
 
 {{< example >}}
 <p class="d-inline-flex gap-1">
@@ -95,7 +94,7 @@ Conversely, multiple `<button>`, `<a>` or checkbox elements can show and hide th
 
 ## Accessibility
 
-Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you've set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element's HTML element is not a button or checkbox (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
+Be sure to add `aria-expanded` to the control element. This attribute explicitly conveys the current state of the collapsible element tied to the control to screen readers and similar assistive technologies. If the collapsible element is closed by default, the attribute on the control element should have a value of `aria-expanded="false"`. If you've set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute on the control based on whether or not the collapsible element has been opened or closed (via JavaScript, or because the user triggered another control element also tied to the same collapsible element). If the control element's HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
 
 If your control element is targeting a single collapsible element – i.e. the `data-bs-target` attribute is pointing to an `id` selector – you should add the `aria-controls` attribute to the control element, containing the `id` of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.
 
