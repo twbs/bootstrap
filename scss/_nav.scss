@@ -35,7 +35,7 @@
   &:hover,
   &:focus {
     color: var(--#{$prefix}nav-link-hover-color);
-    @if ($link-hover-decoration != underline) { text-decoration: $link-hover-decoration;}
+    @if ($link-hover-decoration != underline) { text-decoration: $link-hover-decoration; }
   }
 
   &:focus-visible {

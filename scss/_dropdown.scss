@@ -189,7 +189,7 @@
   &:hover,
   &:focus {
     color: var(--#{$prefix}dropdown-link-hover-color);
-    @if ($link-hover-decoration != underline) { text-decoration: $link-hover-decoration;}
+    @if ($link-hover-decoration != underline) { text-decoration: $link-hover-decoration; }
     @include gradient-bg(var(--#{$prefix}dropdown-link-hover-bg));
   }
 

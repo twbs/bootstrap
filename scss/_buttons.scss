@@ -42,7 +42,7 @@
 
   &:hover {
     color: var(--#{$prefix}btn-hover-color);
-    @if ($link-hover-decoration != underline) { text-decoration: $link-hover-decoration;}
+    @if ($link-hover-decoration != underline) { text-decoration: $link-hover-decoration; }
     background-color: var(--#{$prefix}btn-hover-bg);
     border-color: var(--#{$prefix}btn-hover-border-color);
   }

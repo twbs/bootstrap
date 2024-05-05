@@ -40,7 +40,7 @@
   &:hover {
     z-index: 2;
     color: var(--#{$prefix}pagination-hover-color);
-    @if ($link-hover-decoration != underline) { text-decoration: $link-hover-decoration;}
+    @if ($link-hover-decoration != underline) { text-decoration: $link-hover-decoration; }
     background-color: var(--#{$prefix}pagination-hover-bg);
     border-color: var(--#{$prefix}pagination-hover-border-color);
   }
