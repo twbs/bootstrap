@@ -28,7 +28,7 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 
 ## Table of contents
-
+---
 - [Quick start](#quick-start)
 - [Status](#status)
 - [What's included](#whats-included)
