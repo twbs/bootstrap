@@ -241,26 +241,16 @@ sup { top: -.5em; }
 
 // Links
 
-a {
+// Do not target named anchors. See #19402.
+// Do target links with classes, as these could be buttons. See #30726.
+// Use `:is()` to avoid an increased specificity.
+a:is([href],[class]) {
   color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
   text-decoration: $link-decoration;
 
   &:hover {
     --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
     text-decoration: $link-hover-decoration;
-  }
-}
-
-// And undo these styles for placeholder links/named anchors (without href).
-// It would be more straightforward to just use a[href] in previous block, but that
-// causes specificity issues in many other styles that are too complex to fix.
-// See https://github.com/twbs/bootstrap/issues/19402
-
-a:not([href]):not([class]) {
-  &,
-  &:hover {
-    color: inherit;
-    text-decoration: none;
   }
 }
 
