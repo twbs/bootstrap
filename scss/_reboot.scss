@@ -243,8 +243,10 @@ sup { top: -.5em; }
 
 // Do not target named anchors. See #19402.
 // Do target links with classes, as these could be buttons. See #30726.
-// Use `:is()` to avoid an increased specificity.
-a:is([href],[class]) {
+// Use `:not(:not())` to avoid an increased specificity.
+// Unfortunately, `:is()` would not work with some browsers that are still
+// supported in this version of bootstrap.
+a:not(:not([href],[class])) {
   color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
   text-decoration: $link-decoration;
 
