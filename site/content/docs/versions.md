@@ -13,7 +13,7 @@ description: An appendix of hosted documentation for nearly every release of Boo
     {{- range $i, $version := $versions }}
       {{- $len := len $versions -}}
       {{ if (eq $i 0) }}<div class="list-group">{{ end }}
-        <a class="list-group-item list-group-item-action py-2 text-primary{{ if (eq $version $.Site.Params.docs_version) }} d-flex justify-content-between align-items-center{{ end }}" href="{{ $release.baseurl }}/{{ $version }}/">
+        <a class="list-group-item list-group-item-action py-2 text-primary{{ if (eq $version $.Site.Params.docs_version) }} d-flex justify-content-between align-items-center{{ end }}" href="{{ urls.JoinPath $release.baseurl $version "/" }}">
           {{ $version }}
           {{ if (eq $version $.Site.Params.docs_version) -}}
           <span class="badge text-bg-primary">Latest</span>

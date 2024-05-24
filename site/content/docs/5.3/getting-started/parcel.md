@@ -7,7 +7,7 @@ toc: true
 thumbnail: guides/bootstrap-parcel@2x.png
 ---
 
-<img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel.png" width="2000" height="1000" alt="">
+<img class="d-block mx-auto mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-parcel.png" width="800" height="400" alt="">
 
 {{< callout >}}
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/parcel). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/parcel?file=index.html) but not run it because Parcel isn't currently supported there.
@@ -111,7 +111,7 @@ With dependencies installed and our project folder ready for us to start coding,
    npm start
    ```
 
-   <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/parcel-dev-server.png" alt="Parcel dev server running">
+   ![Parcel dev server running](/assets/img/guides/parcel-dev-server.png)
 
 In the next and final section to this guide, we'll import all of Bootstrap's CSS and JavaScript.
 
@@ -150,7 +150,7 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
 
 3. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this:
 
-   <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/parcel-dev-server-bootstrap.png" alt="Parcel dev server running with Bootstrap">
+   ![Parcel dev server running with Bootstrap](/assets/img/guides/parcel-dev-server-bootstrap.png)
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Parcel example project](https://github.com/twbs/examples/tree/main/parcel) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
