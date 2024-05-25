@@ -224,6 +224,15 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
       <li><a class="dropdown-item" href="#">Dropdown link</a></li>
     </ul>
   </div>
+  <div class="btn-group dropend" role="group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+    </ul>
+  </div>
   <div class="btn-group dropup" role="group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       Dropdown
