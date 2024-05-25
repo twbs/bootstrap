@@ -143,6 +143,6 @@
   > .btn:nth-child(n + 3),
   > :not(.btn-check) + .btn,
   > .btn-group:not(:first-child) > .btn {
-    @include border-start-radius(0);
+    @include border-top-radius(0);
   }
 }
