@@ -131,7 +131,6 @@
 
   // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
-  > .btn.dropdown-toggle-split:first-child,
   > .btn-group:not(:last-child) > .btn {
     @include border-bottom-radius(0);
   }
