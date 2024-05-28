@@ -148,7 +148,7 @@
     "rollup": "^4.17.2",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.1.1",
-    "sass": "^1.76.0",
+    "sass": "^1.77.2",
     "sass-true": "^8.0.0",
     "shelljs": "^0.8.5",
     "stylelint": "^16.4.0",
