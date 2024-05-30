@@ -83,6 +83,7 @@ You can also use the CDN to fetch any of our [additional builds listed in the Co
 
 Curious which components explicitly require our JavaScript and Popper? If you're at all unsure about the general page structure, keep reading for an example page template.
 
+- Accordions for extending our Collapse plugin
 - Alerts for dismissing
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
