@@ -9215,10 +9215,6 @@ textarea.form-control-lg {
   cursor: auto !important;
 }
 
-.cursor-move {
-  cursor: move !important;
-}
-
 .cursor-help {
   cursor: help !important;
 }
