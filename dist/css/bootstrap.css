@@ -9199,6 +9199,70 @@ textarea.form-control-lg {
   z-index: 3 !important;
 }
 
+.cursor-default {
+  cursor: default !important;
+}
+
+.cursor-none {
+  cursor: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-auto {
+  cursor: auto !important;
+}
+
+.cursor-move {
+  cursor: move !important;
+}
+
+.cursor-help {
+  cursor: help !important;
+}
+
+.cursor-alias {
+  cursor: alias !important;
+}
+
+.cursor-copy {
+  cursor: copy !important;
+}
+
+.cursor-move {
+  cursor: move !important;
+}
+
+.cursor-progress {
+  cursor: progress !important;
+}
+
+.cursor-wait {
+  cursor: wait !important;
+}
+
+.cursor-text {
+  cursor: text !important;
+}
+
+.cursor-vertical-text {
+  cursor: vertical-text !important;
+}
+
+.cursor-zoom-in {
+  cursor: zoom-in !important;
+}
+
+.cursor-zoom-out {
+  cursor: zoom-out !important;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
 @media (min-width: 576px) {
   .float-sm-start {
     float: left !important;
