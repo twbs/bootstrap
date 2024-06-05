@@ -95,7 +95,7 @@ To fix this, you can use an `importmap` to resolve the arbitrary module names to
 
 Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
-Our dropdowns, popovers, and tooltips also depend on [Popper](https://popper.js.org/).
+Our dropdowns, popovers, and tooltips also depend on [Popper](https://popper.js.org/docs/v2/).
 
 ## Data attributes
 

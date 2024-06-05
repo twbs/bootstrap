@@ -18,6 +18,7 @@
     height: 100%; // allow textareas
     padding: $form-floating-padding-y $form-floating-padding-x;
     overflow: hidden;
+    color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
     text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -57,14 +58,12 @@
   > .form-control-plaintext,
   > .form-select {
     ~ label {
-      color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
       transform: $form-floating-label-transform;
     }
   }
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
   > .form-control:-webkit-autofill {
     ~ label {
-      color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
       transform: $form-floating-label-transform;
     }
   }

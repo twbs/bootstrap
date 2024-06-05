@@ -85,6 +85,7 @@
     "strict": "error",
     "unicorn/explicit-length-check": "off",
     "unicorn/filename-case": "off",
+    "unicorn/no-anonymous-default-export": "off",
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-method-this-argument": "off",
     "unicorn/no-null": "off",
@@ -199,6 +200,15 @@
     },
     {
       "files": [
+        "site/assets/js/**"
+      ],
+      "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2020
+      }
+    },
+    {
+      "files": [
         "**/*.md"
       ],
       "plugins": [
@@ -208,9 +218,10 @@
     },
     {
       "files": [
-        "**/*.md/*.js"
+        "**/*.md/*.js",
+        "**/*.md/*.mjs"
       ],
-      "extends": "plugin:markdown/recommended",
+      "extends": "plugin:markdown/recommended-legacy",
       "parserOptions": {
         "sourceType": "module"
       },

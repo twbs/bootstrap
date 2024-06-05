@@ -18,8 +18,9 @@
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
           <div class="mb-3 mb-md-0 d-flex text-nowrap">
-            {{- if .Page.Params.added -}}
-              <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v{{ .Page.Params.added }}</small>
+            {{- /* This is needed because we want to show the badge if show_badge isn't present or is set to false */ -}}
+            {{- if (or (and (.Page.Params.added) (not (isset .Page.Params.added "show_badge"))) (and (.Page.Params.added) (isset .Page.Params.added "show_badge") (not (eq .Page.Params.added.show_badge false)))) -}}
+              <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v{{ .Page.Params.added.version }}</small>
             {{- end -}}
             <a class="btn btn-sm btn-bd-light rounded-2" href="{{ .Site.Params.repo }}/blob/v{{ .Site.Params.current_version }}/site/content/{{ .Page.File.Path | replaceRE `\\` "/" }}" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
@@ -66,7 +67,7 @@
 {{ end }}
 {{ define "footer" }}
   {{ range .Page.Params.extra_js -}}
-    <script{{ with .async }} async{{ end }} src="{{ .src }}"></script>
+    <script{{ with .async }} async{{ end }}{{ with .defer }} defer{{ end }} src="{{ .src }}"></script>
   {{- end -}}
   <div class="position-fixed" aria-hidden="true"><input type="text" tabindex="-1"></div>
 {{ end }}
