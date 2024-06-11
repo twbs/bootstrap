@@ -195,8 +195,6 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
 
 {{< example >}}
 <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-  <button type="button" class="btn btn-primary">Button</button>
-  <button type="button" class="btn btn-primary">Button</button>
   <div class="btn-group" role="group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       Dropdown
@@ -206,6 +204,8 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
       <li><a class="dropdown-item" href="#">Dropdown link</a></li>
     </ul>
   </div>
+  <button type="button" class="btn btn-primary">Button</button>
+  <button type="button" class="btn btn-primary">Button</button>
   <div class="btn-group dropstart" role="group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       Dropdown
