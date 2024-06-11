@@ -6,6 +6,21 @@ group: components
 toc: true
 ---
 
+## Prerequisites
+
+Carousels will require the Bootstrap JavaScript bundle for the following functionality:
+- Slide behaviors
+- Controls
+- Indicators
+
+Add the following `<script>` tag into the `<body>` of your `index.html` file will incorporate our JavaScript bundle:
+
+```
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+```
+
+If you’d like more information around how to structure your index.html file along with further details about the CDN links used for Bootstrap functionality, follow the link to our [introduction page](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
 ## How it works
 
 - The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.

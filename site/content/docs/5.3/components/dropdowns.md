@@ -6,6 +6,20 @@ group: components
 toc: true
 ---
 
+## Prerequisites
+
+Dropdowns will require the Bootstrap JavaScript bundle as well as [Popper](https://popper.js.org/) for the following functionality:
+- Displaying
+- Positioning
+
+Add the following `<script>` tag into the `<body>` of your `index.html` file will incorporate both our JavaScript bundle and Popper:
+
+```
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+```
+
+If you’d like more information around how to structure your index.html file along with further details about the CDN links used for Bootstrap functionality, follow the link to our [introduction page](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
 ## Overview
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/).

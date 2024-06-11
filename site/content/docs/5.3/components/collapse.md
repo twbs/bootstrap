@@ -6,6 +6,19 @@ group: components
 toc: true
 ---
 
+## Prerequisites
+
+Collapse will require the Bootstrap JavaScript bundle for the following functionality:
+- Toggling visibility of content
+
+Add the following `<script>` tag into the `<body>` of your `index.html` will incorporate our JavaScript bundle:
+
+```
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+```
+
+If you’d like more information around how to structure your index.html file along with further details about the CDN links used for Bootstrap functionality, follow the link to our [introduction page](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
 ## How it works
 
 The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.

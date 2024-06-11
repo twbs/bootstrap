@@ -6,6 +6,21 @@ group: components
 toc: true
 ---
 
+## Prerequisites
+
+Offcanvases will require the Bootstrap JavaScript bundle for the following functionality:
+- Displaying
+- Positioning
+- Scrolling Behavior
+
+Add the following `<script>` tag into the `<body>` of your `index.html` file will incorporate our JavaScript bundle:
+
+```
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+```
+
+If you’d like more information around how to structure your index.html file along with further details about the CDN links used for Bootstrap functionality, follow the link to our [introduction page](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
 ## How it works
 
 Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, top, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
