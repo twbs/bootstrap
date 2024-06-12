@@ -46,7 +46,7 @@ Dividers are automatically added in CSS through [`::before`](https://developer.m
 </nav>
 {{< /example >}}
 
-When modifying via Sass, the [quote](https://sass-lang.com/documentation/modules/string#quote) function is required to generate the quotes around a string. For example, using `>` as the divider, you can use this:
+When modifying via Sass, the [quote](https://sass-lang.com/documentation/modules/string/#quote) function is required to generate the quotes around a string. For example, using `>` as the divider, you can use this:
 
 ```scss
 $breadcrumb-divider: quote(">");

@@ -1,7 +1,9 @@
-import Dropdown from '../../src/dropdown'
-import EventHandler from '../../src/dom/event-handler'
-import { noop } from '../../src/util/index'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture'
+import EventHandler from '../../src/dom/event-handler.js'
+import Dropdown from '../../src/dropdown.js'
+import { noop } from '../../src/util/index.js'
+import {
+  clearFixture, createEvent, getFixture, jQueryMock
+} from '../helpers/fixture.js'
 
 describe('Dropdown', () => {
   let fixtureEl
@@ -75,6 +77,7 @@ describe('Dropdown', () => {
           resolve()
         })
 
+        expect().nothing()
         dropdown.show()
       })
     })

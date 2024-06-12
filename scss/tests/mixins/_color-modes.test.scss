@@ -12,7 +12,7 @@
       @include output() {
         @include color-mode(dark) {
           .element {
-            color: var(--bs-primary-text);
+            color: var(--bs-primary-text-emphasis);
             background-color: var(--bs-primary-bg-subtle);
           }
         }
@@ -22,7 +22,7 @@
       }
       @include expect() {
         [data-bs-theme=dark] .element {
-          color: var(--bs-primary-text);
+          color: var(--bs-primary-text-emphasis);
           background-color: var(--bs-primary-bg-subtle);
         }
         [data-bs-theme=dark] {
@@ -41,7 +41,7 @@
       @include output() {
         @include color-mode(dark) {
           .element {
-            color: var(--bs-primary-text);
+            color: var(--bs-primary-text-emphasis);
             background-color: var(--bs-primary-bg-subtle);
           }
         }
@@ -52,7 +52,7 @@
       @include expect() {
         @media (prefers-color-scheme: dark) {
           .element {
-            color: var(--bs-primary-text);
+            color: var(--bs-primary-text-emphasis);
             background-color: var(--bs-primary-bg-subtle);
           }
         }

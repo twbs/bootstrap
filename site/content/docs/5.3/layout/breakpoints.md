@@ -37,11 +37,11 @@ These breakpoints are customizable via Sass—you'll find them in a Sass map in 
 
 {{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
 
-For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).
+For more information and examples on how to modify our Sass maps and variables, please refer to [the CSS section of the Grid documentation]({{< docsref "/layout/grid#css" >}}).
 
 ## Media queries
 
-Since Bootstrap is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
+Since Bootstrap is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
 
 ### Min-width
 

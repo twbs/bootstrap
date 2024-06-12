@@ -32,14 +32,14 @@
       </div>
 
       {{ highlight (printf `<div class="dropdown">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-  Dropdown
-</button>
-<ul class="dropdown-menu">
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-  <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-</ul>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+  </ul>
 </div>
 `) "html" "" }}
       <p>Learn more about <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/javascript/#using-bootstrap-as-a-module">our JavaScript as modules</a> and <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/javascript/#programmatic-api">using the programmatic API</a>.</p>
@@ -50,6 +50,7 @@
       <hr class="my-4">
       <div class="row g-3">
         {{- range $plugin := .Site.Data.plugins -}}
+          {{- /* TODO we should use urls.JoinPath here too, but the links include `#` which gets escaped */ -}}
           {{- $href := printf "/docs/%s/%s" $.Site.Params.docs_version $plugin.link }}
           <div class="col-sm-6 mb-2">
             <a class="d-block pe-lg-4 text-decoration-none lh-sm" href="{{ $href }}">

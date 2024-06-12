@@ -77,9 +77,7 @@
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
   // scss-docs-end root-body-variables
 
-  @if $headings-color != null {
-    --#{$prefix}heading-color: #{$headings-color};
-  }
+  --#{$prefix}heading-color: #{$headings-color};
 
   --#{$prefix}link-color: #{$link-color};
   --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
@@ -93,6 +91,7 @@
   }
 
   --#{$prefix}code-color: #{$code-color};
+  --#{$prefix}highlight-color: #{$mark-color};
   --#{$prefix}highlight-bg: #{$mark-bg};
 
   // scss-docs-start root-border-var
@@ -120,9 +119,14 @@
   --#{$prefix}focus-ring-width: #{$focus-ring-width};
   --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
   --#{$prefix}focus-ring-color: #{$focus-ring-color};
-  // By default, there is no `--bs-focus-ring-x`, `--bs-focus-ring-y`, or `--bs-focus-ring-blur`, but we provide CSS variables with fallbacks to initial `0` values
-  --#{$prefix}focus-ring-box-shadow: var(--#{$prefix}focus-ring-x, 0) var(--#{$prefix}focus-ring-y, 0) var(--#{$prefix}focus-ring-blur, 0) var(--#{$prefix}focus-ring-width) var(--#{$prefix}focus-ring-color);
   // scss-docs-end root-focus-variables
+
+  // scss-docs-start root-form-validation-variables
+  --#{$prefix}form-valid-color: #{$form-valid-color};
+  --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
+  --#{$prefix}form-invalid-color: #{$form-invalid-color};
+  --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
+  // scss-docs-end root-form-validation-variables
 }
 
 @if $enable-dark-mode {
@@ -160,9 +164,7 @@
       --#{$prefix}#{$color}-border-subtle: #{$value};
     }
 
-    @if $headings-color-dark != null {
-      --#{$prefix}heading-color: #{$headings-color-dark};
-    }
+    --#{$prefix}heading-color: #{$headings-color-dark};
 
     --#{$prefix}link-color: #{$link-color-dark};
     --#{$prefix}link-hover-color: #{$link-hover-color-dark};
@@ -170,9 +172,16 @@
     --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
     --#{$prefix}code-color: #{$code-color-dark};
+    --#{$prefix}highlight-color: #{$mark-color-dark};
+    --#{$prefix}highlight-bg: #{$mark-bg-dark};
 
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+
+    --#{$prefix}form-valid-color: #{$form-valid-color-dark};
+    --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
+    --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
+    --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
     // scss-docs-end root-dark-mode-vars
   }
 }

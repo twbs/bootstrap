@@ -1,14 +1,16 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): scrollspy.js
+ * Bootstrap scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getElement, isDisabled, isVisible } from './util/index.js'
+import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-import BaseComponent from './base-component.js'
+import {
+  defineJQueryPlugin, getElement, isDisabled, isVisible
+} from './util/index.js'
 
 /**
  * Constants
@@ -208,11 +210,11 @@ class ScrollSpy extends BaseComponent {
         continue
       }
 
-      const observableSection = SelectorEngine.findOne(anchor.hash, this._element)
+      const observableSection = SelectorEngine.findOne(decodeURI(anchor.hash), this._element)
 
       // ensure that the observableSection exists & is visible
       if (isVisible(observableSection)) {
-        this._targetLinks.set(anchor.hash, anchor)
+        this._targetLinks.set(decodeURI(anchor.hash), anchor)
         this._observableSections.set(anchor.hash, observableSection)
       }
     }
