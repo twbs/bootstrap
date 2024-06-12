@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): util/template-factory.js
+ * Bootstrap util/template-factory.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { DefaultAllowlist, sanitizeHtml } from './sanitizer.js'
-import { execute, getElement, isElement } from './index.js'
 import SelectorEngine from '../dom/selector-engine.js'
 import Config from './config.js'
+import { DefaultAllowlist, sanitizeHtml } from './sanitizer.js'
+import { execute, getElement, isElement } from './index.js'
 
 /**
  * Constants

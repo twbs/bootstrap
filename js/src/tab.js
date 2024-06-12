@@ -1,14 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.3.0-alpha1): tab.js
+ * Bootstrap tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import { defineJQueryPlugin, getNextActiveElement, isDisabled } from './util/index.js'
+import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-import BaseComponent from './base-component.js'
+import { defineJQueryPlugin, getNextActiveElement, isDisabled } from './util/index.js'
 
 /**
  * Constants
@@ -30,6 +30,8 @@ const ARROW_LEFT_KEY = 'ArrowLeft'
 const ARROW_RIGHT_KEY = 'ArrowRight'
 const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
+const HOME_KEY = 'Home'
+const END_KEY = 'End'
 
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_FADE = 'fade'
@@ -38,12 +40,12 @@ const CLASS_DROPDOWN = 'dropdown'
 
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 const SELECTOR_DROPDOWN_MENU = '.dropdown-menu'
-const NOT_SELECTOR_DROPDOWN_TOGGLE = ':not(.dropdown-toggle)'
+const NOT_SELECTOR_DROPDOWN_TOGGLE = `:not(${SELECTOR_DROPDOWN_TOGGLE})`
 
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]'
 const SELECTOR_OUTER = '.nav-item, .list-group-item'
 const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_DROPDOWN_TOGGLE}, .list-group-item${NOT_SELECTOR_DROPDOWN_TOGGLE}, [role="tab"]${NOT_SELECTOR_DROPDOWN_TOGGLE}`
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]' // todo:v6: could be only `tab`
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]' // TODO: could only be `tab` in v6
 const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`
 
 const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="pill"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="list"]`
@@ -59,7 +61,7 @@ class Tab extends BaseComponent {
 
     if (!this._parent) {
       return
-      // todo: should Throw exception on v6
+      // TODO: should throw exception in v6
       // throw new TypeError(`${element.outerHTML} has not a valid parent ${SELECTOR_INNER_ELEM}`)
     }
 
@@ -151,14 +153,22 @@ class Tab extends BaseComponent {
   }
 
   _keydown(event) {
-    if (!([ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key))) {
+    if (!([ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY, HOME_KEY, END_KEY].includes(event.key))) {
       return
     }
 
     event.stopPropagation()// stopPropagation/preventDefault both added to support up/down keys without scrolling the page
     event.preventDefault()
-    const isNext = [ARROW_RIGHT_KEY, ARROW_DOWN_KEY].includes(event.key)
-    const nextActiveElement = getNextActiveElement(this._getChildren().filter(element => !isDisabled(element)), event.target, isNext, true)
+
+    const children = this._getChildren().filter(element => !isDisabled(element))
+    let nextActiveElement
+
+    if ([HOME_KEY, END_KEY].includes(event.key)) {
+      nextActiveElement = children[event.key === HOME_KEY ? 0 : children.length - 1]
+    } else {
+      const isNext = [ARROW_RIGHT_KEY, ARROW_DOWN_KEY].includes(event.key)
+      nextActiveElement = getNextActiveElement(children, event.target, isNext, true)
+    }
 
     if (nextActiveElement) {
       nextActiveElement.focus({ preventScroll: true })
@@ -212,7 +222,7 @@ class Tab extends BaseComponent {
     this._setAttributeIfNotExists(target, 'role', 'tabpanel')
 
     if (child.id) {
-      this._setAttributeIfNotExists(target, 'aria-labelledby', `#${child.id}`)
+      this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`)
     }
   }
 

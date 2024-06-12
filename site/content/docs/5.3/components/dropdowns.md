@@ -10,7 +10,7 @@ toc: true
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/).
 
-Dropdowns are built on a third party library, [Popper](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper. Popper isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
+Dropdowns are built on a third party library, [Popper](https://popper.js.org/docs/v2/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper. Popper isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
 
 ## Accessibility
 
@@ -661,7 +661,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 {{< example >}}
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Regular link</a></li>
-  <li><a class="dropdown-item disabled">Disabled link</a></li>
+  <li><a class="dropdown-item disabled" aria-disabled="true">Disabled link</a></li>
   <li><a class="dropdown-item" href="#">Another link</a></li>
 </ul>
 {{< /example >}}
@@ -1025,7 +1025,7 @@ Variables for the CSS-based carets that indicate a dropdown's interactivity:
 
 {{< scss-docs name="caret-variables" file="scss/_variables.scss" >}}
 
-### Mixins
+### Sass mixins
 
 Mixins are used to generate the CSS-based carets and can be found in `scss/mixins/_caret.scss`.
 

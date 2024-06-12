@@ -351,17 +351,31 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 
 ## CSS
 
+### Variables
+
+{{< added-in "5.3.0" >}}
+
+As part of Bootstrap's evolving CSS variables approach, forms now use local CSS variables for validation for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="root-form-validation-variables" file="scss/_root.scss" >}}
+
+These variables are also color mode adaptive, meaning they change color while in dark mode.
+
 ### Sass variables
 
 {{< scss-docs name="form-feedback-variables" file="scss/_variables.scss" >}}
 
+{{< scss-docs name="form-validation-colors" file="scss/_variables.scss" >}}
+
+{{< scss-docs name="form-validation-colors-dark" file="scss/_variables-dark.scss" >}}
+
 ### Sass mixins
 
-Two mixins are combined together, through our [loop](#loop), to generate our form validation feedback styles.
+Two mixins are combined, through our [loop](#sass-loops), to generate our form validation feedback styles.
 
 {{< scss-docs name="form-validation-mixins" file="scss/mixins/_forms.scss" >}}
 
-### Sass map
+### Sass maps
 
 This is the validation Sass map from `_variables.scss`. Override or extend this to generate different or additional states.
 
@@ -369,7 +383,7 @@ This is the validation Sass map from `_variables.scss`. Override or extend this 
 
 Maps of `$form-validation-states` can contain three optional parameters to override tooltips and focus styles.
 
-### Sass loop
+### Sass loops
 
 Used to iterate over `$form-validation-states` map values to generate our validation styles. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop.
 

@@ -2,6 +2,11 @@
   max-width: 960px;
 }
 
+.icon-link > .bi {
+  width: .75em;
+  height: .75em;
+}
+
 /*
  * Custom translucent site header
  */
