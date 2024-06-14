@@ -111,12 +111,13 @@ class Tab extends BaseComponent {
     this._activate(SelectorEngine.getElementFromSelector(element)) // Search and activate/show the proper section
 
     const complete = () => {
+      element.removeAttribute('tabindex')
+
       if (element.getAttribute('role') !== 'tab') {
         element.classList.add(CLASS_NAME_SHOW)
         return
       }
 
-      element.removeAttribute('tabindex')
       element.setAttribute('aria-selected', true)
       this._toggleDropDown(element, true)
       EventHandler.trigger(element, EVENT_SHOWN, {
@@ -138,13 +139,14 @@ class Tab extends BaseComponent {
     this._deactivate(SelectorEngine.getElementFromSelector(element)) // Search and deactivate the shown section too
 
     const complete = () => {
+      element.setAttribute('tabindex', '-1')
+
       if (element.getAttribute('role') !== 'tab') {
         element.classList.remove(CLASS_NAME_SHOW)
         return
       }
 
       element.setAttribute('aria-selected', false)
-      element.setAttribute('tabindex', '-1')
       this._toggleDropDown(element, false)
       EventHandler.trigger(element, EVENT_HIDDEN, { relatedTarget: relatedElem })
     }
