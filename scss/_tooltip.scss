@@ -115,5 +115,6 @@
   color: var(--#{$prefix}tooltip-color);
   text-align: center;
   background-color: var(--#{$prefix}tooltip-bg);
+  --#{$prefix}current-plane-bg: var(--#{$prefix}tooltip-bg);
   @include border-radius(var(--#{$prefix}tooltip-border-radius));
 }
