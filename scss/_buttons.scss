@@ -18,6 +18,7 @@
   --#{$prefix}btn-hover-border-color: transparent;
   --#{$prefix}btn-box-shadow: #{$btn-box-shadow};
   --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
+  --#{$prefix}btn-disabled-fade-percentage: #{$btn-disabled-fade-percentage};
   --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
   // scss-docs-end btn-css-vars
 
@@ -112,13 +113,38 @@
   &:disabled,
   &.disabled,
   fieldset:disabled & {
-    color: var(--#{$prefix}btn-disabled-color);
+    --#{$prefix}btn-parent-bg-luminance-gray: lab(from var(--#{$prefix}current-plane-bg) l 0 0);
+
+    color:
+      color-mix(
+        in srgb,
+        var(--#{$prefix}btn-parent-bg-luminance-gray) var(--#{$prefix}btn-disabled-fade-percentage),
+        var(--#{$prefix}btn-disabled-color)
+      );
     pointer-events: none;
-    background-color: var(--#{$prefix}btn-disabled-bg);
+    background-color:
+      color-mix(
+        in srgb,
+        var(--#{$prefix}btn-parent-bg-luminance-gray) var(--#{$prefix}btn-disabled-fade-percentage),
+        var(--#{$prefix}btn-disabled-bg)
+      );
     background-image: if($enable-gradients, none, null);
-    border-color: var(--#{$prefix}btn-disabled-border-color);
-    opacity: var(--#{$prefix}btn-disabled-opacity);
     @include box-shadow(none);
+    border-color:
+      color-mix(
+        in srgb,
+        var(--#{$prefix}btn-parent-bg-luminance-gray) var(--#{$prefix}btn-disabled-fade-percentage),
+        var(--#{$prefix}btn-disabled-border-color)
+      );
+
+    &.btn-link {
+      border-color: var(--#{$prefix}btn-disabled-border-color);
+    }
+
+    > * {
+      color: var(--#{$prefix}btn-disabled-color);
+      opacity: var(--#{$prefix}btn-disabled-opacity);
+    }
   }
 }
 
