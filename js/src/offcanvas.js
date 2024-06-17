@@ -50,14 +50,14 @@ const Default = {
   backdrop: true,
   keyboard: true,
   scroll: false,
-  scrollAfterClose: true
+  focusAfterClose: true
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   scroll: 'boolean',
-  scrollAfterClose: 'boolean'
+  focusAfterClose: 'boolean'
 }
 
 /**
@@ -153,7 +153,7 @@ class Offcanvas extends BaseComponent {
         new ScrollBarHelper().reset()
       }
 
-      if (this._config.scrollAfterClose) {
+      if (this._config.focusAfterClose) {
         EventHandler.trigger(this._element, EVENT_HIDDEN)
       }
     }
