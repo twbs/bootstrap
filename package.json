@@ -112,7 +112,7 @@
     "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.5",
-    "@stackblitz/sdk": "^1.9.0",
+    "@stackblitz/sdk": "^1.10.0",
     "autoprefixer": "^10.4.19",
     "bundlewatch": "^0.3.3",
     "clean-css-cli": "^5.6.3",
