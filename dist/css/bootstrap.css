@@ -7728,6 +7728,18 @@ textarea.form-control-lg {
   min-height: 100vh !important;
 }
 
+.min-vh-75 {
+  min-height: 75vh !important;
+}
+
+.min-vh-50 {
+  min-height: 50vh !important;
+}
+
+.min-vh-25 {
+  min-height: 25vh !important;
+}
+
 .flex-fill {
   flex: 1 1 auto !important;
 }
