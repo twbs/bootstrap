@@ -177,7 +177,10 @@ describe('Tooltip', () => {
 
       const popperConfig = tooltip._getPopperConfig('top')
 
-      expect(getPopperConfig).toHaveBeenCalled()
+      // Ensure that the function was called with the default config.
+      expect(getPopperConfig).toHaveBeenCalledWith(jasmine.objectContaining({
+        placement: jasmine.any(String)
+      }))
       expect(popperConfig.placement).toEqual('left')
     })
 
