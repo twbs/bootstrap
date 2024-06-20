@@ -181,7 +181,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
   fn.uidEvent = uid
   handlers[uid] = fn
 
-  element.addEventListener(typeEvent, fn, isDelegated)
+  element.addEventListener(typeEvent, fn, false)
 }
 
 function removeHandler(element, events, typeEvent, handler, delegationSelector) {
@@ -191,7 +191,7 @@ function removeHandler(element, events, typeEvent, handler, delegationSelector) 
     return
   }
 
-  element.removeEventListener(typeEvent, fn, Boolean(delegationSelector))
+  element.removeEventListener(typeEvent, fn, false)
   delete events[typeEvent][fn.uidEvent]
 }
 

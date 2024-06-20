@@ -1567,7 +1567,7 @@ describe('Dropdown', () => {
         })
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
-          const keydown = createEvent('keydown')
+          const keydown = createEvent('keydown', { bubbles: true })
 
           keydown.key = 'Escape'
           triggerDropdown.dispatchEvent(keydown)
@@ -1782,7 +1782,7 @@ describe('Dropdown', () => {
           })
         })
 
-        const keydown = createEvent('keydown')
+        const keydown = createEvent('keydown', { bubbles: true })
         keydown.key = 'ArrowUp'
         triggerDropdown.dispatchEvent(keydown)
       })
@@ -1810,7 +1810,7 @@ describe('Dropdown', () => {
           })
         })
 
-        const keydown = createEvent('keydown')
+        const keydown = createEvent('keydown', { bubbles: true })
         keydown.key = 'ArrowDown'
         triggerDropdown.dispatchEvent(keydown)
       })
@@ -1919,14 +1919,14 @@ describe('Dropdown', () => {
         const textarea = fixtureEl.querySelector('textarea')
 
         const test = (eventKey, elementToDispatch) => {
-          const event = createEvent('keydown')
+          const event = createEvent('keydown', { bubbles: true })
           event.key = eventKey
           elementToDispatch.focus()
           elementToDispatch.dispatchEvent(event)
           expect(document.activeElement).toEqual(elementToDispatch, `${elementToDispatch.tagName} still focused`)
         }
 
-        const keydownEscape = createEvent('keydown')
+        const keydownEscape = createEvent('keydown', { bubbles: true })
         keydownEscape.key = 'Escape'
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
@@ -2348,10 +2348,10 @@ describe('Dropdown', () => {
       const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
 
-      const keydown = createEvent('keydown')
+      const keydown = createEvent('keydown', { bubbles: true })
       keydown.key = 'ArrowDown'
 
-      const keyup = createEvent('keyup')
+      const keyup = createEvent('keyup', { bubbles: true })
       keyup.key = 'ArrowUp'
 
       const handleArrowDown = () => {
