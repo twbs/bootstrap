@@ -392,7 +392,7 @@ class Tooltip extends BaseComponent {
   }
 
   _resolvePossibleFunction(arg) {
-    return execute(arg, [this._element])
+    return execute(arg, [this._element, this._element])
   }
 
   _getPopperConfig(attachment) {
