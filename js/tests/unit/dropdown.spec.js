@@ -1403,21 +1403,25 @@ describe('Dropdown', () => {
           expect(triggerDropdownFirst).toHaveClass('show')
           expect(fixtureEl.querySelectorAll('.dropdown-menu.show')).toHaveSize(1)
           document.body.click()
+          console.log('clicked body 1...')
         })
 
         triggerDropdownFirst.addEventListener('hidden.bs.dropdown', () => {
           expect(fixtureEl.querySelectorAll('.dropdown-menu.show')).toHaveSize(0)
           triggerDropdownLast.click()
+          console.log('clicked second dropdown...')
         })
 
         triggerDropdownLast.addEventListener('shown.bs.dropdown', () => {
           expect(triggerDropdownLast).toHaveClass('show')
           expect(fixtureEl.querySelectorAll('.dropdown-menu.show')).toHaveSize(1)
           document.body.click()
+          console.log('clicked body 2...')
         })
 
         triggerDropdownLast.addEventListener('hidden.bs.dropdown', () => {
           expect(fixtureEl.querySelectorAll('.dropdown-menu.show')).toHaveSize(0)
+          console.log('done!')
           resolve()
         })
 

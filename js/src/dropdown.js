@@ -444,7 +444,7 @@ EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus, { capture: 
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
   Dropdown.getOrCreateInstance(this).toggle()
-})
+}, { capture: true })
 
 /**
  * jQuery
