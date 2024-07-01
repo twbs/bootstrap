@@ -202,7 +202,7 @@ When modals become too long for the user's viewport or device, they scroll indep
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="min-height: 1500px">
-        <p>This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text the modal, we use an inline style set a minimum height, thereby extending the length of the overall modal and demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling will move the modal as needed.</p>
+        <p>This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text in the modal, we use an inline style to set a minimum height, thereby extending the length of the overall modal and demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling will move the modal as needed.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -218,7 +218,7 @@ When modals become too long for the user's viewport or device, they scroll indep
   </button>
 </div>
 
-You can also create a scrollable modal that allows scroll the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
+You can also create a scrollable modal that allows scrolling the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
 
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
@@ -481,24 +481,7 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
 </div>
 {{< /example >}}
 
-```js
-const exampleModal = document.getElementById('exampleModal')
-exampleModal.addEventListener('show.bs.modal', event => {
-  // Button that triggered the modal
-  const button = event.relatedTarget
-  // Extract info from data-bs-* attributes
-  const recipient = button.getAttribute('data-bs-whatever')
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
-  const modalTitle = exampleModal.querySelector('.modal-title')
-  const modalBodyInput = exampleModal.querySelector('.modal-body input')
-
-  modalTitle.textContent = `New message to ${recipient}`
-  modalBodyInput.value = recipient
-})
-```
+{{< js-docs name="varying-modal-content" file="site/assets/js/partials/snippets.js" >}}
 
 ### Toggle between modals
 
@@ -576,7 +559,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
 | Size | Class | Modal max-width
 | --- | --- | --- |
 | Small | `.modal-sm` | `300px` |
-| Default | <span class="text-muted">None</span> | `500px` |
+| Default | <span class="text-body-secondary">None</span> | `500px` |
 | Large | `.modal-lg` | `800px` |
 | Extra large | `.modal-xl` | `1140px` |
 {{< /bs-table >}}
@@ -643,7 +626,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 
 {{< bs-table >}}
 | Class | Availability |
-| --- | --- | --- |
+| --- | --- |
 | `.modal-fullscreen` | Always |
 | `.modal-fullscreen-sm-down` | `576px` |
 | `.modal-fullscreen-md-down` | `768px` |
@@ -786,7 +769,7 @@ As part of Bootstrap's evolving CSS variables approach, modals now use local CSS
 
 {{< scss-docs name="modal-variables" file="scss/_variables.scss" >}}
 
-### Loop
+### Sass loops
 
 [Responsive fullscreen modals](#fullscreen-modal) are generated via the `$breakpoints` map and a loop in `scss/_modal.scss`.
 

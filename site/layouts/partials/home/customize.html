@@ -7,9 +7,9 @@
     Bootstrap utilizes Sass for a modular and customizable architecture. Import only the components you need, enable global options like gradients and shadows, and write your own CSS with our variables, maps, functions, and mixins.
   </p>
   <p class="d-flex justify-content-start lead fw-normal">
-    <a href="/docs/{{ .Site.Params.docs_version }}/customize/overview/" class="icon-link fw-semibold">
+    <a href="/docs/{{ .Site.Params.docs_version }}/customize/overview/" class="icon-link icon-link-hover fw-semibold">
       Learn more about customizing
-      <svg class="bi"><use xlink:href="#arrow-right-short"></use></svg>
+      <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
     </a>
   </p>
 </section>
@@ -41,6 +41,7 @@ $prefix: "mo-";
 
 // Required Bootstrap imports
 @import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
 @import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/root";

@@ -38,13 +38,14 @@
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
-  &:focus {
+  &:focus-visible {
     outline: 0;
     box-shadow: $nav-link-focus-box-shadow;
   }
 
   // Disabled state lightens text
-  &.disabled {
+  &.disabled,
+  &:disabled {
     color: var(--#{$prefix}nav-link-disabled-color);
     pointer-events: none;
     cursor: default;
@@ -79,13 +80,6 @@
       isolation: isolate;
       border-color: var(--#{$prefix}nav-tabs-link-hover-border-color);
     }
-
-    &.disabled,
-    &:disabled {
-      color: var(--#{$prefix}nav-link-disabled-color);
-      background-color: transparent;
-      border-color: transparent;
-    }
   }
 
   .nav-link.active,
@@ -117,12 +111,6 @@
 
   .nav-link {
     @include border-radius(var(--#{$prefix}nav-pills-border-radius));
-
-    &:disabled {
-      color: var(--#{$prefix}nav-link-disabled-color);
-      background-color: transparent;
-      border-color: transparent;
-    }
   }
 
   .nav-link.active,
@@ -145,11 +133,6 @@
   // scss-docs-end nav-underline-css-vars
 
   gap: var(--#{$prefix}nav-underline-gap);
-
-  // .nav-item + .nav-item,
-  // .nav-link + .nav-link {
-  //   margin-left: $nav-link-padding-x;
-  // }
 
   .nav-link {
     padding-right: 0;

@@ -75,13 +75,13 @@ Here are some representative examples of these classes:
 Additionally, Bootstrap also includes an `.mx-auto` class for horizontally centering fixed-width block level content—that is, content that has `display: block` and a `width` set—by setting the horizontal margins to `auto`.
 
 <div class="bd-example">
-  <div class="mx-auto" style="width: 200px; background-color: rgba(86,61,124,.15);">
+  <div class="mx-auto p-2" style="width: 200px; background-color: rgba(var(--bd-violet-rgb),.15); border: rgba(var(--bd-violet-rgb),.3) solid 1px;">
     Centered element
   </div>
 </div>
 
 ```html
-<div class="mx-auto" style="width: 200px;">
+<div class="mx-auto p-2" style="width: 200px;">
   Centered element
 </div>
 ```
@@ -139,15 +139,15 @@ Support includes responsive options for all of Bootstrap's grid breakpoints, as 
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Maps
+### Sass maps
 
 Spacing utilities are declared via Sass map and then generated with our utilities API.
 
 {{< scss-docs name="spacer-variables-maps" file="scss/_variables.scss" >}}
 
-### Utilities API
+### Sass utilities API
 
 Spacing utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

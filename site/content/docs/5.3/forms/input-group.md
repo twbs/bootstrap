@@ -312,8 +312,8 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="input-group-variables" file="scss/_variables.scss" >}}

@@ -4,7 +4,8 @@ title: Color and background
 description: Set a background color with contrasting foreground color.
 group: helpers
 toc: true
-added: "5.2"
+added:
+  version: "5.2"
 ---
 
 ## Overview
@@ -22,6 +23,10 @@ Color and background helpers combine the power of our [`.text-*` utilities]({{< 
 {{- end -}}
 {{< /text-bg.inline >}}
 {{< /example >}}
+
+{{< callout info >}}
+{{< partial "callouts/warning-color-assistive-technologies.md" >}}
+{{< /callout >}}
 
 ## With components
 

@@ -7,7 +7,7 @@ toc: true
 thumbnail: guides/bootstrap-webpack@2x.png
 ---
 
-<img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png" width="2000" height="1000" alt="">
+<img class="d-block mx-auto mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-webpack.png" width="800" height="400" alt="">
 
 {{< callout >}}
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/webpack). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/webpack?file=index.html) for live editing.
@@ -15,19 +15,19 @@ thumbnail: guides/bootstrap-webpack@2x.png
 
 ## Setup
 
-We're building a Webpack project with Bootstrap from scratch, so there are some prerequisites and up front steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
+We're building a Webpack project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
-1. **Create a project folder and setup npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
+1. **Create a project folder and set up npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
    ```sh
    mkdir my-project && cd my-project
    npm init -y
    ```
 
-2. **Install Webpack.** Next we need to install our Webpack development dependencies: `webpack` for the core of Webpack, `webpack-cli` so we can run Webpack commands from the terminal, and `webpack-dev-server` so we can run a local development server. We use `--save-dev` to signal that these dependencies are only for development use and not for production.
+2. **Install Webpack.** Next we need to install our Webpack development dependencies: `webpack` for the core of Webpack, `webpack-cli` so we can run Webpack commands from the terminal, and `webpack-dev-server` so we can run a local development server. Additionally, we'll install `html-webpack-plugin` to be able to store our `index.html` in `src` directory instead of the default `dist` one. We use `--save-dev` to signal that these dependencies are only for development use and not for production.
 
    ```sh
-   npm i --save-dev webpack webpack-cli webpack-dev-server
+   npm i --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin
    ```
 
 3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Popper since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don't plan on using those components, you can omit Popper here.
@@ -49,21 +49,20 @@ Now that we have all the necessary dependencies installed, we can get to work cr
 We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` and `dist` folders to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
 
 ```sh
-mkdir {dist,src,src/js,src/scss}
-touch dist/index.html src/js/main.js src/scss/styles.scss webpack.config.js
+mkdir {src,src/js,src/scss}
+touch src/index.html src/js/main.js src/scss/styles.scss webpack.config.js
 ```
 
 When you're done, your complete project should look like this:
 
 ```text
 my-project/
-├── dist/
-│   └── index.html
 ├── src/
 │   ├── js/
 │   │   └── main.js
-│   └── scss/
-│       └── styles.scss
+│   ├── scss/
+│   │   └── styles.scss
+│   └── index.html
 ├── package-lock.json
 ├── package.json
 └── webpack.config.js
@@ -78,9 +77,13 @@ With dependencies installed and our project folder ready for us to start coding,
 1. **Open `webpack.config.js` in your editor.** Since it's blank, we'll need to add some boilerplate config to it so we can start our server. This part of the config tells Webpack where to look for our project's JavaScript, where to output the compiled code to (`dist`), and how the development server should behave (pulling from the `dist` folder with hot reload).
 
    ```js
+   'use strict'
+
    const path = require('path')
+   const HtmlWebpackPlugin = require('html-webpack-plugin')
 
    module.exports = {
+     mode: 'development',
      entry: './src/js/main.js',
      output: {
        filename: 'main.js',
@@ -90,11 +93,14 @@ With dependencies installed and our project folder ready for us to start coding,
        static: path.resolve(__dirname, 'dist'),
        port: 8080,
        hot: true
-     }
+     },
+     plugins: [
+       new HtmlWebpackPlugin({ template: './src/index.html' })
+     ]
    }
    ```
 
-2. **Next we fill in our `dist/index.html`.** This is the HTML page Webpack will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
+2. **Next we fill in our `src/index.html`.** This is the HTML page Webpack will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
 
    ```html
    <!doctype html>
@@ -109,20 +115,20 @@ With dependencies installed and our project folder ready for us to start coding,
          <h1>Hello, Bootstrap and Webpack!</h1>
          <button class="btn btn-primary">Primary button</button>
        </div>
-       <script src="./main.js"></script>
      </body>
    </html>
    ```
 
    We're including a little bit of Bootstrap styling here with the `div class="container"` and `<button>` so that we see when Bootstrap's CSS is loaded by Webpack.
 
-3. **Now we need an npm script to run Webpack.** Open `package.json` and add the `start` script shown below (you should already have the test script). We'll use this script to start our local Webpack dev server.
+3. **Now we need an npm script to run Webpack.** Open `package.json` and add the `start` script shown below (you should already have the test script). We'll use this script to start our local Webpack dev server. You can also add a `build` script shown below to build your project.
 
    ```json
    {
      // ...
      "scripts": {
-       "start": "webpack serve --mode development",
+       "start": "webpack serve",
+       "build": "webpack build --mode=production",
        "test": "echo \"Error: no test specified\" && exit 1"
      },
      // ...
@@ -135,7 +141,7 @@ With dependencies installed and our project folder ready for us to start coding,
    npm start
    ```
 
-   <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/webpack-dev-server.png" alt="Webpack dev server running">
+   ![Webpack dev server running](/assets/img/guides/webpack-dev-server.png)
 
 In the next and final section to this guide, we'll set up the Webpack loaders and import all of Bootstrap's CSS and JavaScript.
 
@@ -146,9 +152,14 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 1. **Set up the loaders in `webpack.config.js`.** Your configuration file is now complete and should match the snippet below. The only new part here is the `module` section.
 
    ```js
+   'use strict'
+
    const path = require('path')
+   const autoprefixer = require('autoprefixer')
+   const HtmlWebpackPlugin = require('html-webpack-plugin')
 
    module.exports = {
+     mode: 'development',
      entry: './src/js/main.js',
      output: {
        filename: 'main.js',
@@ -159,28 +170,35 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
        port: 8080,
        hot: true
      },
+     plugins: [
+       new HtmlWebpackPlugin({ template: './src/index.html' })
+     ],
      module: {
        rules: [
          {
            test: /\.(scss)$/,
            use: [
              {
+               // Adds CSS to the DOM by injecting a `<style>` tag
                loader: 'style-loader'
              },
              {
+               // Interprets `@import` and `url()` like `import/require()` and will resolve them
                loader: 'css-loader'
              },
              {
+               // Loader for webpack to process CSS with PostCSS
                loader: 'postcss-loader',
                options: {
                  postcssOptions: {
-                   plugins: () => [
-                     require('autoprefixer')
+                   plugins: [
+                     autoprefixer
                    ]
                  }
                }
              },
              {
+               // Loads a SASS/SCSS file and compiles it to CSS
                loader: 'sass-loader'
              }
            ]
@@ -196,7 +214,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    ```scss
    // Import all of Bootstrap's CSS
-   @import "~bootstrap/scss/bootstrap";
+   @import "bootstrap/scss/bootstrap";
    ```
 
    *You can also import our stylesheets individually if you want. [Read our Sass import docs]({{< docsref "/customize/sass#importing" >}}) for details.*
@@ -224,9 +242,9 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    *[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins.*
 
-4. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this.
+4. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this:
 
-   <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/webpack-dev-server-bootstrap.png" alt="Webpack dev server running with Bootstrap">
+   ![Webpack dev server running with Bootstrap](/assets/img/guides/webpack-dev-server-bootstrap.png)
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Webpack example project](https://github.com/twbs/examples/tree/main/webpack) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
@@ -249,20 +267,27 @@ npm install --save-dev mini-css-extract-plugin
 Then instantiate and use the plugin in the Webpack configuration:
 
 ```diff
---- a/webpack/webpack.config.js
-+++ b/webpack/webpack.config.js
-@@ -1,8 +1,10 @@
-+const miniCssExtractPlugin = require('mini-css-extract-plugin')
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -3,6 +3,7 @@
  const path = require('path')
- 
+ const autoprefixer = require('autoprefixer')
+ const HtmlWebpackPlugin = require('html-webpack-plugin')
++const miniCssExtractPlugin = require('mini-css-extract-plugin')
+
  module.exports = {
    mode: 'development',
-   entry: './src/js/main.js',
-+  plugins: [new miniCssExtractPlugin()],
-   output: {
-     filename: "main.js",
-     path: path.resolve(__dirname, "dist"),
-@@ -18,8 +20,8 @@ module.exports = {
+@@ -17,7 +18,8 @@ module.exports = {
+     hot: true
+   },
+   plugins: [
+-    new HtmlWebpackPlugin({ template: './src/index.html' })
++    new HtmlWebpackPlugin({ template: './src/index.html' }),
++    new miniCssExtractPlugin()
+   ],
+   module: {
+     rules: [
+@@ -25,8 +27,8 @@ module.exports = {
          test: /\.(scss)$/,
          use: [
            {
@@ -277,8 +302,8 @@ Then instantiate and use the plugin in the Webpack configuration:
 After running `npm run build` again, there will be a new file `dist/main.css`, which will contain all of the CSS imported by `src/js/main.js`. If you view `dist/index.html` in your browser now, the style will be missing, as it is now in `dist/main.css`. You can include the generated CSS in `dist/index.html` like this:
 
 ```diff
---- a/webpack/dist/index.html
-+++ b/webpack/dist/index.html
+--- a/dist/index.html
++++ b/dist/index.html
 @@ -3,6 +3,7 @@
    <head>
      <meta charset="utf-8">
@@ -296,9 +321,9 @@ Bootstrap's CSS includes multiple references to SVG files via inline `data:` URI
 Configure Webpack to extract inline SVG files like this:
 
 ```diff
---- a/webpack/webpack.config.js
-+++ b/webpack/webpack.config.js
-@@ -16,6 +16,14 @@ module.exports = {
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -23,6 +23,14 @@ module.exports = {
    },
    module: {
      rules: [

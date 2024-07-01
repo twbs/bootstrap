@@ -12,6 +12,8 @@ sections:
     description: Customize Bootstrap with built-in variables to easily toggle global CSS preferences.
   - title: Color
     description: Learn about and customize the color systems that support the entire toolkit.
+  - title: Color modes
+    description: Explore our default light mode and the new dark mode, or create custom color modes yourself.
   - title: Components
     description: Learn how we build nearly all our components responsively and with base and modifier classes.
   - title: CSS variables

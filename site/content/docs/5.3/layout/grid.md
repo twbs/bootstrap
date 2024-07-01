@@ -46,7 +46,7 @@ Breaking it down, here's how the grid system comes together:
 
 - **Gutters are also responsive and customizable.** [Gutter classes are available]({{< docsref "/layout/gutters" >}}) across all breakpoints, with all the same sizes as our [margin and padding spacing]({{< docsref "/utilities/spacing" >}}). Change horizontal gutters with `.gx-*` classes, vertical gutters with `.gy-*`, or all gutters with `.g-*` classes. `.g-0` is also available to remove gutters.
 
-- **Sass variables, maps, and mixins power the grid.** If you don't want to use the predefined grid classes in Bootstrap, you can use our [grid's source Sass](#sass) to create your own with more semantic markup. We also include some CSS custom properties to consume these Sass variables for even greater flexibility for you.
+- **Sass variables, maps, and mixins power the grid.** If you don't want to use the predefined grid classes in Bootstrap, you can use our [grid's source Sass](#sass-variables) to create your own with more semantic markup. We also include some CSS custom properties to consume these Sass variables for even greater flexibility for you.
 
 Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#flexbug-9).
 
@@ -409,11 +409,11 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
 When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our predefined grid classes use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
 
-### Variables
+### Sass variables
 
 Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
@@ -427,7 +427,7 @@ $grid-row-columns:  6;
 
 {{< scss-docs name="container-max-widths" file="scss/_variables.scss" >}}
 
-### Mixins
+### Sass mixins
 
 Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.
 

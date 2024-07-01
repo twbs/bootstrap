@@ -62,7 +62,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">A second link item</a>
   <a href="#" class="list-group-item list-group-item-action">A third link item</a>
   <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-  <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+  <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
 </div>
 {{< /example >}}
 
@@ -117,21 +117,21 @@ These work great with custom content as well.
       <div class="fw-bold">Subheading</div>
       Content for list item
     </div>
-    <span class="badge bg-primary rounded-pill">14</span>
+    <span class="badge text-bg-primary rounded-pill">14</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Subheading</div>
       Content for list item
     </div>
-    <span class="badge bg-primary rounded-pill">14</span>
+    <span class="badge text-bg-primary rounded-pill">14</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Subheading</div>
       Content for list item
     </div>
-    <span class="badge bg-primary rounded-pill">14</span>
+    <span class="badge text-bg-primary rounded-pill">14</span>
   </li>
 </ol>
 {{< /example >}}
@@ -157,7 +157,7 @@ Add `.list-group-horizontal` to change the layout of list group items from verti
 ## Variants
 
 {{< callout info >}}
-**Heads up!** As of v5.3.0, the `list-group-item-variant()` Sass mixin is deprecated. List group item variants now have their CSS variables overridden in [the Sass loop](#sass-loop).
+**Heads up!** As of v5.3.0, the `list-group-item-variant()` Sass mixin is deprecated. List group item variants now have their CSS variables overridden in [a Sass loop](#sass-loops).
 {{< /callout >}}
 
 Use contextual classes to style list items with a stateful background and color.
@@ -200,15 +200,15 @@ Add badges to any list group item to show unread counts, activity, and more with
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     A list item
-    <span class="badge bg-primary rounded-pill">14</span>
+    <span class="badge text-bg-primary rounded-pill">14</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     A second list item
-    <span class="badge bg-primary rounded-pill">2</span>
+    <span class="badge text-bg-primary rounded-pill">2</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     A third list item
-    <span class="badge bg-primary rounded-pill">1</span>
+    <span class="badge text-bg-primary rounded-pill">1</span>
   </li>
 </ul>
 {{< /example >}}
@@ -230,18 +230,18 @@ Add nearly any HTML within, even for linked list groups like the one below, with
   <a href="#" class="list-group-item list-group-item-action">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
+      <small class="text-body-secondary">3 days ago</small>
     </div>
     <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-muted">And some muted small print.</small>
+    <small class="text-body-secondary">And some muted small print.</small>
   </a>
   <a href="#" class="list-group-item list-group-item-action">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
+      <small class="text-body-secondary">3 days ago</small>
     </div>
     <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-muted">And some muted small print.</small>
+    <small class="text-body-secondary">And some muted small print.</small>
   </a>
 </div>
 {{< /example >}}
@@ -319,11 +319,11 @@ As part of Bootstrap's evolving CSS variables approach, list groups now use loca
 
 ### Sass mixins
 
-Used in combination with `$theme-colors` to generate the [contextual variant classes](#variants) for `.list-group-item`s.
+{{< deprecated-in "5.3.0" >}}
 
 {{< scss-docs name="list-group-mixin" file="scss/mixins/_list-group.scss" >}}
 
-### Sass loop
+### Sass loops
 
 Loop that generates the modifier classes with an overriding of CSS variables.
 

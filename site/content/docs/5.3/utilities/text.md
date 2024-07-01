@@ -15,10 +15,11 @@ Easily realign text to components with text alignment classes. For start, end, a
 <p class="text-center">Center aligned text on all viewport sizes.</p>
 <p class="text-end">End aligned text on all viewport sizes.</p>
 
-<p class="text-sm-start">Start aligned text on viewports sized SM (small) or wider.</p>
-<p class="text-md-start">Start aligned text on viewports sized MD (medium) or wider.</p>
-<p class="text-lg-start">Start aligned text on viewports sized LG (large) or wider.</p>
-<p class="text-xl-start">Start aligned text on viewports sized XL (extra-large) or wider.</p>
+<p class="text-sm-end">End aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-end">End aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-end">End aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-end">End aligned text on viewports sized XL (extra large) or wider.</p>
+<p class="text-xxl-end">End aligned text on viewports sized XXL (extra extra large) or wider.</p>
 {{< /example >}}
 
 {{< callout info >}}
@@ -30,7 +31,7 @@ Note that we don't provide utility classes for justified text. While, aesthetica
 Wrap text with a `.text-wrap` class.
 
 {{< example >}}
-<div class="badge bg-primary text-wrap" style="width: 6rem;">
+<div class="badge text-bg-primary text-wrap" style="width: 6rem;">
   This text should wrap.
 </div>
 {{< /example >}}
@@ -57,7 +58,7 @@ Note that [breaking words isn't possible in Arabic](https://rtlstyling.com/posts
 
 ## Text transform
 
-Transform text in components with text capitalization classes.
+Transform text in components with our text capitalization classes: `text-lowercase`, `text-uppercase` or `text-capitalize`.
 
 {{< example >}}
 <p class="text-lowercase">Lowercased text.</p>
@@ -90,6 +91,7 @@ Quickly change the `font-weight` or `font-style` of text with these utilities. `
 <p class="fw-bold">Bold text.</p>
 <p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
 <p class="fw-semibold">Semibold weight text.</p>
+<p class="fw-medium">Medium weight text.</p>
 <p class="fw-normal">Normal weight text.</p>
 <p class="fw-light">Light weight text.</p>
 <p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
@@ -121,8 +123,8 @@ Change a selection to our monospace font stack with `.font-monospace`.
 Reset a text or link's color with `.text-reset`, so that it inherits the color from its parent.
 
 {{< example >}}
-<p class="text-muted">
-  Muted text with a <a href="#" class="text-reset">reset link</a>.
+<p class="text-body-secondary">
+  Secondary body text with a <a href="#" class="text-reset">reset link</a>.
 </p>
 {{< /example >}}
 
@@ -136,19 +138,23 @@ Decorate text in components with text decoration classes.
 <a href="#" class="text-decoration-none">This link has its text decoration removed</a>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
+
+Default type and font related Sass variables:
 
 {{< scss-docs name="font-variables" file="scss/_variables.scss" >}}
 
-### Maps
+### Sass maps
 
 Font-size utilities are generated from this map, in combination with our utilities API.
 
 {{< scss-docs name="font-sizes" file="scss/_variables.scss" >}}
 
-### Utilities API
+{{< scss-docs name="theme-text-map" file="scss/_maps.scss" >}}
+
+### Sass utilities API
 
 Font and text utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]({{< docsref "/utilities/api#using-the-api" >}})
 

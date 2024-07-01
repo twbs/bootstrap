@@ -4,7 +4,8 @@ title: Placeholders
 description: Use loading placeholders for your components or pages to indicate something may still be loading.
 group: components
 toc: true
-added: "5.1"
+added:
+  version: "5.1"
 ---
 
 ## About
@@ -38,7 +39,7 @@ In the example below, we take a typical card component and recreate it with plac
       <span class="placeholder col-6"></span>
       <span class="placeholder col-8"></span>
     </p>
-    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+    <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
   </div>
 </div>
 </div>
@@ -67,7 +68,7 @@ In the example below, we take a typical card component and recreate it with plac
       <span class="placeholder col-6"></span>
       <span class="placeholder col-8"></span>
     </p>
-    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+    <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
   </div>
 </div>
 ```
@@ -83,7 +84,7 @@ We apply additional styling to `.btn`s via `::before` to ensure the `height` is 
   <span class="placeholder col-6"></span>
 </p>
 
-<a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a>
+<a class="btn btn-primary disabled placeholder col-4" aria-disabled="true"></a>
 {{< /example >}}
 
 {{< callout info >}}
@@ -138,8 +139,8 @@ Animate placeholders with `.placeholder-glow` or `.placeholder-wave` to better c
 </p>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="placeholders" file="scss/_variables.scss" >}}

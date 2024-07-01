@@ -89,7 +89,7 @@ Add the `disabled` boolean attribute on an input, a textarea or a select to give
   <label for="floatingTextareaDisabled">Comments</label>
 </div>
 <div class="form-floating mb-3">
-  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled></textarea>
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled>Disabled textarea with some text inside</textarea>
   <label for="floatingTextarea2Disabled">Comments</label>
 </div>
 <div class="form-floating">
@@ -173,8 +173,8 @@ When working with the Bootstrap grid system, be sure to place form elements with
 </div>
 {{< /example >}}
 
-## Sass
+## CSS
 
-### Variables
+### Sass variables
 
 {{< scss-docs name="form-floating-variables" file="scss/_variables.scss" >}}

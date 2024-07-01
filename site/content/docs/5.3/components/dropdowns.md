@@ -10,7 +10,7 @@ toc: true
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/).
 
-Dropdowns are built on a third party library, [Popper](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper. Popper isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
+Dropdowns are built on a third party library, [Popper](https://popper.js.org/docs/v2/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper. Popper isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
 
 ## Accessibility
 
@@ -400,8 +400,7 @@ And putting it to use in a navbar:
 ## Directions
 
 {{< callout info >}}
-#### RTL
-Directions are mirrored when using Bootstrap in RTL, meaning `.dropstart` will appear on the right side.
+**Directions are flipped in RTL mode.** As such, `.dropstart` will appear on the right side.
 {{< /callout >}}
 
 ### Centered
@@ -662,7 +661,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 {{< example >}}
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Regular link</a></li>
-  <li><a class="dropdown-item disabled">Disabled link</a></li>
+  <li><a class="dropdown-item disabled" aria-disabled="true">Disabled link</a></li>
   <li><a class="dropdown-item" href="#">Another link</a></li>
 </ul>
 {{< /example >}}
@@ -842,7 +841,7 @@ Separate groups of related menu items with a divider.
 Place any freeform text within a dropdown menu with text and use [spacing utilities]({{< docsref "/utilities/spacing" >}}). Note that you'll likely need additional sizing styles to constrain the menu width.
 
 {{< example >}}
-<div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
+<div class="dropdown-menu p-4 text-body-secondary" style="max-width: 200px;">
   <p>
     Some example text that's free-flowing within the dropdown menu.
   </p>
@@ -1026,7 +1025,7 @@ Variables for the CSS-based carets that indicate a dropdown's interactivity:
 
 {{< scss-docs name="caret-variables" file="scss/_variables.scss" >}}
 
-### Mixins
+### Sass mixins
 
 Mixins are used to generate the CSS-based carets and can be found in `scss/mixins/_caret.scss`.
 
@@ -1057,18 +1056,16 @@ Add `data-bs-toggle="dropdown"` to a link or button to toggle a dropdown.
 
 ### Via JavaScript
 
+{{< callout warning >}}
+Dropdowns must have `data-bs-toggle="dropdown"` on their trigger element, regardless of whether you call your dropdown via JavaScript or use the data-api.
+{{< /callout >}}
+
 Call the dropdowns via JavaScript:
 
 ```js
 const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
 const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
 ```
-
-{{< callout info >}}
-##### `data-bs-toggle="dropdown"` still required
-
-Regardless of whether you call your dropdown via JavaScript or instead use the data-api, `data-bs-toggle="dropdown"` is always required to be present on the dropdown's trigger element.
-{{< /callout >}}
 
 ### Options
 

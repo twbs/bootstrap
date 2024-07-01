@@ -8,16 +8,12 @@ $include-column-box-sizing: true !default;
 @import "variables-dark";
 @import "maps";
 
-@import "mixins/lists";
 @import "mixins/breakpoints";
-@import "mixins/color-mode";
 @import "mixins/container";
 @import "mixins/grid";
 @import "mixins/utilities";
 
 @import "vendor/rfs";
-
-@import "root";
 
 @import "containers";
 @import "grid";

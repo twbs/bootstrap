@@ -23,13 +23,13 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
 {{< bs-table "table" >}}
 |  | Extra small<div class="fw-normal">&lt;576px</div> | Small<div class="fw-normal">&ge;576px</div> | Medium<div class="fw-normal">&ge;768px</div> | Large<div class="fw-normal">&ge;992px</div> | X-Large<div class="fw-normal">&ge;1200px</div> | XX-Large<div class="fw-normal">&ge;1400px</div> |
 | --- | --- | --- | --- | --- | --- | --- |
-| `.container` | <span class="text-muted">100%</span> | 540px | 720px | 960px | 1140px | 1320px |
-| `.container-sm` | <span class="text-muted">100%</span> | 540px | 720px | 960px | 1140px | 1320px |
-| `.container-md` | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | 720px | 960px | 1140px | 1320px |
-| `.container-lg` | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | 960px | 1140px | 1320px |
-| `.container-xl` | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | 1140px | 1320px |
-| `.container-xxl` | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | 1320px |
-| `.container-fluid` | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> | <span class="text-muted">100%</span> |
+| `.container` | <span class="text-body-secondary">100%</span> | 540px | 720px | 960px | 1140px | 1320px |
+| `.container-sm` | <span class="text-body-secondary">100%</span> | 540px | 720px | 960px | 1140px | 1320px |
+| `.container-md` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 720px | 960px | 1140px | 1320px |
+| `.container-lg` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 960px | 1140px | 1320px |
+| `.container-xl` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 1140px | 1320px |
+| `.container-xxl` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 1320px |
+| `.container-fluid` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> |
 {{< /bs-table >}}
 
 ## Default container
@@ -64,11 +64,17 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 </div>
 ```
 
-## Sass
+## CSS
+
+### Sass variables
 
 As shown above, Bootstrap generates a series of predefined container classes to help you build the layouts you desire. You may customize these predefined container classes by modifying the Sass map (found in `_variables.scss`) that powers them:
 
 {{< scss-docs name="container-max-widths" file="scss/_variables.scss" >}}
+
+For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#css" >}}).
+
+### Sass mixins
 
 In addition to customizing the Sass, you can also create your own containers with our Sass mixin.
 
@@ -87,5 +93,3 @@ In addition to customizing the Sass, you can also create your own containers wit
   @include make-container();
 }
 ```
-
-For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).
