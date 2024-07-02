@@ -95,6 +95,60 @@ describe('Popover', () => {
       })
     })
 
+    it('should call content and title functions with trigger element', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" data-foo="bar">BS twitter</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        const popover = new Popover(popoverEl, {
+          title(el) {
+            return el.dataset.foo
+          },
+          content(el) {
+            return el.dataset.foo
+          }
+        })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          const popoverDisplayed = document.querySelector('.popover')
+
+          expect(popoverDisplayed).not.toBeNull()
+          expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('bar')
+          expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('bar')
+          resolve()
+        })
+
+        popover.show()
+      })
+    })
+
+    it('should call content and title functions with correct this value', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" data-foo="bar">BS twitter</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        const popover = new Popover(popoverEl, {
+          title() {
+            return this.dataset.foo
+          },
+          content() {
+            return this.dataset.foo
+          }
+        })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          const popoverDisplayed = document.querySelector('.popover')
+
+          expect(popoverDisplayed).not.toBeNull()
+          expect(popoverDisplayed.querySelector('.popover-header').textContent).toEqual('bar')
+          expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('bar')
+          resolve()
+        })
+
+        popover.show()
+      })
+    })
+
     it('should show a popover with just content without having header', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#">Nice link</a>'

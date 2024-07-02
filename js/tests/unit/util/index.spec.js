@@ -521,10 +521,10 @@ describe('Util', () => {
 
     it('should execute if arg is function & return the result', () => {
       const functionFoo = (num1, num2 = 10) => num1 + num2
-      const resultFoo = Util.execute(functionFoo, [4, 5])
+      const resultFoo = Util.execute(functionFoo, [undefined, 4, 5])
       expect(resultFoo).toBe(9)
 
-      const resultFoo1 = Util.execute(functionFoo, [4])
+      const resultFoo1 = Util.execute(functionFoo, [undefined, 4])
       expect(resultFoo1).toBe(14)
 
       const functionBar = () => 'foo'
