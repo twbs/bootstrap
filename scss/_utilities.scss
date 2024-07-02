@@ -799,8 +799,15 @@ $utilities: map-merge(
       property: z-index,
       class: z,
       values: $zindex-levels,
-    )
+    ),
     // scss-docs-end utils-zindex
+    // scss-docs-start utils-cursor
+    "cursor": (
+      property: cursor,
+      class: cursor,
+      values: auto default none context-menu help pointer progress wait cell crosshair text vertical-text alias copy move no-drop not-allowed grab grabbing e-resize n-resize ne-resize nw-resize s-resize se-resize sw-resize w-resize ew-resize ns-resize nesw-resize nwse-resize col-resize row-resize all-scroll zoom-in zoom-out,
+    )
+    // scss-docs-end utils-cursor
   ),
   $utilities
 );
