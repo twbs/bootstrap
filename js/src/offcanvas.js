@@ -49,13 +49,15 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
 const Default = {
   backdrop: true,
   keyboard: true,
-  scroll: false
+  scroll: false,
+  focusAfterClose: true
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
-  scroll: 'boolean'
+  scroll: 'boolean',
+  focusAfterClose: 'boolean'
 }
 
 /**
@@ -151,7 +153,9 @@ class Offcanvas extends BaseComponent {
         new ScrollBarHelper().reset()
       }
 
-      EventHandler.trigger(this._element, EVENT_HIDDEN)
+      if (this._config.focusAfterClose) {
+        EventHandler.trigger(this._element, EVENT_HIDDEN)
+      }
     }
 
     this._queueCallback(completeCallback, this._element, true)
