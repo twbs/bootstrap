@@ -55,6 +55,7 @@ body {
   color: var(--#{$prefix}body-color);
   text-align: var(--#{$prefix}body-text-align);
   background-color: var(--#{$prefix}body-bg); // 2
+  --#{$prefix}current-plane-bg: var(--#{$prefix}body-bg);
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
