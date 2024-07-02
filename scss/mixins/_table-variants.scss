@@ -18,6 +18,7 @@
     --#{$prefix}table-hover-color: #{color-contrast($hover-bg)};
 
     color: var(--#{$prefix}table-color);
+    background-color: var(--#{$prefix}table-bg);
     border-color: var(--#{$prefix}table-border-color);
   }
 }
