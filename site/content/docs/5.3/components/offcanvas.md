@@ -309,6 +309,7 @@ const offcanvasList = [...offcanvasElementList].map(offcanvasEl => new bootstrap
 | `backdrop` | boolean or the string `static` | `true` | Apply a backdrop on body while offcanvas is open. Alternatively, specify `static` for a backdrop which doesn't close the offcanvas when clicked. |
 | `keyboard` | boolean | `true` | Closes the offcanvas when escape key is pressed. |
 | `scroll` | boolean | `false` | Allow body scrolling while offcanvas is open. |
+| `hideNotFixedOnWindowResizing` | boolean | `true` | Hide the offcanvas when resizing the window and when its position is not `fixed` (e.g. when `absolute`). |
 {{< /bs-table >}}
 
 ### Methods
