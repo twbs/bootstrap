@@ -72,9 +72,7 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode(dark) {
-    .form-select {
-      --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator-dark)};
-    }
+  @include color-mode(dark, ".form-select") {
+    --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator-dark)};
   }
 }
