@@ -114,14 +114,11 @@
   fieldset:disabled & {
     color: var(--#{$prefix}btn-disabled-color);
     pointer-events: none;
-    background-color: var(--#{$prefix}btn-disabled-bg);
+    background-color: var(--#{$prefix}btn-disabled-solid-bg, var(--#{$prefix}btn-disabled-bg));
     background-image: if($enable-gradients, none, null);
     border-color: var(--#{$prefix}btn-disabled-border-color);
-    opacity: 1; // Set opacity to 1 to avoid blending with background
+    opacity: var(--#{$prefix}btn-disabled-opacity);
     @include box-shadow(none);
-
-    // Apply a solid background color for disabled buttons to avoid blending issues
-    background-color: var(--#{$prefix}btn-disabled-solid-bg, var(--#{$prefix}btn-disabled-bg));
   }
 }
 
