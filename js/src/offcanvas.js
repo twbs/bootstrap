@@ -153,9 +153,9 @@ class Offcanvas extends BaseComponent {
         new ScrollBarHelper().reset()
       }
 
-      if (this._config.focusAfterClose) {
-        EventHandler.trigger(this._element, EVENT_HIDDEN)
-      }
+      EventHandler.trigger(this._element, EVENT_HIDDEN, {
+        focusAfterClose: this._config.focusAfterClose
+      })
     }
 
     this._queueCallback(completeCallback, this._element, true)
@@ -244,9 +244,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  EventHandler.one(target, EVENT_HIDDEN, () => {
+  EventHandler.one(target, EVENT_HIDDEN, evt => {
     // focus on trigger when it is closed
-    if (isVisible(this)) {
+    if (evt.focusAfterClose && isVisible(this)) {
       this.focus()
     }
   })
