@@ -521,6 +521,8 @@ describe('Tab', () => {
     })
   })
 
+  
+
   describe('_keydown', () => {
     it('if event is not one of left/right/up/down arrow, ignore it', () => {
       fixtureEl.innerHTML = [
@@ -549,7 +551,7 @@ describe('Tab', () => {
 
     it('if keydown event is right/down arrow, handle it', () => {
       fixtureEl.innerHTML = [
-        '<div class="nav">',
+        '<div class="nav" aria-orientation="vertical">',
         '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
         '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
         '  <span id="tab3" class="nav-link" data-bs-toggle="tab"></span>',
@@ -594,9 +596,86 @@ describe('Tab', () => {
       expect(spyPrevent).toHaveBeenCalledTimes(3)
     })
 
-    it('if keydown event is left arrow, handle it', () => {
+    it('if keydown event is left arrow, handle it(horizontal)', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tab1 = new Tab(tabEl1)
+      const tab2 = new Tab(tabEl2)
+      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
+      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      let keydown = createEvent('keydown')
+      keydown.key = 'ArrowLeft'
+
+      tabEl2.dispatchEvent(keydown)
+      expect(spyShow1).toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalled()
+
+      // keydown = createEvent('keydown')
+      // keydown.key = 'ArrowUp'
+
+      tabEl1.dispatchEvent(keydown)
+      expect(spyShow2).toHaveBeenCalled()
+      expect(spyFocus2).toHaveBeenCalled()
+
+      expect(spyStop).toHaveBeenCalledTimes(2)
+      expect(spyPrevent).toHaveBeenCalledTimes(2)
+    })
+
+        it('if keydown event is left arrow, handle it(horizontal)', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav">',
+        '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
+        '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
+        '</div>'
+      ].join('')
+
+      const tabEl1 = fixtureEl.querySelector('#tab1')
+      const tabEl2 = fixtureEl.querySelector('#tab2')
+      const tab1 = new Tab(tabEl1)
+      const tab2 = new Tab(tabEl2)
+      const spyShow1 = spyOn(tab1, 'show').and.callThrough()
+      const spyShow2 = spyOn(tab2, 'show').and.callThrough()
+      const spyFocus1 = spyOn(tabEl1, 'focus').and.callThrough()
+      const spyFocus2 = spyOn(tabEl2, 'focus').and.callThrough()
+
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+      let keydown = createEvent('keydown')
+      keydown.key = 'ArrowLeft'
+
+      tabEl2.dispatchEvent(keydown)
+      expect(spyShow1).toHaveBeenCalled()
+      expect(spyFocus1).toHaveBeenCalled()
+
+      // keydown = createEvent('keydown')
+      // keydown.key = 'ArrowUp'
+
+      tabEl1.dispatchEvent(keydown)
+      expect(spyShow2).toHaveBeenCalled()
+      expect(spyFocus2).toHaveBeenCalled()
+
+      expect(spyStop).toHaveBeenCalledTimes(2)
+      expect(spyPrevent).toHaveBeenCalledTimes(2)
+    })
+
+
+    it('if keydown event is left arrow, handle it', () => {
+      fixtureEl.innerHTML = [
+        '<div class="nav" aria-orientation="vertical">',
         '  <span id="tab1" class="nav-link" data-bs-toggle="tab"></span>',
         '  <span id="tab2" class="nav-link" data-bs-toggle="tab"></span>',
         '</div>'
