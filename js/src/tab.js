@@ -153,9 +153,9 @@ class Tab extends BaseComponent {
   }
 
   _keydown(event) {
-    const keys = this._parent.ariaOrientation === 'vertical' 
-  ? [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY, HOME_KEY, END_KEY]
-  : [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, HOME_KEY, END_KEY];
+    const keys = this._parent.ariaOrientation === 'vertical' ?
+        [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY, HOME_KEY, END_KEY] :
+        [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, HOME_KEY, END_KEY];
   
     if (!keys.includes(event.key)) {
       return;
