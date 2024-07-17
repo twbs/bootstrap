@@ -153,18 +153,13 @@ class Tab extends BaseComponent {
   }
 
   _keydown(event) {
-    if(this._parent.ariaOrientation==='vertical')
-      {
-      if (![ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY, HOME_KEY, END_KEY].includes(event.key)) {
-        return;
-      } 
-      }
-      else
-      {
-      if (![ARROW_LEFT_KEY, ARROW_RIGHT_KEY, HOME_KEY, END_KEY].includes(event.key)) {
-        return;
-      }
-      }
+    const keys = this._parent.ariaOrientation === 'vertical' 
+  ? [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY, HOME_KEY, END_KEY]
+  : [ARROW_LEFT_KEY, ARROW_RIGHT_KEY, HOME_KEY, END_KEY];
+  
+    if (!keys.includes(event.key)) {
+      return;
+    }
 
     event.stopPropagation()// stopPropagation/preventDefault both added to support up/down keys without scrolling the page
     event.preventDefault()
