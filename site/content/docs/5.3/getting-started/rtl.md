@@ -168,9 +168,19 @@ After running Sass then RTLCSS, each selector in your CSS files will be prepende
 3. Nesting styles this way will prevent our `form-validation-state()` mixin from working as intended, thus require you tweak it a bit by yourself. [See #31223](https://github.com/twbs/bootstrap/issues/31223).
 {{< /callout >}}
 
+Do you want to automate this process and address several edge cases involving both directions within a single stylesheet? Then, consider using [PostCSS RTLCSS](https://github.com/elchininet/postcss-rtlcss) as a [PostCSS](https://github.com/postcss/postcss) plugin to process your source files. PostCSS RTLCSS uses [RTLCSS](https://rtlcss.com) behind the scenes to manage the direction flipping process, but it separates the flipped declarations into rules with a different prefix for LTR and RTL, something that allows you to have both directions within the same stylesheet file. By doing this, you can switch between LTR and RTL orientations by simply changing the `dir` of the page (or even by modifying a specific class if you configure the plugin accordingly).
+
+{{< callout warning >}}
+**Important things to take into account** when using PostCSS RTLCSS to build a combined LTR and RTL implementation:
+
+1. It is recommended that you add the `dir` attribute to the `html` element. This way, the entire page will be affected when you change the direction. Also, make sure you add the `lang` attribute accordingly.
+2. Having a single bundle with both directions will increase the size of the final stylesheet (on average, by 20%-30%): consider some [optimization]({{< docsref "/customize/optimize" >}}).
+3. Take into account that PostCSS RTLCSS is not compatible with `/* rtl:remove */` directives because it doesn't remove any CSS rule. You should replace your `/* rtl:remove */`, `/* rtl:begin:remove */` and `/* rtl:end:remove */` directives with `/* rtl:ignore */`, `/* rtl:begin:ignore */` and `/* rtl:end:ignore */` directives respectively. These directives will ignore the rule and will not create an RTL counterpart (same result as the `remove` ones in RTLCSS).
+{{< /callout >}}
+
 ## The breadcrumb case
 
-The [breadcrumb separator]({{< docsref "/components/breadcrumb" >}}/#changing-the-separator) is the only case requiring its own brand-new variable— namely `$breadcrumb-divider-flipped` —defaulting to `$breadcrumb-divider`.
+The [breadcrumb separator]({{< docsref "/components/breadcrumb#dividers" >}}) is the only case requiring its own brand-new variable— namely `$breadcrumb-divider-flipped` —defaulting to `$breadcrumb-divider`.
 
 ## Additional resources
 

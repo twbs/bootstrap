@@ -321,8 +321,6 @@ As part of Bootstrap's evolving CSS variables approach, list groups now use loca
 
 {{< deprecated-in "5.3.0" >}}
 
-Used in combination with `$theme-colors` to generate the [contextual variant classes](#variants) for `.list-group-item`s.
-
 {{< scss-docs name="list-group-mixin" file="scss/mixins/_list-group.scss" >}}
 
 ### Sass loops

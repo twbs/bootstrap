@@ -4,7 +4,8 @@ title: Focus ring
 description: Utility classes that allows you to add and modify custom focus ring styles to elements and components.
 group: helpers
 toc: true
-added: "5.3"
+added:
+  version: "5.3"
 ---
 
 The `.focus-ring` helper removes the default `outline` on `:focus`, replacing it with a `box-shadow` that can be more broadly customized. The new shadow is made up of a series of CSS variables, inherited from the `:root` level, that can be modified for any element or component.
