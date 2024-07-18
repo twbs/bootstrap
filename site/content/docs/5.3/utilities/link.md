@@ -4,7 +4,8 @@ title: Link
 description: Link utilities are used to stylize your anchors to adjust their color, opacity, underline offset, underline color, and more.
 group: utilities
 toc: true
-added: 5.3
+added:
+  version: "5.3"
 ---
 
 ## Link opacity

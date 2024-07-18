@@ -4,27 +4,17 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2023 The Bootstrap Authors
+ * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-(() => {
-  'use strict'
+/* eslint-disable import/no-unresolved */
+import sidebarScroll from 'js/partials/sidebar.js'
+import codeExamples from 'js/partials/code-examples.js'
+import snippets from 'js/partials/snippets.js'
+/* eslint-enable import/no-unresolved */
 
-  // Scroll the active sidebar link into view
-  const sidenav = document.querySelector('.bd-sidebar')
-  const sidenavActiveLink = document.querySelector('.bd-links-nav .active')
-
-  if (sidenav && sidenavActiveLink) {
-    const sidenavHeight = sidenav.clientHeight
-    const sidenavActiveLinkTop = sidenavActiveLink.offsetTop
-    const sidenavActiveLinkHeight = sidenavActiveLink.clientHeight
-    const viewportTop = sidenavActiveLinkTop
-    const viewportBottom = viewportTop - sidenavHeight + sidenavActiveLinkHeight
-
-    if (sidenav.scrollTop > viewportTop || sidenav.scrollTop < viewportBottom) {
-      sidenav.scrollTop = viewportTop - (sidenavHeight / 2) + (sidenavActiveLinkHeight / 2)
-    }
-  }
-})()
+sidebarScroll()
+codeExamples()
+snippets()
