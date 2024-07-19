@@ -177,7 +177,10 @@ describe('Tooltip', () => {
 
       const popperConfig = tooltip._getPopperConfig('top')
 
-      expect(getPopperConfig).toHaveBeenCalled()
+      // Ensure that the function was called with the default config.
+      expect(getPopperConfig).toHaveBeenCalledWith(jasmine.objectContaining({
+        placement: jasmine.any(String)
+      }))
       expect(popperConfig.placement).toEqual('left')
     })
 
@@ -919,10 +922,12 @@ describe('Tooltip', () => {
 
     it('should show a tooltip with custom class provided as a function in config', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-class-a="custom-class-a" data-class-b="custom-class-b"></a>'
 
-        const spy = jasmine.createSpy('customClass').and.returnValue('custom-class')
         const tooltipEl = fixtureEl.querySelector('a')
+        const spy = jasmine.createSpy('customClass').and.callFake(function (el) {
+          return `${el.dataset.classA} ${this.dataset.classB}`
+        })
         const tooltip = new Tooltip(tooltipEl, {
           customClass: spy
         })
@@ -931,7 +936,8 @@ describe('Tooltip', () => {
           const tip = document.querySelector('.tooltip')
           expect(tip).not.toBeNull()
           expect(spy).toHaveBeenCalled()
-          expect(tip).toHaveClass('custom-class')
+          expect(tip).toHaveClass('custom-class-a')
+          expect(tip).toHaveClass('custom-class-b')
           resolve()
         })
 
@@ -1336,6 +1342,32 @@ describe('Tooltip', () => {
       })
 
       expect(tooltip._getTitle()).toEqual('test')
+    })
+
+    it('should call title function with trigger element', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-foo="bar"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        title(el) {
+          return el.dataset.foo
+        }
+      })
+
+      expect(tooltip._getTitle()).toEqual('bar')
+    })
+
+    it('should call title function with correct this value', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-foo="bar"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        title() {
+          return this.dataset.foo
+        }
+      })
+
+      expect(tooltip._getTitle()).toEqual('bar')
     })
   })
 
