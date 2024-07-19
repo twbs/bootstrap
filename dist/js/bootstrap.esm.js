@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap v5.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v5.3.3 (https://getbootstrap.com/)
+  * Copyright 2011-2024 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 import * as Popper from '@popperjs/core';
@@ -206,7 +206,6 @@ const noop = () => {};
 const reflow = element => {
   element.offsetHeight; // eslint-disable-line no-unused-expressions
 };
-
 const getjQuery = () => {
   if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
     return window.jQuery;
@@ -644,7 +643,7 @@ class Config {
  * Constants
  */
 
-const VERSION = '5.3.1';
+const VERSION = '5.3.3';
 
 /**
  * Class definition
@@ -727,7 +726,7 @@ const getSelector = element => {
     }
     selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null;
   }
-  return parseSelector(selector);
+  return selector ? selector.split(',').map(sel => parseSelector(sel)).join(',') : null;
 };
 const SelectorEngine = {
   find(selector, element = document.documentElement) {
@@ -2073,7 +2072,6 @@ const Default$8 = {
   // if false, we use the backdrop helper without adding any element to the dom
   rootElement: 'body' // give the choice to place backdrop under different elements
 };
-
 const DefaultType$8 = {
   className: 'string',
   clickCallback: '(function|null)',
@@ -2198,7 +2196,6 @@ const Default$7 = {
   autofocus: true,
   trapElement: null // The element to trap focus inside of
 };
-
 const DefaultType$7 = {
   autofocus: 'boolean',
   trapElement: 'element'
@@ -2925,7 +2922,10 @@ const DefaultAllowlist = {
   br: [],
   col: [],
   code: [],
+  dd: [],
   div: [],
+  dl: [],
+  dt: [],
   em: [],
   hr: [],
   h1: [],
@@ -4023,7 +4023,7 @@ const CLASS_NAME_SHOW$1 = 'show';
 const CLASS_DROPDOWN = 'dropdown';
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
 const SELECTOR_DROPDOWN_MENU = '.dropdown-menu';
-const NOT_SELECTOR_DROPDOWN_TOGGLE = ':not(.dropdown-toggle)';
+const NOT_SELECTOR_DROPDOWN_TOGGLE = `:not(${SELECTOR_DROPDOWN_TOGGLE})`;
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]';
 const SELECTOR_OUTER = '.nav-item, .list-group-item';
 const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_DROPDOWN_TOGGLE}, .list-group-item${NOT_SELECTOR_DROPDOWN_TOGGLE}, [role="tab"]${NOT_SELECTOR_DROPDOWN_TOGGLE}`;
