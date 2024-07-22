@@ -5,9 +5,12 @@ description: The official guide for how to include and bundle Bootstrap's CSS an
 group: getting-started
 toc: true
 thumbnail: guides/bootstrap-vite@2x.png
+added:
+  show_badge: false
+  version: "5.2"
 ---
 
-<img class="mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png" width="2000" height="1000" alt="">
+<img class="d-block mx-auto mb-4 img-fluid rounded-3" srcset="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png, /docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite@2x.png 2x" src="/docs/{{< param docs_version >}}/assets/img/guides/bootstrap-vite.png" width="800" height="400" alt="">
 
 {{< callout >}}
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/vite). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/vite?file=index.html) for live editing.
@@ -15,9 +18,9 @@ thumbnail: guides/bootstrap-vite@2x.png
 
 ## Setup
 
-We're building a Vite project with Bootstrap from scratch, so there are some prerequisites and up front steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
+We're building a Vite project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
-1. **Create a project folder and setup npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
+1. **Create a project folder and set up npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
    ```sh
    mkdir my-project && cd my-project
@@ -42,7 +45,7 @@ We're building a Vite project with Bootstrap from scratch, so there are some pre
    npm i --save-dev sass
    ```
 
-Now that we have all the necessary dependencies installed and setup, we can get to work creating the project files and importing Bootstrap.
+Now that we have all the necessary dependencies installed and set up, we can get to work creating the project files and importing Bootstrap.
 
 ## Project structure
 
@@ -78,10 +81,10 @@ With dependencies installed and our project folder ready for us to start coding,
 
    <!-- eslint-skip -->
    ```js
-   const path = require('path')
+   import { resolve } from 'path'
 
    export default {
-     root: path.resolve(__dirname, 'src'),
+     root: resolve(__dirname, 'src'),
      build: {
        outDir: '../dist'
      },
@@ -132,7 +135,7 @@ With dependencies installed and our project folder ready for us to start coding,
    npm start
    ```
 
-   <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/vite-dev-server.png" alt="Vite dev server running">
+   ![Vite dev server running](/assets/img/guides/vite-dev-server.png)
 
 In the next and final section to this guide, we’ll import all of Bootstrap’s CSS and JavaScript.
 
@@ -170,9 +173,9 @@ In the next and final section to this guide, we’ll import all of Bootstrap’s
 
    *[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins.*
 
-3. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this.
+3. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this:
 
-   <img class="img-fluid" src="/docs/{{< param docs_version >}}/assets/img/guides/vite-dev-server-bootstrap.png" alt="Vite dev server running with Bootstrap">
+   ![Vite dev server running with Bootstrap](/assets/img/guides/vite-dev-server-bootstrap.png)
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Vite example project](https://github.com/twbs/examples/tree/main/vite) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 

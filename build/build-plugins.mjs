@@ -2,14 +2,14 @@
 
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2020-2023 The Bootstrap Authors
+ * Copyright 2020-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { babel } from '@rollup/plugin-babel'
-import globby from 'globby'
+import { globby } from 'globby'
 import { rollup } from 'rollup'
 import banner from './banner.mjs'
 
@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const sourcePath = path.resolve(__dirname, '../js/src/').replace(/\\/g, '/')
-const jsFiles = globby.sync(`${sourcePath}/**/*.js`)
+const jsFiles = await globby(`${sourcePath}/**/*.js`)
 
 // Array which holds the resolved plugins
 const resolvedPlugins = []
@@ -37,6 +37,9 @@ for (const file of jsFiles) {
 }
 
 const build = async plugin => {
+  /**
+   * @type {import('rollup').GlobalsOption}
+   */
   const globals = {}
 
   const bundle = await rollup({

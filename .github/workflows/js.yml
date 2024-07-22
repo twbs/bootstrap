@@ -9,7 +9,7 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE: 18
+  NODE: 20
 
 permissions:
   contents: read
@@ -30,7 +30,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE }}
           cache: npm
@@ -46,6 +46,7 @@ jobs:
 
       - name: Run Coveralls
         uses: coverallsapp/github-action@v2
+        if: ${{ !github.event.repository.fork }}
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           path-to-lcov: "./js/coverage/lcov.info"
