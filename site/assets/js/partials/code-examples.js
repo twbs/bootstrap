@@ -17,7 +17,6 @@ export default () => {
   // Insert copy to clipboard button before .highlight
   const btnTitle = 'Copy to clipboard'
   const btnEdit = 'Edit on StackBlitz'
-  // const btnTheme = 'Toggle local theme'
 
   const btnHtml = [
     '<div class="bd-code-snippet">',
@@ -52,7 +51,6 @@ export default () => {
 
   snippetButtonTooltip('.btn-clipboard', btnTitle)
   snippetButtonTooltip('.btn-edit', btnEdit)
-  // snippetButtonTooltip('.btn-theme', btnTheme)
 
   const clipboard = new ClipboardJS('.btn-clipboard', {
     target: trigger => trigger.closest('.bd-code-snippet').querySelector('.highlight'),

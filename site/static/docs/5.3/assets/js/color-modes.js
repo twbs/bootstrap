@@ -73,7 +73,7 @@
           const theme = toggle.getAttribute('data-bs-theme-value')
 
           if (toggle.closest('.bd-code-snippet')) {
-            setTheme(theme, toggle.closest('.bd-code-snippet').firstChild)
+            setTheme(theme, toggle.closest('.bd-code-snippet').firstElementChild)
             showActiveTheme(theme, true, toggle.closest('.dropdown-menu').previousElementSibling)
           } else {
             setStoredTheme(theme)
