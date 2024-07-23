@@ -986,6 +986,7 @@ describe('ScrollSpy', () => {
       const target = fixtureEl.querySelector('#navBar')
 
       // Initialize ScrollSpy with smoothScroll enabled
+      // eslint-disable-next-line no-new
       new ScrollSpy(div, {
         smoothScroll: true
       })
@@ -1004,6 +1005,7 @@ describe('ScrollSpy', () => {
 
       // Initialize ScrollSpy with smoothScroll disabled
       // Modify configuration to ensure offSpy is called
+      // eslint-disable-next-line no-new
       new ScrollSpy(div, {
         smoothScroll: false
       })
@@ -1032,6 +1034,7 @@ describe('ScrollSpy', () => {
       const target = fixtureEl.querySelector('#navBar')
 
       // Initialize ScrollSpy with smoothScroll enabled
+      // eslint-disable-next-line no-new
       new ScrollSpy(div, {
         smoothScroll: true
       })
@@ -1058,6 +1061,7 @@ describe('ScrollSpy', () => {
       const target = fixtureEl.querySelector('#navBar')
 
       // Initialize ScrollSpy with smoothScroll disabled
+      // eslint-disable-next-line no-new
       new ScrollSpy(div, {
         smoothScroll: false
       })
