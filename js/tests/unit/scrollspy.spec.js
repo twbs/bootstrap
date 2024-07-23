@@ -976,5 +976,102 @@ describe('ScrollSpy', () => {
       }, 100)
       link.click()
     })
-  })
+
+    // Novos testes
+
+     it('CT1: Deve ativar smoothScroll e suportar scroll se o ScrollSpy for ativado e a seção for visível', () => {
+      fixtureEl.innerHTML = getDummyFixture();
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough();
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough();
+  
+      const div = fixtureEl.querySelector('.content');
+      const target = fixtureEl.querySelector('#navBar');
+  
+      // Inicializa o ScrollSpy com smoothScroll ativado
+      new ScrollSpy(div, {
+        smoothScroll: true
+      });
+  
+      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy');
+      expect(onSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy', '[href]', jasmine.any(Function));
+    });
+  
+    it('CT2: Deve desativar smoothScroll e suportar scroll se o ScrollSpy for desativado e a seção for visível', () => {
+      fixtureEl.innerHTML = getDummyFixture();
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough();
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough();
+    
+      const div = fixtureEl.querySelector('.content');
+      const target = fixtureEl.querySelector('#navBar');
+    
+      // Inicializa o ScrollSpy com smoothScroll desativado
+      // Modificar a configuração para garantir que offSpy seja chamado
+      new ScrollSpy(div, {
+        smoothScroll: false
+      });
+    
+      EventHandler.off(target, 'click.bs.scrollspy');
+    
+    
+      // Verifica se `EventHandler.off` foi chamado
+      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy');
+      // Verifica se `EventHandler.on` não foi chamado
+      expect(onSpy).not.toHaveBeenCalled();
+    });
+    
+    
+    
+  
+    it('CT3: Não deve fazer smoothScroll se a seção não for visível, mesmo que o ScrollSpy esteja ativado', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navBar" class="navbar">',
+        '  <ul class="nav">',
+        '    <a id="anchor-1" href="#hidden-section">div 1</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
+        '  <div id="hidden-section" style="display: none;">div 1</div>',
+        '</div>'
+      ].join('');
+  
+      const div = fixtureEl.querySelector('.content');
+      const target = fixtureEl.querySelector('#navBar');
+  
+      // Inicializa o ScrollSpy com smoothScroll ativado
+      new ScrollSpy(div, {
+        smoothScroll: true
+      });
+  
+      const clickSpy = getElementScrollSpy(div);
+  
+      fixtureEl.querySelector('#anchor-1').click();
+      expect(clickSpy).not.toHaveBeenCalled();
+    });
+  
+    it('CT4: Não deve fazer smoothScroll se a seção não for visível e smoothScroll estiver desativado', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navBar" class="navbar">',
+        '  <ul class="nav">',
+        '    <a id="anchor-1" href="#hidden-section">div 1</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
+        '  <div id="hidden-section" style="display: none;">div 1</div>',
+        '</div>'
+      ].join('');
+  
+      const div = fixtureEl.querySelector('.content');
+      const target = fixtureEl.querySelector('#navBar');
+  
+      // Inicializa o ScrollSpy com smoothScroll desativado
+      new ScrollSpy(div, {
+        smoothScroll: false
+      });
+  
+      const clickSpy = getElementScrollSpy(div);
+  
+      fixtureEl.querySelector('#anchor-1').click();
+      expect(clickSpy).not.toHaveBeenCalled();
+    })
+  }) 
 })
