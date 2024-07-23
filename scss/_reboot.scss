@@ -499,9 +499,9 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: $legend-margin-bottom;
-  @include font-size($legend-font-size);
   font-weight: $legend-font-weight;
   line-height: inherit;
+  @include font-size($legend-font-size);
 
   + * {
     clear: left; // 2

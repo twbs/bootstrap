@@ -8,8 +8,6 @@ security:
     getenv:
       - ^HUGO_
       - NETLIFY
-  gotemplates:
-    allowActionJSTmpl: true
 
 markup:
   goldmark:
@@ -20,6 +18,9 @@ markup:
   tableOfContents:
     startLevel:         2
     endLevel:           6
+
+build:
+  noJSConfigInAssets:   true
 
 buildDrafts:            true
 buildFuture:            true
@@ -44,6 +45,8 @@ module:
       target:           layouts
     - source:           site/static
       target:           static
+    - source:           node_modules/@docsearch/css
+      target:           assets/scss/@docsearch/css
     - source:           site/static/docs/5.3/assets/img/favicons/apple-touch-icon.png
       target:           static/apple-touch-icon.png
     - source:           site/static/docs/5.3/assets/img/favicons/favicon.ico
@@ -54,8 +57,8 @@ params:
   description:          "Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins."
   authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
 
-  current_version:      "5.3.2"
-  current_ruby_version: "5.3.2"
+  current_version:      "5.3.3"
+  current_ruby_version: "5.3.3"
   docs_version:         "5.3"
   rfs_version:          "v10.0.0"
   github_org:           "https://github.com/twbs"
@@ -67,21 +70,29 @@ params:
   icons:                "https://icons.getbootstrap.com/"
   swag:                 "https://cottonbureau.com/people/bootstrap"
 
+  analytics:
+    fathom_site:        "ITUSEYJG"
+
+  algolia:
+    appId:              "AK7KMZKZHQ"
+    apiKey:             "3151f502c7b9e9dafd5e6372b691a24e"
+    indexName:          "bootstrap"
+
   download:
-    source:             "https://github.com/twbs/bootstrap/archive/v5.3.2.zip"
-    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.3.2/bootstrap-5.3.2-dist.zip"
-    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.3.2/bootstrap-5.3.2-examples.zip"
+    source:             "https://github.com/twbs/bootstrap/archive/v5.3.3.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.3.3/bootstrap-5.3.3-dist.zip"
+    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.3.3/bootstrap-5.3.3-examples.zip"
 
   cdn:
     # See https://www.srihash.org for info on how to generate the hashes
-    css:              "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    css_hash:         "sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-    css_rtl:          "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css"
-    css_rtl_hash:     "sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv"
-    js:               "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-    js_hash:          "sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-    js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    js_bundle_hash:   "sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    css:              "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    css_hash:         "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    css_rtl:          "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    css_rtl_hash:     "sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb"
+    js:               "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    js_hash:          "sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    js_bundle:        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    js_bundle_hash:   "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     popper:           "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     popper_hash:      "sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     popper_esm:       "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/esm/popper.min.js"

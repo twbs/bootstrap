@@ -5,10 +5,14 @@
 
 {{- $versions_link := "" -}}
 {{- if and (eq .Layout "docs") (eq $page_version .Site.Params.docs_version) -}}
-  {{- $versions_link = printf "%s/%s/" $group_slug $page_slug -}}
-{{- else if (eq .Layout "single") }}
-  {{- $versions_link = printf "%s/" $page_slug -}}
-{{- end }}
+  {{- $versions_link = urls.JoinPath $group_slug $page_slug "/" -}}
+{{- else if (eq .Layout "single") -}}
+  {{- $versions_link = urls.JoinPath $page_slug "/" -}}
+{{- end -}}
+
+{{- $added_in_51 := eq (string .Page.Params.added.version) "5.1" -}}
+{{- $added_in_52 := eq (string .Page.Params.added.version) "5.2" -}}
+{{- $added_in_53 := eq (string .Page.Params.added.version) "5.3" -}}
 
 <li class="nav-item dropdown">
   <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
@@ -23,21 +27,21 @@
       </a>
     </li>
     <li>
-      {{- if (eq .Page.Params.added "5.3") }}
+      {{- if ($added_in_53) }}
         <div class="dropdown-item disabled">v5.2.3</div>
       {{- else }}
         <a class="dropdown-item" href="https://getbootstrap.com/docs/5.2/{{ $versions_link }}">v5.2.3</a>
       {{- end }}
     </li>
     <li>
-      {{- if or (eq .Page.Params.added "5.2") (eq .Page.Params.added "5.3") }}
+      {{- if (or $added_in_52 $added_in_53) }}
         <div class="dropdown-item disabled">v5.1.3</div>
       {{- else }}
         <a class="dropdown-item" href="https://getbootstrap.com/docs/5.1/{{ $versions_link }}">v5.1.3</a>
       {{- end }}
     </li>
     <li>
-      {{- if or (eq .Page.Params.added "5.1") (eq .Page.Params.added "5.2") (eq .Page.Params.added "5.3") }}
+      {{- if (or $added_in_51 $added_in_52 $added_in_53) }}
         <div class="dropdown-item disabled">v5.0.2</div>
       {{- else }}
         <a class="dropdown-item" href="https://getbootstrap.com/docs/5.0/{{ $versions_link }}">v5.0.2</a>

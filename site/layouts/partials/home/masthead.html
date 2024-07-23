@@ -1,11 +1,20 @@
 <div class="bd-masthead mb-3" id="content">
   <div class="container-xxl bd-gutter">
     <div class="col-md-8 mx-auto text-center">
-      <a class="d-flex flex-column flex-lg-row justify-content-center align-items-center mb-4 text-dark lh-sm text-decoration-none" href="https://blog.getbootstrap.com/">
-        <strong class="d-sm-inline-block p-2 me-2 mb-2 mb-lg-0 rounded-3 masthead-notice">New in v5.3</strong>
-        <span class="text-body-secondary">Color mode support, expanded color palette, and more!</span>
+      <a class="d-flex flex-column flex-lg-row justify-content-center align-items-center mb-4 text-dark lh-sm text-decoration-none" href="https://www.herodevs.com/support/nes-bootstrap?utm_source=Bootstrap_site&utm_medium=Banner&utm_campaign=v3and4_eol" rel="noopener" target="_blank">
+        <span class="d-sm-inline-flex align-items-center gap-1 py-2 px-3 me-2 mb-2 mb-lg-0 rounded-5 masthead-notice">
+          <span class="fw-semibold">
+            New!
+          </span>
+          Never-Ending Support for Bootstrap
+          <svg class="bi" style="width: 20px; height: 20px;"><use xlink:href="#arrow-right-short"></use></svg>
+        </span>
       </a>
-      <img src="/docs/{{ .Site.Params.docs_version }}/assets/brand/bootstrap-logo-shadow.png" width="200" height="165" alt="Bootstrap" class="d-none d-sm-block mx-auto mb-3">
+      {{ partial "responsive-img" (dict "context" .
+        "imgPath" "/assets/brand/bootstrap-logo-shadow.png"
+        "alt" "Bootstrap"
+        "classes" "d-none d-sm-block mb-3"
+        "lazyload" false) }}
       <h1 class="mb-3 fw-semibold lh-1">Build fast, responsive sites with&nbsp;Bootstrap</h1>
       <p class="lead mb-4">
         Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins.
@@ -14,7 +23,7 @@
         <div class="d-inline-block v-align-middle fs-5">
           {{ highlight (printf ("npm i bootstrap@%s") .Site.Params.current_version) "sh" "" }}
         </div>
-        <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">
+        <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold">
           <svg class="bi me-2" aria-hidden="true"><use xlink:href="#book-half"></use></svg>
           Read the docs
         </a>
