@@ -218,7 +218,7 @@ When modals become too long for the user's viewport or device, they scroll indep
   </button>
 </div>
 
-You can also create a scrollable modal that allows scroll the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
+You can also create a scrollable modal that allows scrolling the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
 
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
@@ -481,7 +481,7 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
 </div>
 {{< /example >}}
 
-{{< js-docs name="varying-modal-content" file="site/assets/js/snippets.js" >}}
+{{< js-docs name="varying-modal-content" file="site/assets/js/partials/snippets.js" >}}
 
 ### Toggle between modals
 

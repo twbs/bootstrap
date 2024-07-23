@@ -5,6 +5,7 @@ extra_css:
   - "../cheatsheet/cheatsheet.rtl.css"
 extra_js:
   - src: "../cheatsheet/cheatsheet.js"
+    defer: true
 body_class: "bg-body-tertiary"
 direction: rtl
 ---
@@ -23,7 +24,7 @@ direction: rtl
   <nav class="small" id="toc">
     <ul class="list-unstyled">
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">المحتوى</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents-collapse" aria-controls="contents-collapse">المحتوى</button>
         <ul class="list-unstyled ps-3 collapse" id="contents-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#typography">النصوص</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#images">الصور</a></li>
@@ -32,7 +33,7 @@ direction: rtl
         </ul>
       </li>
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">النماذج</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#forms-collapse" aria-controls="forms-collapse">النماذج</button>
         <ul class="list-unstyled ps-3 collapse" id="forms-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#overview">نظرة عامة</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#disabled-forms">الحقول المعطلة</a></li>
@@ -43,7 +44,7 @@ direction: rtl
         </ul>
       </li>
       <li class="my-2">
-        <button class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">مكونات</button>
+        <button type="button" class="btn d-inline-flex align-items-center collapsed border-0" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#components-collapse" aria-controls="components-collapse">مكونات</button>
         <ul class="list-unstyled ps-3 collapse" id="components-collapse">
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#accordion">المطوية</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#alerts">الإنذارات</a></li>
@@ -70,7 +71,7 @@ direction: rtl
     </ul>
   </nav>
 </aside>
-<div class="bd-cheatsheet container-fluid bg-body">
+<main class="bd-cheatsheet container-fluid bg-body">
   <section id="content">
     <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">المحتوى</h2>
 
@@ -1170,7 +1171,7 @@ direction: rtl
           <a class="nav-link active" aria-current="page" href="#">نشط</a>
           <a class="nav-link" href="#">رابط</a>
           <a class="nav-link" href="#">رابط</a>
-          <a class="nav-link disabled">معطل</a>
+          <a class="nav-link disabled" aria-disabled="true">معطل</a>
         </nav>
         {{< /example >}}
 
@@ -1207,7 +1208,7 @@ direction: rtl
             <a class="nav-link" href="#">رابط</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled">معطل</a>
+            <a class="nav-link disabled" aria-disabled="true">معطل</a>
           </li>
         </ul>
         {{< /example >}}
@@ -1250,7 +1251,7 @@ direction: rtl
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled">معطل</a>
+                  <a class="nav-link disabled" aria-disabled="true">معطل</a>
                 </li>
               </ul>
               <form class="d-flex" role="search">
@@ -1289,7 +1290,7 @@ direction: rtl
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled">معطل</a>
+                  <a class="nav-link disabled" aria-disabled="true">معطل</a>
                 </li>
               </ul>
               <form class="d-flex" role="search">
@@ -1537,7 +1538,7 @@ direction: rtl
       </div>
     </article>
   </section>
-</div>
+</main>
 
 <div class="modal fade" id="exampleModalDefault" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

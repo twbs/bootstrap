@@ -59,8 +59,8 @@
 
   // When fading in the modal, animate it to slide down
   .modal.fade & {
-    @include transition($modal-transition);
     transform: $modal-fade-transform;
+    @include transition($modal-transition);
   }
   .modal.show & {
     transform: $modal-show-transform;
@@ -126,7 +126,6 @@
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: var(--#{$prefix}modal-header-padding);
   border-bottom: var(--#{$prefix}modal-header-border-width) solid var(--#{$prefix}modal-header-border-color);
   @include border-top-radius(var(--#{$prefix}modal-inner-border-radius));

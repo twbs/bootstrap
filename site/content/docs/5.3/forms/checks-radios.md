@@ -250,16 +250,23 @@ Create button-like checkboxes and radio buttons by using `.btn` styles rather th
 {{< example >}}
 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
 <label class="btn btn-primary" for="btn-check">Single toggle</label>
-{{< /example >}}
 
-{{< example >}}
 <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
 <label class="btn btn-primary" for="btn-check-2">Checked</label>
+
+<input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off" disabled>
+<label class="btn btn-primary" for="btn-check-3">Disabled</label>
 {{< /example >}}
 
 {{< example >}}
-<input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off" disabled>
-<label class="btn btn-primary" for="btn-check-3">Disabled</label>
+<input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
+<label class="btn" for="btn-check-4">Single toggle</label>
+
+<input type="checkbox" class="btn-check" id="btn-check-5" checked autocomplete="off">
+<label class="btn" for="btn-check-5">Checked</label>
+
+<input type="checkbox" class="btn-check" id="btn-check-6" autocomplete="off" disabled>
+<label class="btn" for="btn-check-6">Disabled</label>
 {{< /example >}}
 
 {{< callout info >}}
@@ -282,9 +289,23 @@ Visually, these checkbox toggle buttons are identical to the [button plugin togg
 <label class="btn btn-secondary" for="option4">Radio</label>
 {{< /example >}}
 
+{{< example >}}
+<input type="radio" class="btn-check" name="options-base" id="option5" autocomplete="off" checked>
+<label class="btn" for="option5">Checked</label>
+
+<input type="radio" class="btn-check" name="options-base" id="option6" autocomplete="off">
+<label class="btn" for="option6">Radio</label>
+
+<input type="radio" class="btn-check" name="options-base" id="option7" autocomplete="off" disabled>
+<label class="btn" for="option7">Disabled</label>
+
+<input type="radio" class="btn-check" name="options-base" id="option8" autocomplete="off">
+<label class="btn" for="option8">Radio</label>
+{{< /example >}}
+
 ### Outlined styles
 
-Different variants of `.btn`, such at the various outlined styles, are supported.
+Different variants of `.btn`, such as the various outlined styles, are supported.
 
 {{< example >}}
 <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">

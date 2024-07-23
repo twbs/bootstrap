@@ -3,16 +3,19 @@
 /*!
  * Script to create the built examples zip archive;
  * requires the `zip` command to be present!
- * Copyright 2020-2023 The Bootstrap Authors
+ * Copyright 2020-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-'use strict'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import sh from 'shelljs'
 
-const path = require('node:path')
-const sh = require('shelljs')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const pkg = require('../package.json')
+const pkgJson = path.join(__dirname, '../package.json')
+const pkg = JSON.parse(await fs.readFile(pkgJson, 'utf8'))
 
 const versionShort = pkg.config.version_short
 const distFolder = `bootstrap-${pkg.version}-examples`

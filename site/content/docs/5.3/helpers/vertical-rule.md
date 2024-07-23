@@ -4,7 +4,8 @@ title: Vertical rule
 description: Use the custom vertical rule helper to create vertical dividers like the `<hr>` element.
 group: helpers
 toc: true
-added: "5.1"
+added:
+  version: "5.1"
 ---
 
 ## How it works
@@ -43,3 +44,11 @@ They can also be used in [stacks]({{< docsref "/helpers/stacks" >}}):
   <div class="p-2">Third item</div>
 </div>
 {{< /example >}}
+
+## CSS
+
+### Sass variables
+
+Customize the vertical rule Sass variable to change its width.
+
+{{< scss-docs name="vr-variables" file="scss/_variables.scss" >}}
