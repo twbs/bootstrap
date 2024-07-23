@@ -5,7 +5,8 @@ description: Examples of Bootstrap's documentation-specific components and style
 aliases: "/docsref/"
 toc: true
 robots: noindex,follow
-sitemap_exclude: true
+sitemap:
+  disable: true
 ---
 
 ## Buttons
@@ -46,4 +47,4 @@ sitemap_exclude: true
 
 {{< scss-docs name="variable-gradient" file="scss/_variables.scss" >}}
 
-{{< js-docs name="live-toast" file="site/assets/js/snippets.js" >}}
+{{< js-docs name="live-toast" file="site/assets/js/partials/snippets.js" >}}
