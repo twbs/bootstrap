@@ -6,7 +6,7 @@ aliases: "/docsref/"
 toc: true
 robots: noindex,follow
 sitemap:
-  exclude: true
+  disable: true
 ---
 
 ## Buttons
