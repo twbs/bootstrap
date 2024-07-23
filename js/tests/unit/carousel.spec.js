@@ -11,7 +11,7 @@ describe('Carousel', () => {
   const originWinPointerEvent = PointerEvent
   const supportPointerEvent = Boolean(PointerEvent)
 
-  const cssStyleCarousel = '.carousel.pointer-event { touch-action: none; }'
+  const cssStyleCarousel = '.carousel.pointer-event { touch-action: none   }'
 
   const stylesCarousel = document.createElement('style')
   stylesCarousel.type = 'text/css'
@@ -911,7 +911,7 @@ describe('Carousel', () => {
   describe('nextWhenVisible', () => {
     it('should not call next when the page is not visible', () => {
       fixtureEl.innerHTML = [
-        '<div style="display: none;">',
+        '<div style="display: none  ">',
         '  <div class="carousel"></div>',
         '</div>'
       ].join('')
@@ -1380,27 +1380,24 @@ describe('Carousel', () => {
   })
 
   describe('jQueryInterface', () => {
-    it('should create a carousel', () => {
+    let div
+    let carousel
+
+    beforeEach(() => {
       fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
+      div = fixtureEl.querySelector('div')
       jQueryMock.fn.carousel = Carousel.jQueryInterface
       jQueryMock.elements = [div]
+    })
 
+    it('should create a carousel', () => {
       jQueryMock.fn.carousel.call(jQueryMock)
 
       expect(Carousel.getInstance(div)).not.toBeNull()
     })
 
-    it('should not re create a carousel', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const carousel = new Carousel(div)
-
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
-      jQueryMock.elements = [div]
+    it('should not re-create a carousel', () => {
+      carousel = new Carousel(div)
 
       jQueryMock.fn.carousel.call(jQueryMock)
 
@@ -1408,16 +1405,9 @@ describe('Carousel', () => {
     })
 
     it('should call to if the config is a number', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const carousel = new Carousel(div)
+      carousel = new Carousel(div)
       const slideTo = 2
-
       const spy = spyOn(carousel, 'to')
-
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
-      jQueryMock.elements = [div]
 
       jQueryMock.fn.carousel.call(jQueryMock, slideTo)
 
@@ -1425,20 +1415,13 @@ describe('Carousel', () => {
     })
 
     it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
-
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
-      jQueryMock.elements = [div]
 
       expect(() => {
         jQueryMock.fn.carousel.call(jQueryMock, action)
       }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
-
   describe('data-api', () => {
     it('should init carousels with data-bs-ride="carousel" on load', () => {
       fixtureEl.innerHTML = '<div data-bs-ride="carousel"></div>'

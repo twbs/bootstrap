@@ -130,6 +130,7 @@
     "hugo-bin": "^0.121.1",
     "ip": "^2.0.1",
     "jasmine": "^5.1.0",
+    "jest": "^29.7.0",
     "jquery": "^3.7.1",
     "karma": "^6.4.3",
     "karma-browserstack-launcher": "1.4.0",
