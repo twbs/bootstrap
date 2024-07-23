@@ -112,7 +112,7 @@ ${htmlSnippet.trimStart().replace(/^/gm, '    ').replace(/^ {4}$/gm, '').trimEnd
   </div>
   <!-- End dark mode toggle -->\`;
 
-  ${jsColorModeFile.replace(/\(\(\) => {.*'use strict'/gms, '').replace(/window.add.*\(\) => {([\s\S]*)}\)([\s\S]}\)\(\))/gm, '$1 $2').replace(/^}\)\(\)/gm, '')}`
+  ${jsColorModeFile.replace(/\(\(\) => {.*'use strict'/gms, '').replace(/window.add.*\(\) => {([\S\s]*)}\)([\S\s]}\)\(\))/gm, '$1 $2').replace(/^}\)\(\)/gm, '')}`
   const jsSnippetContent = `import "./bootstrap-color-mode/color-mode.js";\n\n${jsSnippetFile}`
 
   const project = {
