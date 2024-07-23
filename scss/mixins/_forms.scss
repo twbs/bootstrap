@@ -69,7 +69,12 @@
 
       &:focus {
         border-color: $border-color;
-        box-shadow: $focus-box-shadow;
+        @if $enable-shadows {
+          @include box-shadow($input-box-shadow, $focus-box-shadow);
+        } @else {
+          // Avoid using mixin so we can pass custom focus shadow properly
+          box-shadow: $focus-box-shadow;
+        }
       }
     }
   }
@@ -100,7 +105,12 @@
 
       &:focus {
         border-color: $border-color;
-        box-shadow: $focus-box-shadow;
+        @if $enable-shadows {
+          @include box-shadow($form-select-box-shadow, $focus-box-shadow);
+        } @else {
+          // Avoid using mixin so we can pass custom focus shadow properly
+          box-shadow: $focus-box-shadow;
+        }
       }
     }
   }

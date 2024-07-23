@@ -9,7 +9,9 @@ import * as Popper from '@popperjs/core'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
-import { defineJQueryPlugin, execute, findShadowRoot, getElement, getUID, isRTL, noop } from './util/index.js'
+import {
+  defineJQueryPlugin, execute, findShadowRoot, getElement, getUID, isRTL, noop
+} from './util/index.js'
 import { DefaultAllowlist } from './util/sanitizer.js'
 import TemplateFactory from './util/template-factory.js'
 
@@ -103,7 +105,7 @@ const DefaultType = {
 class Tooltip extends BaseComponent {
   constructor(element, config) {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
+      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)')
     }
 
     super(element, config)
@@ -390,7 +392,7 @@ class Tooltip extends BaseComponent {
   }
 
   _resolvePossibleFunction(arg) {
-    return execute(arg, [this._element])
+    return execute(arg, [this._element, this._element])
   }
 
   _getPopperConfig(attachment) {
@@ -436,7 +438,7 @@ class Tooltip extends BaseComponent {
 
     return {
       ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [defaultBsPopperConfig])
+      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
     }
   }
 

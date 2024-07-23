@@ -26,10 +26,10 @@ const getSelector = element => {
       hrefAttribute = `#${hrefAttribute.split('#')[1]}`
     }
 
-    selector = hrefAttribute && hrefAttribute !== '#' ? parseSelector(hrefAttribute.trim()) : null
+    selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null
   }
 
-  return selector
+  return selector ? selector.split(',').map(sel => parseSelector(sel)).join(',') : null
 }
 
 const SelectorEngine = {

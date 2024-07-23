@@ -2,21 +2,31 @@
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 
-(() => {
-  'use strict'
+/*!
+ * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
+ * Copyright 2024 The Bootstrap Authors
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ * For details, see https://creativecommons.org/licenses/by/3.0/.
+ */
 
+import docsearch from '@docsearch/js'
+// https://gohugo.io/hugo-pipes/js/#options
+// eslint-disable-next-line import/no-unresolved
+import { appId, apiKey, indexName } from '@params';
+
+(() => {
   const searchElement = document.getElementById('docsearch')
 
-  if (!window.docsearch || !searchElement) {
+  if (!searchElement) {
     return
   }
 
   const siteDocsVersion = searchElement.getAttribute('data-bd-docs-version')
 
-  window.docsearch({
-    apiKey: '3151f502c7b9e9dafd5e6372b691a24e',
-    indexName: 'bootstrap',
-    appId: 'AK7KMZKZHQ',
+  docsearch({
+    apiKey,
+    indexName,
+    appId,
     container: searchElement,
     searchParameters: {
       facetFilters: [`version:${siteDocsVersion}`]

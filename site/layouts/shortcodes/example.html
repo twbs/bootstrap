@@ -16,18 +16,18 @@
 {{- $show_markup := .Get "show_markup" | default true -}}
 {{- $show_preview := .Get "show_preview" | default true -}}
 {{- $stackblitz_add_js := .Get "stackblitz_add_js" | default false -}}
-{{- $input := .Inner -}}
+
 {{- $content := .Inner -}}
 
 <div class="bd-example-snippet bd-code-snippet">
-  {{- if eq $show_preview true -}}
+  {{- if eq $show_preview true }}
   <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example m-0 border-0{{ with $class }} {{ . }}{{ end }}">
-    {{- $input -}}
+    {{ $content }}
   </div>
-  {{- end -}}
+  {{- end }}
 
   <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1">
-    <small class="font-monospace text-body-secondary text-uppercase">{{- $lang -}}</small>
+    <small class="font-monospace text-body-secondary text-uppercase">{{ $lang }}</small>
     <div class="d-flex ms-auto">
       {{- if eq $show_preview true -}}
         <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try it on StackBlitz">
@@ -45,5 +45,5 @@
     {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
     {{- $content = replaceRE ` (class=" *?")` "" $content -}}
     {{- highlight (trim $content "\n") $lang "" -}}
-  {{- end -}}
+  {{- end }}
 </div>

@@ -58,7 +58,7 @@ Note that [breaking words isn't possible in Arabic](https://rtlstyling.com/posts
 
 ## Text transform
 
-Transform text in components with text capitalization classes.
+Transform text in components with our text capitalization classes: `text-lowercase`, `text-uppercase` or `text-capitalize`.
 
 {{< example >}}
 <p class="text-lowercase">Lowercased text.</p>

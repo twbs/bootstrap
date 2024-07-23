@@ -2,7 +2,9 @@ import Carousel from '../../src/carousel.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import { isRTL, noop } from '../../src/util/index.js'
 import Swipe from '../../src/util/swipe.js'
-import { clearFixture, createEvent, getFixture, jQueryMock } from '../helpers/fixture.js'
+import {
+  clearFixture, createEvent, getFixture, jQueryMock
+} from '../helpers/fixture.js'
 
 describe('Carousel', () => {
   const { Simulator, PointerEvent } = window
