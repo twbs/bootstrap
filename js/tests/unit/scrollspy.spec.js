@@ -901,7 +901,7 @@ describe('ScrollSpy', () => {
       expect(clickSpy).not.toHaveBeenCalled()
     })
 
-    it('should call `scrollTop` if element doesn\'t not support `scrollTo`', () => {
+    it('should call `scrollTop` if element doesn\'t support `scrollTo`', () => {
       fixtureEl.innerHTML = getDummyFixture()
 
       const div = fixtureEl.querySelector('.content')
@@ -943,7 +943,7 @@ describe('ScrollSpy', () => {
       link.click()
     })
 
-    it('should smoothscroll to observable with anchor link that contains a french word as id', done => {
+    it('should smoothScroll to observable with anchor link that contains a french word as id', done => {
       fixtureEl.innerHTML = [
         '<nav id="navBar" class="navbar">',
         '  <ul class="nav">',
@@ -977,101 +977,95 @@ describe('ScrollSpy', () => {
       link.click()
     })
 
-    // Novos testes
+    it('should enable smoothScroll and support scroll if ScrollSpy is enabled and section is visible', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
 
-     it('CT1: Deve ativar smoothScroll e suportar scroll se o ScrollSpy for ativado e a seção for visível', () => {
-      fixtureEl.innerHTML = getDummyFixture();
-      const offSpy = spyOn(EventHandler, 'off').and.callThrough();
-      const onSpy = spyOn(EventHandler, 'on').and.callThrough();
-  
-      const div = fixtureEl.querySelector('.content');
-      const target = fixtureEl.querySelector('#navBar');
-  
-      // Inicializa o ScrollSpy com smoothScroll ativado
+      const div = fixtureEl.querySelector('.content')
+      const target = fixtureEl.querySelector('#navBar')
+
+      // Initialize ScrollSpy with smoothScroll enabled
       new ScrollSpy(div, {
         smoothScroll: true
-      });
-  
-      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy');
-      expect(onSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy', '[href]', jasmine.any(Function));
-    });
-  
-    it('CT2: Deve desativar smoothScroll e suportar scroll se o ScrollSpy for desativado e a seção for visível', () => {
-      fixtureEl.innerHTML = getDummyFixture();
-      const offSpy = spyOn(EventHandler, 'off').and.callThrough();
-      const onSpy = spyOn(EventHandler, 'on').and.callThrough();
-    
-      const div = fixtureEl.querySelector('.content');
-      const target = fixtureEl.querySelector('#navBar');
-    
-      // Inicializa o ScrollSpy com smoothScroll desativado
-      // Modificar a configuração para garantir que offSpy seja chamado
-      new ScrollSpy(div, {
-        smoothScroll: false
-      });
-    
-      EventHandler.off(target, 'click.bs.scrollspy');
-    
-    
-      // Verifica se `EventHandler.off` foi chamado
-      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy');
-      // Verifica se `EventHandler.on` não foi chamado
-      expect(onSpy).not.toHaveBeenCalled();
-    });
-    
-    
-    
-  
-    it('CT3: Não deve fazer smoothScroll se a seção não for visível, mesmo que o ScrollSpy esteja ativado', () => {
-      fixtureEl.innerHTML = [
-        '<nav id="navBar" class="navbar">',
-        '  <ul class="nav">',
-        '    <a id="anchor-1" href="#hidden-section">div 1</a></li>',
-        '  </ul>',
-        '</nav>',
-        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
-        '  <div id="hidden-section" style="display: none;">div 1</div>',
-        '</div>'
-      ].join('');
-  
-      const div = fixtureEl.querySelector('.content');
-      const target = fixtureEl.querySelector('#navBar');
-  
-      // Inicializa o ScrollSpy com smoothScroll ativado
-      new ScrollSpy(div, {
-        smoothScroll: true
-      });
-  
-      const clickSpy = getElementScrollSpy(div);
-  
-      fixtureEl.querySelector('#anchor-1').click();
-      expect(clickSpy).not.toHaveBeenCalled();
-    });
-  
-    it('CT4: Não deve fazer smoothScroll se a seção não for visível e smoothScroll estiver desativado', () => {
-      fixtureEl.innerHTML = [
-        '<nav id="navBar" class="navbar">',
-        '  <ul class="nav">',
-        '    <a id="anchor-1" href="#hidden-section">div 1</a></li>',
-        '  </ul>',
-        '</nav>',
-        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
-        '  <div id="hidden-section" style="display: none;">div 1</div>',
-        '</div>'
-      ].join('');
-  
-      const div = fixtureEl.querySelector('.content');
-      const target = fixtureEl.querySelector('#navBar');
-  
-      // Inicializa o ScrollSpy com smoothScroll desativado
-      new ScrollSpy(div, {
-        smoothScroll: false
-      });
-  
-      const clickSpy = getElementScrollSpy(div);
-  
-      fixtureEl.querySelector('#anchor-1').click();
-      expect(clickSpy).not.toHaveBeenCalled();
+      })
+
+      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+      expect(onSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy', '[href]', jasmine.any(Function))
     })
-  }) 
+
+    it('should disable smoothScroll and support scroll if ScrollSpy is disabled and section is visible', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
+
+      const div = fixtureEl.querySelector('.content')
+      const target = fixtureEl.querySelector('#navBar')
+
+      // Initialize ScrollSpy with smoothScroll disabled
+      // Modify configuration to ensure offSpy is called
+      new ScrollSpy(div, {
+        smoothScroll: false
+      })
+
+      EventHandler.off(target, 'click.bs.scrollspy')
+
+      // Verify `EventHandler.off` was called
+      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+      // Verify `EventHandler.on` was not called
+      expect(onSpy).not.toHaveBeenCalled()
+    })
+
+    it('should not smoothScroll if section is not visible, even if ScrollSpy is enabled', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navBar" class="navbar">',
+        '  <ul class="nav">',
+        '    <a id="anchor-1" href="#hidden-section">div 1</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
+        '  <div id="hidden-section" style="display: none;">div 1</div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+      const target = fixtureEl.querySelector('#navBar')
+
+      // Initialize ScrollSpy with smoothScroll enabled
+      new ScrollSpy(div, {
+        smoothScroll: true
+      })
+
+      const clickSpy = getElementScrollSpy(div)
+
+      fixtureEl.querySelector('#anchor-1').click()
+      expect(clickSpy).not.toHaveBeenCalled()
+    })
+
+    it('should not smoothScroll if section is not visible and smoothScroll is disabled', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navBar" class="navbar">',
+        '  <ul class="nav">',
+        '    <a id="anchor-1" href="#hidden-section">div 1</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
+        '  <div id="hidden-section" style="display: none;">div 1</div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+      const target = fixtureEl.querySelector('#navBar')
+
+      // Initialize ScrollSpy with smoothScroll disabled
+      new ScrollSpy(div, {
+        smoothScroll: false
+      })
+
+      const clickSpy = getElementScrollSpy(div)
+
+      fixtureEl.querySelector('#anchor-1').click()
+      expect(clickSpy).not.toHaveBeenCalled()
+    })
+  })
 })
