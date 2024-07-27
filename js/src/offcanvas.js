@@ -244,9 +244,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  EventHandler.one(target, EVENT_HIDDEN, evt => {
+  EventHandler.one(target, EVENT_HIDDEN, event => {
     // focus on trigger when it is closed
-    if (evt.focusAfterClose && isVisible(this)) {
+    if (event.focusAfterClose && isVisible(this)) {
       this.focus()
     }
   })
