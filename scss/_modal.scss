@@ -59,8 +59,8 @@
 
   // When fading in the modal, animate it to slide down
   .modal.fade & {
-    @include transition($modal-transition);
     transform: $modal-fade-transform;
+    @include transition($modal-transition);
   }
   .modal.show & {
     transform: $modal-show-transform;
