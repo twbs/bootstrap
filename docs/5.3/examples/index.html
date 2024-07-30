@@ -5,26 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.130.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
 
-<title>Examples · Bootstrap v5.3</title>
-
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/">
 
-<link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin>
+<link rel="preconnect" href="https://ak7kmzkzhq-dsn.algolia.net" crossorigin>
+
+<title>Examples · Bootstrap v5.3</title>
 
 <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-vu0ZNjeU9AYPVzdLqnzE2GXicZbpLu2o9sO+r6OYIH9jaJGzBOYJMxFvpel72ouA"><link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<link href="/docs/5.3/assets/css/search.css" rel="stylesheet">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-<link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
-
-<!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -51,14 +47,6 @@
 
 <script defer src="https://cdn.usefathom.com/script.js" data-site="ITUSEYJG"></script>
 
-<script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-146052-10', 'getbootstrap.com');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-
 
   </head>
   <body>
@@ -72,6 +60,9 @@
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="arrow-right" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
   </symbol>
   <symbol id="book-half" viewBox="0 0 16 16">
     <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
@@ -168,7 +159,7 @@
       </button>
     </div>
 
-    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
       <div class="offcanvas-header px-4 pb-0">
         <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
@@ -178,19 +169,19 @@
         <hr class="d-lg-none text-white-50">
         <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="/docs/5.3/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Docs</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="/docs/5.3/getting-started/introduction/">Docs</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="/docs/5.3/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+            <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="/docs/5.3/examples/">Examples</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://icons.getbootstrap.com/" target="_blank" rel="noopener">Icons</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://themes.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://themes.getbootstrap.com/" target="_blank" rel="noopener">Themes</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://blog.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://blog.getbootstrap.com/" target="_blank" rel="noopener">Blog</a>
           </li>
         </ul>
 
@@ -220,9 +211,7 @@
             <hr class="d-lg-none my-2 text-white-50">
           </li>
 
-          
-
-<li class="nav-item dropdown">
+          <li class="nav-item dropdown">
   <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
     <span class="d-lg-none" aria-hidden="true">Bootstrap</span><span class="visually-hidden">Bootstrap&nbsp;</span> v5.3 <span class="visually-hidden">(switch to other versions)</span>
   </button>
@@ -260,39 +249,40 @@
           </li>
 
           <li class="nav-item dropdown">
-            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
-                    id="bd-theme"
-                    type="button"
-                    aria-expanded="false"
-                    data-bs-toggle="dropdown"
-                    data-bs-display="static"
-                    aria-label="Toggle theme (auto)">
-              <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
-              <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                  <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
-                  Light
-                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                  <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
-                  Dark
-                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                  <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
-                  Auto
-                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
-                </button>
-              </li>
-            </ul>
+            <button class="btn btn-link nav-link px-0 px-lg-2 py-2 dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+  <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
           </li>
         </ul>
       </div>
@@ -308,17 +298,15 @@
         <div class="col-xl-8">
           <h1 class="bd-title mt-0">Examples</h1>
           <p class="bd-lead">Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.</p>
-          
           <div class="d-flex flex-column flex-md-row gap-3">
-            <a href="https://github.com/twbs/bootstrap/releases/download/v5.3.3/bootstrap-5.3.3-examples.zip" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">
+            <a href="https://github.com/twbs/bootstrap/releases/download/v5.3.4/bootstrap-5.3.4-examples.zip" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold">
               <svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
               Download examples
             </a>
-            <a href="https://github.com/twbs/bootstrap/archive/v5.3.3.zip" class="btn btn-lg bd-btn-lg btn-outline-secondary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">
+            <a href="https://github.com/twbs/bootstrap/archive/v5.3.4.zip" class="btn btn-lg bd-btn-lg btn-outline-secondary">
               Download source code
             </a>
           </div>
-          
         </div>
         <div class="col-xl-4 d-lg-flex justify-content-xl-end">
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
@@ -331,20 +319,20 @@
   <main class="bd-content order-1 py-5" id="content">
     <div class="container-xxl bd-gutter">
       
-<div class="bd-content">
+
+      <div class="bd-content">
   <h2 id="starters">Starters</h2>
   <p>Functional examples of using Bootstrap in common JS frameworks like Webpack, Parcel, Vite, and more you can edit in StackBlitz.</p>
   <div class="row">
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/starter/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/starter" target="_blank" rel="noopener">
                 CDN starter
               </a>
             </h3>
-            <p class="text-body-secondary">Instantly include Bootstrap's compiled CSS and JavaScript via the jsDelivr CDN.</p>
+            <p class="text-body-secondary">Instantly include Bootstrap&#39;s compiled CSS and JavaScript via the jsDelivr CDN.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/starter?file=index.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -355,17 +343,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/sass-js/" target="_blank" rel="noopener">
-                Sass & JS
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/sass-js" target="_blank" rel="noopener">
+                Sass &amp; JS
               </a>
             </h3>
-            <p class="text-body-secondary">Use npm to import and compile Bootstrap's Sass with Autoprefixer and Stylelint, plus our bundled JavaScript.</p>
+            <p class="text-body-secondary">Use npm to import and compile Bootstrap&#39;s Sass with Autoprefixer and Stylelint, plus our bundled JavaScript.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/sass-js?file=index.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -376,17 +362,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/sass-js-esm/" target="_blank" rel="noopener">
-                Sass & ESM JS
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/sass-js-esm" target="_blank" rel="noopener">
+                Sass &amp; ESM JS
               </a>
             </h3>
-            <p class="text-body-secondary">Import and compile Bootstrap's Sass with Autoprefixer and Stylelint, and compile our source JavaScript with an ESM shim.</p>
+            <p class="text-body-secondary">Import and compile Bootstrap&#39;s Sass with Autoprefixer and Stylelint, and compile our source JavaScript with an ESM shim.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/sass-js-esm?file=index.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -397,17 +381,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/color-modes/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/color-modes" target="_blank" rel="noopener">
                 Bootstrap color modes
               </a>
             </h3>
-            <p class="text-body-secondary">Import and compile Bootstrap's Sass with Stylelint, and the Bootstrap color modes.</p>
+            <p class="text-body-secondary">Import and compile Bootstrap&#39;s Sass with Stylelint, and the Bootstrap color modes.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/color-modes?file=index.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -418,17 +400,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/icons-font/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/icons-font" target="_blank" rel="noopener">
                 Bootstrap Icons
               </a>
             </h3>
-            <p class="text-body-secondary">Import and compile Bootstrap's Sass with Stylelint, PurgeCSS, and the Bootstrap Icons web font.</p>
+            <p class="text-body-secondary">Import and compile Bootstrap&#39;s Sass with Stylelint, PurgeCSS, and the Bootstrap Icons web font.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/icons-font?file=index.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -439,17 +419,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/parcel/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/parcel" target="_blank" rel="noopener">
                 Parcel
               </a>
             </h3>
-            <p class="text-body-secondary">Import and bundle Bootstrap's source Sass and JavaScript via Parcel.</p>
+            <p class="text-body-secondary">Import and bundle Bootstrap&#39;s source Sass and JavaScript via Parcel.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/parcel?file=src%2Findex.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -460,17 +438,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/react-nextjs/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/react-nextjs" target="_blank" rel="noopener">
                 React
               </a>
             </h3>
-            <p class="text-body-secondary">Import and bundle Bootstrap's source Sass and JavaScript with React, Next.js, and React Bootstrap.</p>
+            <p class="text-body-secondary">Import and bundle Bootstrap&#39;s source Sass and JavaScript with React, Next.js, and React Bootstrap.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/react-nextjs?file=src%2Fpages%2Findex.tsx" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -481,17 +457,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/vite/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/vite" target="_blank" rel="noopener">
                 Vite
               </a>
             </h3>
-            <p class="text-body-secondary">Import and bundle Bootstrap's source Sass and JavaScript with Vite.</p>
+            <p class="text-body-secondary">Import and bundle Bootstrap&#39;s source Sass and JavaScript with Vite.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/vite?file=index.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -502,17 +476,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/vue/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/vue" target="_blank" rel="noopener">
                 Vue
               </a>
             </h3>
-            <p class="text-body-secondary">Import and bundle Bootstrap's source Sass and JavaScript with Vue and Vite.</p>
+            <p class="text-body-secondary">Import and bundle Bootstrap&#39;s source Sass and JavaScript with Vue and Vite.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/vue?file=index.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -523,17 +495,15 @@
         </div>
       
     
-  
-      
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+      <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/webpack/" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="https://github.com/twbs/examples/tree/main/webpack" target="_blank" rel="noopener">
                 Webpack
               </a>
             </h3>
-            <p class="text-body-secondary">Import and bundle Bootstrap's source Sass and JavaScript with Webpack.</p>
+            <p class="text-body-secondary">Import and bundle Bootstrap&#39;s source Sass and JavaScript with Webpack.</p>
             <p>
               <a class="icon-link small link-secondary link-offset-1" href="https://stackblitz.com/github/twbs/examples/tree/main/webpack?file=src%2Findex.html" target="_blank" rel="noopener">
                 <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
@@ -543,639 +513,570 @@
           </div>
         </div>
       
-    </div>
-  </div>
+    </div></div>
 <div class="bd-content">
   <h2 id="snippets">Snippets</h2>
   <p>Common patterns for building sites and apps that build on existing components and utilities with custom CSS and more.</p>
   <div class="row">
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/headers/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/headers.png,
-                                                    /docs/5.3/assets/img/examples/headers@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/headers.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/headers.png, /docs/5.3/assets/img/examples/headers@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/headers.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Headers
             </h3>
           </a>
           <p class="text-body-secondary">Display your branding, navigation, search, and more with these header components</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/heroes/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/heroes.png,
-                                                    /docs/5.3/assets/img/examples/heroes@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/heroes.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/heroes.png, /docs/5.3/assets/img/examples/heroes@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/heroes.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Heroes
             </h3>
           </a>
           <p class="text-body-secondary">Set the stage on your homepage with heroes that feature clear calls to action.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/features/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/features.png,
-                                                    /docs/5.3/assets/img/examples/features@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/features.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/features.png, /docs/5.3/assets/img/examples/features@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/features.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Features
             </h3>
           </a>
           <p class="text-body-secondary">Explain the features, benefits, or other details in your marketing content.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/sidebars/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/sidebars.png,
-                                                    /docs/5.3/assets/img/examples/sidebars@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/sidebars.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/sidebars.png, /docs/5.3/assets/img/examples/sidebars@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/sidebars.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Sidebars
             </h3>
           </a>
           <p class="text-body-secondary">Common navigation patterns ideal for offcanvas or multi-column layouts.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/footers/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/footers.png,
-                                                    /docs/5.3/assets/img/examples/footers@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/footers.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/footers.png, /docs/5.3/assets/img/examples/footers@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/footers.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Footers
             </h3>
           </a>
           <p class="text-body-secondary">Finish every page strong with an awesome footer, big or small.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/dropdowns/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/dropdowns.png,
-                                                    /docs/5.3/assets/img/examples/dropdowns@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/dropdowns.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/dropdowns.png, /docs/5.3/assets/img/examples/dropdowns@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/dropdowns.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Dropdowns
             </h3>
           </a>
           <p class="text-body-secondary">Enhance your dropdowns with filters, icons, custom styles, and more.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/list-groups/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/list-groups.png,
-                                                    /docs/5.3/assets/img/examples/list-groups@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/list-groups.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/list-groups.png, /docs/5.3/assets/img/examples/list-groups@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/list-groups.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               List groups
             </h3>
           </a>
           <p class="text-body-secondary">Extend list groups with utilities and custom styles for any content.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/modals/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/modals.png,
-                                                    /docs/5.3/assets/img/examples/modals@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/modals.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/modals.png, /docs/5.3/assets/img/examples/modals@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/modals.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Modals
             </h3>
           </a>
           <p class="text-body-secondary">Transform modals to serve any purpose, from feature tours to dialogs.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/badges/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/badges.png,
-                                                    /docs/5.3/assets/img/examples/badges@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/badges.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/badges.png, /docs/5.3/assets/img/examples/badges@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/badges.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Badges
             </h3>
           </a>
           <p class="text-body-secondary">Make badges work with custom inner HTML and new looks.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/breadcrumbs/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/breadcrumbs.png,
-                                                    /docs/5.3/assets/img/examples/breadcrumbs@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/breadcrumbs.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/breadcrumbs.png, /docs/5.3/assets/img/examples/breadcrumbs@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/breadcrumbs.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Breadcrumbs
             </h3>
           </a>
           <p class="text-body-secondary">Integrate custom icons and create stepper components.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/buttons/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/buttons.png,
-                                                    /docs/5.3/assets/img/examples/buttons@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/buttons.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/buttons.png, /docs/5.3/assets/img/examples/buttons@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/buttons.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Buttons
             </h3>
           </a>
           <p class="text-body-secondary">Create custom buttons for just about any use case with utilities.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/jumbotrons/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/jumbotrons.png,
-                                                    /docs/5.3/assets/img/examples/jumbotrons@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/jumbotrons.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/jumbotrons.png, /docs/5.3/assets/img/examples/jumbotrons@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/jumbotrons.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Jumbotrons
             </h3>
           </a>
           <p class="text-body-secondary">Create modernized versions of the classic Bootstrap component.</p>
         </div>
-      
-    </div>
-  </div>
+    </div></div>
 <div class="bd-content">
   <h2 id="custom-components">Custom Components</h2>
   <p>Brand-new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework.</p>
   <div class="row">
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/album/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/album.png,
-                                                    /docs/5.3/assets/img/examples/album@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/album.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/album.png, /docs/5.3/assets/img/examples/album@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/album.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Album
             </h3>
           </a>
           <p class="text-body-secondary">Simple one-page template for photo galleries, portfolios, and more.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/pricing/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/pricing.png,
-                                                    /docs/5.3/assets/img/examples/pricing@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/pricing.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/pricing.png, /docs/5.3/assets/img/examples/pricing@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/pricing.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Pricing
             </h3>
           </a>
           <p class="text-body-secondary">Example pricing page built with Cards and featuring a custom header and footer.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/checkout/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/checkout.png,
-                                                    /docs/5.3/assets/img/examples/checkout@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/checkout.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/checkout.png, /docs/5.3/assets/img/examples/checkout@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/checkout.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Checkout
             </h3>
           </a>
           <p class="text-body-secondary">Custom checkout form showing our form components and their validation features.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/product/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/product.png,
-                                                    /docs/5.3/assets/img/examples/product@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/product.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/product.png, /docs/5.3/assets/img/examples/product@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/product.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Product
             </h3>
           </a>
           <p class="text-body-secondary">Lean product-focused marketing page with extensive grid and image work.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/cover/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/cover.png,
-                                                    /docs/5.3/assets/img/examples/cover@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/cover.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/cover.png, /docs/5.3/assets/img/examples/cover@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/cover.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Cover
             </h3>
           </a>
           <p class="text-body-secondary">A one-page template for building simple and beautiful home pages.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/carousel/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/carousel.png,
-                                                    /docs/5.3/assets/img/examples/carousel@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/carousel.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/carousel.png, /docs/5.3/assets/img/examples/carousel@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/carousel.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Carousel
             </h3>
           </a>
           <p class="text-body-secondary">Customize the navbar and carousel, then add some new components.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/blog/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/blog.png,
-                                                    /docs/5.3/assets/img/examples/blog@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/blog.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/blog.png, /docs/5.3/assets/img/examples/blog@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/blog.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Blog
             </h3>
           </a>
           <p class="text-body-secondary">Magazine like blog template with header, navigation, featured content.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/dashboard/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/dashboard.png,
-                                                    /docs/5.3/assets/img/examples/dashboard@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/dashboard.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/dashboard.png, /docs/5.3/assets/img/examples/dashboard@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/dashboard.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Dashboard
             </h3>
           </a>
           <p class="text-body-secondary">Basic admin dashboard shell with fixed sidebar and navbar.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/sign-in/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/sign-in.png,
-                                                    /docs/5.3/assets/img/examples/sign-in@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/sign-in.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/sign-in.png, /docs/5.3/assets/img/examples/sign-in@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/sign-in.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Sign-in
             </h3>
           </a>
           <p class="text-body-secondary">Custom form layout and design for a simple sign in form.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/sticky-footer/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/sticky-footer.png,
-                                                    /docs/5.3/assets/img/examples/sticky-footer@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/sticky-footer.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/sticky-footer.png, /docs/5.3/assets/img/examples/sticky-footer@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/sticky-footer.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Sticky footer
             </h3>
           </a>
           <p class="text-body-secondary">Attach a footer to the bottom of the viewport when page content is short.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/sticky-footer-navbar/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/sticky-footer-navbar.png,
-                                                    /docs/5.3/assets/img/examples/sticky-footer-navbar@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/sticky-footer-navbar.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/sticky-footer-navbar.png, /docs/5.3/assets/img/examples/sticky-footer-navbar@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/sticky-footer-navbar.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Sticky footer navbar
             </h3>
           </a>
           <p class="text-body-secondary">Attach a footer to the bottom of the viewport with a fixed top navbar.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/jumbotron/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/jumbotron.png,
-                                                    /docs/5.3/assets/img/examples/jumbotron@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/jumbotron.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/jumbotron.png, /docs/5.3/assets/img/examples/jumbotron@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/jumbotron.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Jumbotron
             </h3>
           </a>
-          <p class="text-body-secondary">Use utilities to recreate and enhance Bootstrap 4's jumbotron.</p>
+          <p class="text-body-secondary">Use utilities to recreate and enhance Bootstrap 4&#39;s jumbotron.</p>
         </div>
-      
-    </div>
-  </div>
+    </div></div>
 <div class="bd-content">
   <h2 id="framework">Framework</h2>
   <p>Examples that focus on implementing uses of built-in components provided by Bootstrap.</p>
   <div class="row">
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/starter-template/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/starter-template.png,
-                                                    /docs/5.3/assets/img/examples/starter-template@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/starter-template.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/starter-template.png, /docs/5.3/assets/img/examples/starter-template@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/starter-template.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Starter template
             </h3>
           </a>
           <p class="text-body-secondary">Nothing but the basics: compiled CSS and JavaScript.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/grid/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/grid.png,
-                                                    /docs/5.3/assets/img/examples/grid@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/grid.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/grid.png, /docs/5.3/assets/img/examples/grid@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/grid.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Grid
             </h3>
           </a>
           <p class="text-body-secondary">Multiple examples of grid layouts with all four tiers, nesting, and more.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/cheatsheet/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/cheatsheet.png,
-                                                    /docs/5.3/assets/img/examples/cheatsheet@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/cheatsheet.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/cheatsheet.png, /docs/5.3/assets/img/examples/cheatsheet@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/cheatsheet.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Cheatsheet
             </h3>
           </a>
           <p class="text-body-secondary">Kitchen sink of Bootstrap components.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/cheatsheet-rtl/" hreflang="ar">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/cheatsheet-rtl.png,
-                                                    /docs/5.3/assets/img/examples/cheatsheet-rtl@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/cheatsheet-rtl.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/cheatsheet-rtl.png, /docs/5.3/assets/img/examples/cheatsheet-rtl@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/cheatsheet-rtl.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Cheatsheet RTL
             </h3>
           </a>
           <p class="text-body-secondary">Kitchen sink of Bootstrap components, RTL.</p>
         </div>
-      
-    </div>
-  </div>
+    </div></div>
 <div class="bd-content">
   <h2 id="navbars">Navbars</h2>
   <p>Taking the default navbar component and showing how it can be moved, placed, and extended.</p>
   <div class="row">
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/navbars/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/navbars.png,
-                                                    /docs/5.3/assets/img/examples/navbars@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/navbars.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/navbars.png, /docs/5.3/assets/img/examples/navbars@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/navbars.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Navbars
             </h3>
           </a>
           <p class="text-body-secondary">Demonstration of all responsive and container options for the navbar.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/navbars-offcanvas/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/navbars-offcanvas.png,
-                                                    /docs/5.3/assets/img/examples/navbars-offcanvas@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/navbars-offcanvas.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/navbars-offcanvas.png, /docs/5.3/assets/img/examples/navbars-offcanvas@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/navbars-offcanvas.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Navbars offcanvas
             </h3>
           </a>
           <p class="text-body-secondary">Same as the Navbars example, but with our offcanvas component.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/navbar-static/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/navbar-static.png,
-                                                    /docs/5.3/assets/img/examples/navbar-static@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/navbar-static.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/navbar-static.png, /docs/5.3/assets/img/examples/navbar-static@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/navbar-static.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Navbar static
             </h3>
           </a>
           <p class="text-body-secondary">Single navbar example of a static top navbar along with some additional content.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/navbar-fixed/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/navbar-fixed.png,
-                                                    /docs/5.3/assets/img/examples/navbar-fixed@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/navbar-fixed.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/navbar-fixed.png, /docs/5.3/assets/img/examples/navbar-fixed@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/navbar-fixed.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Navbar fixed
             </h3>
           </a>
           <p class="text-body-secondary">Single navbar example with a fixed top navbar along with some additional content.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/navbar-bottom/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/navbar-bottom.png,
-                                                    /docs/5.3/assets/img/examples/navbar-bottom@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/navbar-bottom.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/navbar-bottom.png, /docs/5.3/assets/img/examples/navbar-bottom@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/navbar-bottom.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Navbar bottom
             </h3>
           </a>
           <p class="text-body-secondary">Single navbar example with a bottom navbar along with some additional content.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/offcanvas-navbar/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/offcanvas-navbar.png,
-                                                    /docs/5.3/assets/img/examples/offcanvas-navbar@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/offcanvas-navbar.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/offcanvas-navbar.png, /docs/5.3/assets/img/examples/offcanvas-navbar@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/offcanvas-navbar.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Offcanvas navbar
             </h3>
           </a>
-          <p class="text-body-secondary">Turn your expandable navbar into a sliding offcanvas menu (doesn't use our offcanvas component).</p>
+          <p class="text-body-secondary">Turn your expandable navbar into a sliding offcanvas menu (doesn&#39;t use our offcanvas component).</p>
         </div>
-      
-    </div>
-  </div>
+    </div></div>
 <div class="bd-content">
   <h2 id="rtl">RTL</h2>
-  <p>See Bootstrap's RTL version in action with these modified Custom Components examples.</p>
+  <p>See Bootstrap&#39;s RTL version in action with these modified Custom Components examples.</p>
   <div class="bd-callout bd-callout-warning small">
       <p>
         <strong>RTL is still experimental</strong> and will evolve with feedback. Spotted something or have an improvement to suggest?
@@ -1183,143 +1084,133 @@
       <p><a href="https://github.com/twbs/bootstrap/issues/new/choose">Please open an issue.</a></p>
     </div>
   <div class="row">
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/album-rtl/" hreflang="ar">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/album-rtl.png,
-                                                    /docs/5.3/assets/img/examples/album-rtl@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/album-rtl.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/album-rtl.png, /docs/5.3/assets/img/examples/album-rtl@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/album-rtl.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Album RTL
             </h3>
           </a>
           <p class="text-body-secondary">Simple one-page template for photo galleries, portfolios, and more.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/checkout-rtl/" hreflang="ar">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/checkout-rtl.png,
-                                                    /docs/5.3/assets/img/examples/checkout-rtl@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/checkout-rtl.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/checkout-rtl.png, /docs/5.3/assets/img/examples/checkout-rtl@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/checkout-rtl.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Checkout RTL
             </h3>
           </a>
           <p class="text-body-secondary">Custom checkout form showing our form components and their validation features.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/carousel-rtl/" hreflang="ar">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/carousel-rtl.png,
-                                                    /docs/5.3/assets/img/examples/carousel-rtl@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/carousel-rtl.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/carousel-rtl.png, /docs/5.3/assets/img/examples/carousel-rtl@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/carousel-rtl.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Carousel RTL
             </h3>
           </a>
           <p class="text-body-secondary">Customize the navbar and carousel, then add some new components.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/blog-rtl/" hreflang="ar">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/blog-rtl.png,
-                                                    /docs/5.3/assets/img/examples/blog-rtl@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/blog-rtl.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/blog-rtl.png, /docs/5.3/assets/img/examples/blog-rtl@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/blog-rtl.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Blog RTL
             </h3>
           </a>
           <p class="text-body-secondary">Magazine like blog template with header, navigation, featured content.</p>
         </div>
-      
     
-  
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/dashboard-rtl/" hreflang="ar">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/dashboard-rtl.png,
-                                                    /docs/5.3/assets/img/examples/dashboard-rtl@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/dashboard-rtl.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/dashboard-rtl.png, /docs/5.3/assets/img/examples/dashboard-rtl@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/dashboard-rtl.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Dashboard RTL
             </h3>
           </a>
           <p class="text-body-secondary">Basic admin dashboard shell with fixed sidebar and navbar.</p>
         </div>
-      
-    </div>
-  </div>
+    </div></div>
 <div class="bd-content">
   <h2 id="integrations">Integrations</h2>
   <p>Integrations with external libraries.</p>
   <div class="row">
-      
-        <div class="col-sm-6 col-md-3 mb-3">
+      <div class="col-sm-6 col-md-3 mb-3">
           <a class="d-block link-offset-1" href="/docs/5.3/examples/masonry/">
-            <img class="img-thumbnail mb-3" srcset="/docs/5.3/assets/img/examples/masonry.png,
-                                                    /docs/5.3/assets/img/examples/masonry@2x.png 2x"
-                                            src="/docs/5.3/assets/img/examples/masonry.png"
-                                            alt=""
-                                            width="480" height="300"
-                                            loading="lazy">
+            <img class="img-thumbnail mb-3"
+                 srcset="/docs/5.3/assets/img/examples/masonry.png, /docs/5.3/assets/img/examples/masonry@2x.png 2x"
+                 src="/docs/5.3/assets/img/examples/masonry.png"
+                 alt=""
+                 width="480"
+                 height="300"
+                 loading="lazy">
             <h3 class="h5 mb-1">
               Masonry
             </h3>
           </a>
           <p class="text-body-secondary">Combine the powers of the Bootstrap grid and the Masonry layout.</p>
         </div>
-      
-    </div>
-  </div>
+    </div></div>
 
-
-
-      
         <hr class="my-5">
-        <div class="container">
-          <div class="text-center">
-            <div class="masthead-followup-icon d-inline-block mb-2 text-bg-danger">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" focusable="false" viewBox="0 0 16 16">
+<div class="container">
+  <div class="text-center">
+    <div class="masthead-followup-icon d-inline-block mb-2 text-bg-danger">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" focusable="false" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8 16a6 6 0 006-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 006 6zM6.646 4.646c-.376.377-1.272 1.489-2.093 3.13l.894.448c.78-1.559 1.616-2.58 1.907-2.87l-.708-.708z" clip-rule="evenodd"/>
 </svg>
 
-            </div>
-            <h2 class="display-6 fw-normal">Go further with Bootstrap Themes</h2>
-            <p class="col-md-10 col-lg-8 mx-auto lead">
-              Need something more than these examples? Take Bootstrap to the next level with premium themes from the <a href="https://themes.getbootstrap.com/">official Bootstrap Themes marketplace</a>. They’re built as their own extended frameworks, rich with new components and plugins, documentation, and powerful build tools.
-            </p>
-            <a href="https://themes.getbootstrap.com/" class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
-          </div>
-          <img class="d-block img-fluid mt-3 mx-auto" srcset="/docs/5.3/assets/img/bootstrap-themes-collage.png,
-                                                              /docs/5.3/assets/img/bootstrap-themes-collage@2x.png 2x"
-                                                        src="/docs/5.3/assets/img/bootstrap-themes-collage.png"
-                                                        alt="Bootstrap Themes" width="1150" height="320" loading="lazy">
-        </div>
-      
+    </div>
+    <h2 class="display-6 fw-normal">Go further with Bootstrap Themes</h2>
+    <p class="col-md-10 col-lg-8 mx-auto lead">
+      Need something more than these examples? Take Bootstrap to the next level with premium themes from the <a href="https://themes.getbootstrap.com/">official Bootstrap Themes marketplace</a>. They’re built as their own extended frameworks, rich with new components and plugins, documentation, and powerful build tools.
+    </p>
+    <a href="https://themes.getbootstrap.com/" class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
+  </div>
+  
+<img class="img-fluid mx-auto d-block mt-3"
+     srcset="/docs/5.3/assets/img/bootstrap-themes-collage.png, /docs/5.3/assets/img/bootstrap-themes-collage@2x.png 2x"
+     src="/docs/5.3/assets/img/bootstrap-themes-collage.png"
+     alt="Bootstrap Themes"
+     loading="lazy"
+     width="1150"
+     height="320">
+
+</div>
+
     </div>
   </main>
 
@@ -1335,7 +1226,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.3.</li>
+          <li class="mb-2">Currently v5.3.4.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -1367,7 +1258,7 @@
           <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="noopener">Bootstrap 4</a></li>
           <li class="mb-2"><a href="https://github.com/twbs/icons" target="_blank" rel="noopener">Icons</a></li>
           <li class="mb-2"><a href="https://github.com/twbs/rfs" target="_blank" rel="noopener">RFS</a></li>
-          <li class="mb-2"><a href="https://github.com/twbs/examples/" target="_blank" rel="noopener">Examples repo</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/examples" target="_blank" rel="noopener">Examples repo</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 mb-3">
@@ -1384,17 +1275,10 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-lB1TOKLpj2lUqjMoNsopCNkQBZjReS1qjb5FlO73zlR8ab1WT3m1nF7rmUf5ZQhp"></script>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-
-
-
-<script src="/docs/5.3/assets/js/docs.min.js"></script>
-
-
-
+<script defer src="/docs/5.3/assets/js/application.js"></script>
+<script defer src="/docs/5.3/assets/js/search.js"></script>
 
     
     

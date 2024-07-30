@@ -5,26 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Colored links with hover states">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.122.0">
+<meta name="generator" content="Hugo 0.130.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
 
-<title>Colored links · Bootstrap v5.3</title>
-
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/helpers/colored-links/">
 
-<link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin>
+<link rel="preconnect" href="https://ak7kmzkzhq-dsn.algolia.net" crossorigin>
+
+<title>Colored links · Bootstrap v5.3</title>
 
 <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-vu0ZNjeU9AYPVzdLqnzE2GXicZbpLu2o9sO+r6OYIH9jaJGzBOYJMxFvpel72ouA"><link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<link href="/docs/5.3/assets/css/search.css" rel="stylesheet">
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-<link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
-
-<!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -51,14 +47,6 @@
 
 <script defer src="https://cdn.usefathom.com/script.js" data-site="ITUSEYJG"></script>
 
-<script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-  ga('create', 'UA-146052-10', 'getbootstrap.com');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview');
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-
 
   </head>
   <body data-bs-spy="scroll" data-bs-target="#TableOfContents">
@@ -72,6 +60,9 @@
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="arrow-right" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+  </symbol>
+  <symbol id="arrow-right-short" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
   </symbol>
   <symbol id="book-half" viewBox="0 0 16 16">
     <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
@@ -176,7 +167,7 @@
       </button>
     </div>
 
-    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
       <div class="offcanvas-header px-4 pb-0">
         <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
@@ -186,19 +177,19 @@
         <hr class="d-lg-none text-white-50">
         <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="/docs/5.3/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Docs</a>
+            <a class="nav-link py-2 px-0 px-lg-2 active" aria-current="true" href="/docs/5.3/getting-started/introduction/">Docs</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="/docs/5.3/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="/docs/5.3/examples/">Examples</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://icons.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://icons.getbootstrap.com/" target="_blank" rel="noopener">Icons</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://themes.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://themes.getbootstrap.com/" target="_blank" rel="noopener">Themes</a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://blog.getbootstrap.com/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://blog.getbootstrap.com/" target="_blank" rel="noopener">Blog</a>
           </li>
         </ul>
 
@@ -228,9 +219,7 @@
             <hr class="d-lg-none my-2 text-white-50">
           </li>
 
-          
-
-<li class="nav-item dropdown">
+          <li class="nav-item dropdown">
   <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
     <span class="d-lg-none" aria-hidden="true">Bootstrap</span><span class="visually-hidden">Bootstrap&nbsp;</span> v5.3 <span class="visually-hidden">(switch to other versions)</span>
   </button>
@@ -268,39 +257,40 @@
           </li>
 
           <li class="nav-item dropdown">
-            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
-                    id="bd-theme"
-                    type="button"
-                    aria-expanded="false"
-                    data-bs-toggle="dropdown"
-                    data-bs-display="static"
-                    aria-label="Toggle theme (auto)">
-              <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
-              <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                  <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
-                  Light
-                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                  <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
-                  Dark
-                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                  <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
-                  Auto
-                  <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
-                </button>
-              </li>
-            </ul>
+            <button class="btn btn-link nav-link px-0 px-lg-2 py-2 dropdown-toggle d-flex align-items-center"
+        id="bd-theme"
+        type="button"
+        aria-expanded="false"
+        data-bs-toggle="dropdown"
+        data-bs-display="static"
+        aria-label="Toggle theme (auto)">
+  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+  <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
+</button>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      Light
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      Dark
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+  <li>
+    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      Auto
+      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+    </button>
+  </li>
+</ul>
+
           </li>
         </ul>
       </div>
@@ -517,7 +507,7 @@
       </li>
       <li class="bd-links-span-all mt-1 mb-3 mx-4 border-top"></li>
       <li class="bd-links-span-all">
-        <a href="/docs/5.3/migration/" class="bd-links-link d-inline-block rounded small ">
+        <a href="/docs/5.3/migration/" class="bd-links-link d-inline-block rounded small">
           Migration
         </a>
       </li>
@@ -531,7 +521,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.3/site/content/docs/5.3/helpers/colored-links.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.4/site/content/docs/5.3/helpers/colored-links.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -606,7 +596,7 @@
 </div>
 
 <div class="bd-callout bd-callout-info">
-<strong>Accessibility tip:</strong> Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies like screen readers. Please ensure the meaning is obvious from the content itself (e.g., the visible text with a <a href="/docs/5.3/getting-started/accessibility#color-contrast"><em>sufficient</em> color contrast</a>) or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.
+<strong>Accessibility tip:</strong> Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies like screen readers. Please ensure the meaning is obvious from the content itself (e.g., the visible text with a <a href="/docs/5.3/getting-started/accessibility/#color-contrast"><em>sufficient</em> color contrast</a>) or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.
 </div>
 
 <h2 id="link-utilities">Link utilities <a class="anchor-link" href="#link-utilities" aria-label="Link to this section: Link utilities"></a></h2>
@@ -665,7 +655,7 @@
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.3.</li>
+          <li class="mb-2">Currently v5.3.4.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -697,7 +687,7 @@
           <li class="mb-2"><a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="noopener">Bootstrap 4</a></li>
           <li class="mb-2"><a href="https://github.com/twbs/icons" target="_blank" rel="noopener">Icons</a></li>
           <li class="mb-2"><a href="https://github.com/twbs/rfs" target="_blank" rel="noopener">RFS</a></li>
-          <li class="mb-2"><a href="https://github.com/twbs/examples/" target="_blank" rel="noopener">Examples repo</a></li>
+          <li class="mb-2"><a href="https://github.com/twbs/examples" target="_blank" rel="noopener">Examples repo</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 mb-3">
@@ -714,64 +704,11 @@
   </div>
 </footer>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-lB1TOKLpj2lUqjMoNsopCNkQBZjReS1qjb5FlO73zlR8ab1WT3m1nF7rmUf5ZQhp"></script>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
-
-<script src="/docs/5.3/assets/js/docs.min.js"></script>
-
-<script>
-  
-  document.querySelectorAll('.btn-edit').forEach(btn => {
-    btn.addEventListener('click', event => {
-      const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
-
-      
-      const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).join(' ')
-
-      const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
-      StackBlitzSDK.openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
-    })
-  })
-
-  StackBlitzSDK.openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
-    const markup = `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.3\/dist\/css\/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
-    <${'script'} src="https:\/\/cdn.jsdelivr.net\/npm\/bootstrap@5.3.3\/dist\/js\/bootstrap.bundle.min.js"></${'script'}>
-  </head>
-  <body class="p-3 m-0 border-0 ${classes}">
-
-    \x3C!-- Example Code -->
-${htmlSnippet.replace(/^/gm, '    ')}
-    \x3C!-- End Example Code -->
-  </body>
-</html>`
-
-    const jsSnippetContent = jsSnippet ? '\/\/ NOTICE!!! Initially embedded in our docs this JavaScript\n\/\/ file contains elements that can help you create reproducible\n\/\/ use cases in StackBlitz for instance.\n\/\/ In a real project please adapt this content to your needs.\n\/\/ \u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\u002b\n\n\/*!\n * JavaScript for Bootstrap\u0027s docs (https:\/\/getbootstrap.com\/)\n * Copyright 2011-2024 The Bootstrap Authors\n * Licensed under the Creative Commons Attribution 3.0 Unported License.\n * For details, see https:\/\/creativecommons.org\/licenses\/by\/3.0\/.\n *\/\n\n\/* global bootstrap: false *\/\n\n(() =\u003e {\n  \u0027use strict\u0027\n\n  \/\/ --------\n  \/\/ Tooltips\n  \/\/ --------\n  \/\/ Instantiate all tooltips in a docs or StackBlitz\n  document.querySelectorAll(\u0027[data-bs-toggle=\u0022tooltip\u0022]\u0027)\n    .forEach(tooltip =\u003e {\n      new bootstrap.Tooltip(tooltip)\n    })\n\n  \/\/ --------\n  \/\/ Popovers\n  \/\/ --------\n  \/\/ Instantiate all popovers in docs or StackBlitz\n  document.querySelectorAll(\u0027[data-bs-toggle=\u0022popover\u0022]\u0027)\n    .forEach(popover =\u003e {\n      new bootstrap.Popover(popover)\n    })\n\n  \/\/ -------------------------------\n  \/\/ Toasts\n  \/\/ -------------------------------\n  \/\/ Used by \u0027Placement\u0027 example in docs or StackBlitz\n  const toastPlacement = document.getElementById(\u0027toastPlacement\u0027)\n  if (toastPlacement) {\n    document.getElementById(\u0027selectToastPlacement\u0027).addEventListener(\u0027change\u0027, function () {\n      if (!toastPlacement.dataset.originalClass) {\n        toastPlacement.dataset.originalClass = toastPlacement.className\n      }\n\n      toastPlacement.className = \u0060${toastPlacement.dataset.originalClass} ${this.value}\u0060\n    })\n  }\n\n  \/\/ Instantiate all toasts in docs pages only\n  document.querySelectorAll(\u0027.bd-example .toast\u0027)\n    .forEach(toastNode =\u003e {\n      const toast = new bootstrap.Toast(toastNode, {\n        autohide: false\n      })\n\n      toast.show()\n    })\n\n  \/\/ Instantiate all toasts in docs pages only\n  \/\/ js-docs-start live-toast\n  const toastTrigger = document.getElementById(\u0027liveToastBtn\u0027)\n  const toastLiveExample = document.getElementById(\u0027liveToast\u0027)\n\n  if (toastTrigger) {\n    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)\n    toastTrigger.addEventListener(\u0027click\u0027, () =\u003e {\n      toastBootstrap.show()\n    })\n  }\n  \/\/ js-docs-end live-toast\n\n  \/\/ -------------------------------\n  \/\/ Alerts\n  \/\/ -------------------------------\n  \/\/ Used in \u0027Show live alert\u0027 example in docs or StackBlitz\n\n  \/\/ js-docs-start live-alert\n  const alertPlaceholder = document.getElementById(\u0027liveAlertPlaceholder\u0027)\n  const appendAlert = (message, type) =\u003e {\n    const wrapper = document.createElement(\u0027div\u0027)\n    wrapper.innerHTML = [\n      \u0060\u003cdiv class=\u0022alert alert-${type} alert-dismissible\u0022 role=\u0022alert\u0022\u003e\u0060,\n      \u0060   \u003cdiv\u003e${message}\u003c\/div\u003e\u0060,\n      \u0027   \u003cbutton type=\u0022button\u0022 class=\u0022btn-close\u0022 data-bs-dismiss=\u0022alert\u0022 aria-label=\u0022Close\u0022\u003e\u003c\/button\u003e\u0027,\n      \u0027\u003c\/div\u003e\u0027\n    ].join(\u0027\u0027)\n\n    alertPlaceholder.append(wrapper)\n  }\n\n  const alertTrigger = document.getElementById(\u0027liveAlertBtn\u0027)\n  if (alertTrigger) {\n    alertTrigger.addEventListener(\u0027click\u0027, () =\u003e {\n      appendAlert(\u0027Nice, you triggered this alert message!\u0027, \u0027success\u0027)\n    })\n  }\n  \/\/ js-docs-end live-alert\n\n  \/\/ --------\n  \/\/ Carousels\n  \/\/ --------\n  \/\/ Instantiate all non-autoplaying carousels in docs or StackBlitz\n  document.querySelectorAll(\u0027.carousel:not([data-bs-ride=\u0022carousel\u0022])\u0027)\n    .forEach(carousel =\u003e {\n      bootstrap.Carousel.getOrCreateInstance(carousel)\n    })\n\n  \/\/ -------------------------------\n  \/\/ Checks \u0026 Radios\n  \/\/ -------------------------------\n  \/\/ Indeterminate checkbox example in docs and StackBlitz\n  document.querySelectorAll(\u0027.bd-example-indeterminate [type=\u0022checkbox\u0022]\u0027)\n    .forEach(checkbox =\u003e {\n      if (checkbox.id.includes(\u0027Indeterminate\u0027)) {\n        checkbox.indeterminate = true\n      }\n    })\n\n  \/\/ -------------------------------\n  \/\/ Links\n  \/\/ -------------------------------\n  \/\/ Disable empty links in docs examples only\n  document.querySelectorAll(\u0027.bd-content [href=\u0022#\u0022]\u0027)\n    .forEach(link =\u003e {\n      link.addEventListener(\u0027click\u0027, event =\u003e {\n        event.preventDefault()\n      })\n    })\n\n  \/\/ -------------------------------\n  \/\/ Modal\n  \/\/ -------------------------------\n  \/\/ Modal \u0027Varying modal content\u0027 example in docs and StackBlitz\n  \/\/ js-docs-start varying-modal-content\n  const exampleModal = document.getElementById(\u0027exampleModal\u0027)\n  if (exampleModal) {\n    exampleModal.addEventListener(\u0027show.bs.modal\u0027, event =\u003e {\n      \/\/ Button that triggered the modal\n      const button = event.relatedTarget\n      \/\/ Extract info from data-bs-* attributes\n      const recipient = button.getAttribute(\u0027data-bs-whatever\u0027)\n      \/\/ If necessary, you could initiate an Ajax request here\n      \/\/ and then do the updating in a callback.\n\n      \/\/ Update the modal\u0027s content.\n      const modalTitle = exampleModal.querySelector(\u0027.modal-title\u0027)\n      const modalBodyInput = exampleModal.querySelector(\u0027.modal-body input\u0027)\n\n      modalTitle.textContent = \u0060New message to ${recipient}\u0060\n      modalBodyInput.value = recipient\n    })\n  }\n  \/\/ js-docs-end varying-modal-content\n\n  \/\/ -------------------------------\n  \/\/ Offcanvas\n  \/\/ -------------------------------\n  \/\/ \u0027Offcanvas components\u0027 example in docs only\n  const myOffcanvas = document.querySelectorAll(\u0027.bd-example-offcanvas .offcanvas\u0027)\n  if (myOffcanvas) {\n    myOffcanvas.forEach(offcanvas =\u003e {\n      offcanvas.addEventListener(\u0027show.bs.offcanvas\u0027, event =\u003e {\n        event.preventDefault()\n      }, false)\n    })\n  }\n})()\n' : null
-    const project = {
-      files: {
-        'index.html': markup,
-        'index.js': jsSnippetContent
-      },
-      title: 'Bootstrap Example',
-      description: `Official example from ${window.location.href}`,
-      template: jsSnippet ? 'javascript' : 'html',
-      tags: ['bootstrap']
-    }
-
-    StackBlitzSDK.openProject(project, { openFile: 'index.html' })
-  }
-</script>
-
+<script defer src="/docs/5.3/assets/js/application.js"></script>
+<script defer src="/docs/5.3/assets/js/search.js"></script>
+<script defer src="/docs/5.3/assets/js/stackblitz.js"></script>
 
     
   <div class="position-fixed" aria-hidden="true"><input type="text" tabindex="-1"></div>
