@@ -1,8 +1,7 @@
-@use "../functions";
-@use "../variables";
 @use "../vendor/rfs";
 @use "border-radius";
 @use "box-shadow";
+@use "../setup" as *;
 
 // This mixin uses an `if()` technique to be compatible with Dart Sass
 // See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
@@ -25,17 +24,17 @@
   $state,
   $color,
   $icon,
-  $tooltip-color: functions.color-contrast($color),
-  $tooltip-bg-color: rgba($color, variables.$form-feedback-tooltip-opacity),
-  $focus-box-shadow: 0 0 variables.$input-btn-focus-blur variables.$input-focus-width rgba($color, variables.$input-btn-focus-color-opacity),
+  $tooltip-color: color-contrast($color),
+  $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
+  $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity),
   $border-color: $color
 ) {
   .#{$state}-feedback {
     display: none;
     width: 100%;
-    margin-top: variables.$form-feedback-margin-top;
-    @include rfs.font-size(variables.$form-feedback-font-size);
-    font-style: variables.$form-feedback-font-style;
+    margin-top: $form-feedback-margin-top;
+    @include rfs.font-size($form-feedback-font-size);
+    font-style: $form-feedback-font-style;
     color: $color;
   }
 
@@ -45,13 +44,13 @@
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
-    padding: variables.$form-feedback-tooltip-padding-y variables.$form-feedback-tooltip-padding-x;
+    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    @include rfs.font-size(variables.$form-feedback-tooltip-font-size);
-    line-height: variables.$form-feedback-tooltip-line-height;
+    @include rfs.font-size($form-feedback-tooltip-font-size);
+    line-height: $form-feedback-tooltip-line-height;
     color: $tooltip-color;
     background-color: $tooltip-bg-color;
-    @include border-radius.border-radius(variables.$form-feedback-tooltip-border-radius);
+    @include border-radius.border-radius($form-feedback-tooltip-border-radius);
   }
 
   @include form-validation-state-selector($state) {
@@ -65,18 +64,18 @@
     @include form-validation-state-selector($state) {
       border-color: $border-color;
 
-      @if variables.$enable-validation-icons {
-        padding-right: variables.$input-height-inner;
-        background-image: functions.escape-svg($icon);
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-image: escape-svg($icon);
         background-repeat: no-repeat;
-        background-position: right variables.$input-height-inner-quarter center;
-        background-size: variables.$input-height-inner-half variables.$input-height-inner-half;
+        background-position: right $input-height-inner-quarter center;
+        background-size: $input-height-inner-half $input-height-inner-half;
       }
 
       &:focus {
         border-color: $border-color;
-        @if variables.$enable-shadows {
-          @include box-shadow.box-shadow(variables.$input-box-shadow, $focus-box-shadow);
+        @if $enable-shadows {
+          @include box-shadow.box-shadow($input-box-shadow, $focus-box-shadow);
         } @else {
           // Avoid using mixin so we can pass custom focus shadow properly
           box-shadow: $focus-box-shadow;
@@ -88,9 +87,9 @@
   // stylelint-disable-next-line selector-no-qualifying-type
   textarea.form-control {
     @include form-validation-state-selector($state) {
-      @if variables.$enable-validation-icons {
-        padding-right: variables.$input-height-inner;
-        background-position: top variables.$input-height-inner-quarter right variables.$input-height-inner-quarter;
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
       }
     }
   }
@@ -99,20 +98,20 @@
     @include form-validation-state-selector($state) {
       border-color: $border-color;
 
-      @if variables.$enable-validation-icons {
+      @if $enable-validation-icons {
         &:not([multiple]):not([size]),
         &:not([multiple])[size="1"] {
-          --#{variables.$prefix}form-select-bg-icon: #{functions.escape-svg($icon)};
-          padding-right: variables.$form-select-feedback-icon-padding-end;
-          background-position: variables.$form-select-bg-position, variables.$form-select-feedback-icon-position;
-          background-size: variables.$form-select-bg-size, variables.$form-select-feedback-icon-size;
+          --#{$prefix}form-select-bg-icon: #{escape-svg($icon)};
+          padding-right: $form-select-feedback-icon-padding-end;
+          background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+          background-size: $form-select-bg-size, $form-select-feedback-icon-size;
         }
       }
 
       &:focus {
         border-color: $border-color;
-        @if variables.$enable-shadows {
-          @include box-shadow.box-shadow(variables.$form-select-box-shadow, $focus-box-shadow);
+        @if $enable-shadows {
+          @include box-shadow.box-shadow($form-select-box-shadow, $focus-box-shadow);
         } @else {
           // Avoid using mixin so we can pass custom focus shadow properly
           box-shadow: $focus-box-shadow;
@@ -123,8 +122,8 @@
 
   .form-control-color {
     @include form-validation-state-selector($state) {
-      @if variables.$enable-validation-icons {
-        width: calc(#{variables.$form-color-width} + #{variables.$input-height-inner});
+      @if $enable-validation-icons {
+        width: calc(#{$form-color-width} + #{$input-height-inner});
       }
     }
   }

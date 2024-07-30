@@ -1,5 +1,5 @@
 @use "../mixins/transition";
-@use "../variables";
+@use "../setup/variables";
 
 .icon-link {
   display: inline-flex;

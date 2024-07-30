@@ -1,5 +1,5 @@
 @use "mixins/transition";
-@use "variables";
+@use "setup/variables";
 
 .fade {
   @include transition.transition(variables.$transition-fade);

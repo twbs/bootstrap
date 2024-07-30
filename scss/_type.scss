@@ -1,6 +1,7 @@
 @use "mixins/lists";
-@use "variables";
+@use "setup/variables";
 @use "vendor/rfs";
+@use "reboot";
 
 //
 // Headings

@@ -3,7 +3,7 @@
 @use "../mixins/breakpoints";
 @use "../mixins/utilities" as mixins-utilities;
 @use "../utilities";
-@use "../variables";
+@use "../setup/variables";
 @use "../vendor/rfs";
 
 // Loop over each breakpoint

@@ -1,7 +1,7 @@
 @use "functions";
 @use "mixins/border-radius";
 @use "mixins/color-mode";
-@use "variables";
+@use "setup/variables";
 
 // Transparent background and border properties included for button version.
 // iOS requires the button element instead of an anchor tag.

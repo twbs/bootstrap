@@ -1,7 +1,7 @@
 @use "mixins/border-radius";
 @use "mixins/box-shadow";
 @use "mixins/reset-text";
-@use "variables";
+@use "setup/variables";
 @use "vendor/rfs";
 
 .popover {

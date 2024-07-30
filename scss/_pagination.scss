@@ -3,7 +3,7 @@
 @use "mixins/lists";
 @use "mixins/pagination";
 @use "mixins/transition";
-@use "variables";
+@use "setup/variables";
 @use "vendor/rfs";
 
 .pagination {

@@ -1,7 +1,7 @@
 @use "mixins/border-radius";
 @use "mixins/box-shadow";
 @use "mixins/image";
-@use "variables";
+@use "setup/variables";
 @use "vendor/rfs";
 
 // Responsive images (ensure images don't scale beyond their parents)

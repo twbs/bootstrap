@@ -4,7 +4,7 @@
 @use "mixins/breakpoints";
 @use "mixins/caret";
 @use "mixins/gradients";
-@use "variables";
+@use "setup/variables";
 @use "vendor/rfs";
 
 // The dropdown wrapper (`<div>`)

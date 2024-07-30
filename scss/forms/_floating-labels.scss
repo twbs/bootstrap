@@ -1,6 +1,6 @@
 @use "../mixins/border-radius";
 @use "../mixins/transition";
-@use "../variables";
+@use "../setup/variables";
 
 .form-floating {
   position: relative;

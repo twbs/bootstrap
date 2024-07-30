@@ -1,6 +1,6 @@
 @use "mixins/border-radius";
 @use "mixins/box-shadow";
-@use "variables";
+@use "setup/variables";
 
 // Make the div behave like a button
 .btn-group,
