@@ -1,11 +1,14 @@
+@use "../variables";
+@use "../vendor/rfs";
+
 //
 // Form text
 //
 
 .form-text {
-  margin-top: $form-text-margin-top;
-  @include font-size($form-text-font-size);
-  font-style: $form-text-font-style;
-  font-weight: $form-text-font-weight;
-  color: $form-text-color;
+  margin-top: variables.$form-text-margin-top;
+  @include rfs.font-size(variables.$form-text-font-size);
+  font-style: variables.$form-text-font-style;
+  font-weight: variables.$form-text-font-weight;
+  color: variables.$form-text-color;
 }

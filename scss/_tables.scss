@@ -1,29 +1,34 @@
+@use "sass:map";
+@use "mixins/breakpoints";
+@use "mixins/table-variants";
+@use "variables";
+
 //
 // Basic Bootstrap table
 //
 
 .table {
   // Reset needed for nesting tables
-  --#{$prefix}table-color-type: initial;
-  --#{$prefix}table-bg-type: initial;
-  --#{$prefix}table-color-state: initial;
-  --#{$prefix}table-bg-state: initial;
+  --#{variables.$prefix}table-color-type: initial;
+  --#{variables.$prefix}table-bg-type: initial;
+  --#{variables.$prefix}table-color-state: initial;
+  --#{variables.$prefix}table-bg-state: initial;
   // End of reset
-  --#{$prefix}table-color: #{$table-color};
-  --#{$prefix}table-bg: #{$table-bg};
-  --#{$prefix}table-border-color: #{$table-border-color};
-  --#{$prefix}table-accent-bg: #{$table-accent-bg};
-  --#{$prefix}table-striped-color: #{$table-striped-color};
-  --#{$prefix}table-striped-bg: #{$table-striped-bg};
-  --#{$prefix}table-active-color: #{$table-active-color};
-  --#{$prefix}table-active-bg: #{$table-active-bg};
-  --#{$prefix}table-hover-color: #{$table-hover-color};
-  --#{$prefix}table-hover-bg: #{$table-hover-bg};
+  --#{variables.$prefix}table-color: #{variables.$table-color};
+  --#{variables.$prefix}table-bg: #{variables.$table-bg};
+  --#{variables.$prefix}table-border-color: #{variables.$table-border-color};
+  --#{variables.$prefix}table-accent-bg: #{variables.$table-accent-bg};
+  --#{variables.$prefix}table-striped-color: #{variables.$table-striped-color};
+  --#{variables.$prefix}table-striped-bg: #{variables.$table-striped-bg};
+  --#{variables.$prefix}table-active-color: #{variables.$table-active-color};
+  --#{variables.$prefix}table-active-bg: #{variables.$table-active-bg};
+  --#{variables.$prefix}table-hover-color: #{variables.$table-hover-color};
+  --#{variables.$prefix}table-hover-bg: #{variables.$table-hover-bg};
 
   width: 100%;
-  margin-bottom: $spacer;
-  vertical-align: $table-cell-vertical-align;
-  border-color: var(--#{$prefix}table-border-color);
+  margin-bottom: variables.$spacer;
+  vertical-align: variables.$table-cell-vertical-align;
+  border-color: var(--#{variables.$prefix}table-border-color);
 
   // Target th & td
   // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
@@ -31,12 +36,12 @@
   // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
-    padding: $table-cell-padding-y $table-cell-padding-x;
+    padding: variables.$table-cell-padding-y variables.$table-cell-padding-x;
     // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
-    color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
-    background-color: var(--#{$prefix}table-bg);
-    border-bottom-width: $table-border-width;
-    box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}table-accent-bg)));
+    color: var(--#{variables.$prefix}table-color-state, var(--#{variables.$prefix}table-color-type, var(--#{variables.$prefix}table-color)));
+    background-color: var(--#{variables.$prefix}table-bg);
+    border-bottom-width: variables.$table-border-width;
+    box-shadow: inset 0 0 0 9999px var(--#{variables.$prefix}table-bg-state, var(--#{variables.$prefix}table-bg-type, var(--#{variables.$prefix}table-accent-bg)));
   }
 
   > tbody {
@@ -49,7 +54,7 @@
 }
 
 .table-group-divider {
-  border-top: calc(#{$table-border-width} * 2) solid $table-group-separator-color; // stylelint-disable-line function-disallowed-list
+  border-top: calc(#{variables.$table-border-width} * 2) solid variables.$table-group-separator-color; // stylelint-disable-line function-disallowed-list
 }
 
 //
@@ -68,7 +73,7 @@
 .table-sm {
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
-    padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
+    padding: variables.$table-cell-padding-y-sm variables.$table-cell-padding-x-sm;
   }
 }
 
@@ -84,11 +89,11 @@
 
 .table-bordered {
   > :not(caption) > * {
-    border-width: $table-border-width 0;
+    border-width: variables.$table-border-width 0;
 
     // stylelint-disable-next-line selector-max-universal
     > * {
-      border-width: 0 $table-border-width;
+      border-width: 0 variables.$table-border-width;
     }
   }
 }
@@ -110,17 +115,17 @@
 
 // For rows
 .table-striped {
-  > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
-    --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
-    --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
+  > tbody > tr:nth-of-type(#{variables.$table-striped-order}) > * {
+    --#{variables.$prefix}table-color-type: var(--#{variables.$prefix}table-striped-color);
+    --#{variables.$prefix}table-bg-type: var(--#{variables.$prefix}table-striped-bg);
   }
 }
 
 // For columns
 .table-striped-columns {
-  > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
-    --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
-    --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
+  > :not(caption) > tr > :nth-child(#{variables.$table-striped-columns-order}) {
+    --#{variables.$prefix}table-color-type: var(--#{variables.$prefix}table-striped-color);
+    --#{variables.$prefix}table-bg-type: var(--#{variables.$prefix}table-striped-bg);
   }
 }
 
@@ -129,8 +134,8 @@
 // The `.table-active` class can be added to highlight rows or cells
 
 .table-active {
-  --#{$prefix}table-color-state: var(--#{$prefix}table-active-color);
-  --#{$prefix}table-bg-state: var(--#{$prefix}table-active-bg);
+  --#{variables.$prefix}table-color-state: var(--#{variables.$prefix}table-active-color);
+  --#{variables.$prefix}table-bg-state: var(--#{variables.$prefix}table-active-bg);
 }
 
 // Hover effect
@@ -139,8 +144,8 @@
 
 .table-hover {
   > tbody > tr:hover > * {
-    --#{$prefix}table-color-state: var(--#{$prefix}table-hover-color);
-    --#{$prefix}table-bg-state: var(--#{$prefix}table-hover-bg);
+    --#{variables.$prefix}table-color-state: var(--#{variables.$prefix}table-hover-color);
+    --#{variables.$prefix}table-bg-state: var(--#{variables.$prefix}table-hover-bg);
   }
 }
 
@@ -150,8 +155,8 @@
 // Table variants set the table cell backgrounds, border colors
 // and the colors of the striped, hovered & active tables
 
-@each $color, $value in $table-variants {
-  @include table-variant($color, $value);
+@each $color, $value in variables.$table-variants {
+  @include table-variants.table-variant($color, $value);
 }
 
 // Responsive tables
@@ -159,10 +164,10 @@
 // Generate series of `.table-responsive-*` classes for configuring the screen
 // size of where your table will overflow.
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+  $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
 
-  @include media-breakpoint-down($breakpoint) {
+  @include breakpoints.media-breakpoint-down($breakpoint) {
     .table-responsive#{$infix} {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;

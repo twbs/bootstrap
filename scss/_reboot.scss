@@ -1,3 +1,7 @@
+@use "mixins/border-radius";
+@use "variables";
+@use "vendor/rfs";
+
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
 
@@ -26,11 +30,11 @@
 // null by default, thus nothing is generated.
 
 :root {
-  @if $font-size-root != null {
-    @include font-size(var(--#{$prefix}root-font-size));
+  @if variables.$font-size-root != null {
+    @include rfs.font-size(var(--#{variables.$prefix}root-font-size));
   }
 
-  @if $enable-smooth-scroll {
+  @if variables.$enable-smooth-scroll {
     @media (prefers-reduced-motion: no-preference) {
       scroll-behavior: smooth;
     }
@@ -48,15 +52,15 @@
 // scss-docs-start reboot-body-rules
 body {
   margin: 0; // 1
-  font-family: var(--#{$prefix}body-font-family);
-  @include font-size(var(--#{$prefix}body-font-size));
-  font-weight: var(--#{$prefix}body-font-weight);
-  line-height: var(--#{$prefix}body-line-height);
-  color: var(--#{$prefix}body-color);
-  text-align: var(--#{$prefix}body-text-align);
-  background-color: var(--#{$prefix}body-bg); // 2
+  font-family: var(--#{variables.$prefix}body-font-family);
+  @include rfs.font-size(var(--#{variables.$prefix}body-font-size));
+  font-weight: var(--#{variables.$prefix}body-font-weight);
+  line-height: var(--#{variables.$prefix}body-line-height);
+  color: var(--#{variables.$prefix}body-color);
+  text-align: var(--#{variables.$prefix}body-text-align);
+  background-color: var(--#{variables.$prefix}body-bg); // 2
   -webkit-text-size-adjust: 100%; // 3
-  -webkit-tap-highlight-color: rgba($black, 0); // 4
+  -webkit-tap-highlight-color: rgba(variables.$black, 0); // 4
 }
 // scss-docs-end reboot-body-rules
 
@@ -66,11 +70,11 @@ body {
 // 1. Reset Firefox's gray color
 
 hr {
-  margin: $hr-margin-y 0;
-  color: $hr-color; // 1
+  margin: variables.$hr-margin-y 0;
+  color: variables.$hr-color; // 1
   border: 0;
-  border-top: $hr-border-width solid $hr-border-color;
-  opacity: $hr-opacity;
+  border-top: variables.$hr-border-width solid variables.$hr-border-color;
+  opacity: variables.$hr-opacity;
 }
 
 
@@ -82,42 +86,42 @@ hr {
 
 %heading {
   margin-top: 0; // 1
-  margin-bottom: $headings-margin-bottom;
-  font-family: $headings-font-family;
-  font-style: $headings-font-style;
-  font-weight: $headings-font-weight;
-  line-height: $headings-line-height;
-  color: var(--#{$prefix}heading-color);
+  margin-bottom: variables.$headings-margin-bottom;
+  font-family: variables.$headings-font-family;
+  font-style: variables.$headings-font-style;
+  font-weight: variables.$headings-font-weight;
+  line-height: variables.$headings-line-height;
+  color: var(--#{variables.$prefix}heading-color);
 }
 
 h1 {
   @extend %heading;
-  @include font-size($h1-font-size);
+  @include rfs.font-size(variables.$h1-font-size);
 }
 
 h2 {
   @extend %heading;
-  @include font-size($h2-font-size);
+  @include rfs.font-size(variables.$h2-font-size);
 }
 
 h3 {
   @extend %heading;
-  @include font-size($h3-font-size);
+  @include rfs.font-size(variables.$h3-font-size);
 }
 
 h4 {
   @extend %heading;
-  @include font-size($h4-font-size);
+  @include rfs.font-size(variables.$h4-font-size);
 }
 
 h5 {
   @extend %heading;
-  @include font-size($h5-font-size);
+  @include rfs.font-size(variables.$h5-font-size);
 }
 
 h6 {
   @extend %heading;
-  @include font-size($h6-font-size);
+  @include rfs.font-size(variables.$h6-font-size);
 }
 
 
@@ -128,7 +132,7 @@ h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: $paragraph-margin-bottom;
+  margin-bottom: variables.$paragraph-margin-bottom;
 }
 
 
@@ -176,7 +180,7 @@ ul ol {
 }
 
 dt {
-  font-weight: $dt-font-weight;
+  font-weight: variables.$dt-font-weight;
 }
 
 // 1. Undo browser default
@@ -200,7 +204,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: $font-weight-bolder;
+  font-weight: variables.$font-weight-bolder;
 }
 
 
@@ -209,16 +213,16 @@ strong {
 // Add the correct font size in all browsers
 
 small {
-  @include font-size($small-font-size);
+  @include rfs.font-size(variables.$small-font-size);
 }
 
 
 // Mark
 
 mark {
-  padding: $mark-padding;
-  color: var(--#{$prefix}highlight-color);
-  background-color: var(--#{$prefix}highlight-bg);
+  padding: variables.$mark-padding;
+  color: var(--#{variables.$prefix}highlight-color);
+  background-color: var(--#{variables.$prefix}highlight-bg);
 }
 
 
@@ -230,7 +234,7 @@ mark {
 sub,
 sup {
   position: relative;
-  @include font-size($sub-sup-font-size);
+  @include rfs.font-size(variables.$sub-sup-font-size);
   line-height: 0;
   vertical-align: baseline;
 }
@@ -242,12 +246,12 @@ sup { top: -.5em; }
 // Links
 
 a {
-  color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
-  text-decoration: $link-decoration;
+  color: rgba(var(--#{variables.$prefix}link-color-rgb), var(--#{variables.$prefix}link-opacity, 1));
+  text-decoration: variables.$link-decoration;
 
   &:hover {
-    --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
-    text-decoration: $link-hover-decoration;
+    --#{variables.$prefix}link-color-rgb: var(--#{variables.$prefix}link-hover-color-rgb);
+    text-decoration: variables.$link-hover-decoration;
   }
 }
 
@@ -271,8 +275,8 @@ pre,
 code,
 kbd,
 samp {
-  font-family: $font-family-code;
-  @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
+  font-family: variables.$font-family-code;
+  @include rfs.font-size(1em); // Correct the odd `em` font sizing in all browsers.
 }
 
 // 1. Remove browser default top margin
@@ -284,20 +288,20 @@ pre {
   margin-top: 0; // 1
   margin-bottom: 1rem; // 2
   overflow: auto; // 3
-  @include font-size($code-font-size);
-  color: $pre-color;
+  @include rfs.font-size(variables.$code-font-size);
+  color: variables.$pre-color;
 
   // Account for some code outputs that place code tags in pre tags
   code {
-    @include font-size(inherit);
+    @include rfs.font-size(inherit);
     color: inherit;
     word-break: normal;
   }
 }
 
 code {
-  @include font-size($code-font-size);
-  color: var(--#{$prefix}code-color);
+  @include rfs.font-size(variables.$code-font-size);
+  color: var(--#{variables.$prefix}code-color);
   word-wrap: break-word;
 
   // Streamline the style when inside anchors to avoid broken underline and more
@@ -307,16 +311,16 @@ code {
 }
 
 kbd {
-  padding: $kbd-padding-y $kbd-padding-x;
-  @include font-size($kbd-font-size);
-  color: $kbd-color;
-  background-color: $kbd-bg;
-  @include border-radius($border-radius-sm);
+  padding: variables.$kbd-padding-y variables.$kbd-padding-x;
+  @include rfs.font-size(variables.$kbd-font-size);
+  color: variables.$kbd-color;
+  background-color: variables.$kbd-bg;
+  @include border-radius.border-radius(variables.$border-radius-sm);
 
   kbd {
     padding: 0;
-    @include font-size(1em);
-    font-weight: $nested-kbd-font-weight;
+    @include rfs.font-size(1em);
+    font-weight: variables.$nested-kbd-font-weight;
   }
 }
 
@@ -348,9 +352,9 @@ table {
 }
 
 caption {
-  padding-top: $table-cell-padding-y;
-  padding-bottom: $table-cell-padding-y;
-  color: $table-caption-color;
+  padding-top: variables.$table-cell-padding-y;
+  padding-bottom: variables.$table-cell-padding-y;
+  color: variables.$table-caption-color;
   text-align: left;
 }
 
@@ -359,7 +363,7 @@ caption {
 // 3. Fix alignment for Safari
 
 th {
-  font-weight: $table-th-font-weight; // 1
+  font-weight: variables.$table-th-font-weight; // 1
   text-align: inherit; // 2
   text-align: -webkit-match-parent; // 3
 }
@@ -410,7 +414,7 @@ optgroup,
 textarea {
   margin: 0; // 1
   font-family: inherit;
-  @include font-size(inherit);
+  @include rfs.font-size(inherit);
   line-height: inherit;
 }
 
@@ -455,7 +459,7 @@ button,
 [type="submit"] {
   -webkit-appearance: button; // 2
 
-  @if $enable-button-pointers {
+  @if variables.$enable-button-pointers {
     &:not(:disabled) {
       cursor: pointer; // 3
     }
@@ -498,10 +502,10 @@ legend {
   float: left; // 1
   width: 100%;
   padding: 0;
-  margin-bottom: $legend-margin-bottom;
-  font-weight: $legend-font-weight;
+  margin-bottom: variables.$legend-margin-bottom;
+  font-weight: variables.$legend-font-weight;
   line-height: inherit;
-  @include font-size($legend-font-size);
+  @include rfs.font-size(variables.$legend-font-size);
 
   + * {
     clear: left; // 2

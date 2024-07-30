@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "../functions";
+@use "../variables";
+@use "../vendor/rfs";
+
 // Button variants
 //
 // Easily pump out default styles, as well as :hover, :focus, :active,
@@ -7,64 +12,64 @@
 @mixin button-variant(
   $background,
   $border,
-  $color: color-contrast($background),
-  $hover-background: if($color == $color-contrast-light, shade-color($background, $btn-hover-bg-shade-amount), tint-color($background, $btn-hover-bg-tint-amount)),
-  $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount)),
-  $hover-color: color-contrast($hover-background),
-  $active-background: if($color == $color-contrast-light, shade-color($background, $btn-active-bg-shade-amount), tint-color($background, $btn-active-bg-tint-amount)),
-  $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount)),
-  $active-color: color-contrast($active-background),
+  $color: functions.color-contrast($background),
+  $hover-background: if($color == variables.$color-contrast-light, functions.shade-color($background, variables.$btn-hover-bg-shade-amount), functions.tint-color($background, variables.$btn-hover-bg-tint-amount)),
+  $hover-border: if($color == variables.$color-contrast-light, functions.shade-color($border, variables.$btn-hover-border-shade-amount), functions.tint-color($border, variables.$btn-hover-border-tint-amount)),
+  $hover-color: functions.color-contrast($hover-background),
+  $active-background: if($color == variables.$color-contrast-light, functions.shade-color($background, variables.$btn-active-bg-shade-amount), functions.tint-color($background, variables.$btn-active-bg-tint-amount)),
+  $active-border: if($color == variables.$color-contrast-light, functions.shade-color($border, variables.$btn-active-border-shade-amount), functions.tint-color($border, variables.$btn-active-border-tint-amount)),
+  $active-color: functions.color-contrast($active-background),
   $disabled-background: $background,
   $disabled-border: $border,
-  $disabled-color: color-contrast($disabled-background)
+  $disabled-color: functions.color-contrast($disabled-background)
 ) {
-  --#{$prefix}btn-color: #{$color};
-  --#{$prefix}btn-bg: #{$background};
-  --#{$prefix}btn-border-color: #{$border};
-  --#{$prefix}btn-hover-color: #{$hover-color};
-  --#{$prefix}btn-hover-bg: #{$hover-background};
-  --#{$prefix}btn-hover-border-color: #{$hover-border};
-  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(mix($color, $border, 15%))};
-  --#{$prefix}btn-active-color: #{$active-color};
-  --#{$prefix}btn-active-bg: #{$active-background};
-  --#{$prefix}btn-active-border-color: #{$active-border};
-  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
-  --#{$prefix}btn-disabled-color: #{$disabled-color};
-  --#{$prefix}btn-disabled-bg: #{$disabled-background};
-  --#{$prefix}btn-disabled-border-color: #{$disabled-border};
+  --#{variables.$prefix}btn-color: #{$color};
+  --#{variables.$prefix}btn-bg: #{$background};
+  --#{variables.$prefix}btn-border-color: #{$border};
+  --#{variables.$prefix}btn-hover-color: #{$hover-color};
+  --#{variables.$prefix}btn-hover-bg: #{$hover-background};
+  --#{variables.$prefix}btn-hover-border-color: #{$hover-border};
+  --#{variables.$prefix}btn-focus-shadow-rgb: #{functions.to-rgb(color.mix($color, $border, 15%))};
+  --#{variables.$prefix}btn-active-color: #{$active-color};
+  --#{variables.$prefix}btn-active-bg: #{$active-background};
+  --#{variables.$prefix}btn-active-border-color: #{$active-border};
+  --#{variables.$prefix}btn-active-shadow: #{variables.$btn-active-box-shadow};
+  --#{variables.$prefix}btn-disabled-color: #{$disabled-color};
+  --#{variables.$prefix}btn-disabled-bg: #{$disabled-background};
+  --#{variables.$prefix}btn-disabled-border-color: #{$disabled-border};
 }
 // scss-docs-end btn-variant-mixin
 
 // scss-docs-start btn-outline-variant-mixin
 @mixin button-outline-variant(
   $color,
-  $color-hover: color-contrast($color),
+  $color-hover: functions.color-contrast($color),
   $active-background: $color,
   $active-border: $color,
-  $active-color: color-contrast($active-background)
+  $active-color: functions.color-contrast($active-background)
 ) {
-  --#{$prefix}btn-color: #{$color};
-  --#{$prefix}btn-border-color: #{$color};
-  --#{$prefix}btn-hover-color: #{$color-hover};
-  --#{$prefix}btn-hover-bg: #{$active-background};
-  --#{$prefix}btn-hover-border-color: #{$active-border};
-  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
-  --#{$prefix}btn-active-color: #{$active-color};
-  --#{$prefix}btn-active-bg: #{$active-background};
-  --#{$prefix}btn-active-border-color: #{$active-border};
-  --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
-  --#{$prefix}btn-disabled-color: #{$color};
-  --#{$prefix}btn-disabled-bg: transparent;
-  --#{$prefix}btn-disabled-border-color: #{$color};
-  --#{$prefix}gradient: none;
+  --#{variables.$prefix}btn-color: #{$color};
+  --#{variables.$prefix}btn-border-color: #{$color};
+  --#{variables.$prefix}btn-hover-color: #{$color-hover};
+  --#{variables.$prefix}btn-hover-bg: #{$active-background};
+  --#{variables.$prefix}btn-hover-border-color: #{$active-border};
+  --#{variables.$prefix}btn-focus-shadow-rgb: #{functions.to-rgb($color)};
+  --#{variables.$prefix}btn-active-color: #{$active-color};
+  --#{variables.$prefix}btn-active-bg: #{$active-background};
+  --#{variables.$prefix}btn-active-border-color: #{$active-border};
+  --#{variables.$prefix}btn-active-shadow: #{variables.$btn-active-box-shadow};
+  --#{variables.$prefix}btn-disabled-color: #{$color};
+  --#{variables.$prefix}btn-disabled-bg: transparent;
+  --#{variables.$prefix}btn-disabled-border-color: #{$color};
+  --#{variables.$prefix}gradient: none;
 }
 // scss-docs-end btn-outline-variant-mixin
 
 // scss-docs-start btn-size-mixin
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  --#{$prefix}btn-padding-y: #{$padding-y};
-  --#{$prefix}btn-padding-x: #{$padding-x};
-  @include rfs($font-size, --#{$prefix}btn-font-size);
-  --#{$prefix}btn-border-radius: #{$border-radius};
+  --#{variables.$prefix}btn-padding-y: #{$padding-y};
+  --#{variables.$prefix}btn-padding-x: #{$padding-x};
+  @include rfs.rfs($font-size, --#{variables.$prefix}btn-font-size);
+  --#{variables.$prefix}btn-border-radius: #{$border-radius};
 }
 // scss-docs-end btn-size-mixin

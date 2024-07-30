@@ -1,3 +1,6 @@
+@use "../mixins/forms";
+@use "../variables";
+
 // Form validation
 //
 // Provide feedback to users when form field values are valid or invalid. Works
@@ -6,7 +9,7 @@
 // server-side validation.
 
 // scss-docs-start form-validation-states-loop
-@each $state, $data in $form-validation-states {
-  @include form-validation-state($state, $data...);
+@each $state, $data in variables.$form-validation-states {
+  @include forms.form-validation-state($state, $data...);
 }
 // scss-docs-end form-validation-states-loop

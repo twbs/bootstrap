@@ -1,9 +1,11 @@
+@use "../variables";
+
 @mixin reset-text {
-  font-family: $font-family-base;
+  font-family: variables.$font-family-base;
   // We deliberately do NOT reset font-size or overflow-wrap / word-wrap.
   font-style: normal;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-base;
+  font-weight: variables.$font-weight-normal;
+  line-height: variables.$line-height-base;
   text-align: left; // Fallback for where `start` is not supported
   text-align: start;
   text-decoration: none;

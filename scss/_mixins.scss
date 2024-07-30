@@ -1,42 +1,42 @@
-// Toggles
-//
-// Used in conjunction with global variables to enable certain theme features.
+// // Toggles
+// //
+// // Used in conjunction with global variables to enable certain theme features.
 
-// Vendor
-@import "vendor/rfs";
+// // Vendor
+// @use "vendor/rfs";
 
-// Deprecate
-@import "mixins/deprecate";
+// // Deprecate
+// @use "mixins/deprecate";
 
-// Helpers
-@import "mixins/breakpoints";
-@import "mixins/color-mode";
-@import "mixins/color-scheme";
-@import "mixins/image";
-@import "mixins/resize";
-@import "mixins/visually-hidden";
-@import "mixins/reset-text";
-@import "mixins/text-truncate";
+// // Helpers
+// @use "mixins/breakpoints";
+// @use "mixins/color-mode";
+// @use "mixins/color-scheme";
+// @use "mixins/image";
+// @use "mixins/resize";
+// @use "mixins/visually-hidden";
+// @use "mixins/reset-text";
+// @use "mixins/text-truncate";
 
-// Utilities
-@import "mixins/utilities";
+// // Utilities
+// @use "mixins/utilities";
 
-// Components
-@import "mixins/backdrop";
-@import "mixins/buttons";
-@import "mixins/caret";
-@import "mixins/pagination";
-@import "mixins/lists";
-@import "mixins/forms";
-@import "mixins/table-variants";
+// // Components
+// @use "mixins/backdrop";
+// @use "mixins/buttons";
+// @use "mixins/caret";
+// @use "mixins/pagination";
+// @use "mixins/lists";
+// @use "mixins/forms";
+// @use "mixins/table-variants";
 
-// Skins
-@import "mixins/border-radius";
-@import "mixins/box-shadow";
-@import "mixins/gradients";
-@import "mixins/transition";
+// // Skins
+// @use "mixins/border-radius";
+// @use "mixins/box-shadow";
+// @use "mixins/gradients";
+// @use "mixins/transition";
 
-// Layout
-@import "mixins/clearfix";
-@import "mixins/container";
-@import "mixins/grid";
+// // Layout
+// @use "mixins/clearfix";
+// @use "mixins/container";
+// @use "mixins/grid";

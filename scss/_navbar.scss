@@ -1,3 +1,15 @@
+@use "sass:map";
+@use "functions";
+@use "mixins/border-radius";
+@use "mixins/box-shadow";
+@use "mixins/breakpoints";
+@use "mixins/color-mode";
+@use "mixins/deprecate";
+@use "mixins/gradients";
+@use "mixins/transition";
+@use "variables";
+@use "vendor/rfs";
+
 // Navbar
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
@@ -5,26 +17,26 @@
 
 .navbar {
   // scss-docs-start navbar-css-vars
-  --#{$prefix}navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
-  --#{$prefix}navbar-padding-y: #{$navbar-padding-y};
-  --#{$prefix}navbar-color: #{$navbar-light-color};
-  --#{$prefix}navbar-hover-color: #{$navbar-light-hover-color};
-  --#{$prefix}navbar-disabled-color: #{$navbar-light-disabled-color};
-  --#{$prefix}navbar-active-color: #{$navbar-light-active-color};
-  --#{$prefix}navbar-brand-padding-y: #{$navbar-brand-padding-y};
-  --#{$prefix}navbar-brand-margin-end: #{$navbar-brand-margin-end};
-  --#{$prefix}navbar-brand-font-size: #{$navbar-brand-font-size};
-  --#{$prefix}navbar-brand-color: #{$navbar-light-brand-color};
-  --#{$prefix}navbar-brand-hover-color: #{$navbar-light-brand-hover-color};
-  --#{$prefix}navbar-nav-link-padding-x: #{$navbar-nav-link-padding-x};
-  --#{$prefix}navbar-toggler-padding-y: #{$navbar-toggler-padding-y};
-  --#{$prefix}navbar-toggler-padding-x: #{$navbar-toggler-padding-x};
-  --#{$prefix}navbar-toggler-font-size: #{$navbar-toggler-font-size};
-  --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-light-toggler-icon-bg)};
-  --#{$prefix}navbar-toggler-border-color: #{$navbar-light-toggler-border-color};
-  --#{$prefix}navbar-toggler-border-radius: #{$navbar-toggler-border-radius};
-  --#{$prefix}navbar-toggler-focus-width: #{$navbar-toggler-focus-width};
-  --#{$prefix}navbar-toggler-transition: #{$navbar-toggler-transition};
+  --#{variables.$prefix}navbar-padding-x: #{if(variables.$navbar-padding-x == null, 0, variables.$navbar-padding-x)};
+  --#{variables.$prefix}navbar-padding-y: #{variables.$navbar-padding-y};
+  --#{variables.$prefix}navbar-color: #{variables.$navbar-light-color};
+  --#{variables.$prefix}navbar-hover-color: #{variables.$navbar-light-hover-color};
+  --#{variables.$prefix}navbar-disabled-color: #{variables.$navbar-light-disabled-color};
+  --#{variables.$prefix}navbar-active-color: #{variables.$navbar-light-active-color};
+  --#{variables.$prefix}navbar-brand-padding-y: #{variables.$navbar-brand-padding-y};
+  --#{variables.$prefix}navbar-brand-margin-end: #{variables.$navbar-brand-margin-end};
+  --#{variables.$prefix}navbar-brand-font-size: #{variables.$navbar-brand-font-size};
+  --#{variables.$prefix}navbar-brand-color: #{variables.$navbar-light-brand-color};
+  --#{variables.$prefix}navbar-brand-hover-color: #{variables.$navbar-light-brand-hover-color};
+  --#{variables.$prefix}navbar-nav-link-padding-x: #{variables.$navbar-nav-link-padding-x};
+  --#{variables.$prefix}navbar-toggler-padding-y: #{variables.$navbar-toggler-padding-y};
+  --#{variables.$prefix}navbar-toggler-padding-x: #{variables.$navbar-toggler-padding-x};
+  --#{variables.$prefix}navbar-toggler-font-size: #{variables.$navbar-toggler-font-size};
+  --#{variables.$prefix}navbar-toggler-icon-bg: #{functions.escape-svg(variables.$navbar-light-toggler-icon-bg)};
+  --#{variables.$prefix}navbar-toggler-border-color: #{variables.$navbar-light-toggler-border-color};
+  --#{variables.$prefix}navbar-toggler-border-radius: #{variables.$navbar-toggler-border-radius};
+  --#{variables.$prefix}navbar-toggler-focus-width: #{variables.$navbar-toggler-focus-width};
+  --#{variables.$prefix}navbar-toggler-transition: #{variables.$navbar-toggler-transition};
   // scss-docs-end navbar-css-vars
 
   position: relative;
@@ -32,8 +44,8 @@
   flex-wrap: wrap; // allow us to do the line break for collapsing content
   align-items: center;
   justify-content: space-between; // space out brand from logo
-  padding: var(--#{$prefix}navbar-padding-y) var(--#{$prefix}navbar-padding-x);
-  @include gradient-bg();
+  padding: var(--#{variables.$prefix}navbar-padding-y) var(--#{variables.$prefix}navbar-padding-x);
+  @include gradients.gradient-bg();
 
   // Because flex properties aren't inherited, we need to redeclare these first
   // few properties so that content nested within behave properly.
@@ -50,8 +62,8 @@
     @extend %container-flex-properties;
   }
 
-  @each $breakpoint, $container-max-width in $container-max-widths {
-    > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+  @each $breakpoint, $container-max-width in variables.$container-max-widths {
+    > .container#{breakpoints.breakpoint-infix($breakpoint, variables.$container-max-widths)} {
       @extend %container-flex-properties;
     }
   }
@@ -63,18 +75,18 @@
 // Used for brand, project, or site names.
 
 .navbar-brand {
-  padding-top: var(--#{$prefix}navbar-brand-padding-y);
-  padding-bottom: var(--#{$prefix}navbar-brand-padding-y);
-  margin-right: var(--#{$prefix}navbar-brand-margin-end);
-  @include font-size(var(--#{$prefix}navbar-brand-font-size));
-  color: var(--#{$prefix}navbar-brand-color);
-  text-decoration: if($link-decoration == none, null, none);
+  padding-top: var(--#{variables.$prefix}navbar-brand-padding-y);
+  padding-bottom: var(--#{variables.$prefix}navbar-brand-padding-y);
+  margin-right: var(--#{variables.$prefix}navbar-brand-margin-end);
+  @include rfs.font-size(var(--#{variables.$prefix}navbar-brand-font-size));
+  color: var(--#{variables.$prefix}navbar-brand-color);
+  text-decoration: if(variables.$link-decoration == none, null, none);
   white-space: nowrap;
 
   &:hover,
   &:focus {
-    color: var(--#{$prefix}navbar-brand-hover-color);
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    color: var(--#{variables.$prefix}navbar-brand-hover-color);
+    text-decoration: if(variables.$link-hover-decoration == underline, none, null);
   }
 }
 
@@ -85,13 +97,13 @@
 
 .navbar-nav {
   // scss-docs-start navbar-nav-css-vars
-  --#{$prefix}nav-link-padding-x: 0;
-  --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
-  @include rfs($nav-link-font-size, --#{$prefix}nav-link-font-size);
-  --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight};
-  --#{$prefix}nav-link-color: var(--#{$prefix}navbar-color);
-  --#{$prefix}nav-link-hover-color: var(--#{$prefix}navbar-hover-color);
-  --#{$prefix}nav-link-disabled-color: var(--#{$prefix}navbar-disabled-color);
+  --#{variables.$prefix}nav-link-padding-x: 0;
+  --#{variables.$prefix}nav-link-padding-y: #{variables.$nav-link-padding-y};
+  @include rfs.rfs(variables.$nav-link-font-size, --#{variables.$prefix}nav-link-font-size);
+  --#{variables.$prefix}nav-link-font-weight: #{variables.$nav-link-font-weight};
+  --#{variables.$prefix}nav-link-color: var(--#{variables.$prefix}navbar-color);
+  --#{variables.$prefix}nav-link-hover-color: var(--#{variables.$prefix}navbar-hover-color);
+  --#{variables.$prefix}nav-link-disabled-color: var(--#{variables.$prefix}navbar-disabled-color);
   // scss-docs-end navbar-nav-css-vars
 
   display: flex;
@@ -103,7 +115,7 @@
   .nav-link {
     &.active,
     &.show {
-      color: var(--#{$prefix}navbar-active-color);
+      color: var(--#{variables.$prefix}navbar-active-color);
     }
   }
 
@@ -118,14 +130,14 @@
 //
 
 .navbar-text {
-  padding-top: $nav-link-padding-y;
-  padding-bottom: $nav-link-padding-y;
-  color: var(--#{$prefix}navbar-color);
+  padding-top: variables.$nav-link-padding-y;
+  padding-bottom: variables.$nav-link-padding-y;
+  color: var(--#{variables.$prefix}navbar-color);
 
   a,
   a:hover,
   a:focus  {
-    color: var(--#{$prefix}navbar-active-color);
+    color: var(--#{variables.$prefix}navbar-active-color);
   }
 }
 
@@ -148,14 +160,14 @@
 
 // Button for toggling the navbar when in its collapsed state
 .navbar-toggler {
-  padding: var(--#{$prefix}navbar-toggler-padding-y) var(--#{$prefix}navbar-toggler-padding-x);
-  @include font-size(var(--#{$prefix}navbar-toggler-font-size));
+  padding: var(--#{variables.$prefix}navbar-toggler-padding-y) var(--#{variables.$prefix}navbar-toggler-padding-x);
+  @include rfs.font-size(var(--#{variables.$prefix}navbar-toggler-font-size));
   line-height: 1;
-  color: var(--#{$prefix}navbar-color);
+  color: var(--#{variables.$prefix}navbar-color);
   background-color: transparent; // remove default button style
-  border: var(--#{$prefix}border-width) solid var(--#{$prefix}navbar-toggler-border-color); // remove default button style
-  @include border-radius(var(--#{$prefix}navbar-toggler-border-radius));
-  @include transition(var(--#{$prefix}navbar-toggler-transition));
+  border: var(--#{variables.$prefix}border-width) solid var(--#{variables.$prefix}navbar-toggler-border-color); // remove default button style
+  @include border-radius.border-radius(var(--#{variables.$prefix}navbar-toggler-border-radius));
+  @include transition.transition(var(--#{variables.$prefix}navbar-toggler-transition));
 
   &:hover {
     text-decoration: none;
@@ -164,7 +176,7 @@
   &:focus {
     text-decoration: none;
     outline: 0;
-    box-shadow: 0 0 0 var(--#{$prefix}navbar-toggler-focus-width);
+    box-shadow: 0 0 0 var(--#{variables.$prefix}navbar-toggler-focus-width);
   }
 }
 
@@ -175,14 +187,14 @@
   width: 1.5em;
   height: 1.5em;
   vertical-align: middle;
-  background-image: var(--#{$prefix}navbar-toggler-icon-bg);
+  background-image: var(--#{variables.$prefix}navbar-toggler-icon-bg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
 }
 
 .navbar-nav-scroll {
-  max-height: var(--#{$prefix}scroll-height, 75vh);
+  max-height: var(--#{variables.$prefix}scroll-height, 75vh);
   overflow-y: auto;
 }
 
@@ -190,13 +202,13 @@
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
 .navbar-expand {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
+  @each $breakpoint in map.keys(variables.$grid-breakpoints) {
+    $next: breakpoints.breakpoint-next($breakpoint, variables.$grid-breakpoints);
+    $infix: breakpoints.breakpoint-infix($next, variables.$grid-breakpoints);
 
     // stylelint-disable-next-line scss/selector-no-union-class-name
     &#{$infix} {
-      @include media-breakpoint-up($next) {
+      @include breakpoints.media-breakpoint-up($next) {
         flex-wrap: nowrap;
         justify-content: flex-start;
 
@@ -208,8 +220,8 @@
           }
 
           .nav-link {
-            padding-right: var(--#{$prefix}navbar-nav-link-padding-x);
-            padding-left: var(--#{$prefix}navbar-nav-link-padding-x);
+            padding-right: var(--#{variables.$prefix}navbar-nav-link-padding-x);
+            padding-left: var(--#{variables.$prefix}navbar-nav-link-padding-x);
           }
         }
 
@@ -237,8 +249,8 @@
           background-color: transparent !important;
           border: 0 !important;
           transform: none !important;
-          @include box-shadow(none);
-          @include transition(none);
+          @include box-shadow.box-shadow(none);
+          @include transition.transition(none);
           // stylelint-enable declaration-no-important
 
           .offcanvas-header {
@@ -263,27 +275,27 @@
 // Styles for switching between navbars with light or dark background.
 
 .navbar-light {
-  @include deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
+  @include deprecate.deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
 }
 
 .navbar-dark,
 .navbar[data-bs-theme="dark"] {
   // scss-docs-start navbar-dark-css-vars
-  --#{$prefix}navbar-color: #{$navbar-dark-color};
-  --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};
-  --#{$prefix}navbar-disabled-color: #{$navbar-dark-disabled-color};
-  --#{$prefix}navbar-active-color: #{$navbar-dark-active-color};
-  --#{$prefix}navbar-brand-color: #{$navbar-dark-brand-color};
-  --#{$prefix}navbar-brand-hover-color: #{$navbar-dark-brand-hover-color};
-  --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
-  --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
+  --#{variables.$prefix}navbar-color: #{variables.$navbar-dark-color};
+  --#{variables.$prefix}navbar-hover-color: #{variables.$navbar-dark-hover-color};
+  --#{variables.$prefix}navbar-disabled-color: #{variables.$navbar-dark-disabled-color};
+  --#{variables.$prefix}navbar-active-color: #{variables.$navbar-dark-active-color};
+  --#{variables.$prefix}navbar-brand-color: #{variables.$navbar-dark-brand-color};
+  --#{variables.$prefix}navbar-brand-hover-color: #{variables.$navbar-dark-brand-hover-color};
+  --#{variables.$prefix}navbar-toggler-border-color: #{variables.$navbar-dark-toggler-border-color};
+  --#{variables.$prefix}navbar-toggler-icon-bg: #{functions.escape-svg(variables.$navbar-dark-toggler-icon-bg)};
   // scss-docs-end navbar-dark-css-vars
 }
 
-@if $enable-dark-mode {
-  @include color-mode(dark) {
+@if variables.$enable-dark-mode {
+  @include color-mode.color-mode(dark) {
     .navbar-toggler-icon {
-      --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
+      --#{variables.$prefix}navbar-toggler-icon-bg: #{functions.escape-svg(variables.$navbar-dark-toggler-icon-bg)};
     }
   }
 }

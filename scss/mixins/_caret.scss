@@ -1,26 +1,28 @@
+@use "../variables";
+
 // scss-docs-start caret-mixins
-@mixin caret-down($width: $caret-width) {
+@mixin caret-down($width: variables.$caret-width) {
   border-top: $width solid;
   border-right: $width solid transparent;
   border-bottom: 0;
   border-left: $width solid transparent;
 }
 
-@mixin caret-up($width: $caret-width) {
+@mixin caret-up($width: variables.$caret-width) {
   border-top: 0;
   border-right: $width solid transparent;
   border-bottom: $width solid;
   border-left: $width solid transparent;
 }
 
-@mixin caret-end($width: $caret-width) {
+@mixin caret-end($width: variables.$caret-width) {
   border-top: $width solid transparent;
   border-right: 0;
   border-bottom: $width solid transparent;
   border-left: $width solid;
 }
 
-@mixin caret-start($width: $caret-width) {
+@mixin caret-start($width: variables.$caret-width) {
   border-top: $width solid transparent;
   border-right: $width solid;
   border-bottom: $width solid transparent;
@@ -28,11 +30,11 @@
 
 @mixin caret(
   $direction: down,
-  $width: $caret-width,
-  $spacing: $caret-spacing,
-  $vertical-align: $caret-vertical-align
+  $width: variables.$caret-width,
+  $spacing: variables.$caret-spacing,
+  $vertical-align: variables.$caret-vertical-align
 ) {
-  @if $enable-caret {
+  @if variables.$enable-caret {
     &::after {
       display: inline-block;
       margin-left: $spacing;

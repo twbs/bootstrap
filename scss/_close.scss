@@ -1,3 +1,8 @@
+@use "functions";
+@use "mixins/border-radius";
+@use "mixins/color-mode";
+@use "variables";
+
 // Transparent background and border properties included for button version.
 // iOS requires the button element instead of an anchor tag.
 // If you want the anchor version, it requires `href="#"`.
@@ -5,57 +10,57 @@
 
 .btn-close {
   // scss-docs-start close-css-vars
-  --#{$prefix}btn-close-color: #{$btn-close-color};
-  --#{$prefix}btn-close-bg: #{ escape-svg($btn-close-bg) };
-  --#{$prefix}btn-close-opacity: #{$btn-close-opacity};
-  --#{$prefix}btn-close-hover-opacity: #{$btn-close-hover-opacity};
-  --#{$prefix}btn-close-focus-shadow: #{$btn-close-focus-shadow};
-  --#{$prefix}btn-close-focus-opacity: #{$btn-close-focus-opacity};
-  --#{$prefix}btn-close-disabled-opacity: #{$btn-close-disabled-opacity};
-  --#{$prefix}btn-close-white-filter: #{$btn-close-white-filter};
+  --#{variables.$prefix}btn-close-color: #{variables.$btn-close-color};
+  --#{variables.$prefix}btn-close-bg: #{ functions.escape-svg(variables.$btn-close-bg) };
+  --#{variables.$prefix}btn-close-opacity: #{variables.$btn-close-opacity};
+  --#{variables.$prefix}btn-close-hover-opacity: #{variables.$btn-close-hover-opacity};
+  --#{variables.$prefix}btn-close-focus-shadow: #{variables.$btn-close-focus-shadow};
+  --#{variables.$prefix}btn-close-focus-opacity: #{variables.$btn-close-focus-opacity};
+  --#{variables.$prefix}btn-close-disabled-opacity: #{variables.$btn-close-disabled-opacity};
+  --#{variables.$prefix}btn-close-white-filter: #{variables.$btn-close-white-filter};
   // scss-docs-end close-css-vars
 
   box-sizing: content-box;
-  width: $btn-close-width;
-  height: $btn-close-height;
-  padding: $btn-close-padding-y $btn-close-padding-x;
-  color: var(--#{$prefix}btn-close-color);
-  background: transparent var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat; // include transparent for button elements
+  width: variables.$btn-close-width;
+  height: variables.$btn-close-height;
+  padding: variables.$btn-close-padding-y variables.$btn-close-padding-x;
+  color: var(--#{variables.$prefix}btn-close-color);
+  background: transparent var(--#{variables.$prefix}btn-close-bg) center / variables.$btn-close-width auto no-repeat; // include transparent for button elements
   border: 0; // for button elements
-  @include border-radius();
-  opacity: var(--#{$prefix}btn-close-opacity);
+  @include border-radius.border-radius();
+  opacity: var(--#{variables.$prefix}btn-close-opacity);
 
   // Override <a>'s hover style
   &:hover {
-    color: var(--#{$prefix}btn-close-color);
+    color: var(--#{variables.$prefix}btn-close-color);
     text-decoration: none;
-    opacity: var(--#{$prefix}btn-close-hover-opacity);
+    opacity: var(--#{variables.$prefix}btn-close-hover-opacity);
   }
 
   &:focus {
     outline: 0;
-    box-shadow: var(--#{$prefix}btn-close-focus-shadow);
-    opacity: var(--#{$prefix}btn-close-focus-opacity);
+    box-shadow: var(--#{variables.$prefix}btn-close-focus-shadow);
+    opacity: var(--#{variables.$prefix}btn-close-focus-opacity);
   }
 
   &:disabled,
   &.disabled {
     pointer-events: none;
     user-select: none;
-    opacity: var(--#{$prefix}btn-close-disabled-opacity);
+    opacity: var(--#{variables.$prefix}btn-close-disabled-opacity);
   }
 }
 
 @mixin btn-close-white() {
-  filter: var(--#{$prefix}btn-close-white-filter);
+  filter: var(--#{variables.$prefix}btn-close-white-filter);
 }
 
 .btn-close-white {
   @include btn-close-white();
 }
 
-@if $enable-dark-mode {
-  @include color-mode(dark) {
+@if variables.$enable-dark-mode {
+  @include color-mode.color-mode(dark) {
     .btn-close {
       @include btn-close-white();
     }

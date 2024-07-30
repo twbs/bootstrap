@@ -1,3 +1,9 @@
+@use "sass:map";
+@use "setup/variables" as *;
+@use "setup/functions" as *;
+// @use "functions";
+// @use "variables";
+
 // Re-assigned maps
 //
 // Placed here so that others can override the default Sass maps and see automatic updates to utilities and more.
@@ -94,13 +100,13 @@ $theme-colors-border-subtle-dark: null !default;
 //
 // Extends the default `$theme-colors` maps to help create our utilities.
 
-// Come v6, we'll de-dupe these variables. Until then, for backward compatibility, we keep them to reassign.
+// Come v6, we'll de-dupe these  Until then, for backward compatibility, we keep them to reassign.
 // scss-docs-start utilities-colors
 $utilities-colors: $theme-colors-rgb !default;
 // scss-docs-end utilities-colors
 
 // scss-docs-start utilities-text-colors
-$utilities-text: map-merge(
+$utilities-text: map.merge(
   $utilities-colors,
   (
     "black": to-rgb($black),
@@ -108,7 +114,7 @@ $utilities-text: map-merge(
     "body": to-rgb($body-color)
   )
 ) !default;
-$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text") !default;
+$utilities-text-colors: map-loop($utilities-text, rgba-css-var, "$key", "text", "bs") !default;
 
 $utilities-text-emphasis-colors: (
   "primary-emphasis": var(--#{$prefix}primary-text-emphasis),
@@ -123,7 +129,7 @@ $utilities-text-emphasis-colors: (
 // scss-docs-end utilities-text-colors
 
 // scss-docs-start utilities-bg-colors
-$utilities-bg: map-merge(
+$utilities-bg: map.merge(
   $utilities-colors,
   (
     "black": to-rgb($black),
@@ -131,7 +137,7 @@ $utilities-bg: map-merge(
     "body": to-rgb($body-bg)
   )
 ) !default;
-$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
+$utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg", "bs") !default;
 
 $utilities-bg-subtle: (
   "primary-subtle": var(--#{$prefix}primary-bg-subtle),
@@ -146,14 +152,14 @@ $utilities-bg-subtle: (
 // scss-docs-end utilities-bg-colors
 
 // scss-docs-start utilities-border-colors
-$utilities-border: map-merge(
+$utilities-border: map.merge(
   $utilities-colors,
   (
     "black": to-rgb($black),
     "white": to-rgb($white)
   )
 ) !default;
-$utilities-border-colors: map-loop($utilities-border, rgba-css-var, "$key", "border") !default;
+$utilities-border-colors: map-loop($utilities-border, rgba-css-var, "$key", "border", "bs") !default;
 
 $utilities-border-subtle: (
   "primary-subtle": var(--#{$prefix}primary-border-subtle),
@@ -167,7 +173,7 @@ $utilities-border-subtle: (
 ) !default;
 // scss-docs-end utilities-border-colors
 
-$utilities-links-underline: map-loop($utilities-colors, rgba-css-var, "$key", "link-underline") !default;
+$utilities-links-underline: map-loop($utilities-colors, rgba-css-var, "$key", "link-underline", "bs") !default;
 
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 

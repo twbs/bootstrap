@@ -1,9 +1,16 @@
+@use "mixins/border-radius";
+@use "mixins/box-shadow";
+@use "mixins/gradients";
+@use "mixins/transition";
+@use "variables";
+@use "vendor/rfs";
+
 // Disable animation if transitions are disabled
 
 // scss-docs-start progress-keyframes
-@if $enable-transitions {
+@if variables.$enable-transitions {
   @keyframes progress-bar-stripes {
-    0% { background-position-x: $progress-height; }
+    0% { background-position-x: variables.$progress-height; }
   }
 }
 // scss-docs-end progress-keyframes
@@ -11,23 +18,23 @@
 .progress,
 .progress-stacked {
   // scss-docs-start progress-css-vars
-  --#{$prefix}progress-height: #{$progress-height};
-  @include rfs($progress-font-size, --#{$prefix}progress-font-size);
-  --#{$prefix}progress-bg: #{$progress-bg};
-  --#{$prefix}progress-border-radius: #{$progress-border-radius};
-  --#{$prefix}progress-box-shadow: #{$progress-box-shadow};
-  --#{$prefix}progress-bar-color: #{$progress-bar-color};
-  --#{$prefix}progress-bar-bg: #{$progress-bar-bg};
-  --#{$prefix}progress-bar-transition: #{$progress-bar-transition};
+  --#{variables.$prefix}progress-height: #{variables.$progress-height};
+  @include rfs.rfs(variables.$progress-font-size, --#{variables.$prefix}progress-font-size);
+  --#{variables.$prefix}progress-bg: #{variables.$progress-bg};
+  --#{variables.$prefix}progress-border-radius: #{variables.$progress-border-radius};
+  --#{variables.$prefix}progress-box-shadow: #{variables.$progress-box-shadow};
+  --#{variables.$prefix}progress-bar-color: #{variables.$progress-bar-color};
+  --#{variables.$prefix}progress-bar-bg: #{variables.$progress-bar-bg};
+  --#{variables.$prefix}progress-bar-transition: #{variables.$progress-bar-transition};
   // scss-docs-end progress-css-vars
 
   display: flex;
-  height: var(--#{$prefix}progress-height);
+  height: var(--#{variables.$prefix}progress-height);
   overflow: hidden; // force rounded corners by cropping it
-  @include font-size(var(--#{$prefix}progress-font-size));
-  background-color: var(--#{$prefix}progress-bg);
-  @include border-radius(var(--#{$prefix}progress-border-radius));
-  @include box-shadow(var(--#{$prefix}progress-box-shadow));
+  @include rfs.font-size(var(--#{variables.$prefix}progress-font-size));
+  background-color: var(--#{variables.$prefix}progress-bg);
+  @include border-radius.border-radius(var(--#{variables.$prefix}progress-border-radius));
+  @include box-shadow.box-shadow(var(--#{variables.$prefix}progress-box-shadow));
 }
 
 .progress-bar {
@@ -35,16 +42,16 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  color: var(--#{$prefix}progress-bar-color);
+  color: var(--#{variables.$prefix}progress-bar-color);
   text-align: center;
   white-space: nowrap;
-  background-color: var(--#{$prefix}progress-bar-bg);
-  @include transition(var(--#{$prefix}progress-bar-transition));
+  background-color: var(--#{variables.$prefix}progress-bar-bg);
+  @include transition.transition(var(--#{variables.$prefix}progress-bar-transition));
 }
 
 .progress-bar-striped {
-  @include gradient-striped();
-  background-size: var(--#{$prefix}progress-height) var(--#{$prefix}progress-height);
+  @include gradients.gradient-striped();
+  background-size: var(--#{variables.$prefix}progress-height) var(--#{variables.$prefix}progress-height);
 }
 
 .progress-stacked > .progress {
@@ -55,11 +62,11 @@
   width: 100%;
 }
 
-@if $enable-transitions {
+@if variables.$enable-transitions {
   .progress-bar-animated {
-    animation: $progress-bar-animation-timing progress-bar-stripes;
+    animation: variables.$progress-bar-animation-timing progress-bar-stripes;
 
-    @if $enable-reduced-motion {
+    @if variables.$enable-reduced-motion {
       @media (prefers-reduced-motion: reduce) {
         animation: none;
       }

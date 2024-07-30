@@ -1,10 +1,13 @@
+@use "sass:list";
+@use "../variables";
+
 // stylelint-disable property-disallowed-list
 @mixin transition($transition...) {
-  @if length($transition) == 0 {
-    $transition: $transition-base;
+  @if list.length($transition) == 0 {
+    $transition: variables.$transition-base;
   }
 
-  @if length($transition) > 1 {
+  @if list.length($transition) > 1 {
     @each $value in $transition {
       @if $value == null or $value == none {
         @warn "The keyword 'none' or 'null' must be used as a single argument.";
@@ -12,12 +15,12 @@
     }
   }
 
-  @if $enable-transitions {
-    @if nth($transition, 1) != null {
+  @if variables.$enable-transitions {
+    @if list.nth($transition, 1) != null {
       transition: $transition;
     }
 
-    @if $enable-reduced-motion and nth($transition, 1) != null and nth($transition, 1) != none {
+    @if variables.$enable-reduced-motion and list.nth($transition, 1) != null and list.nth($transition, 1) != none {
       @media (prefers-reduced-motion: reduce) {
         transition: none;
       }

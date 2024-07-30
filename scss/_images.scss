@@ -1,3 +1,9 @@
+@use "mixins/border-radius";
+@use "mixins/box-shadow";
+@use "mixins/image";
+@use "variables";
+@use "vendor/rfs";
+
 // Responsive images (ensure images don't scale beyond their parents)
 //
 // This is purposefully opt-in via an explicit class rather than being the default for all `<img>`s.
@@ -6,20 +12,20 @@
 // which weren't expecting the images within themselves to be involuntarily resized.
 // See also https://github.com/twbs/bootstrap/issues/18178
 .img-fluid {
-  @include img-fluid();
+  @include image.img-fluid();
 }
 
 
 // Image thumbnails
 .img-thumbnail {
-  padding: $thumbnail-padding;
-  background-color: $thumbnail-bg;
-  border: $thumbnail-border-width solid $thumbnail-border-color;
-  @include border-radius($thumbnail-border-radius);
-  @include box-shadow($thumbnail-box-shadow);
+  padding: variables.$thumbnail-padding;
+  background-color: variables.$thumbnail-bg;
+  border: variables.$thumbnail-border-width solid variables.$thumbnail-border-color;
+  @include border-radius.border-radius(variables.$thumbnail-border-radius);
+  @include box-shadow.box-shadow(variables.$thumbnail-box-shadow);
 
   // Keep them at most 100% wide
-  @include img-fluid();
+  @include image.img-fluid();
 }
 
 //
@@ -32,11 +38,11 @@
 }
 
 .figure-img {
-  margin-bottom: $spacer * .5;
+  margin-bottom: variables.$spacer * .5;
   line-height: 1;
 }
 
 .figure-caption {
-  @include font-size($figure-caption-font-size);
-  color: $figure-caption-color;
+  @include rfs.font-size(variables.$figure-caption-font-size);
+  color: variables.$figure-caption-color;
 }
