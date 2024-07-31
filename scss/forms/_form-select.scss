@@ -1,9 +1,9 @@
 @use "../mixins/border-radius";
 @use "../mixins/box-shadow";
 @use "../mixins/color-mode";
-@use "../mixins/transition";
+@use "../mixins/transition" as *;
 @use "../setup" as *;
-@use "../vendor/rfs";
+@use "../vendor/rfs" as *;
 
 // Select
 //
@@ -17,7 +17,7 @@
   width: 100%;
   padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
   font-family: $form-select-font-family;
-  @include rfs.font-size($form-select-font-size);
+  @include font-size($form-select-font-size);
   font-weight: $form-select-font-weight;
   line-height: $form-select-line-height;
   color: $form-select-color;
@@ -30,7 +30,7 @@
   border: $form-select-border-width solid $form-select-border-color;
   @include border-radius.border-radius($form-select-border-radius, 0);
   @include box-shadow.box-shadow($form-select-box-shadow);
-  @include transition.transition($form-select-transition);
+  @include transition($form-select-transition);
 
   &:focus {
     border-color: $form-select-focus-border-color;
@@ -66,7 +66,7 @@
   padding-top: $form-select-padding-y-sm;
   padding-bottom: $form-select-padding-y-sm;
   padding-left: $form-select-padding-x-sm;
-  @include rfs.font-size($form-select-font-size-sm);
+  @include font-size($form-select-font-size-sm);
   @include border-radius.border-radius($form-select-border-radius-sm);
 }
 
@@ -74,7 +74,7 @@
   padding-top: $form-select-padding-y-lg;
   padding-bottom: $form-select-padding-y-lg;
   padding-left: $form-select-padding-x-lg;
-  @include rfs.font-size($form-select-font-size-lg);
+  @include font-size($form-select-font-size-lg);
   @include border-radius.border-radius($form-select-border-radius-lg);
 }
 

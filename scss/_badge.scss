@@ -1,7 +1,7 @@
-@use "mixins/border-radius";
-@use "mixins/gradients";
-@use "setup/variables";
-@use "vendor/rfs";
+@use "mixins/border-radius" as *;
+@use "mixins/gradients" as *;
+@use "setup/variables" as *;
+@use "vendor/rfs" as *;
 
 // Base class
 //
@@ -10,25 +10,25 @@
 
 .badge {
   // scss-docs-start badge-css-vars
-  --#{variables.$prefix}badge-padding-x: #{variables.$badge-padding-x};
-  --#{variables.$prefix}badge-padding-y: #{variables.$badge-padding-y};
-  @include rfs.rfs(variables.$badge-font-size, --#{variables.$prefix}badge-font-size);
-  --#{variables.$prefix}badge-font-weight: #{variables.$badge-font-weight};
-  --#{variables.$prefix}badge-color: #{variables.$badge-color};
-  --#{variables.$prefix}badge-border-radius: #{variables.$badge-border-radius};
+  --#{$prefix}badge-padding-x: #{$badge-padding-x};
+  --#{$prefix}badge-padding-y: #{$badge-padding-y};
+  @include rfs($badge-font-size, --#{$prefix}badge-font-size);
+  --#{$prefix}badge-font-weight: #{$badge-font-weight};
+  --#{$prefix}badge-color: #{$badge-color};
+  --#{$prefix}badge-border-radius: #{$badge-border-radius};
   // scss-docs-end badge-css-vars
 
   display: inline-block;
-  padding: var(--#{variables.$prefix}badge-padding-y) var(--#{variables.$prefix}badge-padding-x);
-  @include rfs.font-size(var(--#{variables.$prefix}badge-font-size));
-  font-weight: var(--#{variables.$prefix}badge-font-weight);
+  padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
+  @include font-size(var(--#{$prefix}badge-font-size));
+  font-weight: var(--#{$prefix}badge-font-weight);
   line-height: 1;
-  color: var(--#{variables.$prefix}badge-color);
+  color: var(--#{$prefix}badge-color);
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  @include border-radius.border-radius(var(--#{variables.$prefix}badge-border-radius));
-  @include gradients.gradient-bg();
+  @include border-radius(var(--#{$prefix}badge-border-radius));
+  @include gradient-bg();
 
   // Empty badges collapse automatically
   &:empty {

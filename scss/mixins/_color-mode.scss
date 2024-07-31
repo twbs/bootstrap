@@ -1,7 +1,10 @@
-// @use "setup" as *;
+@use "../setup/variables" as *;
+@debug($color-mode-type);
 
 // scss-docs-start color-mode-mixin
 @mixin color-mode($mode: light, $root: false, $color-mode-type: "media-query") {
+  @debug($color-mode-type);
+
   @if $color-mode-type == "media-query" {
     @if $root == true {
       @media (prefers-color-scheme: $mode) {

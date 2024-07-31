@@ -1,5 +1,5 @@
-@use "../mixins/forms";
-@use "../setup/variables";
+@use "../mixins/forms" as *;
+@use "../setup/variables" as *;
 
 // Form validation
 //
@@ -9,7 +9,7 @@
 // server-side validation.
 
 // scss-docs-start form-validation-states-loop
-@each $state, $data in variables.$form-validation-states {
-  @include forms.form-validation-state($state, $data...);
+@each $state, $data in $form-validation-states {
+  @include form-validation-state($state, $data...);
 }
 // scss-docs-end form-validation-states-loop

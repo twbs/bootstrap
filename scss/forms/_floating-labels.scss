@@ -1,6 +1,6 @@
 @use "../mixins/border-radius";
-@use "../mixins/transition";
-@use "../setup/variables";
+@use "../mixins/transition" as *;
+@use "../setup/variables" as *;
 
 .form-floating {
   position: relative;
@@ -8,9 +8,9 @@
   > .form-control,
   > .form-control-plaintext,
   > .form-select {
-    height: variables.$form-floating-height;
-    min-height: variables.$form-floating-height;
-    line-height: variables.$form-floating-line-height;
+    height: $form-floating-height;
+    min-height: $form-floating-height;
+    line-height: $form-floating-line-height;
   }
 
   > label {
@@ -20,21 +20,21 @@
     z-index: 2;
     max-width: 100%;
     height: 100%; // allow textareas
-    padding: variables.$form-floating-padding-y variables.$form-floating-padding-x;
+    padding: $form-floating-padding-y $form-floating-padding-x;
     overflow: hidden;
-    color: rgba(var(--#{variables.$prefix}body-color-rgb), #{variables.$form-floating-label-opacity});
+    color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
     text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;
     pointer-events: none;
-    border: variables.$input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
+    border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
     transform-origin: 0 0;
-    @include transition.transition(variables.$form-floating-transition);
+    @include transition($form-floating-transition);
   }
 
   > .form-control,
   > .form-control-plaintext {
-    padding: variables.$form-floating-padding-y variables.$form-floating-padding-x;
+    padding: $form-floating-padding-y $form-floating-padding-x;
 
     &::placeholder {
       color: transparent;
@@ -42,19 +42,19 @@
 
     &:focus,
     &:not(:placeholder-shown) {
-      padding-top: variables.$form-floating-input-padding-t;
-      padding-bottom: variables.$form-floating-input-padding-b;
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
     }
     // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
     &:-webkit-autofill {
-      padding-top: variables.$form-floating-input-padding-t;
-      padding-bottom: variables.$form-floating-input-padding-b;
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
     }
   }
 
   > .form-select {
-    padding-top: variables.$form-floating-input-padding-t;
-    padding-bottom: variables.$form-floating-input-padding-b;
+    padding-top: $form-floating-input-padding-t;
+    padding-bottom: $form-floating-input-padding-b;
   }
 
   > .form-control:focus,
@@ -62,39 +62,39 @@
   > .form-control-plaintext,
   > .form-select {
     ~ label {
-      transform: variables.$form-floating-label-transform;
+      transform: $form-floating-label-transform;
     }
   }
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
   > .form-control:-webkit-autofill {
     ~ label {
-      transform: variables.$form-floating-label-transform;
+      transform: $form-floating-label-transform;
     }
   }
   > textarea:focus,
   > textarea:not(:placeholder-shown) {
     ~ label::after {
       position: absolute;
-      inset: variables.$form-floating-padding-y (variables.$form-floating-padding-x * .5);
+      inset: $form-floating-padding-y ($form-floating-padding-x * .5);
       z-index: -1;
-      height: variables.$form-floating-label-height;
+      height: $form-floating-label-height;
       content: "";
-      background-color: variables.$input-bg;
-      @include border-radius.border-radius(variables.$input-border-radius);
+      background-color: $input-bg;
+      @include border-radius.border-radius($input-border-radius);
     }
   }
   > textarea:disabled ~ label::after {
-    background-color: variables.$input-disabled-bg;
+    background-color: $input-disabled-bg;
   }
 
   > .form-control-plaintext {
     ~ label {
-      border-width: variables.$input-border-width 0; // Required to properly position label text - as explained above
+      border-width: $input-border-width 0; // Required to properly position label text - as explained above
     }
   }
 
   > :disabled ~ label,
   > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
-    color: variables.$form-floating-label-disabled-color;
+    color: $form-floating-label-disabled-color;
   }
 }

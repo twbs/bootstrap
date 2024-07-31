@@ -2,8 +2,8 @@
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
-@use "../setup/variables";
-@use "../vendor/rfs";
+@use "../setup/variables" as *;
+@use "../vendor/rfs" as *;
 
 // Utility generator
 // Used to generate utilities & print utilities
@@ -41,13 +41,13 @@
     @if map.get($utility, rfs) {
       // Inside the media query
       @if $is-rfs-media-query {
-        $val: rfs.rfs-value($value);
+        $val: rfs-value($value);
 
         // Do not render anything if fluid and non fluid values are the same
-        $value: if($val == rfs.rfs-fluid-value($value), null, $val);
+        $value: if($val == rfs-fluid-value($value), null, $val);
       }
       @else {
-        $value: rfs.rfs-fluid-value($value);
+        $value: rfs-fluid-value($value);
       }
     }
 
@@ -62,12 +62,12 @@
 
       @if $is-css-var {
         .#{$property-class + $infix + $property-class-modifier} {
-          --#{variables.$prefix}#{$css-variable-name}: #{$value};
+          --#{$prefix}#{$css-variable-name}: #{$value};
         }
 
         @each $pseudo in $state {
           .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
-            --#{variables.$prefix}#{$css-variable-name}: #{$value};
+            --#{$prefix}#{$css-variable-name}: #{$value};
           }
         }
       } @else {
@@ -75,10 +75,10 @@
           @each $property in $properties {
             @if $is-local-vars {
               @each $local-var, $variable in $is-local-vars {
-                --#{variables.$prefix}#{$local-var}: #{$variable};
+                --#{$prefix}#{$local-var}: #{$variable};
               }
             }
-            #{$property}: $value if(variables.$enable-important-utilities, !important, null);
+            #{$property}: $value if($enable-important-utilities, !important, null);
           }
         }
 
@@ -87,10 +87,10 @@
             @each $property in $properties {
               @if $is-local-vars {
                 @each $local-var, $variable in $is-local-vars {
-                  --#{variables.$prefix}#{$local-var}: #{$variable};
+                  --#{$prefix}#{$local-var}: #{$variable};
                 }
               }
-              #{$property}: $value if(variables.$enable-important-utilities, !important, null);
+              #{$property}: $value if($enable-important-utilities, !important, null);
             }
           }
         }

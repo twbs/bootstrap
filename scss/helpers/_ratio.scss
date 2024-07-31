@@ -1,4 +1,4 @@
-@use "../setup/variables";
+@use "../setup/variables" as *;
 
 // Credit: Nicolas Gallagher and SUIT CSS.
 
@@ -8,7 +8,7 @@
 
   &::before {
     display: block;
-    padding-top: var(--#{variables.$prefix}aspect-ratio);
+    padding-top: var(--#{$prefix}aspect-ratio);
     content: "";
   }
 
@@ -21,8 +21,8 @@
   }
 }
 
-@each $key, $ratio in variables.$aspect-ratios {
+@each $key, $ratio in $aspect-ratios {
   .ratio-#{$key} {
-    --#{variables.$prefix}aspect-ratio: #{$ratio};
+    --#{$prefix}aspect-ratio: #{$ratio};
   }
 }

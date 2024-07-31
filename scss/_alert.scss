@@ -1,6 +1,6 @@
 @use "sass:map";
-@use "mixins/border-radius";
-@use "setup/variables";
+@use "mixins/border-radius" as *;
+@use "setup/variables" as *;
 
 //
 // Base styles
@@ -8,24 +8,24 @@
 
 .alert {
   // scss-docs-start alert-css-vars
-  --#{variables.$prefix}alert-bg: transparent;
-  --#{variables.$prefix}alert-padding-x: #{variables.$alert-padding-x};
-  --#{variables.$prefix}alert-padding-y: #{variables.$alert-padding-y};
-  --#{variables.$prefix}alert-margin-bottom: #{variables.$alert-margin-bottom};
-  --#{variables.$prefix}alert-color: inherit;
-  --#{variables.$prefix}alert-border-color: transparent;
-  --#{variables.$prefix}alert-border: #{variables.$alert-border-width} solid var(--#{variables.$prefix}alert-border-color);
-  --#{variables.$prefix}alert-border-radius: #{variables.$alert-border-radius};
-  --#{variables.$prefix}alert-link-color: inherit;
+  --#{$prefix}alert-bg: transparent;
+  --#{$prefix}alert-padding-x: #{$alert-padding-x};
+  --#{$prefix}alert-padding-y: #{$alert-padding-y};
+  --#{$prefix}alert-margin-bottom: #{$alert-margin-bottom};
+  --#{$prefix}alert-color: inherit;
+  --#{$prefix}alert-border-color: transparent;
+  --#{$prefix}alert-border: #{$alert-border-width} solid var(--#{$prefix}alert-border-color);
+  --#{$prefix}alert-border-radius: #{$alert-border-radius};
+  --#{$prefix}alert-link-color: inherit;
   // scss-docs-end alert-css-vars
 
   position: relative;
-  padding: var(--#{variables.$prefix}alert-padding-y) var(--#{variables.$prefix}alert-padding-x);
-  margin-bottom: var(--#{variables.$prefix}alert-margin-bottom);
-  color: var(--#{variables.$prefix}alert-color);
-  background-color: var(--#{variables.$prefix}alert-bg);
-  border: var(--#{variables.$prefix}alert-border);
-  @include border-radius.border-radius(var(--#{variables.$prefix}alert-border-radius));
+  padding: var(--#{$prefix}alert-padding-y) var(--#{$prefix}alert-padding-x);
+  margin-bottom: var(--#{$prefix}alert-margin-bottom);
+  color: var(--#{$prefix}alert-color);
+  background-color: var(--#{$prefix}alert-bg);
+  border: var(--#{$prefix}alert-border);
+  @include border-radius(var(--#{$prefix}alert-border-radius));
 }
 
 // Headings for larger alerts
@@ -36,8 +36,8 @@
 
 // Provide class for links that match alerts
 .alert-link {
-  font-weight: variables.$alert-link-font-weight;
-  color: var(--#{variables.$prefix}alert-link-color);
+  font-weight: $alert-link-font-weight;
+  color: var(--#{$prefix}alert-link-color);
 }
 
 
@@ -46,27 +46,27 @@
 // Expand the right padding and account for the close button's positioning.
 
 .alert-dismissible {
-  padding-right: variables.$alert-dismissible-padding-r;
+  padding-right: $alert-dismissible-padding-r;
 
   // Adjust close link position
   .btn-close {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: variables.$stretched-link-z-index + 1;
-    padding: variables.$alert-padding-y * 1.25 variables.$alert-padding-x;
+    z-index: $stretched-link-z-index + 1;
+    padding: $alert-padding-y * 1.25 $alert-padding-x;
   }
 }
 
 
 // scss-docs-start alert-modifiers
 // Generate contextual modifier classes for colorizing the alert
-@each $state in map.keys(variables.$theme-colors) {
+@each $state in map.keys($theme-colors) {
   .alert-#{$state} {
-    --#{variables.$prefix}alert-color: var(--#{variables.$prefix}#{$state}-text-emphasis);
-    --#{variables.$prefix}alert-bg: var(--#{variables.$prefix}#{$state}-bg-subtle);
-    --#{variables.$prefix}alert-border-color: var(--#{variables.$prefix}#{$state}-border-subtle);
-    --#{variables.$prefix}alert-link-color: var(--#{variables.$prefix}#{$state}-text-emphasis);
+    --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text-emphasis);
+    --#{$prefix}alert-bg: var(--#{$prefix}#{$state}-bg-subtle);
+    --#{$prefix}alert-border-color: var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}alert-link-color: var(--#{$prefix}#{$state}-text-emphasis);
   }
 }
 // scss-docs-end alert-modifiers

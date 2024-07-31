@@ -1,6 +1,6 @@
 @use "sass:color";
 @use "../setup" as *;
-@use "../vendor/rfs";
+@use "../vendor/rfs" as *;
 
 // Button variants
 //
@@ -68,7 +68,7 @@
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   --#{$prefix}btn-padding-y: #{$padding-y};
   --#{$prefix}btn-padding-x: #{$padding-x};
-  @include rfs.rfs($font-size, --#{$prefix}btn-font-size);
+  @include rfs($font-size, --#{$prefix}btn-font-size);
   --#{$prefix}btn-border-radius: #{$border-radius};
 }
 // scss-docs-end btn-size-mixin

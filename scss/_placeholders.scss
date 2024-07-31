@@ -1,4 +1,4 @@
-@use "setup/variables";
+@use "setup/variables" as *;
 
 .placeholder {
   display: inline-block;
@@ -6,7 +6,7 @@
   vertical-align: middle;
   cursor: wait;
   background-color: currentcolor;
-  opacity: variables.$placeholder-opacity-max;
+  opacity: $placeholder-opacity-max;
 
   &.btn::before {
     display: inline-block;
@@ -36,12 +36,12 @@
 
 @keyframes placeholder-glow {
   50% {
-    opacity: variables.$placeholder-opacity-min;
+    opacity: $placeholder-opacity-min;
   }
 }
 
 .placeholder-wave {
-  mask-image: linear-gradient(130deg, variables.$black 55%, rgba(0, 0, 0, (1 - variables.$placeholder-opacity-min)) 75%, variables.$black 95%);
+  mask-image: linear-gradient(130deg, $black 55%, rgba(0, 0, 0, (1 - $placeholder-opacity-min)) 75%, $black 95%);
   mask-size: 200% 100%;
   animation: placeholder-wave 2s linear infinite;
 }

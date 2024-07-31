@@ -1,8 +1,8 @@
-@use "mixins/transition";
-@use "setup/variables";
+@use "mixins/transition" as *;
+@use "setup/variables" as *;
 
 .fade {
-  @include transition.transition(variables.$transition-fade);
+  @include transition($transition-fade);
 
   &:not(.show) {
     opacity: 0;
@@ -19,12 +19,12 @@
 .collapsing {
   height: 0;
   overflow: hidden;
-  @include transition.transition(variables.$transition-collapse);
+  @include transition($transition-collapse);
 
   &.collapse-horizontal {
     width: 0;
     height: auto;
-    @include transition.transition(variables.$transition-collapse-width);
+    @include transition($transition-collapse-width);
   }
 }
 // scss-docs-end collapse-classes

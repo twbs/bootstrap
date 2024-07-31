@@ -1,6 +1,6 @@
 @use "../mixins/border-radius";
 @use "../mixins/color-mode";
-@use "../mixins/transition";
+@use "../mixins/transition" as *;
 @use "../setup" as *;
 
 //
@@ -47,7 +47,7 @@
   background-size: contain;
   border: $form-check-input-border;
   print-color-adjust: exact; // Keep themed appearance for print
-  @include transition.transition($form-check-transition);
+  @include transition($form-check-transition);
 
   &[type="checkbox"] {
     @include border-radius.border-radius($form-check-input-border-radius);
@@ -137,7 +137,7 @@
     background-image: var(--#{$prefix}form-switch-bg);
     background-position: left center;
     @include border-radius.border-radius($form-switch-border-radius, 0);
-    @include transition.transition($form-switch-transition);
+    @include transition($form-switch-transition);
 
     &:focus {
       --#{$prefix}form-switch-bg: #{escape-svg($form-switch-focus-bg-image)};

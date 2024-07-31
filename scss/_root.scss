@@ -135,7 +135,9 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode(dark, true) {
+  @debug('--------------------------');
+  @include color-mode(dark, true, $color-mode-type) {
+  // @include color-mode(dark, true) {
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars

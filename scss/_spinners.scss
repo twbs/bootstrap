@@ -1,4 +1,4 @@
-@use "setup/variables";
+@use "setup/variables" as *;
 
 //
 // Rotating border
@@ -7,12 +7,12 @@
 .spinner-grow,
 .spinner-border {
   display: inline-block;
-  width: var(--#{variables.$prefix}spinner-width);
-  height: var(--#{variables.$prefix}spinner-height);
-  vertical-align: var(--#{variables.$prefix}spinner-vertical-align);
+  width: var(--#{$prefix}spinner-width);
+  height: var(--#{$prefix}spinner-height);
+  vertical-align: var(--#{$prefix}spinner-vertical-align);
   // stylelint-disable-next-line property-disallowed-list
   border-radius: 50%;
-  animation: var(--#{variables.$prefix}spinner-animation-speed) linear infinite var(--#{variables.$prefix}spinner-animation-name);
+  animation: var(--#{$prefix}spinner-animation-speed) linear infinite var(--#{$prefix}spinner-animation-name);
 }
 
 // scss-docs-start spinner-border-keyframes
@@ -23,23 +23,23 @@
 
 .spinner-border {
   // scss-docs-start spinner-border-css-vars
-  --#{variables.$prefix}spinner-width: #{variables.$spinner-width};
-  --#{variables.$prefix}spinner-height: #{variables.$spinner-height};
-  --#{variables.$prefix}spinner-vertical-align: #{variables.$spinner-vertical-align};
-  --#{variables.$prefix}spinner-border-width: #{variables.$spinner-border-width};
-  --#{variables.$prefix}spinner-animation-speed: #{variables.$spinner-animation-speed};
-  --#{variables.$prefix}spinner-animation-name: spinner-border;
+  --#{$prefix}spinner-width: #{$spinner-width};
+  --#{$prefix}spinner-height: #{$spinner-height};
+  --#{$prefix}spinner-vertical-align: #{$spinner-vertical-align};
+  --#{$prefix}spinner-border-width: #{$spinner-border-width};
+  --#{$prefix}spinner-animation-speed: #{$spinner-animation-speed};
+  --#{$prefix}spinner-animation-name: spinner-border;
   // scss-docs-end spinner-border-css-vars
 
-  border: var(--#{variables.$prefix}spinner-border-width) solid currentcolor;
+  border: var(--#{$prefix}spinner-border-width) solid currentcolor;
   border-right-color: transparent;
 }
 
 .spinner-border-sm {
   // scss-docs-start spinner-border-sm-css-vars
-  --#{variables.$prefix}spinner-width: #{variables.$spinner-width-sm};
-  --#{variables.$prefix}spinner-height: #{variables.$spinner-height-sm};
-  --#{variables.$prefix}spinner-border-width: #{variables.$spinner-border-width-sm};
+  --#{$prefix}spinner-width: #{$spinner-width-sm};
+  --#{$prefix}spinner-height: #{$spinner-height-sm};
+  --#{$prefix}spinner-border-width: #{$spinner-border-width-sm};
   // scss-docs-end spinner-border-sm-css-vars
 }
 
@@ -61,11 +61,11 @@
 
 .spinner-grow {
   // scss-docs-start spinner-grow-css-vars
-  --#{variables.$prefix}spinner-width: #{variables.$spinner-width};
-  --#{variables.$prefix}spinner-height: #{variables.$spinner-height};
-  --#{variables.$prefix}spinner-vertical-align: #{variables.$spinner-vertical-align};
-  --#{variables.$prefix}spinner-animation-speed: #{variables.$spinner-animation-speed};
-  --#{variables.$prefix}spinner-animation-name: spinner-grow;
+  --#{$prefix}spinner-width: #{$spinner-width};
+  --#{$prefix}spinner-height: #{$spinner-height};
+  --#{$prefix}spinner-vertical-align: #{$spinner-vertical-align};
+  --#{$prefix}spinner-animation-speed: #{$spinner-animation-speed};
+  --#{$prefix}spinner-animation-name: spinner-grow;
   // scss-docs-end spinner-grow-css-vars
 
   background-color: currentcolor;
@@ -73,15 +73,15 @@
 }
 
 .spinner-grow-sm {
-  --#{variables.$prefix}spinner-width: #{variables.$spinner-width-sm};
-  --#{variables.$prefix}spinner-height: #{variables.$spinner-height-sm};
+  --#{$prefix}spinner-width: #{$spinner-width-sm};
+  --#{$prefix}spinner-height: #{$spinner-height-sm};
 }
 
-@if variables.$enable-reduced-motion {
+@if $enable-reduced-motion {
   @media (prefers-reduced-motion: reduce) {
     .spinner-border,
     .spinner-grow {
-      --#{variables.$prefix}spinner-animation-speed: #{variables.$spinner-animation-speed * 2};
+      --#{$prefix}spinner-animation-speed: #{$spinner-animation-speed * 2};
     }
   }
 }

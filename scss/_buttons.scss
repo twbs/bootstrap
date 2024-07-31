@@ -1,10 +1,11 @@
-@use "mixins/border-radius";
-@use "mixins/box-shadow";
-@use "mixins/buttons";
-@use "mixins/gradients";
-@use "mixins/transition";
-@use "setup" as *;
-@use "vendor/rfs";
+@use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/buttons" as *;
+@use "mixins/gradients" as *;
+@use "mixins/transition" as *;
+@use "setup/functions" as *;
+@use "setup/variables" as *;
+@use "vendor/rfs" as *;
 
 //
 // Base styles
@@ -15,7 +16,7 @@
   --#{$prefix}btn-padding-x: #{$btn-padding-x};
   --#{$prefix}btn-padding-y: #{$btn-padding-y};
   --#{$prefix}btn-font-family: #{$btn-font-family};
-  @include rfs.rfs($btn-font-size, --#{$prefix}btn-font-size);
+  @include rfs($btn-font-size, --#{$prefix}btn-font-size);
   --#{$prefix}btn-font-weight: #{$btn-font-weight};
   --#{$prefix}btn-line-height: #{$btn-line-height};
   --#{$prefix}btn-color: #{$btn-color};
@@ -32,7 +33,7 @@
   display: inline-block;
   padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
   font-family: var(--#{$prefix}btn-font-family);
-  @include rfs.font-size(var(--#{$prefix}btn-font-size));
+  @include font-size(var(--#{$prefix}btn-font-size));
   font-weight: var(--#{$prefix}btn-font-weight);
   line-height: var(--#{$prefix}btn-line-height);
   color: var(--#{$prefix}btn-color);
@@ -43,10 +44,10 @@
   cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
   border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
-  @include border-radius.border-radius(var(--#{$prefix}btn-border-radius));
-  @include gradients.gradient-bg(var(--#{$prefix}btn-bg));
-  @include box-shadow.box-shadow(var(--#{$prefix}btn-box-shadow));
-  @include transition.transition($btn-transition);
+  @include border-radius(var(--#{$prefix}btn-border-radius));
+  @include gradient-bg(var(--#{$prefix}btn-bg));
+  @include box-shadow(var(--#{$prefix}btn-box-shadow));
+  @include transition($btn-transition);
 
   &:hover {
     color: var(--#{$prefix}btn-hover-color);
@@ -64,7 +65,7 @@
 
   &:focus-visible {
     color: var(--#{$prefix}btn-hover-color);
-    @include gradients.gradient-bg(var(--#{$prefix}btn-hover-bg));
+    @include gradient-bg(var(--#{$prefix}btn-hover-bg));
     border-color: var(--#{$prefix}btn-hover-border-color);
     outline: 0;
     // Avoid using mixin so we can pass custom focus shadow properly
@@ -96,7 +97,7 @@
     // Remove CSS gradients if they're enabled
     background-image: if($enable-gradients, none, null);
     border-color: var(--#{$prefix}btn-active-border-color);
-    @include box-shadow.box-shadow(var(--#{$prefix}btn-active-shadow));
+    @include box-shadow(var(--#{$prefix}btn-active-shadow));
 
     &:focus-visible {
       // Avoid using mixin so we can pass custom focus shadow properly
@@ -126,7 +127,7 @@
     background-image: if($enable-gradients, none, null);
     border-color: var(--#{$prefix}btn-disabled-border-color);
     opacity: var(--#{$prefix}btn-disabled-opacity);
-    @include box-shadow.box-shadow(none);
+    @include box-shadow(none);
   }
 }
 
@@ -139,7 +140,7 @@
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
     @if $color == "light" {
-      @include buttons.button-variant(
+      @include button-variant(
         $value,
         $value,
         $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
@@ -148,7 +149,7 @@
         $active-border: shade-color($value, $btn-active-border-shade-amount)
       );
     } @else if $color == "dark" {
-      @include buttons.button-variant(
+      @include button-variant(
         $value,
         $value,
         $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
@@ -157,14 +158,14 @@
         $active-border: tint-color($value, $btn-active-border-tint-amount)
       );
     } @else {
-      @include buttons.button-variant($value, $value);
+      @include button-variant($value, $value);
     }
   }
 }
 
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
-    @include buttons.button-outline-variant($value);
+    @include button-outline-variant($value);
   }
 }
 // scss-docs-end btn-variant-loops
@@ -216,9 +217,9 @@
 //
 
 .btn-lg {
-  @include buttons.button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
 }
 
 .btn-sm {
-  @include buttons.button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
 }

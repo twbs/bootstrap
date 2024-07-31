@@ -3,15 +3,15 @@
 @use "../mixins/breakpoints";
 @use "../mixins/utilities" as mixins-utilities;
 @use "../utilities";
-@use "../setup/variables";
-@use "../vendor/rfs";
+@use "../setup/variables" as *;
+@use "../vendor/rfs" as *;
 
 // Loop over each breakpoint
-@each $breakpoint in map.keys(variables.$grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
 
   // Generate media query if needed
   @include breakpoints.media-breakpoint-up($breakpoint) {
-    $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
+    $infix: breakpoints.breakpoint-infix($breakpoint, $grid-breakpoints);
 
     // Loop over each utility property
     @each $key, $utility in utilities.$utilities {
@@ -25,11 +25,11 @@
 }
 
 // RFS rescaling
-@media (min-width: rfs.$rfs-mq-value) {
-  @each $breakpoint in map.keys(variables.$grid-breakpoints) {
-    $infix: breakpoints.breakpoint-infix($breakpoint, variables.$grid-breakpoints);
+@media (min-width: $rfs-mq-value) {
+  @each $breakpoint in map.keys($grid-breakpoints) {
+    $infix: breakpoints.breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    @if (map.get(variables.$grid-breakpoints, $breakpoint) < rfs.$rfs-breakpoint) {
+    @if (map.get($grid-breakpoints, $breakpoint) < $rfs-breakpoint) {
       // Loop over each utility property
       @each $key, $utility in utilities.$utilities {
         // The utility can be disabled with `false`, thus check if the utility is a map first

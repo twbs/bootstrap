@@ -1,8 +1,8 @@
 @use "sass:list";
-@use "../setup/variables";
+@use "../setup/variables" as *;
 
 @mixin box-shadow($shadow...) {
-  @if variables.$enable-shadows {
+  @if $enable-shadows {
     $result: ();
 
     @each $value in $shadow {

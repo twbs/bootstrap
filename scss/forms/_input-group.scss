@@ -1,8 +1,8 @@
 @use "sass:map";
 @use "sass:string";
 @use "../mixins/border-radius";
-@use "../setup/variables";
-@use "../vendor/rfs";
+@use "../setup/variables" as *;
+@use "../vendor/rfs" as *;
 
 //
 // Base styles
@@ -53,16 +53,16 @@
 .input-group-text {
   display: flex;
   align-items: center;
-  padding: variables.$input-group-addon-padding-y variables.$input-group-addon-padding-x;
-  @include rfs.font-size(variables.$input-font-size); // Match inputs
-  font-weight: variables.$input-group-addon-font-weight;
-  line-height: variables.$input-line-height;
-  color: variables.$input-group-addon-color;
+  padding: $input-group-addon-padding-y $input-group-addon-padding-x;
+  @include font-size($input-font-size); // Match inputs
+  font-weight: $input-group-addon-font-weight;
+  line-height: $input-line-height;
+  color: $input-group-addon-color;
   text-align: center;
   white-space: nowrap;
-  background-color: variables.$input-group-addon-bg;
-  border: variables.$input-border-width solid variables.$input-group-addon-border-color;
-  @include border-radius.border-radius(variables.$input-border-radius);
+  background-color: $input-group-addon-bg;
+  border: $input-border-width solid $input-group-addon-border-color;
+  @include border-radius.border-radius($input-border-radius);
 }
 
 
@@ -75,23 +75,23 @@
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
-  padding: variables.$input-padding-y-lg variables.$input-padding-x-lg;
-  @include rfs.font-size(variables.$input-font-size-lg);
-  @include border-radius.border-radius(variables.$input-border-radius-lg);
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  @include font-size($input-font-size-lg);
+  @include border-radius.border-radius($input-border-radius-lg);
 }
 
 .input-group-sm > .form-control,
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {
-  padding: variables.$input-padding-y-sm variables.$input-padding-x-sm;
-  @include rfs.font-size(variables.$input-font-size-sm);
-  @include border-radius.border-radius(variables.$input-border-radius-sm);
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  @include font-size($input-font-size-sm);
+  @include border-radius.border-radius($input-border-radius-sm);
 }
 
 .input-group-lg > .form-select,
 .input-group-sm > .form-select {
-  padding-right: variables.$form-select-padding-x + variables.$form-select-indicator-padding;
+  padding-right: $form-select-padding-x + $form-select-indicator-padding;
 }
 
 
@@ -122,12 +122,12 @@
   }
 
   $validation-messages: "";
-  @each $state in map.keys(variables.$form-validation-states) {
+  @each $state in map.keys($form-validation-states) {
     $validation-messages: $validation-messages + ":not(." + string.unquote($state) + "-tooltip)" + ":not(." + string.unquote($state) + "-feedback)";
   }
 
   > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
-    margin-left: calc(#{variables.$input-border-width} * -1); // stylelint-disable-line function-disallowed-list
+    margin-left: calc(#{$input-border-width} * -1); // stylelint-disable-line function-disallowed-list
     @include border-radius.border-start-radius(0);
   }
 

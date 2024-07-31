@@ -1,7 +1,7 @@
-@use "../vendor/rfs";
+@use "../setup/variables" as *;
+@use "../vendor/rfs" as *;
 @use "border-radius";
 @use "box-shadow";
-@use "../setup" as *;
 
 // This mixin uses an `if()` technique to be compatible with Dart Sass
 // See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
@@ -33,7 +33,7 @@
     display: none;
     width: 100%;
     margin-top: $form-feedback-margin-top;
-    @include rfs.font-size($form-feedback-font-size);
+    @include font-size($form-feedback-font-size);
     font-style: $form-feedback-font-style;
     color: $color;
   }
@@ -46,7 +46,7 @@
     max-width: 100%; // Contain to parent when possible
     padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    @include rfs.font-size($form-feedback-tooltip-font-size);
+    @include font-size($form-feedback-tooltip-font-size);
     line-height: $form-feedback-tooltip-line-height;
     color: $tooltip-color;
     background-color: $tooltip-bg-color;
