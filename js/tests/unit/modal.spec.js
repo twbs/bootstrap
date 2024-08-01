@@ -100,6 +100,7 @@ describe('Modal', () => {
           expect(modalEl.getAttribute('aria-hidden')).toBeNull()
           expect(modalEl.style.display).toEqual('block')
           expect(document.querySelector('.modal-backdrop')).not.toBeNull()
+          expect(document.body).toHaveClasss('modal-open')
           resolve()
         })
 
@@ -702,6 +703,7 @@ describe('Modal', () => {
           expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
           expect(modalEl.style.display).toEqual('none')
           expect(backdropSpy).toHaveBeenCalled()
+          expect(document.body).not.toHaveClass('modal-open')
           resolve()
         })
 
@@ -1324,6 +1326,38 @@ describe('Modal', () => {
       expect(modal2).toEqual(modal)
 
       expect(modal2._config.backdrop).toBeTrue()
+    })
+  })
+  
+  describe('toggle between modals', () => {
+    it('should toggle modal-open class on body', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button data-bs-toggle="modal" data-bs-target="#exampleModalToggle2"></button>',
+          '<div id="exampleModalToggle" class="modal fade"><div class="modal-dialog"></div></div>',
+          '<div id="exampleModalToggle2" class="modal"><div class="modal-dialog"></div></div>'
+        ].join('')
+
+        const trigger = fixtureEl.querySelector('button')
+        const modalEl1 = document.querySelector('#exampleModalToggle')
+        const modalEl2 = document.querySelector('#exampleModalToggle2')
+        const modal1 = new Modal(modalEl1)
+
+        modalEl1.addEventListener('shown.bs.modal', () => {
+          expect(document.body).toHaveClass('modal-open')
+          setTimeout(() => trigger.click(), 10)
+        })
+        modalEl1.addEventListener('hidden.bs.modal', () => {
+          expect(document.body).not.toHaveClass('modal-open')
+        })
+
+        modalEl2.addEventListener('shown.bs.modal', () => {
+          expect(document.body).toHaveClass('modal-open')
+          resolve()
+        })
+
+        modal1.show()
+      })
     })
   })
 })
