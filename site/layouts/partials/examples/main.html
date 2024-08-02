@@ -15,7 +15,7 @@
     {{ if (eq $i 0) }}<div class="row">{{ end }}
       {{ if $entry.external -}}
         <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
-          <svg class="bi fs-5 flex-shrink-0 mt-1"><use xlink:href="#box-seam"></use></svg>
+          <svg class="bi fs-5 flex-shrink-0 mt-1" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
               <a class="d-block link-offset-1" href="{{ urls.JoinPath $.Site.Params.github_org $example.url }}" target="_blank" rel="noopener">
@@ -27,7 +27,7 @@
               {{- $indexPath := default "index.html" $example.indexPath -}}
               {{- $stackBlitzUrl := printf "%s%s%s" (urls.JoinPath "https://stackblitz.com/github/twbs" $example.url) "?file=" ($indexPath | urlquery) }}
               <a class="icon-link small link-secondary link-offset-1" href="{{ $stackBlitzUrl }}" target="_blank" rel="noopener">
-                <svg class="bi flex-shrink-0"><use xlink:href="#lightning-charge-fill"></use></svg>
+                <svg class="bi flex-shrink-0" aria-hidden="true"><use xlink:href="#lightning-charge-fill"></use></svg>
                 Edit in StackBlitz
               </a>
             </p>
