@@ -55,9 +55,7 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode(dark) {
-    .btn-close {
-      @include btn-close-white();
-    }
+  @include color-mode(dark, ".btn-close") {
+    @include btn-close-white();
   }
 }

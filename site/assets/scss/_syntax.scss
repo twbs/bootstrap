@@ -18,7 +18,7 @@
   --base0F: #333;
 }
 
-@include color-mode(dark, true) {
+@include color-mode(dark) {
   // --base00: #282c34;
   // --base01: #353b45;
   --base02: #3e4451;
