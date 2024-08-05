@@ -693,12 +693,28 @@ Add `.dropdown-menu-end` to a `.dropdown-menu` to right align the dropdown menu.
 
 If you want to use responsive alignment, disable dynamic positioning by adding the `data-bs-display="static"` attribute and use the responsive variation classes.
 
+In the case of using the split button style, dynamic positioning should not be disabled, otherwise the menu will not be accurately positioned to the split button.
+
 To align **right** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu{-sm|-md|-lg|-xl|-xxl}-end`.
 
-{{< example >}}
-<div class="btn-group">
+{{< example class="d-inline-grid" >}}
+<div class="dropdown mb-1">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
     Left-aligned but right aligned when large screen
+  </button>
+  <ul class="dropdown-menu dropdown-menu-lg-end">
+    <li><button class="dropdown-item" type="button">Action</button></li>
+    <li><button class="dropdown-item" type="button">Another action</button></li>
+    <li><button class="dropdown-item" type="button">Something else here</button></li>
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary">
+    Left-aligned but right aligned when large screen
+  </button>
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu dropdown-menu-lg-end">
     <li><button class="dropdown-item" type="button">Action</button></li>
@@ -710,10 +726,24 @@ To align **right** the dropdown menu with the given breakpoint or larger, add `.
 
 To align **left** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu-end` and `.dropdown-menu{-sm|-md|-lg|-xl|-xxl}-start`.
 
-{{< example >}}
-<div class="btn-group">
+{{< example class="d-inline-grid" >}}
+<div class="dropdown mb-1">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
     Right-aligned but left aligned when large screen
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+    <li><button class="dropdown-item" type="button">Action</button></li>
+    <li><button class="dropdown-item" type="button">Another action</button></li>
+    <li><button class="dropdown-item" type="button">Something else here</button></li>
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary">
+    Right-aligned but left aligned when large screen
+  </button>
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
     <li><button class="dropdown-item" type="button">Action</button></li>
