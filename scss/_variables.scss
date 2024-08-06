@@ -1652,6 +1652,7 @@ $carousel-control-width:             15% !default;
 $carousel-control-opacity:           .5 !default;
 $carousel-control-hover-opacity:     .9 !default;
 $carousel-control-transition:        opacity .15s ease !default;
+$carousel-control-icon-filter:       null !default;
 
 $carousel-indicator-width:           30px !default;
 $carousel-indicator-height:          3px !default;
@@ -1677,9 +1678,9 @@ $carousel-transition:                transform $carousel-transition-duration eas
 // scss-docs-end carousel-variables
 
 // scss-docs-start carousel-dark-variables
-$carousel-dark-indicator-active-bg:  $black !default;
-$carousel-dark-caption-color:        $black !default;
-$carousel-dark-control-icon-filter:  invert(1) grayscale(100) !default;
+$carousel-dark-indicator-active-bg:  $black !default; // Deprecated in v5.3.4
+$carousel-dark-caption-color:        $black !default; // Deprecated in v5.3.4
+$carousel-dark-control-icon-filter:  invert(1) grayscale(100) !default; // Deprecated in v5.3.4
 // scss-docs-end carousel-dark-variables
 
 
