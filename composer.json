@@ -27,6 +27,6 @@
   },
   "license": "MIT",
   "replace": {
-    "twitter/bootstrap": "self.version"
+    "x/bootstrap": "self.version"
   }
 }
