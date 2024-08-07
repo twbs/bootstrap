@@ -1,3 +1,8 @@
+// _form-control.scss
+
+@import '../functions';
+@import '../variables';
+
 //
 // General form controls (plus a few specific high-level interventions)
 //
@@ -94,7 +99,7 @@
   // File input buttons theming
   &::file-selector-button {
     padding: $input-padding-y $input-padding-x;
-    margin: (-$input-padding-y) (-$input-padding-x);
+    margin: (multiply(-1, $input-padding-y)) (multiply(-1, $input-padding-x));
     margin-inline-end: $input-padding-x;
     color: $form-file-button-color;
     @include gradient-bg($form-file-button-bg);
@@ -154,7 +159,7 @@
 
   &::file-selector-button {
     padding: $input-padding-y-sm $input-padding-x-sm;
-    margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
+    margin: (multiply(-1, $input-padding-y-sm)) (multiply(-1, $input-padding-x-sm));
     margin-inline-end: $input-padding-x-sm;
   }
 }
@@ -167,7 +172,7 @@
 
   &::file-selector-button {
     padding: $input-padding-y-lg $input-padding-x-lg;
-    margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
+    margin: (multiply(-1, $input-padding-y-lg)) (multiply(-1, $input-padding-x-lg));
     margin-inline-end: $input-padding-x-lg;
   }
 }

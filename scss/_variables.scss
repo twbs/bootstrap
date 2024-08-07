@@ -2,6 +2,7 @@
 //
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+$return-calc: true !default;
 
 // Color system
 
@@ -888,6 +889,8 @@ $input-font-family:                     $input-btn-font-family !default;
 $input-font-size:                       $input-btn-font-size !default;
 $input-font-weight:                     $font-weight-base !default;
 $input-line-height:                     $input-btn-line-height !default;
+// Using the add and multiply functions
+$input-height-inner: add(multiply($input-line-height, 1em), multiply($input-padding-y, 2)) !default;
 
 $input-padding-y-sm:                    $input-btn-padding-y-sm !default;
 $input-padding-x-sm:                    $input-btn-padding-x-sm !default;
