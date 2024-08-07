@@ -12,19 +12,19 @@ added:
 
 ## Tooling setup
 
-Bootstrap uses [npm scripts](https://docs.npmjs.com/misc/scripts/) to build the documentation and compile source files. Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json) houses these scripts for compiling code, running tests, and more. These aren't intended for use outside our repository and documentation.
+Bootstrap uses [npm scripts](https://docs.npmjs.com/misc/scripts/) to build the documentation and compile source files. Our [`package.json`]({{< param repo >}}/blob/main/package.json) houses these scripts for compiling code, running tests, and more. These aren't intended for use outside our repository and documentation.
 
 To use our build system and run our documentation locally, you'll need a copy of Bootstrap's source files and Node. Follow these steps and you should be ready to rock:
 
 1. [Download and install Node.js](https://nodejs.org/en/download/), which we use to manage our dependencies.
 2. Either [download Bootstrap's sources]({{< param "download.source" >}}) or fork and clone [Bootstrap's repository]({{< param repo >}}).
-3. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json).
+3. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [`package.json`]({{< param repo >}}/blob/main/package.json).
 
 When completed, you'll be able to run the various commands provided from the command line.
 
 ## Using npm scripts
 
-Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json) includes numerous tasks for developing the project. Run `npm run` to see all the npm scripts in your terminal. **Primary tasks include:**
+Our [`package.json`]({{< param repo >}}/blob/main/package.json) includes numerous tasks for developing the project. Run `npm run` to see all the npm scripts in your terminal. **Primary tasks include:**
 
 {{< bs-table >}}
 | Task | Description |
@@ -49,7 +49,7 @@ Dart Sass uses a rounding precision of 10 and for efficiency reasons does not al
 
 Bootstrap uses [Autoprefixer](https://github.com/postcss/autoprefixer) (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]({{< param repo >}}/blob/v{{< param current_version >}}/.browserslistrc) for details.
+We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`.browserslistrc`]({{< param repo >}}/blob/v{{< param current_version >}}/.browserslistrc) for details.
 
 ## RTLCSS
 
