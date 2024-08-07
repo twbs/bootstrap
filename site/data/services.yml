@@ -1,0 +1,6 @@
+- name: Browserstack
+  image: browserstack.svg
+  website: https://www.browserstack.com/
+- name: Netlify
+  image: netlify.svg
+  website: https://www.netlify.com
