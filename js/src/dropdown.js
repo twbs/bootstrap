@@ -85,7 +85,7 @@ const DefaultType = {
   offset: '(array|string|function)',
   popperConfig: '(null|object|function)',
   reference: '(string|element|object)',
-  strategy: 'string',
+  strategy: 'string'
 }
 
 /**
