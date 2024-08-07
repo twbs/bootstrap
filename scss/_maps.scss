@@ -32,6 +32,8 @@ $theme-colors-bg-subtle: (
 ) !default;
 // scss-docs-end theme-bg-subtle-map
 
+$theme-colors-bg-subtle-rgb: map-loop($theme-colors-bg-subtle, to-rgb, "$value") !default;
+
 // scss-docs-start theme-border-subtle-map
 $theme-colors-border-subtle: (
   "primary": $primary-border-subtle,
@@ -48,6 +50,7 @@ $theme-colors-border-subtle: (
 $theme-colors-text-dark: null !default;
 $theme-colors-bg-subtle-dark: null !default;
 $theme-colors-border-subtle-dark: null !default;
+$theme-colors-bg-subtle-rgb-dark: null !default;
 
 @if $enable-dark-mode {
   // scss-docs-start theme-text-dark-map
@@ -134,15 +137,16 @@ $utilities-bg: map-merge(
 $utilities-bg-colors: map-loop($utilities-bg, rgba-css-var, "$key", "bg") !default;
 
 $utilities-bg-subtle: (
-  "primary-subtle": var(--#{$prefix}primary-bg-subtle),
-  "secondary-subtle": var(--#{$prefix}secondary-bg-subtle),
-  "success-subtle": var(--#{$prefix}success-bg-subtle),
-  "info-subtle": var(--#{$prefix}info-bg-subtle),
-  "warning-subtle": var(--#{$prefix}warning-bg-subtle),
-  "danger-subtle": var(--#{$prefix}danger-bg-subtle),
-  "light-subtle": var(--#{$prefix}light-bg-subtle),
-  "dark-subtle": var(--#{$prefix}dark-bg-subtle)
+  "primary-subtle": rgba(var(--#{$prefix}primary-bg-subtle), var(--#{$prefix}bg-opacity)),
+  "secondary-subtle": rgba(var(--#{$prefix}secondary-bg-subtle), var(--#{$prefix}bg-opacity)),
+  "success-subtle": rgba(var(--#{$prefix}success-bg-subtle), var(--#{$prefix}bg-opacity)),
+  "info-subtle": rgba(var(--#{$prefix}info-bg-subtle), var(--#{$prefix}bg-opacity)),
+  "warning-subtle": rgba(var(--#{$prefix}warning-bg-subtle), var(--#{$prefix}bg-opacity)),
+  "danger-subtle": rgba(var(--#{$prefix}danger-bg-subtle), var(--#{$prefix}bg-opacity)),
+  "light-subtle": rgba(var(--#{$prefix}light-bg-subtle), var(--#{$prefix}bg-opacity)),
+  "dark-subtle": rgba(var(--#{$prefix}dark-bg-subtle), var(--#{$prefix}bg-opacity))
 ) !default;
+$theme-colors-bg-subtle-rgb-dark: map-loop($theme-colors-bg-subtle-dark, to-rgb, "$value") !default;
 // scss-docs-end utilities-bg-colors
 
 // scss-docs-start utilities-border-colors
