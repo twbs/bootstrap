@@ -420,6 +420,22 @@ Make the dropdown menu centered below the toggle with `.dropdown-center` on the 
 </div>
 {{< /example >}}
 
+{{< example >}}
+<div class="btn-group dropdown-center">
+  <button class="btn btn-secondary" type="button">
+    Split dropdown
+  </button>
+  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action two</a></li>
+    <li><a class="dropdown-item" href="#">Action three</a></li>
+  </ul>
+</div>
+{{< /example >}}
+
 ### Dropup
 
 Trigger dropdown menus above elements by adding `.dropup` to the parent element.
