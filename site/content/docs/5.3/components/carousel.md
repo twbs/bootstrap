@@ -165,7 +165,7 @@ You can make your carousels autoplay on page load by setting the `ride` option t
 {{< callout info >}}
 For accessibility reasons, we recommend avoiding the use of autoplaying carousels. If your page does include an autoplaying carousel, we recommend providing an additional button or control to explicitly pause/stop the carousel.
 
-See [WCAG 2.1 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG21/#pause-stop-hide).
+See [WCAG 2.2 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG/#pause-stop-hide).
 {{< /callout >}}
 
 {{< example >}}
