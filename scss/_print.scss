@@ -1,0 +1,56 @@
+@include color-mode(dark, true) {
+    @media print {
+        color-scheme: dark;
+
+        // scss-docs-start root-mode-vars
+        --#{$prefix}body-color: #{$body-color};
+        --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
+        --#{$prefix}body-bg: #{$body-bg};
+        --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+
+        --#{$prefix}emphasis-color: #{$body-emphasis-color};
+        --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
+
+        --#{$prefix}secondary-color: #{$body-secondary-color};
+        --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
+        --#{$prefix}secondary-bg: #{$body-secondary-bg};
+        --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg)};
+
+        --#{$prefix}tertiary-color: #{$body-tertiary-color};
+        --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
+        --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
+        --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
+
+        @each $color, $value in $theme-colors-text {
+            --#{$prefix}#{$color}-text-emphasis: #{$value};
+        }
+
+        @each $color, $value in $theme-colors-bg-subtle {
+            --#{$prefix}#{$color}-bg-subtle: #{$value};
+        }
+
+        @each $color, $value in $theme-colors-border-subtle {
+            --#{$prefix}#{$color}-border-subtle: #{$value};
+        }
+
+        --#{$prefix}heading-color: #{$headings-color};
+
+        --#{$prefix}link-color: #{$link-color};
+        --#{$prefix}link-hover-color: #{$link-hover-color};
+        --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
+        --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
+
+        --#{$prefix}code-color: #{$code-color};
+        --#{$prefix}highlight-color: #{$mark-color};
+        --#{$prefix}highlight-bg: #{$mark-bg};
+
+        --#{$prefix}border-color: #{$border-color};
+        --#{$prefix}border-color-translucent: #{$border-color-translucent};
+
+        --#{$prefix}form-valid-color: #{$form-valid-color};
+        --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
+        --#{$prefix}form-invalid-color: #{$form-invalid-color};
+        --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
+        // scss-docs-end root-mode-vars
+    }
+}
