@@ -110,6 +110,26 @@ class Modal extends BaseComponent {
 
     this._isShown = true
     this._isTransitioning = true
+    
+    // Check if any parent or ancestor has scrollbar-gutter: stable both-edges
+
+    let parentElement = this._element.parentElement;
+    let hasScrollbarGutter = false;
+
+    while (parentElement) {
+      const scrollbarGutter = window.getComputedStyle(parentElement).getPropertyValue('scrollbar-gutter');
+      if (scrollbarGutter.includes('stable')) {
+        hasScrollbarGutter = true;
+        break;
+      }
+      parentElement = parentElement.parentElement;
+    }
+
+    // Only hide the scrollbar if no scrollbar-gutter: stable both-edges is found
+    
+    if (!hasScrollbarGutter) {
+      this._scrollBar.hide();
+    }
 
     this._scrollBar.hide()
 
@@ -301,11 +321,13 @@ class Modal extends BaseComponent {
     if (isBodyOverflowing && !isModalOverflowing) {
       const property = isRTL() ? 'paddingLeft' : 'paddingRight'
       this._element.style[property] = `${scrollbarWidth}px`
+      console.log("AAAA");
     }
 
     if (!isBodyOverflowing && isModalOverflowing) {
       const property = isRTL() ? 'paddingRight' : 'paddingLeft'
       this._element.style[property] = `${scrollbarWidth}px`
+      console.log("AAAA");
     }
   }
 
