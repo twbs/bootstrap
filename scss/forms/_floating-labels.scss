@@ -58,7 +58,9 @@
   > .form-control-plaintext,
   > .form-select {
     ~ label {
-      transform: $form-floating-label-transform;
+      padding-top: $form-floating-label-padding-t;
+      padding-bottom: $form-floating-label-padding-b;
+      font-size: $form-floating-label-font-size;
     }
   }
   // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
