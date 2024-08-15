@@ -192,6 +192,12 @@
 }
 
 @include media-breakpoint-up(lg) {
+  .modal-md {
+    --#{$prefix}modal-width: #{$modal-md};
+  }
+}
+
+@include media-breakpoint-up(lg) {
   .modal-lg,
   .modal-xl {
     --#{$prefix}modal-width: #{$modal-lg};
