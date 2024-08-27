@@ -67,7 +67,7 @@ The `border-radius` is only applied to the first and last children of the elemen
 <div class="input-group">
   <span class="input-group-text" id="visible-addon">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon">
-  <input style="display: none;" type="text" class="form-control" placeholder="Hidden Input" aria-label="HiddenInput" aria-describedby="invisible-addon">
+  <input style="display: none;" type="text" class="form-control" placeholder="Hidden Input" aria-label="HiddenInput" aria-describedby="visible-addon">
 </div>
 {{< /example >}}
 
