@@ -37,4 +37,7 @@
 {{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
 {{- $stackblitzJs := resources.Get "js/stackblitz.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/stackblitz.js") }}
 <script defer src="{{ $stackblitzJs.RelPermalink }}"></script>
+
+{{- $transparencyJs := resources.Get "js/transparency.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/transparency.js") }}
+<script defer src="{{ $transparencyJs.RelPermalink }}"></script>
 {{- end -}}

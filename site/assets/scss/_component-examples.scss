@@ -109,6 +109,25 @@
   }
 }
 
+.transparency .bd-example {
+  @include media-breakpoint-up(md) {
+    &::before {
+      @include border-radius(subtract(var(--bs-border-radius), 1px));
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -9999;
+    content: "";
+    background: repeating-linear-gradient(-45deg, var(--bs-secondary-bg) 0, var(--bs-secondary-bg) 15px, transparent 15px, transparent 30px);
+  }
+}
+
 //
 // Grid examples
 //
