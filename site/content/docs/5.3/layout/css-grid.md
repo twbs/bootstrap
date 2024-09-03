@@ -227,13 +227,21 @@ Adding more rows and changing the placement of columns:
 
 ### Gaps
 
-Change the vertical gaps only by modifying the `row-gap`. Note that we use `gap` on `.grid`s, but `row-gap` and `column-gap` can be modified as needed.
+Change the vertical gaps only by modifying the `row-gap`. Note that we use `gap` on `.grid`s, but `row-gap` and `column-gap` can be modified as needed using either CSS properties, or CSS variables, or our [gap utilities]({{< docsref "/utilities/spacing#gap" >}}).
+
+{{< example class="bd-example-cssgrid" >}}
+<div class="grid text-center gap-3">
+  <div class="g-col-6">.g-col-6</div>
+  <div class="g-col-6">.g-col-6</div>
+  <div class="g-col-6">.g-col-6</div>
+  <div class="g-col-6">.g-col-6</div>
+</div>
+{{< /example >}}
 
 {{< example class="bd-example-cssgrid" >}}
 <div class="grid text-center" style="row-gap: 0;">
   <div class="g-col-6">.g-col-6</div>
   <div class="g-col-6">.g-col-6</div>
-
   <div class="g-col-6">.g-col-6</div>
   <div class="g-col-6">.g-col-6</div>
 </div>
