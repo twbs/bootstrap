@@ -70,7 +70,7 @@ To render an accordion that's expanded by default:
 
 Add `.accordion-flush` to remove some borders and rounded corners to render accordions edge-to-edge with their parent container.
 
-{{< example class="bg-body-secondary" >}}
+{{< example class="bg-body-secondary" buttons_labels="flush accordion example">}}
 <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
