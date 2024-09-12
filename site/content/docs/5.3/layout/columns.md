@@ -251,7 +251,9 @@ $utilities: map-merge(
       property: order,
       // Keep the existing `.order-*` utilities
       values: (
-        1: 1,
+        first: -1,
+        0: 0,
+        1: 1
         2: 2,
         3: 3,
         4: 4,
