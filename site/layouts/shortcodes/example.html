@@ -8,7 +8,7 @@
     * show_markup: if the markup should be output in the HTML - default: `true`
     * show_preview: if the preview should be output in the HTML - default: `true`
     * stackblitz_add_js: if extra JS snippet should be added to StackBlitz - default: `false`
-    * buttons_labels: label to apply to complete 'Try it on Stackblitz' and 'Copy to clipboard' buttons - default: ""
+    * buttons_label: label to apply to complete 'Try it on Stackblitz' and 'Copy to clipboard' buttons - default: ""
 */ -}}
 
 {{- $id := .Get "id" -}}
@@ -17,14 +17,11 @@
 {{- $show_markup := .Get "show_markup" | default true -}}
 {{- $show_preview := .Get "show_preview" | default true -}}
 {{- $stackblitz_add_js := .Get "stackblitz_add_js" | default false -}}
-{{- $buttons_labels := .Get "buttons_labels" | default "" -}}
+{{- $buttons_label := .Get "buttons_label" | default "" -}}
 
 {{- $content := .Inner -}}
 
 <div class="bd-example-snippet bd-code-snippet">
-  {{- if eq $buttons_labels "" }}toto{{ else }} {{ $buttons_labels }} {{- end }}
-  {{- if not (eq $buttons_labels "") }} {{ $buttons_labels }} {{- end }}
-
   {{- if eq $show_preview true }}
   <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example m-0 border-0{{ with $class }} {{ . }}{{ end }}">
     {{ $content }}
@@ -36,10 +33,10 @@
       <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">{{ $lang }}</small>
         <div class="d-flex ms-auto">
-          <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try {{- if eq $buttons_labels "" }} it{{ else }} {{ $buttons_labels }} {{- end }} on StackBlitz">
+          <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try {{- if eq $buttons_label "" }} it{{ else }} {{ $buttons_label }} {{- end }} on StackBlitz">
             <svg class="bi" aria-hidden="true"><use xlink:href="#lightning-charge-fill"/></svg>
           </button>
-          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy {{- if eq $buttons_labels "" }} {{ else }} {{ $buttons_labels }} {{- end }}to clipboard">
+          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy {{- if eq $buttons_label "" }} {{ else }} {{ $buttons_label }} {{- end }}to clipboard">
             <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
           </button>
         </div>
