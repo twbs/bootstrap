@@ -239,7 +239,7 @@ There are also responsive `.order-first` and `.order-last` classes that change t
 </div>
 {{< /example >}}
 
-If you need more `.order-*` classes, you can add new ones by modifying our `$utilities` Sass map. [Read our Sass maps and loops docs]({{< docsref "/customize/sass#add-to-map" >}}) for details.
+If you need more `.order-*` classes, you can add new ones by modifying our `$utilities` Sass map. [Read our Sass maps and loops docs]({{< docsref "/customize/sass#maps-and-loops" >}}) for details.
 
 ```scss
 $utilities: map-merge(
@@ -249,12 +249,13 @@ $utilities: map-merge(
     (
       responsive: true,
       property: order,
+      // Keep the existing `.order-*` utilities
       values: (
-        1:1,
-        2:2,
-        3:3,
-        4:4,
-        5:5, // Keep the existing `.order-*` utilities
+        1: 1,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
         6: 6, // Add a new `.order-{breakpoint}-6` utility
         last: 7 // Change the `.order-{breakpoint}-last` utility to use the next number
       )
