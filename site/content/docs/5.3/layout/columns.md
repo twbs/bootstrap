@@ -250,6 +250,11 @@ $utilities: map-merge(
       responsive: true,
       property: order,
       values: (
+        1:1,
+        2:2,
+        3:3,
+        4:4,
+        5:5, // Keep the existing `.order-*` utilities
         6: 6, // Add a new `.order-{breakpoint}-6` utility
         last: 7 // Change the `.order-{breakpoint}-last` utility to use the next number
       )
