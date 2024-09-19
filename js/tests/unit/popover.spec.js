@@ -56,7 +56,7 @@ describe('Popover', () => {
   })
 
   describe('show', () => {
-    fit('should show a popover with no content after setContent', () => {
+    it('should show a popover with no content after setContent', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#">BS twitter</a>'
 
