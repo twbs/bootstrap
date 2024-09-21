@@ -2,6 +2,9 @@
 //
 // Utility mixins and functions for evaluating source code across our variables, maps, and mixins.
 
+@use "sass:color";
+@use "sass:math";
+
 // Ascending
 // Used to evaluate Sass maps like our grid breakpoints.
 @mixin _assert-ascending($map, $map-name) {
@@ -34,7 +37,12 @@
 
 // Colors
 @function to-rgb($value) {
-  @return red($value), green($value), blue($value);
+  $red: math.round(color.channel($value, "red", rgb));
+  $green: math.round(color.channel($value, "green", rgb));
+  $blue: math.round(color.channel($value, "blue", rgb));
+
+  @return $red, $green, $blue;
+
 }
 
 // stylelint-disable scss/dollar-variable-pattern
@@ -182,9 +190,9 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 // See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
 @function luminance($color) {
   $rgb: (
-    "r": red($color),
-    "g": green($color),
-    "b": blue($color)
+    "r": math.round(color.channel($color, "red", rgb)),
+    "g": math.round(color.channel($color, "green", rgb)),
+    "b": math.round(color.channel($color, "blue", rgb))
   );
 
   @each $name, $value in $rgb {
