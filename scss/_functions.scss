@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 // Bootstrap functions
 //
 // Utility mixins and functions for evaluating source code across our variables, maps, and mixins.
@@ -182,6 +182,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 // See https://www.w3.org/TR/WCAG/#dfn-relative-luminance
 // See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
 @function luminance($color) {
+  // stylelint-disable scss/at-function-named-arguments
   $rgb: (
     "r": color.channel($color, "red", $space: rgb),
     "g": color.channel($color, "green", $space: rgb),

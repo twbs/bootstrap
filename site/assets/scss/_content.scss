@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 //
 // Bootstrap docs content theming
 //
@@ -149,6 +149,7 @@
     --bs-dropdown-link-active-bg: #{$blue-700};
   }
 
+  // stylelint-disable scss/at-function-named-arguments
   .btn-secondary {
     --bs-btn-bg: #{mix($gray-600, $blue-400, .5)};
     --bs-btn-border-color: #{rgba($white, .25)};

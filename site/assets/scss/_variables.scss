@@ -1,6 +1,7 @@
-@use 'sass:color';
+@use "sass:color";
 // Local docs variables
 $bd-purple:        #4c0bce;
+// stylelint-disable scss/at-function-named-arguments
 $bd-violet:        color.adjust(saturate($bd-purple, 5%), $lightness: 15%); // stylelint-disable-line function-disallowed-list
 $bd-purple-light:  color.adjust(saturate($bd-purple, 5%), $lightness: 45%); // stylelint-disable-line function-disallowed-list
 $bd-accent:        #ffe484;
