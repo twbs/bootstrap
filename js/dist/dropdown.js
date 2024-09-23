@@ -206,7 +206,7 @@
     }
     _createPopper() {
       if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)');
+        throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)');
       }
       let referenceElement = this._element;
       if (this._config.reference === 'parent') {
@@ -285,7 +285,7 @@
       }
       return {
         ...defaultBsPopperConfig,
-        ...index_js.execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
+        ...index_js.execute(this._config.popperConfig, [defaultBsPopperConfig])
       };
     }
     _selectMenuItem({
