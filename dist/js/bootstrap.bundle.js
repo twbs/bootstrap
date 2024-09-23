@@ -5112,6 +5112,7 @@
       if (!this._isEnabled) {
         return;
       }
+      this._activeTrigger.click = !this._activeTrigger.click;
       if (this._isShown()) {
         this._leave();
         return;
