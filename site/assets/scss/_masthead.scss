@@ -98,6 +98,11 @@
 .masthead-notice {
   background-color: var(--bd-accent);
   box-shadow: inset 0 -1px 1px rgba(var(--bs-body-color-rgb), .15), 0 .25rem 1.5rem rgba(var(--bs-body-bg-rgb), .75);
+  padding-top: 0.45rem;
+
+  svg{
+    transform: translateY(.2rem)
+  }
 }
 
 .animate-img {
