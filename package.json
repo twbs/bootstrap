@@ -129,7 +129,7 @@
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.132.0",
     "ip": "^2.0.1",
-    "jasmine": "^5.2.0",
+    "jasmine": "^5.3.0",
     "jquery": "^3.7.1",
     "karma": "^6.4.4",
     "karma-browserstack-launcher": "1.4.0",
@@ -151,7 +151,7 @@
     "sass": "1.78.0",
     "sass-true": "^8.0.0",
     "shelljs": "^0.8.5",
-    "stylelint": "^16.8.1",
+    "stylelint": "^16.9.0",
     "stylelint-config-twbs-bootstrap": "^15.1.0",
     "terser": "^5.34.1",
     "vnu-jar": "23.4.11"
