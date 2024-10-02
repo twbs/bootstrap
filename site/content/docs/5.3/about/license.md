@@ -16,7 +16,7 @@ Bootstrap is released under the MIT license and is copyright {{< year >}}. Boile
 - Freely download and use Bootstrap, in whole or in part, for personal, private, company internal, or commercial purposes
 - Use Bootstrap in packages or distributions that you create
 - Modify the source code
-- Grant a sublicense to modify and distribute Bootstrap to third parties not included in the license
+- Grant a sublicense to modify and distribute Bootstrap to third parties who are not included in the license
 
 ## It forbids you to:
 
