@@ -77,7 +77,7 @@
   --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
   // scss-docs-end root-body-variables
 
-  --#{$prefix}heading-color: #{$headings-color};
+  --#{$prefix}heading-color: #{$heading-color};
 
   --#{$prefix}link-color: #{$link-color};
   --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
@@ -164,7 +164,7 @@
       --#{$prefix}#{$color}-border-subtle: #{$value};
     }
 
-    --#{$prefix}heading-color: #{$headings-color-dark};
+    --#{$prefix}heading-color: #{$heading-color-dark};
 
     --#{$prefix}link-color: #{$link-color-dark};
     --#{$prefix}link-hover-color: #{$link-hover-color-dark};
