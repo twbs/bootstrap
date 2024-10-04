@@ -20,10 +20,13 @@ export default () => {
 
   const btnHtml = [
     '<div class="bd-code-snippet">',
-    '  <div class="bd-clipboard">',
-    '    <button type="button" class="btn-clipboard">',
-    '      <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
-    '    </button>',
+    '  <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1">',
+    '    <small class="font-monospace text-body-secondary text-uppercase">html</small>',
+    '    <div class="d-flex ms-auto">',
+    '      <button type="button" class="btn-clipboard mt-0 me-0">',
+    '        <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>',
+    '      </button>',
+    '    </div>',
     '  </div>',
     '</div>'
   ].join('')
@@ -35,6 +38,7 @@ export default () => {
       if (!element.closest('.bd-example-snippet')) {
         element.insertAdjacentHTML('beforebegin', btnHtml)
         element.previousElementSibling.append(element)
+        element.previousElementSibling.querySelector('small').textContent = element.querySelector('pre > code').getAttribute('data-lang')
       }
     })
 
