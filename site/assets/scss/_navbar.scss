@@ -1,6 +1,7 @@
 .bd-navbar {
   padding: .75rem 0;
   background-color: transparent;
+  forced-color-adjust: none;
   box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
 
   &::after {
