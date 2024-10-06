@@ -18,7 +18,7 @@
           <svg class="bi fs-5 flex-shrink-0 mt-1" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
-              <a class="d-block link-offset-1" href="{{ urls.JoinPath $.Site.Params.github_org $example.url }}" target="_blank" rel="noopener">
+              <a class="d-block link-offset-1" href="{{ urls.JoinPath $.Site.Params.github_org $example.url }}" target="_blank" rel="noopener" id="starter-{{ $i }}">
                 {{ $example.name }}
               </a>
             </h3>
@@ -26,9 +26,9 @@
             <p>
               {{- $indexPath := default "index.html" $example.indexPath -}}
               {{- $stackBlitzUrl := printf "%s%s%s" (urls.JoinPath "https://stackblitz.com/github/twbs" $example.url) "?file=" ($indexPath | urlquery) }}
-              <a class="icon-link small link-secondary link-offset-1" href="{{ $stackBlitzUrl }}" target="_blank" rel="noopener">
+              <a class="icon-link small link-secondary link-offset-1" href="{{ $stackBlitzUrl }}" target="_blank" rel="noopener" aria-labelledby="edit-{{ $i }} starter-{{ $i }}">
                 <svg class="bi flex-shrink-0" aria-hidden="true"><use xlink:href="#lightning-charge-fill"></use></svg>
-                Edit in StackBlitz
+                <span id="edit-{{ $i }}">Edit in StackBlitz</span>
               </a>
             </p>
           </div>
