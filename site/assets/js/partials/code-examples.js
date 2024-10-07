@@ -64,6 +64,8 @@ export default () => {
     const originalXhref = iconFirstChild.getAttributeNS(namespace, 'href')
     const originalTitle = event.trigger.title
 
+    if (originalXhref == "#check2") return;
+
     tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
     event.trigger.addEventListener('hidden.bs.tooltip', () => {
       tooltipBtn.setContent({ '.tooltip-inner': btnTitle })
