@@ -56,6 +56,26 @@ describe('Popover', () => {
   })
 
   describe('show', () => {
+    it('should toggle a popover after show', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap">BS twitter</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        const popover = new Popover(popoverEl)
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          expect(document.querySelector('.popover')).not.toBeNull()
+          popover.toggle()
+        })
+        popoverEl.addEventListener('hidden.bs.popover', () => {
+          expect(document.querySelector('.popover')).toBeNull()
+          resolve()
+        })
+
+        popover.show()
+      })
+    })
+
     it('should show a popover', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap">BS twitter</a>'
