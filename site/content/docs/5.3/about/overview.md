@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: About
+title: About Bootstrap
 description: Learn more about the team maintaining Bootstrap, how and why the project started, and how to get involved.
 group: about
 aliases:

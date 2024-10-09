@@ -67,8 +67,8 @@ $colors: (
 ) !default;
 // scss-docs-end colors-map
 
-// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
-// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.2 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG/#contrast-minimum
 $min-contrast-ratio:   4.5 !default;
 
 // Customize the light and dark text colors for use in our color contrast function.

@@ -126,7 +126,7 @@ The best part is you can do this with any button variant, too:
 <!-- Example single danger button -->
 <div class="btn-group">
   <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    Action
+    Danger
   </button>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -228,7 +228,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 ```html
 <!-- Example split danger button -->
 <div class="btn-group">
-  <button type="button" class="btn btn-danger">Action</button>
+  <button type="button" class="btn btn-danger">Danger</button>
   <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="visually-hidden">Toggle Dropdown</span>
   </button>

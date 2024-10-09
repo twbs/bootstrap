@@ -20,6 +20,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-transitions`          | `true` (default) or `false`        | Enables predefined `transition`s on various components. |
 | `$enable-reduced-motion`       | `true` (default) or `false`        | Enables the [`prefers-reduced-motion` media query]({{< docsref "/getting-started/accessibility#reduced-motion" >}}), which suppresses certain animations/transitions based on the users' browser/operating system preferences. |
 | `$enable-grid-classes`         | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.row`, `.col-md-1`, etc.). |
+| `$enable-cssgrid`              | `true` or `false` (default)        | Enables the experimental CSS Grid system (e.g. `.grid`, `.g-col-md-1`, etc.). |
 | `$enable-container-classes`    | `true` (default) or `false`        | Enables the generation of CSS classes for layout containers. (New in v5.2.0) |
 | `$enable-caret`                | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-button-pointers`      | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
