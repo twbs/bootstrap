@@ -73,6 +73,7 @@ const Default = {
   pause: 'hover',
   ride: false,
   touch: true,
+  items: 1,
   wrap: true
 }
 
@@ -82,6 +83,7 @@ const DefaultType = {
   pause: '(string|boolean)',
   ride: '(boolean|string)',
   touch: 'boolean',
+  items: 'number',
   wrap: 'boolean'
 }
 
@@ -101,6 +103,7 @@ class Carousel extends BaseComponent {
 
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._addEventListeners()
+    this._addElements()
 
     if (this._config.ride === CLASS_NAME_CAROUSEL) {
       this.cycle()
@@ -196,8 +199,26 @@ class Carousel extends BaseComponent {
   }
 
   // Private
+  _addElements() {
+    this._element.style.setProperty('--bs-carousel-items', Math.ceil(this._config.items))
+    const duplicates = this._config.items - 1
+    let i = 0
+    const activeIndex = this._getItemIndex(this._getActive()) + 1
+    while (duplicates >= i) {
+      SelectorEngine.findOne('.carousel-inner', this._element).append(this._getItems()[i].cloneNode(true))
+      this._getItems()[i + activeIndex].classList.add('show')
+      SelectorEngine.findOne('.carousel-inner', this._element).lastChild.classList.remove('active')
+      i++
+    }
+
+    SelectorEngine.findOne('.carousel-inner', this._element).insertBefore(this._getItems()[this._getItems().length - 1 - i].cloneNode(true), SelectorEngine.findOne('.carousel-inner', this._element).firstChild)
+    this._getItems()[i + activeIndex].classList.remove('show')
+    this._getItems()[this._getItems().length - 1].classList.remove('show')
+  }
+
   _configAfterMerge(config) {
     config.defaultInterval = config.interval
+    config.items = config.items < 1 ? this.constructor.Default.items : config.items
     return config
   }
 
@@ -214,6 +235,10 @@ class Carousel extends BaseComponent {
     if (this._config.touch && Swipe.isSupported()) {
       this._addTouchEventListeners()
     }
+
+    // if (typeof this._config.items === 'number' && this._config.items > 1) {
+    //   this._addResizeEventListeners()
+    // }
   }
 
   _addTouchEventListeners() {
@@ -250,6 +275,12 @@ class Carousel extends BaseComponent {
 
     this._swipeHelper = new Swipe(this._element, swipeConfig)
   }
+
+  // _addResizeEventListeners() {
+  //   EventHandler.on(window, 'resize', () => {
+  //     this._checkItemsBehavior()
+  //   })
+  // }
 
   _keydown(event) {
     if (/input|textarea/i.test(event.target.tagName)) {
@@ -304,12 +335,13 @@ class Carousel extends BaseComponent {
 
     const activeElement = this._getActive()
     const isNext = order === ORDER_NEXT
-    const nextElement = element || getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap)
+    const nextElement = element || getNextActiveElement(this._getItems().slice(1, this._getItems().length - this._config.items), activeElement, isNext, this._config.wrap)
 
     if (nextElement === activeElement) {
       return
     }
 
+    const activeElementIndex = this._getItemIndex(activeElement)
     const nextElementIndex = this._getItemIndex(nextElement)
 
     const triggerEvent = eventName => {
@@ -338,22 +370,52 @@ class Carousel extends BaseComponent {
 
     this._isSliding = true
 
-    this._setActiveIndicatorElement(nextElementIndex)
+    this._setActiveIndicatorElement(nextElementIndex - 1)
     this._activeElement = nextElement
 
     const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
     const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
 
-    nextElement.classList.add(orderClassName)
+    for (let index = 1; index < this._config.items; index++) {
+      this._getItems()[activeElementIndex + index].classList.remove('show')
+      this._getItems()[activeElementIndex + index].classList.add(orderClassName)
+      reflow(this._getItems()[activeElementIndex + index])
+    }
 
-    reflow(nextElement)
+    if (isNext) {
+      this._getItems()[activeElementIndex + this._config.items].classList.add(orderClassName)
+      reflow(this._getItems()[activeElementIndex + this._config.items])
+    } else {
+      this._getItems()[(activeElementIndex + this._getItems().length - this._config.items - 1) % (this._getItems().length - this._config.items)].classList.add(orderClassName)
+      reflow(this._getItems()[(activeElementIndex + this._getItems().length - this._config.items - 1) % (this._getItems().length - this._config.items)])
+    }
 
-    activeElement.classList.add(directionalClassName)
-    nextElement.classList.add(directionalClassName)
+    for (let index = 0; index < this._config.items; index++) {
+      this._getItems()[activeElementIndex + index].classList.add(directionalClassName)
+    }
+
+    if (isNext) {
+      this._getItems()[activeElementIndex + this._config.items].classList.add(directionalClassName)
+    } else {
+      this._getItems()[(activeElementIndex + this._getItems().length - this._config.items - 1) % (this._getItems().length - this._config.items)].classList.add(directionalClassName)
+    }
 
     const completeCallBack = () => {
-      nextElement.classList.remove(directionalClassName, orderClassName)
+      for (let index = 0; index < this._config.items; index++) {
+        this._getItems()[activeElementIndex + index].classList.remove(directionalClassName, orderClassName)
+      }
+
+      if (isNext) {
+        this._getItems()[activeElementIndex + this._config.items].classList.remove(directionalClassName, orderClassName)
+      } else {
+        this._getItems()[(activeElementIndex + this._getItems().length - this._config.items - 1) % (this._getItems().length - this._config.items)].classList.remove(directionalClassName, orderClassName)
+      }
+
       nextElement.classList.add(CLASS_NAME_ACTIVE)
+
+      for (let index = 1; index < this._config.items; index++) {
+        this._getItems()[nextElementIndex + index].classList.add('show')
+      }
 
       activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
 
@@ -439,10 +501,10 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (e
   event.preventDefault()
 
   const carousel = Carousel.getOrCreateInstance(target)
-  const slideIndex = this.getAttribute('data-bs-slide-to')
+  const slideIndex = Number(this.getAttribute('data-bs-slide-to'))
 
   if (slideIndex) {
-    carousel.to(slideIndex)
+    carousel.to(slideIndex + 1)
     carousel._maybeEnableCycle()
     return
   }
