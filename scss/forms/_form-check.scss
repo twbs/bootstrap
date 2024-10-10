@@ -177,6 +177,32 @@
       filter: none;
       opacity: $form-check-btn-check-disabled-opacity;
     }
+
+    + .chip {
+      color: var(--#{$prefix}chip-disabled-color);
+      pointer-events: none;
+      border-color: var(--#{$prefix}chip-disabled-color);
+    }
+
+    &:checked + .chip {
+      color: var(--#{$prefix}chip-active-color);
+      background-color: var(--#{$prefix}chip-disabled-color);
+    }
+  }
+
+  &:checked {
+    + .chip {
+      color: var(--bs-chip-active-color);
+      background-color: var(--bs-chip-active-decoration-color);
+      border-color: var(--bs-chip-active-decoration-color);
+    }
+  }
+
+  &:focus-visible {
+    + .chip {
+      outline: 1px * 1.5 solid var(--#{$prefix}chip-outline-color);
+      outline-offset: .125rem;
+    }
   }
 }
 
