@@ -26,7 +26,7 @@
     --#{$prefix}#{$color}-text-emphasis: #{$value};
   }
 
-  @each $color, $value in $theme-colors-bg-subtle {
+  @each $color, $value in $theme-colors-bg-subtle-rgb {
     --#{$prefix}#{$color}-bg-subtle: #{$value};
   }
 
@@ -156,7 +156,7 @@
       --#{$prefix}#{$color}-text-emphasis: #{$value};
     }
 
-    @each $color, $value in $theme-colors-bg-subtle-dark {
+    @each $color, $value in $theme-colors-bg-subtle-rgb-dark {
       --#{$prefix}#{$color}-bg-subtle: #{$value};
     }
 
