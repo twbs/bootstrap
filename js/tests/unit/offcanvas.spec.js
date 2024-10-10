@@ -192,10 +192,11 @@ describe('Offcanvas', () => {
       expect(offCanvas._backdrop._config.isVisible).toBeTrue()
       expect(offCanvas._config.keyboard).toBeTrue()
       expect(offCanvas._config.scroll).toBeFalse()
+      expect(offCanvas._config.focusAfterClose).toBeTrue()
     })
 
     it('should read data attributes and override default config', () => {
-      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false"></div>'
+      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false" data-bs-focus-after-close="false"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl)
@@ -204,20 +205,23 @@ describe('Offcanvas', () => {
       expect(offCanvas._backdrop._config.isVisible).toBeFalse()
       expect(offCanvas._config.keyboard).toBeFalse()
       expect(offCanvas._config.scroll).toBeTrue()
+      expect(offCanvas._config.focusAfterClose).toBeFalse()
     })
 
     it('given a config object must override data attributes', () => {
-      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false"></div>'
+      fixtureEl.innerHTML = '<div class="offcanvas" data-bs-scroll="true" data-bs-backdrop="false" data-bs-keyboard="false" data-bs-focus-after-close="false"></div>'
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new Offcanvas(offCanvasEl, {
         backdrop: true,
         keyboard: true,
-        scroll: false
+        scroll: false,
+        focusAfterClose: true
       })
       expect(offCanvas._config.backdrop).toBeTrue()
       expect(offCanvas._config.keyboard).toBeTrue()
       expect(offCanvas._config.scroll).toBeFalse()
+      expect(offCanvas._config.focusAfterClose).toBeTrue()
     })
   })
 
@@ -592,6 +596,28 @@ describe('Offcanvas', () => {
 
         offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
           expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.hide()
+      })
+    })
+
+    it('should not focus when focusAfterClose is disabled', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, {
+          focusAfterClose: false
+        })
+        const spy = spyOn(offCanvas._focustrap, 'deactivate').and.callThrough()
+        offCanvas.show()
+
+        offCanvasEl.addEventListener('hidden.bs.offcanvas', () => {
+          expect(spy).toHaveBeenCalled()
+
+          // TODO HOW TO CHECK THAT THE TARGET-ELEMENT WAS NOT FOCUSED
           resolve()
         })
 
