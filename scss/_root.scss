@@ -152,6 +152,14 @@
     --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
+    @each $color, $value in $theme-colors-dark {
+      --#{$prefix}#{$color}: #{$value};
+    }
+
+    @each $color, $value in $theme-colors-rgb-dark {
+      --#{$prefix}#{$color}-rgb: #{$value};
+    }
+
     @each $color, $value in $theme-colors-text-dark {
       --#{$prefix}#{$color}-text-emphasis: #{$value};
     }
