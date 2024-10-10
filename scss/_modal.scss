@@ -32,6 +32,13 @@
   --#{$prefix}modal-footer-border-width: #{$modal-footer-border-width};
   // scss-docs-end modal-css-vars
 
+  // Modal width breakpoints
+  // These can be customized using CSS variables
+  --#{$prefix}modal-sm-width: #{$modal-sm};
+  --#{$prefix}modal-md-width: #{$modal-md};
+  --#{$prefix}modal-lg-width: #{$modal-lg};
+  --#{$prefix}modal-xl-width: #{$modal-xl};
+
   position: fixed;
   top: 0;
   left: 0;
@@ -201,6 +208,32 @@
 @include media-breakpoint-up(xl) {
   .modal-xl {
     --#{$prefix}modal-width: #{$modal-xl};
+  }
+}
+
+// Media Queries for new CSS Breakpoints
+@include media-breakpoint-up(sm) {
+  .modal-dialog {
+    max-width: var(--#{$prefix}modal-md-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .modal-sm {
+    max-width: var(--#{$prefix}modal-sm-width);
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .modal-lg,
+  .modal-xl {
+    max-width: var(--#{$prefix}modal-lg-width);
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .modal-xl {
+    max-width: var(--#{$prefix}modal-xl-width);
   }
 }
 
