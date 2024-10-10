@@ -47,10 +47,10 @@
   // Adjust close link position
   .btn-close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: var(--bs-alert-padding-y);
+    right: var(--bs-alert-padding-x);
     z-index: $stretched-link-z-index + 1;
-    padding: $alert-padding-y * 1.25 $alert-padding-x;
+    padding: 5px; // TODO: use a variable
   }
 }
 
