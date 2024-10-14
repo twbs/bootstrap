@@ -60,7 +60,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
   const button = event.target.closest(SELECTOR_DATA_TOGGLE)
   const data = Button.getOrCreateInstance(button)
 
-  data.toggle()
+  if (data) {
+    data.toggle()
+  }
 })
 
 /**
