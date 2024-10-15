@@ -104,8 +104,8 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.25.7",
-    "@babel/core": "^7.25.7",
-    "@babel/preset-env": "^7.25.7",
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
     "@docsearch/js": "^3.6.2",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.0.4",
@@ -151,7 +151,7 @@
     "sass": "1.78.0",
     "sass-true": "^8.1.0",
     "shelljs": "^0.8.5",
-    "stylelint": "^16.9.0",
+    "stylelint": "^16.10.0",
     "stylelint-config-twbs-bootstrap": "^15.1.0",
     "terser": "^5.34.1",
     "vnu-jar": "23.4.11"
