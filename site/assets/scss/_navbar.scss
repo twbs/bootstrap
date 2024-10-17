@@ -3,6 +3,10 @@
   background-color: transparent;
   box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
 
+  @media (forced-colors) {
+    background-color: Canvas;
+  }
+
   &::after {
     position: absolute;
     inset: 0;
