@@ -23,7 +23,7 @@
     <li>
       <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="{{ if .IsHome }}/{{ else }}/docs/{{ .Site.Params.docs_version }}/{{ $versions_link }}{{ end }}">
         Latest ({{ .Site.Params.docs_version }}.x)
-        <svg class="bi"><use xlink:href="#check2"></use></svg>
+        <svg class="bi" aria-hidden="true"><use xlink:href="#check2"></use></svg>
       </a>
     </li>
     <li>
