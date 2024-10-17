@@ -1,0 +1,128 @@
+---
+layout: examples
+title: Collapse Directions example
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="arrow-bar-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z"/>
+  </symbol>
+  <symbol id="arrow-bar-left" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5ZM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5Z"/>
+  </symbol>
+  <symbol id="arrow-bar-up" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"/>
+  </symbol>
+  <symbol id="arrow-bar-down" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6z"/>
+  </symbol>
+  <symbol id="arrow-bar-all-4" viewBox="0 0 16 16">
+    <path d="m7.788 2.34-.799 1.278A.25.25 0 0 0 7.201 4h1.598a.25.25 0 0 0 .212-.382l-.799-1.279a.25.25 0 0 0-.424 0Zm0 11.32-.799-1.277A.25.25 0 0 1 7.201 12h1.598a.25.25 0 0 1 .212.383l-.799 1.278a.25.25 0 0 1-.424 0ZM3.617 9.01 2.34 8.213a.25.25 0 0 1 0-.424l1.278-.799A.25.25 0 0 1 4 7.201V8.8a.25.25 0 0 1-.383.212Zm10.043-.798-1.277.799A.25.25 0 0 1 12 8.799V7.2a.25.25 0 0 1 .383-.212l1.278.799a.25.25 0 0 1 0 .424Z"/>
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v3a.5.5 0 0 1-.5.5h-3A1.5 1.5 0 0 0 0 6.5v3A1.5 1.5 0 0 0 1.5 11h3a.5.5 0 0 1 .5.5v3A1.5 1.5 0 0 0 6.5 16h3a1.5 1.5 0 0 0 1.5-1.5v-3a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 0 16 9.5v-3A1.5 1.5 0 0 0 14.5 5h-3a.5.5 0 0 1-.5-.5v-3A1.5 1.5 0 0 0 9.5 0h-3ZM6 1.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3A1.5 1.5 0 0 0 11.5 6h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a1.5 1.5 0 0 0-1.5 1.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-3A1.5 1.5 0 0 0 4.5 10h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 0 6 4.5v-3Z"/>
+  </symbol>
+</svg>
+
+<main>
+  <div>
+    <div class="position-fixed top-0 start-0">
+      <div class="d-flex flex-row gap-2 align-items-start">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidth_topStart" aria-expanded="false" aria-controls="collapseWidth_topStart">
+          <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-right"/></svg>
+        </button>
+        <div class="collapse collapse-horizontal multi-collapse" id="collapseWidth_topStart">
+          <div class="card card-body" style="width: 300px;">
+            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="position-fixed top-0 end-0">
+      <div class="d-flex flex-row-reverse gap-2 align-items-start">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidth_topEnd" aria-expanded="false" aria-controls="collapseWidth_topEnd">
+          <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-left"/></svg>
+        </button>
+        <div class="collapse collapse-horizontal multi-collapse" id="collapseWidth_topEnd">
+          <div class="card card-body" style="width: 300px;">
+            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="position-fixed bottom-0 start-0">
+      <div class="d-flex flex-row gap-2 align-items-end">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidth_bottomStart" aria-expanded="false" aria-controls="collapseWidth_bottomStart">
+          <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-right"/></svg>
+        </button>
+        <div class="collapse collapse-horizontal multi-collapse" id="collapseWidth_bottomStart">
+          <div class="card card-body" style="width: 300px;">
+            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="position-fixed bottom-0 end-0">
+      <div class="d-flex flex-row-reverse gap-2 align-items-end">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidth_bottomEnd" aria-expanded="false" aria-controls="collapseWidth_bottomEnd">
+          <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-left"/></svg>
+        </button>
+        <div class="collapse collapse-horizontal multi-collapse" id="collapseWidth_bottomEnd">
+          <div class="card card-body" style="width: 300px;">
+            This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="position-fixed top-50 start-50 translate-middle">
+    <div class="d-flex flex-column gap-3 align-items-center">
+      <div class="d-flex flex-column-reverse gap-2 align-items-center">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidth_centerUp" aria-expanded="false" aria-controls="collapseWidth_centerUp">
+          <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-up"/></svg>
+        </button>
+        <div class="collapse collapse multi-collapse" id="collapseWidth_centerUp">
+          <div class="card card-body" style="width: 300px;">
+            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-row gap-5 align-items-center">
+        <div class="d-flex flex-row-reverse gap-2 align-items-center">
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidth_centerLeft" aria-expanded="false" aria-controls="collapseWidth_centerLeft">
+            <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-left"/></svg>
+          </button>
+          <div class="collapse collapse-horizontal multi-collapse" id="collapseWidth_centerLeft">
+            <div class="card card-body" style="width: 300px;">
+              This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="collapseWidth_centerUp collapseWidth_centerLeft collapseWidth_centerRight collapseWidth_centerDown">
+            <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-all-4"/></svg>
+          </button>
+        </div>
+        <div class="d-flex flex-row gap-2 align-items-center">
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidth_centerRight" aria-expanded="false" aria-controls="collapseWidth_centerRight">
+            <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-right"/></svg>
+          </button>
+          <div class="collapse collapse-horizontal multi-collapse" id="collapseWidth_centerRight">
+            <div class="card card-body" style="width: 300px;">
+              This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column gap-2 align-items-center">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidth_centerDown" aria-expanded="false" aria-controls="collapseWidth_centerDown">
+          <svg class="bi" width="32" height="32" fill="currentColor"><use xlink:href="#arrow-bar-down"/></svg>
+        </button>
+        <div class="collapse collapse multi-collapse" id="collapseWidth_centerDown">
+          <div class="card card-body" style="width: 300px;">
+            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
