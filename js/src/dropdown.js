@@ -74,7 +74,8 @@ const Default = {
   display: 'dynamic',
   offset: [0, 2],
   popperConfig: null,
-  reference: 'toggle'
+  reference: 'toggle',
+  strategy: 'absolute'
 }
 
 const DefaultType = {
@@ -83,7 +84,8 @@ const DefaultType = {
   display: 'string',
   offset: '(array|string|function)',
   popperConfig: '(null|object|function)',
-  reference: '(string|element|object)'
+  reference: '(string|element|object)',
+  strategy: 'string'
 }
 
 /**
@@ -306,7 +308,8 @@ class Dropdown extends BaseComponent {
         options: {
           offset: this._getOffset()
         }
-      }]
+      }],
+      strategy: this._config.strategy
     }
 
     // Disable Popper if we have a static display or Dropdown is in Navbar
