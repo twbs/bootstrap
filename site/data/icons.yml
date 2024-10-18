@@ -1,0 +1,27 @@
+preferred:
+  - name: Font Awesome
+    website: https://fontawesome.com/
+  - name: Feather
+    website: https://feathericons.com/
+  - name: Octicons
+    website: https://primer.style/foundations/icons
+
+more:
+  - name: Bytesize
+    website: https://github.com/danklammer/bytesize-icons
+  - name: CoreUI Icons
+    website: https://coreui.io/icons/
+  - name: Google Material icons
+    website: https://fonts.google.com/icons
+  - name: Ionicons
+    website: https://ionic.io/ionicons
+  - name: Dripicons
+    website: http://demo.amitjakhu.com/dripicons/
+  - name: Ikons
+    website: https://ikons.piotrkwiatkowski.co.uk/
+  - name: Icons8
+    website: https://icons8.com/
+  - name: icofont
+    website: https://icofont.com/
+  - name: Tabler Icons
+    website: https://tabler.io/icons

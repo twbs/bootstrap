@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "12:00"
+      timezone: Europe/Athens
+  - package-ecosystem: npm
+    directory: "/"
+    reviewers:
+      - XhmikosR
+    labels:
+      - dependencies
+      - v5
+    schedule:
+      interval: weekly
+      day: tuesday
+      time: "12:00"
+      timezone: Europe/Athens
+    versioning-strategy: increase
+    rebase-strategy: disabled
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"

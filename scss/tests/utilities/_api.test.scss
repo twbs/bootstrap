@@ -1,0 +1,75 @@
+@import "../../functions";
+@import "../../variables";
+@import "../../variables-dark";
+@import "../../maps";
+@import "../../mixins";
+
+$utilities: ();
+
+@include describe("utilities/api") {
+  @include it("generates utilities for each breakpoints") {
+    $utilities: (
+      margin: (
+        property: margin,
+        values: auto
+      ),
+      padding: (
+        property: padding,
+        responsive: true,
+        values: 1rem
+      ),
+      font-size: (
+        property: font-size,
+        values: (large: 1.25rem),
+        print: true
+      )
+    ) !global;
+
+    $grid-breakpoints: (
+      xs: 0,
+      sm: 333px,
+      md: 666px
+    ) !global;
+
+    @include assert() {
+      @include output() {
+        @import "../../utilities/api";
+      }
+
+      @include expect() {
+        // margin is not set to responsive
+        .margin-auto {
+          margin: auto !important;
+        }
+
+        // padding is, though
+        .padding-1rem {
+          padding: 1rem !important;
+        }
+
+        .font-size-large {
+          font-size: 1.25rem !important;
+        }
+
+        @media (min-width: 333px) {
+          .padding-sm-1rem {
+            padding: 1rem !important;
+          }
+        }
+
+        @media (min-width: 666px) {
+          .padding-md-1rem {
+            padding: 1rem !important;
+          }
+        }
+
+        @media print {
+          .font-size-print-large {
+            font-size: 1.25rem !important;
+          }
+        }
+      }
+
+    }
+  }
+}

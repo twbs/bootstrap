@@ -1,0 +1,404 @@
+//
+// Docs examples
+//
+
+.bd-code-snippet {
+  margin: 0 ($bd-gutter-x * -.5) 1rem;
+  border: solid var(--bs-border-color);
+  border-width: 1px 0;
+
+  @include media-breakpoint-up(md) {
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    @include border-radius(var(--bs-border-radius));
+  }
+}
+
+.bd-example {
+  --bd-example-padding: 1rem;
+
+  position: relative;
+  padding: var(--bd-example-padding);
+  margin: 0 ($bd-gutter-x * -.5) 1rem;
+  border: solid var(--bs-border-color);
+  border-width: 1px 0;
+  @include clearfix();
+
+  @include media-breakpoint-up(md) {
+    --bd-example-padding: 1.5rem;
+
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    @include border-radius(var(--bs-border-radius));
+  }
+
+  + p {
+    margin-top: 2rem;
+  }
+
+  > .form-control {
+    + .form-control {
+      margin-top: .5rem;
+    }
+  }
+
+  > .nav + .nav,
+  > .alert + .alert,
+  > .navbar + .navbar,
+  > .progress + .progress {
+    margin-top: $spacer;
+  }
+
+  > .dropdown-menu {
+    position: static;
+    display: block;
+  }
+
+  > :last-child,
+  > nav:last-child .breadcrumb {
+    margin-bottom: 0;
+  }
+
+  > hr:last-child {
+    margin-bottom: $spacer;
+  }
+
+  // Images
+  > svg + svg,
+  > img + img {
+    margin-left: .5rem;
+  }
+
+  // Buttons
+  > .btn,
+  > .btn-group {
+    margin: .25rem .125rem;
+  }
+  > .btn-toolbar + .btn-toolbar {
+    margin-top: .5rem;
+  }
+
+  // List groups
+  > .list-group {
+    max-width: 400px;
+  }
+
+  > [class*="list-group-horizontal"] {
+    max-width: 100%;
+  }
+
+  // Navbars
+  .fixed-top,
+  .sticky-top {
+    position: static;
+    margin: calc(var(--bd-example-padding) * -1) calc(var(--bd-example-padding) * -1) var(--bd-example-padding); // stylelint-disable-line function-disallowed-list
+  }
+
+  .fixed-bottom,
+  .sticky-bottom {
+    position: static;
+    margin: var(--bd-example-padding) calc(var(--bd-example-padding) * -1) calc(var(--bd-example-padding) * -1); // stylelint-disable-line function-disallowed-list
+
+  }
+
+  // Pagination
+  .pagination {
+    margin-bottom: 0;
+  }
+}
+
+//
+// Grid examples
+//
+
+.bd-example-row [class^="col"],
+.bd-example-cols [class^="col"] > *,
+.bd-example-cssgrid [class*="grid"] > * {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(var(--bd-violet-rgb), .15);
+  border: 1px solid rgba(var(--bd-violet-rgb), .3);
+}
+
+.bd-example-row .row + .row,
+.bd-example-cssgrid .grid + .grid {
+  margin-top: 1rem;
+}
+
+.bd-example-row-flex-cols .row {
+  min-height: 10rem;
+  background-color: rgba(var(--bd-violet-rgb), .15);
+}
+
+.bd-example-flex div:not(.vr) {
+  background-color: rgba(var(--bd-violet-rgb), .15);
+  border: 1px solid rgba(var(--bd-violet-rgb), .3);
+}
+
+// Grid mixins
+.example-container {
+  width: 800px;
+  @include make-container();
+}
+
+.example-row {
+  @include make-row();
+}
+
+.example-content-main {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  }
+}
+
+.example-content-secondary {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(4);
+  }
+}
+
+// Ratio helpers
+.bd-example-ratios {
+  .ratio {
+    display: inline-block;
+    width: 10rem;
+    color: var(--bs-secondary-color);
+    background-color: var(--bs-tertiary-bg);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+.bd-example-ratios-breakpoint {
+  .ratio-4x3 {
+    width: 16rem;
+
+    @include media-breakpoint-up(md) {
+      --bs-aspect-ratio: 50%; // 2x1
+    }
+  }
+}
+
+.bd-example-offcanvas {
+  .offcanvas {
+    position: static;
+    display: block;
+    height: 200px;
+    visibility: visible;
+    transform: translate(0);
+  }
+}
+
+// Tooltips
+.tooltip-demo {
+  a {
+    white-space: nowrap;
+  }
+
+  .btn {
+    margin: .25rem .125rem;
+  }
+}
+
+// scss-docs-start custom-tooltip
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bd-violet-bg);
+  --bs-tooltip-color: var(--bs-white);
+}
+// scss-docs-end custom-tooltip
+
+// scss-docs-start custom-popovers
+.custom-popover {
+  --bs-popover-max-width: 200px;
+  --bs-popover-border-color: var(--bd-violet-bg);
+  --bs-popover-header-bg: var(--bd-violet-bg);
+  --bs-popover-header-color: var(--bs-white);
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: .5rem;
+}
+// scss-docs-end custom-popovers
+
+// Scrollspy demo on fixed height div
+.scrollspy-example {
+  height: 200px;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+.scrollspy-example-2 {
+  height: 350px;
+  overflow: auto;
+}
+
+.simple-list-example-scrollspy {
+  .active {
+    background-color: rgba(var(--bd-violet-rgb), .15);
+  }
+}
+
+.bd-example-border-utils {
+  [class^="border"] {
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    margin: .25rem;
+    background-color: var(--bs-tertiary-bg);
+  }
+}
+
+.bd-example-rounded-utils {
+  [class*="rounded"] {
+    margin: .25rem;
+  }
+}
+
+.bd-example-position-utils {
+  position: relative;
+  padding: 2rem;
+
+  .position-relative {
+    height: 200px;
+    background-color: var(--bs-tertiary-bg);
+  }
+
+  .position-absolute {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--bs-body-color);
+    @include border-radius();
+  }
+}
+
+.bd-example-position-examples {
+  &::after {
+    content: none;
+  }
+}
+
+// Placeholders
+.bd-example-placeholder-cards {
+  &::after {
+    display: none;
+  }
+
+  .card {
+    width: 18rem;
+  }
+}
+
+// Toasts
+.bd-example-toasts {
+  min-height: 240px;
+}
+
+.bd-example-zindex-levels {
+  min-height: 15rem;
+
+  > div {
+    color: var(--bs-body-bg);
+    background-color: var(--bd-violet);
+    border: 1px solid var(--bd-purple);
+
+    > span {
+      position: absolute;
+      right: 5px;
+      bottom: 0;
+    }
+  }
+
+  > :nth-child(2) {
+    top: 3rem;
+    left: 3rem;
+  }
+  > :nth-child(3) {
+    top: 4.5rem;
+    left: 4.5rem;
+  }
+  > :nth-child(4) {
+    top: 6rem;
+    left: 6rem;
+  }
+  > :nth-child(5) {
+    top: 7.5rem;
+    left: 7.5rem;
+  }
+}
+
+//
+// Code snippets
+//
+
+.highlight {
+  position: relative;
+  padding: .75rem ($bd-gutter-x * .5);
+  background-color: var(--bd-pre-bg);
+
+  @include media-breakpoint-up(md) {
+    padding: .75rem 1.25rem;
+    @include border-radius(calc(var(--bs-border-radius) - 1px));
+  }
+
+  @include media-breakpoint-up(lg) {
+    pre {
+      margin-right: 1.875rem;
+    }
+  }
+
+  pre {
+    padding: .25rem 0 .875rem;
+    margin-top: .8125rem;
+    margin-bottom: 0;
+    overflow: overlay;
+    white-space: pre;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code {
+    @include font-size(inherit);
+    color: var(--bs-body-color); // Effectively the base text color
+    word-wrap: normal;
+  }
+}
+
+.bd-example-snippet .highlight pre {
+  margin-right: 0;
+}
+
+.highlight-toolbar {
+  background-color: var(--bd-pre-bg);
+
+  + .highlight {
+    @include border-top-radius(0);
+  }
+}
+
+.bd-file-ref {
+  .highlight-toolbar {
+    @include media-breakpoint-up(md) {
+      @include border-top-radius(calc(var(--bs-border-radius) - 1px));
+    }
+  }
+}
+
+.bd-content .bd-code-snippet {
+  margin-bottom: 1rem;
+}

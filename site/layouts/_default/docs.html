@@ -1,0 +1,73 @@
+{{ define "body_override" }}<body{{ if (eq .Page.Params.toc true) }} data-bs-spy="scroll" data-bs-target="#TableOfContents"{{ end }}>{{ end }}
+{{ define "main" }}
+  <div class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar">
+      <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
+        <div class="offcanvas-header border-bottom">
+          <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse docs</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdSidebar"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          {{ partial "docs-sidebar" . }}
+        </div>
+      </div>
+    </aside>
+
+    <main class="bd-main order-1">
+      <div class="bd-intro pt-2 ps-lg-2">
+        <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap">
+            {{- /* This is needed because we want to show the badge if show_badge isn't present or is set to false */ -}}
+            {{- if (or (and (.Page.Params.added) (not (isset .Page.Params.added "show_badge"))) (and (.Page.Params.added) (isset .Page.Params.added "show_badge") (not (eq .Page.Params.added.show_badge false)))) -}}
+              <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">Added in v{{ .Page.Params.added.version }}</small>
+            {{- end -}}
+            <a class="btn btn-sm btn-bd-light rounded-2" href="{{ .Site.Params.repo }}/blob/v{{ .Site.Params.current_version }}/site/content/{{ .Page.File.Path | replaceRE `\\` "/" }}" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+              View on GitHub
+            </a>
+          </div>
+          <h1 class="bd-title mb-0" id="content">{{ .Title | markdownify }}</h1>
+        </div>
+        <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+        {{ partial "ads" . }}
+      </div>
+
+      {{ if (eq .Page.Params.toc true) }}
+        <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+          <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+            On this page
+            <svg class="bi d-md-none ms-2" aria-hidden="true"><use xlink:href="#chevron-expand"></use></svg>
+          </button>
+          <strong class="d-none d-md-block h6 my-2 ms-3">On this page</strong>
+          <hr class="d-none d-md-block my-2 ms-3">
+          <div class="collapse bd-toc-collapse" id="tocContents">
+            {{ .TableOfContents }}
+          </div>
+        </div>
+      {{ end }}
+
+      <div class="bd-content ps-lg-2">
+        {{ if .Page.Params.sections }}
+          <div class="row g-3">
+            {{ range .Page.Params.sections }}
+            <div class="col-md-6">
+              <a class="d-block text-decoration-none" href="../{{ urlize .title }}/">
+                <strong class="d-block h5 mb-0">{{ .title }}</strong>
+                <span class="text-secondary">{{ .description }}</span>
+              </a>
+            </div>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        {{ .Content }}
+      </div>
+    </main>
+  </div>
+{{ end }}
+{{ define "footer" }}
+  {{ range .Page.Params.extra_js -}}
+    <script{{ with .async }} async{{ end }}{{ with .defer }} defer{{ end }} src="{{ .src }}"></script>
+  {{- end -}}
+  <div class="position-fixed" aria-hidden="true"><input type="text" tabindex="-1"></div>
+{{ end }}

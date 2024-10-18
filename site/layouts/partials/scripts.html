@@ -1,0 +1,40 @@
+{{ if hugo.IsProduction -}}
+  <script defer src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }}></script>
+{{ else -}}
+  <script defer src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+{{- end }}
+
+{{- $esbuildOptions := dict "target" "es2019" -}}
+{{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version -}}
+
+{{- if hugo.IsProduction -}}
+  {{- $esbuildOptions = merge $esbuildOptions (dict "minify" "true") -}}
+{{- end }}
+
+{{- $applicationJs := resources.Get "js/application.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/application.js") }}
+<script defer src="{{ $applicationJs.RelPermalink }}"></script>
+
+{{- if (ne .Page.Layout "examples") -}}
+{{- $esbuildParams := dict
+  "apiKey" .Site.Params.algolia.apiKey
+  "appId" .Site.Params.algolia.appId
+  "indexName" .Site.Params.algolia.indexName
+-}}
+{{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
+{{- $searchJs := resources.Get "js/search.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/search.js") }}
+<script defer src="{{ $searchJs.RelPermalink }}"></script>
+{{- end -}}
+
+{{ if eq .Page.Layout "docs" -}}
+{{- /* Disable minify options for snippets.js so that the file's readable on StackBlitz */ -}}
+{{- $snippetsFile := resources.Get "js/snippets.js" | js.Build (merge $esbuildOptions (dict "minify" "false")) -}}
+{{- $esbuildParams := dict
+  "cssCdn" .Site.Params.cdn.css
+  "jsBundleCdn" .Site.Params.cdn.js_bundle
+  "docsVersion" .Site.Params.docs_version
+  "jsSnippetFile" $snippetsFile.Content
+-}}
+{{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
+{{- $stackblitzJs := resources.Get "js/stackblitz.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/stackblitz.js") }}
+<script defer src="{{ $stackblitzJs.RelPermalink }}"></script>
+{{- end -}}

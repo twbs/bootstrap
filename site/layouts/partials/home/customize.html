@@ -1,0 +1,59 @@
+<section class="col-lg-7 mb-5">
+  <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bs-primary-rgb);">
+    <svg class="bi fs-1" aria-hidden="true"><use xlink:href="#palette2"></use></svg>
+  </div>
+  <h2 class="display-5 mb-3 fw-semibold lh-sm">Customize everything with&nbsp;Sass</h2>
+  <p class="lead fw-normal">
+    Bootstrap utilizes Sass for a modular and customizable architecture. Import only the components you need, enable global options like gradients and shadows, and write your own CSS with our variables, maps, functions, and mixins.
+  </p>
+  <p class="d-flex lead fw-normal">
+    <a href="/docs/{{ .Site.Params.docs_version }}/customize/overview/" class="icon-link icon-link-hover fw-semibold">
+      Learn more about customizing
+      <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+    </a>
+  </p>
+</section>
+
+<section class="row g-md-5 mb-5 pb-md-5">
+  <div class="col-lg-6">
+    <h3>Include all of Bootstrap’s Sass</h3>
+    <p>Import one stylesheet and you're off to the races with every feature of our CSS.</p>
+    {{ highlight (printf `// Variable overrides first
+$primary: #900;
+$enable-shadows: true;
+$prefix: "mo-";
+
+// Then import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+`) "scss" "" }}
+    <p>Learn more about our <a href="/docs/{{ .Site.Params.docs_version }}/customize/options/">global Sass options</a>.</p>
+  </div>
+  <div class="col-lg-6">
+    <h3>Include what you need</h3>
+    <p>The easiest way to customize Bootstrap—include only the CSS you need.</p>
+{{ highlight (printf `// Functions first
+@import "../node_modules/bootstrap/scss/functions";
+
+// Variable overrides second
+$primary: #900;
+$enable-shadows: true;
+$prefix: "mo-";
+
+// Required Bootstrap imports
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// Optional components
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+@import "../node_modules/bootstrap/scss/utilities/api";
+`) "scss" "" }}
+    <p>Learn more about <a href="/docs/{{ .Site.Params.docs_version }}/customize/sass/">using Bootstrap with Sass</a>.</p>
+  </div>
+</section>
