@@ -5,3 +5,4 @@ The Bootstrap team and community take security issues in Bootstrap seriously. We
 To report a security issue, email [security@getbootstrap.com](mailto:security@getbootstrap.com) and include the word "SECURITY" in the subject line.
 
 We'll endeavor to respond quickly, and will keep you updated throughout the process.
+Test your code!
