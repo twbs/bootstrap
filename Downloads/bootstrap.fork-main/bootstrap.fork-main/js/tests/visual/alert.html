@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Alert</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Alert <small>Bootstrap Visual Test</small></h1>
+
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      </div>
+
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p>
+          <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+        </p>
+        <p>
+          <button type="button" class="btn btn-danger">Danger</button>
+          <button type="button" class="btn btn-secondary">Secondary</button>
+        </p>
+      </div>
+
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p>
+          <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+        </p>
+        <p>
+          <button type="button" class="btn btn-danger">Take this action</button>
+          <button type="button" class="btn btn-primary">Or do this</button>
+        </p>
+      </div>
+
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" style="transition-duration: 5s;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        This alert will take 5 seconds to fade out.
+      </div>
+    </div>
+
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>

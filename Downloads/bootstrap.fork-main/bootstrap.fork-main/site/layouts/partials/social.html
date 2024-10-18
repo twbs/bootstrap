@@ -1,0 +1,27 @@
+{{- $pageTitle := .Title | markdownify -}}
+{{- $pageDescription := .Page.Params.description | default .Site.Params.description | markdownify -}}
+{{- $socialImagePath := urls.JoinPath "/docs" .Site.Params.docs_version "assets" -}}
+
+{{- if .Page.Params.thumbnail -}}
+  {{- $socialImagePath = urls.JoinPath $socialImagePath "img" .Page.Params.thumbnail -}}
+{{- else -}}
+  {{- $socialImagePath = urls.JoinPath $socialImagePath "brand/bootstrap-social.png" -}}
+{{- end -}}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@{{ .Site.Params.twitter }}">
+<meta name="twitter:creator" content="@{{ .Site.Params.twitter }}">
+<meta name="twitter:title" content="{{ $pageTitle }}">
+<meta name="twitter:description" content="{{ $pageDescription }}">
+<meta name="twitter:image" content="{{ $socialImagePath | absURL }}">
+
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $pageDescription }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:image" content="{{ $socialImagePath | absURL }}">
+<meta property="og:image:type" content="image/png">
+{{ with (imageConfig (path.Join "site/static" $socialImagePath)) -}}
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+{{- end }}

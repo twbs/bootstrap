@@ -1,0 +1,27 @@
+{{ if hugo.IsProduction -}}
+{{ if eq .Page.Params.direction "rtl" -}}
+<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.rtl.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_rtl_hash | safeHTMLAttr }}>
+{{- else -}}
+<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_hash | safeHTMLAttr }}>
+{{- end -}}
+{{- else -}}
+<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap{{ if eq .Page.Params.direction "rtl" }}.rtl{{ end }}.css" rel="stylesheet">
+{{- end }}
+
+{{- if (ne .Page.Layout "examples") }}
+{{- $sassOptions := dict "outputStyle" "expanded" "precision" 6 -}}
+{{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
+
+{{- $targetDocsCssPath := path.Join "/docs" .Site.Params.docs_version "assets/css/docs.css" -}}
+{{- $targetSearchCssPath := path.Join "/docs" .Site.Params.docs_version "assets/css/search.css" -}}
+
+{{ if hugo.IsProduction -}}
+  {{- $sassOptions = merge $sassOptions (dict "outputStyle" "compressed") -}}
+{{- end -}}
+
+{{- $docsCss := resources.Get "scss/docs.scss" | toCSS (merge (dict "targetPath" $targetDocsCssPath) $sassOptions) | postCSS $postcssOptions -}}
+{{- $searchCss := resources.Get "scss/search.scss" | toCSS (merge (dict "targetPath" $targetSearchCssPath) $sassOptions) | postCSS $postcssOptions -}}
+
+<link href="{{ $docsCss.RelPermalink }}" rel="stylesheet">
+<link href="{{ $searchCss.RelPermalink }}" rel="stylesheet">
+{{- end }}

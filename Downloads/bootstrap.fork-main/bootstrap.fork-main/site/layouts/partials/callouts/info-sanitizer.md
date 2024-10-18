@@ -1,0 +1,1 @@
+By default, this component uses the built-in content sanitizer, which strips out any HTML elements that are not explicitly allowed. See the [sanitizer section in our JavaScript documentation](/docs/{{ .Site.Params.docs_version }}/getting-started/javascript/#sanitizer) for more details.

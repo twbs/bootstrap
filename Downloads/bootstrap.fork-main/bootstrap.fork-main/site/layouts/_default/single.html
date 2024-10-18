@@ -1,0 +1,37 @@
+{{ define "main" }}
+  <header class="py-5 border-bottom">
+  <div class="container-xxl bd-gutter pt-md-1 pb-md-4">
+      <div class="row">
+        <div class="col-xl-8">
+          <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
+          <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+          {{ if eq .Title "Examples" -}}
+          <div class="d-flex flex-column flex-md-row gap-3">
+            <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold">
+              <svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
+              Download examples
+            </a>
+            <a href="{{ .Site.Params.download.source }}" class="btn btn-lg bd-btn-lg btn-outline-secondary">
+              Download source code
+            </a>
+          </div>
+          {{- end }}
+        </div>
+        <div class="col-xl-4 d-lg-flex justify-content-xl-end">
+          {{ partial "ads" . }}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="bd-content order-1 py-5" id="content">
+    <div class="container-xxl bd-gutter">
+      {{ .Content }}
+
+      {{ if eq .Title "Examples" -}}
+        {{ partial "examples/main" . }}
+        {{ partial "examples/bs-themes" . }}
+      {{- end }}
+    </div>
+  </main>
+{{ end }}

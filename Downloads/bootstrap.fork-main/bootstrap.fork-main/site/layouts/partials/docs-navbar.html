@@ -1,0 +1,92 @@
+<header class="navbar navbar-expand-lg bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    {{- if eq .Layout "docs" }}
+    <div class="bd-navbar-toggle">
+      <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+        {{ partial "icons/hamburger.svg" (dict "class" "bi" "width" "24" "height" "24") }}
+        <span class="d-none fs-6 pe-1">Browse</span>
+      </button>
+    </div>
+    {{- else }}
+      <div class="d-lg-none" style="width: 4.25rem;"></div>
+    {{- end }}
+
+    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
+      {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
+    </a>
+
+    <div class="d-flex">
+      <div class="bd-search" id="docsearch" data-bd-docs-version="{{ .Site.Params.docs_version }}"></div>
+
+      <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-label="Toggle navigation">
+        <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
+      </button>
+    </div>
+
+    <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50">
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2{{ if eq .Page.Layout "docs" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/">Docs</a>
+          </li>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2{{ if eq .Page.Title "Examples" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/">Examples</a>
+          </li>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.icons }}" target="_blank" rel="noopener">Icons</a>
+          </li>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.themes }}" target="_blank" rel="noopener">Themes</a>
+          </li>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.blog }}" target="_blank" rel="noopener">Blog</a>
+          </li>
+        </ul>
+
+        <hr class="d-lg-none text-white-50">
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener">
+              {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
+              <small class="d-lg-none ms-2">GitHub</small>
+            </a>
+          </li>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener">
+              {{ partial "icons/twitter.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
+              <small class="d-lg-none ms-2">Twitter</small>
+            </a>
+          </li>
+          <li class="nav-item col-6 col-lg-auto">
+            <a class="nav-link py-2 px-0 px-lg-2" href="{{ .Site.Params.opencollective }}" target="_blank" rel="noopener">
+              {{ partial "icons/opencollective.svg" (dict "class" "navbar-nav-svg" "width" "16" "height" "16") }}
+              <small class="d-lg-none ms-2">Open Collective</small>
+            </a>
+          </li>
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+            <hr class="d-lg-none my-2 text-white-50">
+          </li>
+
+          {{ partial "docs-versions" . }}
+
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+            <hr class="d-lg-none my-2 text-white-50">
+          </li>
+
+          <li class="nav-item dropdown">
+            {{ partial "theme-toggler" . }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
