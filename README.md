@@ -54,7 +54,33 @@ Several quick start options are available:
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
-
+- https://github.com/orgs/Graphic-Tshirts/discussions/30
+- https://github.com/orgs/Graphic-Tshirts/discussions/29
+- https://github.com/orgs/Graphic-Tshirts/discussions/28
+- https://github.com/orgs/Graphic-Tshirts/discussions/27
+- https://github.com/orgs/Graphic-Tshirts/discussions/26
+- https://github.com/orgs/Graphic-Tshirts/discussions/25
+- https://github.com/orgs/Graphic-Tshirts/discussions/24
+- https://github.com/orgs/Graphic-Tshirts/discussions/23
+- https://github.com/orgs/Graphic-Tshirts/discussions/22
+- https://github.com/orgs/Graphic-Tshirts/discussions/21
+- https://github.com/orgs/Graphic-Tshirts/discussions/20
+- https://github.com/orgs/Graphic-Tshirts/discussions/19
+- https://github.com/orgs/Graphic-Tshirts/discussions/18
+- https://github.com/orgs/Graphic-Tshirts/discussions/17
+- https://github.com/orgs/Graphic-Tshirts/discussions/16
+- https://github.com/orgs/Graphic-Tshirts/discussions/15
+- https://github.com/orgs/Graphic-Tshirts/discussions/14
+- https://github.com/orgs/Graphic-Tshirts/discussions/13
+- https://github.com/orgs/Graphic-Tshirts/discussions/12
+- https://github.com/orgs/Graphic-Tshirts/discussions/11
+- https://github.com/orgs/Graphic-Tshirts/discussions/10
+- https://github.com/orgs/Graphic-Tshirts/discussions/09
+- https://github.com/orgs/Graphic-Tshirts/discussions/08
+- https://github.com/orgs/Graphic-Tshirts/discussions/07
+- https://github.com/orgs/Graphic-Tshirts/discussions/06
+- https://github.com/orgs/Graphic-Tshirts/discussions/05
+- https://github.com/orgs/Graphic-Tshirts/discussions/04
 
 ## Status
 
