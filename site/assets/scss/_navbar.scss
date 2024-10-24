@@ -61,6 +61,12 @@
       color: $white;
     }
 
+    &:focus-visible {
+      outline: $white auto 1px;
+      outline: -webkit-focus-ring-color auto 1px;
+      box-shadow: none;
+    }
+
     &.active {
       font-weight: 600;
       color: $white;
