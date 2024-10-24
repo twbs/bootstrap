@@ -178,6 +178,58 @@ describe('Dropdown', () => {
       }))
       expect(popperConfig.placement).toEqual('left')
     })
+
+    it('should reflect strategy option in the constructor', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown, {
+          strategy: 'fixed'
+        })
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          const dropdownMenu = document.querySelector('.dropdown-menu')
+          expect(dropdownMenu).not.toBeNull()
+          expect(dropdownMenu.computedStyleMap().get('position').value).toEqual('fixed')
+          resolve()
+        })
+
+        dropdown.toggle()
+      })
+    })
+
+    it('should reflect strategy option in data attribute', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-strategy="fixed">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          const dropdownMenu = document.querySelector('.dropdown-menu')
+          expect(dropdownMenu).not.toBeNull()
+          expect(dropdownMenu.computedStyleMap().get('position').value).toEqual('fixed')
+          resolve()
+        })
+
+        dropdown.toggle()
+      })
+    })
   })
 
   describe('toggle', () => {
