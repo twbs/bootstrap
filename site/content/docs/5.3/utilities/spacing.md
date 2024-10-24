@@ -103,11 +103,11 @@ The syntax is nearly the same as the default, positive margin utilities, but wit
 When using `display: grid` or `display: flex`, you can make use of `gap` utilities on the parent element. This can save on having to add margin utilities to individual children of a grid or flex container. Gap utilities are responsive by default, and are generated via our utilities API, based on the `$spacers` Sass map.
 
 {{< example class="bd-example-cssgrid" >}}
-<div class="grid gap-3">
-  <div class="p-2 g-col-6">Grid item 1</div>
-  <div class="p-2 g-col-6">Grid item 2</div>
-  <div class="p-2 g-col-6">Grid item 3</div>
-  <div class="p-2 g-col-6">Grid item 4</div>
+<div style="grid-template-columns: 1fr 1fr;" class="d-grid gap-3">
+  <div class="p-2">Grid item 1</div>
+  <div class="p-2">Grid item 2</div>
+  <div class="p-2">Grid item 3</div>
+  <div class="p-2">Grid item 4</div>
 </div>
 {{< /example >}}
 
@@ -118,11 +118,11 @@ Support includes responsive options for all of Bootstrap's grid breakpoints, as 
 `row-gap` sets the vertical space between children items in the specified container.
 
 {{< example class="bd-example-cssgrid" >}}
-<div class="grid gap-0 row-gap-3">
-  <div class="p-2 g-col-6">Grid item 1</div>
-  <div class="p-2 g-col-6">Grid item 2</div>
-  <div class="p-2 g-col-6">Grid item 3</div>
-  <div class="p-2 g-col-6">Grid item 4</div>
+<div style="grid-template-columns: 1fr 1fr;" class="d-grid gap-0 row-gap-3">
+  <div class="p-2">Grid item 1</div>
+  <div class="p-2">Grid item 2</div>
+  <div class="p-2">Grid item 3</div>
+  <div class="p-2">Grid item 4</div>
 </div>
 {{< /example >}}
 
@@ -131,11 +131,11 @@ Support includes responsive options for all of Bootstrap's grid breakpoints, as 
 `column-gap` sets the horizontal space between children items in the specified container.
 
 {{< example class="bd-example-cssgrid" >}}
-<div class="grid gap-0 column-gap-3">
-  <div class="p-2 g-col-6">Grid item 1</div>
-  <div class="p-2 g-col-6">Grid item 2</div>
-  <div class="p-2 g-col-6">Grid item 3</div>
-  <div class="p-2 g-col-6">Grid item 4</div>
+<div style="grid-template-columns: 1fr 1fr;" class="d-grid gap-0 column-gap-3">
+  <div class="p-2">Grid item 1</div>
+  <div class="p-2">Grid item 2</div>
+  <div class="p-2">Grid item 3</div>
+  <div class="p-2">Grid item 4</div>
 </div>
 {{< /example >}}
 

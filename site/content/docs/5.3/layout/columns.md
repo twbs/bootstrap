@@ -203,7 +203,7 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 ### Order classes
 
-Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all six grid tiers. If you need more `.order-*` classes, you can modify the default number via Sass variable.
+Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all six grid tiers.
 
 {{< example class="bd-example-row" >}}
 <div class="container text-center">
@@ -238,6 +238,28 @@ There are also responsive `.order-first` and `.order-last` classes that change t
   </div>
 </div>
 {{< /example >}}
+
+If you need more `.order-*` classes, you can add new ones by modifying our `$utilities` Sass map. [Read our Sass maps and loops docs]({{< docsref "/customize/sass#maps-and-loops" >}}) or [our Modify utilities docs]({{< docsref "/utilities/api#modify-utilities" >}}) for details.
+
+```scss
+$utilities: map-merge(
+  $utilities,
+  (
+    "order": map-merge(
+      map-get($utilities, "order"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "order"), "values"),
+          (
+            6: 6, // Add a new `.order-{breakpoint}-6` utility
+            last: 7 // Change the `.order-{breakpoint}-last` utility to use the next number
+          )
+        ),
+      ),
+    ),
+  )
+);
+```
 
 ### Offsetting columns
 
