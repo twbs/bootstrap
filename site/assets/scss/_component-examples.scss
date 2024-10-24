@@ -3,6 +3,8 @@
 //
 
 .bd-code-snippet {
+  display: flex;
+  flex-direction: column;
   margin: 0 ($bd-gutter-x * -.5) 1rem;
   border: solid var(--bs-border-color);
   border-width: 1px 0;
@@ -392,7 +394,11 @@
 }
 
 .bd-file-ref {
+  position: relative;
+
   .highlight-toolbar {
+    min-height: $spacer * 2.625;
+
     @include media-breakpoint-up(md) {
       @include border-top-radius(calc(var(--bs-border-radius) - 1px));
     }
