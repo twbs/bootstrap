@@ -14,7 +14,7 @@
     {{- $len := len $entry.examples -}}
     {{ if (eq $i 0) }}<div class="row">{{ end }}
       {{ if $entry.external -}}
-        <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+        <article class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
           <svg class="bi fs-5 flex-shrink-0 mt-1" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
           <div>
             <h3 class="h5 mb-1">
@@ -32,9 +32,9 @@
               </a>
             </p>
           </div>
-        </div>
+        </article>
       {{ else -}}
-        <div class="col-sm-6 col-md-3 mb-3">
+        <article class="col-sm-6 col-md-3 mb-3">
           {{- $exampleNameUrlized := $example.name | urlize -}}
           {{- $exampleUrl := urls.JoinPath "/docs" $.Site.Params.docs_version "/examples" $exampleNameUrlized "/" }}
           <a class="d-block link-offset-1" href="{{ $exampleUrl }}"{{ if in $example.name "RTL" }} hreflang="ar"{{ end }}>
@@ -55,7 +55,7 @@
             </h3>
           </a>
           <p class="text-body-secondary">{{ $example.description }}</p>
-        </div>
+        </article>
       {{- end }}
     {{ if (eq (add $i 1) $len) }}</div>{{ end -}}
   {{ end -}}
