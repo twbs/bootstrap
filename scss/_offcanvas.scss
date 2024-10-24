@@ -127,7 +127,12 @@
 
   .btn-close {
     padding: calc(var(--#{$prefix}offcanvas-padding-y) * .5) calc(var(--#{$prefix}offcanvas-padding-x) * .5);
-    margin: calc(-.5 * var(--#{$prefix}offcanvas-padding-y)) calc(-.5 * var(--#{$prefix}offcanvas-padding-x)) calc(-.5 * var(--#{$prefix}offcanvas-padding-y)) auto;
+
+    // An equivalent `margin` shorthand is not used to ensure that the `auto` left margin is applied correctly
+    margin-top: calc(-.5 * var(--#{$prefix}offcanvas-padding-y));
+    margin-right: calc(-.5 * var(--#{$prefix}offcanvas-padding-x));
+    margin-bottom: calc(-.5 * var(--#{$prefix}offcanvas-padding-y));
+    margin-left: auto;
   }
 }
 
