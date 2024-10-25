@@ -1,3 +1,7 @@
-$enable-debugger-classes: true; // stylelint-disable-line scss/dollar-variable-default
+$enable-debugger-classes: true !default;
 
-@import "bootstrap";
+@import "functions";
+@import "variables";
+@import "mixins";
+
+@import "debug";
