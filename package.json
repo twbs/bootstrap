@@ -103,9 +103,9 @@
     "@popperjs/core": "^2.11.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.25.7",
-    "@babel/core": "^7.25.8",
-    "@babel/preset-env": "^7.25.8",
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.25.9",
+    "@babel/preset-env": "^7.25.9",
     "@docsearch/js": "^3.6.2",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.0.4",
@@ -127,7 +127,7 @@
     "find-unused-sass-variables": "^6.0.0",
     "globby": "^14.0.2",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.133.1",
+    "hugo-bin": "^0.133.5",
     "ip": "^2.0.1",
     "jasmine": "^5.3.0",
     "jquery": "^3.7.1",
@@ -142,7 +142,7 @@
     "karma-rollup-preprocessor": "7.0.7",
     "lockfile-lint": "^4.14.0",
     "nodemon": "^3.1.7",
-    "npm-run-all2": "^6.2.3",
+    "npm-run-all2": "^7.0.1",
     "postcss": "^8.4.47",
     "postcss-cli": "^11.0.0",
     "rollup": "^4.24.0",
@@ -154,7 +154,7 @@
     "stylelint": "^16.10.0",
     "stylelint-config-twbs-bootstrap": "^15.1.0",
     "terser": "^5.36.0",
-    "vnu-jar": "23.4.11"
+    "vnu-jar": "24.10.17"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
