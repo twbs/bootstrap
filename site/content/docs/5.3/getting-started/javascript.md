@@ -24,7 +24,7 @@ A better alternative for those using this type of frameworks is to use a framewo
   {{< /callout >}}
 - Vue: [BootstrapVue](https://bootstrap-vue.org/) (Bootstrap 4)
 - Vue 3: [BootstrapVueNext](https://bootstrap-vue-next.github.io/bootstrap-vue-next/) (Bootstrap 5, currently in alpha)
-- Angular: [ng-bootstrap](https://ng-bootstrap.github.io/)
+- Angular: [ng-bootstrap](https://ng-bootstrap.github.io/) or [ngx-bootstrap](https://valor-software.com/ngx-bootstrap)
 
 ## Using Bootstrap as a module
 
