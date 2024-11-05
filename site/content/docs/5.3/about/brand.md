@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Brand guidelines
-description: Documentation and examples for Bootstrap's logo and brand usage guidelines.
+description: Documentation and examples for Bootstrap's logo, brand usage, and colors.
 group: about
 toc: true
 ---
@@ -9,35 +9,63 @@ toc: true
 Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well.
 
 ## Logo
-
 When referencing Bootstrap, use our logo mark. Do not modify our logos in any way. Do not use Bootstrap's branding for your own open or closed source projects.
 
-<div class="bd-brand-item px-2 py-5 mb-3 border rounded-3">
-  <img class="d-block img-fluid mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="256" height="204">
-</div>
+![Bootstrap Logo](path/to/logo.svg)
 
 Our logo mark is also available in black and white. All rules for our primary logo apply to these as well.
 
-<div class="bd-brand-logos d-sm-flex text-center bg-light rounded-3 overflow-hidden w-100 mb-3">
-  <div class="bd-brand-item w-100 px-2 py-5">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo-black.svg" alt="Bootstrap" width="128" height="102" loading="lazy">
-  </div>
-  <div class="bd-brand-item w-100 px-2 py-5 inverse">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo-white.svg" alt="Bootstrap" width="128" height="102" loading="lazy">
-  </div>
-</div>
-
 ## Name
+Bootstrap should always be referred to as just Bootstrap. No capital S.
 
-Bootstrap should always be referred to as just **Bootstrap**. No capital _s_.
+- **Correct:** Bootstrap
+- **Incorrect:** BootStrap
 
-<div class="bd-brand-logos d-sm-flex text-center border rounded-3 overflow-hidden w-100 mb-3">
-  <div class="bd-brand-item w-100 px-2 py-5">
-    <div class="h3">Bootstrap</div>
-    <strong class="text-success">Correct</strong>
+## Brand Colors
+Bootstrap's brand palette includes these primary colors, used throughout the framework to provide a consistent, recognizable look and feel.
+
+<div class="color-swatches">
+  <div class="color-swatch" style="background-color: #0d6efd;">
+    <p>Primary</p>
+    <code>#0d6efd</code>
   </div>
-  <div class="bd-brand-item w-100 px-2 py-5">
-    <div class="h3 text-body-secondary">BootStrap</div>
-    <strong class="text-danger">Incorrect</strong>
+  <div class="color-swatch" style="background-color: #6c757d;">
+    <p>Secondary</p>
+    <code>#6c757d</code>
+  </div>
+  <div class="color-swatch" style="background-color: #198754;">
+    <p>Success</p>
+    <code>#198754</code>
+  </div>
+  <div class="color-swatch" style="background-color: #dc3545;">
+    <p>Danger</p>
+    <code>#dc3545</code>
+  </div>
+  <div class="color-swatch" style="background-color: #ffc107;">
+    <p>Warning</p>
+    <code>#ffc107</code>
+  </div>
+  <div class="color-swatch" style="background-color: #0dcaf0;">
+    <p>Info</p>
+    <code>#0dcaf0</code>
+  </div>
+  <div class="color-swatch" style="background-color: #f8f9fa;">
+    <p>Light</p>
+    <code>#f8f9fa</code>
+  </div>
+  <div class="color-swatch" style="background-color: #212529;">
+    <p>Dark</p>
+    <code>#212529</code>
   </div>
 </div>
+
+Each color serves a unique purpose:
+- **Primary** (#0d6efd): For main actions and links.
+- **Secondary** (#6c757d): For secondary content.
+- **Success** (#198754): Used for success messages and confirmations.
+- **Danger** (#dc3545): Used for error states and alerts.
+- **Warning** (#ffc107): Used for warning messages and attention elements.
+- **Info** (#0dcaf0): Used for informational content.
+- **Light** (#f8f9fa) and **Dark** (#212529): Background and text colors.
+
+Add these colors to maintain consistency and align with Bootstrap’s branding guidelines.
