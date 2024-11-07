@@ -244,3 +244,11 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 ## Copyright and license
 
 Code and documentation copyright 2011–2024 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors). Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+
+
+https://podcasters.spotify.com/pod/show/jessie403/episodes/Phishing-Alert-The-New-Email-Scam-Targeting-Rochester-Residents-e2qlt6g
+https://podcasters.spotify.com/pod/show/jessie403/episodes/Beware-the-Jury-Duty-Scam-Chatham-Countys-Warning-e2qlt38
+https://podcasters.spotify.com/pod/show/jessie403/episodes/Scam-Wise-Podcast-Oasis-Ticket-Scams--How-to-Avoid-Losing-Big-e2qlsp2
+https://podcasters.spotify.com/pod/show/jessie403/episodes/Skimmed-Dry-Protecting-Your-EBT-Card-from-Scammers-e2qlsjp
+https://podcasters.spotify.com/pod/show/jessie403/episodes/Beware-the-Arrest-Warrant-Phone-Scam-Protecting-Champaign-County-e2qlset
+https://podcasters.spotify.com/pod/show/jessie403/episodes/AI-Imposters-How-Voice-Cloning-Nearly-Cost-a-Mom-50-000-e2qls0o
