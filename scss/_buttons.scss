@@ -50,7 +50,6 @@
   .btn-check + &:hover {
     // override for the checkbox/radio buttons
     color: var(--#{$prefix}btn-color);
-    background-color: var(--#{$prefix}btn-bg);
     border-color: var(--#{$prefix}btn-border-color);
   }
 
