@@ -57,6 +57,10 @@ const SelectorEngine = {
     return parents
   },
 
+  closest(element, selector) {
+    return Element.prototype.closest.call(element, selector)
+  },
+
   prev(element, selector) {
     let previous = element.previousElementSibling
 
