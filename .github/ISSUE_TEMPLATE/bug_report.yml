@@ -1,4 +1,5 @@
-name: Report a bug
+name: track visitors
+
 description: Tell us about a bug or issue you may have identified in Bootstrap.
 title: "Provide a general summary of the issue"
 labels: [bug]
