@@ -116,7 +116,9 @@
 }
 
 .accordion-body {
+  max-height: 50vh;
   padding: var(--#{$prefix}accordion-body-padding-y) var(--#{$prefix}accordion-body-padding-x);
+  overflow-y: auto;
 }
 
 
