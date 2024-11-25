@@ -128,13 +128,11 @@ Add classes to an element to easily round its corners.
 {{< placeholder width="75" height="75" class="rounded-end" title="Example right rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-bottom" title="Example bottom rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-start" title="Example left rounded image" >}}
-{{< placeholder width="75" height="75" class="rounded-circle" title="Completely round image" >}}
-{{< placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" >}}
 {{< /example >}}
 
 ### Sizes
 
-Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `5`, and can be configured by modifying the utilities API.
+Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `5` including `circle` and `pill`, and can be configured by modifying the utilities API.
 
 {{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" >}}
@@ -143,6 +141,8 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 {{< placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-4" title="Example larger rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-5" title="Example extra large rounded image" >}}
+{{< placeholder width="75" height="75" class="rounded-circle" title="Completely round image" >}}
+{{< placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" >}}
 {{< /example >}}
 
 {{< example class="bd-example-rounded-utils" >}}
