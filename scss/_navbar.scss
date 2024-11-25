@@ -266,8 +266,7 @@
   @include deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
 }
 
-.navbar-dark,
-.navbar[data-bs-theme="dark"] {
+@mixin navbar-dark() {
   // scss-docs-start navbar-dark-css-vars
   --#{$prefix}navbar-color: #{$navbar-dark-color};
   --#{$prefix}navbar-hover-color: #{$navbar-dark-hover-color};
@@ -280,10 +279,16 @@
   // scss-docs-end navbar-dark-css-vars
 }
 
+.navbar-dark {
+  @include navbar-dark();
+}
+
 @if $enable-dark-mode {
-  @include color-mode(dark) {
-    .navbar-toggler-icon {
-      --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
-    }
+  @include color-mode(dark, ".navbar") {
+    @include navbar-dark();
+  }
+
+  @include color-mode(dark, ".navbar-toggler-icon") {
+    --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
   }
 }

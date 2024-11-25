@@ -221,16 +221,7 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode(dark) {
-    @if $color-mode-type == "media-query" {
-      .carousel {
-        @include carousel-dark();
-      }
-    } @else {
-      .carousel,
-      &.carousel {
-        @include carousel-dark();
-      }
-    }
+  @include color-mode(dark, ".carousel") {
+    @include carousel-dark();
   }
 }

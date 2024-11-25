@@ -130,7 +130,7 @@
 }
 
 @if $enable-dark-mode {
-  @include color-mode(dark, true) {
+  @include color-mode(dark) {
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars

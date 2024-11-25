@@ -5,7 +5,7 @@
   --docsearch-logo-color: var(--bd-violet);
 }
 
-@include color-mode(dark, true) {
+@include color-mode(dark) {
   // From here, the values are copied from https://cdn.jsdelivr.net/npm/@docsearch/css@3
   // in html[data-theme="dark"] selector
   // and are slightly modified for formatting purpose
