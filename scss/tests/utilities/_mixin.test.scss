@@ -1,0 +1,35 @@
+@import "../../functions";
+@import "../../variables";
+@import "../../variables-dark";
+@import "../../maps";
+@import "../../mixins";
+@import "../../utilities";
+@import "../../utilities/api";
+
+@include describe("utility mixin") {
+  @include it("generate property-value pairs for given utility") {
+
+    @include assert() {
+      @include output() {
+        .test {
+          @include util(d-block);
+          @include util(p-3);
+        }
+        .test2 {
+          @include util(d-block, p-3);
+        }
+      }
+
+      @include expect() {
+        .test {
+          display: block;
+          padding: 1rem;
+        }
+        .test2 {
+          display: block;
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}
