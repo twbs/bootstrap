@@ -1,16 +1,33 @@
 @if $enable-debugger-classes {
-  .#{$prefix}grid-debug {
+  %grid-debug {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1999;
+      pointer-events: none;
+      content: "";
+      background: repeating-linear-gradient(to right, transparent, transparent calc(var(--#{$prefix}gutter-x) * .5), var(--#{$prefix}primary) calc(var(--#{$prefix}gutter-x) * .5), var(--#{$prefix}primary) calc((100% - 12 * var(--#{$prefix}gutter-x)) / 12 + var(--#{$prefix}gutter-x) * .5), transparent calc((100% - 12 * var(--#{$prefix}gutter-x)) / 12 + var(--#{$prefix}gutter-x) * .5), transparent calc(100% / 12)); // stylelint-disable-line function-disallowed-list
+      opacity: .3;
+    }
+  }
+
+  .#{$prefix}debug-grids {
     &::before {
       position: fixed;
       top: 0;
       left: 0;
       z-index: 2000;
-      padding: $spacer * .5 $spacer;
+      padding: .5em 1em;
       font-family: $font-family-base;
       color: $black;
       background-color: $white;
       border-radius: 0 0 4px; // stylelint-disable-line property-disallowed-list
-      @include font-size($h1-font-size);
+      @include font-size(var(--#{$prefix}debug-label-font-size, $h1-font-size));
     }
 
     @each $breakpoint, $value in $grid-breakpoints {
@@ -25,20 +42,11 @@
     &[class^="container"],
     .row,
     &.row {
-      position: relative;
-
-      &::before {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1999;
-        pointer-events: none;
-        content: "";
-        background: repeating-linear-gradient(to right, transparent, transparent calc(var(--#{$prefix}gutter-x) * .5), var(--#{$prefix}primary) calc(var(--#{$prefix}gutter-x) * .5), var(--#{$prefix}primary) calc((100% - 12 * var(--#{$prefix}gutter-x)) / 12 + var(--#{$prefix}gutter-x) * .5), transparent calc((100% - 12 * var(--#{$prefix}gutter-x)) / 12 + var(--#{$prefix}gutter-x) * .5), transparent calc(100% / 12)); // stylelint-disable-line function-disallowed-list
-        opacity: .3;
-      }
+      @extend %grid-debug;
     }
+  }
+
+  .#{$prefix}debug-grid-cols {
+    @extend %grid-debug;
   }
 }
