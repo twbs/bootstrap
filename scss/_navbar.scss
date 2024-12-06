@@ -253,6 +253,14 @@
           }
         }
       }
+
+      @include media-breakpoint-between(md, lg) {
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          min-width: 200px;
+        }
+      }
     }
   }
 }
