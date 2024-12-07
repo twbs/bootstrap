@@ -10,6 +10,8 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import SelectorEngine from './dom/selector-engine.js'
+import Modal from "./modal";
+
 import {
   defineJQueryPlugin,
   execute,
@@ -442,8 +444,10 @@ EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataAp
 EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+  Modal.disableToggleEvent()
   event.preventDefault()
   Dropdown.getOrCreateInstance(this).toggle()
+  Modal.enableToggleEvent()
 })
 
 /**
