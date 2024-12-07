@@ -96,8 +96,13 @@
 }
 
 .masthead-notice {
+  padding-top: .45rem;
   background-color: var(--bd-accent);
   box-shadow: inset 0 -1px 1px rgba(var(--bs-body-color-rgb), .15), 0 .25rem 1.5rem rgba(var(--bs-body-bg-rgb), .75);
+
+  svg{
+    transform: translateY(.1875rem);
+  }
 }
 
 .animate-img {
