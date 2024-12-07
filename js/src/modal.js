@@ -330,6 +330,43 @@ class Modal extends BaseComponent {
       data[config](relatedTarget)
     })
   }
+
+  static disableToggleEvent() {
+    EventHandler.off(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE)
+  }
+
+  static enableToggleEvent() {
+    EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+      const target = SelectorEngine.getElementFromSelector(this)
+
+      if (['A', 'AREA'].includes(this.tagName)) {
+        event.preventDefault()
+      }
+
+      EventHandler.one(target, EVENT_SHOW, showEvent => {
+        if (showEvent.defaultPrevented) {
+          // only register focus restorer if modal will actually get shown
+          return
+        }
+
+        EventHandler.one(target, EVENT_HIDDEN, () => {
+          if (isVisible(this)) {
+            this.focus()
+          }
+        })
+      })
+
+      // avoid conflict when clicking modal toggler while another one is open
+      const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR)
+      if (alreadyOpen) {
+        Modal.getInstance(alreadyOpen).hide()
+      }
+
+      const data = Modal.getOrCreateInstance(target)
+
+      data.toggle(this)
+    })
+  }
 }
 
 /**
