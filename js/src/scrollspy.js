@@ -43,7 +43,7 @@ const Default = {
   rootMargin: '0px 0px -25%',
   smoothScroll: false,
   target: null,
-  threshold: [0.1, 0.5, 1]
+  threshold: []
 }
 
 const DefaultType = {
@@ -65,13 +65,10 @@ class ScrollSpy extends BaseComponent {
     // this._element is the observablesContainer and config.target the menu links wrapper
     this._targetLinks = new Map()
     this._observableSections = new Map()
+    this._activeState = new Map()
+    this._previousActive = null
     this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
-    this._activeTarget = null
     this._observer = null
-    this._previousScrollData = {
-      visibleEntryTop: 0,
-      parentScrollTop: 0
-    }
     this.refresh() // initialize
   }
 
@@ -161,40 +158,28 @@ class ScrollSpy extends BaseComponent {
 
   // The logic of selection
   _observerCallback(entries) {
-    const targetElement = entry => this._targetLinks.get(`#${entry.target.id}`)
-    const activate = entry => {
-      this._previousScrollData.visibleEntryTop = entry.target.offsetTop
-      this._process(targetElement(entry))
+    const targetElement = entryId => this._targetLinks.get(entryId)
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        this._activeState.set(`#${entry.target.id}`, true)
+      } else {
+        this._activeState.set(`#${entry.target.id}`, false)
+      }
     }
 
-    const parentScrollTop = (this._rootElement || document.documentElement).scrollTop
-    const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
-    this._previousScrollData.parentScrollTop = parentScrollTop
-
-    for (const entry of entries) {
-      if (!entry.isIntersecting) {
-        this._activeTarget = null
-        this._clearActiveClass(targetElement(entry))
-
-        continue
+    let found = false
+    for (const [key, val] of this._activeState.entries()) {
+      if (!found && val) {
+        found = true
+        this._previousActive = key
+        this._setActiveClass(targetElement(key))
+      } else {
+        this._clearActiveClass(targetElement(key))
       }
+    }
 
-      const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop
-      // if we are scrolling down, pick the bigger offsetTop
-      if (userScrollsDown && entryIsLowerThanPrevious) {
-        activate(entry)
-        // if parent isn't scrolled, let's keep the first visible item, breaking the iteration
-        if (!parentScrollTop) {
-          return
-        }
-
-        continue
-      }
-
-      // if we are scrolling up, pick the smallest offsetTop
-      if (!userScrollsDown && !entryIsLowerThanPrevious) {
-        activate(entry)
-      }
+    if (!found) {
+      this._setActiveClass(targetElement(this._previousActive))
     }
   }
 
@@ -216,20 +201,15 @@ class ScrollSpy extends BaseComponent {
       if (isVisible(observableSection)) {
         this._targetLinks.set(decodeURI(anchor.hash), anchor)
         this._observableSections.set(anchor.hash, observableSection)
+        this._activeState.set(anchor.hash, false)
       }
     }
   }
 
-  _process(target) {
-    if (this._activeTarget === target) {
-      return
-    }
-
-    this._clearActiveClass(this._config.target)
-    this._activeTarget = target
-    target.classList.add(CLASS_NAME_ACTIVE)
+  _setActiveClass(target) {
     this._activateParents(target)
 
+    target.classList.add(CLASS_NAME_ACTIVE)
     EventHandler.trigger(this._element, EVENT_ACTIVATE, { relatedTarget: target })
   }
 
