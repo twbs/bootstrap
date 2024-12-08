@@ -25,7 +25,7 @@ To render an accordion that's expanded by default:
 - add the `.show` class on the `.accordion-collapse` element.
 - drop the `.collapsed` class from the `.accordion-button` element and set its `aria-expanded` attribute to `true`.
 
-{{< example >}}
+{{< example buttons_label="standard accordion example">}}
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -70,7 +70,7 @@ To render an accordion that's expanded by default:
 
 Add `.accordion-flush` to remove some borders and rounded corners to render accordions edge-to-edge with their parent container.
 
-{{< example class="bg-body-secondary" >}}
+{{< example class="bg-body-secondary" buttons_label="flush accordion example">}}
 <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -109,7 +109,7 @@ Add `.accordion-flush` to remove some borders and rounded corners to render acco
 
 Omit the `data-bs-parent` attribute on each `.accordion-collapse` to make accordion items stay open when another item is opened.
 
-{{< example >}}
+{{< example buttons_label="always opened accordion example">}}
 <div class="accordion" id="accordionPanelsStayOpenExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
