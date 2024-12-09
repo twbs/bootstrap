@@ -35,8 +35,9 @@
     }
   ],
   "main": "dist/js/bootstrap.js",
-  "module": "dist/js/bootstrap.esm.js",
+  "module": "js/index.esm.js",
   "sass": "scss/bootstrap.scss",
+  "sideEffects": false,
   "style": "dist/css/bootstrap.css",
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
