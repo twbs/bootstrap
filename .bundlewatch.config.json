@@ -1,59 +1,59 @@
 {
   "files": [
     {
-      "path": "./dist/css/bootstrap-grid.css",
+      "path": "./dist/css/axia-grid.css",
       "maxSize": "6.5 kB"
     },
     {
-      "path": "./dist/css/bootstrap-grid.min.css",
+      "path": "./dist/css/axia-grid.min.css",
       "maxSize": "6.0 kB"
     },
     {
-      "path": "./dist/css/bootstrap-reboot.css",
+      "path": "./dist/css/axia-reboot.css",
       "maxSize": "3.5 kB"
     },
     {
-      "path": "./dist/css/bootstrap-reboot.min.css",
+      "path": "./dist/css/axia-reboot.min.css",
       "maxSize": "3.25 kB"
     },
     {
-      "path": "./dist/css/bootstrap-utilities.css",
+      "path": "./dist/css/axia-utilities.css",
       "maxSize": "11.75 kB"
     },
     {
-      "path": "./dist/css/bootstrap-utilities.min.css",
+      "path": "./dist/css/axia-utilities.min.css",
       "maxSize": "10.75 kB"
     },
     {
-      "path": "./dist/css/bootstrap.css",
+      "path": "./dist/css/axia.css",
       "maxSize": "32.5 kB"
     },
     {
-      "path": "./dist/css/bootstrap.min.css",
+      "path": "./dist/css/axia.min.css",
       "maxSize": "30.25 kB"
     },
     {
-      "path": "./dist/js/bootstrap.bundle.js",
+      "path": "./dist/js/axia.bundle.js",
       "maxSize": "43.0 kB"
     },
     {
-      "path": "./dist/js/bootstrap.bundle.min.js",
+      "path": "./dist/js/axia.bundle.min.js",
       "maxSize": "23.5 kB"
     },
     {
-      "path": "./dist/js/bootstrap.esm.js",
+      "path": "./dist/js/axia.esm.js",
       "maxSize": "28.0 kB"
     },
     {
-      "path": "./dist/js/bootstrap.esm.min.js",
+      "path": "./dist/js/axia.esm.min.js",
       "maxSize": "18.25 kB"
     },
     {
-      "path": "./dist/js/bootstrap.js",
+      "path": "./dist/js/axia.js",
       "maxSize": "28.75 kB"
     },
     {
-      "path": "./dist/js/bootstrap.min.js",
+      "path": "./dist/js/axia.min.js",
       "maxSize": "16.25 kB"
     }
   ],

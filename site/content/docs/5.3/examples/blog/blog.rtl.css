@@ -1,7 +1,7 @@
 /* stylelint-disable @stylistic/selector-list-comma-newline-after */
 
 .blog-header-logo {
-  font-family: Amiri, Georgia, "Times New Roman", serif;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
   font-size: 2.25rem;
 }
 
@@ -10,7 +10,7 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Amiri, Georgia, "Times New Roman", serif;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
 }
 
 .flex-auto {
@@ -37,3 +37,4 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.25rem;
   color: #727272;
 }
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImJsb2cuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6ImJsb2cucnRsLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIHN0eWxlbGludC1kaXNhYmxlIEBzdHlsaXN0aWMvc2VsZWN0b3ItbGlzdC1jb21tYS1uZXdsaW5lLWFmdGVyICovXG5cbi5ibG9nLWhlYWRlci1sb2dvIHtcbiAgZm9udC1mYW1pbHk6IFwiUGxheWZhaXIgRGlzcGxheVwiLCBHZW9yZ2lhLCBcIlRpbWVzIE5ldyBSb21hblwiLCBzZXJpZi8qcnRsOkFtaXJpLCBHZW9yZ2lhLCBcIlRpbWVzIE5ldyBSb21hblwiLCBzZXJpZiovO1xuICBmb250LXNpemU6IDIuMjVyZW07XG59XG5cbi5ibG9nLWhlYWRlci1sb2dvOmhvdmVyIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xufVxuXG5oMSwgaDIsIGgzLCBoNCwgaDUsIGg2IHtcbiAgZm9udC1mYW1pbHk6IFwiUGxheWZhaXIgRGlzcGxheVwiLCBHZW9yZ2lhLCBcIlRpbWVzIE5ldyBSb21hblwiLCBzZXJpZi8qcnRsOkFtaXJpLCBHZW9yZ2lhLCBcIlRpbWVzIE5ldyBSb21hblwiLCBzZXJpZiovO1xufVxuXG4uZmxleC1hdXRvIHtcbiAgZmxleDogMCAwIGF1dG87XG59XG5cbi5oLTI1MCB7IGhlaWdodDogMjUwcHg7IH1cbkBtZWRpYSAobWluLXdpZHRoOiA3NjhweCkge1xuICAuaC1tZC0yNTAgeyBoZWlnaHQ6IDI1MHB4OyB9XG59XG5cbi8qIFBhZ2luYXRpb24gKi9cbi5ibG9nLXBhZ2luYXRpb24ge1xuICBtYXJnaW4tYm90dG9tOiA0cmVtO1xufVxuXG4vKlxuICogQmxvZyBwb3N0c1xuICovXG4uYmxvZy1wb3N0IHtcbiAgbWFyZ2luLWJvdHRvbTogNHJlbTtcbn1cbi5ibG9nLXBvc3QtbWV0YSB7XG4gIG1hcmdpbi1ib3R0b206IDEuMjVyZW07XG4gIGNvbG9yOiAjNzI3MjcyO1xufSJdfQ== */

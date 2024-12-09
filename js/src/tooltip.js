@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap tooltip.js
+ * Axia tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -105,7 +105,7 @@ const DefaultType = {
 class Tooltip extends BaseComponent {
   constructor(element, config) {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)')
+      throw new TypeError('Axia\'s tooltips require Popper (https://popper.js.org/docs/v2/)')
     }
 
     super(element, config)

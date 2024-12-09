@@ -1,8 +1,8 @@
 $color-mode-type: media-query;
 
-@import "../../bootstrap";
+@import "../../axia";
 
 @include describe("global $color-mode-type: media-query") {
-  @include it("compiles entirely Bootstrap CSS with media-query color mode") { // stylelint-disable-line block-no-empty
+  @include it("compiles entirely Axia CSS with media-query color mode") { // stylelint-disable-line block-no-empty
   }
 }

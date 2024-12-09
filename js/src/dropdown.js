@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dropdown.js
+ * Axia dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -224,7 +224,7 @@ class Dropdown extends BaseComponent {
 
   _createPopper() {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)')
+      throw new TypeError('Axia\'s dropdowns require Popper (https://popper.js.org/docs/v2/)')
     }
 
     let referenceElement = this._element

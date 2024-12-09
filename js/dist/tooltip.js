@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap tooltip.js v5.3.3 (https://getbootstrap.com/)
-  * Copyright 2011-2024 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Axia tooltip.js v5.3.3 (https://getbootstrap.com/)
+  * Copyright 2011-2024 The Axia Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -30,7 +30,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap tooltip.js
+   * Axia tooltip.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -115,7 +115,7 @@
   class Tooltip extends BaseComponent {
     constructor(element, config) {
       if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
+        throw new TypeError('Axia\'s tooltips require Popper (https://popper.js.org)');
       }
       super(element, config);
 

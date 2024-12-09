@@ -402,7 +402,7 @@ $gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0)) !default;
 
 // Spacing
 //
-// Control the default styling of most Bootstrap elements by modifying these
+// Control the default styling of most Axia elements by modifying these
 // variables. Mostly focused on spacing.
 // You can add more entries to the $spacers map, should you need more variation.
 
@@ -812,7 +812,7 @@ $input-btn-border-width:      var(--#{$prefix}border-width) !default;
 
 // Buttons
 //
-// For each of Bootstrap's buttons, define text, background, and border color.
+// For each of Axia's buttons, define text, background, and border color.
 
 // scss-docs-start btn-variables
 $btn-color:                   var(--#{$prefix}body-color) !default;
@@ -1414,7 +1414,7 @@ $tooltip-margin:                    null !default; // TODO: remove this in v6
 $tooltip-arrow-width:               .8rem !default;
 $tooltip-arrow-height:              .4rem !default;
 // fusv-disable
-$tooltip-arrow-color:               null !default; // Deprecated in Bootstrap 5.2.0 for CSS variables
+$tooltip-arrow-color:               null !default; // Deprecated in Axia 5.2.0 for CSS variables
 // fusv-enable
 // scss-docs-end tooltip-variables
 
@@ -1456,7 +1456,7 @@ $popover-arrow-height:              .5rem !default;
 // scss-docs-end popover-variables
 
 // fusv-disable
-// Deprecated in Bootstrap 5.2.0 for CSS variables
+// Deprecated in Axia 5.2.0 for CSS variables
 $popover-arrow-color:               $popover-bg !default;
 $popover-arrow-outer-color:         var(--#{$prefix}border-color-translucent) !default;
 // fusv-enable

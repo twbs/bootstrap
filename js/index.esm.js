@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap index.esm.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * Axia index.esm.js
+ * Licensed under MIT (https://github.com/nervcomputer/axia/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 

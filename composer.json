@@ -1,5 +1,5 @@
 {
-  "name": "twbs/bootstrap",
+  "name": "nervcomputer/axia",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "keywords": [
     "css",
@@ -11,8 +11,12 @@
     "framework",
     "web"
   ],
-  "homepage": "https://getbootstrap.com/",
+  "homepage": "https://getaxia.com/",
   "authors": [
+    {
+      "name": "Julius Dockwarder",
+      "email": "Julius.Dockwarder@nerv.de"
+    },
     {
       "name": "Mark Otto",
       "email": "markdotto@gmail.com"
@@ -23,7 +27,7 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/twbs/bootstrap/issues"
+    "issues": "https://github.com/nervcomputer/axia/issues"
   },
   "license": "MIT",
   "replace": {

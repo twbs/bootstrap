@@ -62,7 +62,7 @@
 
 // Framework grid generation
 //
-// Used only by Bootstrap to generate the correct number of grid classes given
+// Used only by Axia to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {

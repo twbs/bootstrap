@@ -1,6 +1,6 @@
 {
-  "name": "bootstrap",
-  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+  "name": "axia",
+  "description": "The most popular interface framework, advanced.",
   "version": "5.3.3",
   "config": {
     "version_short": "5.3"
@@ -14,30 +14,25 @@
     "framework",
     "web"
   ],
-  "homepage": "https://getbootstrap.com/",
+  "homepage": "https://getaxia.com/",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
+  "contributors": [
+    {
+      "author": "Julius Dockwarder <Julius.Dockwarder@nerv.de) (https://www.nerv.de)"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/twbs/bootstrap.git"
+    "url": "git+https://github.com/nervcomputer/axia.git"
   },
   "bugs": {
-    "url": "https://github.com/twbs/bootstrap/issues"
+    "url": "https://github.com/nervcomputer/axia/issues"
   },
-  "funding": [
-    {
-      "type": "github",
-      "url": "https://github.com/sponsors/twbs"
-    },
-    {
-      "type": "opencollective",
-      "url": "https://opencollective.com/bootstrap"
-    }
-  ],
-  "main": "dist/js/bootstrap.js",
-  "module": "dist/js/bootstrap.esm.js",
-  "sass": "scss/bootstrap.scss",
-  "style": "dist/css/bootstrap.css",
+  "main": "dist/js/axia.js",
+  "module": "dist/js/axia.esm.js",
+  "sass": "scss/axia.scss",
+  "style": "dist/css/axia.css",
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
@@ -63,9 +58,9 @@
     "js-compile-plugins": "node build/build-plugins.mjs",
     "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .html,.js,.mjs,.md .",
     "js-minify": "npm-run-all --aggregate-output --parallel js-minify-*",
-    "js-minify-standalone": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
-    "js-minify-standalone-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.esm.js.map,includeSources,url=bootstrap.esm.min.js.map\" --output dist/js/bootstrap.esm.min.js dist/js/bootstrap.esm.js",
-    "js-minify-bundle": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
+    "js-minify-standalone": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/axia.js.map,includeSources,url=axia.min.js.map\" --output dist/js/axia.min.js dist/js/axia.js",
+    "js-minify-standalone-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/axia.esm.js.map,includeSources,url=axia.esm.min.js.map\" --output dist/js/axia.esm.min.js dist/js/axia.esm.js",
+    "js-minify-bundle": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/axia.bundle.js.map,includeSources,url=axia.bundle.min.js.map\" --output dist/js/axia.bundle.min.js dist/js/axia.bundle.js",
     "js-test": "npm-run-all --aggregate-output --parallel js-test-karma js-test-jquery js-test-integration-*",
     "js-debug": "cross-env DEBUG=true npm run js-test-karma",
     "js-test-karma": "karma start js/tests/karma.conf.js",
@@ -86,7 +81,7 @@
     "release": "npm-run-all dist release-sri docs-build release-zip*",
     "release-sri": "node build/generate-sri.mjs",
     "release-version": "node build/change-version.mjs",
-    "release-zip": "cross-env-shell \"rm -rf bootstrap-$npm_package_version-dist bootstrap-$npm_package_version-dist.zip && cp -r dist/ bootstrap-$npm_package_version-dist && zip -qr9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist && rm -rf bootstrap-$npm_package_version-dist\"",
+    "release-zip": "cross-env-shell \"rm -rf axia-$npm_package_version-dist axia-$npm_package_version-dist.zip && cp -r dist/ axia-$npm_package_version-dist && zip -qr9 axia-$npm_package_version-dist.zip axia-$npm_package_version-dist && rm -rf axia-$npm_package_version-dist\"",
     "release-zip-examples": "node build/zip-examples.mjs",
     "dist": "npm-run-all --aggregate-output --parallel css js",
     "test": "npm-run-all lint dist js-test docs-build docs-lint",
@@ -168,12 +163,12 @@
   },
   "jspm": {
     "registry": "npm",
-    "main": "js/bootstrap",
+    "main": "js/axia",
     "directories": {
       "lib": "dist"
     },
     "shim": {
-      "js/bootstrap": {
+      "js/axia": {
         "deps": [
           "@popperjs/core"
         ]

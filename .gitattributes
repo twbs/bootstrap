@@ -4,5 +4,5 @@
 # Don't diff or textually merge source maps
 *.map binary
 
-bootstrap.css linguist-vendored=false
-bootstrap.js linguist-vendored=false
+axia.css linguist-vendored=false
+axia.js linguist-vendored=false

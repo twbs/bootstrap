@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap index.umd.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * Axia index.umd.js
+ * Licensed under MIT (https://github.com/nervcomputer/axia/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
