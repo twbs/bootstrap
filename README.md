@@ -145,7 +145,7 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 
 Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/).
 
-### Running documentation locally
+### Running Documentation Locally
 
 1. Run `npm install` to install the Node.js dependencies, including Hugo (the site builder).
 2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
@@ -154,11 +154,20 @@ Documentation search is powered by [Algolia's DocSearch](https://docsearch.algol
 
 Learn more about using Hugo by reading its [documentation](https://gohugo.io/documentation/).
 
-### Documentation for previous releases
+---
 
-You can find all our previous releases docs on <https://getbootstrap.com/docs/versions/>.
+### Running Documentation Locally Using Docker
 
-[Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
+1. Make sure Docker is installed on your system. If not, download and install Docker from the [official website](https://www.docker.com/).
+2. Build the Docker image for the Bootstrap documentation:
+
+   ```bash
+   docker build -t bootstrap-docs .
+
+   docker run -p 9001:9001 bootstrap-docs
+3. Open http://localhost:9001/ in your browser to view the documentation.
+
+Docker provides a consistent environment and avoids dependencies on local installations of Node.js or Hugo.
 
 
 ## Contributing
