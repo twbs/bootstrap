@@ -74,20 +74,6 @@ const Button = (($) => {
       if (rootElement) {
         const input = $(this._element).find(Selector.INPUT)[0]
 
-        if (input) {
-          if (input.type === 'radio') {
-            if (input.checked &&
-              $(this._element).hasClass(ClassName.ACTIVE)) {
-              triggerChangeEvent = false
-
-            } else {
-              const activeElement = $(rootElement).find(Selector.ACTIVE)[0]
-
-              if (activeElement) {
-                $(activeElement).removeClass(ClassName.ACTIVE)
-              }
-            }
-          }
 
           if (triggerChangeEvent) {
             if (input.hasAttribute('disabled') ||
@@ -131,10 +117,6 @@ const Button = (($) => {
         if (!data) {
           data = new Button(this)
           $(this).data(DATA_KEY, data)
-        }
-
-        if (config === 'toggle') {
-          data[config]()
         }
       })
     }
