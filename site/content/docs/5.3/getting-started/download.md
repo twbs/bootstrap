@@ -100,6 +100,17 @@ Install Bootstrap in your Node.js powered apps with [the yarn package](https://y
 yarn add bootstrap@{{< param "current_version" >}}
 ```
 
+{{< callout warning >}}
+**Yarn 2+ (aka Yarn Berry) doesn't support the `node_modules` directory by default**: using our [Sass & JS example](https://github.com/twbs/examples/tree/main/sass-js) needs some adjustments:
+
+```sh
+yarn config set nodeLinker node-modules # Use the node_modules linker
+touch yarn.lock # Create an empty yarn.lock file
+yarn install # Install the dependencies
+yarn start # Start the project
+```
+{{< /callout >}}
+
 ### RubyGems
 
 Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/guides/gemfile.html):
