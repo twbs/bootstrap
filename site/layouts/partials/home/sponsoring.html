@@ -1,0 +1,23 @@
+<section class="row g-3 g-md-5 pb-md-5 mb-5 align-items-center">
+  <div class="col-lg-6">
+    <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-violet-rgb);">
+      {{ partial "icons/bag-heart-fill.svg" (dict "width" "32" "height" "32") }}
+    </div>
+    <h2 class="display-5 mb-3 fw-semibold lh-sm">Support Bootstrap</h2>
+    <p class="lead fw-normal">
+      Our passionated maintainers dedicate their time to ensure that Bootstrap continues to evolve since 2011. Support us by donating to our collective.
+    </p>
+    <p class="d-flex justify-content-start lead fw-normal mb-md-0">
+      <a href="{{ .Site.Params.opencollective }}" class="icon-link icon-link-hover fw-semibold">
+        Support us via Open Collective
+        <svg class="bi"><use xlink:href="#arrow-right"></use></svg>
+      </a>
+    </p>
+  </div>
+  <div class="col-lg-6">
+      <img class="img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-sponsoring.png,
+                                                  /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-sponsoring@2x.png 2x"
+                                          src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-sponsoring.png"
+                                          alt="Bootstrap Sponsoring" width="700" height="500" loading="lazy">
+  </div>
+</section>
