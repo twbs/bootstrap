@@ -15,7 +15,7 @@ thumbnail: guides/bootstrap-parcel@2x.png
 
 ## What is Parcel?
 
-[Parcel](https://parceljs.org/) is a web application bundler that aims to simplify the process of building web applications by providing a zero-config experience out of the box. It offers many of the features found in more complex bundlers but is designed to be easier to use, especially for developers who want to get started quickly without diving into extensive configuration.
+[Parcel](https://parceljs.org/) is a web application bundler designed to simplify the development process with a zero-configuration setup out of the box. It offers features found in more advanced bundlers while focusing on ease of use, making it ideal for developers seeking a quick start.
 
 ## Setup
 

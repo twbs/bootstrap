@@ -18,7 +18,7 @@ added:
 
 ## What is Vite?
 
-[Vite](https://vite.dev/) is a next-generation frontend build tool that focuses on speed and simplicity. It is designed to provide a faster, more efficient and highly optimized development experience, particularly for modern JavaScript frameworks.
+[Vite](https://vite.dev/) is a modern frontend build tool designed for speed and simplicity. It provides an efficient and streamlined development experience, especially for modern JavaScript frameworks.
 
 ## Setup
 

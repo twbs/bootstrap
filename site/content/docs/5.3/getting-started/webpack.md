@@ -15,7 +15,7 @@ thumbnail: guides/bootstrap-webpack@2x.png
 
 ## What is Webpack?
 
-[Webpack](https://webpack.js.org/) is a powerful open-source JavaScript module bundler used in modern web development. It takes modules with dependencies and generates static assets representing those modules, making it easier to manage complex web applications with numerous files and dependencies.
+[Webpack](https://webpack.js.org/) is a JavaScript module bundler that processes modules and their dependencies to generate static assets. It simplifies managing complex web applications with multiple files and dependencies.
 
 ## Setup
 
