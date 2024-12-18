@@ -58,7 +58,7 @@ describe('Popover', () => {
   describe('show', () => {
     it('should toggle a popover after show', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://twitter.com/getbootstrap">BS twitter</a>'
+        fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://x.com/getbootstrap">BS X</a>'
 
         const popoverEl = fixtureEl.querySelector('a')
         const popover = new Popover(popoverEl)
