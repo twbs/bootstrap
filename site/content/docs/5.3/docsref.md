@@ -45,6 +45,20 @@ sitemap:
 <div class="test">This is a test.</div>
 {{< /example >}}
 
+{{< example lang="scss" show_preview="false" >}}
+.test {
+  --color: blue;
+  show_preview="false"
+}
+{{< /example >}}
+
+{{< example lang="scss" basic="true" >}}
+.test {
+  --color: blue;
+  basic
+}
+{{< /example >}}
+
 {{< scss-docs name="variable-gradient" file="scss/_variables.scss" >}}
 
 {{< js-docs name="live-toast" file="site/assets/js/partials/snippets.js" >}}
