@@ -13,6 +13,10 @@ thumbnail: guides/bootstrap-webpack@2x.png
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/webpack). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/webpack?file=index.html) for live editing.
 {{< /callout >}}
 
+## What is Webpack?
+
+[Webpack](https://webpack.js.org/) is a JavaScript module bundler that processes modules and their dependencies to generate static assets. It simplifies managing complex web applications with multiple files and dependencies.
+
 ## Setup
 
 We're building a Webpack project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
