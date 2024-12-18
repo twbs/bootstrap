@@ -175,7 +175,7 @@ Do you want to automate this process and address several edge cases involving bo
 
 1. It is recommended that you add the `dir` attribute to the `html` element. This way, the entire page will be affected when you change the direction. Also, make sure you add the `lang` attribute accordingly.
 2. Having a single bundle with both directions will increase the size of the final stylesheet (on average, by 20%-30%): consider some [optimization]({{< docsref "/customize/optimize" >}}).
-3. Take into account that PostCSS RTLCSS is not compatible with `/* rtl:remove */` directives because it doesn't remove any CSS rule. You should replace your `/* rtl:remove */`, `/* rtl:begin:remove */` and `/* rtl:end:remove */` directives with `/* rtl:ignore */`, `/* rtl:begin:ignore */` and `/* rtl:end:ignore */` directives respectively. These directives will ignore the rule and will not create an RTL counterpart (same result as the `remove` ones in RTLCSS).
+3. Take into account that PostCSS RTLCSS is not compatible with `/* rtl:remove */` directives because it doesn't remove any CSS rule. You should replace your `/* rtl:remove */`, `/* rtl:begin:remove */` and `/* rtl:end:remove */` directives with `/* rtl:freeze */`, `/* rtl:begin:freeze */` and `/* rtl:end:freeze */` directives respectively. These directives will prefix the targeted rules or declarations with the current direction but will not create an RTL counterpart (same result as the `remove` ones in RTLCSS).
 {{< /callout >}}
 
 ## The breadcrumb case
