@@ -154,6 +154,15 @@
   @include table-variant($color, $value);
 }
 
+
+// Sticky table headers
+.thead-sticky {
+  position: sticky;
+  top: var(--#{$prefix}table-thead-sticky-top, 0);
+  z-index: $table-thead-sticky-zindex;
+}
+
+
 // Responsive tables
 //
 // Generate series of `.table-responsive-*` classes for configuring the screen
