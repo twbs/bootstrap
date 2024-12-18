@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Bootstrap and Vite
-description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Vite.
+description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Vite and the new guide on how to include and bundle Bootstrap's CSS created with Vite's latest version.
 group: getting-started
 toc: true
 thumbnail: guides/bootstrap-vite@2x.png
@@ -80,28 +80,29 @@ With dependencies installed and our project folder ready for us to start coding,
 1. **Open `vite.config.js` in your editor.** Since it's blank, we'll need to add some boilerplate config to it so we can start our server. This part of the config tells Vite where to look for our project's JavaScript and how the development server should behave (pulling from the `src` folder with hot reload).
 
    <!-- eslint-skip -->
+
    ```js
-   import { resolve } from 'path'
+   import { resolve } from "path";
 
    export default {
-     root: resolve(__dirname, 'src'),
+     root: resolve(__dirname, "src"),
      build: {
-       outDir: '../dist'
+       outDir: "../dist",
      },
      server: {
-       port: 8080
-     }
-   }
+       port: 8080,
+     },
+   };
    ```
 
 2. **Next we fill in `src/index.html`.** This is the HTML page Vite will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps.
 
    ```html
-   <!doctype html>
+   <!DOCTYPE html>
    <html lang="en">
      <head>
-       <meta charset="utf-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta charset="utf-8" />
+       <meta name="viewport" content="width=device-width, initial-scale=1" />
        <title>Bootstrap w/ Vite</title>
        <script type="module" src="./js/main.js"></script>
      </head>
@@ -124,7 +125,7 @@ With dependencies installed and our project folder ready for us to start coding,
      "scripts": {
        "start": "vite",
        "test": "echo \"Error: no test specified\" && exit 1"
-     },
+     }
      // ...
    }
    ```
@@ -148,34 +149,155 @@ In the next and final section to this guide, we’ll import all of Bootstrap’s
    @import "bootstrap/scss/bootstrap";
    ```
 
-   *You can also import our stylesheets individually if you want. [Read our Sass import docs]({{< docsref "/customize/sass#importing" >}}) for details.*
+   _You can also import our stylesheets individually if you want. [Read our Sass import docs]({{< docsref "/customize/sass#importing" >}}) for details._
 
 2. **Next we load the CSS and import Bootstrap's JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap's JS. Popper will be imported automatically through Bootstrap.
 
    <!-- eslint-skip -->
+
    ```js
    // Import our custom CSS
-   import '../scss/styles.scss'
+   import "../scss/styles.scss";
 
    // Import all of Bootstrap's JS
-   import * as bootstrap from 'bootstrap'
+   import * as bootstrap from "bootstrap";
    ```
 
    You can also import JavaScript plugins individually as needed to keep bundle sizes down:
 
    <!-- eslint-skip -->
+
    ```js
-   import Alert from 'bootstrap/js/dist/alert';
+   import Alert from "bootstrap/js/dist/alert";
 
    // or, specify which plugins you need:
-   import { Tooltip, Toast, Popover } from 'bootstrap';
+   import { Tooltip, Toast, Popover } from "bootstrap";
    ```
 
-   *[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins.*
+   _[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins._
 
 3. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this:
 
    ![Vite dev server running with Bootstrap](/assets/img/guides/vite-dev-server-bootstrap.png)
+
+   Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Vite example project](https://github.com/twbs/examples/tree/main/vite) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
+
+{{< markdown >}}
+{{< /markdown >}}
+
+## Setup Bootstrap with Vite's latest version
+
+We're building a Vite project with Bootstrap with the latest command of Vite to create a project which already includes the full configuration of Vite and a directory structure. This guide requires you to have Node.js version 18+ or 20+ installed and some familiarity with the terminal.
+
+1. **Create a project with Vite.** We'll create the project at a root directory, the command of the first option will show a menu at the terminal asking you for: 1. the name of the new project that we may call `my-project`, 2. the framework in which you will like to code: Vanilla, Vue, React, Preact, Lit, Svelte, Solid, Qwick and others, 3. the variant which usually is either JavaScrip or Typescript.
+
+Option 1:
+
+```sh
+npm create vite@latest
+```
+
+With the second option you can directly specify the project name and the template you want to use via additional command line options. For example, to scaffold a Vite + React project:
+
+Option 2:
+
+```sh
+npm create vite@latest my-project -- --template react
+```
+
+2. **Install Dependencies.** Now we have to access the project file with the first command and install the the dependencies with the abbreviated command of npm to install dependencies.
+
+   ```sh
+   cd my-project
+   npm i
+   ```
+
+3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Popper since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don't plan on using those components, you can omit Popper here.
+
+   ```sh
+   npm i --save bootstrap @popperjs/core
+   ```
+
+4. **Install additional dependency.** In addition to Vite and Bootstrap, we need another dependency (Sass) to properly import and bundle Bootstrap's CSS.
+
+   ```sh
+   npm i --save-dev sass
+   ```
+
+Now that we have all the necessary dependencies installed and set up, we can get to work creating the project files and importing Bootstrap.
+
+## Project structure
+
+We've already created the `my-project` folder and initialized npm. The file structure will be already provided, in this example we will asume that you created the project with React and TypeScript. At the `src` file you should add a file `styles.scss`, and a `bootstrap.d.ts`
+
+Your project should look similar to this:
+
+```text
+my-project/
+├── src/
+│   ├── js/
+│   │   └── main.js
+│   └── scss/
+│   |   └──
+|   ├── App.css
+|   ├── App.tsx
+|   ├── index.css
+|   ├── main.tsx
+|   ├── styles.scss
+|   └── bootstrap.d.ts
+├── index.html
+├── package-lock.json
+├── package.json
+└── vite.config.ts
+```
+
+At this point, everything is in the right place, and now we will proceed to first configure the custom declaration file and then we will configure Bootstrap.
+
+## Configure Custom Declaration
+
+1. **Configure Custom Declaration File.** Add the following to `src/bootstrap.d.ts` to let TypeScript know how to handle the bootstrap module.
+
+   ```scss
+   declare module 'bootstrap';
+   ```
+
+## Import Bootstrap
+
+1. **Import Bootstrap's CSS.** Add the following to `src/styles.scss` to import all of Bootstrap's source Sass.
+
+   ```scss
+   // Import all of Bootstrap's CSS
+   @import "../node_modules/bootstrap/scss/bootstrap";
+   ```
+
+   _You can also import our stylesheets individually if you want. [Read our Sass import docs]({{< docsref "/customize/sass#importing" >}}) for details._
+
+2. **Next we load the CSS.** Add the following to `src/main.tsx` to load the CSS and import all of Bootstrap's JS. Popper will be imported automatically through Bootstrap.
+
+   <!-- eslint-skip -->
+
+   ```js
+   // Import our custom CSS
+   import "../scss/styles.scss";
+
+   // Import all of Bootstrap's JS
+   import * as bootstrap from "bootstrap";
+   ```
+
+   You can also import JavaScript plugins individually as needed to keep bundle sizes down:
+
+   <!-- eslint-skip -->
+
+   ```js
+   import Alert from "bootstrap/js/dist/alert";
+
+   // or, specify which plugins you need:
+   import { Tooltip, Toast, Popover } from "bootstrap";
+   ```
+
+   _[Read our JavaScript docs]({{< docsref "/getting-started/javascript/" >}}) for more information on how to use Bootstrap's plugins._
+
+3. **And you're done! 🎉** With Bootstrap's source Sass and the latest Version of Vite is fully loaded.
 
    Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Vite example project](https://github.com/twbs/examples/tree/main/vite) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
