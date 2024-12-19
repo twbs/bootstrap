@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "sass:math";
+
 // Bootstrap functions
 //
 // Utility mixins and functions for evaluating source code across our variables, maps, and mixins.
@@ -34,7 +37,7 @@
 
 // Colors
 @function to-rgb($value) {
-  @return red($value), green($value), blue($value);
+  @return math.round(color.channel($value, "red", $space: rgb)), math.round(color.channel($value, "green", $space: rgb)), math.round(color.channel($value, "blue", $space: rgb));
 }
 
 // stylelint-disable scss/dollar-variable-pattern
@@ -182,9 +185,9 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 // See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
 @function luminance($color) {
   $rgb: (
-    "r": red($color),
-    "g": green($color),
-    "b": blue($color)
+    "r": math.round(color.channel($color, "red", $space: rgb)), // stylelint-disable-line scss/at-function-named-arguments
+    "g": math.round(color.channel($color, "green", $space: rgb)), // stylelint-disable-line scss/at-function-named-arguments
+    "b": math.round(color.channel($color, "blue", $space: rgb)) // stylelint-disable-line scss/at-function-named-arguments
   );
 
   @each $name, $value in $rgb {
