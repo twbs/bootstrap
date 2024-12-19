@@ -138,7 +138,7 @@ These work great with custom content as well.
 
 ## Horizontal
 
-Add `.list-group-horizontal` to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant `.list-group-horizontal-{sm|md|lg|xl|xxl}` to make a list group horizontal starting at that breakpoint's `min-width`. Currently **horizontal list groups cannot be combined with flush list groups.**
+Add `.list-group-horizontal` to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant `.list-group-horizontal-{sm|md|lg|xl|xxl}` to make a list group horizontal starting at that breakpoint's `min-width`.
 
 **ProTip:** Want equal-width list group items when horizontal? Add `.flex-fill` to each list group item.
 
@@ -146,6 +146,23 @@ Add `.list-group-horizontal` to change the layout of list group items from verti
 {{< list-group.inline >}}
 {{- range $.Site.Data.breakpoints }}
 <ul class="list-group list-group-horizontal{{ .abbr }}">
+  <li class="list-group-item">An item</li>
+  <li class="list-group-item">A second item</li>
+  <li class="list-group-item">A third item</li>
+</ul>
+{{- end -}}
+{{< /list-group.inline >}}
+{{< /example >}}
+
+### Horizontal Flush
+
+You can combine adding `.list-group-horizontal` and `.list-group-flush` to render horizontal list group items with some borders and rounded corners removed.
+Responsive variants are also applicable, as described in the [Horizontal](#horizontal).
+
+{{< example >}}
+{{< list-group.inline >}}
+{{- range $.Site.Data.breakpoints }}
+<ul class="list-group list-group-horizontal{{ .abbr }} list-group-flush">
   <li class="list-group-item">An item</li>
   <li class="list-group-item">A second item</li>
   <li class="list-group-item">A third item</li>
