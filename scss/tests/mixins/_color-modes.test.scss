@@ -17,7 +17,7 @@
           }
         }
         @include color-mode(dark, true) {
-          --custom-color: #{mix($indigo, $blue, 50%)};
+          --custom-color: #{$indigo};
         }
       }
       @include expect() {
@@ -26,7 +26,7 @@
           background-color: var(--bs-primary-bg-subtle);
         }
         [data-bs-theme=dark] {
-          --custom-color: #3a3ff8;
+          --custom-color: #6610f2;
         }
       }
     }
@@ -46,7 +46,7 @@
           }
         }
         @include color-mode(dark, true) {
-          --custom-color: #{mix($indigo, $blue, 50%)};
+          --custom-color: #{$indigo}
         }
       }
       @include expect() {
@@ -58,7 +58,7 @@
         }
         @media (prefers-color-scheme: dark) {
           :root {
-            --custom-color: #3a3ff8;
+            --custom-color: #6610f2;
           }
         }
       }
