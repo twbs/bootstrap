@@ -25,6 +25,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-caret`                | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-button-pointers`      | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
 | `$enable-rfs`                  | `true` (default) or `false`        | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
+| `$enable-debugger-classes`     | `true` or `false` (default)        | Enables the use of `.bs-grid-debug` class. You can use it on any html element and it will highlight its children grids (`.row` and `.container-*`). It also displays the living breakpoint depending on the viewport. |
 | `$enable-validation-icons`     | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
 | `$enable-negative-margins`     | `true` or `false` (default)        | Enables the generation of [negative margin utilities]({{< docsref "/utilities/spacing#negative-margin" >}}). |
 | `$enable-deprecation-messages` | `true` (default) or `false`        | Set to `false` to hide warnings when using any of the deprecated mixins and functions that are planned to be removed in `v6`. |
