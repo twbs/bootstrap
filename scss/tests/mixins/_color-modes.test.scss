@@ -46,7 +46,7 @@
           }
         }
         @include color-mode(dark, true) {
-          --custom-color: #{$indigo}
+          --custom-color: #{$indigo};
         }
       }
       @include expect() {
