@@ -1,0 +1,77 @@
+*{
+   margin : 0%;
+   padding : 0%;
+   box-sizing : border-box;
+}
+html,body{
+           width : 100%;
+           height : 100%;
+}
+
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(237, 204, 242);
+    
+}
+
+.card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 300px;
+    width: 200px;
+    border-radius: 15px;
+    border: 1.5px solid salmon;
+    overflow: hidden;
+}
+
+#card1{
+    z-index: 4;
+}
+
+#card2{
+    z-index: 3;
+    transform: translate(-50%,-50%) rotate(-7deg) ;
+}
+
+#card3{
+    z-index: 2;
+    transform: translate(-50%,-50%) rotate(-14deg);
+
+}
+
+#card4{
+    z-index: 1;
+    transform: translate(-50%,-50%) rotate(-21deg);
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#card1:hover{
+    z-index: 5;
+}
+
+#card2:hover{
+    z-index: 5;
+}
+
+#card3:hover{
+    z-index: 5;
+}
+
+#card4:hover{
+    z-index: 5;
+}
+
+h1{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: xx-large;
+    background-color: rgb(237, 204, 242);
+    
+}
