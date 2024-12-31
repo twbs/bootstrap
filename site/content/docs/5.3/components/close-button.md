@@ -6,70 +6,49 @@ group: components
 toc: true
 ---
 
-## Basic Close Button
+## Example
+
+Provide an option to dismiss or close a component with `.btn-close`. Default styling is limited, but highly customizable. Modify the Sass variables to replace the default `background-image`. **Be sure to include text for screen readers**, as we've done with `aria-label`.
 
 {{< example >}}
 <button type="button" class="btn-close" aria-label="Close"></button>
 {{< /example >}}
 
-## Dark Variant
+## Disabled state
+
+Disabled close buttons change their `opacity`. We've also applied `pointer-events: none` and `user-select: none` to preventing hover and active states from triggering.
 
 {{< example >}}
-<div class="bg-dark p-2">
-  <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-</div>
+<button type="button" class="btn-close" disabled aria-label="Close"></button>
 {{< /example >}}
 
-## Dark
+## Dark variant
 
-{{< example >}}
-<div data-bs-theme="dark" class="bg-body p-2">
+{{< deprecated-in "5.3.0" >}}
+
+{{< callout warning >}}
+**Heads up!** As of v5.3.0, the `.btn-close-white` class is deprecated. Instead, use `data-bs-theme="dark"` to change the color mode of the close button.
+{{< /callout >}}
+
+Add `data-bs-theme="dark"` to the `.btn-close`, or to its parent element, to invert the close button. This uses the `filter` property to invert the `background-image` without overriding its value.
+
+{{< example class="bg-dark" >}}
+<div data-bs-theme="dark">
   <button type="button" class="btn-close" aria-label="Close"></button>
+  <button type="button" class="btn-close" disabled aria-label="Close"></button>
 </div>
 {{< /example >}}
 
-## Light
+## CSS
 
-{{< example >}}
-<div data-bs-theme="light" class="bg-body p-2">
-  <button type="button" class="btn-close" aria-label="Close"></button>
-</div>
-{{< /example >}}
+### Variables
 
-## Light in dark
+{{< added-in "5.3.0" >}}
 
-{{< example >}}
-<div data-bs-theme="dark" class="bg-body p-2">
-  <div data-bs-theme="light" class="bg-body p-2">
-    <button type="button" class="btn-close" aria-label="Close"></button>
-  </div>
-</div>
-{{< /example >}}
+As part of Bootstrap's evolving CSS variables approach, close button now uses local CSS variables on `.btn-close` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-## Dark in light
+{{< scss-docs name="close-css-vars" file="scss/_close.scss" >}}
 
-{{< example >}}
-<div data-bs-theme="light" class="bg-body p-2">
-  <div data-bs-theme="dark" class="bg-body p-2">
-    <button type="button" class="btn-close" aria-label="Close"></button>
-  </div>
-</div>
-{{< /example >}}
+### Sass variables
 
-## Toast and Close Button issue
-
-Forcing `data-bs-theme="light"` didn't work in dark mode. Now, the cross button is always dark.
-
-{{< example >}}
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header bg-warning" data-bs-theme="light">
-    <img src="..." class="rounded me-2" alt="...">
-    <strong class="me-auto">Warning!</strong>
-    <small>11 mins ago</small>
-    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-  <div class="toast-body">
-    This is a warning message.
-  </div>
-</div>
-{{< /example >}}
+{{< scss-docs name="close-variables" file="scss/_variables.scss" >}}
