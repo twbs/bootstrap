@@ -40,10 +40,10 @@ const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
 const Default = {
   offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
-  rootMargin: '0px 0px -25%',
+  rootMargin: '0px',
   smoothScroll: false,
   target: null,
-  threshold: [0.1, 0.5, 1]
+  threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 }
 
 const DefaultType = {
@@ -65,13 +65,10 @@ class ScrollSpy extends BaseComponent {
     // this._element is the observablesContainer and config.target the menu links wrapper
     this._targetLinks = new Map()
     this._observableSections = new Map()
+    this._intersectionRatio = new Map()
     this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
     this._activeTarget = null
     this._observer = null
-    this._previousScrollData = {
-      visibleEntryTop: 0,
-      parentScrollTop: 0
-    }
     this.refresh() // initialize
   }
 
@@ -115,7 +112,7 @@ class ScrollSpy extends BaseComponent {
     config.target = getElement(config.target) || document.body
 
     // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
-    config.rootMargin = config.offset ? `${config.offset}px 0px -30%` : config.rootMargin
+    config.rootMargin = config.offset ? `${config.offset}px 0px 0px` : config.rootMargin
 
     if (typeof config.threshold === 'string') {
       config.threshold = config.threshold.split(',').map(value => Number.parseFloat(value))
@@ -161,40 +158,31 @@ class ScrollSpy extends BaseComponent {
 
   // The logic of selection
   _observerCallback(entries) {
-    const targetElement = entry => this._targetLinks.get(`#${entry.target.id}`)
-    const activate = entry => {
-      this._previousScrollData.visibleEntryTop = entry.target.offsetTop
-      this._process(targetElement(entry))
-    }
+    const targetElement = entryId => this._targetLinks.get(entryId)
 
-    const parentScrollTop = (this._rootElement || document.documentElement).scrollTop
-    const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
-    this._previousScrollData.parentScrollTop = parentScrollTop
+    // always remove active from `target` children before each cycle
+    this._clearActiveClass(this._config.target)
 
     for (const entry of entries) {
-      if (!entry.isIntersecting) {
-        this._activeTarget = null
-        this._clearActiveClass(targetElement(entry))
+      this._intersectionRatio.set(`#${entry.target.id}`, entry.intersectionRatio)
+    }
 
-        continue
+    let maxIntersectionRatio = 0
+    let element = null
+    for (const [key, val] of this._intersectionRatio.entries()) {
+      if (val > maxIntersectionRatio) {
+        element = targetElement(key)
+        maxIntersectionRatio = val
       }
+    }
 
-      const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop
-      // if we are scrolling down, pick the bigger offsetTop
-      if (userScrollsDown && entryIsLowerThanPrevious) {
-        activate(entry)
-        // if parent isn't scrolled, let's keep the first visible item, breaking the iteration
-        if (!parentScrollTop) {
-          return
-        }
+    if (element !== null) {
+      this._process(element)
+      return
+    }
 
-        continue
-      }
-
-      // if we are scrolling up, pick the smallest offsetTop
-      if (!userScrollsDown && !entryIsLowerThanPrevious) {
-        activate(entry)
-      }
+    if (this._activeTarget !== null) {
+      this._process(this._activeTarget)
     }
   }
 
@@ -216,20 +204,20 @@ class ScrollSpy extends BaseComponent {
       if (isVisible(observableSection)) {
         this._targetLinks.set(decodeURI(anchor.hash), anchor)
         this._observableSections.set(anchor.hash, observableSection)
+        this._intersectionRatio.set(anchor.hash, 0)
       }
     }
   }
 
   _process(target) {
-    if (this._activeTarget === target) {
+    this._activateParents(target)
+
+    target.classList.add(CLASS_NAME_ACTIVE)
+    if (target === this._activeTarget) {
       return
     }
 
-    this._clearActiveClass(this._config.target)
     this._activeTarget = target
-    target.classList.add(CLASS_NAME_ACTIVE)
-    this._activateParents(target)
-
     EventHandler.trigger(this._element, EVENT_ACTIVATE, { relatedTarget: target })
   }
 
