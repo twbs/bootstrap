@@ -1713,7 +1713,8 @@ $btn-close-opacity:          .5 !default;
 $btn-close-hover-opacity:    .75 !default;
 $btn-close-focus-opacity:    1 !default;
 $btn-close-disabled-opacity: .25 !default;
-$btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default;
+$btn-close-filter:           null !default;
+$btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default; // Deprecated in v5.3.4
 // scss-docs-end close-variables
 
 
