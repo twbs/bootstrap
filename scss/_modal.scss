@@ -51,9 +51,12 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
-  position: relative;
+  position: fixed; //this line fix an error with new KeyboardFocusableScrollersEnabled Feature in chromium based navs when use an input on modal dialog
   width: auto;
   margin: var(--#{$prefix}modal-margin);
+  overflow: scroll;
+  height: 100vh;
+  left: calc(var(--#{$prefix}modal-margin)/2); 
   // allow clicks to pass through for custom click handling to close modal
   pointer-events: none;
 
