@@ -9,7 +9,7 @@
 {{- end }}
 
 {{- if (ne .Page.Layout "examples") }}
-{{- $sassOptions := dict "outputStyle" "expanded" "precision" 6 -}}
+{{- $sassOptions := dict "transpiler" "dartsass" "outputStyle" "expanded" "precision" 6 -}}
 {{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
 
 {{- $targetDocsCssPath := path.Join "/docs" .Site.Params.docs_version "assets/css/docs.css" -}}

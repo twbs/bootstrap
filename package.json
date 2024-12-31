@@ -148,7 +148,7 @@
     "rollup": "^4.28.1",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.3.0",
-    "sass": "1.78.0",
+    "sass-embedded": "1.79.6",
     "sass-true": "^8.1.0",
     "shelljs": "^0.8.5",
     "stylelint": "^16.12.0",
@@ -163,9 +163,6 @@
     "scss/**/*.scss",
     "!scss/tests/**"
   ],
-  "hugo-bin": {
-    "buildTags": "extended"
-  },
   "jspm": {
     "registry": "npm",
     "main": "js/bootstrap",
