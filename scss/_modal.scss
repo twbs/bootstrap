@@ -234,3 +234,10 @@
   }
 }
 // scss-docs-end modal-fullscreen-loop
+
+// Fix for scrollbar-gutter: stable both-edges shifting content
+@supports (scrollbar-gutter: stable both-edges) {
+  body.modal-open {
+    padding-right: 0 !important;
+  }
+}
