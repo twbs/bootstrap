@@ -70,6 +70,7 @@ const Default = {
   sanitize: true,
   sanitizeFn: null,
   selector: false,
+  strategy: 'absolute',
   template: '<div class="tooltip" role="tooltip">' +
             '<div class="tooltip-arrow"></div>' +
             '<div class="tooltip-inner"></div>' +
@@ -93,6 +94,7 @@ const DefaultType = {
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
   selector: '(string|boolean)',
+  strategy: 'string',
   template: 'string',
   title: '(string|element|function)',
   trigger: 'string'
@@ -432,7 +434,8 @@ class Tooltip extends BaseComponent {
             this._getTipElement().setAttribute('data-popper-placement', data.state.placement)
           }
         }
-      ]
+      ],
+      strategy: this._config.strategy
     }
 
     return {
