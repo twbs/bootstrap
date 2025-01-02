@@ -107,7 +107,7 @@ describe('FocusTrap', () => {
 
         first.addEventListener('focusin', focusInListener)
 
-        const keydown = createEvent('keydown')
+        const keydown = createEvent('keydown', { bubbles: true })
         keydown.key = 'Tab'
 
         document.dispatchEvent(keydown)
@@ -146,7 +146,7 @@ describe('FocusTrap', () => {
 
         last.addEventListener('focusin', focusInListener)
 
-        const keydown = createEvent('keydown')
+        const keydown = createEvent('keydown', { bubbles: true })
         keydown.key = 'Tab'
         keydown.shiftKey = true
 
