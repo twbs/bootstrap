@@ -34,23 +34,11 @@ Add `.active` to a `.list-group-item` to indicate the current active selection.
 </ul>
 {{< /example >}}
 
-## Disabled items
-
-Add `.disabled` to a `.list-group-item` to make it _appear_ disabled. Note that some elements with `.disabled` will also require custom JavaScript to fully disable their click events (e.g., links).
-
-{{< example >}}
-<ul class="list-group">
-  <li class="list-group-item disabled" aria-disabled="true">A disabled item</li>
-  <li class="list-group-item">A second item</li>
-  <li class="list-group-item">A third item</li>
-  <li class="list-group-item">A fourth item</li>
-  <li class="list-group-item">And a fifth one</li>
-</ul>
-{{< /example >}}
-
 ## Links and buttons
 
 Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, disabled, and active states by adding `.list-group-item-action`. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like `<li>`s or `<div>`s) don't provide a click or tap affordance.
+
+For links, add `.disabled` to a `.list-group-item` to make it _appear_ disabled and `aria-disabled="true"` to inform the assistive technology that the element is disabled and to fully disable their click events you will need custom JavaScript .
 
 Be sure to **not use the standard `.btn` classes here**.
 
@@ -62,7 +50,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">A second link item</a>
   <a href="#" class="list-group-item list-group-item-action">A third link item</a>
   <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-  <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
+  <a href="#" class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
 </div>
 {{< /example >}}
 
