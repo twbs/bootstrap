@@ -11,7 +11,7 @@ toc: true
 Adjust the `overflow` property on the fly with four default values and classes. These classes are not responsive by default.
 
 <div class="bd-example d-md-flex">
-  <div class="overflow-auto p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary" style="max-width: 260px; max-height: 100px;">
+  <div class="overflow-auto p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary" style="max-width: 260px; max-height: 100px;" tabindex="0">
     This is an example of using <code>.overflow-auto</code> on an element with set width and height dimensions. By design, this content will vertically scroll.
   </div>
   <div class="overflow-hidden p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary" style="max-width: 260px; max-height: 100px;">
@@ -20,16 +20,16 @@ Adjust the `overflow` property on the fly with four default values and classes. 
   <div class="overflow-visible p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary" style="max-width: 260px; max-height: 100px;">
     This is an example of using <code>.overflow-visible</code> on an element with set width and height dimensions.
   </div>
-  <div class="overflow-scroll p-3 bg-body-tertiary" style="max-width: 260px; max-height: 100px;">
+  <div class="overflow-scroll p-3 bg-body-tertiary" style="max-width: 260px; max-height: 100px;" tabindex="0">
     This is an example of using <code>.overflow-scroll</code> on an element with set width and height dimensions.
   </div>
 </div>
 
 ```html
-<div class="overflow-auto">...</div>
+<div class="overflow-auto" tabindex="0">...</div>
 <div class="overflow-hidden">...</div>
 <div class="overflow-visible">...</div>
-<div class="overflow-scroll">...</div>
+<div class="overflow-scroll" tabindex="0">...</div>
 ```
 
 ### `overflow-x`
@@ -37,7 +37,7 @@ Adjust the `overflow` property on the fly with four default values and classes. 
 Adjust the `overflow-x` property to affect the overflow of content horizontally.
 
 <div class="bd-example d-md-flex">
-  <div class="overflow-x-auto p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px; white-space: nowrap;">
+  <div class="overflow-x-auto p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px; white-space: nowrap;" tabindex="0">
     <div><code>.overflow-x-auto</code> example on an element</div>
     <div> with set width and height dimensions.</div>
   </div>
@@ -49,17 +49,17 @@ Adjust the `overflow-x` property to affect the overflow of content horizontally.
     <div><code>.overflow-x-visible</code> example </div>
     <div>on an element with set width and height dimensions.</div>
   </div>
-  <div class="overflow-x-scroll p-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;white-space: nowrap;">
+  <div class="overflow-x-scroll p-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;white-space: nowrap;"  tabindex="0">
     <div><code>.overflow-x-scroll</code> example on an element</div>
     <div> with set width and height dimensions.</div>
   </div>
 </div>
 
 ```html
-<div class="overflow-x-auto">...</div>
+<div class="overflow-x-auto" tabindex="0">...</div>
 <div class="overflow-x-hidden">...</div>
 <div class="overflow-x-visible">...</div>
-<div class="overflow-x-scroll">...</div>
+<div class="overflow-x-scroll" tabindex="0">...</div>
 ```
 
 ### `overflow-y`
@@ -67,7 +67,7 @@ Adjust the `overflow-x` property to affect the overflow of content horizontally.
 Adjust the `overflow-y` property to affect the overflow of content vertically.
 
 <div class="bd-example d-md-flex">
-  <div class="overflow-y-auto p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;">
+  <div class="overflow-y-auto p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;"  tabindex="0">
     <code>.overflow-y-auto</code> example on an element with set width and height dimensions.
   </div>
   <div class="overflow-y-hidden p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;">
@@ -76,16 +76,16 @@ Adjust the `overflow-y` property to affect the overflow of content vertically.
   <div class="overflow-y-visible p-3 mb-3 mb-md-0 me-md-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;">
     <code>.overflow-y-visible</code> example on an element with set width and height dimensions.
   </div>
-  <div class="overflow-y-scroll p-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;">
+  <div class="overflow-y-scroll p-3 bg-body-tertiary w-100" style="max-width: 200px; max-height: 100px;" tabindex="0">
     <code>.overflow-y-scroll</code> example on an element with set width and height dimensions.
   </div>
 </div>
 
 ```html
-<div class="overflow-y-auto">...</div>
+<div class="overflow-y-auto" tabindex="0">...</div>
 <div class="overflow-y-hidden">...</div>
 <div class="overflow-y-visible">...</div>
-<div class="overflow-y-scroll">...</div>
+<div class="overflow-y-scroll" tabindex="0">...</div>
 ```
 
 Using Sass variables, you may customize the overflow utilities by changing the `$overflows` variable in `_variables.scss`.
