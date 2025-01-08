@@ -660,6 +660,7 @@ $utilities: map-merge(
     // scss-docs-end utils-links
     // scss-docs-start utils-bg-color
     "background-color": (
+      responsive: true,
       property: background-color,
       class: bg,
       local-vars: (
