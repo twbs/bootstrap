@@ -83,6 +83,14 @@ Within the download you'll find the following directories and files, logically g
   ```text
   bootstrap/
   ├── css/
+  │   ├── bootstrap-debugger.css
+  │   ├── bootstrap-debugger.css.map
+  │   ├── bootstrap-debugger.min.css
+  │   ├── bootstrap-debugger.min.css.map
+  │   ├── bootstrap-debugger.rtl.css
+  │   ├── bootstrap-debugger.rtl.css.map
+  │   ├── bootstrap-debugger.rtl.min.css
+  │   ├── bootstrap-debugger.rtl.min.css.map
   │   ├── bootstrap-grid.css
   │   ├── bootstrap-grid.css.map
   │   ├── bootstrap-grid.min.css
