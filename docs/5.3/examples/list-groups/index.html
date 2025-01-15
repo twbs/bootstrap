@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.139.3">
+    <meta name="generator" content="Hugo 0.145.0">
     <title>List groups · Bootstrap v5.3</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/list-groups/">
 
     <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
-    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0hnvb3syYhI0OFUzYWBHCYQpJLkWPwDq2W8VKokR0KkesRy7s2B3Jwhf5j8hnDpN">
+    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC">
 
     <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -136,29 +136,29 @@
         data-bs-toggle="dropdown"
         
         aria-label="Toggle theme (auto)">
-  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+  <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
   <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
 </button>
 <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
       Light
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
       Dark
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
       Auto
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
 </ul>
@@ -185,7 +185,7 @@
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
   <div class="list-group">
     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-      <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+      <img src="https://github.com/twbs.png" alt="" width="32" height="32" class="rounded-circle flex-shrink-0">
       <div class="d-flex gap-2 w-100 justify-content-between">
         <div>
           <h6 class="mb-0">List group item heading</h6>
@@ -195,7 +195,7 @@
       </div>
     </a>
     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-      <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+      <img src="https://github.com/twbs.png" alt="" width="32" height="32" class="rounded-circle flex-shrink-0">
       <div class="d-flex gap-2 w-100 justify-content-between">
         <div>
           <h6 class="mb-0">Another title here</h6>
@@ -205,7 +205,7 @@
       </div>
     </a>
     <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-      <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+      <img src="https://github.com/twbs.png" alt="" width="32" height="32" class="rounded-circle flex-shrink-0">
       <div class="d-flex gap-2 w-100 justify-content-between">
         <div>
           <h6 class="mb-0">Third heading</h6>
@@ -278,7 +278,7 @@
       <span class="pt-1 form-checked-content">
         <strong>Finish sales report</strong>
         <small class="d-block text-body-secondary">
-          <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"/></svg>
+          <svg class="bi me-1" width="1em" height="1em" role="img" aria-label="Schedule"><use xlink:href="#calendar-event"/></svg>
           1:00–2:00pm
         </small>
       </span>
@@ -288,7 +288,7 @@
       <span class="pt-1 form-checked-content">
         <strong>Weekly All Hands</strong>
         <small class="d-block text-body-secondary">
-          <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"/></svg>
+          <svg class="bi me-1" width="1em" height="1em" role="img" aria-label="Schedule"><use xlink:href="#calendar-event"/></svg>
           2:00–2:30pm
         </small>
       </span>
@@ -298,7 +298,7 @@
       <span class="pt-1 form-checked-content">
         <strong>Out of office</strong>
         <small class="d-block text-body-secondary">
-          <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#alarm"/></svg>
+          <svg class="bi me-1" width="1em" height="1em" role="img" aria-label="Reminder"><use xlink:href="#alarm"/></svg>
           Tomorrow
         </small>
       </span>
@@ -308,7 +308,7 @@
       <span class="pt-1 form-checked-content">
         <span contenteditable="true" class="w-100">Add new task...</span>
         <small class="d-block text-body-secondary">
-          <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#list-check"/></svg>
+          <svg class="bi me-1" width="1em" height="1em" aria-hidden="true"><use xlink:href="#list-check"/></svg>
           Choose list...
         </small>
       </span>
@@ -383,7 +383,7 @@
     </div>
   </div>
 </div>
-<script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-cGt2RYvgqma4ghlaB2Hrs/fR6eKFOvQWPiqrIrGuzDSR3DxxTBDChMVADeC+a9C+"></script>
+<script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu"></script>
 
     </body>
 </html>

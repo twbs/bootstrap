@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Learn how to enable support for right-to-left text in Bootstrap across our layout, components, and utilities.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.139.3">
+<meta name="generator" content="Hugo 0.145.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0hnvb3syYhI0OFUzYWBHCYQpJLkWPwDq2W8VKokR0KkesRy7s2B3Jwhf5j8hnDpN"><link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC"><link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 <link href="/docs/5.3/assets/css/search.css" rel="stylesheet">
 
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -147,7 +147,7 @@
   <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
     <div class="bd-navbar-toggle">
       <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
   <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 </svg>
 
@@ -203,9 +203,10 @@
             </a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://twitter.com/getbootstrap" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="img"><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"/></svg>
-              <small class="d-lg-none ms-2">Twitter</small>
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://x.com/getbootstrap" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg" viewBox="0 0 1200 1227" role="img"><title>X</title><path fill="currentColor" d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"/></svg>
+
+              <small class="d-lg-none ms-2">X</small>
             </a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
@@ -228,7 +229,7 @@
     <li>
       <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="/docs/5.3/getting-started/rtl/">
         Latest (5.3.x)
-        <svg class="bi"><use xlink:href="#check2"></use></svg>
+        <svg class="bi" aria-hidden="true"><use xlink:href="#check2"></use></svg>
       </a>
     </li>
     <li>
@@ -264,29 +265,29 @@
         data-bs-toggle="dropdown"
         data-bs-display="static"
         aria-label="Toggle theme (auto)">
-  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+  <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
   <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
 </button>
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
       Light
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
       Dark
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
       Auto
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
 </ul>
@@ -583,7 +584,7 @@
 <li>Add an appropriate <code>lang</code> attribute, like <code>lang=&quot;ar&quot;</code>, on the <code>&lt;html&gt;</code> element.</li>
 </ol>
 <p>From there, you&rsquo;ll need to include an RTL version of our CSS. For example, here&rsquo;s the stylesheet for our compiled and minified CSS with RTL enabled:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.rtl.min.css&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-fA93Z/w1Gvs7n29CNg1uXJkK0qAL+IpyaGlrA13HJYdFcSj3C6pzIZOISsSf0wXU&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.rtl.min.css&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-x4rAmXUquSwgvbjTfCFTigt/sWtZnmHFrQdhIpahxHhQ0T6bWRwZAlbXPSVvkKY9&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
 </span></span></code></pre></div><h3 id="starter-template">Starter template <a class="anchor-link" href="#starter-template" aria-label="Link to this section: Starter template"></a></h3>
 <p>You can see the above requirements reflected in this modified RTL starter template.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!doctype html&gt;</span>
@@ -594,7 +595,7 @@
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Bootstrap CSS --&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.rtl.min.css&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-fA93Z/w1Gvs7n29CNg1uXJkK0qAL+IpyaGlrA13HJYdFcSj3C6pzIZOISsSf0wXU&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.rtl.min.css&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-x4rAmXUquSwgvbjTfCFTigt/sWtZnmHFrQdhIpahxHhQ0T6bWRwZAlbXPSVvkKY9&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>مرحبًا بالعالم!<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -604,12 +605,12 @@
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Optional JavaScript; choose one of the two! --&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Option 1: Bootstrap Bundle with Popper --&gt;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-cGt2RYvgqma4ghlaB2Hrs/fR6eKFOvQWPiqrIrGuzDSR3DxxTBDChMVADeC+a9C+&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js&#34;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&#34;sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu&#34;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&#34;anonymous&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!-- Option 2: Separate Popper and Bootstrap JS --&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="c">&lt;!--
 </span></span></span><span class="line"><span class="cl"><span class="c">    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js&#34; integrity=&#34;sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
-</span></span></span><span class="line"><span class="cl"><span class="c">    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js&#34; integrity=&#34;sha384-tWd4xl5j8SAKZ8Y2RaYXyodkQk9BWaaJaRmRLf7wdTvksNIk8GiLrHk62JBSjy5X&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+</span></span></span><span class="line"><span class="cl"><span class="c">    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js&#34; integrity=&#34;sha384-Re460s1NeyAhufAM5JwfIGWosokaQ7CH15ti6W5Y4wC/m4eJ5opJ2ivohxVM05Wd&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
 </span></span></span><span class="line"><span class="cl"><span class="c">    --&gt;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -700,7 +701,7 @@
 <ol>
 <li>It is recommended that you add the <code>dir</code> attribute to the <code>html</code> element. This way, the entire page will be affected when you change the direction. Also, make sure you add the <code>lang</code> attribute accordingly.</li>
 <li>Having a single bundle with both directions will increase the size of the final stylesheet (on average, by 20%-30%): consider some <a href="/docs/5.3/customize/optimize/">optimization</a>.</li>
-<li>Take into account that PostCSS RTLCSS is not compatible with <code>/* rtl:remove */</code> directives because it doesn&rsquo;t remove any CSS rule. You should replace your <code>/* rtl:remove */</code>, <code>/* rtl:begin:remove */</code> and <code>/* rtl:end:remove */</code> directives with <code>/* rtl:ignore */</code>, <code>/* rtl:begin:ignore */</code> and <code>/* rtl:end:ignore */</code> directives respectively. These directives will ignore the rule and will not create an RTL counterpart (same result as the <code>remove</code> ones in RTLCSS).</li>
+<li>Take into account that PostCSS RTLCSS is not compatible with <code>/* rtl:remove */</code> directives because it doesn&rsquo;t remove any CSS rule. You should replace your <code>/* rtl:remove */</code>, <code>/* rtl:begin:remove */</code> and <code>/* rtl:end:remove */</code> directives with <code>/* rtl:freeze */</code>, <code>/* rtl:begin:freeze */</code> and <code>/* rtl:end:freeze */</code> directives respectively. These directives will prefix the targeted rules or declarations with the current direction but will not create an RTL counterpart (same result as the <code>remove</code> ones in RTLCSS).</li>
 </ol>
 </div>
 
@@ -777,7 +778,7 @@
   </div>
 </footer>
 
-    <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-cGt2RYvgqma4ghlaB2Hrs/fR6eKFOvQWPiqrIrGuzDSR3DxxTBDChMVADeC+a9C+"></script>
+    <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu"></script>
 
 <script defer src="/docs/5.3/assets/js/application.js"></script>
 <script defer src="/docs/5.3/assets/js/search.js"></script>

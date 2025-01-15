@@ -6,7 +6,7 @@
   <script>document.getElementById('${n.id}').submit();<\/script>
 </body>
 </html>`}function J(e,t){let n=N(e);n.action=w("/run",t),n.target=T(t),document.body.appendChild(n),n.submit(),document.body.removeChild(n)}function h(e){var n;return e!=null&&e.contentWindow?((n=V(e))!=null?n:new E(e)).pending:Promise.reject("Provided element is not an iframe.")}function X(e,t){J(e,t)}function Z(e,t){let n=w(`/edit/${e}`,t),o=T(t);window.open(n,o)}function Q(e,t){let n=w(`/github/${e}`,t),o=T(t);window.open(n,o)}function Y(e,t,n){var i;let o=S(e),r=z(t,n),s=document.createElement("iframe");return v(o,s,n),(i=s.contentDocument)==null||i.write(r),h(s)}function ee(e,t,n){let o=S(e),r=document.createElement("iframe");return r.src=_(`/edit/${t}`,n),v(o,r,n),h(r)}function te(e,t,n){let o=S(e),r=document.createElement("iframe");return r.src=_(`/github/${t}`,n),v(o,r,n),h(r)}var L={connect:h,embedGithubProject:te,embedProject:Y,embedProjectId:ee,openGithubProject:Q,openProject:X,openProjectId:Z};var C="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css",M="5.3";var O="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js",D=`(() => {
-  // ns-hugo:/home/xmr/repos/bootstrap/site/assets/js/partials/snippets.js
+  // ns-hugo-imp:/home/xmr/repos/bootstrap/site/assets/js/partials/snippets.js
   var snippets_default = () => {
     document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((tooltip) => {
       new bootstrap.Tooltip(tooltip);
@@ -110,7 +110,7 @@ ${e.trimStart().replace(/^/gm,"    ").replace(/^ {4}$/gm,"").trimEnd()}
 `,...t&&{"index.js":D}},title:"Bootstrap Example",description:`Official example from ${window.location.href}`,template:t?"javascript":"html",tags:["bootstrap"]};L.openProject(r,{openFile:"index.html"})};})();
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2024 The Bootstrap Authors
+ * Copyright 2024-2025 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */

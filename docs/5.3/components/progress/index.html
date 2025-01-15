@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Documentation and examples for using Bootstrap custom progress bars featuring support for stacked bars, animated backgrounds, and text labels.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Hugo 0.139.3">
+<meta name="generator" content="Hugo 0.145.0">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="5.3">
@@ -18,7 +18,7 @@
 
 <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0hnvb3syYhI0OFUzYWBHCYQpJLkWPwDq2W8VKokR0KkesRy7s2B3Jwhf5j8hnDpN"><link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC"><link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 <link href="/docs/5.3/assets/css/search.css" rel="stylesheet">
 
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -147,7 +147,7 @@
   <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
     <div class="bd-navbar-toggle">
       <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle docs navigation">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
   <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 </svg>
 
@@ -203,9 +203,10 @@
             </a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
-            <a class="nav-link py-2 px-0 px-lg-2" href="https://twitter.com/getbootstrap" target="_blank" rel="noopener">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg" viewBox="0 0 512 416.32" role="img"><title>Twitter</title><path fill="currentColor" d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"/></svg>
-              <small class="d-lg-none ms-2">Twitter</small>
+            <a class="nav-link py-2 px-0 px-lg-2" href="https://x.com/getbootstrap" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg" viewBox="0 0 1200 1227" role="img"><title>X</title><path fill="currentColor" d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"/></svg>
+
+              <small class="d-lg-none ms-2">X</small>
             </a>
           </li>
           <li class="nav-item col-6 col-lg-auto">
@@ -228,7 +229,7 @@
     <li>
       <a class="dropdown-item d-flex align-items-center justify-content-between active" aria-current="true" href="/docs/5.3/components/progress/">
         Latest (5.3.x)
-        <svg class="bi"><use xlink:href="#check2"></use></svg>
+        <svg class="bi" aria-hidden="true"><use xlink:href="#check2"></use></svg>
       </a>
     </li>
     <li>
@@ -264,29 +265,29 @@
         data-bs-toggle="dropdown"
         data-bs-display="static"
         aria-label="Toggle theme (auto)">
-  <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg>
+  <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
   <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
 </button>
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-      <svg class="bi me-2 opacity-50"><use href="#sun-fill"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
       Light
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-      <svg class="bi me-2 opacity-50"><use href="#moon-stars-fill"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
       Dark
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
   <li>
     <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-      <svg class="bi me-2 opacity-50"><use href="#circle-half"></use></svg>
+      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
       Auto
-      <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
   </li>
 </ul>
@@ -550,7 +551,11 @@
         <li><a href="#height">Height</a></li>
       </ul>
     </li>
-    <li><a href="#labels">Labels</a></li>
+    <li><a href="#labels">Labels</a>
+      <ul>
+        <li><a href="#long-labels">Long labels</a></li>
+      </ul>
+    </li>
     <li><a href="#backgrounds">Backgrounds</a></li>
     <li><a href="#multiple-bars">Multiple bars</a></li>
     <li><a href="#striped">Striped</a></li>
@@ -710,27 +715,12 @@
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
 </div>
 
-<p>Note that by default, the content inside the <code>.progress-bar</code> is controlled with <code>overflow: hidden</code>, so it doesn&rsquo;t bleed out of the bar. If your progress bar is shorter than its label, the content will be capped and may become unreadable. To change this behavior, you can use <code>.overflow-visible</code> from the <a href="/docs/5.3/utilities/overflow/">overflow utilities</a>, but make sure to also define an explicit <a href="/docs/5.3/utilities/colors/#colors">text color</a> so the text remains readable. Be aware though that currently this approach does not take into account <a href="/docs/5.3/customize/color-modes/">color modes</a>.</p>
-<div class="bd-example-snippet bd-code-snippet">
-  <div class="bd-example m-0 border-0">
-    
-<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar overflow-visible text-dark" style="width: 10%">Long label text for the progress bar, set to a dark color</div>
-</div>
+<h3 id="long-labels">Long labels <a class="anchor-link" href="#long-labels" aria-label="Link to this section: Long labels"></a></h3>
+<p>Note that by default, the content inside the <code>.progress-bar</code> is controlled with <code>overflow: hidden</code>, so it doesn&rsquo;t bleed out of the bar. If your progress bar is shorter than its label, the content will be capped and may become unreadable. To change this behavior, you can use <code>.overflow-visible</code> from the <a href="/docs/5.3/utilities/overflow/">overflow utilities</a>.</p>
+<div class="bd-callout bd-callout-warning">
+<p>Labels longer than the progress bar within may not be fully accessible using this method because it relies on the text color having the correct contrast ratio with both the <code>.progress</code> and <code>.progress-bar</code> background colors. Use caution when implementing this example.</p>
+<p>If the text can overlap the progress bar, we often recommend displaying the label outside of the progress bar for better accessibility.</p>
 
-  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
-        <small class="font-monospace text-body-secondary text-uppercase">html</small>
-        <div class="d-flex ms-auto">
-          <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
-            <svg class="bi" aria-hidden="true"><use xlink:href="#lightning-charge-fill"/></svg>
-          </button>
-          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
-            <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
-          </button>
-        </div>
-      </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;progressbar&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Example with label&#34;</span> <span class="na">aria-valuenow</span><span class="o">=</span><span class="s">&#34;10&#34;</span> <span class="na">aria-valuemin</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">aria-valuemax</span><span class="o">=</span><span class="s">&#34;100&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar overflow-visible text-dark&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 10%&#34;</span><span class="p">&gt;</span>Long label text for the progress bar, set to a dark color<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
 </div>
 
 <h2 id="backgrounds">Backgrounds <a class="anchor-link" href="#backgrounds" aria-label="Link to this section: Backgrounds"></a></h2>
@@ -779,21 +769,21 @@
 <strong>Accessibility tip:</strong> Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies like screen readers. Please ensure the meaning is obvious from the content itself (e.g., the visible text with a <a href="/docs/5.3/getting-started/accessibility/#color-contrast"><em>sufficient</em> color contrast</a>) or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.
 </div>
 
-<p>If you&rsquo;re adding labels to progress bars with a custom background color, make sure to also set an appropriate <a href="/docs/5.3/utilities/colors/#colors">text color</a>, so the labels remain readable and have sufficient contrast.</p>
+<p>If you&rsquo;re adding labels to progress bars with a custom background color, make sure to also set an appropriate <a href="/docs/5.3/utilities/colors/#colors">text color</a>, so the labels remain readable and have sufficient contrast. We recommend using the <a href="/docs/5.3/helpers/color-background/">color and background</a> helper classes.</p>
 <div class="bd-example-snippet bd-code-snippet">
   <div class="bd-example m-0 border-0">
     
 <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar bg-success" style="width: 25%">25%</div>
+  <div class="progress-bar text-bg-success" style="width: 25%">25%</div>
 </div>
 <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar bg-info text-dark" style="width: 50%">50%</div>
+  <div class="progress-bar text-bg-info" style="width: 50%">50%</div>
 </div>
 <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar bg-warning text-dark" style="width: 75%">75%</div>
+  <div class="progress-bar text-bg-warning" style="width: 75%">75%</div>
 </div>
 <div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar bg-danger" style="width: 100%">100%</div>
+  <div class="progress-bar text-bg-danger" style="width: 100%">100%</div>
 </div>
 
   </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
@@ -807,39 +797,16 @@
           </button>
         </div>
       </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;progressbar&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Success example&#34;</span> <span class="na">aria-valuenow</span><span class="o">=</span><span class="s">&#34;25&#34;</span> <span class="na">aria-valuemin</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">aria-valuemax</span><span class="o">=</span><span class="s">&#34;100&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar bg-success&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 25%&#34;</span><span class="p">&gt;</span>25%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar text-bg-success&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 25%&#34;</span><span class="p">&gt;</span>25%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;progressbar&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Info example&#34;</span> <span class="na">aria-valuenow</span><span class="o">=</span><span class="s">&#34;50&#34;</span> <span class="na">aria-valuemin</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">aria-valuemax</span><span class="o">=</span><span class="s">&#34;100&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar bg-info text-dark&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 50%&#34;</span><span class="p">&gt;</span>50%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar text-bg-info&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 50%&#34;</span><span class="p">&gt;</span>50%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;progressbar&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Warning example&#34;</span> <span class="na">aria-valuenow</span><span class="o">=</span><span class="s">&#34;75&#34;</span> <span class="na">aria-valuemin</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">aria-valuemax</span><span class="o">=</span><span class="s">&#34;100&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar bg-warning text-dark&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 75%&#34;</span><span class="p">&gt;</span>75%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar text-bg-warning&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 75%&#34;</span><span class="p">&gt;</span>75%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;progressbar&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Danger example&#34;</span> <span class="na">aria-valuenow</span><span class="o">=</span><span class="s">&#34;100&#34;</span> <span class="na">aria-valuemin</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">aria-valuemax</span><span class="o">=</span><span class="s">&#34;100&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar bg-danger&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 100%&#34;</span><span class="p">&gt;</span>100%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
-</div>
-
-<p>Alternatively, you can use the new combined <a href="/docs/5.3/helpers/color-background/">color and background</a> helper classes.</p>
-<div class="bd-example-snippet bd-code-snippet">
-  <div class="bd-example m-0 border-0">
-    
-<div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-  <div class="progress-bar text-bg-warning" style="width: 75%">75%</div>
-</div>
-
-  </div><div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
-        <small class="font-monospace text-body-secondary text-uppercase">html</small>
-        <div class="d-flex ms-auto">
-          <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
-            <svg class="bi" aria-hidden="true"><use xlink:href="#lightning-charge-fill"/></svg>
-          </button>
-          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
-            <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
-          </button>
-        </div>
-      </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress&#34;</span> <span class="na">role</span><span class="o">=</span><span class="s">&#34;progressbar&#34;</span> <span class="na">aria-label</span><span class="o">=</span><span class="s">&#34;Warning example&#34;</span> <span class="na">aria-valuenow</span><span class="o">=</span><span class="s">&#34;75&#34;</span> <span class="na">aria-valuemin</span><span class="o">=</span><span class="s">&#34;0&#34;</span> <span class="na">aria-valuemax</span><span class="o">=</span><span class="s">&#34;100&#34;</span><span class="p">&gt;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar text-bg-warning&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 75%&#34;</span><span class="p">&gt;</span>75%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;progress-bar text-bg-danger&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;width: 100%&#34;</span><span class="p">&gt;</span>100%<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span></span></span></code></pre></div>
 </div>
 
@@ -1007,7 +974,7 @@
       </div>
     </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scss" data-lang="scss"><span class="line"><span class="cl"><span class="k">@if</span> <span class="nv">$enable-transitions</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="k">@keyframes</span> <span class="nt">progress-bar-stripes</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">0</span><span class="err">%</span> <span class="p">{</span> <span class="na">background-position-x</span><span class="o">:</span> <span class="nv">$progress-height</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">0</span><span class="err">%</span> <span class="p">{</span> <span class="na">background-position-x</span><span class="o">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="si">#{</span><span class="nv">$prefix</span><span class="si">}</span><span class="ni">progress</span><span class="o">-</span><span class="n">height</span><span class="p">);</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></div>
@@ -1077,7 +1044,7 @@
   </div>
 </footer>
 
-    <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-cGt2RYvgqma4ghlaB2Hrs/fR6eKFOvQWPiqrIrGuzDSR3DxxTBDChMVADeC+a9C+"></script>
+    <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu"></script>
 
 <script defer src="/docs/5.3/assets/js/application.js"></script>
 <script defer src="/docs/5.3/assets/js/search.js"></script>
