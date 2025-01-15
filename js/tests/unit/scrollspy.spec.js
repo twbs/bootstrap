@@ -451,7 +451,7 @@ describe('ScrollSpy', () => {
       })
     })
 
-    it('should clear selection if above the first section', () => {
+    it('should remember previous selection', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div id="header" style="height: 500px;"></div>',
@@ -483,9 +483,10 @@ describe('ScrollSpy', () => {
           expect(spy).toHaveBeenCalled()
 
           expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
-          expect(active().getAttribute('id')).toEqual('two-link')
+          expect(active().getAttribute('id')).toEqual('one-link')
           onScrollStop(() => {
-            expect(active()).toBeNull()
+            expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
+            expect(active().getAttribute('id')).toEqual('one-link')
             resolve()
           }, contentEl)
           scrollTo(contentEl, 0)
