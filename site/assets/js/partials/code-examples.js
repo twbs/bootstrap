@@ -63,6 +63,11 @@ export default () => {
     const namespace = 'http://www.w3.org/1999/xlink'
     const originalXhref = iconFirstChild.getAttributeNS(namespace, 'href')
     const originalTitle = event.trigger.title
+    const isCheckIconVisible = originalXhref === '#check2'
+
+    if (isCheckIconVisible) {
+      return
+    }
 
     tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
     event.trigger.addEventListener('hidden.bs.tooltip', () => {
