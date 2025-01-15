@@ -52,6 +52,8 @@ Looking to use an icon or symbol in place of text for some pagination links? Be 
 
 Pagination links are customizable for different circumstances. Use `.disabled` for links that appear un-clickable and `.active` to indicate the current page.
 
+`aria-current="page"` should be put on the link element for the assistive technology to recognize the active element.
+
 While the `.disabled` class uses `pointer-events: none` to _try_ to disable the link functionality of `<a>`s, that CSS property is not yet standardized and doesn't account for keyboard navigation. As such, you should always add `tabindex="-1"` on disabled links and use custom JavaScript to fully disable their functionality.
 
 {{< example >}}
@@ -61,8 +63,8 @@ While the `.disabled` class uses `pointer-events: none` to _try_ to disable the 
       <a class="page-link">Previous</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2</a>
+    <li class="page-item active">
+      <a class="page-link" href="#" aria-current="page">2</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
@@ -72,7 +74,7 @@ While the `.disabled` class uses `pointer-events: none` to _try_ to disable the 
 </nav>
 {{< /example >}}
 
-You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.
+You can optionally swap out disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.
 
 {{< example >}}
 <nav aria-label="...">
@@ -81,8 +83,8 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
       <span class="page-link">Previous</span>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <span class="page-link">2</span>
+    <li class="page-item active">
+      <a class="page-link" href="#" aria-current="page">2</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
@@ -99,8 +101,8 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {{< example >}}
 <nav aria-label="...">
   <ul class="pagination pagination-lg">
-    <li class="page-item active" aria-current="page">
-      <span class="page-link">1</span>
+    <li class="page-item active">
+      <a class="page-link" href="#" aria-current="page">1</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -111,8 +113,8 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {{< example >}}
 <nav aria-label="...">
   <ul class="pagination pagination-sm">
-    <li class="page-item active" aria-current="page">
-      <span class="page-link">1</span>
+    <li class="page-item active">
+      <a class="page-link" href="#" aria-current="page">1</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
