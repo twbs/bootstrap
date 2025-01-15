@@ -19,8 +19,8 @@ export default () => {
   const btnEdit = 'Edit on StackBlitz'
 
   const btnHtml = [
-    '<div class="bd-code-snippet">',
-    '  <div class="bd-clipboard">',
+    '<div class="bd-code-snippet position-relative">',
+    '  <div class="bd-clipboard position-absolute top-0 end-0">',
     '    <button type="button" class="btn-clipboard">',
     '      <svg class="bi" role="img" aria-label="Copy"><use xlink:href="#clipboard"/></svg>',
     '    </button>',
@@ -34,7 +34,7 @@ export default () => {
       // Ignore examples made by shortcode
       if (!element.closest('.bd-example-snippet')) {
         element.insertAdjacentHTML('beforebegin', btnHtml)
-        element.previousElementSibling.append(element)
+        element.previousElementSibling.prepend(element)
       }
     })
 
