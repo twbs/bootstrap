@@ -131,6 +131,13 @@ class Collapse extends BaseComponent {
       return
     }
 
+    // Trigger the before.show event using native JS
+    const beforeShowEvent = new Event('before.show.bs.collapse')
+    this._element.dispatchEvent(beforeShowEvent)
+
+    // Set opacity to 0 before transition (fade effect)
+    this._element.style.opacity = '0'
+
     for (const activeInstance of activeChildren) {
       activeInstance.hide()
     }
@@ -140,7 +147,7 @@ class Collapse extends BaseComponent {
     this._element.classList.remove(CLASS_NAME_COLLAPSE)
     this._element.classList.add(CLASS_NAME_COLLAPSING)
 
-    this._element.style[dimension] = 0
+    this._element.style[dimension] = '0'
 
     this._addAriaAndCollapsedClass(this._triggerArray, true)
     this._isTransitioning = true
@@ -152,6 +159,7 @@ class Collapse extends BaseComponent {
       this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
       this._element.style[dimension] = ''
+      this._element.style.opacity = '' // Reset opacity after transition
 
       EventHandler.trigger(this._element, EVENT_SHOWN)
     }
@@ -196,10 +204,12 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._element.classList.add(CLASS_NAME_COLLAPSE)
+
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
     this._element.style[dimension] = ''
+    this._element.style.opacity = '0' // Set opacity to 0 while collapsing
 
     this._queueCallback(complete, this._element, true)
   }
