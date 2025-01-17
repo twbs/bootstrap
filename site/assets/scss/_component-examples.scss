@@ -21,6 +21,8 @@
   position: relative;
   padding: var(--bd-example-padding);
   margin: 0 ($bd-gutter-x * -.5) 1rem;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
   border: solid var(--bs-border-color);
   border-width: 1px 0;
   @include clearfix();
