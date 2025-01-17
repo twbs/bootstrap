@@ -5,7 +5,6 @@
  * --------------------------------------------------------------------------
  */
 
-const MAX_UID = 1_000_000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
@@ -36,9 +35,10 @@ const toType = object => {
  * Public Util API
  */
 
+let idCount = 0
 const getUID = prefix => {
   do {
-    prefix += Math.floor(Math.random() * MAX_UID)
+    prefix += idCount++
   } while (document.getElementById(prefix))
 
   return prefix
