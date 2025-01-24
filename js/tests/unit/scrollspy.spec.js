@@ -858,9 +858,9 @@ describe('ScrollSpy', () => {
 
       setTimeout(() => {
         if (div.scrollTo) {
-          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'auto' })
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop - scrollSpy._scrollOffset, behavior: 'auto' })
         } else {
-          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
+          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop - scrollSpy._scrollOffset)
         }
 
         done()
@@ -883,9 +883,9 @@ describe('ScrollSpy', () => {
 
       setTimeout(() => {
         if (div.scrollTo) {
-          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop - scrollSpy._scrollOffset, behavior: 'smooth' })
         } else {
-          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
+          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop - scrollSpy._scrollOffset)
         }
 
         done()
@@ -943,17 +943,17 @@ describe('ScrollSpy', () => {
       const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
       const observable = fixtureEl.querySelector('#div-jsm-1')
       const clickSpy = getElementScrollSpy(div)
-      // eslint-disable-next-line no-new
-      new ScrollSpy(div, {
+
+      const scrollSpy = new ScrollSpy(div, {
         offset: 1,
         smoothScroll: true
       })
 
       setTimeout(() => {
         if (div.scrollTo) {
-          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop - scrollSpy._scrollOffset, behavior: 'smooth' })
         } else {
-          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
+          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop - scrollSpy._scrollOffset)
         }
 
         done()
@@ -977,17 +977,17 @@ describe('ScrollSpy', () => {
       const link = fixtureEl.querySelector('[href="#présentation"]')
       const observable = fixtureEl.querySelector('#présentation')
       const clickSpy = getElementScrollSpy(div)
-      // eslint-disable-next-line no-new
-      new ScrollSpy(div, {
+
+      const scrollSpy = new ScrollSpy(div, {
         offset: 1,
         smoothScroll: true
       })
 
       setTimeout(() => {
         if (div.scrollTo) {
-          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop - scrollSpy._scrollOffset, behavior: 'smooth' })
         } else {
-          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
+          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop - scrollSpy._scrollOffset)
         }
 
         done()

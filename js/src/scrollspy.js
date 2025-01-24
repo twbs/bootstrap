@@ -69,6 +69,9 @@ class ScrollSpy extends BaseComponent {
     this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
     this._activeTarget = null
     this._observer = null
+    // Sometimes scrolling to the section isn't enough to trigger a observation callback.
+    // Scroll to up to 2px to make sure it triggers.
+    this._scrollOffset = 2
     this.refresh() // initialize
   }
 
@@ -132,7 +135,8 @@ class ScrollSpy extends BaseComponent {
       if (observableSection) {
         event.preventDefault()
         const root = this._rootElement || window
-        const height = observableSection.offsetTop - this._element.offsetTop
+
+        const height = observableSection.offsetTop - this._element.offsetTop - this._scrollOffset
         if (root.scrollTo) {
           root.scrollTo({ top: height, behavior: scrollBehavior })
           return
