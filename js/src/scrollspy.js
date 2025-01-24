@@ -125,9 +125,7 @@ class ScrollSpy extends BaseComponent {
   }
 
   _maybeEnableSmoothScroll() {
-    if (!this._config.smoothScroll) {
-      return
-    }
+    const scrollBehavior = this._config.smoothScroll ? 'smooth' : 'auto'
 
     // unregister any previous listeners
     EventHandler.off(this._config.target, EVENT_CLICK)
@@ -139,7 +137,7 @@ class ScrollSpy extends BaseComponent {
         const root = this._rootElement || window
         const height = observableSection.offsetTop - this._element.offsetTop
         if (root.scrollTo) {
-          root.scrollTo({ top: height, behavior: 'smooth' })
+          root.scrollTo({ top: height, behavior: scrollBehavior })
           return
         }
 

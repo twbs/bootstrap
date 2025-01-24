@@ -842,37 +842,54 @@ describe('ScrollSpy', () => {
   })
 
   describe('SmoothScroll', () => {
-    it('should not enable smoothScroll', () => {
+    it('should not enable smoothScroll', done => {
       fixtureEl.innerHTML = getDummyFixture()
-      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
-      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
 
       const div = fixtureEl.querySelector('.content')
-      const target = fixtureEl.querySelector('#navBar')
-      // eslint-disable-next-line no-new
-      new ScrollSpy(div, {
-        offset: 1
+      const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
+      const observable = fixtureEl.querySelector('#div-jsm-1')
+      const clickSpy = getElementScrollSpy(div)
+
+      const scrollSpy = new ScrollSpy(div, {
+        offset: 1,
+        smoothScroll: false
       })
 
-      expect(offSpy).not.toHaveBeenCalledWith(target, 'click.bs.scrollspy')
-      expect(onSpy).not.toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+      setTimeout(() => {
+        if (div.scrollTo) {
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'auto' })
+        } else {
+          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
+        }
+
+        done()
+      }, 100)
+      link.click()
     })
 
-    it('should enable smoothScroll', () => {
+    it('should enable smoothScroll', done => {
       fixtureEl.innerHTML = getDummyFixture()
-      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
-      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
 
       const div = fixtureEl.querySelector('.content')
-      const target = fixtureEl.querySelector('#navBar')
-      // eslint-disable-next-line no-new
-      new ScrollSpy(div, {
+      const link = fixtureEl.querySelector('[href="#div-jsm-1"]')
+      const observable = fixtureEl.querySelector('#div-jsm-1')
+      const clickSpy = getElementScrollSpy(div)
+
+      const scrollSpy = new ScrollSpy(div, {
         offset: 1,
         smoothScroll: true
       })
 
-      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy')
-      expect(onSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy', '[href]', jasmine.any(Function))
+      setTimeout(() => {
+        if (div.scrollTo) {
+          expect(clickSpy).toHaveBeenCalledWith({ top: observable.offsetTop - div.offsetTop, behavior: 'smooth' })
+        } else {
+          expect(clickSpy).toHaveBeenCalledWith(observable.offsetTop - div.offsetTop)
+        }
+
+        done()
+      }, 100)
+      link.click()
     })
 
     it('should not smoothScroll to element if it not handles a scrollspy section', () => {
