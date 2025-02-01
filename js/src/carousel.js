@@ -304,69 +304,69 @@ class Carousel extends BaseComponent {
 
     const activeElement = this._getActive()
     const isNext = order === ORDER_NEXT
-    const nextElement = element || getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap)
+    const nextElement = element || getNextActiveElement(
+      this._getItems(),
+      activeElement,
+      isNext,
+      this._config.wrap
+    )
 
-    if (nextElement === activeElement) {
+    if (!activeElement || !nextElement || nextElement === activeElement) {
       return
     }
 
     const nextElementIndex = this._getItemIndex(nextElement)
-
-    const triggerEvent = eventName => {
-      return EventHandler.trigger(this._element, eventName, {
-        relatedTarget: nextElement,
-        direction: this._orderToDirection(order),
-        from: this._getItemIndex(activeElement),
-        to: nextElementIndex
-      })
-    }
-
-    const slideEvent = triggerEvent(EVENT_SLIDE)
-
-    if (slideEvent.defaultPrevented) {
-      return
-    }
-
-    if (!activeElement || !nextElement) {
-      // Some weirdness is happening, so we bail
-      // TODO: change tests that use empty divs to avoid this check
+    if (this._triggerSlideEvent(EVENT_SLIDE, nextElement, order, activeElement, nextElementIndex)) {
       return
     }
 
     const isCycling = Boolean(this._interval)
     this.pause()
-
     this._isSliding = true
 
     this._setActiveIndicatorElement(nextElementIndex)
     this._activeElement = nextElement
 
+    this._applySlideClasses(activeElement, nextElement, isNext)
+
+    this._queueCallback(() => this._finalizeSlide(activeElement, nextElement, order), activeElement, this._isAnimated())
+    if (isCycling) {
+      this.cycle()
+    }
+  }
+
+  _triggerSlideEvent(eventName, nextElement, order, activeElement, nextElementIndex) {
+    const slideEvent = EventHandler.trigger(this._element, eventName, {
+      relatedTarget: nextElement,
+      direction: this._orderToDirection(order),
+      from: this._getItemIndex(activeElement),
+      to: nextElementIndex
+    })
+    return slideEvent.defaultPrevented
+  }
+
+  _applySlideClasses(activeElement, nextElement, isNext) {
     const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
     const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
 
     nextElement.classList.add(orderClassName)
-
     reflow(nextElement)
 
     activeElement.classList.add(directionalClassName)
     nextElement.classList.add(directionalClassName)
+  }
 
-    const completeCallBack = () => {
-      nextElement.classList.remove(directionalClassName, orderClassName)
-      nextElement.classList.add(CLASS_NAME_ACTIVE)
+  _finalizeSlide(activeElement, nextElement, order) {
+    const directionalClassName = order === ORDER_NEXT ? CLASS_NAME_START : CLASS_NAME_END
+    const orderClassName = order === ORDER_NEXT ? CLASS_NAME_NEXT : CLASS_NAME_PREV
 
-      activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
+    nextElement.classList.remove(directionalClassName, orderClassName)
+    nextElement.classList.add(CLASS_NAME_ACTIVE)
 
-      this._isSliding = false
+    activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
+    this._isSliding = false
 
-      triggerEvent(EVENT_SLID)
-    }
-
-    this._queueCallback(completeCallBack, activeElement, this._isAnimated())
-
-    if (isCycling) {
-      this.cycle()
-    }
+    EventHandler.trigger(this._element, EVENT_SLID)
   }
 
   _isAnimated() {
