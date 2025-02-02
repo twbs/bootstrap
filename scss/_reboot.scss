@@ -380,6 +380,7 @@ th {
 // Handle focus states for elements with contenteditable set to true or plaintext-only
 
 [contenteditable]:not([contenteditable="false"]):focus {
+  @include border-radius(inherit);
   outline: 0;
   box-shadow: $input-focus-box-shadow;
 }
