@@ -90,9 +90,11 @@ export default () => {
   }
 
   const alertTrigger = document.getElementById('liveAlertBtn')
+  const selectAlertType = document.getElementById('liveAlertType')
   if (alertTrigger) {
     alertTrigger.addEventListener('click', () => {
-      appendAlert('Nice, you triggered this alert message!', 'success')
+      const alertType = selectAlertType.value
+      appendAlert('Nice, you triggered this alert message!', alertType)
     })
   }
   // js-docs-end live-alert

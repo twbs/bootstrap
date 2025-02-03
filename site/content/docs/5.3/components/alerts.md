@@ -33,7 +33,19 @@ Click the button below to show an alert (hidden with inline styles to start), th
 
 {{< example stackblitz_add_js="true" >}}
 <div id="liveAlertPlaceholder"></div>
+<div class="d-flex align-items-center gap-2">
 <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
+<select id="liveAlertType" class="form-select w-auto d-inline-block">
+  <option value="primary">Primary</option>
+  <option value="secondary">Secondary</option>
+  <option value="success" selected>Success</option>
+  <option value="danger">Danger</option>
+  <option value="warning">Warning</option>
+  <option value="info">Info</option>
+  <option value="light">Light</option>
+  <option value="dark">Dark</option>
+</select>
+</div>
 {{< /example >}}
 
 We use the following JavaScript to trigger our live alert demo:
