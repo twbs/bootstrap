@@ -46,9 +46,31 @@ Now that we have all the necessary dependencies installed, we can get to work cr
 
 We've already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
 
+### macOS, Linux
+
+Use the following commands to create the necessary directories and files on macOS or Linux:
+
 ```sh
 mkdir {src,src/js,src/scss}
 touch src/index.html src/js/main.js src/scss/styles.scss
+```
+
+### Windows (Command Prompt)
+
+Use the following commands to create the necessary directories and files for your project on Windows:
+
+```sh
+mkdir src && mkdir src\js && mkdir src\scss
+echo.> src\index.html && echo.> src\js\main.js && echo.> src\scss\styles.scss
+```
+
+### Windows (PowerShell)
+
+For PowerShell, you can use this command to create the same directory structure and files:
+
+```sh
+mkdir src; mkdir src\js; mkdir src\scss
+echo "" > src\index.html; echo "" > src\js\main.js; echo "" > src\scss\styles.scss
 ```
 
 When you're done, your complete project should look like this:
