@@ -15,7 +15,7 @@
     <repository type="git" url="https://github.com/twbs/bootstrap.git" branch="main" />
     <icon>bootstrap.png</icon>
     <license type="expression">MIT</license>
-    <copyright>Copyright 2011-2024</copyright>
+    <copyright>Copyright 2011-2025</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <tags>css mobile-first responsive front-end framework web</tags>
     <contentFiles>
