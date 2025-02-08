@@ -7,18 +7,20 @@
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="{{ .Site.Params.docs_version }}">
 
-<title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.subtitle | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
-
 <link rel="canonical" href="{{ .Permalink }}">
 
-<link rel="preconnect" href="https://AK7KMZKZHQ-dsn.algolia.net" crossorigin>
+{{ if (ne .Page.Layout "examples") -}}
+<link rel="preconnect" href="https://{{ .Site.Params.algolia.appId | lower }}-dsn.algolia.net" crossorigin>
+{{- end }}
+
+<title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.subtitle | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
 
 {{ with .Params.robots -}}
 <meta name="robots" content="{{ . }}">
 {{- end }}
 
-{{- $colorModeJS := printf "/docs/%s/assets/js/color-modes.js" $.Site.Params.docs_version -}}
-<script src="{{ $colorModeJS | relURL }}"></script>
+{{- $colorModeJS := urls.JoinPath "/docs" $.Site.Params.docs_version "assets/js/color-modes.js" -}}
+<script src="{{ $colorModeJS }}"></script>
 
 {{ partial "stylesheet" . }}
 {{ partial "favicons" . }}

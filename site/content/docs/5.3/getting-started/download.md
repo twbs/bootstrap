@@ -15,7 +15,7 @@ Download ready-to-use compiled code for **Bootstrap v{{< param current_version >
 
 This doesn't include documentation, source files, or any optional JavaScript dependencies like Popper.
 
-<a href="{{< param "download.dist" >}}" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download</a>
+<a href="{{< param "download.dist" >}}" class="btn btn-bd-primary">Download</a>
 
 ## Source files
 
@@ -26,13 +26,13 @@ Compile Bootstrap with your own asset pipeline by downloading our source Sass, J
 
 Should you require our full set of [build tools]({{< docsref "/getting-started/contribute#tooling-setup" >}}), they are included for developing Bootstrap and its docs, but they're likely unsuitable for your own purposes.
 
-<a href="{{< param "download.source" >}}" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
+<a href="{{< param "download.source" >}}" class="btn btn-bd-primary">Download source</a>
 
 ## Examples
 
 If you want to download and examine our [examples]({{< docsref "/examples" >}}), you can grab the already built examples:
 
-<a href="{{< param "download.dist_examples" >}}" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Examples');">Download Examples</a>
+<a href="{{< param "download.dist_examples" >}}" class="btn btn-bd-primary">Download Examples</a>
 
 ## CDN via jsDelivr
 
@@ -100,9 +100,20 @@ Install Bootstrap in your Node.js powered apps with [the yarn package](https://y
 yarn add bootstrap@{{< param "current_version" >}}
 ```
 
+{{< callout warning >}}
+**Yarn 2+ (aka Yarn Berry) doesn't support the `node_modules` directory by default**: using our [Sass & JS example](https://github.com/twbs/examples/tree/main/sass-js) needs some adjustments:
+
+```sh
+yarn config set nodeLinker node-modules # Use the node_modules linker
+touch yarn.lock # Create an empty yarn.lock file
+yarn install # Install the dependencies
+yarn start # Start the project
+```
+{{< /callout >}}
+
 ### RubyGems
 
-Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):
+Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/guides/gemfile.html):
 
 ```ruby
 gem 'bootstrap', '~> {{< param current_ruby_version >}}'
@@ -126,7 +137,7 @@ composer require twbs/bootstrap:{{< param current_version >}}
 
 ### NuGet
 
-If you develop in .NET Framework, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/). Newer projects should use [libman](https://docs.microsoft.com/en-us/aspnet/core/client-side/libman/) or another method as NuGet is designed for compiled code, not frontend assets.
+If you develop in .NET Framework, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/). Newer projects should use [libman](https://learn.microsoft.com/en-us/aspnet/core/client-side/libman/) or another method as NuGet is designed for compiled code, not frontend assets.
 
 ```powershell
 Install-Package bootstrap

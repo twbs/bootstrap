@@ -24,7 +24,7 @@ A better alternative for those using this type of frameworks is to use a framewo
   {{< /callout >}}
 - Vue: [BootstrapVue](https://bootstrap-vue.org/) (Bootstrap 4)
 - Vue 3: [BootstrapVueNext](https://bootstrap-vue-next.github.io/bootstrap-vue-next/) (Bootstrap 5, currently in alpha)
-- Angular: [ng-bootstrap](https://ng-bootstrap.github.io/)
+- Angular: [ng-bootstrap](https://ng-bootstrap.github.io/) or [ngx-bootstrap](https://valor-software.com/ngx-bootstrap)
 
 ## Using Bootstrap as a module
 
@@ -95,7 +95,7 @@ To fix this, you can use an `importmap` to resolve the arbitrary module names to
 
 Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
-Our dropdowns, popovers, and tooltips also depend on [Popper](https://popper.js.org/).
+Our dropdowns, popovers, and tooltips also depend on [Popper](https://popper.js.org/docs/v2/).
 
 ## Data attributes
 

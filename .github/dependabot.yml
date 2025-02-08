@@ -21,3 +21,8 @@ updates:
       timezone: Europe/Athens
     versioning-strategy: increase
     rebase-strategy: disabled
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"

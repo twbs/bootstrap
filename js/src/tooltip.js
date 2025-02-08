@@ -105,7 +105,7 @@ const DefaultType = {
 class Tooltip extends BaseComponent {
   constructor(element, config) {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)')
+      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)')
     }
 
     super(element, config)
@@ -160,7 +160,6 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    this._activeTrigger.click = !this._activeTrigger.click
     if (this._isShown()) {
       this._leave()
       return
@@ -392,7 +391,7 @@ class Tooltip extends BaseComponent {
   }
 
   _resolvePossibleFunction(arg) {
-    return execute(arg, [this._element])
+    return execute(arg, [this._element, this._element])
   }
 
   _getPopperConfig(attachment) {
@@ -438,7 +437,7 @@ class Tooltip extends BaseComponent {
 
     return {
       ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [defaultBsPopperConfig])
+      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
     }
   }
 
