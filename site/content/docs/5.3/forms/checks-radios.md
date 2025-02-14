@@ -19,14 +19,14 @@ Our checks use custom Bootstrap icons to indicate checked or indeterminate state
 
 {{< example >}}
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
+  <input class="form-check-input" type="checkbox" value="" id="CheckDefault">
+  <label class="form-check-label" for="CheckDefault">
     Default checkbox
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-  <label class="form-check-label" for="flexCheckChecked">
+  <input class="form-check-input" type="checkbox" value="" id="CheckChecked" checked>
+  <label class="form-check-label" for="CheckChecked">
     Checked checkbox
   </label>
 </div>
@@ -38,8 +38,8 @@ Checkboxes can utilize the `:indeterminate` pseudo class when manually set via J
 
 {{< example class="bd-example-indeterminate" stackblitz_add_js="true" >}}
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
-  <label class="form-check-label" for="flexCheckIndeterminate">
+  <input class="form-check-input" type="checkbox" value="" id="CheckIndeterminate">
+  <label class="form-check-label" for="CheckIndeterminate">
     Indeterminate checkbox
   </label>
 </div>
@@ -51,20 +51,20 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 {{< example class="bd-example-indeterminate" stackblitz_add_js="true" >}}
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminateDisabled" disabled>
-  <label class="form-check-label" for="flexCheckIndeterminateDisabled">
+  <input class="form-check-input" type="checkbox" value="" id="CheckIndeterminateDisabled" disabled>
+  <label class="form-check-label" for="CheckIndeterminateDisabled">
     Disabled indeterminate checkbox
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
-  <label class="form-check-label" for="flexCheckDisabled">
+  <input class="form-check-input" type="checkbox" value="" id="CheckDisabled" disabled>
+  <label class="form-check-label" for="CheckDisabled">
     Disabled checkbox
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
-  <label class="form-check-label" for="flexCheckCheckedDisabled">
+  <input class="form-check-input" type="checkbox" value="" id="CheckCheckedDisabled" checked disabled>
+  <label class="form-check-label" for="CheckCheckedDisabled">
     Disabled checked checkbox
   </label>
 </div>
@@ -74,14 +74,14 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 {{< example >}}
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
+  <input class="form-check-input" type="radio" name="RadioDefault" id="RadioDefault1">
+  <label class="form-check-label" for="RadioDefault1">
     Default radio
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-  <label class="form-check-label" for="flexRadioDefault2">
+  <input class="form-check-input" type="radio" name="RadioDefault" id="RadioDefault2" checked>
+  <label class="form-check-label" for="RadioDefault2">
     Default checked radio
   </label>
 </div>
@@ -93,14 +93,14 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 {{< example >}}
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
-  <label class="form-check-label" for="flexRadioDisabled">
+  <input class="form-check-input" type="radio" name="RadioDisabled" id="RadioDisabled" disabled>
+  <label class="form-check-label" for="RadioDisabled">
     Disabled radio
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" checked disabled>
-  <label class="form-check-label" for="flexRadioCheckedDisabled">
+  <input class="form-check-input" type="radio" name="RadioDisabled" id="RadioCheckedDisabled" checked disabled>
+  <label class="form-check-label" for="RadioCheckedDisabled">
     Disabled checked radio
   </label>
 </div>
@@ -112,20 +112,20 @@ A switch has the markup of a custom checkbox but uses the `.form-switch` class t
 
 {{< example >}}
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-  <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckDefault">
+  <label class="form-check-label" for="SwitchCheckDefault">Default switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-  <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckChecked" checked>
+  <label class="form-check-label" for="SwitchCheckChecked">Checked switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled>
-  <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckDisabled" disabled>
+  <label class="form-check-label" for="SwitchCheckDisabled">Disabled switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
-  <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckCheckedDisabled" checked disabled>
+  <label class="form-check-label" for="SwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
 </div>
 {{< /example >}}
 
@@ -222,8 +222,8 @@ Put your checkboxes, radios, and switches on the opposite side with the `.form-c
 </div>
 
 <div class="form-check form-switch form-check-reverse">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
-  <label class="form-check-label" for="flexSwitchCheckReverse">Reverse switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" id="SwitchCheckReverse">
+  <label class="form-check-label" for="SwitchCheckReverse">Reverse switch checkbox input</label>
 </div>
 {{< /example >}}
 
