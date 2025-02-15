@@ -74,13 +74,13 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 {{< example >}}
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="RadioDefault" id="radioDefault1">
+  <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
   <label class="form-check-label" for="radioDefault1">
     Default radio
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="RadioDefault" id="radioDefault2" checked>
+  <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked>
   <label class="form-check-label" for="radioDefault2">
     Default checked radio
   </label>
@@ -93,13 +93,13 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 {{< example >}}
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="RadioDisabled" id="radioDisabled" disabled>
+  <input class="form-check-input" type="radio" name="radioDisabled" id="radioDisabled" disabled>
   <label class="form-check-label" for="radioDisabled">
     Disabled radio
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="RadioDisabled" id="radioCheckedDisabled" checked disabled>
+  <input class="form-check-input" type="radio" name="radioDisabled" id="radioCheckedDisabled" checked disabled>
   <label class="form-check-label" for="radioCheckedDisabled">
     Disabled checked radio
   </label>
