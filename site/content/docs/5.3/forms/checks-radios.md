@@ -112,8 +112,8 @@ A switch has the markup of a custom checkbox but uses the `.form-switch` class t
 
 {{< example >}}
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="switchcheckDefault">
-  <label class="form-check-label" for="switchcheckDefault">Default switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+  <label class="form-check-label" for="switchCheckDefault">Default switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" checked>
