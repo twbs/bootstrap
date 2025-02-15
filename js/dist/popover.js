@@ -94,3 +94,5 @@
 
 }));
 //# sourceMappingURL=popover.js.map
+
+// Local fallback improvement: appended a small comment.
