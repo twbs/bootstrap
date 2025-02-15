@@ -19,14 +19,14 @@ Our checks use custom Bootstrap icons to indicate checked or indeterminate state
 
 {{< example >}}
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="CheckDefault">
-  <label class="form-check-label" for="CheckDefault">
+  <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+  <label class="form-check-label" for="checkDefault">
     Default checkbox
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="CheckChecked" checked>
-  <label class="form-check-label" for="CheckChecked">
+  <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
+  <label class="form-check-label" for="checkChecked">
     Checked checkbox
   </label>
 </div>
@@ -38,8 +38,8 @@ Checkboxes can utilize the `:indeterminate` pseudo class when manually set via J
 
 {{< example class="bd-example-indeterminate" stackblitz_add_js="true" >}}
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="CheckIndeterminate">
-  <label class="form-check-label" for="CheckIndeterminate">
+  <input class="form-check-input" type="checkbox" value="" id="checkIndeterminate">
+  <label class="form-check-label" for="checkIndeterminate">
     Indeterminate checkbox
   </label>
 </div>
@@ -51,20 +51,20 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 {{< example class="bd-example-indeterminate" stackblitz_add_js="true" >}}
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="CheckIndeterminateDisabled" disabled>
-  <label class="form-check-label" for="CheckIndeterminateDisabled">
+  <input class="form-check-input" type="checkbox" value="" id="checkIndeterminateDisabled" disabled>
+  <label class="form-check-label" for="checkIndeterminateDisabled">
     Disabled indeterminate checkbox
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="CheckDisabled" disabled>
-  <label class="form-check-label" for="CheckDisabled">
+  <input class="form-check-input" type="checkbox" value="" id="checkDisabled" disabled>
+  <label class="form-check-label" for="checkDisabled">
     Disabled checkbox
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="CheckCheckedDisabled" checked disabled>
-  <label class="form-check-label" for="CheckCheckedDisabled">
+  <input class="form-check-input" type="checkbox" value="" id="checkCheckedDisabled" checked disabled>
+  <label class="form-check-label" for="checkCheckedDisabled">
     Disabled checked checkbox
   </label>
 </div>
@@ -112,8 +112,8 @@ A switch has the markup of a custom checkbox but uses the `.form-switch` class t
 
 {{< example >}}
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckDefault">
-  <label class="form-check-label" for="SwitchCheckDefault">Default switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="SwitchcheckDefault">
+  <label class="form-check-label" for="SwitchcheckDefault">Default switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckChecked" checked>
