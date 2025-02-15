@@ -74,14 +74,14 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 {{< example >}}
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="RadioDefault" id="RadioDefault1">
-  <label class="form-check-label" for="RadioDefault1">
+  <input class="form-check-input" type="radio" name="RadioDefault" id="radioDefault1">
+  <label class="form-check-label" for="radioDefault1">
     Default radio
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="RadioDefault" id="RadioDefault2" checked>
-  <label class="form-check-label" for="RadioDefault2">
+  <input class="form-check-input" type="radio" name="RadioDefault" id="radioDefault2" checked>
+  <label class="form-check-label" for="radioDefault2">
     Default checked radio
   </label>
 </div>
@@ -93,14 +93,14 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 {{< example >}}
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="RadioDisabled" id="RadioDisabled" disabled>
-  <label class="form-check-label" for="RadioDisabled">
+  <input class="form-check-input" type="radio" name="RadioDisabled" id="radioDisabled" disabled>
+  <label class="form-check-label" for="radioDisabled">
     Disabled radio
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="RadioDisabled" id="RadioCheckedDisabled" checked disabled>
-  <label class="form-check-label" for="RadioCheckedDisabled">
+  <input class="form-check-input" type="radio" name="RadioDisabled" id="radioCheckedDisabled" checked disabled>
+  <label class="form-check-label" for="radioCheckedDisabled">
     Disabled checked radio
   </label>
 </div>
@@ -112,20 +112,20 @@ A switch has the markup of a custom checkbox but uses the `.form-switch` class t
 
 {{< example >}}
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="SwitchcheckDefault">
-  <label class="form-check-label" for="SwitchcheckDefault">Default switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="switchcheckDefault">
+  <label class="form-check-label" for="switchcheckDefault">Default switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckChecked" checked>
-  <label class="form-check-label" for="SwitchCheckChecked">Checked switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" checked>
+  <label class="form-check-label" for="switchCheckChecked">Checked switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckDisabled" disabled>
-  <label class="form-check-label" for="SwitchCheckDisabled">Disabled switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDisabled" disabled>
+  <label class="form-check-label" for="switchCheckDisabled">Disabled switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheckCheckedDisabled" checked disabled>
-  <label class="form-check-label" for="SwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckCheckedDisabled" checked disabled>
+  <label class="form-check-label" for="switchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
 </div>
 {{< /example >}}
 
@@ -222,8 +222,8 @@ Put your checkboxes, radios, and switches on the opposite side with the `.form-c
 </div>
 
 <div class="form-check form-switch form-check-reverse">
-  <input class="form-check-input" type="checkbox" id="SwitchCheckReverse">
-  <label class="form-check-label" for="SwitchCheckReverse">Reverse switch checkbox input</label>
+  <input class="form-check-input" type="checkbox" id="switchCheckReverse">
+  <label class="form-check-label" for="switchCheckReverse">Reverse switch checkbox input</label>
 </div>
 {{< /example >}}
 
