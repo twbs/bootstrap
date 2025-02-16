@@ -80,7 +80,7 @@ Add labels to your progress bars by placing text within the `.progress-bar`.
 Note that by default, the content inside the `.progress-bar` is controlled with `overflow: hidden`, so it doesn't bleed out of the bar. If your progress bar is shorter than its label, the content will be capped and may become unreadable. To change this behavior, you can use `.overflow-visible` from the [overflow utilities]({{< docsref "/utilities/overflow" >}}).
 
 {{< callout warning >}}
-**Accessibility warning:** Long labels may not be fully accessible with this method. As it relies on the text color having the right contrast ratio with both the `.progress` and `.progress-bar` background colors, your color palette could be incompatible with this approach.
+Labels longer than the progress bar within may not be fully accessible using this method because it relies on the text color having the correct contrast ratio with both the `.progress` and `.progress-bar` background colors. Use caution when implementing this example.
 
 If the text can overlap the progress bar, we often recommend displaying the label outside of the progress bar for better accessibility.
 {{< /callout >}}
