@@ -110,6 +110,24 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 A switch has the markup of a custom checkbox but uses the `.form-switch` class to render a toggle switch. Consider using `role="switch"` to more accurately convey the nature of the control to assistive technologies that support this role. In older assistive technologies, it will simply be announced as a regular checkbox as a fallback. Switches also support the `disabled` attribute.
 
+{{< callout info >}}
+### Safari's Native Switch Support (iOS 17.4+)  
+
+In Safari (iOS 17.4+), you can add the `switch` attribute to checkbox inputs to enable **haptic feedback** when toggling switches, just like native iOS settings.  
+
+**Example:**  
+
+<input class="form-check-input" type="checkbox" switch>
+
+This keeps the styling identical to Bootstrap's default switches but enhances the user experience on iPhones.
+
+For a more iOS/macOS-native look, you can also use:
+-webkit-appearance: auto;
+This ensures compatibility with system accessibility settings like "Differentiate Without Color" and "Prefers Higher Contrast".
+
+[Demo on StackBlitz](https://stackblitz.com/edit/bootstrap-switch-native?file=index.html)
+{{< /callout >}}
+
 {{< example >}}
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
