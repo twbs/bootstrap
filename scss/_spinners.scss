@@ -1,3 +1,18 @@
+@use "config" as *;
+@use "variables" as *;
+
+// scss-docs-start spinner-variables
+$spinner-width:           2rem !default;
+$spinner-height:          $spinner-width !default;
+$spinner-vertical-align:  -.125em !default;
+$spinner-border-width:    .25em !default;
+$spinner-animation-speed: .75s !default;
+
+$spinner-width-sm:        1rem !default;
+$spinner-height-sm:       $spinner-width-sm !default;
+$spinner-border-width-sm: .2em !default;
+// scss-docs-end spinner-variables
+
 //
 // Rotating border
 //

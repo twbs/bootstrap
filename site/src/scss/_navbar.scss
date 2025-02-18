@@ -1,3 +1,11 @@
+@use "../../../scss/colors" as *;
+// @use "../../../scss/variables" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
+@use "../../../scss/mixins/color-mode" as *;
+@use "../../../scss/mixins/transition" as *;
+@use "../../../scss/vendor/rfs" as *;
+
 .bd-navbar {
   padding: .75rem 0;
   background-color: transparent;

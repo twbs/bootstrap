@@ -1,8 +1,14 @@
+@use "sass:map";
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/functions" as *;
+
 //
 // Docs color palette classes
 //
 
-@each $color, $value in map-merge($colors, ("gray-500": $gray-500)) {
+@each $color, $value in map.merge($colors, ("gray-500": $gray-500)) {
   .swatch-#{$color} {
     color: color-contrast($value);
     background-color: #{$value};

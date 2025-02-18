@@ -26,7 +26,7 @@ $info-bg-subtle-dark:               shade-color($info, 80%) !default;
 $warning-bg-subtle-dark:            shade-color($warning, 80%) !default;
 $danger-bg-subtle-dark:             shade-color($danger, 80%) !default;
 $light-bg-subtle-dark:              $gray-800 !default;
-$dark-bg-subtle-dark:               mix($gray-800, $black) !default;
+$dark-bg-subtle-dark:               color.mix($gray-800, $black) !default;
 // scss-docs-end theme-bg-subtle-dark-variables
 
 // scss-docs-start theme-border-subtle-dark-variables
@@ -45,7 +45,7 @@ $body-bg-dark:                      $gray-900 !default;
 $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
 $body-secondary-bg-dark:            $gray-800 !default;
 $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
-$body-tertiary-bg-dark:             mix($gray-800, $gray-900, 50%) !default;
+$body-tertiary-bg-dark:             color.mix($gray-800, $gray-900, 50%) !default;
 $body-emphasis-color-dark:          $white !default;
 $border-color-dark:                 $gray-700 !default;
 $border-color-translucent-dark:     rgba($white, .15) !default;

@@ -61,8 +61,8 @@
   --#{$prefix}gap: #{$grid-gutter-width};
 
   display: grid;
-  grid-auto-flow: row;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-auto-flow: row;
   gap: var(--#{$prefix}gap);
 }
 

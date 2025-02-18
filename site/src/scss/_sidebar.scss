@@ -1,3 +1,7 @@
+@use "../../../scss/variables" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
+
 .bd-sidebar {
   @include media-breakpoint-up(lg) {
     position: sticky;
