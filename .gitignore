@@ -1,8 +1,5 @@
 # Ignore docs files
 /_site/
-# Hugo files
-/resources/
-/.hugo_build.lock
 
 # Numerous always-ignore extensions
 *.diff
@@ -38,6 +35,14 @@ Thumbs.db
 *.komodoproject
 
 # Folders to ignore
-/dist-sass/
 /js/coverage/
 /node_modules/
+
+# TODO(HiDeoo) Rename or remove later
+/site-new/dist
+# TODO(HiDeoo) This could be avoided by modifying the other node_modules ignore rule.
+/site-new/node_modules
+# TODO(HiDeoo) Rename later
+/site-new/.astro
+# TODO(HiDeoo) Rename later
+/site-new/public

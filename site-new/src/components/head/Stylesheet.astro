@@ -1,0 +1,15 @@
+---
+import { getVersionedBsCssProps } from '@libs/bootstrap'
+import type { Layout } from '@libs/layout'
+
+interface Props {
+  direction?: 'rtl'
+  layout: Layout
+}
+
+const { direction, layout } = Astro.props
+---
+
+{layout === 'docs' && <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />}
+
+<link {...getVersionedBsCssProps(direction)} />

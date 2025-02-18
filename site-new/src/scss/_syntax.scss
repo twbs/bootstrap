@@ -1,0 +1,102 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/mixins/color-mode" as *;
+
+:root,
+[data-bs-theme="light"] {
+  // --base00: #fff;
+  // --base01: #f5f5f5;
+  --base02: #c8c8fa;
+  --base03: #565c64;
+  --base04: #666;
+  --base05: #333;
+  --base06: #fff;
+  --base07: #{$teal-700}; // #9a6700
+  --base08: #{mix($red-500, $red-600, 50%)}; // #bc4c00
+  --base09: #{$cyan-700}; // #087990
+  --base0A: #{$purple-500}; // #795da3
+  --base0B: #{$blue-700}; // #183691
+  --base0C: #{$blue-700}; // #183691
+  --base0D: #{$purple-500}; // #795da3
+  --base0E: #{$pink-600}; // #a71d5d
+  --base0F: #333;
+}
+
+@include color-mode(dark, true) {
+  // --base00: #282c34;
+  // --base01: #353b45;
+  --base02: #3e4451;
+  --base03: #868e96;
+  --base04: #868e96;
+  --base05: #abb2bf;
+  --base06: #b6bdca;
+  --base07: #{$orange-300}; // #d19a66
+  --base08: #{$cyan-300};
+  --base09: #{$orange-300}; // #d19a66
+  --base0A: #{$yellow-200}; // #e5c07b
+  --base0B: #{$teal-300}; // #98c379
+  --base0C: #{$teal-300}; // #56b6c2
+  --base0D: #{$blue-300}; // #61afef
+  --base0E: #{$indigo-200}; // #c678dd
+  --base0F: #{$red-300}; // #be5046
+}
+
+.highlight pre code {
+  // Prevent token highlighting for the shell and PowerShell languages.
+  &.language-bash,
+  &.language-powershell,
+  &.language-sh {
+    .token {
+      color: var(--bs-body-color);
+    }
+  }
+
+  // Shell prefix.
+  &.language-bash,
+  &.language-sh {
+    .token.prefix::before {
+      color: var(--base03);
+      content: "$ ";
+      user-select: none;
+    }
+  }
+
+  // PowerShell prefix.
+  &.language-powershell {
+    .token.prefix::before {
+      color: var(--base0C);
+      content: "PM> ";
+      user-select: none;
+    }
+  }
+
+  // All values (var, hex, units, etc.) are not tokenized individually.
+  &.language-scss { color: var(--base08); }
+
+  // Highlight all JS untokenized values.
+  &.language-js { color: var(--base0A); }
+}
+
+// https://prismjs.com/tokens.html
+.token {
+  &.attr-name { color: var(--base0A); }
+  &.attr-value { color: var(--base0C); }
+  // Highlight double quotes in attribute values with the same color as the value.
+  &.attr-value .token.punctuation:not(.attr-equals) { color: var(--base0C); }
+  &.boolean { color: var(--base08); }
+  &.class-name { color: var(--base0A); }
+  &.constant { color: var(--base0A); }
+  &.comment { color: var(--base03); }
+  &.doctype-tag { color: var(--base08); }
+  &.function { color: var(--base0B); }
+  &.keyword { color: var(--base0E); }
+  &.name { color: var(--base08); }
+  &.operator { color: var(--base05); }
+  &.parameter { color: var(--base0A); }
+  &.property { color: var(--base0A); }
+  &.punctuation { color: var(--base05); }
+  &.selector { color: var(--base07); }
+  &.string { color: var(--base0C); }
+  &.tag { color: var(--base08); }
+  &.variable { color: var(--base08); }
+}

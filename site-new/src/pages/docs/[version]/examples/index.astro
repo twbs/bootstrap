@@ -1,0 +1,150 @@
+---
+import DropletFillIcon from '@components/icons/DropletFillIcon.astro'
+import SingleLayout from '@layouts/SingleLayout.astro'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import { getData } from '@libs/data'
+import { getSlug } from '@libs/utils'
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { version: getConfig().docs_version },
+    },
+  ]
+}
+---
+
+<SingleLayout
+  title="Examples"
+  description="Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts."
+>
+  <div class="d-flex flex-column flex-md-row gap-3" slot="header-content">
+    <a
+      href={getConfig().download.dist_examples}
+      class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold"
+      onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');"
+    >
+      <svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
+      Download examples
+    </a>
+    <a
+      href={getConfig().download.source}
+      class="btn btn-lg bd-btn-lg btn-outline-secondary"
+      onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');"
+    >
+      Download source code
+    </a>
+  </div>
+  {
+    getData('examples').map(({ category, description, examples, external }) => {
+      return (
+        <div class="bd-content">
+          <h2 id={getSlug(category)}>{category}</h2>
+          <p>{description}</p>
+          {category === 'RTL' && (
+            <div class="bd-callout bd-callout-warning small">
+              <p>
+                <strong>RTL is still experimental</strong> and will evolve with feedback. Spotted something or have an
+                improvement to suggest?
+              </p>
+              <p>
+                <a href={`${getConfig().repo}/issues/new/choose`}>Please open an issue.</a>
+              </p>
+            </div>
+          )}
+          <div class="row">
+            {examples.map((example) => {
+              if (external) {
+                return (
+                  <div class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+                    <svg class="bi fs-5 flex-shrink-0 mt-1">
+                      <use xlink:href="#box-seam" />
+                    </svg>
+                    <div>
+                      <h3 class="h5 mb-1">
+                        <a
+                          class="d-block link-offset-1"
+                          href={`${getConfig().github_org}${example.url}/`}
+                          target="_blank"
+                        >
+                          {example.name}
+                        </a>
+                      </h3>
+                      <p class="text-body-secondary">{example.description}</p>
+                      <p>
+                        <a
+                          class="icon-link small link-secondary link-offset-1"
+                          href={`https://stackblitz.com/github/twbs${example.url}?file=index.html`}
+                          target="_blank"
+                        >
+                          <svg class="bi flex-shrink-0">
+                            <use xlink:href="#lightning-charge-fill" />
+                          </svg>
+                          Edit in StackBlitz
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                )
+              }
+
+              return (
+                <div class="col-sm-6 col-md-3 mb-3">
+                  <a
+                    class="d-block link-offset-1"
+                    href={`/docs/${getConfig().docs_version}/examples/${getSlug(example.name)}/`}
+                    hreflang={example.name.includes('RTL') ? 'ar' : undefined}
+                  >
+                    <img
+                      class="img-thumbnail mb-3"
+                      srcset={`${getVersionedDocsPath(
+                        `/assets/img/examples/${getSlug(example.name)}.png`
+                      )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
+                      src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}
+                      alt=""
+                      width="480"
+                      height="300"
+                      loading="lazy"
+                    />
+                    <h3 class="h5 mb-1">{example.name}</h3>
+                  </a>
+                  <p class="text-body-secondary">{example.description}</p>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )
+    })
+  }
+  <Fragment slot="main-content">
+    <hr class="my-5" />
+    <div class="container">
+      <div class="text-center">
+        <div class="masthead-followup-icon d-inline-block mb-2 text-bg-danger">
+          <DropletFillIcon height={32} width={32} />
+        </div>
+        <h2 class="display-6 fw-normal">Go further with Bootstrap Themes</h2>
+        <p class="col-md-10 col-lg-8 mx-auto lead">
+          Need something more than these examples? Take Bootstrap to the next level with premium themes from the <a
+            href={getConfig().themes}>official Bootstrap Themes marketplace</a
+          >. They’re built as their own extended frameworks, rich with new components and plugins, documentation, and
+          powerful build tools.
+        </p>
+        <a href={getConfig().themes} class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
+      </div>
+      <img
+        class="d-block img-fluid mt-3 mx-auto"
+        srcset={`${getVersionedDocsPath('/assets/img/bootstrap-themes-collage.png')}, ${getVersionedDocsPath(
+          '/assets/img/bootstrap-themes-collage@2x.png'
+        )} 2x`}
+        src={getVersionedDocsPath('/assets/img/bootstrap-themes-collage.png')}
+        alt="Bootstrap Themes"
+        width="1150"
+        height="320"
+        loading="lazy"
+      />
+    </div>
+  </Fragment>
+</SingleLayout>
