@@ -1,5 +1,6 @@
 @use "../../../scss/config" as *;
 @use "../../../scss/layout/breakpoints" as *;
+@use "variables" as *;
 
 .bd-gutter {
   --bs-gutter-x: #{$bd-gutter-x};
