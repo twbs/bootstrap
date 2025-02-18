@@ -9,7 +9,7 @@
 @import "mixins/deprecate";
 
 // Helpers
-@import "mixins/breakpoints";
+// @import "mixins/breakpoints";
 @import "mixins/color-mode";
 @import "mixins/color-scheme";
 @import "mixins/image";
@@ -38,5 +38,5 @@
 
 // Layout
 @import "mixins/clearfix";
-@import "mixins/container";
-@import "mixins/grid";
+// @import "mixins/container";
+// @import "mixins/grid";
