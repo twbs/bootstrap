@@ -254,6 +254,7 @@ $grays: (
   "gray-900": $gray-900
 ) !default;
 
+// scss-docs-start colors-map
 $colors: (
   "blue": $blue,
   "indigo": $indigo,
@@ -266,6 +267,7 @@ $colors: (
   "teal": $teal,
   "cyan": $cyan
 ) !default;
+// scss-docs-end colors-map
 
 $all-colors: (
   "grays": $grays,
