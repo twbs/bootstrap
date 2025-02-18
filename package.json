@@ -166,6 +166,11 @@
   "hugo-bin": {
     "buildTags": "extended"
   },
+  "browserslist": [
+    "last 1 versions",
+    "> 1%",
+    "not dead"
+  ],
   "jspm": {
     "registry": "npm",
     "main": "js/bootstrap",
