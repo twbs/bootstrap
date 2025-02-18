@@ -1,0 +1,159 @@
+# This file holds all sidebar menu's entries.
+# The logic for the sidebar generation is in "site/layouts/partials/docs-sidebar.html".
+
+- title: Getting started
+  icon: book-half
+  icon_color: indigo
+  pages:
+    - title: Introduction
+    - title: Download
+    - title: Contents
+    - title: Browsers & devices
+    - title: JavaScript
+    - title: Webpack
+    - title: Parcel
+    - title: Vite
+    - title: Accessibility
+    - title: RFS
+    - title: RTL
+    - title: Contribute
+
+- title: Customize
+  icon: palette2
+  icon_color: pink
+  pages:
+    - title: Overview
+    - title: Sass
+    - title: Options
+    - title: Color
+    - title: Color modes
+    - title: Components
+    - title: CSS variables
+    - title: Optimize
+
+- title: Layout
+  icon: grid-fill
+  icon_color: teal
+  pages:
+    - title: Breakpoints
+    - title: Containers
+    - title: Grid
+    - title: Columns
+    - title: Gutters
+    - title: Utilities
+    - title: Z-index
+    - title: CSS Grid
+
+- title: Content
+  icon: file-earmark-richtext
+  icon_color: gray
+  pages:
+    - title: Reboot
+    - title: Typography
+    - title: Images
+    - title: Tables
+    - title: Figures
+
+- title: Forms
+  icon: ui-radios
+  icon_color: blue
+  pages:
+    - title: Overview
+    - title: Form control
+    - title: Select
+    - title: Checks & radios
+    - title: Range
+    - title: Input group
+    - title: Floating labels
+    - title: Layout
+    - title: Validation
+
+- title: Components
+  icon: menu-button-wide-fill
+  icon_color: cyan
+  pages:
+    - title: Accordion
+    - title: Alerts
+    - title: Badge
+    - title: Breadcrumb
+    - title: Buttons
+    - title: Button group
+    - title: Card
+    - title: Carousel
+    - title: Close button
+    - title: Collapse
+    - title: Dropdowns
+    - title: List group
+    - title: Modal
+    - title: Navbar
+    - title: Navs & tabs
+    - title: Offcanvas
+    - title: Pagination
+    - title: Placeholders
+    - title: Popovers
+    - title: Progress
+    - title: Scrollspy
+    - title: Spinners
+    - title: Toasts
+    - title: Tooltips
+
+- title: Helpers
+  icon: magic
+  icon_color: orange
+  pages:
+    - title: Clearfix
+    - title: Color & background
+    - title: Colored links
+    - title: Focus ring
+    - title: Icon link
+    - title: Position
+    - title: Ratio
+    - title: Stacks
+    - title: Stretched link
+    - title: Text truncation
+    - title: Vertical rule
+    - title: Visually hidden
+
+- title: Utilities
+  icon: braces-asterisk
+  icon_color: red
+  pages:
+    - title: API
+    - title: Background
+    - title: Borders
+    - title: Colors
+    - title: Display
+    - title: Flex
+    - title: Float
+    - title: Interactions
+    - title: Link
+    - title: Object fit
+    - title: Opacity
+    - title: Overflow
+    - title: Position
+    - title: Shadows
+    - title: Sizing
+    - title: Spacing
+    - title: Text
+    - title: Vertical align
+    - title: Visibility
+    - title: Z-index
+
+- title: Extend
+  icon: tools
+  icon_color: blue
+  pages:
+    - title: Approach
+    - title: Icons
+
+- title: About
+  icon: globe2
+  icon_color: indigo
+  pages:
+    - title: Overview
+    - title: Team
+    - title: Brand
+    - title: License
+    - title: Translations
+
+- title: Migration
