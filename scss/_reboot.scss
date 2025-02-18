@@ -1,3 +1,9 @@
+@use "config" as *;
+@use "colors" as *;
+@use "variables" as *;
+@use "vendor/rfs" as *;
+@use "mixins/border-radius" as *;
+
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
 

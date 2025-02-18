@@ -1,3 +1,10 @@
+@use "../config" as *;
+@use "../variables" as *;
+@use "../vendor/rfs" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/transition" as *;
+@use "../mixins/gradients" as *;
 //
 // General form controls (plus a few specific high-level interventions)
 //

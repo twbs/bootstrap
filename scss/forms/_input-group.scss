@@ -1,3 +1,9 @@
+@use "sass:map";
+@use "../config" as *;
+@use "../variables" as *;
+@use "../vendor/rfs" as *;
+@use "../mixins/border-radius" as *;
+
 //
 // Base styles
 //
@@ -116,7 +122,7 @@
   }
 
   $validation-messages: "";
-  @each $state in map-keys($form-validation-states) {
+  @each $state in map.keys($form-validation-states) {
     $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
   }
 

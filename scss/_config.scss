@@ -4,8 +4,32 @@
 
 $prefix: bs- !default;
 
-$enable-container-classes: true !default;
+$enable-caret:                true !default;
+$enable-rounded:              true !default;
+$enable-shadows:              false !default;
+$enable-gradients:            false !default;
+$enable-transitions:          true !default;
+$enable-reduced-motion:       true !default;
+$enable-smooth-scroll:        true !default;
+$enable-grid-classes:         true !default;
+$enable-container-classes:    true !default;
+$enable-cssgrid:              false !default;
+$enable-button-pointers:      true !default;
+$enable-rfs:                  true !default;
+$enable-validation-icons:     true !default;
+$enable-negative-margins:     false !default;
+$enable-deprecation-messages: true !default;
+$enable-important-utilities:  true !default;
+
+$enable-dark-mode:            true !default;
+$color-mode-type:             data !default; // `data` or `media-query`
+
 // more to come here…
+
+$color-mode-type:          "media-query" !default;
+$color-contrast-dark:      #000 !default;
+$color-contrast-light:     #fff !default;
+$min-contrast-ratio:         4.5 !default;
 
 // Grid breakpoints
 //

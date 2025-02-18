@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+
 //
 // Base styles
 //
@@ -57,7 +62,7 @@
 
 // scss-docs-start alert-modifiers
 // Generate contextual modifier classes for colorizing the alert
-@each $state in map-keys($theme-colors) {
+@each $state in map.keys($theme-colors) {
   .alert-#{$state} {
     --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text-emphasis);
     --#{$prefix}alert-bg: var(--#{$prefix}#{$state}-bg-subtle);

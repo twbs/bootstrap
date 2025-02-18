@@ -1,3 +1,11 @@
+@use "sass:map";
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/transition" as *;
+@use "mixins/backdrop" as *;
+@use "layout/breakpoints" as *;
+
 // stylelint-disable function-disallowed-list
 
 %offcanvas-css-vars {
@@ -17,7 +25,7 @@
   // scss-docs-end offcanvas-css-vars
 }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   $next: breakpoint-next($breakpoint, $grid-breakpoints);
   $infix: breakpoint-infix($next, $grid-breakpoints);
 
@@ -26,7 +34,7 @@
   }
 }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   $next: breakpoint-next($breakpoint, $grid-breakpoints);
   $infix: breakpoint-infix($next, $grid-breakpoints);
 

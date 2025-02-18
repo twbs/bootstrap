@@ -1,3 +1,11 @@
+@use "sass:map";
+@use "config" as *;
+@use "colors" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "vendor/rfs" as *;
+@use "layout/breakpoints" as *;
+
 // Base class
 //
 // Easily usable on <ul>, <ol>, or <div>.
@@ -121,7 +129,7 @@
 //
 // Change the layout of list group items from vertical (default) to horizontal.
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
@@ -182,7 +190,7 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
-@each $state in map-keys($theme-colors) {
+@each $state in map.keys($theme-colors) {
   .list-group-item-#{$state} {
     --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text-emphasis);
     --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);
