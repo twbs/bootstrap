@@ -39,10 +39,10 @@ Thumbs.db
 /node_modules/
 
 # TODO(HiDeoo) Rename or remove later
-/site-new/dist
+/site/dist
 # TODO(HiDeoo) This could be avoided by modifying the other node_modules ignore rule.
-/site-new/node_modules
+/site/node_modules
 # TODO(HiDeoo) Rename later
-/site-new/.astro
+/site/.astro
 # TODO(HiDeoo) Rename later
-/site-new/public
+/site/public

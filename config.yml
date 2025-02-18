@@ -2,7 +2,7 @@ title:                  "Bootstrap"
 baseURL:                "https://getbootstrap.com"
 
 # TODO(HiDeoo) Fix path
-docsDir:                "site-new"
+docsDir:                "site"
 
 # TODO(HiDeoo) Check if still relevant, update Astro config and prolly remove this value from here
 publishDir:             "_site"

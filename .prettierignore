@@ -1,13 +1,13 @@
 # Prettier is only used for the webite
 
 # TODO(HiDeoo) rename later
-site-new/.astro
-site-new/dist
-site-new/public
-site-new/src/assets
-site-new/src/scss
-site-new/src/pages/**/*.md
-site-new/src/pages/**/*.mdx
-site-new/src/content/**/*.mdx
-site-new/src/layouts/RedirectLayout.astro
-site-new/static
+site/.astro
+site/dist
+site/public
+site/src/assets
+site/src/scss
+site/src/pages/**/*.md
+site/src/pages/**/*.mdx
+site/src/content/**/*.mdx
+site/src/layouts/RedirectLayout.astro
+site/static
