@@ -23,15 +23,18 @@
 // Happy Bootstrapping!
 
 // Load Bootstrap variables and mixins
-@import "../../../scss/functions";
-@import "../../../scss/variables";
-@import "../../../scss/mixins";
+// @import "../../../scss/config";
+// @import "../../../scss/colors";
+// @import "../../../scss/functions";
+// @import "../../../scss/mixins";
+// @import "../../../scss/variables";
+// @import "../../../scss/layout/breakpoints";
 
-// fusv-disable
-$enable-grid-classes: false;
-$enable-cssgrid: true;
-// fusv-enable
-@import "../../../scss/grid";
+// // fusv-disable
+// $enable-grid-classes: false;
+// $enable-cssgrid: true;
+// // fusv-enable
+// @import "../../../scss/layout/";
 
 // Load docs components
 @import "variables";
