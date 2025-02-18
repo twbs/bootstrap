@@ -4,52 +4,62 @@
 
 // scss-docs-start import-stack
 // Configuration
-@use "config" as *;
+// @use "config" as *;
 
+<<<<<<< HEAD
 @import "functions";
 @import "variables";
 @import "variables-dark";
 @import "maps";
 @import "mixins";
 @import "utilities";
+=======
+// @import "functions";
+// @import "colors";
+// @import "variables";
+// @import "variables-dark";
+@use "maps";
+@use "mixins";
+// @use "utilities";
+>>>>>>> 3ce5bfcfb (Migrate to Sass modules)
 
 // Layout & components
-@import "root";
-@import "reboot";
-@import "type";
-@import "images";
+@use "root";
+@use "reboot";
+@use "type";
+@use "images";
 // @import "containers";
 // @import "grid";
-@import "layout";
-@import "tables";
-@import "forms";
-@import "buttons";
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "nav";
-@import "navbar";
-@import "card";
-@import "accordion";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "alert";
-@import "progress";
-@import "list-group";
-@import "close";
-@import "toasts";
-@import "modal";
-@import "tooltip";
-@import "popover";
-@import "carousel";
-@import "spinners";
-@import "offcanvas";
-@import "placeholders";
+@use "layout";
+@use "tables";
+@use "forms";
+@use "buttons";
+@use "transitions";
+@use "dropdown";
+@use "button-group";
+@use "nav";
+@use "navbar";
+@use "card";
+@use "accordion";
+@use "breadcrumb";
+@use "pagination";
+@use "badge";
+@use "alert";
+@use "progress";
+@use "list-group";
+@use "close";
+@use "toasts";
+@use "modal";
+@use "tooltip";
+@use "popover";
+@use "carousel";
+@use "spinners";
+@use "offcanvas";
+@use "placeholders";
 
 // Helpers
-@import "helpers";
+@use "helpers";
 
 // Utilities
-@import "utilities/api";
+@use "utilities/api";
 // scss-docs-end import-stack

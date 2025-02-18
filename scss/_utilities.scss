@@ -1,8 +1,15 @@
+@use "sass:map";
+@use "config" as *;
+@use "colors" as *;
+@use "variables" as *;
+@use "functions" as *;
+@use "maps" as *;
+
 // Utilities
 
 $utilities: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
-$utilities: map-merge(
+$utilities: map.merge(
   (
     // scss-docs-start utils-vertical-align
     "align": (
@@ -353,43 +360,43 @@ $utilities: map-merge(
       responsive: true,
       property: margin,
       class: m,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     "margin-x": (
       responsive: true,
       property: margin-right margin-left,
       class: mx,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     "margin-y": (
       responsive: true,
       property: margin-top margin-bottom,
       class: my,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     "margin-top": (
       responsive: true,
       property: margin-top,
       class: mt,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     "margin-end": (
       responsive: true,
       property: margin-right,
       class: me,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     "margin-bottom": (
       responsive: true,
       property: margin-bottom,
       class: mb,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     "margin-start": (
       responsive: true,
       property: margin-left,
       class: ms,
-      values: map-merge($spacers, (auto: auto))
+      values: map.merge($spacers, (auto: auto))
     ),
     // Negative margin utilities
     "negative-margin": (
@@ -579,7 +586,7 @@ $utilities: map-merge(
       local-vars: (
         "text-opacity": 1
       ),
-      values: map-merge(
+      values: map.merge(
         $utilities-text-colors,
         (
           "muted": var(--#{$prefix}secondary-color), // deprecated
@@ -637,7 +644,7 @@ $utilities: map-merge(
       local-vars: (
         "link-underline-opacity": 1
       ),
-      values: map-merge(
+      values: map.merge(
         $utilities-links-underline,
         (
           null: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-underline-opacity, 1)),
@@ -665,7 +672,7 @@ $utilities: map-merge(
       local-vars: (
         "bg-opacity": 1
       ),
-      values: map-merge(
+      values: map.merge(
         $utilities-bg-colors,
         (
           "transparent": transparent,
