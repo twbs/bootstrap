@@ -1,3 +1,6 @@
+@use "config" as *;
+@use "mixins/transition" as *;
+
 // Disable animation if transitions are disabled
 
 // scss-docs-start progress-keyframes

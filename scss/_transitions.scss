@@ -1,3 +1,5 @@
+@use "config" as *;
+
 .fade {
   @include transition($transition-fade);
 

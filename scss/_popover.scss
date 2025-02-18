@@ -1,3 +1,5 @@
+@use "config" as *;
+
 .popover {
   // scss-docs-start popover-css-vars
   --#{$prefix}popover-zindex: #{$zindex-popover};

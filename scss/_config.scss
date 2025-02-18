@@ -5,7 +5,17 @@
 $prefix: bs- !default;
 
 $enable-container-classes: true !default;
+$enable-rounded: true !default;
+$enable-shadows: true !default;
+$enable-gradients: false !default;
+$enable-transitions: true !default;
+$enable-reduced-motion: false !default;
 // more to come here…
+
+$color-mode-type:          "media-query" !default;
+$color-contrast-dark:      #000 !default;
+$color-contrast-light:     #fff !default;
+$min-contrast-ratio:         4.5 !default;
 
 // Grid breakpoints
 //

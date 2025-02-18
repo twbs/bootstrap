@@ -1,3 +1,5 @@
+@use "../config" as *;
+
 .icon-link {
   display: inline-flex;
   gap: $icon-link-gap;

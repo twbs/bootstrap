@@ -1,3 +1,6 @@
+@use "config" as *;
+@use "colors" as *;
+
 :root,
 [data-bs-theme="light"] {
   // Note: Custom variable values only support SassScript inside `#{}`.
