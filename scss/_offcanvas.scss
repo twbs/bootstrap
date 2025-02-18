@@ -1,4 +1,9 @@
 @use "config" as *;
+@use "variables" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/transition" as *;
+@use "mixins/backdrop" as *;
+@use "layout/breakpoints" as *;
 
 // stylelint-disable function-disallowed-list
 

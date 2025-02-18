@@ -1,5 +1,9 @@
 @use "config" as *;
 @use "colors" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "vendor/rfs" as *;
+@use "layout/breakpoints" as *;
 
 // Base class
 //

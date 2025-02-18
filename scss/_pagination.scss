@@ -1,4 +1,10 @@
 @use "config" as *;
+@use "variables" as *;
+@use "mixins/lists" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/transition" as *;
+@use "mixins/gradients" as *;
+@use "vendor/rfs" as *;
 
 // scss-docs-start pagination-mixin
 @mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
