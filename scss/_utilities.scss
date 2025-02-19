@@ -18,6 +18,13 @@ $utilities: map.merge(
       values: baseline top middle bottom text-bottom text-top
     ),
     // scss-docs-end utils-vertical-align
+    // scss-docs-start utils-aspect-ratio
+    "aspect-ratio": (
+      property: aspect-ratio,
+      class: ratio,
+      values: $aspect-ratios
+    ),
+    // scss-docs-end utils-aspect-ratio
     // scss-docs-start utils-float
     "float": (
       responsive: true,

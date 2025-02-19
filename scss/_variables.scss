@@ -296,16 +296,15 @@ $transition-collapse:         height .35s ease !default;
 $transition-collapse-width:   width .35s ease !default;
 // scss-docs-end collapse-transition
 
-// stylelint-disable function-disallowed-list
 // scss-docs-start aspect-ratios
 $aspect-ratios: (
-  "1x1": 100%,
-  "4x3": calc(3 / 4 * 100%),
-  "16x9": calc(9 / 16 * 100%),
-  "21x9": calc(9 / 21 * 100%)
+  "auto": auto,
+  "4x3": 4 / 3,
+  "1x1": 1 / 1,
+  "16x9": 16 / 9,
+  "21x9": 21 / 9
 ) !default;
 // scss-docs-end aspect-ratios
-// stylelint-enable function-disallowed-list
 
 // Typography
 //
