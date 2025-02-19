@@ -181,29 +181,17 @@
 
 // Ratio helpers
 .bd-example-ratios {
-  .ratio {
-    display: inline-block;
-    width: 10rem;
+  [class*="ratio"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
     color: var(--bs-secondary-color);
     background-color: var(--bs-tertiary-bg);
     border: var(--bs-border-width) solid var(--bs-border-color);
-
-    > div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
   }
 }
-.bd-example-ratios-breakpoint {
-  .ratio-4x3 {
-    width: 16rem;
 
-    @include media-breakpoint-up(md) {
-      --bs-aspect-ratio: 50%; // 2x1
-    }
-  }
-}
 
 .bd-example-offcanvas {
   .offcanvas {
