@@ -1,5 +1,7 @@
 @use "../mixins/clearfix" as *;
 
-.clearfix {
-  @include clearfix();
+@layer helpers {
+  .clearfix {
+    @include clearfix();
+  }
 }
