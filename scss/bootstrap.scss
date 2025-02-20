@@ -4,55 +4,48 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 
-// @import "mixins/banner";
-// @include bsBanner("");
-
-
 // scss-docs-start import-stack
-// Configuration
-// @use "config" as *;
-
-// @import "functions";
-// @import "colors";
-// @import "variables";
-// @import "variables-dark";
-@use "maps";
-@use "mixins";
-// @use "utilities";
-
-// Layout & components
+// Global CSS variables, layer definitions, and configuration
 @use "root";
+
+// Our reset and normalizer
 @use "reboot";
+
+// Content
 @use "type";
 @use "images";
-// @import "containers";
-// @import "grid";
-@use "layout";
 @use "tables";
+
+// Layout
+@use "layout";
+
+// Forms
 @use "forms";
+
+// Components
+@use "accordion";
+@use "alert";
+@use "badge";
+@use "breadcrumb";
 @use "buttons";
-@use "transitions";
-@use "dropdown";
 @use "button-group";
+@use "card";
+@use "carousel";
+@use "close";
+@use "dropdown";
+@use "list-group";
+@use "modal";
 @use "nav";
 @use "navbar";
-@use "card";
-@use "accordion";
-@use "breadcrumb";
-@use "pagination";
-@use "badge";
-@use "alert";
-@use "progress";
-@use "list-group";
-@use "close";
-@use "toasts";
-@use "modal";
-@use "tooltip";
-@use "popover";
-@use "carousel";
-@use "spinners";
 @use "offcanvas";
+@use "pagination";
 @use "placeholders";
+@use "popover";
+@use "progress";
+@use "spinners";
+@use "toasts";
+@use "tooltip";
+@use "transitions";
 
 // Helpers
 @use "helpers";
