@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
@@ -201,7 +202,7 @@
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
 .navbar-expand {
-  @each $breakpoint in map-keys($grid-breakpoints) {
+  @each $breakpoint in map.keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
 
