@@ -21,7 +21,6 @@
       description: "Import and bundle Bootstrap's source Sass and JavaScript via Parcel."
       url: /examples/tree/main/parcel
       indexPath: src/index.html
-      indexPath: src/index.html
     - name: React
       description: "Import and bundle Bootstrap's source Sass and JavaScript with React, Next.js, and React Bootstrap."
       url: /examples/tree/main/react-nextjs
