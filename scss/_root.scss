@@ -5,6 +5,24 @@
 @use "vendor/rfs" as *;
 @use "mixins/color-mode" as *;
 
+// mdo-do: do we need theme?
+@layer colors, theme, config, root, reboot, layout, content, forms, components, helpers, custom, utilities;
+
+@layer colors {
+  :root,
+  [data-bs-theme="light"] {
+    @each $color-group-name, $color-group in $all-colors {
+      @each $color-name, $color-value in $color-group {
+        --#{$prefix}#{$color-name}: #{$color-value};
+      }
+    }
+
+    @each $color, $value in $theme-colors {
+      --#{$prefix}#{$color}: #{$value};
+    }
+  }
+}
+
 :root,
 [data-bs-theme="light"] {
   // Note: Custom variable values only support SassScript inside `#{}`.
@@ -13,11 +31,11 @@
   //
   // Generate palettes for full colors, grays, and theme colors.
 
-  @each $color-group-name, $color-group in $all-colors {
-    @each $color-name, $color-value in $color-group {
-      --#{$prefix}#{$color-name}: #{$color-value};
-    }
-  }
+  // @each $color-group-name, $color-group in $all-colors {
+  //   @each $color-name, $color-value in $color-group {
+  //     --#{$prefix}#{$color-name}: #{$color-value};
+  //   }
+  // }
 
   // @each $color, $value in $colors {
   //   --#{$prefix}#{$color}: #{$value};
@@ -27,9 +45,9 @@
   //   --#{$prefix}gray-#{$color}: #{$value};
   // }
 
-  @each $color, $value in $theme-colors {
-    --#{$prefix}#{$color}: #{$value};
-  }
+  // @each $color, $value in $theme-colors {
+  //   --#{$prefix}#{$color}: #{$value};
+  // }
 
   @each $color, $value in $theme-colors-rgb {
     --#{$prefix}#{$color}-rgb: #{$value};
