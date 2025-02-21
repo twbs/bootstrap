@@ -74,7 +74,7 @@
                 --#{$prefix}#{$local-var}: #{$variable};
               }
             }
-            #{$property}: $value if($enable-important-utilities, !important, null);
+            #{$property}: $value;
           }
         }
 
@@ -86,7 +86,7 @@
                   --#{$prefix}#{$local-var}: #{$variable};
                 }
               }
-              #{$property}: $value if($enable-important-utilities, !important, null);
+              #{$property}: $value;
             }
           }
         }
