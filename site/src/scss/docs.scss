@@ -28,7 +28,7 @@
 // @use "../../../scss/functions";
 // @use "../../../scss/mixins";
 // @use "../../../scss/variables";
-// @use "../../../scss/layout/breakpoints";
+@use "../../../scss/layout/breakpoints" as *;
 
 // // fusv-disable
 // $enable-grid-classes: false;

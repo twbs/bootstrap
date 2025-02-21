@@ -34,16 +34,16 @@ $min-contrast-ratio:         4.5 !default;
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
-// scss-docs-start grid-breakpoints
-$grid-breakpoints: (
+// scss-docs-start breakpoints
+$breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1400px
+  2xl: 1400px
 ) !default;
-// scss-docs-end grid-breakpoints
+// scss-docs-end breakpoints
 
 // Grid columns
 //
@@ -63,7 +63,7 @@ $container-max-widths: (
   md: 720px,
   lg: 960px,
   xl: 1140px,
-  xxl: 1320px
+  2xl: 1320px
 ) !default;
 // scss-docs-end container-max-widths
 

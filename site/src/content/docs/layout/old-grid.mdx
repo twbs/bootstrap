@@ -32,7 +32,7 @@ The above example creates three equal-width columns across all devices and viewp
 
 Breaking it down, here's how the grid system comes together:
 
-- **Our grid supports [six responsive breakpoints]([[docsref:/layout/breakpoints]]).**  Breakpoints are based on `min-width` media queries, meaning they affect that breakpoint and all those above it (e.g., `.col-sm-4` applies to `sm`, `md`, `lg`, `xl`, and `xxl`). This means you can control container and column sizing and behavior by each breakpoint.
+- **Our grid supports [six responsive breakpoints]([[docsref:/layout/breakpoints]]).**  Breakpoints are based on `min-width` media queries, meaning they affect that breakpoint and all those above it (e.g., `.col-sm-4` applies to `sm`, `md`, `lg`, `xl`, and `2xl`). This means you can control container and column sizing and behavior by each breakpoint.
 
 - **Containers center and horizontally pad your content.** Use `.container` for a responsive pixel width, `.container-fluid` for `width: 100%` across all viewports and devices, or a responsive container (e.g., `.container-md`) for a combination of fluid and pixel widths.
 
@@ -55,7 +55,7 @@ Bootstrap's grid system can adapt across all six default breakpoints, and any br
 - Medium (md)
 - Large (lg)
 - Extra large (xl)
-- Extra extra large (xxl)
+- Extra extra large (2xl)
 
 As noted above, each of these breakpoints have their own container, unique class prefix, and modifiers. Here's how the grid changes across these breakpoints:
 
@@ -85,7 +85,7 @@ As noted above, each of these breakpoints have their own container, unique class
           <span class="fw-normal">&ge;1200px</span>
         </th>
         <th scope="col">
-          xxl<br/>
+          2xl<br/>
           <span class="fw-normal">&ge;1400px</span>
         </th>
       </tr>
@@ -107,7 +107,7 @@ As noted above, each of these breakpoints have their own container, unique class
         <td><code>.col-md-</code></td>
         <td><code>.col-lg-</code></td>
         <td><code>.col-xl-</code></td>
-        <td><code>.col-xxl-</code></td>
+        <td><code>.col-2xl-</code></td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row"># of columns</th>
@@ -139,7 +139,7 @@ Utilize breakpoint-specific column classes for easy column sizing without an exp
 
 ### Equal-width
 
-For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xxl`. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
+For example, here are two grid layouts that apply to every device and viewport, from `xs` to `2xl`. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
 
 <Example class="bd-example-row" code={`<div class="container text-center">
   <div class="row">
@@ -478,10 +478,10 @@ $grid-row-columns: 6 !default;
 
 ### Grid tiers
 
-Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you'd update the `$grid-breakpoints` and `$container-max-widths` to something like this:
+Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you'd update the `$breakpoints` and `$container-max-widths` to something like this:
 
 ```scss
-$grid-breakpoints: (
+$breakpoints: (
   xs: 0,
   sm: 480px,
   md: 768px,

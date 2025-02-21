@@ -24,11 +24,11 @@ Here are two examples of how we loop over the `$theme-colors` map to generate mo
 
 ## Responsive
 
-These Sass loops aren’t limited to color maps, either. You can also generate responsive variations of your components. Take for example our responsive alignment of the dropdowns where we mix an `@each` loop for the `$grid-breakpoints` Sass map with a media query include.
+These Sass loops aren't limited to color maps, either. You can also generate responsive variations of your components. Take for example our responsive alignment of the dropdowns where we mix an `@each` loop for the `$breakpoints` Sass map with a media query include.
 
 <ScssDocs name="responsive-breakpoints" file="scss/_dropdown.scss" />
 
-Should you modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
+Should you modify your `$breakpoints`, your changes will apply to all the loops iterating over that map.
 
 <ScssDocs name="grid-breakpoints" file="scss/_variables.scss" />
 

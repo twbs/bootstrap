@@ -26,18 +26,18 @@
     // scss-docs-end offcanvas-css-vars
   }
 
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
+  @each $breakpoint in map.keys($breakpoints) {
+    $next: breakpoint-next($breakpoint, $breakpoints);
+    $infix: breakpoint-infix($next, $breakpoints);
 
     .offcanvas#{$infix} {
       @extend %offcanvas-css-vars;
     }
   }
 
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
+  @each $breakpoint in map.keys($breakpoints) {
+    $next: breakpoint-next($breakpoint, $breakpoints);
+    $infix: breakpoint-infix($next, $breakpoints);
 
     .offcanvas#{$infix} {
       @include media-breakpoint-down($next) {
