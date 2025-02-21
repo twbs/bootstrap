@@ -1,7 +1,6 @@
 @use "sass:map";
 @use "../config" as *;
 
-
 // Breakpoint viewport sizes and media queries.
 //
 // Breakpoints are defined as a map of (name: minimum width), order from small to large:
@@ -65,7 +64,7 @@
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
-    @media (min-width: $min) {
+    @media (width >= $min) {
       @content;
     }
   } @else {
@@ -78,7 +77,7 @@
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
-    @media (max-width: $max) {
+    @media (width < $max) {
       @content;
     }
   } @else {
@@ -93,7 +92,7 @@
   $max: breakpoint-max($upper, $breakpoints);
 
   @if $min != null and $max != null {
-    @media (min-width: $min) and (max-width: $max) {
+    @media ($min <= width <= $max) {
       @content;
     }
   } @else if $max == null {
