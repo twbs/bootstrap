@@ -5,9 +5,9 @@ aliases: "/docs/[[config:docs_version]]/utilities/"
 toc: true
 ---
 
-Bootstrap utilities are generated with our utility API and can be used to modify or extend our default set of utility classes via Sass. Our utility API is based on a series of Sass maps and functions for generating families of classes with various options. If you’re unfamiliar with Sass maps, read up on the [official Sass docs](https://sass-lang.com/documentation/values/maps/) to get started.
+Bootstrap utilities are generated with our utility API and can be used to modify or extend our default set of utility classes via Sass. Utility classes are the last layer in our CSS layers, so they'll always apply to elements and components used by Bootstrap. The utility API is based on a series of Sass maps and functions for generating families of classes with various options. If you’re unfamiliar with Sass maps, read up on the [official Sass docs](https://sass-lang.com/documentation/values/maps) to get started.
 
-The `$utilities` map contains all our utilities and is later merged with your custom `$utilities` map, if present. The utility map contains a keyed list of utility groups which accept the following options:
+The `$utilities` map contains all our utilities and is later merged with your custom `$utilities` map, if present. This map contains a keyed list of utility groups which accept the following options:
 
 <BsTable class="table table-utilities">
 | Option | Type | Default&nbsp;value | Description |
@@ -70,9 +70,9 @@ $utilities: (
 Output:
 
 ```css
-.text-decoration-none { text-decoration: none !important; }
-.text-decoration-underline { text-decoration: underline !important; }
-.text-decoration-line-through { text-decoration: line-through !important; }
+.text-decoration-none { text-decoration: none; }
+.text-decoration-underline { text-decoration: underline; }
+.text-decoration-line-through { text-decoration: line-through; }
 ```
 
 ### Values
@@ -126,11 +126,11 @@ $utilities: (
 Output:
 
 ```css
-.o-0 { opacity: 0 !important; }
-.o-25 { opacity: .25 !important; }
-.o-50 { opacity: .5 !important; }
-.o-75 { opacity: .75 !important; }
-.o-100 { opacity: 1 !important; }
+.o-0 { opacity: 0; }
+.o-25 { opacity: .25; }
+.o-50 { opacity: .5; }
+.o-75 { opacity: .75; }
+.o-100 { opacity: 1; }
 ```
 
 If `class: null`, generates classes for each of the `values` keys:
@@ -151,8 +151,8 @@ $utilities: (
 Output:
 
 ```css
-.visible { visibility: visible !important; }
-.invisible { visibility: hidden !important; }
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }
 ```
 
 ### CSS variable utilities
@@ -213,7 +213,7 @@ Output:
 ```css
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
 }
 ```
 
@@ -243,11 +243,11 @@ $utilities: (
 Output:
 
 ```css
-.opacity-0-hover:hover { opacity: 0 !important; }
-.opacity-25-hover:hover { opacity: .25 !important; }
-.opacity-50-hover:hover { opacity: .5 !important; }
-.opacity-75-hover:hover { opacity: .75 !important; }
-.opacity-100-hover:hover { opacity: 1 !important; }
+.opacity-0-hover:hover { opacity: 0; }
+.opacity-25-hover:hover { opacity: .25; }
+.opacity-50-hover:hover { opacity: .5; }
+.opacity-75-hover:hover { opacity: .75; }
+.opacity-100-hover:hover { opacity: 1; }
 ```
 
 ### Responsive
@@ -273,42 +273,42 @@ $utilities: (
 Output:
 
 ```css
-.opacity-0 { opacity: 0 !important; }
-.opacity-25 { opacity: .25 !important; }
-.opacity-50 { opacity: .5 !important; }
-.opacity-75 { opacity: .75 !important; }
-.opacity-100 { opacity: 1 !important; }
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: .25; }
+.opacity-50 { opacity: .5; }
+.opacity-75 { opacity: .75; }
+.opacity-100 { opacity: 1; }
 
 @media (min-width: 576px) {
-  .opacity-sm-0 { opacity: 0 !important; }
-  .opacity-sm-25 { opacity: .25 !important; }
-  .opacity-sm-50 { opacity: .5 !important; }
-  .opacity-sm-75 { opacity: .75 !important; }
-  .opacity-sm-100 { opacity: 1 !important; }
+  .opacity-sm-0 { opacity: 0; }
+  .opacity-sm-25 { opacity: .25; }
+  .opacity-sm-50 { opacity: .5; }
+  .opacity-sm-75 { opacity: .75; }
+  .opacity-sm-100 { opacity: 1; }
 }
 
 @media (min-width: 768px) {
-  .opacity-md-0 { opacity: 0 !important; }
-  .opacity-md-25 { opacity: .25 !important; }
-  .opacity-md-50 { opacity: .5 !important; }
-  .opacity-md-75 { opacity: .75 !important; }
-  .opacity-md-100 { opacity: 1 !important; }
+  .opacity-md-0 { opacity: 0; }
+  .opacity-md-25 { opacity: .25; }
+  .opacity-md-50 { opacity: .5; }
+  .opacity-md-75 { opacity: .75; }
+  .opacity-md-100 { opacity: 1; }
 }
 
 @media (min-width: 992px) {
-  .opacity-lg-0 { opacity: 0 !important; }
-  .opacity-lg-25 { opacity: .25 !important; }
-  .opacity-lg-50 { opacity: .5 !important; }
-  .opacity-lg-75 { opacity: .75 !important; }
-  .opacity-lg-100 { opacity: 1 !important; }
+  .opacity-lg-0 { opacity: 0; }
+  .opacity-lg-25 { opacity: .25; }
+  .opacity-lg-50 { opacity: .5; }
+  .opacity-lg-75 { opacity: .75; }
+  .opacity-lg-100 { opacity: 1; }
 }
 
 @media (min-width: 1200px) {
-  .opacity-xl-0 { opacity: 0 !important; }
-  .opacity-xl-25 { opacity: .25 !important; }
-  .opacity-xl-50 { opacity: .5 !important; }
-  .opacity-xl-75 { opacity: .75 !important; }
-  .opacity-xl-100 { opacity: 1 !important; }
+  .opacity-xl-0 { opacity: 0; }
+  .opacity-xl-25 { opacity: .25; }
+  .opacity-xl-50 { opacity: .5; }
+  .opacity-xl-75 { opacity: .75; }
+  .opacity-xl-100 { opacity: 1; }
 }
 
 @media (min-width: 1400px) {
@@ -343,18 +343,18 @@ $utilities: (
 Output:
 
 ```css
-.opacity-0 { opacity: 0 !important; }
-.opacity-25 { opacity: .25 !important; }
-.opacity-50 { opacity: .5 !important; }
-.opacity-75 { opacity: .75 !important; }
-.opacity-100 { opacity: 1 !important; }
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: .25; }
+.opacity-50 { opacity: .5; }
+.opacity-75 { opacity: .75; }
+.opacity-100 { opacity: 1; }
 
 @media print {
-  .opacity-print-0 { opacity: 0 !important; }
-  .opacity-print-25 { opacity: .25 !important; }
-  .opacity-print-50 { opacity: .5 !important; }
-  .opacity-print-75 { opacity: .75 !important; }
-  .opacity-print-100 { opacity: 1 !important; }
+  .opacity-print-0 { opacity: 0; }
+  .opacity-print-25 { opacity: .25; }
+  .opacity-print-50 { opacity: .5; }
+  .opacity-print-75 { opacity: .75; }
+  .opacity-print-100 { opacity: 1; }
 }
 ```
 
@@ -612,8 +612,8 @@ Output:
 ```css
 /* rtl:begin:remove */
 .text-break {
-  word-wrap: break-word !important;
-  word-break: break-word !important;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 /* rtl:end:remove */
 ```
