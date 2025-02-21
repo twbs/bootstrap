@@ -92,7 +92,7 @@
     "watch-css-test": "nodemon --watch scss/ --ext scss,js --exec \"npm run css-test\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\"",
-    "astro-dev": "astro dev --root site",
+    "astro-dev": "astro dev --root site --port 9001",
     "astro-build": "astro build --root site",
     "astro-preview": "astro preview --root site",
     "astro-lint": "prettier --config site/.prettierrc.json -c --cache site && astro check --root site && tsc -p site --noEmit",
