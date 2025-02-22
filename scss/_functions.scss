@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "config" as *;
 
 // Bootstrap functions
@@ -176,7 +177,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   $l1: luminance($background);
   $l2: luminance(opaque($background, $foreground));
 
-  @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
+  @return if($l1 > $l2, math.div($l1 + .05, $l2 + .05), math.div($l2 + .05, $l1 + .05));
 }
 
 // Return WCAG2.2 relative luminance
@@ -190,7 +191,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   );
 
   @each $name, $value in $rgb {
-    $value: if(divide($value, 255) < .04045, divide(divide($value, 255), 12.92), nth($_luminance-list, $value + 1));
+    $value: if(math.div($value, 255) < .04045, math.div(math.div($value, 255), 12.92), nth($_luminance-list, $value + 1));
     $rgb: map-merge($rgb, ($name: $value));
   }
 
@@ -219,86 +220,3 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
 }
 // scss-docs-end color-functions
-
-// Return valid calc
-@function add($value1, $value2, $return-calc: true) {
-  @if $value1 == null {
-    @return $value2;
-  }
-
-  @if $value2 == null {
-    @return $value1;
-  }
-
-  @if type-of($value1) == number and type-of($value2) == number and comparable($value1, $value2) {
-    @return $value1 + $value2;
-  }
-
-  @return if($return-calc == true, calc(#{$value1} + #{$value2}), $value1 + unquote(" + ") + $value2);
-}
-
-@function subtract($value1, $value2, $return-calc: true) {
-  @if $value1 == null and $value2 == null {
-    @return null;
-  }
-
-  @if $value1 == null {
-    @return -$value2;
-  }
-
-  @if $value2 == null {
-    @return $value1;
-  }
-
-  @if type-of($value1) == number and type-of($value2) == number and comparable($value1, $value2) {
-    @return $value1 - $value2;
-  }
-
-  @if type-of($value2) != number {
-    $value2: unquote("(") + $value2 + unquote(")");
-  }
-
-  @return if($return-calc == true, calc(#{$value1} - #{$value2}), $value1 + unquote(" - ") + $value2);
-}
-
-@function divide($dividend, $divisor, $precision: 10) {
-  $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
-  $dividend: abs($dividend);
-  $divisor: abs($divisor);
-  @if $dividend == 0 {
-    @return 0;
-  }
-  @if $divisor == 0 {
-    @error "Cannot divide by 0";
-  }
-  $remainder: $dividend;
-  $result: 0;
-  $factor: 10;
-  @while ($remainder > 0 and $precision >= 0) {
-    $quotient: 0;
-    @while ($remainder >= $divisor) {
-      $remainder: $remainder - $divisor;
-      $quotient: $quotient + 1;
-    }
-    $result: $result * 10 + $quotient;
-    $factor: $factor * .1;
-    $remainder: $remainder * 10;
-    $precision: $precision - 1;
-    @if ($precision < 0 and $remainder >= $divisor * 5) {
-      $result: $result + 1;
-    }
-  }
-  $result: $result * $factor * $sign;
-  $dividend-unit: unit($dividend);
-  $divisor-unit: unit($divisor);
-  $unit-map: (
-    "px": 1px,
-    "rem": 1rem,
-    "em": 1em,
-    "%": 1%
-  );
-  @if ($dividend-unit != $divisor-unit and map-has-key($unit-map, $dividend-unit)) {
-    $result: $result * map-get($unit-map, $dividend-unit);
-  }
-  @return $result;
-}
