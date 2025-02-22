@@ -176,14 +176,6 @@ const reflow = element => {
   element.offsetHeight // eslint-disable-line no-unused-expressions
 }
 
-const getjQuery = () => {
-  if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
-    return window.jQuery
-  }
-
-  return null
-}
-
 const DOMContentLoadedCallbacks = []
 
 const onDOMContentLoaded = callback => {
@@ -204,23 +196,6 @@ const onDOMContentLoaded = callback => {
 }
 
 const isRTL = () => document.documentElement.dir === 'rtl'
-
-const defineJQueryPlugin = plugin => {
-  onDOMContentLoaded(() => {
-    const $ = getjQuery()
-    /* istanbul ignore if */
-    if ($) {
-      const name = plugin.NAME
-      const JQUERY_NO_CONFLICT = $.fn[name]
-      $.fn[name] = plugin.jQueryInterface
-      $.fn[name].Constructor = plugin
-      $.fn[name].noConflict = () => {
-        $.fn[name] = JQUERY_NO_CONFLICT
-        return plugin.jQueryInterface
-      }
-    }
-  })
-}
 
 const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
   return typeof possibleCallback === 'function' ? possibleCallback.call(...args) : defaultValue
@@ -284,12 +259,10 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 }
 
 export {
-  defineJQueryPlugin,
   execute,
   executeAfterTransition,
   findShadowRoot,
   getElement,
-  getjQuery,
   getNextActiveElement,
   getTransitionDurationFromElement,
   getUID,
