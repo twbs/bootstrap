@@ -20,6 +20,7 @@ As such, the classes are named using the format:
 Where *value* is one of:
 
 - `none`
+- `flow-root`
 - `inline`
 - `inline-block`
 - `block`
@@ -34,6 +35,14 @@ Where *value* is one of:
 The display values can be altered by changing the `display` values defined in `$utilities` and recompiling the SCSS.
 
 The media queries affect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on `lg`, `xl`, and `2xl` screens.
+
+## Clearfix
+
+We've removed the clearfix helper class in v6 as it's outdated and no longer needed. Insated, use the `display: flow-root` utility, `.d-flow-root`. This forces a container element to create a new block formatting context without the clearfix hack.
+
+<Example code={`<div class="d-flow-root">
+  <div class="float-end px-3 py-2 border rounded-3">Floated element</div>
+</div>`} />
 
 ## Examples
 
@@ -78,6 +87,7 @@ To show an element only on a given interval of screen sizes you can combine one 
 Change the `display` value of elements when printing with our print display utility classes. Includes support for the same `display` values as our responsive `.d-*` utilities.
 
 - `.d-print-none`
+- `.d-print-flow-root`
 - `.d-print-inline`
 - `.d-print-inline-block`
 - `.d-print-block`
