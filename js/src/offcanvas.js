@@ -12,7 +12,6 @@ import Backdrop from './util/backdrop.js'
 import { enableDismissTrigger } from './util/component-functions.js'
 import FocusTrap from './util/focustrap.js'
 import {
-  defineJQueryPlugin,
   isDisabled,
   isVisible
 } from './util/index.js'
@@ -207,22 +206,6 @@ class Offcanvas extends BaseComponent {
     })
   }
 
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Offcanvas.getOrCreateInstance(this, config)
-
-      if (typeof config !== 'string') {
-        return
-      }
-
-      if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-        throw new TypeError(`No method named "${config}"`)
-      }
-
-      data[config](this)
-    })
-  }
 }
 
 /**
@@ -272,11 +255,5 @@ EventHandler.on(window, EVENT_RESIZE, () => {
 })
 
 enableDismissTrigger(Offcanvas)
-
-/**
- * jQuery
- */
-
-defineJQueryPlugin(Offcanvas)
 
 export default Offcanvas
