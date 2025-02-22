@@ -1,6 +1,6 @@
 import Toast from '../../src/toast.js'
 import {
-  clearFixture, createEvent, getFixture, jQueryMock
+  clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Toast', () => {
@@ -533,66 +533,6 @@ describe('Toast', () => {
 
         toast.show()
       })
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create a toast', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.toast = Toast.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.toast.call(jQueryMock)
-
-      expect(Toast.getInstance(div)).not.toBeNull()
-    })
-
-    it('should not re create a toast', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const toast = new Toast(div)
-
-      jQueryMock.fn.toast = Toast.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.toast.call(jQueryMock)
-
-      expect(Toast.getInstance(div)).toEqual(toast)
-    })
-
-    it('should call a toast method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const toast = new Toast(div)
-
-      const spy = spyOn(toast, 'show')
-
-      jQueryMock.fn.toast = Toast.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.toast.call(jQueryMock, 'show')
-
-      expect(Toast.getInstance(div)).toEqual(toast)
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.toast = Toast.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.toast.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 

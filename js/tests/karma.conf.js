@@ -11,7 +11,6 @@ const { browsers } = require('./browsers.js')
 const ENV = process.env
 const BROWSERSTACK = Boolean(ENV.BROWSERSTACK)
 const DEBUG = Boolean(ENV.DEBUG)
-const JQUERY_TEST = Boolean(ENV.JQUERY)
 
 const frameworks = [
   'jasmine'
@@ -61,7 +60,7 @@ const config = {
   files: [
     'node_modules/hammer-simulator/index.js',
     {
-      pattern: 'js/tests/unit/**/!(jquery).spec.js',
+      pattern: 'js/tests/unit/**/*.spec.js',
       watched: !BROWSERSTACK
     }
   ],
@@ -111,21 +110,6 @@ if (BROWSERSTACK) {
   config.customLaunchers = browsers
   config.browsers = Object.keys(browsers)
   reporters.push('BrowserStack', 'kjhtml')
-} else if (JQUERY_TEST) {
-  frameworks.push('detectBrowsers')
-  plugins.push(
-    'karma-chrome-launcher',
-    'karma-firefox-launcher',
-    'karma-detect-browsers'
-  )
-  config.detectBrowsers = detectBrowsers
-  config.files = [
-    'node_modules/jquery/dist/jquery.slim.min.js',
-    {
-      pattern: 'js/tests/unit/jquery.spec.js',
-      watched: false
-    }
-  ]
 } else {
   frameworks.push('detectBrowsers')
   plugins.push(

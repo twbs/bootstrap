@@ -7,7 +7,6 @@
 
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
-import { defineJQueryPlugin } from './util/index.js'
 
 /**
  * Constants
@@ -37,17 +36,6 @@ class Button extends BaseComponent {
     // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
     this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE))
   }
-
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Button.getOrCreateInstance(this)
-
-      if (config === 'toggle') {
-        data[config]()
-      }
-    })
-  }
 }
 
 /**
@@ -62,11 +50,5 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
 
   data.toggle()
 })
-
-/**
- * jQuery
- */
-
-defineJQueryPlugin(Button)
 
 export default Button
