@@ -73,10 +73,12 @@
     }
 
     // Prevent breaking of code
+    // stylelint-disable selector-max-compound-selectors
     th,
-    td:first-child > code { // stylelint-disable-line selector-max-compound-selectors
+    td:first-child > code {
       white-space: nowrap;
     }
+    // stylelint-enable selector-max-compound-selectors
   }
 }
 
