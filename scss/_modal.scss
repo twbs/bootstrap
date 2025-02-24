@@ -9,8 +9,6 @@
 @use "vendor/rfs" as *;
 @use "layout/breakpoints" as *;
 
-// stylelint-disable function-disallowed-list
-
 // .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal

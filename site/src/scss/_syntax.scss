@@ -2,6 +2,8 @@
 @use "../../../scss/colors" as *;
 @use "../../../scss/mixins/color-mode" as *;
 
+// stylelint-disable selector-no-qualifying-type
+
 :root,
 [data-bs-theme="light"] {
   // --base00: #fff;
