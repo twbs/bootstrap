@@ -25,7 +25,7 @@
 
 // Starts at zero
 // Used to ensure the min-width of the lowest breakpoint starts at 0.
-@mixin _assert-starts-at-zero($map, $map-name: "$grid-breakpoints") {
+@mixin _assert-starts-at-zero($map, $map-name: "$breakpoints") {
   @if length($map) > 0 {
     $values: map-values($map);
     $first-value: nth($values, 1);

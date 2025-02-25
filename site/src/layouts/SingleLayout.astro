@@ -13,7 +13,7 @@ const { description, title } = Astro.props
 <BaseLayout {...Astro.props} layout="single">
   <Fragment slot="main">
     <header class="py-5 border-bottom">
-      <div class="container-xxl bd-gutter pt-md-1 pb-md-4">
+      <div class="container-2xl bd-gutter pt-md-1 pb-md-4">
         <div class="row">
           <div class="col-xl-8">
             <h1 class="bd-title mt-0">{title}</h1>
@@ -28,7 +28,7 @@ const { description, title } = Astro.props
     </header>
 
     <main class="bd-content order-1 py-5" id="content">
-      <div class="container-xxl bd-gutter">
+      <div class="container-2xl bd-gutter">
         <slot />
         <slot name="main-content" />
       </div>

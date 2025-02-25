@@ -191,18 +191,18 @@ $paragraph-margin-bottom:   1rem !default;
 // // adapting to different screen sizes, for use in media queries.
 
 // // scss-docs-start grid-breakpoints
-// $grid-breakpoints: (
+// $breakpoints: (
 //   xs: 0,
 //   sm: 576px,
 //   md: 768px,
 //   lg: 992px,
 //   xl: 1200px,
-//   xxl: 1400px
+//   2xl: 1400px
 // ) !default;
 // // scss-docs-end grid-breakpoints
 
-// @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-// @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+// @include _assert-ascending($breakpoints, "$breakpoints");
+// @include _assert-starts-at-zero($breakpoints, "$breakpoints");
 
 
 // // Grid containers
@@ -215,7 +215,7 @@ $paragraph-margin-bottom:   1rem !default;
 //   md: 720px,
 //   lg: 960px,
 //   xl: 1140px,
-//   xxl: 1320px
+//   2xl: 1320px
 // ) !default;
 // // scss-docs-end container-max-widths
 
@@ -258,11 +258,11 @@ $border-radius:               .375rem !default;
 $border-radius-sm:            .25rem !default;
 $border-radius-lg:            .5rem !default;
 $border-radius-xl:            1rem !default;
-$border-radius-xxl:           2rem !default;
+$border-radius-2xl:           2rem !default;
 $border-radius-pill:          50rem !default;
 // scss-docs-end border-radius-variables
 // fusv-disable
-$border-radius-2xl:           $border-radius-xxl !default; // Deprecated in v5.3.0
+$border-radius-2xl:           $border-radius-2xl !default; // Deprecated in v5.3.0
 // fusv-enable
 
 // scss-docs-start box-shadow-variables

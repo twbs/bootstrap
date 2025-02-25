@@ -8,11 +8,11 @@
 
 @layer utilities {
   // Loop over each breakpoint
-  @each $breakpoint in map.keys($grid-breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
 
     // Generate media query if needed
     @include media-breakpoint-up($breakpoint) {
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+      $infix: breakpoint-infix($breakpoint, $breakpoints);
 
       // Loop over each utility property
       @each $key, $utility in $utilities {
@@ -27,10 +27,10 @@
 
   // RFS rescaling
   @media (min-width: $rfs-mq-value) {
-    @each $breakpoint in map.keys($grid-breakpoints) {
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $breakpoint in map.keys($breakpoints) {
+      $infix: breakpoint-infix($breakpoint, $breakpoints);
 
-      @if (map.get($grid-breakpoints, $breakpoint) < $rfs-breakpoint) {
+      @if (map.get($breakpoints, $breakpoint) < $rfs-breakpoint) {
         // Loop over each utility property
         @each $key, $utility in $utilities {
           // The utility can be disabled with `false`, thus check if the utility is a map first
