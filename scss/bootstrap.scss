@@ -8,13 +8,8 @@
 // Global CSS variables, layer definitions, and configuration
 @use "root";
 
-// Our reset and normalizer
-@use "reboot";
-
-// Content
-@use "type";
-@use "images";
-@use "tables";
+// Reboot & Content
+@use "content";
 
 // Layout
 @use "layout";
