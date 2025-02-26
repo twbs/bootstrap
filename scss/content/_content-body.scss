@@ -1,0 +1,112 @@
+@use "../config" as *;
+@use "../mixins/transition" as *;
+
+@layer content {
+  .content-body {
+    --#{$prefix}content-font-size: 16px;
+    --#{$prefix}content-gap: 24px;
+
+    position: relative;
+    max-width: 1000px;
+    margin-inline: auto;
+    font-size: var(--#{$prefix}content-font-size);
+    line-height: var(--#{$prefix}content-gap);
+
+    p,
+    ul,
+    ol,
+    dl,
+    pre,
+    table,
+    blockquote {
+      margin-bottom: var(--#{$prefix}content-gap);
+    }
+
+    li:not(:last-child) {
+      margin-bottom: calc(var(--#{$prefix}content-gap) / 4);
+    }
+
+    hr {
+      margin: calc(var(--#{$prefix}content-gap) * 1.5) 0;
+      border: 0;
+      border-top: 1px solid var(--#{$prefix}border-color);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 0;
+      margin-bottom: calc(var(--#{$prefix}content-gap) / 2);
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: 2.25em;
+      line-height: 1.1;
+    }
+    h2 {
+      font-size: 1.75em;
+    }
+    h3 {
+      margin-bottom: calc(var(--#{$prefix}content-gap) / 4);
+      font-size: 1.5em;
+    }
+    h4 {
+      font-size: 1.25em;
+    }
+    h5 {
+      font-size: 1.125em;
+    }
+    h6 {
+      font-size: 1em;
+    }
+
+    a:not([class]) {
+      color: var(--ui-theme-primary-text);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--ui-theme-primary-text) 25%, transparent);
+      text-underline-offset: 4px;
+      @include transition(.1s text-decoration-color ease-in-out);
+    }
+
+    a:not([class]):hover {
+      text-decoration-color: var(--ui-theme-primary-text);
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    blockquote {
+      padding-left: calc(var(--#{$prefix}content-gap) / 2);
+      margin: 0;
+      border-left: 4px solid var(--#{$prefix}border-color);
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      padding: 6px 12px;
+      text-align: inherit;
+      border: 1px solid var(--#{$prefix}border-color);
+    }
+
+    dt {
+      font-weight: 500;
+    }
+
+    video,
+    img {
+      max-width: 100%;
+    }
+  }
+}
