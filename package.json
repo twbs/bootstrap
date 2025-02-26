@@ -39,7 +39,7 @@
   "sass": "scss/bootstrap.scss",
   "style": "dist/css/bootstrap.css",
   "scripts": {
-    "start": "npm-run-all --parallel watch docs-serve",
+    "start": "npm-run-all --parallel watch astro-dev",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
     "css": "npm-run-all css-compile css-prefix css-rtl css-minify",
     "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/bootstrap.scss:dist/css/bootstrap.css",
