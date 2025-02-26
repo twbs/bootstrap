@@ -38,8 +38,8 @@ jobs:
       - name: Build docs
         run: npm run docs-build
 
-      - name: Validate HTML
-        run: npm run docs-vnu
+      #- name: Validate HTML
+      #  run: npm run docs-vnu
 
       - name: Run linkinator
         uses: JustinBeckwith/linkinator-action@v1

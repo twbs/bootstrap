@@ -141,18 +141,18 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 ## Documentation
 
-Bootstrap's documentation, included in this repo in the root directory, is built with [Hugo](https://gohugo.io/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
+Bootstrap's documentation, included in this repo in the root directory, is built with [Astro](https://astro.build/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
 
 Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/).
 
 ### Running documentation locally
 
-1. Run `npm install` to install the Node.js dependencies, including Hugo (the site builder).
+1. Run `npm install` to install the Node.js dependencies, including Astro (the site builder).
 2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 3. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
 4. Open `http://localhost:9001/` in your browser, and voilà.
 
-Learn more about using Hugo by reading its [documentation](https://gohugo.io/documentation/).
+Learn more about using Astro by reading its [documentation](https://docs.astro.build/en/getting-started/).
 
 ### Documentation for previous releases
 
