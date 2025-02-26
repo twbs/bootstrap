@@ -1,0 +1,17 @@
+{
+  "default": true,
+  "MD004": { "style": "dash" },
+  "MD013": false,
+  "MD024": false,
+  "MD025": false,
+  "MD026": false,
+  "MD031": false,
+  "MD033": false,
+  "MD034": false,
+  "MD037": false,
+  "MD038": false,
+  "MD041": false,
+  "MD046": false,
+  "line-length": false,
+  "no-inline-html": false
+}

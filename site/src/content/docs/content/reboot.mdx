@@ -109,7 +109,6 @@ As of v5.3.x, link `color` is set using `rgba()` and new `-rgb` CSS variables, a
 
 <Example code={`<a href="#" style="--bs-link-opacity: .5">This is an example link</a>`} />
 
-
 Placeholder links—those without an `href`—are targeted with a more specific selector and have their `color` and `text-decoration` reset to their default values.
 
 <Example code={`<a>This is a placeholder link</a>`} />
@@ -132,17 +131,19 @@ The `<hr>` element has been simplified. Similar to browser defaults, `<hr>`s are
 All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `margin-bottom: 1rem`. Nested lists have no `margin-bottom`. We’ve also reset the `padding-left` on `<ul>` and `<ol>` elements.
 
 <div class="bd-example">
-* All lists have their top margin removed
-* And their bottom margin normalized
-* Nested lists have no bottom margin
-  * This way they have a more even appearance
-  * Particularly when followed by more list items
-* The left padding has also been reset
+
+- All lists have their top margin removed
+- And their bottom margin normalized
+- Nested lists have no bottom margin
+  - This way they have a more even appearance
+  - Particularly when followed by more list items
+- The left padding has also been reset
 
 1. Here’s an ordered list
 2. With a few list items
 3. It has the same overall look
 4. As the previous unordered list
+
 </div>
 
 For simpler styling, clear hierarchy, and better spacing, description lists have updated `margin`s. `<dd>`s reset `margin-left` to `0` and add `margin-bottom: .5rem`. `<dt>`s are **bolded**.
