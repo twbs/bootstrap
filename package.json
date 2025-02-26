@@ -94,10 +94,10 @@
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
     "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\"",
     "astro-dev": "astro dev --root site --port 9001",
-    "astro-build": "astro build --root site",
+    "astro-build": "astro build --root site-new && rm -rf _site && cp -r site-new/dist _site",
     "astro-preview": "astro preview --root site",
     "astro-lint": "prettier --config site/.prettierrc.json -c --cache site && astro check --root site && tsc -p site --noEmit",
-    "astro-netlify": "npm-run-all dist release-sri astro-build"
+    "netlify": "npm-run-all dist release-sri astro-build"
   },
   "peerDependencies": {
     "@popperjs/core": "^2.11.8"
