@@ -1,0 +1,33 @@
+---
+import SingleLayout from '@layouts/SingleLayout.astro'
+import { getConfig } from '@libs/config'
+import BsThemes from '@layouts/partials/BsThemes.astro'
+import ExamplesMain from '@layouts/partials/ExamplesMain.astro'
+export function getStaticPaths() {
+  return [
+    {
+      params: { version: getConfig().docs_version }
+    }
+  ]
+}
+---
+
+<SingleLayout
+  title="Examples"
+  description="Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts."
+>
+  <div class="d-flex flex-column flex-md-row gap-3" slot="header-content">
+    <a
+      href={getConfig().download.dist_examples}
+      class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold"
+    >
+      <svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
+      Download examples
+    </a>
+    <a href={getConfig().download.source} class="btn btn-lg bd-btn-lg btn-outline-secondary"> Download source code</a>
+  </div>
+  <Fragment slot="main-content">
+    <ExamplesMain />
+    <BsThemes />
+  </Fragment>
+</SingleLayout>
