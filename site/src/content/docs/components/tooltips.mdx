@@ -51,7 +51,6 @@ You can customize the appearance of tooltips using [CSS variables](#variables). 
 
 <ScssDocs name="custom-tooltip" file="site/assets/scss/_component-examples.scss" />
 
-
 <Example addStackblitzJs class="tooltip-demo" code={`<button type="button" class="btn btn-secondary"
         data-bs-toggle="tooltip" data-bs-placement="top"
         data-bs-custom-class="custom-tooltip"
@@ -138,6 +137,7 @@ const tooltip = new bootstrap.Tooltip('#example', {
   boundary: document.body // or document.querySelector('#boundary')
 })
 ```
+
 </Callout>
 
 ### Markup
@@ -178,7 +178,6 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 <Callout type="warning">
 Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
 </Callout>
-
 
 <BsTable>
 | Name | Type | Default | Description |
