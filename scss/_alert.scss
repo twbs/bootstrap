@@ -10,13 +10,14 @@
 @layer components {
   .alert {
     // scss-docs-start alert-css-vars
-    --#{$prefix}alert-bg: transparent;
+    --#{$prefix}alert-bg: var(--#{$prefix}theme-bg-subtle, transparent);
     --#{$prefix}alert-padding-x: #{$alert-padding-x};
     --#{$prefix}alert-padding-y: #{$alert-padding-y};
     --#{$prefix}alert-margin-bottom: #{$alert-margin-bottom};
-    --#{$prefix}alert-color: inherit;
-    --#{$prefix}alert-border-color: transparent;
-    --#{$prefix}alert-border: #{$alert-border-width} solid var(--#{$prefix}alert-border-color);
+    --#{$prefix}alert-color: var(--#{$prefix}theme-text, inherit);
+    --#{$prefix}alert-border-color: var(--#{$prefix}theme-border, transparent);
+    --#{$prefix}alert-border-width: #{$alert-border-width};
+    // --#{$prefix}alert-border: #{$alert-border-width} solid var(--#{$prefix}alert-border-color);
     --#{$prefix}alert-border-radius: #{$alert-border-radius};
     --#{$prefix}alert-link-color: inherit;
     // scss-docs-end alert-css-vars
@@ -26,7 +27,7 @@
     margin-bottom: var(--#{$prefix}alert-margin-bottom);
     color: var(--#{$prefix}alert-color);
     background-color: var(--#{$prefix}alert-bg);
-    border: var(--#{$prefix}alert-border);
+    border: var(--#{$prefix}alert-border-width) solid var(--#{$prefix}alert-border-color);
     @include border-radius(var(--#{$prefix}alert-border-radius));
   }
 

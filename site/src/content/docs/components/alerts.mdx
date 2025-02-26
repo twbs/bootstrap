@@ -14,9 +14,9 @@ Alerts are available for any length of text, as well as an optional close button
 **Heads up!** As of v5.3.0, the `alert-variant()` Sass mixin is deprecated. Alert variants now have their CSS variables overridden in [a Sass loop](#sass-loops).
 </Callout>
 
-<Example code={getData('theme-colors').map((themeColor) => `<div class="alert alert-${themeColor.name}" role="alert">
-    A simple ${themeColor.name} alert—check it out!
-  </div>`)} />
+<Example code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
+  A simple ${themeColor.name} alert—check it out!
+</div>`)} />
 
 <Callout name="warning-color-assistive-technologies" />
 
@@ -136,6 +136,7 @@ As part of Bootstrap’s evolving CSS variables approach, alerts now use local C
 
 <ScssDocs name="alert-variables" file="scss/_variables.scss" />
 
+<<<<<<< HEAD
 ### Sass mixins
 
 <DeprecatedIn version="5.3.0" />
@@ -143,6 +144,9 @@ As part of Bootstrap’s evolving CSS variables approach, alerts now use local C
 <ScssDocs name="alert-variant-mixin" file="scss/mixins/_alert.scss" removeIndentation={false} />
 
 ### Sass loops
+=======
+### Sass loop
+>>>>>>> 29c34e4cd (Update Alerts variables and remove deprecation mentions)
 
 Loop that generates the modifier classes with an overriding of CSS variables.
 
