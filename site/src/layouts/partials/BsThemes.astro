@@ -1,0 +1,30 @@
+---
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import DropletFillIcon from '@components/icons/DropletFillIcon.astro'
+import ResponsiveImage from '@layouts/partials/ResponsiveImage.astro'
+---
+
+<hr class="my-5" />
+<div class="container">
+  <div class="text-center">
+    <div class="masthead-followup-icon d-inline-block mb-2 text-bg-danger">
+      <DropletFillIcon height={32} width={32} />
+    </div>
+    <h2 class="display-6 fw-normal">Go further with Bootstrap Themes</h2>
+    <p class="col-md-10 col-lg-8 mx-auto lead">
+      Need something more than these examples? Take Bootstrap to the next level with premium themes from the <a
+        href={getConfig().themes}>official Bootstrap Themes marketplace</a
+      >. They’re built as their own extended frameworks, rich with new components and plugins, documentation, and
+      powerful build tools.
+    </p>
+    <a href={getConfig().themes} class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
+  </div>
+  <ResponsiveImage
+    imgPath="/assets/img/bootstrap-themes-collage.png"
+    alt="Bootstrap Themes"
+    width={1150}
+    height={320}
+    classes="img-fluid mx-auto d-block mt-3"
+  />
+</div>
