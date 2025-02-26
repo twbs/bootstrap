@@ -10,11 +10,7 @@ import { getData } from '@libs/data'
 
 Alerts are available for any length of text, as well as an optional close button. For proper styling, use one of the eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts JavaScript plugin](#dismissing).
 
-<Callout>
-**Heads up!** As of v5.3.0, the `alert-variant()` Sass mixin is deprecated. Alert variants now have their CSS variables overridden in [the Sass loop](#sass-loop).
-</Callout>
-
-<Example code={getData('theme-colors').map((themeColor) => `<div class="alert alert-${themeColor.name}" role="alert">
+<Example code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
   A simple ${themeColor.name} alert—check it out!
 </div>`)} />
 
@@ -156,14 +152,6 @@ As part of Bootstrap's evolving CSS variables approach, alerts now use local CSS
 ### Sass variables
 
 <ScssDocs name="alert-variables" file="scss/_variables.scss" />
-
-### Sass mixin
-
-<DeprecatedIn version="5.3.0" />
-
-Used in combination with `$theme-colors` to create contextual modifier classes for our alerts.
-
-<ScssDocs name="alert-variant-mixin" file="scss/mixins/_alert.scss" />
 
 ### Sass loop
 
