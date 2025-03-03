@@ -20,7 +20,7 @@
   /**
    * Constants
    */
-
+  console.log("alert works");
   const NAME = 'alert';
   const DATA_KEY = 'bs.alert';
   const EVENT_KEY = `.${DATA_KEY}`;
