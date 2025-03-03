@@ -17,7 +17,7 @@ import { defineJQueryPlugin } from './util/index.js'
 const NAME = 'alert'
 const DATA_KEY = 'bs.alert'
 const EVENT_KEY = `.${DATA_KEY}`
-
+console.log("hello world")
 const EVENT_CLOSE = `close${EVENT_KEY}`
 const EVENT_CLOSED = `closed${EVENT_KEY}`
 const CLASS_NAME_FADE = 'fade'
