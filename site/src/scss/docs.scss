@@ -23,36 +23,39 @@
 // Happy Bootstrapping!
 
 // Load Bootstrap variables and mixins
-@import "../../../scss/functions";
-@import "../../../scss/variables";
-@import "../../../scss/mixins";
+// @use "../../../scss/config";
+// @use "../../../scss/colors";
+// @use "../../../scss/functions";
+// @use "../../../scss/mixins";
+// @use "../../../scss/variables";
+// @use "../../../scss/layout/breakpoints";
 
-// fusv-disable
-$enable-grid-classes: false;
-$enable-cssgrid: true;
-// fusv-enable
-@import "../../../scss/grid";
+// // fusv-disable
+// $enable-grid-classes: false;
+// $enable-cssgrid: true;
+// // fusv-enable
+// @use "../../../scss/layout/";
 
 // Load docs components
-@import "variables";
-@import "navbar";
-@import "masthead";
-@import "ads";
-@import "content";
-@import "skippy";
-@import "sidebar";
-@import "layout";
-@import "toc";
-@import "footer";
-@import "component-examples";
-@import "buttons";
-@import "callouts";
-@import "brand";
-@import "colors";
-@import "clipboard-js";
-@import "placeholder-img";
-@import "scrolling";
+@use "variables";
+@use "navbar";
+@use "masthead";
+@use "ads";
+@use "content";
+@use "skippy";
+@use "sidebar";
+@use "layout";
+@use "toc";
+@use "footer";
+@use "component-examples";
+@use "buttons";
+@use "callouts";
+@use "brand";
+@use "colors";
+@use "clipboard-js";
+@use "placeholder-img";
+@use "scrolling";
 
 // Load docs dependencies
-@import "syntax";
-@import "anchor";
+@use "syntax";
+@use "anchor";

@@ -1,3 +1,11 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/variables" as *;
+@use "../../../scss/vendor/rfs" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/clearfix" as *;
+@use "../../../scss/mixins/border-radius" as *;
+@use "variables" as *;
+
 //
 // Docs examples
 //
@@ -137,39 +145,39 @@
   border: 1px solid rgba(var(--bd-violet-rgb), .3);
 }
 
-// Grid mixins
-.example-container {
-  width: 800px;
-  @include make-container();
-}
+// // Grid mixins
+// .example-container {
+//   width: 800px;
+//   @include make-container();
+// }
 
-.example-row {
-  @include make-row();
-}
+// .example-row {
+//   @include make-row();
+// }
 
-.example-content-main {
-  @include make-col-ready();
+// .example-content-main {
+//   @include make-col-ready();
 
-  @include media-breakpoint-up(sm) {
-    @include make-col(6);
-  }
+//   @include media-breakpoint-up(sm) {
+//     @include make-col(6);
+//   }
 
-  @include media-breakpoint-up(lg) {
-    @include make-col(8);
-  }
-}
+//   @include media-breakpoint-up(lg) {
+//     @include make-col(8);
+//   }
+// }
 
-.example-content-secondary {
-  @include make-col-ready();
+// .example-content-secondary {
+//   @include make-col-ready();
 
-  @include media-breakpoint-up(sm) {
-    @include make-col(6);
-  }
+//   @include media-breakpoint-up(sm) {
+//     @include make-col(6);
+//   }
 
-  @include media-breakpoint-up(lg) {
-    @include make-col(4);
-  }
-}
+//   @include media-breakpoint-up(lg) {
+//     @include make-col(4);
+//   }
+// }
 
 // Ratio helpers
 .bd-example-ratios {
