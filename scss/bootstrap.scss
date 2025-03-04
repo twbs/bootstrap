@@ -1,9 +1,11 @@
-@import "mixins/banner";
-@include bsBanner("");
+// @import "mixins/banner";
+// @include bsBanner("");
 
 
 // scss-docs-start import-stack
 // Configuration
+@use "config" as *;
+
 @import "functions";
 @import "variables";
 @import "variables-dark";
@@ -16,8 +18,9 @@
 @import "reboot";
 @import "type";
 @import "images";
-@import "containers";
-@import "grid";
+// @import "containers";
+// @import "grid";
+@import "layout";
 @import "tables";
 @import "forms";
 @import "buttons";
