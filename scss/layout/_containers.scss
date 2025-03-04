@@ -1,6 +1,20 @@
+@use "../config" as *;
+@use "breakpoints" as *;
+
 // Container widths
 //
 // Set the container width, and override it for fixed navbars in media queries.
+// Container mixins
+
+@mixin make-container($gutter: $container-padding-x) {
+  --#{$prefix}gutter-x: #{$gutter};
+  --#{$prefix}gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+  padding-left: calc(var(--#{$prefix}gutter-x) * .5); // stylelint-disable-line function-disallowed-list
+  margin-right: auto;
+  margin-left: auto;
+}
 
 @if $enable-container-classes {
   // Single container class with breakpoint max-widths
