@@ -1,3 +1,7 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/functions" as *;
+
 // Local docs variables
 $bd-purple:        #4c0bce;
 $bd-violet:        lighten(saturate($bd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
