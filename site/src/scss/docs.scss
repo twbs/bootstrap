@@ -1,5 +1,4 @@
-/*!
- * Bootstrap Docs (https://getbootstrap.com/)
+/* Bootstrap Docs (https://getbootstrap.com/)
  * Copyright 2011-2025 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
@@ -23,15 +22,18 @@
 // Happy Bootstrapping!
 
 // Load Bootstrap variables and mixins
-@import "../../../scss/functions";
-@import "../../../scss/variables";
-@import "../../../scss/mixins";
+// @use "../../../scss/config";
+// @use "../../../scss/colors";
+// @use "../../../scss/functions";
+// @use "../../../scss/mixins";
+// @use "../../../scss/variables";
+// @use "../../../scss/layout/breakpoints";
 
-// fusv-disable
-$enable-grid-classes: false;
-$enable-cssgrid: true;
-// fusv-enable
-@import "../../../scss/grid";
+// // fusv-disable
+// $enable-grid-classes: false;
+// $enable-cssgrid: true;
+// // fusv-enable
+// @use "../../../scss/layout/";
 
 // Load docs components
 // @use "variables";
@@ -54,5 +56,5 @@ $enable-cssgrid: true;
 @use "scrolling";
 
 // Load docs dependencies
-@import "syntax";
-@import "anchor";
+@use "syntax";
+@use "anchor";
