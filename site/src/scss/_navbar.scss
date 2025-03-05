@@ -4,6 +4,7 @@
 @use "../../../scss/mixins" as *;
 @use "../../../scss/variables" as *;
 @use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/vendor/rfs" as *;
 
 .bd-navbar {
   padding: .75rem 0;

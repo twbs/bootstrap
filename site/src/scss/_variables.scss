@@ -1,6 +1,7 @@
 @use "../../../scss/config" as *;
 @use "../../../scss/colors" as *;
 @use "../../../scss/functions" as *;
+@use "../../../scss/mixins/color-mode" as *;
 
 // Local docs variables
 $bd-purple:        #4c0bce;

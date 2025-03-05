@@ -47,11 +47,18 @@
 }
 
 // Generate all color variant classes using nested loops
-@each $color-name, $color-variants in $all-colors {
-  @each $shade, $value in $color-variants {
-    .bd-#{$shade} {
-      color: color-contrast($value);
-      background-color: $value;
+@each $color-name, $color-value in $all-colors {
+  @if type-of($color-value) == "map" {
+    @each $shade, $value in $color-value {
+      .bd-#{$shade} {
+        color: color-contrast($value);
+        background-color: $value;
+      }
+    }
+  } @else {
+    .bd-#{$color-name} {
+      color: color-contrast($color-value);
+      background-color: $color-value;
     }
   }
 }

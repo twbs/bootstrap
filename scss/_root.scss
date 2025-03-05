@@ -12,8 +12,12 @@
   :root,
   [data-bs-theme="light"] {
     @each $color-group-name, $color-group in $all-colors {
-      @each $color-name, $color-value in $color-group {
-        --#{$prefix}#{$color-name}: #{$color-value};
+      @if type-of($color-group) == "map" {
+        @each $color-name, $color-value in $color-group {
+          --#{$prefix}#{$color-name}: #{$color-value};
+        }
+      } @else {
+        --#{$prefix}#{$color-group-name}: #{$color-group};
       }
     }
 
