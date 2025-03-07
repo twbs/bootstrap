@@ -96,32 +96,38 @@
     color: var(--#{$prefix}heading-color);
   }
 
-  h1 {
+  h1,
+  .h1 {
     @extend %heading;
     @include font-size($h1-font-size);
   }
 
-  h2 {
+  h2,
+  .h2 {
     @extend %heading;
     @include font-size($h2-font-size);
   }
 
-  h3 {
+  h3,
+  .h3 {
     @extend %heading;
     @include font-size($h3-font-size);
   }
 
-  h4 {
+  h4,
+  .h4 {
     @extend %heading;
     @include font-size($h4-font-size);
   }
 
-  h5 {
+  h5,
+  .h5 {
     @extend %heading;
     @include font-size($h5-font-size);
   }
 
-  h6 {
+  h6,
+  .h6 {
     @extend %heading;
     @include font-size($h6-font-size);
   }
@@ -214,14 +220,14 @@
   //
   // Add the correct font size in all browsers
 
-  small {
+  small, .small {
     @include font-size($small-font-size);
   }
 
 
   // Mark
 
-  mark {
+  mark, .mark {
     padding: $mark-padding;
     color: var(--#{$prefix}highlight-color);
     background-color: var(--#{$prefix}highlight-bg);
@@ -248,11 +254,11 @@
   // Links
 
   a {
-    color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
+    color: var(--#{$prefix}link-color);
     text-decoration: $link-decoration;
 
     &:hover {
-      --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
+      --#{$prefix}link-color: var(--#{$prefix}link-hover-color);
       text-decoration: $link-hover-decoration;
     }
   }

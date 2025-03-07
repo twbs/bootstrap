@@ -41,7 +41,7 @@
 
         @each $name, $width in $breakpoints {
           @if ($extend-breakpoint) {
-            .container#{breakpoint-infix($name, $breakpoints)} {
+            .container-#{breakpoint-infix($name, $breakpoints)} {
               @extend %responsive-container-#{$breakpoint};
             }
 

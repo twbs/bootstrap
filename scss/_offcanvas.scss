@@ -28,7 +28,7 @@
     $next: breakpoint-next($breakpoint, $breakpoints);
     $infix: breakpoint-infix($next, $breakpoints);
 
-    .offcanvas#{$infix} {
+    .offcanvas-#{$infix} {
       @extend %offcanvas-css-vars;
     }
   }
@@ -37,7 +37,7 @@
     $next: breakpoint-next($breakpoint, $breakpoints);
     $infix: breakpoint-infix($next, $breakpoints);
 
-    .offcanvas#{$infix} {
+    .offcanvas-#{$infix} {
       @include media-breakpoint-down($next) {
         position: fixed;
         bottom: 0;

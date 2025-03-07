@@ -64,7 +64,7 @@
     }
 
     @each $breakpoint, $container-max-width in $container-max-widths {
-      > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+      > .container-#{breakpoint-infix($breakpoint, $container-max-widths)} {
         @extend %container-flex-properties;
       }
     }
@@ -208,7 +208,7 @@
       $infix: breakpoint-infix($next, $breakpoints);
 
       // stylelint-disable-next-line scss/selector-no-union-class-name
-      &#{$infix} {
+      &-#{$infix} {
         @include media-breakpoint-up($next) {
           flex-wrap: nowrap;
           justify-content: flex-start;

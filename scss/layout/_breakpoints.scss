@@ -51,7 +51,7 @@
 //    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, 2xl: 1400px))
 //    "-sm"
 @function breakpoint-infix($name, $breakpoints: $breakpoints) {
-  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "#{$name}");
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.

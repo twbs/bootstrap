@@ -22,7 +22,7 @@ If you are using the `.btn` class on its own, remember to at least define some e
 
 Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control.
 
-<Example code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-${themeColor.name}">${themeColor.title}</button>`), `
+<Example class="grid gap-2" style="--bs-columns: 4;" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-${themeColor.name}-solid">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-outline">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-subtle">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-text">${themeColor.title}</button>`), `
 <button type="button" class="btn btn-link">Link</button>`]} />
 
 <Callout name="warning-color-assistive-technologies" />
@@ -214,11 +214,11 @@ Here’s an example of building a custom `.btn-*` modifier class as we do for th
 
 There are three mixins for buttons: button and button outline variant mixins (both based on `$theme-colors`), plus a button size mixin.
 
-<ScssDocs name="btn-variant-mixin" file="scss/mixins/_buttons.scss" />
+{/* <ScssDocs name="btn-variant-mixin" file="scss/mixins/_buttons.scss" /> */}
 
-<ScssDocs name="btn-outline-variant-mixin" file="scss/mixins/_buttons.scss" />
+{/* <ScssDocs name="btn-outline-variant-mixin" file="scss/mixins/_buttons.scss" /> */}
 
-<ScssDocs name="btn-size-mixin" file="scss/mixins/_buttons.scss" />
+{/* <ScssDocs name="btn-size-mixin" file="scss/mixins/_buttons.scss" /> */}
 
 ### Sass loops
 
