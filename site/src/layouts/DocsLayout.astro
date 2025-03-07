@@ -85,7 +85,7 @@ if (frontmatter.toc) {
         {
           frontmatter.toc && headings && (
             <button
-              class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none"
+              class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-flex align-items-center d-md-none"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#tocContents"
@@ -97,7 +97,7 @@ if (frontmatter.toc) {
                 <use xlink:href="#chevron-expand" />
               </svg>
             </button>
-            <strong class="d-none d-md-block h6 my-2 ms-3" id="docs-tocs">On this page</strong>
+            <div class="d-none d-md-block h6 my-2 ms-3" id="docs-tocs">On this page</div>
             <hr class="d-none d-md-block my-2 ms-3" />
             <div class="collapse bd-toc-collapse" id="tocContents">
               <nav id="TableOfContents" aria-labelledby="docs-tocs">

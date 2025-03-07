@@ -54,9 +54,6 @@
 }
 
 .bd-toc-toggle {
-  display: flex;
-  align-items: center;
-
   @include media-breakpoint-down(sm) {
     justify-content: space-between;
     width: 100%;
