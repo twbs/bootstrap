@@ -1,0 +1,17 @@
+---
+import { getVersionedBsJsProps } from '@libs/bootstrap'
+import type { Layout } from '@libs/layout'
+
+interface Props {
+  layout: Layout
+}
+
+const { layout } = Astro.props
+---
+
+<script is:inline {...getVersionedBsJsProps()}></script>
+
+<script src="../assets/application.js"></script>
+<script src="../assets/search.js"></script>
+
+{layout === 'docs' && <script src="../assets/stackblitz.js" />}

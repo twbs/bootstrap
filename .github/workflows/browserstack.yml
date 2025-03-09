@@ -1,10 +1,10 @@
 name: BrowserStack
 
 on:
-  push:
-    branches:
-      - "**"
-      - "!dependabot/**"
+  #push:
+  #  branches:
+  #    - "**"
+  #    - "!dependabot/**"
   workflow_dispatch:
 
 env:

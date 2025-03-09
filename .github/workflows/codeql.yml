@@ -1,18 +1,18 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches:
-      - main
-      - v4-dev
-      - "!dependabot/**"
-  pull_request:
-    branches:
-      - main
-      - v4-dev
-      - "!dependabot/**"
-  schedule:
-    - cron: "0 2 * * 4"
+  #push:
+  #  branches:
+  #    - main
+  #    - v4-dev
+  #    - "!dependabot/**"
+  #pull_request:
+  #  branches:
+  #    - main
+  #    - v4-dev
+  #    - "!dependabot/**"
+  #schedule:
+  #  - cron: "0 2 * * 4"
   workflow_dispatch:
 
 jobs:
