@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bootstrap"
+dynamic = ["version"]
+description = "A wrapper to distribute Bootstrap via a python package"
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+authors = [
+    { name = "Mark Otto", email = "markdotto@gmail.com" },
+    { name = "Jacob Thornton", email = "jacobthornton@gmail.com" }
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "bootstrap.__version__" }
+
+[project.urls]
+Homepage = "https://github.com/twbs/bootstrap"
+
+[tool.setuptools]
+packages = ["bootstrap", "bootstrap.dist"]
+package-dir = { "bootstrap" = "python", "bootstrap.dist" = "dist" }
+include-package-data = true
