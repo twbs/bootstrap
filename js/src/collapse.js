@@ -60,6 +60,7 @@ class Collapse extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
+    this._isShown = element.classList.contains('show')
     this._isTransitioning = false
     this._triggerArray = []
 
@@ -146,6 +147,7 @@ class Collapse extends BaseComponent {
     this._isTransitioning = true
 
     const complete = () => {
+      this._isShown = true
       this._isTransitioning = false
 
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
@@ -193,6 +195,7 @@ class Collapse extends BaseComponent {
     this._isTransitioning = true
 
     const complete = () => {
+      this._isShown = false
       this._isTransitioning = false
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
       this._element.classList.add(CLASS_NAME_COLLAPSE)
