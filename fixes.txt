@@ -1,8 +1,4 @@
 this is a file to fix bugs in the website
 
-<<<<<<< Updated upstream
 second bug fix done
 
-=======
-second bug fix done
->>>>>>> Stashed changes
