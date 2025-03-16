@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Form</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="container py-5 d-flex flex-column gap-3">
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput1" placeholder="name@example.com">
+        <label for="floatingInput1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <form class="form-floating">
+        <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com">
+        <label for="floatingInputValue">Input with value</label>
+      </form>
+      <form class="form-floating">
+        <input type="email" class="form-control" id="floatingInputValue1" placeholder="name@example.com" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.">
+        <label for="floatingInputValue1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </form>
+      <form class="form-floating">
+        <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com">
+        <label for="floatingInputInvalid">Invalid input</label>
+      </form>
+      <form class="form-floating">
+        <input type="email" class="form-control is-invalid" id="floatingInputInvalid1" placeholder="name@example.com" value="test@example.com">
+        <label for="floatingInputInvalid1">Invalid input</label>
+      </form>
+      <form class="form-floating">
+        <input type="email" class="form-control is-invalid" id="floatingInputInvalid2" placeholder="name@example.com">
+        <label for="floatingInputInvalid2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </form>
+      <form class="form-floating">
+        <input type="email" class="form-control is-invalid" id="floatingInputInvalid3" placeholder="name@example.com" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.">
+        <label for="floatingInputInvalid3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </form>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Comments</label>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea1"></textarea>
+        <label for="floatingTextarea1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 50px"></textarea>
+        <label for="floatingTextarea2">Comments</label>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea3" style="height: 50px"></textarea>
+        <label for="floatingTextarea3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea4" style="height: 50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+        <label for="floatingTextarea4">Comments</label>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea5" style="height: 50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+        <label for="floatingTextarea5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control is-invalid" placeholder="Leave a comment here" id="floatingTextarea6" style="height: 50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+        <label for="floatingTextarea6">Comments</label>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control is-invalid" placeholder="Leave a comment here" id="floatingTextarea7" style="height: 50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+        <label for="floatingTextarea7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label for="floatingSelect">Works with selects</label>
+      </div>
+      <div class="form-floating">
+        <select class="form-select is-invalid" id="floatingSelect1" aria-label="Floating label select example">
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label for="floatingSelect1">Works with selects</label>
+      </div>
+      <div class="form-floating">
+        <select class="form-select" id="floatingSelect2" aria-label="Floating label select example">
+          <option selected>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+        </select>
+        <label for="floatingSelect2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating">
+        <select class="form-select is-invalid" id="floatingSelect3" aria-label="Floating label select example">
+          <option selected>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+        </select>
+        <label for="floatingSelect3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+        <label for="floatingInputDisabled">Email address</label>
+      </div>
+      <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled" disabled></textarea>
+        <label for="floatingTextareaDisabled">Comments</label>
+      </div>
+      <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled1" style="height: 50px" disabled>Disabled textarea with some text inside</textarea>
+        <label for="floatingTextareaDisabled1">Comments</label>
+      </div>
+      <div class="form-floating">
+        <select class="form-select" id="floatingSelectDisabled" aria-label="Floating label disabled select example" disabled>
+          <option selected>Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label for="floatingSelectDisabled">Works with selects</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInputDisabled1" placeholder="name@example.com" disabled>
+        <label for="floatingInputDisabled1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled2" disabled></textarea>
+        <label for="floatingTextareaDisabled2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled3" style="height: 50px" disabled>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+        <label for="floatingTextareaDisabled3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating">
+        <select class="form-select" id="floatingSelectDisabled1" aria-label="Floating label disabled select example" disabled>
+          <option selected>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          <option value="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+        </select>
+        <label for="floatingSelectDisabled1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput" placeholder="name@example.com">
+        <label for="floatingEmptyPlaintextInput">Empty input</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" placeholder="name@example.com" value="name@example.com">
+        <label for="floatingPlaintextInput">Input with value</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput1" placeholder="name@example.com">
+        <label for="floatingEmptyPlaintextInput1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput1" placeholder="name@example.com" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.">
+        <label for="floatingPlaintextInput1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+      </div>
+      <!--Compare form-select rendering depending on the size-->
+      <div class="form-floating">
+        <select class="form-select" id="floatingSelectRegular" aria-label="Floating label select example">
+          <option selected="">Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label for="floatingSelectRegular">Works with selects</label>
+      </div>
+      <div class="form-floating">
+        <select class="form-select form-select-sm" id="floatingSelectSmall" aria-label="Floating label select example">
+          <option selected="">Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label for="floatingSelectSmall">Works with selects</label>
+      </div>
+      <div class="form-floating">
+        <select class="form-select form-select-lg" id="floatingSelectLarge" aria-label="Floating label select example">
+          <option selected="">Open this select menu</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <label for="floatingSelectLarge">Works with selects</label>
+      </div>
+    </div>
+    
+    <div class="container-fluid bg-body" data-bs-theme="dark">
+      <div class="container py-5 d-flex flex-column gap-3">
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput2" placeholder="name@example.com">
+          <label for="floatingInput2">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input type="email" class="form-control" id="floatingInput3" placeholder="name@example.com">
+          <label for="floatingInput3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <form class="form-floating">
+          <input type="email" class="form-control" id="floatingInputValue2" placeholder="name@example.com" value="test@example.com">
+          <label for="floatingInputValue2">Input with value</label>
+        </form>
+        <form class="form-floating">
+          <input type="email" class="form-control" id="floatingInputValue3" placeholder="name@example.com" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.">
+          <label for="floatingInputValue3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </form>
+        <form class="form-floating">
+          <input type="email" class="form-control is-invalid" id="floatingInputInvalid4" placeholder="name@example.com" value="test@example.com">
+          <label for="floatingInputInvalid4">Invalid input</label>
+        </form>
+        <form class="form-floating">
+          <input type="email" class="form-control is-invalid" id="floatingInputInvalid5" placeholder="name@example.com" value="test@example.com">
+          <label for="floatingInputInvalid5">Invalid input</label>
+        </form>
+        <form class="form-floating">
+          <input type="email" class="form-control is-invalid" id="floatingInputInvalid6" placeholder="name@example.com">
+          <label for="floatingInputInvalid6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </form>
+        <form class="form-floating">
+          <input type="email" class="form-control is-invalid" id="floatingInputInvalid7" placeholder="name@example.com" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.">
+          <label for="floatingInputInvalid7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </form>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea8"></textarea>
+          <label for="floatingTextarea8">Comments</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea9"></textarea>
+          <label for="floatingTextarea9">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea10" style="height: 50px"></textarea>
+          <label for="floatingTextarea10">Comments</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea11" style="height: 50px"></textarea>
+          <label for="floatingTextarea11">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea12" style="height: 50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+          <label for="floatingTextarea12">Comments</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea13" style="height: 50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+          <label for="floatingTextarea13">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control is-invalid" placeholder="Leave a comment here" id="floatingTextarea14" style="height: 50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+          <label for="floatingTextarea14">Comments</label>
+        </div>
+        <div class="form-floating">
+          <textarea class="form-control is-invalid" placeholder="Leave a comment here" id="floatingTextarea15" style="height: 50px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+          <label for="floatingTextarea15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelect4" aria-label="Floating label select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <label for="floatingSelect4">Works with selects</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select is-invalid" id="floatingSelect5" aria-label="Floating label select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <label for="floatingSelect5">Works with selects</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelect6" aria-label="Floating label select example">
+            <option selected>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          </select>
+          <label for="floatingSelect6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select is-invalid" id="floatingSelect7" aria-label="Floating label select example">
+            <option selected>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          </select>
+          <label for="floatingSelect7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInputDisabled2" placeholder="name@example.com" disabled>
+          <label for="floatingInputDisabled2">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled4" disabled></textarea>
+          <label for="floatingTextareaDisabled4">Comments</label>
+        </div>
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled5" style="height: 50px" disabled>Disabled textarea with some text inside</textarea>
+          <label for="floatingTextareaDisabled5">Comments</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelectDisabled2" aria-label="Floating label disabled select example" disabled>
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <label for="floatingSelectDisabled2">Works with selects</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="floatingInputDisabled3" placeholder="name@example.com" disabled>
+          <label for="floatingInputDisabled3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled6" disabled></textarea>
+          <label for="floatingTextareaDisabled6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled7" style="height: 50px" disabled>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</textarea>
+          <label for="floatingTextareaDisabled7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelectDisabled3" aria-label="Floating label disabled select example" disabled>
+            <option selected>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+            <option value="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</option>
+          </select>
+          <label for="floatingSelectDisabled3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput2" placeholder="name@example.com">
+          <label for="floatingEmptyPlaintextInput2">Empty input</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput2" placeholder="name@example.com" value="name@example.com">
+          <label for="floatingPlaintextInput2">Input with value</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" readonly class="form-control-plaintext" id="floatingEmptyPlaintextInput3" placeholder="name@example.com">
+          <label for="floatingEmptyPlaintextInput3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput3" placeholder="name@example.com" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.">
+          <label for="floatingPlaintextInput3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis mi at lobortis rutrum. Phasellus varius a risus non lobortis. Ut id congue enim. Quisque facilisis elit ac elit dapibus aliquet nec sit amet arcu. Morbi vitae ultricies eros. Proin varius augue in tristique pretium. Morbi at ullamcorper elit, at ullamcorper massa. Vivamus suscipit quam quis viverra eleifend.</label>
+        </div>
+        <!--Compare form-select rendering depending on the size-->
+        <div class="form-floating">
+          <select class="form-select" id="floatingSelectRegularDark" aria-label="Floating label select example">
+            <option selected="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <label for="floatingSelectRegularDark">Works with selects</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-sm" id="floatingSelectSmallDark" aria-label="Floating label select example">
+            <option selected="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <label for="floatingSelectSmallDark">Works with selects</label>
+        </div>
+        <div class="form-floating">
+          <select class="form-select form-select-lg" id="floatingSelectLargeDark" aria-label="Floating label select example">
+            <option selected="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <label for="floatingSelectLargeDark">Works with selects</label>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>

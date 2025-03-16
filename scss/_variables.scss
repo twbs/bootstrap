@@ -67,8 +67,8 @@ $colors: (
 ) !default;
 // scss-docs-end colors-map
 
-// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
-// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.2 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG/#contrast-minimum
 $min-contrast-ratio:   4.5 !default;
 
 // Customize the light and dark text colors for use in our color contrast function.
@@ -718,6 +718,7 @@ $dt-font-weight:              $font-weight-bold !default;
 $list-inline-padding:         .5rem !default;
 
 $mark-padding:                .1875em !default;
+$mark-color:                  $body-color !default;
 $mark-bg:                     $yellow-100 !default;
 // scss-docs-end type-variables
 
@@ -734,7 +735,7 @@ $table-cell-padding-x-sm:     .25rem !default;
 
 $table-cell-vertical-align:   top !default;
 
-$table-color:                 var(--#{$prefix}body-color) !default;
+$table-color:                 var(--#{$prefix}emphasis-color) !default;
 $table-bg:                    var(--#{$prefix}body-bg) !default;
 $table-accent-bg:             transparent !default;
 
@@ -742,17 +743,17 @@ $table-th-font-weight:        null !default;
 
 $table-striped-color:         $table-color !default;
 $table-striped-bg-factor:     .05 !default;
-$table-striped-bg:            rgba($black, $table-striped-bg-factor) !default;
+$table-striped-bg:            rgba(var(--#{$prefix}emphasis-color-rgb), $table-striped-bg-factor) !default;
 
 $table-active-color:          $table-color !default;
 $table-active-bg-factor:      .1 !default;
-$table-active-bg:             rgba($black, $table-active-bg-factor) !default;
+$table-active-bg:             rgba(var(--#{$prefix}emphasis-color-rgb), $table-active-bg-factor) !default;
 
 $table-hover-color:           $table-color !default;
 $table-hover-bg-factor:       .075 !default;
-$table-hover-bg:              rgba($black, $table-hover-bg-factor) !default;
+$table-hover-bg:              rgba(var(--#{$prefix}emphasis-color-rgb), $table-hover-bg-factor) !default;
 
-$table-border-factor:         .1 !default;
+$table-border-factor:         .2 !default;
 $table-border-width:          var(--#{$prefix}border-width) !default;
 $table-border-color:          var(--#{$prefix}border-color) !default;
 
@@ -842,6 +843,7 @@ $btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125) !default;
 $btn-link-color:              var(--#{$prefix}link-color) !default;
 $btn-link-hover-color:        var(--#{$prefix}link-hover-color) !default;
 $btn-link-disabled-color:     $gray-600 !default;
+$btn-link-focus-shadow-rgb:   to-rgb(mix(color-contrast($link-color), $link-color, 15%)) !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           var(--#{$prefix}border-radius) !default;
@@ -1042,7 +1044,7 @@ $form-select-transition:          $input-transition !default;
 $form-range-track-width:          100% !default;
 $form-range-track-height:         .5rem !default;
 $form-range-track-cursor:         pointer !default;
-$form-range-track-bg:             var(--#{$prefix}tertiary-bg) !default;
+$form-range-track-bg:             var(--#{$prefix}secondary-bg) !default;
 $form-range-track-border-radius:  1rem !default;
 $form-range-track-box-shadow:     var(--#{$prefix}box-shadow-inset) !default;
 
@@ -1089,7 +1091,7 @@ $form-feedback-valid-color:         $success !default;
 $form-feedback-invalid-color:       $danger !default;
 
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
-$form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
+$form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1'/></svg>") !default;
 $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
 $form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
 // scss-docs-end form-feedback-variables
@@ -1300,7 +1302,7 @@ $pagination-color:                  var(--#{$prefix}link-color) !default;
 $pagination-bg:                     var(--#{$prefix}body-bg) !default;
 $pagination-border-radius:          var(--#{$prefix}border-radius) !default;
 $pagination-border-width:           var(--#{$prefix}border-width) !default;
-$pagination-margin-start:           calc(#{$pagination-border-width} * -1) !default; // stylelint-disable-line function-disallowed-list
+$pagination-margin-start:           calc(-1 * #{$pagination-border-width}) !default; // stylelint-disable-line function-disallowed-list
 $pagination-border-color:           var(--#{$prefix}border-color) !default;
 
 $pagination-focus-color:            var(--#{$prefix}link-hover-color) !default;
@@ -1381,7 +1383,9 @@ $accordion-transition:                    $btn-transition, border-radius .15s ea
 $accordion-button-active-bg:              var(--#{$prefix}primary-bg-subtle) !default;
 $accordion-button-active-color:           var(--#{$prefix}primary-text-emphasis) !default;
 
-$accordion-button-focus-border-color:     $input-focus-border-color !default;
+// fusv-disable
+$accordion-button-focus-border-color:     $input-focus-border-color !default; // Deprecated in v5.3.3
+// fusv-enable
 $accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
 
 $accordion-icon-width:                    1.25rem !default;
@@ -1390,8 +1394,8 @@ $accordion-icon-active-color:             $primary-text-emphasis !default;
 $accordion-icon-transition:               transform .2s ease-in-out !default;
 $accordion-icon-transform:                rotate(-180deg) !default;
 
-$accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
-$accordion-button-active-icon:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='#{$accordion-icon-color}' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>") !default;
+$accordion-button-active-icon:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='#{$accordion-icon-active-color}' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>") !default;
 // scss-docs-end accordion-variables
 
 // Tooltips
@@ -1648,6 +1652,7 @@ $carousel-control-width:             15% !default;
 $carousel-control-opacity:           .5 !default;
 $carousel-control-hover-opacity:     .9 !default;
 $carousel-control-transition:        opacity .15s ease !default;
+$carousel-control-icon-filter:       null !default;
 
 $carousel-indicator-width:           30px !default;
 $carousel-indicator-height:          3px !default;
@@ -1665,17 +1670,17 @@ $carousel-caption-spacer:            1.25rem !default;
 
 $carousel-control-icon-width:        2rem !default;
 
-$carousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/></svg>") !default;
-$carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$carousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>") !default;
+$carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>") !default;
 
 $carousel-transition-duration:       .6s !default;
 $carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
 // scss-docs-end carousel-variables
 
 // scss-docs-start carousel-dark-variables
-$carousel-dark-indicator-active-bg:  $black !default;
-$carousel-dark-caption-color:        $black !default;
-$carousel-dark-control-icon-filter:  invert(1) grayscale(100) !default;
+$carousel-dark-indicator-active-bg:  $black !default; // Deprecated in v5.3.4
+$carousel-dark-caption-color:        $black !default; // Deprecated in v5.3.4
+$carousel-dark-control-icon-filter:  invert(1) grayscale(100) !default; // Deprecated in v5.3.4
 // scss-docs-end carousel-dark-variables
 
 
@@ -1702,13 +1707,14 @@ $btn-close-height:           $btn-close-width !default;
 $btn-close-padding-x:        .25em !default;
 $btn-close-padding-y:        $btn-close-padding-x !default;
 $btn-close-color:            $black !default;
-$btn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>") !default;
+$btn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/></svg>") !default;
 $btn-close-focus-shadow:     $focus-ring-box-shadow !default;
 $btn-close-opacity:          .5 !default;
 $btn-close-hover-opacity:    .75 !default;
 $btn-close-focus-opacity:    1 !default;
 $btn-close-disabled-opacity: .25 !default;
-$btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default;
+$btn-close-filter:           null !default;
+$btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default; // Deprecated in v5.3.4
 // scss-docs-end close-variables
 
 
@@ -1743,3 +1749,5 @@ $kbd-bg:                            var(--#{$prefix}body-color) !default;
 $nested-kbd-font-weight:            null !default; // Deprecated in v5.2.0, removing in v6
 
 $pre-color:                         null !default;
+
+@import "variables-dark"; // TODO: can be removed safely in v6, only here to avoid breaking changes in v5.3

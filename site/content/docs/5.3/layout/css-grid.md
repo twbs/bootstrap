@@ -4,7 +4,8 @@ title: CSS Grid
 description: Learn how to enable, use, and customize our alternate layout system built on CSS Grid with examples and code snippets.
 group: layout
 toc: true
-added: "5.1"
+added:
+  version: "5.1"
 ---
 
 Bootstrap's default grid system represents the culmination of over a decade of CSS layout techniques, tried and tested by millions of people. But, it was also created without many of the modern CSS features and techniques we're seeing in browsers like the new CSS Grid.
@@ -148,7 +149,7 @@ Similar to our default grid system, our CSS Grid allows for easy nesting of `.gr
 In practice this allows for more complex and custom layouts when compared to our default grid system.
 
 {{< example class="bd-example-cssgrid" >}}
-<div class="grid text-center" style="--bs-columns: 3;">
+<div class="grid text-center overflow-x-auto" style="--bs-columns: 3;">
   <div>
     First auto-column
     <div class="grid">

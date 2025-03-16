@@ -31,7 +31,7 @@ Note that we don't provide utility classes for justified text. While, aesthetica
 Wrap text with a `.text-wrap` class.
 
 {{< example >}}
-<div class="badge bg-primary text-wrap" style="width: 6rem;">
+<div class="badge text-bg-primary text-wrap" style="width: 6rem;">
   This text should wrap.
 </div>
 {{< /example >}}
@@ -58,7 +58,7 @@ Note that [breaking words isn't possible in Arabic](https://rtlstyling.com/posts
 
 ## Text transform
 
-Transform text in components with text capitalization classes.
+Transform text in components with our text capitalization classes: `text-lowercase`, `text-uppercase` or `text-capitalize`.
 
 {{< example >}}
 <p class="text-lowercase">Lowercased text.</p>

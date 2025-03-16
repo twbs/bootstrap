@@ -13,23 +13,23 @@
 {{- $id := .Get "id" -}}
 {{- $class := .Get "class" -}}
 {{- $lang := .Get "lang" | default "html" -}}
-{{- $stackblitz_add_js := .Get "stackblitz_add_js" | default false -}}
 {{- $show_markup := .Get "show_markup" | default true -}}
 {{- $show_preview := .Get "show_preview" | default true -}}
-{{- $input := .Inner -}}
+{{- $stackblitz_add_js := .Get "stackblitz_add_js" | default false -}}
+
 {{- $content := .Inner -}}
 
 <div class="bd-example-snippet bd-code-snippet">
-  {{- if eq $show_preview true -}}
+  {{- if eq $show_preview true }}
   <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example m-0 border-0{{ with $class }} {{ . }}{{ end }}">
-    {{- $input -}}
+    {{ $content }}
   </div>
-  {{- end -}}
+  {{- end }}
 
   {{- if eq $show_markup true -}}
     {{- if eq $show_preview true -}}
       <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
-        <small class="font-monospace text-body-secondary text-uppercase">{{- $lang -}}</small>
+        <small class="font-monospace text-body-secondary text-uppercase">{{ $lang }}</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try it on StackBlitz">
             <svg class="bi" aria-hidden="true"><use xlink:href="#lightning-charge-fill"/></svg>
@@ -45,5 +45,5 @@
     {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
     {{- $content = replaceRE ` (class=" *?")` "" $content -}}
     {{- highlight (trim $content "\n") $lang "" -}}
-  {{- end -}}
+  {{- end }}
 </div>

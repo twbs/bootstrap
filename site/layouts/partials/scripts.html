@@ -1,73 +1,40 @@
-{{ if eq hugo.Environment "production" -}}
-  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
+{{ if hugo.IsProduction -}}
+  <script defer src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }}></script>
 {{ else -}}
-  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+  <script defer src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
 {{- end }}
 
-<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+{{- $esbuildOptions := dict "target" "es2019" -}}
+{{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version -}}
+
+{{- if hugo.IsProduction -}}
+  {{- $esbuildOptions = merge $esbuildOptions (dict "minify" "true") -}}
+{{- end }}
+
+{{- $applicationJs := resources.Get "js/application.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/application.js") }}
+<script defer src="{{ $applicationJs.RelPermalink }}"></script>
+
+{{- if (ne .Page.Layout "examples") -}}
+{{- $esbuildParams := dict
+  "apiKey" .Site.Params.algolia.apiKey
+  "appId" .Site.Params.algolia.appId
+  "indexName" .Site.Params.algolia.indexName
+-}}
+{{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
+{{- $searchJs := resources.Get "js/search.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/search.js") }}
+<script defer src="{{ $searchJs.RelPermalink }}"></script>
+{{- end -}}
 
 {{ if eq .Page.Layout "docs" -}}
-<script src="https://cdn.jsdelivr.net/npm/@stackblitz/sdk@1/bundles/sdk.umd.js"></script>
-{{- end }}
-
-{{- $vendor := resources.Match "js/vendor/*.js" -}}
-{{- $js := resources.Match "js/*.js" -}}
-{{- $targetDocsJSPath := path.Join "/docs" .Site.Params.docs_version "assets/js/docs.js" -}}
-{{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
-
-{{- if eq hugo.Environment "production" -}}
-  {{- $docsJs = $docsJs | resources.Minify -}}
-{{- end }}
-
-<script src="{{ $docsJs.Permalink | relURL }}"></script>
-
-{{ if eq .Page.Layout "docs" -}}
-<script>
-  // Open in StackBlitz logic
-  document.querySelectorAll('.btn-edit').forEach(btn => {
-    btn.addEventListener('click', event => {
-      const htmlSnippet = event.target.closest('.bd-code-snippet').querySelector('.bd-example').innerHTML
-
-      // Get extra classes for this example
-      const classes = Array.from(event.target.closest('.bd-code-snippet').querySelector('.bd-example').classList).join(' ')
-
-      const jsSnippet = event.target.closest('.bd-code-snippet').querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
-      StackBlitzSDK.openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
-    })
-  })
-
-  StackBlitzSDK.openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
-    const markup = `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ .Site.Params.cdn.css }}" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/{{ .Site.Params.docs_version }}/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
-    <${'script'} src="{{ .Site.Params.cdn.js_bundle }}"></${'script'}>
-  </head>
-  <body class="p-3 m-0 border-0 ${classes}">
-
-    <!-- Example Code -->
-${htmlSnippet.replace(/^/gm, '    ')}
-    <!-- End Example Code -->
-  </body>
-</html>`
-
-    const jsSnippetContent = jsSnippet ? '{{ os.ReadFile "site/assets/js/snippets.js" }}' : null
-    const project = {
-      files: {
-        'index.html': markup,
-        'index.js': jsSnippetContent
-      },
-      title: 'Bootstrap Example',
-      description: `Official example from ${window.location.href}`,
-      template: jsSnippet ? 'javascript' : 'html',
-      tags: ['bootstrap']
-    }
-
-    StackBlitzSDK.openProject(project, { openFile: 'index.html' })
-  }
-</script>
-{{- end }}
+{{- /* Disable minify options for snippets.js so that the file's readable on StackBlitz */ -}}
+{{- $snippetsFile := resources.Get "js/snippets.js" | js.Build (merge $esbuildOptions (dict "minify" "false")) -}}
+{{- $esbuildParams := dict
+  "cssCdn" .Site.Params.cdn.css
+  "jsBundleCdn" .Site.Params.cdn.js_bundle
+  "docsVersion" .Site.Params.docs_version
+  "jsSnippetFile" $snippetsFile.Content
+-}}
+{{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
+{{- $stackblitzJs := resources.Get "js/stackblitz.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/stackblitz.js") }}
+<script defer src="{{ $stackblitzJs.RelPermalink }}"></script>
+{{- end -}}
