@@ -146,3 +146,32 @@ Install-Package bootstrap
 ```powershell
 Install-Package bootstrap.sass
 ```
+
+### Python
+
+Bootstrap is now installable as a Python package, allowing you to integrate the compiled Bootstrap assets directly into your Python projects. Installation via pip is now supported:
+
+```sh
+pip install git+https://github.com/twbs/bootstrap.git
+```
+
+After installation, the Bootstrap assets (CSS and JS files) are embedded as package data and can be served directly in your Python web application. For example, in a FastAPI app you can serve these static assets under the `/bootstrap` URL path:
+
+```python
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+import importlib.metadata
+
+app = FastAPI()
+
+# Retrieve the distribution information for the 'bootstrap' package.
+dist = importlib.metadata.distribution("bootstrap")
+
+# Locate the static assets installed as package data.
+static_path = Path(dist.locate_file("bootstrap/dist"))
+
+app.mount("/bootstrap", StaticFiles(directory=str(static_path)), name="bootstrap")
+```
+
+In this configuration, you can access Bootstrap's CSS at `/bootstrap/css/bootstrap.min.css` and JavaScript at `/bootstrap/js/bootstrap.bundle.min.js` in your application.
