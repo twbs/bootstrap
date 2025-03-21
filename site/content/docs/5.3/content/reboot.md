@@ -428,10 +428,14 @@ The `<address>` element is updated to reset the browser default `font-style` fro
 The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem` for something more consistent with other elements.
 
 <div class="bd-example">
-  <blockquote class="blockquote">
-    <p>A well-known quote, contained in a blockquote element.</p>
-  </blockquote>
-  <p>Someone famous in <cite title="Source Title">Source Title</cite></p>
+  <figure>
+    <blockquote class="blockquote">
+      <p>A well-known quote, contained in a blockquote element.</p>
+    </blockquote>
+    <figcaption>
+      Someone famous in <cite title="Source Title">Source Title</cite>
+    </figcaption>
+  </figure>
 </div>
 
 ### Inline elements
