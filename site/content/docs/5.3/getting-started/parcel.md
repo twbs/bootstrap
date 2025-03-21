@@ -109,7 +109,16 @@ With dependencies installed and our project folder ready for us to start coding,
    }
    ```
 
-3. **And finally, we can start Parcel.** From the `my-project` folder in your terminal, run that newly added npm script:
+
+3. ***Optional:***  Sass deprecation warnings are shown when compiling source Sass files with the last versions of Dart Sass. This does not prevent compilation or usage. We are [working on a long-term fix]({{< param repo >}}/issues/40962), in the meantime you can silence these warning by adding the following configuration in a `.sassrc.js` file in the root folder.
+
+   ```js
+   module.exports = {
+     silenceDeprecations: ['import', 'mixed-decls', 'color-functions', 'global-builtin']
+   }
+   ```
+
+4. **And finally, we can start Parcel.** From the `my-project` folder in your terminal, run that newly added npm script:
 
    ```sh
    npm start
