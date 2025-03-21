@@ -699,7 +699,7 @@ $utilities: map-merge(
     // scss-docs-start utils-interaction
     "user-select": (
       property: user-select,
-      values: all auto none
+      values: all auto text none
     ),
     "pointer-events": (
       property: pointer-events,
