@@ -38,12 +38,23 @@ export default () => {
   // Used by 'Placement' example in docs or StackBlitz
   const toastPlacement = document.getElementById('toastPlacement')
   if (toastPlacement) {
-    document.getElementById('selectToastPlacement').addEventListener('change', function () {
+    const selectToastPlacement = document.getElementById('selectToastPlacement')
+    const toastPlacementResetBtn = document.getElementById('toastPlacementResetBtn')
+    const defaultSelectionIndex = 0
+
+    selectToastPlacement.addEventListener('change', function () {
       if (!toastPlacement.dataset.originalClass) {
         toastPlacement.dataset.originalClass = toastPlacement.className
       }
 
       toastPlacement.className = `${toastPlacement.dataset.originalClass} ${this.value}`
+    })
+
+    toastPlacementResetBtn.addEventListener('click', event => {
+      event.preventDefault()
+
+      selectToastPlacement.selectedIndex = defaultSelectionIndex
+      selectToastPlacement.dispatchEvent(new Event('change'))
     })
   }
 

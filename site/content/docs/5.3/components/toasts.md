@@ -190,7 +190,11 @@ Place toasts with custom CSS as you need them. The top right is often used for n
 {{< example stackblitz_add_js="true" >}}
 <form>
   <div class="mb-3">
-    <label for="selectToastPlacement">Toast placement</label>
+    <div class="d-flex justify-content-between align-items-center">
+     <label for="selectToastPlacement">Toast placement</label>
+     <button class="btn btn-primary btn-sm" id="toastPlacementResetBtn" 
+      aria-label="Reset toast placement">Reset</button>
+    </div>
     <select class="form-select mt-2" id="selectToastPlacement">
       <option value="" selected>Select a position...</option>
       <option value="top-0 start-0">Top left</option>
