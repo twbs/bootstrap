@@ -387,6 +387,12 @@ $enable-important-utilities:  true !default;
 $enable-dark-mode:            true !default;
 $color-mode-type:             data !default; // `data` or `media-query`
 
+// Horizontal direction specific class names
+$start:                       start !default;
+$s:                           s !default;
+$end:                         end !default;
+$e:                           e !default;
+
 // Prefix for :root CSS variables
 
 $variable-prefix:             bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
