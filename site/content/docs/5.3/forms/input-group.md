@@ -59,6 +59,18 @@ Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custo
 </div>
 {{< /example >}}
 
+## Border radius
+
+The `border-radius` is only applied to the first and last children of the element with the `.input-group` class. Any non-visible element in one of those positions will cause the `border-radius` to appear with no style.
+
+{{< example >}}
+<div class="input-group">
+  <span class="input-group-text" id="visible-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon">
+  <input style="display: none;" type="text" class="form-control" placeholder="Hidden Input" aria-label="HiddenInput" aria-describedby="visible-addon">
+</div>
+{{< /example >}}
+
 ## Sizing
 
 Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
