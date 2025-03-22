@@ -869,3 +869,71 @@ myModalEl.addEventListener('hidden.bs.modal', event => {
   // do something...
 })
 ```
+
+## New Custom Modal Width Breakpoints
+
+You can now set custom width breakpoints for modals using CSS variables. This allows you to define different modal sizes for different screen widths, directly in your CSS.
+
+### Custom Properties for Modal Sizes
+
+Here are the available CSS custom properties for modals:
+
+- `--bs-modal-sm-width`: Custom width for small modals (default `300px`).
+- `--bs-modal-md-width`: Custom width for medium modals (default `500px`).
+- `--bs-modal-lg-width`: Custom width for large modals (default `800px`).
+- `--bs-modal-xl-width`: Custom width for extra-large modals (default `1140px`).
+
+#### Example Usage:
+
+In your custom CSS:
+
+```css
+:root {
+  --bs-modal-sm-width: 400px;
+  --bs-modal-md-width: 600px;
+  --bs-modal-lg-width: 900px;
+  --bs-modal-xl-width: 1200px;
+}
+```
+The Example of the Modal:
+
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModal">
+    Small Modal
+  </button>
+</div>
+
+
+```html
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#smallModal">
+  Small Modal
+</button>
+
+<div class="modal fade" id="smallModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Small Modal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>This is a small modal example.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+```
+<div class="modal fade" id="smallModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Small Modal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>This is a small modal example.</p>
+      </div>
+    </div>
+  </div>
+</div>
