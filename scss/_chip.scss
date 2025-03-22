@@ -1,0 +1,106 @@
+// stylelint-disable function-disallowed-list
+
+// Base class
+//
+
+.chip {
+  // scss-docs-start chip-css-vars
+  --#{$prefix}chip-gap: #{$chip-gap};
+  --#{$prefix}chip-padding-x: #{$chip-padding-x};
+  --#{$prefix}chip-padding-y: #{$chip-padding-y};
+  @include rfs($chip-font-size, --#{$prefix}chip-font-size);
+  --#{$prefix}chip-font-shift: #{$chip-font-shift};
+  --#{$prefix}chip-font-weight: #{$chip-font-weight};
+  --#{$prefix}chip-icon-size: #{$chip-icon-size};
+  --#{$prefix}chip-icon-margin-start: #{$chip-icon-margin-start};
+  --#{$prefix}chip-close-size: .5rem;
+  --#{$prefix}chip-close-margin-end: #{$chip-close-margin-end};
+  --#{$prefix}chip-close-margin-start: #{$chip-close-margin-start};
+  --#{$prefix}chip-border-width: #{$chip-border-width};
+  --#{$prefix}chip-border-radius: #{$chip-border-radius};
+  --#{$prefix}chip-border-color: #{$chip-border-color};
+  --#{$prefix}chip-active-color: #{$chip-active-color};
+  --#{$prefix}chip-active-decoration-color: #{$chip-active-decoration-color};
+  --#{$prefix}chip-disabled-color: #{$chip-disabled-color};
+  --#{$prefix}chip-outline-color: var(--#{$prefix}link-hover-color);
+  // scss-docs-end chip-css-vars
+
+  display: inline-flex;
+  gap: var(--#{$prefix}chip-gap);
+  align-items: center;
+  padding: subtract(var(--#{$prefix}chip-padding-y), calc(var(--#{$prefix}chip-font-shift) * .5)) var(--#{$prefix}chip-padding-x) add(var(--#{$prefix}chip-padding-y), calc(var(--#{$prefix}chip-font-shift) * .5));
+  @include font-size(var(--#{$prefix}chip-font-size));
+  font-weight: var(--#{$prefix}chip-font-weight);
+  line-height: add(var(--#{$prefix}chip-font-size), .125rem);
+  color: inherit;
+  background-color: transparent;
+  border: var(--#{$prefix}chip-border-width) solid var(--#{$prefix}chip-border-color);
+  @include border-radius(var(--#{$prefix}chip-border-radius));
+
+  img,
+  svg {
+    width: var(--#{$prefix}chip-icon-size);
+    min-width: var(--#{$prefix}chip-icon-size); // Here to avoid weird behavior on wrap
+    height: var(--#{$prefix}chip-icon-size);
+    margin: add(calc(-.5 * var(--#{$prefix}chip-icon-size)), var(--#{$prefix}chip-font-shift)) 0 calc(-.5 * var(--#{$prefix}chip-icon-size)) var(--#{$prefix}chip-icon-margin-start);
+  }
+
+  > .btn-close {
+    width: var(--#{$prefix}chip-close-size);
+    height: var(--#{$prefix}chip-close-size);
+    padding: .25em;
+  }
+
+  &[disabled],
+  &.disabled {
+    color: var(--#{$prefix}chip-disabled-color);
+    pointer-events: none;
+    border-color: var(--#{$prefix}chip-disabled-color);
+  }
+}
+
+// stylelint-disable selector-no-qualifying-type
+a.chip,
+button.chip,
+label.chip {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  // outline-offset: $outline-offset;
+
+  &:hover {
+    border-color: var(--#{$prefix}chip-active-decoration-color);
+  }
+
+  /* &:focus[data-focus-visible-added] {
+    outline: $outline-width * 1.5 solid var(--#{$prefix}chip-outline-color);
+    outline-offset: $outline-offset;
+  } */
+
+  &.active,
+  &:active {
+    color: var(--#{$prefix}chip-active-color);
+    background-color: var(--#{$prefix}chip-active-decoration-color);
+    border-color: var(--#{$prefix}chip-active-decoration-color);
+
+    &[disabled],
+    &.disabled {
+      background-color: var(--#{$prefix}chip-disabled-color);
+      border-color: var(--#{$prefix}chip-disabled-color);
+    }
+  }
+}
+// stylelint-enable selector-no-qualifying-type
+
+.chip-sm {
+  // scss-docs-start chip-sm-css-vars
+  --#{$prefix}chip-padding-x: #{$chip-padding-x-sm};
+  --#{$prefix}chip-padding-y: #{$chip-padding-y-sm};
+  --#{$prefix}chip-font-size: #{$chip-font-size-sm};
+  --#{$prefix}chip-icon-size: #{$chip-icon-size-sm};
+  --#{$prefix}chip-icon-margin-start: #{$chip-icon-margin-start-sm};
+  --#{$prefix}chip-close-margin-end: #{$chip-close-margin-end-sm};
+  --#{$prefix}chip-close-margin-start: #{$chip-close-margin-start-sm};
+  // scss-docs-end chip-sm-css-vars
+}
+
