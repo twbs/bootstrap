@@ -674,6 +674,14 @@ $utilities: map-merge(
         )
       )
     ),
+    "subtle-background-color": (
+      property: background-color,
+      class: bg,
+      local-vars: (
+        "bg-opacity": 1
+      ),
+      values: $utilities-bg-subtle
+    ),
     "bg-opacity": (
       css-var: true,
       class: bg-opacity,
@@ -684,11 +692,6 @@ $utilities: map-merge(
         75: .75,
         100: 1
       )
-    ),
-    "subtle-background-color": (
-      property: background-color,
-      class: bg,
-      values: $utilities-bg-subtle
     ),
     // scss-docs-end utils-bg-color
     "gradient": (
