@@ -50,6 +50,7 @@ Several quick start options are available:
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
 - Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.3`
 - Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.3`
+- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.3`
 - Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.3`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
