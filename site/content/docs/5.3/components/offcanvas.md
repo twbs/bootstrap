@@ -164,6 +164,7 @@ Change the appearance of offcanvases with utilities to better match them to diff
 {{< added-in "5.2.0" >}}
 
 Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint.
+**Note:** To add a close button in a responsive offcanvas component, you must give it a `data-bs-target` attribute.
 
 {{< example >}}
 <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Toggle offcanvas</button>
