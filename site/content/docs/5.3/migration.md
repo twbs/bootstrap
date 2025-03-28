@@ -77,7 +77,7 @@ If you're migrating from our previous alpha release of v5.3.0, please review the
 
 - Added new `.border-black` utility to match our `.text-black` and `.bg-black` utilities.
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> Deprecated the `.text-muted` utility and `$text-muted` Sass variable. It's been replaced by `.text-body-secondary` and `$body-secondary-color`.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.text-muted` utility and `$text-muted` Sass variable have been deprecated and replaced with `.text-body-secondary` and `$body-secondary-color`.
 
 ### Docs
 
@@ -736,3 +736,5 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 - The default value for the `fallbackPlacements` is changed to `['top', 'right', 'bottom', 'left']` for better placement of Popper elements. **Applies to dropdowns, popovers, and tooltips.**
 
 - Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
+
+- Removed `util.js`, with its functionality now integrated into individual plugins. If you previously included `util.js` manually, you can safely remove it, as it is no longer needed. Each plugin now contains only the utilities it requires, enhancing modularity and reducing dependencies.
