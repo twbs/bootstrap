@@ -159,10 +159,15 @@ included in the project:
    ```bash
    # Clone your fork of the repo into the current directory
    git clone https://github.com/<your-username>/bootstrap.git
+
    # Navigate to the newly cloned directory
    cd bootstrap
+
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/twbs/bootstrap.git
+
+   # Run npm install to pull in NPM dependencies
+   npm install
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
