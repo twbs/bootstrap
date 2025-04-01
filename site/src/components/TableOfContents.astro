@@ -1,0 +1,26 @@
+---
+import type { MarkdownHeading } from 'astro'
+import { generateToc, type TocEntry } from '@libs/toc'
+
+interface Props {
+  headings?: MarkdownHeading[]
+  entries?: TocEntry[]
+}
+
+const { entries, headings } = Astro.props
+
+const toc = entries ? entries : generateToc(headings ?? [])
+---
+
+<ul>
+  {
+    toc.map(({ children, slug, text }) => {
+      return (
+        <li>
+          <a href={`#${slug}`}>{text}</a>
+          {children.length > 0 && <Astro.self entries={children} />}
+        </li>
+      )
+    })
+  }
+</ul>
