@@ -159,15 +159,10 @@ included in the project:
    ```bash
    # Clone your fork of the repo into the current directory
    git clone https://github.com/<your-username>/bootstrap.git
-
    # Navigate to the newly cloned directory
    cd bootstrap
-
    # Assign the original repo to a remote called "upstream"
    git remote add upstream https://github.com/twbs/bootstrap.git
-
-   # Run npm install to pull in NPM dependencies
-   npm install
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
@@ -184,25 +179,27 @@ included in the project:
    git checkout -b <topic-branch-name>
    ```
 
-4. Commit your changes in logical chunks. Please adhere to these [git commit
+4. Install your development environment by running `npm install`, and refer to the [Development](#development) section for further details.<br/><br/>
+
+5. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your code is unlikely be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/about-git-rebase/)
-   feature to tidy up your commits before making them public.
+   feature to tidy up your commits before making them public.<br/><br/>
 
-5. Locally merge (or rebase) the upstream development branch into your topic branch:
+6. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
    git pull [--rebase] upstream main
    ```
 
-6. Push your topic branch up to your fork:
+7. Push your topic branch up to your fork:
 
    ```bash
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
+8. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
     with a clear title and description against the `main` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
@@ -211,6 +208,47 @@ includes code changes) and under the terms of the
 [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/)
 (if it includes documentation changes).
 
+## Development
+
+### Start
+
+To begin development, run the following command to start the project in a local environment:
+
+```
+npm run start
+```
+
+This will launch the development server (nodemon), allowing you to preview changes in real time.
+
+### Compile
+
+Before committing your changes, ensure your code compiles correctly by running:
+
+```
+npm run css && npm run js
+```
+
+This command generates the production-ready build, checking for any compilation errors.
+
+### Lint
+
+To maintain code quality and consistency, run the linter:
+
+```
+npm run lint
+```
+
+Fix any linting errors before pushing your changes to ensure compliance with the project's coding standards.
+
+### Test
+
+To verify functionality, run the test suite:
+
+```
+npm run test
+```
+
+Ensure that all tests pass before submitting your contribution.
 
 ## Code guidelines
 
@@ -235,11 +273,6 @@ includes code changes) and under the terms of the
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
-
-### Checking coding style
-
-Run `npm run test` before committing to ensure your changes follow our coding standards.
-
 
 ## License
 
