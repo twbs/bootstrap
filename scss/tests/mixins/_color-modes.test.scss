@@ -18,7 +18,7 @@
           }
         }
         @include color-mode(dark, true) {
-          --custom-color: #{mix($indigo, $blue, 50%)};
+          --custom-color: color-mix(in srgb, $indigo, $blue);
         }
       }
       @include expect() {
@@ -47,7 +47,7 @@
           }
         }
         @include color-mode(dark, true) {
-          --custom-color: #{mix($indigo, $blue, 50%)};
+          --custom-color: color-mix(in srgb, $indigo, $blue);
         }
       }
       @include expect() {

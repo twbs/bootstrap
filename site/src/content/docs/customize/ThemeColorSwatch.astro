@@ -1,0 +1,26 @@
+---
+interface Props {
+  title?: string;
+  name?: string;
+  variant?: string;
+  variable?: string;
+  label?: string;
+}
+
+const { title, name, variant, variable, label } = Astro.props;
+
+// Determine the CSS variable name
+const cssVar = variable ?
+  `var(--bs-${variable})` :
+  `var(--bs-${name}-${variant})`;
+
+// Determine the label text
+const labelText = label ?
+  label :
+  title ? `${title}-${variant}` : variable;
+---
+
+<div class="d-flex flex-column gap-2">
+  <div class={`p-4 rounded-3`} style={{ boxShadow: 'var(--bd-swatch-shadow)', backgroundColor: cssVar }}></div>
+  {labelText}
+</div>

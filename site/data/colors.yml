@@ -18,9 +18,5 @@
   hex: '#20c997'
 - name: cyan
   hex: '#0dcaf0'
-- name: white
-  hex: '#fff'
 - name: gray
   hex: '#6c757d'
-- name: gray-dark
-  hex: '#343a40'

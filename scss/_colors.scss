@@ -1,3 +1,4 @@
+// scss-docs-start color-variables
 $blue: #0d6efd !default;
 $blue-100: #cfe2ff !default;
 $blue-200: #9ec5fe !default;
@@ -117,11 +118,14 @@ $gray-500: $gray !default;
 $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
-$gray-900: #212529 !default;
+// $gray-900: #212529 !default;
+$gray-900: #1c1c1e !default;
 
 $white: #fff !default;
 $black: #000 !default;
+// scss-docs-end color-variables
 
+// scss-docs-start color-maps
 $blues: (
   "blue-100": $blue-100,
   "blue-200": $blue-200,
@@ -253,7 +257,9 @@ $grays: (
   "gray-800": $gray-800,
   "gray-900": $gray-900
 ) !default;
+// scss-docs-end color-maps
 
+// scss-docs-start all-colors-maps
 $colors: (
   "blue": $blue,
   "indigo": $indigo,
@@ -282,3 +288,4 @@ $all-colors: (
   "black": $black,
   "white": $white
 ) !default;
+// scss-docs-end all-colors-maps
