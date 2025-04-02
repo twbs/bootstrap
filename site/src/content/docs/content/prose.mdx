@@ -1,23 +1,24 @@
 ---
-title: Content body
-description: Use the `.content-body` wrapper class to make long form content more easily without the need for specifying Bootstrap classes on every element. Especially useful for converting Markdown or MDX to HTML, or simply for making content heavy pages more readable.
+title: Prose
+description: Use the `.prose` wrapper class to make long form content more easily without the need for specifying Bootstrap classes on every element. Especially useful for converting Markdown or MDX to HTML, or simply for making content heavy pages more readable.
 toc: true
 ---
 
 ## How it works
 
-Wrap your content in the `.content-body` class to get modified font-size, line-height, and spacing specifically designed for long form content that originals from source Markdown files or WYSIWYG editors. Here's what we do with that class:
+Wrap your content in the `.prose` class to get modified font-size, line-height, and spacing specifically designed for long form content that originals from source Markdown files or WYSIWYG editors. Here's what we do with that class:
 
 - Set a base `font-size`, `line-height`, and some local CSS variables on the parent element.
 - Normalize the spacing of lists
 - Set a default `margin-bottom` for headings.
+- Some headings get an additional `margin-top` to ensure proper spacing between headings and other content.
 - Style blockquotes, code, and other inline elements.
 
 ## Example
 
-This is an example of source Markdown that shows several types of HTML content supported in this `.content-body` wrapper class.
+This is an example of source Markdown that shows several types of HTML content supported in this `.prose` wrapper class.
 
-<div class="bd-example content-body">
+<div class="bd-example prose">
 # Lorem ipsum dolor sit amet
 Cum sociis natoque penatibus et magnis [dis parturient montes](#), nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
 

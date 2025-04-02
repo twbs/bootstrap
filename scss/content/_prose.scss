@@ -2,9 +2,10 @@
 @use "../mixins/transition" as *;
 
 @layer content {
-  .content-body {
+  .prose {
     --#{$prefix}content-font-size: 16px;
     --#{$prefix}content-gap: 24px;
+    --#{$prefix}heading-color: light-dark(var(--bs-gray-900), var(--bs-white));
 
     position: relative;
     max-width: 1000px;
@@ -38,10 +39,28 @@
     h4,
     h5,
     h6 {
+      --bs-heading-color: var(--bs-emphasis-color);
+
       margin-top: 0;
       margin-bottom: calc(var(--#{$prefix}content-gap) / 2);
       font-weight: 500;
       line-height: 1.25;
+    }
+
+    h1,
+    h2 {
+      &:not(:first-child) {
+        margin-top: calc(var(--#{$prefix}content-gap) * 1.5);
+      }
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+      &:not(:first-child) {
+        margin-top: calc(var(--#{$prefix}content-gap) * 1.25);
+      }
     }
 
     h1 {
@@ -66,15 +85,15 @@
     }
 
     a:not([class]) {
-      color: var(--ui-theme-primary-text);
+      color: var(--#{$prefix}link-color);
       text-decoration: underline;
-      text-decoration-color: color-mix(in srgb, var(--ui-theme-primary-text) 25%, transparent);
+      text-decoration-color: color-mix(in srgb, var(--#{$prefix}link-color) 25%, transparent);
       text-underline-offset: 4px;
       @include transition(.1s text-decoration-color ease-in-out);
     }
 
     a:not([class]):hover {
-      text-decoration-color: var(--ui-theme-primary-text);
+      text-decoration-color: var(--#{$prefix}link-hover-color);
     }
 
     img {
@@ -99,6 +118,7 @@
       text-align: inherit;
       border: 1px solid var(--#{$prefix}border-color);
     }
+
 
     dt {
       font-weight: 500;

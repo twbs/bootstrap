@@ -8,7 +8,7 @@ import { getSlug } from '@libs/utils'
 {
   getData('examples').map(({ category, description, examples, external }) => {
     return (
-      <div class="bd-content">
+      <div class="docs-content-body">
         <h2 id={getSlug(category)}>{category}</h2>
         <p>{description}</p>
         {category === 'RTL' && (

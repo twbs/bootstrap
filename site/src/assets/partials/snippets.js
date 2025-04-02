@@ -121,7 +121,7 @@ export default () => {
   // Links
   // -------------------------------
   // Disable empty links in docs examples only
-  document.querySelectorAll('.bd-content [href="#"]')
+  document.querySelectorAll('.docs-content-body [href="#"]')
     .forEach(link => {
       link.addEventListener('click', event => {
         event.preventDefault()

@@ -212,7 +212,7 @@
 
   b,
   strong {
-    font-weight: $font-weight-bolder;
+    font-weight: $font-weight-medium;
   }
 
 
@@ -220,14 +220,16 @@
   //
   // Add the correct font size in all browsers
 
-  small, .small {
+  small,
+  .small {
     @include font-size($small-font-size);
   }
 
 
   // Mark
 
-  mark, .mark {
+  mark,
+  .mark {
     padding: $mark-padding;
     color: var(--#{$prefix}highlight-color);
     background-color: var(--#{$prefix}highlight-bg);
@@ -456,8 +458,7 @@
     display: none !important;
   }
 
-  // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
-  //    controls in Android 4.
+  // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`  //    controls in Android 4.
   // 2. Correct the inability to style clickable types in iOS and Safari.
   // 3. Opinionated: add "hand" cursor to non-disabled button elements.
 

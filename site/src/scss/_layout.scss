@@ -7,7 +7,6 @@
 }
 
 .bd-layout {
-
   @include media-breakpoint-up(lg) {
     display: grid;
     grid-template-areas: "sidebar main";
@@ -55,7 +54,8 @@
   grid-area: toc;
 }
 
-.bd-content {
+.docs-content-body {
   grid-area: content;
-  min-width: 1px; // Fix width when bd-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
+  width: 100%;
+  min-width: 1px; // Fix width when this element contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
 }
