@@ -17,7 +17,7 @@ const sidebar = getData('sidebar')
           return (
             <li class="bd-links-group py-2">
               <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-                {group.icon && (
+                {/* {group.icon && (
                   <svg
                     class="bi me-2"
                     style={group.icon_color && `color: var(--bs-${group.icon_color});`}
@@ -25,7 +25,7 @@ const sidebar = getData('sidebar')
                   >
                     <use xlink:href={`#${group.icon}`} />
                   </svg>
-                )}
+                )} */}
                 {group.title}
               </strong>
               <ul class="list-unstyled fw-normal pb-2 small">
@@ -49,7 +49,7 @@ const sidebar = getData('sidebar')
                     <li>
                       <a
                         href={url}
-                        class:list={['bd-links-link d-inline-block rounded', { active }]}
+                        class:list={['bd-links-link d-block rounded', { active }]}
                         aria-current={active ? 'page' : undefined}
                       >
                         {page.title}

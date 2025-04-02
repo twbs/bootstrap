@@ -380,17 +380,12 @@
 
 .highlight-toolbar {
   background-color: var(--bd-pre-bg);
-
-  + .highlight {
-    @include border-top-radius(0);
-  }
+  border-bottom: 1px solid var(--bs-border-color);
 }
 
 .bd-file-ref {
   .highlight-toolbar {
-    @include media-breakpoint-up(md) {
-      @include border-top-radius(calc(var(--bs-border-radius) - 1px));
-    }
+    @include border-top-radius(calc(var(--bs-border-radius) + 1px));
   }
 }
 

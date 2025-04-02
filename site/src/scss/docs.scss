@@ -22,6 +22,8 @@
 //
 // Happy Bootstrapping!
 
+@use "../../../scss/bootstrap" as *;
+
 // Load docs components
 @use "variables";
 @use "navbar";

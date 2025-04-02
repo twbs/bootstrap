@@ -1,5 +1,5 @@
 ---
-import { getVersionedBsCssProps } from '@libs/bootstrap'
+// import { getVersionedBsCssProps } from '@libs/bootstrap'
 import type { Layout } from '@libs/layout'
 
 interface Props {
@@ -10,4 +10,5 @@ interface Props {
 const { direction } = Astro.props
 ---
 
-<link {...getVersionedBsCssProps(direction)} />
+<!-- <link {...getVersionedBsCssProps(direction)} /> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />

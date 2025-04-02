@@ -71,41 +71,10 @@
         color: $white;
       }
 
-<<<<<<< HEAD
-  .offcanvas-lg {
-    background-color: var(--bd-violet-bg);
-    border-left: 0;
-
-    @include media-breakpoint-down(lg) {
-      box-shadow: var(--bs-box-shadow-lg);
-    }
-  }
-
-  .dropdown-toggle {
-    &:focus:not(:focus-visible) {
-      outline: 0;
-    }
-  }
-
-  .dropdown-menu {
-    --bs-dropdown-min-width: 12rem;
-    --bs-dropdown-padding-x: .25rem;
-    --bs-dropdown-padding-y: .25rem;
-    --bs-dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
-    --bs-dropdown-link-active-bg: rgba(var(--bd-violet-rgb), 1);
-    @include rfs(.875rem, --bs-dropdown-font-size);
-    @include font-size(.875rem);
-    @include border-radius(.5rem);
-    box-shadow: $dropdown-box-shadow;
-
-    li + li {
-      margin-top: .125rem;
-=======
       &.active {
         font-weight: 600;
         color: $white;
       }
->>>>>>> 9c2140328 (fix some docs Sass)
     }
 
     .navbar-nav-svg {

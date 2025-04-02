@@ -29,6 +29,7 @@
 
   @each $breakpoint in map.keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
+    $infix: if($infix == "", "", "-" + $infix);
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       @if $grid-columns > 0 {
@@ -79,7 +80,11 @@
   .grid-cols-4 {
     --#{$prefix}columns: 4;
   }
+  .grid-cols-5 {
+    --#{$prefix}columns: 5;
+  }
   .grid-cols-6 {
     --#{$prefix}columns: 6;
   }
+
 }

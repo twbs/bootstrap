@@ -55,7 +55,7 @@ try {
 ---
 
 <Code containerClass="bd-example-snippet bd-file-ref" code={content} lang="scss">
-  <div slot="pre" class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
+  <div slot="pre" class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1">
     <a
       class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small"
       href={`${getConfig().repo}/blob/v${getConfig().current_version}/${file}`.replaceAll('\\', '/')}
@@ -63,7 +63,7 @@ try {
       {file}
     </a>
     <div class="d-flex ms-auto">
-      <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+      <button type="button" class="btn-clipboard m-0" title="Copy to clipboard">
         <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
       </button>
     </div>

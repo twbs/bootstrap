@@ -25,7 +25,8 @@
 }
 
 .bd-links-heading {
-  color: var(--bs-emphasis-color);
+  padding-inline-start: .5rem;
+  color: var(--bs-fg-0);
 }
 
 .bd-links-nav {
@@ -48,21 +49,21 @@
 }
 
 .bd-links-link {
-  padding: .1875rem .5rem;
+  padding: .375rem .5rem;
   margin-top: .125rem;
-  margin-left: 1.125rem;
-  color: var(--bs-body-color);
+  line-height: 20px;
+  color: var(--bs-fg-1);
   text-decoration: if($link-decoration == none, null, none);
 
   &:hover,
   &:focus,
   &.active {
-    color: var(--bs-emphasis-color);
+    color: var(--bs-fg-0);
     text-decoration: if($link-hover-decoration == underline, none, null);
-    background-color: var(--bd-sidebar-link-bg);
+    background-color: var(--bs-bg-1);
   }
 
   &.active {
-    font-weight: 600;
+    font-weight: 500;
   }
 }

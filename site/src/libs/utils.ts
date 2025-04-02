@@ -39,6 +39,8 @@ export function stripMarkdown(str: string) {
 
 export function processMarkdownToHtml(markdown: string): string {
   // Use remark to process markdown to HTML
-  const result = remark().use(remarkHtml).processSync(markdown)
+  const result = remark()
+    .use(remarkHtml)
+    .processSync(markdown)
   return result.toString()
 }

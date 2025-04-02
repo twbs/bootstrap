@@ -9,6 +9,17 @@ import Ads from '@components/Ads.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import DocsSidebar from '@components/DocsSidebar.astro'
 import TableOfContents from '@components/TableOfContents.astro'
+import { readFileSync } from 'node:fs'
+import { parse } from 'yaml'
+import { fileURLToPath } from 'node:url'
+import { join, dirname } from 'node:path'
+import GitHubIcon from '@components/icons/GitHubIcon.astro'
+
+interface NavigationPage {
+  title: string
+  url: string
+  groupTitle: string
+}
 
 interface Props {
   frontmatter: CollectionEntry<'docs'>['data']
@@ -16,7 +27,18 @@ interface Props {
   id: CollectionEntry<'docs'>['id']
 }
 
+// Read and parse the YAML file directly
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const sidebarPath = join(__dirname, '../../data/sidebar.yml')
+const sidebarContent = readFileSync(sidebarPath, 'utf8')
+const sidebar = parse(sidebarContent) as Array<{
+  title: string
+  pages?: Array<{ title: string }>
+}>
+
 const { frontmatter, headings, id } = Astro.props
+const { slug } = Astro.params
 
 // Extract the directory/section from the ID (format: "directory/filename.mdx")
 const parentDirectory = id.includes('/') ? id.split('/')[0] : ''
@@ -26,6 +48,33 @@ const bodyProps: LayoutOverridesHTMLAttributes<'body'> = {}
 if (frontmatter.toc) {
   bodyProps['data-bs-spy'] = 'scroll'
   bodyProps['data-bs-target'] = '#TableOfContents'
+}
+
+// Find previous and next pages for navigation
+let prevPage: NavigationPage | undefined
+let nextPage: NavigationPage | undefined
+
+// Create a flat array of all pages with their groups
+const allPages = sidebar.flatMap((group) => {
+  if (!group.pages) return []
+  return group.pages.map((page) => ({
+    title: page.title,
+    url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(page.title)}/`,
+    groupTitle: group.title
+  }))
+})
+
+// Find the current page index
+const currentPageIndex = allPages.findIndex(
+  (page) => page.url === `/docs/${getConfig().docs_version}/${slug}/`
+)
+
+if (currentPageIndex > 0) {
+  prevPage = allPages[currentPageIndex - 1]
+}
+
+if (currentPageIndex < allPages.length - 1) {
+  nextPage = allPages[currentPageIndex + 1]
 }
 ---
 
@@ -51,32 +100,30 @@ if (frontmatter.toc) {
 
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
-        <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap">
-            {
-              // This is needed because we want to show the badge if show_badge isn't present or is set to false
-              frontmatter.added &&
-                ((frontmatter.added.show_badge !== undefined && frontmatter.added.show_badge === true) ||
-                  frontmatter.added.show_badge === undefined) && (
-                  <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">
-                    Added in v{frontmatter.added.version}
-                  </small>
-                )
-            }
-            <a
-              class="btn btn-sm btn-bd-light rounded-2"
-              href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
-              title="View and edit this file on GitHub"
-              target="_blank"
-              rel="noopener"
-            >
-              View on GitHub
-            </a>
-          </div>
-          <h1 class="bd-title mb-0" id="content">{frontmatter.title}</h1>
-        </div>
+        <h1 class="bd-title mb-0" id="content">{frontmatter.title}</h1>
         <div class="bd-subtitle">
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
+        </div>
+        <div class="mb-3 mb-md-0 d-flex text-nowrap">
+          {
+            frontmatter.added &&
+              ((frontmatter.added.show_badge !== undefined && frontmatter.added.show_badge === true) ||
+                frontmatter.added.show_badge === undefined) && (
+                <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">
+                  Added in v{frontmatter.added.version}
+                </small>
+              )
+          }
+          <a
+            class="btn btn-secondary-text btn-sm"
+            href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
+            title="View and edit this file on GitHub"
+            target="_blank"
+            rel="noopener"
+          >
+            <GitHubIcon height={16} width={16} class="bi" />
+            View on GitHub
+          </a>
         </div>
       </div>
 
@@ -112,7 +159,7 @@ if (frontmatter.toc) {
       <div class="docs-content-body prose ps-lg-2">
         {
           frontmatter.sections && (
-            <div class="row g-3">
+            <div class="grid mb-5">
               {frontmatter.sections.map((section) => (
                 <div class="col-md-6">
                   <a
@@ -131,6 +178,33 @@ if (frontmatter.toc) {
         }
 
         <slot />
+
+        <nav class="bd-links-nav py-5 mt-5 border-top">
+          <div class="grid">
+            <div class="col-6">
+              {
+                prevPage && (
+                  <a href={prevPage.url} class="d-block p-3 text-decoration-none rounded-3">
+                    <div class="text-secondary small">Previous</div>
+                    <div class="fw-semibold">← {prevPage.title}</div>
+                    <div class="text-secondary small">{prevPage.groupTitle}</div>
+                  </a>
+                )
+              }
+            </div>
+            <div class="col-6">
+              {
+                nextPage && (
+                  <a href={nextPage.url} class="d-block p-3 text-decoration-none text-end rounded-3">
+                    <div class="text-secondary small">Next</div>
+                    <div class="fw-semibold">{nextPage.title} →</div>
+                    <div class="text-secondary small">{nextPage.groupTitle}</div>
+                  </a>
+                )
+              }
+            </div>
+          </div>
+        </nav>
       </div>
     </main>
   </div>
