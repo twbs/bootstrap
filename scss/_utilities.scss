@@ -175,13 +175,27 @@ $utilities: map.merge(
         0: 0,
       )
     ),
+    "border-y": (
+      property: border-block,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        0: 0,
+      )
+    ),
+    "border-x": (
+      property: border-inline,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+        0: 0,
+      )
+    ),
     "border-color": (
       property: border-color,
       class: border,
-      local-vars: (
-        "border-opacity": 1
-      ),
-      // values: $utilities-border-colors
+      // local-vars: (
+      //   "border-opacity": 1
+      // ),
+      values: theme-color-values("border")
     ),
     // "subtle-border-color": (
     //   property: border-color,
@@ -307,6 +321,15 @@ $utilities: map.merge(
         between: space-between,
         around: space-around,
         evenly: space-evenly,
+      )
+    ),
+    "justify-self": (
+      responsive: true,
+      property: justify-self,
+      values: (
+        start: flex-start,
+        end: flex-end,
+        center: center,
       )
     ),
     "align-items": (
@@ -591,19 +614,30 @@ $utilities: map.merge(
       local-vars: (
         "text-opacity": 1
       ),
-      values: (
+      // values: map.merge(
+      //   theme-color-values("text"),
+      //   $theme-fgs
+      // ),
+      values: map.merge(
         // $utilities-text-colors,
-        // (
-        "muted": var(--#{$prefix}secondary-color), // deprecated
-        "black-50": rgba($black, .5), // deprecated
-        "white-50": rgba($white, .5), // deprecated
-        "body-secondary": var(--#{$prefix}secondary-color),
-        "body-tertiary": var(--#{$prefix}tertiary-color),
-        "body-emphasis": var(--#{$prefix}emphasis-color),
-        "reset": inherit,
-        // )
+        theme-color-values("text"),
+        (
+          "muted": var(--#{$prefix}secondary-color), // deprecated
+          "black-50": rgba($black, .5), // deprecated
+          "white-50": rgba($white, .5), // deprecated
+          "body-secondary": var(--#{$prefix}secondary-color),
+          "body-tertiary": var(--#{$prefix}tertiary-color),
+          "body-emphasis": var(--#{$prefix}emphasis-color),
+          "reset": inherit,
+        )
       )
     ),
+    "contrast-color": (
+      property: color,
+      class: text-on,
+      values: theme-color-values("contrast"),
+    ),
+    // scss-docs-end utils-color
     "text-opacity": (
       // css-var: true,
       property: --#{$prefix}text-opacity,
@@ -615,12 +649,12 @@ $utilities: map.merge(
         100: 1
       )
     ),
-    "text-color": (
-      property: color,
-      class: text,
-      values: theme-color-values("text"),
-      // values: $utilities-text-emphasis-colors
-    ),
+    // "text-color": (
+    //   property: color,
+    //   class: text,
+    //   values: theme-color-values("text"),
+    //   // values: $utilities-text-emphasis-colors
+    // ),
     // scss-docs-end utils-color
     // scss-docs-start utils-links
     "link-opacity": (
@@ -676,19 +710,18 @@ $utilities: map.merge(
     // scss-docs-end utils-links
     // scss-docs-start utils-bg-color
     "bg-attr": (
-      selector: "attr-starts",
+      selector: "attr-includes",
       class: "bg-",
       property: background-color,
       values: var(--#{$prefix}bg),
     ),
     "bg-color": (
-      // css-var: true,
       property: --#{$prefix}bg,
       class: bg,
-      // local-vars: (
-      //   "bg-opacity": 1
-      // ),
-      values: theme-color-values("bg"),
+      values: map.merge(
+        theme-color-values("bg"),
+        $theme-bgs
+      ),
     ),
     "bg-color-subtle": (
       property: --#{$prefix}bg,
@@ -700,8 +733,6 @@ $utilities: map.merge(
       class: bg-muted,
       values: theme-color-values("bg-muted"),
     ),
-
-
     "bg-opacity": (
       class: bg,
       property: background-color,
@@ -718,11 +749,6 @@ $utilities: map.merge(
         100: var(--#{$prefix}bg),
       )
     ),
-    // "subtle-background-color": (
-    //   property: background-color,
-    //   class: bg,
-    //   // values: $utilities-bg-subtle
-    // ),
     // scss-docs-end utils-bg-color
     "gradient": (
       property: background-image,
@@ -741,7 +767,7 @@ $utilities: map.merge(
     ),
     // scss-docs-end utils-interaction
     // scss-docs-start utils-border-radius
-    "rounded": (
+    "border-radius": (
       property: border-radius,
       class: rounded,
       values: (

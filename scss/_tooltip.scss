@@ -15,10 +15,10 @@
     --#{$prefix}tooltip-padding-y: #{$tooltip-padding-y};
     --#{$prefix}tooltip-margin: #{$tooltip-margin};
     @include rfs($tooltip-font-size, --#{$prefix}tooltip-font-size);
-    --#{$prefix}tooltip-color: #{$tooltip-color};
-    --#{$prefix}tooltip-bg: #{$tooltip-bg};
+    --#{$prefix}tooltip-color: var(--#{$prefix}bg-0);
+    --#{$prefix}tooltip-bg: var(--#{$prefix}fg-0);
     --#{$prefix}tooltip-border-radius: #{$tooltip-border-radius};
-    --#{$prefix}tooltip-opacity: #{$tooltip-opacity};
+    --#{$prefix}tooltip-opacity: .95;
     --#{$prefix}tooltip-arrow-width: #{$tooltip-arrow-width};
     --#{$prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
     // scss-docs-end tooltip-css-vars

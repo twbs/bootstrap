@@ -1,5 +1,6 @@
 @use "config" as *;
 @use "colors" as *;
+@use "theme" as *;
 @use "variables" as *;
 @use "functions" as *;
 @use "vendor/rfs" as *;
@@ -64,7 +65,7 @@ $button-variants: (
       "border-color": "transparent"
     ),
     "hover": (
-      "bg": "bg-subtle",
+      "bg": ("bg-muted", "bg-subtle"),
       "color": "text"
     ),
     "active": (
@@ -135,9 +136,22 @@ $button-variants: (
         @if $value == "transparent" {
           --#{$prefix}btn-hover-#{$property}: transparent;
           // #{$property}: transparent;
+        } @else if type-of($value) == "list" {
+          // Handle two-value properties using color-mix
+          $first-value: nth($value, 1);
+          $second-value: nth($value, 2);
+          --#{$prefix}btn-hover-#{$property}: color-mix(in oklch, var(--#{$prefix}#{$color}-#{$first-value}) 50%, var(--#{$prefix}#{$color}-#{$second-value}));
         } @else if $value == "bg-subtle" {
           --#{$prefix}btn-hover-#{$property}: var(--#{$prefix}#{$color}-#{$value});
           // #{$property}: var(#{$prefix}#{$color}-#{$value});
+          // @if type-of($value) == "list" {
+          //   // Handle two-value properties using color-mix
+          //   $first-value: nth($value, 1);
+          //   $second-value: nth($value, 2);
+          //   --#{$prefix}btn-hover-#{$property}: color-mix(in oklch, var(--#{$prefix}#{$color}-#{$first-value}) 50%, var(--#{$prefix}#{$color}-#{$second-value}));
+          // } @else {
+          //   --#{$prefix}btn-hover-#{$property}: var(--#{$prefix}#{$color}-#{$value});
+          // }
         } @else {
           --#{$prefix}btn-hover-#{$property}: oklch(from var(--#{$prefix}#{$color}-#{$value}) calc(l * .95) calc(c * 1.1) h);
           // #{$property}: oklch(
@@ -169,7 +183,7 @@ $button-variants: (
 }
 
 // Generate all button variants
-@each $color, $_ in $theme-colors {
+@each $color, $_ in $new-theme-colors {
   @each $variant, $_ in $button-variants {
     .btn-#{$color}-#{$variant} {
       @include button-variant($color, $variant);
