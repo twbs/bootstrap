@@ -1025,7 +1025,7 @@ $form-select-box-shadow:          var(--#{$prefix}box-shadow-inset) !default;
 
 $form-select-focus-border-color:  $input-focus-border-color !default;
 $form-select-focus-width:         $input-focus-width !default;
-$form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focus-color !default;
+$form-select-focus-box-shadow:    $input-focus-box-shadow !default;
 
 $form-select-padding-y-sm:        $input-padding-y-sm !default;
 $form-select-padding-x-sm:        $input-padding-x-sm !default;
