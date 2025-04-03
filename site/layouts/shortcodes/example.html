@@ -21,14 +21,20 @@
 
 <div class="bd-example-snippet bd-code-snippet">
   {{- if eq $show_preview true }}
-  <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example m-0 border-0{{ with $class }} {{ . }}{{ end }}">
+  <div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example order-first m-0 border-0{{ with $class }} {{ . }}{{ end }}">
     {{ $content }}
   </div>
   {{- end }}
 
   {{- if eq $show_markup true -}}
+
+    {{- $content = replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
+    {{- $content = replaceRE ` (class=" *?")` "" $content -}}
+    {{- highlight (trim $content "\n") $lang "" -}}
+
     {{- if eq $show_preview true -}}
-      <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+    <div class="d-flex order-first align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
         <small class="font-monospace text-body-secondary text-uppercase">{{ $lang }}</small>
         <div class="d-flex ms-auto">
           <button type="button" class="btn-edit text-nowrap"{{ with $stackblitz_add_js }} data-sb-js-snippet="{{ $stackblitz_add_js }}"{{ end }} title="Try it on StackBlitz">
@@ -40,10 +46,5 @@
         </div>
       </div>
     {{- end -}}
-
-    {{- $content = replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>` `<img src="..." class="$1" alt="...">` $content -}}
-    {{- $content = replaceRE `<img class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>` `<img src="..." class="$1" alt="...">` $content -}}
-    {{- $content = replaceRE ` (class=" *?")` "" $content -}}
-    {{- highlight (trim $content "\n") $lang "" -}}
   {{- end }}
 </div>
