@@ -63,7 +63,7 @@ params:
   rfs_version:          "v10.0.0"
   github_org:           "https://github.com/twbs"
   repo:                 "https://github.com/twbs/bootstrap"
-  twitter:              "getbootstrap"
+  x:                    "getbootstrap"
   opencollective:       "https://opencollective.com/bootstrap"
   blog:                 "https://blog.getbootstrap.com/"
   themes:               "https://themes.getbootstrap.com/"
