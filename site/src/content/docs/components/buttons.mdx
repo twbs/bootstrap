@@ -22,7 +22,7 @@ If you are using the `.btn` class on its own, remember to at least define some e
 
 Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control.
 
-<Example class="grid gap-2" style="--bs-columns: 4;" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-${themeColor.name}-solid">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-outline">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-subtle">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-text">${themeColor.title}</button>`), `
+<Example class="grid gap-2" style="--bs-columns: 4; justify-content: start;" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-${themeColor.name}-solid justify-self-start">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-outline justify-self-start">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-subtle justify-self-start">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-text justify-self-start">${themeColor.title}</button>`), `
 <button type="button" class="btn btn-link">Link</button>`]} />
 
 <Callout name="warning-color-assistive-technologies" />

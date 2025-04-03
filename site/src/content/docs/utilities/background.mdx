@@ -1,31 +1,79 @@
 ---
 title: Background
-description: Convey meaning through `background-color` and add decoration with gradients.
+description: Convey meaning through `background-color`, adjust opacity with `color-mix()` utilities, and add decoration with gradients.
 toc: true
 ---
 
 import { getData } from '@libs/data'
 
-<Callout name="warning-color-assistive-technologies" />
-
 ## Background color
 
-Similar to the contextual text color classes, set the background of an element to any contextual class. Background utilities **do not set `color`**, so in some cases you’ll want to use `.text-*` [color utilities]([[docsref:/utilities/colors]]).
+Set the `background-color` of an element.
 
-<Callout>
-Background utilities like `.bg-*` that generated from our original `$theme-colors` Sass map don’t yet respond to color modes, however, any `.bg-*-subtle` utility will. This will be resolved in v6.
-</Callout>
+- Colors are generated from the `$new-theme-colors` Sass map with a `theme-color-values()` function that looks up semantic colors based on a particular key from the Bootstrap theme config.
+- Additional colors are generated from the separate `$theme-bgs` Sass map.
+- Background utilities are generated in a two-step process to allow for dynamic alpha transparency changes:
+  - We generate an attribute utility for classes that include `.bg-`, which looks like `[class*="bg-"]`, and set `background-color: var(--bs-bg)`.
+  - Then, our specific color utilities set the `--bs-bg` CSS variable to the color value.
+- Background utilities don't set `color`, so you may need to use `.text-` or `.text-on-*` [color utilities]([[docsref:/utilities/colors]]).
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} ${themeColor.contrast_color ? `text-${themeColor.contrast_color}` : `text-white`}">.bg-${themeColor.name}</div>
-<div class="p-3 mb-2 bg-${themeColor.name}-subtle text-${themeColor.name}-emphasis">.bg-${themeColor.name}-subtle</div>`),
-  `<div class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</div>
-<div class="p-3 mb-2 bg-body-tertiary">.bg-body-tertiary</div>
-<div class="p-3 mb-2 bg-body text-body">.bg-body</div>
-<div class="p-3 mb-2 bg-black text-white">.bg-black</div>
-<div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
-<div class="p-3 mb-2 bg-transparent text-body">.bg-transparent</div>`
+  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} text-on-${themeColor.name}">.bg-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-subtle-${themeColor.name} text-${themeColor.name}">.bg-subtle-${themeColor.name}</div>`),
+  `<div class="p-3 mb-2 bg">.bg</div>
+<div class="p-3 mb-2 bg-1">.bg-1</div>
+<div class="p-3 mb-2 bg-2">.bg-2</div>
+<div class="p-3 mb-2 bg-3">.bg-3</div>`
 ]} />
+
+Behind the scenes, the utilities come together like this:
+
+```css
+[class*="bg-"] {
+  background-color: var(--bs-bg);
+}
+
+.bg-success {
+  --bs-bg: var(--bs-success);
+}
+```
+
+<Callout name="warning-color-assistive-technologies" />
+
+## Background opacity
+
+<BreakingChange />
+
+**Background opacity utilities have changed in v6** to use `.bg-{number}` instead of `.bg-opacity-{number}`. These new utilities are built with CSS-native `color-mix()` functions that mix the `.bg-{color}`'s CSS variable with `transparent`. This allows for real-time background opacity changes without compilation.
+
+Note that changing the alpha-transparency or opacity of a background color may require you to also update the text color to ensure proper contrast.
+
+<Example code={`<div class="p-2 bg-success text-on-success">.bg-success</div>
+<div class="p-2 bg-success bg-90 text-on-success">.bg-90</div>
+<div class="p-2 bg-success bg-80 text-on-success">.bg-80</div>
+<div class="p-2 bg-success bg-70 text-on-success">.bg-70</div>
+<div class="p-2 bg-success bg-60 text-on-success">.bg-60</div>
+<div class="p-2 bg-success bg-50 text-success">.bg-50</div>
+<div class="p-2 bg-success bg-40 text-success">.bg-40</div>
+<div class="p-2 bg-success bg-30 text-success">.bg-30</div>
+<div class="p-2 bg-success bg-20 text-success">.bg-20</div>
+<div class="p-2 bg-success bg-10 text-success">.bg-10</div>`} />
+
+As mentioned above, this works by combining the power of multiple utilities and CSS `color-mix()`. Here's how the compiled CSS looks:
+
+```css
+[class*="bg-"] {
+  background-color: var(--bs-bg);
+}
+
+.bg-success {
+  --bs-bg: var(--bs-success);
+}
+
+.bg-10 {
+  background-color: color-mix(in srgb, var(--bs-bg) 10%, transparent);
+}
+```
 
 ## Background gradient
 
@@ -40,6 +88,7 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 })}
 <div class="p-3 mb-2 bg-black bg-gradient text-white">.bg-black.bg-gradient</div>
 
+<<<<<<< HEAD
 ## Opacity
 
 <AddedIn version="5.1.0" />
@@ -74,6 +123,8 @@ Or, choose from any of the `.bg-opacity` utilities:
 <div class="bg-success p-2 text-dark bg-opacity-25">This is 25% opacity success background</div>
 <div class="bg-success p-2 text-dark bg-opacity-10">This is 10% opacity success background</div>`} />
 
+=======
+>>>>>>> c719573e0 (More docs stuff and wip edits)
 ## CSS
 
 In addition to the following Sass functionality, consider reading about our included [CSS custom properties]([[docsref:/customize/css-variables]]) (aka CSS variables) for colors and more.
@@ -82,7 +133,9 @@ In addition to the following Sass functionality, consider reading about our incl
 
 Most `background-color` utilities are generated by our theme colors, reassigned from our generic color palette variables.
 
-{/* <ScssDocs name="color-variables" file="scss/_variables.scss" /> */}
+<ScssDocs name="theme-colors" file="scss/_theme.scss" />
+
+<ScssDocs name="utils-bg-color" file="scss/_utilities.scss" />
 
 {/* <ScssDocs name="theme-color-variables" file="scss/_variables.scss" /> */}
 

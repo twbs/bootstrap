@@ -1,0 +1,16 @@
+---
+/*
+ * Outputs badge to identify this as a breaking change from previous major version
+ */
+
+interface Props {
+  version: string
+}
+
+const { version } = Astro.props
+---
+
+<small
+  class="d-inline-flex mb-3 px-2 py-1 fw-semibold bg-danger text-on-danger rounded-3"
+  >Breaking Change</small
+>
