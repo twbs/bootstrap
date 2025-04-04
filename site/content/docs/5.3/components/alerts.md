@@ -38,7 +38,7 @@ Click the button below to show an alert (hidden with inline styles to start), th
 
 We use the following JavaScript to trigger our live alert demo:
 
-{{< js-docs name="live-alert" file="site/assets/js/partials/snippets.js" >}}
+{{< js-docs name="live-alert" file="site/assets/js/partials/snippets.js" button_label="JavaScript example to trigger our live alert demo">}}
 
 ### Link color
 
@@ -152,29 +152,31 @@ When an alert is dismissed, the element is completely removed from the page stru
 
 As part of Bootstrap's evolving CSS variables approach, alerts now use local CSS variables on `.alert` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-{{< scss-docs name="alert-css-vars" file="scss/_alert.scss" >}}
+{{< scss-docs name="alert-css-vars" file="scss/_alert.scss" button_label="CSS variables for Alerts" >}}
 
 ### Sass variables
 
-{{< scss-docs name="alert-variables" file="scss/_variables.scss" >}}
+{{< scss-docs name="alert-variables" file="scss/_variables.scss" button_label="Sass variables for Alerts" >}}
 
 ### Sass mixins
 
 {{< deprecated-in "5.3.0" >}}
 
-{{< scss-docs name="alert-variant-mixin" file="scss/mixins/_alert.scss" >}}
+{{< scss-docs name="alert-variant-mixin" file="scss/mixins/_alert.scss" button_label="Sass mixins for Alerts" >}}
 
 ### Sass loops
 
 Loop that generates the modifier classes with an overriding of CSS variables.
 
-{{< scss-docs name="alert-modifiers" file="scss/_alert.scss" >}}
+{{< scss-docs name="alert-modifiers" file="scss/_alert.scss" button_label="Sass loops for Alerts" >}}
 
 ## JavaScript behavior
 
 ### Initialize
 
 Initialize elements as alerts
+
+<span class="d-none" id="btnLabel0">alerts' initialization example</span>
 
 ```js
 const alertList = document.querySelectorAll('.alert')
@@ -189,7 +191,7 @@ See the [triggers](#triggers) section for more details.
 
 ### Triggers
 
-{{% js-dismiss "alert" %}}
+{{% js-dismiss "alert" 1 %}}
 
 **Note that closing an alert will remove it from the DOM.**
 
