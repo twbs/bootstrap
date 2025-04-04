@@ -113,7 +113,7 @@ yarn start # Start the project
 
 ### Bun
 
-Install Bootstrap in your Bun or Node.js powered apps with [the bun CLI](https://bun.sh/):
+Install Bootstrap in your Bun or Node.js powered apps with [the Bun CLI](https://bun.sh/):
 
 ```sh
 bun add bootstrap@{{< param "current_version" >}}
