@@ -18,7 +18,7 @@
 
 <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
-<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC"><link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"><link href="/docs/5.3/assets/css/docs.css" rel="stylesheet">
 <link href="/docs/5.3/assets/css/search.css" rel="stylesheet">
 
 <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -522,7 +522,7 @@
     <main class="bd-main order-1">
       <div class="bd-intro pt-2 ps-lg-2">
         <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.4/site/content/docs/5.3/getting-started/browsers-devices.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap"><a class="btn btn-sm btn-bd-light rounded-2" href="https://github.com/twbs/bootstrap/blob/v5.3.5/site/content/docs/5.3/getting-started/browsers-devices.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">
               View on GitHub
             </a>
           </div>
@@ -572,7 +572,7 @@
         <h2 id="supported-browsers">Supported browsers <a class="anchor-link" href="#supported-browsers" aria-label="Link to this section: Supported browsers"></a></h2>
 <p>Bootstrap supports the <strong>latest, stable releases</strong> of all major browsers and platforms.</p>
 <p>Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform&rsquo;s web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.</p>
-<p>You can find our supported range of browsers and their versions <a href="https://github.com/twbs/bootstrap/blob/v5.3.4/.browserslistrc">in our <code>.browserslistrc file</code></a>:</p>
+<p>You can find our supported range of browsers and their versions <a href="https://github.com/twbs/bootstrap/blob/v5.3.5/.browserslistrc">in our <code>.browserslistrc file</code></a>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># https://github.com/browserslist/browserslist#readme
 
 &gt;= 0.5%
@@ -584,6 +584,7 @@ Firefox ESR
 iOS &gt;= 12
 Safari &gt;= 12
 not Explorer &lt;= 11
+not kaios &lt;= 2.5 # fix floating label issues in Firefox (see https://github.com/postcss/autoprefixer/issues/1533)
 </span></span></code></pre></div><p>We use <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> to handle intended browser support via CSS prefixes, which uses <a href="https://github.com/browserslist/browserslist">Browserslist</a> to manage these browser versions. Consult their documentation for how to integrate these tools into your projects.</p>
 <h3 id="mobile-devices">Mobile devices <a class="anchor-link" href="#mobile-devices" aria-label="Link to this section: Mobile devices"></a></h3>
 <p>Generally speaking, Bootstrap supports the latest versions of each major platform&rsquo;s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile&rsquo;s Turbo mode, UC Browser Mini, Amazon Silk) are not supported.</p>
@@ -682,7 +683,7 @@ not Explorer &lt;= 11
         <ul class="list-unstyled small">
           <li class="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.3/about/team/">Bootstrap team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
           <li class="mb-2">Code licensed <a href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank" rel="license noopener">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener">CC BY 3.0</a>.</li>
-          <li class="mb-2">Currently v5.3.4.</li>
+          <li class="mb-2">Currently v5.3.5.</li>
         </ul>
       </div>
       <div class="col-6 col-lg-2 offset-lg-1 mb-3">
@@ -731,7 +732,7 @@ not Explorer &lt;= 11
   </div>
 </footer>
 
-    <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu"></script>
+    <script defer src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"></script>
 
 <script defer src="/docs/5.3/assets/js/application.js"></script>
 <script defer src="/docs/5.3/assets/js/search.js"></script>
