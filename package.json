@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.3.4",
+  "version": "5.3.5",
   "config": {
     "version_short": "5.3"
   },
