@@ -203,7 +203,18 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
              },
              {
                // Loads a SASS/SCSS file and compiles it to CSS
-               loader: 'sass-loader'
+               loader: 'sass-loader',
+               options: {
+                 sassOptions: {
+                   // optional: silencing Sass deprecation warnings, see note below
+                   silenceDeprecations: [
+                     'mixed-decls',
+                     'color-functions',
+                     'global-builtin',
+                     'import'
+                   ]
+                 }
+               }
              }
            ]
          }
@@ -213,6 +224,8 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
    ```
 
    Here's a recap of why we need all these loaders. `style-loader` injects the CSS into a `<style>` element in the `<head>` of the HTML page, `css-loader` helps with using `@import` and `url()`, `postcss-loader` is required for Autoprefixer, and `sass-loader` allows us to use Sass.
+
+   ***Note:*** *Sass deprecation warnings are shown when compiling source Sass files with the last versions of Dart Sass. This does not prevent compilation or usage. We are [working on a long-term fix]({{< param repo >}}/issues/40962), in the meantime the above config will suppress these warnings.*
 
 2. **Now, let's import Bootstrap's CSS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap's source Sass.
 

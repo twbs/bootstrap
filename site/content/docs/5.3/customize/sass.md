@@ -8,6 +8,10 @@ toc: true
 
 Utilize our source Sass files to take advantage of variables, maps, mixins, and more.
 
+{{< callout warning >}}
+**Sass deprecation warnings** are shown when compiling source sass files with the last versions of Dart Sass. This does not prevent compilation or usage. We are [working on a long-term fix]({{< param repo >}}/issues/40962) but in the meantime these deprecation notices can be ignored.
+{{< /callout >}}
+
 ## File structure
 
 Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like npm, you'll have a file structure that looks like this:
