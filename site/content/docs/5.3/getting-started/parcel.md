@@ -110,7 +110,7 @@ With dependencies installed and our project folder ready for us to start coding,
    ```
 
 
-3. ***Optional:***  Sass deprecation warnings are shown when compiling source Sass files with the last versions of Dart Sass. This does not prevent compilation or usage. We are [working on a long-term fix]({{< param repo >}}/issues/40962), in the meantime you can silence these warning by adding the following configuration in a `.sassrc.js` file in the root folder.
+3. **Optional:** You may see Sass deprecation warnings with the latest versions of Dart Sass. These can silenced by adding the following configuration in a `.sassrc.js` file in the root folder with the following:
 
    ```js
    module.exports = {
