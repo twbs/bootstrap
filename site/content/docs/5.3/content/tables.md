@@ -141,8 +141,9 @@ Highlight a table row or cell by adding a `.table-active` class.
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td colspan="2" class="table-active">Larry the Bird</td>
-        <td>@twitter</td>
+        <td>John</td>
+        <td>Doe</td>
+        <td class="table-active">@social</td>
       </tr>
     </tbody>
   </table>
@@ -162,8 +163,9 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td colspan="2" class="table-active">Larry the Bird</td>
-      <td>@twitter</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td class="table-active">@social</td>
     </tr>
   </tbody>
 </table>
@@ -194,8 +196,9 @@ Highlight a table row or cell by adding a `.table-active` class.
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td colspan="2" class="table-active">Larry the Bird</td>
-        <td>@twitter</td>
+        <td>John</td>
+        <td>Doe</td>
+        <td class="table-active">@social</td>
       </tr>
     </tbody>
   </table>
@@ -215,8 +218,9 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td colspan="2" class="table-active">Larry the Bird</td>
-      <td>@twitter</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td class="table-active">@social</td>
     </tr>
   </tbody>
 </table>
@@ -293,8 +297,9 @@ Add a thicker border, darker between table groups—`<thead>`, `<tbody>`, and `<
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
     </tr>
   </tbody>
 </table>
@@ -418,9 +423,9 @@ Border styles, active styles, and table variants are not inherited by nested tab
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
     </tr>
   </tbody>
 </table>
@@ -482,9 +487,9 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
     </tr>
   </tbody>
 </table>
@@ -526,9 +531,9 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
     </tr>
   </tbody>
 </table>
@@ -572,9 +577,9 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
     </tr>
   </tbody>
   <tfoot>
@@ -653,9 +658,9 @@ You can also put the `<caption>` on the top of the table with `.caption-top`.
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <td>John</td>
+      <td>Doe</td>
+      <td>@social</td>
     </tr>
   </tbody>
 </table>

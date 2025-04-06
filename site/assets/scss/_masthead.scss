@@ -108,6 +108,10 @@
   &:hover > img {
     transform: scale(1.1);
   }
+
+  &:active > img {
+    transform: scale(1);
+  }
 }
 
 @if $enable-dark-mode {
