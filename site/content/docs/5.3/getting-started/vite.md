@@ -94,9 +94,24 @@ With dependencies installed and our project folder ready for us to start coding,
      },
      server: {
        port: 8080
-     }
+     },
+     // Optional: Silence Sass deprecation warnings. See note below.
+     css: {
+        preprocessorOptions: {
+           scss: {
+             silenceDeprecations: [
+               'import',
+               'mixed-decls',
+               'color-functions',
+               'global-builtin',
+             ],
+           },
+        },
+     },
    }
    ```
+
+   **Note:** Sass deprecation warnings are shown when compiling source Sass files with the latest versions of Dart Sass. This does not prevent compilation or usage of Bootstrap. We're [working on a long-term fix]({{< param repo >}}/issues/40962), but in the meantime these deprecation notices can be ignored.
 
 2. **Next we fill in `src/index.html`.** This is the HTML page Vite will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps.
 
