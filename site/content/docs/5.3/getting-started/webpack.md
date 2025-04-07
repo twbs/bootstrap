@@ -206,7 +206,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
                loader: 'sass-loader',
                options: {
                  sassOptions: {
-                   // optional: silencing Sass deprecation warnings, see note below
+                   // Optional: Silence Sass deprecation warnings. See note below.
                    silenceDeprecations: [
                      'mixed-decls',
                      'color-functions',
