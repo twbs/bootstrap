@@ -132,6 +132,14 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
 
    *You can also import our stylesheets individually if you want. [Read our Sass import docs]({{< docsref "/customize/sass#importing" >}}) for details.*
 
+   **Optional:** You may see Sass deprecation warnings with the latest versions of Dart Sass. These can silenced by adding the following configuration in a `.sassrc.js` file in the root folder with the following:
+
+   ```js
+   module.exports = {
+     silenceDeprecations: ['import', 'mixed-decls', 'color-functions', 'global-builtin']
+   }
+   ```
+
 2. **Import Bootstrap's JS.** Add the following to `src/js/main.js` to import all of Bootstrap's JS. Popper will be imported automatically through Bootstrap.
 
    <!-- eslint-skip -->
