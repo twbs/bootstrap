@@ -110,24 +110,6 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 A switch has the markup of a custom checkbox but uses the `.form-switch` class to render a toggle switch. Consider using `role="switch"` to more accurately convey the nature of the control to assistive technologies that support this role. In older assistive technologies, it will simply be announced as a regular checkbox as a fallback. Switches also support the `disabled` attribute.
 
-{{< callout info >}}
-### Safari's Native Switch Support (iOS 17.4+)  
-
-In Safari (iOS 17.4+), you can add the `switch` attribute to checkbox inputs to enable **haptic feedback** when toggling switches, just like native iOS settings.  
-
-**Example:**  
-
-<input class="form-check-input" type="checkbox" switch>
-
-This keeps the styling identical to Bootstrap's default switches but enhances the user experience on iPhones.
-
-For a more iOS/macOS-native look, you can also use:
--webkit-appearance: auto;
-This ensures compatibility with system accessibility settings like "Differentiate Without Color" and "Prefers Higher Contrast".
-
-[Demo on StackBlitz](https://stackblitz.com/edit/bootstrap-switch-native?file=index.html)
-{{< /callout >}}
-
 {{< example >}}
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
@@ -146,6 +128,21 @@ This ensures compatibility with system accessibility settings like "Differentiat
   <label class="form-check-label" for="switchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
 </div>
 {{< /example >}}
+
+### Native switches
+
+Progressively enhance your switches for mobile Safari (iOS 17.4+) by adding a `switch` attribute to your input to enable haptic feedback when toggling switches, just like native iOS switches. There are no style changes attached to using this attribute in Bootstrap as all our switches use custom styles.
+
+{{< example >}}
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch>
+  <label class="form-check-label" for="checkNativeSwitch">
+    Native switch haptics
+  </label>
+</div>
+{{< /example >}}
+
+Be sure to read more about [the switch attribute on the WebKit blog](https://webkit.org/blog/15054/an-html-switch-control/). Safari 17.4+ on macOS and iOS both have native-style switches in HTML while other browsers simply fall back to the standard checkbox appearance.
 
 ## Default (stacked)
 
