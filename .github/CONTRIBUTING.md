@@ -211,8 +211,8 @@ included in the project:
    git push origin <topic-branch-name>
    ```
 
-9.  [Open a pull request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `main` branch.
+9. [Open a pull request](https://help.github.com/articles/about-pull-requests/)
+   with a clear title and description against the `main` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](../LICENSE) (if it
