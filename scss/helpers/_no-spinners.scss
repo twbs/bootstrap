@@ -1,5 +1,7 @@
 // scss/helpers/_no-spinners.scss
 
+@import "../mixins/appearance";
+
 .no-spinners {
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
