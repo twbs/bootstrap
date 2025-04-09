@@ -163,7 +163,7 @@ Change the appearance of offcanvases with utilities to better match them to diff
 
 {{< added-in "5.2.0" >}}
 
-Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Responsive offcanvas classes are available across for each breakpoint.
+Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Responsive offcanvas classes are available for each breakpoint.
 
 - `.offcanvas`
 - `.offcanvas-sm`
