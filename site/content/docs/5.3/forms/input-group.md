@@ -61,7 +61,7 @@ Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custo
 
 ## Border radius
 
-The `border-radius` is only applied to the first and last children of the element with the `.input-group` class. Any non-visible element in one of those positions will cause the `border-radius` to appear with no style.
+Due to limitations of browser support at the time, `border-radius` styles can only be applied to the first and last children within the `.input-group` class. Any non-visible element in one of those positions will cause the input group to render incorrectly. This will unfortunately not be fixed until v6 most likely.
 
 {{< example >}}
 <div class="input-group">
