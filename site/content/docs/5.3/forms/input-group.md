@@ -67,7 +67,7 @@ Due to limitations of browser support at the time, `border-radius` styles can on
 <div class="input-group">
   <span class="input-group-text" id="visible-addon">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon">
-  <input style="display: none;" type="text" class="form-control" placeholder="Hidden Input" aria-label="HiddenInput" aria-describedby="visible-addon">
+  <input type="text" class="form-control d-none" placeholder="Hidden input" aria-label="Hidden input" aria-describedby="visible-addon">
 </div>
 {{< /example >}}
 
