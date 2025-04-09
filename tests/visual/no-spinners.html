@@ -4,21 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bootstrap Visual Test: No Spinners Utility</title>
-  <link rel="stylesheet" href="/dist/css/bootstrap.css">
-</head>
-<body>
-  <div class="container py-5">
-    <h1>No Spinners Utility Test</h1>
-    <p>Inputs below should not display spinners in supported browsers.</p>
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css">
+  <style>
+  .no-spinners::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-    <h2>Default Number Input (with spinners)</h2>
-    <input type="number" class="form-control" value="42">
+  .no-spinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-    <h2>Number Input with .no-spinners</h2>
-    <input type="number" class="form-control no-spinners" value="42">
-
-    <h2>Time Input with .no-spinners</h2>
-    <input type="time" class="form-control no-spinners" value="13:37">
-  </div>
-</body>
+  .no-spinners {
+    -moz-appearance: textfield;
+  }
+  </style>
 </html>
