@@ -6,7 +6,7 @@
   <p class="lead fw-normal">
     Jump right into building with Bootstrap—use the CDN, install it via package manager, or download the source code.
   </p>
-  <p class="d-flex justify-content-md-start justify-content-md-center lead fw-normal">
+  <p class="d-flex justify-content-md-center lead fw-normal">
     <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/" class="icon-link icon-link-hover fw-semibold ps-md-4">
       Read installation docs
       <svg class="bi" aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
@@ -19,7 +19,7 @@
     <svg class="bi mb-2 fs-2 text-body-secondary" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
     <h3 class="fw-semibold">Install via package manager</h3>
     <p class="pe-lg-5">
-      Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/examples/">use any demo from our Examples repo</a> to quickly jumpstart Bootstrap projects.
+      Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package-managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/examples/">use any demo from our Examples repo</a> to quickly jumpstart Bootstrap projects.
     </p>
     {{ highlight (printf ("npm install bootstrap@%s") .Site.Params.current_version) "sh" "" }}
     {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}

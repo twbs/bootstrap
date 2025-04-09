@@ -172,33 +172,47 @@ included in the project:
    git pull upstream main
    ```
 
-3. Create a new topic branch (off the main project development branch) to
+3. Install or update project dependencies with npm:
+
+   ```bash
+   npm install
+   ```
+
+4. Create a new topic branch (off the main project development branch) to
    contain your feature, change, or fix:
 
    ```bash
    git checkout -b <topic-branch-name>
    ```
 
-4. Commit your changes in logical chunks. Please adhere to these [git commit
+5. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your code is unlikely be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/about-git-rebase/)
    feature to tidy up your commits before making them public.
 
-5. Locally merge (or rebase) the upstream development branch into your topic branch:
+6. Ensure your changes compile the dist CSS and JS files in the `dist/` directory. Verify
+   the build succeeds locally without errors.
+
+   ```bash
+   npm run dist
+   ```
+
+7. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
    git pull [--rebase] upstream main
    ```
 
-6. Push your topic branch up to your fork:
+8. Commit your changes, but **do not push compiled CSS and JS files in `dist` and `js/dist`**.
+   Push your topic branch up to your fork:
 
    ```bash
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `main` branch.
+9. [Open a pull request](https://help.github.com/articles/about-pull-requests/)
+   with a clear title and description against the `main` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](../LICENSE) (if it

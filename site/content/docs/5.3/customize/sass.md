@@ -8,6 +8,9 @@ toc: true
 
 Utilize our source Sass files to take advantage of variables, maps, mixins, and more.
 
+{{< callout warning >}}
+Sass deprecation warnings are shown when compiling source Sass files with the latest versions of Dart Sass. This does not prevent compilation or usage of Bootstrap. We're [working on a long-term fix]({{< param repo >}}/issues/40962), but in the meantime these deprecation notices can be ignored.
+{{< /callout >}}
 ## File structure
 
 Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like npm, you'll have a file structure that looks like this:
@@ -70,7 +73,7 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/root";
 
-// 6. Optionally include any other parts as needed
+// 6. Include any other optional stylesheet partials as desired; list below is not inclusive of all available stylesheets
 @import "../node_modules/bootstrap/scss/utilities";
 @import "../node_modules/bootstrap/scss/reboot";
 @import "../node_modules/bootstrap/scss/type";
@@ -78,6 +81,7 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 @import "../node_modules/bootstrap/scss/containers";
 @import "../node_modules/bootstrap/scss/grid";
 @import "../node_modules/bootstrap/scss/helpers";
+// ...
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "../node_modules/bootstrap/scss/utilities/api";
@@ -89,7 +93,7 @@ With that setup in place, you can begin to modify any of the Sass variables and 
 
 ## Compiling
 
-In order to use your custom Sass code as CSS in the browser, you need a Sass compiler. Sass ships as a CLI package, but you can also compile it with other build tools like [Gulp](https://gulpjs.com/) or [Webpack](https://webpack.js.org/), or with a GUI applications. Some IDEs also have Sass compilers built in or as downloadable extensions.
+In order to use your custom Sass code as CSS in the browser, you need a Sass compiler. Sass ships as a CLI package, but you can also compile it with other build tools like [Gulp](https://gulpjs.com/) or [Webpack](https://webpack.js.org/), or with GUI applications. Some IDEs also have Sass compilers built in or as downloadable extensions.
 
 We like to use the CLI to compile our Sass, but you can use whichever method you prefer. From the command line, run the following:
 

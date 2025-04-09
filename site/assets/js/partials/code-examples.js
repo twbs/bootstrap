@@ -4,7 +4,7 @@
 
 /*
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2024 The Bootstrap Authors
+ * Copyright 2011-2025 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -63,6 +63,11 @@ export default () => {
     const namespace = 'http://www.w3.org/1999/xlink'
     const originalXhref = iconFirstChild.getAttributeNS(namespace, 'href')
     const originalTitle = event.trigger.title
+    const isCheckIconVisible = originalXhref === '#check2'
+
+    if (isCheckIconVisible) {
+      return
+    }
 
     tooltipBtn.setContent({ '.tooltip-inner': 'Copied!' })
     event.trigger.addEventListener('hidden.bs.tooltip', () => {

@@ -16,6 +16,10 @@ added:
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/vite). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/vite?file=index.html) for live editing.
 {{< /callout >}}
 
+## What is Vite?
+
+[Vite](https://vite.dev/) is a modern frontend build tool designed for speed and simplicity. It provides an efficient and streamlined development experience, especially for modern JavaScript frameworks.
+
 ## Setup
 
 We're building a Vite project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
@@ -90,9 +94,24 @@ With dependencies installed and our project folder ready for us to start coding,
      },
      server: {
        port: 8080
-     }
+     },
+     // Optional: Silence Sass deprecation warnings. See note below.
+     css: {
+        preprocessorOptions: {
+           scss: {
+             silenceDeprecations: [
+               'import',
+               'mixed-decls',
+               'color-functions',
+               'global-builtin',
+             ],
+           },
+        },
+     },
    }
    ```
+
+   **Note:** Sass deprecation warnings are shown when compiling source Sass files with the latest versions of Dart Sass. This does not prevent compilation or usage of Bootstrap. We're [working on a long-term fix]({{< param repo >}}/issues/40962), but in the meantime these deprecation notices can be ignored.
 
 2. **Next we fill in `src/index.html`.** This is the HTML page Vite will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps.
 

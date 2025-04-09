@@ -163,7 +163,16 @@ Change the appearance of offcanvases with utilities to better match them to diff
 
 {{< added-in "5.2.0" >}}
 
-Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint.
+Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Responsive offcanvas classes are available for each breakpoint.
+
+- `.offcanvas`
+- `.offcanvas-sm`
+- `.offcanvas-md`
+- `.offcanvas-lg`
+- `.offcanvas-xl`
+- `.offcanvas-xxl`
+
+To make a responsive offcanvas, replace the `.offcanvas` base class with a responsive variant and ensure your close button has an explicit `data-bs-target`.
 
 {{< example >}}
 <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Toggle offcanvas</button>
@@ -180,15 +189,6 @@ Responsive offcanvas classes hide content outside the viewport from a specified 
   </div>
 </div>
 {{< /example >}}
-
-Responsive offcanvas classes are available across for each breakpoint.
-
-- `.offcanvas`
-- `.offcanvas-sm`
-- `.offcanvas-md`
-- `.offcanvas-lg`
-- `.offcanvas-xl`
-- `.offcanvas-xxl`
 
 ## Placement
 
