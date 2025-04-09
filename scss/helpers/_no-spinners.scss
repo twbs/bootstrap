@@ -1,12 +1,11 @@
-// scss/utilities/_no-spinners.scss
+// scss/helpers/_no-spinners.scss
 
 .no-spinners {
-
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+    @include appearance(none);
     margin: 0;
   }
 
-  -moz-appearance: textfield;
+  @include appearance(textfield);
 }
