@@ -206,13 +206,13 @@
         &:not(:last-child) {
           @include border-end-radius(0);
 
-          .card-img-top,
-          .card-header {
+          > .card-img-top,
+          > .card-header {
             // stylelint-disable-next-line property-disallowed-list
             border-top-right-radius: 0;
           }
-          .card-img-bottom,
-          .card-footer {
+          > .card-img-bottom,
+          > .card-footer {
             // stylelint-disable-next-line property-disallowed-list
             border-bottom-right-radius: 0;
           }
@@ -221,13 +221,13 @@
         &:not(:first-child) {
           @include border-start-radius(0);
 
-          .card-img-top,
-          .card-header {
+          > .card-img-top,
+          > .card-header {
             // stylelint-disable-next-line property-disallowed-list
             border-top-left-radius: 0;
           }
-          .card-img-bottom,
-          .card-footer {
+          > .card-img-bottom,
+          > .card-footer {
             // stylelint-disable-next-line property-disallowed-list
             border-bottom-left-radius: 0;
           }
