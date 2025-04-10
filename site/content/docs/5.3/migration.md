@@ -77,7 +77,7 @@ If you're migrating from our previous alpha release of v5.3.0, please review the
 
 - Added new `.border-black` utility to match our `.text-black` and `.bg-black` utilities.
 
-- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> Deprecated the `.text-muted` utility and `$text-muted` Sass variable. It's been replaced by `.text-body-secondary` and `$body-secondary-color`.
+- <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> The `.text-muted` utility and `$text-muted` Sass variable have been deprecated and replaced with `.text-body-secondary` and `$body-secondary-color`.
 
 ### Docs
 
