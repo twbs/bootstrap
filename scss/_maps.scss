@@ -45,11 +45,30 @@ $theme-colors-border-subtle: (
 ) !default;
 // scss-docs-end theme-border-subtle-map
 
+$theme-colors-dark: null !default;
+$theme-colors-rgb-dark: null !default;
 $theme-colors-text-dark: null !default;
 $theme-colors-bg-subtle-dark: null !default;
 $theme-colors-border-subtle-dark: null !default;
 
 @if $enable-dark-mode {
+  // scss-docs-start theme-colors-dark-map
+  $theme-colors-dark: (
+    "primary": $primary-dark,
+    "secondary": $secondary-dark,
+    "success": $success-dark,
+    "info": $info-dark,
+    "warning": $warning-dark,
+    "danger": $danger-dark,
+    "light": $light-dark,
+    "dark": $dark-dark,
+  ) !default;
+  // scss-docs-end theme-colors-dark-map
+
+  // scss-docs-start theme-colors-rgb-dark
+  $theme-colors-rgb-dark: map-loop($theme-colors-dark, to-rgb, "$value") !default;
+  // scss-docs-end theme-colors-rgb-dark
+
   // scss-docs-start theme-text-dark-map
   $theme-colors-text-dark: (
     "primary": $primary-text-emphasis-dark,
