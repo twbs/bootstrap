@@ -1,6 +1,7 @@
 // scss/forms/_no-spinners.scss
 
 .no-spinners {
+  appearance: textfield;
 
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
@@ -8,5 +9,8 @@
     margin: 0;
   }
 
-  appearance: textfield;
+  &::-webkit-clear-button,
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
 }
