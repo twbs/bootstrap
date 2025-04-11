@@ -6,7 +6,7 @@ toc: true
 
 ## Individual or compiled
 
-Plugins can be included individually (using Bootstrap's individual `js/dist/*.js`), or all at once using `bootstrap.js` or the minified `bootstrap.min.js` (don't include both).
+Plugins can be included individually (using Bootstrap’s individual `js/dist/*.js`), or all at once using `bootstrap.js` or the minified `bootstrap.min.js` (don't include both).
 
 If you use a bundler (Webpack, Parcel, Vite...), you can use `/js/dist/*.js` files which are UMD ready.
 
@@ -219,7 +219,7 @@ Every Bootstrap plugin exposes the following methods and static properties.
 | Static property | Description |
 | --- | --- |
 | `NAME` | Returns the plugin name. (Example: `bootstrap.Tooltip.NAME`) |
-| `VERSION` | The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor (Example: `bootstrap.Tooltip.VERSION`) |
+| `VERSION` | The version of each of Bootstrap’s plugins can be accessed via the `VERSION` property of the plugin's constructor (Example: `bootstrap.Tooltip.VERSION`) |
 </BsTable>
 
 ## Sanitizer
@@ -291,7 +291,7 @@ Bootstrap does not officially support third-party JavaScript libraries like Prot
 
 ### jQuery events
 
-Bootstrap will detect jQuery if `jQuery` is present in the `window` object and there is no `data-bs-no-jquery` attribute set on `<body>`. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system. So if you want to listen to Bootstrap's events, you'll have to use the jQuery methods (`.on`, `.one`) instead of `addEventListener`.
+Bootstrap will detect jQuery if `jQuery` is present in the `window` object and there is no `data-bs-no-jquery` attribute set on `<body>`. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system. So if you want to listen to Bootstrap’s events, you'll have to use the jQuery methods (`.on`, `.one`) instead of `addEventListener`.
 
 ```js
 $('#myTab a').on('shown.bs.tab', () => {
@@ -301,4 +301,4 @@ $('#myTab a').on('shown.bs.tab', () => {
 
 ## Disabled JavaScript
 
-Bootstrap's plugins have no special fallback when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
+Bootstrap’s plugins have no special fallback when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.

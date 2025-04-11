@@ -1,6 +1,6 @@
 ---
 title: Bootstrap and Webpack
-description: The official guide for how to include and bundle Bootstrap's CSS and JavaScript in your project using Webpack.
+description: The official guide for how to include and bundle Bootstrap’s CSS and JavaScript in your project using Webpack.
 toc: true
 thumbnail: guides/bootstrap-webpack@2x.png
 ---
@@ -38,7 +38,7 @@ We're building a Webpack project with Bootstrap from scratch, so there are some 
    npm i --save bootstrap @popperjs/core
    ```
 
-4. **Install additional dependencies.** In addition to Webpack and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap's CSS and JS with Webpack. These include Sass, some loaders, and Autoprefixer.
+4. **Install additional dependencies.** In addition to Webpack and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap’s CSS and JS with Webpack. These include Sass, some loaders, and Autoprefixer.
 
    ```sh
    npm i --save-dev autoprefixer css-loader postcss-loader sass sass-loader style-loader
@@ -120,7 +120,7 @@ With dependencies installed and our project folder ready for us to start coding,
    </html>
    ```
 
-   We're including a little bit of Bootstrap styling here with the `div class="container"` and `<button>` so that we see when Bootstrap's CSS is loaded by Webpack.
+   We're including a little bit of Bootstrap styling here with the `div class="container"` and `<button>` so that we see when Bootstrap’s CSS is loaded by Webpack.
 
 3. **Now we need an npm script to run Webpack.** Open `package.json` and add the `start` script shown below (you should already have the test script). We'll use this script to start our local Webpack dev server. You can also add a `build` script shown below to build your project.
 
@@ -144,7 +144,7 @@ With dependencies installed and our project folder ready for us to start coding,
 
    <img class="img-fluid" src="/docs/[[config:docs_version]]/assets/img/guides/webpack-dev-server.png" alt="Webpack dev server running"/>
 
-In the next and final section to this guide, we'll set up the Webpack loaders and import all of Bootstrap's CSS and JavaScript.
+In the next and final section to this guide, we'll set up the Webpack loaders and import all of Bootstrap’s CSS and JavaScript.
 
 ## Import Bootstrap
 
@@ -223,22 +223,22 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    **Note:** Sass deprecation warnings are shown when compiling source Sass files with the latest versions of Dart Sass. This does not prevent compilation or usage of Bootstrap. We're [working on a long-term fix]([[config:repo]]/issues/40962), but in the meantime these deprecation notices can be ignored.
 
-2. **Now, let's import Bootstrap's CSS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap's source Sass.
+2. **Now, let's import Bootstrap’s CSS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap’s source Sass.
 
    ```scss
-   // Import all of Bootstrap's CSS
+   // Import all of Bootstrap’s CSS
    @import "bootstrap/scss/bootstrap";
    ```
 
    *You can also import our stylesheets individually if you want. [Read our Sass import docs]([[docsref:/customize/sass#importing]]) for details.*
 
-3. **Next we load the CSS and import Bootstrap's JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap's JS. Popper will be imported automatically through Bootstrap.
+3. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Popper will be imported automatically through Bootstrap.
 
    ```js
    // Import our custom CSS
    import '../scss/styles.scss'
 
-   // Import all of Bootstrap's JS
+   // Import all of Bootstrap’s JS
    import * as bootstrap from 'bootstrap'
    ```
 
@@ -251,13 +251,13 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
    import { Tooltip, Toast, Popover } from 'bootstrap'
    ```
 
-   *[Read our JavaScript docs]([[docsref:/getting-started/javascript/]]) for more information on how to use Bootstrap's plugins.*
+   *[Read our JavaScript docs]([[docsref:/getting-started/javascript/]]) for more information on how to use Bootstrap’s plugins.*
 
-4. **And you're done! 🎉** With Bootstrap's source Sass and JS fully loaded, your local development server should now look like this:
+4. **And you're done! 🎉** With Bootstrap’s source Sass and JS fully loaded, your local development server should now look like this:
 
    <img class="img-fluid" src="/docs/[[config:docs_version]]/assets/img/guides/webpack-dev-server-bootstrap.png" alt="Webpack dev server running with Bootstrap"/>
 
-   Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Webpack example project](https://github.com/twbs/examples/tree/main/webpack) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
+   Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete Webpack example project](https://github.com/twbs/examples/tree/main/webpack) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap’s CSS and JS that you need.
 
 ## Production optimizations
 
@@ -327,7 +327,7 @@ After running `npm run build` again, there will be a new file `dist/main.css`, w
 
 ### Extracting SVG files
 
-Bootstrap's CSS includes multiple references to SVG files via inline `data:` URIs. If you define a Content Security Policy for your project that blocks `data:` URIs for images, then these SVG files will not load. You can get around this problem by extracting the inline SVG files using Webpack's asset modules feature.
+Bootstrap’s CSS includes multiple references to SVG files via inline `data:` URIs. If you define a Content Security Policy for your project that blocks `data:` URIs for images, then these SVG files will not load. You can get around this problem by extracting the inline SVG files using Webpack's asset modules feature.
 
 Configure Webpack to extract inline SVG files like this:
 

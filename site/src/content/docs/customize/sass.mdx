@@ -12,7 +12,7 @@ Sass deprecation warnings are shown when compiling source Sass files with the la
 
 ## File structure
 
-Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like npm, you'll have a file structure that looks like this:
+Whenever possible, avoid modifying Bootstrap’s core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like npm, you'll have a file structure that looks like this:
 
 ```text
 your-project/
@@ -25,7 +25,7 @@ your-project/
 └── index.html
 ```
 
-If you've downloaded our source files and aren't using a package manager, you'll want to manually create something similar to that structure, keeping Bootstrap's source files separate from your own.
+If you've downloaded our source files and aren't using a package manager, you'll want to manually create something similar to that structure, keeping Bootstrap’s source files separate from your own.
 
 ```text
 your-project/
@@ -39,7 +39,7 @@ your-project/
 
 ## Importing
 
-In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
+In your `custom.scss`, you'll import Bootstrap’s source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
 
 ```scss
 // Custom.scss
@@ -131,9 +131,9 @@ Once your CSS is compiled, you can include it in your HTML files. Inside your `i
 
 ## Variable defaults
 
-Every Sass variable in Bootstrap includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Bootstrap's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values in Bootstrap.
+Every Sass variable in Bootstrap includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Bootstrap’s source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values in Bootstrap.
 
-You will find the complete list of Bootstrap's variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
+You will find the complete list of Bootstrap’s variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
 
 Variable overrides must come after our functions are imported, but before the rest of the imports.
 
@@ -179,7 +179,7 @@ $primary: #0074d9;
 $danger: #ff4136;
 ```
 
-Later on, these variables are set in Bootstrap's `$theme-colors` map:
+Later on, these variables are set in Bootstrap’s `$theme-colors` map:
 
 ```scss
 $theme-colors: (
@@ -226,7 +226,7 @@ $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 ## Required keys
 
-Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
+Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map’s key is being used.
 
 For example, we use the `primary`, `success`, and `danger` keys from `$theme-colors` for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you'll need to modify the Sass code that makes use of those values.
 
@@ -243,7 +243,7 @@ Next to the [Sass maps]([[docsref:/customize/color#color-sass-maps]]) we have, t
 }
 ```
 
-You can lighten or darken colors with Bootstrap's `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass' native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn't lead to the desired effect.
+You can lighten or darken colors with Bootstrap’s `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass' native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn't lead to the desired effect.
 
 `shift-color()` combines these two functions by shading the color if the weight is positive and tinting the color if the weight is negative.
 
