@@ -1,0 +1,75 @@
+@import "../../functions";
+@import "../../mixins";
+@import "../../variables";
+
+@include describe("global $enable-host: false") {
+  @include it("generates :root selector for web components") {
+    @include assert() {
+      @include output() {
+        @include root() {
+          --test: 1;
+        }
+      }
+      @include expect() {
+        :root {
+          --test: 1;
+        }
+      }
+    }
+  }
+}
+
+@include describe("global $enable-host: false") {
+  @include it("generates :root, [data-bs-theme=light] selector for web components") {
+    @include assert() {
+      @include output() {
+        @include root("[data-bs-theme=light]") {
+          --test: 1;
+        }
+      }
+      @include expect() {
+        :root,
+        [data-bs-theme="light"] {
+          --test: 1;
+        }
+      }
+    }
+  }
+}
+
+$enable-host: true !global;
+
+@include describe("global $enable-host: true") {
+  @include it("generates :host selector for web components") {
+    @include assert() {
+      @include output() {
+        @include root() {
+          --test: 1;
+        }
+      }
+      @include expect() {
+        :host {
+          --test: 1;
+        }
+      }
+    }
+  }
+}
+
+@include describe("global $enable-host: true") {
+  @include it("generates :root, [data-bs-theme=light] selector for web components") {
+    @include assert() {
+      @include output() {
+        @include root("[data-bs-theme=light]") {
+          --test: 1;
+        }
+      }
+      @include expect() {
+        :host,
+        [data-bs-theme="light"] {
+          --test: 1;
+        }
+      }
+    }
+  }
+}

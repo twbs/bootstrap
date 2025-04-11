@@ -1,0 +1,7 @@
+@mixin root($extra_selector: "") {
+  $extra_selector: if($enable-host, ":host", ":root") if($extra_selector, ", " + $extra_selector, ""); // stylelint-disable-line scss/dollar-variable-pattern
+
+  #{$extra_selector} {
+    @content;
+  }
+}
