@@ -4,13 +4,14 @@
   appearance: textfield;
 
   &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
+  &::-webkit-outer-spin-button,
+  &::-webkit-clear-button,
+  &::-webkit-calendar-picker-indicator,
+  &::-webkit-date-and-time-value,
+  &::-webkit-search-results-button,
+  &::-webkit-search-cancel-button {
+    display: none;
     appearance: none;
     margin: 0;
-  }
-
-  &::-webkit-clear-button,
-  &::-webkit-calendar-picker-indicator {
-    display: none;
   }
 }
