@@ -102,8 +102,6 @@
       description: "Multiple examples of grid layouts with all four tiers, nesting, and more."
     - name: Cheatsheet
       description: "Kitchen sink of Bootstrap components."
-    - name: Cheatsheet RTL
-      description: "Kitchen sink of Bootstrap components, RTL."
 
 - category: Navbars
   description: "Taking the default navbar component and showing how it can be moved, placed, and extended."
@@ -122,7 +120,7 @@
       description: "Turn your expandable navbar into a sliding offcanvas menu (doesn't use our offcanvas component)."
 
 - category: RTL
-  description: "See Bootstrap's RTL version in action with these modified Custom Components examples."
+  description: "See Bootstrap's RTL version in action with these modified examples from various categories."
   examples:
     - name: Album RTL
       description: "Simple one-page template for photo galleries, portfolios, and more."
@@ -134,6 +132,8 @@
       description: "Magazine like blog template with header, navigation, featured content."
     - name: Dashboard RTL
       description: "Basic admin dashboard shell with fixed sidebar and navbar."
+    - name: Cheatsheet RTL
+      description: "Kitchen sink of Bootstrap components, RTL."
 
 - category: Integrations
   description: "Integrations with external libraries."
