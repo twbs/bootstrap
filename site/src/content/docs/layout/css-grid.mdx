@@ -14,7 +14,7 @@ Bootstrap’s default grid system represents the culmination of over a decade of
 
 ## How it works
 
-With Bootstrap 5, we've added the option to enable a separate grid system that's built on CSS Grid, but with a Bootstrap twist. You still get classes you can apply on a whim to build responsive layouts, but with a different approach under the hood.
+With Bootstrap 5, we’ve added the option to enable a separate grid system that's built on CSS Grid, but with a Bootstrap twist. You still get classes you can apply on a whim to build responsive layouts, but with a different approach under the hood.
 
 - **CSS Grid is opt-in.** Disable the default grid system by setting `$enable-grid-classes: false` and enable the CSS Grid by setting `$enable-cssgrid: true`. Then, recompile your Sass.
 
@@ -127,7 +127,7 @@ Similar to our default grid system, our CSS Grid allows for easy nesting of `.gr
 
 - We override the default number of columns with a local CSS variable: `--bs-columns: 3`.
 - In the first auto-column, the column count is inherited and each column is one-third of the available width.
-- In the second auto-column, we've reset the column count on the nested `.grid` to 12 (our default).
+- In the second auto-column, we’ve reset the column count on the nested `.grid` to 12 (our default).
 - The third auto-column has no nested content.
 
 In practice this allows for more complex and custom layouts when compared to our default grid system.

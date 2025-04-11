@@ -53,7 +53,7 @@ If you're migrating from our previous alpha release of v5.3.0, please review the
 
 ### Typography
 
-- We no longer set a color for `$headings-color-dark` or `--bs-heading-color` for dark mode. To avoid several problems of headings within components appearing the wrong color, we've set the Sass variable to `null` and added a `null` check like we use on the default light mode.
+- We no longer set a color for `$headings-color-dark` or `--bs-heading-color` for dark mode. To avoid several problems of headings within components appearing the wrong color, we’ve set the Sass variable to `null` and added a `null` check like we use on the default light mode.
 
 ### Components
 
@@ -113,9 +113,9 @@ Learn more by reading the new [color modes documentation]([[docsref:/customize/c
 
   <span class="badge text-warning-emphasis bg-warning-subtle">Deprecated</span> Color modes replace dark variants for components, so  `.btn-close-white`, `.carousel-dark`, `.dropdown-menu-dark`, and `.navbar-dark` are deprecated.
 
-- **New extended color system.** We've added new theme colors (but not in `$theme-colors`) for a more nuanced, system-wide color palette with new secondary, tertiary, and emphasis colors for `color` and `background-color`. These new colors are available as Sass variables, CSS variables, and utilities.
+- **New extended color system.** We’ve added new theme colors (but not in `$theme-colors`) for a more nuanced, system-wide color palette with new secondary, tertiary, and emphasis colors for `color` and `background-color`. These new colors are available as Sass variables, CSS variables, and utilities.
 
-- We've also expanded our theme color Sass variables, CSS variables, and utilities to include text emphasis, subtle background colors, and subtle border colors. These are available as Sass variables, CSS variables, and utilities.
+- We’ve also expanded our theme color Sass variables, CSS variables, and utilities to include text emphasis, subtle background colors, and subtle border colors. These are available as Sass variables, CSS variables, and utilities.
 
 - Adds new `_variables-dark.scss` stylesheet to house dark-mode specific overrides. This stylesheet should be imported immediately after the existing `_variables.scss` file in your import stack.
 
@@ -138,7 +138,7 @@ Learn more by reading the new [color modes documentation]([[docsref:/customize/c
 
 - Restores CSS variables for breakpoints, though we don't use them in our media queries as they're not supported. However, these can be useful in JS-specific contexts.
 
-- Per the color modes update, we've added new utilities for new Sass CSS variables `secondary` and `tertiary` text and background colors, plus `{color}-bg-subtle`, `{color}-border-subtle`, and `{color}-text-emphasis` for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.
+- Per the color modes update, we’ve added new utilities for new Sass CSS variables `secondary` and `tertiary` text and background colors, plus `{color}-bg-subtle`, `{color}-border-subtle`, and `{color}-text-emphasis` for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.
 
 - Adds additional variables for alerts, `.btn-close`, and `.offcanvas`.
 
@@ -194,7 +194,7 @@ While we recommend adopting the new markup for improved compatibility with all s
 </div>
 ```
 
-We've also introduced a new `.progress-stacked` class to more logically wrap [multiple progress bars]([[docsref:/components/progress#multiple-bars]]) into a single stacked progress bar.
+We’ve also introduced a new `.progress-stacked` class to more logically wrap [multiple progress bars]([[docsref:/components/progress#multiple-bars]]) into a single stacked progress bar.
 
 ```html
 <!-- Previous markup -->
@@ -254,7 +254,7 @@ Bootstrap v5.2.0 features a subtle design update for a handful of components and
 
 ### More CSS variables
 
-**We've updated all our components to use CSS variables.** While Sass still underpins everything, each component has been updated to include CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap. In subsequent releases, we'll continue to expand our use of CSS variables into our layout, forms, helpers, and utilities. Read more about CSS variables in each component on their respective documentation pages.
+**We’ve updated all our components to use CSS variables.** While Sass still underpins everything, each component has been updated to include CSS variables on the component base classes (e.g., `.btn`), allowing for more real-time customization of Bootstrap. In subsequent releases, we'll continue to expand our use of CSS variables into our layout, forms, helpers, and utilities. Read more about CSS variables in each component on their respective documentation pages.
 
 Our CSS variable usage will be somewhat incomplete until Bootstrap 6. While we'd love to fully implement these across the board, they do run the risk of causing breaking changes. For example, setting `$alert-border-width: var(--bs-border-width)` in our source code breaks potential Sass in your own code if you were doing `$alert-border-width * 2` for some reason.
 
@@ -315,7 +315,7 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 - **Offcanvas component now has [responsive variations]([[docsref:/components/offcanvas#responsive]]).** The original `.offcanvas` class remains unchanged—it hides content across all viewports. To make it responsive, change that `.offcanvas` class to any `.offcanvas-{sm|md|lg|xl|xxl}` class.
 
-- **Thicker table dividers are now opt-in. —** We've removed the thicker and more difficult to override border between table groups and moved it to an optional class you can apply, `.table-group-divider`. [See the table docs for an example.]([[docsref:/content/tables#table-group-dividers]])
+- **Thicker table dividers are now opt-in. —** We’ve removed the thicker and more difficult to override border between table groups and moved it to an optional class you can apply, `.table-group-divider`. [See the table docs for an example.]([[docsref:/content/tables#table-group-dividers]])
 
 - **[Scrollspy has been rewritten](https://github.com/twbs/bootstrap/pull/33421) to use the Intersection Observer API**, which means you no longer need relative parent wrappers, deprecates `offset` config, and more. Look for your Scrollspy implementations to be more accurate and consistent in their nav highlighting.
 
@@ -393,7 +393,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 ### Sass
 
-- We've ditched the default Sass map merges to make it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with [Sass maps]([[docsref:/customize/sass#maps-and-loops]]).
+- We’ve ditched the default Sass map merges to make it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with [Sass maps]([[docsref:/customize/sass#maps-and-loops]]).
 
 - <span class="badge text-bg-danger">Breaking</span> Renamed `color-yiq()` function and related variables to `color-contrast()` as it's no longer related to YIQ color space. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
   - `$yiq-contrasted-threshold` is renamed to `$min-contrast-ratio`.
@@ -437,7 +437,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 - Improved color contrast. Bumped color contrast ratio from 3:1 to 4.5:1 and updated blue, green, cyan, and pink colors to ensure WCAG 2.2 AA contrast. Also changed our color contrast color from `$gray-900` to `$black`.
 
-- To support our color system, we've added new custom `tint-color()` and `shade-color()` functions to mix our colors appropriately.
+- To support our color system, we’ve added new custom `tint-color()` and `shade-color()` functions to mix our colors appropriately.
 
 ### Grid updates
 
@@ -497,7 +497,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 ### Forms
 
-- **Added new floating forms!** We've promoted the Floating labels example to fully supported form components. [See the new Floating labels page.]([[docsref:/forms/floating-labels]])
+- **Added new floating forms!** We’ve promoted the Floating labels example to fully supported form components. [See the new Floating labels page.]([[docsref:/forms/floating-labels]])
 
 - <span class="badge text-bg-danger">Breaking</span> **Consolidated native and custom form elements.** Checkboxes, radios, selects, and other inputs that had native and custom classes in v4 have been consolidated. Now nearly all our form elements are entirely custom, most without the need for custom HTML.
   - `.custom-control.custom-checkbox` is now `.form-check`.
@@ -711,7 +711,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 - <span class="badge text-bg-danger">Breaking</span> **Responsive embed helpers have been renamed to [ratio helpers]([[docsref:/helpers/ratio]])** with new class names and improved behaviors, as well as a helpful CSS variable.
   - Classes have been renamed to change `by` to `x` in the aspect ratio. For example, `.ratio-16by9` is now `.ratio-16x9`.
-  - We've dropped the `.embed-responsive-item` and element group selector in favor of a simpler `.ratio > *` selector. No more class is needed, and the ratio helper now works with any HTML element.
+  - We’ve dropped the `.embed-responsive-item` and element group selector in favor of a simpler `.ratio > *` selector. No more class is needed, and the ratio helper now works with any HTML element.
   - The `$embed-responsive-aspect-ratios` Sass map has been renamed to `$aspect-ratios` and its values have been simplified to include the class name and the percentage as the `key: value` pair.
   - CSS variables are now generated and included for each value in the Sass map. Modify the `--bs-aspect-ratio` variable on the `.ratio` to create any [custom aspect ratio]([[docsref:/helpers/ratio#custom-ratios]]).
 
