@@ -1,16 +1,18 @@
 {{- /*
-  Usage: `scss-docs name="name" file="file/_location.scss"`
+  Usage: `scss-docs name="name" file="file/_location.scss" button_label="label"`
 
   Prints everything between `// scss-docs-start "name"` and `// scss-docs-end "name"`
   comments in the docs.
 
   Optional parameters:
     * strip-default: Remove the ` !default` flag from variable assignments - default: `true`
+    * button_label: label to apply to complete 'Copy to clipboard' button - default: ""
 */ -}}
 
 {{- $name := .Get "name" -}}
 {{- $file := .Get "file" -}}
 {{- $strip_default := .Get "strip-default" | default "true" -}}
+{{- $button_label := .Get "button_label" | default "" -}}
 
 {{- /* If any parameters are missing, print an error and exit */ -}}
 {{- if or (not $name) (not $file) -}}
@@ -51,7 +53,7 @@
         {{- $file -}}
       </a>
       <div class="d-flex ms-auto">
-        <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+        <button type="button" class="btn-clipboard mt-0 me-0" title="Copy{{- if not (eq $button_label "") }} {{ printf "%s" $button_label }} {{- end }} to clipboard">
           <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"/></svg>
         </button>
       </div>
