@@ -43,7 +43,7 @@ If you're migrating from our previous alpha release of v5.3.0, please review the
 
 - Form validation `border-color` and text `color` states now respond to dark mode, thanks to new Sass and CSS variables.
 
-- Dropped recently added form control background CSS variables and reassigned the Sass variables to use CSS variables instead. This simplifies the styling across color modes and avoids an issue where form controls in dark mode wouldn't update properly.
+- Dropped recently added form control background CSS variables and reassigned the Sass variables to use CSS variables instead. This simplifies the styling across color modes and avoids an issue where form controls in dark mode wouldn’t update properly.
 
 - Our `box-shadow`s will once again always stay dark instead of inverting to white when in dark mode.
 
@@ -136,7 +136,7 @@ Learn more by reading the new [color modes documentation]([[docsref:/customize/c
 
 ### CSS variables
 
-- Restores CSS variables for breakpoints, though we don't use them in our media queries as they're not supported. However, these can be useful in JS-specific contexts.
+- Restores CSS variables for breakpoints, though we don’t use them in our media queries as they're not supported. However, these can be useful in JS-specific contexts.
 
 - Per the color modes update, we’ve added new utilities for new Sass CSS variables `secondary` and `tertiary` text and background colors, plus `{color}-bg-subtle`, `{color}-border-subtle`, and `{color}-text-emphasis` for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps) with the express goal of making it easier to customize across multiple colors modes like light and dark.
 
@@ -222,7 +222,7 @@ We’ve also introduced a new `.progress-stacked` class to more logically wrap [
 
 - `.form-control` is now styled with CSS variables to support color modes. This includes the addition of two new root CSS variables for the default and disabled form control backgrounds.
 
-- `.form-check` and `.form-switch` components are now built with CSS variables for setting the `background-image`. The usage here differs from other components in that the various focus, active, etc states for each component aren't set on the base class. Instead, the states override one variable (e.g., `--bs-form-switch-bg`).
+- `.form-check` and `.form-switch` components are now built with CSS variables for setting the `background-image`. The usage here differs from other components in that the various focus, active, etc states for each component aren’t set on the base class. Instead, the states override one variable (e.g., `--bs-form-switch-bg`).
 
 - Floating form labels now have a `background-color` to fix support for `<textarea>` elements. Additional changes have been made to also support disabled states and more.
 
@@ -358,7 +358,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 <hr class="mb-4"/>
 
 <Callout>
-**Hey there!** Changes to our first major release of Bootstrap 5, v5.0.0, are documented below. They don't reflect the additional changes shown above.
+**Hey there!** Changes to our first major release of Bootstrap 5, v5.0.0, are documented below. They don’t reflect the additional changes shown above.
 </Callout>
 
 ### Dependencies
@@ -423,7 +423,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
   - `visibility()`
   - `form-control-focus()`
 
-- <span class="badge text-bg-danger">Breaking</span> Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass's own color scaling function.
+- <span class="badge text-bg-danger">Breaking</span> Renamed `scale-color()` function to `shift-color()` to avoid collision with Sass’s own color scaling function.
 
 - `box-shadow` mixins now allow `null` values and drop `none` from multiple arguments. [See #30394](https://github.com/twbs/bootstrap/pull/30394).
 
@@ -689,7 +689,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
 
 - <span class="badge text-bg-danger">Breaking</span> Renamed `.text-monospace` to `.font-monospace`.
 
-- <span class="badge text-bg-danger">Breaking</span> Removed `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore.
+- <span class="badge text-bg-danger">Breaking</span> Removed `.text-hide` as it's an antiquated method for hiding text that shouldn’t be used anymore.
 
 - Added `.fs-*` utilities for `font-size` utilities (with RFS enabled). These use the same scale as HTML's default headings (1-6, large to small), and can be modified via Sass map.
 
@@ -720,7 +720,7 @@ Want more information? [Read the v5.1.0 blog post.](https://blog.getbootstrap.co
   - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`
   - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
 
-- `bootstrap-utilities.css` now also includes our helpers. Helpers don't need to be imported in custom builds anymore.
+- `bootstrap-utilities.css` now also includes our helpers. Helpers don’t need to be imported in custom builds anymore.
 
 ### JavaScript
 

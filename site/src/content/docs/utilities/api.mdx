@@ -13,7 +13,7 @@ The `$utilities` map contains all our utilities and is later merged with your cu
 | Option | Type | Default&nbsp;value | Description |
 | --- | --- | --- | --- |
 | [`property`](#property) | **Required** | – | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins). |
-| [`values`](#values) | **Required** | – | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, `class` is not prepended to the class name. |
+| [`values`](#values) | **Required** | – | List of values, or a map if you don’t want the class name to be the same as the value. If `null` is used as map key, `class` is not prepended to the class name. |
 | [`class`](#class) | Optional | null | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. If not provided and `property` is a string, the `values` keys are used for the `class` names. |
 | [`css-var`](#css-variable-utilities) | Optional | `false` | Boolean to generate CSS variables instead of CSS rules. |
 | [`css-variable-name`](#css-variable-utilities) | Optional | null | Custom un-prefixed name for the CSS variable inside the ruleset. |
@@ -188,7 +188,7 @@ Output:
 
 ### Local CSS variables
 
-Use the `local-vars` option to specify a Sass map that will generate local CSS variables within the utility class's ruleset. Please note that it may require additional work to consume those local CSS variables in the generated CSS rules. For example, consider our `.bg-*` utilities:
+Use the `local-vars` option to specify a Sass map that will generate local CSS variables within the utility class’s ruleset. Please note that it may require additional work to consume those local CSS variables in the generated CSS rules. For example, consider our `.bg-*` utilities:
 
 ```scss
 $utilities: (
@@ -618,4 +618,4 @@ Output:
 /* rtl:end:remove */
 ```
 
-This doesn't output anything in RTL, thanks to [the RTLCSS `remove` control directive](https://rtlcss.com/learn/usage-guide/control-directives/#remove).
+This doesn’t output anything in RTL, thanks to [the RTLCSS `remove` control directive](https://rtlcss.com/learn/usage-guide/control-directives/#remove).

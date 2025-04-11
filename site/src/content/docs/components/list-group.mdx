@@ -44,7 +44,7 @@ Add `.disabled` to a `.list-group-item` to make it _appear_ disabled. Note that 
 
 ## Links and buttons
 
-Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, disabled, and active states by adding `.list-group-item-action`. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like `<li>`s or `<div>`s) don't provide a click or tap affordance.
+Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, disabled, and active states by adding `.list-group-item-action`. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like `<li>`s or `<div>`s) don’t provide a click or tap affordance.
 
 Be sure to **not use the standard `.btn` classes here**.
 
@@ -58,7 +58,7 @@ Be sure to **not use the standard `.btn` classes here**.
     <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
   </div>`} />
 
-With `<button>`s, you can also make use of the `disabled` attribute instead of the `.disabled` class. Sadly, `<a>`s don't support the disabled attribute.
+With `<button>`s, you can also make use of the `disabled` attribute instead of the `.disabled` class. Sadly, `<a>`s don’t support the disabled attribute.
 
 <Example code={`<div class="list-group">
     <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
@@ -423,7 +423,7 @@ const bsTab = new bootstrap.Tab('#myTab')
 | --- | --- |
 | `dispose` | Destroys an element's tab. |
 | `getInstance` | Static method which allows you to get the tab instance associated with a DOM element, you can use it like this: `bootstrap.Tab.getInstance(element)`. |
-| `getOrCreateInstance` | Static method which returns a tab instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Tab.getOrCreateInstance(element)`. |
+| `getOrCreateInstance` | Static method which returns a tab instance associated to a DOM element or create a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Tab.getOrCreateInstance(element)`. |
 | `show` | Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (i.e. before the `shown.bs.tab` event occurs). |
 </BsTable>
 

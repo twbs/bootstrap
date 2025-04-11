@@ -13,7 +13,7 @@ import { getData } from '@libs/data'
 Similar to the contextual text color classes, set the background of an element to any contextual class. Background utilities **do not set `color`**, so in some cases you'll want to use `.text-*` [color utilities]([[docsref:/utilities/colors]]).
 
 <Callout>
-Background utilities like `.bg-*` that generated from our original `$theme-colors` Sass map don't yet respond to color modes, however, any `.bg-*-subtle` utility will. This will be resolved in v6.
+Background utilities like `.bg-*` that generated from our original `$theme-colors` Sass map don’t yet respond to color modes, however, any `.bg-*-subtle` utility will. This will be resolved in v6.
 </Callout>
 
 <Example code={[
@@ -57,7 +57,7 @@ Consider our default `.bg-success` utility.
 }
 ```
 
-We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-bg-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.bg-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.bg-*` class avoids inheritance issues so nested instances of the utilities don't automatically have a modified alpha transparency.
+We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-bg-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.bg-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.bg-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
 
 ### Example
 

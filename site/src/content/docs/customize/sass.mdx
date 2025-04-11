@@ -25,7 +25,7 @@ your-project/
 └── index.html
 ```
 
-If you’ve downloaded our source files and aren't using a package manager, you'll want to manually create something similar to that structure, keeping Bootstrap’s source files separate from your own.
+If you’ve downloaded our source files and aren’t using a package manager, you'll want to manually create something similar to that structure, keeping Bootstrap’s source files separate from your own.
 
 ```text
 your-project/
@@ -45,7 +45,7 @@ In your `custom.scss`, you'll import Bootstrap’s source Sass files. You have t
 // Custom.scss
 // Option A: Include all of Bootstrap
 
-// Include any default variable overrides here (though functions won't be available)
+// Include any default variable overrides here (though functions won’t be available)
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
@@ -131,9 +131,9 @@ Once your CSS is compiled, you can include it in your HTML files. Inside your `i
 
 ## Variable defaults
 
-Every Sass variable in Bootstrap includes the `!default` flag allowing you to override the variable’s default value in your own Sass without modifying Bootstrap’s source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values in Bootstrap.
+Every Sass variable in Bootstrap includes the `!default` flag allowing you to override the variable’s default value in your own Sass without modifying Bootstrap’s source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won’t be re-assigned by the default values in Bootstrap.
 
-You will find the complete list of Bootstrap’s variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
+You will find the complete list of Bootstrap’s variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don’t output the property unless they are overridden in your configuration.
 
 Variable overrides must come after our functions are imported, but before the rest of the imports.
 
@@ -243,7 +243,7 @@ Next to the [Sass maps]([[docsref:/customize/color#color-sass-maps]]) we have, t
 }
 ```
 
-You can lighten or darken colors with Bootstrap’s `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass' native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn't lead to the desired effect.
+You can lighten or darken colors with Bootstrap’s `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass’ native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn’t lead to the desired effect.
 
 `shift-color()` combines these two functions by shading the color if the weight is positive and tinting the color if the weight is negative.
 

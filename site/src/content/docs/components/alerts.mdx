@@ -160,7 +160,7 @@ const alerts = [...alertList].map(element => new bootstrap.Alert(element))
 ```
 
 <Callout>
-For the sole purpose of dismissing an alert, it isn't necessary to initialize the component manually via the JS API. By making use of `data-bs-dismiss="alert"`, the component will be initialized automatically and properly dismissed.
+For the sole purpose of dismissing an alert, it isn’t necessary to initialize the component manually via the JS API. By making use of `data-bs-dismiss="alert"`, the component will be initialized automatically and properly dismissed.
 
 See the [triggers](#triggers) section for more details.
 </Callout>
@@ -187,7 +187,7 @@ This makes an alert listen for click events on descendant elements which have th
 | `close` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
 | `dispose` | Destroys an element's alert. (Removes stored data on the DOM element) |
 | `getInstance` | Static method which allows you to get the alert instance associated to a DOM element. For example: `bootstrap.Alert.getInstance(alert)`. |
-| `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Alert.getOrCreateInstance(element)`. |
+| `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Alert.getOrCreateInstance(element)`. |
 </BsTable>
 
 Basic usage:
@@ -212,7 +212,7 @@ Bootstrap’s alert plugin exposes a few events for hooking into alert functiona
 const myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', event => {
   // do something, for instance, explicitly move focus to the most appropriate element,
-  // so it doesn't get lost/reset to the start of the page
+  // so it doesn’t get lost/reset to the start of the page
   // document.getElementById('...').focus()
 })
 ```

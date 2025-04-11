@@ -387,7 +387,7 @@ Check out [our Sass maps and loops docs]([[docsref:/customize/sass#maps-and-loop
 
 ### All colors
 
-All Bootstrap colors are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we don't create text or background color classes for each of these variables. Instead, we choose a subset of these colors for a [theme palette](#theme-colors).
+All Bootstrap colors are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we don’t create text or background color classes for each of these variables. Instead, we choose a subset of these colors for a [theme palette](#theme-colors).
 
 Be sure to monitor contrast ratios as you customize colors. As shown below, we’ve added three contrast ratios to each of the main colors—one for the swatch's current colors, one for against white, and one for against black.
 
@@ -434,7 +434,7 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, we�
 
 ### Notes on Sass
 
-Sass cannot programmatically generate variables, so we manually created variables for every tint and shade ourselves. We specify the midpoint value (e.g., `$blue-500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass's `mix()` color function.
+Sass cannot programmatically generate variables, so we manually created variables for every tint and shade ourselves. We specify the midpoint value (e.g., `$blue-500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass’s `mix()` color function.
 
 Using `mix()` is not the same as `lighten()` and `darken()`—the former blends the specified color with white or black, while the latter only adjusts the lightness value of each color. The result is a much more complete suite of colors, as [shown in this CodePen demo](https://codepen.io/emdeoh/pen/zYOQOPB).
 
@@ -472,7 +472,7 @@ Here’s how you can use these in your Sass:
 
 <AddedIn version="5.1.0"/>
 
-Bootstrap doesn't include `color` and `background-color` utilities for every color variable, but you can generate these yourself with our [utility API]([[docsref:/utilities/api]]) and our extended Sass maps added in v5.1.0.
+Bootstrap doesn’t include `color` and `background-color` utilities for every color variable, but you can generate these yourself with our [utility API]([[docsref:/utilities/api]]) and our extended Sass maps added in v5.1.0.
 
 1. To start, make sure you’ve imported our functions, variables, mixins, and utilities.
 2. Use our `map-merge-multiple()` function to quickly merge multiple Sass maps together in a new map.

@@ -36,7 +36,7 @@ import 'bootstrap/js/dist/modal';
 // import 'bootstrap/js/dist/tooltip';
 ```
 
-This way, you're not including any JavaScript you don't intend to use for components like buttons, carousels, and tooltips. If you're importing dropdowns, tooltips or popovers, be sure to list the Popper dependency in your `package.json` file.
+This way, you're not including any JavaScript you don’t intend to use for components like buttons, carousels, and tooltips. If you're importing dropdowns, tooltips or popovers, be sure to list the Popper dependency in your `package.json` file.
 
 <Callout>
 **Heads up!** Files in `bootstrap/js/dist` use the **default export**. To use them, do the following:
@@ -55,7 +55,7 @@ Bootstrap depends on Autoprefixer to automatically add browser prefixes to certa
 
 _Help wanted with this section, please consider opening a PR. Thanks!_
 
-While we don't have a prebuilt example for using [PurgeCSS](https://github.com/FullHuman/purgecss) with Bootstrap, there are some helpful articles and walkthroughs that the community has written. Here are some options:
+While we don’t have a prebuilt example for using [PurgeCSS](https://github.com/FullHuman/purgecss) with Bootstrap, there are some helpful articles and walkthroughs that the community has written. Here are some options:
 
 - https://medium.com/dwarves-foundation/remove-unused-css-styles-from-bootstrap-using-purgecss-88395a2c5772
 - https://lukelowrey.com/automatically-removeunused-css-from-bootstrap-or-other-frameworks
@@ -72,7 +72,7 @@ While minifying and using compression might seem like enough, making your files 
 
 If you are using a [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) plugin in Google Chrome, you may have stumbled over FCP. [The First Contentful Paint](https://web.dev/articles/fcp) metric measures the time from when the page starts loading to when any part of the page’s content is rendered on the screen.
 
-You can improve FCP by deferring non-critical JavaScript or CSS. What does that mean? Simply, JavaScript or stylesheets that don't need to be present on the first paint of your page should be marked with `async` or `defer` attributes.
+You can improve FCP by deferring non-critical JavaScript or CSS. What does that mean? Simply, JavaScript or stylesheets that don’t need to be present on the first paint of your page should be marked with `async` or `defer` attributes.
 
 This ensures that the less important resources are loaded later and not blocking the first paint. On the other hand, critical resources can be included as inline scripts or styles.
 

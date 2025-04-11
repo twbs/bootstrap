@@ -10,7 +10,7 @@ toc: true
 
 - For performance reasons, **carousels must be manually initialized** using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated a control or indicator.
 
-  The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-ride="carousel"` attribute as these are initialized automatically on page load. If you're using autoplaying carousels with the data attribute, **don't explicitly initialize the same carousels with the constructor method.**
+  The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-ride="carousel"` attribute as these are initialized automatically on page load. If you're using autoplaying carousels with the data attribute, **don’t explicitly initialize the same carousels with the constructor method.**
 
 - Nested carousels are not supported. You should also be aware that carousels in general can often cause usability and accessibility challenges.
 
@@ -42,7 +42,7 @@ Here is a basic example of a carousel with three slides. Note the previous/next 
     </button>
   </div>`} />
 
-Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
+Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
 
 **You must add the `.active` class to one of the slides**, otherwise the carousel will not be visible. Also be sure to set a unique `id` on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page. Control and indicator elements must have a `data-bs-target` attribute (or `href` for links) that matches the `id` of the `.carousel` element.
 
@@ -178,7 +178,7 @@ See [WCAG 2.2 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/W
     </button>
   </div>`} />
 
-When the `ride` option is set to `true`, rather than `carousel`, the carousel won't automatically start to cycle on page load. Instead, it will only start after the first user interaction.
+When the `ride` option is set to `true`, rather than `carousel`, the carousel won’t automatically start to cycle on page load. Instead, it will only start after the first user interaction.
 
 <Example code={`<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
     <div class="carousel-inner">
@@ -358,7 +358,7 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 | --- | --- | --- | --- |
 | `interval` | number | `5000` | The amount of time to delay between automatically cycling an item. |
 | `keyboard` | boolean | `true` | Whether the carousel should react to keyboard events. |
-| `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won't pause it. On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior. |
+| `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won’t pause it. On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior. |
 | `ride` | string, boolean | `false` | If set to `true`, autoplays the carousel after the user manually cycles the first item. If set to `"carousel"`, autoplays the carousel on load. |
 | `touch` | boolean | `true` | Whether the carousel should support left/right swipe interactions on touchscreen devices. |
 | `wrap` | boolean | `true` | Whether the carousel should cycle continuously or have hard stops. |
@@ -385,9 +385,9 @@ const carousel = new bootstrap.Carousel(myCarouselElement, {
 | `cycle` | Starts cycling through the carousel items from left to right. |
 | `dispose` | Destroys an element's carousel. (Removes stored data on the DOM element) |
 | `getInstance` | Static method which allows you to get the carousel instance associated to a DOM element. You can use it like this: `bootstrap.Carousel.getInstance(element)`. |
-| `getOrCreateInstance` | Static method which returns a carousel instance associated to a DOM element, or creates a new one in case it wasn't initialized. You can use it like this: `bootstrap.Carousel.getOrCreateInstance(element)`. |
+| `getOrCreateInstance` | Static method which returns a carousel instance associated to a DOM element, or creates a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Carousel.getOrCreateInstance(element)`. |
 | `next` | Cycles to the next item. **Returns to the caller before the next item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |
-| `nextWhenVisible` | Don't cycle carousel to next when the page, the carousel, or the carousel's parent aren't visible. **Returns to the caller before the target item has been shown**. |
+| `nextWhenVisible` | Don’t cycle carousel to next when the page, the carousel, or the carousel's parent aren’t visible. **Returns to the caller before the target item has been shown**. |
 | `pause` | Stops the carousel from cycling through items. |
 | `prev` | Cycles to the previous item. **Returns to the caller before the previous item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |
 | `to` | Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (e.g., before the `slid.bs.carousel` event occurs). |

@@ -32,7 +32,7 @@ We’re building a Webpack project with Bootstrap from scratch, so there are som
    npm i --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin
    ```
 
-3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Popper since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don't plan on using those components, you can omit Popper here.
+3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Popper since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Popper here.
 
    ```sh
    npm i --save bootstrap @popperjs/core
@@ -70,7 +70,7 @@ my-project/
 └── webpack.config.js
 ```
 
-At this point, everything is in the right place, but Webpack won't work because we haven't filled in our `webpack.config.js` yet.
+At this point, everything is in the right place, but Webpack won’t work because we haven’t filled in our `webpack.config.js` yet.
 
 ## Configure Webpack
 
@@ -265,7 +265,7 @@ Depending on your setup, you may want to implement some additional security and 
 
 ### Extracting CSS
 
-The `style-loader` we configured above conveniently emits CSS into the bundle so that manually loading a CSS file in `dist/index.html` isn't necessary. This approach may not work with a strict Content Security Policy, however, and it may become a bottleneck in your application due to the large bundle size.
+The `style-loader` we configured above conveniently emits CSS into the bundle so that manually loading a CSS file in `dist/index.html` isn’t necessary. This approach may not work with a strict Content Security Policy, however, and it may become a bottleneck in your application due to the large bundle size.
 
 To separate the CSS so that we can load it directly from `dist/index.html`, use the `mini-css-extract-loader` Webpack plugin.
 

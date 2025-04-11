@@ -63,7 +63,7 @@ For example, to change the color mode of a dropdown menu, add `data-bs-theme="li
   }
   ```
 
-- We use a custom `_variables-dark.scss` to power those shared global CSS variable overrides for dark mode. This file isn't required for your own custom color modes, but it's required for our dark mode for two reasons. First, it's better to have a single place to reset global colors. Second, some Sass variables had to be overridden for background images embedded in our CSS for accordions, form components, and more.
+- We use a custom `_variables-dark.scss` to power those shared global CSS variable overrides for dark mode. This file isn’t required for your own custom color modes, but it's required for our dark mode for two reasons. First, it's better to have a single place to reset global colors. Second, some Sass variables had to be overridden for background images embedded in our CSS for accordions, form components, and more.
 
 ## Usage
 
@@ -145,7 +145,7 @@ Outputs to:
 
 While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own `data-bs-theme` selector with a custom value as the name of your color mode, then modify our Sass and CSS variables as needed. We opted to create a separate `_variables-dark.scss` stylesheet to house Bootstrap’s dark mode specific Sass variables, but that's not required for you.
 
-For example, you can create a "blue theme" with the selector `data-bs-theme="blue"`. In your custom Sass or CSS file, add the new selector and override any global or component CSS variables as needed. If you're using Sass, you can also use Sass's functions within your CSS variable overrides.
+For example, you can create a "blue theme" with the selector `data-bs-theme="blue"`. In your custom Sass or CSS file, add the new selector and override any global or component CSS variables as needed. If you're using Sass, you can also use Sass’s functions within your CSS variable overrides.
 
 <ScssDocs name="custom-color-mode" file="site/src/scss/_content.scss" />
 
