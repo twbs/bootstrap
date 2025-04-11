@@ -21,10 +21,12 @@
         }
       }
       @include expect() {
+        :root[data-bs-theme=dark] [data-bs-theme=body] .element,
         [data-bs-theme=dark] .element {
           color: var(--bs-primary-text-emphasis);
           background-color: var(--bs-primary-bg-subtle);
         }
+        :root[data-bs-theme=dark] [data-bs-theme=body],
         [data-bs-theme=dark] {
           --custom-color: #3a3ff8;
         }
