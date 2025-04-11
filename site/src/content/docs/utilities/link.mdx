@@ -30,13 +30,13 @@ You can even change the opacity level on hover.
 
 ### Underline color
 
-Change the underline's color independent of the link text color.
+Change the underline’s color independent of the link text color.
 
 <Example code={getData('theme-colors').map((themeColor) => `<p><a href="#" class="link-underline-${themeColor.name}">${themeColor.title} underline</a></p>`)} />
 
 ### Underline offset
 
-Change the underline's distance from your text. Offset is set in `em` units to automatically scale with the element's current `font-size`.
+Change the underline’s distance from your text. Offset is set in `em` units to automatically scale with the element's current `font-size`.
 
 <Example code={`<p><a href="#">Default link</a></p>
 <p><a class="link-offset-1" href="#">Offset 1 link</a></p>
@@ -45,7 +45,7 @@ Change the underline's distance from your text. Offset is set in `em` units to a
 
 ### Underline opacity
 
-Change the underline's opacity. Requires adding `.link-underline` to first set an `rgba()` color we use to then modify the alpha opacity.
+Change the underline’s opacity. Requires adding `.link-underline` to first set an `rgba()` color we use to then modify the alpha opacity.
 
 <Example code={`<p><a class="link-offset-2 link-underline link-underline-opacity-0" href="#">Underline opacity 0</a></p>
 <p><a class="link-offset-2 link-underline link-underline-opacity-10" href="#">Underline opacity 10</a></p>

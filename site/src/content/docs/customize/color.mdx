@@ -16,7 +16,7 @@ Bootstrap’s color palette has continued to expand and become more nuanced in v
 Colors ending in `-rgb` provide the `red, green, blue` values for use in `rgb()` and `rgba()` color modes. For example, `rgba(var(--bs-secondary-bg-rgb), .5)`.
 
 <Callout type="warning">
-**Heads up!** There's some potential confusion with our new secondary and tertiary colors, and our existing secondary theme color, as well as our light and dark theme colors. Expect this to be ironed out in v6.
+**Heads up!** There’s some potential confusion with our new secondary and tertiary colors, and our existing secondary theme color, as well as our light and dark theme colors. Expect this to be ironed out in v6.
 </Callout>
 
 <div class="table-responsive">
@@ -448,7 +448,7 @@ Bootstrap’s source Sass files include three maps to help you quickly and easil
 - `$theme-colors` lists all semantically named theme colors (shown below)
 - `$grays` lists all tints and shades of gray
 
-Within `scss/_variables.scss`, you'll find Bootstrap’s color variables and Sass map. Here's an example of the `$colors` Sass map:
+Within `scss/_variables.scss`, you'll find Bootstrap’s color variables and Sass map. Here’s an example of the `$colors` Sass map:
 
 <ScssDocs name="colors-map" file="scss/_variables.scss" />
 
@@ -456,7 +456,7 @@ Add, remove, or modify values within the map to update how they're used in many 
 
 ### Example
 
-Here's how you can use these in your Sass:
+Here’s how you can use these in your Sass:
 
 ```scss
 .alpha { color: $purple; }
@@ -478,7 +478,7 @@ Bootstrap doesn't include `color` and `background-color` utilities for every col
 2. Use our `map-merge-multiple()` function to quickly merge multiple Sass maps together in a new map.
 3. Merge this new combined map to extend any utility with a `{color}-{level}` class name.
 
-Here's an example that generates text color utilities (e.g., `.text-purple-500`) using the above steps.
+Here’s an example that generates text color utilities (e.g., `.text-purple-500`) using the above steps.
 
 ```scss
 @import "bootstrap/scss/functions";

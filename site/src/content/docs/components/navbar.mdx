@@ -8,7 +8,7 @@ import { getConfig } from '@libs/config'
 
 ## How it works
 
-Here's what you need to know before getting started with the navbar:
+Here’s what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` with `.navbar-expand{-sm|-md|-lg|-xl|-xxl}` for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
@@ -32,7 +32,7 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 - Add an optional `.navbar-nav-scroll` to set a `max-height` and [scroll expanded navbar content](#scrolling).
 
-Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `lg` (large) breakpoint.
+Here’s an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `lg` (large) breakpoint.
 
 <Example code={`<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -467,7 +467,7 @@ Add `.navbar-nav-scroll` to a `.navbar-nav` (or other navbar sub-component) to e
 
 Please note that this behavior comes with a potential drawback of `overflow`—when setting `overflow-y: auto` (required to scroll the content here), `overflow-x` is the equivalent of `auto`, which will crop some horizontal content.
 
-Here's an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-height: 100px;"`, with some extra margin utilities for optimum spacing.
+Here’s an example navbar using `.navbar-nav-scroll` with `style="--bs-scroll-height: 100px;"`, with some extra margin utilities for optimum spacing.
 
 <Example code={`<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">

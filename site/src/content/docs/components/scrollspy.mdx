@@ -6,7 +6,7 @@ toc: true
 
 ## How it works
 
-Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the element with the `id` referenced by the anchor's `href` is scrolled into view. Scrollspy is best used in conjunction with a Bootstrap [nav component]([[docsref:/components/navs-tabs]]) or [list group]([[docsref:/components/list-group]]), but it will also work with any anchor elements in the current page. Here's how it works.
+Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the element with the `id` referenced by the anchor's `href` is scrolled into view. Scrollspy is best used in conjunction with a Bootstrap [nav component]([[docsref:/components/navs-tabs]]) or [list group]([[docsref:/components/list-group]]), but it will also work with any anchor elements in the current page. Here’s how it works.
 
 - To start, scrollspy requires two things: a navigation, list group, or a simple set of links, plus a scrollable container. The scrollable container can be the `<body>` or a custom element with a set `height` and `overflow-y: scroll`.
 
@@ -398,7 +398,7 @@ To keep backwards compatibility, we will continue to parse a given `offset` to `
 | `refresh` | When adding or removing elements in the DOM, you'll need to call the refresh method. |
 </BsTable>
 
-Here's an example using the refresh method:
+Here’s an example using the refresh method:
 
 ```js
 const dataSpyList = document.querySelectorAll('[data-bs-spy="scroll"]')

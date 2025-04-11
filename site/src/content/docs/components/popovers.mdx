@@ -42,7 +42,7 @@ We use JavaScript similar to the snippet above to render the following live popo
 
 <Callout name="warning-data-bs-title-vs-title" type="warning" />
 
-<Example addStackblitzJs code={`<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>`} />
+<Example addStackblitzJs code={`<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here’s some amazing content. It's very engaging. Right?">Click to toggle popover</button>`} />
 
 ### Four directions
 
@@ -103,7 +103,7 @@ Use the `focus` trigger to dismiss popovers on the user's next click of an eleme
 **Dismissing on next click requires specific HTML for proper cross-browser and cross-platform behavior.** You can only use `<a>` elements, not `<button>`s, and you must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex).
 </Callout>
 
-<Example addStackblitzJs code={`<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>`} />
+<Example addStackblitzJs code={`<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Dismissible popover" data-bs-content="And here’s some amazing content. It's very engaging. Right?">Dismissible popover</a>`} />
 
 ```js
 const popover = new bootstrap.Popover('.popover-dismiss', {
