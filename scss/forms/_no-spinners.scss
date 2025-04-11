@@ -1,0 +1,12 @@
+// scss/forms/_no-spinners.scss
+
+.no-spinners {
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  appearance: textfield;
+}
