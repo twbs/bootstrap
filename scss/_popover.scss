@@ -119,6 +119,12 @@
       top: var(--#{$prefix}popover-border-width);
       border-bottom-color: var(--#{$prefix}popover-bg);
     }
+
+    // `:has` is not yet supported by our `.browserlistrc` but since it adds an extra layer of specificity,
+    // it doesn't hurt the browsers that don't support it.
+    &:has(+ .popover-header)::after {
+      --#{$prefix}popover-bg: var(--#{$prefix}popover-header-bg);
+    }
   }
 
   // This will remove the popover-header's border just below the arrow
