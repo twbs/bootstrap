@@ -119,6 +119,7 @@
   icon_color: red
   pages:
     - title: API
+    - title: Mixin
     - title: Background
     - title: Borders
     - title: Colors
