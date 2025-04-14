@@ -3,8 +3,9 @@
 @use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
-@use "../mixins/transition" as *;
+@use "../mixins/focus-ring" as *;
 @use "../mixins/gradients" as *;
+@use "../mixins/transition" as *;
 
 //
 // General form controls (plus a few specific high-level interventions)
@@ -14,6 +15,7 @@
   .form-control {
     display: block;
     width: 100%;
+    height: 2.85rem;
     padding: $input-padding-y $input-padding-x;
     font-family: $input-font-family;
     @include font-size($input-font-size);
@@ -43,14 +45,8 @@
     &:focus {
       color: $input-focus-color;
       background-color: $input-focus-bg;
-      border-color: $input-focus-border-color;
-      outline: 0;
-      @if $enable-shadows {
-        @include box-shadow($input-box-shadow, $input-focus-box-shadow);
-      } @else {
-        // Avoid using mixin so we can pass custom focus shadow properly
-        box-shadow: $input-focus-box-shadow;
-      }
+      // border-color: $input-focus-border-color;
+      @include focus-ring($offset: true);
     }
 
     &::-webkit-date-and-time-value {

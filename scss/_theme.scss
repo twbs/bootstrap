@@ -36,7 +36,7 @@ $new-theme-colors: (
     "bg-muted": light-dark(var(--#{$prefix}blue-200), var(--#{$prefix}blue-800)),
     // "bg-emphasized": light-dark(color-mix(in oklch, var(--#{$prefix}blue-200), var(--#{$prefix}blue-300)), var(--#{$prefix}blue-700)),
     "border": light-dark(var(--#{$prefix}blue-300), var(--#{$prefix}blue-600)),
-    "focus-ring": color-mix(in oklch, var(--#{$prefix}blue-500) 50%, transparent),
+    "focus-ring": color-mix(in oklch, var(--#{$prefix}blue-500) 50%, var(--#{$prefix}bg-0)),
     "contrast": var(--#{$prefix}white)
   ),
   "accent": (

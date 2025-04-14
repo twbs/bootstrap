@@ -3,8 +3,9 @@
 @use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
-@use "../mixins/transition" as *;
 @use "../mixins/color-mode" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/transition" as *;
 
 // Select
 //
@@ -36,13 +37,7 @@
 
     &:focus {
       border-color: $form-select-focus-border-color;
-      outline: 0;
-      @if $enable-shadows {
-        @include box-shadow($form-select-box-shadow, $form-select-focus-box-shadow);
-      } @else {
-        // Avoid using mixin so we can pass custom focus shadow properly
-        box-shadow: $form-select-focus-box-shadow;
-      }
+      @include focus-ring($offset: true);
     }
 
     &[multiple],
