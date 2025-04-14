@@ -21,7 +21,7 @@ const { frontmatter, headings, id } = Astro.props
 // Extract the directory/section from the ID (format: "directory/filename.mdx")
 const parentDirectory = id.includes('/') ? id.split('/')[0] : ''
 
-const bodyProps: LayoutOverridesHTMLAttributes<'body'> = { tabindex: 0 }
+const bodyProps: LayoutOverridesHTMLAttributes<'body'> = {}
 
 if (frontmatter.toc) {
   bodyProps['data-bs-spy'] = 'scroll'
