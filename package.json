@@ -202,10 +202,5 @@
     "peerDependencies": {
       "@popperjs/core": "^2.11.8"
     }
-  },
-  "dependencies": {
-    "remark": "^15.0.1",
-    "remark-html": "^16.0.1",
-    "yaml": "^2.7.0"
   }
 }
