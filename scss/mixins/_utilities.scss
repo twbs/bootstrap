@@ -1,5 +1,8 @@
 @use "sass:map";
 @use "../config" as *;
+@use "../vendor/rfs" as *;
+
+// stylelint-disable scss/dollar-variable-pattern
 
 // Utility generator
 
@@ -58,23 +61,6 @@
     // Don't prefix if value key is null (e.g. with shadow class)
     $customClassModifier: if($key, if($customClass == "" and $infix == "", "", "-") + $key, "");
 
-    @if map.get($utility, rfs) {
-      // Inside the media query
-      @if $is-rfs-media-query {
-        $val: rfs-value($value);
-
-        // Do not render anything if fluid and non fluid values are the same
-        $value: if($val == rfs-fluid-value($value), null, $val);
-      }
-      @else {
-        $value: rfs-fluid-value($value);
-      }
-    }
-
-    $is-css-var: map.get($utility, css-var);
-    $is-local-vars: map.get($utility, local-vars);
-    // $is-rtl: map.get($utility, rtl);
-
     $selector: "";
     @if $selectorType == "class" {
       // Use the fallback of the first property if no `class` key is used
@@ -96,8 +82,21 @@
     // @debug $values;
 
     #{$selector} {
-      @each $property in $properties {
-        #{$property}: $value;
+      @if map.get($utility, rfs) {
+        @if $is-rfs-media-query {
+          @each $property in $properties {
+            @include rfs($value, $property);
+          }
+        }
+        @else {
+          @each $property in $properties {
+            @include rfs($value, $property);
+          }
+        }
+      } @else {
+        @each $property in $properties {
+          #{$property}: $value;
+        }
       }
     }
 
@@ -144,5 +143,9 @@
     //   //   }
     //   }
     // }
+
+    $is-css-var: map.get($utility, css-var);
+    $is-local-vars: map.get($utility, local-vars);
+    // $is-rtl: map.get($utility, rtl);
   }
 }
