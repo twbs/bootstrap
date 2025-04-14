@@ -18,6 +18,9 @@ const site = isDev
 
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    assets: `docs/${getConfig().docs_version}/assets`
+  },
   integrations: [bootstrap()],
   markdown: {
     smartypants: false,
