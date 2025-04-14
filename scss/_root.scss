@@ -125,10 +125,10 @@
   --#{$prefix}border-radius-pill: 50rem;
   // scss-docs-end root-border-var
 
-  --#{$prefix}box-shadow: #{$box-shadow};
-  --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
-  --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
-  --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
+  --#{$prefix}box-shadow: light-dark(0 .5rem 1rem rgb(0 0 0 / 15%), 0 .5rem 1rem rgb(255 0 0 / 50%));
+  --#{$prefix}box-shadow-sm: 0 .125rem .25rem rgb(0 0 0 / 7.5%);
+  --#{$prefix}box-shadow-lg: 0 1rem 3rem rgb(0 0 0 / 17.5%);
+  --#{$prefix}box-shadow-inset: inset 0 1px 2px rgb(0 0 0 / 7.5%);
 
   // Focus styles
   // scss-docs-start root-focus-variables
