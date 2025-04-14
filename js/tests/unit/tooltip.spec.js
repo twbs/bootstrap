@@ -959,6 +959,44 @@ describe('Tooltip', () => {
         tooltip.show()
       })
     })
+
+    it('should reflect strategy option in the constructor', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl, {
+          strategy: 'fixed'
+        })
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          const tip = document.querySelector('.tooltip')
+          expect(tip).not.toBeNull()
+          expect(tip.computedStyleMap().get('position').value).toEqual('fixed')
+          resolve()
+        })
+
+        tooltip.show()
+      })
+    })
+
+    it('should reflect strategy option in data attribute', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-bs-strategy="fixed"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          const tip = document.querySelector('.tooltip')
+          expect(tip).not.toBeNull()
+          expect(tip.computedStyleMap().get('position').value).toEqual('fixed')
+          resolve()
+        })
+
+        tooltip.show()
+      })
+    })
   })
 
   describe('hide', () => {
