@@ -69,11 +69,14 @@
   }
 
   // mdo-do: add to utilities?
-  .g-col-auto {
+  .col-auto {
     grid-column: auto/auto;
   }
 
   // mdo-do: add to utilities?
+  .grid-cols-2 {
+    --#{$prefix}columns: 2;
+  }
   .grid-cols-3 {
     --#{$prefix}columns: 3;
   }
