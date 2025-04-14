@@ -22,28 +22,26 @@
 //
 // Happy Bootstrapping!
 
-@use "../../../scss/bootstrap" as *;
-
 // Load docs components
-@use "variables";
-@use "navbar";
-@use "masthead";
-@use "ads";
-@use "content";
-@use "skippy";
-@use "sidebar";
-@use "layout";
-@use "toc";
-@use "footer";
-@use "component-examples";
-@use "buttons";
-@use "callouts";
-@use "brand";
-@use "colors";
-@use "clipboard-js";
-@use "placeholder-img";
-@use "scrolling";
+@use "./variables";
+@use "./navbar";
+@use "./masthead";
+@use "./ads";
+@use "./content";
+@use "./skippy";
+@use "./sidebar";
+@use "./layout";
+@use "./toc";
+@use "./footer";
+@use "./component-examples";
+@use "./buttons";
+@use "./callouts";
+@use "./brand";
+@use "./colors";
+@use "./clipboard-js";
+@use "./placeholder-img";
+@use "./scrolling";
 
 // Load docs dependencies
-@use "syntax";
-@use "anchor";
+@use "./syntax";
+@use "./anchor";
