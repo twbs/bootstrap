@@ -28,7 +28,7 @@ const sidebar = getData('sidebar')
                 )} */}
                 {group.title}
               </strong>
-              <ul class="list-unstyled fw-normal pb-2 small">
+              <ul class="list-unstyled fw-normal pb-2">
                 {group.pages?.map((page) => {
                   const docSlug = getSlug(page.title)
                   const unversionedPageSlug = `${groupSlug}/${docSlug}`
