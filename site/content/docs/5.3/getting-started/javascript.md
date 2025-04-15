@@ -190,15 +190,16 @@ carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not 
 
 #### `dispose` method
 
-While it may seem correct to use the `dispose` method immediately after `hide()`, it will lead to incorrect results. Here's an example of the problem use:
+The hide method will complete asynchronously (assuming animations are enabled). As such, calling the `dispose` method immediately after `hide()` will lead to **incorrect** results.
+
+Here's an example of the proper usage:
 
 ```js
 const myModal = document.querySelector('#myModal')
-myModal.hide() // it is asynchronous
-
-myModal.addEventListener('shown.bs.hidden', event => {
+myModal.addEventListener('hidden.bs.modal', event => {
   myModal.dispose()
 })
+myModal.hide()
 ```
 
 ### Default settings
