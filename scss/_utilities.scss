@@ -478,55 +478,55 @@ $utilities: map-merge(
       values: $spacers
     ),
     // Border Width Utilities
-    "border": (
+    "border-width": (
       responsive: true,
       property: border-width,
       class: b,
       values: $border-widths
     ),
-    "border-top": (
+    "border-top-width": (
       responsive: true,
       property: border-top-width,
       class: bt,
       values: $border-widths
     ),
-    "border-bottom": (
+    "border-bottom-width": (
       responsive: true,
       property: border-bottom-width,
       class: bb,
       values: $border-widths
     ),
-    "border-left": (
+    "border-left-width": (
       responsive: true,
       property: border-left-width,
       class: bl,
       values: $border-widths
     ),
-    "border-right": (
+    "border-right-width": (
       responsive: true,
       property: border-right-width,
       class: br,
       values: $border-widths
     ),
-    "border-start": (
+    "border-start-width": (
       responsive: true,
       property: border-inline-start-width,
       class: bs,
       values: $border-widths
     ),
-    "border-end": (
+    "border-end-width": (
       responsive: true,
       property: border-inline-end-width,
       class: be,
       values: $border-widths
     ),
-    "border-x": (
+    "border-x-width": (
       responsive: true,
       property: border-left-width border-right-width,
       class: bx,
       values: $border-widths
     ),
-    "border-y": (
+    "border-y-width": (
       responsive: true,
       property: border-top-width border-bottom-width,
       class: by,
