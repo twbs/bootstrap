@@ -134,8 +134,35 @@ Using the alert JavaScript plugin, it's possible to dismiss any alert inline. He
 You can see this in action with a live demo:
 
 {{< example >}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert" style="--bs-alert-padding-y: 5px; --bs-alert-padding-x: 5px">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert" style="--bs-alert-padding-y: 50px; --bs-alert-padding-x: 50px">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<hr>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert" style="--bs-alert-padding-y: 5px; --bs-alert-padding-x: 5px">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.in on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields below
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert" style="--bs-alert-padding-y: 50px; --bs-alert-padding-x: 50px">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.in on some those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields below
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.in on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields belowin on some of those fields below
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {{< /example >}}
