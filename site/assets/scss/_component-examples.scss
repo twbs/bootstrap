@@ -12,6 +12,18 @@
     margin-left: 0;
     border-width: 1px;
     @include border-radius(var(--bs-border-radius));
+
+    > :first-child {
+      @include border-top-radius(calc(var(--bs-border-radius) - 1px));
+    }
+
+    > :last-child {
+      @include border-bottom-radius(calc(var(--bs-border-radius) - 1px));
+    }
+  }
+
+  > :not(:first-child) {
+    border-top: 1px solid var(--bs-border-color);
   }
 }
 
@@ -31,7 +43,10 @@
     margin-right: 0;
     margin-left: 0;
     border-width: 1px;
-    @include border-radius(var(--bs-border-radius));
+
+    &:not(:first-child) {
+      @include border-radius(var(--bs-border-radius));
+    }
   }
 
   + p {
@@ -353,7 +368,6 @@
 
   @include media-breakpoint-up(md) {
     padding: .75rem 1.25rem;
-    @include border-radius(calc(var(--bs-border-radius) - 1px));
   }
 
   @include media-breakpoint-up(lg) {
@@ -385,18 +399,6 @@
 
 .highlight-toolbar {
   background-color: var(--bd-pre-bg);
-
-  + .highlight {
-    @include border-top-radius(0);
-  }
-}
-
-.bd-file-ref {
-  .highlight-toolbar {
-    @include media-breakpoint-up(md) {
-      @include border-top-radius(calc(var(--bs-border-radius) - 1px));
-    }
-  }
 }
 
 .bd-content .bd-code-snippet {
