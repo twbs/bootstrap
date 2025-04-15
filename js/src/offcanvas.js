@@ -49,13 +49,15 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]'
 const Default = {
   backdrop: true,
   keyboard: true,
-  scroll: false
+  scroll: false,
+  focusAfterClose: true
 }
 
 const DefaultType = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
-  scroll: 'boolean'
+  scroll: 'boolean',
+  focusAfterClose: 'boolean'
 }
 
 /**
@@ -151,7 +153,9 @@ class Offcanvas extends BaseComponent {
         new ScrollBarHelper().reset()
       }
 
-      EventHandler.trigger(this._element, EVENT_HIDDEN)
+      EventHandler.trigger(this._element, EVENT_HIDDEN, {
+        focusAfterClose: this._config.focusAfterClose
+      })
     }
 
     this._queueCallback(completeCallback, this._element, true)
@@ -240,9 +244,9 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return
   }
 
-  EventHandler.one(target, EVENT_HIDDEN, () => {
+  EventHandler.one(target, EVENT_HIDDEN, event => {
     // focus on trigger when it is closed
-    if (isVisible(this)) {
+    if (event.focusAfterClose && isVisible(this)) {
       this.focus()
     }
   })
