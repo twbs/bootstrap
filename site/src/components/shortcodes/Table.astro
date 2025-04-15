@@ -1,0 +1,31 @@
+---
+import Code from '@shortcodes/Code.astro'
+import * as tableContent from '@shortcodes/TableContent.md'
+
+interface Props {
+  /**
+   * Any class(es) to be added to the `<table>` element (both in the example and code snippet).
+   */
+  class?: string
+  /**
+   * Show a simplified version in the example code snippet by replacing the table content inside `<table>` & `</table>`
+   * with `...`.
+   * @default true
+   */
+  simplified?: boolean
+}
+
+const { class: className, simplified = true } = Astro.props
+
+const tableCode = `<table${className ? ` class="${className}"` : ''}>
+${simplified ? '  ...' : await tableContent.compiledContent()}
+</table>`
+---
+
+<div class="bd-example">
+  <table class={className}>
+    <tableContent.Content />
+  </table>
+</div>
+
+<Code code={tableCode} lang="html" />
