@@ -1,12 +1,20 @@
 {
   "files": [
     {
+      "path": "./dist/css/bootstrap-debugger.css",
+      "maxSize": "0.75 kB"
+    },
+    {
+      "path": "./dist/css/bootstrap-debugger.min.css",
+      "maxSize": "0.75 kB"
+    },
+    {
       "path": "./dist/css/bootstrap-grid.css",
-      "maxSize": "6.5 kB"
+      "maxSize": "7.0 kB"
     },
     {
       "path": "./dist/css/bootstrap-grid.min.css",
-      "maxSize": "6.0 kB"
+      "maxSize": "6.25 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
