@@ -478,7 +478,7 @@ $utilities: map-merge(
       values: $spacers
     ),
     // Border Width Utilities
-    "border-width": (
+    "border-thickness": (
       responsive: true,
       property: border-width,
       class: b,
