@@ -294,6 +294,53 @@ Carousels support swiping left/right on touchscreen devices to move between slid
 </div>
 {{< /example >}}
 
+## Enable multiple items
+
+Add `data-bs-items=x` to your carousel to have multiple items in one slide.Depending on your carousel content (e.g., with caption slides), you may want to add a surrounding `<div>`.
+
+{{< callout warning >}}
+Doesn't work well with indicators and fade effect.
+{{< /callout >}}
+
+{{< example >}}
+<div id="carouselExampleMultiple" class="carousel slide" data-bs-items=2>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#aaa" text="1" >}}
+    </div>
+    <div class="carousel-item">
+      <div class="position-relative">
+        {{< placeholder width="100%" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#999" text="2" >}}
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#888" text="3" >}}
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#222" background="#777" text="4" >}}
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#111" background="#666" text="5" >}}
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#000" background="#555" text="6" >}}
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleMultiple" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleMultiple" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{{< /example >}}
+
 ## Dark variant
 
 {{< deprecated-in "5.3.0" >}}
