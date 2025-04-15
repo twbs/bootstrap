@@ -147,8 +147,8 @@ function replaceInFrontmatter(record: Record<string, unknown>, replacer: (value:
         return typeof arrayValue === 'string'
           ? replacer(arrayValue)
           : typeof arrayValue === 'object'
-          ? replaceInFrontmatter(arrayValue, replacer)
-          : arrayValue
+            ? replaceInFrontmatter(arrayValue, replacer)
+            : arrayValue
       })
     }
   }
