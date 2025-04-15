@@ -1,0 +1,105 @@
+---
+import { replacePlaceholdersInHtml } from '@libs/placeholder'
+import { Prism } from '@astrojs/prism'
+
+interface Props {
+  /**
+   * Defines if extra JS snippet should be added to StackBlitz or not.
+   * @default false
+   */
+  addStackblitzJs?: boolean
+  /**
+   * The example code.
+   * If an array is passed, elements will be joined with a new line.
+   */
+  code: string | string[]
+  /**
+   * The CSS class(es) to be added to the preview wrapping `div` element.
+   */
+  class?: string
+  /**
+   * The preview wrapping `div` element ID.
+   */
+  id?: string
+  /**
+   * Language used to display the code.
+   * @default 'html'
+   */
+  lang?: string
+  /**
+   * Defines if the markup should be visible or not.
+   * @default true
+   */
+  showMarkup?: boolean
+  /**
+   * Defines if the preview should be visible or not.
+   * @default true
+   */
+  showPreview?: boolean
+}
+
+const {
+  addStackblitzJs = false,
+  code,
+  class: className,
+  id,
+  lang = 'html',
+  showMarkup = true,
+  showPreview = true
+} = Astro.props
+
+let markup = Array.isArray(code) ? code.join('\n') : code
+markup = replacePlaceholdersInHtml(markup)
+
+const simplifiedMarkup = markup
+  .replace(
+    /<svg.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>/g,
+    (match, classes) => `<img src="..."${classes ? ` class="${classes}"` : ''} alt="...">`
+  )
+  .replace(
+    /<img.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?>/g,
+    (match, classes) => `<img src="..."${classes ? ` class="${classes}"` : ''} alt="...">`
+  )
+---
+
+<div class="bd-example-snippet bd-code-snippet">
+  {
+    showPreview && (
+      <div id={id} class:list={['bd-example m-0 border-0', className]}>
+        <Fragment set:html={markup} />
+      </div>
+    )
+  }
+
+  {
+    showMarkup && (
+      <>
+        {showPreview && (
+          <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
+            <small class="font-monospace text-body-secondary text-uppercase">{lang}</small>
+            <div class="d-flex ms-auto">
+              <button
+                type="button"
+                class="btn-edit text-nowrap"
+                title="Try it on StackBlitz"
+                data-sb-js-snippet={addStackblitzJs ? true : undefined}
+              >
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#lightning-charge-fill" />
+                </svg>
+              </button>
+              <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+                <svg class="bi" aria-hidden="true">
+                  <use xlink:href="#clipboard" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
+        <div class="highlight">
+          <Prism code={simplifiedMarkup} lang={lang} />
+        </div>
+      </>
+    )
+  }
+</div>
