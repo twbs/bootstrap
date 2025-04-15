@@ -28,11 +28,13 @@
 {{ if eq .Page.Layout "docs" -}}
 {{- /* Disable minify options for snippets.js so that the file's readable on StackBlitz */ -}}
 {{- $snippetsFile := resources.Get "js/snippets.js" | js.Build (merge $esbuildOptions (dict "minify" "false")) -}}
+{{- $colorModeFile :=  readFile "site/static/docs/5.3/assets/js/color-modes.js" -}}
 {{- $esbuildParams := dict
   "cssCdn" .Site.Params.cdn.css
   "jsBundleCdn" .Site.Params.cdn.js_bundle
   "docsVersion" .Site.Params.docs_version
   "jsSnippetFile" $snippetsFile.Content
+  "jsColorModeFile" $colorModeFile
 -}}
 {{- $esbuildOptions = merge $esbuildOptions (dict "params" $esbuildParams) -}}
 {{- $stackblitzJs := resources.Get "js/stackblitz.js" | js.Build $esbuildOptions | resources.Copy (path.Join $targetDocsJSPath "/assets/js/stackblitz.js") }}
