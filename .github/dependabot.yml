@@ -9,8 +9,6 @@ updates:
       timezone: Europe/Athens
   - package-ecosystem: npm
     directory: "/"
-    reviewers:
-      - XhmikosR
     labels:
       - dependencies
       - v5
