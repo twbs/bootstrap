@@ -477,6 +477,61 @@ $utilities: map-merge(
       class: ps,
       values: $spacers
     ),
+    // Border Width Utilities
+    "border": (
+      responsive: true,
+      property: border-width,
+      class: b,
+      values: $border-widths
+    ),
+    "border-top": (
+      responsive: true,
+      property: border-top-width,
+      class: bt,
+      values: $border-widths
+    ),
+    "border-bottom": (
+      responsive: true,
+      property: border-bottom-width,
+      class: bb,
+      values: $border-widths
+    ),
+    "border-left": (
+      responsive: true,
+      property: border-left-width,
+      class: bl,
+      values: $border-widths
+    ),
+    "border-right": (
+      responsive: true,
+      property: border-right-width,
+      class: br,
+      values: $border-widths
+    ),
+    "border-start": (
+      responsive: true,
+      property: border-inline-start-width,
+      class: bs,
+      values: $border-widths
+    ),
+    "border-end": (
+      responsive: true,
+      property: border-inline-end-width,
+      class: be,
+      values: $border-widths
+    ),
+    "border-x": (
+      responsive: true,
+      property: border-left-width border-right-width,
+      class: bx,
+      values: $border-widths
+    ),
+    "border-y": (
+      responsive: true,
+      property: border-top-width border-bottom-width,
+      class: by,
+      values: $border-widths
+    ),
     // Gap utility
     "gap": (
       responsive: true,

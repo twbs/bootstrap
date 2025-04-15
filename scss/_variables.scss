@@ -418,6 +418,24 @@ $spacers: (
 ) !default;
 // scss-docs-end spacer-variables-maps
 
+// scss-docs-start border-width-variables-maps
+// Border Widths
+//
+// Define custom border width sizes that can be used with the border utilities.
+// This map controls the width of borders that are applied via Bootstrap's
+// border-width utilities (e.g., .bt-1, .bb-2, .bs-3, etc.).
+
+// Default border-width value is 1px, but can be customized.
+$border-widths: (
+  0: 0,               // No border width
+  1: 1px,             // Thin border
+  2: 2px,             // Medium border
+  3: 3px,             // Thick border
+  4: 4px,             // Extra thick border
+  5: 5px              // Maximum border width
+) !default;
+// scss-docs-end border-width-variables-maps
+
 // Position
 //
 // Define the edge positioning anchors of the position utilities.
