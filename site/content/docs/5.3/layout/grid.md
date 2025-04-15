@@ -63,7 +63,7 @@ Bootstrap's grid system can adapt across all six default breakpoints, and any br
 
 As noted above, each of these breakpoints have their own container, unique class prefix, and modifiers. Here's how the grid changes across these breakpoints:
 
-<div class="table-responsive">
+<div class="table-responsive" tabindex="0">
   <table class="table mb-4">
     <thead>
       <tr>

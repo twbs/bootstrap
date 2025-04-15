@@ -310,7 +310,7 @@ Add a thicker border, darker between table groups—`<thead>`, `<tbody>`, and `<
 Table cells of `<thead>` are always vertical aligned to the bottom. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the top by default. Use the [vertical align]({{< docsref "/utilities/vertical-align" >}}) classes to re-align where needed.
 
 <div class="bd-example">
-  <div class="table-responsive">
+  <div class="table-responsive" tabindex="0">
     <table class="table align-middle">
       <thead>
         <tr>
@@ -345,7 +345,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
 </div>
 
 ```html
-<div class="table-responsive">
+<div class="table-responsive" tabindex="0">
   <table class="table align-middle">
     <thead>
       <tr>
@@ -670,6 +670,10 @@ You can also put the `<caption>` on the top of the table with `.caption-top`.
 
 Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl|-xxl}`.
 
+{{< callout info >}}
+For accessibility reasons, we recommend in most cases using `tabindex="0"` with a `.table-responsive` to ensure a keyboard access when the content is scrollable.
+{{< /callout >}}
+
 {{< callout warning >}}
 ##### Vertical clipping/truncation
 
@@ -681,7 +685,7 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
 Across every breakpoint, use `.table-responsive` for horizontally scrolling tables.
 
 <div class="bd-example">
-  <div class="table-responsive">
+  <div class="table-responsive" tabindex="0">
     <table class="table">
       <thead>
         <tr>
@@ -740,7 +744,7 @@ Across every breakpoint, use `.table-responsive` for horizontally scrolling tabl
 </div>
 
 ```html
-<div class="table-responsive">
+<div class="table-responsive" tabindex="0">
   <table class="table">
     ...
   </table>
@@ -757,7 +761,7 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
 {{ range $.Site.Data.breakpoints }}
 {{ if not (eq . "xs") }}
 <div class="bd-example">
-  <div class="table-responsive{{ .abbr }}">
+  <div class="table-responsive{{ .abbr }}" tabindex="0">
     <table class="table">
       <thead>
         <tr>
@@ -818,7 +822,7 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
 {{< tables.inline >}}
 {{- range $.Site.Data.breakpoints -}}
 {{- if not (eq . "xs") }}
-<div class="table-responsive{{ .abbr }}">
+<div class="table-responsive{{ .abbr }}" tabindex="0">
   <table class="table">
     ...
   </table>
