@@ -6,6 +6,7 @@
   icon_color: indigo
   pages:
     - title: Introduction
+    - title: Install
     - title: Download
     - title: Contents
     - title: Browsers & devices

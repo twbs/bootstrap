@@ -1,0 +1,122 @@
+---
+title: Install Bootstrap
+description: …
+toc: true
+---
+
+import Tab from '../../../components/Tab.astro';
+
+<Tab
+  tabs={[
+    {
+      id: "home",
+      title: "Default first",
+      active: true,
+      content: "default tab"
+    },
+    {
+      id: "profile",
+      title: "Second",
+      content: "second tab"
+    },
+    {
+      id: "messages",
+      title: "Third",
+      content: "third tab"
+    }
+  ]}
+  id="myTab"
+/>
+
+```
+// Modern fluid sizing system using clamp()
+// Provides a simpler alternative to RFS while maintaining similar functionality
+
+// Convert a px value to rem
+@function px-to-rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+// Strip unit from a value
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// Core fluid sizing mixin
+@mixin fluid-size($property, $min-size, $max-size, $min-vw: 320px, $max-vw: 1200px) {
+  $min-size-rem: if(unit($min-size) == px, px-to-rem($min-size), $min-size);
+  $max-size-rem: if(unit($max-size) == px, px-to-rem($max-size), $max-size);
+  $min-vw-rem: if(unit($min-vw) == px, px-to-rem($min-vw), $min-vw);
+  $max-vw-rem: if(unit($max-vw) == px, px-to-rem($max-vw), $max-vw);
+
+  #{$property}: clamp(
+    #{$min-size-rem},
+    #{$min-size-rem} + #{strip-unit($max-size-rem - $min-size-rem)} *
+      ((100vw - #{$min-vw-rem}) / #{strip-unit($max-vw-rem - $min-vw-rem)}),
+    #{$max-size-rem}
+  );
+}
+
+// Fluid font-size mixin - direct replacement for rfs font-size
+@mixin fluid-font-size($size) {
+  $min-size: if($size < 1.25rem, $size, 1.25rem);
+  $max-size: $size;
+
+  @include fluid-size(font-size, $min-size, $max-size);
+}
+
+// Fluid padding mixins
+@mixin fluid-padding($size) {
+  @include fluid-size(padding, $size * 0.5, $size);
+}
+
+@mixin fluid-padding-top($size) {
+  @include fluid-size(padding-top, $size * 0.5, $size);
+}
+
+@mixin fluid-padding-right($size) {
+  @include fluid-size(padding-right, $size * 0.5, $size);
+}
+
+@mixin fluid-padding-bottom($size) {
+  @include fluid-size(padding-bottom, $size * 0.5, $size);
+}
+
+@mixin fluid-padding-left($size) {
+  @include fluid-size(padding-left, $size * 0.5, $size);
+}
+
+// Fluid margin mixins
+@mixin fluid-margin($size) {
+  @include fluid-size(margin, $size * 0.5, $size);
+}
+
+@mixin fluid-margin-top($size) {
+  @include fluid-size(margin-top, $size * 0.5, $size);
+}
+
+@mixin fluid-margin-right($size) {
+  @include fluid-size(margin-right, $size * 0.5, $size);
+}
+
+@mixin fluid-margin-bottom($size) {
+  @include fluid-size(margin-bottom, $size * 0.5, $size);
+}
+
+@mixin fluid-margin-left($size) {
+  @include fluid-size(margin-left, $size * 0.5, $size);
+}
+
+// Legacy compatibility mixins - these provide a bridge from RFS to the new system
+@mixin font-size($size) {
+  @include fluid-font-size($size);
+}
+
+@mixin padding($size) {
+  @include fluid-padding($size);
+}
+
+@mixin margin($size) {
+  @include fluid-margin($size);
+}
+```
