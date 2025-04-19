@@ -152,3 +152,15 @@ Stay up-to-date on the development of Bootstrap and reach out to the community w
 - Developers should use the keyword `bootstrap` on packages that modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/search?q=keywords:bootstrap) or similar delivery mechanisms for maximum discoverability.
 
 You can also follow [@getbootstrap on X](https://x.com/[[config:x]]) for the latest gossip and awesome music videos.
+
+
+###  Troubleshooting: Integrity Attribute with Local Files
+
+When using Bootstrap **locally** (from your own files instead of a CDN), avoid using the `integrity` attribute in `<script>` or `<link>` tags.
+
+The `integrity` attribute is intended for CDN use only, and can prevent locally hosted files from loading due to hash mismatches.
+
+Recommended:
+<script src="js/bootstrap.bundle.min.js"></script>
+ Avoid:
+<script src="js/bootstrap.bundle.min.js" integrity="..." crossorigin="anonymous"></script>
