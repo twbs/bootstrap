@@ -1,0 +1,131 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import type { Layout } from '@libs/layout'
+import BootstrapWhiteFillIcon from '@components/icons/BootstrapWhiteFillIcon.astro'
+import GitHubIcon from '@components/icons/GitHubIcon.astro'
+import HamburgerIcon from '@components/icons/HamburgerIcon.astro'
+import LinkItem from '@components/header/LinkItem.astro'
+import OpenCollectiveIcon from '@components/icons/OpenCollectiveIcon.astro'
+import XIcon from '@components/icons/XIcon.astro'
+import Versions from '@components/header/Versions.astro'
+import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
+
+interface Props {
+  addedIn?: CollectionEntry<'docs'>['data']['added']
+  layout: Layout
+  title: string
+}
+
+const { addedIn, layout, title } = Astro.props
+---
+
+<header class="navbar navbar-expand-lg bd-navbar sticky-top">
+  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    {
+      layout === 'docs' && (
+        <div class="bd-navbar-toggle">
+          <button
+            class="navbar-toggler p-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#bdSidebar"
+            aria-controls="bdSidebar"
+            aria-label="Toggle docs navigation"
+          >
+            <HamburgerIcon class="bi" height={24} width={24} />
+            <span class="d-none fs-6 pe-1">Browse</span>
+          </button>
+        </div>
+      )
+    }
+    {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
+
+    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
+      <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
+    </a>
+
+    <div class="d-flex">
+      <div class="bd-search" id="docsearch" data-bd-docs-version={getConfig().docs_version}></div>
+
+      <button
+        class="navbar-toggler d-flex d-lg-none order-3 p-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#bdNavbar"
+        aria-controls="bdNavbar"
+        aria-label="Toggle navigation"
+      >
+        <svg class="bi" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
+      </button>
+    </div>
+
+    <div
+      class="offcanvas-lg offcanvas-end flex-grow-1"
+      tabindex="-1"
+      id="bdNavbar"
+      aria-labelledby="bdNavbarOffcanvasLabel"
+    >
+      <div class="offcanvas-header px-4 pb-0">
+        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          data-bs-target="#bdNavbar"></button>
+      </div>
+
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        <hr class="d-lg-none text-white-50" />
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+          <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/introduction/')} track>
+            Docs
+          </LinkItem>
+          <LinkItem active={title === 'Examples'} href={getVersionedDocsPath('examples/')} track>Examples</LinkItem>
+          <LinkItem href={getConfig().icons} target="_blank" rel="noopener" track>Icons</LinkItem>
+          <LinkItem href={getConfig().themes} target="_blank" rel="noopener" track>Themes</LinkItem>
+          <LinkItem href={getConfig().blog} target="_blank" rel="noopener" track>Blog</LinkItem>
+        </ul>
+
+        <hr class="d-lg-none text-white-50" />
+
+        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+          <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().github_org} target="_blank" rel="noopener">
+            <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
+            <small class="d-lg-none ms-2">GitHub</small>
+          </LinkItem>
+          <LinkItem
+            class="nav-link py-2 px-0 px-lg-2"
+            href={`https://x.com/${getConfig().x}`}
+            target="_blank"
+            rel="noopener"
+          >
+            <XIcon class="navbar-nav-svg" height={16} width={16} />
+            <small class="d-lg-none ms-2">X</small>
+          </LinkItem>
+          <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().opencollective} target="_blank" rel="noopener">
+            <OpenCollectiveIcon class="navbar-nav-svg" height={16} width={16} />
+            <small class="d-lg-none ms-2">Open Collective</small>
+          </LinkItem>
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+            <hr class="d-lg-none my-2 text-white-50" />
+          </li>
+
+          <Versions layout={layout} addedIn={addedIn} />
+
+          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+            <hr class="d-lg-none my-2 text-white-50" />
+          </li>
+
+          <li class="nav-item dropdown">
+            <ThemeToggler layout={layout} />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
