@@ -37,7 +37,7 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     // Astro's expecting trailing slashes on HTML tags such as <br />
     'Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.',
     // Allow `switch` attribute.
-    'Attribute “switch” not allowed on element "input" at this point.'
+    'Attribute "switch" not allowed on element "input" at this point.'
   ].join('|')
 
   const args = [
