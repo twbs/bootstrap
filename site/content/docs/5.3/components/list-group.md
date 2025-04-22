@@ -38,7 +38,7 @@ Add `.active` to a `.list-group-item` to indicate the current active selection.
 
 Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, disabled, and active states by adding `.list-group-item-action`. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like `<li>`s or `<div>`s) don't provide a click or tap affordance.
 
-For links, add `.disabled` to a `.list-group-item` to make it _appear_ disabled and `aria-disabled="true"` to inform the assistive technology that the element is disabled and to fully disable their click events you will need custom JavaScript .
+Make `.list-group-item-action` instances _appear_ disabled by adding `.disabled`. Add `aria-disabled="true"` to inform assistive technologies that the element is disabled. You may require additional JavaScript to fully disable links and buttons here.
 
 Be sure to **not use the standard `.btn` classes here**.
 
