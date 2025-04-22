@@ -115,6 +115,19 @@ A switch has the markup of a custom checkbox but uses the `.form-switch` class t
     <label class="form-check-label" for="switchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
   </div>`} />
 
+### Native switches
+
+Progressively enhance your switches for mobile Safari (iOS 17.4+) by adding a `switch` attribute to your input to enable haptic feedback when toggling switches, just like native iOS switches. There are no style changes attached to using this attribute in Bootstrap as all our switches use custom styles.
+
+<Example code={`<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch>
+  <label class="form-check-label" for="checkNativeSwitch">
+    Native switch haptics
+  </label>
+</div>`} />
+
+Be sure to read more about [the switch attribute on the WebKit blog](https://webkit.org/blog/15054/an-html-switch-control/). Safari 17.4+ on macOS and iOS both have native-style switches in HTML while other browsers simply fall back to the standard checkbox appearance. Applying the attribute to a non-Bootstrap checkbox in more recent versions of Safari will render a native switch.
+
 ## Default (stacked)
 
 By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with `.form-check`.
