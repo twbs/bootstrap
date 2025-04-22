@@ -31,6 +31,8 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     // NOT RECOMMENDED, but it's still valid - we explain in the docs that it's not ideal,
     // and offer more robust alternatives, but also need to show a less-than-ideal example
     'An “aria-disabled” attribute whose value is “true” should not be specified on an “a” element that has an “href” attribute.'
+    // Allow `switch` attribute.
+    'Attribute “switch” not allowed on element "input" at this point.'
   ].join('|')
 
   const args = [
