@@ -418,6 +418,9 @@ class Dropdown extends BaseComponent {
       (SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
         SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
         SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode))
+    if (!getToggleButton) {
+        return
+    }
 
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
