@@ -1,29 +1,29 @@
 // Make the div behave like a button
-.btn-group,
-.btn-group-vertical {
+.button-group,
+.button-group-vertical {
   position: relative;
   display: inline-flex;
-  vertical-align: middle; // match .btn alignment given font-size hack above
+  vertical-align: middle; // match .button alignment given font-size hack above
 
-  > .btn {
+  > .button {
     position: relative;
     flex: 1 1 auto;
   }
 
   // Bring the hover, focused, and "active" buttons to the front to overlay
   // the borders properly
-  > .btn-check:checked + .btn,
-  > .btn-check:focus + .btn,
-  > .btn:hover,
-  > .btn:focus,
-  > .btn:active,
-  > .btn.active {
+  > .button-check:checked + .button,
+  > .button-check:focus + .button,
+  > .button:hover,
+  > .button:focus,
+  > .button:active,
+  > .button.active {
     z-index: 1;
   }
 }
 
 // Optional: Group multiple button groups together for a toolbar
-.btn-toolbar {
+.button-group-toolbar {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -33,29 +33,29 @@
   }
 }
 
-.btn-group {
+.button-group {
   @include border-radius($btn-border-radius);
 
   // Prevent double borders when buttons are next to each other
-  > :not(.btn-check:first-child) + .btn,
-  > .btn-group:not(:first-child) {
+  > :not(.button-check:first-child) + .button,
+  > .button-group:not(:first-child) {
     margin-left: calc(-1 * #{$btn-border-width}); // stylelint-disable-line function-disallowed-list
   }
 
   // Reset rounded corners
-  > .btn:not(:last-child):not(.dropdown-toggle),
-  > .btn.dropdown-toggle-split:first-child,
-  > .btn-group:not(:last-child) > .btn {
+  > .button:not(:last-child):not(.dropdown-toggle),
+  > .button.dropdown-toggle-split:first-child,
+  > .button-group:not(:last-child) > .button {
     @include border-end-radius(0);
   }
 
   // The left radius should be 0 if the button is:
   // - the "third or more" child
-  // - the second child and the previous element isn't `.btn-check` (making it the first child visually)
-  // - part of a btn-group which isn't the first child
-  > .btn:nth-child(n + 3),
-  > :not(.btn-check) + .btn,
-  > .btn-group:not(:first-child) > .btn {
+  // - the second child and the previous element isn't `.button-check` (making it the first child visually)
+  // - part of a button-group which isn't the first child
+  > .button:nth-child(n + 3),
+  > :not(.button-check) + .button,
+  > .button-group:not(:first-child) > .button {
     @include border-start-radius(0);
   }
 }
@@ -64,15 +64,15 @@
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-sm > .btn { @extend .btn-sm; }
-.btn-group-lg > .btn { @extend .btn-lg; }
+.button-group-small > .button { @extend .button-small; }
+.button-group-large > .button { @extend .button-large; }
 
 
 //
 // Split button dropdowns
 //
 
-.dropdown-toggle-split {
+.button-group-dropdown-toggle {
   padding-right: $btn-padding-x * .75;
   padding-left: $btn-padding-x * .75;
 
@@ -87,12 +87,12 @@
   }
 }
 
-.btn-sm + .dropdown-toggle-split {
+.button-small + .button-group-dropdown-toggle {
   padding-right: $btn-padding-x-sm * .75;
   padding-left: $btn-padding-x-sm * .75;
 }
 
-.btn-lg + .dropdown-toggle-split {
+.button-large + .button-group-dropdown-toggle {
   padding-right: $btn-padding-x-lg * .75;
   padding-left: $btn-padding-x-lg * .75;
 }
@@ -100,11 +100,11 @@
 
 // The clickable button for toggling the menu
 // Set the same inset shadow as the :active state
-.btn-group.show .dropdown-toggle {
+.button-group.show .button-group-dropdown-toggle {
   @include box-shadow($btn-active-box-shadow);
 
-  // Show no shadow for `.btn-link` since it has no other button styles.
-  &.btn-link {
+  // Show no shadow for `.button-link` since it has no other button styles.
+  &.button-link {
     @include box-shadow(none);
   }
 }
@@ -114,34 +114,34 @@
 // Vertical button groups
 //
 
-.btn-group-vertical {
+.button-group-vertical {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 
-  > .btn,
-  > .btn-group {
+  > .button,
+  > .button-group {
     width: 100%;
   }
 
-  > .btn:not(:first-child),
-  > .btn-group:not(:first-child) {
+  > .button:not(:first-child),
+  > .button-group:not(:first-child) {
     margin-top: calc(-1 * #{$btn-border-width}); // stylelint-disable-line function-disallowed-list
   }
 
   // Reset rounded corners
-  > .btn:not(:last-child):not(.dropdown-toggle),
-  > .btn-group:not(:last-child) > .btn {
+  > .button:not(:last-child):not(.dropdown-toggle),
+  > .button-group:not(:last-child) > .button {
     @include border-bottom-radius(0);
   }
 
   // The top radius should be 0 if the button is:
   // - the "third or more" child
-  // - the second child and the previous element isn't `.btn-check` (making it the first child visually)
-  // - part of a btn-group which isn't the first child
-  > .btn:nth-child(n + 3),
-  > :not(.btn-check) + .btn,
-  > .btn-group:not(:first-child) > .btn {
+  // - the second child and the previous element isn't `.button-check` (making it the first child visually)
+  // - part of a button-group which isn't the first child
+  > .button:nth-child(n + 3),
+  > :not(.button-check) + .button,
+  > .button-group:not(:first-child) > .button {
     @include border-top-radius(0);
   }
 }
