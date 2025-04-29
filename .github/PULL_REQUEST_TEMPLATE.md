@@ -2,7 +2,7 @@
 
 <!-- Describe your changes in detail -->
 
-### Motivation & Context
+### Motivation & context
 
 <!-- Why is this change required? What problem does it solve? -->
 
