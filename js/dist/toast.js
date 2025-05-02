@@ -119,7 +119,6 @@
     }
 
     // Private
-
     _maybeScheduleHide() {
       if (!this._config.autohide) {
         return;
