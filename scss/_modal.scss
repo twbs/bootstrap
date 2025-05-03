@@ -132,7 +132,11 @@
 
   .btn-close {
     padding: calc(var(--#{$prefix}modal-header-padding-y) * .5) calc(var(--#{$prefix}modal-header-padding-x) * .5);
-    margin: calc(-.5 * var(--#{$prefix}modal-header-padding-y)) calc(-.5 * var(--#{$prefix}modal-header-padding-x)) calc(-.5 * var(--#{$prefix}modal-header-padding-y)) auto;
+    // Split properties to avoid invalid calc() function if value is 0
+    margin-top: calc(-.5 * var(--#{$prefix}modal-header-padding-y));
+    margin-right: calc(-.5 * var(--#{$prefix}modal-header-padding-x));
+    margin-bottom: calc(-.5 * var(--#{$prefix}modal-header-padding-y));
+    margin-left: auto;
   }
 }
 

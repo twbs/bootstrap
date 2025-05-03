@@ -1,0 +1,156 @@
+---
+import fs from 'node:fs'
+import path from 'node:path'
+import { Prism } from '@astrojs/prism'
+
+interface Props {
+  /**
+   * The CSS class(es) to be added to the `pre` HTML element when rendering code blocks in Markdown.
+   * Note that this prop is not used when the component is invoked directly.
+   */
+  class?: string
+  /**
+   * The code to highlight.
+   * If an array is passed, elements will be joined with a new line.
+   */
+  code?: string | string[]
+  /**
+   * The CSS class(es) to be added to the `div` wrapper HTML element.
+   */
+  containerClass?: string
+  /**
+   * The language to use for highlighting.
+   * @see https://prismjs.com/#supported-languages
+   */
+  lang?: string
+  /**
+   * If the `filePath` prop is defined, this prop can be used to specify a regex containing a match group to extract
+   * only a part of the file.
+   */
+  fileMatch?: string
+  /**
+   * A path to the file containing the code to highlight relative to the root of the repository.
+   * This takes precedence over the `code` prop.
+   */
+  filePath?: string
+}
+
+const { class: className, code, containerClass, fileMatch, filePath, lang } = Astro.props
+
+let codeToDisplay = filePath
+  ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
+  : Array.isArray(code)
+  ? code.join('\n')
+  : code
+
+if (filePath && fileMatch && codeToDisplay) {
+  const match = codeToDisplay.match(new RegExp(fileMatch))
+
+  if (!match || !match[0]) {
+    throw new Error(`The file at ${filePath} does not contains a match for the regex '${fileMatch}'.`)
+  }
+
+  codeToDisplay = match[0]
+}
+---
+
+<script>
+  import ClipboardJS from 'clipboard'
+
+  const btnTitle = 'Copy to clipboard'
+  const btnEdit = 'Edit on StackBlitz'
+
+  function snippetButtonTooltip(selector: string, title: string) {
+    document.querySelectorAll(selector).forEach((btn) => {
+      bootstrap.Tooltip.getOrCreateInstance(btn, { title })
+    })
+  }
+
+  snippetButtonTooltip('.btn-clipboard', btnTitle)
+  snippetButtonTooltip('.btn-edit', btnEdit)
+
+  const clipboard = new ClipboardJS('.btn-clipboard', {
+    target: (trigger) => trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!,
+    text: (trigger) => {
+      // Trim text to workaround a Firefox issue where the structure of the DOM (uncontrolled) is relevant for the
+      // copied text.
+      // https://github.com/zenorocha/clipboard.js/issues/439#issuecomment-312344621
+      return trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!.textContent?.trim()!
+    }
+  })
+
+  clipboard.on('success', (event) => {
+    const iconFirstChild = event.trigger.querySelector('.bi')?.firstElementChild
+    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+    const namespace = 'http://www.w3.org/1999/xlink'
+    const originalXhref = iconFirstChild?.getAttributeNS(namespace, 'href')
+    const isCheckIconVisible = originalXhref === '#check2'
+
+    if (isCheckIconVisible) {
+      return
+    }
+
+    tooltipBtn?.setContent({ '.tooltip-inner': 'Copied!' })
+
+    event.trigger.addEventListener(
+      'hidden.bs.tooltip',
+      () => {
+        tooltipBtn?.setContent({ '.tooltip-inner': btnTitle })
+      },
+      { once: true }
+    )
+
+    event.clearSelection()
+
+    if (originalXhref) {
+      iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref.replace('clipboard', 'check2'))
+    }
+
+    setTimeout(() => {
+      if (originalXhref) {
+        iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref)
+      }
+    }, 2000)
+  })
+
+  clipboard.on('error', (event) => {
+    const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
+    const fallbackMsg = `Press ${modifierKey}C to copy`
+    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+
+    tooltipBtn?.setContent({ '.tooltip-inner': fallbackMsg })
+
+    event.trigger.addEventListener(
+      'hidden.bs.tooltip',
+      () => {
+        tooltipBtn?.setContent({ '.tooltip-inner': btnTitle })
+      },
+      { once: true }
+    )
+  })
+</script>
+
+<div class:list={['bd-code-snippet', containerClass]}>
+  {
+    Astro.slots.has('pre') ? (
+      <slot name="pre" />
+    ) : (
+      <div class="bd-clipboard">
+        <button type="button" class="btn-clipboard">
+          <svg class="bi" role="img" aria-label="Copy">
+            <use xlink:href="#clipboard" />
+          </svg>
+        </button>
+      </div>
+    )
+  }
+  <div class="highlight">
+    {
+      codeToDisplay && lang ? (
+        <Prism code={codeToDisplay} lang={lang} />
+      ) : (
+        /* prettier-ignore */ <pre class={className}><slot /></pre>
+      )
+    }
+  </div>
+</div>
