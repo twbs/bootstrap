@@ -20,9 +20,6 @@ const socialImageSize = await getStaticImageSize(`/docs/[version]/assets/${thumb
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content=`@${getConfig().x}` />
 <meta name="twitter:creator" content=`@${getConfig().x}` />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={socialImageUrl} />
 
 <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
 <meta property="og:title" content={title} />

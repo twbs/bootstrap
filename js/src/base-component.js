@@ -45,6 +45,7 @@ class BaseComponent extends Config {
     }
   }
 
+  // Private
   _queueCallback(callback, element, isAnimated = true) {
     executeAfterTransition(callback, element, isAnimated)
   }
