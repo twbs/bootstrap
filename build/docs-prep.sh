@@ -7,6 +7,17 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+# Default branch suffix
+BRANCH_SUFFIX="release"
+
+# Check if a custom version parameter was provided
+if [ $# -eq 1 ]; then
+  BRANCH_SUFFIX="$1"
+fi
+
+# Branch name to create
+NEW_BRANCH="gh-pages-${BRANCH_SUFFIX}"
+
 # Function to print colored messages
 print_success() {
   echo -e "${GREEN}✓ $1${NC}"
@@ -66,8 +77,8 @@ fi
 print_success "Switched to gh-pages branch"
 
 # Step 4: Create a new branch for the update
-print_info "Creating new branch gh-pages-jd-docs-astro..."
-execute "git checkout -b gh-pages-jd-docs-astro"
+print_info "Creating new branch ${NEW_BRANCH}..."
+execute "git checkout -b ${NEW_BRANCH}"
 
 # Step 5: Move root files
 print_info "Moving root files from temporary location..."
@@ -147,4 +158,4 @@ print_info "You can now review changes, commit them, and push to the repository.
 print_info "Next steps:"
 print_info "  1. git add ."
 print_info "  2. git commit -m \"Update documentation\""
-print_info "  3. git push origin gh-pages-jd-docs-astro"
+print_info "  3. git push origin ${NEW_BRANCH}"
