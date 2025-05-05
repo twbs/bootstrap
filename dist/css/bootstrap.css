@@ -7156,6 +7156,10 @@ textarea.form-control-lg {
 .visually-hidden-focusable:not(:focus):not(:focus-within):not(caption) {
   position: absolute !important;
 }
+.visually-hidden *,
+.visually-hidden-focusable:not(:focus):not(:focus-within) * {
+  overflow: hidden !important;
+}
 
 .stretched-link::after {
   position: absolute;
