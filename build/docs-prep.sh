@@ -49,15 +49,15 @@ execute() {
 
 # Check if /tmp/_site directory exists from a previous run
 if [ -d "/tmp/_site" ]; then
-  print_warning "Found existing /tmp/_site directory. Removing it..."
+  print_warning "Found existing /tmp/_site directory. Removing it…"
   rm -rf /tmp/_site
 fi
 
 # Main process
-print_info "Starting documentation deployment process..."
+print_info "Starting documentation deployment process…"
 
 # Step 1: Build documentation
-print_info "Building documentation with npm run docs..."
+print_info "Building documentation with npm run docs…"
 npm run docs
 if [ $? -ne 0 ]; then
   print_error "Documentation build failed!"
@@ -65,11 +65,11 @@ fi
 print_success "Documentation built successfully"
 
 # Step 2: Move _site to /tmp/
-print_info "Moving _site to temporary location..."
+print_info "Moving _site to temporary location…"
 execute "mv _site /tmp/"
 
 # Step 3: Switch to gh-pages branch
-print_info "Checking out gh-pages branch..."
+print_info "Checking out gh-pages branch…"
 git checkout gh-pages
 if [ $? -ne 0 ]; then
   print_error "Failed to checkout gh-pages branch. Make sure it exists."
@@ -77,11 +77,11 @@ fi
 print_success "Switched to gh-pages branch"
 
 # Step 4: Create a new branch for the update
-print_info "Creating new branch ${NEW_BRANCH}..."
+print_info "Creating new branch ${NEW_BRANCH}…"
 execute "git checkout -b ${NEW_BRANCH}"
 
 # Step 5: Move root files
-print_info "Moving root files from temporary location..."
+print_info "Moving root files from temporary location…"
 ROOT_FILES=("404.html" "CNAME" "apple-touch-icon.png" "favicon.ico" "index.html" "robots.txt" "sitemap-0.xml" "sitemap-index.xml" "sw.js")
 for file in "${ROOT_FILES[@]}"; do
   if [ -f "/tmp/_site/$file" ]; then
@@ -92,7 +92,7 @@ for file in "${ROOT_FILES[@]}"; do
 done
 
 # Step 6: Move directories with cleanup
-print_info "Moving directories from temporary location..."
+print_info "Moving directories from temporary location…"
 DIRS=("about" "components" "docsref" "examples" "getting-started" "migration")
 for dir in "${DIRS[@]}"; do
   if [ -d "/tmp/_site/$dir" ]; then
@@ -106,7 +106,7 @@ for dir in "${DIRS[@]}"; do
 done
 
 # Step 7: Handle special doc directories
-print_info "Handling special documentation directories..."
+print_info "Handling special documentation directories…"
 SPECIAL_DOCS=("docs/getting-started" "docs/versions")
 for dir in "${SPECIAL_DOCS[@]}"; do
   if [ -d "/tmp/_site/$dir" ]; then
@@ -147,15 +147,23 @@ if [ -d "/tmp/_site" ]; then
     print_warning "There are still some files or directories in /tmp/_site that weren't moved."
     print_warning "You may want to inspect /tmp/_site to see if anything important was missed."
   else
-    print_info "Cleaning up temporary directory..."
+    print_info "Cleaning up temporary directory…"
     rm -rf /tmp/_site
     print_success "Temporary directory cleaned up"
   fi
 fi
 
-print_success "Documentation deployment process completed!"
-print_info "You can now review changes, commit them, and push to the repository."
+# Step 10: Remove empty site directory if it exists
+if [ -d "site" ]; then
+  print_info "Removing empty site directory…"
+  execute "rm -rf site"
+fi
+
+print_success "Docs prep complete!"
+print_info "Review changes before committing and pushing."
 print_info "Next steps:"
-print_info "  1. git add ."
-print_info "  2. git commit -m \"Update documentation\""
-print_info "  3. git push origin ${NEW_BRANCH}"
+print_info "  1. Run a local server to review changes"
+print_info "  2. Check browser and web inspector for any errors"
+print_info "  3. git add ."
+print_info "  4. git commit -m \"Update documentation\""
+print_info "  5. git push origin ${NEW_BRANCH}"
