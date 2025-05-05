@@ -68,7 +68,7 @@
       color: var(--bs-emphasis-color);
     }
 
-    strong {
+    &:not(.bd-callout) > strong { // Keep callout correct color when used within tables
       color: var(--bs-emphasis-color);
     }
 
