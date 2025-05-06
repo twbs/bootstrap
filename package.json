@@ -170,7 +170,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "rollup": "^4.38.0",
+    "rollup": "^4.40.2",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.3.0",
     "sass": "1.78.0",
@@ -181,7 +181,7 @@
     "terser": "^5.39.0",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
-    "zod": "^3.24.3"
+    "zod": "^3.24.4"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
