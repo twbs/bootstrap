@@ -76,6 +76,18 @@ if [ $? -ne 0 ]; then
 fi
 print_success "Switched to gh-pages branch"
 
+git reset --hard origin/gh-pages
+if [ $? -ne 0 ]; then
+  print_error "Failed to reset to origin/gh-pages. Check your git configuration."
+fi
+print_success "Reset to origin/gh-pages"
+
+git pull origin gh-pages
+if [ $? -ne 0 ]; then
+  print_error "Failed to pull from origin/gh-pages. Check your network connection and git configuration."
+fi
+print_success "Pulled latest changes from origin/gh-pages"
+
 # Step 4: Create a new branch for the update
 print_info "Creating new branch ${NEW_BRANCH}…"
 execute "git checkout -b ${NEW_BRANCH}"
