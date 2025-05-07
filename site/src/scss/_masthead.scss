@@ -53,9 +53,14 @@
     background-color: transparent;
   }
 
-  #carbonads { // stylelint-disable-line selector-max-id
-    margin-inline: auto;
+  .ad-container {
+    min-height: 194px;
+
+    #carbonads { // stylelint-disable-line selector-max-id
+      margin-inline: auto;
+    }
   }
+
 
   @include media-breakpoint-up(md) {
     .lead {
