@@ -54,7 +54,7 @@
   }
 
   .ad-container {
-    min-height: 194px;
+    min-height: $bd-ad-container-height;
 
     #carbonads { // stylelint-disable-line selector-max-id
       margin-inline: auto;
