@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.3.5",
+  "version": "5.3.6",
   "config": {
     "version_short": "5.3"
   },
@@ -113,9 +113,9 @@
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/prism": "^3.2.0",
     "@astrojs/sitemap": "^3.3.1",
-    "@babel/cli": "^7.27.0",
-    "@babel/core": "^7.26.10",
-    "@babel/preset-env": "^7.26.9",
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
     "@docsearch/js": "^3.9.0",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.0.4",
@@ -127,7 +127,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/mime": "^3.0.1",
     "@types/prismjs": "^1.26.0",
-    "astro": "^5.7.10",
+    "astro": "^5.7.11",
     "astro-auto-import": "^0.4.4",
     "autoprefixer": "^10.4.21",
     "bundlewatch": "^0.4.1",
@@ -139,7 +139,7 @@
     "eslint-plugin-html": "^8.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-markdown": "^5.1.0",
-    "eslint-plugin-unicorn": "^55.0.0",
+    "eslint-plugin-unicorn": "^56.0.1",
     "find-unused-sass-variables": "^6.1.0",
     "github-slugger": "^2.0.0",
     "globby": "^14.1.0",
@@ -162,7 +162,7 @@
     "lockfile-lint": "^4.14.1",
     "mime": "^4.0.7",
     "nodemon": "^3.1.10",
-    "npm-run-all2": "^7.0.2",
+    "npm-run-all2": "^8.0.1",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.5.3",
@@ -170,7 +170,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "rollup": "^4.38.0",
+    "rollup": "^4.40.2",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.3.0",
     "sass": "1.78.0",
@@ -181,7 +181,7 @@
     "terser": "^5.39.0",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
-    "zod": "^3.24.3"
+    "zod": "^3.24.4"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",

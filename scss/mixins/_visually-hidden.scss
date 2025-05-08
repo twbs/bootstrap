@@ -19,6 +19,11 @@
   &:not(caption) {
     position: absolute !important;
   }
+
+  // Fix to prevent overflowing children to become focusable
+  * {
+    overflow: hidden !important;
+  }
 }
 
 // Use to only display content when it's focused, or one of its child elements is focused
