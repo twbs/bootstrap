@@ -45,6 +45,10 @@
 
 .bd-intro {
   grid-area: intro;
+
+  .ad-container {
+    min-height: $bd-ad-container-height;
+  }
 }
 
 .bd-toc {
