@@ -158,6 +158,74 @@ describe('Offcanvas', () => {
       })
     })
 
+    it('should hide if backdrop is static and esc key is pressed on document', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
+
+        const keydownEscEvent = createEvent('keydown')
+        keydownEscEvent.key = 'Escape'
+
+        const spyHide = spyOn(offCanvas, 'hide')
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          document.dispatchEvent(keydownEscEvent)
+          expect(spyHide).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
+
+    it('should not hide if backdrop is static and esc key is pressed on document but keyboard = false', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static', keyboard: false })
+
+        const keydownEscEvent = createEvent('keydown')
+        keydownEscEvent.key = 'Escape'
+
+        const spyHide = spyOn(offCanvas, 'hide')
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          expect(offCanvas._config.keyboard).toBeFalse()
+
+          document.dispatchEvent(keydownEscEvent)
+          expect(spyHide).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
+
+    it('should not hide if backdrop is static but key other than esc is pressed on document', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
+
+        const keydownEvent = createEvent('keydown')
+        keydownEvent.key = 'Tab'
+
+        const spyHide = spyOn(offCanvas, 'hide')
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          document.dispatchEvent(keydownEvent)
+          expect(spyHide).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
+
     it('should call `hide` on resize, if element\'s position is not fixed any more', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div class="offcanvas-lg"></div>'
