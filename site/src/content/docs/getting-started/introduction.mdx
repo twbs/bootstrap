@@ -154,13 +154,12 @@ Stay up-to-date on the development of Bootstrap and reach out to the community w
 You can also follow [@getbootstrap on X](https://x.com/[[config:x]]) for the latest gossip and awesome music videos.
 
 
-###  Troubleshooting: Integrity Attribute with Local Files
+> **Note:** If you're using Bootstrap from local files, the `integrity` attribute may cause files not to load due to hash mismatches. This is because the integrity hash is meant for CDN-hosted files and won’t match local copies unless generated manually.
 
-When using Bootstrap **locally** (from your own files instead of a CDN), avoid using the `integrity` attribute in `<script>` or `<link>` tags.
+You have two options:
 
-The `integrity` attribute is intended for CDN use only, and can prevent locally hosted files from loading due to hash mismatches.
+- **Remove the `integrity` attribute** — this is only safe if your local files are fully trusted.
+- **Generate a matching hash** using this command:
 
-Recommended:
-<script src="js/bootstrap.bundle.min.js"></script>
- Avoid:
-<script src="js/bootstrap.bundle.min.js" integrity="..." crossorigin="anonymous"></script>
+  ```bash
+  openssl dgst -sha384 -binary path/to/file.js | openssl base64 -A
