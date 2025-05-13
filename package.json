@@ -177,7 +177,7 @@
     "shelljs": "^0.10.0",
     "stylelint": "^16.19.1",
     "stylelint-config-twbs-bootstrap": "^16.0.0",
-    "terser": "^5.39.0",
+    "terser": "^5.39.1",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
     "zod": "^3.24.4"
