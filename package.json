@@ -138,7 +138,7 @@
     "eslint-plugin-html": "^8.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-markdown": "^5.1.0",
-    "eslint-plugin-unicorn": "56.0.1",
+    "eslint-plugin-unicorn": "59.0.1",
     "find-unused-sass-variables": "^6.1.0",
     "github-slugger": "^2.0.0",
     "globby": "^14.1.0",
@@ -177,7 +177,7 @@
     "shelljs": "^0.10.0",
     "stylelint": "^16.19.1",
     "stylelint-config-twbs-bootstrap": "^16.0.0",
-    "terser": "^5.39.0",
+    "terser": "^5.39.1",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
     "zod": "^3.24.4"
