@@ -794,7 +794,9 @@ $input-btn-line-height:       $line-height-base !default;
 
 $input-btn-focus-width:         $focus-ring-width !default;
 $input-btn-focus-color-opacity: $focus-ring-opacity !default;
-$input-btn-focus-color:         $focus-ring-color !default;
+// fusv-disable
+$input-btn-focus-color:         $focus-ring-color !default; // Deprecated in v5.4.0
+// fusv-enable
 $input-btn-focus-blur:          $focus-ring-blur !default;
 $input-btn-focus-box-shadow:    $focus-ring-box-shadow !default;
 
@@ -1024,8 +1026,10 @@ $form-select-border-radius:       $input-border-radius !default;
 $form-select-box-shadow:          var(--#{$prefix}box-shadow-inset) !default;
 
 $form-select-focus-border-color:  $input-focus-border-color !default;
-$form-select-focus-width:         $input-focus-width !default;
-$form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focus-color !default;
+// fusv-disable
+$form-select-focus-width:         $input-focus-width !default; // Deprecated in v5.4.0
+// fusv-enable
+$form-select-focus-box-shadow:    $input-focus-box-shadow !default;
 
 $form-select-padding-y-sm:        $input-padding-y-sm !default;
 $form-select-padding-x-sm:        $input-padding-x-sm !default;
