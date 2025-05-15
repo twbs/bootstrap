@@ -1,0 +1,23 @@
+---
+import { getConfig } from '@libs/config'
+
+interface Props {
+  path: string
+}
+
+const { path } = Astro.props
+
+const url = new URL(path, Astro.site)
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{getConfig().title}</title>
+    <link rel="canonical" href={url} />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${url}`} />
+  </head>
+</html>

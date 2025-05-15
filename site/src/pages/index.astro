@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro'
+import GetStarted from '@components/home/GetStarted.astro'
+import Customize from '@components/home/Customize.astro'
+import CSSVariables from '@components/home/CSSVariables.astro'
+import ComponentUtilities from '@components/home/ComponentUtilities.astro'
+import MastHead from '@components/home/MastHead.astro'
+import Plugins from '@components/home/Plugins.astro'
+import Icons from '@components/home/Icons.astro'
+import Themes from '@components/home/Themes.astro'
+---
+
+<BaseLayout>
+  <MastHead />
+  <div class="container-xxl bd-gutter masthead-followup">
+    <GetStarted />
+    <Customize />
+    <CSSVariables />
+    <ComponentUtilities />
+    <Plugins />
+    <Icons />
+    <Themes />
+  </div>
+</BaseLayout>

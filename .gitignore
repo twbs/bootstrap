@@ -1,8 +1,5 @@
 # Ignore docs files
 /_site/
-# Hugo files
-/resources/
-/.hugo_build.lock
 
 # Numerous always-ignore extensions
 *.diff
@@ -205,3 +202,11 @@ dist
 !.vscode/*.code-snippets
 # Local History for Visual Studio Code
 .history/
+=======
+
+# Site
+/site/dist
+/site/node_modules
+/site/.astro
+/site/public
+>>>>>>> main

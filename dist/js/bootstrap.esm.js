@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap v5.3.3 (https://getbootstrap.com/)
-  * Copyright 2011-2024 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v5.3.6 (https://getbootstrap.com/)
+  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 import * as Popper from '@popperjs/core';
@@ -201,7 +201,7 @@ const noop = () => {};
  * @param {HTMLElement} element
  * @return void
  *
- * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+ * @see https://www.harrytheo.com/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
  */
 const reflow = element => {
   element.offsetHeight; // eslint-disable-line no-unused-expressions
@@ -246,7 +246,7 @@ const defineJQueryPlugin = plugin => {
   });
 };
 const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
-  return typeof possibleCallback === 'function' ? possibleCallback(...args) : defaultValue;
+  return typeof possibleCallback === 'function' ? possibleCallback.call(...args) : defaultValue;
 };
 const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
   if (!waitForTransition) {
@@ -568,7 +568,7 @@ const Manipulator = {
     const bsKeys = Object.keys(element.dataset).filter(key => key.startsWith('bs') && !key.startsWith('bsConfig'));
     for (const key of bsKeys) {
       let pureKey = key.replace(/^bs/, '');
-      pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
+      pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1);
       attributes[pureKey] = normalizeData(element.dataset[key]);
     }
     return attributes;
@@ -643,7 +643,7 @@ class Config {
  * Constants
  */
 
-const VERSION = '5.3.3';
+const VERSION = '5.3.6';
 
 /**
  * Class definition
@@ -669,6 +669,8 @@ class BaseComponent extends Config {
       this[propertyName] = null;
     }
   }
+
+  // Private
   _queueCallback(callback, element, isAnimated = true) {
     executeAfterTransition(callback, element, isAnimated);
   }
@@ -1600,11 +1602,11 @@ class Collapse extends BaseComponent {
     this._element.style[dimension] = '';
     this._queueCallback(complete, this._element, true);
   }
+
+  // Private
   _isShown(element = this._element) {
     return element.classList.contains(CLASS_NAME_SHOW$7);
   }
-
-  // Private
   _configAfterMerge(config) {
     config.toggle = Boolean(config.toggle); // Coerce string values
     config.parent = getElement(config.parent);
@@ -1847,6 +1849,9 @@ class Dropdown extends BaseComponent {
     this._element.setAttribute('aria-expanded', 'false');
     Manipulator.removeDataAttribute(this._menu, 'popper');
     EventHandler.trigger(this._element, EVENT_HIDDEN$5, relatedTarget);
+
+    // Explicitly return focus to the trigger element
+    this._element.focus();
   }
   _getConfig(config) {
     config = super._getConfig(config);
@@ -1858,7 +1863,7 @@ class Dropdown extends BaseComponent {
   }
   _createPopper() {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)');
+      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)');
     }
     let referenceElement = this._element;
     if (this._config.reference === 'parent') {
@@ -1937,7 +1942,7 @@ class Dropdown extends BaseComponent {
     }
     return {
       ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [defaultBsPopperConfig])
+      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
     };
   }
   _selectMenuItem({
@@ -3124,7 +3129,7 @@ class TemplateFactory extends Config {
     return this._config.sanitize ? sanitizeHtml(arg, this._config.allowList, this._config.sanitizeFn) : arg;
   }
   _resolvePossibleFunction(arg) {
-    return execute(arg, [this]);
+    return execute(arg, [undefined, this]);
   }
   _putElementInTemplate(element, templateElement) {
     if (this._config.html) {
@@ -3223,7 +3228,7 @@ const DefaultType$3 = {
 class Tooltip extends BaseComponent {
   constructor(element, config) {
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
+      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)');
     }
     super(element, config);
 
@@ -3269,7 +3274,6 @@ class Tooltip extends BaseComponent {
     if (!this._isEnabled) {
       return;
     }
-    this._activeTrigger.click = !this._activeTrigger.click;
     if (this._isShown()) {
       this._leave();
       return;
@@ -3457,7 +3461,7 @@ class Tooltip extends BaseComponent {
     return offset;
   }
   _resolvePossibleFunction(arg) {
-    return execute(arg, [this._element]);
+    return execute(arg, [this._element, this._element]);
   }
   _getPopperConfig(attachment) {
     const defaultBsPopperConfig = {
@@ -3495,7 +3499,7 @@ class Tooltip extends BaseComponent {
     };
     return {
       ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [defaultBsPopperConfig])
+      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
     };
   }
   _setListeners() {
@@ -4369,7 +4373,6 @@ class Toast extends BaseComponent {
   }
 
   // Private
-
   _maybeScheduleHide() {
     if (!this._config.autohide) {
       return;

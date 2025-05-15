@@ -1,7 +1,0 @@
-{{- $id := .Anchor | safeURL -}}
-{{- $text := .Text | safeHTML -}}
-<h{{ .Level }} id="{{ $id }}">{{ $text }}
-{{- if and (ge .Level .Page.Site.Params.anchors.min) (le .Level .Page.Site.Params.anchors.max) }}{{" " -}}
-<a class="anchor-link" href="#{{ $id }}" aria-label="Link to this section: {{ $text }}"></a>
-{{- end -}}
-</h{{ .Level }}>
