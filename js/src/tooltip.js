@@ -227,6 +227,11 @@ class Tooltip extends BaseComponent {
     }
 
     const complete = () => {
+      // component disposed
+      if (!this._element) {
+        return
+      }
+
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOWN))
 
       if (this._isHovered === false) {
@@ -266,6 +271,11 @@ class Tooltip extends BaseComponent {
     this._isHovered = null // it is a trick to support manual triggering
 
     const complete = () => {
+      // component disposed
+      if (!this._element) {
+        return
+      }
+
       if (this._isWithActiveTrigger()) {
         return
       }
