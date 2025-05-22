@@ -227,7 +227,7 @@ Every Bootstrap plugin exposes the following methods and static properties.
 Our tooltip and popover components are able to render arbitrary HTML to the page if configured to do so.
 To prevent cross-site scripting (XSS) attacks, these components use our built-in content sanitizer to sanitize any options which accept HTML before they are rendered to the page.
 
-The tags and attributes allowed by default are as follows:
+The tags and attributes allowed by default are as follows. Any tags or attributes not explicitly allowed will be removed during sanitization:
 
 <JsDocs name="allow-list" file="js/src/util/sanitizer.js" removeIndentation={false} />
 
