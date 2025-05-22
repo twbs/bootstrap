@@ -231,6 +231,10 @@ The tags and attributes allowed by default are as follows. Any tags or attribute
 
 <JsDocs name="allow-list" file="js/src/util/sanitizer.js" removeIndentation={false} />
 
+<Callout type="warning">
+**Exercise caution when using these advanced options.** Refer to [OWASP’s Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information. Vulnerabilities caused solely by disabling or modifying content sanitization are not considered within scope for Bootstrap’s security model.
+</Callout>
+
 You can add new values to this default `allowList`:
 
 ```js
@@ -258,10 +262,6 @@ const tooltip = new bootstrap.Tooltip(yourTooltipEl, {
   }
 })
 ```
-
-<Callout type="warning">
-**Exercise caution when using these advanced options.** Refer to [OWASP’s Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information. Vulnerabilities caused solely by disabling or modifying content sanitization are not considered within scope for Bootstrap’s security model.
-</Callout>
 
 ## Optionally using jQuery
 
