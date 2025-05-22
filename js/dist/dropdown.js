@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap dropdown.js v5.3.5 (https://getbootstrap.com/)
+  * Bootstrap dropdown.js v5.3.6 (https://getbootstrap.com/)
   * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -195,6 +195,9 @@
       this._element.setAttribute('aria-expanded', 'false');
       Manipulator.removeDataAttribute(this._menu, 'popper');
       EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
+
+      // Explicitly return focus to the trigger element
+      this._element.focus();
     }
     _getConfig(config) {
       config = super._getConfig(config);
