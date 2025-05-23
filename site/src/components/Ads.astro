@@ -9,15 +9,3 @@
     id="_carbonads_js"
   ></script>
 </div>
-
-<script is:inline>
-  function hideAdContainerIfEmpty() {
-    const adContainer = document.querySelector('.ad-container');
-    const carbonAds = document.querySelector('#carbonads');
-    if (adContainer && !carbonAds) {
-      adContainer.style.minHeight = '0';
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', hideAdContainerIfEmpty);
-</script>
