@@ -58,13 +58,13 @@ function getExamplesAssetsRecursively(source: string, assets: string[] = []) {
 }
 
 function sanitizeAssetPath(assetPath: string) {
-  const matches = assetPath.match(/([^\/]+\/[^\/]+\.\w+)$/)
+  const matches = assetPath.match(/([^\/\\]+[\/\\][^\/\\]+\.\w+)$/)
 
   if (!matches || !matches[1]) {
     throw new Error(`Failed to get example asset path from path: '${assetPath}'.`)
   }
 
-  return matches[1]
+  return matches[1].replaceAll('\\', '/')
 }
 
 function isAliasedAstroInstance(page: AstroInstance): page is AliasedAstroInstance {
