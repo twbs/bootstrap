@@ -12,20 +12,27 @@
 // Document
 //
 // Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+//
+// Set box-sizing to inherit for all elements so that they inherit the value from their parent element.
+// This allows more flexibility and consistency, ensuring that child elements follow the same box-sizing rule as their parent.
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
-
 // Root
+//
+// Set box-sizing to border-box for the root element. This will ensure consistency throughout the document
+// entire page uses border-box by default, unless overridden by a parent element.
 //
 // Ability to the value of the root font sizes, affecting the value of `rem`.
 // null by default, thus nothing is generated.
 
 :root {
+  box-sizing: border-box;
+
   @if $font-size-root != null {
     @include font-size(var(--#{$prefix}root-font-size));
   }
