@@ -224,13 +224,18 @@ Every Bootstrap plugin exposes the following methods and static properties.
 
 ## Sanitizer
 
-Tooltips and Popovers use our built-in sanitizer to sanitize options which accept HTML.
+Our tooltip and popover components are able to render arbitrary HTML to the page if configured to do so.
+To prevent cross-site scripting (XSS) attacks, these components use our built-in content sanitizer to sanitize any options which accept HTML before they are rendered to the page. Content sanitization is enabled by default.
 
-The default `allowList` value is the following:
+The tags and attributes allowed by default are as follows. Any tags or attributes not explicitly allowed will be removed during sanitization:
 
 <JsDocs name="allow-list" file="js/src/util/sanitizer.js" removeIndentation={false} />
 
-If you want to add new values to this default `allowList` you can do the following:
+<Callout type="warning">
+**Exercise caution when using these advanced options.** Refer to [OWASP’s Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information. Vulnerabilities caused solely by disabling or modifying content sanitization are not considered within scope for Bootstrap’s security model.
+</Callout>
+
+You can add new values to this default `allowList`:
 
 ```js
 const myDefaultAllowList = bootstrap.Tooltip.Default.allowList
@@ -247,7 +252,7 @@ const myCustomRegex = /^data-my-app-[\w-]+/
 myDefaultAllowList['*'].push(myCustomRegex)
 ```
 
-If you want to bypass our sanitizer because you prefer to use a dedicated library, for example [DOMPurify](https://www.npmjs.com/package/dompurify), you should do the following:
+You can also replace our sanitizer with a dedicated library, for example [DOMPurify](https://www.npmjs.com/package/dompurify):
 
 ```js
 const yourTooltipEl = document.querySelector('#yourTooltip')
