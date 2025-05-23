@@ -61,7 +61,6 @@
     }
   }
 
-
   @include media-breakpoint-up(md) {
     .lead {
       @include font-size(1.5rem);
