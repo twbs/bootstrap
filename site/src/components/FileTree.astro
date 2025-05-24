@@ -1,0 +1,137 @@
+---
+import { processFileTree } from './rehype-file-tree';
+
+const fileTreeHtml = await Astro.slots.render('default');
+const html = processFileTree(fileTreeHtml, 'Directory');
+---
+
+<starlight-file-tree set:html={html} class="not-content" data-pagefind-ignore />
+
+<style>
+  starlight-file-tree {
+    --x-space: 1.5rem;
+    --y-space: 0.125rem;
+    --y-pad: 0;
+
+    display: block;
+    border: 1px solid hsl(224, 10%, 23%) /* var(--sl-color-gray-5)*/;
+    padding: 1rem;
+    background-color: hsl(224, 14%, 16%) ; /* var(--sl-color-gray-6); */
+    font-size: 0.8125rem /*var(--sl-text-xs)*/;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace /*var(--__sl-font-mono)*/;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  starlight-file-tree :global(.directory > details) {
+    border: 0;
+    padding: 0;
+    padding-inline-start: var(--x-space);
+    background: transparent;
+  }
+
+  starlight-file-tree :global(.directory > details > summary) {
+    margin-inline-start: calc(-1 * var(--x-space));
+    border: 0;
+    padding: var(--y-pad) 0.625rem;
+    font-weight: normal;
+    color: #fff /* var(--sl-color-white) */;
+    max-width: 100%;
+  }
+
+  starlight-file-tree :global(.directory > details > summary::marker),
+  starlight-file-tree :global(.directory > details > summary::-webkit-details-marker) {
+    color: hsl(224, 6%, 56%) /* var(--sl-color-gray-3) */;
+  }
+
+  starlight-file-tree :global(.directory > details > summary:hover),
+  starlight-file-tree :global(.directory > details > summary:hover .tree-icon) {
+    cursor: pointer;
+    color: hsl(224, 100%, 85%) /* var(--sl-color-text-accent) */;
+    fill: currentColor;
+  }
+
+  starlight-file-tree :global(.directory > details > summary:hover ~ ul) {
+    border-color: hsl(224, 7%, 36%) /* var(--sl-color-gray-4)*/;
+  }
+
+  starlight-file-tree :global(.directory > details > summary:hover .highlighted .tree-icon) {
+    color: hsl(224, 54%, 20%) /* var(--sl-color-text-invert) */;
+    fill: currentColor;
+  }
+
+  starlight-file-tree :global(ul) {
+    margin-inline-start: 0.5rem;
+    border-inline-start: 1px solid hsl(224, 10%, 23%) /* var(--sl-color-gray-5)*/;
+    padding: 0;
+    padding-inline-start: 0.125rem;
+    list-style: none;
+  }
+
+  starlight-file-tree > :global(ul) {
+    margin: 0;
+    border: 0;
+    padding: 0;
+  }
+
+  starlight-file-tree :global(li) {
+    margin: var(--y-space) 0;
+    padding: var(--y-pad) 0;
+  }
+
+  starlight-file-tree :global(.file) {
+    margin-inline-start: calc(var(--x-space) - 0.125rem);
+    color: #fff /* var(--sl-color-white) */;
+  }
+
+  starlight-file-tree :global(.tree-entry) {
+    display: inline-flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: calc(100% - 1rem);
+  }
+
+  @media (min-width: 30em) {
+    starlight-file-tree :global(.tree-entry) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  starlight-file-tree :global(.tree-entry > :first-child) {
+    flex-shrink: 0;
+  }
+
+  starlight-file-tree :global(.empty) {
+    color: hsl(224, 6%, 56%) /* var(--sl-color-gray-3) */;
+    padding-inline-start: 0.375rem;
+  }
+
+  starlight-file-tree :global(.comment) {
+    color: hsl(224, 6%, 56%) /* var(--sl-color-gray-3) */;
+    padding-inline-start: 1.625rem;
+    max-width: 24rem;
+    min-width: 12rem;
+  }
+
+  starlight-file-tree :global(.highlighted) {
+    display: inline-block;
+    border-radius: 0.25rem;
+    /* padding: 0.5rem; */
+    padding-inline-end: 0.5rem;
+    color: hsl(224, 54%, 20%) /* var(--sl-color-text-invert) */;
+    background-color: hsl(224, 100%, 85%) /* var(--sl-color-text-accent) */;
+  }
+
+  starlight-file-tree :global(svg) {
+    display: inline;
+    fill: hsl(224, 6%, 56%) /* var(--sl-color-gray-3) */;
+    vertical-align: middle;
+    margin-inline: 0.25rem 0.375rem;
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  starlight-file-tree :global(.highlighted svg.tree-icon) {
+    fill: currentColor;
+  }
+</style>
