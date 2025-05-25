@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { getConfig } from './config'
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath } from 'node:url'
 
 // The docs directory path relative to the root of the project.
 export const docsDirectory = getConfig().docsDir
@@ -33,7 +33,7 @@ export function validateVersionedDocsPaths(distUrl: URL) {
 
   for (const docsPath of generatedVersionedDocsPaths) {
     const sanitizedDocsPath = sanitizeVersionedDocsPathForValidation(docsPath)
-    const absoluteDocsPath = fileURLToPath(new URL(path.join( './docs', docs_version, sanitizedDocsPath), distUrl));
+    const absoluteDocsPath = fileURLToPath(new URL(path.join('./docs', docs_version, sanitizedDocsPath), distUrl))
 
     const docsPathExists = fs.existsSync(absoluteDocsPath)
 
