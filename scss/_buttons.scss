@@ -29,7 +29,7 @@
   line-height: var(--#{$prefix}btn-line-height);
   color: var(--#{$prefix}btn-color);
   text-align: center;
-  text-decoration: if($link-decoration == none, null, none);
+  text-decoration: none;
   white-space: $btn-white-space;
   vertical-align: middle;
   cursor: if($enable-button-pointers, pointer, null);
@@ -42,7 +42,7 @@
 
   &:hover {
     color: var(--#{$prefix}btn-hover-color);
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    text-decoration: none;
     background-color: var(--#{$prefix}btn-hover-bg);
     border-color: var(--#{$prefix}btn-hover-border-color);
   }
@@ -181,14 +181,14 @@
   --#{$prefix}btn-box-shadow: 0 0 0 #000; // Can't use `none` as keyword negates all values when used with multiple shadows
   --#{$prefix}btn-focus-shadow-rgb: #{$btn-link-focus-shadow-rgb};
 
-  text-decoration: $link-decoration;
+  text-decoration: var(--#{$prefix}link-decoration);
   @if $enable-gradients {
     background-image: none;
   }
 
   &:hover,
   &:focus-visible {
-    text-decoration: $link-hover-decoration;
+    text-decoration: var(--#{$prefix}link-hover-decoration);
   }
 
   &:focus-visible {
