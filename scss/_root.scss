@@ -60,13 +60,13 @@
   }
 
   @each $key, $value in $theme-bgs {
-    // $key: if($key == 0, "", "-" + $key);
-    --#{$prefix}bg-#{$key}: #{$value};
+    $key: if($key == null, "", "-" + $key);
+    --#{$prefix}bg#{$key}: #{$value};
   }
 
   @each $key, $value in $theme-fgs {
-    // $key: if($key == 0, "", "-" + $key);
-    --#{$prefix}fg-#{$key}: #{$value};
+    $key: if($key == null, "", "-" + $key);
+    --#{$prefix}fg#{$key}: #{$value};
   }
 
   @each $key, $value in $theme-borders {

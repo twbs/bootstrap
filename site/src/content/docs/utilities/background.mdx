@@ -16,6 +16,9 @@ Set the `background-color` of an element.
   - We generate an attribute utility for classes that include `.bg-`, which looks like `[class*="bg-"]`, and set `background-color: var(--bs-bg)`.
   - Then, our specific color utilities set the `--bs-bg` CSS variable to the color value.
 - Background utilities don't set `color`, so you may need to use `.text-` or `.text-on-*` [color utilities]([[docsref:/utilities/colors]]).
+- Lastly, most background color utilities are responsive to color mode changes. This excludes inherit and transapent as there's no need, plus white and black as these exist for ease of common translucent colors.
+
+Here are the available background color utilities:
 
 <Example code={[
   ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} text-on-${themeColor.name}">.bg-${themeColor.name}</div>
@@ -75,6 +78,13 @@ As mentioned above, this works by combining the power of multiple utilities and 
 }
 ```
 
+## Contrasting color
+
+The `.color-on-{background}` utility is used to set theme-provided contrast color for a particular theme background-color. Contrast color utilities also respond to their respective opacity utilities.
+
+<Example code={`<div class="p-2 bg-success color-on-success">.color-on-success</div>
+<div class="p-2 bg-success color-on-success color-50">.color-on-success.color-50</div>`} />
+
 ## Background gradient
 
 By adding a `.bg-gradient` class, a linear gradient is added as background image to the backgrounds. This gradient starts with a semi-transparent white which fades out to the bottom.
@@ -83,48 +93,11 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 
 {getData('theme-colors').map((themeColor) => {
   return (
-    <div class={`p-3 mb-2 bg-${themeColor.name} bg-gradient${themeColor.contrast_color ? (' text-' + themeColor.contrast_color) : ' text-white'}`}>.bg-{themeColor.name}.bg-gradient</div>
+    <div class={`p-3 mb-2 bg-${themeColor.name} bg-gradient color-on-${themeColor.name}`}>.bg-{themeColor.name}.bg-gradient</div>
   )
 })}
-<div class="p-3 mb-2 bg-black bg-gradient text-white">.bg-black.bg-gradient</div>
+<div class="p-3 mb-2 bg-black bg-gradient color-white">.bg-black.bg-gradient</div>
 
-<<<<<<< HEAD
-## Opacity
-
-<AddedIn version="5.1.0" />
-
-As of v5.1.0, `background-color` utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
-
-### How it works
-
-Consider our default `.bg-success` utility.
-
-```css
-.bg-success {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
-}
-```
-
-We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-bg-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.bg-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.bg-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
-
-### Example
-
-To change that opacity, override `--bs-bg-opacity` via custom styles or inline styles.
-
-<Example code={`<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2" style="--bs-bg-opacity: .5;">This is 50% opacity success background</div>`} />
-
-Or, choose from any of the `.bg-opacity` utilities:
-
-<Example code={`<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2 text-white bg-opacity-75">This is 75% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-50">This is 50% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-25">This is 25% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-10">This is 10% opacity success background</div>`} />
-
-=======
->>>>>>> c719573e0 (More docs stuff and wip edits)
 ## CSS
 
 In addition to the following Sass functionality, consider reading about our included [CSS custom properties]([[docsref:/customize/css-variables]]) (aka CSS variables) for colors and more.

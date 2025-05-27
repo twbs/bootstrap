@@ -632,53 +632,39 @@ $utilities: map.merge(
     ),
     // scss-docs-end utils-text
     // scss-docs-start utils-color
-    "color": (
+    "color-attr": (
+      selector: "attr-includes",
+      class: "color-",
       property: color,
-      class: text,
-      local-vars: (
-        "text-opacity": 1
-      ),
-      // values: map.merge(
-      //   theme-color-values("text"),
-      //   $theme-fgs
-      // ),
-      values: map.merge(
-        // $utilities-text-colors,
-        theme-color-values("text"),
-        (
-          "muted": var(--#{$prefix}secondary-color), // deprecated
-          "black-50": rgba($black, .5), // deprecated
-          "white-50": rgba($white, .5), // deprecated
-          "body-secondary": var(--#{$prefix}secondary-color),
-          "body-tertiary": var(--#{$prefix}tertiary-color),
-          "body-emphasis": var(--#{$prefix}emphasis-color),
-          "reset": inherit,
-        )
+      values: var(--#{$prefix}color),
+    ),
+    "color": (
+      property: --#{$prefix}color,
+      class: color,
+      values: map.merge(theme-color-values("text"), $theme-fgs),
+    ),
+    "color-opacity": (
+      class: color,
+      property: color,
+      values: (
+        10: color-mix(in oklch, var(--#{$prefix}color) 10%, transparent),
+        20: color-mix(in oklch, var(--#{$prefix}color) 20%, transparent),
+        30: color-mix(in oklch, var(--#{$prefix}color) 30%, transparent),
+        40: color-mix(in oklch, var(--#{$prefix}color) 40%, transparent),
+        50: color-mix(in oklch, var(--#{$prefix}color) 50%, transparent),
+        60: color-mix(in oklch, var(--#{$prefix}color) 60%, transparent),
+        70: color-mix(in oklch, var(--#{$prefix}color) 70%, transparent),
+        80: color-mix(in oklch, var(--#{$prefix}color) 80%, transparent),
+        90: color-mix(in oklch, var(--#{$prefix}color) 90%, transparent),
+        100: var(--#{$prefix}color),
       )
     ),
+
     "contrast-color": (
-      property: color,
-      class: text-on,
+      property: --#{$prefix}color,
+      class: color-on,
       values: theme-color-values("contrast"),
     ),
-    // scss-docs-end utils-color
-    "text-opacity": (
-      // css-var: true,
-      property: --#{$prefix}text-opacity,
-      class: text-opacity,
-      values: (
-        25: .25,
-        50: .5,
-        75: .75,
-        100: 1
-      )
-    ),
-    // "text-color": (
-    //   property: color,
-    //   class: text,
-    //   values: theme-color-values("text"),
-    //   // values: $utilities-text-emphasis-colors
-    // ),
     // scss-docs-end utils-color
     // scss-docs-start utils-links
     "link-opacity": (
@@ -742,10 +728,7 @@ $utilities: map.merge(
     "bg-color": (
       property: --#{$prefix}bg,
       class: bg,
-      values: map.merge(
-        theme-color-values("bg"),
-        $theme-bgs
-      ),
+      values: map.merge(theme-color-values("bg"), $theme-bgs),
     ),
     "bg-color-subtle": (
       property: --#{$prefix}bg,

@@ -13,67 +13,72 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 - Colors are generated from the `$new-theme-colors` Sass map with a `theme-color-values()` function that looks up semantic colors based on a particular key from the Bootstrap theme config.
 - Additional colors are generated from the separate `$theme-texts` Sass map.
 - Text utilities are generated in a two-step process to allow for dynamic alpha transparency changes:
-  - We generate an attribute utility for classes that include `.text-`, which looks like `[class*="text-"]`, and set `color: var(--bs-text)`.
-  - Then, our specific color utilities set the `--bs-text` CSS variable to the color value.
+  - We generate an attribute utility for classes that include `.color-`, which looks like `[class*="color-"]`, and set `color: var(--bs-color)`.
+  - Then, our specific color utilities set the `--bs-color` CSS variable to the color value.
 - Text utilities don't set `background-color`, so you may need to use `.bg-` [background utilities]([[docsref:/utilities/background]]) for proper contrast.
+- Lastly, most color utilities are responsive to color mode changes. This excludes inherit as there's no need, plus white and black as these exist for ease of common translucent colors.
+
+Here are the available color utilities:
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<div class="mb-2 text-${themeColor.name}${themeColor.contrast_color ? ` bg-${themeColor.contrast_color}` : ``}">.text-${themeColor.name}</div>`),
-  `<div class="mb-2 text-fg">.text-fg</div>
-<div class="mb-2 text-fg-1">.text-fg-1</div>
-<div class="mb-2 text-fg-2">.text-fg-2</div>
-<div class="mb-2 text-fg-3">.text-fg-3</div>
+  ...getData('theme-colors').map((themeColor) => `<div class="mb-2 color-${themeColor.name}${themeColor.contrast_color ? ` bg-${themeColor.contrast_color}` : ``}">.color-${themeColor.name}</div>`),
+  `<div class="mb-2 color">.color</div>
+<div class="mb-2 color-1">.color-1</div>
+<div class="mb-2 color-2">.color-2</div>
+<div class="mb-2 color-3">.color-3</div>
 
-<div class="mb-2 text-black bg-white">.text-black</div>
-<div class="mb-2 text-white bg-black">.text-white</div>`
+<div class="mb-2 color-black bg-white">.color-black</div>
+<div class="mb-2 color-white bg-black">.color-white</div>`
 ]} />
 
 Behind the scenes, the utilities come together like this:
 
 ```css
-[class*="text-"] {
+[class*="color-"] {
   color: var(--bs-text);
 }
 
-.text-primary {
+.color-primary {
   --bs-text: var(--bs-primary);
 }
 ```
 
 <Callout name="warning-color-assistive-technologies" />
 
-## Opacity
+## Color opacity
 
-<AddedIn version="5.1.0" />
+<BreakingChange />
 
-As of v5.1.0, text color utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
+**Color opacity utilities have changed in v6** to use `.color-{number}` instead of `.text-opacity-{number}`. These new utilities are built with CSS-native `color-mix()` functions that mix the `.color-{color}`'s CSS variable with `transparent`. This allows for real-time color opacity changes without compilation.
 
-### How it works
+Note that changing the alpha-transparency or opacity of a color may require you to also update the text color to ensure proper contrast.
 
-Consider our default `.text-primary` utility.
+<Example code={`<div class="p-2 color-success">.color-success</div>
+<div class="p-2 color-success color-90">.color-90</div>
+<div class="p-2 color-success color-80">.color-80</div>
+<div class="p-2 color-success color-70">.color-70</div>
+<div class="p-2 color-success color-60">.color-60</div>
+<div class="p-2 color-success color-50">.color-50</div>
+<div class="p-2 color-success color-40">.color-40</div>
+<div class="p-2 color-success color-30">.color-30</div>
+<div class="p-2 color-success color-20">.color-20</div>
+<div class="p-2 color-success color-10">.color-10</div>`} />
+
+As mentioned above, this works by combining the power of multiple utilities and CSS `color-mix()`. Here's how the compiled CSS looks:
 
 ```css
-.text-primary {
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+[class*="color-"] {
+  color: var(--bs-color);
+}
+
+.color-success {
+  --bs-color: var(--bs-success);
+}
+
+.color-10 {
+  color: color-mix(in srgb, var(--bs-color) 10%, transparent);
 }
 ```
-
-We use an RGB version of our `--bs-primary` (with the value of `13, 110, 253`) CSS variable and attached a second CSS variable, `--bs-text-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.text-primary` now, your computed `color` value is `rgba(13, 110, 253, 1)`. The local CSS variable inside each `.text-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
-
-### Example
-
-To change that opacity, override `--bs-text-opacity` via custom styles or inline styles.
-
-<Example code={`<div class="text-primary">This is default primary text</div>
-<div class="text-primary" style="--bs-text-opacity: .5;">This is 50% opacity primary text</div>`} />
-
-Or, choose from any of the `.text-opacity` utilities:
-
-<Example code={`<div class="text-primary">This is default primary text</div>
-<div class="text-primary text-opacity-75">This is 75% opacity primary text</div>
-<div class="text-primary text-opacity-50">This is 50% opacity primary text</div>
-<div class="text-primary text-opacity-25">This is 25% opacity primary text</div>`} />
 
 ## Specificity
 
