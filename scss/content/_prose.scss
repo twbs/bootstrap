@@ -27,6 +27,11 @@
       margin-bottom: calc(var(--#{$prefix}content-gap) / 4);
     }
 
+    li ul,
+    li ol {
+      margin-top: calc(var(--#{$prefix}content-gap) / 4);
+    }
+
     hr {
       margin: calc(var(--#{$prefix}content-gap) * 1.5) 0;
       border: 0;
