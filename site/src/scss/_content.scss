@@ -35,6 +35,11 @@
       // stylelint-enable selector-max-type, selector-max-compound-selectors
     }
 
+    li ul,
+    li ol {
+      margin-top: .25rem;
+    }
+
     // Override Bootstrap defaults
     > .table,
     > .table-responsive .table {
