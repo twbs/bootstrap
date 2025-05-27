@@ -15,7 +15,7 @@ $utilities: map.merge(
       class: align,
       values: baseline top middle bottom text-bottom text-top
     ),
-    // // scss-docs-end utils-vertical-align
+    // scss-docs-end utils-vertical-align
     // scss-docs-start utils-aspect-ratio
     "aspect-ratio": (
       property: aspect-ratio,
@@ -659,7 +659,6 @@ $utilities: map.merge(
         100: var(--#{$prefix}color),
       )
     ),
-
     "contrast-color": (
       property: --#{$prefix}color,
       class: color-on,

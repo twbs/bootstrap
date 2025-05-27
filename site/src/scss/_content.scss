@@ -176,12 +176,10 @@
     }
 
     // Prevent breaking of code
-    // stylelint-disable selector-max-compound-selectors
     th,
     td:first-child > code {
       white-space: nowrap;
     }
-    // stylelint-enable selector-max-compound-selectors
   }
   // scss-docs-end custom-color-mode
 }
