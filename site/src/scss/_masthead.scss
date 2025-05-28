@@ -55,6 +55,7 @@
 
   #carbonads { // stylelint-disable-line selector-max-id
     margin-inline: auto;
+    max-width: 400px;
   }
 
   @include media-breakpoint-up(md) {
