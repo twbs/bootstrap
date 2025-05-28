@@ -201,16 +201,8 @@ $utilities: map.merge(
     "border-color": (
       property: border-color,
       class: border,
-      // local-vars: (
-      //   "border-opacity": 1
-      // ),
       values: theme-color-values("border")
     ),
-    // "subtle-border-color": (
-    //   property: border-color,
-    //   class: border,
-    //   // values: $utilities-border-subtle
-    // ),
     "border-width": (
       property: border-width,
       class: border,
