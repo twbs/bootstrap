@@ -17,8 +17,15 @@ $utilities: map.merge(
     ),
     // scss-docs-end utils-vertical-align
     // scss-docs-start utils-aspect-ratio
-    "aspect-ratio": (
+    "aspect-ratio-attr": (
+      selector: "attr-includes",
+      class: "ratio-",
       property: aspect-ratio,
+      values: var(--#{$prefix}ratio),
+    ),
+    "aspect-ratio": (
+      // property: aspect-ratio,
+      property: --#{$prefix}ratio,
       class: ratio,
       values: $aspect-ratios
     ),

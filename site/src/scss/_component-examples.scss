@@ -183,13 +183,15 @@
   // Ratio helpers
   .bd-example-ratios {
     [class*="ratio"] {
+      color-scheme: dark;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 1rem;
-      color: var(--bs-secondary-color);
-      background-color: var(--bs-tertiary-bg);
+      color: var(--bs-fg-3);
+      background-color: var(--bs-bg-1);
       border: var(--bs-border-width) solid var(--bs-border-color);
+      @include border-radius(var(--bs-border-radius));
     }
   }
 
