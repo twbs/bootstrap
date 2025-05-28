@@ -1,0 +1,19 @@
+---
+import type { SvgIconProps } from '@libs/icon'
+
+type Props = SvgIconProps
+
+const { class: className, height, width } = Astro.props
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 16 16"
+  role="img"
+  class={className}
+  height={height}
+  width={width}
+>
+  <title>MDN</title>
+  <path d="M6.359.734 1.846 15.266H0L4.497.734h1.862ZM8 .734v14.532H6.359V.734H8ZM16 .734v14.532h-1.641V.734H16ZM14.359.734 9.862 15.266H8.016L12.513.734h1.846Z"></path>
+</svg>

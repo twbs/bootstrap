@@ -17,6 +17,7 @@ const docsSchema = z.object({
     })
     .array()
     .optional(),
+  mdn: z.string().optional(),
   sections: z
     .object({
       description: z.string(),

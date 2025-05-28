@@ -14,6 +14,7 @@ import { parse } from 'yaml'
 import { fileURLToPath } from 'node:url'
 import { join, dirname } from 'node:path'
 import GitHubIcon from '@components/icons/GitHubIcon.astro'
+import MdnIcon from '@components/icons/MdnIcon.astro'
 
 interface NavigationPage {
   title: string
@@ -124,6 +125,20 @@ if (currentPageIndex < allPages.length - 1) {
             <GitHubIcon height={16} width={16} class="bi" />
             View on GitHub
           </a>
+          {
+            frontmatter.mdn && (
+              <a
+                class="btn btn-secondary-text btn-sm"
+                href={frontmatter.mdn}
+                title="View on MDN"
+                target="_blank"
+                rel="noopener"
+              >
+                <MdnIcon height={16} width={16} class="bi" />
+                View on MDN
+              </a>
+            )
+          }
         </div>
       </div>
 

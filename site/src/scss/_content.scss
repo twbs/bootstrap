@@ -40,6 +40,15 @@
       margin-top: .25rem;
     }
 
+    > .table-responsive:has(.reference-table) {
+      max-height: 400px;
+      overflow-y: auto;
+
+      td:last-child code {
+        color: var(--bs-indigo-500);
+      }
+    }
+
     // Override Bootstrap defaults
     > .table,
     > .table-responsive .table {
@@ -55,13 +64,14 @@
         }
       }
 
-      thead {
-        border-bottom: 2px solid currentcolor;
-      }
 
-      tbody:not(:first-child) {
-        border-top: 2px solid currentcolor;
-      }
+      // thead {
+      //   // border-bottom: 2px solid currentcolor;
+      // }
+
+      // tbody:not(:first-child) {
+      //   // border-top: 2px solid currentcolor;
+      // }
 
       th,
       td {

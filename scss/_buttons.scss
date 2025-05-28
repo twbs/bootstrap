@@ -272,6 +272,7 @@ $button-variants: (
     --#{$prefix}btn-font-weight: #{$btn-font-weight};
     --#{$prefix}btn-line-height: #{$btn-line-height};
     --#{$prefix}btn-color: #{$btn-color};
+    --#{$prefix}btn-gap: #{$btn-gap};
     --#{$prefix}btn-bg: transparent;
     --#{$prefix}btn-border-width: #{$btn-border-width};
     --#{$prefix}btn-border-color: transparent;
@@ -283,7 +284,10 @@ $button-variants: (
     --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
     // scss-docs-end btn-css-vars
 
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--#{$prefix}btn-gap);
     padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
     font-family: var(--#{$prefix}btn-font-family);
     @include font-size(var(--#{$prefix}btn-font-size));

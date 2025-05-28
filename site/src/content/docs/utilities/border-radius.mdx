@@ -1,0 +1,76 @@
+---
+title: Border radius
+description: Use border radius…
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
+---
+
+import { getData } from '@libs/data'
+
+## Reference
+
+<BsTable class="table reference-table">
+| Class | Styles |
+| --- | --- |
+| `.rounded` | `border-radius: var(--bs-border-radius);` |
+| `.rounded-top` | `border-top-left-radius: var(--bs-border-radius);`<br/>`border-top-right-radius: var(--bs-border-radius);` |
+| `.rounded-end` | `border-bottom-right-radius: var(--bs-border-radius);`<br/>`border-top-right-radius: var(--bs-border-radius);` |
+| `.rounded-bottom` | `border-bottom-left-radius: var(--bs-border-radius);`<br/>`border-bottom-right-radius: var(--bs-border-radius);` |
+| `.rounded-start` | `border-top-left-radius: var(--bs-border-radius);`<br/>`border-bottom-left-radius: var(--bs-border-radius);` |
+| `.rounded-0` | `border-radius: 0;` |
+| `.rounded-1` | `border-radius: var(--bs-border-radius-sm);` |
+| `.rounded-2` | `border-radius: var(--bs-border-radius);` |
+</BsTable>
+
+## Radius
+
+Add classes to an element to easily round its corners.
+
+<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded" title="Example rounded image" />
+<Placeholder width="75" height="75" class="rounded-top" title="Example top rounded image" />
+<Placeholder width="75" height="75" class="rounded-end" title="Example right rounded image" />
+<Placeholder width="75" height="75" class="rounded-bottom" title="Example bottom rounded image" />
+<Placeholder width="75" height="75" class="rounded-start" title="Example left rounded image" />`} />
+
+### Sizes
+
+Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `5` including `circle` and `pill`, and can be configured by modifying the utilities API.
+
+<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" />
+<Placeholder width="75" height="75" class="rounded-1" title="Example small rounded image" />
+<Placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" />
+<Placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" />
+<Placeholder width="75" height="75" class="rounded-4" title="Example larger rounded image" />
+<Placeholder width="75" height="75" class="rounded-5" title="Example extra large rounded image" />
+<Placeholder width="75" height="75" class="rounded-circle" title="Completely round image" />
+<Placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" />`} />
+
+<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded-bottom-1" title="Example small rounded image" />
+<Placeholder width="75" height="75" class="rounded-start-2" title="Example default left rounded image" />
+<Placeholder width="75" height="75" class="rounded-end-circle" title="Example right completely round image" />
+<Placeholder width="75" height="75" class="rounded-start-pill" title="Example left rounded pill image" />
+<Placeholder width="75" height="75" class="rounded-5 rounded-top-0" title="Example extra large bottom rounded image" />`} />
+
+## CSS
+
+### Variables
+
+<AddedIn version="5.2.0" />
+
+<ScssDocs name="root-border-var" file="scss/_root.scss" />
+
+### Sass variables
+
+<ScssDocs name="border-radius-variables" file="scss/_variables.scss" />
+
+### Sass maps
+
+### Sass mixins
+
+<ScssDocs name="border-radius-mixins" file="scss/mixins/_border-radius.scss" />
+
+### Sass utilities API
+
+Border utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-border-radius" file="scss/_utilities.scss" />

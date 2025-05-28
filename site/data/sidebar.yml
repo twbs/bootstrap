@@ -120,6 +120,7 @@
     - title: Aspect ratio
     - title: Background
     - title: Borders
+    - title: Border radius
     - title: Colors
     - title: Display
     - title: Flex
