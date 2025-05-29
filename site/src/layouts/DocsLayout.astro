@@ -78,12 +78,12 @@ if (frontmatter.toc) {
         <div class="bd-subtitle">
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
         </div>
-        <Ads />
       </div>
 
-      {
-        frontmatter.toc && headings && (
-          <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+
+      <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+        {
+          frontmatter.toc && headings && (
             <button
               class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none"
               type="button"
@@ -104,9 +104,10 @@ if (frontmatter.toc) {
                 <TableOfContents headings={headings} />
               </nav>
             </div>
-          </div>
-        )
-      }
+          )
+        }
+        <Ads />
+      </div>
 
       <div class="bd-content ps-lg-2">
         {
