@@ -6,9 +6,9 @@
 
 #carbonads {
   position: static;
+  max-width: 400px;
   padding: 15px 15px 15px 160px;
   margin: 1rem 0;
-  max-width: 400px;
   overflow: hidden;
   @include font-size(.8125rem);
   line-height: 1.4;
@@ -30,7 +30,7 @@
   margin-left: -145px;
 }
 
-@container (max-width: 280px) {
+@container (max-width: 240px) {
   #carbonads {
     padding-left: 15px;
   }
@@ -51,7 +51,7 @@
     width: 100%;
     height: auto;
     max-width: 100% !important;
-    border-radius: var(--bs-border-radius-sm);
+    @include border-radius(var(--bs-border-radius-sm));
   }
 }
 
