@@ -114,7 +114,7 @@
     "@astrojs/prism": "^3.3.0",
     "@astrojs/sitemap": "^3.4.0",
     "@babel/cli": "^7.27.2",
-    "@babel/core": "^7.27.3",
+    "@babel/core": "^7.27.4",
     "@babel/preset-env": "^7.27.2",
     "@docsearch/js": "^3.9.0",
     "@popperjs/core": "^2.11.8",
