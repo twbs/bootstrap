@@ -83,7 +83,7 @@
         height: $form-floating-label-height;
         content: "";
         background-color: $input-bg;
-        @include border-radius($input-border-radius);
+        @include border-radius(var(--#{$prefix}border-radius));
       }
     }
     > textarea:disabled ~ label::after {

@@ -63,7 +63,7 @@
     white-space: nowrap;
     background-color: $input-group-addon-bg;
     border: $input-border-width solid $input-group-addon-border-color;
-    @include border-radius($input-border-radius);
+    @include border-radius(var(--#{$prefix}border-radius));
   }
 
 
@@ -78,7 +78,7 @@
   .input-group-lg > .btn {
     padding: $input-padding-y-lg $input-padding-x-lg;
     @include font-size($input-font-size-lg);
-    @include border-radius($input-border-radius-lg);
+    @include border-radius(var(--#{$prefix}border-radius-lg));
   }
 
   .input-group-sm > .form-control,
@@ -87,7 +87,7 @@
   .input-group-sm > .btn {
     padding: $input-padding-y-sm $input-padding-x-sm;
     @include font-size($input-font-size-sm);
-    @include border-radius($input-border-radius-sm);
+    @include border-radius(var(--#{$prefix}border-radius-sm));
   }
 
   .input-group-lg > .form-select,

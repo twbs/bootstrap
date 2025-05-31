@@ -87,7 +87,7 @@
       border-left: 0;
 
       @include media-breakpoint-down(lg) {
-        box-shadow: $box-shadow-lg;
+        box-shadow: var(--#{$prefix}box-shadow-lg);
       }
     }
 
@@ -106,7 +106,7 @@
       @include rfs(.875rem, --bs-dropdown-font-size);
       @include font-size(.875rem);
       @include border-radius(.5rem);
-      box-shadow: $dropdown-box-shadow;
+      box-shadow: var(--#{$prefix}dropdown-box-shadow);
 
       li + li {
         margin-top: .125rem;

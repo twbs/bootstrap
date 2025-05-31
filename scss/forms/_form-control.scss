@@ -28,7 +28,7 @@
     border: $input-border-width solid $input-border-color;
 
     // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
-    @include border-radius($input-border-radius, 0);
+    @include border-radius(var(--#{$prefix}border-radius), 0);
 
     @include box-shadow($input-box-shadow);
     @include transition($input-transition);
@@ -155,7 +155,7 @@
     min-height: $input-height-sm;
     padding: $input-padding-y-sm $input-padding-x-sm;
     @include font-size($input-font-size-sm);
-    @include border-radius($input-border-radius-sm);
+    @include border-radius(var(--#{$prefix}border-radius-sm));
 
     &::file-selector-button {
       padding: $input-padding-y-sm $input-padding-x-sm;
@@ -168,7 +168,7 @@
     min-height: $input-height-lg;
     padding: $input-padding-y-lg $input-padding-x-lg;
     @include font-size($input-font-size-lg);
-    @include border-radius($input-border-radius-lg);
+    @include border-radius(var(--#{$prefix}border-radius-lg));
 
     &::file-selector-button {
       padding: $input-padding-y-lg $input-padding-x-lg;
@@ -206,12 +206,12 @@
 
     &::-moz-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius($input-border-radius);
+      @include border-radius(var(--#{$prefix}border-radius));
     }
 
     &::-webkit-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius($input-border-radius);
+      @include border-radius(var(--#{$prefix}border-radius));
     }
 
     &.form-control-sm { height: $input-height-sm; }

@@ -362,20 +362,18 @@
   }
 
   caption {
-    padding-top: $table-cell-padding-y;
-    padding-bottom: $table-cell-padding-y;
-    color: $table-caption-color;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    color: var(--#{$prefix}secondary-color);
     text-align: left;
   }
 
-  // 1. Removes font-weight bold by inheriting
-  // 2. Matches default `<td>` alignment by inheriting `text-align`.
-  // 3. Fix alignment for Safari
+  // 1. Matches default `<td>` alignment by inheriting `text-align`.
+  // 2. Fix alignment for Safari
 
   th {
-    font-weight: $table-th-font-weight; // 1
-    text-align: inherit; // 2
-    text-align: -webkit-match-parent; // 3
+    text-align: inherit; // 1
+    text-align: -webkit-match-parent; // 2
   }
 
   thead,

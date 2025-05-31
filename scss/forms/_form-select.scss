@@ -31,7 +31,7 @@
     background-position: $form-select-bg-position;
     background-size: $form-select-bg-size;
     border: $form-select-border-width solid $form-select-border-color;
-    @include border-radius($form-select-border-radius, 0);
+    @include border-radius(var(--#{$prefix}border-radius), 0);
     @include box-shadow($form-select-box-shadow);
     @include transition($form-select-transition);
 
@@ -64,7 +64,7 @@
     padding-bottom: $form-select-padding-y-sm;
     padding-left: $form-select-padding-x-sm;
     @include font-size($form-select-font-size-sm);
-    @include border-radius($form-select-border-radius-sm);
+    @include border-radius(var(--#{$prefix}border-radius-sm));
   }
 
   .form-select-lg {
@@ -72,7 +72,7 @@
     padding-bottom: $form-select-padding-y-lg;
     padding-left: $form-select-padding-x-lg;
     @include font-size($form-select-font-size-lg);
-    @include border-radius($form-select-border-radius-lg);
+    @include border-radius(var(--#{$prefix}border-radius-lg));
   }
 
   @if $enable-dark-mode {
