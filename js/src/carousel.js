@@ -402,7 +402,6 @@ class Carousel extends BaseComponent {
 
     return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT
   }
-
 }
 
 /**

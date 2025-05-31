@@ -258,7 +258,6 @@ class ScrollSpy extends BaseComponent {
       node.classList.remove(CLASS_NAME_ACTIVE)
     }
   }
-
 }
 
 /**

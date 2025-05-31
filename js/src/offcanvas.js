@@ -205,7 +205,6 @@ class Offcanvas extends BaseComponent {
       EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
     })
   }
-
 }
 
 /**
