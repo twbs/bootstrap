@@ -76,30 +76,13 @@
 
   --#{$prefix}body-color: #{$body-color};
   --#{$prefix}body-bg: #{$body-bg};
-  // --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
-
-  // --#{$prefix}emphasis-color: #{$body-emphasis-color};
-  // // --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
-
-  // --#{$prefix}secondary-color: #{$body-secondary-color};
-  // // --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
-  // --#{$prefix}secondary-bg: #{$body-secondary-bg};
-  // // --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg)};
-
-  // --#{$prefix}tertiary-color: #{$body-tertiary-color};
-  // // --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
-  // --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
-  // // --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
   // scss-docs-end root-body-variables
 
   --#{$prefix}heading-color: #{$headings-color};
 
   --#{$prefix}link-color: light-dark(var(--#{$prefix}primary-base), var(--#{$prefix}primary-text));
-  // --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
   --#{$prefix}link-decoration: #{$link-decoration};
-
   --#{$prefix}link-hover-color: color-mix(in oklch, var(--#{$prefix}link-color) 90%, #000);
-  // --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
 
   @if $link-hover-decoration != null {
     --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
@@ -151,24 +134,6 @@
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars
-    // --#{$prefix}body-color: #{$body-color-dark};
-    // --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
-    // --#{$prefix}body-bg: #{$body-bg-dark};
-    // --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
-
-    // --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
-    // --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
-
-    // --#{$prefix}secondary-color: #{$body-secondary-color-dark};
-    // --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
-    // --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
-    // --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
-
-    // --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
-    // --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
-    // --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
-    // --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
-
     // @each $color, $value in $theme-colors-text-dark {
     //   --#{$prefix}#{$color}-text-emphasis: #{$value};
     // }
@@ -185,8 +150,6 @@
 
     // --#{$prefix}link-color: #{$link-color-dark};
     // --#{$prefix}link-hover-color: #{$link-hover-color-dark};
-    // --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
-    // --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
     // --#{$prefix}code-color: #{$code-color-dark};
     // --#{$prefix}highlight-color: #{$mark-color-dark};
