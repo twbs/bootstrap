@@ -1,76 +1,105 @@
 ---
 title: Colors
-description: Convey meaning through `color` with a handful of color utility classes. Includes support for styling links with hover states, too.
+description: Convey meaning through text `color` utilities. Mix with opacity utilities powered by `color-mix()` to control translucency, too.
 toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/color
 ---
 
 import { getData } from '@libs/data'
 
-<Callout name="warning-color-assistive-technologies" />
+## Reference
+
+<BsTable class="table reference-table">
+| Class | Styles |
+| --- | --- |
+| `.color-primary` | `color: var(--bs-primary);` |
+| `.color-secondary` | `color: var(--bs-secondary);` |
+| `.color-success` | `color: var(--bs-success);` |
+| `.color-danger` | `color: var(--bs-danger);` |
+| `.color-warning` | `color: var(--bs-warning);` |
+| `.color-info` | `color: var(--bs-info);` |
+| `.color-fg` | `color: var(--bs-fg);` |
+| `.color-fg-1` | `color: var(--bs-fg-1);` |
+| `.color-fg-2` | `color: var(--bs-fg-2);` |
+| `.color-fg-3` | `color: var(--bs-fg-3);` |
+| `.color-white` | `color: var(--bs-white);` |
+| `.color-black` | `color: var(--bs-black);` |
+| `.color-inherit` | `color: inherit;` |
+</BsTable>
 
 ## Colors
 
 Colorize text with color utilities. If you want to colorize links, you can use the [`.link-*` helper classes]([[docsref:/helpers/colored-links]]) which have `:hover` and `:focus` states.
 
-<Callout>
-Color utilities like `.text-*` that generated from our original `$theme-colors` Sass map don’t yet respond to color modes, however, any `.text-*-emphasis` utility will. This will be resolved in v6.
-</Callout>
+- Colors are generated from the `$new-theme-colors` Sass map with a `theme-color-values()` function that looks up semantic colors based on a particular key from the Bootstrap theme config.
+- Additional colors are generated from the separate `$theme-texts` Sass map.
+- Text utilities are generated in a two-step process to allow for dynamic alpha transparency changes:
+  - We generate an attribute utility for classes that include `.color-`, which looks like `[class*="color-"]`, and set `color: var(--bs-color)`.
+  - Then, our specific color utilities set the `--bs-color` CSS variable to the color value.
+- Text utilities don't set `background-color`, so you may need to use `.bg-` [background utilities]([[docsref:/utilities/background]]) for proper contrast.
+- Lastly, most color utilities are responsive to color mode changes. This excludes inherit as there's no need, plus white and black as these exist for ease of common translucent colors.
+
+Here are the available color utilities:
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<p class="text-${themeColor.name}${themeColor.contrast_color ? ` bg-${themeColor.contrast_color}` : ``}">.text-${themeColor.name}</p>
-<p class="text-${themeColor.name}-emphasis">.text-${themeColor.name}-emphasis</p>`),
-  `
-<p class="text-body">.text-body</p>
-<p class="text-body-emphasis">.text-body-emphasis</p>
-<p class="text-body-secondary">.text-body-secondary</p>
-<p class="text-body-tertiary">.text-body-tertiary</p>
+  ...getData('theme-colors').map((themeColor) => `<div class="mb-2 color-${themeColor.name}${themeColor.contrast_color ? ` bg-${themeColor.contrast_color}` : ``}">.color-${themeColor.name}</div>`),
+  `<div class="mb-2 color">.color</div>
+<div class="mb-2 color-1">.color-1</div>
+<div class="mb-2 color-2">.color-2</div>
+<div class="mb-2 color-3">.color-3</div>
 
-<p class="text-black bg-white">.text-black</p>
-<p class="text-white bg-dark">.text-white</p>
-<p class="text-black-50 bg-white">.text-black-50</p>
-<p class="text-white-50 bg-dark">.text-white-50</p>`
+<div class="mb-2 color-black bg-white">.color-black</div>
+<div class="mb-2 color-white bg-black">.color-white</div>`
 ]} />
 
-<Callout type="warning">
-**Deprecation:** With the addition of `.text-opacity-*` utilities and CSS variables for text utilities, `.text-black-50` and `.text-white-50` are deprecated as of v5.1.0. They’ll be removed in v6.0.0.
-</Callout>
-
-<Callout type="warning">
-**Deprecation:** With the addition of the expanded theme colors and variables, the `.text-muted` utility has been deprecated as of v5.3.0. Its default value has also been reassigned to the new `--bs-secondary-color` CSS variable to better support color modes. It will be removed in v6.0.0.
-</Callout>
-
-## Opacity
-
-<AddedIn version="5.1.0" />
-
-As of v5.1.0, text color utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
-
-### How it works
-
-Consider our default `.text-primary` utility.
+Behind the scenes, the utilities come together like this:
 
 ```css
-.text-primary {
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+[class*="color-"] {
+  color: var(--bs-text);
+}
+
+.color-primary {
+  --bs-text: var(--bs-primary);
 }
 ```
 
-We use an RGB version of our `--bs-primary` (with the value of `13, 110, 253`) CSS variable and attached a second CSS variable, `--bs-text-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.text-primary` now, your computed `color` value is `rgba(13, 110, 253, 1)`. The local CSS variable inside each `.text-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
+<Callout name="warning-color-assistive-technologies" />
 
-### Example
+## Color opacity
 
-To change that opacity, override `--bs-text-opacity` via custom styles or inline styles.
+<BreakingChange />
 
-<Example code={`<div class="text-primary">This is default primary text</div>
-<div class="text-primary" style="--bs-text-opacity: .5;">This is 50% opacity primary text</div>`} />
+**Color opacity utilities have changed in v6** to use `.color-{number}` instead of `.text-opacity-{number}`. These new utilities are built with CSS-native `color-mix()` functions that mix the `.color-{color}`'s CSS variable with `transparent`. This allows for real-time color opacity changes without compilation.
 
-Or, choose from any of the `.text-opacity` utilities:
+Note that changing the alpha-transparency or opacity of a color may require you to also update the text color to ensure proper contrast.
 
-<Example code={`<div class="text-primary">This is default primary text</div>
-<div class="text-primary text-opacity-75">This is 75% opacity primary text</div>
-<div class="text-primary text-opacity-50">This is 50% opacity primary text</div>
-<div class="text-primary text-opacity-25">This is 25% opacity primary text</div>`} />
+<Example code={`<div class="p-2 color-success">.color-success</div>
+<div class="p-2 color-success color-90">.color-90</div>
+<div class="p-2 color-success color-80">.color-80</div>
+<div class="p-2 color-success color-70">.color-70</div>
+<div class="p-2 color-success color-60">.color-60</div>
+<div class="p-2 color-success color-50">.color-50</div>
+<div class="p-2 color-success color-40">.color-40</div>
+<div class="p-2 color-success color-30">.color-30</div>
+<div class="p-2 color-success color-20">.color-20</div>
+<div class="p-2 color-success color-10">.color-10</div>`} />
+
+As mentioned above, this works by combining the power of multiple utilities and CSS `color-mix()`. Here's how the compiled CSS looks:
+
+```css
+[class*="color-"] {
+  color: var(--bs-color);
+}
+
+.color-success {
+  --bs-color: var(--bs-success);
+}
+
+.color-10 {
+  color: color-mix(in srgb, var(--bs-color) 10%, transparent);
+}
+```
 
 ## Specificity
 
@@ -84,45 +113,43 @@ In addition to the following Sass functionality, consider reading about our incl
 
 Most `color` utilities are generated by our theme colors, reassigned from our generic color palette variables.
 
-<ScssDocs name="color-variables" file="scss/_variables.scss" />
+<ScssDocs name="theme-colors" file="scss/_theme.scss" />
 
-<ScssDocs name="theme-color-variables" file="scss/_variables.scss" />
+<ScssDocs name="utils-color" file="scss/_utilities.scss" />
 
 Grayscale colors are also available, but only a subset are used to generate any utilities.
 
-<ScssDocs name="gray-color-variables" file="scss/_variables.scss" />
-
-<ScssDocs name="theme-text-map" file="scss/_maps.scss" />
+{/* <ScssDocs name="gray-color-variables" file="scss/_variables.scss" /> */}
 
 Variables for setting colors in `.text-*-emphasis` utilities in light and dark mode:
 
-<ScssDocs name="theme-text-variables" file="scss/_variables.scss" />
+{/* <ScssDocs name="theme-text-variables" file="scss/_variables.scss" /> */}
 
-<ScssDocs name="theme-text-dark-variables" file="scss/_variables-dark.scss" />
+{/* <ScssDocs name="theme-text-dark-variables" file="scss/_variables-dark.scss" /> */}
 
 ### Sass maps
 
 Theme colors are then put into a Sass map so we can loop over them to generate our utilities, component modifiers, and more.
 
-<ScssDocs name="theme-colors-map" file="scss/_variables.scss" />
+{/* <ScssDocs name="theme-colors-map" file="scss/_variables.scss" /> */}
 
 Grayscale colors are also available as a Sass map. **This map is not used to generate any utilities.**
 
-<ScssDocs name="gray-colors-map" file="scss/_variables.scss" />
+{/* <ScssDocs name="gray-colors-map" file="scss/_variables.scss" /> */}
 
 RGB colors are generated from a separate Sass map:
 
-<ScssDocs name="theme-colors-rgb" file="scss/_maps.scss" />
+{/* <ScssDocs name="theme-colors-rgb" file="scss/_maps.scss" /> */}
 
 Color opacities build on that with their own map that’s consumed by the utilities API:
 
-<ScssDocs name="utilities-text-colors" file="scss/_maps.scss" />
+{/* <ScssDocs name="utilities-text-colors" file="scss/_maps.scss" /> */}
 
 Color mode adaptive text colors are also available as a Sass map:
 
-<ScssDocs name="theme-text-map" file="scss/_maps.scss" />
+{/* <ScssDocs name="theme-text-map" file="scss/_maps.scss" /> */}
 
-<ScssDocs name="theme-text-dark-map" file="scss/_maps.scss" />
+{/* <ScssDocs name="theme-text-dark-map" file="scss/_maps.scss" /> */}
 
 ### Sass utilities API
 

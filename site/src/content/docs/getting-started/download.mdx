@@ -4,12 +4,35 @@ description: Download Bootstrap to get the compiled CSS and JavaScript, source c
 toc: true
 ---
 
+import Tabs from '@components/Tabs.astro';
+
+## CDN
+
+## Install
+
+<Tabs
+  tabs={[
+    { id: 'tab1', label: 'npm', content: 'Default content for tab 2' },
+    { id: 'tab2', label: 'RubyGems', content: 'Default content for tab 3' },
+    { id: 'tab3', label: 'Composer', content: 'Default content for tab 4' },
+    { id: 'tab4', label: 'NuGet', content: 'Default content for tab 5' },
+  ]}
+  activeTab="tab1"
+>
+  <div slot="tab1">
+    Custom content for tab 1
+  </div>
+  <div slot="tab2">
+    Custom content for tab 2
+  </div>
+</Tabs>
+
 ## Compiled CSS and JS
 
 Download ready-to-use compiled code for **Bootstrap v[[config:current_version]]** to easily drop into your project, which includes:
 
-- Compiled and minified CSS bundles (see [CSS files comparison]([[docsref:/getting-started/contents#css-files]]))
-- Compiled and minified JavaScript plugins (see [JS files comparison]([[docsref:/getting-started/contents#js-files]]))
+- Compiled and minified CSS bundles
+- Compiled and minified JavaScript plugins
 
 This doesn’t include documentation, source files, or any optional JavaScript dependencies like Popper.
 

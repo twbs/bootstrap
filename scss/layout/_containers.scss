@@ -1,0 +1,57 @@
+@use "../config" as *;
+@use "breakpoints" as *;
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+// Container mixins
+
+@mixin make-container($gutter: $container-padding-x) {
+  --#{$prefix}gutter-x: #{$gutter};
+  --#{$prefix}gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--#{$prefix}gutter-x) * .5);
+  padding-left: calc(var(--#{$prefix}gutter-x) * .5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@layer layout {
+  @if $enable-container-classes {
+    // Single container class with breakpoint max-widths
+    .container,
+    // 100% wide container at all breakpoints
+    .container-fluid {
+      @include make-container();
+    }
+
+    // Responsive containers that are 100% wide until a breakpoint
+    @each $breakpoint, $container-max-width in $container-max-widths {
+      .container-#{$breakpoint} {
+        @extend .container-fluid;
+      }
+
+      @include media-breakpoint-up($breakpoint, $breakpoints) {
+        %responsive-container-#{$breakpoint} {
+          max-width: $container-max-width;
+        }
+
+        // Extend each breakpoint which is smaller or equal to the current breakpoint
+        $extend-breakpoint: true;
+
+        @each $name, $width in $breakpoints {
+          @if ($extend-breakpoint) {
+            .container-#{breakpoint-infix($name, $breakpoints)} {
+              @extend %responsive-container-#{$breakpoint};
+            }
+
+            // Once the current breakpoint is reached, stop extending
+            @if ($breakpoint == $name) {
+              $extend-breakpoint: false;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // stylelint-disable scss/dimension-no-non-numeric-values
 
 // SCSS RFS mixin
@@ -88,8 +90,8 @@ $rfs-base-value-unit: unit($rfs-base-value);
     "em": 1em,
     "%": 1%
   );
-  @if ($dividend-unit != $divisor-unit and map-has-key($unit-map, $dividend-unit)) {
-    $result: $result * map-get($unit-map, $dividend-unit);
+  @if ($dividend-unit != $divisor-unit and map.has-key($unit-map, $dividend-unit)) {
+    $result: $result * map.get($unit-map, $dividend-unit);
   }
   @return $result;
 }

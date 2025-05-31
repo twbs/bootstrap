@@ -20,7 +20,7 @@ const sidebar = getData('sidebar')
                 {group.icon && (
                   <svg
                     class="bi me-2"
-                    style={group.icon_color && `color: var(--bs-${group.icon_color});`}
+                    style={group.icon_color && `color: var(--bs-${group.icon_color}-400);`}
                     aria-hidden="true"
                   >
                     <use xlink:href={`#${group.icon}`} />
@@ -28,7 +28,7 @@ const sidebar = getData('sidebar')
                 )}
                 {group.title}
               </strong>
-              <ul class="list-unstyled fw-normal pb-2 small">
+              <ul class="list-unstyled fw-normal pb-2">
                 {group.pages?.map((page) => {
                   const docSlug = getSlug(page.title)
                   const unversionedPageSlug = `${groupSlug}/${docSlug}`
@@ -49,7 +49,7 @@ const sidebar = getData('sidebar')
                     <li>
                       <a
                         href={url}
-                        class:list={['bd-links-link d-inline-block rounded', { active }]}
+                        class:list={['bd-links-link d-block rounded', { active }]}
                         aria-current={active ? 'page' : undefined}
                       >
                         {page.title}

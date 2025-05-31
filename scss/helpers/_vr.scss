@@ -1,8 +1,12 @@
-.vr {
-  display: inline-block;
-  align-self: stretch;
-  width: $vr-border-width;
-  min-height: 1em;
-  background-color: currentcolor;
-  opacity: $hr-opacity;
+@use "../variables" as *;
+
+@layer helpers {
+  .vr {
+    display: inline-block;
+    align-self: stretch;
+    width: $vr-border-width;
+    min-height: 1em;
+    background-color: currentcolor;
+    opacity: $hr-opacity;
+  }
 }

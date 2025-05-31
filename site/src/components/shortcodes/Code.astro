@@ -33,9 +33,14 @@ interface Props {
    * This takes precedence over the `code` prop.
    */
   filePath?: string
+  /**
+   * The theme to use for the code block.
+   * @see https://getbootstrap.com/docs/6.0/customize/color-scheme/
+   */
+  theme?: string
 }
 
-const { class: className, code, containerClass, fileMatch, filePath, lang } = Astro.props
+const { class: className, code, containerClass, fileMatch, filePath, lang, theme } = Astro.props
 
 let codeToDisplay = filePath
   ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
@@ -144,7 +149,7 @@ if (filePath && fileMatch && codeToDisplay) {
       </div>
     )
   }
-  <div class="highlight">
+  <div class="highlight" data-bs-theme={theme}>
     {
       codeToDisplay && lang ? (
         <Prism code={codeToDisplay} lang={lang} />

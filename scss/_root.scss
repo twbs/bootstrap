@@ -1,41 +1,42 @@
-:root,
-[data-bs-theme="light"] {
+@use "config" as *;
+@use "colors" as *;
+@use "theme" as *;
+@use "variables" as *;
+// @use "maps" as *;
+@use "vendor/rfs" as *;
+@use "mixins/color-mode" as *;
+
+// mdo-do: do we need theme?
+@layer colors, theme, config, root, reboot, layout, content, forms, components, helpers, custom, utilities;
+
+@layer colors {
+  :root {
+    color-scheme: light dark;
+
+    @each $color-group-name, $color-group in $all-colors {
+      @if type-of($color-group) == "map" {
+        @each $color-name, $color-value in $color-group {
+          --#{$prefix}#{$color-name}: #{$color-value};
+        }
+      } @else {
+        --#{$prefix}#{$color-group-name}: #{$color-group};
+      }
+    }
+
+    @each $color, $value in $theme-colors {
+      --#{$prefix}#{$color}: #{$value};
+    }
+
+    @each $color-name, $color-map in $new-theme-colors {
+      @each $key, $value in $color-map {
+        --#{$prefix}#{$color-name}-#{$key}: #{$value};
+      }
+    }
+  }
+}
+
+:root {
   // Note: Custom variable values only support SassScript inside `#{}`.
-
-  // Colors
-  //
-  // Generate palettes for full colors, grays, and theme colors.
-
-  @each $color, $value in $colors {
-    --#{$prefix}#{$color}: #{$value};
-  }
-
-  @each $color, $value in $grays {
-    --#{$prefix}gray-#{$color}: #{$value};
-  }
-
-  @each $color, $value in $theme-colors {
-    --#{$prefix}#{$color}: #{$value};
-  }
-
-  @each $color, $value in $theme-colors-rgb {
-    --#{$prefix}#{$color}-rgb: #{$value};
-  }
-
-  @each $color, $value in $theme-colors-text {
-    --#{$prefix}#{$color}-text-emphasis: #{$value};
-  }
-
-  @each $color, $value in $theme-colors-bg-subtle {
-    --#{$prefix}#{$color}-bg-subtle: #{$value};
-  }
-
-  @each $color, $value in $theme-colors-border-subtle {
-    --#{$prefix}#{$color}-border-subtle: #{$value};
-  }
-
-  --#{$prefix}white-rgb: #{to-rgb($white)};
-  --#{$prefix}black-rgb: #{to-rgb($black)};
 
   // Fonts
 
@@ -58,41 +59,57 @@
     --#{$prefix}body-text-align: #{$body-text-align};
   }
 
+  @each $key, $value in $theme-bgs {
+    $key: if($key == null, "", "-" + $key);
+    --#{$prefix}bg#{$key}: #{$value};
+  }
+
+  @each $key, $value in $theme-fgs {
+    $key: if($key == null, "", "-" + $key);
+    --#{$prefix}fg#{$key}: #{$value};
+  }
+
+  @each $key, $value in $theme-borders {
+    $key: if($key == null, "", "-" + $key);
+    --#{$prefix}border#{$key}: #{$value};
+  }
+
   --#{$prefix}body-color: #{$body-color};
-  --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
   --#{$prefix}body-bg: #{$body-bg};
-  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+  // --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
-  --#{$prefix}emphasis-color: #{$body-emphasis-color};
-  --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
+  // --#{$prefix}emphasis-color: #{$body-emphasis-color};
+  // // --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color)};
 
-  --#{$prefix}secondary-color: #{$body-secondary-color};
-  --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
-  --#{$prefix}secondary-bg: #{$body-secondary-bg};
-  --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg)};
+  // --#{$prefix}secondary-color: #{$body-secondary-color};
+  // // --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color)};
+  // --#{$prefix}secondary-bg: #{$body-secondary-bg};
+  // // --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg)};
 
-  --#{$prefix}tertiary-color: #{$body-tertiary-color};
-  --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
-  --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
-  --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
+  // --#{$prefix}tertiary-color: #{$body-tertiary-color};
+  // // --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color)};
+  // --#{$prefix}tertiary-bg: #{$body-tertiary-bg};
+  // // --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg)};
   // scss-docs-end root-body-variables
 
   --#{$prefix}heading-color: #{$headings-color};
 
-  --#{$prefix}link-color: #{$link-color};
-  --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
+  --#{$prefix}link-color: light-dark(var(--#{$prefix}primary-base), var(--#{$prefix}primary-text));
+  // --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
   --#{$prefix}link-decoration: #{$link-decoration};
 
-  --#{$prefix}link-hover-color: #{$link-hover-color};
-  --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
+  --#{$prefix}link-hover-color: color-mix(in oklch, var(--#{$prefix}link-color) 90%, #000);
+  // --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
 
   @if $link-hover-decoration != null {
     --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
   }
 
-  --#{$prefix}code-color: #{$code-color};
+  --#{$prefix}code-color: var(--#{$prefix}fg-0);
   --#{$prefix}highlight-color: #{$mark-color};
   --#{$prefix}highlight-bg: #{$mark-bg};
+
+  // --#{$prefix}font-size-base: 1rem;
 
   // scss-docs-start root-border-var
   --#{$prefix}border-width: #{$border-width};
@@ -100,25 +117,25 @@
   --#{$prefix}border-color: #{$border-color};
   --#{$prefix}border-color-translucent: #{$border-color-translucent};
 
-  --#{$prefix}border-radius: #{$border-radius};
-  --#{$prefix}border-radius-sm: #{$border-radius-sm};
-  --#{$prefix}border-radius-lg: #{$border-radius-lg};
-  --#{$prefix}border-radius-xl: #{$border-radius-xl};
-  --#{$prefix}border-radius-xxl: #{$border-radius-xxl};
-  --#{$prefix}border-radius-2xl: var(--#{$prefix}border-radius-xxl); // Deprecated in v5.3.0 for consistency
-  --#{$prefix}border-radius-pill: #{$border-radius-pill};
+  --#{$prefix}border-radius: .5rem;
+  --#{$prefix}border-radius-sm: .375rem;
+  --#{$prefix}border-radius-lg: .625rem;
+  --#{$prefix}border-radius-xl: 1rem;
+  --#{$prefix}border-radius-2xl: 2rem;
+  --#{$prefix}border-radius-pill: 50rem;
   // scss-docs-end root-border-var
 
-  --#{$prefix}box-shadow: #{$box-shadow};
-  --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
-  --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
-  --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
+  --#{$prefix}box-shadow: light-dark(0 .5rem 1rem rgb(0 0 0 / 15%), 0 .5rem 1rem rgb(255 0 0 / 50%));
+  --#{$prefix}box-shadow-sm: 0 .125rem .25rem rgb(0 0 0 / 7.5%);
+  --#{$prefix}box-shadow-lg: 0 1rem 3rem rgb(0 0 0 / 17.5%);
+  --#{$prefix}box-shadow-inset: inset 0 1px 2px rgb(0 0 0 / 7.5%);
 
   // Focus styles
   // scss-docs-start root-focus-variables
-  --#{$prefix}focus-ring-width: #{$focus-ring-width};
-  --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
-  --#{$prefix}focus-ring-color: #{$focus-ring-color};
+  --#{$prefix}focus-ring-width: 3px;
+  --#{$prefix}focus-ring-offset: -1px;
+  --#{$prefix}focus-ring-color: var(--#{$prefix}primary-focus-ring);
+  --#{$prefix}focus-ring: var(--#{$prefix}focus-ring-width) solid var(--#{$prefix}focus-ring-color);
   // scss-docs-end root-focus-variables
 
   // scss-docs-start root-form-validation-variables
@@ -134,54 +151,54 @@
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars
-    --#{$prefix}body-color: #{$body-color-dark};
-    --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
-    --#{$prefix}body-bg: #{$body-bg-dark};
-    --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
+    // --#{$prefix}body-color: #{$body-color-dark};
+    // --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
+    // --#{$prefix}body-bg: #{$body-bg-dark};
+    // --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
 
-    --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
-    --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
+    // --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
+    // --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
 
-    --#{$prefix}secondary-color: #{$body-secondary-color-dark};
-    --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
-    --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
-    --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
+    // --#{$prefix}secondary-color: #{$body-secondary-color-dark};
+    // --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
+    // --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
+    // --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
 
-    --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
-    --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
-    --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
-    --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
+    // --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
+    // --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
+    // --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
+    // --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
-    @each $color, $value in $theme-colors-text-dark {
-      --#{$prefix}#{$color}-text-emphasis: #{$value};
-    }
+    // @each $color, $value in $theme-colors-text-dark {
+    //   --#{$prefix}#{$color}-text-emphasis: #{$value};
+    // }
 
-    @each $color, $value in $theme-colors-bg-subtle-dark {
-      --#{$prefix}#{$color}-bg-subtle: #{$value};
-    }
+    // @each $color, $value in $theme-colors-bg-subtle-dark {
+    //   --#{$prefix}#{$color}-bg-subtle: #{$value};
+    // }
 
-    @each $color, $value in $theme-colors-border-subtle-dark {
-      --#{$prefix}#{$color}-border-subtle: #{$value};
-    }
+    // @each $color, $value in $theme-colors-border-subtle-dark {
+    //   --#{$prefix}#{$color}-border-subtle: #{$value};
+    // }
 
     --#{$prefix}heading-color: #{$headings-color-dark};
 
-    --#{$prefix}link-color: #{$link-color-dark};
-    --#{$prefix}link-hover-color: #{$link-hover-color-dark};
-    --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
-    --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
+    // --#{$prefix}link-color: #{$link-color-dark};
+    // --#{$prefix}link-hover-color: #{$link-hover-color-dark};
+    // --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
+    // --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
-    --#{$prefix}code-color: #{$code-color-dark};
-    --#{$prefix}highlight-color: #{$mark-color-dark};
-    --#{$prefix}highlight-bg: #{$mark-bg-dark};
+    // --#{$prefix}code-color: #{$code-color-dark};
+    // --#{$prefix}highlight-color: #{$mark-color-dark};
+    // --#{$prefix}highlight-bg: #{$mark-bg-dark};
 
-    --#{$prefix}border-color: #{$border-color-dark};
-    --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+    // --#{$prefix}border-color: #{$border-color-dark};
+    // --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
 
-    --#{$prefix}form-valid-color: #{$form-valid-color-dark};
-    --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
-    --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
-    --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
+    // --#{$prefix}form-valid-color: #{$form-valid-color-dark};
+    // --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
+    // --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
+    // --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
     // scss-docs-end root-dark-mode-vars
   }
 }

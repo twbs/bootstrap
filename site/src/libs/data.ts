@@ -23,7 +23,7 @@ const dataDefinitions = {
       container: zPxSizeOrEmpty
     })
     .array(),
-  colors: zNamedHexColors(13),
+  colors: zNamedHexColors(11),
   'core-team': z
     .object({
       name: z.string(),

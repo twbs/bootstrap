@@ -7,7 +7,6 @@
   pages:
     - title: Introduction
     - title: Download
-    - title: Contents
     - title: Browsers & devices
     - title: JavaScript
     - title: Webpack
@@ -42,7 +41,6 @@
     - title: Gutters
     - title: Utilities
     - title: Z-index
-    - title: CSS Grid
 
 - title: Content
   icon: file-earmark-richtext
@@ -53,6 +51,7 @@
     - title: Images
     - title: Tables
     - title: Figures
+    - title: Prose
 
 - title: Forms
   icon: ui-radios
@@ -95,19 +94,18 @@
     - title: Scrollspy
     - title: Spinners
     - title: Toasts
+    - title: Toggler
     - title: Tooltips
 
 - title: Helpers
   icon: magic
   icon_color: orange
   pages:
-    - title: Clearfix
     - title: Color & background
     - title: Colored links
     - title: Focus ring
     - title: Icon link
     - title: Position
-    - title: Ratio
     - title: Stacks
     - title: Stretched link
     - title: Text truncation
@@ -119,8 +117,10 @@
   icon_color: red
   pages:
     - title: API
+    - title: Aspect ratio
     - title: Background
     - title: Borders
+    - title: Border radius
     - title: Colors
     - title: Display
     - title: Flex

@@ -1,14 +1,17 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "variables" as *;
+
 .bd-gutter {
   --bs-gutter-x: #{$bd-gutter-x};
 }
 
 .bd-layout {
-
   @include media-breakpoint-up(lg) {
     display: grid;
     grid-template-areas: "sidebar main";
     grid-template-columns: 1fr 5fr;
-    gap: $grid-gutter-width;
+    gap: 2rem;
   }
 }
 
@@ -51,7 +54,8 @@
   grid-area: toc;
 }
 
-.bd-content {
+.docs-content-body {
   grid-area: content;
-  min-width: 1px; // Fix width when bd-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
+  width: 100%;
+  min-width: 1px; // Fix width when this element contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
 }

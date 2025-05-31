@@ -16,6 +16,7 @@ import Popover from './src/popover.js'
 import ScrollSpy from './src/scrollspy.js'
 import Tab from './src/tab.js'
 import Toast from './src/toast.js'
+import Toggler from './src/toggler.js'
 import Tooltip from './src/tooltip.js'
 
 export default {
@@ -30,5 +31,6 @@ export default {
   ScrollSpy,
   Tab,
   Toast,
+  Toggler,
   Tooltip
 }

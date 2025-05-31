@@ -1,0 +1,103 @@
+---
+interface Props {
+  tabs: {
+    id: string;
+    label: string;
+    content?: string;
+  }[];
+  activeTab?: string;
+}
+
+const { tabs, activeTab } = Astro.props;
+---
+
+<div class="tabs-component">
+  <ul class="nav nav-underline mb-3" role="tablist">
+    {tabs.map((tab) => (
+      <li class="nav-item" role="presentation">
+        <button
+          class={`nav-link ${activeTab === tab.id ? 'active' : ''}`}
+          id={`${tab.id}-tab`}
+          data-bs-toggle="tab"
+          data-bs-target={`#${tab.id}`}
+          type="button"
+          role="tab"
+          aria-controls={tab.id}
+          aria-selected={activeTab === tab.id}
+        >
+          {tab.label}
+        </button>
+      </li>
+    ))}
+  </ul>
+
+  <div class="tab-content">
+    {tabs.map((tab) => (
+      <div
+        class={`tab-pane fade ${activeTab === tab.id ? 'show active' : ''}`}
+        id={tab.id}
+        role="tabpanel"
+        aria-labelledby={`${tab.id}-tab`}
+      >
+        {tab.content || <slot />}
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Initialize Bootstrap tabs
+  document.addEventListener('DOMContentLoaded', () => {
+    const triggerTabList = document.querySelectorAll('[data-bs-toggle="tab"]');
+    triggerTabList.forEach(triggerEl => {
+      const tabTrigger = new bootstrap.Tab(triggerEl);
+      triggerEl.addEventListener('click', event => {
+        event.preventDefault();
+        tabTrigger.show();
+      });
+    });
+
+    // Handle URL hash changes
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const tab = document.querySelector(`[data-bs-target="#${hash}"]`);
+        if (tab) {
+          const tabTrigger = new bootstrap.Tab(tab);
+          tabTrigger.show();
+        }
+      }
+    };
+
+    // Initial hash check
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+  });
+</script>
+
+<style>
+  .tabs-component {
+    margin-bottom: 2rem;
+  }
+
+  .nav-underline .nav-link {
+    color: var(--bs-body-color);
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease-in-out;
+  }
+
+  .nav-underline .nav-link:hover {
+    border-bottom-color: var(--bs-primary);
+  }
+
+  .nav-underline .nav-link.active {
+    color: var(--bs-primary);
+    border-bottom-color: var(--bs-primary);
+  }
+
+  .tab-content {
+    padding: 1rem 0;
+  }
+</style>

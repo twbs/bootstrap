@@ -1,31 +1,119 @@
 ---
 title: Background
-description: Convey meaning through `background-color` and add decoration with gradients.
+description: Convey meaning through `background-color`, adjust opacity with `color-mix()` utilities, and add decoration with gradients.
 toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
 ---
 
 import { getData } from '@libs/data'
 
-<Callout name="warning-color-assistive-technologies" />
+## Reference
+
+<BsTable class="table reference-table">
+| Class | Styles |
+| --- | --- |
+| `.bg-primary` | `background-color: var(--bs-primary);` |
+| `.bg-subtle-primary` | `background-color: var(--bs-subtle-primary);` |
+| `.bg-accent` | `background-color: var(--bs-accent);` |
+| `.bg-subtle-accent` | `background-color: var(--bs-subtle-accent);` |
+| `.bg-secondary` | `background-color: var(--bs-secondary);` |
+| `.bg-subtle-secondary` | `background-color: var(--bs-subtle-secondary);` |
+| `.bg-success` | `background-color: var(--bs-success);` |
+| `.bg-subtle-success` | `background-color: var(--bs-subtle-success);` |
+| `.bg-danger` | `background-color: var(--bs-danger);` |
+| `.bg-subtle-danger` | `background-color: var(--bs-subtle-danger);` |
+| `.bg-warning` | `background-color: var(--bs-warning);` |
+| `.bg-subtle-warning` | `background-color: var(--bs-subtle-warning);` |
+| `.bg-info` | `background-color: var(--bs-info);` |
+| `.bg-subtle-info` | `background-color: var(--bs-subtle-info);` |
+| `.bg` | `background-color: var(--bs-bg);` |
+| `.bg-1` | `background-color: var(--bs-bg-1);` |
+| `.bg-2` | `background-color: var(--bs-bg-2);` |
+| `.bg-3` | `background-color: var(--bs-bg-3);` |
+| `.bg-white` | `background-color: var(--bs-white);` |
+| `.bg-black` | `background-color: var(--bs-black);` |
+| `.bg-inherit` | `background-color: inherit;` |
+| `.bg-transparent` | `background-color: transparent;` |
+</BsTable>
 
 ## Background color
 
-Similar to the contextual text color classes, set the background of an element to any contextual class. Background utilities **do not set `color`**, so in some cases you’ll want to use `.text-*` [color utilities]([[docsref:/utilities/colors]]).
+Set the `background-color` of an element.
 
-<Callout>
-Background utilities like `.bg-*` that generated from our original `$theme-colors` Sass map don’t yet respond to color modes, however, any `.bg-*-subtle` utility will. This will be resolved in v6.
-</Callout>
+- Colors are generated from the `$new-theme-colors` Sass map with a `theme-color-values()` function that looks up semantic colors based on a particular key from the Bootstrap theme config.
+- Additional colors are generated from the separate `$theme-bgs` Sass map.
+- Background utilities are generated in a two-step process to allow for dynamic alpha transparency changes:
+  - We generate an attribute utility for classes that include `.bg-`, which looks like `[class*="bg-"]`, and set `background-color: var(--bs-bg)`.
+  - Then, our specific color utilities set the `--bs-bg` CSS variable to the color value.
+- Background utilities don't set `color`, so you may need to use `.text-` or `.text-on-*` [color utilities]([[docsref:/utilities/colors]]).
+- Lastly, most background color utilities are responsive to color mode changes. This excludes inherit and transparent as there's no need, plus white and black as these exist for ease of common translucent colors.
+
+Here are the available background color utilities:
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} ${themeColor.contrast_color ? `text-${themeColor.contrast_color}` : `text-white`}">.bg-${themeColor.name}</div>
-<div class="p-3 mb-2 bg-${themeColor.name}-subtle text-${themeColor.name}-emphasis">.bg-${themeColor.name}-subtle</div>`),
-  `<div class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</div>
-<div class="p-3 mb-2 bg-body-tertiary">.bg-body-tertiary</div>
-<div class="p-3 mb-2 bg-body text-body">.bg-body</div>
-<div class="p-3 mb-2 bg-black text-white">.bg-black</div>
-<div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
-<div class="p-3 mb-2 bg-transparent text-body">.bg-transparent</div>`
+  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} text-on-${themeColor.name}">.bg-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-subtle-${themeColor.name} text-${themeColor.name}">.bg-subtle-${themeColor.name}</div>`),
+  `<div class="p-3 mb-2 bg">.bg</div>
+<div class="p-3 mb-2 bg-1">.bg-1</div>
+<div class="p-3 mb-2 bg-2">.bg-2</div>
+<div class="p-3 mb-2 bg-3">.bg-3</div>`
 ]} />
+
+Behind the scenes, the utilities come together like this:
+
+```css
+[class*="bg-"] {
+  background-color: var(--bs-bg);
+}
+
+.bg-success {
+  --bs-bg: var(--bs-success);
+}
+```
+
+<Callout name="warning-color-assistive-technologies" />
+
+## Background opacity
+
+<BreakingChange />
+
+**Background opacity utilities have changed in v6** to use `.bg-{number}` instead of `.bg-opacity-{number}`. These new utilities are built with CSS-native `color-mix()` functions that mix the `.bg-{color}`'s CSS variable with `transparent`. This allows for real-time background opacity changes without compilation.
+
+Note that changing the alpha-transparency or opacity of a background color may require you to also update the text color to ensure proper contrast.
+
+<Example code={`<div class="p-2 bg-success text-on-success">.bg-success</div>
+<div class="p-2 bg-success bg-90 text-on-success">.bg-90</div>
+<div class="p-2 bg-success bg-80 text-on-success">.bg-80</div>
+<div class="p-2 bg-success bg-70 text-on-success">.bg-70</div>
+<div class="p-2 bg-success bg-60 text-on-success">.bg-60</div>
+<div class="p-2 bg-success bg-50 text-success">.bg-50</div>
+<div class="p-2 bg-success bg-40 text-success">.bg-40</div>
+<div class="p-2 bg-success bg-30 text-success">.bg-30</div>
+<div class="p-2 bg-success bg-20 text-success">.bg-20</div>
+<div class="p-2 bg-success bg-10 text-success">.bg-10</div>`} />
+
+As mentioned above, this works by combining the power of multiple utilities and CSS `color-mix()`. Here's how the compiled CSS looks:
+
+```css
+[class*="bg-"] {
+  background-color: var(--bs-bg);
+}
+
+.bg-success {
+  --bs-bg: var(--bs-success);
+}
+
+.bg-10 {
+  background-color: color-mix(in srgb, var(--bs-bg) 10%, transparent);
+}
+```
+
+## Contrasting color
+
+The `.color-on-{background}` utility is used to set theme-provided contrast color for a particular theme background-color. Contrast color utilities also respond to their respective opacity utilities.
+
+<Example code={`<div class="p-2 bg-success color-on-success">.color-on-success</div>
+<div class="p-2 bg-success color-on-success color-50">.color-on-success.color-50</div>`} />
 
 ## Background gradient
 
@@ -35,44 +123,10 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 
 {getData('theme-colors').map((themeColor) => {
   return (
-    <div class={`p-3 mb-2 bg-${themeColor.name} bg-gradient${themeColor.contrast_color ? (' text-' + themeColor.contrast_color) : ' text-white'}`}>.bg-{themeColor.name}.bg-gradient</div>
+    <div class={`p-3 mb-2 bg-${themeColor.name} bg-gradient color-on-${themeColor.name}`}>.bg-{themeColor.name}.bg-gradient</div>
   )
 })}
-<div class="p-3 mb-2 bg-black bg-gradient text-white">.bg-black.bg-gradient</div>
-
-## Opacity
-
-<AddedIn version="5.1.0" />
-
-As of v5.1.0, `background-color` utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
-
-### How it works
-
-Consider our default `.bg-success` utility.
-
-```css
-.bg-success {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
-}
-```
-
-We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-bg-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.bg-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.bg-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
-
-### Example
-
-To change that opacity, override `--bs-bg-opacity` via custom styles or inline styles.
-
-<Example code={`<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2" style="--bs-bg-opacity: .5;">This is 50% opacity success background</div>`} />
-
-Or, choose from any of the `.bg-opacity` utilities:
-
-<Example code={`<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2 text-white bg-opacity-75">This is 75% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-50">This is 50% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-25">This is 25% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-10">This is 10% opacity success background</div>`} />
+<div class="p-3 mb-2 bg-black bg-gradient color-white">.bg-black.bg-gradient</div>
 
 ## CSS
 
@@ -82,45 +136,47 @@ In addition to the following Sass functionality, consider reading about our incl
 
 Most `background-color` utilities are generated by our theme colors, reassigned from our generic color palette variables.
 
-<ScssDocs name="color-variables" file="scss/_variables.scss" />
+<ScssDocs name="theme-colors" file="scss/_theme.scss" />
 
-<ScssDocs name="theme-color-variables" file="scss/_variables.scss" />
+<ScssDocs name="utils-bg-color" file="scss/_utilities.scss" />
 
-<ScssDocs name="variable-gradient" file="scss/_variables.scss" />
+{/* <ScssDocs name="theme-color-variables" file="scss/_variables.scss" /> */}
+
+{/* <ScssDocs name="variable-gradient" file="scss/_variables.scss" /> */}
 
 Grayscale colors are also available, but only a subset are used to generate any utilities.
 
-<ScssDocs name="gray-color-variables" file="scss/_variables.scss" />
+{/* <ScssDocs name="gray-color-variables" file="scss/_variables.scss" /> */}
 
 Variables for setting `background-color` in `.bg-*-subtle` utilities in light and dark mode:
 
-<ScssDocs name="theme-bg-subtle-variables" file="scss/_variables.scss" />
+{/* <ScssDocs name="theme-bg-subtle-variables" file="scss/_variables.scss" /> */}
 
-<ScssDocs name="theme-bg-subtle-dark-variables" file="scss/_variables-dark.scss" />
+{/* <ScssDocs name="theme-bg-subtle-dark-variables" file="scss/_variables-dark.scss" /> */}
 
 ### Sass maps
 
 Theme colors are then put into a Sass map so we can loop over them to generate our utilities, component modifiers, and more.
 
-<ScssDocs name="theme-colors-map" file="scss/_variables.scss" />
+{/* <ScssDocs name="theme-colors-map" file="scss/_variables.scss" /> */}
 
 Grayscale colors are also available as a Sass map. **This map is not used to generate any utilities.**
 
-<ScssDocs name="gray-colors-map" file="scss/_variables.scss" />
+{/* <ScssDocs name="gray-colors-map" file="scss/_variables.scss" /> */}
 
 RGB colors are generated from a separate Sass map:
 
-<ScssDocs name="theme-colors-rgb" file="scss/_maps.scss" />
+{/* <ScssDocs name="theme-colors-rgb" file="scss/_maps.scss" /> */}
 
 Background color opacities build on that with their own map that’s consumed by the utilities API:
 
-<ScssDocs name="utilities-bg-colors" file="scss/_maps.scss" />
+{/* <ScssDocs name="utilities-bg-colors" file="scss/_maps.scss" /> */}
 
 Color mode background colors are also available as a Sass map:
 
-<ScssDocs name="theme-bg-subtle-map" file="scss/_maps.scss" />
+{/* <ScssDocs name="theme-bg-subtle-map" file="scss/_maps.scss" /> */}
 
-<ScssDocs name="theme-bg-subtle-dark-map" file="scss/_maps.scss" />
+{/* <ScssDocs name="theme-bg-subtle-dark-map" file="scss/_maps.scss" /> */}
 
 ### Sass mixins
 
@@ -128,10 +184,10 @@ Color mode background colors are also available as a Sass map:
 
 <ScssDocs name="gradient-bg-mixin" file="scss/mixins/_gradients.scss" />
 
-<ScssDocs name="gradient-mixins" file="scss/mixins/_gradients.scss" />
+{/* <ScssDocs name="gradient-mixins" file="scss/mixins/_gradients.scss" /> */}
 
 ### Sass utilities API
 
 Background utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-<ScssDocs name="utils-bg-color" file="scss/_utilities.scss" />
+{/* <ScssDocs name="utils-bg-color" file="scss/_utilities.scss" /> */}

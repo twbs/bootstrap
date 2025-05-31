@@ -12,7 +12,7 @@ import Backdrop from './util/backdrop.js'
 import { enableDismissTrigger } from './util/component-functions.js'
 import FocusTrap from './util/focustrap.js'
 import {
-  defineJQueryPlugin, isRTL, isVisible, reflow
+  isRTL, isVisible, reflow
 } from './util/index.js'
 import ScrollBarHelper from './util/scrollbar.js'
 
@@ -313,23 +313,6 @@ class Modal extends BaseComponent {
     this._element.style.paddingLeft = ''
     this._element.style.paddingRight = ''
   }
-
-  // Static
-  static jQueryInterface(config, relatedTarget) {
-    return this.each(function () {
-      const data = Modal.getOrCreateInstance(this, config)
-
-      if (typeof config !== 'string') {
-        return
-      }
-
-      if (typeof data[config] === 'undefined') {
-        throw new TypeError(`No method named "${config}"`)
-      }
-
-      data[config](relatedTarget)
-    })
-  }
 }
 
 /**
@@ -368,11 +351,5 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 })
 
 enableDismissTrigger(Modal)
-
-/**
- * jQuery
- */
-
-defineJQueryPlugin(Modal)
 
 export default Modal

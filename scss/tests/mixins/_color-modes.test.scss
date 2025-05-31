@@ -1,5 +1,6 @@
 // stylelint-disable selector-attribute-quotes
 
+@import "../../colors";
 @import "../../functions";
 @import "../../variables";
 @import "../../variables-dark";
@@ -17,7 +18,7 @@
           }
         }
         @include color-mode(dark, true) {
-          --custom-color: #{mix($indigo, $blue, 50%)};
+          --custom-color: color-mix(in srgb, $indigo, $blue);
         }
       }
       @include expect() {
@@ -46,7 +47,7 @@
           }
         }
         @include color-mode(dark, true) {
-          --custom-color: #{mix($indigo, $blue, 50%)};
+          --custom-color: color-mix(in srgb, $indigo, $blue);
         }
       }
       @include expect() {

@@ -30,6 +30,34 @@ const enableDismissTrigger = (component, method = 'hide') => {
   })
 }
 
+const eventActionOnPlugin = (Plugin, onEvent, stringSelector, method, callback = null) => {
+  eventAction(`${onEvent}.${Plugin.NAME}`, stringSelector, data => {
+    const instances = data.targets.filter(Boolean).map(element => Plugin.getOrCreateInstance(element))
+    if (typeof callback === 'function') {
+      callback({ ...data, instances })
+    }
+
+    for (const instance of instances) {
+      instance[method]()
+    }
+  })
+}
+
+const eventAction = (onEvent, stringSelector, callback) => {
+  const selector = `${stringSelector}:not(.disabled):not(:disabled)`
+  EventHandler.on(document, onEvent, selector, function (event) {
+    if (['A', 'AREA'].includes(this.tagName)) {
+      event.preventDefault()
+    }
+
+    const selector = SelectorEngine.getSelectorFromElement(this)
+    const targets = selector ? SelectorEngine.find(selector) : [this]
+
+    callback({ targets, event })
+  })
+}
+
 export {
-  enableDismissTrigger
+  enableDismissTrigger,
+  eventActionOnPlugin
 }

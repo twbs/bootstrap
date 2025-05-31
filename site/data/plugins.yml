@@ -42,6 +42,10 @@
   description: Show and hide notifications to your visitors.
   link: components/toasts/
 
+- name: Toggler
+  description: Toggle attributes or classes, using simple html markup
+  link: components/toggler/
+
 - name: Tooltip
   description: Replace browser tooltips with custom ones. Built on Popper.
   link: components/tooltips/
