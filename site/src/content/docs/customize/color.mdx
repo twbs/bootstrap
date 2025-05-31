@@ -70,7 +70,7 @@ We use a subset of all colors to create a smaller color palette for generating c
 <div class="d-flex flex-column gap-2 mb-4">
   <h4>Background</h4>
   <div class="grid grid-cols-5 gap-3 text-lowercase">
-    <ThemeColorSwatch variable="bg-0" />
+    <ThemeColorSwatch variable="bg" />
     <ThemeColorSwatch variable="bg-1" />
     <ThemeColorSwatch variable="bg-2" />
     <ThemeColorSwatch variable="bg-3" />
@@ -80,7 +80,7 @@ We use a subset of all colors to create a smaller color palette for generating c
 <div class="d-flex flex-column gap-2 mb-4">
   <h4>Foreground</h4>
   <div class="grid grid-cols-5 gap-3 text-lowercase">
-    <ThemeColorSwatch variable="fg-0" />
+    <ThemeColorSwatch variable="fg" />
     <ThemeColorSwatch variable="fg-1" />
     <ThemeColorSwatch variable="fg-2" />
     <ThemeColorSwatch variable="fg-3" />
@@ -113,10 +113,10 @@ Here are some examples of the new colors in action:
 
 Here's a little guidance on pairing the background and border colors together. Essentially, the default `.border` utility and `border-color` value should work great 90% of the time.
 
-<Example code={`<div class="p-3 mb-3 bg-0" style="border: 1px solid var(--bs-border-emphasized)">.bg-0.border-emphasized</div>
-<div class="p-3 mb-3 bg-0" style="border: 1px solid var(--bs-border)">.bg-0.border</div>
-<div class="p-3 mb-3 bg-0" style="border: 1px solid var(--bs-border-muted)">.bg-0.border-muted</div>
-<div class="p-3 mb-3 bg-0" style="border: 1px solid var(--bs-border-subtle)">.bg-0.border-subtle</div>`} />
+<Example code={`<div class="p-3 mb-3 bg" style="border: 1px solid var(--bs-border-emphasized)">.bg.border-emphasized</div>
+<div class="p-3 mb-3 bg" style="border: 1px solid var(--bs-border)">.bg.border</div>
+<div class="p-3 mb-3 bg" style="border: 1px solid var(--bs-border-muted)">.bg.border-muted</div>
+<div class="p-3 mb-3 bg" style="border: 1px solid var(--bs-border-subtle)">.bg.border-subtle</div>`} />
 
 For other situations, where you have a tinted background color like `.bg-1`, `.bg-2`, or `.bg-3`, consider using the emphsized border variant to maintiain a little contrast between the background and border.
 
