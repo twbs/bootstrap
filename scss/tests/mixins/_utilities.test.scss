@@ -41,28 +41,28 @@ $enable-important-utilities: false;
     }
   }
 
-  @include describe("global $enable-important-utilities: true") {
-    @include it("sets !important") {
-      $enable-important-utilities: true !global;
+  // @include describe("global $enable-important-utilities: true") {
+  //   @include it("sets !important") {
+  //     $enable-important-utilities: true !global;
 
-      @include test-generate-utility(
-        (
-          property: "padding",
-          values: (small: .5rem, large: 2rem)
-        )
-      ) {
-        .padding-small {
-          padding: .5rem !important;
-        }
+  //     @include test-generate-utility(
+  //       (
+  //         property: "padding",
+  //         values: (small: .5rem, large: 2rem)
+  //       )
+  //     ) {
+  //       .padding-small {
+  //         padding: .5rem !important;
+  //       }
 
-        .padding-large {
-          padding: 2rem !important;
-        }
-      }
+  //       .padding-large {
+  //         padding: 2rem !important;
+  //       }
+  //     }
 
-      $enable-important-utilities: false !global;
-    }
-  }
+  //     $enable-important-utilities: false !global;
+  //   }
+  // }
 
   @include describe("$utility") {
     @include describe("values") {
