@@ -4,3 +4,36 @@ description: Track and review changes to the Bootstrap source files, documentati
 aliases: "/migration/"
 toc: true
 ---
+
+## Overview
+
+Bootstrap 6 is a major release that aims to reduce complexity, refine existing components, revamp the utility API, and further embrace newer browser features. To that end, a number of breaking changes have been introduced. This guide will help you understand what's changed and how to migrate your code.
+
+At a high level, here's what's changed:
+
+- Browser support has been modernized and will feature rolling updates to embrace newer releases as time passes during the v6 lifecycle. For example, after a few months, we may bump Safari from 15.6 to 16 or higher.
+- The utility API has been revamped to be more flexible and easier to use.
+
+### Sass
+
+Lots of changes to the `scss` directory, how we use Sass, and more.
+
+- Dropped support for Node Sass, meaning we're now entirely Dart Sass and are using Sass modules across the project.
+- Because we now use Sass modules, we now colocate variables into their respective stylesheets. For example, all dropdown variables are now in `_dropdown.scss`. This greatly reduces the number of variables that are available globally in `_variables.scss`.
+- Rearranged `scss/` directory to have several new subfolders.
+- Removed `_maps.scss` entirely.
+- Added new `_config.scss` file.
+
+### Utility API
+
+- There's a new `selector` property that allows for different types of utilities, as opposed to only "utility classes." Selectors can be `class`, `attr-starts`, or `attr-includes`. We use these in our `background-color` and `color` utilities.
+- `property` can now be a property or a CSS variable (custom property).
+- Removed `local-vars` and `css-var` properties.
+- mdo-do: restore pseudo, local vars?
+
+### Utilities
+- Text color utilities have been renamed from `.text-{color}` to `.color-{color}`. This better matches our other utilities where we lead with the CSS property when possible.
+-
+
+## CSS
+- Replaced box-shadow driven focus styles with `outline`
