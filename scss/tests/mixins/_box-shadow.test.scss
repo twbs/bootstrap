@@ -1,6 +1,8 @@
-@import "../../functions";
-@import "../../variables";
-@import "../../mixins";
+@use "../../functions" as *;
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+$true-terminal-output: false;
 
 // Store original value
 $original-enable-shadows: $enable-shadows;
