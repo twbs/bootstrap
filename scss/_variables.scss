@@ -617,7 +617,7 @@ $input-font-size-lg:                    $input-btn-font-size-lg !default;
 
 $input-bg:                              var(--#{$prefix}body-bg) !default;
 $input-disabled-color:                  null !default;
-$input-disabled-bg:                     var(--#{$prefix}secondary-bg) !default;
+$input-disabled-bg:                     var(--#{$prefix}bg-2) !default;
 $input-disabled-border-color:           null !default;
 
 $input-color:                           var(--#{$prefix}body-color) !default;

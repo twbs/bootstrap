@@ -36,7 +36,7 @@ $new-theme-colors: (
     "bg-muted": light-dark(var(--#{$prefix}blue-200), var(--#{$prefix}blue-800)),
     // "bg-emphasized": light-dark(color-mix(in oklch, var(--#{$prefix}blue-200), var(--#{$prefix}blue-300)), var(--#{$prefix}blue-700)),
     "border": light-dark(var(--#{$prefix}blue-300), var(--#{$prefix}blue-600)),
-    "focus-ring": color-mix(in oklch, var(--#{$prefix}blue-500) 50%, var(--#{$prefix}bg-0)),
+    "focus-ring": color-mix(in oklch, var(--#{$prefix}blue-500) 50%, var(--#{$prefix}bg)),
     "contrast": var(--#{$prefix}white)
   ),
   "accent": (
@@ -47,7 +47,7 @@ $new-theme-colors: (
     "bg-muted": light-dark(var(--#{$prefix}indigo-200), var(--#{$prefix}indigo-800)),
     // "bg-emphasized": light-dark(color-mix(in oklch, var(--#{$prefix}indigo-200), var(--#{$prefix}indigo-300)), var(--#{$prefix}indigo-700)),
     "border": light-dark(var(--#{$prefix}indigo-300), var(--#{$prefix}indigo-600)),
-    "focus-ring": color-mix(in oklch, var(--#{$prefix}indigo-500) 50%, transparent),
+    "focus-ring": color-mix(in oklch, var(--#{$prefix}indigo-500) 50%, var(--#{$prefix}bg)),
     "contrast": var(--#{$prefix}white)
   ),
   "danger": (
@@ -58,7 +58,7 @@ $new-theme-colors: (
     "bg-muted": light-dark(var(--#{$prefix}red-200), var(--#{$prefix}red-800)),
     // "bg-emphasized": light-dark(color-mix(in oklch, var(--#{$prefix}red-200), var(--#{$prefix}red-300)), var(--#{$prefix}red-700)),
     "border": light-dark(var(--#{$prefix}red-300), var(--#{$prefix}red-600)),
-    "focus-ring": color-mix(in oklch, var(--#{$prefix}red-500) 50%, transparent),
+    "focus-ring": color-mix(in oklch, var(--#{$prefix}red-500) 50%, var(--#{$prefix}bg)),
     "contrast": var(--#{$prefix}white)
   ),
   "warning": (
@@ -69,7 +69,7 @@ $new-theme-colors: (
     "bg-muted": light-dark(var(--#{$prefix}yellow-200), var(--#{$prefix}yellow-800)),
     // "bg-emphasized": light-dark(color-mix(in oklch, var(--#{$prefix}yellow-200), var(--#{$prefix}yellow-300)), var(--#{$prefix}yellow-700)),
     "border": light-dark(var(--#{$prefix}yellow-300), var(--#{$prefix}yellow-600)),
-    "focus-ring": color-mix(in oklch, var(--#{$prefix}yellow-500) 50%, transparent),
+    "focus-ring": color-mix(in oklch, var(--#{$prefix}yellow-500) 50%, var(--#{$prefix}bg)),
     "contrast": var(--#{$prefix}gray-900)
   ),
   "success": (
@@ -80,7 +80,7 @@ $new-theme-colors: (
     "bg-muted": light-dark(var(--#{$prefix}green-200), var(--#{$prefix}green-800)),
     // "bg-emphasized": light-dark(color-mix(in oklch, var(--#{$prefix}green-200), var(--#{$prefix}green-300)), var(--#{$prefix}green-700)),
     "border": light-dark(var(--#{$prefix}green-300), var(--#{$prefix}green-600)),
-    "focus-ring": color-mix(in oklch, var(--#{$prefix}green-500) 50%, transparent),
+    "focus-ring": color-mix(in oklch, var(--#{$prefix}green-500) 50%, var(--#{$prefix}bg)),
     "contrast": var(--#{$prefix}white)
   ),
   "info": (
@@ -91,7 +91,7 @@ $new-theme-colors: (
     "bg-muted": light-dark(var(--#{$prefix}cyan-200), var(--#{$prefix}cyan-800)),
     // "bg-emphasized": light-dark(color-mix(in oklch, var(--#{$prefix}cyan-200), var(--#{$prefix}cyan-300)), var(--#{$prefix}cyan-700)),
     "border": light-dark(var(--#{$prefix}cyan-300), var(--#{$prefix}cyan-600)),
-    "focus-ring": color-mix(in oklch, var(--#{$prefix}cyan-500) 50%, transparent),
+    "focus-ring": color-mix(in oklch, var(--#{$prefix}cyan-500) 50%, var(--#{$prefix}bg)),
     "contrast": var(--#{$prefix}gray-900)
   ),
   "secondary": (
@@ -102,7 +102,7 @@ $new-theme-colors: (
     "bg-muted": light-dark(var(--#{$prefix}gray-200), var(--#{$prefix}gray-700)),
     // "bg-emphasized": light-dark(color-mix(in oklch, var(--#{$prefix}gray-200), var(--#{$prefix}gray-300)), color-mix(in oklch, var(--#{$prefix}gray-600), var(--#{$prefix}gray-700))),
     "border": light-dark(var(--#{$prefix}gray-300), var(--#{$prefix}gray-600)),
-    "focus-ring": color-mix(in oklch, var(--#{$prefix}gray-500) 50%, transparent),
+    "focus-ring": color-mix(in oklch, var(--#{$prefix}gray-500) 50%, var(--#{$prefix}bg)),
     "contrast": light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}white))
   )
 ) !default;
