@@ -448,6 +448,11 @@ class Tooltip extends BaseComponent {
       if (trigger === 'click') {
         EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK), this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event)
+          if (context._isShown() && context._activeTrigger[TRIGGER_CLICK]) {
+            context._activeTrigger[TRIGGER_CLICK] = false
+          } else {
+            context._activeTrigger[TRIGGER_CLICK] = true
+          }
           context.toggle()
         })
       } else if (trigger !== TRIGGER_MANUAL) {
