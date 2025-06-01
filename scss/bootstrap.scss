@@ -1,61 +1,46 @@
-// @import "mixins/banner";
-// @include bsBanner("");
-
+/*!
+  * Bootstrap v6.0.0-dev (https://getbootstrap.com/)
+  * Copyright 2011-2025 The Bootstrap Authors
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+  */
 
 // scss-docs-start import-stack
-// Configuration
-// @use "config" as *;
-
-<<<<<<< HEAD
-@import "functions";
-@import "variables";
-@import "variables-dark";
-@import "maps";
-@import "mixins";
-@import "utilities";
-=======
-// @import "functions";
-// @import "colors";
-// @import "variables";
-// @import "variables-dark";
-@use "maps";
-@use "mixins";
-// @use "utilities";
->>>>>>> 3ce5bfcfb (Migrate to Sass modules)
-
-// Layout & components
+// Global CSS variables, layer definitions, and configuration
 @use "root";
-@use "reboot";
-@use "type";
-@use "images";
-// @import "containers";
-// @import "grid";
+
+// Reboot & Content
+@use "content";
+
+// Layout
 @use "layout";
-@use "tables";
+
+// Forms
 @use "forms";
+
+// Components
+@use "accordion";
+@use "alert";
+@use "badge";
+@use "breadcrumb";
 @use "buttons";
-@use "transitions";
-@use "dropdown";
 @use "button-group";
+@use "card";
+@use "carousel";
+@use "close";
+@use "dropdown";
+@use "list-group";
+@use "modal";
 @use "nav";
 @use "navbar";
-@use "card";
-@use "accordion";
-@use "breadcrumb";
-@use "pagination";
-@use "badge";
-@use "alert";
-@use "progress";
-@use "list-group";
-@use "close";
-@use "toasts";
-@use "modal";
-@use "tooltip";
-@use "popover";
-@use "carousel";
-@use "spinners";
 @use "offcanvas";
+@use "pagination";
 @use "placeholders";
+@use "popover";
+@use "progress";
+@use "spinners";
+@use "toasts";
+@use "tooltip";
+@use "transitions";
 
 // Helpers
 @use "helpers";

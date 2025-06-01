@@ -1,4 +1,3 @@
-@use "config" as *;
 @use "colors" as *;
 @use "functions" as *;
 
@@ -77,30 +76,34 @@ $escaped-characters: (
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
-// $enable-caret:                true !default;
-// $enable-rounded:              true !default;
-// $enable-shadows:              false !default;
-// $enable-gradients:            false !default;
-// $enable-transitions:          true !default;
-// $enable-reduced-motion:       true !default;
-// $enable-smooth-scroll:        true !default;
-// $enable-grid-classes:         true !default;
-// $enable-container-classes:    true !default;
-// $enable-cssgrid:              false !default;
-// $enable-button-pointers:      true !default;
-// $enable-rfs:                  true !default;
-// $enable-validation-icons:     true !default;
-// $enable-negative-margins:     false !default;
-// $enable-deprecation-messages: true !default;
-// $enable-important-utilities:  true !default;
+$enable-caret:                true !default;
+$enable-rounded:              true !default;
+$enable-shadows:              false !default;
+$enable-gradients:            false !default;
+$enable-transitions:          true !default;
+$enable-reduced-motion:       true !default;
+$enable-smooth-scroll:        true !default;
+$enable-grid-classes:         true !default;
+$enable-container-classes:    true !default;
+$enable-cssgrid:              false !default;
+$enable-button-pointers:      true !default;
+$enable-rfs:                  true !default;
+$enable-validation-icons:     true !default;
+$enable-negative-margins:     false !default;
+$enable-deprecation-messages: true !default;
+$enable-important-utilities:  true !default;
 
-// $enable-dark-mode:            true !default;
-// $color-mode-type:             data !default; // `data` or `media-query`
+$enable-dark-mode:            true !default;
+$color-mode-type:             data !default; // `data` or `media-query`
 
 // Prefix for :root CSS variables
+$prefix:                      bs- !default;
 
-// $variable-prefix:             bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
-// $prefix:                      $variable-prefix !default;
+$color-mode-type:          "media-query" !default;
+$color-contrast-dark:      #000 !default;
+$color-contrast-light:     #fff !default;
+$min-contrast-ratio:         4.5 !default;
+
 
 // Gradient
 //
@@ -185,54 +188,54 @@ $icon-link-icon-transform:    translate3d(.25em, 0, 0) !default;
 $paragraph-margin-bottom:   1rem !default;
 
 
-// // Grid breakpoints
-// //
-// // Define the minimum dimensions at which your layout will change,
-// // adapting to different screen sizes, for use in media queries.
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
 
-// // scss-docs-start grid-breakpoints
-// $grid-breakpoints: (
-//   xs: 0,
-//   sm: 576px,
-//   md: 768px,
-//   lg: 992px,
-//   xl: 1200px,
-//   xxl: 1400px
-// ) !default;
-// // scss-docs-end grid-breakpoints
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+// scss-docs-end grid-breakpoints
 
 // @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 // @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
 
 
-// // Grid containers
-// //
-// // Define the maximum width of `.container` for different screen sizes.
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
 
-// // scss-docs-start container-max-widths
-// $container-max-widths: (
-//   sm: 540px,
-//   md: 720px,
-//   lg: 960px,
-//   xl: 1140px,
-//   xxl: 1320px
-// ) !default;
-// // scss-docs-end container-max-widths
+// scss-docs-start container-max-widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+// scss-docs-end container-max-widths
 
 // @include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
-// // Grid columns
-// //
-// // Set the number of columns and specify the width of the gutters.
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
 
-// $grid-columns:                12 !default;
-// $grid-gutter-width:           1.5rem !default;
-// $grid-row-columns:            6 !default;
+$grid-columns:                12 !default;
+$grid-gutter-width:           1.5rem !default;
+$grid-row-columns:            6 !default;
 
-// // Container padding
+// Container padding
 
-// $container-padding-x: $grid-gutter-width !default;
+$container-padding-x: $grid-gutter-width !default;
 
 
 // Components
