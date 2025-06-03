@@ -70,6 +70,10 @@ As reference, here are our primary CDN links.
 
 You can also use the CDN to fetch any of our [additional builds listed in the Contents page]([[docsref:/getting-started/contents]]).
 
+When using CDN links, be sure to use the `integrity` attribute to verify the correct files and versions. These hashes are unique to each file and version of Bootstrap, so when you update to a new version, be sure the `integrity` attribute is also updated.
+
+We also include a `crossorigin="anonymous"` attribute to prevent [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) errors.
+
 ## Next steps
 
 - Read a bit more about some [important global environment settings](#important-globals) that Bootstrap utilizes.
