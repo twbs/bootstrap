@@ -6,6 +6,7 @@
 // See: https://kittygiraudel.com/2016/10/13/css-hide-and-seek/
 
 @mixin visually-hidden() {
+  display: inline-block !important; // using this rather than position:absolute to allow for width/height/clip to work without causing undue spacing (e.g. in responsive tables)
   width: 1px !important;
   height: 1px !important;
   padding: 0 !important;
@@ -14,11 +15,6 @@
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
-
-  // Fix for positioned table caption that could become anonymous cells
-  &:not(caption) {
-    position: absolute !important;
-  }
 
   // Fix to prevent overflowing children to become focusable
   * {
