@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v5.3.6 (https://getbootstrap.com/)
+  * Bootstrap v5.3.7 (https://getbootstrap.com/)
   * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -643,7 +643,7 @@ class Config {
  * Constants
  */
 
-const VERSION = '5.3.6';
+const VERSION = '5.3.7';
 
 /**
  * Class definition
@@ -2964,7 +2964,6 @@ const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longde
  *
  * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
  */
-// eslint-disable-next-line unicorn/better-regex
 const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
 const allowedAttribute = (attribute, allowedAttributeList) => {
   const attributeName = attribute.nodeName.toLowerCase();
@@ -3508,6 +3507,7 @@ class Tooltip extends BaseComponent {
       if (trigger === 'click') {
         EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$1), this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event);
+          context._activeTrigger[TRIGGER_CLICK] = !(context._isShown() && context._activeTrigger[TRIGGER_CLICK]);
           context.toggle();
         });
       } else if (trigger !== TRIGGER_MANUAL) {
