@@ -126,7 +126,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@types/prismjs": "^1.26.5",
-    "astro": "^5.9.1",
+    "astro": "^5.9.2",
     "astro-auto-import": "^0.4.4",
     "autoprefixer": "^10.4.21",
     "bundlewatch": "^0.4.1",
@@ -177,7 +177,7 @@
     "shelljs": "^0.10.0",
     "stylelint": "^16.20.0",
     "stylelint-config-twbs-bootstrap": "^16.0.0",
-    "terser": "^5.41.0",
+    "terser": "^5.42.0",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
     "zod": "^3.25.56"
