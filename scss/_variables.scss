@@ -241,7 +241,11 @@ $paragraph-margin-bottom:   1rem !default;
 // Define common padding and border radius sizes and more.
 
 // scss-docs-start border-variables
-$border-width: 1px !default;
+$border-width: var(--#{$prefix}border-width) !default;
+$border-style: var(--#{$prefix}border-style) !default;
+$border-color: var(--#{$prefix}border-color) !default;
+$border-color-translucent: var(--#{$prefix}border-color-translucent) !default;
+
 $border-widths: (
   1: 1px,
   2: 2px,
@@ -249,9 +253,15 @@ $border-widths: (
   4: 4px,
   5: 5px
 ) !default;
-$border-style: solid !default;
-$border-color: light-dark($gray-300, $gray-700) !default;
-$border-color-translucent: rgba($black, .175) !default;
+
+$borders: (
+  0: 0,
+  null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+  2: 2px var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+  3: 3px var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+  4: 4px var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+  5: 5px var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+) !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables

@@ -254,12 +254,18 @@
   }
 
   .bd-example-border-utils {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
     [class^="border"] {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 5rem;
       height: 5rem;
-      margin: .25rem;
-      background-color: var(--bs-tertiary-bg);
+      color: var(--bs-fg-3);
+      background-color: var(--bs-bg-1);
     }
   }
 
@@ -275,13 +281,13 @@
 
     .position-relative {
       height: 200px;
-      background-color: var(--bs-tertiary-bg);
+      background-color: var(--bs-bg-1);
     }
 
     .position-absolute {
       width: 2rem;
       height: 2rem;
-      background-color: var(--bs-body-color);
+      background-color: var(--bs-fg);
       @include border-radius();
     }
   }
@@ -384,7 +390,7 @@
 
   .highlight-toolbar {
     background-color: var(--bd-pre-bg);
-    border-bottom: 1px solid var(--bs-border-color);
+    border-block: 1px solid var(--bs-border-color);
   }
 
   .bd-file-ref {

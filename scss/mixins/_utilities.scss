@@ -6,16 +6,17 @@
 
 // Utility generator
 
-// - Utilities can three different types of selectors:
+// - Utilities can four different types of selectors:
 //   - class: .class
 //   - attr-starts: [class^="class"]
 //   - attr-includes: [class*="class"]
+//   - any other string: used directly as a custom selector (e.g., "& > :not(:last-child)")
 // - Utilities can generate a regular CSS property or a CSS custom property
 // - Utilities can be responsive or not
 // - Utilities can have a state (e.g., :hover, :focus, :active, etc.)
 
 @mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
-  // Determine if we're generating a class, or an attribute selector
+  // Determine if we're generating a class, or an attribute selector, or using a custom selector
   $selectorType: if(map.has-key($utility, selector), map.get($utility, selector), "class");
   // Then get the class name to use in a class (e.g., .class) or in a attribute selector (e.g., [class^="class"])
   $selectorClass: map.get($utility, class);
@@ -73,6 +74,9 @@
       $selector: "[class^=\"#{$selectorClass}\"]";
     } @else if $selectorType == "attr-includes" {
       $selector: "[class*=\"#{$selectorClass}\"]";
+    } @else {
+      // Use the selector value directly as a custom selector string
+      $selector: $selectorType;
     }
 
     // @debug $utility;

@@ -6,17 +6,18 @@
 @layer helpers {
   @each $color, $value in $theme-colors {
     .link-#{$color} {
-      color: color-mix(in srgb, var(--#{$prefix}#{$color}), transparent var(--#{$prefix}link-opacity));
+      --#{$prefix}link-color: var(--#{$prefix}#{$color});
+      // color: var(--#{$prefix}#{$color});
       text-decoration-color: color-mix(in srgb, var(--#{$prefix}#{$color}), transparent var(--#{$prefix}link-underline-opacity));
 
-      @if $link-shade-percentage != 0 {
-        &:hover,
-        &:focus {
-          $hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
-          color: color-mix(in srgb, $hover-color, transparent var(--#{$prefix}link-opacity));
-          text-decoration-color: color-mix(in srgb, $hover-color, transparent var(--#{$prefix}link-underline-opacity));
-        }
-      }
+      // @if $link-shade-percentage != 0 {
+      //   &:hover,
+      //   &:focus {
+      //     $hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
+      //     color: color-mix(in srgb, $hover-color, transparent var(--#{$prefix}link-opacity));
+      //     text-decoration-color: color-mix(in srgb, $hover-color, transparent var(--#{$prefix}link-underline-opacity));
+      //   }
+      // }
     }
   }
 

@@ -95,10 +95,10 @@
   // --#{$prefix}font-size-base: 1rem;
 
   // scss-docs-start root-border-var
-  --#{$prefix}border-width: #{$border-width};
-  --#{$prefix}border-style: #{$border-style};
-  --#{$prefix}border-color: #{$border-color};
-  --#{$prefix}border-color-translucent: #{$border-color-translucent};
+  --#{$prefix}border-width: 1px;
+  --#{$prefix}border-style: solid;
+  --#{$prefix}border-color: light-dark(#{$gray-300}, #{$gray-700});
+  --#{$prefix}border-color-translucent: light-dark(rgba($black, .175), rgba($white, .15));
 
   --#{$prefix}border-radius: .5rem;
   --#{$prefix}border-radius-sm: .375rem;
@@ -108,10 +108,12 @@
   --#{$prefix}border-radius-pill: 50rem;
   // scss-docs-end root-border-var
 
-  --#{$prefix}box-shadow: light-dark(0 .5rem 1rem rgb(0 0 0 / 15%), 0 .5rem 1rem rgb(255 0 0 / 50%));
-  --#{$prefix}box-shadow-sm: 0 .125rem .25rem rgb(0 0 0 / 7.5%);
-  --#{$prefix}box-shadow-lg: 0 1rem 3rem rgb(0 0 0 / 17.5%);
-  --#{$prefix}box-shadow-inset: inset 0 1px 2px rgb(0 0 0 / 7.5%);
+  // scss-docs-start root-shadow-vars
+  --#{$prefix}box-shadow: 0 .5rem 1rem rgb(0 0 0 / .15);
+  --#{$prefix}box-shadow-sm: 0 .125rem .25rem rgb(0 0 0 / .075);
+  --#{$prefix}box-shadow-lg: 0 1rem 3rem rgb(0 0 0 / .175);
+  --#{$prefix}box-shadow-inset: inset 0 1px 2px rgb(0 0 0 / .075);
+  // scss-docs-end root-shadow-vars
 
   // Focus styles
   // scss-docs-start root-focus-variables

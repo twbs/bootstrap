@@ -145,68 +145,87 @@ $utilities: map.merge(
     ),
     // scss-docs-end utils-position
     // scss-docs-start utils-borders
-    "border": (
+    // "border": (
+    //   // selector: "attr-includes",
+    //   class: border,
+    //   property: border,
+    //   values: (
+    //     null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+    //     // 0: 0,
+    //   )
+    // ),
+    "borders": (
       property: border,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
-        0: 0,
-      )
+      class: border,
+      values: map.merge($borders, (0: 0))
     ),
-    "border-top": (
-      class: border-top,
+    // "borders": (
+    //   class: border,
+    //   property: '--#{$prefix}border-width',
+    //   values: map.merge($border-widths, (0: 0))
+    // ),
+    "border-t": (
+      class: border-t,
       property: border-block-start,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
-        0: 0,
-      )
+      values: map.merge($borders, (0: 0))
     ),
-    "border-end": (
+    "border-e": (
       property: border-inline-end,
-      class: border-end,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
-        0: 0,
-      )
+      class: border-e,
+      values: map.merge($borders, (0: 0))
     ),
-    "border-bottom": (
+    "border-b": (
       property: border-block-end,
-      class: border-bottom,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
-        0: 0,
-      )
+      class: border-b,
+      values: map.merge($borders, (0: 0))
     ),
-    "border-start": (
+    "border-s": (
       property: border-inline-start,
-      class: border-start,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
-        0: 0,
-      )
+      class: border-s,
+      values: map.merge($borders, (0: 0))
     ),
     "border-y": (
       property: border-block,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
-        0: 0,
-      )
+      values: map.merge($borders, (0: 0))
     ),
     "border-x": (
       property: border-inline,
-      values: (
-        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
-        0: 0,
-      )
+      values: map.merge($borders, (0: 0))
     ),
     "border-color": (
-      property: border-color,
+      property: --#{$prefix}border-color,
       class: border,
       values: theme-color-values("border")
     ),
-    "border-width": (
-      property: border-width,
+    "dividers-x": (
+      selector: ".dividers-x > :not(:first-child)",
+      property: border-inline-start,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+      )
+    ),
+    "dividers-y": (
+      selector: ".dividers-y > :not(:first-child)",
+      property: border-block-start,
+      values: (
+        null: var(--#{$prefix}border-width) var(--#{$prefix}border-style) var(--#{$prefix}border-color),
+      )
+    ),
+    "border-opacity": (
       class: border,
-      values: $border-widths
+      property: border-color,
+      values: (
+        10: color-mix(in oklch, var(--#{$prefix}border-color) 10%, transparent),
+        20: color-mix(in oklch, var(--#{$prefix}border-color) 20%, transparent),
+        30: color-mix(in oklch, var(--#{$prefix}border-color) 30%, transparent),
+        40: color-mix(in oklch, var(--#{$prefix}border-color) 40%, transparent),
+        50: color-mix(in oklch, var(--#{$prefix}border-color) 50%, transparent),
+        60: color-mix(in oklch, var(--#{$prefix}border-color) 60%, transparent),
+        70: color-mix(in oklch, var(--#{$prefix}border-color) 70%, transparent),
+        80: color-mix(in oklch, var(--#{$prefix}border-color) 80%, transparent),
+        90: color-mix(in oklch, var(--#{$prefix}border-color) 90%, transparent),
+        100: var(--#{$prefix}border-color),
+      )
     ),
     // "border-opacity": (
     //   css-var: true,
@@ -666,16 +685,15 @@ $utilities: map.merge(
     // scss-docs-end utils-color
     // scss-docs-start utils-links
     "link-opacity": (
-      property: --#{$prefix}link-opacity,
-      // css-var: true,
+      property: color,
       class: link-opacity,
       state: hover,
       values: (
-        10: .1,
-        25: .25,
-        50: .5,
-        75: .75,
-        100: 1
+        10: color-mix(in oklch, var(--#{$prefix}link-color) 10%, transparent),
+        25: color-mix(in oklch, var(--#{$prefix}link-color) 25%, transparent),
+        50: color-mix(in oklch, var(--#{$prefix}link-color) 50%, transparent),
+        75: color-mix(in oklch, var(--#{$prefix}link-color) 75%, transparent),
+        100: var(--#{$prefix}link-color),
       )
     ),
     "link-offset": (
@@ -694,6 +712,7 @@ $utilities: map.merge(
       local-vars: (
         "link-underline-opacity": 1
       ),
+      values: theme-color-values("text"),
       // values: map.merge(
       //   $utilities-links-underline,
       //   (
@@ -703,16 +722,17 @@ $utilities: map.merge(
     ),
     "link-underline-opacity": (
       // css-var: true,
-      property: --#{$prefix}link-underline-opacity,
+      // property: --#{$prefix}link-underline-opacity,
+      property: text-decoration-color,
       class: link-underline-opacity,
       state: hover,
       values: (
-        0: 0,
-        10: .1,
-        25: .25,
-        50: .5,
-        75: .75,
-        100: 1
+        0: color-mix(in oklch, var(--#{$prefix}link-color) 0%, transparent),
+        10: color-mix(in oklch, var(--#{$prefix}link-color) 10%, transparent),
+        25: color-mix(in oklch, var(--#{$prefix}link-color) 25%, transparent),
+        50: color-mix(in oklch, var(--#{$prefix}link-color) 50%, transparent),
+        75: color-mix(in oklch, var(--#{$prefix}link-color) 75%, transparent),
+        100: var(--#{$prefix}link-color),
       ),
     ),
     // scss-docs-end utils-links
