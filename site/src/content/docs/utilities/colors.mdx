@@ -6,26 +6,64 @@ mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/color
 ---
 
 import { getData } from '@libs/data'
+import RefTable from '@components/shortcodes/RefTable.astro'
 
 ## Reference
 
-<BsTable class="table reference-table">
-| Class | Styles |
-| --- | --- |
-| `.color-primary` | `color: var(--bs-primary);` |
-| `.color-secondary` | `color: var(--bs-secondary);` |
-| `.color-success` | `color: var(--bs-success);` |
-| `.color-danger` | `color: var(--bs-danger);` |
-| `.color-warning` | `color: var(--bs-warning);` |
-| `.color-info` | `color: var(--bs-info);` |
-| `.color-fg` | `color: var(--bs-fg);` |
-| `.color-fg-1` | `color: var(--bs-fg-1);` |
-| `.color-fg-2` | `color: var(--bs-fg-2);` |
-| `.color-fg-3` | `color: var(--bs-fg-3);` |
-| `.color-white` | `color: var(--bs-white);` |
-| `.color-black` | `color: var(--bs-black);` |
-| `.color-inherit` | `color: inherit;` |
-</BsTable>
+<RefTable data={[
+  {
+    class: '.color-primary',
+    code: 'color: var(--bs-primary);'
+  },
+  {
+    class: '.color-secondary',
+    code: 'color: var(--bs-secondary);'
+  },
+  {
+    class: '.color-success',
+    code: 'color: var(--bs-success);'
+  },
+  {
+    class: '.color-danger',
+    code: 'color: var(--bs-danger);'
+  },
+  {
+    class: '.color-warning',
+    code: 'color: var(--bs-warning);'
+  },
+  {
+    class: '.color-info',
+    code: 'color: var(--bs-info);'
+  },
+  {
+    class: '.color-fg',
+    code: 'color: var(--bs-fg);'
+  },
+  {
+    class: '.color-fg-1',
+    code: 'color: var(--bs-fg-1);'
+  },
+  {
+    class: '.color-fg-2',
+    code: 'color: var(--bs-fg-2);'
+  },
+  {
+    class: '.color-fg-3',
+    code: 'color: var(--bs-fg-3);'
+  },
+  {
+    class: '.color-white',
+    code: 'color: var(--bs-white);'
+  },
+  {
+    class: '.color-black',
+    code: 'color: var(--bs-black);'
+  },
+  {
+    class: '.color-inherit',
+    code: 'color: inherit;'
+  }
+]} />
 
 ## Colors
 
@@ -103,7 +141,7 @@ As mentioned above, this works by combining the power of multiple utilities and 
 
 ## Specificity
 
-Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element’s content in a `<div>` or more semantic element with the desired class.
+Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` or more semantic element with the desired class.
 
 ## CSS
 
@@ -141,7 +179,7 @@ RGB colors are generated from a separate Sass map:
 
 {/* <ScssDocs name="theme-colors-rgb" file="scss/_maps.scss" /> */}
 
-Color opacities build on that with their own map that’s consumed by the utilities API:
+Color opacities build on that with their own map that's consumed by the utilities API:
 
 {/* <ScssDocs name="utilities-text-colors" file="scss/_maps.scss" /> */}
 

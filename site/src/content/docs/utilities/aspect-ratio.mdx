@@ -5,17 +5,32 @@ toc: true
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 ---
 
+import RefTable from '@components/shortcodes/RefTable.astro'
+
 ## Reference
 
-<BsTable class="table reference-table">
-| Class | Styles |
-| --- | --- |
-| `.ratio-auto` | `aspect-ratio: auto;` |
-| `.ratio-1x1` | `aspect-ratio: 1 / 1;` |
-| `.ratio-4x3` | `aspect-ratio: 4 / 3;` |
-| `.ratio-16x9` | `aspect-ratio: 16 / 9;` |
-| `.ratio-21x9` | `aspect-ratio: 21 / 9;` |
-</BsTable>
+<RefTable data={[
+  {
+    class: '.ratio-auto',
+    code: 'aspect-ratio: auto;'
+  },
+  {
+    class: '.ratio-1x1',
+    code: 'aspect-ratio: 1 / 1;'
+  },
+  {
+    class: '.ratio-4x3',
+    code: 'aspect-ratio: 4 / 3;'
+  },
+  {
+    class: '.ratio-16x9',
+    code: 'aspect-ratio: 16 / 9;'
+  },
+  {
+    class: '.ratio-21x9',
+    code: 'aspect-ratio: 21 / 9;'
+  }
+]} />
 
 ## Example
 

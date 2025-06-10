@@ -6,38 +6,96 @@ mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/border
 ---
 
 import { getData } from '@libs/data'
+import RefTable from '@components/shortcodes/RefTable.astro'
+
+## Reference
+
+<RefTable data={[
+  {
+    class: '.border',
+    code: 'border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);'
+  },
+  {
+    class: '.border-t',
+    code: 'border-block-start: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);'
+  },
+  {
+    class: '.border-e',
+    code: 'border-inline-end: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);'
+  },
+  {
+    class: '.border-b',
+    code: 'border-block-end: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);'
+  },
+  {
+    class: '.border-s',
+    code: 'border-inline-start: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);'
+  },
+  {
+    class: '.border-y',
+    code: 'border-block: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);'
+  },
+  {
+    class: '.border-x',
+    code: 'border-inline: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);'
+  },
+  {
+    class: '.border-color',
+    code: 'border-color: var(--bs-border-color);'
+  },
+  {
+    class: '.border-width',
+    code: 'border-width: var(--bs-border-width);'
+  },
+  {
+    class: '.dividers-x',
+    code: `.dividers-x > :not(:first-child) {
+    border-inline-start: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  }`
+  },
+  {
+    class: '.dividers-y',
+    code: `.dividers-y > :not(:first-child) {
+    border-block-start: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
+  }`
+  }
+]} />
 
 ## Border
 
-Use border utilities to add or remove an element’s borders. Choose from all borders or one at a time.
+Use border utilities to add or remove an element's borders. Choose from all borders or one at a time.
 
 ### Additive
 
-Add borders to custom elements:
+Add borders to custom elements. `.border` adds a border to all sides of an element while the other utilities add a border to a specific side.
 
-<Example class="bd-example-border-utils" code={`<span class="border"></span>
-<span class="border-top"></span>
-<span class="border-end"></span>
-<span class="border-bottom"></span>
-<span class="border-start"></span>`} />
+<Example class="bd-example-border-utils" code={`<span class="border">All</span>
+<span class="border-t">Top</span>
+<span class="border-e">End</span>
+<span class="border-b">Bottom</span>
+<span class="border-s">Start</span>`} />
+
+You can also use different border width sizes on all sides, or one at a time.
+
+<Example class="bd-example-border-utils" code={`<span class="border-3">All</span>
+<span class="border-t-3">Top</span>
+<span class="border-e-3">End</span>
+<span class="border-b-3">Bottom</span>
+<span class="border-s-3">Start</span>`} />
 
 ### Subtractive
 
-Or remove borders:
+You can also remove borders from all or specific sides.
 
-<Example class="bd-example-border-utils" code={`<span class="border border-0"></span>
-<span class="border border-top-0"></span>
-<span class="border border-end-0"></span>
-<span class="border border-bottom-0"></span>
-<span class="border border-start-0"></span>`} />
+<Example class="bd-example-border-utils" code={`<span class="border-0">All</span>
+<span class="border border-t-0">Top</span>
+<span class="border border-e-0">End</span>
+<span class="border border-b-0">Bottom</span>
+<span class="border border-s-0">Start</span>`} />
 
 ## Color
 
-<Callout>
-Border utilities like `.border-*` that generated from our original `$theme-colors` Sass map don’t yet respond to color modes, however, any `.border-*-subtle` utility will. This will be resolved in v6.
-</Callout>
-
-Change the border color using utilities built on our theme colors.
+Change the border color using utilities built on our theme colors. Theme colors are adaptive to color mode via the `light-dark()` CSS function.
 
 <Example class="bd-example-border-utils" code={[
   ...getData('theme-colors').map((themeColor) => `<span class="border border-${themeColor.name}"></span>
@@ -53,11 +111,11 @@ Or modify the default `border-color` of a component:
     <input type="email" class="form-control border-success" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
 
-  <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+  <div class="h4 pb-2 mb-4 text-danger border-b border-danger">
     Dangerous heading
   </div>
 
-  <div class="p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end">
+  <div class="p-3 bg-info bg-10 border border-info border-s-0 rounded-end">
     Changing border color and width
   </div>`} />
 
@@ -78,7 +136,7 @@ Consider our default `.border-success` utility.
 }
 ```
 
-We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-border-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.border-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.border-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
+We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-border-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.border-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.border-*` class avoids inheritance issues so nested instances of the utilities don't automatically have a modified alpha transparency.
 
 ### Example
 
@@ -90,63 +148,56 @@ To change that opacity, override `--bs-border-opacity` via custom styles or inli
 Or, choose from any of the `.border-opacity` utilities:
 
 <Example code={`<div class="border border-success p-2 mb-2">This is default success border</div>
-<div class="border border-success p-2 mb-2 border-opacity-75">This is 75% opacity success border</div>
-<div class="border border-success p-2 mb-2 border-opacity-50">This is 50% opacity success border</div>
-<div class="border border-success p-2 mb-2 border-opacity-25">This is 25% opacity success border</div>
-<div class="border border-success p-2 border-opacity-10">This is 10% opacity success border</div>`} />
+<div class="border border-success border-90 p-2 mb-2">This is 90% opacity success border</div>
+<div class="border border-success border-70 p-2 mb-2">This is 70% opacity success border</div>
+<div class="border border-success border-60 p-2 mb-2">This is 60% opacity success border</div>
+<div class="border border-success border-80 p-2 mb-2">This is 80% opacity success border</div>
+<div class="border border-success border-40 p-2 mb-2">This is 40% opacity success border</div>
+<div class="border border-success border-50 p-2 mb-2">This is 50% opacity success border</div>
+<div class="border border-success border-30 p-2 mb-2">This is 30% opacity success border</div>
+<div class="border border-success border-20 p-2 mb-2">This is 20% opacity success border</div>
+<div class="border border-success border-10 p-2">This is 10% opacity success border</div>`} />
 
 ## Width
 
-<Example class="bd-example-border-utils" code={`<span class="border border-1"></span>
-<span class="border border-2"></span>
-<span class="border border-3"></span>
-<span class="border border-4"></span>
-<span class="border border-5"></span>`} />
+<Example class="bd-example-border-utils" code={`<span class="border"></span>
+<span class="border-1"></span>
+<span class="border-2"></span>
+<span class="border-3"></span>
+<span class="border-4"></span>
+<span class="border-5"></span>`} />
 
-## Radius
+## Between
 
-Add classes to an element to easily round its corners.
+Use the `.dividers-x` and `.dividers-y` utilities to add borders between items. You can also mix and match color width utilities here.
 
-<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded" title="Example rounded image" />
-<Placeholder width="75" height="75" class="rounded-top" title="Example top rounded image" />
-<Placeholder width="75" height="75" class="rounded-end" title="Example right rounded image" />
-<Placeholder width="75" height="75" class="rounded-bottom" title="Example bottom rounded image" />
-<Placeholder width="75" height="75" class="rounded-start" title="Example left rounded image" />`} />
+<Example code={`<div class="d-flex dividers-x">
+    <div class="p-3">First item</div>
+    <div class="p-3">Second item</div>
+    <div class="p-3">Third item</div>
+  </div>`} />
 
-### Sizes
-
-Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `5` including `circle` and `pill`, and can be configured by modifying the utilities API.
-
-<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" />
-<Placeholder width="75" height="75" class="rounded-1" title="Example small rounded image" />
-<Placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" />
-<Placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" />
-<Placeholder width="75" height="75" class="rounded-4" title="Example larger rounded image" />
-<Placeholder width="75" height="75" class="rounded-5" title="Example extra large rounded image" />
-<Placeholder width="75" height="75" class="rounded-circle" title="Completely round image" />
-<Placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" />`} />
-
-<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded-bottom-1" title="Example small rounded image" />
-<Placeholder width="75" height="75" class="rounded-start-2" title="Example default left rounded image" />
-<Placeholder width="75" height="75" class="rounded-end-circle" title="Example right completely round image" />
-<Placeholder width="75" height="75" class="rounded-start-pill" title="Example left rounded pill image" />
-<Placeholder width="75" height="75" class="rounded-5 rounded-top-0" title="Example extra large bottom rounded image" />`} />
+<Example code={`<div class="d-flex flex-column dividers-y ">
+    <div class="p-3">First item</div>
+    <div class="p-3">Second item</div>
+    <div class="p-3">Third item</div>
+  </div>`} />
 
 ## CSS
 
 ### Variables
 
-<ScssDocs name="root-border-var" file="scss/_root.scss" />
+{/* <ScssDocs name="root-border-var" file="scss/_root.scss" /> */}
 
 ### Sass variables
 
-<ScssDocs name="border-variables" file="scss/_variables.scss" />
+{/* <ScssDocs name="border-variables" file="scss/_variables.scss" /> */}
 
 Variables for setting `border-color` in `.border-*-subtle` utilities in light and dark mode:
 
-<ScssDocs name="theme-border-subtle-variables" file="scss/_variables.scss" />
+{/* <ScssDocs name="theme-border-subtle-variables" file="scss/_variables.scss" />
 
-<ScssDocs name="theme-border-subtle-dark-variables" file="scss/_variables-dark.scss" />
+<ScssDocs name="theme-border-subtle-dark-variables" file="scss/_variables-dark.scss" /> */}
 
 ### Sass maps
 
@@ -160,4 +211,4 @@ Color mode adaptive border colors are also available as a Sass map:
 
 Border utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-<ScssDocs name="utils-borders" file="scss/_utilities.scss" />
+{/* <ScssDocs name="utils-borders" file="scss/_utilities.scss" /> */}

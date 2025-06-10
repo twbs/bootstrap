@@ -1,0 +1,163 @@
+---
+import { Prism } from '@astrojs/prism'
+
+interface Props {
+  /**
+   * Array of reference items with class names and code snippets, or section headings
+   */
+  data: Array<{
+    type?: 'item' | 'section';
+    class?: string;
+    code?: string;
+    language?: string; // Language for syntax highlighting (css, scss, js, etc.)
+    description?: string;
+    title?: string; // Used for section headings
+  }>;
+  /**
+   * The CSS class to apply to the table.
+   * @default "table"
+   */
+  class?: string;
+  /**
+   * Column headers for the table
+   * @default ["Class", "Styles"]
+   */
+  headers?: [string, string];
+}
+
+const {
+  data,
+  class: tableClass = "table",
+  headers = ["Class", "Styles"]
+} = Astro.props;
+
+// Helper function to process class names with placeholder syntax
+function processClassName(className: string) {
+  return className.replace(/\{([^}]+)\}/g, '<em>{$1}</em>');
+}
+---
+
+<div class="table-responsive">
+  <table class={tableClass}>
+    <thead>
+      <tr>
+        <th>{headers[0]}</th>
+        <th>{headers[1]}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {data.map((item) => {
+        if (item.type === 'section') {
+          return (
+            <tr class="section-header">
+              <td colspan="2">
+                {item.title}
+              </td>
+            </tr>
+          );
+        }
+
+        return (
+          <tr>
+            <td>
+              <code set:html={processClassName(item.class || '')}></code>
+              {item.description && <div class="text-muted small mt-1">{item.description}</div>}
+            </td>
+            <td>
+              <div class="highlight">
+                <Prism code={item.code || ''} lang={item.language || 'css'} />
+              </div>
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .table-responsive {
+    max-height: 440px;
+    overflow-y: auto;
+    margin-bottom: 2rem;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  td:first-child {
+    min-width: 200px;
+    color: light-dark(var(--bs-indigo-500), var(--bs-indigo-300));
+  }
+
+  td:last-child {
+    width: 90%;
+  }
+
+  tr:has(+ .section-header) td {
+    border-bottom: 0;
+  }
+
+  .section-header td {
+    padding-block-start: 1rem;
+    color: var(--bs-emphasis-color);
+    font-weight: 600;
+  }
+
+  .highlight {
+    padding: 0;
+    background-color: transparent;
+  }
+  .highlight :global(pre) {
+    padding: 0;
+    margin: 0;
+  }
+
+  code {
+    display: inline-block;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+</style>
+
+
+<!-- ## Multi-line Code Example
+
+Here's how you can use multi-line code blocks with syntax highlighting:
+
+<RefTable
+  headers={["Class", "CSS Rules"]}
+  data={[
+    {
+      class: '.custom-border',
+      code: `border: 2px solid var(--bs-primary);
+border-radius: 0.375rem;
+box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);`,
+      description: 'Custom border with shadow'
+    },
+    {
+      class: '.focus-border',
+      code: `border: 1px solid var(--bs-border-color);
+transition: border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
+
+&:focus {
+  border-color: var(--bs-primary);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+}`,
+      language: 'scss',
+      description: 'Focus state with smooth transitions'
+    },
+    {
+      class: '.toggle-border()',
+      code: `function toggleBorder(element) {
+  element.classList.toggle('border');
+  element.classList.toggle('border-primary');
+}`,
+      language: 'javascript',
+      description: 'JavaScript helper function'
+    }
+  ]}
+/> -->

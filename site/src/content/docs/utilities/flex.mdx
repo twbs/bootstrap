@@ -9,6 +9,187 @@ csstricks: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 import { getData } from '@libs/data'
 import { getSequence } from '@libs/utils'
 
+## Reference
+
+<RefTable data={[
+  {
+    type: 'section',
+    title: 'Direction'
+  },
+  {
+    class: '.flex-{breakpoint-}row',
+    code: 'flex-direction: row;'
+  },
+  {
+    class: '.flex-{breakpoint-}row-reverse',
+    code: 'flex-direction: row-reverse;'
+  },
+  {
+    class: '.flex-{breakpoint-}column',
+    code: 'flex-direction: column;'
+  },
+  {
+    class: '.flex-{breakpoint-}column-reverse',
+    code: 'flex-direction: column-reverse;'
+  },
+  {
+    type: 'section',
+    title: 'Justify content'
+  },
+  {
+    class: '.justify-content-{breakpoint-}start',
+    code: 'justify-content: flex-start;'
+  },
+  {
+    class: '.justify-content-{breakpoint-}end',
+    code: 'justify-content: flex-end;'
+  },
+  {
+    class: '.justify-content-{breakpoint-}center',
+    code: 'justify-content: center;'
+  },
+  {
+    class: '.justify-content-{breakpoint-}between',
+    code: 'justify-content: space-between;'
+  },
+  {
+    class: '.justify-content-{breakpoint-}around',
+    code: 'justify-content: space-around;'
+  },
+  {
+    class: '.justify-content-{breakpoint-}evenly',
+    code: 'justify-content: space-evenly;'
+  },
+  {
+    type: 'section',
+    title: 'Align items'
+  },
+  {
+    class: '.align-items-{breakpoint-}start',
+    code: 'align-items: flex-start;'
+  },
+  {
+    class: '.align-items-{breakpoint-}end',
+    code: 'align-items: flex-end;'
+  },
+  {
+    class: '.align-items-{breakpoint-}center',
+    code: 'align-items: center;'
+  },
+  {
+    class: '.align-items-{breakpoint-}baseline',
+    code: 'align-items: baseline;'
+  },
+  {
+    class: '.align-items-{breakpoint-}stretch',
+    code: 'align-items: stretch;'
+  },
+  {
+    type: 'section',
+    title: 'Align self'
+  },
+  {
+    class: '.align-self-{breakpoint-}start',
+    code: 'align-self: flex-start;'
+  },
+  {
+    class: '.align-self-{breakpoint-}end',
+    code: 'align-self: flex-end;'
+  },
+  {
+    class: '.align-self-{breakpoint-}center',
+    code: 'align-self: center;'
+  },
+  {
+    class: '.align-self-{breakpoint-}baseline',
+    code: 'align-self: baseline;'
+  },
+  {
+    class: '.align-self-{breakpoint-}stretch',
+    code: 'align-self: stretch;'
+  },
+  {
+    type: 'section',
+    title: 'Align content'
+  },
+  {
+    class: '.align-content-{breakpoint-}start',
+    code: 'align-content: flex-start;'
+  },
+  {
+    class: '.align-content-{breakpoint-}end',
+    code: 'align-content: flex-end;'
+  },
+  {
+    class: '.align-content-{breakpoint-}center',
+    code: 'align-content: center;'
+  },
+  {
+    class: '.align-content-{breakpoint-}between',
+    code: 'align-content: space-between;'
+  },
+  {
+    class: '.align-content-{breakpoint-}around',
+    code: 'align-content: space-around;'
+  },
+  {
+    class: '.align-content-{breakpoint-}stretch',
+    code: 'align-content: stretch;'
+  },
+  {
+    type: 'section',
+    title: 'Grow, shrink, and wrap'
+  },
+  {
+    class: '.flex-fill',
+    code: 'flex: 1 1 auto;'
+  },
+  {
+    class: '.flex-grow-{breakpoint-}0',
+    code: 'flex-grow: 0;'
+  },
+  {
+    class: '.flex-grow-{breakpoint-}1',
+    code: 'flex-grow: 1;'
+  },
+  {
+    class: '.flex-shrink-{breakpoint-}0',
+    code: 'flex-shrink: 0;'
+  },
+  {
+    class: '.flex-shrink-{breakpoint-}1',
+    code: 'flex-shrink: 1;'
+  },
+  {
+    class: '.flex-nowrap',
+    code: 'flex-wrap: nowrap;'
+  },
+  {
+    class: '.flex-wrap',
+    code: 'flex-wrap: wrap;'
+  },
+  {
+    class: '.flex-wrap-reverse',
+    code: 'flex-wrap: wrap-reverse;'
+  },
+  {
+    type: 'section',
+    title: 'Order'
+  },
+  {
+    class: '.order-{breakpoint-}{number}',
+    code: 'order: {number};'
+  },
+  {
+    class: '.order-{breakpoint-}first',
+    code: 'order: -1;'
+  },
+  {
+    class: '.order-{breakpoint-}last',
+    code: 'order: 100;'
+  }
+]} />
+
 <Callout type="info" title="Flexbox">
 **Need some quick flexbox layouts?** Consider using [our Stacks helpers]([[docsref:/helpers/stacks]]) that combine common flexbox properties for quick layouts.
 </Callout>
@@ -20,19 +201,6 @@ Apply `display` utilities to create a flexbox container and transform **direct c
 <Example class="bd-example-flex" code={`<div class="d-flex p-2">I'm a flexbox container!</div>`} />
 
 <Example class="bd-example-flex" code={`<div class="d-inline-flex p-2">I'm an inline flexbox container!</div>`} />
-
-Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <Fragment>
-      <li><code>.d{breakpoint.abbr}-flex</code></li>
-      <li><code>.d{breakpoint.abbr}-inline-flex</code></li>
-    </Fragment>
-  )
-})}
-</ul>
 
 ## Direction
 
@@ -63,21 +231,6 @@ Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to st
     <div class="p-2">Flex item 2</div>
     <div class="p-2">Flex item 3</div>
   </div>`} />
-
-Responsive variations also exist for `flex-direction`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <Fragment>
-      <li><code>.flex{breakpoint.abbr}-row</code></li>
-      <li><code>.flex{breakpoint.abbr}-row-reverse</code></li>
-      <li><code>.flex{breakpoint.abbr}-column</code></li>
-      <li><code>.flex{breakpoint.abbr}-column-reverse</code></li>
-    </Fragment>
-  )
-})}
-</ul>
 
 ## Justify content
 
@@ -125,23 +278,6 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
 <div class="d-flex justify-content-evenly">...</div>
 ```
 
-Responsive variations also exist for `justify-content`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <Fragment>
-      <li><code>.justify-content{breakpoint.abbr}-start</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-end</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-center</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-between</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-around</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-evenly</code></li>
-    </Fragment>
-  )
-})}
-</ul>
-
 ## Align items
 
 Use `align-items` utilities on flexbox containers to change the alignment of flex items on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
@@ -181,22 +317,6 @@ Use `align-items` utilities on flexbox containers to change the alignment of fle
 <div class="d-flex align-items-baseline">...</div>
 <div class="d-flex align-items-stretch">...</div>
 ```
-
-Responsive variations also exist for `align-items`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <Fragment>
-      <li><code>.align-items{breakpoint.abbr}-start</code></li>
-      <li><code>.align-items{breakpoint.abbr}-end</code></li>
-      <li><code>.align-items{breakpoint.abbr}-center</code></li>
-      <li><code>.align-items{breakpoint.abbr}-baseline</code></li>
-      <li><code>.align-items{breakpoint.abbr}-stretch</code></li>
-    </Fragment>
-  )
-})}
-</ul>
 
 ## Align self
 
@@ -238,22 +358,6 @@ Use `align-self` utilities on flexbox items to individually change their alignme
 <div class="align-self-stretch">Aligned flex item</div>
 ```
 
-Responsive variations also exist for `align-self`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <Fragment>
-      <li><code>.align-self{breakpoint.abbr}-start</code></li>
-      <li><code>.align-self{breakpoint.abbr}-end</code></li>
-      <li><code>.align-self{breakpoint.abbr}-center</code></li>
-      <li><code>.align-self{breakpoint.abbr}-baseline</code></li>
-      <li><code>.align-self{breakpoint.abbr}-stretch</code></li>
-    </Fragment>
-  )
-})}
-</ul>
-
 ## Fill
 
 Use the `.flex-fill` class on a series of sibling elements to force them into widths equal to their content (or equal widths if their content does not surpass their border-boxes) while taking up all available horizontal space.
@@ -263,16 +367,6 @@ Use the `.flex-fill` class on a series of sibling elements to force them into wi
     <div class="p-2 flex-fill">Flex item</div>
     <div class="p-2 flex-fill">Flex item</div>
   </div>`} />
-
-Responsive variations also exist for `flex-fill`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <li><code>.flex{breakpoint.abbr}-fill</code></li>
-  )
-})}
-</ul>
 
 ## Grow and shrink
 
@@ -290,19 +384,6 @@ Use `.flex-shrink-*` utilities to toggle a flex item’s ability to shrink if ne
     <div class="p-2 w-100">Flex item</div>
     <div class="p-2 flex-shrink-1">Flex item</div>
   </div>`} />
-
-Responsive variations also exist for `flex-grow` and `flex-shrink`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <Fragment>
-      <li><code>.flex{breakpoint.abbr}-{'{'}grow|shrink{'}'}-0</code></li>
-      <li><code>.flex{breakpoint.abbr}-{'{'}grow|shrink{'}'}-1</code></li>
-    </Fragment>
-  )
-})}
-</ul>
 
 ## Auto margins
 
@@ -412,20 +493,6 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
 </div>
 ```
 
-Responsive variations also exist for `flex-wrap`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <Fragment>
-      <li><code>.flex{breakpoint.abbr}-nowrap</code></li>
-      <li><code>.flex{breakpoint.abbr}-wrap</code></li>
-      <li><code>.flex{breakpoint.abbr}-wrap-reverse</code></li>
-    </Fragment>
-  )
-})}
-</ul>
-
 ## Order
 
 Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value from 0 to 5, add custom CSS for any additional values needed.
@@ -435,16 +502,6 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
     <div class="order-2 p-2">Second flex item</div>
     <div class="order-1 p-2">Third flex item</div>
   </div>`} />
-
-Responsive variations also exist for `order`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => getSequence(0, 5).map((value) => {
-  return (
-    <li><code>.order{breakpoint.abbr}-{value}</code></li>
-  )
-}))}
-</ul>
 
 Additionally there are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively.
 
@@ -607,23 +664,6 @@ Use `align-content` utilities on flexbox containers to align flex items _togethe
 ```html
 <div class="d-flex align-content-stretch flex-wrap">...</div>
 ```
-
-Responsive variations also exist for `align-content`.
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <Fragment>
-      <li><code>.align-content{breakpoint.abbr}-start</code></li>
-      <li><code>.align-content{breakpoint.abbr}-end</code></li>
-      <li><code>.align-content{breakpoint.abbr}-center</code></li>
-      <li><code>.align-content{breakpoint.abbr}-between</code></li>
-      <li><code>.align-content{breakpoint.abbr}-around</code></li>
-      <li><code>.align-content{breakpoint.abbr}-stretch</code></li>
-    </Fragment>
-  )
-})}
-</ul>
 
 ## Media object
 

@@ -6,21 +6,48 @@ mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius
 ---
 
 import { getData } from '@libs/data'
+import RefTable from '@components/shortcodes/RefTable.astro'
 
 ## Reference
 
-<BsTable class="table reference-table">
-| Class | Styles |
-| --- | --- |
-| `.rounded` | `border-radius: var(--bs-border-radius);` |
-| `.rounded-top` | `border-top-left-radius: var(--bs-border-radius);`<br/>`border-top-right-radius: var(--bs-border-radius);` |
-| `.rounded-end` | `border-bottom-right-radius: var(--bs-border-radius);`<br/>`border-top-right-radius: var(--bs-border-radius);` |
-| `.rounded-bottom` | `border-bottom-left-radius: var(--bs-border-radius);`<br/>`border-bottom-right-radius: var(--bs-border-radius);` |
-| `.rounded-start` | `border-top-left-radius: var(--bs-border-radius);`<br/>`border-bottom-left-radius: var(--bs-border-radius);` |
-| `.rounded-0` | `border-radius: 0;` |
-| `.rounded-1` | `border-radius: var(--bs-border-radius-sm);` |
-| `.rounded-2` | `border-radius: var(--bs-border-radius);` |
-</BsTable>
+<RefTable data={[
+  {
+    class: '.rounded',
+    code: 'border-radius: var(--bs-border-radius);'
+  },
+  {
+    class: '.rounded-top',
+    code: `border-top-left-radius: var(--bs-border-radius);
+border-top-right-radius: var(--bs-border-radius);`
+  },
+  {
+    class: '.rounded-end',
+    code: `border-bottom-right-radius: var(--bs-border-radius);
+border-top-right-radius: var(--bs-border-radius);`
+  },
+  {
+    class: '.rounded-bottom',
+    code: `border-bottom-left-radius: var(--bs-border-radius);
+border-bottom-right-radius: var(--bs-border-radius);`
+  },
+  {
+    class: '.rounded-start',
+    code: `border-top-left-radius: var(--bs-border-radius);
+border-bottom-left-radius: var(--bs-border-radius);`
+  },
+  {
+    class: '.rounded-0',
+    code: 'border-radius: 0;'
+  },
+  {
+    class: '.rounded-1',
+    code: 'border-radius: var(--bs-border-radius-sm);'
+  },
+  {
+    class: '.rounded-2',
+    code: 'border-radius: var(--bs-border-radius);'
+  }
+]} />
 
 ## Radius
 

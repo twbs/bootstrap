@@ -17,6 +17,7 @@ export declare global {
   export const JsDismiss: typeof import('@shortcodes/JsDismiss.astro').default
   export const JsDocs: typeof import('@shortcodes/JsDocs.astro').default
   export const Placeholder: typeof import('@shortcodes/Placeholder.astro').default
+  export const RefTable: typeof import('@shortcodes/RefTable.astro').default
   export const ScssDocs: typeof import('@shortcodes/ScssDocs.astro').default
   export const Table: typeof import('@shortcodes/Table.astro').default
 }

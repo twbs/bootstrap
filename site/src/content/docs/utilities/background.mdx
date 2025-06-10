@@ -6,35 +6,100 @@ mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
 ---
 
 import { getData } from '@libs/data'
+import RefTable from '@components/shortcodes/RefTable.astro'
 
 ## Reference
 
-<BsTable class="table reference-table">
-| Class | Styles |
-| --- | --- |
-| `.bg-primary` | `background-color: var(--bs-primary);` |
-| `.bg-subtle-primary` | `background-color: var(--bs-subtle-primary);` |
-| `.bg-accent` | `background-color: var(--bs-accent);` |
-| `.bg-subtle-accent` | `background-color: var(--bs-subtle-accent);` |
-| `.bg-secondary` | `background-color: var(--bs-secondary);` |
-| `.bg-subtle-secondary` | `background-color: var(--bs-subtle-secondary);` |
-| `.bg-success` | `background-color: var(--bs-success);` |
-| `.bg-subtle-success` | `background-color: var(--bs-subtle-success);` |
-| `.bg-danger` | `background-color: var(--bs-danger);` |
-| `.bg-subtle-danger` | `background-color: var(--bs-subtle-danger);` |
-| `.bg-warning` | `background-color: var(--bs-warning);` |
-| `.bg-subtle-warning` | `background-color: var(--bs-subtle-warning);` |
-| `.bg-info` | `background-color: var(--bs-info);` |
-| `.bg-subtle-info` | `background-color: var(--bs-subtle-info);` |
-| `.bg` | `background-color: var(--bs-bg);` |
-| `.bg-1` | `background-color: var(--bs-bg-1);` |
-| `.bg-2` | `background-color: var(--bs-bg-2);` |
-| `.bg-3` | `background-color: var(--bs-bg-3);` |
-| `.bg-white` | `background-color: var(--bs-white);` |
-| `.bg-black` | `background-color: var(--bs-black);` |
-| `.bg-inherit` | `background-color: inherit;` |
-| `.bg-transparent` | `background-color: transparent;` |
-</BsTable>
+<RefTable data={[
+  {
+    class: '.bg-primary',
+    code: 'background-color: var(--bs-primary);'
+  },
+  {
+    class: '.bg-subtle-primary',
+    code: 'background-color: var(--bs-subtle-primary);'
+  },
+  {
+    class: '.bg-accent',
+    code: 'background-color: var(--bs-accent);'
+  },
+  {
+    class: '.bg-subtle-accent',
+    code: 'background-color: var(--bs-subtle-accent);'
+  },
+  {
+    class: '.bg-secondary',
+    code: 'background-color: var(--bs-secondary);'
+  },
+  {
+    class: '.bg-subtle-secondary',
+    code: 'background-color: var(--bs-subtle-secondary);'
+  },
+  {
+    class: '.bg-success',
+    code: 'background-color: var(--bs-success);'
+  },
+  {
+    class: '.bg-subtle-success',
+    code: 'background-color: var(--bs-subtle-success);'
+  },
+  {
+    class: '.bg-danger',
+    code: 'background-color: var(--bs-danger);'
+  },
+  {
+    class: '.bg-subtle-danger',
+    code: 'background-color: var(--bs-subtle-danger);'
+  },
+  {
+    class: '.bg-warning',
+    code: 'background-color: var(--bs-warning);'
+  },
+  {
+    class: '.bg-subtle-warning',
+    code: 'background-color: var(--bs-subtle-warning);'
+  },
+  {
+    class: '.bg-info',
+    code: 'background-color: var(--bs-info);'
+  },
+  {
+    class: '.bg-subtle-info',
+    code: 'background-color: var(--bs-subtle-info);'
+  },
+  {
+    class: '.bg',
+    code: 'background-color: var(--bs-bg);'
+  },
+  {
+    class: '.bg-1',
+    code: 'background-color: var(--bs-bg-1);'
+  },
+  {
+    class: '.bg-2',
+    code: 'background-color: var(--bs-bg-2);'
+  },
+  {
+    class: '.bg-3',
+    code: 'background-color: var(--bs-bg-3);'
+  },
+  {
+    class: '.bg-white',
+    code: 'background-color: var(--bs-white);'
+  },
+  {
+    class: '.bg-black',
+    code: 'background-color: var(--bs-black);'
+  },
+  {
+    class: '.bg-inherit',
+    code: 'background-color: inherit;'
+  },
+  {
+    class: '.bg-transparent',
+    code: 'background-color: transparent;'
+  }
+]} />
 
 ## Background color
 
@@ -168,7 +233,7 @@ RGB colors are generated from a separate Sass map:
 
 {/* <ScssDocs name="theme-colors-rgb" file="scss/_maps.scss" /> */}
 
-Background color opacities build on that with their own map that’s consumed by the utilities API:
+Background color opacities build on that with their own map that's consumed by the utilities API:
 
 {/* <ScssDocs name="utilities-bg-colors" file="scss/_maps.scss" /> */}
 
@@ -180,7 +245,7 @@ Color mode background colors are also available as a Sass map:
 
 ### Sass mixins
 
-**No mixins are used to generate our background utilities**, but we do have some additional mixins for other situations where you’d like to create your own gradients.
+**No mixins are used to generate our background utilities**, but we do have some additional mixins for other situations where you'd like to create your own gradients.
 
 <ScssDocs name="gradient-bg-mixin" file="scss/mixins/_gradients.scss" />
 
