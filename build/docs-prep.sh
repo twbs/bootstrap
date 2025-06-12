@@ -92,6 +92,12 @@ fi
 print_success "Pulled latest changes from origin/gh-pages"
 
 # Step 4: Create a new branch for the update
+print_info "Checking if branch ${NEW_BRANCH} exists and deleting it if it does…"
+if git show-ref --verify --quiet refs/heads/${NEW_BRANCH}; then
+  execute "git branch -D ${NEW_BRANCH}"
+else
+  print_info "Branch ${NEW_BRANCH} does not exist, proceeding with creation…"
+fi
 print_info "Creating new branch ${NEW_BRANCH}…"
 execute "git checkout -b ${NEW_BRANCH}"
 
