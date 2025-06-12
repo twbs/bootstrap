@@ -162,14 +162,14 @@
     "mime": "^4.0.7",
     "nodemon": "^3.1.10",
     "npm-run-all2": "^8.0.4",
-    "postcss": "^8.5.4",
+    "postcss": "^8.5.5",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "rollup": "^4.42.0",
+    "rollup": "^4.43.0",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.3.0",
     "sass": "1.78.0",
@@ -180,7 +180,7 @@
     "terser": "^5.42.0",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
-    "zod": "^3.25.58"
+    "zod": "^3.25.62"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
