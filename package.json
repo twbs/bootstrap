@@ -81,7 +81,7 @@
     "docs-lint": "npm-run-all docs-prettier-check docs-vnu",
     "docs-prettier-check": "prettier --config site/.prettierrc.json -c --cache site",
     "docs-prettier-format": "prettier --config site/.prettierrc.json --write --cache site",
-    "docs-serve": "npm run astro-dev",
+    "docs-serve": "npm run astro-dev -- --port 9001",
     "docs-serve-only": "npx sirv-cli _site --port 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
     "update-deps": "ncu -u -x eslint,eslint-config-xo,eslint-plugin-unicorn,karma-browserstack-launcher,karma-rollup-preprocessor,sass",
