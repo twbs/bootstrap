@@ -9,7 +9,7 @@ const isDev = process.env.NODE_ENV === 'development'
 
 const site = isDev
   ? // In development mode, use the local dev server.
-    'http://localhost:4321'
+    'http://localhost:9001'
   : process.env.DEPLOY_PRIME_URL !== undefined
     ? // If deploying on Netlify, use the `DEPLOY_PRIME_URL` environment variable.
       process.env.DEPLOY_PRIME_URL
