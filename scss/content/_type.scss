@@ -1,29 +1,34 @@
+@use "variables" as *;
+@use "mixins/lists" as *;
+@use "vendor/rfs" as *;
+
 //
 // Headings
 //
-.h1 {
-  @extend h1;
-}
+// mdo-do: remove extend
+// .h1 {
+//   @extend h1;
+// }
 
-.h2 {
-  @extend h2;
-}
+// .h2 {
+//   @extend h2;
+// }
 
-.h3 {
-  @extend h3;
-}
+// .h3 {
+//   @extend h3;
+// }
 
-.h4 {
-  @extend h4;
-}
+// .h4 {
+//   @extend h4;
+// }
 
-.h5 {
-  @extend h5;
-}
+// .h5 {
+//   @extend h5;
+// }
 
-.h6 {
-  @extend h6;
-}
+// .h6 {
+//   @extend h6;
+// }
 
 
 .lead {
@@ -46,11 +51,11 @@
 // Emphasis
 //
 .small {
-  @extend small;
+  // @extend small;
 }
 
 .mark {
-  @extend mark;
+  // @extend mark;
 }
 
 //

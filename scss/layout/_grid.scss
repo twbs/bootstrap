@@ -1,0 +1,83 @@
+@use "sass:map";
+@use "../config" as *;
+@use "breakpoints" as *;
+
+// mdo-do
+// - check gap utilities as replacement for gutter classes from v5
+
+// Row
+//
+// Rows contain your columns.
+
+:root {
+  @each $name, $value in $grid-breakpoints {
+    --#{$prefix}breakpoint-#{$name}: #{$value};
+  }
+}
+
+.grid {
+  --#{$prefix}columns: #{$grid-columns};
+  --#{$prefix}rows: 1;
+  --#{$prefix}gap: #{$grid-gutter-width};
+
+  display: grid;
+  grid-template-rows: repeat(var(--#{$prefix}rows), 1fr);
+  grid-template-columns: repeat(var(--#{$prefix}columns), 1fr);
+  gap: var(--#{$prefix}gap);
+}
+
+@each $breakpoint in map.keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+    @if $grid-columns > 0 {
+      @for $i from 1 through $grid-columns {
+        .col#{$infix}-#{$i} {
+          grid-column: auto / span $i;
+        }
+
+        .end#{$infix}-#{$i} {
+          grid-column-end: $i;
+        }
+      }
+
+      // Start with `1` because `0` is an invalid value.
+      // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
+      @for $i from 1 through ($grid-columns - 1) {
+        .col-start#{$infix}-#{$i} {
+          grid-column-start: $i;
+        }
+      }
+    }
+  }
+}
+
+// mdo-do: add to utilities?
+.grid-cols-subgrid {
+  grid-template-columns: subgrid;
+}
+
+.grid-fill {
+  --#{$prefix}gap: #{$grid-gutter-width};
+
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: var(--#{$prefix}gap);
+}
+
+// mdo-do: add to utilities?
+.g-col-auto {
+  grid-column: auto/auto;
+}
+
+// mdo-do: add to utilities?
+.grid-cols-3 {
+  --#{$prefix}columns: 3;
+}
+.grid-cols-4 {
+  --#{$prefix}columns: 4;
+}
+.grid-cols-6 {
+  --#{$prefix}columns: 6;
+}
