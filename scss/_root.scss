@@ -1,3 +1,9 @@
+@use "colors" as *;
+@use "variables" as *;
+@use "maps" as *;
+@use "vendor/rfs" as *;
+@use "mixins/color-mode" as *;
+
 :root,
 [data-bs-theme="light"] {
   // Note: Custom variable values only support SassScript inside `#{}`.
