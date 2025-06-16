@@ -151,7 +151,7 @@ Documentation search is powered by [Algolia's DocSearch](https://docsearch.algol
 1. Run `npm install` to install the Node.js dependencies, including Astro (the site builder).
 2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 3. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
-4. Open `http://localhost:9001/` in your browser, and voilà.
+4. Open <http://localhost:9001> in your browser, and voilà.
 
 Learn more about using Astro by reading its [documentation](https://docs.astro.build/en/getting-started/).
 
