@@ -47,4 +47,4 @@ jobs:
           paths: _site
           recurse: true
           verbosity: error
-          skip: "^(?!http://localhost)"
+          skip: "^(?!http://localhost(:\\d+)?/)"
