@@ -125,10 +125,10 @@
   }
 }
 
-@if $enable-dark-mode {
-  [data-bs-theme="dark"] {
-    .masthead-followup-icon {
-      mix-blend-mode: lighten;
-    }
-  }
-}
+// @if $enable-dark-mode {
+//   [data-bs-theme="dark"] {
+//     .masthead-followup-icon {
+//       mix-blend-mode: lighten;
+//     }
+//   }
+// }
