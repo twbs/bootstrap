@@ -1,0 +1,56 @@
+@use "banner" with (
+  $file: "Grid"
+);
+
+@use "sass:map";
+@use "colors" as *;
+@use "config" as *;
+@use "variables" as *;
+@use "functions" as *;
+@use "maps" as *;
+
+@forward "utilities"; // Make utilities available downstream
+@use "utilities" as *; // Bring utilities into the current namespace
+
+@forward "layout/containers";
+@forward "layout/grid";
+
+$utilities: map-get-multiple(
+  $utilities,
+  (
+    "display",
+    "order",
+    "flex",
+    "flex-direction",
+    "flex-grow",
+    "flex-shrink",
+    "flex-wrap",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "margin",
+    "margin-x",
+    "margin-y",
+    "margin-top",
+    "margin-end",
+    "margin-bottom",
+    "margin-start",
+    "negative-margin",
+    "negative-margin-x",
+    "negative-margin-y",
+    "negative-margin-top",
+    "negative-margin-end",
+    "negative-margin-bottom",
+    "negative-margin-start",
+    "padding",
+    "padding-x",
+    "padding-y",
+    "padding-top",
+    "padding-end",
+    "padding-bottom",
+    "padding-start",
+  )
+);
+
+@use "utilities/api";
