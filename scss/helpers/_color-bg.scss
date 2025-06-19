@@ -1,4 +1,5 @@
 @use "../colors" as *;
+@use "../config" as *;
 @use "../variables" as *;
 
 // All-caps `RGBA()` function used because of this Sass bug: https://github.com/sass/node-sass/issues/2251
