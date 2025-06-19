@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../variables" as *;
+@use "../config" as *;
 @use "../vendor/rfs" as *;
 @use "../layout/breakpoints" as *;
 @use "../mixins/utilities" as *;
