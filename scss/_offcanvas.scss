@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "config" as *;
 @use "variables" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/transition" as *;

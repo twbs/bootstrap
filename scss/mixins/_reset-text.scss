@@ -1,4 +1,4 @@
-// @use "../variables" as *;
+@use "../variables" as *;
 
 @mixin reset-text {
   font-family: $font-family-base;

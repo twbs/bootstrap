@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "config" as *;
 @use "variables" as *;
 @use "mixins/caret" as *;
 @use "mixins/border-radius" as *;

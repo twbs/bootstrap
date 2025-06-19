@@ -1,6 +1,7 @@
-@use "variables" as *;
-@use "mixins/lists" as *;
-@use "vendor/rfs" as *;
+@use "../config" as *;
+@use "../variables" as *;
+@use "../mixins/lists" as *;
+@use "../vendor/rfs" as *;
 
 //
 // Headings

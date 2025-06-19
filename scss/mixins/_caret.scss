@@ -1,4 +1,5 @@
-// @use "../variables" as *;
+@use "../config" as *;
+@use "../variables" as *;
 
 // scss-docs-start caret-mixins
 @mixin caret-down($width: $caret-width) {
