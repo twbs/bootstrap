@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "sass:string";
 @use "colors" as *;
 @use "config" as *;
 @use "functions" as *;
@@ -50,7 +51,7 @@ $success-bg-subtle:       tint-color($success, 80%) !default;
 $info-bg-subtle:          tint-color($info, 80%) !default;
 $warning-bg-subtle:       tint-color($warning, 80%) !default;
 $danger-bg-subtle:        tint-color($danger, 80%) !default;
-$light-bg-subtle:         mix($gray-100, $white) !default;
+$light-bg-subtle:         color.mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
 // scss-docs-end theme-bg-subtle-variables
 
@@ -304,10 +305,10 @@ $transition-collapse-width:   width .35s ease !default;
 // scss-docs-start aspect-ratios
 $aspect-ratios: (
   "auto": auto,
-  "4x3": 4 / 3,
-  "1x1": 1 / 1,
-  "16x9": 16 / 9,
-  "21x9": 21 / 9
+  "4x3": #{"4 / 3"},
+  "1x1": #{"1 / 1"},
+  "16x9": #{"16 / 9"},
+  "21x9": #{"21 / 9"}
 ) !default;
 // scss-docs-end aspect-ratios
 
@@ -1354,7 +1355,7 @@ $breadcrumb-margin-bottom:          1rem !default;
 $breadcrumb-bg:                     null !default;
 $breadcrumb-divider-color:          var(--#{$prefix}secondary-color) !default;
 $breadcrumb-active-color:           var(--#{$prefix}secondary-color) !default;
-$breadcrumb-divider:                quote("/") !default;
+$breadcrumb-divider:                string.quote("/") !default;
 $breadcrumb-divider-flipped:        $breadcrumb-divider !default;
 $breadcrumb-border-radius:          null !default;
 // scss-docs-end breadcrumb-variables
@@ -1478,7 +1479,7 @@ $info-bg-subtle-dark:               shade-color($info, 80%) !default;
 $warning-bg-subtle-dark:            shade-color($warning, 80%) !default;
 $danger-bg-subtle-dark:             shade-color($danger, 80%) !default;
 $light-bg-subtle-dark:              $gray-800 !default;
-$dark-bg-subtle-dark:               mix($gray-800, $black) !default;
+$dark-bg-subtle-dark:               color.mix($gray-800, $black) !default;
 // scss-docs-end theme-bg-subtle-dark-variables
 
 // scss-docs-start theme-border-subtle-dark-variables
@@ -1497,7 +1498,7 @@ $body-bg-dark:                      $gray-900 !default;
 $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
 $body-secondary-bg-dark:            $gray-800 !default;
 $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
-$body-tertiary-bg-dark:             mix($gray-800, $gray-900, 50%) !default;
+$body-tertiary-bg-dark:             color.mix($gray-800, $gray-900, 50%) !default;
 $body-emphasis-color-dark:          $white !default;
 $border-color-dark:                 $gray-700 !default;
 $border-color-translucent-dark:     rgba($white, .15) !default;

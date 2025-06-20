@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:meta";
 @use "../variables" as *;
 @use "../config" as *;
 @use "../vendor/rfs" as *;
@@ -17,7 +18,7 @@
     @each $key, $utility in $utilities {
       // The utility can be disabled with `false`, thus check if the utility is a map first
       // Only proceed if responsive media queries are enabled or if it's the base media query
-      @if type-of($utility) == "map" and (map.get($utility, responsive) or $infix == "") {
+      @if meta.type-of($utility) == "map" and (map.get($utility, responsive) or $infix == "") {
         @include generate-utility($utility, $infix);
       }
     }
@@ -34,7 +35,7 @@
       @each $key, $utility in $utilities {
         // The utility can be disabled with `false`, thus check if the utility is a map first
         // Only proceed if responsive media queries are enabled or if it's the base media query
-        @if type-of($utility) == "map" and map.get($utility, rfs) and (map.get($utility, responsive) or $infix == "") {
+        @if meta.type-of($utility) == "map" and map.get($utility, rfs) and (map.get($utility, responsive) or $infix == "") {
           @include generate-utility($utility, $infix, true);
         }
       }
@@ -48,7 +49,7 @@
   @each $key, $utility in $utilities {
     // The utility can be disabled with `false`, thus check if the utility is a map first
     // Then check if the utility needs print styles
-    @if type-of($utility) == "map" and map.get($utility, print) == true {
+    @if meta.type-of($utility) == "map" and map.get($utility, print) == true {
       @include generate-utility($utility, "-print");
     }
   }

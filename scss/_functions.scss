@@ -1,6 +1,9 @@
 @use "sass:color";
+@use "sass:list";
 @use "sass:map";
 @use "sass:math";
+@use "sass:meta";
+@use "sass:string";
 // @use "variables" as *;
 @use "config" as *;
 
@@ -14,7 +17,7 @@
   $prev-key: null;
   $prev-num: null;
   @each $key, $num in $map {
-    @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+    @if $prev-num == null or math.unit($num) == "%" or math.unit($prev-num) == "%" {
       // Do nothing
     } @else if not comparable($prev-num, $num) {
       @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
@@ -29,9 +32,9 @@
 // Starts at zero
 // Used to ensure the min-width of the lowest breakpoint starts at 0.
 @mixin _assert-starts-at-zero($map, $map-name: "$breakpoints") {
-  @if length($map) > 0 {
-    $values: map-values($map);
-    $first-value: nth($values, 1);
+  @if list.length($map) > 0 {
+    $values: map.values($map);
+    $first-value: list.nth($values, 1);
     @if $first-value != 0 {
       @warn "First breakpoint in #{$map-name} must start at 0, but starts at #{$first-value}.";
     }
@@ -40,7 +43,7 @@
 
 // Colors
 @function to-rgb($value) {
-  @return red($value), green($value), blue($value);
+  @return color.channel($value, "red"), color.channel($value, "green"), color.channel($value, "blue");
 }
 
 // stylelint-disable scss/dollar-variable-pattern
@@ -61,10 +64,10 @@
     // allow to pass the $key and $value of the map as an function argument
     $_args: ();
     @each $arg in $args {
-      $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+      $_args: list.append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
     }
 
-    $_map: map-merge($_map, ($key: call(get-function($func), $_args...)));
+    $_map: map.merge($_map, ($key: meta.call(meta.get-function($func), $_args...)));
   }
 
   @return $_map;
@@ -74,7 +77,7 @@
 @function varify($list) {
   $result: null;
   @each $entry in $list {
-    $result: append($result, var(--#{$prefix}#{$entry}), space);
+    $result: list.append($result, var(--#{$prefix}#{$entry}), space);
   }
   @return $result;
 }
@@ -95,7 +98,7 @@
 @function map-get-multiple($map, $values) {
   $result: ();
   @each $key, $value in $map {
-    @if (index($values, $key) != null) {
+    @if (list.index($values, $key) != null) {
       $result: map.merge($result, ($key: $value));
     }
   }
@@ -121,10 +124,10 @@
 // @param {String} $replace ('') - New value
 // @return {String} - Updated string
 @function str-replace($string, $search, $replace: "") {
-  $index: str-index($string, $search);
+  $index: string.index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
   }
 
   @return $string;
@@ -135,11 +138,11 @@
 // Requires the use of quotes around data URIs.
 
 @function escape-svg($string) {
-  @if str-index($string, "data:image/svg+xml") {
+  @if string.index($string, "data:image/svg+xml") {
     @each $char, $encoded in $escaped-characters {
       // Do not escape the url brackets
-      @if str-index($string, "url(") == 1 {
-        $string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
+      @if string.index($string, "url(") == 1 {
+        $string: url("#{str-replace(string.slice($string, 6, -3), $char, $encoded)}");
       } @else {
         $string: str-replace($string, $char, $encoded);
       }
@@ -188,13 +191,13 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 // See https://www.w3.org/TR/WCAG/#dfn-contrast-ratio
 @function luminance($color) {
   $rgb: (
-    "r": red($color),
-    "g": green($color),
-    "b": blue($color)
+    "r": color.channel($color, "red"),
+    "g": color.channel($color, "green"),
+    "b": color.channel($color, "blue")
   );
 
   @each $name, $value in $rgb {
-    $value: if(math.div($value, 255) < .04045, math.div(math.div($value, 255), 12.92), nth($_luminance-list, $value + 1));
+    $value: if(math.div($value, 255) < .04045, math.div(math.div($value, 255), 12.92), list.nth($_luminance-list, math.round($value + 1)));
     $rgb: map.merge($rgb, ($name: $value));
   }
 

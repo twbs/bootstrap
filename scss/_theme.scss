@@ -1,3 +1,5 @@
+@use "sass:meta";
+@use "sass:map";
 @use "config" as *;
 @use "colors" as *;
 
@@ -5,8 +7,8 @@
   $result: ();
 
   @each $color-name, $color-map in $new-theme-colors {
-    @if map-has-key($color-map, $key) {
-      $result: map-merge($result, ($color-name: map-get($color-map, $key)));
+    @if map.has-key($color-map, $key) {
+      $result: map.merge($result, ($color-name: map.get($color-map, $key)));
     }
   }
 
@@ -18,7 +20,7 @@
   @each $key, $value in $map {
     $current-key: if($parent-key == "", $key, "#{$parent-key}-#{$key}");
 
-    @if type-of($value) == "map" {
+    @if meta.type-of($value) == "map" {
       @include create-css-vars($value, $current-key);
     } @else {
       --#{$prefix}#{$current-key}: #{$value};
