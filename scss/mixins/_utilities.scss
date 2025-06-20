@@ -8,7 +8,12 @@
 
   // If the values are a list or string, convert it into a map
   @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
-    $values: zip($values, $values);
+    // A single value is converted to a map with a null key.
+    @if length($values) == 1 {
+      $values: (null: nth($values, 1));
+    } @else {
+      $values: zip($values, $values);
+    }
   }
 
   @each $key, $value in $values {
