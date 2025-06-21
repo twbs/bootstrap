@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "../config" as *;
+@use "../variables" as *;
+@use "../layout/breakpoints" as *;
+
 // Shorthand
 
 .fixed-top {
@@ -17,7 +22,7 @@
 }
 
 // Responsive sticky top and bottom
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 

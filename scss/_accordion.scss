@@ -1,3 +1,12 @@
+@use "config" as *;
+@use "variables" as *;
+@use "functions" as *;
+@use "vendor/rfs" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/transition" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/color-mode" as *;
+
 //
 // Base styles
 //

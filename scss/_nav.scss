@@ -1,3 +1,10 @@
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/transition" as *;
+@use "mixins/gradients" as *;
+@use "vendor/rfs" as *;
+
 // Base class
 //
 // Kickstart any navigation component with a set of style resets. Works with

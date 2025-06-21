@@ -1,3 +1,14 @@
+@use "sass:map";
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/transition" as *;
+@use "mixins/gradients" as *;
+@use "mixins/backdrop" as *;
+@use "vendor/rfs" as *;
+@use "layout/breakpoints" as *;
+
 // stylelint-disable function-disallowed-list
 
 // .modal-open      - body class for killing the scroll
@@ -209,7 +220,7 @@
 }
 
 // scss-docs-start modal-fullscreen-loop
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
   $postfix: if($infix != "", $infix + "-down", "");
 

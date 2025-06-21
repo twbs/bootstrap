@@ -1,3 +1,11 @@
+@use "sass:meta";
+@use "colors" as *;
+@use "config" as *;
+@use "variables" as *;
+@use "maps" as *;
+@use "vendor/rfs" as *;
+@use "mixins/color-mode" as *;
+
 :root,
 [data-bs-theme="light"] {
   // Note: Custom variable values only support SassScript inside `#{}`.
@@ -41,8 +49,8 @@
 
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  --#{$prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
-  --#{$prefix}font-monospace: #{inspect($font-family-monospace)};
+  --#{$prefix}font-sans-serif: #{meta.inspect($font-family-sans-serif)};
+  --#{$prefix}font-monospace: #{meta.inspect($font-family-monospace)};
   --#{$prefix}gradient: #{$gradient};
 
   // Root and body
@@ -50,7 +58,7 @@
   @if $font-size-root != null {
     --#{$prefix}root-font-size: #{$font-size-root};
   }
-  --#{$prefix}body-font-family: #{inspect($font-family-base)};
+  --#{$prefix}body-font-family: #{meta.inspect($font-family-base)};
   @include rfs($font-size-base, --#{$prefix}body-font-size);
   --#{$prefix}body-font-weight: #{$font-weight-base};
   --#{$prefix}body-line-height: #{$line-height-base};

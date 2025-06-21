@@ -1,3 +1,9 @@
+@use "sass:map";
+@use "sass:string";
+@use "../variables" as *;
+@use "../vendor/rfs" as *;
+@use "../mixins/border-radius" as *;
+
 //
 // Base styles
 //
@@ -116,8 +122,8 @@
   }
 
   $validation-messages: "";
-  @each $state in map-keys($form-validation-states) {
-    $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
+  @each $state in map.keys($form-validation-states) {
+    $validation-messages: $validation-messages + ":not(." + string.unquote($state) + "-tooltip)" + ":not(." + string.unquote($state) + "-feedback)";
   }
 
   > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
