@@ -565,6 +565,11 @@ $utilities: map-merge(
         nowrap: nowrap,
       )
     ),
+    "text-wrap": (
+      property: text-wrap,
+      class: text,
+      values: balance
+    ),
     "word-wrap": (
       property: word-wrap word-break,
       class: text,
