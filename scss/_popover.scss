@@ -32,6 +32,7 @@
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;
   background-color: var(--#{$prefix}popover-bg);
+  --#{$prefix}current-plane-bg: var(--#{$prefix}popover-bg);
   background-clip: padding-box;
   border: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-border-color);
   @include border-radius(var(--#{$prefix}popover-border-radius));
@@ -182,6 +183,7 @@
   @include font-size(var(--#{$prefix}popover-header-font-size));
   color: var(--#{$prefix}popover-header-color);
   background-color: var(--#{$prefix}popover-header-bg);
+  --#{$prefix}current-plane-bg: var(--#{$prefix}popover-header-bg);
   border-bottom: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-border-color);
   @include border-top-radius(var(--#{$prefix}popover-inner-border-radius));
 
