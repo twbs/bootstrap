@@ -15,6 +15,7 @@
 @forward "layout/containers";
 @forward "layout/grid";
 
+// stylelint-disable-next-line scss/dollar-variable-default
 $utilities: map-get-multiple(
   $utilities,
   (
