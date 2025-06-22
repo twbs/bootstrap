@@ -7,7 +7,7 @@
 @use "config" as *;
 @use "variables" as *;
 @use "functions" as *;
-@use "maps" as *;
+// @use "maps" as *;
 
 @forward "utilities"; // Make utilities available downstream
 @use "utilities" as *; // Bring utilities into the current namespace

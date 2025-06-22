@@ -33,38 +33,38 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
-// scss-docs-start theme-text-variables
-$primary-text-emphasis:   shade-color($primary, 60%) !default;
-$secondary-text-emphasis: shade-color($secondary, 60%) !default;
-$success-text-emphasis:   shade-color($success, 60%) !default;
-$info-text-emphasis:      shade-color($info, 60%) !default;
-$warning-text-emphasis:   shade-color($warning, 60%) !default;
-$danger-text-emphasis:    shade-color($danger, 60%) !default;
-$light-text-emphasis:     $gray-700 !default;
-$dark-text-emphasis:      $gray-700 !default;
-// scss-docs-end theme-text-variables
+// // scss-docs-start theme-text-variables
+// $primary-text-emphasis:   shade-color($primary, 60%) !default;
+// $secondary-text-emphasis: shade-color($secondary, 60%) !default;
+// $success-text-emphasis:   shade-color($success, 60%) !default;
+// $info-text-emphasis:      shade-color($info, 60%) !default;
+// $warning-text-emphasis:   shade-color($warning, 60%) !default;
+// $danger-text-emphasis:    shade-color($danger, 60%) !default;
+// $light-text-emphasis:     $gray-700 !default;
+// $dark-text-emphasis:      $gray-700 !default;
+// // scss-docs-end theme-text-variables
 
-// scss-docs-start theme-bg-subtle-variables
-$primary-bg-subtle:       tint-color($primary, 80%) !default;
-$secondary-bg-subtle:     tint-color($secondary, 80%) !default;
-$success-bg-subtle:       tint-color($success, 80%) !default;
-$info-bg-subtle:          tint-color($info, 80%) !default;
-$warning-bg-subtle:       tint-color($warning, 80%) !default;
-$danger-bg-subtle:        tint-color($danger, 80%) !default;
-$light-bg-subtle:         color.mix($gray-100, $white) !default;
-$dark-bg-subtle:          $gray-400 !default;
-// scss-docs-end theme-bg-subtle-variables
+// // scss-docs-start theme-bg-subtle-variables
+// $primary-bg-subtle:       tint-color($primary, 80%) !default;
+// $secondary-bg-subtle:     tint-color($secondary, 80%) !default;
+// $success-bg-subtle:       tint-color($success, 80%) !default;
+// $info-bg-subtle:          tint-color($info, 80%) !default;
+// $warning-bg-subtle:       tint-color($warning, 80%) !default;
+// $danger-bg-subtle:        tint-color($danger, 80%) !default;
+// $light-bg-subtle:         color.mix($gray-100, $white) !default;
+// $dark-bg-subtle:          $gray-400 !default;
+// // scss-docs-end theme-bg-subtle-variables
 
-// scss-docs-start theme-border-subtle-variables
-$primary-border-subtle:   tint-color($primary, 60%) !default;
-$secondary-border-subtle: tint-color($secondary, 60%) !default;
-$success-border-subtle:   tint-color($success, 60%) !default;
-$info-border-subtle:      tint-color($info, 60%) !default;
-$warning-border-subtle:   tint-color($warning, 60%) !default;
-$danger-border-subtle:    tint-color($danger, 60%) !default;
-$light-border-subtle:     $gray-200 !default;
-$dark-border-subtle:      $gray-500 !default;
-// scss-docs-end theme-border-subtle-variables
+// // scss-docs-start theme-border-subtle-variables
+// $primary-border-subtle:   tint-color($primary, 60%) !default;
+// $secondary-border-subtle: tint-color($secondary, 60%) !default;
+// $success-border-subtle:   tint-color($success, 60%) !default;
+// $info-border-subtle:      tint-color($info, 60%) !default;
+// $warning-border-subtle:   tint-color($warning, 60%) !default;
+// $danger-border-subtle:    tint-color($danger, 60%) !default;
+// $light-border-subtle:     $gray-200 !default;
+// $dark-border-subtle:      $gray-500 !default;
+// // scss-docs-end theme-border-subtle-variables
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
@@ -910,10 +910,10 @@ $navbar-toggler-border-radius:      $btn-border-radius !default;
 $navbar-toggler-focus-width:        $btn-focus-width !default;
 $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
 
-$navbar-light-color:                rgba(var(--#{$prefix}emphasis-color-rgb), .65) !default;
-$navbar-light-hover-color:          rgba(var(--#{$prefix}emphasis-color-rgb), .8) !default;
-$navbar-light-active-color:         rgba(var(--#{$prefix}emphasis-color-rgb), 1) !default;
-$navbar-light-disabled-color:       rgba(var(--#{$prefix}emphasis-color-rgb), .3) !default;
+$navbar-light-color:                color-mix(in srgb, var(--#{$prefix}fg-black) 65%, transparent) !default;
+$navbar-light-hover-color:          color-mix(in srgb, var(--#{$prefix}fg-black) 80%, transparent) !default;
+$navbar-light-active-color:         color-mix(in srgb, var(--#{$prefix}fg-black) 100%, transparent) !default;
+$navbar-light-disabled-color:       color-mix(in srgb, var(--#{$prefix}fg-black) 30%, transparent) !default;
 $navbar-light-icon-color:           rgba($body-color, .75) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-light-toggler-border-color: rgba(var(--#{$prefix}emphasis-color-rgb), .15) !default;
@@ -1087,8 +1087,8 @@ $accordion-button-active-color:           var(--#{$prefix}primary-text-emphasis)
 $accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
 
 $accordion-icon-width:                    1.25rem !default;
-$accordion-icon-color:                    $body-color !default;
-$accordion-icon-active-color:             $primary-text-emphasis !default;
+$accordion-icon-color:                    var(--#{$prefix}body-color) !default;
+$accordion-icon-active-color:             var(--#{$prefix}primary-text-emphasis) !default;
 $accordion-icon-transition:               transform .2s ease-in-out !default;
 $accordion-icon-transform:                rotate(-180deg) !default;
 
