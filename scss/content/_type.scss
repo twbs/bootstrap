@@ -3,10 +3,6 @@
 @use "../mixins/lists" as *;
 @use "../vendor/rfs" as *;
 
-//
-// Headings
-//
-
 .lead {
   @include font-size($lead-font-size);
   font-weight: $lead-font-weight;
