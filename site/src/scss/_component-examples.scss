@@ -126,8 +126,8 @@
 .bd-example-cssgrid [class*="grid"] > * {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  background-color: rgba(var(--bd-violet-rgb), .15);
-  border: 1px solid rgba(var(--bd-violet-rgb), .3);
+  background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
 }
 
 .bd-example-row .row + .row,
@@ -137,12 +137,12 @@
 
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
-  background-color: rgba(var(--bd-violet-rgb), .15);
+  background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
 }
 
 .bd-example-flex div:not(.vr) {
-  background-color: rgba(var(--bd-violet-rgb), .15);
-  border: 1px solid rgba(var(--bd-violet-rgb), .3);
+  background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
 }
 
 // // Grid mixins
@@ -247,7 +247,7 @@
 
 .simple-list-example-scrollspy {
   .active {
-    background-color: rgba(var(--bd-violet-rgb), .15);
+    background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
   }
 }
 
