@@ -97,7 +97,7 @@
   }
 
   &.flex-column {
-    // Move border from bottom to right for
+    // Move border from bottom to right
     border-right: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
     border-bottom: 0;
 
