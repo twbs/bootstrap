@@ -46,7 +46,7 @@
     "css-rtl": "cross-env NODE_ENV=RTL postcss --config build/postcss.config.mjs --dir \"dist/css\" --ext \".rtl.css\" \"dist/css/*.css\" \"!dist/css/*.min.css\" \"!dist/css/*.rtl.css\"",
     "css-lint": "npm-run-all --aggregate-output --continue-on-error --parallel css-lint-*",
     "css-lint-stylelint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache",
-    "css-dontlint-vars": "fusv scss/ site/assets/scss/",
+    "css-lint-vars": "fusv scss/ site/src/scss/",
     "css-minify": "npm-run-all --aggregate-output --parallel css-minify-*",
     "css-minify-main": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/*.css\" \"!dist/css/*.min.css\" \"!dist/css/*rtl*.css\"",
     "css-minify-rtl": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output dist/css/ --batch --batch-suffix \".min\" \"dist/css/*rtl.css\" \"!dist/css/*.min.css\"",
