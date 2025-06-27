@@ -164,7 +164,7 @@
     "npm-run-all2": "^8.0.4",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
-    "prettier": "^3.6.1",
+    "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
