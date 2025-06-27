@@ -5,10 +5,5 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-@import "../../../scss/functions";
-@import "../../../scss/variables";
-@import "../../../scss/mixins";
-@import "variables";
-
-@import "@docsearch/css/dist/style";
-@import "search";
+@use "@docsearch/css/dist/style";
+@use "search";

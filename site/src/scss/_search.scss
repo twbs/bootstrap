@@ -1,3 +1,9 @@
+@use "variables" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/color-mode" as *;
+@use "../../../scss/mixins/border-radius" as *;
+
 // stylelint-disable selector-class-pattern
 
 :root {

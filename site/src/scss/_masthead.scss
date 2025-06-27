@@ -1,12 +1,21 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/variables" as *;
+@use "../../../scss/vendor/rfs" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
+@use "../../../scss/mixins/transition" as *;
+@use "../../../scss/mixins/color-mode" as *;
+
 .bd-masthead {
   --bd-pink-rgb: #{to-rgb($pink)};
   padding: 3rem 0;
   // stylelint-disable
-  background-image: linear-gradient(180deg, rgba(var(--bs-body-bg-rgb), .01), rgba(var(--bs-body-bg-rgb), 1) 85%),
-                    radial-gradient(ellipse at top left, rgba(var(--bs-primary-rgb), .5), transparent 50%),
-                    radial-gradient(ellipse at top right, rgba(var(--bd-accent-rgb), .5), transparent 50%),
-                    radial-gradient(ellipse at center right, rgba(var(--bd-violet-rgb), .5), transparent 50%),
-                    radial-gradient(ellipse at center left, rgba(var(--bd-pink-rgb), .5), transparent 50%);
+  background-image: linear-gradient(180deg, color-mix(in srgb, var(--bs-body-bg) 1%, transparent), var(--bs-body-bg) 85%),
+                    radial-gradient(ellipse at top left, color-mix(in srgb, var(--bs-blue-500) 50%, transparent), transparent 50%),
+                    radial-gradient(ellipse at top right, color-mix(in srgb, var(--bd-accent) 50%, transparent), transparent 50%),
+                    radial-gradient(ellipse at center right, color-mix(in srgb, var(--bd-violet) 50%, transparent), transparent 50%),
+                    radial-gradient(ellipse at center left, color-mix(in srgb, var(--bs-pink-500) 50%, transparent), transparent 50%);
   // stylelint-enable
 
   h1 {
@@ -116,10 +125,10 @@
   }
 }
 
-@if $enable-dark-mode {
-  [data-bs-theme="dark"] {
-    .masthead-followup-icon {
-      mix-blend-mode: lighten;
-    }
-  }
-}
+// @if $enable-dark-mode {
+//   [data-bs-theme="dark"] {
+//     .masthead-followup-icon {
+//       mix-blend-mode: lighten;
+//     }
+//   }
+// }
