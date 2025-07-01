@@ -56,7 +56,7 @@ export const remarkBsConfig: Plugin<[], Root> = function () {
   }
 }
 
-// A remark plugin to add versionned docs links in markdown (or MDX) files.
+// A remark plugin to add versioned docs links in markdown (or MDX) files.
 // For example, [[docsref:/foo]] will be replaced with the `/docs/${docs_version}/foo` value with the `docs_version`
 // value being read from the `config.yml` file.
 // Note: this also works in frontmatter.
