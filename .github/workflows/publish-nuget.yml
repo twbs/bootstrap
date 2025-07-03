@@ -25,7 +25,7 @@ jobs:
         shell: pwsh
         run: |
           $bsversion = $env:GITHUB_REF_NAME.Substring(1)
-          nuget pack "nuget\bootstrap.nuspec" -Verbosity detailed -NonInteractive -NoPackageAnalysis -BasePath . -Version $bsversion
-          nuget pack "nuget\bootstrap.sass.nuspec" -Verbosity detailed -NonInteractive -NoPackageAnalysis -BasePath . -Version $bsversion
+          nuget pack "nuget\bootstrap.nuspec" -Verbosity detailed -NonInteractive -BasePath . -Version $bsversion
+          nuget pack "nuget\bootstrap.sass.nuspec" -Verbosity detailed -NonInteractive -BasePath . -Version $bsversion
           nuget push "bootstrap.$bsversion.nupkg" -Verbosity detailed -NonInteractive -Source "https://api.nuget.org/v3/index.json"
           nuget push "bootstrap.sass.$bsversion.nupkg" -Verbosity detailed -NonInteractive -Source "https://api.nuget.org/v3/index.json"
