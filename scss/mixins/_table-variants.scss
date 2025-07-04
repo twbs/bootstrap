@@ -1,6 +1,7 @@
 // scss-docs-start table-variant
 @mixin table-variant($state, $background) {
-  .table-#{$state} {
+  .table-#{$state},
+  .table .table-#{$state} {
     $color: color-contrast(opaque($body-bg, $background));
     $hover-bg: mix($color, $background, percentage($table-hover-bg-factor));
     $striped-bg: mix($color, $background, percentage($table-striped-bg-factor));
@@ -18,6 +19,7 @@
     --#{$prefix}table-hover-color: #{color-contrast($hover-bg)};
 
     color: var(--#{$prefix}table-color);
+    background-color: var(--#{$prefix}table-bg);
     border-color: var(--#{$prefix}table-border-color);
   }
 }
