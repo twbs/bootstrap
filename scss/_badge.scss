@@ -1,3 +1,9 @@
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/gradients" as *;
+@use "vendor/rfs" as *;
+
 // Base class
 //
 // Requires one of the contextual, color modifier classes for `color` and

@@ -1,21 +1,34 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/mixins/border-radius" as *;
+@use "variables" as *;
+
 //
 // Callouts
 //
 
 .bd-callout {
-  --#{$prefix}link-color-rgb: var(--bd-callout-link);
+  --#{$prefix}link-color: var(--bd-callout-color);
+  --#{$prefix}link-hover-color: var(--bd-callout-color);
   --#{$prefix}code-color: var(--bd-callout-code-color);
 
   padding: 1.25rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-  color: var(--bd-callout-color, inherit);
+  font-size: .875rem;
+  line-height: 1.5;
+  // color: var(--bd-callout-color, inherit);
   background-color: var(--bd-callout-bg, var(--bs-gray-100));
+  border: 1px solid var(--bd-callout-border, var(--bs-border-color));
   border-left: .25rem solid var(--bd-callout-border, var(--bs-gray-300));
+  @include border-radius(var(--bs-border-radius));
+  // box-shadow: inset .25rem 0 0 var(--bd-callout-border, var(--bs-gray-300));
 
   h4 {
     margin-bottom: .25rem;
   }
+
+  a { font-weight: 500; }
 
   > :last-child {
     margin-bottom: 0;
@@ -33,8 +46,8 @@
 // Variations
 @each $variant in $bd-callout-variants {
   .bd-callout-#{$variant} {
-    --bd-callout-color: var(--bs-#{$variant}-text-emphasis);
-    --bd-callout-bg: var(--bs-#{$variant}-bg-subtle);
-    --bd-callout-border: var(--bs-#{$variant}-border-subtle);
+    // --bd-callout-color: var(--bs-#{$variant}-text);
+    --bd-callout-bg: color-mix(in srgb, var(--bs-#{$variant}-bg-subtle), transparent 50%);
+    --bd-callout-border: var(--bs-#{$variant}-border);
   }
 }
