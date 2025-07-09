@@ -18,6 +18,9 @@ fi
 # Branch name to create
 NEW_BRANCH="gh-pages-${BRANCH_SUFFIX}"
 
+# Get the current docs version from config
+DOCS_VERSION=$(node -p "require('js-yaml').load(require('fs').readFileSync('config.yml', 'utf8')).docs_version")
+
 # Function to print colored messages
 print_success() {
   echo -e "${GREEN}✓ $1${NC}"
@@ -89,66 +92,39 @@ fi
 print_success "Pulled latest changes from origin/gh-pages"
 
 # Step 4: Create a new branch for the update
+print_info "Checking if branch ${NEW_BRANCH} exists and deleting it if it does…"
+if git show-ref --verify --quiet refs/heads/${NEW_BRANCH}; then
+  execute "git branch -D ${NEW_BRANCH}"
+else
+  print_info "Branch ${NEW_BRANCH} does not exist, proceeding with creation…"
+fi
 print_info "Creating new branch ${NEW_BRANCH}…"
 execute "git checkout -b ${NEW_BRANCH}"
 
-# Step 5: Move root files
-print_info "Moving root files from temporary location…"
-ROOT_FILES=("404.html" "CNAME" "apple-touch-icon.png" "favicon.ico" "index.html" "robots.txt" "sitemap-0.xml" "sitemap-index.xml" "sw.js")
-for file in "${ROOT_FILES[@]}"; do
-  if [ -f "/tmp/_site/$file" ]; then
-    execute "mv /tmp/_site/$file ."
-  else
-    print_warning "File /tmp/_site/$file not found. Skipping."
-  fi
-done
+# Step 5: Move all root-level files from Astro build
+find /tmp/_site -maxdepth 1 -type f -exec mv {} . \;
 
-# Step 6: Move directories with cleanup
-print_info "Moving directories from temporary location…"
-DIRS=("about" "components" "docsref" "examples" "getting-started" "migration")
-for dir in "${DIRS[@]}"; do
-  if [ -d "/tmp/_site/$dir" ]; then
-    if [ -d "$dir" ]; then
-      execute "rm -rf $dir"
+# Step 6: Move all top-level directories except 'docs' (which needs special handling)
+find /tmp/_site -maxdepth 1 -type d ! -name "_site" ! -name "docs" -exec sh -c 'dir=$(basename "$1"); rm -rf "$dir"; mv "$1" .' _ {} \;
+
+# Step 7: Handle docs directory specially
+if [ -d "/tmp/_site/docs" ]; then
+  # Replace only the current version's docs
+  if [ -d "docs/$DOCS_VERSION" ]; then
+    rm -rf "docs/$DOCS_VERSION"
+  fi
+  mv "/tmp/_site/docs/$DOCS_VERSION" "docs/"
+
+  # Handle docs root files
+  find /tmp/_site/docs -maxdepth 1 -type f -exec mv {} docs/ \;
+
+  # Handle special docs directories (getting-started, versions)
+  for special_dir in getting-started versions; do
+    if [ -d "/tmp/_site/docs/$special_dir" ]; then
+      rm -rf "docs/$special_dir"
+      mv "/tmp/_site/docs/$special_dir" "docs/"
     fi
-    execute "mv /tmp/_site/$dir ."
-  else
-    print_warning "Directory /tmp/_site/$dir not found. Skipping."
-  fi
-done
-
-# Step 7: Handle special doc directories
-print_info "Handling special documentation directories…"
-SPECIAL_DOCS=("docs/getting-started" "docs/versions")
-for dir in "${SPECIAL_DOCS[@]}"; do
-  if [ -d "/tmp/_site/$dir" ]; then
-    if [ -d "$dir" ]; then
-      execute "rm -rf $dir"
-    fi
-    # Make sure parent directory exists
-    parent_dir=$(dirname "$dir")
-    mkdir -p "$parent_dir"
-    execute "mv /tmp/_site/$dir $parent_dir/"
-  else
-    print_warning "Directory /tmp/_site/$dir not found. Skipping."
-  fi
-done
-
-# Step 8: Move docs index.html
-if [ -f "/tmp/_site/docs/index.html" ]; then
-  execute "mv /tmp/_site/docs/index.html docs/index.html"
-else
-  print_warning "File /tmp/_site/docs/index.html not found. Skipping."
-fi
-
-# Step 9: Handle docs/5.3
-if [ -d "/tmp/_site/docs/5.3" ]; then
-  if [ -d "docs/5.3" ]; then
-    execute "rm -rf docs/5.3"
-  fi
-  execute "mv /tmp/_site/docs/5.3 docs/"
-else
-  print_warning "Directory /tmp/_site/docs/5.3 not found. Skipping."
+  done
 fi
 
 # Clean up remaining files in /tmp/_site if any

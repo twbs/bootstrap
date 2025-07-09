@@ -46,12 +46,12 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.3.6.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.3.7.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.6`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.6`
-- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.6`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.6`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.7`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.7`
+- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.7`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.7`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
@@ -151,7 +151,7 @@ Documentation search is powered by [Algolia's DocSearch](https://docsearch.algol
 1. Run `npm install` to install the Node.js dependencies, including Astro (the site builder).
 2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 3. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
-4. Open `http://localhost:9001/` in your browser, and voilà.
+4. Open <http://localhost:9001> in your browser, and voilà.
 
 Learn more about using Astro by reading its [documentation](https://docs.astro.build/en/getting-started/).
 
