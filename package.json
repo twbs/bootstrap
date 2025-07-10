@@ -180,7 +180,7 @@
     "terser": "^5.43.1",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
-    "zod": "^4.0.0"
+    "zod": "^4.0.2"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
