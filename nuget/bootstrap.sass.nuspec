@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>bootstrap.sass</id>
-    <!-- pulled from package.json -->
+    <!-- pulled from release tag -->
     <version>5</version>
     <title>Bootstrap Sass</title>
     <authors>The Bootstrap Authors</authors>
