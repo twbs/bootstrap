@@ -23,12 +23,12 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
 
       - name: Run cspell
-        uses: streetsidesoftware/cspell-action@v7
+        uses: streetsidesoftware/cspell-action@157048954070986ce4315d0813573a2d8faee361 # v7.1.1
         with:
           config: ".cspell.json"
           files: "**/*.{md,mdx}"
