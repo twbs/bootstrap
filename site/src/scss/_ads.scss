@@ -1,3 +1,7 @@
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/vendor/rfs" as *;
+@use "../../../scss/mixins/border-radius" as *;
+
 // stylelint-disable declaration-no-important, selector-max-id
 
 //
@@ -13,7 +17,7 @@
   @include font-size(.8125rem);
   line-height: 1.4;
   text-align: left;
-  background-color: var(--bs-tertiary-bg);
+  background-color: var(--bs-bg-1);
 
   a {
     color: var(--bs-body-color);

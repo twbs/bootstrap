@@ -1,3 +1,9 @@
+@use "sass:color";
+@use "../../../scss/colors" as *;
+@use "../../../scss/variables" as *;
+@use "../../../scss/vendor/rfs" as *;
+@use "../../../scss/layout/breakpoints" as *;
+
 //
 // Bootstrap docs content theming
 //
@@ -112,8 +118,8 @@
 }
 
 .bd-subtitle {
-  @include font-size(1.5rem);
   font-weight: 300;
+  @include font-size(1.5rem);
 }
 
 .bi {
@@ -149,16 +155,16 @@
   --bs-tertiary-bg: #{$blue-600};
 
   .dropdown-menu {
-    --bs-dropdown-bg: #{mix($blue-500, $blue-600)};
+    --bs-dropdown-bg: #{color.mix($blue-500, $blue-600)};
     --bs-dropdown-link-active-bg: #{$blue-700};
   }
 
   .btn-secondary {
-    --bs-btn-bg: #{mix($gray-600, $blue-400, .5)};
+    --bs-btn-bg: #{color.mix($gray-600, $blue-400)};
     --bs-btn-border-color: #{rgba($white, .25)};
-    --bs-btn-hover-bg: #{darken(mix($gray-600, $blue-400, .5), 5%)};
+    --bs-btn-hover-bg: #{color.scale(color.mix($gray-600, $blue-400), $lightness: -5%)}; // stylelint-disable-line scss/at-function-named-arguments
     --bs-btn-hover-border-color: #{rgba($white, .25)};
-    --bs-btn-active-bg: #{darken(mix($gray-600, $blue-400, .5), 10%)};
+    --bs-btn-active-bg: #{color.scale(color.mix($gray-600, $blue-400), $lightness: -10%)}; // stylelint-disable-line scss/at-function-named-arguments
     --bs-btn-active-border-color: #{rgba($white, .5)};
     --bs-btn-focus-border-color: #{rgba($white, .5)};
     --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
