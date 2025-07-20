@@ -121,6 +121,13 @@
     @include box-shadow(none);
   }
 }
+.btn {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  cursor: pointer; // 🔥 This is the fix
+  ...
+}
 
 
 //
