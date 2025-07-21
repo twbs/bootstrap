@@ -47,11 +47,6 @@ Here’s how form validation works with Bootstrap:
 </form>
 ```
 
-### Server-side Validation
-
-- For server-side validation, set `.is-valid` or `.is-invalid` classes on the form control based on the server response. This will show the appropriate feedback message without needing `.was-validated`.
-- You can also use JavaScript’s `setCustomValidity()` to set a custom error message. This will make the field invalid and show the `.invalid-feedback` message after validation is triggered.
-
 ## Custom styles
 
 For custom Bootstrap form validation messages, you’ll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you’ll see the `:invalid` and `:valid` styles applied to your form controls.
