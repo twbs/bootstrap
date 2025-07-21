@@ -155,7 +155,7 @@ describe('FocusTrap', () => {
       })
     })
 
-    it('should force focus on itself if there is no focusable content', () => {
+    it('should not force focus on element with negative tabindex if there is no focusable content', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<a href="#" id="outside">outside</a>',
@@ -167,7 +167,7 @@ describe('FocusTrap', () => {
         focustrap.activate()
 
         const focusInListener = () => {
-          expect(spy).toHaveBeenCalled()
+          expect(spy).not.toHaveBeenCalled()
           document.removeEventListener('focusin', focusInListener)
           resolve()
         }
