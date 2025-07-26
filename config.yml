@@ -25,7 +25,7 @@ analytics:
 
 algolia:
   app_id:                "AK7KMZKZHQ"
-  api_key:               "3151f502c7b9e9dafd5e6372b691a24e"
+  api_key:               "YOUR_API_KEY_HERE"
   index_name:            "bootstrap"
 
 download:
