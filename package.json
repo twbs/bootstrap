@@ -126,7 +126,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@types/prismjs": "^1.26.5",
-    "astro": "^5.12.5",
+    "astro": "^5.12.6",
     "astro-auto-import": "^0.4.4",
     "autoprefixer": "^10.4.21",
     "bundlewatch": "^0.4.1",
@@ -180,7 +180,7 @@
     "terser": "^5.43.1",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
-    "zod": "^4.0.13"
+    "zod": "^4.0.14"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
