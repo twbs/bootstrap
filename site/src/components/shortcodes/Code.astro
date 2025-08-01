@@ -33,15 +33,20 @@ interface Props {
    * This takes precedence over the `code` prop.
    */
   filePath?: string
+  /**
+   * If the component is nested inside an example or not.
+   * @default false
+   */
+  nested?: boolean
 }
 
-const { class: className, code, containerClass, fileMatch, filePath, lang } = Astro.props
+const { class: className, code, containerClass, fileMatch, filePath, lang, nested = false } = Astro.props
 
 let codeToDisplay = filePath
   ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
   : Array.isArray(code)
-  ? code.join('\n')
-  : code
+    ? code.join('\n')
+    : code
 
 if (filePath && fileMatch && codeToDisplay) {
   const match = codeToDisplay.match(new RegExp(fileMatch))
@@ -130,19 +135,23 @@ if (filePath && fileMatch && codeToDisplay) {
   })
 </script>
 
-<div class:list={['bd-code-snippet', containerClass]}>
+<div class:list={[{ 'bd-code-snippet': !nested }, containerClass]}>
   {
-    Astro.slots.has('pre') ? (
-      <slot name="pre" />
-    ) : (
-      <div class="bd-clipboard">
-        <button type="button" class="btn-clipboard">
-          <svg class="bi" role="img" aria-label="Copy">
-            <use xlink:href="#clipboard" />
-          </svg>
-        </button>
-      </div>
-    )
+    nested
+      ? (<></>)
+      : Astro.slots.has('pre')
+        ? (
+          <slot name="pre" />
+        )
+        : (
+          <div class="bd-clipboard">
+            <button type="button" class="btn-clipboard">
+              <svg class="bi" role="img" aria-label="Copy">
+                <use xlink:href="#clipboard" />
+              </svg>
+            </button>
+          </div>
+        )
   }
   <div class="highlight">
     {
