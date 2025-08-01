@@ -25,7 +25,8 @@ analytics:
 
 algolia:
   app_id:                "AK7KMZKZHQ"
-  api_key:               "3151f502c7b9e9dafd5e6372b691a24e"
+# Set API_KEY environment variable before running
+  api_key: "${API_KEY}"
   index_name:            "bootstrap"
 
 download:
