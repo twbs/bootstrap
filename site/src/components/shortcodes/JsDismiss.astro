@@ -15,7 +15,7 @@ const { name } = Astro.props
 </p>
 
 <Code
-  code={`<button type="button" class="btn-close" data-bs-dismiss="${name}" aria-label="Close"></button>`}
+  code={`<button type="button" class="btn-close" data-bs-dismiss="${name}"><span class="visually-hidden">Close</span></button>`}
   lang="html"
 />
 
@@ -24,6 +24,6 @@ const { name } = Astro.props
 </p>
 
 <Code
-  code={`<button type="button" class="btn-close" data-bs-dismiss="${name}" data-bs-target="#my-${name}" aria-label="Close"></button>`}
+  code={`<button type="button" class="btn-close" data-bs-dismiss="${name}" data-bs-target="#my-${name}"><span class="visually-hidden">Close</span></button>`}
   lang="html"
 />
