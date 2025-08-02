@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "variables" as *;
+
 // Buttons
 //
 // Custom buttons for the docs.
@@ -32,7 +37,7 @@
 }
 
 .btn-bd-light {
-  --btn-custom-color: #{mix($bd-violet, $white, 75%)};
+  --btn-custom-color: #{color.mix($bd-violet, $white, 75%)};
 
   --bs-btn-color: var(--bs-gray-600);
   --bs-btn-border-color: var(--bs-border-color);

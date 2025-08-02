@@ -1,3 +1,9 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+@use "../config" as *;
+@use "../variables" as *;
+
 // stylelint-disable property-disallowed-list
 // Single side border-radius
 
@@ -5,10 +11,10 @@
 @function valid-radius($radius) {
   $return: ();
   @each $value in $radius {
-    @if type-of($value) == number {
-      $return: append($return, max($value, 0));
+    @if meta.type-of($value) == number {
+      $return: list.append($return, math.max($value, 0));
     } @else {
-      $return: append($return, $value);
+      $return: list.append($return, $value);
     }
   }
   @return $return;
