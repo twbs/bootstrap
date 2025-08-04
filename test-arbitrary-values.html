@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Arbitrary Values Test</title>
+    <link href="dist/css/bootstrap-utilities.css" rel="stylesheet">
+    <style>
+        .demo-box {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bootstrap Arbitrary Values Test</h1>
+        
+        <h2>Margin Examples</h2>
+        <div class="demo-box mt-[300px]">mt-[300px]</div>
+        <div class="demo-box mt-[25%]">mt-[25%]</div>
+        <div class="demo-box mt-[2rem]">mt-[2rem]</div>
+        <div class="demo-box mt-[10vh]">mt-[10vh]</div>
+        
+        <h2>Padding Examples</h2>
+        <div class="demo-box p-[300px]">p-[300px]</div>
+        <div class="demo-box p-[25%]">p-[25%]</div>
+        <div class="demo-box p-[2rem]">p-[2rem]</div>
+        
+        <h2>Directional Examples</h2>
+        <div class="demo-box ms-[300px]">ms-[300px] (margin-start)</div>
+        <div class="demo-box me-[25%]">me-[25%] (margin-end)</div>
+        <div class="demo-box px-[2rem]">px-[2rem] (padding-x)</div>
+        <div class="demo-box py-[10vh]">py-[10vh] (padding-y)</div>
+        
+        <h2>Negative Margins</h2>
+        <div class="demo-box -mt-[300px]">-mt-[300px]</div>
+        <div class="demo-box -ms-[2rem]">-ms-[2rem]</div>
+    </div>
+</body>
+</html>

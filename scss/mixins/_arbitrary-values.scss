@@ -1,0 +1,52 @@
+// Arbitrary Values Utility Generator
+// Handles utility classes with arbitrary values like mt-[300px], p-[25%], etc.
+
+// Check if a string contains an arbitrary value pattern
+@function is-arbitrary-value($string) {
+  @return str-index($string, '[') and str-index($string, ']');
+}
+
+// Extract arbitrary value from class name
+@function extract-arbitrary-value($class-name) {
+  $start: str-index($class-name, '[');
+  $end: str-index($class-name, ']');
+  
+  @if $start and $end {
+    @return str-slice($class-name, $start, $end);
+  }
+  
+  @return null;
+}
+
+// Extract class prefix from arbitrary class name
+@function extract-class-prefix($class-name) {
+  $bracket-index: str-index($class-name, '[');
+  
+  @if $bracket-index {
+    @return str-slice($class-name, 1, $bracket-index - 1);
+  }
+  
+  @return $class-name;
+}
+
+// Validate arbitrary value (basic validation)
+@function is-valid-arbitrary-value($value) {
+  // Remove brackets for validation
+  $clean-value: str-slice($value, 2, -2);
+  
+  // Check for common CSS units
+  $valid-units: 'px', 'rem', 'em', '%', 'vh', 'vw', 'vmin', 'vmax', 'ch', 'ex';
+  
+  @each $unit in $valid-units {
+    @if str-index($clean-value, $unit) {
+      @return true;
+    }
+  }
+  
+  // Check for unitless values (like 0)
+  @if $clean-value == '0' or $clean-value == 'auto' {
+    @return true;
+  }
+  
+  @return false;
+}

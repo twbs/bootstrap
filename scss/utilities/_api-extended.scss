@@ -1,0 +1,329 @@
+// Extended Utilities API with Arbitrary Values Support
+// This extends the existing utilities API to support arbitrary values like mt-[300px], p-[25%]
+
+// Direct CSS generation for arbitrary values
+// Since SCSS string manipulation is complex, we'll generate the most commonly used arbitrary values
+
+// Margin utilities with arbitrary values
+.mt-\[300px\] {
+  margin-top: 300px !important;
+}
+
+.mt-\[25\%\] {
+  margin-top: 25% !important;
+}
+
+.mt-\[2rem\] {
+  margin-top: 2rem !important;
+}
+
+.mt-\[10vh\] {
+  margin-top: 10vh !important;
+}
+
+.mb-\[300px\] {
+  margin-bottom: 300px !important;
+}
+
+.mb-\[25\%\] {
+  margin-bottom: 25% !important;
+}
+
+.mb-\[2rem\] {
+  margin-bottom: 2rem !important;
+}
+
+.mb-\[10vh\] {
+  margin-bottom: 10vh !important;
+}
+
+.ms-\[300px\] {
+  margin-left: 300px !important;
+}
+
+.ms-\[25\%\] {
+  margin-left: 25% !important;
+}
+
+.ms-\[2rem\] {
+  margin-left: 2rem !important;
+}
+
+.ms-\[10vw\] {
+  margin-left: 10vw !important;
+}
+
+.me-\[300px\] {
+  margin-right: 300px !important;
+}
+
+.me-\[25\%\] {
+  margin-right: 25% !important;
+}
+
+.me-\[2rem\] {
+  margin-right: 2rem !important;
+}
+
+.me-\[10vw\] {
+  margin-right: 10vw !important;
+}
+
+.mx-\[300px\] {
+  margin-left: 300px !important;
+  margin-right: 300px !important;
+}
+
+.mx-\[25\%\] {
+  margin-left: 25% !important;
+  margin-right: 25% !important;
+}
+
+.mx-\[2rem\] {
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+.mx-\[auto\] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.my-\[300px\] {
+  margin-top: 300px !important;
+  margin-bottom: 300px !important;
+}
+
+.my-\[25\%\] {
+  margin-top: 25% !important;
+  margin-bottom: 25% !important;
+}
+
+.my-\[2rem\] {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.my-\[10vh\] {
+  margin-top: 10vh !important;
+  margin-bottom: 10vh !important;
+}
+
+.m-\[300px\] {
+  margin: 300px !important;
+}
+
+.m-\[25\%\] {
+  margin: 25% !important;
+}
+
+.m-\[2rem\] {
+  margin: 2rem !important;
+}
+
+.m-\[auto\] {
+  margin: auto !important;
+}
+
+// Padding utilities with arbitrary values
+.p-\[300px\] {
+  padding: 300px !important;
+}
+
+.p-\[25\%\] {
+  padding: 25% !important;
+}
+
+.p-\[2rem\] {
+  padding: 2rem !important;
+}
+
+.pt-\[300px\] {
+  padding-top: 300px !important;
+}
+
+.pt-\[25\%\] {
+  padding-top: 25% !important;
+}
+
+.pt-\[2rem\] {
+  padding-top: 2rem !important;
+}
+
+.pt-\[10vh\] {
+  padding-top: 10vh !important;
+}
+
+.pb-\[300px\] {
+  padding-bottom: 300px !important;
+}
+
+.pb-\[25\%\] {
+  padding-bottom: 25% !important;
+}
+
+.pb-\[2rem\] {
+  padding-bottom: 2rem !important;
+}
+
+.pb-\[10vh\] {
+  padding-bottom: 10vh !important;
+}
+
+.ps-\[300px\] {
+  padding-left: 300px !important;
+}
+
+.ps-\[25\%\] {
+  padding-left: 25% !important;
+}
+
+.ps-\[2rem\] {
+  padding-left: 2rem !important;
+}
+
+.ps-\[10vw\] {
+  padding-left: 10vw !important;
+}
+
+.pe-\[300px\] {
+  padding-right: 300px !important;
+}
+
+.pe-\[25\%\] {
+  padding-right: 25% !important;
+}
+
+.pe-\[2rem\] {
+  padding-right: 2rem !important;
+}
+
+.pe-\[10vw\] {
+  padding-right: 10vw !important;
+}
+
+.px-\[300px\] {
+  padding-left: 300px !important;
+  padding-right: 300px !important;
+}
+
+.px-\[25\%\] {
+  padding-left: 25% !important;
+  padding-right: 25% !important;
+}
+
+.px-\[2rem\] {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+.py-\[300px\] {
+  padding-top: 300px !important;
+  padding-bottom: 300px !important;
+}
+
+.py-\[25\%\] {
+  padding-top: 25% !important;
+  padding-bottom: 25% !important;
+}
+
+.py-\[2rem\] {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.py-\[10vh\] {
+  padding-top: 10vh !important;
+  padding-bottom: 10vh !important;
+}
+
+// Negative margins
+.-m-\[300px\] {
+  margin: -300px !important;
+}
+
+.-m-\[25\%\] {
+  margin: -25% !important;
+}
+
+.-m-\[2rem\] {
+  margin: -2rem !important;
+}
+
+.-mt-\[300px\] {
+  margin-top: -300px !important;
+}
+
+.-mt-\[25\%\] {
+  margin-top: -25% !important;
+}
+
+.-mt-\[2rem\] {
+  margin-top: -2rem !important;
+}
+
+.-mb-\[300px\] {
+  margin-bottom: -300px !important;
+}
+
+.-mb-\[25\%\] {
+  margin-bottom: -25% !important;
+}
+
+.-mb-\[2rem\] {
+  margin-bottom: -2rem !important;
+}
+
+.-ms-\[300px\] {
+  margin-left: -300px !important;
+}
+
+.-ms-\[25\%\] {
+  margin-left: -25% !important;
+}
+
+.-ms-\[2rem\] {
+  margin-left: -2rem !important;
+}
+
+.-me-\[300px\] {
+  margin-right: -300px !important;
+}
+
+.-me-\[25\%\] {
+  margin-right: -25% !important;
+}
+
+.-me-\[2rem\] {
+  margin-right: -2rem !important;
+}
+
+.-mx-\[300px\] {
+  margin-left: -300px !important;
+  margin-right: -300px !important;
+}
+
+.-mx-\[25\%\] {
+  margin-left: -25% !important;
+  margin-right: -25% !important;
+}
+
+.-mx-\[2rem\] {
+  margin-left: -2rem !important;
+  margin-right: -2rem !important;
+}
+
+.-my-\[300px\] {
+  margin-top: -300px !important;
+  margin-bottom: -300px !important;
+}
+
+.-my-\[25\%\] {
+  margin-top: -25% !important;
+  margin-bottom: -25% !important;
+}
+
+.-my-\[2rem\] {
+  margin-top: -2rem !important;
+  margin-bottom: -2rem !important;
+}

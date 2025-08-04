@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Arbitrary Values Demo</title>
+    <link href="dist/css/bootstrap-utilities.css" rel="stylesheet">
+    <style>
+        .demo-section {
+            margin: 2rem 0;
+            border: 1px solid #e9ecef;
+            border-radius: 0.375rem;
+            padding: 1rem;
+        }
+        .demo-box {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border: 2px dashed #6c757d;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: #495057;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .code {
+            background: #f8f9fa;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+        h1, h2 { color: #212529; }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .comparison > div {
+            border: 1px solid #dee2e6;
+            padding: 1rem;
+            border-radius: 0.375rem;
+        }
+        .comparison h4 {
+            margin-top: 0;
+            color: #495057;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bootstrap Arbitrary Values Demo</h1>
+        <p>This page demonstrates the new arbitrary value functionality for Bootstrap spacing utilities.</p>
+        
+        <div class="demo-section">
+            <h2>Margin Examples</h2>
+            
+            <h3>Pixel Values</h3>
+            <div class="demo-box mt-[300px]">
+                <span class="code">mt-[300px]</span> - 300px top margin
+            </div>
+            
+            <h3>Percentage Values</h3>
+            <div class="demo-box mt-[25%]">
+                <span class="code">mt-[25%]</span> - 25% top margin
+            </div>
+            
+            <h3>Rem Values</h3>
+            <div class="demo-box mt-[2rem]">
+                <span class="code">mt-[2rem]</span> - 2rem top margin
+            </div>
+            
+            <h3>Viewport Units</h3>
+            <div class="demo-box mt-[10vh]">
+                <span class="code">mt-[10vh]</span> - 10vh top margin
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Padding Examples</h2>
+            
+            <div class="demo-box p-[300px]">
+                <span class="code">p-[300px]</span> - 300px padding all sides
+            </div>
+            
+            <div class="demo-box p-[25%]">
+                <span class="code">p-[25%]</span> - 25% padding all sides
+            </div>
+            
+            <div class="demo-box px-[2rem]">
+                <span class="code">px-[2rem]</span> - 2rem horizontal padding
+            </div>
+            
+            <div class="demo-box py-[10vh]">
+                <span class="code">py-[10vh]</span> - 10vh vertical padding
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Directional Examples</h2>
+            
+            <div class="demo-box ms-[300px]">
+                <span class="code">ms-[300px]</span> - 300px margin start (left)
+            </div>
+            
+            <div class="demo-box me-[25%]">
+                <span class="code">me-[25%]</span> - 25% margin end (right)
+            </div>
+            
+            <div class="demo-box mx-[2rem]">
+                <span class="code">mx-[2rem]</span> - 2rem horizontal margins
+            </div>
+            
+            <div class="demo-box my-[10vh]">
+                <span class="code">my-[10vh]</span> - 10vh vertical margins
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Negative Margins</h2>
+            <p><strong>Note:</strong> Negative margins can cause overlapping. Use with caution.</p>
+            
+            <div class="demo-box -mt-[300px]">
+                <span class="code">-mt-[300px]</span> - Negative 300px top margin
+            </div>
+            
+            <div class="demo-box -ms-[2rem]">
+                <span class="code">-ms-[2rem]</span> - Negative 2rem start margin
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Comparison with Standard Bootstrap</h2>
+            <div class="comparison">
+                <div>
+                    <h4>Standard Bootstrap</h4>
+                    <div class="demo-box mt-5">
+                        <span class="code">mt-5</span> - Bootstrap's largest margin (3rem)
+                    </div>
+                    <div class="demo-box p-5">
+                        <span class="code">p-5</span> - Bootstrap's largest padding (3rem)
+                    </div>
+                </div>
+                <div>
+                    <h4>Arbitrary Values</h4>
+                    <div class="demo-box mt-[300px]">
+                        <span class="code">mt-[300px]</span> - Custom 300px margin
+                    </div>
+                    <div class="demo-box p-[300px]">
+                        <span class="code">p-[300px]</span> - Custom 300px padding
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Use Cases</h2>
+            
+            <h3>Hero Section Spacing</h3>
+            <div class="demo-box py-[10vh] px-[25%]">
+                <span class="code">py-[10vh] px-[25%]</span><br>
+                Perfect for hero sections with viewport-based spacing
+            </div>
+            
+            <h3>Precise Layout Control</h3>
+            <div class="demo-box mt-[300px] mb-[2rem]">
+                <span class="code">mt-[300px] mb-[2rem]</span><br>
+                Mix arbitrary and standard values for precise control
+            </div>
+            
+            <h3>Responsive Design Elements</h3>
+            <div class="demo-box mx-[auto] p-[25%]">
+                <span class="code">mx-[auto] p-[25%]</span><br>
+                Centering with percentage-based internal spacing
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Browser DevTools Inspection</h2>
+            <p>Right-click on any element above and inspect to see the generated CSS:</p>
+            <ul>
+                <li><code>margin-top: 300px !important;</code></li>
+                <li><code>padding: 25% !important;</code></li>
+                <li><code>margin-left: 2rem !important;</code></li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Add some interactivity to highlight the spacing
+        document.querySelectorAll('.demo-box').forEach(box => {
+            box.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#e3f2fd';
+                this.style.transition = 'background-color 0.3s ease';
+            });
+            
+            box.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '';
+            });
+        });
+    </script>
+</body>
+</html>

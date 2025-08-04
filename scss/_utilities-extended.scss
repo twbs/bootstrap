@@ -1,0 +1,44 @@
+// Extended Utilities with Arbitrary Values Support
+// This file extends the existing Bootstrap utilities to support arbitrary values
+
+// Import the arbitrary values functions
+@import "mixins/arbitrary-values";
+
+// Function to generate arbitrary spacing classes
+@function generate-arbitrary-spacing-classes($base-classes: ()) {
+  // This would ideally be populated by a build-time process that scans for arbitrary classes
+  // For now, we'll provide some common examples
+  $common-arbitrary-classes: (
+    // Margin examples
+    "m-[300px]", "m-[25%]", "m-[2rem]", "m-[auto]",
+    "mt-[300px]", "mt-[25%]", "mt-[2rem]", "mt-[10vh]",
+    "mb-[300px]", "mb-[25%]", "mb-[2rem]", "mb-[10vh]",
+    "ms-[300px]", "ms-[25%]", "ms-[2rem]", "ms-[10vw]",
+    "me-[300px]", "me-[25%]", "me-[2rem]", "me-[10vw]",
+    "mx-[300px]", "mx-[25%]", "mx-[2rem]", "mx-[auto]",
+    "my-[300px]", "my-[25%]", "my-[2rem]", "my-[10vh]",
+    
+    // Padding examples
+    "p-[300px]", "p-[25%]", "p-[2rem]",
+    "pt-[300px]", "pt-[25%]", "pt-[2rem]", "pt-[10vh]",
+    "pb-[300px]", "pb-[25%]", "pb-[2rem]", "pb-[10vh]",
+    "ps-[300px]", "ps-[25%]", "ps-[2rem]", "ps-[10vw]",
+    "pe-[300px]", "pe-[25%]", "pe-[2rem]", "pe-[10vw]",
+    "px-[300px]", "px-[25%]", "px-[2rem]",
+    "py-[300px]", "py-[25%]", "py-[2rem]", "py-[10vh]",
+    
+    // Negative margins
+    "-m-[300px]", "-m-[25%]", "-m-[2rem]",
+    "-mt-[300px]", "-mt-[25%]", "-mt-[2rem]",
+    "-mb-[300px]", "-mb-[25%]", "-mb-[2rem]",
+    "-ms-[300px]", "-ms-[25%]", "-ms-[2rem]",
+    "-me-[300px]", "-me-[25%]", "-me-[2rem]",
+    "-mx-[300px]", "-mx-[25%]", "-mx-[2rem]",
+    "-my-[300px]", "-my-[25%]", "-my-[2rem]"
+  );
+  
+  @return join($base-classes, $common-arbitrary-classes);
+}
+
+// Store the arbitrary classes that should be generated
+$arbitrary-spacing-classes: generate-arbitrary-spacing-classes() !default;

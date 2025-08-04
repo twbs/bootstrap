@@ -1,5 +1,8 @@
 // Utilities
 
+// Import arbitrary values support
+@import "mixins/arbitrary-values";
+
 $utilities: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $utilities: map-merge(
