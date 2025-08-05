@@ -11,12 +11,12 @@ jobs:
     env:
       GITHUB_REF_NAME: ${{ github.ref_name }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
 
       - name: Set up NuGet
-        uses: nuget/setup-nuget@v2
+        uses: nuget/setup-nuget@323ab0502cd38fdc493335025a96c8fdb0edc71f # v2.0.1
         with:
           nuget-api-key: ${{ secrets.NuGetAPIKey }}
           nuget-version: '5.x'
