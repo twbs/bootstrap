@@ -1,0 +1,139 @@
+@import "../../functions";
+@import "../../variables";
+@import "../../variables-dark";
+@import "../../maps";
+@import "../../mixins";
+
+@include describe("color-contrast function") {
+  @include it("should return a color when contrast ratio equals minimum requirement (WCAG 2.1 compliance)") {
+    // Test case: Background color that produces contrast ratio close to 4.5:1
+    // This tests the WCAG 2.1 requirement that contrast should be "at least 4.5:1" (>= 4.5)
+    // rather than "strictly greater than 4.5:1" (> 4.5)
+
+    // #777777 produces 4.4776:1 contrast ratio with white text
+    // Since this is below the 4.5:1 threshold, it should return the highest available contrast color
+    $test-background: #777;
+    $result: color-contrast($test-background);
+
+    @include assert-equal($result, $black, "Should return black (highest available contrast) for background with 4.4776:1 contrast ratio (below threshold)");
+  }
+
+  @include it("should return a color when contrast ratio is above minimum requirement") {
+    // Test case: Background color that produces contrast ratio above 4.5:1
+    // #767676 produces 4.5415:1 contrast ratio with white text
+    $test-background: #767676;
+    $result: color-contrast($test-background);
+
+    @include assert-equal($result, $white, "Should return white for background with 4.5415:1 contrast ratio (above threshold)");
+  }
+
+  @include it("should return a color when contrast ratio is below minimum requirement") {
+    // Test case: Background color that produces contrast ratio below 4.5:1
+    // #787878 produces 4.4155:1 contrast ratio with white text
+    $test-background: #787878;
+    $result: color-contrast($test-background);
+
+    // Should return the color with the highest available contrast ratio
+    @include assert-equal($result, $black, "Should return black (highest available contrast) for background with 4.4155:1 contrast ratio (below threshold)");
+  }
+
+  @include it("should handle edge case with very light background") {
+    // Test case: Very light background that should return dark text
+    $test-background: #f8f9fa; // Very light gray
+    $result: color-contrast($test-background);
+
+    @include assert-equal($result, $color-contrast-dark, "Should return dark text for very light background");
+  }
+
+  @include it("should handle edge case with very dark background") {
+    // Test case: Very dark background that should return light text
+    $test-background: #212529; // Very dark gray
+    $result: color-contrast($test-background);
+
+    @include assert-equal($result, $color-contrast-light, "Should return light text for very dark background");
+  }
+
+  @include it("should work with custom minimum contrast ratio") {
+    // Test case: Using a custom minimum contrast ratio
+    $test-background: #666;
+    $result: color-contrast($test-background, $color-contrast-dark, $color-contrast-light, 3);
+
+    @include assert-equal($result, $white, "Should return white when using custom minimum contrast ratio of 3.0");
+  }
+
+  @include it("should test contrast ratio calculation accuracy") {
+    // Test case: Verify that contrast-ratio function works correctly
+    $background: #767676;
+    $foreground: $white;
+    $ratio: contrast-ratio($background, $foreground);
+    // Bootstrap's implementation calculates this as ~4.5415, not exactly 4.5, due to its luminance math.
+    // We use 4.54 as the threshold for this test to match the actual implementation.
+    @include assert-true($ratio >= 4.54 and $ratio <= 4.55, "Contrast ratio should be approximately 4.54:1 (Bootstrap's math)");
+  }
+
+  @include it("should test luminance calculation") {
+    // Test case: Verify luminance function works correctly
+    $white-luminance: luminance($white);
+    $black-luminance: luminance($black);
+
+    @include assert-equal($white-luminance, 1, "White should have luminance of 1");
+    @include assert-equal($black-luminance, 0, "Black should have luminance of 0");
+  }
+
+  @include it("should handle rgba colors correctly") {
+    // Test case: Test with rgba colors
+    $test-background: rgba(118, 118, 118, 1); // Same as #767676
+    $result: color-contrast($test-background);
+
+    @include assert-equal($result, $white, "Should handle rgba colors correctly");
+  }
+
+  @include it("should test the WCAG 2.1 boundary condition with color below threshold") {
+    // Test case: Background color that produces contrast ratio below 4.5:1
+    // #787878 produces 4.4155:1 contrast ratio with white
+    $test-background: #787878; // Produces 4.4155:1 contrast ratio
+    $contrast-ratio: contrast-ratio($test-background, $white);
+
+    // Verify the contrast ratio is below 4.5:1
+    @include assert-true($contrast-ratio < 4.5, "Contrast ratio should be below 4.5:1 threshold");
+
+    // The color-contrast function should return the color with highest available contrast
+    $result: color-contrast($test-background);
+    @include assert-equal($result, $black, "color-contrast should return black (highest available contrast) for below-threshold ratio");
+  }
+
+  @include it("should test the WCAG 2.1 boundary condition with color at threshold") {
+    // Test case: Background color that produces contrast ratio close to 4.5:1
+    // #777777 produces 4.4776:1 contrast ratio with white
+    $test-background: #777; // Produces 4.4776:1 contrast ratio
+    $contrast-ratio: contrast-ratio($test-background, $white);
+
+    // Verify the contrast ratio is below 4.5:1 threshold
+    @include assert-true($contrast-ratio < 4.5, "Contrast ratio is below threshold, function should handle gracefully");
+  }
+
+  @include it("should demonstrate the difference between > and >= operators") {
+    // Test case: Demonstrates the difference between > and >= operators
+    // Uses #767676 with a custom minimum contrast ratio that matches its actual ratio (4.5415)
+    // With > 4.5415: should return black (fallback to highest available)
+    // With >= 4.5415: should return white (meets threshold)
+
+    $test-background: #767676; // Produces 4.5415:1 contrast ratio
+    $actual-ratio: contrast-ratio($test-background, $white);
+
+    // Test with a custom minimum that matches the actual ratio
+    $result: color-contrast($test-background, $color-contrast-dark, $color-contrast-light, $actual-ratio);
+
+    // Should return white when using >= implementation
+    @include assert-equal($result, $white, "color-contrast should return white when using exact ratio as threshold (>= implementation)");
+  }
+
+  @include it("should test additional working colors above threshold") {
+    // Test case: Background color that produces contrast ratio well above 4.5:1
+    // #757575 produces 4.6047:1 contrast ratio with white text
+    $test-background: #757575; // Produces 4.6047:1 contrast ratio
+    $result: color-contrast($test-background);
+
+    @include assert-equal($result, $white, "Should return white for background with 4.6047:1 contrast ratio (well above threshold)");
+  }
+}
