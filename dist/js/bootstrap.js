@@ -2898,9 +2898,17 @@
       return;
     }
     EventHandler.one(target, EVENT_HIDDEN$3, () => {
-      // focus on trigger when it is closed
+      // focus on trigger when it is closed without causing a scroll jump
       if (isVisible(this)) {
-        this.focus();
+        try {
+          // Preferred: restore focus without scrolling the page
+          this.focus({
+            preventScroll: true
+          });
+        } catch (err) {
+          // Fallback for older browsers that don't support the option
+          this.focus();
+        }
       }
     });
 
