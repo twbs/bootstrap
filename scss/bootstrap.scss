@@ -1,52 +1,46 @@
-@import "mixins/banner";
-@include bsBanner("");
-
+@use "banner";
 
 // scss-docs-start import-stack
-// Configuration
-@import "functions";
-@import "variables";
-@import "variables-dark";
-@import "maps";
-@import "mixins";
-@import "utilities";
+// Global CSS variables, layer definitions, and configuration
+@use "root";
 
-// Layout & components
-@import "root";
-@import "reboot";
-@import "type";
-@import "images";
-@import "containers";
-@import "grid";
-@import "tables";
-@import "forms";
-@import "buttons";
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "nav";
-@import "navbar";
-@import "card";
-@import "accordion";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "alert";
-@import "progress";
-@import "list-group";
-@import "close";
-@import "toasts";
-@import "modal";
-@import "tooltip";
-@import "popover";
-@import "carousel";
-@import "spinners";
-@import "offcanvas";
-@import "placeholders";
+// Reboot & Content
+@use "content";
+
+// Layout
+@use "layout";
+
+// Forms
+@use "forms";
+
+// Components
+@use "accordion";
+@use "alert";
+@use "badge";
+@use "breadcrumb";
+@use "buttons";
+@use "button-group";
+@use "card";
+@use "carousel";
+@use "close";
+@use "dropdown";
+@use "list-group";
+@use "modal";
+@use "nav";
+@use "navbar";
+@use "offcanvas";
+@use "pagination";
+@use "placeholders";
+@use "popover";
+@use "progress";
+@use "spinners";
+@use "toasts";
+@use "tooltip";
+@use "transitions";
 
 // Helpers
-@import "helpers";
+@use "helpers";
 
 // Utilities
-@import "utilities/api";
+@use "utilities/api";
 // scss-docs-end import-stack

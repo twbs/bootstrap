@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "../../../scss/colors" as *;
+@use "../../../scss/variables" as *;
+@use "../../../scss/mixins/color-mode" as *;
+
 :root,
 [data-bs-theme="light"] {
   // --base00: #fff;
@@ -8,7 +13,7 @@
   --base05: #333;
   --base06: #fff;
   --base07: #{$teal-700}; // #9a6700
-  --base08: #{mix($red-500, $red-600, 50%)}; // #bc4c00
+  --base08: #{color.mix($red-500, $red-600, 50%)}; // #bc4c00
   --base09: #{$cyan-700}; // #087990
   --base0A: #{$purple-500}; // #795da3
   --base0B: #{$blue-700}; // #183691
