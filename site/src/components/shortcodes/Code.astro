@@ -34,13 +34,13 @@ interface Props {
    */
   filePath?: string
   /**
-   * If the component is nested inside an example or not.
+   * Defines if the `<Code>` component is nested inside an `<Example>` component or not.
    * @default false
    */
-  nested?: boolean
+  nestedInExample?: boolean
 }
 
-const { class: className, code, containerClass, fileMatch, filePath, lang, nested = false } = Astro.props
+const { class: className, code, containerClass, fileMatch, filePath, lang, nestedInExample = false } = Astro.props
 
 let codeToDisplay = filePath
   ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
@@ -135,9 +135,9 @@ if (filePath && fileMatch && codeToDisplay) {
   })
 </script>
 
-<div class:list={[{ 'bd-code-snippet': !nested }, containerClass]}>
+<div class:list={[{ 'bd-code-snippet': !nestedInExample }, containerClass]}>
   {
-    nested
+    nestedInExample
       ? (<></>)
       : Astro.slots.has('pre')
         ? (
