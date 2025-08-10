@@ -25,8 +25,8 @@ export function getVersionedDocsPath(docsPath: string): string {
 // This is useful to catch typos in docs paths.
 // Note: this function is only called during a production build.
 // Note: this could at some point be refactored to use Astro list of generated `routes` accessible in the
-// `astro:build:done` integration hook. Altho as of 03/14/2023, this is not possible due to the route's data only
-// containing informations regarding the last page generated page for dynamic routes.
+// `astro:build:done` integration hook. Although as of 03/14/2023, this is not possible due to the route's data only
+// containing information regarding the last page generated page for dynamic routes.
 // @see https://github.com/withastro/astro/issues/5802
 export function validateVersionedDocsPaths(distUrl: URL) {
   const { docs_version } = getConfig()

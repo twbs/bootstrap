@@ -1209,8 +1209,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
-              <img src=${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')} width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy"
-                   style="filter: invert(1) grayscale(100%) brightness(200%);">
+              <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy" style="filter: invert(1) grayscale(100%) brightness(200%);">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="تبديل التنقل">
               <span class="navbar-toggler-icon"></span>
@@ -1249,7 +1248,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-5">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
-              <img src=${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')} width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy">
+              <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="تبديل التنقل">
               <span class="navbar-toggler-icon"></span>
@@ -1418,41 +1417,41 @@ import Placeholder from "@shortcodes/Placeholder.astro"
       </div>
 
       <div>
-        <div class="bd-example">
-          <nav id="navbar-example2" class="navbar bg-body-tertiary px-3">
-            <a class="navbar-brand" href="#">شريط التنقل</a>
-            <ul class="nav nav-pills">
-              <li class="nav-item">
-                <a class="nav-link" href="#fat"><bdi lang="en" dir="ltr">@fat</bdi></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#mdo"><bdi lang="en" dir="ltr">@mdo</bdi></a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">قائمة منسدلة</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#one">واحد</a></li>
-                  <li><a class="dropdown-item" href="#two">اثنان</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#three">ثلاثة</a></li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
-          <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example position-relative mt-2 overflow-auto">
-            <h4 id="fat"><bdi lang="en" dir="ltr">@fat</bdi></h4>
-            <p>محتوى لتوضيح كيف تعمل المخطوطة. ببساطة، المخطوطة عبارة عن منشور طويل يحتوي على عدة أقسام، ولديه شريط تنقل يسهل الوصول إلى هذه الأقسام الفرعية.</p>
-            <h4 id="mdo"><bdi lang="en" dir="ltr">@mdo</bdi></h4>
-            <p>بصرف النظر عن تحسيننا جدوى المكيّفات أو عدم تحسينها، فإن الطلب على الطاقة سيزداد. وطبقاً لما جاء في مقالة معهد ماساشوستس للتكنولوجيا، السالف ذكره، ثمَّة أمر يجب عدم إغفاله، وهو كيف أن هذا الطلب سيضغط على نظم توفير الطاقة الحالية. إذ لا بد من إعادة تأهيل كل شبكات الكهرباء، وتوسيعها لتلبية طلب الطاقة في زمن الذروة، خلال موجات الحرارة المتزايدة. فحين يكون الحر شديداً يجنح الناس إلى البقاء في الداخل، وإلى زيادة تشغيل المكيّفات، سعياً إلى جو لطيف وهم يستخدمون أدوات وأجهزة مختلفة أخرى.</p>
-            <h4 id="one">واحد</h4>
-            <p>وكل هذه الأمور المتزامنة من تشغيل الأجهزة، يزيد الضغط على شبكات الطاقة، كما أسلفنا. لكن مجرد زيادة سعة الشبكة ليس كافياً. إذ لا بد من تطوير الشبكات الذكية التي تستخدم الجسّاسات، ونظم المراقبة، والبرامج الإلكترونية، لتحديد متى يكون الشاغلون في المبنى، ومتى يكون ثمَّة حاجة إلى الطاقة، ومتى تكون الحرارة منخفضة، وبذلك يخرج الناس، فلا يستخدمون كثيراً من الكهرباء.</p>
-            <h4 id="two">اثنان</h4>
-            <p>مع الأسف، كل هذه الحلول المبتكرة مكلِّفة، وهذا ما يجعلها عديمة الجدوى في نظر بعض الشركات الخاصة والمواطن المتقشّف. إن بعض الأفراد الواعين بيئياً يبذلون قصارى جهدهم في تقليص استهلاكهم من الطاقة، ويعون جيداً أهمية أجهزة التكييف المجدية والأرفق بالبيئة. ولكن جهات كثيرة لن تتحرّك لمجرد حافز سلامة المناخ ووقف هدر الطاقة، ما دامت لا تحركها حوافز قانونية. وعلى الحكومات أن تُقدِم عند الاهتمام بالتغيّر المناخي، على وضع التشريعات المناسبة. فبالنظم والحوافز والدعم، يمكن دفع الشركات إلى اعتماد الحلول الأجدى في مكاتبها.</p>
-            <h4 id="three">ثلاثة</h4>
-            <p>وكما يتبيّن لنا، من عدد الحلول الملطِّفة للمشكلة، ومن تنوّعها، وهي الحلول التي أسلفنا الحديث عنها، فإن التكنولوجيا التي نحتاج إليها من أجل معالجة هذه التحديات، هي في مدى قدرتنا، لكنها ربما تتطلّب بعض التحسين، ودعماً استثمارياً أكبر!</p>
-            <p>ولا مانع من إضافة محتوى آخر ليس تحت أي قسم معين.</p>
-          </div>
+        <Example showMarkup={false} code={`
+        <nav id="navbar-example2" class="navbar bg-body-tertiary px-3">
+          <a class="navbar-brand" href="#">شريط التنقل</a>
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="#fat"><bdi lang="en" dir="ltr">@fat</bdi></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#mdo"><bdi lang="en" dir="ltr">@mdo</bdi></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">قائمة منسدلة</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#one">واحد</a></li>
+                <li><a class="dropdown-item" href="#two">اثنان</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#three">ثلاثة</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example position-relative mt-2 overflow-auto">
+          <h4 id="fat"><bdi lang="en" dir="ltr">@fat</bdi></h4>
+          <p>محتوى لتوضيح كيف تعمل المخطوطة. ببساطة، المخطوطة عبارة عن منشور طويل يحتوي على عدة أقسام، ولديه شريط تنقل يسهل الوصول إلى هذه الأقسام الفرعية.</p>
+          <h4 id="mdo"><bdi lang="en" dir="ltr">@mdo</bdi></h4>
+          <p>بصرف النظر عن تحسيننا جدوى المكيّفات أو عدم تحسينها، فإن الطلب على الطاقة سيزداد. وطبقاً لما جاء في مقالة معهد ماساشوستس للتكنولوجيا، السالف ذكره، ثمَّة أمر يجب عدم إغفاله، وهو كيف أن هذا الطلب سيضغط على نظم توفير الطاقة الحالية. إذ لا بد من إعادة تأهيل كل شبكات الكهرباء، وتوسيعها لتلبية طلب الطاقة في زمن الذروة، خلال موجات الحرارة المتزايدة. فحين يكون الحر شديداً يجنح الناس إلى البقاء في الداخل، وإلى زيادة تشغيل المكيّفات، سعياً إلى جو لطيف وهم يستخدمون أدوات وأجهزة مختلفة أخرى.</p>
+          <h4 id="one">واحد</h4>
+          <p>وكل هذه الأمور المتزامنة من تشغيل الأجهزة، يزيد الضغط على شبكات الطاقة، كما أسلفنا. لكن مجرد زيادة سعة الشبكة ليس كافياً. إذ لا بد من تطوير الشبكات الذكية التي تستخدم الجسّاسات، ونظم المراقبة، والبرامج الإلكترونية، لتحديد متى يكون الشاغلون في المبنى، ومتى يكون ثمَّة حاجة إلى الطاقة، ومتى تكون الحرارة منخفضة، وبذلك يخرج الناس، فلا يستخدمون كثيراً من الكهرباء.</p>
+          <h4 id="two">اثنان</h4>
+          <p>مع الأسف، كل هذه الحلول المبتكرة مكلِّفة، وهذا ما يجعلها عديمة الجدوى في نظر بعض الشركات الخاصة والمواطن المتقشّف. إن بعض الأفراد الواعين بيئياً يبذلون قصارى جهدهم في تقليص استهلاكهم من الطاقة، ويعون جيداً أهمية أجهزة التكييف المجدية والأرفق بالبيئة. ولكن جهات كثيرة لن تتحرّك لمجرد حافز سلامة المناخ ووقف هدر الطاقة، ما دامت لا تحركها حوافز قانونية. وعلى الحكومات أن تُقدِم عند الاهتمام بالتغيّر المناخي، على وضع التشريعات المناسبة. فبالنظم والحوافز والدعم، يمكن دفع الشركات إلى اعتماد الحلول الأجدى في مكاتبها.</p>
+          <h4 id="three">ثلاثة</h4>
+          <p>وكما يتبيّن لنا، من عدد الحلول الملطِّفة للمشكلة، ومن تنوّعها، وهي الحلول التي أسلفنا الحديث عنها، فإن التكنولوجيا التي نحتاج إليها من أجل معالجة هذه التحديات، هي في مدى قدرتنا، لكنها ربما تتطلّب بعض التحسين، ودعماً استثمارياً أكبر!</p>
+          <p>ولا مانع من إضافة محتوى آخر ليس تحت أي قسم معين.</p>
         </div>
+        `} />
       </div>
     </article>
     <article class="my-3" id="spinners">

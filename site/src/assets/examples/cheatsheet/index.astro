@@ -1187,8 +1187,7 @@ export const body_class = 'bg-body-tertiary'
           <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
-                <img src=${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')} width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy"
-                     style="filter: invert(1) grayscale(100%) brightness(200%);">
+                <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy" style="filter: invert(1) grayscale(100%) brightness(200%);">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -1223,11 +1222,11 @@ export const body_class = 'bg-body-tertiary'
               </div>
             </div>
           </nav>
-  
+
           <nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-5">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
-                <img src=${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')} width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy">
+                <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -1394,40 +1393,40 @@ export const body_class = 'bg-body-tertiary'
       </div>
 
       <div>
-        <div class="bd-example">
-          <nav id="navbar-example2" class="navbar bg-body-tertiary px-3">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <ul class="nav nav-pills">
-              <li class="nav-item">
-                <a class="nav-link active" href="#scrollspyHeading1">First</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#scrollspyHeading2">Second</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-                  <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
+        <Example showMarkup={false} code={`
+        <nav id="navbar-example2" class="navbar bg-body-tertiary px-3">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" href="#scrollspyHeading1">First</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#scrollspyHeading2">Second</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+                <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example position-relative mt-2 overflow-auto" tabindex="0">
-            <h4 id="scrollspyHeading1">First heading</h4>
-            <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-            <h4 id="scrollspyHeading2">Second heading</h4>
-            <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-            <h4 id="scrollspyHeading3">Third heading</h4>
-            <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-            <h4 id="scrollspyHeading4">Fourth heading</h4>
-            <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-            <h4 id="scrollspyHeading5">Fifth heading</h4>
-            <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-          </div>
+          <h4 id="scrollspyHeading1">First heading</h4>
+          <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <h4 id="scrollspyHeading2">Second heading</h4>
+          <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <h4 id="scrollspyHeading3">Third heading</h4>
+          <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <h4 id="scrollspyHeading4">Fourth heading</h4>
+          <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+          <h4 id="scrollspyHeading5">Fifth heading</h4>
+          <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         </div>
+        `} />
       </div>
     </article>
     <article class="my-3" id="spinners">
