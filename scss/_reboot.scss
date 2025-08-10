@@ -375,6 +375,14 @@ th {
   border-width: 0;
 }
 
+// Contenteditable
+//
+// Handle focus states for elements with contenteditable set to true or plaintext-only
+
+[contenteditable]:not([contenteditable="false"]):focus {
+  outline: 0;
+  box-shadow: $input-focus-box-shadow;
+}
 
 // Forms
 //
