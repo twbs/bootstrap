@@ -1,6 +1,6 @@
 ---
 import { replacePlaceholdersInHtml } from '@libs/placeholder'
-import { Prism } from '@astrojs/prism'
+import Code from '@components/shortcodes/Code.astro'
 
 interface Props {
   /**
@@ -96,9 +96,7 @@ const simplifiedMarkup = markup
             </div>
           </div>
         )}
-        <div class="highlight">
-          <Prism code={simplifiedMarkup} lang={lang} />
-        </div>
+        <Code code={simplifiedMarkup} lang={lang} nestedInExample={true} />
       </>
     )
   }
