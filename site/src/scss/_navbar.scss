@@ -1,3 +1,11 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/functions" as *;
+@use "../../../scss/mixins" as *;
+@use "../../../scss/variables" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/vendor/rfs" as *;
+
 .bd-navbar {
   padding: .75rem 0;
   background-color: transparent;
@@ -13,7 +21,8 @@
     z-index: -1;
     display: block;
     content: "";
-    background-image: linear-gradient(rgba(var(--bd-violet-rgb), 1), rgba(var(--bd-violet-rgb), .95));
+    background-image: linear-gradient(var(--bd-violet), color-mix(in srgb, var(--bd-violet), transparent 5%));
+    // background-image: linear-gradient(color-mix(in srgb, var(--bs-gray-900), $black 10%), color-mix(in srgb, var(--bs-gray-900), $black 15%));
   }
 
   .bd-navbar-toggle {
@@ -77,7 +86,7 @@
     border-left: 0;
 
     @include media-breakpoint-down(lg) {
-      box-shadow: var(--bs-box-shadow-lg);
+      box-shadow: var(--#{$prefix}box-shadow-lg);
     }
   }
 
@@ -91,12 +100,12 @@
     --bs-dropdown-min-width: 12rem;
     --bs-dropdown-padding-x: .25rem;
     --bs-dropdown-padding-y: .25rem;
-    --bs-dropdown-link-hover-bg: rgba(var(--bd-violet-rgb), .1);
-    --bs-dropdown-link-active-bg: rgba(var(--bd-violet-rgb), 1);
+    --bs-dropdown-link-hover-bg: color-mix(in srgb, var(--bd-violet), transparent 90%);
+    --bs-dropdown-link-active-bg: var(--bd-violet);
     @include rfs(.875rem, --bs-dropdown-font-size);
     @include font-size(.875rem);
     @include border-radius(.5rem);
-    box-shadow: $dropdown-box-shadow;
+    box-shadow: var(--#{$prefix}dropdown-box-shadow);
 
     li + li {
       margin-top: .125rem;

@@ -1,3 +1,14 @@
+@use "sass:map";
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/caret" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/gradients" as *;
+@use "mixins/caret" as *;
+@use "vendor/rfs" as *;
+@use "layout/breakpoints" as *;
+
 // The dropdown wrapper (`<div>`)
 .dropup,
 .dropend,
@@ -85,7 +96,7 @@
 // We deliberately hardcode the `bs-` prefix because we check
 // this custom property in JS to determine Popper's positioning
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map.keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 

@@ -1,30 +1,7 @@
-//
-// Headings
-//
-.h1 {
-  @extend h1;
-}
-
-.h2 {
-  @extend h2;
-}
-
-.h3 {
-  @extend h3;
-}
-
-.h4 {
-  @extend h4;
-}
-
-.h5 {
-  @extend h5;
-}
-
-.h6 {
-  @extend h6;
-}
-
+@use "../config" as *;
+@use "../variables" as *;
+@use "../mixins/lists" as *;
+@use "../vendor/rfs" as *;
 
 .lead {
   @include font-size($lead-font-size);
@@ -46,11 +23,11 @@
 // Emphasis
 //
 .small {
-  @extend small;
+  // @extend small;
 }
 
 .mark {
-  @extend mark;
+  // @extend mark;
 }
 
 //

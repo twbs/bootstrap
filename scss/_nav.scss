@@ -1,3 +1,10 @@
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/transition" as *;
+@use "mixins/gradients" as *;
+@use "vendor/rfs" as *;
+
 // Base class
 //
 // Kickstart any navigation component with a set of style resets. Works with
@@ -70,7 +77,7 @@
   border-bottom: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
 
   .nav-link {
-    margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
+    margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width));
     border: var(--#{$prefix}nav-tabs-border-width) solid transparent;
     @include border-top-radius(var(--#{$prefix}nav-tabs-border-radius));
 
@@ -91,7 +98,7 @@
 
   .dropdown-menu {
     // Make dropdown border overlap tab border
-    margin-top: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); // stylelint-disable-line function-disallowed-list
+    margin-top: calc(-1 * var(--#{$prefix}nav-tabs-border-width));
     // Remove the top rounded corners here since there is a hard edge above the menu
     @include border-top-radius(0);
   }
