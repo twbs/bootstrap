@@ -11,6 +11,7 @@
   // End of reset
   --#{$prefix}table-color: #{$table-color};
   --#{$prefix}table-bg: #{$table-bg};
+  --#{$prefix}table-padding: #{$table-cell-padding-y $table-cell-padding-x};
   --#{$prefix}table-border-color: #{$table-border-color};
   --#{$prefix}table-accent-bg: #{$table-accent-bg};
   --#{$prefix}table-striped-color: #{$table-striped-color};
@@ -25,13 +26,9 @@
   vertical-align: $table-cell-vertical-align;
   border-color: var(--#{$prefix}table-border-color);
 
-  // Target th & td
-  // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
-  // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
-  // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
-  // stylelint-disable-next-line selector-max-universal
-  > :not(caption) > * > * {
-    padding: $table-cell-padding-y $table-cell-padding-x;
+  td,
+  th {
+    padding: var(--#{$prefix}table-padding);
     // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
     color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
     background-color: var(--#{$prefix}table-bg);
@@ -66,10 +63,7 @@
 //
 
 .table-sm {
-  // stylelint-disable-next-line selector-max-universal
-  > :not(caption) > * > * {
-    padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
-  }
+  --#{$prefix}table-padding: #{$table-cell-padding-y-sm $table-cell-padding-x-sm};
 }
 
 
@@ -83,19 +77,20 @@
 // to the `td`s or `th`s
 
 .table-bordered {
-  > :not(caption) > * {
+  > tr,
+  > :not(caption) > tr {
     border-width: $table-border-width 0;
 
-    // stylelint-disable-next-line selector-max-universal
-    > * {
+    > td,
+    > th {
       border-width: 0 $table-border-width;
     }
   }
 }
 
 .table-borderless {
-  // stylelint-disable-next-line selector-max-universal
-  > :not(caption) > * > * {
+  > tr > *,
+  > :not(caption) > tr > * {
     border-bottom-width: 0;
   }
 
@@ -110,6 +105,7 @@
 
 // For rows
 .table-striped {
+  > tr:nth-of-type(#{$table-striped-order}) > *,
   > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
     --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
     --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
@@ -118,6 +114,7 @@
 
 // For columns
 .table-striped-columns {
+  > tr > :nth-child(#{$table-striped-columns-order}),
   > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
     --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
     --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
@@ -138,6 +135,7 @@
 // Placed here since it has to come after the potential zebra striping
 
 .table-hover {
+  > tr:hover > *,
   > tbody > tr:hover > * {
     --#{$prefix}table-color-state: var(--#{$prefix}table-hover-color);
     --#{$prefix}table-bg-state: var(--#{$prefix}table-hover-bg);
