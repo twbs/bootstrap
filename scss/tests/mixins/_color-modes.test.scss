@@ -57,7 +57,8 @@
           }
         }
         @media (prefers-color-scheme: dark) {
-          :root {
+          :root,
+          :host {
             --custom-color: #3a3ff8;
           }
         }
