@@ -22,11 +22,11 @@ jobs:
       pull-requests: write
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           persist-credentials: false
 
       - name: Compress Images
-        uses: calibreapp/image-actions@1.1.0
+        uses: calibreapp/image-actions@737ceeaeed61e17b8d358358a303f1b8d177b779 # v1.1.0
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}

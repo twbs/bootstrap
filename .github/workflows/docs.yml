@@ -20,12 +20,12 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "${{ env.NODE }}"
           cache: npm
@@ -42,7 +42,7 @@ jobs:
         run: npm run docs-vnu
 
       - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@v1
+        uses: JustinBeckwith/linkinator-action@3d5ba091319fa7b0ac14703761eebb7d100e6f6d # v1.11.0
         with:
           paths: _site
           recurse: true

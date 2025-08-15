@@ -11,6 +11,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import sh from 'shelljs'
+import { format } from 'prettier'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -83,7 +84,9 @@ for (const file of staticJsFiles) {
 sh.rm(`${distFolder}/index.html`)
 
 // get all examples' HTML files
-for (const file of sh.find(`${distFolder}/**/*.html`)) {
+const htmlFiles = sh.find(`${distFolder}/**/*.html`)
+
+const formatPromises = htmlFiles.map(async file => {
   const fileContents = sh.cat(file)
     .toString()
     .replace(new RegExp(`"/docs/${versionShort}/`, 'g'), '"../')
@@ -91,8 +94,24 @@ for (const file of sh.find(`${distFolder}/**/*.html`)) {
     .replace(/(<link href="\.\.\/[^"]*"[^>]*) integrity="[^"]*"/g, '$1')
     .replace(/<link[^>]*href="\.\.\/assets\/img\/favicons\/[^"]*"[^>]*>/g, '')
     .replace(/(<script src="\.\.\/[^"]*"[^>]*) integrity="[^"]*"/g, '$1')
-  new sh.ShellString(fileContents).to(file)
-}
+
+  let formattedHTML
+  try {
+    formattedHTML = await format(fileContents, {
+      parser: 'html',
+      filepath: file
+    })
+  } catch (error) {
+    console.error(`\nError formatting ${file}:`)
+    console.error(`Message: ${error.message}`)
+    console.error('\nSkipping formatting for this file...\n')
+    formattedHTML = fileContents
+  }
+
+  new sh.ShellString(formattedHTML).to(file)
+})
+
+await Promise.all(formatPromises)
 
 // create the zip file
 sh.exec(`zip -qr9 "${distFolder}.zip" "${distFolder}"`)
