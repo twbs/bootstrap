@@ -209,7 +209,10 @@ class Dropdown extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
 
     // Explicitly return focus to the trigger element
-    this._element.focus()
+   if (this._element) {
+  this._element.focus();
+}
+
   }
 
   _getConfig(config) {
