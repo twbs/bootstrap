@@ -535,9 +535,10 @@ legend {
   -webkit-appearance: textfield; // 1
   outline-offset: -2px; // 2
 
-  // 3. Better affordance for search cancel button
+  // 3. Better affordance and consistent appearance for search cancel button
   &::-webkit-search-cancel-button {
     cursor: pointer;
+    filter: grayscale(1);
   }
 }
 
