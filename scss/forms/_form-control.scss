@@ -30,11 +30,6 @@
     }
   }
 
-  // Customize the cursor of clear button shown on non-empty search inputs
-  &[type="search"]::-webkit-search-cancel-button {
-    cursor: pointer;
-  }
-
   // Customize the `:focus` state to imitate native WebKit styles.
   &:focus {
     color: $input-focus-color;
