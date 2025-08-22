@@ -1,0 +1,31 @@
+name: Publish NuGet Packages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  package-nuget:
+    runs-on: windows-latest
+    if: ${{ github.repository == 'twbs/bootstrap' && startsWith(github.event.release.tag_name, 'v') }}
+    env:
+      GITHUB_REF_NAME: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Set up NuGet
+        uses: nuget/setup-nuget@323ab0502cd38fdc493335025a96c8fdb0edc71f # v2.0.1
+        with:
+          nuget-api-key: ${{ secrets.NuGetAPIKey }}
+          nuget-version: '5.x'
+
+      - name: Pack NuGet packages
+        shell: pwsh
+        run: |
+          $bsversion = $env:GITHUB_REF_NAME.Substring(1)
+          nuget pack "nuget\bootstrap.nuspec" -Verbosity detailed -NonInteractive -BasePath . -Version $bsversion
+          nuget pack "nuget\bootstrap.sass.nuspec" -Verbosity detailed -NonInteractive -BasePath . -Version $bsversion
+          nuget push "bootstrap.$bsversion.nupkg" -Verbosity detailed -NonInteractive -Source "https://api.nuget.org/v3/index.json"
+          nuget push "bootstrap.sass.$bsversion.nupkg" -Verbosity detailed -NonInteractive -Source "https://api.nuget.org/v3/index.json"
