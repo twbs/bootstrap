@@ -35,6 +35,7 @@
     // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
     color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
     background-color: var(--#{$prefix}table-bg);
+    --#{$prefix}current-plane-bg: var(--#{$prefix}table-bg);
     border-bottom-width: $table-border-width;
     box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}table-accent-bg)));
   }
