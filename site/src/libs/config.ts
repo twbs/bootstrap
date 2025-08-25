@@ -50,7 +50,6 @@ const configSchema = z.object({
   rfs_version: zPrefixedVersionSemver,
   subtitle: z.string(),
   swag: z.string().url(),
-  themes: z.string().url(),
   title: z.string(),
   toc: z.object({
     min: z.number(),
