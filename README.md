@@ -16,8 +16,6 @@
   ·
   <a href="https://github.com/twbs/bootstrap/issues/new?assignees=&labels=feature&template=feature_request.yml">Request feature</a>
   ·
-  <a href="https://themes.getbootstrap.com/">Themes</a>
-  ·
   <a href="https://blog.getbootstrap.com/">Blog</a>
 </p>
 
