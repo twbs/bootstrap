@@ -261,20 +261,6 @@
       this._element.style.paddingLeft = '';
       this._element.style.paddingRight = '';
     }
-
-    // Static
-    static jQueryInterface(config, relatedTarget) {
-      return this.each(function () {
-        const data = Modal.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config](relatedTarget);
-      });
-    }
   }
 
   /**
@@ -307,12 +293,6 @@
     data.toggle(this);
   });
   componentFunctions_js.enableDismissTrigger(Modal);
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(Modal);
 
   return Modal;
 

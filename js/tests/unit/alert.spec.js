@@ -1,6 +1,6 @@
 import Alert from '../../src/alert.js'
 import { getTransitionDurationFromElement } from '../../src/util/index.js'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
+import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 describe('Alert', () => {
   let fixtureEl
@@ -138,80 +138,6 @@ describe('Alert', () => {
       alert.dispose()
 
       expect(Alert.getInstance(alertEl)).toBeNull()
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should handle config passed and toggle existing alert', () => {
-      fixtureEl.innerHTML = '<div class="alert"></div>'
-
-      const alertEl = fixtureEl.querySelector('.alert')
-      const alert = new Alert(alertEl)
-
-      const spy = spyOn(alert, 'close')
-
-      jQueryMock.fn.alert = Alert.jQueryInterface
-      jQueryMock.elements = [alertEl]
-
-      jQueryMock.fn.alert.call(jQueryMock, 'close')
-
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should create new alert instance and call close', () => {
-      fixtureEl.innerHTML = '<div class="alert"></div>'
-
-      const alertEl = fixtureEl.querySelector('.alert')
-
-      jQueryMock.fn.alert = Alert.jQueryInterface
-      jQueryMock.elements = [alertEl]
-
-      expect(Alert.getInstance(alertEl)).toBeNull()
-      jQueryMock.fn.alert.call(jQueryMock, 'close')
-
-      expect(fixtureEl.querySelector('.alert')).toBeNull()
-    })
-
-    it('should just create an alert instance without calling close', () => {
-      fixtureEl.innerHTML = '<div class="alert"></div>'
-
-      const alertEl = fixtureEl.querySelector('.alert')
-
-      jQueryMock.fn.alert = Alert.jQueryInterface
-      jQueryMock.elements = [alertEl]
-
-      jQueryMock.fn.alert.call(jQueryMock)
-
-      expect(Alert.getInstance(alertEl)).not.toBeNull()
-      expect(fixtureEl.querySelector('.alert')).not.toBeNull()
-    })
-
-    it('should throw an error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.alert = Alert.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.alert.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
-    })
-
-    it('should throw an error on protected method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = '_getConfig'
-
-      jQueryMock.fn.alert = Alert.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.alert.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 

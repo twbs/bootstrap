@@ -18,6 +18,7 @@
 .cache
 .DS_Store
 .idea
+.nvmrc
 .project
 .settings
 .tmproj

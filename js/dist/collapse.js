@@ -202,23 +202,6 @@
         element.setAttribute('aria-expanded', isOpen);
       }
     }
-
-    // Static
-    static jQueryInterface(config) {
-      const _config = {};
-      if (typeof config === 'string' && /show|hide/.test(config)) {
-        _config.toggle = false;
-      }
-      return this.each(function () {
-        const data = Collapse.getOrCreateInstance(this, _config);
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-          data[config]();
-        }
-      });
-    }
   }
 
   /**
@@ -236,12 +219,6 @@
       }).toggle();
     }
   });
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(Collapse);
 
   return Collapse;
 

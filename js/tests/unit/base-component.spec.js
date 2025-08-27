@@ -124,18 +124,11 @@ describe('Base Component', () => {
         expect(DummyClass.getInstance(element)).toBeInstanceOf(DummyClass)
       })
 
-      it('should accept element, either passed as a CSS selector, jQuery element, or DOM element', () => {
+      it('should accept element, either passed as a CSS selector or DOM element', () => {
         createInstance()
 
         expect(DummyClass.getInstance('#foo')).toEqual(instance)
         expect(DummyClass.getInstance(element)).toEqual(instance)
-
-        const fakejQueryObject = {
-          0: element,
-          jquery: 'foo'
-        }
-
-        expect(DummyClass.getInstance(fakejQueryObject)).toEqual(instance)
       })
 
       it('should return null when there is no instance', () => {

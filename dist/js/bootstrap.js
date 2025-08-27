@@ -78,257 +78,10 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap util/index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  const MAX_UID = 1000000;
-  const MILLISECONDS_MULTIPLIER = 1000;
-  const TRANSITION_END = 'transitionend';
-
-  /**
-   * Properly escape IDs selectors to handle weird IDs
-   * @param {string} selector
-   * @returns {string}
-   */
-  const parseSelector = selector => {
-    if (selector && window.CSS && window.CSS.escape) {
-      // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
-      selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`);
-    }
-    return selector;
-  };
-
-  // Shout-out Angus Croll (https://goo.gl/pxwQGp)
-  const toType = object => {
-    if (object === null || object === undefined) {
-      return `${object}`;
-    }
-    return Object.prototype.toString.call(object).match(/\s([a-z]+)/i)[1].toLowerCase();
-  };
-
-  /**
-   * Public Util API
-   */
-
-  const getUID = prefix => {
-    do {
-      prefix += Math.floor(Math.random() * MAX_UID);
-    } while (document.getElementById(prefix));
-    return prefix;
-  };
-  const getTransitionDurationFromElement = element => {
-    if (!element) {
-      return 0;
-    }
-
-    // Get transition-duration of the element
-    let {
-      transitionDuration,
-      transitionDelay
-    } = window.getComputedStyle(element);
-    const floatTransitionDuration = Number.parseFloat(transitionDuration);
-    const floatTransitionDelay = Number.parseFloat(transitionDelay);
-
-    // Return 0 if element or transition duration is not found
-    if (!floatTransitionDuration && !floatTransitionDelay) {
-      return 0;
-    }
-
-    // If multiple durations are defined, take the first
-    transitionDuration = transitionDuration.split(',')[0];
-    transitionDelay = transitionDelay.split(',')[0];
-    return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
-  };
-  const triggerTransitionEnd = element => {
-    element.dispatchEvent(new Event(TRANSITION_END));
-  };
-  const isElement = object => {
-    if (!object || typeof object !== 'object') {
-      return false;
-    }
-    if (typeof object.jquery !== 'undefined') {
-      object = object[0];
-    }
-    return typeof object.nodeType !== 'undefined';
-  };
-  const getElement = object => {
-    // it's a jQuery object or a node element
-    if (isElement(object)) {
-      return object.jquery ? object[0] : object;
-    }
-    if (typeof object === 'string' && object.length > 0) {
-      return document.querySelector(parseSelector(object));
-    }
-    return null;
-  };
-  const isVisible = element => {
-    if (!isElement(element) || element.getClientRects().length === 0) {
-      return false;
-    }
-    const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible';
-    // Handle `details` element as its content may falsie appear visible when it is closed
-    const closedDetails = element.closest('details:not([open])');
-    if (!closedDetails) {
-      return elementIsVisible;
-    }
-    if (closedDetails !== element) {
-      const summary = element.closest('summary');
-      if (summary && summary.parentNode !== closedDetails) {
-        return false;
-      }
-      if (summary === null) {
-        return false;
-      }
-    }
-    return elementIsVisible;
-  };
-  const isDisabled = element => {
-    if (!element || element.nodeType !== Node.ELEMENT_NODE) {
-      return true;
-    }
-    if (element.classList.contains('disabled')) {
-      return true;
-    }
-    if (typeof element.disabled !== 'undefined') {
-      return element.disabled;
-    }
-    return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
-  };
-  const findShadowRoot = element => {
-    if (!document.documentElement.attachShadow) {
-      return null;
-    }
-
-    // Can find the shadow root otherwise it'll return the document
-    if (typeof element.getRootNode === 'function') {
-      const root = element.getRootNode();
-      return root instanceof ShadowRoot ? root : null;
-    }
-    if (element instanceof ShadowRoot) {
-      return element;
-    }
-
-    // when we don't find a shadow root
-    if (!element.parentNode) {
-      return null;
-    }
-    return findShadowRoot(element.parentNode);
-  };
-  const noop = () => {};
-
-  /**
-   * Trick to restart an element's animation
-   *
-   * @param {HTMLElement} element
-   * @return void
-   *
-   * @see https://www.harrytheo.com/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
-   */
-  const reflow = element => {
-    element.offsetHeight; // eslint-disable-line no-unused-expressions
-  };
-  const getjQuery = () => {
-    if (window.jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
-      return window.jQuery;
-    }
-    return null;
-  };
-  const DOMContentLoadedCallbacks = [];
-  const onDOMContentLoaded = callback => {
-    if (document.readyState === 'loading') {
-      // add listener on the first call when the document is in loading state
-      if (!DOMContentLoadedCallbacks.length) {
-        document.addEventListener('DOMContentLoaded', () => {
-          for (const callback of DOMContentLoadedCallbacks) {
-            callback();
-          }
-        });
-      }
-      DOMContentLoadedCallbacks.push(callback);
-    } else {
-      callback();
-    }
-  };
-  const isRTL = () => document.documentElement.dir === 'rtl';
-  const defineJQueryPlugin = plugin => {
-    onDOMContentLoaded(() => {
-      const $ = getjQuery();
-      /* istanbul ignore if */
-      if ($) {
-        const name = plugin.NAME;
-        const JQUERY_NO_CONFLICT = $.fn[name];
-        $.fn[name] = plugin.jQueryInterface;
-        $.fn[name].Constructor = plugin;
-        $.fn[name].noConflict = () => {
-          $.fn[name] = JQUERY_NO_CONFLICT;
-          return plugin.jQueryInterface;
-        };
-      }
-    });
-  };
-  const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
-    return typeof possibleCallback === 'function' ? possibleCallback.call(...args) : defaultValue;
-  };
-  const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
-    if (!waitForTransition) {
-      execute(callback);
-      return;
-    }
-    const durationPadding = 5;
-    const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding;
-    let called = false;
-    const handler = ({
-      target
-    }) => {
-      if (target !== transitionElement) {
-        return;
-      }
-      called = true;
-      transitionElement.removeEventListener(TRANSITION_END, handler);
-      execute(callback);
-    };
-    transitionElement.addEventListener(TRANSITION_END, handler);
-    setTimeout(() => {
-      if (!called) {
-        triggerTransitionEnd(transitionElement);
-      }
-    }, emulatedDuration);
-  };
-
-  /**
-   * Return the previous/next element of a list.
-   *
-   * @param {array} list    The list of elements
-   * @param activeElement   The active element
-   * @param shouldGetNext   Choose to get next or previous element
-   * @param isCycleAllowed
-   * @return {Element|elem} The proper element
-   */
-  const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
-    const listLength = list.length;
-    let index = list.indexOf(activeElement);
-
-    // if the element does not exist in the list return an element
-    // depending on the direction and if cycle is allowed
-    if (index === -1) {
-      return !shouldGetNext && isCycleAllowed ? list[listLength - 1] : list[0];
-    }
-    index += shouldGetNext ? 1 : -1;
-    if (isCycleAllowed) {
-      index = (index + listLength) % listLength;
-    }
-    return list[Math.max(0, Math.min(index, listLength - 1))];
-  };
-
-  /**
-   * --------------------------------------------------------------------------
    * Bootstrap dom/event-handler.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
 
   /**
    * Constants
@@ -498,33 +251,11 @@
       if (typeof event !== 'string' || !element) {
         return null;
       }
-      const $ = getjQuery();
-      const typeEvent = getTypeEvent(event);
-      const inNamespace = event !== typeEvent;
-      let jQueryEvent = null;
-      let bubbles = true;
-      let nativeDispatch = true;
-      let defaultPrevented = false;
-      if (inNamespace && $) {
-        jQueryEvent = $.Event(event, args);
-        $(element).trigger(jQueryEvent);
-        bubbles = !jQueryEvent.isPropagationStopped();
-        nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
-        defaultPrevented = jQueryEvent.isDefaultPrevented();
-      }
       const evt = hydrateObj(new Event(event, {
-        bubbles,
+        bubbles: true,
         cancelable: true
       }), args);
-      if (defaultPrevented) {
-        evt.preventDefault();
-      }
-      if (nativeDispatch) {
-        element.dispatchEvent(evt);
-      }
-      if (evt.defaultPrevented && jQueryEvent) {
-        jQueryEvent.preventDefault();
-      }
+      element.dispatchEvent(evt);
       return evt;
     }
   };
@@ -599,6 +330,210 @@
     getDataAttribute(element, key) {
       return normalizeData(element.getAttribute(`data-bs-${normalizeDataKey(key)}`));
     }
+  };
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap util/index.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+  const MAX_UID = 1000000;
+  const MILLISECONDS_MULTIPLIER = 1000;
+  const TRANSITION_END = 'transitionend';
+
+  /**
+   * Properly escape IDs selectors to handle weird IDs
+   * @param {string} selector
+   * @returns {string}
+   */
+  const parseSelector = selector => {
+    if (selector && window.CSS && window.CSS.escape) {
+      // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
+      selector = selector.replace(/#([^\s"#']+)/g, (match, id) => `#${CSS.escape(id)}`);
+    }
+    return selector;
+  };
+
+  // Shout-out Angus Croll (https://goo.gl/pxwQGp)
+  const toType = object => {
+    if (object === null || object === undefined) {
+      return `${object}`;
+    }
+    return Object.prototype.toString.call(object).match(/\s([a-z]+)/i)[1].toLowerCase();
+  };
+
+  /**
+   * Public Util API
+   */
+
+  const getUID = prefix => {
+    do {
+      prefix += Math.floor(Math.random() * MAX_UID);
+    } while (document.getElementById(prefix));
+    return prefix;
+  };
+  const getTransitionDurationFromElement = element => {
+    if (!element) {
+      return 0;
+    }
+
+    // Get transition-duration of the element
+    let {
+      transitionDuration,
+      transitionDelay
+    } = window.getComputedStyle(element);
+    const floatTransitionDuration = Number.parseFloat(transitionDuration);
+    const floatTransitionDelay = Number.parseFloat(transitionDelay);
+
+    // Return 0 if element or transition duration is not found
+    if (!floatTransitionDuration && !floatTransitionDelay) {
+      return 0;
+    }
+
+    // If multiple durations are defined, take the first
+    transitionDuration = transitionDuration.split(',')[0];
+    transitionDelay = transitionDelay.split(',')[0];
+    return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
+  };
+  const triggerTransitionEnd = element => {
+    element.dispatchEvent(new Event(TRANSITION_END));
+  };
+  const isElement = object => {
+    if (!object || typeof object !== 'object') {
+      return false;
+    }
+    return typeof object.nodeType !== 'undefined';
+  };
+  const getElement = object => {
+    if (isElement(object)) {
+      return object;
+    }
+    if (typeof object === 'string' && object.length > 0) {
+      return document.querySelector(parseSelector(object));
+    }
+    return null;
+  };
+  const isVisible = element => {
+    if (!isElement(element) || element.getClientRects().length === 0) {
+      return false;
+    }
+    const elementIsVisible = getComputedStyle(element).getPropertyValue('visibility') === 'visible';
+    // Handle `details` element as its content may falsie appear visible when it is closed
+    const closedDetails = element.closest('details:not([open])');
+    if (!closedDetails) {
+      return elementIsVisible;
+    }
+    if (closedDetails !== element) {
+      const summary = element.closest('summary');
+      if (summary && summary.parentNode !== closedDetails) {
+        return false;
+      }
+      if (summary === null) {
+        return false;
+      }
+    }
+    return elementIsVisible;
+  };
+  const isDisabled = element => {
+    if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+      return true;
+    }
+    if (element.classList.contains('disabled')) {
+      return true;
+    }
+    if (typeof element.disabled !== 'undefined') {
+      return element.disabled;
+    }
+    return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
+  };
+  const findShadowRoot = element => {
+    if (!document.documentElement.attachShadow) {
+      return null;
+    }
+
+    // Can find the shadow root otherwise it'll return the document
+    if (typeof element.getRootNode === 'function') {
+      const root = element.getRootNode();
+      return root instanceof ShadowRoot ? root : null;
+    }
+    if (element instanceof ShadowRoot) {
+      return element;
+    }
+
+    // when we don't find a shadow root
+    if (!element.parentNode) {
+      return null;
+    }
+    return findShadowRoot(element.parentNode);
+  };
+  const noop = () => {};
+
+  /**
+   * Trick to restart an element's animation
+   *
+   * @param {HTMLElement} element
+   * @return void
+   *
+   * @see https://www.harrytheo.com/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+   */
+  const reflow = element => {
+    element.offsetHeight; // eslint-disable-line no-unused-expressions
+  };
+  const isRTL = () => document.documentElement.dir === 'rtl';
+  const execute = (possibleCallback, args = [], defaultValue = possibleCallback) => {
+    return typeof possibleCallback === 'function' ? possibleCallback.call(...args) : defaultValue;
+  };
+  const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
+    if (!waitForTransition) {
+      execute(callback);
+      return;
+    }
+    const durationPadding = 5;
+    const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding;
+    let called = false;
+    const handler = ({
+      target
+    }) => {
+      if (target !== transitionElement) {
+        return;
+      }
+      called = true;
+      transitionElement.removeEventListener(TRANSITION_END, handler);
+      execute(callback);
+    };
+    transitionElement.addEventListener(TRANSITION_END, handler);
+    setTimeout(() => {
+      if (!called) {
+        triggerTransitionEnd(transitionElement);
+      }
+    }, emulatedDuration);
+  };
+
+  /**
+   * Return the previous/next element of a list.
+   *
+   * @param {array} list    The list of elements
+   * @param activeElement   The active element
+   * @param shouldGetNext   Choose to get next or previous element
+   * @param isCycleAllowed
+   * @return {Element|elem} The proper element
+   */
+  const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+    const listLength = list.length;
+    let index = list.indexOf(activeElement);
+
+    // if the element does not exist in the list return an element
+    // depending on the direction and if cycle is allowed
+    if (index === -1) {
+      return !shouldGetNext && isCycleAllowed ? list[listLength - 1] : list[0];
+    }
+    index += shouldGetNext ? 1 : -1;
+    if (isCycleAllowed) {
+      index = (index + listLength) % listLength;
+    }
+    return list[Math.max(0, Math.min(index, listLength - 1))];
   };
 
   /**
@@ -886,20 +821,6 @@
       EventHandler.trigger(this._element, EVENT_CLOSED);
       this.dispose();
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Alert.getOrCreateInstance(this);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config](this);
-      });
-    }
   }
 
   /**
@@ -907,12 +828,6 @@
    */
 
   enableDismissTrigger(Alert, 'close');
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Alert);
 
   /**
    * --------------------------------------------------------------------------
@@ -949,16 +864,6 @@
       // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
       this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Button.getOrCreateInstance(this);
-        if (config === 'toggle') {
-          data[config]();
-        }
-      });
-    }
   }
 
   /**
@@ -971,12 +876,6 @@
     const data = Button.getOrCreateInstance(button);
     data.toggle();
   });
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Button);
 
   /**
    * --------------------------------------------------------------------------
@@ -1414,23 +1313,6 @@
       }
       return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Carousel.getOrCreateInstance(this, config);
-        if (typeof config === 'number') {
-          data.to(config);
-          return;
-        }
-        if (typeof config === 'string') {
-          if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-          data[config]();
-        }
-      });
-    }
   }
 
   /**
@@ -1464,12 +1346,6 @@
       Carousel.getOrCreateInstance(carousel);
     }
   });
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Carousel);
 
   /**
    * --------------------------------------------------------------------------
@@ -1664,23 +1540,6 @@
         element.setAttribute('aria-expanded', isOpen);
       }
     }
-
-    // Static
-    static jQueryInterface(config) {
-      const _config = {};
-      if (typeof config === 'string' && /show|hide/.test(config)) {
-        _config.toggle = false;
-      }
-      return this.each(function () {
-        const data = Collapse.getOrCreateInstance(this, _config);
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-          data[config]();
-        }
-      });
-    }
   }
 
   /**
@@ -1698,12 +1557,6 @@
       }).toggle();
     }
   });
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Collapse);
 
   /**
    * --------------------------------------------------------------------------
@@ -1978,20 +1831,6 @@
       // allow cycling to get the last item in case key equals ARROW_UP_KEY
       getNextActiveElement(items, target, key === ARROW_DOWN_KEY$1, !items.includes(target)).focus();
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Dropdown.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config]();
-      });
-    }
     static clearMenus(event) {
       if (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY$1) {
         return;
@@ -2066,12 +1905,6 @@
     event.preventDefault();
     Dropdown.getOrCreateInstance(this).toggle();
   });
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Dropdown);
 
   /**
    * --------------------------------------------------------------------------
@@ -2645,20 +2478,6 @@
       this._element.style.paddingLeft = '';
       this._element.style.paddingRight = '';
     }
-
-    // Static
-    static jQueryInterface(config, relatedTarget) {
-      return this.each(function () {
-        const data = Modal.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config](relatedTarget);
-      });
-    }
   }
 
   /**
@@ -2691,12 +2510,6 @@
     data.toggle(this);
   });
   enableDismissTrigger(Modal);
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Modal);
 
   /**
    * --------------------------------------------------------------------------
@@ -2866,20 +2679,6 @@
         EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
       });
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Offcanvas.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config](this);
-      });
-    }
   }
 
   /**
@@ -2922,12 +2721,6 @@
     }
   });
   enableDismissTrigger(Offcanvas);
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Offcanvas);
 
   /**
    * --------------------------------------------------------------------------
@@ -3650,27 +3443,7 @@
         this.tip = null;
       }
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Tooltip.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config]();
-      });
-    }
   }
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Tooltip);
 
   /**
    * --------------------------------------------------------------------------
@@ -3731,27 +3504,7 @@
     _getContent() {
       return this._resolvePossibleFunction(this._config.content);
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Popover.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config]();
-      });
-    }
   }
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Popover);
 
   /**
    * --------------------------------------------------------------------------
@@ -3981,20 +3734,6 @@
         node.classList.remove(CLASS_NAME_ACTIVE$1);
       }
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = ScrollSpy.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config]();
-      });
-    }
   }
 
   /**
@@ -4006,12 +3745,6 @@
       ScrollSpy.getOrCreateInstance(spy);
     }
   });
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(ScrollSpy);
 
   /**
    * --------------------------------------------------------------------------
@@ -4239,20 +3972,6 @@
     _getOuterElement(elem) {
       return elem.closest(SELECTOR_OUTER) || elem;
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Tab.getOrCreateInstance(this);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config]();
-      });
-    }
   }
 
   /**
@@ -4277,11 +3996,6 @@
       Tab.getOrCreateInstance(element);
     }
   });
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Tab);
 
   /**
    * --------------------------------------------------------------------------
@@ -4439,19 +4153,6 @@
       clearTimeout(this._timeout);
       this._timeout = null;
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Toast.getOrCreateInstance(this, config);
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-          data[config](this);
-        }
-      });
-    }
   }
 
   /**
@@ -4459,12 +4160,6 @@
    */
 
   enableDismissTrigger(Toast);
-
-  /**
-   * jQuery
-   */
-
-  defineJQueryPlugin(Toast);
 
   /**
    * --------------------------------------------------------------------------

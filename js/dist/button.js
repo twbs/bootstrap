@@ -4,10 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./base-component.js'), require('./dom/event-handler.js'), require('./util/index.js')) :
-  typeof define === 'function' && define.amd ? define(['./base-component', './dom/event-handler', './util/index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Button = factory(global.BaseComponent, global.EventHandler, global.Index));
-})(this, (function (BaseComponent, EventHandler, index_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./base-component.js'), require('./dom/event-handler.js')) :
+  typeof define === 'function' && define.amd ? define(['./base-component', './dom/event-handler'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Button = factory(global.BaseComponent, global.EventHandler));
+})(this, (function (BaseComponent, EventHandler) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -44,16 +44,6 @@
       // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
       this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE));
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Button.getOrCreateInstance(this);
-        if (config === 'toggle') {
-          data[config]();
-        }
-      });
-    }
   }
 
   /**
@@ -66,12 +56,6 @@
     const data = Button.getOrCreateInstance(button);
     data.toggle();
   });
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(Button);
 
   return Button;
 

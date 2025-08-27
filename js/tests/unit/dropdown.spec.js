@@ -2,7 +2,7 @@ import EventHandler from '../../src/dom/event-handler.js'
 import Dropdown from '../../src/dropdown.js'
 import { noop } from '../../src/util/index.js'
 import {
-  clearFixture, createEvent, getFixture, jQueryMock
+  clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Dropdown', () => {
@@ -496,32 +496,6 @@ describe('Dropdown', () => {
         const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
         const dropdown = new Dropdown(btnDropdown, {
           reference: fixtureEl
-        })
-
-        btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          expect(btnDropdown).toHaveClass('show')
-          expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
-          resolve()
-        })
-
-        dropdown.toggle()
-      })
-    })
-
-    it('should toggle a dropdown with a jquery object reference', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = [
-          '<div class="dropdown">',
-          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
-          '  <div class="dropdown-menu">',
-          '    <a class="dropdown-item" href="#">Secondary link</a>',
-          '  </div>',
-          '</div>'
-        ].join('')
-
-        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-        const dropdown = new Dropdown(btnDropdown, {
-          reference: { 0: fixtureEl, jquery: 'jQuery' }
         })
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
@@ -2215,49 +2189,6 @@ describe('Dropdown', () => {
       expect(spy).toHaveBeenCalledWith(dropdownToggle)
       dropdownMenu.click()
       expect(spy).toHaveBeenCalledWith(dropdownToggle)
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create a dropdown', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.dropdown = Dropdown.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.dropdown.call(jQueryMock)
-
-      expect(Dropdown.getInstance(div)).not.toBeNull()
-    })
-
-    it('should not re create a dropdown', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const dropdown = new Dropdown(div)
-
-      jQueryMock.fn.dropdown = Dropdown.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.dropdown.call(jQueryMock)
-
-      expect(Dropdown.getInstance(div)).toEqual(dropdown)
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.dropdown = Dropdown.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.dropdown.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 

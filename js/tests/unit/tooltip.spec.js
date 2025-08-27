@@ -2,7 +2,7 @@ import EventHandler from '../../src/dom/event-handler.js'
 import Tooltip from '../../src/tooltip.js'
 import { noop } from '../../src/util/index.js'
 import {
-  clearFixture, createEvent, getFixture, jQueryMock
+  clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Tooltip', () => {
@@ -571,27 +571,6 @@ describe('Tooltip', () => {
         const tooltipEl = fixtureEl.querySelector('a')
         const tooltip = new Tooltip(tooltipEl, {
           container: fixtureEl
-        })
-
-        tooltipEl.addEventListener('shown.bs.tooltip', () => {
-          expect(fixtureEl.querySelector('.tooltip')).not.toBeNull()
-          resolve()
-        })
-
-        tooltip.show()
-      })
-    })
-
-    it('should show a tooltip with a jquery element container', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
-
-        const tooltipEl = fixtureEl.querySelector('a')
-        const tooltip = new Tooltip(tooltipEl, {
-          container: {
-            0: fixtureEl,
-            jquery: 'jQuery'
-          }
         })
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
@@ -1243,25 +1222,6 @@ describe('Tooltip', () => {
       expect().nothing()
     })
 
-    it('should add the content as a child of the element for jQuery elements', () => {
-      fixtureEl.innerHTML = [
-        '<a href="#" rel="tooltip" title="Another tooltip">',
-        '  <div id="childContent"></div>',
-        '</a>'
-      ].join('')
-
-      const tooltipEl = fixtureEl.querySelector('a')
-      const childContent = fixtureEl.querySelector('div')
-      const tooltip = new Tooltip(tooltipEl, {
-        html: true
-      })
-
-      tooltip.setContent({ '.tooltip': { 0: childContent, jquery: 'jQuery' } })
-      tooltip.show()
-
-      expect(childContent.parentNode).toEqual(tooltip._getTipElement())
-    })
-
     it('should add the child text content in the element', () => {
       fixtureEl.innerHTML = [
         '<a href="#" rel="tooltip" title="Another tooltip">',
@@ -1520,66 +1480,6 @@ describe('Tooltip', () => {
       expect(tooltip2).toEqual(tooltip)
 
       expect(tooltip2._getTitle()).toEqual('nothing')
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create a tooltip', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.tooltip.call(jQueryMock)
-
-      expect(Tooltip.getInstance(div)).not.toBeNull()
-    })
-
-    it('should not re create a tooltip', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const tooltip = new Tooltip(div)
-
-      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.tooltip.call(jQueryMock)
-
-      expect(Tooltip.getInstance(div)).toEqual(tooltip)
-    })
-
-    it('should call a tooltip method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const tooltip = new Tooltip(div)
-
-      const spy = spyOn(tooltip, 'show')
-
-      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.tooltip.call(jQueryMock, 'show')
-
-      expect(Tooltip.getInstance(div)).toEqual(tooltip)
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.tooltip.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 })
