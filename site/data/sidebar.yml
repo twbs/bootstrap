@@ -107,7 +107,6 @@
     - title: Focus ring
     - title: Icon link
     - title: Position
-    - title: Ratio
     - title: Stacks
     - title: Stretched link
     - title: Text truncation
@@ -119,6 +118,7 @@
   icon_color: red
   pages:
     - title: API
+    - title: Aspect ratio
     - title: Background
     - title: Borders
     - title: Colors
