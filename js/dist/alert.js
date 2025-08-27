@@ -4,10 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./base-component.js'), require('./dom/event-handler.js'), require('./util/component-functions.js'), require('./util/index.js')) :
-  typeof define === 'function' && define.amd ? define(['./base-component', './dom/event-handler', './util/component-functions', './util/index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Alert = factory(global.BaseComponent, global.EventHandler, global.ComponentFunctions, global.Index));
-})(this, (function (BaseComponent, EventHandler, componentFunctions_js, index_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./base-component.js'), require('./dom/event-handler.js'), require('./util/component-functions.js')) :
+  typeof define === 'function' && define.amd ? define(['./base-component', './dom/event-handler', './util/component-functions'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Alert = factory(global.BaseComponent, global.EventHandler, global.ComponentFunctions));
+})(this, (function (BaseComponent, EventHandler, componentFunctions_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -56,20 +56,6 @@
       EventHandler.trigger(this._element, EVENT_CLOSED);
       this.dispose();
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Alert.getOrCreateInstance(this);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config](this);
-      });
-    }
   }
 
   /**
@@ -77,12 +63,6 @@
    */
 
   componentFunctions_js.enableDismissTrigger(Alert, 'close');
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(Alert);
 
   return Alert;
 

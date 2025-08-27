@@ -177,20 +177,6 @@
         EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
       });
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Offcanvas.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config](this);
-      });
-    }
   }
 
   /**
@@ -233,12 +219,6 @@
     }
   });
   componentFunctions_js.enableDismissTrigger(Offcanvas);
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(Offcanvas);
 
   return Offcanvas;
 

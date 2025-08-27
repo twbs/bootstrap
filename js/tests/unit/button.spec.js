@@ -1,5 +1,5 @@
 import Button from '../../src/button.js'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
+import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 describe('Button', () => {
   let fixtureEl
@@ -90,52 +90,6 @@ describe('Button', () => {
       button.dispose()
 
       expect(Button.getInstance(btnEl)).toBeNull()
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should handle config passed and toggle existing button', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button"></button>'
-
-      const btnEl = fixtureEl.querySelector('.btn')
-      const button = new Button(btnEl)
-
-      const spy = spyOn(button, 'toggle')
-
-      jQueryMock.fn.button = Button.jQueryInterface
-      jQueryMock.elements = [btnEl]
-
-      jQueryMock.fn.button.call(jQueryMock, 'toggle')
-
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should create new button instance and call toggle', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button"></button>'
-
-      const btnEl = fixtureEl.querySelector('.btn')
-
-      jQueryMock.fn.button = Button.jQueryInterface
-      jQueryMock.elements = [btnEl]
-
-      jQueryMock.fn.button.call(jQueryMock, 'toggle')
-
-      expect(Button.getInstance(btnEl)).not.toBeNull()
-      expect(btnEl).toHaveClass('active')
-    })
-
-    it('should just create a button instance without calling toggle', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button"></button>'
-
-      const btnEl = fixtureEl.querySelector('.btn')
-
-      jQueryMock.fn.button = Button.jQueryInterface
-      jQueryMock.elements = [btnEl]
-
-      jQueryMock.fn.button.call(jQueryMock)
-
-      expect(Button.getInstance(btnEl)).not.toBeNull()
-      expect(btnEl).not.toHaveClass('active')
     })
   })
 

@@ -1,6 +1,6 @@
 import Tab from '../../src/tab.js'
 import {
-  clearFixture, createEvent, getFixture, jQueryMock
+  clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Tab', () => {
@@ -824,66 +824,6 @@ describe('Tab', () => {
 
       expect(spyShown3).not.toHaveBeenCalled()
       expect(spyShown2).toHaveBeenCalled()
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create a tab', () => {
-      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
-
-      const div = fixtureEl.querySelector('.nav > div')
-
-      jQueryMock.fn.tab = Tab.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.tab.call(jQueryMock)
-
-      expect(Tab.getInstance(div)).not.toBeNull()
-    })
-
-    it('should not re create a tab', () => {
-      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
-
-      const div = fixtureEl.querySelector('.nav > div')
-      const tab = new Tab(div)
-
-      jQueryMock.fn.tab = Tab.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.tab.call(jQueryMock)
-
-      expect(Tab.getInstance(div)).toEqual(tab)
-    })
-
-    it('should call a tab method', () => {
-      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
-
-      const div = fixtureEl.querySelector('.nav > div')
-      const tab = new Tab(div)
-
-      const spy = spyOn(tab, 'show')
-
-      jQueryMock.fn.tab = Tab.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.tab.call(jQueryMock, 'show')
-
-      expect(Tab.getInstance(div)).toEqual(tab)
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div class="nav"><div class="nav-link"></div></div>'
-
-      const div = fixtureEl.querySelector('.nav > div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.tab = Tab.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.tab.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 

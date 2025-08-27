@@ -237,20 +237,6 @@
         node.classList.remove(CLASS_NAME_ACTIVE);
       }
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = ScrollSpy.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config]();
-      });
-    }
   }
 
   /**
@@ -262,12 +248,6 @@
       ScrollSpy.getOrCreateInstance(spy);
     }
   });
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(ScrollSpy);
 
   return ScrollSpy;
 

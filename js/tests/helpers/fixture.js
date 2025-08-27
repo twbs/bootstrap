@@ -27,16 +27,6 @@ export const createEvent = (eventName, parameters = {}) => {
   return new Event(eventName, parameters)
 }
 
-export const jQueryMock = {
-  elements: undefined,
-  fn: {},
-  each(fn) {
-    for (const element of this.elements) {
-      fn.call(element)
-    }
-  }
-}
-
 export const clearBodyAndDocument = () => {
   const attributes = ['data-bs-padding-right', 'style']
 
