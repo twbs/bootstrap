@@ -101,7 +101,6 @@
   icon: magic
   icon_color: orange
   pages:
-    - title: Clearfix
     - title: Color & background
     - title: Colored links
     - title: Focus ring
