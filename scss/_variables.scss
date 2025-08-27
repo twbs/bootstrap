@@ -586,7 +586,6 @@ $transition-collapse:         height .35s ease !default;
 $transition-collapse-width:   width .35s ease !default;
 // scss-docs-end collapse-transition
 
-// stylelint-disable function-disallowed-list
 // scss-docs-start aspect-ratios
 $aspect-ratios: (
   "1x1": 100%,
@@ -595,7 +594,6 @@ $aspect-ratios: (
   "21x9": calc(9 / 21 * 100%)
 ) !default;
 // scss-docs-end aspect-ratios
-// stylelint-enable function-disallowed-list
 
 // Typography
 //
