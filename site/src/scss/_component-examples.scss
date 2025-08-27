@@ -181,6 +181,7 @@
     color: var(--bs-secondary-color);
     background-color: var(--bs-tertiary-bg);
     border: var(--bs-border-width) solid var(--bs-border-color);
+    @include border-radius(var(--bs-border-radius));
   }
 }
 
