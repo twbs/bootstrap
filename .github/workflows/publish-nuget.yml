@@ -1,4 +1,4 @@
-name: Publish NuGet Packages
+name: Publish NuGet package
 
 on:
   release:
@@ -8,13 +8,14 @@ permissions:
   contents: read
 
 jobs:
-  package-nuget:
+  publish-nuget:
     runs-on: windows-latest
     if: ${{ github.repository == 'twbs/bootstrap' && startsWith(github.event.release.tag_name, 'v') }}
     env:
       GITHUB_REF_NAME: ${{ github.ref_name }}
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Clone repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
 
