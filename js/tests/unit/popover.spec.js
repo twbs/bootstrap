@@ -1,7 +1,7 @@
 import EventHandler from '../../src/dom/event-handler.js'
 import Popover from '../../src/popover.js'
 import {
-  clearFixture, getFixture, jQueryMock, createEvent
+  clearFixture, getFixture, createEvent
 } from '../helpers/fixture.js'
 
 describe('Popover', () => {
@@ -358,80 +358,6 @@ describe('Popover', () => {
 
         popover.show()
       })
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create a popover', () => {
-      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://x.com/getbootstrap">BS X</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-
-      jQueryMock.fn.popover = Popover.jQueryInterface
-      jQueryMock.elements = [popoverEl]
-
-      jQueryMock.fn.popover.call(jQueryMock)
-
-      expect(Popover.getInstance(popoverEl)).not.toBeNull()
-    })
-
-    it('should create a popover with a config object', () => {
-      fixtureEl.innerHTML = '<a href="#" title="Popover">BS X</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-
-      jQueryMock.fn.popover = Popover.jQueryInterface
-      jQueryMock.elements = [popoverEl]
-
-      jQueryMock.fn.popover.call(jQueryMock, {
-        content: 'Popover content'
-      })
-
-      expect(Popover.getInstance(popoverEl)).not.toBeNull()
-    })
-
-    it('should not re create a popover', () => {
-      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://x.com/getbootstrap">BS X</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-      const popover = new Popover(popoverEl)
-
-      jQueryMock.fn.popover = Popover.jQueryInterface
-      jQueryMock.elements = [popoverEl]
-
-      jQueryMock.fn.popover.call(jQueryMock)
-
-      expect(Popover.getInstance(popoverEl)).toEqual(popover)
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://x.com/getbootstrap">BS X</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.popover = Popover.jQueryInterface
-      jQueryMock.elements = [popoverEl]
-
-      expect(() => {
-        jQueryMock.fn.popover.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
-    })
-
-    it('should should call show method', () => {
-      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://x.com/getbootstrap">BS X</a>'
-
-      const popoverEl = fixtureEl.querySelector('a')
-      const popover = new Popover(popoverEl)
-
-      jQueryMock.fn.popover = Popover.jQueryInterface
-      jQueryMock.elements = [popoverEl]
-
-      const spy = spyOn(popover, 'show')
-
-      jQueryMock.fn.popover.call(jQueryMock, 'show')
-
-      expect(spy).toHaveBeenCalled()
     })
   })
 

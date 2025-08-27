@@ -3,7 +3,7 @@ import EventHandler from '../../src/dom/event-handler.js'
 import { isRTL, noop } from '../../src/util/index.js'
 import Swipe from '../../src/util/swipe.js'
 import {
-  clearFixture, createEvent, getFixture, jQueryMock
+  clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Carousel', () => {
@@ -1376,66 +1376,6 @@ describe('Carousel', () => {
       expect(carousel2).toEqual(carousel)
 
       expect(carousel2._config.interval).toEqual(1)
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create a carousel', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.carousel.call(jQueryMock)
-
-      expect(Carousel.getInstance(div)).not.toBeNull()
-    })
-
-    it('should not re create a carousel', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const carousel = new Carousel(div)
-
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.carousel.call(jQueryMock)
-
-      expect(Carousel.getInstance(div)).toEqual(carousel)
-    })
-
-    it('should call to if the config is a number', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const carousel = new Carousel(div)
-      const slideTo = 2
-
-      const spy = spyOn(carousel, 'to')
-
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.carousel.call(jQueryMock, slideTo)
-
-      expect(spy).toHaveBeenCalledWith(slideTo)
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.carousel = Carousel.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.carousel.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 
