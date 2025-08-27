@@ -3,7 +3,7 @@ import Offcanvas from '../../src/offcanvas.js'
 import { isVisible } from '../../src/util/index.js'
 import ScrollBarHelper from '../../src/util/scrollbar.js'
 import {
-  clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock
+  clearBodyAndDocument, clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Offcanvas', () => {
@@ -735,106 +735,6 @@ describe('Offcanvas', () => {
 
         trigger.click()
       })
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create an offcanvas', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.offcanvas.call(jQueryMock)
-
-      expect(Offcanvas.getInstance(div)).not.toBeNull()
-    })
-
-    it('should not re create an offcanvas', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const offCanvas = new Offcanvas(div)
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.offcanvas.call(jQueryMock)
-
-      expect(Offcanvas.getInstance(div)).toEqual(offCanvas)
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.offcanvas.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
-    })
-
-    it('should throw error on protected method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = '_getConfig'
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.offcanvas.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
-    })
-
-    it('should throw error if method "constructor" is being called', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'constructor'
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.offcanvas.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
-    })
-
-    it('should call offcanvas method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      const spy = spyOn(Offcanvas.prototype, 'show')
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.offcanvas.call(jQueryMock, 'show')
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should create a offcanvas with given config', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.offcanvas = Offcanvas.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.offcanvas.call(jQueryMock, { scroll: true })
-
-      const offcanvas = Offcanvas.getInstance(div)
-      expect(offcanvas).not.toBeNull()
-      expect(offcanvas._config.scroll).toBeTrue()
     })
   })
 

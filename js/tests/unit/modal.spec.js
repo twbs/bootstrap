@@ -2,7 +2,7 @@ import EventHandler from '../../src/dom/event-handler.js'
 import Modal from '../../src/modal.js'
 import ScrollBarHelper from '../../src/util/scrollbar.js'
 import {
-  clearBodyAndDocument, clearFixture, createEvent, getFixture, jQueryMock
+  clearBodyAndDocument, clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('Modal', () => {
@@ -1160,96 +1160,6 @@ describe('Modal', () => {
         })
         modal1.show()
       })
-    })
-  })
-  describe('jQueryInterface', () => {
-    it('should create a modal', () => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.modal = Modal.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.modal.call(jQueryMock)
-
-      expect(Modal.getInstance(div)).not.toBeNull()
-    })
-
-    it('should create a modal with given config', () => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.modal = Modal.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.modal.call(jQueryMock, { keyboard: false })
-      const spy = spyOn(Modal.prototype, 'constructor')
-      expect(spy).not.toHaveBeenCalledWith(div, { keyboard: false })
-
-      const modal = Modal.getInstance(div)
-      expect(modal).not.toBeNull()
-      expect(modal._config.keyboard).toBeFalse()
-    })
-
-    it('should not re create a modal', () => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const modal = new Modal(div)
-
-      jQueryMock.fn.modal = Modal.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.modal.call(jQueryMock)
-
-      expect(Modal.getInstance(div)).toEqual(modal)
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.modal = Modal.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.modal.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
-    })
-
-    it('should call show method', () => {
-      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const modal = new Modal(div)
-
-      jQueryMock.fn.modal = Modal.jQueryInterface
-      jQueryMock.elements = [div]
-
-      const spy = spyOn(modal, 'show')
-
-      jQueryMock.fn.modal.call(jQueryMock, 'show')
-
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should not call show method', () => {
-      fixtureEl.innerHTML = '<div class="modal" data-bs-show="false"><div class="modal-dialog"></div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.modal = Modal.jQueryInterface
-      jQueryMock.elements = [div]
-
-      const spy = spyOn(Modal.prototype, 'show')
-
-      jQueryMock.fn.modal.call(jQueryMock)
-
-      expect(spy).not.toHaveBeenCalled()
     })
   })
 

@@ -518,27 +518,7 @@
         this.tip = null;
       }
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Tooltip.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config]();
-      });
-    }
   }
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(Tooltip);
 
   return Tooltip;
 
