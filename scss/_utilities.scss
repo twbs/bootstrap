@@ -210,13 +210,24 @@ $utilities: map-merge(
         50: 50%,
         75: 75%,
         100: 100%,
-        auto: auto
+        auto: auto,
+        min: min-content,
+        max: max-content,
+        fit: fit-content,
       )
     ),
     "max-width": (
       property: max-width,
-      class: mw,
+      class: max-w,
       values: (100: 100%)
+    ),
+    "min-width": (
+      property: min-width,
+      class: min-w,
+      values: (
+        0: 0,
+        100: 100%
+      )
     ),
     "viewport-width": (
       property: width,
@@ -236,13 +247,24 @@ $utilities: map-merge(
         50: 50%,
         75: 75%,
         100: 100%,
-        auto: auto
+        auto: auto,
+        min: min-content,
+        max: max-content,
+        fit: fit-content,
       )
     ),
     "max-height": (
       property: max-height,
-      class: mh,
+      class: max-h,
       values: (100: 100%)
+    ),
+    "min-height": (
+      property: min-height,
+      class: min-h,
+      values: (
+        0: 0,
+        100: 100%,
+      ),
     ),
     "viewport-height": (
       property: height,
