@@ -1,7 +1,7 @@
 import EventHandler from '../../src/dom/event-handler.js'
 import ScrollSpy from '../../src/scrollspy.js'
 import {
-  clearFixture, createEvent, getFixture, jQueryMock
+  clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
 
 describe('ScrollSpy', () => {
@@ -645,111 +645,6 @@ describe('ScrollSpy', () => {
       scrollSpy.dispose()
 
       expect(ScrollSpy.getInstance(el)).toBeNull()
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create a scrollspy', () => {
-      fixtureEl.innerHTML = getDummyFixture()
-
-      const div = fixtureEl.querySelector('.content')
-
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.scrollspy.call(jQueryMock, { target: '#navBar' })
-
-      expect(ScrollSpy.getInstance(div)).not.toBeNull()
-    })
-
-    it('should create a scrollspy with given config', () => {
-      fixtureEl.innerHTML = getDummyFixture()
-
-      const div = fixtureEl.querySelector('.content')
-
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.scrollspy.call(jQueryMock, { rootMargin: '100px' })
-      const spy = spyOn(ScrollSpy.prototype, 'constructor')
-      expect(spy).not.toHaveBeenCalledWith(div, { rootMargin: '100px' })
-
-      const scrollspy = ScrollSpy.getInstance(div)
-      expect(scrollspy).not.toBeNull()
-      expect(scrollspy._config.rootMargin).toEqual('100px')
-    })
-
-    it('should not re create a scrollspy', () => {
-      fixtureEl.innerHTML = getDummyFixture()
-
-      const div = fixtureEl.querySelector('.content')
-      const scrollSpy = new ScrollSpy(div)
-
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.scrollspy.call(jQueryMock)
-
-      expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
-    })
-
-    it('should call a scrollspy method', () => {
-      fixtureEl.innerHTML = getDummyFixture()
-
-      const div = fixtureEl.querySelector('.content')
-      const scrollSpy = new ScrollSpy(div)
-
-      const spy = spyOn(scrollSpy, 'refresh')
-
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.scrollspy.call(jQueryMock, 'refresh')
-
-      expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
-      expect(spy).toHaveBeenCalled()
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = getDummyFixture()
-
-      const div = fixtureEl.querySelector('.content')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.scrollspy.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
-    })
-
-    it('should throw error on protected method', () => {
-      fixtureEl.innerHTML = getDummyFixture()
-
-      const div = fixtureEl.querySelector('.content')
-      const action = '_getConfig'
-
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.scrollspy.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
-    })
-
-    it('should throw error if method "constructor" is being called', () => {
-      fixtureEl.innerHTML = getDummyFixture()
-
-      const div = fixtureEl.querySelector('.content')
-      const action = 'constructor'
-
-      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.scrollspy.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 

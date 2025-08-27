@@ -1,6 +1,6 @@
 import Collapse from '../../src/collapse.js'
 import EventHandler from '../../src/dom/event-handler.js'
-import { clearFixture, getFixture, jQueryMock } from '../helpers/fixture.js'
+import { clearFixture, getFixture } from '../helpers/fixture.js'
 
 describe('Collapse', () => {
   let fixtureEl
@@ -43,30 +43,7 @@ describe('Collapse', () => {
       expect(collapseByElement._element).toEqual(collapseEl)
     })
 
-    it('should allow jquery object in parent config', () => {
-      fixtureEl.innerHTML = [
-        '<div class="my-collapse">',
-        '  <div class="item">',
-        '    <a data-bs-toggle="collapse" href="#">Toggle item</a>',
-        '    <div class="collapse">Lorem ipsum</div>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const collapseEl = fixtureEl.querySelector('div.collapse')
-      const myCollapseEl = fixtureEl.querySelector('.my-collapse')
-      const fakejQueryObject = {
-        0: myCollapseEl,
-        jquery: 'foo'
-      }
-      const collapse = new Collapse(collapseEl, {
-        parent: fakejQueryObject
-      })
-
-      expect(collapse._config.parent).toEqual(myCollapseEl)
-    })
-
-    it('should allow non jquery object in parent config', () => {
+    it('should allow object in parent config', () => {
       fixtureEl.innerHTML = [
         '<div class="my-collapse">',
         '  <div class="item">',
@@ -940,49 +917,6 @@ describe('Collapse', () => {
         target2.addEventListener('shown.bs.collapse', target2Shown)
         trigger3.click()
       })
-    })
-  })
-
-  describe('jQueryInterface', () => {
-    it('should create a collapse', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-
-      jQueryMock.fn.collapse = Collapse.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.collapse.call(jQueryMock)
-
-      expect(Collapse.getInstance(div)).not.toBeNull()
-    })
-
-    it('should not re create a collapse', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const collapse = new Collapse(div)
-
-      jQueryMock.fn.collapse = Collapse.jQueryInterface
-      jQueryMock.elements = [div]
-
-      jQueryMock.fn.collapse.call(jQueryMock)
-
-      expect(Collapse.getInstance(div)).toEqual(collapse)
-    })
-
-    it('should throw error on undefined method', () => {
-      fixtureEl.innerHTML = '<div></div>'
-
-      const div = fixtureEl.querySelector('div')
-      const action = 'undefinedMethod'
-
-      jQueryMock.fn.collapse = Collapse.jQueryInterface
-      jQueryMock.elements = [div]
-
-      expect(() => {
-        jQueryMock.fn.collapse.call(jQueryMock, action)
-      }).toThrowError(TypeError, `No method named "${action}"`)
     })
   })
 

@@ -301,20 +301,6 @@
       // allow cycling to get the last item in case key equals ARROW_UP_KEY
       index_js.getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus();
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Dropdown.getOrCreateInstance(this, config);
-        if (typeof config !== 'string') {
-          return;
-        }
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`);
-        }
-        data[config]();
-      });
-    }
     static clearMenus(event) {
       if (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY) {
         return;
@@ -389,12 +375,6 @@
     event.preventDefault();
     Dropdown.getOrCreateInstance(this).toggle();
   });
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(Dropdown);
 
   return Dropdown;
 
