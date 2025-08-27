@@ -68,13 +68,13 @@
   margin-right: var(--#{$prefix}navbar-brand-margin-end);
   @include font-size(var(--#{$prefix}navbar-brand-font-size));
   color: var(--#{$prefix}navbar-brand-color);
-  text-decoration: if($link-decoration == none, null, none);
+  text-decoration: none;
   white-space: nowrap;
 
   &:hover,
   &:focus {
     color: var(--#{$prefix}navbar-brand-hover-color);
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    text-decoration: none;
   }
 }
 
