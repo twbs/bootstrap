@@ -389,8 +389,7 @@ $color-mode-type:             data !default; // `data` or `media-query`
 
 // Prefix for :root CSS variables
 
-$variable-prefix:             bs- !default; // Deprecated in v5.2.0 for the shorter `$prefix`
-$prefix:                      $variable-prefix !default;
+$prefix:                      bs- !default;
 
 // Gradient
 //
