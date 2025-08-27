@@ -52,7 +52,7 @@ Use contextual classes to color tables, table rows or individual cells.
 
 <Code code={[
   `<!-- On tables -->`,
-  ...getData('theme-colors').map((themeColor) => `<table class="table-${themeColor.name}">...</table>`),
+  ...getData('theme-colors').map((themeColor) => `<table class="table table-${themeColor.name}">...</table>`),
   `
 <!-- On rows -->`,
   ...getData('theme-colors').map((themeColor) => `<tr class="table-${themeColor.name}">...</tr>`),
