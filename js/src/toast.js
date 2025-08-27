@@ -8,7 +8,7 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import { enableDismissTrigger } from './util/component-functions.js'
-import { defineJQueryPlugin, reflow } from './util/index.js'
+import { reflow } from './util/index.js'
 
 /**
  * Constants
@@ -192,21 +192,6 @@ class Toast extends BaseComponent {
     clearTimeout(this._timeout)
     this._timeout = null
   }
-
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Toast.getOrCreateInstance(this, config)
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-
-        data[config](this)
-      }
-    })
-  }
 }
 
 /**
@@ -214,11 +199,5 @@ class Toast extends BaseComponent {
  */
 
 enableDismissTrigger(Toast)
-
-/**
- * jQuery
- */
-
-defineJQueryPlugin(Toast)
 
 export default Toast

@@ -11,7 +11,6 @@ import EventHandler from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import SelectorEngine from './dom/selector-engine.js'
 import {
-  defineJQueryPlugin,
   execute,
   getElement,
   getNextActiveElement,
@@ -336,23 +335,6 @@ class Dropdown extends BaseComponent {
     getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus()
   }
 
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = Dropdown.getOrCreateInstance(this, config)
-
-      if (typeof config !== 'string') {
-        return
-      }
-
-      if (typeof data[config] === 'undefined') {
-        throw new TypeError(`No method named "${config}"`)
-      }
-
-      data[config]()
-    })
-  }
-
   static clearMenus(event) {
     if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
       return
@@ -445,11 +427,5 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   event.preventDefault()
   Dropdown.getOrCreateInstance(this).toggle()
 })
-
-/**
- * jQuery
- */
-
-defineJQueryPlugin(Dropdown)
 
 export default Dropdown
