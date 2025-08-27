@@ -1348,7 +1348,7 @@ $card-border-width:                 var(--#{$prefix}border-width) !default;
 $card-border-color:                 var(--#{$prefix}border-color-translucent) !default;
 $card-border-radius:                var(--#{$prefix}border-radius) !default;
 $card-box-shadow:                   null !default;
-$card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
+$card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-padding-y:                $card-spacer-y * .5 !default;
 $card-cap-padding-x:                $card-spacer-x !default;
 $card-cap-bg:                       rgba(var(--#{$prefix}body-color-rgb), .03) !default;
@@ -1370,7 +1370,7 @@ $accordion-bg:                            var(--#{$prefix}body-bg) !default;
 $accordion-border-width:                  var(--#{$prefix}border-width) !default;
 $accordion-border-color:                  var(--#{$prefix}border-color) !default;
 $accordion-border-radius:                 var(--#{$prefix}border-radius) !default;
-$accordion-inner-border-radius:           subtract($accordion-border-radius, $accordion-border-width) !default;
+$accordion-inner-border-radius:           calc(#{$accordion-border-radius} - #{$accordion-border-width}) !default;
 
 $accordion-body-padding-y:                $accordion-padding-y !default;
 $accordion-body-padding-x:                $accordion-padding-x !default;
@@ -1512,7 +1512,7 @@ $modal-content-bg:                  var(--#{$prefix}body-bg) !default;
 $modal-content-border-color:        var(--#{$prefix}border-color-translucent) !default;
 $modal-content-border-width:        var(--#{$prefix}border-width) !default;
 $modal-content-border-radius:       var(--#{$prefix}border-radius-lg) !default;
-$modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width) !default;
+$modal-content-inner-border-radius: calc(#{$modal-content-border-radius} - #{$modal-content-border-width}) !default;
 $modal-content-box-shadow-xs:       var(--#{$prefix}box-shadow-sm) !default;
 $modal-content-box-shadow-sm-up:    var(--#{$prefix}box-shadow) !default;
 

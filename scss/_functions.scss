@@ -218,47 +218,6 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 }
 // scss-docs-end color-functions
 
-// Return valid calc
-@function add($value1, $value2, $return-calc: true) {
-  @if $value1 == null {
-    @return $value2;
-  }
-
-  @if $value2 == null {
-    @return $value1;
-  }
-
-  @if type-of($value1) == number and type-of($value2) == number and comparable($value1, $value2) {
-    @return $value1 + $value2;
-  }
-
-  @return if($return-calc == true, calc(#{$value1} + #{$value2}), $value1 + unquote(" + ") + $value2);
-}
-
-@function subtract($value1, $value2, $return-calc: true) {
-  @if $value1 == null and $value2 == null {
-    @return null;
-  }
-
-  @if $value1 == null {
-    @return -$value2;
-  }
-
-  @if $value2 == null {
-    @return $value1;
-  }
-
-  @if type-of($value1) == number and type-of($value2) == number and comparable($value1, $value2) {
-    @return $value1 - $value2;
-  }
-
-  @if type-of($value2) != number {
-    $value2: unquote("(") + $value2 + unquote(")");
-  }
-
-  @return if($return-calc == true, calc(#{$value1} - #{$value2}), $value1 + unquote(" - ") + $value2);
-}
-
 @function divide($dividend, $divisor, $precision: 10) {
   $sign: if($dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0, 1, -1);
   $dividend: abs($dividend);
