@@ -19,11 +19,11 @@
   --bd-example-padding: 1rem;
 
   position: relative;
+  display: flow-root;
   padding: var(--bd-example-padding);
   margin: 0 ($bd-gutter-x * -.5) 1rem;
   border: solid var(--bs-border-color);
   border-width: 1px 0;
-  @include clearfix();
 
   @include media-breakpoint-up(md) {
     --bd-example-padding: 1.5rem;
