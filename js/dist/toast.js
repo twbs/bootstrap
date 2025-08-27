@@ -165,19 +165,6 @@
       clearTimeout(this._timeout);
       this._timeout = null;
     }
-
-    // Static
-    static jQueryInterface(config) {
-      return this.each(function () {
-        const data = Toast.getOrCreateInstance(this, config);
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`);
-          }
-          data[config](this);
-        }
-      });
-    }
   }
 
   /**
@@ -185,12 +172,6 @@
    */
 
   componentFunctions_js.enableDismissTrigger(Toast);
-
-  /**
-   * jQuery
-   */
-
-  index_js.defineJQueryPlugin(Toast);
 
   return Toast;
 

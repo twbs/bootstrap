@@ -4,10 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../util/index.js')) :
-  typeof define === 'function' && define.amd ? define(['../util/index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.EventHandler = factory(global.Index));
-})(this, (function (index_js) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.EventHandler = factory());
+})(this, (function () { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -15,7 +15,6 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
 
   /**
    * Constants
@@ -185,33 +184,11 @@
       if (typeof event !== 'string' || !element) {
         return null;
       }
-      const $ = index_js.getjQuery();
-      const typeEvent = getTypeEvent(event);
-      const inNamespace = event !== typeEvent;
-      let jQueryEvent = null;
-      let bubbles = true;
-      let nativeDispatch = true;
-      let defaultPrevented = false;
-      if (inNamespace && $) {
-        jQueryEvent = $.Event(event, args);
-        $(element).trigger(jQueryEvent);
-        bubbles = !jQueryEvent.isPropagationStopped();
-        nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
-        defaultPrevented = jQueryEvent.isDefaultPrevented();
-      }
       const evt = hydrateObj(new Event(event, {
-        bubbles,
+        bubbles: true,
         cancelable: true
       }), args);
-      if (defaultPrevented) {
-        evt.preventDefault();
-      }
-      if (nativeDispatch) {
-        element.dispatchEvent(evt);
-      }
-      if (evt.defaultPrevented && jQueryEvent) {
-        jQueryEvent.preventDefault();
-      }
+      element.dispatchEvent(evt);
       return evt;
     }
   };
