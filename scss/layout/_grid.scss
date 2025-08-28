@@ -1,13 +1,10 @@
 @use "sass:map";
 @use "../config" as *;
+@use "../mixins/grid" as *;
 @use "breakpoints" as *;
 
 // mdo-do
 // - check gap utilities as replacement for gutter classes from v5
-
-// Row
-//
-// Rows contain your columns.
 
 :root {
   @each $name, $value in $grid-breakpoints {
@@ -16,41 +13,32 @@
 }
 
 @layer layout {
-  .grid {
-    --#{$prefix}columns: #{$grid-columns};
-    --#{$prefix}rows: 1;
-    --#{$prefix}gap: #{$grid-gutter-width};
+  @if $enable-grid-classes {
+    .row {
+      @include make-row();
 
-    display: grid;
-    grid-template-rows: repeat(var(--#{$prefix}rows), 1fr);
-    grid-template-columns: repeat(var(--#{$prefix}columns), 1fr);
-    gap: var(--#{$prefix}gap);
-  }
-
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-      @if $grid-columns > 0 {
-        @for $i from 1 through $grid-columns {
-          .col#{$infix}-#{$i} {
-            grid-column: auto / span $i;
-          }
-
-          .end#{$infix}-#{$i} {
-            grid-column-end: $i;
-          }
-        }
-
-        // Start with `1` because `0` is an invalid value.
-        // Ends with `$columns - 1` because offsetting by the width of an entire row isn't possible.
-        @for $i from 1 through ($grid-columns - 1) {
-          .col-start#{$infix}-#{$i} {
-            grid-column-start: $i;
-          }
-        }
+      > * {
+        @include make-col-ready();
       }
     }
+
+    @include make-grid-columns();
+  }
+
+  @if $enable-cssgrid {
+    .grid {
+      --#{$prefix}columns: #{$grid-columns};
+      --#{$prefix}rows: 1;
+      --#{$prefix}gap: #{$grid-gutter-width};
+
+      display: grid;
+      grid-template-rows: repeat(var(--#{$prefix}rows), 1fr);
+      grid-template-columns: repeat(var(--#{$prefix}columns), 1fr);
+      gap: var(--#{$prefix}gap);
+
+    }
+
+    @include make-cssgrid();
   }
 
   // mdo-do: add to utilities?
