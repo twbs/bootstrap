@@ -272,15 +272,11 @@ Carousels support swiping left/right on touchscreen devices to move between slid
     </button>
   </div>`} />
 
-## Dark variant
+## Dark carousel
 
-<DeprecatedIn version="5.3.0" />
+Add `data-bs-theme="dark"` to the `.carousel` for darker controls, indicators, and captions. Controls are inverted compared to their default white fill with the `filter` CSS property. Captions and controls have additional Sass variables that customize the `color` and `background-color`.
 
-Add `.carousel-dark` to the `.carousel` for darker controls, indicators, and captions. Controls are inverted compared to their default white fill with the `filter` CSS property. Captions and controls have additional Sass variables that customize the `color` and `background-color`.
-
-<CalloutDeprecatedDarkVariants component="carousel" />
-
-<Example code={`<div id="carouselExampleDark" class="carousel carousel-dark slide">
+<Example code={`<div id="carouselExampleDark" class="carousel slide" data-bs-theme="dark">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -331,9 +327,9 @@ Variables for all carousels:
 
 <ScssDocs name="carousel-variables" file="scss/_variables.scss" />
 
-Variables for the [dark carousel](#dark-variant):
+Variables for the [dark carousel](#dark-carousel):
 
-<ScssDocs name="carousel-dark-variables" file="scss/_variables.scss" />
+<ScssDocs name="carousel-dark-variables" file="scss/_variables-dark.scss" />
 
 ## Usage
 
