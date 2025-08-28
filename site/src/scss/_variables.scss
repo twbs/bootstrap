@@ -1,37 +1,43 @@
-// stylelint-disable function-disallowed-list
+@use "sass:color";
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/functions" as *;
+@use "../../../scss/mixins/color-mode" as *;
 
 // Local docs variables
 $bd-purple:        #4c0bce;
-$bd-violet:        lighten(saturate($bd-purple, 5%), 15%);
-$bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%);
+$bd-violet:        color.adjust(color.adjust($bd-purple, $saturation: 5%), $lightness: 15%); // stylelint-disable-line scss/at-function-named-arguments
+$bd-purple-light:  color.adjust(color.adjust($bd-purple, $saturation: 5%), $lightness: 45%); // stylelint-disable-line scss/at-function-named-arguments
 $bd-accent:        #ffe484;
 
 $bd-gutter-x: 3rem;
 $bd-callout-variants: info, warning, danger !default;
 
-:root,
-[data-bs-theme="light"] {
-  --bd-purple: #{$bd-purple};
-  --bd-violet: #{$bd-violet};
-  --bd-accent: #{$bd-accent};
-  --bd-violet-rgb: #{to-rgb($bd-violet)};
-  --bd-accent-rgb: #{to-rgb($bd-accent)};
-  --bd-pink-rgb: #{to-rgb($pink-500)};
-  --bd-teal-rgb: #{to-rgb($teal-500)};
-  --bd-violet-bg: var(--bd-violet);
-  --bd-toc-color: var(--bd-violet);
-  --bd-sidebar-link-bg: rgba(var(--bd-violet-rgb), .1);
-  --bd-callout-link: #{to-rgb($blue-600)};
-  --bd-callout-code-color: #{$pink-600};
-  --bd-pre-bg: var(--bs-tertiary-bg);
-}
+@layer custom {
+  :root {
+    --bd-purple: #{$bd-purple};
+    --bd-violet: #{$bd-violet};
+    --bd-accent: #{$bd-accent};
+    // --bd-violet-rgb: #{to-rgb($bd-violet)};
+    // --bd-accent-rgb: #{to-rgb($bd-accent)};
+    // --bd-pink-rgb: #{to-rgb($pink-500)};
+    // --bd-teal-rgb: #{to-rgb($teal-500)};
+    --bd-violet-bg: var(--bd-violet);
+    --bd-toc-color: light-dark(var(--bd-violet), var(--bs-indigo-300));
+    --bd-sidebar-link-bg: color-mix(in srgb, var(--bd-violet), transparent 90%);
+    --bd-callout-link: #{$blue-600};
+    --bd-callout-code-color: light-dark(var(--bs-pink-600), var(--bs-pink-300));
+    --bd-pre-bg: light-dark(var(--bs-gray-100), color-mix(in srgb, var(--bs-gray-900), var(--bs-black) 25%));
+    --bd-swatch-shadow: inset 0 0 0 1px light-dark(rgb(0 0 0 / .1), rgb(255 255 255 / .1));
+  }
 
-@include color-mode(dark, true) {
-  --bd-violet: #{mix($bd-violet, $white, 75%)};
-  --bd-violet-bg: #{$bd-violet};
-  --bd-toc-color: var(--#{$prefix}emphasis-color);
-  --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
-  --bd-callout-link: #{to-rgb($blue-300)};
-  --bd-callout-code-color: #{$pink-300};
-  --bd-pre-bg: #{adjust-color($gray-900, $lightness: -2.5%)}; // stylelint-disable-line scss/at-function-named-arguments
+  // @include color-mode(dark, true) {
+  //   --bd-violet: #{mix($bd-violet, $white, 75%)};
+  //   --bd-violet-bg: #{$bd-violet};
+  //   --bd-toc-color: var(--#{$prefix}emphasis-color);
+  //   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
+  //   --bd-callout-link: #{to-rgb($blue-300)};
+  //   --bd-callout-code-color: #{$pink-300};
+  //   --bd-pre-bg: #{color.adjust($gray-900, $lightness: -2.5%)}; // stylelint-disable-line scss/at-function-named-arguments
+  // }
 }

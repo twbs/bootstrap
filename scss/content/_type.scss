@@ -1,6 +1,7 @@
-//
-// Headings
-//
+@use "../config" as *;
+@use "../variables" as *;
+@use "../mixins/lists" as *;
+@use "../vendor/rfs" as *;
 
 .lead {
   @include font-size($lead-font-size);
