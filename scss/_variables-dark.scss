@@ -91,12 +91,14 @@ $accordion-button-active-icon-dark:  url("data:image/svg+xml,<svg xmlns='http://
 // Carousel
 //
 
-$carousel-indicator-active-bg-dark:   $carousel-dark-indicator-active-bg !default;
-$carousel-caption-color-dark:         $carousel-dark-caption-color !default;
-$carousel-control-icon-filter-dark:   $carousel-dark-control-icon-filter !default;
+// scss-docs-start carousel-dark-variables
+$carousel-indicator-active-bg-dark:   $black !default;
+$carousel-caption-color-dark:         $black !default;
+$carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
+// scss-docs-end carousel-dark-variables
 
 //
 // Close button
 //
 
-$btn-close-filter-dark:             $btn-close-white-filter !default;
+$btn-close-filter-dark: invert(1) grayscale(100%) brightness(200%) !default;
