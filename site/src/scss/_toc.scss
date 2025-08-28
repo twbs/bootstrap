@@ -1,7 +1,10 @@
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/vendor/rfs" as *;
+@use "../../../scss/mixins/border-radius" as *;
+
 // stylelint-disable selector-max-type, selector-no-qualifying-type
 
 .bd-toc {
-  font-size: .875rem;
   container-type: inline-size;
 
   @include media-breakpoint-up(lg) {
@@ -14,7 +17,8 @@
   }
 
   nav {
-    @include font-size(.875rem);
+    font-size: .875rem;
+    // @include font-size(.875rem);
 
     ul {
       padding-left: 0;
