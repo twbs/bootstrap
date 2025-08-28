@@ -1,30 +1,36 @@
+@use "../config" as *;
+@use "../colors" as *;
+@use "../variables" as *;
+
 // All-caps `RGBA()` function used because of this Sass bug: https://github.com/sass/node-sass/issues/2251
-@each $color, $value in $theme-colors {
-  .link-#{$color} {
-    color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-opacity, 1)) if($enable-important-utilities, !important, null);
-    text-decoration-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}link-underline-opacity, 1)) if($enable-important-utilities, !important, null);
+@layer helpers {
+  @each $color, $value in $theme-colors {
+    .link-#{$color} {
+      color: color-mix(in srgb, var(--#{$prefix}#{$color}), transparent var(--#{$prefix}link-opacity));
+      text-decoration-color: color-mix(in srgb, var(--#{$prefix}#{$color}), transparent var(--#{$prefix}link-underline-opacity));
+
+      @if $link-shade-percentage != 0 {
+        &:hover,
+        &:focus {
+          $hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
+          color: color-mix(in srgb, $hover-color, transparent var(--#{$prefix}link-opacity));
+          text-decoration-color: color-mix(in srgb, $hover-color, transparent var(--#{$prefix}link-underline-opacity));
+        }
+      }
+    }
+  }
+
+  // One-off special link helper as a bridge until v6
+  .link-body-emphasis {
+    color: color-mix(in srgb, var(--#{$prefix}emphasis-color), transparent var(--#{$prefix}link-opacity));
+    text-decoration-color: color-mix(in srgb, var(--#{$prefix}emphasis-color), transparent var(--#{$prefix}link-underline-opacity));
 
     @if $link-shade-percentage != 0 {
       &:hover,
       &:focus {
-        $hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
-        color: RGBA(#{to-rgb($hover-color)}, var(--#{$prefix}link-opacity, 1)) if($enable-important-utilities, !important, null);
-        text-decoration-color: RGBA(to-rgb($hover-color), var(--#{$prefix}link-underline-opacity, 1)) if($enable-important-utilities, !important, null);
+        color: color-mix(in srgb, var(--#{$prefix}emphasis-color), transparent var(--#{$prefix}link-opacity, .75));
+        text-decoration-color: color-mix(in srgb, var(--#{$prefix}emphasis-color), transparent var(--#{$prefix}link-underline-opacity, .75));
       }
-    }
-  }
-}
-
-// One-off special link helper as a bridge until v6
-.link-body-emphasis {
-  color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, 1)) if($enable-important-utilities, !important, null);
-  text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, 1)) if($enable-important-utilities, !important, null);
-
-  @if $link-shade-percentage != 0 {
-    &:hover,
-    &:focus {
-      color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-opacity, .75)) if($enable-important-utilities, !important, null);
-      text-decoration-color: RGBA(var(--#{$prefix}emphasis-color-rgb), var(--#{$prefix}link-underline-opacity, .75)) if($enable-important-utilities, !important, null);
     }
   }
 }

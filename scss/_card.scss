@@ -1,3 +1,9 @@
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
+@use "layout/breakpoints" as *;
+
 //
 // Base styles
 //
