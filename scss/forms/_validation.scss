@@ -175,9 +175,10 @@
 }
 // scss-docs-end form-validation-mixins
 
-
-// scss-docs-start form-validation-states-loop
-@each $state, $data in $form-validation-states {
-  @include form-validation-state($state, $data...);
+@layer forms {
+  // scss-docs-start form-validation-states-loop
+  @each $state, $data in $form-validation-states {
+    @include form-validation-state($state, $data...);
+  }
+  // scss-docs-end form-validation-states-loop
 }
-// scss-docs-end form-validation-states-loop

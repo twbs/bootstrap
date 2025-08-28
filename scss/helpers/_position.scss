@@ -3,39 +3,39 @@
 @use "../variables" as *;
 @use "../layout/breakpoints" as *;
 
-// Shorthand
+@layer helpers {
+  .fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: $zindex-fixed;
+  }
 
-.fixed-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: $zindex-fixed;
-}
+  .fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $zindex-fixed;
+  }
 
-.fixed-bottom {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: $zindex-fixed;
-}
+  // Responsive sticky top and bottom
+  @each $breakpoint in map.keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-// Responsive sticky top and bottom
-@each $breakpoint in map.keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+      .sticky#{$infix}-top {
+        position: sticky;
+        top: 0;
+        z-index: $zindex-sticky;
+      }
 
-    .sticky#{$infix}-top {
-      position: sticky;
-      top: 0;
-      z-index: $zindex-sticky;
-    }
-
-    .sticky#{$infix}-bottom {
-      position: sticky;
-      bottom: 0;
-      z-index: $zindex-sticky;
+      .sticky#{$infix}-bottom {
+        position: sticky;
+        bottom: 0;
+        z-index: $zindex-sticky;
+      }
     }
   }
 }
