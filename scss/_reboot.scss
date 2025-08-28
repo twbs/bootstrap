@@ -316,7 +316,7 @@ kbd {
   kbd {
     padding: 0;
     @include font-size(1em);
-    font-weight: $nested-kbd-font-weight;
+    font-weight: inherit; // mdo-do: check if this is needed
   }
 }
 
