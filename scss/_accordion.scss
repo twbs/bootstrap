@@ -29,7 +29,6 @@
     --#{$prefix}accordion-btn-icon-width: #{$accordion-icon-width};
     --#{$prefix}accordion-btn-icon-transform: #{$accordion-icon-transform};
     --#{$prefix}accordion-btn-icon-transition: #{$accordion-icon-transition};
-    --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon)};
     --#{$prefix}accordion-btn-focus-box-shadow: #{$accordion-button-focus-box-shadow};
     --#{$prefix}accordion-body-padding-x: #{$accordion-body-padding-x};
     --#{$prefix}accordion-body-padding-y: #{$accordion-body-padding-y};
@@ -71,9 +70,8 @@
       height: var(--#{$prefix}accordion-btn-icon-width);
       margin-left: auto;
       content: "";
-      background-image: var(--#{$prefix}accordion-btn-icon);
-      background-repeat: no-repeat;
-      background-size: var(--#{$prefix}accordion-btn-icon-width);
+      background-color: var(--#{$prefix}accordion-btn-color);
+      mask: var(--#{$prefix}accordion-btn-icon) no-repeat center 100%;
       @include transition(var(--#{$prefix}accordion-btn-icon-transition));
     }
 
@@ -153,12 +151,12 @@
     }
   }
 
-  @if $enable-dark-mode {
-    @include color-mode(dark) {
-      .accordion-button::after {
-        --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon-dark)};
-        --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon-dark)};
-      }
-    }
-  }
+  // @if $enable-dark-mode {
+  //   @include color-mode(dark) {
+  //     .accordion-button::after {
+  //       --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon-dark)};
+  //       --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon-dark)};
+  //     }
+  //   }
+  // }
 }
