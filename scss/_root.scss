@@ -7,6 +7,9 @@
 @use "vendor/rfs" as *;
 @use "mixins/color-mode" as *;
 
+// mdo-do: do we need theme?
+@layer colors, theme, config, root, reboot, layout, content, forms, components, helpers, custom, utilities;
+
 :root {
   color-scheme: light dark;
 
