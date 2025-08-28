@@ -9,8 +9,6 @@ import { getSequence } from '@libs/utils'
 
 ## Colors
 
-<AddedIn version="5.3.0" />
-
 Bootstrap’s color palette has continued to expand and become more nuanced in v5.3.0. We’ve added new variables for `secondary` and `tertiary` text and background colors, plus `{color}-bg-subtle`, `{color}-border-subtle`, and `{color}-text-emphasis` for our theme colors. These new colors are available through Sass and CSS variables (but not our color maps or utility classes) with the express goal of making it easier to customize across multiple colors modes like light and dark. These new variables are globally set on `:root` and are adapted for our new dark color mode while our original theme colors remain unchanged.
 
 Colors ending in `-rgb` provide the `red, green, blue` values for use in `rgb()` and `rgba()` color modes. For example, `rgba(var(--bs-secondary-bg-rgb), .5)`.
@@ -469,8 +467,6 @@ Here’s how you can use these in your Sass:
 [Color]([[docsref:/utilities/colors]]) and [background]([[docsref:/utilities/background]]) utility classes are also available for setting `color` and `background-color` using the `500` color values.
 
 ## Generating utilities
-
-<AddedIn version="5.1.0"/>
 
 Bootstrap doesn’t include `color` and `background-color` utilities for every color variable, but you can generate these yourself with our [utility API]([[docsref:/utilities/api]]) and our extended Sass maps added in v5.1.0.
 
