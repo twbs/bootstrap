@@ -550,9 +550,6 @@ $border-radius-xl:            1rem !default;
 $border-radius-xxl:           2rem !default;
 $border-radius-pill:          50rem !default;
 // scss-docs-end border-radius-variables
-// fusv-disable
-$border-radius-2xl:           $border-radius-xxl !default; // Deprecated in v5.3.0
-// fusv-enable
 
 // scss-docs-start box-shadow-variables
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
@@ -680,10 +677,6 @@ $small-font-size:             .875em !default;
 
 $sub-sup-font-size:           .75em !default;
 
-// fusv-disable
-$text-muted:                  var(--#{$prefix}secondary-color) !default; // Deprecated in 5.3.0
-// fusv-enable
-
 $initialism-font-size:        $small-font-size !default;
 
 $blockquote-margin-y:         $spacer !default;
@@ -693,11 +686,6 @@ $blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
-
-// fusv-disable
-$hr-bg-color:                 null !default; // Deprecated in v5.2.0
-$hr-height:                   null !default; // Deprecated in v5.2.0
-// fusv-enable
 
 $hr-border-color:             null !default; // Allows for inherited colors
 $hr-border-width:             var(--#{$prefix}border-width) !default;
@@ -1263,9 +1251,6 @@ $dropdown-item-padding-x:           $spacer !default;
 $dropdown-header-color:             $gray-600 !default;
 $dropdown-header-padding-x:         $dropdown-item-padding-x !default;
 $dropdown-header-padding-y:         $dropdown-padding-y !default;
-// fusv-disable
-$dropdown-header-padding:           $dropdown-header-padding-y $dropdown-header-padding-x !default; // Deprecated in v5.2.0
-// fusv-enable
 // scss-docs-end dropdown-variables
 
 // scss-docs-start dropdown-dark-variables
@@ -1381,9 +1366,6 @@ $accordion-transition:                    $btn-transition, border-radius .15s ea
 $accordion-button-active-bg:              var(--#{$prefix}primary-bg-subtle) !default;
 $accordion-button-active-color:           var(--#{$prefix}primary-text-emphasis) !default;
 
-// fusv-disable
-$accordion-button-focus-border-color:     $input-focus-border-color !default; // Deprecated in v5.3.3
-// fusv-enable
 $accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
 
 $accordion-icon-width:                    1.25rem !default;
@@ -1411,9 +1393,6 @@ $tooltip-margin:                    null !default; // TODO: remove this in v6
 
 $tooltip-arrow-width:               .8rem !default;
 $tooltip-arrow-height:              .4rem !default;
-// fusv-disable
-$tooltip-arrow-color:               null !default; // Deprecated in Bootstrap 5.2.0 for CSS variables
-// fusv-enable
 // scss-docs-end tooltip-variables
 
 // Form tooltips must come after regular tooltips
@@ -1452,12 +1431,6 @@ $popover-body-padding-x:            $spacer !default;
 $popover-arrow-width:               1rem !default;
 $popover-arrow-height:              .5rem !default;
 // scss-docs-end popover-variables
-
-// fusv-disable
-// Deprecated in Bootstrap 5.2.0 for CSS variables
-$popover-arrow-color:               $popover-bg !default;
-$popover-arrow-outer-color:         var(--#{$prefix}border-color-translucent) !default;
-// fusv-enable
 
 
 // Toasts
@@ -1553,11 +1526,6 @@ $alert-border-width:            var(--#{$prefix}border-width) !default;
 $alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 // scss-docs-end alert-variables
 
-// fusv-disable
-$alert-bg-scale:                -80% !default; // Deprecated in v5.2.0, to be removed in v6
-$alert-border-scale:            -70% !default; // Deprecated in v5.2.0, to be removed in v6
-$alert-color-scale:             40% !default; // Deprecated in v5.2.0, to be removed in v6
-// fusv-enable
 
 // Progress bars
 
@@ -1585,10 +1553,6 @@ $list-group-border-radius:          var(--#{$prefix}border-radius) !default;
 
 $list-group-item-padding-y:         $spacer * .5 !default;
 $list-group-item-padding-x:         $spacer !default;
-// fusv-disable
-$list-group-item-bg-scale:          -80% !default; // Deprecated in v5.3.0
-$list-group-item-color-scale:       40% !default; // Deprecated in v5.3.0
-// fusv-enable
 
 $list-group-hover-bg:               var(--#{$prefix}tertiary-bg) !default;
 $list-group-active-color:           $component-active-color !default;
@@ -1675,12 +1639,6 @@ $carousel-transition-duration:       .6s !default;
 $carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
 // scss-docs-end carousel-variables
 
-// scss-docs-start carousel-dark-variables
-$carousel-dark-indicator-active-bg:  $black !default; // Deprecated in v5.3.4
-$carousel-dark-caption-color:        $black !default; // Deprecated in v5.3.4
-$carousel-dark-control-icon-filter:  invert(1) grayscale(100) !default; // Deprecated in v5.3.4
-// scss-docs-end carousel-dark-variables
-
 
 // Spinners
 
@@ -1712,7 +1670,6 @@ $btn-close-hover-opacity:    .75 !default;
 $btn-close-focus-opacity:    1 !default;
 $btn-close-disabled-opacity: .25 !default;
 $btn-close-filter:           null !default;
-$btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default; // Deprecated in v5.3.4
 // scss-docs-end close-variables
 
 
@@ -1744,7 +1701,6 @@ $kbd-padding-x:                     .375rem !default;
 $kbd-font-size:                     $code-font-size !default;
 $kbd-color:                         var(--#{$prefix}body-bg) !default;
 $kbd-bg:                            var(--#{$prefix}body-color) !default;
-$nested-kbd-font-weight:            null !default; // Deprecated in v5.2.0, removing in v6
 
 $pre-color:                         null !default;
 
