@@ -335,13 +335,9 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 
 ## Dark dropdowns
 
-<DeprecatedIn version="5.3.0" />
+Opt into darker dropdowns to match a dark navbar or custom style by adding `data-bs-theme="dark"` onto an existing `.dropdown-menu`. No changes are required to the dropdown items.
 
-Opt into darker dropdowns to match a dark navbar or custom style by adding `.dropdown-menu-dark` onto an existing `.dropdown-menu`. No changes are required to the dropdown items.
-
-<CalloutDeprecatedDarkVariants component="dropdown-menu" />
-
-<Example code={`<div class="dropdown">
+<Example code={`<div class="dropdown" data-bs-theme="dark">
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Dropdown button
     </button>
@@ -364,7 +360,7 @@ And putting it to use in a navbar:
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" data-bs-theme="dark">
             <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </button>
