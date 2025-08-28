@@ -13,7 +13,7 @@ $enable-reduced-motion:       true !default;
 $enable-smooth-scroll:        true !default;
 $enable-grid-classes:         true !default;
 $enable-container-classes:    true !default;
-$enable-cssgrid:              false !default;
+$enable-cssgrid:              true !default;
 $enable-button-pointers:      true !default;
 $enable-rfs:                  true !default;
 $enable-validation-icons:     true !default;
@@ -30,6 +30,18 @@ $color-mode-type:          "media-query" !default;
 $color-contrast-dark:      #000 !default;
 $color-contrast-light:     #fff !default;
 $min-contrast-ratio:         4.5 !default;
+
+// scss-docs-start spacer-variables-maps
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;
+// scss-docs-end spacer-variables-maps
 
 // Grid breakpoints
 //
@@ -54,6 +66,8 @@ $grid-breakpoints: (
 $grid-columns: 12 !default;
 $grid-gutter-width: 1.5rem !default;
 $grid-row-columns: 6 !default;
+
+$gutters: $spacers !default;
 
 // Grid containers
 //
