@@ -6,7 +6,6 @@
  * @see site/src/libs/astro.ts
  */
 export declare global {
-  export const AddedIn: typeof import('@shortcodes/AddedIn.astro').default
   export const BsTable: typeof import('@shortcodes/BsTable.astro').default
   export const CSSVariables: typeof import('@shortcodes/CSSVariables.astro').default
   export const Callout: typeof import('@shortcodes/Callout.astro').default
