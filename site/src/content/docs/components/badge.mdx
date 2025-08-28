@@ -54,8 +54,6 @@ You can also replace the `.badge` class with a few more utilities without a coun
 
 ## Background colors
 
-<AddedIn version="5.2.0" />
-
 Set a `background-color` with contrasting foreground `color` with [our `.text-bg-{color}` helpers]([[docsref:helpers/color-background]]). Previously it was required to manually pair your choice of [`.text-{color}`]([[docsref:/utilities/colors]]) and [`.bg-{color}`]([[docsref:/utilities/background]]) utilities for styling, which you still may use if you prefer.
 
 <Example code={getData('theme-colors').map((themeColor) => `<span class="badge text-bg-${themeColor.name}">${themeColor.title}</span>`)} />
@@ -72,9 +70,7 @@ Use the `.rounded-pill` utility class to make badges more rounded with a larger 
 
 ### Variables
 
-<AddedIn version="5.2.0" />
-
-As part of Bootstrap’s evolving CSS variables approach, badges now use local CSS variables on `.badge` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+<CSSVariables component="Badges" className="badge" />
 
 <ScssDocs name="badge-css-vars" file="scss/_badge.scss" />
 

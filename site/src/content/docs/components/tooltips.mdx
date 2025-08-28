@@ -45,8 +45,6 @@ Hover over the links below to see tooltips:
 
 ### Custom tooltips
 
-<AddedIn version="5.2.0" />
-
 You can customize the appearance of tooltips using [CSS variables](#variables). We set a custom class with `data-bs-custom-class="custom-tooltip"` to scope our custom appearance and use it to override a local CSS variable.
 
 <ScssDocs name="custom-tooltip" file="site/src/scss/_component-examples.scss" />
@@ -108,9 +106,7 @@ With an SVG:
 
 ### Variables
 
-<AddedIn version="5.2.0" />
-
-As part of Bootstrap’s evolving CSS variables approach, tooltips now use local CSS variables on `.tooltip` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+<CSSVariables component="Tooltips" className="tooltip" />
 
 <ScssDocs name="tooltip-css-vars" file="scss/_tooltip.scss" />
 
