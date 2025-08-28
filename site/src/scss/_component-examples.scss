@@ -1,3 +1,10 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/variables" as *;
+@use "../../../scss/vendor/rfs" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
+@use "variables" as *;
+
 //
 // Docs examples
 //
@@ -118,8 +125,8 @@
 .bd-example-cssgrid [class*="grid"] > * {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  background-color: rgba(var(--bd-violet-rgb), .15);
-  border: 1px solid rgba(var(--bd-violet-rgb), .3);
+  background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
 }
 
 .bd-example-row .row + .row,
@@ -129,47 +136,47 @@
 
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
-  background-color: rgba(var(--bd-violet-rgb), .15);
+  background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
 }
 
 .bd-example-flex div:not(.vr) {
-  background-color: rgba(var(--bd-violet-rgb), .15);
-  border: 1px solid rgba(var(--bd-violet-rgb), .3);
+  background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
 }
 
-// Grid mixins
-.example-container {
-  width: 800px;
-  @include make-container();
-}
+// // Grid mixins
+// .example-container {
+//   width: 800px;
+//   @include make-container();
+// }
 
-.example-row {
-  @include make-row();
-}
+// .example-row {
+//   @include make-row();
+// }
 
-.example-content-main {
-  @include make-col-ready();
+// .example-content-main {
+//   @include make-col-ready();
 
-  @include media-breakpoint-up(sm) {
-    @include make-col(6);
-  }
+//   @include media-breakpoint-up(sm) {
+//     @include make-col(6);
+//   }
 
-  @include media-breakpoint-up(lg) {
-    @include make-col(8);
-  }
-}
+//   @include media-breakpoint-up(lg) {
+//     @include make-col(8);
+//   }
+// }
 
-.example-content-secondary {
-  @include make-col-ready();
+// .example-content-secondary {
+//   @include make-col-ready();
 
-  @include media-breakpoint-up(sm) {
-    @include make-col(6);
-  }
+//   @include media-breakpoint-up(sm) {
+//     @include make-col(6);
+//   }
 
-  @include media-breakpoint-up(lg) {
-    @include make-col(4);
-  }
-}
+//   @include media-breakpoint-up(lg) {
+//     @include make-col(4);
+//   }
+// }
 
 // Ratio helpers
 .bd-example-ratios {
@@ -239,7 +246,7 @@
 
 .simple-list-example-scrollspy {
   .active {
-    background-color: rgba(var(--bd-violet-rgb), .15);
+    background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
   }
 }
 

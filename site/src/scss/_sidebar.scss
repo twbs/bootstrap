@@ -1,3 +1,7 @@
+@use "../../../scss/variables" as *;
+@use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
+
 .bd-sidebar {
   @include media-breakpoint-up(lg) {
     position: sticky;
@@ -25,9 +29,9 @@
 }
 
 .bd-links-nav {
-  @include media-breakpoint-down(lg) {
-    font-size: .875rem;
-  }
+  // @include media-breakpoint-down(lg) {
+  //   font-size: .875rem;
+  // }
 
   @include media-breakpoint-between(xs, lg) {
     column-count: 2;
@@ -47,6 +51,7 @@
   padding: .1875rem .5rem;
   margin-top: .125rem;
   margin-left: 1.125rem;
+  font-size: .875rem;
   color: var(--bs-body-color);
   text-decoration: if($link-decoration == none, null, none);
 

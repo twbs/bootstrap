@@ -1,309 +1,21 @@
+@use "sass:color";
+@use "sass:string";
+@use "colors" as *;
+@use "config" as *;
+@use "functions" as *;
+
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
-// Color system
-
-// scss-docs-start gray-color-variables
-$white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black:    #000 !default;
-// scss-docs-end gray-color-variables
-
-// fusv-disable
-// scss-docs-start gray-colors-map
-$grays: (
-  "100": $gray-100,
-  "200": $gray-200,
-  "300": $gray-300,
-  "400": $gray-400,
-  "500": $gray-500,
-  "600": $gray-600,
-  "700": $gray-700,
-  "800": $gray-800,
-  "900": $gray-900
-) !default;
-// scss-docs-end gray-colors-map
-// fusv-enable
-
-// scss-docs-start color-variables
-$blue:    #0d6efd !default;
-$indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #198754 !default;
-$teal:    #20c997 !default;
-$cyan:    #0dcaf0 !default;
-// scss-docs-end color-variables
-
-// scss-docs-start colors-map
-$colors: (
-  "blue":       $blue,
-  "indigo":     $indigo,
-  "purple":     $purple,
-  "pink":       $pink,
-  "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "green":      $green,
-  "teal":       $teal,
-  "cyan":       $cyan,
-  "black":      $black,
-  "white":      $white,
-  "gray":       $gray-600,
-  "gray-dark":  $gray-800
-) !default;
-// scss-docs-end colors-map
-
-// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.2 are 3, 4.5 and 7.
-// See https://www.w3.org/TR/WCAG/#contrast-minimum
-$min-contrast-ratio:   4.5 !default;
-
-// Customize the light and dark text colors for use in our color contrast function.
-$color-contrast-dark:      $black !default;
-$color-contrast-light:     $white !default;
-
-// fusv-disable
-$blue-100: tint-color($blue, 80%) !default;
-$blue-200: tint-color($blue, 60%) !default;
-$blue-300: tint-color($blue, 40%) !default;
-$blue-400: tint-color($blue, 20%) !default;
-$blue-500: $blue !default;
-$blue-600: shade-color($blue, 20%) !default;
-$blue-700: shade-color($blue, 40%) !default;
-$blue-800: shade-color($blue, 60%) !default;
-$blue-900: shade-color($blue, 80%) !default;
-
-$indigo-100: tint-color($indigo, 80%) !default;
-$indigo-200: tint-color($indigo, 60%) !default;
-$indigo-300: tint-color($indigo, 40%) !default;
-$indigo-400: tint-color($indigo, 20%) !default;
-$indigo-500: $indigo !default;
-$indigo-600: shade-color($indigo, 20%) !default;
-$indigo-700: shade-color($indigo, 40%) !default;
-$indigo-800: shade-color($indigo, 60%) !default;
-$indigo-900: shade-color($indigo, 80%) !default;
-
-$purple-100: tint-color($purple, 80%) !default;
-$purple-200: tint-color($purple, 60%) !default;
-$purple-300: tint-color($purple, 40%) !default;
-$purple-400: tint-color($purple, 20%) !default;
-$purple-500: $purple !default;
-$purple-600: shade-color($purple, 20%) !default;
-$purple-700: shade-color($purple, 40%) !default;
-$purple-800: shade-color($purple, 60%) !default;
-$purple-900: shade-color($purple, 80%) !default;
-
-$pink-100: tint-color($pink, 80%) !default;
-$pink-200: tint-color($pink, 60%) !default;
-$pink-300: tint-color($pink, 40%) !default;
-$pink-400: tint-color($pink, 20%) !default;
-$pink-500: $pink !default;
-$pink-600: shade-color($pink, 20%) !default;
-$pink-700: shade-color($pink, 40%) !default;
-$pink-800: shade-color($pink, 60%) !default;
-$pink-900: shade-color($pink, 80%) !default;
-
-$red-100: tint-color($red, 80%) !default;
-$red-200: tint-color($red, 60%) !default;
-$red-300: tint-color($red, 40%) !default;
-$red-400: tint-color($red, 20%) !default;
-$red-500: $red !default;
-$red-600: shade-color($red, 20%) !default;
-$red-700: shade-color($red, 40%) !default;
-$red-800: shade-color($red, 60%) !default;
-$red-900: shade-color($red, 80%) !default;
-
-$orange-100: tint-color($orange, 80%) !default;
-$orange-200: tint-color($orange, 60%) !default;
-$orange-300: tint-color($orange, 40%) !default;
-$orange-400: tint-color($orange, 20%) !default;
-$orange-500: $orange !default;
-$orange-600: shade-color($orange, 20%) !default;
-$orange-700: shade-color($orange, 40%) !default;
-$orange-800: shade-color($orange, 60%) !default;
-$orange-900: shade-color($orange, 80%) !default;
-
-$yellow-100: tint-color($yellow, 80%) !default;
-$yellow-200: tint-color($yellow, 60%) !default;
-$yellow-300: tint-color($yellow, 40%) !default;
-$yellow-400: tint-color($yellow, 20%) !default;
-$yellow-500: $yellow !default;
-$yellow-600: shade-color($yellow, 20%) !default;
-$yellow-700: shade-color($yellow, 40%) !default;
-$yellow-800: shade-color($yellow, 60%) !default;
-$yellow-900: shade-color($yellow, 80%) !default;
-
-$green-100: tint-color($green, 80%) !default;
-$green-200: tint-color($green, 60%) !default;
-$green-300: tint-color($green, 40%) !default;
-$green-400: tint-color($green, 20%) !default;
-$green-500: $green !default;
-$green-600: shade-color($green, 20%) !default;
-$green-700: shade-color($green, 40%) !default;
-$green-800: shade-color($green, 60%) !default;
-$green-900: shade-color($green, 80%) !default;
-
-$teal-100: tint-color($teal, 80%) !default;
-$teal-200: tint-color($teal, 60%) !default;
-$teal-300: tint-color($teal, 40%) !default;
-$teal-400: tint-color($teal, 20%) !default;
-$teal-500: $teal !default;
-$teal-600: shade-color($teal, 20%) !default;
-$teal-700: shade-color($teal, 40%) !default;
-$teal-800: shade-color($teal, 60%) !default;
-$teal-900: shade-color($teal, 80%) !default;
-
-$cyan-100: tint-color($cyan, 80%) !default;
-$cyan-200: tint-color($cyan, 60%) !default;
-$cyan-300: tint-color($cyan, 40%) !default;
-$cyan-400: tint-color($cyan, 20%) !default;
-$cyan-500: $cyan !default;
-$cyan-600: shade-color($cyan, 20%) !default;
-$cyan-700: shade-color($cyan, 40%) !default;
-$cyan-800: shade-color($cyan, 60%) !default;
-$cyan-900: shade-color($cyan, 80%) !default;
-
-$blues: (
-  "blue-100": $blue-100,
-  "blue-200": $blue-200,
-  "blue-300": $blue-300,
-  "blue-400": $blue-400,
-  "blue-500": $blue-500,
-  "blue-600": $blue-600,
-  "blue-700": $blue-700,
-  "blue-800": $blue-800,
-  "blue-900": $blue-900
-) !default;
-
-$indigos: (
-  "indigo-100": $indigo-100,
-  "indigo-200": $indigo-200,
-  "indigo-300": $indigo-300,
-  "indigo-400": $indigo-400,
-  "indigo-500": $indigo-500,
-  "indigo-600": $indigo-600,
-  "indigo-700": $indigo-700,
-  "indigo-800": $indigo-800,
-  "indigo-900": $indigo-900
-) !default;
-
-$purples: (
-  "purple-100": $purple-100,
-  "purple-200": $purple-200,
-  "purple-300": $purple-300,
-  "purple-400": $purple-400,
-  "purple-500": $purple-500,
-  "purple-600": $purple-600,
-  "purple-700": $purple-700,
-  "purple-800": $purple-800,
-  "purple-900": $purple-900
-) !default;
-
-$pinks: (
-  "pink-100": $pink-100,
-  "pink-200": $pink-200,
-  "pink-300": $pink-300,
-  "pink-400": $pink-400,
-  "pink-500": $pink-500,
-  "pink-600": $pink-600,
-  "pink-700": $pink-700,
-  "pink-800": $pink-800,
-  "pink-900": $pink-900
-) !default;
-
-$reds: (
-  "red-100": $red-100,
-  "red-200": $red-200,
-  "red-300": $red-300,
-  "red-400": $red-400,
-  "red-500": $red-500,
-  "red-600": $red-600,
-  "red-700": $red-700,
-  "red-800": $red-800,
-  "red-900": $red-900
-) !default;
-
-$oranges: (
-  "orange-100": $orange-100,
-  "orange-200": $orange-200,
-  "orange-300": $orange-300,
-  "orange-400": $orange-400,
-  "orange-500": $orange-500,
-  "orange-600": $orange-600,
-  "orange-700": $orange-700,
-  "orange-800": $orange-800,
-  "orange-900": $orange-900
-) !default;
-
-$yellows: (
-  "yellow-100": $yellow-100,
-  "yellow-200": $yellow-200,
-  "yellow-300": $yellow-300,
-  "yellow-400": $yellow-400,
-  "yellow-500": $yellow-500,
-  "yellow-600": $yellow-600,
-  "yellow-700": $yellow-700,
-  "yellow-800": $yellow-800,
-  "yellow-900": $yellow-900
-) !default;
-
-$greens: (
-  "green-100": $green-100,
-  "green-200": $green-200,
-  "green-300": $green-300,
-  "green-400": $green-400,
-  "green-500": $green-500,
-  "green-600": $green-600,
-  "green-700": $green-700,
-  "green-800": $green-800,
-  "green-900": $green-900
-) !default;
-
-$teals: (
-  "teal-100": $teal-100,
-  "teal-200": $teal-200,
-  "teal-300": $teal-300,
-  "teal-400": $teal-400,
-  "teal-500": $teal-500,
-  "teal-600": $teal-600,
-  "teal-700": $teal-700,
-  "teal-800": $teal-800,
-  "teal-900": $teal-900
-) !default;
-
-$cyans: (
-  "cyan-100": $cyan-100,
-  "cyan-200": $cyan-200,
-  "cyan-300": $cyan-300,
-  "cyan-400": $cyan-400,
-  "cyan-500": $cyan-500,
-  "cyan-600": $cyan-600,
-  "cyan-700": $cyan-700,
-  "cyan-800": $cyan-800,
-  "cyan-900": $cyan-900
-) !default;
-// fusv-enable
-
 // scss-docs-start theme-color-variables
-$primary:       $blue !default;
+$primary:       $purple-500 !default;
 $secondary:     $gray-600 !default;
-$success:       $green !default;
-$info:          $cyan !default;
-$warning:       $yellow !default;
-$danger:        $red !default;
+$success:       $green-500 !default;
+$info:          $cyan-500 !default;
+$warning:       $yellow-500 !default;
+$danger:        $red-500 !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
 // scss-docs-end theme-color-variables
@@ -321,38 +33,38 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
-// scss-docs-start theme-text-variables
-$primary-text-emphasis:   shade-color($primary, 60%) !default;
-$secondary-text-emphasis: shade-color($secondary, 60%) !default;
-$success-text-emphasis:   shade-color($success, 60%) !default;
-$info-text-emphasis:      shade-color($info, 60%) !default;
-$warning-text-emphasis:   shade-color($warning, 60%) !default;
-$danger-text-emphasis:    shade-color($danger, 60%) !default;
-$light-text-emphasis:     $gray-700 !default;
-$dark-text-emphasis:      $gray-700 !default;
-// scss-docs-end theme-text-variables
+// // scss-docs-start theme-text-variables
+// $primary-text-emphasis:   shade-color($primary, 60%) !default;
+// $secondary-text-emphasis: shade-color($secondary, 60%) !default;
+// $success-text-emphasis:   shade-color($success, 60%) !default;
+// $info-text-emphasis:      shade-color($info, 60%) !default;
+// $warning-text-emphasis:   shade-color($warning, 60%) !default;
+// $danger-text-emphasis:    shade-color($danger, 60%) !default;
+// $light-text-emphasis:     $gray-700 !default;
+// $dark-text-emphasis:      $gray-700 !default;
+// // scss-docs-end theme-text-variables
 
-// scss-docs-start theme-bg-subtle-variables
-$primary-bg-subtle:       tint-color($primary, 80%) !default;
-$secondary-bg-subtle:     tint-color($secondary, 80%) !default;
-$success-bg-subtle:       tint-color($success, 80%) !default;
-$info-bg-subtle:          tint-color($info, 80%) !default;
-$warning-bg-subtle:       tint-color($warning, 80%) !default;
-$danger-bg-subtle:        tint-color($danger, 80%) !default;
-$light-bg-subtle:         mix($gray-100, $white) !default;
-$dark-bg-subtle:          $gray-400 !default;
-// scss-docs-end theme-bg-subtle-variables
+// // scss-docs-start theme-bg-subtle-variables
+// $primary-bg-subtle:       tint-color($primary, 80%) !default;
+// $secondary-bg-subtle:     tint-color($secondary, 80%) !default;
+// $success-bg-subtle:       tint-color($success, 80%) !default;
+// $info-bg-subtle:          tint-color($info, 80%) !default;
+// $warning-bg-subtle:       tint-color($warning, 80%) !default;
+// $danger-bg-subtle:        tint-color($danger, 80%) !default;
+// $light-bg-subtle:         color.mix($gray-100, $white) !default;
+// $dark-bg-subtle:          $gray-400 !default;
+// // scss-docs-end theme-bg-subtle-variables
 
-// scss-docs-start theme-border-subtle-variables
-$primary-border-subtle:   tint-color($primary, 60%) !default;
-$secondary-border-subtle: tint-color($secondary, 60%) !default;
-$success-border-subtle:   tint-color($success, 60%) !default;
-$info-border-subtle:      tint-color($info, 60%) !default;
-$warning-border-subtle:   tint-color($warning, 60%) !default;
-$danger-border-subtle:    tint-color($danger, 60%) !default;
-$light-border-subtle:     $gray-200 !default;
-$dark-border-subtle:      $gray-500 !default;
-// scss-docs-end theme-border-subtle-variables
+// // scss-docs-start theme-border-subtle-variables
+// $primary-border-subtle:   tint-color($primary, 60%) !default;
+// $secondary-border-subtle: tint-color($secondary, 60%) !default;
+// $success-border-subtle:   tint-color($success, 60%) !default;
+// $info-border-subtle:      tint-color($info, 60%) !default;
+// $warning-border-subtle:   tint-color($warning, 60%) !default;
+// $danger-border-subtle:    tint-color($danger, 60%) !default;
+// $light-border-subtle:     $gray-200 !default;
+// $dark-border-subtle:      $gray-500 !default;
+// // scss-docs-end theme-border-subtle-variables
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
@@ -363,33 +75,38 @@ $escaped-characters: (
   (")", "%29"),
 ) !default;
 
-// Options
-//
-// Quickly modify global styling by enabling or disabling optional features.
+// // Options
+// //
+// // Quickly modify global styling by enabling or disabling optional features.
 
-$enable-caret:                true !default;
-$enable-rounded:              true !default;
-$enable-shadows:              false !default;
-$enable-gradients:            false !default;
-$enable-transitions:          true !default;
-$enable-reduced-motion:       true !default;
-$enable-smooth-scroll:        true !default;
-$enable-grid-classes:         true !default;
-$enable-container-classes:    true !default;
-$enable-cssgrid:              false !default;
-$enable-button-pointers:      true !default;
-$enable-rfs:                  true !default;
-$enable-validation-icons:     true !default;
-$enable-negative-margins:     false !default;
-$enable-deprecation-messages: true !default;
-$enable-important-utilities:  true !default;
+// $enable-caret:                true !default;
+// $enable-rounded:              true !default;
+// $enable-shadows:              false !default;
+// $enable-gradients:            false !default;
+// $enable-transitions:          true !default;
+// $enable-reduced-motion:       true !default;
+// $enable-smooth-scroll:        true !default;
+// $enable-grid-classes:         true !default;
+// $enable-container-classes:    true !default;
+// $enable-cssgrid:              false !default;
+// $enable-button-pointers:      true !default;
+// $enable-rfs:                  true !default;
+// $enable-validation-icons:     true !default;
+// $enable-negative-margins:     false !default;
+// $enable-deprecation-messages: true !default;
+// $enable-important-utilities:  true !default;
 
-$enable-dark-mode:            true !default;
-$color-mode-type:             data !default; // `data` or `media-query`
+// $enable-dark-mode:            true !default;
+// $color-mode-type:             data !default; // `data` or `media-query`
 
-// Prefix for :root CSS variables
+// // Prefix for :root CSS variables
+// $prefix:                      bs- !default;
 
-$prefix:                      bs- !default;
+// $color-mode-type:          "media-query" !default;
+// $color-contrast-dark:      #000 !default;
+// $color-contrast-light:     #fff !default;
+// $min-contrast-ratio:         4.5 !default;
+
 
 // Gradient
 //
@@ -490,8 +207,8 @@ $grid-breakpoints: (
 ) !default;
 // scss-docs-end grid-breakpoints
 
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+// @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+// @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
 
 
 // Grid containers
@@ -508,7 +225,7 @@ $container-max-widths: (
 ) !default;
 // scss-docs-end container-max-widths
 
-@include _assert-ascending($container-max-widths, "$container-max-widths");
+// @include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
 // Grid columns
@@ -829,7 +546,8 @@ $btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125) !default;
 $btn-link-color:              var(--#{$prefix}link-color) !default;
 $btn-link-hover-color:        var(--#{$prefix}link-hover-color) !default;
 $btn-link-disabled-color:     $gray-600 !default;
-$btn-link-focus-shadow-rgb:   to-rgb(mix(color-contrast($link-color), $link-color, 15%)) !default;
+$btn-link-color-contrast:     color-contrast($link-color) !default;
+$btn-link-focus-shadow-rgb:   to-rgb(color.mix($btn-link-color-contrast, $link-color, 15%)) !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           var(--#{$prefix}border-radius) !default;
@@ -1192,10 +910,10 @@ $navbar-toggler-border-radius:      $btn-border-radius !default;
 $navbar-toggler-focus-width:        $btn-focus-width !default;
 $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
 
-$navbar-light-color:                rgba(var(--#{$prefix}emphasis-color-rgb), .65) !default;
-$navbar-light-hover-color:          rgba(var(--#{$prefix}emphasis-color-rgb), .8) !default;
-$navbar-light-active-color:         rgba(var(--#{$prefix}emphasis-color-rgb), 1) !default;
-$navbar-light-disabled-color:       rgba(var(--#{$prefix}emphasis-color-rgb), .3) !default;
+$navbar-light-color:                color-mix(in srgb, var(--#{$prefix}fg-black) 65%, transparent) !default;
+$navbar-light-hover-color:          color-mix(in srgb, var(--#{$prefix}fg-black) 80%, transparent) !default;
+$navbar-light-active-color:         color-mix(in srgb, var(--#{$prefix}fg-black) 100%, transparent) !default;
+$navbar-light-disabled-color:       color-mix(in srgb, var(--#{$prefix}fg-black) 30%, transparent) !default;
 $navbar-light-icon-color:           rgba($body-color, .75) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-light-toggler-border-color: rgba(var(--#{$prefix}emphasis-color-rgb), .15) !default;
@@ -1369,8 +1087,8 @@ $accordion-button-active-color:           var(--#{$prefix}primary-text-emphasis)
 $accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
 
 $accordion-icon-width:                    1.25rem !default;
-$accordion-icon-color:                    $body-color !default;
-$accordion-icon-active-color:             $primary-text-emphasis !default;
+$accordion-icon-color:                    var(--#{$prefix}body-color) !default;
+$accordion-icon-active-color:             var(--#{$prefix}primary-text-emphasis) !default;
 $accordion-icon-transition:               transform .2s ease-in-out !default;
 $accordion-icon-transform:                rotate(-180deg) !default;
 
@@ -1601,7 +1319,7 @@ $breadcrumb-margin-bottom:          1rem !default;
 $breadcrumb-bg:                     null !default;
 $breadcrumb-divider-color:          var(--#{$prefix}secondary-color) !default;
 $breadcrumb-active-color:           var(--#{$prefix}secondary-color) !default;
-$breadcrumb-divider:                quote("/") !default;
+$breadcrumb-divider:                string.quote("/") !default;
 $breadcrumb-divider-flipped:        $breadcrumb-divider !default;
 $breadcrumb-border-radius:          null !default;
 // scss-docs-end breadcrumb-variables
@@ -1638,21 +1356,6 @@ $carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://
 $carousel-transition-duration:       .6s !default;
 $carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
 // scss-docs-end carousel-variables
-
-
-// Spinners
-
-// scss-docs-start spinner-variables
-$spinner-width:           2rem !default;
-$spinner-height:          $spinner-width !default;
-$spinner-vertical-align:  -.125em !default;
-$spinner-border-width:    .25em !default;
-$spinner-animation-speed: .75s !default;
-
-$spinner-width-sm:        1rem !default;
-$spinner-height-sm:       $spinner-width-sm !default;
-$spinner-border-width-sm: .2em !default;
-// scss-docs-end spinner-variables
 
 
 // Close
@@ -1704,4 +1407,107 @@ $kbd-bg:                            var(--#{$prefix}body-color) !default;
 
 $pre-color:                         null !default;
 
-@import "variables-dark"; // TODO: can be removed safely in v6, only here to avoid breaking changes in v5.3
+// Dark color mode variables
+//
+// Custom variables for the `[data-bs-theme="dark"]` theme. Use this as a starting point for your own custom color modes by creating a new theme-specific file like `_variables-dark.scss` and adding the variables you need.
+
+//
+// Global colors
+//
+
+// scss-docs-start sass-dark-mode-vars
+// scss-docs-start theme-text-dark-variables
+$primary-text-emphasis-dark:        tint-color($primary, 40%) !default;
+$secondary-text-emphasis-dark:      tint-color($secondary, 40%) !default;
+$success-text-emphasis-dark:        tint-color($success, 40%) !default;
+$info-text-emphasis-dark:           tint-color($info, 40%) !default;
+$warning-text-emphasis-dark:        tint-color($warning, 40%) !default;
+$danger-text-emphasis-dark:         tint-color($danger, 40%) !default;
+$light-text-emphasis-dark:          $gray-100 !default;
+$dark-text-emphasis-dark:           $gray-300 !default;
+// scss-docs-end theme-text-dark-variables
+
+// scss-docs-start theme-bg-subtle-dark-variables
+$primary-bg-subtle-dark:            shade-color($primary, 80%) !default;
+$secondary-bg-subtle-dark:          shade-color($secondary, 80%) !default;
+$success-bg-subtle-dark:            shade-color($success, 80%) !default;
+$info-bg-subtle-dark:               shade-color($info, 80%) !default;
+$warning-bg-subtle-dark:            shade-color($warning, 80%) !default;
+$danger-bg-subtle-dark:             shade-color($danger, 80%) !default;
+$light-bg-subtle-dark:              $gray-800 !default;
+$dark-bg-subtle-dark:               color.mix($gray-800, $black) !default;
+// scss-docs-end theme-bg-subtle-dark-variables
+
+// scss-docs-start theme-border-subtle-dark-variables
+$primary-border-subtle-dark:        shade-color($primary, 40%) !default;
+$secondary-border-subtle-dark:      shade-color($secondary, 40%) !default;
+$success-border-subtle-dark:        shade-color($success, 40%) !default;
+$info-border-subtle-dark:           shade-color($info, 40%) !default;
+$warning-border-subtle-dark:        shade-color($warning, 40%) !default;
+$danger-border-subtle-dark:         shade-color($danger, 40%) !default;
+$light-border-subtle-dark:          $gray-700 !default;
+$dark-border-subtle-dark:           $gray-800 !default;
+// scss-docs-end theme-border-subtle-dark-variables
+
+$body-color-dark:                   $gray-300 !default;
+$body-bg-dark:                      $gray-900 !default;
+$body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
+$body-secondary-bg-dark:            $gray-800 !default;
+$body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
+$body-tertiary-bg-dark:             color.mix($gray-800, $gray-900, 50%) !default;
+$body-emphasis-color-dark:          $white !default;
+$border-color-dark:                 $gray-700 !default;
+$border-color-translucent-dark:     rgba($white, .15) !default;
+$headings-color-dark:               inherit !default;
+$link-color-dark:                   tint-color($primary, 40%) !default;
+$link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
+$code-color-dark:                   tint-color($code-color, 40%) !default;
+$mark-color-dark:                   $body-color-dark !default;
+$mark-bg-dark:                      $yellow-800 !default;
+
+
+//
+// Forms
+//
+
+$form-select-indicator-color-dark:  $body-color-dark !default;
+$form-select-indicator-dark:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color-dark}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
+
+$form-switch-color-dark:            rgba($white, .25) !default;
+$form-switch-bg-image-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-dark}'/></svg>") !default;
+
+// scss-docs-start form-validation-colors-dark
+$form-valid-color-dark:             $green-300 !default;
+$form-valid-border-color-dark:      $green-300 !default;
+$form-invalid-color-dark:           $red-300 !default;
+$form-invalid-border-color-dark:    $red-300 !default;
+// scss-docs-end form-validation-colors-dark
+
+
+//
+// Accordion
+//
+
+$accordion-icon-color-dark:         $primary-text-emphasis-dark !default;
+$accordion-icon-active-color-dark:  $primary-text-emphasis-dark !default;
+
+$accordion-button-icon-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-color-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/></svg>") !default;
+$accordion-button-active-icon-dark:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$accordion-icon-active-color-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/></svg>") !default;
+// scss-docs-end sass-dark-mode-vars
+
+
+//
+// Carousel
+//
+
+// scss-docs-start carousel-dark-variables
+$carousel-indicator-active-bg-dark:   $black !default;
+$carousel-caption-color-dark:         $black !default;
+$carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
+// scss-docs-end carousel-dark-variables
+
+//
+// Close button
+//
+
+$btn-close-filter-dark: invert(1) grayscale(100%) brightness(200%) !default;
