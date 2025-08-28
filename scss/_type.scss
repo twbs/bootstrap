@@ -1,30 +1,6 @@
 //
 // Headings
 //
-.h1 {
-  @extend h1;
-}
-
-.h2 {
-  @extend h2;
-}
-
-.h3 {
-  @extend h3;
-}
-
-.h4 {
-  @extend h4;
-}
-
-.h5 {
-  @extend h5;
-}
-
-.h6 {
-  @extend h6;
-}
-
 
 .lead {
   @include font-size($lead-font-size);
@@ -40,17 +16,6 @@
     line-height: $display-line-height;
     @include font-size($font-size);
   }
-}
-
-//
-// Emphasis
-//
-.small {
-  @extend small;
-}
-
-.mark {
-  @extend mark;
 }
 
 //
