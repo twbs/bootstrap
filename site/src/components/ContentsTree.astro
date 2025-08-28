@@ -1,0 +1,38 @@
+---
+// Dynamically render the list of pages in the "Getting started" section
+import { getData } from '@libs/data'
+import { getVersionedDocsPath } from '@libs/path'
+import { getSlug } from '@libs/utils'
+
+const sidebar = getData('sidebar')
+const gettingStarted = sidebar.find(group => group.title === 'Getting started')
+
+// Guard: if structure changes, fail fast in dev
+if (!gettingStarted || !gettingStarted.pages) {
+  throw new Error('ContentsTree: "Getting started" group with pages not found in sidebar.yml')
+}
+
+// Build list excluding the current Contents page itself
+const entries = gettingStarted.pages
+  .map(page => ({ title: page.title, slug: getSlug(page.title) }))
+  .filter(page => page.slug !== 'contents')
+---
+
+<nav aria-label="Section contents" class="mb-4">
+  <h2 class="h5 mb-2">Section overview</h2>
+  <ul class="list-unstyled mb-0 row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-2">
+    {entries.map(entry => (
+      <li>
+        <a
+          class="d-inline-flex w-100 align-items-center rounded small text-reset text-decoration-none py-1 px-2"
+          style="transition: background-color .15s ease-in-out;"
+          on:mouseover={(e) => (e.currentTarget.style.backgroundColor = 'var(--bs-tertiary-bg)')}
+          on:mouseout={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+          href={getVersionedDocsPath(`/getting-started/${entry.slug}/`)}
+        >
+          {entry.title}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
