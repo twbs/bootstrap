@@ -5,6 +5,20 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 
+// scss-docs-start thumbnail-variables
+$thumbnail-padding:                 .25rem !default;
+$thumbnail-bg:                      var(--#{$prefix}body-bg) !default;
+$thumbnail-border-width:            var(--#{$prefix}border-width) !default;
+$thumbnail-border-color:            var(--#{$prefix}border-color) !default;
+$thumbnail-border-radius:           var(--#{$prefix}border-radius) !default;
+$thumbnail-box-shadow:              var(--#{$prefix}box-shadow-sm) !default;
+// scss-docs-end thumbnail-variables
+
+// scss-docs-start figure-variables
+$figure-caption-font-size:          $small-font-size !default;
+$figure-caption-color:              var(--#{$prefix}secondary-color) !default;
+// scss-docs-end figure-variables
+
 @layer content {
   // Responsive images (ensure images don't scale beyond their parents)
   //

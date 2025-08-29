@@ -1,7 +1,24 @@
 @use "config" as *;
+@use "colors" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/color-mode" as *;
+
+// scss-docs-start close-variables
+$btn-close-width:            1em !default;
+$btn-close-height:           $btn-close-width !default;
+$btn-close-padding-x:        .25em !default;
+$btn-close-padding-y:        $btn-close-padding-x !default;
+$btn-close-color:            $black !default;
+$btn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/></svg>") !default;
+$btn-close-focus-shadow:     $focus-ring-box-shadow !default;
+$btn-close-opacity:          .5 !default;
+$btn-close-hover-opacity:    .75 !default;
+$btn-close-focus-opacity:    1 !default;
+$btn-close-disabled-opacity: .25 !default;
+$btn-close-filter:           null !default;
+$btn-close-filter-dark: invert(1) grayscale(100%) brightness(200%) !default;
+// scss-docs-end close-variables
 
 // Transparent background and border properties included for button version.
 // iOS requires the button element instead of an anchor tag.
