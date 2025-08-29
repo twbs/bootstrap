@@ -6,9 +6,30 @@
 @use "vendor/rfs" as *;
 @use "layout/breakpoints" as *;
 
-// Base class
-//
-// Easily usable on <ul>, <ol>, or <div>.
+// scss-docs-start list-group-variables
+$list-group-color:                  var(--#{$prefix}body-color) !default;
+$list-group-bg:                     var(--#{$prefix}body-bg) !default;
+$list-group-border-color:           var(--#{$prefix}border-color) !default;
+$list-group-border-width:           var(--#{$prefix}border-width) !default;
+$list-group-border-radius:          var(--#{$prefix}border-radius) !default;
+
+$list-group-item-padding-y:         $spacer * .5 !default;
+$list-group-item-padding-x:         $spacer !default;
+
+$list-group-hover-bg:               var(--#{$prefix}tertiary-bg) !default;
+$list-group-active-color:           $component-active-color !default;
+$list-group-active-bg:              $component-active-bg !default;
+$list-group-active-border-color:    $list-group-active-bg !default;
+
+$list-group-disabled-color:         var(--#{$prefix}secondary-color) !default;
+$list-group-disabled-bg:            $list-group-bg !default;
+
+$list-group-action-color:           var(--#{$prefix}secondary-color) !default;
+$list-group-action-hover-color:     var(--#{$prefix}emphasis-color) !default;
+
+$list-group-action-active-color:    var(--#{$prefix}body-color) !default;
+$list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
+// scss-docs-end list-group-variables
 
 @layer components {
   .list-group {

@@ -1,6 +1,12 @@
 @use "../config" as *;
 @use "../variables" as *;
 
+// scss-docs-start caret-variables
+$caret-width:                 .3em !default;
+$caret-vertical-align:        $caret-width * .85 !default;
+$caret-spacing:               $caret-width * .85 !default;
+// scss-docs-end caret-variables
+
 // scss-docs-start caret-mixins
 @mixin caret-down($width: $caret-width) {
   border-top: $width solid;
