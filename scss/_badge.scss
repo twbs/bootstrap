@@ -1,13 +1,18 @@
 @use "config" as *;
+@use "colors" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/gradients" as *;
 @use "vendor/rfs" as *;
 
-// Base class
-//
-// Requires one of the contextual, color modifier classes for `color` and
-// `background-color`.
+// scss-docs-start badge-variables
+$badge-font-size:                   .75em !default;
+$badge-font-weight:                 $font-weight-bold !default;
+$badge-color:                       $white !default;
+$badge-padding-y:                   .35em !default;
+$badge-padding-x:                   .65em !default;
+$badge-border-radius:               var(--#{$prefix}border-radius) !default;
+// scss-docs-end badge-variables
 
 @layer components {
   .badge {

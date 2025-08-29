@@ -5,6 +5,30 @@
 @use "vendor/rfs" as *;
 @use "mixins/reset-text" as *;
 
+// scss-docs-start popover-variables
+$popover-font-size:                 $font-size-sm !default;
+$popover-bg:                        var(--#{$prefix}body-bg) !default;
+$popover-max-width:                 276px !default;
+$popover-border-width:              var(--#{$prefix}border-width) !default;
+$popover-border-color:              var(--#{$prefix}border-color-translucent) !default;
+$popover-border-radius:             var(--#{$prefix}border-radius-lg) !default;
+$popover-inner-border-radius:       calc(#{$popover-border-radius} - #{$popover-border-width}) !default;
+$popover-box-shadow:                var(--#{$prefix}box-shadow) !default;
+
+$popover-header-font-size:          $font-size-base !default;
+$popover-header-bg:                 var(--#{$prefix}secondary-bg) !default;
+$popover-header-color:              $headings-color !default;
+$popover-header-padding-y:          .5rem !default;
+$popover-header-padding-x:          $spacer !default;
+
+$popover-body-color:                var(--#{$prefix}body-color) !default;
+$popover-body-padding-y:            $spacer !default;
+$popover-body-padding-x:            $spacer !default;
+
+$popover-arrow-width:               1rem !default;
+$popover-arrow-height:              .5rem !default;
+// scss-docs-end popover-variables
+
 @layer components {
   .popover {
     // scss-docs-start popover-css-vars

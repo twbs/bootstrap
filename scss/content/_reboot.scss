@@ -3,6 +3,7 @@
 @use "../variables" as *;
 @use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
+@use "../content/tables" as *; // for table variables
 
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
