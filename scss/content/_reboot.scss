@@ -362,9 +362,11 @@
   }
 
   caption {
-    padding-top: $table-cell-padding-y;
-    padding-bottom: $table-cell-padding-y;
-    color: $table-caption-color;
+    // padding-top: $table-cell-padding-y;
+    // padding-bottom: $table-cell-padding-y;
+    // color: $table-caption-color;
+    padding-block: .5rem;
+    color: var(--#{$prefix}secondary-color);
     text-align: left;
   }
 
@@ -373,7 +375,7 @@
   // 3. Fix alignment for Safari
 
   th {
-    font-weight: $table-th-font-weight; // 1
+    // font-weight: $table-th-font-weight; // 1 // mdo-do: it's null by default. maybe we remove?
     text-align: inherit; // 2
     text-align: -webkit-match-parent; // 3
   }

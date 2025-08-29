@@ -1,10 +1,24 @@
 @use "config" as *;
+@use "colors" as *;
 @use "variables" as *;
 @use "mixins/transition" as *;
 @use "mixins/gradients" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "vendor/rfs" as *;
+
+// scss-docs-start progress-variables
+$progress-height:                   1rem !default;
+$progress-font-size:                $font-size-base * .75 !default;
+$progress-bg:                       var(--#{$prefix}secondary-bg) !default;
+$progress-border-radius:            var(--#{$prefix}border-radius) !default;
+$progress-box-shadow:               var(--#{$prefix}box-shadow-inset) !default;
+$progress-bar-color:                $white !default;
+$progress-bar-bg:                   $primary !default;
+$progress-bar-animation-timing:     1s linear infinite !default;
+$progress-bar-transition:           width .6s ease !default;
+// scss-docs-end progress-variables
+
 
 // Disable animation if transitions are disabled
 

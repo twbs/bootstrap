@@ -3,6 +3,7 @@
 @use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
+@use "../tooltip" as *; // bring in tooltip variables
 
 // Form validation
 //
