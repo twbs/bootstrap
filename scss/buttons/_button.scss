@@ -1,13 +1,15 @@
 @use "sass:color";
-@use "colors" as *;
-@use "config" as *;
-@use "variables" as *;
-@use "functions" as *;
-@use "vendor/rfs" as *;
-@use "mixins/border-radius" as *;
-@use "mixins/box-shadow" as *;
-@use "mixins/transition" as *;
-@use "mixins/gradients" as *;
+@use "../colors" as *;
+@use "../config" as *;
+@use "../variables" as *;
+@use "../functions" as *;
+@use "../vendor/rfs" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/gradients" as *;
+@use "../mixins/transition" as *;
+@use "button-variables" as *;
 
 // Button variants
 //
@@ -35,7 +37,7 @@
   --#{$prefix}btn-hover-color: #{$hover-color};
   --#{$prefix}btn-hover-bg: #{$hover-background};
   --#{$prefix}btn-hover-border-color: #{$hover-border};
-  --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(color.mix($color, $border, 15%))};
+  // --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(color.mix($color, $border, 15%))};
   --#{$prefix}btn-active-color: #{$active-color};
   --#{$prefix}btn-active-bg: #{$active-background};
   --#{$prefix}btn-active-border-color: #{$active-border};
@@ -102,7 +104,7 @@
     --#{$prefix}btn-hover-border-color: transparent;
     --#{$prefix}btn-box-shadow: #{$btn-box-shadow};
     --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
-    --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
+    // --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
     // scss-docs-end btn-css-vars
 
     display: inline-block;
@@ -142,24 +144,13 @@
       color: var(--#{$prefix}btn-hover-color);
       @include gradient-bg(var(--#{$prefix}btn-hover-bg));
       border-color: var(--#{$prefix}btn-hover-border-color);
-      outline: 0;
-      // Avoid using mixin so we can pass custom focus shadow properly
-      @if $enable-shadows {
-        box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
-      } @else {
-        box-shadow: var(--#{$prefix}btn-focus-box-shadow);
-      }
+      @include focus-ring(true);
+      --#{$prefix}focus-ring-offset: 1px;
     }
 
     .btn-check:focus-visible + & {
       border-color: var(--#{$prefix}btn-hover-border-color);
-      outline: 0;
-      // Avoid using mixin so we can pass custom focus shadow properly
-      @if $enable-shadows {
-        box-shadow: var(--#{$prefix}btn-box-shadow), var(--#{$prefix}btn-focus-box-shadow);
-      } @else {
-        box-shadow: var(--#{$prefix}btn-focus-box-shadow);
-      }
+      @include focus-ring(true);
     }
 
     .btn-check:checked + &,
@@ -175,22 +166,12 @@
       @include box-shadow(var(--#{$prefix}btn-active-shadow));
 
       &:focus-visible {
-        // Avoid using mixin so we can pass custom focus shadow properly
-        @if $enable-shadows {
-          box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
-        } @else {
-          box-shadow: var(--#{$prefix}btn-focus-box-shadow);
-        }
+        @include focus-ring(true);
       }
     }
 
     .btn-check:checked:focus-visible + & {
-      // Avoid using mixin so we can pass custom focus shadow properly
-      @if $enable-shadows {
-        box-shadow: var(--#{$prefix}btn-active-shadow), var(--#{$prefix}btn-focus-box-shadow);
-      } @else {
-        box-shadow: var(--#{$prefix}btn-focus-box-shadow);
-      }
+      @include focus-ring(true);
     }
 
     &:disabled,
@@ -263,7 +244,7 @@
     --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
     --#{$prefix}btn-disabled-border-color: transparent;
     --#{$prefix}btn-box-shadow: 0 0 0 #000; // Can't use `none` as keyword negates all values when used with multiple shadows
-    --#{$prefix}btn-focus-shadow-rgb: #{$btn-link-focus-shadow-rgb};
+    // --#{$prefix}btn-focus-shadow-rgb: #{$btn-link-focus-shadow-rgb};
 
     text-decoration: $link-decoration;
     @if $enable-gradients {

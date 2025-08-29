@@ -1,7 +1,8 @@
-@use "config" as *;
-@use "variables" as *;
-@use "mixins/border-radius" as *;
-@use "mixins/box-shadow" as *;
+@use "../config" as *;
+@use "../variables" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "button-variables" as *;
 
 @layer components {
   // Make the div behave like a button
