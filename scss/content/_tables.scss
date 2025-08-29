@@ -19,7 +19,7 @@ $table-color:                 var(--#{$prefix}emphasis-color) !default;
 $table-bg:                    var(--#{$prefix}body-bg) !default;
 $table-accent-bg:             transparent !default;
 
-$table-th-font-weight:        null !default;
+// $table-th-font-weight:        null !default;
 
 $table-striped-color:         $table-color !default;
 $table-striped-bg-factor:     .05 !default;
@@ -42,7 +42,7 @@ $table-striped-columns-order: even !default;
 
 $table-group-separator-color: currentcolor !default;
 
-$table-caption-color:         var(--#{$prefix}secondary-color) !default;
+// $table-caption-color:         var(--#{$prefix}secondary-color) !default;
 
 $table-bg-scale:              -80% !default;
 // scss-docs-end table-variables
