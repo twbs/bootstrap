@@ -3,9 +3,15 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 
-//
-// Base styles
-//
+// scss-docs-start alert-variables
+$alert-padding-y:               $spacer !default;
+$alert-padding-x:               $spacer !default;
+$alert-margin-bottom:           1rem !default;
+$alert-border-radius:           var(--#{$prefix}border-radius) !default;
+$alert-link-font-weight:        $font-weight-bold !default;
+$alert-border-width:            var(--#{$prefix}border-width) !default;
+$alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
+// scss-docs-end alert-variables
 
 @layer components {
   .alert {

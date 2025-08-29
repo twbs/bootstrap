@@ -3,6 +3,24 @@
 @use "mixins/border-radius" as *;
 @use "vendor/rfs" as *;
 
+// scss-docs-start toast-variables
+$toast-max-width:                   350px !default;
+$toast-padding-x:                   .75rem !default;
+$toast-padding-y:                   .5rem !default;
+$toast-font-size:                   .875rem !default;
+$toast-color:                       null !default;
+$toast-background-color:            rgba(var(--#{$prefix}body-bg-rgb), .85) !default;
+$toast-border-width:                var(--#{$prefix}border-width) !default;
+$toast-border-color:                var(--#{$prefix}border-color-translucent) !default;
+$toast-border-radius:               var(--#{$prefix}border-radius) !default;
+$toast-box-shadow:                  var(--#{$prefix}box-shadow) !default;
+$toast-spacing:                     $container-padding-x !default;
+
+$toast-header-color:                var(--#{$prefix}secondary-color) !default;
+$toast-header-background-color:     rgba(var(--#{$prefix}body-bg-rgb), .85) !default;
+$toast-header-border-color:         $toast-border-color !default;
+// scss-docs-end toast-variables
+
 @layer components {
   .toast {
     // scss-docs-start toast-css-vars

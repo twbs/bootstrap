@@ -4,9 +4,27 @@
 @use "mixins/box-shadow" as *;
 @use "layout/breakpoints" as *;
 
-//
-// Base styles
-//
+// scss-docs-start card-variables
+$card-spacer-y:                     $spacer !default;
+$card-spacer-x:                     $spacer !default;
+$card-title-spacer-y:               $spacer * .5 !default;
+$card-title-color:                  null !default;
+$card-subtitle-color:               null !default;
+$card-border-width:                 var(--#{$prefix}border-width) !default;
+$card-border-color:                 var(--#{$prefix}border-color-translucent) !default;
+$card-border-radius:                var(--#{$prefix}border-radius) !default;
+$card-box-shadow:                   null !default;
+$card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-cap-padding-y:                $card-spacer-y * .5 !default;
+$card-cap-padding-x:                $card-spacer-x !default;
+$card-cap-bg:                       rgba(var(--#{$prefix}body-color-rgb), .03) !default;
+$card-cap-color:                    null !default;
+$card-height:                       null !default;
+$card-color:                        null !default;
+$card-bg:                           var(--#{$prefix}body-bg) !default;
+$card-img-overlay-padding:          $spacer !default;
+$card-group-margin:                 $grid-gutter-width * .5 !default;
+// scss-docs-end card-variables
 
 @layer components {
   .card {
