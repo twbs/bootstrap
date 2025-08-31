@@ -202,6 +202,10 @@ class Dropdown extends BaseComponent {
       this._popper.destroy()
     }
 
+    if (this._menu.contains(document.activeElement)) {
+      this._element.focus()
+    }
+
     this._menu.classList.remove(CLASS_NAME_SHOW)
     this._element.classList.remove(CLASS_NAME_SHOW)
     this._element.setAttribute('aria-expanded', 'false')
