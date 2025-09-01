@@ -16,8 +16,6 @@
   ·
   <a href="https://github.com/twbs/bootstrap/issues/new?assignees=&labels=feature&template=feature_request.yml">Request feature</a>
   ·
-  <a href="https://themes.getbootstrap.com/">Themes</a>
-  ·
   <a href="https://blog.getbootstrap.com/">Blog</a>
 </p>
 
@@ -46,12 +44,12 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.3.7.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.3.8.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.7`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.7`
-- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.7`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.7`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.8`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.8`
+- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.8`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.8`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
