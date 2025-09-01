@@ -208,8 +208,8 @@ class Dropdown extends BaseComponent {
     Manipulator.removeDataAttribute(this._menu, 'popper')
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
 
-    if (this._menu?.contains(document.activeElement)) {
-      this._element?.focus()
+    if (this._menu && this._menu.contains(document.activeElement)) {
+      this._element.focus()
     }
   }
 
