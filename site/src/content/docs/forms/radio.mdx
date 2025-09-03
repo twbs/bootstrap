@@ -1,0 +1,44 @@
+---
+title: Radio
+description: Highly customizable, native radio `<input>` elements for choosing one option from many.
+toc: true
+---
+
+## Basic radio
+
+Similar to checkboxes, radios are styled with the `.radio` class. However, there's no custom SVG as we use a Unicode character for the checked state.
+
+<Example code={`<input type="radio" id="radio" class="radio" />`} />
+
+## Label
+
+Wrap the `.radio` in a `<b-radiogroup>` layout component and add your label. We use a custom element for layout here that sets some basic flexbox styling.
+
+<Example code={`<b-radiogroup>
+    <input type="radio" id="radioLabel" class="radio" />
+    <label for="radioLabel">Example new radio</label>
+  </b-radiogroup>
+  `} />
+
+## Description
+
+With this layout approach, you can easily add a description or other content after the label. Here we use another custom element, `<b-vstack>`, to stack the label and description.
+
+<Example code={`<b-radiogroup>
+    <input type="radio" id="radioLabelDescription" class="radio" />
+    <b-vstack>
+      <label for="radioLabelDescription">Example new radio</label>
+      <small class="description">Supporting description for the above label.</small>
+    </b-vstack>
+  </b-radiogroup>
+  `} />
+
+## Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
+
+<Example code={`<b-radiogroup>
+    <input type="radio" id="radioDisabled" class="radio" disabled />
+    <label for="radioDisabled">Example new radio</label>
+  </b-radiogroup>
+  `} />

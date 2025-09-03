@@ -60,8 +60,10 @@
   pages:
     - title: Overview
     - title: Form control
-    - title: Select
     - title: Checks & radios
+    - title: Checkbox
+    - title: Radio
+    - title: Switch
     - title: Range
     - title: Input group
     - title: Floating labels

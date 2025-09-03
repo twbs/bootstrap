@@ -1,0 +1,62 @@
+---
+title: Switch
+description: Custom toggle component built on top of native `<input>` checkbox elements.
+toc: true
+---
+
+## Basic switch
+
+Switches are built with checkboxes under the hood, so their HTML closely mirrors that of checkboxes, including optional layout components.
+
+Switches work by layering an invisible checkbox over the custom switch indicator. This preserves interactivity while giving you a completely customizable layer underneath.
+
+Switches also include the `switch` attribute for browsers that support it. This provides haptic feedback when toggling the switch.
+
+<Example code={`<div class="switch">
+    <input type="checkbox" value="" id="switch" switch>
+  </div>`} />
+
+## Label
+
+Wrap the `.switch` in a `<b-checkgroup>` layout component and add your label. We use a custom element for layout here that sets some basic flexbox styling. Switches are checkboxes under the hood, so we reused the same custom element here.
+
+Consider margin utilities for additional spacing, and flex utilities for alignment, especially when using small or large switches.
+
+<Example class="d-flex flex-column gap-3" code={`<b-checkgroup>
+    <div class="switch switch-sm mt-1">
+      <input type="checkbox" value="" id="switchSmLabel" switch>
+    </div>
+    <label for="switchSmLabel">Small switch</label>
+  </b-checkgroup>
+
+  <b-checkgroup>
+    <div class="switch">
+      <input type="checkbox" value="" id="switchMdLabel" switch>
+    </div>
+    <label for="switchMdLabel">Default switch</label>
+  </b-checkgroup>`} />
+
+## Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
+
+<Example class="d-flex flex-column gap-3" code={`<b-checkgroup>
+    <div class="switch">
+      <input type="checkbox" value="" id="switchDisabledLabel" switch disabled>
+    </div>
+    <label for="switchDisabledLabel">Disabled switch</label>
+  </b-checkgroup>`} />
+
+## Sizes
+
+Add a size modifier class to make your switch appear smaller or larger.
+
+<Example class="d-flex flex-column gap-3" code={`<div class="switch switch-sm">
+    <input type="checkbox" value="" id="switchSizeSm" switch>
+  </div>
+  <div class="switch">
+    <input type="checkbox" value="" id="switchSizeMd" switch>
+  </div>
+  <div class="switch switch-lg">
+    <input type="checkbox" value="" id="switchSizeLg" switch>
+  </div>`} />

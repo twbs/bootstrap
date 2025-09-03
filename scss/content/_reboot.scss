@@ -33,7 +33,8 @@
 
   :root {
     @if $font-size-root != null {
-      @include font-size(var(--#{$prefix}root-font-size));
+      font-size: var(--#{$prefix}root-font-size);
+      // @include font-size(var(--#{$prefix}root-font-size));
     }
 
     @if $enable-smooth-scroll {
@@ -256,12 +257,13 @@
   // Links
 
   a {
-    color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
-    text-decoration: $link-decoration;
+    color: var(--#{$prefix}link-color);
+    text-decoration: var(--#{$prefix}link-decoration);
+    text-underline-offset: $link-underline-offset;
 
     &:hover {
-      --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
-      text-decoration: $link-hover-decoration;
+      color: var(--#{$prefix}link-hover-color);
+      text-decoration: var(--#{$prefix}link-hover-decoration);
     }
   }
 

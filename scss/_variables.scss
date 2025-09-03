@@ -10,7 +10,7 @@
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
 // scss-docs-start theme-color-variables
-$primary:       $purple-500 !default;
+$primary:       $blue-500 !default;
 $secondary:     $gray-600 !default;
 $success:       $green-500 !default;
 $info:          $cyan-500 !default;
@@ -167,6 +167,7 @@ $body-emphasis-color:       $black !default;
 
 $link-color:                              $primary !default;
 $link-decoration:                         underline !default;
+$link-underline-offset:                   .2em !default;
 $link-shade-percentage:                   20% !default;
 $link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
 $link-hover-decoration:                   null !default;
@@ -204,7 +205,7 @@ $border-widths: (
   5: 5px
 ) !default;
 $border-style:                solid !default;
-$border-color:                $gray-300 !default;
+$border-color:                color.mix($gray-300, $gray-400) !default;
 $border-color-translucent:    rgba($black, .175) !default;
 // scss-docs-end border-variables
 
@@ -266,8 +267,8 @@ $font-family-code:            var(--#{$prefix}font-monospace) !default;
 
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
 // $font-size-base affects the font size of the body text
-$font-size-root:              null !default;
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-root:              16px !default;
+$font-size-base:              14px !default; // Assumes the browser default, typically `16px`
 $font-size-sm:                $font-size-base * .875 !default;
 $font-size-lg:                $font-size-base * 1.25 !default;
 
@@ -546,8 +547,8 @@ $offcanvas-backdrop-opacity:        $modal-backdrop-opacity !default;
 
 // Code
 
-$code-font-size:                    $small-font-size !default;
-$code-color:                        $pink !default;
+$code-font-size:                    95% !default;
+$code-color:                        var(--#{$prefix}secondary-text) !default;
 
 $kbd-padding-y:                     .1875rem !default;
 $kbd-padding-x:                     .375rem !default;
@@ -578,7 +579,7 @@ $border-color-translucent-dark:     rgba($white, .15) !default;
 $headings-color-dark:               inherit !default;
 $link-color-dark:                   tint-color($primary, 40%) !default;
 $link-hover-color-dark:             shift-color($link-color-dark, -$link-shade-percentage) !default;
-$code-color-dark:                   tint-color($code-color, 40%) !default;
+// $code-color-dark:                   tint-color($code-color, 40%) !default;
 $mark-color-dark:                   $body-color-dark !default;
 $mark-bg-dark:                      $yellow-800 !default;
 
@@ -587,8 +588,8 @@ $mark-bg-dark:                      $yellow-800 !default;
 // Forms
 //
 
-$form-select-indicator-color-dark:  $body-color-dark !default;
-$form-select-indicator-dark:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color-dark}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
+// $form-select-indicator-color-dark:  $body-color-dark !default;
+// $form-select-indicator-dark:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color-dark}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
 
 $form-switch-color-dark:            rgba($white, .25) !default;
 $form-switch-bg-image-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-dark}'/></svg>") !default;
