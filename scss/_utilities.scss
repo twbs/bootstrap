@@ -69,7 +69,7 @@ $utilities: map-merge(
       print: true,
       property: display,
       class: d,
-      values: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex none
+      values: inline inline-block block grid inline-grid table table-row table-caption table-cell table-column table-column-group table-footer-group table-header-group table-row-group flex inline-flex none
     ),
     // scss-docs-end utils-display
     // scss-docs-start utils-shadow
