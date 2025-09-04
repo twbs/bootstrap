@@ -557,19 +557,21 @@ $utilities: map-merge(
       class: text,
       values: lowercase uppercase capitalize
     ),
-    "white-space": (
-      property: white-space,
-      class: text,
-      values: (
-        wrap: normal,
-        nowrap: nowrap,
-      )
-    ),
     "word-wrap": (
       property: word-wrap word-break,
       class: text,
       values: (break: break-word),
       rtl: false
+    ),
+    "text-wrap": (
+      property: text-wrap,
+      class: text,
+      values: (
+        balance: balance,
+        nowrap: nowrap,
+        pretty: pretty,
+        wrap: wrap,
+      )
     ),
     // scss-docs-end utils-text
     // scss-docs-start utils-color
