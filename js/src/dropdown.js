@@ -95,7 +95,8 @@ class Dropdown extends BaseComponent {
     super(element, config)
 
     this._popper = null
-    this._parent = this._element.parentNode // dropdown wrapper
+    const wrapperSelector = `:has(${SELECTOR_MENU})`
+    this._parent = SelectorEngine.closest(element, wrapperSelector) // dropdown wrapper
     // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
