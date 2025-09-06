@@ -7,6 +7,10 @@ updates:
       day: tuesday
       time: "12:00"
       timezone: Europe/Athens
+    groups:
+      github-actions:
+        patterns:
+          - "*"
   - package-ecosystem: npm
     directory: "/"
     labels:
