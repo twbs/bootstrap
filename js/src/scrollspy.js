@@ -214,6 +214,7 @@ class ScrollSpy extends BaseComponent {
       const withEscape = parseSelector(withDecodeUri)
       const observableSection = SelectorEngine.findOne(withEscape, this._element)
 
+      // ensure that the observableSection exists & is visible
       if (isVisible(observableSection)) {
         this._targetLinks.set(withDecodeUri, anchor)
         this._observableSections.set(anchor.hash, observableSection)
