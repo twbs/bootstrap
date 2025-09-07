@@ -143,6 +143,7 @@
     "github-slugger": "^2.0.0",
     "globby": "^14.1.0",
     "hammer-simulator": "0.0.1",
+    "hast-util-select": "^6.0.4",
     "htmlparser2": "^10.0.0",
     "image-size": "^2.0.2",
     "ip": "^2.0.1",

@@ -5,6 +5,8 @@ toc: true
 thumbnail: guides/bootstrap-webpack@2x.png
 ---
 
+import FileTree from '../../../components/FileTree.astro';
+
 <img class="d-block mx-auto mb-4 img-fluid rounded-3" srcset="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-webpack.png, /docs/[[config:docs_version]]/assets/img/guides/bootstrap-webpack@2x.png 2x" src="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-webpack.png" width="800" height="400" alt=""/>
 
 <Callout>
@@ -57,18 +59,20 @@ touch src/index.html src/js/main.js src/scss/styles.scss webpack.config.js
 
 When you’re done, your complete project should look like this:
 
-```text
-my-project/
-├── src/
-│   ├── js/
-│   │   └── main.js
-│   ├── scss/
-│   │   └── styles.scss
-│   └── index.html
-├── package-lock.json
-├── package.json
-└── webpack.config.js
-```
+<FileTree>
+
+- my-project/
+  - src/
+    - js/
+      - main.js
+    - scss/
+      - styles.scss
+    - index.html
+  - package-lock.json
+  - package.json
+  - webpack.config.js
+
+</FileTree>
 
 At this point, everything is in the right place, but Webpack won’t work because we haven’t filled in our `webpack.config.js` yet.
 
