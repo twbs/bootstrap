@@ -194,7 +194,7 @@ describe('ScrollSpy', () => {
       expect(scrollSpy._targetLinks.size).toBe(1)
     })
 
-    it('should take count to escaped IDs', () => {
+    it('should take account of escaped IDs', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
         '  <ul class="navbar-nav">',
