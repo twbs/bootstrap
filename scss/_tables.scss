@@ -22,7 +22,9 @@
 
   width: 100%;
   margin-bottom: $spacer;
+  color: var(--#{$prefix}table-color);
   vertical-align: $table-cell-vertical-align;
+  background-color: var(--#{$prefix}table-bg);
   border-color: var(--#{$prefix}table-border-color);
 
   // Target th & td
@@ -33,8 +35,8 @@
   > :not(caption) > * > * {
     padding: $table-cell-padding-y $table-cell-padding-x;
     // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
-    color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
-    background-color: var(--#{$prefix}table-bg);
+    color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, inherit));
+    background-color: inherit;
     border-bottom-width: $table-border-width;
     box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}table-accent-bg)));
   }
