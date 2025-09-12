@@ -16,15 +16,26 @@ Change the alignment of an individual grid item with the [`justify-self`](https:
 
 Use `justify-self` utilities on grid items to individually align them along the inline (horizontal) axis. Choose from the same alignment values as `justify-content`: `start`, `end`, `center`, `stretch`, and more.
 
-<Example class="bd-example-grid" code={`<div class="d-grid gap-2" style="grid-template-columns: 1fr 1fr 1fr;">
-  <div class="p-2 bg-light border justify-self-start">justify-self-start</div>
-  <div class="p-2 bg-light border justify-self-center">justify-self-center</div>
-  <div class="p-2 bg-light border justify-self-end">justify-self-end</div>
-</div>`} />
+<Example class="bd-example-grid" code={`<div class="row row-cols-3">
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-start">justify-self-start</div>
+    </div>
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-center">justify-self-center</div>
+    </div>
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-end">justify-self-end</div>
+    </div>
+</div>`
+} />
 
-<Example class="bd-example-grid" code={`<div class="d-grid gap-2" style="grid-template-columns: 1fr 1fr;">
-  <div class="p-2 bg-light border justify-self-stretch">justify-self-stretch</div>
-  <div class="p-2 bg-light border justify-self-auto">justify-self-auto</div>
+<Example class="bd-example-grid" code={`<div class="row row-cols-2">
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-stretch">justify-self-stretch</div>
+    </div>
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-auto">justify-self-auto</div>
+    </div>
 </div>`} />
 
 ## Responsive
@@ -59,13 +70,37 @@ For `sm`, `md`, `lg`, `xl`, and `xxl`, the responsive classes follow the same pa
 
 Here's a more complex example showing different `justify-self` values in a grid layout:
 
-<Example class="bd-example-grid" code={`<div class="d-grid gap-3" style="grid-template-columns: repeat(3, 1fr);">
-  <div class="p-3 bg-primary text-white justify-self-start">Item 1<br>justify-self-start</div>
-  <div class="p-3 bg-secondary text-white justify-self-center">Item 2<br>justify-self-center</div>
-  <div class="p-3 bg-success text-white justify-self-end">Item 3<br>justify-self-end</div>
-  <div class="p-3 bg-warning text-dark justify-self-stretch">Item 4<br>justify-self-stretch</div>
-  <div class="p-3 bg-info text-white justify-self-auto">Item 5<br>justify-self-auto</div>
-  <div class="p-3 bg-dark text-white justify-self-center">Item 6<br>justify-self-center</div>
+<Example class="bd-example-grid" code={`<div class="row row-cols-3">
+    <div class="col p-0 border">
+      <div class="p-3 bg-primary text-white justify-self-start">
+        justify-self-start
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-secondary text-white justify-self-center">
+        justify-self-center
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-success text-white justify-self-end">
+        justify-self-end
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-warning text-dark justify-self-stretch">
+        justify-self-stretch
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-info text-white justify-self-end">
+        justify-self-end
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-dark text-white justify-self-center">
+        justify-self-center
+      </div>
+    </div>
 </div>`} />
 
 ## CSS
