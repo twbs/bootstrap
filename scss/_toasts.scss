@@ -23,6 +23,7 @@
   color: var(--#{$prefix}toast-color);
   pointer-events: auto;
   background-color: var(--#{$prefix}toast-bg);
+  --#{$prefix}current-plane-bg: var(--#{$prefix}toast-bg);
   background-clip: padding-box;
   border: var(--#{$prefix}toast-border-width) solid var(--#{$prefix}toast-border-color);
   box-shadow: var(--#{$prefix}toast-box-shadow);
@@ -57,6 +58,7 @@
   padding: var(--#{$prefix}toast-padding-y) var(--#{$prefix}toast-padding-x);
   color: var(--#{$prefix}toast-header-color);
   background-color: var(--#{$prefix}toast-header-bg);
+  --#{$prefix}current-plane-bg: var(--#{$prefix}toast-header-bg);
   background-clip: padding-box;
   border-bottom: var(--#{$prefix}toast-border-width) solid var(--#{$prefix}toast-header-border-color);
   @include border-top-radius(calc(var(--#{$prefix}toast-border-radius) - var(--#{$prefix}toast-border-width)));
