@@ -297,6 +297,21 @@ $utilities: map-merge(
         evenly: space-evenly,
       )
     ),
+    "justify-self": (
+      property: justify-self,
+      responsive: true,
+      values: (
+        auto: auto,
+        stretch: stretch,
+        center: center,
+        start: start,
+        end: end,
+        flex-start: flex-start,
+        flex-end: flex-end,
+        self-start: self-start,
+        self-end: self-end,
+      )
+    )
     "align-items": (
       responsive: true,
       property: align-items,
