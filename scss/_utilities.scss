@@ -297,6 +297,7 @@ $utilities: map-merge(
         evenly: space-evenly,
       )
     ),
+    // scss-docs-start utils-justify-self
     "justify-self": (
       property: justify-self,
       responsive: true,
@@ -311,7 +312,8 @@ $utilities: map-merge(
         self-start: self-start,
         self-end: self-end,
       )
-    )
+    ),
+    // scss-docs-end utils-justify-self
     "align-items": (
       responsive: true,
       property: align-items,

@@ -1,0 +1,77 @@
+---
+title: Justify self
+description: Use the justify-self utilities to control how an individual grid item is aligned along its inline (row) axis.
+toc: true
+added:
+  version: "5.4"
+---
+
+Change the alignment of an individual grid item with the [`justify-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self) utilities. These utilities have no effect on flex items.
+
+<Callout>
+**Note:** The `justify-self` property is primarily used with CSS Grid layout and has no effect on flexbox items. For flexbox alignment, use the [flex utilities]([[docsref:/utilities/flex]]) instead.
+</Callout>
+
+## Classes
+
+Use `justify-self` utilities on grid items to individually align them along the inline (horizontal) axis. Choose from the same alignment values as `justify-content`: `start`, `end`, `center`, `stretch`, and more.
+
+<Example class="bd-example-grid" code={`<div class="d-grid gap-2" style="grid-template-columns: 1fr 1fr 1fr;">
+  <div class="p-2 bg-light border justify-self-start">justify-self-start</div>
+  <div class="p-2 bg-light border justify-self-center">justify-self-center</div>
+  <div class="p-2 bg-light border justify-self-end">justify-self-end</div>
+</div>`} />
+
+<Example class="bd-example-grid" code={`<div class="d-grid gap-2" style="grid-template-columns: 1fr 1fr;">
+  <div class="p-2 bg-light border justify-self-stretch">justify-self-stretch</div>
+  <div class="p-2 bg-light border justify-self-auto">justify-self-auto</div>
+</div>`} />
+
+## Responsive
+
+All `justify-self` utilities that apply to all breakpoints, from `xs` to `xxl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format `justify-self-{value}` for `xs` and `justify-self-{breakpoint}-{value}` for `sm`, `md`, `lg`, `xl`, and `xxl`.
+
+<ul>
+  <li><code>.justify-self-auto</code></li>
+  <li><code>.justify-self-start</code></li>
+  <li><code>.justify-self-end</code></li>
+  <li><code>.justify-self-center</code></li>
+  <li><code>.justify-self-stretch</code></li>
+  <li><code>.justify-self-flex-start</code></li>
+  <li><code>.justify-self-flex-end</code></li>
+  <li><code>.justify-self-self-start</code></li>
+  <li><code>.justify-self-self-end</code></li>
+</ul>
+
+For `sm`, `md`, `lg`, `xl`, and `xxl`, the responsive classes follow the same pattern:
+
+<ul>
+  <li><code>.justify-self-sm-auto</code></li>
+  <li><code>.justify-self-md-start</code></li>
+  <li><code>.justify-self-lg-center</code></li>
+  <li><code>.justify-self-xl-end</code></li>
+  <li><code>.justify-self-xxl-stretch</code></li>
+</ul>
+
+## Advanced example
+
+Here's a more complex example showing different `justify-self` values in a grid layout:
+
+<Example class="bd-example-grid" code={`<div class="d-grid gap-3" style="grid-template-columns: repeat(3, 1fr);">
+  <div class="p-3 bg-primary text-white justify-self-start">Item 1<br>justify-self-start</div>
+  <div class="p-3 bg-secondary text-white justify-self-center">Item 2<br>justify-self-center</div>
+  <div class="p-3 bg-success text-white justify-self-end">Item 3<br>justify-self-end</div>
+  <div class="p-3 bg-warning text-dark justify-self-stretch">Item 4<br>justify-self-stretch</div>
+  <div class="p-3 bg-info text-white justify-self-auto">Item 5<br>justify-self-auto</div>
+  <div class="p-3 bg-dark text-white justify-self-center">Item 6<br>justify-self-center</div>
+</div>`} />
+
+## CSS
+
+### Sass utilities API
+
+Justify self utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-justify-self" file="scss/_utilities.scss" />
