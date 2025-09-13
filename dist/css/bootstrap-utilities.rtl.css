@@ -706,8 +706,32 @@
   display: table-row !important;
 }
 
+.d-table-caption {
+  display: table-caption !important;
+}
+
 .d-table-cell {
   display: table-cell !important;
+}
+
+.d-table-column {
+  display: table-column !important;
+}
+
+.d-table-column-group {
+  display: table-column-group !important;
+}
+
+.d-table-footer-group {
+  display: table-footer-group !important;
+}
+
+.d-table-header-group {
+  display: table-header-group !important;
+}
+
+.d-table-row-group {
+  display: table-row-group !important;
 }
 
 .d-flex {
@@ -2591,8 +2615,26 @@
   .d-sm-table-row {
     display: table-row !important;
   }
+  .d-sm-table-caption {
+    display: table-caption !important;
+  }
   .d-sm-table-cell {
     display: table-cell !important;
+  }
+  .d-sm-table-column {
+    display: table-column !important;
+  }
+  .d-sm-table-column-group {
+    display: table-column-group !important;
+  }
+  .d-sm-table-footer-group {
+    display: table-footer-group !important;
+  }
+  .d-sm-table-header-group {
+    display: table-header-group !important;
+  }
+  .d-sm-table-row-group {
+    display: table-row-group !important;
   }
   .d-sm-flex {
     display: flex !important;
@@ -3152,8 +3194,26 @@
   .d-md-table-row {
     display: table-row !important;
   }
+  .d-md-table-caption {
+    display: table-caption !important;
+  }
   .d-md-table-cell {
     display: table-cell !important;
+  }
+  .d-md-table-column {
+    display: table-column !important;
+  }
+  .d-md-table-column-group {
+    display: table-column-group !important;
+  }
+  .d-md-table-footer-group {
+    display: table-footer-group !important;
+  }
+  .d-md-table-header-group {
+    display: table-header-group !important;
+  }
+  .d-md-table-row-group {
+    display: table-row-group !important;
   }
   .d-md-flex {
     display: flex !important;
@@ -3713,8 +3773,26 @@
   .d-lg-table-row {
     display: table-row !important;
   }
+  .d-lg-table-caption {
+    display: table-caption !important;
+  }
   .d-lg-table-cell {
     display: table-cell !important;
+  }
+  .d-lg-table-column {
+    display: table-column !important;
+  }
+  .d-lg-table-column-group {
+    display: table-column-group !important;
+  }
+  .d-lg-table-footer-group {
+    display: table-footer-group !important;
+  }
+  .d-lg-table-header-group {
+    display: table-header-group !important;
+  }
+  .d-lg-table-row-group {
+    display: table-row-group !important;
   }
   .d-lg-flex {
     display: flex !important;
@@ -4274,8 +4352,26 @@
   .d-xl-table-row {
     display: table-row !important;
   }
+  .d-xl-table-caption {
+    display: table-caption !important;
+  }
   .d-xl-table-cell {
     display: table-cell !important;
+  }
+  .d-xl-table-column {
+    display: table-column !important;
+  }
+  .d-xl-table-column-group {
+    display: table-column-group !important;
+  }
+  .d-xl-table-footer-group {
+    display: table-footer-group !important;
+  }
+  .d-xl-table-header-group {
+    display: table-header-group !important;
+  }
+  .d-xl-table-row-group {
+    display: table-row-group !important;
   }
   .d-xl-flex {
     display: flex !important;
@@ -4835,8 +4931,26 @@
   .d-xxl-table-row {
     display: table-row !important;
   }
+  .d-xxl-table-caption {
+    display: table-caption !important;
+  }
   .d-xxl-table-cell {
     display: table-cell !important;
+  }
+  .d-xxl-table-column {
+    display: table-column !important;
+  }
+  .d-xxl-table-column-group {
+    display: table-column-group !important;
+  }
+  .d-xxl-table-footer-group {
+    display: table-footer-group !important;
+  }
+  .d-xxl-table-header-group {
+    display: table-header-group !important;
+  }
+  .d-xxl-table-row-group {
+    display: table-row-group !important;
   }
   .d-xxl-flex {
     display: flex !important;
@@ -5381,8 +5495,26 @@
   .d-print-table-row {
     display: table-row !important;
   }
+  .d-print-table-caption {
+    display: table-caption !important;
+  }
   .d-print-table-cell {
     display: table-cell !important;
+  }
+  .d-print-table-column {
+    display: table-column !important;
+  }
+  .d-print-table-column-group {
+    display: table-column-group !important;
+  }
+  .d-print-table-footer-group {
+    display: table-footer-group !important;
+  }
+  .d-print-table-header-group {
+    display: table-header-group !important;
+  }
+  .d-print-table-row-group {
+    display: table-row-group !important;
   }
   .d-print-flex {
     display: flex !important;
