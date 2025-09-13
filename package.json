@@ -159,7 +159,7 @@
     "karma-jasmine-html-reporter": "^2.1.0",
     "karma-rollup-preprocessor": "7.0.7",
     "lockfile-lint": "^4.14.1",
-    "mime": "^4.0.7",
+    "mime": "^4.1.0",
     "nodemon": "^3.1.10",
     "npm-run-all2": "^8.0.4",
     "postcss": "^8.5.6",
@@ -180,7 +180,7 @@
     "terser": "^5.44.0",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
-    "zod": "^4.1.6"
+    "zod": "^4.1.8"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
