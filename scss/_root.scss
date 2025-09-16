@@ -85,11 +85,7 @@
 
   --#{$prefix}link-hover-color: #{$link-hover-color};
   --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
-
-  @if $link-hover-decoration != null {
-    --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
-  }
-
+  --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
   --#{$prefix}code-color: #{$code-color};
   --#{$prefix}highlight-color: #{$mark-color};
   --#{$prefix}highlight-bg: #{$mark-bg};
