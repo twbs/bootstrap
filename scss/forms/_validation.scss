@@ -1,8 +1,10 @@
 @use "../config" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
+@use "form-variables" as *;
 @use "../tooltip" as *; // bring in tooltip variables
 
 // Form validation
@@ -103,31 +105,31 @@
     }
   }
 
-  .form-select {
-    @include form-validation-state-selector($state) {
-      border-color: $border-color;
+  // .form-select {
+  //   @include form-validation-state-selector($state) {
+  //     border-color: $border-color;
 
-      @if $enable-validation-icons {
-        &:not([multiple]):not([size]),
-        &:not([multiple])[size="1"] {
-          --#{$prefix}form-select-bg-icon: #{escape-svg($icon)};
-          padding-right: $form-select-feedback-icon-padding-end;
-          background-position: $form-select-bg-position, $form-select-feedback-icon-position;
-          background-size: $form-select-bg-size, $form-select-feedback-icon-size;
-        }
-      }
+  //     @if $enable-validation-icons {
+  //       &:not([multiple]):not([size]),
+  //       &:not([multiple])[size="1"] {
+  //         --#{$prefix}form-select-bg-icon: #{escape-svg($icon)};
+  //         padding-right: $form-select-feedback-icon-padding-end;
+  //         background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+  //         background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+  //       }
+  //     }
 
-      &:focus {
-        border-color: $border-color;
-        @if $enable-shadows {
-          @include box-shadow($form-select-box-shadow, $focus-box-shadow);
-        } @else {
-          // Avoid using mixin so we can pass custom focus shadow properly
-          box-shadow: $focus-box-shadow;
-        }
-      }
-    }
-  }
+  //     &:focus {
+  //       border-color: $border-color;
+  //       @if $enable-shadows {
+  //         @include box-shadow($form-select-box-shadow, $focus-box-shadow);
+  //       } @else {
+  //         // Avoid using mixin so we can pass custom focus shadow properly
+  //         box-shadow: $focus-box-shadow;
+  //       }
+  //     }
+  //   }
+  // }
 
   .form-control-color {
     @include form-validation-state-selector($state) {

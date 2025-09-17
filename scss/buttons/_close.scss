@@ -1,8 +1,8 @@
-@use "config" as *;
-@use "colors" as *;
-@use "variables" as *;
-@use "mixins/border-radius" as *;
-@use "mixins/color-mode" as *;
+@use "../config" as *;
+@use "../colors" as *;
+@use "../variables" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/color-mode" as *;
 
 // scss-docs-start close-variables
 $btn-close-width:            1em !default;
