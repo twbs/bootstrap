@@ -3,6 +3,22 @@ title: Aspect ratio
 description: Make elements maintain specific aspect ratios. Perfect for handling videos, slideshow embeds, and more based on the width of the parent.
 toc: true
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
+reference:
+  - class: ratio-auto
+    styles:
+      --bs-ratio: 'auto'
+  - class: ratio-1x1
+    styles:
+      --bs-ratio: '1 / 1'
+  - class: ratio-4x3
+    styles:
+      --bs-ratio: '4 / 3'
+  - class: ratio-16x9
+    styles:
+      --bs-ratio: '16 / 9'
+  - class: ratio-21x9
+    styles:
+      --bs-ratio: '21 / 9'
 ---
 
 Use the ratio utility to manage the aspect ratios of content like `<iframe>`s, `<embed>`s, `<video>`s, and `<object>`s. These helpers also can be used on any standard HTML child element (e.g., a `<div>` or `<img>`). Customize the available aspect ratios with the Sass variable or the utility API.

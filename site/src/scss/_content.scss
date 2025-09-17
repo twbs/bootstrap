@@ -53,6 +53,11 @@
     td {
       font-family: var(--bs-font-monospace);
 
+      &:first-child {
+        padding-inline-end: 1.5rem;
+        white-space: nowrap;
+      }
+
       &:last-child {
         color: var(--bs-indigo-500);
       }
