@@ -1,12 +1,20 @@
 @use "sass:map";
 @use "sass:string";
+@use "../config" as *;
+@use "../colors" as *;
 @use "../variables" as *;
 @use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
+@use "form-variables" as *;
 
-//
-// Base styles
-//
+// scss-docs-start input-group-variables
+$input-group-addon-padding-y:           $input-padding-y !default;
+$input-group-addon-padding-x:           $input-padding-x !default;
+$input-group-addon-font-weight:         $input-font-weight !default;
+$input-group-addon-color:               $input-color !default;
+$input-group-addon-bg:                  var(--#{$prefix}tertiary-bg) !default;
+$input-group-addon-border-color:        $input-border-color !default;
+// scss-docs-end input-group-variables
 
 @layer forms {
   .input-group {
@@ -92,7 +100,8 @@
 
   .input-group-lg > .form-select,
   .input-group-sm > .form-select {
-    padding-right: $form-select-padding-x + $form-select-indicator-padding;
+    // mdo-do: need to revisit this
+    // padding-right: $form-select-padding-x + $form-select-indicator-padding;
   }
 
 
