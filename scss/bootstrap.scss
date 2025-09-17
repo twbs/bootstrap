@@ -4,25 +4,19 @@
 // Global CSS variables, layer definitions, and configuration
 @use "root";
 
-// Reboot & Content
+// Subdir imports
 @use "content";
-
-// Layout
 @use "layout";
-
-// Forms
 @use "forms";
+@use "buttons";
 
 // Components
 @use "accordion";
 @use "alert";
 @use "badge";
 @use "breadcrumb";
-@use "buttons";
-@use "button-group";
 @use "card";
 @use "carousel";
-@use "close";
 @use "dropdown";
 @use "list-group";
 @use "modal";
