@@ -1,6 +1,7 @@
 @use "sass:string";
 @use "config" as *;
 @use "variables" as *;
+@use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "vendor/rfs" as *;
 

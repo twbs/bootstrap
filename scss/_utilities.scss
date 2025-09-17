@@ -5,6 +5,13 @@
 @use "functions" as *;
 @use "theme" as *;
 
+// add:
+// - placeItems
+// - double check css grid helpers
+//
+// update:
+// - focus-ring if needed
+
 $utilities: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $utilities: map.merge(
