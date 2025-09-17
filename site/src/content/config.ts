@@ -8,6 +8,15 @@ const docsSchema = z.object({
     })
     .optional(),
   aliases: z.string().or(z.string().array()).optional(),
+  csstricks: z
+    .union([
+      z.string(),
+      z.object({
+        url: z.string(),
+        label: z.string().optional()
+      })
+    ])
+    .optional(),
   description: z.string(),
   direction: z.literal('rtl').optional(),
   extra_js: z
@@ -18,6 +27,13 @@ const docsSchema = z.object({
     .array()
     .optional(),
   mdn: z.string().optional(),
+  reference: z
+    .object({
+      class: z.string(),
+      styles: z.union([z.string(), z.string().array(), z.record(z.string())])
+    })
+    .array()
+    .optional(),
   sections: z
     .object({
       description: z.string(),

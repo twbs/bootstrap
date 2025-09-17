@@ -145,13 +145,13 @@ if (currentPageIndex < allPages.length - 1) {
             frontmatter.csstricks && (
               <a
                 class="btn btn-secondary-text btn-sm"
-                href={frontmatter.csstricks}
+                href={typeof frontmatter.csstricks === 'string' ? frontmatter.csstricks : frontmatter.csstricks.url}
                 title="View on CSS-Tricks"
                 target="_blank"
                 rel="noopener"
               >
                 <CssTricksIcon height={16} width={16} class="bi" />
-                CSS-Tricks
+                {typeof frontmatter.csstricks === 'string' ? 'CSS-Tricks' : (frontmatter.csstricks.label || 'CSS-Tricks')}
               </a>
             )
           }
