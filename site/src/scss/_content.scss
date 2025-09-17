@@ -36,6 +36,30 @@
     // stylelint-enable selector-max-type, selector-max-compound-selectors
   }
 
+  .bd-reference-table {
+    max-height: 420px;
+    overflow-y: auto;
+    font-size: .75rem;
+
+    thead th {
+      border-bottom-color: currentcolor;
+    }
+
+    th,
+    td {
+      padding-inline: 0;
+    }
+
+    td {
+      font-family: var(--bs-font-monospace);
+
+      &:last-child {
+        color: var(--bs-indigo-500);
+      }
+    }
+
+  }
+
   // Override Bootstrap defaults
   > .table,
   > .table-responsive .table {
@@ -49,14 +73,6 @@
       &.table-bordered {
         border: 0;
       }
-    }
-
-    thead {
-      border-bottom: 2px solid currentcolor;
-    }
-
-    tbody:not(:first-child) {
-      border-top: 2px solid currentcolor;
     }
 
     th,
