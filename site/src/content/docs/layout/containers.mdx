@@ -19,14 +19,14 @@ The table below illustrates how each container’s `max-width` compares to the o
 See them in action and compare them in our [Grid example]([[docsref:/examples/grid/#containers]]).
 
 <BsTable>
-|  | Extra small<div class="fw-normal">&lt;576px</div> | Small<div class="fw-normal">&ge;576px</div> | Medium<div class="fw-normal">&ge;768px</div> | Large<div class="fw-normal">&ge;992px</div> | X-Large<div class="fw-normal">&ge;1200px</div> | XX-Large<div class="fw-normal">&ge;1400px</div> |
+|  | Extra small<div class="fw-normal">&lt;576px</div> | Small<div class="fw-normal">&ge;576px</div> | Medium<div class="fw-normal">&ge;768px</div> | Large<div class="fw-normal">&ge;992px</div> | X-Large<div class="fw-normal">&ge;1200px</div> | 2X-Large<div class="fw-normal">&ge;1600px</div> |
 | --- | --- | --- | --- | --- | --- | --- |
-| `.container` | <span class="text-body-secondary">100%</span> | 540px | 720px | 960px | 1140px | 1320px |
-| `.container-sm` | <span class="text-body-secondary">100%</span> | 540px | 720px | 960px | 1140px | 1320px |
-| `.container-md` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 720px | 960px | 1140px | 1320px |
-| `.container-lg` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 960px | 1140px | 1320px |
-| `.container-xl` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 1140px | 1320px |
-| `.container-xxl` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 1320px |
+| `.container` | <span class="text-body-secondary">100%</span> | 540px | 720px | 960px | 1140px | 1440px |
+| `.container-sm` | <span class="text-body-secondary">100%</span> | 540px | 720px | 960px | 1140px | 1440px |
+| `.container-md` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 720px | 960px | 1140px | 1440px |
+| `.container-lg` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 960px | 1140px | 1440px |
+| `.container-xl` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 1140px | 1440px |
+| `.container-2xl` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | 1440px |
 | `.container-fluid` | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> | <span class="text-body-secondary">100%</span> |
 </BsTable>
 
@@ -42,14 +42,14 @@ Our default `.container` class is a responsive, fixed-width container, meaning i
 
 ## Responsive containers
 
-Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, `xl`, and `xxl`.
+Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, `xl`, and `2xl`.
 
 ```html
 <div class="container-sm">100% wide until small breakpoint</div>
 <div class="container-md">100% wide until medium breakpoint</div>
 <div class="container-lg">100% wide until large breakpoint</div>
 <div class="container-xl">100% wide until extra large breakpoint</div>
-<div class="container-xxl">100% wide until extra extra large breakpoint</div>
+<div class="container-2xl">100% wide until extra extra large breakpoint</div>
 ```
 
 ## Fluid containers

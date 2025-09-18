@@ -25,7 +25,7 @@ Bootstrap includes six default breakpoints, sometimes referred to as _grid tiers
 | Medium | `md` | &ge;768px |
 | Large | `lg` | &ge;992px |
 | Extra large | `xl` | &ge;1200px |
-| Extra extra large | `xxl` | &ge;1400px |
+| Extra extra large | `2xl` | &ge;1600px |
 </BsTable>
 
 Each breakpoint was chosen to comfortably hold containers whose widths are multiples of 12. Breakpoints are also representative of a subset of common device sizes and viewport dimensions—they don’t specifically target every use case or device. Instead, the ranges provide a strong and consistent foundation to build on for nearly any device.
@@ -52,7 +52,7 @@ Bootstrap primarily uses the following media query ranges—or breakpoints—in 
 @include media-breakpoint-up(md) { ... }
 @include media-breakpoint-up(lg) { ... }
 @include media-breakpoint-up(xl) { ... }
-@include media-breakpoint-up(xxl) { ... }
+@include media-breakpoint-up(2xl) { ... }
 
 // Usage
 
@@ -85,8 +85,8 @@ These Sass mixins translate in our compiled CSS using the values declared in our
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 
-// XX-Large devices (larger desktops, 1400px and up)
-@media (min-width: 1400px) { ... }
+// XX-Large devices (larger desktops, 1600px and up)
+@media (min-width: 1600px) { ... }
 ```
 
 ### Max-width
@@ -99,7 +99,7 @@ We occasionally use media queries that go in the other direction (the given scre
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
 @include media-breakpoint-down(xl) { ... }
-@include media-breakpoint-down(xxl) { ... }
+@include media-breakpoint-down(2xl) { ... }
 
 // Example: Style from medium breakpoint and down
 @include media-breakpoint-down(md) {
@@ -127,8 +127,8 @@ These mixins take those declared breakpoints, subtract `.02px` from them, and us
 // `xl` applies to large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) { ... }
 
-// `xxl` applies to x-large devices (large desktops, less than 1400px)
-@media (max-width: 1399.98px) { ... }
+// `2xl` applies to x-large devices (large desktops, less than 1600px)
+@media (max-width: 1599.98px) { ... }
 ```
 
 <Callout name="info-mediaqueries-breakpoints" type="warning" />
@@ -143,7 +143,7 @@ There are also media queries and mixins for targeting a single segment of screen
 @include media-breakpoint-only(md) { ... }
 @include media-breakpoint-only(lg) { ... }
 @include media-breakpoint-only(xl) { ... }
-@include media-breakpoint-only(xxl) { ... }
+@include media-breakpoint-only(2xl) { ... }
 ```
 
 For example the `@include media-breakpoint-only(md) { ... }` will result in :
