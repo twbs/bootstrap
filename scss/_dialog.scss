@@ -1,0 +1,262 @@
+@use "sass:map";
+@use "config" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/transition" as *;
+@use "mixins/gradients" as *;
+@use "mixins/backdrop" as *;
+@use "vendor/rfs" as *;
+@use "layout/breakpoints" as *;
+
+// .dialog-open     - body class for killing the scroll
+// dialog           - native HTML dialog element
+// .dialog-content  - actual dialog w/ bg and corners and stuff
+
+@layer components {
+  // Native HTML dialog element
+  dialog {
+    // scss-docs-start dialog-css-vars
+    --#{$prefix}dialog-zindex: #{$zindex-modal};
+    --#{$prefix}dialog-width: #{$modal-md};
+    --#{$prefix}dialog-padding: #{$modal-inner-padding};
+    --#{$prefix}dialog-margin: #{$modal-dialog-margin};
+    --#{$prefix}dialog-color: #{$modal-content-color};
+    --#{$prefix}dialog-bg: #{$modal-content-bg};
+    --#{$prefix}dialog-border-color: #{$modal-content-border-color};
+    --#{$prefix}dialog-border-width: #{$modal-content-border-width};
+    --#{$prefix}dialog-border-radius: #{$modal-content-border-radius};
+    --#{$prefix}dialog-box-shadow: #{$modal-content-box-shadow-xs};
+    --#{$prefix}dialog-inner-border-radius: #{$modal-content-inner-border-radius};
+    --#{$prefix}dialog-header-padding-x: #{$modal-header-padding-x};
+    --#{$prefix}dialog-header-padding-y: #{$modal-header-padding-y};
+    --#{$prefix}dialog-header-padding: #{$modal-header-padding}; // Todo in v6: Split this padding into x and y
+    --#{$prefix}dialog-header-border-color: #{$modal-header-border-color};
+    --#{$prefix}dialog-header-border-width: #{$modal-header-border-width};
+    --#{$prefix}dialog-title-line-height: #{$modal-title-line-height};
+    --#{$prefix}dialog-footer-gap: #{$modal-footer-margin-between};
+    --#{$prefix}dialog-footer-bg: #{$modal-footer-bg};
+    --#{$prefix}dialog-footer-border-color: #{$modal-footer-border-color};
+    --#{$prefix}dialog-footer-border-width: #{$modal-footer-border-width};
+    // scss-docs-end dialog-css-vars
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    width: auto;
+    height: auto;
+    max-width: calc(100vw - var(--#{$prefix}dialog-margin) * 2);
+    max-height: calc(100vh - var(--#{$prefix}dialog-margin) * 2);
+    // Use scrollbar-gutter instead of manual scrollbar detection
+    scrollbar-gutter: stable;
+    
+    // Remove default dialog backdrop
+    &::backdrop {
+      display: none;
+    }
+
+    // Prevent Chrome on Windows from adding a focus outline. For details, see
+    // https://github.com/twbs/bootstrap/pull/10951.
+    outline: 0;
+
+    // When fading in the dialog, animate it to slide down
+    &.fade {
+      .dialog-content {
+        transform: $modal-fade-transform;
+        @include transition($modal-transition);
+      }
+    }
+    
+    &.show {
+      .dialog-content {
+        transform: $modal-show-transform;
+      }
+    }
+
+    // When trying to close, animate focus to scale
+    &.dialog-static {
+      .dialog-content {
+        transform: $modal-scale-transform;
+      }
+    }
+  }
+
+  .dialog-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: var(--#{$prefix}dialog-width);
+    // counteract the pointer-events: none; in the native dialog
+    color: var(--#{$prefix}dialog-color);
+    pointer-events: auto;
+    background-color: var(--#{$prefix}dialog-bg);
+    background-clip: padding-box;
+    border: var(--#{$prefix}dialog-border-width) solid var(--#{$prefix}dialog-border-color);
+    @include border-radius(var(--#{$prefix}dialog-border-radius));
+    @include box-shadow(var(--#{$prefix}dialog-box-shadow));
+    // Remove focus outline from opened dialog
+    outline: 0;
+  }
+
+  // Use existing modal backdrop for consistency
+  .dialog-backdrop {
+    // scss-docs-start dialog-backdrop-css-vars
+    --#{$prefix}backdrop-zindex: #{$zindex-modal-backdrop};
+    --#{$prefix}backdrop-bg: #{$modal-backdrop-bg};
+    --#{$prefix}backdrop-opacity: #{$modal-backdrop-opacity};
+    // scss-docs-end dialog-backdrop-css-vars
+
+    @include overlay-backdrop(var(--#{$prefix}backdrop-zindex), var(--#{$prefix}backdrop-bg), var(--#{$prefix}backdrop-opacity));
+  }
+
+  // Dialog header
+  // Top section of the dialog w/ title and dismiss
+  .dialog-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: var(--#{$prefix}dialog-header-padding);
+    border-bottom: var(--#{$prefix}dialog-header-border-width) solid var(--#{$prefix}dialog-header-border-color);
+    @include border-top-radius(var(--#{$prefix}dialog-inner-border-radius));
+
+    .btn-close {
+      padding: calc(var(--#{$prefix}dialog-header-padding-y) * .5) calc(var(--#{$prefix}dialog-header-padding-x) * .5);
+      // Split properties to avoid invalid calc() function if value is 0
+      margin-top: calc(-.5 * var(--#{$prefix}dialog-header-padding-y));
+      margin-right: calc(-.5 * var(--#{$prefix}dialog-header-padding-x));
+      margin-bottom: calc(-.5 * var(--#{$prefix}dialog-header-padding-y));
+      margin-left: auto;
+    }
+  }
+
+  // Title text within header
+  .dialog-title {
+    margin-bottom: 0;
+    line-height: var(--#{$prefix}dialog-title-line-height);
+  }
+
+  // Dialog body
+  // Where all dialog content resides (sibling of .dialog-header and .dialog-footer)
+  .dialog-body {
+    position: relative;
+    // Enable `flex-grow: 1` so that the body take up as much space as possible
+    // when there should be a fixed height on dialog content.
+    flex: 1 1 auto;
+    padding: var(--#{$prefix}dialog-padding);
+  }
+
+  // Footer (for actions)
+  .dialog-footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    align-items: center; // vertically center
+    justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
+    padding: calc(var(--#{$prefix}dialog-padding) - var(--#{$prefix}dialog-footer-gap) * .5);
+    background-color: var(--#{$prefix}dialog-footer-bg);
+    border-top: var(--#{$prefix}dialog-footer-border-width) solid var(--#{$prefix}dialog-footer-border-color);
+    @include border-bottom-radius(var(--#{$prefix}dialog-inner-border-radius));
+
+    // Place margin between footer elements
+    // This solution is far from ideal because of the universal selector usage,
+    // but is needed to fix https://github.com/twbs/bootstrap/issues/24800
+    > * {
+      margin: calc(var(--#{$prefix}dialog-footer-gap) * .5); // Todo in v6: replace with gap on parent class
+    }
+  }
+
+  .dialog-scrollable {
+    .dialog-content {
+      max-height: calc(100vh - var(--#{$prefix}dialog-margin) * 2);
+      overflow: hidden;
+    }
+
+    .dialog-body {
+      overflow-y: auto;
+    }
+  }
+
+  .dialog-centered {
+    // Additional centering styles if needed
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Scale up the dialog
+  @include media-breakpoint-up(sm) {
+    dialog {
+      --#{$prefix}dialog-margin: #{$modal-dialog-margin-y-sm-up};
+      --#{$prefix}dialog-box-shadow: #{$modal-content-box-shadow-sm-up};
+    }
+
+    // Automatically set dialog's width for larger viewports
+    .dialog-content {
+      max-width: var(--#{$prefix}dialog-width);
+    }
+
+    .dialog-sm {
+      --#{$prefix}dialog-width: #{$modal-sm};
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .dialog-lg,
+    .dialog-xl {
+      --#{$prefix}dialog-width: #{$modal-lg};
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    .dialog-xl {
+      --#{$prefix}dialog-width: #{$modal-xl};
+    }
+  }
+
+  // scss-docs-start dialog-fullscreen-loop
+  @each $breakpoint in map.keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $postfix: if($infix != "", $infix + "-down", "");
+
+    @include media-breakpoint-down($breakpoint) {
+      .dialog-fullscreen#{$postfix} {
+        width: 100vw;
+        max-width: none;
+        height: 100vh;
+        margin: 0;
+        top: 0;
+        left: 0;
+        transform: none;
+
+        .dialog-content {
+          height: 100%;
+          border: 0;
+          @include border-radius(0);
+        }
+
+        .dialog-header,
+        .dialog-footer {
+          @include border-radius(0);
+        }
+
+        .dialog-body {
+          overflow-y: auto;
+        }
+      }
+    }
+  }
+  // scss-docs-end dialog-fullscreen-loop
+
+  // Body class to prevent scrolling
+  .dialog-open {
+    overflow: hidden;
+    // Use scrollbar-gutter for consistent scrollbar space
+    scrollbar-gutter: stable;
+  }
+}

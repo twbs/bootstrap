@@ -1,0 +1,295 @@
+---
+title: Dialog
+description: Use Bootstrap's Dialog component to add native HTML5 dialog elements to your site for lightboxes, user notifications, or completely custom content.
+group: components
+toc: true
+---
+
+## Examples
+
+### Dialog components
+
+Below is a _static_ dialog example (meaning its `position` and `display` have been overridden). Included are the dialog content, header, body (required for `padding`), and footer (optional). We ask that you include dialog headers with dismiss actions whenever possible, or provide another explicit dismiss action.
+
+<div class="dialog show position-static d-block" tabindex="-1">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <h5 class="dialog-title">Dialog title</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>Dialog body text goes here.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+
+```html
+<dialog class="dialog" tabindex="-1">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <h5 class="dialog-title">Dialog title</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>Dialog body text goes here.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</dialog>
+```
+
+{{< callout info >}}
+In the above static example, we use `<div>`s for demonstration purposes. When you use the actual component, use the native `<dialog>` element as shown in the code snippet.
+{{< /callout >}}
+
+### Live demo
+
+Toggle a working dialog demo by clicking the button below. It will slide down and fade in from the top of the page.
+
+<div class="dialog fade" id="exampleDialog" tabindex="-1" aria-labelledby="exampleDialogLabel" aria-hidden="true">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <h1 class="dialog-title fs-5" id="exampleDialogLabel">Dialog title</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      Woo-hoo, you're reading this text in a dialog!
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="bd-example-live">
+  <button type="button" class="btn btn-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+    Launch demo dialog
+  </button>
+</div>
+
+```html
+<!-- Button trigger dialog -->
+<button type="button" class="btn btn-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+  Launch demo dialog
+</button>
+
+<!-- Dialog -->
+<dialog class="dialog fade" id="exampleDialog" tabindex="-1" aria-labelledby="exampleDialogLabel" aria-hidden="true">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <h1 class="dialog-title fs-5" id="exampleDialogLabel">Dialog title</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      Woo-hoo, you're reading this text in a dialog!
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</dialog>
+```
+
+### Static backdrop
+
+When backdrop is set to static, the dialog will not close when clicking outside of it. Click the button below to try it.
+
+<dialog class="dialog fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <h1 class="dialog-title fs-5" id="staticBackdropLiveLabel">Dialog title</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>I will not close if you click outside of me. Don't even try to press escape key.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn btn-primary">Understood</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="bd-example-live">
+  <button type="button" class="btn btn-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdropLive">Launch static backdrop dialog</button>
+</div>
+
+```html
+<!-- Button trigger dialog -->
+<button type="button" class="btn btn-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdrop">
+  Launch static backdrop dialog
+</button>
+
+<!-- Dialog -->
+<dialog class="dialog fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <h1 class="dialog-title fs-5" id="staticBackdropLabel">Dialog title</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>I will not close if you click outside of me. Don't even try to press escape key.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn btn-primary">Understood</button>
+    </div>
+  </div>
+</dialog>
+```
+
+### Non-modal dialog
+
+The Dialog component supports both modal and non-modal dialogs. Set `modal: false` to create a non-modal dialog that doesn't block interaction with the rest of the page.
+
+```html
+<dialog class="dialog" id="nonModalDialog">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <h1 class="dialog-title fs-5">Non-modal Dialog</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      This is a non-modal dialog. You can still interact with the page behind it.
+    </div>
+  </div>
+</dialog>
+```
+
+## How it works
+
+Before getting started with Bootstrap's dialog component, be sure to read the following as our menu options have recently changed.
+
+- Dialogs are built using the native HTML5 `<dialog>` element, providing better accessibility and built-in browser support.
+- The component uses the `scrollbar-gutter` CSS property instead of manually detecting scrollbar width for better performance.
+- Dialogs can be either modal (blocking page interaction) or non-modal (allowing page interaction).
+- Dialogs use a backdrop element. Click on the dialog backdrop to automatically close the dialog.
+- Only one dialog window at a time is supported. Nested dialogs aren't supported as we believe them to be poor user experiences.
+- Dialogs use `position: fixed`, which can sometimes be a bit particular about its rendering. Whenever possible, place your dialog HTML in a top-level position to avoid potential interference from other elements. You'll likely run into issues when nesting a dialog within another fixed element.
+- Once again, due to `position: fixed`, there are some caveats with using dialogs on mobile devices. [See our browser support docs]({{< docsref "/getting-started/browsers-devices#dialogs-and-dropdowns-on-mobile" >}}) for details.
+- Due to how HTML5 defines its semantics, [the `autofocus` HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#autofocus) has no effect in Bootstrap dialogs. To achieve the same effect, use some custom JavaScript.
+
+{{< callout info >}}
+The animation effect of this component is dependent on the `prefers-reduced-motion` media query. See the [reduced motion section of our accessibility documentation]({{< docsref "/getting-started/accessibility#reduced-motion" >}}).
+{{< /callout >}}
+
+Keep reading for demos and usage guidelines.
+
+## Accessibility
+
+Be sure to add `aria-labelledby="..."`, referencing the dialog title, to the `<dialog>` element. Additionally, you may give a description of your dialog with `aria-describedby` on the `<dialog>` element. Note that you don't need to add `role="dialog"` since the native `<dialog>` element already has the appropriate semantics.
+
+## Usage
+
+The dialog plugin toggles your hidden content on demand via the native HTML5 dialog element. Dialogs can be both modal and non-modal depending on your configuration.
+
+### Via data attributes
+
+#### Toggle
+
+Activate a dialog without writing JavaScript. Set `data-bs-toggle="dialog"` on a controller element, like a button, along with a `data-bs-target="#foo"` or `href="#foo"` to target a specific dialog to toggle.
+
+```html
+<button type="button" data-bs-toggle="dialog" data-bs-target="#myDialog">Launch dialog</button>
+```
+
+#### Dismiss
+
+Dismissal can be achieved with the `data-bs-dismiss` attribute on a button **within the dialog** as demonstrated below:
+
+```html
+<button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+```
+
+or on a button **outside the dialog** using the additional `data-bs-target` as demonstrated below:
+
+```html
+<button type="button" class="btn btn-secondary" data-bs-dismiss="dialog" data-bs-target="#my-dialog">Close</button>
+```
+
+{{< callout warning >}}
+While both ways to dismiss a dialog are supported, keep in mind that dismissing from outside a dialog does not match the [ARIA Authoring Practices Guide dialog (modal) pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/). Do this at your own risk.
+{{< /callout >}}
+
+### Via JavaScript
+
+Create a dialog with a single line of JavaScript:
+
+```js
+const myDialog = new bootstrap.Dialog(document.getElementById('myDialog'), options)
+// or
+const myDialogAlternative = new bootstrap.Dialog('#myDialog', options)
+```
+
+### Options
+
+{{< markdown >}}
+{{< partial "js-data-attributes.md" >}}
+{{< /markdown >}}
+
+{{< bs-table "table" >}}
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `backdrop` | boolean, `'static'` | `true` | Includes a dialog-backdrop element. Alternatively, specify `static` for a backdrop which doesn't close the dialog when clicked. |
+| `focus` | boolean | `true` | Puts the focus on the dialog when initialized. |
+| `keyboard` | boolean | `true` | Closes the dialog when escape key is pressed. |
+| `modal` | boolean | `true` | Makes the dialog modal (blocking page interaction) when `true`, or non-modal when `false`. |
+{{< /bs-table >}}
+
+### Methods
+
+{{< callout danger >}}
+{{< partial "callouts/danger-async-methods.md" >}}
+{{< /callout >}}
+
+All API methods are **asynchronous** and start a **transition**. They return to the caller as soon as the transition is started, but **before it ends**. In addition, a method call on a **transitioning component will be ignored**.
+
+[See our JavaScript documentation for more information]({{< docsref "/getting-started/javascript#asynchronous-functions-and-transitions" >}}).
+
+{{< bs-table >}}
+| Method | Description |
+| --- | --- |
+| `dispose` | Destroys an element's dialog. (Removes stored data on the DOM element) |
+| `getInstance` | *Static* method which allows you to get the dialog instance associated with a DOM element. |
+| `getOrCreateInstance` | *Static* method which allows you to get the dialog instance associated with a DOM element, or create a new one in case it wasn't initialized. |
+| `handleUpdate` | Manually readjust the dialog's position if the height of a dialog changes while it is open (i.e., in case a scrollbar appears). |
+| `hide` | Manually hides a dialog. **Returns to the caller before the dialog has actually been hidden** (i.e., before the `hidden.bs.dialog` event occurs). |
+| `show` | Manually opens a dialog. **Returns to the caller before the dialog has actually been shown** (i.e., before the `shown.bs.dialog` event occurs). Also, you can pass a DOM element as an argument that can be received in the dialog events (as the `relatedTarget` property of the event). |
+| `toggle` | Manually toggles a dialog. **Returns to the caller before the dialog has actually been shown or hidden** (i.e., before the `shown.bs.dialog` or `hidden.bs.dialog` event occurs). |
+{{< /bs-table >}}
+
+```js
+const myDialog = bootstrap.Dialog.getOrCreateInstance(document.getElementById('myDialog'))
+
+myDialog.show()
+```
+
+### Events
+
+Bootstrap's dialog class exposes a few events for hooking into dialog functionality. All dialog events are fired at the dialog itself (i.e., at the `<dialog>` element).
+
+{{< bs-table >}}
+| Event | Description |
+| --- | --- |
+| `hide.bs.dialog` | This event is fired immediately when the `hide` instance method has been called. |
+| `hidden.bs.dialog` | This event is fired when the dialog has finished being hidden from the user (will wait for CSS transitions to complete). |
+| `hidePrevented.bs.dialog` | This event is fired when the dialog is shown, its backdrop is `static` and a click outside the dialog is performed. The event is also fired when the escape key is pressed and the `keyboard` option is set to `false`. |
+| `show.bs.dialog` | This event fires immediately when the `show` instance method is called. If caused by a click, the clicked element is available as the `relatedTarget` property of the event. |
+| `shown.bs.dialog` | This event is fired when the dialog has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the `relatedTarget` property of the event. |
+{{< /bs-table >}}
+
+```js
+const myDialogEl = document.getElementById('myDialog')
+myDialogEl.addEventListener('hidden.bs.dialog', event => {
+  // do something...
+})
+```
