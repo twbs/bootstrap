@@ -28,8 +28,8 @@
   min-width: 1200px
   container: 1140px
 
-- breakpoint: xxl
-  abbr: -xxl
-  name: XX-Large
-  min-width: 1400px
-  container: 1320px
+- breakpoint: 2xl
+  abbr: -2xl
+  name: 2X-Large
+  min-width: 1600px
+  container: 1440px

@@ -10,12 +10,12 @@ Change the value of the [`display` property](https://developer.mozilla.org/en-US
 
 ## Notation
 
-Display utility classes that apply to all [breakpoints]([[docsref:/layout/breakpoints]]), from `xs` to `xxl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0;` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+Display utility classes that apply to all [breakpoints]([[docsref:/layout/breakpoints]]), from `xs` to `2xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0;` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 
 As such, the classes are named using the format:
 
 - `.d-{value}` for `xs`
-- `.d-{breakpoint}-{value}` for `sm`, `md`, `lg`, `xl`, and `xxl`.
+- `.d-{breakpoint}-{value}` for `sm`, `md`, `lg`, `xl`, and `2xl`.
 
 Where *value* is one of:
 
@@ -33,7 +33,7 @@ Where *value* is one of:
 
 The display values can be altered by changing the `display` values defined in `$utilities` and recompiling the SCSS.
 
-The media queries affect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on `lg`, `xl`, and `xxl` screens.
+The media queries affect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on `lg`, `xl`, and `2xl` screens.
 
 ## Clearfix
 
@@ -55,7 +55,7 @@ There's no more clearfix helper in v6 as it's an outdated technique. Instead, us
 
 For faster mobile-friendly development, use responsive display classes for showing and hiding elements by device. Avoid creating entirely different versions of the same site, instead hide elements responsively for each screen size.
 
-To hide elements simply use the `.d-none` class or one of the `.d-{sm,md,lg,xl,xxl}-none` classes for any responsive screen variation.
+To hide elements simply use the `.d-none` class or one of the `.d-{sm,md,lg,xl,2xl}-none` classes for any responsive screen variation.
 
 To show an element only on a given interval of screen sizes you can combine one `.d-*-none` class with a `.d-*-*` class, for example `.d-none .d-md-block .d-xl-none` will hide the element for all screen sizes except on medium and large devices.
 
@@ -67,15 +67,15 @@ To show an element only on a given interval of screen sizes you can combine one 
 | Hidden only on sm | `.d-sm-none .d-md-block` |
 | Hidden only on md | `.d-md-none .d-lg-block` |
 | Hidden only on lg | `.d-lg-none .d-xl-block` |
-| Hidden only on xl | `.d-xl-none .d-xxl-block` |
-| Hidden only on xxl | `.d-xxl-none` |
+| Hidden only on xl | `.d-xl-none .d-2xl-block` |
+| Hidden only on 2xl | `.d-2xl-none` |
 | Visible on all | `.d-block` |
 | Visible only on xs | `.d-block .d-sm-none` |
 | Visible only on sm | `.d-none .d-sm-block .d-md-none` |
 | Visible only on md | `.d-none .d-md-block .d-lg-none` |
 | Visible only on lg | `.d-none .d-lg-block .d-xl-none` |
-| Visible only on xl | `.d-none .d-xl-block .d-xxl-none` |
-| Visible only on xxl | `.d-none .d-xxl-block` |
+| Visible only on xl | `.d-none .d-xl-block .d-2xl-none` |
+| Visible only on 2xl | `.d-none .d-2xl-block` |
 </BsTable>
 
 <Example code={`<div class="d-lg-none">hide on lg and wider screens</div>
