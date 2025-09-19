@@ -1,0 +1,108 @@
+---
+interface ReferenceItem {
+  class: string;
+  styles: string | string[] | Record<string, string>;
+  [key: string]: any; // Allow additional properties
+}
+
+interface Props {
+  className?: string;
+  columns?: Array<{ label: string; key: string }>;
+  data?: Array<any>;
+  reference?: Array<ReferenceItem>; // Direct prop for reference data
+}
+
+const {
+  className = "table reference-table",
+  columns,
+  data,
+  reference
+} = Astro.props;
+
+// Use explicit reference prop or data prop
+const referenceData = reference || data || [];
+
+// If no explicit columns provided, infer from the first data item
+const inferredColumns = columns || (() => {
+  if (referenceData.length === 0) {
+    return [
+      { label: 'Class', key: 'class' },
+      { label: 'Styles', key: 'styles' }
+    ];
+  }
+
+  const firstItem = referenceData[0];
+  return Object.keys(firstItem).map(key => ({
+    label: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize first letter
+    key: key
+  }));
+})();
+
+// Transform frontmatter format to table format
+const tableData = referenceData.map((item: ReferenceItem) => {
+  const transformedItem: Record<string, any> = {};
+
+  inferredColumns.forEach(column => {
+    const key = column.key;
+    let value = item[key];
+
+    if (key === 'class' && typeof value === 'string' && !value.startsWith('.')) {
+      value = `.${value}`;
+    }
+
+    if (key === 'styles') {
+      if (typeof value === 'string') {
+        transformedItem[key] = value;
+      } else if (typeof value === 'object' && !Array.isArray(value)) {
+        // Handle object syntax: { prop: value, prop2: value2 }
+        transformedItem[key] = Object.entries(value)
+          .map(([prop, val]) => `${prop}: ${val};`)
+          .join('<br/>');
+      } else if (Array.isArray(value)) {
+        transformedItem[key] = value.map((style: any) => {
+          if (typeof style === 'string') {
+            return style.includes(':') ? style + (style.endsWith(';') ? '' : ';') : style;
+          }
+          if (typeof style === 'object') {
+            return Object.entries(style).map(([prop, val]) => `${prop}: ${val};`).join(' ');
+          }
+          return style;
+        }).join('<br/>');
+      } else {
+        transformedItem[key] = value || '';
+      }
+    } else {
+      transformedItem[key] = value;
+    }
+  });
+
+  return transformedItem;
+});
+---
+
+<div class="table-responsive bd-reference-table">
+  <table class={className}>
+    <thead>
+      <tr>
+        {inferredColumns.map(column => (
+          <th scope="col">{column.label}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {tableData.map((row: any) => (
+        <tr>
+          {inferredColumns.map(column => (
+            <td>
+              {column.key === 'styles' ? (
+                <Fragment set:html={row[column.key]} />
+              ) : (
+                row[column.key]
+              )}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
