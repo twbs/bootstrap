@@ -119,7 +119,8 @@
     - title: API
     - title: Aspect ratio
     - title: Background
-    - title: Borders
+    - title: Border
+    - title: Border radius
     - title: Colors
     - title: Display
     - title: Flex

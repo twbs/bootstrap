@@ -2,6 +2,110 @@
 title: Borders
 description: Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.
 toc: true
+alias:
+  - /docs/5.3/utilities/border/
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/border
+reference:
+  - class: border
+    styles:
+      border: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
+  - class: border-0
+    styles:
+      border: '0'
+  - class: border-top
+    styles:
+      border-block-start: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
+  - class: border-top-0
+    styles:
+      border-block-start: '0'
+  - class: border-end
+    styles:
+      border-inline-end: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
+  - class: border-end-0
+    styles:
+      border-inline-end: '0'
+  - class: border-bottom
+    styles:
+      border-block-end: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
+  - class: border-bottom-0
+    styles:
+      border-block-end: '0'
+  - class: border-start
+    styles:
+      border-inline-start: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
+  - class: border-start-0
+    styles:
+      border-inline-start: '0'
+  - class: border-primary
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-primary-rgb), var(--bs-border-opacity))'
+  - class: border-secondary
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-secondary-rgb), var(--bs-border-opacity))'
+  - class: border-success
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-success-rgb), var(--bs-border-opacity))'
+  - class: border-info
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-info-rgb), var(--bs-border-opacity))'
+  - class: border-warning
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-warning-rgb), var(--bs-border-opacity))'
+  - class: border-danger
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-danger-rgb), var(--bs-border-opacity))'
+  - class: border-light
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-light-rgb), var(--bs-border-opacity))'
+  - class: border-dark
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-dark-rgb), var(--bs-border-opacity))'
+  - class: border-black
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-black-rgb), var(--bs-border-opacity))'
+  - class: border-white
+    styles:
+      --bs-border-opacity: '1'
+      border-color: 'rgba(var(--bs-white-rgb), var(--bs-border-opacity))'
+  - class: border-opacity-10
+    styles:
+      --bs-border-opacity: '0.1'
+  - class: border-opacity-25
+    styles:
+      --bs-border-opacity: '0.25'
+  - class: border-opacity-50
+    styles:
+      --bs-border-opacity: '0.5'
+  - class: border-opacity-75
+    styles:
+      --bs-border-opacity: '0.75'
+  - class: border-opacity-100
+    styles:
+      --bs-border-opacity: '1'
+  - class: border-1
+    styles:
+      border-width: '1px'
+  - class: border-2
+    styles:
+      border-width: '2px'
+  - class: border-3
+    styles:
+      border-width: '3px'
+  - class: border-4
+    styles:
+      border-width: '4px'
+  - class: border-5
+    styles:
+      border-width: '5px'
 ---
 
 import { getData } from '@libs/data'
@@ -71,7 +175,7 @@ Consider our default `.border-success` utility.
 ```css
 .border-success {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity));
 }
 ```
 
@@ -100,35 +204,6 @@ Or, choose from any of the `.border-opacity` utilities:
 <span class="border border-4"></span>
 <span class="border border-5"></span>`} />
 
-## Radius
-
-Add classes to an element to easily round its corners.
-
-<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded" title="Example rounded image" />
-<Placeholder width="75" height="75" class="rounded-top" title="Example top rounded image" />
-<Placeholder width="75" height="75" class="rounded-end" title="Example right rounded image" />
-<Placeholder width="75" height="75" class="rounded-bottom" title="Example bottom rounded image" />
-<Placeholder width="75" height="75" class="rounded-start" title="Example left rounded image" />`} />
-
-### Sizes
-
-Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `5` including `circle` and `pill`, and can be configured by modifying the utilities API.
-
-<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" />
-<Placeholder width="75" height="75" class="rounded-1" title="Example small rounded image" />
-<Placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" />
-<Placeholder width="75" height="75" class="rounded-3" title="Example large rounded image" />
-<Placeholder width="75" height="75" class="rounded-4" title="Example larger rounded image" />
-<Placeholder width="75" height="75" class="rounded-5" title="Example extra large rounded image" />
-<Placeholder width="75" height="75" class="rounded-circle" title="Completely round image" />
-<Placeholder width="150" height="75" class="rounded-pill" title="Rounded pill image" />`} />
-
-<Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded-bottom-1" title="Example small rounded image" />
-<Placeholder width="75" height="75" class="rounded-start-2" title="Example default left rounded image" />
-<Placeholder width="75" height="75" class="rounded-end-circle" title="Example right completely round image" />
-<Placeholder width="75" height="75" class="rounded-start-pill" title="Example left rounded pill image" />
-<Placeholder width="75" height="75" class="rounded-5 rounded-top-0" title="Example extra large bottom rounded image" />`} />
-
 ## CSS
 
 ### Variables
@@ -138,8 +213,6 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 ### Sass variables
 
 <ScssDocs name="border-variables" file="scss/_variables.scss" />
-
-<ScssDocs name="border-radius-variables" file="scss/_variables.scss" />
 
 Variables for setting `border-color` in `.border-*-subtle` utilities in light and dark mode:
 
@@ -164,5 +237,3 @@ Color mode adaptive border colors are also available as a Sass map:
 Border utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
 <ScssDocs name="utils-borders" file="scss/_utilities.scss" />
-
-<ScssDocs name="utils-border-radius" file="scss/_utilities.scss" />
