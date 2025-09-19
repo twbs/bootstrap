@@ -59,7 +59,7 @@
       }
 
       &:last-child {
-        color: var(--bs-indigo-500);
+        color: light-dark(var(--bs-indigo-500), var(--bs-indigo-300));
       }
     }
 
