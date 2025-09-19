@@ -9,6 +9,7 @@ import Alert from './src/alert.js'
 import Button from './src/button.js'
 import Carousel from './src/carousel.js'
 import Collapse from './src/collapse.js'
+import Dialog from './src/dialog.js'
 import Dropdown from './src/dropdown.js'
 import Modal from './src/modal.js'
 import Offcanvas from './src/offcanvas.js'
@@ -23,6 +24,7 @@ export default {
   Button,
   Carousel,
   Collapse,
+  Dialog,
   Dropdown,
   Modal,
   Offcanvas,
