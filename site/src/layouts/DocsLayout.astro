@@ -10,10 +10,7 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 import DocsSidebar from '@components/DocsSidebar.astro'
 import TableOfContents from '@components/TableOfContents.astro'
 import ReferenceTable from '@components/ReferenceTable.astro'
-import { readFileSync } from 'node:fs'
-import { parse } from 'yaml'
-import { fileURLToPath } from 'node:url'
-import { join, dirname } from 'node:path'
+import { getData } from '@libs/data'
 import GitHubIcon from '@components/icons/GitHubIcon.astro'
 import MdnIcon from '@components/icons/MdnIcon.astro'
 import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
@@ -30,15 +27,8 @@ interface Props {
   id: CollectionEntry<'docs'>['id']
 }
 
-// Read and parse the YAML file directly
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-const sidebarPath = join(__dirname, '../../data/sidebar.yml')
-const sidebarContent = readFileSync(sidebarPath, 'utf8')
-const sidebar = parse(sidebarContent) as Array<{
-  title: string
-  pages?: Array<{ title: string }>
-}>
+// Get sidebar data using the data library
+const sidebar = getData('sidebar')
 
 const { frontmatter, headings, id } = Astro.props
 const { slug } = Astro.params
