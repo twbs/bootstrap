@@ -91,6 +91,11 @@
     --#{$prefix}root-font-size: #{$font-size-root};
   }
   --#{$prefix}body-font-family: #{meta.inspect($font-family-base)};
+
+  --#{$prefix}font-size-base: #{$font-size-base}; // 14px
+  --#{$prefix}font-size-sm: calc(#{$font-size-base} * .9285);
+  --#{$prefix}font-size-lg: calc(#{$font-size-base} * 1.285);
+
   @include rfs($font-size-base, --#{$prefix}body-font-size);
   --#{$prefix}body-font-weight: #{$font-weight-base};
   --#{$prefix}body-line-height: #{$line-height-base};
@@ -237,7 +242,7 @@
     --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
     --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
-    --#{$prefix}code-color: #{$code-color-dark};
+    // --#{$prefix}code-color: #{$code-color-dark}; // removed in v6
     --#{$prefix}highlight-color: #{$mark-color-dark};
     --#{$prefix}highlight-bg: #{$mark-bg-dark};
 

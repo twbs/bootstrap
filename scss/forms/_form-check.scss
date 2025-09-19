@@ -62,7 +62,237 @@ $form-switch-checked-bg-image:    url("data:image/svg+xml,<svg xmlns='http://www
 $form-switch-checked-bg-position: right center !default;
 // scss-docs-end form-switch-variables
 
+$check-border-color: var(--#{$prefix}border-color) !default;
+$check-checked-bg: var(--#{$prefix}primary-base) !default;
+$check-checked-border-color: $check-checked-bg !default;
+$check-indeterminate-bg: var(--#{$prefix}primary-base) !default;
+$check-indeterminate-border-color: $check-indeterminate-bg !default;
+$check-disabled-bg: var(--#{$prefix}secondary-bg) !default;
+$check-disabled-border-color: $check-disabled-bg !default;
+$check-disabled-opacity: .65 !default;
+
 @layer forms {
+  b-checkgroup,
+  b-radiogroup {
+    display: flex;
+    gap: var(--#{$prefix}gap, .5rem);
+    align-items: var(--#{$prefix}align-items, start);
+
+    .description {
+      color: var(--#{$prefix}secondary-text);
+    }
+  }
+
+  .check,
+  .radio {
+    --#{$prefix}check-bg: transparent;
+    --#{$prefix}check-border-color: #{$check-border-color};
+    --#{$prefix}check-checked-bg: #{$check-checked-bg};
+    --#{$prefix}check-checked-border-color: #{$check-checked-border-color};
+    --#{$prefix}check-indeterminate-bg: #{$check-indeterminate-bg};
+    --#{$prefix}check-indeterminate-border-color: #{$check-indeterminate-border-color};
+    --#{$prefix}check-disabled-bg: #{$check-disabled-bg};
+    --#{$prefix}check-disabled-border-color: #{$check-disabled-border-color};
+    --#{$prefix}check-disabled-opacity: #{$check-disabled-opacity};
+  }
+
+  .check {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    margin-block: .125rem;
+
+    :where(svg, input) {
+      flex-shrink: 0;
+      grid-row-start: 1;
+      grid-column-start: 1;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    :where(input) {
+      appearance: none;
+      // later: maybe set a tertiary bg color?
+      background-color: var(--#{$prefix}check-bg);
+      border: 1px solid var(--#{$prefix}check-border-color);
+      // stylelint-disable-next-line property-disallowed-list
+      border-radius: .25em;
+    }
+
+    :where(input:checked, input:indeterminate) {
+      background-color: var(--#{$prefix}check-checked-bg);
+      border-color: var(--#{$prefix}check-checked-border-color);
+    }
+
+    &:has(input:checked) .checked,
+    &:has(input:indeterminate) .indeterminate {
+      display: block;
+      color: var(--#{$prefix}primary-contrast);
+      stroke: currentcolor;
+    }
+
+    &:has(input:disabled) {
+      --#{$prefix}check-bg: var(--#{$prefix}check-disabled-bg);
+
+      ~ label {
+        color: var(--#{$prefix}secondary-text);
+        cursor: default;
+      }
+    }
+
+    &:has(input:disabled:checked) {
+      opacity: var(--#{$prefix}check-disabled-opacity);
+    }
+
+    :where(svg) {
+      pointer-events: none;
+    }
+
+    :where(svg path) {
+      display: none;
+    }
+  }
+
+  .radio {
+    position: relative;
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    margin-block: .125rem;
+    appearance: none;
+    background-color: var(--#{$prefix}check-bg);
+    border: 1px solid var(--#{$prefix}check-border-color);
+    // stylelint-disable-next-line property-disallowed-list
+    border-radius: 50%;
+
+    &:checked {
+      color: var(--#{$prefix}primary-contrast);
+      background-color: var(--#{$prefix}check-checked-bg);
+      border-color: var(--#{$prefix}check-checked-border-color);
+
+      &::before {
+        position: absolute;
+        inset: .25rem;
+        content: "";
+        background-color: currentcolor;
+        // stylelint-disable-next-line property-disallowed-list
+        border-radius: 50%;
+      }
+    }
+
+    &:disabled {
+      --#{$prefix}check-bg: var(--#{$prefix}check-disabled-bg);
+
+      ~ label {
+        color: var(--#{$prefix}secondary-text);
+        cursor: default;
+      }
+    }
+  }
+
+  .switch {
+    --#{$prefix}switch-height: 1.25rem;
+    --#{$prefix}switch-width: calc(var(--#{$prefix}switch-height) * 1.5);
+    --#{$prefix}switch-padding: .0625rem;
+    --#{$prefix}switch-bg: var(--#{$prefix}secondary-bg);
+    --#{$prefix}switch-border-width: var(--#{$prefix}border-width);
+    --#{$prefix}switch-border-color: var(--#{$prefix}border-color);
+    --#{$prefix}switch-indicator-bg: var(--#{$prefix}white);
+    --#{$prefix}switch-checked-bg: var(--#{$prefix}primary-base);
+    --#{$prefix}switch-checked-indicator-bg: var(--#{$prefix}white);
+    --#{$prefix}switch-disabled-bg: var(--#{$prefix}secondary-bg);
+    --#{$prefix}switch-disabled-indicator-bg: var(--#{$prefix}secondary-text);
+
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: var(--#{$prefix}switch-width);
+    height: var(--#{$prefix}switch-height);
+    padding: var(--#{$prefix}switch-padding);
+    background-color: var(--#{$prefix}switch-bg);
+    border: var(--#{$prefix}switch-border-width) solid var(--#{$prefix}switch-border-color);
+    // stylelint-disable-next-line property-disallowed-list
+    border-radius: 10rem;
+    box-shadow: inset 0 1px 2px rgba($black, .05);
+    // stylelint-disable-next-line property-disallowed-list
+    transition: .15s ease-in-out;
+    transition-property: padding-inline-start, background-color;
+
+    &::before {
+      flex-shrink: 0;
+      width: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2) - var(--#{$prefix}switch-border-width) * 2);
+      height: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2) - var(--#{$prefix}switch-border-width) * 2);
+      // width: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2));
+      // height: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2));
+      content: "";
+      background-color: var(--#{$prefix}switch-indicator-bg);
+      // stylelint-disable-next-line property-disallowed-list
+      border-radius: 50%;
+      box-shadow: 0 1px 2px rgba($black, .1);
+    }
+
+    input {
+      position: absolute;
+      inset: 0;
+      appearance: none;
+      background-color: transparent;
+    }
+
+    &:has(input:checked) {
+      padding-inline-start: calc(var(--#{$prefix}switch-height) / 2 + var(--#{$prefix}switch-padding));
+      background-color: var(--#{$prefix}primary-base);
+    }
+
+    &:has(input:disabled) {
+      --#{$prefix}switch-bg: var(--#{$prefix}switch-disabled-bg);
+      --#{$prefix}switch-indicator-bg: var(--#{$prefix}switch-disabled-indicator-bg);
+
+      &::before { opacity: .4; }
+
+      ~ label {
+        color: var(--#{$prefix}secondary-text);
+        cursor: default;
+      }
+    }
+  }
+  .switch-sm {
+    --#{$prefix}switch-height: 1em;
+  }
+  .switch-lg {
+    --#{$prefix}switch-height: 2em;
+  }
+
+  .select {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    > select,
+    > svg {
+      grid-row-start: 1;
+      grid-column-start: 1;
+    }
+
+    > select {
+      padding: .5rem 3rem .5rem 1em;
+      font-size: 14px;
+      line-height: 20px;
+      appearance: none;
+      background-color: var(--#{$prefix}body-bg);
+      border: 1px solid var(--#{$prefix}border-color);
+      // stylelint-disable-next-line property-disallowed-list
+      border-radius: .5em;
+    }
+
+    > svg {
+      align-self: center;
+      justify-self: end;
+      width: 1rem;
+      height: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
   .form-check {
     display: block;
     min-height: $form-check-min-height;
