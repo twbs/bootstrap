@@ -158,14 +158,16 @@
   --#{$prefix}border-style: #{$border-style};
   --#{$prefix}border-color: #{$border-color};
   --#{$prefix}border-color-translucent: #{$border-color-translucent};
+  // scss-docs-end root-border-var
 
+  // scss-docs-start root-border-radius-var
   --#{$prefix}border-radius: #{$border-radius};
   --#{$prefix}border-radius-sm: #{$border-radius-sm};
   --#{$prefix}border-radius-lg: #{$border-radius-lg};
   --#{$prefix}border-radius-xl: #{$border-radius-xl};
   --#{$prefix}border-radius-xxl: #{$border-radius-xxl};
   --#{$prefix}border-radius-pill: #{$border-radius-pill};
-  // scss-docs-end root-border-var
+  // scss-docs-end root-border-radius-var
 
   --#{$prefix}box-shadow: #{$box-shadow};
   --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
