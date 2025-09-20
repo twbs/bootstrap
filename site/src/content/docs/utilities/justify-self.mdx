@@ -1,0 +1,217 @@
+---
+title: Justify self
+description: Use the justify-self utilities to control how an individual element is aligned along its inline (horizontal) axis.
+toc: true
+added:
+  version: "5.4"
+---
+
+Use the [`justify-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self) utilities to control the horizontal alignment of individual elements. These utilities work with both CSS Grid layouts and Bootstrap's flexbox-based grid system.
+
+## Classes
+
+The `justify-self` utilities align individual elements along the horizontal axis. Choose from the available alignment values: `start`, `end`, `center`, `stretch`, and `auto`.
+
+<Example class="bd-example-grid" code={`<div class="row row-cols-3">
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-start">justify-self-start</div>
+    </div>
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-center">justify-self-center</div>
+    </div>
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-end">justify-self-end</div>
+    </div>
+</div>`
+} />
+
+<Example class="bd-example-grid" code={`<div class="row row-cols-2">
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-stretch">justify-self-stretch</div>
+    </div>
+    <div class="col">
+      <div class="p-2 bg-light border justify-self-auto">justify-self-auto</div>
+    </div>
+</div>`} />
+
+## Responsive
+
+All `justify-self` utilities that apply to all breakpoints, from `xs` to `xxl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format `justify-self-{value}` for `xs` and `justify-self-{breakpoint}-{value}` for `sm`, `md`, `lg`, `xl`, and `xxl`.
+
+<ul>
+  <li><code>.justify-self-auto</code></li>
+  <li><code>.justify-self-start</code></li>
+  <li><code>.justify-self-end</code></li>
+  <li><code>.justify-self-center</code></li>
+  <li><code>.justify-self-stretch</code></li>
+</ul>
+
+For `sm`, `md`, `lg`, `xl`, and `xxl`, the responsive classes follow the same pattern:
+
+<ul>
+  <li><code>.justify-self-sm-auto</code></li>
+  <li><code>.justify-self-md-start</code></li>
+  <li><code>.justify-self-lg-center</code></li>
+  <li><code>.justify-self-xl-end</code></li>
+  <li><code>.justify-self-xxl-stretch</code></li>
+</ul>
+
+## Usage with Bootstrap's grid system
+
+The `justify-self` utilities work seamlessly with Bootstrap's flexbox-based grid system. They provide granular control over individual elements within columns, complementing the existing column classes and `justify-content` utilities.
+
+While `justify-content` affects the positioning of columns within the row, `justify-self` allows each element within a column to have its own horizontal alignment.
+
+<Example class="bd-example-grid" code={`<div class="row row-cols-3">
+    <div class="col p-0 border">
+      <div class="p-3 bg-primary text-white justify-self-start">
+        justify-self-start
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-secondary text-white justify-self-center">
+        justify-self-center
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-success text-white justify-self-end">
+        justify-self-end
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-3">
+    <div class="col p-0 border">
+      <div class="p-3 bg-info text-white justify-self-start">
+        justify-self-start
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-warning text-dark justify-self-stretch">
+        justify-self-stretch
+      </div>
+    </div>
+    <div class="col p-0 border">
+      <div class="p-3 bg-danger text-white justify-self-end">
+        justify-self-end
+      </div>
+    </div>
+</div>`} />
+
+## Practical examples
+
+Here are some practical examples showing how `justify-self` can be used to create flexible layouts:
+
+<Example class="bd-example-grid" code={`<div class="row justify-content-center">
+    <div class="col-8 p-0 border">
+      <div class="p-3 bg-info text-white">
+        Full width content in centered column
+      </div>
+    </div>
+    <div class="col-8 p-0 border">
+      <div class="p-3 bg-warning text-dark justify-self-start">
+        justify-self-start: Aligns to left edge of column
+      </div>
+    </div>
+    <div class="col-8 p-0 border">
+      <div class="p-3 bg-success text-white justify-self-end">
+        justify-self-end: Aligns to right edge of column
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 p-0 border">
+      <div class="p-3 bg-primary text-white">
+        Normal content fills column width
+      </div>
+      <div class="p-3 bg-secondary text-white justify-self-center" style="width: 60%;">
+        justify-self-center: Centers narrower content within column
+      </div>
+    </div>
+    <div class="col-6 p-0 border">
+      <div class="p-3 bg-danger text-white justify-self-end" style="width: 70%;">
+        justify-self-end: Aligns narrower content to column's end
+      </div>
+      <div class="p-3 bg-dark text-white">
+        Back to full width
+      </div>
+    </div>
+  </div>`} />
+
+## Usage with CSS Grid
+
+The `justify-self` utilities are also valuable when working with CSS Grid layouts, where they provide individual control over grid items within their cells:
+
+<Example class="bd-example-grid" code={`<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 1rem; border: 2px solid #dee2e6;">
+    <div class="p-2 bg-primary text-white text-center">Default</div>
+    <div class="p-2 bg-primary text-white text-center">Default</div>
+    <div class="p-2 bg-primary text-white text-center">Default</div>
+    <div class="p-2 bg-primary text-white text-center">Default</div>
+    
+    <div class="p-2 bg-success text-white justify-self-start">Start</div>
+    <div class="p-2 bg-info text-white justify-self-center">Center</div>
+    <div class="p-2 bg-warning text-dark justify-self-end">End</div>
+    <div class="p-2 bg-danger text-white justify-self-stretch">Stretch</div>
+    
+    <div class="p-2 bg-secondary text-white justify-self-end">End</div>
+    <div class="p-2 bg-success text-white justify-self-start">Start</div>
+    <div class="p-2 bg-info text-white justify-self-stretch">Stretch</div>
+    <div class="p-2 bg-warning text-dark justify-self-center">Center</div>
+  </div>`} />
+
+In CSS Grid, each item can be individually positioned within its grid cell using `justify-self`, providing precise control over layout that complements the grid container's overall alignment settings.
+
+## Alternative approaches
+
+While `justify-self` provides convenient and direct control, similar results can often be achieved using traditional Bootstrap utilities:
+
+<Example class="bd-example-grid" code={`<div class="row justify-content-center">
+    <div class="col-8 p-0 border">
+      <div class="p-3 bg-info text-white">
+        Full width content in centered column
+      </div>
+    </div>
+    <div class="col-8 p-0 border d-flex">
+      <div class="p-3 bg-warning text-dark">
+        Using d-flex: Aligns to left edge of column
+      </div>
+    </div>
+    <div class="col-8 p-0 border d-flex justify-content-end">
+      <div class="p-3 bg-success text-white">
+        Using justify-content-end: Aligns to right edge of column
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 p-0 border">
+      <div class="p-3 bg-primary text-white">
+        Normal content fills column width
+      </div>
+      <div class="p-3 bg-secondary text-white mx-auto" style="width: 60%;">
+        Using mx-auto: Centers narrower content within column
+      </div>
+    </div>
+    <div class="col-6 p-0 border">
+      <div class="p-3 bg-danger text-white ms-auto" style="width: 70%;">
+        Using ms-auto: Aligns narrower content to column's end
+      </div>
+      <div class="p-3 bg-dark text-white">
+        Back to full width
+      </div>
+    </div>
+  </div>`} />
+
+**Comparison of approaches:**
+- **justify-self**: Direct control, cleaner markup, works consistently across different layout contexts
+- **Traditional utilities**: May require additional `d-flex` classes or margin utilities.
+
+Choose the approach that best fits your project's needs.
+
+## CSS
+
+### Sass utilities API
+
+Justify self utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-justify-self" file="scss/_utilities.scss" />
