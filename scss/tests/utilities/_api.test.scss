@@ -11,16 +11,19 @@ $utilities: ();
     $utilities: (
       margin: (
         property: margin,
+        important: true,
         values: auto
       ),
       padding: (
         property: padding,
         responsive: true,
+        important: true,
         values: 1rem
       ),
       font-size: (
         property: font-size,
         values: (large: 1.25rem),
+        important: true,
         print: true
       )
     ) !global;
@@ -70,6 +73,55 @@ $utilities: ();
         }
       }
 
+    }
+  }
+
+  @include it("generates utilities without !important when important: false or not set") {
+    $utilities: (
+      opacity: (
+        property: opacity,
+        values: (
+          0: 0,
+          50: .5,
+          100: 1
+        )
+      ),
+      text-align: (
+        property: text-align,
+        important: false,
+        values: (
+          start: left,
+          center: center
+        )
+      )
+    ) !global;
+
+    @include assert() {
+      @include output() {
+        @import "../../utilities/api";
+      }
+
+      @include expect() {
+        .opacity-0 {
+          opacity: 0;
+        }
+
+        .opacity-50 {
+          opacity: .5;
+        }
+
+        .opacity-100 {
+          opacity: 1;
+        }
+
+        .text-align-start {
+          text-align: left;
+        }
+
+        .text-align-center {
+          text-align: center;
+        }
+      }
     }
   }
 }

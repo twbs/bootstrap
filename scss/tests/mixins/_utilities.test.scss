@@ -6,7 +6,6 @@
 
 $true-terminal-output: false;
 $prefix: bs-;
-$enable-important-utilities: false;
 
 // Important: Do not import rfs to check that the mixin just calls the appropriate functions from it
 // @import "../../mixins/utilities";
@@ -41,13 +40,12 @@ $enable-important-utilities: false;
     }
   }
 
-  @include describe("global $enable-important-utilities: true") {
+  @include describe("per-utility important: true") {
     @include it("sets !important") {
-      $enable-important-utilities: true !global;
-
       @include test-generate-utility(
         (
           property: "padding",
+          important: true,
           values: (small: .5rem, large: 2rem)
         )
       ) {
@@ -59,8 +57,6 @@ $enable-important-utilities: false;
           padding: 2rem !important;
         }
       }
-
-      $enable-important-utilities: false !global;
     }
   }
 
