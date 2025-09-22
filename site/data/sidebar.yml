@@ -117,6 +117,9 @@
   icon_color: red
   pages:
     - title: API
+    - title: Align content
+    - title: Align items
+    - title: Align self
     - title: Aspect ratio
     - title: Background
     - title: Border
@@ -126,10 +129,13 @@
     - title: Flex
     - title: Float
     - title: Interactions
+    - title: Justify content
+    - title: Justify items
     - title: Link
     - title: Object fit
     - title: Opacity
     - title: Overflow
+    - title: Place items
     - title: Position
     - title: Shadows
     - title: Sizing
