@@ -623,6 +623,108 @@ Responsive variations also exist for `align-content`.
 })}
 </ul>
 
+## CSS Grid utilities
+
+While most of the utilities above apply to flexbox containers, Bootstrap also includes utilities specifically for CSS Grid layouts.
+
+### Justify items
+
+Use `justify-items` utilities on CSS Grid containers to change the alignment of grid items along the inline (row) axis. Choose from `start`, `end`, `center`, or `stretch` (browser default).
+
+<div class="bd-example bd-example-flex vstack gap-3">
+  <div class="d-grid gap-3 justify-items-start" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+  </div>
+  <div class="d-grid gap-3 justify-items-end" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+  </div>
+  <div class="d-grid gap-3 justify-items-center" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+  </div>
+  <div class="d-grid gap-3 justify-items-stretch" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+  </div>
+</div>
+
+```html
+<div class="d-grid justify-items-start">...</div>
+<div class="d-grid justify-items-end">...</div>
+<div class="d-grid justify-items-center">...</div>
+<div class="d-grid justify-items-stretch">...</div>
+```
+
+Responsive variations also exist for `justify-items`.
+
+<ul>
+{getData('breakpoints').map((breakpoint) => {
+  return (
+    <Fragment>
+      <li><code>.justify-items{breakpoint.abbr}-start</code></li>
+      <li><code>.justify-items{breakpoint.abbr}-end</code></li>
+      <li><code>.justify-items{breakpoint.abbr}-center</code></li>
+      <li><code>.justify-items{breakpoint.abbr}-stretch</code></li>
+    </Fragment>
+  )
+})}
+</ul>
+
+### Place items
+
+Use `place-items` utilities on CSS Grid containers as a shorthand to set both `align-items` and `justify-items` at once. Choose from `start`, `end`, `center`, or `stretch` (browser default).
+
+<div class="bd-example bd-example-flex vstack gap-3">
+  <div class="d-grid gap-3 place-items-start" style="grid-template-columns: 1fr 1fr 1fr; height: 150px;">
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+  </div>
+  <div class="d-grid gap-3 place-items-end" style="grid-template-columns: 1fr 1fr 1fr; height: 150px;">
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+  </div>
+  <div class="d-grid gap-3 place-items-center" style="grid-template-columns: 1fr 1fr 1fr; height: 150px;">
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+  </div>
+  <div class="d-grid gap-3 place-items-stretch" style="grid-template-columns: 1fr 1fr 1fr; height: 150px;">
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+    <div class="p-2">Grid item</div>
+  </div>
+</div>
+
+```html
+<div class="d-grid place-items-start">...</div>
+<div class="d-grid place-items-end">...</div>
+<div class="d-grid place-items-center">...</div>
+<div class="d-grid place-items-stretch">...</div>
+```
+
+Responsive variations also exist for `place-items`.
+
+<ul>
+{getData('breakpoints').map((breakpoint) => {
+  return (
+    <Fragment>
+      <li><code>.place-items{breakpoint.abbr}-start</code></li>
+      <li><code>.place-items{breakpoint.abbr}-end</code></li>
+      <li><code>.place-items{breakpoint.abbr}-center</code></li>
+      <li><code>.place-items{breakpoint.abbr}-stretch</code></li>
+    </Fragment>
+  )
+})}
+</ul>
+
 ## Media object
 
 Looking to replicate the [media object component](https://getbootstrap.com/docs/4.6/components/media-object/) from Bootstrap 4? Recreate it in no time with a few flex utilities that allow even more flexibility and customization than before.
@@ -651,6 +753,6 @@ And say you want to vertically center the content next to the image:
 
 ### Sass utilities API
 
-Flexbox utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+Flexbox and CSS Grid utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
 <ScssDocs name="utils-flex" file="scss/_utilities.scss" />
