@@ -84,9 +84,12 @@ const dataDefinitions = {
         .object({
           title: z.string().optional(),
           group: z.string().optional(),
-          pages: z.object({
-            title: z.string()
-          }).array().optional()
+          pages: z
+            .object({
+              title: z.string()
+            })
+            .array()
+            .optional()
         })
         .array()
         .optional()
