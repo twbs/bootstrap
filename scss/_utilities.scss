@@ -355,6 +355,16 @@ $utilities: map.merge(
         evenly: space-evenly,
       )
     ),
+    "justify-items": (
+      responsive: true,
+      property: justify-items,
+      values: (
+        start: start,
+        end: end,
+        center: center,
+        stretch: stretch,
+      )
+    ),
     "justify-self": (
       responsive: true,
       property: justify-self,
@@ -396,6 +406,16 @@ $utilities: map.merge(
         end: flex-end,
         center: center,
         baseline: baseline,
+        stretch: stretch,
+      )
+    ),
+    "place-items": (
+      responsive: true,
+      property: place-items,
+      values: (
+        start: start,
+        end: end,
+        center: center,
         stretch: stretch,
       )
     ),
