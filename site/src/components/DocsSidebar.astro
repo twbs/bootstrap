@@ -29,8 +29,50 @@ const sidebar = getData('sidebar')
                 {group.title}
               </strong>
               <ul class="list-unstyled fw-normal pb-2 small">
-                {group.pages?.map((page) => {
-                  const docSlug = getSlug(page.title)
+                {group.pages?.map((item: any) => {
+                  // Handle sub-groups
+                  if (item.group && item.pages) {
+                    return (
+                      <li class="mb-2">
+                        <div class="bd-links-subgroup fw-semibold mt-3">
+                          {item.group}
+                        </div>
+                        <ul class="list-unstyled">
+                          {item.pages.map((page: any) => {
+                            const docSlug = getSlug(page.title)
+                            const unversionedPageSlug = `${groupSlug}/${docSlug}`
+
+                            const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
+                            const active = Astro.params.slug === unversionedPageSlug
+
+                            const generatedPage = docsPages.find((page) => page.slug === unversionedPageSlug)
+
+                            // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
+                            if (!generatedPage) {
+                              throw new Error(
+                                `The page '${page.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`
+                              )
+                            }
+
+                            return (
+                              <li>
+                                <a
+                                  href={url}
+                                  class:list={['bd-links-link d-inline-block rounded', { active }]}
+                                  aria-current={active ? 'page' : undefined}
+                                >
+                                  {page.title}
+                                </a>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      </li>
+                    )
+                  }
+
+                  // Handle regular pages
+                  const docSlug = getSlug(item.title)
                   const unversionedPageSlug = `${groupSlug}/${docSlug}`
 
                   const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
@@ -41,7 +83,7 @@ const sidebar = getData('sidebar')
                   // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
                   if (!generatedPage) {
                     throw new Error(
-                      `The page '${page.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`
+                      `The page '${item.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`
                     )
                   }
 
@@ -52,7 +94,7 @@ const sidebar = getData('sidebar')
                         class:list={['bd-links-link d-inline-block rounded', { active }]}
                         aria-current={active ? 'page' : undefined}
                       >
-                        {page.title}
+                        {item.title}
                       </a>
                     </li>
                   )
