@@ -394,14 +394,14 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, weâ€
     if ((color.name !== "white") && (color.name !== "gray") && (color.name !== "gray-dark")) {
       return (
         <div class="col-md-4 mb-3">
-          <div class={`p-3 mb-2 position-relative swatch-${color.name}`}>
+          <div class={`p-3 mb-2 position-relative new-${color.name}-500`}>
             <strong class="d-block">${color.name}</strong>
             {color.hex}
           </div>
 
-          {getSequence(100, 900, 100).map((value) => {
+          {["050", ...getSequence(100, 900, 100), 950].map((value) => {
             return (
-              <div class={`p-3 bd-${color.name}-${value}`}>${color.name}-{value}</div>
+              <div class={`p-3 new-${color.name}-${value}`}>${color.name}-{value}</div>
             )
           })}
         </div>

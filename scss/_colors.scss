@@ -1,3 +1,67 @@
+// stylelint-disable hue-degree-notation, @stylistic/number-leading-zero
+
+$new-blue: oklch(60% 0.24 258) !default;
+$new-indigo: oklch(56% 0.26 288) !default;
+$new-violet: oklch(56% 0.24 300) !default;
+$new-purple: oklch(56% 0.24 320) !default;
+$new-pink: oklch(60% 0.22 4) !default;
+$new-red: oklch(60% 0.22 20) !default;
+$new-orange: oklch(70% 0.22 52) !default;
+$new-brown: oklch(60% 0.12 54) !default;
+$new-yellow: oklch(86% 0.22 88) !default;
+$new-lime: oklch(65% 0.24 135) !default;
+$new-green: oklch(64% 0.22 160) !default;
+$new-teal: oklch(68% 0.22 190) !default;
+$new-cyan: oklch(69% 0.22 220) !default;
+$new-gray: oklch(77% 0.02 248) !default;
+
+$hues: (
+  blue: $new-blue,
+  indigo: $new-indigo,
+  violet: $new-violet,
+  purple: $new-purple,
+  pink: $new-pink,
+  red: $new-red,
+  orange: $new-orange,
+  brown: $new-brown,
+  yellow: $new-yellow,
+  lime: $new-lime,
+  green: $new-green,
+  teal: $new-teal,
+  cyan: $new-cyan,
+  gray: $new-gray
+) !default;
+
+:root {
+  @each $color, $hue in $hues {
+    --new-#{$color}-050: color-mix(in srgb, #fff 90%, #{$hue});
+    --new-#{$color}-100: color-mix(in srgb, #fff 80%, #{$hue});
+    --new-#{$color}-200: color-mix(in srgb, #fff 60%, #{$hue});
+    --new-#{$color}-300: color-mix(in srgb, #fff 40%, #{$hue});
+    --new-#{$color}-400: color-mix(in srgb, #fff 20%, #{$hue});
+    --new-#{$color}-500: #{$hue};
+    --new-#{$color}-600: color-mix(in srgb, #000 16%, #{$hue});
+    --new-#{$color}-700: color-mix(in srgb, #000 32%, #{$hue});
+    --new-#{$color}-800: color-mix(in srgb, #000 48%, #{$hue});
+    --new-#{$color}-900: color-mix(in srgb, #000 64%, #{$hue});
+    --new-#{$color}-950: color-mix(in srgb, #000 76%, #{$hue});
+  }
+}
+
+@each $color, $hue in $hues {
+  .new-#{$color}-050 { background-color: var(--new-#{$color}-050); }
+  .new-#{$color}-100 { background-color: var(--new-#{$color}-100); }
+  .new-#{$color}-200 { background-color: var(--new-#{$color}-200); }
+  .new-#{$color}-300 { background-color: var(--new-#{$color}-300); }
+  .new-#{$color}-400 { background-color: var(--new-#{$color}-400); }
+  .new-#{$color}-500 { background-color: var(--new-#{$color}-500); }
+  .new-#{$color}-600 { background-color: var(--new-#{$color}-600); }
+  .new-#{$color}-700 { background-color: var(--new-#{$color}-700); }
+  .new-#{$color}-800 { background-color: var(--new-#{$color}-800); }
+  .new-#{$color}-900 { background-color: var(--new-#{$color}-900); }
+  .new-#{$color}-950 { background-color: var(--new-#{$color}-950); }
+}
+
 $blue: #0d6efd !default;
 $blue-100: #cfe2ff !default;
 $blue-200: #9ec5fe !default;
