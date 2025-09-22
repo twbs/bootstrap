@@ -109,8 +109,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/markdown-remark": "^6.3.6",
-    "@astrojs/mdx": "^4.3.5",
+    "@astrojs/markdown-remark": "^6.3.7",
+    "@astrojs/mdx": "^4.3.6",
     "@astrojs/prism": "^3.3.0",
     "@astrojs/sitemap": "^3.6.0",
     "@babel/cli": "^7.28.3",
@@ -126,7 +126,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@types/prismjs": "^1.26.5",
-    "astro": "^5.13.9",
+    "astro": "^5.13.10",
     "astro-auto-import": "^0.4.4",
     "autoprefixer": "^10.4.21",
     "bundlewatch": "^0.4.1",
@@ -180,7 +180,7 @@
     "terser": "^5.44.0",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "24.10.17",
-    "zod": "^4.1.9"
+    "zod": "^4.1.11"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
