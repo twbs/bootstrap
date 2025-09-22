@@ -1,0 +1,73 @@
+---
+title: Text alignment
+description: Easily realign text with text alignment utilities for start, end, and center alignment.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
+reference:
+  - class: text-start
+    styles:
+      text-align: 'left'
+  - class: text-center
+    styles:
+      text-align: 'center'
+  - class: text-end
+    styles:
+      text-align: 'right'
+---
+
+import { getData } from '@libs/data'
+
+## Overview
+
+Easily realign text to components with text alignment classes. For start, end, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
+
+## Basic usage
+
+<Example code={`<p class="text-start">Start aligned text on all viewport sizes.</p>
+<p class="text-center">Center aligned text on all viewport sizes.</p>
+<p class="text-end">End aligned text on all viewport sizes.</p>
+
+<p class="text-sm-end">End aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-end">End aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-end">End aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-end">End aligned text on viewports sized XL (extra large) or wider.</p>
+<p class="text-xxl-end">End aligned text on viewports sized XXL (extra extra large) or wider.</p>`} />
+
+<Callout>
+Note that we don't provide utility classes for justified text. While, aesthetically, justified text might look more appealing, it does make word-spacing more random and therefore harder to read.
+</Callout>
+
+## Responsive
+
+Responsive variations also exist for `text-align`.
+
+<ul>
+{getData('breakpoints').map((breakpoint) => {
+  return (
+    <Fragment key={breakpoint.abbr}>
+      <li><code>.text{breakpoint.abbr}-start</code></li>
+      <li><code>.text{breakpoint.abbr}-center</code></li>
+      <li><code>.text{breakpoint.abbr}-end</code></li>
+    </Fragment>
+  )
+})}
+</ul>
+
+## CSS
+
+### Sass utilities API
+
+Text alignment utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"text-align": (
+  responsive: true,
+  property: text-align,
+  class: text,
+  values: (
+    start: left,
+    end: right,
+    center: center,
+  )
+),
+```

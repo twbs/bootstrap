@@ -1,0 +1,208 @@
+---
+title: Margin
+description: Use margin utilities to control the space around elements with responsive margin classes.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+reference:
+  - class: m-0
+    styles:
+      margin: '0'
+  - class: m-1
+    styles:
+      margin: '0.25rem'
+  - class: m-2
+    styles:
+      margin: '0.5rem'
+  - class: m-3
+    styles:
+      margin: '1rem'
+  - class: m-4
+    styles:
+      margin: '1.5rem'
+  - class: m-5
+    styles:
+      margin: '3rem'
+  - class: m-auto
+    styles:
+      margin: 'auto'
+  - class: mt-0
+    styles:
+      margin-top: '0'
+  - class: me-0
+    styles:
+      margin-right: '0'
+  - class: mb-0
+    styles:
+      margin-bottom: '0'
+  - class: ms-0
+    styles:
+      margin-left: '0'
+  - class: mx-0
+    styles:
+      margin-right: '0'
+      margin-left: '0'
+  - class: my-0
+    styles:
+      margin-top: '0'
+      margin-bottom: '0'
+---
+
+import { getData } from '@libs/data'
+
+## Overview
+
+Use margin utilities to control the outer space around elements. Margin utilities are built from a default Sass map ranging from `.25rem` to `3rem`.
+
+<Callout>
+**Using the CSS Grid layout module?** Consider using [the gap utility]([[docsref:/utilities/spacing#gap]]) instead.
+</Callout>
+
+## Notation
+
+Margin utilities that apply to all breakpoints, from `xs` to `xxl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format `{property}{sides}-{size}` for `xs` and `{property}{sides}-{breakpoint}-{size}` for `sm`, `md`, `lg`, `xl`, and `xxl`.
+
+Where *property* is:
+
+- `m` - for classes that set `margin`
+
+Where *sides* is one of:
+
+- `t` - for classes that set `margin-top`
+- `b` - for classes that set `margin-bottom`
+- `s` - (start) for classes that set `margin-left` in LTR, `margin-right` in RTL
+- `e` - (end) for classes that set `margin-right` in LTR, `margin-left` in RTL
+- `x` - for classes that set both `*-left` and `*-right`
+- `y` - for classes that set both `*-top` and `*-bottom`
+- blank - for classes that set a `margin` on all 4 sides of the element
+
+Where *size* is one of:
+
+- `0` - for classes that eliminate the `margin` by setting it to `0`
+- `1` - (by default) for classes that set the `margin` to `$spacer * .25`
+- `2` - (by default) for classes that set the `margin` to `$spacer * .5`
+- `3` - (by default) for classes that set the `margin` to `$spacer`
+- `4` - (by default) for classes that set the `margin` to `$spacer * 1.5`
+- `5` - (by default) for classes that set the `margin` to `$spacer * 3`
+- `auto` - for classes that set the `margin` to auto
+
+(You can add more sizes by adding entries to the `$spacers` Sass map variable.)
+
+## Examples
+
+Here are some representative examples of these classes:
+
+```scss
+.mt-0 {
+  margin-top: 0;
+}
+
+.ms-1 {
+  margin-left: ($spacer * .25);
+}
+
+.mx-2 {
+  margin-left: ($spacer * .5);
+  margin-right: ($spacer * .5);
+}
+
+.m-3 {
+  margin: $spacer;
+}
+```
+
+## Horizontal centering
+
+Bootstrap includes an `.mx-auto` class for horizontally centering fixed-width block level content—that is, content that has `display: block` and a `width` set—by setting the horizontal margins to `auto`.
+
+<Example showMarkup={false} code={`<div class="mx-auto p-2" style="width: 200px; background-color: rgba(var(--bd-violet-rgb),.15); border: rgba(var(--bd-violet-rgb),.3) solid 1px;">
+    Centered element
+  </div>`} />
+
+```html
+<div class="mx-auto p-2" style="width: 200px;">
+  Centered element
+</div>
+```
+
+## Negative margin
+
+When using `display: grid`, you can make use of negative margin utilities along the parent grid container. This can sometimes be helpful to match visual alignment of a child grid with the rest of your layout. Remember that [CSS Grid has a gap property]([[docsref:/utilities/spacing#gap]]) that might be an alternative solution.
+
+<Example showMarkup={false} code={`<div class="grid text-center" style="--bs-columns: 3; --bs-gap: .25rem;">
+    <div class="g-col-1">.g-col-1</div>
+    <div class="g-col-1">.g-col-1</div>
+    <div class="g-col-1">.g-col-1</div>
+  </div>`} />
+
+```html
+<div class="grid" style="--bs-columns: 3; --bs-gap: .25rem;">
+  <div class="g-col-1">.g-col-1</div>
+  <div class="g-col-1">.g-col-1</div>
+  <div class="g-col-1">.g-col-1</div>
+</div>
+```
+
+## Responsive
+
+All margin utilities are responsive and include all breakpoints.
+
+<ul>
+{getData('breakpoints').map((breakpoint) => {
+  return (
+    <li key={breakpoint.abbr}><code>.m{breakpoint.abbr}-0</code> through <code>.m{breakpoint.abbr}-5</code> and <code>.m{breakpoint.abbr}-auto</code></li>
+  )
+})}
+</ul>
+
+## CSS
+
+### Sass utilities API
+
+Margin utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"margin": (
+  responsive: true,
+  property: margin,
+  class: m,
+  values: map.merge($spacers, (auto: auto))
+),
+"margin-x": (
+  responsive: true,
+  property: margin-right margin-left,
+  class: mx,
+  values: map.merge($spacers, (auto: auto))
+),
+"margin-y": (
+  responsive: true,
+  property: margin-top margin-bottom,
+  class: my,
+  values: map.merge($spacers, (auto: auto))
+),
+"margin-top": (
+  responsive: true,
+  property: margin-top,
+  class: mt,
+  values: map.merge($spacers, (auto: auto))
+),
+"margin-end": (
+  responsive: true,
+  property: margin-right,
+  class: me,
+  values: map.merge($spacers, (auto: auto))
+),
+"margin-bottom": (
+  responsive: true,
+  property: margin-bottom,
+  class: mb,
+  values: map.merge($spacers, (auto: auto))
+),
+"margin-start": (
+  responsive: true,
+  property: margin-left,
+  class: ms,
+  values: map.merge($spacers, (auto: auto))
+),
+```

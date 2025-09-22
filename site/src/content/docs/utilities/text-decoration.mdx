@@ -1,0 +1,69 @@
+---
+title: Text decoration
+description: Utilities for controlling text decoration, text transform, and text color reset.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration
+reference:
+  - class: text-decoration-underline
+    styles:
+      text-decoration: 'underline'
+  - class: text-decoration-line-through
+    styles:
+      text-decoration: 'line-through'
+  - class: text-decoration-none
+    styles:
+      text-decoration: 'none'
+  - class: text-lowercase
+    styles:
+      text-transform: 'lowercase'
+  - class: text-uppercase
+    styles:
+      text-transform: 'uppercase'
+  - class: text-capitalize
+    styles:
+      text-transform: 'capitalize'
+---
+
+## Text decoration
+
+Decorate text in components with text decoration classes.
+
+<Example code={`<p class="text-decoration-underline">This text has a line underneath it.</p>
+<p class="text-decoration-line-through">This text has a line going through it.</p>
+<a href="#" class="text-decoration-none">This link has its text decoration removed</a>`} />
+
+## Text transform
+
+Transform text in components with our text capitalization classes: `text-lowercase`, `text-uppercase` or `text-capitalize`.
+
+<Example code={`<p class="text-lowercase">Lowercased text.</p>
+<p class="text-uppercase">Uppercased text.</p>
+<p class="text-capitalize">CapiTaliZed text.</p>`} />
+
+Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
+
+## Reset color
+
+Reset a text or link's color with `.text-reset`, so that it inherits the color from its parent.
+
+<Example code={`<p class="text-body-secondary">
+    Secondary body text with a <a href="#" class="text-reset">reset link</a>.
+  </p>`} />
+
+## CSS
+
+### Sass utilities API
+
+Text decoration utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"text-decoration": (
+  property: text-decoration,
+  values: none underline line-through
+),
+"text-transform": (
+  property: text-transform,
+  class: text,
+  values: lowercase uppercase capitalize
+),
+```

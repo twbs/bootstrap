@@ -117,12 +117,20 @@
   icon_color: red
   pages:
     - title: API
-    - title: Aspect ratio
     - title: Background
     - title: Border
     - title: Border radius
     - title: Colors
-    - title: Display
+    - group: Layout
+      pages:
+        - title: Aspect ratio
+        - title: Display
+        - title: Float
+        - title: Object fit
+        - title: Overflow
+        - title: Position
+        - title: Visibility
+        - title: Z-index
     - group: Flex & Grid
       pages:
         - title: Align content
@@ -132,20 +140,29 @@
         - title: Justify content
         - title: Justify items
         - title: Place items
-    - title: Float
-    - title: Interactions
-    - title: Link
-    - title: Object fit
-    - title: Opacity
-    - title: Overflow
-    - title: Position
-    - title: Shadows
-    - title: Sizing
-    - title: Spacing
-    - title: Text
-    - title: Vertical align
-    - title: Visibility
-    - title: Z-index
+    - group: Sizing
+      pages:
+        - title: Width
+        - title: Height
+    - group: Spacing
+      pages:
+        - title: Margin
+        - title: Padding
+    - group: Type
+      pages:
+        - title: Font style
+        - title: Text alignment
+        - title: Text decoration
+        - title: Text wrapping
+        - title: Vertical align
+    - group: Interactions
+      pages:
+        - title: Pointer events
+        - title: User select
+    - group: Effects
+      pages:
+        - title: Opacity
+        - title: Shadows
 
 - title: Extend
   icon: tools

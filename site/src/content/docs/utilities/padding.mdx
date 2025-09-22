@@ -1,0 +1,180 @@
+---
+title: Padding
+description: Use padding utilities to control the inner space of elements with responsive padding classes.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/padding
+reference:
+  - class: p-0
+    styles:
+      padding: '0'
+  - class: p-1
+    styles:
+      padding: '0.25rem'
+  - class: p-2
+    styles:
+      padding: '0.5rem'
+  - class: p-3
+    styles:
+      padding: '1rem'
+  - class: p-4
+    styles:
+      padding: '1.5rem'
+  - class: p-5
+    styles:
+      padding: '3rem'
+  - class: pt-0
+    styles:
+      padding-top: '0'
+  - class: pe-0
+    styles:
+      padding-right: '0'
+  - class: pb-0
+    styles:
+      padding-bottom: '0'
+  - class: ps-0
+    styles:
+      padding-left: '0'
+  - class: px-0
+    styles:
+      padding-right: '0'
+      padding-left: '0'
+  - class: py-0
+    styles:
+      padding-top: '0'
+      padding-bottom: '0'
+---
+
+import { getData } from '@libs/data'
+
+## Overview
+
+Use padding utilities to control the inner space within elements. Padding utilities are built from a default Sass map ranging from `.25rem` to `3rem`.
+
+## Notation
+
+Padding utilities that apply to all breakpoints, from `xs` to `xxl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format `{property}{sides}-{size}` for `xs` and `{property}{sides}-{breakpoint}-{size}` for `sm`, `md`, `lg`, `xl`, and `xxl`.
+
+Where *property* is:
+
+- `p` - for classes that set `padding`
+
+Where *sides* is one of:
+
+- `t` - for classes that set `padding-top`
+- `b` - for classes that set `padding-bottom`
+- `s` - (start) for classes that set `padding-left` in LTR, `padding-right` in RTL
+- `e` - (end) for classes that set `padding-right` in LTR, `padding-left` in RTL
+- `x` - for classes that set both `*-left` and `*-right`
+- `y` - for classes that set both `*-top` and `*-bottom`
+- blank - for classes that set a `padding` on all 4 sides of the element
+
+Where *size* is one of:
+
+- `0` - for classes that eliminate the `padding` by setting it to `0`
+- `1` - (by default) for classes that set the `padding` to `$spacer * .25`
+- `2` - (by default) for classes that set the `padding` to `$spacer * .5`
+- `3` - (by default) for classes that set the `padding` to `$spacer`
+- `4` - (by default) for classes that set the `padding` to `$spacer * 1.5`
+- `5` - (by default) for classes that set the `padding` to `$spacer * 3`
+
+(You can add more sizes by adding entries to the `$spacers` Sass map variable.)
+
+## Examples
+
+Here are some representative examples of these classes:
+
+```scss
+.pt-0 {
+  padding-top: 0;
+}
+
+.ps-1 {
+  padding-left: ($spacer * .25);
+}
+
+.px-2 {
+  padding-left: ($spacer * .5);
+  padding-right: ($spacer * .5);
+}
+
+.p-3 {
+  padding: $spacer;
+}
+```
+
+## Basic usage
+
+<Example code={`<div class="p-3 mb-2 bg-light">
+    Regular padding on all sides
+  </div>
+  <div class="py-2 px-4 mb-2 bg-light">
+    Horizontal and vertical padding
+  </div>
+  <div class="pt-4 mb-2 bg-light">
+    Top padding only
+  </div>`} />
+
+## Responsive
+
+All padding utilities are responsive and include all breakpoints.
+
+<ul>
+{getData('breakpoints').map((breakpoint) => {
+  return (
+    <li key={breakpoint.abbr}><code>.p{breakpoint.abbr}-0</code> through <code>.p{breakpoint.abbr}-5</code></li>
+  )
+})}
+</ul>
+
+## CSS
+
+### Sass utilities API
+
+Padding utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"padding": (
+  responsive: true,
+  property: padding,
+  class: p,
+  values: $spacers
+),
+"padding-x": (
+  responsive: true,
+  property: padding-right padding-left,
+  class: px,
+  values: $spacers
+),
+"padding-y": (
+  responsive: true,
+  property: padding-top padding-bottom,
+  class: py,
+  values: $spacers
+),
+"padding-top": (
+  responsive: true,
+  property: padding-top,
+  class: pt,
+  values: $spacers
+),
+"padding-end": (
+  responsive: true,
+  property: padding-right,
+  class: pe,
+  values: $spacers
+),
+"padding-bottom": (
+  responsive: true,
+  property: padding-bottom,
+  class: pb,
+  values: $spacers
+),
+"padding-start": (
+  responsive: true,
+  property: padding-left,
+  class: ps,
+  values: $spacers
+),
+```
