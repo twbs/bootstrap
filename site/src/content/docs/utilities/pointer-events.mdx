@@ -1,0 +1,63 @@
+---
+title: Pointer events
+description: Control how elements respond to mouse and touch interactions with pointer-events utilities.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events
+reference:
+  - class: pe-none
+    styles:
+      pointer-events: 'none'
+  - class: pe-auto
+    styles:
+      pointer-events: 'auto'
+---
+
+## Overview
+
+Bootstrap provides `.pe-none` and `.pe-auto` classes to prevent or add element interactions through the `pointer-events` CSS property.
+
+## Basic usage
+
+<Example code={`<p><a href="#" class="pe-none" tabindex="-1" aria-disabled="true">This link</a> can not be clicked.</p>
+<p><a href="#" class="pe-auto">This link</a> can be clicked (this is default behavior).</p>
+<p class="pe-none"><a href="#" tabindex="-1" aria-disabled="true">This link</a> can not be clicked because the <code>pointer-events</code> property is inherited from its parent. However, <a href="#" class="pe-auto">this link</a> has a <code>pe-auto</code> class and can be clicked.</p>`} />
+
+## Important considerations
+
+The `.pe-none` class (and the `pointer-events` CSS property it sets) only prevents interactions with a pointer (mouse, stylus, touch). Links and controls with `.pe-none` are, by default, still focusable and actionable for keyboard users.
+
+To ensure that they are completely neutralized even for keyboard users, you may need to add further attributes such as:
+
+- `tabindex="-1"` (to prevent them from receiving keyboard focus)
+- `aria-disabled="true"` (to convey the fact they are effectively disabled to assistive technologies)
+- JavaScript to completely prevent them from being actionable
+
+## Better alternatives
+
+If possible, the simpler solution is:
+
+- **For form controls**: Add the `disabled` HTML attribute
+- **For links**: Remove the `href` attribute, making it a non-interactive anchor or placeholder link
+
+<Callout type="warning">
+**Accessibility warning:** Using `pointer-events: none` can create accessibility barriers. Always ensure that disabled elements are properly marked up with appropriate ARIA attributes and that keyboard users can't accidentally focus them.
+</Callout>
+
+## Use cases
+
+- **`.pe-none`** - Disable interactions on overlays, loading states, or temporarily disabled elements
+- **`.pe-auto`** - Re-enable interactions on child elements when parent has `pe-none`
+
+## CSS
+
+### Sass utilities API
+
+Pointer events utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"pointer-events": (
+  property: pointer-events,
+  class: pe,
+  values: none auto,
+),
+```

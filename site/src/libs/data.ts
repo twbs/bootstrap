@@ -82,7 +82,14 @@ const dataDefinitions = {
       icon_color: z.string().optional(),
       pages: z
         .object({
-          title: z.string()
+          title: z.string().optional(),
+          group: z.string().optional(),
+          pages: z
+            .object({
+              title: z.string()
+            })
+            .array()
+            .optional()
         })
         .array()
         .optional()
@@ -117,7 +124,7 @@ let data = new Map<DataType, z.infer<DataSchema>>()
 export function getData<TType extends DataType>(type: TType): z.infer<(typeof dataDefinitions)[TType]> {
   if (data.has(type)) {
     // Returns the data if it has already been loaded.
-    return data.get(type)
+    return data.get(type) as z.infer<(typeof dataDefinitions)[TType]>
   }
 
   const dataPath = `./site/data/${type}.yml`
@@ -127,7 +134,7 @@ export function getData<TType extends DataType>(type: TType): z.infer<(typeof da
     const rawData = yaml.load(fs.readFileSync(dataPath, 'utf8'))
 
     // Parse the data using the data schema to validate its content and get back a fully typed data object.
-    const parsedData = dataDefinitions[type].parse(rawData)
+    const parsedData = dataDefinitions[type].parse(rawData) as z.infer<(typeof dataDefinitions)[TType]>
 
     // Cache the data.
     data.set(type, parsedData)

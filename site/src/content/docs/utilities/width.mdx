@@ -1,0 +1,144 @@
+---
+title: Width
+description: Use width utilities to control the width of elements with responsive width classes.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/width
+reference:
+  - class: w-25
+    styles:
+      width: '25%'
+  - class: w-50
+    styles:
+      width: '50%'
+  - class: w-75
+    styles:
+      width: '75%'
+  - class: w-100
+    styles:
+      width: '100%'
+  - class: w-auto
+    styles:
+      width: 'auto'
+  - class: w-min
+    styles:
+      width: 'min-content'
+  - class: w-max
+    styles:
+      width: 'max-content'
+  - class: w-fit
+    styles:
+      width: 'fit-content'
+  - class: max-w-100
+    styles:
+      max-width: '100%'
+  - class: min-w-0
+    styles:
+      min-width: '0'
+  - class: min-w-100
+    styles:
+      min-width: '100%'
+  - class: vw-100
+    styles:
+      width: '100vw'
+  - class: min-vw-100
+    styles:
+      min-width: '100vw'
+---
+
+## Overview
+
+Use width utilities to set the width of elements. Width utilities are generated from the utility API and include support for percentage values, intrinsic sizing keywords, and viewport units.
+
+## Relative width
+
+Set width relative to the parent element using percentage-based utilities. Includes support for `25%`, `50%`, `75%`, `100%`, and `auto` by default.
+
+<Example class="bd-example-flex" code={`<div class="w-25 p-3">Width 25%</div>
+<div class="w-50 p-3">Width 50%</div>
+<div class="w-75 p-3">Width 75%</div>
+<div class="w-100 p-3">Width 100%</div>
+<div class="w-auto p-3">Width auto</div>`} />
+
+## Intrinsic sizing
+
+Use intrinsic sizing keywords to set width based on content.
+
+<Example class="bd-example-flex" code={`<div class="w-min p-3">Width min-content</div>
+<div class="w-max p-3">Width max-content</div>
+<div class="w-fit p-3">Width fit-content</div>`} />
+
+## Max width
+
+Set maximum width using `max-width` utilities.
+
+<Example class="bd-example-flex" code={`<div style="width: 50%;">
+    <div class="max-w-100" style="width: 200%;">Max-width 100%</div>
+  </div>`} />
+
+## Min width
+
+Set minimum width using `min-width` utilities.
+
+<Example class="bd-example-flex" code={`<div class="min-w-0 p-3" style="overflow: hidden;">
+    <div style="width: 200px;">This content is wider than the min-width: 0 container</div>
+  </div>
+<div class="min-w-100 p-3">Min-width 100%</div>`} />
+
+## Viewport width
+
+Set width relative to the viewport using viewport units.
+
+```html
+<div class="vw-100">Width 100vw</div>
+<div class="min-vw-100">Min-width 100vw</div>
+```
+
+<Callout type="warning">
+**Beware of the viewport width!** Using `vw-100` can cause horizontal scrollbars if the content is wider than the viewport, particularly on smaller screens.
+</Callout>
+
+## CSS
+
+### Sass utilities API
+
+Width utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"width": (
+  property: width,
+  class: w,
+  values: (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto,
+    min: min-content,
+    max: max-content,
+    fit: fit-content,
+  )
+),
+"max-width": (
+  property: max-width,
+  class: max-w,
+  values: (100: 100%)
+),
+"min-width": (
+  property: min-width,
+  class: min-w,
+  values: (
+    0: 0,
+    100: 100%
+  )
+),
+"viewport-width": (
+  property: width,
+  class: vw,
+  values: (100: 100vw)
+),
+"min-viewport-width": (
+  property: min-width,
+  class: min-vw,
+  values: (100: 100vw)
+),
+```
