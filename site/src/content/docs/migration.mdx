@@ -9,8 +9,15 @@ toc: true
 
 ### CSS
 
-- Implemented CSS layers in `_root.scss` and applied them to all our Sass files.
-  - **mdo-do:** More to implement on this
+- **Implemented CSS layers** in `_root.scss` and applied them to all our Sass files.
+  - Layers are set in `_root.scss` and then utilized across separate Sass partials.
+  - We cannot, unfortunately, wrap `@use` or `@forward` statements in `@layer`—Sass expects those to be top level at all times. Also, while CSS allows `@import "file.css" layer(name)`, Sass also does not support that.
+- Clarified and simplified CSS-Sass setup.
+- New, streamlined color modes and theming.
+  - Removed `_maps.scss`
+  - Removed `_variables-dark.scss`
+  - Added `_colors.scss`, splitting them out from `_variables.scss`,
+  - Added `_theme.scss` where we setup all our global theming for how colors are applied
 
 ### Sass
 
@@ -45,13 +52,16 @@ toc: true
 ### Utilities
 
 - Ratio helpers are now powered by the utility API and use simplified values without `calc()`.
-- mdo-do: Need to refactor utilities API if we want to restor the commented out custom ratios.
+- mdo-do: Need to refactor utilities API if we want to restore the commented out custom ratios.
 - **Display utilities:** added `flow-root` option for a modern clearfix.
 - **Sizing utilities:**
   - Renamed `.mh-*`/`.mw-*` to `.max-h-*`/`.max-w-*`
   - Added `.min-h-*` and `.min-w-*` utilities with two default values, `0` and `100%`
   - Added `auto`, `min-content`, `max-content`, and `fit-content` to `width` and `height` utilities.
+- **Flex & Grid utilities:**
+  - Added `.place-items` and `.justify-items` utilities.
 
 ### Docs
 
 - Removed all `AddedIn` badges.
+- Rearranged utilities documentation to break apart larger pages that included groups of utilities. Sizing, spacing, flex, type, and more have been broken out into smaller pages with new sub-group headings in the sidebar.
