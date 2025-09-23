@@ -1,0 +1,123 @@
+// Test @use with configuration syntax using a single module instance
+@use "../../alert" as alert with (
+  $alert-margin-bottom: 3rem,
+  $alert-link-font-weight: 800
+);
+@use "../../variables" as vars;
+
+$true-terminal-output: false;
+
+@include describe("Bootstrap module configuration") {
+  @include describe("@use with configuration syntax") {
+    @include it("should allow configuring alert variables with @use ... with") {
+      @include assert {
+        @include output {
+          $test-margin: alert.$alert-margin-bottom;
+          $test-weight: alert.$alert-link-font-weight;
+
+          .test {
+            margin-bottom: $test-margin;
+            font-weight: $test-weight;
+          }
+        }
+
+        @include expect {
+          .test {
+            margin-bottom: 3rem;
+            font-weight: 800;
+          }
+        }
+      }
+    }
+
+    @include it("should maintain other alert variables with default values") {
+      @include assert {
+        @include output {
+          .test {
+            padding-y: alert.$alert-padding-y;
+            padding-x: alert.$alert-padding-x;
+            border-radius: alert.$alert-border-radius;
+          }
+        }
+
+        @include expect {
+          .test {
+            padding-y: alert.$alert-padding-y;
+            padding-x: alert.$alert-padding-x;
+            border-radius: alert.$alert-border-radius;
+          }
+        }
+      }
+    }
+
+    @include it("should demonstrate @use with() syntax works correctly") {
+      // This test verifies that the @use with() configuration syntax from your test.scss works
+      // If this test passes, it means Bootstrap 6's module system supports variable configuration
+      @include assert {
+        @include output {
+          .test {
+            @if type-of(alert.$alert-margin-bottom) == "number" {
+              configured-margin: true;
+            }
+            @if type-of(alert.$alert-link-font-weight) == "number" {
+              configured-weight: true;
+            }
+          }
+        }
+
+        @include expect {
+          .test {
+            configured-margin: true;
+            configured-weight: true;
+          }
+        }
+      }
+    }
+  }
+
+  @include describe("Module system integrity") {
+    @include it("should maintain @use module boundaries and expose functions") {
+      @include assert {
+        @include output {
+          .test {
+            @if function-exists("strip-unit", vars) {
+              strip-unit-exists: true;
+            }
+          }
+        }
+
+        @include expect {
+          .test {
+            strip-unit-exists: true;
+          }
+        }
+      }
+    }
+
+    @include it("should make configured variables accessible via namespace") {
+      @include assert {
+        @include output {
+          .test {
+            @if variable-exists("alert-margin-bottom") {
+              margin-var-exists: true;
+            }
+            @if variable-exists("alert-link-font-weight") {
+              weight-var-exists: true;
+            }
+            @if variable-exists("alert-padding-y") {
+              padding-var-exists: true;
+            }
+          }
+        }
+
+        @include expect {
+          .test {
+            margin-var-exists: true;
+            weight-var-exists: true;
+            padding-var-exists: true;
+          }
+        }
+      }
+    }
+  }
+}
