@@ -60,7 +60,6 @@
   pages:
     - title: Overview
     - title: Form control
-    - title: Checks & radios
     - title: Checkbox
     - title: Radio
     - title: Switch
