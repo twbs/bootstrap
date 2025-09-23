@@ -13,7 +13,9 @@ $new-lime: oklch(65% 0.24 135) !default;
 $new-green: oklch(64% 0.22 160) !default;
 $new-teal: oklch(68% 0.22 190) !default;
 $new-cyan: oklch(69% 0.22 220) !default;
-$new-gray: oklch(77% 0.02 248) !default;
+// $new-gray: oklch(77% 0.02 248) !default;
+$new-gray: oklch(60% 0.02 245) !default;
+$new-gray-warm: oklch(65% 0.01 286) !default;
 
 $hues: (
   blue: $new-blue,
@@ -29,7 +31,8 @@ $hues: (
   green: $new-green,
   teal: $new-teal,
   cyan: $new-cyan,
-  gray: $new-gray
+  gray: $new-gray,
+  gray-warm: $new-gray-warm
 ) !default;
 
 :root {

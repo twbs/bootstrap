@@ -389,27 +389,25 @@ All Bootstrap colors are available as Sass variables and a Sass map in `scss/_va
 
 Be sure to monitor contrast ratios as you customize colors. As shown below, we’ve added three contrast ratios to each of the main colors—one for the swatch’s current colors, one for against white, and one for against black.
 
-<div class="row font-monospace">
+<div class="grid gap-0 small" style={{gridTemplateColumns: 'repeat(11, 1fr)', minWidth: '0'}}>
   {getData('colors').map((color) => {
-    if ((color.name !== "white") && (color.name !== "gray") && (color.name !== "gray-dark")) {
-      return (
-        <div class="col-md-4 mb-3">
-          <div class={`p-3 mb-2 position-relative new-${color.name}-500`}>
-            <strong class="d-block">${color.name}</strong>
-            {color.hex}
-          </div>
+     return (
+       <div key={color.name} style={{ gridColumn: '1 / -1', display: 'contents' }}>
+         <h5 class="d-block text-capitalize" style={{ gridColumn: '1 / -1' }}>{color.name.replace('-', ' ')}</h5>
 
-          {["050", ...getSequence(100, 900, 100), 950].map((value) => {
-            return (
-              <div class={`p-3 new-${color.name}-${value}`}>${color.name}-{value}</div>
-            )
-          })}
-        </div>
-      )
-    }
-  })}
+         {["050", ...getSequence(100, 900, 100), 950].map((value) => {
+           return (
+             <div key={`${color.name}-${value}`} class="mb-3 font-monospace">
+               <div class={`py-4 mb-1 new-${color.name}-${value}`}></div>
+               <div>{value}</div>
+             </div>
+           )
+         })}
+       </div>
+     )
+   })}
 
-  <div class="col-md-4 mb-3">
+  {/* <div class="col-md-4 mb-3">
     <div class="p-3 mb-2 position-relative swatch-gray-500"><strong class="d-block">$gray-500</strong>#adb5bd</div>
     {getData('grays').map((gray) => {
       return (
@@ -427,7 +425,7 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, we�
       <strong class="d-block">$white</strong>
       #fff
     </div>
-  </div>
+  </div> */}
 </div>
 
 ### Notes on Sass
