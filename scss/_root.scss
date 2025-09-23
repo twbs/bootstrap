@@ -14,6 +14,7 @@
 :root {
   color-scheme: light dark;
 
+  // scss-docs-start root-theme-variables
   @each $color-group-name, $color-group in $all-colors {
     @if meta.type-of($color-group) == "map" {
       @each $color-name, $color-value in $color-group {
@@ -23,6 +24,8 @@
       --#{$prefix}#{$color-group-name}: #{$color-group};
     }
   }
+  // scss-docs-end root-theme-variables
+
 
   @each $color, $value in $theme-colors {
     --#{$prefix}#{$color}: #{$value};

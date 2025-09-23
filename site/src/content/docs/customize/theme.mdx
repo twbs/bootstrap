@@ -1,0 +1,52 @@
+---
+title: Theme
+description: The Bootstrap theme is a set of semantically named colors that are used to style our components, utilities, and more. The theme is configurable, responds to color modes, and can be consumed via Sass or CSS.
+toc: true
+---
+
+## How it works
+
+Theme colors are defined in the `$new-theme-colors` Sass map. This map is used to generate our theme color values. You'll find these values in the `_theme.scss` file. These are where we define our design tokens for Bootstrap, across both light and dark color modes.
+
+## Theme colors
+
+Theme colors include the following semantic colors:
+
+<BsTable>
+| Theme color | Description |
+| --- | --- |
+| `primary` | Main brand color for primary actions |
+| `accent` | Secondary brand color (new in v6) |
+| `success` | Positive actions and successful states |
+| `danger` | Destructive actions and error states |
+| `warning` | Cautionary messages and warning states |
+| `info` | Informational messages and neutral states |
+| `secondary` | Less prominent secondary actions |
+</BsTable>
+
+Within each semantic theme color, you'll find the following color-mode responsive keys:
+
+<BsTable>
+| Theme token | Description |
+| --- | --- |
+| `base` | The default color value for the semantic color |
+| `text` | Accessible text color (against body, plus `subtle` and `muted` color tokens) |
+| `bg` | For solid colored backgrounds with high contrast |
+| `bg-subtle` | Lowest contrast backgrounds, usually paired with `text` key for text color |
+| `bg-muted` | Lower contrast backgrounds, often used for disabled states |
+| `border` | Borders and dividers |
+| `focus-ring` | For visible focus indicators and outline styles |
+| `contrast` | Text color that needs to be readable on the `base` and `bg` colors |
+</BsTable>
+
+## Theme Sass map
+
+We use a large, nested Sass map to generate our theme color values.
+
+<ScssDocs name="theme-colors" file="scss/_theme.scss" />
+
+## CSS variables
+
+CSS variables are generated from the `$new-theme-colors` Sass map at the `:root` level inside `_root.scss` using a Sass loop.
+
+<ScssDocs name="root-theme-variables" file="scss/_root.scss" />
