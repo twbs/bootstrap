@@ -41,6 +41,7 @@
   --#{$prefix}dropdown-link-disabled-color: #{$dropdown-link-disabled-color};
   --#{$prefix}dropdown-item-padding-x: #{$dropdown-item-padding-x};
   --#{$prefix}dropdown-item-padding-y: #{$dropdown-item-padding-y};
+  --#{$prefix}dropdown-header-font-size: #{$dropdown-header-font-size};
   --#{$prefix}dropdown-header-color: #{$dropdown-header-color};
   --#{$prefix}dropdown-header-padding-x: #{$dropdown-header-padding-x};
   --#{$prefix}dropdown-header-padding-y: #{$dropdown-header-padding-y};
@@ -219,7 +220,7 @@
   display: block;
   padding: var(--#{$prefix}dropdown-header-padding-y) var(--#{$prefix}dropdown-header-padding-x);
   margin-bottom: 0; // for use with heading elements
-  @include font-size($font-size-sm);
+  @include font-size(var(--#{$prefix}dropdown-header-font-size));
   color: var(--#{$prefix}dropdown-header-color);
   white-space: nowrap; // as with > li > a
 }
