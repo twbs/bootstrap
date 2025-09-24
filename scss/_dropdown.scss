@@ -123,11 +123,6 @@ $dropdown-dark-header-color:        $gray-500 !default;
     @include border-radius(var(--#{$prefix}dropdown-border-radius));
     @include box-shadow(var(--#{$prefix}dropdown-box-shadow));
 
-    &[data-bs-popper] {
-      top: 100%;
-      left: 0;
-      margin-top: var(--#{$prefix}dropdown-spacer);
-    }
 
     @if $dropdown-padding-y == 0 {
       > .dropdown-item:first-child,
@@ -144,7 +139,7 @@ $dropdown-dark-header-color:        $gray-500 !default;
 
   // scss-docs-start responsive-breakpoints
   // We deliberately hardcode the `bs-` prefix because we check
-  // this custom property in JS to determine Popper's positioning
+  // this custom property in JS to determine positioning
 
   @each $breakpoint in map.keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
@@ -152,20 +147,10 @@ $dropdown-dark-header-color:        $gray-500 !default;
 
       .dropdown-menu#{$infix}-start {
         --bs-position: start;
-
-        &[data-bs-popper] {
-          right: auto;
-          left: 0;
-        }
       }
 
       .dropdown-menu#{$infix}-end {
         --bs-position: end;
-
-        &[data-bs-popper] {
-          right: 0;
-          left: auto;
-        }
       }
     }
   }
@@ -174,26 +159,12 @@ $dropdown-dark-header-color:        $gray-500 !default;
   // Allow for dropdowns to go bottom up (aka, dropup-menu)
   // Just add .dropup after the standard .dropdown class and you're set.
   .dropup {
-    .dropdown-menu[data-bs-popper] {
-      top: auto;
-      bottom: 100%;
-      margin-top: 0;
-      margin-bottom: var(--#{$prefix}dropdown-spacer);
-    }
-
     .dropdown-toggle {
       @include caret(up);
     }
   }
 
   .dropend {
-    .dropdown-menu[data-bs-popper] {
-      top: 0;
-      right: auto;
-      left: 100%;
-      margin-top: 0;
-      margin-left: var(--#{$prefix}dropdown-spacer);
-    }
 
     .dropdown-toggle {
       @include caret(end);
@@ -204,14 +175,6 @@ $dropdown-dark-header-color:        $gray-500 !default;
   }
 
   .dropstart {
-    .dropdown-menu[data-bs-popper] {
-      top: 0;
-      right: 100%;
-      left: auto;
-      margin-top: 0;
-      margin-right: var(--#{$prefix}dropdown-spacer);
-    }
-
     .dropdown-toggle {
       @include caret(start);
       &::before {

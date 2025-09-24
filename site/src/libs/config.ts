@@ -29,9 +29,9 @@ const configSchema = z.object({
     js_hash: z.string(),
     js_bundle: z.string().url(),
     js_bundle_hash: z.string(),
-    popper: z.string().url(),
-    popper_esm: z.string().url(),
-    popper_hash: z.string()
+    floating_ui: z.string().url(),
+    floating_ui_esm: z.string().url(),
+    floating_ui_hash: z.string()
   }),
   current_version: zVersionSemver,
   current_ruby_version: zVersionSemver,

@@ -5,21 +5,18 @@
  * --------------------------------------------------------------------------
  */
 
-import * as Popper from '@popperjs/core'
+import { inline, offset, shift } from '@floating-ui/dom'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
-import Manipulator from './dom/manipulator.js'
 import SelectorEngine from './dom/selector-engine.js'
 import {
   execute,
-  getElement,
   getNextActiveElement,
   isDisabled,
-  isElement,
-  isRTL,
   isVisible,
   noop
 } from './util/index.js'
+import FloatingUi from './util/floating-ui.js'
 
 /**
  * Constants
@@ -58,30 +55,28 @@ const SELECTOR_NAVBAR = '.navbar'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
 
-const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start'
-const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end'
-const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
-const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end'
-const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start'
-const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start'
 const PLACEMENT_TOPCENTER = 'top'
+const PLACEMENT_TOPEND = 'top-end'
+const PLACEMENT_TOP = 'top-start'
 const PLACEMENT_BOTTOMCENTER = 'bottom'
+const PLACEMENT_BOTTOMEND = 'bottom-end'
+const PLACEMENT_BOTTOM = 'bottom-start'
+const PLACEMENT_RIGHT = 'right-start'
+const PLACEMENT_LEFT = 'left-start'
 
 const Default = {
   autoClose: true,
-  boundary: 'clippingParents',
   display: 'dynamic',
-  offset: [0, 2],
-  popperConfig: null,
+  offset: 10,
+  positionConfig: null,
   reference: 'toggle'
 }
 
 const DefaultType = {
   autoClose: '(boolean|string)',
-  boundary: '(string|element)',
   display: 'string',
-  offset: '(array|string|function)',
-  popperConfig: '(null|object|function)',
+  offset: '(number|array|string|function)',
+  positionConfig: '(null|object|function)',
   reference: '(string|element|object)'
 }
 
@@ -93,13 +88,12 @@ class Dropdown extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
-    this._popper = null
     this._parent = this._element.parentNode // dropdown wrapper
     // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.findOne(SELECTOR_MENU, this._parent)
-    this._inNavbar = this._detectNavbar()
+    this._positionHelper = new FloatingUi(this._element)
   }
 
   // Getters
@@ -135,7 +129,7 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    this._createPopper()
+    this.update()
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
@@ -167,19 +161,9 @@ class Dropdown extends BaseComponent {
     this._completeHide(relatedTarget)
   }
 
-  dispose() {
-    if (this._popper) {
-      this._popper.destroy()
-    }
-
-    super.dispose()
-  }
-
   update() {
-    this._inNavbar = this._detectNavbar()
-    if (this._popper) {
-      this._popper.update()
-    }
+    const reference = this._positionHelper.getReferenceElement(this._config.reference, this._parent, NAME)
+    this._positionHelper.calculate(reference, this._menu, this._getFloatingUiConfig())
   }
 
   // Private
@@ -197,47 +181,28 @@ class Dropdown extends BaseComponent {
       }
     }
 
-    if (this._popper) {
-      this._popper.destroy()
-    }
-
     this._menu.classList.remove(CLASS_NAME_SHOW)
     this._element.classList.remove(CLASS_NAME_SHOW)
     this._element.setAttribute('aria-expanded', 'false')
-    Manipulator.removeDataAttribute(this._menu, 'popper')
+    this._positionHelper.stop()
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
-  _getConfig(config) {
-    config = super._getConfig(config)
-
-    if (typeof config.reference === 'object' && !isElement(config.reference) &&
-      typeof config.reference.getBoundingClientRect !== 'function'
-    ) {
-      // Popper virtual elements require a getBoundingClientRect method
-      throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
+  _getFloatingUiConfig() {
+    const defaultBsConfig = {
+      placement: this._getPlacement(),
+      middleware: [offset(this._positionHelper.parseOffset(this._config.offset)), shift()]
     }
 
-    return config
-  }
-
-  _createPopper() {
-    if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)')
+    // Disable positioning if we have a static display or Dropdown is in Navbar
+    if (this._detectNavbar() || this._config.display === 'static') {
+      defaultBsConfig.middleware.push(inline())
     }
 
-    let referenceElement = this._element
-
-    if (this._config.reference === 'parent') {
-      referenceElement = this._parent
-    } else if (isElement(this._config.reference)) {
-      referenceElement = getElement(this._config.reference)
-    } else if (typeof this._config.reference === 'object') {
-      referenceElement = this._config.reference
+    return {
+      ...defaultBsConfig,
+      ...execute(this._config.positionConfig, [undefined, defaultBsConfig])
     }
-
-    const popperConfig = this._getPopperConfig()
-    this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
   }
 
   _isShown() {
@@ -247,20 +212,15 @@ class Dropdown extends BaseComponent {
   _getPlacement() {
     const parentDropdown = this._parent
 
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
-      return PLACEMENT_RIGHT
+    const matches = {
+      [CLASS_NAME_DROPEND]: PLACEMENT_RIGHT,
+      [CLASS_NAME_DROPSTART]: PLACEMENT_LEFT,
+      [CLASS_NAME_DROPUP_CENTER]: PLACEMENT_TOPCENTER,
+      [CLASS_NAME_DROPDOWN_CENTER]: PLACEMENT_BOTTOMCENTER
     }
-
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
-      return PLACEMENT_LEFT
-    }
-
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPUP_CENTER)) {
-      return PLACEMENT_TOPCENTER
-    }
-
-    if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) {
-      return PLACEMENT_BOTTOMCENTER
+    const match = Object.keys(matches).find(keyClass => parentDropdown.classList.contains(keyClass))
+    if (match) {
+      return matches[match]
     }
 
     // We need to trim the value because custom properties can also include spaces
@@ -275,52 +235,6 @@ class Dropdown extends BaseComponent {
 
   _detectNavbar() {
     return this._element.closest(SELECTOR_NAVBAR) !== null
-  }
-
-  _getOffset() {
-    const { offset } = this._config
-
-    if (typeof offset === 'string') {
-      return offset.split(',').map(value => Number.parseInt(value, 10))
-    }
-
-    if (typeof offset === 'function') {
-      return popperData => offset(popperData, this._element)
-    }
-
-    return offset
-  }
-
-  _getPopperConfig() {
-    const defaultBsPopperConfig = {
-      placement: this._getPlacement(),
-      modifiers: [{
-        name: 'preventOverflow',
-        options: {
-          boundary: this._config.boundary
-        }
-      },
-      {
-        name: 'offset',
-        options: {
-          offset: this._getOffset()
-        }
-      }]
-    }
-
-    // Disable Popper if we have a static display or Dropdown is in Navbar
-    if (this._inNavbar || this._config.display === 'static') {
-      Manipulator.setDataAttribute(this._menu, 'popper', 'static') // TODO: v6 remove
-      defaultBsPopperConfig.modifiers = [{
-        name: 'applyStyles',
-        enabled: false
-      }]
-    }
-
-    return {
-      ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
-    }
   }
 
   _selectMenuItem({ key, target }) {

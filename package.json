@@ -105,7 +105,10 @@
     "astro-preview": "astro preview --root site --port 9001"
   },
   "peerDependencies": {
-    "@popperjs/core": "^2.11.8"
+    "@floating-ui/dom": "^1.0.0"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
@@ -117,7 +120,7 @@
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
     "@docsearch/js": "^3.9.0",
-    "@popperjs/core": "^2.11.8",
+    "@floating-ui/dom": "^1.0.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
@@ -195,16 +198,16 @@
     "directories": {
       "lib": "dist"
     },
-    "shim": {
-      "js/bootstrap": {
-        "deps": [
-          "@popperjs/core"
-        ]
-      }
-    },
+      "shim": {
+        "js/bootstrap": {
+          "deps": [
+            "@floating-ui/dom"
+          ]
+        }
+      },
     "dependencies": {},
-    "peerDependencies": {
-      "@popperjs/core": "^2.11.8"
-    }
+      "peerDependencies": {
+        "@floating-ui/dom": "^1.0.0"
+      }
   }
 }
