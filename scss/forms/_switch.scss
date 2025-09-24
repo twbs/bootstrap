@@ -1,0 +1,89 @@
+@use "../config" as *;
+@use "../colors" as *;
+@use "../variables" as *;
+@use "../functions" as *;
+@use "../vendor/rfs" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/color-mode" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/transition" as *;
+@use "form-variables" as *;
+
+@layer forms {
+  .switch {
+    // scss-docs-start switch-css-variables
+    --#{$prefix}switch-height: 1.25rem;
+    --#{$prefix}switch-width: calc(var(--#{$prefix}switch-height) * 1.5);
+    --#{$prefix}switch-padding: .0625rem;
+    --#{$prefix}switch-bg: var(--#{$prefix}secondary-bg);
+    --#{$prefix}switch-border-width: var(--#{$prefix}border-width);
+    --#{$prefix}switch-border-color: var(--#{$prefix}border-color);
+    --#{$prefix}switch-indicator-bg: var(--#{$prefix}white);
+    --#{$prefix}switch-checked-bg: var(--#{$prefix}primary-base);
+    --#{$prefix}switch-checked-indicator-bg: var(--#{$prefix}white);
+    --#{$prefix}switch-disabled-bg: var(--#{$prefix}secondary-bg);
+    --#{$prefix}switch-disabled-indicator-bg: var(--#{$prefix}secondary-text);
+    // scss-docs-end switch-css-variables
+
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: var(--#{$prefix}switch-width);
+    height: var(--#{$prefix}switch-height);
+    padding: var(--#{$prefix}switch-padding);
+    background-color: var(--#{$prefix}switch-bg);
+    border: var(--#{$prefix}switch-border-width) solid var(--#{$prefix}switch-border-color);
+    // stylelint-disable-next-line property-disallowed-list
+    border-radius: 10rem;
+    box-shadow: inset 0 1px 2px rgba($black, .05);
+    // stylelint-disable-next-line property-disallowed-list
+    transition: .15s ease-in-out;
+    transition-property: padding-inline-start, background-color;
+
+    &::before {
+      flex-shrink: 0;
+      width: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2) - var(--#{$prefix}switch-border-width) * 2);
+      height: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2) - var(--#{$prefix}switch-border-width) * 2);
+      // width: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2));
+      // height: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2));
+      content: "";
+      background-color: var(--#{$prefix}switch-indicator-bg);
+      // stylelint-disable-next-line property-disallowed-list
+      border-radius: 50%;
+      box-shadow: 0 1px 2px rgba($black, .1);
+    }
+
+    input {
+      position: absolute;
+      inset: 0;
+      appearance: none;
+      background-color: transparent;
+    }
+
+    &:has(input:checked) {
+      padding-inline-start: calc(var(--#{$prefix}switch-height) / 2 + var(--#{$prefix}switch-padding));
+      background-color: var(--#{$prefix}primary-base);
+    }
+
+    &:has(input:disabled) {
+      --#{$prefix}switch-bg: var(--#{$prefix}switch-disabled-bg);
+      --#{$prefix}switch-indicator-bg: var(--#{$prefix}switch-disabled-indicator-bg);
+
+      &::before { opacity: .4; }
+
+      ~ label {
+        color: var(--#{$prefix}secondary-text);
+        cursor: default;
+      }
+    }
+  }
+  .switch-sm {
+    --#{$prefix}switch-height: 1em;
+  }
+  .switch-lg {
+    --#{$prefix}switch-height: 2em;
+  }
+}

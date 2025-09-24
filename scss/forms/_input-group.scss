@@ -10,7 +10,7 @@
 // scss-docs-start input-group-variables
 $input-group-addon-padding-y:           $input-padding-y !default;
 $input-group-addon-padding-x:           $input-padding-x !default;
-$input-group-addon-font-weight:         $input-font-weight !default;
+// $input-group-addon-font-weight:         $input-font-weight !default;
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  var(--#{$prefix}tertiary-bg) !default;
 $input-group-addon-border-color:        $input-border-color !default;
@@ -64,7 +64,7 @@ $input-group-addon-border-color:        $input-border-color !default;
     align-items: center;
     padding: $input-group-addon-padding-y $input-group-addon-padding-x;
     @include font-size($input-font-size); // Match inputs
-    font-weight: $input-group-addon-font-weight;
+    // font-weight: $input-group-addon-font-weight;
     line-height: $input-line-height;
     color: $input-group-addon-color;
     text-align: center;
