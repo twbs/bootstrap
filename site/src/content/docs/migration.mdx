@@ -5,7 +5,7 @@ aliases: "/migration/"
 toc: true
 ---
 
-## v6.0.0
+## v6.0.0 Changelog
 
 ### CSS
 
@@ -43,6 +43,21 @@ toc: true
 ### Reboot
 
 - Relocated heading classes (like `.h1`) and some type classes (`.mark` and `.small`) to Reboot from `_type.scss`. This avoids a dependency in Sass modules and we like to avoid extending selectors in general.
+
+### Forms
+
+- **Refactor checks, radios, and switches.**
+  - Split apart `_form-check.scss` into separate stylesheets: `_checkbox.scss`, `_radio.scss`, and `_switch.scss`.
+  - Also split apart the documentation pages for checks, radios, and switches.
+  - Added new CSS variables on each of these components. _Side note: we could've shared variables here, but chose not to for simplicity's sake._
+  - Removed several now unused Sass variables.
+  - Checkboxes now have a wrapping element and an SVG in the DOM for checked and indeterminate states. Radios and switches do not.
+  - Revamped layout for checks, radios, and switches with labels (and descriptions). We now have custom elements for layout that include basic flexbox styling.
+  - @mdo-do: Decide on fate of `.form-check-reverse`.
+- **Consolidate `.form-select` into `.form-control`.**
+  - Removed `.form-select`—use `.form-control` on `<select>` elements now. Too much abstraction and duplication at the same time.
+  - Adds new CSS variables on `.form-control` for easier customization without Sass compilation.
+  - `.form-control` now has a `min-height` at all times as opposed to just on `<textarea>` elements. This reduces some CSS for us.
 
 ### Helpers
 
