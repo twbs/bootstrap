@@ -18,21 +18,21 @@ $new-gray: oklch(60% 0.02 245) !default;
 $new-gray-warm: oklch(65% 0.01 286) !default;
 
 $hues: (
-  blue: $new-blue,
-  indigo: $new-indigo,
-  violet: $new-violet,
-  purple: $new-purple,
-  pink: $new-pink,
-  red: $new-red,
-  orange: $new-orange,
-  brown: $new-brown,
-  yellow: $new-yellow,
-  lime: $new-lime,
-  green: $new-green,
-  teal: $new-teal,
-  cyan: $new-cyan,
-  gray: $new-gray,
-  gray-warm: $new-gray-warm
+  "blue": $new-blue,
+  "indigo": $new-indigo,
+  "violet": $new-violet,
+  "purple": $new-purple,
+  "pink": $new-pink,
+  "red": $new-red,
+  "orange": $new-orange,
+  "brown": $new-brown,
+  "yellow": $new-yellow,
+  "lime": $new-lime,
+  "green": $new-green,
+  "teal": $new-teal,
+  "cyan": $new-cyan,
+  "gray": $new-gray,
+  "gray-warm": $new-gray-warm
 ) !default;
 
 :root {
