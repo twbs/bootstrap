@@ -1,0 +1,102 @@
+@use "../config" as *;
+@use "../colors" as *;
+@use "../variables" as *;
+@use "../functions" as *;
+@use "../vendor/rfs" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/color-mode" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/transition" as *;
+@use "form-variables" as *;
+
+// scss-docs-start check-variables
+$check-border-color: var(--#{$prefix}border-color) !default;
+$check-checked-bg: var(--#{$prefix}primary-base) !default;
+$check-checked-border-color: $check-checked-bg !default;
+$check-indeterminate-bg: var(--#{$prefix}primary-base) !default;
+$check-indeterminate-border-color: $check-indeterminate-bg !default;
+$check-disabled-bg: var(--#{$prefix}secondary-bg) !default;
+$check-disabled-border-color: $check-disabled-bg !default;
+$check-disabled-opacity: .65 !default;
+// scss-docs-end check-variables
+
+@layer forms {
+  b-checkgroup {
+    display: flex;
+    gap: var(--#{$prefix}gap, .5rem);
+    align-items: var(--#{$prefix}align-items, start);
+
+    .description {
+      color: var(--#{$prefix}secondary-text);
+    }
+  }
+
+  .check {
+    // scss-docs-start check-css-variables
+    --#{$prefix}check-bg: transparent;
+    --#{$prefix}check-border-color: #{$check-border-color};
+    --#{$prefix}check-checked-bg: #{$check-checked-bg};
+    --#{$prefix}check-checked-border-color: #{$check-checked-border-color};
+    --#{$prefix}check-indeterminate-bg: #{$check-indeterminate-bg};
+    --#{$prefix}check-indeterminate-border-color: #{$check-indeterminate-border-color};
+    --#{$prefix}check-disabled-bg: #{$check-disabled-bg};
+    --#{$prefix}check-disabled-border-color: #{$check-disabled-border-color};
+    --#{$prefix}check-disabled-opacity: #{$check-disabled-opacity};
+    // scss-docs-end check-css-variables
+
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    margin-block: .125rem;
+
+    :where(svg, input) {
+      flex-shrink: 0;
+      grid-row-start: 1;
+      grid-column-start: 1;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    :where(input) {
+      appearance: none;
+      // later: maybe set a tertiary bg color?
+      background-color: var(--#{$prefix}check-bg);
+      border: 1px solid var(--#{$prefix}check-border-color);
+      // stylelint-disable-next-line property-disallowed-list
+      border-radius: .25em;
+    }
+
+    :where(input:checked, input:indeterminate) {
+      background-color: var(--#{$prefix}check-checked-bg);
+      border-color: var(--#{$prefix}check-checked-border-color);
+    }
+
+    &:has(input:checked) .checked,
+    &:has(input:indeterminate) .indeterminate {
+      display: block;
+      color: var(--#{$prefix}primary-contrast);
+      stroke: currentcolor;
+    }
+
+    &:has(input:disabled) {
+      --#{$prefix}check-bg: var(--#{$prefix}check-disabled-bg);
+
+      ~ label {
+        color: var(--#{$prefix}secondary-text);
+        cursor: default;
+      }
+    }
+
+    &:has(input:disabled:checked) {
+      opacity: var(--#{$prefix}check-disabled-opacity);
+    }
+
+    :where(svg) {
+      pointer-events: none;
+    }
+
+    :where(svg path) {
+      display: none;
+    }
+  }
+}

@@ -1,18 +1,53 @@
 @use "../config" as *;
+@use "../colors" as *;
 @use "../variables" as *;
+
+$control-min-height: 2.5rem !default;
+$control-min-height-sm: 2rem !default;
+$control-min-height-lg: 3rem !default;
+$control-padding-y: .375rem !default;
+$control-padding-x: .75rem !default;
+$control-font-size: $font-size-base !default;
+$control-line-height: $line-height-base !default;
+$control-color: var(--#{$prefix}body-color) !default;
+$control-bg: var(--#{$prefix}body-bg) !default;
+$control-border-width: var(--#{$prefix}border-width) !default;
+$control-border-color: var(--#{$prefix}border-color) !default;
+$control-border-radius: var(--#{$prefix}border-radius) !default;
+
+$control-padding-y-sm: .25rem !default;
+$control-padding-x-sm: .5rem !default;
+$control-font-size-sm: $font-size-sm !default;
+$control-line-height-sm: $line-height-sm !default;
+$control-border-radius-sm: var(--#{$prefix}border-radius-sm) !default;
+
+$control-padding-y-lg: .5rem !default;
+$control-padding-x-lg: 1rem !default;
+$control-font-size-lg: $font-size-lg !default;
+$control-line-height-lg: $line-height-lg !default;
+$control-border-radius-lg: var(--#{$prefix}border-radius-lg) !default;
+
+$control-select-indicator-color:       $gray-600 !default;
+$control-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$control-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
+$control-select-bg-position:           right $control-padding-x center !default;
+$control-select-bg-size:               16px 12px !default;
+
+$control-select-indicator-color-dark:  $body-color-dark !default;
+$control-select-indicator-dark:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$control-select-indicator-color-dark}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
+
 
 // scss-docs-start input-btn-variables
 $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
-$input-btn-font-family:       null !default;
+// $input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
 
-$input-btn-focus-width:         $focus-ring-width !default;
-$input-btn-focus-color-opacity: $focus-ring-opacity !default;
-$input-btn-focus-color:         $focus-ring-color !default;
-$input-btn-focus-blur:          $focus-ring-blur !default;
-$input-btn-focus-box-shadow:    $focus-ring-box-shadow !default;
+// $input-btn-focus-width:         $focus-ring-width !default;
+// $input-btn-focus-color-opacity: $focus-ring-opacity !default;
+// $input-btn-focus-color:         $focus-ring-color !default;
+// $input-btn-focus-blur:          $focus-ring-blur !default;
+// $input-btn-focus-box-shadow:    $focus-ring-box-shadow !default;
 
 $input-btn-padding-y-sm:      .25rem !default;
 $input-btn-padding-x-sm:      .5rem !default;
@@ -22,15 +57,15 @@ $input-btn-padding-y-lg:      .5rem !default;
 $input-btn-padding-x-lg:      1rem !default;
 $input-btn-font-size-lg:      $font-size-lg !default;
 
-$input-btn-border-width:      var(--#{$prefix}border-width) !default;
+// $input-btn-border-width:      var(--#{$prefix}border-width) !default;
 // scss-docs-end input-btn-variables
 
 // scss-docs-start form-input-variables
 $input-padding-y:                       $input-btn-padding-y !default;
 $input-padding-x:                       $input-btn-padding-x !default;
-$input-font-family:                     $input-btn-font-family !default;
+// $input-font-family:                     $input-btn-font-family !default;
 $input-font-size:                       $input-btn-font-size !default;
-$input-font-weight:                     $font-weight-base !default;
+// $input-font-weight:                     $font-weight-base !default;
 $input-line-height:                     $input-btn-line-height !default;
 
 $input-padding-y-sm:                    $input-btn-padding-y-sm !default;
@@ -48,7 +83,7 @@ $input-disabled-border-color:           null !default;
 
 $input-color:                           var(--#{$prefix}body-color) !default;
 $input-border-color:                    var(--#{$prefix}border-color) !default;
-$input-border-width:                    $input-btn-border-width !default;
+$input-border-width:                    var(--#{$prefix}border-width) !default;
 $input-box-shadow:                      var(--#{$prefix}box-shadow-inset) !default;
 
 $input-border-radius:                   var(--#{$prefix}border-radius) !default;
@@ -70,9 +105,12 @@ $input-height-inner:                    add($input-line-height * 1em, $input-pad
 $input-height-inner-half:               add($input-line-height * .5em, $input-padding-y) !default;
 $input-height-inner-quarter:            add($input-line-height * .25em, $input-padding-y * .5) !default;
 
-$input-height:                          add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
-$input-height-sm:                       add($input-line-height * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
-$input-height-lg:                       add($input-line-height * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
+// $input-height:                          add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
+// $input-height-sm:                       add($input-line-height * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
+// $input-height-lg:                       add($input-line-height * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
+$input-height:                          2.5rem !default;
+$input-height-sm:                       2rem !default;
+$input-height-lg:                       3rem !default;
 
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 

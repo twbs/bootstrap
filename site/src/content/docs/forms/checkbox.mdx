@@ -1,0 +1,117 @@
+---
+title: Checkbox
+description: Highly customizable, native checkbox `<input>` elements for presenting toggleable options.
+toc: true
+---
+
+**Trialing new components with the following rules:**
+
+- New components are purely components, they don't assume layout of any kind.
+- New options for form layout:
+  - Use new form groups to lay out your forms: `.control-group`, `.check-group`, `.radio-group`.
+  - Use helpers to lay out your forms—`.hstack` and `.vstack`—with utilities.
+
+## Basic checkbox
+
+All checkbox styling is contained to a wrapper class, `.check`. This does the following:
+
+- Adds a stacking grid layout for the checkbox and custom SVG icon.
+- Overrides the default `<input>` appearance with themed colors.
+- Handles the toggling of separate paths in our custom SVG for the `:checked` and indeterminate states. Two `<path>`s are included in the SVG, one for each state, and the appropriate `<path>` is shown based on the `<input>`’s state.
+
+For folks looking to replace our provided icons, you'll need to add the `.checked` and `.indeterminate` classes to the `<path>`s and use them in a single `<svg>` element.
+
+Checkbox layout and labels are handled with additional HTML and CSS.
+
+<Example code={`<div class="check">
+    <input type="checkbox" id="check" checked />
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+    </svg>
+  </div>`} />
+
+## Indeterminate
+
+Checkboxes can utilize the indeterminate pseudo class when manually set via JavaScript. There is no available HTML attribute for specifying it.
+
+<Example addStackblitzJs class="bd-example-indeterminate" code={`<div class="check">
+    <input type="checkbox" id="checkIndeterminate" />
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+    </svg>
+  </div>`} />
+
+## Label
+
+Wrap the `.check` in a `<b-checkgroup>` layout component and add your label. We use a custom element for layout here that sets some basic flexbox styling.
+
+Consider margin utilities for additional spacing, and flex utilities for alignment.
+
+<Example code={`<b-checkgroup>
+    <div class="check">
+      <input type="checkbox" id="checkLabel" />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      </svg>
+    </div>
+    <label for="checkLabel">Example new checkbox</label>
+  </b-checkgroup>`} />
+
+## Description
+
+With this layout approach, you can easily add a description or other content after the label. Here we use another custom element, `<b-vstack>`, to stack the label and description.
+
+<Example code={`<b-checkgroup>
+    <div class="check">
+      <input type="checkbox" id="checkDescription" />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      </svg>
+    </div>
+    <b-vstack>
+      <label for="checkDescription">Example new checkbox</label>
+      <small class="description">Supporting description for the above label.</small>
+    </b-vstack>
+  </b-checkgroup>`} />
+
+## Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
+
+<Example code={`<b-checkgroup>
+    <div class="check">
+      <input type="checkbox" id="checkDisabled" disabled />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      </svg>
+    </div>
+    <label for="checkDisabled">Example new checkbox</label>
+  </b-checkgroup>`} />
+
+<Example code={`<b-checkgroup>
+    <div class="check">
+      <input type="checkbox" id="checkDisabledChecked" checked disabled />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      </svg>
+    </div>
+    <label for="checkDisabledChecked">Example new checkbox</label>
+  </b-checkgroup>`} />
+
+## CSS
+
+### Variables
+
+CSS variables for the checkbox component are built on the Sass variables.
+
+<ScssDocs name="check-css-variables" file="scss/forms/_check.scss" />
+
+### Sass variables
+
+<ScssDocs name="check-variables" file="scss/forms/_check.scss" />

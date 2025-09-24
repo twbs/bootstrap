@@ -1,0 +1,79 @@
+@use "../config" as *;
+@use "../colors" as *;
+@use "../variables" as *;
+@use "../functions" as *;
+@use "../vendor/rfs" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/color-mode" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/transition" as *;
+@use "form-variables" as *;
+
+// scss-docs-start radio-variables
+$radio-border-color: var(--#{$prefix}border-color) !default;
+$radio-checked-bg: var(--#{$prefix}primary-base) !default;
+$radio-checked-border-color: $radio-checked-bg !default;
+$radio-disabled-bg: var(--#{$prefix}secondary-bg) !default;
+$radio-disabled-border-color: $radio-disabled-bg !default;
+$radio-disabled-opacity: .65 !default;
+// scss-docs-end radio-variables
+
+@layer forms {
+  b-radiogroup {
+    display: flex;
+    gap: var(--#{$prefix}gap, .5rem);
+    align-items: var(--#{$prefix}align-items, start);
+
+    .description {
+      color: var(--#{$prefix}secondary-text);
+    }
+  }
+
+  .radio {
+    // scss-docs-start radio-css-variables
+    --#{$prefix}radio-bg: transparent;
+    --#{$prefix}radio-border-color: #{$radio-border-color};
+    --#{$prefix}radio-checked-bg: #{$radio-checked-bg};
+    --#{$prefix}radio-checked-border-color: #{$radio-checked-border-color};
+    --#{$prefix}radio-disabled-bg: #{$radio-disabled-bg};
+    --#{$prefix}radio-disabled-border-color: #{$radio-disabled-border-color};
+    --#{$prefix}radio-disabled-opacity: #{$radio-disabled-opacity};
+    // scss-docs-end radio-css-variables
+
+    position: relative;
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    margin-block: .125rem;
+    appearance: none;
+    background-color: var(--#{$prefix}radio-bg);
+    border: 1px solid var(--#{$prefix}radio-border-color);
+    // stylelint-disable-next-line property-disallowed-list
+    border-radius: 50%;
+
+    &:checked {
+      color: var(--#{$prefix}primary-contrast);
+      background-color: var(--#{$prefix}radio-checked-bg);
+      border-color: var(--#{$prefix}radio-checked-border-color);
+
+      &::before {
+        position: absolute;
+        inset: .25rem;
+        content: "";
+        background-color: currentcolor;
+        // stylelint-disable-next-line property-disallowed-list
+        border-radius: 50%;
+      }
+    }
+
+    &:disabled {
+      --#{$prefix}radio-bg: var(--#{$prefix}radio-disabled-bg);
+
+      ~ label {
+        color: var(--#{$prefix}secondary-text);
+        cursor: default;
+      }
+    }
+  }
+}
