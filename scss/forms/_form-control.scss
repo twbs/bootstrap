@@ -1,36 +1,45 @@
 @use "sass:math";
 @use "../config" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
+@use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/gradients" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
-//
-// General form controls (plus a few specific high-level interventions)
-//
-
 @layer forms {
   .form-control {
+    --#{$prefix}control-min-height: #{$control-min-height};
+    --#{$prefix}control-padding-y: #{$control-padding-y};
+    --#{$prefix}control-padding-x: #{$control-padding-x};
+    --#{$prefix}control-font-size: #{$control-font-size};
+    --#{$prefix}control-line-height: #{$control-line-height};
+    --#{$prefix}control-color: #{$control-color};
+    --#{$prefix}control-bg: #{$control-bg};
+    --#{$prefix}control-border-width: #{$control-border-width};
+    --#{$prefix}control-border-color: #{$control-border-color};
+    --#{$prefix}control-border-radius: #{$control-border-radius};
+    --#{$prefix}control-select-bg-color: #{$control-select-indicator-color};
+    --#{$prefix}control-select-bg: #{escape-svg($control-select-indicator)};
+    --#{$prefix}control-select-bg-position: #{$control-select-bg-position};
+    --#{$prefix}control-select-bg-size: #{$control-select-bg-size};
+
     display: block;
     width: 100%;
-    padding: $input-padding-y $input-padding-x;
-    font-family: $input-font-family;
-    @include font-size($input-font-size);
-    font-weight: $input-font-weight;
-    line-height: $input-line-height;
-    color: $input-color;
-    appearance: none; // Fix appearance for date inputs in Safari
-    background-color: $input-bg;
+    min-height: var(--#{$prefix}control-min-height);
+    padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+    font-size: var(--#{$prefix}control-font-size);
+    line-height: var(--#{$prefix}control-line-height);
+    color: var(--#{$prefix}control-color);
+    appearance: none;
+    background-color: var(--#{$prefix}control-bg);
     background-clip: padding-box;
-    border: $input-border-width solid $input-border-color;
-
-    // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
-    @include border-radius($input-border-radius, 0);
-
+    border: var(--#{$prefix}control-border-width) solid var(--#{$prefix}control-border-color);
+    @include border-radius(var(--#{$prefix}control-border-radius), 0);
     @include box-shadow($input-box-shadow);
     @include transition($input-transition);
 
@@ -99,16 +108,17 @@
 
     // File input buttons theming
     &::file-selector-button {
-      padding: $input-padding-y $input-padding-x;
-      margin: (-$input-padding-y) (-$input-padding-x);
-      margin-inline-end: $input-padding-x;
+      min-height: var(--#{$prefix}control-min-height);
+      padding: var(--#{$prefix}control-padding-y) var(--#{$prefix}control-padding-x);
+      margin: calc(var(--#{$prefix}control-padding-y) * -1) calc(var(--#{$prefix}control-padding-x) * -1);
+      margin-inline-end: var(--#{$prefix}control-padding-x);
       color: $form-file-button-color;
       @include gradient-bg($form-file-button-bg);
       pointer-events: none;
       border-color: inherit;
       border-style: solid;
       border-width: 0;
-      border-inline-end-width: $input-border-width;
+      border-inline-end-width: var(--#{$prefix}control-border-width);
       border-radius: 0; // stylelint-disable-line property-disallowed-list
       @include transition($btn-transition);
     }
@@ -145,6 +155,28 @@
     }
   }
 
+  // stylelint-disable selector-no-qualifying-type
+  select.form-control {
+    padding-right: calc(var(--#{$prefix}control-padding-x) * 3);
+    background-image: var(--#{$prefix}control-select-bg);
+    background-repeat: no-repeat;
+    background-position: var(--#{$prefix}control-select-bg-position);
+    background-size: var(--#{$prefix}control-select-bg-size);
+
+    &[multiple],
+    &[size]:not([size="1"]) {
+      padding-right: var(--#{$prefix}control-padding-x);
+      background-image: none;
+    }
+
+    @if $enable-dark-mode {
+      @include color-mode(dark) {
+        --#{$prefix}control-select-indicator: #{escape-svg($control-select-indicator-dark)};
+      }
+    }
+  }
+  // stylelint-enable selector-no-qualifying-type
+
   // Form control sizing
   //
   // Build on `.form-control` with modifier classes to decrease or increase the
@@ -153,48 +185,40 @@
   // Repeated in `_input_group.scss` to avoid Sass extend issues.
 
   .form-control-sm {
-    min-height: $input-height-sm;
-    padding: $input-padding-y-sm $input-padding-x-sm;
-    @include font-size($input-font-size-sm);
-    @include border-radius($input-border-radius-sm);
-
-    &::file-selector-button {
-      padding: $input-padding-y-sm $input-padding-x-sm;
-      margin: (-$input-padding-y-sm) (-$input-padding-x-sm);
-      margin-inline-end: $input-padding-x-sm;
-    }
+    --#{$prefix}control-min-height: #{$control-min-height-sm};
+    --#{$prefix}control-padding-y: #{$control-padding-y-sm};
+    --#{$prefix}control-padding-x: #{$control-padding-x-sm};
+    --#{$prefix}control-font-size: #{$control-font-size-sm};
+    --#{$prefix}control-line-height: #{$control-line-height-sm};
+    --#{$prefix}control-border-radius: #{$control-border-radius-sm};
   }
 
   .form-control-lg {
-    min-height: $input-height-lg;
-    padding: $input-padding-y-lg $input-padding-x-lg;
-    @include font-size($input-font-size-lg);
-    @include border-radius($input-border-radius-lg);
-
-    &::file-selector-button {
-      padding: $input-padding-y-lg $input-padding-x-lg;
-      margin: (-$input-padding-y-lg) (-$input-padding-x-lg);
-      margin-inline-end: $input-padding-x-lg;
-    }
+    --#{$prefix}control-min-height: #{$control-min-height-lg};
+    --#{$prefix}control-padding-y: #{$control-padding-y-lg};
+    --#{$prefix}control-padding-x: #{$control-padding-x-lg};
+    --#{$prefix}control-font-size: #{$control-font-size-lg};
+    --#{$prefix}control-line-height: #{$control-line-height-lg};
+    --#{$prefix}control-border-radius: #{$control-border-radius-lg};
   }
 
-  // Make sure textareas don't shrink too much when resized
-  // https://github.com/twbs/bootstrap/pull/29124
-  // stylelint-disable selector-no-qualifying-type
-  textarea {
-    &.form-control {
-      min-height: $input-height;
-    }
+  // // Make sure textareas don't shrink too much when resized
+  // // https://github.com/twbs/bootstrap/pull/29124
+  // // stylelint-disable selector-no-qualifying-type
+  // textarea {
+  //   &.form-control {
+  //     min-height: $input-height;
+  //   }
 
-    &.form-control-sm {
-      min-height: $input-height-sm;
-    }
+  //   &.form-control-sm {
+  //     min-height: $input-height-sm;
+  //   }
 
-    &.form-control-lg {
-      min-height: $input-height-lg;
-    }
-  }
-  // stylelint-enable selector-no-qualifying-type
+  //   &.form-control-lg {
+  //     min-height: $input-height-lg;
+  //   }
+  // }
+  // // stylelint-enable selector-no-qualifying-type
 
   .form-control-color {
     width: $form-color-width;
