@@ -22,7 +22,7 @@ When using `.btn` without a modifier, be sure to add some explicit `:focus-visib
 
 Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control.
 
-<Example code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-${themeColor.name}">${themeColor.title}</button>`), `
+<Example class="bd-example-buttons" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-${themeColor.name}-solid justify-self-start">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-outline justify-self-start">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-subtle justify-self-start">${themeColor.title}</button> <button type="button" class="btn btn-${themeColor.name}-text justify-self-start">${themeColor.title}</button>`), `
 <button type="button" class="btn btn-link">Link</button>`]} />
 
 <Callout name="warning-color-assistive-technologies" />
@@ -276,15 +276,23 @@ Here’s an example of building a custom `.btn-*` modifier class as we do for th
 
 ### Sass variables
 
-<ScssDocs name="btn-variables" file="scss/_variables.scss" />
+<ScssDocs name="btn-variables" file="scss/buttons/_button-variables.scss" />
+
+### Sass map
+
+Button variants—including all their states—are defined in the `$button-variants` Sass map. This map identifies which theme color tokens to use for each variant's state.
+
+For example, a solid button uses the same `bg` token for its background and border colors because we want it to have a seamless look.
+
+<ScssDocs name="btn-variants" file="scss/buttons/_button.scss" />
 
 ### Sass mixins
 
 There are three mixins for buttons: button and button outline variant mixins (both based on `$theme-colors`), plus a button size mixin.
 
-{/*<ScssDocs name="btn-variant-mixin" file="scss/mixins/_buttons.scss" />
+<ScssDocs name="btn-variant-mixin" file="scss/buttons/_button.scss" />
 
-<ScssDocs name="btn-outline-variant-mixin" file="scss/mixins/_buttons.scss" />
+{/*<ScssDocs name="btn-outline-variant-mixin" file="scss/mixins/_buttons.scss" />
 
 <ScssDocs name="btn-size-mixin" file="scss/mixins/_buttons.scss" />*/}
 
