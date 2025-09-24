@@ -117,14 +117,14 @@ $position-values: (
 // Settings for the `<body>` element.
 
 $body-text-align:           null !default;
-$body-color:                var(--#{$prefix}gray-900) !default;
-$body-bg:                   $white !default;
+$body-color:                var(--#{$prefix}color-body) !default;
+$body-bg:                   var(--#{$prefix}bg-body) !default;
 
-$body-secondary-color:      rgba($body-color, .75) !default;
-$body-secondary-bg:         var(--#{$prefix}gray-200) !default;
+$body-secondary-color:      var(--#{$prefix}color-secondary) !default;
+$body-secondary-bg:         var(--#{$prefix}bg-secondary) !default;
 
-$body-tertiary-color:       rgba($body-color, .5) !default;
-$body-tertiary-bg:          var(--#{$prefix}gray-100) !default;
+$body-tertiary-color:       var(--#{$prefix}color-muted) !default;
+$body-tertiary-bg:          var(--#{$prefix}bg-muted) !default;
 
 $body-emphasis-color:       $black !default;
 
@@ -371,7 +371,7 @@ $input-btn-border-width:      var(--#{$prefix}border-width) !default;
 // For each of Bootstrap's buttons, define text, background, and border color.
 
 // scss-docs-start btn-variables
-$btn-color:                   var(--#{$prefix}body-color) !default;
+$btn-color:                   var(--#{$prefix}color-body) !default;
 $btn-padding-y:               $input-btn-padding-y !default;
 $btn-padding-x:               $input-btn-padding-x !default;
 $btn-font-family:             $input-btn-font-family !default;
@@ -461,8 +461,8 @@ $modal-dialog-margin-y-sm-up:       1.75rem !default;
 
 $modal-title-line-height:           $line-height-base !default;
 
-$modal-content-color:               var(--#{$prefix}body-color) !default;
-$modal-content-bg:                  var(--#{$prefix}body-bg) !default;
+$modal-content-color:               var(--#{$prefix}color-body) !default;
+$modal-content-bg:                  var(--#{$prefix}bg-body) !default;
 $modal-content-border-color:        var(--#{$prefix}border-color-translucent) !default;
 $modal-content-border-width:        var(--#{$prefix}border-width) !default;
 $modal-content-border-radius:       var(--#{$prefix}border-radius-lg) !default;
@@ -505,8 +505,8 @@ $offcanvas-transition-duration:     .3s !default;
 $offcanvas-border-color:            $modal-content-border-color !default;
 $offcanvas-border-width:            $modal-content-border-width !default;
 $offcanvas-title-line-height:       $modal-title-line-height !default;
-$offcanvas-bg-color:                var(--#{$prefix}body-bg) !default;
-$offcanvas-color:                   var(--#{$prefix}body-color) !default;
+$offcanvas-bg-color:                var(--#{$prefix}bg-body) !default;
+$offcanvas-color:                   var(--#{$prefix}color-body) !default;
 $offcanvas-box-shadow:              $modal-content-box-shadow-xs !default;
 $offcanvas-backdrop-bg:             $modal-backdrop-bg !default;
 $offcanvas-backdrop-opacity:        $modal-backdrop-opacity !default;
@@ -520,8 +520,8 @@ $code-color:                        var(--#{$prefix}secondary-text) !default;
 $kbd-padding-y:                     .1875rem !default;
 $kbd-padding-x:                     .375rem !default;
 $kbd-font-size:                     $code-font-size !default;
-$kbd-color:                         var(--#{$prefix}body-bg) !default;
-$kbd-bg:                            var(--#{$prefix}body-color) !default;
+$kbd-color:                         var(--#{$prefix}bg-body) !default;
+$kbd-bg:                            var(--#{$prefix}color-body) !default;
 
 $pre-color:                         null !default;
 
@@ -534,17 +534,17 @@ $pre-color:                         null !default;
 //
 
 // scss-docs-start sass-dark-mode-vars
-$body-color-dark:                   var(--#{$prefix}gray-200) !default;
-$body-bg-dark:                      var(--#{$prefix}gray-975) !default;
-$body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
-$body-secondary-bg-dark:            var(--#{$prefix}gray-800) !default;
-$body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
+// $body-color-dark:                   var(--#{$prefix}gray-200) !default;
+// $body-bg-dark:                      var(--#{$prefix}gray-975) !default;
+// $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
+// $body-secondary-bg-dark:            var(--#{$prefix}gray-800) !default;
+// $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
 $body-tertiary-bg-dark:             color-mix(in srgb, var(--#{$prefix}gray-800), var(--#{$prefix}gray-900)) !default;
 $body-emphasis-color-dark:          $white !default;
 $border-color-dark:                 var(--#{$prefix}gray-700) !default;
 $border-color-translucent-dark:     rgba($white, .15) !default;
 $headings-color-dark:               inherit !default;
-$mark-color-dark:                   $body-color-dark !default;
+// $mark-color-dark:                   $body-color-dark !default;
 $mark-bg-dark:                      var(--#{$prefix}yellow-800) !default;
 
 

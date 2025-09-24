@@ -130,7 +130,7 @@ Use contextual classes to style list items with a stateful background and color.
     `<ul class="list-group">
     <li class="list-group-item">A simple default list group item</li>
     `,
-    ...getData('theme-colors').map((themeColor) => `  <li class="list-group-item list-group-item-${themeColor.name}">A simple ${themeColor.name} list group item</li>`),
+    ...getData('theme-colors').map((themeColor) => `  <li class="list-group-item theme-${themeColor.name}">A simple ${themeColor.name} list group item</li>`),
     `</ul>`
   ]} />
 
@@ -142,7 +142,7 @@ Contextual classes also work with `.list-group-item-action` for `<a>` and `<butt
     `<div class="list-group">
     <a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>
     `,
-    ...getData('theme-colors').map((themeColor) => `  <a href="#" class="list-group-item list-group-item-action list-group-item-${themeColor.name}">A simple ${themeColor.name} list group item</a>`),
+    ...getData('theme-colors').map((themeColor) => `  <a href="#" class="list-group-item list-group-item-action theme-${themeColor.name}">A simple ${themeColor.name} list group item</a>`),
     `</div>`
   ]} />
 

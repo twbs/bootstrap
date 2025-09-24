@@ -23,15 +23,15 @@
   }
 
   @each $color, $value in $theme-bgs {
-    --#{$prefix}#{$color}: #{$value};
+    --#{$prefix}bg-#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-fgs {
-    --#{$prefix}#{$color}: #{$value};
+    --#{$prefix}color-#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-borders {
-    --#{$prefix}#{$color}: #{$value};
+    --#{$prefix}border-#{$color}: #{$value};
   }
 
   --#{$prefix}black: #{$black};
@@ -41,6 +41,8 @@
 
 :root,
 [data-bs-theme="light"] {
+  color-scheme: light;
+
   // Note: Custom variable values only support SassScript inside `#{}`.
 
   --#{$prefix}white-rgb: #{to-rgb($white)};
@@ -87,9 +89,9 @@
     --#{$prefix}border#{$key}: #{$value};
   }
 
-  --#{$prefix}body-color: #{$body-color};
+  // --#{$prefix}body-color: #{$body-color};
   --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
-  --#{$prefix}body-bg: #{$body-bg};
+  // --#{$prefix}body-bg: #{$body-bg};
   --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
 
   // --#{$prefix}emphasis-color: #{$body-emphasis-color};
@@ -174,23 +176,23 @@
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars
-    --#{$prefix}body-color: #{$body-color-dark};
-    --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
-    --#{$prefix}body-bg: #{$body-bg-dark};
-    --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
+    // --#{$prefix}body-color: #{$body-color-dark};
+    // --#{$prefix}body-color-rgb: #{to-rgb($body-color-dark)};
+    // --#{$prefix}body-bg: #{$body-bg-dark};
+    // --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-dark)};
 
     --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
     --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
 
-    --#{$prefix}secondary-color: #{$body-secondary-color-dark};
-    --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
-    --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
-    --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
+    // --#{$prefix}secondary-color: #{$body-secondary-color-dark};
+    // --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-dark)};
+    // --#{$prefix}secondary-bg: #{$body-secondary-bg-dark};
+    // --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-dark)};
 
-    --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
-    --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
-    --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
-    --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
+    // --#{$prefix}tertiary-color: #{$body-tertiary-color-dark};
+    // --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-dark)};
+    // --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
+    // --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
     --#{$prefix}heading-color: #{$headings-color-dark};
 
@@ -200,8 +202,8 @@
     // --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
     // --#{$prefix}code-color: #{$code-color-dark}; // removed in v6
-    --#{$prefix}highlight-color: #{$mark-color-dark};
-    --#{$prefix}highlight-bg: #{$mark-bg-dark};
+    // --#{$prefix}highlight-color: #{$mark-color-dark};
+    // --#{$prefix}highlight-bg: #{$mark-bg-dark};
 
     --#{$prefix}border-color: #{$border-color-dark};
     --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};

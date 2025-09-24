@@ -10,7 +10,7 @@ import { getData } from '@libs/data'
 
 Alerts are available for any length of text, as well as an optional close button. For proper styling, use one of the eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts JavaScript plugin](#dismissing).
 
-<Example code={getData('theme-colors').map((themeColor) => `<div class="alert alert-${themeColor.name}" role="alert">
+<Example code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
     A simple ${themeColor.name} alert—check it out!
   </div>`)} />
 
