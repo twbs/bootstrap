@@ -1,40 +1,40 @@
-@use "banner";
+@forward "banner";
 
 // scss-docs-start import-stack
 // Global CSS variables, layer definitions, and configuration
-@use "root";
+@forward "root";
 
 // Subdir imports
-@use "content";
-@use "layout";
-@use "forms";
-@use "buttons";
+@forward "content";
+@forward "layout";
+@forward "forms";
+@forward "buttons";
 
 // Components
-@use "accordion";
-@use "alert";
-@use "badge";
-@use "breadcrumb";
-@use "card";
-@use "carousel";
-@use "dropdown";
-@use "list-group";
-@use "modal";
-@use "nav";
-@use "navbar";
-@use "offcanvas";
-@use "pagination";
-@use "placeholders";
-@use "popover";
-@use "progress";
-@use "spinners";
-@use "toasts";
-@use "tooltip";
-@use "transitions";
+@forward "accordion";
+@forward "alert";
+@forward "badge";
+@forward "breadcrumb";
+@forward "card";
+@forward "carousel";
+@forward "dropdown";
+@forward "list-group";
+@forward "modal";
+@forward "nav";
+@forward "navbar";
+@forward "offcanvas";
+@forward "pagination";
+@forward "placeholders";
+@forward "popover";
+@forward "progress";
+@forward "spinners";
+@forward "toasts";
+@forward "tooltip";
+@forward "transitions";
 
 // Helpers
-@use "helpers";
+@forward "helpers";
 
 // Utilities
-@use "utilities/api";
+@forward "utilities/api";
 // scss-docs-end import-stack
