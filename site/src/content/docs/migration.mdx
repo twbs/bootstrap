@@ -5,6 +5,45 @@ aliases: "/migration/"
 toc: true
 ---
 
+## v6.0.0 Migration
+
+Bootstrap 6 is a major release with many breaking changes to modernize our codebase, adopt newer build tools, and improve customization. Keep reading for a guide on how to migrate from v5 to v6, and a full changelog of what's new.
+
+1. Bump your Bootstrap dependency:
+
+   ```json
+   {
+     "dependencies": {
+       "bootstrap": "^6.0.0"
+     }
+   }
+   ```
+
+2. If using all of Bootstrap's Sass files, include it in your Sass using `@use`:
+
+   ```scss
+   @use "bootstrap/scss/bootstrap";
+   ```
+
+   With this, you can then easily override Bootstrap's Sass variables and maps:
+
+   ```scss
+   @use "bootstrap/scss/bootstrap" with (
+    $spacer: 1rem,
+    $enable-reduced-motion: true,
+   );
+   ```
+
+3. If using only certain parts of Bootstrap's Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
+
+   ```scss
+   @use "bootstrap/scss/forms";
+   ```
+
+4. Update HTML and CSS per the changelog and updates in the documentation.
+
+5. Recompile your Sass to see the changes.
+
 ## v6.0.0 Changelog
 
 ### CSS
