@@ -1,0 +1,52 @@
+// Test @use with configuration syntax using a single module instance
+@use "../../alert" as * with (
+  $alert-margin-bottom: 3rem,
+  $alert-link-font-weight: 800
+);
+@use "../../variables" as *;
+
+$true-terminal-output: false;
+
+@include describe("Bootstrap module configuration") {
+  @include describe("@use with configuration syntax") {
+    @include it("should allow configuring alert variables with @use ... with") {
+      @include assert() {
+        @include output() {
+          .test {
+            margin-bottom: $alert-margin-bottom;
+            font-weight: $alert-link-font-weight;
+          }
+        }
+
+        @include expect() {
+          .test {
+            margin-bottom: 3rem;
+            font-weight: 800;
+          }
+        }
+      }
+    }
+
+    @include it("should maintain other alert variables with default values") {
+      @include assert() {
+        @include output() {
+          .test {
+            padding-y: $alert-padding-y;
+            padding-x: $alert-padding-x;
+            // stylelint-disable-next-line property-disallowed-list
+            border-radius: $alert-border-radius;
+          }
+        }
+
+        @include expect() {
+          .test {
+            padding-y: 1rem;
+            padding-x: 1rem;
+            // stylelint-disable-next-line property-disallowed-list
+            border-radius: var(--bs-border-radius);
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,11 +6,11 @@
 // @forward "variables";
 
 // Layout & components
-@use "root" as *;
+@forward "root";
 
 // Helpers
 @forward "helpers";
 
 // Utilities
-@use "utilities" as *;
-@use "utilities/api";
+@forward "utilities";
+@forward "utilities/api";
