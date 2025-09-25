@@ -6,13 +6,16 @@ toc: true
 
 ## Relative to the parent
 
-Width and height utilities are generated from the utility API in `_utilities.scss`. Includes support for `25%`, `50%`, `75%`, `100%`, and `auto` by default. Modify those values as you need to generate different utilities here.
+Width and height utilities are generated from the utility API in `_utilities.scss`. Includes support for `25%`, `50%`, `75%`, `100%`, `auto`, `min-content`, `max-content`, and `fit-content` by default. Modify those values as you need to generate different utilities here.
 
 <Example class="bd-example-flex" code={`<div class="w-25 p-3">Width 25%</div>
 <div class="w-50 p-3">Width 50%</div>
 <div class="w-75 p-3">Width 75%</div>
 <div class="w-100 p-3">Width 100%</div>
-<div class="w-auto p-3">Width auto</div>`} />
+<div class="w-auto p-3">Width auto</div>
+<div class="w-min p-3">Width min-content</div>
+<div class="w-max p-3">Width max-content</div>
+<div class="w-fit p-3">Width fit-content</div>`} />
 
 <Example class="bd-example-flex" code={`<div style="height: 100px;">
     <div class="h-25 d-inline-block" style="width: 120px;">Height 25%</div>
@@ -20,6 +23,9 @@ Width and height utilities are generated from the utility API in `_utilities.scs
     <div class="h-75 d-inline-block" style="width: 120px;">Height 75%</div>
     <div class="h-100 d-inline-block" style="width: 120px;">Height 100%</div>
     <div class="h-auto d-inline-block" style="width: 120px;">Height auto</div>
+    <div class="h-min d-inline-block" style="width: 120px;">Height min-content</div>
+    <div class="h-max d-inline-block" style="width: 120px;">Height max-content</div>
+    <div class="h-fit d-inline-block" style="width: 120px;">Height fit-content</div>
   </div>`} />
 
 You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.

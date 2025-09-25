@@ -203,7 +203,10 @@ $utilities: map-merge(
         50: 50%,
         75: 75%,
         100: 100%,
-        auto: auto
+        auto: auto,
+        min: min-content,
+        max: max-content,
+        fit: fit-content
       )
     ),
     "max-width": (
@@ -229,7 +232,10 @@ $utilities: map-merge(
         50: 50%,
         75: 75%,
         100: 100%,
-        auto: auto
+        auto: auto,
+        min: min-content,
+        max: max-content,
+        fit: fit-content
       )
     ),
     "max-height": (
