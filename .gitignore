@@ -36,6 +36,7 @@ Thumbs.db
 # Folders to ignore
 /dist/
 /dist-sass/
+/js/dist/
 /js/coverage/
 /node_modules/
 
