@@ -567,8 +567,8 @@ $pre-color:                         null !default;
 //
 
 // scss-docs-start sass-dark-mode-vars
-$body-color-dark:                   $gray-300 !default;
-$body-bg-dark:                      $gray-900 !default;
+$body-color-dark:                   var(--#{$prefix}gray-200) !default;
+$body-bg-dark:                      var(--#{$prefix}gray-975) !default;
 $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
 $body-secondary-bg-dark:            $gray-800 !default;
 $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;

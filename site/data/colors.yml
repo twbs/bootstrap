@@ -12,16 +12,20 @@
   hex: "#dc3545"
 - name: orange
   hex: "#fd7e14"
-- name: brown
-  hex: "#8b4513"
+- name: amber
+  hex: "#fd7e14"
 - name: yellow
   hex: "#ffc107"
+- name: lime
+  hex: "#84cc16"
 - name: green
   hex: "#198754"
 - name: teal
   hex: "#20c997"
 - name: cyan
   hex: "#0dcaf0"
+- name: brown
+  hex: "#8b4513"
 - name: gray
   hex: "#6c757d"
 - name: "gray-warm"
