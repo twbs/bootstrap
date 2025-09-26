@@ -180,19 +180,17 @@ if (currentPageIndex < allPages.length - 1) {
       <div class="bd-content ps-lg-2">
         {
           frontmatter.sections && (
-            <div class="grid mb-5">
+            <div class="grid grid-cols-3 mb-5">
               {frontmatter.sections.map((section) => (
-                <div class="col-md-6">
-                  <a
-                    class="d-block text-decoration-none"
-                    href={getVersionedDocsPath(
-                      `${parentDirectory ? parentDirectory + '/' : ''}${getSlug(section.title)}/`
-                    )}
-                  >
-                    <strong class="d-block h5 mb-0">{section.title}</strong>
-                    <span class="text-secondary">{section.description}</span>
-                  </a>
-                </div>
+                <a
+                  class="d-block text-decoration-none"
+                  href={getVersionedDocsPath(
+                    `${parentDirectory ? parentDirectory + '/' : ''}${getSlug(section.title)}/`
+                  )}
+                >
+                  <strong class="d-block h5 mb-0">{section.title}</strong>
+                  <span class="text-secondary">{section.description}</span>
+                </a>
               ))}
             </div>
           )

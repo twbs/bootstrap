@@ -1,6 +1,6 @@
 ---
 title: Customize
-description: Learn how to theme, customize, and extend Bootstrap with Sass, a boatload of global options, an expansive color system, and more.
+description: Learn how Bootstrap's colors power our design system theme. Customize and extend Bootstrap with Sass, a boatload of global options, and plenty of global and component-specific CSS variables.
 toc: false
 aliases: "/docs/[[config:docs_version]]/customize/"
 sections:
@@ -9,9 +9,11 @@ sections:
   - title: Options
     description: Customize Bootstrap with built-in variables to easily toggle global CSS preferences.
   - title: Color
-    description: Learn about and customize the color systems that support the entire toolkit.
+    description: Bootstrap includes 11 shades of 14 colors in our color system that can be used to power our theme.
+  - title: Theme
+    description: Semantic colors, typography, settings, and more that can be customized to fit your brand.
   - title: Color modes
-    description: Explore our default light mode and the new dark mode, or create custom color modes yourself.
+    description: Build in light mode, dark mode, or both.
   - title: Components
     description: Learn how we build nearly all our components responsively and with base and modifier classes.
   - title: CSS variables
@@ -34,6 +36,18 @@ While we cannot go into details here on how to use every package manager, we can
 For those who want to use the distribution files, review the [getting started page]([[docsref:/getting-started/introduction]]) for how to include those files and an example HTML page. From there, consult the docs for the layout, components, and behaviors you’d like to use.
 
 As you familiarize yourself with Bootstrap, continue exploring this section for more details on how to utilize our global options, making use of and changing our color system, how we build our components, how to use our growing list of CSS custom properties, and how to optimize your code when building with Bootstrap.
+
+## Sass vs CSS
+
+When Bootstrap 5 first introduced CSS variables, the Sass vs CSS variables setup was a little confusing and somewhat limited. As such, the relationship between Sass and CSS variables was very unclear. In Bootstrap 6, we've clarified that—here's how the two interact.
+
+- At a high level, Sass is a way to manage [global configuration options]([[docsref:/customize/options]]) and generate CSS for our utilities, components, typography, custom properties (aka CSS variables) and more.
+- We consider CSS variables to be the **first-class customization layer** for our users.
+- Sass variables are available for nearly every component—like the new `$check-*` variables for checkboxes. These Sass variables are then consumed by CSS variables on the relevant selector (e.g., `.check` with `--bs-check-bg: #{$check-bg}`) and applied through various properties.
+- CSS variables get their values from Sass variables, or CSS variables, depending on the context.
+- Sass helps us generate CSS variables, too. Think theme and config values, but across components, Sass is consuming CSS variables. This gives you two, clearer avenues for customization.
+
+With that in mind, you can customize Bootstrap 6 via CSS or Sass, both of which are easier than ever thanks to a revamped color system and theme configuration.
 
 ## CSPs and embedded SVGs
 
