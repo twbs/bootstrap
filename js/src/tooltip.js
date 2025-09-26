@@ -5,15 +5,18 @@
  * --------------------------------------------------------------------------
  */
 
-import * as Popper from '@popperjs/core'
+import {
+  flip, hide, offset, shift
+} from '@floating-ui/dom'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
-import Manipulator from './dom/manipulator.js'
 import {
-  execute, findShadowRoot, getElement, getUID, isRTL, noop
+  execute, findShadowRoot, getElement, getUID, isVisible, noop
 } from './util/index.js'
+import Manipulator from './dom/manipulator.js'
 import { DefaultAllowlist } from './util/sanitizer.js'
 import TemplateFactory from './util/template-factory.js'
+import FloatingUi from './util/floating-ui.js'
 
 /**
  * Constants
@@ -50,30 +53,28 @@ const EVENT_MOUSELEAVE = 'mouseleave'
 const AttachmentMap = {
   AUTO: 'auto',
   TOP: 'top',
-  RIGHT: isRTL() ? 'left' : 'right',
+  RIGHT: 'right',
   BOTTOM: 'bottom',
-  LEFT: isRTL() ? 'right' : 'left'
+  LEFT: 'left'
 }
 
 const Default = {
   allowList: DefaultAllowlist,
   animation: true,
-  boundary: 'clippingParents',
   container: false,
   customClass: '',
   delay: 0,
   fallbackPlacements: ['top', 'right', 'bottom', 'left'],
   html: false,
-  offset: [0, 6],
+  offset: 0,
   placement: 'top',
-  popperConfig: null,
+  positionConfig: null,
   sanitize: true,
   sanitizeFn: null,
   selector: false,
   template: '<div class="tooltip" role="tooltip">' +
-            '<div class="tooltip-arrow"></div>' +
-            '<div class="tooltip-inner"></div>' +
-            '</div>',
+    '<div class="tooltip-inner"></div>' +
+    '</div>',
   title: '',
   trigger: 'hover focus'
 }
@@ -81,15 +82,14 @@ const Default = {
 const DefaultType = {
   allowList: 'object',
   animation: 'boolean',
-  boundary: '(string|element)',
   container: '(string|element|boolean)',
   customClass: '(string|function)',
   delay: '(number|object)',
   fallbackPlacements: 'array',
   html: 'boolean',
-  offset: '(array|string|function)',
+  offset: '(number|array|string|function)',
   placement: '(string|function)',
-  popperConfig: '(null|object|function)',
+  positionConfig: '(null|object|function)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
   selector: '(string|boolean)',
@@ -104,10 +104,6 @@ const DefaultType = {
 
 class Tooltip extends BaseComponent {
   constructor(element, config) {
-    if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)')
-    }
-
     super(element, config)
 
     // Private
@@ -115,7 +111,7 @@ class Tooltip extends BaseComponent {
     this._timeout = 0
     this._isHovered = null
     this._activeTrigger = {}
-    this._popper = null
+    this._positionHelper = new FloatingUi(this._element)
     this._templateFactory = null
     this._newContent = null
 
@@ -182,7 +178,7 @@ class Tooltip extends BaseComponent {
   }
 
   show() {
-    if (this._element.style.display === 'none') {
+    if (!isVisible(this._element)) {
       throw new Error('Please use show on visible elements')
     }
 
@@ -199,22 +195,14 @@ class Tooltip extends BaseComponent {
     }
 
     // TODO: v6 remove this or make it optional
-    this._disposePopper()
-
-    const tip = this._getTipElement()
-
-    this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
-
-    const { container } = this._config
-
-    if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
-      container.append(tip)
-      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
+    if (this.tip) {
+      this.tip.remove()
+      this.tip = null
     }
 
-    this._popper = this._createPopper(tip)
+    this.update()
 
-    tip.classList.add(CLASS_NAME_SHOW)
+    this.tip.classList.add(CLASS_NAME_SHOW)
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
@@ -271,7 +259,8 @@ class Tooltip extends BaseComponent {
       }
 
       if (!this._isHovered) {
-        this._disposePopper()
+        this._positionHelper.stop()
+        this.tip.remove()
       }
 
       this._element.removeAttribute('aria-describedby')
@@ -282,9 +271,7 @@ class Tooltip extends BaseComponent {
   }
 
   update() {
-    if (this._popper) {
-      this._popper.update()
-    }
+    this._positionHelper.calculate(this._element, this._getTipElement(), this._getFloatingUiConfig(), { position: 'fixed' })
   }
 
   // Protected
@@ -295,6 +282,14 @@ class Tooltip extends BaseComponent {
   _getTipElement() {
     if (!this.tip) {
       this.tip = this._createTipElement(this._newContent || this._getContentForTemplate())
+      this._element.setAttribute('aria-describedby', this.tip.getAttribute('id'))
+    }
+
+    const { container } = this._config
+
+    if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
+      container.append(this.tip)
+      EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
     }
 
     return this.tip
@@ -309,8 +304,6 @@ class Tooltip extends BaseComponent {
     }
 
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
-    // TODO: v6 the following can be achieved with CSS only
-    tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
     const tipId = getUID(this.constructor.NAME).toString()
 
@@ -326,7 +319,7 @@ class Tooltip extends BaseComponent {
   setContent(content) {
     this._newContent = content
     if (this._isShown()) {
-      this._disposePopper()
+      this._positionHelper.stop()
       this.show()
     }
   }
@@ -370,75 +363,31 @@ class Tooltip extends BaseComponent {
     return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
   }
 
-  _createPopper(tip) {
-    const placement = execute(this._config.placement, [this, tip, this._element])
-    const attachment = AttachmentMap[placement.toUpperCase()]
-    return Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
-  }
-
-  _getOffset() {
-    const { offset } = this._config
-
-    if (typeof offset === 'string') {
-      return offset.split(',').map(value => Number.parseInt(value, 10))
-    }
-
-    if (typeof offset === 'function') {
-      return popperData => offset(popperData, this._element)
-    }
-
-    return offset
-  }
-
-  _resolvePossibleFunction(arg) {
-    return execute(arg, [this._element, this._element])
-  }
-
-  _getPopperConfig(attachment) {
-    const defaultBsPopperConfig = {
-      placement: attachment,
-      modifiers: [
-        {
-          name: 'flip',
-          options: {
-            fallbackPlacements: this._config.fallbackPlacements
-          }
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: this._getOffset()
-          }
-        },
-        {
-          name: 'preventOverflow',
-          options: {
-            boundary: this._config.boundary
-          }
-        },
-        {
-          name: 'arrow',
-          options: {
-            element: `.${this.constructor.NAME}-arrow`
-          }
-        },
-        {
-          name: 'preSetPlacement',
-          enabled: true,
-          phase: 'beforeMain',
-          fn: data => {
-            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
-            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
-            this._getTipElement().setAttribute('data-popper-placement', data.state.placement)
-          }
-        }
+  _getFloatingUiConfig() {
+    const defaultBsConfig = {
+      strategy: 'fixed',
+      placement: this._getPlacement(),
+      middleware: [
+        offset(this._positionHelper.parseOffset(this._config.offset)),
+        flip({ fallbackPlacements: this._config.fallbackPlacements }),
+        shift(),
+        hide()
       ]
     }
 
     return {
-      ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
+      ...defaultBsConfig,
+      ...execute(this._config.positionConfig, [undefined, defaultBsConfig])
     }
+  }
+
+  _getPlacement() {
+    const placement = execute(this._config.placement, [this, this.tip, this._element])
+    return AttachmentMap[placement.toUpperCase()]
+  }
+
+  _resolvePossibleFunction(arg) {
+    return execute(arg, [this._element, this._element])
   }
 
   _setListeners() {
@@ -592,18 +541,6 @@ class Tooltip extends BaseComponent {
     // const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
     // `Object.fromEntries(keysWithDifferentValues)`
     return config
-  }
-
-  _disposePopper() {
-    if (this._popper) {
-      this._popper.destroy()
-      this._popper = null
-    }
-
-    if (this.tip) {
-      this.tip.remove()
-      this.tip = null
-    }
   }
 }
 export default Tooltip

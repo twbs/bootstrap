@@ -8,7 +8,7 @@ toc: true
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the third party library [Popper](https://popper.js.org/docs/v2/) for positioning. You must include [popper.min.js]([[config:cdn.popper]]) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Popper.
+- Tooltips rely on the third party library [Floating UI](https://floating-ui.com/) for positioning. You must include [floating-ui.dom.umd.min.js]([[config:cdn.floating_ui]]) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Floating UI.
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
