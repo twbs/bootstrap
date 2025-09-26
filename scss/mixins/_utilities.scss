@@ -25,8 +25,8 @@
 
   // Get the list or map of values and ensure it's a map
   $values: map.get($utility, values);
-  @if type-of($values) != "map" {
-    @if type-of($values) == "list" {
+  @if meta.type-of($values) != "map" {
+    @if meta.type-of($values) == "list" {
       $list: ();
       @each $value in $values {
         $list: map.merge($list, ($value: $value));
@@ -44,12 +44,12 @@
     $properties: map.get($utility, property);
 
     // Multiple properties are possible, for example with vertical or horizontal margins or paddings
-    @if type-of($properties) == "string" {
-      $properties: append((), $properties);
+    @if meta.type-of($properties) == "string" {
+      $properties: list.append((), $properties);
     }
 
     // Use custom class if present, otherwise use the first value from the list of properties
-    $customClass: if(map.has-key($utility, class), map.get($utility, class), nth($properties, 1));
+    $customClass: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
     $customClass: if($customClass == null, "", $customClass);
 
     // Use custom CSS variable name if present, otherwise default to `class`
@@ -86,6 +86,9 @@
 
     #{$selector} {
       @if map.get($utility, rfs) {
+        @if map.get($utility, important) {
+          @warn "The `important` option is not compatible with `rfs`. The `important` declaration will be ignored.";
+        }
         @if $is-rfs-media-query {
           @each $property in $properties {
             @include rfs($value, $property);
@@ -98,7 +101,11 @@
         }
       } @else {
         @each $property in $properties {
-          #{$property}: $value;
+          @if map.get($utility, important) {
+            #{$property}: $value !important; // stylelint-disable-line declaration-no-important
+          } @else {
+            #{$property}: $value;
+          }
         }
       }
     }
