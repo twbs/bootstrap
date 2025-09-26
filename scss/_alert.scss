@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "theme" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 
@@ -69,9 +70,9 @@ $alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers widt
 
   // scss-docs-start alert-modifiers
   // Generate contextual modifier classes for colorizing the alert
-  @each $state in map.keys($theme-colors) {
+  @each $state in map.keys($new-theme-colors) {
     .alert-#{$state} {
-      --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text-emphasis);
+      --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text);
       --#{$prefix}alert-bg: var(--#{$prefix}#{$state}-bg-subtle);
       --#{$prefix}alert-border-color: var(--#{$prefix}#{$state}-border-subtle);
       --#{$prefix}alert-link-color: var(--#{$prefix}#{$state}-text-emphasis);

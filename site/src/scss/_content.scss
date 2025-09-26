@@ -93,6 +93,7 @@
 
     th {
       color: var(--bs-emphasis-color);
+      border-bottom-color: currentcolor;
     }
 
     &:not(.bd-callout) > strong { // Keep callout correct color when used within tables

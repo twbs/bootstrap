@@ -1,0 +1,95 @@
+---
+export interface Props {
+  bg: string
+  fg?: string
+  size?: 'inline' | 'medium' | 'large'
+  contrast?: string
+  contrastDark?: string
+}
+
+const { bg, fg, size = 'inline', contrast, contrastDark } = Astro.props
+
+// Styles for different sizes
+const baseStyles = {
+  display: 'inline-flex',
+  color: `var(--bs-${fg})`,
+  backgroundColor: `var(--bs-${bg})`,
+  boxShadow: 'inset 0 0 0 1px light-dark(rgb(0 0 0 / .1), rgb(255 255 255 / .1))'
+}
+
+const sizeStyles = {
+  inline: {
+    verticalAlign: 'text-bottom',
+    width: '1rem',
+    height: '1rem',
+    borderRadius: 'var(--bs-border-radius-sm)'
+  },
+  medium: {
+    width: '100%',
+    paddingBlock: '1.5rem',
+    borderRadius: 'var(--bs-border-radius)'
+  },
+  large: {
+    width: '100%',
+    paddingBlock: '.5rem',
+    paddingInline: '1rem',
+    borderRadius: 'var(--bs-border-radius-lg)'
+  }
+}
+
+// Parse contrast ratios and determine if they're below 4.5
+const contrastRatio = contrast ? parseFloat(contrast) : null
+const contrastDarkRatio = contrastDark ? parseFloat(contrastDark) : null
+const isLowContrast = contrastRatio !== null && contrastRatio < 4.5
+const isLowContrastDark = contrastDarkRatio !== null && contrastDarkRatio < 4.5
+
+const contrastStyles = {
+  marginLeft: 'auto',
+  opacity: .5,
+  fontSize: '.75rem',
+  fontFamily: 'var(--bs-font-monospace)',
+  color: isLowContrast ? 'red' : 'inherit'
+}
+
+const combinedStyles = { ...baseStyles, ...sizeStyles[size] }
+---
+
+<style>
+  /* Show light contrast by default and in light mode */
+  .contrast-light {
+    display: inline;
+  }
+
+  .contrast-dark {
+    display: none;
+  }
+
+  /* Show dark contrast in dark mode */
+  :global([data-bs-theme="dark"]) .contrast-light {
+    display: none;
+  }
+
+  :global([data-bs-theme="dark"]) .contrast-dark {
+    display: inline;
+  }
+</style>
+
+{size === 'inline' ? (
+  <span style={combinedStyles}>
+    <slot />
+    {contrast && <span style={contrastStyles} class="contrast-light">{contrast}</span>}
+    {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
+  </span>
+) : size === 'large' ? (
+  <span style={combinedStyles}>
+    <slot />
+    {contrast && <span style={contrastStyles} class="contrast-light">{contrast}</span>}
+    {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
+  </span>
+) : (
+  <div style={combinedStyles}>
+    <slot />
+    {contrast && <span style={contrastStyles} class="contrast-light">{contrast}</span>}
+    {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
+  </div>
+)}
