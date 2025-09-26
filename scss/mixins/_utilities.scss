@@ -3,21 +3,42 @@
 @use "sass:meta";
 @use "sass:string";
 @use "../config" as *;
+@use "../vendor/rfs" as *;
+
+// stylelint-disable scss/dollar-variable-pattern
 
 // Utility generator
-// Used to generate utilities & print utilities
-@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
-  $values: map.get($utility, values);
 
-  // If the values are a list or string, convert it into a map
-  @if meta.type-of($values) == "string" or meta.type-of(list.nth($values, 1)) != "list" {
-    // A single value is converted to a map with a null key.
-    @if list.length($values) == 1 {
-      $values: (null: list.nth($values, 1));
+// - Utilities can three different types of selectors:
+//   - class: .class
+//   - attr-starts: [class^="class"]
+//   - attr-includes: [class*="class"]
+// - Utilities can generate a regular CSS property or a CSS custom property
+// - Utilities can be responsive or not
+// - Utilities can have a state (e.g., :hover, :focus, :active, etc.)
+
+@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
+  // Determine if we're generating a class, or an attribute selector
+  $selectorType: if(map.has-key($utility, selector), map.get($utility, selector), "class");
+  // Then get the class name to use in a class (e.g., .class) or in a attribute selector (e.g., [class^="class"])
+  $selectorClass: map.get($utility, class);
+
+  // Get the list or map of values and ensure it's a map
+  $values: map.get($utility, values);
+  @if meta.type-of($values) != "map" {
+    @if meta.type-of($values) == "list" {
+      $list: ();
+      @each $value in $values {
+        $list: map.merge($list, ($value: $value));
+      }
+      $values: $list;
     } @else {
-      $values: list.zip($values, $values);
+      $values: (null: $values);
     }
   }
+
+  // Calculate infix once, before the loop
+  $infix: if($infix == "", "", "-" + $infix);
 
   @each $key, $value in $values {
     $properties: map.get($utility, property);
@@ -27,83 +48,114 @@
       $properties: list.append((), $properties);
     }
 
-    // Use custom class if present
-    $property-class: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
-    $property-class: if($property-class == null, "", $property-class);
+    // Use custom class if present, otherwise use the first value from the list of properties
+    $customClass: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
+    $customClass: if($customClass == null, "", $customClass);
 
     // Use custom CSS variable name if present, otherwise default to `class`
-    $css-variable-name: if(map.has-key($utility, css-variable-name), map.get($utility, css-variable-name), map.get($utility, class));
+    // mdo-do: restore?
+    // $css-variable-name: if(map.has-key($utility, css-variable-name), map.get($utility, css-variable-name), map.get($utility, class));
 
     // State params to generate pseudo-classes
     $state: if(map.has-key($utility, state), map.get($utility, state), ());
 
-    $infix: if($property-class == "" and string.slice($infix, 1, 1) == "-", string.slice($infix, 2), $infix);
+    // $infix: if($customClass == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
 
     // Don't prefix if value key is null (e.g. with shadow class)
-    $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
+    $customClassModifier: if($key, if($customClass == "" and $infix == "", "", "-") + $key, "");
 
-    @if map.get($utility, rfs) {
-      // Inside the media query
-      @if $is-rfs-media-query {
-        $val: rfs-value($value);
-
-        // Do not render anything if fluid and non fluid values are the same
-        $value: if($val == rfs-fluid-value($value), null, $val);
+    $selector: "";
+    @if $selectorType == "class" {
+      // Use the fallback of the first property if no `class` key is used
+      @if $customClass != "" {
+        $selector: ".#{$customClass + $infix + $customClassModifier}";
+      } @else {
+        $selector: ".#{$selectorClass + $infix + $customClassModifier}";
       }
-      @else {
-        $value: rfs-fluid-value($value);
-      }
+    } @else if $selectorType == "attr-starts" {
+      $selector: "[class^=\"#{$selectorClass}\"]";
+    } @else if $selectorType == "attr-includes" {
+      $selector: "[class*=\"#{$selectorClass}\"]";
     }
 
-    $is-css-var: map.get($utility, css-var);
-    $is-local-vars: map.get($utility, local-vars);
-    $is-rtl: map.get($utility, rtl);
-    $is-important: map.get($utility, important);
+    // @debug $utility;
+    // @debug $selectorType;
+    // @debug $selector;
+    // @debug $properties;
+    // @debug $values;
 
-    @if $value != null {
-      @if $is-rtl == false {
-        /* rtl:begin:remove */
-      }
-
-      @if $is-css-var {
-        .#{$property-class + $infix + $property-class-modifier} {
-          --#{$prefix}#{$css-variable-name}: #{$value};
+    #{$selector} {
+      @if map.get($utility, rfs) {
+        @if map.get($utility, important) {
+          @warn "The `important` option is not compatible with `rfs`. The `important` declaration will be ignored.";
         }
-
-        @each $pseudo in $state {
-          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
-            --#{$prefix}#{$css-variable-name}: #{$value};
+        @if $is-rfs-media-query {
+          @each $property in $properties {
+            @include rfs($value, $property);
+          }
+        }
+        @else {
+          @each $property in $properties {
+            @include rfs($value, $property);
           }
         }
       } @else {
-        .#{$property-class + $infix + $property-class-modifier} {
-          @each $property in $properties {
-            @if $is-local-vars {
-              @each $local-var, $variable in $is-local-vars {
-                --#{$prefix}#{$local-var}: #{$variable};
-              }
-            }
-            #{$property}: $value if($is-important, !important, null);
+        @each $property in $properties {
+          @if map.get($utility, important) {
+            #{$property}: $value !important; // stylelint-disable-line declaration-no-important
+          } @else {
+            #{$property}: $value;
           }
         }
-
-        @each $pseudo in $state {
-          .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
-            @each $property in $properties {
-              @if $is-local-vars {
-                @each $local-var, $variable in $is-local-vars {
-                  --#{$prefix}#{$local-var}: #{$variable};
-                }
-              }
-              #{$property}: $value if($is-important, !important, null);
-            }
-          }
-        }
-      }
-
-      @if $is-rtl == false {
-        /* rtl:end:remove */
       }
     }
+
+    // @if $value != null {
+    //   #{$selector} {
+    //     @each $property in $properties {
+    //       #{$property}: $value;
+    //     }
+    //   }
+
+    //   @if $is-css-var {
+    //     #{$selector} {
+    //       --#{$prefix}#{$css-variable-name}: #{$value};
+    //     }
+
+    //     @each $pseudo in $state {
+    //       #{$selector}-#{$pseudo}:#{$pseudo} {
+    //         --#{$prefix}#{$css-variable-name}: #{$value};
+    //       }
+    //     }
+    //   } @else {
+    //     #{$selector} {
+    //       @each $property in $properties {
+    //         // @if $is-local-vars {
+    //         //   @each $local-var, $variable in $is-local-vars {
+    //         //     --#{$prefix}#{$local-var}: #{$variable};
+    //         //   }
+    //         // }
+    //         #{$property}: $value;
+    //       }
+    //     }
+
+    //   //   @each $pseudo in $state {
+    //   //     #{$selector}-#{$pseudo}:#{$pseudo} {
+    //   //       @each $property in $properties {
+    //   //         @if $is-local-vars {
+    //   //           @each $local-var, $variable in $is-local-vars {
+    //   //             --#{$prefix}#{$local-var}: #{$variable};
+    //   //           }
+    //   //         }
+    //   //         #{$property}: $value;
+    //   //       }
+    //   //     }
+    //   //   }
+    //   }
+    // }
+
+    $is-css-var: map.get($utility, css-var);
+    $is-local-vars: map.get($utility, local-vars);
+    // $is-rtl: map.get($utility, rtl);
   }
 }
