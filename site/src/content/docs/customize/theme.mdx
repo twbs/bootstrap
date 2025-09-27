@@ -79,10 +79,10 @@ Every token is available as a CSS variable, and most are then consumed by our ut
 <div class="grid gap-0" style={{gridTemplateColumns: 'repeat(8, 1fr)', gap: '8px', minWidth: '0'}}>
   {getData('theme-colors').map((color) => {
     return (
-      <div key={color.name} class="d-contents grid-full">
+      <div class="d-contents grid-full">
         <h6 class="d-block text-capitalize grid-full">{color.title}</h6>
         {themeTokens.map((token) => (
-          <div key={`${color.name}-${token}`} class="mb-3 font-monospace">
+          <div class="mb-3 font-monospace">
             <Swatch bg={`${color.name}-${token}`} size="medium" />
             <div class="text-center small color-3">{token}</div>
           </div>
@@ -173,7 +173,7 @@ Theme foregrounds include the following semantic colors:
 <div class="grid gap-0" style={{gridTemplateColumns: 'repeat(8, 1fr)', gap: '8px', minWidth: '0'}}>
   {themeFgs.map((color) => {
     return (
-      <div key={color}>
+      <div>
         <Swatch color={`fg-${color}`} size="large" />
         <div class="text-center color-3">{color}</div>
       </div>

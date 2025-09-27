@@ -23,12 +23,12 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, weâ€
 <div class="grid gap-0" style={{gridTemplateColumns: 'repeat(13, 1fr)', gap: '4px', minWidth: '0'}}>
   {getData('colors').map((color) => {
      return (
-       <div key={color.name} class="d-contents grid-full">
+       <div class="d-contents grid-full">
          <h5 class="d-block text-capitalize grid-full">{color.name.replace('-', ' ')}</h5>
 
          {["025", "050", ...getSequence(100, 900, 100), 950, 975].map((value) => {
            return (
-             <div key={`${color.name}-${value}`} class="mb-3 font-monospace small">
+             <div class="mb-3 font-monospace small">
                <Swatch bg={`${color.name}-${value}`} size="medium" />
                <div class="text-center color-3">{value}</div>
              </div>
@@ -42,7 +42,7 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, weâ€
     <h5 class="d-block text-capitalize grid-full">Additional</h5>
     {additionalColors.map((color) => {
       return (
-        <div key={`${color}`} class="mb-3 font-monospace small">
+        <div class="mb-3 font-monospace small">
           <Swatch bg={`${color}`} size="medium" />
           <div class="text-center color-3">{color}</div>
         </div>
@@ -428,12 +428,12 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, weâ€
 <div class="grid gap-0 small" style={{gridTemplateColumns: 'repeat(11, 1fr)', minWidth: '0'}}>
   {getData('colors').map((color) => {
      return (
-       <div key={color.name} style={{ gridColumn: '1 / -1', display: 'contents' }}>
+       <div style={{ gridColumn: '1 / -1', display: 'contents' }}>
          <h5 class="d-block text-capitalize" style={{ gridColumn: '1 / -1' }}>{color.name.replace('-', ' ')}</h5>
 
          {["050", ...getSequence(100, 900, 100), 950].map((value) => {
            return (
-             <div key={`${color.name}-${value}`} class="mb-3 font-monospace">
+             <div class="mb-3 font-monospace">
                <div class="py-4 mb-1" style={{backgroundColor: `var(--new-${color.name}-${value})`}}></div>
                <div>{value}</div>
              </div>
