@@ -26,8 +26,8 @@ const pageTitle = isHome
   : `${title} · ${getConfig().title} v${getConfig().docs_version}`
 
 // Dynamic imports to avoid build-time processing
-const Scss = import.meta.env.PROD ? null : await import('@components/head/Scss.astro')
-const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.astro') : null
+import.meta.env.PROD ? null : await import('@components/head/Scss.astro')
+import.meta.env.PROD ? await import('@components/head/ScssProd.astro') : null
 ---
 
 <meta charset="UTF-8" />
@@ -50,14 +50,7 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 
 <script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
 
-{import.meta.env.PROD && ScssProd && (
-  <Stylesheet direction={direction} layout={layout} />
-  <ScssProd.default />
-)}
-
-{!import.meta.env.PROD && Scss && (
-  <Scss.default />
-)}
+{import.meta.env.PROD && <Stylesheet direction={direction} layout={layout} />}
 
 <Favicons />
 <Social description={description} layout={layout} thumbnail={thumbnail} title={title} />
