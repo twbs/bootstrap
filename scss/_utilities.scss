@@ -95,7 +95,6 @@ $utilities: map.merge(
       print: true,
       property: display,
       class: d,
-      important: true,
       values: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex flow-root none
     ),
     // scss-docs-end utils-display
