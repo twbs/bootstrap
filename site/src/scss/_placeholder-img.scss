@@ -6,12 +6,14 @@
 
 // Remember to update `site/_layouts/examples.html` too if this changes!
 
-.bd-placeholder-img {
-  @include font-size(1.125rem);
-  user-select: none;
-  text-anchor: middle;
-}
+@layer custom {
+  .bd-placeholder-img {
+    @include font-size(1.125rem);
+    user-select: none;
+    text-anchor: middle;
+  }
 
-.bd-placeholder-img-lg {
-  @include font-size(3.5rem);
+  .bd-placeholder-img-lg {
+    @include font-size(3.5rem);
+  }
 }

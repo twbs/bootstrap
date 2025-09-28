@@ -44,121 +44,122 @@
 }
 
 // Shell prompts
-.language-bash .line::before,
-.language-sh .line::before {
-  display: inline-block;
-  color: var(--base03);
-  content: "$ ";
-  user-select: none;
-}
-
-.language-powershell .line::before {
-  display: inline-block;
-  color: var(--base0C);
-  content: "PM> ";
-  user-select: none;
-}
-
-// Token styles
-.token {
-  &.comment,
-  &.prolog,
-  &.doctype,
-  &.cdata {
+@layer custom {
+  .language-bash .line::before,
+  .language-sh .line::before {
+    display: inline-block;
     color: var(--base03);
+    content: "$ ";
+    user-select: none;
   }
 
-  &.punctuation {
-    color: var(--base05);
-  }
-
-  &.property {
-    color: var(--base0A);
-  }
-
-  &.tag {
-    color: var(--base08);
-  }
-
-  &.boolean,
-  &.number {
-    color: var(--base09);
-  }
-
-  &.constant,
-  &.symbol,
-  &.deleted {
-    color: var(--base08);
-  }
-
-  &.attr-name,
-  &.string,
-  &.char,
-  &.builtin,
-  &.inserted {
+  .language-powershell .line::before {
+    display: inline-block;
     color: var(--base0C);
+    content: "PM> ";
+    user-select: none;
   }
 
-  &.operator,
-  &.entity,
-  &.url {
-    color: var(--base05);
-  }
-
-  &.atrule,
-  &.attr-value,
-  &.keyword {
-    color: var(--base0E);
-  }
-
-  &.function {
-    color: var(--base0B);
-  }
-
-  &.selector,
-  &.class-name {
-    color: var(--base07);
-  }
-
-  &.regex,
-  &.important {
-    color: var(--base0A);
-  }
-
-  &.variable {
-    color: var(--base08);
-  }
-
-  &.important,
-  &.bold {
-    font-weight: $font-weight-bold;
-  }
-
-  &.italic {
-    font-style: italic;
-  }
-
-  &.entity {
-    cursor: help;
-  }
-}
-
-.language-diff {
   .token {
-    &.deleted {
-      color: var(--#{$prefix}red-400);
-      background-color: transparent;
+    &.comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: var(--base03);
     }
+
+    &.punctuation {
+      color: var(--base05);
+    }
+
+    &.property {
+      color: var(--base0A);
+    }
+
+    &.tag {
+      color: var(--base08);
+    }
+
+    &.boolean,
+    &.number {
+      color: var(--base09);
+    }
+
+    &.constant,
+    &.symbol,
+    &.deleted {
+      color: var(--base08);
+    }
+
+    &.attr-name,
+    &.string,
+    &.char,
+    &.builtin,
     &.inserted {
-      color: var(--#{$prefix}green-400);
-      background-color: transparent;
+      color: var(--base0C);
+    }
+
+    &.operator,
+    &.entity,
+    &.url {
+      color: var(--base05);
+    }
+
+    &.atrule,
+    &.attr-value,
+    &.keyword {
+      color: var(--base0E);
+    }
+
+    &.function {
+      color: var(--base0B);
+    }
+
+    &.selector,
+    &.class-name {
+      color: var(--base07);
+    }
+
+    &.regex,
+    &.important {
+      color: var(--base0A);
+    }
+
+    &.variable {
+      color: var(--base08);
+    }
+
+    &.important,
+    &.bold {
+      font-weight: $font-weight-bold;
+    }
+
+    &.italic {
+      font-style: italic;
+    }
+
+    &.entity {
+      cursor: help;
     }
   }
-}
 
-.language-bash,
-.language-sh {
-  .token.comment {
-    color: var(--base03);
+  .language-diff {
+    .token {
+      &.deleted {
+        color: var(--#{$prefix}red-400);
+        background-color: transparent;
+      }
+      &.inserted {
+        color: var(--#{$prefix}green-400);
+        background-color: transparent;
+      }
+    }
+  }
+
+  .language-bash,
+  .language-sh {
+    .token.comment {
+      color: var(--base03);
+    }
   }
 }
