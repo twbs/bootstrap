@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "hossaini.bootstrap-intellisense",
+    "streetsidesoftware.code-spell-checker",
+    "stylelint.vscode-stylelint"
+  ]
+}

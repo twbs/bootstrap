@@ -1,0 +1,94 @@
+---
+import BootstrapWhiteFillIcon from '@components/icons/BootstrapWhiteFillIcon.astro'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+---
+
+<footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
+  <div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
+    <div class="row">
+      <div class="col-lg-3 mb-3">
+        <a
+          class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none"
+          href="/"
+          aria-label="Bootstrap"
+        >
+          <BootstrapWhiteFillIcon class="d-block me-2" height={32} width={40} />
+          <span class="fs-5">Bootstrap</span>
+        </a>
+        <ul class="list-unstyled small">
+          <li class="mb-2">
+            Designed and built with all the love in the world by the <a href={getVersionedDocsPath('about/team')}
+              >Bootstrap team</a
+            > with the help of <a href={`${getConfig().repo}/graphs/contributors`}>our contributors</a>.
+          </li>
+          <li class="mb-2">
+            Code licensed <a href={`${getConfig().repo}/blob/main/LICENSE`} target="_blank" rel="license noopener"
+              >MIT</a
+            >, docs <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="license noopener"
+              >CC BY 3.0</a
+            >.
+          </li>
+          <li class="mb-2">Currently v{getConfig().current_version}.</li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-1 mb-3">
+        <h5>Links</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="/">Home</a></li>
+          <li class="mb-2"><a href={getVersionedDocsPath('/')}>Docs</a></li>
+          <li class="mb-2"><a href={getVersionedDocsPath('examples')}>Examples</a></li>
+          <li class="mb-2"><a href={getConfig().icons}>Icons</a></li>
+          <li class="mb-2"><a href={getConfig().blog}>Blog</a></li>
+          <li class="mb-2"><a href={getConfig().swag} target="_blank" rel="noopener">Swag Store</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Guides</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href={getVersionedDocsPath('getting-started')}>Getting started</a></li>
+          <li class="mb-2"><a href={getVersionedDocsPath('examples/starter-template')}>Starter template</a></li>
+          <li class="mb-2"><a href={getVersionedDocsPath('getting-started/webpack')}>Webpack</a></li>
+          <li class="mb-2"><a href={getVersionedDocsPath('getting-started/parcel')}>Parcel</a></li>
+          <li class="mb-2"><a href={getVersionedDocsPath('getting-started/vite')}>Vite</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Projects</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a href={`${getConfig().github_org}/bootstrap`} target="_blank" rel="noopener">Bootstrap 5</a>
+          </li>
+          <li class="mb-2">
+            <a href={`${getConfig().github_org}/bootstrap/tree/v4-dev`} target="_blank" rel="noopener">Bootstrap 4</a>
+          </li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/icons`} target="_blank" rel="noopener">Icons</a></li>
+          <li class="mb-2"><a href={`${getConfig().github_org}/rfs`} target="_blank" rel="noopener">RFS</a></li>
+          <li class="mb-2">
+            <a href={`${getConfig().github_org}/examples`} target="_blank" rel="noopener">Examples repo</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2 mb-3">
+        <h5>Community</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a href={`${getConfig().github_org}/bootstrap/issues`} target="_blank" rel="noopener">Issues</a>
+          </li>
+          <li class="mb-2">
+            <a href={`${getConfig().github_org}/bootstrap/discussions`} target="_blank" rel="noopener">Discussions</a>
+          </li>
+          <li class="mb-2">
+            <a href="https://github.com/sponsors/twbs" target="_blank" rel="noopener">Corporate sponsors</a>
+          </li>
+          <li class="mb-2"><a href={getConfig().opencollective} target="_blank" rel="noopener">Open Collective</a></li>
+          <li class="mb-2">
+            <a href="https://stackoverflow.com/questions/tagged/bootstrap-5" target="_blank" rel="noopener"
+              >Stack Overflow</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

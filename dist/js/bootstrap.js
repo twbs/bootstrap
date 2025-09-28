@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v5.3.5 (https://getbootstrap.com/)
+  * Bootstrap v5.3.8 (https://getbootstrap.com/)
   * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -666,7 +666,7 @@
    * Constants
    */
 
-  const VERSION = '5.3.5';
+  const VERSION = '5.3.8';
 
   /**
    * Class definition
@@ -692,6 +692,8 @@
         this[propertyName] = null;
       }
     }
+
+    // Private
     _queueCallback(callback, element, isAnimated = true) {
       executeAfterTransition(callback, element, isAnimated);
     }
@@ -1623,11 +1625,11 @@
       this._element.style[dimension] = '';
       this._queueCallback(complete, this._element, true);
     }
+
+    // Private
     _isShown(element = this._element) {
       return element.classList.contains(CLASS_NAME_SHOW$7);
     }
-
-    // Private
     _configAfterMerge(config) {
       config.toggle = Boolean(config.toggle); // Coerce string values
       config.parent = getElement(config.parent);
@@ -2982,7 +2984,6 @@
    *
    * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
    */
-  // eslint-disable-next-line unicorn/better-regex
   const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
   const allowedAttribute = (attribute, allowedAttributeList) => {
     const attributeName = attribute.nodeName.toLowerCase();
@@ -3526,6 +3527,7 @@
         if (trigger === 'click') {
           EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$1), this._config.selector, event => {
             const context = this._initializeOnDelegatedTarget(event);
+            context._activeTrigger[TRIGGER_CLICK] = !(context._isShown() && context._activeTrigger[TRIGGER_CLICK]);
             context.toggle();
           });
         } else if (trigger !== TRIGGER_MANUAL) {
@@ -4391,7 +4393,6 @@
     }
 
     // Private
-
     _maybeScheduleHide() {
       if (!this._config.autohide) {
         return;

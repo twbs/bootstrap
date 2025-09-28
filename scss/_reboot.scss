@@ -534,6 +534,12 @@ legend {
 [type="search"] {
   -webkit-appearance: textfield; // 1
   outline-offset: -2px; // 2
+
+  // 3. Better affordance and consistent appearance for search cancel button
+  &::-webkit-search-cancel-button {
+    cursor: pointer;
+    filter: grayscale(1);
+  }
 }
 
 // 1. A few input types should stay LTR
