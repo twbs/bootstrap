@@ -77,8 +77,8 @@
     "docs": "npm-run-all docs-build docs-lint",
     "docs-build": "npm run astro-build",
     "docs-compile": "npm run docs-build",
-    "docs-vnu": "node build/vnu-jar.mjs",
-    "docs-lint": "npm-run-all docs-prettier-check docs-vnu",
+    "docs-html-validate": "node build/html-validate.mjs",
+    "docs-lint": "npm-run-all docs-prettier-check docs-html-validate",
     "docs-prettier-check": "prettier --config site/.prettierrc.json -c --cache site",
     "docs-prettier-format": "prettier --config site/.prettierrc.json --write --cache site",
     "docs-serve": "npm run astro-dev",
@@ -143,6 +143,7 @@
     "github-slugger": "^2.0.0",
     "globby": "^14.1.0",
     "hammer-simulator": "0.0.1",
+    "html-validate": "^8.24.1",
     "htmlparser2": "^10.0.0",
     "image-size": "^2.0.2",
     "ip": "^2.0.1",
@@ -179,7 +180,6 @@
     "stylelint-config-twbs-bootstrap": "^16.1.0",
     "terser": "^5.44.0",
     "unist-util-visit": "^5.0.0",
-    "vnu-jar": "24.10.17",
     "zod": "^4.1.9"
   },
   "files": [
