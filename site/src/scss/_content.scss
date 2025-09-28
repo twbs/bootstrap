@@ -8,198 +8,189 @@
 // Bootstrap docs content theming
 //
 
-.bd-content {
-  > h2,
-  > h3,
-  > h4 {
-    --bs-heading-color: var(--bs-fg);
-  }
-
-  // Offset content from fixed navbar when jumping to headings
-  > h2:not(:first-child) {
-    margin-top: 3rem;
-  }
-
-  > h3 {
-    margin-top: 2rem;
-
-    code {
-      font-weight: 600;
-      color: inherit;
-    }
-  }
-
-
-  > ul li,
-  > ol li {
-    margin-bottom: .25rem;
-
-    // stylelint-disable selector-max-type, selector-max-compound-selectors
-    > p ~ ul {
-      margin-top: -.5rem;
-      margin-bottom: 1rem;
-    }
-    // stylelint-enable selector-max-type, selector-max-compound-selectors
-  }
-
-  .bd-reference-table {
-    max-height: 420px;
-    overflow-y: auto;
-    font-size: .75rem;
-
-    thead th {
-      border-bottom-color: currentcolor;
+@layer custom {
+  .bd-content {
+    > h2,
+    > h3,
+    > h4 {
+      --bs-heading-color: var(--bs-fg);
     }
 
-    th,
-    td {
-      padding-inline: 0;
+    // Offset content from fixed navbar when jumping to headings
+    > h2:not(:first-child) {
+      margin-top: 3rem;
     }
 
-    td {
-      font-family: var(--bs-font-monospace);
+    > h3 {
+      margin-top: 2rem;
 
-      &:first-child {
-        padding-inline-end: 1.5rem;
+      code {
+        font-weight: 600;
+        color: inherit;
+      }
+    }
+
+    > ul li,
+    > ol li {
+      margin-bottom: .25rem;
+
+      // stylelint-disable selector-max-type, selector-max-compound-selectors
+      > p ~ ul {
+        margin-top: -.5rem;
+        margin-bottom: 1rem;
+      }
+      // stylelint-enable selector-max-type, selector-max-compound-selectors
+    }
+
+    .bd-reference-table {
+      max-height: 420px;
+      overflow-y: auto;
+      font-size: .75rem;
+
+      thead th {
+        border-bottom-color: currentcolor;
+      }
+
+      th,
+      td {
+        padding-inline: 0;
+      }
+
+      td {
+        font-family: var(--bs-font-monospace);
+
+        &:first-child {
+          padding-inline-end: 1.5rem;
+          white-space: nowrap;
+        }
+
+        &:last-child {
+          color: light-dark(var(--bs-indigo-500), var(--bs-indigo-300));
+        }
+      }
+
+    }
+
+    // Override Bootstrap defaults
+    > .table,
+    > .table-responsive .table {
+      --bs-table-border-color: var(--bs-border-color);
+
+      max-width: 100%;
+      margin-bottom: 1.5rem;
+      @include font-size(.875rem);
+
+      @include media-breakpoint-down(lg) {
+        &.table-bordered {
+          border: 0;
+        }
+      }
+
+      th,
+      td {
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:not(:last-child) {
+          padding-right: 1.5rem;
+        }
+      }
+
+      th {
+        color: var(--bs-emphasis-color);
+        border-bottom-color: currentcolor;
+      }
+
+      &:not(.bd-callout) > strong { // Keep callout correct color when used within tables
+        color: var(--bs-emphasis-color);
+      }
+
+      // Prevent breaking of code
+      th,
+      td:first-child > code { // stylelint-disable-line selector-max-compound-selectors
         white-space: nowrap;
       }
-
-      &:last-child {
-        color: light-dark(var(--bs-indigo-500), var(--bs-indigo-300));
-      }
-    }
-
-  }
-
-  // Override Bootstrap defaults
-  > .table,
-  > .table-responsive .table {
-    --bs-table-border-color: var(--bs-border-color);
-
-    max-width: 100%;
-    margin-bottom: 1.5rem;
-    @include font-size(.875rem);
-
-    @include media-breakpoint-down(lg) {
-      &.table-bordered {
-        border: 0;
-      }
-    }
-
-    th,
-    td {
-      &:first-child {
-        padding-left: 0;
-      }
-
-      &:not(:last-child) {
-        padding-right: 1.5rem;
-      }
-    }
-
-    th {
-      color: var(--bs-emphasis-color);
-      border-bottom-color: currentcolor;
-    }
-
-    &:not(.bd-callout) > strong { // Keep callout correct color when used within tables
-      color: var(--bs-emphasis-color);
-    }
-
-    // Prevent breaking of code
-    th,
-    td:first-child > code { // stylelint-disable-line selector-max-compound-selectors
-      white-space: nowrap;
     }
   }
-}
 
-.table-options {
-  td:nth-child(2) {
-    min-width: 160px;
-  }
-}
-
-.table-utilities td:first-child {
-  white-space: nowrap;
-}
-
-.table-options td:last-child,
-.table-utilities td:last-child {
-  min-width: 280px;
-}
-
-.table-swatches {
-  th {
-    color: var(--bs-emphasis-color);
+  .table-options {
+    td:nth-child(2) {
+      min-width: 160px;
+    }
   }
 
-  td code {
+  .table-utilities td:first-child {
     white-space: nowrap;
+  }
+
+  .table-options td:last-child,
+  .table-utilities td:last-child {
+    min-width: 280px;
   }
 
   // Astro HTML parser adds extra <p> tags to the content
   td p {
     margin: 0;
   }
-}
 
-.bd-title {
-  --bs-heading-color: var(--bs-emphasis-color);
-  @include font-size(3rem);
-}
-
-.bd-subtitle {
-  font-weight: 300;
-  @include font-size(1.5rem);
-}
-
-.bi {
-  width: 1em;
-  height: 1em;
-  vertical-align: -.125em;
-  fill: currentcolor;
-}
-
-.border-lg-start {
-  @include media-breakpoint-up(lg) {
-    border-left: var(--bs-border-width) solid var(--bs-border-color);
+  .bd-title {
+    --bs-heading-color: var(--bs-fg);
+    @include font-size(3rem);
   }
-}
 
-// stylelint-disable selector-no-qualifying-type
-.bd-summary-link {
-  color: var(--bs-link-color);
-
-  &:hover,
-  details[open] > & {
-    color: var(--bs-link-hover-color);
+  .bd-subtitle {
+    font-weight: 300;
+    @include font-size(1.5rem);
   }
+
+  .bi {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
+    fill: currentcolor;
+  }
+
+  .border-lg-start {
+    @include media-breakpoint-up(lg) {
+      border-left: var(--bs-border-width) solid var(--bs-border-color);
+    }
+  }
+
+  // stylelint-disable selector-no-qualifying-type
+  .bd-summary-link {
+    color: var(--bs-link-color);
+
+    &:hover,
+    details[open] > & {
+      color: var(--bs-link-hover-color);
+    }
+  }
+  // stylelint-enable selector-no-qualifying-type
+
+  // scss-docs-start custom-color-mode
+  // [data-bs-theme="blue"] {
+  //   --bs-body-color: var(--bs-white);
+  //   --bs-body-color-rgb: #{to-rgb($white)};
+  //   --bs-body-bg: var(--bs-blue);
+  //   --bs-body-bg-rgb: #{to-rgb($blue)};
+  //   --bs-tertiary-bg: #{$blue-600};
+
+  //   .dropdown-menu {
+  //     --bs-dropdown-bg: #{color.mix($blue-500, $blue-600)};
+  //     --bs-dropdown-link-active-bg: #{$blue-700};
+  //   }
+
+  //   .btn-secondary {
+  //     --bs-btn-bg: #{color.mix($gray-600, $blue-400)};
+  //     --bs-btn-border-color: #{rgba($white, .25)};
+  //     --bs-btn-hover-bg: #{color.scale(color.mix($gray-600, $blue-400), $lightness: -5%)}; // stylelint-disable-line scss/at-function-named-arguments
+  //     --bs-btn-hover-border-color: #{rgba($white, .25)};
+  //     --bs-btn-active-bg: #{color.scale(color.mix($gray-600, $blue-400), $lightness: -10%)}; // stylelint-disable-line scss/at-function-named-arguments
+  //     --bs-btn-active-border-color: #{rgba($white, .5)};
+  //     --bs-btn-focus-border-color: #{rgba($white, .5)};
+  //     --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+  //   }
+  // }
+  // scss-docs-end custom-color-mode
 }
-// stylelint-enable selector-no-qualifying-type
-
-// scss-docs-start custom-color-mode
-// [data-bs-theme="blue"] {
-//   --bs-body-color: var(--bs-white);
-//   --bs-body-color-rgb: #{to-rgb($white)};
-//   --bs-body-bg: var(--bs-blue);
-//   --bs-body-bg-rgb: #{to-rgb($blue)};
-//   --bs-tertiary-bg: #{$blue-600};
-
-//   .dropdown-menu {
-//     --bs-dropdown-bg: #{color.mix($blue-500, $blue-600)};
-//     --bs-dropdown-link-active-bg: #{$blue-700};
-//   }
-
-//   .btn-secondary {
-//     --bs-btn-bg: #{color.mix(var(--#{$prefix}gray-600), $blue-400)};
-//     --bs-btn-border-color: #{rgba($white, .25)};
-//     --bs-btn-hover-bg: #{color.scale(color.mix(var(--#{$prefix}gray-600), $blue-400), $lightness: -5%)}; // stylelint-disable-line scss/at-function-named-arguments
-//     --bs-btn-hover-border-color: #{rgba($white, .25)};
-//     --bs-btn-active-bg: #{color.scale(color.mix(var(--#{$prefix}gray-600), $blue-400), $lightness: -10%)}; // stylelint-disable-line scss/at-function-named-arguments
-//     --bs-btn-active-border-color: #{rgba($white, .5)};
-//     --bs-btn-focus-border-color: #{rgba($white, .5)};
-//     --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
-//   }
-// }
-// scss-docs-end custom-color-mode

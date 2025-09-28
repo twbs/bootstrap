@@ -57,8 +57,10 @@ try {
 <Code containerClass="bd-example-snippet bd-file-ref" code={content} lang="scss">
   <div slot="pre" class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
     <a
-      class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small"
+      class="text-decoration-none color-body"
       href={`${getConfig().repo}/blob/v${getConfig().current_version}/${file}`.replaceAll('\\', '/')}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {file}
     </a>
