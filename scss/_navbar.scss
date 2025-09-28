@@ -280,7 +280,7 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
           }
 
           .navbar-toggler {
-            display: none;
+            display: none !important; // stylelint-disable-line declaration-no-important
           }
 
           .offcanvas {
