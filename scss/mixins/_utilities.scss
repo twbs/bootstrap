@@ -38,7 +38,8 @@
   }
 
   // Calculate infix once, before the loop
-  $infix: if($infix == "", "", "-" + $infix);
+  // Note: $infix already includes the leading dash from breakpoint-infix()
+  // $infix: if($infix == "", "", "-" + $infix);
 
   @each $key, $value in $values {
     $properties: map.get($utility, property);
