@@ -65,19 +65,26 @@ async function validateHTML() {
 
     let hasErrors = false
 
-    for (const file of files) {
-      const report = await htmlValidate.validateFile(file)
+    // Validate all files in parallel to avoid await-in-loop
+    const validationPromises = files.map(file =>
+      htmlValidate.validateFile(file).then(report => ({ file, report }))
+    )
 
+    const validationResults = await Promise.all(validationPromises)
+
+    // Process results and check for errors
+    for (const { file, report } of validationResults) {
       if (!report.valid) {
         hasErrors = true
         console.error(`\nErrors in ${file}:`)
 
-        for (const result of report.results) {
-          for (const message of result.messages) {
-            if (message.severity === 2) { // 2 = error, 1 = warning
-              console.error(`  Line ${message.line}:${message.column} - ${message.message} (${message.ruleId})`)
-            }
-          }
+        // Extract error messages with reduced nesting
+        const errorMessages = report.results.flatMap(result =>
+          result.messages.filter(message => message.severity === 2)
+        )
+
+        for (const message of errorMessages) {
+          console.error(`  Line ${message.line}:${message.column} - ${message.message} (${message.ruleId})`)
         }
       }
     }
