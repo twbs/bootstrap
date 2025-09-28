@@ -30,7 +30,9 @@ const htmlValidate = new HtmlValidate({
     // Allow custom attributes
     'no-unknown-elements': 'off',
     'attribute-boolean-style': 'off',
-    'no-inline-style': 'off'
+    'no-inline-style': 'off',
+    // KEEP duplicate ID checking enabled (this is important for HTML validity)
+    'no-dup-id': 'error'
   },
   elements: [
     'html5',
@@ -39,8 +41,8 @@ const htmlValidate = new HtmlValidate({
       '*': {
         attributes: {
           'is:raw': { boolean: true },
-          'switch': { boolean: true },
-          'autocomplete': { enum: ['on', 'off', 'new-password', 'current-password'] }
+          switch: { boolean: true },
+          autocomplete: { enum: ['on', 'off', 'new-password', 'current-password'] }
         }
       }
     }
@@ -72,8 +74,8 @@ async function validateHTML() {
 
         for (const result of report.results) {
           for (const message of result.messages) {
-            if (message.severity === 'error') {
-              console.error(`  Line ${message.line}:${message.column} - ${message.message}`)
+            if (message.severity === 2) { // 2 = error, 1 = warning
+              console.error(`  Line ${message.line}:${message.column} - ${message.message} (${message.ruleId})`)
             }
           }
         }
@@ -86,7 +88,6 @@ async function validateHTML() {
     } else {
       console.log('✓ All HTML files are valid!')
     }
-
   } catch (error) {
     console.error('HTML validation error:', error)
     process.exit(1)
