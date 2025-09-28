@@ -2,24 +2,40 @@
 @use "../../../scss/variables" as *;
 @use "../../../scss/mixins/transition" as *;
 
-.anchor-link {
-  padding: 0 .175rem;
-  font-weight: 400;
-  color: color-mix(in srgb, var(--#{$prefix}link-color), transparent .5);
-  text-decoration: none;
-  opacity: 0;
-  @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
-
-  &::after {
-    content: "#";
-  }
-
-  &:focus,
-  &:hover,
-  :hover > &,
-  :target > & {
-    color: var(--#{$prefix}link-color);
+@layer custom {
+  .anchor-link {
+    padding: 0 .175rem;
+    font-weight: 400;
+    color: color-mix(in srgb, var(--#{$prefix}link-color), transparent .5);
     text-decoration: none;
-    opacity: 1;
+    opacity: 0;
+    @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
+
+    &::after {
+      content: "#";
+    }
+
+    &:focus,
+    &:hover,
+    :hover > &,
+    :target > & {
+      color: var(--#{$prefix}link-color);
+      text-decoration: none;
+      opacity: 0;
+      @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
+
+      &::after {
+        content: "#";
+      }
+
+      &:focus,
+      &:hover,
+      :hover > &,
+      :target > & {
+        color: var(--#{$prefix}link-color);
+        text-decoration: none;
+        opacity: 1;
+      }
+    }
   }
 }
