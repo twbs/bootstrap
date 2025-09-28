@@ -1,0 +1,95 @@
+@import 'true';
+@import '../../mixins/breakpoints';
+
+// Test breakpoint functions and mixins for range media query syntax
+
+@include test-module('Breakpoint Functions') {
+  $test-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    xxl: 1536px
+  );
+
+  @include test('breakpoint-max with range syntax') {
+    @include assert-equal(breakpoint-max(xs, $test-breakpoints), null);
+    @include assert-equal(breakpoint-max(sm, $test-breakpoints), 576px);
+    @include assert-equal(breakpoint-max(md, $test-breakpoints), 768px);
+    @include assert-equal(breakpoint-max(lg, $test-breakpoints), 1024px);
+    @include assert-equal(breakpoint-max(xl, $test-breakpoints), 1280px);
+    @include assert-equal(breakpoint-max(xxl, $test-breakpoints), 1536px);
+  }
+}
+
+@include test-module('Media Query Mixins - Range Syntax') {
+  $test-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px,
+    xxl: 1536px
+  );
+
+  @include test('media-breakpoint-up generates range syntax') {
+    @include assert {
+      @include output {
+        @include media-breakpoint-up(sm, $test-breakpoints) {
+          .test { color: red; }
+        }
+      }
+      @include expect {
+        @media (width >= 576px) {
+          .test { color: red; }
+        }
+      }
+    }
+  }
+
+  @include test('media-breakpoint-down generates range syntax') {
+    @include assert {
+      @include output {
+        @include media-breakpoint-down(md, $test-breakpoints) {
+          .test { color: blue; }
+        }
+      }
+      @include expect {
+        @media (width < 768px) {
+          .test { color: blue; }
+        }
+      }
+    }
+  }
+
+  @include test('media-breakpoint-between generates range syntax') {
+    @include assert {
+      @include output {
+        @include media-breakpoint-between(sm, lg, $test-breakpoints) {
+          .test { color: green; }
+        }
+      }
+      @include expect {
+        @media (width >= 576px) and (width < 1024px) {
+          .test { color: green; }
+        }
+      }
+    }
+  }
+
+  @include test('media-breakpoint-only generates range syntax') {
+    @include assert {
+      @include output {
+        @include media-breakpoint-only(md, $test-breakpoints) {
+          .test { color: yellow; }
+        }
+      }
+      @include expect {
+        @media (width >= 768px) and (width < 1024px) {
+          .test { color: yellow; }
+        }
+      }
+    }
+  }
+}
