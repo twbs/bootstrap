@@ -23,15 +23,15 @@ $table-accent-bg:             transparent !default;
 // $table-th-font-weight:        null !default;
 
 $table-striped-color:         $table-color !default;
-$table-striped-bg-factor:     .03 !default;
+$table-striped-bg-factor:     .05 !default;
 $table-striped-bg:            color-mix(in srgb, var(--#{$prefix}table-color) #{math.percentage($table-striped-bg-factor)}, transparent) !default;
 
 $table-active-color:          $table-color !default;
-$table-active-bg-factor:      .075 !default;
+$table-active-bg-factor:      .1 !default;
 $table-active-bg:             color-mix(in srgb, var(--#{$prefix}table-color) #{math.percentage($table-active-bg-factor)}, transparent) !default;
 
 $table-hover-color:           $table-color !default;
-$table-hover-bg-factor:       .05 !default;
+$table-hover-bg-factor:       .075 !default;
 $table-hover-bg:              color-mix(in srgb, var(--#{$prefix}table-color) #{math.percentage($table-hover-bg-factor)}, transparent) !default;
 
 $table-border-factor:         .2 !default;
@@ -236,11 +236,11 @@ $table-variants: $new-theme-colors !default;
       --#{$prefix}table-color: var(--#{$prefix}#{$color}-text);
       --#{$prefix}table-bg: var(--#{$prefix}#{$color}-bg-subtle);
       --#{$prefix}table-border-color: var(--#{$prefix}#{$color}-border);
-      --#{$prefix}table-striped-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), #{math.percentage($table-striped-bg-factor)});
+      --#{$prefix}table-striped-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), var(--#{$prefix}table-color) #{math.percentage($table-striped-bg-factor)});
       --#{$prefix}table-striped-color: var(--#{$prefix}table-color);
-      --#{$prefix}table-active-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), #{math.percentage($table-active-bg-factor)});
+      --#{$prefix}table-active-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), var(--#{$prefix}table-color) #{math.percentage($table-active-bg-factor)});
       --#{$prefix}table-active-color: var(--#{$prefix}table-color);
-      --#{$prefix}table-hover-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), #{math.percentage($table-hover-bg-factor)});
+      --#{$prefix}table-hover-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), var(--#{$prefix}table-color) #{math.percentage($table-hover-bg-factor)});
       --#{$prefix}table-hover-color: var(--#{$prefix}table-color);
 
       color: var(--#{$prefix}table-color);

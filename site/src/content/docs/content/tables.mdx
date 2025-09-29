@@ -16,7 +16,7 @@ Using the most basic table markup, here’s how `.table`-based tables look in Bo
 
 ## Variants
 
-Use contextual classes to color tables, table rows, or individual cells. These adapt to color modes as well.
+Use theme-specific color classes to style tables, table rows, or individual cells. These adapt to color modes as well.
 
 <div class="bd-example">
   <table class="table">
@@ -77,9 +77,9 @@ Use `.table-striped-columns` to add zebra-striping to any table column.
 
 These classes can also be added to table variants:
 
-<Table class="table table-dark table-striped" />
+<Table class="table table-striped" theme="dark" />
 
-<Table class="table table-dark table-striped-columns" />
+<Table class="table table-striped-columns" theme="dark" />
 
 <Table class="table table-success table-striped" />
 
@@ -101,7 +101,7 @@ These hoverable rows can also be combined with the striped rows variant:
 
 Highlight a table row or cell by adding a `.table-active` class.
 
-<Example showMarkup={false} code={`
+<Example code={`
 <table class="table">
   <thead>
     <tr>
@@ -132,9 +132,7 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
   </tbody>
 </table>
-`} />
-
-```html
+`} customMarkup={`
 <table class="table">
   <thead>
     ...
@@ -154,9 +152,9 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
   </tbody>
 </table>
-```
+`} />
 
-<Example showMarkup={false} code={`
+<Example code={`
 <table class="table table-dark">
   <thead>
     <tr>
@@ -187,9 +185,7 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
   </tbody>
 </table>
-`} />
-
-```html
+`} customMarkup={`
 <table class="table table-dark">
   <thead>
     ...
@@ -209,7 +205,7 @@ Highlight a table row or cell by adding a `.table-active` class.
     </tr>
   </tbody>
 </table>
-```
+`} />
 
 ## How do the variants and accented tables work?
 
@@ -296,7 +292,7 @@ Add a thicker border, darker between table groups—`<thead>`, `<tbody>`, and `<
 
 Table cells of `<thead>` are always vertical aligned to the bottom. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the top by default. Use the [vertical align]([[docsref:/utilities/vertical-align]]) classes to re-align where needed.
 
-<Example showMarkup={false} code={`
+<Example code={`
 <div class="table-responsive">
   <table class="table align-middle">
     <thead>
@@ -329,9 +325,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
     </tbody>
   </table>
 </div>
-`} />
-
-```html
+`} customMarkup={`
 <div class="table-responsive">
   <table class="table align-middle">
     <thead>
@@ -355,13 +349,13 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
     </tbody>
   </table>
 </div>
-```
+`} />
 
 ## Nesting
 
 Border styles, active styles, and table variants are not inherited by nested tables.
 
-<Example showMarkup={false} code={`
+<Example code={`
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -416,9 +410,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
     </tr>
   </tbody>
 </table>
-`} />
-
-```html
+`} customMarkup={`
 <table class="table table-striped table-bordered">
   <thead>
     ...
@@ -435,7 +427,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
     ...
   </tbody>
 </table>
-```
+`} />
 
 ## How nesting works
 
@@ -443,101 +435,7 @@ To prevent *any* styles from leaking to nested tables, we use the child combinat
 
 Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be wrapped in a `<tbody>` by default, thus making our selectors work as intended.
 
-## Anatomy
-
-### Table head
-
-Similar to tables and dark tables, use the modifier classes `.table-light` or `.table-dark` to make `<thead>`s appear light or dark gray.
-
-<Example showMarkup={false} code={`
-<table class="table">
-  <thead class="table-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@social</td>
-    </tr>
-  </tbody>
-</table>
-`} />
-
-```html
-<table class="table">
-  <thead class="table-light">
-    ...
-  </thead>
-  <tbody>
-    ...
-  </tbody>
-</table>
-```
-
-<Example showMarkup={false} code={`
-<table class="table">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@social</td>
-    </tr>
-  </tbody>
-</table>
-`} />
-
-```html
-<table class="table">
-  <thead class="table-dark">
-    ...
-  </thead>
-  <tbody>
-    ...
-  </tbody>
-</table>
-```
-
-### Table foot
+## Footer
 
 <Example showMarkup={false} code={`
 <table class="table">
@@ -594,7 +492,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 </table>
 ```
 
-### Captions
+## Caption
 
 A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
 
@@ -665,7 +563,7 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
 
 Across every breakpoint, use `.table-responsive` for horizontally scrolling tables.
 
-<Example showMarkup={false} code={`
+<Example code={`
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -722,15 +620,13 @@ Across every breakpoint, use `.table-responsive` for horizontally scrolling tabl
     </tbody>
   </table>
 </div>
-`} />
-
-```html
+`} customMarkup={`
 <div class="table-responsive">
   <table class="table">
     ...
   </table>
 </div>
-```
+`} />
 
 ### Breakpoint specific
 
