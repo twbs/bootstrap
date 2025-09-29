@@ -55,7 +55,7 @@
   @include font-size(var(--#{$prefix}dropdown-font-size));
   color: var(--#{$prefix}dropdown-color);
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-  list-style: none;
+  list-style-type: "";
   background-color: var(--#{$prefix}dropdown-bg);
   background-clip: padding-box;
   border: var(--#{$prefix}dropdown-border-width) solid var(--#{$prefix}dropdown-border-color);
