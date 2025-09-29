@@ -33,9 +33,9 @@ $btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125) !default;
 
 $btn-link-color:              var(--#{$prefix}link-color) !default;
 $btn-link-hover-color:        var(--#{$prefix}link-hover-color) !default;
-$btn-link-disabled-color:     $gray-600 !default;
-$btn-link-color-contrast:     color-contrast($link-color) !default;
-$btn-link-focus-shadow-rgb:   to-rgb(color.mix($btn-link-color-contrast, $link-color, 15%)) !default;
+$btn-link-disabled-color:     var(--#{$prefix}gray-600) !default;
+// $btn-link-color-contrast:     color-contrast($link-color) !default;
+// $btn-link-focus-shadow-rgb:   to-rgb(color.mix($btn-link-color-contrast, $link-color, 15%)) !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           var(--#{$prefix}border-radius) !default;

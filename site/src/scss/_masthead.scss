@@ -8,7 +8,6 @@
 @use "../../../scss/mixins/color-mode" as *;
 
 .bd-masthead {
-  --bd-pink-rgb: #{to-rgb($pink)};
   padding: 3rem 0;
   // stylelint-disable
   background-image: linear-gradient(180deg, color-mix(in srgb, var(--bs-body-bg) 1%, transparent), var(--bs-body-bg) 85%),

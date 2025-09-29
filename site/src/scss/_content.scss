@@ -169,27 +169,27 @@
 // stylelint-enable selector-no-qualifying-type
 
 // scss-docs-start custom-color-mode
-[data-bs-theme="blue"] {
-  --bs-body-color: var(--bs-white);
-  --bs-body-color-rgb: #{to-rgb($white)};
-  --bs-body-bg: var(--bs-blue);
-  --bs-body-bg-rgb: #{to-rgb($blue)};
-  --bs-tertiary-bg: #{$blue-600};
+// [data-bs-theme="blue"] {
+//   --bs-body-color: var(--bs-white);
+//   --bs-body-color-rgb: #{to-rgb($white)};
+//   --bs-body-bg: var(--bs-blue);
+//   --bs-body-bg-rgb: #{to-rgb($blue)};
+//   --bs-tertiary-bg: #{$blue-600};
 
-  .dropdown-menu {
-    --bs-dropdown-bg: #{color.mix($blue-500, $blue-600)};
-    --bs-dropdown-link-active-bg: #{$blue-700};
-  }
+//   .dropdown-menu {
+//     --bs-dropdown-bg: #{color.mix($blue-500, $blue-600)};
+//     --bs-dropdown-link-active-bg: #{$blue-700};
+//   }
 
-  .btn-secondary {
-    --bs-btn-bg: #{color.mix($gray-600, $blue-400)};
-    --bs-btn-border-color: #{rgba($white, .25)};
-    --bs-btn-hover-bg: #{color.scale(color.mix($gray-600, $blue-400), $lightness: -5%)}; // stylelint-disable-line scss/at-function-named-arguments
-    --bs-btn-hover-border-color: #{rgba($white, .25)};
-    --bs-btn-active-bg: #{color.scale(color.mix($gray-600, $blue-400), $lightness: -10%)}; // stylelint-disable-line scss/at-function-named-arguments
-    --bs-btn-active-border-color: #{rgba($white, .5)};
-    --bs-btn-focus-border-color: #{rgba($white, .5)};
-    --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
-  }
-}
+//   .btn-secondary {
+//     --bs-btn-bg: #{color.mix(var(--#{$prefix}gray-600), $blue-400)};
+//     --bs-btn-border-color: #{rgba($white, .25)};
+//     --bs-btn-hover-bg: #{color.scale(color.mix(var(--#{$prefix}gray-600), $blue-400), $lightness: -5%)}; // stylelint-disable-line scss/at-function-named-arguments
+//     --bs-btn-hover-border-color: #{rgba($white, .25)};
+//     --bs-btn-active-bg: #{color.scale(color.mix(var(--#{$prefix}gray-600), $blue-400), $lightness: -10%)}; // stylelint-disable-line scss/at-function-named-arguments
+//     --bs-btn-active-border-color: #{rgba($white, .5)};
+//     --bs-btn-focus-border-color: #{rgba($white, .5)};
+//     --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
+//   }
+// }
 // scss-docs-end custom-color-mode
