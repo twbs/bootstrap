@@ -125,8 +125,8 @@ function getOptionsWithDefaults(options: Partial<PlaceholderOptions>) {
   const optionsWithDefaults = Object.assign(
     {},
     {
-      background: getData('grays')[5].hex,
-      color: getData('grays')[2].hex,
+      background: '#adb5bd',
+      color: '#e9ecef',
       height: '180',
       markup: 'svg',
       title: 'Placeholder',

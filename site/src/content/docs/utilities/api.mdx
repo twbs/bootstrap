@@ -14,6 +14,7 @@ The `$utilities` map contains all our utilities and is later merged with your cu
 | --- | --- | --- | --- |
 | [`property`](#property) | **Required** | – | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins). |
 | [`values`](#values) | **Required** | – | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, `class` is not prepended to the class name. |
+| [`selector`](#selector) | Optional | `class` | Type of CSS selector in the generated CSS ruleset. Can be `class`, `attr-starts`, or `attr-includes`. |
 | [`class`](#class) | Optional | null | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. If not provided and `property` is a string, the `values` keys are used for the `class` names. |
 | [`css-var`](#css-variable-utilities) | Optional | `false` | Boolean to generate CSS variables instead of CSS rules. |
 | [`css-variable-name`](#css-variable-utilities) | Optional | null | Custom un-prefixed name for the CSS variable inside the ruleset. |
@@ -28,7 +29,7 @@ The `$utilities` map contains all our utilities and is later merged with your cu
 
 ## API explained
 
-All utility variables are added to the `$utilities` variable within our `_utilities.scss` stylesheet. Each group of utilities looks something like this:
+All utility variables are added to the `$utilities` variable within our `_utilities.scss` stylesheet, which is a giant, nested Sass map. Each group of utility classes are generated from a block that looks something like this:
 
 ```scss
 $utilities: (
@@ -55,9 +56,11 @@ Which outputs the following:
 .opacity-100 { opacity: 1; }
 ```
 
-### Property
+### `property`
 
-The required `property` key must be set for any utility, and it must contain a valid CSS property. This property is used in the generated utility’s ruleset. When the `class` key is omitted, it also serves as the default class name. Consider the `text-decoration` utility:
+<div class="badge fs-6 bg-accent mb-3">Required</div>
+
+The `property` key must be set for any utility, and it must contain a valid CSS property. This property is used in the generated utility’s ruleset. When the `class` key is omitted, it also serves as the default class name. Consider the `text-decoration` utility:
 
 ```scss
 $utilities: (
@@ -76,7 +79,9 @@ Output:
 .text-decoration-line-through { text-decoration: line-through; }
 ```
 
-### Values
+### `values`
+
+<div class="badge fs-6 bg-accent mb-3">Required</div>
 
 Use the `values` key to specify which values for the specified `property` should be used in the generated class names and rules. Can be a list or map (set in the utilities or in a Sass variable).
 
@@ -104,7 +109,53 @@ As a Sass variable that sets the list or map, as in our [`position` utilities]([
 values: $position-values
 ```
 
-### Class
+### `selector`
+
+<BsTable>
+| Option | Description |
+| --- | --- |
+| No selector | Defaults to `"class"` |
+| `"class"` | Matches elements with a class that matches the specified value |
+| `"attr-starts"` | Matches elements with a class that starts with a string |
+| `"attr-includes"` | Matches elements with a class that includes a string |
+</BsTable>
+
+Use the `selector` option to change the CSS selector used in the generated CSS ruleset. The default option is to generate a class selector. When using an attribute selector—either `attr-starts` or `attr-includes`—**the `class` option is required**. We use these internally to simplify the construction of other utilities.
+
+For attribute selectors, you'll most likely want the `attr-includes` as the starting attribute selector in CSS applies to the entire string of classes in an attribute's value. For example, `[class^="name"]` would not match `class="example name"`.
+
+As an example, to change from `.ratio-*` to `[class*="ratio-"]`:
+
+```scss
+$utilities: (
+  // Create an attribute selector utility
+  "aspect-ratio-attr": (
+    selector: "attr-includes",
+    class: "ratio-",
+    property: aspect-ratio,
+    values: var(--#{$prefix}ratio),
+  ),
+  // Create a CSS variable utility that matches the attribute selector utility
+  "aspect-ratio": (
+    property: --#{$prefix}ratio,
+    class: ratio,
+    values: $aspect-ratios
+  ),
+);
+```
+
+Which outputs the following:
+
+```css
+[class*="ratio-"] { aspect-ratio: var(--bs-ratio); }
+.ratio-auto { --bs-ratio: auto; }
+.ratio-1x1 { --bs-ratio: 1 / 1; }
+.ratio-4x3 { --bs-ratio: 4 / 3; }
+.ratio-16x9 { --bs-ratio: 16 / 9; }
+.ratio-21x9 { --bs-ratio: 21 / 9; }
+```
+
+### `class`
 
 Use the `class` option to change the class prefix used in the compiled CSS. For example, to change from `.opacity-*` to `.o-*`:
 

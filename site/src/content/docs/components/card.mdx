@@ -397,7 +397,7 @@ Use [border utilities]([[docsref:/utilities/border]]) to change just the `border
 
 <Example code={getData('theme-colors').map((themeColor) => `<div class="card border-${themeColor.name} mb-3" style="max-width: 18rem;">
     <div class="card-header">Header</div>
-    <div class="card-body${themeColor.contrast_color ? '' : ` text-${themeColor.name}`}">
+    <div class="card-body text-${themeColor.name}">
       <h5 class="card-title">${themeColor.title} card title</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
     </div>

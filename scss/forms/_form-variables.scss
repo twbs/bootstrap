@@ -27,7 +27,7 @@ $control-font-size-lg: $font-size-lg !default;
 $control-line-height-lg: $line-height-lg !default;
 $control-border-radius-lg: var(--#{$prefix}border-radius-lg) !default;
 
-$control-select-indicator-color:       $gray-600 !default;
+$control-select-indicator-color:       var(--#{$prefix}gray-600) !default;
 $control-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$control-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
 $control-select-bg-position:           right $control-padding-x center !default;
 $control-select-bg-size:               16px 12px !default;
