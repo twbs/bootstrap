@@ -70,4 +70,8 @@
   .grid-cols-6 {
     --#{$prefix}columns: 6;
   }
+
+  .grid-full {
+    grid-column: 1 / -1;
+  }
 }

@@ -4,6 +4,8 @@ description: Highly customizable, native checkbox `<input>` elements for present
 toc: true
 ---
 
+import { getData } from '@libs/data'
+
 **Trialing new components with the following rules:**
 
 - New components are purely components, they don't assume layout of any kind.
@@ -59,6 +61,21 @@ Consider margin utilities for additional spacing, and flex utilities for alignme
     </div>
     <label for="checkLabel">Example new checkbox</label>
   </b-checkgroup>`} />
+
+## Theme colors
+
+Modify the appearance of checked checkboxes by adding the `.checked-{color}` class to the `.check` element. This will set the checked background and border color to the theme color.
+
+<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<b-checkgroup>
+    <div class="check checked-${themeColor.name}">
+      <input type="checkbox" id="check${themeColor.name}" checked />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      </svg>
+    </div>
+    <label for="check${themeColor.name}">Example ${themeColor.name} checkbox</label>
+  </b-checkgroup>`)} />
 
 ## Description
 

@@ -14,8 +14,7 @@
 $radio-border-color: var(--#{$prefix}border-color) !default;
 $radio-checked-bg: var(--#{$prefix}primary-base) !default;
 $radio-checked-border-color: $radio-checked-bg !default;
-$radio-disabled-bg: var(--#{$prefix}secondary-bg) !default;
-$radio-disabled-border-color: $radio-disabled-bg !default;
+$radio-disabled-bg: var(--#{$prefix}bg-3) !default;
 $radio-disabled-opacity: .65 !default;
 // scss-docs-end radio-variables
 
@@ -37,7 +36,6 @@ $radio-disabled-opacity: .65 !default;
     --#{$prefix}radio-checked-bg: #{$radio-checked-bg};
     --#{$prefix}radio-checked-border-color: #{$radio-checked-border-color};
     --#{$prefix}radio-disabled-bg: #{$radio-disabled-bg};
-    --#{$prefix}radio-disabled-border-color: #{$radio-disabled-border-color};
     --#{$prefix}radio-disabled-opacity: #{$radio-disabled-opacity};
     // scss-docs-end radio-css-variables
 

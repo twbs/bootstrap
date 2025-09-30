@@ -14,65 +14,34 @@
 :root {
   color-scheme: light dark;
 
-  @each $color-group-name, $color-group in $all-colors {
-    @if meta.type-of($color-group) == "map" {
-      @each $color-name, $color-value in $color-group {
-        --#{$prefix}#{$color-name}: #{$color-value};
-      }
-    } @else {
-      --#{$prefix}#{$color-group-name}: #{$color-group};
-    }
-  }
-
-  @each $color, $value in $theme-colors {
-    --#{$prefix}#{$color}: #{$value};
-  }
-
+  // scss-docs-start root-theme-variables
+  // Generate semantic theme colors
   @each $color-name, $color-map in $new-theme-colors {
     @each $key, $value in $color-map {
       --#{$prefix}#{$color-name}-#{$key}: #{$value};
     }
   }
 
+  @each $color, $value in $theme-bgs {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-fgs {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $theme-borders {
+    --#{$prefix}#{$color}: #{$value};
+  }
+
   --#{$prefix}black: #{$black};
   --#{$prefix}white: #{$white};
+  // scss-docs-end root-theme-variables
 }
 
 :root,
 [data-bs-theme="light"] {
   // Note: Custom variable values only support SassScript inside `#{}`.
-
-  // Colors
-  //
-  // Generate palettes for full colors, grays, and theme colors.
-
-  // @each $color, $value in $colors {
-  //   --#{$prefix}#{$color}: #{$value};
-  // }
-
-  // @each $color, $value in $grays {
-  //   --#{$prefix}gray-#{$color}: #{$value};
-  // }
-
-  // @each $color, $value in $theme-colors {
-  //   --#{$prefix}#{$color}: #{$value};
-  // }
-
-  // @each $color, $value in $theme-colors-rgb {
-  //   --#{$prefix}#{$color}-rgb: #{$value};
-  // }
-
-  // @each $color, $value in $theme-colors-text {
-  //   --#{$prefix}#{$color}-text-emphasis: #{$value};
-  // }
-
-  // @each $color, $value in $theme-colors-bg-subtle {
-  //   --#{$prefix}#{$color}-bg-subtle: #{$value};
-  // }
-
-  // @each $color, $value in $theme-colors-border-subtle {
-  //   --#{$prefix}#{$color}-border-subtle: #{$value};
-  // }
 
   --#{$prefix}white-rgb: #{to-rgb($white)};
   --#{$prefix}black-rgb: #{to-rgb($black)};
@@ -223,24 +192,12 @@
     --#{$prefix}tertiary-bg: #{$body-tertiary-bg-dark};
     --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-dark)};
 
-    // @each $color, $value in $theme-colors-text-dark {
-    //   --#{$prefix}#{$color}-text-emphasis: #{$value};
-    // }
-
-    // @each $color, $value in $theme-colors-bg-subtle-dark {
-    //   --#{$prefix}#{$color}-bg-subtle: #{$value};
-    // }
-
-    // @each $color, $value in $theme-colors-border-subtle-dark {
-    //   --#{$prefix}#{$color}-border-subtle: #{$value};
-    // }
-
     --#{$prefix}heading-color: #{$headings-color-dark};
 
-    --#{$prefix}link-color: #{$link-color-dark};
-    --#{$prefix}link-hover-color: #{$link-hover-color-dark};
-    --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
-    --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
+    // --#{$prefix}link-color: #{$link-color-dark};
+    // --#{$prefix}link-hover-color: #{$link-hover-color-dark};
+    // --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
+    // --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
 
     // --#{$prefix}code-color: #{$code-color-dark}; // removed in v6
     --#{$prefix}highlight-color: #{$mark-color-dark};
