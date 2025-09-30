@@ -21,6 +21,7 @@
     --#{$prefix}switch-border-color: var(--#{$prefix}border-color);
     --#{$prefix}switch-indicator-bg: var(--#{$prefix}white);
     --#{$prefix}switch-checked-bg: var(--#{$prefix}primary-base);
+    --#{$prefix}switch-checked-border-color: var(--#{$prefix}switch-checked-bg);
     --#{$prefix}switch-checked-indicator-bg: var(--#{$prefix}white);
     --#{$prefix}switch-disabled-bg: var(--#{$prefix}secondary-bg);
     --#{$prefix}switch-disabled-indicator-bg: var(--#{$prefix}secondary-text);
@@ -65,7 +66,8 @@
 
     &:has(input:checked) {
       padding-inline-start: calc(var(--#{$prefix}switch-height) / 2 + var(--#{$prefix}switch-padding));
-      background-color: var(--#{$prefix}primary-base);
+      background-color: var(--#{$prefix}switch-checked-bg);
+      border-color: var(--#{$prefix}switch-checked-border-color);
     }
 
     &:has(input:disabled) {
