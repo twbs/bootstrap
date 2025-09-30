@@ -12,7 +12,7 @@
   > h2,
   > h3,
   > h4 {
-    --bs-heading-color: var(--bs-emphasis-color);
+    --bs-heading-color: var(--bs-fg);
   }
 
   // Offset content from fixed navbar when jumping to headings
@@ -22,7 +22,13 @@
 
   > h3 {
     margin-top: 2rem;
+
+    code {
+      font-weight: 600;
+      color: inherit;
+    }
   }
+
 
   > ul li,
   > ol li {
@@ -112,6 +118,10 @@
   td:nth-child(2) {
     min-width: 160px;
   }
+}
+
+.table-utilities td:first-child {
+  white-space: nowrap;
 }
 
 .table-options td:last-child,

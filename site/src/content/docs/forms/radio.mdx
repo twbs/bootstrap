@@ -4,6 +4,8 @@ description: Highly customizable, native radio `<input>` elements for choosing o
 toc: true
 ---
 
+import { getData } from '@libs/data'
+
 ## Basic radio
 
 Similar to checkboxes, radios are styled with the `.radio` class. However, there's no custom SVG as we use a Unicode character for the checked state.
@@ -17,8 +19,16 @@ Wrap the `.radio` in a `<b-radiogroup>` layout component and add your label. We 
 <Example code={`<b-radiogroup>
     <input type="radio" id="radioLabel" class="radio" />
     <label for="radioLabel">Example new radio</label>
-  </b-radiogroup>
-  `} />
+  </b-radiogroup>`} />
+
+## Theme colors
+
+Modify the appearance of checked checkboxes by adding the `.checked-{color}` class to the `.radio` element. This will set the checked background and border color to the theme color.
+
+<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<b-radiogroup>
+    <input type="radio" id="radio${themeColor.name}" class="radio checked-${themeColor.name}" checked />
+    <label for="radio${themeColor.name}">Example ${themeColor.name} radio</label>
+  </b-radiogroup>`)} />
 
 ## Description
 

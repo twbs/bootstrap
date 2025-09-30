@@ -116,10 +116,10 @@ $theme-bgs: (
 ) !default;
 
 $theme-fgs: (
-  null: light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-100)),
-  "1": light-dark(var(--#{$prefix}gray-800), var(--#{$prefix}gray-200)),
-  "2": light-dark(var(--#{$prefix}gray-700), var(--#{$prefix}gray-300)),
-  "3": light-dark(var(--#{$prefix}gray-600), var(--#{$prefix}gray-400)),
+  null: light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-050)),
+  "1": light-dark(var(--#{$prefix}gray-800), var(--#{$prefix}gray-100)),
+  "2": light-dark(var(--#{$prefix}gray-700), var(--#{$prefix}gray-200)),
+  "3": light-dark(var(--#{$prefix}gray-600), var(--#{$prefix}gray-300)),
   "white": var(--#{$prefix}white),
   "black": var(--#{$prefix}black),
   "inherit": inherit,
