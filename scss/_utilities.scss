@@ -897,7 +897,7 @@ $utilities: map.merge(
     // scss-docs-end utils-zindex
     // scss-docs-start utils-check-colors
     "check-color": (
-      property: --#{$prefix}check-checked-bg --#{$prefix}check-checked-border-color --#{$prefix}radio-checked-bg --#{$prefix}radio-checked-border-color,
+      property: --#{$prefix}check-checked-bg --#{$prefix}check-checked-border-color --#{$prefix}radio-checked-bg --#{$prefix}radio-checked-border-color --#{$prefix}switch-checked-bg,
       class: checked,
       values: theme-color-values("bg")
     )
