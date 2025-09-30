@@ -16,8 +16,7 @@ $check-checked-bg: var(--#{$prefix}primary-base) !default;
 $check-checked-border-color: $check-checked-bg !default;
 $check-indeterminate-bg: var(--#{$prefix}primary-base) !default;
 $check-indeterminate-border-color: $check-indeterminate-bg !default;
-$check-disabled-bg: var(--#{$prefix}secondary-bg) !default;
-$check-disabled-border-color: $check-disabled-bg !default;
+$check-disabled-bg: var(--#{$prefix}bg-3) !default;
 $check-disabled-opacity: .65 !default;
 // scss-docs-end check-variables
 
@@ -41,7 +40,6 @@ $check-disabled-opacity: .65 !default;
     --#{$prefix}check-indeterminate-bg: #{$check-indeterminate-bg};
     --#{$prefix}check-indeterminate-border-color: #{$check-indeterminate-border-color};
     --#{$prefix}check-disabled-bg: #{$check-disabled-bg};
-    --#{$prefix}check-disabled-border-color: #{$check-disabled-border-color};
     --#{$prefix}check-disabled-opacity: #{$check-disabled-opacity};
     // scss-docs-end check-css-variables
 

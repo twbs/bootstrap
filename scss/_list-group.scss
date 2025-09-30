@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "colors" as *;
+@use "theme" as *;
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
@@ -212,7 +213,7 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
   // Add modifier classes to change text and background color on individual items.
   // Organizationally, this must come after the `:hover` states.
 
-  @each $state in map.keys($theme-colors) {
+  @each $state in map.keys($new-theme-colors) {
     .list-group-item-#{$state} {
       --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text-emphasis);
       --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);

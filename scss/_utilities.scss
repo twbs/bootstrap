@@ -95,7 +95,8 @@ $utilities: map.merge(
       print: true,
       property: display,
       class: d,
-      values: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex flow-root none
+      important: true,
+      values: inline inline-block block grid inline-grid table table-row table-cell flex inline-flex contents flow-root none
     ),
     // scss-docs-end utils-display
     // scss-docs-start utils-shadow
@@ -892,8 +893,15 @@ $utilities: map.merge(
       property: z-index,
       class: z,
       values: $zindex-levels,
-    )
+    ),
     // scss-docs-end utils-zindex
+    // scss-docs-start utils-check-colors
+    "check-color": (
+      property: --#{$prefix}check-checked-bg --#{$prefix}check-checked-border-color --#{$prefix}radio-checked-bg --#{$prefix}radio-checked-border-color,
+      class: checked,
+      values: theme-color-values("bg")
+    )
+    // scss-docs-end utils-check-colors
   ),
   $utilities
 );
