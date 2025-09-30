@@ -4,6 +4,8 @@ description: Custom toggle component built on top of native `<input>` checkbox e
 toc: true
 ---
 
+import { getData } from '@libs/data'
+
 ## Basic switch
 
 Switches are built with checkboxes under the hood, so their HTML closely mirrors that of checkboxes, including optional layout components.
@@ -35,6 +37,17 @@ Consider margin utilities for additional spacing, and flex utilities for alignme
     </div>
     <label for="switchMdLabel">Default switch</label>
   </b-checkgroup>`} />
+
+## Theme colors
+
+Modify the appearance of checked checkboxes by adding the `.checked-{color}` class to the `.switch` element. This will set the checked background and border color to the theme color.
+
+<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => ` <b-checkgroup>
+    <div class="switch switch-sm mt-1 checked-${themeColor.name}">
+      <input type="checkbox" value="" id="switch${themeColor.name}" switch checked>
+    </div>
+    <label for="switch${themeColor.name}">Example ${themeColor.name} switch</label>
+  </b-checkgroup>`)} />
 
 ## Disabled
 
