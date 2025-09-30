@@ -1,4 +1,5 @@
 @use "sass:color";
+@use "../../../scss/config" as *;
 @use "../../../scss/colors" as *;
 @use "../../../scss/variables" as *;
 @use "../../../scss/mixins/color-mode" as *;
@@ -12,14 +13,14 @@
   --base04: #666;
   --base05: #333;
   --base06: #fff;
-  --base07: #{$teal-700}; // #9a6700
-  --base08: #{color.mix($red-500, $red-600, 50%)}; // #bc4c00
-  --base09: #{$cyan-700}; // #087990
-  --base0A: #{$purple-500}; // #795da3
-  --base0B: #{$blue-700}; // #183691
-  --base0C: #{$blue-700}; // #183691
-  --base0D: #{$purple-500}; // #795da3
-  --base0E: #{$pink-600}; // #a71d5d
+  --base07: var(--#{$prefix}teal-700); // #9a6700
+  --base08: color-mix(in srgb, var(--#{$prefix}red-500), var(--#{$prefix}red-600)); // #bc4c00
+  --base09: var(--#{$prefix}  cyan-700); // #087990
+  --base0A: var(--#{$prefix}purple-500); // #795da3
+  --base0B: var(--#{$prefix}blue-700); // #183691
+  --base0C: var(--#{$prefix}blue-700); // #183691
+  --base0D: var(--#{$prefix}purple-500); // #795da3
+  --base0E: var(--#{$prefix}pink-600); // #a71d5d
   --base0F: #333;
 }
 
@@ -31,15 +32,15 @@
   --base04: #868e96;
   --base05: #abb2bf;
   --base06: #b6bdca;
-  --base07: #{$orange-300}; // #d19a66
-  --base08: #{$cyan-300};
-  --base09: #{$orange-300}; // #d19a66
-  --base0A: #{$yellow-200}; // #e5c07b
-  --base0B: #{$teal-300}; // #98c379
-  --base0C: #{$teal-300}; // #56b6c2
-  --base0D: #{$blue-300}; // #61afef
-  --base0E: #{$indigo-200}; // #c678dd
-  --base0F: #{$red-300}; // #be5046
+  --base07: var(--#{$prefix}orange-300); // #d19a66
+  --base08: var(--#{$prefix}cyan-300);
+  --base09: var(--#{$prefix}orange-300); // #d19a66
+  --base0A: var(--#{$prefix}yellow-200); // #e5c07b
+  --base0B: var(--#{$prefix}teal-300); // #98c379
+  --base0C: var(--#{$prefix}teal-300); // #56b6c2
+  --base0D: var(--#{$prefix}blue-300); // #61afef
+  --base0E: var(--#{$prefix}indigo-200); // #c678dd
+  --base0F: var(--#{$prefix}red-300); // #be5046
 }
 
 // Shell prompts
@@ -145,11 +146,11 @@
 .language-diff {
   .token {
     &.deleted {
-      color: $red-400;
+      color: var(--#{$prefix}red-400);
       background-color: transparent;
     }
     &.inserted {
-      color: $green-400;
+      color: var(--#{$prefix}green-400);
       background-color: transparent;
     }
   }

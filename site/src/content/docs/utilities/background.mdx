@@ -18,7 +18,7 @@ Background utilities like `.bg-*` that generated from our original `$theme-color
 </Callout>
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} ${themeColor.contrast_color ? `text-${themeColor.contrast_color}` : `text-white`}">.bg-${themeColor.name}</div>
+  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} text-white">.bg-${themeColor.name}</div>
 <div class="p-3 mb-2 bg-${themeColor.name}-subtle text-${themeColor.name}-emphasis">.bg-${themeColor.name}-subtle</div>`),
   `<div class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</div>
 <div class="p-3 mb-2 bg-body-tertiary">.bg-body-tertiary</div>
@@ -36,7 +36,7 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 
 {getData('theme-colors').map((themeColor) => {
   return (
-    <div class={`p-3 mb-2 bg-${themeColor.name} bg-gradient${themeColor.contrast_color ? (' text-' + themeColor.contrast_color) : ' text-white'}`}>.bg-{themeColor.name}.bg-gradient</div>
+    <div class={`p-3 mb-2 bg-${themeColor.name} bg-gradient text-white`}>.bg-{themeColor.name}.bg-gradient</div>
   )
 })}
 <div class="p-3 mb-2 bg-black bg-gradient text-white">.bg-black.bg-gradient</div>
@@ -106,20 +106,6 @@ Theme colors are then put into a Sass map so we can loop over them to generate o
 Grayscale colors are also available as a Sass map. **This map is not used to generate any utilities.**
 
 {/*<ScssDocs name="gray-colors-map" file="scss/_variables.scss" />*/}
-
-RGB colors are generated from a separate Sass map:
-
-<ScssDocs name="theme-colors-rgb" file="scss/_maps.scss" />
-
-Background color opacities build on that with their own map that’s consumed by the utilities API:
-
-<ScssDocs name="utilities-bg-colors" file="scss/_maps.scss" />
-
-Color mode background colors are also available as a Sass map:
-
-<ScssDocs name="theme-bg-subtle-map" file="scss/_maps.scss" />
-
-<ScssDocs name="theme-bg-subtle-dark-map" file="scss/_maps.scss" />
 
 ### Sass mixins
 

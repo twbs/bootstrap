@@ -14,6 +14,11 @@ interface Props {
    */
   code: string | string[]
   /**
+   * Custom markup to display in the source code section, different from the preview code.
+   * If provided, this will be used instead of the `code` prop for the source display.
+   */
+  customMarkup?: string | string[]
+  /**
    * The CSS class(es) to be added to the preview wrapping `div` element.
    */
   class?: string
@@ -41,6 +46,7 @@ interface Props {
 const {
   addStackblitzJs = false,
   code,
+  customMarkup,
   class: className,
   id,
   lang = 'html',
@@ -51,7 +57,12 @@ const {
 let markup = Array.isArray(code) ? code.join('\n') : code
 markup = replacePlaceholdersInHtml(markup)
 
-const simplifiedMarkup = markup
+// Use customMarkup for source code display if provided, otherwise use the processed markup
+let sourceMarkup = customMarkup
+  ? (Array.isArray(customMarkup) ? customMarkup.join('\n') : customMarkup)
+  : markup
+
+const simplifiedMarkup = sourceMarkup
   .replace(
     /<svg.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>/g,
     (match, classes) => `<img src="..."${classes ? ` class="${classes}"` : ''} alt="...">`

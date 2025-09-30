@@ -1,14 +1,7 @@
 import fs from 'node:fs'
 import yaml from 'js-yaml'
 import { z } from 'zod'
-import {
-  zHexColor,
-  zLanguageCode,
-  zNamedHexColors,
-  zPxSizeOrEmpty,
-  zVersionMajorMinor,
-  zVersionSemver
-} from './validation'
+import { zLanguageCode, zPxSizeOrEmpty, zVersionMajorMinor, zVersionSemver } from './validation'
 import { capitalizeFirstLetter } from './utils'
 
 // An object containing all the data types and their associated schema. The key should match the name of the data file
@@ -23,7 +16,11 @@ const dataDefinitions = {
       container: zPxSizeOrEmpty
     })
     .array(),
-  colors: zNamedHexColors(13),
+  colors: z
+    .object({
+      name: z.string()
+    })
+    .array(),
   'core-team': z
     .object({
       name: z.string(),
@@ -53,7 +50,6 @@ const dataDefinitions = {
         .array()
     })
     .array(),
-  grays: zNamedHexColors(9),
   icons: z.object({
     preferred: z
       .object({
@@ -97,9 +93,7 @@ const dataDefinitions = {
     .array(),
   'theme-colors': z
     .object({
-      name: z.string(),
-      hex: zHexColor,
-      contrast_color: z.union([z.literal('dark'), z.literal('white')]).optional()
+      name: z.string()
     })
     .array()
     .transform((val) => {

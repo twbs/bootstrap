@@ -14,19 +14,26 @@ interface Props {
    * @default true
    */
   simplified?: boolean
+  /**
+   * Optional theme for the table.
+   */
+  theme?: 'light' | 'dark'
 }
 
-const { class: className, simplified = true } = Astro.props
+const { class: className, simplified = true, theme } = Astro.props
 
-const tableCode = `<table${className ? ` class="${className}"` : ''}>
+// Build the attributes
+const classAttr = className ? ` class="${className}"` : ''
+const themeAttr = theme ? ` data-bs-theme="${theme}"` : ''
+const allAttrs = `${classAttr}${themeAttr}`
+
+const tableCode = `<table${allAttrs}>
 ${simplified ? '  ...' : await tableContent.compiledContent()}
 </table>`
 
-const exampleCode = `<table${className ? ` class="${className}"` : ''}>
+const exampleCode = `<table${allAttrs}>
 ${await tableContent.compiledContent()}
 </table>`
 ---
 
-<Example showMarkup={false} code={exampleCode} />
-
-<Code code={tableCode} lang="html" />
+<Example code={exampleCode} customMarkup={tableCode} />
