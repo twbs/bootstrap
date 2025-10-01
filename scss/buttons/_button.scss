@@ -281,26 +281,6 @@ $button-variants: (
     }
   }
 
-
-  //
-  // Alternate buttons
-  //
-
-  // scss-docs-start btn-variant-loops
-  @each $color, $value in $theme-colors {
-    .btn-#{$color} {
-      @include button-variant($color, "solid");
-    }
-  }
-
-  @each $color, $value in $theme-colors {
-    .btn-outline-#{$color} {
-      @include button-variant($color, "outline");
-    }
-  }
-  // scss-docs-end btn-variant-loops
-
-
   //
   // Link buttons
   //

@@ -90,6 +90,16 @@ $new-theme-colors: (
     "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}cyan-500), var(--#{$prefix}cyan-300)) 50%, var(--#{$prefix}bg)),
     "contrast": var(--#{$prefix}gray-900)
   ),
+  "emphasis": (
+    "base": var(--#{$prefix}gray-900),
+    "text": light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-100)),
+    "bg": light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-100)),
+    "bg-subtle": light-dark(var(--#{$prefix}gray-100), var(--#{$prefix}gray-950)),
+    "bg-muted": light-dark(var(--#{$prefix}gray-700), var(--#{$prefix}gray-300)),
+    "border": light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-100)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-100)) 50%, var(--#{$prefix}bg)),
+    "contrast": light-dark(var(--#{$prefix}white), var(--#{$prefix}gray-900))
+  ),
   "secondary": (
     "base": var(--#{$prefix}gray-300),
     "text": light-dark(var(--#{$prefix}gray-600), var(--#{$prefix}gray-400)),
