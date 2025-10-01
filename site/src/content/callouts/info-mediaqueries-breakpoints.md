@@ -1,1 +1,0 @@
-**Using range context queries:** Bootstrap now uses [range context queries](https://www.w3.org/TR/mediaqueries-4/#range-context) for improved precision and modern CSS media query syntax. The range syntax like `(width >= 768px)` eliminates the need for fractional pixel adjustments that were previously required with `min-` and `max-` prefixes.
