@@ -138,7 +138,7 @@ $theme-fgs: (
 $theme-borders: (
   null: light-dark(var(--#{$prefix}gray-300), var(--#{$prefix}gray-700)),
   "muted": light-dark(var(--#{$prefix}gray-200), var(--#{$prefix}gray-800)),
-  "subtle": light-dark(var(--#{$prefix}gray-100), color-mix(in srgb, var(--#{$prefix}gray-800), var(--#{$prefix}gray-900))),
+  "subtle": light-dark(var(--#{$prefix}gray-100), var(--#{$prefix}gray-900)),
   "emphasized": light-dark(var(--#{$prefix}gray-400), var(--#{$prefix}gray-600)),
 ) !default;
 

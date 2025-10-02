@@ -93,36 +93,50 @@ Every token is available as a CSS variable, and most are then consumed by our ut
   })}
 </div>
 
-## Theme `fg` and `bg`
+## `fg`, `bg`, and `border`
 
-Theme foreground and background tokens are defined in their respective `$theme-fgs` and `$theme-bgs` Sass maps. These maps are used to generate color mode adaptive `color` and `background-color` values that are then consumed by our utilities and components. You'll find these values in the `_theme.scss` file.
+While several text, background, and border colors are configured in the base `$new-theme-colors` Sass map, there are several additional options available for more nuanced theming with regards to foreground, background, and border colors.
 
-Theme backgrounds include the following semantic colors:
+Tokens for these three themes are defined in their respective `$theme-fgs`, `$theme-bgs`, and `$theme-borders` Sass maps. These maps are used to generate color mode adaptive `color`, `background-color`, and `border-color` values that are then consumed by our utilities and components. You'll find these values in the `_theme.scss` file.
+
+Theme backgrounds include several practical and semantic color options.
 
 <BsTable>
 | Background | Default value | Description |
 | --- | --- | --- |
-| `null` | <Swatch bg="bg" size="inline" /> `var(--bs-white)` | Default background color |
-| `1` | <Swatch bg="bg-1" size="inline" /> `var(--bs-gray-025)` | Lowest contrast background color |
-| `2` | <Swatch bg="bg-2" size="inline" /> `var(--bs-gray-050)` | Lower contrast background color |
-| `3` | <Swatch bg="bg-3" size="inline" /> `var(--bs-gray-100)` | Medium contrast background color, typically used for disabled states |
-| `white` | <Swatch bg="bg-white" size="inline" /> `var(--bs-white)` | Pure white background color |
-| `black` | <Swatch bg="bg-black" size="inline" /> `var(--bs-black)` | Pure black background color |
-| `transparent` | <Swatch bg="bg-transparent" size="inline" /> `transparent` | Transparent background color |
+| `null` | <Swatch bg="bg" size="inline" cssVar="bg" /> | Default background color |
+| `1` | <Swatch bg="bg-1" size="inline" cssVar="bg-1" /> | Lowest contrast background color |
+| `2` | <Swatch bg="bg-2" size="inline" cssVar="bg-2" /> | Lower contrast background color |
+| `3` | <Swatch bg="bg-3" size="inline" cssVar="bg-3" /> | Medium contrast background color, typically used for disabled states |
+| `white` | <Swatch bg="bg-white" size="inline" cssVar="bg-white" /> | Pure white background color |
+| `black` | <Swatch bg="bg-black" size="inline" cssVar="bg-black" /> | Pure black background color |
+| `transparent` | <Swatch bg="bg-transparent" size="inline" cssVar="bg-transparent" /> | Transparent background color |
 | `inherit` |`inherit` | Inherited background color |
 </BsTable>
+
+Almost all those options are also available for foreground text colors.
 
 <BsTable>
 | Foreground | Default value | Description |
 | --- | --- | --- |
-| `null` | <Swatch bg="fg" size="inline" /> `var(--bs-gray-900)` | Default foreground color |
-| `1` | <Swatch bg="fg-1" size="inline" /> `var(--bs-gray-800)` | Lowest contrast foreground color |
-| `2` | <Swatch bg="fg-2" size="inline" /> `var(--bs-gray-700)` | Lower contrast foreground color |
-| `3` | <Swatch bg="fg-3" size="inline" /> `var(--bs-gray-600)` | Medium contrast foreground color |
-| `white` | <Swatch bg="fg-white" size="inline" /> `var(--bs-white)` | Pure white foreground color |
-| `black` | <Swatch bg="fg-black" size="inline" /> `var(--bs-black)` | Pure black foreground color |
-| `transparent` | <Swatch bg="fg-transparent" size="inline" /> `transparent` | Transparent foreground color |
+| `null` | <Swatch bg="fg" size="inline" cssVar="fg" /> | Default foreground color |
+| `1` | <Swatch bg="fg-1" size="inline" cssVar="fg-1" /> | Lowest contrast foreground color |
+| `2` | <Swatch bg="fg-2" size="inline" cssVar="fg-2" /> | Lower contrast foreground color |
+| `3` | <Swatch bg="fg-3" size="inline" cssVar="fg-3" /> | Medium contrast foreground color |
+| `white` | <Swatch bg="fg-white" size="inline" cssVar="fg-white" /> | Pure white foreground color |
+| `black` | <Swatch bg="fg-black" size="inline" cssVar="fg-black" /> | Pure black foreground color |
 | `inherit` | `inherit` | Inherited foreground color |
+</BsTable>
+
+Border colors have similar levels, but different naming.
+
+<BsTable>
+| Border | Default value | Description |
+| --- | --- | --- |
+| `null` | <Swatch bg="border" size="inline" cssVar="border" /> | Default border color |
+| `muted` | <Swatch bg="border-muted" size="inline" cssVar="border-muted" /> | Muted border color |
+| `subtle` | <Swatch bg="border-subtle" size="inline" cssVar="border-subtle" /> | Subtle border color |
+| `emphasized` | <Swatch bg="border-emphasized" size="inline" cssVar="border-emphasized" /> | Emphasized border color |
 </BsTable>
 
 ### Suggested pairings
