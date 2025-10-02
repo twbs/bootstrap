@@ -53,13 +53,13 @@ $utilities: ();
           font-size: 1.25rem !important;
         }
 
-        @media (min-width: 333px) {
+        @media (width >= 333px) {
           .padding-sm-1rem {
             padding: 1rem !important;
           }
         }
 
-        @media (min-width: 666px) {
+        @media (width >= 666px) {
           .padding-md-1rem {
             padding: 1rem !important;
           }
