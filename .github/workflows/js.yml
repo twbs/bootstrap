@@ -17,8 +17,6 @@ permissions:
 jobs:
   build-js:
     runs-on: ubuntu-latest
-    outputs:
-      js-artifact: ${{ steps.js-artifact.outputs }}
 
     steps:
       - name: Clone repository
