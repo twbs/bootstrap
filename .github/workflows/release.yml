@@ -1,0 +1,88 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 2
+  NODE: 22
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'twbs/bootstrap' && (github.event_name == 'release' || github.event_name == 'workflow_dispatch') }}
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: "${{ env.NODE }}"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build CSS
+        run: npm run css
+
+      - name: Build JS
+        run: npm run js
+
+      - name: Generate SRI hashes
+        run: npm run release-sri
+
+      - name: Build docs
+        run: npm run docs-build
+
+      - name: Create release zip
+        run: npm run release-zip
+
+      - name: Create examples zip
+        run: npm run release-zip-examples
+
+      - name: Upload dist files to release
+        uses: actions/upload-release-asset@v1
+        if: ${{ github.event_name == 'release' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./bootstrap-${{ github.event.release.tag_name }}-dist.zip
+          asset_name: bootstrap-${{ github.event.release.tag_name }}-dist.zip
+          asset_content_type: application/zip
+
+      - name: Upload examples to release
+        uses: actions/upload-release-asset@v1
+        if: ${{ github.event_name == 'release' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./bootstrap-${{ github.event.release.tag_name }}-examples.zip
+          asset_name: bootstrap-${{ github.event.release.tag_name }}-examples.zip
+          asset_content_type: application/zip
+
+      - name: Commit dist files for npm
+        if: ${{ github.event_name == 'release' }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add dist/
+          git commit -m "Add dist files for release ${{ github.event.release.tag_name }}" || exit 0
+          git push
+
+      - name: Publish to npm
+        if: ${{ github.event_name == 'release' }}
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

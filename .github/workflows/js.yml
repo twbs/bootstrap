@@ -15,7 +15,39 @@ permissions:
   contents: read
 
 jobs:
+  build-js:
+    runs-on: ubuntu-latest
+    outputs:
+      js-artifact: ${{ steps.js-artifact.outputs }}
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: ${{ env.NODE }}
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build JS
+        run: npm run js
+
+      - name: Upload JS artifacts
+        id: js-artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: js-dist
+          path: dist/js/
+          retention-days: 1
+
   run:
+    needs: build-js
     permissions:
       # allow coverallsapp/github-action to create new checks issues and fetch code
       checks: write
@@ -38,8 +70,11 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: Run dist
-        run: npm run js
+      - name: Download JS artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: js-dist
+          path: dist/js/
 
       - name: Run JS tests
         run: npm run js-test
