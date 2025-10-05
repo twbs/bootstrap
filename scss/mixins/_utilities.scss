@@ -1,6 +1,21 @@
 // Utility generator
 // Used to generate utilities & print utilities
-@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
+@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false, $utility-name: null) {
+  // Check Requires Fields
+  @if ($utility-name) {
+    $required-fields: (
+      "property",
+      "values",
+    );
+
+    @each $field in $required-fields {
+      @include _validate-utilities-field($utility, $utility-name, $field);
+    }
+  }
+
+  // End Check Requires Fields
+
+  $properties: map-get($utility, property);
   $values: map-get($utility, values);
 
   // If the values are a list or string, convert it into a map
@@ -9,8 +24,6 @@
   }
 
   @each $key, $value in $values {
-    $properties: map-get($utility, property);
-
     // Multiple properties are possible, for example with vertical or horizontal margins or paddings
     @if type-of($properties) == "string" {
       $properties: append((), $properties);
