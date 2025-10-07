@@ -1,0 +1,127 @@
+---
+title: Prose
+description: Use the `.prose` wrapper class to make long form content more easily without the need for specifying Bootstrap classes on every element. Especially useful for converting Markdown or MDX to HTML, or simply for making content heavy pages more readable.
+toc: true
+---
+
+## How it works
+
+Wrap your content in the `.prose` class to get modified font-size, line-height, and spacing specifically designed for long form content that originals from source Markdown files or WYSIWYG editors. Here's what we do with that class:
+
+- Set a base `font-size`, `line-height`, and some local CSS variables on the parent element.
+- Normalize the spacing of lists
+- Set a default `margin-bottom` for headings.
+- Some headings get an additional `margin-top` to ensure proper spacing between headings and other content.
+- Style blockquotes, code, and other inline elements.
+
+## Example
+
+This is an example of source Markdown that shows several types of HTML content supported in this `.prose` wrapper class.
+
+<hr class="my-5" />
+
+<div class="prose">
+# Getting started with documentation
+Writing clear and effective documentation is essential for any project. When you create content that others will read and use, [proper formatting](#) makes all the difference. *Good documentation* helps users understand complex concepts quickly and efficiently.
+
+> Documentation is a love letter that you write to your future self. Clear writing today saves countless hours of confusion tomorrow.
+
+The foundation of great documentation starts with **understanding your audience** and their needs. Writers should focus on clarity, consistency, and providing practical examples that readers can follow.
+
+## Inline HTML elements
+
+HTML defines a long list of available inline tags, a complete list of which can be found on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
+
+- **To bold text**, use `<strong>`.
+- *To italicize text*, use `<em>`.
+- <mark>To highlight</mark>, use `<mark>`.
+- Abbreviations, like <abbr title="HyperText Markup Language">HTML</abbr> should use `<abbr>`, with an optional `title` attribute for the full phrase.
+- Citations, like <cite>&mdash; Mark Otto</cite>, should use `<cite>`.
+- <del>Deleted</del> text should use `<del>` and <ins>inserted</ins> text should use `<ins>`.
+- Superscript <sup>text</sup> uses `<sup>` and subscript <sub>text</sub> uses `<sub>`.
+
+Most of these elements are styled by browsers with few modifications on our part.
+
+## Heading
+
+Effective documentation requires careful attention to structure and flow. When organizing content, consider how readers will navigate through your material and what information they need first. Clear headings help users scan quickly and find relevant sections.
+
+### Code
+
+Inline code is available with the `<code>` element. Snippets of multiple lines of code are supported through Rouge. Longer lines will automatically scroll horizontally when needed. You may also use code fencing (triple backticks) for rendering code.
+
+```js
+// Example can be run directly in your JavaScript console
+
+// Create a function that takes two arguments and returns the sum of those arguments
+var adder = new Function("a", "b", "return a + b");
+
+// Call the function
+adder(2, 6);
+// > 8
+```
+
+Code examples should be practical and directly related to the concepts being explained. Always test your code snippets to ensure they work as expected before including them in documentation.
+
+### Lists
+
+When presenting information in lists, consider whether the order matters. Use numbered lists for sequential steps and bullet points for related items that don't require a specific order.
+
+- Write clear, concise list items that focus on one concept each.
+- Use parallel structure across all items in your list.
+- Keep list items roughly the same length when possible.
+
+Consistency in formatting helps readers process information more efficiently.
+
+1. Start with the most important information first.
+2. Provide context before diving into technical details.
+3. Include practical examples that readers can apply immediately.
+
+Well-structured content makes complex topics more accessible to readers with varying levels of expertise.
+
+- Document your processes and decisions for future reference.
+  - Include reasoning behind important choices you made.
+  - Note any alternative approaches you considered.
+  - Record lessons learned during implementation.
+- Update documentation regularly as your project evolves.
+- Test documentation with actual users to identify gaps.
+
+Regular maintenance ensures your documentation remains accurate and helpful over time.
+
+<dl>
+  <dt>HyperText Markup Language (HTML)</dt>
+  <dd>The language used to describe and define the content of a Web page</dd>
+
+  <dt>Cascading Style Sheets (CSS)</dt>
+  <dd>Used to describe the appearance of Web content</dd>
+
+  <dt>JavaScript (JS)</dt>
+  <dd>The programming language used to build advanced Web sites and applications</dd>
+</dl>
+
+Technical definitions should be clear and accessible to your target audience. Avoid jargon when simpler terms will convey the same meaning effectively.
+
+### Images
+
+Visual elements enhance understanding by providing concrete examples of abstract concepts. Choose images that directly support your written content rather than serving as mere decoration.
+
+<Placeholder width="800" height="400" alt="Large example image" class="d-block img-fluid mb-3" />
+
+<Placeholder width="400" height="200" alt="Medium example image" class="d-block img-fluid mb-3" />
+
+<Placeholder width="200" height="200" alt="Small example image" class="d-block img-fluid mb-3" />
+
+### Tables
+
+Tables work best for comparing related data points or presenting structured information that benefits from a grid layout.
+
+| Name    | Up-votes | Down-votes |
+|---------|---------|-----------|
+| Alice   | 10      | 11        |
+| Bob     | 4       | 3         |
+| Charlie | 7       | 9         |
+| Totals  | 21      | 23        |
+
+Keep table headers descriptive and consider the reading order when arranging columns. Simple tables are easier to understand and maintain than complex ones.
+
+</div>
