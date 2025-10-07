@@ -10,12 +10,17 @@
     - title: Contents
     - title: Browsers & devices
     - title: JavaScript
-    - title: Webpack
-    - title: Parcel
-    - title: Vite
     - title: Accessibility
     - title: RFS
     - title: RTL
+
+- title: Guides
+  icon: map
+  icon_color: green
+  pages:
+    - title: Webpack
+    - title: Parcel
+    - title: Vite
     - title: Contribute
 
 - title: Customize
