@@ -1,0 +1,51 @@
+name: CDN Distribution
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+env:
+  FORCE_COLOR: 2
+  NODE: 22
+
+permissions:
+  contents: read
+
+jobs:
+  build-cdn:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'twbs/bootstrap' && startsWith(github.event.release.tag_name, 'v') }}
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: "${{ env.NODE }}"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Build CSS
+        run: npm run css
+
+      - name: Build JS
+        run: npm run js
+
+      - name: Generate SRI hashes
+        run: npm run release-sri
+
+      - name: Upload to CDN
+        # This would typically upload to a CDN service like jsDelivr, unpkg, etc.
+        # The actual implementation would depend on the CDN service used
+        run: |
+          echo "CDN upload would happen here"
+          echo "Files ready for CDN distribution:"
+          ls -la dist/css/
+          ls -la dist/js/
