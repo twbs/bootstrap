@@ -243,11 +243,11 @@ sup { top: -.5em; }
 
 a {
   color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, 1));
-  text-decoration: $link-decoration;
+  text-decoration: var(--#{$prefix}link-decoration);
 
   &:hover {
     --#{$prefix}link-color-rgb: var(--#{$prefix}link-hover-color-rgb);
-    text-decoration: $link-hover-decoration;
+    text-decoration: var(--#{$prefix}link-hover-decoration);
   }
 }
 
