@@ -50,7 +50,7 @@ class Swipe extends Config {
       return
     }
 
-    this._config = this._getConfig(config)
+    this.setConfig(this._getInitialConfig(config))
     this._deltaX = 0
     this._supportPointerEvents = Boolean(window.PointerEvent)
     this._initEvents()
