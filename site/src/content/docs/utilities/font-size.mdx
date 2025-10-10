@@ -1,0 +1,62 @@
+---
+title: Font size
+description: Utilities for controlling font size with responsive font sizing.
+toc: true
+reference:
+  - class: fs-1
+    styles:
+      font-size: 'calc(1.375rem + 1.5vw)'
+  - class: fs-6
+    styles:
+      font-size: '1rem'
+---
+
+import { getData } from '@libs/data'
+
+## Font size
+
+Quickly change the `font-size` of text. While our heading classes (e.g., `.h1`–`.h6`) apply `font-size`, `font-weight`, and `line-height`, these utilities _only_ apply `font-size`. Sizing for these utilities matches HTML's heading elements, so as the number increases, their size decreases.
+
+<Example code={`<div class="fs-xs">.fs-xs text</div>
+<div class="fs-sm">.fs-sm text</div>
+<div class="fs-md">.fs-md text</div>
+<div class="fs-lg">.fs-lg text</div>
+<div class="fs-xl">.fs-xl text</div>
+<div class="fs-2xl">.fs-2xl text</div>
+<div class="fs-3xl">.fs-3xl text</div>
+<div class="fs-4xl">.fs-4xl text</div>
+<div class="fs-5xl">.fs-5xl text</div>
+<div class="fs-6xl">.fs-6xl text</div>`} />
+
+Customize your **available** `font-size`s by modifying the `$font-sizes` Sass map.
+
+## With line-height
+
+
+
+<Example code={`<div class="text-xs">.text-xs text</div>
+<div class="text-sm">.text-sm text</div>
+<div class="text-md">.text-md text</div>
+<div class="text-lg">.text-lg text</div>
+<div class="text-xl">.text-xl text</div>
+<div class="text-2xl">.text-2xl text</div>
+<div class="text-3xl">.text-3xl text</div>
+<div class="text-4xl">.text-4xl text</div>
+<div class="text-5xl">.text-5xl text</div>
+<div class="text-6xl">.text-6xl text</div>`} />
+
+
+## CSS
+
+### Sass utilities API
+
+Font size utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"font-size": (
+  rfs: true,
+  property: font-size,
+  class: fs,
+  values: $font-sizes
+),
+```

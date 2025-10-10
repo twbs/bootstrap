@@ -67,6 +67,10 @@
   --#{$prefix}font-size-sm: calc(#{$font-size-base} * .9285);
   --#{$prefix}font-size-lg: calc(#{$font-size-base} * 1.285);
 
+  @each $key, $value in $font-sizes {
+    --#{$prefix}font-size-#{$key}: #{$value};
+  }
+
   @include rfs($font-size-base, --#{$prefix}body-font-size);
   --#{$prefix}body-font-weight: #{$font-weight-base};
   --#{$prefix}body-line-height: #{$line-height-base};

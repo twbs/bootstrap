@@ -262,15 +262,74 @@ $h6-font-size:                $font-size-base !default;
 // scss-docs-end font-variables
 
 // scss-docs-start font-sizes
-$font-sizes: (
-  1: $h1-font-size,
-  2: $h2-font-size,
-  3: $h3-font-size,
-  4: $h4-font-size,
-  5: $h5-font-size,
-  6: $h6-font-size
-) !default;
+// Legacy font-sizes for backward compatibility
+// $font-sizes-legacy: (
+//   1: $h1-font-size,
+//   2: $h2-font-size,
+//   3: $h3-font-size,
+//   4: $h4-font-size,
+//   5: $h5-font-size,
+//   6: $h6-font-size
+// ) !default;
 // scss-docs-end font-sizes
+
+// Font sizes for CSS custom properties (root variables) and utilities
+$font-sizes: (
+  "xs": clamp(.75rem, .7rem + .25vw, .875rem),
+  "sm": clamp(.875rem, .8rem + .375vw, 1rem),
+  "md": clamp(1rem, .9rem + .5vw, 1.125rem),
+  "lg": clamp(1.25rem, 1rem + .625vw, 1.5rem),
+  "xl": clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
+  "2xl": clamp(1.75rem, 1.3rem + 1vw, 2.25rem),
+  "3xl": clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
+  "4xl": clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
+  "5xl": clamp(3rem, 2rem + 5vw, 4rem),
+  "6xl": clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
+) !default;
+
+// Font sizes with line-height for utilities
+$new-font-sizes: (
+  "xs": (
+    "font-size": clamp(.75rem, .7rem + .25vw, .875rem),
+    "line-height": 1.5
+  ),
+  "sm": (
+    "font-size": clamp(.875rem, .8rem + .375vw, 1rem),
+    "line-height": 1.5
+  ),
+  "md": (
+    "font-size": clamp(1rem, .9rem + .5vw, 1.125rem),
+    "line-height": 1.5
+  ),
+  "lg": (
+    "font-size": clamp(1.25rem, 1rem + .625vw, 1.5rem),
+    "line-height": 1.5
+  ),
+  "xl": (
+    "font-size": clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
+    "line-height": #{"calc(2.5 / 1.75)"}
+  ),
+  "2xl": (
+    "font-size": clamp(1.75rem, 1.3rem + 1vw, 2.25rem),
+    "line-height": #{"calc(3 / 2.25)"}
+  ),
+  "3xl": (
+    "font-size": clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
+    "line-height": 1.2
+  ),
+  "4xl": (
+    "font-size": clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
+    "line-height": 1.1
+  ),
+  "5xl": (
+    "font-size": clamp(3rem, 2rem + 5vw, 4rem),
+    "line-height": 1.1
+  ),
+  "6xl": (
+    "font-size": clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
+    "line-height": 1
+  ),
+) !default;
 
 // scss-docs-start headings-variables
 $headings-margin-bottom:      $spacer * .5 !default;
@@ -280,22 +339,6 @@ $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 // scss-docs-end headings-variables
-
-// scss-docs-start display-headings
-$display-font-sizes: (
-  1: 5rem,
-  2: 4.5rem,
-  3: 4rem,
-  4: 3.5rem,
-  5: 3rem,
-  6: 2.5rem
-) !default;
-
-$display-font-family: null !default;
-$display-font-style:  null !default;
-$display-font-weight: 300 !default;
-$display-line-height: $headings-line-height !default;
-// scss-docs-end display-headings
 
 // scss-docs-start type-variables
 $lead-font-size:              $font-size-base * 1.25 !default;

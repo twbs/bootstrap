@@ -1,0 +1,40 @@
+---
+title: Font family
+description: Utilities for controlling font family including monospace font stack.
+toc: true
+reference:
+  - class: font-monospace
+    styles:
+      font-family: 'var(--bs-font-monospace)'
+  - class: font-body
+    styles:
+      font-family: 'var(--bs-font-sans-serif)'
+---
+
+import { getData } from '@libs/data'
+
+## Monospace
+
+Change a selection to our monospace font stack with `.font-monospace`.
+
+<Example code={`<p class="font-monospace">This is in monospace</p>`} />
+
+## Body
+
+Change a selection to our body font stack with `.font-body`, which defaults to sans-serif.
+
+<Example code={`<p class="font-body">This is in body</p>`} />
+
+## CSS
+
+### Sass utilities API
+
+Font family utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"font-family": (
+  property: font-family,
+  class: font,
+  values: (monospace: var(--#{$prefix}font-monospace))
+),
+```

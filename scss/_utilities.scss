@@ -589,14 +589,26 @@ $utilities: map.merge(
     "font-family": (
       property: font-family,
       class: font,
-      values: (monospace: var(--#{$prefix}font-monospace))
+      values: (
+        "monospace": var(--#{$prefix}font-monospace),
+        "body": var(--#{$prefix}font-sans-serif),
+      )
     ),
     "font-size": (
-      rfs: true,
       property: font-size,
       class: fs,
       values: $font-sizes
     ),
+    // scss-docs-start utils-text
+    "text": (
+      property: (
+        "font-size": 1rem,
+        "line-height": 1.5
+      ),
+      class: text,
+      values: $new-font-sizes
+    ),
+    // scss-docs-end utils-text
     "font-style": (
       property: font-style,
       class: fst,
@@ -698,7 +710,7 @@ $utilities: map.merge(
       property: --#{$prefix}link-opacity,
       // css-var: true,
       class: link-opacity,
-      state: hover,
+      pseudo-classes: hover,
       values: (
         10: .1,
         25: .25,
@@ -710,7 +722,7 @@ $utilities: map.merge(
     "link-offset": (
       property: text-underline-offset,
       class: link-offset,
-      state: hover,
+      pseudo-classes: hover,
       values: (
         1: .125em,
         2: .25em,
@@ -734,7 +746,7 @@ $utilities: map.merge(
       // css-var: true,
       property: --#{$prefix}link-underline-opacity,
       class: link-underline-opacity,
-      state: hover,
+      pseudo-classes: hover,
       values: (
         0: 0,
         10: .1,

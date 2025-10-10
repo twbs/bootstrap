@@ -11,10 +11,21 @@ Bootstrap sets basic global display, typography, and link styles. When more cont
 - Use a [native font stack]([[docsref:/content/reboot#native-font-stack]]) that selects the best `font-family` for each OS and device.
 - For a more inclusive and accessible type scale, we use the browser’s default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
-- Set the global link color via `$link-color`.
-- Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
+- Set the global link color via `--bs-link-color`.
+- Use `--bs-body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
 These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to set `$font-size-base` in `rem`.
+
+<Example code={`<div class="text-xs">.text-xs text</div>
+<div class="text-sm">.text-sm text</div>
+<div class="text-md">.text-md text</div>
+<div class="text-lg">.text-lg text</div>
+<div class="text-xl">.text-xl text</div>
+<div class="text-2xl">.text-2xl text</div>
+<div class="text-3xl">.text-3xl text</div>
+<div class="text-4xl">.text-4xl text</div>
+<div class="text-5xl">.text-5xl text</div>
+<div class="text-6xl">.text-6xl text</div>`} />
 
 ## Headings
 
@@ -57,34 +68,6 @@ Use the included utility classes to recreate the small secondary heading text fr
     Fancy display heading
     <small class="text-body-secondary">With faded secondary text</small>
   </h3>`} />
-
-## Display headings
-
-Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style.
-
-<Example showMarkup={false} code={`
-<div class="display-1 pb-3 mb-3 border-bottom">Display 1</div>
-<div class="display-2 pb-3 mb-3 border-bottom">Display 2</div>
-<div class="display-3 pb-3 mb-3 border-bottom">Display 3</div>
-<div class="display-4 pb-3 mb-3 border-bottom">Display 4</div>
-<div class="display-5 pb-3 mb-3 border-bottom">Display 5</div>
-<div class="display-6">Display 6</div>
-`} />
-
-```html
-<h1 class="display-1">Display 1</h1>
-<h1 class="display-2">Display 2</h1>
-<h1 class="display-3">Display 3</h1>
-<h1 class="display-4">Display 4</h1>
-<h1 class="display-5">Display 5</h1>
-<h1 class="display-6">Display 6</h1>
-```
-
-Display headings are configured via the `$display-font-sizes` Sass map and two variables, `$display-font-weight` and `$display-line-height`.
-
-Display headings are customizable via two variables, `$display-font-family` and `$display-font-style`.
-
-<ScssDocs name="display-headings" file="scss/_variables.scss" />
 
 ## Lead
 

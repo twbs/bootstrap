@@ -158,7 +158,11 @@
         - title: Padding
     - group: Type
       pages:
+        - title: Font family
+        - title: Font size
         - title: Font style
+        - title: Font weight
+        - title: Line height
         - title: Text alignment
         - title: Text decoration
         - title: Text wrapping

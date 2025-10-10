@@ -1,0 +1,63 @@
+---
+title: Font weight
+description: Utilities for controlling font weight including bold, semibold, medium, normal, and light weights.
+toc: true
+reference:
+  - class: fw-bolder
+    styles:
+      font-weight: 'bolder'
+  - class: fw-bold
+    styles:
+      font-weight: '700'
+  - class: fw-semibold
+    styles:
+      font-weight: '600'
+  - class: fw-medium
+    styles:
+      font-weight: '500'
+  - class: fw-normal
+    styles:
+      font-weight: '400'
+  - class: fw-light
+    styles:
+      font-weight: '300'
+  - class: fw-lighter
+    styles:
+      font-weight: 'lighter'
+---
+
+import { getData } from '@libs/data'
+
+## Font weight
+
+Quickly change the `font-weight` of text with these utilities. `font-weight` utilities are abbreviated as `.fw-*`.
+
+<Example code={`<p class="fw-bold">Bold text.</p>
+<p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
+<p class="fw-semibold">Semibold weight text.</p>
+<p class="fw-medium">Medium weight text.</p>
+<p class="fw-normal">Normal weight text.</p>
+<p class="fw-light">Light weight text.</p>
+<p class="fw-lighter">Lighter weight text (relative to the parent element).</p>`} />
+
+## CSS
+
+### Sass utilities API
+
+Font weight utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"font-weight": (
+  property: font-weight,
+  class: fw,
+  values: (
+    lighter: $font-weight-lighter,
+    light: $font-weight-light,
+    normal: $font-weight-normal,
+    medium: $font-weight-medium,
+    semibold: $font-weight-semibold,
+    bold: $font-weight-bold,
+    bolder: $font-weight-bolder
+  )
+),
+```
