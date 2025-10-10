@@ -9,6 +9,7 @@ import { getData } from '@libs/data'
 export const themeTokens = [
   'base',
   'text',
+  'text-emphasis',
   'bg',
   'bg-subtle',
   'bg-muted',
@@ -18,10 +19,10 @@ export const themeTokens = [
 ]
 
 export const themeBgs = [
-  'null',
-  '1',
-  '2',
-  '3',
+  'body',
+  'secondary',
+  'subtle',
+  'muted',
   'white',
   'black',
   'transparent',
@@ -29,10 +30,10 @@ export const themeBgs = [
 ]
 
 export const themeFgs = [
-  'null',
-  '1',
-  '2',
-  '3',
+  'body',
+  'secondary',
+  'subtle',
+  'muted',
   'white',
   'black',
   'transparent',
@@ -49,12 +50,13 @@ Theme colors include the following semantic colors:
 | Theme color | Default value | Description |
 | --- | --- | --- |
 | `primary` | <Swatch size="inline" bg="blue-500" /> `var(--bs-blue-500)`| Main brand color for primary actions |
-| `accent` | <Swatch size="inline" bg="indigo-500" /> `var(--bs-indigo-500)` | Secondary brand color (new in v6) |
+| `accent` | <Swatch size="inline" bg="indigo-500" /> `var(--bs-indigo-500)` | Complementary brand color option |
 | `success` | <Swatch size="inline" bg="green-500" /> `var(--bs-green-500)` | Positive actions and successful states |
 | `danger` | <Swatch size="inline" bg="red-500" /> `var(--bs-red-500)` | Destructive actions and error states |
-| `warning` | <Swatch size="inline" bg="yellow-500" /> `var(--bs-yellow-500)` | Cautionary messages and warning states |
+| `warning` | <Swatch size="inline" bg="yellow-500" /> `var(--bs-yellow-500)` | Cautionary messages and states |
 | `info` | <Swatch size="inline" bg="cyan-500" /> `var(--bs-cyan-500)` | Informational messages and neutral states |
-| `secondary` | <Swatch size="inline" bg="gray-300" /> `var(--bs-gray-300)` | Less prominent secondary actions |
+| `inverse` | <Swatch size="inline" bg="gray-900" /> `var(--bs-gray-900)` | High contrast by inverting foreground and background |
+| `secondary` | <Swatch size="inline" bg="gray-300" /> `var(--bs-gray-300)` | Less prominent actions and states |
 </BsTable>
 
 And within each semantic theme color, you'll find the following keys, most of which are color-mode adaptive:
@@ -64,6 +66,7 @@ And within each semantic theme color, you'll find the following keys, most of wh
 | --- | --- |
 | `base` | The default color value for the semantic color |
 | `text` | Accessible text color (against body, plus `subtle` and `muted` color tokens) |
+| `text-emphasis` | Emphasized text color for use with `muted` background tokens |
 | `bg` | For solid colored backgrounds with high contrast |
 | `bg-subtle` | Lowest contrast backgrounds, usually paired with `text` key for text color |
 | `bg-muted` | Lower contrast backgrounds, often used for disabled states |
@@ -76,7 +79,7 @@ And within each semantic theme color, you'll find the following keys, most of wh
 
 Every token is available as a CSS variable, and most are then consumed by our utilities and components. So for the `primary` color, you have the following colors:
 
-<div class="grid gap-0" style={{gridTemplateColumns: 'repeat(8, 1fr)', gap: '8px', minWidth: '0'}}>
+<div class="grid gap-0" style={{gridTemplateColumns: 'repeat(9, 1fr)', gap: '8px', minWidth: '0'}}>
   {getData('theme-colors').map((color) => {
     return (
       <div class="d-contents grid-full">
@@ -92,94 +95,154 @@ Every token is available as a CSS variable, and most are then consumed by our ut
   })}
 </div>
 
-## Theme `fg` and `bg`
+### Pairings
 
-Theme foreground and background tokens are defined in their respective `$theme-fgs` and `$theme-bgs` Sass maps. These maps are used to generate color mode adaptive `color` and `background-color` values that are then consumed by our utilities and components. You'll find these values in the `_theme.scss` file.
+Not all colors can be used for all purposes due to accessibility, color contrast, and general aesthetic considerations. Here are some recommended pairings.
 
-Theme backgrounds include the following semantic colors:
+- `contrast` work best with `bg`
+- `text` works best with `subtle`
+- `text-emphasis` works best with `muted`
+- `border` works best with `subtle`, but can be used with `muted`
+
+<Example code={`<div class="theme-primary vstack gap-3">
+    <div style="color: var(--bs-theme-contrast); background: var(--bs-theme-bg);" class="p-3 rounded-3">
+      Example element with theme color
+    </div>
+    <div style="color: var(--bs-theme-text-emphasis); background: var(--bs-theme-bg-muted); border: 1px solid var(--bs-theme-border);" class="p-3 rounded-3">
+      Example element with theme color
+    </div>
+    <div style="color: var(--bs-theme-text); background: var(--bs-theme-bg-subtle); border: 1px solid var(--bs-theme-border);" class="p-3 rounded-3">
+      Example element with theme color
+    </div>
+  </div>`} />
+
+## Layer colors
+
+Color tokens that are used for foreground, background, and border colors are called **theme layer colors** in Bootstrap. These layer colors are configured outside the `$new-theme-colors` Sass map in their own respective Sass maps as they have more nuanced theming use cases.
+
+Tokens for these three themes are defined in the `$theme-fgs`, `$theme-bgs`, and `$theme-borders` Sass maps. These maps are used to generate color mode adaptive `color`, `background-color`, and `border-color` values that are then consumed by our utilities and components. You'll find these values in the `_theme.scss` file.
+
+### Background
+
+Theme backgrounds include several practical and semantic color options.
 
 <BsTable>
 | Background | Default value | Description |
 | --- | --- | --- |
-| `null` | <Swatch bg="bg" size="inline" /> `var(--bs-white)` | Default background color |
-| `1` | <Swatch bg="bg-1" size="inline" /> `var(--bs-gray-025)` | Lowest contrast background color |
-| `2` | <Swatch bg="bg-2" size="inline" /> `var(--bs-gray-050)` | Lower contrast background color |
-| `3` | <Swatch bg="bg-3" size="inline" /> `var(--bs-gray-100)` | Medium contrast background color, typically used for disabled states |
-| `white` | <Swatch bg="bg-white" size="inline" /> `var(--bs-white)` | Pure white background color |
-| `black` | <Swatch bg="bg-black" size="inline" /> `var(--bs-black)` | Pure black background color |
-| `transparent` | <Swatch bg="bg-transparent" size="inline" /> `transparent` | Transparent background color |
+| `body` | <Swatch bg="bg-body" size="inline" /> | Default background color |
+| `secondary` | <Swatch bg="bg-1" size="inline" /> | Lowest contrast background color |
+| `subtle` | <Swatch bg="bg-2" size="inline" /> | Lower contrast background color |
+| `muted` | <Swatch bg="bg-3" size="inline" /> | Medium contrast background color, typically used for disabled states |
+| `white` | <Swatch bg="bg-white" size="inline" /> | Pure white background color |
+| `black` | <Swatch bg="bg-black" size="inline" /> | Pure black background color |
+| `transparent` | <Swatch bg="bg-transparent" size="inline" /> | Transparent background color |
 | `inherit` |`inherit` | Inherited background color |
 </BsTable>
 
+### Foreground
+
+Almost all those options are also available for foreground text colors.
+
 <BsTable>
 | Foreground | Default value | Description |
 | --- | --- | --- |
-| `null` | <Swatch bg="fg" size="inline" /> `var(--bs-gray-900)` | Default foreground color |
-| `1` | <Swatch bg="fg-1" size="inline" /> `var(--bs-gray-800)` | Lowest contrast foreground color |
-| `2` | <Swatch bg="fg-2" size="inline" /> `var(--bs-gray-700)` | Lower contrast foreground color |
-| `3` | <Swatch bg="fg-3" size="inline" /> `var(--bs-gray-600)` | Medium contrast foreground color |
-| `white` | <Swatch bg="fg-white" size="inline" /> `var(--bs-white)` | Pure white foreground color |
-| `black` | <Swatch bg="fg-black" size="inline" /> `var(--bs-black)` | Pure black foreground color |
-| `transparent` | <Swatch bg="fg-transparent" size="inline" /> `transparent` | Transparent foreground color |
+| `body` | <Swatch bg="fg-body" size="inline" /> | Default foreground color |
+| `secondary` | <Swatch bg="fg-1" size="inline" /> | Lowest contrast foreground color |
+| `subtle` | <Swatch bg="fg-2" size="inline" /> | Lower contrast foreground color |
+| `muted` | <Swatch bg="fg-3" size="inline" /> | Medium contrast foreground color |
+| `white` | <Swatch bg="fg-white" size="inline" /> | Pure white foreground color |
+| `black` | <Swatch bg="fg-black" size="inline" /> | Pure black foreground color |
 | `inherit` | `inherit` | Inherited foreground color |
 </BsTable>
 
-### Suggested pairings
+### Border
 
-Not all foreground colors are appropriate for all background colors. To maintain color contrast for accessibility, here are some recommended pairings.
-
-<div class="d-flex gap-3 w-100">
-  <div class="d-flex flex-column gap-2 w-100">
-    <Swatch bg="bg" fg="fg" size="large" contrast="15.71" contrastDark="14.59">fg on bg</Swatch>
-    <Swatch bg="bg" fg="fg-1" size="large" contrast="12.50" contrastDark="10.77">fg-1 on bg</Swatch>
-    <Swatch bg="bg" fg="fg-2" size="large" contrast="9.54" contrastDark="7.76">fg-2 on bg</Swatch>
-    <Swatch bg="bg" fg="fg-3" size="large" contrast="7.01" contrastDark="6.32">fg-3 on bg</Swatch>
-  </div>
-  <div class="d-flex flex-column gap-2 w-100">
-    <Swatch bg="bg-1" fg="fg" size="large">fg on bg-1</Swatch>
-    <Swatch bg="bg-1" fg="fg-1" size="large">fg-1 on bg-1</Swatch>
-    <Swatch bg="bg-1" fg="fg-2" size="large">fg-2 on bg-1</Swatch>
-    <Swatch bg="bg-1" fg="fg-3" size="large">fg-3 on bg-1</Swatch>
-  </div>
-  <div class="d-flex flex-column gap-2 w-100">
-    <Swatch bg="bg-2" fg="fg" size="large">fg on bg-2</Swatch>
-    <Swatch bg="bg-2" fg="fg-1" size="large">fg-1 on bg-2</Swatch>
-    <Swatch bg="bg-2" fg="fg-2" size="large">fg-2 on bg-2</Swatch>
-    <Swatch bg="bg-2" fg="fg-3" size="large">fg-3 on bg-2</Swatch>
-  </div>
-  <div class="d-flex flex-column gap-2 w-100">
-    <Swatch bg="bg-3" fg="fg" size="large">fg on bg-3</Swatch>
-    <Swatch bg="bg-3" fg="fg-1" size="large">fg-1 on bg-3</Swatch>
-    <Swatch bg="bg-3" fg="fg-2" size="large">fg-2 on bg-3</Swatch>
-    <Swatch bg="bg-3" fg="fg-3" size="large">fg-3 on bg-3</Swatch>
-  </div>
-</div>
-
-## Theme foregrounds
-
-Theme foregrounds are defined in the `$theme-fgs` Sass map. This map is used to generate our theme foreground values. You'll find these values in the `_theme.scss` file. These are where we define our design tokens for Bootstrap, across both light and dark color modes.
-
-Theme foregrounds include the following semantic colors:
+Border colors have similar levels, but different naming.
 
 <BsTable>
-| Foreground | Default value | Description |
+| Border | Default value | Description |
 | --- | --- | --- |
-| `null` | `var(--bs-gray-900)` | Default foreground color |
-| `1` | `var(--bs-gray-800)` | Lowest contrast foreground color |
-| `2` | `var(--bs-gray-700)` | Lower contrast foreground color |
-| `3` | `var(--bs-gray-600)` | Medium contrast foreground color |
+| `null` | <Swatch bg="border" size="inline" /> | Default border color |
+| `muted` | <Swatch bg="border-muted" size="inline" /> | Muted border color |
+| `subtle` | <Swatch bg="border-subtle" size="inline" /> | Subtle border color |
+| `emphasized` | <Swatch bg="border-emphasized" size="inline" /> | Emphasized border color |
 </BsTable>
 
-<div class="grid gap-0" style={{gridTemplateColumns: 'repeat(8, 1fr)', gap: '8px', minWidth: '0'}}>
-  {themeFgs.map((color) => {
-    return (
-      <div>
-        <Swatch color={`fg-${color}`} size="large" />
-        <div class="text-center color-3">{color}</div>
-      </div>
-    )
-  })}
-</div>
+### Examples
+
+Not all colors can be used for all purposes due to accessibility, color contrast, and general aesthetic considerations. Here are some recommended pairings.
+
+- `color-body` works with all `bg` colors
+- `color-1` works with `bg-body`, `bg-1`, `bg-2`, and `bg-3`
+- `color-2` works with `bg-body`, `bg-1`, and `bg-2`
+- `color-3` works with `bg-body`, `bg-1`
+
+Here are some examples showing them together. Note
+
+<Example code={`<div class="vstack gap-3">
+    <div class="p-3 rounded-3 bg-body color-body border">
+      color-body on bg-body
+    </div>
+    <div class="p-3 rounded-3 bg-1 color-3 border">
+      color-3 on bg-1
+    </div>
+    <div class="p-3 rounded-3 bg-2 color-2 border">
+      color-2 on bg-2
+    </div>
+    <div class="p-3 rounded-3 bg-3 color-1 border">
+      color-1 on bg-3
+    </div>
+  </div>`} />
+
+## Theme utility classes
+
+We generate theme utility classes from the `$new-theme-colors` Sass map that make all theme color tokens available as CSS variables. We use these in our component variants to allow for quick theming with a single, global class. This requires components to support theme colors, and not every component does.
+
+With theme utilities, you can apply a theme color to an element with a single class.
+
+<Example class="vstack gap-3" code={`<div class="alert theme-primary">Primary alert</div>
+  <div>
+    <button type="button" class="btn btn-solid theme-primary">Primary button</button>
+    <button type="button" class="btn btn-outline theme-primary">Primary outline button</button>
+    <button type="button" class="btn btn-subtle theme-primary">Primary subtle button</button>
+    <button type="button" class="btn btn-text theme-primary">Primary text button</button>
+  </div>
+  <div>
+    <span class="badge theme-primary">Primary badge</span>
+    <span class="badge badge-subtle theme-primary">Primary subtle badge</span>
+  </div>`} />
+
+And you can apply a theme color utility to a container and any theme-aware children will inherit the theme color.
+
+<Example code={`<div class="vstack gap-3 theme-primary">
+    <div class="alert">Primary alert</div>
+    <div>
+      <button type="button" class="btn btn-solid">Primary button</button>
+      <button type="button" class="btn btn-outline">Primary outline button</button>
+      <button type="button" class="btn btn-subtle">Primary subtle button</button>
+      <button type="button" class="btn btn-text">Primary text button</button>
+    </div>
+    <div>
+      <span class="badge">Primary badge</span>
+      <span class="badge badge-subtle">Primary subtle badge</span>
+    </div>
+  </div>`} />
+
+This also means you can override a container's theme color with another theme color on specific components.
+
+<Example code={`<div class="vstack gap-3 theme-primary">
+    <div class="alert">Primary alert</div>
+    <div>
+      <button type="button" class="btn btn-solid theme-emphasis">Emphasis button</button>
+      <button type="button" class="btn btn-outline">Primary outline button</button>
+      <button type="button" class="btn btn-subtle theme-danger">Danger subtle button</button>
+      <button type="button" class="btn btn-text">Primary text button</button>
+    </div>
+    <div>
+      <span class="badge theme-success">Success badge</span>
+      <span class="badge badge-subtle">Primary subtle badge</span>
+    </div>
+  </div>`} />
 
 ## Theme Sass map
 

@@ -23,10 +23,10 @@ Wrap the `.radio` in a `<b-radiogroup>` layout component and add your label. We 
 
 ## Theme colors
 
-Modify the appearance of checked checkboxes by adding the `.checked-{color}` class to the `.radio` element. This will set the checked background and border color to the theme color.
+Modify the appearance of checked checkboxes by adding the `.theme-{color}` class to the `.radio` element. This will set the checked background and border color to the theme color.
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<b-radiogroup>
-    <input type="radio" id="radio${themeColor.name}" class="radio checked-${themeColor.name}" checked />
+    <input type="radio" id="radio${themeColor.name}" class="radio theme-${themeColor.name}" checked />
     <label for="radio${themeColor.name}">Example ${themeColor.name} radio</label>
   </b-radiogroup>`)} />
 

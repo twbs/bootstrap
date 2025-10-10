@@ -1,8 +1,11 @@
 @use "sass:color";
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
 @use "../colors" as *;
 @use "../config" as *;
-@use "../variables" as *;
 @use "../theme" as *;
+@use "../variables" as *;
 @use "../functions" as *;
 @use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
@@ -12,67 +15,124 @@
 @use "../mixins/transition" as *;
 @use "button-variables" as *;
 
-// Button variants
-//
-// Easily pump out default styles, as well as :hover, :focus, :active,
-// and disabled options for all buttons
+// scss-docs-start btn-variants
+$button-variants: (
+  "solid": (
+    "base": (
+      "bg": "bg",
+      "color": "contrast",
+      "border-color": "bg"
+    ),
+    "hover": (
+      "bg": "bg",
+      "border-color": "bg",
+      "color": "contrast"
+    ),
+    "active": (
+      "bg": "bg",
+      "border-color": "bg",
+      "color": "contrast"
+    )
+  ),
+  "outline": (
+    "base": (
+      "bg": "transparent",
+      "color": "text",
+      "border-color": "border"
+    ),
+    "hover": (
+      "bg": "bg",
+      "color": "contrast",
+      "border-color": "bg"
+    ),
+    "active": (
+      "bg": "bg",
+      "color": "contrast",
+      "border-color": "bg"
+    )
+  ),
+  "subtle": (
+    "base": (
+      "bg": "bg-subtle",
+      "color": "text",
+      "border-color": "transparent"
+    ),
+    "hover": (
+      "bg": ("bg-muted", "bg-subtle"),
+      "color": "text-emphasis"
+    ),
+    "active": (
+      "bg": "bg-subtle",
+      "color": "text-emphasis"
+    )
+  ),
+  "text": (
+    "base": (
+      "color": "text",
+      "bg": "transparent",
+      "border-color": "transparent"
+    ),
+    "hover": (
+      "color": "text",
+      "bg": "bg-subtle"
+    ),
+    "active": (
+      "color": "text",
+      "bg": "bg-subtle"
+    )
+  )
+) !default;
+// scss-docs-end btn-variants
 
+// // Main button style generator mixin
+
+// Generate button variant classes (e.g., .btn-solid, .btn-outline, etc.)
 // scss-docs-start btn-variant-mixin
-// @mixin button-variant(
-//   $background,
-//   $border,
-//   $color: color-contrast($background),
-//   $hover-background: if($color == $color-contrast-light, shade-color($background, $btn-hover-bg-shade-amount), tint-color($background, $btn-hover-bg-tint-amount)),
-//   $hover-border: if($color == $color-contrast-light, shade-color($border, $btn-hover-border-shade-amount), tint-color($border, $btn-hover-border-tint-amount)),
-//   $hover-color: color-contrast($hover-background),
-//   $active-background: if($color == $color-contrast-light, shade-color($background, $btn-active-bg-shade-amount), tint-color($background, $btn-active-bg-tint-amount)),
-//   $active-border: if($color == $color-contrast-light, shade-color($border, $btn-active-border-shade-amount), tint-color($border, $btn-active-border-tint-amount)),
-//   $active-color: color-contrast($active-background),
-//   $disabled-background: $background,
-//   $disabled-border: $border,
-//   $disabled-color: color-contrast($disabled-background)
-// ) {
-//   --#{$prefix}btn-color: #{$color};
-//   --#{$prefix}btn-bg: #{$background};
-//   --#{$prefix}btn-border-color: #{$border};
-//   --#{$prefix}btn-hover-color: #{$hover-color};
-//   --#{$prefix}btn-hover-bg: #{$hover-background};
-//   --#{$prefix}btn-hover-border-color: #{$hover-border};
-//   // --#{$prefix}btn-focus-shadow-rgb: #{to-rgb(color.mix($color, $border, 15%))};
-//   --#{$prefix}btn-active-color: #{$active-color};
-//   --#{$prefix}btn-active-bg: #{$active-background};
-//   --#{$prefix}btn-active-border-color: #{$active-border};
-//   --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
-//   --#{$prefix}btn-disabled-color: #{$disabled-color};
-//   --#{$prefix}btn-disabled-bg: #{$disabled-background};
-//   --#{$prefix}btn-disabled-border-color: #{$disabled-border};
-// }
-// scss-docs-end btn-variant-mixin
+@each $variant, $_ in $button-variants {
+  .btn-#{$variant} {
+    @each $property, $value in map.get($button-variants, $variant, "base") {
+      @if $value == "transparent" {
+        --#{$prefix}btn-#{$property}: transparent;
+      } @else {
+        --#{$prefix}btn-#{$property}: var(--#{$prefix}theme-#{$value});
+      }
+    }
 
-// scss-docs-start btn-outline-variant-mixin
-// @mixin button-outline-variant(
-//   $color,
-//   $color-hover: color-contrast($color),
-//   $active-background: $color,
-//   $active-border: $color,
-//   $active-color: color-contrast($active-background)
-// ) {
-//   --#{$prefix}btn-color: #{$color};
-//   --#{$prefix}btn-border-color: #{$color};
-//   --#{$prefix}btn-hover-color: #{$color-hover};
-//   --#{$prefix}btn-hover-bg: #{$active-background};
-//   --#{$prefix}btn-hover-border-color: #{$active-border};
-//   --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
-//   --#{$prefix}btn-active-color: #{$active-color};
-//   --#{$prefix}btn-active-bg: #{$active-background};
-//   --#{$prefix}btn-active-border-color: #{$active-border};
-//   --#{$prefix}btn-active-shadow: #{$btn-active-box-shadow};
-//   --#{$prefix}btn-disabled-color: #{$color};
-//   --#{$prefix}btn-disabled-bg: transparent;
-//   --#{$prefix}btn-disabled-border-color: #{$color};
-//   --#{$prefix}gradient: none;
-// }
-// scss-docs-end btn-outline-variant-mixin
+    &:hover {
+      @each $property, $value in map.get($button-variants, $variant, "hover") {
+        @if $value == "transparent" {
+          --#{$prefix}btn-hover-#{$property}: transparent;
+        } @else if meta.type-of($value) == "list" {
+          $first-value: list.nth($value, 1);
+          $second-value: list.nth($value, 2);
+          --#{$prefix}btn-hover-#{$property}: color-mix(in oklch, var(--#{$prefix}theme-#{$first-value}) 50%, var(--#{$prefix}theme-#{$second-value}));
+        } @else if $value == "bg-subtle" {
+          --#{$prefix}btn-hover-#{$property}: var(--#{$prefix}theme-#{$value});
+        } @else {
+          --#{$prefix}btn-hover-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .95) calc(c * 1.1) h);
+        }
+      }
+    }
+
+    &:focus-visible {
+      outline-color: var(--#{$prefix}theme-focus-ring);
+    }
+
+    &:active,
+    &.active {
+      @each $property, $value in map.get($button-variants, $variant, "active") {
+        @if $value == "transparent" {
+          --#{$prefix}btn-active-#{$property}: transparent;
+        } @else if $value == "bg-subtle" {
+          --#{$prefix}btn-active-#{$property}: var(--#{$prefix}theme-#{$value});
+        } @else {
+          --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
+        }
+      }
+    }
+  }
+}
+// scss-docs-end btn-variant-mixin
 
 // scss-docs-start btn-size-mixin
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
@@ -83,13 +143,13 @@
 }
 // scss-docs-end btn-size-mixin
 
-
 //
 // Base styles
 //
 
 @layer components {
-  .btn {
+  .btn,
+  [class*="btn-"] {
     // scss-docs-start btn-css-vars
     --#{$prefix}btn-padding-x: #{$btn-padding-x};
     --#{$prefix}btn-padding-y: #{$btn-padding-y};
@@ -142,15 +202,11 @@
     }
 
     &:focus-visible {
-      color: var(--#{$prefix}btn-hover-color);
-      @include gradient-bg(var(--#{$prefix}btn-hover-bg));
-      border-color: var(--#{$prefix}btn-hover-border-color);
       @include focus-ring(true);
       --#{$prefix}focus-ring-offset: 1px;
     }
 
     .btn-check:focus-visible + & {
-      border-color: var(--#{$prefix}btn-hover-border-color);
       @include focus-ring(true);
     }
 
@@ -187,46 +243,6 @@
       @include box-shadow(none);
     }
   }
-
-
-  //
-  // Alternate buttons
-  //
-
-  // scss-docs-start btn-variant-loops
-  // @each $color, $value in $new-theme-colors {
-  //   .btn-#{$color} {
-  //     @if $color == "light" {
-  //       @include button-variant(
-  //         $value,
-  //         $value,
-  //         $hover-background: shade-color($value, $btn-hover-bg-shade-amount),
-  //         $hover-border: shade-color($value, $btn-hover-border-shade-amount),
-  //         $active-background: shade-color($value, $btn-active-bg-shade-amount),
-  //         $active-border: shade-color($value, $btn-active-border-shade-amount)
-  //       );
-  //     } @else if $color == "dark" {
-  //       @include button-variant(
-  //         $value,
-  //         $value,
-  //         $hover-background: tint-color($value, $btn-hover-bg-tint-amount),
-  //         $hover-border: tint-color($value, $btn-hover-border-tint-amount),
-  //         $active-background: tint-color($value, $btn-active-bg-tint-amount),
-  //         $active-border: tint-color($value, $btn-active-border-tint-amount)
-  //       );
-  //     } @else {
-  //       @include button-variant($value, $value);
-  //     }
-  //   }
-  // }
-
-  // @each $color, $value in $new-theme-colors {
-  //   .btn-outline-#{$color} {
-  //     @include button-outline-variant($value);
-  //   }
-  // }
-  // scss-docs-end btn-variant-loops
-
 
   //
   // Link buttons

@@ -59,9 +59,9 @@
     @include font-size(var(--#{$prefix}body-font-size));
     font-weight: var(--#{$prefix}body-font-weight);
     line-height: var(--#{$prefix}body-line-height);
-    color: var(--#{$prefix}body-color);
+    color: var(--#{$prefix}color-body);
     text-align: var(--#{$prefix}body-text-align);
-    background-color: var(--#{$prefix}body-bg); // 2
+    background-color: var(--#{$prefix}bg-body); // 2
     -webkit-text-size-adjust: 100%; // 3
     -webkit-tap-highlight-color: rgba($black, 0); // 4
   }

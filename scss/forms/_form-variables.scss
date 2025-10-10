@@ -9,8 +9,8 @@ $control-padding-y: .375rem !default;
 $control-padding-x: .75rem !default;
 $control-font-size: $font-size-base !default;
 $control-line-height: $line-height-base !default;
-$control-color: var(--#{$prefix}body-color) !default;
-$control-bg: var(--#{$prefix}body-bg) !default;
+$control-color: var(--#{$prefix}color-body) !default;
+$control-bg: var(--#{$prefix}bg-body) !default;
 $control-border-width: var(--#{$prefix}border-width) !default;
 $control-border-color: var(--#{$prefix}border-color) !default;
 $control-border-radius: var(--#{$prefix}border-radius) !default;
@@ -32,7 +32,7 @@ $control-select-indicator:             url("data:image/svg+xml,<svg xmlns='http:
 $control-select-bg-position:           right $control-padding-x center !default;
 $control-select-bg-size:               16px 12px !default;
 
-$control-select-indicator-color-dark:  $body-color-dark !default;
+$control-select-indicator-color-dark:  #fff !default;
 $control-select-indicator-dark:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$control-select-indicator-color-dark}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
 
 
@@ -76,12 +76,12 @@ $input-padding-y-lg:                    $input-btn-padding-y-lg !default;
 $input-padding-x-lg:                    $input-btn-padding-x-lg !default;
 $input-font-size-lg:                    $input-btn-font-size-lg !default;
 
-$input-bg:                              var(--#{$prefix}body-bg) !default;
+$input-bg:                              var(--#{$prefix}bg-body) !default;
 $input-disabled-color:                  null !default;
 $input-disabled-bg:                     var(--#{$prefix}secondary-bg) !default;
 $input-disabled-border-color:           null !default;
 
-$input-color:                           var(--#{$prefix}body-color) !default;
+$input-color:                           var(--#{$prefix}color-body) !default;
 $input-border-color:                    var(--#{$prefix}border-color) !default;
 $input-border-width:                    var(--#{$prefix}border-width) !default;
 $input-box-shadow:                      var(--#{$prefix}box-shadow-inset) !default;
@@ -97,7 +97,7 @@ $input-focus-width:                     $input-btn-focus-width !default;
 $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
 
 $input-placeholder-color:               var(--#{$prefix}secondary-color) !default;
-$input-plaintext-color:                 var(--#{$prefix}body-color) !default;
+$input-plaintext-color:                 var(--#{$prefix}color-body) !default;
 
 $input-height-border:                   calc(#{$input-border-width} * 2) !default;
 

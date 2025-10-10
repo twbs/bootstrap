@@ -108,7 +108,7 @@ if (currentPageIndex < allPages.length - 1) {
               )
           }
           <a
-            class="btn btn-secondary-text btn-sm"
+            class="btn btn-subtle btn-sm theme-secondary"
             href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
             title="View and edit this file on GitHub"
             target="_blank"
@@ -207,29 +207,25 @@ if (currentPageIndex < allPages.length - 1) {
         <slot />
 
         <nav class="bd-links-nav py-5 mt-5 border-top">
-          <div class="grid">
-            <div class="col-6">
-              {
-                prevPage && (
-                  <a href={prevPage.url} class="d-block p-3 text-decoration-none rounded-3">
-                    <div class="text-secondary small">Previous</div>
-                    <div class="fw-semibold">← {prevPage.title}</div>
-                    <div class="text-secondary small">{prevPage.groupTitle}</div>
-                  </a>
-                )
-              }
-            </div>
-            <div class="col-6">
-              {
-                nextPage && (
-                  <a href={nextPage.url} class="d-block p-3 text-decoration-none text-end rounded-3">
-                    <div class="text-secondary small">Next</div>
-                    <div class="fw-semibold">{nextPage.title} →</div>
-                    <div class="text-secondary small">{nextPage.groupTitle}</div>
-                  </a>
-                )
-              }
-            </div>
+          <div class="d-flex flex-column flex-md-row justify-content-between">
+            {
+              prevPage && (
+                <a href={prevPage.url} class="d-block p-3 text-decoration-none rounded-3">
+                  <div class="text-secondary small">← Previous</div>
+                  <div class="fw-semibold">{prevPage.title}</div>
+                  <div class="text-secondary small">{prevPage.groupTitle}</div>
+                </a>
+              )
+            }
+            {
+              nextPage && (
+                <a href={nextPage.url} class="d-block p-3 text-decoration-none text-end bg-1 rounded-3">
+                  <div class="color-3">Next →</div>
+                  <div class="fs-5 fw-semibold">{nextPage.title}</div>
+                  <div class="color-3">{nextPage.groupTitle}</div>
+                </a>
+              )
+            }
           </div>
         </nav>
       </div>

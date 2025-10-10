@@ -145,6 +145,13 @@
     border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
   }
 
+  .bd-example-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    justify-content: start;
+  }
+
   // // Grid mixins
   // .example-container {
   //   width: 800px;
@@ -310,7 +317,7 @@
     min-height: 15rem;
 
     > div {
-      color: var(--bs-body-bg);
+      color: var(--bs-bg-body);
       background-color: var(--bd-violet);
       border: 1px solid var(--bd-purple);
 
