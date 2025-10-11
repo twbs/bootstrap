@@ -12,7 +12,7 @@ import Backdrop from './util/backdrop.js'
 import { enableDismissTrigger } from './util/component-functions.js'
 import FocusTrap from './util/focustrap.js'
 import {
-  defineJQueryPlugin, isRTL, isVisible, reflow
+  defineJQueryPlugin, execute, isRTL, isVisible, reflow
 } from './util/index.js'
 import ScrollBarHelper from './util/scrollbar.js'
 
@@ -54,9 +54,9 @@ const Default = {
 }
 
 const DefaultType = {
-  backdrop: '(boolean|string)',
-  focus: 'boolean',
-  keyboard: 'boolean'
+  backdrop: '(boolean|string|function)',
+  focus: '(boolean|function)',
+  keyboard: '(boolean|function)'
 }
 
 /**
@@ -157,7 +157,7 @@ class Modal extends BaseComponent {
   // Private
   _initializeBackDrop() {
     return new Backdrop({
-      isVisible: Boolean(this._config.backdrop), // 'static' option will be translated to true, and booleans will keep their value,
+      isVisible: Boolean(this._resolvePossibleFunction(this._config.backdrop)), // 'static' option will be translated to true, and booleans will keep their value
       isAnimated: this._isAnimated()
     })
   }
@@ -190,7 +190,7 @@ class Modal extends BaseComponent {
     this._element.classList.add(CLASS_NAME_SHOW)
 
     const transitionComplete = () => {
-      if (this._config.focus) {
+      if (this._resolvePossibleFunction(this._config.focus)) {
         this._focustrap.activate()
       }
 
@@ -209,7 +209,7 @@ class Modal extends BaseComponent {
         return
       }
 
-      if (this._config.keyboard) {
+      if (this._resolvePossibleFunction(this._config.keyboard)) {
         this.hide()
         return
       }
@@ -230,12 +230,14 @@ class Modal extends BaseComponent {
           return
         }
 
-        if (this._config.backdrop === 'static') {
+        const backdrop = this._resolvePossibleFunction(this._config.backdrop)
+
+        if (backdrop === 'static') {
           this._triggerBackdropTransition()
           return
         }
 
-        if (this._config.backdrop) {
+        if (backdrop) {
           this.hide()
         }
       })
@@ -312,6 +314,10 @@ class Modal extends BaseComponent {
   _resetAdjustments() {
     this._element.style.paddingLeft = ''
     this._element.style.paddingRight = ''
+  }
+
+  _resolvePossibleFunction(arg) {
+    return execute(arg, [this])
   }
 
   // Static
