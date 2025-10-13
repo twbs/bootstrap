@@ -35,7 +35,7 @@ Use theme-specific color classes to style tables, table rows, or individual cell
       </tr>
       {getData('theme-colors').map((themeColor) => {
         return (
-          <tr class={`table-${themeColor.name}`}>
+          <tr class={`theme-${themeColor.name}`}>
             <th scope="row">{themeColor.title}</th>
             <td>Cell</td>
             <td>Cell</td>
@@ -48,14 +48,14 @@ Use theme-specific color classes to style tables, table rows, or individual cell
 
 <Code code={[
   `<!-- On tables -->`,
-  ...getData('theme-colors').map((themeColor) => `<table class="table table-${themeColor.name}">...</table>`),
+  ...getData('theme-colors').map((themeColor) => `<table class="table theme-${themeColor.name}">...</table>`),
   `
 <!-- On rows -->`,
-  ...getData('theme-colors').map((themeColor) => `<tr class="table-${themeColor.name}">...</tr>`),
+  ...getData('theme-colors').map((themeColor) => `<tr class="theme-${themeColor.name}">...</tr>`),
   `
 <!-- On cells (\`td\` or \`th\`) -->
 <tr>`,
-  ...getData('theme-colors').map((themeColor) => `  <td class="table-${themeColor.name}">...</td>`),
+  ...getData('theme-colors').map((themeColor) => `  <td class="theme-${themeColor.name}">...</td>`),
   `</tr>`
 ]} lang="html" />
 
@@ -81,9 +81,9 @@ These classes can also be added to table variants:
 
 <Table class="table table-striped-columns" theme="dark" />
 
-<Table class="table table-success table-striped" />
+<Table class="table theme-success table-striped" />
 
-<Table class="table table-success table-striped-columns" />
+<Table class="table theme-success table-striped-columns" />
 
 ### Hoverable rows
 
@@ -223,7 +223,7 @@ For the accented tables ([striped rows](#striped-rows), [striped columns](#strip
 
 Behind the scenes it looks like this:
 
-<ScssDocs name="table-variants-loop" file="scss/content/_tables.scss" />
+{/* <ScssDocs name="table-variants-loop" file="scss/content/_tables.scss" /> */}
 
 ## Table borders
 
@@ -708,7 +708,7 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-2xl}` as needed to create responsive tab
 
 ### Sass loops
 
-<ScssDocs name="table-loop" file="scss/content/_tables.scss" />
+{/* <ScssDocs name="table-loop" file="scss/content/_tables.scss" /> */}
 
 ### Customizing
 
