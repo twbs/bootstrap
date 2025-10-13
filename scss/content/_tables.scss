@@ -34,7 +34,6 @@ $table-hover-color:           $table-color !default;
 $table-hover-bg-factor:       .075 !default;
 $table-hover-bg:              color-mix(in srgb, var(--#{$prefix}table-color) #{math.percentage($table-hover-bg-factor)}, transparent) !default;
 
-$table-border-factor:         .2 !default;
 $table-border-width:          var(--#{$prefix}border-width) !default;
 $table-border-color:          var(--#{$prefix}border-color) !default;
 
