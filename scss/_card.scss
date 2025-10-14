@@ -21,7 +21,7 @@ $card-cap-bg:                       rgba(var(--#{$prefix}body-color-rgb), .03) !
 $card-cap-color:                    null !default;
 $card-height:                       null !default;
 $card-color:                        null !default;
-$card-bg:                           var(--#{$prefix}body-bg) !default;
+$card-bg:                           var(--#{$prefix}bg-body) !default;
 $card-img-overlay-padding:          $spacer !default;
 $card-group-margin:                 $grid-gutter-width * .5 !default;
 // scss-docs-end card-variables
@@ -55,7 +55,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     flex-direction: column;
     min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
     height: var(--#{$prefix}card-height);
-    color: var(--#{$prefix}body-color);
+    color: var(--#{$prefix}color-body);
     word-wrap: break-word;
     background-color: var(--#{$prefix}card-bg);
     background-clip: border-box;

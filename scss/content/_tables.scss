@@ -16,8 +16,8 @@ $table-cell-padding-x-sm:     .25rem !default;
 
 $table-cell-vertical-align:   top !default;
 
-$table-color:                 var(--#{$prefix}body-color) !default;
-$table-bg:                    var(--#{$prefix}body-bg) !default;
+$table-color:                 var(--#{$prefix}color-body) !default;
+$table-bg:                    var(--#{$prefix}bg-body) !default;
 $table-accent-bg:             transparent !default;
 
 // $table-th-font-weight:        null !default;
@@ -34,7 +34,6 @@ $table-hover-color:           $table-color !default;
 $table-hover-bg-factor:       .075 !default;
 $table-hover-bg:              color-mix(in srgb, var(--#{$prefix}table-color) #{math.percentage($table-hover-bg-factor)}, transparent) !default;
 
-$table-border-factor:         .2 !default;
 $table-border-width:          var(--#{$prefix}border-width) !default;
 $table-border-color:          var(--#{$prefix}border-color) !default;
 
@@ -47,35 +46,6 @@ $table-group-separator-color: currentcolor !default;
 
 // scss-docs-end table-variables
 
-// scss-docs-start table-loop
-$table-variants: $new-theme-colors !default;
-// scss-docs-end table-loop
-
-// scss-docs-start table-variant
-@mixin table-variant($state, $background) {
-  .table-#{$state} {
-    // $color: color-contrast(opaque($body-bg, $background));
-    $color: var(--#{$prefix}#{$state}-text);
-    $hover-bg: color.mix($color, $background, math.percentage($table-hover-bg-factor));
-    $striped-bg: color.mix($color, $background, math.percentage($table-striped-bg-factor));
-    $active-bg: color.mix($color, $background, math.percentage($table-active-bg-factor));
-    $table-border-color: color.mix($color, $background, math.percentage($table-border-factor));
-
-    --#{$prefix}table-color: #{$color};
-    --#{$prefix}table-bg: #{$background};
-    --#{$prefix}table-border-color: #{$table-border-color};
-    --#{$prefix}table-striped-bg: #{$striped-bg};
-    --#{$prefix}table-striped-color: #{color-contrast($striped-bg)};
-    --#{$prefix}table-active-bg: #{$active-bg};
-    --#{$prefix}table-active-color: #{color-contrast($active-bg)};
-    --#{$prefix}table-hover-bg: #{$hover-bg};
-    --#{$prefix}table-hover-color: #{color-contrast($hover-bg)};
-
-    color: var(--#{$prefix}table-color);
-    border-color: var(--#{$prefix}table-border-color);
-  }
-}
-// scss-docs-end table-variant
 
 //
 // Basic Bootstrap table
@@ -89,6 +59,8 @@ $table-variants: $new-theme-colors !default;
     --#{$prefix}table-color-state: initial;
     --#{$prefix}table-bg-state: initial;
     // End of reset
+
+    // scss-docs-start table-css-variables
     --#{$prefix}table-color: #{$table-color};
     --#{$prefix}table-bg: #{$table-bg};
     --#{$prefix}table-border-color: #{$table-border-color};
@@ -99,11 +71,12 @@ $table-variants: $new-theme-colors !default;
     --#{$prefix}table-active-bg: #{$table-active-bg};
     --#{$prefix}table-hover-color: #{$table-hover-color};
     --#{$prefix}table-hover-bg: #{$table-hover-bg};
+    // scss-docs-end table-css-variables
 
     width: 100%;
     margin-bottom: $spacer;
     vertical-align: $table-cell-vertical-align;
-    border-color: var(--#{$prefix}table-border-color);
+    border-color: var(--#{$prefix}theme-border, var(--#{$prefix}table-border-color));
 
     // Target th & td
     // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
@@ -113,10 +86,10 @@ $table-variants: $new-theme-colors !default;
     > :not(caption) > * > * {
       padding: $table-cell-padding-y $table-cell-padding-x;
       // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
-      color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
-      background-color: var(--#{$prefix}table-bg);
+      color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}theme-text, var(--#{$prefix}table-color))));
+      background-color: var(--#{$prefix}theme-bg-subtle, var(--#{$prefix}table-bg));
       border-bottom-width: $table-border-width;
-      box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}table-accent-bg)));
+      box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}theme-bg-subtle, var(--#{$prefix}table-accent-bg))));
     }
 
     > tbody {
@@ -191,16 +164,16 @@ $table-variants: $new-theme-colors !default;
   // For rows
   .table-striped {
     > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
-      --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
-      --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
+      --#{$prefix}table-color-type: var(--#{$prefix}theme-text, var(--#{$prefix}table-striped-color));
+      --#{$prefix}table-bg-type: color-mix(in srgb, var(--#{$prefix}theme-text, var(--#{$prefix}table-color)) #{math.percentage($table-striped-bg-factor)}, transparent);
     }
   }
 
   // For columns
   .table-striped-columns {
     > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
-      --#{$prefix}table-color-type: var(--#{$prefix}table-striped-color);
-      --#{$prefix}table-bg-type: var(--#{$prefix}table-striped-bg);
+      --#{$prefix}table-color-type: var(--#{$prefix}theme-text, var(--#{$prefix}table-striped-color));
+      --#{$prefix}table-bg-type: color-mix(in srgb, var(--#{$prefix}theme-text, var(--#{$prefix}table-color)) #{math.percentage($table-striped-bg-factor)}, transparent);
     }
   }
 
@@ -209,8 +182,8 @@ $table-variants: $new-theme-colors !default;
   // The `.table-active` class can be added to highlight rows or cells
 
   .table-active {
-    --#{$prefix}table-color-state: var(--#{$prefix}table-active-color);
-    --#{$prefix}table-bg-state: var(--#{$prefix}table-active-bg);
+    --#{$prefix}table-color-state: var(--#{$prefix}theme-text, var(--#{$prefix}table-active-color));
+    --#{$prefix}table-bg-state: color-mix(in srgb, var(--#{$prefix}theme-text, var(--#{$prefix}table-color)) #{math.percentage($table-active-bg-factor)}, transparent);
   }
 
   // Hover effect
@@ -219,35 +192,10 @@ $table-variants: $new-theme-colors !default;
 
   .table-hover {
     > tbody > tr:hover > * {
-      --#{$prefix}table-color-state: var(--#{$prefix}table-hover-color);
-      --#{$prefix}table-bg-state: var(--#{$prefix}table-hover-bg);
+      --#{$prefix}table-color-state: var(--#{$prefix}theme-text, var(--#{$prefix}table-hover-color));
+      --#{$prefix}table-bg-state: color-mix(in srgb, var(--#{$prefix}theme-text, var(--#{$prefix}table-color)) #{math.percentage($table-hover-bg-factor)}, transparent);
     }
   }
-
-
-  // Table variants
-  //
-  // Table variants set the table cell backgrounds, border colors
-  // and the colors of the striped, hovered & active tables
-
-  // scss-docs-start table-variants-loop
-  @each $color in map.keys($table-variants) {
-    .table-#{$color} {
-      --#{$prefix}table-color: var(--#{$prefix}#{$color}-text);
-      --#{$prefix}table-bg: var(--#{$prefix}#{$color}-bg-subtle);
-      --#{$prefix}table-border-color: var(--#{$prefix}#{$color}-border);
-      --#{$prefix}table-striped-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), var(--#{$prefix}table-color) #{math.percentage($table-striped-bg-factor)});
-      --#{$prefix}table-striped-color: var(--#{$prefix}table-color);
-      --#{$prefix}table-active-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), var(--#{$prefix}table-color) #{math.percentage($table-active-bg-factor)});
-      --#{$prefix}table-active-color: var(--#{$prefix}table-color);
-      --#{$prefix}table-hover-bg: color-mix(in srgb, var(--#{$prefix}#{$color}-bg-subtle), var(--#{$prefix}table-color) #{math.percentage($table-hover-bg-factor)});
-      --#{$prefix}table-hover-color: var(--#{$prefix}table-color);
-
-      color: var(--#{$prefix}table-color);
-      border-color: var(--#{$prefix}table-border-color);
-    }
-  }
-  // scss-docs-end table-variants-loop
 
   // Responsive tables
   //

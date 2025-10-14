@@ -21,7 +21,7 @@ $nav-tabs-border-width:             var(--#{$prefix}border-width) !default;
 $nav-tabs-border-radius:            var(--#{$prefix}border-radius) !default;
 $nav-tabs-link-hover-border-color:  var(--#{$prefix}secondary-bg) var(--#{$prefix}secondary-bg) $nav-tabs-border-color !default;
 $nav-tabs-link-active-color:        var(--#{$prefix}emphasis-color) !default;
-$nav-tabs-link-active-bg:           var(--#{$prefix}body-bg) !default;
+$nav-tabs-link-active-bg:           var(--#{$prefix}bg-body) !default;
 $nav-tabs-link-active-border-color: var(--#{$prefix}border-color) var(--#{$prefix}border-color) $nav-tabs-link-active-bg !default;
 
 $nav-pills-border-radius:           var(--#{$prefix}border-radius) !default;
