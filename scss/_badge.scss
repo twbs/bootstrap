@@ -1,6 +1,7 @@
 @use "config" as *;
 @use "colors" as *;
 @use "variables" as *;
+@use "theme" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/gradients" as *;
 @use "vendor/rfs" as *;
@@ -8,9 +9,9 @@
 // scss-docs-start badge-variables
 $badge-font-size:                   .75em !default;
 $badge-font-weight:                 $font-weight-bold !default;
-$badge-color:                       $white !default;
+$badge-color:                       inherit !default;
 $badge-padding-y:                   .35em !default;
-$badge-padding-x:                   .65em !default;
+$badge-padding-x:                   .5em !default;
 $badge-border-radius:               var(--#{$prefix}border-radius) !default;
 // scss-docs-end badge-variables
 
@@ -21,7 +22,8 @@ $badge-border-radius:               var(--#{$prefix}border-radius) !default;
     --#{$prefix}badge-padding-y: #{$badge-padding-y};
     @include rfs($badge-font-size, --#{$prefix}badge-font-size);
     --#{$prefix}badge-font-weight: #{$badge-font-weight};
-    --#{$prefix}badge-color: #{$badge-color};
+    --#{$prefix}badge-color: var(--#{$prefix}theme-contrast, #{$badge-color});
+    --#{$prefix}badge-bg: var(--#{$prefix}theme-bg, var(--#{$prefix}bg-2));
     --#{$prefix}badge-border-radius: #{$badge-border-radius};
     // scss-docs-end badge-css-vars
 
@@ -34,6 +36,7 @@ $badge-border-radius:               var(--#{$prefix}border-radius) !default;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
+    background-color: var(--#{$prefix}badge-bg);
     @include border-radius(var(--#{$prefix}badge-border-radius));
     @include gradient-bg();
 
@@ -47,5 +50,10 @@ $badge-border-radius:               var(--#{$prefix}border-radius) !default;
   .btn .badge {
     position: relative;
     top: -1px;
+  }
+
+  .badge-subtle {
+    --#{$prefix}badge-color: var(--#{$prefix}theme-text);
+    --#{$prefix}badge-bg: var(--#{$prefix}theme-bg-subtle);
   }
 }

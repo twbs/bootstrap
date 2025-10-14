@@ -8,8 +8,8 @@
 @use "layout/breakpoints" as *;
 
 // scss-docs-start list-group-variables
-$list-group-color:                  var(--#{$prefix}body-color) !default;
-$list-group-bg:                     var(--#{$prefix}body-bg) !default;
+$list-group-color:                  var(--#{$prefix}color-body) !default;
+$list-group-bg:                     var(--#{$prefix}bg-body) !default;
 $list-group-border-color:           var(--#{$prefix}border-color) !default;
 $list-group-border-width:           var(--#{$prefix}border-width) !default;
 $list-group-border-radius:          var(--#{$prefix}border-radius) !default;
@@ -28,7 +28,7 @@ $list-group-disabled-bg:            $list-group-bg !default;
 $list-group-action-color:           var(--#{$prefix}secondary-color) !default;
 $list-group-action-hover-color:     var(--#{$prefix}emphasis-color) !default;
 
-$list-group-action-active-color:    var(--#{$prefix}body-color) !default;
+$list-group-action-active-color:    var(--#{$prefix}color-body) !default;
 $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
 // scss-docs-end list-group-variables
 
@@ -82,10 +82,10 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
     position: relative;
     display: block;
     padding: var(--#{$prefix}list-group-item-padding-y) var(--#{$prefix}list-group-item-padding-x);
-    color: var(--#{$prefix}list-group-color);
+    color: var(--#{$prefix}theme-text, var(--#{$prefix}list-group-color));
     text-decoration: if($link-decoration == none, null, none);
-    background-color: var(--#{$prefix}list-group-bg);
-    border: var(--#{$prefix}list-group-border-width) solid var(--#{$prefix}list-group-border-color);
+    background-color: var(--#{$prefix}theme-bg-subtle, var(--#{$prefix}list-group-bg));
+    border: var(--#{$prefix}list-group-border-width) solid var(--#{$prefix}theme-border, var(--#{$prefix}list-group-border-color));
 
     &:first-child {
       @include border-top-radius(inherit);
@@ -128,7 +128,7 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
 
   .list-group-item-action {
     width: 100%; // For `<button>`s (anchors become 100% by default though)
-    color: var(--#{$prefix}list-group-action-color);
+    color: var(--#{$prefix}theme-text, var(--#{$prefix}list-group-action-color));
     text-align: inherit; // For `<button>`s (anchors inherit)
 
     &:not(.active) {
@@ -136,14 +136,14 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
       &:hover,
       &:focus {
         z-index: 1; // Place hover/focus items above their siblings for proper border styling
-        color: var(--#{$prefix}list-group-action-hover-color);
+        color: var(--#{$prefix}theme-text-emphasis, var(--#{$prefix}list-group-action-hover-color));
         text-decoration: none;
-        background-color: var(--#{$prefix}list-group-action-hover-bg);
+        background-color: var(--#{$prefix}theme-bg-muted, var(--#{$prefix}list-group-action-hover-bg));
       }
 
       &:active {
-        color: var(--#{$prefix}list-group-action-active-color);
-        background-color: var(--#{$prefix}list-group-action-active-bg);
+        color: var(--#{$prefix}theme-text-emphasis, var(--#{$prefix}list-group-action-active-color));
+        background-color: var(--#{$prefix}theme-bg-muted, var(--#{$prefix}list-group-action-active-bg));
       }
     }
   }
@@ -205,27 +205,4 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
       }
     }
   }
-
-
-  // scss-docs-start list-group-modifiers
-  // List group contextual variants
-  //
-  // Add modifier classes to change text and background color on individual items.
-  // Organizationally, this must come after the `:hover` states.
-
-  @each $state in map.keys($new-theme-colors) {
-    .list-group-item-#{$state} {
-      --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text-emphasis);
-      --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);
-      --#{$prefix}list-group-border-color: var(--#{$prefix}#{$state}-border-subtle);
-      --#{$prefix}list-group-action-hover-color: var(--#{$prefix}emphasis-color);
-      --#{$prefix}list-group-action-hover-bg: var(--#{$prefix}#{$state}-border-subtle);
-      --#{$prefix}list-group-action-active-color: var(--#{$prefix}emphasis-color);
-      --#{$prefix}list-group-action-active-bg: var(--#{$prefix}#{$state}-border-subtle);
-      --#{$prefix}list-group-active-color: var(--#{$prefix}#{$state}-bg-subtle);
-      --#{$prefix}list-group-active-bg: var(--#{$prefix}#{$state}-text-emphasis);
-      --#{$prefix}list-group-active-border-color: var(--#{$prefix}#{$state}-text-emphasis);
-    }
-  }
-  // scss-docs-end list-group-modifiers
 }

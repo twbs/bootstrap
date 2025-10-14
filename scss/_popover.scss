@@ -7,7 +7,7 @@
 
 // scss-docs-start popover-variables
 $popover-font-size:                 $font-size-sm !default;
-$popover-bg:                        var(--#{$prefix}body-bg) !default;
+$popover-bg:                        var(--#{$prefix}bg-body) !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              var(--#{$prefix}border-width) !default;
 $popover-border-color:              var(--#{$prefix}border-color-translucent) !default;
@@ -21,7 +21,7 @@ $popover-header-color:              $headings-color !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          $spacer !default;
 
-$popover-body-color:                var(--#{$prefix}body-color) !default;
+$popover-body-color:                var(--#{$prefix}color-body) !default;
 $popover-body-padding-y:            $spacer !default;
 $popover-body-padding-x:            $spacer !default;
 

@@ -58,15 +58,15 @@ $check-disabled-opacity: .65 !default;
     :where(input) {
       appearance: none;
       // later: maybe set a tertiary bg color?
-      background-color: var(--#{$prefix}check-bg);
-      border: 1px solid var(--#{$prefix}check-border-color);
+      background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}check-bg));
+      border: 1px solid var(--#{$prefix}theme-bg, var(--#{$prefix}check-border-color));
       // stylelint-disable-next-line property-disallowed-list
       border-radius: .25em;
     }
 
     :where(input:checked, input:indeterminate) {
-      background-color: var(--#{$prefix}check-checked-bg);
-      border-color: var(--#{$prefix}check-checked-border-color);
+      background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}check-checked-bg));
+      border-color: var(--#{$prefix}theme-bg, var(--#{$prefix}check-checked-border-color));
     }
 
     &:has(input:checked) .checked,
