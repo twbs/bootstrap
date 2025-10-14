@@ -45,15 +45,15 @@ $radio-disabled-opacity: .65 !default;
     height: 1rem;
     margin-block: .125rem;
     appearance: none;
-    background-color: var(--#{$prefix}radio-bg);
-    border: 1px solid var(--#{$prefix}radio-border-color);
+    background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}radio-bg));
+    border: 1px solid var(--#{$prefix}theme-bg, var(--#{$prefix}radio-border-color));
     // stylelint-disable-next-line property-disallowed-list
     border-radius: 50%;
 
     &:checked {
-      color: var(--#{$prefix}primary-contrast);
-      background-color: var(--#{$prefix}radio-checked-bg);
-      border-color: var(--#{$prefix}radio-checked-border-color);
+      color: var(--#{$prefix}theme-contrast, var(--#{$prefix}primary-contrast));
+      background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}radio-checked-bg));
+      border-color: var(--#{$prefix}theme-bg, var(--#{$prefix}radio-checked-border-color));
 
       &::before {
         position: absolute;

@@ -5,9 +5,10 @@ export interface Props {
   size?: 'inline' | 'medium' | 'large'
   contrast?: string
   contrastDark?: string
+  showVar?: boolean
 }
 
-const { bg, fg, size = 'inline', contrast, contrastDark } = Astro.props
+const { bg, fg, size = 'inline', contrast, contrastDark, showVar = true } = Astro.props
 
 // Styles for different sizes
 const baseStyles = {
@@ -52,6 +53,9 @@ const contrastStyles = {
 }
 
 const combinedStyles = { ...baseStyles, ...sizeStyles[size] }
+
+// Use bg prop as the CSS variable name
+const displayCssVar = bg
 ---
 
 <style>
@@ -72,14 +76,45 @@ const combinedStyles = { ...baseStyles, ...sizeStyles[size] }
   :global([data-bs-theme="dark"]) .contrast-dark {
     display: inline;
   }
+
+  /* CSS variable display styles */
+  .css-var {
+    margin-left: 0.25rem;
+    color: var(--bs-color-3);
+  }
+
+  .css-var-light {
+    display: inline;
+  }
+
+  .css-var-dark {
+    display: none;
+  }
+
+  /* Show dark value in dark mode */
+  :global([data-bs-theme="dark"]) .css-var-light {
+    display: none;
+  }
+
+  :global([data-bs-theme="dark"]) .css-var-dark {
+    display: inline;
+  }
 </style>
 
 {size === 'inline' ? (
-  <span style={combinedStyles}>
-    <slot />
-    {contrast && <span style={contrastStyles} class="contrast-light">{contrast}</span>}
-    {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
-  </span>
+  <>
+    <span style={combinedStyles}>
+      <slot />
+      {contrast && <span style={contrastStyles} class="contrast-light">{contrast}</span>}
+      {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
+    </span>
+    {showVar && displayCssVar && (
+      <code class="css-var" data-css-var={`--bs-${displayCssVar}`}>
+        <span class="css-var-light">Loading...</span>
+        <span class="css-var-dark">Loading...</span>
+      </code>
+    )}
+  </>
 ) : size === 'large' ? (
   <span style={combinedStyles}>
     <slot />
@@ -93,3 +128,73 @@ const combinedStyles = { ...baseStyles, ...sizeStyles[size] }
     {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
   </div>
 )}
+
+<script>
+  // Handle dynamic CSS variable display with light-dark() function support
+  document.addEventListener('DOMContentLoaded', () => {
+    const cssVarElements = document.querySelectorAll('.css-var[data-css-var]')
+
+    cssVarElements.forEach(element => {
+      const cssVarName = element.getAttribute('data-css-var')
+
+      if (cssVarName) {
+        // Try to get the raw CSS variable definition from stylesheets
+        let rawValue = null
+        for (const stylesheet of document.styleSheets) {
+          try {
+            for (const rule of stylesheet.cssRules) {
+              if (rule.type === CSSRule.STYLE_RULE) {
+                const styleRule = rule as CSSStyleRule
+                for (const prop of styleRule.style) {
+                  if (prop === cssVarName) {
+                    rawValue = styleRule.style.getPropertyValue(cssVarName)
+                    break
+                  }
+                }
+              }
+            }
+          } catch (e) {
+            // Skip stylesheets we can't access (CORS)
+            continue
+          }
+        }
+
+        // If we couldn't get the raw value, fall back to computed value
+        if (!rawValue) {
+          rawValue = getComputedStyle(document.documentElement).getPropertyValue(cssVarName)
+        }
+
+        if (rawValue) {
+          // Check if the value contains light-dark function
+          if (rawValue.includes('light-dark(')) {
+            // Parse the light-dark function to extract light and dark values
+            const lightDarkMatch = rawValue.match(/light-dark\(([^,]+),\s*(.+)\)$/)
+            if (lightDarkMatch) {
+              const lightValue = lightDarkMatch[1].trim()
+              const darkValue = lightDarkMatch[2].trim()
+
+              // Update the spans with the parsed values
+              const lightSpan = element.querySelector('.css-var-light')
+              const darkSpan = element.querySelector('.css-var-dark')
+
+              if (lightSpan) lightSpan.textContent = lightValue
+              if (darkSpan) darkSpan.textContent = darkValue
+            } else {
+              // Fallback: show the full value
+              element.innerHTML = `<span class="css-var-light">${rawValue}</span>`
+            }
+          } else if (rawValue.includes('color-mix(')) {
+            // Handle color-mix functions - show the full function
+            element.innerHTML = `<span class="css-var-light">${rawValue}</span>`
+          } else {
+            // Single value - show it in both light and dark spans
+            element.innerHTML = `<span class="css-var-light">${rawValue}</span>`
+          }
+        } else {
+          // Fallback: show the variable name
+          element.innerHTML = `<span class="css-var-light">${cssVarName}</span>`
+        }
+      }
+    })
+  })
+</script>
