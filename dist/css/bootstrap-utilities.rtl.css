@@ -1840,6 +1840,14 @@
 .text-nowrap {
   white-space: nowrap !important;
 }
+.text-balance {
+  text-wrap: balance !important;
+}
+
+.text-pretty {
+  text-wrap: pretty !important;
+}
+
 .text-primary {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
@@ -5394,4 +5402,5 @@
     display: none !important;
   }
 }
+
 /*# sourceMappingURL=bootstrap-utilities.rtl.css.map */

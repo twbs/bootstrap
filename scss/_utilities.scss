@@ -571,6 +571,14 @@ $utilities: map-merge(
       values: (break: break-word),
       rtl: false
     ),
+    "text-wrap": (
+      property: text-wrap,
+      class: text,
+      values: (
+        balance: balance,
+        pretty: pretty,
+      )
+    ),
     // scss-docs-end utils-text
     // scss-docs-start utils-color
     "color": (

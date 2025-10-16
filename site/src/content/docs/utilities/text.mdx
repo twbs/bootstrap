@@ -36,6 +36,21 @@ Prevent text from wrapping with a `.text-nowrap` class.
     This text should overflow the parent.
   </div>`} />
 
+## Balanced and pretty wrapping
+
+Improve readability by suggesting better line breaks.
+
+- `.text-balance`: Uses `text-wrap: balance` to distribute words more evenly across lines—ideal for headings.
+- `.text-pretty`: Uses `text-wrap: pretty` to avoid orphaned words and improve rag balance in paragraphs.
+
+<Example code={`<p class="fs-3 text-balance" style="max-width: 26rem;">
+  A long headline designed to demonstrate balanced line wrapping behavior
+</p>`} />
+
+<Example code={`<p class="text-pretty" style="max-width: 26rem;">
+  This paragraph demonstrates pretty wrapping that reduces orphan words and creates a more polished rag edge across multiple lines of text.
+</p>`} />
+
 ## Word break
 
 Prevent long strings of text from breaking your components’ layout by using `.text-break` to set `word-wrap: break-word` and `word-break: break-word`. We use `word-wrap` instead of the more common `overflow-wrap` for wider browser support, and add the deprecated `word-break: break-word` to avoid issues with flex containers.
