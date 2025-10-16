@@ -24,3 +24,43 @@
   width: 3rem;
   height: 3rem;
 }
+
+/* Interactions */
+.icon-link .bi {
+  transition: transform .2s ease-in-out;
+}
+
+.icon-link:hover .bi,
+.icon-link:focus-visible .bi {
+  transform: translateX(.25rem);
+}
+
+.feature .feature-icon {
+  transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+.feature:hover .feature-icon,
+.feature:focus-within .feature-icon {
+  transform: scale(1.05);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.icon-link:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
+  border-radius: .25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-link .bi,
+  .feature .feature-icon {
+    transition: none;
+  }
+
+  .icon-link:hover .bi,
+  .icon-link:focus-visible .bi,
+  .feature:hover .feature-icon,
+  .feature:focus-within .feature-icon {
+    transform: none;
+  }
+}
