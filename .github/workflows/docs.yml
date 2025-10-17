@@ -48,3 +48,5 @@ jobs:
           recurse: true
           verbosity: error
           skip: "^http://localhost"
+
+          runs-on: self-hosted
