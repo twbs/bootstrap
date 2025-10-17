@@ -18,3 +18,25 @@
 - name: dark
   hex: '#343a40'
   contrast_color: white
+## Extended spectrum theme colors
+- name: violet
+  hex: '#8b5cf6'
+  contrast_color: white
+- name: fuchsia
+  hex: '#d946ef'
+  contrast_color: white
+- name: rose
+  hex: '#f43f5e'
+  contrast_color: white
+- name: amber
+  hex: '#f59e0b'
+  contrast_color: dark
+- name: lime
+  hex: '#84cc16'
+  contrast_color: dark
+- name: emerald
+  hex: '#10b981'
+  contrast_color: white
+- name: sky
+  hex: '#0ea5e9'
+  contrast_color: dark

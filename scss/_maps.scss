@@ -16,6 +16,14 @@ $theme-colors-text: (
   "danger": $danger-text-emphasis,
   "light": $light-text-emphasis,
   "dark": $dark-text-emphasis,
+  // Extended spectrum colors
+  "violet": shade-color($violet, 60%),
+  "fuchsia": shade-color($fuchsia, 60%),
+  "rose": shade-color($rose, 60%),
+  "amber": shade-color($amber, 60%),
+  "lime": shade-color($lime, 60%),
+  "emerald": shade-color($emerald, 60%),
+  "sky": shade-color($sky, 60%),
 ) !default;
 // scss-docs-end theme-text-map
 
@@ -29,6 +37,14 @@ $theme-colors-bg-subtle: (
   "danger": $danger-bg-subtle,
   "light": $light-bg-subtle,
   "dark": $dark-bg-subtle,
+  // Extended spectrum colors
+  "violet": tint-color($violet, 80%),
+  "fuchsia": tint-color($fuchsia, 80%),
+  "rose": tint-color($rose, 80%),
+  "amber": tint-color($amber, 80%),
+  "lime": tint-color($lime, 80%),
+  "emerald": tint-color($emerald, 80%),
+  "sky": tint-color($sky, 80%),
 ) !default;
 // scss-docs-end theme-bg-subtle-map
 
@@ -42,6 +58,14 @@ $theme-colors-border-subtle: (
   "danger": $danger-border-subtle,
   "light": $light-border-subtle,
   "dark": $dark-border-subtle,
+  // Extended spectrum colors
+  "violet": tint-color($violet, 60%),
+  "fuchsia": tint-color($fuchsia, 60%),
+  "rose": tint-color($rose, 60%),
+  "amber": tint-color($amber, 60%),
+  "lime": tint-color($lime, 60%),
+  "emerald": tint-color($emerald, 60%),
+  "sky": tint-color($sky, 60%),
 ) !default;
 // scss-docs-end theme-border-subtle-map
 
@@ -60,6 +84,14 @@ $theme-colors-border-subtle-dark: null !default;
     "danger": $danger-text-emphasis-dark,
     "light": $light-text-emphasis-dark,
     "dark": $dark-text-emphasis-dark,
+    // Extended spectrum colors
+    "violet": tint-color($violet, 40%),
+    "fuchsia": tint-color($fuchsia, 40%),
+    "rose": tint-color($rose, 40%),
+    "amber": tint-color($amber, 40%),
+    "lime": tint-color($lime, 40%),
+    "emerald": tint-color($emerald, 40%),
+    "sky": tint-color($sky, 40%),
   ) !default;
   // scss-docs-end theme-text-dark-map
 
@@ -73,6 +105,14 @@ $theme-colors-border-subtle-dark: null !default;
     "danger": $danger-bg-subtle-dark,
     "light": $light-bg-subtle-dark,
     "dark": $dark-bg-subtle-dark,
+    // Extended spectrum colors
+    "violet": shade-color($violet, 80%),
+    "fuchsia": shade-color($fuchsia, 80%),
+    "rose": shade-color($rose, 80%),
+    "amber": shade-color($amber, 80%),
+    "lime": shade-color($lime, 80%),
+    "emerald": shade-color($emerald, 80%),
+    "sky": shade-color($sky, 80%),
   ) !default;
   // scss-docs-end theme-bg-subtle-dark-map
 
@@ -86,6 +126,14 @@ $theme-colors-border-subtle-dark: null !default;
     "danger": $danger-border-subtle-dark,
     "light": $light-border-subtle-dark,
     "dark": $dark-border-subtle-dark,
+    // Extended spectrum colors
+    "violet": shade-color($violet, 40%),
+    "fuchsia": shade-color($fuchsia, 40%),
+    "rose": shade-color($rose, 40%),
+    "amber": shade-color($amber, 40%),
+    "lime": shade-color($lime, 40%),
+    "emerald": shade-color($emerald, 40%),
+    "sky": shade-color($sky, 40%),
   ) !default;
   // scss-docs-end theme-border-subtle-dark-map
 }
