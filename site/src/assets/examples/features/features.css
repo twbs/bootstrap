@@ -41,14 +41,14 @@
 
 .feature:hover .feature-icon,
 .feature:focus-within .feature-icon {
-  transform: scale(1.05);
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+  transform: scale(1.05);
 }
 
 .icon-link:focus-visible {
+  border-radius: .25rem;
   outline: 0;
   box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb), .25);
-  border-radius: .25rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
