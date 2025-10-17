@@ -198,7 +198,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    // TODO: v6 remove this or make it optional
+    // v6 plan: remove this reset or make it optional
     this._disposePopper()
 
     const tip = this._getTipElement()
@@ -303,13 +303,13 @@ class Tooltip extends BaseComponent {
   _createTipElement(content) {
     const tip = this._getTemplateFactory(content).toHtml()
 
-    // TODO: remove this check in v6
+    // v6 plan: remove this null check
     if (!tip) {
       return null
     }
 
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
-    // TODO: v6 the following can be achieved with CSS only
+    // v6 plan: achieve with CSS only
     tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
     const tipId = getUID(this.constructor.NAME).toString()

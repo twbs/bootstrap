@@ -39,7 +39,7 @@ const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
 const Default = {
-  offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
+  offset: null, // Deprecated; retained for backward compatibility until v6
   rootMargin: '0px 0px -25%',
   smoothScroll: false,
   target: null,
@@ -47,7 +47,7 @@ const Default = {
 }
 
 const DefaultType = {
-  offset: '(number|null)', // TODO v6 @deprecated, keep it for backwards compatibility reasons
+  offset: '(number|null)', // Deprecated; retained for backward compatibility until v6
   rootMargin: 'string',
   smoothScroll: 'boolean',
   target: 'element',
@@ -111,10 +111,10 @@ class ScrollSpy extends BaseComponent {
 
   // Private
   _configAfterMerge(config) {
-    // TODO: on v6 target should be given explicitly & remove the {target: 'ss-target'} case
+    // v6 plan: require explicit target; remove the {target: 'ss-target'} fallback
     config.target = getElement(config.target) || document.body
 
-    // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
+    // Backwards compatibility only; prefer rootMargin; planned removal in v6
     config.rootMargin = config.offset ? `${config.offset}px 0px -30%` : config.rootMargin
 
     if (typeof config.threshold === 'string') {

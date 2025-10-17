@@ -54,12 +54,14 @@ function getLocalExternalAddress() {
     if (!Array.isArray(addresses)) {
       continue
     }
+
     for (const addressInfo of addresses) {
       if (addressInfo && addressInfo.family === 'IPv4' && addressInfo.internal === false) {
         return addressInfo.address
       }
     }
   }
+
   return '127.0.0.1'
 }
 
