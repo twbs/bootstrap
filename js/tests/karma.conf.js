@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('node:path')
-const ip = require('ip')
+const os = require('node:os')
 const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
@@ -46,6 +46,21 @@ const detectBrowsers = {
 
     throw new Error('Please install Chrome, Chromium or Firefox')
   }
+}
+
+function getLocalExternalAddress() {
+  const networkInterfaces = os.networkInterfaces()
+  for (const addresses of Object.values(networkInterfaces)) {
+    if (!Array.isArray(addresses)) {
+      continue
+    }
+    for (const addressInfo of addresses) {
+      if (addressInfo && addressInfo.family === 'IPv4' && addressInfo.internal === false) {
+        return addressInfo.address
+      }
+    }
+  }
+  return '127.0.0.1'
 }
 
 const config = {
@@ -99,7 +114,7 @@ const config = {
 }
 
 if (BROWSERSTACK) {
-  config.hostname = ip.address()
+  config.hostname = getLocalExternalAddress()
   config.browserStack = {
     username: ENV.BROWSER_STACK_USERNAME,
     accessKey: ENV.BROWSER_STACK_ACCESS_KEY,
@@ -151,7 +166,7 @@ if (BROWSERSTACK) {
   }
 
   if (DEBUG) {
-    config.hostname = ip.address()
+    config.hostname = getLocalExternalAddress()
     plugins.push('karma-jasmine-html-reporter')
     reporters.push('kjhtml')
     config.singleRun = false
