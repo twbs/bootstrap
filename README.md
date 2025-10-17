@@ -19,6 +19,10 @@
   <a href="https://themes.getbootstrap.com/">Themes</a>
   ·
   <a href="https://blog.getbootstrap.com/">Blog</a>
+  ·
+  <a href="https://github.com/twbs/bootstrap/security/advisories">Advisories</a>
+  ·
+  <a href="https://github.com/twbs/bootstrap/security/advisories/new">Report a vulnerability</a>
 </p>
 
 

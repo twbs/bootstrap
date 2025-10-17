@@ -70,7 +70,7 @@ const SelectorEngine = {
 
     return []
   },
-  // TODO: this is now unused; remove later along with prev()
+  // This is now unused; remove later along with prev()
   next(element, selector) {
     let next = element.nextElementSibling
 

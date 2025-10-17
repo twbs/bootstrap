@@ -116,6 +116,7 @@
     "@babel/cli": "^7.28.3",
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
+    "@docsearch/css": "^4.2.0",
     "@docsearch/js": "^4.2.0",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.1.0",
