@@ -6,7 +6,6 @@
 @use "theme" as *;
 
 // add:
-// - placeItems
 // - double check css grid helpers
 //
 // update:
@@ -417,6 +416,30 @@ $utilities: map.merge(
         center: center,
         stretch: stretch,
       )
+    ),
+    "grid-column-counts": (
+      responsive: true,
+      property: --#{$prefix}columns,
+      class: grid-cols,
+      values: (
+        3,
+        4,
+        6
+      )
+    ),
+    "grid-columns": (
+      responsive: true,
+      property: grid-column,
+      class: grid-cols,
+      values: (
+        fill: #{"1 / -1"},
+      )
+    ),
+    "grid-auto-flow": (
+      responsive: true,
+      property: grid-auto-flow,
+      class: grid-auto-flow,
+      values: row column dense
     ),
     "order": (
       responsive: true,

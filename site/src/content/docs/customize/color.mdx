@@ -23,8 +23,8 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, weâ€
 <div class="grid gap-0" style={{gridTemplateColumns: 'repeat(13, 1fr)', gap: '4px', minWidth: '0'}}>
   {getData('colors').map((color) => {
      return (
-       <div class="d-contents grid-full">
-         <h5 class="d-block text-capitalize grid-full">{color.name.replace('-', ' ')}</h5>
+       <div class="d-contents grid-cols-fill">
+         <h5 class="d-block text-capitalize grid-cols-fill">{color.name.replace('-', ' ')}</h5>
 
          {["025", "050", ...getSequence(100, 900, 100), 950, 975].map((value) => {
            return (
@@ -38,8 +38,8 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, weâ€
      )
    })}
 
-   <div class="d-contents grid-full">
-    <h5 class="d-block text-capitalize grid-full">Additional</h5>
+   <div class="d-contents grid-cols-fill">
+    <h5 class="d-block text-capitalize grid-cols-fill">Additional</h5>
     {additionalColors.map((color) => {
       return (
         <div class="mb-3 font-monospace small">

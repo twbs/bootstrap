@@ -82,8 +82,8 @@ Every token is available as a CSS variable, and most are then consumed by our ut
 <div class="grid gap-0" style={{gridTemplateColumns: 'repeat(9, 1fr)', gap: '8px', minWidth: '0'}}>
   {getData('theme-colors').map((color) => {
     return (
-      <div class="d-contents grid-full">
-        <h6 class="d-block text-capitalize grid-full">{color.title}</h6>
+      <div class="d-contents grid-cols-fill">
+        <h6 class="d-block text-capitalize grid-cols-fill">{color.title}</h6>
         {themeTokens.map((token) => (
           <div class="mb-3 font-monospace">
             <Swatch bg={`${color.name}-${token}`} size="medium" />

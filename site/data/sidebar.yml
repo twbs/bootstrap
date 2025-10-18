@@ -145,6 +145,8 @@
         - title: Align items
         - title: Align self
         - title: Flex
+        - title: Gap
+        - title: Grid
         - title: Justify content
         - title: Justify items
         - title: Place items

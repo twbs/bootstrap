@@ -1,0 +1,218 @@
+---
+title: Gap
+description: Use gap utilities to control the space between elements in flexbox or grid layouts. Includes support for individual row and column gaps.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
+reference:
+  - class: gap-0
+    styles:
+      gap: '0'
+  - class: gap-1
+    styles:
+      gap: '0.25rem'
+  - class: gap-2
+    styles:
+      gap: '0.5rem'
+  - class: gap-3
+    styles:
+      gap: '1rem'
+  - class: gap-4
+    styles:
+      gap: '1.5rem'
+  - class: gap-5
+    styles:
+      gap: '3rem'
+  - class: row-gap-0
+    styles:
+      row-gap: '0'
+  - class: row-gap-1
+    styles:
+      row-gap: '0.25rem'
+  - class: row-gap-2
+    styles:
+      row-gap: '0.5rem'
+  - class: row-gap-3
+    styles:
+      row-gap: '1rem'
+  - class: row-gap-4
+    styles:
+      row-gap: '1.5rem'
+  - class: row-gap-5
+    styles:
+      row-gap: '3rem'
+  - class: column-gap-0
+    styles:
+      column-gap: '0'
+  - class: column-gap-1
+    styles:
+      column-gap: '0.25rem'
+  - class: column-gap-2
+    styles:
+      column-gap: '0.5rem'
+  - class: column-gap-3
+    styles:
+      column-gap: '1rem'
+  - class: column-gap-4
+    styles:
+      column-gap: '1.5rem'
+  - class: column-gap-5
+    styles:
+      column-gap: '3rem'
+---
+
+import { getData } from '@libs/data'
+
+## Overview
+
+Use gap utilities to control the space between children in flexbox and grid layouts. Gap utilities are built from a default Sass map ranging from `.25rem` to `3rem`.
+
+<Callout type="info">
+**Support note:** Gap utilities work with CSS Grid and Flexbox layouts. They are a modern alternative to margin utilities for spacing children within a container.
+</Callout>
+
+## Notation
+
+Gap utilities that apply to all breakpoints, from `xs` to `2xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format `{property}-{size}` for `xs` and `{property}-{breakpoint}-{size}` for `sm`, `md`, `lg`, `xl`, and `2xl`.
+
+Where *property* is one of:
+
+- `gap` - for classes that set `gap`
+- `row-gap` - for classes that set `row-gap`
+- `column-gap` - for classes that set `column-gap`
+
+Where *size* is one of:
+
+- `0` - for classes that eliminate the `gap` by setting it to `0`
+- `1` - (by default) for classes that set the `gap` to `$spacer * .25`
+- `2` - (by default) for classes that set the `gap` to `$spacer * .5`
+- `3` - (by default) for classes that set the `gap` to `$spacer`
+- `4` - (by default) for classes that set the `gap` to `$spacer * 1.5`
+- `5` - (by default) for classes that set the `gap` to `$spacer * 3`
+
+(You can add more sizes by adding entries to the `$spacers` Sass map variable.)
+
+## Examples
+
+Here are some representative examples of these classes:
+
+```scss
+.gap-0 {
+  gap: 0;
+}
+
+.gap-1 {
+  gap: ($spacer * .25);
+}
+
+.gap-2 {
+  gap: ($spacer * .5);
+}
+
+.gap-3 {
+  gap: $spacer;
+}
+
+.row-gap-3 {
+  row-gap: $spacer;
+}
+
+.column-gap-3 {
+  column-gap: $spacer;
+}
+```
+
+## Basic usage
+
+Use `gap` utilities to control the space between children in a flexbox or grid container.
+
+<Example code={`<div class="d-flex gap-3 mb-3">
+    <div class="p-2 bg-light border">Flex item 1</div>
+    <div class="p-2 bg-light border">Flex item 2</div>
+    <div class="p-2 bg-light border">Flex item 3</div>
+  </div>
+  <div class="d-grid gap-2" style="grid-template-columns: 1fr 1fr;">
+    <div class="p-2 bg-light border">Grid item 1</div>
+    <div class="p-2 bg-light border">Grid item 2</div>
+    <div class="p-2 bg-light border">Grid item 3</div>
+    <div class="p-2 bg-light border">Grid item 4</div>
+  </div>`} />
+
+## Row and column gaps
+
+Use `row-gap` and `column-gap` utilities to control the space between rows and columns independently in grid layouts.
+
+<Example code={`<div class="d-grid row-gap-4 column-gap-2 mb-3" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="p-2 bg-light border">Grid item 1</div>
+    <div class="p-2 bg-light border">Grid item 2</div>
+    <div class="p-2 bg-light border">Grid item 3</div>
+    <div class="p-2 bg-light border">Grid item 4</div>
+    <div class="p-2 bg-light border">Grid item 5</div>
+    <div class="p-2 bg-light border">Grid item 6</div>
+  </div>`} />
+
+You can also use `row-gap` utilities with flexbox layouts that wrap:
+
+<Example code={`<div class="d-flex flex-wrap row-gap-3 column-gap-2">
+    <div class="p-2 bg-light border">Flex item 1</div>
+    <div class="p-2 bg-light border">Flex item 2</div>
+    <div class="p-2 bg-light border">Flex item 3</div>
+    <div class="p-2 bg-light border">Flex item 4</div>
+    <div class="p-2 bg-light border">Flex item 5</div>
+  </div>`} />
+
+## Responsive
+
+All gap utilities are responsive and include all breakpoints.
+
+<ul>
+{getData('breakpoints').map((breakpoint) => {
+  return (
+    <li><code>.gap{breakpoint.abbr}-0</code> through <code>.gap{breakpoint.abbr}-5</code></li>
+  )
+})}
+</ul>
+
+<ul>
+{getData('breakpoints').map((breakpoint) => {
+  return (
+    <li><code>.row-gap{breakpoint.abbr}-0</code> through <code>.row-gap{breakpoint.abbr}-5</code></li>
+  )
+})}
+</ul>
+
+<ul>
+{getData('breakpoints').map((breakpoint) => {
+  return (
+    <li><code>.column-gap{breakpoint.abbr}-0</code> through <code>.column-gap{breakpoint.abbr}-5</code></li>
+  )
+})}
+</ul>
+
+## CSS
+
+### Sass utilities API
+
+Gap utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+"gap": (
+  responsive: true,
+  property: gap,
+  class: gap,
+  values: $spacers
+),
+"row-gap": (
+  responsive: true,
+  property: row-gap,
+  class: row-gap,
+  values: $spacers
+),
+"column-gap": (
+  responsive: true,
+  property: column-gap,
+  class: column-gap,
+  values: $spacers
+),
+```
