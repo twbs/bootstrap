@@ -15,9 +15,33 @@
 //   - attr-includes: [class*="class"]
 // - Utilities can generate a regular CSS property or a CSS custom property
 // - Utilities can be responsive or not
-// - Utilities can have a state (e.g., :hover, :focus, :active, etc.)
+// - Utilities can have state variants (e.g., hover, focus, active)
 
-@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
+// Helper mixin to generate CSS properties for both legacy and property map approaches
+@mixin generate-properties($utility, $propertyMap, $properties, $value) {
+  @if $propertyMap != null {
+    // New Property-Value Mapping approach
+    @each $property, $defaultValue in $propertyMap {
+      $actualValue: if(meta.type-of($value) == "map" and map.has-key($value, $property), map.get($value, $property), $defaultValue);
+      @if map.get($utility, important) {
+        #{$property}: $actualValue !important; // stylelint-disable-line declaration-no-important
+      } @else {
+        #{$property}: $actualValue;
+      }
+    }
+  } @else {
+    // Legacy approach
+    @each $property in $properties {
+      @if map.get($utility, important) {
+        #{$property}: $value !important; // stylelint-disable-line declaration-no-important
+      } @else {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+@mixin generate-utility($utility, $infix: "") {
   // Determine if we're generating a class, or an attribute selector
   $selectorType: if(map.has-key($utility, selector), map.get($utility, selector), "class");
   // Then get the class name to use in a class (e.g., .class) or in a attribute selector (e.g., [class^="class"])
@@ -43,21 +67,31 @@
 
   @each $key, $value in $values {
     $properties: map.get($utility, property);
+    $propertyMap: null;
+    $customClass: "";
 
-    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
-    @if meta.type-of($properties) == "string" {
-      $properties: list.append((), $properties);
+    // Check if property is a map (new Property-Value Mapping approach)
+    // @debug "Properties type: #{meta.type-of($properties)}";
+    // @debug "Properties: #{$properties}";
+    @if meta.type-of($properties) == "map" {
+      $propertyMap: $properties;
+      // For property maps, we need to determine the class from the utility definition
+      $customClass: if(map.has-key($utility, class), map.get($utility, class), "");
+    } @else {
+      // Legacy approach: Multiple properties are possible, for example with vertical or horizontal margins or paddings
+      @if meta.type-of($properties) == "string" {
+        $properties: list.append((), $properties);
+      }
+      // Use custom class if present, otherwise use the first value from the list of properties
+      $customClass: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
+      $customClass: if($customClass == null, "", $customClass);
     }
-
-    // Use custom class if present, otherwise use the first value from the list of properties
-    $customClass: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
-    $customClass: if($customClass == null, "", $customClass);
 
     // Use custom CSS variable name if present, otherwise default to `class`
     // mdo-do: restore?
     // $css-variable-name: if(map.has-key($utility, css-variable-name), map.get($utility, css-variable-name), map.get($utility, class));
 
-    // State params to generate pseudo-classes
+    // State params to generate state variants
     $state: if(map.has-key($utility, state), map.get($utility, state), ());
 
     // $infix: if($customClass == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
@@ -86,77 +120,16 @@
     // @debug $values;
 
     #{$selector} {
-      @if map.get($utility, rfs) {
-        @if map.get($utility, important) {
-          @warn "The `important` option is not compatible with `rfs`. The `important` declaration will be ignored.";
-        }
-        @if $is-rfs-media-query {
-          @each $property in $properties {
-            @include rfs($value, $property);
-          }
-        }
-        @else {
-          @each $property in $properties {
-            @include rfs($value, $property);
-          }
-        }
-      } @else {
-        @each $property in $properties {
-          @if map.get($utility, important) {
-            #{$property}: $value !important; // stylelint-disable-line declaration-no-important
-          } @else {
-            #{$property}: $value;
-          }
+      @include generate-properties($utility, $propertyMap, $properties, $value);
+    }
+
+    // Generate state variants
+    @if $state != () {
+      @each $state-variant in $state {
+        #{$selector}-#{$state-variant}:#{$state-variant} {
+          @include generate-properties($utility, $propertyMap, $properties, $value);
         }
       }
     }
-
-    // @if $value != null {
-    //   #{$selector} {
-    //     @each $property in $properties {
-    //       #{$property}: $value;
-    //     }
-    //   }
-
-    //   @if $is-css-var {
-    //     #{$selector} {
-    //       --#{$prefix}#{$css-variable-name}: #{$value};
-    //     }
-
-    //     @each $pseudo in $state {
-    //       #{$selector}-#{$pseudo}:#{$pseudo} {
-    //         --#{$prefix}#{$css-variable-name}: #{$value};
-    //       }
-    //     }
-    //   } @else {
-    //     #{$selector} {
-    //       @each $property in $properties {
-    //         // @if $is-local-vars {
-    //         //   @each $local-var, $variable in $is-local-vars {
-    //         //     --#{$prefix}#{$local-var}: #{$variable};
-    //         //   }
-    //         // }
-    //         #{$property}: $value;
-    //       }
-    //     }
-
-    //   //   @each $pseudo in $state {
-    //   //     #{$selector}-#{$pseudo}:#{$pseudo} {
-    //   //       @each $property in $properties {
-    //   //         @if $is-local-vars {
-    //   //           @each $local-var, $variable in $is-local-vars {
-    //   //             --#{$prefix}#{$local-var}: #{$variable};
-    //   //           }
-    //   //         }
-    //   //         #{$property}: $value;
-    //   //       }
-    //   //     }
-    //   //   }
-    //   }
-    // }
-
-    $is-css-var: map.get($utility, css-var);
-    $is-local-vars: map.get($utility, local-vars);
-    // $is-rtl: map.get($utility, rtl);
   }
 }
