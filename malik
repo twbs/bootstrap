@@ -1,0 +1,189 @@
+import React from "react";
+
+// Starter single-file React component (TailwindCSS classes used)
+// Usage: paste into src/App.jsx of a Vite or Create React App project with Tailwind configured
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-900 antialiased">
+      {/* NAV */}
+      <header className="bg-white shadow-sm sticky top-0 z-30">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-bold">M</div>
+            <div>
+              <h1 className="font-semibold">MySite</h1>
+              <p className="text-xs text-gray-500 -mt-1">Design & Dev</p>
+            </div>
+          </div>
+
+          <nav className="hidden md:flex gap-6 items-center text-sm">
+            <a href="#home" className="hover:text-indigo-600">Home</a>
+            <a href="#about" className="hover:text-indigo-600">About</a>
+            <a href="#services" className="hover:text-indigo-600">Services</a>
+            <a href="#portfolio" className="hover:text-indigo-600">Portfolio</a>
+            <a href="#contact" className="px-4 py-2 rounded-md bg-indigo-600 text-white hover:brightness-90">Contact</a>
+          </nav>
+
+          <div className="md:hidden">
+            <MobileMenu />
+          </div>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <main>
+        <section id="home" className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">Beautiful websites that convert visitors into customers.</h2>
+            <p className="mt-6 text-gray-600 max-w-xl">I build fast, accessible, and modern websites for small businesses, freelancers, and creators. Clean design, thoughtful UX, and reliable code.</p>
+
+            <div className="mt-8 flex gap-4">
+              <a href="#contact" className="inline-flex items-center gap-2 px-5 py-3 bg-indigo-600 text-white rounded-md shadow">Get started</a>
+              <a href="#portfolio" className="inline-flex items-center gap-2 px-5 py-3 border rounded-md">See portfolio</a>
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-4 text-sm text-gray-500">
+              <Stat label="Projects" value="34+" />
+              <Stat label="Clients" value="20+" />
+              <Stat label="Years" value="6" />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-lg ring-1 ring-gray-100">
+              <img alt="mockup" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=000000" className="w-full h-64 object-cover" />
+              <div className="p-4 bg-white">
+                <h3 className="font-semibold">Recent project — Landing page</h3>
+                <p className="text-sm text-gray-500 mt-2">A marketing landing page built with accessibility and conversion in mind.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ABOUT */}
+        <section id="about" className="bg-white py-16">
+          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold">About me</h3>
+              <p className="mt-4 text-gray-600">I'm a web designer & developer focused on building simple, fast, and delightful web experiences. I enjoy turning ideas into products and working closely with clients to solve real problems.</p>
+
+              <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700">
+                <li>Design systems</li>
+                <li>Responsive layouts</li>
+                <li>Performance optimizations</li>
+                <li>Accessibility (a11y)</li>
+              </ul>
+            </div>
+
+            <div>
+              <blockquote className="p-6 rounded-xl bg-gray-50 border">
+                <p className="text-gray-700">"They delivered an outstanding website that elevated our brand and increased conversions."</p>
+                <footer className="mt-4 text-sm text-gray-500">— Happy Client</footer>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICES */}
+        <section id="services" className="max-w-6xl mx-auto px-6 py-16">
+          <h3 className="text-2xl font-bold">Services</h3>
+          <p className="text-gray-600 mt-2">Custom packages tailored to your needs.</p>
+
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <ServiceCard title="Website Design" desc="UI/UX design, prototypes, and design systems." />
+            <ServiceCard title="Development" desc="React, Next.js, performant builds, CMS integration." />
+            <ServiceCard title="E-commerce" desc="Shopify, WooCommerce, custom storefronts." />
+            <ServiceCard title="Performance" desc="Page speed, image optimization, caching." />
+            <ServiceCard title="SEO" desc="On-page SEO, structured data, and analytics." />
+            <ServiceCard title="Support" desc="Ongoing maintenance and feature development." />
+          </div>
+        </section>
+
+        {/* PORTFOLIO */}
+        <section id="portfolio" className="bg-white py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <h3 className="text-2xl font-bold">Portfolio</h3>
+            <p className="text-gray-600 mt-2">Selected projects — click to view (links / case studies can be added).</p>
+
+            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="rounded-xl overflow-hidden shadow-sm bg-gray-50">
+                  <img src={`https://picsum.photos/seed/project-${i}/800/500`} alt={`project-${i}`} className="w-full h-40 object-cover" />
+                  <div className="p-4">
+                    <h4 className="font-semibold">Project {i + 1}</h4>
+                    <p className="text-sm text-gray-500 mt-1">Short project summary and the impact it had.</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="contact" className="max-w-4xl mx-auto px-6 py-16">
+          <h3 className="text-2xl font-bold">Contact</h3>
+          <p className="text-gray-600 mt-2">Tell me about your project — I usually reply within 1–2 business days.</p>
+
+          <form className="mt-6 grid grid-cols-1 gap-4">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <input type="text" placeholder="Your name" className="p-3 rounded-md border" />
+              <input type="email" placeholder="Email address" className="p-3 rounded-md border" />
+            </div>
+            <input type="text" placeholder="Subject" className="p-3 rounded-md border" />
+            <textarea placeholder="Message" rows={6} className="p-3 rounded-md border"></textarea>
+
+            <div className="flex items-center gap-4">
+              <button type="submit" className="px-5 py-3 bg-indigo-600 text-white rounded-md">Send message</button>
+              <p className="text-sm text-gray-500">Or email me at <span className="font-medium">hello@mysite.com</span></p>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="bg-gray-100 py-8 mt-12">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-gray-600">© {new Date().getFullYear()} MySite. All rights reserved.</p>
+          <div className="flex gap-4 text-sm text-gray-600">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// ---- Small helper components ----
+function Stat({ label, value }) {
+  return (
+    <div className="flex flex-col">
+      <span className="text-lg font-bold">{value}</span>
+      <span className="text-xs">{label}</span>
+    </div>
+  );
+}
+
+function ServiceCard({ title, desc }) {
+  return (
+    <div className="p-6 rounded-xl border bg-white">
+      <h4 className="font-semibold">{title}</h4>
+      <p className="text-sm text-gray-500 mt-2">{desc}</p>
+      <div className="mt-4">
+        <a className="text-indigo-600 text-sm">Learn more →</a>
+      </div>
+    </div>
+  );
+}
+
+function MobileMenu() {
+  // Simple accessible mobile button — replace with real menu logic if needed
+  return (
+    <button aria-label="Open menu" className="p-2 rounded-md border">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 110-2zm0 4h14a1 1 0 010 2H3a1 1 0 110-2zm0 4h14a1 1 0 010 2H3a1 1 0 110-2z" clipRule="evenodd" />
+      </svg>
+    </button>
+  );
+}
