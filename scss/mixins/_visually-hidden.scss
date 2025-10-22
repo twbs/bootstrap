@@ -7,12 +7,14 @@
 
 @mixin visually-hidden() {
   display: inline-block !important; // using this rather than position:absolute to allow for width/height/clip to work without causing undue spacing (e.g. in responsive tables)
+  flex: none !important;
   width: 1px !important;
   height: 1px !important;
   padding: 0 !important;
   margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
   overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  contain: strict !important;
   white-space: nowrap !important;
   border: 0 !important;
 
