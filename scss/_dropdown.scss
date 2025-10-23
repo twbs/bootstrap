@@ -232,7 +232,8 @@
 }
 
 // Dark dropdowns
-.dropdown-menu-dark {
+.dropdown-menu-dark,
+[data-bs-theme="dark"] .dropdown-menu {
   // scss-docs-start dropdown-dark-css-vars
   --#{$prefix}dropdown-color: #{$dropdown-dark-color};
   --#{$prefix}dropdown-bg: #{$dropdown-dark-bg};
