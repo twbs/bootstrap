@@ -206,5 +206,8 @@
     "peerDependencies": {
       "@popperjs/core": "^2.11.8"
     }
+  },
+  "overrides": {
+    "volar-service-emmet": "0.0.63"
   }
 }
