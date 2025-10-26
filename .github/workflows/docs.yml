@@ -25,7 +25,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
         with:
           node-version: "${{ env.NODE }}"
           cache: npm
@@ -42,7 +42,7 @@ jobs:
         run: npm run docs-vnu
 
       - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@3d5ba091319fa7b0ac14703761eebb7d100e6f6d # v1.11.0
+        uses: JustinBeckwith/linkinator-action@cf305c16947ba91077d8a51fa2cbe155cd60f455 # v2.1
         with:
           paths: _site
           recurse: true
