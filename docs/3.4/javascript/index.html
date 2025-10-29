@@ -15,17 +15,11 @@
 
   <link href="/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-
   <!-- Optional Bootstrap Theme -->
 
     <link href="data:text/css;charset=utf-8," data-href="/docs/3.4/dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
 
-
-
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
-
 
 <!-- Documentation extras -->
 
@@ -66,7 +60,6 @@
       Bootstrap 3 has reached end of life. <a href="https://getbootstrap.com/migration/">Upgrade to the latest</a> or consider <a href="https://www.herodevs.com/support/nes-bootstrap?utm_source=Bootstrap_site&utm_medium=Banner&utm_campaign=v3_eol" rel="noopener" target="_blank">Never-Ending Support</a> for your project
     </div>
 
-
     <header class="navbar navbar-static-top bs-docs-nav" id="top">
   <div class="container">
     <div class="navbar-header">
@@ -104,20 +97,19 @@
           <ul class="dropdown-menu">
             <li><a href="https://getbootstrap.com/">Latest (4.x)</a></li>
             <li><a href="https://v4-alpha.getbootstrap.com/">v4 Alpha 6</a></li>
-            <li class="divider"></li>
+            
             <li class="active"><a href="https://getbootstrap.com/docs/3.4/">v3.4.1</a></li>
             <li><a href="https://getbootstrap.com/docs/3.3/">v3.3.7</a></li>
             <li><a href="https://getbootstrap.com/2.3.2/">v2.3.2</a></li>
           </ul>
         </li>
-        <li><a href="https://themes.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes')">Themes</a></li>
+        
         <li><a href="https://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
         <li><a href="https://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
       </ul>
     </nav>
   </div>
 </header>
-
 
     <div class="bs-docs-header" id="content" tabindex="-1">
       <div class="container">
@@ -896,7 +888,6 @@
     </ul> <!-- /pills -->
   </div> <!-- /example -->
 
-
   <h2 id="dropdowns-usage">Usage</h2>
   <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.open</code> class on the parent list item.</p>
   <p>On mobile devices, opening a dropdown adds a <code>.dropdown-backdrop</code> as a tap area for closing dropdown menus when tapping outside the menu, a requirement for proper iOS support. <strong class="text-danger">This means that switching from an open dropdown menu to a different dropdown menu requires an extra tap on mobile.</strong></p>
@@ -1026,7 +1017,6 @@
     </div>
   </div><!-- /example -->
 
-
   <h2 id="scrollspy-usage">Usage</h2>
 
   <div class="bs-callout bs-callout-warning" id="callout-scrollspy-needs-nav">
@@ -1064,14 +1054,12 @@
   <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">({</span> <span class="na">target</span><span class="p">:</span> <span class="s1">'#navbar-example'</span> <span class="p">})</span></code></pre></figure>
 
-
   <h3 id="scrollspy-methods">Methods</h3>
   <h4><code>.scrollspy('refresh')</code></h4>
   <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'[data-spy="scroll"]'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">$spy</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">(</span><span class="s1">'refresh'</span><span class="p">)</span>
 <span class="p">})</span></code></pre></figure>
-
 
   <h3 id="scrollspy-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
@@ -1155,7 +1143,6 @@
     <h4>Extends tabbed navigation</h4>
     <p>This plugin extends the <a href="/docs/3.4/components/#nav-tabs">tabbed navigation component</a> to add tabbable areas.</p>
   </div>
-
 
   <h2 id="tabs-usage">Usage</h2>
   <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
@@ -1672,7 +1659,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   </div>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-danger"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-trigger=</span><span class="s">"focus"</span> <span class="na">title=</span><span class="s">"Dismissible popover"</span> <span class="na">data-content=</span><span class="s">"And here's some amazing content. It's very engaging. Right?"</span><span class="nt">&gt;</span>Dismissible popover<span class="nt">&lt;/a&gt;</span></code></pre></figure>
 
-
   <h2 id="popovers-usage">Usage</h2>
   <p>Enable popovers via JavaScript:</p>
   <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></figure>
@@ -1892,7 +1878,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     </div>
   </div><!-- /example -->
 
-
   <h2 id="alerts-usage">Usage</h2>
 
   <p>Just add <code>data-dismiss="alert"</code> to your close button to automatically give an alert close functionality. Closing an alert removes it from the DOM.</p>
@@ -1910,7 +1895,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <h4><code>$().alert('close')</code></h4>
   <p>Closes an alert by removing it from the DOM. If the <code>.fade</code> and <code>.in</code> classes are present on the element, the alert will fade out before it is removed.</p>
-
 
   <h3 id="alerts-events">Events</h3>
   <p>Bootstrap's alert plugin exposes a few events for hooking into alert functionality.</p>
@@ -2545,7 +2529,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h4><code>.carousel('pause')</code></h4>
   <p>Stops the carousel from cycling through items.</p>
 
-
   <h4><code>.carousel(number)</code></h4>
   <p>Cycles the carousel to a particular frame (0 based, similar to an array).</p>
 
@@ -2627,7 +2610,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">})</span></code></pre></figure>
-
 
   <h3 id="affix-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.</p>
@@ -2711,7 +2693,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     </table>
   </div><!-- /.table-responsive -->
 </div>
-
 
         </div>
 
@@ -2849,7 +2830,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   </ul>
 </li>
 
-
             </ul>
             <a class="back-to-top" href="#top">
               Back to top
@@ -2890,19 +2870,11 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/3.4/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
-
   <script src="/docs/3.4/dist/js/bootstrap.min.js"></script>
-
-
 
 <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 
-
-
   <script src="/docs/3.4/assets/js/docs.min.js"></script>
-
-
-
 
   </body>
 </html>

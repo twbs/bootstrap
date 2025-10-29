@@ -15,17 +15,11 @@
 
   <link href="/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-
   <!-- Optional Bootstrap Theme -->
 
     <link href="data:text/css;charset=utf-8," data-href="/docs/3.4/dist/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
 
-
-
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
-
 
 <!-- Documentation extras -->
 
@@ -66,7 +60,6 @@
       Bootstrap 3 has reached end of life. <a href="https://getbootstrap.com/migration/">Upgrade to the latest</a> or consider <a href="https://www.herodevs.com/support/nes-bootstrap?utm_source=Bootstrap_site&utm_medium=Banner&utm_campaign=v3_eol" rel="noopener" target="_blank">Never-Ending Support</a> for your project
     </div>
 
-
     <header class="navbar navbar-static-top bs-docs-nav" id="top">
   <div class="container">
     <div class="navbar-header">
@@ -104,20 +97,19 @@
           <ul class="dropdown-menu">
             <li><a href="https://getbootstrap.com/">Latest (4.x)</a></li>
             <li><a href="https://v4-alpha.getbootstrap.com/">v4 Alpha 6</a></li>
-            <li class="divider"></li>
+            
             <li class="active"><a href="https://getbootstrap.com/docs/3.4/">v3.4.1</a></li>
             <li><a href="https://getbootstrap.com/docs/3.3/">v3.3.7</a></li>
             <li><a href="https://getbootstrap.com/2.3.2/">v2.3.2</a></li>
           </ul>
         </li>
-        <li><a href="https://themes.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes')">Themes</a></li>
+        
         <li><a href="https://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
         <li><a href="https://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
       </ul>
     </nav>
   </div>
 </header>
-
 
     <div class="bs-docs-header" id="content" tabindex="-1">
       <div class="container">
@@ -1458,7 +1450,6 @@
     </ul>
   </div>
 
-
   <h2 id="glyphicons-how-to-use">How to use</h2>
   <p>For performance reasons, all icons require a base class and individual icon class. To use, place the following code just about anywhere. Be sure to leave a space between the icon and text for proper padding.</p>
   <div class="bs-callout bs-callout-danger" id="callout-glyphicons-dont-mix">
@@ -1486,7 +1477,6 @@
     <p>If you're creating controls with no other text (such as a <code>&lt;button&gt;</code> that only contains an icon), you should always provide alternative content to identify the purpose of the control, so that it will make sense to users of assistive technologies. In this case, you could add an <code>aria-label</code> attribute on the control itself.</p>
   </div>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-search"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></figure>
-
 
   <h2 id="glyphicons-examples">Examples</h2>
   <p>Use them in buttons, button groups for a toolbar, navigation, or prepended form inputs.</p>
@@ -2624,7 +2614,6 @@
   <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">"presentation"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
 
-
   <h2 id="nav-pills">Pills</h2>
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
   <div class="bs-example" data-example-id="simple-nav-pills">
@@ -2650,7 +2639,6 @@
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills nav-stacked"</span><span class="nt">&gt;</span>
   ...
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
-
 
   <h2 id="nav-justified">Justified</h2>
   <p>Easily make tabs or pills equal widths of their parent at screens wider than 768px with <code>.nav-justified</code>. On smaller screens, the nav links are stacked.</p>
@@ -2679,7 +2667,6 @@
   ...
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
 
-
   <h2 id="nav-disabled-links">Disabled links</h2>
   <p>For any nav component (tabs or pills), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
 
@@ -2700,7 +2687,6 @@
   <span class="nt">&lt;li</span> <span class="na">role=</span><span class="s">"presentation"</span> <span class="na">class=</span><span class="s">"disabled"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Disabled link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
   ...
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
-
 
   <h2 id="nav-dropdowns">Using dropdowns</h2>
   <p>Add dropdown menus with a little extra HTML and the <a href="/docs/3.4/javascript/#dropdowns">dropdowns JavaScript plugin</a>.</p>
@@ -2909,7 +2895,6 @@
   <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.container-fluid --&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
-
   <h2 id="navbar-brand-image">Brand image</h2>
   <p>Replace the navbar brand with your own image by swapping the text for an <code>&lt;img&gt;</code>. Since the <code>.navbar-brand</code> has its own padding and height, you may need to override some CSS depending on your image.</p>
   <div class="bs-example" data-example-id="navbar-with-image-brand">
@@ -2932,7 +2917,6 @@
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
-
 
   <h2 id="navbar-forms">Forms</h2>
   <p>Place form content within <code>.navbar-form</code> for proper vertical alignment and collapsed behavior in narrow viewports. Use the alignment options to decide where it resides within the navbar content.</p>
@@ -2976,7 +2960,6 @@
     <h4>Always add labels</h4>
     <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the <code>.sr-only</code> class. There are further alternative methods of providing a label for assistive technologies, such as the <code>aria-label</code>, <code>aria-labelledby</code> or <code>title</code> attribute. If none of these is present, screen readers may resort to using the <code>placeholder</code> attribute, if present, but note that use of <code>placeholder</code> as a replacement for other labelling methods is not advised.</p>
   </div>
-
 
   <h2 id="navbar-buttons">Buttons</h2>
   <p>Add the <code>.navbar-btn</code> class to <code>&lt;button&gt;</code> elements not residing in a <code>&lt;form&gt;</code> to vertically center them in the navbar.</p>
@@ -3027,7 +3010,6 @@
   </div>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"navbar-text"</span><span class="nt">&gt;</span>Signed in as Mark Otto<span class="nt">&lt;/p&gt;</span></code></pre></figure>
 
-
   <h2 id="navbar-links">Non-nav links</h2>
   <p>For folks using standard links that are not within the regular navbar navigation component, use the <code>.navbar-link</code> class to add the proper colors for the default and inverse navbar options.</p>
   <div class="bs-example" data-example-id="navbar-link">
@@ -3050,7 +3032,6 @@
   </div>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"navbar-text navbar-right"</span><span class="nt">&gt;</span>Signed in as <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-link"</span><span class="nt">&gt;</span>Mark Otto<span class="nt">&lt;/a&gt;&lt;/p&gt;</span></code></pre></figure>
 
-
   <h2 id="navbar-component-alignment">Component alignment</h2>
   <p>Align nav links, forms, buttons, or text, using the <code>.navbar-left</code> or <code>.navbar-right</code> utility classes. Both classes will add a CSS float in the specified direction. For example, to align nav links, put them in a separate <code>&lt;ul&gt;</code> with the respective utility class applied.</p>
   <p>These classes are mixin-ed versions of <code>.pull-left</code> and <code>.pull-right</code>, but they're scoped to media queries for easier handling of navbar components across device sizes.</p>
@@ -3059,7 +3040,6 @@
     <p>Navbars currently have a limitation with multiple <code>.navbar-right</code> classes. To properly space content, we use negative margin on the last <code>.navbar-right</code> element. When there are multiple elements using that class, these margins don't work as intended.</p>
     <p>We'll revisit this when we can rewrite that component in v4.</p>
   </div>
-
 
   <h2 id="navbar-fixed-top">Fixed to top</h2>
   <p>Add <code>.navbar-fixed-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
@@ -3100,7 +3080,6 @@
     <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
   </div>
 
-
   <h2 id="navbar-fixed-bottom">Fixed to bottom</h2>
   <p>Add <code>.navbar-fixed-bottom</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
   <div class="bs-example bs-navbar-bottom-example" data-example-id="navbar-fixed-to-bottom">
@@ -3140,7 +3119,6 @@
     <p>Make sure to include this <strong>after</strong> the core Bootstrap CSS.</p>
   </div>
 
-
   <h2 id="navbar-static-top">Static top</h2>
   <p>Create a full-width navbar that scrolls away with the page by adding <code>.navbar-static-top</code> and include a <code>.container</code> or <code>.container-fluid</code> to center and pad navbar content.</p>
   <p>Unlike the <code>.navbar-fixed-*</code> classes, you do not need to change any padding on the <code>body</code>.</p>
@@ -3174,7 +3152,6 @@
     ...
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
-
 
   <h2 id="navbar-inverted">Inverted navbar</h2>
   <p>Modify the look of the navbar by adding <code>.navbar-inverse</code>.</p>
@@ -3324,7 +3301,6 @@
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
-
   <h3>Sizing</h3>
   <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
   <div class="bs-example" data-example-id="pagination-sizing">
@@ -3366,7 +3342,6 @@
 <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;&lt;ul</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/ul&gt;&lt;/nav&gt;</span>
 <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;&lt;ul</span> <span class="na">class=</span><span class="s">"pagination pagination-sm"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/ul&gt;&lt;/nav&gt;</span></code></pre></figure>
 
-
   <h2 id="pagination-pager">Pager</h2>
   <p>Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.</p>
 
@@ -3403,7 +3378,6 @@
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"next"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Newer <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;rarr;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
-
 
   <h3>Optional disabled state</h3>
   <p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
@@ -3782,7 +3756,6 @@
     2%
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
-
 
   <h2 id="progress-alternatives">Contextual alternatives</h2>
   <p>Progress bars use some of the same button and alert classes for consistent styles.</p>
@@ -4520,7 +4493,6 @@
   <span class="nt">&lt;/table&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-
   <h2 id="panels-list-group">With list groups</h2>
   <p>Easily include full-width <a href="#list-group">list groups</a> within any panel.</p>
   <div class="bs-example" data-example-id="panel-with-list-group">
@@ -4608,7 +4580,6 @@
   </div>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"well well-sm"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></figure>
 </div>
-
 
         </div>
 
@@ -4767,7 +4738,6 @@
 <li><a href="#responsive-embed">Responsive embed</a></li>
 <li><a href="#wells">Wells</a></li>
 
-
             </ul>
             <a class="back-to-top" href="#top">
               Back to top
@@ -4808,19 +4778,11 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/docs/3.4/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
-
   <script src="/docs/3.4/dist/js/bootstrap.min.js"></script>
-
-
 
 <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 
-
-
   <script src="/docs/3.4/assets/js/docs.min.js"></script>
-
-
-
 
   </body>
 </html>
