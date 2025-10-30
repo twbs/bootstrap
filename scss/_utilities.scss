@@ -745,7 +745,7 @@ $utilities: map.merge(
       property: color,
       values: theme-opacity-values(--#{$prefix}fg)
     ),
-    "contrast-color": (
+    "fg-contrast": (
       property: (
         "--#{$prefix}fg": null,
         "color": var(--#{$prefix}fg)

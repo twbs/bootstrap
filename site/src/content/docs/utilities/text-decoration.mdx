@@ -23,7 +23,7 @@ Decorate text in components with text decoration classes.
 
 ## Underline
 
-### offset
+### Offset
 
 Change the underline's distance from your text. Offset is set in `em` units to automatically scale with the element's current `font-size`.
 
@@ -32,13 +32,13 @@ Change the underline's distance from your text. Offset is set in `em` units to a
 <p><a class="underline-offset-2" href="#">Offset 2 link</a></p>
 <p><a class="underline-offset-3" href="#">Offset 3 link</a></p>`} />
 
-### color
+### Color
 
 Change the underline's color independent of the text color.
 
 <Example code={getData('theme-colors').map((themeColor) => `<p><a href="#" class="underline-${themeColor.name}">${themeColor.title} underline</a></p>`)} />
 
-### opacity
+### Opacity
 
 Change the underline's opacity. Requires adding `.underline-{color}` to first set an `rgba()` color we use to then modify the alpha opacity.
 
