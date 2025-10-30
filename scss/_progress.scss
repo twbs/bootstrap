@@ -49,6 +49,7 @@
 
 .progress-stacked > .progress {
   overflow: visible;
+  @include transition(var(--#{$prefix}progress-bar-transition));
 }
 
 .progress-stacked > .progress > .progress-bar {
