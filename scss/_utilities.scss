@@ -785,7 +785,7 @@ $utilities: map.merge(
     ),
     "underline-thickness": (
       property: text-decoration-thickness,
-      class: underline,
+      class: underline-thickness,
       state: hover,
       values: (
         1: 1px,
