@@ -102,7 +102,11 @@ class Offcanvas extends BaseComponent {
     }
 
     this._isShown = true
-    this._backdrop.show()
+    this._element.classList.add("offcanvas-end") // Adding the class 'offcanvas-end' here
+
+    const showOffcanvas = ()=>{
+            this._backdrop.show()
+    
 
     if (!this._config.scroll) {
       new ScrollBarHelper().hide()
@@ -123,8 +127,12 @@ class Offcanvas extends BaseComponent {
     }
 
     this._queueCallback(completeCallBack, this._element, true)
+  
   }
 
+  // calling a setTimeout to introduce a small delay triggering Offcanvas
+   setTimeout(showOffcanvas,50) // Adjust the delay as needed
+}
   hide() {
     if (!this._isShown) {
       return
