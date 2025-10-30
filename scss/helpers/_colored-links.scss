@@ -3,20 +3,20 @@
 @use "../theme" as *;
 @use "../variables" as *;
 
-// All-caps `RGBA()` function used because of this Sass bug: https://github.com/sass/node-sass/issues/2251
 @layer helpers {
   @each $color, $value in $new-theme-colors {
     .link-#{$color} {
-      color: var(--#{$prefix}#{$color}-text);
-      // color: color-mix(in srgb, var(--#{$prefix}#{$color}), transparent var(--#{$prefix}link-opacity));
-      text-decoration-color: color-mix(in srgb, var(--#{$prefix}#{$color}-text), transparent var(--#{$prefix}link-underline-opacity));
+      --#{$prefix}link-color: var(--#{$prefix}#{$color}-text);
+      // text-decoration-color: color-mix(in srgb, var(--#{$prefix}#{$color}-text), transparent var(--#{$prefix}link-underline-opacity));
 
       @if $link-shade-percentage != 0 {
         &:hover,
         &:focus {
+          --#{$prefix}link-color: var(--#{$prefix}#{$color}-text-emphasis);
+          --#{$prefix}link-hover-color: var(--#{$prefix}#{$color}-text-emphasis);
           // $hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
           // color: color-mix(in srgb, $hover-color, transparent var(--#{$prefix}link-opacity));
-          text-decoration-color: color-mix(in srgb, var(--#{$prefix}#{$color}-text), transparent var(--#{$prefix}link-underline-opacity));
+          // text-decoration-color: color-mix(in srgb, var(--#{$prefix}#{$color}-text), transparent var(--#{$prefix}link-underline-opacity));
         }
       }
     }

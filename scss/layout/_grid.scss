@@ -55,23 +55,22 @@
     gap: var(--#{$prefix}gap);
   }
 
-  // mdo-do: add to utilities?
-  .g-col-auto {
-    grid-column: auto/auto;
-  }
+  // .g-col-auto {
+  //   grid-column: auto;
+  // }
 
   // mdo-do: add to utilities?
-  .grid-cols-3 {
-    --#{$prefix}columns: 3;
-  }
-  .grid-cols-4 {
-    --#{$prefix}columns: 4;
-  }
-  .grid-cols-6 {
-    --#{$prefix}columns: 6;
-  }
+  // .grid-cols-3 {
+  //   --#{$prefix}columns: 3;
+  // }
+  // .grid-cols-4 {
+  //   --#{$prefix}columns: 4;
+  // }
+  // .grid-cols-6 {
+  //   --#{$prefix}columns: 6;
+  // }
 
-  .grid-full {
-    grid-column: 1 / -1;
-  }
+  // .grid-full {
+  //   grid-column: 1 / -1;
+  // }
 }

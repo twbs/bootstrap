@@ -1,0 +1,31 @@
+// Background patterns for documentation examples
+
+// Diagonal stripe pattern
+// 1px stroke, 5px gap, 45deg angle
+.bd-pattern-diagonal {
+  --bd-fill: color-mix(in oklch, var(--bs-fg-body) 10%, transparent);
+  --bd-border: color-mix(in oklch, var(--bs-fg-body) 8%, transparent);
+  background-image: repeating-linear-gradient(-45deg, var(--bd-fill) 0 1px, transparent 0 50%);
+  background-clip: padding-box;
+  background-size: 8px 8px;
+  border: 1px solid var(--bd-border);
+}
+
+.bd-pattern-diagonal-inner {
+  --bd-fill: color-mix(in oklch, var(--bs-bg-body) 35%, transparent);
+  background-image: repeating-linear-gradient(45deg, var(--bd-fill) 0 1px, transparent 0 50%);
+  background-size: 8px 8px;
+}
+
+// Staggered dot grid pattern
+// 1x1px dots, 4-5px spacing between
+// Even rows shifted half a space for brick-like effect
+.bd-pattern-dots {
+  --bd-size: 5px;
+  --bd-dot: .5px;
+  --bd-fill: color-mix(in oklch, var(--bs-fg-3) 20%, transparent);
+  background-image: radial-gradient(circle, var(--bd-fill) var(--bd-dot), transparent var(--bd-dot)), radial-gradient(circle, var(--bd-fill) var(--bd-dot), transparent var(--bd-dot));
+  background-position: 0 0, calc(var(--bd-size) / 2) calc(var(--bd-size) / 2);
+  background-size: var(--bd-size) var(--bd-size);
+  border: 1px solid var(--bd-fill);
+}

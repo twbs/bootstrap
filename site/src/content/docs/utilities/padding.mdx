@@ -1,54 +1,40 @@
 ---
 title: Padding
-description: Use padding utilities to control the inner space of elements with responsive padding classes.
+description: Use padding utilities to responsively control the inner spacing of elements.
 toc: true
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/padding
-reference:
-  - class: p-0
-    styles:
-      padding: '0'
-  - class: p-1
-    styles:
-      padding: '0.25rem'
-  - class: p-2
-    styles:
-      padding: '0.5rem'
-  - class: p-3
-    styles:
-      padding: '1rem'
-  - class: p-4
-    styles:
-      padding: '1.5rem'
-  - class: p-5
-    styles:
-      padding: '3rem'
-  - class: pt-0
-    styles:
-      padding-top: '0'
-  - class: pe-0
-    styles:
-      padding-right: '0'
-  - class: pb-0
-    styles:
-      padding-bottom: '0'
-  - class: ps-0
-    styles:
-      padding-left: '0'
-  - class: px-0
-    styles:
-      padding-right: '0'
-      padding-left: '0'
-  - class: py-0
-    styles:
-      padding-top: '0'
-      padding-bottom: '0'
+utility:
+  - padding
+  - padding-x
+  - padding-y
+  - padding-top
+  - padding-end
+  - padding-bottom
+  - padding-start
 ---
 
 import { getData } from '@libs/data'
 
 ## Overview
 
-Use padding utilities to control the inner space within elements. Padding utilities are built from a default Sass map ranging from `.25rem` to `3rem`.
+Use padding utilities to control the inner space within elements. Padding utilities are built from a default Sass map ranging from `.25rem` to `3rem`. Use utilities like `.p-3` and `.p-5` to control the padding on all sides of an element:
+
+<Example class="d-flex align-items-center justify-content-center gap-4 text-center" showMarkup={false} code={`
+  <div class="p-3 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .p-3
+    </div>
+  </div>
+  <div class="p-5 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .p-5
+    </div>
+  </div>`} />
+
+```html
+<div class="p-3">.p-3</div>
+<div class="p-5">.p-5</div>
+```
 
 ## Notation
 
@@ -83,38 +69,80 @@ Where *size* is one of:
 
 ## Examples
 
-Here are some representative examples of these classes:
+### Single side
 
-```scss
-.pt-0 {
-  padding-top: 0;
-}
+Use utilities like `.pt-4`, `.pe-4`, `.pb-4`, and `.ps-4` to control the padding on one side of an element:
 
-.ps-1 {
-  padding-left: ($spacer * .25);
-}
+<Example showMarkup={false} class="d-flex align-items-center justify-content-center gap-4 text-center" code={`
+  <div class="pt-4 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .pt-4
+    </div>
+  </div>
+  <div class="pe-4 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .pe-4
+    </div>
+  </div>
+  <div class="pb-4 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .pb-4
+    </div>
+  </div>
+  <div class="ps-4 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .ps-4
+    </div>
+  </div>`} />
 
-.px-2 {
-  padding-left: ($spacer * .5);
-  padding-right: ($spacer * .5);
-}
-
-.p-3 {
-  padding: $spacer;
-}
+```html
+<div class="pt-4">.pt-4</div>
+<div class="pe-4">.pe-4</div>
+<div class="pb-4">.pb-4</div>
+<div class="ps-4">.ps-4</div>
 ```
 
-## Basic usage
+### Horizontal padding
 
-<Example code={`<div class="p-3 mb-2 bg-light">
-    Regular padding on all sides
+Use utilities like `.px-3` and `.px-5` to control the horizontal padding of an element:
+
+<Example showMarkup={false} class="d-flex flex-column align-items-center justify-content-center gap-4 text-center" code={`
+  <div class="px-3 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .px-3
+    </div>
   </div>
-  <div class="py-2 px-4 mb-2 bg-light">
-    Horizontal and vertical padding
-  </div>
-  <div class="pt-4 mb-2 bg-light">
-    Top padding only
+  <div class="px-5 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .px-5
+    </div>
   </div>`} />
+
+```html
+<div class="px-3">.px-3</div>
+<div class="px-5">.px-5</div>
+```
+
+### Vertical padding
+
+Use utilities like `.py-3` and `.py-5` to control the vertical padding of an element:
+
+<Example showMarkup={false} class="d-flex align-items-center justify-content-center gap-4 text-center" code={`
+  <div class="py-3 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .py-3
+    </div>
+  </div>
+  <div class="py-5 bg-primary bd-pattern-diagonal-inner fg-contrast-accent rounded-3">
+    <div class="p-3 bg-primary rounded-3">
+      .py-5
+    </div>
+  </div>`} />
+
+```html
+<div class="py-3">.py-3</div>
+<div class="py-5">.py-5</div>
+```
 
 ## Responsive
 

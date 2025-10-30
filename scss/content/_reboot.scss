@@ -262,8 +262,10 @@
     text-underline-offset: $link-underline-offset;
 
     &:hover {
+      // --#{$prefix}link-color: var(--#{$prefix}link-hover-color);
+      // --#{$prefix}link-decoration: var(--#{$prefix}link-hover-decoration, var(--#{$prefix}link-decoration));
       color: var(--#{$prefix}link-hover-color);
-      text-decoration: var(--#{$prefix}link-hover-decoration);
+      text-decoration: var(--#{$prefix}link-hover-decoration, var(--#{$prefix}link-decoration));
     }
   }
 

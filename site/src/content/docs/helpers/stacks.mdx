@@ -6,10 +6,6 @@ toc: true
 
 Stacks offer a shortcut for applying a number of flexbox properties to quickly and easily create layouts in Bootstrap. All credit for the concept and implementation goes to the open source [Pylon project](https://almonk.github.io/pylon/).
 
-<Callout type="warning">
-**Heads up!** Support for gap utilities with flexbox isn’t available in Safari prior to 14.5, so consider verifying your intended browser support. Grid layout should have no issues. [Read more](https://caniuse.com/flexbox-gap).
-</Callout>
-
 ## Vertical
 
 Use `.vstack` to create vertical layouts. Stacked items are full-width by default. Use `.gap-*` utilities to add space between items.
@@ -52,17 +48,17 @@ And with [vertical rules]([[docsref:/helpers/vertical-rule]]):
 Use `.vstack` to stack buttons and other elements:
 
 <Example code={`<div class="vstack gap-2 col-md-5 mx-auto">
-    <button type="button" class="btn btn-secondary">Save changes</button>
-    <button type="button" class="btn btn-outline-secondary">Cancel</button>
+    <button type="button" class="btn-solid theme-primary">Save changes</button>
+    <button type="button" class="btn-outline theme-secondary">Cancel</button>
   </div>`} />
 
 Create an inline form with `.hstack`:
 
 <Example code={`<div class="hstack gap-3">
     <input class="form-control me-auto" type="text" placeholder="Add your item here..." aria-label="Add your item here...">
-    <button type="button" class="btn btn-secondary">Submit</button>
-    <div class="vr"></div>
-    <button type="button" class="btn btn-outline-danger">Reset</button>
+    <button type="button" class="btn-solid theme-secondary">Submit</button>
+    <div class="vr my-2"></div>
+    <button type="button" class="btn-subtle theme-danger">Reset</button>
   </div>`} />
 
 ## CSS

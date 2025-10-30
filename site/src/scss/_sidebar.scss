@@ -28,9 +28,13 @@
   .bd-links-heading {
     color: var(--bs-emphasis-color);
   }
+  .bd-links-heading .bi {
+    width: 16px;
+    height: 16px;
+  }
 
   .bd-links-subgroup {
-    margin-left: 1.625rem;
+    margin-left: 1.5rem;
     color: var(--bs-emphasis-color);
   }
 
@@ -56,16 +60,15 @@
   .bd-links-link {
     padding: .1875rem .5rem;
     margin-top: .125rem;
-    margin-left: 1.125rem;
+    margin-left: 1rem;
     font-size: .875rem;
     color: var(--bs-body-color);
-    text-decoration: if($link-decoration == none, null, none);
+    text-decoration: none;
 
     &:hover,
     &:focus,
     &.active {
       color: var(--bs-emphasis-color);
-      text-decoration: if($link-hover-decoration == underline, none, null);
       background-color: var(--bd-sidebar-link-bg);
     }
 

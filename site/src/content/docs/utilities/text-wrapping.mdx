@@ -3,32 +3,30 @@ title: Text wrapping
 description: Utilities for controlling text wrapping, overflow, and word breaking behavior.
 toc: true
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/white-space
-reference:
-  - class: text-wrap
-    styles:
-      white-space: 'normal'
-  - class: text-nowrap
-    styles:
-      white-space: 'nowrap'
-  - class: text-break
-    styles:
-      word-wrap: 'break-word'
-      word-break: 'break-word'
+utility:
+  - text-wrap
+  - word-wrap
 ---
 
-## Text wrapping and overflow
+## Wrapping
 
-Wrap text with a `.text-wrap` class.
+Control how text wraps inside an element with `text-wrap` utilities. This is a newer CSS property that replaces the older `white-space` property and adds new functionality.
 
-<Example code={`<div class="badge text-bg-primary text-wrap" style="width: 6rem;">
-    This text should wrap.
-  </div>`} />
-
-Prevent text from wrapping with a `.text-nowrap` class.
-
-<Example code={`<div class="text-nowrap bg-body-secondary border" style="width: 8rem;">
-    This text should overflow the parent.
-  </div>`} />
+<Example class="d-flex flex-column gap-3" code={`<div class="w-12 p-3 bg-subtle-accent text-wrap">
+    This text should wrap across multiple lines within the parent element.
+  </div>
+  <div class="w-12 p-3 bg-subtle-accent text-nowrap">
+    This text should not wrap across multiple lines within the parent element.
+  </div>
+  <div class="w-12 p-3 bg-subtle-accent text-balance">
+    This text should wrap in a balanced wayacross multiple lines within the parent element.
+  </div>
+  <div class="w-12 p-3 bg-subtle-accent text-pretty">
+    This text should wrap in a pretty way across multiple lines within the parent element.
+  </div>`} customMarkup={`<div class="text-wrap">…</div>
+  <div class="text-nowrap">…</div>
+  <div class="text-balance">…</div>
+  <div class="text-pretty">…</div>`} />
 
 ## Word break
 

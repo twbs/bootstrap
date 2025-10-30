@@ -35,6 +35,14 @@ const docsSchema = z.object({
     })
     .array()
     .optional(),
+  utility: z.union([z.string(), z.string().array()]).optional(),
+  classes: z
+    .object({
+      class: z.string(),
+      description: z.string()
+    })
+    .array()
+    .optional(),
   sections: z
     .object({
       description: z.string(),
@@ -57,7 +65,16 @@ const calloutsCollection = defineCollection({
   schema: calloutsSchema
 })
 
+const detailsSchema = z.object({
+  title: z.string().optional()
+})
+
+const detailsCollection = defineCollection({
+  schema: detailsSchema
+})
+
 export const collections = {
   docs: docsCollection,
-  callouts: calloutsCollection
+  callouts: calloutsCollection,
+  details: detailsCollection
 }

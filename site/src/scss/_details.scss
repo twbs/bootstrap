@@ -1,0 +1,57 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/colors" as *;
+@use "../../../scss/mixins/border-radius" as *;
+@use "../../../scss/mixins/transition" as *;
+
+@layer custom {
+  .bd-details {
+    margin-block: 1.25rem;
+    color: var(--bs-fg-3);
+    background-color: var(--bs-bg-1);
+    @include border-radius(var(--bs-border-radius-lg));
+
+    &:hover,
+    &[open] {
+      color: var(--bs-fg-body);
+      background-color: var(--bs-bg-2);
+    }
+
+    .bd-details-summary {
+      display: flex;
+      gap: .25rem;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::marker {
+        display: none;
+      }
+    }
+
+    .bd-details-icon {
+      flex-shrink: 0;
+      @include transition(transform .2s ease-in-out);
+    }
+
+    &[open] .bd-details-icon {
+      transform: rotate(90deg);
+    }
+
+    .bd-details-content {
+      padding: 0 1.25rem 1.25rem;
+
+      a { font-weight: 500; }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

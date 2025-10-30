@@ -42,6 +42,21 @@ $spacers: (
 ) !default;
 // scss-docs-end spacer-variables-maps
 
+$sizes: (
+  1: $spacer,
+  2: calc($spacer * 2),
+  3: calc($spacer * 3),
+  4: calc($spacer * 4),
+  5: calc($spacer * 5),
+  6: calc($spacer * 6),
+  7: calc($spacer * 7),
+  8: calc($spacer * 8),
+  9: calc($spacer * 9),
+  10: calc($spacer * 10),
+  11: calc($spacer * 11),
+  12: calc($spacer * 12),
+) !default;
+
 // Grid breakpoints
 //
 // Define the minimum dimensions at which your layout will change,

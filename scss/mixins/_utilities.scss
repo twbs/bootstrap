@@ -9,15 +9,81 @@
 
 // Utility generator
 
-// - Utilities can three different types of selectors:
+// - Utilities can use three different types of selectors:
 //   - class: .class
 //   - attr-starts: [class^="class"]
 //   - attr-includes: [class*="class"]
-// - Utilities can generate a regular CSS property or a CSS custom property
+// - Utilities can generate regular CSS properties and CSS custom properties
 // - Utilities can be responsive or not
-// - Utilities can have a state (e.g., :hover, :focus, :active, etc.)
+// - Utilities can have state variants (e.g., hover, focus, active)
+// - Utilities can define local CSS variables
+//
+// CSS custom properties can be generated in two ways:
+//
+// 1. Property map with null values (CSS var receives the utility value):
+// "bg-color": (
+//   property: (
+//     "--#{$prefix}bg": null,
+//     "background-color": var(--#{$prefix}bg)
+//   ),
+//   class: bg,
+//   values: (
+//     primary: var(--#{$prefix}blue-500),
+//   )
+// )
+// Generates:
+// .bg-primary {
+//   --bs-bg: var(--bs-blue-500);
+//   background-color: var(--bs-bg);
+// }
+//
+// 2. Variables map (static CSS custom properties on every class):
+// "link-underline": (
+//   property: text-decoration-color,
+//   class: link-underline,
+//   variables: (
+//     "link-underline-opacity": 1
+//   ),
+//   values: (...)
+// )
+// Generates:
+// .link-underline {
+//   --bs-link-underline-opacity: 1;
+//   text-decoration-color: ...;
+// }
 
-@mixin generate-utility($utility, $infix: "", $is-rfs-media-query: false) {
+// Helper mixin to generate CSS properties for both legacy and property map approaches
+@mixin generate-properties($utility, $propertyMap, $properties, $value) {
+  @if $propertyMap != null {
+    // New Property-Value Mapping approach
+    @each $property, $defaultValue in $propertyMap {
+      // If value is a map, check if it has a key for this property
+      // Otherwise, use defaultValue (or $value if defaultValue is null)
+      $actualValue: $defaultValue;
+      @if meta.type-of($value) == "map" and map.has-key($value, $property) {
+        $actualValue: map.get($value, $property);
+      } @else if $defaultValue == null {
+        $actualValue: $value;
+      }
+      @if map.get($utility, important) {
+        #{$property}: $actualValue !important; // stylelint-disable-line declaration-no-important
+      } @else {
+        #{$property}: $actualValue;
+      }
+    }
+  } @else {
+    // Legacy approach
+    @each $property in $properties {
+      @if map.get($utility, important) {
+        #{$property}: $value !important; // stylelint-disable-line declaration-no-important
+      } @else {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+@mixin generate-utility($utility, $infix: "") {
   // Determine if we're generating a class, or an attribute selector
   $selectorType: if(map.has-key($utility, selector), map.get($utility, selector), "class");
   // Then get the class name to use in a class (e.g., .class) or in a attribute selector (e.g., [class^="class"])
@@ -43,21 +109,31 @@
 
   @each $key, $value in $values {
     $properties: map.get($utility, property);
+    $propertyMap: null;
+    $customClass: "";
 
-    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
-    @if meta.type-of($properties) == "string" {
-      $properties: list.append((), $properties);
+    // Check if property is a map (new Property-Value Mapping approach)
+    // @debug "Properties type: #{meta.type-of($properties)}";
+    // @debug "Properties: #{$properties}";
+    @if meta.type-of($properties) == "map" {
+      $propertyMap: $properties;
+      // For property maps, we need to determine the class from the utility definition
+      $customClass: if(map.has-key($utility, class), map.get($utility, class), "");
+    } @else {
+      // Legacy approach: Multiple properties are possible, for example with vertical or horizontal margins or paddings
+      @if meta.type-of($properties) == "string" {
+        $properties: list.append((), $properties);
+      }
+      // Use custom class if present, otherwise use the first value from the list of properties
+      $customClass: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
+      $customClass: if($customClass == null, "", $customClass);
     }
-
-    // Use custom class if present, otherwise use the first value from the list of properties
-    $customClass: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
-    $customClass: if($customClass == null, "", $customClass);
 
     // Use custom CSS variable name if present, otherwise default to `class`
     // mdo-do: restore?
     // $css-variable-name: if(map.has-key($utility, css-variable-name), map.get($utility, css-variable-name), map.get($utility, class));
 
-    // State params to generate pseudo-classes
+    // State params to generate state variants
     $state: if(map.has-key($utility, state), map.get($utility, state), ());
 
     // $infix: if($customClass == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
@@ -86,77 +162,47 @@
     // @debug $values;
 
     #{$selector} {
-      @if map.get($utility, rfs) {
-        @if map.get($utility, important) {
-          @warn "The `important` option is not compatible with `rfs`. The `important` declaration will be ignored.";
-        }
-        @if $is-rfs-media-query {
-          @each $property in $properties {
-            @include rfs($value, $property);
+      // Generate CSS custom properties (variables) if provided
+      // Variables receive the current utility value, then properties reference them
+      @if map.has-key($utility, variables) {
+        $variables: map.get($utility, variables);
+        @if meta.type-of($variables) == "list" {
+          // If variables is a list, each variable gets the utility value
+          @each $var-name in $variables {
+            --#{$prefix}#{$var-name}: #{$value};
           }
-        }
-        @else {
-          @each $property in $properties {
-            @include rfs($value, $property);
-          }
-        }
-      } @else {
-        @each $property in $properties {
-          @if map.get($utility, important) {
-            #{$property}: $value !important; // stylelint-disable-line declaration-no-important
-          } @else {
-            #{$property}: $value;
+        } @else if meta.type-of($variables) == "map" {
+          // If variables is a map, use the provided values (for static variables)
+          @each $var-key, $var-value in $variables {
+            --#{$prefix}#{$var-key}: #{$var-value};
           }
         }
       }
+      @include generate-properties($utility, $propertyMap, $properties, $value);
     }
 
-    // @if $value != null {
-    //   #{$selector} {
-    //     @each $property in $properties {
-    //       #{$property}: $value;
-    //     }
-    //   }
-
-    //   @if $is-css-var {
-    //     #{$selector} {
-    //       --#{$prefix}#{$css-variable-name}: #{$value};
-    //     }
-
-    //     @each $pseudo in $state {
-    //       #{$selector}-#{$pseudo}:#{$pseudo} {
-    //         --#{$prefix}#{$css-variable-name}: #{$value};
-    //       }
-    //     }
-    //   } @else {
-    //     #{$selector} {
-    //       @each $property in $properties {
-    //         // @if $is-local-vars {
-    //         //   @each $local-var, $variable in $is-local-vars {
-    //         //     --#{$prefix}#{$local-var}: #{$variable};
-    //         //   }
-    //         // }
-    //         #{$property}: $value;
-    //       }
-    //     }
-
-    //   //   @each $pseudo in $state {
-    //   //     #{$selector}-#{$pseudo}:#{$pseudo} {
-    //   //       @each $property in $properties {
-    //   //         @if $is-local-vars {
-    //   //           @each $local-var, $variable in $is-local-vars {
-    //   //             --#{$prefix}#{$local-var}: #{$variable};
-    //   //           }
-    //   //         }
-    //   //         #{$property}: $value;
-    //   //       }
-    //   //     }
-    //   //   }
-    //   }
-    // }
-
-    $is-css-var: map.get($utility, css-var);
-    $is-local-vars: map.get($utility, local-vars);
-    // $is-rtl: map.get($utility, rtl);
+    // Generate state variants
+    @if $state != () {
+      @each $state-variant in $state {
+        #{$selector}-#{$state-variant}:#{$state-variant} {
+          // Generate CSS custom properties (variables) if provided
+          @if map.has-key($utility, variables) {
+            $variables: map.get($utility, variables);
+            @if meta.type-of($variables) == "list" {
+              // If variables is a list, each variable gets the utility value
+              @each $var-name in $variables {
+                --#{$prefix}#{$var-name}: #{$value};
+              }
+            } @else if meta.type-of($variables) == "map" {
+              // If variables is a map, use the provided values (for static variables)
+              @each $var-key, $var-value in $variables {
+                --#{$prefix}#{$var-key}: #{$var-value};
+              }
+            }
+          }
+          @include generate-properties($utility, $propertyMap, $properties, $value);
+        }
+      }
+    }
   }
 }

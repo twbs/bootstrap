@@ -12,6 +12,7 @@ export declare global {
   export const CalloutDeprecatedDarkVariants: typeof import('@shortcodes/CalloutDeprecatedDarkVariants.astro').default
   export const Code: typeof import('@shortcodes/Code.astro').default
   export const DeprecatedIn: typeof import('@shortcodes/DeprecatedIn.astro').default
+  export const Details: typeof import('@shortcodes/Details.astro').default
   export const Example: typeof import('@shortcodes/Example.astro').default
   export const JsDismiss: typeof import('@shortcodes/JsDismiss.astro').default
   export const JsDocs: typeof import('@shortcodes/JsDocs.astro').default

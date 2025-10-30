@@ -1,64 +1,70 @@
 ---
 title: Colors
-description: Convey meaning through `color` with a handful of color utility classes. Includes support for styling links with hover states, too.
+description: Convey meaning through `color` with a handful of color utility classes, including built-in color mode adaptivity and support for translucency.
 toc: true
+utility:
+  - fg
+  - fg-emphasis
+  - fg-opacity
+  - fg-contrast
 ---
 
 import { getData } from '@libs/data'
 
-<Callout name="warning-color-assistive-technologies" />
+<Details name="warning-color-assistive-technologies" />
 
 ## Colors
 
-Colorize text with color utilities. If you want to colorize links, you can use the [`.link-*` helper classes]([[docsref:/helpers/colored-links]]) which have `:hover` and `:focus` states.
+Change the `color` using utilities built on our theme colors using `.fg-{color}` and `.fg-emphasis-{color}`. All these color utilities set the `color` property to a local CSS variable, `--bs-fg`, which has the value of the theme color. Color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
 
-<Callout>
-Color utilities like `.text-*` that generated from our original `$theme-colors` Sass map don’t yet respond to color modes, however, any `.text-*-emphasis` utility will. This will be resolved in v6.
-</Callout>
+For example, `.fg-primary` sets the `--bs-fg` variable to `light-dark(var(--bs-blue-600), var(--bs-blue-400))`:
+
+```css
+.fg-primary {
+  --bs-fg: light-dark(var(--bs-blue-600), var(--bs-blue-400));
+  color: var(--bs-fg);
+}
+```
+
+This approach allows us to also easily support translucency with our `.fg-{opacity}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
+
+If you want to colorize links, you can use the [`.link-*` helper classes]([[docsref:/helpers/colored-links]]) which have `:hover` and `:focus` states.
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<p class="text-${themeColor.name}">.text-${themeColor.name}</p>
-<p class="text-${themeColor.name}-emphasis">.text-${themeColor.name}-emphasis</p>`),
+  ...getData('theme-colors').map((themeColor) => `<p class="fg-${themeColor.name}">.fg-${themeColor.name}</p>
+<p class="fg-emphasis-${themeColor.name}">.fg-emphasis-${themeColor.name}</p>`),
   `
-<p class="text-body">.text-body</p>
-<p class="text-body-emphasis">.text-body-emphasis</p>
-<p class="text-body-secondary">.text-body-secondary</p>
-<p class="text-body-tertiary">.text-body-tertiary</p>
+<p class="fg-body">.fg-body</p>
+<p class="fg-1">.fg-1</p>
+<p class="fg-2">.fg-2</p>
+<p class="fg-3">.fg-3</p>
 
-<p class="text-black bg-white">.text-black</p>
-<p class="text-white bg-dark">.text-white</p>`
+<p class="fg-black bg-white">.fg-black</p>
+<p class="fg-white bg-dark">.fg-white</p>`
 ]} />
 
 ## Opacity
 
-As of v5.1.0, text color utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
+Change the opacity of a text color by using any of the `.fg-<percentage>` utilities which use `color-mix()` to mix the text color with `transparent` thanks to the CSS variable approach mentioned above.
 
-### How it works
+<Example class="d-flex flex-column gap-2" code={`<div class="fg-primary">This is default primary text</div>
+<div class="fg-primary fg-90">This is 90% opacity primary text</div>
+<div class="fg-primary fg-80">This is 80% opacity primary text</div>
+<div class="fg-primary fg-70">This is 70% opacity primary text</div>
+<div class="fg-primary fg-60">This is 60% opacity primary text</div>
+<div class="fg-primary fg-50">This is 50% opacity primary text</div>
+<div class="fg-primary fg-40">This is 40% opacity primary text</div>
+<div class="fg-primary fg-30">This is 30% opacity primary text</div>
+<div class="fg-primary fg-20">This is 20% opacity primary text</div>
+<div class="fg-primary fg-10">This is 10% opacity primary text</div>`} />
 
-Consider our default `.text-primary` utility.
+## Reset color
 
-```css
-.text-primary {
-  --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity));
-}
-```
+Reset a text or link's color with `.text-reset`, so that it inherits the color from its parent.
 
-We use an RGB version of our `--bs-primary` (with the value of `13, 110, 253`) CSS variable and attached a second CSS variable, `--bs-text-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.text-primary` now, your computed `color` value is `rgba(13, 110, 253, 1)`. The local CSS variable inside each `.text-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
-
-### Example
-
-To change that opacity, override `--bs-text-opacity` via custom styles or inline styles.
-
-<Example code={`<div class="text-primary">This is default primary text</div>
-<div class="text-primary" style="--bs-text-opacity: .5;">This is 50% opacity primary text</div>`} />
-
-Or, choose from any of the `.text-opacity` utilities:
-
-<Example code={`<div class="text-primary">This is default primary text</div>
-<div class="text-primary text-opacity-75">This is 75% opacity primary text</div>
-<div class="text-primary text-opacity-50">This is 50% opacity primary text</div>
-<div class="text-primary text-opacity-25">This is 25% opacity primary text</div>`} />
+<Example code={`<p class="fg-3">
+    Lighter body text with a <a href="#" class="text-reset">reset link</a>.
+  </p>`} />
 
 ## Specificity
 
