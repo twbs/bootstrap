@@ -1,118 +1,22 @@
 ---
-title: Borders
+title: Border
 description: Use border utilities to quickly style the border and border-radius of an element. Great for images, buttons, or any other element.
 toc: true
 alias:
   - /docs/5.3/utilities/border/
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/border
-reference:
-  - class: border
-    styles:
-      border: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
-  - class: border-0
-    styles:
-      border: '0'
-  - class: border-top
-    styles:
-      border-block-start: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
-  - class: border-top-0
-    styles:
-      border-block-start: '0'
-  - class: border-end
-    styles:
-      border-inline-end: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
-  - class: border-end-0
-    styles:
-      border-inline-end: '0'
-  - class: border-bottom
-    styles:
-      border-block-end: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
-  - class: border-bottom-0
-    styles:
-      border-block-end: '0'
-  - class: border-start
-    styles:
-      border-inline-start: 'var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)'
-  - class: border-start-0
-    styles:
-      border-inline-start: '0'
-  - class: border-primary
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-primary-rgb), var(--bs-border-opacity))'
-  - class: border-secondary
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-secondary-rgb), var(--bs-border-opacity))'
-  - class: border-success
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-success-rgb), var(--bs-border-opacity))'
-  - class: border-info
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-info-rgb), var(--bs-border-opacity))'
-  - class: border-warning
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-warning-rgb), var(--bs-border-opacity))'
-  - class: border-danger
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-danger-rgb), var(--bs-border-opacity))'
-  - class: border-light
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-light-rgb), var(--bs-border-opacity))'
-  - class: border-dark
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-dark-rgb), var(--bs-border-opacity))'
-  - class: border-black
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-black-rgb), var(--bs-border-opacity))'
-  - class: border-white
-    styles:
-      --bs-border-opacity: '1'
-      border-color: 'rgba(var(--bs-white-rgb), var(--bs-border-opacity))'
-  - class: border-opacity-10
-    styles:
-      --bs-border-opacity: '0.1'
-  - class: border-opacity-25
-    styles:
-      --bs-border-opacity: '0.25'
-  - class: border-opacity-50
-    styles:
-      --bs-border-opacity: '0.5'
-  - class: border-opacity-75
-    styles:
-      --bs-border-opacity: '0.75'
-  - class: border-opacity-100
-    styles:
-      --bs-border-opacity: '1'
-  - class: border-1
-    styles:
-      border-width: '1px'
-  - class: border-2
-    styles:
-      border-width: '2px'
-  - class: border-3
-    styles:
-      border-width: '3px'
-  - class: border-4
-    styles:
-      border-width: '4px'
-  - class: border-5
-    styles:
-      border-width: '5px'
+utility:
+  - border
+  - border-top
+  - border-end
+  - border-bottom
+  - border-start
+  - border-width
 ---
-
-import { getData } from '@libs/data'
 
 ## Border
 
-Use border utilities to add or remove an element’s borders. Choose from all borders or one at a time.
+Use border utilities to add or remove an element's borders. Choose from all borders or one at a time.
 
 ### Additive
 
@@ -134,68 +38,6 @@ Or remove borders:
 <span class="border border-bottom-0"></span>
 <span class="border border-start-0"></span>`} />
 
-## Color
-
-<Callout>
-Border utilities like `.border-*` that generated from our original `$theme-colors` Sass map don’t yet respond to color modes, however, any `.border-*-subtle` utility will. This will be resolved in v6.
-</Callout>
-
-Change the border color using utilities built on our theme colors.
-
-<Example class="bd-example-border-utils" code={[
-  ...getData('theme-colors').map((themeColor) => `<span class="border border-${themeColor.name}"></span>
-<span class="border border-${themeColor.name}-subtle"></span>`),
-  `<span class="border border-black"></span>
-<span class="border border-white"></span>`
-]} />
-
-Or modify the default `border-color` of a component:
-
-<Example code={`<div class="mb-4">
-    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-    <input type="email" class="form-control border-success" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-
-  <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
-    Dangerous heading
-  </div>
-
-  <div class="p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end">
-    Changing border color and width
-  </div>`} />
-
-## Opacity
-
-Bootstrap `border-{color}` utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
-
-### How it works
-
-Consider our default `.border-success` utility.
-
-```css
-.border-success {
-  --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity));
-}
-```
-
-We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-border-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.border-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.border-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
-
-### Example
-
-To change that opacity, override `--bs-border-opacity` via custom styles or inline styles.
-
-<Example code={`<div class="border border-success p-2 mb-2">This is default success border</div>
-<div class="border border-success p-2" style="--bs-border-opacity: .5;">This is 50% opacity success border</div>`} />
-
-Or, choose from any of the `.border-opacity` utilities:
-
-<Example code={`<div class="border border-success p-2 mb-2">This is default success border</div>
-<div class="border border-success p-2 mb-2 border-opacity-75">This is 75% opacity success border</div>
-<div class="border border-success p-2 mb-2 border-opacity-50">This is 50% opacity success border</div>
-<div class="border border-success p-2 mb-2 border-opacity-25">This is 25% opacity success border</div>
-<div class="border border-success p-2 border-opacity-10">This is 10% opacity success border</div>`} />
-
 ## Width
 
 <Example class="bd-example-border-utils" code={`<span class="border border-1"></span>
@@ -213,12 +55,6 @@ Or, choose from any of the `.border-opacity` utilities:
 ### Sass variables
 
 <ScssDocs name="border-variables" file="scss/_variables.scss" />
-
-Variables for setting `border-color` in `.border-*-subtle` utilities in light and dark mode:
-
-{/* <ScssDocs name="theme-border-subtle-variables" file="scss/_variables.scss" /> */}
-
-{/* <ScssDocs name="theme-border-subtle-dark-variables" file="scss/_variables-dark.scss" /> */}
 
 ### Sass mixins
 

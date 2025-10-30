@@ -63,13 +63,33 @@
   }
   --#{$prefix}body-font-family: #{meta.inspect($font-family-base)};
 
+  // scss-docs-start root-font-size-variables
   --#{$prefix}font-size-base: #{$font-size-base}; // 14px
-  --#{$prefix}font-size-sm: calc(#{$font-size-base} * .9285);
-  --#{$prefix}font-size-lg: calc(#{$font-size-base} * 1.285);
+  // --#{$prefix}font-size-sm: calc(#{$font-size-base} * .9285);
+  // --#{$prefix}font-size-lg: calc(#{$font-size-base} * 1.285);
 
-  @each $key, $value in $font-sizes {
-    --#{$prefix}font-size-#{$key}: #{$value};
-  }
+  --#{$prefix}font-size-xs: clamp(.75rem, .7rem + .25vw, .875rem);
+  --#{$prefix}font-size-sm: clamp(.875rem, .8rem + .375vw, 1rem);
+  --#{$prefix}font-size-md: clamp(1rem, .9rem + .5vw, 1.125rem);
+  --#{$prefix}font-size-lg: clamp(1.25rem, 1rem + .625vw, 1.5rem);
+  --#{$prefix}font-size-xl: clamp(1.5rem, 1.1rem + .75vw, 1.75rem);
+  --#{$prefix}font-size-2xl: clamp(1.75rem, 1.3rem + 1vw, 2.25rem);
+  --#{$prefix}font-size-3xl: clamp(2rem, 1.5rem + 1.875vw, 2.5rem);
+  --#{$prefix}font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
+  --#{$prefix}font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem);
+  --#{$prefix}font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem);
+
+  --#{$prefix}line-height-xs: 1.5;
+  --#{$prefix}line-height-sm: 1.5;
+  --#{$prefix}line-height-md: 1.5;
+  --#{$prefix}line-height-lg: 1.5;
+  --#{$prefix}line-height-xl: calc(2.5 / 1.75);
+  --#{$prefix}line-height-2xl: calc(3 / 2.25);
+  --#{$prefix}line-height-3xl: 1.2;
+  --#{$prefix}line-height-4xl: 1.1;
+  --#{$prefix}line-height-5xl: 1.1;
+  --#{$prefix}line-height-6xl: 1;
+  // scss-docs-end root-font-size-variables
 
   @include rfs($font-size-base, --#{$prefix}body-font-size);
   --#{$prefix}body-font-weight: #{$font-weight-base};
@@ -124,10 +144,6 @@
   --#{$prefix}link-color: light-dark(var(--#{$prefix}primary-base), var(--#{$prefix}primary-text));
   --#{$prefix}link-decoration: #{$link-decoration};
   --#{$prefix}link-hover-color: color-mix(in oklch, var(--#{$prefix}link-color) 90%, #000);
-
-  @if $link-hover-decoration != null {
-    --#{$prefix}link-hover-decoration: #{$link-hover-decoration};
-  }
 
   --#{$prefix}code-color: #{$code-color};
   --#{$prefix}highlight-color: #{$mark-color};

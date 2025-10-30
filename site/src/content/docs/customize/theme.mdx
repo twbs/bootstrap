@@ -87,7 +87,7 @@ Every token is available as a CSS variable, and most are then consumed by our ut
         {themeTokens.map((token) => (
           <div class="mb-3 font-monospace">
             <Swatch bg={`${color.name}-${token}`} size="medium" />
-            <div class="text-center small color-3">{token}</div>
+            <div class="text-center small fg-3">{token}</div>
           </div>
         ))}
       </div>
@@ -172,25 +172,25 @@ Border colors have similar levels, but different naming.
 
 Not all colors can be used for all purposes due to accessibility, color contrast, and general aesthetic considerations. Here are some recommended pairings.
 
-- `color-body` works with all `bg` colors
-- `color-1` works with `bg-body`, `bg-1`, `bg-2`, and `bg-3`
-- `color-2` works with `bg-body`, `bg-1`, and `bg-2`
-- `color-3` works with `bg-body`, `bg-1`
+- `fg-body` works with all `bg` colors
+- `fg-1` works with `bg-body`, `bg-1`, `bg-2`, and `bg-3`
+- `fg-2` works with `bg-body`, `bg-1`, and `bg-2`
+- `fg-3` works with `bg-body`, `bg-1`
 
 Here are some examples showing them together. Note
 
 <Example code={`<div class="vstack gap-3">
-    <div class="p-3 rounded-3 bg-body color-body border">
-      color-body on bg-body
+    <div class="p-3 rounded-3 bg-body fg-body border">
+      fg-body on bg-body
     </div>
-    <div class="p-3 rounded-3 bg-1 color-3 border">
-      color-3 on bg-1
+    <div class="p-3 rounded-3 bg-1 fg-3 border">
+      fg-3 on bg-1
     </div>
-    <div class="p-3 rounded-3 bg-2 color-2 border">
-      color-2 on bg-2
+    <div class="p-3 rounded-3 bg-2 fg-2 border">
+      fg-2 on bg-2
     </div>
-    <div class="p-3 rounded-3 bg-3 color-1 border">
-      color-1 on bg-3
+    <div class="p-3 rounded-3 bg-3 fg-1 border">
+      fg-1 on bg-3
     </div>
   </div>`} />
 

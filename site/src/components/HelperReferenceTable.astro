@@ -1,0 +1,41 @@
+---
+interface ClassItem {
+  class: string;
+  description: string;
+}
+
+interface Props {
+  classes: ClassItem[];
+  className?: string;
+}
+
+const {
+  classes,
+  className = "table reference-table"
+} = Astro.props;
+
+// Format class names with dot prefix if needed
+const tableData = classes.map(item => ({
+  class: item.class.startsWith('.') ? item.class : `.${item.class}`,
+  description: item.description
+}));
+---
+
+<div class="table-responsive bd-reference-table">
+  <table class={className}>
+    <thead>
+      <tr>
+        <th scope="col">Class</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {tableData.map((row) => (
+        <tr>
+          <td><code>{row.class}</code></td>
+          <td>{row.description}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

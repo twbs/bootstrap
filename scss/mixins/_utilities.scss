@@ -9,20 +9,62 @@
 
 // Utility generator
 
-// - Utilities can three different types of selectors:
+// - Utilities can use three different types of selectors:
 //   - class: .class
 //   - attr-starts: [class^="class"]
 //   - attr-includes: [class*="class"]
-// - Utilities can generate a regular CSS property or a CSS custom property
+// - Utilities can generate regular CSS properties and CSS custom properties
 // - Utilities can be responsive or not
 // - Utilities can have state variants (e.g., hover, focus, active)
+// - Utilities can define local CSS variables
+//
+// CSS custom properties can be generated in two ways:
+//
+// 1. Property map with null values (CSS var receives the utility value):
+// "bg-color": (
+//   property: (
+//     "--#{$prefix}bg": null,
+//     "background-color": var(--#{$prefix}bg)
+//   ),
+//   class: bg,
+//   values: (
+//     primary: var(--#{$prefix}blue-500),
+//   )
+// )
+// Generates:
+// .bg-primary {
+//   --bs-bg: var(--bs-blue-500);
+//   background-color: var(--bs-bg);
+// }
+//
+// 2. Variables map (static CSS custom properties on every class):
+// "link-underline": (
+//   property: text-decoration-color,
+//   class: link-underline,
+//   variables: (
+//     "link-underline-opacity": 1
+//   ),
+//   values: (...)
+// )
+// Generates:
+// .link-underline {
+//   --bs-link-underline-opacity: 1;
+//   text-decoration-color: ...;
+// }
 
 // Helper mixin to generate CSS properties for both legacy and property map approaches
 @mixin generate-properties($utility, $propertyMap, $properties, $value) {
   @if $propertyMap != null {
     // New Property-Value Mapping approach
     @each $property, $defaultValue in $propertyMap {
-      $actualValue: if(meta.type-of($value) == "map" and map.has-key($value, $property), map.get($value, $property), $defaultValue);
+      // If value is a map, check if it has a key for this property
+      // Otherwise, use defaultValue (or $value if defaultValue is null)
+      $actualValue: $defaultValue;
+      @if meta.type-of($value) == "map" and map.has-key($value, $property) {
+        $actualValue: map.get($value, $property);
+      } @else if $defaultValue == null {
+        $actualValue: $value;
+      }
       @if map.get($utility, important) {
         #{$property}: $actualValue !important; // stylelint-disable-line declaration-no-important
       } @else {
@@ -120,6 +162,22 @@
     // @debug $values;
 
     #{$selector} {
+      // Generate CSS custom properties (variables) if provided
+      // Variables receive the current utility value, then properties reference them
+      @if map.has-key($utility, variables) {
+        $variables: map.get($utility, variables);
+        @if meta.type-of($variables) == "list" {
+          // If variables is a list, each variable gets the utility value
+          @each $var-name in $variables {
+            --#{$prefix}#{$var-name}: #{$value};
+          }
+        } @else if meta.type-of($variables) == "map" {
+          // If variables is a map, use the provided values (for static variables)
+          @each $var-key, $var-value in $variables {
+            --#{$prefix}#{$var-key}: #{$var-value};
+          }
+        }
+      }
       @include generate-properties($utility, $propertyMap, $properties, $value);
     }
 
@@ -127,6 +185,21 @@
     @if $state != () {
       @each $state-variant in $state {
         #{$selector}-#{$state-variant}:#{$state-variant} {
+          // Generate CSS custom properties (variables) if provided
+          @if map.has-key($utility, variables) {
+            $variables: map.get($utility, variables);
+            @if meta.type-of($variables) == "list" {
+              // If variables is a list, each variable gets the utility value
+              @each $var-name in $variables {
+                --#{$prefix}#{$var-name}: #{$value};
+              }
+            } @else if meta.type-of($variables) == "map" {
+              // If variables is a map, use the provided values (for static variables)
+              @each $var-key, $var-value in $variables {
+                --#{$prefix}#{$var-key}: #{$var-value};
+              }
+            }
+          }
           @include generate-properties($utility, $propertyMap, $properties, $value);
         }
       }

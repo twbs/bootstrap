@@ -125,10 +125,10 @@
   icon_color: red
   pages:
     - title: API
-    - title: Background
-    - title: Border
-    - title: Border radius
-    - title: Colors
+    - group: Color
+      pages:
+        - title: Colors
+        - title: Background
     - group: Layout
       pages:
         - title: Aspect ratio
@@ -165,10 +165,18 @@
         - title: Font style
         - title: Font weight
         - title: Line height
+        - title: Link
         - title: Text alignment
         - title: Text decoration
+        - title: Text transform
         - title: Text wrapping
         - title: Vertical align
+        - title: Word break
+    - group: Borders
+      pages:
+        - title: Border
+        - title: Border color
+        - title: Border radius
     - group: Interactions
       pages:
         - title: Pointer events

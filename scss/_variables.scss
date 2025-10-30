@@ -137,7 +137,7 @@ $link-decoration:                         underline !default;
 $link-underline-offset:                   .2em !default;
 $link-shade-percentage:                   20% !default;
 // $link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
-$link-hover-decoration:                   null !default;
+// $link-hover-decoration:                   $link-decoration !default;
 
 $stretched-link-pseudo-element:           after !default;
 $stretched-link-z-index:                  1 !default;
@@ -172,7 +172,7 @@ $border-widths: (
   5: 5px
 ) !default;
 $border-style:                solid !default;
-$border-color:                var(--#{$prefix}gray-200) !default;
+$border-color:                color-mix(in oklch, var(--#{$prefix}gray-100), var(--#{$prefix}gray-200)) !default;
 $border-color-translucent:    rgba($black, .175) !default;
 // scss-docs-end border-variables
 
@@ -253,81 +253,55 @@ $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
 $line-height-lg:              2 !default;
 
-$h1-font-size:                $font-size-base * 2.5 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
-$h4-font-size:                $font-size-base * 1.5 !default;
-$h5-font-size:                $font-size-base * 1.25 !default;
-$h6-font-size:                $font-size-base !default;
+$h1-font-size: var(--#{$prefix}font-size-3xl) !default;
+$h2-font-size: var(--#{$prefix}font-size-2xl) !default;
+$h3-font-size: var(--#{$prefix}font-size-xl) !default;
+$h4-font-size: var(--#{$prefix}font-size-lg) !default;
+$h5-font-size: var(--#{$prefix}font-size-md) !default;
+$h6-font-size: var(--#{$prefix}font-size-sm) !default;
 // scss-docs-end font-variables
-
-// scss-docs-start font-sizes
-// Legacy font-sizes for backward compatibility
-// $font-sizes-legacy: (
-//   1: $h1-font-size,
-//   2: $h2-font-size,
-//   3: $h3-font-size,
-//   4: $h4-font-size,
-//   5: $h5-font-size,
-//   6: $h6-font-size
-// ) !default;
-// scss-docs-end font-sizes
-
-// Font sizes for CSS custom properties (root variables) and utilities
-$font-sizes: (
-  "xs": clamp(.75rem, .7rem + .25vw, .875rem),
-  "sm": clamp(.875rem, .8rem + .375vw, 1rem),
-  "md": clamp(1rem, .9rem + .5vw, 1.125rem),
-  "lg": clamp(1.25rem, 1rem + .625vw, 1.5rem),
-  "xl": clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
-  "2xl": clamp(1.75rem, 1.3rem + 1vw, 2.25rem),
-  "3xl": clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
-  "4xl": clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
-  "5xl": clamp(3rem, 2rem + 5vw, 4rem),
-  "6xl": clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
-) !default;
 
 // Font sizes with line-height for utilities
 $new-font-sizes: (
   "xs": (
-    "font-size": clamp(.75rem, .7rem + .25vw, .875rem),
-    "line-height": 1.5
+    "font-size": var(--#{$prefix}font-size-xs),
+    "line-height": var(--#{$prefix}line-height-xs)
   ),
   "sm": (
-    "font-size": clamp(.875rem, .8rem + .375vw, 1rem),
-    "line-height": 1.5
+    "font-size": var(--#{$prefix}font-size-sm),
+    "line-height": var(--#{$prefix}line-height-sm)
   ),
   "md": (
-    "font-size": clamp(1rem, .9rem + .5vw, 1.125rem),
-    "line-height": 1.5
+    "font-size": var(--#{$prefix}font-size-md),
+    "line-height": var(--#{$prefix}line-height-md)
   ),
   "lg": (
-    "font-size": clamp(1.25rem, 1rem + .625vw, 1.5rem),
-    "line-height": 1.5
+    "font-size": var(--#{$prefix}font-size-lg),
+    "line-height": var(--#{$prefix}line-height-lg)
   ),
   "xl": (
-    "font-size": clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
-    "line-height": #{"calc(2.5 / 1.75)"}
+    "font-size": var(--#{$prefix}font-size-xl),
+    "line-height": var(--#{$prefix}line-height-xl)
   ),
   "2xl": (
-    "font-size": clamp(1.75rem, 1.3rem + 1vw, 2.25rem),
-    "line-height": #{"calc(3 / 2.25)"}
+    "font-size": var(--#{$prefix}font-size-2xl),
+    "line-height": var(--#{$prefix}line-height-2xl)
   ),
   "3xl": (
-    "font-size": clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
-    "line-height": 1.2
+    "font-size": var(--#{$prefix}font-size-3xl),
+    "line-height": var(--#{$prefix}line-height-3xl)
   ),
   "4xl": (
-    "font-size": clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
-    "line-height": 1.1
+    "font-size": var(--#{$prefix}font-size-4xl),
+    "line-height": var(--#{$prefix}line-height-4xl)
   ),
   "5xl": (
-    "font-size": clamp(3rem, 2rem + 5vw, 4rem),
-    "line-height": 1.1
+    "font-size": var(--#{$prefix}font-size-5xl),
+    "line-height": var(--#{$prefix}line-height-5xl)
   ),
   "6xl": (
-    "font-size": clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
-    "line-height": 1
+    "font-size": var(--#{$prefix}font-size-6xl),
+    "line-height": var(--#{$prefix}line-height-6xl)
   ),
 ) !default;
 
@@ -341,9 +315,6 @@ $headings-color:              inherit !default;
 // scss-docs-end headings-variables
 
 // scss-docs-start type-variables
-$lead-font-size:              $font-size-base * 1.25 !default;
-$lead-font-weight:            300 !default;
-
 $small-font-size:             .875em !default;
 
 $sub-sup-font-size:           .75em !default;

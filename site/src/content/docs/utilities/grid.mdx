@@ -3,28 +3,10 @@ title: Grid
 description: Utilities for controlling CSS Grid layout behavior including column counts, column behavior, and auto-placement options.
 toc: true
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/grid
-reference:
-  - class: grid-cols-3
-    styles:
-      --bs-columns: '3'
-  - class: grid-cols-4
-    styles:
-      --bs-columns: '4'
-  - class: grid-cols-6
-    styles:
-      --bs-columns: '6'
-  - class: grid-cols-fill
-    styles:
-      grid-column: '1 / -1'
-  - class: grid-auto-flow-row
-    styles:
-      grid-auto-flow: 'row'
-  - class: grid-auto-flow-column
-    styles:
-      grid-auto-flow: 'column'
-  - class: grid-auto-flow-dense
-    styles:
-      grid-auto-flow: 'dense'
+utility:
+  - grid-column-counts
+  - grid-columns
+  - grid-auto-flow
 ---
 
 import { getData } from '@libs/data'
