@@ -11,9 +11,29 @@ utility:
   - min-viewport-width
 ---
 
-## Overview
+Use width utilities to set the width of elements. Width utilities are generated from the utility API and include support for a preset scale, percentage values, intrinsic sizing keywords, and viewport units.
 
-Use width utilities to set the width of elements. Width utilities are generated from the utility API and include support for percentage values, intrinsic sizing keywords, and viewport units.
+## Width
+
+Set width using `.w-{size}` utilities for any size from `1` to `12`. These classes are generated from the utility API based on the `$sizes` map in `_variables.scss`. Each number is a multiple of the `$spacer` variable, which defaults to `1rem`.
+
+<Example
+  class="bd-example-flex"
+  code={`<div class="w-12 p-3">Width 12</div>`}
+  customMarkup={`<div class="d-flex flex-column gap-3">
+    <div class="w-1">…</div>
+    <div class="w-2">…</div>
+    <div class="w-3">…</div>
+    <div class="w-4">…</div>
+    <div class="w-5">…</div>
+    <div class="w-6">…</div>
+    <div class="w-7">…</div>
+    <div class="w-8">…</div>
+    <div class="w-9">…</div>
+    <div class="w-10">…</div>
+    <div class="w-11">…</div>
+    <div class="w-12">…</div>
+  </div>`} />
 
 ## Relative width
 
@@ -69,42 +89,4 @@ Set width relative to the viewport using viewport units.
 
 Width utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-"width": (
-  property: width,
-  class: w,
-  values: (
-    25: 25%,
-    50: 50%,
-    75: 75%,
-    100: 100%,
-    auto: auto,
-    min: min-content,
-    max: max-content,
-    fit: fit-content,
-  )
-),
-"max-width": (
-  property: max-width,
-  class: max-w,
-  values: (100: 100%)
-),
-"min-width": (
-  property: min-width,
-  class: min-w,
-  values: (
-    0: 0,
-    100: 100%
-  )
-),
-"viewport-width": (
-  property: width,
-  class: vw,
-  values: (100: 100vw)
-),
-"min-viewport-width": (
-  property: min-width,
-  class: min-vw,
-  values: (100: 100vw)
-),
-```
+<ScssDocs name="utils-width" file="scss/_utilities.scss" />

@@ -239,7 +239,7 @@ $utilities: map.merge(
     ),
     // scss-docs-end utils-border-color
     // Sizing utilities
-    // scss-docs-start utils-sizing
+    // scss-docs-start utils-width
     "width": (
       property: width,
       class: w,
@@ -280,6 +280,8 @@ $utilities: map.merge(
       class: min-vw,
       values: (100: 100vw)
     ),
+    // scss-docs-end utils-width
+    // scss-docs-start utils-height
     "height": (
       property: height,
       class: h,
@@ -317,7 +319,7 @@ $utilities: map.merge(
       class: min-vh,
       values: (100: 100vh)
     ),
-    // scss-docs-end utils-sizing
+    // scss-docs-end utils-height
     // Flex utilities
     // scss-docs-start utils-flex
     "flex": (
