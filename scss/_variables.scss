@@ -262,7 +262,7 @@ $h6-font-size: var(--#{$prefix}font-size-sm) !default;
 // scss-docs-end font-variables
 
 // Font sizes with line-height for utilities
-$new-font-sizes: (
+$font-sizes: (
   "xs": (
     "font-size": var(--#{$prefix}font-size-xs),
     "line-height": var(--#{$prefix}line-height-xs)

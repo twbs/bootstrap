@@ -635,7 +635,7 @@ $utilities: map.merge(
     "font-size": (
       property: font-size,
       class: fs,
-      values: map-get-nested($new-font-sizes, "font-size")
+      values: map-get-nested($font-sizes, "font-size")
     ),
     "text-size": (
       property: (
@@ -643,7 +643,7 @@ $utilities: map.merge(
         "line-height": 1.5
       ),
       class: text,
-      values: $new-font-sizes
+      values: $font-sizes
     ),
     // scss-docs-end utils-font-size
     "font-style": (
