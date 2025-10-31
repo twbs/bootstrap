@@ -108,25 +108,25 @@
     "@popperjs/core": "^2.11.8"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.5",
     "@astrojs/markdown-remark": "^6.3.8",
-    "@astrojs/mdx": "^4.3.7",
+    "@astrojs/mdx": "^4.3.9",
     "@astrojs/prism": "^3.3.0",
     "@astrojs/sitemap": "^3.6.0",
     "@babel/cli": "^7.28.3",
-    "@babel/core": "^7.28.4",
-    "@babel/preset-env": "^7.28.3",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
     "@docsearch/js": "^3.9.0",
     "@popperjs/core": "^2.11.8",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^28.0.6",
-    "@rollup/plugin-node-resolve": "^16.0.2",
-    "@rollup/plugin-replace": "^6.0.2",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-replace": "^6.0.3",
     "@stackblitz/sdk": "^1.11.0",
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@types/prismjs": "^1.26.5",
-    "astro": "^5.14.4",
+    "astro": "^5.15.3",
     "astro-auto-import": "^0.4.5",
     "autoprefixer": "^10.4.21",
     "bundlewatch": "^0.4.1",
@@ -169,7 +169,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "rollup": "^4.52.4",
+    "rollup": "^4.52.5",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.3.0",
     "sass": "1.78.0",
@@ -206,5 +206,8 @@
     "peerDependencies": {
       "@popperjs/core": "^2.11.8"
     }
+  },
+  "overrides": {
+    "volar-service-emmet": "0.0.63"
   }
 }
