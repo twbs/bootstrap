@@ -11,6 +11,7 @@ import OpenCollectiveIcon from '@components/icons/OpenCollectiveIcon.astro'
 import XIcon from '@components/icons/XIcon.astro'
 import Versions from '@components/header/Versions.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
+import Search from "@components/Search.astro";
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']
@@ -47,7 +48,7 @@ const { addedIn, layout, title } = Astro.props
     </a>
 
     <div class="d-flex">
-      <div class="bd-search" id="docsearch" data-bd-docs-version={getConfig().docs_version}></div>
+      <Search />
 
       <button
         class="navbar-toggler d-flex d-lg-none order-3 p-2"
