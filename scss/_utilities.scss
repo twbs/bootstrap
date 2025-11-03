@@ -205,12 +205,6 @@ $utilities: map.merge(
     ),
     // scss-docs-end utils-borders
     // scss-docs-start utils-border-color
-    "border-attr": (
-      selector: "attr-includes",
-      class: "border-",
-      property: border-color,
-      values: var(--#{$prefix}border-color),
-    ),
     "border-color": (
       property: (
         "--#{$prefix}border-color": null,
