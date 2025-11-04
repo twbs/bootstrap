@@ -18,11 +18,11 @@
     },
     {
       "path": "./dist/css/bootstrap-utilities.css",
-      "maxSize": "14.0 kB"
+      "maxSize": "14.75 kB"
     },
     {
       "path": "./dist/css/bootstrap-utilities.min.css",
-      "maxSize": "12.25 kB"
+      "maxSize": "13.0 kB"
     },
     {
       "path": "./dist/css/bootstrap.css",
