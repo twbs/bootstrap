@@ -704,12 +704,14 @@ $utilities: map.merge(
       class: text,
       values: wrap nowrap balance pretty,
     ),
+    // scss-docs-start utils-text-break
     "word-wrap": (
       property: word-wrap word-break,
       class: text,
       values: (break: break-word),
       rtl: false
     ),
+    // scss-docs-end utils-text-break
     // scss-docs-end utils-text
     // scss-docs-start utils-color
     // "color-attr": (

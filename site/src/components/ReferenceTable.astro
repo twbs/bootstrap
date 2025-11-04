@@ -1,7 +1,6 @@
 ---
 import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { join } from 'node:path';
 
 interface ReferenceItem {
   class: string;
@@ -31,9 +30,8 @@ const referenceData = reference || data || [];
 // Parse CSS variables from _root.scss at build time
 function parseCSSVariables(): Record<string, string> {
   try {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    const rootScssPath = join(__dirname, '../../../scss/_root.scss');
+    const projectRoot = process.cwd();
+    const rootScssPath = join(projectRoot, 'scss/_root.scss');
     const scssContent = readFileSync(rootScssPath, 'utf-8');
 
     const cssVarValues: Record<string, string> = {};
