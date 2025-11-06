@@ -1,0 +1,59 @@
+---
+import { getDetailsByName } from '@libs/content'
+import type { MarkdownInstance } from 'astro'
+
+interface Props {
+  /**
+   * The name of an existing details content to display located in `src/content/details`.
+   * This will override any content passed in via the default slot.
+   */
+  name?:
+    | 'danger-example'
+    | 'info-example'
+    | 'warning-color-assistive-technologies'
+    | 'warning-example'
+  /**
+   * The summary text displayed before the details are expanded.
+   * If not provided and `name` is set, will use the `title` from the markdown frontmatter.
+   */
+  summary?: string
+}
+
+const { name } = Astro.props
+let { summary } = Astro.props
+
+let Content: MarkdownInstance<{}>['Content'] | undefined
+
+if (name) {
+  const details = await getDetailsByName(name) as any
+
+  if (!details) {
+    throw new Error(`Could not find details with name '${name}'.`)
+  }
+
+  // Use title from frontmatter if summary is not provided
+  if (!summary && details.data?.title) {
+    summary = details.data.title
+  }
+
+  const namedDetails = await details.render() as any
+  Content = namedDetails.Content
+}
+
+// Ensure summary is always provided
+if (!summary) {
+  throw new Error('Details component requires either a `summary` prop or a `title` in the markdown frontmatter.')
+}
+---
+
+<details class="bd-details">
+  <summary class="bd-details-summary">
+    <svg class="bd-details-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+    </svg>
+    {summary}
+  </summary>
+  <div class="bd-details-content">
+    {Content ? <Content /> : <slot />}
+  </div>
+</details>

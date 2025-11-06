@@ -13,7 +13,6 @@ interface Props {
     | 'info-npm-starter'
     | 'info-prefersreducedmotion'
     | 'info-sanitizer'
-    | 'warning-color-assistive-technologies'
     | 'warning-data-bs-title-vs-title'
     | 'warning-input-support'
   /**
@@ -28,13 +27,13 @@ const { name, type = 'info' } = Astro.props
 let Content: MarkdownInstance<{}>['Content'] | undefined
 
 if (name) {
-  const callout = await getCalloutByName(name)
+  const callout = await getCalloutByName(name) as any
 
   if (!callout) {
     throw new Error(`Could not find callout with name '${name}'.`)
   }
 
-  const namedCallout = await callout.render()
+  const namedCallout = await callout.render() as any
   Content = namedCallout.Content
 }
 ---

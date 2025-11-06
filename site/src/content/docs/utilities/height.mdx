@@ -3,49 +3,13 @@ title: Height
 description: Use height utilities to control the height of elements with responsive height classes.
 toc: true
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/height
-reference:
-  - class: h-25
-    styles:
-      height: '25%'
-  - class: h-50
-    styles:
-      height: '50%'
-  - class: h-75
-    styles:
-      height: '75%'
-  - class: h-100
-    styles:
-      height: '100%'
-  - class: h-auto
-    styles:
-      height: 'auto'
-  - class: h-min
-    styles:
-      height: 'min-content'
-  - class: h-max
-    styles:
-      height: 'max-content'
-  - class: h-fit
-    styles:
-      height: 'fit-content'
-  - class: max-h-100
-    styles:
-      max-height: '100%'
-  - class: min-h-0
-    styles:
-      min-height: '0'
-  - class: min-h-100
-    styles:
-      min-height: '100%'
-  - class: vh-100
-    styles:
-      height: '100vh'
-  - class: min-vh-100
-    styles:
-      min-height: '100vh'
+utility:
+  - height
+  - max-height
+  - min-height
+  - viewport-height
+  - min-viewport-height
 ---
-
-## Overview
 
 Use height utilities to set the height of elements. Height utilities are generated from the utility API and include support for percentage values, intrinsic sizing keywords, and viewport units.
 
@@ -107,42 +71,4 @@ Set height relative to the viewport using viewport units.
 
 Height utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-"height": (
-  property: height,
-  class: h,
-  values: (
-    25: 25%,
-    50: 50%,
-    75: 75%,
-    100: 100%,
-    auto: auto,
-    min: min-content,
-    max: max-content,
-    fit: fit-content,
-  )
-),
-"max-height": (
-  property: max-height,
-  class: max-h,
-  values: (100: 100%)
-),
-"min-height": (
-  property: min-height,
-  class: min-h,
-  values: (
-    0: 0,
-    100: 100%,
-  ),
-),
-"viewport-height": (
-  property: height,
-  class: vh,
-  values: (100: 100vh)
-),
-"min-viewport-height": (
-  property: min-height,
-  class: min-vh,
-  values: (100: 100vh)
-),
-```
+<ScssDocs name="utils-height" file="scss/_utilities.scss" />

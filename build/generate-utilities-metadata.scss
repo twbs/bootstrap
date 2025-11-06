@@ -1,0 +1,112 @@
+// Generate utilities metadata JSON for documentation
+// This file is compiled to extract utility information without generating CSS
+
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
+@use "sass:meta";
+@use "../scss/config" as *;
+@use "../scss/colors" as *;
+@use "../scss/variables" as *;
+@use "../scss/functions" as *;
+@use "../scss/theme" as *;
+@use "../scss/utilities" as *;
+
+// Access the utilities map
+$utilities-map: $utilities !default;
+
+// Start JSON output
+$json: '{"utilities":{' !default;
+
+$utility-count: 0 !default;
+$total-utilities: list.length(map.keys($utilities-map)) !default;
+
+@each $key, $utility in $utilities-map {
+  $utility-count: $utility-count + 1;
+
+  // Skip if utility is null or false (disabled)
+  @if $utility {
+    // Extract class prefix
+    $class: if(map.has-key($utility, "class"), map.get($utility, "class"), $key);
+
+    // Extract property
+    $property: if(map.has-key($utility, "property"), map.get($utility, "property"), null);
+
+    // Extract values
+    $values: if(map.has-key($utility, "values"), map.get($utility, "values"), null);
+
+    // Generate class list
+    $classes: "";
+    @if $values {
+      @if meta.type-of($values) == "map" {
+        $value-keys: map.keys($values);
+        $first: true;
+        @each $value-key in $value-keys {
+          @if not $first {
+            $classes: $classes + ", ";
+          }
+          $class-name: if($value-key == "null" or $value-key == null, $class, "#{$class}-#{$value-key}");
+          $classes: $classes + '"' + $class-name + '"';
+          $first: false;
+        }
+      } @else if meta.type-of($values) == "list" {
+        $first: true;
+        @each $value in $values {
+          @if not $first {
+            $classes: $classes + ", ";
+          }
+          $class-name: "#{$class}-#{$value}";
+          $classes: $classes + '"' + $class-name + '"';
+          $first: false;
+        }
+      }
+    }
+
+    // Build JSON entry
+    $json: $json + '"' + $key + '":{"class":"' + $class + '"';
+
+    @if $property {
+      @if meta.type-of($property) == "string" {
+        $json: $json + ',"property":"' + $property + '"';
+      } @else if meta.type-of($property) == "list" {
+        $property-str: "";
+        $first: true;
+        @each $prop in $property {
+          @if not $first {
+            $property-str: $property-str + " ";
+          }
+          $property-str: $property-str + $prop;
+          $first: false;
+        }
+        $json: $json + ',"property":"' + $property-str + '"';
+      }
+      // Skip map properties as they're complex and don't translate to JSON well
+    }
+
+    @if $classes != "" {
+      $json: $json + ',"classes":[' + $classes + "]";
+    } @else {
+      $json: $json + ',"classes":[]';
+    }
+
+    $json: $json + "}";
+
+    @if $utility-count < $total-utilities {
+      $json: $json + ",";
+    }
+  }
+}
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$json: $json + "}}";
+
+// Output as CSS comment so it appears in compiled file
+
+/*! BOOTSTRAP-UTILITIES-METADATA-START
+#{$json}
+BOOTSTRAP-UTILITIES-METADATA-END */
+
+// Prevent any actual CSS output
+.bootstrap-utilities-metadata-generator {
+  content: "This file should not generate CSS, only metadata comments";
+}

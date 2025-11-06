@@ -1,7 +1,12 @@
 ---
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 interface ReferenceItem {
   class: string;
-  styles: string | string[] | Record<string, string>;
+  styles?: string | string[] | Record<string, string>;
+  description?: string;
+  comment?: string; // Optional manual comment to append
   [key: string]: any; // Allow additional properties
 }
 
@@ -22,6 +27,67 @@ const {
 // Use explicit reference prop or data prop
 const referenceData = reference || data || [];
 
+// Parse CSS variables from _root.scss at build time
+function parseCSSVariables(): Record<string, string> {
+  try {
+    const projectRoot = process.cwd();
+    const rootScssPath = join(projectRoot, 'scss/_root.scss');
+    const scssContent = readFileSync(rootScssPath, 'utf-8');
+
+    const cssVarValues: Record<string, string> = {};
+
+    // Match CSS variable declarations: --#{$prefix}variable-name: value;
+    // This regex captures the variable name and its value
+    const varRegex = /--#\{\$prefix\}([a-z0-9-]+):\s*([^;]+);/gi;
+    let match;
+
+    while ((match = varRegex.exec(scssContent)) !== null) {
+      const varName = `--bs-${match[1]}`;
+      let value = match[2].trim();
+
+      // Clean up SCSS interpolation syntax (e.g., #{$variable})
+      value = value.replace(/#\{[^}]+\}/g, '').trim();
+
+      // Remove inline comments
+      value = value.replace(/\/\/.*$/gm, '').trim();
+
+      // Only store if we have a clean value (not empty after removing interpolations)
+      if (value) {
+        cssVarValues[varName] = value;
+      }
+    }
+
+    return cssVarValues;
+  } catch (error) {
+    console.warn('Could not parse CSS variables from _root.scss:', error);
+    return {};
+  }
+}
+
+const cssVarValues = parseCSSVariables();
+
+// Function to add CSS variable value comments
+function addVarComments(cssValue: string): string {
+  const comments: string[] = [];
+
+  // Collect resolved values for all CSS variables
+  cssValue.replace(/var\((--[a-z0-9-]+)\)/gi, (match, varName) => {
+    const resolvedValue = cssVarValues[varName];
+    if (resolvedValue) {
+      comments.push(`<span class="color-3">/* ${resolvedValue} */</span>`);
+    }
+    return match;
+  });
+
+  // Append comments after the last semicolon or at the end
+  if (comments.length > 0) {
+    const hasSemicolon = cssValue.trimEnd().endsWith(';');
+    return `${cssValue}${hasSemicolon ? '' : ';'} ${comments.join(' ')}`;
+  }
+
+  return cssValue;
+}
+
 // If no explicit columns provided, infer from the first data item
 const inferredColumns = columns || (() => {
   if (referenceData.length === 0) {
@@ -32,10 +98,12 @@ const inferredColumns = columns || (() => {
   }
 
   const firstItem = referenceData[0];
-  return Object.keys(firstItem).map(key => ({
-    label: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize first letter
-    key: key
-  }));
+  return Object.keys(firstItem)
+    .filter(key => key !== 'comment') // Exclude comment field from columns
+    .map(key => ({
+      label: key.charAt(0).toUpperCase() + key.slice(1),
+      key: key
+    }));
 })();
 
 // Transform frontmatter format to table format
@@ -51,26 +119,40 @@ const tableData = referenceData.map((item: ReferenceItem) => {
     }
 
     if (key === 'styles') {
+      let processedStyles = '';
+
       if (typeof value === 'string') {
-        transformedItem[key] = value;
+        processedStyles = addVarComments(value);
       } else if (typeof value === 'object' && !Array.isArray(value)) {
         // Handle object syntax: { prop: value, prop2: value2 }
-        transformedItem[key] = Object.entries(value)
-          .map(([prop, val]) => `${prop}: ${val};`)
+        processedStyles = Object.entries(value)
+          .map(([prop, val]) => {
+            const cssLine = `${prop}: ${val};`;
+            return addVarComments(cssLine);
+          })
           .join('<br/>');
       } else if (Array.isArray(value)) {
-        transformedItem[key] = value.map((style: any) => {
+        processedStyles = value.map((style: any) => {
           if (typeof style === 'string') {
-            return style.includes(':') ? style + (style.endsWith(';') ? '' : ';') : style;
+            const formattedStyle = style.includes(':') ? style + (style.endsWith(';') ? '' : ';') : style;
+            return addVarComments(formattedStyle);
           }
           if (typeof style === 'object') {
-            return Object.entries(style).map(([prop, val]) => `${prop}: ${val};`).join(' ');
+            const cssLine = Object.entries(style).map(([prop, val]) => `${prop}: ${val};`).join(' ');
+            return addVarComments(cssLine);
           }
           return style;
         }).join('<br/>');
       } else {
-        transformedItem[key] = value || '';
+        processedStyles = value || '';
       }
+
+      // Append manual comment if provided in frontmatter
+      if (item.comment) {
+        processedStyles += `<br/><span class="color-3">/* ${item.comment} */</span>`;
+      }
+
+      transformedItem[key] = processedStyles;
     } else {
       transformedItem[key] = value;
     }

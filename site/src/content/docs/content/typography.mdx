@@ -6,13 +6,13 @@ toc: true
 
 ## Global settings
 
-Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes]([[docsref:/utilities/text]]).
+Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out our text utilities.
 
 - Use a [native font stack]([[docsref:/content/reboot#native-font-stack]]) that selects the best `font-family` for each OS and device.
 - For a more inclusive and accessible type scale, we use the browser’s default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
-- Set the global link color via `$link-color`.
-- Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
+- Set the global link color via `--bs-link-color`.
+- Use `--bs-body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
 These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to set `$font-size-base` in `rem`.
 
@@ -49,6 +49,8 @@ All HTML headings, `<h1>` through `<h6>`, are available.
 <p class="h5">h5. Bootstrap heading</p>
 <p class="h6">h6. Bootstrap heading</p>`} />
 
+Head to our [font size utilities]([[docsref:/utilities/font-size]]) for more control over the `font-size` and `line-height`.
+
 ### Customizing headings
 
 Use the included utility classes to recreate the small secondary heading text from Bootstrap 3.
@@ -57,42 +59,6 @@ Use the included utility classes to recreate the small secondary heading text fr
     Fancy display heading
     <small class="text-body-secondary">With faded secondary text</small>
   </h3>`} />
-
-## Display headings
-
-Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style.
-
-<Example showMarkup={false} code={`
-<div class="display-1 pb-3 mb-3 border-bottom">Display 1</div>
-<div class="display-2 pb-3 mb-3 border-bottom">Display 2</div>
-<div class="display-3 pb-3 mb-3 border-bottom">Display 3</div>
-<div class="display-4 pb-3 mb-3 border-bottom">Display 4</div>
-<div class="display-5 pb-3 mb-3 border-bottom">Display 5</div>
-<div class="display-6">Display 6</div>
-`} />
-
-```html
-<h1 class="display-1">Display 1</h1>
-<h1 class="display-2">Display 2</h1>
-<h1 class="display-3">Display 3</h1>
-<h1 class="display-4">Display 4</h1>
-<h1 class="display-5">Display 5</h1>
-<h1 class="display-6">Display 6</h1>
-```
-
-Display headings are configured via the `$display-font-sizes` Sass map and two variables, `$display-font-weight` and `$display-line-height`.
-
-Display headings are customizable via two variables, `$display-font-family` and `$display-font-style`.
-
-<ScssDocs name="display-headings" file="scss/_variables.scss" />
-
-## Lead
-
-Make a paragraph stand out by adding `.lead`.
-
-<Example code={`<p class="lead">
-    This is a lead paragraph. It stands out from regular paragraphs.
-  </p>`} />
 
 ## Inline text elements
 
@@ -125,7 +91,20 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, line-height, decoration and color with our [text utilities]([[docsref:/utilities/text]]) and [color utilities]([[docsref:/utilities/colors]]).
+Utility classes are available for most common text-related CSS properties.
+
+- [Font family]([[docsref:/utilities/font-family]])
+- [Font size]([[docsref:/utilities/font-size]])
+- [Font style]([[docsref:/utilities/font-style]])
+- [Font weight]([[docsref:/utilities/font-weight]])
+- [Line height]([[docsref:/utilities/line-height]])
+- [Text alignment]([[docsref:/utilities/text-alignment])
+- [Text transform]([[docsref:/utilities/text-transform])
+- [Text decoration]([[docsref:/utilities/text-decoration])
+- [Text wrapping]([[docsref:/utilities/text-wrapping])
+- [Vertical alignment]([[docsref:/utilities/vertical-align]])
+
+Change text alignment, transform, style, weight, line-height, decoration and color with our text and [color utilities]([[docsref:/utilities/colors]]).
 
 ## Abbreviations
 
