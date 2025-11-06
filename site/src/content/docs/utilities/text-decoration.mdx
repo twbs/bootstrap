@@ -3,26 +3,15 @@ title: Text decoration
 description: Utilities for controlling text decoration, text transform, and text color reset.
 toc: true
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration
-reference:
-  - class: text-decoration-underline
-    styles:
-      text-decoration: 'underline'
-  - class: text-decoration-line-through
-    styles:
-      text-decoration: 'line-through'
-  - class: text-decoration-none
-    styles:
-      text-decoration: 'none'
-  - class: text-lowercase
-    styles:
-      text-transform: 'lowercase'
-  - class: text-uppercase
-    styles:
-      text-transform: 'uppercase'
-  - class: text-capitalize
-    styles:
-      text-transform: 'capitalize'
+utility:
+  - underline-offset
+  - underline-color
+  - underline-opacity
+  - underline-thickness
+  - text-decoration
 ---
+
+import { getData } from '@libs/data'
 
 ## Text decoration
 
@@ -32,23 +21,56 @@ Decorate text in components with text decoration classes.
 <p class="text-decoration-line-through">This text has a line going through it.</p>
 <a href="#" class="text-decoration-none">This link has its text decoration removed</a>`} />
 
-## Text transform
+## Underline
 
-Transform text in components with our text capitalization classes: `text-lowercase`, `text-uppercase` or `text-capitalize`.
+### Offset
 
-<Example code={`<p class="text-lowercase">Lowercased text.</p>
-<p class="text-uppercase">Uppercased text.</p>
-<p class="text-capitalize">CapiTaliZed text.</p>`} />
+Change the underline's distance from your text. Offset is set in `em` units to automatically scale with the element's current `font-size`.
 
-Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
+<Example code={`<p><a href="#">Default link</a></p>
+<p><a class="underline-offset-1" href="#">Offset 1 link</a></p>
+<p><a class="underline-offset-2" href="#">Offset 2 link</a></p>
+<p><a class="underline-offset-3" href="#">Offset 3 link</a></p>`} />
 
-## Reset color
+### Color
 
-Reset a text or link's color with `.text-reset`, so that it inherits the color from its parent.
+Change the underline's color independent of the text color.
 
-<Example code={`<p class="text-body-secondary">
-    Secondary body text with a <a href="#" class="text-reset">reset link</a>.
-  </p>`} />
+<Example code={getData('theme-colors').map((themeColor) => `<p><a href="#" class="underline-${themeColor.name}">${themeColor.title} underline</a></p>`)} />
+
+### Opacity
+
+Change the underline's opacity. Requires adding `.underline-{color}` to first set an `rgba()` color we use to then modify the alpha opacity.
+
+<Example code={`<p><a class="underline-10" href="#">Underline opacity 10</a></p>
+<p><a class="underline-20" href="#">Underline opacity 20</a></p>
+<p><a class="underline-30" href="#">Underline opacity 30</a></p>
+<p><a class="underline-40" href="#">Underline opacity 40</a></p>
+<p><a class="underline-50" href="#">Underline opacity 50</a></p>
+<p><a class="underline-60" href="#">Underline opacity 60</a></p>
+<p><a class="underline-70" href="#">Underline opacity 70</a></p>
+<p><a class="underline-80" href="#">Underline opacity 80</a></p>
+<p><a class="underline-90" href="#">Underline opacity 90</a></p>
+<p><a class="underline-100" href="#">Underline opacity 100</a></p>`} />
+
+### Thickness
+
+Change the thickness of the underline.
+
+<Example code={`<p><a href="#">Default link</a></p>
+<p><a class="underline-thickness-1" href="#">Thickness 1 link</a></p>
+<p><a class="underline-thickness-2" href="#">Thickness 2 link</a></p>
+<p><a class="underline-thickness-3" href="#">Thickness 3 link</a></p>
+<p><a class="underline-thickness-4" href="#">Thickness 4 link</a></p>
+<p><a class="underline-thickness-5" href="#">Thickness 5 link</a></p>`} />
+
+### Hover variants
+
+The `.underline-offset`, `.underline-{N}`, and `.underline-thickness` utilities include `:hover` variants by default. Mix and match to create unique link styles.
+
+<Example code={`<a class="underline-offset-2 underline-offset-3-hover underline-10 underline-50-hover underline-thickness-2-hover" href="#">
+    Underline with offset and opacity changes on hover
+  </a>`} />
 
 ## CSS
 
@@ -56,14 +78,4 @@ Reset a text or link's color with `.text-reset`, so that it inherits the color f
 
 Text decoration utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-"text-decoration": (
-  property: text-decoration,
-  values: none underline line-through
-),
-"text-transform": (
-  property: text-transform,
-  class: text,
-  values: lowercase uppercase capitalize
-),
-```
+<ScssDocs name="utils-underline" file="scss/_utilities.scss" />

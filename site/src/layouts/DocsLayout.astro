@@ -10,6 +10,8 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 import DocsSidebar from '@components/DocsSidebar.astro'
 import TableOfContents from '@components/TableOfContents.astro'
 import ReferenceTable from '@components/ReferenceTable.astro'
+import UtilityReferenceTable from '@components/UtilityReferenceTable.astro'
+import HelperReferenceTable from '@components/HelperReferenceTable.astro'
 import { getData } from '@libs/data'
 import GitHubIcon from '@components/icons/GitHubIcon.astro'
 import MdnIcon from '@components/icons/MdnIcon.astro'
@@ -47,14 +49,28 @@ if (frontmatter.toc) {
 let prevPage: NavigationPage | undefined
 let nextPage: NavigationPage | undefined
 
-// Create a flat array of all pages with their groups
-const allPages = sidebar.flatMap((group) => {
+// Create a flat array of all pages with their groups, handling nested groups
+const allPages: NavigationPage[] = sidebar.flatMap((group) => {
   if (!group.pages) return []
-  return group.pages.map((page) => ({
-    title: page.title,
-    url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(page.title)}/`,
-    groupTitle: group.title
-  }))
+  return group.pages.flatMap((item: any) => {
+    // Handle nested groups (e.g., Utilities > Borders > Border)
+    if (item.group && item.pages) {
+      return item.pages.map((page: any) => ({
+        title: page.title,
+        url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(page.title)}/`,
+        groupTitle: item.group
+      }))
+    }
+    // Handle direct pages
+    if (item.title) {
+      return [{
+        title: item.title,
+        url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(item.title)}/`,
+        groupTitle: group.title
+      }]
+    }
+    return []
+  })
 })
 
 // Find the current page index
@@ -204,25 +220,41 @@ if (currentPageIndex < allPages.length - 1) {
           )
         }
 
+        {
+          frontmatter.utility && (
+            <div class="mb-5">
+              <UtilityReferenceTable utility={frontmatter.utility} />
+            </div>
+          )
+        }
+
+        {
+          frontmatter.classes && (
+            <div class="mb-5">
+              <HelperReferenceTable classes={frontmatter.classes} />
+            </div>
+          )
+        }
+
         <slot />
 
         <nav class="bd-links-nav py-5 mt-5 border-top">
-          <div class="d-flex flex-column flex-md-row justify-content-between">
+          <div class="d-flex flex-column flex-md-row justify-content-stretch gap-3 gap-md-5">
             {
               prevPage && (
-                <a href={prevPage.url} class="d-block p-3 text-decoration-none rounded-3">
-                  <div class="text-secondary small">← Previous</div>
-                  <div class="fw-semibold">{prevPage.title}</div>
-                  <div class="text-secondary small">{prevPage.groupTitle}</div>
+                <a href={prevPage.url} class="d-block p-3 text-decoration-none border rounded-3 flex-grow-1">
+                  <div class="fg-3">← Previous</div>
+                  <div class="fs-5 fw-semibold">{prevPage.title}</div>
+                  <div class="fg-3">{prevPage.groupTitle}</div>
                 </a>
               )
             }
             {
               nextPage && (
-                <a href={nextPage.url} class="d-block p-3 text-decoration-none text-end bg-1 rounded-3">
-                  <div class="color-3">Next →</div>
+                <a href={nextPage.url} class="d-block p-3 text-decoration-none text-end border rounded-3 flex-grow-1">
+                  <div class="fg-3">Next →</div>
                   <div class="fs-5 fw-semibold">{nextPage.title}</div>
-                  <div class="color-3">{nextPage.groupTitle}</div>
+                  <div class="fg-3">{nextPage.groupTitle}</div>
                 </a>
               )
             }

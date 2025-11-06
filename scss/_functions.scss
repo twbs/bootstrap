@@ -105,6 +105,23 @@
   @return $result;
 }
 
+// Extract a specific nested property from all items in a map
+// Useful for extracting a single property from nested map structures
+// Example: map-get-nested($font-sizes, "font-size")
+// Returns: ("xs": clamp(...), "sm": clamp(...), ...)
+@function map-get-nested($map, $nested-key) {
+  $result: ();
+  @each $key, $value in $map {
+    @if meta.type-of($value) == "map" {
+      $nested-value: map.get($value, $nested-key);
+      @if $nested-value != null {
+        $result: map.merge($result, ($key: $nested-value));
+      }
+    }
+  }
+  @return $result;
+}
+
 // Merge multiple maps
 @function map-merge-multiple($maps...) {
   $merged-maps: ();

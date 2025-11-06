@@ -1,44 +1,9 @@
 ---
 title: Display property
-description: Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing.
+description: Quickly and responsively toggle the display value of components and more with our display utilities.
 toc: true
-reference:
-  - class: d-none
-    styles:
-      display: 'none'
-  - class: d-inline
-    styles:
-      display: 'inline'
-  - class: d-inline-block
-    styles:
-      display: 'inline-block'
-  - class: d-block
-    styles:
-      display: 'block'
-  - class: d-grid
-    styles:
-      display: 'grid'
-  - class: d-inline-grid
-    styles:
-      display: 'inline-grid'
-  - class: d-table
-    styles:
-      display: 'table'
-  - class: d-table-row
-    styles:
-      display: 'table-row'
-  - class: d-table-cell
-    styles:
-      display: 'table-cell'
-  - class: d-flex
-    styles:
-      display: 'flex'
-  - class: d-inline-flex
-    styles:
-      display: 'inline-flex'
-  - class: d-flow-root
-    styles:
-      display: 'flow-root'
+utility:
+  - display
 ---
 
 ## How it works
@@ -74,7 +39,7 @@ The media queries affect screen widths with the given breakpoint *or larger*. Fo
 
 ## Clearfix
 
-There's no more clearfix helper in v6 as it's an outdated technique. Instead, use the `display: flow-root` utility, `.d-flow-root`. This forces a container element to create a new block formatting context without the clearfix.
+There's no more clearfix helper in Bootstrap 6 as it's an outdated technique. Instead, use the `display: flow-root` utility, `.d-flow-root`. This forces a container element to create a new block formatting context without the clearfix.
 
 <Example code={`<div class="d-flow-root">
   <div class="float-end px-3 py-2 border rounded-3">Floated element</div>
@@ -117,28 +82,6 @@ To show an element only on a given interval of screen sizes you can combine one 
 
 <Example code={`<div class="d-lg-none">hide on lg and wider screens</div>
 <div class="d-none d-lg-block">hide on screens smaller than lg</div>`} />
-
-## Display in print
-
-Change the `display` value of elements when printing with our print display utility classes. Includes support for the same `display` values as our responsive `.d-*` utilities.
-
-- `.d-print-none`
-- `.d-print-inline`
-- `.d-print-inline-block`
-- `.d-print-block`
-- `.d-print-grid`
-- `.d-print-inline-grid`
-- `.d-print-table`
-- `.d-print-table-row`
-- `.d-print-table-cell`
-- `.d-print-flex`
-- `.d-print-inline-flex`
-
-The print and display classes can be combined.
-
-<Example code={`<div class="d-print-none">Screen Only (Hide on print only)</div>
-<div class="d-none d-print-block">Print Only (Hide on screen only)</div>
-<div class="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>`} />
 
 ## CSS
 

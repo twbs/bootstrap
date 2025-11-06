@@ -1,0 +1,91 @@
+---
+title: Border color
+description: Utilities for controlling border color and opacity.
+toc: true
+alias:
+  - /docs/5.3/utilities/border-color/
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/border-color
+utility:
+  - border-color
+  - border-color-subtle
+  - border-opacity
+---
+
+import { getData } from '@libs/data'
+
+## Colors
+
+Change the `border-color` using utilities built on our theme colors using `.border-{color}` and `.border-subtle-{color}`. All these border color utilities set the `border-color` property to a local CSS variable, `--bs-border-color`, which has the value of the theme color. Color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
+
+For example, `.border-primary` sets the `--bs-border-color` variable to `var(--bs-blue-500)`:
+
+```css
+.border-primary {
+  --bs-border-color: var(--bs-blue-500);
+  border-color: var(--bs-border-color);
+}
+```
+
+This approach allows us to also easily support translucency with our `.border-{opacity}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
+
+<Example class="d-flex flex-column gap-2 bd-example-border-color-utils" code={[
+  ...getData('theme-colors').map((themeColor) => `<span class="border border-5 border-${themeColor.name}">${themeColor.name}</span>
+<span class="border border-5 border-subtle-${themeColor.name}">${themeColor.name} subtle</span>`),
+  `<span class="border border-5 border-bg">bg</span>
+  <span class="border border-5 border-body">body</span>
+  <span class="border border-5 border-muted">muted</span>
+  <span class="border border-5 border-subtle">subtle</span>
+  <span class="border border-5 border-emphasized">emphasized</span>
+  <span class="border border-5 border-black">black</span>
+<span class="border border-5 border-white">white</span>`
+]} />
+
+Or modify the default `border-color` of a component:
+
+<Example code={`<div class="mb-4">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" class="form-control border-success" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+
+  <div class="h4 pb-2 mb-4 text-danger border-bottom border-danger">
+    Dangerous heading
+  </div>
+
+  <div class="p-3 bg-info bg-10 border border-info border-start-0 rounded-end">
+    Changing border color and width
+  </div>`} />
+
+## Opacity
+
+Change the opacity of a border color by using any of the `.border-<percentage>` utilities which use `color-mix()` to mix the border color with `transparent` thanks to the CSS variable approach mentioned above.
+
+<Example code={`<div class="border border-5 border-primary p-2 mb-2">Default border</div>
+<div class="border border-5 border-primary border-90 p-2 mb-2">90% opacity</div>
+<div class="border border-5 border-primary border-80 p-2 mb-2">80% opacity</div>
+<div class="border border-5 border-primary border-70 p-2 mb-2">70% opacity</div>
+<div class="border border-5 border-primary border-60 p-2 mb-2">60% opacity</div>
+<div class="border border-5 border-primary border-50 p-2 mb-2">50% opacity</div>
+<div class="border border-5 border-primary border-40 p-2 mb-2">40% opacity</div>
+<div class="border border-5 border-primary border-30 p-2 mb-2">30% opacity</div>
+<div class="border border-5 border-primary border-20 p-2 mb-2">20% opacity</div>
+<div class="border border-5 border-primary border-10 p-2">10% opacity</div>`} />
+
+## CSS
+
+### Variables
+
+<ScssDocs name="root-border-var" file="scss/_root.scss" />
+
+### Sass variables
+
+Variables for setting `border-color` in `.border-*-subtle` utilities in light and dark mode:
+
+{/* <ScssDocs name="theme-border-subtle-variables" file="scss/_variables.scss" /> */}
+
+{/* <ScssDocs name="theme-border-subtle-dark-variables" file="scss/_variables-dark.scss" /> */}
+
+### Sass utilities API
+
+Border color utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-border-color" file="scss/_utilities.scss" />
