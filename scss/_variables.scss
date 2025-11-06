@@ -137,7 +137,7 @@ $link-decoration:                         underline !default;
 $link-underline-offset:                   .2em !default;
 $link-shade-percentage:                   20% !default;
 // $link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
-$link-hover-decoration:                   null !default;
+// $link-hover-decoration:                   $link-decoration !default;
 
 $stretched-link-pseudo-element:           after !default;
 $stretched-link-z-index:                  1 !default;
@@ -172,7 +172,7 @@ $border-widths: (
   5: 5px
 ) !default;
 $border-style:                solid !default;
-$border-color:                var(--#{$prefix}gray-200) !default;
+$border-color:                color-mix(in oklch, var(--#{$prefix}gray-100), var(--#{$prefix}gray-200)) !default;
 $border-color-translucent:    rgba($black, .175) !default;
 // scss-docs-end border-variables
 
@@ -253,24 +253,57 @@ $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
 $line-height-lg:              2 !default;
 
-$h1-font-size:                $font-size-base * 2.5 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
-$h4-font-size:                $font-size-base * 1.5 !default;
-$h5-font-size:                $font-size-base * 1.25 !default;
-$h6-font-size:                $font-size-base !default;
+$h1-font-size: var(--#{$prefix}font-size-3xl) !default;
+$h2-font-size: var(--#{$prefix}font-size-2xl) !default;
+$h3-font-size: var(--#{$prefix}font-size-xl) !default;
+$h4-font-size: var(--#{$prefix}font-size-lg) !default;
+$h5-font-size: var(--#{$prefix}font-size-md) !default;
+$h6-font-size: var(--#{$prefix}font-size-sm) !default;
 // scss-docs-end font-variables
 
-// scss-docs-start font-sizes
+// Font sizes with line-height for utilities
 $font-sizes: (
-  1: $h1-font-size,
-  2: $h2-font-size,
-  3: $h3-font-size,
-  4: $h4-font-size,
-  5: $h5-font-size,
-  6: $h6-font-size
+  "xs": (
+    "font-size": var(--#{$prefix}font-size-xs),
+    "line-height": var(--#{$prefix}line-height-xs)
+  ),
+  "sm": (
+    "font-size": var(--#{$prefix}font-size-sm),
+    "line-height": var(--#{$prefix}line-height-sm)
+  ),
+  "md": (
+    "font-size": var(--#{$prefix}font-size-md),
+    "line-height": var(--#{$prefix}line-height-md)
+  ),
+  "lg": (
+    "font-size": var(--#{$prefix}font-size-lg),
+    "line-height": var(--#{$prefix}line-height-lg)
+  ),
+  "xl": (
+    "font-size": var(--#{$prefix}font-size-xl),
+    "line-height": var(--#{$prefix}line-height-xl)
+  ),
+  "2xl": (
+    "font-size": var(--#{$prefix}font-size-2xl),
+    "line-height": var(--#{$prefix}line-height-2xl)
+  ),
+  "3xl": (
+    "font-size": var(--#{$prefix}font-size-3xl),
+    "line-height": var(--#{$prefix}line-height-3xl)
+  ),
+  "4xl": (
+    "font-size": var(--#{$prefix}font-size-4xl),
+    "line-height": var(--#{$prefix}line-height-4xl)
+  ),
+  "5xl": (
+    "font-size": var(--#{$prefix}font-size-5xl),
+    "line-height": var(--#{$prefix}line-height-5xl)
+  ),
+  "6xl": (
+    "font-size": var(--#{$prefix}font-size-6xl),
+    "line-height": var(--#{$prefix}line-height-6xl)
+  ),
 ) !default;
-// scss-docs-end font-sizes
 
 // scss-docs-start headings-variables
 $headings-margin-bottom:      $spacer * .5 !default;
@@ -281,26 +314,7 @@ $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 // scss-docs-end headings-variables
 
-// scss-docs-start display-headings
-$display-font-sizes: (
-  1: 5rem,
-  2: 4.5rem,
-  3: 4rem,
-  4: 3.5rem,
-  5: 3rem,
-  6: 2.5rem
-) !default;
-
-$display-font-family: null !default;
-$display-font-style:  null !default;
-$display-font-weight: 300 !default;
-$display-line-height: $headings-line-height !default;
-// scss-docs-end display-headings
-
 // scss-docs-start type-variables
-$lead-font-size:              $font-size-base * 1.25 !default;
-$lead-font-weight:            300 !default;
-
 $small-font-size:             .875em !default;
 
 $sub-sup-font-size:           .75em !default;

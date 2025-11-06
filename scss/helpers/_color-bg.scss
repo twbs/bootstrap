@@ -8,7 +8,7 @@
   @each $color, $value in $new-theme-colors {
     .text-bg-#{$color} {
       color: var(--#{$prefix}#{$color}-text);
-      background-color: var(--#{$prefix}#{$color}-bg-subtle);
+      --#{$prefix}bg: var(--#{$prefix}#{$color}-bg-subtle);
       // color: color-contrast($value);
       // background-color: RGBA(var(--#{$prefix}#{$color}-rgb), var(--#{$prefix}bg-opacity, 1));
     }

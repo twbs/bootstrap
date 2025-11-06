@@ -3,26 +3,38 @@ title: Background
 description: Convey meaning through `background-color` and add decoration with gradients.
 toc: true
 mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
+utility:
+  - bg-color
+  - bg-color-muted
+  - bg-color-subtle
+  - bg-opacity
+  - gradient
 ---
 
 import { getData } from '@libs/data'
 
-<Callout name="warning-color-assistive-technologies" />
+<Details name="warning-color-assistive-technologies" />
 
-## Background color
+## Colors
 
-Similar to the contextual text color classes, set the background of an element to any contextual class. Background utilities **do not set `color`**, so in some cases you’ll want to use `.text-*` [color utilities]([[docsref:/utilities/colors]]).
+Change the `background-color` using utilities built on our theme colors using `.bg-{color}`, `.bg-muted-{color}`, and `.bg-subtle-{color}`. All these background color utilities set the `background-color` property to a local CSS variable, `--bs-bg`, which has the value of the theme color. Most color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
 
-<Callout>
-Background utilities like `.bg-*` that generated from our original `$theme-colors` Sass map don’t yet respond to color modes, however, any `.bg-*-subtle` utility will. This will be resolved in v6.
-</Callout>
+For example, `.bg-primary` sets the `--bs-bg` variable to `var(--bs-primary-500)`:
+
+```css
+.bg-primary {
+  --bs-bg: var(--bs-primary-500);
+  background-color: var(--bs-bg);
+}
+```
+
+This approach allows us to also easily support translucency with our `.bg-{opacity}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} text-white">.bg-${themeColor.name}</div>
-<div class="p-3 mb-2 bg-${themeColor.name}-subtle text-${themeColor.name}-emphasis">.bg-${themeColor.name}-subtle</div>`),
-  `<div class="p-3 mb-2 bg-body-secondary">.bg-body-secondary</div>
-<div class="p-3 mb-2 bg-body-tertiary">.bg-body-tertiary</div>
-<div class="p-3 mb-2 bg-body text-body">.bg-body</div>
+  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} color-on-${themeColor.name}">.bg-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-muted-${themeColor.name} color-${themeColor.name}">.bg-muted-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-subtle-${themeColor.name} color-${themeColor.name}">.bg-subtle-${themeColor.name}</div>`),
+  `<div class="p-3 mb-2 bg-body text-body">.bg-body</div>
 <div class="p-3 mb-2 bg-black text-white">.bg-black</div>
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
 <div class="p-3 mb-2 bg-transparent text-body">.bg-transparent</div>`
@@ -43,35 +55,18 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 
 ## Opacity
 
-As of v5.1.0, `background-color` utilities are generated with Sass using CSS variables. This allows for real-time color changes without compilation and dynamic alpha transparency changes.
+Change the opacity of a background color by using any of the `.bg-<percentage>` utilities which use `color-mix()` to mix the background color with `transparent`.
 
-### How it works
-
-Consider our default `.bg-success` utility.
-
-```css
-.bg-success {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity));
-}
-```
-
-We use an RGB version of our `--bs-success` (with the value of `25, 135, 84`) CSS variable and attached a second CSS variable, `--bs-bg-opacity`, for the alpha transparency (with a default value `1` thanks to a local CSS variable). That means anytime you use `.bg-success` now, your computed `color` value is `rgba(25, 135, 84, 1)`. The local CSS variable inside each `.bg-*` class avoids inheritance issues so nested instances of the utilities don’t automatically have a modified alpha transparency.
-
-### Example
-
-To change that opacity, override `--bs-bg-opacity` via custom styles or inline styles.
-
-<Example code={`<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2" style="--bs-bg-opacity: .5;">This is 50% opacity success background</div>`} />
-
-Or, choose from any of the `.bg-opacity` utilities:
-
-<Example code={`<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2 text-white bg-opacity-75">This is 75% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-50">This is 50% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-25">This is 25% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-opacity-10">This is 10% opacity success background</div>`} />
+<Example class="d-flex flex-column gap-2" code={`<div class="bg-success p-2 text-white">This is default success background</div>
+<div class="bg-success p-2 text-white bg-90">This is 90% opacity success background</div>
+<div class="bg-success p-2 text-white bg-80">This is 80% opacity success background</div>
+<div class="bg-success p-2 text-white bg-70">This is 70% opacity success background</div>
+<div class="bg-success p-2 text-white bg-60">This is 60% opacity success background</div>
+<div class="bg-success p-2 text-dark bg-50">This is 50% opacity success background</div>
+<div class="bg-success p-2 text-dark bg-40">This is 40% opacity success background</div>
+<div class="bg-success p-2 text-dark bg-30">This is 30% opacity success background</div>
+<div class="bg-success p-2 text-dark bg-20">This is 20% opacity success background</div>
+<div class="bg-success p-2 text-dark bg-10">This is 10% opacity success background</div>`} />
 
 ## CSS
 

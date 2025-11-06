@@ -1,0 +1,85 @@
+---
+title: Font size
+description: Utilities for controlling text size, or `font-size` and `line-height` together, with responsive font sizing using `clamp()`.
+toc: true
+utility:
+  - font-size
+  - text-size
+---
+
+import { getData } from '@libs/data'
+
+<Callout type="info">
+Looking for heading classes? Head to our [headings documentation]([[docsref:/content/typography#headings]]).
+</Callout>
+
+## Font size
+
+Alternatively, you can change the `font-size` of text with `.fs-<size>` utilities. These classes only set `font-size` and offer a larger range of sizes than the heading classes.
+
+<Example code={`<div class="fs-xs">.fs-xs text</div>
+<div class="fs-sm">.fs-sm text</div>
+<div class="fs-md">.fs-md text</div>
+<div class="fs-lg">.fs-lg text</div>
+<div class="fs-xl">.fs-xl text</div>
+<div class="fs-2xl">.fs-2xl text</div>
+<div class="fs-3xl">.fs-3xl text</div>
+<div class="fs-4xl">.fs-4xl text</div>
+<div class="fs-5xl">.fs-5xl text</div>
+<div class="fs-6xl">.fs-6xl text</div>`} />
+
+## With `line-height`
+
+Swap the `.fs-*` utilities with the `.text-*` utilities to apply a `font-size` and `line-height` at the same time. These are configured from a single Sass map, `$font-sizes`.
+
+<Example code={`<div class="text-xs">.text-xs text</div>
+<div class="text-sm">.text-sm text</div>
+<div class="text-md">.text-md text</div>
+<div class="text-lg">.text-lg text</div>
+<div class="text-xl">.text-xl text</div>
+<div class="text-2xl">.text-2xl text</div>
+<div class="text-3xl">.text-3xl text</div>
+<div class="text-4xl">.text-4xl text</div>
+<div class="text-5xl">.text-5xl text</div>
+<div class="text-6xl">.text-6xl text</div>`} />
+
+## Responsive `font-size`
+
+Font sizes use CSS‘s `clamp()` to provide fluid, responsive sizing that scales between a minimum and maximum value based on the viewport width. **The `clamp()` function takes three parameters:**
+
+- a minimum value
+- a preferred value (calculated using viewport units)
+- and, a maximum value
+
+As the viewport changes, the font size smoothly transitions between the minimum and maximum values. Here's how each size scales at different viewport widths.
+
+<BsTable>
+| Size | Definition | Min | Max | @ 500px | @ 1400px |
+| ---- | ---------- | --- | --- | ------- | -------- |
+| `xs` | `clamp(.75rem, .7rem + .25vw, .875rem)` | 12px | 14px | 12.45px | 14px |
+| `sm` | `clamp(.875rem, .8rem + .375vw, 1rem)` | 14px | 16px | 14.675px | 16px |
+| `md` | `clamp(1rem, .9rem + .5vw, 1.125rem)` | 16px | 18px | 16.9px | 18px |
+| `lg` | `clamp(1.25rem, 1rem + .625vw, 1.5rem)` | 20px | 24px | 20px | 24px |
+| `xl` | `clamp(1.5rem, 1.1rem + .75vw, 1.75rem)` | 24px | 28px | 24px | 28px |
+| `2xl` | `clamp(1.75rem, 1.3rem + 1vw, 2.25rem)` | 28px | 36px | 28px | 34.8px |
+| `3xl` | `clamp(2rem, 1.5rem + 1.875vw, 2.5rem)` | 32px | 40px | 33.375px | 40px |
+| `4xl` | `clamp(2.25rem, 1.75rem + 2.5vw, 3rem)` | 36px | 48px | 40.5px | 48px |
+| `5xl` | `clamp(3rem, 2rem + 5vw, 4rem)` | 48px | 64px | 57px | 64px |
+| `6xl` | `clamp(3.75rem, 2.5rem + 6.25vw, 5rem)` | 60px | 80px | 71.25px | 80px |
+</BsTable>
+
+Customize your **available** `font-size`s by modifying the `$font-sizes` Sass map.
+
+## CSS
+
+### Variables
+
+Root font size variables are declared in our root file in `scss/_root.scss`.
+
+<ScssDocs name="root-font-size-variables" file="scss/_root.scss" />
+
+### Sass utilities API
+
+Font size utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-font-size" file="scss/_utilities.scss" />
