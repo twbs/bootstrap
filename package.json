@@ -110,7 +110,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
     "@astrojs/markdown-remark": "^6.3.8",
-    "@astrojs/mdx": "^4.3.9",
+    "@astrojs/mdx": "^4.3.10",
     "@astrojs/prism": "^3.3.0",
     "@astrojs/sitemap": "^3.6.0",
     "@babel/cli": "^7.28.3",
@@ -126,7 +126,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@types/prismjs": "^1.26.5",
-    "astro": "^5.15.3",
+    "astro": "^5.15.4",
     "astro-auto-import": "^0.4.5",
     "autoprefixer": "^10.4.21",
     "bundlewatch": "^0.4.1",
@@ -177,9 +177,9 @@
     "shelljs": "^0.10.0",
     "stylelint": "^16.25.0",
     "stylelint-config-twbs-bootstrap": "^16.1.0",
-    "terser": "^5.44.0",
+    "terser": "^5.44.1",
     "unist-util-visit": "^5.0.0",
-    "vnu-jar": "25.11.4",
+    "vnu-jar": "25.11.7",
     "zod": "^4.1.12"
   },
   "files": [
