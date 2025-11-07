@@ -14,8 +14,8 @@
   display: flex;
   flex-wrap: wrap;
   // TODO: Revisit calc order after https://github.com/react-bootstrap/react-bootstrap/issues/6039 is fixed
-  margin-top: calc(-1 * var(--#{$prefix}gutter-y));
   margin-inline: calc(-.5 * var(--#{$prefix}gutter-x));
+  margin-top: calc(-1 * var(--#{$prefix}gutter-y));
 }
 
 @mixin make-col-ready() {

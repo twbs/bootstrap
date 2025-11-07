@@ -191,8 +191,8 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
       top: 0;
       right: auto;
       left: 100%;
-      margin-top: 0;
       margin-inline-start: var(--#{$prefix}dropdown-spacer);
+      margin-top: 0;
     }
 
     .dropdown-toggle {
@@ -208,8 +208,8 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
       top: 0;
       right: 100%;
       left: auto;
-      margin-top: 0;
       margin-inline-end: var(--#{$prefix}dropdown-spacer);
+      margin-top: 0;
     }
 
     .dropdown-toggle {

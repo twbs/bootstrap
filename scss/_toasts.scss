@@ -86,8 +86,8 @@ $toast-header-border-color:         $toast-border-color !default;
     @include border-top-radius(calc(var(--#{$prefix}toast-border-radius) - var(--#{$prefix}toast-border-width)));
 
     .btn-close {
-      margin-inline-end: calc(-.5 * var(--#{$prefix}toast-padding-x));
       margin-inline-start: var(--#{$prefix}toast-padding-x);
+      margin-inline-end: calc(-.5 * var(--#{$prefix}toast-padding-x));
     }
   }
 
