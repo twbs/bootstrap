@@ -21,7 +21,7 @@
     // color: var(--bd-callout-color, inherit);
     background-color: var(--bd-callout-bg, var(--bs-gray-100));
     border: 1px solid var(--bd-callout-border, var(--bs-border-color));
-    border-left: .25rem solid var(--bd-callout-border, var(--bs-gray-300));
+    border-inline-start: .25rem solid var(--bd-callout-border, var(--bs-gray-300));
     @include border-radius(var(--bs-border-radius));
     // box-shadow: inset .25rem 0 0 var(--bd-callout-border, var(--bs-gray-300));
 

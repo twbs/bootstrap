@@ -46,8 +46,8 @@
 
 @mixin border-bottom-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-end-end-radius: valid-radius($radius);
     border-end-start-radius: valid-radius($radius);
+    border-end-end-radius: valid-radius($radius);
   }
 }
 

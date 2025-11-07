@@ -10,29 +10,29 @@ $caret-spacing:               $caret-width * .85 !default;
 // scss-docs-start caret-mixins
 @mixin caret-down($width: $caret-width) {
   border-block-start: $width solid;
-  border-inline-end: $width solid transparent;
   border-block-end: 0;
   border-inline-start: $width solid transparent;
+  border-inline-end: $width solid transparent;
 }
 
 @mixin caret-up($width: $caret-width) {
   border-block-start: 0;
-  border-inline-end: $width solid transparent;
   border-block-end: $width solid;
   border-inline-start: $width solid transparent;
+  border-inline-end: $width solid transparent;
 }
 
 @mixin caret-end($width: $caret-width) {
   border-block-start: $width solid transparent;
-  border-inline-end: 0;
   border-block-end: $width solid transparent;
   border-inline-start: $width solid;
+  border-inline-end: 0;
 }
 
 @mixin caret-start($width: $caret-width) {
   border-block-start: $width solid transparent;
-  border-inline-end: $width solid;
   border-block-end: $width solid transparent;
+  border-inline-end: $width solid;
 }
 
 @mixin caret(

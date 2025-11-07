@@ -226,12 +226,10 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 
             > .card-img-top,
             > .card-header {
-              // stylelint-disable-next-line property-disallowed-list
               border-start-end-radius: 0;
             }
             > .card-img-bottom,
             > .card-footer {
-              // stylelint-disable-next-line property-disallowed-list
               border-end-end-radius: 0;
             }
           }
@@ -241,12 +239,10 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 
             > .card-img-top,
             > .card-header {
-              // stylelint-disable-next-line property-disallowed-list
               border-start-start-radius: 0;
             }
             > .card-img-bottom,
             > .card-footer {
-              // stylelint-disable-next-line property-disallowed-list
               border-end-start-radius: 0;
             }
           }

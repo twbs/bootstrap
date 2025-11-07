@@ -17,7 +17,7 @@
     overflow: hidden;
     @include font-size(.8125rem);
     line-height: 1.4;
-    text-align: left;
+    text-align: start;
     background-color: var(--bs-bg-1);
 
     a {
@@ -31,19 +31,19 @@
   }
 
   .carbon-img {
-    float: left;
-    margin-left: -145px;
+    float: inline-start;
+    margin-inline-start: -145px;
   }
 
   @container (max-width: 240px) {
     #carbonads {
-      padding-left: 15px;
+      padding-inline-start: 15px;
     }
 
     .carbon-img {
       display: block;
       float: none;
-      margin-left: 0;
+      margin-inline-start: 0;
     }
 
     .carbon-wrap {
