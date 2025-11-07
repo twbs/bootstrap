@@ -88,7 +88,7 @@ $table-group-separator-color: currentcolor !default;
       // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
       color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}theme-text, var(--#{$prefix}table-color))));
       background-color: var(--#{$prefix}theme-bg-subtle, var(--#{$prefix}table-bg));
-      border-bottom-width: $table-border-width;
+      border-block-end-width: $table-border-width;
       box-shadow: inset 0 0 0 9999px var(--#{$prefix}table-bg-state, var(--#{$prefix}table-bg-type, var(--#{$prefix}theme-bg-subtle, var(--#{$prefix}table-accent-bg))));
     }
 
@@ -102,7 +102,7 @@ $table-group-separator-color: currentcolor !default;
   }
 
   .table-group-divider {
-    border-top: calc(#{$table-border-width} * 2) solid $table-group-separator-color;
+    border-block-start: calc(#{$table-border-width} * 2) solid $table-group-separator-color;
   }
 
   //
@@ -149,11 +149,11 @@ $table-group-separator-color: currentcolor !default;
   .table-borderless {
     // stylelint-disable-next-line selector-max-universal
     > :not(caption) > * > * {
-      border-bottom-width: 0;
+      border-block-end-width: 0;
     }
 
     > :not(:first-child) {
-      border-top-width: 0;
+      border-block-start-width: 0;
     }
   }
 
