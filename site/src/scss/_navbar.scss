@@ -34,11 +34,11 @@
 
     .navbar-toggler {
       padding: 0;
-      margin-right: -.5rem;
+      margin-inline-end: -.5rem;
       border: 0;
 
       &:first-child {
-        margin-left: -.5rem;
+        margin-inline-start: -.5rem;
       }
 
       .bi {
@@ -62,8 +62,7 @@
 
     .navbar-toggler,
     .nav-link {
-      padding-right: $spacer * .25;
-      padding-left: $spacer * .25;
+      padding-inline: $spacer * .25;
       color: rgba($white, .85);
 
       &:hover,
@@ -84,7 +83,7 @@
 
     .offcanvas-lg {
       background-color: var(--bd-violet-bg);
-      border-left: 0;
+      border-inline-start: 0;
 
       @include media-breakpoint-down(lg) {
         box-shadow: var(--#{$prefix}box-shadow-lg);

@@ -115,7 +115,7 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     margin: 0; // Override default margin of ul
     @include font-size(var(--#{$prefix}dropdown-font-size));
     color: var(--#{$prefix}dropdown-color);
-    text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+    text-align: start; // Ensures proper alignment if parent has it changed (e.g., modal footer)
     list-style: none;
     background-color: var(--#{$prefix}dropdown-bg);
     background-clip: padding-box;
@@ -226,7 +226,7 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     height: 0;
     margin: var(--#{$prefix}dropdown-divider-margin-y) 0;
     overflow: hidden;
-    border-top: 1px solid var(--#{$prefix}dropdown-divider-bg);
+    border-block-start: 1px solid var(--#{$prefix}dropdown-divider-bg);
     opacity: 1; // Revisit in v6 to de-dupe styles that conflict with <hr> element
   }
 

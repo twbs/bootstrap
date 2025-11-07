@@ -68,16 +68,15 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     }
 
     > .list-group {
-      border-top: inherit;
-      border-bottom: inherit;
+      border-block: inherit;
 
       &:first-child {
-        border-top-width: 0;
+        border-block-start-width: 0;
         @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
       }
 
       &:last-child  {
-        border-bottom-width: 0;
+        border-block-end-width: 0;
         @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
       }
     }
@@ -86,7 +85,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     // use a child selector here to prevent double borders.
     > .card-header + .list-group,
     > .list-group + .card-footer {
-      border-top: 0;
+      border-block-start: 0;
     }
   }
 
@@ -132,7 +131,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
     color: var(--#{$prefix}card-cap-color);
     background-color: var(--#{$prefix}card-cap-bg);
-    border-bottom: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
+    border-block-end: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
 
     &:first-child {
       @include border-radius(var(--#{$prefix}card-inner-border-radius) var(--#{$prefix}card-inner-border-radius) 0 0);
@@ -143,7 +142,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     padding: var(--#{$prefix}card-cap-padding-y) var(--#{$prefix}card-cap-padding-x);
     color: var(--#{$prefix}card-cap-color);
     background-color: var(--#{$prefix}card-cap-bg);
-    border-top: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
+    border-block-start: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
 
     &:last-child {
       @include border-radius(0 0 var(--#{$prefix}card-inner-border-radius) var(--#{$prefix}card-inner-border-radius));
@@ -158,11 +157,11 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   .card-header-tabs {
     margin-inline: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
     margin-bottom: calc(-1 * var(--#{$prefix}card-cap-padding-y));
-    border-bottom: 0;
+    border-block-end: 0;
 
     .nav-link.active {
       background-color: var(--#{$prefix}card-bg);
-      border-bottom-color: var(--#{$prefix}card-bg);
+      border-block-end-color: var(--#{$prefix}card-bg);
     }
   }
 
@@ -173,10 +172,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   // Card image
   .card-img-overlay {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     padding: var(--#{$prefix}card-img-overlay-padding);
     @include border-radius(var(--#{$prefix}card-inner-border-radius));
   }
@@ -220,7 +216,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 
         + .card {
           margin-inline-start: 0;
-          border-left: 0;
+          border-inline-start: 0;
         }
 
         // Handle rounded corners
@@ -230,13 +226,11 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 
             > .card-img-top,
             > .card-header {
-              // stylelint-disable-next-line property-disallowed-list
-              border-top-right-radius: 0;
+              border-start-end-radius: 0;
             }
             > .card-img-bottom,
             > .card-footer {
-              // stylelint-disable-next-line property-disallowed-list
-              border-bottom-right-radius: 0;
+              border-end-end-radius: 0;
             }
           }
 
@@ -245,13 +239,11 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 
             > .card-img-top,
             > .card-header {
-              // stylelint-disable-next-line property-disallowed-list
-              border-top-left-radius: 0;
+              border-start-start-radius: 0;
             }
             > .card-img-bottom,
             > .card-footer {
-              // stylelint-disable-next-line property-disallowed-list
-              border-bottom-left-radius: 0;
+              border-end-start-radius: 0;
             }
           }
         }

@@ -102,7 +102,7 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
     --#{$prefix}nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
     // scss-docs-end nav-tabs-css-vars
 
-    border-bottom: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
+    border-block-end: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
 
     .nav-link {
       margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width));
@@ -171,11 +171,11 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 
     .nav-link {
       padding-inline: 0;
-      border-bottom: var(--#{$prefix}nav-underline-border-width) solid transparent;
+      border-block-end: var(--#{$prefix}nav-underline-border-width) solid transparent;
 
       &:hover,
       &:focus {
-        border-bottom-color: currentcolor;
+        border-block-end-color: currentcolor;
       }
     }
 
@@ -183,7 +183,7 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
     .show > .nav-link {
       font-weight: $font-weight-bold;
       color: var(--#{$prefix}nav-underline-link-active-color);
-      border-bottom-color: currentcolor;
+      border-block-end-color: currentcolor;
     }
   }
 

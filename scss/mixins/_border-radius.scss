@@ -32,53 +32,53 @@
 
 @mixin border-top-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-top-left-radius: valid-radius($radius);
-    border-top-right-radius: valid-radius($radius);
+    border-start-start-radius: valid-radius($radius);
+    border-start-end-radius: valid-radius($radius);
   }
 }
 
 @mixin border-end-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-top-right-radius: valid-radius($radius);
-    border-bottom-right-radius: valid-radius($radius);
+    border-start-end-radius: valid-radius($radius);
+    border-end-end-radius: valid-radius($radius);
   }
 }
 
 @mixin border-bottom-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-bottom-right-radius: valid-radius($radius);
-    border-bottom-left-radius: valid-radius($radius);
+    border-end-start-radius: valid-radius($radius);
+    border-end-end-radius: valid-radius($radius);
   }
 }
 
 @mixin border-start-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-top-left-radius: valid-radius($radius);
-    border-bottom-left-radius: valid-radius($radius);
+    border-start-start-radius: valid-radius($radius);
+    border-end-start-radius: valid-radius($radius);
   }
 }
 
 @mixin border-top-start-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-top-left-radius: valid-radius($radius);
+    border-start-start-radius: valid-radius($radius);
   }
 }
 
 @mixin border-top-end-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-top-right-radius: valid-radius($radius);
+    border-start-end-radius: valid-radius($radius);
   }
 }
 
 @mixin border-bottom-end-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-bottom-right-radius: valid-radius($radius);
+    border-end-end-radius: valid-radius($radius);
   }
 }
 
 @mixin border-bottom-start-radius($radius: $border-radius) {
   @if $enable-rounded {
-    border-bottom-left-radius: valid-radius($radius);
+    border-end-start-radius: valid-radius($radius);
   }
 }
 // scss-docs-end border-radius-mixins

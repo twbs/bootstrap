@@ -22,12 +22,12 @@
       // @include font-size(.875rem);
 
       ul {
-        padding-left: 0;
+        padding-inline-start: 0;
         margin-bottom: 0;
         list-style: none;
 
         ul {
-          padding-left: 1rem;
+          padding-inline-start: 1rem;
         }
       }
 
@@ -36,12 +36,12 @@
         padding: .125rem 0 .125rem .75rem;
         color: inherit;
         text-decoration: none;
-        border-left: .125rem solid transparent;
+        border-inline-start: .125rem solid transparent;
 
         &:hover,
         &.active {
           color: var(--bd-toc-color);
-          border-left-color: var(--bd-toc-color);
+          border-inline-start-color: var(--bd-toc-color);
         }
 
         &.active {
