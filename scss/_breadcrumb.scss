@@ -46,11 +46,11 @@ $breadcrumb-border-radius:          null !default;
   .breadcrumb-item {
     // The separator between breadcrumbs (by default, a forward-slash: "/")
     + .breadcrumb-item {
-      padding-left: var(--#{$prefix}breadcrumb-item-padding-x);
+      padding-inline-start: var(--#{$prefix}breadcrumb-item-padding-x);
 
       &::before {
         float: left; // Suppress inline spacings and underlining of the separator
-        padding-right: var(--#{$prefix}breadcrumb-item-padding-x);
+        padding-inline-end: var(--#{$prefix}breadcrumb-item-padding-x);
         color: var(--#{$prefix}breadcrumb-divider-color);
         content: var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{"/* rtl:"} var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{"*/"};
       }

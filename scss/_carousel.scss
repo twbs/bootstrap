@@ -77,7 +77,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     display: none;
     float: left;
     width: 100%;
-    margin-right: -100%;
+    margin-inline-end: -100%;
     backface-visibility: hidden;
     @include transition($carousel-transition);
   }
@@ -201,9 +201,8 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     justify-content: center;
     padding: 0;
     // Use the .carousel-control's width as margin so we don't overlay those
-    margin-right: $carousel-control-width;
+    margin-inline: $carousel-control-width;
     margin-bottom: 1rem;
-    margin-left: $carousel-control-width;
 
     [data-bs-target] {
       box-sizing: content-box;
@@ -211,8 +210,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
       width: $carousel-indicator-width;
       height: $carousel-indicator-height;
       padding: 0;
-      margin-right: $carousel-indicator-spacer;
-      margin-left: $carousel-indicator-spacer;
+      margin-inline: $carousel-indicator-spacer;
       text-indent: -999px;
       cursor: pointer;
       background-color: var(--#{$prefix}carousel-indicator-active-bg);
