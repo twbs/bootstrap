@@ -150,14 +150,13 @@
 
     &.form-control-sm,
     &.form-control-lg {
-      padding-right: 0;
-      padding-left: 0;
+      padding-inline: 0;
     }
   }
 
   // stylelint-disable selector-no-qualifying-type
   select.form-control {
-    padding-right: calc(var(--#{$prefix}control-padding-x) * 3);
+    padding-inline-end: calc(var(--#{$prefix}control-padding-x) * 3);
     background-image: var(--#{$prefix}control-select-bg);
     background-repeat: no-repeat;
     background-position: var(--#{$prefix}control-select-bg-position);
@@ -165,7 +164,7 @@
 
     &[multiple],
     &[size]:not([size="1"]) {
-      padding-right: var(--#{$prefix}control-padding-x);
+      padding-inline-end: var(--#{$prefix}control-padding-x);
       background-image: none;
     }
 

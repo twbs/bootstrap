@@ -171,7 +171,7 @@
 
   ol,
   ul {
-    padding-left: 2rem;
+    padding-inline-start: 2rem;
   }
 
   ol,
@@ -195,8 +195,8 @@
   // 1. Undo browser default
 
   dd {
+    margin-inline-start: 0; // 1
     margin-bottom: .5rem;
-    margin-left: 0; // 1
   }
 
 

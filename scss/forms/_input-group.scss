@@ -137,7 +137,7 @@ $input-group-addon-border-color:        $input-border-color !default;
     }
 
     > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
-      margin-left: calc(-1 * #{$input-border-width});
+      margin-inline-start: calc(-1 * #{$input-border-width});
       @include border-start-radius(0);
     }
 

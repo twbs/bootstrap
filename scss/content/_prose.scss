@@ -106,7 +106,7 @@
     }
 
     blockquote {
-      padding-left: calc(var(--#{$prefix}content-gap) / 2);
+      padding-inline-start: calc(var(--#{$prefix}content-gap) / 2);
       margin: 0;
       border-left: 4px solid var(--#{$prefix}border-color);
     }

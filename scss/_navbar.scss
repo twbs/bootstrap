@@ -120,7 +120,7 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
   .navbar-brand {
     padding-top: var(--#{$prefix}navbar-brand-padding-y);
     padding-bottom: var(--#{$prefix}navbar-brand-padding-y);
-    margin-right: var(--#{$prefix}navbar-brand-margin-end);
+    margin-inline-end: var(--#{$prefix}navbar-brand-margin-end);
     @include font-size(var(--#{$prefix}navbar-brand-font-size));
     color: var(--#{$prefix}navbar-brand-color);
     text-decoration: none;
@@ -151,7 +151,7 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
 
     display: flex;
     flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
-    padding-left: 0;
+    padding-inline-start: 0;
     margin-bottom: 0;
     list-style: none;
 
@@ -264,8 +264,7 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
             }
 
             .nav-link {
-              padding-right: var(--#{$prefix}navbar-nav-link-padding-x);
-              padding-left: var(--#{$prefix}navbar-nav-link-padding-x);
+              padding-inline: var(--#{$prefix}navbar-nav-link-padding-x);
             }
           }
 
