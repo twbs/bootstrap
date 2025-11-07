@@ -93,7 +93,7 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
       flex-shrink: 0;
       width: var(--#{$prefix}accordion-btn-icon-width);
       height: var(--#{$prefix}accordion-btn-icon-width);
-      margin-left: auto;
+      margin-inline-start: auto;
       content: "";
       background-color: var(--#{$prefix}accordion-btn-color);
       mask: var(--#{$prefix}accordion-btn-icon) no-repeat center 100%;

@@ -64,8 +64,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     @include box-shadow(var(--#{$prefix}card-box-shadow));
 
     > hr {
-      margin-right: 0;
-      margin-left: 0;
+      margin-inline: 0;
     }
 
     > .list-group {
@@ -120,7 +119,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     }
 
     + .card-link {
-      margin-left: var(--#{$prefix}card-spacer-x);
+      margin-inline-start: var(--#{$prefix}card-spacer-x);
     }
   }
 
@@ -157,9 +156,8 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   //
 
   .card-header-tabs {
-    margin-right: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
+    margin-inline: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
     margin-bottom: calc(-1 * var(--#{$prefix}card-cap-padding-y));
-    margin-left: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
     border-bottom: 0;
 
     .nav-link.active {
@@ -169,8 +167,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   }
 
   .card-header-pills {
-    margin-right: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
-    margin-left: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
+    margin-inline: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
   }
 
   // Card image
@@ -222,7 +219,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
         margin-bottom: 0;
 
         + .card {
-          margin-left: 0;
+          margin-inline-start: 0;
           border-left: 0;
         }
 

@@ -52,7 +52,7 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 
     display: flex;
     flex-wrap: wrap;
-    padding-left: 0;
+    padding-inline-start: 0;
     margin-bottom: 0;
     list-style: none;
   }
@@ -170,8 +170,7 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
     gap: var(--#{$prefix}nav-underline-gap);
 
     .nav-link {
-      padding-right: 0;
-      padding-left: 0;
+      padding-inline: 0;
       border-bottom: var(--#{$prefix}nav-underline-border-width) solid transparent;
 
       &:hover,

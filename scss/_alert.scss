@@ -55,7 +55,7 @@ $alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers widt
   // Expand the right padding and account for the close button's positioning.
 
   .alert-dismissible {
-    padding-right: $alert-dismissible-padding-r;
+    padding-inline-end: $alert-dismissible-padding-r;
 
     // Adjust close link position
     .btn-close {
