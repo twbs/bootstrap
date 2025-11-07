@@ -172,10 +172,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   // Card image
   .card-img-overlay {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
     padding: var(--#{$prefix}card-img-overlay-padding);
     @include border-radius(var(--#{$prefix}card-inner-border-radius));
   }

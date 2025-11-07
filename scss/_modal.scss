@@ -42,8 +42,7 @@
     // scss-docs-end modal-css-vars
 
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0 auto auto 0;
     z-index: var(--#{$prefix}modal-zindex);
     display: none;
     width: 100%;

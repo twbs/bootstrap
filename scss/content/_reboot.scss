@@ -371,7 +371,7 @@
     // color: $table-caption-color;
     padding-block: .5rem;
     color: var(--#{$prefix}secondary-color);
-    text-align: left;
+    text-align: start;
   }
 
   // 1. Removes font-weight bold by inheriting
@@ -509,13 +509,13 @@
     border: 0; // 2
   }
 
-  // 1. By using `float: left`, the legend will behave like a block element.
+  // 1. By using `float: inline-start`, the legend will behave like a block element.
   //    This way the border of a fieldset wraps around the legend if present.
   // 2. Fix wrapping bug.
   //    See https://github.com/twbs/bootstrap/issues/29712
 
   legend {
-    float: left; // 1
+    float: inline-start; // 1
     width: 100%;
     padding: 0;
     margin-bottom: $legend-margin-bottom;
@@ -524,7 +524,7 @@
     @include font-size($legend-font-size);
 
     + * {
-      clear: left; // 2
+      clear: inline-start; // 2
     }
   }
 
