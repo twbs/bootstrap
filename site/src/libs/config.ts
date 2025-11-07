@@ -22,9 +22,7 @@ const configSchema = z.object({
   blog: z.string().url(),
   cdn: z.object({
     css: z.string().url(),
-    css_rtl: z.string().url(),
     css_hash: z.string(),
-    css_rtl_hash: z.string(),
     js: z.string().url(),
     js_hash: z.string(),
     js_bundle: z.string().url(),

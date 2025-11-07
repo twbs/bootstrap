@@ -86,7 +86,6 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     }
   }
 
-  /* rtl:begin:ignore */
   .bs-tooltip-end .tooltip-arrow {
     left: calc(-1 * var(--#{$prefix}tooltip-arrow-height));
     width: var(--#{$prefix}tooltip-arrow-height);
@@ -99,8 +98,6 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     }
   }
 
-  /* rtl:end:ignore */
-
   .bs-tooltip-bottom .tooltip-arrow {
     top: calc(-1 * var(--#{$prefix}tooltip-arrow-height));
 
@@ -111,7 +108,6 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     }
   }
 
-  /* rtl:begin:ignore */
   .bs-tooltip-start .tooltip-arrow {
     right: calc(-1 * var(--#{$prefix}tooltip-arrow-height));
     width: var(--#{$prefix}tooltip-arrow-height);
@@ -123,8 +119,6 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
       border-inline-start-color: var(--#{$prefix}tooltip-bg);
     }
   }
-
-  /* rtl:end:ignore */
 
   .bs-tooltip-auto {
     &[data-popper-placement^="top"] {

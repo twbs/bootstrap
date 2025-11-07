@@ -10,8 +10,7 @@ export default context => {
     plugins: {
       autoprefixer: {
         cascade: false
-      },
-      rtlcss: context.env === 'RTL'
+      }
     }
   }
 }
