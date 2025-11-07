@@ -130,7 +130,7 @@ $pagination-border-radius-lg:       var(--#{$prefix}border-radius-lg) !default;
 
   .page-item {
     &:not(:first-child) .page-link {
-      margin-left: $pagination-margin-start;
+      margin-inline-start: $pagination-margin-start;
     }
 
     @if $pagination-margin-start == calc(-1 * #{$pagination-border-width}) {

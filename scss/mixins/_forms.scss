@@ -60,7 +60,7 @@
       border-color: $border-color;
 
       @if $enable-validation-icons {
-        padding-right: $input-height-inner;
+        padding-inline-end: $input-height-inner;
         background-image: escape-svg($icon);
         background-repeat: no-repeat;
         background-position: right $input-height-inner-quarter center;
@@ -83,7 +83,7 @@
   textarea.form-control {
     @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
-        padding-right: $input-height-inner;
+        padding-inline-end: $input-height-inner;
         background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
       }
     }
@@ -97,7 +97,7 @@
         &:not([multiple]):not([size]),
         &:not([multiple])[size="1"] {
           --#{$prefix}form-select-bg-icon: #{escape-svg($icon)};
-          padding-right: $form-select-feedback-icon-padding-end;
+          padding-inline-end: $form-select-feedback-icon-padding-end;
           background-position: $form-select-bg-position, $form-select-feedback-icon-position;
           background-size: $form-select-bg-size, $form-select-feedback-icon-size;
         }
@@ -142,7 +142,7 @@
   }
   .form-check-inline .form-check-input {
     ~ .#{$state}-feedback {
-      margin-left: .5em;
+      margin-inline-start: .5em;
     }
   }
 
