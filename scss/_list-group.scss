@@ -112,11 +112,11 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
 
     // stylelint-disable-next-line scss/selector-no-redundant-nesting-selector
     & + .list-group-item {
-      border-top-width: 0;
+      border-block-start-width: 0;
 
       &.active {
         margin-top: calc(-1 * var(--#{$prefix}list-group-border-width));
-        border-top-width: var(--#{$prefix}list-group-border-width);
+        border-block-start-width: var(--#{$prefix}list-group-border-width);
       }
     }
   }
@@ -175,12 +175,12 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
           }
 
           + .list-group-item {
-            border-top-width: var(--#{$prefix}list-group-border-width);
-            border-left-width: 0;
+            border-block-start-width: var(--#{$prefix}list-group-border-width);
+            border-inline-start-width: 0;
 
             &.active {
               margin-inline-start: calc(-1 * var(--#{$prefix}list-group-border-width));
-              border-left-width: var(--#{$prefix}list-group-border-width);
+              border-inline-start-width: var(--#{$prefix}list-group-border-width);
             }
           }
         }
@@ -201,7 +201,7 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
       border-width: 0 0 var(--#{$prefix}list-group-border-width);
 
       &:last-child {
-        border-bottom-width: 0;
+        border-block-end-width: 0;
       }
     }
   }

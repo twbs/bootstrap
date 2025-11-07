@@ -76,7 +76,7 @@
     margin: $hr-margin-y 0;
     color: $hr-color; // 1
     border: 0;
-    border-top: $hr-border-width solid $hr-border-color;
+    border-block-start: $hr-border-width solid $hr-border-color;
     opacity: $hr-opacity;
   }
 

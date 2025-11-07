@@ -57,7 +57,7 @@
           top: 0;
           left: 0;
           width: var(--#{$prefix}offcanvas-width);
-          border-right: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
+          border-inline-end: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
           transform: translateX(-100%);
         }
 
@@ -65,7 +65,7 @@
           top: 0;
           right: 0;
           width: var(--#{$prefix}offcanvas-width);
-          border-left: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
+          border-inline-start: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
           transform: translateX(100%);
         }
 
@@ -75,7 +75,7 @@
           left: 0;
           height: var(--#{$prefix}offcanvas-height);
           max-height: 100%;
-          border-bottom: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
+          border-block-end: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
           transform: translateY(-100%);
         }
 
@@ -84,7 +84,7 @@
           left: 0;
           height: var(--#{$prefix}offcanvas-height);
           max-height: 100%;
-          border-top: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
+          border-block-start: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
           transform: translateY(100%);
         }
 
