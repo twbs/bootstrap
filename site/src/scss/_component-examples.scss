@@ -16,8 +16,7 @@
     border-width: 1px 0;
 
     @include media-breakpoint-up(md) {
-      margin-right: 0;
-      margin-left: 0;
+      margin-inline: 0;
       border-width: 1px;
       @include border-radius(var(--bs-border-radius));
     }
@@ -36,8 +35,7 @@
     @include media-breakpoint-up(md) {
       --bd-example-padding: 1.5rem;
 
-      margin-right: 0;
-      margin-left: 0;
+      margin-inline: 0;
       border-width: 1px;
       @include border-radius(var(--bs-border-radius));
     }
@@ -76,7 +74,7 @@
     // Images
     > svg + svg,
     > img + img {
-      margin-left: .5rem;
+      margin-inline-start: .5rem;
     }
 
     // Buttons
@@ -124,8 +122,7 @@
   .bd-example-row [class^="col"],
   .bd-example-cols [class^="col"] > *,
   .bd-example-cssgrid [class*="grid"] > * {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
+    padding-block: .75rem;
     background-color: color-mix(in srgb, var(--bd-violet) 15%, transparent);
     border: 1px solid color-mix(in srgb, var(--bd-violet) 30%, transparent);
   }
@@ -368,7 +365,7 @@
 
     @include media-breakpoint-up(lg) {
       pre {
-        margin-right: 1.875rem;
+        margin-inline-end: 1.875rem;
       }
     }
 
@@ -390,7 +387,7 @@
   }
 
   .bd-example-snippet .highlight pre {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 
   .highlight-toolbar {

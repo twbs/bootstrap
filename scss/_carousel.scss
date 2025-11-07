@@ -75,7 +75,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
   .carousel-item {
     position: relative;
     display: none;
-    float: left;
+    float: inline-start;
     width: 100%;
     margin-inline-end: -100%;
     backface-visibility: hidden;
@@ -133,8 +133,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
   .carousel-control-prev,
   .carousel-control-next {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    inset-block: 0;
     z-index: 1;
     // Use flex for alignment (1-3)
     display: flex; // 1. allow flex styles
@@ -160,11 +159,11 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     }
   }
   .carousel-control-prev {
-    left: 0;
+    inset-inline-start: 0;
     background-image: if($enable-gradients, linear-gradient(90deg, rgba($black, .25), rgba($black, .001)), null);
   }
   .carousel-control-next {
-    right: 0;
+    inset-inline-end: 0;
     background-image: if($enable-gradients, linear-gradient(270deg, rgba($black, .25), rgba($black, .001)), null);
   }
 
@@ -193,9 +192,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
 
   .carousel-indicators {
     position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: auto 0 0;
     z-index: 2;
     display: flex;
     justify-content: center;
@@ -217,8 +214,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
       background-clip: padding-box;
       border: 0;
       // Use transparent borders to increase the hit area by 10px on top and bottom.
-      border-top: $carousel-indicator-hit-area-height solid transparent;
-      border-bottom: $carousel-indicator-hit-area-height solid transparent;
+      border-block: $carousel-indicator-hit-area-height solid transparent;
       opacity: $carousel-indicator-opacity;
       @include transition($carousel-indicator-transition);
     }

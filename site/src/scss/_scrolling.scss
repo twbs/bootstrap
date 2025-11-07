@@ -11,8 +11,8 @@
     h3,
     h4,
     [tabindex="0"] {
-      scroll-margin-top: 80px;
-      scroll-margin-bottom: 100px;
+      scroll-margin-block-start: 80px;
+      scroll-margin-block-end: 100px;
     }
   }
 }

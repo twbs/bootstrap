@@ -82,7 +82,7 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     &::before {
       top: -1px;
       border-width: var(--#{$prefix}tooltip-arrow-height) calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0;
-      border-top-color: var(--#{$prefix}tooltip-bg);
+      border-block-start-color: var(--#{$prefix}tooltip-bg);
     }
   }
 
@@ -95,7 +95,7 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     &::before {
       right: -1px;
       border-width: calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height) calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0;
-      border-right-color: var(--#{$prefix}tooltip-bg);
+      border-inline-end-color: var(--#{$prefix}tooltip-bg);
     }
   }
 
@@ -107,7 +107,7 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     &::before {
       bottom: -1px;
       border-width: 0 calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height);
-      border-bottom-color: var(--#{$prefix}tooltip-bg);
+      border-block-end-color: var(--#{$prefix}tooltip-bg);
     }
   }
 
@@ -120,7 +120,7 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     &::before {
       left: -1px;
       border-width: calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0 calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height);
-      border-left-color: var(--#{$prefix}tooltip-bg);
+      border-inline-start-color: var(--#{$prefix}tooltip-bg);
     }
   }
 

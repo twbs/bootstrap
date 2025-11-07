@@ -10,7 +10,7 @@
   .bd-edit {
     position: relative;
     display: none;
-    float: right;
+    float: inline-end;
 
     + .highlight {
       margin-top: 0;
@@ -43,7 +43,7 @@
   .btn-clipboard {
     position: relative;
     z-index: 2;
+    margin-inline-end: .5rem;
     margin-top: .5rem;
-    margin-right: .5rem;
   }
 }

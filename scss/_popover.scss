@@ -97,12 +97,12 @@ $popover-arrow-height:              .5rem !default;
 
       &::before {
         bottom: 0;
-        border-top-color: var(--#{$prefix}popover-arrow-border);
+        border-block-start-color: var(--#{$prefix}popover-arrow-border);
       }
 
       &::after {
         bottom: var(--#{$prefix}popover-border-width);
-        border-top-color: var(--#{$prefix}popover-bg);
+        border-block-start-color: var(--#{$prefix}popover-bg);
       }
     }
   }
@@ -121,12 +121,12 @@ $popover-arrow-height:              .5rem !default;
 
       &::before {
         left: 0;
-        border-right-color: var(--#{$prefix}popover-arrow-border);
+        border-inline-end-color: var(--#{$prefix}popover-arrow-border);
       }
 
       &::after {
         left: var(--#{$prefix}popover-border-width);
-        border-right-color: var(--#{$prefix}popover-bg);
+        border-inline-end-color: var(--#{$prefix}popover-bg);
       }
     }
   }
@@ -144,12 +144,12 @@ $popover-arrow-height:              .5rem !default;
 
       &::before {
         top: 0;
-        border-bottom-color: var(--#{$prefix}popover-arrow-border);
+        border-block-end-color: var(--#{$prefix}popover-arrow-border);
       }
 
       &::after {
         top: var(--#{$prefix}popover-border-width);
-        border-bottom-color: var(--#{$prefix}popover-bg);
+        border-block-end-color: var(--#{$prefix}popover-bg);
       }
     }
 
@@ -162,7 +162,7 @@ $popover-arrow-height:              .5rem !default;
       width: var(--#{$prefix}popover-arrow-width);
       margin-inline-start: calc(-.5 * var(--#{$prefix}popover-arrow-width));
       content: "";
-      border-bottom: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-header-bg);
+      border-block-end: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-header-bg);
     }
   }
 
@@ -180,12 +180,12 @@ $popover-arrow-height:              .5rem !default;
 
       &::before {
         right: 0;
-        border-left-color: var(--#{$prefix}popover-arrow-border);
+        border-inline-start-color: var(--#{$prefix}popover-arrow-border);
       }
 
       &::after {
         right: var(--#{$prefix}popover-border-width);
-        border-left-color: var(--#{$prefix}popover-bg);
+        border-inline-start-color: var(--#{$prefix}popover-bg);
       }
     }
   }
@@ -214,7 +214,7 @@ $popover-arrow-height:              .5rem !default;
     @include font-size(var(--#{$prefix}popover-header-font-size));
     color: var(--#{$prefix}popover-header-color);
     background-color: var(--#{$prefix}popover-header-bg);
-    border-bottom: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-border-color);
+    border-block-end: var(--#{$prefix}popover-border-width) solid var(--#{$prefix}popover-border-color);
     @include border-top-radius(var(--#{$prefix}popover-inner-border-radius));
 
     &:empty {

@@ -40,12 +40,12 @@
       top: .875rem;
       left: 50%;
       width: 200px;
-      margin-left: -100px;
+      margin-inline-start: -100px;
     }
 
     @include media-breakpoint-up(xl) {
       width: 280px;
-      margin-left: -140px;
+      margin-inline-start: -140px;
     }
 
   }
@@ -59,7 +59,7 @@
     cursor: auto; // Needed because of [role="button"] in Algolia search modal. Remove once https://github.com/algolia/docsearch/issues/1370 is tackled.
 
     @include media-breakpoint-up(lg) {
-      padding-top: 4rem;
+      padding-block-start: 4rem;
     }
   }
 
@@ -123,16 +123,15 @@
     top: 0;
     width: auto;
     height: 1.25rem;
-    padding-right: .125rem;
-    padding-left: .125rem;
-    margin-right: 0;
+    padding-inline: .125rem;
+    margin-inline-end: 0;
     font-size: .875rem;
     background: none;
     box-shadow: none;
   }
 
   .DocSearch-Commands-Key {
-    padding-left: 1px;
+    padding-inline-start: 1px;
     font-size: .875rem;
     background-color: rgba($black, .1);
     background-image: none;
@@ -150,7 +149,7 @@
   }
 
   .DocSearch-Hit {
-    padding-bottom: 0;
+    padding-block-end: 0;
     @include border-radius(0);
 
     a {

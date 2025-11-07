@@ -42,8 +42,7 @@
     // scss-docs-end modal-css-vars
 
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0 auto auto 0;
     z-index: var(--#{$prefix}modal-zindex);
     display: none;
     width: 100%;
@@ -136,7 +135,7 @@
     flex-shrink: 0;
     align-items: center;
     padding: var(--#{$prefix}modal-header-padding);
-    border-bottom: var(--#{$prefix}modal-header-border-width) solid var(--#{$prefix}modal-header-border-color);
+    border-block-end: var(--#{$prefix}modal-header-border-width) solid var(--#{$prefix}modal-header-border-color);
     @include border-top-radius(var(--#{$prefix}modal-inner-border-radius));
 
     .btn-close {
@@ -174,7 +173,7 @@
     justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
     padding: calc(var(--#{$prefix}modal-padding) - var(--#{$prefix}modal-footer-gap) * .5);
     background-color: var(--#{$prefix}modal-footer-bg);
-    border-top: var(--#{$prefix}modal-footer-border-width) solid var(--#{$prefix}modal-footer-border-color);
+    border-block-start: var(--#{$prefix}modal-footer-border-width) solid var(--#{$prefix}modal-footer-border-color);
     @include border-bottom-radius(var(--#{$prefix}modal-inner-border-radius));
 
     // Place margin between footer elements
