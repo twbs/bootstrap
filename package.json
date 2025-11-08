@@ -169,7 +169,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "rollup": "^4.52.5",
+    "rollup": "^4.53.1",
     "rollup-plugin-istanbul": "^5.0.0",
     "rtlcss": "^4.3.0",
     "sass": "1.78.0",
@@ -179,7 +179,7 @@
     "stylelint-config-twbs-bootstrap": "^16.1.0",
     "terser": "^5.44.1",
     "unist-util-visit": "^5.0.0",
-    "vnu-jar": "25.11.7",
+    "vnu-jar": "25.11.8",
     "zod": "^4.1.12"
   },
   "files": [
