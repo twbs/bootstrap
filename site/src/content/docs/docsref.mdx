@@ -1,0 +1,43 @@
+---
+title: Docs reference
+description: Examples of Bootstrap’s documentation-specific components and styles.
+aliases: "/docsref/"
+toc: true
+robots: noindex,follow
+---
+
+## Buttons
+
+<button class="btn btn-bd-primary">Primary button</button>
+<button class="btn btn-bd-accent">Accent button</button>
+<button class="btn btn-bd-light">Light button</button>
+
+## Callouts
+
+<Callout>
+  Default callout
+</Callout>
+
+<Callout type="warning">
+  Warning callout
+</Callout>
+
+<Callout type="danger">
+  Danger callout
+</Callout>
+
+## Code example
+
+```scss
+.test {
+  --color: blue;
+}
+```
+
+<Example showMarkup={false} code={`The <abbr title="HyperText Markup Language">HTML</abbr> abbreviation element.`} />
+
+<Example code={`<div class="test">This is a test.</div>`} />
+
+<ScssDocs name="variable-gradient" file="scss/_variables.scss" />
+
+<JsDocs name="live-toast" file="site/src/assets/partials/snippets.js" />

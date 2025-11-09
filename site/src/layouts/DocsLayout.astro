@@ -1,0 +1,137 @@
+---
+import type { MarkdownHeading } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+import { getConfig } from '@libs/config'
+import type { LayoutOverridesHTMLAttributes } from '@libs/layout'
+import { getSlug, processMarkdownToHtml } from '@libs/utils'
+import { getVersionedDocsPath } from '@libs/path'
+import Ads from '@components/Ads.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import DocsSidebar from '@components/DocsSidebar.astro'
+import TableOfContents from '@components/TableOfContents.astro'
+
+interface Props {
+  frontmatter: CollectionEntry<'docs'>['data']
+  headings?: MarkdownHeading[]
+  id: CollectionEntry<'docs'>['id']
+}
+
+const { frontmatter, headings, id } = Astro.props
+
+// Extract the directory/section from the ID (format: "directory/filename.mdx")
+const parentDirectory = id.includes('/') ? id.split('/')[0] : ''
+
+const bodyProps: LayoutOverridesHTMLAttributes<'body'> = {}
+
+if (frontmatter.toc) {
+  bodyProps['data-bs-spy'] = 'scroll'
+  bodyProps['data-bs-target'] = '#TableOfContents'
+}
+---
+
+<BaseLayout {...Astro.props} layout="docs" overrides={{ body: bodyProps }}>
+  <div slot="main" class="container-xxl bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar">
+      <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
+        <div class="offcanvas-header border-bottom">
+          <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse docs</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+            data-bs-target="#bdSidebar"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <DocsSidebar />
+        </div>
+      </div>
+    </aside>
+
+    <main class="bd-main order-1">
+      <div class="bd-intro pt-2 ps-lg-2">
+        <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+          <div class="mb-3 mb-md-0 d-flex text-nowrap">
+            {
+              // This is needed because we want to show the badge if show_badge isn't present or is set to false
+              frontmatter.added &&
+                ((frontmatter.added.show_badge !== undefined && frontmatter.added.show_badge === true) ||
+                  frontmatter.added.show_badge === undefined) && (
+                  <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">
+                    Added in v{frontmatter.added.version}
+                  </small>
+                )
+            }
+            <a
+              class="btn btn-sm btn-bd-light rounded-2"
+              href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
+              title="View and edit this file on GitHub"
+              target="_blank"
+              rel="noopener"
+            >
+              View on GitHub
+            </a>
+          </div>
+          <h1 class="bd-title mb-0" id="content">{frontmatter.title}</h1>
+        </div>
+        <div class="bd-subtitle">
+          {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
+        </div>
+      </div>
+
+
+      <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+        {
+          frontmatter.toc && headings && (
+            <button
+              class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#tocContents"
+              aria-expanded="false"
+              aria-controls="tocContents"
+            >
+              On this page
+              <svg class="bi d-md-none ms-2" aria-hidden="true">
+                <use xlink:href="#chevron-expand" />
+              </svg>
+            </button>
+            <strong class="d-none d-md-block h6 my-2 ms-3" id="docs-tocs">On this page</strong>
+            <hr class="d-none d-md-block my-2 ms-3" />
+            <div class="collapse bd-toc-collapse" id="tocContents">
+              <nav id="TableOfContents" aria-labelledby="docs-tocs">
+                <TableOfContents headings={headings} />
+              </nav>
+            </div>
+          )
+        }
+        <Ads />
+      </div>
+
+      <div class="bd-content ps-lg-2">
+        {
+          frontmatter.sections && (
+            <div class="row g-3">
+              {frontmatter.sections.map((section) => (
+                <div class="col-md-6">
+                  <a
+                    class="d-block text-decoration-none"
+                    href={getVersionedDocsPath(
+                      `${parentDirectory ? parentDirectory + '/' : ''}${getSlug(section.title)}/`
+                    )}
+                  >
+                    <strong class="d-block h5 mb-0">{section.title}</strong>
+                    <span class="text-secondary">{section.description}</span>
+                  </a>
+                </div>
+              ))}
+            </div>
+          )
+        }
+
+        <slot />
+      </div>
+    </main>
+  </div>
+</BaseLayout>
