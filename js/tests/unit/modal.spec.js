@@ -100,6 +100,24 @@ describe('Modal', () => {
           expect(modalEl.getAttribute('aria-hidden')).toBeNull()
           expect(modalEl.style.display).toEqual('block')
           expect(document.querySelector('.modal-backdrop')).not.toBeNull()
+          expect(modalEl.inert).toBeFalse()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
+
+    it('should set inert to false when modal is shown', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        modalEl.inert = true
+        const modal = new Modal(modalEl)
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          expect(modalEl.inert).toBeFalse()
           resolve()
         })
 
@@ -701,7 +719,29 @@ describe('Modal', () => {
           expect(modalEl.getAttribute('role')).toBeNull()
           expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
           expect(modalEl.style.display).toEqual('none')
+          expect(modalEl.inert).toBeTrue()
           expect(backdropSpy).toHaveBeenCalled()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
+
+    it('should set inert to true when modal is hidden', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const modal = new Modal(modalEl)
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          expect(modalEl.inert).toBeFalse()
+          modal.hide()
+        })
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+          expect(modalEl.inert).toBeTrue()
           resolve()
         })
 
