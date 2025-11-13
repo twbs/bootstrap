@@ -126,7 +126,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
     "@types/prismjs": "^1.26.5",
-    "astro": "^5.15.5",
+    "astro": "^5.15.6",
     "astro-auto-import": "^0.4.5",
     "autoprefixer": "^10.4.22",
     "bundlewatch": "^0.4.1",
