@@ -4,15 +4,13 @@ description: Learn how to enable support for right-to-left text in Bootstrap acr
 toc: true
 ---
 
-## Get familiar
+<Callout type="info">
+  **ProTip:** Get familiar with Bootstrap first with our [getting started guide]([[docsref:/getting-started/introduction]]) before working with RTL.
+</Callout>
 
-We recommend getting familiar with Bootstrap first by reading through our [Getting Started Introduction page]([[docsref:/getting-started/introduction]]). Once you've run through it, continue reading here for how to enable RTL.
+## How it works
 
-## Approach
-
-Bootstrap uses **CSS logical properties** throughout the framework, making RTL support native and automatic. Set `dir="rtl"` on your HTML element and the browser will handle the directional layout changes for you—no separate stylesheets are needed anymore.
-
-### What are logical properties?
+Bootstrap uses **CSS logical properties** throughout the framework to make RTL support native and automatic. Set `dir="rtl"` and add a `lang` attribute, like `lang="ar"`, on your HTML element and the browser will handle the directional layout changes for you. No separate stylesheets are needed.
 
 Logical properties are CSS properties that adapt to the writing mode and direction of content. Instead of using physical directions like `left` and `right`, they use logical concepts like `start` and `end`:
 
@@ -21,16 +19,53 @@ Logical properties are CSS properties that adapt to the writing mode and directi
 - `padding-left` → `padding-inline-start`
 - `border-right` → `border-inline-end`
 
-When you set `dir="rtl"`, these logical properties automatically flip to match the right-to-left layout without requiring any additional CSS transformations.
+When you set `dir="rtl"`, these logical properties automatically flip to match the right-to-left layout without requiring any additional CSS transformations. Only HTML changes are required.
 
-## Required HTML
+### Required HTML
 
-There are two strict requirements for enabling RTL in Bootstrap-powered pages:
+One line of changes to your HTML is all it takes to enable RTL. Bootstrap will then automatically adapt to the RTL direction using logical properties.
 
-1. Set `dir="rtl"` on the `<html>` element.
-2. Add an appropriate `lang` attribute, like `lang="ar"`, on the `<html>` element.
+```diff
+- <html lang="en">
++ <html lang="ar" dir="rtl">
+```
 
-Bootstrap will then automatically adapt to the RTL direction using logical properties.
+### Live demo
+
+Toggle between LTR and RTL on this page to see Bootstrap's logical properties in action:
+
+<div class="bd-example">
+  <b-checkgroup>
+    <div class="switch">
+      <input type="checkbox" value="" id="rtlSwitch" switch />
+    </div>
+    <label for="rtlSwitch">Enable RTL mode</label>
+  </b-checkgroup>
+</div>
+
+<script>
+{`
+(function() {
+  const rtlSwitch = document.getElementById('rtlSwitch');
+  const htmlElement = document.documentElement;
+
+  // Check current direction on load
+  if (htmlElement.getAttribute('dir') === 'rtl') {
+    rtlSwitch.checked = true;
+  }
+
+  rtlSwitch.addEventListener('change', function() {
+    if (this.checked) {
+      htmlElement.setAttribute('dir', 'rtl');
+      htmlElement.setAttribute('lang', 'ar');
+    } else {
+      htmlElement.setAttribute('dir', 'ltr');
+      htmlElement.setAttribute('lang', 'en');
+    }
+  });
+})();
+`}
+</script>
 
 ### Starter template
 
@@ -70,9 +105,9 @@ Here's a modified RTL starter template:
 
 Get started with one of our several [RTL examples]([[docsref:/examples/#rtl]]).
 
-## Switching between LTR and RTL
+## Switching directions
 
-Need both LTR and RTL on the same page? Simply wrap your content in containers with different `dir` attributes:
+**Need both LTR and RTL on the same page?** Wrap your content in containers with different `dir` attributes:
 
 ```html
 <!doctype html>
