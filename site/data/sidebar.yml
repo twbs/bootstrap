@@ -186,13 +186,6 @@
         - title: Opacity
         - title: Shadows
 
-- title: Extend
-  icon: tools
-  icon_color: blue
-  pages:
-    - title: Approach
-    - title: Icons
-
 - title: About
   icon: globe2
   icon_color: indigo
