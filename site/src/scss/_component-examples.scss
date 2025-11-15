@@ -11,14 +11,12 @@
 
 @layer custom {
   .bd-code-snippet {
+    --bd-example-border-width: 4px;
     margin: 0 ($bd-gutter-x * -.5) 1rem;
-    border: solid var(--bs-border-color);
-    border-width: 1px 0;
 
     @include media-breakpoint-up(md) {
       margin-inline: 0;
-      border-width: 1px;
-      @include border-radius(var(--bs-border-radius));
+      @include border-radius(var(--bs-border-radius-lg));
     }
   }
 
@@ -29,7 +27,8 @@
     display: flow-root;
     padding: var(--bd-example-padding);
     margin: 0 ($bd-gutter-x * -.5) 1rem;
-    border: solid var(--bs-border-color);
+    background-color: var(--bs-bg-body);
+    border: solid var(--bs-border-subtle);
     border-width: 1px 0;
 
     @include media-breakpoint-up(md) {
@@ -37,7 +36,7 @@
 
       margin-inline: 0;
       border-width: 1px;
-      @include border-radius(var(--bs-border-radius));
+      @include border-radius(calc(var(--bs-border-radius-lg) - var(--bd-example-border-width)));
     }
 
     + p {
@@ -113,6 +112,11 @@
     .pagination {
       margin-bottom: 0;
     }
+  }
+
+  .bd-example-snippet {
+    padding: var(--bd-example-border-width);
+    background-color: var(--bd-pre-bg);
   }
 
   //

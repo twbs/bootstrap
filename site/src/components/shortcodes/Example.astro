@@ -76,7 +76,7 @@ const simplifiedMarkup = sourceMarkup
 <div class="bd-example-snippet bd-code-snippet">
   {
     showPreview && (
-      <div id={id} class:list={['bd-example m-0 border-0', className]}>
+      <div id={id} class:list={['bd-example m-0', className]}>
         <Fragment set:html={markup} />
       </div>
     )
@@ -86,8 +86,8 @@ const simplifiedMarkup = sourceMarkup
     showMarkup && (
       <>
         {showPreview && (
-          <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
-            <small class="font-monospace text-body-secondary text-uppercase">{lang}</small>
+          <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 pt-2">
+            <small class="font-monospace fg-3 text-uppercase">{lang}</small>
             <div class="d-flex ms-auto">
               <button
                 type="button"
