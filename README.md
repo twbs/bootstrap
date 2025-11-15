@@ -87,34 +87,18 @@ Within the download you’ll find the following directories and files, logically
   │   ├── bootstrap-grid.css.map
   │   ├── bootstrap-grid.min.css
   │   ├── bootstrap-grid.min.css.map
-  │   ├── bootstrap-grid.rtl.css
-  │   ├── bootstrap-grid.rtl.css.map
-  │   ├── bootstrap-grid.rtl.min.css
-  │   ├── bootstrap-grid.rtl.min.css.map
   │   ├── bootstrap-reboot.css
   │   ├── bootstrap-reboot.css.map
   │   ├── bootstrap-reboot.min.css
   │   ├── bootstrap-reboot.min.css.map
-  │   ├── bootstrap-reboot.rtl.css
-  │   ├── bootstrap-reboot.rtl.css.map
-  │   ├── bootstrap-reboot.rtl.min.css
-  │   ├── bootstrap-reboot.rtl.min.css.map
   │   ├── bootstrap-utilities.css
   │   ├── bootstrap-utilities.css.map
   │   ├── bootstrap-utilities.min.css
   │   ├── bootstrap-utilities.min.css.map
-  │   ├── bootstrap-utilities.rtl.css
-  │   ├── bootstrap-utilities.rtl.css.map
-  │   ├── bootstrap-utilities.rtl.min.css
-  │   ├── bootstrap-utilities.rtl.min.css.map
   │   ├── bootstrap.css
   │   ├── bootstrap.css.map
   │   ├── bootstrap.min.css
-  │   ├── bootstrap.min.css.map
-  │   ├── bootstrap.rtl.css
-  │   ├── bootstrap.rtl.css.map
-  │   ├── bootstrap.rtl.min.css
-  │   └── bootstrap.rtl.min.css.map
+  │   └── bootstrap.min.css.map
   └── js/
       ├── bootstrap.bundle.js
       ├── bootstrap.bundle.js.map
@@ -131,7 +115,7 @@ Within the download you’ll find the following directories and files, logically
   ```
 </details>
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers’ developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/docs/v2/).
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/docs/v2/). All CSS files work for both LTR and RTL layouts thanks to logical properties—simply set `dir="rtl"` on your HTML element.
 
 
 ## Bugs and feature requests
