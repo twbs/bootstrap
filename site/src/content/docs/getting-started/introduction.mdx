@@ -144,6 +144,14 @@ Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box
 
 For improved cross-browser rendering, we use [Reboot]([[docsref:/content/reboot]]) to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
 
+### Browser support
+
+You can find our supported range of browsers and their versions [in our `.browserslistrc file`]([[config:repo]]/blob/v[[config:current_version]]/.browserslistrc):
+
+<Code lang="plaintext" filePath=".browserslistrc" />
+
+We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intended browser support via CSS prefixes, which uses [Browserslist](https://github.com/browserslist/browserslist) to manage these browser versions. Consult their documentation for how to integrate these tools into your projects.
+
 ## Community
 
 Stay up-to-date on the development of Bootstrap and reach out to the community with these helpful resources.
