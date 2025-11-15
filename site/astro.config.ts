@@ -24,7 +24,13 @@ export default defineConfig({
   integrations: [bootstrap()],
   markdown: {
     smartypants: false,
-    syntaxHighlight: 'prism'
+    syntaxHighlight: 'shiki',
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark'
+      }
+    }
   },
   site,
   vite: {

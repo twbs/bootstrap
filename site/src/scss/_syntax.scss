@@ -4,162 +4,45 @@
 @use "../../../scss/variables" as *;
 @use "../../../scss/mixins/color-mode" as *;
 
+// Shell prompt colors for light mode
 :root,
 [data-bs-theme="light"] {
-  // --base00: #fff;
-  // --base01: #f5f5f5;
-  --base02: #c8c8fa;
-  --base03: #565c64;
-  --base04: #666;
-  --base05: #333;
-  --base06: #fff;
-  --base07: var(--#{$prefix}teal-700); // #9a6700
-  --base08: color-mix(in srgb, var(--#{$prefix}red-500), var(--#{$prefix}red-600)); // #bc4c00
-  --base09: var(--#{$prefix}  cyan-700); // #087990
-  --base0A: var(--#{$prefix}purple-500); // #795da3
-  --base0B: var(--#{$prefix}blue-700); // #183691
-  --base0C: var(--#{$prefix}blue-700); // #183691
-  --base0D: var(--#{$prefix}purple-500); // #795da3
-  --base0E: var(--#{$prefix}pink-600); // #a71d5d
-  --base0F: #333;
+  --shell-prompt-color: #565c64;
 }
 
+// Shell prompt colors for dark mode
 @include color-mode(dark, true) {
-  // --base00: #282c34;
-  // --base01: #353b45;
-  --base02: #3e4451;
-  --base03: #868e96;
-  --base04: #868e96;
-  --base05: #abb2bf;
-  --base06: #b6bdca;
-  --base07: var(--#{$prefix}orange-300); // #d19a66
-  --base08: var(--#{$prefix}cyan-300);
-  --base09: var(--#{$prefix}orange-300); // #d19a66
-  --base0A: var(--#{$prefix}yellow-200); // #e5c07b
-  --base0B: var(--#{$prefix}teal-300); // #98c379
-  --base0C: var(--#{$prefix}teal-300); // #56b6c2
-  --base0D: var(--#{$prefix}blue-300); // #61afef
-  --base0E: var(--#{$prefix}indigo-200); // #c678dd
-  --base0F: var(--#{$prefix}red-300); // #be5046
+  --shell-prompt-color: #868e96;
 }
 
-// Shell prompts
+.shiki {
+  background-color: transparent !important; // stylelint-disable-line declaration-no-important
+}
+
+// Shiki dual-theme support
+// Light mode: use default inline styles (no override needed)
+// Dark mode: override to use the dark theme CSS variables
+@include color-mode(dark, true) {
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important; // stylelint-disable-line declaration-no-important
+  }
+}
+
+// Shell prompts - these work with Shiki's transformer that adds .line class
 @layer custom {
   .language-bash .line::before,
   .language-sh .line::before {
     display: inline-block;
-    color: var(--base03);
+    color: var(--shell-prompt-color);
     content: "$ ";
     user-select: none;
   }
 
   .language-powershell .line::before {
     display: inline-block;
-    color: var(--base0C);
+    color: var(--shell-prompt-color);
     content: "PM> ";
     user-select: none;
-  }
-
-  .token {
-    &.comment,
-    &.prolog,
-    &.doctype,
-    &.cdata {
-      color: var(--base03);
-    }
-
-    &.punctuation {
-      color: var(--base05);
-    }
-
-    &.property {
-      color: var(--base0A);
-    }
-
-    &.tag {
-      color: var(--base08);
-    }
-
-    &.boolean,
-    &.number {
-      color: var(--base09);
-    }
-
-    &.constant,
-    &.symbol,
-    &.deleted {
-      color: var(--base08);
-    }
-
-    &.attr-name,
-    &.string,
-    &.char,
-    &.builtin,
-    &.inserted {
-      color: var(--base0C);
-    }
-
-    &.operator,
-    &.entity,
-    &.url {
-      color: var(--base05);
-    }
-
-    &.atrule,
-    &.attr-value,
-    &.keyword {
-      color: var(--base0E);
-    }
-
-    &.function {
-      color: var(--base0B);
-    }
-
-    &.selector,
-    &.class-name {
-      color: var(--base07);
-    }
-
-    &.regex,
-    &.important {
-      color: var(--base0A);
-    }
-
-    &.variable {
-      color: var(--base08);
-    }
-
-    &.important,
-    &.bold {
-      font-weight: $font-weight-bold;
-    }
-
-    &.italic {
-      font-style: italic;
-    }
-
-    &.entity {
-      cursor: help;
-    }
-  }
-
-  .language-diff {
-    .token {
-      &.deleted {
-        color: var(--#{$prefix}red-400);
-        background-color: transparent;
-      }
-      &.inserted {
-        color: var(--#{$prefix}green-400);
-        background-color: transparent;
-      }
-    }
-  }
-
-  .language-bash,
-  .language-sh {
-    .token.comment {
-      color: var(--base03);
-    }
   }
 }

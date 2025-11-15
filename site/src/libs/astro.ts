@@ -10,7 +10,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { getConfig } from './config'
 import { rehypeBsTable } from './rehype'
 import { remarkBsConfig, remarkBsDocsref } from './remark'
-import { configurePrism } from './prism'
+// import { configurePrism } from './prism'
 import {
   docsDirectory,
   getDocsFsPath,
@@ -38,7 +38,7 @@ const headingsRangeRegex = new RegExp(`^h[${getConfig().anchors.min}-${getConfig
 export function bootstrap(): AstroIntegration[] {
   const sitemapExcludedUrls = sitemapExcludes.map((url) => `${getConfig().baseURL}${url}/`)
 
-  configurePrism()
+  // configurePrism()
 
   return [
     bootstrap_auto_import(),
