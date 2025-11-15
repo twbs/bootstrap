@@ -58,24 +58,20 @@ try {
   writeFileSync(outputPath, JSON.stringify(parsed, null, 2))
   console.log(`✓ Wrote metadata to ${outputPath}`)
 
-  // Clean up temporary CSS files (including RTL variants that may have been generated)
+  // Clean up temporary CSS files
   try {
     unlinkSync(cssPath)
   } catch {
     // File may not exist
   }
 
-  // Also clean up any RTL variants that postcss may have created
-  const rtlFiles = [
-    'dist/css/utilities-metadata.tmp.rtl.css',
-    'dist/css/utilities-metadata.tmp.rtl.css.map',
-    'dist/css/utilities-metadata.tmp.rtl.min.css',
-    'dist/css/utilities-metadata.tmp.rtl.min.css.map',
+  // Also clean up any other temporary variants that may have been created
+  const tempFiles = [
     'dist/css/utilities-metadata.tmp.min.css',
     'dist/css/utilities-metadata.tmp.min.css.map'
   ]
 
-  for (const file of rtlFiles) {
+  for (const file of tempFiles) {
     try {
       unlinkSync(path.join(rootDir, file))
     } catch {

@@ -30,10 +30,6 @@ const files = [
     configPropertyName: 'css_hash'
   },
   {
-    file: 'dist/css/bootstrap.rtl.min.css',
-    configPropertyName: 'css_rtl_hash'
-  },
-  {
     file: 'dist/js/bootstrap.min.js',
     configPropertyName: 'js_hash'
   },
