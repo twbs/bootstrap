@@ -179,7 +179,7 @@
     "stylelint-config-twbs-bootstrap": "^16.1.0",
     "terser": "^5.44.1",
     "unist-util-visit": "^5.0.0",
-    "vnu-jar": "25.11.8",
+    "vnu-jar": "25.11.17",
     "zod": "^4.1.12"
   },
   "files": [
