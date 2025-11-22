@@ -8,13 +8,13 @@ toc: true
 
 Provide an option to dismiss or close a component with `.btn-close`. Default styling is limited, but highly customizable. Modify the Sass variables to replace the default `background-image`. **Be sure to include text for screen readers**, as we’ve done with `aria-label`.
 
-<Example code={`<button type="button" class="btn-close" aria-label="Close"></button>`} />
+<Example code={`<button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>`} />
 
 ## Disabled state
 
 Disabled close buttons change their `opacity`. We’ve also applied `pointer-events: none` and `user-select: none` to preventing hover and active states from triggering.
 
-<Example code={`<button type="button" class="btn-close" disabled aria-label="Close"></button>`} />
+<Example code={`<button type="button" class="btn-close" disabled><span class="visually-hidden">Close</span></button>`} />
 
 ## Dark variant
 
@@ -27,8 +27,8 @@ Disabled close buttons change their `opacity`. We’ve also applied `pointer-eve
 Add `data-bs-theme="dark"` to the `.btn-close`, or to its parent element, to invert the close button. This uses the `filter` property to invert the `background-image` without overriding its value.
 
 <Example class="bg-dark" code={`<div data-bs-theme="dark">
-    <button type="button" class="btn-close" aria-label="Close"></button>
-    <button type="button" class="btn-close" disabled aria-label="Close"></button>
+    <button type="button" class="btn-close"><span class="visually-hidden">Close</span></button>
+    <button type="button" class="btn-close" disabled><span class="visually-hidden">Close</span></button>
   </div>`} />
 
 ## CSS

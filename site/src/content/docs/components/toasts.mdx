@@ -28,7 +28,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -49,7 +49,7 @@ Click the button below to show a toast (positioned with our utilities in the low
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -70,7 +70,7 @@ Click the button below to show a toast (positioned with our utilities in the low
       <img src="..." class="rounded me-2" alt="...">
       <strong class="me-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -92,7 +92,7 @@ Toasts are slightly translucent to blend in with what’s below them.
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
       <small class="text-body-secondary">11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -109,7 +109,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
         <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
         <strong class="me-auto">Bootstrap</strong>
         <small class="text-body-secondary">just now</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
       </div>
       <div class="toast-body">
         See? Just like this.
@@ -121,7 +121,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
         <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
         <strong class="me-auto">Bootstrap</strong>
         <small class="text-body-secondary">2 seconds ago</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
       </div>
       <div class="toast-body">
         Heads up, toasts will stack automatically
@@ -138,7 +138,7 @@ Customize your toasts by removing sub-components, tweaking them with [utilities]
       <div class="toast-body">
         Hello, world! This is a toast message.
       </div>
-      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
     </div>
   </div>`} />
 
@@ -163,7 +163,7 @@ Building on the above example, you can create different toast color schemes with
       <div class="toast-body">
         Hello, world! This is a toast message.
       </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
     </div>
   </div>`} />
 
@@ -218,7 +218,7 @@ For systems that generate more notifications, consider using a wrapping element 
           <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
           <strong class="me-auto">Bootstrap</strong>
           <small class="text-body-secondary">just now</small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
         </div>
         <div class="toast-body">
           See? Just like this.
@@ -230,7 +230,7 @@ For systems that generate more notifications, consider using a wrapping element 
           <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
           <strong class="me-auto">Bootstrap</strong>
           <small class="text-body-secondary">2 seconds ago</small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
         </div>
         <div class="toast-body">
           Heads up, toasts will stack automatically
@@ -250,7 +250,7 @@ You can also get fancy with flexbox utilities to align toasts horizontally and/o
         <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
         <strong class="me-auto">Bootstrap</strong>
         <small>11 mins ago</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
       </div>
       <div class="toast-body">
         Hello, world! This is a toast message.
@@ -281,7 +281,7 @@ When using `autohide: false`, you must add a close button to allow users to dism
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
