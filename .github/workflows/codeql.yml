@@ -24,21 +24,21 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
           persist-credentials: false
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@014f16e7ab1402f30e7c3329d33797e7948572db # v4.31.3
+        uses: github/codeql-action/init@fdbfb4d2750291e159f0156def62b853c2798ca2 # v4.31.5
         with:
           config-file: ./.github/codeql/codeql-config.yml
           languages: "javascript"
           queries: +security-and-quality
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@014f16e7ab1402f30e7c3329d33797e7948572db # v4.31.3
+        uses: github/codeql-action/autobuild@fdbfb4d2750291e159f0156def62b853c2798ca2 # v4.31.5
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@014f16e7ab1402f30e7c3329d33797e7948572db # v4.31.3
+        uses: github/codeql-action/analyze@fdbfb4d2750291e159f0156def62b853c2798ca2 # v4.31.5
         with:
           category: "/language:javascript"
