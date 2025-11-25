@@ -116,7 +116,7 @@
     "@babel/cli": "^7.28.3",
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
-    "@docsearch/js": "^3.9.0",
+    "@docsearch/js": "^4.3.2",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-commonjs": "^29.0.0",
@@ -180,7 +180,7 @@
     "terser": "^5.44.1",
     "unist-util-visit": "^5.0.0",
     "vnu-jar": "25.11.20",
-    "zod": "^4.1.12"
+    "zod": "^4.1.13"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
