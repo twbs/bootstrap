@@ -237,6 +237,7 @@ describe('Modal', () => {
         modal.show()
       })
     })
+
     it('should set is transitioning if fade class is present', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div class="modal fade"><div class="modal-dialog"></div></div>'
@@ -550,6 +551,7 @@ describe('Modal', () => {
         modal.show()
       })
     })
+
     it('should close modal when escape key is pressed with keyboard = true and backdrop is static', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
@@ -677,6 +679,44 @@ describe('Modal', () => {
         modal.show()
       })
     })
+
+    it('should call .focus() when config function returns true', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const focusSpy = spyOn(modalEl, 'focus')
+        const modal = new Modal(modalEl, {
+          focus: () => true
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          expect(focusSpy).toHaveBeenCalled()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
+
+    it('should NOT call .focus() when config function returns false', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const focusSpy = spyOn(modalEl, 'focus')
+        const modal = new Modal(modalEl, {
+          focus: () => false
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          expect(focusSpy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
   })
 
   describe('hide', () => {
@@ -760,6 +800,129 @@ describe('Modal', () => {
           buttonEl.click()
           expect(spy).not.toHaveBeenCalled()
           resolve()
+        })
+
+        modal.show()
+      })
+    })
+
+    it('should not close on Escape when "keyboard" option is dynamically changed to false', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+        const config = { keyboard: 'closing' }
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const modal = new Modal(modalEl, {
+          keyboard: () => config.keyboard === 'closing'
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          config.keyboard = 'nothing'
+
+          const keydownEscape = createEvent('keydown')
+          keydownEscape.key = 'Escape'
+          modalEl.dispatchEvent(keydownEscape)
+
+          expect(modal._isShown).toBeTrue()
+          resolve()
+        })
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+          reject(new Error('Should not hide a modal'))
+        })
+
+        modal.show()
+      })
+    })
+
+    it('should close on Escape when "keyboard" option is dynamically changed to true', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+        const config = { keyboard: 'nothing' }
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const modal = new Modal(modalEl, {
+          keyboard: () => config.keyboard === 'closing'
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          config.keyboard = 'closing'
+
+          const keydownEscape = createEvent('keydown')
+          keydownEscape.key = 'Escape'
+          modalEl.dispatchEvent(keydownEscape)
+        })
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
+
+    it('should close by backdrop click when option dynamically changed to true', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+        const config = { backdrop: 'static' }
+        const modalEl = fixtureEl.querySelector('.modal')
+        const modal = new Modal(modalEl, {
+          backdrop: () => config.backdrop
+        })
+
+        const backdropSpy = spyOn(modal._backdrop, 'hide').and.callThrough()
+        EventHandler.one(modalEl, 'click', () => {
+          if (config.backdrop === false) {
+            modal.hide()
+          }
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          config.backdrop = false
+
+          modalEl.click()
+        })
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+          expect(backdropSpy).toHaveBeenCalled()
+          resolve()
+        })
+
+        modal.show()
+      })
+    })
+
+    it('should not close by backdrop click when option dynamically changed to "static"', () => {
+      return new Promise((resolve, reject) => {
+        fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+        const config = { backdrop: false }
+        const modalEl = fixtureEl.querySelector('.modal')
+        const modal = new Modal(modalEl, {
+          backdrop: () => config.backdrop
+        })
+
+        const backdropSpy = spyOn(modal._backdrop, 'hide').and.callThrough()
+        EventHandler.one(modalEl, 'click', () => {
+          if (config.backdrop === false) {
+            modal.hide()
+          }
+        })
+
+        modalEl.addEventListener('shown.bs.modal', () => {
+          config.backdrop = 'static'
+
+          modalEl.click()
+
+          expect(backdropSpy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+          reject(new Error('Should not hide a modal'))
         })
 
         modal.show()
@@ -1077,6 +1240,7 @@ describe('Modal', () => {
         modal.show()
       })
     })
+
     it('should not focus the trigger if the modal is not visible', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -1109,6 +1273,7 @@ describe('Modal', () => {
         trigger.click()
       })
     })
+
     it('should not focus the trigger if the modal is not shown', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -1162,6 +1327,7 @@ describe('Modal', () => {
       })
     })
   })
+
   describe('jQueryInterface', () => {
     it('should create a modal', () => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
