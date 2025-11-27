@@ -52,7 +52,7 @@
   display: block;
   padding: var(--#{$prefix}list-group-item-padding-y) var(--#{$prefix}list-group-item-padding-x);
   color: var(--#{$prefix}list-group-color);
-  text-decoration: if($link-decoration == none, null, none);
+  text-decoration: none;
   background-color: var(--#{$prefix}list-group-bg);
   border: var(--#{$prefix}list-group-border-width) solid var(--#{$prefix}list-group-border-color);
 
