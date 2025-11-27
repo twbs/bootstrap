@@ -17,3 +17,22 @@
     }, false)
   })
 })()
+
+// Workaround for Bootstrap dropdown toggling on Enter in form inputs
+// See: https://github.com/twbs/bootstrap/issues/41354
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    if (
+      event.target.tagName === 'INPUT' &&
+      event.target.form
+    ) {
+      // Find all dropdown toggles after the input in the same form
+      let dropdowns = Array.from(event.target.form.querySelectorAll('[data-bs-toggle="dropdown"]'));
+      let inputIndex = Array.from(event.target.form.elements).indexOf(event.target);
+      if (dropdowns.some(btn => Array.from(event.target.form.elements).indexOf(btn) > inputIndex)) {
+        event.stopPropagation();
+      }
+    }
+  }
+}, true);
