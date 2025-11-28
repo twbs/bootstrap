@@ -823,6 +823,39 @@ describe('Collapse', () => {
       })
     })
 
+    it('should not open multiple accordion panels when rapidly clicking different triggers', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="accordion">',
+          '  <a id="linkTriggerOne" data-bs-toggle="collapse" data-bs-target="#collapseOne" href="#" aria-expanded="false"></a>',
+          '  <a id="linkTriggerTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo" href="#" aria-expanded="false"></a>',
+          '  <a id="linkTriggerThree" data-bs-toggle="collapse" data-bs-target="#collapseThree" href="#" aria-expanded="false"></a>',
+          '  <div id="collapseOne" class="collapse" data-bs-parent="#accordion"></div>',
+          '  <div id="collapseTwo" class="collapse" data-bs-parent="#accordion"></div>',
+          '  <div id="collapseThree" class="collapse" data-bs-parent="#accordion"></div>',
+          '</div>'
+        ].join('')
+
+        const triggerOne = fixtureEl.querySelector('#linkTriggerOne')
+        const triggerTwo = fixtureEl.querySelector('#linkTriggerTwo')
+        const triggerThree = fixtureEl.querySelector('#linkTriggerThree')
+        const collapseOne = fixtureEl.querySelector('#collapseOne')
+        const collapseTwo = fixtureEl.querySelector('#collapseTwo')
+        const collapseThree = fixtureEl.querySelector('#collapseThree')
+
+        collapseOne.addEventListener('shown.bs.collapse', () => {
+          expect(collapseOne).toHaveClass('show')
+          expect(collapseTwo).not.toHaveClass('show')
+          expect(collapseThree).not.toHaveClass('show')
+          resolve()
+        })
+
+        triggerOne.click()
+        triggerTwo.click()
+        triggerThree.click()
+      })
+    })
+
     it('should collapse accordion children but not nested accordion children', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
