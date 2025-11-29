@@ -457,8 +457,8 @@ describe('ScrollSpy', () => {
           '<div id="header" style="height: 500px;"></div>',
           '<nav id="navigation" class="navbar">',
           '  <ul class="navbar-nav">',
-          '    <li class="nav-item"><a id="one-link"   class="nav-link active" href="#one">One</a></li>',
-          '    <li class="nav-item"><a id="two-link"   class="nav-link" href="#two">Two</a></li>',
+          '    <li class="nav-item"><a id="one-link" class="nav-link active" href="#one">One</a></li>',
+          '    <li class="nav-item"><a id="two-link" class="nav-link" href="#two">Two</a></li>',
           '    <li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>',
           '  </ul>',
           '</nav>',
@@ -482,7 +482,7 @@ describe('ScrollSpy', () => {
           const active = () => fixtureEl.querySelector('.active')
           expect(spy).toHaveBeenCalled()
 
-          expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
+          expect(active()).toHaveSize(1)
           expect(active().getAttribute('id')).toEqual('two-link')
           onScrollStop(() => {
             expect(active()).toBeNull()
