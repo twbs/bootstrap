@@ -283,11 +283,11 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
   return list[Math.max(0, Math.min(index, listLength - 1))]
 }
 
-function onScrollEnd(element, callback, timeout = 250) {
+function onScrollEnd(element, callback, timeout = 250, once = true) {
   const isSupported = typeof window !== 'undefined' && 'onscrollend' in window
 
   if (isSupported) {
-    element.addEventListener('scrollend', callback, { passive: true, once: true })
+    element.addEventListener('scrollend', callback, { passive: true, once })
     return
   }
 
@@ -301,7 +301,7 @@ function onScrollEnd(element, callback, timeout = 250) {
     }, timeout)
   }
 
-  element.addEventListener('scroll', handleScroll, { passive: true, once: true })
+  element.addEventListener('scroll', handleScroll, { passive: true, once })
 }
 
 export {

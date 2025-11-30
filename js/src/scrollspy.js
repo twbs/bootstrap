@@ -38,9 +38,16 @@ const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SE
 const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
+const Modes = {
+  broad: '0px 0px -25%',
+  sticky: '-5% 0px -90% 0px',
+  reading: '-10% 0px -60% 0px'
+}
+
 const Default = {
   offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
-  rootMargin: '-10% 0px -90% 0px',
+  rootMargin: Modes.sticky,
+  mode: null,
   smoothScroll: false,
   target: null,
   threshold: [0]
@@ -49,6 +56,7 @@ const Default = {
 const DefaultType = {
   offset: '(number|null)', // TODO v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: 'string',
+  mode: '(string|null)',
   smoothScroll: 'boolean',
   target: 'element',
   threshold: 'array'
@@ -89,7 +97,12 @@ class ScrollSpy extends BaseComponent {
   refresh() {
     this._initializeTargetsAndObservables()
     this._maybeEnableSmoothScroll()
-    this._setScrollHandler()
+
+    if (this._rootElement) {
+      this._setElementScrollSpy()
+    } else {
+      this._setWindowScrollSpy()
+    }
 
     if (this._observer) {
       this._observer.disconnect()
@@ -149,33 +162,53 @@ class ScrollSpy extends BaseComponent {
     })
   }
 
-  _setScrollHandler() {
+  _setElementScrollSpy() {
     onScrollEnd(this._element, () => {
       const position = this._element.scrollTop + this._element.clientHeight
       const height = this._element.scrollHeight
 
       if (Math.abs(height - position) <= 1) {
-        const targets = [...this._targetLinks]
-        const [, lastAnchorElement] = targets.pop()
-
-        if (!lastAnchorElement.classList.contains(CLASS_NAME_ACTIVE)) {
-          for (const [, element] of targets) {
-            this._clearActiveClass(element)
-          }
-
-          this._setActiveClass(lastAnchorElement)
-        }
+        this._setLastAnchorAsActive()
       }
 
-      this._setScrollHandler()
+      this._setElementScrollSpy()
     })
+  }
+
+  _setWindowScrollSpy() {
+    onScrollEnd(window, () => {
+      const docHeight = document.documentElement.scrollHeight
+      const scrollPos = window.scrollY + window.innerHeight
+      const threshold = 100
+
+      if (docHeight - scrollPos <= threshold) {
+        this._setLastAnchorAsActive()
+      }
+
+      this._setWindowScrollSpy()
+    })
+  }
+
+  _setLastAnchorAsActive() {
+    const targets = [...this._targetLinks]
+    const [, lastAnchorElement] = targets.pop()
+
+    if (!lastAnchorElement.classList.contains(CLASS_NAME_ACTIVE)) {
+      for (const [, element] of targets) {
+        this._clearActiveClass(element)
+      }
+
+      this._setActiveClass(lastAnchorElement)
+    }
   }
 
   _getNewObserver() {
     const options = {
       root: this._rootElement,
       threshold: this._config.threshold,
-      rootMargin: this._config.rootMargin
+      rootMargin: Object.keys(Modes).includes(this._config.mode) ?
+        Modes[this._config.mode] :
+        this._config.rootMargin
     }
 
     return new IntersectionObserver(entries => this._observerCallback(entries), options)
