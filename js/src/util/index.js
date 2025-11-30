@@ -283,6 +283,27 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
   return list[Math.max(0, Math.min(index, listLength - 1))]
 }
 
+function onScrollEnd(element, callback, timeout = 250) {
+  const isSupported = typeof window !== 'undefined' && 'onscrollend' in window
+
+  if (isSupported) {
+    element.addEventListener('scrollend', callback, { passive: true, once: true })
+    return
+  }
+
+  let timer
+
+  const handleScroll = () => {
+    clearTimeout(timer)
+
+    timer = setTimeout(() => {
+      callback()
+    }, timeout)
+  }
+
+  element.addEventListener('scroll', handleScroll, { passive: true, once: true })
+}
+
 export {
   defineJQueryPlugin,
   execute,
@@ -302,5 +323,6 @@ export {
   parseSelector,
   reflow,
   triggerTransitionEnd,
-  toType
+  toType,
+  onScrollEnd
 }

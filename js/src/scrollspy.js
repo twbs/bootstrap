@@ -9,7 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import {
-  defineJQueryPlugin, getElement, isDisabled, isVisible
+  defineJQueryPlugin, getElement, isDisabled, isVisible, onScrollEnd
 } from './util/index.js'
 
 /**
@@ -89,6 +89,7 @@ class ScrollSpy extends BaseComponent {
   refresh() {
     this._initializeTargetsAndObservables()
     this._maybeEnableSmoothScroll()
+    this._setScrollHandler()
 
     if (this._observer) {
       this._observer.disconnect()
@@ -145,6 +146,28 @@ class ScrollSpy extends BaseComponent {
         // Chrome 60 doesn't support `scrollTo`
         root.scrollTop = height
       }
+    })
+  }
+
+  _setScrollHandler() {
+    onScrollEnd(this._element, () => {
+      const position = this._element.scrollTop + this._element.clientHeight
+      const height = this._element.scrollHeight
+
+      if (Math.abs(height - position) <= 1) {
+        const targets = [...this._targetLinks]
+        const [, lastAnchorElement] = targets.pop()
+
+        if (!lastAnchorElement.classList.contains(CLASS_NAME_ACTIVE)) {
+          for (const [, element] of targets) {
+            this._clearActiveClass(element)
+          }
+
+          this._setActiveClass(lastAnchorElement)
+        }
+      }
+
+      this._setScrollHandler()
     })
   }
 
