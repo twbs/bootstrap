@@ -9,7 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import {
-  defineJQueryPlugin, getElement, isDisabled, isVisible, onScrollEnd
+  defineJQueryPlugin, getElement, isDisabled, isVisible
 } from './util/index.js'
 
 /**
@@ -163,7 +163,7 @@ class ScrollSpy extends BaseComponent {
   }
 
   _setElementScrollSpy() {
-    onScrollEnd(this._element, () => {
+    this._onScrollEnd(this._element, () => {
       const position = this._element.scrollTop + this._element.clientHeight
       const height = this._element.scrollHeight
 
@@ -176,7 +176,7 @@ class ScrollSpy extends BaseComponent {
   }
 
   _setWindowScrollSpy() {
-    onScrollEnd(window, () => {
+    this._onScrollEnd(window, () => {
       const docHeight = document.documentElement.scrollHeight
       const scrollPos = window.scrollY + window.innerHeight
       const threshold = 100
@@ -200,6 +200,27 @@ class ScrollSpy extends BaseComponent {
 
       this._setActiveClass(lastAnchorElement)
     }
+  }
+
+  _onScrollEnd(element, callback) {
+    const isSupported = typeof window !== 'undefined' && 'onscrollend' in window
+
+    if (!this._rootElement && isSupported) {
+      element.addEventListener('scrollend', callback, { passive: true, once: true })
+      return
+    }
+
+    let timer
+
+    const handleScroll = () => {
+      clearTimeout(timer)
+
+      timer = setTimeout(() => {
+        callback()
+      }, 180)
+    }
+
+    element.addEventListener('scroll', handleScroll, { passive: true, once: true })
   }
 
   _getNewObserver() {
