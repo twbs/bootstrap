@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: awaiting reply
         if: github.event.label.name == 'needs-example'
-        uses: actions-cool/issues-helper@564cd9b1baacd7a9cd634e8039a149901ee5f600 # v3.7.1
+        uses: actions-cool/issues-helper@9861779a695cf1898bd984c727f685f351cfc372 # v3.7.2
         with:
           actions: "create-comment"
           token: ${{ secrets.GITHUB_TOKEN }}
