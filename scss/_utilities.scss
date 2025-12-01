@@ -674,6 +674,18 @@ $utilities: map-merge(
         )
       )
     ),
+    "background-color-inherit": (
+      css-var: true,
+      css-variable-name: current-plane-bg,
+      class: bg,
+      values: map-merge(
+        map-loop($utilities-bg, color-css-var, "$key", "bg"),
+        (
+          "body-secondary": var(--#{$prefix}secondary-bg),
+          "body-tertiary": var(--#{$prefix}tertiary-bg),
+        )
+      )
+    ),
     "bg-opacity": (
       css-var: true,
       class: bg-opacity,
