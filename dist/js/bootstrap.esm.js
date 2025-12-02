@@ -2259,9 +2259,13 @@ class FocusTrap extends Config {
     if (elements.length === 0) {
       trapElement.focus();
     } else if (this._lastTabNavDirection === TAB_NAV_BACKWARD) {
-      elements[elements.length - 1].focus();
+      elements[elements.length - 1].focus({
+        preventScroll: true
+      });
     } else {
-      elements[0].focus();
+      elements[0].focus({
+        preventScroll: true
+      });
     }
   }
   _handleKeydown(event) {

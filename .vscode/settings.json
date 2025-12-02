@@ -4,6 +4,12 @@
     "source.fixAll.stylelint": "always"
   },
   "editor.renderWhitespace": "all",
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": null,
+  "[javascript]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
   "scss.validate": false,
   "stylelint.enable": true,
   "stylelint.validate": ["scss"]
