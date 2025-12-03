@@ -191,6 +191,32 @@ describe('Backdrop', () => {
       })
     })
 
+    describe('keydown callback', () => {
+      it('should execute keydown callback on keydown event', () => {
+        return new Promise(resolve => {
+          const spy = jasmine.createSpy('spy')
+
+          const instance = new Backdrop({
+            isVisible: true,
+            isAnimated: false,
+            keydownCallback: () => spy()
+          })
+          const endTest = () => {
+            setTimeout(() => {
+              expect(spy).toHaveBeenCalled()
+              resolve()
+            }, 10)
+          }
+
+          instance.show(() => {
+            const keydownEvent = new Event('keydown', { bubbles: true, cancelable: true })
+            document.querySelector(CLASS_BACKDROP).dispatchEvent(keydownEvent)
+            endTest()
+          })
+        })
+      })
+    })
+
     describe('animation callbacks', () => {
       it('should show and hide backdrop after counting transition duration if it is animated', () => {
         return new Promise(resolve => {
