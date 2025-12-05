@@ -38,12 +38,12 @@ const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
 export const SPY_ENGINE_CONFIG = {
-  rootMargin: '-2% 0px -98% 0px',
+  rootMargin: '-2% 0px -98% 0px', // Laser pointer method on the top edge of the screen
   threshold: [0]
 }
 
 export const SPY_SENTRY_CONFIG = {
-  rootMargin: '0px 0px 0px 0px',
+  rootMargin: '0px 0px 0px 0px', // The sentry signals as soon as 1px of it is visible
   threshold: [0]
 }
 
@@ -52,7 +52,7 @@ const Default = {
   threshold: SPY_ENGINE_CONFIG.threshold,
   smoothScroll: false,
   target: null,
-  navigation: null
+  offsetElement: null
 }
 
 const DefaultType = {
@@ -60,7 +60,7 @@ const DefaultType = {
   threshold: 'array',
   smoothScroll: 'boolean',
   target: 'element',
-  navigation: '(element|string|null)'
+  offsetElement: '(element|null)'
 }
 
 /**
@@ -124,10 +124,14 @@ class ScrollSpy extends BaseComponent {
   // Private
   _configAfterMerge(config) {
     config.target = getElement(config.target)
-    config.navigation = getElement(config.navigation)
+    config.offsetElement = getElement(config.offsetElement)
 
     if (!config.target) {
       throw new TypeError('Bootstrap ScrollSpy: You must specify a valid "target" element')
+    }
+
+    if (typeof config.threshold === 'string') {
+      config.threshold = config.threshold.split(',').map(Number.parseFloat)
     }
 
     return config
@@ -138,18 +142,77 @@ class ScrollSpy extends BaseComponent {
     this._observableSections = new Map()
     this._sentryObserverElement = SelectorEngine.findOne('.sentry-observer', this._element)
 
+    // Using the `refresh` method, we must delete this element and add it again (there may be dynamic loading of content)
     if (this._sentryObserverElement) {
       this._sentryObserverElement.remove()
       this._sentryObserverElement = null
     }
 
-    const sentryObserverElement = document.createElement('div')
-
-    sentryObserverElement.classList.add('sentry-observer')
-    sentryObserverElement.style.height = '1px'
-    sentryObserverElement.style.width = '1px'
-    sentryObserverElement.style.visibility = 'hidden'
+    const sentryObserverElement = this._createSentryElement()
     this._element.append(sentryObserverElement)
+  }
+
+  // In order not to violate the HTML5 specification, you need to select the appropriate element
+  _createSentryElement() {
+    const tagName = this._element.tagName.toUpperCase()
+    let sentinelTag
+
+    switch (tagName) {
+      case 'UL':
+      case 'OL':
+      case 'MENU': {
+        sentinelTag = 'li'
+        break
+      }
+
+      case 'TABLE':
+      case 'TBODY':
+      case 'THEAD':
+      case 'TFOOT': {
+        sentinelTag = 'tr'
+        break
+      }
+
+      case 'TR': {
+        sentinelTag = 'td'
+        break
+      }
+
+      case 'P': {
+        sentinelTag = 'span'
+        break
+      }
+
+      case 'SELECT':
+      case 'OPTGROUP': {
+        sentinelTag = 'option'
+        break
+      }
+
+      default: {
+        sentinelTag = 'div'
+      }
+    }
+
+    const sentryObserverElement = document.createElement(sentinelTag)
+    sentryObserverElement.classList.add('sentry-observer')
+
+    Object.assign(sentryObserverElement.style, {
+      width: '0px',
+      height: '0px',
+      padding: '0',
+      margin: '0',
+      border: '1px solid transparent',
+      visibility: 'hidden',
+      pointerEvents: 'none',
+      zIndex: '-1'
+    })
+
+    if (sentinelTag === 'span') {
+      sentryObserverElement.style.display = 'inline-block'
+    }
+
+    return sentryObserverElement
   }
 
   _captureTargets() {
@@ -176,17 +239,19 @@ class ScrollSpy extends BaseComponent {
   }
 
   _customizeScrollBehavior() {
-    const { navigation } = this._config
+    const { offsetElement } = this._config
     const currentRootElement = this._rootElement ?? document.documentElement
     const computedStyle = getComputedStyle(currentRootElement)
     const scrollPaddingTop = computedStyle.getPropertyValue('scroll-padding-top')
     const scrollBehavior = computedStyle.getPropertyValue('scroll-behavior')
 
-    if (navigation && scrollPaddingTop === 'auto') {
-      currentRootElement.style.scrollPaddingTop = `${navigation.getBoundingClientRect().height}px`
-      this._config.rootMargin = `-${navigation.getBoundingClientRect().height + 10}px 0px -90% 0px`
+    // We set the dynamic offset only if the user has not decided to set his own
+    if (offsetElement && this._config.rootMargin === SPY_ENGINE_CONFIG.rootMargin && scrollPaddingTop === 'auto') {
+      currentRootElement.style.scrollPaddingTop = `${offsetElement.getBoundingClientRect().height}px`
+      this._config.rootMargin = `-${offsetElement.getBoundingClientRect().height + 10}px 0px -90% 0px`
     }
 
+    // We add and delete, according to the configuration, only if the user has not manually hung the class
     if (this._rootElement && this._config.smoothScroll && scrollBehavior !== 'smooth') {
       this._rootElement.style.scrollBehavior = 'smooth'
     }

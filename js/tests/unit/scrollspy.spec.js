@@ -50,8 +50,8 @@ describe('ScrollSpy', () => {
   `
   }
 
-  const scrollTo = (el, height) => {
-    el.scrollTop = height
+  const scrollTo = (element, height) => {
+    element.scrollTop = height
   }
 
   const scrolling = component => container => ({ clickBy: anchorSelector, scrollTo: targetSelector }) => {
@@ -390,6 +390,55 @@ describe('ScrollSpy', () => {
 
       expect(scrollSpy._observer.thresholds).toEqual(SPY_ENGINE_CONFIG.threshold)
     })
+
+    it('should threshold option transmitted and processed', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const scrollSpyComponent = new ScrollSpy('#content', {
+        target: '#navbar',
+        rootMargin: '100px'
+      })
+
+      expect(scrollSpyComponent._config.rootMargin).toEqual('100px')
+    })
+
+    it('should respect threshold option transmitted and processed', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const scrollSpyComponent = new ScrollSpy('#content', {
+        target: '#navbar',
+        threshold: [1]
+      })
+
+      expect(scrollSpyComponent._observer.thresholds).toEqual([1])
+    })
+
+    it('should respect threshold option markup', () => {
+      fixtureEl.innerHTML = [
+        '<ul id="navigation" class="navbar">',
+        '   <a class="nav-link active" id="one-link" href="#">One</a>' +
+        '</ul>',
+        '<div id="content" data-bs-threshold="0,0.2,1">',
+        '  <div id="one-link">test</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy('#content', {
+        target: '#navigation'
+      })
+
+      // See https://stackoverflow.com/a/45592926
+      const expectToBeCloseToArray = (actual, expected) => {
+        expect(actual.length).toBe(expected.length)
+
+        for (const x of actual) {
+          const i = actual.indexOf(x)
+          expect(x).withContext(`[${i}]`).toBeCloseTo(expected[i])
+        }
+      }
+
+      expectToBeCloseToArray(scrollSpy._observer.thresholds, [0, 0.2, 1])
+    })
   })
 
   describe('Scrollspy scroll behaviour', () => {
@@ -440,7 +489,7 @@ describe('ScrollSpy', () => {
       expect(rootElement).toHaveClass('active')
     })
 
-    it('should add to nav the active class to the correct element (nav markup)', async () => {
+    it('should add to nav the active class to the correct element (list-group markup)', async () => {
       fixtureEl.innerHTML = [
         '<nav id="navbar" class="navbar">',
         '  <ul class="nav">',
@@ -475,7 +524,7 @@ describe('ScrollSpy', () => {
       expect(thirdLink).toHaveClass('active')
     })
 
-    it('should add to list-group, the active class to the correct element (list-group markup)', async () => {
+    it('should add to list-group, the active class to the correct element (nav markup)', async () => {
       fixtureEl.innerHTML = [
         '<nav id="navbar" class="navbar">',
         '<nav class="nav">',
@@ -619,6 +668,67 @@ describe('ScrollSpy', () => {
       expect(scrollSpy._targetLinks.size).toBe(5)
     })
 
+    it('should the sentinel element is correct to the simple scrolling container', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const scrollSpyContainer = fixtureEl.querySelector('.content')
+      ScrollSpy.getOrCreateInstance(scrollSpyContainer)
+      const sentry = scrollSpyContainer.lastElementChild
+
+      expect(sentry).toHaveClass('sentry-observer')
+      expect(sentry.tagName.toUpperCase()).toBe('DIV')
+    })
+
+    it('should the sentinel element is correct to the list scrolling container', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="list-group">',
+        '  <li class="list-group-item">Item 1</li>',
+        '  <li class="list-group-item">Item 2</li>',
+        '  <li class="list-group-item">Item 3</li>',
+        '</ul>',
+        '<ul class="content" style="height: 200px; overflow-y: auto;">',
+        '  <li id="div-1" style="height: 300px;">test</li>',
+        '  <li id="div-2" style="height: 300px;">test</li>',
+        '  <li id="div-3" style="height: 300px;">test</li>',
+        '</div>'
+      ]
+
+      const scrollSpyContainer = fixtureEl.querySelector('.content')
+      ScrollSpy.getOrCreateInstance(scrollSpyContainer, {
+        target: '.list-group'
+      })
+      const sentry = scrollSpyContainer.lastElementChild
+
+      expect(sentry).toHaveClass('sentry-observer')
+      expect(sentry.tagName.toUpperCase()).toBe('LI')
+    })
+
+    it('should the sentinel element is correct to the table scrolling container', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="list-group">',
+        '  <li class="list-group-item">Item 1</li>',
+        '  <li class="list-group-item">Item 2</li>',
+        '  <li class="list-group-item">Item 3</li>',
+        '</ul>',
+        '<table style="height: 200px; overflow-y: auto;">',
+        '  <tr class="content" style="height: 300px;">',
+        '    <td id="div-1" style="height: 300px;">test</td>',
+        '    <td id="div-2" style="height: 300px;">test</td>',
+        '    <td id="div-3" style="height: 300px;">test</td>',
+        '  </tr>',
+        '</div>'
+      ]
+
+      const scrollSpyContainer = fixtureEl.querySelector('.content')
+      ScrollSpy.getOrCreateInstance(scrollSpyContainer, {
+        target: '.list-group'
+      })
+      const sentry = scrollSpyContainer.lastElementChild
+
+      expect(sentry).toHaveClass('sentry-observer')
+      expect(sentry.tagName.toUpperCase()).toBe('TD')
+    })
+
     it('should append the sentinel element to the scrolling container', () => {
       fixtureEl.innerHTML = getDummyFixture()
 
@@ -709,7 +819,7 @@ describe('ScrollSpy', () => {
         const scrollSpyContainer = fixtureEl.querySelector('.content')
         const scrollSpyComponent = new ScrollSpy(scrollSpyContainer, {
           target: '#navbar',
-          navigation: '#navigation',
+          offsetElement: '#navigation',
           smoothScroll: true
         })
 
