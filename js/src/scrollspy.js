@@ -9,7 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import {
-  defineJQueryPlugin, getElement, isDisabled, isVisible
+  getElement, isDisabled, isVisible, parseSelector
 } from './util/index.js'
 
 /**
@@ -22,7 +22,6 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`
-const EVENT_CLICK = `click${EVENT_KEY}`
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
@@ -38,28 +37,30 @@ const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SE
 const SELECTOR_DROPDOWN = '.dropdown'
 const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
-const Modes = {
-  broad: '0px 0px -25%',
-  sticky: '-5% 0px -90% 0px',
-  reading: '-10% 0px -60% 0px'
-}
-
-const Default = {
-  offset: null, // TODO: v6 @deprecated, keep it for backwards compatibility reasons
-  rootMargin: Modes.sticky,
-  mode: null,
-  smoothScroll: false,
-  target: null,
+export const SPY_ENGINE_CONFIG = {
+  rootMargin: '-2% 0px -98% 0px',
   threshold: [0]
 }
 
+export const SPY_SENTRY_CONFIG = {
+  rootMargin: '0px 0px 0px 0px',
+  threshold: [0]
+}
+
+const Default = {
+  rootMargin: SPY_ENGINE_CONFIG.rootMargin,
+  threshold: SPY_ENGINE_CONFIG.threshold,
+  smoothScroll: false,
+  target: null,
+  navigation: null
+}
+
 const DefaultType = {
-  offset: '(number|null)', // TODO v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: 'string',
-  mode: '(string|null)',
+  threshold: 'array',
   smoothScroll: 'boolean',
   target: 'element',
-  threshold: 'array'
+  navigation: '(element|string|null)'
 }
 
 /**
@@ -76,6 +77,8 @@ class ScrollSpy extends BaseComponent {
     this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
     this._activeTarget = null
     this._observer = null
+    this._sentryObserver = null
+    this._sentryObserverElement = null
 
     this.refresh() // initialize
   }
@@ -95,147 +98,141 @@ class ScrollSpy extends BaseComponent {
 
   // Public
   refresh() {
-    this._initializeTargetsAndObservables()
-    this._maybeEnableSmoothScroll()
+    this._initializeTargets()
+    this._captureTargets()
+    this._customizeScrollBehavior()
 
-    if (this._rootElement) {
-      this._setElementScrollSpy()
-    } else {
-      this._setWindowScrollSpy()
-    }
+    this._observer?.disconnect()
+    this._observer = this._getNewObserver()
 
-    if (this._observer) {
-      this._observer.disconnect()
-    } else {
-      this._observer = this._getNewObserver()
-    }
+    this._sentryObserver?.disconnect()
+    this._sentryObserver = this._getNewSentryObserver()
 
     for (const section of this._observableSections.values()) {
       this._observer.observe(section)
     }
+
+    this._sentryObserver.observe(this._sentryObserverElement)
   }
 
   dispose() {
     this._observer.disconnect()
+    this._sentryObserver.disconnect()
     super.dispose()
   }
 
   // Private
   _configAfterMerge(config) {
-    // TODO: on v6 target should be given explicitly & remove the {target: 'ss-target'} case
-    config.target = getElement(config.target) || document.body
+    config.target = getElement(config.target)
+    config.navigation = getElement(config.navigation)
 
-    // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
-    config.rootMargin = config.offset ? `${config.offset}px 0px -30%` : config.rootMargin
-
-    if (typeof config.threshold === 'string') {
-      config.threshold = config.threshold.split(',').map(value => Number.parseFloat(value))
+    if (!config.target) {
+      throw new TypeError('Bootstrap ScrollSpy: You must specify a valid "target" element')
     }
 
     return config
   }
 
-  _maybeEnableSmoothScroll() {
-    if (!this._config.smoothScroll) {
+  _initializeTargets() {
+    this._targetLinks = new Map()
+    this._observableSections = new Map()
+    this._sentryObserverElement = SelectorEngine.findOne('.sentry-observer', this._element)
+
+    if (this._sentryObserverElement) {
+      this._sentryObserverElement.remove()
+      this._sentryObserverElement = null
+    }
+
+    const sentryObserverElement = document.createElement('div')
+
+    sentryObserverElement.classList.add('sentry-observer')
+    sentryObserverElement.style.height = '1px'
+    sentryObserverElement.style.width = '1px'
+    sentryObserverElement.style.visibility = 'hidden'
+    this._element.append(sentryObserverElement)
+  }
+
+  _captureTargets() {
+    const targetLinks = SelectorEngine.find(SELECTOR_TARGET_LINKS, this._config.target)
+
+    for (const anchor of targetLinks) {
+      // ensure that the anchor has an id and is not disabled
+      if (!anchor.hash || isDisabled(anchor)) {
+        continue
+      }
+
+      const withDecodeUri = decodeURI(anchor.hash)
+      const withEscape = parseSelector(withDecodeUri)
+      const observableSection = SelectorEngine.findOne(withEscape, this._element)
+
+      // ensure that the observableSection exists & is visible
+      if (isVisible(observableSection)) {
+        this._targetLinks.set(withDecodeUri, anchor)
+        this._observableSections.set(anchor.hash, observableSection)
+      }
+    }
+
+    this._sentryObserverElement = SelectorEngine.findOne('.sentry-observer', this._element)
+  }
+
+  _customizeScrollBehavior() {
+    const { navigation } = this._config
+    const currentRootElement = this._rootElement ?? document.documentElement
+    const computedStyle = getComputedStyle(currentRootElement)
+    const scrollPaddingTop = computedStyle.getPropertyValue('scroll-padding-top')
+    const scrollBehavior = computedStyle.getPropertyValue('scroll-behavior')
+
+    if (navigation && scrollPaddingTop === 'auto') {
+      currentRootElement.style.scrollPaddingTop = `${navigation.getBoundingClientRect().height}px`
+      this._config.rootMargin = `-${navigation.getBoundingClientRect().height + 10}px 0px -90% 0px`
+    }
+
+    if (this._rootElement && this._config.smoothScroll && scrollBehavior !== 'smooth') {
+      this._rootElement.style.scrollBehavior = 'smooth'
+    }
+
+    if (this._rootElement && !this._config.smoothScroll) {
+      this._rootElement.style.scrollBehavior = ''
+    }
+  }
+
+  _getNewSentryObserver() {
+    const options = {
+      root: this._rootElement,
+      threshold: SPY_SENTRY_CONFIG.threshold,
+      rootMargin: SPY_SENTRY_CONFIG.rootMargin
+    }
+
+    return new IntersectionObserver(entries => this._sentryObserverCallback(entries), options)
+  }
+
+  _sentryObserverCallback(entries) {
+    const entry = entries[0]
+
+    if (!entry.isIntersecting) {
       return
     }
 
-    // unregister any previous listeners
-    EventHandler.off(this._config.target, EVENT_CLICK)
+    const targets = [...this._targetLinks.values()]
+    const lastLink = targets[targets.length - 1]
 
-    EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
-      const observableSection = this._observableSections.get(event.target.hash)
-
-      if (observableSection) {
-        event.preventDefault()
-        const root = this._rootElement || window
-        const height = observableSection.offsetTop - this._element.offsetTop
-
-        if (root.scrollTo) {
-          root.scrollTo({ top: height, behavior: 'smooth' })
-          return
-        }
-
-        // Chrome 60 doesn't support `scrollTo`
-        root.scrollTop = height
-      }
-    })
-  }
-
-  _setElementScrollSpy() {
-    this._onScrollEnd(this._element, () => {
-      const position = this._element.scrollTop + this._element.clientHeight
-      const height = this._element.scrollHeight
-
-      if (Math.abs(height - position) <= 1) {
-        this._setLastAnchorAsActive()
-      }
-
-      this._setElementScrollSpy()
-    })
-  }
-
-  _setWindowScrollSpy() {
-    this._onScrollEnd(window, () => {
-      const docHeight = document.documentElement.scrollHeight
-      const scrollPos = window.scrollY + window.innerHeight
-      const threshold = 100
-
-      if (docHeight - scrollPos <= threshold) {
-        this._setLastAnchorAsActive()
-      }
-
-      this._setWindowScrollSpy()
-    })
-  }
-
-  _setLastAnchorAsActive() {
-    const targets = [...this._targetLinks]
-    const [, lastAnchorElement] = targets.pop()
-
-    if (!lastAnchorElement.classList.contains(CLASS_NAME_ACTIVE)) {
-      for (const [, element] of targets) {
-        this._clearActiveClass(element)
-      }
-
-      this._setActiveClass(lastAnchorElement)
-    }
-  }
-
-  _onScrollEnd(element, callback) {
-    const isSupported = typeof window !== 'undefined' && 'onscrollend' in window
-
-    if (!this._rootElement && isSupported) {
-      element.addEventListener('scrollend', callback, { passive: true, once: true })
+    if (!lastLink) {
       return
     }
 
-    let timer
-
-    const handleScroll = () => {
-      clearTimeout(timer)
-
-      timer = setTimeout(() => {
-        callback()
-      }, 180)
-    }
-
-    element.addEventListener('scroll', handleScroll, { passive: true, once: true })
+    this._process(lastLink)
   }
 
   _getNewObserver() {
     const options = {
       root: this._rootElement,
       threshold: this._config.threshold,
-      rootMargin: Object.keys(Modes).includes(this._config.mode) ?
-        Modes[this._config.mode] :
-        this._config.rootMargin
+      rootMargin: this._config.rootMargin
     }
 
     return new IntersectionObserver(entries => this._observerCallback(entries), options)
   }
 
-  // The logic of selection
   _observerCallback(entries) {
     const visibleEntry = entries.find(entry => entry.isIntersecting)
 
@@ -246,28 +243,6 @@ class ScrollSpy extends BaseComponent {
     const element = this._targetLinks.get(`#${visibleEntry.target.id}`)
 
     this._process(element)
-  }
-
-  _initializeTargetsAndObservables() {
-    this._targetLinks = new Map()
-    this._observableSections = new Map()
-
-    const targetLinks = SelectorEngine.find(SELECTOR_TARGET_LINKS, this._config.target)
-
-    for (const anchor of targetLinks) {
-      // ensure that the anchor has an id and is not disabled
-      if (!anchor.hash || isDisabled(anchor)) {
-        continue
-      }
-
-      const observableSection = SelectorEngine.findOne(decodeURI(anchor.hash), this._element)
-
-      // ensure that the observableSection exists & is visible
-      if (isVisible(observableSection)) {
-        this._targetLinks.set(decodeURI(anchor.hash), anchor)
-        this._observableSections.set(anchor.hash, observableSection)
-      }
-    }
   }
 
   _process(target) {
@@ -282,6 +257,21 @@ class ScrollSpy extends BaseComponent {
     this._activateListGroupParentElement(target)
 
     EventHandler.trigger(this._element, EVENT_ACTIVATE, { relatedTarget: target })
+  }
+
+  _clearActiveClass(parent) {
+    parent.classList.remove(CLASS_NAME_ACTIVE)
+
+    const activeNodes = SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)
+
+    for (const node of activeNodes) {
+      node.classList.remove(CLASS_NAME_ACTIVE)
+    }
+  }
+
+  _setActiveClass(target) {
+    this._activeTarget = target
+    target.classList.add(CLASS_NAME_ACTIVE)
   }
 
   _activateDropdownParentElement(target) {
@@ -301,38 +291,6 @@ class ScrollSpy extends BaseComponent {
       }
     }
   }
-
-  _clearActiveClass(parent) {
-    parent.classList.remove(CLASS_NAME_ACTIVE)
-
-    const activeNodes = SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE}`, parent)
-
-    for (const node of activeNodes) {
-      node.classList.remove(CLASS_NAME_ACTIVE)
-    }
-  }
-
-  _setActiveClass(target) {
-    this._activeTarget = target
-    target.classList.add(CLASS_NAME_ACTIVE)
-  }
-
-  // Static
-  static jQueryInterface(config) {
-    return this.each(function () {
-      const data = ScrollSpy.getOrCreateInstance(this, config)
-
-      if (typeof config !== 'string') {
-        return
-      }
-
-      if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
-        throw new TypeError(`No method named "${config}"`)
-      }
-
-      data[config]()
-    })
-  }
 }
 
 /**
@@ -344,11 +302,5 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
     ScrollSpy.getOrCreateInstance(spy)
   }
 })
-
-/**
- * jQuery
- */
-
-defineJQueryPlugin(ScrollSpy)
 
 export default ScrollSpy
