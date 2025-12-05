@@ -374,9 +374,7 @@ describe('ScrollSpy', () => {
     it(`should set the rootMargin option to ${SPY_ENGINE_CONFIG.rootMargin}`, () => {
       fixtureEl.innerHTML = getDummyFixture()
 
-      const scrollSpyComponent = new ScrollSpy('.content', {
-        target: '.content'
-      })
+      const scrollSpyComponent = new ScrollSpy('.content')
 
       expect(scrollSpyComponent._observer.rootMargin).toEqual(SPY_ENGINE_CONFIG.rootMargin)
     })
@@ -384,9 +382,7 @@ describe('ScrollSpy', () => {
     it(`should set the threshold option to ${SPY_ENGINE_CONFIG.threshold}`, () => {
       fixtureEl.innerHTML = getDummyFixture()
 
-      const scrollSpy = new ScrollSpy('.content', {
-        target: '.content'
-      })
+      const scrollSpy = new ScrollSpy('.content')
 
       expect(scrollSpy._observer.thresholds).toEqual(SPY_ENGINE_CONFIG.threshold)
     })
@@ -416,7 +412,7 @@ describe('ScrollSpy', () => {
     it('should respect threshold option markup', () => {
       fixtureEl.innerHTML = [
         '<ul id="navigation" class="navbar">',
-        '   <a class="nav-link active" id="one-link" href="#">One</a>' +
+        '   <a class="nav-link" id="one-link" href="#">One</a>' +
         '</ul>',
         '<div id="content" data-bs-threshold="0,0.2,1">',
         '  <div id="one-link">test</div>',
@@ -666,6 +662,22 @@ describe('ScrollSpy', () => {
 
       expect(scrollSpy._observableSections.size).toBe(5)
       expect(scrollSpy._targetLinks.size).toBe(5)
+    })
+
+    it('should a first navigation link will be active', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = getDummyFixture()
+
+        const scrollSpyContainer = fixtureEl.querySelector('.content')
+        ScrollSpy.getOrCreateInstance(scrollSpyContainer)
+
+        const interval = setInterval(() => {
+          expect(fixtureEl.querySelector('#link-1')).toHaveClass('active')
+
+          clearInterval(interval)
+          resolve()
+        }, 50)
+      })
     })
 
     it('should the sentinel element is correct to the simple scrolling container', () => {

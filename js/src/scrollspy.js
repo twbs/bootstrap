@@ -101,6 +101,7 @@ class ScrollSpy extends BaseComponent {
     this._initializeTargets()
     this._captureTargets()
     this._customizeScrollBehavior()
+    this._setFirstLinkAsActive()
 
     this._observer?.disconnect()
     this._observer = this._getNewObserver()
@@ -258,6 +259,21 @@ class ScrollSpy extends BaseComponent {
 
     if (this._rootElement && !this._config.smoothScroll) {
       this._rootElement.style.scrollBehavior = ''
+    }
+  }
+
+  _setFirstLinkAsActive() {
+    const firstLink = this._targetLinks.values().next().value
+
+    if (!firstLink) {
+      return
+    }
+
+    const firstSection = this._observableSections.get(firstLink.hash)
+    const firstSectionRect = firstSection.getBoundingClientRect()
+
+    if (firstSectionRect.top > 0) {
+      this._setActiveClass(firstLink)
     }
   }
 
