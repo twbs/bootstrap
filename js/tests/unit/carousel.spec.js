@@ -877,6 +877,35 @@ describe('Carousel', () => {
       })
     })
 
+    it('should handle indicators without an active indicator on initialization', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="myCarousel" class="carousel slide">',
+          '  <div class="carousel-indicators">',
+          '    <button type="button" data-bs-target="myCarousel" data-bs-slide-to="0" aria-label="Slide 1"></button>',
+          '    <button type="button" id="secondIndicator" data-bs-target="myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>',
+          '  </div>',
+          '  <div class="carousel-inner">',
+          '    <div class="carousel-item active">item 1</div>',
+          '    <div class="carousel-item">item 2</div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const carouselEl = fixtureEl.querySelector('#myCarousel')
+        const secondIndicator = fixtureEl.querySelector('#secondIndicator')
+        const carousel = new Carousel(carouselEl)
+
+        carouselEl.addEventListener('slid.bs.carousel', () => {
+          expect(secondIndicator).toHaveClass('active')
+          expect(secondIndicator.getAttribute('aria-current')).toEqual('true')
+          resolve()
+        })
+
+        carousel.next()
+      })
+    })
+
     it('should call next()/prev() instance methods when clicking the respective direction buttons', () => {
       fixtureEl.innerHTML = [
         '<div id="carousel" class="carousel slide">',
