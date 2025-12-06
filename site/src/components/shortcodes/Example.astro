@@ -36,6 +36,10 @@ interface Props {
    * @default true
    */
   showPreview?: boolean
+  /**
+   * Defines label to complete 'Edit code on Stackblitz' and/or 'Copy code to clipboard' buttons aria-labels.
+   */
+  buttonLabel?: string
 }
 
 const {
@@ -45,11 +49,15 @@ const {
   id,
   lang = 'html',
   showMarkup = true,
-  showPreview = true
+  showPreview = true,
+  buttonLabel
 } = Astro.props
 
 let markup = Array.isArray(code) ? code.join('\n') : code
 markup = replacePlaceholdersInHtml(markup)
+
+const stackblitzLabel = buttonLabel ? `Edit ${buttonLabel} code on StackBlitz` : 'Edit code on StackBlitz'
+const clipboardLabel = buttonLabel ? `Copy ${buttonLabel} code to clipboard` : 'Copy code to clipboard'
 
 const simplifiedMarkup = markup
   .replace(
@@ -81,14 +89,14 @@ const simplifiedMarkup = markup
               <button
                 type="button"
                 class="btn-edit text-nowrap"
-                title="Try it on StackBlitz"
+                title={stackblitzLabel}
                 data-sb-js-snippet={addStackblitzJs ? true : undefined}
               >
                 <svg class="bi" aria-hidden="true">
                   <use xlink:href="#lightning-charge-fill" />
                 </svg>
               </button>
-              <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+              <button type="button" class="btn-clipboard mt-0 me-0" title={clipboardLabel}>
                 <svg class="bi" aria-hidden="true">
                   <use xlink:href="#clipboard" />
                 </svg>
@@ -96,7 +104,7 @@ const simplifiedMarkup = markup
             </div>
           </div>
         )}
-        <Code code={simplifiedMarkup} lang={lang} nestedInExample={true} />
+        <Code code={simplifiedMarkup} lang={lang} nestedInExample={true} buttonLabel={buttonLabel} />
       </>
     )
   }
