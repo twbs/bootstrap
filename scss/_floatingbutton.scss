@@ -1,36 +1,30 @@
+// scss/_floating-button.scss
 .floating-button {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    z-index: 1000;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: #fff;
+  border: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  z-index: 1000;
 
-    &:hover {
-        background-color: #0056b3;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        transform: scale(1.1);
-    }
+  &:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+  }
 
-    &:active {
-        transform: scale(0.95);
-    }
-}
-
-....alert-#{$state} {
-    --#{$prefix}alert-bg: map-get($theme-colors, $state);
-    --#{$prefix}alert-color: color-contrast(map-get($theme-colors, $state));
-    --#{$prefix}alert-border-color: darken(map-get($theme-colors, $state), 10%);
-    --#{$prefix}alert-link-color: color-contrast(map-get($theme-colors, $state), $link-contrast-threshold);
+  &:active {
+    transform: scale(0.95);
+  }
 }
