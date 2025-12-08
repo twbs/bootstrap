@@ -1,0 +1,72 @@
+// Type helper mixin for flexible typography customization
+@mixin type-helper(
+    $font-size: null,
+    $font-weight: null,
+    $line-height: null,
+    $letter-spacing: null,
+    $text-transform: null,
+    $font-family: null,
+    $enhance: false,
+    $blink: false,
+    $blink-duration: 1s
+) {
+    @if $font-size {
+        font-size: $font-size;
+    }
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+    @if $line-height {
+        line-height: $line-height;
+    }
+    @if $letter-spacing {
+        letter-spacing: $letter-spacing;
+    }
+    @if $text-transform {
+        text-transform: $text-transform;
+    }
+    @if $font-family {
+        font-family: $font-family;
+    }
+    
+    // Enhance: adds text-shadow and brightness
+    @if $enhance {
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        filter: brightness(1.1);
+    }
+    
+    // Blink animation
+    @if $blink {
+        animation: type-blink $blink-duration infinite;
+    }
+}
+
+// Blink keyframe animation
+@keyframes type-blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+// Mixin to merge two type styles
+@mixin type-merge($type-1, $type-2) {
+    @each $property, $value in $type-1 {
+        #{$property}: $value;
+    }
+    @each $property, $value in $type-2 {
+        #{$property}: $value;
+    }
+}
+
+// Example usage (wrap the @include inside a selector)
+.type-helper-demo {
+    @include type-helper(
+        $font-size: 1.25rem,
+        $font-weight: 500,
+        $line-height: 1.5,
+        $letter-spacing: 0.05em,
+        $text-transform: uppercase,
+        $font-family: 'Arial, sans-serif',
+        $enhance: true,
+        $blink: false
+    );
+}
