@@ -18,6 +18,310 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 
 ## Examples
 
+You can use the ScrollSpy component by assigning anchors to your IDs. For example, assign them to each heading element so that it is responsible for the section located below it:
+
+<Example showMarkup={false} code={`
+<div class="row">
+  <div class="col-4">
+    <div id="list-example-anchors" class="list-group">
+      <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-5">Item 5</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-6">Item 6</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-7">Item 7</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-8">Item 8</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-9">Item 9</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-10">Item 10</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="scrollspy-example" style="height: 400px;" data-bs-spy="scroll" data-bs-target="#list-example-anchors" data-bs-smooth-scroll="true" tabindex="0">
+      <h4 id="list-item-1">Item 1 (Intro)</h4>
+      <p>This is the introduction section of the scrollspy example. It serves as the starting point for testing the navigation highlighting functionality. We need a decent amount of text here to ensure the first section takes up enough vertical space in the scrollable container. This helps verify that the first link is active immediately upon load or when at the very top.</p>
+      <p>Furthermore, this section establishes the context for the rest of the page. It demonstrates how standard paragraph text renders within the scrollspy container. We are checking if the offset calculation is correct and if the active class is applied without delay. The text length here mimics the original placeholder to maintain layout integrity.</p>
+      <p>Finally, this last paragraph of the introduction adds a bit more depth. It ensures that the user has to scroll at least a little bit before hitting the second item. This separation is crucial for testing the transition between active states in the navigation menu. Without enough content, multiple items might be active simultaneously.</p>
+
+      <h4 id="list-item-2">Item 2 (Transition)</h4>
+      <p>Now we are transitioning to the second item. This section tests the smoothness of the active state switch. As you scroll past the header, the navigation sidebar should update instantly. This represents a typical content block found in documentation or single-page applications where distinct topics are separated by headings.</p>
+      <p>We continue to add text to simulate a realistic reading experience. The transition logic relies on intersection observers or scroll position calculations. This block ensures that the logic handles medium-length content correctly, preventing the 'active' state from jumping around erratically during scrolling.</p>
+      <p>To conclude this transition section, we add a bit more padding text. This helps separate the headers visually and logically. It confirms that the bottom boundary of the previous element and the top boundary of this element are calculated correctly by the browser's rendering engine.</p>
+      <p>One final sentence to wrap up this section and prepare for the much larger content block that follows immediately after this one.</p>
+
+      <h4 id="list-item-3">Item 3 (The Meat)</h4>
+      <p>This is the main content area, representing the "meat" of the page. It is intentionally long to test how the scrollspy behaves while the user is reading a lengthy section. <br/><br/>
+      In many real-world scenarios, a single section might span several screens. The navigation link must remain active the entire time this section is visible. We are simulating that behavior here. If the active class flickers or disappears while you are in the middle of this text, there is a bug in the implementation.</p>
+      <p>We continue with more substantial text. This paragraph adds weight to the section, pushing the next header further down. It mimics a detailed technical explanation or a long article. The scrollspy needs to be robust enough to handle this without performance lags, even when calculating positions during rapid scrolling.</p>
+      <p>Here is yet another paragraph to extend the vertical height. We are testing the persistence of the active state. Whether you scroll slowly or quickly, the 'Item 3' link should stay highlighted until the very moment 'Item 4' enters the viewport. This consistency is vital for good user experience.</p>
+      <p>Still going. This block ensures that the middle of the container is fully occupied. It serves as a stress test for the logic that determines which element is currently "in view". By having a large vertical footprint, we ensure that the logic prioritizes the element taking up the most space or the one currently at the top.</p>
+      <p>Finally, we wrap up this massive section. This ensures a clear boundary before the next checkpoint. Ideally, the scrollspy handles this transition smoothly, deactivating this item only when the next header crosses the threshold.</p>
+
+      <h4 id="list-item-4">Item 4 (Checkpoint)</h4>
+      <p>You have reached a checkpoint. This is a shorter section compared to the previous one. It acts as a buffer and verifies that the system can handle variable section heights gracefully. The switch from a long section to a short one should not confuse the observer.</p>
+      <p>We add a second paragraph to give it just enough body. It validates that even moderate amounts of content trigger the correct activation state. This is a common pattern in FAQs or feature lists where descriptions vary in length.</p>
+      <p>Closing out the checkpoint. We are now ready to move on to the next substantial block. The navigation should currently point to Item 4.</p>
+
+      <h4 id="list-item-5">Item 5 (Substantial)</h4>
+      <p>Here is another substantial block of text to ensure the active state sticks properly while scrolling through this middle section. <br/>
+      We need to verify that the logic doesn't get confused when multiple substantial sections follow each other. Consistency is key. The user should always know exactly where they are in the document structure based on the sidebar highlight.</p>
+      <p>Continuing the narrative, this text serves as filler to expand the scrollable area. It simulates a deep dive into a specific topic. By occupying more vertical pixels, we force the scrollbar to shrink and the user to engage more with the scrolling mechanism.</p>
+      <p>Adding more depth here. The browser is constantly recalculating positions as you move. This text ensures there is enough data to scroll through, preventing the 'end of page' logic from triggering prematurely.</p>
+      <p>Finalizing this substantial block. We ensure that the bottom of this section is clearly defined before the next header appears. This helps in visually separating the content areas.</p>
+
+      <h4 id="list-item-6">Item 6 (Expansion)</h4>
+      <p>This section was small, but now it is a monolith. We are expanding the content to test layout stability. When dynamic content loads or text wraps differently on mobile, the scrollspy must adapt without breaking.</p>
+      <p>We add more lines to simulate a responsive text block. Whether on a wide screen or a narrow phone, this section should take up a predictable amount of space relative to the viewport. The navigation link should remain steady.</p>
+      <p>Ending the expansion section. We are preparing for the next rhythmic break in the content flow. The active state should still be firmly on Item 6.</p>
+
+      <h4 id="list-item-7">Item 7 (Rhythm)</h4>
+      <p>This section establishes a rhythm. It balances the page layout. Not too short, not too long, just right for testing the intersection observer or scroll calculations. <br/>
+      It provides a comfortable reading break. We check if the spacing between headers affects the detection logic.</p>
+      <p>A second paragraph to maintain the flow. We are ensuring that the scrollspy doesn't skip over sections that are of average height. It should catch this header as it passes the top of the container.</p>
+      <p>Wrapping up the rhythm section. We are slowly approaching the massive block near the end. Stability of the sticky sidebar should be maintained here.</p>
+      <p>One last sentence to push the boundary down just a bit further.</p>
+
+      <h4 id="list-item-8">Item 8 (Massive Block)</h4>
+      <p>A massive block of text follows. This is the second largest section in the document. <br/><br/>
+      It serves as a final stress test for the scrolling logic. We want to ensure that even deep down in the page, the calculations remain accurate. Often, rounding errors in pixel calculation accumulate at the bottom of the page, but this section should handle it fine.</p>
+      <p>We continue to fill space to simulate a very detailed documentation entry or a legal disclaimer. The user might scroll fast through this. Does the active class keep up? Does it lag? These are the questions we are answering with this test case.</p>
+      <p>More text is added here to ensure the section is taller than the viewport. This forces the 'current' logic to rely on the top edge position rather than the element being fully visible. It's a critical edge case for intersection observers.</p>
+      <p>Still scrolling through this massive block. The sidebar should essentially be locked on Item 8 for a significant amount of time. This confirms that our 'active' logic prioritizes the content currently being consumed by the user.</p>
+      <p>Finally reaching the end of this massive block. We are now preparing for the final few items. The transition out of this huge section into a smaller one should be crisp and immediate.</p>
+
+      <h4 id="list-item-9">Item 9 (Interruption)</h4>
+      <p>Brief interruption. This section acts as a quick spacer before the finale. <br/>
+      It tests if the scrollspy can react quickly to a short section appearing after a very long one. Sometimes inertia scrolling can skip over short items, but the logic should catch it.</p>
+      <p>Just a bit more text to give it presence. We want to make sure it's clickable and scrollable, ensuring the anchor link lands exactly where expected.</p>
+      <p>End of the interruption. Ready for the final item.</p>
+
+      <h4 id="list-item-10">Item 10 (Standard)</h4>
+      <p>Returning to standard length for the final item. This is the conclusion of the scrollspy test. <br/>
+      The main goal here is to verify the 'end of page' behavior. Does the last link activate when we hit the bottom, even if the section isn't fully at the top? (Depending on logic).</p>
+      <p>We add enough text to ensure there is some scrolling room within this last item. It shouldn't be too short, or the previous item might stay active. This balances the visual weight of the footer area.</p>
+      <p>Almost at the end. The scrollspy should definitely be highlighting Item 10 by now. If not, the sentinel observer or the bottom detection logic needs adjustment.</p>
+      <p>End of the line. Thank you for scrolling through this example. This confirms the component is working as intended from top to bottom.</p>
+    </div>
+  </div>
+ </div>`
+} />
+
+```html
+<div class="row">
+  <div class="col-4">
+    <div id="list-example-anchors" class="list-group">
+      <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-5">Item 5</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-6">Item 6</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-7">Item 7</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-8">Item 8</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-9">Item 9</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-10">Item 10</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="scrollspy-example" style="height: 400px;" data-bs-spy="scroll" data-bs-target="#list-example-anchors" data-bs-smooth-scroll="true" tabindex="0">
+      <h4 id="list-item-1">Item 1</h4>
+      <p>...</p>
+
+      <h4 id="list-item-2">Item 2</h4>
+      <p>...</p>
+
+      <h4 id="list-item-3">Item 3</h4>
+      <p>...</p>
+
+      <h4 id="list-item-4">Item 4</h4>
+      <p>...</p>
+
+      <h4 id="list-item-5">Item 5</h4>
+      <p>...</p>
+
+      <h4 id="list-item-6">Item 6</h4>
+      <p>...</p>
+
+      <h4 id="list-item-7">Item 7</h4>
+      <p>...</p>
+
+      <h4 id="list-item-8">Item 8</h4>
+      <p>...</p>
+
+      <h4 id="list-item-9">Item 9</h4>
+      <p>...</p>
+
+      <h4 id="list-item-10">Item 10</h4>
+      <p>...</p>
+    </div>
+  </div>
+ </div>
+```
+
+You may notice how some items skip through when scrolling quickly in the container. Also, when returning to the previous point, it will light up only if it is located at the very top.
+
+The recommended way is to wrap the entire content for the section:
+
+<Example showMarkup={false} code={`
+<div class="row">
+  <div class="col-4">
+    <div id="list-example-wrapper-anchors" class="list-group">
+      <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-5">Item 5</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-6">Item 6</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-7">Item 7</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-8">Item 8</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-9">Item 9</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-10">Item 10</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="scrollspy-example" style="height: 400px;" data-bs-spy="scroll" data-bs-target="#list-example-wrapper-anchors" data-bs-smooth-scroll="true" tabindex="0">
+      <div id="list-item-1">
+        <h4>Item 1 (Intro)</h4>
+        <p>This is the introduction section of the scrollspy example. It serves as the starting point for testing the navigation highlighting functionality. We need a decent amount of text here to ensure the first section takes up enough vertical space in the scrollable container. This helps verify that the first link is active immediately upon load or when at the very top.</p>
+        <p>Furthermore, this section establishes the context for the rest of the page. It demonstrates how standard paragraph text renders within the scrollspy container. We are checking if the offset calculation is correct and if the active class is applied without delay. The text length here mimics the original placeholder to maintain layout integrity.</p>
+        <p>Finally, this last paragraph of the introduction adds a bit more depth. It ensures that the user has to scroll at least a little bit before hitting the second item. This separation is crucial for testing the transition between active states in the navigation menu. Without enough content, multiple items might be active simultaneously.</p>
+      </div>
+      <div id="list-item-2">
+        <h4>Item 2 (Transition)</h4>
+        <p>Now we are transitioning to the second item. This section tests the smoothness of the active state switch. As you scroll past the header, the navigation sidebar should update instantly. This represents a typical content block found in documentation or single-page applications where distinct topics are separated by headings.</p>
+        <p>We continue to add text to simulate a realistic reading experience. The transition logic relies on intersection observers or scroll position calculations. This block ensures that the logic handles medium-length content correctly, preventing the 'active' state from jumping around erratically during scrolling.</p>
+        <p>To conclude this transition section, we add a bit more padding text. This helps separate the headers visually and logically. It confirms that the bottom boundary of the previous element and the top boundary of this element are calculated correctly by the browser's rendering engine.</p>
+        <p>One final sentence to wrap up this section and prepare for the much larger content block that follows immediately after this one.</p>
+      </div>
+      <div id="list-item-3">
+        <h4>Item 3 (The Meat)</h4>
+        <p>This is the main content area, representing the "meat" of the page. It is intentionally long to test how the scrollspy behaves while the user is reading a lengthy section. <br/><br/>
+        In many real-world scenarios, a single section might span several screens. The navigation link must remain active the entire time this section is visible. We are simulating that behavior here. If the active class flickers or disappears while you are in the middle of this text, there is a bug in the implementation.</p>
+        <p>We continue with more substantial text. This paragraph adds weight to the section, pushing the next header further down. It mimics a detailed technical explanation or a long article. The scrollspy needs to be robust enough to handle this without performance lags, even when calculating positions during rapid scrolling.</p>
+        <p>Here is yet another paragraph to extend the vertical height. We are testing the persistence of the active state. Whether you scroll slowly or quickly, the 'Item 3' link should stay highlighted until the very moment 'Item 4' enters the viewport. This consistency is vital for good user experience.</p>
+        <p>Still going. This block ensures that the middle of the container is fully occupied. It serves as a stress test for the logic that determines which element is currently "in view". By having a large vertical footprint, we ensure that the logic prioritizes the element taking up the most space or the one currently at the top.</p>
+        <p>Finally, we wrap up this massive section. This ensures a clear boundary before the next checkpoint. Ideally, the scrollspy handles this transition smoothly, deactivating this item only when the next header crosses the threshold.</p>
+      </div>
+      <div id="list-item-4">
+        <h4>Item 4 (Checkpoint)</h4>
+        <p>You have reached a checkpoint. This is a shorter section compared to the previous one. It acts as a buffer and verifies that the system can handle variable section heights gracefully. The switch from a long section to a short one should not confuse the observer.</p>
+        <p>We add a second paragraph to give it just enough body. It validates that even moderate amounts of content trigger the correct activation state. This is a common pattern in FAQs or feature lists where descriptions vary in length.</p>
+        <p>Closing out the checkpoint. We are now ready to move on to the next substantial block. The navigation should currently point to Item 4.</p>
+      </div>
+      <div id="list-item-5">
+        <h4>Item 5 (Substantial)</h4>
+        <p>Here is another substantial block of text to ensure the active state sticks properly while scrolling through this middle section. <br/>
+        We need to verify that the logic doesn't get confused when multiple substantial sections follow each other. Consistency is key. The user should always know exactly where they are in the document structure based on the sidebar highlight.</p>
+        <p>Continuing the narrative, this text serves as filler to expand the scrollable area. It simulates a deep dive into a specific topic. By occupying more vertical pixels, we force the scrollbar to shrink and the user to engage more with the scrolling mechanism.</p>
+        <p>Adding more depth here. The browser is constantly recalculating positions as you move. This text ensures there is enough data to scroll through, preventing the 'end of page' logic from triggering prematurely.</p>
+        <p>Finalizing this substantial block. We ensure that the bottom of this section is clearly defined before the next header appears. This helps in visually separating the content areas.</p>
+      </div>
+      <div id="list-item-6">
+        <h4>Item 6 (Expansion)</h4>
+        <p>This section was small, but now it is a monolith. We are expanding the content to test layout stability. When dynamic content loads or text wraps differently on mobile, the scrollspy must adapt without breaking.</p>
+        <p>We add more lines to simulate a responsive text block. Whether on a wide screen or a narrow phone, this section should take up a predictable amount of space relative to the viewport. The navigation link should remain steady.</p>
+        <p>Ending the expansion section. We are preparing for the next rhythmic break in the content flow. The active state should still be firmly on Item 6.</p>
+      </div>
+      <div id="list-item-7">
+        <h4>Item 7 (Rhythm)</h4>
+        <p>This section establishes a rhythm. It balances the page layout. Not too short, not too long, just right for testing the intersection observer or scroll calculations. <br/>
+        It provides a comfortable reading break. We check if the spacing between headers affects the detection logic.</p>
+        <p>A second paragraph to maintain the flow. We are ensuring that the scrollspy doesn't skip over sections that are of average height. It should catch this header as it passes the top of the container.</p>
+        <p>Wrapping up the rhythm section. We are slowly approaching the massive block near the end. Stability of the sticky sidebar should be maintained here.</p>
+        <p>One last sentence to push the boundary down just a bit further.</p>
+      </div>
+      <div id="list-item-8">
+        <h4>Item 8 (Massive Block)</h4>
+        <p>A massive block of text follows. This is the second largest section in the document. <br/><br/>
+        It serves as a final stress test for the scrolling logic. We want to ensure that even deep down in the page, the calculations remain accurate. Often, rounding errors in pixel calculation accumulate at the bottom of the page, but this section should handle it fine.</p>
+        <p>We continue to fill space to simulate a very detailed documentation entry or a legal disclaimer. The user might scroll fast through this. Does the active class keep up? Does it lag? These are the questions we are answering with this test case.</p>
+        <p>More text is added here to ensure the section is taller than the viewport. This forces the 'current' logic to rely on the top edge position rather than the element being fully visible. It's a critical edge case for intersection observers.</p>
+        <p>Still scrolling through this massive block. The sidebar should essentially be locked on Item 8 for a significant amount of time. This confirms that our 'active' logic prioritizes the content currently being consumed by the user.</p>
+        <p>Finally reaching the end of this massive block. We are now preparing for the final few items. The transition out of this huge section into a smaller one should be crisp and immediate.</p>
+      </div>
+      <div id="list-item-9">
+        <h4>Item 9 (Interruption)</h4>
+        <p>Brief interruption. This section acts as a quick spacer before the finale. <br/>
+        It tests if the scrollspy can react quickly to a short section appearing after a very long one. Sometimes inertia scrolling can skip over short items, but the logic should catch it.</p>
+        <p>Just a bit more text to give it presence. We want to make sure it's clickable and scrollable, ensuring the anchor link lands exactly where expected.</p>
+        <p>End of the interruption. Ready for the final item.</p>
+      </div>
+      <div id="list-item-10">
+        <h4>Item 10 (Standard)</h4>
+        <p>Returning to standard length for the final item. This is the conclusion of the scrollspy test. <br/>
+        The main goal here is to verify the 'end of page' behavior. Does the last link activate when we hit the bottom, even if the section isn't fully at the top? (Depending on logic).</p>
+        <p>We add enough text to ensure there is some scrolling room within this last item. It shouldn't be too short, or the previous item might stay active. This balances the visual weight of the footer area.</p>
+        <p>Almost at the end. The scrollspy should definitely be highlighting Item 10 by now. If not, the sentinel observer or the bottom detection logic needs adjustment.</p>
+        <p>End of the line. Thank you for scrolling through this example. This confirms the component is working as intended from top to bottom.</p>
+      </div>
+    </div>
+  </div>
+</div>
+`} />
+
+```html
+<div class="row">
+  <div class="col-4">
+    <div id="list-example-wrapper-anchors" class="list-group">
+      <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-5">Item 5</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-6">Item 6</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-7">Item 7</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-8">Item 8</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-9">Item 9</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-10">Item 10</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="scrollspy-example" style="height: 400px;" data-bs-spy="scroll" data-bs-target="#list-example-wrapper-anchors" data-bs-smooth-scroll="true" tabindex="0">
+      <div id="list-item-1">
+        <h4>Item 1</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-2">
+        <h4>Item 2</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-3">
+        <h4>Item 3</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-4">
+        <h4>Item 4</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-5">
+        <h4>Item 5</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-6">
+        <h4>Item 6</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-7">
+        <h4>Item 7</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-8">
+        <h4>Item 8</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-9">
+        <h4>Item 9</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-10">
+        <h4>Item 10</h4>
+        <p>...</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
 ### Navbar
 
 Scroll the area below the navbar and watch the active class change. Open the dropdown menu and watch the dropdown items be highlighted as well.
@@ -26,7 +330,7 @@ Scroll the area below the navbar and watch the active class change. Open the dro
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
       <li class="nav-item">
-        <a class="nav-link" href="#scrollspyHeading1">First</a>
+        <a class="nav-link active" href="#scrollspyHeading1">First</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#scrollspyHeading2">Second</a>
@@ -42,25 +346,35 @@ Scroll the area below the navbar and watch the active class change. Open the dro
       </li>
     </ul>
   </nav>
-  <div class="scrollspy-example bg-body-tertiary p-3 rounded-2" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-smooth-scroll="true" tabindex="0">
-    <h4 id="scrollspyHeading1">First heading</h4>
-    <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-    <h4 id="scrollspyHeading2">Second heading</h4>
-    <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-    <h4 id="scrollspyHeading3">Third heading</h4>
-    <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-    <h4 id="scrollspyHeading4">Fourth heading</h4>
-    <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-    <h4 id="scrollspyHeading5">Fifth heading</h4>
-    <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+  <div class="scrollspy-example bg-body-tertiary p-3 rounded-2" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-smooth-scroll="true" tabindex="0" style="height: 200px; overflow-y: auto">
+    <div id="scrollspyHeading1">
+      <h4>First heading</h4>
+      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+    </div>
+    <div id="scrollspyHeading2">
+      <h4>Second heading</h4>
+      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+    </div>
+    <div id="scrollspyHeading3">
+      <h4>Third heading</h4>
+      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+    </div>
+    <div id="scrollspyHeading4">
+      <h4>Fourth heading</h4>
+      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+    </div>
+    <div id="scrollspyHeading5">
+      <h4>Fifth heading</h4>
+      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+    </div>
   </div>`} />
 
 ```html
-<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
+<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3 rounded-2">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link" href="#scrollspyHeading1">First</a>
+      <a class="nav-link active" href="#scrollspyHeading1">First</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#scrollspyHeading2">Second</a>
@@ -76,17 +390,27 @@ Scroll the area below the navbar and watch the active class change. Open the dro
     </li>
   </ul>
 </nav>
-<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-  <h4 id="scrollspyHeading1">First heading</h4>
-  <p>...</p>
-  <h4 id="scrollspyHeading2">Second heading</h4>
-  <p>...</p>
-  <h4 id="scrollspyHeading3">Third heading</h4>
-  <p>...</p>
-  <h4 id="scrollspyHeading4">Fourth heading</h4>
-  <p>...</p>
-  <h4 id="scrollspyHeading5">Fifth heading</h4>
-  <p>...</p>
+<div class="scrollspy-example bg-body-tertiary p-3 rounded-2" data-bs-spy="scroll" data-bs-smooth-scroll="true" data-bs-target="#navbar-example2" tabindex="0" style="height: 200px; overflow-y: auto">
+  <div id="scrollspyHeading1">
+    <h4>First heading</h4>
+    <p>...</p>
+  </div>
+  <div id="scrollspyHeading2">
+    <h4>Second heading</h4>
+    <p>...</p>
+  </div>
+  <div id="scrollspyHeading3">
+    <h4>Third heading</h4>
+    <p>...</p>
+  </div>
+  <div id="scrollspyHeading4">
+    <h4>Fourth heading</h4>
+    <p>...</p>
+  </div>
+  <div id="scrollspyHeading5">
+    <h4>Fifth heading</h4>
+    <p>...</p>
+  </div>
 </div>
 ```
 
@@ -226,14 +550,22 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
   </div>
   <div class="col-8">
     <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-      <h4 id="list-item-1">Item 1</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-      <h4 id="list-item-2">Item 2</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-      <h4 id="list-item-3">Item 3</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-      <h4 id="list-item-4">Item 4</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      <div id="list-item-1">
+        <h4>Item 1</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
+      <div id="list-item-2">
+        <h4>Item 2</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
+      <div id="list-item-3">
+        <h4>Item 3</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
+      <div id="list-item-4">
+        <h4>Item 4</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -251,14 +583,22 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
   </div>
   <div class="col-8">
     <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-      <h4 id="list-item-1">Item 1</h4>
-      <p>...</p>
-      <h4 id="list-item-2">Item 2</h4>
-      <p>...</p>
-      <h4 id="list-item-3">Item 3</h4>
-      <p>...</p>
-      <h4 id="list-item-4">Item 4</h4>
-      <p>...</p>
+      <div id="list-item-1">
+        <h4>Item 1</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-2">
+        <h4>Item 2</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-3">
+        <h4>Item 3</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-4">
+        <h4>Item 4</h4>
+        <p>...</p>
+      </div>
     </div>
   </div>
 </div>
@@ -281,16 +621,26 @@ Scrollspy is not limited to nav components and list groups, so it will work on a
   </div>
   <div class="col-8">
     <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-      <h4 id="simple-list-item-1">Item 1</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-      <h4 id="simple-list-item-2">Item 2</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-      <h4 id="simple-list-item-3">Item 3</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-      <h4 id="simple-list-item-4">Item 4</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
-      <h4 id="simple-list-item-5">Item 5</h4>
-      <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      <div id="simple-list-item-1">
+        <h4>Item 1</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
+      <div id="simple-list-item-2">
+        <h4>Item 2</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
+      <div id="simple-list-item-3">
+        <h4>Item 3</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
+      <div id="simple-list-item-4">
+        <h4>Item 4</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
+      <div id="simple-list-item-5">
+        <h4>Item 5</h4>
+        <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -309,16 +659,216 @@ Scrollspy is not limited to nav components and list groups, so it will work on a
   </div>
   <div class="col-8">
     <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-      <h4 id="simple-list-item-1">Item 1</h4>
-      <p>...</p>
-      <h4 id="simple-list-item-2">Item 2</h4>
-      <p>...</p>
-      <h4 id="simple-list-item-3">Item 3</h4>
-      <p>...</p>
-      <h4 id="simple-list-item-4">Item 4</h4>
-      <p>...</p>
-      <h4 id="simple-list-item-5">Item 5</h4>
-      <p>...</p>
+      <div id="simple-list-item-1">
+        <h4>Item 1</h4>
+        <p>...</p>
+      </div>
+      <div id="simple-list-item-2">
+        <h4>Item 2</h4>
+        <p>...</p>
+      </div>
+      <div id="simple-list-item-3">
+        <h4>Item 3</h4>
+        <p>...</p>
+      </div>
+      <div id="simple-list-item-4">
+        <h4>Item 4</h4>
+        <p>...</p>
+      </div>
+      <div id="simple-list-item-5">
+        <h4>Item 5</h4>
+        <p>...</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Working with an overlapping element
+
+When Scrollspy is initialized on the `<body>`, `<main>`, or any main container, a fixed navigation bar might overlap the target content during scrolling or anchor navigation.
+
+In this case, you need to set two options: the `offset` parameter during component initialization and `set scroll-padding-top` for the scrollable container or `scroll-margin-top` for all anchors in it. Both the `offset` parameter and `scroll-padding-top` or `scroll-margin-top` must be set to the height value of the overlapping element.
+
+If the overflow property of the container is different from `visible`, then you will only need the `offset` parameter as in the following example:
+
+<Example showMarkup={false} code={`
+<div class="row">
+  <div class="col-4">
+    <div id="list-example-navigation" class="list-group">
+      <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-5">Item 5</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-6">Item 6</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-7">Item 7</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-8">Item 8</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-9">Item 9</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-10">Item 10</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <nav data-bs-theme="dark" id="navbar" class="navbar navbar-expand-lg bg-body-tertiary" style="height: 7rem; position: sticky; top: 0; width: 100%;">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <a class="navbar-brand" href="#">Overlapping element</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="scrollspy-example" style="height: 290px;" data-bs-spy="scroll" data-bs-target="#list-example-navigation" data-bs-smooth-scroll="true" tabindex="0">
+      <div id="list-item-1">
+        <h4>Item 1 (Intro)</h4>
+        <p>This is the introduction section of the scrollspy example. It serves as the starting point for testing the navigation highlighting functionality. We need a decent amount of text here to ensure the first section takes up enough vertical space in the scrollable container. This helps verify that the first link is active immediately upon load or when at the very top.</p>
+        <p>Furthermore, this section establishes the context for the rest of the page. It demonstrates how standard paragraph text renders within the scrollspy container. We are checking if the offset calculation is correct and if the active class is applied without delay. The text length here mimics the original placeholder to maintain layout integrity.</p>
+        <p>Finally, this last paragraph of the introduction adds a bit more depth. It ensures that the user has to scroll at least a little bit before hitting the second item. This separation is crucial for testing the transition between active states in the navigation menu. Without enough content, multiple items might be active simultaneously.</p>
+      </div>
+      <div id="list-item-2">
+        <h4>Item 2 (Transition)</h4>
+        <p>Now we are transitioning to the second item. This section tests the smoothness of the active state switch. As you scroll past the header, the navigation sidebar should update instantly. This represents a typical content block found in documentation or single-page applications where distinct topics are separated by headings.</p>
+        <p>We continue to add text to simulate a realistic reading experience. The transition logic relies on intersection observers or scroll position calculations. This block ensures that the logic handles medium-length content correctly, preventing the 'active' state from jumping around erratically during scrolling.</p>
+        <p>To conclude this transition section, we add a bit more padding text. This helps separate the headers visually and logically. It confirms that the bottom boundary of the previous element and the top boundary of this element are calculated correctly by the browser's rendering engine.</p>
+        <p>One final sentence to wrap up this section and prepare for the much larger content block that follows immediately after this one.</p>
+      </div>
+      <div id="list-item-3">
+        <h4>Item 3 (The Meat)</h4>
+        <p>This is the main content area, representing the "meat" of the page. It is intentionally long to test how the scrollspy behaves while the user is reading a lengthy section. <br/><br/>
+        In many real-world scenarios, a single section might span several screens. The navigation link must remain active the entire time this section is visible. We are simulating that behavior here. If the active class flickers or disappears while you are in the middle of this text, there is a bug in the implementation.</p>
+        <p>We continue with more substantial text. This paragraph adds weight to the section, pushing the next header further down. It mimics a detailed technical explanation or a long article. The scrollspy needs to be robust enough to handle this without performance lags, even when calculating positions during rapid scrolling.</p>
+        <p>Here is yet another paragraph to extend the vertical height. We are testing the persistence of the active state. Whether you scroll slowly or quickly, the 'Item 3' link should stay highlighted until the very moment 'Item 4' enters the viewport. This consistency is vital for good user experience.</p>
+        <p>Still going. This block ensures that the middle of the container is fully occupied. It serves as a stress test for the logic that determines which element is currently "in view". By having a large vertical footprint, we ensure that the logic prioritizes the element taking up the most space or the one currently at the top.</p>
+        <p>Finally, we wrap up this massive section. This ensures a clear boundary before the next checkpoint. Ideally, the scrollspy handles this transition smoothly, deactivating this item only when the next header crosses the threshold.</p>
+      </div>
+      <div id="list-item-4">
+        <h4>Item 4 (Checkpoint)</h4>
+        <p>You have reached a checkpoint. This is a shorter section compared to the previous one. It acts as a buffer and verifies that the system can handle variable section heights gracefully. The switch from a long section to a short one should not confuse the observer.</p>
+        <p>We add a second paragraph to give it just enough body. It validates that even moderate amounts of content trigger the correct activation state. This is a common pattern in FAQs or feature lists where descriptions vary in length.</p>
+        <p>Closing out the checkpoint. We are now ready to move on to the next substantial block. The navigation should currently point to Item 4.</p>
+      </div>
+      <div id="list-item-5">
+        <h4>Item 5 (Substantial)</h4>
+        <p>Here is another substantial block of text to ensure the active state sticks properly while scrolling through this middle section. <br/>
+        We need to verify that the logic doesn't get confused when multiple substantial sections follow each other. Consistency is key. The user should always know exactly where they are in the document structure based on the sidebar highlight.</p>
+        <p>Continuing the narrative, this text serves as filler to expand the scrollable area. It simulates a deep dive into a specific topic. By occupying more vertical pixels, we force the scrollbar to shrink and the user to engage more with the scrolling mechanism.</p>
+        <p>Adding more depth here. The browser is constantly recalculating positions as you move. This text ensures there is enough data to scroll through, preventing the 'end of page' logic from triggering prematurely.</p>
+        <p>Finalizing this substantial block. We ensure that the bottom of this section is clearly defined before the next header appears. This helps in visually separating the content areas.</p>
+      </div>
+      <div id="list-item-6">
+        <h4>Item 6 (Expansion)</h4>
+        <p>This section was small, but now it is a monolith. We are expanding the content to test layout stability. When dynamic content loads or text wraps differently on mobile, the scrollspy must adapt without breaking.</p>
+        <p>We add more lines to simulate a responsive text block. Whether on a wide screen or a narrow phone, this section should take up a predictable amount of space relative to the viewport. The navigation link should remain steady.</p>
+        <p>Ending the expansion section. We are preparing for the next rhythmic break in the content flow. The active state should still be firmly on Item 6.</p>
+      </div>
+      <div id="list-item-7">
+        <h4>Item 7 (Rhythm)</h4>
+        <p>This section establishes a rhythm. It balances the page layout. Not too short, not too long, just right for testing the intersection observer or scroll calculations. <br/>
+        It provides a comfortable reading break. We check if the spacing between headers affects the detection logic.</p>
+        <p>A second paragraph to maintain the flow. We are ensuring that the scrollspy doesn't skip over sections that are of average height. It should catch this header as it passes the top of the container.</p>
+        <p>Wrapping up the rhythm section. We are slowly approaching the massive block near the end. Stability of the sticky sidebar should be maintained here.</p>
+        <p>One last sentence to push the boundary down just a bit further.</p>
+      </div>
+      <div id="list-item-8">
+        <h4>Item 8 (Massive Block)</h4>
+        <p>A massive block of text follows. This is the second largest section in the document. <br/><br/>
+        It serves as a final stress test for the scrolling logic. We want to ensure that even deep down in the page, the calculations remain accurate. Often, rounding errors in pixel calculation accumulate at the bottom of the page, but this section should handle it fine.</p>
+        <p>We continue to fill space to simulate a very detailed documentation entry or a legal disclaimer. The user might scroll fast through this. Does the active class keep up? Does it lag? These are the questions we are answering with this test case.</p>
+        <p>More text is added here to ensure the section is taller than the viewport. This forces the 'current' logic to rely on the top edge position rather than the element being fully visible. It's a critical edge case for intersection observers.</p>
+        <p>Still scrolling through this massive block. The sidebar should essentially be locked on Item 8 for a significant amount of time. This confirms that our 'active' logic prioritizes the content currently being consumed by the user.</p>
+        <p>Finally reaching the end of this massive block. We are now preparing for the final few items. The transition out of this huge section into a smaller one should be crisp and immediate.</p>
+      </div>
+      <div id="list-item-9">
+        <h4>Item 9 (Interruption)</h4>
+        <p>Brief interruption. This section acts as a quick spacer before the finale. <br/>
+        It tests if the scrollspy can react quickly to a short section appearing after a very long one. Sometimes inertia scrolling can skip over short items, but the logic should catch it.</p>
+        <p>Just a bit more text to give it presence. We want to make sure it's clickable and scrollable, ensuring the anchor link lands exactly where expected.</p>
+        <p>End of the interruption. Ready for the final item.</p>
+      </div>
+      <div id="list-item-10">
+        <h4>Item 10 (Standard)</h4>
+        <p>Returning to standard length for the final item. This is the conclusion of the scrollspy test. <br/>
+        The main goal here is to verify the 'end of page' behavior. Does the last link activate when we hit the bottom, even if the section isn't fully at the top? (Depending on logic).</p>
+        <p>We add enough text to ensure there is some scrolling room within this last item. It shouldn't be too short, or the previous item might stay active. This balances the visual weight of the footer area.</p>
+        <p>Almost at the end. The scrollspy should definitely be highlighting Item 10 by now. If not, the sentinel observer or the bottom detection logic needs adjustment.</p>
+        <p>End of the line. Thank you for scrolling through this example. This confirms the component is working as intended from top to bottom.</p>
+      </div>
+    </div>
+  </div>
+</div>
+`} />
+
+```html
+<div class="row">
+  <div class="col-4">
+    <div id="list-example-navigation" class="list-group">
+      <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-5">Item 5</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-6">Item 6</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-7">Item 7</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-8">Item 8</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-9">Item 9</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-10">Item 10</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <nav data-bs-theme="dark" id="navbar" class="navbar navbar-expand-lg bg-body-tertiary" style="height: 7rem; position: sticky; top: 0; width: 100%;">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <a class="navbar-brand" href="#">Overlapping element</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="scrollspy-example" style="height: 290px;" data-bs-offset="120" data-bs-spy="scroll" data-bs-target="#list-example-navigation" data-bs-smooth-scroll="true" tabindex="0">
+      <div id="list-item-1">
+        <h4>Item 1</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-2">
+        <h4>Item 2</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-3">
+        <h4>Item 3</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-4">
+        <h4>Item 4</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-5">
+        <h4>Item 5</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-6">
+        <h4>Item 6</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-7">
+        <h4>Item 7</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-8">
+        <h4>Item 8</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-9">
+        <h4>Item 9</h4>
+        <p>...</p>
+      </div>
+      <div id="list-item-10">
+        <h4>Item 10</h4>
+        <p>...</p>
+      </div>
     </div>
   </div>
 </div>
@@ -326,14 +876,14 @@ Scrollspy is not limited to nav components and list groups, so it will work on a
 
 ## Non-visible elements
 
-Target elements that aren’t visible will be ignored and their corresponding nav items won’t receive an `.active` class. Scrollspy instances initialized in a non-visible wrapper will ignore all target elements. Use the `refresh` method to check for observable elements once the wrapper becomes visible.
+Target elements that aren’t visible will be ignored and their corresponding nav items won’t receive an `.active` class. Scrollspy instances initialized in a non-visible wrapper will ignore all target elements. Use the `connect` method to check for observable elements once the wrapper becomes visible.
 
 ```js
 document.querySelectorAll('#nav-tab>[data-bs-toggle="tab"]').forEach(el => {
   el.addEventListener('shown.bs.tab', () => {
     const target = el.getAttribute('data-bs-target')
     const scrollElem = document.querySelector(`${target} [data-bs-spy="scroll"]`)
-    bootstrap.ScrollSpy.getOrCreateInstance(scrollElem).refresh()
+    bootstrap.ScrollSpy.getOrCreateInstance(scrollElem).connect()
   })
 })
 ```
@@ -374,22 +924,17 @@ const scrollSpy = new bootstrap.ScrollSpy(document.body, {
 | `rootMargin` | string | `0px 0px -25%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating scroll position. |
 | `smoothScroll` | boolean | `false` | Enables smooth scrolling when a user clicks on a link that refers to ScrollSpy observables. |
 | `target` | string, DOM element | `null` | Specifies element to apply Scrollspy plugin. |
+| `offset` | integer | `0` | Offset from the top edge of the overlapping element. |
 | `threshold` | array | `[0.1, 0.5, 1]` | `IntersectionObserver` [threshold](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#threshold) valid input, when calculating scroll position. |
 
 </BsTable>
-
-<Callout type="warning">
-**Deprecated Options**
-
-Up until v5.1.3 we were using `offset` & `method` options, which are now deprecated and replaced by `rootMargin`.
-To keep backwards compatibility, we will continue to parse a given `offset` to `rootMargin`, but this feature will be removed in **v6**.
-</Callout>
 
 ### Methods
 
 <BsTable>
 | Method | Description |
 | --- | --- |
+| `connect` | Component initialization. |
 | `dispose` | Destroys an element’s scrollspy. (Removes stored data on the DOM element) |
 | `getInstance` | *Static* method to get the scrollspy instance associated with a DOM element. |
 | `getOrCreateInstance` | *Static* method to get the scrollspy instance associated with a DOM element, or to create a new one in case it wasn’t initialized. |
@@ -398,11 +943,37 @@ To keep backwards compatibility, we will continue to parse a given `offset` to `
 
 Here’s an example using the refresh method:
 
+```html
+<nav id="navbar">
+  <ul class="nav">
+    <li class="nav-item"><a class="nav-link" id="link-1" href="#div-1">div 1</a></li>
+    <li class="nav-item"><a class="nav-link" id="link-2" href="#div-2">div 2</a></li>
+    <li class="nav-item"><a class="nav-link" id="link-3" href="#div-3">div 3</a></li>
+  </ul>
+</nav>
+<div id="content" class="content" data-bs-spy="scroll" data-bs-target="#navbar" style="overflow: auto; height: 500px">
+  <div id="div-1">div 1</div>
+  <div id="div-2">div 2</div>
+  <div id="div-3">div 3</div>
+</div>
+```
+
 ```js
-const dataSpyList = document.querySelectorAll('[data-bs-spy="scroll"]')
-dataSpyList.forEach(dataSpyEl => {
-  bootstrap.ScrollSpy.getInstance(dataSpyEl).refresh()
-})
+const navigation = fixtureEl.querySelector('.nav')
+const scrollSpyContainer = fixtureEl.querySelector('.content')
+const scrollSpyComponent = new ScrollSpy(scrollSpyContainer)
+
+navigation.insertAdjacentHTML('beforeend',
+  '<li class="nav-item"><a class="nav-link" id="link-4" href="#div-4">div 4</a></li>' +
+  '<li class="nav-item"><a class="nav-link" id="link-5" href="#div-7">div 5</a></li>'
+)
+
+scrollSpyContainer.insertAdjacentHTML('beforeend',
+  '<div id="div-5" style="height: 100px;">div 5</div>' +
+  '<div id="div-6" style="height: 200px;">div 6</div>'
+)
+
+bootstrap.ScrollSpy.getInstance(dataSpyEl).refresh()
 ```
 
 ### Events
