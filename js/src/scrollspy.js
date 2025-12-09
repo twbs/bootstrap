@@ -22,6 +22,7 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`
+const EVENT_CLICK = `click${EVENT_KEY}`
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
@@ -51,6 +52,7 @@ const Default = {
   rootMargin: SPY_ENGINE_CONFIG.rootMargin,
   threshold: SPY_ENGINE_CONFIG.threshold,
   offset: 0,
+  smoothScroll: false,
   target: null
 }
 
@@ -58,6 +60,7 @@ const DefaultType = {
   rootMargin: 'string',
   threshold: 'array',
   offset: 'number',
+  smoothScroll: 'boolean',
   target: 'element'
 }
 
@@ -98,6 +101,7 @@ class ScrollSpy extends BaseComponent {
   connect() {
     this._initializeTargets()
     this._captureTargets()
+    this._configurableScrollBehavior()
 
     this._observer = this._getNewObserver()
     this._sentryObserver = this._getNewSentryObserver()
@@ -167,6 +171,39 @@ class ScrollSpy extends BaseComponent {
         this._sentryObserverElement = observableSection
       }
     }
+  }
+
+  _configurableScrollBehavior() {
+    if (!this._config.smoothScroll || !this._rootElement) {
+      return
+    }
+
+    // unregister any previous listeners
+    EventHandler.off(this._config.target, EVENT_CLICK)
+
+    EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
+      const { target: currentLink } = event
+      const observableSection = this._observableSections.get(event.target.hash)
+
+      if (observableSection) {
+        event.preventDefault()
+        const root = this._rootElement
+        const height = observableSection.offsetTop - this._element.offsetTop - this._config.offset
+
+        if (root.scrollTo) {
+          root.scrollTo({ top: height, behavior: 'smooth' })
+
+          // let's make sure that the scroll is on the element we need within the scrollable component
+          // this may not be the case because of the offset parameter, which should make an offset from the floating panel
+          EventHandler.one(root, 'scrollend', () => this._process(currentLink))
+
+          return
+        }
+
+        // Chrome 60 doesn't support `scrollTo`
+        root.scrollTop = height
+      }
+    })
   }
 
   _getNewSentryObserver() {

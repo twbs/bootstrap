@@ -54,6 +54,10 @@ describe('ScrollSpy', () => {
     element.scrollTop = height
   }
 
+  const getElementScrollSpy = element => element.scrollTo ?
+    spyOn(element, 'scrollTo').and.callThrough() :
+    spyOnProperty(element, 'scrollTop', 'set').and.callThrough()
+
   const scrolling = component => container => ({ clickBy: anchorSelector, scrollTo: targetSelector }) => {
     const anchor = fixtureEl.querySelector(anchorSelector)
     const target = fixtureEl.querySelector(targetSelector)
@@ -642,6 +646,93 @@ describe('ScrollSpy', () => {
 
       scrollTo(scrollSpyContainer, 0)
       await scroll({ clickBy: '#li-100-1', scrollTo: '#div-100-1' })
+    })
+  })
+
+  describe('ScrollSpy smooth scroll behavior', () => {
+    it('should not enable smooth scroll', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
+
+      const scrollSpyContainer = fixtureEl.querySelector('.content')
+      const target = fixtureEl.querySelector('#navbar')
+      ScrollSpy.getOrCreateInstance(scrollSpyContainer)
+
+      expect(offSpy).not.toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+      expect(onSpy).not.toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+    })
+
+    it('should enable smooth scroll', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
+
+      const scrollSpyContainer = fixtureEl.querySelector('.content')
+      const target = fixtureEl.querySelector('#navbar')
+      ScrollSpy.getOrCreateInstance(scrollSpyContainer, { smoothScroll: true })
+
+      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+      expect(onSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy', '[href]', jasmine.any(Function))
+    })
+
+    it('should not smooth scroll to element if it not handles a scrollspy section', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navbar" class="navbar">',
+        '  <ul class="nav">',
+        '    <a id="anchor-1" href="#div-1">div 1</a></li>' +
+        '    <a id="anchor-2" href="#foo">div 2</a></li>' +
+        '  </ul>',
+        '</nav>',
+        '<div class="content" data-bs-target="#navbar" style="overflow-y: auto">',
+        '  <div id="div-jsm-1">div 1</div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpyContainer = fixtureEl.querySelector('.content')
+      const clickSpy = getElementScrollSpy(scrollSpyContainer)
+      ScrollSpy.getOrCreateInstance(scrollSpyContainer, { smoothScroll: true })
+
+      fixtureEl.querySelector('#anchor-2').click()
+
+      expect(clickSpy).not.toHaveBeenCalled()
+    })
+
+    it('should call `scrollTop` if element doesn\'t not support `scrollTo`', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const scrollSpyContainer = fixtureEl.querySelector('.content')
+      const link = fixtureEl.querySelector('#link-1')
+      delete scrollSpyContainer.scrollTo
+      const clickSpy = getElementScrollSpy(scrollSpyContainer)
+      ScrollSpy.getOrCreateInstance(scrollSpyContainer, { smoothScroll: true })
+
+      link.click()
+
+      expect(clickSpy).toHaveBeenCalled()
+    })
+
+    it('should smoothScroll to the proper observable element on anchor click', done => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const scrollSpyContainer = fixtureEl.querySelector('.content')
+      const link = fixtureEl.querySelector('#link-1')
+      const observable = fixtureEl.querySelector('#div-1')
+      const clickSpy = getElementScrollSpy(scrollSpyContainer)
+      ScrollSpy.getOrCreateInstance(scrollSpyContainer, { smoothScroll: true })
+
+      const interval = setInterval(() => {
+        /** @var {any} params { top: number, behavior: ScrollBehavior */
+        const params = { top: observable.offsetTop - scrollSpyContainer.offsetTop, behavior: 'smooth' }
+        expect(clickSpy).toHaveBeenCalledWith(params)
+
+        clearInterval(interval)
+        done()
+      }, 50)
+
+      link.click()
     })
   })
 
