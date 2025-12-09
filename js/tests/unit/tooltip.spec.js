@@ -781,6 +781,35 @@ describe('Tooltip', () => {
       })
     })
 
+    it('should not hide a tooltip if cursor moves to tip element', done => {
+      fixtureEl.innerHTML = [
+        '<a href="#" rel="tooltip" title="tooltip">',
+        'trigger',
+        '</a>'
+      ]
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      spyOn(tooltip, 'hide').and.callThrough()
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        const moveMouseToTipElementEvent = createEvent('mouseout')
+        Object.defineProperty(moveMouseToTipElementEvent, 'relatedTarget', {
+          value: tooltip._getTipElement()
+        })
+
+        tooltipEl.dispatchEvent(moveMouseToTipElementEvent)
+      })
+
+      tooltipEl.addEventListener('mouseout', () => {
+        expect(tooltip.hide).not.toHaveBeenCalled()
+        done()
+      })
+
+      tooltipEl.dispatchEvent(createEvent('mouseover'))
+    })
+
     it('should not hide tooltip if leave event occurs and interaction remains inside trigger', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -1022,6 +1051,32 @@ describe('Tooltip', () => {
 
         tooltip.show()
       })
+    })
+
+    it('should hide a tooltip when escape key is pressed and active trigger', done => {
+      fixtureEl.innerHTML = [
+        '<a href="#" rel="tooltip" title="tooltip">',
+        'trigger',
+        '</a>'
+      ]
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      spyOn(tooltip, 'hide').and.callThrough()
+
+      tooltipEl.addEventListener('shown.bs.tooltip', () => {
+        const keydownEscape = createEvent('keydown')
+        keydownEscape.key = 'Escape'
+        tooltipEl.dispatchEvent(keydownEscape)
+      })
+
+      tooltipEl.addEventListener('hidden.bs.tooltip', () => {
+        expect(tooltip.hide).toHaveBeenCalled()
+        done()
+      })
+
+      tooltipEl.dispatchEvent(createEvent('mouseover'))
     })
 
     it('should not hide a tooltip if hide event is prevented', () => {
