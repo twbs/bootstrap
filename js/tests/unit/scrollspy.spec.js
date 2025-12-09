@@ -305,7 +305,7 @@ describe('ScrollSpy', () => {
       expect(scrollSpyComponent._config.offset).toBe(100)
     })
 
-    it('should set the root option to null if the element is not scrollable', () => {
+    it('should set the root option to document if the element is not scrollable', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
         '  <a class="nav-link" href="#">One</a>',
@@ -319,8 +319,8 @@ describe('ScrollSpy', () => {
         target: '#navigation'
       })
 
-      expect(scrollSpyComponent._observer.root).toBeNull()
-      expect(scrollSpyComponent._rootElement).toBeNull()
+      expect(scrollSpyComponent._observer.root).toBe(document)
+      expect(scrollSpyComponent._rootElement).toBe(document)
     })
 
     it('should not take count to not visible sections', () => {

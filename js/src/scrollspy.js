@@ -75,7 +75,7 @@ class ScrollSpy extends BaseComponent {
     // this._element is the observablesContainer and config.target the menu links wrapper
     this._targetLinks = new Map()
     this._observableSections = new Map()
-    this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
+    this._rootElement = null
     this._activeTarget = null
     this._observer = null
     this._sentryObserver = null
@@ -99,6 +99,7 @@ class ScrollSpy extends BaseComponent {
 
   // Public
   connect() {
+    this._initializeRootElement()
     this._initializeTargets()
     this._captureTargets()
     this._configurableScrollBehavior()
@@ -145,6 +146,10 @@ class ScrollSpy extends BaseComponent {
     return config
   }
 
+  _initializeRootElement() {
+    this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? document : this._element
+  }
+
   _initializeTargets() {
     this._targetLinks = new Map()
     this._observableSections = new Map()
@@ -174,7 +179,9 @@ class ScrollSpy extends BaseComponent {
   }
 
   _configurableScrollBehavior() {
-    if (!this._config.smoothScroll || !this._rootElement) {
+    // if the parameter is not passed or the target element is the entire document,
+    // then we transfer control to the browser (CSS scroll behavior property: true)
+    if (!this._config.smoothScroll || this._rootElement === document) {
       return
     }
 
