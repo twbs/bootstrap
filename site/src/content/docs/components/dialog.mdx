@@ -98,18 +98,13 @@ When dialogs have content that exceeds the viewport height, the entire dialog sc
   </div>
   <div class="dialog-body">
     <p>This is some placeholder content to show the scrolling behavior for dialogs. When the content exceeds the viewport height, you can scroll the entire dialog within the window—the header, body, and footer all move together.</p>
-    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <p>The dialog component is built on the native HTML <code>&lt;dialog&gt;</code> element, which provides built-in accessibility features like focus trapping, backdrop handling, and proper keyboard interactions. This approach leverages browser-native functionality rather than custom JavaScript implementations.</p>
+    <p>When using <code>showModal()</code>, the dialog is rendered in the browser's top layer, ensuring it appears above all other content regardless of z-index values. The backdrop is created using the <code>::backdrop</code> pseudo-element, which can be styled with CSS.</p>
+    <p>Focus management is handled automatically by the browser. When a modal dialog opens, focus moves to the first focusable element inside. When closed, focus returns to the element that triggered the dialog. This behavior is essential for accessibility and keyboard navigation.</p>
+    <p>The Escape key closes modal dialogs by default, though this can be prevented using the <code>cancel</code> event. Non-modal dialogs opened with <code>show()</code> don't trap focus or block interaction with the rest of the page.</p>
+    <p>Bootstrap's Dialog component wraps the native element with additional features: custom animations, static backdrop option, programmatic control via JavaScript, and integration with data attributes for declarative usage.</p>
+    <p>Scrolling behavior varies based on content length. Short dialogs center in the viewport. Long dialogs scroll within the viewport by default, though you can use <code>.dialog-scrollable</code> to scroll only the body while keeping header and footer fixed.</p>
+    <p>The component fires standard Bootstrap events: <code>show.bs.dialog</code>, <code>shown.bs.dialog</code>, <code>hide.bs.dialog</code>, and <code>hidden.bs.dialog</code>. These allow you to hook into the dialog lifecycle and execute custom logic.</p>
     <p>This content should appear at the bottom after you scroll.</p>
   </div>
   <div class="dialog-footer">
@@ -175,18 +170,12 @@ For a dialog that extends beyond the viewport and scrolls as a whole, add `.dial
     </div>
     <div class="dialog-body">
       <p>This dialog extends beyond the viewport height. Scroll to see more content. Notice how the entire dialog—including header and footer—shifts up and down as you scroll.</p>
-      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>The <code>.dialog-overflow</code> modifier creates a full-viewport scrollable container. The <code>.dialog-box</code> wrapper contains the visual dialog that moves up and down as you scroll. This pattern is useful for very long content like terms of service or detailed forms.</p>
+      <p>Unlike the default scrolling behavior where the dialog is constrained to the viewport, overflow dialogs can extend beyond it. This gives users a more document-like reading experience for lengthy content.</p>
+      <p>The backdrop remains fixed while the dialog content scrolls. Clicking outside the dialog box still closes it (unless using a static backdrop). Keyboard navigation and focus trapping work the same as standard dialogs.</p>
+      <p>Consider using <code>.dialog-scrollable</code> instead if you want the header and footer to remain visible while scrolling. The scrollable variant keeps navigation controls accessible at all times, which may be preferable for forms with submit buttons.</p>
+      <p>Both approaches leverage the native <code>&lt;dialog&gt;</code> element's top layer rendering. This ensures the dialog appears above all other content, including elements with high z-index values, fixed positioning, or transforms.</p>
+      <p>The choice between scrolling behaviors depends on your content and user experience goals. Document-like content often works well with overflow scrolling, while interactive content may benefit from fixed header and footer.</p>
       <p>You've reached the bottom of the overflow dialog!</p>
     </div>
     <div class="dialog-footer">
