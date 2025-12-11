@@ -5,11 +5,13 @@ on:
     branches:
       - main
       - v4-dev
+      - v6-dev
       - "!dependabot/**"
   pull_request:
     branches:
       - main
       - v4-dev
+      - v6-dev
       - "!dependabot/**"
   schedule:
     - cron: "0 2 * * 4"
