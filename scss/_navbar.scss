@@ -15,7 +15,7 @@
 $navbar-padding-y:                  $spacer * .5 !default;
 $navbar-padding-x:                  null !default;
 
-$navbar-nav-link-padding-x:         .5rem !default;
+$navbar-nav-link-padding-x:         .75rem !default;
 
 $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
@@ -34,10 +34,10 @@ $navbar-toggler-border-radius:      $btn-border-radius !default;
 $navbar-toggler-focus-width:        $btn-focus-width !default;
 $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
 
-$navbar-light-color:                color-mix(in srgb, var(--#{$prefix}fg-black) 65%, transparent) !default;
-$navbar-light-hover-color:          color-mix(in srgb, var(--#{$prefix}fg-black) 80%, transparent) !default;
-$navbar-light-active-color:         color-mix(in srgb, var(--#{$prefix}fg-black) 100%, transparent) !default;
-$navbar-light-disabled-color:       color-mix(in srgb, var(--#{$prefix}fg-black) 30%, transparent) !default;
+$navbar-light-color:                var(--#{$prefix}fg-2) !default;
+$navbar-light-hover-color:          var(--#{$prefix}fg-1) !default;
+$navbar-light-active-color:         var(--#{$prefix}fg) !default;
+$navbar-light-disabled-color:       var(--#{$prefix}fg-3) !default;
 $navbar-light-icon-color:           rgba($body-color, .75) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-light-toggler-border-color: rgba(var(--#{$prefix}emphasis-color-rgb), .15) !default;
@@ -139,7 +139,7 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
 
   .navbar-nav {
     // scss-docs-start navbar-nav-css-vars
-    --#{$prefix}nav-link-padding-x: 0;
+    // --#{$prefix}nav-link-padding-x: 0;
     // @mdo-do: fix this, navbar shouldn't need to reuse nav link variables mb? or we need to bring them in…
     // --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
     // @include rfs($nav-link-font-size, --#{$prefix}nav-link-font-size);
@@ -162,9 +162,9 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
       }
     }
 
-    .dropdown-menu {
-      position: static;
-    }
+    // .dropdown-menu {
+    //   position: static;
+    // }
   }
 
 
@@ -257,15 +257,16 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
           justify-content: flex-start;
 
           .navbar-nav {
+            --#{$prefix}nav-link-padding-x: var(--#{$prefix}navbar-nav-link-padding-x);
             flex-direction: row;
 
-            .dropdown-menu {
-              position: absolute;
-            }
+            // .dropdown-menu {
+            //   position: absolute;
+            // }
 
-            .nav-link {
-              padding-inline: var(--#{$prefix}navbar-nav-link-padding-x);
-            }
+            // .nav-link {
+            //   padding-inline: var(--#{$prefix}navbar-nav-link-padding-x);
+            // }
           }
 
           .navbar-nav-scroll {

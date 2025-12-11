@@ -1,6 +1,6 @@
 ---
 title: Navs and tabs
-description: Documentation and examples for how to use Bootstrap’s included navigation components.
+description: Add lists of links to your pages with Bootstrap’s nav components and JavaScript-powered tabs.
 aliases: "/docs/[[config:docs_version]]/components/navs/"
 toc: true
 ---
@@ -12,8 +12,6 @@ Navigation available in Bootstrap share general markup and styles, from the base
 The base `.nav` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
 
 <Callout>
-The base `.nav` component does not include any `.active` state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.
-
 To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for current page, or `true` for the current item in a set.
 </Callout>
 
@@ -45,9 +43,68 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 
 Change the style of `.nav`s component with modifiers and utilities. Mix and match as needed, or build your own.
 
-### Horizontal alignment
+### Tabs
 
-Change the horizontal alignment of your nav with [flexbox utilities]([[docsref:/utilities/flex#justify-content]]). By default, navs are left-aligned, but you can easily change them to center or right-aligned.
+Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](#javascript-behavior).
+
+<Example code={`<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>`} />
+
+### Pills
+
+Take that same HTML, but use `.nav-pills` instead for a more themed appearance.
+
+<Example code={`<ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>`} />
+
+### Underline
+
+Take that same HTML, but use `.nav-underline` instead:
+
+<Example code={`<ul class="nav nav-underline">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>`} />
+
+## Alignment
+
+Change the alignment of your nav with [flexbox utilities]([[docsref:/utilities/flex]]). By default, navs are horizontal and left-aligned, but you can easily modify them to center or right-aligned, and even stacked vertically.
+
+### Horizontal
 
 Centered with `.justify-content-center`:
 
@@ -110,63 +167,6 @@ As always, vertical navigation is possible without `<ul>`s, too.
     <a class="nav-link" href="#">Link</a>
     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </nav>`} />
-
-### Tabs
-
-Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](#javascript-behavior).
-
-<Example code={`<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-    </li>
-  </ul>`} />
-
-### Pills
-
-Take that same HTML, but use `.nav-pills` instead:
-
-<Example code={`<ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-    </li>
-  </ul>`} />
-
-### Underline
-
-Take that same HTML, but use `.nav-underline` instead:
-
-<Example code={`<ul class="nav nav-underline">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-    </li>
-  </ul>`} />
 
 ### Fill and justify
 
