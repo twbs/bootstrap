@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
-import { bootstrapLight, bootstrapDark } from 'bootstrap-vscode-theme'
+import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
+import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
 import { transformerNotationDiff } from '@shikijs/transformers'
 
 import { bootstrap } from './src/libs/astro'

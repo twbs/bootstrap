@@ -3,7 +3,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { codeToHtml } from 'shiki'
 import { transformerNotationDiff } from '@shikijs/transformers'
-import { bootstrapLight, bootstrapDark } from 'bootstrap-vscode-theme'
+import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
+import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
 import { replaceConfigInText } from '@libs/remark'
 
 interface Tab {
