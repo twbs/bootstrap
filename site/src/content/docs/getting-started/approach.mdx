@@ -1,0 +1,141 @@
+---
+title: Approach
+description: Learn about the guiding principles, strategies, and techniques used to build and maintain Bootstrap so you can more easily customize and extend it yourself.
+toc: true
+---
+
+## Modern essentials
+
+Bootstrap employs a handful of important global styles and settings geared towards normalizing browser styles, enabling responsive and mobile-first design, and providing a modern foundation to build upon.
+
+### Responsive design
+
+Responsive web design is the practice of building a website that responds to the viewport size of the device it's being viewed on. This is achieved by using media queries to apply different styles to the website based on the viewport size.
+
+```css
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+}
+```
+
+Bootstrap ships with several responsive tiers or breakpoints that allow you to stack styles on top of each other, from small mobile devices to large desktop screens. This gives you a very flexible and powerful way to build websites that can be optimized for any-sized device.
+
+### HTML5 doctype
+
+Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some funky and incomplete styling.
+
+```html
+<!doctype html>
+<html lang="en">
+  ...
+</html>
+```
+
+### Viewport meta
+
+Bootstrap is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, add the responsive viewport meta tag to your `<head>`.
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
+You can see an example of this in action in [the quick start]([[docsref:/getting-started/introduction#quick-start]]).
+
+### Box-sizing
+
+For more straightforward sizing in CSS, we switch the global `box-sizing` value from `content-box` to `border-box`. This ensures `padding` does not affect the final computed width of an element.
+
+On the rare occasion you need to override it, use something like the following:
+
+```css
+.your-selector {
+  box-sizing: content-box;
+}
+```
+
+Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box-sizing/).
+
+### Reboot
+
+For improved cross-browser rendering, we use [Reboot]([[docsref:/content/reboot]]) to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
+
+### Browser support
+
+You can find our supported range of browsers and their versions [in our `.browserslistrc file`]([[config:repo]]/blob/v[[config:current_version]]/.browserslistrc):
+
+<Code lang="plaintext" filePath=".browserslistrc" />
+
+We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intended browser support via CSS prefixes, which uses [Browserslist](https://github.com/browserslist/browserslist) to manage these browser versions. Consult their documentation for how to integrate these tools into your projects.
+
+## Guiding principles
+
+Beyond what Bootstrap does, here's _why_ we do it—our philosophy for building on the web. At a high level, here's what guides our approach:
+
+- Components should be responsive and mobile-first
+- Components should be built with a base class and extended via modifier classes
+- Component states should obey a common `z-index` scale
+- Prefer an HTML and CSS implementation over JavaScript
+- Use utilities over custom styles
+- Avoid enforcing strict HTML requirements (immediate children selectors)
+
+### Responsive
+
+Bootstrap's styles are mobile-first—we add styles as the viewport grows rather than overriding them as it shrinks. Not every component must be fully responsive, but this approach reduces CSS overrides.
+
+We use range media queries (`width >= 768px`, for example) to apply styles at a specific breakpoint and carry up through the larger breakpoints. For example, a `.d-none` applies from `min-width: 0` to infinity. On the other hand, a `.d-md-none` applies from the medium breakpoint and up.
+
+### Classes
+
+Aside from [Reboot]([[docsref:content/reboot]]), we strive to use only classes as selectors. Where we can, we avoid type selectors and extraneous parent selectors for greater flexibility.
+
+Components are typically built with a base class for shared property-value pairs. For example, `.btn` and `.btn-primary`. We use `.btn` for all the common styles like `display`, `padding`, and `border-width`. We then use modifiers like `.btn-solid` to add more styles.
+
+This reduces complexity, streamlines code, and makes for more scalable systems.
+
+### z-index scales
+
+We use two `z-index` scales in Bootstrap—elements within a component and overlay components.
+
+Some components in Bootstrap are built with overlapping elements to prevent double borders without modifying the `border` property. For example, button groups, input groups, and pagination. These components share a standard `z-index` scale of `0` through `3`, matching our expectations of highest user priority.
+
+- `0` is for default states (initial, not actually set)
+- `1` is for `:hover`, lowest because while it indicates user intent, nearly _anything_ can be hovered.
+- `2` is for `:active`/`.active`, second highest because they indicate state.
+- `3` is for `:focus`, highest because focused elements are in view and at the user’s attention.
+
+Components built with overlays also have a predefined z-index scale, beginning at `1000`. This starting number was chosen arbitrarily and serves as a small buffer between our styles and your project’s custom styles.
+
+<ScssDocs name="zindex-stack" file="scss/_variables.scss" />
+
+Each overlay component increases its `z-index` value slightly in such a way that common UI principles allow user focused or hovered elements to remain in view at all times. For example, a modal is document blocking (e.g., you cannot take any other action save for the modal’s action), so we put that above our navbars.
+
+Learn more about this in our [`z-index` layout page]([[docsref:/layout/z-index]]).
+
+### HTML and CSS over JS
+
+Whenever possible, we prefer HTML and CSS over JavaScript—they're more accessible to people of all experience levels and faster in the browser. That's why our first-class JavaScript API is `data` attributes—it lets you write more HTML instead of JavaScript. Read more in [our JavaScript overview]([[docsref:/getting-started/javascript#data-attributes]]).
+
+Our styles build on fundamental browser behaviors. For example, while you can put `.btn` on nearly any element, we prefer `<button>`s and `<a>`s for their semantic value. Similarly, we use native `:valid`/`:invalid` pseudo-elements for form validation rather than custom plugins.
+
+### Utilities
+
+Utility classes—single, immutable property-value pairings like `.d-block` for `display: block;`—help reduce CSS bloat and improve performance. They speed up HTML authoring and limit custom CSS by consolidating repeated property-value pairs into reusable classes. We try to use these when possible instead of additional CSS.
+
+### Code conventions
+
+[Code Guide](https://codeguide.co/) documents how we write HTML and CSS—covering formatting, defaults, property orders, and more. We enforce these standards with [Stylelint](https://stylelint.io/) using [our open source config](https://github.com/twbs/stylelint-config-twbs-bootstrap).
+
+## Community
+
+Stay up-to-date on the development of Bootstrap and reach out to the community with these helpful resources.
+
+- Read and subscribe to [The Official Bootstrap Blog]([[config:blog]]).
+- Ask questions and explore [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions).
+- Discuss, ask questions, and more on [the community Discord](https://discord.gg/bZUvakRU3M) or [Bootstrap subreddit](https://www.reddit.com/r/bootstrap/).
+- Chat with fellow Bootstrappers in IRC. On the `irc.libera.chat` server, in the `#bootstrap` channel.
+- Implementation help may be found at Stack Overflow (tagged [`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5)).
+- Developers distributing Bootstrap-related packages on [npm](https://www.npmjs.com/search?q=keywords:bootstrap) should use the `bootstrap` keyword for discoverability.
+
+You can also follow [@getbootstrap on X](https://x.com/[[config:x]]) for the latest gossip and awesome music videos.

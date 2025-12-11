@@ -34,10 +34,14 @@ This approach allows us to also easily support translucency with our `.bg-{opaci
   ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} color-on-${themeColor.name}">.bg-${themeColor.name}</div>
 <div class="p-3 mb-2 bg-muted-${themeColor.name} color-${themeColor.name}">.bg-muted-${themeColor.name}</div>
 <div class="p-3 mb-2 bg-subtle-${themeColor.name} color-${themeColor.name}">.bg-subtle-${themeColor.name}</div>`),
-  `<div class="p-3 mb-2 bg-body text-body">.bg-body</div>
-<div class="p-3 mb-2 bg-black text-white">.bg-black</div>
-<div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
-<div class="p-3 mb-2 bg-transparent text-body">.bg-transparent</div>`
+  `<div class="p-3 mb-2 bg-body fg-body">.bg-body</div>
+<div class="p-3 mb-2 bg-1">.bg-1</div>
+<div class="p-3 mb-2 bg-2">.bg-2</div>
+<div class="p-3 mb-2 bg-3">.bg-3</div>
+<div class="p-3 mb-2 bg-4">.bg-4</div>
+<div class="p-3 mb-2 bg-black fg-white">.bg-black</div>
+<div class="p-3 mb-2 bg-white fg-dark">.bg-white</div>
+<div class="p-3 mb-2 bg-transparent fg-body">.bg-transparent</div>`
 ]} />
 
 ## Background gradient
