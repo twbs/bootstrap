@@ -18,7 +18,8 @@ jobs:
     name: calibreapp/image-actions
     runs-on: ubuntu-latest
     permissions:
-      # allow calibreapp/image-actions to update PRs
+      # allow calibreapp/image-actions to update PRs and commit compressed images
+      contents: write
       pull-requests: write
     steps:
       - name: Clone repository

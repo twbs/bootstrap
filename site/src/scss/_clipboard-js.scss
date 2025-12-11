@@ -12,9 +12,9 @@
     display: none;
     float: inline-end;
 
-    + .highlight {
-      margin-top: 0;
-    }
+    // + .highlight {
+    //   margin-top: 0;
+    // }
 
     @include media-breakpoint-up(md) {
       display: block;
@@ -26,13 +26,13 @@
     display: block;
     padding: .5em;
     line-height: 1;
-    color: var(--bs-body-color);
-    background-color: var(--bd-pre-bg);
+    color: var(--bs-fg-3);
+    background-color: var(--bd-bg-1);
     border: 0;
     @include border-radius(.25rem);
 
     &:hover {
-      color: var(--bs-link-hover-color);
+      color: var(--bs-fg-body);
     }
 
     &:focus {

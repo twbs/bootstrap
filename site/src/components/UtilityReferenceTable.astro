@@ -128,7 +128,7 @@ function addVarComments(cssValue: string): string {
   cssValue.replace(/var\((--[a-z0-9-]+)\)/gi, (match, varName) => {
     const resolvedValue = cssVarValues[varName];
     if (resolvedValue) {
-      comments.push(`<span class="color-3">/* ${resolvedValue} */</span>`);
+      comments.push(`<span class="fg-3">/* ${resolvedValue} */</span>`);
     }
     return match;
   });

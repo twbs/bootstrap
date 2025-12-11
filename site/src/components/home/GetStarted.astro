@@ -22,7 +22,7 @@ import Code from '@shortcodes/Code.astro'
 
 <section class="row g-3 g-md-5 mb-5 pb-5 justify-content-center">
   <div class="col-lg-6 py-lg-4 pe-lg-5">
-    <svg class="bi mb-2 fs-2 text-body-secondary" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
+    <svg class="bi mb-2 fs-2 fg-3" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>
     <h3 class="fw-semibold">Install via package manager</h3>
     <p class="pe-lg-5">
       Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package-managed
@@ -38,7 +38,7 @@ import Code from '@shortcodes/Code.astro'
     </p>
   </div>
   <div class="col-lg-6 py-lg-4 ps-lg-5 border-lg-start">
-    <svg class="bi mb-2 fs-2 text-body-secondary" aria-hidden="true"><use xlink:href="#globe2"></use></svg>
+    <svg class="bi mb-2 fs-2 fg-3" aria-hidden="true"><use xlink:href="#globe2"></use></svg>
     <h3 class="fw-semibold">Include via CDN</h3>
     <p class="pe-lg-5">
       When you only need to include Bootstrap’s compiled CSS or JS, you can use <a
@@ -70,6 +70,20 @@ import Code from '@shortcodes/Code.astro'
     <div class="d-flex flex-wrap align-items-center justify-content-center gap-4 mt-4">
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
+        href={getVersionedDocsPath('guides/npm/')}
+      >
+        <img
+          class="d-block mb-2"
+          src={getVersionedDocsPath('/assets/img/npm.svg')}
+          alt=""
+          width="72"
+          height="72"
+          loading="lazy"
+        />
+        <span class="fg-3">npm</span>
+      </a>
+      <a
+        class="d-flex flex-column align-items-center text-decoration-none animate-img"
         href={getVersionedDocsPath('guides/webpack/')}
       >
         <img
@@ -80,7 +94,7 @@ import Code from '@shortcodes/Code.astro'
           height="72"
           loading="lazy"
         />
-        <span class="text-body-secondary">Webpack</span>
+        <span class="fg-3">Webpack</span>
       </a>
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
@@ -94,7 +108,7 @@ import Code from '@shortcodes/Code.astro'
           height="72"
           loading="lazy"
         />
-        <span class="text-body-secondary">Parcel</span>
+        <span class="fg-3">Parcel</span>
       </a>
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
@@ -108,7 +122,7 @@ import Code from '@shortcodes/Code.astro'
           height="72"
           loading="lazy"
         />
-        <span class="text-body-secondary">Vite</span>
+        <span class="fg-3">Vite</span>
       </a>
     </div>
   </div>

@@ -6,25 +6,34 @@
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/vendor/rfs" as *;
 
+:root {
+  --bs-font-sans-serif: "Geist", sans-serif;
+  --bs-font-monospace: "Geist Mono", monospace;
+}
+
 @layer custom {
+  .bd-sticky-navbar.is-stuck {
+    box-shadow: 0 .125rem .5rem rgba($black, .05);
+  }
+
   .bd-navbar {
     padding: .75rem 0;
-    background-color: transparent;
-    box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
+    // background-color: transparent;
+    // box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
 
-    @media (forced-colors) {
-      background-color: Canvas;
-    }
+    // @media (forced-colors) {
+    //   background-color: Canvas;
+    // }
 
-    &::after {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      display: block;
-      content: "";
-      background-image: linear-gradient(var(--bd-violet), color-mix(in srgb, var(--bd-violet), transparent 5%));
-      // background-image: linear-gradient(color-mix(in srgb, var(--bs-gray-900), $black 10%), color-mix(in srgb, var(--bs-gray-900), $black 15%));
-    }
+    // &::after {
+    //   position: absolute;
+    //   inset: 0;
+    //   z-index: -1;
+    //   display: block;
+    //   content: "";
+    //   background-image: linear-gradient(var(--bd-violet), color-mix(in srgb, var(--bd-violet), transparent 5%));
+    //   // background-image: linear-gradient(color-mix(in srgb, var(--bs-gray-900), $black 10%), color-mix(in srgb, var(--bs-gray-900), $black 15%));
+    // }
 
     .bd-navbar-toggle {
       @include media-breakpoint-down(lg) {
@@ -52,7 +61,7 @@
     }
 
     .navbar-brand {
-      color: $white;
+      // color: $white;
       @include transition(transform .2s ease-in-out);
 
       &:hover {
@@ -63,16 +72,16 @@
     .navbar-toggler,
     .nav-link {
       padding-inline: $spacer * .25;
-      color: rgba($white, .85);
+      // color: rgba($white, .85);
 
-      &:hover,
-      &:focus {
-        color: $white;
-      }
+      // &:hover,
+      // &:focus {
+      //   color: $white;
+      // }
 
       &.active {
         font-weight: 600;
-        color: $white;
+        // color: $white;
       }
     }
 
@@ -102,9 +111,9 @@
       --bs-dropdown-padding-y: .25rem;
       --bs-dropdown-link-hover-bg: color-mix(in srgb, var(--bd-violet), transparent 90%);
       --bs-dropdown-link-active-bg: var(--bd-violet);
-      @include rfs(.875rem, --bs-dropdown-font-size);
-      @include font-size(.875rem);
-      @include border-radius(.5rem);
+      // @include rfs(.875rem, --bs-dropdown-font-size);
+      // @include font-size(.875rem);
+      // @include border-radius(.5rem);
       box-shadow: var(--#{$prefix}dropdown-box-shadow);
 
       li + li {

@@ -91,7 +91,7 @@ const sidebar = getData('sidebar')
                     <li>
                       <a
                         href={url}
-                        class:list={['bd-links-link d-inline-block rounded', { active }]}
+                        class:list={['bd-links-link', { active }]}
                         aria-current={active ? 'page' : undefined}
                       >
                         {item.title}
@@ -111,7 +111,7 @@ const sidebar = getData('sidebar')
               <li class="bd-links-span-all">
                 <a
                   href={`/docs/${getConfig().docs_version}/${groupSlug}/`}
-                  class:list={['bd-links-link d-inline-block rounded small', { active }]}
+                  class:list={['bd-links-link', { active }]}
                   aria-current={active ? 'page' : undefined}
                 >
                   {group.title}

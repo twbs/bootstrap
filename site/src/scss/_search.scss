@@ -3,24 +3,25 @@
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/color-mode" as *;
 @use "../../../scss/mixins/border-radius" as *;
+@use "../../../scss/mixins/focus-ring" as *;
 
 // stylelint-disable selector-class-pattern
 
 :root {
-  --docsearch-primary-color: var(--bd-violet);
-  --docsearch-logo-color: var(--bd-violet);
+  --docsearch-primary-color: var(--bs-indigo-500);
+  --docsearch-logo-color: var(--bs-indigo-500);
 }
 
 @include color-mode(dark, true) {
   // From here, the values are copied from https://cdn.jsdelivr.net/npm/@docsearch/css@3
   // in html[data-theme="dark"] selector
   // and are slightly modified for formatting purpose
-  --docsearch-text-color: #f5f6f7;
+  // --docsearch-text-color: #f5f6f7;
   --docsearch-container-background: rgba(9, 10, 17, .8);
   --docsearch-modal-background: #15172a;
   --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40, 0 3px 8px 0 #000309;
-  --docsearch-searchbox-background: #090a11;
-  --docsearch-searchbox-focus-background: #000;
+  // --docsearch-searchbox-background: #090a11;
+  // --docsearch-searchbox-focus-background: #000;
   --docsearch-hit-color: #bec3c9;
   --docsearch-hit-shadow: none;
   --docsearch-hit-background: #090a11;
@@ -28,153 +29,159 @@
   --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d, 0 2px 2px 0 rgba(3, 4, 9, .3);
   --docsearch-footer-background: #1e2136;
   --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, .5), 0 -4px 8px 0 rgba(0, 0, 0, .2);
-  --docsearch-muted-color: #7f8497;
+  // --docsearch-muted-color: #7f8497;
 }
 
-@layer custom {
-  .bd-search {
-    position: relative;
+.bd-search {
+  position: relative;
 
-    @include media-breakpoint-up(lg) {
-      position: absolute;
-      top: .875rem;
-      left: 50%;
-      width: 200px;
-      margin-inline-start: -100px;
-    }
-
-    @include media-breakpoint-up(xl) {
-      width: 280px;
-      margin-inline-start: -140px;
-    }
-
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    top: .875rem;
+    left: 50%;
+    width: 200px;
+    margin-inline-start: -100px;
   }
 
-  .DocSearch-Container {
-    --docsearch-muted-color: var(--bs-secondary-color);
-    --docsearch-hit-shadow: none;
-
-    position: fixed;
-    z-index: 2000; // Make sure to be over all components showcased in the documentation
-    cursor: auto; // Needed because of [role="button"] in Algolia search modal. Remove once https://github.com/algolia/docsearch/issues/1370 is tackled.
-
-    @include media-breakpoint-up(lg) {
-      padding-block-start: 4rem;
-    }
+  @include media-breakpoint-up(xl) {
+    width: 280px;
+    margin-inline-start: -140px;
   }
 
-  .DocSearch-Button {
-    --docsearch-searchbox-background: #{rgba($black, .1)};
-    --docsearch-searchbox-color: #{$white};
-    --docsearch-searchbox-focus-background: #{rgba($black, .25)};
-    --docsearch-searchbox-shadow: #{0 0 0 .25rem rgba($bd-accent, .4)};
-    --docsearch-text-color: #{$white};
-    --docsearch-muted-color: #{rgba($white, .65)};
+}
 
-    width: 100%;
-    height: 38px; // Match Bootstrap inputs
-    margin: 0;
-    border: 1px solid rgba($white, .4);
-    @include border-radius(.375rem);
+.DocSearch-Container {
+  --docsearch-muted-color: var(--bs-fg-3);
+  --docsearch-hit-shadow: none;
+
+  position: fixed;
+  z-index: 2000; // Make sure to be over all components showcased in the documentation
+  cursor: auto; // Needed because of [role="button"] in Algolia search modal. Remove once https://github.com/algolia/docsearch/issues/1370 is tackled.
+
+  @include media-breakpoint-up(lg) {
+    padding-block-start: 4rem;
+  }
+}
+
+.DocSearch-Button {
+  --docsearch-searchbox-background: var(--bs-bg-2);
+  --docsearch-searchbox-color: var(--bs-color-body);
+  --docsearch-searchbox-focus-background: var(--bs-bg-1);
+  --docsearch-searchbox-shadow: none;
+  --docsearch-text-color: var(--bs-color-body);
+  --docsearch-muted-color: var(--bs-fg-4);
+
+  width: 100%;
+  height: 36px;
+  padding-inline: 10px;
+  margin-left: 0;
+  border: 1px solid var(--bs-border-subtle);
+  @include border-radius(var(--bs-border-radius));
+
+  .DocSearch-Search-Icon {
+    width: 16px;
+    height: 16px;
+    opacity: .5;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    // @include focus-ring(true);
+    // --bs-focus-ring-offset: -1px;
+
+    // border-color: rgba($bd-accent, 1);
 
     .DocSearch-Search-Icon {
-      opacity: .65;
-    }
-
-    &:active,
-    &:focus,
-    &:hover {
-      border-color: rgba($bd-accent, 1);
-
-      .DocSearch-Search-Icon {
-        opacity: 1;
-      }
-    }
-
-    @include media-breakpoint-down(lg) {
-      &,
-      &:hover,
-      &:focus {
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-      }
-      &:focus {
-        box-shadow: var(--docsearch-searchbox-shadow);
-      }
+      opacity: 1;
     }
   }
 
-  .DocSearch-Button-Keys,
-  .DocSearch-Button-Placeholder {
-    @include media-breakpoint-down(lg) {
-      display: none;
-    }
-  }
+  // @include media-breakpoint-down(lg) {
+  //   &,
+  //   &:hover,
+  //   &:focus {
+  //     background: transparent;
+  //     border: 0;
+  //     box-shadow: none;
+  //   }
+  //   &:focus {
+  //     box-shadow: var(--docsearch-searchbox-shadow);
+  //   }
+  // }
+}
 
-  .DocSearch-Button-Keys {
-    min-width: 0;
-    padding: .125rem .25rem;
-    background: rgba($black, .25);
-    @include border-radius(.25rem);
+.DocSearch-Button-Keys,
+.DocSearch-Button-Placeholder {
+  @include media-breakpoint-down(lg) {
+    display: none;
   }
+}
 
-  .DocSearch-Button-Key {
-    top: 0;
-    width: auto;
-    height: 1.25rem;
-    padding-inline: .125rem;
-    margin-inline-end: 0;
-    font-size: .875rem;
-    background: none;
-    box-shadow: none;
+.DocSearch-Button-Placeholder {
+  font-size: 14px;
+}
+
+.DocSearch-Button-Keys {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  min-width: 0;
+  margin-top: .25rem;
+}
+
+.DocSearch-Button-Key {
+  position: static;
+  top: 0;
+  width: auto;
+  margin: 0;
+  font-size: var(--bs-font-size-sm);
+  background: none;
+  border-radius: 0; // stylelint-disable-line
+  box-shadow: none;
+}
+
+.DocSearch-Commands-Key {
+  background-image: none;
+  box-shadow: none;
+}
+
+.DocSearch-Form {
+  @include border-radius(var(--bs-border-radius));
+}
+
+.DocSearch-Hits {
+  mark {
+    padding: 0;
   }
+}
 
-  .DocSearch-Commands-Key {
-    padding-inline-start: 1px;
-    font-size: .875rem;
-    background-color: rgba($black, .1);
-    background-image: none;
-    box-shadow: none;
-  }
+.DocSearch-Hit {
+  padding-block-end: 0;
+  @include border-radius(0);
 
-  .DocSearch-Form {
-    @include border-radius(var(--bs-border-radius));
-  }
-
-  .DocSearch-Hits {
-    mark {
-      padding: 0;
-    }
-  }
-
-  .DocSearch-Hit {
-    padding-block-end: 0;
+  a {
     @include border-radius(0);
-
-    a {
-      @include border-radius(0);
-      border: solid var(--bs-border-color);
-      border-width: 0 1px 1px;
-    }
-
-    &:first-child a {
-      @include border-top-radius(var(--bs-border-radius));
-      border-top-width: 1px;
-    }
-    &:last-child a {
-      @include border-bottom-radius(var(--bs-border-radius));
-    }
+    border: solid var(--bs-border-color);
+    border-width: 0 1px 1px;
   }
 
-  .DocSearch-Hit-icon {
-    display: flex;
-    align-items: center;
+  &:first-child a {
+    @include border-top-radius(var(--bs-border-radius));
+    border-top-width: 1px;
   }
+  &:last-child a {
+    @include border-bottom-radius(var(--bs-border-radius));
+  }
+}
 
-  // Fix --docsearch-logo-color that doesn't do anything
-  .DocSearch-Logo svg .cls-1,
-  .DocSearch-Logo svg .cls-2 {
-    fill: var(--docsearch-logo-color);
-  }
+.DocSearch-Hit-icon {
+  display: flex;
+  align-items: center;
+}
+
+// Fix --docsearch-logo-color that doesn't do anything
+.DocSearch-Logo svg .cls-1,
+.DocSearch-Logo svg .cls-2 {
+  fill: var(--docsearch-logo-color);
 }
