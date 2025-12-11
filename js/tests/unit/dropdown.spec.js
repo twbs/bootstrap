@@ -82,7 +82,7 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should create offset modifier correctly when offset option is a function', () => {
+    it('should create offset correctly when offset option is a function', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
@@ -96,18 +96,14 @@ describe('Dropdown', () => {
         const getOffset = jasmine.createSpy('getOffset').and.returnValue([10, 20])
         const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
         const dropdown = new Dropdown(btnDropdown, {
-          offset: getOffset,
-          popperConfig: {
-            onFirstUpdate(state) {
-              expect(getOffset).toHaveBeenCalledWith({
-                popper: state.rects.popper,
-                reference: state.rects.reference,
-                placement: state.placement
-              }, btnDropdown)
-              resolve()
-            }
-          }
+          offset: getOffset
         })
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(getOffset).toHaveBeenCalled()
+          resolve()
+        })
+
         const offset = dropdown._getOffset()
 
         expect(typeof offset).toEqual('function')
@@ -132,7 +128,8 @@ describe('Dropdown', () => {
       expect(dropdown._getOffset()).toEqual([10, 20])
     })
 
-    it('should allow to pass config to Popper with `popperConfig`', () => {
+    // Note: popperConfig option is deprecated in favor of native CSS anchor positioning
+    it('should accept deprecated popperConfig option without error', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -143,40 +140,15 @@ describe('Dropdown', () => {
       ].join('')
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+
+      // Should not throw even with deprecated option
       const dropdown = new Dropdown(btnDropdown, {
         popperConfig: {
           placement: 'left'
         }
       })
 
-      const popperConfig = dropdown._getPopperConfig()
-
-      expect(popperConfig.placement).toEqual('left')
-    })
-
-    it('should allow to pass config to Popper with `popperConfig` as a function', () => {
-      fixtureEl.innerHTML = [
-        '<div class="dropdown">',
-        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-placement="right">Dropdown</button>',
-        '  <div class="dropdown-menu">',
-        '    <a class="dropdown-item" href="#">Secondary link</a>',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const getPopperConfig = jasmine.createSpy('getPopperConfig').and.returnValue({ placement: 'left' })
-      const dropdown = new Dropdown(btnDropdown, {
-        popperConfig: getPopperConfig
-      })
-
-      const popperConfig = dropdown._getPopperConfig()
-
-      // Ensure that the function was called with the default config.
-      expect(getPopperConfig).toHaveBeenCalledWith(jasmine.objectContaining({
-        placement: jasmine.any(String)
-      }))
-      expect(popperConfig.placement).toEqual('left')
+      expect(dropdown).toBeDefined()
     })
   })
 
@@ -230,12 +202,12 @@ describe('Dropdown', () => {
 
         firstDropdownEl.addEventListener('shown.bs.dropdown', () => {
           expect(btnDropdown1).toHaveClass('show')
-          spyOn(dropdown1._popper, 'destroy')
           btnDropdown2.click()
         })
 
         secondDropdownEl.addEventListener('shown.bs.dropdown', () => setTimeout(() => {
-          expect(dropdown1._popper.destroy).toHaveBeenCalled()
+          // First dropdown should be hidden when second one opens
+          expect(btnDropdown1).not.toHaveClass('show')
           resolve()
         }))
 
@@ -508,59 +480,27 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should toggle a dropdown with a valid virtual element reference', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = [
-          '<div class="dropdown">',
-          '  <button class="btn dropdown-toggle visually-hidden" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
-          '  <div class="dropdown-menu">',
-          '    <a class="dropdown-item" href="#">Secondary link</a>',
-          '  </div>',
-          '</div>'
-        ].join('')
+    it('should throw error with invalid virtual element reference', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle visually-hidden" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
 
-        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-        const virtualElement = {
-          nodeType: 1,
-          getBoundingClientRect() {
-            return {
-              width: 0,
-              height: 0,
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0
-            }
-          }
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+
+      expect(() => new Dropdown(btnDropdown, {
+        reference: {}
+      })).toThrowError(TypeError, 'DROPDOWN: Option "reference" provided type "object" without a required "getBoundingClientRect" method.')
+
+      expect(() => new Dropdown(btnDropdown, {
+        reference: {
+          getBoundingClientRect: 'not-a-function'
         }
-
-        expect(() => new Dropdown(btnDropdown, {
-          reference: {}
-        })).toThrowError(TypeError, 'DROPDOWN: Option "reference" provided type "object" without a required "getBoundingClientRect" method.')
-
-        expect(() => new Dropdown(btnDropdown, {
-          reference: {
-            getBoundingClientRect: 'not-a-function'
-          }
-        })).toThrowError(TypeError, 'DROPDOWN: Option "reference" provided type "object" without a required "getBoundingClientRect" method.')
-
-        // use onFirstUpdate as Poppers internal update is executed async
-        const dropdown = new Dropdown(btnDropdown, {
-          reference: virtualElement,
-          popperConfig: {
-            onFirstUpdate() {
-              expect(spy).toHaveBeenCalled()
-              expect(btnDropdown).toHaveClass('show')
-              expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
-              resolve()
-            }
-          }
-        })
-
-        const spy = spyOn(virtualElement, 'getBoundingClientRect').and.callThrough()
-
-        dropdown.toggle()
-      })
+      })).toThrowError(TypeError, 'DROPDOWN: Option "reference" provided type "object" without a required "getBoundingClientRect" method.')
     })
 
     it('should not toggle a dropdown if the element is disabled', () => {
@@ -854,12 +794,12 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          spyOn(dropdown._popper, 'destroy')
           dropdown.hide()
         })
 
         btnDropdown.addEventListener('hidden.bs.dropdown', () => {
-          expect(dropdown._popper.destroy).toHaveBeenCalled()
+          // Dropdown should be hidden
+          expect(btnDropdown).not.toHaveClass('show')
           resolve()
         })
 
@@ -1033,7 +973,6 @@ describe('Dropdown', () => {
 
       const dropdown = new Dropdown(btnDropdown)
 
-      expect(dropdown._popper).toBeNull()
       expect(dropdown._menu).not.toBeNull()
       expect(dropdown._element).not.toBeNull()
       const spy = spyOn(EventHandler, 'off')
@@ -1045,7 +984,7 @@ describe('Dropdown', () => {
       expect(spy).toHaveBeenCalledWith(btnDropdown, Dropdown.EVENT_KEY)
     })
 
-    it('should dispose dropdown with Popper', () => {
+    it('should dispose dropdown after showing', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1060,20 +999,18 @@ describe('Dropdown', () => {
 
       dropdown.toggle()
 
-      expect(dropdown._popper).not.toBeNull()
       expect(dropdown._menu).not.toBeNull()
       expect(dropdown._element).not.toBeNull()
 
       dropdown.dispose()
 
-      expect(dropdown._popper).toBeNull()
       expect(dropdown._menu).toBeNull()
       expect(dropdown._element).toBeNull()
     })
   })
 
   describe('update', () => {
-    it('should call Popper and detect navbar on update', () => {
+    it('should detect navbar on update', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1088,18 +1025,14 @@ describe('Dropdown', () => {
 
       dropdown.toggle()
 
-      expect(dropdown._popper).not.toBeNull()
-
-      const spyUpdate = spyOn(dropdown._popper, 'update')
       const spyDetect = spyOn(dropdown, '_detectNavbar')
 
       dropdown.update()
 
-      expect(spyUpdate).toHaveBeenCalled()
       expect(spyDetect).toHaveBeenCalled()
     })
 
-    it('should just detect navbar on update', () => {
+    it('should detect navbar even when not shown', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
@@ -1116,7 +1049,6 @@ describe('Dropdown', () => {
 
       dropdown.update()
 
-      expect(dropdown._popper).toBeNull()
       expect(spy).toHaveBeenCalled()
     })
   })
@@ -1165,7 +1097,7 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should not use "static" Popper in navbar', () => {
+    it('should use static positioning in navbar', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<nav class="navbar navbar-expand-md bg-light">',
@@ -1183,7 +1115,7 @@ describe('Dropdown', () => {
         const dropdown = new Dropdown(btnDropdown)
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          expect(dropdown._popper).not.toBeNull()
+          // In navbar, positioning is static
           expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
           resolve()
         })
@@ -1266,7 +1198,7 @@ describe('Dropdown', () => {
       })
     })
 
-    it('should not use Popper if display set to static', () => {
+    it('should use static display when configured', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div class="dropdown">',
@@ -1281,8 +1213,8 @@ describe('Dropdown', () => {
         const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
 
         btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          // Popper adds this attribute when we use it
-          expect(dropdownMenu.getAttribute('data-popper-placement')).toBeNull()
+          // Static display uses data-bs-popper="static"
+          expect(dropdownMenu.getAttribute('data-bs-popper')).toEqual('static')
           resolve()
         })
 
