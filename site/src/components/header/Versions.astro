@@ -32,15 +32,16 @@ const addedIn53 = addedIn?.version === '5.3'
     type="button"
     class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle"
     data-bs-toggle="dropdown"
+    data-bs-target="#bd-versions-menu"
+    data-bs-placement="bottom-end"
     aria-expanded="false"
-    data-bs-display="static"
   >
     <span class="d-lg-none" aria-hidden="true">Bootstrap</span><span class="visually-hidden">Bootstrap&nbsp;</span> v{
       getConfig().docs_version
     }
     <span class="visually-hidden">(switch to other versions)</span>
   </button>
-  <ul class="dropdown-menu dropdown-menu-end">
+  <ul class="dropdown-menu dropdown-menu-end" id="bd-versions-menu">
     <li><h6 class="dropdown-header">v5 releases</h6></li>
     <li>
       <a

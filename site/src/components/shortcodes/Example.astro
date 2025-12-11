@@ -74,41 +74,12 @@ const simplifiedMarkup = sourceMarkup
 ---
 
 <div class="bd-example-snippet bd-code-snippet">
-  {
-    showPreview && (
-      <div id={id} class:list={['bd-example m-0 border-0', className]}>
-        <Fragment set:html={markup} />
-      </div>
-    )
-  }
-
-  {
-    showMarkup && (
-      <>
-        {showPreview && (
-          <div class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-0 border-top border-bottom">
-            <small class="font-monospace text-body-secondary text-uppercase">{lang}</small>
-            <div class="d-flex ms-auto">
-              <button
-                type="button"
-                class="btn-edit text-nowrap"
-                title="Try it on StackBlitz"
-                data-sb-js-snippet={addStackblitzJs ? true : undefined}
-              >
-                <svg class="bi" aria-hidden="true">
-                  <use xlink:href="#lightning-charge-fill" />
-                </svg>
-              </button>
-              <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
-                <svg class="bi" aria-hidden="true">
-                  <use xlink:href="#clipboard" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        )}
-        <Code code={simplifiedMarkup} lang={lang} nestedInExample={true} />
-      </>
-    )
-  }
+  {showPreview && (
+    <div id={id} class:list={['bd-example', className]}>
+      <Fragment set:html={markup} />
+    </div>
+  )}
+  {showMarkup && (
+    <Code code={simplifiedMarkup} lang={lang} nestedInExample={true} addStackblitzJs={addStackblitzJs} />
+  )}
 </div>

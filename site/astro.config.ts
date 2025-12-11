@@ -1,4 +1,7 @@
 import { defineConfig } from 'astro/config'
+import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
+import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
+import { transformerNotationDiff } from '@shikijs/transformers'
 
 import { bootstrap } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
@@ -27,9 +30,22 @@ export default defineConfig({
     syntaxHighlight: 'shiki',
     shikiConfig: {
       themes: {
-        light: 'github-light',
-        dark: 'github-dark'
-      }
+        light: bootstrapLight,
+        dark: bootstrapDark
+      },
+      transformers: [
+        transformerNotationDiff(),
+        {
+          name: 'add-language-attribute',
+          pre(node) {
+            // Add data-language attribute to pre tag so Code component can access it
+            const lang = this.options.lang
+            if (lang) {
+              node.properties['dataLanguage'] = lang
+            }
+          }
+        }
+      ]
     }
   },
   site,

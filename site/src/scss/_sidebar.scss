@@ -1,6 +1,7 @@
 @use "../../../scss/variables" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
+@use "../../../scss/mixins/focus-ring" as *;
 
 @layer custom {
   .bd-sidebar {
@@ -26,6 +27,7 @@
   }
 
   .bd-links-heading {
+    gap: .25rem;
     color: var(--bs-emphasis-color);
   }
   .bd-links-heading .bi {
@@ -34,15 +36,11 @@
   }
 
   .bd-links-subgroup {
-    margin-inline-start: 1.5rem;
+    margin-inline-start: 1.75rem;
     color: var(--bs-emphasis-color);
   }
 
   .bd-links-nav {
-    // @include media-breakpoint-down(lg) {
-    //   font-size: .875rem;
-    // }
-
     @include media-breakpoint-between(xs, lg) {
       column-count: 2;
       column-gap: 1.5rem;
@@ -58,22 +56,27 @@
   }
 
   .bd-links-link {
-    padding: .1875rem .5rem;
+    display: block;
+    padding: .25rem .75rem;
     margin-inline-start: 1rem;
     margin-top: .125rem;
     font-size: .875rem;
     color: var(--bs-body-color);
     text-decoration: none;
+    @include border-radius(var(--bs-border-radius));
 
-    &:hover,
-    &:focus,
-    &.active {
-      color: var(--bs-emphasis-color);
-      background-color: var(--bd-sidebar-link-bg);
+    &:hover {
+      background-color: var(--bs-bg-1);
+    }
+
+    &:focus-visible {
+      @include focus-ring();
     }
 
     &.active {
-      font-weight: 600;
+      font-weight: 500;
+      color: var(--bs-emphasis-color);
+      background-color: var(--bs-bg-2);
     }
   }
 }
