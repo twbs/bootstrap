@@ -120,14 +120,6 @@ $body-text-align:           null !default;
 $body-color:                var(--#{$prefix}color-body) !default;
 $body-bg:                   var(--#{$prefix}bg-body) !default;
 
-$body-secondary-color:      var(--#{$prefix}color-secondary) !default;
-$body-secondary-bg:         var(--#{$prefix}bg-secondary) !default;
-
-$body-tertiary-color:       var(--#{$prefix}color-muted) !default;
-$body-tertiary-bg:          var(--#{$prefix}bg-muted) !default;
-
-$body-emphasis-color:       $black !default;
-
 // Links
 //
 // Style anchor elements.
@@ -177,9 +169,9 @@ $border-color-translucent:    rgba($black, .175) !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables
-$border-radius:               .375rem !default;
-$border-radius-sm:            .25rem !default;
-$border-radius-lg:            .5rem !default;
+$border-radius:               .5rem !default;
+$border-radius-sm:            .375rem !default;
+$border-radius-lg:            .75rem !default;
 $border-radius-xl:            1rem !default;
 $border-radius-2xl:           2rem !default;
 $border-radius-pill:          50rem !default;
@@ -553,13 +545,13 @@ $pre-color:                         null !default;
 // $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
 // $body-secondary-bg-dark:            var(--#{$prefix}gray-800) !default;
 // $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
-$body-tertiary-bg-dark:             color-mix(in srgb, var(--#{$prefix}gray-800), var(--#{$prefix}gray-900)) !default;
+// $body-tertiary-bg-dark:             color-mix(in srgb, var(--#{$prefix}gray-800), var(--#{$prefix}gray-900)) !default;
 $body-emphasis-color-dark:          $white !default;
 $border-color-dark:                 var(--#{$prefix}gray-700) !default;
 $border-color-translucent-dark:     rgba($white, .15) !default;
 $headings-color-dark:               inherit !default;
 // $mark-color-dark:                   $body-color-dark !default;
-$mark-bg-dark:                      var(--#{$prefix}yellow-800) !default;
+// $mark-bg-dark:                      var(--#{$prefix}yellow-800) !default;
 
 
 //
