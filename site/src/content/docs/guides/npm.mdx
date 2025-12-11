@@ -1,0 +1,78 @@
+---
+title: Bootstrap and npm
+description: The official guide for how to build a starter project with Bootstrap’s CSS and JavaScript in your project using just npm.
+toc: true
+thumbnail: guides/bootstrap-npm@2x.png
+---
+
+<img class="d-block mx-auto mb-4 img-fluid rounded-3" srcset="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png, /docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm@2x.png 2x" src="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png" width="1000" height="500" alt=""/>
+
+<Callout>
+**Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/sass-js/). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/sass-js?file=index.html).
+</Callout>
+
+## Setup
+
+We’re building a npm project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
+
+1. **Create a project folder and set up npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
+
+   ```sh
+   mkdir my-project && cd my-project
+   npm init -y
+   ```
+
+2. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Popper since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Popper here.
+
+   ```sh
+   npm i --save bootstrap @popperjs/core
+   ```
+3. **Install additional dependencies.** In addition to Vite and Bootstrap, we have some dependencies used to import and bundle Bootstrap’s CSS. Sass compiles our source `.scss` files into CSS and then Autoprefixer and PostCSS handle browser compatibility. We install the `postcss-cli` package so we can work with PostCSS via CLI.
+
+   ```sh
+   npm i --save-dev autoprefixer postcss postcss-cli sass
+   ```
+
+4. **Install local development tools.** Lastly, to make life a little easier, we recommend installing some dev tools to make running local servers with hot refresh (where changes you make are reflected in the browser automatically) and add some code quality checks.
+
+   We use `nodemon` to watch files for changes, `npm-run-all` to run multiple npm scripts at a time, `sirv-cli` to run a local server, and `stylelint` to format CSS like Bootstrap does for consistency.
+
+   ```sh
+   npm i --save-dev nodemon npm-run-all sirv-cli stylelint stylelint-config-twbs-bootstrap
+   ```
+
+Now that we have all the necessary dependencies installed, we can get to work creating the project files and importing Bootstrap.
+
+## Project structure
+
+We’ve already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
+
+```sh
+mkdir {css,js,scss}
+touch index.html js/main.js scss/styles.scss .stylelintrc.json
+```
+
+When you’re done, your project should look like this:
+
+```text
+my-project/
+├── css/
+├── js/
+│   └── main.js
+├── scss/
+│   └── styles.scss
+├── index.html
+├── package-lock.json
+└── package.json
+```
+
+At this point, everything is in the right place, but we’ll need to add some npm scripts to use our dependencies and compile the CSS.
+
+## Configure
+
+- npm scripts
+- stylelint configuration
+
+## Import Bootstrap
+
+<GuideFooter />
