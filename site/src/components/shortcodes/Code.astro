@@ -2,8 +2,22 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { codeToHtml } from 'shiki'
+import { transformerNotationDiff } from '@shikijs/transformers'
+import { bootstrapLight, bootstrapDark } from 'bootstrap-vscode-theme'
+import { replaceConfigInText } from '@libs/remark'
+
+interface Tab {
+  label: string
+  code: string
+  lang?: string
+}
 
 interface Props {
+  /**
+   * If extra JS snippet should be added to StackBlitz or not.
+   * @default false
+   */
+  addStackblitzJs?: boolean
   /**
    * The CSS class(es) to be added to the `pre` HTML element when rendering code blocks in Markdown.
    * Note that this prop is not used when the component is invoked directly.
@@ -18,6 +32,10 @@ interface Props {
    * The CSS class(es) to be added to the `div` wrapper HTML element.
    */
   containerClass?: string
+  /**
+   * The language attribute from Shiki/Astro markdown processing
+   */
+  'data-language'?: string
   /**
    * The language to use for highlighting.
    * @see https://prismjs.com/#supported-languages
@@ -38,9 +56,53 @@ interface Props {
    * @default false
    */
   nestedInExample?: boolean
+  /**
+   * If true, hides the highlight toolbar (language label and copy button).
+   * @default false
+   */
+  noToolbar?: boolean
+  /**
+   * Array of tabs to display a tabbed interface.
+   * When provided, this will render tabs instead of a single language label.
+   */
+  tabs?: Tab[]
 }
 
-const { class: className, code, containerClass, fileMatch, filePath, lang, nestedInExample = false } = Astro.props
+const {
+  addStackblitzJs = false,
+  class: className,
+  code,
+  containerClass,
+  'data-language': dataLanguage,
+  fileMatch,
+  filePath,
+  lang,
+  nestedInExample = false,
+  noToolbar = false,
+  tabs
+} = Astro.props
+
+// Extract language from multiple possible sources (for markdown code blocks)
+// Priority: lang prop > data-language attribute > className pattern
+let detectedLang = lang || dataLanguage
+if (!detectedLang && className) {
+  const langMatch = className.match(/language-(\w+)/)
+  if (langMatch) {
+    detectedLang = langMatch[1]
+  }
+}
+
+// Format language for display (e.g., "html" -> "HTML", "javascript" -> "JavaScript")
+const displayLang = detectedLang
+  ? detectedLang === 'js' ? 'JavaScript'
+  : detectedLang === 'ts' ? 'TypeScript'
+  : detectedLang === 'html' ? 'HTML'
+  : detectedLang === 'css' ? 'CSS'
+  : detectedLang === 'scss' ? 'SCSS'
+  : detectedLang === 'bash' || detectedLang === 'sh' ? 'Shell'
+  : detectedLang === 'powershell' ? 'PowerShell'
+  : detectedLang.toUpperCase()
+  : ''
 
 let codeToDisplay = filePath
   ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
@@ -59,38 +121,112 @@ if (filePath && fileMatch && codeToDisplay) {
 }
 
 // Add line wrapper for shell languages to support shell prompts
-const shouldWrapLines = lang && ['bash', 'sh', 'powershell'].includes(lang)
+const shouldWrapLines = detectedLang && ['bash', 'sh', 'powershell'].includes(detectedLang)
 
-const highlightedCode = codeToDisplay && lang
+// Transformer to ensure class name is always 'astro-code' instead of 'shiki'
+const classTransformer = {
+  name: 'class-name-transformer',
+  pre(node: any) {
+    // Force replace all 'shiki' classes with 'astro-code'
+    const existingClasses = node.properties?.className || []
+    const newClasses = existingClasses.map((cls: any) => {
+      if (typeof cls === 'string') {
+        return cls.replace(/shiki/g, 'astro-code')
+      }
+      return cls
+    })
+    node.properties.className = newClasses
+  }
+}
+
+const lineWrapperTransformer = {
+  name: 'line-wrapper',
+  line(node: any) {
+    // Wrap non-comment lines in a span with .line class for shell prompt styling
+    const hasOnlyComments = node.children.every((child: any) =>
+      child.type === 'element' &&
+      child.properties?.class &&
+      Array.isArray(child.properties.class) &&
+      child.properties.class.some((cls: any) => typeof cls === 'string' && cls.includes('comment'))
+    )
+
+    if (!hasOnlyComments) {
+      node.properties = node.properties || {}
+      node.properties.class = node.properties.class
+        ? `${node.properties.class} line`
+        : 'line'
+    }
+  }
+}
+
+const transformers: any[] = [
+  transformerNotationDiff(), // Run diff transformer first, supports // [!code ++] and // [!code --] notation
+  classTransformer
+]
+if (shouldWrapLines) {
+  transformers.push(lineWrapperTransformer)
+}
+
+// Process tabs if provided
+let highlightedTabs: Array<{ label: string; code: string }> | null = null
+if (tabs && tabs.length > 0) {
+  highlightedTabs = await Promise.all(
+    tabs.map(async (tab) => {
+      // Replace config placeholders in the code
+      const processedCode = replaceConfigInText(tab.code)
+
+      const tabLang = tab.lang || detectedLang || 'bash'
+      const shouldWrapTabLines = ['bash', 'sh', 'powershell'].includes(tabLang)
+
+      const tabTransformers: any[] = [
+        transformerNotationDiff(),
+        classTransformer
+      ]
+      if (shouldWrapTabLines) {
+        tabTransformers.push(lineWrapperTransformer)
+      }
+
+      let tabHighlighted = await codeToHtml(processedCode, {
+        lang: tabLang,
+        themes: {
+          light: bootstrapLight,
+          dark: bootstrapDark
+        },
+        transformers: tabTransformers
+      })
+
+      // Replace 'shiki' with 'astro-code' in the generated HTML
+      tabHighlighted = tabHighlighted.replace(/class=(["'])shiki(\s+)/g, 'class=$1astro-code$2')
+      tabHighlighted = tabHighlighted.replace(/class=(["'])shiki(["'])/g, 'class=$1astro-code$2')
+      tabHighlighted = tabHighlighted.replace(/shiki-themes/g, 'astro-code-themes')
+
+      return {
+        label: tab.label,
+        code: tabHighlighted
+      }
+    })
+  )
+}
+
+let highlightedCode = codeToDisplay && detectedLang
   ? await codeToHtml(codeToDisplay, {
-      lang,
+      lang: detectedLang,
       themes: {
-        light: 'github-light',
-        dark: 'github-dark'
+        light: bootstrapLight,
+        dark: bootstrapDark
       },
-      transformers: shouldWrapLines ? [
-        {
-          name: 'line-wrapper',
-          line(node) {
-            // Wrap non-comment lines in a span with .line class for shell prompt styling
-            const hasOnlyComments = node.children.every(child =>
-              child.type === 'element' &&
-              child.properties?.class &&
-              Array.isArray(child.properties.class) &&
-              child.properties.class.some((cls) => typeof cls === 'string' && cls.includes('comment'))
-            )
-
-            if (!hasOnlyComments) {
-              node.properties = node.properties || {}
-              node.properties.class = node.properties.class
-                ? `${node.properties.class} line`
-                : 'line'
-            }
-          }
-        }
-      ] : []
+      transformers
     })
   : null
+
+// Replace 'shiki' with 'astro-code' in the generated HTML
+if (highlightedCode) {
+  // Replace class="shiki" or class='shiki' (preserving other classes like has-diff)
+  highlightedCode = highlightedCode.replace(/class=(["'])shiki(\s+)/g, 'class=$1astro-code$2')
+  highlightedCode = highlightedCode.replace(/class=(["'])shiki(["'])/g, 'class=$1astro-code$2')
+  // Replace shiki-themes if it exists
+  highlightedCode = highlightedCode.replace(/shiki-themes/g, 'astro-code-themes')
+}
 ---
 
 <script>
@@ -108,13 +244,42 @@ const highlightedCode = codeToDisplay && lang
   snippetButtonTooltip('.btn-clipboard', btnTitle)
   snippetButtonTooltip('.btn-edit', btnEdit)
 
+  // Handle tab switching
+  document.querySelectorAll('.code-tabs').forEach((tabContainer) => {
+    const buttons = tabContainer.querySelectorAll('.code-tab-btn')
+    // Find the parent container that holds both tabs and content
+    // Could be .bd-code-snippet or .bd-example-snippet
+    const parentContainer = tabContainer.closest('.bd-code-snippet') ||
+                           tabContainer.closest('.bd-example-snippet') ||
+                           tabContainer.parentElement?.parentElement
+    const codeBlocks = parentContainer?.querySelectorAll('.code-tab-content')
+
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and hide all code blocks
+        buttons.forEach((btn) => btn.classList.remove('active'))
+        codeBlocks?.forEach((block) => block.classList.remove('active'))
+
+        // Add active class to clicked button and show corresponding code block
+        button.classList.add('active')
+        codeBlocks?.[index]?.classList.add('active')
+      })
+    })
+  })
+
   const clipboard = new ClipboardJS('.btn-clipboard', {
     target: (trigger) => trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!,
     text: (trigger) => {
+      // For tabbed code, find the active tab's code
+      const snippet = trigger.closest('.bd-code-snippet')
+      const activeTab = snippet?.querySelector('.code-tab-content.active .astro-code')
+      if (activeTab) {
+        return activeTab.textContent?.trim()!
+      }
       // Trim text to workaround a Firefox issue where the structure of the DOM (uncontrolled) is relevant for the
       // copied text.
       // https://github.com/zenorocha/clipboard.js/issues/439#issuecomment-312344621
-      return trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!.textContent?.trim()!
+      return snippet?.querySelector('.astro-code')!.textContent?.trim()!
     }
   })
 
@@ -169,31 +334,94 @@ const highlightedCode = codeToDisplay && lang
   })
 </script>
 
-<div class:list={[{ 'bd-code-snippet': !nestedInExample }, containerClass]}>
-  {
-    nestedInExample
-      ? (<></>)
-      : Astro.slots.has('pre')
-        ? (
-          <slot name="pre" />
-        )
-        : (
-          <div class="bd-clipboard">
-            <button type="button" class="btn-clipboard">
-              <svg class="bi" role="img" aria-label="Copy">
-                <use xlink:href="#clipboard" />
+{nestedInExample ? (
+  <>
+    {!noToolbar && (
+      <div class="hstack highlight-toolbar">
+        {highlightedTabs ? (
+          <div class="code-tabs">
+            {highlightedTabs.map((tab, index) => (
+              <button
+                type="button"
+                class:list={['code-tab-btn', { active: index === 0 }]}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
+        )}
+        <div class="d-flex ms-auto">
+          {addStackblitzJs && (
+            <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
+              <svg class="bi" aria-hidden="true">
+                <use xlink:href="#lightning-charge-fill" />
               </svg>
             </button>
+          )}
+          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+            <svg class="bi" aria-hidden="true">
+              <use xlink:href="#clipboard" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    )}
+    {highlightedTabs ? (
+      <>
+        {highlightedTabs.map((tab, index) => (
+          <div class:list={['code-tab-content', { active: index === 0 }]}>
+            <Fragment set:html={tab.code} />
           </div>
-        )
-  }
-  <div class="highlight">
-    {
-      highlightedCode ? (
-        <Fragment set:html={highlightedCode} />
-      ) : (
-        /* prettier-ignore */ <pre class={className}><slot /></pre>
-      )
-    }
+        ))}
+      </>
+    ) : highlightedCode ? (
+      <Fragment set:html={highlightedCode} />
+    ) : (
+      /* prettier-ignore */ <pre class={className}><slot /></pre>
+    )}
+  </>
+) : (
+  <div class="bd-code-snippet">
+    {!noToolbar && (
+      <div class="hstack highlight-toolbar">
+        {highlightedTabs ? (
+          <div class="code-tabs">
+            {highlightedTabs.map((tab, index) => (
+              <button
+                type="button"
+                class:list={['code-tab-btn', { active: index === 0 }]}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
+        )}
+        <div class="d-flex ms-auto">
+          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+            <svg class="bi" aria-hidden="true">
+              <use xlink:href="#clipboard" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    )}
+
+    {highlightedTabs ? (
+      <>
+        {highlightedTabs.map((tab, index) => (
+          <div class:list={['code-tab-content', { active: index === 0 }]}>
+            <Fragment set:html={tab.code} />
+          </div>
+        ))}
+      </>
+    ) : highlightedCode ? (
+      <Fragment set:html={highlightedCode} />
+    ) : (
+      /* prettier-ignore */ <pre class={className}><slot /></pre>
+    )}
   </div>
-</div>
+)}

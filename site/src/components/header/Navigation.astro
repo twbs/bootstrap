@@ -21,7 +21,7 @@ interface Props {
 const { addedIn, layout, title } = Astro.props
 ---
 
-<header class="navbar navbar-expand-lg bd-navbar sticky-top">
+<header class="navbar navbar-expand-lg bg-body bd-navbar border-bottom border-subtle sticky-top bd-sticky-navbar">
   <nav class="container-2xl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
     {
       layout === 'docs' && (
@@ -42,7 +42,7 @@ const { addedIn, layout, title } = Astro.props
     }
     {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
 
-    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
+    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap" style="color: var(--bs-indigo-500);">
       <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
     </a>
 
@@ -109,15 +109,15 @@ const { addedIn, layout, title } = Astro.props
             <small class="d-lg-none ms-2">Open Collective</small>
           </LinkItem>
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-            <hr class="d-lg-none my-2 text-white-50" />
+            <div class="vr d-none d-lg-flex mx-lg-2 my-auto"></div>
+            <hr class="d-lg-none my-2" />
           </li>
 
           <Versions layout={layout} addedIn={addedIn} />
 
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-            <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-            <hr class="d-lg-none my-2 text-white-50" />
+            <div class="vr d-none d-lg-flex mx-lg-2 my-auto"></div>
+            <hr class="d-lg-none my-2" />
           </li>
 
           <li class="nav-item dropdown">

@@ -14,21 +14,22 @@ const { layout } = Astro.props
   type="button"
   aria-expanded="false"
   data-bs-toggle="dropdown"
-  {...layout !== 'examples' ? { 'data-bs-display': 'static' } : {}}
+  data-bs-target="#bd-theme-menu"
+  data-bs-placement="bottom-end"
   aria-label="Toggle theme (auto)"
 >
   <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
   <span class=`${layout === 'examples' ? 'visually-hidden' : 'd-lg-none ms-2'}` id="bd-theme-text">Toggle theme</span>
 </button>
-<ul class=`dropdown-menu dropdown-menu-end${layout === 'examples' ? ' shadow' : ''}` aria-labelledby="bd-theme-text">
+<ul class="dropdown-menu" id="bd-theme-menu" aria-labelledby="bd-theme-text" style="--bs-dropdown-min-width: 8rem;">
   <li>
     <button
       type="button"
-      class="dropdown-item d-flex align-items-center"
+      class="dropdown-item"
       data-bs-theme-value="light"
       aria-pressed="false"
     >
-      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
+      <svg class="bi opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
       Light
       <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
@@ -36,11 +37,11 @@ const { layout } = Astro.props
   <li>
     <button
       type="button"
-      class="dropdown-item d-flex align-items-center"
+      class="dropdown-item"
       data-bs-theme-value="dark"
       aria-pressed="false"
     >
-      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
+      <svg class="bi opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
       Dark
       <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>
@@ -48,11 +49,11 @@ const { layout } = Astro.props
   <li>
     <button
       type="button"
-      class="dropdown-item d-flex align-items-center active"
+      class="dropdown-item active"
       data-bs-theme-value="auto"
       aria-pressed="true"
     >
-      <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
+      <svg class="bi opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
       Auto
       <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
     </button>

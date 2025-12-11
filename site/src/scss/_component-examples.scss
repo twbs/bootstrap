@@ -3,15 +3,30 @@
 @use "../../../scss/vendor/rfs" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
+@use "../../../scss/mixins/box-shadow" as *;
 @use "variables" as *;
 
 //
 // Docs examples
 //
 
+// .bd-code-snippet
+//   .bd-example
+//   .highlight-toolbar
+//   pre.astro-code
+
+// .bd-code-snippet
+//   .highlight-toolbar
+//   pre.astro-code
+
 @layer custom {
   .bd-code-snippet {
+    --bd-example-padding: 1.25rem;
+    --bd-example-inner-radius: calc(var(--bs-border-radius) - 1px);
+
     margin: 0 ($bd-gutter-x * -.5) 1rem;
+    font-size: var(--#{$prefix}font-size-sm);
+    background-color: var(--bd-pre-bg);
     border: solid var(--bs-border-color);
     border-width: 1px 0;
 
@@ -20,24 +35,50 @@
       border-width: 1px;
       @include border-radius(var(--bs-border-radius));
     }
+
+    .bd-example {
+      &:first-child {
+        @include border-top-radius(var(--bd-example-inner-radius));
+      }
+      &:last-child {
+        @include border-bottom-radius(var(--bd-example-inner-radius));
+      }
+    }
+  }
+
+  .highlight-toolbar {
+    padding-block: .375rem;
+    padding-inline-start: var(--bd-example-padding);
+    padding-inline-end: calc(var(--bd-example-padding) - .5em);
+    background-color: var(--bs-bg-1);
+    border-bottom: 1px solid var(--bs-border-color);
+    // @include border-top-radius(calc(var(--bs-border-radius) - 1px));
+
+    @include media-breakpoint-up(md) {
+      &:first-child {
+        @include border-top-radius(calc(var(--bs-border-radius) - 1px));
+      }
+
+      &:not(:first-child) {
+        border-top: 1px solid var(--bs-border-color);
+      }
+    }
   }
 
   .bd-example {
-    --bd-example-padding: 1rem;
-
     position: relative;
     display: flow-root;
     padding: var(--bd-example-padding);
-    margin: 0 ($bd-gutter-x * -.5) 1rem;
-    border: solid var(--bs-border-color);
-    border-width: 1px 0;
+    font-size: var(--#{$prefix}font-size-base);
+    // margin: 0 ($bd-gutter-x * -.5) 1rem;
+    background-color: var(--bs-bg-body);
 
     @include media-breakpoint-up(md) {
       --bd-example-padding: 1.5rem;
 
       margin-inline: 0;
-      border-width: 1px;
-      @include border-radius(var(--bs-border-radius));
+      // border-width: 1px;
+      // @include border-radius(var(--bs-border-radius));
     }
 
     + p {
@@ -58,8 +99,9 @@
     }
 
     > .dropdown-menu {
-      position: static;
-      display: block;
+      max-width: 12rem;
+      //   position: static;
+      //   display: block;
     }
 
     > :last-child,
@@ -98,13 +140,13 @@
     // Navbars
     .fixed-top,
     .sticky-top {
-      position: static;
+      position: static !important; // stylelint-disable-line
       margin: calc(-1 * var(--bd-example-padding)) calc(-1 * var(--bd-example-padding)) var(--bd-example-padding);
     }
 
     .fixed-bottom,
     .sticky-bottom {
-      position: static;
+      position: static !important; // stylelint-disable-line
       margin: var(--bd-example-padding) calc(-1 * var(--bd-example-padding)) calc(-1 * var(--bd-example-padding));
 
     }
@@ -353,36 +395,12 @@
   // Code snippets
   //
 
-  .highlight {
+  .astro-code {
     position: relative;
-    padding: .75rem ($bd-gutter-x * .5);
     background-color: var(--bd-pre-bg);
 
     @include media-breakpoint-up(md) {
-      padding: 1rem;
       @include border-radius(calc(var(--bs-border-radius) - 1px));
-    }
-
-    @include media-breakpoint-up(lg) {
-      pre {
-        margin-inline-end: 1.875rem;
-      }
-    }
-
-    pre {
-      // padding: .25rem 0 .875rem;
-      // margin-top: .8125rem;
-      margin-bottom: 0;
-      overflow: overlay;
-      white-space: pre;
-      background-color: transparent;
-      border: 0;
-    }
-
-    pre code {
-      @include font-size(inherit);
-      color: var(--bs-body-color); // Effectively the base text color
-      word-wrap: normal;
     }
   }
 
@@ -390,23 +408,4 @@
     margin-inline-end: 0;
   }
 
-  .highlight-toolbar {
-    background-color: var(--bd-pre-bg);
-
-    + .highlight {
-      @include border-top-radius(0);
-    }
-  }
-
-  .bd-file-ref {
-    .highlight-toolbar {
-      @include media-breakpoint-up(md) {
-        @include border-top-radius(calc(var(--bs-border-radius) - 1px));
-      }
-    }
-  }
-
-  .bd-content .bd-code-snippet {
-    margin-bottom: 1rem;
-  }
 }

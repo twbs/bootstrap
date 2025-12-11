@@ -44,11 +44,23 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 
 <link rel="preconnect" href=`https://${getConfig().algolia.app_id}-dsn.algolia.net` crossorigin />
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
 <title>{pageTitle}</title>
 
 {robots && <meta name="robots" content={robots} />}
 
 <script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
+
+<!-- CSS Anchor Positioning polyfill for Firefox/Safari -->
+<script is:inline type="module">
+  if (!CSS.supports('anchor-name', '--test')) {
+    import('https://unpkg.com/@oddbird/css-anchor-positioning/dist/css-anchor-positioning-fn.js')
+      .then(mod => mod.default())
+  }
+</script>
 
 {import.meta.env.PROD && ScssProd && (
   <Stylesheet direction={direction} layout={layout} />

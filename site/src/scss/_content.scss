@@ -1,5 +1,6 @@
 @use "sass:color";
 @use "../../../scss/colors" as *;
+@use "../../../scss/config" as *;
 @use "../../../scss/variables" as *;
 @use "../../../scss/vendor/rfs" as *;
 @use "../../../scss/layout/breakpoints" as *;
@@ -10,6 +11,14 @@
 
 @layer custom {
   .bd-content {
+    @media (width >= 1024px) {
+      font-size: var(--#{$prefix}font-size-md);
+    }
+
+    > p {
+      margin-bottom: 1.25rem;
+    }
+
     > h2,
     > h3,
     > h4 {
@@ -47,9 +56,9 @@
       overflow-y: auto;
       font-size: .75rem;
 
-      thead th {
-        border-block-end-color: currentcolor;
-      }
+      // thead th {
+      //   border-block-end-color: currentcolor;
+      // }
 
       th,
       td {
@@ -136,7 +145,7 @@
 
   .bd-title {
     --bs-heading-color: var(--bs-fg);
-    @include font-size(3rem);
+    // @include font-size(3rem);
   }
 
   .bd-subtitle {

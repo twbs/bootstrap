@@ -113,7 +113,7 @@ if (currentPageIndex < allPages.length - 1) {
         <div class="bd-subtitle">
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
         </div>
-        <div class="mb-3 mb-md-0 d-flex text-nowrap">
+        <div class="mb-3 mb-md-0 d-flex gap-2 text-nowrap">
           {
             frontmatter.added &&
               ((frontmatter.added.show_badge !== undefined && frontmatter.added.show_badge === true) ||
@@ -131,12 +131,12 @@ if (currentPageIndex < allPages.length - 1) {
             rel="noopener"
           >
             <GitHubIcon height={16} width={16} class="bi" />
-            View on GitHub
+            Edit on GitHub
           </a>
           {
             frontmatter.mdn && (
               <a
-                class="btn btn-secondary-text btn-sm"
+                class="btn btn-subtle btn-sm theme-secondary"
                 href={frontmatter.mdn}
                 title="View on MDN"
                 target="_blank"
@@ -193,19 +193,19 @@ if (currentPageIndex < allPages.length - 1) {
         <Ads />
       </div>
 
-      <div class="bd-content ps-lg-2">
+      <div class="bd-content prose ps-lg-2">
         {
           frontmatter.sections && (
             <div class="grid grid-cols-3 mb-5">
               {frontmatter.sections.map((section) => (
                 <a
-                  class="d-block text-decoration-none"
+                  class="d-block text-decoration-none bg-1 hover-bg-2 rounded-3 p-3"
                   href={getVersionedDocsPath(
                     `${parentDirectory ? parentDirectory + '/' : ''}${getSlug(section.title)}/`
                   )}
                 >
-                  <strong class="d-block h5 mb-0">{section.title}</strong>
-                  <span class="text-secondary">{section.description}</span>
+                  <strong class="d-block fs-5 mb-0">{section.title}</strong>
+                  <span class="fs-6 fg-3">{section.description}</span>
                 </a>
               ))}
             </div>

@@ -2,7 +2,9 @@
 @use "../../../scss/config" as *;
 @use "../../../scss/colors" as *;
 @use "../../../scss/variables" as *;
+@use "../../../scss/mixins/border-radius" as *;
 @use "../../../scss/mixins/color-mode" as *;
+@use "../../../scss/mixins/transition" as *;
 
 // Shell prompt colors for light mode
 :root,
@@ -10,21 +12,24 @@
   --shell-prompt-color: #565c64;
 }
 
-// Shell prompt colors for dark mode
-@include color-mode(dark, true) {
+.astro-code {
+  display: flex;
+  padding: var(--bd-example-padding);
+  margin-bottom: 0;
+  line-height: 20px;
+  --bs-font-monospace: "Geist Mono";
+  background-color: var(--bd-pre-bg) !important; // stylelint-disable-line declaration-no-important
+}
+
+// Dark mode theming for Shiki
+// When using dual themes, Shiki generates inline styles with CSS variables
+// We need to switch from the light theme vars to dark theme vars
+[data-bs-theme="dark"] {
   --shell-prompt-color: #868e96;
-}
 
-.shiki {
-  background-color: transparent !important; // stylelint-disable-line declaration-no-important
-}
-
-// Shiki dual-theme support
-// Light mode: use default inline styles (no override needed)
-// Dark mode: override to use the dark theme CSS variables
-@include color-mode(dark, true) {
-  .shiki,
-  .shiki span {
+  .astro-code span,
+  .astro-code-themes span {
+    // Override Shiki's inline color with the dark theme color
     color: var(--shiki-dark) !important; // stylelint-disable-line declaration-no-important
   }
 }
@@ -44,5 +49,49 @@
     color: var(--shell-prompt-color);
     content: "PM> ";
     user-select: none;
+  }
+}
+
+// Code tabs
+.code-tabs {
+  display: flex;
+  gap: .75rem;
+}
+
+.code-tab-btn {
+  position: relative;
+  padding: .25rem 0;
+  font-size: var(--bs-font-size-xs);
+  color: var(--bs-fg-3);
+  background: transparent;
+  border: 0;
+  @include border-radius(var(--bs-border-radius-sm));
+  @include transition(color .15s ease-in-out, background-color .15s ease-in-out);
+
+  &:hover {
+    color: var(--bs-fg-2);
+  }
+
+  &.active {
+    font-weight: 500;
+    color: var(--bs-fg-body);
+
+    &::after {
+      position: absolute;
+      bottom: -.5rem;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      content: "";
+      background-color: var(--bs-border-emphasized);
+    }
+  }
+}
+
+.code-tab-content {
+  display: none;
+
+  &.active {
+    display: block;
   }
 }
