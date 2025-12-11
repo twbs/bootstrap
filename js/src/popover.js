@@ -5,6 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
+import EventHandler from './dom/event-handler.js'
 import Tooltip from './tooltip.js'
 
 /**
@@ -19,7 +20,7 @@ const SELECTOR_CONTENT = '.popover-body'
 const Default = {
   ...Tooltip.Default,
   content: '',
-  offset: [0, 8],
+  offset: [8, 8],
   placement: 'right',
   template: '<div class="popover" role="tooltip">' +
     '<div class="popover-arrow"></div>' +
@@ -68,6 +69,23 @@ class Popover extends Tooltip {
   _getContent() {
     return this._resolvePossibleFunction(this._config.content)
   }
+
+  // Static
+  static dataApiClickHandler(event) {
+    const popover = Popover.getOrCreateInstance(event.target)
+    popover.toggle()
+  }
 }
+
+/**
+ * Data API implementation
+ * Lazily initialize popovers on first interaction
+ */
+
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="popover"]'
+const DATA_API_KEY = '.data-api'
+const EVENT_CLICK_DATA_API = `click${DATA_API_KEY}`
+
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, Popover.dataApiClickHandler)
 
 export default Popover

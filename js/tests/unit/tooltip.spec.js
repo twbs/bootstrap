@@ -114,24 +114,19 @@ describe('Tooltip', () => {
       })
     })
 
-    it('should create offset modifier when offset is passed as a function', () => {
+    it('should create offset when offset is passed as a function', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Offset from function"></a>'
 
         const getOffset = jasmine.createSpy('getOffset').and.returnValue([10, 20])
         const tooltipEl = fixtureEl.querySelector('a')
         const tooltip = new Tooltip(tooltipEl, {
-          offset: getOffset,
-          popperConfig: {
-            onFirstUpdate(state) {
-              expect(getOffset).toHaveBeenCalledWith({
-                popper: state.rects.popper,
-                reference: state.rects.reference,
-                placement: state.placement
-              }, tooltipEl)
-              resolve()
-            }
-          }
+          offset: getOffset
+        })
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          expect(getOffset).toHaveBeenCalled()
+          resolve()
         })
 
         const offset = tooltip._getOffset()
@@ -142,46 +137,13 @@ describe('Tooltip', () => {
       })
     })
 
-    it('should create offset modifier when offset option is passed in data attribute', () => {
+    it('should create offset when offset option is passed in data attribute', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-offset="10,20" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
       expect(tooltip._getOffset()).toEqual([10, 20])
-    })
-
-    it('should allow to pass config to Popper with `popperConfig`', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip"></a>'
-
-      const tooltipEl = fixtureEl.querySelector('a')
-      const tooltip = new Tooltip(tooltipEl, {
-        popperConfig: {
-          placement: 'left'
-        }
-      })
-
-      const popperConfig = tooltip._getPopperConfig('top')
-
-      expect(popperConfig.placement).toEqual('left')
-    })
-
-    it('should allow to pass config to Popper with `popperConfig` as a function', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip"></a>'
-
-      const tooltipEl = fixtureEl.querySelector('a')
-      const getPopperConfig = jasmine.createSpy('getPopperConfig').and.returnValue({ placement: 'left' })
-      const tooltip = new Tooltip(tooltipEl, {
-        popperConfig: getPopperConfig
-      })
-
-      const popperConfig = tooltip._getPopperConfig('top')
-
-      // Ensure that the function was called with the default config.
-      expect(getPopperConfig).toHaveBeenCalledWith(jasmine.objectContaining({
-        placement: jasmine.any(String)
-      }))
-      expect(popperConfig.placement).toEqual('left')
     })
 
     it('should use original title, if not "data-bs-title" is given', () => {
@@ -527,7 +489,8 @@ describe('Tooltip', () => {
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
           expect(tooltip._getTipElement()).toHaveClass('bs-tooltip-auto')
-          expect(tooltip._getTipElement().getAttribute('data-popper-placement')).toEqual('bottom')
+          // Native positioning uses data-bs-placement instead of data-popper-placement
+          expect(tooltip._getTipElement().getAttribute('data-bs-placement')).toEqual('bottom')
           resolve()
         })
 
@@ -795,7 +758,7 @@ describe('Tooltip', () => {
 
     it('should properly maintain tooltip state if leave event occurs and enter event occurs during hide transition', () => {
       return new Promise(resolve => {
-        // Style this tooltip to give it plenty of room for popper to do what it wants
+        // Style this tooltip to give it plenty of room
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-bs-placement="top" style="position:fixed;left:50%;top:50%;">Trigger</a>'
 
         const tooltipEl = fixtureEl.querySelector('a')
@@ -807,8 +770,8 @@ describe('Tooltip', () => {
         })
 
         setTimeout(() => {
-          expect(tooltip._popper).not.toBeNull()
-          expect(tooltip._getTipElement().getAttribute('data-popper-placement')).toEqual('top')
+          // With native positioning, check data-bs-placement
+          expect(tooltip._getTipElement().getAttribute('data-bs-placement')).toEqual('top')
           tooltipEl.dispatchEvent(createEvent('mouseout'))
 
           setTimeout(() => {
@@ -817,8 +780,7 @@ describe('Tooltip', () => {
           }, 100)
 
           setTimeout(() => {
-            expect(tooltip._popper).not.toBeNull()
-            expect(tooltip._getTipElement().getAttribute('data-popper-placement')).toEqual('top')
+            expect(tooltip._getTipElement().getAttribute('data-bs-placement')).toEqual('top')
             resolve()
           }, 200)
         }, 10)
@@ -1032,7 +994,7 @@ describe('Tooltip', () => {
       })
     })
 
-    it('should not throw error running hide if popper hasn\'t been shown', () => {
+    it('should not throw error running hide if tooltip hasn\'t been shown', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -1048,7 +1010,7 @@ describe('Tooltip', () => {
   })
 
   describe('update', () => {
-    it('should call popper update', () => {
+    it('should call update and not throw', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
@@ -1056,11 +1018,8 @@ describe('Tooltip', () => {
         const tooltip = new Tooltip(tooltipEl)
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
-          const spy = spyOn(tooltip._popper, 'update')
-
-          tooltip.update()
-
-          expect(spy).toHaveBeenCalled()
+          // With native anchor positioning, update just re-applies positioning
+          expect(() => tooltip.update()).not.toThrow()
           resolve()
         })
 

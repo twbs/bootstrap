@@ -5,15 +5,25 @@
  * --------------------------------------------------------------------------
  */
 
-import * as Popper from '@popperjs/core'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import {
-  execute, findShadowRoot, getElement, getUID, isRTL, noop
+  execute, findShadowRoot, getUID, isRTL, noop
 } from './util/index.js'
 import { DefaultAllowlist } from './util/sanitizer.js'
 import TemplateFactory from './util/template-factory.js'
+import {
+  applyAnchorStyles,
+  applyPositionedStyles,
+  BreakpointObserver,
+  generateAnchorName,
+  getPlacementForViewport,
+  isResponsivePlacement,
+  parseResponsivePlacement,
+  removePositioningStyles,
+  supportsPopover
+} from './util/positioning.js'
 
 /**
  * Constants
@@ -58,15 +68,12 @@ const AttachmentMap = {
 const Default = {
   allowList: DefaultAllowlist,
   animation: true,
-  boundary: 'clippingParents',
-  container: false,
   customClass: '',
   delay: 0,
   fallbackPlacements: ['top', 'right', 'bottom', 'left'],
   html: false,
   offset: [0, 6],
   placement: 'top',
-  popperConfig: null,
   sanitize: true,
   sanitizeFn: null,
   selector: false,
@@ -81,15 +88,12 @@ const Default = {
 const DefaultType = {
   allowList: 'object',
   animation: 'boolean',
-  boundary: '(string|element)',
-  container: '(string|element|boolean)',
   customClass: '(string|function)',
   delay: '(number|object)',
   fallbackPlacements: 'array',
   html: 'boolean',
   offset: '(array|string|function)',
   placement: '(string|function)',
-  popperConfig: '(null|object|function)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
   selector: '(string|boolean)',
@@ -104,10 +108,6 @@ const DefaultType = {
 
 class Tooltip extends BaseComponent {
   constructor(element, config) {
-    if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)')
-    }
-
     super(element, config)
 
     // Private
@@ -115,9 +115,11 @@ class Tooltip extends BaseComponent {
     this._timeout = 0
     this._isHovered = null
     this._activeTrigger = {}
-    this._popper = null
     this._templateFactory = null
     this._newContent = null
+    this._anchorName = null
+    this._breakpointObserver = null
+    this._responsivePlacements = null
 
     // Protected
     this.tip = null
@@ -127,6 +129,9 @@ class Tooltip extends BaseComponent {
     if (!this._config.selector) {
       this._fixTitle()
     }
+
+    // Parse responsive placement if present
+    this._setupResponsivePlacement()
   }
 
   // Getters
@@ -171,13 +176,18 @@ class Tooltip extends BaseComponent {
   dispose() {
     clearTimeout(this._timeout)
 
+    if (this._breakpointObserver) {
+      this._breakpointObserver.dispose()
+      this._breakpointObserver = null
+    }
+
     EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
     if (this._element.getAttribute('data-bs-original-title')) {
       this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'))
     }
 
-    this._disposePopper()
+    this._disposeTooltip()
     super.dispose()
   }
 
@@ -198,21 +208,25 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    // TODO: v6 remove this or make it optional
-    this._disposePopper()
+    // Clean up any existing tooltip
+    this._disposeTooltip()
 
     const tip = this._getTipElement()
 
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
 
-    const { container } = this._config
-
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
-      container.append(tip)
+      document.body.append(tip)
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
     }
 
-    this._popper = this._createPopper(tip)
+    // Set up native anchor positioning
+    this._setupPositioning(tip)
+
+    // Show using Popover API if supported, otherwise just add class
+    if (supportsPopover() && tip.popover !== undefined) {
+      tip.showPopover()
+    }
 
     tip.classList.add(CLASS_NAME_SHOW)
 
@@ -252,6 +266,15 @@ class Tooltip extends BaseComponent {
     const tip = this._getTipElement()
     tip.classList.remove(CLASS_NAME_SHOW)
 
+    // Hide using Popover API if supported
+    if (supportsPopover() && tip.popover !== undefined) {
+      try {
+        tip.hidePopover()
+      } catch {
+        // Popover might already be hidden
+      }
+    }
+
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
@@ -271,7 +294,7 @@ class Tooltip extends BaseComponent {
       }
 
       if (!this._isHovered) {
-        this._disposePopper()
+        this._disposeTooltip()
       }
 
       this._element.removeAttribute('aria-describedby')
@@ -282,8 +305,10 @@ class Tooltip extends BaseComponent {
   }
 
   update() {
-    if (this._popper) {
-      this._popper.update()
+    // With native anchor positioning, the browser handles updates automatically
+    // This method is kept for API compatibility
+    if (this.tip && this._anchorName) {
+      this._setupPositioning(this.tip)
     }
   }
 
@@ -303,13 +328,11 @@ class Tooltip extends BaseComponent {
   _createTipElement(content) {
     const tip = this._getTemplateFactory(content).toHtml()
 
-    // TODO: remove this check in v6
     if (!tip) {
       return null
     }
 
     tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
-    // TODO: v6 the following can be achieved with CSS only
     tip.classList.add(`bs-${this.constructor.NAME}-auto`)
 
     const tipId = getUID(this.constructor.NAME).toString()
@@ -320,13 +343,18 @@ class Tooltip extends BaseComponent {
       tip.classList.add(CLASS_NAME_FADE)
     }
 
+    // Set up for Popover API - use 'manual' for programmatic control
+    if (supportsPopover()) {
+      tip.setAttribute('popover', 'manual')
+    }
+
     return tip
   }
 
   setContent(content) {
     this._newContent = content
     if (this._isShown()) {
-      this._disposePopper()
+      this._disposeTooltip()
       this.show()
     }
   }
@@ -370,10 +398,51 @@ class Tooltip extends BaseComponent {
     return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
   }
 
-  _createPopper(tip) {
-    const placement = execute(this._config.placement, [this, tip, this._element])
-    const attachment = AttachmentMap[placement.toUpperCase()]
-    return Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+  _setupResponsivePlacement() {
+    const placement = this._config.placement
+
+    // Only set up responsive observer if placement is a string with breakpoint syntax
+    if (typeof placement === 'string' && isResponsivePlacement(placement)) {
+      this._responsivePlacements = parseResponsivePlacement(placement)
+
+      // Set up breakpoint observer to update positioning on resize
+      this._breakpointObserver = new BreakpointObserver(() => {
+        if (this._isShown()) {
+          this._setupPositioning(this.tip)
+        }
+      })
+    }
+  }
+
+  _setupPositioning(tip) {
+    let placement
+
+    // Check for responsive placements first
+    if (this._responsivePlacements) {
+      placement = getPlacementForViewport(this._responsivePlacements)
+    } else {
+      placement = execute(this._config.placement, [this, tip, this._element])
+    }
+
+    const attachment = AttachmentMap[placement.toUpperCase()] || placement
+
+    // Generate unique anchor name
+    const uid = getUID(this.constructor.NAME)
+    this._anchorName = generateAnchorName(this.constructor.NAME, uid)
+
+    // Apply anchor to trigger element
+    applyAnchorStyles(this._element, this._anchorName)
+
+    // Get offset
+    const offset = this._getOffset()
+
+    // Apply positioning to tooltip
+    applyPositionedStyles(tip, {
+      anchorName: this._anchorName,
+      placement: attachment,
+      offset,
+      fallbackPlacements: this._config.fallbackPlacements
+    })
   }
 
   _getOffset() {
@@ -384,7 +453,8 @@ class Tooltip extends BaseComponent {
     }
 
     if (typeof offset === 'function') {
-      return popperData => offset(popperData, this._element)
+      // For function offsets, call with element context
+      return offset({}, this._element)
     }
 
     return offset
@@ -392,53 +462,6 @@ class Tooltip extends BaseComponent {
 
   _resolvePossibleFunction(arg) {
     return execute(arg, [this._element, this._element])
-  }
-
-  _getPopperConfig(attachment) {
-    const defaultBsPopperConfig = {
-      placement: attachment,
-      modifiers: [
-        {
-          name: 'flip',
-          options: {
-            fallbackPlacements: this._config.fallbackPlacements
-          }
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: this._getOffset()
-          }
-        },
-        {
-          name: 'preventOverflow',
-          options: {
-            boundary: this._config.boundary
-          }
-        },
-        {
-          name: 'arrow',
-          options: {
-            element: `.${this.constructor.NAME}-arrow`
-          }
-        },
-        {
-          name: 'preSetPlacement',
-          enabled: true,
-          phase: 'beforeMain',
-          fn: data => {
-            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
-            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
-            this._getTipElement().setAttribute('data-popper-placement', data.state.placement)
-          }
-        }
-      ]
-    }
-
-    return {
-      ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
-    }
   }
 
   _setListeners() {
@@ -556,8 +579,6 @@ class Tooltip extends BaseComponent {
   }
 
   _configAfterMerge(config) {
-    config.container = config.container === false ? document.body : getElement(config.container)
-
     if (typeof config.delay === 'number') {
       config.delay = {
         show: config.delay,
@@ -588,22 +609,53 @@ class Tooltip extends BaseComponent {
     config.selector = false
     config.trigger = 'manual'
 
-    // In the future can be replaced with:
-    // const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
-    // `Object.fromEntries(keysWithDifferentValues)`
     return config
   }
 
-  _disposePopper() {
-    if (this._popper) {
-      this._popper.destroy()
-      this._popper = null
-    }
-
+  _disposeTooltip() {
     if (this.tip) {
+      // Remove anchor positioning styles
+      removePositioningStyles(this._element, this.tip)
+
+      // Hide popover if using Popover API
+      if (supportsPopover() && this.tip.popover !== undefined) {
+        try {
+          this.tip.hidePopover()
+        } catch {
+          // Already hidden
+        }
+      }
+
       this.tip.remove()
       this.tip = null
     }
+
+    this._anchorName = null
+  }
+
+  // Static
+  static dataApiHandler(event) {
+    const tooltip = Tooltip.getOrCreateInstance(event.target)
+
+    // For hover/focus triggers, manually trigger the enter/leave behavior
+    if (event.type === 'mouseenter' || event.type === 'focusin') {
+      tooltip._activeTrigger[event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true
+      tooltip._enter()
+    }
   }
 }
+
+/**
+ * Data API implementation
+ * Lazily initialize tooltips on first interaction
+ */
+
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tooltip"]'
+const DATA_API_KEY = '.data-api'
+const EVENT_MOUSEENTER_DATA_API = `mouseenter${DATA_API_KEY}`
+const EVENT_FOCUSIN_DATA_API = `focusin${DATA_API_KEY}`
+
+EventHandler.on(document, EVENT_MOUSEENTER_DATA_API, SELECTOR_DATA_TOGGLE, Tooltip.dataApiHandler)
+EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, Tooltip.dataApiHandler)
+
 export default Tooltip

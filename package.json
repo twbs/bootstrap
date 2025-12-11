@@ -102,7 +102,12 @@
     "astro-preview": "astro preview --root site --port 9001"
   },
   "peerDependencies": {
-    "@popperjs/core": "^2.11.8"
+    "@oddbird/css-anchor-positioning": "^0.5.0"
+  },
+  "peerDependenciesMeta": {
+    "@oddbird/css-anchor-positioning": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
@@ -114,11 +119,12 @@
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "@docsearch/js": "^3.9.0",
-    "@popperjs/core": "^2.11.8",
+    "@oddbird/css-anchor-positioning": "^0.5.0",
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
+    "@shikijs/transformers": "^3.15.0",
     "@stackblitz/sdk": "^1.11.0",
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
@@ -126,6 +132,7 @@
     "astro": "^5.15.6",
     "astro-auto-import": "^0.4.5",
     "autoprefixer": "^10.4.22",
+    "bootstrap-vscode-theme": "^0.0.9",
     "bundlewatch": "^0.4.1",
     "clean-css-cli": "^5.6.3",
     "clipboard": "^2.0.11",
@@ -193,14 +200,12 @@
     },
     "shim": {
       "js/bootstrap": {
-        "deps": [
-          "@popperjs/core"
-        ]
+        "deps": []
       }
     },
     "dependencies": {},
     "peerDependencies": {
-      "@popperjs/core": "^2.11.8"
+      "@oddbird/css-anchor-positioning": "^0.5.0"
     }
   },
   "overrides": {

@@ -5,21 +5,32 @@
  * --------------------------------------------------------------------------
  */
 
-import * as Popper from '@popperjs/core'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import SelectorEngine from './dom/selector-engine.js'
 import {
-  execute,
   getElement,
   getNextActiveElement,
+  getUID,
   isDisabled,
   isElement,
   isRTL,
   isVisible,
   noop
 } from './util/index.js'
+import {
+  applyAnchorStyles,
+  applyPositionedStyles,
+  BreakpointObserver,
+  generateAnchorName,
+  getPlacementForViewport,
+  isResponsivePlacement,
+  parseResponsivePlacement,
+  removePositioningStyles,
+  supportsAnchorPositioning,
+  supportsPopover
+} from './util/positioning.js'
 
 /**
  * Constants
@@ -57,7 +68,10 @@ const SELECTOR_MENU = '.dropdown-menu'
 const SELECTOR_NAVBAR = '.navbar'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
+const SELECTOR_DROPDOWN_CONTAINER = 'b-dropdown'
+const SELECTOR_STICKY_FIXED = '.sticky-top, .sticky-bottom, .fixed-top, .fixed-bottom'
 
+// Placement mappings for anchor positioning
 const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start'
 const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end'
 const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start'
@@ -69,19 +83,15 @@ const PLACEMENT_BOTTOMCENTER = 'bottom'
 
 const Default = {
   autoClose: true,
-  boundary: 'clippingParents',
   display: 'dynamic',
   offset: [0, 2],
-  popperConfig: null,
   reference: 'toggle'
 }
 
 const DefaultType = {
   autoClose: '(boolean|string)',
-  boundary: '(string|element)',
   display: 'string',
   offset: '(array|string|function)',
-  popperConfig: '(null|object|function)',
   reference: '(string|element|object)'
 }
 
@@ -93,13 +103,37 @@ class Dropdown extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
-    this._popper = null
-    this._parent = this._element.parentNode // dropdown wrapper
-    // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
-    this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
-      SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
-      SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+    this._parent = this._element.closest(SELECTOR_DROPDOWN_CONTAINER) || this._element.parentNode
+
+    // Find menu via data-bs-target, or fallback to DOM traversal
+    const target = this._element.getAttribute('data-bs-target')
+    if (target) {
+      this._menu = SelectorEngine.findOne(target)
+    } else {
+      // Look for menu in <b-dropdown> wrapper first, then fallback to sibling/parent search
+      const container = this._element.closest(SELECTOR_DROPDOWN_CONTAINER)
+      if (container) {
+        this._menu = SelectorEngine.findOne(SELECTOR_MENU, container)
+      }
+
+      if (!this._menu) {
+        this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
+          SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
+          SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+      }
+    }
+
     this._inNavbar = this._detectNavbar()
+    this._inStickyContext = this._detectStickyContext()
+    this._anchorName = null
+    this._breakpointObserver = null
+    this._responsivePlacements = null
+
+    // Set up popover attribute for auto-dismiss behavior
+    this._setupPopoverAttribute()
+
+    // Parse responsive placement if present
+    this._setupResponsivePlacement()
   }
 
   // Getters
@@ -135,7 +169,8 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    this._createPopper()
+    // Set up native anchor positioning
+    this._setupPositioning()
 
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
@@ -149,6 +184,11 @@ class Dropdown extends BaseComponent {
 
     this._element.focus()
     this._element.setAttribute('aria-expanded', true)
+
+    // Show using Popover API if supported
+    if (supportsPopover() && this._menu.hasAttribute('popover')) {
+      this._menu.showPopover()
+    }
 
     this._menu.classList.add(CLASS_NAME_SHOW)
     this._element.classList.add(CLASS_NAME_SHOW)
@@ -168,17 +208,21 @@ class Dropdown extends BaseComponent {
   }
 
   dispose() {
-    if (this._popper) {
-      this._popper.destroy()
+    if (this._breakpointObserver) {
+      this._breakpointObserver.dispose()
+      this._breakpointObserver = null
     }
 
+    this._cleanupPositioning()
     super.dispose()
   }
 
   update() {
     this._inNavbar = this._detectNavbar()
-    if (this._popper) {
-      this._popper.update()
+    // With native anchor positioning, updates happen automatically
+    // Re-apply positioning if needed
+    if (this._isShown()) {
+      this._setupPositioning()
     }
   }
 
@@ -197,14 +241,22 @@ class Dropdown extends BaseComponent {
       }
     }
 
-    if (this._popper) {
-      this._popper.destroy()
+    // Hide using Popover API if supported
+    if (supportsPopover() && this._menu.hasAttribute('popover')) {
+      try {
+        this._menu.hidePopover()
+      } catch {
+        // Already hidden
+      }
     }
+
+    // Clean up positioning
+    this._cleanupPositioning()
 
     this._menu.classList.remove(CLASS_NAME_SHOW)
     this._element.classList.remove(CLASS_NAME_SHOW)
     this._element.setAttribute('aria-expanded', 'false')
-    Manipulator.removeDataAttribute(this._menu, 'popper')
+    Manipulator.removeDataAttribute(this._menu, 'popper') // Legacy cleanup
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
@@ -214,37 +266,128 @@ class Dropdown extends BaseComponent {
     if (typeof config.reference === 'object' && !isElement(config.reference) &&
       typeof config.reference.getBoundingClientRect !== 'function'
     ) {
-      // Popper virtual elements require a getBoundingClientRect method
       throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
     }
 
     return config
   }
 
-  _createPopper() {
-    if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)')
+  _setupPopoverAttribute() {
+    // Use popover="auto" for automatic light-dismiss behavior when autoClose is true
+    // Use popover="manual" when autoClose is false or specific
+    if (supportsPopover()) {
+      if (this._config.autoClose === true) {
+        this._menu.setAttribute('popover', 'auto')
+      } else {
+        this._menu.setAttribute('popover', 'manual')
+      }
+    }
+  }
+
+  _setupPositioning() {
+    // Skip positioning for static display
+    if (this._config.display === 'static') {
+      Manipulator.setDataAttribute(this._menu, 'popper', 'static') // Legacy attribute
+      return
     }
 
-    let referenceElement = this._element
+    // Get placement for data attribute (used by CSS for styling)
+    const placement = this._getPlacement()
 
-    if (this._config.reference === 'parent') {
-      referenceElement = this._parent
-    } else if (isElement(this._config.reference)) {
-      referenceElement = getElement(this._config.reference)
-    } else if (typeof this._config.reference === 'object') {
-      referenceElement = this._config.reference
+    // For sticky/fixed contexts (like sticky navbars), skip anchor positioning
+    // to avoid jitter during scroll. CSS handles positioning via absolute.
+    if (this._inStickyContext) {
+      this._menu.dataset.bsPlacement = placement
+      return
     }
 
-    const popperConfig = this._getPopperConfig()
-    this._popper = Popper.createPopper(referenceElement, this._menu, popperConfig)
+    // Check if native anchor positioning is supported
+    if (supportsAnchorPositioning()) {
+      // Generate unique anchor name
+      const uid = getUID(NAME)
+      this._anchorName = generateAnchorName(NAME, uid)
+
+      // Determine reference element
+      let referenceElement = this._element
+
+      if (this._config.reference === 'parent') {
+        referenceElement = this._parent
+      } else if (isElement(this._config.reference)) {
+        referenceElement = getElement(this._config.reference)
+      } else if (typeof this._config.reference === 'object') {
+        // Virtual element - for backward compatibility
+        // Native anchor positioning doesn't support virtual elements directly
+        // Fall back to toggle element
+        referenceElement = this._element
+      }
+
+      // Apply anchor to reference element
+      applyAnchorStyles(referenceElement, this._anchorName)
+
+      // Get offset
+      const offset = this._getOffset()
+
+      // Apply positioning to menu
+      applyPositionedStyles(this._menu, {
+        anchorName: this._anchorName,
+        placement,
+        offset,
+        fallbackPlacements: ['top', 'bottom', 'left', 'right']
+      })
+    } else {
+      // Fallback: Use data attribute for CSS-based positioning
+      // The CSS in _dropdown.scss handles positioning via [data-bs-placement]
+      this._menu.dataset.bsPlacement = placement
+    }
+  }
+
+  _cleanupPositioning() {
+    if (this._anchorName) {
+      // Get reference element
+      let referenceElement = this._element
+      if (this._config.reference === 'parent') {
+        referenceElement = this._parent
+      } else if (isElement(this._config.reference)) {
+        referenceElement = getElement(this._config.reference)
+      }
+
+      removePositioningStyles(referenceElement, this._menu)
+      this._anchorName = null
+    }
   }
 
   _isShown() {
     return this._menu.classList.contains(CLASS_NAME_SHOW)
   }
 
+  _setupResponsivePlacement() {
+    const placementAttr = this._element.getAttribute('data-bs-placement')
+
+    if (placementAttr && isResponsivePlacement(placementAttr)) {
+      this._responsivePlacements = parseResponsivePlacement(placementAttr)
+
+      // Set up breakpoint observer to update positioning on resize
+      this._breakpointObserver = new BreakpointObserver(() => {
+        if (this._isShown()) {
+          this._setupPositioning()
+        }
+      })
+    }
+  }
+
   _getPlacement() {
+    // Check for responsive placements first
+    if (this._responsivePlacements) {
+      return getPlacementForViewport(this._responsivePlacements)
+    }
+
+    // Check for explicit data-bs-placement on the toggle (non-responsive)
+    const explicitPlacement = this._element.getAttribute('data-bs-placement')
+    if (explicitPlacement) {
+      return explicitPlacement
+    }
+
+    // Fall back to wrapper class approach for backward compatibility
     const parentDropdown = this._parent
 
     if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
@@ -277,6 +420,10 @@ class Dropdown extends BaseComponent {
     return this._element.closest(SELECTOR_NAVBAR) !== null
   }
 
+  _detectStickyContext() {
+    return this._element.closest(SELECTOR_STICKY_FIXED) !== null
+  }
+
   _getOffset() {
     const { offset } = this._config
 
@@ -285,42 +432,10 @@ class Dropdown extends BaseComponent {
     }
 
     if (typeof offset === 'function') {
-      return popperData => offset(popperData, this._element)
+      return offset({}, this._element)
     }
 
     return offset
-  }
-
-  _getPopperConfig() {
-    const defaultBsPopperConfig = {
-      placement: this._getPlacement(),
-      modifiers: [{
-        name: 'preventOverflow',
-        options: {
-          boundary: this._config.boundary
-        }
-      },
-      {
-        name: 'offset',
-        options: {
-          offset: this._getOffset()
-        }
-      }]
-    }
-
-    // Disable Popper if we have a static display or Dropdown is in Navbar
-    if (this._inNavbar || this._config.display === 'static') {
-      Manipulator.setDataAttribute(this._menu, 'popper', 'static') // TODO: v6 remove
-      defaultBsPopperConfig.modifiers = [{
-        name: 'applyStyles',
-        enabled: false
-      }]
-    }
-
-    return {
-      ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
-    }
   }
 
   _selectMenuItem({ key, target }) {

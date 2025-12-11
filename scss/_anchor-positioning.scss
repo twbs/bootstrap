@@ -1,0 +1,253 @@
+@use "config" as *;
+
+// scss-docs-start anchor-positioning
+// Native CSS Anchor Positioning support
+// This file provides the foundational styles for anchor-positioned elements
+// like tooltips, popovers, and dropdowns using the CSS Anchor Positioning API.
+//
+// Browser support: Chrome 125+, requires polyfill for Firefox/Safari
+// Polyfill: @oddbird/css-anchor-positioning
+// scss-docs-end anchor-positioning
+
+// Base styles for anchor-positioned elements
+@layer components {
+  // Elements that can be positioned using anchor positioning
+  // Only apply fixed positioning when CSS anchor positioning is supported
+  @supports (anchor-name: --test) {
+    .tooltip,
+    .popover,
+    .dropdown-menu {
+      // Use fixed positioning for anchor-positioned elements
+      // The anchor positioning properties will override inset values
+      position: fixed;
+      inset: auto;
+      margin: 0;
+      overflow: visible;
+
+      // Position try fallbacks for automatic repositioning
+      // when the element would overflow the viewport
+      position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+
+      // Ensure proper stacking - hide when anchor scrolls out of view
+      position-visibility: anchors-visible;
+    }
+
+  }
+
+  // For dropdowns in sticky/fixed navbars, use absolute positioning instead
+  // of anchor positioning to avoid jitter during scroll. The dropdown wrapper
+  // (b-dropdown or .dropdown) provides the positioning context.
+  .sticky-top,
+  .sticky-bottom,
+  .fixed-top,
+  .fixed-bottom {
+    b-dropdown,
+    .dropdown,
+    .dropup,
+    .dropend,
+    .dropstart {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      // Reset anchor positioning (may be set via inline styles)
+      position-anchor: unset;
+      // Position below toggle by default (top, right, bottom, left order)
+      top: 100%;
+      right: auto;
+      bottom: auto;
+      left: 0;
+    }
+
+    // Handle dropup in sticky context
+    .dropup .dropdown-menu {
+      top: auto;
+      bottom: 100%;
+    }
+
+    // Handle dropend in sticky context
+    .dropend .dropdown-menu {
+      top: 0;
+      left: 100%;
+    }
+
+    // Handle dropstart in sticky context
+    .dropstart .dropdown-menu {
+      top: 0;
+      right: 100%;
+      left: auto;
+    }
+  }
+
+  // Popover API integration
+  // When using the native Popover API, elements are placed in the top layer
+  // This works independently of CSS anchor positioning
+  @supports selector(:popover-open) {
+    .tooltip[popover],
+    .popover[popover] {
+      // Popover open state
+      &:popover-open {
+        display: block;
+      }
+
+      // Entry animation
+      @starting-style {
+        &:popover-open {
+          opacity: 0;
+          transform: scale(.95);
+        }
+      }
+    }
+
+    .dropdown-menu[popover] {
+      // Dropdown menus use flex for gap spacing
+      &:popover-open {
+        display: flex;
+      }
+
+      // Entry animation
+      @starting-style {
+        &:popover-open {
+          opacity: 0;
+          transform: scale(.95);
+        }
+      }
+    }
+  }
+
+  // Offset custom properties applied via JavaScript
+  // Offset format: [skidding, distance] (same as Popper.js)
+  // - skidding: shifts along the edge (perpendicular to placement direction)
+  // - distance: pushes away from anchor (in the placement direction)
+  .tooltip,
+  .popover {
+    --bs-position-skidding: 0;
+    --bs-position-distance: 0;
+
+    // Vertical placements: skidding = horizontal, distance = vertical
+    &[data-bs-placement="top"],
+    &[data-bs-placement="top-start"],
+    &[data-bs-placement="top-end"] {
+      margin-block-end: var(--bs-position-distance);
+      margin-inline-start: var(--bs-position-skidding);
+    }
+
+    &[data-bs-placement="bottom"],
+    &[data-bs-placement="bottom-start"],
+    &[data-bs-placement="bottom-end"] {
+      margin-block-start: var(--bs-position-distance);
+      margin-inline-start: var(--bs-position-skidding);
+    }
+
+    // Horizontal placements: skidding = vertical, distance = horizontal
+    &[data-bs-placement="left"],
+    &[data-bs-placement="left-start"],
+    &[data-bs-placement="left-end"] {
+      margin-block-start: var(--bs-position-skidding);
+      margin-inline-end: var(--bs-position-distance);
+    }
+
+    &[data-bs-placement="right"],
+    &[data-bs-placement="right-start"],
+    &[data-bs-placement="right-end"] {
+      margin-block-start: var(--bs-position-skidding);
+      margin-inline-start: var(--bs-position-distance);
+    }
+  }
+
+  // Dropdown specific offsets
+  // Offset format: [skidding, distance] (same as Popper.js)
+  // - skidding: shifts along the edge (perpendicular to placement direction)
+  // - distance: pushes away from anchor (in the placement direction)
+  .dropdown-menu {
+    --bs-position-skidding: 0;
+    --bs-position-distance: 0;
+
+    // Vertical dropdowns (default and dropup)
+    // skidding = horizontal shift, distance = vertical push
+    &[data-bs-placement="bottom"],
+    &[data-bs-placement="bottom-start"],
+    &[data-bs-placement="bottom-end"] {
+      margin-block-start: calc(var(--#{$prefix}dropdown-spacer) + var(--bs-position-distance, 0));
+      margin-inline-start: var(--bs-position-skidding, 0);
+    }
+
+    &[data-bs-placement="top"],
+    &[data-bs-placement="top-start"],
+    &[data-bs-placement="top-end"] {
+      margin-block-end: calc(var(--#{$prefix}dropdown-spacer) + var(--bs-position-distance, 0));
+      margin-inline-start: var(--bs-position-skidding, 0);
+    }
+
+    // Horizontal dropdowns (dropstart and dropend)
+    // skidding = vertical shift, distance = horizontal push
+    &[data-bs-placement="right"],
+    &[data-bs-placement="right-start"],
+    &[data-bs-placement="right-end"] {
+      margin-block-start: var(--bs-position-skidding, 0);
+      margin-inline-start: calc(var(--#{$prefix}dropdown-spacer) + var(--bs-position-distance, 0));
+    }
+
+    &[data-bs-placement="left"],
+    &[data-bs-placement="left-start"],
+    &[data-bs-placement="left-end"] {
+      margin-block-start: var(--bs-position-skidding, 0);
+      margin-inline-end: calc(var(--#{$prefix}dropdown-spacer) + var(--bs-position-distance, 0));
+    }
+  }
+
+  // Arrow positioning using anchor positioning
+  // Arrows are positioned at the center of the anchor element
+  @supports (anchor-name: --test) {
+    .tooltip-arrow,
+    .popover-arrow {
+      position: absolute;
+
+      // Arrow positioning relative to the anchor
+      // Uses anchor() function to calculate position
+      [data-bs-placement="top"] > &,
+      [data-bs-placement="top-start"] > &,
+      [data-bs-placement="top-end"] > & {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      [data-bs-placement="bottom"] > &,
+      [data-bs-placement="bottom-start"] > &,
+      [data-bs-placement="bottom-end"] > & {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      [data-bs-placement="left"] > &,
+      [data-bs-placement="left-start"] > &,
+      [data-bs-placement="left-end"] > & {
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+
+      [data-bs-placement="right"] > &,
+      [data-bs-placement="right-start"] > &,
+      [data-bs-placement="right-end"] > & {
+        // top: anchor(center);
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  // Fallback arrow positioning when anchor positioning is not supported
+  @supports not (anchor-name: --test) {
+    .tooltip-arrow,
+    .popover-arrow {
+      position: absolute;
+      // Center the arrow using traditional CSS
+      // Specific positioning is handled in component SCSS files
+    }
+  }
+}

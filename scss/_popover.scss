@@ -6,7 +6,7 @@
 @use "mixins/reset-text" as *;
 
 // scss-docs-start popover-variables
-$popover-font-size:                 $font-size-sm !default;
+$popover-font-size:                 var(--#{$prefix}font-size-sm) !default;
 $popover-bg:                        var(--#{$prefix}bg-body) !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              var(--#{$prefix}border-width) !default;
@@ -16,7 +16,7 @@ $popover-inner-border-radius:       calc(#{$popover-border-radius} - #{$popover-
 $popover-box-shadow:                var(--#{$prefix}box-shadow) !default;
 
 $popover-header-font-size:          $font-size-base !default;
-$popover-header-bg:                 var(--#{$prefix}secondary-bg) !default;
+$popover-header-bg:                 var(--#{$prefix}bg-1) !default;
 $popover-header-color:              $headings-color !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          $spacer !default;
@@ -57,6 +57,7 @@ $popover-arrow-height:              .5rem !default;
     z-index: var(--#{$prefix}popover-zindex);
     display: block;
     max-width: var(--#{$prefix}popover-max-width);
+    padding: 0; // Reset default popover styles
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     @include reset-text();
@@ -186,17 +187,19 @@ $popover-arrow-height:              .5rem !default;
     }
   }
 
+  // Auto placement - responds to data-bs-placement attribute (native anchor positioning)
   .bs-popover-auto {
-    &[data-popper-placement^="top"] {
+    // Native anchor positioning using data-bs-placement
+    &[data-bs-placement^="top"] {
       @extend .bs-popover-top;
     }
-    &[data-popper-placement^="right"] {
+    &[data-bs-placement^="right"] {
       @extend .bs-popover-end;
     }
-    &[data-popper-placement^="bottom"] {
+    &[data-bs-placement^="bottom"] {
       @extend .bs-popover-bottom;
     }
-    &[data-popper-placement^="left"] {
+    &[data-bs-placement^="left"] {
       @extend .bs-popover-start;
     }
   }

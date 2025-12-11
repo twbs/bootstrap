@@ -11,15 +11,16 @@
 @use "layout/breakpoints" as *;
 
 // scss-docs-start dropdown-variables
+$dropdown-gap:                      $spacer * .125 !default;
 $dropdown-min-width:                10rem !default;
-$dropdown-padding-x:                0 !default;
-$dropdown-padding-y:                .5rem !default;
+$dropdown-padding-x:                .25rem !default;
+$dropdown-padding-y:                .25rem !default;
 $dropdown-spacer:                   .125rem !default;
 $dropdown-font-size:                $font-size-base !default;
 $dropdown-color:                    var(--#{$prefix}color-body) !default;
 $dropdown-bg:                       var(--#{$prefix}bg-body) !default;
 $dropdown-border-color:             var(--#{$prefix}border-color-translucent) !default;
-$dropdown-border-radius:            var(--#{$prefix}border-radius) !default;
+$dropdown-border-radius:            var(--#{$prefix}border-radius-lg) !default;
 $dropdown-border-width:             var(--#{$prefix}border-width) !default;
 $dropdown-inner-border-radius:      calc(#{$dropdown-border-radius} - #{$dropdown-border-width}) !default;
 $dropdown-divider-bg:               $dropdown-border-color !default;
@@ -28,15 +29,17 @@ $dropdown-box-shadow:               var(--#{$prefix}box-shadow) !default;
 
 $dropdown-link-color:               var(--#{$prefix}color-body) !default;
 $dropdown-link-hover-color:         $dropdown-link-color !default;
-$dropdown-link-hover-bg:            var(--#{$prefix}tertiary-bg) !default;
+$dropdown-link-hover-bg:            var(--#{$prefix}bg-1) !default;
 
 $dropdown-link-active-color:        $component-active-color !default;
 $dropdown-link-active-bg:           $component-active-bg !default;
 
-$dropdown-link-disabled-color:      var(--#{$prefix}tertiary-color) !default;
+$dropdown-link-disabled-color:      var(--#{$prefix}fg-3) !default;
 
 $dropdown-item-padding-y:           $spacer * .25 !default;
 $dropdown-item-padding-x:           $spacer !default;
+$dropdown-item-border-radius:       var(--#{$prefix}border-radius) !default;
+$dropdown-item-gap:                 $spacer * .5 !default;
 
 $dropdown-header-color:             var(--#{$prefix}gray-600) !default;
 $dropdown-header-padding-x:         $dropdown-item-padding-x !default;
@@ -45,7 +48,7 @@ $dropdown-header-padding-y:         $dropdown-padding-y !default;
 
 // scss-docs-start dropdown-dark-variables
 $dropdown-dark-color:               var(--#{$prefix}gray-300) !default;
-$dropdown-dark-bg:                  var(--#{$prefix}gray-800) !default;
+$dropdown-dark-bg:                  var(--#{$prefix}gray-900) !default;
 $dropdown-dark-border-color:        $dropdown-border-color !default;
 $dropdown-dark-divider-bg:          $dropdown-divider-bg !default;
 $dropdown-dark-box-shadow:          null !default;
@@ -59,14 +62,15 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
 // scss-docs-end dropdown-dark-variables
 
 @layer components {
-  // The dropdown wrapper (`<div>`)
+  // The dropdown wrapper (custom element or class)
+  b-dropdown,
   .dropup,
   .dropend,
   .dropdown,
   .dropstart,
   .dropup-center,
   .dropdown-center {
-    position: relative;
+    // No positioning needed - anchor positioning handles this
   }
 
   .dropdown-toggle {
@@ -80,6 +84,7 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
   .dropdown-menu {
     // scss-docs-start dropdown-css-vars
     --#{$prefix}dropdown-zindex: #{$zindex-dropdown};
+    --#{$prefix}dropdown-gap: #{$dropdown-gap};
     --#{$prefix}dropdown-min-width: #{$dropdown-min-width};
     --#{$prefix}dropdown-padding-x: #{$dropdown-padding-x};
     --#{$prefix}dropdown-padding-y: #{$dropdown-padding-y};
@@ -100,8 +105,10 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     --#{$prefix}dropdown-link-active-color: #{$dropdown-link-active-color};
     --#{$prefix}dropdown-link-active-bg: #{$dropdown-link-active-bg};
     --#{$prefix}dropdown-link-disabled-color: #{$dropdown-link-disabled-color};
+    --#{$prefix}dropdown-item-gap: #{$dropdown-item-gap};
     --#{$prefix}dropdown-item-padding-x: #{$dropdown-item-padding-x};
     --#{$prefix}dropdown-item-padding-y: #{$dropdown-item-padding-y};
+    --#{$prefix}dropdown-item-border-radius: #{$dropdown-item-border-radius};
     --#{$prefix}dropdown-header-color: #{$dropdown-header-color};
     --#{$prefix}dropdown-header-padding-x: #{$dropdown-header-padding-x};
     --#{$prefix}dropdown-header-padding-y: #{$dropdown-header-padding-y};
@@ -110,6 +117,8 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     position: absolute;
     z-index: var(--#{$prefix}dropdown-zindex);
     display: none; // none by default, but block on "open" of the menu
+    flex-direction: column;
+    gap: var(--#{$prefix}dropdown-gap);
     min-width: var(--#{$prefix}dropdown-min-width);
     padding: var(--#{$prefix}dropdown-padding-y) var(--#{$prefix}dropdown-padding-x);
     margin: 0; // Override default margin of ul
@@ -123,10 +132,11 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     @include border-radius(var(--#{$prefix}dropdown-border-radius));
     @include box-shadow(var(--#{$prefix}dropdown-box-shadow));
 
-    &[data-bs-popper] {
-      top: 100%;
+    // Native anchor positioning fallback
+    // Note: margin handled by _anchor-positioning.scss based on placement
+    &[data-bs-placement] {
+      top: 0;
       left: 0;
-      margin-top: var(--#{$prefix}dropdown-spacer);
     }
 
     @if $dropdown-padding-y == 0 {
@@ -138,95 +148,99 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
       > li:last-child .dropdown-item {
         @include border-bottom-radius(var(--#{$prefix}dropdown-inner-border-radius));
       }
-
     }
   }
 
-  // scss-docs-start responsive-breakpoints
-  // We deliberately hardcode the `bs-` prefix because we check
-  // this custom property in JS to determine Popper's positioning
+  // // scss-docs-start responsive-breakpoints
+  // // We deliberately hardcode the `bs-` prefix because we check
+  // // this custom property in JS to determine Popper's positioning
 
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  // @each $breakpoint in map.keys($grid-breakpoints) {
+  //   @include media-breakpoint-up($breakpoint) {
+  //     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-      .dropdown-menu#{$infix}-start {
-        --bs-position: start;
+  //     .dropdown-menu#{$infix}-start {
+  //       --bs-position: start;
 
-        &[data-bs-popper] {
-          right: auto;
-          left: 0;
-        }
-      }
+  //       &[data-bs-placement],
+  //       &[data-bs-popper] {
+  //         right: auto;
+  //         left: 0;
+  //       }
+  //     }
 
-      .dropdown-menu#{$infix}-end {
-        --bs-position: end;
+  //     .dropdown-menu#{$infix}-end {
+  //       --bs-position: end;
 
-        &[data-bs-popper] {
-          right: 0;
-          left: auto;
-        }
-      }
-    }
-  }
-  // scss-docs-end responsive-breakpoints
+  //       &[data-bs-placement],
+  //       &[data-bs-popper] {
+  //         right: 0;
+  //         left: auto;
+  //       }
+  //     }
+  //   }
+  // }
+  // // scss-docs-end responsive-breakpoints
 
-  // Allow for dropdowns to go bottom up (aka, dropup-menu)
-  // Just add .dropup after the standard .dropdown class and you're set.
-  .dropup {
-    .dropdown-menu[data-bs-popper] {
-      top: auto;
-      bottom: 100%;
-      margin-top: 0;
-      margin-bottom: var(--#{$prefix}dropdown-spacer);
-    }
+  // // Allow for dropdowns to go bottom up (aka, dropup-menu)
+  // // Just add .dropup after the standard .dropdown class and you're set.
+  // .dropup {
+  //   .dropdown-menu[data-bs-placement],
+  //   .dropdown-menu[data-bs-popper] {
+  //     top: auto;
+  //     bottom: 100%;
+  //     margin-top: 0;
+  //     margin-bottom: var(--#{$prefix}dropdown-spacer);
+  //   }
 
-    .dropdown-toggle {
-      @include caret(up);
-    }
-  }
+  //   .dropdown-toggle {
+  //     @include caret(up);
+  //   }
+  // }
 
-  .dropend {
-    .dropdown-menu[data-bs-popper] {
-      top: 0;
-      right: auto;
-      left: 100%;
-      margin-inline-start: var(--#{$prefix}dropdown-spacer);
-      margin-top: 0;
-    }
+  // .dropend {
+  //   .dropdown-menu[data-bs-placement],
+  //   .dropdown-menu[data-bs-popper] {
+  //     top: 0;
+  //     right: auto;
+  //     left: 100%;
+  //     margin-inline-start: var(--#{$prefix}dropdown-spacer);
+  //     margin-top: 0;
+  //   }
 
-    .dropdown-toggle {
-      @include caret(end);
-      &::after {
-        vertical-align: 0;
-      }
-    }
-  }
+  //   .dropdown-toggle {
+  //     @include caret(end);
+  //     &::after {
+  //       vertical-align: 0;
+  //     }
+  //   }
+  // }
 
-  .dropstart {
-    .dropdown-menu[data-bs-popper] {
-      top: 0;
-      right: 100%;
-      left: auto;
-      margin-inline-end: var(--#{$prefix}dropdown-spacer);
-      margin-top: 0;
-    }
+  // .dropstart {
+  //   .dropdown-menu[data-bs-placement],
+  //   .dropdown-menu[data-bs-popper] {
+  //     top: 0;
+  //     right: 100%;
+  //     left: auto;
+  //     margin-inline-end: var(--#{$prefix}dropdown-spacer);
+  //     margin-top: 0;
+  //   }
 
-    .dropdown-toggle {
-      @include caret(start);
-      &::before {
-        vertical-align: 0;
-      }
-    }
-  }
+  //   .dropdown-toggle {
+  //     @include caret(start);
+  //     &::before {
+  //       vertical-align: 0;
+  //     }
+  //   }
+  // }
 
 
   // Dividers (basically an `<hr>`) within the dropdown
   .dropdown-divider {
     height: 0;
-    margin: var(--#{$prefix}dropdown-divider-margin-y) 0;
+    margin: var(--#{$prefix}dropdown-divider-margin-y);
     overflow: hidden;
-    border-block-start: 1px solid var(--#{$prefix}dropdown-divider-bg);
+    border-block-start: .5px solid var(--#{$prefix}dropdown-divider-bg);
     opacity: 1; // Revisit in v6 to de-dupe styles that conflict with <hr> element
   }
 
@@ -234,10 +248,13 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
   //
   // `<button>`-specific styles are denoted with `// For <button>s`
   .dropdown-item {
-    display: block;
+    display: flex;
+    gap: var(--#{$prefix}dropdown-item-gap);
+    align-items: center;
+    // justify-content: flex-start;
     width: 100%; // For `<button>`s
     padding: var(--#{$prefix}dropdown-item-padding-y) var(--#{$prefix}dropdown-item-padding-x);
-    clear: both;
+    // clear: both;
     font-weight: $font-weight-normal;
     color: var(--#{$prefix}dropdown-link-color);
     text-align: inherit; // For `<button>`s
@@ -269,25 +286,26 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     }
   }
 
-  .dropdown-menu.show {
-    display: block;
-  }
-
   // Dropdown section headers
   .dropdown-header {
-    display: block;
+    display: flex;
+    gap: var(--#{$prefix}dropdown-item-gap);
+    align-items: center;
     padding: var(--#{$prefix}dropdown-header-padding-y) var(--#{$prefix}dropdown-header-padding-x);
+    margin-top: var(--#{$prefix}dropdown-header-padding-y);
     margin-bottom: 0; // for use with heading elements
-    @include font-size($font-size-sm);
+    font-size: var(--#{$prefix}font-size-xs);
     color: var(--#{$prefix}dropdown-header-color);
     white-space: nowrap; // as with > li > a
   }
 
   // Dropdown text
   .dropdown-item-text {
-    display: block;
+    display: flex;
+    gap: var(--#{$prefix}dropdown-item-gap);
+    align-items: center;
     padding: var(--#{$prefix}dropdown-item-padding-y) var(--#{$prefix}dropdown-item-padding-x);
-    color: var(--#{$prefix}dropdown-link-color);
+    color: var(--#{$prefix}fg-2);
   }
 
   // Dark dropdowns

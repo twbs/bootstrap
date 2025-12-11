@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Responsive Placement</title>
+    <style>
+      .test-section {
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .breakpoint-indicator {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 8px 16px;
+        background: var(--bs-primary);
+        color: white;
+        border-radius: 4px;
+        font-weight: bold;
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="breakpoint-indicator" id="breakpointIndicator">xs</div>
+
+    <div class="container py-4">
+      <h1>Responsive Placement <small class="text-secondary">Bootstrap Visual Test</small></h1>
+      <p class="lead">Test responsive placement syntax: <code>data-bs-placement="bottom md:top lg:right"</code></p>
+      <p>Resize your browser window to see placements change at different breakpoints.</p>
+
+      <hr class="my-4">
+
+      <h2>Dropdown Examples</h2>
+
+      <div class="test-section">
+        <div class="dropdown">
+          <button
+            class="btn btn-primary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            data-bs-placement="bottom-start md:top-start lg:right-start"
+            aria-expanded="false"
+          >
+            Responsive Dropdown
+            <small class="d-block text-white-50">bottom → md:top → lg:right</small>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="test-section border rounded">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-placement="bottom md:right xl:top"
+                aria-expanded="false"
+              >
+                bottom → md:right → xl:top
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="test-section border rounded">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                data-bs-placement="top sm:bottom lg:left"
+                aria-expanded="false"
+              >
+                top → sm:bottom → lg:left
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <h2>Tooltip Examples</h2>
+
+      <div class="test-section">
+        <button
+          type="button"
+          class="btn btn-info"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top md:right lg:bottom"
+          data-bs-title="This tooltip changes position! top → md:right → lg:bottom"
+        >
+          Responsive Tooltip
+        </button>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-4 text-center">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom md:top"
+            data-bs-title="bottom → md:top"
+          >
+            bottom → md:top
+          </button>
+        </div>
+        <div class="col-md-4 text-center">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left lg:right"
+            data-bs-title="left → lg:right"
+          >
+            left → lg:right
+          </button>
+        </div>
+        <div class="col-md-4 text-center">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top sm:left md:bottom lg:right xl:top"
+            data-bs-title="Cycles through all sides!"
+          >
+            All breakpoints
+          </button>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <h2>Non-Responsive (Unchanged Behavior)</h2>
+      <p>These use the standard single-value placement and should work as before:</p>
+
+      <div class="d-flex gap-3 justify-content-center mt-4">
+        <div class="dropdown">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="top" aria-expanded="false">
+            Top
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom" aria-expanded="false">
+            Bottom
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="left" aria-expanded="false">
+            Left
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="right" aria-expanded="false">
+            Right
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <h2>Breakpoint Reference</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Breakpoint</th>
+            <th>Min Width</th>
+            <th>Syntax</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>xs</code></td>
+            <td>0</td>
+            <td><code>bottom</code> (default, no prefix)</td>
+          </tr>
+          <tr>
+            <td><code>sm</code></td>
+            <td>576px</td>
+            <td><code>sm:top</code></td>
+          </tr>
+          <tr>
+            <td><code>md</code></td>
+            <td>768px</td>
+            <td><code>md:right</code></td>
+          </tr>
+          <tr>
+            <td><code>lg</code></td>
+            <td>1024px</td>
+            <td><code>lg:left</code></td>
+          </tr>
+          <tr>
+            <td><code>xl</code></td>
+            <td>1280px</td>
+            <td><code>xl:bottom-end</code></td>
+          </tr>
+          <tr>
+            <td><code>2xl</code></td>
+            <td>1536px</td>
+            <td><code>2xl:top-start</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+    <script>
+      // Initialize tooltips
+      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+        new bootstrap.Tooltip(el)
+      })
+
+      // Update breakpoint indicator
+      function updateBreakpointIndicator() {
+        const width = window.innerWidth
+        let bp = 'xs'
+        if (width >= 1536) bp = '2xl'
+        else if (width >= 1280) bp = 'xl'
+        else if (width >= 1024) bp = 'lg'
+        else if (width >= 768) bp = 'md'
+        else if (width >= 576) bp = 'sm'
+
+        document.getElementById('breakpointIndicator').textContent = `${bp} (${width}px)`
+      }
+
+      window.addEventListener('resize', updateBreakpointIndicator)
+      updateBreakpointIndicator()
+    </script>
+  </body>
+</html>
+
+

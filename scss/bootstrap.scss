@@ -4,6 +4,9 @@
 // Global CSS variables, layer definitions, and configuration
 @forward "root";
 
+// Native CSS anchor positioning support
+@forward "anchor-positioning";
+
 // Subdir imports
 @forward "content";
 @forward "layout";
