@@ -1,0 +1,391 @@
+---
+title: Dialog
+description: A modern component built on the native `<dialog>` element with built-in accessibility and backdrop support that replaces the old Modal component.
+toc: true
+# aliases:
+  # - "/docs/[[config:docs_version]]/components/modal/"
+---
+
+## How it works
+
+The Dialog component leverages the browser's native `<dialog>` element, providing built-in accessibility features, focus management, and backdrop handling without the complexity of custom implementations.
+
+Key features of the native dialog:
+
+- **Native modal behavior** via `showModal()` with automatic focus trapping
+- **Built-in backdrop** using the `::backdrop` pseudo-element
+- **Escape key handling** closes the dialog by default
+- **Accessibility** with proper focus management and ARIA attributes
+- **Top layer rendering** ensures the dialog appears above all other content
+
+Native `<dialog>` elements support two methods: `show()` opens the dialog inline without a backdrop or focus trapping, while `showModal()` opens it as a true modal in the browser's top layer with a backdrop, focus trapping, and Escape key handling. Bootstrap's Dialog component uses `showModal()` to provide the expected modal experience.
+
+<Callout name="info-prefersreducedmotion" />
+
+## Example
+
+Toggle a dialog by clicking the button below. The dialog uses the native `showModal()` API for true modal behavior.
+
+<dialog class="dialog" id="exampleDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Dialog title</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This is a native dialog element. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+  Open dialog
+</button>`} />
+
+The markup for a dialog is straightforward:
+
+```html
+<dialog class="dialog" id="exampleDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Dialog title</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>Dialog body content goes here.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+  </div>
+</dialog>
+
+<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+  Open dialog
+</button>
+```
+
+## Static backdrop
+
+When `backdrop` is set to `static`, the dialog will not close when clicking outside of it. Click the button below to try it.
+
+<dialog class="dialog" id="staticBackdropDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Static backdrop</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>I will not close if you click outside of me. Use the close button or press Escape.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdropDialog" data-bs-backdrop="static">
+  Open static backdrop dialog
+</button>`} />
+
+## Scrolling long content
+
+When dialogs have content that exceeds the viewport height, the entire dialog scrolls within the viewport. The header, body, and footer all scroll together.
+
+<dialog class="dialog" id="scrollingLongDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Scrolling dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This is some placeholder content to show the scrolling behavior for dialogs. When the content exceeds the viewport height, you can scroll the entire dialog within the window—the header, body, and footer all move together.</p>
+    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+    <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <p>This content should appear at the bottom after you scroll.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollingLongDialog">
+  Launch scrolling dialog
+</button>`} />
+
+You can also create a scrollable dialog that scrolls the dialog body while keeping the header and footer fixed. Add `.dialog-scrollable` to the `.dialog` element.
+
+<dialog class="dialog dialog-scrollable" id="scrollableBodyDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Scrollable body</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This is some placeholder content to show the scrolling behavior for dialogs. We use repeated line breaks to demonstrate how content can exceed the dialog's inner height, showing scrolling within the body while the header and footer remain fixed.</p>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <p>This content should appear at the bottom after you scroll.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollableBodyDialog">
+  Launch scrollable body dialog
+</button>`} />
+
+```html
+<!-- Scrollable body dialog -->
+<dialog class="dialog dialog-scrollable" id="scrollableBodyDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Scrollable body</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <!-- Long content here -->
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+  </div>
+</dialog>
+```
+
+For a dialog that extends beyond the viewport and scrolls as a whole, add `.dialog-overflow` and wrap the content in a `.dialog-box` element. The `<dialog>` becomes a full-viewport scrollable container, and the `.dialog-box` is the visual dialog that scrolls up and down.
+
+<dialog class="dialog dialog-overflow" id="overflowDialog">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Overflow dialog</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body">
+      <p>This dialog extends beyond the viewport height. Scroll to see more content. Notice how the entire dialog—including header and footer—shifts up and down as you scroll.</p>
+      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>You've reached the bottom of the overflow dialog!</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+    </div>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#overflowDialog">
+  Launch overflow dialog
+</button>`} />
+
+```html
+<!-- Overflow dialog (entire dialog scrolls within viewport) -->
+<dialog class="dialog dialog-overflow" id="overflowDialog">
+  <div class="dialog-box">
+    <div class="dialog-header">...</div>
+    <div class="dialog-body">
+      <!-- Very long content here -->
+    </div>
+    <div class="dialog-footer">...</div>
+  </div>
+</dialog>
+```
+
+## Swapping dialogs
+
+When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash.
+
+<dialog class="dialog" id="swapDialog1">
+  <div class="dialog-header">
+    <h1 class="dialog-title">First dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>Click below to swap to a second dialog. Notice the backdrop stays visible—no flash!</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog2">Go to second dialog</button>
+  </div>
+</dialog>
+
+<dialog class="dialog" id="swapDialog2">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Second dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This is the second dialog. You can swap back to the first, or close this one entirely.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">Back to first dialog</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">
+  Open first dialog
+</button>`} />
+
+The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog:
+
+```html
+<!-- First dialog -->
+<dialog class="dialog" id="dialog1">
+  <div class="dialog-body">
+    <p>Click below to swap to dialog 2.</p>
+  </div>
+  <div class="dialog-footer">
+    <!-- This trigger is inside dialog1, so clicking it will swap -->
+    <button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialog2">
+      Go to dialog 2
+    </button>
+  </div>
+</dialog>
+
+<!-- Second dialog -->
+<dialog class="dialog" id="dialog2">
+  <div class="dialog-body">
+    <p>You're now in dialog 2.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialog1">
+      Back to dialog 1
+    </button>
+  </div>
+</dialog>
+```
+
+## Non-modal dialogs
+
+By default, dialogs open as modals using the native `showModal()` method. You can also open dialogs as non-modal using `show()` by setting `modal` to `false`. Non-modal dialogs:
+
+- Have no backdrop
+- Don't trap focus
+- Don't block interaction with the rest of the page
+- Don't render in the browser's top layer
+- Still respond to Escape key (if `keyboard: true`)
+
+<dialog class="dialog" id="nonModalDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Non-modal dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This dialog doesn't block the page. You can still interact with content behind it.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+  </div>
+</dialog>
+
+  <Example code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#nonModalDialog" data-bs-modal="false">
+    Open non-modal dialog
+  </button>`} />
+
+```js
+const dialog = new bootstrap.Dialog('#myDialog', { modal: false })
+dialog.show()
+```
+
+## JavaScript behavior
+
+### Via data attributes
+
+Toggle a dialog without writing JavaScript. Set `data-bs-toggle="dialog"` on a controller element, like a button, along with a `data-bs-target="#foo"` to target a specific dialog to toggle.
+
+```html
+<button type="button" data-bs-toggle="dialog" data-bs-target="#myDialog">
+  Launch dialog
+</button>
+```
+
+#### Dismiss
+
+Dismissal can be achieved with the `data-bs-dismiss` attribute on a button **within the dialog**:
+
+```html
+<button type="button" data-bs-dismiss="dialog">Close</button>
+```
+
+### Via JavaScript
+
+Create a dialog with a single line of JavaScript:
+
+```js
+const myDialog = new bootstrap.Dialog('#myDialog')
+```
+
+### Options
+
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-backdrop="static"`.
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `backdrop` | boolean or `'static'` | `true` | For modal dialogs, clicking the backdrop dismisses the dialog. Specify `static` for a backdrop which doesn't close the dialog when clicked. Has no effect on non-modal dialogs. |
+| `keyboard` | boolean | `true` | Closes the dialog when escape key is pressed. |
+| `modal` | boolean | `true` | When `true`, opens the dialog as a modal using `showModal()` with backdrop, focus trapping, and top layer rendering. When `false`, opens as a non-modal dialog using `show()` without backdrop or focus trapping. |
+
+### Methods
+
+#### Passing options
+
+Activates your content as a dialog. Accepts an optional options object.
+
+```js
+const myDialog = new bootstrap.Dialog('#myDialog', {
+  keyboard: false
+})
+```
+
+| Method | Description |
+| --- | --- |
+| `show` | Opens the dialog. **Returns to the caller before the dialog has actually been shown** (i.e. before the `shown.bs.dialog` event occurs). |
+| `hide` | Hides the dialog. **Returns to the caller before the dialog has actually been hidden** (i.e. before the `hidden.bs.dialog` event occurs). |
+| `toggle` | Toggles the dialog. **Returns to the caller before the dialog has actually been shown or hidden** (i.e. before the `shown.bs.dialog` or `hidden.bs.dialog` event occurs). |
+| `handleUpdate` | Provided for API consistency with Modal. Native dialogs handle their own positioning. |
+| `dispose` | Destroys an element's dialog. |
+| `getInstance` | Static method which allows you to get the dialog instance associated with a DOM element. |
+| `getOrCreateInstance` | Static method which allows you to get the dialog instance associated with a DOM element, or create a new one in case it wasn't initialized. |
+
+### Events
+
+Bootstrap's dialog class exposes a few events for hooking into dialog functionality.
+
+| Event | Description |
+| --- | --- |
+| `show.bs.dialog` | Fires immediately when the `show` instance method is called. |
+| `shown.bs.dialog` | Fired when the dialog has been made visible to the user (will wait for CSS transitions to complete). |
+| `hide.bs.dialog` | Fires immediately when the `hide` instance method is called. |
+| `hidden.bs.dialog` | Fired when the dialog has finished being hidden from the user (will wait for CSS transitions to complete). |
+| `hidePrevented.bs.dialog` | Fired when the dialog is shown, its backdrop is `static`, and a click outside the dialog or an escape key press is performed (with `keyboard` set to `false`). |
+| `cancel.bs.dialog` | Fired when the user presses Escape and the dialog is about to close. |
+
+```js
+const myDialog = document.getElementById('myDialog')
+myDialog.addEventListener('hidden.bs.dialog', event => {
+  // do something...
+})
+```
