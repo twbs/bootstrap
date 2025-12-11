@@ -7,7 +7,7 @@
 // Variables
 //
 // Variables should follow the `$component-state-property-size` formula for
-// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+// consistent naming. Ex: $nav-link-disabled-color and $btn-padding-y-lg.
 
 // scss-docs-start theme-color-variables
 // $primary:       $blue-500 !default;
@@ -454,67 +454,22 @@ $zindex-levels: (
 // scss-docs-end zindex-levels-map
 
 
-// Modals
-
-// scss-docs-start modal-variables
-$modal-inner-padding:               $spacer !default;
-
-$modal-footer-margin-between:       .5rem !default;
-
-$modal-dialog-margin:               .5rem !default;
-$modal-dialog-margin-y-sm-up:       1.75rem !default;
-
-$modal-title-line-height:           $line-height-base !default;
-
-$modal-content-color:               var(--#{$prefix}color-body) !default;
-$modal-content-bg:                  var(--#{$prefix}bg-body) !default;
-$modal-content-border-color:        var(--#{$prefix}border-color-translucent) !default;
-$modal-content-border-width:        var(--#{$prefix}border-width) !default;
-$modal-content-border-radius:       var(--#{$prefix}border-radius-lg) !default;
-$modal-content-inner-border-radius: calc(#{$modal-content-border-radius} - #{$modal-content-border-width}) !default;
-$modal-content-box-shadow-xs:       var(--#{$prefix}box-shadow-sm) !default;
-$modal-content-box-shadow-sm-up:    var(--#{$prefix}box-shadow) !default;
-
-$modal-backdrop-bg:                 $black !default;
-$modal-backdrop-opacity:            .5 !default;
-
-$modal-header-border-color:         var(--#{$prefix}border-color) !default;
-$modal-header-border-width:         $modal-content-border-width !default;
-$modal-header-padding-y:            $modal-inner-padding !default;
-$modal-header-padding-x:            $modal-inner-padding !default;
-$modal-header-padding:              $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
-
-$modal-footer-bg:                   null !default;
-$modal-footer-border-color:         $modal-header-border-color !default;
-$modal-footer-border-width:         $modal-header-border-width !default;
-
-$modal-sm:                          300px !default;
-$modal-md:                          500px !default;
-$modal-lg:                          800px !default;
-$modal-xl:                          1200px !default;
-
-$modal-fade-transform:              translate(0, -50px) !default;
-$modal-show-transform:              none !default;
-$modal-transition:                  transform .3s ease-out !default;
-$modal-scale-transform:             scale(1.02) !default;
-// scss-docs-end modal-variables
-
 // Offcanvas
 
 // scss-docs-start offcanvas-variables
-$offcanvas-padding-y:               $modal-inner-padding !default;
-$offcanvas-padding-x:               $modal-inner-padding !default;
+$offcanvas-padding-y:               $spacer !default;
+$offcanvas-padding-x:               $spacer !default;
 $offcanvas-horizontal-width:        400px !default;
 $offcanvas-vertical-height:         30vh !default;
 $offcanvas-transition-duration:     .3s !default;
-$offcanvas-border-color:            $modal-content-border-color !default;
-$offcanvas-border-width:            $modal-content-border-width !default;
-$offcanvas-title-line-height:       $modal-title-line-height !default;
+$offcanvas-border-color:            var(--#{$prefix}border-color-translucent) !default;
+$offcanvas-border-width:            var(--#{$prefix}border-width) !default;
+$offcanvas-title-line-height:       $line-height-base !default;
 $offcanvas-bg-color:                var(--#{$prefix}bg-body) !default;
 $offcanvas-color:                   var(--#{$prefix}color-body) !default;
-$offcanvas-box-shadow:              $modal-content-box-shadow-xs !default;
-$offcanvas-backdrop-bg:             $modal-backdrop-bg !default;
-$offcanvas-backdrop-opacity:        $modal-backdrop-opacity !default;
+$offcanvas-box-shadow:              var(--#{$prefix}box-shadow-sm) !default;
+$offcanvas-backdrop-bg:             $black !default;
+$offcanvas-backdrop-opacity:        .5 !default;
 // scss-docs-end offcanvas-variables
 
 // Code
