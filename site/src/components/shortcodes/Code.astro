@@ -1,7 +1,7 @@
 ---
 import fs from 'node:fs'
 import path from 'node:path'
-import { Prism } from '@astrojs/prism'
+import { codeToHtml } from 'shiki'
 
 interface Props {
   /**
@@ -57,6 +57,40 @@ if (filePath && fileMatch && codeToDisplay) {
 
   codeToDisplay = match[0]
 }
+
+// Add line wrapper for shell languages to support shell prompts
+const shouldWrapLines = lang && ['bash', 'sh', 'powershell'].includes(lang)
+
+const highlightedCode = codeToDisplay && lang
+  ? await codeToHtml(codeToDisplay, {
+      lang,
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark'
+      },
+      transformers: shouldWrapLines ? [
+        {
+          name: 'line-wrapper',
+          line(node) {
+            // Wrap non-comment lines in a span with .line class for shell prompt styling
+            const hasOnlyComments = node.children.every(child =>
+              child.type === 'element' &&
+              child.properties?.class &&
+              Array.isArray(child.properties.class) &&
+              child.properties.class.some((cls) => typeof cls === 'string' && cls.includes('comment'))
+            )
+
+            if (!hasOnlyComments) {
+              node.properties = node.properties || {}
+              node.properties.class = node.properties.class
+                ? `${node.properties.class} line`
+                : 'line'
+            }
+          }
+        }
+      ] : []
+    })
+  : null
 ---
 
 <script>
@@ -155,8 +189,8 @@ if (filePath && fileMatch && codeToDisplay) {
   }
   <div class="highlight">
     {
-      codeToDisplay && lang ? (
-        <Prism code={codeToDisplay} lang={lang} />
+      highlightedCode ? (
+        <Fragment set:html={highlightedCode} />
       ) : (
         /* prettier-ignore */ <pre class={className}><slot /></pre>
       )
