@@ -54,9 +54,9 @@ export const body_class = 'bg-body-tertiary'
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#button-group">Button group</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#card">Card</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#carousel">Carousel</a></li>
+          <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#dialog">Dialog</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#dropdowns">Dropdowns</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#list-group">List group</a></li>
-          <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#modal">Modal</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navs">Navs</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navbar">Navbar</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#pagination">Pagination</a></li>
@@ -879,6 +879,23 @@ export const body_class = 'bg-body-tertiary'
         `} />
       </div>
     </article>
+    <article class="my-3" id="dialog">
+      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <h3>Dialog</h3>
+        <a class="d-flex align-items-center" href={getVersionedDocsPath('components/dialog')}>Documentation</a>
+      </div>
+
+      <div>
+        <Example showMarkup={false} code={`
+        <button type="button" class="btn btn-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+          Launch demo dialog
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdropDialog">
+          Launch static backdrop dialog
+        </button>
+        `} />
+      </div>
+    </article>
     <article class="my-3" id="dropdowns">
       <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
         <h3>Dropdowns</h3>
@@ -1095,31 +1112,6 @@ export const body_class = 'bg-body-tertiary'
           `),
         `</div>
         `]} />
-      </div>
-    </article>
-    <article class="my-3" id="modal">
-      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-        <h3>Modal</h3>
-        <a class="d-flex align-items-center" href={getVersionedDocsPath('components/modal')}>Documentation</a>
-      </div>
-
-      <div>
-        <Example showMarkup={false} code={`
-        <div class="d-flex justify-content-between flex-wrap">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDefault">
-            Launch demo modal
-          </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
-            Launch static backdrop modal
-          </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
-            Vertically centered scrollable modal
-          </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
-            Full screen
-          </button>
-        </div>
-        `} />
       </div>
     </article>
     <article class="my-3" id="navs">
@@ -1490,73 +1482,30 @@ export const body_class = 'bg-body-tertiary'
   </section>
 </main>
 
-<div class="modal fade" id="exampleModalDefault" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+<dialog class="dialog" id="exampleDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title fs-5">Dialog title</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
   </div>
-</div>
-<div class="modal fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLiveLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>I will not close if you click outside me. Don't even try to press escape key.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
+  <div class="dialog-body">
+    <p>This is a native dialog element using Bootstrap's Dialog component.</p>
   </div>
-</div>
-<div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalCenteredScrollableTitle">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <p>This content should appear at the bottom after you scroll.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
   </div>
-</div>
-<div class="modal fade" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">Full screen modal</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+</dialog>
 
+<dialog class="dialog" id="staticBackdropDialog" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="dialog-header">
+    <h1 class="dialog-title fs-5">Static backdrop</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>I will not close if you click outside of me. Use the close button or press Escape.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-primary">Understood</button>
+  </div>
+</dialog>

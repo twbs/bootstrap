@@ -112,7 +112,7 @@ Our dropdowns, popovers, and tooltips also depend on [Popper](https://popper.js.
 
 ## Data attributes
 
-Nearly all Bootstrap plugins can be enabled and configured through HTML alone with data attributes (our preferred way of using JavaScript functionality). Be sure to **only use one set of data attributes on a single element** (e.g., you cannot trigger a tooltip and modal from the same button.)
+Nearly all Bootstrap plugins can be enabled and configured through HTML alone with data attributes (our preferred way of using JavaScript functionality). Be sure to **only use one set of data attributes on a single element** (e.g., you cannot trigger a tooltip and dialog from the same button.)
 
 <JsDataAttributes />
 
@@ -127,10 +127,10 @@ Bootstrap provides custom events for most plugins’ unique actions. Generally, 
 All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
 ```js
-const myModal = document.querySelector('#myModal')
+const myDialog = document.querySelector('#myDialog')
 
-myModal.addEventListener('show.bs.modal', event => {
-  return event.preventDefault() // stops modal from being shown
+myDialog.addEventListener('show.bs.dialog', event => {
+  return event.preventDefault() // stops dialog from being shown
 })
 ```
 
@@ -139,11 +139,11 @@ myModal.addEventListener('show.bs.modal', event => {
 All constructors accept an optional options object or nothing (which initiates a plugin with its default behavior):
 
 ```js
-const myModalEl = document.querySelector('#myModal')
-const modal = new bootstrap.Modal(myModalEl) // initialized with defaults
+const myDialogEl = document.querySelector('#myDialog')
+const dialog = new bootstrap.Dialog(myDialogEl) // initialized with defaults
 
 const configObject = { keyboard: false }
-const modal1 = new bootstrap.Modal(myModalEl, configObject) // initialized with no keyboard
+const dialog1 = new bootstrap.Dialog(myDialogEl, configObject) // initialized with no keyboard
 ```
 
 If you’d like to get a particular plugin instance, each plugin exposes a `getInstance` method. For example, to retrieve an instance directly from an element:
@@ -167,7 +167,7 @@ In case an instance wasn’t initialized, it may accept and use an optional conf
 In addition to the `getInstance` and `getOrCreateInstance` methods, all plugin constructors can accept a DOM element or a valid [CSS selector](#selectors) as the first argument. Plugin elements are found with the `querySelector` method since our plugins only support a single element.
 
 ```js
-const modal = new bootstrap.Modal('#myModal')
+const dialog = new bootstrap.Dialog('#myDialog')
 const dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
 const offcanvas = bootstrap.Offcanvas.getInstance('#myOffcanvas')
 const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
@@ -204,11 +204,12 @@ carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not 
 While it may seem correct to use the `dispose` method immediately after `hide()`, it will lead to incorrect results. Here’s an example of the problem use:
 
 ```js
-const myModal = document.querySelector('#myModal')
-myModal.hide() // it is asynchronous
+const myToast = document.querySelector('#myToast')
+const toast = bootstrap.Toast.getInstance(myToast)
+toast.hide() // it is asynchronous
 
-myModal.addEventListener('shown.bs.hidden', event => {
-  myModal.dispose()
+myToast.addEventListener('hidden.bs.toast', event => {
+  toast.dispose()
 })
 ```
 
@@ -217,8 +218,8 @@ myModal.addEventListener('shown.bs.hidden', event => {
 You can change the default settings for a plugin by modifying the plugin’s `Constructor.Default` object:
 
 ```js
-// changes default for the modal plugin’s `keyboard` option to false
-bootstrap.Modal.Default.keyboard = false
+// changes default for the toast plugin’s `autohide` option to false
+bootstrap.Toast.Default.autohide = false
 ```
 
 ## Methods and properties
@@ -228,9 +229,9 @@ Every Bootstrap plugin exposes the following methods and static properties.
 <BsTable class="table">
 | Method | Description |
 | --- | --- |
-| `dispose` | Destroys an element’s modal. (Removes stored data on the DOM element) |
-| `getInstance` | *Static* method which allows you to get the modal instance associated with a DOM element. |
-| `getOrCreateInstance` | *Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn’t initialized. |
+| `dispose` | Destroys an element's plugin instance. (Removes stored data on the DOM element) |
+| `getInstance` | *Static* method which allows you to get the plugin instance associated with a DOM element. |
+| `getOrCreateInstance` | *Static* method which allows you to get the plugin instance associated with a DOM element, or create a new one in case it wasn’t initialized. |
 </BsTable>
 
 <BsTable class="table">

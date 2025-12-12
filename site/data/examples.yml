@@ -53,8 +53,8 @@
       description: 'Enhance your dropdowns with filters, icons, custom styles, and more.'
     - name: List groups
       description: 'Extend list groups with utilities and custom styles for any content.'
-    - name: Modals
-      description: 'Transform modals to serve any purpose, from feature tours to dialogs.'
+    - name: Dialogs
+      description: 'Transform dialogs to serve any purpose, from feature tours to confirmations.'
     - name: Badges
       description: 'Make badges work with custom inner HTML and new looks.'
     - name: Breadcrumbs

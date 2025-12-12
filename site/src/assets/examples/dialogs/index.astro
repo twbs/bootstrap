@@ -1,0 +1,138 @@
+---
+export const title = 'Dialogs'
+export const extra_css = ['dialogs.css']
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="bookmark-star" viewBox="0 0 16 16">
+    <path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
+    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+  </symbol>
+  <symbol id="grid-fill" viewBox="0 0 16 16">
+    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+  </symbol>
+  <symbol id="film" viewBox="0 0 16 16">
+    <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+  </symbol>
+  <symbol id="google" viewBox="0 0 16 16">
+    <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+  </symbol>
+  <symbol id="github" viewBox="0 0 16 16">
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+  </symbol>
+  <symbol id="facebook" viewBox="0 0 16 16">
+    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+  </symbol>
+</svg>
+
+<!-- Modal sheet style -->
+<div class="d-flex flex-column p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <dialog class="dialog dialog-example rounded-4 shadow w-340px" open data-bs-theme="light">
+    <div class="dialog-header border-0">
+      <h1 class="dialog-title">Modal title</h1>
+      <button type="button" class="btn-close" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body pt-0">
+      <p>This is a modal sheet, a variation of the modal that docs itself to the bottom of the viewport like the newer share sheets in iOS.</p>
+    </div>
+    <div class="dialog-footer flex-column border-0 pt-0">
+      <button type="button" class="btn btn-solid theme-primary w-100">Save changes</button>
+      <button type="button" class="btn btn-solid theme-secondary w-100">Close</button>
+    </div>
+  </dialog>
+</div>
+
+<div class="b-example-divider"></div>
+
+<!-- Confirmation dialog -->
+<div class="d-flex flex-column p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <dialog class="dialog dialog-example rounded-4 shadow w-340px" open data-bs-theme="light">
+    <div class="dialog-body text-center py-4">
+      <h5 class="fw-bold mb-2">Enable this setting?</h5>
+      <p class="text-body-secondary mb-0">You can always change your mind in your account settings.</p>
+    </div>
+    <div class="dialog-footer p-0 border-top">
+      <button type="button" class="btn btn-link text-primary flex-fill py-3 m-0 rounded-0 border-end text-decoration-none fw-semibold">Yes, enable</button>
+      <button type="button" class="btn btn-link text-primary flex-fill py-3 m-0 rounded-0 text-decoration-none">No thanks</button>
+    </div>
+  </dialog>
+</div>
+
+<div class="b-example-divider"></div>
+
+<!-- What's new dialog -->
+<div class="d-flex flex-column p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <dialog class="dialog dialog-example rounded-4 shadow w-340px" open data-bs-theme="light">
+    <div class="dialog-header border-0 pt-4">
+      <h1 class="dialog-title fs-2 fw-bold">What's new</h1>
+    </div>
+    <div class="dialog-body">
+      <ul class="list-unstyled mb-0">
+        <li class="d-flex gap-3 mb-3">
+          <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48"><use xlink:href="#grid-fill"/></svg>
+          <div>
+            <h6 class="mb-1 fw-bold">Grid view</h6>
+            <p class="mb-0 text-body-secondary">Not into lists? Try the new grid view.</p>
+          </div>
+        </li>
+        <li class="d-flex gap-3 mb-3">
+          <svg class="bi text-warning flex-shrink-0" width="48" height="48"><use xlink:href="#bookmark-star"/></svg>
+          <div>
+            <h6 class="mb-1 fw-bold">Bookmarks</h6>
+            <p class="mb-0 text-body-secondary">Save items you love for easy access later.</p>
+          </div>
+        </li>
+        <li class="d-flex gap-3">
+          <svg class="bi text-primary flex-shrink-0" width="48" height="48"><use xlink:href="#film"/></svg>
+          <div>
+            <h6 class="mb-1 fw-bold">Video embeds</h6>
+            <p class="mb-0 text-body-secondary">Share videos wherever you go.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="dialog-footer border-0 pt-3 pb-4">
+      <button type="button" class="btn btn-solid theme-primary w-100 py-2">Great, thanks!</button>
+    </div>
+  </dialog>
+</div>
+
+<div class="b-example-divider"></div>
+
+<!-- Sign up dialog -->
+<div class="d-flex flex-column p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <dialog class="dialog dialog-example rounded-4 shadow w-340px" open data-bs-theme="light">
+    <div class="dialog-header border-0">
+      <h1 class="dialog-title">Sign up for free</h1>
+      <button type="button" class="btn-close" aria-label="Close"></button>
+    </div>
+    <div class="dialog-body pt-0">
+      <form>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control rounded-3" id="floatingEmail" placeholder="name@example.com">
+          <label for="floatingEmail">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <button class="btn btn-solid theme-primary w-100 py-2 mb-2" type="submit">Sign up</button>
+        <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+        <hr class="my-4">
+        <h6 class="fw-bold mb-3">Or use a third-party</h6>
+        <button type="button" class="btn btn-outline theme-inverse w-100 py-2 mb-2">
+          <svg class="bi" width="16" height="16"><use xlink:href="#google"/></svg>
+          Sign up with Google
+        </button>
+        <button type="button" class="btn btn-outline theme-facebook w-100 py-2 mb-2">
+          <svg class="bi" width="16" height="16" fill="currentColor"><use xlink:href="#facebook"/></svg>
+          Sign up with Facebook
+        </button>
+        <button type="button" class="btn btn-outline theme-success w-100 py-2">
+          <svg class="bi" width="16" height="16"><use xlink:href="#github"/></svg>
+          Sign up with GitHub
+        </button>
+      </form>
+    </div>
+  </dialog>
+</div>

@@ -16,7 +16,7 @@ If you’re not using a component, comment it out or delete it entirely. For exa
 
 Bootstrap’s JavaScript includes every component in our primary dist files (`bootstrap.js` and `bootstrap.min.js`), and even our primary dependency (Popper) with our bundle files (`bootstrap.bundle.js` and `bootstrap.bundle.min.js`). While you’re customizing via Sass, be sure to remove related JavaScript.
 
-For instance, assuming you’re using your own JavaScript bundler like Webpack, Parcel, or Vite, you’d only import the JavaScript you plan on using. In the example below, we show how to just include our modal JavaScript:
+For instance, assuming you’re using your own JavaScript bundler like Webpack, Parcel, or Vite, you’d only import the JavaScript you plan on using. In the example below, we show how to just include our dialog JavaScript:
 
 ```js
 // Import just what we need
@@ -25,8 +25,8 @@ For instance, assuming you’re using your own JavaScript bundler like Webpack, 
 // import 'bootstrap/js/dist/button';
 // import 'bootstrap/js/dist/carousel';
 // import 'bootstrap/js/dist/collapse';
+import 'bootstrap/js/dist/dialog';
 // import 'bootstrap/js/dist/dropdown';
-import 'bootstrap/js/dist/modal';
 // import 'bootstrap/js/dist/offcanvas';
 // import 'bootstrap/js/dist/popover';
 // import 'bootstrap/js/dist/scrollspy';
@@ -41,8 +41,8 @@ This way, you’re not including any JavaScript you don’t intend to use for co
 **Heads up!** Files in `bootstrap/js/dist` use the **default export**. To use them, do the following:
 
 ```js
-import Modal from 'bootstrap/js/dist/modal'
-const modal = new Modal(document.getElementById('myModal'))
+import Dialog from 'bootstrap/js/dist/dialog'
+const dialog = new Dialog(document.getElementById('myDialog'))
 ```
 </Callout>
 
