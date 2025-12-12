@@ -31,7 +31,7 @@
       margin-block: 0;
     }
 
-    li:not(:last-child) {
+    :where(ul, ol):not([class]) li:not(:last-child) {
       margin-bottom: calc(var(--#{$prefix}content-gap) / 4);
     }
 

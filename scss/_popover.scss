@@ -5,9 +5,9 @@
 @use "mixins/reset-text" as *;
 
 // scss-docs-start popover-variables
-$popover-font-size:                 $font-size-sm !default;
+$popover-font-size:                 var(--#{$prefix}font-size-sm) !default;
 $popover-bg:                        var(--#{$prefix}bg-body) !default;
-$popover-max-width:                 276px !default;
+$popover-max-width:                 280px !default;
 $popover-border-width:              var(--#{$prefix}border-width) !default;
 $popover-border-color:              var(--#{$prefix}border-color-translucent) !default;
 $popover-border-radius:             var(--#{$prefix}border-radius-lg) !default;
@@ -15,13 +15,13 @@ $popover-inner-border-radius:       calc(#{$popover-border-radius} - #{$popover-
 $popover-box-shadow:                var(--#{$prefix}box-shadow) !default;
 
 $popover-header-font-size:          $font-size-base !default;
-$popover-header-bg:                 var(--#{$prefix}secondary-bg) !default;
+$popover-header-bg:                 var(--#{$prefix}bg-1) !default;
 $popover-header-color:              $headings-color !default;
-$popover-header-padding-y:          .5rem !default;
+$popover-header-padding-y:          $spacer * .75 !default;
 $popover-header-padding-x:          $spacer !default;
 
 $popover-body-color:                var(--#{$prefix}color-body) !default;
-$popover-body-padding-y:            $spacer !default;
+$popover-body-padding-y:            $spacer * .75 !default;
 $popover-body-padding-x:            $spacer !default;
 
 $popover-arrow-width:               1rem !default;
@@ -186,16 +186,16 @@ $popover-arrow-height:              .5rem !default;
   }
 
   .bs-popover-auto {
-    &[data-popper-placement^="top"] {
+    &[data-bs-placement^="top"] {
       @extend .bs-popover-top;
     }
-    &[data-popper-placement^="right"] {
+    &[data-bs-placement^="right"] {
       @extend .bs-popover-end;
     }
-    &[data-popper-placement^="bottom"] {
+    &[data-bs-placement^="bottom"] {
       @extend .bs-popover-bottom;
     }
-    &[data-popper-placement^="left"] {
+    &[data-bs-placement^="left"] {
       @extend .bs-popover-start;
     }
   }

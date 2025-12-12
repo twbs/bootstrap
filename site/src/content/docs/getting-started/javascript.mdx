@@ -13,14 +13,14 @@ Curious which components explicitly require our JavaScript and Popper?
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
 - Collapse for toggling visibility of content
-- Dropdowns for displaying and positioning (also requires [Popper](https://popper.js.org/docs/v2/))
+- Dropdowns for displaying and positioning (also requires [Floating UI](https://floating-ui.com/))
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse and Offcanvas plugins to implement responsive behaviors
 - Navs with the Tab plugin for toggling content panes
 - Offcanvases for displaying, positioning, and scroll behavior
 - Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
-- Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/docs/v2/))
+- Tooltips and popovers for displaying and positioning (also requires [Floating UI](https://floating-ui.com/))
 
 ## Individual or compiled
 
@@ -62,13 +62,13 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 Compared to JS bundlers, using ESM in the browser requires you to use the full path and filename instead of the module name. [Read more about JS modules in the browser.](https://v8.dev/features/modules#specifiers) That’s why we use `'bootstrap.esm.min.js'` instead of `'bootstrap'` above. However, this is further complicated by our Popper dependency, which imports Popper into our JavaScript like so:
 
 ```js
-import * as Popper from "@popperjs/core"
+import * as Popper from "@floating-ui/dom"
 ```
 
 If you try this as-is, you’ll see an error in the console like the following:
 
 ```text
-Uncaught TypeError: Failed to resolve module specifier "@popperjs/core". Relative references must start with either "/", "./", or "../".
+Uncaught TypeError: Failed to resolve module specifier "@floating-ui/dom". Relative references must start with either "/", "./", or "../".
 ```
 
 To fix this, you can use an `importmap` to resolve the arbitrary module names to complete paths. If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap`, you’ll need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) project. Here’s how it works for Bootstrap and Popper:
@@ -90,7 +90,7 @@ To fix this, you can use an `importmap` to resolve the arbitrary module names to
     <script type="importmap">
     {
       "imports": {
-        "@popperjs/core": "[[config:cdn.popper_esm]]",
+        "@floating-ui/dom": "[[config:cdn.floating_ui_esm]]",
         "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@[[config:current_version]]/dist/js/bootstrap.esm.min.js"
       }
     }
@@ -108,7 +108,7 @@ To fix this, you can use an `importmap` to resolve the arbitrary module names to
 
 Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
-Our dropdowns, popovers, and tooltips also depend on [Popper](https://popper.js.org/docs/v2/).
+Our dropdowns, popovers, and tooltips also depend on [Floating UI](https://floating-ui.com/).
 
 ## Data attributes
 

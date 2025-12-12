@@ -121,22 +121,18 @@ describe('Tooltip', () => {
         const getOffset = jasmine.createSpy('getOffset').and.returnValue([10, 20])
         const tooltipEl = fixtureEl.querySelector('a')
         const tooltip = new Tooltip(tooltipEl, {
-          offset: getOffset,
-          popperConfig: {
-            onFirstUpdate(state) {
-              expect(getOffset).toHaveBeenCalledWith({
-                popper: state.rects.popper,
-                reference: state.rects.reference,
-                placement: state.placement
-              }, tooltipEl)
-              resolve()
-            }
-          }
+          offset: getOffset
         })
 
         const offset = tooltip._getOffset()
 
         expect(offset).toEqual(jasmine.any(Function))
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          // The offset function should have been called during positioning
+          expect(getOffset).toHaveBeenCalled()
+          resolve()
+        })
 
         tooltip.show()
       })
@@ -151,37 +147,37 @@ describe('Tooltip', () => {
       expect(tooltip._getOffset()).toEqual([10, 20])
     })
 
-    it('should allow to pass config to Popper with `popperConfig`', () => {
+    it('should allow to pass config to Floating UI with `floatingConfig`', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        popperConfig: {
+        floatingConfig: {
           placement: 'left'
         }
       })
 
-      const popperConfig = tooltip._getPopperConfig('top')
+      const floatingConfig = tooltip._getFloatingConfig('top', [])
 
-      expect(popperConfig.placement).toEqual('left')
+      expect(floatingConfig.placement).toEqual('left')
     })
 
-    it('should allow to pass config to Popper with `popperConfig` as a function', () => {
+    it('should allow to pass config to Floating UI with `floatingConfig` as a function', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
-      const getPopperConfig = jasmine.createSpy('getPopperConfig').and.returnValue({ placement: 'left' })
+      const getFloatingConfig = jasmine.createSpy('getFloatingConfig').and.returnValue({ placement: 'left' })
       const tooltip = new Tooltip(tooltipEl, {
-        popperConfig: getPopperConfig
+        floatingConfig: getFloatingConfig
       })
 
-      const popperConfig = tooltip._getPopperConfig('top')
+      const floatingConfig = tooltip._getFloatingConfig('top', [])
 
       // Ensure that the function was called with the default config.
-      expect(getPopperConfig).toHaveBeenCalledWith(jasmine.objectContaining({
+      expect(getFloatingConfig).toHaveBeenCalledWith(jasmine.objectContaining({
         placement: jasmine.any(String)
       }))
-      expect(popperConfig.placement).toEqual('left')
+      expect(floatingConfig.placement).toEqual('left')
     })
 
     it('should use original title, if not "data-bs-title" is given', () => {
@@ -518,7 +514,8 @@ describe('Tooltip', () => {
 
         const tooltipEl = fixtureEl.querySelector('a')
         const tooltip = new Tooltip(tooltipEl, {
-          placement: 'bottom'
+          placement: 'bottom',
+          fallbackPlacements: [] // Disable flip to get exact placement
         })
 
         tooltipEl.addEventListener('inserted.bs.tooltip', () => {
@@ -527,7 +524,7 @@ describe('Tooltip', () => {
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
           expect(tooltip._getTipElement()).toHaveClass('bs-tooltip-auto')
-          expect(tooltip._getTipElement().getAttribute('data-popper-placement')).toEqual('bottom')
+          expect(tooltip._getTipElement().getAttribute('data-bs-placement')).toEqual('bottom')
           resolve()
         })
 
@@ -641,14 +638,14 @@ describe('Tooltip', () => {
       })
     })
 
-    it('should throw an error the element is not visible', () => {
+    it('should throw an error the element is not visible', async () => {
       fixtureEl.innerHTML = '<a href="#" style="display: none" rel="tooltip" title="Another tooltip"></a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
       try {
-        tooltip.show()
+        await tooltip.show()
       } catch (error) {
         expect(error.message).toEqual('Please use show on visible elements')
       }
@@ -795,7 +792,7 @@ describe('Tooltip', () => {
 
     it('should properly maintain tooltip state if leave event occurs and enter event occurs during hide transition', () => {
       return new Promise(resolve => {
-        // Style this tooltip to give it plenty of room for popper to do what it wants
+        // Style this tooltip to give it plenty of room for Floating UI to do what it wants
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip" data-bs-placement="top" style="position:fixed;left:50%;top:50%;">Trigger</a>'
 
         const tooltipEl = fixtureEl.querySelector('a')
@@ -807,8 +804,8 @@ describe('Tooltip', () => {
         })
 
         setTimeout(() => {
-          expect(tooltip._popper).not.toBeNull()
-          expect(tooltip._getTipElement().getAttribute('data-popper-placement')).toEqual('top')
+          expect(tooltip._floatingCleanup).not.toBeNull()
+          expect(tooltip._getTipElement().getAttribute('data-bs-placement')).toEqual('top')
           tooltipEl.dispatchEvent(createEvent('mouseout'))
 
           setTimeout(() => {
@@ -817,8 +814,8 @@ describe('Tooltip', () => {
           }, 100)
 
           setTimeout(() => {
-            expect(tooltip._popper).not.toBeNull()
-            expect(tooltip._getTipElement().getAttribute('data-popper-placement')).toEqual('top')
+            expect(tooltip._floatingCleanup).not.toBeNull()
+            expect(tooltip._getTipElement().getAttribute('data-bs-placement')).toEqual('top')
             resolve()
           }, 200)
         }, 10)
@@ -1032,7 +1029,7 @@ describe('Tooltip', () => {
       })
     })
 
-    it('should not throw error running hide if popper hasn\'t been shown', () => {
+    it('should not throw error running hide if tooltip hasn\'t been shown', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -1048,7 +1045,7 @@ describe('Tooltip', () => {
   })
 
   describe('update', () => {
-    it('should call popper update', () => {
+    it('should call floating position update', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
@@ -1056,7 +1053,7 @@ describe('Tooltip', () => {
         const tooltip = new Tooltip(tooltipEl)
 
         tooltipEl.addEventListener('shown.bs.tooltip', () => {
-          const spy = spyOn(tooltip._popper, 'update')
+          const spy = spyOn(tooltip, '_updateFloatingPosition')
 
           tooltip.update()
 
@@ -1147,18 +1144,30 @@ describe('Tooltip', () => {
     })
 
     it('should re-show tip if it was already shown', () => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="Another tooltip"></a>'
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="Another tooltip"></a>'
 
-      const tooltipEl = fixtureEl.querySelector('a')
-      const tooltip = new Tooltip(tooltipEl)
-      tooltip.show()
-      const tip = () => tooltip._getTipElement()
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+        const tip = () => tooltip._getTipElement()
 
-      expect(tip()).toHaveClass('show')
-      tooltip.setContent({ '.tooltip-inner': 'foo' })
+        tooltipEl.addEventListener('shown.bs.tooltip', function handler() {
+          tooltipEl.removeEventListener('shown.bs.tooltip', handler)
 
-      expect(tip()).toHaveClass('show')
-      expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
+          expect(tip()).toHaveClass('show')
+
+          // Listen for the re-show after setContent
+          tooltipEl.addEventListener('shown.bs.tooltip', () => {
+            expect(tip()).toHaveClass('show')
+            expect(tip().querySelector('.tooltip-inner').textContent).toEqual('foo')
+            resolve()
+          })
+
+          tooltip.setContent({ '.tooltip-inner': 'foo' })
+        })
+
+        tooltip.show()
+      })
     })
 
     it('should keep tip hidden, if it was already hidden before', () => {

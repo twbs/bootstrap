@@ -5,7 +5,14 @@
  * --------------------------------------------------------------------------
  */
 
-import * as Popper from '@popperjs/core'
+import {
+  computePosition,
+  flip,
+  shift,
+  offset,
+  arrow,
+  autoUpdate
+} from '@floating-ui/dom'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
@@ -14,6 +21,12 @@ import {
 } from './util/index.js'
 import { DefaultAllowlist } from './util/sanitizer.js'
 import TemplateFactory from './util/template-factory.js'
+import {
+  parseResponsivePlacement,
+  getResponsivePlacement,
+  createBreakpointListeners,
+  disposeBreakpointListeners
+} from './util/floating-ui.js'
 
 /**
  * Constants
@@ -28,6 +41,7 @@ const CLASS_NAME_SHOW = 'show'
 
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
 const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tooltip"]'
 
 const EVENT_MODAL_HIDE = 'hide.bs.modal'
 
@@ -66,7 +80,7 @@ const Default = {
   html: false,
   offset: [0, 6],
   placement: 'top',
-  popperConfig: null,
+  floatingConfig: null,
   sanitize: true,
   sanitizeFn: null,
   selector: false,
@@ -89,7 +103,7 @@ const DefaultType = {
   html: 'boolean',
   offset: '(array|string|function)',
   placement: '(string|function)',
-  popperConfig: '(null|object|function)',
+  floatingConfig: '(null|object|function)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
   selector: '(string|boolean)',
@@ -104,8 +118,8 @@ const DefaultType = {
 
 class Tooltip extends BaseComponent {
   constructor(element, config) {
-    if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)')
+    if (typeof computePosition === 'undefined') {
+      throw new TypeError('Bootstrap\'s tooltips require Floating UI (https://floating-ui.com)')
     }
 
     super(element, config)
@@ -115,13 +129,16 @@ class Tooltip extends BaseComponent {
     this._timeout = 0
     this._isHovered = null
     this._activeTrigger = {}
-    this._popper = null
+    this._floatingCleanup = null
     this._templateFactory = null
     this._newContent = null
+    this._mediaQueryListeners = []
+    this._responsivePlacements = null
 
     // Protected
     this.tip = null
 
+    this._parseResponsivePlacements()
     this._setListeners()
 
     if (!this._config.selector) {
@@ -177,11 +194,12 @@ class Tooltip extends BaseComponent {
       this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'))
     }
 
-    this._disposePopper()
+    this._disposeFloating()
+    this._disposeMediaQueryListeners()
     super.dispose()
   }
 
-  show() {
+  async show() {
     if (this._element.style.display === 'none') {
       throw new Error('Please use show on visible elements')
     }
@@ -198,8 +216,7 @@ class Tooltip extends BaseComponent {
       return
     }
 
-    // TODO: v6 remove this or make it optional
-    this._disposePopper()
+    this._disposeFloating()
 
     const tip = this._getTipElement()
 
@@ -212,7 +229,7 @@ class Tooltip extends BaseComponent {
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
     }
 
-    this._popper = this._createPopper(tip)
+    await this._createFloating(tip)
 
     tip.classList.add(CLASS_NAME_SHOW)
 
@@ -271,7 +288,7 @@ class Tooltip extends BaseComponent {
       }
 
       if (!this._isHovered) {
-        this._disposePopper()
+        this._disposeFloating()
       }
 
       this._element.removeAttribute('aria-describedby')
@@ -282,8 +299,8 @@ class Tooltip extends BaseComponent {
   }
 
   update() {
-    if (this._popper) {
-      this._popper.update()
+    if (this._floatingCleanup && this.tip) {
+      this._updateFloatingPosition()
     }
   }
 
@@ -326,7 +343,7 @@ class Tooltip extends BaseComponent {
   setContent(content) {
     this._newContent = content
     if (this._isShown()) {
-      this._disposePopper()
+      this._disposeFloating()
       this.show()
     }
   }
@@ -370,10 +387,114 @@ class Tooltip extends BaseComponent {
     return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW)
   }
 
-  _createPopper(tip) {
+  _getPlacement(tip) {
+    // If we have responsive placements, get the one for current viewport
+    if (this._responsivePlacements) {
+      const placement = getResponsivePlacement(this._responsivePlacements, 'top')
+      return AttachmentMap[placement.toUpperCase()] || placement
+    }
+
+    // Execute placement (can be a function)
     const placement = execute(this._config.placement, [this, tip, this._element])
-    const attachment = AttachmentMap[placement.toUpperCase()]
-    return Popper.createPopper(this._element, tip, this._getPopperConfig(attachment))
+    return AttachmentMap[placement.toUpperCase()] || placement
+  }
+
+  _parseResponsivePlacements() {
+    // Only parse if placement is a string (not a function)
+    if (typeof this._config.placement !== 'string') {
+      this._responsivePlacements = null
+      return
+    }
+
+    this._responsivePlacements = parseResponsivePlacement(this._config.placement, 'top')
+
+    if (this._responsivePlacements) {
+      this._setupMediaQueryListeners()
+    }
+  }
+
+  _setupMediaQueryListeners() {
+    this._disposeMediaQueryListeners()
+    this._mediaQueryListeners = createBreakpointListeners(() => {
+      if (this._isShown()) {
+        this._updateFloatingPosition()
+      }
+    })
+  }
+
+  _disposeMediaQueryListeners() {
+    disposeBreakpointListeners(this._mediaQueryListeners)
+    this._mediaQueryListeners = []
+  }
+
+  async _createFloating(tip) {
+    const placement = this._getPlacement(tip)
+    const arrowElement = tip.querySelector(`.${this.constructor.NAME}-arrow`)
+
+    // Initial position update
+    await this._updateFloatingPosition(tip, placement, arrowElement)
+
+    // Set up auto-update for scroll/resize
+    this._floatingCleanup = autoUpdate(
+      this._element,
+      tip,
+      () => this._updateFloatingPosition(tip, null, arrowElement)
+    )
+  }
+
+  async _updateFloatingPosition(tip = this.tip, placement = null, arrowElement = null) {
+    if (!tip) {
+      return
+    }
+
+    if (!placement) {
+      placement = this._getPlacement(tip)
+    }
+
+    if (!arrowElement) {
+      arrowElement = tip.querySelector(`.${this.constructor.NAME}-arrow`)
+    }
+
+    const middleware = this._getFloatingMiddleware(arrowElement)
+    const floatingConfig = this._getFloatingConfig(placement, middleware)
+
+    const { x, y, placement: finalPlacement, middlewareData } = await computePosition(
+      this._element,
+      tip,
+      floatingConfig
+    )
+
+    // Apply position to tooltip
+    Object.assign(tip.style, {
+      position: 'absolute',
+      left: `${x}px`,
+      top: `${y}px`
+    })
+
+    // Ensure arrow is absolutely positioned within tooltip
+    if (arrowElement) {
+      arrowElement.style.position = 'absolute'
+    }
+
+    // Set placement attribute for CSS arrow styling
+    Manipulator.setDataAttribute(tip, 'placement', finalPlacement)
+
+    // Position arrow along the edge (center it) if present
+    // The CSS handles which edge to place it on via data-bs-placement
+    if (arrowElement && middlewareData.arrow) {
+      const { x: arrowX, y: arrowY } = middlewareData.arrow
+      const isVertical = finalPlacement.startsWith('top') || finalPlacement.startsWith('bottom')
+
+      // Only set the cross-axis position (centering along the edge)
+      // The main-axis position (which edge) is handled by CSS
+      Object.assign(arrowElement.style, {
+        left: isVertical && arrowX !== null ? `${arrowX}px` : '',
+        top: !isVertical && arrowY !== null ? `${arrowY}px` : '',
+        // Reset the other axis to let CSS handle it
+        right: '',
+        bottom: ''
+      })
+    }
   }
 
   _getOffset() {
@@ -384,7 +505,11 @@ class Tooltip extends BaseComponent {
     }
 
     if (typeof offset === 'function') {
-      return popperData => offset(popperData, this._element)
+      // Floating UI passes different args, adapt the interface for offset function callbacks
+      return ({ placement, rects }) => {
+        const result = offset({ placement, reference: rects.reference, floating: rects.floating }, this._element)
+        return result
+      }
     }
 
     return offset
@@ -394,50 +519,43 @@ class Tooltip extends BaseComponent {
     return execute(arg, [this._element, this._element])
   }
 
-  _getPopperConfig(attachment) {
-    const defaultBsPopperConfig = {
-      placement: attachment,
-      modifiers: [
-        {
-          name: 'flip',
-          options: {
-            fallbackPlacements: this._config.fallbackPlacements
-          }
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: this._getOffset()
-          }
-        },
-        {
-          name: 'preventOverflow',
-          options: {
-            boundary: this._config.boundary
-          }
-        },
-        {
-          name: 'arrow',
-          options: {
-            element: `.${this.constructor.NAME}-arrow`
-          }
-        },
-        {
-          name: 'preSetPlacement',
-          enabled: true,
-          phase: 'beforeMain',
-          fn: data => {
-            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
-            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
-            this._getTipElement().setAttribute('data-popper-placement', data.state.placement)
-          }
-        }
-      ]
+  _getFloatingMiddleware(arrowElement) {
+    const offsetValue = this._getOffset()
+
+    const middleware = [
+      // Offset middleware - handles distance from reference
+      offset(
+        typeof offsetValue === 'function' ?
+          offsetValue :
+          { mainAxis: offsetValue[1] || 0, crossAxis: offsetValue[0] || 0 }
+      ),
+      // Flip middleware - handles fallback placements
+      flip({
+        fallbackPlacements: this._config.fallbackPlacements
+      }),
+      // Shift middleware - prevents overflow
+      shift({
+        boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
+      })
+    ]
+
+    // Arrow middleware - positions the arrow element
+    if (arrowElement) {
+      middleware.push(arrow({ element: arrowElement }))
+    }
+
+    return middleware
+  }
+
+  _getFloatingConfig(placement, middleware) {
+    const defaultConfig = {
+      placement,
+      middleware
     }
 
     return {
-      ...defaultBsPopperConfig,
-      ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
+      ...defaultConfig,
+      ...execute(this._config.floatingConfig, [undefined, defaultConfig])
     }
   }
 
@@ -594,10 +712,10 @@ class Tooltip extends BaseComponent {
     return config
   }
 
-  _disposePopper() {
-    if (this._popper) {
-      this._popper.destroy()
-      this._popper = null
+  _disposeFloating() {
+    if (this._floatingCleanup) {
+      this._floatingCleanup()
+      this._floatingCleanup = null
     }
 
     if (this.tip) {
@@ -606,4 +724,28 @@ class Tooltip extends BaseComponent {
     }
   }
 }
+
+/**
+ * Data API implementation - auto-initialize tooltips
+ */
+
+const initTooltip = event => {
+  const target = event.target.closest(SELECTOR_DATA_TOGGLE)
+  if (!target) {
+    return
+  }
+
+  // Get or create instance and trigger the appropriate action
+  const tooltip = Tooltip.getOrCreateInstance(target)
+
+  // For focus events, manually trigger enter to show
+  if (event.type === 'focusin') {
+    tooltip._activeTrigger.focus = true
+    tooltip._enter()
+  }
+}
+
+EventHandler.on(document, EVENT_FOCUSIN, SELECTOR_DATA_TOGGLE, initTooltip)
+EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE, initTooltip)
+
 export default Tooltip
