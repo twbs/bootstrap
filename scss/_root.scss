@@ -127,6 +127,10 @@
   --#{$prefix}form-invalid-color: #{$form-invalid-color};
   --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
   // scss-docs-end root-form-validation-variables
+  
+  enableXr: true;
+  --xr-background-material: translucent;
+  background-color: var(--#{$prefix}body-bg);
 }
 
 @if $enable-dark-mode {
@@ -183,5 +187,10 @@
     --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
     --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
     // scss-docs-end root-dark-mode-vars
+
+    enableXr: true;
+    --xr-background-material: translucent;
+    background-color: var(--#{$prefix}body-bg);
+    background-color: transparent;
   }
 }
