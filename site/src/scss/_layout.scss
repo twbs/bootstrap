@@ -63,5 +63,6 @@
   .bd-content {
     grid-area: content;
     min-width: 1px; // Fix width when bd-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
+    max-width: 100%;
   }
 }
