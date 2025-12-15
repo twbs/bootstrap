@@ -430,7 +430,8 @@
   textarea {
     margin: 0; // 1
     font-family: inherit;
-    @include font-size(inherit);
+    font-size: inherit;
+    font-feature-settings: inherit;
     line-height: inherit;
   }
 
