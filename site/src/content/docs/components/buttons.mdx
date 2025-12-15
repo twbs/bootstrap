@@ -279,44 +279,111 @@ document.querySelectorAll('.btn').forEach(buttonElement => {
 
 ### Variables
 
-<CSSVariables component="Buttons" className="btn" />
+Buttons use CSS variables for real-time customization. These are set on the base `.btn` class and inherited by all button variants.
 
 <ScssDocs name="btn-css-vars" file="scss/buttons/_button.scss" />
 
-Each `.btn-*` modifier class updates the appropriate CSS variables to minimize additional CSS rules with our `button-variant()`, `button-outline-variant()`, and `button-size()` mixins.
-
-Here’s an example of building a custom `.btn-*` modifier class as we do for the buttons unique to our docs by reassigning Bootstrap’s CSS variables with a mixture of our own CSS and Sass variables.
-
-<Example showMarkup={false} code={`
-<button type="button" class="btn btn-bd-primary">Custom button</button>
-`} />
-
-<ScssDocs name="btn-css-vars-example" file="site/src/scss/_buttons.scss" />
+Each variant class (`.btn-solid`, `.btn-outline`, etc.) updates these variables based on the current theme color, allowing buttons to adapt automatically when used with `.theme-*` classes.
 
 ### Sass variables
 
+Base button styling uses these Sass variables for padding, typography, and sizing across all button variants.
+
 <ScssDocs name="btn-variables" file="scss/buttons/_button-variables.scss" />
 
-### Sass map
+### Sass maps
 
-Button variants—including all their states—are defined in the `$button-variants` Sass map. This map identifies which theme color tokens to use for each variant's state.
+#### Variants map
 
-For example, a solid button uses the same `bg` token for its background and border colors because we want it to have a seamless look.
+Button variants are defined in the `$button-variants` Sass map. Each variant specifies which theme color tokens to use for its base, hover, and active states. The map uses token names (like `"bg"`, `"contrast"`, `"border"`) that reference the current theme's color palette.
 
 <ScssDocs name="btn-variants" file="scss/buttons/_button.scss" />
 
-### Sass mixins
+To add a custom variant, extend the map before importing Bootstrap’s buttons:
 
-There are three mixins for buttons: button and button outline variant mixins (both based on `$theme-colors`), plus a button size mixin.
+```scss
+@use "bootstrap/scss/buttons/button" with (
+  $button-variants: (
+    "solid": ( /* ... */ ),
+    "outline": ( /* ... */ ),
+    "subtle": ( /* ... */ ),
+    "text": ( /* ... */ ),
+    "ghost": (
+      "base": (
+        "bg": "transparent",
+        "color": "text",
+        "border-color": "transparent"
+      ),
+      "hover": (
+        "bg": "bg-subtle",
+        "color": "text-emphasis"
+      ),
+      "active": (
+        "bg": "bg-subtle",
+        "color": "text-emphasis"
+      )
+    )
+  )
+);
+```
 
-<ScssDocs name="btn-variant-mixin" file="scss/buttons/_button.scss" />
+To remove a variant you don't need, use Sass's `map.remove()`:
 
-{/*<ScssDocs name="btn-outline-variant-mixin" file="scss/mixins/_buttons.scss" />
+```scss
+@use "sass:map";
 
-<ScssDocs name="btn-size-mixin" file="scss/mixins/_buttons.scss" />*/}
+@use "bootstrap/scss/buttons/button" as *button* with (
+  $button-variants: map.remove($button-variants, "text", "subtle")
+);
+```
+
+#### Sizes map
+
+Button sizes are defined in the `$button-sizes` map. Each size specifies padding, font size, line height, border radius, and minimum height. The loop generates `.btn-xs`, `.btn-sm`, and `.btn-lg` classes.
+
+<ScssDocs name="btn-sizes" file="scss/buttons/_button.scss" />
+
+To add or modify sizes, extend the map:
+
+```scss
+@use "bootstrap/scss/buttons/button" with (
+  $button-sizes: (
+    "xs": ( /* ... */ ),
+    "sm": ( /* ... */ ),
+    "lg": ( /* ... */ ),
+    "xl": (
+      "padding-y": .75rem,
+      "padding-x": 1.25rem,
+      "font-size": var(--bs-font-size-lg),
+      "line-height": 1.5rem,
+      "border-radius": var(--bs-border-radius-lg),
+      "min-height": 3.25rem
+    )
+  )
+);
+```
 
 ### Sass loops
 
-Button variants (for regular and outline buttons) use their respective mixins with our `$theme-colors` map to generate the modifier classes in `scss/_buttons.scss`.
+#### Variant loop
 
-{/* <ScssDocs name="btn-variant-loops" file="scss/buttons/_button.scss" /> */}
+The variant loop iterates over `$button-variants` to generate each variant class. It sets CSS variables for base, hover, active, and disabled states using the theme color tokens defined in the map.
+
+<ScssDocs name="btn-variant-mixin" file="scss/buttons/_button.scss" />
+
+#### Size loop
+
+The size loop iterates over `$button-sizes` to generate size modifier classes, setting the appropriate CSS variables for each size.
+
+```scss
+@each $size, $properties in $button-sizes {
+  .btn-#{$size} {
+    --bs-btn-min-height: #{map.get($properties, "min-height")};
+    --bs-btn-padding-y: #{map.get($properties, "padding-y")};
+    --bs-btn-padding-x: #{map.get($properties, "padding-x")};
+    --bs-btn-font-size: #{map.get($properties, "font-size")};
+    --bs-btn-line-height: #{map.get($properties, "line-height")};
+    --bs-btn-border-radius: #{map.get($properties, "border-radius")};
+  }
+}
+```
