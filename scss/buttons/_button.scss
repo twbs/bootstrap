@@ -2,6 +2,7 @@
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
+@use "sass:string";
 @use "../colors" as *;
 @use "../config" as *;
 @use "../theme" as *;
@@ -84,42 +85,141 @@ $button-variants: (
 ) !default;
 // scss-docs-end btn-variants
 
-// // Main button style generator mixin
+// scss-docs-start btn-sizes
+$button-sizes: (
+  "xs": (
+    "padding-y": $btn-padding-y-xs,
+    "padding-x": $btn-padding-x-xs,
+    "font-size": $btn-font-size-xs,
+    "line-height": $btn-line-height-xs,
+    "border-radius": $btn-border-radius-xs,
+    "min-height": 1.5rem
+  ),
+  "sm": (
+    "padding-y": $btn-padding-y-sm,
+    "padding-x": $btn-padding-x-sm,
+    "font-size": $btn-font-size-sm,
+    "line-height": $btn-line-height-sm,
+    "border-radius": $btn-border-radius-sm,
+    "min-height": 2rem
+  ),
+  "lg": (
+    "padding-y": $btn-padding-y-lg,
+    "padding-x": $btn-padding-x-lg,
+    "font-size": $btn-font-size-lg,
+    "line-height": $btn-line-height-lg,
+    "border-radius": $btn-border-radius-lg,
+    "min-height": 2.75rem
+  ),
+  // Commented out by default on purpose
+  // "xl": (
+  //   "padding-y": $btn-padding-y-xl,
+  //   "padding-x": $btn-padding-x-xl,
+  //   "font-size": $btn-font-size-xl,
+  //   "line-height": $btn-line-height-xl,
+  //   "border-radius": $btn-border-radius-xl,
+  //   "min-height": 3.25rem
+  // ),
+) !default;
+// scss-docs-end btn-sizes
 
-// Generate button variant classes (e.g., .btn-solid, .btn-outline, etc.)
-// scss-docs-start btn-variant-mixin
-@each $variant, $_ in $button-variants {
-  .btn-#{$variant} {
-    @each $property, $value in map.get($button-variants, $variant, "base") {
-      @if $value == "transparent" {
-        --#{$prefix}btn-#{$property}: transparent;
-      } @else {
-        --#{$prefix}btn-#{$property}: var(--#{$prefix}theme-#{$value});
-      }
-    }
+//
+// Base styles
+//
+
+$btn-variant-selectors: () !default;
+@each $variant in map.keys($button-variants) {
+  $btn-variant-selectors: list.append($btn-variant-selectors, string.unquote(".btn-#{$variant}"), comma);
+}
+
+@layer components {
+  .btn,
+  #{$btn-variant-selectors} {
+    // scss-docs-start btn-css-vars
+    --#{$prefix}btn-min-height: 2.25rem;
+    --#{$prefix}btn-padding-x: #{$btn-padding-x};
+    --#{$prefix}btn-padding-y: #{$btn-padding-y};
+    --#{$prefix}btn-font-family: #{$btn-font-family};
+    @include rfs($btn-font-size, --#{$prefix}btn-font-size);
+    --#{$prefix}btn-font-weight: #{$btn-font-weight};
+    --#{$prefix}btn-line-height: #{$btn-line-height};
+    --#{$prefix}btn-color: #{$btn-color};
+    --#{$prefix}btn-border-width: #{$btn-border-width};
+    --#{$prefix}btn-border-color: transparent;
+    --#{$prefix}btn-border-radius: #{$btn-border-radius};
+    --#{$prefix}btn-hover-border-color: transparent;
+    --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
+    // scss-docs-end btn-css-vars
+
+    display: inline-flex;
+    gap: var(--#{$prefix}btn-gap, .25rem);
+    align-items: center;
+    justify-content: center;
+    min-height: var(--#{$prefix}btn-min-height);
+    padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
+    font-family: var(--#{$prefix}btn-font-family);
+    @include font-size(var(--#{$prefix}btn-font-size));
+    font-weight: var(--#{$prefix}btn-font-weight);
+    line-height: var(--#{$prefix}btn-line-height);
+    color: var(--#{$prefix}btn-color);
+    text-decoration: none;
+    white-space: $btn-white-space;
+    vertical-align: middle;
+    cursor: if($enable-button-pointers, pointer, null);
+    user-select: none;
+    background-color: var(--#{$prefix}btn-bg, var(--#{$prefix}bg-2));
+    border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
+    @include border-radius(var(--#{$prefix}btn-border-radius));
+    @include transition($btn-transition);
 
     &:hover {
-      @each $property, $value in map.get($button-variants, $variant, "hover") {
-        @if $value == "transparent" {
-          --#{$prefix}btn-hover-#{$property}: transparent;
-        } @else if meta.type-of($value) == "list" {
-          $first-value: list.nth($value, 1);
-          $second-value: list.nth($value, 2);
-          --#{$prefix}btn-hover-#{$property}: color-mix(in oklch, var(--#{$prefix}theme-#{$first-value}) 50%, var(--#{$prefix}theme-#{$second-value}));
-        } @else if $value == "bg-subtle" {
-          --#{$prefix}btn-hover-#{$property}: var(--#{$prefix}theme-#{$value});
-        } @else {
-          --#{$prefix}btn-hover-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .95) calc(c * 1.1) h);
-        }
-      }
+      color: var(--#{$prefix}btn-hover-color);
+      background-color: var(--#{$prefix}btn-hover-bg, var(--#{$prefix}bg-3));
+      border-color: var(--#{$prefix}btn-hover-border-color);
     }
 
     &:focus-visible {
-      outline-color: var(--#{$prefix}theme-focus-ring);
+      @include focus-ring(true);
+      --#{$prefix}focus-ring-offset: 1px;
     }
 
-    &:active,
-    &.active {
+    &.active,
+    &.show {
+      color: var(--#{$prefix}btn-active-color);
+      background-color: var(--#{$prefix}btn-active-bg, var(--#{$prefix}bg-3));
+      border-color: var(--#{$prefix}btn-active-border-color);
+
+      &:focus-visible {
+        @include focus-ring(true);
+      }
+    }
+
+    &:disabled,
+    &.disabled,
+    fieldset:disabled & {
+      color: var(--#{$prefix}btn-disabled-color);
+      pointer-events: none;
+      background-color: var(--#{$prefix}btn-disabled-bg, var(--#{$prefix}bg-1));
+      background-image: if($enable-gradients, none, null);
+      border-color: var(--#{$prefix}btn-disabled-border-color);
+      opacity: var(--#{$prefix}btn-disabled-opacity);
+    }
+  }
+
+
+  // Main button style generator mixin
+  // Generate button variant classes (e.g., .btn-solid, .btn-outline, etc.)
+  // scss-docs-start btn-variant-mixin
+  @each $variant, $_ in $button-variants {
+    .btn-#{$variant} {
+      @each $property, $value in map.get($button-variants, $variant, "base") {
+        @if $value == "transparent" {
+          --#{$prefix}btn-#{$property}: transparent;
+        } @else {
+          --#{$prefix}btn-#{$property}: var(--#{$prefix}theme-#{$value});
+        }
+      }
+
       @each $property, $value in map.get($button-variants, $variant, "active") {
         @if $value == "transparent" {
           --#{$prefix}btn-active-#{$property}: transparent;
@@ -129,119 +229,64 @@ $button-variants: (
           --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
         }
       }
-    }
-  }
-}
-// scss-docs-end btn-variant-mixin
+      @each $property, $value in map.get($button-variants, $variant, "base") {
+        @if $value == "transparent" {
+          --#{$prefix}btn-disabled-#{$property}: transparent;
+        } @else {
+          --#{$prefix}btn-disabled-#{$property}: var(--#{$prefix}theme-#{$value});
+        }
+      }
 
-// scss-docs-start btn-size-mixin
-@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  --#{$prefix}btn-padding-y: #{$padding-y};
-  --#{$prefix}btn-padding-x: #{$padding-x};
-  @include rfs($font-size, --#{$prefix}btn-font-size);
-  --#{$prefix}btn-border-radius: #{$border-radius};
-}
-// scss-docs-end btn-size-mixin
 
-//
-// Base styles
-//
-
-@layer components {
-  .btn,
-  [class*="btn-"] {
-    // scss-docs-start btn-css-vars
-    --#{$prefix}btn-padding-x: #{$btn-padding-x};
-    --#{$prefix}btn-padding-y: #{$btn-padding-y};
-    --#{$prefix}btn-font-family: #{$btn-font-family};
-    @include rfs($btn-font-size, --#{$prefix}btn-font-size);
-    --#{$prefix}btn-font-weight: #{$btn-font-weight};
-    --#{$prefix}btn-line-height: #{$btn-line-height};
-    --#{$prefix}btn-color: #{$btn-color};
-    --#{$prefix}btn-bg: transparent;
-    --#{$prefix}btn-border-width: #{$btn-border-width};
-    --#{$prefix}btn-border-color: transparent;
-    --#{$prefix}btn-border-radius: #{$btn-border-radius};
-    --#{$prefix}btn-hover-border-color: transparent;
-    --#{$prefix}btn-box-shadow: #{$btn-box-shadow};
-    --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
-    // --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
-    // scss-docs-end btn-css-vars
-
-    display: inline-block;
-    padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
-    font-family: var(--#{$prefix}btn-font-family);
-    @include font-size(var(--#{$prefix}btn-font-size));
-    font-weight: var(--#{$prefix}btn-font-weight);
-    line-height: var(--#{$prefix}btn-line-height);
-    color: var(--#{$prefix}btn-color);
-    text-align: center;
-    text-decoration: none;
-    white-space: $btn-white-space;
-    vertical-align: middle;
-    cursor: if($enable-button-pointers, pointer, null);
-    user-select: none;
-    border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
-    @include border-radius(var(--#{$prefix}btn-border-radius));
-    @include gradient-bg(var(--#{$prefix}btn-bg));
-    @include box-shadow(var(--#{$prefix}btn-box-shadow));
-    @include transition($btn-transition);
-
-    &:hover {
-      color: var(--#{$prefix}btn-hover-color);
-      background-color: var(--#{$prefix}btn-hover-bg);
-      border-color: var(--#{$prefix}btn-hover-border-color);
-    }
-
-    .btn-check + &:hover {
-      // override for the checkbox/radio buttons
-      color: var(--#{$prefix}btn-color);
-      background-color: var(--#{$prefix}btn-bg);
-      border-color: var(--#{$prefix}btn-border-color);
-    }
-
-    &:focus-visible {
-      @include focus-ring(true);
-      --#{$prefix}focus-ring-offset: 1px;
-    }
-
-    .btn-check:focus-visible + & {
-      @include focus-ring(true);
-    }
-
-    .btn-check:checked + &,
-    :not(.btn-check) + &:active,
-    &:first-child:active,
-    &.active,
-    &.show {
-      color: var(--#{$prefix}btn-active-color);
-      background-color: var(--#{$prefix}btn-active-bg);
-      // Remove CSS gradients if they're enabled
-      background-image: if($enable-gradients, none, null);
-      border-color: var(--#{$prefix}btn-active-border-color);
-      @include box-shadow(var(--#{$prefix}btn-active-shadow));
+      &:hover {
+        @each $property, $value in map.get($button-variants, $variant, "hover") {
+          @if $value == "transparent" {
+            --#{$prefix}btn-hover-#{$property}: transparent;
+          } @else if meta.type-of($value) == "list" {
+            $first-value: list.nth($value, 1);
+            $second-value: list.nth($value, 2);
+            --#{$prefix}btn-hover-#{$property}: color-mix(in oklch, var(--#{$prefix}theme-#{$first-value}) 50%, var(--#{$prefix}theme-#{$second-value}));
+          } @else if $value == "bg-subtle" {
+            --#{$prefix}btn-hover-#{$property}: var(--#{$prefix}theme-#{$value});
+          } @else {
+            --#{$prefix}btn-hover-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .95) calc(c * 1.1) h);
+          }
+        }
+      }
 
       &:focus-visible {
-        @include focus-ring(true);
+        outline-color: var(--#{$prefix}theme-focus-ring);
+      }
+
+      &:active,
+      &.active,
+      &.btn-check:has(input:checked) {
+        @each $property, $value in map.get($button-variants, $variant, "active") {
+          @if $value == "transparent" {
+            --#{$prefix}btn-active-#{$property}: transparent;
+          } @else if $value == "bg-subtle" {
+            --#{$prefix}btn-active-#{$property}: var(--#{$prefix}theme-#{$value});
+          } @else {
+            --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
+          }
+        }
+      }
+
+      // Disabled state for toggle buttons
+      &:disabled,
+      &.disabled,
+      &.btn-check:has(input:disabled) {
+        @each $property, $value in map.get($button-variants, $variant, "base") {
+          @if $value == "transparent" {
+            --#{$prefix}btn-disabled-#{$property}: transparent;
+          } @else {
+            --#{$prefix}btn-disabled-#{$property}: var(--#{$prefix}theme-#{$value});
+          }
+        }
       }
     }
-
-    .btn-check:checked:focus-visible + & {
-      @include focus-ring(true);
-    }
-
-    &:disabled,
-    &.disabled,
-    fieldset:disabled & {
-      color: var(--#{$prefix}btn-disabled-color);
-      pointer-events: none;
-      background-color: var(--#{$prefix}btn-disabled-bg);
-      background-image: if($enable-gradients, none, null);
-      border-color: var(--#{$prefix}btn-disabled-border-color);
-      opacity: var(--#{$prefix}btn-disabled-opacity);
-      @include box-shadow(none);
-    }
   }
+  // scss-docs-end btn-variant-mixin
 
   //
   // Link buttons
@@ -284,26 +329,110 @@ $button-variants: (
   // Button Sizes
   //
 
-  .btn-lg {
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+  // Generate button size classes from the $button-sizes map
+  // Skip "md" as it's the default size for .btn
+  @each $size, $properties in $button-sizes {
+    .btn-#{$size} {
+      --#{$prefix}btn-min-height: #{map.get($properties, "min-height")};
+      --#{$prefix}btn-padding-y: #{map.get($properties, "padding-y")};
+      --#{$prefix}btn-padding-x: #{map.get($properties, "padding-x")};
+      --#{$prefix}btn-font-size: #{map.get($properties, "font-size")};
+      --#{$prefix}btn-line-height: #{map.get($properties, "line-height")};
+      --#{$prefix}btn-border-radius: #{map.get($properties, "border-radius")};
+    }
   }
 
-  .btn-sm {
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+  .btn-icon {
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    padding: 0;
   }
+
+  //
+  // Toggle buttons (.btn-check)
+  //
+  // Checkbox and radio inputs that look like buttons. Add .btn-check to a
+  // label with button classes, with the input nested inside.
+  //
+  // Example: <label class="btn-check btn-solid theme-primary"><input type="checkbox">Toggle</label>
 
   .btn-check {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-    pointer-events: none;
+    > input {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      pointer-events: none;
+    }
 
-    &[disabled],
-    &:disabled {
-      + .btn {
-        pointer-events: none;
-        filter: none;
-        opacity: .65;
-      }
+    &:has(input:checked) {
+      color: var(--#{$prefix}btn-active-color);
+      background-color: var(--#{$prefix}btn-active-bg, var(--#{$prefix}bg-3));
+      background-image: if($enable-gradients, none, null);
+      border-color: var(--#{$prefix}btn-active-border-color);
+      @include box-shadow(var(--#{$prefix}btn-active-shadow));
+    }
+
+    &:has(input:focus-visible) {
+      @include focus-ring(true);
+      --#{$prefix}focus-ring-offset: 1px;
+    }
+
+    &:has(input:disabled) {
+      color: var(--#{$prefix}btn-disabled-color);
+      pointer-events: none;
+      background-color: var(--#{$prefix}btn-disabled-bg, var(--#{$prefix}bg-1));
+      background-image: if($enable-gradients, none, null);
+      border-color: var(--#{$prefix}btn-disabled-border-color);
+      opacity: var(--#{$prefix}btn-disabled-opacity);
+      @include box-shadow(none);
+    }
+  }
+
+  //
+  // Styled buttons
+  //
+  // Add visual depth with gradients and shadows. Customize via CSS variables.
+
+  .btn-styled {
+    --#{$prefix}btn-gradient-start: rgb(255 255 255 / 12.5%);
+    --#{$prefix}btn-gradient-end: rgb(0 0 0 / 7.5%);
+    --#{$prefix}btn-border-mix-color: #000;
+    --#{$prefix}btn-border-mix-amount: 10%;
+    --#{$prefix}btn-border-hover-mix-amount: 12.5%;
+    --#{$prefix}btn-border-active-mix-amount: 20%;
+    --#{$prefix}btn-shadow: 0 1px 2px rgb(0 0 0 / 15%), inset 0 1px 0 rgb(255 255 255 / 10%);
+    --#{$prefix}btn-active-shadow: inset 0 2px 4px rgba(0, 0, 0, .15);
+
+    background-image:
+      linear-gradient(
+        to bottom,
+        var(--#{$prefix}btn-gradient-start),
+        var(--#{$prefix}btn-gradient-end)
+      );
+    border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-mix-amount));
+    box-shadow: var(--#{$prefix}btn-shadow);
+
+    &:hover {
+      background-image:
+        linear-gradient(
+          to bottom,
+          var(--#{$prefix}btn-gradient-start),
+          var(--#{$prefix}btn-gradient-end)
+        );
+      border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-hover-mix-amount));
+    }
+
+    &:active,
+    &.active {
+      background-image: none;
+      border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-active-mix-amount));
+      box-shadow: var(--#{$prefix}btn-active-shadow);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-image: none;
+      box-shadow: none;
     }
   }
 }
