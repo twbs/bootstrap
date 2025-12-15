@@ -6,6 +6,8 @@
 @layer custom {
   .bd-details {
     margin-block: 1.25rem;
+    font-size: var(--bs-font-size-sm);
+    line-height: var(--bs-line-height-sm);
     color: var(--bs-fg-3);
     background-color: var(--bs-bg-1);
     @include border-radius(var(--bs-border-radius-lg));
