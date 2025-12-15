@@ -85,56 +85,6 @@ $button-variants: (
 ) !default;
 // scss-docs-end btn-variants
 
-// // Main button style generator mixin
-
-// Generate button variant classes (e.g., .btn-solid, .btn-outline, etc.)
-// scss-docs-start btn-variant-mixin
-@each $variant, $_ in $button-variants {
-  .btn-#{$variant} {
-    @each $property, $value in map.get($button-variants, $variant, "base") {
-      @if $value == "transparent" {
-        --#{$prefix}btn-#{$property}: transparent;
-      } @else {
-        --#{$prefix}btn-#{$property}: var(--#{$prefix}theme-#{$value});
-      }
-    }
-
-    &:hover {
-      @each $property, $value in map.get($button-variants, $variant, "hover") {
-        @if $value == "transparent" {
-          --#{$prefix}btn-hover-#{$property}: transparent;
-        } @else if meta.type-of($value) == "list" {
-          $first-value: list.nth($value, 1);
-          $second-value: list.nth($value, 2);
-          --#{$prefix}btn-hover-#{$property}: color-mix(in oklch, var(--#{$prefix}theme-#{$first-value}) 50%, var(--#{$prefix}theme-#{$second-value}));
-        } @else if $value == "bg-subtle" {
-          --#{$prefix}btn-hover-#{$property}: var(--#{$prefix}theme-#{$value});
-        } @else {
-          --#{$prefix}btn-hover-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .95) calc(c * 1.1) h);
-        }
-      }
-    }
-
-    &:focus-visible {
-      outline-color: var(--#{$prefix}theme-focus-ring);
-    }
-
-    &:active,
-    &.active {
-      @each $property, $value in map.get($button-variants, $variant, "active") {
-        @if $value == "transparent" {
-          --#{$prefix}btn-active-#{$property}: transparent;
-        } @else if $value == "bg-subtle" {
-          --#{$prefix}btn-active-#{$property}: var(--#{$prefix}theme-#{$value});
-        } @else {
-          --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
-        }
-      }
-    }
-  }
-}
-// scss-docs-end btn-variant-mixin
-
 // scss-docs-start btn-size-mixin
 @mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   --#{$prefix}btn-padding-y: #{$padding-y};
@@ -148,8 +98,6 @@ $button-variants: (
 // Base styles
 //
 
-// Generate a selector list from $button-variants map keys
-// Produces: .btn-solid, .btn-outline, .btn-subtle, .btn-text
 $btn-variant-selectors: () !default;
 @each $variant in map.keys($button-variants) {
   $btn-variant-selectors: list.append($btn-variant-selectors, string.unquote(".btn-#{$variant}"), comma);
@@ -166,7 +114,6 @@ $btn-variant-selectors: () !default;
     --#{$prefix}btn-font-weight: #{$btn-font-weight};
     --#{$prefix}btn-line-height: #{$btn-line-height};
     --#{$prefix}btn-color: #{$btn-color};
-    --#{$prefix}btn-bg: transparent;
     --#{$prefix}btn-border-width: #{$btn-border-width};
     --#{$prefix}btn-border-color: transparent;
     --#{$prefix}btn-border-radius: #{$btn-border-radius};
@@ -189,41 +136,42 @@ $btn-variant-selectors: () !default;
     vertical-align: middle;
     cursor: if($enable-button-pointers, pointer, null);
     user-select: none;
+    background-color: var(--#{$prefix}btn-bg, var(--#{$prefix}bg-2));
     border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
     @include border-radius(var(--#{$prefix}btn-border-radius));
-    @include gradient-bg(var(--#{$prefix}btn-bg));
-    @include box-shadow(var(--#{$prefix}btn-box-shadow));
+    // @include gradient-bg(var(--#{$prefix}btn-bg));
+    // @include box-shadow(var(--#{$prefix}btn-box-shadow));
     @include transition($btn-transition);
 
     &:hover {
       color: var(--#{$prefix}btn-hover-color);
-      background-color: var(--#{$prefix}btn-hover-bg);
+      background-color: var(--#{$prefix}btn-hover-bg, var(--#{$prefix}bg-3));
       border-color: var(--#{$prefix}btn-hover-border-color);
     }
 
-    .btn-check + &:hover {
-      // override for the checkbox/radio buttons
-      color: var(--#{$prefix}btn-color);
-      background-color: var(--#{$prefix}btn-bg);
-      border-color: var(--#{$prefix}btn-border-color);
-    }
+    // .btn-check + &:hover {
+    //   // override for the checkbox/radio buttons
+    //   color: var(--#{$prefix}btn-color);
+    //   background-color: var(--#{$prefix}btn-bg);
+    //   border-color: var(--#{$prefix}btn-border-color);
+    // }
 
     &:focus-visible {
       @include focus-ring(true);
       --#{$prefix}focus-ring-offset: 1px;
     }
 
-    .btn-check:focus-visible + & {
-      @include focus-ring(true);
-    }
+    // .btn-check:focus-visible + & {
+    //   @include focus-ring(true);
+    // }
 
-    .btn-check:checked + &,
-    :not(.btn-check) + &:active,
-    &:first-child:active,
+    // .btn-check:checked + &,
+    // :not(.btn-check) + &:active,
+    // &:first-child:active,
     &.active,
     &.show {
       color: var(--#{$prefix}btn-active-color);
-      background-color: var(--#{$prefix}btn-active-bg);
+      background-color: var(--#{$prefix}btn-active-bg, var(--#{$prefix}bg-3));
       // Remove CSS gradients if they're enabled
       background-image: if($enable-gradients, none, null);
       border-color: var(--#{$prefix}btn-active-border-color);
@@ -234,22 +182,72 @@ $btn-variant-selectors: () !default;
       }
     }
 
-    .btn-check:checked:focus-visible + & {
-      @include focus-ring(true);
-    }
+    // .btn-check:checked:focus-visible + & {
+    //   @include focus-ring(true);
+    // }
 
     &:disabled,
     &.disabled,
     fieldset:disabled & {
       color: var(--#{$prefix}btn-disabled-color);
       pointer-events: none;
-      background-color: var(--#{$prefix}btn-disabled-bg);
+      background-color: var(--#{$prefix}btn-disabled-bg, var(--#{$prefix}bg-1));
       background-image: if($enable-gradients, none, null);
       border-color: var(--#{$prefix}btn-disabled-border-color);
       opacity: var(--#{$prefix}btn-disabled-opacity);
       @include box-shadow(none);
     }
   }
+
+
+  // Main button style generator mixin
+  // Generate button variant classes (e.g., .btn-solid, .btn-outline, etc.)
+  // scss-docs-start btn-variant-mixin
+  @each $variant, $_ in $button-variants {
+    .btn-#{$variant} {
+      @each $property, $value in map.get($button-variants, $variant, "base") {
+        @if $value == "transparent" {
+          --#{$prefix}btn-#{$property}: transparent;
+        } @else {
+          --#{$prefix}btn-#{$property}: var(--#{$prefix}theme-#{$value});
+        }
+      }
+
+      &:hover {
+        @each $property, $value in map.get($button-variants, $variant, "hover") {
+          @if $value == "transparent" {
+            --#{$prefix}btn-hover-#{$property}: transparent;
+          } @else if meta.type-of($value) == "list" {
+            $first-value: list.nth($value, 1);
+            $second-value: list.nth($value, 2);
+            --#{$prefix}btn-hover-#{$property}: color-mix(in oklch, var(--#{$prefix}theme-#{$first-value}) 50%, var(--#{$prefix}theme-#{$second-value}));
+          } @else if $value == "bg-subtle" {
+            --#{$prefix}btn-hover-#{$property}: var(--#{$prefix}theme-#{$value});
+          } @else {
+            --#{$prefix}btn-hover-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .95) calc(c * 1.1) h);
+          }
+        }
+      }
+
+      &:focus-visible {
+        outline-color: var(--#{$prefix}theme-focus-ring);
+      }
+
+      &:active,
+      &.active {
+        @each $property, $value in map.get($button-variants, $variant, "active") {
+          @if $value == "transparent" {
+            --#{$prefix}btn-active-#{$property}: transparent;
+          } @else if $value == "bg-subtle" {
+            --#{$prefix}btn-active-#{$property}: var(--#{$prefix}theme-#{$value});
+          } @else {
+            --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
+          }
+        }
+      }
+    }
+  }
+  // scss-docs-end btn-variant-mixin
 
   //
   // Link buttons
@@ -312,6 +310,54 @@ $btn-variant-selectors: () !default;
         filter: none;
         opacity: .65;
       }
+    }
+  }
+
+  //
+  // Styled buttons
+  //
+  // Add visual depth with gradients and shadows. Customize via CSS variables.
+
+  .btn-styled {
+    --#{$prefix}btn-gradient-start: rgb(255 255 255 / 12.5%);
+    --#{$prefix}btn-gradient-end: rgb(0 0 0 / 7.5%);
+    --#{$prefix}btn-border-mix-color: #000;
+    --#{$prefix}btn-border-mix-amount: 10%;
+    --#{$prefix}btn-border-hover-mix-amount: 12.5%;
+    --#{$prefix}btn-border-active-mix-amount: 20%;
+    --#{$prefix}btn-shadow: 0 1px 2px rgb(0 0 0 / 15%), inset 0 1px 0 rgb(255 255 255 / 10%);
+    --#{$prefix}btn-active-shadow: inset 0 2px 4px rgba(0, 0, 0, .15);
+
+    background-image:
+      linear-gradient(
+        to bottom,
+        var(--#{$prefix}btn-gradient-start),
+        var(--#{$prefix}btn-gradient-end)
+      );
+    border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-mix-amount));
+    box-shadow: var(--#{$prefix}btn-shadow);
+
+    &:hover {
+      background-image:
+        linear-gradient(
+          to bottom,
+          var(--#{$prefix}btn-gradient-start),
+          var(--#{$prefix}btn-gradient-end)
+        );
+      border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-hover-mix-amount));
+    }
+
+    &:active,
+    &.active {
+      background-image: none;
+      border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-active-mix-amount));
+      box-shadow: var(--#{$prefix}btn-active-shadow);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-image: none;
+      box-shadow: none;
     }
   }
 }

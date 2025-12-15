@@ -8,11 +8,11 @@ import { getData } from '@libs/data'
 
 ## Base class
 
-Bootstrap has a base `.btn` class that sets up basic styles such as padding and content alignment. By default, `.btn` controls have a transparent border and background color, and lack any explicit focus and hover styles.
+Buttons have a standard `.btn` class that sets up basic styles such as padding and content alignment, along with fallback visual styles for basic accessibility. Change this class to another button class to apply different visual styles for a specific button variant and theme.
 
 <Example code={`<button type="button" class="btn">Base class</button>`} />
 
-The `.btn` class is intended to be used in conjunction with our button variants, or to serve as a basis for your own custom styles.
+The `.btn` class is intended to be a starting point for your own custom button styles, while our provided button variants  used in conjunction with our button variants, or to serve as a basis for your own custom styles.
 
 <Callout type="warning">
 When using `.btn` without a modifier, be sure to add some explicit `:focus-visible` styles.
@@ -30,6 +30,23 @@ Bootstrap includes several button variants, each serving its own semantic purpos
 <button type="button" class="btn btn-link">Link</button>`]} />
 
 <Details name="warning-color-assistive-technologies" />
+
+## Styled buttons
+
+Add visual depth to solid buttons with gradients and shadows using the `.btn-styled` modifier class. This provides a more three-dimensional appearance that can be customized further with CSS variables.
+
+<Example code={[...getData('theme-colors').map((themeColor) => `<button class="btn-solid btn-styled theme-${themeColor.name}">${themeColor.title}</button>`)]} />
+
+The gradient and shadow can be customized via CSS variables:
+
+<BsTable>
+| Variable | Description |
+| --- | --- |
+| `--bs-btn-gradient-start` | Top of gradient (default: `rgb(255 255 255 / 12.5%)`) |
+| `--bs-btn-gradient-end` | Bottom of gradient (default: `rgb(0 0 0 / 7.5%)`) |
+| `--bs-btn-shadow` | Resting state shadow |
+| `--bs-btn-active-shadow` | Pressed/active state shadow |
+</BsTable>
 
 ## Disable text wrapping
 
