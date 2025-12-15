@@ -95,6 +95,35 @@ You can even roll your own custom sizing with CSS variables:
     Custom button
   </button>`} />
 
+## Icon buttons
+
+Use `.btn-icon` for square buttons that contain only an icon. This class sets `aspect-ratio: 1` and removes padding, making the button perfectly square based on its `min-height`. Always include an `aria-label` attribute on icon-only buttons to ensure they are accessible to screen reader users.
+
+<Example code={`<button type="button" class="btn-solid theme-primary btn-icon" aria-label="Confirm">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button type="button" class="btn-outline theme-secondary btn-icon" aria-label="Auto theme">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#circle-half"></use></svg>
+  </button>
+  <button type="button" class="btn-subtle theme-warning btn-icon" aria-label="Light theme">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#sun-fill"></use></svg>
+  </button>`} />
+
+Combine with size classes for different icon button sizes:
+
+<Example code={`<button type="button" class="btn-solid theme-primary btn-icon btn-xs" aria-label="Confirm">
+    <svg class="bi" width="12" height="12" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button type="button" class="btn-solid theme-primary btn-icon btn-sm" aria-label="Confirm">
+    <svg class="bi" width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button type="button" class="btn-solid theme-primary btn-icon" aria-label="Confirm">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button type="button" class="btn-solid theme-primary btn-icon btn-lg" aria-label="Confirm">
+    <svg class="bi" width="20" height="20" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>`} />
+
 ## Disabled state
 
 Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element. Disabled buttons have `pointer-events: none` applied to, preventing hover and active states from triggering, and some additional styling to indicate the disabled state.
