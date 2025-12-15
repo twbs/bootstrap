@@ -133,7 +133,7 @@
   // Focus styles
   // scss-docs-start root-focus-variables
   --#{$prefix}focus-ring-width: 3px;
-  --#{$prefix}focus-ring-offset: -1px;
+  --#{$prefix}focus-ring-offset: 1px;
   --#{$prefix}focus-ring-color: var(--#{$prefix}primary-focus-ring);
   --#{$prefix}focus-ring: var(--#{$prefix}focus-ring-width) solid var(--#{$prefix}focus-ring-color);
   // scss-docs-end root-focus-variables

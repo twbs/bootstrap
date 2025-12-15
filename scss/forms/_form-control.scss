@@ -9,6 +9,7 @@
 @use "../mixins/gradients" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
+@use "../buttons/button-variables" as *; // mdo-do: remove?
 
 @layer forms {
   .form-control {
@@ -56,6 +57,7 @@
       background-color: $input-focus-bg;
       border-color: $input-focus-border-color;
       @include focus-ring(true);
+      --#{$prefix}focus-ring-offset: -1px;
     }
 
     &::-webkit-date-and-time-value {

@@ -2,8 +2,9 @@
 @use "variables" as *;
 @use "mixins/lists" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/transition" as *;
+@use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
+@use "mixins/transition" as *;
 
 // scss-docs-start pagination-variables
 $pagination-padding-y:              .375rem !default;
@@ -24,8 +25,6 @@ $pagination-border-color:           var(--#{$prefix}border-color) !default;
 
 $pagination-focus-color:            var(--#{$prefix}link-hover-color) !default;
 $pagination-focus-bg:               var(--#{$prefix}secondary-bg) !default;
-$pagination-focus-box-shadow:       $focus-ring-box-shadow !default;
-$pagination-focus-outline:          0 !default;
 
 $pagination-hover-color:            var(--#{$prefix}link-hover-color) !default;
 $pagination-hover-bg:               var(--#{$prefix}tertiary-bg) !default;
@@ -71,7 +70,6 @@ $pagination-border-radius-lg:       var(--#{$prefix}border-radius-lg) !default;
     --#{$prefix}pagination-hover-border-color: #{$pagination-hover-border-color};
     --#{$prefix}pagination-focus-color: #{$pagination-focus-color};
     --#{$prefix}pagination-focus-bg: #{$pagination-focus-bg};
-    --#{$prefix}pagination-focus-box-shadow: #{$pagination-focus-box-shadow};
     --#{$prefix}pagination-active-color: #{$pagination-active-color};
     --#{$prefix}pagination-active-bg: #{$pagination-active-bg};
     --#{$prefix}pagination-active-border-color: #{$pagination-active-border-color};
@@ -102,12 +100,11 @@ $pagination-border-radius-lg:       var(--#{$prefix}border-radius-lg) !default;
       border-color: var(--#{$prefix}pagination-hover-border-color);
     }
 
-    &:focus {
+    &:focus-visible {
       z-index: 3;
       color: var(--#{$prefix}pagination-focus-color);
       background-color: var(--#{$prefix}pagination-focus-bg);
-      outline: $pagination-focus-outline;
-      box-shadow: var(--#{$prefix}pagination-focus-box-shadow);
+      @include focus-ring(true);
     }
 
     &.active,

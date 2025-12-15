@@ -3,6 +3,7 @@
 @use "../variables" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
+@use "../mixins/focus-ring" as *;
 @use "../mixins/transition" as *;
 @use "../mixins/gradients" as *;
 @use "form-variables" as *;
@@ -21,8 +22,6 @@ $form-range-thumb-bg:                      $component-active-bg !default;
 $form-range-thumb-border:                  0 !default;
 $form-range-thumb-border-radius:           1rem !default;
 $form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
-$form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
-$form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in Edge
 $form-range-thumb-active-bg:               tint-color($component-active-bg, 70%) !default;
 $form-range-thumb-disabled-bg:             var(--#{$prefix}secondary-color) !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
@@ -31,7 +30,7 @@ $form-range-thumb-transition:              background-color .15s ease-in-out, bo
 @layer forms {
   .form-range {
     width: 100%;
-    height: add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2);
+    height: calc(#{$form-range-thumb-height} + (var(--#{$prefix}focus-ring-width) * 2));
     padding: 0; // Need to reset padding
     appearance: none;
     background-color: transparent;
@@ -39,10 +38,16 @@ $form-range-thumb-transition:              background-color .15s ease-in-out, bo
     &:focus {
       outline: 0;
 
+
       // Pseudo-elements must be split across multiple rulesets to have an effect.
-      // No box-shadow() mixin for focus accessibility.
-      &::-webkit-slider-thumb { box-shadow: $form-range-thumb-focus-box-shadow; }
-      &::-moz-range-thumb     { box-shadow: $form-range-thumb-focus-box-shadow; }
+      &::-webkit-slider-thumb {
+        @include focus-ring(true);
+        --#{$prefix}focus-ring-offset: 1px;
+      }
+      &::-moz-range-thumb     {
+        @include focus-ring(true);
+        --#{$prefix}focus-ring-offset: 1px;
+      }
     }
 
     &::-moz-focus-outer {
