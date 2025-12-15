@@ -229,6 +229,24 @@ $btn-variant-selectors: () !default;
         }
       }
 
+      @each $property, $value in map.get($button-variants, $variant, "active") {
+        @if $value == "transparent" {
+          --#{$prefix}btn-active-#{$property}: transparent;
+        } @else if $value == "bg-subtle" {
+          --#{$prefix}btn-active-#{$property}: var(--#{$prefix}theme-#{$value});
+        } @else {
+          --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
+        }
+      }
+      @each $property, $value in map.get($button-variants, $variant, "base") {
+        @if $value == "transparent" {
+          --#{$prefix}btn-disabled-#{$property}: transparent;
+        } @else {
+          --#{$prefix}btn-disabled-#{$property}: var(--#{$prefix}theme-#{$value});
+        }
+      }
+
+
       &:hover {
         @each $property, $value in map.get($button-variants, $variant, "hover") {
           @if $value == "transparent" {
@@ -250,7 +268,8 @@ $btn-variant-selectors: () !default;
       }
 
       &:active,
-      &.active {
+      &.active,
+      &.btn-check:has(input:checked) {
         @each $property, $value in map.get($button-variants, $variant, "active") {
           @if $value == "transparent" {
             --#{$prefix}btn-active-#{$property}: transparent;
@@ -258,6 +277,19 @@ $btn-variant-selectors: () !default;
             --#{$prefix}btn-active-#{$property}: var(--#{$prefix}theme-#{$value});
           } @else {
             --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
+          }
+        }
+      }
+
+      // Disabled state for toggle buttons
+      &:disabled,
+      &.disabled,
+      &.btn-check:has(input:disabled) {
+        @each $property, $value in map.get($button-variants, $variant, "base") {
+          @if $value == "transparent" {
+            --#{$prefix}btn-disabled-#{$property}: transparent;
+          } @else {
+            --#{$prefix}btn-disabled-#{$property}: var(--#{$prefix}theme-#{$value});
           }
         }
       }
