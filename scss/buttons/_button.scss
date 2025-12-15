@@ -183,25 +183,11 @@ $btn-variant-selectors: () !default;
       border-color: var(--#{$prefix}btn-hover-border-color);
     }
 
-    // .btn-check + &:hover {
-    //   // override for the checkbox/radio buttons
-    //   color: var(--#{$prefix}btn-color);
-    //   background-color: var(--#{$prefix}btn-bg);
-    //   border-color: var(--#{$prefix}btn-border-color);
-    // }
-
     &:focus-visible {
       @include focus-ring(true);
       --#{$prefix}focus-ring-offset: 1px;
     }
 
-    // .btn-check:focus-visible + & {
-    //   @include focus-ring(true);
-    // }
-
-    // .btn-check:checked + &,
-    // :not(.btn-check) + &:active,
-    // &:first-child:active,
     &.active,
     &.show {
       color: var(--#{$prefix}btn-active-color);
@@ -215,10 +201,6 @@ $btn-variant-selectors: () !default;
         @include focus-ring(true);
       }
     }
-
-    // .btn-check:checked:focus-visible + & {
-    //   @include focus-ring(true);
-    // }
 
     &:disabled,
     &.disabled,
@@ -344,18 +326,42 @@ $btn-variant-selectors: () !default;
     padding: 0;
   }
 
-  .btn-check {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-    pointer-events: none;
+  //
+  // Toggle buttons (.btn-check)
+  //
+  // Checkbox and radio inputs that look like buttons. Add .btn-check to a
+  // label with button classes, with the input nested inside.
+  //
+  // Example: <label class="btn-check btn-solid theme-primary"><input type="checkbox">Toggle</label>
 
-    &[disabled],
-    &:disabled {
-      + .btn {
-        pointer-events: none;
-        filter: none;
-        opacity: .65;
-      }
+  .btn-check {
+    > input {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      pointer-events: none;
+    }
+
+    &:has(input:checked) {
+      color: var(--#{$prefix}btn-active-color);
+      background-color: var(--#{$prefix}btn-active-bg, var(--#{$prefix}bg-3));
+      background-image: if($enable-gradients, none, null);
+      border-color: var(--#{$prefix}btn-active-border-color);
+      @include box-shadow(var(--#{$prefix}btn-active-shadow));
+    }
+
+    &:has(input:focus-visible) {
+      @include focus-ring(true);
+      --#{$prefix}focus-ring-offset: 1px;
+    }
+
+    &:has(input:disabled) {
+      color: var(--#{$prefix}btn-disabled-color);
+      pointer-events: none;
+      background-color: var(--#{$prefix}btn-disabled-bg, var(--#{$prefix}bg-1));
+      background-image: if($enable-gradients, none, null);
+      border-color: var(--#{$prefix}btn-disabled-border-color);
+      opacity: var(--#{$prefix}btn-disabled-opacity);
+      @include box-shadow(none);
     }
   }
 

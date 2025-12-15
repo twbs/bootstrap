@@ -61,16 +61,14 @@ const rounded = ['default', 'pill', 'square']
       <label class="form-label fw-semibold mb-0">Style</label>
       <div class="btn-group text-capitalize" role="group" aria-label="Button style">
         {styles.map((style) => (
-          <input
-            type="radio"
-            class="btn-check"
-            name="btn-style"
-            id={`style-${style}`}
-            value={style}
-            checked={style === 'solid'}
-            data-style={style}
-          />
-          <label class="btn btn-outline theme-secondary" for={`style-${style}`}>
+          <label class="btn-check btn-outline theme-secondary">
+            <input
+              type="radio"
+              name="btn-style"
+              value={style}
+              checked={style === 'solid'}
+              data-style={style}
+            />
             {style || 'default'}
           </label>
         ))}
@@ -111,16 +109,14 @@ const rounded = ['default', 'pill', 'square']
       <label class="form-label fw-semibold mb-0">Rounded</label>
       <div class="btn-group text-capitalize" role="group" aria-label="Button rounded">
         {rounded.map((round) => (
-          <input
-            type="radio"
-            class="btn-check"
-            name="btn-rounded"
-            id={`rounded-${round}`}
-            value={round}
-            checked={round === 'default'}
-            data-rounded={round}
-          />
-          <label class="btn btn-outline theme-secondary" for={`rounded-${round}`}>
+          <label class="btn-check btn-outline theme-secondary">
+            <input
+              type="radio"
+              name="btn-rounded"
+              value={round}
+              checked={round === 'default'}
+              data-rounded={round}
+            />
             {round}
           </label>
         ))}
@@ -212,9 +208,9 @@ const rounded = ['default', 'pill', 'square']
 
   function updateButtons() {
     const selectedColor = colorDropdownButton?.dataset.color || 'primary'
-    const selectedStyle = (document.querySelector('input[name="btn-style"]:checked') as HTMLInputElement)?.dataset.style || 'solid'
+    const selectedStyle = (document.querySelector('input[name="btn-style"]:checked') as HTMLInputElement)?.value || 'solid'
     const selectedSize = sizeDropdownButton?.dataset.size || ''
-    const selectedRounded = (document.querySelector('input[name="btn-rounded"]:checked') as HTMLInputElement)?.dataset.rounded || 'default'
+    const selectedRounded = (document.querySelector('input[name="btn-rounded"]:checked') as HTMLInputElement)?.value || 'default'
 
     previewButtons.forEach((button) => {
       // Remove all theme color classes
