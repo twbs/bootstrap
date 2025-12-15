@@ -85,14 +85,43 @@ $button-variants: (
 ) !default;
 // scss-docs-end btn-variants
 
-// scss-docs-start btn-size-mixin
-@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
-  --#{$prefix}btn-padding-y: #{$padding-y};
-  --#{$prefix}btn-padding-x: #{$padding-x};
-  @include rfs($font-size, --#{$prefix}btn-font-size);
-  --#{$prefix}btn-border-radius: #{$border-radius};
-}
-// scss-docs-end btn-size-mixin
+// scss-docs-start btn-sizes
+$button-sizes: (
+  "xs": (
+    "padding-y": $btn-padding-y-xs,
+    "padding-x": $btn-padding-x-xs,
+    "font-size": $btn-font-size-xs,
+    "line-height": $btn-line-height-xs,
+    "border-radius": $btn-border-radius-xs,
+    "min-height": 1.5rem
+  ),
+  "sm": (
+    "padding-y": $btn-padding-y-sm,
+    "padding-x": $btn-padding-x-sm,
+    "font-size": $btn-font-size-sm,
+    "line-height": $btn-line-height-sm,
+    "border-radius": $btn-border-radius-sm,
+    "min-height": 2rem
+  ),
+  "lg": (
+    "padding-y": $btn-padding-y-lg,
+    "padding-x": $btn-padding-x-lg,
+    "font-size": $btn-font-size-lg,
+    "line-height": $btn-line-height-lg,
+    "border-radius": $btn-border-radius-lg,
+    "min-height": 2.75rem
+  ),
+  // Commented out by default on purpose
+  // "xl": (
+  //   "padding-y": $btn-padding-y-xl,
+  //   "padding-x": $btn-padding-x-xl,
+  //   "font-size": $btn-font-size-xl,
+  //   "line-height": $btn-line-height-xl,
+  //   "border-radius": $btn-border-radius-xl,
+  //   "min-height": 3.25rem
+  // ),
+) !default;
+// scss-docs-end btn-sizes
 
 //
 // Base styles
@@ -107,6 +136,7 @@ $btn-variant-selectors: () !default;
   .btn,
   #{$btn-variant-selectors} {
     // scss-docs-start btn-css-vars
+    --#{$prefix}btn-min-height: 2.25rem;
     --#{$prefix}btn-padding-x: #{$btn-padding-x};
     --#{$prefix}btn-padding-y: #{$btn-padding-y};
     --#{$prefix}btn-font-family: #{$btn-font-family};
@@ -114,6 +144,7 @@ $btn-variant-selectors: () !default;
     --#{$prefix}btn-font-weight: #{$btn-font-weight};
     --#{$prefix}btn-line-height: #{$btn-line-height};
     --#{$prefix}btn-color: #{$btn-color};
+    --#{$prefix}btn-bg: transparent;
     --#{$prefix}btn-border-width: #{$btn-border-width};
     --#{$prefix}btn-border-color: transparent;
     --#{$prefix}btn-border-radius: #{$btn-border-radius};
@@ -123,14 +154,17 @@ $btn-variant-selectors: () !default;
     // --#{$prefix}btn-focus-box-shadow: 0 0 0 #{$btn-focus-width} rgba(var(--#{$prefix}btn-focus-shadow-rgb), .5);
     // scss-docs-end btn-css-vars
 
-    display: inline-block;
+    display: inline-flex;
+    gap: var(--#{$prefix}btn-gap, .25rem);
+    align-items: center;
+    justify-content: center;
+    min-height: var(--#{$prefix}btn-min-height);
     padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
     font-family: var(--#{$prefix}btn-font-family);
     @include font-size(var(--#{$prefix}btn-font-size));
     font-weight: var(--#{$prefix}btn-font-weight);
     line-height: var(--#{$prefix}btn-line-height);
     color: var(--#{$prefix}btn-color);
-    text-align: center;
     text-decoration: none;
     white-space: $btn-white-space;
     vertical-align: middle;
@@ -290,12 +324,24 @@ $btn-variant-selectors: () !default;
   // Button Sizes
   //
 
-  .btn-lg {
-    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+  // Generate button size classes from the $button-sizes map
+  // Skip "md" as it's the default size for .btn
+  @each $size, $properties in $button-sizes {
+    .btn-#{$size} {
+      --#{$prefix}btn-min-height: #{map.get($properties, "min-height")};
+      --#{$prefix}btn-padding-y: #{map.get($properties, "padding-y")};
+      --#{$prefix}btn-padding-x: #{map.get($properties, "padding-x")};
+      --#{$prefix}btn-font-size: #{map.get($properties, "font-size")};
+      --#{$prefix}btn-line-height: #{map.get($properties, "line-height")};
+      --#{$prefix}btn-border-radius: #{map.get($properties, "border-radius")};
+    }
   }
 
-  .btn-sm {
-    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+  .btn-icon {
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    padding: 0;
   }
 
   .btn-check {

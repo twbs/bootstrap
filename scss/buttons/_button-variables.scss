@@ -14,13 +14,25 @@ $btn-font-size:               $input-btn-font-size !default;
 $btn-line-height:             $input-btn-line-height !default;
 $btn-white-space:             null !default; // Set to `nowrap` to prevent text wrapping
 
+$btn-padding-y-xs:            .125rem !default;
+$btn-padding-x-xs:            .375rem !default;
+$btn-font-size-xs:            var(--#{$prefix}font-size-xs) !default;
+$btn-line-height-xs:          1.125rem !default;
+
 $btn-padding-y-sm:            $input-btn-padding-y-sm !default;
 $btn-padding-x-sm:            $input-btn-padding-x-sm !default;
-$btn-font-size-sm:            $input-btn-font-size-sm !default;
+$btn-font-size-sm:            var(--#{$prefix}font-size-sm) !default;
+$btn-line-height-sm:          1.125rem !default;
 
 $btn-padding-y-lg:            $input-btn-padding-y-lg !default;
 $btn-padding-x-lg:            $input-btn-padding-x-lg !default;
-$btn-font-size-lg:            $input-btn-font-size-lg !default;
+$btn-font-size-lg:            16px !default;
+$btn-line-height-lg:          1.25rem !default;
+
+$btn-padding-y-xl:            .75rem !default;
+$btn-padding-x-xl:            1.25rem !default;
+$btn-font-size-xl:            var(--#{$prefix}font-size-lg) !default;
+$btn-line-height-xl:          1.5rem !default;
 
 $btn-border-width:            $input-btn-border-width !default;
 
@@ -39,8 +51,10 @@ $btn-link-disabled-color:     var(--#{$prefix}gray-600) !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           var(--#{$prefix}border-radius) !default;
+$btn-border-radius-xs:        var(--#{$prefix}border-radius-sm) !default;
 $btn-border-radius-sm:        var(--#{$prefix}border-radius-sm) !default;
 $btn-border-radius-lg:        var(--#{$prefix}border-radius-lg) !default;
+$btn-border-radius-xl:        var(--#{$prefix}border-radius-lg) !default;
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 

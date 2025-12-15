@@ -5,6 +5,7 @@ toc: true
 ---
 
 import { getData } from '@libs/data'
+import ButtonPlayground from '@components/shortcodes/ButtonPlayground.astro'
 
 ## Base class
 
@@ -18,9 +19,15 @@ The `.btn` class is intended to be a starting point for your own custom button s
 When using `.btn` without a modifier, be sure to add some explicit `:focus-visible` styles.
 </Callout>
 
+## Playground
+
+Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control. Combined with our utilities, you have a very powerful set of defaults to choose from.
+
+<ButtonPlayground />
+
 ## Variants
 
-Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control.
+Compare all variants at once:
 
 <Example class="bd-example-buttons" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
 <button type="button" class="btn-outline theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
@@ -44,6 +51,10 @@ The gradient and shadow can be customized via CSS variables:
 | --- | --- |
 | `--bs-btn-gradient-start` | Top of gradient (default: `rgb(255 255 255 / 12.5%)`) |
 | `--bs-btn-gradient-end` | Bottom of gradient (default: `rgb(0 0 0 / 7.5%)`) |
+| `--bs-btn-border-mix-color` | Color to mix with the button background (default: `#000`) |
+| `--bs-btn-border-mix-amount` | Amount of color to mix with the button background (default: `10%`) |
+| `--bs-btn-border-hover-mix-amount` | Amount of color to mix with the button background on hover (default: `12.5%`) |
+| `--bs-btn-border-active-mix-amount` | Amount of color to mix with the button background on active (default: `20%`) |
 | `--bs-btn-shadow` | Resting state shadow |
 | `--bs-btn-active-shadow` | Pressed/active state shadow |
 </BsTable>
@@ -58,35 +69,28 @@ The `.btn` classes are designed to be used with the `<button>` element. However,
 
 When using button classes on `<a>` elements that are used to trigger in-page functionality (like collapsing content), rather than linking to new pages or sections within the current page, these links should be given a `role="button"` to appropriately convey their purpose to assistive technologies such as screen readers.
 
-<Example code={`<a class="btn btn-primary" href="#" role="button">Link</a>
-<button class="btn btn-primary" type="submit">Button</button>
-<input class="btn btn-primary" type="button" value="Input">
-<input class="btn btn-primary" type="submit" value="Submit">
-<input class="btn btn-primary" type="reset" value="Reset">`} />
-
-## Outline buttons
-
-In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the `.btn-outline-*` ones to remove all background images and colors on any button.
-
-<Example code={getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-outline-${themeColor.name}">${themeColor.title}</button>`)} />
-
-<Callout>
-Some of the button styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
-</Callout>
+<Example code={`<a class="btn-solid theme-primary" href="#" role="button">Link</a>
+<button class="btn-solid theme-primary" type="submit">Button</button>
+<input class="btn-solid theme-primary" type="button" value="Input">
+<input class="btn-solid theme-primary" type="submit" value="Submit">
+<input class="btn-solid theme-primary" type="reset" value="Reset">`} />
 
 ## Sizes
 
 Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
 
-<Example code={`<button type="button" class="btn btn-primary btn-lg">Large button</button>
-<button type="button" class="btn btn-secondary btn-lg">Large button</button>`} />
+<Example code={`<button type="button" class="btn-solid theme-primary btn-lg">Large button</button>
+<button type="button" class="btn-solid theme-secondary btn-lg">Large button</button>`} />
 
-<Example code={`<button type="button" class="btn btn-primary btn-sm">Small button</button>
-<button type="button" class="btn btn-secondary btn-sm">Small button</button>`} />
+<Example code={`<button type="button" class="btn-solid theme-primary btn-sm">Small button</button>
+<button type="button" class="btn-solid theme-secondary btn-sm">Small button</button>`} />
+
+<Example code={`<button type="button" class="btn-solid theme-primary btn-xs">Extra small button</button>
+<button type="button" class="btn-solid theme-secondary btn-xs">Extra small button</button>`} />
 
 You can even roll your own custom sizing with CSS variables:
 
-<Example code={`<button type="button" class="btn btn-primary"
+<Example code={`<button type="button" class="btn-solid theme-primary"
           style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
     Custom button
   </button>`} />
@@ -122,29 +126,29 @@ To cover cases where you have to keep the `href` attribute on a disabled link, t
 Create responsive stacks of full-width, “block buttons” like those in Bootstrap 4 with a mix of our display and gap utilities. By using utilities instead of button-specific classes, we have much greater control over spacing, alignment, and responsive behaviors.
 
 <Example code={`<div class="d-grid gap-2">
-    <button class="btn btn-primary" type="button">Button</button>
-    <button class="btn btn-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
 
 Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoint, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
 
 <Example code={`<div class="d-grid gap-2 d-md-block">
-    <button class="btn btn-primary" type="button">Button</button>
-    <button class="btn btn-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
 
 You can adjust the width of your block buttons with grid column width classes. For example, for a half-width “block button”, use `.col-6`. Center it horizontally with `.mx-auto`, too.
 
 <Example code={`<div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn btn-primary" type="button">Button</button>
-    <button class="btn btn-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
 
 Additional utilities can be used to adjust the alignment of buttons when horizontal. Here we’ve taken our previous responsive example and added some flex utilities and a margin utility on the button to right-align the buttons when they’re no longer stacked.
 
 <Example code={`<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button class="btn btn-primary me-md-2" type="button">Button</button>
-    <button class="btn btn-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary me-md-2" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
 
 ## Toggle buttons
@@ -235,9 +239,9 @@ Add `data-bs-toggle="button"` to toggle a button’s `active` state. If you’re
     <button type="button" class="btn" disabled data-bs-toggle="button">Disabled toggle button</button>
   </p>
   <p class="d-inline-flex gap-1">
-    <button type="button" class="btn btn-primary" data-bs-toggle="button">Toggle button</button>
-    <button type="button" class="btn btn-primary active" data-bs-toggle="button" aria-pressed="true">Active toggle button</button>
-    <button type="button" class="btn btn-primary" disabled data-bs-toggle="button">Disabled toggle button</button>
+    <button type="button" class="btn-solid theme-primary" data-bs-toggle="button">Toggle button</button>
+    <button type="button" class="btn-solid theme-primary active" data-bs-toggle="button" aria-pressed="true">Active toggle button</button>
+    <button type="button" class="btn-solid theme-primary" disabled data-bs-toggle="button">Disabled toggle button</button>
   </p>`} />
 
 <Example code={`<p class="d-inline-flex gap-1">
@@ -246,9 +250,9 @@ Add `data-bs-toggle="button"` to toggle a button’s `active` state. If you’re
     <a class="btn disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle link</a>
   </p>
   <p class="d-inline-flex gap-1">
-    <a href="#" class="btn btn-primary" role="button" data-bs-toggle="button">Toggle link</a>
-    <a href="#" class="btn btn-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle link</a>
-    <a class="btn btn-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle link</a>
+    <a href="#" class="btn-solid theme-primary" role="button" data-bs-toggle="button">Toggle link</a>
+    <a href="#" class="btn-solid theme-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle link</a>
+    <a class="btn-solid theme-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle link</a>
   </p>`} />
 
 ### Methods
