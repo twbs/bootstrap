@@ -2,6 +2,7 @@
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
+@use "sass:string";
 @use "../colors" as *;
 @use "../config" as *;
 @use "../theme" as *;
@@ -147,9 +148,16 @@ $button-variants: (
 // Base styles
 //
 
+// Generate a selector list from $button-variants map keys
+// Produces: .btn-solid, .btn-outline, .btn-subtle, .btn-text
+$btn-variant-selectors: () !default;
+@each $variant in map.keys($button-variants) {
+  $btn-variant-selectors: list.append($btn-variant-selectors, string.unquote(".btn-#{$variant}"), comma);
+}
+
 @layer components {
   .btn,
-  [class*="btn-"] {
+  #{$btn-variant-selectors} {
     // scss-docs-start btn-css-vars
     --#{$prefix}btn-padding-x: #{$btn-padding-x};
     --#{$prefix}btn-padding-y: #{$btn-padding-y};
