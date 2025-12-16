@@ -332,7 +332,8 @@ $btn-variant-selectors: () !default;
   // Generate button size classes from the $button-sizes map
   // Skip "md" as it's the default size for .btn
   @each $size, $properties in $button-sizes {
-    .btn-#{$size} {
+    .btn-#{$size},
+    .btn-group-#{$size} > [class*="btn-"] {
       --#{$prefix}btn-min-height: #{map.get($properties, "min-height")};
       --#{$prefix}btn-padding-y: #{map.get($properties, "padding-y")};
       --#{$prefix}btn-padding-x: #{map.get($properties, "padding-x")};
