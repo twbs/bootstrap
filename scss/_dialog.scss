@@ -1,5 +1,7 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
+@use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/transition" as *;
@@ -11,6 +13,9 @@
 // scss-docs-start dialog-css-vars
 $dialog-padding:                1rem !default;
 $dialog-width:                  500px !default;
+$dialog-width-sm:               280px !default;
+$dialog-width-lg:               800px !default;
+$dialog-width-xl:               1140px !default;
 $dialog-margin:                 1.75rem !default;
 $dialog-color:                  var(--#{$prefix}fg-body) !default;
 $dialog-bg:                     var(--#{$prefix}bg-body) !default;
@@ -145,6 +150,44 @@ $dialog-footer-gap:             .5rem !default;
 
       .dialog-body {
         overflow-y: auto;
+      }
+    }
+  }
+
+  // Dialog sizes
+  .dialog-sm { --#{$prefix}dialog-width: #{$dialog-width-sm}; }
+  .dialog-lg { --#{$prefix}dialog-width: #{$dialog-width-lg}; }
+  .dialog-xl { --#{$prefix}dialog-width: #{$dialog-width-xl}; }
+
+  // Fullscreen dialog
+  .dialog-fullscreen {
+    --#{$prefix}dialog-width: 100vw;
+    --#{$prefix}dialog-margin: 0;
+    --#{$prefix}dialog-border-radius: 0;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+  }
+
+  // Responsive fullscreen dialogs
+  @each $breakpoint in map.keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $postfix: if($infix != "", #{$infix}-down, "");
+
+    @if $postfix != "" {
+      @include media-breakpoint-down($breakpoint) {
+        .dialog-fullscreen#{$postfix} {
+          --#{$prefix}dialog-width: 100vw;
+          --#{$prefix}dialog-margin: 0;
+          --#{$prefix}dialog-border-radius: 0;
+
+          width: 100%;
+          max-width: none;
+          height: 100%;
+          max-height: none;
+        }
       }
     }
   }

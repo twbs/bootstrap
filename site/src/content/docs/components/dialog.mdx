@@ -299,6 +299,118 @@ const dialog = new bootstrap.Dialog('#myDialog', { modal: false })
 dialog.show()
 ```
 
+## Optional sizes
+
+Dialogs have three optional sizes, available via modifier classes to be placed on a `.dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+
+<BsTable>
+  | Size | Class | Dialog max-width |
+  | --- | --- | --- |
+  | Small | `.dialog-sm` | `300px` |
+  | Default | — | `500px` |
+  | Large | `.dialog-lg` | `800px` |
+  | Extra large | `.dialog-xl` | `1140px` |
+</BsTable>
+
+<dialog class="dialog dialog-xl" id="exampleDialogXl">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Extra large dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This is an extra large dialog using the <code>.dialog-xl</code> class.</p>
+  </div>
+</dialog>
+
+<dialog class="dialog dialog-lg" id="exampleDialogLg">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Large dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This is a large dialog using the <code>.dialog-lg</code> class.</p>
+  </div>
+</dialog>
+
+<dialog class="dialog dialog-sm" id="exampleDialogSm">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Small dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This is a small dialog using the <code>.dialog-sm</code> class.</p>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
+  Extra large dialog
+</button>
+<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogLg">
+  Large dialog
+</button>
+<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogSm">
+  Small dialog
+</button>`} />
+
+```html
+<dialog class="dialog dialog-xl">...</dialog>
+<dialog class="dialog dialog-lg">...</dialog>
+<dialog class="dialog dialog-sm">...</dialog>
+```
+
+## Fullscreen dialog
+
+Use `.dialog-fullscreen` to make the dialog cover the entire viewport.
+
+<dialog class="dialog dialog-fullscreen" id="exampleDialogFullscreen">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Fullscreen dialog</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This dialog covers the entire viewport.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreen">
+  Fullscreen dialog
+</button>`} />
+
+Responsive fullscreen variants are also available. These make the dialog fullscreen only below a specific breakpoint.
+
+| Class | Fullscreen below |
+| --- | --- |
+| `.dialog-fullscreen` | Always |
+| `.dialog-fullscreen-sm-down` | `576px` |
+| `.dialog-fullscreen-md-down` | `768px` |
+| `.dialog-fullscreen-lg-down` | `1024px` |
+| `.dialog-fullscreen-xl-down` | `1280px` |
+| `.dialog-fullscreen-2xl-down` | `1536px` |
+
+<dialog class="dialog dialog-fullscreen-lg-down" id="exampleDialogFullscreenLg">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Fullscreen below lg</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+  </div>
+  <div class="dialog-body">
+    <p>This dialog is fullscreen below the <code>lg</code> breakpoint.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreenLg">
+  Fullscreen below lg
+</button>`} />
+
+```html
+<dialog class="dialog dialog-fullscreen-lg-down">...</dialog>
+```
+
 ## JavaScript behavior
 
 ### Via data attributes
