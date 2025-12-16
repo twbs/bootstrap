@@ -24,7 +24,7 @@
     --bd-example-padding: 1.25rem;
     --bd-example-inner-radius: calc(var(--bs-border-radius) - 1px);
 
-    margin: 0 ($bd-gutter-x * -.5) 1rem;
+    margin: 0 ($bd-gutter-x * -.5);
     font-size: var(--#{$prefix}font-size-sm);
     background-color: var(--bd-pre-bg);
     border: solid var(--bs-border-color);
