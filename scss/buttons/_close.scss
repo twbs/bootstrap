@@ -36,8 +36,8 @@ $btn-close-disabled-opacity: .25 !default;
     padding: 0;
     color: var(--#{$prefix}btn-close-color);
     background: transparent;
-    border-radius: var(--#{$prefix}border-radius-sm);
     border: 0; // for button elements
+    @include border-radius(var(--#{$prefix}border-radius-sm));
     opacity: var(--#{$prefix}btn-close-opacity);
 
     > svg {
