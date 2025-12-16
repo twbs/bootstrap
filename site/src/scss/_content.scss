@@ -15,30 +15,6 @@
       font-size: var(--#{$prefix}font-size-md);
     }
 
-    > p {
-      margin-bottom: 1.25rem;
-    }
-
-    > h2,
-    > h3,
-    > h4 {
-      --bs-heading-color: var(--bs-fg);
-    }
-
-    // Offset content from fixed navbar when jumping to headings
-    > h2:not(:first-child) {
-      margin-top: 3rem;
-    }
-
-    > h3 {
-      margin-top: 2rem;
-
-      code {
-        font-weight: 600;
-        color: inherit;
-      }
-    }
-
     > ul li,
     > ol li {
       margin-bottom: .25rem;
