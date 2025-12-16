@@ -47,25 +47,33 @@ These classes can also be added to groups of links, as an alternative to the [`.
 Combine button-like checkbox and radio toggle buttons into a seamless looking button group.
 
 <Example code={`<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
-
-    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
-
-    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+    <label class="btn-check btn-outline theme-primary">
+      <input type="checkbox" autocomplete="off">
+      Checkbox 1
+    </label>
+    <label class="btn-check btn-outline theme-primary">
+      <input type="checkbox" autocomplete="off">
+      Checkbox 2
+    </label>
+    <label class="btn-check btn-outline theme-primary">
+      <input type="checkbox" autocomplete="off">
+      Checkbox 3
+    </label>
   </div>`} />
 
 <Example code={`<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-    <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
-
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
-
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+    <label class="btn-check btn-outline theme-primary">
+      <input type="radio" name="btnradio" autocomplete="off" checked>
+      Radio 1
+    </label>
+    <label class="btn-check btn-outline theme-primary">
+      <input type="radio" name="btnradio" autocomplete="off">
+      Radio 2
+    </label>
+    <label class="btn-check btn-outline theme-primary">
+      <input type="radio" name="btnradio" autocomplete="off">
+      Radio 3
+    </label>
   </div>`} />
 
 ## Button toolbar
@@ -211,10 +219,16 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
   </div>`} />
 
 <Example code={`<div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
-    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked>
-    <label class="btn btn-outline-danger" for="vbtn-radio1">Radio 1</label>
-    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off">
-    <label class="btn btn-outline-danger" for="vbtn-radio2">Radio 2</label>
-    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
-    <label class="btn btn-outline-danger" for="vbtn-radio3">Radio 3</label>
+    <label class="btn-check btn-outline theme-danger">
+      <input type="radio" name="vbtn-radio" autocomplete="off" checked>
+      Radio 1
+    </label>
+    <label class="btn-check btn-outline theme-danger">
+      <input type="radio" name="vbtn-radio" autocomplete="off">
+      Radio 2
+    </label>
+    <label class="btn-check btn-outline theme-danger">
+      <input type="radio" name="vbtn-radio" autocomplete="off">
+      Radio 3
+    </label>
   </div>`} />

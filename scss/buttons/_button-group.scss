@@ -12,15 +12,16 @@
     display: inline-flex;
     vertical-align: middle; // match .btn alignment given font-size hack above
 
-    > .btn {
+    > .btn,
+    > .btn-check {
       position: relative;
       flex: 1 1 auto;
     }
 
     // Bring the hover, focused, and "active" buttons to the front to overlay
     // the borders properly
-    > .btn-check:checked + .btn,
-    > .btn-check:focus + .btn,
+    > .btn-check:has(input:checked),
+    > .btn-check:has(input:focus),
     > .btn:hover,
     > .btn:focus,
     > .btn:active,
@@ -44,24 +45,23 @@
     @include border-radius($btn-border-radius);
 
     // Prevent double borders when buttons are next to each other
-    > :not(.btn-check:first-child) + .btn,
+    > .btn:not(:first-child),
+    > .btn-check:not(:first-child),
     > .btn-group:not(:first-child) {
       margin-inline-start: calc(-1 * #{$btn-border-width});
     }
 
     // Reset rounded corners
     > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-check:not(:last-child),
     > .btn.dropdown-toggle-split:first-child,
     > .btn-group:not(:last-child) > .btn {
       @include border-end-radius(0);
     }
 
-    // The left radius should be 0 if the button is:
-    // - the "third or more" child
-    // - the second child and the previous element isn't `.btn-check` (making it the first child visually)
-    // - part of a btn-group which isn't the first child
-    > .btn:nth-child(n + 3),
-    > :not(.btn-check) + .btn,
+    // The left radius should be 0 if the button is not the first child
+    > .btn:not(:first-child),
+    > .btn-check:not(:first-child),
     > .btn-group:not(:first-child) > .btn {
       @include border-start-radius(0);
     }
@@ -124,27 +124,27 @@
     justify-content: center;
 
     > .btn,
+    > .btn-check,
     > .btn-group {
       width: 100%;
     }
 
     > .btn:not(:first-child),
+    > .btn-check:not(:first-child),
     > .btn-group:not(:first-child) {
       margin-top: calc(-1 * #{$btn-border-width});
     }
 
     // Reset rounded corners
     > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-check:not(:last-child),
     > .btn-group:not(:last-child) > .btn {
       @include border-bottom-radius(0);
     }
 
-    // The top radius should be 0 if the button is:
-    // - the "third or more" child
-    // - the second child and the previous element isn't `.btn-check` (making it the first child visually)
-    // - part of a btn-group which isn't the first child
-    > .btn:nth-child(n + 3),
-    > :not(.btn-check) + .btn,
+    // The top radius should be 0 if the button is not the first child
+    > .btn:not(:first-child),
+    > .btn-check:not(:first-child),
     > .btn-group:not(:first-child) > .btn {
       @include border-top-radius(0);
     }

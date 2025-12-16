@@ -7,6 +7,7 @@
  */
 export declare global {
   export const BsTable: typeof import('@shortcodes/BsTable.astro').default
+  export const ButtonPlayground: typeof import('@shortcodes/ButtonPlayground.astro').default
   export const CSSVariables: typeof import('@shortcodes/CSSVariables.astro').default
   export const Callout: typeof import('@shortcodes/Callout.astro').default
   export const CalloutDeprecatedDarkVariants: typeof import('@shortcodes/CalloutDeprecatedDarkVariants.astro').default
