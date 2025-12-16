@@ -29,7 +29,7 @@ Toggle a dialog by clicking the button below. The dialog uses the native `showMo
 <dialog class="dialog" id="exampleDialog">
   <div class="dialog-header">
     <h1 class="dialog-title">Dialog title</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This is a native dialog element. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
@@ -50,7 +50,11 @@ The markup for a dialog is straightforward:
 <dialog class="dialog" id="exampleDialog">
   <div class="dialog-header">
     <h1 class="dialog-title">Dialog title</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </button>
   </div>
   <div class="dialog-body">
     <p>Dialog body content goes here.</p>
@@ -73,7 +77,7 @@ When `backdrop` is set to `static`, the dialog will not close when clicking outs
 <dialog class="dialog" id="staticBackdropDialog">
   <div class="dialog-header">
     <h1 class="dialog-title">Static backdrop</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>I will not close if you click outside of me. Use the close button or press Escape.</p>
@@ -94,7 +98,7 @@ When dialogs have content that exceeds the viewport height, the entire dialog sc
 <dialog class="dialog" id="scrollingLongDialog">
   <div class="dialog-header">
     <h1 class="dialog-title">Scrolling dialog</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This is some placeholder content to show the scrolling behavior for dialogs. When the content exceeds the viewport height, you can scroll the entire dialog within the window—the header, body, and footer all move together.</p>
@@ -122,7 +126,7 @@ You can also create a scrollable dialog that scrolls the dialog body while keepi
 <dialog class="dialog dialog-scrollable" id="scrollableBodyDialog">
   <div class="dialog-header">
     <h1 class="dialog-title">Scrollable body</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This is some placeholder content to show the scrolling behavior for dialogs. We use repeated line breaks to demonstrate how content can exceed the dialog's inner height, showing scrolling within the body while the header and footer remain fixed.</p>
@@ -149,7 +153,11 @@ You can also create a scrollable dialog that scrolls the dialog body while keepi
 <dialog class="dialog dialog-scrollable" id="scrollableBodyDialog">
   <div class="dialog-header">
     <h1 class="dialog-title">Scrollable body</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </button>
   </div>
   <div class="dialog-body">
     <!-- Long content here -->
@@ -166,7 +174,7 @@ For a dialog that extends beyond the viewport and scrolls as a whole, add `.dial
   <div class="dialog-box">
     <div class="dialog-header">
       <h1 class="dialog-title">Overflow dialog</h1>
-      <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+      <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
       <p>This dialog extends beyond the viewport height. Scroll to see more content. Notice how the entire dialog—including header and footer—shifts up and down as you scroll.</p>
@@ -209,7 +217,7 @@ When a toggle trigger is inside an open dialog, clicking it will **swap** dialog
 <dialog class="dialog" id="swapDialog1">
   <div class="dialog-header">
     <h1 class="dialog-title">First dialog</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>Click below to swap to a second dialog. Notice the backdrop stays visible—no flash!</p>
@@ -223,7 +231,7 @@ When a toggle trigger is inside an open dialog, clicking it will **swap** dialog
 <dialog class="dialog" id="swapDialog2">
   <div class="dialog-header">
     <h1 class="dialog-title">Second dialog</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This is the second dialog. You can swap back to the first, or close this one entirely.</p>
@@ -280,7 +288,7 @@ By default, dialogs open as modals using the native `showModal()` method. You ca
 <dialog class="dialog" id="nonModalDialog">
   <div class="dialog-header">
     <h1 class="dialog-title">Non-modal dialog</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This dialog doesn't block the page. You can still interact with content behind it.</p>
@@ -315,7 +323,7 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
 <dialog class="dialog dialog-xl" id="exampleDialogXl">
   <div class="dialog-header">
     <h1 class="dialog-title">Extra large dialog</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This is an extra large dialog using the <code>.dialog-xl</code> class.</p>
@@ -325,7 +333,7 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
 <dialog class="dialog dialog-lg" id="exampleDialogLg">
   <div class="dialog-header">
     <h1 class="dialog-title">Large dialog</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This is a large dialog using the <code>.dialog-lg</code> class.</p>
@@ -335,7 +343,7 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
 <dialog class="dialog dialog-sm" id="exampleDialogSm">
   <div class="dialog-header">
     <h1 class="dialog-title">Small dialog</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This is a small dialog using the <code>.dialog-sm</code> class.</p>
@@ -365,7 +373,7 @@ Use `.dialog-fullscreen` to make the dialog cover the entire viewport.
 <dialog class="dialog dialog-fullscreen" id="exampleDialogFullscreen">
   <div class="dialog-header">
     <h1 class="dialog-title">Fullscreen dialog</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This dialog covers the entire viewport.</p>
@@ -393,7 +401,7 @@ Responsive fullscreen variants are also available. These make the dialog fullscr
 <dialog class="dialog dialog-fullscreen-lg-down" id="exampleDialogFullscreenLg">
   <div class="dialog-header">
     <h1 class="dialog-title">Fullscreen below lg</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+    <CloseButton dismiss="dialog" />
   </div>
   <div class="dialog-body">
     <p>This dialog is fullscreen below the <code>lg</code> breakpoint.</p>
