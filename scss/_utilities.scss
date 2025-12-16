@@ -41,8 +41,8 @@ $utilities: map.merge(
       property: float,
       responsive: true,
       values: (
-        start: left,
-        end: right,
+        start: inline-start,
+        end: inline-end,
         none: none,
       )
     ),
@@ -675,8 +675,8 @@ $utilities: map.merge(
       property: text-align,
       class: text,
       values: (
-        start: left,
-        end: right,
+        start: start,
+        end: end,
         center: center,
       )
     ),
@@ -709,7 +709,6 @@ $utilities: map.merge(
       property: word-wrap word-break,
       class: text,
       values: (break: break-word),
-      rtl: false
     ),
     // scss-docs-end utils-text-break
     // scss-docs-end utils-text
