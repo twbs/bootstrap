@@ -6,23 +6,39 @@ toc: true
 
 ## Example
 
-Provide an option to dismiss or close a component with `.btn-close`. Default styling is limited, but highly customizable. Modify the Sass variables to replace the default `background-image`. **Be sure to include text for screen readers**, as we’ve done with `aria-label`.
+Provide an option to dismiss or close a component with `.btn-close`. Requires the use of an SVG icon within, which inherits the `color` from the `.btn-close` class. **Be sure to include text for screen readers**, as we’ve done with `aria-label`.
 
-<Example code={`<button type="button" class="btn-close" aria-label="Close"></button>`} />
+<Example code={`<button type="button" class="btn-close" aria-label="Close">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+      <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+    </svg>
+  </button>`} />
 
 ## Disabled state
 
 Disabled close buttons change their `opacity`. We’ve also applied `pointer-events: none` and `user-select: none` to preventing hover and active states from triggering.
 
-<Example code={`<button type="button" class="btn-close" disabled aria-label="Close"></button>`} />
+<Example code={`<button type="button" class="btn-close" disabled aria-label="Close">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+      <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+    </svg>
+  </button>`} />
 
 ## Dark variant
 
-Add `data-bs-theme="dark"` to the `.btn-close`, or to its parent element, to invert the close button. This uses the `filter` property to invert the `background-image` without overriding its value.
+Add `data-bs-theme="dark"` to the `.btn-close`, or to its parent element, to invert the close button. This happens automatically when in dark mode.
 
-<Example class="bg-dark" code={`<div data-bs-theme="dark">
-    <button type="button" class="btn-close" aria-label="Close"></button>
-    <button type="button" class="btn-close" disabled aria-label="Close"></button>
+<Example class="bg-inverse" code={`<div data-bs-theme="dark">
+    <button type="button" class="btn-close" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </button>
+    <button type="button" class="btn-close" disabled aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </button>
   </div>`} />
 
 ## CSS
