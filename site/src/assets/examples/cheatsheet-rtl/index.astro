@@ -57,7 +57,6 @@ import Placeholder from "@shortcodes/Placeholder.astro"
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#carousel">شرائح العرض</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#dropdowns">القوائم المنسدلة</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#list-group">مجموعة العناصر</a></li>
-          <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#modal">الصندوق العائم</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navs">التنقل</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navbar">شريط التنقل</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#pagination">ترقيم الصفحات</a></li>
@@ -1118,31 +1117,6 @@ import Placeholder from "@shortcodes/Placeholder.astro"
         `]} />
       </div>
     </article>
-    <article class="my-3" id="modal">
-      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-        <h3>الصندوق العائم</h3>
-        <a class="d-flex align-items-center" hreflang="en" href={getVersionedDocsPath('components/modal')}>دليل الإستخدام</a>
-      </div>
-
-      <div>
-        <Example showMarkup={false} code={`
-        <div class="d-flex justify-content-between flex-wrap">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalDefault">
-            إطلاق صندوق عائم تجريبي
-          </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
-            إطلاق صندوق عائم عالق
-          </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
-            صندوق عائم متنصف عاموديًا وقابل للتمرير
-          </button>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalFullscreen">
-            صندوق عائم يملأ الشاشة
-          </button>
-        </div>
-        `} />
-      </div>
-    </article>
     <article class="my-3" id="navs">
       <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
         <h3>التنقل</h3>
@@ -1514,85 +1488,3 @@ import Placeholder from "@shortcodes/Placeholder.astro"
     </article>
   </section>
 </main>
-
-<div class="modal fade" id="exampleModalDefault" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">عنوان الصندوق العائم</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
-        <button type="button" class="btn btn-primary">حفظ التغيرات</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="staticBackdropLive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLiveLabel">عنوان الصندوق العائم</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
-      </div>
-      <div class="modal-body">
-        <p>لن أغلق إذا نقرت خارجي. لا تحاول حتى الضغط على مفتاح الهروب.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
-        <button type="button" class="btn btn-primary">حسنًا</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalCenteredScrollableTitle">عنوان الصندوق العائم</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
-      </div>
-      <div class="modal-body">
-        <p>نص لتوضيح عمل الصندوق العائم المتنصّف عاموديًا القابل للتمرير</p>
-        <p>في هذه الحالة، هذا الصندوق يحتوي على محتوى أكثر قليلًا، ولذلك لتوضيح كيف  يمكن إضافة خاصية الإنتصاف العامودي لصندوق عائم قابل للتمرير.</p>
-        <p>يعتبر كوب أو فنجان القهوة عادة يومية عند غالبية سكان الكرة الأرضية في الصباح والمساء، وفي حين تكثر الدراسات حول إيجابياتها هناك أيضا سلبيات كثيرة للمشروب المفضل للكثيرين.</p>
-        <p>وفي هذا الشأن، أظهرت دراسة جديدة أن تناول الكافيين بانتظام يقلل من حجم المادة الرمادية في الدماغ، مما يشير إلى أن تناول القهوة يمكن أن يضعف القدرة على معالجة المعلومات، وفقاً لما نشرته "ديلي ميل" البريطانية.</p>
-        <p>وأعطى باحثون سويسريون متطوعين ثلاث حصص من الكافيين 150 ملغم يوميًا لمدة 10 أيام - وهو مقدار كافيين يعادل حوالي أربعة أو خمسة أكواب صغيرة من القهوة المخمرة يوميًا، أو سبعة إسبريسو فردي.</p>
-        <p>وتبين حدوث انخفاض في المادة الرمادية، والتي توجد غالبًا في الطبقة الخارجية للدماغ، أو القشرة، وتعمل على معالجة المعلومات.</p>
-        <p>كما كان الانخفاض مذهلاً بشكل خاص في الفص الصدغي الإنسي الأيمن، بما في ذلك الحُصين، وهي منطقة من الدماغ ضرورية لتقوية الذاكرة.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
-        <button type="button" class="btn btn-primary">حفظ التغيرات</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="exampleModalFullscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">صندوق عائم يملأ الشاشة</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
-      </div>
-      <div class="modal-body">
-        <p>في ما يلي، نص طويل لتعبئة كامل الشاشة. قد يبدو أنني أثرثر كثيرًا، لذا سأقوم بنسخ مقالة من إحدى الصحف العربية.</p>
-        <p>تكييف الهواء هو من التكنولوجيا التي ما إن نمتلكها حتى نصبح عاجزين عن تخيّل العيش من دونها. وتكييف الهواء في مناطق عديدة من العالم ليس ترفاً يمكن الاستغناء عنه. ولكن هذه الحاجة الحيوية تثير تحديات كبيرة على مستوى استهلاك الطاقة في معظم بلدان العالم. ويُتوقع أن تتفاقم هذه التحديات خلال العقود الثلاثة المقبلة، مع توقُّع ارتفاع عدد المكيفات في العالم نحو ثلاثة أضعاف. وفي حين أن الابتكارات التكنولوجية تحقِّق كل يوم إنجازاً جديداً، وعلى الرغم من بعض التحسينات والتدابير المحدودة التي طرأت على صناعة المكيفات، “فإن تكنولوجيتها الأساسية لا تزال تعمل كما كانت، منذ اعتمادها قبل نحو قرن من السنين"، حسبما جاء في تقرير لمعهد ماساشوستس للتكنولوجيا (MIT)، في الأول من سبتمبر 2020م. ولمعالجة هذه المشكلات الخطيرة، لا مفر من إعادة التفكير بجد.</p>
-        <p>التكييف حاجة حيويّة. فالتعرّض للحرارة لمدة طويلة ضارٌ بالصحة. ووفقاً لمنظمة الصحة العالميّة يمكن للتعرُّض الطويل للحرارة أيضاً أن يؤدي إلى "إعياء حراري، وضربة شمس، وتورّم في الرجلين، وطفح جلدي على العنق، وتشنج، وصداع، وحساسيّة، والخمول والوهَن. ويمكن للحرارة أن تسبِّب جفافاً خطراً، وأعراضاً حادة في أوعية الدماغ الدمويّة، وتسهم في تكوّن الجلطات".</p>
-        <p>وموجات الحر أيضاً من أشد المخاطر الطبيعيّة المميتة. إذ يقدَّر أن بين عامي 1998 و2017م، توفي نحو 166 ألف شخص من موجات الحر. ومات 70 ألفاً من هؤلاء في أوروبا سنة 2003م وحدها. ومن دون أن يصل الخطر إلى الموت، تتسبَّب الحرارة العالية بانخفاض الأداء المعرفي لدى الشبان البالغين في المباني غير المكيّفة. فقد بيّنت دراسة أجرتها "كليّة ت. هـ. تشان" للصحة العامة في جامعة هارفرد، نشرتها "بلوس ميديسين" في 10 يوليو 2018م، أن التلاميذ الذين ينامون في مهاجع غير مكيّفة، يقل أداؤهم عن أولئك الذين ينامون في مهاجع مكيّفة. ولتجنّب مخاطر التعرّض للحرارة، يلتفت الناس إلى استخدام التكييف.</p>
-        <p>يتطلّب التكييف كثيراً من الطاقة. فنحو %10 من استهلاك الكهرباء في العالم يُنفَق في تشغيل المكيّفات. وتصل هذه النسبة إلى %50 في المملكة حسب "المركز السعودي لكفاءة الطاقة". أضف إلى ذلك أن معظم البشر في بلدان العالم النامي، لم يقتنوا بعد مكيّفهم الأول، والمشكلة إلى ازدياد. فمعظم البلدان النامية هي من البلدان الأشد حرارة والأكثر اكتظاظاً بالسكان في العالم. وجاء في تقرير لوكالة الطاقة الدوليّة بعنوان "مستقبل التبريد"، ونُشر في مايو 2018م، أن في أجزاء من أمريكا الجنوبيّة وإفريقيا وآسيا والشرق الأوسط، يعيش 2.8 مليار نسمة، ولا يملك وحدات تكييف سوى %8 من المنازل. في حين الدول المتقدِّمة مثل كوريا الجنوبيّة، واليابان، والولايات المتحدة، فإن %89 من المنازل تملك مكيفات، وفي الصين %60 من البيوت تملكها أيضاً.</p>
-        <p>ولكن مع تنامي الدخل في بلدان الاقتصاد الصاعد، يتوقّع أن تزداد المنازل التي تقتني مكيّفاً. وبحسب مقالة نُشرت في صحيفة "نيويورك تايمز"، في 15 مايو 2018م، سيرتفع عدد المكيّفات في العالم من نحو 1.6 مليار حالياً، إلى 5.6 مليارات عام 2050م، طبقاً لمعدَّلات النمو الاقتصادي.</p>
-        <p>ومع الافتقار إلى الابتكار وتطوير النظم لفرض معايير الجدوى الأعلى، فسيتضاعف استهلاك الطاقة لتشغيل المكيّفات ثلاثة أضعاف. وسينتج من ذلك طلب إضافي للطاقة يساوي مجموع إنتاج الطاقة في الصين حالياً. فمبيعات المكيّفات ترتفع اليوم في البلدان النامية، لكن فعاليّة هذه الوحدات مشكوك فيها. فمثلاً، أوسع وحدات التكييف انتشاراً في بعض الأسواق الآسيوية تتطلّب ضعفي ما تتطلّبه وحدات تكييف أجدى. والمكيّفات التي تباع في اليابان والاتحاد الأوروبي أجدى بنسبة %25 عادة، من تلك التي تباع في الصين والولايات المتحدة.</p>
-        <p>وبصرف النظر عن كثير من الطاقة التي يحتاج إليها المكيّف، فإنه يبث مقادير وفيرة من غازات الدفيئة نفسها. وطبقاً لموقع تكييف الهواء (airconditioning.com)، فإن المبرِّدات في معظم المكيّفات مثل مواد مركبات الكربون الكلورية فلورية أو مواد هيدروفلوروولفينات، ومركبات ثاني أكسيد الكربون الهيدروكلورية فلورية، أسوأ بكثير للبيئة من ثاني أكسيد الكربون، لأنها تحتبس من الحرارة مقادير أكبر حين تتسرّب إلى الجو.</p>
-        <p>وبالإضافة إلى ظاهرة الدفيئة، فهذه الغازات تسهم أيضاً بالإضرار بطبقة الأوزون. ويمكن لهذه المواد الكيميائية أن تتسرّب خلال عملية التصنيع أو التصليح. ويعرف كل من يملك في منزله مكيّفاً كم تتكرر أعطال هذه الأجهزة. ثم إن المكيف يُرمَى حين يتعطّل نهائياً ولا يعود قابلاً للإصلاح، والمواد المبرِّدة فيه ستتسرّب على الأرجح لتلوث الهواء.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
-      </div>
-    </div>
-  </div>
-</div>
