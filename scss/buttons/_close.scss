@@ -5,19 +5,17 @@
 @use "../mixins/color-mode" as *;
 
 // scss-docs-start close-variables
-$btn-close-width:            1em !default;
-$btn-close-height:           $btn-close-width !default;
-$btn-close-padding-x:        .25em !default;
-$btn-close-padding-y:        $btn-close-padding-x !default;
-$btn-close-color:            $black !default;
-$btn-close-bg:               url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$btn-close-color}'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/></svg>") !default;
+$btn-close-size:             1.25rem !default;
+// $btn-close-width:            1em !default;
+// $btn-close-height:           $btn-close-width !default;
+// $btn-close-padding-x:        .25em !default;
+// $btn-close-padding-y:        $btn-close-padding-x !default;
+$btn-close-color:            var(--#{$prefix}fg-body) !default;
 $btn-close-focus-shadow:     $focus-ring-box-shadow !default;
 $btn-close-opacity:          .5 !default;
 $btn-close-hover-opacity:    .75 !default;
-$btn-close-focus-opacity:    1 !default;
+$btn-close-focus-opacity:    .85 !default;
 $btn-close-disabled-opacity: .25 !default;
-$btn-close-filter:           null !default;
-$btn-close-filter-dark: invert(1) grayscale(100%) brightness(200%) !default;
 // scss-docs-end close-variables
 
 // Transparent background and border properties included for button version.
@@ -28,8 +26,8 @@ $btn-close-filter-dark: invert(1) grayscale(100%) brightness(200%) !default;
 @layer components {
   .btn-close {
     // scss-docs-start close-css-vars
+    --#{$prefix}btn-close-size: #{$btn-close-size};
     --#{$prefix}btn-close-color: #{$btn-close-color};
-    --#{$prefix}btn-close-bg: #{ escape-svg($btn-close-bg) };
     --#{$prefix}btn-close-opacity: #{$btn-close-opacity};
     --#{$prefix}btn-close-hover-opacity: #{$btn-close-hover-opacity};
     --#{$prefix}btn-close-focus-shadow: #{$btn-close-focus-shadow};
@@ -38,15 +36,21 @@ $btn-close-filter-dark: invert(1) grayscale(100%) brightness(200%) !default;
     // scss-docs-end close-css-vars
 
     box-sizing: content-box;
-    width: $btn-close-width;
-    height: $btn-close-height;
-    padding: $btn-close-padding-y $btn-close-padding-x;
+    width: var(--#{$prefix}btn-close-size);
+    height: var(--#{$prefix}btn-close-size);
+    padding: 0;
     color: var(--#{$prefix}btn-close-color);
-    background: transparent var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat; // include transparent for button elements
-    filter: var(--#{$prefix}btn-close-filter);
+    background: transparent;
+    // background: transparent var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat; // include transparent for button elements
+    // filter: var(--#{$prefix}btn-close-filter);
     border: 0; // for button elements
-    @include border-radius();
     opacity: var(--#{$prefix}btn-close-opacity);
+
+    > svg {
+      // width: 100%;
+      // height: 100%
+      fill: currentcolor;
+    }
 
     // Override <a>'s hover style
     &:hover {
@@ -69,22 +73,22 @@ $btn-close-filter-dark: invert(1) grayscale(100%) brightness(200%) !default;
     }
   }
 
-  @mixin btn-close-white() {
-    --#{$prefix}btn-close-filter: #{$btn-close-filter-dark};
-  }
+  // @mixin btn-close-white() {
+  //   // --#{$prefix}btn-close-filter: #{$btn-close-filter-dark};
+  // }
 
-  .btn-close-white {
-    @include btn-close-white();
-  }
+  // .btn-close-white {
+  //   @include btn-close-white();
+  // }
 
-  :root,
-  [data-bs-theme="light"] {
-    --#{$prefix}btn-close-filter: #{$btn-close-filter};
-  }
+  // :root,
+  // [data-bs-theme="light"] {
+  //   // --#{$prefix}btn-close-filter: #{$btn-close-filter};
+  // }
 
-  @if $enable-dark-mode {
-    @include color-mode(dark, true) {
-      @include btn-close-white();
-    }
-  }
+  // @if $enable-dark-mode {
+  //   @include color-mode(dark, true) {
+  //     @include btn-close-white();
+  //   }
+  // }
 }
