@@ -60,8 +60,8 @@ $alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers widt
     // Adjust close link position
     .btn-close {
       position: absolute;
-      top: 0;
-      right: 0;
+      inset-block-start: 0;
+      inset-inline-end: 0;
       z-index: $stretched-link-z-index + 1;
       padding: $alert-padding-y * 1.25 $alert-padding-x;
     }

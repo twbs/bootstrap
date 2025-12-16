@@ -33,8 +33,8 @@ $form-floating-transition:              opacity .1s ease-in-out, transform .1s e
 
     > label {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset-block-start: 0;
+      inset-inline-start: 0;
       z-index: 2;
       max-width: 100%;
       height: 100%; // allow textareas

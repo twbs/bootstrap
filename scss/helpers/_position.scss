@@ -6,17 +6,13 @@
 @layer helpers {
   .fixed-top {
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    inset: 0 0 auto;
     z-index: $zindex-fixed;
   }
 
   .fixed-bottom {
     position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: auto 0 0;
     z-index: $zindex-fixed;
   }
 

@@ -54,25 +54,31 @@
         @include transition(var(--#{$prefix}offcanvas-transition));
 
         &.offcanvas-start {
-          top: 0;
-          left: 0;
+          inset-block: 0;
+          inset-inline-start: 0;
           width: var(--#{$prefix}offcanvas-width);
           border-inline-end: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
           transform: translateX(-100%);
+
+          :root:dir(rtl) & {
+            transform: translateX(100%);
+          }
         }
 
         &.offcanvas-end {
-          top: 0;
-          right: 0;
+          inset-block: 0;
+          inset-inline-end: 0;
           width: var(--#{$prefix}offcanvas-width);
           border-inline-start: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
           transform: translateX(100%);
+
+          :root:dir(rtl) & {
+            transform: translateX(-100%);
+          }
         }
 
         &.offcanvas-top {
-          top: 0;
-          right: 0;
-          left: 0;
+          inset: 0 0 auto;
           height: var(--#{$prefix}offcanvas-height);
           max-height: 100%;
           border-block-end: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
@@ -80,8 +86,7 @@
         }
 
         &.offcanvas-bottom {
-          right: 0;
-          left: 0;
+          inset: auto 0 0;
           height: var(--#{$prefix}offcanvas-height);
           max-height: 100%;
           border-block-start: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);

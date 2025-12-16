@@ -26,9 +26,7 @@ const docsDir = `${rootDocsDir}/docs/${versionShort}/`
 // these are the files we need in the examples
 const cssFiles = [
   'bootstrap.min.css',
-  'bootstrap.min.css.map',
-  'bootstrap.rtl.min.css',
-  'bootstrap.rtl.min.css.map'
+  'bootstrap.min.css.map'
 ]
 const jsFiles = [
   'bootstrap.bundle.min.js',
