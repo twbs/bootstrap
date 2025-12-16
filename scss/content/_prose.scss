@@ -14,7 +14,7 @@
     max-width: 1000px;
     margin-inline: auto;
     font-size: var(--#{$prefix}content-font-size);
-    line-height: var(--#{$prefix}content-gap);
+    line-height: 1.5;
 
     @media (width >= 1024px) {
       --#{$prefix}content-font-size: var(--#{$prefix}font-size-md);
