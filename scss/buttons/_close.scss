@@ -3,15 +3,11 @@
 @use "../variables" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/color-mode" as *;
+@use "../mixins/focus-ring" as *;
 
 // scss-docs-start close-variables
 $btn-close-size:             1.25rem !default;
-// $btn-close-width:            1em !default;
-// $btn-close-height:           $btn-close-width !default;
-// $btn-close-padding-x:        .25em !default;
-// $btn-close-padding-y:        $btn-close-padding-x !default;
 $btn-close-color:            var(--#{$prefix}fg-body) !default;
-$btn-close-focus-shadow:     $focus-ring-box-shadow !default;
 $btn-close-opacity:          .5 !default;
 $btn-close-hover-opacity:    .75 !default;
 $btn-close-focus-opacity:    .85 !default;
@@ -30,7 +26,6 @@ $btn-close-disabled-opacity: .25 !default;
     --#{$prefix}btn-close-color: #{$btn-close-color};
     --#{$prefix}btn-close-opacity: #{$btn-close-opacity};
     --#{$prefix}btn-close-hover-opacity: #{$btn-close-hover-opacity};
-    --#{$prefix}btn-close-focus-shadow: #{$btn-close-focus-shadow};
     --#{$prefix}btn-close-focus-opacity: #{$btn-close-focus-opacity};
     --#{$prefix}btn-close-disabled-opacity: #{$btn-close-disabled-opacity};
     // scss-docs-end close-css-vars
@@ -41,14 +36,14 @@ $btn-close-disabled-opacity: .25 !default;
     padding: 0;
     color: var(--#{$prefix}btn-close-color);
     background: transparent;
-    // background: transparent var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat; // include transparent for button elements
-    // filter: var(--#{$prefix}btn-close-filter);
     border: 0; // for button elements
+    @include border-radius(var(--#{$prefix}border-radius-sm));
     opacity: var(--#{$prefix}btn-close-opacity);
 
     > svg {
-      // width: 100%;
-      // height: 100%
+      display: block;
+      width: 100%;
+      height: 100%;
       fill: currentcolor;
     }
 
@@ -60,8 +55,7 @@ $btn-close-disabled-opacity: .25 !default;
     }
 
     &:focus {
-      outline: 0;
-      box-shadow: var(--#{$prefix}btn-close-focus-shadow);
+      @include focus-ring();
       opacity: var(--#{$prefix}btn-close-focus-opacity);
     }
 
@@ -72,23 +66,4 @@ $btn-close-disabled-opacity: .25 !default;
       opacity: var(--#{$prefix}btn-close-disabled-opacity);
     }
   }
-
-  // @mixin btn-close-white() {
-  //   // --#{$prefix}btn-close-filter: #{$btn-close-filter-dark};
-  // }
-
-  // .btn-close-white {
-  //   @include btn-close-white();
-  // }
-
-  // :root,
-  // [data-bs-theme="light"] {
-  //   // --#{$prefix}btn-close-filter: #{$btn-close-filter};
-  // }
-
-  // @if $enable-dark-mode {
-  //   @include color-mode(dark, true) {
-  //     @include btn-close-white();
-  //   }
-  // }
 }
