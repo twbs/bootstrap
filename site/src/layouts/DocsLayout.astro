@@ -214,25 +214,19 @@ if (currentPageIndex < allPages.length - 1) {
 
         {
           frontmatter.reference && (
-            <div class="mb-5">
-              <ReferenceTable reference={frontmatter.reference} />
-            </div>
+            <ReferenceTable reference={frontmatter.reference} />
           )
         }
 
         {
           frontmatter.utility && (
-            <div class="mb-5">
-              <UtilityReferenceTable utility={frontmatter.utility} />
-            </div>
+            <UtilityReferenceTable utility={frontmatter.utility} />
           )
         }
 
         {
           frontmatter.classes && (
-            <div class="mb-5">
-              <HelperReferenceTable classes={frontmatter.classes} />
-            </div>
+            <HelperReferenceTable classes={frontmatter.classes} />
           )
         }
 

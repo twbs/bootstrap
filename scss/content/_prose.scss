@@ -3,15 +3,23 @@
 
 @layer content {
   .prose {
-    --#{$prefix}content-font-size: 16px;
-    --#{$prefix}content-gap: 24px;
+    --#{$prefix}content-font-size: var(--#{$prefix}font-size-sm);
+    --#{$prefix}content-gap: 20px;
     --#{$prefix}heading-color: light-dark(var(--bs-gray-900), var(--bs-white));
 
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--#{$prefix}content-gap);
     max-width: 1000px;
     margin-inline: auto;
     font-size: var(--#{$prefix}content-font-size);
-    line-height: var(--#{$prefix}content-gap);
+    line-height: 1.5;
+
+    @media (width >= 1024px) {
+      --#{$prefix}content-font-size: var(--#{$prefix}font-size-md);
+      --#{$prefix}content-gap: 24px;
+    }
 
     p,
     ul,
@@ -20,7 +28,7 @@
     pre,
     table,
     blockquote {
-      margin-bottom: var(--#{$prefix}content-gap);
+      margin-block: 0;
     }
 
     li:not(:last-child) {
@@ -44,12 +52,15 @@
     h4,
     h5,
     h6 {
-      --bs-heading-color: var(--bs-emphasis-color);
-
       margin-top: 0;
-      margin-bottom: calc(var(--#{$prefix}content-gap) / 2);
+      margin-bottom: calc(var(--#{$prefix}content-gap) / -2);
       font-weight: 500;
       line-height: 1.25;
+
+      code {
+        font-weight: 600;
+        color: inherit;
+      }
     }
 
     h1,
@@ -117,13 +128,14 @@
       border-collapse: collapse;
     }
 
-    td,
-    th {
-      padding: 6px 12px;
-      text-align: inherit;
-      border: 1px solid var(--#{$prefix}border-color);
+    :where(table:not([class])) {
+      td,
+      th {
+        padding: 6px 12px;
+        text-align: inherit;
+        border: 1px solid var(--#{$prefix}border-color);
+      }
     }
-
 
     dt {
       font-weight: 500;
