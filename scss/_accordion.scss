@@ -1,7 +1,6 @@
 @use "config" as *;
 @use "variables" as *;
 @use "functions" as *;
-@use "vendor/rfs" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/transition" as *;
 @use "mixins/box-shadow" as *;
@@ -68,7 +67,7 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
     align-items: center;
     width: 100%;
     padding: var(--#{$prefix}accordion-btn-padding-y) var(--#{$prefix}accordion-btn-padding-x);
-    @include font-size($font-size-base);
+    font-size: $font-size-base;
     color: var(--#{$prefix}accordion-btn-color);
     text-align: start; // Reset button style
     background-color: var(--#{$prefix}accordion-btn-bg);

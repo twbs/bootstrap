@@ -1,7 +1,6 @@
 @use "../colors" as *;
 @use "../config" as *;
 @use "../variables" as *;
-@use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
 
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
@@ -56,7 +55,7 @@
   body {
     margin: 0; // 1
     font-family: var(--#{$prefix}body-font-family);
-    @include font-size(var(--#{$prefix}body-font-size));
+    font-size: var(--#{$prefix}body-font-size);
     font-weight: var(--#{$prefix}body-font-weight);
     line-height: var(--#{$prefix}body-line-height);
     color: var(--#{$prefix}color-body);
@@ -100,37 +99,37 @@
   h1,
   .h1 {
     @extend %heading;
-    @include font-size($h1-font-size);
+    font-size: $h1-font-size;
   }
 
   h2,
   .h2 {
     @extend %heading;
-    @include font-size($h2-font-size);
+    font-size: $h2-font-size;
   }
 
   h3,
   .h3 {
     @extend %heading;
-    @include font-size($h3-font-size);
+    font-size: $h3-font-size;
   }
 
   h4,
   .h4 {
     @extend %heading;
-    @include font-size($h4-font-size);
+    font-size: $h4-font-size;
   }
 
   h5,
   .h5 {
     @extend %heading;
-    @include font-size($h5-font-size);
+    font-size: $h5-font-size;
   }
 
   h6,
   .h6 {
     @extend %heading;
-    @include font-size($h6-font-size);
+    font-size: $h6-font-size;
   }
 
 
@@ -223,7 +222,7 @@
 
   small,
   .small {
-    @include font-size($small-font-size);
+    font-size: $small-font-size;
   }
 
 
@@ -245,7 +244,7 @@
   sub,
   sup {
     position: relative;
-    @include font-size($sub-sup-font-size);
+    font-size: $sub-sup-font-size;
     line-height: 0;
     vertical-align: baseline;
   }
@@ -290,7 +289,7 @@
   kbd,
   samp {
     font-family: $font-family-code;
-    @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
+    font-size: 1em; // Correct the odd `em` font sizing in all browsers.
   }
 
   // 1. Remove browser default top margin
@@ -302,19 +301,19 @@
     margin-top: 0; // 1
     margin-bottom: 1rem; // 2
     overflow: auto; // 3
-    @include font-size($code-font-size);
+    font-size: $code-font-size;
     color: $pre-color;
 
     // Account for some code outputs that place code tags in pre tags
     code {
-      @include font-size(inherit);
+      font-size: inherit;
       color: inherit;
       word-break: normal;
     }
   }
 
   code {
-    @include font-size($code-font-size);
+    font-size: $code-font-size;
     color: var(--#{$prefix}code-color);
     word-wrap: break-word;
 
@@ -326,14 +325,14 @@
 
   kbd {
     padding: $kbd-padding-y $kbd-padding-x;
-    @include font-size($kbd-font-size);
+    font-size: $kbd-font-size;
     color: $kbd-color;
     background-color: $kbd-bg;
     @include border-radius($border-radius-sm);
 
     kbd {
       padding: 0;
-      @include font-size(1em);
+      font-size: 1em;
       font-weight: inherit; // mdo-do: check if this is needed
     }
   }
@@ -430,7 +429,7 @@
   textarea {
     margin: 0; // 1
     font-family: inherit;
-    @include font-size(inherit);
+    font-size: inherit;
     line-height: inherit;
   }
 
@@ -519,9 +518,9 @@
     width: 100%;
     padding: 0;
     margin-bottom: $legend-margin-bottom;
+    font-size: $legend-font-size;
     font-weight: $legend-font-weight;
     line-height: inherit;
-    @include font-size($legend-font-size);
 
     + * {
       clear: inline-start; // 2

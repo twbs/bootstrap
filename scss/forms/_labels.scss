@@ -1,5 +1,4 @@
 @use "../variables" as *;
-@use "../vendor/rfs" as *;
 @use "form-variables" as *;
 
 // scss-docs-start form-label-variables
@@ -14,7 +13,7 @@ $form-label-color:         null !default;
 @layer forms {
   .form-label {
     margin-bottom: $form-label-margin-bottom;
-    @include font-size($form-label-font-size);
+    font-size: $form-label-font-size;
     font-style: $form-label-font-style;
     font-weight: $form-label-font-weight;
     color: $form-label-color;
@@ -26,7 +25,7 @@ $form-label-color:         null !default;
     padding-top: add($input-padding-y, $input-border-width);
     padding-bottom: add($input-padding-y, $input-border-width);
     margin-bottom: 0; // Override the `<legend>` default
-    @include font-size(inherit); // Override the `<legend>` default
+    font-size: inherit; // Override the `<legend>` default
     font-style: $form-label-font-style;
     font-weight: $form-label-font-weight;
     line-height: $input-line-height;
@@ -36,12 +35,12 @@ $form-label-color:         null !default;
   .col-form-label-lg {
     padding-top: add($input-padding-y-lg, $input-border-width);
     padding-bottom: add($input-padding-y-lg, $input-border-width);
-    @include font-size($input-font-size-lg);
+    font-size: $input-font-size-lg;
   }
 
   .col-form-label-sm {
     padding-top: add($input-padding-y-sm, $input-border-width);
     padding-bottom: add($input-padding-y-sm, $input-border-width);
-    @include font-size($input-font-size-sm);
+    font-size: $input-font-size-sm;
   }
 }

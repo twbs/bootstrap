@@ -4,7 +4,6 @@
 @use "mixins/transition" as *;
 @use "mixins/gradients" as *;
 @use "mixins/color-mode" as *;
-@use "vendor/rfs" as *;
 
 // scss-docs-start carousel-variables
 $carousel-control-color:             $white !default;

@@ -1,7 +1,6 @@
 @use "../../config" as *;
 @use "../../variables" as *;
 @use "../../functions" as *;
-@use "../../vendor/rfs" as *;
 @use "../../mixins/utilities" as *;
 
 $true-terminal-output: false;

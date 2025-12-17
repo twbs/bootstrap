@@ -1,7 +1,6 @@
 @use "../../../scss/config" as *;
 @use "../../../scss/colors" as *;
 @use "../../../scss/variables" as *;
-@use "../../../scss/vendor/rfs" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
 @use "../../../scss/mixins/transition" as *;
@@ -20,11 +19,11 @@
 
     h1 {
       --bs-heading-color: var(--bs-emphasis-color);
-      @include font-size(4rem);
+      font-size: 4rem;
     }
 
     .lead {
-      @include font-size(1rem);
+      font-size: 1rem;
       font-weight: 400;
       color: var(--bs-secondary-color);
     }
@@ -70,7 +69,7 @@
 
     @include media-breakpoint-up(md) {
       .lead {
-        @include font-size(1.5rem);
+        font-size: 1.5rem;
       }
     }
   }
@@ -83,12 +82,12 @@
     }
 
     .lead {
-      @include font-size(1rem);
+      font-size: 1rem;
     }
 
     @include media-breakpoint-up(md) {
       .lead {
-        @include font-size(1.25rem);
+        font-size: 1.25rem;
       }
     }
   }

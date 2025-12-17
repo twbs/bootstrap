@@ -3,7 +3,6 @@
 @use "../config" as *;
 @use "../colors" as *;
 @use "../variables" as *;
-@use "../vendor/rfs" as *;
 @use "../mixins/border-radius" as *;
 @use "form-variables" as *;
 
@@ -63,7 +62,7 @@ $input-group-addon-border-color:        $input-border-color !default;
     display: flex;
     align-items: center;
     padding: $input-group-addon-padding-y $input-group-addon-padding-x;
-    @include font-size($input-font-size); // Match inputs
+    font-size: $input-font-size; // Match inputs
     // font-weight: $input-group-addon-font-weight;
     line-height: $input-line-height;
     color: $input-group-addon-color;
@@ -85,7 +84,7 @@ $input-group-addon-border-color:        $input-border-color !default;
   .input-group-lg > .input-group-text,
   .input-group-lg > .btn {
     padding: $input-padding-y-lg $input-padding-x-lg;
-    @include font-size($input-font-size-lg);
+    font-size: $input-font-size-lg;
     @include border-radius($input-border-radius-lg);
   }
 
@@ -94,7 +93,7 @@ $input-group-addon-border-color:        $input-border-color !default;
   .input-group-sm > .input-group-text,
   .input-group-sm > .btn {
     padding: $input-padding-y-sm $input-padding-x-sm;
-    @include font-size($input-font-size-sm);
+    font-size: $input-font-size-sm;
     @include border-radius($input-border-radius-sm);
   }
 

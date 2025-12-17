@@ -1,6 +1,5 @@
 @use "../config" as *;
 @use "../variables" as *;
-@use "../vendor/rfs" as *;
 @use "../mixins/image" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
@@ -59,7 +58,7 @@ $figure-caption-color:              var(--#{$prefix}secondary-color) !default;
   }
 
   .figure-caption {
-    @include font-size($figure-caption-font-size);
+    font-size: $figure-caption-font-size;
     color: $figure-caption-color;
   }
 }
