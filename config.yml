@@ -35,13 +35,13 @@ download:
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
   css:                  "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-  css_hash:             "sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+  css_hash:             "sha384-TDmpFhAO5TwSQwPF95I/odgwpTUuv0aaVm9/0fL7b+kKe7hFBp/+9cBCMkydgGOi"
   js:                   "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-  js_hash:              "sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+  js_hash:              "sha384-Php492snRLTR5p+hMyxpV6gYwp1avWXn4AaX31MgANrvsjr9Dpodl3Nw60L7Pewl"
   js_bundle:            "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-  js_bundle_hash:       "sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+  js_bundle_hash:       "sha384-I2J4jlw924JZXHU9un9Mcuixq/rKhd5A8/B1NQ6ifPAiBFacZjwNcec8d6L38jQv"
   floating_ui:          "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.0/dist/floating-ui.dom.umd.min.js"
-  floating_ui_hash:     "sha384-TODO-GENERATE-HASH"
+  floating_ui_hash:     "sha384-R7p1RqabZNhI+RdPNIzTouzd/LBVorZ0Tn3ApcogSOk+HF3o+P0HIenrUw/n0MOj"
   floating_ui_esm:      "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.0/dist/floating-ui.dom.esm.min.js"
 
 anchors:
