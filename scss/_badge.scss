@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "config" as *;
 @use "colors" as *;
 @use "variables" as *;
@@ -14,6 +15,21 @@ $badge-padding-x:                   .5em !default;
 $badge-border-radius:               var(--#{$prefix}border-radius) !default;
 // scss-docs-end badge-variables
 
+// scss-docs-start badge-variants
+$badge-variants: (
+  "subtle": (
+    "color": "text",
+    "bg": "bg-subtle",
+    "border-color": "transparent"
+  ),
+  "outline": (
+    "color": "text",
+    "bg": "transparent",
+    "border-color": "border"
+  )
+) !default;
+// scss-docs-end badge-variants
+
 @layer components {
   .badge {
     // scss-docs-start badge-css-vars
@@ -23,6 +39,8 @@ $badge-border-radius:               var(--#{$prefix}border-radius) !default;
     --#{$prefix}badge-font-weight: #{$badge-font-weight};
     --#{$prefix}badge-color: #{$badge-color};
     --#{$prefix}badge-bg: var(--#{$prefix}bg-2);
+    --#{$prefix}badge-border-width: #{$border-width};
+    --#{$prefix}badge-border-color: transparent;
     --#{$prefix}badge-border-radius: #{$badge-border-radius};
     // scss-docs-end badge-css-vars
 
@@ -36,6 +54,7 @@ $badge-border-radius:               var(--#{$prefix}border-radius) !default;
     white-space: nowrap;
     vertical-align: baseline;
     background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}badge-bg));
+    border: var(--#{$prefix}badge-border-width) solid var(--#{$prefix}badge-border-color);
     @include border-radius(var(--#{$prefix}badge-border-radius));
     @include gradient-bg();
 
@@ -51,8 +70,21 @@ $badge-border-radius:               var(--#{$prefix}border-radius) !default;
     top: -1px;
   }
 
-  .badge-subtle {
-    color: var(--#{$prefix}theme-text, var(--#{$prefix}badge-color));
-    background-color: var(--#{$prefix}theme-bg-subtle, var(--#{$prefix}badge-bg));
+  // scss-docs-start badge-variant-loop
+  @each $variant, $properties in $badge-variants {
+    .badge-#{$variant} {
+      @each $property, $value in $properties {
+        @if $value == "transparent" {
+          --#{$prefix}badge-#{$property}: transparent;
+        } @else {
+          --#{$prefix}badge-#{$property}: var(--#{$prefix}theme-#{$value});
+        }
+      }
+
+      color: var(--#{$prefix}badge-color);
+      background-color: var(--#{$prefix}badge-bg);
+      border-color: var(--#{$prefix}badge-border-color);
+    }
   }
+  // scss-docs-end badge-variant-loop
 }
