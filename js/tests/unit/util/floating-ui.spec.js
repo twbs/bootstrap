@@ -160,7 +160,12 @@ describe('FloatingUI Util', () => {
     it('should return appropriate placement for md viewport', () => {
       spyOnProperty(window, 'innerWidth').and.returnValue(800)
 
-      const placements = { xs: 'bottom', sm: 'top', md: 'left', lg: 'right' }
+      const placements = {
+        xs: 'bottom',
+        sm: 'top',
+        md: 'left',
+        lg: 'right'
+      }
       expect(getResponsivePlacement(placements)).toBe('left')
     })
 
