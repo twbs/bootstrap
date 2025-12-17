@@ -2,7 +2,6 @@
 @use "../../../scss/colors" as *;
 @use "../../../scss/config" as *;
 @use "../../../scss/variables" as *;
-@use "../../../scss/vendor/rfs" as *;
 @use "../../../scss/layout/breakpoints" as *;
 
 //
@@ -63,7 +62,7 @@
 
       max-width: 100%;
       margin-bottom: 1.5rem;
-      @include font-size(.875rem);
+      font-size: .875rem;
 
       @include media-breakpoint-down(lg) {
         &.table-bordered {
@@ -126,7 +125,7 @@
 
   .bd-subtitle {
     font-weight: 300;
-    @include font-size(1.5rem);
+    font-size: 1.5rem;
   }
 
   .bi {

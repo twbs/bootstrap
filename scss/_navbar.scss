@@ -8,7 +8,6 @@
 @use "mixins/transition" as *;
 @use "mixins/color-mode" as *;
 @use "mixins/deprecate" as *;
-@use "vendor/rfs" as *;
 @use "layout/breakpoints" as *;
 
 // scss-docs-start navbar-variables
@@ -121,7 +120,7 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
     padding-top: var(--#{$prefix}navbar-brand-padding-y);
     padding-bottom: var(--#{$prefix}navbar-brand-padding-y);
     margin-inline-end: var(--#{$prefix}navbar-brand-margin-end);
-    @include font-size(var(--#{$prefix}navbar-brand-font-size));
+    font-size: var(--#{$prefix}navbar-brand-font-size);
     color: var(--#{$prefix}navbar-brand-color);
     text-decoration: none;
     white-space: nowrap;
@@ -205,7 +204,7 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
   // Button for toggling the navbar when in its collapsed state
   .navbar-toggler {
     padding: var(--#{$prefix}navbar-toggler-padding-y) var(--#{$prefix}navbar-toggler-padding-x);
-    @include font-size(var(--#{$prefix}navbar-toggler-font-size));
+    font-size: var(--#{$prefix}navbar-toggler-font-size);
     line-height: 1;
     color: var(--#{$prefix}navbar-color);
     background-color: transparent; // remove default button style

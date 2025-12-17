@@ -5,7 +5,6 @@
 @use "mixins/gradients" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "vendor/rfs" as *;
 
 // scss-docs-start progress-variables
 $progress-height:                   1rem !default;
@@ -35,7 +34,7 @@ $progress-bar-transition:           width .6s ease !default;
   .progress-stacked {
     // scss-docs-start progress-css-vars
     --#{$prefix}progress-height: #{$progress-height};
-    @include rfs($progress-font-size, --#{$prefix}progress-font-size);
+    --#{$prefix}progress-font-size: #{$progress-font-size};
     --#{$prefix}progress-bg: #{$progress-bg};
     --#{$prefix}progress-border-radius: #{$progress-border-radius};
     --#{$prefix}progress-box-shadow: #{$progress-box-shadow};
@@ -47,7 +46,7 @@ $progress-bar-transition:           width .6s ease !default;
     display: flex;
     height: var(--#{$prefix}progress-height);
     overflow: hidden; // force rounded corners by cropping it
-    @include font-size(var(--#{$prefix}progress-font-size));
+    font-size: var(--#{$prefix}progress-font-size);
     background-color: var(--#{$prefix}progress-bg);
     @include border-radius(var(--#{$prefix}progress-border-radius));
     @include box-shadow(var(--#{$prefix}progress-box-shadow));
