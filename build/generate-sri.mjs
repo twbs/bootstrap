@@ -38,8 +38,8 @@ const files = [
     configPropertyName: 'js_bundle_hash'
   },
   {
-    file: 'node_modules/@popperjs/core/dist/umd/popper.min.js',
-    configPropertyName: 'popper_hash'
+    file: 'node_modules/@floating-ui/dom/dist/floating-ui.dom.umd.min.js',
+    configPropertyName: 'floating_ui_hash'
   }
 ]
 

@@ -5,15 +5,14 @@
 @use "mixins/reset-text" as *;
 
 // scss-docs-start tooltip-variables
-$tooltip-font-size:                 $font-size-sm !default;
+$tooltip-font-size:                 var(--#{$prefix}font-size-sm) !default;
 $tooltip-max-width:                 200px !default;
 $tooltip-color:                     var(--#{$prefix}bg-body) !default;
-$tooltip-bg:                        var(--#{$prefix}color-body) !default;
+$tooltip-bg:                        var(--#{$prefix}fg-body) !default;
 $tooltip-border-radius:             var(--#{$prefix}border-radius) !default;
-$tooltip-opacity:                   .9 !default;
-$tooltip-padding-y:                 $spacer * .25 !default;
-$tooltip-padding-x:                 $spacer * .5 !default;
-$tooltip-margin:                    null !default; // TODO: remove this in v6
+$tooltip-opacity:                   .95 !default;
+$tooltip-padding-y:                 $spacer * .375 !default;
+$tooltip-padding-x:                 $spacer * .75 !default;
 
 $tooltip-arrow-width:               .8rem !default;
 $tooltip-arrow-height:              .4rem !default;
@@ -37,7 +36,6 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     --#{$prefix}tooltip-max-width: #{$tooltip-max-width};
     --#{$prefix}tooltip-padding-x: #{$tooltip-padding-x};
     --#{$prefix}tooltip-padding-y: #{$tooltip-padding-y};
-    --#{$prefix}tooltip-margin: #{$tooltip-margin};
     --#{$prefix}tooltip-font-size: #{$tooltip-font-size};
     --#{$prefix}tooltip-color: #{$tooltip-color};
     --#{$prefix}tooltip-bg: #{$tooltip-bg};
@@ -49,8 +47,6 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
 
     z-index: var(--#{$prefix}tooltip-zindex);
     display: block;
-    margin: var(--#{$prefix}tooltip-margin);
-    @include deprecate("`$tooltip-margin`", "v5", "v5.x", true);
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     @include reset-text();
@@ -120,16 +116,16 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
   }
 
   .bs-tooltip-auto {
-    &[data-popper-placement^="top"] {
+    &[data-bs-placement^="top"] {
       @extend .bs-tooltip-top;
     }
-    &[data-popper-placement^="right"] {
+    &[data-bs-placement^="right"] {
       @extend .bs-tooltip-end;
     }
-    &[data-popper-placement^="bottom"] {
+    &[data-bs-placement^="bottom"] {
       @extend .bs-tooltip-bottom;
     }
-    &[data-popper-placement^="left"] {
+    &[data-bs-placement^="left"] {
       @extend .bs-tooltip-start;
     }
   }

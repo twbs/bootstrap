@@ -99,12 +99,12 @@
     - title: Offcanvas
     - title: Pagination
     - title: Placeholders
-    - title: Popovers
+    - title: Popover
     - title: Progress
     - title: Scrollspy
     - title: Spinners
     - title: Toasts
-    - title: Tooltips
+    - title: Tooltip
 
 - title: Helpers
   icon: magic
