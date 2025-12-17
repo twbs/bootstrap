@@ -518,9 +518,9 @@
     width: 100%;
     padding: 0;
     margin-bottom: $legend-margin-bottom;
+    font-size: $legend-font-size;
     font-weight: $legend-font-weight;
     line-height: inherit;
-    font-size: $legend-font-size;
 
     + * {
       clear: inline-start; // 2
