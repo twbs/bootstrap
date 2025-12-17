@@ -2339,4 +2339,136 @@ describe('Dropdown', () => {
       childElement.click()
     })
   })
+
+  describe('responsive placements', () => {
+    it('should parse responsive placement string and create instance', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-placement="bottom-start md:top-end">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown)
+
+      // Dropdown should have parsed responsive placements
+      expect(dropdown._responsivePlacements).not.toBeNull()
+      expect(dropdown._responsivePlacements.xs).toEqual('bottom-start')
+      expect(dropdown._responsivePlacements.md).toEqual('top-end')
+    })
+
+    it('should return null for non-responsive placement', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-placement="bottom-start">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown)
+
+      // Non-responsive placement should not create responsive placements object
+      expect(dropdown._responsivePlacements).toBeNull()
+    })
+  })
+
+  describe('virtual element reference', () => {
+    it('should work with virtual element as reference', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+
+        // Virtual element with getBoundingClientRect
+        const virtualElement = {
+          getBoundingClientRect() {
+            return {
+              width: 100,
+              height: 50,
+              top: 100,
+              left: 100,
+              right: 200,
+              bottom: 150,
+              x: 100,
+              y: 100
+            }
+          }
+        }
+
+        const dropdown = new Dropdown(btnDropdown, {
+          reference: virtualElement
+        })
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(document.querySelector('.dropdown-menu.show')).not.toBeNull()
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should throw error for object reference without getBoundingClientRect', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+
+      expect(() => {
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown, {
+          reference: { someProperty: 'value' } // Object without getBoundingClientRect
+        })
+      }).toThrowError(TypeError)
+    })
+  })
+
+  describe('selectMenuItem', () => {
+    it('should do nothing when dropdown menu has no visible items', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Simulate ArrowDown key - should not throw when no items
+          const keydown = createEvent('keydown')
+          keydown.key = 'ArrowDown'
+          btnDropdown.dispatchEvent(keydown)
+
+          // No error thrown means test passed
+          expect(true).toBeTrue()
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+  })
 })
