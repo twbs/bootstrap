@@ -4,10 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./tooltip.js')) :
-  typeof define === 'function' && define.amd ? define(['./tooltip'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.Tooltip));
-})(this, (function (Tooltip) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./tooltip.js'), require('./dom/event-handler.js')) :
+  typeof define === 'function' && define.amd ? define(['./tooltip', './dom/event-handler'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Popover = factory(global.Tooltip, global.EventHandler));
+})(this, (function (Tooltip, EventHandler) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -24,6 +24,10 @@
   const NAME = 'popover';
   const SELECTOR_TITLE = '.popover-header';
   const SELECTOR_CONTENT = '.popover-body';
+  const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="popover"]';
+  const EVENT_CLICK = 'click';
+  const EVENT_FOCUSIN = 'focusin';
+  const EVENT_MOUSEENTER = 'mouseenter';
   const Default = {
     ...Tooltip.Default,
     content: '',
@@ -69,6 +73,38 @@
       return this._resolvePossibleFunction(this._config.content);
     }
   }
+
+  /**
+   * Data API implementation - auto-initialize popovers
+   */
+
+  const initPopover = event => {
+    const target = event.target.closest(SELECTOR_DATA_TOGGLE);
+    if (!target) {
+      return;
+    }
+
+    // Prevent default for click events to avoid navigation
+    if (event.type === 'click') {
+      event.preventDefault();
+    }
+
+    // Get or create instance
+    const popover = Popover.getOrCreateInstance(target);
+
+    // Trigger the appropriate action based on event type
+    if (event.type === 'click') {
+      popover.toggle();
+    } else if (event.type === 'focusin') {
+      popover._activeTrigger.focus = true;
+      popover._enter();
+    }
+  };
+
+  // Support click (default), hover, and focus triggers
+  EventHandler.on(document, EVENT_CLICK, SELECTOR_DATA_TOGGLE, initPopover);
+  EventHandler.on(document, EVENT_FOCUSIN, SELECTOR_DATA_TOGGLE, initPopover);
+  EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE, initPopover);
 
   return Popover;
 
