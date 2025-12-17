@@ -23,7 +23,7 @@ const sidebar = getData('sidebar')
                     style={group.icon_color && `color: light-dark(var(--bs-${group.icon_color}-500), var(--bs-${group.icon_color}-400));`}
                     aria-hidden="true"
                   >
-                    <use xlink:href={`#${group.icon}`} />
+                    <use href={`#${group.icon}`} />
                   </svg>
                 )}
                 {group.title}
