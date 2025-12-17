@@ -1,5 +1,4 @@
 @use "../../../scss/layout/breakpoints" as *;
-@use "../../../scss/vendor/rfs" as *;
 @use "../../../scss/mixins/border-radius" as *;
 
 // stylelint-disable declaration-no-important, selector-max-id
@@ -15,7 +14,7 @@
     padding: 15px 15px 15px 160px;
     margin: 1rem 0;
     overflow: hidden;
-    @include font-size(.8125rem);
+    font-size: .8125rem;
     line-height: 1.4;
     text-align: start;
     background-color: var(--bs-bg-1);

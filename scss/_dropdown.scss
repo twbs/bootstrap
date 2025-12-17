@@ -7,7 +7,6 @@
 @use "mixins/box-shadow" as *;
 @use "mixins/gradients" as *;
 @use "mixins/caret" as *;
-@use "vendor/rfs" as *;
 @use "layout/breakpoints" as *;
 
 // scss-docs-start dropdown-variables
@@ -84,7 +83,7 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     --#{$prefix}dropdown-padding-x: #{$dropdown-padding-x};
     --#{$prefix}dropdown-padding-y: #{$dropdown-padding-y};
     --#{$prefix}dropdown-spacer: #{$dropdown-spacer};
-    @include rfs($dropdown-font-size, --#{$prefix}dropdown-font-size);
+    --#{$prefix}dropdown-font-size: #{$dropdown-font-size};
     --#{$prefix}dropdown-color: #{$dropdown-color};
     --#{$prefix}dropdown-bg: #{$dropdown-bg};
     --#{$prefix}dropdown-border-color: #{$dropdown-border-color};
@@ -113,7 +112,7 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     min-width: var(--#{$prefix}dropdown-min-width);
     padding: var(--#{$prefix}dropdown-padding-y) var(--#{$prefix}dropdown-padding-x);
     margin: 0; // Override default margin of ul
-    @include font-size(var(--#{$prefix}dropdown-font-size));
+    font-size: var(--#{$prefix}dropdown-font-size);
     color: var(--#{$prefix}dropdown-color);
     text-align: start; // Ensures proper alignment if parent has it changed (e.g., modal footer)
     list-style: none;
@@ -278,7 +277,7 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
     display: block;
     padding: var(--#{$prefix}dropdown-header-padding-y) var(--#{$prefix}dropdown-header-padding-x);
     margin-bottom: 0; // for use with heading elements
-    @include font-size($font-size-sm);
+    font-size: $font-size-sm;
     color: var(--#{$prefix}dropdown-header-color);
     white-space: nowrap; // as with > li > a
   }

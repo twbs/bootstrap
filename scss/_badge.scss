@@ -4,7 +4,6 @@
 @use "theme" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/gradients" as *;
-@use "vendor/rfs" as *;
 
 // scss-docs-start badge-variables
 $badge-font-size:                   .75em !default;
@@ -20,7 +19,7 @@ $badge-border-radius:               var(--#{$prefix}border-radius) !default;
     // scss-docs-start badge-css-vars
     --#{$prefix}badge-padding-x: #{$badge-padding-x};
     --#{$prefix}badge-padding-y: #{$badge-padding-y};
-    @include rfs($badge-font-size, --#{$prefix}badge-font-size);
+    --#{$prefix}badge-font-size: #{$badge-font-size};
     --#{$prefix}badge-font-weight: #{$badge-font-weight};
     --#{$prefix}badge-color: #{$badge-color};
     --#{$prefix}badge-bg: var(--#{$prefix}bg-2);
@@ -29,7 +28,7 @@ $badge-border-radius:               var(--#{$prefix}border-radius) !default;
 
     display: inline-block;
     padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
-    @include font-size(var(--#{$prefix}badge-font-size));
+    font-size: var(--#{$prefix}badge-font-size);
     font-weight: var(--#{$prefix}badge-font-weight);
     line-height: 1;
     color: var(--#{$prefix}theme-contrast, var(--#{$prefix}badge-color));

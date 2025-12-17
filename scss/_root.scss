@@ -4,7 +4,6 @@
 @use "variables" as *;
 @use "theme" as *;
 // @use "maps" as *;
-@use "vendor/rfs" as *;
 @use "mixins/color-mode" as *;
 @use "forms/form-variables" as *;
 
@@ -89,7 +88,7 @@
   --#{$prefix}line-height-6xl: 1;
   // scss-docs-end root-font-size-variables
 
-  @include rfs($font-size-base, --#{$prefix}body-font-size);
+  --#{$prefix}body-font-size: #{$font-size-base};
   --#{$prefix}body-font-weight: #{$font-weight-base};
   --#{$prefix}body-line-height: #{$line-height-base};
   @if $body-text-align != null {

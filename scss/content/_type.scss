@@ -1,7 +1,6 @@
 @use "../config" as *;
 @use "../variables" as *;
 @use "../mixins/lists" as *;
-@use "../vendor/rfs" as *;
 
 @layer content {
   //
@@ -31,14 +30,14 @@
 
   // Builds on `abbr`
   .initialism {
-    @include font-size($initialism-font-size);
+    font-size: $initialism-font-size;
     text-transform: uppercase;
   }
 
   // Blockquotes
   .blockquote {
     margin-bottom: $blockquote-margin-y;
-    @include font-size($blockquote-font-size);
+    font-size: $blockquote-font-size;
 
     > :last-child {
       margin-bottom: 0;
@@ -48,7 +47,7 @@
   .blockquote-footer {
     margin-top: -$blockquote-margin-y;
     margin-bottom: $blockquote-margin-y;
-    @include font-size($blockquote-footer-font-size);
+    font-size: $blockquote-footer-font-size;
     color: $blockquote-footer-color;
 
     &::before {

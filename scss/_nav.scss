@@ -4,7 +4,6 @@
 @use "mixins/gradients" as *;
 @use "mixins/focus-ring" as *;
 @use "mixins/transition" as *;
-@use "vendor/rfs" as *;
 
 // scss-docs-start nav-variables
 $nav-gap:                           .125rem !default;

@@ -3,7 +3,6 @@
 @use "variables" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
-@use "vendor/rfs" as *;
 
 // scss-docs-start breadcrumb-variables
 $breadcrumb-font-size:              null !default;
@@ -25,7 +24,7 @@ $breadcrumb-border-radius:          null !default;
     --#{$prefix}breadcrumb-padding-x: #{$breadcrumb-padding-x};
     --#{$prefix}breadcrumb-padding-y: #{$breadcrumb-padding-y};
     --#{$prefix}breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
-    @include rfs($breadcrumb-font-size, --#{$prefix}breadcrumb-font-size);
+    --#{$prefix}breadcrumb-font-size: #{$breadcrumb-font-size};
     --#{$prefix}breadcrumb-bg: #{$breadcrumb-bg};
     --#{$prefix}breadcrumb-border-radius: #{$breadcrumb-border-radius};
     --#{$prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
@@ -37,7 +36,7 @@ $breadcrumb-border-radius:          null !default;
     flex-wrap: wrap;
     padding: var(--#{$prefix}breadcrumb-padding-y) var(--#{$prefix}breadcrumb-padding-x);
     margin-bottom: var(--#{$prefix}breadcrumb-margin-bottom);
-    @include font-size(var(--#{$prefix}breadcrumb-font-size));
+    font-size: var(--#{$prefix}breadcrumb-font-size);
     list-style: none;
     background-color: var(--#{$prefix}breadcrumb-bg);
     @include border-radius(var(--#{$prefix}breadcrumb-border-radius));

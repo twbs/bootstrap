@@ -28,7 +28,7 @@
     display: none;
     width: 100%;
     margin-top: $form-feedback-margin-top;
-    @include font-size($form-feedback-font-size);
+    font-size: $form-feedback-font-size;
     font-style: $form-feedback-font-style;
     color: $color;
   }
@@ -41,7 +41,7 @@
     max-width: 100%; // Contain to parent when possible
     padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    @include font-size($form-feedback-tooltip-font-size);
+    font-size: $form-feedback-tooltip-font-size;
     line-height: $form-feedback-tooltip-line-height;
     color: $tooltip-color;
     background-color: $tooltip-bg-color;

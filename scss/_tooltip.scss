@@ -2,7 +2,6 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/deprecate" as *;
-@use "vendor/rfs" as *;
 @use "mixins/reset-text" as *;
 
 // scss-docs-start tooltip-variables
@@ -39,7 +38,7 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     --#{$prefix}tooltip-padding-x: #{$tooltip-padding-x};
     --#{$prefix}tooltip-padding-y: #{$tooltip-padding-y};
     --#{$prefix}tooltip-margin: #{$tooltip-margin};
-    @include rfs($tooltip-font-size, --#{$prefix}tooltip-font-size);
+    --#{$prefix}tooltip-font-size: #{$tooltip-font-size};
     --#{$prefix}tooltip-color: #{$tooltip-color};
     --#{$prefix}tooltip-bg: #{$tooltip-bg};
     --#{$prefix}tooltip-border-radius: #{$tooltip-border-radius};
@@ -55,7 +54,7 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     @include reset-text();
-    @include font-size(var(--#{$prefix}tooltip-font-size));
+    font-size: var(--#{$prefix}tooltip-font-size);
     // Allow breaking very long words so they don't overflow the tooltip's bounds
     word-wrap: break-word;
     opacity: 0;

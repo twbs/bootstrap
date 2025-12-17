@@ -1,5 +1,3 @@
-@use "../../../scss/vendor/rfs" as *;
-
 //
 // Placeholder svg used in the docs.
 //
@@ -8,12 +6,12 @@
 
 @layer custom {
   .bd-placeholder-img {
-    @include font-size(1.125rem);
+    font-size: 1.125rem;
     user-select: none;
     text-anchor: middle;
   }
 
   .bd-placeholder-img-lg {
-    @include font-size(3.5rem);
+    font-size: 3.5rem;
   }
 }
