@@ -130,19 +130,19 @@ const rounded = ['default', 'pill', 'square']
   code={`<button type="button" class="btn btn-solid theme-primary" data-button-type="text">Button</button>
 <button type="button" class="btn btn-solid theme-primary" data-button-type="left-icon">
   <svg class="bi me-1" width="16" height="16" aria-hidden="true">
-    <use xlink:href="#arrow-left" />
+    <use href="#arrow-left" />
   </svg>
   Left icon
 </button>
 <button type="button" class="btn btn-solid theme-primary" data-button-type="right-icon">
   Right icon
   <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
-    <use xlink:href="#arrow-right" />
+    <use href="#arrow-right" />
   </svg>
 </button>
 <button type="button" class="btn btn-solid btn-icon theme-primary" data-button-type="icon-only" aria-label="Icon only">
   <svg class="bi" width="16" height="16" aria-hidden="true">
-    <use xlink:href="#plus-lg" />
+    <use href="#plus-lg" />
   </svg>
 </button>`}
   id="button-preview"
@@ -178,11 +178,11 @@ const rounded = ['default', 'pill', 'square']
     if (buttonType === 'text') {
       html += 'Click me'
     } else if (buttonType === 'left-icon') {
-      html += '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use xlink:href="#arrow-left" />\n  </svg>\n  With left icon'
+      html += '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-left" />\n  </svg>\n  With left icon'
     } else if (buttonType === 'right-icon') {
-      html += 'With right icon\n  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">\n    <use xlink:href="#arrow-right" />\n  </svg>'
+      html += 'With right icon\n  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-right" />\n  </svg>'
     } else if (buttonType === 'icon-only') {
-      html += '\n  <svg class="bi" width="16" height="16" aria-hidden="true">\n    <use xlink:href="#plus-lg" />\n  </svg>'
+      html += '\n  <svg class="bi" width="16" height="16" aria-hidden="true">\n    <use href="#plus-lg" />\n  </svg>'
     }
 
     html += '\n</button>'
