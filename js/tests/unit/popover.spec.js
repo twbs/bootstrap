@@ -434,4 +434,59 @@ describe('Popover', () => {
       expect(popover2._config.placement).toEqual('top')
     })
   })
+
+  describe('data-api', () => {
+    it('should toggle popover on click via data-api', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" data-bs-toggle="popover" title="Popover Title" data-bs-content="Popover content">Click me</a>'
+
+        const popoverEl = fixtureEl.querySelector('[data-bs-toggle="popover"]')
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          expect(document.querySelector('.popover')).not.toBeNull()
+          resolve()
+        })
+
+        popoverEl.click()
+      })
+    })
+
+    it('should do nothing when clicking on element without data-bs-toggle', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Not a popover">Click me</a>'
+
+      const linkEl = fixtureEl.querySelector('a')
+      linkEl.click()
+
+      expect(document.querySelector('.popover')).toBeNull()
+      expect(Popover.getInstance(linkEl)).toBeNull()
+    })
+
+    it('should show popover on focusin via data-api', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<button data-bs-toggle="popover" data-bs-trigger="focus" title="Popover Title" data-bs-content="Popover content">Focus me</button>'
+
+        const popoverEl = fixtureEl.querySelector('[data-bs-toggle="popover"]')
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          expect(document.querySelector('.popover')).not.toBeNull()
+          resolve()
+        })
+
+        const focusEvent = createEvent('focusin')
+        popoverEl.dispatchEvent(focusEvent)
+      })
+    })
+
+    it('should prevent default on click via data-api', () => {
+      fixtureEl.innerHTML = '<a href="#test" data-bs-toggle="popover" title="Popover Title" data-bs-content="Popover content">Click me</a>'
+
+      const popoverEl = fixtureEl.querySelector('[data-bs-toggle="popover"]')
+      const clickEvent = createEvent('click')
+      const preventDefaultSpy = spyOn(clickEvent, 'preventDefault').and.callThrough()
+
+      popoverEl.dispatchEvent(clickEvent)
+
+      expect(preventDefaultSpy).toHaveBeenCalled()
+    })
+  })
 })
