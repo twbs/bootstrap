@@ -174,7 +174,7 @@ $dialog-footer-gap:             .5rem !default;
   // Responsive fullscreen dialogs
   @each $breakpoint in map.keys($grid-breakpoints) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    $postfix: if($infix != "", #{$infix}-down, "");
+    $postfix: if(sass($infix != ""): #{$infix}-down; else: "");
 
     @if $postfix != "" {
       @include media-breakpoint-down($breakpoint) {

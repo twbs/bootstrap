@@ -20,7 +20,7 @@
 
 @mixin make-col-ready() {
   // Add box sizing if only the grid is loaded
-  box-sizing: if(meta.variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
+  box-sizing: if(sass(meta.variable-exists(include-column-box-sizing) and $include-column-box-sizing): border-box; else: null);
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we set the width
   // later on to override this initial width.
@@ -49,7 +49,7 @@
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
   $num: math.div($size, $columns);
-  margin-inline-start: if($num == 0, 0, math.percentage($num));
+  margin-inline-start: if(sass($num == 0): 0; else: math.percentage($num));
 }
 
 // Row columns

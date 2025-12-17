@@ -159,11 +159,11 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
   }
   .carousel-control-prev {
     inset-inline-start: 0;
-    background-image: if($enable-gradients, linear-gradient(90deg, rgba($black, .25), rgba($black, .001)), null);
+    background-image: if(sass($enable-gradients): linear-gradient(90deg, rgba($black, .25), rgba($black, .001)); else: null);
   }
   .carousel-control-next {
     inset-inline-end: 0;
-    background-image: if($enable-gradients, linear-gradient(270deg, rgba($black, .25), rgba($black, .001)), null);
+    background-image: if(sass($enable-gradients): linear-gradient(270deg, rgba($black, .25), rgba($black, .001)); else: null);
   }
 
   // Icons for within

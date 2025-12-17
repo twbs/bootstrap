@@ -47,7 +47,7 @@
 // Recursive mixin to handle nested maps
 @mixin create-css-vars($map, $parent-key: "") {
   @each $key, $value in $map {
-    $current-key: if($parent-key == "", $key, "#{$parent-key}-#{$key}");
+    $current-key: if(sass($parent-key == ""): $key; else: "#{$parent-key}-#{$key}");
 
     @if meta.type-of($value) == "map" {
       @include create-css-vars($value, $current-key);
