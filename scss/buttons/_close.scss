@@ -7,7 +7,7 @@
 
 // scss-docs-start close-variables
 $btn-close-size:             1.25rem !default;
-$btn-close-color:            var(--#{$prefix}fg-body) !default;
+$btn-close-color:            var(--fg-body) !default;
 $btn-close-opacity:          .5 !default;
 $btn-close-hover-opacity:    .75 !default;
 $btn-close-focus-opacity:    .85 !default;
@@ -22,23 +22,23 @@ $btn-close-disabled-opacity: .25 !default;
 @layer components {
   .btn-close {
     // scss-docs-start close-css-vars
-    --#{$prefix}btn-close-size: #{$btn-close-size};
-    --#{$prefix}btn-close-color: #{$btn-close-color};
-    --#{$prefix}btn-close-opacity: #{$btn-close-opacity};
-    --#{$prefix}btn-close-hover-opacity: #{$btn-close-hover-opacity};
-    --#{$prefix}btn-close-focus-opacity: #{$btn-close-focus-opacity};
-    --#{$prefix}btn-close-disabled-opacity: #{$btn-close-disabled-opacity};
+    --btn-close-size: #{$btn-close-size};
+    --btn-close-color: #{$btn-close-color};
+    --btn-close-opacity: #{$btn-close-opacity};
+    --btn-close-hover-opacity: #{$btn-close-hover-opacity};
+    --btn-close-focus-opacity: #{$btn-close-focus-opacity};
+    --btn-close-disabled-opacity: #{$btn-close-disabled-opacity};
     // scss-docs-end close-css-vars
 
     box-sizing: content-box;
-    width: var(--#{$prefix}btn-close-size);
-    height: var(--#{$prefix}btn-close-size);
+    width: var(--btn-close-size);
+    height: var(--btn-close-size);
     padding: 0;
-    color: var(--#{$prefix}btn-close-color);
+    color: var(--btn-close-color);
     background: transparent;
     border: 0; // for button elements
-    @include border-radius(var(--#{$prefix}border-radius-sm));
-    opacity: var(--#{$prefix}btn-close-opacity);
+    @include border-radius(var(--border-radius-sm));
+    opacity: var(--btn-close-opacity);
 
     > svg {
       display: block;
@@ -49,21 +49,21 @@ $btn-close-disabled-opacity: .25 !default;
 
     // Override <a>'s hover style
     &:hover {
-      color: var(--#{$prefix}btn-close-color);
+      color: var(--btn-close-color);
       text-decoration: none;
-      opacity: var(--#{$prefix}btn-close-hover-opacity);
+      opacity: var(--btn-close-hover-opacity);
     }
 
     &:focus {
       @include focus-ring();
-      opacity: var(--#{$prefix}btn-close-focus-opacity);
+      opacity: var(--btn-close-focus-opacity);
     }
 
     &:disabled,
     &.disabled {
       pointer-events: none;
       user-select: none;
-      opacity: var(--#{$prefix}btn-close-disabled-opacity);
+      opacity: var(--btn-close-disabled-opacity);
     }
   }
 }

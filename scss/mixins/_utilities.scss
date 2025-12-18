@@ -22,12 +22,12 @@
 // 1. Property map with null values (CSS var receives the utility value):
 // "bg-color": (
 //   property: (
-//     "--#{$prefix}bg": null,
-//     "background-color": var(--#{$prefix}bg)
+//     "--bg": null,
+//     "background-color": var(--bg)
 //   ),
 //   class: bg,
 //   values: (
-//     primary: var(--#{$prefix}blue-500),
+//     primary: var(--blue-500),
 //   )
 // )
 // Generates:
@@ -190,12 +190,12 @@
         @if meta.type-of($variables) == "list" {
           // If variables is a list, each variable gets the utility value
           @each $var-name in $variables {
-            --#{$prefix}#{$var-name}: #{$value};
+            --#{$var-name}: #{$value};
           }
         } @else if meta.type-of($variables) == "map" {
           // If variables is a map, use the provided values (for static variables)
           @each $var-key, $var-value in $variables {
-            --#{$prefix}#{$var-key}: #{$var-value};
+            --#{$var-key}: #{$var-value};
           }
         }
       }
@@ -212,12 +212,12 @@
             @if meta.type-of($variables) == "list" {
               // If variables is a list, each variable gets the utility value
               @each $var-name in $variables {
-                --#{$prefix}#{$var-name}: #{$value};
+                --#{$var-name}: #{$value};
               }
             } @else if meta.type-of($variables) == "map" {
               // If variables is a map, use the provided values (for static variables)
               @each $var-key, $var-value in $variables {
-                --#{$prefix}#{$var-key}: #{$var-value};
+                --#{$var-key}: #{$var-value};
               }
             }
           }

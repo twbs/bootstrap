@@ -9,36 +9,36 @@
 @use "form-variables" as *;
 
 // scss-docs-start check-variables
-$check-border-color: var(--#{$prefix}border-color) !default;
-$check-checked-bg: var(--#{$prefix}primary-base) !default;
+$check-border-color: var(--border-color) !default;
+$check-checked-bg: var(--primary-base) !default;
 $check-checked-border-color: $check-checked-bg !default;
-$check-indeterminate-bg: var(--#{$prefix}primary-base) !default;
+$check-indeterminate-bg: var(--primary-base) !default;
 $check-indeterminate-border-color: $check-indeterminate-bg !default;
-$check-disabled-bg: var(--#{$prefix}bg-3) !default;
+$check-disabled-bg: var(--bg-3) !default;
 $check-disabled-opacity: .65 !default;
 // scss-docs-end check-variables
 
 @layer forms {
   b-checkgroup {
     display: flex;
-    gap: var(--#{$prefix}gap, .5rem);
-    align-items: var(--#{$prefix}align-items, start);
+    gap: var(--gap, .5rem);
+    align-items: var(--align-items, start);
 
     .description {
-      color: var(--#{$prefix}secondary-text);
+      color: var(--secondary-text);
     }
   }
 
   .check {
     // scss-docs-start check-css-variables
-    --#{$prefix}check-bg: transparent;
-    --#{$prefix}check-border-color: #{$check-border-color};
-    --#{$prefix}check-checked-bg: #{$check-checked-bg};
-    --#{$prefix}check-checked-border-color: #{$check-checked-border-color};
-    --#{$prefix}check-indeterminate-bg: #{$check-indeterminate-bg};
-    --#{$prefix}check-indeterminate-border-color: #{$check-indeterminate-border-color};
-    --#{$prefix}check-disabled-bg: #{$check-disabled-bg};
-    --#{$prefix}check-disabled-opacity: #{$check-disabled-opacity};
+    --check-bg: transparent;
+    --check-border-color: #{$check-border-color};
+    --check-checked-bg: #{$check-checked-bg};
+    --check-checked-border-color: #{$check-checked-border-color};
+    --check-indeterminate-bg: #{$check-indeterminate-bg};
+    --check-indeterminate-border-color: #{$check-indeterminate-border-color};
+    --check-disabled-bg: #{$check-disabled-bg};
+    --check-disabled-opacity: #{$check-disabled-opacity};
     // scss-docs-end check-css-variables
 
     display: grid;
@@ -56,15 +56,15 @@ $check-disabled-opacity: .65 !default;
     :where(input) {
       appearance: none;
       // later: maybe set a tertiary bg color?
-      background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}check-bg));
-      border: 1px solid var(--#{$prefix}theme-bg, var(--#{$prefix}check-border-color));
+      background-color: var(--theme-bg, var(--check-bg));
+      border: 1px solid var(--theme-bg, var(--check-border-color));
       // stylelint-disable-next-line property-disallowed-list
       border-radius: .25em;
     }
 
     :where(input:checked, input:indeterminate) {
-      background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}check-checked-bg));
-      border-color: var(--#{$prefix}theme-bg, var(--#{$prefix}check-checked-border-color));
+      background-color: var(--theme-bg, var(--check-checked-bg));
+      border-color: var(--theme-bg, var(--check-checked-border-color));
     }
 
     :where(input:focus-visible) {
@@ -74,20 +74,20 @@ $check-disabled-opacity: .65 !default;
     &:has(input:checked) .checked,
     &:has(input:indeterminate) .indeterminate {
       display: block;
-      color: var(--#{$prefix}primary-contrast);
+      color: var(--primary-contrast);
       stroke: currentcolor;
     }
 
     &:has(input:disabled) {
-      --#{$prefix}check-bg: var(--#{$prefix}check-disabled-bg);
+      --check-bg: var(--check-disabled-bg);
 
       ~ label {
-        color: var(--#{$prefix}secondary-text);
+        color: var(--secondary-text);
         cursor: default;
       }
     }
     &:has(input:disabled:checked) {
-      opacity: var(--#{$prefix}check-disabled-opacity);
+      opacity: var(--check-disabled-opacity);
     }
 
     :where(svg) {

@@ -41,19 +41,19 @@ $hues: (
 
 :root {
   @each $color, $hue in $hues {
-    --#{$prefix}#{$color}-025: color-mix(in lab, #fff 94%, #{$hue});
-    --#{$prefix}#{$color}-050: color-mix(in lab, #fff 90%, #{$hue});
-    --#{$prefix}#{$color}-100: color-mix(in lab, #fff 80%, #{$hue});
-    --#{$prefix}#{$color}-200: color-mix(in lab, #fff 60%, #{$hue});
-    --#{$prefix}#{$color}-300: color-mix(in lab, #fff 40%, #{$hue});
-    --#{$prefix}#{$color}-400: color-mix(in lab, #fff 20%, #{$hue});
-    --#{$prefix}#{$color}-500: #{$hue};
-    --#{$prefix}#{$color}-600: color-mix(in lab, #000 16%, #{$hue});
-    --#{$prefix}#{$color}-700: color-mix(in lab, #000 32%, #{$hue});
-    --#{$prefix}#{$color}-800: color-mix(in lab, #000 48%, #{$hue});
-    --#{$prefix}#{$color}-900: color-mix(in lab, #000 64%, #{$hue});
-    --#{$prefix}#{$color}-950: color-mix(in lab, #000 76%, #{$hue});
-    --#{$prefix}#{$color}-975: color-mix(in lab, #000 88%, #{$hue});
+    --#{$color}-025: color-mix(in lab, #fff 94%, #{$hue});
+    --#{$color}-050: color-mix(in lab, #fff 90%, #{$hue});
+    --#{$color}-100: color-mix(in lab, #fff 80%, #{$hue});
+    --#{$color}-200: color-mix(in lab, #fff 60%, #{$hue});
+    --#{$color}-300: color-mix(in lab, #fff 40%, #{$hue});
+    --#{$color}-400: color-mix(in lab, #fff 20%, #{$hue});
+    --#{$color}-500: #{$hue};
+    --#{$color}-600: color-mix(in lab, #000 16%, #{$hue});
+    --#{$color}-700: color-mix(in lab, #000 32%, #{$hue});
+    --#{$color}-800: color-mix(in lab, #000 48%, #{$hue});
+    --#{$color}-900: color-mix(in lab, #000 64%, #{$hue});
+    --#{$color}-950: color-mix(in lab, #000 76%, #{$hue});
+    --#{$color}-975: color-mix(in lab, #000 88%, #{$hue});
   }
 }
 

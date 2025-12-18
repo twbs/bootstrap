@@ -3,22 +3,22 @@
 
 @layer content {
   .prose {
-    --#{$prefix}content-font-size: var(--#{$prefix}font-size-sm);
-    --#{$prefix}content-gap: 20px;
-    --#{$prefix}heading-color: light-dark(var(--bs-gray-900), var(--bs-white));
+    --content-font-size: var(--font-size-sm);
+    --content-gap: 20px;
+    --heading-color: light-dark(var(--gray-900), var(--white));
 
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: var(--#{$prefix}content-gap);
+    gap: var(--content-gap);
     max-width: 1000px;
     margin-inline: auto;
-    font-size: var(--#{$prefix}content-font-size);
+    font-size: var(--content-font-size);
     line-height: 1.5;
 
     @media (width >= 1024px) {
-      --#{$prefix}content-font-size: var(--#{$prefix}font-size-md);
-      --#{$prefix}content-gap: 24px;
+      --content-font-size: var(--font-size-md);
+      --content-gap: 24px;
     }
 
     p,
@@ -32,18 +32,18 @@
     }
 
     :where(ul, ol):not([class]) li:not(:last-child) {
-      margin-bottom: calc(var(--#{$prefix}content-gap) / 4);
+      margin-bottom: calc(var(--content-gap) / 4);
     }
 
     li ul,
     li ol {
-      margin-top: calc(var(--#{$prefix}content-gap) / 4);
+      margin-top: calc(var(--content-gap) / 4);
     }
 
     hr {
-      margin: calc(var(--#{$prefix}content-gap) * 1.5) 0;
+      margin: calc(var(--content-gap) * 1.5) 0;
       border: 0;
-      border-block-start: 1px solid var(--#{$prefix}border-color);
+      border-block-start: 1px solid var(--border-color);
     }
 
     h1,
@@ -53,7 +53,7 @@
     h5,
     h6 {
       margin-top: 0;
-      margin-bottom: calc(var(--#{$prefix}content-gap) / -2);
+      margin-bottom: calc(var(--content-gap) / -2);
       font-weight: 500;
       line-height: 1.25;
 
@@ -66,7 +66,7 @@
     h1,
     h2 {
       &:not(:first-child) {
-        margin-top: calc(var(--#{$prefix}content-gap) * 1.5);
+        margin-top: calc(var(--content-gap) * 1.5);
       }
     }
 
@@ -75,7 +75,7 @@
     h5,
     h6 {
       &:not(:first-child) {
-        margin-top: calc(var(--#{$prefix}content-gap) * 1.25);
+        margin-top: calc(var(--content-gap) * 1.25);
       }
     }
 
@@ -100,15 +100,15 @@
     }
 
     a:not([class]) {
-      color: var(--#{$prefix}link-color);
+      color: var(--link-color);
       text-decoration: underline;
-      text-decoration-color: color-mix(in srgb, var(--#{$prefix}link-color) 25%, transparent);
+      text-decoration-color: color-mix(in srgb, var(--link-color) 25%, transparent);
       text-underline-offset: 4px;
       @include transition(.1s text-decoration-color ease-in-out);
     }
 
     a:not([class]):hover {
-      text-decoration-color: var(--#{$prefix}link-hover-color);
+      text-decoration-color: var(--link-hover-color);
     }
 
     img {
@@ -116,9 +116,9 @@
     }
 
     blockquote {
-      padding-inline-start: calc(var(--#{$prefix}content-gap) / 2);
+      padding-inline-start: calc(var(--content-gap) / 2);
       margin: 0;
-      border-inline-start: 4px solid var(--#{$prefix}border-color);
+      border-inline-start: 4px solid var(--border-color);
     }
 
     table {
@@ -132,7 +132,7 @@
       th {
         padding: 6px 12px;
         text-align: inherit;
-        border: 1px solid var(--#{$prefix}border-color);
+        border: 1px solid var(--border-color);
       }
     }
 

@@ -207,5 +207,8 @@
   },
   "overrides": {
     "volar-service-emmet": "0.0.63"
+  },
+  "dependencies": {
+    "postcss-prefix-custom-properties": "^0.1.0"
   }
 }

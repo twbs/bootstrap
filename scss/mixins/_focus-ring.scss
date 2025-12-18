@@ -3,11 +3,11 @@
 
 @mixin focus-ring($offset: false, $color: null) {
   @if $color != null {
-    outline: var(--#{$prefix}focus-ring-width) solid #{$color};
+    outline: var(--focus-ring-width) solid #{$color};
   } @else {
-    outline: var(--#{$prefix}focus-ring);
+    outline: var(--focus-ring);
   }
   @if $offset {
-    outline-offset: var(--#{$prefix}focus-ring-offset);
+    outline-offset: var(--focus-ring-offset);
   }
 }

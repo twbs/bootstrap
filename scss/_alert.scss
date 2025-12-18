@@ -8,33 +8,33 @@
 $alert-padding-y:               $spacer !default;
 $alert-padding-x:               $spacer !default;
 $alert-margin-bottom:           1rem !default;
-$alert-border-radius:           var(--#{$prefix}border-radius) !default;
+$alert-border-radius:           var(--border-radius) !default;
 $alert-link-font-weight:        $font-weight-bold !default;
-$alert-border-width:            var(--#{$prefix}border-width) !default;
+$alert-border-width:            var(--border-width) !default;
 $alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 // scss-docs-end alert-variables
 
 @layer components {
   .alert {
     // scss-docs-start alert-css-vars
-    --#{$prefix}alert-bg: var(--#{$prefix}theme-bg-subtle, transparent);
-    --#{$prefix}alert-padding-x: #{$alert-padding-x};
-    --#{$prefix}alert-padding-y: #{$alert-padding-y};
-    --#{$prefix}alert-margin-bottom: #{$alert-margin-bottom};
-    --#{$prefix}alert-color: var(--#{$prefix}theme-text, inherit);
-    --#{$prefix}alert-border-color: transparent;
-    --#{$prefix}alert-border: #{$alert-border-width} solid var(--#{$prefix}theme-border, var(--#{$prefix}alert-border-color));
-    --#{$prefix}alert-border-radius: #{$alert-border-radius};
-    --#{$prefix}alert-link-color: inherit;
+    --alert-bg: var(--theme-bg-subtle, transparent);
+    --alert-padding-x: #{$alert-padding-x};
+    --alert-padding-y: #{$alert-padding-y};
+    --alert-margin-bottom: #{$alert-margin-bottom};
+    --alert-color: var(--theme-text, inherit);
+    --alert-border-color: transparent;
+    --alert-border: #{$alert-border-width} solid var(--theme-border, var(--alert-border-color));
+    --alert-border-radius: #{$alert-border-radius};
+    --alert-link-color: inherit;
     // scss-docs-end alert-css-vars
 
     position: relative;
-    padding: var(--#{$prefix}alert-padding-y) var(--#{$prefix}alert-padding-x);
-    // margin-bottom: var(--#{$prefix}alert-margin-bottom);
-    color: var(--#{$prefix}alert-color);
-    background-color: var(--#{$prefix}alert-bg);
-    border: var(--#{$prefix}alert-border);
-    @include border-radius(var(--#{$prefix}alert-border-radius));
+    padding: var(--alert-padding-y) var(--alert-padding-x);
+    // margin-bottom: var(--alert-margin-bottom);
+    color: var(--alert-color);
+    background-color: var(--alert-bg);
+    border: var(--alert-border);
+    @include border-radius(var(--alert-border-radius));
   }
 
   // Headings for larger alerts
@@ -46,7 +46,7 @@ $alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers widt
   // Provide class for links that match alerts
   .alert-link {
     font-weight: $alert-link-font-weight;
-    color: var(--#{$prefix}alert-link-color);
+    color: var(--alert-link-color);
   }
 
 
