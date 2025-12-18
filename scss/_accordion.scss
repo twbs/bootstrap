@@ -3,8 +3,9 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/transition" as *;
-@use "mixins/box-shadow" as *;
+@use "mixins/focus-ring" as *;
 @use "mixins/color-mode" as *;
+@use "buttons/button-variables" as *; // mdo-do: remove?
 
 // scss-docs-start accordion-variables
 $accordion-padding-y:                     1rem !default;
@@ -26,8 +27,6 @@ $accordion-button-bg:                     var(--#{$prefix}accordion-bg) !default
 $accordion-transition:                    $btn-transition, border-radius .15s ease !default;
 $accordion-button-active-bg:              var(--#{$prefix}bg-2) !default;
 $accordion-button-active-color:           var(--#{$prefix}fg) !default;
-
-$accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
 
 $accordion-icon-width:                    1.25rem !default;
 $accordion-icon-transition:               transform .2s ease-in-out !default;
@@ -53,7 +52,6 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
     --#{$prefix}accordion-btn-icon-width: #{$accordion-icon-width};
     --#{$prefix}accordion-btn-icon-transform: #{$accordion-icon-transform};
     --#{$prefix}accordion-btn-icon-transition: #{$accordion-icon-transition};
-    --#{$prefix}accordion-btn-focus-box-shadow: #{$accordion-button-focus-box-shadow};
     --#{$prefix}accordion-body-padding-x: #{$accordion-body-padding-x};
     --#{$prefix}accordion-body-padding-y: #{$accordion-body-padding-y};
     --#{$prefix}accordion-active-color: #{$accordion-button-active-color};
@@ -103,10 +101,9 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
       z-index: 2;
     }
 
-    &:focus {
+    &:focus-visible {
       z-index: 3;
-      outline: 0;
-      box-shadow: var(--#{$prefix}accordion-btn-focus-box-shadow);
+      @include focus-ring(true);
     }
   }
 

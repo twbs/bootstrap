@@ -2,13 +2,13 @@
 @use "config" as *;
 @use "colors" as *;
 @use "variables" as *;
+@use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/color-mode" as *;
+@use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
-@use "mixins/color-mode" as *;
-@use "mixins/deprecate" as *;
-@use "layout/breakpoints" as *;
 
 // scss-docs-start navbar-variables
 $navbar-padding-y:                  $spacer * .5 !default;
@@ -29,8 +29,7 @@ $navbar-brand-margin-end:           1rem !default;
 $navbar-toggler-padding-y:          .25rem !default;
 $navbar-toggler-padding-x:          .75rem !default;
 $navbar-toggler-font-size:          $font-size-lg !default;
-$navbar-toggler-border-radius:      $btn-border-radius !default;
-$navbar-toggler-focus-width:        $btn-focus-width !default;
+$navbar-toggler-border-radius:      var(--#{$prefix}border-radius) !default;
 $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
 
 $navbar-light-color:                var(--#{$prefix}fg-2) !default;
@@ -78,7 +77,6 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
     --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-light-toggler-icon-bg)};
     --#{$prefix}navbar-toggler-border-color: #{$navbar-light-toggler-border-color};
     --#{$prefix}navbar-toggler-border-radius: #{$navbar-toggler-border-radius};
-    --#{$prefix}navbar-toggler-focus-width: #{$navbar-toggler-focus-width};
     --#{$prefix}navbar-toggler-transition: #{$navbar-toggler-transition};
     // scss-docs-end navbar-css-vars
 
@@ -217,10 +215,9 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
       text-decoration: none;
     }
 
-    &:focus {
+    &:focus-visible {
       text-decoration: none;
-      outline: 0;
-      box-shadow: 0 0 0 var(--#{$prefix}navbar-toggler-focus-width);
+      @include focus-ring(true);
     }
   }
 
@@ -317,10 +314,6 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
   // Navbar themes
   //
   // Styles for switching between navbars with light or dark background.
-
-  .navbar-light {
-    @include deprecate("`.navbar-light`", "v5.2.0", "v6.0.0", true);
-  }
 
   .navbar-dark,
   .navbar[data-bs-theme="dark"] {
