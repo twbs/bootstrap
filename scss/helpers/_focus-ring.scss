@@ -2,6 +2,6 @@
 
 @layer helpers {
   .focus-ring:focus-visible {
-    outline: var(--#{$prefix}focus-ring);
+    outline: var(--focus-ring);
   }
 }

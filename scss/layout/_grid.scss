@@ -8,7 +8,7 @@
 
 :root {
   @each $name, $value in $grid-breakpoints {
-    --#{$prefix}breakpoint-#{$name}: #{$value};
+    --breakpoint-#{$name}: #{$value};
   }
 }
 
@@ -27,14 +27,14 @@
 
   @if $enable-cssgrid {
     .grid {
-      --#{$prefix}columns: #{$grid-columns};
-      --#{$prefix}rows: 1;
-      --#{$prefix}gap: #{$grid-gutter-width};
+      --columns: #{$grid-columns};
+      --rows: 1;
+      --gap: #{$grid-gutter-width};
 
       display: grid;
-      grid-template-rows: repeat(var(--#{$prefix}rows), 1fr);
-      grid-template-columns: repeat(var(--#{$prefix}columns), 1fr);
-      gap: var(--#{$prefix}gap);
+      grid-template-rows: repeat(var(--rows), 1fr);
+      grid-template-columns: repeat(var(--columns), 1fr);
+      gap: var(--gap);
 
     }
 
@@ -47,12 +47,12 @@
   }
 
   .grid-fill {
-    --#{$prefix}gap: #{$grid-gutter-width};
+    --gap: #{$grid-gutter-width};
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
     grid-auto-flow: row;
-    gap: var(--#{$prefix}gap);
+    gap: var(--gap);
   }
 
   // .g-col-auto {
@@ -61,13 +61,13 @@
 
   // mdo-do: add to utilities?
   // .grid-cols-3 {
-  //   --#{$prefix}columns: 3;
+  //   --columns: 3;
   // }
   // .grid-cols-4 {
-  //   --#{$prefix}columns: 4;
+  //   --columns: 4;
   // }
   // .grid-cols-6 {
-  //   --#{$prefix}columns: 6;
+  //   --columns: 6;
   // }
 
   // .grid-full {

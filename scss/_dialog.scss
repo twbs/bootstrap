@@ -17,19 +17,19 @@ $dialog-width-sm:               280px !default;
 $dialog-width-lg:               800px !default;
 $dialog-width-xl:               1140px !default;
 $dialog-margin:                 1.75rem !default;
-$dialog-color:                  var(--#{$prefix}fg-body) !default;
-$dialog-bg:                     var(--#{$prefix}bg-body) !default;
-$dialog-border-color:           var(--#{$prefix}border-color-translucent) !default;
-$dialog-border-width:           var(--#{$prefix}border-width) !default;
-$dialog-border-radius:          var(--#{$prefix}border-radius-lg) !default;
-$dialog-box-shadow:             var(--#{$prefix}box-shadow-lg) !default;
+$dialog-color:                  var(--fg-body) !default;
+$dialog-bg:                     var(--bg-body) !default;
+$dialog-border-color:           var(--border-color-translucent) !default;
+$dialog-border-width:           var(--border-width) !default;
+$dialog-border-radius:          var(--border-radius-lg) !default;
+$dialog-box-shadow:             var(--box-shadow-lg) !default;
 $dialog-backdrop-bg:            rgba(0, 0, 0, .5) !default;
 $dialog-header-padding:         1rem !default;
-$dialog-header-border-color:    var(--#{$prefix}border-color) !default;
-$dialog-header-border-width:    var(--#{$prefix}border-width) !default;
+$dialog-header-border-color:    var(--border-color) !default;
+$dialog-header-border-width:    var(--border-width) !default;
 $dialog-footer-padding:         1rem !default;
-$dialog-footer-border-color:    var(--#{$prefix}border-color) !default;
-$dialog-footer-border-width:    var(--#{$prefix}border-width) !default;
+$dialog-footer-border-color:    var(--border-color) !default;
+$dialog-footer-border-width:    var(--border-width) !default;
 $dialog-footer-gap:             .5rem !default;
 // scss-docs-end dialog-css-vars
 
@@ -41,39 +41,39 @@ $dialog-footer-gap:             .5rem !default;
   }
 
   .dialog {
-    --#{$prefix}dialog-padding: #{$dialog-padding};
-    --#{$prefix}dialog-width: #{$dialog-width};
-    --#{$prefix}dialog-margin: #{$dialog-margin};
-    --#{$prefix}dialog-color: #{$dialog-color};
-    --#{$prefix}dialog-bg: #{$dialog-bg};
-    --#{$prefix}dialog-border-color: #{$dialog-border-color};
-    --#{$prefix}dialog-border-width: #{$dialog-border-width};
-    --#{$prefix}dialog-border-radius: #{$dialog-border-radius};
-    --#{$prefix}dialog-box-shadow: #{$dialog-box-shadow};
-    --#{$prefix}dialog-backdrop-bg: #{$dialog-backdrop-bg};
-    --#{$prefix}dialog-header-padding: #{$dialog-header-padding};
-    --#{$prefix}dialog-header-border-color: #{$dialog-header-border-color};
-    --#{$prefix}dialog-header-border-width: #{$dialog-header-border-width};
-    --#{$prefix}dialog-footer-padding: #{$dialog-footer-padding};
-    --#{$prefix}dialog-footer-border-color: #{$dialog-footer-border-color};
-    --#{$prefix}dialog-footer-border-width: #{$dialog-footer-border-width};
-    --#{$prefix}dialog-footer-gap: #{$dialog-footer-gap};
+    --dialog-padding: #{$dialog-padding};
+    --dialog-width: #{$dialog-width};
+    --dialog-margin: #{$dialog-margin};
+    --dialog-color: #{$dialog-color};
+    --dialog-bg: #{$dialog-bg};
+    --dialog-border-color: #{$dialog-border-color};
+    --dialog-border-width: #{$dialog-border-width};
+    --dialog-border-radius: #{$dialog-border-radius};
+    --dialog-box-shadow: #{$dialog-box-shadow};
+    --dialog-backdrop-bg: #{$dialog-backdrop-bg};
+    --dialog-header-padding: #{$dialog-header-padding};
+    --dialog-header-border-color: #{$dialog-header-border-color};
+    --dialog-header-border-width: #{$dialog-header-border-width};
+    --dialog-footer-padding: #{$dialog-footer-padding};
+    --dialog-footer-border-color: #{$dialog-footer-border-color};
+    --dialog-footer-border-width: #{$dialog-footer-border-width};
+    --dialog-footer-gap: #{$dialog-footer-gap};
 
     // Reset native dialog styles
-    max-width: var(--#{$prefix}dialog-width);
-    max-height: calc(100% - var(--#{$prefix}dialog-margin) * 2);
+    max-width: var(--dialog-width);
+    max-height: calc(100% - var(--dialog-margin) * 2);
     padding: 0;
     margin: auto;
-    color: var(--#{$prefix}dialog-color);
-    background-color: var(--#{$prefix}dialog-bg);
+    color: var(--dialog-color);
+    background-color: var(--dialog-bg);
     background-clip: padding-box;
-    border: var(--#{$prefix}dialog-border-width) solid var(--#{$prefix}dialog-border-color);
-    @include border-radius(var(--#{$prefix}dialog-border-radius));
-    @include box-shadow(var(--#{$prefix}dialog-box-shadow));
+    border: var(--dialog-border-width) solid var(--dialog-border-color);
+    @include border-radius(var(--dialog-border-radius));
+    @include box-shadow(var(--dialog-box-shadow));
 
     // Native backdrop styling via ::backdrop pseudo-element
     &::backdrop {
-      background-color: var(--#{$prefix}dialog-backdrop-bg);
+      background-color: var(--dialog-backdrop-bg);
     }
 
     // Animation support using native [open] attribute
@@ -120,7 +120,7 @@ $dialog-footer-gap:             .5rem !default;
       max-width: 100%;
       height: 100%;
       max-height: 100%;
-      padding: var(--#{$prefix}dialog-margin);
+      padding: var(--dialog-margin);
       margin: 0;
       overflow-y: auto;
       overscroll-behavior: contain;
@@ -130,15 +130,15 @@ $dialog-footer-gap:             .5rem !default;
 
       // The visual dialog box is a child wrapper
       > .dialog-box {
-        max-width: var(--#{$prefix}dialog-width);
-        margin-block-end: var(--#{$prefix}dialog-margin);
+        max-width: var(--dialog-width);
+        margin-block-end: var(--dialog-margin);
         margin-inline: auto;
-        color: var(--#{$prefix}dialog-color);
-        background-color: var(--#{$prefix}dialog-bg);
+        color: var(--dialog-color);
+        background-color: var(--dialog-bg);
         background-clip: padding-box;
-        border: var(--#{$prefix}dialog-border-width) solid var(--#{$prefix}dialog-border-color);
-        @include border-radius(var(--#{$prefix}dialog-border-radius));
-        @include box-shadow(var(--#{$prefix}dialog-box-shadow));
+        border: var(--dialog-border-width) solid var(--dialog-border-color);
+        @include border-radius(var(--dialog-border-radius));
+        @include box-shadow(var(--dialog-box-shadow));
       }
     }
 
@@ -146,7 +146,7 @@ $dialog-footer-gap:             .5rem !default;
     &.dialog-scrollable[open] {
       display: flex;
       flex-direction: column;
-      max-height: calc(100% - var(--#{$prefix}dialog-margin) * 2);
+      max-height: calc(100% - var(--dialog-margin) * 2);
 
       .dialog-body {
         overflow-y: auto;
@@ -155,15 +155,15 @@ $dialog-footer-gap:             .5rem !default;
   }
 
   // Dialog sizes
-  .dialog-sm { --#{$prefix}dialog-width: #{$dialog-width-sm}; }
-  .dialog-lg { --#{$prefix}dialog-width: #{$dialog-width-lg}; }
-  .dialog-xl { --#{$prefix}dialog-width: #{$dialog-width-xl}; }
+  .dialog-sm { --dialog-width: #{$dialog-width-sm}; }
+  .dialog-lg { --dialog-width: #{$dialog-width-lg}; }
+  .dialog-xl { --dialog-width: #{$dialog-width-xl}; }
 
   // Fullscreen dialog
   .dialog-fullscreen {
-    --#{$prefix}dialog-width: 100vw;
-    --#{$prefix}dialog-margin: 0;
-    --#{$prefix}dialog-border-radius: 0;
+    --dialog-width: 100vw;
+    --dialog-margin: 0;
+    --dialog-border-radius: 0;
 
     width: 100%;
     max-width: none;
@@ -180,9 +180,9 @@ $dialog-footer-gap:             .5rem !default;
     @if $postfix != "" {
       @include media-breakpoint-down($breakpoint) {
         .dialog-fullscreen#{$postfix} {
-          --#{$prefix}dialog-width: 100vw;
-          --#{$prefix}dialog-margin: 0;
-          --#{$prefix}dialog-border-radius: 0;
+          --dialog-width: 100vw;
+          --dialog-margin: 0;
+          --dialog-border-radius: 0;
 
           width: 100%;
           max-width: none;
@@ -198,8 +198,8 @@ $dialog-footer-gap:             .5rem !default;
     display: flex;
     flex-shrink: 0;
     align-items: center;
-    padding: var(--#{$prefix}dialog-header-padding);
-    border-block-end: var(--#{$prefix}dialog-header-border-width) solid var(--#{$prefix}dialog-header-border-color);
+    padding: var(--dialog-header-padding);
+    border-block-end: var(--dialog-header-border-width) solid var(--dialog-header-border-color);
 
     .btn-close {
       margin-inline-start: auto;
@@ -209,7 +209,7 @@ $dialog-footer-gap:             .5rem !default;
   // Dialog title
   .dialog-title {
     margin-bottom: 0;
-    font-size: var(--#{$prefix}font-size-md);
+    font-size: var(--font-size-md);
     line-height: 1.5;
   }
 
@@ -217,7 +217,7 @@ $dialog-footer-gap:             .5rem !default;
   .dialog-body {
     position: relative;
     flex: 1 1 auto;
-    padding: var(--#{$prefix}dialog-padding);
+    padding: var(--dialog-padding);
     overflow-y: auto;
   }
 
@@ -226,10 +226,10 @@ $dialog-footer-gap:             .5rem !default;
     display: flex;
     flex-shrink: 0;
     flex-wrap: wrap;
-    gap: var(--#{$prefix}dialog-footer-gap);
+    gap: var(--dialog-footer-gap);
     align-items: center;
     justify-content: flex-end;
-    padding: var(--#{$prefix}dialog-footer-padding);
-    border-block-start: var(--#{$prefix}dialog-footer-border-width) solid var(--#{$prefix}dialog-footer-border-color);
+    padding: var(--dialog-footer-padding);
+    border-block-start: var(--dialog-footer-border-width) solid var(--dialog-footer-border-color);
   }
 }

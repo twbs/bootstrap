@@ -10,18 +10,18 @@ $card-spacer-x:                     $spacer !default;
 $card-title-spacer-y:               $spacer * .5 !default;
 $card-title-color:                  null !default;
 $card-subtitle-color:               null !default;
-$card-border-width:                 var(--#{$prefix}border-width) !default;
-$card-border-color:                 var(--#{$prefix}border-color-translucent) !default;
-$card-border-radius:                var(--#{$prefix}border-radius) !default;
+$card-border-width:                 var(--border-width) !default;
+$card-border-color:                 var(--border-color-translucent) !default;
+$card-border-radius:                var(--border-radius) !default;
 $card-box-shadow:                   null !default;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-padding-y:                $card-spacer-y * .5 !default;
 $card-cap-padding-x:                $card-spacer-x !default;
-$card-cap-bg:                       rgba(var(--#{$prefix}body-color-rgb), .03) !default;
+$card-cap-bg:                       rgba(var(--body-color-rgb), .03) !default;
 $card-cap-color:                    null !default;
 $card-height:                       null !default;
 $card-color:                        null !default;
-$card-bg:                           var(--#{$prefix}bg-body) !default;
+$card-bg:                           var(--bg-body) !default;
 $card-img-overlay-padding:          $spacer !default;
 $card-group-margin:                 $grid-gutter-width * .5 !default;
 // scss-docs-end card-variables
@@ -29,39 +29,39 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 @layer components {
   .card {
     // scss-docs-start card-css-vars
-    --#{$prefix}card-spacer-y: #{$card-spacer-y};
-    --#{$prefix}card-spacer-x: #{$card-spacer-x};
-    --#{$prefix}card-title-spacer-y: #{$card-title-spacer-y};
-    --#{$prefix}card-title-color: #{$card-title-color};
-    --#{$prefix}card-subtitle-color: #{$card-subtitle-color};
-    --#{$prefix}card-border-width: #{$card-border-width};
-    --#{$prefix}card-border-color: #{$card-border-color};
-    --#{$prefix}card-border-radius: #{$card-border-radius};
-    --#{$prefix}card-box-shadow: #{$card-box-shadow};
-    --#{$prefix}card-inner-border-radius: #{$card-inner-border-radius};
-    --#{$prefix}card-cap-padding-y: #{$card-cap-padding-y};
-    --#{$prefix}card-cap-padding-x: #{$card-cap-padding-x};
-    --#{$prefix}card-cap-bg: #{$card-cap-bg};
-    --#{$prefix}card-cap-color: #{$card-cap-color};
-    --#{$prefix}card-height: #{$card-height};
-    --#{$prefix}card-color: #{$card-color};
-    --#{$prefix}card-bg: #{$card-bg};
-    --#{$prefix}card-img-overlay-padding: #{$card-img-overlay-padding};
-    --#{$prefix}card-group-margin: #{$card-group-margin};
+    --card-spacer-y: #{$card-spacer-y};
+    --card-spacer-x: #{$card-spacer-x};
+    --card-title-spacer-y: #{$card-title-spacer-y};
+    --card-title-color: #{$card-title-color};
+    --card-subtitle-color: #{$card-subtitle-color};
+    --card-border-width: #{$card-border-width};
+    --card-border-color: #{$card-border-color};
+    --card-border-radius: #{$card-border-radius};
+    --card-box-shadow: #{$card-box-shadow};
+    --card-inner-border-radius: #{$card-inner-border-radius};
+    --card-cap-padding-y: #{$card-cap-padding-y};
+    --card-cap-padding-x: #{$card-cap-padding-x};
+    --card-cap-bg: #{$card-cap-bg};
+    --card-cap-color: #{$card-cap-color};
+    --card-height: #{$card-height};
+    --card-color: #{$card-color};
+    --card-bg: #{$card-bg};
+    --card-img-overlay-padding: #{$card-img-overlay-padding};
+    --card-group-margin: #{$card-group-margin};
     // scss-docs-end card-css-vars
 
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
-    height: var(--#{$prefix}card-height);
-    color: var(--#{$prefix}color-body);
+    height: var(--card-height);
+    color: var(--color-body);
     word-wrap: break-word;
-    background-color: var(--#{$prefix}card-bg);
+    background-color: var(--card-bg);
     background-clip: border-box;
-    border: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
-    @include border-radius(var(--#{$prefix}card-border-radius));
-    @include box-shadow(var(--#{$prefix}card-box-shadow));
+    border: var(--card-border-width) solid var(--card-border-color);
+    @include border-radius(var(--card-border-radius));
+    @include box-shadow(var(--card-box-shadow));
 
     > hr {
       margin-inline: 0;
@@ -72,12 +72,12 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 
       &:first-child {
         border-block-start-width: 0;
-        @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
+        @include border-top-radius(var(--card-inner-border-radius));
       }
 
       &:last-child  {
         border-block-end-width: 0;
-        @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
+        @include border-bottom-radius(var(--card-inner-border-radius));
       }
     }
 
@@ -93,19 +93,19 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
     flex: 1 1 auto;
-    padding: var(--#{$prefix}card-spacer-y) var(--#{$prefix}card-spacer-x);
-    color: var(--#{$prefix}card-color);
+    padding: var(--card-spacer-y) var(--card-spacer-x);
+    color: var(--card-color);
   }
 
   .card-title {
-    margin-bottom: var(--#{$prefix}card-title-spacer-y);
-    color: var(--#{$prefix}card-title-color);
+    margin-bottom: var(--card-title-spacer-y);
+    color: var(--card-title-color);
   }
 
   .card-subtitle {
-    margin-top: calc(-.5 * var(--#{$prefix}card-title-spacer-y));
+    margin-top: calc(-.5 * var(--card-title-spacer-y));
     margin-bottom: 0;
-    color: var(--#{$prefix}card-subtitle-color);
+    color: var(--card-subtitle-color);
   }
 
   .card-text:last-child {
@@ -118,7 +118,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     }
 
     + .card-link {
-      margin-inline-start: var(--#{$prefix}card-spacer-x);
+      margin-inline-start: var(--card-spacer-x);
     }
   }
 
@@ -127,25 +127,25 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   //
 
   .card-header {
-    padding: var(--#{$prefix}card-cap-padding-y) var(--#{$prefix}card-cap-padding-x);
+    padding: var(--card-cap-padding-y) var(--card-cap-padding-x);
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
-    color: var(--#{$prefix}card-cap-color);
-    background-color: var(--#{$prefix}card-cap-bg);
-    border-block-end: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
+    color: var(--card-cap-color);
+    background-color: var(--card-cap-bg);
+    border-block-end: var(--card-border-width) solid var(--card-border-color);
 
     &:first-child {
-      @include border-radius(var(--#{$prefix}card-inner-border-radius) var(--#{$prefix}card-inner-border-radius) 0 0);
+      @include border-radius(var(--card-inner-border-radius) var(--card-inner-border-radius) 0 0);
     }
   }
 
   .card-footer {
-    padding: var(--#{$prefix}card-cap-padding-y) var(--#{$prefix}card-cap-padding-x);
-    color: var(--#{$prefix}card-cap-color);
-    background-color: var(--#{$prefix}card-cap-bg);
-    border-block-start: var(--#{$prefix}card-border-width) solid var(--#{$prefix}card-border-color);
+    padding: var(--card-cap-padding-y) var(--card-cap-padding-x);
+    color: var(--card-cap-color);
+    background-color: var(--card-cap-bg);
+    border-block-start: var(--card-border-width) solid var(--card-border-color);
 
     &:last-child {
-      @include border-radius(0 0 var(--#{$prefix}card-inner-border-radius) var(--#{$prefix}card-inner-border-radius));
+      @include border-radius(0 0 var(--card-inner-border-radius) var(--card-inner-border-radius));
     }
   }
 
@@ -155,26 +155,26 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   //
 
   .card-header-tabs {
-    margin-inline: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
-    margin-bottom: calc(-1 * var(--#{$prefix}card-cap-padding-y));
+    margin-inline: calc(-.5 * var(--card-cap-padding-x));
+    margin-bottom: calc(-1 * var(--card-cap-padding-y));
     border-block-end: 0;
 
     .nav-link.active {
-      background-color: var(--#{$prefix}card-bg);
-      border-block-end-color: var(--#{$prefix}card-bg);
+      background-color: var(--card-bg);
+      border-block-end-color: var(--card-bg);
     }
   }
 
   .card-header-pills {
-    margin-inline: calc(-.5 * var(--#{$prefix}card-cap-padding-x));
+    margin-inline: calc(-.5 * var(--card-cap-padding-x));
   }
 
   // Card image
   .card-img-overlay {
     position: absolute;
     inset: 0;
-    padding: var(--#{$prefix}card-img-overlay-padding);
-    @include border-radius(var(--#{$prefix}card-inner-border-radius));
+    padding: var(--card-img-overlay-padding);
+    @include border-radius(var(--card-inner-border-radius));
   }
 
   .card-img,
@@ -185,12 +185,12 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
 
   .card-img,
   .card-img-top {
-    @include border-top-radius(var(--#{$prefix}card-inner-border-radius));
+    @include border-top-radius(var(--card-inner-border-radius));
   }
 
   .card-img,
   .card-img-bottom {
-    @include border-bottom-radius(var(--#{$prefix}card-inner-border-radius));
+    @include border-bottom-radius(var(--card-inner-border-radius));
   }
 
 
@@ -202,7 +202,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     // The child selector allows nested `.card` within `.card-group`
     // to display properly.
     > .card {
-      margin-bottom: var(--#{$prefix}card-group-margin);
+      margin-bottom: var(--card-group-margin);
     }
 
     @include media-breakpoint-up(sm) {

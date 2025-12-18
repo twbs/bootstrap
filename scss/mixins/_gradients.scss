@@ -8,7 +8,7 @@
   background-color: $color;
 
   @if $enable-gradients {
-    background-image: var(--#{$prefix}gradient);
+    background-image: var(--gradient);
   }
 }
 // scss-docs-end gradient-bg-mixin
@@ -17,18 +17,18 @@
 // Horizontal gradient, from left to right
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
-@mixin gradient-x($start-color: var(--#{$prefix}gray-700), $end-color: var(--#{$prefix}gray-800), $start-percent: 0%, $end-percent: 100%) {
+@mixin gradient-x($start-color: var(--gray-700), $end-color: var(--gray-800), $start-percent: 0%, $end-percent: 100%) {
   background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
 }
 
 // Vertical gradient, from top to bottom
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
-@mixin gradient-y($start-color: var(--#{$prefix}gray-700), $end-color: var(--#{$prefix}gray-800), $start-percent: null, $end-percent: null) {
+@mixin gradient-y($start-color: var(--gray-700), $end-color: var(--gray-800), $start-percent: null, $end-percent: null) {
   background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
 }
 
-@mixin gradient-directional($start-color: var(--#{$prefix}gray-700), $end-color: var(--#{$prefix}gray-800), $deg: 45deg) {
+@mixin gradient-directional($start-color: var(--gray-700), $end-color: var(--gray-800), $deg: 45deg) {
   background-image: linear-gradient($deg, $start-color, $end-color);
 }
 
@@ -40,7 +40,7 @@
   background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
 }
 
-@mixin gradient-radial($inner-color: var(--#{$prefix}gray-700), $outer-color: var(--#{$prefix}gray-800)) {
+@mixin gradient-radial($inner-color: var(--gray-700), $outer-color: var(--gray-800)) {
   background-image: radial-gradient(circle, $inner-color, $outer-color);
 }
 

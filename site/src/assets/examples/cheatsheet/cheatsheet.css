@@ -26,29 +26,29 @@ body {
   padding: .1875rem .5rem;
   margin-top: .125rem;
   margin-left: .3125rem;
-  color: var(--bs-body-color);
+  color: var(--bs-bs-bs-bs-bs-body-color);
 }
 
 .bd-aside a:hover,
 .bd-aside a:focus {
-  color: var(--bs-body-color);
+  color: var(--bs-bs-bs-bs-bs-body-color);
   background-color: rgba(121, 82, 179, .1);
 }
 
 .bd-aside .active {
   font-weight: 600;
-  color: var(--bs-body-color);
+  color: var(--bs-bs-bs-bs-bs-body-color);
 }
 
 .bd-aside .btn {
   padding: .25rem .5rem;
   font-weight: 600;
-  color: var(--bs-body-color);
+  color: var(--bs-bs-bs-bs-bs-body-color);
 }
 
 .bd-aside .btn:hover,
 .bd-aside .btn:focus {
-  color: var(--bs-body-color);
+  color: var(--bs-bs-bs-bs-bs-body-color);
   background-color: rgba(121, 82, 179, .1);
 }
 

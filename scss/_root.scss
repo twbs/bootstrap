@@ -17,24 +17,24 @@
   // Generate semantic theme colors
   @each $color-name, $color-map in $new-theme-colors {
     @each $key, $value in $color-map {
-      --#{$prefix}#{$color-name}-#{$key}: #{$value};
+      --#{$color-name}-#{$key}: #{$value};
     }
   }
 
   @each $color, $value in $theme-bgs {
-    --#{$prefix}bg-#{$color}: #{$value};
+    --bg-#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-fgs {
-    --#{$prefix}fg-#{$color}: #{$value};
+    --fg-#{$color}: #{$value};
   }
 
   @each $color, $value in $theme-borders {
-    --#{$prefix}border-#{$color}: #{$value};
+    --border-#{$color}: #{$value};
   }
 
-  --#{$prefix}black: #{$black};
-  --#{$prefix}white: #{$white};
+  --black: #{$black};
+  --white: #{$white};
   // scss-docs-end root-theme-variables
 }
 
@@ -44,105 +44,105 @@
 
   // Note: Custom variable values only support SassScript inside `#{}`.
 
-  --#{$prefix}white-rgb: #{to-rgb($white)};
-  --#{$prefix}black-rgb: #{to-rgb($black)};
+  --white-rgb: #{to-rgb($white)};
+  --black-rgb: #{to-rgb($black)};
 
   // Fonts
 
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  --#{$prefix}font-sans-serif: #{meta.inspect($font-family-sans-serif)};
-  --#{$prefix}font-monospace: #{meta.inspect($font-family-monospace)};
-  --#{$prefix}gradient: #{$gradient};
+  --font-sans-serif: #{meta.inspect($font-family-sans-serif)};
+  --font-monospace: #{meta.inspect($font-family-monospace)};
+  --gradient: #{$gradient};
 
   // Root and body
   // scss-docs-start root-body-variables
   @if $font-size-root != null {
-    --#{$prefix}root-font-size: #{$font-size-root};
+    --root-font-size: #{$font-size-root};
   }
-  --#{$prefix}body-font-family: #{meta.inspect($font-family-base)};
+  --body-font-family: #{meta.inspect($font-family-base)};
 
   // scss-docs-start root-font-size-variables
-  --#{$prefix}font-size-base: #{$font-size-base}; // 14px
+  --font-size-base: #{$font-size-base}; // 14px
 
-  --#{$prefix}font-size-xs: .75rem;
-  --#{$prefix}font-size-sm: .875rem;
-  --#{$prefix}font-size-md: 1rem;
-  --#{$prefix}font-size-lg: clamp(1.25rem, 1rem + .625vw, 1.5rem);
-  --#{$prefix}font-size-xl: clamp(1.5rem, 1.1rem + .75vw, 1.75rem);
-  --#{$prefix}font-size-2xl: clamp(1.75rem, 1.3rem + 1vw, 2rem);
-  --#{$prefix}font-size-3xl: clamp(2rem, 1.5rem + 1.875vw, 2.5rem);
-  --#{$prefix}font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
-  --#{$prefix}font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem);
-  --#{$prefix}font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem);
+  --font-size-xs: .75rem;
+  --font-size-sm: .875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: clamp(1.25rem, 1rem + .625vw, 1.5rem);
+  --font-size-xl: clamp(1.5rem, 1.1rem + .75vw, 1.75rem);
+  --font-size-2xl: clamp(1.75rem, 1.3rem + 1vw, 2rem);
+  --font-size-3xl: clamp(2rem, 1.5rem + 1.875vw, 2.5rem);
+  --font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
+  --font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem);
+  --font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem);
 
-  --#{$prefix}line-height-xs: 1.5;
-  --#{$prefix}line-height-sm: 1.5;
-  --#{$prefix}line-height-md: 1.5;
-  --#{$prefix}line-height-lg: 1.5;
-  --#{$prefix}line-height-xl: calc(2.5 / 1.75);
-  --#{$prefix}line-height-2xl: calc(3 / 2.25);
-  --#{$prefix}line-height-3xl: 1.2;
-  --#{$prefix}line-height-4xl: 1.1;
-  --#{$prefix}line-height-5xl: 1.1;
-  --#{$prefix}line-height-6xl: 1;
+  --line-height-xs: 1.5;
+  --line-height-sm: 1.5;
+  --line-height-md: 1.5;
+  --line-height-lg: 1.5;
+  --line-height-xl: calc(2.5 / 1.75);
+  --line-height-2xl: calc(3 / 2.25);
+  --line-height-3xl: 1.2;
+  --line-height-4xl: 1.1;
+  --line-height-5xl: 1.1;
+  --line-height-6xl: 1;
   // scss-docs-end root-font-size-variables
 
-  --#{$prefix}body-font-size: #{$font-size-base};
-  --#{$prefix}body-font-weight: #{$font-weight-base};
-  --#{$prefix}body-line-height: #{$line-height-base};
+  --body-font-size: #{$font-size-base};
+  --body-font-weight: #{$font-weight-base};
+  --body-line-height: #{$line-height-base};
   @if $body-text-align != null {
-    --#{$prefix}body-text-align: #{$body-text-align};
+    --body-text-align: #{$body-text-align};
   }
 
-  --#{$prefix}body-color-rgb: #{to-rgb($body-color)};
-  --#{$prefix}body-bg-rgb: #{to-rgb($body-bg)};
+  --body-color-rgb: #{to-rgb($body-color)};
+  --body-bg-rgb: #{to-rgb($body-bg)};
   // scss-docs-end root-body-variables
 
-  --#{$prefix}heading-color: #{$headings-color};
+  --heading-color: #{$headings-color};
 
-  --#{$prefix}link-color: light-dark(var(--#{$prefix}primary-base), var(--#{$prefix}primary-text));
-  --#{$prefix}link-decoration: #{$link-decoration};
-  --#{$prefix}link-hover-color: color-mix(in oklch, var(--#{$prefix}link-color) 90%, #000);
+  --link-color: light-dark(var(--primary-base), var(--primary-text));
+  --link-decoration: #{$link-decoration};
+  --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000);
 
-  --#{$prefix}code-color: #{$code-color};
-  --#{$prefix}highlight-color: #{$mark-color};
-  --#{$prefix}highlight-bg: #{$mark-bg};
+  --code-color: #{$code-color};
+  --highlight-color: #{$mark-color};
+  --highlight-bg: #{$mark-bg};
 
   // scss-docs-start root-border-var
-  --#{$prefix}border-width: #{$border-width};
-  --#{$prefix}border-style: #{$border-style};
-  --#{$prefix}border-color: #{$border-color};
-  --#{$prefix}border-color-translucent: #{$border-color-translucent};
+  --border-width: #{$border-width};
+  --border-style: #{$border-style};
+  --border-color: #{$border-color};
+  --border-color-translucent: #{$border-color-translucent};
   // scss-docs-end root-border-var
 
   // scss-docs-start root-border-radius-var
-  --#{$prefix}border-radius: #{$border-radius};
-  --#{$prefix}border-radius-sm: #{$border-radius-sm};
-  --#{$prefix}border-radius-lg: #{$border-radius-lg};
-  --#{$prefix}border-radius-xl: #{$border-radius-xl};
-  --#{$prefix}border-radius-2xl: #{$border-radius-2xl};
-  --#{$prefix}border-radius-pill: #{$border-radius-pill};
+  --border-radius: #{$border-radius};
+  --border-radius-sm: #{$border-radius-sm};
+  --border-radius-lg: #{$border-radius-lg};
+  --border-radius-xl: #{$border-radius-xl};
+  --border-radius-2xl: #{$border-radius-2xl};
+  --border-radius-pill: #{$border-radius-pill};
   // scss-docs-end root-border-radius-var
 
-  --#{$prefix}box-shadow: #{$box-shadow};
-  --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
-  --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
-  --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
+  --box-shadow: #{$box-shadow};
+  --box-shadow-sm: #{$box-shadow-sm};
+  --box-shadow-lg: #{$box-shadow-lg};
+  --box-shadow-inset: #{$box-shadow-inset};
 
   // Focus styles
   // scss-docs-start root-focus-variables
-  --#{$prefix}focus-ring-width: 3px;
-  --#{$prefix}focus-ring-offset: 1px;
-  --#{$prefix}focus-ring-color: var(--#{$prefix}primary-focus-ring);
-  --#{$prefix}focus-ring: var(--#{$prefix}focus-ring-width) solid var(--#{$prefix}focus-ring-color);
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 1px;
+  --focus-ring-color: var(--primary-focus-ring);
+  --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color);
   // scss-docs-end root-focus-variables
 
   // scss-docs-start root-form-validation-variables
-  --#{$prefix}form-valid-color: #{$form-valid-color};
-  --#{$prefix}form-valid-border-color: #{$form-valid-border-color};
-  --#{$prefix}form-invalid-color: #{$form-invalid-color};
-  --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
+  --form-valid-color: #{$form-valid-color};
+  --form-valid-border-color: #{$form-valid-border-color};
+  --form-invalid-color: #{$form-invalid-color};
+  --form-invalid-border-color: #{$form-invalid-border-color};
   // scss-docs-end root-form-validation-variables
 }
 
@@ -151,17 +151,17 @@
     color-scheme: dark;
 
     // scss-docs-start root-dark-mode-vars
-    --#{$prefix}emphasis-color: #{$body-emphasis-color-dark};
-    --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
-    --#{$prefix}heading-color: #{$headings-color-dark};
+    --emphasis-color: #{$body-emphasis-color-dark};
+    --emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
+    --heading-color: #{$headings-color-dark};
 
-    --#{$prefix}border-color: #{$border-color-dark};
-    --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+    --border-color: #{$border-color-dark};
+    --border-color-translucent: #{$border-color-translucent-dark};
 
-    --#{$prefix}form-valid-color: #{$form-valid-color-dark};
-    --#{$prefix}form-valid-border-color: #{$form-valid-border-color-dark};
-    --#{$prefix}form-invalid-color: #{$form-invalid-color-dark};
-    --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color-dark};
+    --form-valid-color: #{$form-valid-color-dark};
+    --form-valid-border-color: #{$form-valid-border-color-dark};
+    --form-invalid-color: #{$form-invalid-color-dark};
+    --form-invalid-border-color: #{$form-invalid-border-color-dark};
     // scss-docs-end root-dark-mode-vars
   }
 }

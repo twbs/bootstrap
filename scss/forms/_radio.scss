@@ -9,32 +9,32 @@
 @use "form-variables" as *;
 
 // scss-docs-start radio-variables
-$radio-border-color: var(--#{$prefix}border-color) !default;
-$radio-checked-bg: var(--#{$prefix}primary-base) !default;
+$radio-border-color: var(--border-color) !default;
+$radio-checked-bg: var(--primary-base) !default;
 $radio-checked-border-color: $radio-checked-bg !default;
-$radio-disabled-bg: var(--#{$prefix}bg-3) !default;
+$radio-disabled-bg: var(--bg-3) !default;
 $radio-disabled-opacity: .65 !default;
 // scss-docs-end radio-variables
 
 @layer forms {
   b-radiogroup {
     display: flex;
-    gap: var(--#{$prefix}gap, .5rem);
-    align-items: var(--#{$prefix}align-items, start);
+    gap: var(--gap, .5rem);
+    align-items: var(--align-items, start);
 
     .description {
-      color: var(--#{$prefix}secondary-text);
+      color: var(--secondary-text);
     }
   }
 
   .radio {
     // scss-docs-start radio-css-variables
-    --#{$prefix}radio-bg: transparent;
-    --#{$prefix}radio-border-color: #{$radio-border-color};
-    --#{$prefix}radio-checked-bg: #{$radio-checked-bg};
-    --#{$prefix}radio-checked-border-color: #{$radio-checked-border-color};
-    --#{$prefix}radio-disabled-bg: #{$radio-disabled-bg};
-    --#{$prefix}radio-disabled-opacity: #{$radio-disabled-opacity};
+    --radio-bg: transparent;
+    --radio-border-color: #{$radio-border-color};
+    --radio-checked-bg: #{$radio-checked-bg};
+    --radio-checked-border-color: #{$radio-checked-border-color};
+    --radio-disabled-bg: #{$radio-disabled-bg};
+    --radio-disabled-opacity: #{$radio-disabled-opacity};
     // scss-docs-end radio-css-variables
 
     position: relative;
@@ -43,15 +43,15 @@ $radio-disabled-opacity: .65 !default;
     height: 1rem;
     margin-block: .125rem;
     appearance: none;
-    background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}radio-bg));
-    border: 1px solid var(--#{$prefix}theme-bg, var(--#{$prefix}radio-border-color));
+    background-color: var(--theme-bg, var(--radio-bg));
+    border: 1px solid var(--theme-bg, var(--radio-border-color));
     // stylelint-disable-next-line property-disallowed-list
     border-radius: 50%;
 
     &:checked {
-      color: var(--#{$prefix}theme-contrast, var(--#{$prefix}primary-contrast));
-      background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}radio-checked-bg));
-      border-color: var(--#{$prefix}theme-bg, var(--#{$prefix}radio-checked-border-color));
+      color: var(--theme-contrast, var(--primary-contrast));
+      background-color: var(--theme-bg, var(--radio-checked-bg));
+      border-color: var(--theme-bg, var(--radio-checked-border-color));
 
       &::before {
         position: absolute;
@@ -64,10 +64,10 @@ $radio-disabled-opacity: .65 !default;
     }
 
     &:disabled {
-      --#{$prefix}radio-bg: var(--#{$prefix}radio-disabled-bg);
+      --radio-bg: var(--radio-disabled-bg);
 
       ~ label {
-        color: var(--#{$prefix}secondary-text);
+        color: var(--secondary-text);
         cursor: default;
       }
     }

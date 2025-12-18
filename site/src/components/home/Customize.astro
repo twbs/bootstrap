@@ -28,7 +28,6 @@ import Code from '@shortcodes/Code.astro'
       code={`// Variable overrides first
 $primary: #900;
 $enable-shadows: true;
-$prefix: "mo-";
 
 // Then import Bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap";`}
@@ -46,12 +45,9 @@ $prefix: "mo-";
 // Variable overrides second
 $primary: #900;
 $enable-shadows: true;
-$prefix: "mo-";
 
 // Required Bootstrap imports
 @import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/variables-dark";
-@import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
 @import "../node_modules/bootstrap/scss/root";
 

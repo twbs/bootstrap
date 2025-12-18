@@ -1,10 +1,8 @@
-@use "../../config" as *;
 @use "../../variables" as *;
 @use "../../functions" as *;
 @use "../../mixins/utilities" as *;
 
 $true-terminal-output: false;
-$prefix: bs-;
 
 // Important: Do not import rfs to check that the mixin just calls the appropriate functions from it
 // @import "../../mixins/utilities";

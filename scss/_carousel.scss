@@ -143,7 +143,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     color: $carousel-control-color;
     text-align: center;
     background: none;
-    filter: var(--#{$prefix}carousel-control-icon-filter);
+    filter: var(--carousel-control-icon-filter);
     border: 0;
     opacity: $carousel-control-opacity;
     @include transition($carousel-control-transition);
@@ -220,7 +220,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
       margin-inline: $carousel-indicator-spacer;
       text-indent: -999px;
       cursor: pointer;
-      background-color: var(--#{$prefix}carousel-indicator-active-bg);
+      background-color: var(--carousel-indicator-active-bg);
       background-clip: padding-box;
       border: 0;
       // Use transparent borders to increase the hit area by 10px on top and bottom.
@@ -246,16 +246,16 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     left: (100% - $carousel-caption-width) * .5;
     padding-top: $carousel-caption-padding-y;
     padding-bottom: $carousel-caption-padding-y;
-    color: var(--#{$prefix}carousel-caption-color);
+    color: var(--carousel-caption-color);
     text-align: center;
   }
 
   // Dark mode carousel
 
   @mixin carousel-dark() {
-    --#{$prefix}carousel-indicator-active-bg: #{$carousel-indicator-active-bg-dark};
-    --#{$prefix}carousel-caption-color: #{$carousel-caption-color-dark};
-    --#{$prefix}carousel-control-icon-filter: #{$carousel-control-icon-filter-dark};
+    --carousel-indicator-active-bg: #{$carousel-indicator-active-bg-dark};
+    --carousel-caption-color: #{$carousel-caption-color-dark};
+    --carousel-control-icon-filter: #{$carousel-control-icon-filter-dark};
   }
 
   .carousel-dark {
@@ -264,9 +264,9 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
 
   :root,
   [data-bs-theme="light"] {
-    --#{$prefix}carousel-indicator-active-bg: #{$carousel-indicator-active-bg};
-    --#{$prefix}carousel-caption-color: #{$carousel-caption-color};
-    --#{$prefix}carousel-control-icon-filter: #{$carousel-control-icon-filter};
+    --carousel-indicator-active-bg: #{$carousel-indicator-active-bg};
+    --carousel-caption-color: #{$carousel-caption-color};
+    --carousel-control-icon-filter: #{$carousel-control-icon-filter};
   }
 
   @if $enable-dark-mode {

@@ -132,16 +132,18 @@ $utilities: (
     selector: "attr-includes",
     class: "ratio-",
     property: aspect-ratio,
-    values: var(--#{$prefix}ratio),
+    values: var(--ratio),
   ),
   // Create a CSS variable utility that matches the attribute selector utility
   "aspect-ratio": (
-    property: --#{$prefix}ratio,
+    property: --ratio,
     class: ratio,
     values: $aspect-ratios
   ),
 );
 ```
+
+Note that the `--ratio` custom property will automatically be prefixed to `--bs-ratio` in the compiled CSS via PostCSS.
 
 Which outputs the following:
 

@@ -11,13 +11,13 @@
 
 // scss-docs-start theme-color-variables
 // $primary:       $blue-500 !default;
-// $secondary:     var(--#{$prefix}gray-600) !default;
+// $secondary:     var(--gray-600) !default;
 // $success:       $green-500 !default;
 // $info:          $cyan-500 !default;
 // $warning:       $yellow-500 !default;
 // $danger:        $red-500 !default;
-// $light:         var(--#{$prefix}gray-100) !default;
-// $dark:          var(--#{$prefix}gray-900) !default;
+// $light:         var(--gray-100) !default;
+// $dark:          var(--gray-900) !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -66,7 +66,7 @@ $escaped-characters: (
 // $color-mode-type:             data !default; // `data` or `media-query`
 
 // // Prefix for :root CSS variables
-// $prefix:                      bs- !default;
+// :                      bs- !default;
 
 // $color-mode-type:          "media-query" !default;
 // $color-contrast-dark:      #000 !default;
@@ -117,8 +117,8 @@ $position-values: (
 // Settings for the `<body>` element.
 
 $body-text-align:           null !default;
-$body-color:                var(--#{$prefix}color-body) !default;
-$body-bg:                   var(--#{$prefix}bg-body) !default;
+$body-color:                var(--color-body) !default;
+$body-bg:                   var(--bg-body) !default;
 
 // Links
 //
@@ -164,7 +164,7 @@ $border-widths: (
   5: 5px
 ) !default;
 $border-style:                solid !default;
-$border-color:                color-mix(in oklch, var(--#{$prefix}gray-100), var(--#{$prefix}gray-200)) !default;
+$border-color:                color-mix(in oklch, var(--gray-100), var(--gray-200)) !default;
 $border-color-translucent:    rgba($black, .175) !default;
 // scss-docs-end border-variables
 
@@ -187,13 +187,13 @@ $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
 // scss-docs-start focus-ring-variables
 $focus-ring-width:      .25rem !default;
 $focus-ring-opacity:    .25 !default;
-$focus-ring-color:      var(--#{$prefix}primary-focus-ring) !default;
+$focus-ring-color:      var(--primary-focus-ring) !default;
 $focus-ring-blur:       0 !default;
 $focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
 // scss-docs-end focus-ring-variables
 
-$component-active-color:      var(--#{$prefix}primary-contrast) !default;
-$component-active-bg:         var(--#{$prefix}primary-bg) !default;
+$component-active-color:      var(--primary-contrast) !default;
+$component-active-bg:         var(--primary-bg) !default;
 
 $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
@@ -221,8 +221,8 @@ $aspect-ratios: (
 $font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 // stylelint-enable value-keyword-case
-$font-family-base:            var(--#{$prefix}font-sans-serif) !default;
-$font-family-code:            var(--#{$prefix}font-monospace) !default;
+$font-family-base:            var(--font-sans-serif) !default;
+$font-family-code:            var(--font-monospace) !default;
 
 // $font-size-root affects the value of `rem`, which is used for as well font sizes, paddings, and margins
 // $font-size-base affects the font size of the body text
@@ -245,55 +245,55 @@ $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
 $line-height-lg:              2 !default;
 
-$h1-font-size: var(--#{$prefix}font-size-3xl) !default;
-$h2-font-size: var(--#{$prefix}font-size-2xl) !default;
-$h3-font-size: var(--#{$prefix}font-size-xl) !default;
-$h4-font-size: var(--#{$prefix}font-size-lg) !default;
-$h5-font-size: var(--#{$prefix}font-size-md) !default;
-$h6-font-size: var(--#{$prefix}font-size-sm) !default;
+$h1-font-size: var(--font-size-3xl) !default;
+$h2-font-size: var(--font-size-2xl) !default;
+$h3-font-size: var(--font-size-xl) !default;
+$h4-font-size: var(--font-size-lg) !default;
+$h5-font-size: var(--font-size-md) !default;
+$h6-font-size: var(--font-size-sm) !default;
 // scss-docs-end font-variables
 
 // Font sizes with line-height for utilities
 $font-sizes: (
   "xs": (
-    "font-size": var(--#{$prefix}font-size-xs),
-    "line-height": var(--#{$prefix}line-height-xs)
+    "font-size": var(--font-size-xs),
+    "line-height": var(--line-height-xs)
   ),
   "sm": (
-    "font-size": var(--#{$prefix}font-size-sm),
-    "line-height": var(--#{$prefix}line-height-sm)
+    "font-size": var(--font-size-sm),
+    "line-height": var(--line-height-sm)
   ),
   "md": (
-    "font-size": var(--#{$prefix}font-size-md),
-    "line-height": var(--#{$prefix}line-height-md)
+    "font-size": var(--font-size-md),
+    "line-height": var(--line-height-md)
   ),
   "lg": (
-    "font-size": var(--#{$prefix}font-size-lg),
-    "line-height": var(--#{$prefix}line-height-lg)
+    "font-size": var(--font-size-lg),
+    "line-height": var(--line-height-lg)
   ),
   "xl": (
-    "font-size": var(--#{$prefix}font-size-xl),
-    "line-height": var(--#{$prefix}line-height-xl)
+    "font-size": var(--font-size-xl),
+    "line-height": var(--line-height-xl)
   ),
   "2xl": (
-    "font-size": var(--#{$prefix}font-size-2xl),
-    "line-height": var(--#{$prefix}line-height-2xl)
+    "font-size": var(--font-size-2xl),
+    "line-height": var(--line-height-2xl)
   ),
   "3xl": (
-    "font-size": var(--#{$prefix}font-size-3xl),
-    "line-height": var(--#{$prefix}line-height-3xl)
+    "font-size": var(--font-size-3xl),
+    "line-height": var(--line-height-3xl)
   ),
   "4xl": (
-    "font-size": var(--#{$prefix}font-size-4xl),
-    "line-height": var(--#{$prefix}line-height-4xl)
+    "font-size": var(--font-size-4xl),
+    "line-height": var(--line-height-4xl)
   ),
   "5xl": (
-    "font-size": var(--#{$prefix}font-size-5xl),
-    "line-height": var(--#{$prefix}line-height-5xl)
+    "font-size": var(--font-size-5xl),
+    "line-height": var(--line-height-5xl)
   ),
   "6xl": (
-    "font-size": var(--#{$prefix}font-size-6xl),
-    "line-height": var(--#{$prefix}line-height-6xl)
+    "font-size": var(--font-size-6xl),
+    "line-height": var(--line-height-6xl)
   ),
 ) !default;
 
@@ -315,18 +315,18 @@ $initialism-font-size:        $small-font-size !default;
 
 $blockquote-margin-y:         $spacer !default;
 $blockquote-font-size:        $font-size-base * 1.25 !default;
-$blockquote-footer-color:     var(--#{$prefix}gray-600) !default;
+$blockquote-footer-color:     var(--gray-600) !default;
 $blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
 
 $hr-border-color:             null !default; // Allows for inherited colors
-$hr-border-width:             var(--#{$prefix}border-width) !default;
+$hr-border-width:             var(--border-width) !default;
 $hr-opacity:                  .25 !default;
 
 // scss-docs-start vr-variables
-$vr-border-width:             var(--#{$prefix}border-width) !default;
+$vr-border-width:             var(--border-width) !default;
 // scss-docs-end vr-variables
 
 $legend-margin-bottom:        .5rem !default;
@@ -339,7 +339,7 @@ $list-inline-padding:         .5rem !default;
 
 $mark-padding:                .1875em !default;
 $mark-color:                  $body-color !default;
-$mark-bg:                     var(--#{$prefix}yellow-100) !default;
+$mark-bg:                     var(--yellow-100) !default;
 // scss-docs-end type-variables
 
 
@@ -362,7 +362,7 @@ $input-btn-padding-y-lg:      .5rem !default;
 $input-btn-padding-x-lg:      1rem !default;
 $input-btn-font-size-lg:      $font-size-lg !default;
 
-$input-btn-border-width:      var(--#{$prefix}border-width) !default;
+$input-btn-border-width:      var(--border-width) !default;
 // scss-docs-end input-btn-variables
 
 
@@ -402,12 +402,12 @@ $offcanvas-padding-x:               $spacer !default;
 $offcanvas-horizontal-width:        400px !default;
 $offcanvas-vertical-height:         30vh !default;
 $offcanvas-transition-duration:     .3s !default;
-$offcanvas-border-color:            var(--#{$prefix}border-color-translucent) !default;
-$offcanvas-border-width:            var(--#{$prefix}border-width) !default;
+$offcanvas-border-color:            var(--border-color-translucent) !default;
+$offcanvas-border-width:            var(--border-width) !default;
 $offcanvas-title-line-height:       $line-height-base !default;
-$offcanvas-bg-color:                var(--#{$prefix}bg-body) !default;
-$offcanvas-color:                   var(--#{$prefix}color-body) !default;
-$offcanvas-box-shadow:              var(--#{$prefix}box-shadow-sm) !default;
+$offcanvas-bg-color:                var(--bg-body) !default;
+$offcanvas-color:                   var(--color-body) !default;
+$offcanvas-box-shadow:              var(--box-shadow-sm) !default;
 $offcanvas-backdrop-bg:             $black !default;
 $offcanvas-backdrop-opacity:        .5 !default;
 // scss-docs-end offcanvas-variables
@@ -415,13 +415,13 @@ $offcanvas-backdrop-opacity:        .5 !default;
 // Code
 
 $code-font-size:                    95% !default;
-$code-color:                        var(--#{$prefix}secondary-text) !default;
+$code-color:                        var(--secondary-text) !default;
 
 $kbd-padding-y:                     .1875rem !default;
 $kbd-padding-x:                     .375rem !default;
 $kbd-font-size:                     $code-font-size !default;
-$kbd-color:                         var(--#{$prefix}bg-body) !default;
-$kbd-bg:                            var(--#{$prefix}color-body) !default;
+$kbd-color:                         var(--bg-body) !default;
+$kbd-bg:                            var(--color-body) !default;
 
 $pre-color:                         null !default;
 
@@ -434,18 +434,18 @@ $pre-color:                         null !default;
 //
 
 // scss-docs-start sass-dark-mode-vars
-// $body-color-dark:                   var(--#{$prefix}gray-200) !default;
-// $body-bg-dark:                      var(--#{$prefix}gray-975) !default;
+// $body-color-dark:                   var(--gray-200) !default;
+// $body-bg-dark:                      var(--gray-975) !default;
 // $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
-// $body-secondary-bg-dark:            var(--#{$prefix}gray-800) !default;
+// $body-secondary-bg-dark:            var(--gray-800) !default;
 // $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
-// $body-tertiary-bg-dark:             color-mix(in srgb, var(--#{$prefix}gray-800), var(--#{$prefix}gray-900)) !default;
+// $body-tertiary-bg-dark:             color-mix(in srgb, var(--gray-800), var(--gray-900)) !default;
 $body-emphasis-color-dark:          $white !default;
-$border-color-dark:                 var(--#{$prefix}gray-700) !default;
+$border-color-dark:                 var(--gray-700) !default;
 $border-color-translucent-dark:     rgba($white, .15) !default;
 $headings-color-dark:               inherit !default;
 // $mark-color-dark:                   $body-color-dark !default;
-// $mark-bg-dark:                      var(--#{$prefix}yellow-800) !default;
+// $mark-bg-dark:                      var(--yellow-800) !default;
 
 
 //
@@ -453,9 +453,9 @@ $headings-color-dark:               inherit !default;
 //
 
 // scss-docs-start form-validation-colors-dark
-$form-valid-color-dark:             var(--#{$prefix}green-300) !default;
-$form-valid-border-color-dark:      var(--#{$prefix}green-300) !default;
-$form-invalid-color-dark:           var(--#{$prefix}red-300) !default;
-$form-invalid-border-color-dark:    var(--#{$prefix}red-300) !default;
+$form-valid-color-dark:             var(--green-300) !default;
+$form-valid-border-color-dark:      var(--green-300) !default;
+$form-invalid-color-dark:           var(--red-300) !default;
+$form-invalid-border-color-dark:    var(--red-300) !default;
 // scss-docs-end form-validation-colors-dark
 // scss-docs-end sass-dark-mode-vars

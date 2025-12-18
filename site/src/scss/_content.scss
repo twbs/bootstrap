@@ -11,7 +11,7 @@
 @layer custom {
   .bd-content {
     @media (width >= 1024px) {
-      font-size: var(--#{$prefix}font-size-md);
+      font-size: var(--font-size-md);
     }
 
     > ul li,

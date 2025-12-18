@@ -135,59 +135,59 @@ $btn-variant-selectors: () !default;
   .btn,
   #{$btn-variant-selectors} {
     // scss-docs-start btn-css-vars
-    --#{$prefix}btn-min-height: 2.25rem;
-    --#{$prefix}btn-padding-x: #{$btn-padding-x};
-    --#{$prefix}btn-padding-y: #{$btn-padding-y};
-    --#{$prefix}btn-font-family: #{$btn-font-family};
-    --#{$prefix}btn-font-size: #{$btn-font-size};
-    --#{$prefix}btn-font-weight: #{$btn-font-weight};
-    --#{$prefix}btn-line-height: #{$btn-line-height};
-    --#{$prefix}btn-color: #{$btn-color};
-    --#{$prefix}btn-border-width: #{$btn-border-width};
-    --#{$prefix}btn-border-color: transparent;
-    --#{$prefix}btn-border-radius: #{$btn-border-radius};
-    --#{$prefix}btn-hover-border-color: transparent;
-    --#{$prefix}btn-disabled-opacity: #{$btn-disabled-opacity};
+    --btn-min-height: 2.25rem;
+    --btn-padding-x: #{$btn-padding-x};
+    --btn-padding-y: #{$btn-padding-y};
+    --btn-font-family: #{$btn-font-family};
+    --btn-font-size: #{$btn-font-size};
+    --btn-font-weight: #{$btn-font-weight};
+    --btn-line-height: #{$btn-line-height};
+    --btn-color: #{$btn-color};
+    --btn-border-width: #{$btn-border-width};
+    --btn-border-color: transparent;
+    --btn-border-radius: #{$btn-border-radius};
+    --btn-hover-border-color: transparent;
+    --btn-disabled-opacity: #{$btn-disabled-opacity};
     // scss-docs-end btn-css-vars
 
     display: inline-flex;
-    gap: var(--#{$prefix}btn-gap, .25rem);
+    gap: var(--btn-gap, .25rem);
     align-items: center;
     justify-content: center;
-    min-height: var(--#{$prefix}btn-min-height);
-    padding: var(--#{$prefix}btn-padding-y) var(--#{$prefix}btn-padding-x);
-    font-family: var(--#{$prefix}btn-font-family);
-    font-size: var(--#{$prefix}btn-font-size);
-    font-weight: var(--#{$prefix}btn-font-weight);
-    line-height: var(--#{$prefix}btn-line-height);
-    color: var(--#{$prefix}btn-color);
+    min-height: var(--btn-min-height);
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+    font-family: var(--btn-font-family);
+    font-size: var(--btn-font-size);
+    font-weight: var(--btn-font-weight);
+    line-height: var(--btn-line-height);
+    color: var(--btn-color);
     text-decoration: none;
     white-space: $btn-white-space;
     vertical-align: middle;
     // stylelint-disable-next-line scss/at-function-named-arguments
     cursor: if(sass($enable-button-pointers): pointer; else: null);
     user-select: none;
-    background-color: var(--#{$prefix}btn-bg, var(--#{$prefix}bg-2));
-    border: var(--#{$prefix}btn-border-width) solid var(--#{$prefix}btn-border-color);
-    @include border-radius(var(--#{$prefix}btn-border-radius));
+    background-color: var(--btn-bg, var(--bg-2));
+    border: var(--btn-border-width) solid var(--btn-border-color);
+    @include border-radius(var(--btn-border-radius));
     @include transition($btn-transition);
 
     &:hover {
-      color: var(--#{$prefix}btn-hover-color);
-      background-color: var(--#{$prefix}btn-hover-bg, var(--#{$prefix}bg-3));
-      border-color: var(--#{$prefix}btn-hover-border-color);
+      color: var(--btn-hover-color);
+      background-color: var(--btn-hover-bg, var(--bg-3));
+      border-color: var(--btn-hover-border-color);
     }
 
     &:focus-visible {
       @include focus-ring(true);
-      --#{$prefix}focus-ring-offset: 1px;
+      --focus-ring-offset: 1px;
     }
 
     &.active,
     &.show {
-      color: var(--#{$prefix}btn-active-color);
-      background-color: var(--#{$prefix}btn-active-bg, var(--#{$prefix}bg-3));
-      border-color: var(--#{$prefix}btn-active-border-color);
+      color: var(--btn-active-color);
+      background-color: var(--btn-active-bg, var(--bg-3));
+      border-color: var(--btn-active-border-color);
 
       &:focus-visible {
         @include focus-ring(true);
@@ -197,13 +197,13 @@ $btn-variant-selectors: () !default;
     &:disabled,
     &.disabled,
     fieldset:disabled & {
-      color: var(--#{$prefix}btn-disabled-color);
+      color: var(--btn-disabled-color);
       pointer-events: none;
-      background-color: var(--#{$prefix}btn-disabled-bg, var(--#{$prefix}bg-1));
+      background-color: var(--btn-disabled-bg, var(--bg-1));
       // stylelint-disable-next-line scss/at-function-named-arguments
       background-image: if(sass($enable-gradients): none; else: null);
-      border-color: var(--#{$prefix}btn-disabled-border-color);
-      opacity: var(--#{$prefix}btn-disabled-opacity);
+      border-color: var(--btn-disabled-border-color);
+      opacity: var(--btn-disabled-opacity);
     }
   }
 
@@ -215,26 +215,26 @@ $btn-variant-selectors: () !default;
     .btn-#{$variant} {
       @each $property, $value in map.get($button-variants, $variant, "base") {
         @if $value == "transparent" {
-          --#{$prefix}btn-#{$property}: transparent;
+          --btn-#{$property}: transparent;
         } @else {
-          --#{$prefix}btn-#{$property}: var(--#{$prefix}theme-#{$value});
+          --btn-#{$property}: var(--theme-#{$value});
         }
       }
 
       @each $property, $value in map.get($button-variants, $variant, "active") {
         @if $value == "transparent" {
-          --#{$prefix}btn-active-#{$property}: transparent;
+          --btn-active-#{$property}: transparent;
         } @else if $value == "bg-subtle" {
-          --#{$prefix}btn-active-#{$property}: var(--#{$prefix}theme-#{$value});
+          --btn-active-#{$property}: var(--theme-#{$value});
         } @else {
-          --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
+          --btn-active-#{$property}: oklch(from var(--theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
         }
       }
       @each $property, $value in map.get($button-variants, $variant, "base") {
         @if $value == "transparent" {
-          --#{$prefix}btn-disabled-#{$property}: transparent;
+          --btn-disabled-#{$property}: transparent;
         } @else {
-          --#{$prefix}btn-disabled-#{$property}: var(--#{$prefix}theme-#{$value});
+          --btn-disabled-#{$property}: var(--theme-#{$value});
         }
       }
 
@@ -242,21 +242,21 @@ $btn-variant-selectors: () !default;
       &:hover {
         @each $property, $value in map.get($button-variants, $variant, "hover") {
           @if $value == "transparent" {
-            --#{$prefix}btn-hover-#{$property}: transparent;
+            --btn-hover-#{$property}: transparent;
           } @else if meta.type-of($value) == "list" {
             $first-value: list.nth($value, 1);
             $second-value: list.nth($value, 2);
-            --#{$prefix}btn-hover-#{$property}: color-mix(in oklch, var(--#{$prefix}theme-#{$first-value}) 50%, var(--#{$prefix}theme-#{$second-value}));
+            --btn-hover-#{$property}: color-mix(in oklch, var(--theme-#{$first-value}) 50%, var(--theme-#{$second-value}));
           } @else if $value == "bg-subtle" {
-            --#{$prefix}btn-hover-#{$property}: var(--#{$prefix}theme-#{$value});
+            --btn-hover-#{$property}: var(--theme-#{$value});
           } @else {
-            --#{$prefix}btn-hover-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .95) calc(c * 1.1) h);
+            --btn-hover-#{$property}: oklch(from var(--theme-#{$value}) calc(l * .95) calc(c * 1.1) h);
           }
         }
       }
 
       &:focus-visible {
-        outline-color: var(--#{$prefix}theme-focus-ring);
+        outline-color: var(--theme-focus-ring);
       }
 
       &:active,
@@ -264,11 +264,11 @@ $btn-variant-selectors: () !default;
       &.btn-check:has(input:checked) {
         @each $property, $value in map.get($button-variants, $variant, "active") {
           @if $value == "transparent" {
-            --#{$prefix}btn-active-#{$property}: transparent;
+            --btn-active-#{$property}: transparent;
           } @else if $value == "bg-subtle" {
-            --#{$prefix}btn-active-#{$property}: var(--#{$prefix}theme-#{$value});
+            --btn-active-#{$property}: var(--theme-#{$value});
           } @else {
-            --#{$prefix}btn-active-#{$property}: oklch(from var(--#{$prefix}theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
+            --btn-active-#{$property}: oklch(from var(--theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
           }
         }
       }
@@ -279,9 +279,9 @@ $btn-variant-selectors: () !default;
       &.btn-check:has(input:disabled) {
         @each $property, $value in map.get($button-variants, $variant, "base") {
           @if $value == "transparent" {
-            --#{$prefix}btn-disabled-#{$property}: transparent;
+            --btn-disabled-#{$property}: transparent;
           } @else {
-            --#{$prefix}btn-disabled-#{$property}: var(--#{$prefix}theme-#{$value});
+            --btn-disabled-#{$property}: var(--theme-#{$value});
           }
         }
       }
@@ -295,29 +295,29 @@ $btn-variant-selectors: () !default;
 
   // Make a button look and behave like a link
   .btn-link {
-    --#{$prefix}btn-font-weight: #{$font-weight-normal};
-    --#{$prefix}btn-color: #{$btn-link-color};
-    --#{$prefix}btn-bg: transparent;
-    --#{$prefix}btn-border-color: transparent;
-    --#{$prefix}btn-hover-color: #{$btn-link-hover-color};
-    --#{$prefix}btn-hover-border-color: transparent;
-    --#{$prefix}btn-active-color: #{$btn-link-hover-color};
-    --#{$prefix}btn-active-border-color: transparent;
-    --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
-    --#{$prefix}btn-disabled-border-color: transparent;
+    --btn-font-weight: #{$font-weight-normal};
+    --btn-color: #{$btn-link-color};
+    --btn-bg: transparent;
+    --btn-border-color: transparent;
+    --btn-hover-color: #{$btn-link-hover-color};
+    --btn-hover-border-color: transparent;
+    --btn-active-color: #{$btn-link-hover-color};
+    --btn-active-border-color: transparent;
+    --btn-disabled-color: #{$btn-link-disabled-color};
+    --btn-disabled-border-color: transparent;
 
-    text-decoration: var(--#{$prefix}link-decoration);
+    text-decoration: var(--link-decoration);
 
     @if $enable-gradients {
       background-image: none;
     }
 
     &:focus-visible {
-      color: var(--#{$prefix}btn-color);
+      color: var(--btn-color);
     }
 
     &:hover {
-      color: var(--#{$prefix}btn-hover-color);
+      color: var(--btn-hover-color);
     }
 
     // No need for an active state here
@@ -333,12 +333,12 @@ $btn-variant-selectors: () !default;
   @each $size, $properties in $button-sizes {
     .btn-#{$size},
     .btn-group-#{$size} > [class*="btn-"] {
-      --#{$prefix}btn-min-height: #{map.get($properties, "min-height")};
-      --#{$prefix}btn-padding-y: #{map.get($properties, "padding-y")};
-      --#{$prefix}btn-padding-x: #{map.get($properties, "padding-x")};
-      --#{$prefix}btn-font-size: #{map.get($properties, "font-size")};
-      --#{$prefix}btn-line-height: #{map.get($properties, "line-height")};
-      --#{$prefix}btn-border-radius: #{map.get($properties, "border-radius")};
+      --btn-min-height: #{map.get($properties, "min-height")};
+      --btn-padding-y: #{map.get($properties, "padding-y")};
+      --btn-padding-x: #{map.get($properties, "padding-x")};
+      --btn-font-size: #{map.get($properties, "font-size")};
+      --btn-line-height: #{map.get($properties, "line-height")};
+      --btn-border-radius: #{map.get($properties, "border-radius")};
     }
   }
 
@@ -365,27 +365,27 @@ $btn-variant-selectors: () !default;
     }
 
     &:has(input:checked) {
-      color: var(--#{$prefix}btn-active-color);
-      background-color: var(--#{$prefix}btn-active-bg, var(--#{$prefix}bg-3));
+      color: var(--btn-active-color);
+      background-color: var(--btn-active-bg, var(--bg-3));
       // stylelint-disable-next-line scss/at-function-named-arguments
       background-image: if(sass($enable-gradients): none; else: null);
-      border-color: var(--#{$prefix}btn-active-border-color);
-      @include box-shadow(var(--#{$prefix}btn-active-shadow));
+      border-color: var(--btn-active-border-color);
+      @include box-shadow(var(--btn-active-shadow));
     }
 
     &:has(input:focus-visible) {
       @include focus-ring(true);
-      --#{$prefix}focus-ring-offset: 1px;
+      --focus-ring-offset: 1px;
     }
 
     &:has(input:disabled) {
-      color: var(--#{$prefix}btn-disabled-color);
+      color: var(--btn-disabled-color);
       pointer-events: none;
-      background-color: var(--#{$prefix}btn-disabled-bg, var(--#{$prefix}bg-1));
+      background-color: var(--btn-disabled-bg, var(--bg-1));
       // stylelint-disable-next-line scss/at-function-named-arguments
       background-image: if(sass($enable-gradients): none; else: null);
-      border-color: var(--#{$prefix}btn-disabled-border-color);
-      opacity: var(--#{$prefix}btn-disabled-opacity);
+      border-color: var(--btn-disabled-border-color);
+      opacity: var(--btn-disabled-opacity);
       @include box-shadow(none);
     }
   }
@@ -396,39 +396,39 @@ $btn-variant-selectors: () !default;
   // Add visual depth with gradients and shadows. Customize via CSS variables.
 
   .btn-styled {
-    --#{$prefix}btn-gradient-start: rgb(255 255 255 / 12.5%);
-    --#{$prefix}btn-gradient-end: rgb(0 0 0 / 7.5%);
-    --#{$prefix}btn-border-mix-color: #000;
-    --#{$prefix}btn-border-mix-amount: 10%;
-    --#{$prefix}btn-border-hover-mix-amount: 12.5%;
-    --#{$prefix}btn-border-active-mix-amount: 20%;
-    --#{$prefix}btn-shadow: 0 1px 2px rgb(0 0 0 / 15%), inset 0 1px 0 rgb(255 255 255 / 10%);
-    --#{$prefix}btn-active-shadow: inset 0 2px 4px rgba(0, 0, 0, .15);
+    --btn-gradient-start: rgb(255 255 255 / 12.5%);
+    --btn-gradient-end: rgb(0 0 0 / 7.5%);
+    --btn-border-mix-color: #000;
+    --btn-border-mix-amount: 10%;
+    --btn-border-hover-mix-amount: 12.5%;
+    --btn-border-active-mix-amount: 20%;
+    --btn-shadow: 0 1px 2px rgb(0 0 0 / 15%), inset 0 1px 0 rgb(255 255 255 / 10%);
+    --btn-active-shadow: inset 0 2px 4px rgba(0, 0, 0, .15);
 
     background-image:
       linear-gradient(
         to bottom,
-        var(--#{$prefix}btn-gradient-start),
-        var(--#{$prefix}btn-gradient-end)
+        var(--btn-gradient-start),
+        var(--btn-gradient-end)
       );
-    border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-mix-amount));
-    box-shadow: var(--#{$prefix}btn-shadow);
+    border-color: color-mix(in lab, var(--theme-bg), var(--btn-border-mix-color) var(--btn-border-mix-amount));
+    box-shadow: var(--btn-shadow);
 
     &:hover {
       background-image:
         linear-gradient(
           to bottom,
-          var(--#{$prefix}btn-gradient-start),
-          var(--#{$prefix}btn-gradient-end)
+          var(--btn-gradient-start),
+          var(--btn-gradient-end)
         );
-      border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-hover-mix-amount));
+      border-color: color-mix(in lab, var(--theme-bg), var(--btn-border-mix-color) var(--btn-border-hover-mix-amount));
     }
 
     &:active,
     &.active {
       background-image: none;
-      border-color: color-mix(in lab, var(--#{$prefix}theme-bg), var(--#{$prefix}btn-border-mix-color) var(--#{$prefix}btn-border-active-mix-amount));
-      box-shadow: var(--#{$prefix}btn-active-shadow);
+      border-color: color-mix(in lab, var(--theme-bg), var(--btn-border-mix-color) var(--btn-border-active-mix-amount));
+      box-shadow: var(--btn-active-shadow);
     }
 
     &:disabled,

@@ -9,25 +9,25 @@ $control-padding-y: .375rem !default;
 $control-padding-x: .75rem !default;
 $control-font-size: $font-size-base !default;
 $control-line-height: $line-height-base !default;
-$control-color: var(--#{$prefix}color-body) !default;
-$control-bg: var(--#{$prefix}bg-body) !default;
-$control-border-width: var(--#{$prefix}border-width) !default;
-$control-border-color: var(--#{$prefix}border-color) !default;
-$control-border-radius: var(--#{$prefix}border-radius) !default;
+$control-color: var(--color-body) !default;
+$control-bg: var(--bg-body) !default;
+$control-border-width: var(--border-width) !default;
+$control-border-color: var(--border-color) !default;
+$control-border-radius: var(--border-radius) !default;
 
 $control-padding-y-sm: .25rem !default;
 $control-padding-x-sm: .5rem !default;
 $control-font-size-sm: $font-size-sm !default;
 $control-line-height-sm: $line-height-sm !default;
-$control-border-radius-sm: var(--#{$prefix}border-radius-sm) !default;
+$control-border-radius-sm: var(--border-radius-sm) !default;
 
 $control-padding-y-lg: .5rem !default;
 $control-padding-x-lg: 1rem !default;
 $control-font-size-lg: $font-size-lg !default;
 $control-line-height-lg: $line-height-lg !default;
-$control-border-radius-lg: var(--#{$prefix}border-radius-lg) !default;
+$control-border-radius-lg: var(--border-radius-lg) !default;
 
-$control-select-indicator-color:       var(--#{$prefix}gray-600) !default;
+$control-select-indicator-color:       var(--gray-600) !default;
 $control-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$control-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
 $control-select-bg-position:           right $control-padding-x center !default;
 $control-select-bg-size:               16px 12px !default;
@@ -57,7 +57,7 @@ $input-btn-padding-y-lg:      .5rem !default;
 $input-btn-padding-x-lg:      1rem !default;
 $input-btn-font-size-lg:      $font-size-lg !default;
 
-// $input-btn-border-width:      var(--#{$prefix}border-width) !default;
+// $input-btn-border-width:      var(--border-width) !default;
 // scss-docs-end input-btn-variables
 
 // scss-docs-start form-input-variables
@@ -76,26 +76,26 @@ $input-padding-y-lg:                    $input-btn-padding-y-lg !default;
 $input-padding-x-lg:                    $input-btn-padding-x-lg !default;
 $input-font-size-lg:                    $input-btn-font-size-lg !default;
 
-$input-bg:                              var(--#{$prefix}bg-body) !default;
+$input-bg:                              var(--bg-body) !default;
 $input-disabled-color:                  null !default;
-$input-disabled-bg:                     var(--#{$prefix}secondary-bg) !default;
+$input-disabled-bg:                     var(--secondary-bg) !default;
 $input-disabled-border-color:           null !default;
 
-$input-color:                           var(--#{$prefix}color-body) !default;
-$input-border-color:                    var(--#{$prefix}border-color) !default;
-$input-border-width:                    var(--#{$prefix}border-width) !default;
-$input-box-shadow:                      var(--#{$prefix}box-shadow-inset) !default;
+$input-color:                           var(--color-body) !default;
+$input-border-color:                    var(--border-color) !default;
+$input-border-width:                    var(--border-width) !default;
+$input-box-shadow:                      var(--box-shadow-inset) !default;
 
-$input-border-radius:                   var(--#{$prefix}border-radius) !default;
-$input-border-radius-sm:                var(--#{$prefix}border-radius-sm) !default;
-$input-border-radius-lg:                var(--#{$prefix}border-radius-lg) !default;
+$input-border-radius:                   var(--border-radius) !default;
+$input-border-radius-sm:                var(--border-radius-sm) !default;
+$input-border-radius-lg:                var(--border-radius-lg) !default;
 
 $input-focus-bg:                        $input-bg !default;
-$input-focus-border-color:              var(--#{$prefix}primary-border) !default;
+$input-focus-border-color:              var(--primary-border) !default;
 $input-focus-color:                     $input-color !default;
 
-$input-placeholder-color:               var(--#{$prefix}secondary-color) !default;
-$input-plaintext-color:                 var(--#{$prefix}color-body) !default;
+$input-placeholder-color:               var(--secondary-color) !default;
+$input-plaintext-color:                 var(--color-body) !default;
 
 $input-height-border:                   calc(#{$input-border-width} * 2) !default;
 
@@ -117,16 +117,16 @@ $form-color-width:                      3rem !default;
 
 // scss-docs-start form-file-variables
 $form-file-button-color:          $input-color !default;
-$form-file-button-bg:             var(--#{$prefix}tertiary-bg) !default;
-$form-file-button-hover-bg:       var(--#{$prefix}secondary-bg) !default;
+$form-file-button-bg:             var(--tertiary-bg) !default;
+$form-file-button-hover-bg:       var(--secondary-bg) !default;
 // scss-docs-end form-file-variables
 
 // scss-docs-start form-feedback-variables
 $form-feedback-margin-top:          .5rem !default;
 $form-feedback-font-size:           $font-size-sm !default;
 $form-feedback-font-style:          null !default;
-$form-feedback-valid-color:         var(--#{$prefix}success) !default;
-$form-feedback-invalid-color:       var(--#{$prefix}danger) !default;
+$form-feedback-valid-color:         var(--success) !default;
+$form-feedback-invalid-color:       var(--danger) !default;
 
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
 $form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1'/></svg>") !default;
@@ -144,20 +144,20 @@ $form-invalid-border-color:         $form-feedback-invalid-color !default;
 // scss-docs-start form-validation-states
 $form-validation-states: (
   "valid": (
-    "color": var(--#{$prefix}form-valid-color),
+    "color": var(--form-valid-color),
     "icon": $form-feedback-icon-valid,
     "tooltip-color": #fff,
-    "tooltip-bg-color": var(--#{$prefix}success),
-    // "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}success-rgb), $input-btn-focus-color-opacity),
-    "border-color": var(--#{$prefix}form-valid-border-color),
+    "tooltip-bg-color": var(--success),
+    // "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--success-rgb), $input-btn-focus-color-opacity),
+    "border-color": var(--form-valid-border-color),
   ),
   "invalid": (
-    "color": var(--#{$prefix}form-invalid-color),
+    "color": var(--form-invalid-color),
     "icon": $form-feedback-icon-invalid,
     "tooltip-color": #fff,
-    "tooltip-bg-color": var(--#{$prefix}danger),
-    // "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}danger-rgb), $input-btn-focus-color-opacity),
-    "border-color": var(--#{$prefix}form-invalid-border-color),
+    "tooltip-bg-color": var(--danger),
+    // "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--danger-rgb), $input-btn-focus-color-opacity),
+    "border-color": var(--form-invalid-border-color),
   )
 ) !default;
 // scss-docs-end form-validation-states

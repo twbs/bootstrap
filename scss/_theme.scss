@@ -38,7 +38,7 @@
   @each $color-name, $color-map in $new-theme-colors {
     .theme-#{$color-name} {
       @each $key, $value in $color-map {
-        --#{$prefix}theme-#{$key}: var(--#{$prefix}#{$color-name}-#{$key});
+        --theme-#{$key}: var(--#{$color-name}-#{$key});
       }
     }
   }
@@ -53,7 +53,7 @@
     @if meta.type-of($value) == "map" {
       @include create-css-vars($value, $current-key);
     } @else {
-      --#{$prefix}#{$current-key}: #{$value};
+      --#{$current-key}: #{$value};
     }
   }
 }
@@ -61,92 +61,92 @@
 // scss-docs-start theme-colors
 $new-theme-colors: (
   "primary": (
-    "base": var(--#{$prefix}blue-500),
-    "text": light-dark(var(--#{$prefix}blue-600), var(--#{$prefix}blue-400)),
-    "text-emphasis": light-dark(var(--#{$prefix}blue-800), var(--#{$prefix}blue-200)),
-    "bg": var(--#{$prefix}blue-500),
-    "bg-subtle": light-dark(var(--#{$prefix}blue-100), var(--#{$prefix}blue-900)),
-    "bg-muted": light-dark(var(--#{$prefix}blue-200), var(--#{$prefix}blue-800)),
-    "border": light-dark(var(--#{$prefix}blue-300), var(--#{$prefix}blue-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}blue-500), var(--#{$prefix}blue-400)) 50%, var(--#{$prefix}bg-body)),
-    "contrast": var(--#{$prefix}white)
+    "base": var(--blue-500),
+    "text": light-dark(var(--blue-600), var(--blue-400)),
+    "text-emphasis": light-dark(var(--blue-800), var(--blue-200)),
+    "bg": var(--blue-500),
+    "bg-subtle": light-dark(var(--blue-100), var(--blue-900)),
+    "bg-muted": light-dark(var(--blue-200), var(--blue-800)),
+    "border": light-dark(var(--blue-300), var(--blue-600)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--blue-500), var(--blue-400)) 50%, var(--bg-body)),
+    "contrast": var(--white)
   ),
   "accent": (
-    "base": var(--#{$prefix}indigo-500),
-    "text": light-dark(var(--#{$prefix}indigo-600), color-mix(in oklch, var(--#{$prefix}indigo-400), var(--#{$prefix}indigo-300))),
-    "text-emphasis": light-dark(var(--#{$prefix}indigo-800), var(--#{$prefix}indigo-300)),
-    "bg": var(--#{$prefix}indigo-500),
-    "bg-subtle": light-dark(var(--#{$prefix}indigo-100), var(--#{$prefix}indigo-900)),
-    "bg-muted": light-dark(var(--#{$prefix}indigo-200), var(--#{$prefix}indigo-800)),
-    "border": light-dark(var(--#{$prefix}indigo-300), var(--#{$prefix}indigo-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}indigo-500), var(--#{$prefix}indigo-400)) 50%, var(--#{$prefix}bg-body)),
-    "contrast": var(--#{$prefix}white)
+    "base": var(--indigo-500),
+    "text": light-dark(var(--indigo-600), color-mix(in oklch, var(--indigo-400), var(--indigo-300))),
+    "text-emphasis": light-dark(var(--indigo-800), var(--indigo-300)),
+    "bg": var(--indigo-500),
+    "bg-subtle": light-dark(var(--indigo-100), var(--indigo-900)),
+    "bg-muted": light-dark(var(--indigo-200), var(--indigo-800)),
+    "border": light-dark(var(--indigo-300), var(--indigo-600)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--indigo-500), var(--indigo-400)) 50%, var(--bg-body)),
+    "contrast": var(--white)
   ),
   "success": (
-    "base": var(--#{$prefix}green-500),
-    "text": light-dark(var(--#{$prefix}green-600), var(--#{$prefix}green-400)),
-    "text-emphasis": light-dark(var(--#{$prefix}green-800), var(--#{$prefix}green-300)),
-    "bg": var(--#{$prefix}green-500),
-    "bg-subtle": light-dark(var(--#{$prefix}green-100), var(--#{$prefix}green-900)),
-    "bg-muted": light-dark(var(--#{$prefix}green-200), var(--#{$prefix}green-800)),
-    "border": light-dark(var(--#{$prefix}green-300), var(--#{$prefix}green-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}green-500), var(--#{$prefix}green-400)) 50%, var(--#{$prefix}bg-body)),
-    "contrast": var(--#{$prefix}white)
+    "base": var(--green-500),
+    "text": light-dark(var(--green-600), var(--green-400)),
+    "text-emphasis": light-dark(var(--green-800), var(--green-300)),
+    "bg": var(--green-500),
+    "bg-subtle": light-dark(var(--green-100), var(--green-900)),
+    "bg-muted": light-dark(var(--green-200), var(--green-800)),
+    "border": light-dark(var(--green-300), var(--green-600)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--green-500), var(--green-400)) 50%, var(--bg-body)),
+    "contrast": var(--white)
   ),
   "danger": (
-    "base": var(--#{$prefix}red-500),
-    "text": light-dark(var(--#{$prefix}red-600), var(--#{$prefix}red-400)),
-    "text-emphasis": light-dark(var(--#{$prefix}red-800), var(--#{$prefix}red-300)),
-    "bg": var(--#{$prefix}red-500),
-    "bg-subtle": light-dark(var(--#{$prefix}red-100), var(--#{$prefix}red-900)),
-    "bg-muted": light-dark(var(--#{$prefix}red-200), var(--#{$prefix}red-800)),
-    "border": light-dark(var(--#{$prefix}red-300), var(--#{$prefix}red-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}red-500), var(--#{$prefix}red-400)) 50%, var(--#{$prefix}bg-body)),
-    "contrast": var(--#{$prefix}white)
+    "base": var(--red-500),
+    "text": light-dark(var(--red-600), var(--red-400)),
+    "text-emphasis": light-dark(var(--red-800), var(--red-300)),
+    "bg": var(--red-500),
+    "bg-subtle": light-dark(var(--red-100), var(--red-900)),
+    "bg-muted": light-dark(var(--red-200), var(--red-800)),
+    "border": light-dark(var(--red-300), var(--red-600)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--red-500), var(--red-400)) 50%, var(--bg-body)),
+    "contrast": var(--white)
   ),
   "warning": (
-    "base": var(--#{$prefix}yellow-500),
-    "text": light-dark(var(--#{$prefix}yellow-700), var(--#{$prefix}yellow-400)),
-    "text-emphasis": light-dark(var(--#{$prefix}yellow-800), var(--#{$prefix}yellow-300)),
-    "bg": var(--#{$prefix}yellow-500),
-    "bg-subtle": light-dark(var(--#{$prefix}yellow-100), var(--#{$prefix}yellow-900)),
-    "bg-muted": light-dark(var(--#{$prefix}yellow-200), var(--#{$prefix}yellow-800)),
-    "border": light-dark(var(--#{$prefix}yellow-300), var(--#{$prefix}yellow-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}yellow-500), var(--#{$prefix}yellow-400)) 50%, var(--#{$prefix}bg-body)),
-    "contrast": var(--#{$prefix}gray-900)
+    "base": var(--yellow-500),
+    "text": light-dark(var(--yellow-700), var(--yellow-400)),
+    "text-emphasis": light-dark(var(--yellow-800), var(--yellow-300)),
+    "bg": var(--yellow-500),
+    "bg-subtle": light-dark(var(--yellow-100), var(--yellow-900)),
+    "bg-muted": light-dark(var(--yellow-200), var(--yellow-800)),
+    "border": light-dark(var(--yellow-300), var(--yellow-600)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--yellow-500), var(--yellow-400)) 50%, var(--bg-body)),
+    "contrast": var(--gray-900)
   ),
   "info": (
-    "base": var(--#{$prefix}cyan-500),
-    "text": light-dark(var(--#{$prefix}cyan-600), var(--#{$prefix}cyan-400)),
-    "text-emphasis": light-dark(var(--#{$prefix}cyan-800), var(--#{$prefix}cyan-300)),
-    "bg": var(--#{$prefix}cyan-500),
-    "bg-subtle": light-dark(var(--#{$prefix}cyan-100), var(--#{$prefix}cyan-900)),
-    "bg-muted": light-dark(var(--#{$prefix}cyan-200), var(--#{$prefix}cyan-800)),
-    "border": light-dark(var(--#{$prefix}cyan-300), var(--#{$prefix}cyan-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}cyan-500), var(--#{$prefix}cyan-400)) 50%, var(--#{$prefix}bg-body)),
-    "contrast": var(--#{$prefix}gray-900)
+    "base": var(--cyan-500),
+    "text": light-dark(var(--cyan-600), var(--cyan-400)),
+    "text-emphasis": light-dark(var(--cyan-800), var(--cyan-300)),
+    "bg": var(--cyan-500),
+    "bg-subtle": light-dark(var(--cyan-100), var(--cyan-900)),
+    "bg-muted": light-dark(var(--cyan-200), var(--cyan-800)),
+    "border": light-dark(var(--cyan-300), var(--cyan-600)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--cyan-500), var(--cyan-400)) 50%, var(--bg-body)),
+    "contrast": var(--gray-900)
   ),
   "inverse": (
-    "base": var(--#{$prefix}gray-900),
-    "text": light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-200)),
-    "text-emphasis": light-dark(var(--#{$prefix}gray-975), var(--#{$prefix}white)),
-    "bg": light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-025)),
-    "bg-subtle": light-dark(var(--#{$prefix}gray-100), var(--#{$prefix}gray-900)),
-    "bg-muted": light-dark(var(--#{$prefix}gray-200), var(--#{$prefix}gray-300)),
-    "border": light-dark(var(--#{$prefix}gray-400), var(--#{$prefix}gray-100)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-100)) 50%, var(--#{$prefix}bg-body)),
-    "contrast": light-dark(var(--#{$prefix}white), var(--#{$prefix}gray-900))
+    "base": var(--gray-900),
+    "text": light-dark(var(--gray-900), var(--gray-200)),
+    "text-emphasis": light-dark(var(--gray-975), var(--white)),
+    "bg": light-dark(var(--gray-900), var(--gray-025)),
+    "bg-subtle": light-dark(var(--gray-100), var(--gray-900)),
+    "bg-muted": light-dark(var(--gray-200), var(--gray-300)),
+    "border": light-dark(var(--gray-400), var(--gray-100)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--gray-900), var(--gray-100)) 50%, var(--bg-body)),
+    "contrast": light-dark(var(--white), var(--gray-900))
   ),
   "secondary": (
-    "base": var(--#{$prefix}gray-200),
-    "text": light-dark(var(--#{$prefix}gray-600), var(--#{$prefix}gray-400)),
-    "text-emphasis": light-dark(var(--#{$prefix}gray-800), var(--#{$prefix}gray-200)),
-    "bg": light-dark(var(--#{$prefix}gray-100), var(--#{$prefix}gray-600)),
-    "bg-subtle": light-dark(var(--#{$prefix}gray-050), var(--#{$prefix}gray-800)),
-    "bg-muted": light-dark(var(--#{$prefix}gray-100), var(--#{$prefix}gray-700)),
-    "border": light-dark(var(--#{$prefix}gray-300), var(--#{$prefix}gray-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--#{$prefix}gray-500), var(--#{$prefix}gray-300)) 50%, var(--#{$prefix}bg-body)),
-    "contrast": light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}white))
+    "base": var(--gray-200),
+    "text": light-dark(var(--gray-600), var(--gray-400)),
+    "text-emphasis": light-dark(var(--gray-800), var(--gray-200)),
+    "bg": light-dark(var(--gray-100), var(--gray-600)),
+    "bg-subtle": light-dark(var(--gray-050), var(--gray-800)),
+    "bg-muted": light-dark(var(--gray-100), var(--gray-700)),
+    "border": light-dark(var(--gray-300), var(--gray-600)),
+    "focus-ring": color-mix(in oklch, light-dark(var(--gray-500), var(--gray-300)) 50%, var(--bg-body)),
+    "contrast": light-dark(var(--gray-900), var(--white))
   )
 ) !default;
 // scss-docs-end theme-colors
@@ -156,36 +156,36 @@ $new-theme-colors: (
 
 // mdo-do: consider using muted, subtle, ghost or something instead of linear scale?
 $theme-bgs: (
-  "body": light-dark(var(--#{$prefix}white), var(--#{$prefix}gray-975)),
-  "1": light-dark(var(--#{$prefix}gray-025), var(--#{$prefix}gray-950)),
-  "2": light-dark(var(--#{$prefix}gray-050), var(--#{$prefix}gray-900)),
-  "3": light-dark(var(--#{$prefix}gray-100), var(--#{$prefix}gray-800)),
-  "4": light-dark(var(--#{$prefix}gray-200), var(--#{$prefix}gray-700)),
-  "white": var(--#{$prefix}white),
-  "black": var(--#{$prefix}black),
+  "body": light-dark(var(--white), var(--gray-975)),
+  "1": light-dark(var(--gray-025), var(--gray-950)),
+  "2": light-dark(var(--gray-050), var(--gray-900)),
+  "3": light-dark(var(--gray-100), var(--gray-800)),
+  "4": light-dark(var(--gray-200), var(--gray-700)),
+  "white": var(--white),
+  "black": var(--black),
   "transparent": transparent,
   "inherit": inherit,
 ) !default;
 
 $theme-fgs: (
-  "body": light-dark(var(--#{$prefix}gray-900), var(--#{$prefix}gray-050)),
-  "1": light-dark(var(--#{$prefix}gray-800), var(--#{$prefix}gray-200)),
-  "2": light-dark(var(--#{$prefix}gray-700), var(--#{$prefix}gray-300)),
-  "3": light-dark(var(--#{$prefix}gray-600), var(--#{$prefix}gray-500)),
-  "4": light-dark(var(--#{$prefix}gray-500), var(--#{$prefix}gray-600)),
-  "white": var(--#{$prefix}white),
-  "black": var(--#{$prefix}black),
+  "body": light-dark(var(--gray-900), var(--gray-050)),
+  "1": light-dark(var(--gray-800), var(--gray-200)),
+  "2": light-dark(var(--gray-700), var(--gray-300)),
+  "3": light-dark(var(--gray-600), var(--gray-500)),
+  "4": light-dark(var(--gray-500), var(--gray-600)),
+  "white": var(--white),
+  "black": var(--black),
   "inherit": inherit,
 ) !default;
 
 $theme-borders: (
-  "bg": var(--#{$prefix}bg-body),
-  "body": light-dark(var(--#{$prefix}gray-300), var(--#{$prefix}gray-800)),
-  "muted": light-dark(var(--#{$prefix}gray-200), var(--#{$prefix}gray-800)),
-  "subtle": light-dark(var(--#{$prefix}gray-100), var(--#{$prefix}gray-900)),
-  "emphasized": light-dark(var(--#{$prefix}gray-400), var(--#{$prefix}gray-600)),
-  "white": var(--#{$prefix}white),
-  "black": var(--#{$prefix}black),
+  "bg": var(--bg-body),
+  "body": light-dark(var(--gray-300), var(--gray-800)),
+  "muted": light-dark(var(--gray-200), var(--gray-800)),
+  "subtle": light-dark(var(--gray-100), var(--gray-900)),
+  "emphasized": light-dark(var(--gray-400), var(--gray-600)),
+  "white": var(--white),
+  "black": var(--black),
 ) !default;
 
 $util-opacity: (

@@ -49,11 +49,11 @@
 // stylelint-disable scss/dollar-variable-pattern
 @function rgba-css-var($identifier, $target) {
   @if $identifier == "body" and $target == "bg" {
-    @return rgba(var(--#{$prefix}#{$identifier}-bg-rgb), var(--#{$prefix}#{$target}-opacity));
+    @return rgba(var(--#{$identifier}-bg-rgb), var(--#{$target}-opacity));
   } @if $identifier == "body" and $target == "text" {
-    @return rgba(var(--#{$prefix}#{$identifier}-color-rgb), var(--#{$prefix}#{$target}-opacity));
+    @return rgba(var(--#{$identifier}-color-rgb), var(--#{$target}-opacity));
   } @else {
-    @return rgba(var(--#{$prefix}#{$identifier}-rgb), var(--#{$prefix}#{$target}-opacity));
+    @return rgba(var(--#{$identifier}-rgb), var(--#{$target}-opacity));
   }
 }
 
@@ -83,7 +83,7 @@
 @function varify($list) {
   $result: null;
   @each $entry in $list {
-    $result: list.append($result, var(--#{$prefix}#{$entry}), space);
+    $result: list.append($result, var(--#{$entry}), space);
   }
   @return $result;
 }

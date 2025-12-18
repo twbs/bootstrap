@@ -111,7 +111,7 @@
   //     @if $enable-validation-icons {
   //       &:not([multiple]):not([size]),
   //       &:not([multiple])[size="1"] {
-  //         --#{$prefix}form-select-bg-icon: #{escape-svg($icon)};
+  //         --form-select-bg-icon: #{escape-svg($icon)};
   //         padding-right: $form-select-feedback-icon-padding-end;
   //         background-position: $form-select-bg-position, $form-select-feedback-icon-position;
   //         background-size: $form-select-bg-size, $form-select-feedback-icon-size;

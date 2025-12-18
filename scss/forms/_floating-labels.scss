@@ -15,7 +15,7 @@ $form-floating-input-padding-b:         .625rem !default;
 $form-floating-label-height:            1.5em !default;
 $form-floating-label-opacity:           .65 !default;
 $form-floating-label-transform:         scale(.85) translateY(-.5rem) translateX(.15rem) !default;
-$form-floating-label-disabled-color:    var(--#{$prefix}gray-600) !default;
+$form-floating-label-disabled-color:    var(--gray-600) !default;
 $form-floating-transition:              opacity .1s ease-in-out, transform .1s ease-in-out !default;
 // scss-docs-end form-floating-variables
 
@@ -40,7 +40,7 @@ $form-floating-transition:              opacity .1s ease-in-out, transform .1s e
       height: 100%; // allow textareas
       padding: $form-floating-padding-y $form-floating-padding-x;
       overflow: hidden;
-      color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
+      color: rgba(var(--body-color-rgb), #{$form-floating-label-opacity});
       text-align: start;
       text-overflow: ellipsis;
       white-space: nowrap;

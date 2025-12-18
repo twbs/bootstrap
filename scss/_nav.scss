@@ -10,28 +10,28 @@ $nav-gap:                           .125rem !default;
 $nav-link-gap:                      .5rem !default;
 $nav-link-padding-y:                .5rem !default;
 $nav-link-padding-x:                1rem !default;
-$nav-link-color:                    var(--#{$prefix}fg-2) !default;
-$nav-link-hover-color:              var(--#{$prefix}fg-1) !default;
-$nav-link-hover-bg:                 var(--#{$prefix}bg-1) !default;
+$nav-link-color:                    var(--fg-2) !default;
+$nav-link-hover-color:              var(--fg-1) !default;
+$nav-link-hover-bg:                 var(--bg-1) !default;
 $nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
-$nav-link-disabled-color:           var(--#{$prefix}fg-4) !default;
-$nav-link-active-color:             var(--#{$prefix}fg-body) !default;
-$nav-link-active-bg:                var(--#{$prefix}bg-2) !default;
+$nav-link-disabled-color:           var(--fg-4) !default;
+$nav-link-active-color:             var(--fg-body) !default;
+$nav-link-active-bg:                var(--bg-2) !default;
 
-$nav-tabs-border-color:             var(--#{$prefix}border-color) !default;
-$nav-tabs-border-width:             var(--#{$prefix}border-width) !default;
-$nav-tabs-border-radius:            var(--#{$prefix}border-radius) !default;
-$nav-tabs-link-hover-border-color:  var(--#{$prefix}border-subtle) !default;
-$nav-tabs-link-active-color:        var(--#{$prefix}emphasis-color) !default;
-$nav-tabs-link-active-bg:           var(--#{$prefix}bg-body) !default;
-$nav-tabs-link-active-border-color: var(--#{$prefix}border-color) var(--#{$prefix}border-color) $nav-tabs-link-active-bg !default;
+$nav-tabs-border-color:             var(--border-color) !default;
+$nav-tabs-border-width:             var(--border-width) !default;
+$nav-tabs-border-radius:            var(--border-radius) !default;
+$nav-tabs-link-hover-border-color:  var(--border-subtle) !default;
+$nav-tabs-link-active-color:        var(--emphasis-color) !default;
+$nav-tabs-link-active-bg:           var(--bg-body) !default;
+$nav-tabs-link-active-border-color: var(--border-color) var(--border-color) $nav-tabs-link-active-bg !default;
 
 $nav-pills-link-active-color:       $component-active-color !default;
 $nav-pills-link-active-bg:          $component-active-bg !default;
 
 $nav-underline-gap:                 1rem !default;
 $nav-underline-border-width:        .125rem !default;
-$nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
+$nav-underline-link-active-color:   var(--emphasis-color) !default;
 // scss-docs-end nav-variables
 
 // Base class
@@ -42,21 +42,21 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 @layer components {
   .nav {
     // scss-docs-start nav-css-vars
-    --#{$prefix}nav-gap: #{$nav-gap};
-    --#{$prefix}nav-link-gap: #{$nav-link-gap};
-    --#{$prefix}nav-link-padding-x: #{$nav-link-padding-x};
-    --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
-    --#{$prefix}nav-link-color: #{$nav-link-color};
-    --#{$prefix}nav-link-hover-color: #{$nav-link-hover-color};
-    --#{$prefix}nav-link-hover-bg: #{$nav-link-hover-bg};
-    --#{$prefix}nav-link-active-color: #{$nav-link-active-color};
-    --#{$prefix}nav-link-active-bg: #{$nav-link-active-bg};
-    --#{$prefix}nav-link-disabled-color: #{$nav-link-disabled-color};
+    --nav-gap: #{$nav-gap};
+    --nav-link-gap: #{$nav-link-gap};
+    --nav-link-padding-x: #{$nav-link-padding-x};
+    --nav-link-padding-y: #{$nav-link-padding-y};
+    --nav-link-color: #{$nav-link-color};
+    --nav-link-hover-color: #{$nav-link-hover-color};
+    --nav-link-hover-bg: #{$nav-link-hover-bg};
+    --nav-link-active-color: #{$nav-link-active-color};
+    --nav-link-active-bg: #{$nav-link-active-bg};
+    --nav-link-disabled-color: #{$nav-link-disabled-color};
     // scss-docs-end nav-css-vars
 
     display: flex;
     flex-wrap: wrap;
-    gap: var(--#{$prefix}nav-gap);
+    gap: var(--nav-gap);
     padding-inline-start: 0;
     margin-bottom: 0;
     list-style: none;
@@ -69,41 +69,41 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 
   .nav-link {
     display: flex;
-    gap: var(--#{$prefix}nav-link-gap);
+    gap: var(--nav-link-gap);
     align-items: center;
     justify-content: center;
-    padding: var(--#{$prefix}nav-link-padding-y) var(--#{$prefix}nav-link-padding-x);
-    font-weight: var(--#{$prefix}nav-link-font-weight);
-    color: var(--#{$prefix}nav-link-color);
+    padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
+    font-weight: var(--nav-link-font-weight);
+    color: var(--nav-link-color);
     text-decoration: none;
     background: none;
     border: 0;
-    @include border-radius(var(--#{$prefix}border-radius));
-    // @include font-size(var(--#{$prefix}nav-link-font-size));
+    @include border-radius(var(--border-radius));
+    // @include font-size(var(--nav-link-font-size));
     @include transition($nav-link-transition);
 
     &:hover,
     &:focus {
-      color: var(--#{$prefix}nav-link-hover-color);
-      background-color: var(--#{$prefix}nav-link-hover-bg);
+      color: var(--nav-link-hover-color);
+      background-color: var(--nav-link-hover-bg);
     }
 
     &:focus-visible {
-      color: var(--#{$prefix}nav-link-hover-color);
+      color: var(--nav-link-hover-color);
       @include focus-ring(true);
-      --#{$prefix}focus-ring-offset: 1px;
+      --focus-ring-offset: 1px;
     }
 
     &.active,
     &:active {
-      color: var(--#{$prefix}nav-link-active-color);
-      background-color: var(--#{$prefix}nav-link-active-bg);
+      color: var(--nav-link-active-color);
+      background-color: var(--nav-link-active-bg);
     }
 
     // Disabled state lightens text
     &.disabled,
     &:disabled {
-      color: var(--#{$prefix}nav-link-disabled-color);
+      color: var(--nav-link-disabled-color);
       pointer-events: none;
       cursor: default;
     }
@@ -115,41 +115,41 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 
   .nav-tabs {
     // scss-docs-start nav-tabs-css-vars
-    --#{$prefix}nav-tabs-border-width: #{$nav-tabs-border-width};
-    --#{$prefix}nav-tabs-border-color: #{$nav-tabs-border-color};
-    --#{$prefix}nav-tabs-border-radius: #{$nav-tabs-border-radius};
-    --#{$prefix}nav-tabs-link-hover-border-color: #{$nav-tabs-link-hover-border-color};
-    --#{$prefix}nav-tabs-link-active-color: #{$nav-tabs-link-active-color};
-    --#{$prefix}nav-tabs-link-active-bg: #{$nav-tabs-link-active-bg};
-    --#{$prefix}nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
+    --nav-tabs-border-width: #{$nav-tabs-border-width};
+    --nav-tabs-border-color: #{$nav-tabs-border-color};
+    --nav-tabs-border-radius: #{$nav-tabs-border-radius};
+    --nav-tabs-link-hover-border-color: #{$nav-tabs-link-hover-border-color};
+    --nav-tabs-link-active-color: #{$nav-tabs-link-active-color};
+    --nav-tabs-link-active-bg: #{$nav-tabs-link-active-bg};
+    --nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
     // scss-docs-end nav-tabs-css-vars
 
-    border-block-end: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
+    border-block-end: var(--nav-tabs-border-width) solid var(--nav-tabs-border-color);
 
     .nav-link {
-      margin-bottom: calc(-1 * var(--#{$prefix}nav-tabs-border-width));
-      border: var(--#{$prefix}nav-tabs-border-width) solid transparent;
+      margin-bottom: calc(-1 * var(--nav-tabs-border-width));
+      border: var(--nav-tabs-border-width) solid transparent;
       @include border-bottom-radius(0);
 
       &:hover {
         // Prevents active .nav-link tab overlapping focus outline of previous/next .nav-link
         isolation: isolate;
-        border-color: var(--#{$prefix}nav-tabs-link-hover-border-color);
-        border-bottom-color: var(--#{$prefix}nav-tabs-border-color);
+        border-color: var(--nav-tabs-link-hover-border-color);
+        border-bottom-color: var(--nav-tabs-border-color);
       }
     }
 
     .nav-link.active,
     .nav-item.show .nav-link {
-      color: var(--#{$prefix}nav-tabs-link-active-color);
-      background-color: var(--#{$prefix}nav-tabs-link-active-bg);
-      border-color: var(--#{$prefix}nav-tabs-link-active-border-color);
-      border-bottom-color: var(--#{$prefix}nav-tabs-link-active-bg);
+      color: var(--nav-tabs-link-active-color);
+      background-color: var(--nav-tabs-link-active-bg);
+      border-color: var(--nav-tabs-link-active-border-color);
+      border-bottom-color: var(--nav-tabs-link-active-bg);
     }
 
     .dropdown-menu {
       // Make dropdown border overlap tab border
-      margin-top: calc(-1 * var(--#{$prefix}nav-tabs-border-width));
+      margin-top: calc(-1 * var(--nav-tabs-border-width));
       // Remove the top rounded corners here since there is a hard edge above the menu
       @include border-top-radius(0);
     }
@@ -162,14 +162,14 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 
   .nav-pills {
     // scss-docs-start nav-pills-css-vars
-    --#{$prefix}nav-pills-link-active-color: #{$nav-pills-link-active-color};
-    --#{$prefix}nav-pills-link-active-bg: #{$nav-pills-link-active-bg};
+    --nav-pills-link-active-color: #{$nav-pills-link-active-color};
+    --nav-pills-link-active-bg: #{$nav-pills-link-active-bg};
     // scss-docs-end nav-pills-css-vars
 
     .nav-link.active,
     .show > .nav-link {
-      color: var(--#{$prefix}nav-pills-link-active-color);
-      @include gradient-bg(var(--#{$prefix}nav-pills-link-active-bg));
+      color: var(--nav-pills-link-active-color);
+      @include gradient-bg(var(--nav-pills-link-active-bg));
     }
   }
 
@@ -180,16 +180,16 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
 
   .nav-underline {
     // scss-docs-start nav-underline-css-vars
-    --#{$prefix}nav-gap: #{$nav-underline-gap};
-    --#{$prefix}nav-link-active-bg: transparent;
-    // --#{$prefix}nav-underline-gap: #{$nav-underline-gap};
-    --#{$prefix}nav-underline-border-width: #{$nav-underline-border-width};
-    --#{$prefix}nav-underline-link-active-color: #{$nav-underline-link-active-color};
+    --nav-gap: #{$nav-underline-gap};
+    --nav-link-active-bg: transparent;
+    // --nav-underline-gap: #{$nav-underline-gap};
+    --nav-underline-border-width: #{$nav-underline-border-width};
+    --nav-underline-link-active-color: #{$nav-underline-link-active-color};
     // scss-docs-end nav-underline-css-vars
 
     .nav-link {
       padding-inline: 0;
-      border-block-end: var(--#{$prefix}nav-underline-border-width) solid transparent;
+      border-block-end: var(--nav-underline-border-width) solid transparent;
       @include border-radius(0);
 
       &:hover,
@@ -201,7 +201,7 @@ $nav-underline-link-active-color:   var(--#{$prefix}emphasis-color) !default;
     .nav-link.active,
     .show > .nav-link {
       font-weight: $font-weight-bold;
-      color: var(--#{$prefix}nav-underline-link-active-color);
+      color: var(--nav-underline-link-active-color);
       border-block-end-color: currentcolor;
     }
   }

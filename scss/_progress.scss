@@ -9,11 +9,11 @@
 // scss-docs-start progress-variables
 $progress-height:                   1rem !default;
 $progress-font-size:                $font-size-base * .75 !default;
-$progress-bg:                       var(--#{$prefix}secondary-bg) !default;
-$progress-border-radius:            var(--#{$prefix}border-radius) !default;
-$progress-box-shadow:               var(--#{$prefix}box-shadow-inset) !default;
+$progress-bg:                       var(--secondary-bg) !default;
+$progress-border-radius:            var(--border-radius) !default;
+$progress-box-shadow:               var(--box-shadow-inset) !default;
 $progress-bar-color:                $white !default;
-$progress-bar-bg:                   var(--#{$prefix}primary-bg) !default;
+$progress-bar-bg:                   var(--primary-bg) !default;
 $progress-bar-animation-timing:     1s linear infinite !default;
 $progress-bar-transition:           width .6s ease !default;
 // scss-docs-end progress-variables
@@ -25,7 +25,7 @@ $progress-bar-transition:           width .6s ease !default;
   // scss-docs-start progress-keyframes
   @if $enable-transitions {
     @keyframes progress-bar-stripes {
-      0% { background-position-x: var(--#{$prefix}progress-height); }
+      0% { background-position-x: var(--progress-height); }
     }
   }
   // scss-docs-end progress-keyframes
@@ -33,23 +33,23 @@ $progress-bar-transition:           width .6s ease !default;
   .progress,
   .progress-stacked {
     // scss-docs-start progress-css-vars
-    --#{$prefix}progress-height: #{$progress-height};
-    --#{$prefix}progress-font-size: #{$progress-font-size};
-    --#{$prefix}progress-bg: #{$progress-bg};
-    --#{$prefix}progress-border-radius: #{$progress-border-radius};
-    --#{$prefix}progress-box-shadow: #{$progress-box-shadow};
-    --#{$prefix}progress-bar-color: #{$progress-bar-color};
-    --#{$prefix}progress-bar-bg: #{$progress-bar-bg};
-    --#{$prefix}progress-bar-transition: #{$progress-bar-transition};
+    --progress-height: #{$progress-height};
+    --progress-font-size: #{$progress-font-size};
+    --progress-bg: #{$progress-bg};
+    --progress-border-radius: #{$progress-border-radius};
+    --progress-box-shadow: #{$progress-box-shadow};
+    --progress-bar-color: #{$progress-bar-color};
+    --progress-bar-bg: #{$progress-bar-bg};
+    --progress-bar-transition: #{$progress-bar-transition};
     // scss-docs-end progress-css-vars
 
     display: flex;
-    height: var(--#{$prefix}progress-height);
+    height: var(--progress-height);
     overflow: hidden; // force rounded corners by cropping it
-    font-size: var(--#{$prefix}progress-font-size);
-    background-color: var(--#{$prefix}progress-bg);
-    @include border-radius(var(--#{$prefix}progress-border-radius));
-    @include box-shadow(var(--#{$prefix}progress-box-shadow));
+    font-size: var(--progress-font-size);
+    background-color: var(--progress-bg);
+    @include border-radius(var(--progress-border-radius));
+    @include box-shadow(var(--progress-box-shadow));
   }
 
   .progress-bar {
@@ -57,16 +57,16 @@ $progress-bar-transition:           width .6s ease !default;
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
-    color: var(--#{$prefix}progress-bar-color);
+    color: var(--progress-bar-color);
     text-align: center;
     white-space: nowrap;
-    background-color: var(--#{$prefix}progress-bar-bg);
-    @include transition(var(--#{$prefix}progress-bar-transition));
+    background-color: var(--progress-bar-bg);
+    @include transition(var(--progress-bar-transition));
   }
 
   .progress-bar-striped {
     @include gradient-striped();
-    background-size: var(--#{$prefix}progress-height) var(--#{$prefix}progress-height);
+    background-size: var(--progress-height) var(--progress-height);
   }
 
   .progress-stacked > .progress {
