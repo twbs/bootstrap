@@ -25,7 +25,7 @@ $bd-callout-variants: info, warning, danger !default;
     --bd-violet-bg: var(--bd-violet);
     --bd-toc-color: light-dark(var(--bd-violet), var(--bs-indigo-300));
     --bd-sidebar-link-bg: light-dark(color-mix(in srgb, var(--bd-violet), transparent 90%), color-mix(in srgb, var(--bd-violet), transparent 70%));
-    --bd-callout-link: var(--#{$prefix}blue-600);
+    --bd-callout-link: var(--blue-600);
     --bd-callout-code-color: light-dark(var(--bs-pink-600), var(--bs-pink-300));
     --bd-pre-bg: var(--bs-bg-body);
     --bd-swatch-shadow: inset 0 0 0 1px light-dark(rgb(0 0 0 / .1), rgb(255 255 255 / .1));
@@ -34,10 +34,10 @@ $bd-callout-variants: info, warning, danger !default;
   // @include color-mode(dark, true) {
   //   --bd-violet: #{mix($bd-violet, $white, 75%)};
   //   --bd-violet-bg: #{$bd-violet};
-  //   --bd-toc-color: var(--#{$prefix}emphasis-color);
+  //   --bd-toc-color: var(--emphasis-color);
   //   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
   //   --bd-callout-link: #{to-rgb($blue-300)};
   //   --bd-callout-code-color: #{$pink-300};
-  //   --bd-pre-bg: #{color.adjust(var(--#{$prefix}gray-900), $lightness: -2.5%)}; // stylelint-disable-line scss/at-function-named-arguments
+  //   --bd-pre-bg: #{color.adjust(var(--gray-900), $lightness: -2.5%)}; // stylelint-disable-line scss/at-function-named-arguments
   // }
 }

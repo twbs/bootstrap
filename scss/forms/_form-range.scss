@@ -12,9 +12,9 @@
 $form-range-track-width:          100% !default;
 $form-range-track-height:         .5rem !default;
 $form-range-track-cursor:         pointer !default;
-$form-range-track-bg:             var(--#{$prefix}secondary-bg) !default;
+$form-range-track-bg:             var(--secondary-bg) !default;
 $form-range-track-border-radius:  1rem !default;
-$form-range-track-box-shadow:     var(--#{$prefix}box-shadow-inset) !default;
+$form-range-track-box-shadow:     var(--box-shadow-inset) !default;
 
 $form-range-thumb-width:                   1rem !default;
 $form-range-thumb-height:                  $form-range-thumb-width !default;
@@ -23,14 +23,14 @@ $form-range-thumb-border:                  0 !default;
 $form-range-thumb-border-radius:           1rem !default;
 $form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
 $form-range-thumb-active-bg:               tint-color($component-active-bg, 70%) !default;
-$form-range-thumb-disabled-bg:             var(--#{$prefix}secondary-color) !default;
+$form-range-thumb-disabled-bg:             var(--secondary-color) !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 // scss-docs-end form-range-variables
 
 @layer forms {
   .form-range {
     width: 100%;
-    height: calc(#{$form-range-thumb-height} + (var(--#{$prefix}focus-ring-width) * 2));
+    height: calc(#{$form-range-thumb-height} + (var(--focus-ring-width) * 2));
     padding: 0; // Need to reset padding
     appearance: none;
     background-color: transparent;
@@ -42,11 +42,11 @@ $form-range-thumb-transition:              background-color .15s ease-in-out, bo
       // Pseudo-elements must be split across multiple rulesets to have an effect.
       &::-webkit-slider-thumb {
         @include focus-ring(true);
-        --#{$prefix}focus-ring-offset: 1px;
+        --focus-ring-offset: 1px;
       }
       &::-moz-range-thumb     {
         @include focus-ring(true);
-        --#{$prefix}focus-ring-offset: 1px;
+        --focus-ring-offset: 1px;
       }
     }
 

@@ -9,9 +9,9 @@
 
 @layer custom {
   .bd-callout {
-    --#{$prefix}link-color: var(--bd-callout-color);
-    --#{$prefix}link-hover-color: var(--bd-callout-color);
-    --#{$prefix}code-color: var(--bd-callout-code-color);
+    --link-color: var(--bd-callout-color);
+    --link-hover-color: var(--bd-callout-color);
+    --code-color: var(--bd-callout-code-color);
 
     padding: 1.25rem;
     margin-top: 1.25rem;

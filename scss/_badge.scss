@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "config" as *;
 @use "colors" as *;
 @use "variables" as *;
 @use "theme" as *;
@@ -12,7 +11,7 @@ $badge-font-weight:                 $font-weight-bold !default;
 $badge-color:                       inherit !default;
 $badge-padding-y:                   .35em !default;
 $badge-padding-x:                   .5em !default;
-$badge-border-radius:               var(--#{$prefix}border-radius) !default;
+$badge-border-radius:               var(--border-radius) !default;
 // scss-docs-end badge-variables
 
 // scss-docs-start badge-variants
@@ -33,29 +32,29 @@ $badge-variants: (
 @layer components {
   .badge {
     // scss-docs-start badge-css-vars
-    --#{$prefix}badge-padding-x: #{$badge-padding-x};
-    --#{$prefix}badge-padding-y: #{$badge-padding-y};
-    --#{$prefix}badge-font-size: #{$badge-font-size};
-    --#{$prefix}badge-font-weight: #{$badge-font-weight};
-    --#{$prefix}badge-color: #{$badge-color};
-    --#{$prefix}badge-bg: var(--#{$prefix}bg-2);
-    --#{$prefix}badge-border-width: #{$border-width};
-    --#{$prefix}badge-border-color: transparent;
-    --#{$prefix}badge-border-radius: #{$badge-border-radius};
+    --badge-padding-x: #{$badge-padding-x};
+    --badge-padding-y: #{$badge-padding-y};
+    --badge-font-size: #{$badge-font-size};
+    --badge-font-weight: #{$badge-font-weight};
+    --badge-color: #{$badge-color};
+    --badge-bg: var(--bg-2);
+    --badge-border-width: #{$border-width};
+    --badge-border-color: transparent;
+    --badge-border-radius: #{$badge-border-radius};
     // scss-docs-end badge-css-vars
 
     display: inline-block;
-    padding: var(--#{$prefix}badge-padding-y) var(--#{$prefix}badge-padding-x);
-    font-size: var(--#{$prefix}badge-font-size);
-    font-weight: var(--#{$prefix}badge-font-weight);
+    padding: var(--badge-padding-y) var(--badge-padding-x);
+    font-size: var(--badge-font-size);
+    font-weight: var(--badge-font-weight);
     line-height: 1;
-    color: var(--#{$prefix}theme-contrast, var(--#{$prefix}badge-color));
+    color: var(--theme-contrast, var(--badge-color));
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}badge-bg));
-    border: var(--#{$prefix}badge-border-width) solid var(--#{$prefix}badge-border-color);
-    @include border-radius(var(--#{$prefix}badge-border-radius));
+    background-color: var(--theme-bg, var(--badge-bg));
+    border: var(--badge-border-width) solid var(--badge-border-color);
+    @include border-radius(var(--badge-border-radius));
     @include gradient-bg();
 
     // Empty badges collapse automatically
@@ -75,15 +74,15 @@ $badge-variants: (
     .badge-#{$variant} {
       @each $property, $value in $properties {
         @if $value == "transparent" {
-          --#{$prefix}badge-#{$property}: transparent;
+          --badge-#{$property}: transparent;
         } @else {
-          --#{$prefix}badge-#{$property}: var(--#{$prefix}theme-#{$value});
+          --badge-#{$property}: var(--theme-#{$value});
         }
       }
 
-      color: var(--#{$prefix}badge-color);
-      background-color: var(--#{$prefix}badge-bg);
-      border-color: var(--#{$prefix}badge-border-color);
+      color: var(--badge-color);
+      background-color: var(--badge-bg);
+      border-color: var(--badge-border-color);
     }
   }
   // scss-docs-end badge-variant-loop

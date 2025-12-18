@@ -12,18 +12,18 @@
 @layer forms {
   .switch {
     // scss-docs-start switch-css-variables
-    --#{$prefix}switch-height: 1.25rem;
-    --#{$prefix}switch-width: calc(var(--#{$prefix}switch-height) * 1.5);
-    --#{$prefix}switch-padding: .0625rem;
-    --#{$prefix}switch-bg: var(--#{$prefix}secondary-bg);
-    --#{$prefix}switch-border-width: var(--#{$prefix}border-width);
-    --#{$prefix}switch-border-color: var(--#{$prefix}border-color);
-    --#{$prefix}switch-indicator-bg: var(--#{$prefix}white);
-    --#{$prefix}switch-checked-bg: var(--#{$prefix}primary-base);
-    --#{$prefix}switch-checked-border-color: var(--#{$prefix}switch-checked-bg);
-    --#{$prefix}switch-checked-indicator-bg: var(--#{$prefix}white);
-    --#{$prefix}switch-disabled-bg: var(--#{$prefix}secondary-bg);
-    --#{$prefix}switch-disabled-indicator-bg: var(--#{$prefix}secondary-text);
+    --switch-height: 1.25rem;
+    --switch-width: calc(var(--switch-height) * 1.5);
+    --switch-padding: .0625rem;
+    --switch-bg: var(--secondary-bg);
+    --switch-border-width: var(--border-width);
+    --switch-border-color: var(--border-color);
+    --switch-indicator-bg: var(--white);
+    --switch-checked-bg: var(--primary-base);
+    --switch-checked-border-color: var(--switch-checked-bg);
+    --switch-checked-indicator-bg: var(--white);
+    --switch-disabled-bg: var(--secondary-bg);
+    --switch-disabled-indicator-bg: var(--secondary-text);
     // scss-docs-end switch-css-variables
 
     position: relative;
@@ -31,11 +31,11 @@
     flex-shrink: 0;
     align-items: stretch;
     justify-content: flex-start;
-    width: var(--#{$prefix}switch-width);
-    height: var(--#{$prefix}switch-height);
-    padding: var(--#{$prefix}switch-padding);
-    background-color: var(--#{$prefix}switch-bg);
-    border: var(--#{$prefix}switch-border-width) solid var(--#{$prefix}switch-border-color);
+    width: var(--switch-width);
+    height: var(--switch-height);
+    padding: var(--switch-padding);
+    background-color: var(--switch-bg);
+    border: var(--switch-border-width) solid var(--switch-border-color);
     // stylelint-disable-next-line property-disallowed-list
     border-radius: 10rem;
     box-shadow: inset 0 1px 2px rgba($black, .05);
@@ -45,10 +45,10 @@
 
     &::before {
       flex-shrink: 0;
-      width: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2) - var(--#{$prefix}switch-border-width) * 2);
-      height: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2) - var(--#{$prefix}switch-border-width) * 2);
+      width: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2);
+      height: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2);
       content: "";
-      background-color: var(--#{$prefix}switch-indicator-bg);
+      background-color: var(--switch-indicator-bg);
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 50%;
       box-shadow: 0 1px 2px rgba($black, .1);
@@ -67,27 +67,27 @@
     }
 
     &:has(input:checked) {
-      padding-inline-start: calc(var(--#{$prefix}switch-height) / 2 + var(--#{$prefix}switch-padding));
-      background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}switch-checked-bg));
-      border-color: var(--#{$prefix}theme-bg, var(--#{$prefix}switch-checked-border-color));
+      padding-inline-start: calc(var(--switch-height) / 2 + var(--switch-padding));
+      background-color: var(--theme-bg, var(--switch-checked-bg));
+      border-color: var(--theme-bg, var(--switch-checked-border-color));
     }
 
     &:has(input:disabled) {
-      --#{$prefix}switch-bg: var(--#{$prefix}switch-disabled-bg);
-      --#{$prefix}switch-indicator-bg: var(--#{$prefix}switch-disabled-indicator-bg);
+      --switch-bg: var(--switch-disabled-bg);
+      --switch-indicator-bg: var(--switch-disabled-indicator-bg);
 
       &::before { opacity: .4; }
 
       ~ label {
-        color: var(--#{$prefix}secondary-text);
+        color: var(--secondary-text);
         cursor: default;
       }
     }
   }
   .switch-sm {
-    --#{$prefix}switch-height: 1em;
+    --switch-height: 1em;
   }
   .switch-lg {
-    --#{$prefix}switch-height: 2em;
+    --switch-height: 2em;
   }
 }

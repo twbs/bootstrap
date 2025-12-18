@@ -34,9 +34,22 @@ Whenever possible, we'll assign CSS variables at the base component level (e.g.,
 
 ## Prefix
 
-Most CSS variables use a prefix to avoid collisions with your own codebase. This prefix is in addition to the `--` that’s required on every CSS variable.
+Most CSS variables use a prefix to avoid collisions with your own codebase. This prefix is in addition to the `--` that's required on every CSS variable.
 
-Customize the prefix via the `$prefix` Sass variable. By default, it’s set to `bs-` (note the trailing dash).
+The `bs-` prefix is added automatically via [PostCSS](https://postcss.org/) using the `postcss-prefix-custom-properties` plugin during our build process. This means you write unprefixed custom properties in the source Sass (e.g., `--border-radius`) and they become prefixed in the compiled CSS (e.g., `--bs-border-radius`).
+
+If you're building your own custom version of Bootstrap's CSS and want to change the prefix, update the `prefix` option in your PostCSS configuration:
+
+```js
+// postcss.config.js
+import postcssPrefixCustomProperties from 'postcss-prefix-custom-properties'
+
+export default {
+  plugins: [
+    postcssPrefixCustomProperties({ prefix: 'custom-' })
+  ]
+}
+```
 
 ## Examples
 

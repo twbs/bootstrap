@@ -32,8 +32,8 @@
 
   :root {
     @if $font-size-root != null {
-      font-size: var(--#{$prefix}root-font-size);
-      // @include font-size(var(--#{$prefix}root-font-size));
+      font-size: var(--root-font-size);
+      // @include font-size(var(--root-font-size));
     }
 
     @if $enable-smooth-scroll {
@@ -54,13 +54,13 @@
   // scss-docs-start reboot-body-rules
   body {
     margin: 0; // 1
-    font-family: var(--#{$prefix}body-font-family);
-    font-size: var(--#{$prefix}body-font-size);
-    font-weight: var(--#{$prefix}body-font-weight);
-    line-height: var(--#{$prefix}body-line-height);
-    color: var(--#{$prefix}color-body);
-    text-align: var(--#{$prefix}body-text-align);
-    background-color: var(--#{$prefix}bg-body); // 2
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size);
+    font-weight: var(--body-font-weight);
+    line-height: var(--body-line-height);
+    color: var(--color-body);
+    text-align: var(--body-text-align);
+    background-color: var(--bg-body); // 2
     -webkit-text-size-adjust: 100%; // 3
     -webkit-tap-highlight-color: rgba($black, 0); // 4
   }
@@ -93,7 +93,7 @@
     font-style: $headings-font-style;
     font-weight: $headings-font-weight;
     line-height: $headings-line-height;
-    color: var(--#{$prefix}heading-color);
+    color: var(--heading-color);
   }
 
   h1,
@@ -231,8 +231,8 @@
   mark,
   .mark {
     padding: $mark-padding;
-    color: var(--#{$prefix}highlight-color);
-    background-color: var(--#{$prefix}highlight-bg);
+    color: var(--highlight-color);
+    background-color: var(--highlight-bg);
   }
 
 
@@ -256,15 +256,15 @@
   // Links
 
   a {
-    color: var(--#{$prefix}link-color);
-    text-decoration: var(--#{$prefix}link-decoration);
+    color: var(--link-color);
+    text-decoration: var(--link-decoration);
     text-underline-offset: $link-underline-offset;
 
     &:hover {
-      // --#{$prefix}link-color: var(--#{$prefix}link-hover-color);
-      // --#{$prefix}link-decoration: var(--#{$prefix}link-hover-decoration, var(--#{$prefix}link-decoration));
-      color: var(--#{$prefix}link-hover-color);
-      text-decoration: var(--#{$prefix}link-hover-decoration, var(--#{$prefix}link-decoration));
+      // --link-color: var(--link-hover-color);
+      // --link-decoration: var(--link-hover-decoration, var(--link-decoration));
+      color: var(--link-hover-color);
+      text-decoration: var(--link-hover-decoration, var(--link-decoration));
     }
   }
 
@@ -314,7 +314,7 @@
 
   code {
     font-size: $code-font-size;
-    color: var(--#{$prefix}code-color);
+    color: var(--code-color);
     word-wrap: break-word;
 
     // Streamline the style when inside anchors to avoid broken underline and more
@@ -369,7 +369,7 @@
     // padding-bottom: $table-cell-padding-y;
     // color: $table-caption-color;
     padding-block: .5rem;
-    color: var(--#{$prefix}secondary-color);
+    color: var(--secondary-color);
     text-align: start;
   }
 

@@ -6,7 +6,7 @@
   .anchor-link {
     padding: 0 .175rem;
     font-weight: 400;
-    color: color-mix(in srgb, var(--#{$prefix}link-color), transparent .5);
+    color: color-mix(in srgb, var(--link-color), transparent .5);
     text-decoration: none;
     opacity: 0;
     @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
@@ -19,7 +19,7 @@
     &:hover,
     :hover > &,
     :target > & {
-      color: var(--#{$prefix}link-color);
+      color: var(--link-color);
       text-decoration: none;
       opacity: 0;
       @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
@@ -32,7 +32,7 @@
       &:hover,
       :hover > &,
       :target > & {
-        color: var(--#{$prefix}link-color);
+        color: var(--link-color);
         text-decoration: none;
         opacity: 1;
       }

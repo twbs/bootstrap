@@ -37,11 +37,15 @@ Bootstrap uses [Dart Sass](https://sass-lang.com/dart-sass/) for compiling our S
 
 Dart Sass uses a rounding precision of 10 and for efficiency reasons does not allow adjustment of this value. We don’t lower this precision during further processing of our generated CSS, such as during minification, but if you chose to do so we recommend maintaining a precision of at least 6 to prevent issues with browser rounding.
 
-## Autoprefixer
+## PostCSS
 
-Bootstrap uses [Autoprefixer](https://github.com/postcss/autoprefixer) (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
+Bootstrap uses [PostCSS](https://postcss.org/) to process our compiled CSS with several plugins:
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]([[config:repo]]/blob/v[[config:current_version]]/.browserslistrc) for details.
+- **[Autoprefixer](https://github.com/postcss/autoprefixer)** automatically adds vendor prefixes to CSS properties at build time. This saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins. We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]([[config:repo]]/blob/v[[config:current_version]]/.browserslistrc) for details.
+
+- **[postcss-prefix-custom-properties](https://github.com/nicolo-ribaudo/postcss-prefix-custom-properties)** adds the `bs-` prefix to all CSS custom properties (variables). This allows us to write clean, unprefixed variable names in our Sass source (e.g., `--border-radius`) that become prefixed in the compiled CSS (e.g., `--bs-border-radius`).
+
+Our PostCSS configuration is located in `build/postcss.config.mjs`.
 
 ## Local documentation
 

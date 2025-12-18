@@ -5,11 +5,11 @@
 @use "mixins/reset-text" as *;
 
 // scss-docs-start tooltip-variables
-$tooltip-font-size:                 var(--#{$prefix}font-size-sm) !default;
+$tooltip-font-size:                 var(--font-size-sm) !default;
 $tooltip-max-width:                 200px !default;
-$tooltip-color:                     var(--#{$prefix}bg-body) !default;
-$tooltip-bg:                        var(--#{$prefix}fg-body) !default;
-$tooltip-border-radius:             var(--#{$prefix}border-radius) !default;
+$tooltip-color:                     var(--bg-body) !default;
+$tooltip-bg:                        var(--fg-body) !default;
+$tooltip-border-radius:             var(--border-radius) !default;
 $tooltip-opacity:                   .95 !default;
 $tooltip-padding-y:                 $spacer * .375 !default;
 $tooltip-padding-x:                 $spacer * .75 !default;
@@ -32,35 +32,35 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
 @layer components {
   .tooltip {
     // scss-docs-start tooltip-css-vars
-    --#{$prefix}tooltip-zindex: #{$zindex-tooltip};
-    --#{$prefix}tooltip-max-width: #{$tooltip-max-width};
-    --#{$prefix}tooltip-padding-x: #{$tooltip-padding-x};
-    --#{$prefix}tooltip-padding-y: #{$tooltip-padding-y};
-    --#{$prefix}tooltip-font-size: #{$tooltip-font-size};
-    --#{$prefix}tooltip-color: #{$tooltip-color};
-    --#{$prefix}tooltip-bg: #{$tooltip-bg};
-    --#{$prefix}tooltip-border-radius: #{$tooltip-border-radius};
-    --#{$prefix}tooltip-opacity: #{$tooltip-opacity};
-    --#{$prefix}tooltip-arrow-width: #{$tooltip-arrow-width};
-    --#{$prefix}tooltip-arrow-height: #{$tooltip-arrow-height};
+    --tooltip-zindex: #{$zindex-tooltip};
+    --tooltip-max-width: #{$tooltip-max-width};
+    --tooltip-padding-x: #{$tooltip-padding-x};
+    --tooltip-padding-y: #{$tooltip-padding-y};
+    --tooltip-font-size: #{$tooltip-font-size};
+    --tooltip-color: #{$tooltip-color};
+    --tooltip-bg: #{$tooltip-bg};
+    --tooltip-border-radius: #{$tooltip-border-radius};
+    --tooltip-opacity: #{$tooltip-opacity};
+    --tooltip-arrow-width: #{$tooltip-arrow-width};
+    --tooltip-arrow-height: #{$tooltip-arrow-height};
     // scss-docs-end tooltip-css-vars
 
-    z-index: var(--#{$prefix}tooltip-zindex);
+    z-index: var(--tooltip-zindex);
     display: block;
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     @include reset-text();
-    font-size: var(--#{$prefix}tooltip-font-size);
+    font-size: var(--tooltip-font-size);
     // Allow breaking very long words so they don't overflow the tooltip's bounds
     word-wrap: break-word;
     opacity: 0;
 
-    &.show { opacity: var(--#{$prefix}tooltip-opacity); }
+    &.show { opacity: var(--tooltip-opacity); }
 
     .tooltip-arrow {
       display: block;
-      width: var(--#{$prefix}tooltip-arrow-width);
-      height: var(--#{$prefix}tooltip-arrow-height);
+      width: var(--tooltip-arrow-width);
+      height: var(--tooltip-arrow-height);
 
       &::before {
         position: absolute;
@@ -72,46 +72,46 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
   }
 
   .bs-tooltip-top .tooltip-arrow {
-    bottom: calc(-1 * var(--#{$prefix}tooltip-arrow-height));
+    bottom: calc(-1 * var(--tooltip-arrow-height));
 
     &::before {
       top: -1px;
-      border-width: var(--#{$prefix}tooltip-arrow-height) calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0;
-      border-block-start-color: var(--#{$prefix}tooltip-bg);
+      border-width: var(--tooltip-arrow-height) calc(var(--tooltip-arrow-width) * .5) 0;
+      border-block-start-color: var(--tooltip-bg);
     }
   }
 
   .bs-tooltip-end .tooltip-arrow {
-    left: calc(-1 * var(--#{$prefix}tooltip-arrow-height));
-    width: var(--#{$prefix}tooltip-arrow-height);
-    height: var(--#{$prefix}tooltip-arrow-width);
+    left: calc(-1 * var(--tooltip-arrow-height));
+    width: var(--tooltip-arrow-height);
+    height: var(--tooltip-arrow-width);
 
     &::before {
       right: -1px;
-      border-width: calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height) calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0;
-      border-inline-end-color: var(--#{$prefix}tooltip-bg);
+      border-width: calc(var(--tooltip-arrow-width) * .5) var(--tooltip-arrow-height) calc(var(--tooltip-arrow-width) * .5) 0;
+      border-inline-end-color: var(--tooltip-bg);
     }
   }
 
   .bs-tooltip-bottom .tooltip-arrow {
-    top: calc(-1 * var(--#{$prefix}tooltip-arrow-height));
+    top: calc(-1 * var(--tooltip-arrow-height));
 
     &::before {
       bottom: -1px;
-      border-width: 0 calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height);
-      border-block-end-color: var(--#{$prefix}tooltip-bg);
+      border-width: 0 calc(var(--tooltip-arrow-width) * .5) var(--tooltip-arrow-height);
+      border-block-end-color: var(--tooltip-bg);
     }
   }
 
   .bs-tooltip-start .tooltip-arrow {
-    right: calc(-1 * var(--#{$prefix}tooltip-arrow-height));
-    width: var(--#{$prefix}tooltip-arrow-height);
-    height: var(--#{$prefix}tooltip-arrow-width);
+    right: calc(-1 * var(--tooltip-arrow-height));
+    width: var(--tooltip-arrow-height);
+    height: var(--tooltip-arrow-width);
 
     &::before {
       left: -1px;
-      border-width: calc(var(--#{$prefix}tooltip-arrow-width) * .5) 0 calc(var(--#{$prefix}tooltip-arrow-width) * .5) var(--#{$prefix}tooltip-arrow-height);
-      border-inline-start-color: var(--#{$prefix}tooltip-bg);
+      border-width: calc(var(--tooltip-arrow-width) * .5) 0 calc(var(--tooltip-arrow-width) * .5) var(--tooltip-arrow-height);
+      border-inline-start-color: var(--tooltip-bg);
     }
   }
 
@@ -132,11 +132,11 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
 
   // Wrapper for the tooltip content
   .tooltip-inner {
-    max-width: var(--#{$prefix}tooltip-max-width);
-    padding: var(--#{$prefix}tooltip-padding-y) var(--#{$prefix}tooltip-padding-x);
-    color: var(--#{$prefix}tooltip-color);
+    max-width: var(--tooltip-max-width);
+    padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
+    color: var(--tooltip-color);
     text-align: center;
-    background-color: var(--#{$prefix}tooltip-bg);
-    @include border-radius(var(--#{$prefix}tooltip-border-radius));
+    background-color: var(--tooltip-bg);
+    @include border-radius(var(--tooltip-border-radius));
   }
 }

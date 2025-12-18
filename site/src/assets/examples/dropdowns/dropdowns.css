@@ -1,23 +1,23 @@
 .dropdown-item-danger {
-  color: var(--bs-red);
+  color: var(--bs-bs-bs-bs-bs-red);
 }
 .dropdown-item-danger:hover,
 .dropdown-item-danger:focus {
   color: #fff;
-  background-color: var(--bs-red);
+  background-color: var(--bs-bs-bs-bs-bs-red);
 }
 .dropdown-item-danger.active {
-  background-color: var(--bs-red);
+  background-color: var(--bs-bs-bs-bs-bs-red);
 }
 
 .btn-hover-light {
-  color: var(--bs-body-color);
-  background-color: var(--bs-body-bg);
+  color: var(--bs-bs-bs-bs-bs-body-color);
+  background-color: var(--bs-bs-bs-bs-bs-body-bg);
 }
 .btn-hover-light:hover,
 .btn-hover-light:focus {
-  color: var(--bs-link-hover-color);
-  background-color: var(--bs-tertiary-bg);
+  color: var(--bs-bs-bs-bs-bs-link-hover-color);
+  background-color: var(--bs-bs-bs-bs-bs-tertiary-bg);
 }
 
 .cal-month,
@@ -43,11 +43,11 @@
 }
 .cal-btn:not([disabled]) {
   font-weight: 500;
-  color: var(--bs-emphasis-color);
+  color: var(--bs-bs-bs-bs-bs-emphasis-color);
 }
 .cal-btn:hover,
 .cal-btn:focus {
-  background-color: var(--bs-secondary-bg);
+  background-color: var(--bs-bs-bs-bs-bs-secondary-bg);
 }
 .cal-btn[disabled] {
   border: 0;

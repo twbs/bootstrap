@@ -6,17 +6,17 @@
 @layer helpers {
   @each $color, $value in $new-theme-colors {
     .link-#{$color} {
-      --#{$prefix}link-color: var(--#{$prefix}#{$color}-text);
-      // text-decoration-color: color-mix(in srgb, var(--#{$prefix}#{$color}-text), transparent var(--#{$prefix}link-underline-opacity));
+      --link-color: var(--#{$color}-text);
+      // text-decoration-color: color-mix(in srgb, var(--#{$color}-text), transparent var(--link-underline-opacity));
 
       @if $link-shade-percentage != 0 {
         &:hover,
         &:focus {
-          --#{$prefix}link-color: var(--#{$prefix}#{$color}-text-emphasis);
-          --#{$prefix}link-hover-color: var(--#{$prefix}#{$color}-text-emphasis);
+          --link-color: var(--#{$color}-text-emphasis);
+          --link-hover-color: var(--#{$color}-text-emphasis);
           // $hover-color: if(color-contrast($value) == $color-contrast-light, shade-color($value, $link-shade-percentage), tint-color($value, $link-shade-percentage));
-          // color: color-mix(in srgb, $hover-color, transparent var(--#{$prefix}link-opacity));
-          // text-decoration-color: color-mix(in srgb, var(--#{$prefix}#{$color}-text), transparent var(--#{$prefix}link-underline-opacity));
+          // color: color-mix(in srgb, $hover-color, transparent var(--link-opacity));
+          // text-decoration-color: color-mix(in srgb, var(--#{$color}-text), transparent var(--link-underline-opacity));
         }
       }
     }
@@ -24,14 +24,14 @@
 
   // One-off special link helper as a bridge until v6
   .link-body-emphasis {
-    color: color-mix(in srgb, var(--#{$prefix}emphasis-color), transparent var(--#{$prefix}link-opacity));
-    text-decoration-color: color-mix(in srgb, var(--#{$prefix}emphasis-color), transparent var(--#{$prefix}link-underline-opacity));
+    color: color-mix(in srgb, var(--emphasis-color), transparent var(--link-opacity));
+    text-decoration-color: color-mix(in srgb, var(--emphasis-color), transparent var(--link-underline-opacity));
 
     @if $link-shade-percentage != 0 {
       &:hover,
       &:focus {
-        color: color-mix(in srgb, var(--#{$prefix}emphasis-color), transparent var(--#{$prefix}link-opacity, .75));
-        text-decoration-color: color-mix(in srgb, var(--#{$prefix}emphasis-color), transparent var(--#{$prefix}link-underline-opacity, .75));
+        color: color-mix(in srgb, var(--emphasis-color), transparent var(--link-opacity, .75));
+        text-decoration-color: color-mix(in srgb, var(--emphasis-color), transparent var(--link-underline-opacity, .75));
       }
     }
   }

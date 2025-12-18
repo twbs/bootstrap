@@ -7,10 +7,10 @@
 // Container mixins
 
 @mixin make-container($gutter: $container-padding-x) {
-  --#{$prefix}gutter-x: #{$gutter};
-  --#{$prefix}gutter-y: 0;
+  --gutter-x: #{$gutter};
+  --gutter-y: 0;
   width: 100%;
-  padding-inline: calc(var(--#{$prefix}gutter-x) * .5);
+  padding-inline: calc(var(--gutter-x) * .5);
   margin-inline: auto;
 }
 
