@@ -179,7 +179,8 @@ $dropdown-dark-header-color:        var(--#{$prefix}gray-500) !default;
       pointer-events: none;
       background-color: transparent;
       // Remove CSS gradients if they're enabled
-      background-image: if($enable-gradients, none, null);
+      // stylelint-disable-next-line scss/at-function-named-arguments
+      background-image: if(sass($enable-gradients): none; else: null);
     }
   }
 

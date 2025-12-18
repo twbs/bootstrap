@@ -70,7 +70,8 @@
       // https://github.com/twbs/bootstrap/issues/23307
       // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
       // Multiply line-height by 1em if it has no unit
-      height: if(math.unit($input-line-height) == "", $input-line-height * 1em, $input-line-height);
+      // stylelint-disable-next-line scss/at-function-named-arguments
+      height: if(sass(math.unit($input-line-height) == ""): $input-line-height * 1em; else: $input-line-height);
 
       // Android Chrome type="date" is taller than the other inputs
       // because of "margin: 1px 24px 1px 4px" inside the shadow DOM

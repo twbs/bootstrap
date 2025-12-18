@@ -171,7 +171,7 @@
     "remark-html": "^16.0.1",
     "rollup": "^4.53.2",
     "rollup-plugin-istanbul": "^5.0.0",
-    "sass": "^1.90.0",
+    "sass": "^1.95.0",
     "sass-true": "^9.0.0",
     "shelljs": "^0.10.0",
     "stylelint": "^16.25.0",
