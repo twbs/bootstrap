@@ -303,7 +303,6 @@ $btn-variant-selectors: () !default;
     --#{$prefix}btn-active-border-color: transparent;
     --#{$prefix}btn-disabled-color: #{$btn-link-disabled-color};
     --#{$prefix}btn-disabled-border-color: transparent;
-    --#{$prefix}btn-box-shadow: 0 0 0 #000; // Can't use `none` as keyword negates all values when used with multiple shadows
 
     text-decoration: var(--#{$prefix}link-decoration);
 
