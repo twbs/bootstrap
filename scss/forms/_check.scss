@@ -3,7 +3,6 @@
 @use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
-@use "../mixins/box-shadow" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/transition" as *;
@@ -68,6 +67,10 @@ $check-disabled-opacity: .65 !default;
       border-color: var(--#{$prefix}theme-bg, var(--#{$prefix}check-checked-border-color));
     }
 
+    :where(input:focus-visible) {
+      @include focus-ring(true);
+    }
+
     &:has(input:checked) .checked,
     &:has(input:indeterminate) .indeterminate {
       display: block;
@@ -83,7 +86,6 @@ $check-disabled-opacity: .65 !default;
         cursor: default;
       }
     }
-
     &:has(input:disabled:checked) {
       opacity: var(--#{$prefix}check-disabled-opacity);
     }

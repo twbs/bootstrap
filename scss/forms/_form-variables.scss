@@ -93,8 +93,6 @@ $input-border-radius-lg:                var(--#{$prefix}border-radius-lg) !defau
 $input-focus-bg:                        $input-bg !default;
 $input-focus-border-color:              var(--#{$prefix}primary-border) !default;
 $input-focus-color:                     $input-color !default;
-$input-focus-width:                     $input-btn-focus-width !default;
-$input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
 
 $input-placeholder-color:               var(--#{$prefix}secondary-color) !default;
 $input-plaintext-color:                 var(--#{$prefix}color-body) !default;
@@ -150,7 +148,7 @@ $form-validation-states: (
     "icon": $form-feedback-icon-valid,
     "tooltip-color": #fff,
     "tooltip-bg-color": var(--#{$prefix}success),
-    "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}success-rgb), $input-btn-focus-color-opacity),
+    // "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}success-rgb), $input-btn-focus-color-opacity),
     "border-color": var(--#{$prefix}form-valid-border-color),
   ),
   "invalid": (
@@ -158,7 +156,7 @@ $form-validation-states: (
     "icon": $form-feedback-icon-invalid,
     "tooltip-color": #fff,
     "tooltip-bg-color": var(--#{$prefix}danger),
-    "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}danger-rgb), $input-btn-focus-color-opacity),
+    // "focus-box-shadow": 0 0 $input-btn-focus-blur $input-focus-width rgba(var(--#{$prefix}danger-rgb), $input-btn-focus-color-opacity),
     "border-color": var(--#{$prefix}form-invalid-border-color),
   )
 ) !default;

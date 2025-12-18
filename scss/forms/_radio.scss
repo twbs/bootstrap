@@ -3,7 +3,6 @@
 @use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
-@use "../mixins/box-shadow" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/transition" as *;
@@ -72,5 +71,10 @@ $radio-disabled-opacity: .65 !default;
         cursor: default;
       }
     }
+
+    &:focus-visible {
+      @include focus-ring(true);
+    }
+
   }
 }

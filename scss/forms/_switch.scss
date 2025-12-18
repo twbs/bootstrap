@@ -47,8 +47,6 @@
       flex-shrink: 0;
       width: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2) - var(--#{$prefix}switch-border-width) * 2);
       height: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2) - var(--#{$prefix}switch-border-width) * 2);
-      // width: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2));
-      // height: calc(var(--#{$prefix}switch-height) - calc(var(--#{$prefix}switch-padding) * 2));
       content: "";
       background-color: var(--#{$prefix}switch-indicator-bg);
       // stylelint-disable-next-line property-disallowed-list
@@ -61,12 +59,17 @@
       inset: 0;
       appearance: none;
       background-color: transparent;
+      outline: 0;
+    }
+
+    &:focus-within {
+      @include focus-ring(true);
     }
 
     &:has(input:checked) {
       padding-inline-start: calc(var(--#{$prefix}switch-height) / 2 + var(--#{$prefix}switch-padding));
-      background-color: var(--#{$prefix}switch-checked-bg);
-      border-color: var(--#{$prefix}switch-checked-border-color);
+      background-color: var(--#{$prefix}theme-bg, var(--#{$prefix}switch-checked-bg));
+      border-color: var(--#{$prefix}theme-bg, var(--#{$prefix}switch-checked-border-color));
     }
 
     &:has(input:disabled) {

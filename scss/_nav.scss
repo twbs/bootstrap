@@ -1,8 +1,8 @@
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/gradients" as *;
 @use "mixins/focus-ring" as *;
+@use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 
 // scss-docs-start nav-variables
