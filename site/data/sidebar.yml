@@ -35,7 +35,6 @@
     - title: Color modes
     - title: Components
     - title: CSS variables
-    # - title: RTL
     - title: Optimize
 
 - title: Layout
@@ -82,7 +81,7 @@
   icon_color: cyan
   pages:
     - title: Accordion
-    - title: Alerts
+    - title: Alert
     - title: Badge
     - title: Breadcrumb
     - title: Buttons
@@ -92,13 +91,13 @@
     - title: Close button
     - title: Collapse
     - title: Dialog
-    - title: Dropdowns
+    - title: Dropdown
     - title: List group
     - title: Navbar
     - title: Navs & tabs
     - title: Offcanvas
     - title: Pagination
-    - title: Placeholders
+    - title: Placeholder
     - title: Popover
     - title: Progress
     - title: Scrollspy
