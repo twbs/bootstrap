@@ -574,7 +574,7 @@
     },
     "margin-x": {
       "class": "mx",
-      "property": "margin-right margin-left",
+      "property": "margin-inline",
       "classes": [
         "mx-0",
         "mx-1",
@@ -587,7 +587,7 @@
     },
     "margin-y": {
       "class": "my",
-      "property": "margin-top margin-bottom",
+      "property": "margin-block",
       "classes": [
         "my-0",
         "my-1",
@@ -600,7 +600,7 @@
     },
     "margin-top": {
       "class": "mt",
-      "property": "margin-top",
+      "property": "margin-block-start",
       "classes": [
         "mt-0",
         "mt-1",
@@ -613,7 +613,7 @@
     },
     "margin-end": {
       "class": "me",
-      "property": "margin-right",
+      "property": "margin-inline-end",
       "classes": [
         "me-0",
         "me-1",
@@ -626,7 +626,7 @@
     },
     "margin-bottom": {
       "class": "mb",
-      "property": "margin-bottom",
+      "property": "margin-block-end",
       "classes": [
         "mb-0",
         "mb-1",
@@ -639,7 +639,7 @@
     },
     "margin-start": {
       "class": "ms",
-      "property": "margin-left",
+      "property": "margin-inline-start",
       "classes": [
         "ms-0",
         "ms-1",
@@ -664,7 +664,7 @@
     },
     "padding-x": {
       "class": "px",
-      "property": "padding-right padding-left",
+      "property": "padding-inline",
       "classes": [
         "px-0",
         "px-1",
@@ -676,7 +676,7 @@
     },
     "padding-y": {
       "class": "py",
-      "property": "padding-top padding-bottom",
+      "property": "padding-block",
       "classes": [
         "py-0",
         "py-1",
@@ -688,7 +688,7 @@
     },
     "padding-top": {
       "class": "pt",
-      "property": "padding-top",
+      "property": "padding-block-start",
       "classes": [
         "pt-0",
         "pt-1",
@@ -700,7 +700,7 @@
     },
     "padding-end": {
       "class": "pe",
-      "property": "padding-right",
+      "property": "padding-inline-end",
       "classes": [
         "pe-0",
         "pe-1",
@@ -712,7 +712,7 @@
     },
     "padding-bottom": {
       "class": "pb",
-      "property": "padding-bottom",
+      "property": "padding-block-end",
       "classes": [
         "pb-0",
         "pb-1",
@@ -724,7 +724,7 @@
     },
     "padding-start": {
       "class": "ps",
-      "property": "padding-left",
+      "property": "padding-inline-start",
       "classes": [
         "ps-0",
         "ps-1",
@@ -899,6 +899,7 @@
         "fg-1",
         "fg-2",
         "fg-3",
+        "fg-4",
         "fg-white",
         "fg-black",
         "fg-inherit"
@@ -1027,6 +1028,7 @@
         "bg-1",
         "bg-2",
         "bg-3",
+        "bg-4",
         "bg-white",
         "bg-black",
         "bg-transparent",
@@ -1116,7 +1118,7 @@
     },
     "rounded-top": {
       "class": "rounded-top",
-      "property": "border-top-left-radius border-top-right-radius",
+      "property": "border-start-start-radius border-start-end-radius",
       "classes": [
         "rounded-top",
         "rounded-top-0",
@@ -1131,7 +1133,7 @@
     },
     "rounded-end": {
       "class": "rounded-end",
-      "property": "border-top-right-radius border-bottom-right-radius",
+      "property": "border-end-end-radius border-end-start-radius",
       "classes": [
         "rounded-end",
         "rounded-end-0",
@@ -1146,7 +1148,7 @@
     },
     "rounded-bottom": {
       "class": "rounded-bottom",
-      "property": "border-bottom-right-radius border-bottom-left-radius",
+      "property": "border-end-end-radius border-end-start-radius",
       "classes": [
         "rounded-bottom",
         "rounded-bottom-0",
@@ -1161,7 +1163,7 @@
     },
     "rounded-start": {
       "class": "rounded-start",
-      "property": "border-bottom-left-radius border-top-left-radius",
+      "property": "border-start-start-radius border-start-end-radius",
       "classes": [
         "rounded-start",
         "rounded-start-0",

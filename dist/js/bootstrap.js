@@ -4,29 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core')) :
-  typeof define === 'function' && define.amd ? define(['@popperjs/core'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bootstrap = factory(global.Popper));
-})(this, (function (Popper) { 'use strict';
-
-  function _interopNamespaceDefault(e) {
-    const n = Object.create(null, { [Symbol.toStringTag]: { value: 'Module' } });
-    if (e) {
-      for (const k in e) {
-        if (k !== 'default') {
-          const d = Object.getOwnPropertyDescriptor(e, k);
-          Object.defineProperty(n, k, d.get ? d : {
-            enumerable: true,
-            get: () => e[k]
-          });
-        }
-      }
-    }
-    n.default = e;
-    return Object.freeze(n);
-  }
-
-  const Popper__namespace = /*#__PURE__*/_interopNamespaceDefault(Popper);
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@floating-ui/dom')) :
+  typeof define === 'function' && define.amd ? define(['@floating-ui/dom'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bootstrap = factory(global.FloatingUIDOM));
+})(this, (function (dom) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -263,7 +244,7 @@
     for (const [key, value] of Object.entries(meta)) {
       try {
         obj[key] = value;
-      } catch (_unused) {
+      } catch {
         Object.defineProperty(obj, key, {
           configurable: true,
           get() {
@@ -300,7 +281,7 @@
     }
     try {
       return JSON.parse(decodeURIComponent(value));
-    } catch (_unused) {
+    } catch {
       return value;
     }
   }
@@ -339,7 +320,7 @@
    * --------------------------------------------------------------------------
    */
 
-  const MAX_UID = 1000000;
+  const MAX_UID = 1_000_000;
   const MILLISECONDS_MULTIPLIER = 1000;
   const TRANSITION_END = 'transitionend';
 
@@ -791,8 +772,8 @@
   const EVENT_KEY$b = `.${DATA_KEY$a}`;
   const EVENT_CLOSE = `close${EVENT_KEY$b}`;
   const EVENT_CLOSED = `closed${EVENT_KEY$b}`;
-  const CLASS_NAME_FADE$5 = 'fade';
-  const CLASS_NAME_SHOW$8 = 'show';
+  const CLASS_NAME_FADE$4 = 'fade';
+  const CLASS_NAME_SHOW$7 = 'show';
 
   /**
    * Class definition
@@ -810,8 +791,8 @@
       if (closeEvent.defaultPrevented) {
         return;
       }
-      this._element.classList.remove(CLASS_NAME_SHOW$8);
-      const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$5);
+      this._element.classList.remove(CLASS_NAME_SHOW$7);
+      const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$4);
       this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
     }
 
@@ -846,7 +827,7 @@
   const EVENT_KEY$a = `.${DATA_KEY$9}`;
   const DATA_API_KEY$6 = '.data-api';
   const CLASS_NAME_ACTIVE$3 = 'active';
-  const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="button"]';
+  const SELECTOR_DATA_TOGGLE$7 = '[data-bs-toggle="button"]';
   const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
 
   /**
@@ -870,9 +851,9 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$7, event => {
     event.preventDefault();
-    const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
+    const button = event.target.closest(SELECTOR_DATA_TOGGLE$7);
     const data = Button.getOrCreateInstance(button);
     data.toggle();
   });
@@ -1024,7 +1005,7 @@
   const EVENT_SLIDE = `slide${EVENT_KEY$8}`;
   const EVENT_SLID = `slid${EVENT_KEY$8}`;
   const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$8}`;
-  const EVENT_MOUSEENTER$1 = `mouseenter${EVENT_KEY$8}`;
+  const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$8}`;
   const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$8}`;
   const EVENT_DRAG_START = `dragstart${EVENT_KEY$8}`;
   const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$8}${DATA_API_KEY$5}`;
@@ -1164,7 +1145,7 @@
         EventHandler.on(this._element, EVENT_KEYDOWN$1, event => this._keydown(event));
       }
       if (this._config.pause === 'hover') {
-        EventHandler.on(this._element, EVENT_MOUSEENTER$1, () => this.pause());
+        EventHandler.on(this._element, EVENT_MOUSEENTER$2, () => this.pause());
         EventHandler.on(this._element, EVENT_MOUSELEAVE$1, () => this._maybeEnableCycle());
       }
       if (this._config.touch && Swipe.isSupported()) {
@@ -1368,7 +1349,7 @@
   const EVENT_HIDE$6 = `hide${EVENT_KEY$7}`;
   const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$7}`;
   const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$7}${DATA_API_KEY$4}`;
-  const CLASS_NAME_SHOW$7 = 'show';
+  const CLASS_NAME_SHOW$6 = 'show';
   const CLASS_NAME_COLLAPSE = 'collapse';
   const CLASS_NAME_COLLAPSING = 'collapsing';
   const CLASS_NAME_COLLAPSED = 'collapsed';
@@ -1377,7 +1358,7 @@
   const WIDTH = 'width';
   const HEIGHT = 'height';
   const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
-  const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="collapse"]';
+  const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="collapse"]';
   const Default$a = {
     parent: null,
     toggle: true
@@ -1396,7 +1377,7 @@
       super(element, config);
       this._isTransitioning = false;
       this._triggerArray = [];
-      const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$4);
+      const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$6);
       for (const elem of toggleList) {
         const selector = SelectorEngine.getSelectorFromElement(elem);
         const filterElement = SelectorEngine.find(selector).filter(foundElement => foundElement === this._element);
@@ -1463,7 +1444,7 @@
       const complete = () => {
         this._isTransitioning = false;
         this._element.classList.remove(CLASS_NAME_COLLAPSING);
-        this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
+        this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$6);
         this._element.style[dimension] = '';
         EventHandler.trigger(this._element, EVENT_SHOWN$6);
       };
@@ -1484,7 +1465,7 @@
       this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
       reflow(this._element);
       this._element.classList.add(CLASS_NAME_COLLAPSING);
-      this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
+      this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$6);
       for (const trigger of this._triggerArray) {
         const element = SelectorEngine.getElementFromSelector(trigger);
         if (element && !this._isShown(element)) {
@@ -1504,7 +1485,7 @@
 
     // Private
     _isShown(element = this._element) {
-      return element.classList.contains(CLASS_NAME_SHOW$7);
+      return element.classList.contains(CLASS_NAME_SHOW$6);
     }
     _configAfterMerge(config) {
       config.toggle = Boolean(config.toggle); // Coerce string values
@@ -1518,7 +1499,7 @@
       if (!this._config.parent) {
         return;
       }
-      const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$4);
+      const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$6);
       for (const element of children) {
         const selected = SelectorEngine.getElementFromSelector(element);
         if (selected) {
@@ -1546,7 +1527,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$4, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$6, function (event) {
     // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
     if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
       event.preventDefault();
@@ -1560,7 +1541,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap dropdown.js
+   * Bootstrap dialog.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1570,72 +1551,43 @@
    * Constants
    */
 
-  const NAME$a = 'dropdown';
-  const DATA_KEY$6 = 'bs.dropdown';
+  const NAME$a = 'dialog';
+  const DATA_KEY$6 = 'bs.dialog';
   const EVENT_KEY$6 = `.${DATA_KEY$6}`;
   const DATA_API_KEY$3 = '.data-api';
-  const ESCAPE_KEY$2 = 'Escape';
-  const TAB_KEY$1 = 'Tab';
-  const ARROW_UP_KEY$1 = 'ArrowUp';
-  const ARROW_DOWN_KEY$1 = 'ArrowDown';
-  const RIGHT_MOUSE_BUTTON = 2; // MouseEvent.button value for the secondary button, usually the right button
-
-  const EVENT_HIDE$5 = `hide${EVENT_KEY$6}`;
-  const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$6}`;
   const EVENT_SHOW$5 = `show${EVENT_KEY$6}`;
   const EVENT_SHOWN$5 = `shown${EVENT_KEY$6}`;
+  const EVENT_HIDE$5 = `hide${EVENT_KEY$6}`;
+  const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$6}`;
+  const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$6}`;
+  const EVENT_CANCEL = `cancel${EVENT_KEY$6}`;
   const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`;
-  const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$6}${DATA_API_KEY$3}`;
-  const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$6}${DATA_API_KEY$3}`;
-  const CLASS_NAME_SHOW$6 = 'show';
-  const CLASS_NAME_DROPUP = 'dropup';
-  const CLASS_NAME_DROPEND = 'dropend';
-  const CLASS_NAME_DROPSTART = 'dropstart';
-  const CLASS_NAME_DROPUP_CENTER = 'dropup-center';
-  const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center';
-  const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
-  const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE$3}.${CLASS_NAME_SHOW$6}`;
-  const SELECTOR_MENU = '.dropdown-menu';
-  const SELECTOR_NAVBAR = '.navbar';
-  const SELECTOR_NAVBAR_NAV = '.navbar-nav';
-  const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
-  const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start';
-  const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end';
-  const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start';
-  const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end';
-  const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start';
-  const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start';
-  const PLACEMENT_TOPCENTER = 'top';
-  const PLACEMENT_BOTTOMCENTER = 'bottom';
+  const CLASS_NAME_STATIC = 'dialog-static';
+  const CLASS_NAME_OPEN = 'dialog-open';
+  const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
+  const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dialog"]';
+  const SELECTOR_OPEN_MODAL_DIALOG = 'dialog.dialog[open]:not(.dialog-nonmodal)';
   const Default$9 = {
-    autoClose: true,
-    boundary: 'clippingParents',
-    display: 'dynamic',
-    offset: [0, 2],
-    popperConfig: null,
-    reference: 'toggle'
+    backdrop: true,
+    // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
+    keyboard: true,
+    modal: true // true uses showModal(), false uses show() for non-modal dialogs
   };
   const DefaultType$9 = {
-    autoClose: '(boolean|string)',
-    boundary: '(string|element)',
-    display: 'string',
-    offset: '(array|string|function)',
-    popperConfig: '(null|object|function)',
-    reference: '(string|element|object)'
+    backdrop: '(boolean|string)',
+    keyboard: 'boolean',
+    modal: 'boolean'
   };
 
   /**
    * Class definition
    */
 
-  class Dropdown extends BaseComponent {
+  class Dialog extends BaseComponent {
     constructor(element, config) {
       super(element, config);
-      this._popper = null;
-      this._parent = this._element.parentNode; // dropdown wrapper
-      // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
-      this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine.findOne(SELECTOR_MENU, this._parent);
-      this._inNavbar = this._detectNavbar();
+      this._isTransitioning = false;
+      this._addEventListeners();
     }
 
     // Getters
@@ -1650,6 +1602,377 @@
     }
 
     // Public
+    toggle(relatedTarget) {
+      return this._element.open ? this.hide() : this.show(relatedTarget);
+    }
+    show(relatedTarget) {
+      if (this._element.open || this._isTransitioning) {
+        return;
+      }
+      const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$5, {
+        relatedTarget
+      });
+      if (showEvent.defaultPrevented) {
+        return;
+      }
+      this._isTransitioning = true;
+      if (this._config.modal) {
+        // Modal dialog: use showModal() for focus trapping, backdrop, and top layer
+        this._element.showModal();
+        // Prevent body scroll for modal dialogs
+        document.body.classList.add(CLASS_NAME_OPEN);
+      } else {
+        // Non-modal dialog: use show() - no backdrop, no focus trap, no top layer
+        this._element.classList.add(CLASS_NAME_NONMODAL);
+        this._element.show();
+      }
+      this._queueCallback(() => {
+        this._isTransitioning = false;
+        EventHandler.trigger(this._element, EVENT_SHOWN$5, {
+          relatedTarget
+        });
+      }, this._element, this._isAnimated());
+    }
+    hide() {
+      if (!this._element.open || this._isTransitioning) {
+        return;
+      }
+      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$5);
+      if (hideEvent.defaultPrevented) {
+        return;
+      }
+      this._isTransitioning = true;
+      this._queueCallback(() => this._hideDialog(), this._element, this._isAnimated());
+    }
+    dispose() {
+      EventHandler.off(this._element, EVENT_KEY$6);
+      super.dispose();
+    }
+    handleUpdate() {
+      // Provided for API consistency with Modal.
+      // Native dialogs handle their own positioning.
+    }
+
+    // Private
+    _hideDialog() {
+      this._element.close();
+      this._element.classList.remove(CLASS_NAME_NONMODAL);
+      this._isTransitioning = false;
+
+      // Only restore body scroll if no other modal dialogs are open
+      if (!document.querySelector(SELECTOR_OPEN_MODAL_DIALOG)) {
+        document.body.classList.remove(CLASS_NAME_OPEN);
+      }
+      EventHandler.trigger(this._element, EVENT_HIDDEN$5);
+    }
+    _isAnimated() {
+      return this._element.classList.contains('fade');
+    }
+    _triggerBackdropTransition() {
+      const hidePreventedEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED$1);
+      if (hidePreventedEvent.defaultPrevented) {
+        return;
+      }
+      this._element.classList.add(CLASS_NAME_STATIC);
+      this._queueCallback(() => {
+        this._element.classList.remove(CLASS_NAME_STATIC);
+      }, this._element);
+    }
+    _addEventListeners() {
+      // Handle native cancel event (Escape key) - only fires for modal dialogs
+      EventHandler.on(this._element, 'cancel', event => {
+        // Prevent native close behavior - we'll handle it
+        event.preventDefault();
+        if (!this._config.keyboard) {
+          this._triggerBackdropTransition();
+          return;
+        }
+        EventHandler.trigger(this._element, EVENT_CANCEL);
+        this.hide();
+      });
+
+      // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
+      EventHandler.on(this._element, 'keydown', event => {
+        if (event.key !== 'Escape' || this._config.modal) {
+          return;
+        }
+        event.preventDefault();
+        if (!this._config.keyboard) {
+          return;
+        }
+        EventHandler.trigger(this._element, EVENT_CANCEL);
+        this.hide();
+      });
+
+      // Handle backdrop clicks (only applies to modal dialogs)
+      // Native <dialog> fires click on the dialog element when backdrop is clicked
+      EventHandler.on(this._element, 'click', event => {
+        // Only handle clicks directly on the dialog (backdrop area)
+        // Non-modal dialogs don't have a backdrop
+        if (event.target !== this._element || !this._config.modal) {
+          return;
+        }
+        if (this._config.backdrop === 'static') {
+          this._triggerBackdropTransition();
+          return;
+        }
+
+        // Default: click backdrop to dismiss
+        this.hide();
+      });
+    }
+  }
+
+  /**
+   * Data API implementation
+   */
+
+  EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$5, function (event) {
+    const target = SelectorEngine.getElementFromSelector(this);
+    if (['A', 'AREA'].includes(this.tagName)) {
+      event.preventDefault();
+    }
+    EventHandler.one(target, EVENT_SHOW$5, showEvent => {
+      if (showEvent.defaultPrevented) {
+        return;
+      }
+      EventHandler.one(target, EVENT_HIDDEN$5, () => {
+        if (isVisible(this)) {
+          this.focus();
+        }
+      });
+    });
+
+    // Get config from trigger's data attributes
+    const config = Manipulator.getDataAttributes(this);
+
+    // Check if trigger is inside an open dialog
+    const currentDialog = this.closest('dialog[open]');
+    const shouldSwap = currentDialog && currentDialog !== target;
+    if (shouldSwap) {
+      // Open new dialog first (its backdrop appears over current)
+      const newDialog = Dialog.getOrCreateInstance(target, config);
+      newDialog.show(this);
+
+      // Close the current dialog (no backdrop flash since new one is already open)
+      const currentInstance = Dialog.getInstance(currentDialog);
+      if (currentInstance) {
+        currentInstance.hide();
+      }
+      return;
+    }
+    const data = Dialog.getOrCreateInstance(target, config);
+    data.toggle(this);
+  });
+  enableDismissTrigger(Dialog);
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap util/floating-ui.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+
+  /**
+   * Breakpoints for responsive placement (matches SCSS $grid-breakpoints)
+   */
+  const BREAKPOINTS = {
+    sm: 576,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    '2xl': 1536
+  };
+
+  /**
+   * Parse a placement string that may contain responsive prefixes
+   * Example: "bottom-start md:top-end lg:right" returns { xs: 'bottom-start', md: 'top-end', lg: 'right' }
+   *
+   * @param {string} placementString - The placement string to parse
+   * @param {string} defaultPlacement - The default placement to use for xs/base
+   * @returns {object|null} - Object with breakpoint keys and placement values, or null if not responsive
+   */
+  const parseResponsivePlacement = (placementString, defaultPlacement = 'bottom') => {
+    // Check if placement contains responsive prefixes (e.g., "bottom-start md:top-end")
+    if (!placementString || !placementString.includes(':')) {
+      return null;
+    }
+
+    // Parse the placement string into breakpoint-keyed object
+    const parts = placementString.split(/\s+/);
+    const placements = {
+      xs: defaultPlacement
+    }; // Default fallback
+
+    for (const part of parts) {
+      if (part.includes(':')) {
+        // Responsive placement like "md:top-end"
+        const [breakpoint, placement] = part.split(':');
+        if (BREAKPOINTS[breakpoint] !== undefined) {
+          placements[breakpoint] = placement;
+        }
+      } else {
+        // Base placement (no prefix = xs/default)
+        placements.xs = part;
+      }
+    }
+    return placements;
+  };
+
+  /**
+   * Get the active placement for the current viewport width
+   *
+   * @param {object} responsivePlacements - Object with breakpoint keys and placement values
+   * @param {string} defaultPlacement - Fallback placement
+   * @returns {string} - The active placement for current viewport
+   */
+  const getResponsivePlacement = (responsivePlacements, defaultPlacement = 'bottom') => {
+    if (!responsivePlacements) {
+      return defaultPlacement;
+    }
+
+    // Get current viewport width
+    const viewportWidth = window.innerWidth;
+
+    // Find the largest breakpoint that matches
+    let activePlacement = responsivePlacements.xs || defaultPlacement;
+
+    // Check breakpoints in order (sm, md, lg, xl, 2xl)
+    const breakpointOrder = ['sm', 'md', 'lg', 'xl', '2xl'];
+    for (const breakpoint of breakpointOrder) {
+      const minWidth = BREAKPOINTS[breakpoint];
+      if (viewportWidth >= minWidth && responsivePlacements[breakpoint]) {
+        activePlacement = responsivePlacements[breakpoint];
+      }
+    }
+    return activePlacement;
+  };
+
+  /**
+   * Create media query listeners for responsive placement changes
+   *
+   * @param {Function} callback - Callback to run when breakpoint changes
+   * @returns {Array} - Array of { mql, handler } objects for cleanup
+   */
+  const createBreakpointListeners = callback => {
+    const listeners = [];
+    for (const breakpoint of Object.keys(BREAKPOINTS)) {
+      const minWidth = BREAKPOINTS[breakpoint];
+      const mql = window.matchMedia(`(min-width: ${minWidth}px)`);
+      mql.addEventListener('change', callback);
+      listeners.push({
+        mql,
+        handler: callback
+      });
+    }
+    return listeners;
+  };
+
+  /**
+   * Clean up media query listeners
+   *
+   * @param {Array} listeners - Array of { mql, handler } objects
+   */
+  const disposeBreakpointListeners = listeners => {
+    for (const {
+      mql,
+      handler
+    } of listeners) {
+      mql.removeEventListener('change', handler);
+    }
+  };
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap dropdown.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+
+  /**
+   * Constants
+   */
+
+  const NAME$9 = 'dropdown';
+  const DATA_KEY$5 = 'bs.dropdown';
+  const EVENT_KEY$5 = `.${DATA_KEY$5}`;
+  const DATA_API_KEY$2 = '.data-api';
+  const ESCAPE_KEY$1 = 'Escape';
+  const TAB_KEY$1 = 'Tab';
+  const ARROW_UP_KEY$1 = 'ArrowUp';
+  const ARROW_DOWN_KEY$1 = 'ArrowDown';
+  const RIGHT_MOUSE_BUTTON = 2; // MouseEvent.button value for the secondary button, usually the right button
+
+  const EVENT_HIDE$4 = `hide${EVENT_KEY$5}`;
+  const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$5}`;
+  const EVENT_SHOW$4 = `show${EVENT_KEY$5}`;
+  const EVENT_SHOWN$4 = `shown${EVENT_KEY$5}`;
+  const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$5}${DATA_API_KEY$2}`;
+  const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$5}${DATA_API_KEY$2}`;
+  const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$5}${DATA_API_KEY$2}`;
+  const CLASS_NAME_SHOW$5 = 'show';
+  const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
+  const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE$4}.${CLASS_NAME_SHOW$5}`;
+  const SELECTOR_MENU = '.dropdown-menu';
+  const SELECTOR_NAVBAR_NAV = '.navbar-nav';
+  const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+
+  // Default placement with RTL support
+  const DEFAULT_PLACEMENT = isRTL() ? 'bottom-end' : 'bottom-start';
+  const Default$8 = {
+    autoClose: true,
+    boundary: 'clippingParents',
+    display: 'dynamic',
+    offset: [0, 2],
+    floatingConfig: null,
+    placement: DEFAULT_PLACEMENT,
+    reference: 'toggle'
+  };
+  const DefaultType$8 = {
+    autoClose: '(boolean|string)',
+    boundary: '(string|element)',
+    display: 'string',
+    offset: '(array|string|function)',
+    floatingConfig: '(null|object|function)',
+    placement: 'string',
+    reference: '(string|element|object)'
+  };
+
+  /**
+   * Class definition
+   */
+
+  class Dropdown extends BaseComponent {
+    constructor(element, config) {
+      if (typeof dom.computePosition === 'undefined') {
+        throw new TypeError('Bootstrap\'s dropdowns require Floating UI (https://floating-ui.com)');
+      }
+      super(element, config);
+      this._floatingCleanup = null;
+      this._mediaQueryListeners = [];
+      this._responsivePlacements = null;
+      this._parent = this._element.parentNode; // dropdown wrapper
+      // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
+      this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine.findOne(SELECTOR_MENU, this._parent);
+
+      // Parse responsive placements on init
+      this._parseResponsivePlacements();
+    }
+
+    // Getters
+    static get Default() {
+      return Default$8;
+    }
+    static get DefaultType() {
+      return DefaultType$8;
+    }
+    static get NAME() {
+      return NAME$9;
+    }
+
+    // Public
     toggle() {
       return this._isShown() ? this.hide() : this.show();
     }
@@ -1660,11 +1983,11 @@
       const relatedTarget = {
         relatedTarget: this._element
       };
-      const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$5, relatedTarget);
+      const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$4, relatedTarget);
       if (showEvent.defaultPrevented) {
         return;
       }
-      this._createPopper();
+      this._createFloating();
 
       // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
@@ -1677,9 +2000,9 @@
       }
       this._element.focus();
       this._element.setAttribute('aria-expanded', true);
-      this._menu.classList.add(CLASS_NAME_SHOW$6);
-      this._element.classList.add(CLASS_NAME_SHOW$6);
-      EventHandler.trigger(this._element, EVENT_SHOWN$5, relatedTarget);
+      this._menu.classList.add(CLASS_NAME_SHOW$5);
+      this._element.classList.add(CLASS_NAME_SHOW$5);
+      EventHandler.trigger(this._element, EVENT_SHOWN$4, relatedTarget);
     }
     hide() {
       if (isDisabled(this._element) || !this._isShown()) {
@@ -1691,21 +2014,19 @@
       this._completeHide(relatedTarget);
     }
     dispose() {
-      if (this._popper) {
-        this._popper.destroy();
-      }
+      this._disposeFloating();
+      this._disposeMediaQueryListeners();
       super.dispose();
     }
     update() {
-      this._inNavbar = this._detectNavbar();
-      if (this._popper) {
-        this._popper.update();
+      if (this._floatingCleanup) {
+        this._updateFloatingPosition();
       }
     }
 
     // Private
     _completeHide(relatedTarget) {
-      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$5, relatedTarget);
+      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$4, relatedTarget);
       if (hideEvent.defaultPrevented) {
         return;
       }
@@ -1717,26 +2038,26 @@
           EventHandler.off(element, 'mouseover', noop);
         }
       }
-      if (this._popper) {
-        this._popper.destroy();
-      }
-      this._menu.classList.remove(CLASS_NAME_SHOW$6);
-      this._element.classList.remove(CLASS_NAME_SHOW$6);
+      this._disposeFloating();
+      this._menu.classList.remove(CLASS_NAME_SHOW$5);
+      this._element.classList.remove(CLASS_NAME_SHOW$5);
       this._element.setAttribute('aria-expanded', 'false');
-      Manipulator.removeDataAttribute(this._menu, 'popper');
-      EventHandler.trigger(this._element, EVENT_HIDDEN$5, relatedTarget);
+      Manipulator.removeDataAttribute(this._menu, 'placement');
+      Manipulator.removeDataAttribute(this._menu, 'display');
+      EventHandler.trigger(this._element, EVENT_HIDDEN$4, relatedTarget);
     }
     _getConfig(config) {
       config = super._getConfig(config);
       if (typeof config.reference === 'object' && !isElement(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
-        // Popper virtual elements require a getBoundingClientRect method
-        throw new TypeError(`${NAME$a.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
+        // Floating UI virtual elements require a getBoundingClientRect method
+        throw new TypeError(`${NAME$9.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
       }
       return config;
     }
-    _createPopper() {
-      if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)');
+    _createFloating() {
+      if (this._config.display === 'static') {
+        Manipulator.setDataAttribute(this._menu, 'display', 'static');
+        return;
       }
       let referenceElement = this._element;
       if (this._config.reference === 'parent') {
@@ -1746,36 +2067,81 @@
       } else if (typeof this._config.reference === 'object') {
         referenceElement = this._config.reference;
       }
-      const popperConfig = this._getPopperConfig();
-      this._popper = Popper__namespace.createPopper(referenceElement, this._menu, popperConfig);
+
+      // Initial position update
+      this._updateFloatingPosition(referenceElement);
+
+      // Set up auto-update for scroll/resize
+      this._floatingCleanup = dom.autoUpdate(referenceElement, this._menu, () => this._updateFloatingPosition(referenceElement));
     }
-    _isShown() {
-      return this._menu.classList.contains(CLASS_NAME_SHOW$6);
-    }
-    _getPlacement() {
-      const parentDropdown = this._parent;
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
-        return PLACEMENT_RIGHT;
+    async _updateFloatingPosition(referenceElement = null) {
+      // Check if menu exists and is still in the DOM
+      if (!this._menu || !this._menu.isConnected) {
+        return;
       }
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
-        return PLACEMENT_LEFT;
+      if (!referenceElement) {
+        if (this._config.reference === 'parent') {
+          referenceElement = this._parent;
+        } else if (isElement(this._config.reference)) {
+          referenceElement = getElement(this._config.reference);
+        } else if (typeof this._config.reference === 'object') {
+          referenceElement = this._config.reference;
+        } else {
+          referenceElement = this._element;
+        }
       }
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPUP_CENTER)) {
-        return PLACEMENT_TOPCENTER;
-      }
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) {
-        return PLACEMENT_BOTTOMCENTER;
+      const placement = this._getPlacement();
+      const middleware = this._getFloatingMiddleware();
+      const floatingConfig = this._getFloatingConfig(placement, middleware);
+      const {
+        x,
+        y,
+        placement: finalPlacement
+      } = await dom.computePosition(referenceElement, this._menu, floatingConfig);
+
+      // Menu may have been disposed during the async computePosition call
+      if (!this._menu || !this._menu.isConnected) {
+        return;
       }
 
-      // We need to trim the value because custom properties can also include spaces
-      const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-        return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
-      }
-      return isEnd ? PLACEMENT_BOTTOMEND : PLACEMENT_BOTTOM;
+      // Apply position to dropdown menu
+      Object.assign(this._menu.style, {
+        position: 'absolute',
+        left: `${x}px`,
+        top: `${y}px`,
+        margin: '0'
+      });
+
+      // Set placement attribute for CSS styling
+      Manipulator.setDataAttribute(this._menu, 'placement', finalPlacement);
     }
-    _detectNavbar() {
-      return this._element.closest(SELECTOR_NAVBAR) !== null;
+    _isShown() {
+      return this._menu.classList.contains(CLASS_NAME_SHOW$5);
+    }
+    _getPlacement() {
+      // If we have responsive placements, find the appropriate one for current viewport
+      if (this._responsivePlacements) {
+        return getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT);
+      }
+      return this._config.placement;
+    }
+    _parseResponsivePlacements() {
+      this._responsivePlacements = parseResponsivePlacement(this._config.placement, DEFAULT_PLACEMENT);
+      if (this._responsivePlacements) {
+        this._setupMediaQueryListeners();
+      }
+    }
+    _setupMediaQueryListeners() {
+      this._disposeMediaQueryListeners();
+      this._mediaQueryListeners = createBreakpointListeners(() => {
+        if (this._isShown()) {
+          this._updateFloatingPosition();
+        }
+      });
+    }
+    _disposeMediaQueryListeners() {
+      disposeBreakpointListeners(this._mediaQueryListeners);
+      this._mediaQueryListeners = [];
     }
     _getOffset() {
       const {
@@ -1785,38 +2151,76 @@
         return offset.split(',').map(value => Number.parseInt(value, 10));
       }
       if (typeof offset === 'function') {
-        return popperData => offset(popperData, this._element);
+        // Floating UI passes different args, adapt the interface for offset function callbacks
+        return ({
+          placement,
+          rects
+        }) => {
+          const result = offset({
+            placement,
+            reference: rects.reference,
+            floating: rects.floating
+          }, this._element);
+          return result;
+        };
       }
       return offset;
     }
-    _getPopperConfig() {
-      const defaultBsPopperConfig = {
-        placement: this._getPlacement(),
-        modifiers: [{
-          name: 'preventOverflow',
-          options: {
-            boundary: this._config.boundary
-          }
-        }, {
-          name: 'offset',
-          options: {
-            offset: this._getOffset()
-          }
-        }]
-      };
+    _getFloatingMiddleware() {
+      const offsetValue = this._getOffset();
+      const middleware = [
+      // Offset middleware - handles distance from reference
+      dom.offset(typeof offsetValue === 'function' ? offsetValue : {
+        mainAxis: offsetValue[1] || 0,
+        crossAxis: offsetValue[0] || 0
+      }),
+      // Flip middleware - handles fallback placements
+      dom.flip({
+        fallbackPlacements: this._getFallbackPlacements()
+      }),
+      // Shift middleware - prevents overflow
+      dom.shift({
+        boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
+      })];
+      return middleware;
+    }
+    _getFallbackPlacements() {
+      // Get appropriate fallback placements based on current placement
+      // Fallbacks should preserve alignment (start/end) when possible
+      const placement = this._getPlacement();
 
-      // Disable Popper if we have a static display or Dropdown is in Navbar
-      if (this._inNavbar || this._config.display === 'static') {
-        Manipulator.setDataAttribute(this._menu, 'popper', 'static'); // TODO: v6 remove
-        defaultBsPopperConfig.modifiers = [{
-          name: 'applyStyles',
-          enabled: false
-        }];
-      }
-      return {
-        ...defaultBsPopperConfig,
-        ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
+      // Handle all possible Floating UI placements
+      const fallbackMap = {
+        bottom: ['top', 'bottom-start', 'bottom-end', 'top-start', 'top-end'],
+        'bottom-start': ['top-start', 'bottom-end', 'top-end'],
+        'bottom-end': ['top-end', 'bottom-start', 'top-start'],
+        top: ['bottom', 'top-start', 'top-end', 'bottom-start', 'bottom-end'],
+        'top-start': ['bottom-start', 'top-end', 'bottom-end'],
+        'top-end': ['bottom-end', 'top-start', 'bottom-start'],
+        right: ['left', 'right-start', 'right-end', 'left-start', 'left-end'],
+        'right-start': ['left-start', 'right-end', 'left-end', 'top-start', 'bottom-start'],
+        'right-end': ['left-end', 'right-start', 'left-start', 'top-end', 'bottom-end'],
+        left: ['right', 'left-start', 'left-end', 'right-start', 'right-end'],
+        'left-start': ['right-start', 'left-end', 'right-end', 'top-start', 'bottom-start'],
+        'left-end': ['right-end', 'left-start', 'right-start', 'top-end', 'bottom-end']
       };
+      return fallbackMap[placement] || ['top', 'bottom', 'right', 'left'];
+    }
+    _getFloatingConfig(placement, middleware) {
+      const defaultConfig = {
+        placement,
+        middleware
+      };
+      return {
+        ...defaultConfig,
+        ...execute(this._config.floatingConfig, [undefined, defaultConfig])
+      };
+    }
+    _disposeFloating() {
+      if (this._floatingCleanup) {
+        this._floatingCleanup();
+        this._floatingCleanup = null;
+      }
     }
     _selectMenuItem({
       key,
@@ -1865,7 +2269,7 @@
       // If input/textarea && if key is other than ESCAPE => not a dropdown command
 
       const isInput = /input|textarea/i.test(event.target.tagName);
-      const isEscapeEvent = event.key === ESCAPE_KEY$2;
+      const isEscapeEvent = event.key === ESCAPE_KEY$1;
       const isUpOrDownEvent = [ARROW_UP_KEY$1, ARROW_DOWN_KEY$1].includes(event.key);
       if (!isUpOrDownEvent && !isEscapeEvent) {
         return;
@@ -1876,7 +2280,7 @@
       event.preventDefault();
 
       // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
-      const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$3) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$3)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE$3)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$3, event.delegateTarget.parentNode);
+      const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$4) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$4)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE$4)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$4, event.delegateTarget.parentNode);
       const instance = Dropdown.getOrCreateInstance(getToggleButton);
       if (isUpOrDownEvent) {
         event.stopPropagation();
@@ -1897,11 +2301,11 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
+  EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$4, Dropdown.dataApiKeydownHandler);
   EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
-  EventHandler.on(document, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
+  EventHandler.on(document, EVENT_CLICK_DATA_API$2, Dropdown.clearMenus);
   EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
-  EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$3, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$4, function (event) {
     event.preventDefault();
     Dropdown.getOrCreateInstance(this).toggle();
   });
@@ -1918,11 +2322,11 @@
    * Constants
    */
 
-  const NAME$9 = 'backdrop';
-  const CLASS_NAME_FADE$4 = 'fade';
-  const CLASS_NAME_SHOW$5 = 'show';
-  const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$9}`;
-  const Default$8 = {
+  const NAME$8 = 'backdrop';
+  const CLASS_NAME_FADE$3 = 'fade';
+  const CLASS_NAME_SHOW$4 = 'show';
+  const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$8}`;
+  const Default$7 = {
     className: 'modal-backdrop',
     clickCallback: null,
     isAnimated: false,
@@ -1930,7 +2334,7 @@
     // if false, we use the backdrop helper without adding any element to the dom
     rootElement: 'body' // give the choice to place backdrop under different elements
   };
-  const DefaultType$8 = {
+  const DefaultType$7 = {
     className: 'string',
     clickCallback: '(function|null)',
     isAnimated: 'boolean',
@@ -1952,13 +2356,13 @@
 
     // Getters
     static get Default() {
-      return Default$8;
+      return Default$7;
     }
     static get DefaultType() {
-      return DefaultType$8;
+      return DefaultType$7;
     }
     static get NAME() {
-      return NAME$9;
+      return NAME$8;
     }
 
     // Public
@@ -1972,7 +2376,7 @@
       if (this._config.isAnimated) {
         reflow(element);
       }
-      element.classList.add(CLASS_NAME_SHOW$5);
+      element.classList.add(CLASS_NAME_SHOW$4);
       this._emulateAnimation(() => {
         execute(callback);
       });
@@ -1982,7 +2386,7 @@
         execute(callback);
         return;
       }
-      this._getElement().classList.remove(CLASS_NAME_SHOW$5);
+      this._getElement().classList.remove(CLASS_NAME_SHOW$4);
       this._emulateAnimation(() => {
         this.dispose();
         execute(callback);
@@ -2003,7 +2407,7 @@
         const backdrop = document.createElement('div');
         backdrop.className = this._config.className;
         if (this._config.isAnimated) {
-          backdrop.classList.add(CLASS_NAME_FADE$4);
+          backdrop.classList.add(CLASS_NAME_FADE$3);
         }
         this._element = backdrop;
       }
@@ -2042,19 +2446,19 @@
    * Constants
    */
 
-  const NAME$8 = 'focustrap';
-  const DATA_KEY$5 = 'bs.focustrap';
-  const EVENT_KEY$5 = `.${DATA_KEY$5}`;
-  const EVENT_FOCUSIN$2 = `focusin${EVENT_KEY$5}`;
-  const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$5}`;
+  const NAME$7 = 'focustrap';
+  const DATA_KEY$4 = 'bs.focustrap';
+  const EVENT_KEY$4 = `.${DATA_KEY$4}`;
+  const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$4}`;
+  const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$4}`;
   const TAB_KEY = 'Tab';
   const TAB_NAV_FORWARD = 'forward';
   const TAB_NAV_BACKWARD = 'backward';
-  const Default$7 = {
+  const Default$6 = {
     autofocus: true,
     trapElement: null // The element to trap focus inside of
   };
-  const DefaultType$7 = {
+  const DefaultType$6 = {
     autofocus: 'boolean',
     trapElement: 'element'
   };
@@ -2073,13 +2477,13 @@
 
     // Getters
     static get Default() {
-      return Default$7;
+      return Default$6;
     }
     static get DefaultType() {
-      return DefaultType$7;
+      return DefaultType$6;
     }
     static get NAME() {
-      return NAME$8;
+      return NAME$7;
     }
 
     // Public
@@ -2090,8 +2494,8 @@
       if (this._config.autofocus) {
         this._config.trapElement.focus();
       }
-      EventHandler.off(document, EVENT_KEY$5); // guard against infinite focus loop
-      EventHandler.on(document, EVENT_FOCUSIN$2, event => this._handleFocusin(event));
+      EventHandler.off(document, EVENT_KEY$4); // guard against infinite focus loop
+      EventHandler.on(document, EVENT_FOCUSIN$3, event => this._handleFocusin(event));
       EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
       this._isActive = true;
     }
@@ -2100,7 +2504,7 @@
         return;
       }
       this._isActive = false;
-      EventHandler.off(document, EVENT_KEY$5);
+      EventHandler.off(document, EVENT_KEY$4);
     }
 
     // Private
@@ -2228,291 +2632,6 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap modal.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-
-  /**
-   * Constants
-   */
-
-  const NAME$7 = 'modal';
-  const DATA_KEY$4 = 'bs.modal';
-  const EVENT_KEY$4 = `.${DATA_KEY$4}`;
-  const DATA_API_KEY$2 = '.data-api';
-  const ESCAPE_KEY$1 = 'Escape';
-  const EVENT_HIDE$4 = `hide${EVENT_KEY$4}`;
-  const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$4}`;
-  const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$4}`;
-  const EVENT_SHOW$4 = `show${EVENT_KEY$4}`;
-  const EVENT_SHOWN$4 = `shown${EVENT_KEY$4}`;
-  const EVENT_RESIZE$1 = `resize${EVENT_KEY$4}`;
-  const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY$4}`;
-  const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY$4}`;
-  const EVENT_KEYDOWN_DISMISS$1 = `keydown.dismiss${EVENT_KEY$4}`;
-  const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$4}${DATA_API_KEY$2}`;
-  const CLASS_NAME_OPEN = 'modal-open';
-  const CLASS_NAME_FADE$3 = 'fade';
-  const CLASS_NAME_SHOW$4 = 'show';
-  const CLASS_NAME_STATIC = 'modal-static';
-  const OPEN_SELECTOR$1 = '.modal.show';
-  const SELECTOR_DIALOG = '.modal-dialog';
-  const SELECTOR_MODAL_BODY = '.modal-body';
-  const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="modal"]';
-  const Default$6 = {
-    backdrop: true,
-    focus: true,
-    keyboard: true
-  };
-  const DefaultType$6 = {
-    backdrop: '(boolean|string)',
-    focus: 'boolean',
-    keyboard: 'boolean'
-  };
-
-  /**
-   * Class definition
-   */
-
-  class Modal extends BaseComponent {
-    constructor(element, config) {
-      super(element, config);
-      this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
-      this._backdrop = this._initializeBackDrop();
-      this._focustrap = this._initializeFocusTrap();
-      this._isShown = false;
-      this._isTransitioning = false;
-      this._scrollBar = new ScrollBarHelper();
-      this._addEventListeners();
-    }
-
-    // Getters
-    static get Default() {
-      return Default$6;
-    }
-    static get DefaultType() {
-      return DefaultType$6;
-    }
-    static get NAME() {
-      return NAME$7;
-    }
-
-    // Public
-    toggle(relatedTarget) {
-      return this._isShown ? this.hide() : this.show(relatedTarget);
-    }
-    show(relatedTarget) {
-      if (this._isShown || this._isTransitioning) {
-        return;
-      }
-      const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$4, {
-        relatedTarget
-      });
-      if (showEvent.defaultPrevented) {
-        return;
-      }
-      this._isShown = true;
-      this._isTransitioning = true;
-      this._scrollBar.hide();
-      document.body.classList.add(CLASS_NAME_OPEN);
-      this._adjustDialog();
-      this._backdrop.show(() => this._showElement(relatedTarget));
-    }
-    hide() {
-      if (!this._isShown || this._isTransitioning) {
-        return;
-      }
-      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$4);
-      if (hideEvent.defaultPrevented) {
-        return;
-      }
-      this._isShown = false;
-      this._isTransitioning = true;
-      this._focustrap.deactivate();
-      this._element.classList.remove(CLASS_NAME_SHOW$4);
-      this._queueCallback(() => this._hideModal(), this._element, this._isAnimated());
-    }
-    dispose() {
-      EventHandler.off(window, EVENT_KEY$4);
-      EventHandler.off(this._dialog, EVENT_KEY$4);
-      this._backdrop.dispose();
-      this._focustrap.deactivate();
-      super.dispose();
-    }
-    handleUpdate() {
-      this._adjustDialog();
-    }
-
-    // Private
-    _initializeBackDrop() {
-      return new Backdrop({
-        isVisible: Boolean(this._config.backdrop),
-        // 'static' option will be translated to true, and booleans will keep their value,
-        isAnimated: this._isAnimated()
-      });
-    }
-    _initializeFocusTrap() {
-      return new FocusTrap({
-        trapElement: this._element
-      });
-    }
-    _showElement(relatedTarget) {
-      // try to append dynamic modal
-      if (!document.body.contains(this._element)) {
-        document.body.append(this._element);
-      }
-      this._element.style.display = 'block';
-      this._element.removeAttribute('aria-hidden');
-      this._element.setAttribute('aria-modal', true);
-      this._element.setAttribute('role', 'dialog');
-      this._element.scrollTop = 0;
-      const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog);
-      if (modalBody) {
-        modalBody.scrollTop = 0;
-      }
-      reflow(this._element);
-      this._element.classList.add(CLASS_NAME_SHOW$4);
-      const transitionComplete = () => {
-        if (this._config.focus) {
-          this._focustrap.activate();
-        }
-        this._isTransitioning = false;
-        EventHandler.trigger(this._element, EVENT_SHOWN$4, {
-          relatedTarget
-        });
-      };
-      this._queueCallback(transitionComplete, this._dialog, this._isAnimated());
-    }
-    _addEventListeners() {
-      EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS$1, event => {
-        if (event.key !== ESCAPE_KEY$1) {
-          return;
-        }
-        if (this._config.keyboard) {
-          this.hide();
-          return;
-        }
-        this._triggerBackdropTransition();
-      });
-      EventHandler.on(window, EVENT_RESIZE$1, () => {
-        if (this._isShown && !this._isTransitioning) {
-          this._adjustDialog();
-        }
-      });
-      EventHandler.on(this._element, EVENT_MOUSEDOWN_DISMISS, event => {
-        // a bad trick to segregate clicks that may start inside dialog but end outside, and avoid listen to scrollbar clicks
-        EventHandler.one(this._element, EVENT_CLICK_DISMISS, event2 => {
-          if (this._element !== event.target || this._element !== event2.target) {
-            return;
-          }
-          if (this._config.backdrop === 'static') {
-            this._triggerBackdropTransition();
-            return;
-          }
-          if (this._config.backdrop) {
-            this.hide();
-          }
-        });
-      });
-    }
-    _hideModal() {
-      this._element.style.display = 'none';
-      this._element.setAttribute('aria-hidden', true);
-      this._element.removeAttribute('aria-modal');
-      this._element.removeAttribute('role');
-      this._isTransitioning = false;
-      this._backdrop.hide(() => {
-        document.body.classList.remove(CLASS_NAME_OPEN);
-        this._resetAdjustments();
-        this._scrollBar.reset();
-        EventHandler.trigger(this._element, EVENT_HIDDEN$4);
-      });
-    }
-    _isAnimated() {
-      return this._element.classList.contains(CLASS_NAME_FADE$3);
-    }
-    _triggerBackdropTransition() {
-      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED$1);
-      if (hideEvent.defaultPrevented) {
-        return;
-      }
-      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
-      const initialOverflowY = this._element.style.overflowY;
-      // return if the following background transition hasn't yet completed
-      if (initialOverflowY === 'hidden' || this._element.classList.contains(CLASS_NAME_STATIC)) {
-        return;
-      }
-      if (!isModalOverflowing) {
-        this._element.style.overflowY = 'hidden';
-      }
-      this._element.classList.add(CLASS_NAME_STATIC);
-      this._queueCallback(() => {
-        this._element.classList.remove(CLASS_NAME_STATIC);
-        this._queueCallback(() => {
-          this._element.style.overflowY = initialOverflowY;
-        }, this._dialog);
-      }, this._dialog);
-      this._element.focus();
-    }
-
-    /**
-     * The following methods are used to handle overflowing modals
-     */
-
-    _adjustDialog() {
-      const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
-      const scrollbarWidth = this._scrollBar.getWidth();
-      const isBodyOverflowing = scrollbarWidth > 0;
-      if (isBodyOverflowing && !isModalOverflowing) {
-        const property = isRTL() ? 'paddingLeft' : 'paddingRight';
-        this._element.style[property] = `${scrollbarWidth}px`;
-      }
-      if (!isBodyOverflowing && isModalOverflowing) {
-        const property = isRTL() ? 'paddingRight' : 'paddingLeft';
-        this._element.style[property] = `${scrollbarWidth}px`;
-      }
-    }
-    _resetAdjustments() {
-      this._element.style.paddingLeft = '';
-      this._element.style.paddingRight = '';
-    }
-  }
-
-  /**
-   * Data API implementation
-   */
-
-  EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
-    const target = SelectorEngine.getElementFromSelector(this);
-    if (['A', 'AREA'].includes(this.tagName)) {
-      event.preventDefault();
-    }
-    EventHandler.one(target, EVENT_SHOW$4, showEvent => {
-      if (showEvent.defaultPrevented) {
-        // only register focus restorer if modal will actually get shown
-        return;
-      }
-      EventHandler.one(target, EVENT_HIDDEN$4, () => {
-        if (isVisible(this)) {
-          this.focus();
-        }
-      });
-    });
-
-    // avoid conflict when clicking modal toggler while another one is open
-    const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR$1);
-    if (alreadyOpen) {
-      Modal.getInstance(alreadyOpen).hide();
-    }
-    const data = Modal.getOrCreateInstance(target);
-    data.toggle(this);
-  });
-  enableDismissTrigger(Modal);
-
-  /**
-   * --------------------------------------------------------------------------
    * Bootstrap offcanvas.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
@@ -2542,7 +2661,7 @@
   const EVENT_RESIZE = `resize${EVENT_KEY$3}`;
   const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$3}${DATA_API_KEY$1}`;
   const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$3}`;
-  const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="offcanvas"]';
+  const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="offcanvas"]';
   const Default$5 = {
     backdrop: true,
     keyboard: true,
@@ -2685,7 +2804,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$3, function (event) {
     const target = SelectorEngine.getElementFromSelector(this);
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
@@ -2972,6 +3091,7 @@
   const CLASS_NAME_SHOW$2 = 'show';
   const SELECTOR_TOOLTIP_INNER = '.tooltip-inner';
   const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
+  const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="tooltip"]';
   const EVENT_MODAL_HIDE = 'hide.bs.modal';
   const TRIGGER_HOVER = 'hover';
   const TRIGGER_FOCUS = 'focus';
@@ -2982,10 +3102,10 @@
   const EVENT_SHOW$2 = 'show';
   const EVENT_SHOWN$2 = 'shown';
   const EVENT_INSERTED = 'inserted';
-  const EVENT_CLICK$1 = 'click';
-  const EVENT_FOCUSIN$1 = 'focusin';
+  const EVENT_CLICK$2 = 'click';
+  const EVENT_FOCUSIN$2 = 'focusin';
   const EVENT_FOCUSOUT$1 = 'focusout';
-  const EVENT_MOUSEENTER = 'mouseenter';
+  const EVENT_MOUSEENTER$1 = 'mouseenter';
   const EVENT_MOUSELEAVE = 'mouseleave';
   const AttachmentMap = {
     AUTO: 'auto',
@@ -3005,7 +3125,7 @@
     html: false,
     offset: [0, 6],
     placement: 'top',
-    popperConfig: null,
+    floatingConfig: null,
     sanitize: true,
     sanitizeFn: null,
     selector: false,
@@ -3024,7 +3144,7 @@
     html: 'boolean',
     offset: '(array|string|function)',
     placement: '(string|function)',
-    popperConfig: '(null|object|function)',
+    floatingConfig: '(null|object|function)',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
     selector: '(string|boolean)',
@@ -3039,8 +3159,8 @@
 
   class Tooltip extends BaseComponent {
     constructor(element, config) {
-      if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)');
+      if (typeof dom.computePosition === 'undefined') {
+        throw new TypeError('Bootstrap\'s tooltips require Floating UI (https://floating-ui.com)');
       }
       super(element, config);
 
@@ -3049,12 +3169,15 @@
       this._timeout = 0;
       this._isHovered = null;
       this._activeTrigger = {};
-      this._popper = null;
+      this._floatingCleanup = null;
       this._templateFactory = null;
       this._newContent = null;
+      this._mediaQueryListeners = [];
+      this._responsivePlacements = null;
 
       // Protected
       this.tip = null;
+      this._parseResponsivePlacements();
       this._setListeners();
       if (!this._config.selector) {
         this._fixTitle();
@@ -3098,10 +3221,11 @@
       if (this._element.getAttribute('data-bs-original-title')) {
         this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'));
       }
-      this._disposePopper();
+      this._disposeFloating();
+      this._disposeMediaQueryListeners();
       super.dispose();
     }
-    show() {
+    async show() {
       if (this._element.style.display === 'none') {
         throw new Error('Please use show on visible elements');
       }
@@ -3114,9 +3238,7 @@
       if (showEvent.defaultPrevented || !isInTheDom) {
         return;
       }
-
-      // TODO: v6 remove this or make it optional
-      this._disposePopper();
+      this._disposeFloating();
       const tip = this._getTipElement();
       this._element.setAttribute('aria-describedby', tip.getAttribute('id'));
       const {
@@ -3126,7 +3248,7 @@
         container.append(tip);
         EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED));
       }
-      this._popper = this._createPopper(tip);
+      await this._createFloating(tip);
       tip.classList.add(CLASS_NAME_SHOW$2);
 
       // If this is a touch-enabled device we add extra
@@ -3175,7 +3297,7 @@
           return;
         }
         if (!this._isHovered) {
-          this._disposePopper();
+          this._disposeFloating();
         }
         this._element.removeAttribute('aria-describedby');
         EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN$2));
@@ -3183,8 +3305,8 @@
       this._queueCallback(complete, this.tip, this._isAnimated());
     }
     update() {
-      if (this._popper) {
-        this._popper.update();
+      if (this._floatingCleanup && this.tip) {
+        this._updateFloatingPosition();
       }
     }
 
@@ -3218,7 +3340,7 @@
     setContent(content) {
       this._newContent = content;
       if (this._isShown()) {
-        this._disposePopper();
+        this._disposeFloating();
         this.show();
       }
     }
@@ -3255,10 +3377,103 @@
     _isShown() {
       return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW$2);
     }
-    _createPopper(tip) {
+    _getPlacement(tip) {
+      // If we have responsive placements, get the one for current viewport
+      if (this._responsivePlacements) {
+        const placement = getResponsivePlacement(this._responsivePlacements, 'top');
+        return AttachmentMap[placement.toUpperCase()] || placement;
+      }
+
+      // Execute placement (can be a function)
       const placement = execute(this._config.placement, [this, tip, this._element]);
-      const attachment = AttachmentMap[placement.toUpperCase()];
-      return Popper__namespace.createPopper(this._element, tip, this._getPopperConfig(attachment));
+      return AttachmentMap[placement.toUpperCase()] || placement;
+    }
+    _parseResponsivePlacements() {
+      // Only parse if placement is a string (not a function)
+      if (typeof this._config.placement !== 'string') {
+        this._responsivePlacements = null;
+        return;
+      }
+      this._responsivePlacements = parseResponsivePlacement(this._config.placement, 'top');
+      if (this._responsivePlacements) {
+        this._setupMediaQueryListeners();
+      }
+    }
+    _setupMediaQueryListeners() {
+      this._disposeMediaQueryListeners();
+      this._mediaQueryListeners = createBreakpointListeners(() => {
+        if (this._isShown()) {
+          this._updateFloatingPosition();
+        }
+      });
+    }
+    _disposeMediaQueryListeners() {
+      disposeBreakpointListeners(this._mediaQueryListeners);
+      this._mediaQueryListeners = [];
+    }
+    async _createFloating(tip) {
+      const placement = this._getPlacement(tip);
+      const arrowElement = tip.querySelector(`.${this.constructor.NAME}-arrow`);
+
+      // Initial position update
+      await this._updateFloatingPosition(tip, placement, arrowElement);
+
+      // Set up auto-update for scroll/resize
+      this._floatingCleanup = dom.autoUpdate(this._element, tip, () => this._updateFloatingPosition(tip, null, arrowElement));
+    }
+    async _updateFloatingPosition(tip = this.tip, placement = null, arrowElement = null) {
+      if (!tip) {
+        return;
+      }
+      if (!placement) {
+        placement = this._getPlacement(tip);
+      }
+      if (!arrowElement) {
+        arrowElement = tip.querySelector(`.${this.constructor.NAME}-arrow`);
+      }
+      const middleware = this._getFloatingMiddleware(arrowElement);
+      const floatingConfig = this._getFloatingConfig(placement, middleware);
+      const {
+        x,
+        y,
+        placement: finalPlacement,
+        middlewareData
+      } = await dom.computePosition(this._element, tip, floatingConfig);
+
+      // Apply position to tooltip
+      Object.assign(tip.style, {
+        position: 'absolute',
+        left: `${x}px`,
+        top: `${y}px`
+      });
+
+      // Ensure arrow is absolutely positioned within tooltip
+      if (arrowElement) {
+        arrowElement.style.position = 'absolute';
+      }
+
+      // Set placement attribute for CSS arrow styling
+      Manipulator.setDataAttribute(tip, 'placement', finalPlacement);
+
+      // Position arrow along the edge (center it) if present
+      // The CSS handles which edge to place it on via data-bs-placement
+      if (arrowElement && middlewareData.arrow) {
+        const {
+          x: arrowX,
+          y: arrowY
+        } = middlewareData.arrow;
+        const isVertical = finalPlacement.startsWith('top') || finalPlacement.startsWith('bottom');
+
+        // Only set the cross-axis position (centering along the edge)
+        // The main-axis position (which edge) is handled by CSS
+        Object.assign(arrowElement.style, {
+          left: isVertical && arrowX !== null ? `${arrowX}px` : '',
+          top: !isVertical && arrowY !== null ? `${arrowY}px` : '',
+          // Reset the other axis to let CSS handle it
+          right: '',
+          bottom: ''
+        });
+      }
     }
     _getOffset() {
       const {
@@ -3268,63 +3483,70 @@
         return offset.split(',').map(value => Number.parseInt(value, 10));
       }
       if (typeof offset === 'function') {
-        return popperData => offset(popperData, this._element);
+        // Floating UI passes different args, adapt the interface for offset function callbacks
+        return ({
+          placement,
+          rects
+        }) => {
+          const result = offset({
+            placement,
+            reference: rects.reference,
+            floating: rects.floating
+          }, this._element);
+          return result;
+        };
       }
       return offset;
     }
     _resolvePossibleFunction(arg) {
       return execute(arg, [this._element, this._element]);
     }
-    _getPopperConfig(attachment) {
-      const defaultBsPopperConfig = {
-        placement: attachment,
-        modifiers: [{
-          name: 'flip',
-          options: {
-            fallbackPlacements: this._config.fallbackPlacements
-          }
-        }, {
-          name: 'offset',
-          options: {
-            offset: this._getOffset()
-          }
-        }, {
-          name: 'preventOverflow',
-          options: {
-            boundary: this._config.boundary
-          }
-        }, {
-          name: 'arrow',
-          options: {
-            element: `.${this.constructor.NAME}-arrow`
-          }
-        }, {
-          name: 'preSetPlacement',
-          enabled: true,
-          phase: 'beforeMain',
-          fn: data => {
-            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
-            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
-            this._getTipElement().setAttribute('data-popper-placement', data.state.placement);
-          }
-        }]
+    _getFloatingMiddleware(arrowElement) {
+      const offsetValue = this._getOffset();
+      const middleware = [
+      // Offset middleware - handles distance from reference
+      dom.offset(typeof offsetValue === 'function' ? offsetValue : {
+        mainAxis: offsetValue[1] || 0,
+        crossAxis: offsetValue[0] || 0
+      }),
+      // Flip middleware - handles fallback placements
+      dom.flip({
+        fallbackPlacements: this._config.fallbackPlacements
+      }),
+      // Shift middleware - prevents overflow
+      dom.shift({
+        boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
+      })];
+
+      // Arrow middleware - positions the arrow element
+      if (arrowElement) {
+        middleware.push(dom.arrow({
+          element: arrowElement
+        }));
+      }
+      return middleware;
+    }
+    _getFloatingConfig(placement, middleware) {
+      const defaultConfig = {
+        placement,
+        middleware
       };
       return {
-        ...defaultBsPopperConfig,
-        ...execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
+        ...defaultConfig,
+        ...execute(this._config.floatingConfig, [undefined, defaultConfig])
       };
     }
     _setListeners() {
       const triggers = this._config.trigger.split(' ');
       for (const trigger of triggers) {
         if (trigger === 'click') {
-          EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$1), this._config.selector, event => {
+          EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$2), this._config.selector, event => {
             const context = this._initializeOnDelegatedTarget(event);
             context._activeTrigger[TRIGGER_CLICK] = !(context._isShown() && context._activeTrigger[TRIGGER_CLICK]);
             context.toggle();
           });
         } else if (trigger !== TRIGGER_MANUAL) {
-          const eventIn = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSEENTER) : this.constructor.eventName(EVENT_FOCUSIN$1);
+          const eventIn = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSEENTER$1) : this.constructor.eventName(EVENT_FOCUSIN$2);
           const eventOut = trigger === TRIGGER_HOVER ? this.constructor.eventName(EVENT_MOUSELEAVE) : this.constructor.eventName(EVENT_FOCUSOUT$1);
           EventHandler.on(this._element, eventIn, this._config.selector, event => {
             const context = this._initializeOnDelegatedTarget(event);
@@ -3433,10 +3655,10 @@
       // `Object.fromEntries(keysWithDifferentValues)`
       return config;
     }
-    _disposePopper() {
-      if (this._popper) {
-        this._popper.destroy();
-        this._popper = null;
+    _disposeFloating() {
+      if (this._floatingCleanup) {
+        this._floatingCleanup();
+        this._floatingCleanup = null;
       }
       if (this.tip) {
         this.tip.remove();
@@ -3444,6 +3666,28 @@
       }
     }
   }
+
+  /**
+   * Data API implementation - auto-initialize tooltips
+   */
+
+  const initTooltip = event => {
+    const target = event.target.closest(SELECTOR_DATA_TOGGLE$2);
+    if (!target) {
+      return;
+    }
+
+    // Get or create instance and trigger the appropriate action
+    const tooltip = Tooltip.getOrCreateInstance(target);
+
+    // For focus events, manually trigger enter to show
+    if (event.type === 'focusin') {
+      tooltip._activeTrigger.focus = true;
+      tooltip._enter();
+    }
+  };
+  EventHandler.on(document, EVENT_FOCUSIN$2, SELECTOR_DATA_TOGGLE$2, initTooltip);
+  EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$2, initTooltip);
 
   /**
    * --------------------------------------------------------------------------
@@ -3460,6 +3704,10 @@
   const NAME$3 = 'popover';
   const SELECTOR_TITLE = '.popover-header';
   const SELECTOR_CONTENT = '.popover-body';
+  const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="popover"]';
+  const EVENT_CLICK$1 = 'click';
+  const EVENT_FOCUSIN$1 = 'focusin';
+  const EVENT_MOUSEENTER = 'mouseenter';
   const Default$2 = {
     ...Tooltip.Default,
     content: '',
@@ -3505,6 +3753,38 @@
       return this._resolvePossibleFunction(this._config.content);
     }
   }
+
+  /**
+   * Data API implementation - auto-initialize popovers
+   */
+
+  const initPopover = event => {
+    const target = event.target.closest(SELECTOR_DATA_TOGGLE$1);
+    if (!target) {
+      return;
+    }
+
+    // Prevent default for click events to avoid navigation
+    if (event.type === 'click') {
+      event.preventDefault();
+    }
+
+    // Get or create instance
+    const popover = Popover.getOrCreateInstance(target);
+
+    // Trigger the appropriate action based on event type
+    if (event.type === 'click') {
+      popover.toggle();
+    } else if (event.type === 'focusin') {
+      popover._activeTrigger.focus = true;
+      popover._enter();
+    }
+  };
+
+  // Support click (default), hover, and focus triggers
+  EventHandler.on(document, EVENT_CLICK$1, SELECTOR_DATA_TOGGLE$1, initPopover);
+  EventHandler.on(document, EVENT_FOCUSIN$1, SELECTOR_DATA_TOGGLE$1, initPopover);
+  EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$1, initPopover);
 
   /**
    * --------------------------------------------------------------------------
@@ -4173,8 +4453,8 @@
     Button,
     Carousel,
     Collapse,
+    Dialog,
     Dropdown,
-    Modal,
     Offcanvas,
     Popover,
     ScrollSpy,

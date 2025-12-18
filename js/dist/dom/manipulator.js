@@ -34,7 +34,7 @@
     }
     try {
       return JSON.parse(decodeURIComponent(value));
-    } catch (_unused) {
+    } catch {
       return value;
     }
   }

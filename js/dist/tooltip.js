@@ -4,29 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('./base-component.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./util/index.js'), require('./util/sanitizer.js'), require('./util/template-factory.js')) :
-  typeof define === 'function' && define.amd ? define(['@popperjs/core', './base-component', './dom/event-handler', './dom/manipulator', './util/index', './util/sanitizer', './util/template-factory'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Tooltip = factory(global["@popperjs/core"], global.BaseComponent, global.EventHandler, global.Manipulator, global.Index, global.Sanitizer, global.TemplateFactory));
-})(this, (function (Popper, BaseComponent, EventHandler, Manipulator, index_js, sanitizer_js, TemplateFactory) { 'use strict';
-
-  function _interopNamespaceDefault(e) {
-    const n = Object.create(null, { [Symbol.toStringTag]: { value: 'Module' } });
-    if (e) {
-      for (const k in e) {
-        if (k !== 'default') {
-          const d = Object.getOwnPropertyDescriptor(e, k);
-          Object.defineProperty(n, k, d.get ? d : {
-            enumerable: true,
-            get: () => e[k]
-          });
-        }
-      }
-    }
-    n.default = e;
-    return Object.freeze(n);
-  }
-
-  const Popper__namespace = /*#__PURE__*/_interopNamespaceDefault(Popper);
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@floating-ui/dom'), require('./base-component.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./util/index.js'), require('./util/sanitizer.js'), require('./util/template-factory.js'), require('./util/floating-ui.js')) :
+  typeof define === 'function' && define.amd ? define(['@floating-ui/dom', './base-component', './dom/event-handler', './dom/manipulator', './util/index', './util/sanitizer', './util/template-factory', './util/floating-ui'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Tooltip = factory(global["@floating-ui/dom"], global.BaseComponent, global.EventHandler, global.Manipulator, global.Index, global.Sanitizer, global.TemplateFactory, global.FloatingUi));
+})(this, (function (dom, BaseComponent, EventHandler, Manipulator, index_js, sanitizer_js, TemplateFactory, floatingUi_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -47,6 +28,7 @@
   const CLASS_NAME_SHOW = 'show';
   const SELECTOR_TOOLTIP_INNER = '.tooltip-inner';
   const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
+  const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tooltip"]';
   const EVENT_MODAL_HIDE = 'hide.bs.modal';
   const TRIGGER_HOVER = 'hover';
   const TRIGGER_FOCUS = 'focus';
@@ -80,7 +62,7 @@
     html: false,
     offset: [0, 6],
     placement: 'top',
-    popperConfig: null,
+    floatingConfig: null,
     sanitize: true,
     sanitizeFn: null,
     selector: false,
@@ -99,7 +81,7 @@
     html: 'boolean',
     offset: '(array|string|function)',
     placement: '(string|function)',
-    popperConfig: '(null|object|function)',
+    floatingConfig: '(null|object|function)',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
     selector: '(string|boolean)',
@@ -114,8 +96,8 @@
 
   class Tooltip extends BaseComponent {
     constructor(element, config) {
-      if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)');
+      if (typeof dom.computePosition === 'undefined') {
+        throw new TypeError('Bootstrap\'s tooltips require Floating UI (https://floating-ui.com)');
       }
       super(element, config);
 
@@ -124,12 +106,15 @@
       this._timeout = 0;
       this._isHovered = null;
       this._activeTrigger = {};
-      this._popper = null;
+      this._floatingCleanup = null;
       this._templateFactory = null;
       this._newContent = null;
+      this._mediaQueryListeners = [];
+      this._responsivePlacements = null;
 
       // Protected
       this.tip = null;
+      this._parseResponsivePlacements();
       this._setListeners();
       if (!this._config.selector) {
         this._fixTitle();
@@ -173,10 +158,11 @@
       if (this._element.getAttribute('data-bs-original-title')) {
         this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'));
       }
-      this._disposePopper();
+      this._disposeFloating();
+      this._disposeMediaQueryListeners();
       super.dispose();
     }
-    show() {
+    async show() {
       if (this._element.style.display === 'none') {
         throw new Error('Please use show on visible elements');
       }
@@ -189,9 +175,7 @@
       if (showEvent.defaultPrevented || !isInTheDom) {
         return;
       }
-
-      // TODO: v6 remove this or make it optional
-      this._disposePopper();
+      this._disposeFloating();
       const tip = this._getTipElement();
       this._element.setAttribute('aria-describedby', tip.getAttribute('id'));
       const {
@@ -201,7 +185,7 @@
         container.append(tip);
         EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED));
       }
-      this._popper = this._createPopper(tip);
+      await this._createFloating(tip);
       tip.classList.add(CLASS_NAME_SHOW);
 
       // If this is a touch-enabled device we add extra
@@ -250,7 +234,7 @@
           return;
         }
         if (!this._isHovered) {
-          this._disposePopper();
+          this._disposeFloating();
         }
         this._element.removeAttribute('aria-describedby');
         EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDDEN));
@@ -258,8 +242,8 @@
       this._queueCallback(complete, this.tip, this._isAnimated());
     }
     update() {
-      if (this._popper) {
-        this._popper.update();
+      if (this._floatingCleanup && this.tip) {
+        this._updateFloatingPosition();
       }
     }
 
@@ -293,7 +277,7 @@
     setContent(content) {
       this._newContent = content;
       if (this._isShown()) {
-        this._disposePopper();
+        this._disposeFloating();
         this.show();
       }
     }
@@ -330,10 +314,103 @@
     _isShown() {
       return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW);
     }
-    _createPopper(tip) {
+    _getPlacement(tip) {
+      // If we have responsive placements, get the one for current viewport
+      if (this._responsivePlacements) {
+        const placement = floatingUi_js.getResponsivePlacement(this._responsivePlacements, 'top');
+        return AttachmentMap[placement.toUpperCase()] || placement;
+      }
+
+      // Execute placement (can be a function)
       const placement = index_js.execute(this._config.placement, [this, tip, this._element]);
-      const attachment = AttachmentMap[placement.toUpperCase()];
-      return Popper__namespace.createPopper(this._element, tip, this._getPopperConfig(attachment));
+      return AttachmentMap[placement.toUpperCase()] || placement;
+    }
+    _parseResponsivePlacements() {
+      // Only parse if placement is a string (not a function)
+      if (typeof this._config.placement !== 'string') {
+        this._responsivePlacements = null;
+        return;
+      }
+      this._responsivePlacements = floatingUi_js.parseResponsivePlacement(this._config.placement, 'top');
+      if (this._responsivePlacements) {
+        this._setupMediaQueryListeners();
+      }
+    }
+    _setupMediaQueryListeners() {
+      this._disposeMediaQueryListeners();
+      this._mediaQueryListeners = floatingUi_js.createBreakpointListeners(() => {
+        if (this._isShown()) {
+          this._updateFloatingPosition();
+        }
+      });
+    }
+    _disposeMediaQueryListeners() {
+      floatingUi_js.disposeBreakpointListeners(this._mediaQueryListeners);
+      this._mediaQueryListeners = [];
+    }
+    async _createFloating(tip) {
+      const placement = this._getPlacement(tip);
+      const arrowElement = tip.querySelector(`.${this.constructor.NAME}-arrow`);
+
+      // Initial position update
+      await this._updateFloatingPosition(tip, placement, arrowElement);
+
+      // Set up auto-update for scroll/resize
+      this._floatingCleanup = dom.autoUpdate(this._element, tip, () => this._updateFloatingPosition(tip, null, arrowElement));
+    }
+    async _updateFloatingPosition(tip = this.tip, placement = null, arrowElement = null) {
+      if (!tip) {
+        return;
+      }
+      if (!placement) {
+        placement = this._getPlacement(tip);
+      }
+      if (!arrowElement) {
+        arrowElement = tip.querySelector(`.${this.constructor.NAME}-arrow`);
+      }
+      const middleware = this._getFloatingMiddleware(arrowElement);
+      const floatingConfig = this._getFloatingConfig(placement, middleware);
+      const {
+        x,
+        y,
+        placement: finalPlacement,
+        middlewareData
+      } = await dom.computePosition(this._element, tip, floatingConfig);
+
+      // Apply position to tooltip
+      Object.assign(tip.style, {
+        position: 'absolute',
+        left: `${x}px`,
+        top: `${y}px`
+      });
+
+      // Ensure arrow is absolutely positioned within tooltip
+      if (arrowElement) {
+        arrowElement.style.position = 'absolute';
+      }
+
+      // Set placement attribute for CSS arrow styling
+      Manipulator.setDataAttribute(tip, 'placement', finalPlacement);
+
+      // Position arrow along the edge (center it) if present
+      // The CSS handles which edge to place it on via data-bs-placement
+      if (arrowElement && middlewareData.arrow) {
+        const {
+          x: arrowX,
+          y: arrowY
+        } = middlewareData.arrow;
+        const isVertical = finalPlacement.startsWith('top') || finalPlacement.startsWith('bottom');
+
+        // Only set the cross-axis position (centering along the edge)
+        // The main-axis position (which edge) is handled by CSS
+        Object.assign(arrowElement.style, {
+          left: isVertical && arrowX !== null ? `${arrowX}px` : '',
+          top: !isVertical && arrowY !== null ? `${arrowY}px` : '',
+          // Reset the other axis to let CSS handle it
+          right: '',
+          bottom: ''
+        });
+      }
     }
     _getOffset() {
       const {
@@ -343,50 +420,57 @@
         return offset.split(',').map(value => Number.parseInt(value, 10));
       }
       if (typeof offset === 'function') {
-        return popperData => offset(popperData, this._element);
+        // Floating UI passes different args, adapt the interface for offset function callbacks
+        return ({
+          placement,
+          rects
+        }) => {
+          const result = offset({
+            placement,
+            reference: rects.reference,
+            floating: rects.floating
+          }, this._element);
+          return result;
+        };
       }
       return offset;
     }
     _resolvePossibleFunction(arg) {
       return index_js.execute(arg, [this._element, this._element]);
     }
-    _getPopperConfig(attachment) {
-      const defaultBsPopperConfig = {
-        placement: attachment,
-        modifiers: [{
-          name: 'flip',
-          options: {
-            fallbackPlacements: this._config.fallbackPlacements
-          }
-        }, {
-          name: 'offset',
-          options: {
-            offset: this._getOffset()
-          }
-        }, {
-          name: 'preventOverflow',
-          options: {
-            boundary: this._config.boundary
-          }
-        }, {
-          name: 'arrow',
-          options: {
-            element: `.${this.constructor.NAME}-arrow`
-          }
-        }, {
-          name: 'preSetPlacement',
-          enabled: true,
-          phase: 'beforeMain',
-          fn: data => {
-            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
-            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
-            this._getTipElement().setAttribute('data-popper-placement', data.state.placement);
-          }
-        }]
+    _getFloatingMiddleware(arrowElement) {
+      const offsetValue = this._getOffset();
+      const middleware = [
+      // Offset middleware - handles distance from reference
+      dom.offset(typeof offsetValue === 'function' ? offsetValue : {
+        mainAxis: offsetValue[1] || 0,
+        crossAxis: offsetValue[0] || 0
+      }),
+      // Flip middleware - handles fallback placements
+      dom.flip({
+        fallbackPlacements: this._config.fallbackPlacements
+      }),
+      // Shift middleware - prevents overflow
+      dom.shift({
+        boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
+      })];
+
+      // Arrow middleware - positions the arrow element
+      if (arrowElement) {
+        middleware.push(dom.arrow({
+          element: arrowElement
+        }));
+      }
+      return middleware;
+    }
+    _getFloatingConfig(placement, middleware) {
+      const defaultConfig = {
+        placement,
+        middleware
       };
       return {
-        ...defaultBsPopperConfig,
-        ...index_js.execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
+        ...defaultConfig,
+        ...index_js.execute(this._config.floatingConfig, [undefined, defaultConfig])
       };
     }
     _setListeners() {
@@ -508,10 +592,10 @@
       // `Object.fromEntries(keysWithDifferentValues)`
       return config;
     }
-    _disposePopper() {
-      if (this._popper) {
-        this._popper.destroy();
-        this._popper = null;
+    _disposeFloating() {
+      if (this._floatingCleanup) {
+        this._floatingCleanup();
+        this._floatingCleanup = null;
       }
       if (this.tip) {
         this.tip.remove();
@@ -519,6 +603,28 @@
       }
     }
   }
+
+  /**
+   * Data API implementation - auto-initialize tooltips
+   */
+
+  const initTooltip = event => {
+    const target = event.target.closest(SELECTOR_DATA_TOGGLE);
+    if (!target) {
+      return;
+    }
+
+    // Get or create instance and trigger the appropriate action
+    const tooltip = Tooltip.getOrCreateInstance(target);
+
+    // For focus events, manually trigger enter to show
+    if (event.type === 'focusin') {
+      tooltip._activeTrigger.focus = true;
+      tooltip._enter();
+    }
+  };
+  EventHandler.on(document, EVENT_FOCUSIN, SELECTOR_DATA_TOGGLE, initTooltip);
+  EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE, initTooltip);
 
   return Tooltip;
 
