@@ -43,9 +43,9 @@ Bootstrap uses [PostCSS](https://postcss.org/) to process our compiled CSS with 
 
 - **[Autoprefixer](https://github.com/postcss/autoprefixer)** automatically adds vendor prefixes to CSS properties at build time. This saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins. We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]([[config:repo]]/blob/v[[config:current_version]]/.browserslistrc) for details.
 
-- **[postcss-prefix-custom-properties](https://github.com/nicolo-ribaudo/postcss-prefix-custom-properties)** adds the `bs-` prefix to all CSS custom properties (variables). This allows us to write clean, unprefixed variable names in our Sass source (e.g., `--border-radius`) that become prefixed in the compiled CSS (e.g., `--bs-border-radius`).
+- **[postcss-prefix-custom-properties](https://github.com/twbs/postcss-prefix-custom-properties)** adds the `bs-` prefix to all CSS custom properties (variables). This allows us to write clean, unprefixed variable names in our Sass source (e.g., `--border-radius`) that become prefixed in the compiled CSS (e.g., `--bs-border-radius`).
 
-Our PostCSS configuration is located in `build/postcss.config.mjs`.
+Our PostCSS configuration is located in [build/postcss.config.mjs]([[config:repo]]/blob/v[[config:current_version]]/build/postcss.config.mjs).
 
 ## Local documentation
 
