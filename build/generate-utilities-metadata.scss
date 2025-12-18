@@ -27,13 +27,22 @@ $total-utilities: list.length(map.keys($utilities-map)) !default;
   // Skip if utility is null or false (disabled)
   @if $utility {
     // Extract class prefix
-    $class: if(sass(map.has-key($utility, "class")): map.get($utility, "class"); else: $key);
+    $class: $key;
+    @if map.has-key($utility, "class") {
+      $class: map.get($utility, "class");
+    }
 
     // Extract property
-    $property: if(sass(map.has-key($utility, "property")): map.get($utility, "property"); else: null);
+    $property: null;
+    @if map.has-key($utility, "property") {
+      $property: map.get($utility, "property");
+    }
 
     // Extract values
-    $values: if(sass(map.has-key($utility, "values")): map.get($utility, "values"); else: null);
+    $values: null;
+    @if map.has-key($utility, "values") {
+      $values: map.get($utility, "values");
+    }
 
     // Generate class list
     $classes: "";
@@ -45,7 +54,10 @@ $total-utilities: list.length(map.keys($utilities-map)) !default;
           @if not $first {
             $classes: $classes + ", ";
           }
-          $class-name: if(sass($value-key == "null" or $value-key == null): $class; else: "#{$class}-#{$value-key}");
+          $class-name: "#{$class}-#{$value-key}";
+          @if $value-key == "null" or $value-key == null {
+            $class-name: $class;
+          }
           $classes: $classes + '"' + $class-name + '"';
           $first: false;
         }

@@ -47,6 +47,7 @@
 // Recursive mixin to handle nested maps
 @mixin create-css-vars($map, $parent-key: "") {
   @each $key, $value in $map {
+    // stylelint-disable-next-line scss/at-function-named-arguments
     $current-key: if(sass($parent-key == ""): $key; else: "#{$parent-key}-#{$key}");
 
     @if meta.type-of($value) == "map" {

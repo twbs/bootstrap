@@ -164,6 +164,7 @@ $btn-variant-selectors: () !default;
     text-decoration: none;
     white-space: $btn-white-space;
     vertical-align: middle;
+    // stylelint-disable-next-line scss/at-function-named-arguments
     cursor: if(sass($enable-button-pointers): pointer; else: null);
     user-select: none;
     background-color: var(--#{$prefix}btn-bg, var(--#{$prefix}bg-2));
@@ -199,6 +200,7 @@ $btn-variant-selectors: () !default;
       color: var(--#{$prefix}btn-disabled-color);
       pointer-events: none;
       background-color: var(--#{$prefix}btn-disabled-bg, var(--#{$prefix}bg-1));
+      // stylelint-disable-next-line scss/at-function-named-arguments
       background-image: if(sass($enable-gradients): none; else: null);
       border-color: var(--#{$prefix}btn-disabled-border-color);
       opacity: var(--#{$prefix}btn-disabled-opacity);
@@ -367,6 +369,7 @@ $btn-variant-selectors: () !default;
     &:has(input:checked) {
       color: var(--#{$prefix}btn-active-color);
       background-color: var(--#{$prefix}btn-active-bg, var(--#{$prefix}bg-3));
+      // stylelint-disable-next-line scss/at-function-named-arguments
       background-image: if(sass($enable-gradients): none; else: null);
       border-color: var(--#{$prefix}btn-active-border-color);
       @include box-shadow(var(--#{$prefix}btn-active-shadow));
@@ -381,6 +384,7 @@ $btn-variant-selectors: () !default;
       color: var(--#{$prefix}btn-disabled-color);
       pointer-events: none;
       background-color: var(--#{$prefix}btn-disabled-bg, var(--#{$prefix}bg-1));
+      // stylelint-disable-next-line scss/at-function-named-arguments
       background-image: if(sass($enable-gradients): none; else: null);
       border-color: var(--#{$prefix}btn-disabled-border-color);
       opacity: var(--#{$prefix}btn-disabled-opacity);
