@@ -4,29 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@popperjs/core'), require('./base-component.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./util/index.js')) :
-  typeof define === 'function' && define.amd ? define(['@popperjs/core', './base-component', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './util/index'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dropdown = factory(global["@popperjs/core"], global.BaseComponent, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Index));
-})(this, (function (Popper, BaseComponent, EventHandler, Manipulator, SelectorEngine, index_js) { 'use strict';
-
-  function _interopNamespaceDefault(e) {
-    const n = Object.create(null, { [Symbol.toStringTag]: { value: 'Module' } });
-    if (e) {
-      for (const k in e) {
-        if (k !== 'default') {
-          const d = Object.getOwnPropertyDescriptor(e, k);
-          Object.defineProperty(n, k, d.get ? d : {
-            enumerable: true,
-            get: () => e[k]
-          });
-        }
-      }
-    }
-    n.default = e;
-    return Object.freeze(n);
-  }
-
-  const Popper__namespace = /*#__PURE__*/_interopNamespaceDefault(Popper);
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@floating-ui/dom'), require('./base-component.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js'), require('./util/index.js'), require('./util/floating-ui.js')) :
+  typeof define === 'function' && define.amd ? define(['@floating-ui/dom', './base-component', './dom/event-handler', './dom/manipulator', './dom/selector-engine', './util/index', './util/floating-ui'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Dropdown = factory(global["@floating-ui/dom"], global.BaseComponent, global.EventHandler, global.Manipulator, global.SelectorEngine, global.Index, global.FloatingUi));
+})(this, (function (dom, BaseComponent, EventHandler, Manipulator, SelectorEngine, index_js, floatingUi_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -58,31 +39,21 @@
   const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`;
   const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`;
   const CLASS_NAME_SHOW = 'show';
-  const CLASS_NAME_DROPUP = 'dropup';
-  const CLASS_NAME_DROPEND = 'dropend';
-  const CLASS_NAME_DROPSTART = 'dropstart';
-  const CLASS_NAME_DROPUP_CENTER = 'dropup-center';
-  const CLASS_NAME_DROPDOWN_CENTER = 'dropdown-center';
   const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
   const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`;
   const SELECTOR_MENU = '.dropdown-menu';
-  const SELECTOR_NAVBAR = '.navbar';
   const SELECTOR_NAVBAR_NAV = '.navbar-nav';
   const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
-  const PLACEMENT_TOP = index_js.isRTL() ? 'top-end' : 'top-start';
-  const PLACEMENT_TOPEND = index_js.isRTL() ? 'top-start' : 'top-end';
-  const PLACEMENT_BOTTOM = index_js.isRTL() ? 'bottom-end' : 'bottom-start';
-  const PLACEMENT_BOTTOMEND = index_js.isRTL() ? 'bottom-start' : 'bottom-end';
-  const PLACEMENT_RIGHT = index_js.isRTL() ? 'left-start' : 'right-start';
-  const PLACEMENT_LEFT = index_js.isRTL() ? 'right-start' : 'left-start';
-  const PLACEMENT_TOPCENTER = 'top';
-  const PLACEMENT_BOTTOMCENTER = 'bottom';
+
+  // Default placement with RTL support
+  const DEFAULT_PLACEMENT = index_js.isRTL() ? 'bottom-end' : 'bottom-start';
   const Default = {
     autoClose: true,
     boundary: 'clippingParents',
     display: 'dynamic',
     offset: [0, 2],
-    popperConfig: null,
+    floatingConfig: null,
+    placement: DEFAULT_PLACEMENT,
     reference: 'toggle'
   };
   const DefaultType = {
@@ -90,7 +61,8 @@
     boundary: '(string|element)',
     display: 'string',
     offset: '(array|string|function)',
-    popperConfig: '(null|object|function)',
+    floatingConfig: '(null|object|function)',
+    placement: 'string',
     reference: '(string|element|object)'
   };
 
@@ -100,12 +72,19 @@
 
   class Dropdown extends BaseComponent {
     constructor(element, config) {
+      if (typeof dom.computePosition === 'undefined') {
+        throw new TypeError('Bootstrap\'s dropdowns require Floating UI (https://floating-ui.com)');
+      }
       super(element, config);
-      this._popper = null;
+      this._floatingCleanup = null;
+      this._mediaQueryListeners = [];
+      this._responsivePlacements = null;
       this._parent = this._element.parentNode; // dropdown wrapper
       // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
       this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine.findOne(SELECTOR_MENU, this._parent);
-      this._inNavbar = this._detectNavbar();
+
+      // Parse responsive placements on init
+      this._parseResponsivePlacements();
     }
 
     // Getters
@@ -134,7 +113,7 @@
       if (showEvent.defaultPrevented) {
         return;
       }
-      this._createPopper();
+      this._createFloating();
 
       // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
@@ -161,15 +140,13 @@
       this._completeHide(relatedTarget);
     }
     dispose() {
-      if (this._popper) {
-        this._popper.destroy();
-      }
+      this._disposeFloating();
+      this._disposeMediaQueryListeners();
       super.dispose();
     }
     update() {
-      this._inNavbar = this._detectNavbar();
-      if (this._popper) {
-        this._popper.update();
+      if (this._floatingCleanup) {
+        this._updateFloatingPosition();
       }
     }
 
@@ -187,26 +164,26 @@
           EventHandler.off(element, 'mouseover', index_js.noop);
         }
       }
-      if (this._popper) {
-        this._popper.destroy();
-      }
+      this._disposeFloating();
       this._menu.classList.remove(CLASS_NAME_SHOW);
       this._element.classList.remove(CLASS_NAME_SHOW);
       this._element.setAttribute('aria-expanded', 'false');
-      Manipulator.removeDataAttribute(this._menu, 'popper');
+      Manipulator.removeDataAttribute(this._menu, 'placement');
+      Manipulator.removeDataAttribute(this._menu, 'display');
       EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget);
     }
     _getConfig(config) {
       config = super._getConfig(config);
       if (typeof config.reference === 'object' && !index_js.isElement(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
-        // Popper virtual elements require a getBoundingClientRect method
+        // Floating UI virtual elements require a getBoundingClientRect method
         throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
       }
       return config;
     }
-    _createPopper() {
-      if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org/docs/v2/)');
+    _createFloating() {
+      if (this._config.display === 'static') {
+        Manipulator.setDataAttribute(this._menu, 'display', 'static');
+        return;
       }
       let referenceElement = this._element;
       if (this._config.reference === 'parent') {
@@ -216,36 +193,81 @@
       } else if (typeof this._config.reference === 'object') {
         referenceElement = this._config.reference;
       }
-      const popperConfig = this._getPopperConfig();
-      this._popper = Popper__namespace.createPopper(referenceElement, this._menu, popperConfig);
+
+      // Initial position update
+      this._updateFloatingPosition(referenceElement);
+
+      // Set up auto-update for scroll/resize
+      this._floatingCleanup = dom.autoUpdate(referenceElement, this._menu, () => this._updateFloatingPosition(referenceElement));
+    }
+    async _updateFloatingPosition(referenceElement = null) {
+      // Check if menu exists and is still in the DOM
+      if (!this._menu || !this._menu.isConnected) {
+        return;
+      }
+      if (!referenceElement) {
+        if (this._config.reference === 'parent') {
+          referenceElement = this._parent;
+        } else if (index_js.isElement(this._config.reference)) {
+          referenceElement = index_js.getElement(this._config.reference);
+        } else if (typeof this._config.reference === 'object') {
+          referenceElement = this._config.reference;
+        } else {
+          referenceElement = this._element;
+        }
+      }
+      const placement = this._getPlacement();
+      const middleware = this._getFloatingMiddleware();
+      const floatingConfig = this._getFloatingConfig(placement, middleware);
+      const {
+        x,
+        y,
+        placement: finalPlacement
+      } = await dom.computePosition(referenceElement, this._menu, floatingConfig);
+
+      // Menu may have been disposed during the async computePosition call
+      if (!this._menu || !this._menu.isConnected) {
+        return;
+      }
+
+      // Apply position to dropdown menu
+      Object.assign(this._menu.style, {
+        position: 'absolute',
+        left: `${x}px`,
+        top: `${y}px`,
+        margin: '0'
+      });
+
+      // Set placement attribute for CSS styling
+      Manipulator.setDataAttribute(this._menu, 'placement', finalPlacement);
     }
     _isShown() {
       return this._menu.classList.contains(CLASS_NAME_SHOW);
     }
     _getPlacement() {
-      const parentDropdown = this._parent;
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
-        return PLACEMENT_RIGHT;
+      // If we have responsive placements, find the appropriate one for current viewport
+      if (this._responsivePlacements) {
+        return floatingUi_js.getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT);
       }
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
-        return PLACEMENT_LEFT;
-      }
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPUP_CENTER)) {
-        return PLACEMENT_TOPCENTER;
-      }
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) {
-        return PLACEMENT_BOTTOMCENTER;
-      }
-
-      // We need to trim the value because custom properties can also include spaces
-      const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
-      if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
-        return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
-      }
-      return isEnd ? PLACEMENT_BOTTOMEND : PLACEMENT_BOTTOM;
+      return this._config.placement;
     }
-    _detectNavbar() {
-      return this._element.closest(SELECTOR_NAVBAR) !== null;
+    _parseResponsivePlacements() {
+      this._responsivePlacements = floatingUi_js.parseResponsivePlacement(this._config.placement, DEFAULT_PLACEMENT);
+      if (this._responsivePlacements) {
+        this._setupMediaQueryListeners();
+      }
+    }
+    _setupMediaQueryListeners() {
+      this._disposeMediaQueryListeners();
+      this._mediaQueryListeners = floatingUi_js.createBreakpointListeners(() => {
+        if (this._isShown()) {
+          this._updateFloatingPosition();
+        }
+      });
+    }
+    _disposeMediaQueryListeners() {
+      floatingUi_js.disposeBreakpointListeners(this._mediaQueryListeners);
+      this._mediaQueryListeners = [];
     }
     _getOffset() {
       const {
@@ -255,38 +277,76 @@
         return offset.split(',').map(value => Number.parseInt(value, 10));
       }
       if (typeof offset === 'function') {
-        return popperData => offset(popperData, this._element);
+        // Floating UI passes different args, adapt the interface for offset function callbacks
+        return ({
+          placement,
+          rects
+        }) => {
+          const result = offset({
+            placement,
+            reference: rects.reference,
+            floating: rects.floating
+          }, this._element);
+          return result;
+        };
       }
       return offset;
     }
-    _getPopperConfig() {
-      const defaultBsPopperConfig = {
-        placement: this._getPlacement(),
-        modifiers: [{
-          name: 'preventOverflow',
-          options: {
-            boundary: this._config.boundary
-          }
-        }, {
-          name: 'offset',
-          options: {
-            offset: this._getOffset()
-          }
-        }]
-      };
+    _getFloatingMiddleware() {
+      const offsetValue = this._getOffset();
+      const middleware = [
+      // Offset middleware - handles distance from reference
+      dom.offset(typeof offsetValue === 'function' ? offsetValue : {
+        mainAxis: offsetValue[1] || 0,
+        crossAxis: offsetValue[0] || 0
+      }),
+      // Flip middleware - handles fallback placements
+      dom.flip({
+        fallbackPlacements: this._getFallbackPlacements()
+      }),
+      // Shift middleware - prevents overflow
+      dom.shift({
+        boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
+      })];
+      return middleware;
+    }
+    _getFallbackPlacements() {
+      // Get appropriate fallback placements based on current placement
+      // Fallbacks should preserve alignment (start/end) when possible
+      const placement = this._getPlacement();
 
-      // Disable Popper if we have a static display or Dropdown is in Navbar
-      if (this._inNavbar || this._config.display === 'static') {
-        Manipulator.setDataAttribute(this._menu, 'popper', 'static'); // TODO: v6 remove
-        defaultBsPopperConfig.modifiers = [{
-          name: 'applyStyles',
-          enabled: false
-        }];
-      }
-      return {
-        ...defaultBsPopperConfig,
-        ...index_js.execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
+      // Handle all possible Floating UI placements
+      const fallbackMap = {
+        bottom: ['top', 'bottom-start', 'bottom-end', 'top-start', 'top-end'],
+        'bottom-start': ['top-start', 'bottom-end', 'top-end'],
+        'bottom-end': ['top-end', 'bottom-start', 'top-start'],
+        top: ['bottom', 'top-start', 'top-end', 'bottom-start', 'bottom-end'],
+        'top-start': ['bottom-start', 'top-end', 'bottom-end'],
+        'top-end': ['bottom-end', 'top-start', 'bottom-start'],
+        right: ['left', 'right-start', 'right-end', 'left-start', 'left-end'],
+        'right-start': ['left-start', 'right-end', 'left-end', 'top-start', 'bottom-start'],
+        'right-end': ['left-end', 'right-start', 'left-start', 'top-end', 'bottom-end'],
+        left: ['right', 'left-start', 'left-end', 'right-start', 'right-end'],
+        'left-start': ['right-start', 'left-end', 'right-end', 'top-start', 'bottom-start'],
+        'left-end': ['right-end', 'left-start', 'right-start', 'top-end', 'bottom-end']
       };
+      return fallbackMap[placement] || ['top', 'bottom', 'right', 'left'];
+    }
+    _getFloatingConfig(placement, middleware) {
+      const defaultConfig = {
+        placement,
+        middleware
+      };
+      return {
+        ...defaultConfig,
+        ...index_js.execute(this._config.floatingConfig, [undefined, defaultConfig])
+      };
+    }
+    _disposeFloating() {
+      if (this._floatingCleanup) {
+        this._floatingCleanup();
+        this._floatingCleanup = null;
+      }
     }
     _selectMenuItem({
       key,

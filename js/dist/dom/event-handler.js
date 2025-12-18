@@ -196,7 +196,7 @@
     for (const [key, value] of Object.entries(meta)) {
       try {
         obj[key] = value;
-      } catch (_unused) {
+      } catch {
         Object.defineProperty(obj, key, {
           configurable: true,
           get() {
