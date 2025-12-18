@@ -59,7 +59,8 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
 @layer components {
   .navbar {
     // scss-docs-start navbar-css-vars
-    --#{$prefix}navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
+    // stylelint-disable-next-line scss/at-function-named-arguments
+    --#{$prefix}navbar-padding-x: #{if(sass($navbar-padding-x == null): 0; else: $navbar-padding-x)};
     --#{$prefix}navbar-padding-y: #{$navbar-padding-y};
     --#{$prefix}navbar-color: #{$navbar-light-color};
     --#{$prefix}navbar-hover-color: #{$navbar-light-hover-color};

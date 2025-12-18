@@ -82,7 +82,8 @@ $list-group-action-active-bg:       var(--#{$prefix}secondary-bg) !default;
     display: block;
     padding: var(--#{$prefix}list-group-item-padding-y) var(--#{$prefix}list-group-item-padding-x);
     color: var(--#{$prefix}theme-text, var(--#{$prefix}list-group-color));
-    text-decoration: if($link-decoration == none, null, none);
+    // stylelint-disable-next-line scss/at-function-named-arguments
+    text-decoration: if(sass($link-decoration == none): null);
     background-color: var(--#{$prefix}theme-bg-subtle, var(--#{$prefix}list-group-bg));
     border: var(--#{$prefix}list-group-border-width) solid var(--#{$prefix}theme-border, var(--#{$prefix}list-group-border-color));
 

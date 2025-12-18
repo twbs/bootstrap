@@ -64,7 +64,13 @@
     // allow to pass the $key and $value of the map as an function argument
     $_args: ();
     @each $arg in $args {
-      $_args: list.append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+      $resolved-arg: $arg;
+      @if $arg == "$key" {
+        $resolved-arg: $key;
+      } @else if $arg == "$value" {
+        $resolved-arg: $value;
+      }
+      $_args: list.append($_args, $resolved-arg);
     }
 
     $_map: map.merge($_map, ($key: meta.call(meta.get-function($func), $_args...)));
@@ -200,7 +206,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   $l1: luminance($background);
   $l2: luminance(opaque($background, $foreground));
 
-  @return if($l1 > $l2, math.div($l1 + .05, $l2 + .05), math.div($l2 + .05, $l1 + .05));
+  @return if(sass($l1 > $l2): math.div($l1 + .05, $l2 + .05); else: math.div($l2 + .05, $l1 + .05));
 }
 
 // Return WCAG2.2 relative luminance
@@ -214,7 +220,8 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
   );
 
   @each $name, $value in $rgb {
-    $value: if(math.div($value, 255) < .04045, math.div(math.div($value, 255), 12.92), list.nth($_luminance-list, math.round($value + 1)));
+    // stylelint-disable-next-line scss/at-function-named-arguments, @stylistic/function-whitespace-after
+    $value: if(sass(math.div($value, 255) < .04045): math.div(math.div($value, 255), 12.92); else: list.nth($_luminance-list, math.round($value + 1)));
     $rgb: map.merge($rgb, ($name: $value));
   }
 
@@ -240,6 +247,6 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 
 // // Shade the color if the weight is positive, else tint it
 @function shift-color($color, $weight) {
-  @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+  @return if(sass($weight > 0): shade-color($color, $weight); else: tint-color($color, -$weight));
 }
 // scss-docs-end color-functions

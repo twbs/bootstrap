@@ -84,7 +84,10 @@
 
 @mixin generate-utility($utility, $infix: "") {
   // Determine if we're generating a class, or an attribute selector
-  $selectorType: if(map.has-key($utility, selector), map.get($utility, selector), "class");
+  $selectorType: "class";
+  @if map.has-key($utility, selector) {
+    $selectorType: map.get($utility, selector);
+  }
   // Then get the class name to use in a class (e.g., .class) or in a attribute selector (e.g., [class^="class"])
   $selectorClass: map.get($utility, class);
 
@@ -117,15 +120,24 @@
     @if meta.type-of($properties) == "map" {
       $propertyMap: $properties;
       // For property maps, we need to determine the class from the utility definition
-      $customClass: if(map.has-key($utility, class), map.get($utility, class), "");
+      $customClass: "";
+      @if map.has-key($utility, class) {
+        $customClass: map.get($utility, class);
+      }
     } @else {
       // Legacy approach: Multiple properties are possible, for example with vertical or horizontal margins or paddings
       @if meta.type-of($properties) == "string" {
         $properties: list.append((), $properties);
       }
       // Use custom class if present, otherwise use the first value from the list of properties
-      $customClass: if(map.has-key($utility, class), map.get($utility, class), list.nth($properties, 1));
-      $customClass: if($customClass == null, "", $customClass);
+      @if map.has-key($utility, class) {
+        $customClass: map.get($utility, class);
+      } @else {
+        $customClass: list.nth($properties, 1);
+      }
+      @if $customClass == null {
+        $customClass: "";
+      }
     }
 
     // Use custom CSS variable name if present, otherwise default to `class`
@@ -133,12 +145,22 @@
     // $css-variable-name: if(map.has-key($utility, css-variable-name), map.get($utility, css-variable-name), map.get($utility, class));
 
     // State params to generate state variants
-    $state: if(map.has-key($utility, state), map.get($utility, state), ());
+    $state: ();
+    @if map.has-key($utility, state) {
+      $state: map.get($utility, state);
+    }
 
     // $infix: if($customClass == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
 
     // Don't prefix if value key is null (e.g. with shadow class)
-    $customClassModifier: if($key, if($customClass == "" and $infix == "", "", "-") + $key, "");
+    $customClassModifier: "";
+    @if $key {
+      @if $customClass == "" and $infix == "" {
+        $customClassModifier: $key;
+      } @else {
+        $customClassModifier: "-" + $key;
+      }
+    }
 
     $selector: "";
     @if $selectorType == "class" {
