@@ -1,149 +1,156 @@
 ---
 title: Accordion
-description: Build vertically collapsing accordions in combination with our Collapse JavaScript plugin.
+description: Build vertically collapsing accordions with native HTML `<details>` and `<summary>` elements.
 aliases:
  - "/components/"
  - "/docs/[[config:docs_version]]/components/"
 toc: true
 ---
 
-## How it works
-
-The accordion uses [collapse]([[docsref:/components/collapse]]) internally to make it collapsible.
-
-<Callout name="info-prefersreducedmotion" />
+The accordion uses native HTML `<details>` and `<summary>` elements, leveraging the `name` attribute to create exclusive accordions where only one item can be open at a time. This approach requires no JavaScript for core functionality and is fully accessible by default.
 
 ## Example
 
-Click the accordions below to expand/collapse the accordion content.
+Click the accordions below to expand/collapse the accordion content. Each `<details>` element shares the same `name` attribute value, creating an exclusive accordion where opening one item automatically closes the others.
 
-To render an accordion that’s expanded by default:
+To render an accordion that's expanded by default, add the `open` attribute to the `<details>` element.
 
-- add the `.show` class on the `.accordion-collapse` element.
-- drop the `.collapsed` class from the `.accordion-button` element and set its `aria-expanded` attribute to `true`.
-
-<Example code={`<div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the first item’s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
+<Example code={`<div class="accordion">
+    <details class="accordion-item" name="accordionExample">
+      <summary class="accordion-header">
+        Accordion Item #1
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default because the <code>open</code> attribute is present. The native <code>&lt;details&gt;</code> element handles all the show/hide logic without any JavaScript. You can put any HTML content within the <code>.accordion-body</code>.
       </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
+    </details>
+    <details class="accordion-item" name="accordionExample">
+      <summary class="accordion-header">
+        Accordion Item #2
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> The <code>name</code> attribute groups this with other accordion items. When you open this item, any other open item in the same group will close automatically.
       </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
+    </details>
+    <details class="accordion-item" name="accordionExample">
+      <summary class="accordion-header">
+        Accordion Item #3
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> This exclusive accordion behavior is built into the browser—no Bootstrap JavaScript required. Just use matching <code>name</code> attributes on your <code>&lt;details&gt;</code> elements.
       </div>
-    </div>
+    </details>
   </div>`} />
 
-### Flush
+<Callout name="info-prefersreducedmotion" />
+
+## Variants
+
+Use the contextual `.theme-{color}` classes to apply a semantic theme color to open accordion items.
+
+<Example code={`<div class="accordion theme-primary">
+    <details class="accordion-item" name="accordionExampleTheme" open>
+      <summary class="accordion-header">
+        Accordion Item #1
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default because the <code>open</code> attribute is present. The native <code>&lt;details&gt;</code> element handles all the show/hide logic without any JavaScript. You can put any HTML content within the <code>.accordion-body</code>.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionExampleTheme">
+      <summary class="accordion-header">
+        Accordion Item #2
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> The <code>name</code> attribute groups this with other accordion items. When you open this item, any other open item in the same group will close automatically.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionExampleTheme">
+      <summary class="accordion-header">
+        Accordion Item #3
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> This exclusive accordion behavior is built into the browser—no Bootstrap JavaScript required. Just use matching <code>name</code> attributes on your <code>&lt;details&gt;</code> elements.
+      </div>
+    </details>
+  </div>`} />
+
+## Flush
 
 Add `.accordion-flush` to remove some borders and rounded corners to render accordions edge-to-edge with their parent container.
 
-<Example class="bg-body-secondary" code={`<div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item’s accordion body.</div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item’s accordion body. Let’s imagine this being filled with some actual content.</div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item’s accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-      </div>
-    </div>
+<Example class="bg-body-secondary" code={`<div class="accordion accordion-flush">
+    <details class="accordion-item" name="accordionFlushExample">
+      <summary class="accordion-header">
+        Accordion Item #1
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+    </details>
+    <details class="accordion-item" name="accordionFlushExample">
+      <summary class="accordion-header">
+        Accordion Item #2
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+    </details>
+    <details class="accordion-item" name="accordionFlushExample">
+      <summary class="accordion-header">
+        Accordion Item #3
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+    </details>
   </div>`} />
 
-### Always open
+## Always open
 
-Omit the `data-bs-parent` attribute on each `.accordion-collapse` to make accordion items stay open when another item is opened.
+Omit the `name` attribute on each `<details>` element to allow multiple accordion items to be open simultaneously.
 
-<Example code={`<div class="accordion" id="accordionPanelsStayOpenExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-        <div class="accordion-body">
-          <strong>This is the first item’s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
+<Example code={`<div class="accordion">
+    <details class="accordion-item" open>
+      <summary class="accordion-header">
+        Accordion Item #1
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> Without the <code>name</code> attribute, each accordion item operates independently. You can open multiple items at the same time.
       </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-        <div class="accordion-body">
-          <strong>This is the second item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
+    </details>
+    <details class="accordion-item">
+      <summary class="accordion-header">
+        Accordion Item #2
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> Opening this won't close the first item because there's no <code>name</code> attribute linking them together.
       </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-        <div class="accordion-body">
-          <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-        </div>
+    </details>
+    <details class="accordion-item">
+      <summary class="accordion-header">
+        Accordion Item #3
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> Each item is completely independent—open or close them in any combination you like.
       </div>
-    </div>
+    </details>
   </div>`} />
 
 ## Accessibility
 
-Please read the [collapse accessibility section]([[docsref:/components/collapse#accessibility]]) for more information.
+The native `<details>` and `<summary>` elements provide built-in accessibility:
+
+- Screen readers announce the expanded/collapsed state automatically
+- Keyboard navigation works out of the box (Enter/Space to toggle)
+- The `<summary>` element is focusable by default
+- No ARIA attributes are required as the semantics are built into the elements
 
 ## CSS
 
@@ -157,83 +164,51 @@ Please read the [collapse accessibility section]([[docsref:/components/collapse#
 
 <ScssDocs name="accordion-variables" file="scss/_accordion.scss" />
 
-## Usage
+## Customize
 
-The collapse plugin utilizes a few classes to handle the heavy lifting:
+### Custom icons
 
-- `.collapse` hides the content
-- `.collapse.show` shows the content
-- `.collapsing` is added when the transition starts, and removed when it finishes
+The accordion uses an inline SVG for the chevron icon. You can customize this by replacing the SVG within the `.accordion-header`:
 
-These classes can be found in `_transitions.scss`.
-
-### Via data attributes
-
-Just add `data-bs-toggle="collapse"` and a `data-bs-target` to the element to automatically assign control of one or more collapsible elements. The `data-bs-target` attribute accepts a CSS selector to apply the collapse to. Be sure to add the class `collapse` to the collapsible element. If you’d like it to default open, add the additional class `show`.
-
-To add accordion group management to a collapsible area, add the data attribute `data-bs-parent="#selector"`.
-
-### Via JavaScript
-
-Enable manually with:
-
-```js
-const accordionCollapseElementList = document.querySelectorAll('#myAccordion .collapse')
-const accordionCollapseList = [...accordionCollapseElementList].map(accordionCollapseEl => new bootstrap.Collapse(accordionCollapseEl))
+```html
+<summary class="accordion-header">
+  Accordion Title
+  <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m2 5 6 6 6-6"/>
+  </svg>
+</summary>
 ```
 
-### Options
-
-<JsDataAttributes />
-
-<BsTable>
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-`parent` | selector, DOM element | `null` | If parent is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the `card` class). The attribute has to be set on the target collapsible area. |
-`toggle` | boolean | `true` | Toggles the collapsible element on invocation. |
-</BsTable>
-
-### Methods
-
-<Callout name="danger-async-methods" type="danger" />
-
-Activates your content as a collapsible element. Accepts an optional options `object`.
-
-You can create a collapse instance with the constructor, for example:
-
-```js
-const bsCollapse = new bootstrap.Collapse('#myCollapse', {
-  toggle: false
-})
-```
-
-<BsTable>
-| Method | Description |
-| --- | --- |
-| `dispose` | Destroys an element’s collapse. (Removes stored data on the DOM element) |
-| `getInstance` | Static method which allows you to get the collapse instance associated to a DOM element, you can use it like this: `bootstrap.Collapse.getInstance(element)`. |
-| `getOrCreateInstance` | Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Collapse.getOrCreateInstance(element)`. |
-| `hide` | Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (e.g., before the `hidden.bs.collapse` event occurs). |
-| `show` | Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (e.g., before the `shown.bs.collapse` event occurs). |
-| `toggle` | Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually been shown or hidden** (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs). |
-</BsTable>
+The `.accordion-icon` class handles positioning and the rotation animation when the accordion opens.
 
 ### Events
 
-Bootstrap’s collapse class exposes a few events for hooking into collapse functionality.
-
-<BsTable>
-| Event type | Description |
-| --- | --- |
-| `hide.bs.collapse` | This event is fired immediately when the `hide` method has been called. |
-| `hidden.bs.collapse` | This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete). |
-| `show.bs.collapse` | This event fires immediately when the `show` instance method is called. |
-| `shown.bs.collapse` | This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete). |
-</BsTable>
+You can listen for the native `toggle` event on `<details>` elements:
 
 ```js
-const myCollapsible = document.getElementById('myCollapsible')
-myCollapsible.addEventListener('hidden.bs.collapse', event => {
-  // do something...
+const accordionItem = document.querySelector('.accordion-item')
+accordionItem.addEventListener('toggle', event => {
+  if (event.target.open) {
+    console.log('Accordion opened')
+  } else {
+    console.log('Accordion closed')
+  }
 })
+```
+
+### Programmatic control
+
+Toggle accordion items programmatically using the `open` property:
+
+```js
+const accordionItem = document.querySelector('.accordion-item')
+
+// Open the accordion
+accordionItem.open = true
+
+// Close the accordion
+accordionItem.open = false
+
+// Toggle the accordion
+accordionItem.open = !accordionItem.open
 ```
