@@ -6,7 +6,6 @@
     align-self: stretch;
     width: $vr-border-width;
     min-height: 1em;
-    background-color: currentcolor;
-    opacity: $hr-opacity;
+    background-color: var(--border-color);
   }
 }

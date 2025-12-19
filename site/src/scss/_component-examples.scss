@@ -69,7 +69,6 @@
     display: flow-root;
     padding: var(--bd-example-padding);
     font-size: var(--font-size-base);
-    // margin: 0 ($bd-gutter-x * -.5) 1rem;
     background-color: var(--bs-bg-body);
 
     @include media-breakpoint-up(md) {

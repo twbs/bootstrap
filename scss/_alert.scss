@@ -5,39 +5,39 @@
 @use "mixins/border-radius" as *;
 
 // scss-docs-start alert-variables
+$alert-gap:                     $spacer * .75 !default;
 $alert-padding-y:               $spacer !default;
 $alert-padding-x:               $spacer !default;
-$alert-margin-bottom:           1rem !default;
 $alert-border-radius:           var(--border-radius) !default;
-$alert-link-font-weight:        $font-weight-bold !default;
+$alert-link-font-weight:        $font-weight-semibold !default;
 $alert-border-width:            var(--border-width) !default;
-$alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 // scss-docs-end alert-variables
 
 @layer components {
   .alert {
     // scss-docs-start alert-css-vars
-    --alert-bg: var(--theme-bg-subtle, transparent);
+    --alert-gap: #{$alert-gap};
+    --alert-bg: var(--theme-bg-subtle, var(--bg-1));
     --alert-padding-x: #{$alert-padding-x};
     --alert-padding-y: #{$alert-padding-y};
-    --alert-margin-bottom: #{$alert-margin-bottom};
     --alert-color: var(--theme-text, inherit);
-    --alert-border-color: transparent;
-    --alert-border: #{$alert-border-width} solid var(--theme-border, var(--alert-border-color));
+    --alert-border-color: var(--theme-border, var(--border-color));
+    --alert-border: #{$alert-border-width} solid var(--alert-border-color);
     --alert-border-radius: #{$alert-border-radius};
     --alert-link-color: inherit;
+    --hr-border-color: var(--theme-border, var(--border-color));
     // scss-docs-end alert-css-vars
 
-    position: relative;
+    display: flex;
+    gap: var(--alert-gap);
+    align-items: start;
     padding: var(--alert-padding-y) var(--alert-padding-x);
-    // margin-bottom: var(--alert-margin-bottom);
     color: var(--alert-color);
     background-color: var(--alert-bg);
     border: var(--alert-border);
     @include border-radius(var(--alert-border-radius));
   }
 
-  // Headings for larger alerts
   .alert-heading {
     // Specified to prevent conflicts of changing $headings-color
     color: inherit;
@@ -47,23 +47,5 @@ $alert-dismissible-padding-r:   $alert-padding-x * 3 !default; // 3x covers widt
   .alert-link {
     font-weight: $alert-link-font-weight;
     color: var(--alert-link-color);
-  }
-
-
-  // Dismissible alerts
-  //
-  // Expand the right padding and account for the close button's positioning.
-
-  .alert-dismissible {
-    padding-inline-end: $alert-dismissible-padding-r;
-
-    // Adjust close link position
-    .btn-close {
-      position: absolute;
-      inset-block-start: 0;
-      inset-inline-end: 0;
-      z-index: $stretched-link-z-index + 1;
-      padding: $alert-padding-y * 1.25 $alert-padding-x;
-    }
   }
 }

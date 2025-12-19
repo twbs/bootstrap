@@ -43,7 +43,7 @@
     hr {
       margin: calc(var(--content-gap) * 1.5) 0;
       border: 0;
-      border-block-start: 1px solid var(--border-color);
+      border-block-start: var(--border-width) solid var(--hr-border-color);
     }
 
     h1,
@@ -52,14 +52,16 @@
     h4,
     h5,
     h6 {
-      margin-top: 0;
-      margin-bottom: calc(var(--content-gap) / -2);
-      font-weight: 500;
-      line-height: 1.25;
+      &:not([class]) {
+        margin-top: 0;
+        margin-bottom: calc(var(--content-gap) / -2);
+        font-weight: 500;
+        line-height: 1.25;
 
-      code {
-        font-weight: 600;
-        color: inherit;
+        code {
+          font-weight: 600;
+          color: inherit;
+        }
       }
     }
 

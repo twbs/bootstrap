@@ -8,9 +8,17 @@ aliases:
 
 import { getData } from '@libs/data'
 
-## Examples
+## Default alert
 
-Alerts are available for any length of text, as well as an optional close button. For proper styling, use one of the eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts JavaScript plugin](#dismissing).
+Alerts are available for any length of text, as well as an optional close button. Alerts are designed to be used with theme colors, but have neutral fallback colors for when no theme color is applied. For inline dismissal, use the [alerts JavaScript plugin](#dismiss).
+
+<Example code={`<div class="alert" role="alert">
+    A simple alert—check it out!
+  </div>`} />
+
+## Variants
+
+Use any of our variant theme classes for color mode adaptive, contextual styling.
 
 <Example code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
     A simple ${themeColor.name} alert—check it out!
@@ -18,7 +26,7 @@ Alerts are available for any length of text, as well as an optional close button
 
 <Details name="warning-color-assistive-technologies" />
 
-### Live example
+## Live example
 
 Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
 
@@ -29,7 +37,7 @@ We use the following JavaScript to trigger our live alert demo:
 
 <JsDocs name="live-alert" file="site/src/assets/partials/snippets.js" />
 
-### Link color
+## Link color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
@@ -37,23 +45,25 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
     A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
   </div>`)} />
 
-### Additional content
+## Additional content
 
 Alerts can also contain additional HTML elements like headings, paragraphs and dividers.
 
 <Example code={`<div class="alert theme-success" role="alert">
-    <h4 class="alert-heading">Well done!</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-    <hr>
-    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    <vstack>
+      <h4 class="alert-heading mb-2">Well done!</h4>
+      <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+      <hr class="my-3">
+      <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </vstack>
   </div>`} />
 
-### Icons
+## With icons
 
 Similarly, you can use [flexbox utilities]([[docsref:/utilities/flex]]) and [Bootstrap Icons]([[config:icons]]) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
 
 <Example code={`<div class="alert theme-primary d-flex align-items-center" role="alert">
-    <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+    <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0" viewBox="0 0 16 16" role="img" aria-label="Warning:">
       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
     </svg>
     <div>
@@ -61,46 +71,7 @@ Similarly, you can use [flexbox utilities]([[docsref:/utilities/flex]]) and [Boo
     </div>
   </div>`} />
 
-Need more than one icon for your alerts? Consider using more Bootstrap Icons and making a local SVG sprite like so to easily reference the same icons repeatedly.
-
-<Example code={`<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-    <symbol id="check-circle-fill" viewBox="0 0 16 16">
-      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-    </symbol>
-    <symbol id="info-fill" viewBox="0 0 16 16">
-      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-    </symbol>
-    <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
-      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-    </symbol>
-  </svg>
-
-  <div class="alert theme-primary d-flex align-items-center" role="alert">
-    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"><use href="#info-fill"/></svg>
-    <div>
-      An example alert with an icon
-    </div>
-  </div>
-  <div class="alert theme-success d-flex align-items-center" role="alert">
-    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use href="#check-circle-fill"/></svg>
-    <div>
-      An example success alert with an icon
-    </div>
-  </div>
-  <div class="alert theme-warning d-flex align-items-center" role="alert">
-    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:"><use href="#exclamation-triangle-fill"/></svg>
-    <div>
-      An example warning alert with an icon
-    </div>
-  </div>
-  <div class="alert theme-danger d-flex align-items-center" role="alert">
-    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use href="#exclamation-triangle-fill"/></svg>
-    <div>
-      An example danger alert with an icon
-    </div>
-  </div>`} />
-
-### Dismissing
+## Dismiss
 
 Using the alert JavaScript plugin, it’s possible to dismiss any alert inline. Here’s how:
 
@@ -112,8 +83,8 @@ Using the alert JavaScript plugin, it’s possible to dismiss any alert inline. 
 You can see this in action with a live demo:
 
 <Example code={`<div class="alert theme-warning alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-    <CloseButton dismiss="alert" />
+    Something’s wrong, check the fields below and try again.
+    <CloseButton dismiss="alert" class="ms-auto" />
   </div>`} />
 
 <Callout type="warning">
