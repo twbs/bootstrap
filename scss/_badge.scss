@@ -6,12 +6,12 @@
 @use "mixins/gradients" as *;
 
 // scss-docs-start badge-variables
-$badge-font-size:                   .75em !default;
-$badge-font-weight:                 $font-weight-bold !default;
+$badge-font-size:                   clamp(12px, .75em, .75em) !default;
+$badge-font-weight:                 $font-weight-semibold !default;
 $badge-color:                       inherit !default;
-$badge-padding-y:                   .35em !default;
-$badge-padding-x:                   .5em !default;
-$badge-border-radius:               var(--border-radius) !default;
+$badge-padding-y:                   .25em !default;
+$badge-padding-x:                   .625em !default;
+$badge-border-radius:               var(--border-radius-lg) !default;
 // scss-docs-end badge-variables
 
 // scss-docs-start badge-variants
@@ -43,7 +43,10 @@ $badge-variants: (
     --badge-border-radius: #{$badge-border-radius};
     // scss-docs-end badge-css-vars
 
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1.375rem;
     padding: var(--badge-padding-y) var(--badge-padding-x);
     font-size: var(--badge-font-size);
     font-weight: var(--badge-font-weight);
