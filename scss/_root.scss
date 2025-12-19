@@ -101,6 +101,8 @@
 
   --heading-color: #{$headings-color};
 
+  --hr-border-color: var(--border-color);
+
   --link-color: light-dark(var(--primary-base), var(--primary-text));
   --link-decoration: #{$link-decoration};
   --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000);

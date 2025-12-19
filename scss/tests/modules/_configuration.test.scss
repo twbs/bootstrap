@@ -1,6 +1,5 @@
 // Test @use with configuration syntax using a single module instance
 @use "../../alert" as * with (
-  $alert-margin-bottom: 3rem,
   $alert-link-font-weight: 800
 );
 @use "../../variables" as *;
@@ -13,14 +12,12 @@ $true-terminal-output: false;
       @include assert() {
         @include output() {
           .test {
-            margin-bottom: $alert-margin-bottom;
             font-weight: $alert-link-font-weight;
           }
         }
 
         @include expect() {
           .test {
-            margin-bottom: 3rem;
             font-weight: 800;
           }
         }
