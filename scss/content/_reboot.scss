@@ -66,17 +66,10 @@
   }
   // scss-docs-end reboot-body-rules
 
-
-  // Content grouping
-  //
-  // 1. Reset Firefox's gray color
-
   hr {
     margin: $hr-margin-y 0;
-    color: $hr-color; // 1
     border: 0;
-    border-block-start: $hr-border-width solid $hr-border-color;
-    opacity: $hr-opacity;
+    border-block-start: var(--border-width) solid var(--hr-border-color);
   }
 
 

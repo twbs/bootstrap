@@ -319,11 +319,6 @@ $blockquote-footer-color:     var(--gray-600) !default;
 $blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
-$hr-color:                    inherit !default;
-
-$hr-border-color:             null !default; // Allows for inherited colors
-$hr-border-width:             var(--border-width) !default;
-$hr-opacity:                  .25 !default;
 
 // scss-docs-start vr-variables
 $vr-border-width:             var(--border-width) !default;
