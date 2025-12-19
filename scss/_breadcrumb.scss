@@ -3,19 +3,24 @@
 @use "variables" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/transition" as *;
 
 // scss-docs-start breadcrumb-variables
 $breadcrumb-font-size:              null !default;
 $breadcrumb-padding-y:              0 !default;
 $breadcrumb-padding-x:              0 !default;
-$breadcrumb-item-padding-x:         .5rem !default;
 $breadcrumb-margin-bottom:          1rem !default;
 $breadcrumb-bg:                     null !default;
-$breadcrumb-divider-color:          var(--secondary-color) !default;
-$breadcrumb-active-color:           var(--secondary-color) !default;
-$breadcrumb-divider:                string.quote("/") !default;
-$breadcrumb-divider-flipped:        $breadcrumb-divider !default;
-$breadcrumb-border-radius:          null !default;
+$breadcrumb-divider-color:          var(--fg-4) !default;
+$breadcrumb-border-radius:          var(--border-radius) !default;
+
+$breadcrumb-link-padding-x:         .75rem !default;
+$breadcrumb-link-padding-y:         .25rem !default;
+$breadcrumb-link-hover-color:        var(--fg-2) !default;
+$breadcrumb-link-hover-bg:           var(--bg-1) !default;
+$breadcrumb-link-active-color:       var(--fg-2) !default;
+// $breadcrumb-link-active-bg:          var(--bg-2) !default;
+$breadcrumb-link-border-radius:      var(--border-radius-lg) !default;
 // scss-docs-end breadcrumb-variables
 
 @layer components {
@@ -28,14 +33,19 @@ $breadcrumb-border-radius:          null !default;
     --breadcrumb-bg: #{$breadcrumb-bg};
     --breadcrumb-border-radius: #{$breadcrumb-border-radius};
     --breadcrumb-divider-color: #{$breadcrumb-divider-color};
-    --breadcrumb-item-padding-x: #{$breadcrumb-item-padding-x};
-    --breadcrumb-item-active-color: #{$breadcrumb-active-color};
+    --breadcrumb-link-padding-x: #{$breadcrumb-link-padding-x};
+    --breadcrumb-link-padding-y: #{$breadcrumb-link-padding-y};
+    --breadcrumb-link-hover-color: #{$breadcrumb-link-hover-color};
+    --breadcrumb-link-hover-bg: #{$breadcrumb-link-hover-bg};
+    --breadcrumb-link-active-color: #{$breadcrumb-link-active-color};
+    // --breadcrumb-link-active-bg: #{$breadcrumb-link-active-bg};
+    --breadcrumb-link-border-radius: #{$breadcrumb-link-border-radius};
     // scss-docs-end breadcrumb-css-vars
 
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     padding: var(--breadcrumb-padding-y) var(--breadcrumb-padding-x);
-    margin-bottom: var(--breadcrumb-margin-bottom);
     font-size: var(--breadcrumb-font-size);
     list-style: none;
     background-color: var(--breadcrumb-bg);
@@ -43,24 +53,36 @@ $breadcrumb-border-radius:          null !default;
   }
 
   .breadcrumb-item {
-    // The separator between breadcrumbs (by default, a forward-slash: "/")
-    + .breadcrumb-item {
-      padding-inline-start: var(--breadcrumb-item-padding-x);
+    display: flex;
+    // gap: var(--breadcrumb-item-padding-x);
+  }
 
-      &::before {
-        float: inline-start; // Suppress inline spacings and underlining of the separator
-        padding-inline-end: var(--breadcrumb-item-padding-x);
-        color: var(--breadcrumb-divider-color);
-        content: var(--breadcrumb-divider, escape-svg($breadcrumb-divider));
-      }
-    }
+  .breadcrumb-divider {
+    margin-inline: calc(var(--breadcrumb-link-padding-x) / 4);
+    color: var(--breadcrumb-divider-color);
+  }
 
-    [dir="rtl"] &:not(:first-child)::before {
-      content: var(--breadcrumb-divider, escape-svg($breadcrumb-divider-flipped));
+  .breadcrumb-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.25rem;
+    padding: var(--breadcrumb-link-padding-y) var(--breadcrumb-link-padding-x);
+    color: var(--breadcrumb-link-color);
+    text-decoration: none;
+    @include border-radius(var(--breadcrumb-link-border-radius));
+    @include transition(.1s text-decoration-color ease-in-out);
+
+    &:hover {
+      z-index: 2;
+      color: var(--breadcrumb-link-hover-color);
+      background-color: var(--breadcrumb-link-hover-bg);
     }
 
     &.active {
-      color: var(--breadcrumb-item-active-color);
+      color: var(--breadcrumb-link-active-color);
+      // background-color: var(--breadcrumb-link-active-bg);
     }
   }
 }

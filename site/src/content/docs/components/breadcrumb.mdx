@@ -1,84 +1,130 @@
 ---
 title: Breadcrumb
-description: Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS.
+description: Indicate the current page's location within a navigational hierarchy using explicit divider elements.
 toc: true
 ---
 
 ## Example
 
-Use an ordered or unordered list with linked list items to create a minimally styled breadcrumb. Use our utilities to add additional styles as desired.
+Use an ordered list with `.breadcrumb-item` for each page and `.breadcrumb-divider` elements containing your separator icon. Add `.active` to the `.breadcrumb-link` of the current page.
 
 <Example code={`<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">Home</li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Home</a>
+      </li>
+      <li class="breadcrumb-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Library</a>
+      </li>
+      <li class="breadcrumb-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">
+        <a class="breadcrumb-link active" href="#">Data</a>
+      </li>
     </ol>
   </nav>
 
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Library</li>
-    </ol>
-  </nav>
-
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item"><a href="#">Library</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Data</li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Home</a>
+      </li>
+      <li class="breadcrumb-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentcolor"><circle cx="2" cy="8" r="2"/><circle cx="8" cy="8" r="2"/><circle cx="14" cy="8" r="2"/></svg>
+        </a>
+      </li>
+      <li class="breadcrumb-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Documents</a>
+      </li>
+      <li class="breadcrumb-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">
+        <a class="breadcrumb-link active" href="#">2025</a>
+      </li>
     </ol>
   </nav>`} />
 
 ## Dividers
 
-Dividers are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content). They can be changed by modifying a local CSS custom property `--bs-breadcrumb-divider`, or through the `$breadcrumb-divider` Sass variable — and `$breadcrumb-divider-flipped` for its RTL counterpart, if needed. We default to our Sass variable, which is set as a fallback to the custom property. This way, you get a global divider that you can override without recompiling CSS at any time.
+Dividers are added explicitly using `.breadcrumb-divider` elements. This gives you full control over the separator—use any SVG icon, text character, or custom content.
 
-<Example code={`<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+### SVG dividers
+
+Use inline SVG for crisp, scalable dividers that inherit `currentColor` for easy theming.
+
+<Example code={`<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Library</li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Home</a>
+      </li>
+      <li class="breadcrumb-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">
+        <a class="breadcrumb-link active" href="#">Library</a>
+      </li>
     </ol>
   </nav>`} />
 
-When modifying via Sass, the [quote](https://sass-lang.com/documentation/modules/string/#quote) function is required to generate the quotes around a string. For example, using `>` as the divider, you can use this:
+### Text dividers
 
-```scss
-$breadcrumb-divider: quote(">");
-```
+For simple text-based dividers, just add the character directly.
 
-It’s also possible to use an **embedded SVG icon**. Apply it via our CSS custom property, or use the Sass variable.
-
-<Callout>
-**Inlined SVG requires properly escaped characters.** Some reserved characters, such as `<`, `>` and `#`, must be URL-encoded or escaped. We do this with the `$breadcrumb-divider` variable using our [`escape-svg()` Sass function]([[docsref:/customize/sass#escape-svg]]). When customizing the CSS variable, you must handle this yourself. Read [Kevin Weber’s explanations on CodePen](https://codepen.io/kevinweber/pen/dXWoRw ) for more info.
-</Callout>
-
-<Example code={`<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+<Example code={`<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Library</li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Home</a>
+      </li>
+      <li class="breadcrumb-divider">/</li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Library</a>
+      </li>
+      <li class="breadcrumb-divider">/</li>
+      <li class="breadcrumb-item" aria-current="page">
+        <a class="breadcrumb-link active" href="#">Data</a>
+      </li>
     </ol>
   </nav>`} />
 
-```scss
-$breadcrumb-divider: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><path d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='#{$breadcrumb-divider-color}'/></svg>");
-```
+### Custom dividers
 
-You can also remove the divider setting `--bs-breadcrumb-divider: '';` (empty strings in CSS custom properties counts as a value), or setting the Sass variable to `$breadcrumb-divider: none;`.
+Use any content you like—different icons, decorative elements, or themed separators.
 
-<Example code={`<nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+<Example code={`<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Library</li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Home</a>
+      </li>
+      <li class="breadcrumb-divider">›</li>
+      <li class="breadcrumb-item">
+        <a class="breadcrumb-link" href="#">Library</a>
+      </li>
+      <li class="breadcrumb-divider">›</li>
+      <li class="breadcrumb-item" aria-current="page">
+        <a class="breadcrumb-link active" href="#">Data</a>
+      </li>
     </ol>
   </nav>`} />
-
-```scss
-$breadcrumb-divider: none;
-```
 
 ## Accessibility
 
-Since breadcrumbs provide a navigation, it’s a good idea to add a meaningful label such as `aria-label="breadcrumb"` to describe the type of navigation provided in the `<nav>` element, as well as applying an `aria-current="page"` to the last item of the set to indicate that it represents the current page.
+Since breadcrumbs provide navigation, it's important to follow these practices:
+
+- Add `aria-label="breadcrumb"` to the `<nav>` element to describe the navigation type
+- Add `aria-current="page"` to the `.breadcrumb-item` containing the current page
+- Divider elements are automatically hidden from assistive technology via CSS
 
 For more information, see the [ARIA Authoring Practices Guide breadcrumb pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/).
 
