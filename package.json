@@ -41,6 +41,7 @@
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
+    "bundlewatch:table": "node build/bundlewatch-table.mjs",
     "css": "npm-run-all css-compile css-prefix css-minify css-docs",
     "css-compile": "sass --style expanded --source-map --embed-sources --no-error-css scss/bootstrap.scss:dist/css/bootstrap.css scss/bootstrap-grid.scss:dist/css/bootstrap-grid.css scss/bootstrap-reboot.scss:dist/css/bootstrap-reboot.css scss/bootstrap-utilities.scss:dist/css/bootstrap-utilities.css",
     "css-docs": "node build/generate-utilities-json.mjs",
