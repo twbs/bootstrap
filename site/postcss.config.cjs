@@ -2,7 +2,7 @@ module.exports = {
   plugins: [
     require('postcss-prefix-custom-properties')({
       prefix: 'bs-',
-      ignore: [/^--bs-/, /^--bd-/]
+      ignore: [/^--bs-/, /^--bd-/, /^--shell-/, /^--shiki-/]
     }),
     require('autoprefixer')
   ]

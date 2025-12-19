@@ -4,8 +4,6 @@
 @use "mixins/border-radius" as *;
 @use "mixins/transition" as *;
 @use "mixins/focus-ring" as *;
-@use "mixins/color-mode" as *;
-@use "buttons/button-variables" as *; // mdo-do: remove?
 
 // scss-docs-start accordion-variables
 $accordion-padding-y:                     1rem !default;
@@ -24,17 +22,16 @@ $accordion-button-padding-y:              $accordion-padding-y !default;
 $accordion-button-padding-x:              $accordion-padding-x !default;
 $accordion-button-color:                  var(--fg-2) !default;
 $accordion-button-bg:                     var(--accordion-bg) !default;
-$accordion-transition:                    $btn-transition, border-radius .15s ease !default;
+$accordion-transition:                    color .15s ease-in-out, background-color .15s ease-in-out, border-radius .15s ease !default;
 $accordion-button-active-bg:              var(--bg-2) !default;
 $accordion-button-active-color:           var(--fg) !default;
 
-$accordion-icon-width:                    1.25rem !default;
+$accordion-icon-width:                    1rem !default;
 $accordion-icon-transition:               transform .2s ease-in-out !default;
 $accordion-icon-transform:                rotate(-180deg) !default;
-$accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='#000' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>") !default;
 // scss-docs-end accordion-variables
 
-@layer componenents {
+@layer components {
   .accordion {
     // scss-docs-start accordion-css-vars
     --accordion-color: #{$accordion-color};
@@ -42,13 +39,13 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
     --accordion-transition: #{$accordion-transition};
     --accordion-border-color: #{$accordion-border-color};
     --accordion-border-width: #{$accordion-border-width};
-    --accordion-border-radius: #{$accordion-border-radius};
-    --accordion-inner-border-radius: #{$accordion-inner-border-radius};
+    --accordion-border-radius: var(--accordion-radius, var(--border-radius-lg));
+    // --accordion-border-radius: #{$accordion-border-radius};
+    // --accordion-inner-border-radius: #{$accordion-inner-border-radius};
     --accordion-btn-padding-x: #{$accordion-button-padding-x};
     --accordion-btn-padding-y: #{$accordion-button-padding-y};
     --accordion-btn-color: #{$accordion-button-color};
     --accordion-btn-bg: #{$accordion-button-bg};
-    --accordion-btn-icon: #{escape-svg($accordion-button-icon)};
     --accordion-btn-icon-width: #{$accordion-icon-width};
     --accordion-btn-icon-transform: #{$accordion-icon-transform};
     --accordion-btn-icon-transition: #{$accordion-icon-transition};
@@ -59,41 +56,32 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
     // scss-docs-end accordion-css-vars
   }
 
-  .accordion-button {
-    position: relative;
+  .accordion-header {
     display: flex;
     align-items: center;
     width: 100%;
     padding: var(--accordion-btn-padding-y) var(--accordion-btn-padding-x);
     font-size: $font-size-base;
     color: var(--accordion-btn-color);
-    text-align: start; // Reset button style
+    text-align: start;
+    list-style: none; // Remove default marker
+    cursor: pointer;
     background-color: var(--accordion-btn-bg);
-    border: 0;
-    @include border-radius(0);
-    overflow-anchor: none;
+    // @include border-radius(var(--accordion-border-radius));
     @include transition(var(--accordion-transition));
 
-    &:not(.collapsed) {
-      color: var(--accordion-active-color);
-      background-color: var(--accordion-active-bg);
-      box-shadow: inset 0 calc(-1 * var(--accordion-border-width)) 0 var(--accordion-border-color);
+    // Hide the default marker in webkit browsers
+    // &::-webkit-details-marker {
+    //   display: none;
+    // }
 
-      &::after {
-        background-image: var(--accordion-btn-active-icon);
-        transform: var(--accordion-btn-icon-transform);
-      }
-    }
-
-    // Accordion icon
-    &::after {
+    // Icon styles
+    .accordion-icon {
       flex-shrink: 0;
       width: var(--accordion-btn-icon-width);
       height: var(--accordion-btn-icon-width);
       margin-inline-start: auto;
-      content: "";
-      background-color: var(--accordion-btn-color);
-      mask: var(--accordion-btn-icon) no-repeat center 100%;
+      color: currentcolor;
       @include transition(var(--accordion-btn-icon-transition));
     }
 
@@ -102,13 +90,11 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
     }
 
     &:focus-visible {
+      position: relative;
       z-index: 3;
       @include focus-ring(true);
+      outline-offset: -1px;
     }
-  }
-
-  .accordion-header {
-    margin-bottom: 0;
   }
 
   .accordion-item {
@@ -119,8 +105,8 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
     &:first-of-type {
       @include border-top-radius(var(--accordion-border-radius));
 
-      > .accordion-header .accordion-button {
-        @include border-top-radius(var(--accordion-inner-border-radius));
+      > .accordion-header {
+        @include border-top-radius(calc(var(--accordion-border-radius) - var(--accordion-border-width)));
       }
     }
 
@@ -132,14 +118,32 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
     &:last-of-type {
       @include border-bottom-radius(var(--accordion-border-radius));
 
-      > .accordion-header .accordion-button {
-        &.collapsed {
-          @include border-bottom-radius(var(--accordion-inner-border-radius));
+      > .accordion-header {
+        @include border-bottom-radius(calc(var(--accordion-border-radius) - var(--accordion-border-width)));
+      }
+
+      > .accordion-body {
+        @include border-bottom-radius(var(--accordion-border-radius));
+      }
+    }
+
+    // Open state - details[open] applies these styles
+    &[open] {
+      border-color: var(--theme-border, var(--accordion-border-color));
+
+      > .accordion-header {
+        color: var(--theme-text, var(--accordion-active-color));
+        background-color: var(--theme-bg-subtle, var(--accordion-active-bg));
+        box-shadow: inset 0 calc(-1 * var(--accordion-border-width)) 0 var(--theme-border, var(--accordion-border-color));
+
+        .accordion-icon {
+          transform: var(--accordion-btn-icon-transform);
         }
       }
 
-      > .accordion-collapse {
-        @include border-bottom-radius(var(--accordion-border-radius));
+      // Remove bottom radius from header when open (even on last item)
+      &:last-of-type > .accordion-header {
+        @include border-bottom-radius(0);
       }
     }
   }
@@ -158,25 +162,18 @@ $accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w
       border-inline: 0;
       @include border-radius(0);
 
-      &:first-child { border-block-start: 0; }
-      &:last-child { border-block-end: 0; }
+      &:first-child {
+        border-block-start: 0;
+      }
 
-      // stylelint-disable selector-max-class
-      > .accordion-collapse,
-      > .accordion-header .accordion-button,
-      > .accordion-header .accordion-button.collapsed {
+      &:last-child {
+        border-block-end: 0;
+      }
+
+      > .accordion-header,
+      > .accordion-body {
         @include border-radius(0);
       }
-      // stylelint-enable selector-max-class
     }
   }
-
-  // @if $enable-dark-mode {
-  //   @include color-mode(dark) {
-  //     .accordion-button::after {
-  //       --accordion-btn-icon: #{escape-svg($accordion-button-icon-dark)};
-  //       --accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon-dark)};
-  //     }
-  //   }
-  // }
 }
