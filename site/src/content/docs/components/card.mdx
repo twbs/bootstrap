@@ -6,24 +6,30 @@ toc: true
 
 import { getData } from '@libs/data'
 
-## About
+Cards are flexible and extensible content containers. They include options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. **Cards have no fixed width to start**, so they’ll naturally fill the full width of its parent element, or slot into your grid columns. This is easily customized with our various [sizing options](#sizing).
 
-A **card** is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you’re familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.
-
-## Example
-
-Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other Bootstrap components. They have no `margin` by default, so use [margin utilities]([[docsref:/utilities/margin]]) as needed.
-
-Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they’ll naturally fill the full width of its parent element. This is easily customized with our various [sizing options](#sizing).
-
-<Example code={`<div class="card" style="width: 18rem;">
+<Example code={`<div class="card" style="width: 280px">
     <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+      <h4 class="card-title">Card title</h4>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
   </div>`} />
+
+## How it works
+
+Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization.
+
+- Cards are built with flexbox, so they offer easy alignment via [flexbox utilities]([[docsref:/utilities/flex]]) and [grid column classes]([[docsref:/layout/grid#column-classes]]).
+
+- Cards have no `margin` by default, so use [margin utilities]([[docsref:/utilities/margin]]) as needed.
+
+- Cards are broken down into three categories of sub-components: header, body, and footer. Headers and footers are optional while the body is required. Images can also serve as headers and footers.
+
+- Card and card body are both `flex` containers, so content can be aligned and stretched as needed with utilities and whatever HTML you require.
+
+- Cards can have nearly any content, including text, images, lists, and more.
 
 ## Content types
 
@@ -41,48 +47,57 @@ The building block of a card is the `.card-body`. Use it whenever you need a pad
 
 ### Titles, text, and links
 
-Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, links are added and placed next to each other by adding `.card-link` to an `<a>` tag.
+Titles, text, and links within cards all have required class names for managing alignment. Size and color is up to you to manage.
 
-Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-body` item, the card title and subtitle are aligned nicely.
+- For a title, use `.card-title`.
+- For a subtitle, use `.card-subtitle`. This uses a negative margin to position itself closer to the title.
+- For text, use `.card-text`. This removes block margins from the element.
 
 <Example code={`<div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+      <h4 class="card-title">Example card title</h4>
+      <h6 class="card-subtitle fg-3">With a card subtitle</h6>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      <a href="#">Card link</a>
     </div>
   </div>`} />
 
 ### Images
 
-`.card-img-top` and `.card-img-bottom` respectively set the top and bottom corners rounded to match the card’s borders. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
+Use `.card-img-top` and `.card-img-bottom` to round the top and bottom corners of the image.
 
-<Example code={`<div class="card" style="width: 18rem;">
+<Example class="d-flex gap-3 flex-wrap" code={`<div class="card" style="width: 18rem;">
     <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
     <div class="card-body">
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
     </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    </div>
+    <Placeholder width="100%" height="180" class="card-img-bottom" text="Image cap" />
   </div>`} />
 
 ### List groups
 
-Create lists of content in a card with a flush list group.
+When your card only contains a list group—no header, footer, or body—simply use a `.list-group` if possible. Card borders are applied to individual card sub-components, so in this case, you‘ll have the list group’s default border.
 
 <Example code={`<div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
+    <ul class="list-group">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
     </ul>
   </div>`} />
+
+When combined with other card sub-components, use `.card-list` to manage borders and rounded corners.
 
 <Example code={`<div class="card" style="width: 18rem;">
     <div class="card-header">
       Featured
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush card-list">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -90,7 +105,7 @@ Create lists of content in a card with a flush list group.
   </div>`} />
 
 <Example code={`<div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush card-list">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -110,7 +125,7 @@ Mix and match multiple content types to create the card you need, or throw every
       <h5 class="card-title">Card title</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush card-list">
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -238,34 +253,6 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
     </div>
   </div>`} />
 
-## Text alignment
-
-You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]([[docsref:/utilities/text-alignment]]).
-
-<Example code={`<div class="card mb-3" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card text-center mb-3" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  <div class="card text-end" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>`} />
-
 ## Navigation
 
 Add some navigation to a card’s header (or block) with Bootstrap’s [nav components]([[docsref:/components/navs-tabs]]).
@@ -293,7 +280,7 @@ Add some navigation to a card’s header (or block) with Bootstrap’s [nav comp
 
 <Example code={`<div class="card text-center">
     <div class="card-header">
-      <ul class="nav nav-pills card-header-pills">
+      <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link active" href="#">Active</a>
         </li>
