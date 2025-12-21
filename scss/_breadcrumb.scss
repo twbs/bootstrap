@@ -16,11 +16,11 @@ $breadcrumb-border-radius:          var(--border-radius) !default;
 
 $breadcrumb-link-padding-x:         .75rem !default;
 $breadcrumb-link-padding-y:         .25rem !default;
-$breadcrumb-link-hover-color:        var(--fg-2) !default;
-$breadcrumb-link-hover-bg:           var(--bg-1) !default;
-$breadcrumb-link-active-color:       var(--fg-2) !default;
-// $breadcrumb-link-active-bg:          var(--bg-2) !default;
-$breadcrumb-link-border-radius:      var(--border-radius-lg) !default;
+$breadcrumb-link-color:             var(--fg-3) !default;
+$breadcrumb-link-hover-color:       var(--fg-2) !default;
+$breadcrumb-link-hover-bg:          var(--bg-1) !default;
+$breadcrumb-link-active-color:      var(--fg-1) !default;
+$breadcrumb-link-border-radius:     var(--border-radius-lg) !default;
 // scss-docs-end breadcrumb-variables
 
 @layer components {
@@ -35,10 +35,10 @@ $breadcrumb-link-border-radius:      var(--border-radius-lg) !default;
     --breadcrumb-divider-color: #{$breadcrumb-divider-color};
     --breadcrumb-link-padding-x: #{$breadcrumb-link-padding-x};
     --breadcrumb-link-padding-y: #{$breadcrumb-link-padding-y};
+    --breadcrumb-link-color: #{$breadcrumb-link-color};
     --breadcrumb-link-hover-color: #{$breadcrumb-link-hover-color};
     --breadcrumb-link-hover-bg: #{$breadcrumb-link-hover-bg};
     --breadcrumb-link-active-color: #{$breadcrumb-link-active-color};
-    // --breadcrumb-link-active-bg: #{$breadcrumb-link-active-bg};
     --breadcrumb-link-border-radius: #{$breadcrumb-link-border-radius};
     // scss-docs-end breadcrumb-css-vars
 
@@ -54,7 +54,6 @@ $breadcrumb-link-border-radius:      var(--border-radius-lg) !default;
 
   .breadcrumb-item {
     display: flex;
-    // gap: var(--breadcrumb-item-padding-x);
   }
 
   .breadcrumb-divider {
@@ -82,7 +81,6 @@ $breadcrumb-link-border-radius:      var(--border-radius-lg) !default;
 
     &.active {
       color: var(--breadcrumb-link-active-color);
-      // background-color: var(--breadcrumb-link-active-bg);
     }
   }
 }
