@@ -1,6 +1,6 @@
 ---
-title: Attribute Toggler
-description: Toggle attributes or classes, using simple html markup
+title: Toggler
+description: The Toggler plugin allows you to toggle attributes or classes using simple HTML markup.
 toc: true
 ---
 
@@ -21,7 +21,7 @@ Below are some examples of class manipulation
   <div class="card-body">Click this card, to change \`bg-color\`</div>
 </div>
 
-<div class="card mt-2" data-bs-toggle="toggler" data-bs-value="text-danger" data-bs-attribute="class">
+<div class="card mt-2" data-bs-toggle="toggler" data-bs-value="fg-danger" data-bs-attribute="class">
   <div class="card-body">Click this card, to change \`text-color\`</div>
 </div>`} />
 
@@ -74,11 +74,11 @@ Using `data-bs-toggle`, combined with `data-bs-target`, can manipulate another e
   </div>
   <div class="mb-3">
     <label for="disabledSelect" class="form-label">Disabled select menu</label>
-    <select id="disabledSelect" class="form-select">
+    <select id="disabledSelect" class="form-control">
       <option>Select</option>
     </select>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn-solid theme-primary">Submit</button>
 </fieldset>`} />
 
 ### Via data attributes
