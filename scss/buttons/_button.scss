@@ -308,6 +308,7 @@ $btn-variant-selectors: () !default;
     --btn-disabled-color: #{$btn-link-disabled-color};
     --btn-disabled-border-color: transparent;
 
+    color: var(--theme-text, var(--btn-color));
     text-decoration: var(--link-decoration);
 
     @if $enable-gradients {
@@ -315,11 +316,11 @@ $btn-variant-selectors: () !default;
     }
 
     &:focus-visible {
-      color: var(--btn-color);
+      color: var(--theme-text, var(--btn-color));
     }
 
     &:hover {
-      color: var(--btn-hover-color);
+      color: var(--theme-text-emphasis, var(--btn-hover-color));
     }
 
     // No need for an active state here

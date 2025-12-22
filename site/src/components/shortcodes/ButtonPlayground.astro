@@ -3,7 +3,7 @@ import { getData } from '@libs/data'
 import Example from '@components/shortcodes/Example.astro'
 
 const themeColors = getData('theme-colors')
-const styles = ['solid', 'styled', 'outline', 'subtle', 'text']
+const styles = ['styled', 'solid', 'outline', 'subtle', 'text']
 const sizes = [
   { value: 'xs', label: 'Extra small' },
   { value: 'sm', label: 'Small' },
@@ -25,20 +25,23 @@ const rounded = ['default', 'pill', 'square']
   </symbol>
 </svg>
 
-<div class="bg-1 p-3 rounded-3 mb-3">
+<div class="bg-1 p-3 rounded-3">
   <div class="d-flex flex-wrap gap-3">
-    <div class="vstack gap-1 flex-grow-0">
+    <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Color</label>
       <div class="dropdown">
         <button
           type="button"
-          class="btn btn-outline theme-secondary dropdown-toggle w-100 d-inline-flex align-items-center justify-content-between"
+          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
           id="btn-color-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           data-color="primary"
         >
           Primary
+          <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+            <use href="#chevron-expand" />
+          </svg>
         </button>
         <ul class="dropdown-menu" aria-labelledby="btn-color-dropdown">
           {themeColors.map((themeColor) => (
@@ -57,7 +60,7 @@ const rounded = ['default', 'pill', 'square']
       </div>
     </div>
 
-    <div class="vstack gap-1 flex-grow-0">
+    <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Style</label>
       <div class="btn-group text-capitalize" role="group" aria-label="Button style">
         {styles.map((style) => (
@@ -66,7 +69,7 @@ const rounded = ['default', 'pill', 'square']
               type="radio"
               name="btn-style"
               value={style}
-              checked={style === 'solid'}
+              checked={style === 'styled'}
               data-style={style}
             />
             {style || 'default'}
@@ -75,18 +78,21 @@ const rounded = ['default', 'pill', 'square']
       </div>
     </div>
 
-    <div class="vstack gap-1 flex-grow-0">
+    <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Size</label>
       <div class="dropdown">
         <button
           type="button"
-          class="btn btn-outline theme-secondary dropdown-toggle w-100 d-inline-flex align-items-center justify-content-between"
+          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
           id="btn-size-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           data-size=""
         >
           Medium
+          <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+            <use href="#chevron-expand" />
+          </svg>
         </button>
         <ul class="dropdown-menu" aria-labelledby="btn-size-dropdown">
           {sizes.map((size) => (
