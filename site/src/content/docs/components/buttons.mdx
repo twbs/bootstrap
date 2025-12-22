@@ -31,11 +31,21 @@ Compare all variants at once:
 <Example class="bd-example-buttons" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
 <button type="button" class="btn-outline theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
 <button type="button" class="btn-subtle theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
-<button type="button" class="btn-text theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
-`), `
-<button type="button" class="btn btn-link">Link</button>`]} />
+<button type="button" class="btn-text theme-${themeColor.name} justify-self-start">${themeColor.title}</button>`)]} />
 
 <Details name="warning-color-assistive-technologies" />
+
+## Link buttons
+
+Use the `.btn-link` class to create a button that looks like a link.
+
+<Example code={`<button type="button" class="btn btn-link">Link</button>`} />
+
+The `.btn-link` class is intended to be a starting point for your own custom link styles, while our provided link variants  used in conjunction with our link variants, or to serve as a basis for your own custom styles.
+
+<Callout>
+When using `.btn-link` without a modifier, be sure to add some explicit `:focus-visible` styles.
+</Callout>
 
 ## Styled buttons
 
