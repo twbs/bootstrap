@@ -152,6 +152,15 @@
   }
   // stylelint-enable selector-no-qualifying-type
 
+  // stylelint-disable-next-line selector-no-qualifying-type
+  rect[fill="#adb5bd"] {
+    fill: var(--bs-bg-2);
+  }
+  // stylelint-disable-next-line selector-no-qualifying-type
+  text[fill="#e9ecef"] {
+    fill: var(--bs-fg-4);
+  }
+
   // scss-docs-start custom-color-mode
   // [data-bs-theme="blue"] {
   //   --bs-body-color: var(--bs-white);

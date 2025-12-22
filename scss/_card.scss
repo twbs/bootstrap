@@ -176,6 +176,38 @@ $card-body-gap:                     $card-spacer-y * .5 !default;
   }
 
 
+  .card-row {
+    flex-direction: row;
+
+    .card-body,
+    .card-list {
+      border-width: var(--card-border-width) 0;
+      @include border-radius(0);
+
+      &:first-child {
+        @include border-start-radius(var(--card-inner-border-radius));
+        border-inline-start-width: var(--card-border-width);
+      }
+
+      &:last-child {
+        @include border-end-radius(var(--card-inner-border-radius));
+        border-inline-end-width: var(--card-border-width);
+      }
+
+      &:not(:first-child):not(:last-child) {
+        border-inline-end-width: var(--card-border-width);
+      }
+    }
+  }
+
+  .card-img-start {
+    @include border-start-radius(var(--card-inner-border-radius));
+  }
+
+  .card-img-end {
+    @include border-end-radius(var(--card-inner-border-radius));
+  }
+
   //
   // Card groups
   //
