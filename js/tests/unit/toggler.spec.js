@@ -191,5 +191,75 @@ describe('Toggler', () => {
       togglerEl.click()
       expect(togglerEl.getAttribute('id')).toBeNull()
     })
+
+    it('should toggle class on target element via data-bs-target with ID selector', () => {
+      fixtureEl.innerHTML = [
+        '<button data-bs-toggle="toggler" data-bs-target="#target-element"></button>',
+        '<div id="target-element" data-bs-value="bg-info" data-bs-attribute="class"></div>'
+      ].join('')
+
+      const triggerEl = fixtureEl.querySelector('[data-bs-toggle="toggler"]')
+      const targetEl = fixtureEl.querySelector('#target-element')
+
+      triggerEl.click()
+      expect(targetEl.classList.contains('bg-info')).toBeTrue()
+
+      triggerEl.click()
+      expect(targetEl.classList.contains('bg-info')).toBeFalse()
+    })
+
+    it('should toggle class on multiple target elements via data-bs-target with class selector', () => {
+      fixtureEl.innerHTML = [
+        '<button data-bs-toggle="toggler" data-bs-target=".target-class"></button>',
+        '<div class="target-class" data-bs-value="bg-warning" data-bs-attribute="class"></div>',
+        '<div class="target-class" data-bs-value="bg-info" data-bs-attribute="class"></div>',
+        '<div class="target-class" data-bs-value="bg-danger" data-bs-attribute="class"></div>'
+      ].join('')
+
+      const triggerEl = fixtureEl.querySelector('[data-bs-toggle="toggler"]')
+      const targetEls = fixtureEl.querySelectorAll('.target-class')
+
+      triggerEl.click()
+      expect(targetEls[0].classList.contains('bg-warning')).toBeTrue()
+      expect(targetEls[1].classList.contains('bg-info')).toBeTrue()
+      expect(targetEls[2].classList.contains('bg-danger')).toBeTrue()
+
+      triggerEl.click()
+      expect(targetEls[0].classList.contains('bg-warning')).toBeFalse()
+      expect(targetEls[1].classList.contains('bg-info')).toBeFalse()
+      expect(targetEls[2].classList.contains('bg-danger')).toBeFalse()
+    })
+
+    it('should toggle attribute on target element via data-bs-target', () => {
+      fixtureEl.innerHTML = [
+        '<button data-bs-toggle="toggler" data-bs-target="#target-fieldset"></button>',
+        '<fieldset id="target-fieldset" data-bs-value="disabled" data-bs-attribute="disabled"></fieldset>'
+      ].join('')
+
+      const triggerEl = fixtureEl.querySelector('[data-bs-toggle="toggler"]')
+      const targetEl = fixtureEl.querySelector('#target-fieldset')
+
+      triggerEl.click()
+      expect(targetEl.getAttribute('disabled')).toEqual('disabled')
+
+      triggerEl.click()
+      expect(targetEl.hasAttribute('disabled')).toBeFalse()
+    })
+
+    it('should toggle target element via href attribute as fallback', () => {
+      fixtureEl.innerHTML = [
+        '<a data-bs-toggle="toggler" href="#target-via-href"></a>',
+        '<div id="target-via-href" data-bs-value="active" data-bs-attribute="class"></div>'
+      ].join('')
+
+      const triggerEl = fixtureEl.querySelector('[data-bs-toggle="toggler"]')
+      const targetEl = fixtureEl.querySelector('#target-via-href')
+
+      triggerEl.click()
+      expect(targetEl.classList.contains('active')).toBeTrue()
+
+      triggerEl.click()
+      expect(targetEl.classList.contains('active')).toBeFalse()
+    })
   })
 })

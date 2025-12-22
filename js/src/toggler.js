@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.3): toggler.js
+ * Bootstrap toggler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -14,7 +14,7 @@ import { eventActionOnPlugin } from './util/component-functions.js'
  */
 
 const NAME = 'toggler'
-const DATA_KEY = 'bs.toggle'
+const DATA_KEY = 'bs.toggler'
 const EVENT_KEY = `.${DATA_KEY}`
 
 const EVENT_TOGGLE = `toggle${EVENT_KEY}`
@@ -51,11 +51,7 @@ class Toggler extends BaseComponent {
     return NAME
   }
 
-  _configAfterMerge(config) {
-    return config
-  }
-
-  // Private
+  // Public
   toggle() {
     const toggleEvent = EventHandler.trigger(this._element, EVENT_TOGGLE)
 
@@ -68,6 +64,7 @@ class Toggler extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_TOGGLED)
   }
 
+  // Private
   _execute() {
     const { attribute, value } = this._config
 
@@ -80,7 +77,8 @@ class Toggler extends BaseComponent {
       return
     }
 
-    if (this._element.getAttribute(attribute) === value) {
+    // Compare as strings since getAttribute() always returns a string
+    if (this._element.getAttribute(attribute) === String(value)) {
       this._element.removeAttribute(attribute)
       return
     }
