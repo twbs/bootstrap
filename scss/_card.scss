@@ -13,7 +13,7 @@ $card-border-color:                 var(--border-color-translucent) !default;
 $card-border-radius:                var(--border-radius-lg) !default;
 $card-box-shadow:                   null !default;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-padding-y:                $card-spacer-y !default;
+$card-cap-padding-y:                $card-spacer-y * .75 !default;
 $card-cap-padding-x:                $card-spacer-x !default;
 $card-cap-bg:                       var(--bg-1) !default;
 $card-cap-color:                    null !default;
@@ -76,7 +76,7 @@ $card-body-gap:                     $card-spacer-y * .5 !default;
     align-items: flex-start;
     padding: var(--card-spacer-y) var(--card-spacer-x);
     color: var(--card-color);
-    border: solid var(--card-border-color);
+    border: solid var(--theme-bg, var(--card-border-color));
     border-width: 0 var(--card-border-width);
 
     > * {
@@ -86,8 +86,7 @@ $card-body-gap:                     $card-spacer-y * .5 !default;
 
   .card-body,
   .card-list {
-    // border: var(--card-border-width) solid var(--card-border-color);
-    border: solid var(--card-border-color);
+    border: solid var(--theme-bg, var(--card-border-color));
     border-width: 0 var(--card-border-width);
 
     &:first-child {
@@ -112,9 +111,9 @@ $card-body-gap:                     $card-spacer-y * .5 !default;
   .card-header {
     padding: var(--card-cap-padding-y) var(--card-cap-padding-x);
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
-    color: var(--card-cap-color);
-    background-color: var(--card-cap-bg);
-    border: var(--card-border-width) solid var(--card-border-color);
+    color: var(--theme-contrast, var(--card-cap-color));
+    background-color: var(--theme-bg, var(--card-cap-bg));
+    border: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
 
     &:first-child {
       @include border-radius(var(--card-inner-border-radius) var(--card-inner-border-radius) 0 0);
@@ -124,14 +123,34 @@ $card-body-gap:                     $card-spacer-y * .5 !default;
   .card-footer {
     padding: var(--card-cap-padding-y) var(--card-cap-padding-x);
     color: var(--card-cap-color);
-    background-color: var(--card-cap-bg);
-    border: var(--card-border-width) solid var(--card-border-color);
+    background-color: var(--theme-bg, var(--card-cap-bg));
+    border: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
 
     &:last-child {
       @include border-radius(0 0 var(--card-inner-border-radius) var(--card-inner-border-radius));
     }
   }
 
+  .card-subtle {
+    border-color: var(--theme-border, var(--card-border-color));
+
+    .card-header {
+      color: var(--theme-text-emphasis, currentcolor);
+      background-color: var(--theme-bg-subtle, var(--card-cap-bg));
+      border-color: var(--theme-border, var(--card-border-color));
+    }
+
+    .card-footer {
+      color: var(--theme-text-emphasis, currentcolor);
+      background-color: var(--theme-bg-subtle, var(--card-cap-bg));
+      border-color: var(--theme-border, var(--card-border-color));
+    }
+
+    .card-body,
+    .card-list {
+      border-color: var(--theme-border, var(--card-border-color));
+    }
+  }
 
   //
   // Header navs
