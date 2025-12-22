@@ -7,23 +7,23 @@
 // scss-docs-start card-variables
 $card-spacer-y:                     $spacer !default;
 $card-spacer-x:                     $spacer !default;
-$card-title-spacer-y:               $spacer * .5 !default;
-$card-title-color:                  null !default;
 $card-subtitle-color:               null !default;
 $card-border-width:                 var(--border-width) !default;
 $card-border-color:                 var(--border-color-translucent) !default;
-$card-border-radius:                var(--border-radius) !default;
+$card-border-radius:                var(--border-radius-lg) !default;
 $card-box-shadow:                   null !default;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-padding-y:                $card-spacer-y * .5 !default;
+$card-cap-padding-y:                $card-spacer-y * .75 !default;
 $card-cap-padding-x:                $card-spacer-x !default;
-$card-cap-bg:                       rgba(var(--body-color-rgb), .03) !default;
+$card-cap-bg:                       var(--bg-1) !default;
 $card-cap-color:                    null !default;
 $card-height:                       null !default;
 $card-color:                        null !default;
 $card-bg:                           var(--bg-body) !default;
 $card-img-overlay-padding:          $spacer !default;
 $card-group-margin:                 $grid-gutter-width * .5 !default;
+
+$card-body-gap:                     $card-spacer-y * .5 !default;
 // scss-docs-end card-variables
 
 @layer components {
@@ -31,8 +31,6 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     // scss-docs-start card-css-vars
     --card-spacer-y: #{$card-spacer-y};
     --card-spacer-x: #{$card-spacer-x};
-    --card-title-spacer-y: #{$card-title-spacer-y};
-    --card-title-color: #{$card-title-color};
     --card-subtitle-color: #{$card-subtitle-color};
     --card-border-width: #{$card-border-width};
     --card-border-color: #{$card-border-color};
@@ -48,6 +46,7 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     --card-bg: #{$card-bg};
     --card-img-overlay-padding: #{$card-img-overlay-padding};
     --card-group-margin: #{$card-group-margin};
+    --card-body-gap: #{$card-body-gap};
     // scss-docs-end card-css-vars
 
     position: relative;
@@ -58,80 +57,63 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     color: var(--color-body);
     word-wrap: break-word;
     background-color: var(--card-bg);
-    background-clip: border-box;
-    border: var(--card-border-width) solid var(--card-border-color);
-    @include border-radius(var(--card-border-radius));
+    // border: var(--card-border-width) solid var(--card-border-color);
+    // @include border-radius(var(--card-border-radius));
     @include box-shadow(var(--card-box-shadow));
 
     > hr {
       margin-inline: 0;
     }
-
-    > .list-group {
-      border-block: inherit;
-
-      &:first-child {
-        border-block-start-width: 0;
-        @include border-top-radius(var(--card-inner-border-radius));
-      }
-
-      &:last-child  {
-        border-block-end-width: 0;
-        @include border-bottom-radius(var(--card-inner-border-radius));
-      }
-    }
-
-    // Due to specificity of the above selector (`.card > .list-group`), we must
-    // use a child selector here to prevent double borders.
-    > .card-header + .list-group,
-    > .list-group + .card-footer {
-      border-block-start: 0;
-    }
   }
 
   .card-body {
+    display: flex;
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
     flex: 1 1 auto;
+    flex-direction: column;
+    gap: var(--card-body-gap);
+    align-items: flex-start;
     padding: var(--card-spacer-y) var(--card-spacer-x);
     color: var(--card-color);
+    border: solid var(--theme-bg, var(--card-border-color));
+    border-width: 0 var(--card-border-width);
+
+    > * {
+      margin-block: 0;
+    }
   }
 
-  .card-title {
-    margin-bottom: var(--card-title-spacer-y);
-    color: var(--card-title-color);
+  .card-body,
+  .card-list {
+    border: solid var(--theme-bg, var(--card-border-color));
+    border-width: 0 var(--card-border-width);
+
+    &:first-child {
+      @include border-top-radius(var(--card-border-radius));
+      border-top-width: var(--card-border-width);
+    }
+
+    &:last-child {
+      @include border-bottom-radius(var(--card-border-radius));
+      border-bottom-width: var(--card-border-width);
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-block-end-width: var(--card-border-width);
+    }
   }
 
   .card-subtitle {
-    margin-top: calc(-.5 * var(--card-title-spacer-y));
-    margin-bottom: 0;
-    color: var(--card-subtitle-color);
+    margin-top: calc(var(--card-body-gap) * -.5);
   }
-
-  .card-text:last-child {
-    margin-bottom: 0;
-  }
-
-  .card-link {
-    &:hover {
-      text-decoration: none;
-    }
-
-    + .card-link {
-      margin-inline-start: var(--card-spacer-x);
-    }
-  }
-
-  //
-  // Optional textual caps
-  //
 
   .card-header {
     padding: var(--card-cap-padding-y) var(--card-cap-padding-x);
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
-    color: var(--card-cap-color);
-    background-color: var(--card-cap-bg);
-    border-block-end: var(--card-border-width) solid var(--card-border-color);
+    color: var(--theme-contrast, var(--card-cap-color));
+    background-color: var(--theme-bg, var(--card-cap-bg));
+    border: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
 
     &:first-child {
       @include border-radius(var(--card-inner-border-radius) var(--card-inner-border-radius) 0 0);
@@ -141,20 +123,41 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   .card-footer {
     padding: var(--card-cap-padding-y) var(--card-cap-padding-x);
     color: var(--card-cap-color);
-    background-color: var(--card-cap-bg);
-    border-block-start: var(--card-border-width) solid var(--card-border-color);
+    background-color: var(--theme-bg, var(--card-cap-bg));
+    border: var(--card-border-width) solid var(--theme-bg, var(--card-border-color));
 
     &:last-child {
       @include border-radius(0 0 var(--card-inner-border-radius) var(--card-inner-border-radius));
     }
   }
 
+  .card-subtle {
+    border-color: var(--theme-border, var(--card-border-color));
+
+    .card-header {
+      color: var(--theme-text-emphasis, currentcolor);
+      background-color: var(--theme-bg-subtle, var(--card-cap-bg));
+      border-color: var(--theme-border, var(--card-border-color));
+    }
+
+    .card-footer {
+      color: var(--theme-text-emphasis, currentcolor);
+      background-color: var(--theme-bg-subtle, var(--card-cap-bg));
+      border-color: var(--theme-border, var(--card-border-color));
+    }
+
+    .card-body,
+    .card-list {
+      border-color: var(--theme-border, var(--card-border-color));
+    }
+  }
 
   //
   // Header navs
   //
 
-  .card-header-tabs {
+  // Combined selector because of specificity match with `.nav` base class
+  .nav.card-header-tabs {
     margin-inline: calc(-.5 * var(--card-cap-padding-x));
     margin-bottom: calc(-1 * var(--card-cap-padding-y));
     border-block-end: 0;
@@ -163,10 +166,6 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
       background-color: var(--card-bg);
       border-block-end-color: var(--card-bg);
     }
-  }
-
-  .card-header-pills {
-    margin-inline: calc(-.5 * var(--card-cap-padding-x));
   }
 
   // Card image
@@ -181,6 +180,8 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
   .card-img-top,
   .card-img-bottom {
     width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+    outline: var(--card-border-width) solid var(--card-border-color);
+    outline-offset: calc(var(--card-border-width) * -1);
   }
 
   .card-img,
@@ -193,6 +194,38 @@ $card-group-margin:                 $grid-gutter-width * .5 !default;
     @include border-bottom-radius(var(--card-inner-border-radius));
   }
 
+
+  .card-row {
+    flex-direction: row;
+
+    .card-body,
+    .card-list {
+      border-width: var(--card-border-width) 0;
+      @include border-radius(0);
+
+      &:first-child {
+        @include border-start-radius(var(--card-inner-border-radius));
+        border-inline-start-width: var(--card-border-width);
+      }
+
+      &:last-child {
+        @include border-end-radius(var(--card-inner-border-radius));
+        border-inline-end-width: var(--card-border-width);
+      }
+
+      &:not(:first-child):not(:last-child) {
+        border-inline-end-width: var(--card-border-width);
+      }
+    }
+  }
+
+  .card-img-start {
+    @include border-start-radius(var(--card-inner-border-radius));
+  }
+
+  .card-img-end {
+    @include border-end-radius(var(--card-inner-border-radius));
+  }
 
   //
   // Card groups
