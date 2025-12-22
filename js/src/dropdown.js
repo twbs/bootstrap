@@ -46,7 +46,18 @@ const ESCAPE_KEY = 'Escape'
 const TAB_KEY = 'Tab'
 const ARROW_UP_KEY = 'ArrowUp'
 const ARROW_DOWN_KEY = 'ArrowDown'
-const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
+const ARROW_LEFT_KEY = 'ArrowLeft'
+const ARROW_RIGHT_KEY = 'ArrowRight'
+const HOME_KEY = 'Home'
+const END_KEY = 'End'
+const ENTER_KEY = 'Enter'
+const SPACE_KEY = ' '
+const RIGHT_MOUSE_BUTTON = 2
+
+// Hover intent delay (ms) - grace period before closing submenu
+const SUBMENU_CLOSE_DELAY = 100
+// Mobile breakpoint for slide-over mode
+const MOBILE_BREAKPOINT = 768
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
@@ -55,17 +66,23 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_MOUSEENTER_DATA_API = `mouseenter${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_MOUSELEAVE_DATA_API = `mouseleave${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_MOBILE = 'dropdown-menu-mobile'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
 const SELECTOR_MENU = '.dropdown-menu'
+const SELECTOR_SUBMENU = '.dropdown-submenu'
+const SELECTOR_SUBMENU_TOGGLE = '.dropdown-submenu > .dropdown-item'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
-const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
+const SELECTOR_VISIBLE_ITEMS = '.dropdown-item:not(.disabled):not(:disabled)'
 
 // Default placement with RTL support
 const DEFAULT_PLACEMENT = isRTL() ? 'bottom-end' : 'bottom-start'
+const SUBMENU_PLACEMENT = isRTL() ? 'left-start' : 'right-start'
 
 const Default = {
   autoClose: true,
@@ -74,7 +91,11 @@ const Default = {
   offset: [0, 2],
   floatingConfig: null,
   placement: DEFAULT_PLACEMENT,
-  reference: 'toggle'
+  reference: 'toggle',
+  // Submenu options
+  submenuTrigger: 'both', // 'click', 'hover', or 'both'
+  submenuDelay: SUBMENU_CLOSE_DELAY,
+  mobileBreakpoint: MOBILE_BREAKPOINT
 }
 
 const DefaultType = {
@@ -84,7 +105,10 @@ const DefaultType = {
   offset: '(array|string|function)',
   floatingConfig: '(null|object|function)',
   placement: 'string',
-  reference: '(string|element|object)'
+  reference: '(string|element|object)',
+  submenuTrigger: 'string',
+  submenuDelay: 'number',
+  mobileBreakpoint: 'number'
 }
 
 /**
@@ -103,6 +127,12 @@ class Dropdown extends BaseComponent {
     this._mediaQueryListeners = []
     this._responsivePlacements = null
     this._parent = this._element.parentNode // dropdown wrapper
+    this._isSubmenu = this._parent.classList.contains('dropdown-submenu')
+    this._openSubmenus = new Map() // Map of submenu element -> cleanup function
+    this._submenuCloseTimeouts = new Map() // Map of submenu element -> timeout ID
+    this._hoverIntentData = null // For safe triangle calculation
+    this._mobileMenuStack = [] // Stack of mobile submenus for back navigation
+
     // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
@@ -110,6 +140,9 @@ class Dropdown extends BaseComponent {
 
     // Parse responsive placements on init
     this._parseResponsivePlacements()
+
+    // Set up submenu event listeners
+    this._setupSubmenuListeners()
   }
 
   // Getters
@@ -158,10 +191,11 @@ class Dropdown extends BaseComponent {
     }
 
     this._element.focus()
-    this._element.setAttribute('aria-expanded', true)
+    this._element.setAttribute('aria-expanded', 'true')
 
     this._menu.classList.add(CLASS_NAME_SHOW)
     this._element.classList.add(CLASS_NAME_SHOW)
+    this._parent.classList.add(CLASS_NAME_SHOW)
     EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
   }
 
@@ -180,6 +214,8 @@ class Dropdown extends BaseComponent {
   dispose() {
     this._disposeFloating()
     this._disposeMediaQueryListeners()
+    this._closeAllSubmenus()
+    this._clearAllSubmenuTimeouts()
     super.dispose()
   }
 
@@ -196,6 +232,9 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    // Close all open submenus first
+    this._closeAllSubmenus()
+
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
@@ -208,6 +247,7 @@ class Dropdown extends BaseComponent {
 
     this._menu.classList.remove(CLASS_NAME_SHOW)
     this._element.classList.remove(CLASS_NAME_SHOW)
+    this._parent.classList.remove(CLASS_NAME_SHOW)
     this._element.setAttribute('aria-expanded', 'false')
     Manipulator.removeDataAttribute(this._menu, 'placement')
     Manipulator.removeDataAttribute(this._menu, 'display')
@@ -335,21 +375,21 @@ class Dropdown extends BaseComponent {
   }
 
   _getOffset() {
-    const { offset } = this._config
+    const { offset: offsetConfig } = this._config
 
-    if (typeof offset === 'string') {
-      return offset.split(',').map(value => Number.parseInt(value, 10))
+    if (typeof offsetConfig === 'string') {
+      return offsetConfig.split(',').map(value => Number.parseInt(value, 10))
     }
 
-    if (typeof offset === 'function') {
+    if (typeof offsetConfig === 'function') {
       // Floating UI passes different args, adapt the interface for offset function callbacks
       return ({ placement, rects }) => {
-        const result = offset({ placement, reference: rects.reference, floating: rects.floating }, this._element)
+        const result = offsetConfig({ placement, reference: rects.reference, floating: rects.floating }, this._element)
         return result
       }
     }
 
-    return offset
+    return offsetConfig
   }
 
   _getFloatingMiddleware() {
@@ -418,8 +458,381 @@ class Dropdown extends BaseComponent {
     }
   }
 
+  // -------------------------------------------------------------------------
+  // Submenu handling
+  // -------------------------------------------------------------------------
+
+  _setupSubmenuListeners() {
+    // Set up hover listeners for submenu triggers
+    if (this._config.submenuTrigger === 'hover' || this._config.submenuTrigger === 'both') {
+      EventHandler.on(this._menu, 'mouseenter', SELECTOR_SUBMENU_TOGGLE, event => {
+        this._onSubmenuTriggerEnter(event)
+      })
+
+      EventHandler.on(this._menu, 'mouseleave', SELECTOR_SUBMENU, event => {
+        this._onSubmenuLeave(event)
+      })
+
+      // Track mouse movement for safe triangle calculation
+      EventHandler.on(this._menu, 'mousemove', event => {
+        this._trackMousePosition(event)
+      })
+    }
+
+    // Set up click listener for submenu triggers
+    if (this._config.submenuTrigger === 'click' || this._config.submenuTrigger === 'both') {
+      EventHandler.on(this._menu, 'click', SELECTOR_SUBMENU_TOGGLE, event => {
+        this._onSubmenuTriggerClick(event)
+      })
+    }
+  }
+
+  _onSubmenuTriggerEnter(event) {
+    const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE)
+    if (!trigger) return
+
+    const submenuWrapper = trigger.closest(SELECTOR_SUBMENU)
+    const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
+    if (!submenu) return
+
+    // Cancel any pending close timeout for this submenu
+    this._cancelSubmenuCloseTimeout(submenu)
+
+    // Close other open submenus at the same level
+    this._closeSiblingSubmenus(submenuWrapper)
+
+    // Open this submenu
+    this._openSubmenu(trigger, submenu, submenuWrapper)
+  }
+
+  _onSubmenuLeave(event) {
+    const submenuWrapper = event.target.closest(SELECTOR_SUBMENU)
+    const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
+    if (!submenu || !this._openSubmenus.has(submenu)) return
+
+    // Check if we're moving toward the submenu (safe triangle)
+    if (this._isMovingTowardSubmenu(event, submenu)) {
+      return
+    }
+
+    // Schedule submenu close with delay
+    this._scheduleSubmenuClose(submenu, submenuWrapper)
+  }
+
+  _onSubmenuTriggerClick(event) {
+    const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE)
+    if (!trigger) return
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    const submenuWrapper = trigger.closest(SELECTOR_SUBMENU)
+    const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
+    if (!submenu) return
+
+    // Check if we should use mobile mode
+    if (this._isMobileMode()) {
+      this._openSubmenuMobile(trigger, submenu, submenuWrapper)
+      return
+    }
+
+    // Toggle submenu
+    if (this._openSubmenus.has(submenu)) {
+      this._closeSubmenu(submenu, submenuWrapper)
+    } else {
+      this._closeSiblingSubmenus(submenuWrapper)
+      this._openSubmenu(trigger, submenu, submenuWrapper)
+    }
+  }
+
+  _openSubmenu(trigger, submenu, submenuWrapper) {
+    if (this._openSubmenus.has(submenu)) return
+
+    // Set ARIA attributes
+    trigger.setAttribute('aria-expanded', 'true')
+    trigger.setAttribute('aria-haspopup', 'true')
+
+    // Position and show submenu
+    submenu.classList.add(CLASS_NAME_SHOW)
+    submenuWrapper.classList.add(CLASS_NAME_SHOW)
+
+    // Set up Floating UI positioning for submenu
+    const cleanup = this._createSubmenuFloating(trigger, submenu, submenuWrapper)
+    this._openSubmenus.set(submenu, cleanup)
+
+    // Set up mouseenter on submenu to cancel close timeout
+    EventHandler.on(submenu, 'mouseenter', () => {
+      this._cancelSubmenuCloseTimeout(submenu)
+    })
+  }
+
+  _closeSubmenu(submenu, submenuWrapper) {
+    if (!this._openSubmenus.has(submenu)) return
+
+    // Close any nested submenus first
+    const nestedSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} ${SELECTOR_MENU}.${CLASS_NAME_SHOW}`, submenu)
+    for (const nested of nestedSubmenus) {
+      const nestedWrapper = nested.closest(SELECTOR_SUBMENU)
+      this._closeSubmenu(nested, nestedWrapper)
+    }
+
+    // Get the trigger
+    const trigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, submenuWrapper)
+
+    // Clean up Floating UI
+    const cleanup = this._openSubmenus.get(submenu)
+    if (cleanup) {
+      cleanup()
+    }
+
+    this._openSubmenus.delete(submenu)
+
+    // Remove event listeners
+    EventHandler.off(submenu, 'mouseenter')
+
+    // Update ARIA and visibility
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'false')
+    }
+
+    submenu.classList.remove(CLASS_NAME_SHOW)
+    submenuWrapper.classList.remove(CLASS_NAME_SHOW)
+
+    // Clear inline styles
+    submenu.style.position = ''
+    submenu.style.left = ''
+    submenu.style.top = ''
+    submenu.style.margin = ''
+  }
+
+  _closeAllSubmenus() {
+    for (const [submenu] of this._openSubmenus) {
+      const submenuWrapper = submenu.closest(SELECTOR_SUBMENU)
+      this._closeSubmenu(submenu, submenuWrapper)
+    }
+  }
+
+  _closeSiblingSubmenus(currentSubmenuWrapper) {
+    // Find all sibling submenu wrappers and close their menus
+    const parent = currentSubmenuWrapper.parentNode
+    const siblingSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} > ${SELECTOR_MENU}.${CLASS_NAME_SHOW}`, parent)
+
+    for (const siblingMenu of siblingSubmenus) {
+      const siblingWrapper = siblingMenu.closest(SELECTOR_SUBMENU)
+      if (siblingWrapper !== currentSubmenuWrapper) {
+        this._closeSubmenu(siblingMenu, siblingWrapper)
+      }
+    }
+  }
+
+  _createSubmenuFloating(trigger, submenu, submenuWrapper) {
+    // Use the submenuWrapper as reference for positioning
+    const referenceElement = submenuWrapper
+
+    const updatePosition = async () => {
+      if (!submenu.isConnected) return
+
+      const placement = SUBMENU_PLACEMENT
+      const middleware = [
+        // Small negative offset to overlap slightly with parent menu
+        offset({ mainAxis: 0, crossAxis: -4 }),
+        // Flip to opposite side if not enough space
+        flip({
+          fallbackPlacements: isRTL() ?
+            ['right-start', 'left-end', 'right-end'] :
+            ['left-start', 'right-end', 'left-end']
+        }),
+        // Shift to keep in viewport
+        shift({ padding: 8 })
+      ]
+
+      const { x, y, placement: finalPlacement } = await computePosition(
+        referenceElement,
+        submenu,
+        { placement, middleware }
+      )
+
+      if (!submenu.isConnected) return
+
+      Object.assign(submenu.style, {
+        position: 'absolute',
+        left: `${x}px`,
+        top: `${y}px`,
+        margin: '0'
+      })
+
+      Manipulator.setDataAttribute(submenu, 'placement', finalPlacement)
+    }
+
+    // Initial position
+    updatePosition()
+
+    // Auto-update on scroll/resize
+    return autoUpdate(referenceElement, submenu, updatePosition)
+  }
+
+  _scheduleSubmenuClose(submenu, submenuWrapper) {
+    this._cancelSubmenuCloseTimeout(submenu)
+
+    const timeoutId = setTimeout(() => {
+      this._closeSubmenu(submenu, submenuWrapper)
+      this._submenuCloseTimeouts.delete(submenu)
+    }, this._config.submenuDelay)
+
+    this._submenuCloseTimeouts.set(submenu, timeoutId)
+  }
+
+  _cancelSubmenuCloseTimeout(submenu) {
+    const timeoutId = this._submenuCloseTimeouts.get(submenu)
+    if (timeoutId) {
+      clearTimeout(timeoutId)
+      this._submenuCloseTimeouts.delete(submenu)
+    }
+  }
+
+  _clearAllSubmenuTimeouts() {
+    for (const timeoutId of this._submenuCloseTimeouts.values()) {
+      clearTimeout(timeoutId)
+    }
+
+    this._submenuCloseTimeouts.clear()
+  }
+
+  // -------------------------------------------------------------------------
+  // Hover intent / Safe triangle
+  // -------------------------------------------------------------------------
+
+  _trackMousePosition(event) {
+    this._hoverIntentData = {
+      x: event.clientX,
+      y: event.clientY,
+      timestamp: Date.now()
+    }
+  }
+
+  _isMovingTowardSubmenu(event, submenu) {
+    if (!this._hoverIntentData) return false
+
+    const submenuRect = submenu.getBoundingClientRect()
+    const currentPos = { x: event.clientX, y: event.clientY }
+    const lastPos = { x: this._hoverIntentData.x, y: this._hoverIntentData.y }
+
+    // Create a triangle from current position to submenu edges
+    // The triangle represents the "safe zone" for diagonal movement
+    const isRtl = isRTL()
+
+    // Determine which edge of the submenu to target based on direction
+    const targetX = isRtl ? submenuRect.right : submenuRect.left
+    const topCorner = { x: targetX, y: submenuRect.top }
+    const bottomCorner = { x: targetX, y: submenuRect.bottom }
+
+    // Check if cursor is moving toward the submenu
+    // by checking if the current position is within the safe triangle
+    return this._pointInTriangle(currentPos, lastPos, topCorner, bottomCorner)
+  }
+
+  _pointInTriangle(point, v1, v2, v3) {
+    // Barycentric coordinate method to check if point is inside triangle
+    const sign = (p1, p2, p3) =>
+      (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y)
+
+    const d1 = sign(point, v1, v2)
+    const d2 = sign(point, v2, v3)
+    const d3 = sign(point, v3, v1)
+
+    const hasNeg = (d1 < 0) || (d2 < 0) || (d3 < 0)
+    const hasPos = (d1 > 0) || (d2 > 0) || (d3 > 0)
+
+    return !(hasNeg && hasPos)
+  }
+
+  // -------------------------------------------------------------------------
+  // Mobile mode
+  // -------------------------------------------------------------------------
+
+  _isMobileMode() {
+    return window.innerWidth < this._config.mobileBreakpoint
+  }
+
+  _openSubmenuMobile(trigger, submenu, submenuWrapper) {
+    // Add mobile class for slide-over animation
+    submenu.classList.add(CLASS_NAME_MOBILE)
+
+    // Create back button header if not exists
+    if (!submenu.querySelector('.dropdown-mobile-header')) {
+      const header = document.createElement('div')
+      header.className = 'dropdown-mobile-header'
+
+      const backBtn = document.createElement('button')
+      backBtn.type = 'button'
+      backBtn.className = 'dropdown-back-btn'
+      backBtn.setAttribute('aria-label', 'Back')
+
+      const title = document.createElement('span')
+      title.textContent = trigger.textContent.trim()
+
+      header.append(backBtn, title)
+      submenu.prepend(header)
+
+      // Back button handler
+      EventHandler.on(backBtn, 'click', () => {
+        this._closeSubmenuMobile(submenu, submenuWrapper, trigger)
+      })
+    }
+
+    // Set ARIA
+    trigger.setAttribute('aria-expanded', 'true')
+
+    // Show with animation
+    submenu.classList.add(CLASS_NAME_SHOW)
+    submenuWrapper.classList.add(CLASS_NAME_SHOW)
+
+    // Track in stack
+    this._mobileMenuStack.push({ submenu, submenuWrapper, trigger })
+
+    // Focus first item in submenu
+    requestAnimationFrame(() => {
+      const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
+      if (firstItem && !firstItem.closest('.dropdown-mobile-header')) {
+        firstItem.focus()
+      }
+    })
+  }
+
+  _closeSubmenuMobile(submenu, submenuWrapper, trigger) {
+    submenu.classList.remove(CLASS_NAME_SHOW)
+    submenuWrapper.classList.remove(CLASS_NAME_SHOW)
+
+    trigger.setAttribute('aria-expanded', 'false')
+
+    // Remove from stack
+    this._mobileMenuStack = this._mobileMenuStack.filter(
+      item => item.submenu !== submenu
+    )
+
+    // Focus back to trigger
+    trigger.focus()
+
+    // Clean up mobile class after animation
+    setTimeout(() => {
+      submenu.classList.remove(CLASS_NAME_MOBILE)
+      // Remove the header
+      const header = submenu.querySelector('.dropdown-mobile-header')
+      if (header) {
+        header.remove()
+      }
+    }, 200)
+  }
+
+  // -------------------------------------------------------------------------
+  // Keyboard navigation
+  // -------------------------------------------------------------------------
+
   _selectMenuItem({ key, target }) {
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(element => isVisible(element))
+    // Get items only from the current menu level (not nested submenus)
+    const currentMenu = target.closest(SELECTOR_MENU)
+    const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
+      .filter(element => isVisible(element))
 
     if (!items.length) {
       return
@@ -428,6 +841,113 @@ class Dropdown extends BaseComponent {
     // if target isn't included in items (e.g. when expanding the dropdown)
     // allow cycling to get the last item in case key equals ARROW_UP_KEY
     getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus()
+  }
+
+  _handleSubmenuKeydown(event) {
+    const { key, target } = event
+    const isRtl = isRTL()
+
+    // Determine the "enter submenu" and "exit submenu" keys based on RTL
+    const enterKey = isRtl ? ARROW_LEFT_KEY : ARROW_RIGHT_KEY
+    const exitKey = isRtl ? ARROW_RIGHT_KEY : ARROW_LEFT_KEY
+
+    // Check if target is a submenu trigger
+    const submenuWrapper = target.closest(SELECTOR_SUBMENU)
+    const isSubmenuTrigger = submenuWrapper && target.matches(SELECTOR_SUBMENU_TOGGLE)
+
+    // Handle Enter/Space on submenu trigger
+    if ((key === ENTER_KEY || key === SPACE_KEY) && isSubmenuTrigger) {
+      event.preventDefault()
+      event.stopPropagation()
+
+      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
+      if (submenu) {
+        if (this._isMobileMode()) {
+          this._openSubmenuMobile(target, submenu, submenuWrapper)
+        } else {
+          this._closeSiblingSubmenus(submenuWrapper)
+          this._openSubmenu(target, submenu, submenuWrapper)
+          // Focus first item in submenu
+          requestAnimationFrame(() => {
+            const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
+            if (firstItem) {
+              firstItem.focus()
+            }
+          })
+        }
+      }
+
+      return true
+    }
+
+    // Handle Right arrow (or Left in RTL) - enter submenu
+    if (key === enterKey && isSubmenuTrigger) {
+      event.preventDefault()
+      event.stopPropagation()
+
+      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
+      if (submenu) {
+        if (this._isMobileMode()) {
+          this._openSubmenuMobile(target, submenu, submenuWrapper)
+        } else {
+          this._closeSiblingSubmenus(submenuWrapper)
+          this._openSubmenu(target, submenu, submenuWrapper)
+          // Focus first item in submenu
+          requestAnimationFrame(() => {
+            const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
+            if (firstItem) {
+              firstItem.focus()
+            }
+          })
+        }
+      }
+
+      return true
+    }
+
+    // Handle Left arrow (or Right in RTL) - exit submenu
+    if (key === exitKey) {
+      const currentMenu = target.closest(SELECTOR_MENU)
+      const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
+
+      if (parentSubmenuWrapper) {
+        event.preventDefault()
+        event.stopPropagation()
+
+        const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)
+
+        if (this._isMobileMode() && this._mobileMenuStack.length > 0) {
+          const stackItem = this._mobileMenuStack[this._mobileMenuStack.length - 1]
+          this._closeSubmenuMobile(stackItem.submenu, stackItem.submenuWrapper, stackItem.trigger)
+        } else {
+          this._closeSubmenu(currentMenu, parentSubmenuWrapper)
+          if (parentTrigger) {
+            parentTrigger.focus()
+          }
+        }
+
+        return true
+      }
+    }
+
+    // Handle Home/End keys
+    if (key === HOME_KEY || key === END_KEY) {
+      event.preventDefault()
+      event.stopPropagation()
+
+      const currentMenu = target.closest(SELECTOR_MENU)
+      const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
+        .filter(element => isVisible(element))
+
+      if (items.length) {
+        const targetItem = key === HOME_KEY ? items[0] : items[items.length - 1]
+        targetItem.focus()
+      }
+
+      return true
+    }
+
+    return false
   }
 
   static clearMenus(event) {
@@ -469,22 +989,25 @@ class Dropdown extends BaseComponent {
   }
 
   static dataApiKeydownHandler(event) {
-    // If not an UP | DOWN | ESCAPE key => not a dropdown command
-    // If input/textarea && if key is other than ESCAPE => not a dropdown command
-
+    // If not a relevant key => not a dropdown command
     const isInput = /input|textarea/i.test(event.target.tagName)
     const isEscapeEvent = event.key === ESCAPE_KEY
     const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
+    const isLeftOrRightEvent = [ARROW_LEFT_KEY, ARROW_RIGHT_KEY].includes(event.key)
+    const isHomeOrEndEvent = [HOME_KEY, END_KEY].includes(event.key)
+    const isEnterOrSpaceEvent = [ENTER_KEY, SPACE_KEY].includes(event.key)
 
-    if (!isUpOrDownEvent && !isEscapeEvent) {
+    // Allow Enter/Space only on submenu triggers
+    const isSubmenuTrigger = event.target.matches(SELECTOR_SUBMENU_TOGGLE)
+
+    if (!isUpOrDownEvent && !isEscapeEvent && !isLeftOrRightEvent && !isHomeOrEndEvent &&
+        !(isEnterOrSpaceEvent && isSubmenuTrigger)) {
       return
     }
 
     if (isInput && !isEscapeEvent) {
       return
     }
-
-    event.preventDefault()
 
     // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ?
@@ -493,17 +1016,53 @@ class Dropdown extends BaseComponent {
         SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
         SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode))
 
+    if (!getToggleButton) return
+
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
+    // Handle submenu navigation first
+    if (isLeftOrRightEvent || isHomeOrEndEvent || (isEnterOrSpaceEvent && isSubmenuTrigger)) {
+      if (instance._handleSubmenuKeydown(event)) {
+        return
+      }
+    }
+
+    // Handle Up/Down navigation
     if (isUpOrDownEvent) {
+      event.preventDefault()
       event.stopPropagation()
       instance.show()
       instance._selectMenuItem(event)
       return
     }
 
-    if (instance._isShown()) { // else is escape and we check if it is shown
+    // Handle Escape
+    if (isEscapeEvent && instance._isShown()) {
+      event.preventDefault()
       event.stopPropagation()
+
+      // If in a submenu, close just that submenu
+      const currentMenu = event.target.closest(SELECTOR_MENU)
+      const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
+
+      if (parentSubmenuWrapper && instance._openSubmenus.size > 0) {
+        // Check if we're in mobile mode with stack
+        if (instance._isMobileMode() && instance._mobileMenuStack.length > 0) {
+          const stackItem = instance._mobileMenuStack[instance._mobileMenuStack.length - 1]
+          instance._closeSubmenuMobile(stackItem.submenu, stackItem.submenuWrapper, stackItem.trigger)
+          return
+        }
+
+        const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)
+        instance._closeSubmenu(currentMenu, parentSubmenuWrapper)
+        if (parentTrigger) {
+          parentTrigger.focus()
+        }
+
+        return
+      }
+
+      // Otherwise close the whole dropdown
       instance.hide()
       getToggleButton.focus()
     }

@@ -447,6 +447,114 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     </form>
   </div>`} />
 
+## Submenus
+
+Create nested dropdown menus with the `.dropdown-submenu` wrapper class. Submenus support hover and click activation, keyboard navigation, viewport-aware positioning, and mobile slide-over behavior.
+
+### Basic submenu
+
+Wrap a `.dropdown-item` trigger and a nested `.dropdown-menu` inside a `.dropdown-submenu` element.
+
+<Example code={`<div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown with submenu
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li class="dropdown-divider"></li>
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">More options</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Sub-action 1</a></li>
+          <li><a class="dropdown-item" href="#">Sub-action 2</a></li>
+          <li><a class="dropdown-item" href="#">Sub-action 3</a></li>
+        </ul>
+      </li>
+      <li><a class="dropdown-item" href="#">Something else</a></li>
+    </ul>
+  </div>`} />
+
+### Nested submenus
+
+Submenus can be nested to multiple levels. Each level opens to the side and flips direction when there's not enough viewport space.
+
+<Example code={`<div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Multi-level menu
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Level 1 action</a></li>
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">Level 1 submenu</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Level 2 action</a></li>
+          <li class="dropdown-submenu">
+            <button class="dropdown-item" type="button">Level 2 submenu</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Level 3 action A</a></li>
+              <li><a class="dropdown-item" href="#">Level 3 action B</a></li>
+            </ul>
+          </li>
+          <li><a class="dropdown-item" href="#">Another level 2</a></li>
+        </ul>
+      </li>
+      <li><a class="dropdown-item" href="#">Another level 1</a></li>
+    </ul>
+  </div>`} />
+
+### Submenu keyboard navigation
+
+Submenus are fully keyboard accessible:
+
+- <kbd>↓</kbd> <kbd>↑</kbd> — Navigate within the current menu level
+- <kbd>→</kbd> — Enter a submenu (or <kbd>←</kbd> in RTL)
+- <kbd>←</kbd> — Exit a submenu and return to parent (or <kbd>→</kbd> in RTL)
+- <kbd>Enter</kbd> or <kbd>Space</kbd> — Activate item or open submenu
+- <kbd>Esc</kbd> — Close current submenu or entire dropdown
+- <kbd>Home</kbd> <kbd>End</kbd> — Jump to first/last item
+
+### Multiple submenus
+
+When multiple submenu triggers exist at the same level, opening one automatically closes the others.
+
+<Example code={`<div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Multiple submenus
+    </button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">File</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">New</a></li>
+          <li><a class="dropdown-item" href="#">Open</a></li>
+          <li><a class="dropdown-item" href="#">Save</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">Edit</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Cut</a></li>
+          <li><a class="dropdown-item" href="#">Copy</a></li>
+          <li><a class="dropdown-item" href="#">Paste</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">View</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Zoom In</a></li>
+          <li><a class="dropdown-item" href="#">Zoom Out</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Preferences</a></li>
+    </ul>
+  </div>`} />
+
+### Mobile behavior
+
+On viewports narrower than `768px` (configurable via `mobileBreakpoint`), submenus use a slide-over pattern with a back button for navigation instead of floating positioning.
+
 ## Dropdown options
 
 Use `data-bs-offset` or `data-bs-reference` to change the location of the dropdown.
@@ -630,6 +738,9 @@ The dropdown plugin requires the following JavaScript files if you're building B
 | `floatingConfig` | null, object, function | `null` | To change Bootstrap's default Floating UI config, see [Floating UI's configuration](https://floating-ui.com/docs/computePosition). When a function is used to create the Floating UI configuration, it's called with an object that contains the Bootstrap's default Floating UI configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Floating UI. |
 | `placement` | string | `'bottom-start'` | Placement of the dropdown menu. Can be any valid Floating UI placement: `'top'`, `'top-start'`, `'top-end'`, `'bottom'`, `'bottom-start'`, `'bottom-end'`, `'right'`, `'right-start'`, `'right-end'`, `'left'`, `'left-start'`, `'left-end'`. Supports responsive prefixes like `'bottom-start md:bottom-end lg:right'` to change placement at different breakpoints. |
 | `reference` | string, element, object | `'toggle'` | Reference element of the dropdown menu. Accepts the values of `'toggle'`, `'parent'`, an HTMLElement reference or an object providing `getBoundingClientRect`. For more information refer to Floating UI's [virtual elements docs](https://floating-ui.com/docs/virtual-elements). |
+| `submenuTrigger` | string | `'both'` | How submenus are triggered. Use `'click'` for click only, `'hover'` for hover only, or `'both'` for both click and hover activation. |
+| `submenuDelay` | number | `100` | Delay in milliseconds before closing a submenu when the mouse leaves. Provides a grace period for diagonal mouse movement toward the submenu. |
+| `mobileBreakpoint` | number | `768` | Viewport width in pixels below which submenus use slide-over mobile mode instead of floating positioning. |
 </BsTable>
 
 #### Using function with `floatingConfig`
