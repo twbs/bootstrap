@@ -1,0 +1,154 @@
+---
+title: Datepicker
+description: A flexible date picker component powered by vanilla-calendar-pro, with Bootstrap styling and data attribute support.
+toc: true
+---
+
+## Overview
+
+The Bootstrap Datepicker is a wrapper around [vanilla-calendar-pro](https://vanilla-calendar.pro/) that provides a consistent, accessible date selection experience. It supports light/dark themes, input binding, and flexible configuration via data attributes or JavaScript.
+
+<Example code={`<input type="text" class="form-control" data-bs-toggle="datepicker" placeholder="Select a date">`} />
+
+## How it works
+
+- Add `data-bs-toggle="datepicker"` to any `<input>` element to enable the datepicker
+- When focused, the calendar popup appears below the input
+- Selecting a date updates the input value and closes the picker
+- The picker respects Bootstrap's color modes (`data-bs-theme`)
+
+## Examples
+
+### Basic input datepicker
+
+The simplest use case: add the data attribute to a text input.
+
+<Example code={`<div class="mb-3">
+  <label for="datepicker1" class="form-label">Select date</label>
+  <input type="text" class="form-control" id="datepicker1" data-bs-toggle="datepicker" placeholder="Click to select a date">
+</div>`} />
+
+### With min and max dates
+
+Restrict the selectable date range using `data-bs-date-min` and `data-bs-date-max`.
+
+<Example code={`<div class="mb-3">
+  <label for="datepicker2" class="form-label">Event date (2025 only)</label>
+  <input type="text" class="form-control" id="datepicker2" data-bs-toggle="datepicker" data-bs-date-min="2025-01-01" data-bs-date-max="2025-12-31" placeholder="Select a date in 2025">
+</div>`} />
+
+### Multiple date selection
+
+Enable multiple date selection with `data-bs-selection-mode="multiple"`.
+
+<Example code={`<div class="mb-3">
+  <label for="datepicker3" class="form-label">Select multiple dates</label>
+  <input type="text" class="form-control" id="datepicker3" data-bs-toggle="datepicker" data-bs-selection-mode="multiple" placeholder="Click to select dates">
+</div>`} />
+
+### Date range selection
+
+Select a range of dates with `data-bs-selection-mode="multiple-ranged"`.
+
+<Example code={`<div class="mb-3">
+  <label for="datepicker4" class="form-label">Select date range</label>
+  <input type="text" class="form-control" id="datepicker4" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" placeholder="Select start and end dates">
+</div>`} />
+
+### Week numbers
+
+Show week numbers alongside dates with `data-bs-show-week-numbers="true"`.
+
+<Example code={`<div class="mb-3">
+  <label for="datepicker5" class="form-label">With week numbers</label>
+  <input type="text" class="form-control" id="datepicker5" data-bs-toggle="datepicker" data-bs-show-week-numbers="true" placeholder="Select a date">
+</div>`} />
+
+### First day of week
+
+Set the first day of the week (0 = Sunday, 1 = Monday, etc.) with `data-bs-first-weekday`.
+
+<Example code={`<div class="mb-3">
+  <label for="datepicker6" class="form-label">Week starts on Sunday</label>
+  <input type="text" class="form-control" id="datepicker6" data-bs-toggle="datepicker" data-bs-first-weekday="0" placeholder="Select a date">
+</div>`} />
+
+## Dark mode
+
+The datepicker automatically adapts to Bootstrap's color modes. When `data-bs-theme="dark"` is set on a parent element or the `<html>` tag, the picker displays in dark mode.
+
+<Example code={`<div data-bs-theme="dark" class="p-3 bg-dark rounded">
+  <label for="datepickerDark" class="form-label text-light">Dark mode datepicker</label>
+  <input type="text" class="form-control" id="datepickerDark" data-bs-toggle="datepicker" placeholder="Select a date">
+</div>`} />
+
+## Usage
+
+### Via data attributes
+
+Add `data-bs-toggle="datepicker"` to any input element to initialize it as a datepicker.
+
+```html
+<input type="text" class="form-control" data-bs-toggle="datepicker">
+```
+
+### Via JavaScript
+
+Initialize datepickers programmatically:
+
+```js
+const datepickerEl = document.getElementById('myDatepicker')
+const datepicker = new bootstrap.Datepicker(datepickerEl, {
+  selectionMode: 'single',
+  firstWeekday: 1
+})
+```
+
+### Options
+
+<BsTable>
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `dateMin` | string, number, Date | `null` | Minimum selectable date. Format: `YYYY-MM-DD` |
+| `dateMax` | string, number, Date | `null` | Maximum selectable date. Format: `YYYY-MM-DD` |
+| `firstWeekday` | number | `1` | First day of week (0 = Sunday, 1 = Monday, etc.) |
+| `locale` | string | `'default'` | Locale for date formatting (e.g., `'en-US'`, `'de-DE'`) |
+| `selectedDates` | array | `[]` | Pre-selected dates in `YYYY-MM-DD` format |
+| `selectionMode` | string | `'single'` | Selection mode: `'single'`, `'multiple'`, or `'multiple-ranged'` |
+| `showWeekNumbers` | boolean | `false` | Whether to show week numbers |
+| `positionToInput` | string | `'auto'` | Calendar position relative to input: `'auto'`, `'center'`, `'left'`, `'right'` |
+</BsTable>
+
+### Methods
+
+<BsTable>
+| Method | Description |
+| --- | --- |
+| `show()` | Shows the datepicker calendar |
+| `hide()` | Hides the datepicker calendar |
+| `toggle()` | Toggles the datepicker visibility |
+| `getSelectedDates()` | Returns an array of selected dates in `YYYY-MM-DD` format |
+| `setSelectedDates(dates)` | Sets the selected dates. Expects an array of `YYYY-MM-DD` strings |
+| `dispose()` | Destroys the datepicker instance |
+| `getInstance(element)` | Static method to get the datepicker instance from a DOM element |
+| `getOrCreateInstance(element)` | Static method to get or create a datepicker instance |
+</BsTable>
+
+### Events
+
+<BsTable>
+| Event | Description |
+| --- | --- |
+| `show.bs.datepicker` | Fires immediately when the `show` method is called |
+| `shown.bs.datepicker` | Fires when the datepicker has been made visible |
+| `hide.bs.datepicker` | Fires immediately when the `hide` method is called |
+| `hidden.bs.datepicker` | Fires when the datepicker has been hidden |
+| `change.bs.datepicker` | Fires when a date is selected. Event includes `dates` (array) and `event` properties |
+</BsTable>
+
+```js
+const datepickerEl = document.getElementById('myDatepicker')
+datepickerEl.addEventListener('change.bs.datepicker', event => {
+  console.log('Selected dates:', event.dates)
+})
+```
