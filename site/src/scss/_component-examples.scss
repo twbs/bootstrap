@@ -310,13 +310,13 @@
 
     .position-relative {
       height: 200px;
-      background-color: var(--bs-tertiary-bg);
+      background-color: var(--bs-bg-2);
     }
 
     .position-absolute {
       width: 2rem;
       height: 2rem;
-      background-color: var(--bs-body-color);
+      background-color: var(--bs-fg-2);
       @include border-radius();
     }
   }

@@ -57,10 +57,10 @@ $progress-bar-transition:           width .6s ease !default;
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
-    color: var(--progress-bar-color);
+    color: var(--theme-contrast, var(--progress-bar-color));
     text-align: center;
     white-space: nowrap;
-    background-color: var(--progress-bar-bg);
+    background-color: var(--theme-bg, var(--progress-bar-bg));
     @include transition(var(--progress-bar-transition));
   }
 

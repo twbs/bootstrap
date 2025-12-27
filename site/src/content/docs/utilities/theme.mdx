@@ -1,0 +1,109 @@
+---
+title: Theme
+description: Combine one of three theme utilities with our theme color classes to set `color` and `background-color` pairings on any element, just like component variants.
+toc: true
+utility:
+  - theme-contrast
+  - theme-subtle
+  - theme-muted
+  - theme-border
+---
+
+import { getData } from '@libs/data'
+
+## Overview
+
+Take any of our theme color classes and add `.theme-contrast`, `.theme-subtle`, or `.theme-muted` to set a predefined `color and `background-color` pairing. Then optionally add `.theme-border` to set a predefined border color. For more information on how theme colors work, see the [Theme documentation]([[docsref:/customize/theme]]) in our Customize section.
+
+
+### Contrast
+
+Contrast pairs the `bg` theme token with the `contrast` text color for maximum readability. This is ideal for high-emphasis elements with solid backgrounds.
+
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-2 theme-${themeColor.name} theme-contrast">.theme-${themeColor.name} .theme-contrast</div>`)} />
+
+### Subtle
+
+Subtle pairs the `bg-subtle` theme token with the `text` text color for a lower-contrast, more subtle appearance. This combination will automatically adjust to the current color mode.
+
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-2 theme-${themeColor.name} theme-subtle">.theme-${themeColor.name} .theme-subtle</div>`)} />
+
+And with borders:
+
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-2 theme-${themeColor.name} theme-subtle theme-border">.theme-${themeColor.name} .theme-subtle</div>`)} />
+
+### Muted
+
+Muted pairs the `bg-muted` theme token with the `text-emphasis` text color for a lower-contrast, more muted appearance. Like subtle, this combination will automatically adjust to the current color mode.
+
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-2 theme-${themeColor.name} theme-muted">.theme-${themeColor.name} .theme-muted</div>`)} />
+
+And with borders:
+
+<Example class="d-grid gap-2" code={getData('theme-colors').map((themeColor) => `<div class="p-2 theme-${themeColor.name} theme-muted theme-border">.theme-${themeColor.name} .theme-muted</div>`)} />
+
+## Comparison
+
+Here's a side-by-side comparison of all three styles for each theme color:
+
+<Example code={getData('theme-colors').map((themeColor) => `<div class="d-flex gap-2 mb-2">
+    <div class="theme-${themeColor.name} theme-contrast p-3 flex-fill text-center rounded">${themeColor.title} contrast</div>
+    <div class="theme-${themeColor.name} theme-subtle p-3 flex-fill text-center rounded">${themeColor.title} subtle</div>
+    <div class="theme-${themeColor.name} theme-muted p-3 flex-fill text-center rounded">${themeColor.title} muted</div>
+  </div>`)} />
+
+## With components
+
+Theme utilities work great with components that support theming. Apply the theme color to a container and use theme style classes on individual elements.
+
+<Example code={`<div class="theme-primary">
+    <div class="d-flex gap-2 mb-3">
+      <span class="badge theme-contrast">Contrast badge</span>
+      <span class="badge theme-subtle">Subtle badge</span>
+      <span class="badge theme-muted">Muted badge</span>
+    </div>
+  </div>
+  <div class="theme-danger">
+    <div class="d-flex gap-2 mb-3">
+      <span class="badge theme-contrast">Contrast badge</span>
+      <span class="badge theme-subtle">Subtle badge</span>
+      <span class="badge theme-muted">Muted badge</span>
+    </div>
+  </div>`} />
+
+You can also mix theme colors within the same container by applying different `.theme-{color}` classes to child elements:
+
+<Example code={`<div class="d-flex gap-2">
+    <div class="theme-success theme-contrast p-3 rounded">Success</div>
+    <div class="theme-warning theme-contrast p-3 rounded">Warning</div>
+    <div class="theme-danger theme-contrast p-3 rounded">Danger</div>
+  </div>`} />
+
+## CSS
+
+### Generated CSS
+
+The theme style classes generate the following CSS:
+
+```css
+.theme-contrast {
+  background-color: var(--theme-bg);
+  color: var(--theme-contrast);
+}
+
+.theme-subtle {
+  background-color: var(--theme-bg-subtle);
+  color: var(--theme-text);
+}
+
+.theme-muted {
+  background-color: var(--theme-bg-muted);
+  color: var(--theme-text-emphasis);
+}
+```
+
+### Sass utilities API
+
+Theme utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+<ScssDocs name="utils-theme" file="scss/_utilities.scss" />
