@@ -249,14 +249,14 @@
   // Links
 
   a {
-    color: var(--link-color);
+    color: var(--theme-text, var(--link-color));
     text-decoration: var(--link-decoration);
     text-underline-offset: $link-underline-offset;
 
     &:hover {
       // --link-color: var(--link-hover-color);
       // --link-decoration: var(--link-hover-decoration, var(--link-decoration));
-      color: var(--link-hover-color);
+      color: var(--theme-text-emphasis, var(--link-hover-color));
       text-decoration: var(--link-hover-decoration, var(--link-decoration));
     }
   }

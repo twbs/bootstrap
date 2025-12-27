@@ -15,17 +15,21 @@
     > [class*="btn-"] {
       position: relative;
       flex: 1 1 auto;
+
+      &:hover {
+        z-index: 1;
+      }
     }
 
-    // Bring the hover, focused, and "active" buttons to the front to overlay
-    // the borders properly
     > .btn-check:has(input:checked),
-    > .btn-check:has(input:focus),
-    > [class*="btn-"]:hover,
-    > [class*="btn-"]:focus,
     > [class*="btn-"]:active,
     > [class*="btn-"].active {
-      z-index: 1;
+      z-index: 2;
+    }
+
+    > .btn-check:has(input:focus),
+    > [class*="btn-"]:focus {
+      z-index: 3;
     }
   }
 

@@ -337,30 +337,6 @@ $mark-color:                  $body-color !default;
 $mark-bg:                     var(--yellow-100) !default;
 // scss-docs-end type-variables
 
-
-// Buttons + Forms
-//
-// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
-
-// scss-docs-start input-btn-variables
-$input-btn-padding-y:         .375rem !default;
-$input-btn-padding-x:         .75rem !default;
-$input-btn-font-family:       null !default;
-$input-btn-font-size:         $font-size-base !default;
-$input-btn-line-height:       $line-height-base !default;
-
-$input-btn-padding-y-sm:      .25rem !default;
-$input-btn-padding-x-sm:      .5rem !default;
-$input-btn-font-size-sm:      $font-size-sm !default;
-
-$input-btn-padding-y-lg:      .5rem !default;
-$input-btn-padding-x-lg:      1rem !default;
-$input-btn-font-size-lg:      $font-size-lg !default;
-
-$input-btn-border-width:      var(--border-width) !default;
-// scss-docs-end input-btn-variables
-
-
 // Z-index master list
 //
 // Warning: Avoid customizing these values. They're used for a bird's eye view

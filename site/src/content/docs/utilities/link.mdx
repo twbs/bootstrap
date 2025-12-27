@@ -38,10 +38,10 @@ You can even change the opacity level on hover.
 
 ## Colored links
 
-[Colored link helpers]([[docsref:/helpers/colored-links/]]) have been updated to pair with our link utilities. Use the new utilities to modify the link opacity.
+Links can be colored using the theme color utilities.
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<p><a href="#" class="link-${themeColor.name} underline-offset-2 underline-20 underline-100-hover">${themeColor.title} link</a></p>`)
+  ...getData('theme-colors').map((themeColor) => `<p><a href="#" class="theme-${themeColor.name} underline-offset-2 underline-20 underline-100-hover">${themeColor.title} link</a></p>`)
 ]} />
 
 <Details name="warning-color-assistive-technologies" />
