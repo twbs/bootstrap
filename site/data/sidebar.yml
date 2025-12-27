@@ -110,7 +110,6 @@
   icon_color: orange
   pages:
     - title: Color & background
-    - title: Colored links
     - title: Focus ring
     - title: Icon link
     - title: Position

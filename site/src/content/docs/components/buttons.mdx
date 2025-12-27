@@ -14,10 +14,6 @@ Buttons have a standard `.btn` class that sets up basic styles such as padding a
 
 The `.btn` class is intended to be a starting point for your own custom button styles, while our provided button variants  used in conjunction with our button variants, or to serve as a basis for your own custom styles.
 
-<Callout type="warning">
-When using `.btn` without a modifier, be sure to add some explicit `:focus-visible` styles.
-</Callout>
-
 ## Playground
 
 Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control. Combined with our utilities, you have a very powerful set of defaults to choose from.
@@ -26,16 +22,24 @@ Bootstrap includes several button variants, each serving its own semantic purpos
 
 ## Variants
 
-Compare all variants at once:
+Compare all button variants and styles at once:
 
-<Example class="bd-example-buttons" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
-<button type="button" class="btn-outline theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
-<button type="button" class="btn-subtle theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
-<button type="button" class="btn-text theme-${themeColor.name} justify-self-start">${themeColor.title}</button>
-`), `
-<button type="button" class="btn btn-link">Link</button>`]} />
+<Example class="bd-example-buttons justify-items-start" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid theme-${themeColor.name}">${themeColor.title}</button>
+<button type="button" class="btn-outline theme-${themeColor.name}">${themeColor.title}</button>
+<button type="button" class="btn-subtle theme-${themeColor.name}">${themeColor.title}</button>
+<button type="button" class="btn-text theme-${themeColor.name}">${themeColor.title}</button>`)]} />
 
 <Details name="warning-color-assistive-technologies" />
+
+## Link buttons
+
+Use the `.btn-link` class to create a button that looks like a link.
+
+<Example code={`<button type="button" class="btn btn-link">Link</button>`} />
+
+Link buttons can also be styled with the theme colors.
+
+<Example code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-link theme-${themeColor.name}">${themeColor.title}</button>`)]} />
 
 ## Styled buttons
 
@@ -57,10 +61,6 @@ The gradient and shadow can be customized via CSS variables:
 | `--bs-btn-shadow` | Resting state shadow |
 | `--bs-btn-active-shadow` | Pressed/active state shadow |
 </BsTable>
-
-## Disable text wrapping
-
-If you don’t want the button text to wrap, you can add the `.text-nowrap` class to the button. In Sass, you can set `$btn-white-space: nowrap` to disable text wrapping for each button.
 
 ## Button tags
 
@@ -125,16 +125,14 @@ Combine with size classes for different icon button sizes:
 
 ## Disabled state
 
-Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element. Disabled buttons have `pointer-events: none` applied to, preventing hover and active states from triggering, and some additional styling to indicate the disabled state.
+Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element. Disabled buttons have `pointer-events: none`, preventing hover and active states from triggering, and some additional styling to indicate the disabled state.
 
 <Example code={`<button type="button" class="btn-solid theme-primary" disabled>Primary button</button>
 <button type="button" class="btn-solid theme-secondary" disabled>Button</button>
 <button type="button" class="btn-outline theme-primary" disabled>Primary button</button>
 <button type="button" class="btn-outline theme-secondary" disabled>Button</button>`} />
 
-### Disabled links
-
-Disabled buttons using the `<a>` element behave a bit different, and if you need to keep the `href` attribute, you may need additional HTML to fully disable the link functionality. Use the `.disabled` class instead of the attribute on `<a>` elements to make them visually appear disabled.
+Disabled buttons using the `<a>` element behave a bit different. Use the `.disabled` class instead of the attribute on `<a>` elements to make them visually appear disabled. If you need to keep the `href` attribute, you may need additional HTML to fully disable the link functionality.
 
 <Example code={`<a class="btn-solid theme-primary disabled" role="button" aria-disabled="true">Primary link</a>
 <a class="btn-solid theme-secondary disabled" role="button" aria-disabled="true">Link</a>`} />

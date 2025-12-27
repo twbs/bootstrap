@@ -5,6 +5,8 @@ aliases: "/docs/[[config:docs_version]]/content/"
 toc: true
 ---
 
+import { getData } from '@libs/data'
+
 ## Approach
 
 Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
@@ -103,9 +105,13 @@ Links have a default `color` and underline applied. While links change on `:hove
 
 <Example code={`<a href="#">This is an example link</a>`} />
 
-As of v5.3.x, link `color` is set using `rgba()` and new `-rgb` CSS variables, allowing for easy customization of link color opacity. Change the link color opacity with the `--bs-link-opacity` CSS variable:
+Use [`.link-{%}`]([[docsref:/utilities/link/#link-opacity]]) utilities to change the link color opacity.
 
-<Example code={`<a href="#" style="--bs-link-opacity: .5">This is an example link</a>`} />
+<Example code={`<a href="#" class="link-50">This is an example link</a>`} />
+
+Use the theme utility classes to change the link color.
+
+<Example code={[...getData('theme-colors').map((themeColor) => `<a href="#" class="theme-${themeColor.name}">${themeColor.title} link</a>`)]} />
 
 Placeholder links—those without an `href`—are targeted with a more specific selector and have their `color` and `text-decoration` reset to their default values.
 

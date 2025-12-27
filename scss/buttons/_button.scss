@@ -138,7 +138,7 @@ $btn-variant-selectors: () !default;
     --btn-min-height: 2.25rem;
     --btn-padding-x: #{$btn-padding-x};
     --btn-padding-y: #{$btn-padding-y};
-    --btn-font-family: #{$btn-font-family};
+    // --btn-font-family: #{$btn-font-family};
     --btn-font-size: #{$btn-font-size};
     --btn-font-weight: #{$btn-font-weight};
     --btn-line-height: #{$btn-line-height};
@@ -156,7 +156,7 @@ $btn-variant-selectors: () !default;
     justify-content: center;
     min-height: var(--btn-min-height);
     padding: var(--btn-padding-y) var(--btn-padding-x);
-    font-family: var(--btn-font-family);
+    // font-family: var(--btn-font-family);
     font-size: var(--btn-font-size);
     font-weight: var(--btn-font-weight);
     line-height: var(--btn-line-height);
@@ -300,12 +300,15 @@ $btn-variant-selectors: () !default;
     --btn-bg: transparent;
     --btn-border-color: transparent;
     --btn-hover-color: #{$btn-link-hover-color};
+    --btn-hover-bg: transparent;
     --btn-hover-border-color: transparent;
     --btn-active-color: #{$btn-link-hover-color};
+    --btn-active-bg: transparent;
     --btn-active-border-color: transparent;
     --btn-disabled-color: #{$btn-link-disabled-color};
     --btn-disabled-border-color: transparent;
 
+    color: var(--theme-text, var(--btn-color));
     text-decoration: var(--link-decoration);
 
     @if $enable-gradients {
@@ -313,11 +316,11 @@ $btn-variant-selectors: () !default;
     }
 
     &:focus-visible {
-      color: var(--btn-color);
+      color: var(--theme-text, var(--btn-color));
     }
 
     &:hover {
-      color: var(--btn-hover-color);
+      color: var(--theme-text-emphasis, var(--btn-hover-color));
     }
 
     // No need for an active state here
