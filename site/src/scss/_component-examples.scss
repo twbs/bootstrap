@@ -45,6 +45,13 @@
     }
   }
 
+  li > .bd-code-snippet {
+    margin-block: 1.25rem;
+  }
+  li:last-child > .bd-code-snippet:last-child {
+    margin-bottom: 0;
+  }
+
   .highlight-toolbar {
     padding-block: .375rem;
     padding-inline-start: var(--bd-example-padding);
