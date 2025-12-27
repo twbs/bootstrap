@@ -50,12 +50,10 @@ By adding a `.bg-gradient` class, a linear gradient is added as background image
 
 Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-gradient);`.
 
-{getData('theme-colors').map((themeColor) => {
-  return (
-    <div class={`p-3 mb-2 bg-${themeColor.name} bg-gradient text-white`}>.bg-{themeColor.name}.bg-gradient</div>
-  )
-})}
-<div class="p-3 mb-2 bg-black bg-gradient text-white">.bg-black.bg-gradient</div>
+<Example class="d-flex flex-column gap-2" code={[
+  ...getData('theme-colors').map((themeColor) => `<div class="p-3 bg-${themeColor.name} bg-gradient fg-contrast-${themeColor.name}">.bg-${themeColor.name}.bg-gradient</div>`),
+  `<div class="p-3 bg-black bg-gradient fg-contrast">.bg-black.bg-gradient</div>`
+]} />
 
 ## Opacity
 

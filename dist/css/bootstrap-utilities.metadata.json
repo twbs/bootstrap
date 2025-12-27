@@ -19,7 +19,7 @@
     },
     "aspect-ratio": {
       "class": "ratio",
-      "property": "--bs-ratio",
+      "property": "--ratio",
       "classes": [
         "ratio-auto",
         "ratio-1x1",
@@ -120,7 +120,7 @@
     },
     "focus-ring": {
       "class": "focus-ring",
-      "property": "--bs-focus-ring-color",
+      "property": "--focus-ring-color",
       "classes": [
         "focus-ring-primary",
         "focus-ring-accent",
@@ -522,7 +522,7 @@
     },
     "grid-column-counts": {
       "class": "grid-cols",
-      "property": "--bs-columns",
+      "property": "--columns",
       "classes": [
         "grid-cols-3",
         "grid-cols-4",
@@ -918,6 +918,19 @@
         "fg-emphasis-secondary"
       ]
     },
+    "fg-contrast": {
+      "class": "fg-contrast",
+      "classes": [
+        "fg-contrast-primary",
+        "fg-contrast-accent",
+        "fg-contrast-success",
+        "fg-contrast-danger",
+        "fg-contrast-warning",
+        "fg-contrast-info",
+        "fg-contrast-inverse",
+        "fg-contrast-secondary"
+      ]
+    },
     "fg-opacity": {
       "class": "fg",
       "property": "color",
@@ -932,19 +945,6 @@
         "fg-80",
         "fg-90",
         "fg-100"
-      ]
-    },
-    "fg-contrast": {
-      "class": "fg-contrast",
-      "classes": [
-        "fg-contrast-primary",
-        "fg-contrast-accent",
-        "fg-contrast-success",
-        "fg-contrast-danger",
-        "fg-contrast-warning",
-        "fg-contrast-info",
-        "fg-contrast-inverse",
-        "fg-contrast-secondary"
       ]
     },
     "link-opacity": {
@@ -1075,6 +1075,31 @@
         "bg-80",
         "bg-90",
         "bg-100"
+      ]
+    },
+    "theme-contrast": {
+      "class": "theme-contrast",
+      "classes": [
+        "theme-contrast"
+      ]
+    },
+    "theme-subtle": {
+      "class": "theme-subtle",
+      "classes": [
+        "theme-subtle"
+      ]
+    },
+    "theme-muted": {
+      "class": "theme-muted",
+      "classes": [
+        "theme-muted"
+      ]
+    },
+    "theme-border": {
+      "class": "theme-border",
+      "property": "border",
+      "classes": [
+        "theme-border"
       ]
     },
     "gradient": {
