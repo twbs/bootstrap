@@ -735,11 +735,6 @@ $utilities: map.merge(
       class: fg-emphasis,
       values: theme-color-values("text-emphasis"),
     ),
-    "fg-opacity": (
-      class: fg,
-      property: color,
-      values: theme-opacity-values(--fg)
-    ),
     "fg-contrast": (
       property: (
         "--fg": null,
@@ -747,6 +742,11 @@ $utilities: map.merge(
       ),
       class: fg-contrast,
       values: theme-color-values("contrast"),
+    ),
+    "fg-opacity": (
+      class: fg,
+      property: color,
+      values: theme-opacity-values(--fg)
     ),
     // scss-docs-end utils-color
     // scss-docs-start utils-links
@@ -824,6 +824,38 @@ $utilities: map.merge(
       values: theme-opacity-values(--bg)
     ),
     // scss-docs-end utils-bg-color
+    // scss-docs-start utils-theme
+    // Theme style utilities - pair with .theme-{color} to apply coordinated bg + text colors
+    "theme-contrast": (
+      property: (
+        "background-color": var(--theme-bg),
+        "color": var(--theme-contrast)
+      ),
+      class: theme-contrast,
+      values: (null: null)
+    ),
+    "theme-subtle": (
+      property: (
+        "background-color": var(--theme-bg-subtle),
+        "color": var(--theme-text)
+      ),
+      class: theme-subtle,
+      values: (null: null)
+    ),
+    "theme-muted": (
+      property: (
+        "background-color": var(--theme-bg-muted),
+        "color": var(--theme-text-emphasis)
+      ),
+      class: theme-muted,
+      values: (null: null)
+    ),
+    "theme-border": (
+      property: border,
+      class: theme-border,
+      values: (null: var(--border-width) solid var(--theme-border))
+    ),
+    // scss-docs-end utils-theme
     "gradient": (
       property: background-image,
       class: bg,

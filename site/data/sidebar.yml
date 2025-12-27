@@ -109,7 +109,6 @@
   icon: magic
   icon_color: orange
   pages:
-    - title: Color & background
     - title: Focus ring
     - title: Icon link
     - title: Position
@@ -128,6 +127,7 @@
       pages:
         - title: Colors
         - title: Background
+        - title: Theme
     - group: Layout
       pages:
         - title: Aspect ratio
