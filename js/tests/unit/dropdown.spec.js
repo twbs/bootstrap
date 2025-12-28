@@ -2097,6 +2097,100 @@ describe('Dropdown', () => {
       })
     })
 
+    it('should focus the dropdown trigger when an item is selected (and the dropdown is hidden)', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Some Item</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const item = fixtureEl.querySelector('.dropdown-item')
+
+        toggle.addEventListener('shown.bs.dropdown', () => {
+          item.focus()
+          item.click()
+        })
+
+        toggle.addEventListener('hidden.bs.dropdown', () => setTimeout(() => {
+          expect(document.activeElement).toEqual(toggle)
+          resolve()
+        }))
+
+        toggle.click()
+      })
+    })
+
+    it('should not focus the dropdown trigger when an item is selected and something else is focused in the hidden event', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<button class="focus-target"></button>',
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Some Item</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const item = fixtureEl.querySelector('.dropdown-item')
+        const focusTarget = fixtureEl.querySelector('.focus-target')
+
+        toggle.addEventListener('shown.bs.dropdown', () => {
+          item.focus()
+          item.click()
+        })
+
+        toggle.addEventListener('hidden.bs.dropdown', () => {
+          focusTarget.focus()
+          setTimeout(() => {
+            expect(document.activeElement).toEqual(focusTarget)
+            expect(document.activeElement).not.toEqual(toggle)
+            resolve()
+          })
+        })
+
+        toggle.click()
+      })
+    })
+
+    it('should not throw an error when the dropdown was disposed in the hidden event', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Some Item</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const toggle = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const item = fixtureEl.querySelector('.dropdown-item')
+
+        toggle.addEventListener('shown.bs.dropdown', () => {
+          item.click()
+        })
+
+        toggle.addEventListener('hidden.bs.dropdown', () => {
+          const dropdown = Dropdown.getInstance(toggle)
+          dropdown.dispose()
+
+          setTimeout(() => {
+            expect(dropdown._menu).toBeNull()
+            resolve()
+          })
+        })
+
+        toggle.click()
+      })
+    })
+
     it('should close dropdown (only) by clicking inside the dropdown menu when it has data-attribute `data-bs-auto-close="inside"`', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
