@@ -95,6 +95,26 @@
     // Remove the top rounded corners here since there is a hard edge above the menu
     @include border-top-radius(0);
   }
+
+  &.flex-column {
+    // Move border from bottom to right
+    border-right: var(--#{$prefix}nav-tabs-border-width) solid var(--#{$prefix}nav-tabs-border-color);
+    border-bottom: 0;
+
+    .nav-link {
+      // Round left side corners
+      @include border-start-radius(var(--#{$prefix}nav-tabs-border-radius));
+      @include border-end-radius(0);
+      // Move margin from bottom to right
+      margin-right: calc(-1 * var(--#{$prefix}nav-tabs-border-width));  // stylelint-disable-line function-disallowed-list
+      margin-bottom: 0;
+
+      &.active {
+        border-color: var(--#{$prefix}nav-tabs-border-color);
+        border-right-color: var(--#{$prefix}body-bg);
+      }
+    }
+  }
 }
 
 
