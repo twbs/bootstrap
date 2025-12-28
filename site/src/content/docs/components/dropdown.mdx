@@ -134,10 +134,16 @@ And putting it to use in a navbar:
 
 ## Placement
 
-Use `data-bs-placement` on the toggle element to control where the dropdown menu appears. Placement options include `top`, `bottom`, `left`, and `right`, each with optional `-start` and `-end` alignment modifiers.
+Use `data-bs-placement` on the toggle element to control where the dropdown menu appears.
+
+**Physical placements:** `top`, `bottom`, `left`, `right` — these are fixed directions regardless of text direction.
+
+**Logical placements:** `start`, `end` — these automatically flip based on RTL. In LTR mode, `start` becomes `left` and `end` becomes `right`. In RTL mode, they swap.
+
+All placements support optional `-start` and `-end` alignment modifiers (e.g., `bottom-start`, `end-end`).
 
 <Callout>
-**Directions are flipped in RTL mode.** As such, `left` placements will appear on the right side.
+**Use logical placements for RTL support.** Use `start` and `end` instead of `left` and `right` for menus that need to work correctly in both LTR and RTL layouts.
 </Callout>
 
 ### Bottom
@@ -268,11 +274,75 @@ Use `right`, `right-start`, or `right-end` to position the menu to the right of 
     </ul>
   </div>`} />
 
+### Start (logical)
+
+Use `start`, `start-start`, or `start-end` for RTL-aware horizontal placement. In LTR, this positions the menu to the left; in RTL, it positions to the right.
+
+<Example class="d-flex gap-2" code={`<div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="start-start" aria-expanded="false">
+      Start start
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="start" aria-expanded="false">
+      Start
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="start-end" aria-expanded="false">
+      Start end
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>`} />
+
+### End (logical)
+
+Use `end`, `end-start`, or `end-end` for RTL-aware horizontal placement. In LTR, this positions the menu to the right; in RTL, it positions to the left.
+
+<Example class="d-flex gap-2" code={`<div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="end-start" aria-expanded="false">
+      End start
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="end" aria-expanded="false">
+      End
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="end-end" aria-expanded="false">
+      End end
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+    </ul>
+  </div>`} />
+
 ### Responsive
 
 Change placement at different breakpoints using responsive prefixes. The syntax is `breakpoint:placement`, where breakpoint is one of `sm`, `md`, `lg`, `xl`, or `2xl`. Multiple breakpoints can be combined in a single attribute, space-separated.
 
-For example, `data-bs-placement="bottom-start md:bottom-end lg:right-start"` will:
+For example, `data-bs-placement="bottom-start md:bottom-end lg:end-start"` will:
 
 - Show the menu at `bottom-start` on small screens (default)
 - Switch to `bottom-end` at the `md` breakpoint
@@ -316,16 +386,11 @@ You can use `<a>` or `<button>` elements as dropdown items.
 We use utility classes to display dropdown menus in our docs examples, but they're not required for your own use.
 </Callout>
 
-<Example code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropdown
-    </button>
-    <ul class="dropdown-menu">
-      <li><button class="dropdown-item" type="button">Action</button></li>
-      <li><button class="dropdown-item" type="button">Another action</button></li>
-      <li><button class="dropdown-item" type="button">Something else here</button></li>
-    </ul>
-  </div>`} />
+<Example code={`<ul class="dropdown-menu show position-static">
+    <li><button class="dropdown-item" type="button">Action</button></li>
+    <li><button class="dropdown-item" type="button">Another action</button></li>
+    <li><button class="dropdown-item" type="button">Something else here</button></li>
+  </ul>`} />
 
 You can also create non-interactive dropdown items with `.dropdown-item-text`. Feel free to style further with custom CSS or text utilities.
 
@@ -362,9 +427,10 @@ Add `.disabled` to items in the dropdown to style them as disabled.
 
 Add a header to label sections of actions in any dropdown menu.
 
-<Example code={`<ul class="dropdown-menu">
-    <li><h6 class="dropdown-header">Dropdown header</h6></li>
+<Example code={`<ul class="dropdown-menu show position-static">
     <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><h6 class="dropdown-header">Dropdown header</h6></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
   </ul>`} />
 
@@ -372,7 +438,7 @@ Add a header to label sections of actions in any dropdown menu.
 
 Separate groups of related menu items with a divider.
 
-<Example code={`<ul class="dropdown-menu">
+<Example code={`<ul class="dropdown-menu show position-static">
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -384,7 +450,8 @@ Separate groups of related menu items with a divider.
 
 Place any freeform text within a dropdown menu with text and use [margin]([[docsref:/utilities/margin]]) and [padding]([[docsref:/utilities/padding]]) utilities. Note that you’ll likely need additional sizing styles to constrain the menu width.
 
-<Example code={`<div class="dropdown-menu p-4 text-body-secondary" style="max-width: 200px;">
+<Example code={`<div class="dropdown-menu show position-static p-3 text-body-secondary"
+       style="--bs-dropdown-min-width: 240px;">
     <p>
       Some example text that’s free-flowing within the dropdown menu.
     </p>
@@ -397,61 +464,38 @@ Place any freeform text within a dropdown menu with text and use [margin]([[docs
 
 Put a form within a dropdown menu, or make it into a dropdown menu, and use [margin]([[docsref:/utilities/margin]]) and [padding]([[docsref:/utilities/padding]]) utilities to give it the negative space you require.
 
-<Example code={`<div class="dropdown-menu">
-    <form class="px-4 py-3">
-      <div class="mb-3">
+<Example code={`<div class="dropdown-menu show position-static"
+       style="--bs-dropdown-min-width: 300px;">
+    <form class="d-flex flex-column gap-3 p-3">
+      <div>
         <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
         <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
       </div>
-      <div class="mb-3">
+      <div>
         <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
         <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
       </div>
-      <div class="mb-3">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="dropdownCheck">
-          <label class="form-check-label" for="dropdownCheck">
-            Remember me
-          </label>
+      <b-checkgroup>
+        <div class="check">
+          <input type="checkbox" id="checkLabel" />
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+          </svg>
         </div>
+        <label for="checkLabel">Example new checkbox</label>
+      </b-checkgroup>
+      <div class="vstack gap-2">
+        <button type="submit" class="btn-solid theme-primary">Sign in</button>
+        <a class="btn-ghost theme-secondary" href="#">New around here? Sign up</a>
+        <a class="btn-ghost theme-secondary" href="#">Forgot password?</a>
       </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">New around here? Sign up</a>
-    <a class="dropdown-item" href="#">Forgot password?</a>
-  </div>`} />
-
-<Example code={`<div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-      Dropdown form
-    </button>
-    <form class="dropdown-menu p-4">
-      <div class="mb-3">
-        <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-      </div>
-      <div class="mb-3">
-        <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-      </div>
-      <div class="mb-3">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-          <label class="form-check-label" for="dropdownCheck2">
-            Remember me
-          </label>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
     </form>
   </div>`} />
 
 ## Submenus
 
 Create nested dropdown menus with the `.dropdown-submenu` wrapper class. Submenus support hover and click activation, keyboard navigation, viewport-aware positioning, and mobile slide-over behavior.
-
-### Basic submenu
 
 Wrap a `.dropdown-item` trigger and a nested `.dropdown-menu` inside a `.dropdown-submenu` element.
 
@@ -550,10 +594,6 @@ When multiple submenu triggers exist at the same level, opening one automaticall
       <li><a class="dropdown-item" href="#">Preferences</a></li>
     </ul>
   </div>`} />
-
-### Mobile behavior
-
-On viewports narrower than `768px` (configurable via `mobileBreakpoint`), submenus use a slide-over pattern with a back button for navigation instead of floating positioning.
 
 ## Dropdown options
 
@@ -736,11 +776,10 @@ The dropdown plugin requires the following JavaScript files if you're building B
 | `display` | string | `'dynamic'` | By default, we use Floating UI for dynamic positioning. Disable this with `static`. |
 | `offset` | array, string, function | `[0, 2]` | Offset of the dropdown relative to its target. You can pass a string in data attributes with comma separated values like: `data-bs-offset="10,20"`. When a function is used to determine the offset, it is called with an object containing the placement, the reference, and floating rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: [skidding, distance]. For more information refer to Floating UI's [offset docs](https://floating-ui.com/docs/offset). |
 | `floatingConfig` | null, object, function | `null` | To change Bootstrap's default Floating UI config, see [Floating UI's configuration](https://floating-ui.com/docs/computePosition). When a function is used to create the Floating UI configuration, it's called with an object that contains the Bootstrap's default Floating UI configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Floating UI. |
-| `placement` | string | `'bottom-start'` | Placement of the dropdown menu. Can be any valid Floating UI placement: `'top'`, `'top-start'`, `'top-end'`, `'bottom'`, `'bottom-start'`, `'bottom-end'`, `'right'`, `'right-start'`, `'right-end'`, `'left'`, `'left-start'`, `'left-end'`. Supports responsive prefixes like `'bottom-start md:bottom-end lg:right'` to change placement at different breakpoints. |
+| `placement` | string | `'bottom-start'` | Placement of the dropdown menu. Physical placements: `'top'`, `'bottom'`, `'left'`, `'right'`. Logical placements (RTL-aware): `'start'`, `'end'`. All support alignment modifiers: `-start`, `-end`. Supports responsive prefixes like `'bottom-start md:end'`. |
 | `reference` | string, element, object | `'toggle'` | Reference element of the dropdown menu. Accepts the values of `'toggle'`, `'parent'`, an HTMLElement reference or an object providing `getBoundingClientRect`. For more information refer to Floating UI's [virtual elements docs](https://floating-ui.com/docs/virtual-elements). |
 | `submenuTrigger` | string | `'both'` | How submenus are triggered. Use `'click'` for click only, `'hover'` for hover only, or `'both'` for both click and hover activation. |
 | `submenuDelay` | number | `100` | Delay in milliseconds before closing a submenu when the mouse leaves. Provides a grace period for diagonal mouse movement toward the submenu. |
-| `mobileBreakpoint` | number | `768` | Viewport width in pixels below which submenus use slide-over mobile mode instead of floating positioning. |
 </BsTable>
 
 #### Using function with `floatingConfig`

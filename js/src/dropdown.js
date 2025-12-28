@@ -56,8 +56,6 @@ const RIGHT_MOUSE_BUTTON = 2
 
 // Hover intent delay (ms) - grace period before closing submenu
 const SUBMENU_CLOSE_DELAY = 100
-// Mobile breakpoint for slide-over mode
-const MOBILE_BREAKPOINT = 768
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
@@ -68,7 +66,6 @@ const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_SHOW = 'show'
-const CLASS_NAME_MOBILE = 'dropdown-menu-mobile'
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
 const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
@@ -78,9 +75,20 @@ const SELECTOR_SUBMENU_TOGGLE = '.dropdown-submenu > .dropdown-item'
 const SELECTOR_NAVBAR_NAV = '.navbar-nav'
 const SELECTOR_VISIBLE_ITEMS = '.dropdown-item:not(.disabled):not(:disabled)'
 
-// Default placement with RTL support
-const DEFAULT_PLACEMENT = isRTL() ? 'bottom-end' : 'bottom-start'
-const SUBMENU_PLACEMENT = isRTL() ? 'left-start' : 'right-start'
+// Default logical placement (uses start/end which get resolved to left/right based on RTL)
+const DEFAULT_PLACEMENT = 'bottom-start'
+const SUBMENU_PLACEMENT = 'end-start'
+
+// Resolve logical placement (start/end) to physical (left/right) based on RTL
+const resolveLogicalPlacement = placement => {
+  if (isRTL()) {
+    // RTL: start → right, end → left
+    return placement.replace(/^start(?=-|$)/, 'right').replace(/^end(?=-|$)/, 'left')
+  }
+
+  // LTR: start → left, end → right
+  return placement.replace(/^start(?=-|$)/, 'left').replace(/^end(?=-|$)/, 'right')
+}
 
 // Helper for barycentric coordinate calculation (point in triangle check)
 const triangleSign = (p1, p2, p3) =>
@@ -96,8 +104,7 @@ const Default = {
   reference: 'toggle',
   // Submenu options
   submenuTrigger: 'both', // 'click', 'hover', or 'both'
-  submenuDelay: SUBMENU_CLOSE_DELAY,
-  mobileBreakpoint: MOBILE_BREAKPOINT
+  submenuDelay: SUBMENU_CLOSE_DELAY
 }
 
 const DefaultType = {
@@ -109,8 +116,7 @@ const DefaultType = {
   placement: 'string',
   reference: '(string|element|object)',
   submenuTrigger: 'string',
-  submenuDelay: 'number',
-  mobileBreakpoint: 'number'
+  submenuDelay: 'number'
 }
 
 /**
@@ -133,7 +139,6 @@ class Dropdown extends BaseComponent {
     this._openSubmenus = new Map() // Map of submenu element -> cleanup function
     this._submenuCloseTimeouts = new Map() // Map of submenu element -> timeout ID
     this._hoverIntentData = null // For safe triangle calculation
-    this._mobileMenuStack = [] // Stack of mobile submenus for back navigation
 
     // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
@@ -347,11 +352,12 @@ class Dropdown extends BaseComponent {
 
   _getPlacement() {
     // If we have responsive placements, find the appropriate one for current viewport
-    if (this._responsivePlacements) {
-      return getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT)
-    }
+    const placement = this._responsivePlacements ?
+      getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT) :
+      this._config.placement
 
-    return this._config.placement
+    // Resolve logical placements (start/end) to physical (left/right) based on RTL
+    return resolveLogicalPlacement(placement)
   }
 
   _parseResponsivePlacements() {
@@ -542,12 +548,6 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Check if we should use mobile mode
-    if (this._isMobileMode()) {
-      this._openSubmenuMobile(trigger, submenu, submenuWrapper)
-      return
-    }
-
     // Toggle submenu
     if (this._openSubmenus.has(submenu)) {
       this._closeSubmenu(submenu, submenuWrapper)
@@ -650,15 +650,17 @@ class Dropdown extends BaseComponent {
         return
       }
 
-      const placement = SUBMENU_PLACEMENT
+      const placement = resolveLogicalPlacement(SUBMENU_PLACEMENT)
       const middleware = [
         // Small negative offset to overlap slightly with parent menu
         offset({ mainAxis: 0, crossAxis: -4 }),
         // Flip to opposite side if not enough space
         flip({
-          fallbackPlacements: isRTL() ?
-            ['right-start', 'left-end', 'right-end'] :
-            ['left-start', 'right-end', 'left-end']
+          fallbackPlacements: [
+            resolveLogicalPlacement('start-start'),
+            resolveLogicalPlacement('end-end'),
+            resolveLogicalPlacement('start-end')
+          ]
         }),
         // Shift to keep in viewport
         shift({ padding: 8 })
@@ -766,84 +768,6 @@ class Dropdown extends BaseComponent {
   }
 
   // -------------------------------------------------------------------------
-  // Mobile mode
-  // -------------------------------------------------------------------------
-
-  _isMobileMode() {
-    return window.innerWidth < this._config.mobileBreakpoint
-  }
-
-  _openSubmenuMobile(trigger, submenu, submenuWrapper) {
-    // Add mobile class for slide-over animation
-    submenu.classList.add(CLASS_NAME_MOBILE)
-
-    // Create back button header if not exists
-    if (!submenu.querySelector('.dropdown-mobile-header')) {
-      const header = document.createElement('div')
-      header.className = 'dropdown-mobile-header'
-
-      const backBtn = document.createElement('button')
-      backBtn.type = 'button'
-      backBtn.className = 'dropdown-back-btn'
-      backBtn.setAttribute('aria-label', 'Back')
-
-      const title = document.createElement('span')
-      title.textContent = trigger.textContent.trim()
-
-      header.append(backBtn, title)
-      submenu.prepend(header)
-
-      // Back button handler
-      EventHandler.on(backBtn, 'click', () => {
-        this._closeSubmenuMobile(submenu, submenuWrapper, trigger)
-      })
-    }
-
-    // Set ARIA
-    trigger.setAttribute('aria-expanded', 'true')
-
-    // Show with animation
-    submenu.classList.add(CLASS_NAME_SHOW)
-    submenuWrapper.classList.add(CLASS_NAME_SHOW)
-
-    // Track in stack
-    this._mobileMenuStack.push({ submenu, submenuWrapper, trigger })
-
-    // Focus first item in submenu
-    requestAnimationFrame(() => {
-      const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
-      if (firstItem && !firstItem.closest('.dropdown-mobile-header')) {
-        firstItem.focus()
-      }
-    })
-  }
-
-  _closeSubmenuMobile(submenu, submenuWrapper, trigger) {
-    submenu.classList.remove(CLASS_NAME_SHOW)
-    submenuWrapper.classList.remove(CLASS_NAME_SHOW)
-
-    trigger.setAttribute('aria-expanded', 'false')
-
-    // Remove from stack
-    this._mobileMenuStack = this._mobileMenuStack.filter(
-      item => item.submenu !== submenu
-    )
-
-    // Focus back to trigger
-    trigger.focus()
-
-    // Clean up mobile class after animation
-    setTimeout(() => {
-      submenu.classList.remove(CLASS_NAME_MOBILE)
-      // Remove the header
-      const header = submenu.querySelector('.dropdown-mobile-header')
-      if (header) {
-        header.remove()
-      }
-    }, 200)
-  }
-
-  // -------------------------------------------------------------------------
   // Keyboard navigation
   // -------------------------------------------------------------------------
 
@@ -881,19 +805,15 @@ class Dropdown extends BaseComponent {
 
       const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
       if (submenu) {
-        if (this._isMobileMode()) {
-          this._openSubmenuMobile(target, submenu, submenuWrapper)
-        } else {
-          this._closeSiblingSubmenus(submenuWrapper)
-          this._openSubmenu(target, submenu, submenuWrapper)
-          // Focus first item in submenu
-          requestAnimationFrame(() => {
-            const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
-            if (firstItem) {
-              firstItem.focus()
-            }
-          })
-        }
+        this._closeSiblingSubmenus(submenuWrapper)
+        this._openSubmenu(target, submenu, submenuWrapper)
+        // Focus first item in submenu
+        requestAnimationFrame(() => {
+          const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
+          if (firstItem) {
+            firstItem.focus()
+          }
+        })
       }
 
       return true
@@ -906,19 +826,15 @@ class Dropdown extends BaseComponent {
 
       const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
       if (submenu) {
-        if (this._isMobileMode()) {
-          this._openSubmenuMobile(target, submenu, submenuWrapper)
-        } else {
-          this._closeSiblingSubmenus(submenuWrapper)
-          this._openSubmenu(target, submenu, submenuWrapper)
-          // Focus first item in submenu
-          requestAnimationFrame(() => {
-            const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
-            if (firstItem) {
-              firstItem.focus()
-            }
-          })
-        }
+        this._closeSiblingSubmenus(submenuWrapper)
+        this._openSubmenu(target, submenu, submenuWrapper)
+        // Focus first item in submenu
+        requestAnimationFrame(() => {
+          const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
+          if (firstItem) {
+            firstItem.focus()
+          }
+        })
       }
 
       return true
@@ -934,15 +850,9 @@ class Dropdown extends BaseComponent {
         event.stopPropagation()
 
         const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)
-
-        if (this._isMobileMode() && this._mobileMenuStack.length > 0) {
-          const stackItem = this._mobileMenuStack[this._mobileMenuStack.length - 1]
-          this._closeSubmenuMobile(stackItem.submenu, stackItem.submenuWrapper, stackItem.trigger)
-        } else {
-          this._closeSubmenu(currentMenu, parentSubmenuWrapper)
-          if (parentTrigger) {
-            parentTrigger.focus()
-          }
+        this._closeSubmenu(currentMenu, parentSubmenuWrapper)
+        if (parentTrigger) {
+          parentTrigger.focus()
         }
 
         return true
@@ -1065,13 +975,6 @@ class Dropdown extends BaseComponent {
       const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
 
       if (parentSubmenuWrapper && instance._openSubmenus.size > 0) {
-        // Check if we're in mobile mode with stack
-        if (instance._isMobileMode() && instance._mobileMenuStack.length > 0) {
-          const stackItem = instance._mobileMenuStack[instance._mobileMenuStack.length - 1]
-          instance._closeSubmenuMobile(stackItem.submenu, stackItem.submenuWrapper, stackItem.trigger)
-          return
-        }
-
         const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)
         instance._closeSubmenu(currentMenu, parentSubmenuWrapper)
         if (parentTrigger) {
