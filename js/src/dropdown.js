@@ -302,8 +302,7 @@ class Dropdown extends BaseComponent {
   }
 
   async _updateFloatingPosition(referenceElement = null) {
-    // Check if menu exists and is still in the DOM
-    if (!this._menu || !this._menu.isConnected) {
+    if (!this._menu) {
       return
     }
 
@@ -323,27 +322,12 @@ class Dropdown extends BaseComponent {
     const middleware = this._getFloatingMiddleware()
     const floatingConfig = this._getFloatingConfig(placement, middleware)
 
-    const { x, y, placement: finalPlacement } = await computePosition(
+    await this._applyFloatingPosition(
       referenceElement,
       this._menu,
-      floatingConfig
+      floatingConfig.placement,
+      floatingConfig.middleware
     )
-
-    // Menu may have been disposed during the async computePosition call
-    if (!this._menu || !this._menu.isConnected) {
-      return
-    }
-
-    // Apply position to dropdown menu
-    Object.assign(this._menu.style, {
-      position: 'absolute',
-      left: `${x}px`,
-      top: `${y}px`,
-      margin: '0'
-    })
-
-    // Set placement attribute for CSS styling
-    Manipulator.setDataAttribute(this._menu, 'placement', finalPlacement)
   }
 
   _isShown() {
@@ -464,6 +448,33 @@ class Dropdown extends BaseComponent {
       this._floatingCleanup()
       this._floatingCleanup = null
     }
+  }
+
+  // Shared helper for positioning any floating element
+  async _applyFloatingPosition(reference, floating, placement, middleware) {
+    if (!floating.isConnected) {
+      return null
+    }
+
+    const { x, y, placement: finalPlacement } = await computePosition(
+      reference,
+      floating,
+      { placement, middleware }
+    )
+
+    if (!floating.isConnected) {
+      return null
+    }
+
+    Object.assign(floating.style, {
+      position: 'absolute',
+      left: `${x}px`,
+      top: `${y}px`,
+      margin: '0'
+    })
+
+    Manipulator.setDataAttribute(floating, 'placement', finalPlacement)
+    return finalPlacement
   }
 
   // -------------------------------------------------------------------------
@@ -642,54 +653,23 @@ class Dropdown extends BaseComponent {
   }
 
   _createSubmenuFloating(trigger, submenu, submenuWrapper) {
-    // Use the submenuWrapper as reference for positioning
     const referenceElement = submenuWrapper
+    const placement = resolveLogicalPlacement(SUBMENU_PLACEMENT)
+    const middleware = [
+      offset({ mainAxis: 0, crossAxis: -4 }),
+      flip({
+        fallbackPlacements: [
+          resolveLogicalPlacement('start-start'),
+          resolveLogicalPlacement('end-end'),
+          resolveLogicalPlacement('start-end')
+        ]
+      }),
+      shift({ padding: 8 })
+    ]
 
-    const updatePosition = async () => {
-      if (!submenu.isConnected) {
-        return
-      }
+    const updatePosition = () => this._applyFloatingPosition(referenceElement, submenu, placement, middleware)
 
-      const placement = resolveLogicalPlacement(SUBMENU_PLACEMENT)
-      const middleware = [
-        // Small negative offset to overlap slightly with parent menu
-        offset({ mainAxis: 0, crossAxis: -4 }),
-        // Flip to opposite side if not enough space
-        flip({
-          fallbackPlacements: [
-            resolveLogicalPlacement('start-start'),
-            resolveLogicalPlacement('end-end'),
-            resolveLogicalPlacement('start-end')
-          ]
-        }),
-        // Shift to keep in viewport
-        shift({ padding: 8 })
-      ]
-
-      const { x, y, placement: finalPlacement } = await computePosition(
-        referenceElement,
-        submenu,
-        { placement, middleware }
-      )
-
-      if (!submenu.isConnected) {
-        return
-      }
-
-      Object.assign(submenu.style, {
-        position: 'absolute',
-        left: `${x}px`,
-        top: `${y}px`,
-        margin: '0'
-      })
-
-      Manipulator.setDataAttribute(submenu, 'placement', finalPlacement)
-    }
-
-    // Initial position
     updatePosition()
-
-    // Auto-update on scroll/resize
     return autoUpdate(referenceElement, submenu, updatePosition)
   }
 
