@@ -654,7 +654,7 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
         <div class="alert alert-${themeColor.name} alert-dismissible fade show" role="alert">
           A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close</span></button>
         </div>
         `)} />
 
@@ -1462,7 +1462,7 @@ export const body_class = 'bg-body-tertiary'
             <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
             <strong class="me-auto">Bootstrap</strong>
             <small class="text-body-secondary">11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"><span class="visually-hidden">Close</span></button>
           </div>
           <div class="toast-body">
             Hello, world! This is a toast message.
@@ -1495,7 +1495,7 @@ export const body_class = 'bg-body-tertiary'
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"><span class="visually-hidden">Close</span></button>
       </div>
       <div class="modal-body">
         ...
@@ -1512,7 +1512,7 @@ export const body_class = 'bg-body-tertiary'
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLiveLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"><span class="visually-hidden">Close</span></button>
       </div>
       <div class="modal-body">
         <p>I will not close if you click outside me. Don't even try to press escape key.</p>
@@ -1529,7 +1529,7 @@ export const body_class = 'bg-body-tertiary'
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalCenteredScrollableTitle">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"><span class="visually-hidden">Close</span></button>
       </div>
       <div class="modal-body">
         <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
@@ -1548,7 +1548,7 @@ export const body_class = 'bg-body-tertiary'
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">Full screen modal</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"><span class="visually-hidden">Close</span></button>
       </div>
       <div class="modal-body">
         ...
