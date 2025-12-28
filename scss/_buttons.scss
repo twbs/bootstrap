@@ -181,14 +181,14 @@
   --#{$prefix}btn-box-shadow: 0 0 0 #000; // Can't use `none` as keyword negates all values when used with multiple shadows
   --#{$prefix}btn-focus-shadow-rgb: #{$btn-link-focus-shadow-rgb};
 
-  text-decoration: $link-decoration;
+  text-decoration: var(--#{$prefix}link-decoration);
   @if $enable-gradients {
     background-image: none;
   }
 
   &:hover,
   &:focus-visible {
-    text-decoration: $link-hover-decoration;
+    text-decoration: var(--#{$prefix}link-hover-decoration);
   }
 
   &:focus-visible {
