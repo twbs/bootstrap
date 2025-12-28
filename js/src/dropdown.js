@@ -82,6 +82,10 @@ const SELECTOR_VISIBLE_ITEMS = '.dropdown-item:not(.disabled):not(:disabled)'
 const DEFAULT_PLACEMENT = isRTL() ? 'bottom-end' : 'bottom-start'
 const SUBMENU_PLACEMENT = isRTL() ? 'left-start' : 'right-start'
 
+// Helper for barycentric coordinate calculation (point in triangle check)
+const triangleSign = (p1, p2, p3) =>
+  ((p1.x - p3.x) * (p2.y - p3.y)) - ((p2.x - p3.x) * (p1.y - p3.y))
+
 const Default = {
   autoClose: true,
   boundary: 'clippingParents',
@@ -487,11 +491,15 @@ class Dropdown extends BaseComponent {
 
   _onSubmenuTriggerEnter(event) {
     const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE)
-    if (!trigger) return
+    if (!trigger) {
+      return
+    }
 
     const submenuWrapper = trigger.closest(SELECTOR_SUBMENU)
     const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
-    if (!submenu) return
+    if (!submenu) {
+      return
+    }
 
     // Cancel any pending close timeout for this submenu
     this._cancelSubmenuCloseTimeout(submenu)
@@ -506,7 +514,9 @@ class Dropdown extends BaseComponent {
   _onSubmenuLeave(event) {
     const submenuWrapper = event.target.closest(SELECTOR_SUBMENU)
     const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
-    if (!submenu || !this._openSubmenus.has(submenu)) return
+    if (!submenu || !this._openSubmenus.has(submenu)) {
+      return
+    }
 
     // Check if we're moving toward the submenu (safe triangle)
     if (this._isMovingTowardSubmenu(event, submenu)) {
@@ -519,14 +529,18 @@ class Dropdown extends BaseComponent {
 
   _onSubmenuTriggerClick(event) {
     const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE)
-    if (!trigger) return
+    if (!trigger) {
+      return
+    }
 
     event.preventDefault()
     event.stopPropagation()
 
     const submenuWrapper = trigger.closest(SELECTOR_SUBMENU)
     const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper)
-    if (!submenu) return
+    if (!submenu) {
+      return
+    }
 
     // Check if we should use mobile mode
     if (this._isMobileMode()) {
@@ -544,7 +558,9 @@ class Dropdown extends BaseComponent {
   }
 
   _openSubmenu(trigger, submenu, submenuWrapper) {
-    if (this._openSubmenus.has(submenu)) return
+    if (this._openSubmenus.has(submenu)) {
+      return
+    }
 
     // Set ARIA attributes
     trigger.setAttribute('aria-expanded', 'true')
@@ -565,7 +581,9 @@ class Dropdown extends BaseComponent {
   }
 
   _closeSubmenu(submenu, submenuWrapper) {
-    if (!this._openSubmenus.has(submenu)) return
+    if (!this._openSubmenus.has(submenu)) {
+      return
+    }
 
     // Close any nested submenus first
     const nestedSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} ${SELECTOR_MENU}.${CLASS_NAME_SHOW}`, submenu)
@@ -628,7 +646,9 @@ class Dropdown extends BaseComponent {
     const referenceElement = submenuWrapper
 
     const updatePosition = async () => {
-      if (!submenu.isConnected) return
+      if (!submenu.isConnected) {
+        return
+      }
 
       const placement = SUBMENU_PLACEMENT
       const middleware = [
@@ -650,7 +670,9 @@ class Dropdown extends BaseComponent {
         { placement, middleware }
       )
 
-      if (!submenu.isConnected) return
+      if (!submenu.isConnected) {
+        return
+      }
 
       Object.assign(submenu.style, {
         position: 'absolute',
@@ -709,7 +731,9 @@ class Dropdown extends BaseComponent {
   }
 
   _isMovingTowardSubmenu(event, submenu) {
-    if (!this._hoverIntentData) return false
+    if (!this._hoverIntentData) {
+      return false
+    }
 
     const submenuRect = submenu.getBoundingClientRect()
     const currentPos = { x: event.clientX, y: event.clientY }
@@ -731,12 +755,9 @@ class Dropdown extends BaseComponent {
 
   _pointInTriangle(point, v1, v2, v3) {
     // Barycentric coordinate method to check if point is inside triangle
-    const sign = (p1, p2, p3) =>
-      (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y)
-
-    const d1 = sign(point, v1, v2)
-    const d2 = sign(point, v2, v3)
-    const d3 = sign(point, v3, v1)
+    const d1 = triangleSign(point, v1, v2)
+    const d2 = triangleSign(point, v2, v3)
+    const d3 = triangleSign(point, v3, v1)
 
     const hasNeg = (d1 < 0) || (d2 < 0) || (d3 < 0)
     const hasPos = (d1 > 0) || (d2 > 0) || (d3 > 0)
@@ -1014,15 +1035,15 @@ class Dropdown extends BaseComponent {
         SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
         SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode))
 
-    if (!getToggleButton) return
+    if (!getToggleButton) {
+      return
+    }
 
     const instance = Dropdown.getOrCreateInstance(getToggleButton)
 
     // Handle submenu navigation first
-    if (isLeftOrRightEvent || isHomeOrEndEvent || (isEnterOrSpaceEvent && isSubmenuTrigger)) {
-      if (instance._handleSubmenuKeydown(event)) {
-        return
-      }
+    if ((isLeftOrRightEvent || isHomeOrEndEvent || (isEnterOrSpaceEvent && isSubmenuTrigger)) && instance._handleSubmenuKeydown(event)) {
+      return
     }
 
     // Handle Up/Down navigation
