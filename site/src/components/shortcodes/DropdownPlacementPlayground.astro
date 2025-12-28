@@ -1,0 +1,217 @@
+---
+import Example from '@components/shortcodes/Example.astro'
+
+// Physical placements
+const physicalPlacements = [
+  { value: 'top-start', label: 'top-start' },
+  { value: 'top', label: 'top' },
+  { value: 'top-end', label: 'top-end' },
+  { value: 'right-start', label: 'right-start' },
+  { value: 'right', label: 'right' },
+  { value: 'right-end', label: 'right-end' },
+  { value: 'bottom-start', label: 'bottom-start' },
+  { value: 'bottom', label: 'bottom' },
+  { value: 'bottom-end', label: 'bottom-end' },
+  { value: 'left-start', label: 'left-start' },
+  { value: 'left', label: 'left' },
+  { value: 'left-end', label: 'left-end' }
+]
+
+// Logical placements
+const logicalPlacements = [
+  { value: 'start-start', label: 'start-start' },
+  { value: 'start', label: 'start' },
+  { value: 'start-end', label: 'start-end' },
+  { value: 'end-start', label: 'end-start' },
+  { value: 'end', label: 'end' },
+  { value: 'end-end', label: 'end-end' }
+]
+---
+
+<div class="bg-1 p-3 rounded-3 mb-3">
+  <div class="d-flex flex-wrap gap-3 align-items-end">
+    <div class="vstack gap-1">
+      <label class="form-label fw-semibold mb-0">Placement type</label>
+      <div class="btn-group" role="group" aria-label="Placement type">
+        <label class="btn-check btn-outline theme-secondary">
+          <input
+            type="radio"
+            name="placement-type"
+            value="physical"
+            checked
+            data-placement-type="physical"
+          />
+          Physical
+        </label>
+        <label class="btn-check btn-outline theme-secondary">
+          <input
+            type="radio"
+            name="placement-type"
+            value="logical"
+            data-placement-type="logical"
+          />
+          Logical
+        </label>
+      </div>
+    </div>
+
+    <div class="vstack gap-1">
+      <label class="form-label fw-semibold mb-0">Placement</label>
+      <div class="dropdown">
+        <button
+          type="button"
+          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          id="placement-dropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          data-placement="bottom-start"
+          style="min-width: 160px;"
+        >
+          bottom-start
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="placement-dropdown">
+          {physicalPlacements.map((p) => (
+            <li data-placement-group="physical">
+              <a
+                class:list={['dropdown-item', { 'active': p.value === 'bottom-start' }]}
+                href="#"
+                data-placement={p.value}
+              >
+                {p.label}
+              </a>
+            </li>
+          ))}
+          {logicalPlacements.map((p) => (
+            <li data-placement-group="logical" class="d-none">
+              <a
+                class="dropdown-item"
+                href="#"
+                data-placement={p.value}
+              >
+                {p.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<Example
+  class="d-flex justify-content-center align-items-center"
+  style="min-height: 200px;"
+  code={`<div class="dropdown">
+  <button class="btn btn-solid theme-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom-start" aria-expanded="false">
+    Toggle dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>`}
+  id="placement-preview"
+/>
+
+<script>
+  const placementDropdownButton = document.querySelector('#placement-dropdown') as HTMLButtonElement
+  const placementDropdownItems = document.querySelectorAll('#placement-dropdown + .dropdown-menu .dropdown-item')
+  const placementTypeInputs = document.querySelectorAll('input[name="placement-type"]')
+  const previewDropdown = document.querySelector('#placement-preview .dropdown')
+  const previewToggle = previewDropdown?.querySelector('[data-bs-toggle="dropdown"]') as HTMLButtonElement
+  const codeSnippet = document.querySelector('#placement-preview')?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+
+  function updateDropdownItems() {
+    const selectedType = (document.querySelector('input[name="placement-type"]:checked') as HTMLInputElement)?.value || 'physical'
+
+    // Show/hide placement options based on type
+    document.querySelectorAll('[data-placement-group="physical"]').forEach(el => {
+      el.classList.toggle('d-none', selectedType !== 'physical')
+    })
+    document.querySelectorAll('[data-placement-group="logical"]').forEach(el => {
+      el.classList.toggle('d-none', selectedType !== 'logical')
+    })
+
+    // Select first visible option if current selection is hidden
+    const currentPlacement = placementDropdownButton?.dataset.placement || ''
+    const isPhysical = !currentPlacement.startsWith('start') && !currentPlacement.startsWith('end')
+    const needsReset = (selectedType === 'physical' && !isPhysical) || (selectedType === 'logical' && isPhysical)
+
+    if (needsReset) {
+      const defaultPlacement = selectedType === 'physical' ? 'bottom-start' : 'start-start'
+      updatePlacement(defaultPlacement)
+    }
+  }
+
+  function updatePlacement(placement: string) {
+    if (!placementDropdownButton || !previewToggle) return
+
+    // Update the placement selector button
+    placementDropdownButton.textContent = placement
+    placementDropdownButton.dataset.placement = placement
+
+    // Update active state in dropdown
+    placementDropdownItems.forEach(item => {
+      const itemPlacement = (item as HTMLElement).dataset.placement
+      item.classList.toggle('active', itemPlacement === placement)
+    })
+
+    // Update the preview dropdown
+    previewToggle.setAttribute('data-bs-placement', placement)
+
+    // Dispose and recreate the dropdown instance to pick up new placement
+    const instance = bootstrap.Dropdown.getInstance(previewToggle)
+    if (instance) {
+      instance.dispose()
+    }
+    bootstrap.Dropdown.getOrCreateInstance(previewToggle)
+
+    // Update code snippet
+    updateCodeSnippet(placement)
+  }
+
+  function updateCodeSnippet(placement: string) {
+    if (!codeSnippet) return
+
+    const htmlCode = `<div class="dropdown">
+  <button class="btn btn-solid theme-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="${placement}" aria-expanded="false">
+    Toggle dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>`
+
+    codeSnippet.className = 'language-html'
+    codeSnippet.textContent = htmlCode
+
+    if (typeof window !== 'undefined' && (window as any).Prism) {
+      (window as any).Prism.highlightElement(codeSnippet)
+    }
+  }
+
+  // Initialize placement dropdown
+  if (placementDropdownButton) {
+    const placementDropdown = bootstrap.Dropdown.getOrCreateInstance(placementDropdownButton)
+
+    placementDropdownItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
+        const placement = (item as HTMLElement).dataset.placement || 'bottom-start'
+        updatePlacement(placement)
+        placementDropdown.hide()
+      })
+    })
+  }
+
+  // Handle placement type change
+  placementTypeInputs.forEach(input => {
+    input.addEventListener('change', updateDropdownItems)
+  })
+
+  // Initial setup
+  updateDropdownItems()
+</script>
