@@ -753,7 +753,8 @@ class Dropdown extends BaseComponent {
 
   _selectMenuItem({ key, target }) {
     // Get items only from the current menu level (not nested submenus)
-    const currentMenu = target.closest(SELECTOR_MENU)
+    // If target is inside a menu, use that menu; otherwise use the main menu
+    const currentMenu = target.closest(SELECTOR_MENU) || this._menu
     const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
       .filter(element => isVisible(element))
 
