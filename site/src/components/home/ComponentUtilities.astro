@@ -42,6 +42,7 @@ import Code from '@shortcodes/Code.astro'
               data-bs-toggle="tab"
               type="button"
               role="tab"
+              aria-controls="fake-panel"
               aria-selected="true">Home</button
             >
           </li>
@@ -79,6 +80,7 @@ import Code from '@shortcodes/Code.astro'
               data-bs-toggle="tab"
               type="button"
               role="tab"
+              aria-controls="fake-panel"
               aria-selected="true">Home</button
             >
           </li>
@@ -103,6 +105,7 @@ import Code from '@shortcodes/Code.astro'
             >
           </li>
         </ul>
+        <div aria-hidden="true" role="tabpanel" id="fake-panel"></div>
       </div>
       <Code
         code={`<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
