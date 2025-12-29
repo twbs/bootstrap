@@ -1,0 +1,256 @@
+---
+title: OTP input
+description: Create connected input fields for one-time passwords, PIN codes, and verification codes with automatic focus advancement.
+toc: true
+---
+
+## Overview
+
+OTP (One-Time Password) inputs are a common pattern for two-factor authentication, verification codes, and PIN entry. Bootstrap's OTP input component provides:
+
+- **Auto-advance**: Focus moves to the next input after entering a digit
+- **Backspace navigation**: Pressing backspace in an empty field moves to the previous field
+- **Paste support**: Paste a full code and it distributes across all inputs
+- **Browser autofill**: Supports the `autocomplete="one-time-code"` attribute for SMS/email code autofill
+- **Keyboard navigation**: Use arrow keys to move between inputs
+
+OTP input is built on [form controls]([[docsref:/forms/form-control]]) and, when using connected inputs, leverages our [input group]([[docsref:/forms/input-group]]) styles.
+
+## Basic example
+
+Wrap your inputs in a container with `.otp` and add `data-bs-otp` to enable the JavaScript behavior. Each input should have `.form-control` for styling and be a single-character field.
+
+<Example code={`<div class="otp" data-bs-otp>
+    <input type="text" class="form-control" aria-label="Digit 1">
+    <input type="text" class="form-control" aria-label="Digit 2">
+    <input type="text" class="form-control" aria-label="Digit 3">
+    <input type="text" class="form-control" aria-label="Digit 4">
+    <input type="text" class="form-control" aria-label="Digit 5">
+    <input type="text" class="form-control" aria-label="Digit 6">
+  </div>`} />
+
+## Connected inputs
+
+Add `.input-group` to visually connect the inputs into a single cohesive field, leveraging Bootstrap's [input group](/docs/forms/input-group/) styles.
+
+<Example code={`<div class="otp input-group" data-bs-otp>
+    <input type="text" class="form-control" aria-label="Digit 1">
+    <input type="text" class="form-control" aria-label="Digit 2">
+    <input type="text" class="form-control" aria-label="Digit 3">
+    <input type="text" class="form-control" aria-label="Digit 4">
+    <input type="text" class="form-control" aria-label="Digit 5">
+    <input type="text" class="form-control" aria-label="Digit 6">
+  </div>`} />
+
+## Four-digit PIN
+
+You can use any number of inputs you want—the plugin will automatically detect the number of inputs and adjust accordingly. For example, you can use fewer inputs for shorter codes like 4-digit PINs.
+
+<Example code={`<div class="otp input-group" data-bs-otp>
+    <input type="text" class="form-control" aria-label="Digit 1">
+    <input type="text" class="form-control" aria-label="Digit 2">
+    <input type="text" class="form-control" aria-label="Digit 3">
+    <input type="text" class="form-control" aria-label="Digit 4">
+  </div>`} />
+
+## With separator
+
+Add a `.otp-separator` element between inputs to create grouped codes like "123-456". The separator is purely visual—the plugin ignores non-input elements.
+
+<Example code={`<div class="otp" data-bs-otp>
+    <input type="text" class="form-control" aria-label="Digit 1">
+    <input type="text" class="form-control" aria-label="Digit 2">
+    <input type="text" class="form-control" aria-label="Digit 3">
+    <span class="otp-separator">–</span>
+    <input type="text" class="form-control" aria-label="Digit 4">
+    <input type="text" class="form-control" aria-label="Digit 5">
+    <input type="text" class="form-control" aria-label="Digit 6">
+  </div>`} />
+
+You can also use separators with connected inputs by wrapping each group in a nested `.input-group`:
+
+<Example code={`<div class="otp" data-bs-otp>
+    <div class="input-group">
+      <input type="text" class="form-control" aria-label="Digit 1">
+      <input type="text" class="form-control" aria-label="Digit 2">
+      <input type="text" class="form-control" aria-label="Digit 3">
+    </div>
+    <span class="otp-separator">–</span>
+    <div class="input-group">
+      <input type="text" class="form-control" aria-label="Digit 4">
+      <input type="text" class="form-control" aria-label="Digit 5">
+      <input type="text" class="form-control" aria-label="Digit 6">
+    </div>
+  </div>`} />
+
+## Sizing
+
+Use `.otp-sm` or `.otp-lg` for different sizes. Don't use the input group size classes on the `.otp` container as we override specific CSS variables for sizing.
+
+<Example class="vstack align-items-start gap-3" code={`<div class="otp input-group otp-sm" data-bs-otp>
+    <input type="text" class="form-control" aria-label="Digit 1">
+    <input type="text" class="form-control" aria-label="Digit 2">
+    <input type="text" class="form-control" aria-label="Digit 3">
+    <input type="text" class="form-control" aria-label="Digit 4">
+    <input type="text" class="form-control" aria-label="Digit 5">
+    <input type="text" class="form-control" aria-label="Digit 6">
+  </div>
+
+  <div class="otp input-group" data-bs-otp>
+    <input type="text" class="form-control" aria-label="Digit 1">
+    <input type="text" class="form-control" aria-label="Digit 2">
+    <input type="text" class="form-control" aria-label="Digit 3">
+    <input type="text" class="form-control" aria-label="Digit 4">
+    <input type="text" class="form-control" aria-label="Digit 5">
+    <input type="text" class="form-control" aria-label="Digit 6">
+  </div>
+
+  <div class="otp input-group otp-lg" data-bs-otp>
+    <input type="text" class="form-control" aria-label="Digit 1">
+    <input type="text" class="form-control" aria-label="Digit 2">
+    <input type="text" class="form-control" aria-label="Digit 3">
+    <input type="text" class="form-control" aria-label="Digit 4">
+    <input type="text" class="form-control" aria-label="Digit 5">
+    <input type="text" class="form-control" aria-label="Digit 6">
+  </div>`} />
+
+## Disabled
+
+Add the `disabled` attribute to each input to prevent interaction.
+
+<Example code={`<div class="otp input-group" data-bs-otp>
+    <input type="text" class="form-control" aria-label="Digit 1" disabled>
+    <input type="text" class="form-control" aria-label="Digit 2" disabled>
+    <input type="text" class="form-control" aria-label="Digit 3" disabled>
+    <input type="text" class="form-control" aria-label="Digit 4" disabled>
+    <input type="text" class="form-control" aria-label="Digit 5" disabled>
+    <input type="text" class="form-control" aria-label="Digit 6" disabled>
+  </div>`} />
+
+## Validation
+
+Add `.is-valid` or `.is-invalid` to the container to show validation states.
+
+<Example code={`<div class="otp input-group is-valid mb-3" data-bs-otp>
+    <input type="text" class="form-control" value="1" aria-label="Digit 1">
+    <input type="text" class="form-control" value="2" aria-label="Digit 2">
+    <input type="text" class="form-control" value="3" aria-label="Digit 3">
+    <input type="text" class="form-control" value="4" aria-label="Digit 4">
+    <input type="text" class="form-control" value="5" aria-label="Digit 5">
+    <input type="text" class="form-control" value="6" aria-label="Digit 6">
+  </div>
+  <div class="otp input-group is-invalid" data-bs-otp>
+    <input type="text" class="form-control" value="1" aria-label="Digit 1">
+    <input type="text" class="form-control" value="2" aria-label="Digit 2">
+    <input type="text" class="form-control" value="3" aria-label="Digit 3">
+    <input type="text" class="form-control" aria-label="Digit 4">
+    <input type="text" class="form-control" aria-label="Digit 5">
+    <input type="text" class="form-control" aria-label="Digit 6">
+  </div>`} />
+
+## With form labels
+
+Use a form label and help text for better accessibility.
+
+<Example code={`<div class="mb-3">
+    <label class="form-label" id="otpLabel">Verification code</label>
+    <div class="otp input-group" data-bs-otp aria-labelledby="otpLabel" aria-describedby="otpHelp">
+      <input type="text" class="form-control" aria-label="Digit 1">
+      <input type="text" class="form-control" aria-label="Digit 2">
+      <input type="text" class="form-control" aria-label="Digit 3">
+      <input type="text" class="form-control" aria-label="Digit 4">
+      <input type="text" class="form-control" aria-label="Digit 5">
+      <input type="text" class="form-control" aria-label="Digit 6">
+    </div>
+    <div id="otpHelp" class="form-text">Enter the 6-digit code sent to your phone.</div>
+  </div>`} />
+
+## Usage
+
+### Via data attributes
+
+Add `data-bs-otp` to your container element to automatically initialize the OTP input behavior.
+
+```html
+<div class="otp" data-bs-otp>
+  <input type="text" class="form-control">
+  <input type="text" class="form-control">
+  <input type="text" class="form-control">
+  <input type="text" class="form-control">
+</div>
+```
+
+### Via JavaScript
+
+Initialize manually with JavaScript:
+
+```js
+const otpElement = document.querySelector('.otp')
+const otpInput = new bootstrap.OtpInput(otpElement)
+```
+
+### Options
+
+Options can be passed via data attributes or JavaScript:
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `mask` | boolean | `false` | If `true`, inputs will use `type="password"` to hide the entered values. |
+
+### Methods
+
+| Method | Description |
+| --- | --- |
+| `getValue()` | Returns the complete OTP value as a string. |
+| `setValue(value)` | Sets the OTP value, distributing characters across inputs. |
+| `clear()` | Clears all inputs and focuses the first one. |
+| `focus()` | Focuses the first empty input, or the last input if all are filled. |
+| `dispose()` | Destroys the component instance. |
+
+```js
+const otpElement = document.querySelector('.otp')
+const otpInput = bootstrap.OtpInput.getOrCreateInstance(otpElement)
+
+// Get the current value
+console.log(otpInput.getValue()) // "123456"
+
+// Set a value programmatically
+otpInput.setValue('654321')
+
+// Clear all inputs
+otpInput.clear()
+```
+
+### Events
+
+| Event | Description |
+| --- | --- |
+| `complete.bs.otp` | Fired when all inputs are filled. The event's `value` property contains the complete code. |
+| `input.bs.otp` | Fired on each input change. Includes `value` (current combined value) and `index` (changed input index). |
+
+```js
+const otpElement = document.querySelector('.otp')
+
+otpElement.addEventListener('complete.bs.otp', event => {
+  console.log('OTP complete:', event.value)
+  // Submit the form or validate the code
+})
+
+otpElement.addEventListener('input.bs.otp', event => {
+  console.log('Current value:', event.value, 'Changed index:', event.index)
+})
+```
+
+## Accessibility
+
+- Each input should have an `aria-label` describing its position (e.g., "Digit 1")
+- Use a form label with `aria-labelledby` on the container
+- Add help text with `aria-describedby` for additional context
+- The component automatically sets `inputmode="numeric"` for mobile keyboards
+- Arrow keys allow navigation between inputs
+
+## CSS
+
+### Sass variables
+
+<ScssDocs name="otp-input-variables" file="scss/forms/_otp-input.scss" />

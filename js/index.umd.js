@@ -13,6 +13,7 @@ import Dialog from './src/dialog.js'
 import Dropdown from './src/dropdown.js'
 import Offcanvas from './src/offcanvas.js'
 import Strength from './src/strength.js'
+import OtpInput from './src/otp-input.js'
 import Popover from './src/popover.js'
 import ScrollSpy from './src/scrollspy.js'
 import Tab from './src/tab.js'
@@ -29,6 +30,7 @@ export default {
   Dropdown,
   Offcanvas,
   Strength,
+  OtpInput,
   Popover,
   ScrollSpy,
   Tab,
