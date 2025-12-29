@@ -23,15 +23,7 @@ Toggle dropdown menus with buttons whenever possible. Here's an example using a 
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They’re made interactive with the included Bootstrap dropdown JavaScript plugin. They’re toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/blog/bootstrap-explained-dropdowns/).
 
-Dropdowns are built on a third party library, [Floating UI](https://floating-ui.com/), which provides dynamic positioning and viewport detection. Be sure to include [floating-ui.dom.umd.min.js]([[config:cdn.floating_ui]]) before Bootstrap’s JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Floating UI. Popper isn’t used to position dropdowns in navbars though as dynamic positioning isn’t required.
-
-## Accessibility
-
-The [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr>](https://www.w3.org/TR/wai-aria/) standard defines an actual [`role="menu"` widget](https://www.w3.org/TR/wai-aria/#menu), but this is specific to application-like menus which trigger actions or functions. <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus can only contain menu items, checkbox menu items, radio button menu items, radio button groups, and sub-menus.
-
-Bootstrap’s dropdowns, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create dropdowns that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the `role` and `aria-` attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.
-
-However, Bootstrap does add built-in support for most standard keyboard menu interactions, such as the ability to move through individual `.dropdown-item` elements using the cursor keys and close the menu with the <kbd>Esc</kbd> key.
+Dropdowns are built on a third party library, [Floating UI](https://floating-ui.com/), which provides dynamic positioning and viewport detection. Be sure to include [floating-ui.dom.umd.min.js]([[config:cdn.floating_ui]]) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Floating UI. Popper isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
 
 ## Examples
 
@@ -134,145 +126,21 @@ And putting it to use in a navbar:
 
 ## Placement
 
-Use `data-bs-placement` on the toggle element to control where the dropdown menu appears. Placement options include `top`, `bottom`, `left`, and `right`, each with optional `-start` and `-end` alignment modifiers.
+Use `data-bs-placement` on the toggle element to control where the dropdown menu appears.
 
-<Callout>
-**Directions are flipped in RTL mode.** As such, `left` placements will appear on the right side.
-</Callout>
+**Physical placements:** `top`, `bottom`, `left`, `right` — fixed directions regardless of text direction.
 
-### Bottom
+**Logical placements:** `start`, `end` — automatically flip based on RTL. In LTR mode, `start` becomes `left` and `end` becomes `right`. In RTL mode, they swap.
 
-The default placement. Use `bottom`, `bottom-start`, or `bottom-end` to position the menu below the toggle.
+All placements support `-start` and `-end` alignment modifiers (e.g., `bottom-start`, `end-end`).
 
-<Example class="d-flex gap-2" code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom-start" aria-expanded="false">
-      Bottom start
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom" aria-expanded="false">
-      Bottom
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom-end" aria-expanded="false">
-      Bottom end
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>`} />
-
-### Top
-
-Use `top`, `top-start`, or `top-end` to position the menu above the toggle.
-
-<Example class="d-flex gap-2" code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="top-start" aria-expanded="false">
-      Top start
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="top" aria-expanded="false">
-      Top
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="top-end" aria-expanded="false">
-      Top end
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>`} />
-
-### Left
-
-Use `left`, `left-start`, or `left-end` to position the menu to the left of the toggle.
-
-<Example class="d-flex gap-2" code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="left-start" aria-expanded="false">
-      Left start
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="left" aria-expanded="false">
-      Left
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="left-end" aria-expanded="false">
-      Left end
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>`} />
-
-### Right
-
-Use `right`, `right-start`, or `right-end` to position the menu to the right of the toggle.
-
-<Example class="d-flex gap-2" code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="right-start" aria-expanded="false">
-      Right start
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="right" aria-expanded="false">
-      Right
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="right-end" aria-expanded="false">
-      Right end
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-    </ul>
-  </div>`} />
+<DropdownPlacementPlayground />
 
 ### Responsive
 
 Change placement at different breakpoints using responsive prefixes. The syntax is `breakpoint:placement`, where breakpoint is one of `sm`, `md`, `lg`, `xl`, or `2xl`. Multiple breakpoints can be combined in a single attribute, space-separated.
 
-For example, `data-bs-placement="bottom-start md:bottom-end lg:right-start"` will:
+For example, `data-bs-placement="bottom-start md:bottom-end lg:end-start"` will:
 
 - Show the menu at `bottom-start` on small screens (default)
 - Switch to `bottom-end` at the `md` breakpoint
@@ -316,16 +184,11 @@ You can use `<a>` or `<button>` elements as dropdown items.
 We use utility classes to display dropdown menus in our docs examples, but they're not required for your own use.
 </Callout>
 
-<Example code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropdown
-    </button>
-    <ul class="dropdown-menu">
-      <li><button class="dropdown-item" type="button">Action</button></li>
-      <li><button class="dropdown-item" type="button">Another action</button></li>
-      <li><button class="dropdown-item" type="button">Something else here</button></li>
-    </ul>
-  </div>`} />
+<Example code={`<ul class="dropdown-menu show position-static">
+    <li><button class="dropdown-item" type="button">Action</button></li>
+    <li><button class="dropdown-item" type="button">Another action</button></li>
+    <li><button class="dropdown-item" type="button">Something else here</button></li>
+  </ul>`} />
 
 You can also create non-interactive dropdown items with `.dropdown-item-text`. Feel free to style further with custom CSS or text utilities.
 
@@ -362,9 +225,10 @@ Add `.disabled` to items in the dropdown to style them as disabled.
 
 Add a header to label sections of actions in any dropdown menu.
 
-<Example code={`<ul class="dropdown-menu">
-    <li><h6 class="dropdown-header">Dropdown header</h6></li>
+<Example code={`<ul class="dropdown-menu show position-static">
     <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><h6 class="dropdown-header">Dropdown header</h6></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
   </ul>`} />
 
@@ -372,7 +236,7 @@ Add a header to label sections of actions in any dropdown menu.
 
 Separate groups of related menu items with a divider.
 
-<Example code={`<ul class="dropdown-menu">
+<Example code={`<ul class="dropdown-menu show position-static">
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -384,7 +248,8 @@ Separate groups of related menu items with a divider.
 
 Place any freeform text within a dropdown menu with text and use [margin]([[docsref:/utilities/margin]]) and [padding]([[docsref:/utilities/padding]]) utilities. Note that you’ll likely need additional sizing styles to constrain the menu width.
 
-<Example code={`<div class="dropdown-menu p-4 text-body-secondary" style="max-width: 200px;">
+<Example code={`<div class="dropdown-menu show position-static p-3 text-body-secondary"
+       style="--bs-dropdown-min-width: 240px;">
     <p>
       Some example text that’s free-flowing within the dropdown menu.
     </p>
@@ -397,54 +262,124 @@ Place any freeform text within a dropdown menu with text and use [margin]([[docs
 
 Put a form within a dropdown menu, or make it into a dropdown menu, and use [margin]([[docsref:/utilities/margin]]) and [padding]([[docsref:/utilities/padding]]) utilities to give it the negative space you require.
 
-<Example code={`<div class="dropdown-menu">
-    <form class="px-4 py-3">
-      <div class="mb-3">
+<Example code={`<div class="dropdown-menu show position-static"
+       style="--bs-dropdown-min-width: 300px;">
+    <form class="d-flex flex-column gap-3 p-3">
+      <div>
         <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
         <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
       </div>
-      <div class="mb-3">
+      <div>
         <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
         <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
       </div>
-      <div class="mb-3">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="dropdownCheck">
-          <label class="form-check-label" for="dropdownCheck">
-            Remember me
-          </label>
+      <b-checkgroup>
+        <div class="check">
+          <input type="checkbox" id="checkLabel" />
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+          </svg>
         </div>
+        <label for="checkLabel">Example new checkbox</label>
+      </b-checkgroup>
+      <div class="vstack gap-2">
+        <button type="submit" class="btn-solid theme-primary">Sign in</button>
+        <a class="btn-ghost theme-secondary" href="#">New around here? Sign up</a>
+        <a class="btn-ghost theme-secondary" href="#">Forgot password?</a>
       </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
     </form>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">New around here? Sign up</a>
-    <a class="dropdown-item" href="#">Forgot password?</a>
   </div>`} />
 
+## Submenus
+
+Create nested dropdown menus with the `.dropdown-submenu` wrapper class. Submenus support hover and click activation, keyboard navigation, viewport-aware positioning, and mobile slide-over behavior.
+
+Wrap a `.dropdown-item` trigger and a nested `.dropdown-menu` inside a `.dropdown-submenu` element.
+
 <Example code={`<div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-      Dropdown form
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown with submenu
     </button>
-    <form class="dropdown-menu p-4">
-      <div class="mb-3">
-        <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-      </div>
-      <div class="mb-3">
-        <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-      </div>
-      <div class="mb-3">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-          <label class="form-check-label" for="dropdownCheck2">
-            Remember me
-          </label>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li class="dropdown-divider"></li>
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">More options</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Sub-action 1</a></li>
+          <li><a class="dropdown-item" href="#">Sub-action 2</a></li>
+          <li><a class="dropdown-item" href="#">Sub-action 3</a></li>
+        </ul>
+      </li>
+      <li><a class="dropdown-item" href="#">Something else</a></li>
+    </ul>
+  </div>`} />
+
+### Nested submenus
+
+Submenus can be nested to multiple levels. Each level opens to the side and flips direction when there's not enough viewport space.
+
+<Example code={`<div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Multi-level menu
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Level 1 action</a></li>
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">Level 1 submenu</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Level 2 action</a></li>
+          <li class="dropdown-submenu">
+            <button class="dropdown-item" type="button">Level 2 submenu</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Level 3 action A</a></li>
+              <li><a class="dropdown-item" href="#">Level 3 action B</a></li>
+            </ul>
+          </li>
+          <li><a class="dropdown-item" href="#">Another level 2</a></li>
+        </ul>
+      </li>
+      <li><a class="dropdown-item" href="#">Another level 1</a></li>
+    </ul>
+  </div>`} />
+
+### Multiple submenus
+
+When multiple submenu triggers exist at the same level, opening one automatically closes the others.
+
+<Example code={`<div class="dropdown">
+    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Multiple submenus
+    </button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">File</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">New</a></li>
+          <li><a class="dropdown-item" href="#">Open</a></li>
+          <li><a class="dropdown-item" href="#">Save</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">Edit</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Cut</a></li>
+          <li><a class="dropdown-item" href="#">Copy</a></li>
+          <li><a class="dropdown-item" href="#">Paste</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <button class="dropdown-item" type="button">View</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Zoom In</a></li>
+          <li><a class="dropdown-item" href="#">Zoom Out</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Preferences</a></li>
+    </ul>
   </div>`} />
 
 ## Dropdown options
@@ -524,6 +459,28 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
       <li><a class="dropdown-item" href="#">Menu item</a></li>
     </ul>
   </div>`} />
+
+## Accessibility
+
+The [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr>](https://www.w3.org/TR/wai-aria/) standard defines an actual [`role="menu"` widget](https://www.w3.org/TR/wai-aria/#menu), but this is specific to application-like menus which trigger actions or functions. <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus can only contain menu items, checkbox menu items, radio button menu items, radio button groups, and sub-menus.
+
+Bootstrap's dropdowns, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create dropdowns that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the `role` and `aria-` attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.
+
+### Keyboard navigation
+
+Dropdowns include built-in keyboard support for navigating menu items.
+
+<BsTable>
+| Key | Action |
+| --- | --- |
+| `↓` / `↑` | Navigate to next/previous menu item |
+| `→` | Enter submenu (or `←` in RTL) |
+| `←` | Exit submenu and return to parent (or `→` in RTL) |
+| `Enter` / `Space` | Activate focused item or open submenu |
+| `Esc` | Close the dropdown menu |
+| `Home` / `End` | Jump to first/last menu item |
+| `Tab` | Move focus and close the dropdown |
+</BsTable>
 
 ## CSS
 
@@ -628,8 +585,10 @@ The dropdown plugin requires the following JavaScript files if you're building B
 | `display` | string | `'dynamic'` | By default, we use Floating UI for dynamic positioning. Disable this with `static`. |
 | `offset` | array, string, function | `[0, 2]` | Offset of the dropdown relative to its target. You can pass a string in data attributes with comma separated values like: `data-bs-offset="10,20"`. When a function is used to determine the offset, it is called with an object containing the placement, the reference, and floating rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: [skidding, distance]. For more information refer to Floating UI's [offset docs](https://floating-ui.com/docs/offset). |
 | `floatingConfig` | null, object, function | `null` | To change Bootstrap's default Floating UI config, see [Floating UI's configuration](https://floating-ui.com/docs/computePosition). When a function is used to create the Floating UI configuration, it's called with an object that contains the Bootstrap's default Floating UI configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Floating UI. |
-| `placement` | string | `'bottom-start'` | Placement of the dropdown menu. Can be any valid Floating UI placement: `'top'`, `'top-start'`, `'top-end'`, `'bottom'`, `'bottom-start'`, `'bottom-end'`, `'right'`, `'right-start'`, `'right-end'`, `'left'`, `'left-start'`, `'left-end'`. Supports responsive prefixes like `'bottom-start md:bottom-end lg:right'` to change placement at different breakpoints. |
+| `placement` | string | `'bottom-start'` | Placement of the dropdown menu. Physical placements: `'top'`, `'bottom'`, `'left'`, `'right'`. Logical placements (RTL-aware): `'start'`, `'end'`. All support alignment modifiers: `-start`, `-end`. Supports responsive prefixes like `'bottom-start md:end'`. |
 | `reference` | string, element, object | `'toggle'` | Reference element of the dropdown menu. Accepts the values of `'toggle'`, `'parent'`, an HTMLElement reference or an object providing `getBoundingClientRect`. For more information refer to Floating UI's [virtual elements docs](https://floating-ui.com/docs/virtual-elements). |
+| `submenuTrigger` | string | `'both'` | How submenus are triggered. Use `'click'` for click only, `'hover'` for hover only, or `'both'` for both click and hover activation. |
+| `submenuDelay` | number | `100` | Delay in milliseconds before closing a submenu when the mouse leaves. Provides a grace period for diagonal mouse movement toward the submenu. |
 </BsTable>
 
 #### Using function with `floatingConfig`

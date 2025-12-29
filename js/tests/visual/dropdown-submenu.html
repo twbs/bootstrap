@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Dropdown Submenus</title>
+    <style>
+      .test-section {
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .test-section:last-child {
+        border-bottom: 0;
+      }
+      .demo-box {
+        min-height: 300px;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .demo-box-center {
+        align-items: center;
+        justify-content: center;
+      }
+      .feature-list {
+        font-size: 0.875rem;
+        color: var(--fg-2);
+      }
+      .feature-list li {
+        margin-bottom: 0.25rem;
+      }
+      .keyboard-hint {
+        display: inline-block;
+        padding: 0.125rem 0.375rem;
+        font-size: 0.75rem;
+        font-family: ui-monospace, monospace;
+        background: var(--bg-2);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--border-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-4">
+      <h1 class="mb-4">Dropdown Submenus <small class="text-body-secondary">Bootstrap Visual Test</small></h1>
+
+      <div class="alert alert-info">
+        <strong>Keyboard Navigation:</strong>
+        <span class="keyboard-hint">↓</span> <span class="keyboard-hint">↑</span> navigate items,
+        <span class="keyboard-hint">→</span> enter submenu,
+        <span class="keyboard-hint">←</span> exit submenu,
+        <span class="keyboard-hint">Enter</span> or <span class="keyboard-hint">Space</span> activate,
+        <span class="keyboard-hint">Esc</span> close,
+        <span class="keyboard-hint">Home</span> <span class="keyboard-hint">End</span> jump to first/last
+      </div>
+
+      <!-- Basic Submenu -->
+      <section class="test-section">
+        <h2>Basic Submenu</h2>
+        <p class="text-body-secondary">Single level submenu with hover and click activation.</p>
+
+        <div class="demo-box">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown with Submenu
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  More options
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Sub-action 1</a></li>
+                  <li><a class="dropdown-item" href="#">Sub-action 2</a></li>
+                  <li><a class="dropdown-item" href="#">Sub-action 3</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#">Something else</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nested Submenus -->
+      <section class="test-section">
+        <h2>Nested Submenus (Multi-level)</h2>
+        <p class="text-body-secondary">Three levels of nested submenus.</p>
+
+        <div class="demo-box">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Multi-level Menu
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Level 1 - Action</a></li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  Level 1 - Submenu
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Level 2 - Action</a></li>
+                  <li class="dropdown-submenu">
+                    <button class="dropdown-item" type="button">
+                      Level 2 - Submenu
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Level 3 - Action A</a></li>
+                      <li><a class="dropdown-item" href="#">Level 3 - Action B</a></li>
+                      <li><a class="dropdown-item" href="#">Level 3 - Action C</a></li>
+                    </ul>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Level 2 - Another</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#">Level 1 - Another</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multiple Submenus -->
+      <section class="test-section">
+        <h2>Multiple Submenus at Same Level</h2>
+        <p class="text-body-secondary">Multiple submenu triggers in the same menu - opening one closes the other.</p>
+
+        <div class="demo-box">
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Multiple Submenus
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  File operations
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">New</a></li>
+                  <li><a class="dropdown-item" href="#">Open</a></li>
+                  <li><a class="dropdown-item" href="#">Save</a></li>
+                  <li><a class="dropdown-item" href="#">Save As...</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  Edit operations
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Cut</a></li>
+                  <li><a class="dropdown-item" href="#">Copy</a></li>
+                  <li><a class="dropdown-item" href="#">Paste</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  View options
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Zoom In</a></li>
+                  <li><a class="dropdown-item" href="#">Zoom Out</a></li>
+                  <li><a class="dropdown-item" href="#">Fit to Window</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Preferences</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Viewport Flipping Test -->
+      <section class="test-section">
+        <h2>Viewport Detection (Flipping)</h2>
+        <p class="text-body-secondary">Submenus flip to the opposite side when there's not enough space. Try the one on the right.</p>
+
+        <div class="demo-box" style="justify-content: space-between;">
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Left Side (opens right)
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  Submenu
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Sub-action 1</a></li>
+                  <li><a class="dropdown-item" href="#">Sub-action 2</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Right Side (flips left)
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  Submenu (should flip)
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Sub-action 1</a></li>
+                  <li><a class="dropdown-item" href="#">Sub-action 2</a></li>
+                  <li><a class="dropdown-item" href="#">Sub-action 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navbar Integration -->
+      <section class="test-section">
+        <h2>Navbar Integration</h2>
+        <p class="text-body-secondary">Submenus work within navbar dropdowns.</p>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary rounded">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSubmenu" aria-controls="navbarSubmenu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSubmenu">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Products
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                      <button class="dropdown-item" type="button">
+                        Electronics
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Phones</a></li>
+                        <li><a class="dropdown-item" href="#">Laptops</a></li>
+                        <li><a class="dropdown-item" href="#">Tablets</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                      <button class="dropdown-item" type="button">
+                        Clothing
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Men's</a></li>
+                        <li><a class="dropdown-item" href="#">Women's</a></li>
+                        <li><a class="dropdown-item" href="#">Kids</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">All Products</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </section>
+
+      <!-- Dropup with Submenus -->
+      <section class="test-section">
+        <h2>Dropup with Submenus</h2>
+        <p class="text-body-secondary">Submenus work with dropup direction.</p>
+
+        <div class="demo-box demo-box-center" style="min-height: 200px;">
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropup Menu
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  More options
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Sub-action 1</a></li>
+                  <li><a class="dropdown-item" href="#">Sub-action 2</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#">Something else</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- With Icons -->
+      <section class="test-section">
+        <h2>With Icons</h2>
+        <p class="text-body-secondary">Submenus with icons in menu items.</p>
+
+        <div class="demo-box">
+          <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu with Icons
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                  </svg>
+                  Recent
+                </a>
+              </li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14V3.5zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5V6zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7H1.633z"/>
+                  </svg>
+                  Folders
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Documents</a></li>
+                  <li><a class="dropdown-item" href="#">Downloads</a></li>
+                  <li><a class="dropdown-item" href="#">Pictures</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                  </svg>
+                  Settings
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mobile Test -->
+      <section class="test-section">
+        <h2>Mobile Mode</h2>
+        <p class="text-body-secondary">
+          Resize your browser to &lt;768px width to see slide-over behavior.
+          On mobile, submenus slide in from the side with a back button.
+        </p>
+
+        <div class="demo-box">
+          <div class="dropdown">
+            <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Test on Mobile
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  Navigate to submenu
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Sub-action 1</a></li>
+                  <li><a class="dropdown-item" href="#">Sub-action 2</a></li>
+                  <li class="dropdown-submenu">
+                    <button class="dropdown-item" type="button">
+                      Even deeper
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Deep action 1</a></li>
+                      <li><a class="dropdown-item" href="#">Deep action 2</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="#">Something else</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Disabled Items -->
+      <section class="test-section">
+        <h2>With Disabled Items</h2>
+        <p class="text-body-secondary">Keyboard navigation skips disabled items.</p>
+
+        <div class="demo-box">
+          <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu with Disabled
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Enabled action</a></li>
+              <li><a class="dropdown-item disabled" href="#">Disabled action</a></li>
+              <li class="dropdown-submenu">
+                <button class="dropdown-item" type="button">
+                  Submenu
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Enabled</a></li>
+                  <li><a class="dropdown-item disabled" href="#">Disabled</a></li>
+                  <li><a class="dropdown-item" href="#">Enabled</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Summary -->
+      <section class="test-section">
+        <h2>Feature Summary</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Mouse Interaction</h5>
+            <ul class="feature-list">
+              <li>✅ Hover to open submenus</li>
+              <li>✅ Click to toggle submenus</li>
+              <li>✅ Safe triangle / hover intent (diagonal movement)</li>
+              <li>✅ Configurable close delay</li>
+              <li>✅ Sibling submenus auto-close</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5>Keyboard Navigation</h5>
+            <ul class="feature-list">
+              <li>✅ Arrow Up/Down - navigate items</li>
+              <li>✅ Arrow Right - enter submenu (Left in RTL)</li>
+              <li>✅ Arrow Left - exit submenu (Right in RTL)</li>
+              <li>✅ Enter/Space - activate item or open submenu</li>
+              <li>✅ Escape - close current submenu or dropdown</li>
+              <li>✅ Home/End - jump to first/last item</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5>Viewport Detection</h5>
+            <ul class="feature-list">
+              <li>✅ Default: opens to inline-end (right in LTR)</li>
+              <li>✅ Flips to inline-start when not enough space</li>
+              <li>✅ Shift to stay within viewport</li>
+              <li>✅ Auto-update on scroll/resize</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5>Mobile Mode</h5>
+            <ul class="feature-list">
+              <li>✅ Slide-over animation</li>
+              <li>✅ Back button navigation</li>
+              <li>✅ Full-screen submenu panels</li>
+              <li>✅ Configurable breakpoint</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5>Accessibility</h5>
+            <ul class="feature-list">
+              <li>✅ aria-haspopup on submenu triggers</li>
+              <li>✅ aria-expanded state management</li>
+              <li>✅ Focus management</li>
+              <li>✅ Focus returns to trigger on close</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5>Configuration Options</h5>
+            <ul class="feature-list">
+              <li>✅ submenuTrigger: 'click' | 'hover' | 'both'</li>
+              <li>✅ submenuDelay: close delay in ms</li>
+              <li>✅ mobileBreakpoint: px for mobile mode</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>

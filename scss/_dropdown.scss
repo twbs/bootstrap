@@ -5,6 +5,7 @@
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/gradients" as *;
+@use "mixins/transition" as *;
 
 // scss-docs-start dropdown-variables
 $dropdown-gap:                      $spacer * .125 !default;
@@ -218,4 +219,60 @@ $dropdown-dark-header-color:        var(--gray-500) !default;
     --dropdown-header-color: #{$dropdown-dark-header-color};
     // scss-docs-end dropdown-dark-css-vars
   }
+
+  // scss-docs-start dropdown-submenu
+  // Submenus
+  //
+  // Nested dropdown menus with hover/click activation and keyboard support.
+
+  .dropdown-submenu {
+    position: relative;
+
+    // Submenu trigger styling
+    > .dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    // Submenu caret indicator
+    > .dropdown-item::after {
+      display: inline-block;
+      flex-shrink: 0;
+      width: .375em;
+      height: .375em;
+      margin-inline-start: auto;
+      content: "";
+      border-color: currentcolor;
+      border-style: solid;
+      border-width: 0 .125em .125em 0;
+      transform: rotate(-45deg);
+
+      // RTL: flip the chevron direction
+      [dir="rtl"] & {
+        transform: rotate(135deg);
+      }
+    }
+
+    // Submenu positioning (set by JS via Floating UI)
+    > .dropdown-menu {
+      top: 0;
+      // Offset to align with parent item
+      margin-top: calc(-1 * var(--dropdown-padding-y));
+    }
+
+    // Hover state for submenu trigger
+    &:hover > .dropdown-item,
+    &:focus-within > .dropdown-item {
+      color: var(--dropdown-link-hover-color);
+      background-color: var(--dropdown-link-hover-bg);
+    }
+
+    // Active/open state
+    &.show > .dropdown-item {
+      color: var(--dropdown-link-hover-color);
+      background-color: var(--dropdown-link-hover-bg);
+    }
+  }
+  // scss-docs-end dropdown-submenu
 }
