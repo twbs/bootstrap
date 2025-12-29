@@ -12,6 +12,7 @@ import Collapse from './src/collapse.js'
 import Dialog from './src/dialog.js'
 import Dropdown from './src/dropdown.js'
 import Offcanvas from './src/offcanvas.js'
+import Strength from './src/strength.js'
 import Popover from './src/popover.js'
 import ScrollSpy from './src/scrollspy.js'
 import Tab from './src/tab.js'
@@ -27,6 +28,7 @@ export default {
   Dialog,
   Dropdown,
   Offcanvas,
+  Strength,
   Popover,
   ScrollSpy,
   Tab,
