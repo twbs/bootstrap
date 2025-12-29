@@ -1,0 +1,126 @@
+@use "../config" as *;
+@use "../variables" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/transition" as *;
+@use "form-variables" as *;
+
+// scss-docs-start strength-variables
+$strength-height:          .375rem !default;
+$strength-gap:             .25rem !default;
+$strength-margin-top:      .25rem !default;
+$strength-border-radius:   var(--border-radius-pill) !default;
+$strength-bg:              var(--bg-2) !default;
+$strength-transition:      background-color .2s ease-in-out, width .3s ease-in-out !default;
+
+$strength-weak-color:      var(--danger-bg) !default;
+$strength-fair-color:      var(--warning-bg) !default;
+$strength-good-color:      var(--info-bg) !default;
+$strength-strong-color:    var(--success-bg) !default;
+// scss-docs-end strength-variables
+
+@layer forms {
+  // Strength meter container
+  .strength {
+    --strength-height: #{$strength-height};
+    --strength-gap: #{$strength-gap};
+    --strength-bg: #{$strength-bg};
+    --strength-border-radius: #{$strength-border-radius};
+    --strength-color: #{$strength-bg};
+
+    display: flex;
+    gap: var(--strength-gap);
+    width: 100%;
+    margin-top: $strength-margin-top;
+  }
+
+  // Individual strength segments
+  .strength-segment {
+    flex: 1;
+    height: var(--strength-height);
+    background-color: var(--strength-bg);
+    @include border-radius(var(--strength-border-radius));
+    @include transition($strength-transition);
+
+    // Filled state
+    &.active {
+      background-color: var(--strength-color);
+    }
+  }
+
+  // Strength levels - set the color variable
+  .strength[data-bs-strength="weak"] {
+    --strength-color: #{$strength-weak-color};
+  }
+
+  .strength[data-bs-strength="fair"] {
+    --strength-color: #{$strength-fair-color};
+  }
+
+  .strength[data-bs-strength="good"] {
+    --strength-color: #{$strength-good-color};
+  }
+
+  .strength[data-bs-strength="strong"] {
+    --strength-color: #{$strength-strong-color};
+  }
+
+  // Optional text feedback
+  .strength-text {
+    display: block;
+    margin-top: $strength-margin-top;
+    font-size: $small-font-size;
+    color: var(--strength-color, var(--secondary-color));
+    @include transition(color .2s ease-in-out);
+
+    // Hide when empty
+    &:empty {
+      display: none;
+    }
+  }
+
+  // Alternative: Single bar variant (like a progress bar)
+  .strength-bar {
+    --strength-height: #{$strength-height};
+    --strength-bg: #{$strength-bg};
+    --strength-border-radius: #{$strength-border-radius};
+    --strength-color: transparent;
+    --strength-width: 0%;
+
+    width: 100%;
+    height: var(--strength-height);
+    margin-top: $strength-margin-top;
+    overflow: hidden;
+    background-color: var(--strength-bg);
+    @include border-radius(var(--strength-border-radius));
+
+    &::after {
+      display: block;
+      width: var(--strength-width);
+      height: 100%;
+      content: "";
+      background-color: var(--strength-color);
+      @include border-radius(var(--strength-border-radius));
+      @include transition($strength-transition);
+    }
+
+    &[data-bs-strength="weak"] {
+      --strength-color: #{$strength-weak-color};
+      --strength-width: 25%;
+    }
+
+    &[data-bs-strength="fair"] {
+      --strength-color: #{$strength-fair-color};
+      --strength-width: 50%;
+    }
+
+    &[data-bs-strength="good"] {
+      --strength-color: #{$strength-good-color};
+      --strength-width: 75%;
+    }
+
+    &[data-bs-strength="strong"] {
+      --strength-color: #{$strength-strong-color};
+      --strength-width: 100%;
+    }
+  }
+}
