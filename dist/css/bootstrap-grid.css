@@ -4,19 +4,19 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 :root {
-  --bs-blue-025: color-mix(in lab, #fff 94%, oklch(60% 0.24 258deg));
-  --bs-blue-050: color-mix(in lab, #fff 90%, oklch(60% 0.24 258deg));
-  --bs-blue-100: color-mix(in lab, #fff 80%, oklch(60% 0.24 258deg));
-  --bs-blue-200: color-mix(in lab, #fff 60%, oklch(60% 0.24 258deg));
-  --bs-blue-300: color-mix(in lab, #fff 40%, oklch(60% 0.24 258deg));
-  --bs-blue-400: color-mix(in lab, #fff 20%, oklch(60% 0.24 258deg));
-  --bs-blue-500: oklch(60% 0.24 258deg);
-  --bs-blue-600: color-mix(in lab, #000 16%, oklch(60% 0.24 258deg));
-  --bs-blue-700: color-mix(in lab, #000 32%, oklch(60% 0.24 258deg));
-  --bs-blue-800: color-mix(in lab, #000 48%, oklch(60% 0.24 258deg));
-  --bs-blue-900: color-mix(in lab, #000 64%, oklch(60% 0.24 258deg));
-  --bs-blue-950: color-mix(in lab, #000 76%, oklch(60% 0.24 258deg));
-  --bs-blue-975: color-mix(in lab, #000 88%, oklch(60% 0.24 258deg));
+  --bs-blue-025: color-mix(in lab, #fff 94%, oklch(60% 0.24 240deg));
+  --bs-blue-050: color-mix(in lab, #fff 90%, oklch(60% 0.24 240deg));
+  --bs-blue-100: color-mix(in lab, #fff 80%, oklch(60% 0.24 240deg));
+  --bs-blue-200: color-mix(in lab, #fff 60%, oklch(60% 0.24 240deg));
+  --bs-blue-300: color-mix(in lab, #fff 40%, oklch(60% 0.24 240deg));
+  --bs-blue-400: color-mix(in lab, #fff 20%, oklch(60% 0.24 240deg));
+  --bs-blue-500: oklch(60% 0.24 240deg);
+  --bs-blue-600: color-mix(in lab, #000 16%, oklch(60% 0.24 240deg));
+  --bs-blue-700: color-mix(in lab, #000 32%, oklch(60% 0.24 240deg));
+  --bs-blue-800: color-mix(in lab, #000 48%, oklch(60% 0.24 240deg));
+  --bs-blue-900: color-mix(in lab, #000 64%, oklch(60% 0.24 240deg));
+  --bs-blue-950: color-mix(in lab, #000 76%, oklch(60% 0.24 240deg));
+  --bs-blue-975: color-mix(in lab, #000 88%, oklch(60% 0.24 240deg));
   --bs-indigo-025: color-mix(in lab, #fff 94%, oklch(56% 0.26 288deg));
   --bs-indigo-050: color-mix(in lab, #fff 90%, oklch(56% 0.26 288deg));
   --bs-indigo-100: color-mix(in lab, #fff 80%, oklch(56% 0.26 288deg));
