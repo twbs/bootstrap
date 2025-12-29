@@ -103,6 +103,7 @@
     - title: Scrollspy
     - title: Spinner
     - title: Toasts
+    - title: Toggler
     - title: Tooltip
 
 - title: Helpers
