@@ -35,6 +35,7 @@ const TRIGGER_HOVER = 'hover'
 const TRIGGER_FOCUS = 'focus'
 const TRIGGER_CLICK = 'click'
 const TRIGGER_MANUAL = 'manual'
+const ESCAPE_KEY = 'Escape'
 
 const EVENT_HIDE = 'hide'
 const EVENT_HIDDEN = 'hidden'
@@ -46,6 +47,7 @@ const EVENT_FOCUSIN = 'focusin'
 const EVENT_FOCUSOUT = 'focusout'
 const EVENT_MOUSEENTER = 'mouseenter'
 const EVENT_MOUSELEAVE = 'mouseleave'
+const EVENT_KEYDOWN_DISMISS = 'keydown.dismiss'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -205,11 +207,38 @@ class Tooltip extends BaseComponent {
 
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
 
-    const { container } = this._config
+    const { container, _trigger } = this._config
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip)
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED))
+
+      if (_trigger !== TRIGGER_MANUAL) {
+        this._maybeDismissHandler = event => {
+          if (event.key !== ESCAPE_KEY || !this._isWithActiveTrigger()) {
+            return
+          }
+
+          event.preventDefault()
+          event.stopPropagation()
+
+          this.hide()
+        }
+
+        EventHandler.on(document, this.constructor.eventName(EVENT_KEYDOWN_DISMISS), '*', this._maybeDismissHandler)
+
+        if (_trigger !== TRIGGER_CLICK) {
+          this._tipEventOut = event => {
+            this._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = this._isInside(event.relatedTarget)
+            this._leave()
+          }
+
+          for (const trigger of _trigger.split(' ')) {
+            const [, eventOut] = this._getTriggerEvents(trigger)
+            EventHandler.on(tip, eventOut, this._tipEventOut)
+          }
+        }
+      }
     }
 
     this._popper = this._createPopper(tip)
@@ -452,12 +481,7 @@ class Tooltip extends BaseComponent {
           context.toggle()
         })
       } else if (trigger !== TRIGGER_MANUAL) {
-        const eventIn = trigger === TRIGGER_HOVER ?
-          this.constructor.eventName(EVENT_MOUSEENTER) :
-          this.constructor.eventName(EVENT_FOCUSIN)
-        const eventOut = trigger === TRIGGER_HOVER ?
-          this.constructor.eventName(EVENT_MOUSELEAVE) :
-          this.constructor.eventName(EVENT_FOCUSOUT)
+        const [eventIn, eventOut] = this._getTriggerEvents(trigger)
 
         EventHandler.on(this._element, eventIn, this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event)
@@ -466,8 +490,7 @@ class Tooltip extends BaseComponent {
         })
         EventHandler.on(this._element, eventOut, this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event)
-          context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] =
-            context._element.contains(event.relatedTarget)
+          context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = this._isInside(event.relatedTarget)
 
           context._leave()
         })
@@ -536,6 +559,23 @@ class Tooltip extends BaseComponent {
     return Object.values(this._activeTrigger).includes(true)
   }
 
+  _isInside(el) {
+    return this._element.contains(el) || (this.tip && this.tip.contains(el))
+  }
+
+  _getTriggerEvents(trigger) {
+    return {
+      [TRIGGER_HOVER]: [
+        this.constructor.eventName(EVENT_MOUSEENTER),
+        this.constructor.eventName(EVENT_MOUSELEAVE)
+      ],
+      [TRIGGER_FOCUS]: [
+        this.constructor.eventName(EVENT_FOCUSIN),
+        this.constructor.eventName(EVENT_FOCUSOUT)
+      ]
+    }[trigger]
+  }
+
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
 
@@ -557,6 +597,11 @@ class Tooltip extends BaseComponent {
 
   _configAfterMerge(config) {
     config.container = config.container === false ? document.body : getElement(config.container)
+
+    // To support delegated tooltip events, tooltips created on the fly have their trigger config
+    // set to manual. This means that it's particularly difficult to check what triggers a delegated
+    // tooltip. This property stores the "original" trigger config for easy future reference.
+    config._trigger = config._trigger || config.trigger
 
     if (typeof config.delay === 'number') {
       config.delay = {
@@ -600,10 +645,25 @@ class Tooltip extends BaseComponent {
       this._popper = null
     }
 
-    if (this.tip) {
-      this.tip.remove()
-      this.tip = null
+    if (!this.tip) {
+      return
     }
+
+    const { _trigger } = this._config
+
+    if (_trigger !== TRIGGER_MANUAL) {
+      EventHandler.off(document, this.constructor.eventName(EVENT_KEYDOWN_DISMISS), '*', this._maybeDismissHandler)
+
+      if (_trigger !== TRIGGER_CLICK) {
+        for (const trigger of _trigger.split(' ')) {
+          const [, eventOut] = this._getTriggerEvents(trigger)
+          EventHandler.on(this.tip, eventOut, this._tipEventOut)
+        }
+      }
+    }
+
+    this.tip.remove()
+    this.tip = null
   }
 
   // Static
