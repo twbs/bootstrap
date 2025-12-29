@@ -26,7 +26,7 @@ const EVENT_SHOWN = `shown${EVENT_KEY}`
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_FOCUS_DATA_API = `focus${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY}${DATA_API_KEY}`
 
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="datepicker"]'
 
@@ -257,7 +257,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   Datepicker.getOrCreateInstance(this).toggle()
 })
 
-EventHandler.on(document, EVENT_FOCUS_DATA_API, SELECTOR_DATA_TOGGLE, function () {
+EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function () {
   // Handle focus for input elements
   if (this.tagName !== 'INPUT') {
     return
