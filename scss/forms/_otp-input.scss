@@ -1,0 +1,99 @@
+@use "../config" as *;
+@use "../variables" as *;
+@use "form-variables" as *;
+
+// scss-docs-start otp-input-variables
+$otp-input-size:              3rem !default;
+$otp-input-size-sm:           2.25rem !default;
+$otp-input-size-lg:           3.5rem !default;
+$otp-input-font-size:         $font-size-lg !default;
+$otp-input-font-size-sm:      $font-size-base !default;
+$otp-input-font-size-lg:      $font-size-lg * 1.25 !default;
+$otp-input-gap:               .5rem !default;
+// scss-docs-end otp-input-variables
+
+@layer forms {
+  .otp {
+    --otp-size: #{$otp-input-size};
+    --otp-font-size: #{$otp-input-font-size};
+    --otp-gap: #{$otp-input-gap};
+
+    display: inline-flex;
+    gap: var(--otp-gap);
+
+    .form-control {
+      width: var(--otp-size);
+      min-height: var(--otp-size);
+      padding: 0;
+      font-size: var(--otp-font-size);
+      font-weight: 500;
+      line-height: 1;
+      text-align: center;
+
+      // Remove default number spinners
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        margin: 0;
+        appearance: none;
+      }
+
+      &[type="number"] {
+        appearance: textfield;
+      }
+
+      &:focus,
+      &:focus-visible {
+        z-index: 1;
+      }
+    }
+
+    &.is-valid .form-control,
+    .was-validated &:valid .form-control {
+      border-color: var(--form-valid-border-color);
+
+      &:focus {
+        border-color: var(--form-valid-border-color);
+        --focus-ring-color: rgba(var(--success-rgb), .25);
+      }
+    }
+
+    &.is-invalid .form-control,
+    .was-validated &:invalid .form-control {
+      border-color: var(--form-invalid-border-color);
+
+      &:focus {
+        border-color: var(--form-invalid-border-color);
+        --focus-ring-color: rgba(var(--danger-rgb), .25);
+      }
+    }
+  }
+
+  // When used with .input-group, disable the gap and prevent inputs from stretching
+  .otp.input-group {
+    gap: 0;
+    width: auto; // Override input-group's width: 100%
+
+    .form-control {
+      flex: 0 0 auto; // Don't grow or shrink, use fixed width
+    }
+  }
+
+  .otp-separator {
+    display: flex;
+    align-items: center;
+    padding-inline: var(--otp-gap);
+    font-size: var(--otp-font-size);
+    color: var(--fg-4);
+    user-select: none;
+  }
+
+  .otp-sm {
+    --otp-size: #{$otp-input-size-sm};
+    --otp-font-size: #{$otp-input-font-size-sm};
+  }
+
+  .otp-lg {
+    --otp-size: #{$otp-input-size-lg};
+    --otp-font-size: #{$otp-input-font-size-lg};
+  }
+}
