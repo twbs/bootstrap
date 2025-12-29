@@ -1,98 +1,90 @@
 ---
 title: Toggler
-description: The Toggler plugin allows you to toggle attributes or classes using simple HTML markup.
+description: Toggle attributes or classes using nothing but data attributes.
 toc: true
 ---
 
-## How it works
+Toggler is a pure JavaScript component that can be used to avoid writing small or one-off JavaScript snippets to create interactive elements. Instead of writing custom JavaScript, use data attributes to toggle attribute values, changes classes, and more on `click` events.
 
-Attribute Toggler is a simple component, that preferable can be used to avoid writing small JavaScript snippets handle attributes toggling, during `click` events.
-Manipulation id done on the same element or on a targeted element
-
-**Heads up!** Toggler may handle all attributes, except `id's`
+<Callout type="warning">
+Toggler handles any attribute except `id`.
+</Callout>
 
 ## Examples
 
 ### Toggle class
 
-Below are some examples of class manipulation
+Toggle the class of an element by adding the `data-bs-toggle="toggler"` attribute to the element and the `data-bs-value` attribute to the value you want to toggle.
 
-<Example code={`<div class="card" data-bs-toggle="toggler" data-bs-value="bg-warning" data-bs-attribute="class">
-  <div class="card-body">Click this card, to change \`bg-color\`</div>
-</div>
+<Example code={`<div class="w-100 p-3 rounded border"
+       data-bs-toggle="toggler"
+       data-bs-value="fg-danger"
+       data-bs-attribute="class">
+    Click to toggle \`fg-danger\`
+  </div>`} />
 
-<div class="card mt-2" data-bs-toggle="toggler" data-bs-value="fg-danger" data-bs-attribute="class">
-  <div class="card-body">Click this card, to change \`text-color\`</div>
-</div>`} />
+### Remove existing
 
-### Toggle class of another element
+If the element already has the class specified in `data-bs-value`, toggling will remove it. Clicking again adds it back.
 
-Using `data-bs-toggle`, combined with `data-bs-target`, can manipulate another element's attribute
+<Example code={`<div class="w-100 p-3 rounded border bg-subtle-info"
+       data-bs-toggle="toggler"
+       data-bs-value="bg-subtle-info"
+       data-bs-attribute="class">
+    Starts with \`bg-subtle-info\`. Click to remove it.
+  </div>`} />
 
-<Example code={`<button class="btn btn-outline-primary" data-bs-toggle="toggler" data-bs-target="#togglerExample1">Click me</button>
+### Target element
 
-<div id="togglerExample1" class="card mt-2" data-bs-value="bg-info" data-bs-attribute="class">
-  <div class="card-body">Click this card, to change \`bg-color\`</div>
-</div>`} />
+Use `data-bs-toggle` with `data-bs-target` to toggle the class of another element.
 
-### Toggle class of multiple elements
+<Example class="d-flex gap-2 flex-column align-items-start" code={`<button class="btn-solid theme-primary" data-bs-toggle="toggler" data-bs-target="#togglerExample1">Toggle</button>
 
-Using `data-bs-toggle`, combined with `data-bs-target`, can manipulate another element's attribute
+  <div id="togglerExample1" class="w-100 p-3 rounded border" data-bs-value="bg-2" data-bs-attribute="class">
+    Use button to change \`bg-2\`
+  </div>`} />
 
-<Example code={`<button class="btn btn-outline-primary" data-bs-toggle="toggler" data-bs-target=".togglerExampleClass1">Click me</button>
+### Multiple elements
 
-<div class="card mt-2 togglerExampleClass1" data-bs-value="bg-info" data-bs-attribute="class">
-  <div class="card-body">Click this card, to change \`bg-color\`</div>
-</div>
+Use `data-bs-toggle` with a class name selector in `data-bs-target` to toggle the class of multiple elements.
 
-<div class="card mt-2 togglerExampleClass1" data-bs-value="bg-warning" data-bs-attribute="class">
-  <div class="card-body">Click this card, to change \`bg-color\`</div>
-</div>
+<Example class="vstack gap-2" code={`<button class="btn-solid theme-primary align-self-start"
+          data-bs-toggle="toggler" data-bs-target=".togglerExampleClass1">Toggle</button>
 
-<div class="card mt-2 togglerExampleClass1" data-bs-value="bg-info" data-bs-attribute="class">
-  <div class="card-body">Click this card, to change \`bg-color\`</div>
-</div>`} />
-
-### Toggle attributes
-
-Below are some examples of attributes manipulation
-
-<Example code={`<div class="card" data-bs-toggle="toggler" data-bs-value="true" data-bs-attribute="hidden">
-  <div class="card-body">Click this card, to change \`hidden\` attribute</div>
-</div>`} />
-
-### Toggle attributes of another element
-
-Using `data-bs-toggle`, combined with `data-bs-target`, can manipulate another element's attribute
-
-<Example code={`<button class="btn btn-outline-primary" data-bs-toggle="toggler" data-bs-target="#togglerExample2">Click to toggle \`disabled\` attribute on fieldset</button>
-
-<fieldset class="mt-3" id="togglerExample2" data-bs-value="disabled" data-bs-attribute="disabled">
-  <div class="mb-3">
-    <label for="disabledTextInput" class="form-label">Input</label>
-    <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+  <div class="w-100 p-3 rounded border togglerExampleClass1"
+       data-bs-value="bg-subtle-info"
+       data-bs-attribute="class">
+    Use button to toggle \`bg-subtle-info\`
   </div>
-  <div class="mb-3">
-    <label for="disabledSelect" class="form-label">Disabled select menu</label>
-    <select id="disabledSelect" class="form-control">
-      <option>Select</option>
-    </select>
-  </div>
-  <button type="submit" class="btn-solid theme-primary">Submit</button>
-</fieldset>`} />
+
+  <div class="w-100 p-3 rounded border togglerExampleClass1"
+       data-bs-value="bg-subtle-warning"
+       data-bs-attribute="class">
+    Use button to toggle \`bg-subtle-warning\`
+  </div>`} />
+
+### Toggle attribute
+
+Toggle attributes by using the `data-bs-toggle` attribute with the `data-bs-attribute` and `data-bs-value` attributes. For example, toggling the `hidden` attribute:
+
+<Example code={`<div class="w-100 p-3 rounded border"
+       data-bs-toggle="toggler"
+       data-bs-value="true"
+       data-bs-attribute="hidden">
+    Click to toggle \`hidden\` attribute
+  </div>`} />
+
+You could also use this to toggle the `disabled` attribute on a `fieldset` element to disable all the controls within. Or any other ideas you can think of with attributes.
+
+## Usage
 
 ### Via data attributes
 
-#### Toggle
-
-Add `data-bs-toggle="toggler"` to the element to automatically.
-The `data-bs-target` is optional, and attribute accepts a CSS selector to apply the toggler functionality to.
-Be sure to add the `data-bs-attribute` and `data-bs-value` attributes  on the toggled element's markup
+Add `data-bs-toggle="toggler"` to the element to automatically. The `data-bs-target` is optional, and attribute accepts a CSS selector to apply the toggler functionality to. Be sure to add the `data-bs-attribute` and `data-bs-value` attributes to the toggled element's markup.
 
 ### Via JavaScript
 
-Using this component, programmatically is a bit of redundant, as the initial purpose of it is to avoid use js.
-However, enable manually with:
+We don't recommend using this component programmatically, as the initial purpose of it is to avoid using JavaScript. However, you can enable manually with:
 
 ```js
 var togglerElementList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="toggler"]'))
