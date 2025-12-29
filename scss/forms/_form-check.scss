@@ -64,8 +64,8 @@
   }
 
   &:checked {
-    background-color: $form-check-input-checked-bg-color;
-    border-color: $form-check-input-checked-border-color;
+    background-color: var(--#{$prefix}form-check-input-checked-bg-color);
+    border-color: var(--#{$prefix}form-check-input-checked-border-color);
 
     &[type="checkbox"] {
       @if $enable-gradients {
