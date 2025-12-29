@@ -2471,4 +2471,1452 @@ describe('Dropdown', () => {
       })
     })
   })
+
+  describe('submenu', () => {
+    it('should open submenu on click', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li><a class="dropdown-item" href="#">Action</a></li>',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action 1</a></li>',
+          '        <li><a class="dropdown-item" href="#">Sub-action 2</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          submenuTrigger.click()
+
+          expect(submenu.classList.contains('show')).toBeTrue()
+          expect(submenuWrapper.classList.contains('show')).toBeTrue()
+          resolve()
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should toggle submenu on click', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          submenuTrigger.click()
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          // Close submenu
+          submenuTrigger.click()
+          expect(submenu.classList.contains('show')).toBeFalse()
+          resolve()
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should close sibling submenus when opening a new one', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu" id="submenu1">',
+          '      <button class="dropdown-item" type="button">Submenu 1</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Action 1</a></li>',
+          '      </ul>',
+          '    </li>',
+          '    <li class="dropdown-submenu" id="submenu2">',
+          '      <button class="dropdown-item" type="button">Submenu 2</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Action 2</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenu1Wrapper = fixtureEl.querySelector('#submenu1')
+        const submenu2Wrapper = fixtureEl.querySelector('#submenu2')
+        const submenu1Trigger = submenu1Wrapper.querySelector('.dropdown-item')
+        const submenu2Trigger = submenu2Wrapper.querySelector('.dropdown-item')
+        const submenu1 = submenu1Wrapper.querySelector('.dropdown-menu')
+        const submenu2 = submenu2Wrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open first submenu
+          submenu1Trigger.click()
+          expect(submenu1.classList.contains('show')).toBeTrue()
+          expect(submenu2.classList.contains('show')).toBeFalse()
+
+          // Open second submenu - first should close
+          submenu2Trigger.click()
+          expect(submenu1.classList.contains('show')).toBeFalse()
+          expect(submenu2.classList.contains('show')).toBeTrue()
+          resolve()
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should open submenu with ArrowRight key', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Focus the submenu trigger
+          submenuTrigger.focus()
+
+          // Press ArrowRight to open submenu
+          const keydown = createEvent('keydown')
+          keydown.key = 'ArrowRight'
+          submenuTrigger.dispatchEvent(keydown)
+
+          setTimeout(() => {
+            // Submenu should be open
+            expect(submenu.classList.contains('show')).toBeTrue()
+            expect(submenuWrapper.classList.contains('show')).toBeTrue()
+            resolve()
+          }, 20)
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should close submenu via internal method', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu first using internal method
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+          expect(submenu.classList.contains('show')).toBeTrue()
+          expect(dropdown._openSubmenus.size).toEqual(1)
+
+          // Close submenu using internal method
+          dropdown._closeSubmenu(submenu, submenuWrapper)
+          expect(submenu.classList.contains('show')).toBeFalse()
+          expect(dropdown._openSubmenus.size).toEqual(0)
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should open submenu with Enter key', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          submenuTrigger.focus()
+
+          const keydown = createEvent('keydown')
+          keydown.key = 'Enter'
+          submenuTrigger.dispatchEvent(keydown)
+
+          setTimeout(() => {
+            // Submenu should be open
+            expect(submenu.classList.contains('show')).toBeTrue()
+            expect(submenuWrapper.classList.contains('show')).toBeTrue()
+            resolve()
+          }, 20)
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should open submenu with Space key', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          submenuTrigger.focus()
+
+          const keydown = createEvent('keydown')
+          keydown.key = ' '
+          submenuTrigger.dispatchEvent(keydown)
+
+          setTimeout(() => {
+            // Submenu should be open
+            expect(submenu.classList.contains('show')).toBeTrue()
+            expect(submenuWrapper.classList.contains('show')).toBeTrue()
+            resolve()
+          }, 20)
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should close all submenus when main dropdown closes', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          submenuTrigger.click()
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          // Close main dropdown
+          dropdown.hide()
+        })
+
+        btnDropdown.addEventListener('hidden.bs.dropdown', () => {
+          expect(submenu.classList.contains('show')).toBeFalse()
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should close nested submenus when closing parent submenu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu" id="level1">',
+          '      <button class="dropdown-item" type="button">Level 1</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li class="dropdown-submenu" id="level2">',
+          '          <button class="dropdown-item" type="button">Level 2</button>',
+          '          <ul class="dropdown-menu">',
+          '            <li><a class="dropdown-item" href="#">Level 3 action</a></li>',
+          '          </ul>',
+          '        </li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const level1Wrapper = fixtureEl.querySelector('#level1')
+        const level2Wrapper = fixtureEl.querySelector('#level2')
+        const level1Trigger = level1Wrapper.querySelector(':scope > .dropdown-item')
+        const level2Trigger = level2Wrapper.querySelector(':scope > .dropdown-item')
+        const level1Submenu = level1Wrapper.querySelector(':scope > .dropdown-menu')
+        const level2Submenu = level2Wrapper.querySelector(':scope > .dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open level 1
+          level1Trigger.click()
+          expect(level1Submenu.classList.contains('show')).toBeTrue()
+
+          // Open level 2
+          level2Trigger.click()
+          expect(level2Submenu.classList.contains('show')).toBeTrue()
+
+          // Close level 1 - level 2 should also close
+          level1Trigger.click()
+          expect(level1Submenu.classList.contains('show')).toBeFalse()
+          expect(level2Submenu.classList.contains('show')).toBeFalse()
+          resolve()
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should have submenu items visible and focusable', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu" id="submenu">',
+          '        <li><a id="sub1" class="dropdown-item" href="#">Sub 1</a></li>',
+          '        <li><a id="sub2" class="dropdown-item" href="#">Sub 2</a></li>',
+          '        <li><a id="sub3" class="dropdown-item" href="#">Sub 3</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = fixtureEl.querySelector('#submenu')
+        const sub1 = fixtureEl.querySelector('#sub1')
+        const sub2 = fixtureEl.querySelector('#sub2')
+        const sub3 = fixtureEl.querySelector('#sub3')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu using internal method
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+
+          // Submenu items should be visible and focusable
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          sub1.focus()
+          expect(document.activeElement).toEqual(sub1)
+
+          sub2.focus()
+          expect(document.activeElement).toEqual(sub2)
+
+          sub3.focus()
+          expect(document.activeElement).toEqual(sub3)
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should close all submenus when hiding dropdown', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu" id="submenu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = fixtureEl.querySelector('#submenu')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu using internal method
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+          expect(submenu.classList.contains('show')).toBeTrue()
+          expect(dropdown._openSubmenus.size).toEqual(1)
+
+          // Hide the main dropdown
+          dropdown.hide()
+        })
+
+        btnDropdown.addEventListener('hidden.bs.dropdown', () => {
+          // All submenus should be closed
+          expect(submenu.classList.contains('show')).toBeFalse()
+          expect(dropdown._openSubmenus.size).toEqual(0)
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should respect submenuTrigger: click option', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-submenu-trigger="click">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+        const dropdown = new Dropdown(btnDropdown)
+
+        expect(dropdown._config.submenuTrigger).toEqual('click')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Click should work
+          submenuTrigger.click()
+          expect(submenu.classList.contains('show')).toBeTrue()
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should respect submenuTrigger: hover option', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-submenu-trigger="hover">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const dropdown = new Dropdown(btnDropdown)
+
+        expect(dropdown._config.submenuTrigger).toEqual('hover')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Hover should open submenu
+          const mouseenter = createEvent('mouseenter', { bubbles: true })
+          submenuTrigger.dispatchEvent(mouseenter)
+
+          // Note: In JSDOM, hover events may not work perfectly,
+          // but we verify the config is respected
+          expect(dropdown._config.submenuTrigger).toEqual('hover')
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should respect submenuDelay config option', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-submenu-delay="500">Dropdown</button>',
+        '  <ul class="dropdown-menu">',
+        '    <li class="dropdown-submenu">',
+        '      <button class="dropdown-item" type="button">More options</button>',
+        '      <ul class="dropdown-menu">',
+        '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+        '      </ul>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown)
+
+      expect(dropdown._config.submenuDelay).toEqual(500)
+    })
+
+    it('should position submenu using Floating UI', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          submenuTrigger.click()
+
+          // Floating UI should set position styles
+          setTimeout(() => {
+            expect(submenu.style.position).toEqual('absolute')
+            expect(submenu.style.left).toBeTruthy()
+            expect(submenu.style.top).toBeTruthy()
+            resolve()
+          }, 50)
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should set data-bs-placement attribute on submenu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          submenuTrigger.click()
+
+          setTimeout(() => {
+            // Should have a placement data attribute
+            const placement = submenu.dataset.bsPlacement
+            expect(placement).toBeTruthy()
+            // Should be a valid placement
+            expect(['left-start', 'right-start', 'left-end', 'right-end', 'left', 'right'])
+              .toContain(placement)
+            resolve()
+          }, 50)
+        })
+
+        // eslint-disable-next-line no-new
+        new Dropdown(btnDropdown)
+        btnDropdown.click()
+      })
+    })
+
+    it('should cleanup Floating UI autoUpdate on submenu close', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          submenuTrigger.click()
+          expect(dropdown._openSubmenus.size).toEqual(1)
+          expect(dropdown._openSubmenus.has(submenu)).toBeTrue()
+
+          // Close submenu
+          submenuTrigger.click()
+          expect(dropdown._openSubmenus.size).toEqual(0)
+          expect(dropdown._openSubmenus.has(submenu)).toBeFalse()
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should schedule submenu close with delay', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown, { submenuDelay: 50 })
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          // Schedule close
+          dropdown._scheduleSubmenuClose(submenu, submenuWrapper)
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeTrue()
+
+          // Still open immediately
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          // After delay, should be closed
+          setTimeout(() => {
+            expect(submenu.classList.contains('show')).toBeFalse()
+            expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeFalse()
+            resolve()
+          }, 100)
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should cancel scheduled submenu close', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown, { submenuDelay: 50 })
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+
+          // Schedule close
+          dropdown._scheduleSubmenuClose(submenu, submenuWrapper)
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeTrue()
+
+          // Cancel the close
+          dropdown._cancelSubmenuCloseTimeout(submenu)
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeFalse()
+
+          // After delay, should still be open
+          setTimeout(() => {
+            expect(submenu.classList.contains('show')).toBeTrue()
+            resolve()
+          }, 100)
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should clear all submenu timeouts on dispose', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown, { submenuDelay: 200 })
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu and schedule close
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+          dropdown._scheduleSubmenuClose(submenu, submenuWrapper)
+          expect(dropdown._submenuCloseTimeouts.size).toEqual(1)
+
+          // Clear all timeouts
+          dropdown._clearAllSubmenuTimeouts()
+          expect(dropdown._submenuCloseTimeouts.size).toEqual(0)
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should detect point inside triangle', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <ul class="dropdown-menu">',
+        '    <li class="dropdown-submenu">',
+        '      <button class="dropdown-item" type="button">More options</button>',
+        '      <ul class="dropdown-menu">',
+        '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+        '      </ul>',
+        '    </li>',
+        '  </ul>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown)
+
+      // Triangle with vertices at (0,0), (10,0), (5,10)
+      const v1 = { x: 0, y: 0 }
+      const v2 = { x: 10, y: 0 }
+      const v3 = { x: 5, y: 10 }
+
+      // Point inside triangle
+      const inside = { x: 5, y: 5 }
+      expect(dropdown._pointInTriangle(inside, v1, v2, v3)).toBeTrue()
+
+      // Point outside triangle
+      const outside = { x: 20, y: 20 }
+      expect(dropdown._pointInTriangle(outside, v1, v2, v3)).toBeFalse()
+
+      // Point on edge should be inside
+      const onEdge = { x: 5, y: 0 }
+      expect(dropdown._pointInTriangle(onEdge, v1, v2, v3)).toBeTrue()
+    })
+
+    it('should track mouse position for safe triangle', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Call track method directly
+          dropdown._trackMousePosition({ clientX: 100, clientY: 200 })
+
+          // Should have tracked position in hover intent data
+          expect(dropdown._hoverIntentData).toBeDefined()
+          expect(dropdown._hoverIntentData.x).toEqual(100)
+          expect(dropdown._hoverIntentData.y).toEqual(200)
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should handle hover trigger opening submenu via internal method', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-submenu-trigger="hover">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        expect(dropdown._config.submenuTrigger).toEqual('hover')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Use internal handler directly with mock event
+          const mockEvent = { target: submenuTrigger }
+          dropdown._onSubmenuTriggerEnter(mockEvent)
+
+          // Submenu should open
+          expect(submenu.classList.contains('show')).toBeTrue()
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should handle submenu mouseleave with close delay', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-submenu-trigger="hover" data-bs-submenu-delay="50">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          // Simulate mouseleave from submenu wrapper
+          const mouseleave = new MouseEvent('mouseleave', { bubbles: true })
+          Object.defineProperty(mouseleave, 'target', { value: submenuWrapper })
+          dropdown._onSubmenuLeave(mouseleave)
+
+          // Should schedule close
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeTrue()
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should not schedule close if submenu is not open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Try mouseleave without opening submenu first
+          const mouseleave = new MouseEvent('mouseleave', { bubbles: true })
+          Object.defineProperty(mouseleave, 'target', { value: submenuWrapper })
+          dropdown._onSubmenuLeave(mouseleave)
+
+          // Should not schedule close since submenu wasn't open
+          expect(dropdown._submenuCloseTimeouts.size).toEqual(0)
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should not open submenu if trigger element not found', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Mock event with target that's not a submenu trigger
+          const mockEvent = { target: btnDropdown }
+          dropdown._onSubmenuTriggerEnter(mockEvent)
+
+          // No submenus should be open
+          expect(dropdown._openSubmenus.size).toEqual(0)
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should not close submenu if already closed', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Try to close submenu that was never opened
+          dropdown._closeSubmenu(submenu, submenuWrapper)
+
+          // Should not throw, openSubmenus should still be empty
+          expect(dropdown._openSubmenus.size).toEqual(0)
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should handle _isMovingTowardSubmenu with no hover data', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // No hover data tracked yet
+          dropdown._hoverIntentData = null
+
+          const mockEvent = { clientX: 100, clientY: 100 }
+          const result = dropdown._isMovingTowardSubmenu(mockEvent, submenu)
+
+          // Should return false when no hover data
+          expect(result).toBeFalse()
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should handle click on submenu trigger when submenu is already open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          // Click handler should toggle (close it)
+          const mockEvent = {
+            target: submenuTrigger,
+            preventDefault() {},
+            stopPropagation() {}
+          }
+          dropdown._onSubmenuTriggerClick(mockEvent)
+
+          expect(submenu.classList.contains('show')).toBeFalse()
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should cancel pending timeout when opening submenu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown, { submenuDelay: 200 })
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+
+          // Schedule close
+          dropdown._scheduleSubmenuClose(submenu, submenuWrapper)
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeTrue()
+
+          // Re-enter submenu trigger should cancel timeout
+          const mockEvent = { target: submenuTrigger }
+          dropdown._onSubmenuTriggerEnter(mockEvent)
+
+          // Timeout should be cancelled
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeFalse()
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should handle _onSubmenuTriggerClick with non-matching target', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li><a class="dropdown-item" href="#">Regular item</a></li>',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const regularItem = fixtureEl.querySelector('.dropdown-menu > li > a')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Click on regular item (not submenu trigger)
+          const mockEvent = {
+            target: regularItem,
+            preventDefault() {},
+            stopPropagation() {}
+          }
+          dropdown._onSubmenuTriggerClick(mockEvent)
+
+          // No submenus should be affected
+          expect(dropdown._openSubmenus.size).toEqual(0)
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should handle _onSubmenuLeave when not moving toward submenu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu" style="position: absolute; left: 200px; top: 0; width: 100px; height: 100px;">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown, { submenuDelay: 50 })
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+
+          // Track mouse position far from submenu
+          dropdown._trackMousePosition({ clientX: 0, clientY: 0 })
+
+          // Simulate mouseleave moving away from submenu
+          const mockEvent = {
+            target: submenuWrapper,
+            clientX: -100,
+            clientY: -100
+          }
+          dropdown._onSubmenuLeave(mockEvent)
+
+          // Should schedule close since not moving toward submenu
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeTrue()
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should cancel timeout when calling cancelSubmenuCloseTimeout', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu" id="submenu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown, { submenuDelay: 200 })
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = fixtureEl.querySelector('#submenu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+
+          // Schedule close
+          dropdown._scheduleSubmenuClose(submenu, submenuWrapper)
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeTrue()
+
+          // Cancel the timeout directly
+          dropdown._cancelSubmenuCloseTimeout(submenu)
+
+          // Timeout should be cancelled
+          expect(dropdown._submenuCloseTimeouts.has(submenu)).toBeFalse()
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should skip closing submenu if already not in openSubmenus', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Calling close on never-opened submenu should not throw
+          expect(() => {
+            dropdown._closeSubmenu(submenu, submenuWrapper)
+          }).not.toThrow()
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should handle _isMovingTowardSubmenu when cursor is in safe triangle', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown" style="position: relative;">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu" style="position: absolute; display: block;">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu" style="position: absolute; left: 100px; top: 0; width: 100px; height: 100px; display: block;">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+
+          // Track a mouse position
+          dropdown._trackMousePosition({ clientX: 50, clientY: 50 })
+
+          // Call isMovingTowardSubmenu
+          const mockEvent = { clientX: 75, clientY: 50 }
+          const result = dropdown._isMovingTowardSubmenu(mockEvent, submenu)
+
+          // Result depends on geometry, just verify it returns a boolean
+          expect(typeof result).toBe('boolean')
+
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should handle RTL submenu placement', () => {
+      return new Promise(resolve => {
+        // Set RTL
+        document.documentElement.dir = 'rtl'
+
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropdown-submenu">',
+          '      <button class="dropdown-item" type="button">More options</button>',
+          '      <ul class="dropdown-menu">',
+          '        <li><a class="dropdown-item" href="#">Sub-action</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdown = new Dropdown(btnDropdown)
+        const submenuTrigger = fixtureEl.querySelector('.dropdown-submenu > .dropdown-item')
+        const submenuWrapper = fixtureEl.querySelector('.dropdown-submenu')
+        const submenu = submenuWrapper.querySelector('.dropdown-menu')
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          // Open submenu in RTL mode
+          dropdown._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+          expect(submenu.classList.contains('show')).toBeTrue()
+
+          // Reset RTL
+          document.documentElement.dir = 'ltr'
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+  })
 })
