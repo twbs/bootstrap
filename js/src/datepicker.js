@@ -8,7 +8,6 @@
 import { Calendar } from 'vanilla-calendar-pro'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
-import SelectorEngine from './dom/selector-engine.js'
 import { isDisabled } from './util/index.js'
 
 /**
@@ -120,11 +119,12 @@ class Datepicker extends BaseComponent {
   }
 
   dispose() {
-    if (this._cleanupFn) {
-      this._cleanupFn()
+    if (this._calendar) {
+      this._calendar.destroy()
     }
 
     this._calendar = null
+    this._cleanupFn = null
     super.dispose()
   }
 
@@ -151,7 +151,7 @@ class Datepicker extends BaseComponent {
       selectionDatesMode: this._config.selectionMode,
       selectedDates: this._config.selectedDates,
       selectedTheme: 'system',
-      themeAttrDetect: 'data-bs-theme'
+      themeAttrDetect: '[data-bs-theme]'
     }
 
     if (this._config.dateMin) {
@@ -258,32 +258,12 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 })
 
 EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE, function () {
-  // Handle focus for input elements
+  // Handle focus for input elements - VCP handles show internally
   if (this.tagName !== 'INPUT') {
     return
   }
 
-  Datepicker.getOrCreateInstance(this).show()
-})
-
-// Close on outside click
-EventHandler.on(document, 'click', event => {
-  const openDatepickers = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
-  for (const element of openDatepickers) {
-    const instance = Datepicker.getInstance(element)
-    if (!instance || !instance._isShown) {
-      continue
-    }
-
-    // Check if click is outside the element and calendar
-    const calendarEl = instance._calendar?.context?.mainElement
-    if (
-      !element.contains(event.target) &&
-      (!calendarEl || !calendarEl.contains(event.target))
-    ) {
-      instance.hide()
-    }
-  }
+  Datepicker.getOrCreateInstance(this)
 })
 
 export default Datepicker
