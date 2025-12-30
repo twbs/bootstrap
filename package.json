@@ -116,7 +116,7 @@
     "@babel/cli": "^7.28.3",
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
-    "@docsearch/js": "^3.9.0",
+    "@docsearch/js": "^4.4.0",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-commonjs": "^29.0.0",
@@ -141,7 +141,7 @@
     "eslint-plugin-unicorn": "56.0.1",
     "find-unused-sass-variables": "^6.1.1",
     "github-slugger": "^2.0.0",
-    "globby": "^16.0.0",
+    "globby": "^16.1.0",
     "hammer-simulator": "0.0.1",
     "htmlparser2": "^10.0.0",
     "image-size": "^2.0.2",
@@ -179,7 +179,7 @@
     "stylelint-config-twbs-bootstrap": "^16.1.0",
     "terser": "^5.44.1",
     "unist-util-visit": "^5.0.0",
-    "vnu-jar": "25.11.25",
+    "vnu-jar": "25.12.30",
     "zod": "^4.2.1"
   },
   "files": [
