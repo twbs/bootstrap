@@ -901,7 +901,7 @@ describe('ScrollSpy', () => {
       expect(clickSpy).not.toHaveBeenCalled()
     })
 
-    it('should call `scrollTop` if element doesn\'t not support `scrollTo`', () => {
+    it('should call `scrollTop` if element doesn\'t support `scrollTo`', () => {
       fixtureEl.innerHTML = getDummyFixture()
 
       const div = fixtureEl.querySelector('.content')
@@ -943,7 +943,7 @@ describe('ScrollSpy', () => {
       link.click()
     })
 
-    it('should smoothscroll to observable with anchor link that contains a french word as id', done => {
+    it('should smoothScroll to observable with anchor link that contains a french word as id', done => {
       fixtureEl.innerHTML = [
         '<nav id="navBar" class="navbar">',
         '  <ul class="nav">',
@@ -975,6 +975,99 @@ describe('ScrollSpy', () => {
         done()
       }, 100)
       link.click()
+    })
+
+    it('should enable smoothScroll and support scroll if ScrollSpy is enabled and section is visible', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
+
+      const div = fixtureEl.querySelector('.content')
+      const target = fixtureEl.querySelector('#navBar')
+
+      // Initialize ScrollSpy with smoothScroll enabled
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        smoothScroll: true
+      })
+
+      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+      expect(onSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy', '[href]', jasmine.any(Function))
+    })
+
+    it('should disable smoothScroll and support scroll if ScrollSpy is disabled and section is visible', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+      const offSpy = spyOn(EventHandler, 'off').and.callThrough()
+      const onSpy = spyOn(EventHandler, 'on').and.callThrough()
+
+      const div = fixtureEl.querySelector('.content')
+      const target = fixtureEl.querySelector('#navBar')
+
+      // Initialize ScrollSpy with smoothScroll disabled
+      // Modify configuration to ensure offSpy is called
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        smoothScroll: false
+      })
+
+      EventHandler.off(target, 'click.bs.scrollspy')
+
+      // Verify `EventHandler.off` was called
+      expect(offSpy).toHaveBeenCalledWith(target, 'click.bs.scrollspy')
+      // Verify `EventHandler.on` was not called
+      expect(onSpy).not.toHaveBeenCalled()
+    })
+
+    it('should not smoothScroll if section is not visible, even if ScrollSpy is enabled', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navBar" class="navbar">',
+        '  <ul class="nav">',
+        '    <a id="anchor-1" href="#hidden-section">div 1</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
+        '  <div id="hidden-section" style="display: none;">div 1</div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      // Initialize ScrollSpy with smoothScroll enabled
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        smoothScroll: true
+      })
+
+      const clickSpy = getElementScrollSpy(div)
+
+      fixtureEl.querySelector('#anchor-1').click()
+      expect(clickSpy).not.toHaveBeenCalled()
+    })
+
+    it('should not smoothScroll if section is not visible and smoothScroll is disabled', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navBar" class="navbar">',
+        '  <ul class="nav">',
+        '    <a id="anchor-1" href="#hidden-section">div 1</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div class="content" data-bs-target="#navBar" style="overflow-y: auto">',
+        '  <div id="hidden-section" style="display: none;">div 1</div>',
+        '</div>'
+      ].join('')
+
+      const div = fixtureEl.querySelector('.content')
+
+      // Initialize ScrollSpy with smoothScroll disabled
+      // eslint-disable-next-line no-new
+      new ScrollSpy(div, {
+        smoothScroll: false
+      })
+
+      const clickSpy = getElementScrollSpy(div)
+
+      fixtureEl.querySelector('#anchor-1').click()
+      expect(clickSpy).not.toHaveBeenCalled()
     })
   })
 })
