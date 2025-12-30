@@ -101,6 +101,7 @@
   color: var(--#{$prefix}modal-color);
   pointer-events: auto;
   background-color: var(--#{$prefix}modal-bg);
+  --#{$prefix}current-plane-bg: var(--#{$prefix}modal-bg);
   background-clip: padding-box;
   border: var(--#{$prefix}modal-border-width) solid var(--#{$prefix}modal-border-color);
   @include border-radius(var(--#{$prefix}modal-border-radius));
@@ -165,6 +166,7 @@
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: calc(var(--#{$prefix}modal-padding) - var(--#{$prefix}modal-footer-gap) * .5);
   background-color: var(--#{$prefix}modal-footer-bg);
+  --#{$prefix}current-plane-bg: var(--#{$prefix}modal-footer-bg);
   border-top: var(--#{$prefix}modal-footer-border-width) solid var(--#{$prefix}modal-footer-border-color);
   @include border-bottom-radius(var(--#{$prefix}modal-inner-border-radius));
 

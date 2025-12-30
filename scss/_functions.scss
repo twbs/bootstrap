@@ -48,6 +48,16 @@
   }
 }
 
+@function color-css-var($identifier, $target) {
+  @if $identifier == "body" and $target == "bg" {
+    @return var(--#{$prefix}#{$identifier}-bg);
+  } @if $identifier == "body" and $target == "text" {
+    @return var(--#{$prefix}#{$identifier}-color);
+  } @else {
+    @return var(--#{$prefix}#{$identifier});
+  }
+}
+
 @function map-loop($map, $func, $args...) {
   $_map: ();
 
