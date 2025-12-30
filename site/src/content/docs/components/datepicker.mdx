@@ -74,22 +74,22 @@ Set the first day of the week (0 = Sunday, 1 = Monday, etc.) with `data-bs-first
   <input type="text" class="form-control" id="datepicker6" data-bs-toggle="datepicker" data-bs-first-weekday="0" placeholder="Select a date">
 </div>`} />
 
-### Calendar placement
+### Placement
 
-Control where the calendar appears relative to the input with `data-bs-position-to-input`. Options are `left` (default), `center`, `right`, and `auto`.
+Control where the calendar appears relative to the input with `data-bs-placement`. Options are `left` (default), `center`, `right`, and `auto`.
 
 <Example code={`<div class="d-flex gap-3">
   <div>
     <label for="datepickerLeft" class="form-label">Left aligned</label>
-    <input type="text" class="form-control" id="datepickerLeft" data-bs-toggle="datepicker" data-bs-position-to-input="left" placeholder="Left">
+    <input type="text" class="form-control" id="datepickerLeft" data-bs-toggle="datepicker" data-bs-placement="left" placeholder="Left">
   </div>
   <div>
     <label for="datepickerCenter" class="form-label">Center aligned</label>
-    <input type="text" class="form-control" id="datepickerCenter" data-bs-toggle="datepicker" data-bs-position-to-input="center" placeholder="Center">
+    <input type="text" class="form-control" id="datepickerCenter" data-bs-toggle="datepicker" data-bs-placement="center" placeholder="Center">
   </div>
   <div>
     <label for="datepickerRight" class="form-label">Right aligned</label>
-    <input type="text" class="form-control" id="datepickerRight" data-bs-toggle="datepicker" data-bs-position-to-input="right" placeholder="Right">
+    <input type="text" class="form-control" id="datepickerRight" data-bs-toggle="datepicker" data-bs-placement="right" placeholder="Right">
   </div>
 </div>`} />
 
@@ -136,7 +136,7 @@ const datepicker = new bootstrap.Datepicker(datepickerEl, {
 | `selectedDates` | array | `[]` | Pre-selected dates in `YYYY-MM-DD` format |
 | `selectionMode` | string | `'single'` | Selection mode: `'single'`, `'multiple'`, or `'multiple-ranged'` |
 | `showWeekNumbers` | boolean | `false` | Whether to show week numbers |
-| `positionToInput` | string | `'left'` | Calendar position relative to input: `'left'`, `'center'`, `'right'`, `'auto'` |
+| `placement` | string | `'left'` | Calendar position relative to input: `'left'`, `'center'`, `'right'`, `'auto'` |
 | `vcpOptions` | object | `{}` | Pass-through object for any [vanilla-calendar-pro option](https://vanilla-calendar.pro/docs/reference/settings) |
 </BsTable>
 

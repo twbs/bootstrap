@@ -38,7 +38,7 @@ const Default = {
   selectedDates: [],
   selectionMode: 'single', // 'single', 'multiple', 'multiple-ranged'
   showWeekNumbers: false,
-  positionToInput: 'left',
+  placement: 'left', // 'left', 'center', 'right', 'auto'
   vcpOptions: {} // Pass-through for any VCP option
 }
 
@@ -51,7 +51,7 @@ const DefaultType = {
   selectedDates: 'array',
   selectionMode: 'string',
   showWeekNumbers: 'boolean',
-  positionToInput: 'string',
+  placement: 'string',
   vcpOptions: 'object'
 }
 
@@ -146,7 +146,7 @@ class Datepicker extends BaseComponent {
     const calendarOptions = {
       ...this._config.vcpOptions,
       inputMode: isInput,
-      positionToInput: this._config.positionToInput,
+      positionToInput: this._config.placement, // Map Bootstrap's 'placement' to VCP's 'positionToInput'
       firstWeekday: this._config.firstWeekday,
       locale: this._config.locale,
       enableWeekNumbers: this._config.showWeekNumbers,
