@@ -8,11 +8,12 @@ toc: true
 
 The Bootstrap Datepicker is a wrapper around [vanilla-calendar-pro](https://vanilla-calendar.pro/) that provides a consistent, accessible date selection experience. It supports light/dark themes, input binding, and flexible configuration via data attributes or JavaScript.
 
-<Example code={`<input type="text" class="form-control" data-bs-toggle="datepicker" placeholder="Select a date">`} />
+<Example code={`<input type="text" class="form-control w-auto" data-bs-toggle="datepicker" placeholder="Select a date">`} />
 
 ## How it works
 
 - Add `data-bs-toggle="datepicker"` to any `<input>` element to enable the datepicker
+- Use `type="text"` to avoid conflicts with native browser date pickers
 - When focused, the calendar popup appears below the input
 - Selecting a date updates the input value and closes the picker
 - The picker respects Bootstrap's color modes (`data-bs-theme`)
@@ -24,18 +25,18 @@ The Bootstrap Datepicker is a wrapper around [vanilla-calendar-pro](https://vani
 The simplest use case: add the data attribute to a text input.
 
 <Example code={`<div class="mb-3">
-  <label for="datepicker1" class="form-label">Select date</label>
-  <input type="text" class="form-control" id="datepicker1" data-bs-toggle="datepicker" placeholder="Click to select a date">
-</div>`} />
+    <label for="datepicker1" class="form-label">Select date</label>
+    <input type="text" class="form-control" id="datepicker1" data-bs-toggle="datepicker" placeholder="Click to select a date">
+  </div>`} />
 
 ### With min and max dates
 
 Restrict the selectable date range using `data-bs-date-min` and `data-bs-date-max`.
 
-<Example code={`<div class="mb-3">
-  <label for="datepicker2" class="form-label">Event date (2025 only)</label>
-  <input type="text" class="form-control" id="datepicker2" data-bs-toggle="datepicker" data-bs-date-min="2025-01-01" data-bs-date-max="2025-12-31" placeholder="Select a date in 2025">
-</div>`} />
+<Example code={`<div>
+    <label for="datepicker2" class="form-label">Event date (2025 only)</label>
+    <input type="text" class="form-control" id="datepicker2" data-bs-toggle="datepicker" data-bs-date-min="2025-01-01" data-bs-date-max="2025-12-31" placeholder="Select a date in 2025">
+  </div>`} />
 
 ### Multiple date selection
 
@@ -71,6 +72,25 @@ Set the first day of the week (0 = Sunday, 1 = Monday, etc.) with `data-bs-first
 <Example code={`<div class="mb-3">
   <label for="datepicker6" class="form-label">Week starts on Sunday</label>
   <input type="text" class="form-control" id="datepicker6" data-bs-toggle="datepicker" data-bs-first-weekday="0" placeholder="Select a date">
+</div>`} />
+
+### Calendar placement
+
+Control where the calendar appears relative to the input with `data-bs-position-to-input`. Options are `left` (default), `center`, `right`, and `auto`.
+
+<Example code={`<div class="d-flex gap-3">
+  <div>
+    <label for="datepickerLeft" class="form-label">Left aligned</label>
+    <input type="text" class="form-control" id="datepickerLeft" data-bs-toggle="datepicker" data-bs-position-to-input="left" placeholder="Left">
+  </div>
+  <div>
+    <label for="datepickerCenter" class="form-label">Center aligned</label>
+    <input type="text" class="form-control" id="datepickerCenter" data-bs-toggle="datepicker" data-bs-position-to-input="center" placeholder="Center">
+  </div>
+  <div>
+    <label for="datepickerRight" class="form-label">Right aligned</label>
+    <input type="text" class="form-control" id="datepickerRight" data-bs-toggle="datepicker" data-bs-position-to-input="right" placeholder="Right">
+  </div>
 </div>`} />
 
 ## Dark mode
@@ -116,8 +136,27 @@ const datepicker = new bootstrap.Datepicker(datepickerEl, {
 | `selectedDates` | array | `[]` | Pre-selected dates in `YYYY-MM-DD` format |
 | `selectionMode` | string | `'single'` | Selection mode: `'single'`, `'multiple'`, or `'multiple-ranged'` |
 | `showWeekNumbers` | boolean | `false` | Whether to show week numbers |
-| `positionToInput` | string | `'auto'` | Calendar position relative to input: `'auto'`, `'center'`, `'left'`, `'right'` |
+| `positionToInput` | string | `'left'` | Calendar position relative to input: `'left'`, `'center'`, `'right'`, `'auto'` |
+| `vcpOptions` | object | `{}` | Pass-through object for any [vanilla-calendar-pro option](https://vanilla-calendar.pro/docs/reference/settings) |
 </BsTable>
+
+### Advanced configuration
+
+For features not directly exposed by Bootstrap's options, use `vcpOptions` to pass any vanilla-calendar-pro setting:
+
+```js
+const datepicker = new bootstrap.Datepicker(element, {
+  vcpOptions: {
+    disableDatesPast: true,                     // Disable past dates
+    disableWeekdays: [0, 6],                    // Disable weekends
+    disableDates: ['2025-12-25', '2025-12-26'], // Disable specific dates
+    selectedHolidays: ['2025-01-01'],           // Highlight holidays
+    selectionTimeMode: 24                       // Enable 24-hour time selection
+  }
+})
+```
+
+See the [vanilla-calendar-pro documentation](https://vanilla-calendar.pro/docs/reference/settings) for all available options.
 
 ### Methods
 

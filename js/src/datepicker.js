@@ -38,7 +38,8 @@ const Default = {
   selectedDates: [],
   selectionMode: 'single', // 'single', 'multiple', 'multiple-ranged'
   showWeekNumbers: false,
-  positionToInput: 'auto'
+  positionToInput: 'left',
+  vcpOptions: {} // Pass-through for any VCP option
 }
 
 const DefaultType = {
@@ -50,7 +51,8 @@ const DefaultType = {
   selectedDates: 'array',
   selectionMode: 'string',
   showWeekNumbers: 'boolean',
-  positionToInput: 'string'
+  positionToInput: 'string',
+  vcpOptions: 'object'
 }
 
 /**
@@ -63,7 +65,6 @@ class Datepicker extends BaseComponent {
 
     this._calendar = null
     this._isShown = false
-    this._cleanupFn = null
 
     this._initCalendar()
   }
@@ -87,7 +88,7 @@ class Datepicker extends BaseComponent {
   }
 
   show() {
-    if (isDisabled(this._element) || this._isShown) {
+    if (!this._calendar || isDisabled(this._element) || this._isShown) {
       return
     }
 
@@ -103,7 +104,7 @@ class Datepicker extends BaseComponent {
   }
 
   hide() {
-    if (!this._isShown) {
+    if (!this._calendar || !this._isShown) {
       return
     }
 
@@ -124,7 +125,6 @@ class Datepicker extends BaseComponent {
     }
 
     this._calendar = null
-    this._cleanupFn = null
     super.dispose()
   }
 
@@ -142,7 +142,9 @@ class Datepicker extends BaseComponent {
   _initCalendar() {
     const isInput = this._element.tagName === 'INPUT'
 
+    // Start with user's VCP options, then override with Bootstrap options
     const calendarOptions = {
+      ...this._config.vcpOptions,
       inputMode: isInput,
       positionToInput: this._config.positionToInput,
       firstWeekday: this._config.firstWeekday,
@@ -193,7 +195,7 @@ class Datepicker extends BaseComponent {
     }
 
     this._calendar = new Calendar(this._element, calendarOptions)
-    this._cleanupFn = this._calendar.init()
+    this._calendar.init()
 
     // Set initial value if input has a value
     if (isInput && this._element.value) {
