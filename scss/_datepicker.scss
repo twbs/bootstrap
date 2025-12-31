@@ -3,6 +3,8 @@
 // Bootstrap wrapper for vanilla-calendar-pro
 // Base styles from vanilla-calendar-pro v3.0.5, adapted for Bootstrap
 
+// stylelint-disable selector-max-attribute, property-disallowed-list, selector-no-qualifying-type -- VCP uses extensive data attributes and requires direct border-radius properties for range selection
+
 @use "config" as *;
 @use "colors" as *;
 @use "variables" as *;
@@ -143,7 +145,7 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    border-radius: $border-radius;
+    @include border-radius($border-radius);
 
     &::before {
       position: absolute;
@@ -215,7 +217,7 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    border-radius: $border-radius;
+    @include border-radius($border-radius);
 
     &:disabled {
       color: var(--datepicker-day-disabled-color);
@@ -272,7 +274,7 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     cursor: pointer;
     background-color: transparent;
     border: 0;
-    border-radius: $border-radius;
+    @include border-radius($border-radius);
 
     &:disabled {
       color: var(--datepicker-day-disabled-color);
