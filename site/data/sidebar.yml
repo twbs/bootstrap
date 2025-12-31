@@ -75,6 +75,7 @@
     - title: Floating labels
     - title: OTP input
     - title: Password strength
+    - title: Form adorn
     - title: Layout
     - title: Validation
 
@@ -92,6 +93,7 @@
     - title: Carousel
     - title: Close button
     - title: Collapse
+    - title: Datepicker
     - title: Dialog
     - title: Dropdown
     - title: List group

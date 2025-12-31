@@ -210,6 +210,7 @@
     "volar-service-emmet": "0.0.63"
   },
   "dependencies": {
-    "postcss-prefix-custom-properties": "^0.1.0"
+    "postcss-prefix-custom-properties": "^0.1.0",
+    "vanilla-calendar-pro": "^3.0.5"
   }
 }

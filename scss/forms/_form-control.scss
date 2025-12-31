@@ -243,4 +243,31 @@
     &.form-control-sm { height: $input-height-sm; }
     &.form-control-lg { height: $input-height-lg; }
   }
+
+  // Ghost input - removes all visual styling
+  // Used inside custom wrappers that handle their own styling
+  .form-ghost {
+    display: block;
+    width: 100%;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    appearance: none;
+    background: transparent;
+    border: 0;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: var(--fg-3);
+      opacity: 1;
+    }
+
+    &:disabled {
+      color: var(--fg-4);
+      cursor: not-allowed;
+    }
+  }
 }
