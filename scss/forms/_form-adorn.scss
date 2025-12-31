@@ -1,0 +1,112 @@
+@use "../config" as *;
+@use "../variables" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/transition" as *;
+@use "form-variables" as *;
+
+// scss-docs-start form-adorn-variables
+$form-adorn-gap:           .375rem !default;
+$form-adorn-icon-size:     1rem !default;
+$form-adorn-icon-color:    var(--fg-2) !default;
+// scss-docs-end form-adorn-variables
+
+@layer forms {
+  .form-adorn {
+    // Inherit form-control CSS variables for sizing
+    --control-min-height: #{$control-min-height};
+    --control-padding-y: #{$control-padding-y};
+    --control-padding-x: #{$control-padding-x};
+    --control-font-size: #{$control-font-size};
+    --control-line-height: #{$control-line-height};
+    --control-color: #{$control-color};
+    --control-bg: #{$control-bg};
+    --control-border-width: #{$control-border-width};
+    --control-border-color: #{$control-border-color};
+    --control-border-radius: #{$control-border-radius};
+
+    // Adorn-specific variables
+    --form-adorn-gap: #{$form-adorn-gap};
+    --form-adorn-icon-size: #{$form-adorn-icon-size};
+    --form-adorn-icon-color: #{$form-adorn-icon-color};
+
+    // Flexbox layout
+    display: flex;
+    gap: var(--form-adorn-gap);
+    align-items: center;
+
+    // Replicate .form-control styles on the wrapper
+    min-height: var(--control-min-height);
+    padding: var(--control-padding-y) var(--control-padding-x);
+    font-size: var(--control-font-size);
+    line-height: var(--control-line-height);
+    color: var(--control-color);
+    background-color: var(--control-bg);
+    background-clip: padding-box;
+    border: var(--control-border-width) solid var(--control-border-color);
+    @include border-radius(var(--control-border-radius), 0);
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
+
+    // Focus state when ghost input is focused
+    &:focus-within {
+      border-color: $input-focus-border-color;
+      @include focus-ring(true);
+      --focus-ring-offset: -1px;
+    }
+
+    // Ghost input fills remaining space
+    > .form-ghost {
+      flex: 1;
+      min-width: 0; // Prevent text overflow
+    }
+
+    // Icon adornment
+    > .form-adorn-icon {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      color: var(--form-adorn-icon-color);
+      pointer-events: none;
+
+      > svg {
+        width: var(--form-adorn-icon-size);
+        height: var(--form-adorn-icon-size);
+      }
+    }
+
+    // Text adornment
+    > .form-adorn-text {
+      flex-shrink: 0;
+      color: var(--form-adorn-icon-color);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    // Adornment at end (right in LTR) - input comes first visually
+    &.form-adorn-end > .form-ghost {
+      order: -1;
+    }
+  }
+
+  // Sizing variants
+  .form-adorn-sm {
+    --control-min-height: #{$control-min-height-sm};
+    --control-padding-y: #{$control-padding-y-sm};
+    --control-padding-x: #{$control-padding-x-sm};
+    --control-font-size: #{$control-font-size-sm};
+    --control-line-height: #{$control-line-height-sm};
+    --control-border-radius: #{$control-border-radius-sm};
+  }
+
+  .form-adorn-lg {
+    --control-min-height: #{$control-min-height-lg};
+    --control-padding-y: #{$control-padding-y-lg};
+    --control-padding-x: #{$control-padding-x-lg};
+    --control-font-size: #{$control-font-size-lg};
+    --control-line-height: #{$control-line-height-lg};
+    --control-border-radius: #{$control-border-radius-lg};
+  }
+}
