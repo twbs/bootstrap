@@ -1721,19 +1721,19 @@ $btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default
 // Offcanvas
 
 // scss-docs-start offcanvas-variables
-$offcanvas-padding-y:               $modal-inner-padding !default;
-$offcanvas-padding-x:               $modal-inner-padding !default;
+$offcanvas-padding-y:               $spacer !default;
+$offcanvas-padding-x:               $spacer !default;
 $offcanvas-horizontal-width:        400px !default;
 $offcanvas-vertical-height:         30vh !default;
 $offcanvas-transition-duration:     .3s !default;
-$offcanvas-border-color:            $modal-content-border-color !default;
-$offcanvas-border-width:            $modal-content-border-width !default;
-$offcanvas-title-line-height:       $modal-title-line-height !default;
+$offcanvas-border-color:            var(--#{$prefix}border-color-translucent) !default;
+$offcanvas-border-width:            var(--#{$prefix}border-width) !default;
+$offcanvas-title-line-height:       $line-height-base !default;
 $offcanvas-bg-color:                var(--#{$prefix}body-bg) !default;
 $offcanvas-color:                   var(--#{$prefix}body-color) !default;
-$offcanvas-box-shadow:              $modal-content-box-shadow-xs !default;
-$offcanvas-backdrop-bg:             $modal-backdrop-bg !default;
-$offcanvas-backdrop-opacity:        $modal-backdrop-opacity !default;
+$offcanvas-box-shadow:              $box-shadow-sm !default;
+$offcanvas-backdrop-bg:             $black !default;
+$offcanvas-backdrop-opacity:        .5 !default;
 // scss-docs-end offcanvas-variables
 
 // Code
