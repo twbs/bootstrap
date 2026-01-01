@@ -801,10 +801,12 @@ $input-btn-focus-box-shadow:    $focus-ring-box-shadow !default;
 $input-btn-padding-y-sm:      .25rem !default;
 $input-btn-padding-x-sm:      .5rem !default;
 $input-btn-font-size-sm:      $font-size-sm !default;
+$input-btn-line-height-sm:    $line-height-sm !default;
 
 $input-btn-padding-y-lg:      .5rem !default;
 $input-btn-padding-x-lg:      1rem !default;
 $input-btn-font-size-lg:      $font-size-lg !default;
+$input-btn-line-height-lg:    $line-height-lg !default;
 
 $input-btn-border-width:      var(--#{$prefix}border-width) !default;
 // scss-docs-end input-btn-variables
@@ -826,10 +828,12 @@ $btn-white-space:             null !default; // Set to `nowrap` to prevent text 
 $btn-padding-y-sm:            $input-btn-padding-y-sm !default;
 $btn-padding-x-sm:            $input-btn-padding-x-sm !default;
 $btn-font-size-sm:            $input-btn-font-size-sm !default;
+$btn-line-height-sm:          $input-btn-line-height-sm !default;
 
 $btn-padding-y-lg:            $input-btn-padding-y-lg !default;
 $btn-padding-x-lg:            $input-btn-padding-x-lg !default;
 $btn-font-size-lg:            $input-btn-font-size-lg !default;
+$btn-line-height-lg:          $input-btn-line-height-lg !default;
 
 $btn-border-width:            $input-btn-border-width !default;
 
