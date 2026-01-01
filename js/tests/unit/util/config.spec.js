@@ -37,6 +37,49 @@ describe('Config', () => {
     })
   })
 
+  describe('setConfig', () => {
+    it('should merge config object', () => {
+      const instance = new DummyConfigClass()
+
+      spyOnProperty(DummyConfigClass, 'DefaultType', 'get').and.returnValue({
+        testBool: 'boolean',
+        testString: 'string'
+      })
+
+      instance.setConfig({
+        testBool: true,
+        testString: 'foo'
+      })
+
+      expect(instance._config.testBool).toBeTrue()
+      expect(instance._config.testString).toEqual('foo')
+
+      instance.setConfig({
+        testBool: false,
+        testString: 'bar'
+      })
+
+      expect(instance._config.testBool).toBeFalse()
+      expect(instance._config.testString).toEqual('bar')
+    })
+
+    it('should check values before merging them', () => {
+      const instance = new DummyConfigClass()
+
+      spyOnProperty(DummyConfigClass, 'DefaultType', 'get').and.returnValue({
+        testBool: 'boolean',
+        testString: 'string'
+      })
+
+      expect(() => {
+        instance.setConfig({
+          testBool: 'foo',
+          testString: true
+        })
+      }).toThrowError(TypeError)
+    })
+  })
+
   describe('mergeConfigObj', () => {
     it('should parse element\'s data attributes and merge it with default config. Element\'s data attributes must excel Defaults', () => {
       fixtureEl.innerHTML = '<div id="test" data-bs-test-bool="false" data-bs-test-int="8" data-bs-test-string1="bar"></div>'

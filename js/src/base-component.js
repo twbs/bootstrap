@@ -30,7 +30,7 @@ class BaseComponent extends Config {
     }
 
     this._element = element
-    this._config = this._getConfig(config)
+    this.setConfig(this._getInitialConfig(config))
 
     Data.set(this._element, this.constructor.DATA_KEY, this)
   }
@@ -50,7 +50,7 @@ class BaseComponent extends Config {
     executeAfterTransition(callback, element, isAnimated)
   }
 
-  _getConfig(config) {
+  _getInitialConfig(config) {
     config = this._mergeConfigObj(config, this._element)
     config = this._configAfterMerge(config)
     this._typeCheckConfig(config)

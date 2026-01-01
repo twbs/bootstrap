@@ -48,7 +48,7 @@ const DefaultContentType = {
 class TemplateFactory extends Config {
   constructor(config) {
     super()
-    this._config = this._getConfig(config)
+    this.setConfig(this._getInitialConfig(config))
   }
 
   // Getters
