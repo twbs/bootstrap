@@ -29,8 +29,10 @@
   // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
   // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
   // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
-  // stylelint-disable-next-line selector-max-universal
-  > :not(caption) > * > * {
+  > tr > *,
+  > thead > tr > *,
+  > tbody > tr > *,
+  > tfoot > tr > * {
     padding: $table-cell-padding-y $table-cell-padding-x;
     // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
     color: var(--#{$prefix}table-color-state, var(--#{$prefix}table-color-type, var(--#{$prefix}table-color)));
@@ -66,8 +68,10 @@
 //
 
 .table-sm {
-  // stylelint-disable-next-line selector-max-universal
-  > :not(caption) > * > * {
+  > tr > *,
+  > thead > tr > *,
+  > tbody > tr > *,
+  > tfoot > tr > * {
     padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
   }
 }
@@ -83,10 +87,12 @@
 // to the `td`s or `th`s
 
 .table-bordered {
-  > :not(caption) > * {
+  > tr,
+  > thead > tr,
+  > tbody > tr,
+  > tfoot > tr {
     border-width: $table-border-width 0;
 
-    // stylelint-disable-next-line selector-max-universal
     > * {
       border-width: 0 $table-border-width;
     }
@@ -94,8 +100,10 @@
 }
 
 .table-borderless {
-  // stylelint-disable-next-line selector-max-universal
-  > :not(caption) > * > * {
+  > tr > *,
+  > thead > tr > *,
+  > tbody > tr > *,
+  > tfoot > tr > * {
     border-bottom-width: 0;
   }
 
