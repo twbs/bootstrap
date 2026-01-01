@@ -118,6 +118,7 @@
   icon: braces-asterisk
   icon_color: red
   pages:
+    - title: Animation direction
     - title: API
     - title: Background
     - title: Borders
