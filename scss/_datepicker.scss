@@ -9,7 +9,6 @@
 @use "colors" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/transition" as *;
 
 // scss-docs-start datepicker-variables
 $datepicker-padding:                1rem !default;
@@ -20,7 +19,7 @@ $datepicker-border-width:           var(--border-width) !default;
 $datepicker-border-radius:          var(--border-radius-lg) !default;
 $datepicker-box-shadow:             var(--box-shadow) !default;
 $datepicker-font-size:              var(--font-size-sm) !default;
-$datepicker-min-width:              272px !default;
+$datepicker-min-width:              280px !default;
 
 $datepicker-header-font-weight:     700 !default;
 $datepicker-weekday-color:          var(--fg-3) !default;
@@ -54,10 +53,9 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     --datepicker-day-today-bg: #{$datepicker-day-today-bg};
     --datepicker-day-today-color: #{$datepicker-day-today-color};
     --datepicker-day-disabled-color: #{$datepicker-day-disabled-color};
-    @include border-radius(var(--datepicker-border-radius));
     // scss-docs-end datepicker-css-vars
 
-    position: relative;
+    position: absolute;
     z-index: var(--datepicker-zindex);
     box-sizing: border-box;
     display: flex;
@@ -70,6 +68,7 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     color-scheme: light dark;
     background-color: var(--datepicker-bg);
     border: var(--datepicker-border-width) solid var(--datepicker-border-color);
+    @include border-radius(var(--datepicker-border-radius));
     box-shadow: var(--datepicker-box-shadow);
     opacity: 1;
 
@@ -81,8 +80,6 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     &[data-bs-theme="dark"] {
       color-scheme: dark;
     }
-
-    // Auto mode uses default color-scheme: light dark (above)
   }
 
   [data-vc="calendar"]:focus-visible,
@@ -93,47 +90,46 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     // box-shadow: $focus-ring-box-shadow;
   }
 
-  [data-vc="calendar"][data-vc-calendar-hidden] {
+  [data-vc-calendar-hidden] {
     pointer-events: none;
     opacity: 0;
   }
 
-  [data-vc="calendar"][data-vc-input] {
-    position: absolute;
-  }
-
-  // Inline calendars: neutral styling (no popup chrome)
+  // Inline calendars
+  //
+  // Remove popover styling for more neutral styling
   [data-vc="calendar"]:not([data-vc-input]) {
+    position: relative;
     width: fit-content;
     padding: 0;
     border: 0;
     box-shadow: none;
   }
 
-  [data-vc="calendar"][data-vc-input][data-vc-position="bottom"] {
-    margin-top: .25rem;
+  [data-vc-position="bottom"] {
+    margin-block-start: .25rem;
   }
 
-  [data-vc="calendar"][data-vc-input][data-vc-position="top"] {
-    margin-top: -.25rem;
+  [data-vc-position="top"] {
+    margin-block-end: -.25rem;
   }
 
   // Controls (arrows)
-  [data-vc="controls"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 20;
-    box-sizing: content-box;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 1.25rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    pointer-events: none;
-  }
+  // [data-vc="controls"] {
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   left: 0;
+  //   z-index: 20;
+  //   box-sizing: content-box;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   padding-top: 1.25rem;
+  //   padding-right: 1rem;
+  //   padding-left: 1rem;
+  //   pointer-events: none;
+  // }
 
   [data-vc-arrow] {
     position: relative;
@@ -370,7 +366,6 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     background-color: transparent;
     border: 0;
     border-radius: $border-radius;
-    transition: background-color .15s ease-in-out, color .15s ease-in-out;
 
     &:hover {
       background-color: var(--datepicker-day-hover-bg);
@@ -378,74 +373,71 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
   }
 
   // Today
-  [data-vc-date][data-vc-date-today] [data-vc-date-btn] {
-    font-weight: 700;
+  [data-vc-date-today] [data-vc-date-btn] {
+    font-weight: 600;
     color: var(--datepicker-day-today-color);
     background-color: var(--datepicker-day-today-bg);
   }
 
-  // Selected
-  [data-vc-date][data-vc-date-selected] [data-vc-date-btn] {
-    color: var(--datepicker-day-selected-color);
-    background-color: var(--datepicker-day-selected-bg);
-
-    &:hover {
-      color: var(--datepicker-day-selected-color);
-      background-color: var(--datepicker-day-selected-bg);
-    }
-  }
 
   // Outside month
-  [data-vc-date][data-vc-date-month="next"] [data-vc-date-btn],
-  [data-vc-date][data-vc-date-month="prev"] [data-vc-date-btn] {
+  [data-vc-date-month="next"] [data-vc-date-btn],
+  [data-vc-date-month="prev"] [data-vc-date-btn] {
     opacity: .5;
   }
 
   // Disabled
-  [data-vc-date][data-vc-date-disabled] [data-vc-date-btn] {
+  [data-vc-date-disabled] [data-vc-date-btn] {
     color: var(--datepicker-day-disabled-color);
   }
 
   // Range selection styles
-  [data-vc-date][data-vc-date-hover] [data-vc-date-btn] {
+  [data-vc-date-hover] [data-vc-date-btn] {
     background-color: var(--datepicker-day-hover-bg);
     border-radius: 0;
   }
 
-  [data-vc-date][data-vc-date-hover="first"] [data-vc-date-btn] {
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
+  [data-vc-date-hover="first"] [data-vc-date-btn] {
+    border-start-start-radius: $border-radius;
+    border-end-start-radius: $border-radius;
   }
 
-  [data-vc-date][data-vc-date-hover="last"] [data-vc-date-btn] {
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+  [data-vc-date-hover="last"] [data-vc-date-btn] {
+    border-start-end-radius: $border-radius;
+    border-end-end-radius: $border-radius;
   }
 
-  [data-vc-date][data-vc-date-hover="first-and-last"] [data-vc-date-btn] {
+  [data-vc-date-hover="first-and-last"] [data-vc-date-btn] {
     border-radius: $border-radius;
   }
 
-  [data-vc-date][data-vc-date-selected="middle"] [data-vc-date-btn] {
+  [data-vc-date-selected="middle"] [data-vc-date-btn] {
     border-radius: 0;
     opacity: .8;
   }
 
-  [data-vc-date][data-vc-date-selected="first"] [data-vc-date-btn] {
+  // Selected
+  [data-vc-date-selected] [data-vc-date-btn] {
+    color: var(--datepicker-day-selected-color);
+    background-color: var(--datepicker-day-selected-bg);
+
+  }
+
+  [data-vc-date-selected="first"] [data-vc-date-btn] {
     border-top-left-radius: $border-radius;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: $border-radius;
   }
 
-  [data-vc-date][data-vc-date-selected="last"] [data-vc-date-btn] {
+  [data-vc-date-selected="last"] [data-vc-date-btn] {
     border-top-left-radius: 0;
     border-top-right-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
     border-bottom-left-radius: 0;
   }
 
-  [data-vc-date][data-vc-date-selected="first-and-last"] [data-vc-date-btn] {
+  [data-vc-date-selected="first-and-last"] [data-vc-date-btn] {
     border-radius: $border-radius;
   }
 }

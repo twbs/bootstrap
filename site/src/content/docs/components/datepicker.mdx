@@ -29,12 +29,12 @@ Note that we're using a width utility of `.w-12` to ensure the input is wide eno
 Use the [form adorn component](/docs/forms/form-adorn) to add a calendar icon alongside the datepicker input. When the input is inside a `.form-adorn` wrapper, the calendar automatically positions relative to the wrapper instead of the input.
 
 <Example code={`<label for="datepickerIconStart" class="form-label">Select date</label>
-<div class="form-adorn w-12">
-  <div class="form-adorn-icon">
-    <svg width="16" height="16"><use href="#calendar" /></svg>
-  </div>
-  <input type="text" class="form-ghost" id="datepickerIconStart" data-bs-toggle="datepicker" placeholder="Choose date…">
-</div>`} />
+  <div class="form-adorn w-12">
+    <div class="form-adorn-icon">
+      <svg class="bi" width="16" height="16"><use href="#calendar-week" /></svg>
+    </div>
+    <input type="text" class="form-ghost" id="datepickerIconStart" data-bs-toggle="datepicker" placeholder="Choose date…">
+  </div>`} />
 
 ### Min & Max dates
 

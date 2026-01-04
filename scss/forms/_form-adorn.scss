@@ -62,33 +62,32 @@ $form-adorn-icon-color:    var(--fg-2) !default;
       min-width: 0; // Prevent text overflow
     }
 
-    // Icon adornment
-    > .form-adorn-icon {
-      display: flex;
-      flex-shrink: 0;
-      align-items: center;
-      justify-content: center;
-      color: var(--form-adorn-icon-color);
-      pointer-events: none;
-
-      > svg {
-        width: var(--form-adorn-icon-size);
-        height: var(--form-adorn-icon-size);
-      }
-    }
-
-    // Text adornment
-    > .form-adorn-text {
-      flex-shrink: 0;
-      color: var(--form-adorn-icon-color);
-      pointer-events: none;
-      user-select: none;
-    }
 
     // Adornment at end (right in LTR) - input comes first visually
     &.form-adorn-end > .form-ghost {
       order: -1;
     }
+  }
+
+  .form-adorn-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    color: var(--form-adorn-icon-color);
+    pointer-events: none;
+
+    > svg {
+      width: var(--form-adorn-icon-size);
+      height: var(--form-adorn-icon-size);
+    }
+  }
+
+  .form-adorn-text {
+    flex-shrink: 0;
+    color: var(--form-adorn-icon-color);
+    pointer-events: none;
+    user-select: none;
   }
 
   // Sizing variants
