@@ -9,6 +9,7 @@
 @use "colors" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/focus-ring" as *;
 
 // scss-docs-start datepicker-variables
 $datepicker-padding:                1rem !default;
@@ -21,7 +22,7 @@ $datepicker-box-shadow:             var(--box-shadow) !default;
 $datepicker-font-size:              var(--font-size-sm) !default;
 $datepicker-min-width:              280px !default;
 
-$datepicker-header-font-weight:     700 !default;
+$datepicker-header-font-weight:     600 !default;
 $datepicker-weekday-color:          var(--fg-3) !default;
 $datepicker-day-hover-bg:           var(--bg-1) !default;
 $datepicker-day-selected-bg:        var(--primary-bg) !default;
@@ -80,14 +81,13 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     &[data-bs-theme="dark"] {
       color-scheme: dark;
     }
-  }
 
-  [data-vc="calendar"]:focus-visible,
-  [data-vc="calendar"] button:focus-visible,
-  [data-vc="calendar"] [tabindex="0"]:focus-visible {
-    @include border-radius(var(--datepicker-border-radius));
-    // outline: 0;
-    // box-shadow: $focus-ring-box-shadow;
+    // Catch-all for focus styles
+    button:focus-visible {
+      position: relative;
+      z-index: 1;
+      @include focus-ring();
+    }
   }
 
   [data-vc-calendar-hidden] {
@@ -114,28 +114,11 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     margin-block-end: -.25rem;
   }
 
-  // Controls (arrows)
-  // [data-vc="controls"] {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   left: 0;
-  //   z-index: 20;
-  //   box-sizing: content-box;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: space-between;
-  //   padding-top: 1.25rem;
-  //   padding-right: 1rem;
-  //   padding-left: 1rem;
-  //   pointer-events: none;
-  // }
-
   [data-vc-arrow] {
     position: relative;
     display: block;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
     color: var(--datepicker-color);
     pointer-events: auto;
     cursor: pointer;
@@ -145,10 +128,7 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
 
     &::before {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: .25rem;
       content: "";
       background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%236b7280' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/></svg>");
       background-repeat: no-repeat;
@@ -169,21 +149,24 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
   }
 
   // Grid layout
-  [data-vc="grid"] {
-    display: flex;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    gap: 1.75rem;
-  }
+  // [data-vc="grid"] {
+  //   display: flex;
+  //   flex-grow: 1;
+  //   flex-wrap: wrap;
+  //   gap: 1.75rem;
+  // }
 
-  [data-vc="column"] {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    min-width: 240px;
-  }
+  // [data-vc="column"] {
+  //   display: flex;
+  //   flex-grow: 1;
+  //   flex-direction: column;
+  //   min-width: 240px;
+  // }
 
+  //
   // Header
+  //
+
   [data-vc="header"] {
     position: relative;
     display: flex;
@@ -191,26 +174,23 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     margin-bottom: .75rem;
   }
 
+  // Month and year
   [data-vc-header="content"] {
-    display: grid;
+    display: inline-flex;
     flex-grow: 1;
-    grid-auto-columns: max-content;
-    grid-auto-flow: column;
     align-items: center;
     justify-content: center;
-    padding-right: 1rem;
-    padding-left: 1rem;
     white-space: pre-wrap;
   }
 
   [data-vc="month"],
   [data-vc="year"] {
-    padding: .25rem;
+    padding: .25rem .5rem;
+    margin-inline: -.125rem;
     font-size: 1rem;
     font-weight: var(--datepicker-header-font-weight);
-    line-height: 1.5rem;
     color: var(--datepicker-color);
-    cursor: pointer;
+    // cursor: pointer;
     background-color: transparent;
     border: 0;
     @include border-radius($border-radius);
@@ -226,32 +206,31 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
   }
 
   // Content wrapper
-  [data-vc="content"],
-  [data-vc="wrapper"] {
-    display: flex;
-    flex-grow: 1;
-  }
+  // [data-vc="content"],
+  // [data-vc="wrapper"] {
+  //   display: flex;
+  //   flex-grow: 1;
+  // }
 
   [data-vc="content"] {
+    display: flex;
+    flex-grow: 1;
     flex-direction: column;
   }
 
   // Month/Year grids
-  [data-vc="months"] {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   [data-vc="months"],
   [data-vc="years"] {
     display: grid;
     flex-grow: 1;
+    grid-template-columns: repeat(var(--vc-columns, 4), minmax(0, 1fr));
     row-gap: 1rem;
     column-gap: .25rem;
     align-items: center;
   }
 
   [data-vc="years"] {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    --vc-columns: 5;
   }
 
   [data-vc-months-month],
@@ -310,7 +289,7 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     padding: 0;
     margin: 0;
     font-size: .75rem;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1rem;
     color: var(--datepicker-weekday-color);
     background-color: transparent;
@@ -340,12 +319,12 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     padding-top: .125rem;
     padding-bottom: .125rem;
     pointer-events: auto;
-  }
 
-  [data-vc-date]:not(:has([data-vc-date-btn])),
-  [data-vc-date][data-vc-date-disabled],
-  [data-vc-date][data-vc-date-disabled] [data-vc-date-btn] {
-    pointer-events: none;
+    &:not(:has([data-vc-date-btn])),
+    &[data-vc-date-disabled],
+    &[data-vc-date-disabled] [data-vc-date-btn] {
+      pointer-events: none;
+    }
   }
 
   // Date button
