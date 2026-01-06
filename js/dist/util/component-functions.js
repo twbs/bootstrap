@@ -1,6 +1,6 @@
 /*!
   * Bootstrap component-functions.js v5.3.8 (https://getbootstrap.com/)
-  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -33,8 +33,37 @@
       instance[method]();
     });
   };
+  const eventActionOnPlugin = (Plugin, onEvent, stringSelector, method, callback = null) => {
+    eventAction(`${onEvent}.${Plugin.NAME}`, stringSelector, data => {
+      const instances = data.targets.filter(Boolean).map(element => Plugin.getOrCreateInstance(element));
+      if (typeof callback === 'function') {
+        callback({
+          ...data,
+          instances
+        });
+      }
+      for (const instance of instances) {
+        instance[method]();
+      }
+    });
+  };
+  const eventAction = (onEvent, stringSelector, callback) => {
+    const selector = `${stringSelector}:not(.disabled):not(:disabled)`;
+    EventHandler.on(document, onEvent, selector, function (event) {
+      if (['A', 'AREA'].includes(this.tagName)) {
+        event.preventDefault();
+      }
+      const selector = SelectorEngine.getSelectorFromElement(this);
+      const targets = selector ? SelectorEngine.find(selector) : [this];
+      callback({
+        targets,
+        event
+      });
+    });
+  };
 
   exports.enableDismissTrigger = enableDismissTrigger;
+  exports.eventActionOnPlugin = eventActionOnPlugin;
 
   Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 

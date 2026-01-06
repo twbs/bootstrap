@@ -1,6 +1,6 @@
 /*!
   * Bootstrap v5.3.8 (https://getbootstrap.com/)
-  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -754,6 +754,34 @@
       instance[method]();
     });
   };
+  const eventActionOnPlugin = (Plugin, onEvent, stringSelector, method, callback = null) => {
+    eventAction(`${onEvent}.${Plugin.NAME}`, stringSelector, data => {
+      const instances = data.targets.filter(Boolean).map(element => Plugin.getOrCreateInstance(element));
+      if (typeof callback === 'function') {
+        callback({
+          ...data,
+          instances
+        });
+      }
+      for (const instance of instances) {
+        instance[method]();
+      }
+    });
+  };
+  const eventAction = (onEvent, stringSelector, callback) => {
+    const selector = `${stringSelector}:not(.disabled):not(:disabled)`;
+    EventHandler.on(document, onEvent, selector, function (event) {
+      if (['A', 'AREA'].includes(this.tagName)) {
+        event.preventDefault();
+      }
+      const selector = SelectorEngine.getSelectorFromElement(this);
+      const targets = selector ? SelectorEngine.find(selector) : [this];
+      callback({
+        targets,
+        event
+      });
+    });
+  };
 
   /**
    * --------------------------------------------------------------------------
@@ -767,11 +795,11 @@
    * Constants
    */
 
-  const NAME$f = 'alert';
-  const DATA_KEY$a = 'bs.alert';
-  const EVENT_KEY$b = `.${DATA_KEY$a}`;
-  const EVENT_CLOSE = `close${EVENT_KEY$b}`;
-  const EVENT_CLOSED = `closed${EVENT_KEY$b}`;
+  const NAME$j = 'alert';
+  const DATA_KEY$e = 'bs.alert';
+  const EVENT_KEY$f = `.${DATA_KEY$e}`;
+  const EVENT_CLOSE = `close${EVENT_KEY$f}`;
+  const EVENT_CLOSED = `closed${EVENT_KEY$f}`;
   const CLASS_NAME_FADE$4 = 'fade';
   const CLASS_NAME_SHOW$7 = 'show';
 
@@ -782,7 +810,7 @@
   class Alert extends BaseComponent {
     // Getters
     static get NAME() {
-      return NAME$f;
+      return NAME$j;
     }
 
     // Public
@@ -822,13 +850,13 @@
    * Constants
    */
 
-  const NAME$e = 'button';
-  const DATA_KEY$9 = 'bs.button';
-  const EVENT_KEY$a = `.${DATA_KEY$9}`;
-  const DATA_API_KEY$6 = '.data-api';
+  const NAME$i = 'button';
+  const DATA_KEY$d = 'bs.button';
+  const EVENT_KEY$e = `.${DATA_KEY$d}`;
+  const DATA_API_KEY$9 = '.data-api';
   const CLASS_NAME_ACTIVE$3 = 'active';
-  const SELECTOR_DATA_TOGGLE$7 = '[data-bs-toggle="button"]';
-  const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
+  const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="button"]';
+  const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
 
   /**
    * Class definition
@@ -837,7 +865,7 @@
   class Button extends BaseComponent {
     // Getters
     static get NAME() {
-      return NAME$e;
+      return NAME$i;
     }
 
     // Public
@@ -851,9 +879,9 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$7, event => {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DATA_TOGGLE$9, event => {
     event.preventDefault();
-    const button = event.target.closest(SELECTOR_DATA_TOGGLE$7);
+    const button = event.target.closest(SELECTOR_DATA_TOGGLE$9);
     const data = Button.getOrCreateInstance(button);
     data.toggle();
   });
@@ -870,23 +898,23 @@
    * Constants
    */
 
-  const NAME$d = 'swipe';
-  const EVENT_KEY$9 = '.bs.swipe';
-  const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$9}`;
-  const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$9}`;
-  const EVENT_TOUCHEND = `touchend${EVENT_KEY$9}`;
-  const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$9}`;
-  const EVENT_POINTERUP = `pointerup${EVENT_KEY$9}`;
+  const NAME$h = 'swipe';
+  const EVENT_KEY$d = '.bs.swipe';
+  const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$d}`;
+  const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$d}`;
+  const EVENT_TOUCHEND = `touchend${EVENT_KEY$d}`;
+  const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$d}`;
+  const EVENT_POINTERUP = `pointerup${EVENT_KEY$d}`;
   const POINTER_TYPE_TOUCH = 'touch';
   const POINTER_TYPE_PEN = 'pen';
   const CLASS_NAME_POINTER_EVENT = 'pointer-event';
   const SWIPE_THRESHOLD = 40;
-  const Default$c = {
+  const Default$g = {
     endCallback: null,
     leftCallback: null,
     rightCallback: null
   };
-  const DefaultType$c = {
+  const DefaultType$g = {
     endCallback: '(function|null)',
     leftCallback: '(function|null)',
     rightCallback: '(function|null)'
@@ -911,18 +939,18 @@
 
     // Getters
     static get Default() {
-      return Default$c;
+      return Default$g;
     }
     static get DefaultType() {
-      return DefaultType$c;
+      return DefaultType$g;
     }
     static get NAME() {
-      return NAME$d;
+      return NAME$h;
     }
 
     // Public
     dispose() {
-      EventHandler.off(this._element, EVENT_KEY$9);
+      EventHandler.off(this._element, EVENT_KEY$d);
     }
 
     // Private
@@ -990,26 +1018,26 @@
    * Constants
    */
 
-  const NAME$c = 'carousel';
-  const DATA_KEY$8 = 'bs.carousel';
-  const EVENT_KEY$8 = `.${DATA_KEY$8}`;
-  const DATA_API_KEY$5 = '.data-api';
-  const ARROW_LEFT_KEY$1 = 'ArrowLeft';
-  const ARROW_RIGHT_KEY$1 = 'ArrowRight';
+  const NAME$g = 'carousel';
+  const DATA_KEY$c = 'bs.carousel';
+  const EVENT_KEY$c = `.${DATA_KEY$c}`;
+  const DATA_API_KEY$8 = '.data-api';
+  const ARROW_LEFT_KEY$2 = 'ArrowLeft';
+  const ARROW_RIGHT_KEY$2 = 'ArrowRight';
   const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
 
   const ORDER_NEXT = 'next';
   const ORDER_PREV = 'prev';
   const DIRECTION_LEFT = 'left';
   const DIRECTION_RIGHT = 'right';
-  const EVENT_SLIDE = `slide${EVENT_KEY$8}`;
-  const EVENT_SLID = `slid${EVENT_KEY$8}`;
-  const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$8}`;
-  const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$8}`;
-  const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$8}`;
-  const EVENT_DRAG_START = `dragstart${EVENT_KEY$8}`;
-  const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$8}${DATA_API_KEY$5}`;
-  const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$8}${DATA_API_KEY$5}`;
+  const EVENT_SLIDE = `slide${EVENT_KEY$c}`;
+  const EVENT_SLID = `slid${EVENT_KEY$c}`;
+  const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$c}`;
+  const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$c}`;
+  const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$c}`;
+  const EVENT_DRAG_START = `dragstart${EVENT_KEY$c}`;
+  const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$c}${DATA_API_KEY$8}`;
+  const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$c}${DATA_API_KEY$8}`;
   const CLASS_NAME_CAROUSEL = 'carousel';
   const CLASS_NAME_ACTIVE$2 = 'active';
   const CLASS_NAME_SLIDE = 'slide';
@@ -1025,10 +1053,10 @@
   const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]';
   const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]';
   const KEY_TO_DIRECTION = {
-    [ARROW_LEFT_KEY$1]: DIRECTION_RIGHT,
-    [ARROW_RIGHT_KEY$1]: DIRECTION_LEFT
+    [ARROW_LEFT_KEY$2]: DIRECTION_RIGHT,
+    [ARROW_RIGHT_KEY$2]: DIRECTION_LEFT
   };
-  const Default$b = {
+  const Default$f = {
     interval: 5000,
     keyboard: true,
     pause: 'hover',
@@ -1036,7 +1064,7 @@
     touch: true,
     wrap: true
   };
-  const DefaultType$b = {
+  const DefaultType$f = {
     interval: '(number|boolean)',
     // TODO:v6 remove boolean support
     keyboard: 'boolean',
@@ -1067,13 +1095,13 @@
 
     // Getters
     static get Default() {
-      return Default$b;
+      return Default$f;
     }
     static get DefaultType() {
-      return DefaultType$b;
+      return DefaultType$f;
     }
     static get NAME() {
-      return NAME$c;
+      return NAME$g;
     }
 
     // Public
@@ -1300,7 +1328,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_SLIDE, function (event) {
     const target = SelectorEngine.getElementFromSelector(this);
     if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
       return;
@@ -1340,15 +1368,15 @@
    * Constants
    */
 
-  const NAME$b = 'collapse';
-  const DATA_KEY$7 = 'bs.collapse';
-  const EVENT_KEY$7 = `.${DATA_KEY$7}`;
-  const DATA_API_KEY$4 = '.data-api';
-  const EVENT_SHOW$6 = `show${EVENT_KEY$7}`;
-  const EVENT_SHOWN$6 = `shown${EVENT_KEY$7}`;
-  const EVENT_HIDE$6 = `hide${EVENT_KEY$7}`;
-  const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$7}`;
-  const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$7}${DATA_API_KEY$4}`;
+  const NAME$f = 'collapse';
+  const DATA_KEY$b = 'bs.collapse';
+  const EVENT_KEY$b = `.${DATA_KEY$b}`;
+  const DATA_API_KEY$7 = '.data-api';
+  const EVENT_SHOW$7 = `show${EVENT_KEY$b}`;
+  const EVENT_SHOWN$7 = `shown${EVENT_KEY$b}`;
+  const EVENT_HIDE$7 = `hide${EVENT_KEY$b}`;
+  const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$b}`;
+  const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$b}${DATA_API_KEY$7}`;
   const CLASS_NAME_SHOW$6 = 'show';
   const CLASS_NAME_COLLAPSE = 'collapse';
   const CLASS_NAME_COLLAPSING = 'collapsing';
@@ -1358,12 +1386,12 @@
   const WIDTH = 'width';
   const HEIGHT = 'height';
   const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
-  const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="collapse"]';
-  const Default$a = {
+  const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="collapse"]';
+  const Default$e = {
     parent: null,
     toggle: true
   };
-  const DefaultType$a = {
+  const DefaultType$e = {
     parent: '(null|element)',
     toggle: 'boolean'
   };
@@ -1377,7 +1405,7 @@
       super(element, config);
       this._isTransitioning = false;
       this._triggerArray = [];
-      const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$6);
+      const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$8);
       for (const elem of toggleList) {
         const selector = SelectorEngine.getSelectorFromElement(elem);
         const filterElement = SelectorEngine.find(selector).filter(foundElement => foundElement === this._element);
@@ -1396,13 +1424,13 @@
 
     // Getters
     static get Default() {
-      return Default$a;
+      return Default$e;
     }
     static get DefaultType() {
-      return DefaultType$a;
+      return DefaultType$e;
     }
     static get NAME() {
-      return NAME$b;
+      return NAME$f;
     }
 
     // Public
@@ -1428,7 +1456,7 @@
       if (activeChildren.length && activeChildren[0]._isTransitioning) {
         return;
       }
-      const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$6);
+      const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$7);
       if (startEvent.defaultPrevented) {
         return;
       }
@@ -1446,7 +1474,7 @@
         this._element.classList.remove(CLASS_NAME_COLLAPSING);
         this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$6);
         this._element.style[dimension] = '';
-        EventHandler.trigger(this._element, EVENT_SHOWN$6);
+        EventHandler.trigger(this._element, EVENT_SHOWN$7);
       };
       const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
       const scrollSize = `scroll${capitalizedDimension}`;
@@ -1457,7 +1485,7 @@
       if (this._isTransitioning || !this._isShown()) {
         return;
       }
-      const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$6);
+      const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$7);
       if (startEvent.defaultPrevented) {
         return;
       }
@@ -1477,7 +1505,7 @@
         this._isTransitioning = false;
         this._element.classList.remove(CLASS_NAME_COLLAPSING);
         this._element.classList.add(CLASS_NAME_COLLAPSE);
-        EventHandler.trigger(this._element, EVENT_HIDDEN$6);
+        EventHandler.trigger(this._element, EVENT_HIDDEN$7);
       };
       this._element.style[dimension] = '';
       this._queueCallback(complete, this._element, true);
@@ -1499,7 +1527,7 @@
       if (!this._config.parent) {
         return;
       }
-      const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$6);
+      const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$8);
       for (const element of children) {
         const selected = SelectorEngine.getElementFromSelector(element);
         if (selected) {
@@ -1527,7 +1555,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$6, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, function (event) {
     // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
     if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
       event.preventDefault();
@@ -1536,6 +1564,437 @@
       Collapse.getOrCreateInstance(element, {
         toggle: false
       }).toggle();
+    }
+  });
+
+  /*! name: vanilla-calendar-pro v3.0.5 | url: https://github.com/uvarov-frontend/vanilla-calendar-pro */
+  var __defProp=Object.defineProperty,__defProps=Object.defineProperties,__getOwnPropDescs=Object.getOwnPropertyDescriptors,__getOwnPropSymbols=Object.getOwnPropertySymbols,__hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable,__defNormalProp=(e,t,n)=>t in e?__defProp(e,t,{enumerable:true,configurable:true,writable:true,value:n}):e[t]=n,__spreadValues=(e,t)=>{for(var n in t||(t={}))__hasOwnProp.call(t,n)&&__defNormalProp(e,n,t[n]);if(__getOwnPropSymbols)for(var n of __getOwnPropSymbols(t))__propIsEnum.call(t,n)&&__defNormalProp(e,n,t[n]);return e},__spreadProps=(e,t)=>__defProps(e,__getOwnPropDescs(t)),__publicField=(e,t,n)=>(__defNormalProp(e,"symbol"!=typeof t?t+"":t,n),n);const errorMessages={notFoundSelector:e=>`${e} is not found, check the first argument passed to new Calendar.`,notInit:'The calendar has not been initialized, please initialize it using the "init()" method first.',notLocale:"You specified an incorrect language label or did not specify the required number of values ​​for «locale.weekdays» or «locale.months».",incorrectTime:"The value of the time property can be: false, 12 or 24.",incorrectMonthsCount:"For the «multiple» calendar type, the «displayMonthsCount» parameter can have a value from 2 to 12, and for all others it cannot be greater than 1."},setContext=(e,t,n)=>{e.context[t]=n;},destroy=e=>{var t,n,a,l,o;if(!e.context.isInit)throw new Error(errorMessages.notInit);e.inputMode?(null==(t=e.context.mainElement.parentElement)||t.removeChild(e.context.mainElement),null==(a=null==(n=e.context.inputElement)?void 0:n.replaceWith)||a.call(n,e.context.originalElement),setContext(e,"inputElement",void 0)):null==(o=(l=e.context.mainElement).replaceWith)||o.call(l,e.context.originalElement),setContext(e,"mainElement",e.context.originalElement),e.onDestroy&&e.onDestroy(e);},hide=e=>{e.context.isShowInInputMode&&e.context.currentType&&(e.context.mainElement.dataset.vcCalendarHidden="",setContext(e,"isShowInInputMode",false),e.context.cleanupHandlers[0]&&(e.context.cleanupHandlers.forEach((e=>e())),setContext(e,"cleanupHandlers",[])),e.onHide&&e.onHide(e));};function getOffset(e){if(!e||!e.getBoundingClientRect)return {top:0,bottom:0,left:0,right:0};const t=e.getBoundingClientRect(),n=document.documentElement;return {bottom:t.bottom,right:t.right,top:t.top+window.scrollY-n.clientTop,left:t.left+window.scrollX-n.clientLeft}}function getViewportDimensions(){return {vw:Math.max(document.documentElement.clientWidth||0,window.innerWidth||0),vh:Math.max(document.documentElement.clientHeight||0,window.innerHeight||0)}}function getWindowScrollPosition(){return {left:window.scrollX||document.documentElement.scrollLeft||0,top:window.scrollY||document.documentElement.scrollTop||0}}function calculateAvailableSpace(e){const{top:t,left:n}=getWindowScrollPosition(),{top:a,left:l}=getOffset(e),{vh:o,vw:s}=getViewportDimensions(),i=a-t,r=l-n;return {top:i,bottom:o-(i+e.clientHeight),left:r,right:s-(r+e.clientWidth)}}function getAvailablePosition(e,t,n=5){const a={top:true,bottom:true,left:true,right:true},l=[];if(!t||!e)return {canShow:a,parentPositions:l};const{bottom:o,top:s}=calculateAvailableSpace(e),{top:i,left:r}=getOffset(e),{height:c,width:d}=t.getBoundingClientRect(),{vh:u,vw:m}=getViewportDimensions(),h=m/2,p=u/2;return [{condition:i<p,position:"top"},{condition:i>p,position:"bottom"},{condition:r<h,position:"left"},{condition:r>h,position:"right"}].forEach((({condition:e,position:t})=>{e&&l.push(t);})),Object.assign(a,{top:c<=s-n,bottom:c<=o-n,left:d<=r,right:d<=m-r}),{canShow:a,parentPositions:l}}const handleDay=(e,t,n,a)=>{var l;const o=a.querySelector(`[data-vc-date="${t}"]`),s=null==o?void 0:o.querySelector("[data-vc-date-btn]");if(!o||!s)return;if((null==n?void 0:n.modifier)&&s.classList.add(...n.modifier.trim().split(" ")),!(null==n?void 0:n.html))return;const i=document.createElement("div");i.className=e.styles.datePopup,i.dataset.vcDatePopup="",i.innerHTML=e.sanitizerHTML(n.html),s.ariaExpanded="true",s.ariaLabel=`${s.ariaLabel}, ${null==(l=null==i?void 0:i.textContent)?void 0:l.replace(/^\s+|\s+(?=\s)|\s+$/g,"").replace(/&nbsp;/g," ")}`,o.appendChild(i),requestAnimationFrame((()=>{if(!i)return;const{canShow:e}=getAvailablePosition(o,i),t=e.bottom?o.offsetHeight:-i.offsetHeight,n=e.left&&!e.right?o.offsetWidth-i.offsetWidth/2:!e.left&&e.right?i.offsetWidth/2:0;Object.assign(i.style,{left:`${n}px`,top:`${t}px`});}));},createDatePopup=(e,t)=>{var n;e.popups&&(null==(n=Object.entries(e.popups))||n.forEach((([n,a])=>handleDay(e,n,a,t))));},getDate=e=>new Date(`${e}T00:00:00`),getDateString=e=>`${e.getFullYear()}-${String(e.getMonth()+1).padStart(2,"0")}-${String(e.getDate()).padStart(2,"0")}`,parseDates=e=>e.reduce(((e,t)=>{if(t instanceof Date||"number"==typeof t){const n=t instanceof Date?t:new Date(t);e.push(n.toISOString().substring(0,10));}else t.match(/^(\d{4}-\d{2}-\d{2})$/g)?e.push(t):t.replace(/(\d{4}-\d{2}-\d{2}).*?(\d{4}-\d{2}-\d{2})/g,((t,n,a)=>{const l=getDate(n),o=getDate(a),s=new Date(l.getTime());for(;s<=o;s.setDate(s.getDate()+1))e.push(getDateString(s));return t}));return e}),[]),updateAttribute=(e,t,n,a="")=>{t?e.setAttribute(n,a):e.getAttribute(n)===a&&e.removeAttribute(n);},setDateModifier=(e,t,n,a,l,o,s)=>{var i,r,c,d;const u=getDate(e.context.displayDateMin)>getDate(o)||getDate(e.context.displayDateMax)<getDate(o)||(null==(i=e.context.disableDates)?void 0:i.includes(o))||!e.selectionMonthsMode&&"current"!==s||!e.selectionYearsMode&&getDate(o).getFullYear()!==t;updateAttribute(n,u,"data-vc-date-disabled"),a&&updateAttribute(a,u,"aria-disabled","true"),a&&updateAttribute(a,u,"tabindex","-1"),updateAttribute(n,!e.disableToday&&e.context.dateToday===o,"data-vc-date-today"),updateAttribute(n,!e.disableToday&&e.context.dateToday===o,"aria-current","date"),updateAttribute(n,null==(r=e.selectedWeekends)?void 0:r.includes(l),"data-vc-date-weekend");const m=(null==(c=e.selectedHolidays)?void 0:c[0])?parseDates(e.selectedHolidays):[];if(updateAttribute(n,m.includes(o),"data-vc-date-holiday"),(null==(d=e.context.selectedDates)?void 0:d.includes(o))?(n.setAttribute("data-vc-date-selected",""),a&&a.setAttribute("aria-selected","true"),e.context.selectedDates.length>1&&"multiple-ranged"===e.selectionDatesMode&&(e.context.selectedDates[0]===o&&e.context.selectedDates[e.context.selectedDates.length-1]===o?n.setAttribute("data-vc-date-selected","first-and-last"):e.context.selectedDates[0]===o?n.setAttribute("data-vc-date-selected","first"):e.context.selectedDates[e.context.selectedDates.length-1]===o&&n.setAttribute("data-vc-date-selected","last"),e.context.selectedDates[0]!==o&&e.context.selectedDates[e.context.selectedDates.length-1]!==o&&n.setAttribute("data-vc-date-selected","middle"))):n.hasAttribute("data-vc-date-selected")&&(n.removeAttribute("data-vc-date-selected"),a&&a.removeAttribute("aria-selected")),!e.context.disableDates.includes(o)&&e.enableEdgeDatesOnly&&e.context.selectedDates.length>1&&"multiple-ranged"===e.selectionDatesMode){const t=getDate(e.context.selectedDates[0]),a=getDate(e.context.selectedDates[e.context.selectedDates.length-1]),l=getDate(o);updateAttribute(n,l>t&&l<a,"data-vc-date-selected","middle");}},getLocaleString=(e,t,n)=>new Date(`${e}T00:00:00.000Z`).toLocaleString(t,n),getWeekNumber=(e,t)=>{const n=getDate(e),a=(n.getDay()-t+7)%7;n.setDate(n.getDate()+4-a);const l=new Date(n.getFullYear(),0,1),o=Math.ceil(((+n-+l)/864e5+1)/7);return {year:n.getFullYear(),week:o}},addWeekNumberForDate=(e,t,n)=>{const a=getWeekNumber(n,e.firstWeekday);a&&(t.dataset.vcDateWeekNumber=String(a.week));},setDaysAsDisabled=(e,t,n)=>{var a,l,o,s,i;const r=null==(a=e.disableWeekdays)?void 0:a.includes(n),c=e.disableAllDates&&!!(null==(l=e.context.enableDates)?void 0:l[0]);!r&&!c||(null==(o=e.context.enableDates)?void 0:o.includes(t))||(null==(s=e.context.disableDates)?void 0:s.includes(t))||(e.context.disableDates.push(t),null==(i=e.context.disableDates)||i.sort(((e,t)=>+new Date(e)-+new Date(t))));},createDate=(e,t,n,a,l,o)=>{const s=getDate(l).getDay(),i="string"==typeof e.locale&&e.locale.length?e.locale:"en",r=document.createElement("div");let c;r.className=e.styles.date,r.dataset.vcDate=l,r.dataset.vcDateMonth=o,r.dataset.vcDateWeekDay=String(s),("current"===o||e.displayDatesOutside)&&(c=document.createElement("button"),c.className=e.styles.dateBtn,c.type="button",c.role="gridcell",c.ariaLabel=getLocaleString(l,i,{dateStyle:"long",timeZone:"UTC"}),c.dataset.vcDateBtn="",c.innerText=String(a),r.appendChild(c)),e.enableWeekNumbers&&addWeekNumberForDate(e,r,l),setDaysAsDisabled(e,l,s),setDateModifier(e,t,r,c,s,l,o),n.appendChild(r),e.onCreateDateEls&&e.onCreateDateEls(e,r);},createDatesFromCurrentMonth=(e,t,n,a,l)=>{for(let o=1;o<=n;o++){const n=new Date(a,l,o);createDate(e,a,t,o,getDateString(n),"current");}},createDatesFromNextMonth=(e,t,n,a,l,o)=>{const s=o+n,i=7*Math.ceil(s/7)-s,r=l+1===12?a+1:a,c=l+1===12?"01":l+2<10?`0${l+2}`:l+2;for(let n=1;n<=i;n++){const l=n<10?`0${n}`:String(n);createDate(e,a,t,n,`${r}-${c}-${l}`,"next");}},createDatesFromPrevMonth=(e,t,n,a,l)=>{let o=new Date(n,a,0).getDate()-(l-1);const s=0===a?n-1:n,i=0===a?12:a<10?`0${a}`:a;for(let a=l;a>0;a--,o++){createDate(e,n,t,o,`${s}-${i}-${o}`,"prev");}},createWeekNumbers=(e,t,n,a,l)=>{if(!e.enableWeekNumbers)return;a.textContent="";const o=document.createElement("b");o.className=e.styles.weekNumbersTitle,o.innerText="#",o.dataset.vcWeekNumbers="title",a.appendChild(o);const s=document.createElement("div");s.className=e.styles.weekNumbersContent,s.dataset.vcWeekNumbers="content",a.appendChild(s);const i=document.createElement("button");i.type="button",i.className=e.styles.weekNumber;const r=l.querySelectorAll("[data-vc-date]"),c=Math.ceil((t+n)/7);for(let t=0;t<c;t++){const n=r[0===t?6:7*t].dataset.vcDate,a=getWeekNumber(n,e.firstWeekday);if(!a)return;const l=i.cloneNode(true);l.innerText=String(a.week),l.dataset.vcWeekNumber=String(a.week),l.dataset.vcWeekYear=String(a.year),l.role="rowheader",l.ariaLabel=`${a.week}`,s.appendChild(l);}},createDates=e=>{const t=new Date(e.context.selectedYear,e.context.selectedMonth,1),n=e.context.mainElement.querySelectorAll('[data-vc="dates"]'),a=e.context.mainElement.querySelectorAll('[data-vc-week="numbers"]');n.forEach(((n,l)=>{e.selectionDatesMode||(n.dataset.vcDatesDisabled=""),n.textContent="";const o=new Date(t);o.setMonth(o.getMonth()+l);const s=o.getMonth(),i=o.getFullYear(),r=(new Date(i,s,1).getDay()-e.firstWeekday+7)%7,c=new Date(i,s+1,0).getDate();createDatesFromPrevMonth(e,n,i,s,r),createDatesFromCurrentMonth(e,n,c,i,s),createDatesFromNextMonth(e,n,c,i,s,r),createDatePopup(e,n),createWeekNumbers(e,r,c,a[l],n);}));},layoutDefault=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <#WeekNumbers />\n    <div class="${e.styles.content}" data-vc="content">\n      <#Week />\n      <#Dates />\n      <#DateRangeTooltip />\n    </div>\n  </div>\n  <#ControlTime />\n`,layoutMonths=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <div class="${e.styles.content}" data-vc="content">\n      <#Months />\n    </div>\n  </div>\n`,layoutMultiple=e=>`\n  <div class="${e.styles.controls}" data-vc="controls" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.grid}" data-vc="grid">\n    <#Multiple>\n      <div class="${e.styles.column}" data-vc="column" role="region">\n        <div class="${e.styles.header}" data-vc="header">\n          <div class="${e.styles.headerContent}" data-vc-header="content">\n            <#Month />\n            <#Year />\n          </div>\n        </div>\n        <div class="${e.styles.wrapper}" data-vc="wrapper">\n          <#WeekNumbers />\n          <div class="${e.styles.content}" data-vc="content">\n            <#Week />\n            <#Dates />\n          </div>\n        </div>\n      </div>\n    <#/Multiple>\n    <#DateRangeTooltip />\n  </div>\n  <#ControlTime />\n`,layoutYears=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [year] />\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n    <#ArrowNext [year] />\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <div class="${e.styles.content}" data-vc="content">\n      <#Years />\n    </div>\n  </div>\n`,ArrowNext=(e,t)=>`<button type="button" class="${e.styles.arrowNext}" data-vc-arrow="next" aria-label="${e.labels.arrowNext[t]}"></button>`,ArrowPrev=(e,t)=>`<button type="button" class="${e.styles.arrowPrev}" data-vc-arrow="prev" aria-label="${e.labels.arrowPrev[t]}"></button>`,ControlTime=e=>e.selectionTimeMode?`<div class="${e.styles.time}" data-vc="time" role="group" aria-label="${e.labels.selectingTime}"></div>`:"",DateRangeTooltip=e=>e.onCreateDateRangeTooltip?`<div class="${e.styles.dateRangeTooltip}" data-vc-date-range-tooltip="hidden"></div>`:"",Dates=e=>`<div class="${e.styles.dates}" data-vc="dates" role="grid" aria-live="assertive" aria-label="${e.labels.dates}" ${"multiple"===e.type?"aria-multiselectable":""}></div>`,Month=e=>`<button type="button" class="${e.styles.month}" data-vc="month"></button>`,Months=e=>`<div class="${e.styles.months}" data-vc="months" role="grid" aria-live="assertive" aria-label="${e.labels.months}"></div>`,Week=e=>`<div class="${e.styles.week}" data-vc="week" role="row" aria-label="${e.labels.week}"></div>`,WeekNumbers=e=>e.enableWeekNumbers?`<div class="${e.styles.weekNumbers}" data-vc-week="numbers" role="row" aria-label="${e.labels.weekNumber}"></div>`:"",Year=e=>`<button type="button" class="${e.styles.year}" data-vc="year"></button>`,Years=e=>`<div class="${e.styles.years}" data-vc="years" role="grid" aria-live="assertive" aria-label="${e.labels.years}"></div>`,components={ArrowNext:ArrowNext,ArrowPrev:ArrowPrev,ControlTime:ControlTime,Dates:Dates,DateRangeTooltip:DateRangeTooltip,Month:Month,Months:Months,Week:Week,WeekNumbers:WeekNumbers,Year:Year,Years:Years},getComponent=e=>components[e],parseLayout=(e,t)=>t.replace(/[\n\t]/g,"").replace(/<#(?!\/?Multiple)(.*?)>/g,((t,n)=>{const a=(n.match(/\[(.*?)\]/)||[])[1],l=n.replace(/[/\s\n\t]|\[(.*?)\]/g,""),o=getComponent(l),s=o?o(e,null!=a?a:null):"";return e.sanitizerHTML(s)})).replace(/[\n\t]/g,""),parseMultipleLayout=(e,t)=>t.replace(new RegExp("<#Multiple>(.*?)<#\\/Multiple>","gs"),((t,n)=>{const a=Array(e.context.displayMonthsCount).fill(n).join("");return e.sanitizerHTML(a)})).replace(/[\n\t]/g,""),createLayouts=(e,t)=>{const n={default:layoutDefault,month:layoutMonths,year:layoutYears,multiple:layoutMultiple};if(Object.keys(n).forEach((t=>{const a=t;e.layouts[a].length||(e.layouts[a]=n[a](e));})),e.context.mainElement.className=e.styles.calendar,e.context.mainElement.dataset.vc="calendar",e.context.mainElement.dataset.vcType=e.context.currentType,e.context.mainElement.role="application",e.context.mainElement.tabIndex=0,e.context.mainElement.ariaLabel=e.labels.application,"multiple"!==e.context.currentType){if("multiple"===e.type&&t){const n=e.context.mainElement.querySelector('[data-vc="controls"]'),a=e.context.mainElement.querySelector('[data-vc="grid"]'),l=t.closest('[data-vc="column"]');return n&&e.context.mainElement.removeChild(n),a&&(a.dataset.vcGrid="hidden"),l&&(l.dataset.vcColumn=e.context.currentType),void(l&&(l.innerHTML=e.sanitizerHTML(parseLayout(e,e.layouts[e.context.currentType]))))}e.context.mainElement.innerHTML=e.sanitizerHTML(parseLayout(e,e.layouts[e.context.currentType]));}else e.context.mainElement.innerHTML=e.sanitizerHTML(parseMultipleLayout(e,parseLayout(e,e.layouts[e.context.currentType])));},setVisibilityArrows=(e,t,n,a)=>{e.style.visibility=n?"hidden":"",t.style.visibility=a?"hidden":"";},handleDefaultType=(e,t,n)=>{const a=getDate(getDateString(new Date(e.context.selectedYear,e.context.selectedMonth,1))),l=new Date(a.getTime()),o=new Date(a.getTime());l.setMonth(l.getMonth()-e.monthsToSwitch),o.setMonth(o.getMonth()+e.monthsToSwitch);const s=getDate(e.context.dateMin),i=getDate(e.context.dateMax);e.selectionYearsMode||(s.setFullYear(a.getFullYear()),i.setFullYear(a.getFullYear()));const r=!e.selectionMonthsMode||l.getFullYear()<s.getFullYear()||l.getFullYear()===s.getFullYear()&&l.getMonth()<s.getMonth(),c=!e.selectionMonthsMode||o.getFullYear()>i.getFullYear()||o.getFullYear()===i.getFullYear()&&o.getMonth()>i.getMonth()-(e.context.displayMonthsCount-1);setVisibilityArrows(t,n,r,c);},handleYearType=(e,t,n)=>{const a=getDate(e.context.dateMin),l=getDate(e.context.dateMax),o=!!(a.getFullYear()&&e.context.displayYear-7<=a.getFullYear()),s=!!(l.getFullYear()&&e.context.displayYear+7>=l.getFullYear());setVisibilityArrows(t,n,o,s);},visibilityArrows=e=>{if("month"===e.context.currentType)return;const t=e.context.mainElement.querySelector('[data-vc-arrow="prev"]'),n=e.context.mainElement.querySelector('[data-vc-arrow="next"]');if(!t||!n)return;({default:()=>handleDefaultType(e,t,n),year:()=>handleYearType(e,t,n)})["multiple"===e.context.currentType?"default":e.context.currentType]();},visibilityHandler=(e,t,n,a,l)=>{const o=new Date(a.setFullYear(e.context.selectedYear,e.context.selectedMonth+n)).getFullYear(),s=new Date(a.setMonth(e.context.selectedMonth+n)).getMonth(),i=e.context.locale.months.long[s],r=t.closest('[data-vc="column"]');r&&(r.ariaLabel=`${i} ${o}`);const c={month:{id:s,label:i},year:{id:o,label:o}};t.innerText=String(c[l].label),t.dataset[`vc${l.charAt(0).toUpperCase()+l.slice(1)}`]=String(c[l].id),t.ariaLabel=`${e.labels[l]} ${c[l].label}`;const d={month:e.selectionMonthsMode,year:e.selectionYearsMode},u=false===d[l]||"only-arrows"===d[l];u&&(t.tabIndex=-1),t.disabled=u;},visibilityTitle=e=>{const t=e.context.mainElement.querySelectorAll('[data-vc="month"]'),n=e.context.mainElement.querySelectorAll('[data-vc="year"]'),a=new Date(e.context.selectedYear,e.context.selectedMonth,1);[t,n].forEach((t=>null==t?void 0:t.forEach(((t,n)=>visibilityHandler(e,t,n,a,t.dataset.vc)))));},setYearModifier=(e,t,n,a,l)=>{var o;const s={month:"[data-vc-months-month]",year:"[data-vc-years-year]"},i={month:{selected:"data-vc-months-month-selected",aria:"aria-selected",value:"vcMonthsMonth",selectedProperty:"selectedMonth"},year:{selected:"data-vc-years-year-selected",aria:"aria-selected",value:"vcYearsYear",selectedProperty:"selectedYear"}};l&&(null==(o=e.context.mainElement.querySelectorAll(s[n]))||o.forEach((e=>{e.removeAttribute(i[n].selected),e.removeAttribute(i[n].aria);})),setContext(e,i[n].selectedProperty,Number(t.dataset[i[n].value])),visibilityTitle(e),"year"===n&&visibilityArrows(e)),a&&(t.setAttribute(i[n].selected,""),t.setAttribute(i[n].aria,"true"));},getColumnID=(e,t)=>{var n;if("multiple"!==e.type)return {currentValue:null,columnID:0};const a=e.context.mainElement.querySelectorAll('[data-vc="column"]'),l=Array.from(a).findIndex((e=>e.closest(`[data-vc-column="${t}"]`)));return {currentValue:l>=0?Number(null==(n=a[l].querySelector(`[data-vc="${t}"]`))?void 0:n.getAttribute(`data-vc-${t}`)):null,columnID:Math.max(l,0)}},createMonthEl=(e,t,n,a,l,o,s)=>{const i=t.cloneNode(false);return i.className=e.styles.monthsMonth,i.innerText=a,i.ariaLabel=l,i.role="gridcell",i.dataset.vcMonthsMonth=`${s}`,o&&(i.ariaDisabled="true"),o&&(i.tabIndex=-1),i.disabled=o,setYearModifier(e,i,"month",n===s,false),i},createMonths=(e,t)=>{var n,a;const l=null==(n=null==t?void 0:t.closest('[data-vc="header"]'))?void 0:n.querySelector('[data-vc="year"]'),o=l?Number(l.dataset.vcYear):e.context.selectedYear,s=(null==t?void 0:t.dataset.vcMonth)?Number(t.dataset.vcMonth):e.context.selectedMonth;setContext(e,"currentType","month"),createLayouts(e,t),visibilityTitle(e);const i=e.context.mainElement.querySelector('[data-vc="months"]');if(!e.selectionMonthsMode||!i)return;const r=e.monthsToSwitch>1?e.context.locale.months.long.map(((t,n)=>s-e.monthsToSwitch*n)).concat(e.context.locale.months.long.map(((t,n)=>s+e.monthsToSwitch*n))).filter((e=>e>=0&&e<=12)):Array.from(Array(12).keys()),c=document.createElement("button");c.type="button";for(let t=0;t<12;t++){const n=getDate(e.context.dateMin),a=getDate(e.context.dateMax),l=e.context.displayMonthsCount-1,{columnID:d}=getColumnID(e,"month"),u=o<=n.getFullYear()&&t<n.getMonth()+d||o>=a.getFullYear()&&t>a.getMonth()-l+d||o>a.getFullYear()||t!==s&&!r.includes(t),m=createMonthEl(e,c,s,e.context.locale.months.short[t],e.context.locale.months.long[t],u,t);i.appendChild(m),e.onCreateMonthEls&&e.onCreateMonthEls(e,m);}null==(a=e.context.mainElement.querySelector("[data-vc-months-month]:not([disabled])"))||a.focus();},TimeInput=(e,t,n,a,l)=>`\n  <label class="${t}" data-vc-time-input="${e}">\n    <input type="text" name="${e}" maxlength="2" aria-label="${n[`input${e.charAt(0).toUpperCase()+e.slice(1)}`]}" value="${a}" ${l?"disabled":""}>\n  </label>\n`,TimeRange=(e,t,n,a,l,o,s)=>`\n  <label class="${t}" data-vc-time-range="${e}">\n    <input type="range" name="${e}" min="${a}" max="${l}" step="${o}" aria-label="${n[`range${e.charAt(0).toUpperCase()+e.slice(1)}`]}" value="${s}">\n  </label>\n`,handleActions=(e,t,n,a)=>{(({hour:()=>setContext(e,"selectedHours",n),minute:()=>setContext(e,"selectedMinutes",n)}))[a](),setContext(e,"selectedTime",`${e.context.selectedHours}:${e.context.selectedMinutes}${e.context.selectedKeeping?` ${e.context.selectedKeeping}`:""}`),e.onChangeTime&&e.onChangeTime(e,t,false),e.inputMode&&e.context.inputElement&&e.context.mainElement&&e.onChangeToInput&&e.onChangeToInput(e,t);},transformTime24=(e,t)=>{var n;return (null==(n={0:{AM:"00",PM:"12"},1:{AM:"01",PM:"13"},2:{AM:"02",PM:"14"},3:{AM:"03",PM:"15"},4:{AM:"04",PM:"16"},5:{AM:"05",PM:"17"},6:{AM:"06",PM:"18"},7:{AM:"07",PM:"19"},8:{AM:"08",PM:"20"},9:{AM:"09",PM:"21"},10:{AM:"10",PM:"22"},11:{AM:"11",PM:"23"},12:{AM:"00",PM:"12"}}[Number(e)])?void 0:n[t])||String(e)},handleClickKeepingTime=(e,t,n,a,l)=>{const o=o=>{const s="AM"===e.context.selectedKeeping?"PM":"AM",i=transformTime24(e.context.selectedHours,s);Number(i)<=a&&Number(i)>=l?(setContext(e,"selectedKeeping",s),n.value=i,handleActions(e,o,e.context.selectedHours,"hour"),t.ariaLabel=`${e.labels.btnKeeping} ${e.context.selectedKeeping}`,t.innerText=e.context.selectedKeeping):e.onChangeTime&&e.onChangeTime(e,o,true);};return t.addEventListener("click",o),()=>{t.removeEventListener("click",o);}},transformTime12=e=>({0:"12",13:"01",14:"02",15:"03",16:"04",17:"05",18:"06",19:"07",20:"08",21:"09",22:"10",23:"11"}[Number(e)]||String(e)),updateInputAndRange=(e,t,n,a)=>{e.value=n,t.value=a;},updateKeepingTime$1=(e,t,n)=>{t&&n&&(setContext(e,"selectedKeeping",n),t.innerText=n);},handleInput$1=(e,t,n,a,l,o,s)=>{const i={hour:(i,r,c)=>{if(!e.selectionTimeMode)return;({12:()=>{if(!e.context.selectedKeeping)return;const d=Number(transformTime24(r,e.context.selectedKeeping));if(!(d<=o&&d>=s))return updateInputAndRange(n,t,e.context.selectedHours,e.context.selectedHours),void(e.onChangeTime&&e.onChangeTime(e,c,true));updateInputAndRange(n,t,transformTime12(r),transformTime24(r,e.context.selectedKeeping)),i>12&&updateKeepingTime$1(e,a,"PM"),handleActions(e,c,transformTime12(r),l);},24:()=>{if(!(i<=o&&i>=s))return updateInputAndRange(n,t,e.context.selectedHours,e.context.selectedHours),void(e.onChangeTime&&e.onChangeTime(e,c,true));updateInputAndRange(n,t,r,r),handleActions(e,c,r,l);}})[e.selectionTimeMode]();},minute:(a,i,r)=>{if(!(a<=o&&a>=s))return n.value=e.context.selectedMinutes,void(e.onChangeTime&&e.onChangeTime(e,r,true));n.value=i,t.value=i,handleActions(e,r,i,l);}},r=e=>{const t=Number(n.value),a=n.value.padStart(2,"0");i[l]&&i[l](t,a,e);};return n.addEventListener("change",r),()=>{n.removeEventListener("change",r);}},updateInputAndTime=(e,t,n,a,l)=>{t.value=l,handleActions(e,n,l,a);},updateKeepingTime=(e,t,n)=>{t&&(setContext(e,"selectedKeeping",n),t.innerText=n);},handleRange=(e,t,n,a,l)=>{const o=o=>{const s=Number(t.value),i=t.value.padStart(2,"0"),r="hour"===l,c=24===e.selectionTimeMode,d=s>0&&s<12;r&&!c&&updateKeepingTime(e,a,0===s||d?"AM":"PM"),updateInputAndTime(e,n,o,l,!r||c||d?i:transformTime12(t.value));};return t.addEventListener("input",o),()=>{t.removeEventListener("input",o);}},handleMouseOver=e=>e.setAttribute("data-vc-input-focus",""),handleMouseOut=e=>e.removeAttribute("data-vc-input-focus"),handleTime=(e,t)=>{const n=t.querySelector('[data-vc-time-range="hour"] input[name="hour"]'),a=t.querySelector('[data-vc-time-range="minute"] input[name="minute"]'),l=t.querySelector('[data-vc-time-input="hour"] input[name="hour"]'),o=t.querySelector('[data-vc-time-input="minute"] input[name="minute"]'),s=t.querySelector('[data-vc-time="keeping"]');if(!(n&&a&&l&&o))return;const i=e=>{e.target===n&&handleMouseOver(l),e.target===a&&handleMouseOver(o);},r=e=>{e.target===n&&handleMouseOut(l),e.target===a&&handleMouseOut(o);};return t.addEventListener("mouseover",i),t.addEventListener("mouseout",r),handleInput$1(e,n,l,s,"hour",e.timeMaxHour,e.timeMinHour),handleInput$1(e,a,o,s,"minute",e.timeMaxMinute,e.timeMinMinute),handleRange(e,n,l,s,"hour"),handleRange(e,a,o,s,"minute"),s&&handleClickKeepingTime(e,s,n,e.timeMaxHour,e.timeMinHour),()=>{t.removeEventListener("mouseover",i),t.removeEventListener("mouseout",r);}},createTime=e=>{const t=e.context.mainElement.querySelector('[data-vc="time"]');if(!e.selectionTimeMode||!t)return;const[n,a]=[e.timeMinHour,e.timeMaxHour],[l,o]=[e.timeMinMinute,e.timeMaxMinute],s=e.context.selectedKeeping?transformTime24(e.context.selectedHours,e.context.selectedKeeping):e.context.selectedHours,i="range"===e.timeControls;var r;t.innerHTML=e.sanitizerHTML(`\n    <div class="${e.styles.timeContent}" data-vc-time="content">\n      ${TimeInput("hour",e.styles.timeHour,e.labels,e.context.selectedHours,i)}\n      ${TimeInput("minute",e.styles.timeMinute,e.labels,e.context.selectedMinutes,i)}\n      ${12===e.selectionTimeMode?(r=e.context.selectedKeeping,`<button type="button" class="${e.styles.timeKeeping}" aria-label="${e.labels.btnKeeping} ${r}" data-vc-time="keeping" ${i?"disabled":""}>${r}</button>`):""}\n    </div>\n    <div class="${e.styles.timeRanges}" data-vc-time="ranges">\n      ${TimeRange("hour",e.styles.timeRange,e.labels,n,a,e.timeStepHour,s)}\n      ${TimeRange("minute",e.styles.timeRange,e.labels,l,o,e.timeStepMinute,e.context.selectedMinutes)}\n    </div>\n  `),handleTime(e,t);},createWeek=e=>{const t=e.selectedWeekends?[...e.selectedWeekends]:[],n=[...e.context.locale.weekdays.long].reduce(((n,a,l)=>[...n,{id:l,titleShort:e.context.locale.weekdays.short[l],titleLong:a,isWeekend:t.includes(l)}]),[]),a=[...n.slice(e.firstWeekday),...n.slice(0,e.firstWeekday)];e.context.mainElement.querySelectorAll('[data-vc="week"]').forEach((t=>{const n=e.onClickWeekDay?document.createElement("button"):document.createElement("b");e.onClickWeekDay&&(n.type="button"),a.forEach((a=>{const l=n.cloneNode(true);l.innerText=a.titleShort,l.className=e.styles.weekDay,l.role="columnheader",l.ariaLabel=a.titleLong,l.dataset.vcWeekDay=String(a.id),a.isWeekend&&(l.dataset.vcWeekDayOff=""),t.appendChild(l);}));}));},createYearEl=(e,t,n,a,l)=>{const o=t.cloneNode(false);return o.className=e.styles.yearsYear,o.innerText=String(l),o.ariaLabel=String(l),o.role="gridcell",o.dataset.vcYearsYear=`${l}`,a&&(o.ariaDisabled="true"),a&&(o.tabIndex=-1),o.disabled=a,setYearModifier(e,o,"year",n===l,false),o},createYears=(e,t)=>{var n;const a=(null==t?void 0:t.dataset.vcYear)?Number(t.dataset.vcYear):e.context.selectedYear;setContext(e,"currentType","year"),createLayouts(e,t),visibilityTitle(e),visibilityArrows(e);const l=e.context.mainElement.querySelector('[data-vc="years"]');if(!e.selectionYearsMode||!l)return;const o="multiple"!==e.type||e.context.selectedYear===a?0:1,s=document.createElement("button");s.type="button";for(let t=e.context.displayYear-7;t<e.context.displayYear+8;t++){const n=t<getDate(e.context.dateMin).getFullYear()+o||t>getDate(e.context.dateMax).getFullYear(),i=createYearEl(e,s,a,n,t);l.appendChild(i),e.onCreateYearEls&&e.onCreateYearEls(e,i);}null==(n=e.context.mainElement.querySelector("[data-vc-years-year]:not([disabled])"))||n.focus();},trackChangesHTMLElement=(e,t,n)=>{new MutationObserver((e=>{for(let a=0;a<e.length;a++){if(e[a].attributeName===t){n();break}}})).observe(e,{attributes:true});},haveListener={value:false,set:()=>haveListener.value=true,check:()=>haveListener.value},setTheme=(e,t)=>e.dataset.vcTheme=t,trackChangesThemeInSystemSettings=(e,t)=>{if(setTheme(e.context.mainElement,t.matches?"dark":"light"),"system"!==e.selectedTheme||haveListener.check())return;const n=e=>{const t=document.querySelectorAll('[data-vc="calendar"]');null==t||t.forEach((t=>setTheme(t,e.matches?"dark":"light")));};t.addEventListener?t.addEventListener("change",n):t.addListener(n),haveListener.set();},detectTheme=(e,t)=>{const n=e.themeAttrDetect.length?document.querySelector(e.themeAttrDetect):null,a=e.themeAttrDetect.replace(/^.*\[(.+)\]/g,((e,t)=>t));if(!n||"system"===n.getAttribute(a))return void trackChangesThemeInSystemSettings(e,t);const l=n.getAttribute(a);l?(setTheme(e.context.mainElement,l),trackChangesHTMLElement(n,a,(()=>{const t=n.getAttribute(a);t&&setTheme(e.context.mainElement,t);}))):trackChangesThemeInSystemSettings(e,t);},handleTheme=e=>{"not all"!==window.matchMedia("(prefers-color-scheme)").media?"system"===e.selectedTheme?detectTheme(e,window.matchMedia("(prefers-color-scheme: dark)")):setTheme(e.context.mainElement,e.selectedTheme):setTheme(e.context.mainElement,"light");},capitalizeFirstLetter=e=>e.charAt(0).toUpperCase()+e.slice(1).replace(/\./,""),getLocaleWeekday=(e,t,n)=>{const a=new Date(`1978-01-0${t+1}T00:00:00.000Z`),l=a.toLocaleString(n,{weekday:"short",timeZone:"UTC"}),o=a.toLocaleString(n,{weekday:"long",timeZone:"UTC"});e.context.locale.weekdays.short.push(capitalizeFirstLetter(l)),e.context.locale.weekdays.long.push(capitalizeFirstLetter(o));},getLocaleMonth=(e,t,n)=>{const a=new Date(`1978-${String(t+1).padStart(2,"0")}-01T00:00:00.000Z`),l=a.toLocaleString(n,{month:"short",timeZone:"UTC"}),o=a.toLocaleString(n,{month:"long",timeZone:"UTC"});e.context.locale.months.short.push(capitalizeFirstLetter(l)),e.context.locale.months.long.push(capitalizeFirstLetter(o));},getLocale=e=>{var t,n,a,l,o,s,i,r;if(!(e.context.locale.weekdays.short[6]&&e.context.locale.weekdays.long[6]&&e.context.locale.months.short[11]&&e.context.locale.months.long[11]))if("string"==typeof e.locale){if("string"==typeof e.locale&&!e.locale.length)throw new Error(errorMessages.notLocale);Array.from({length:7},((t,n)=>getLocaleWeekday(e,n,e.locale))),Array.from({length:12},((t,n)=>getLocaleMonth(e,n,e.locale)));}else {if(!((null==(n=null==(t=e.locale)?void 0:t.weekdays)?void 0:n.short[6])&&(null==(l=null==(a=e.locale)?void 0:a.weekdays)?void 0:l.long[6])&&(null==(s=null==(o=e.locale)?void 0:o.months)?void 0:s.short[11])&&(null==(r=null==(i=e.locale)?void 0:i.months)?void 0:r.long[11])))throw new Error(errorMessages.notLocale);setContext(e,"locale",__spreadValues({},e.locale));}},create=e=>{const t={default:()=>{createWeek(e),createDates(e);},multiple:()=>{createWeek(e),createDates(e);},month:()=>createMonths(e),year:()=>createYears(e)};handleTheme(e),getLocale(e),createLayouts(e),visibilityTitle(e),visibilityArrows(e),createTime(e),t[e.context.currentType]();},handleArrowKeys=e=>{const t=t=>{var n;const a=t.target;if(!["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(t.key)||"button"!==a.localName)return;const l=Array.from(e.context.mainElement.querySelectorAll('[data-vc="calendar"] button')),o=l.indexOf(a);if(-1===o)return;const s=(i=l[o]).hasAttribute("data-vc-date-btn")?7:i.hasAttribute("data-vc-months-month")?4:i.hasAttribute("data-vc-years-year")?5:1;var i;const r=(0, {ArrowUp:()=>Math.max(0,o-s),ArrowDown:()=>Math.min(l.length-1,o+s),ArrowLeft:()=>Math.max(0,o-1),ArrowRight:()=>Math.min(l.length-1,o+1)}[t.key])();null==(n=l[r])||n.focus();};return e.context.mainElement.addEventListener("keydown",t),()=>e.context.mainElement.removeEventListener("keydown",t)},handleMonth=(e,t)=>{const n=getDate(getDateString(new Date(e.context.selectedYear,e.context.selectedMonth,1)));(({prev:()=>n.setMonth(n.getMonth()-e.monthsToSwitch),next:()=>n.setMonth(n.getMonth()+e.monthsToSwitch)}))[t](),setContext(e,"selectedMonth",n.getMonth()),setContext(e,"selectedYear",n.getFullYear()),visibilityTitle(e),visibilityArrows(e),createDates(e);},handleClickArrow=(e,t)=>{const n=t.target.closest("[data-vc-arrow]");if(n){if(["default","multiple"].includes(e.context.currentType))handleMonth(e,n.dataset.vcArrow);else if("year"===e.context.currentType&&void 0!==e.context.displayYear){const a={prev:-15,next:15}[n.dataset.vcArrow];setContext(e,"displayYear",e.context.displayYear+a),createYears(e,t.target);}e.onClickArrow&&e.onClickArrow(e,t);}},canToggleSelection=e=>void 0===e.enableDateToggle||("function"==typeof e.enableDateToggle?e.enableDateToggle(e):e.enableDateToggle),handleSelectDate=(e,t,n)=>{const a=t.dataset.vcDate,l=t.closest("[data-vc-date][data-vc-date-selected]"),o=canToggleSelection(e);if(l&&!o)return;const s=l?e.context.selectedDates.filter((e=>e!==a)):n?[...e.context.selectedDates,a]:[a];setContext(e,"selectedDates",s);},createDateRangeTooltip=(e,t,n)=>{if(!t)return;if(!n)return t.dataset.vcDateRangeTooltip="hidden",void(t.textContent="");const a=e.context.mainElement.getBoundingClientRect(),l=n.getBoundingClientRect();t.style.left=l.left-a.left+l.width/2+"px",t.style.top=l.bottom-a.top-l.height+"px",t.dataset.vcDateRangeTooltip="visible",t.innerHTML=e.sanitizerHTML(e.onCreateDateRangeTooltip(e,n,t,l,a));},state={self:null,lastDateEl:null,isHovering:false,rangeMin:void 0,rangeMax:void 0,tooltipEl:null,timeoutId:null},addHoverEffect=(e,t,n)=>{var a,l,o;if(!(null==(l=null==(a=state.self)?void 0:a.context)?void 0:l.selectedDates[0]))return;const s=getDateString(e);(null==(o=state.self.context.disableDates)?void 0:o.includes(s))||(state.self.context.mainElement.querySelectorAll(`[data-vc-date="${s}"]`).forEach((e=>e.dataset.vcDateHover="")),t.forEach((e=>e.dataset.vcDateHover="first")),n.forEach((e=>{"first"===e.dataset.vcDateHover?e.dataset.vcDateHover="first-and-last":e.dataset.vcDateHover="last";})));},removeHoverEffect=()=>{var e,t;if(!(null==(t=null==(e=state.self)?void 0:e.context)?void 0:t.mainElement))return;state.self.context.mainElement.querySelectorAll("[data-vc-date-hover]").forEach((e=>e.removeAttribute("data-vc-date-hover")));},handleHoverDatesEvent=e=>{var t,n;if(!e||!(null==(n=null==(t=state.self)?void 0:t.context)?void 0:n.selectedDates[0]))return;if(!e.closest('[data-vc="dates"]'))return state.lastDateEl=null,createDateRangeTooltip(state.self,state.tooltipEl,null),void removeHoverEffect();const a=e.closest("[data-vc-date]");if(!a||state.lastDateEl===a)return;state.lastDateEl=a,createDateRangeTooltip(state.self,state.tooltipEl,a),removeHoverEffect();const l=a.dataset.vcDate,o=getDate(state.self.context.selectedDates[0]),s=getDate(l),i=state.self.context.mainElement.querySelectorAll(`[data-vc-date="${state.self.context.selectedDates[0]}"]`),r=state.self.context.mainElement.querySelectorAll(`[data-vc-date="${l}"]`),[c,d]=o<s?[i,r]:[r,i],[u,m]=o<s?[o,s]:[s,o];for(let e=new Date(u);e<=m;e.setDate(e.getDate()+1))addHoverEffect(e,c,d);},handleHoverSelectedDatesRangeEvent=e=>{const t=null==e?void 0:e.closest("[data-vc-date-selected]");if(!t&&state.lastDateEl)return state.lastDateEl=null,void createDateRangeTooltip(state.self,state.tooltipEl,null);t&&state.lastDateEl!==t&&(state.lastDateEl=t,createDateRangeTooltip(state.self,state.tooltipEl,t));},optimizedHoverHandler=e=>t=>{const n=t.target;state.isHovering||(state.isHovering=true,requestAnimationFrame((()=>{e(n),state.isHovering=false;})));},optimizedHandleHoverDatesEvent=optimizedHoverHandler(handleHoverDatesEvent),optimizedHandleHoverSelectedDatesRangeEvent=optimizedHoverHandler(handleHoverSelectedDatesRangeEvent),handleCancelSelectionDates=e=>{state.self&&"Escape"===e.key&&(state.lastDateEl=null,setContext(state.self,"selectedDates",[]),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),createDateRangeTooltip(state.self,state.tooltipEl,null),removeHoverEffect());},handleMouseLeave=()=>{null!==state.timeoutId&&clearTimeout(state.timeoutId),state.timeoutId=setTimeout((()=>{state.lastDateEl=null,createDateRangeTooltip(state.self,state.tooltipEl,null),removeHoverEffect();}),50);},updateDisabledDates=()=>{var e,t,n,a;if(!(null==(n=null==(t=null==(e=state.self)?void 0:e.context)?void 0:t.selectedDates)?void 0:n[0])||!(null==(a=state.self.context.disableDates)?void 0:a[0]))return;const l=getDate(state.self.context.selectedDates[0]),[o,s]=state.self.context.disableDates.map((e=>getDate(e))).reduce((([e,t],n)=>[l>=n?n:e,l<n&&null===t?n:t]),[null,null]);o&&setContext(state.self,"displayDateMin",getDateString(new Date(o.setDate(o.getDate()+1)))),s&&setContext(state.self,"displayDateMax",getDateString(new Date(s.setDate(s.getDate()-1))));state.self.disableDatesPast&&!state.self.disableAllDates&&getDate(state.self.context.displayDateMin)<getDate(state.self.context.dateToday)&&setContext(state.self,"displayDateMin",state.self.context.dateToday);},handleSelectDateRange=(e,t)=>{state.self=e,state.lastDateEl=t,removeHoverEffect(),e.disableDatesGaps&&(state.rangeMin=state.rangeMin?state.rangeMin:e.context.displayDateMin,state.rangeMax=state.rangeMax?state.rangeMax:e.context.displayDateMax),e.onCreateDateRangeTooltip&&(state.tooltipEl=e.context.mainElement.querySelector("[data-vc-date-range-tooltip]"));const n=null==t?void 0:t.dataset.vcDate;if(n){const t=1===e.context.selectedDates.length&&e.context.selectedDates[0].includes(n),a=t&&!canToggleSelection(e)?[n,n]:t&&canToggleSelection(e)?[]:e.context.selectedDates.length>1?[n]:[...e.context.selectedDates,n];setContext(e,"selectedDates",a),e.context.selectedDates.length>1&&e.context.selectedDates.sort(((e,t)=>+new Date(e)-+new Date(t)));}({set:()=>(e.disableDatesGaps&&updateDisabledDates(),createDateRangeTooltip(state.self,state.tooltipEl,t),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),state.self.context.mainElement.addEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.addEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.addEventListener("keydown",handleCancelSelectionDates),()=>{state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates);}),reset:()=>{const[n,a]=[e.context.selectedDates[0],e.context.selectedDates[e.context.selectedDates.length-1]],l=e.context.selectedDates[0]!==e.context.selectedDates[e.context.selectedDates.length-1],o=parseDates([`${n}:${a}`]).filter((t=>!e.context.disableDates.includes(t))),s=l?e.enableEdgeDatesOnly?[n,a]:o:[e.context.selectedDates[0],e.context.selectedDates[0]];if(setContext(e,"selectedDates",s),e.disableDatesGaps&&(setContext(e,"displayDateMin",state.rangeMin),setContext(e,"displayDateMax",state.rangeMax)),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),e.onCreateDateRangeTooltip)return e.context.selectedDates[0]||(state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),createDateRangeTooltip(state.self,state.tooltipEl,null)),e.context.selectedDates[0]&&(state.self.context.mainElement.addEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.addEventListener("mouseleave",handleMouseLeave),createDateRangeTooltip(state.self,state.tooltipEl,t)),()=>{state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave);}}})[1===e.context.selectedDates.length?"set":"reset"]();},updateDateModifier=e=>{e.context.mainElement.querySelectorAll("[data-vc-date]").forEach((t=>{const n=t.querySelector("[data-vc-date-btn]"),a=t.dataset.vcDate,l=getDate(a).getDay();setDateModifier(e,e.context.selectedYear,t,n,l,a,"current");}));},handleClickDate=(e,t)=>{var n;const a=t.target,l=a.closest("[data-vc-date-btn]");if(!e.selectionDatesMode||!["single","multiple","multiple-ranged"].includes(e.selectionDatesMode)||!l)return;const o=l.closest("[data-vc-date]");(({single:()=>handleSelectDate(e,o,false),multiple:()=>handleSelectDate(e,o,true),"multiple-ranged":()=>handleSelectDateRange(e,o)}))[e.selectionDatesMode](),null==(n=e.context.selectedDates)||n.sort(((e,t)=>+new Date(e)-+new Date(t))),e.onClickDate&&e.onClickDate(e,t),e.inputMode&&e.context.inputElement&&e.context.mainElement&&e.onChangeToInput&&e.onChangeToInput(e,t);const s=a.closest('[data-vc-date-month="prev"]'),i=a.closest('[data-vc-date-month="next"]');({prev:()=>e.enableMonthChangeOnDayClick?handleMonth(e,"prev"):updateDateModifier(e),next:()=>e.enableMonthChangeOnDayClick?handleMonth(e,"next"):updateDateModifier(e),current:()=>updateDateModifier(e)})[s?"prev":i?"next":"current"]();},typeClick=["month","year"],getValue=(e,t,n)=>{const{currentValue:a,columnID:l}=getColumnID(e,t);return "month"===e.context.currentType&&l>=0?n-l:"year"===e.context.currentType&&e.context.selectedYear!==a?n-1:n},handleMultipleYearSelection=(e,t)=>{const n=getValue(e,"year",Number(t.dataset.vcYearsYear)),a=getDate(e.context.dateMin),l=getDate(e.context.dateMax),o=e.context.displayMonthsCount-1,{columnID:s}=getColumnID(e,"year"),i=e.context.selectedMonth<a.getMonth()&&n<=a.getFullYear(),r=e.context.selectedMonth>l.getMonth()-o+s&&n>=l.getFullYear(),c=n<a.getFullYear(),d=n>l.getFullYear(),u=i||c?a.getFullYear():r||d?l.getFullYear():n,m=i||c?a.getMonth():r||d?l.getMonth()-o+s:e.context.selectedMonth;setContext(e,"selectedYear",u),setContext(e,"selectedMonth",m);},handleMultipleMonthSelection=(e,t)=>{const n=t.closest('[data-vc-column="month"]').querySelector('[data-vc="year"]'),a=getValue(e,"month",Number(t.dataset.vcMonthsMonth)),l=Number(n.dataset.vcYear),o=getDate(e.context.dateMin),s=getDate(e.context.dateMax),i=a<o.getMonth()&&l<=o.getFullYear(),r=a>s.getMonth()&&l>=s.getFullYear();setContext(e,"selectedYear",l),setContext(e,"selectedMonth",i?o.getMonth():r?s.getMonth():a);},handleItemClick=(e,t,n,a)=>{var l;({year:()=>{if("multiple"===e.type)return handleMultipleYearSelection(e,a);setContext(e,"selectedYear",Number(a.dataset.vcYearsYear));},month:()=>{if("multiple"===e.type)return handleMultipleMonthSelection(e,a);setContext(e,"selectedMonth",Number(a.dataset.vcMonthsMonth));}})[n]();(({year:()=>{var n;return null==(n=e.onClickYear)?void 0:n.call(e,e,t)},month:()=>{var n;return null==(n=e.onClickMonth)?void 0:n.call(e,e,t)}}))[n](),e.context.currentType!==e.type?(setContext(e,"currentType",e.type),create(e),null==(l=e.context.mainElement.querySelector(`[data-vc="${n}"]`))||l.focus()):setYearModifier(e,a,n,true,true);},handleClickType=(e,t,n)=>{var a;const l=t.target,o=l.closest(`[data-vc="${n}"]`),s={year:()=>createYears(e,l),month:()=>createMonths(e,l)};if(o&&e.onClickTitle&&e.onClickTitle(e,t),o&&e.context.currentType!==n)return s[n]();const i=l.closest(`[data-vc-${n}s-${n}]`);if(i)return handleItemClick(e,t,n,i);const r=l.closest('[data-vc="grid"]'),c=l.closest('[data-vc="column"]');(e.context.currentType===n&&o||"multiple"===e.type&&e.context.currentType===n&&r&&!c)&&(setContext(e,"currentType",e.type),create(e),null==(a=e.context.mainElement.querySelector(`[data-vc="${n}"]`))||a.focus());},handleClickMonthOrYear=(e,t)=>{const n={month:e.selectionMonthsMode,year:e.selectionYearsMode};typeClick.forEach((a=>{n[a]&&t.target&&handleClickType(e,t,a);}));},handleClickWeekNumber=(e,t)=>{if(!e.enableWeekNumbers||!e.onClickWeekNumber)return;const n=t.target.closest("[data-vc-week-number]"),a=e.context.mainElement.querySelectorAll("[data-vc-date-week-number]");if(!n||!a[0])return;const l=Number(n.innerText),o=Number(n.dataset.vcWeekYear),s=Array.from(a).filter((e=>Number(e.dataset.vcDateWeekNumber)===l));e.onClickWeekNumber(e,l,o,s,t);},handleClickWeekDay=(e,t)=>{if(!e.onClickWeekDay)return;const n=t.target.closest("[data-vc-week-day]"),a=t.target.closest('[data-vc="column"]'),l=a?a.querySelectorAll("[data-vc-date-week-day]"):e.context.mainElement.querySelectorAll("[data-vc-date-week-day]");if(!n||!l[0])return;const o=Number(n.dataset.vcWeekDay),s=Array.from(l).filter((e=>Number(e.dataset.vcDateWeekDay)===o));e.onClickWeekDay(e,o,s,t);},handleClick=e=>{const t=t=>{handleClickArrow(e,t),handleClickWeekDay(e,t),handleClickWeekNumber(e,t),handleClickDate(e,t),handleClickMonthOrYear(e,t);};return e.context.mainElement.addEventListener("click",t),()=>e.context.mainElement.removeEventListener("click",t)},initMonthsCount=e=>{if("multiple"===e.type&&(e.displayMonthsCount<=1||e.displayMonthsCount>12))throw new Error(errorMessages.incorrectMonthsCount);if("multiple"!==e.type&&e.displayMonthsCount>1)throw new Error(errorMessages.incorrectMonthsCount);setContext(e,"displayMonthsCount",e.displayMonthsCount?e.displayMonthsCount:"multiple"===e.type?2:1);},getLocalDate=()=>{const e=new Date;return new Date(e.getTime()-6e4*e.getTimezoneOffset()).toISOString().substring(0,10)},resolveDate=(e,t)=>"today"===e?getLocalDate():e instanceof Date||"number"==typeof e||"string"==typeof e?parseDates([e])[0]:t,initRange=e=>{var t,n,a;const l=resolveDate(e.dateMin,e.dateMin),o=resolveDate(e.dateMax,e.dateMax),s=resolveDate(e.displayDateMin,l),i=resolveDate(e.displayDateMax,o);setContext(e,"dateToday",resolveDate(e.dateToday,e.dateToday)),setContext(e,"displayDateMin",s?getDate(l)>=getDate(s)?l:s:l),setContext(e,"displayDateMax",i?getDate(o)<=getDate(i)?o:i:o);const r=e.disableDatesPast&&!e.disableAllDates&&getDate(s)<getDate(e.context.dateToday);setContext(e,"displayDateMin",r||e.disableAllDates?e.context.dateToday:s),setContext(e,"displayDateMax",e.disableAllDates?e.context.dateToday:i),setContext(e,"disableDates",e.disableDates[0]&&!e.disableAllDates?parseDates(e.disableDates):e.disableAllDates?[e.context.displayDateMin]:[]),e.context.disableDates.length>1&&e.context.disableDates.sort(((e,t)=>+new Date(e)-+new Date(t))),setContext(e,"enableDates",e.enableDates[0]?parseDates(e.enableDates):[]),(null==(t=e.context.enableDates)?void 0:t[0])&&(null==(n=e.context.disableDates)?void 0:n[0])&&setContext(e,"disableDates",e.context.disableDates.filter((t=>!e.context.enableDates.includes(t)))),e.context.enableDates.length>1&&e.context.enableDates.sort(((e,t)=>+new Date(e)-+new Date(t))),(null==(a=e.context.enableDates)?void 0:a[0])&&e.disableAllDates&&(setContext(e,"displayDateMin",e.context.enableDates[0]),setContext(e,"displayDateMax",e.context.enableDates[e.context.enableDates.length-1])),setContext(e,"dateMin",e.displayDisabledDates?l:e.context.displayDateMin),setContext(e,"dateMax",e.displayDisabledDates?o:e.context.displayDateMax);},initSelectedDates=e=>{var t;setContext(e,"selectedDates",(null==(t=e.selectedDates)?void 0:t[0])?parseDates(e.selectedDates):[]);},displayClosestValidDate=e=>{const t=t=>{const n=new Date(t);setInitialContext(e,n.getMonth(),n.getFullYear());};if(e.displayDateMin&&"today"!==e.displayDateMin&&(n=e.displayDateMin,a=new Date,new Date(n).getTime()>a.getTime())){const n=e.selectedDates.length&&e.selectedDates[0]?parseDates(e.selectedDates)[0]:e.displayDateMin;return t(getDate(resolveDate(n,e.displayDateMin))),true}var n,a;if(e.displayDateMax&&"today"!==e.displayDateMax&&((e,t)=>new Date(e).getTime()<t.getTime())(e.displayDateMax,new Date)){const n=e.selectedDates.length&&e.selectedDates[0]?parseDates(e.selectedDates)[0]:e.displayDateMax;return t(getDate(resolveDate(n,e.displayDateMax))),true}return  false},setInitialContext=(e,t,n)=>{setContext(e,"selectedMonth",t),setContext(e,"selectedYear",n),setContext(e,"displayYear",n);},initSelectedMonthYear=e=>{var t;if(e.enableJumpToSelectedDate&&(null==(t=e.selectedDates)?void 0:t[0])&&void 0===e.selectedMonth&&void 0===e.selectedYear){const t=getDate(parseDates(e.selectedDates)[0]);return void setInitialContext(e,t.getMonth(),t.getFullYear())}if(displayClosestValidDate(e))return;const n=void 0!==e.selectedMonth&&Number(e.selectedMonth)>=0&&Number(e.selectedMonth)<12,a=void 0!==e.selectedYear&&Number(e.selectedYear)>=0&&Number(e.selectedYear)<=9999;setInitialContext(e,n?Number(e.selectedMonth):getDate(e.context.dateToday).getMonth(),a?Number(e.selectedYear):getDate(e.context.dateToday).getFullYear());},initTime=e=>{var t,n,a;if(!e.selectionTimeMode)return;if(![12,24].includes(e.selectionTimeMode))throw new Error(errorMessages.incorrectTime);const l=12===e.selectionTimeMode,o=l?/^(0[1-9]|1[0-2]):([0-5][0-9]) ?(AM|PM)?$/i:/^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/;let[s,i,r]=null!=(a=null==(n=null==(t=e.selectedTime)?void 0:t.match(o))?void 0:n.slice(1))?a:[];s?l&&!r&&(r="AM"):(s=l?transformTime12(String(e.timeMinHour)):String(e.timeMinHour),i=String(e.timeMinMinute),r=l?Number(transformTime12(String(e.timeMinHour)))>=12?"PM":"AM":null),setContext(e,"selectedHours",s.padStart(2,"0")),setContext(e,"selectedMinutes",i.padStart(2,"0")),setContext(e,"selectedKeeping",r),setContext(e,"selectedTime",`${e.context.selectedHours}:${e.context.selectedMinutes}${r?` ${r}`:""}`);},initAllVariables=e=>{setContext(e,"currentType",e.type),initMonthsCount(e),initRange(e),initSelectedMonthYear(e),initSelectedDates(e),initTime(e);},reset=(e,{year:t,month:n,dates:a,time:l,locale:o},s=true)=>{var i;const r={year:e.selectedYear,month:e.selectedMonth,dates:e.selectedDates,time:e.selectedTime};if(e.selectedYear=t?r.year:e.context.selectedYear,e.selectedMonth=n?r.month:e.context.selectedMonth,e.selectedTime=l?r.time:e.context.selectedTime,e.selectedDates="only-first"===a&&(null==(i=e.context.selectedDates)?void 0:i[0])?[e.context.selectedDates[0]]:true===a?r.dates:e.context.selectedDates,o){setContext(e,"locale",{months:{short:[],long:[]},weekdays:{short:[],long:[]}});}initAllVariables(e),s&&create(e),e.selectedYear=r.year,e.selectedMonth=r.month,e.selectedDates=r.dates,e.selectedTime=r.time,"multiple-ranged"===e.selectionDatesMode&&a&&handleSelectDateRange(e,null);},createToInput=e=>{const t=document.createElement("div");return t.className=e.styles.calendar,t.dataset.vc="calendar",t.dataset.vcInput="",t.dataset.vcCalendarHidden="",setContext(e,"inputModeInit",true),setContext(e,"isShowInInputMode",false),setContext(e,"mainElement",t),document.body.appendChild(e.context.mainElement),reset(e,{year:true,month:true,dates:true,time:true,locale:true}),setTimeout((()=>show(e))),e.onInit&&e.onInit(e),handleArrowKeys(e),handleClick(e)},handleInput=e=>{setContext(e,"inputElement",e.context.mainElement);const t=()=>{e.context.inputModeInit?setTimeout((()=>show(e))):createToInput(e);};return e.context.inputElement.addEventListener("click",t),e.context.inputElement.addEventListener("focus",t),()=>{e.context.inputElement.removeEventListener("click",t),e.context.inputElement.removeEventListener("focus",t);}},init=e=>(setContext(e,"originalElement",e.context.mainElement.cloneNode(true)),setContext(e,"isInit",true),e.inputMode?handleInput(e):(initAllVariables(e),create(e),e.onInit&&e.onInit(e),handleArrowKeys(e),handleClick(e))),update=(e,t)=>{if(!e.context.isInit)throw new Error(errorMessages.notInit);reset(e,__spreadValues(__spreadValues({},{year:true,month:true,dates:true,time:true,locale:true}),t),!(e.inputMode&&!e.context.inputModeInit)),e.onUpdate&&e.onUpdate(e);},replaceProperties=(e,t)=>{const n=Object.keys(t);for(let a=0;a<n.length;a++){const l=n[a];"object"!=typeof e[l]||"object"!=typeof t[l]||t[l]instanceof Date||Array.isArray(t[l])?void 0!==t[l]&&(e[l]=t[l]):replaceProperties(e[l],t[l]);}},set=(e,t,n)=>{replaceProperties(e,t),e.context.isInit&&update(e,n);};function findBestPickerPosition(e,t){const n="left";if(!t||!e)return n;const{canShow:a,parentPositions:l}=getAvailablePosition(e,t),o=a.left&&a.right;return (o&&a.bottom?"center":o&&a.top?["top","center"]:Array.isArray(l)?["bottom"===l[0]?"top":"bottom",...l.slice(1)]:l)||n}const setPosition=(e,t,n)=>{if(!e)return;const a="auto"===n?findBestPickerPosition(e,t):n,l={top:-t.offsetHeight,bottom:e.offsetHeight,left:0,center:e.offsetWidth/2-t.offsetWidth/2,right:e.offsetWidth-t.offsetWidth},o=Array.isArray(a)?a[0]:"bottom",s=Array.isArray(a)?a[1]:a;t.dataset.vcPosition=o;const{top:i,left:r}=getOffset(e),c=i+l[o];let d=r+l[s];const{vw:u}=getViewportDimensions();if(d+t.clientWidth>u){const e=window.innerWidth-document.body.clientWidth;d=u-t.clientWidth-e;}else d<0&&(d=0);Object.assign(t.style,{left:`${d}px`,top:`${c}px`});},show=e=>{if(e.context.isShowInInputMode)return;if(!e.context.currentType)return void e.context.mainElement.click();setContext(e,"cleanupHandlers",[]),setContext(e,"isShowInInputMode",true),setPosition(e.context.inputElement,e.context.mainElement,e.positionToInput),e.context.mainElement.removeAttribute("data-vc-calendar-hidden");const t=()=>{setPosition(e.context.inputElement,e.context.mainElement,e.positionToInput);};window.addEventListener("resize",t),e.context.cleanupHandlers.push((()=>window.removeEventListener("resize",t)));const n=t=>{"Escape"===t.key&&hide(e);};document.addEventListener("keydown",n),e.context.cleanupHandlers.push((()=>document.removeEventListener("keydown",n)));const a=t=>{t.target===e.context.inputElement||e.context.mainElement.contains(t.target)||hide(e);};document.addEventListener("click",a,{capture:true}),e.context.cleanupHandlers.push((()=>document.removeEventListener("click",a,{capture:true}))),e.onShow&&e.onShow(e);},labels={application:"Calendar",navigation:"Calendar Navigation",arrowNext:{month:"Next month",year:"Next list of years"},arrowPrev:{month:"Previous month",year:"Previous list of years"},month:"Select month, current selected month:",months:"List of months",year:"Select year, current selected year:",years:"List of years",week:"Days of the week",weekNumber:"Numbers of weeks in a year",dates:"Dates in the current month",selectingTime:"Selecting a time ",inputHour:"Hours",inputMinute:"Minutes",rangeHour:"Slider for selecting hours",rangeMinute:"Slider for selecting minutes",btnKeeping:"Switch AM/PM, current position:"},styles={calendar:"vc",controls:"vc-controls",grid:"vc-grid",column:"vc-column",header:"vc-header",headerContent:"vc-header__content",month:"vc-month",year:"vc-year",arrowPrev:"vc-arrow vc-arrow_prev",arrowNext:"vc-arrow vc-arrow_next",wrapper:"vc-wrapper",content:"vc-content",months:"vc-months",monthsMonth:"vc-months__month",years:"vc-years",yearsYear:"vc-years__year",week:"vc-week",weekDay:"vc-week__day",weekNumbers:"vc-week-numbers",weekNumbersTitle:"vc-week-numbers__title",weekNumbersContent:"vc-week-numbers__content",weekNumber:"vc-week-number",dates:"vc-dates",date:"vc-date",dateBtn:"vc-date__btn",datePopup:"vc-date__popup",dateRangeTooltip:"vc-date-range-tooltip",time:"vc-time",timeContent:"vc-time__content",timeHour:"vc-time__hour",timeMinute:"vc-time__minute",timeKeeping:"vc-time__keeping",timeRanges:"vc-time__ranges",timeRange:"vc-time__range"};class OptionsCalendar{constructor(){__publicField(this,"type","default"),__publicField(this,"inputMode",false),__publicField(this,"positionToInput","left"),__publicField(this,"firstWeekday",1),__publicField(this,"monthsToSwitch",1),__publicField(this,"themeAttrDetect","html[data-theme]"),__publicField(this,"locale","en"),__publicField(this,"dateToday","today"),__publicField(this,"dateMin","1970-01-01"),__publicField(this,"dateMax","2470-12-31"),__publicField(this,"displayDateMin"),__publicField(this,"displayDateMax"),__publicField(this,"displayDatesOutside",true),__publicField(this,"displayDisabledDates",false),__publicField(this,"displayMonthsCount"),__publicField(this,"disableDates",[]),__publicField(this,"disableAllDates",false),__publicField(this,"disableDatesPast",false),__publicField(this,"disableDatesGaps",false),__publicField(this,"disableWeekdays",[]),__publicField(this,"disableToday",false),__publicField(this,"enableDates",[]),__publicField(this,"enableEdgeDatesOnly",true),__publicField(this,"enableDateToggle",true),__publicField(this,"enableWeekNumbers",false),__publicField(this,"enableMonthChangeOnDayClick",true),__publicField(this,"enableJumpToSelectedDate",false),__publicField(this,"selectionDatesMode","single"),__publicField(this,"selectionMonthsMode",true),__publicField(this,"selectionYearsMode",true),__publicField(this,"selectionTimeMode",false),__publicField(this,"selectedDates",[]),__publicField(this,"selectedMonth"),__publicField(this,"selectedYear"),__publicField(this,"selectedHolidays",[]),__publicField(this,"selectedWeekends",[0,6]),__publicField(this,"selectedTime"),__publicField(this,"selectedTheme","system"),__publicField(this,"timeMinHour",0),__publicField(this,"timeMaxHour",23),__publicField(this,"timeMinMinute",0),__publicField(this,"timeMaxMinute",59),__publicField(this,"timeControls","all"),__publicField(this,"timeStepHour",1),__publicField(this,"timeStepMinute",1),__publicField(this,"sanitizerHTML",(e=>e)),__publicField(this,"onClickDate"),__publicField(this,"onClickWeekDay"),__publicField(this,"onClickWeekNumber"),__publicField(this,"onClickTitle"),__publicField(this,"onClickMonth"),__publicField(this,"onClickYear"),__publicField(this,"onClickArrow"),__publicField(this,"onChangeTime"),__publicField(this,"onChangeToInput"),__publicField(this,"onCreateDateRangeTooltip"),__publicField(this,"onCreateDateEls"),__publicField(this,"onCreateMonthEls"),__publicField(this,"onCreateYearEls"),__publicField(this,"onInit"),__publicField(this,"onUpdate"),__publicField(this,"onDestroy"),__publicField(this,"onShow"),__publicField(this,"onHide"),__publicField(this,"popups",{}),__publicField(this,"labels",__spreadValues({},labels)),__publicField(this,"layouts",{default:"",multiple:"",month:"",year:""}),__publicField(this,"styles",__spreadValues({},styles));}}const _Calendar=class e extends OptionsCalendar{constructor(t,n){var a;super(),__publicField(this,"init",(()=>init(this))),__publicField(this,"update",(e=>update(this,e))),__publicField(this,"destroy",(()=>destroy(this))),__publicField(this,"show",(()=>show(this))),__publicField(this,"hide",(()=>hide(this))),__publicField(this,"set",((e,t)=>set(this,e,t))),__publicField(this,"context"),this.context=__spreadProps(__spreadValues({},this.context),{locale:{months:{short:[],long:[]},weekdays:{short:[],long:[]}}}),setContext(this,"mainElement","string"==typeof t?null!=(a=e.memoizedElements.get(t))?a:this.queryAndMemoize(t):t),n&&replaceProperties(this,n);}queryAndMemoize(t){const n=document.querySelector(t);if(!n)throw new Error(errorMessages.notFoundSelector(t));return e.memoizedElements.set(t,n),n}};__publicField(_Calendar,"memoizedElements",new Map);let Calendar=_Calendar;
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap datepicker.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+
+  /**
+   * Constants
+   */
+
+  const NAME$e = 'datepicker';
+  const DATA_KEY$a = 'bs.datepicker';
+  const EVENT_KEY$a = `.${DATA_KEY$a}`;
+  const DATA_API_KEY$6 = '.data-api';
+  const EVENT_CHANGE = `change${EVENT_KEY$a}`;
+  const EVENT_SHOW$6 = `show${EVENT_KEY$a}`;
+  const EVENT_SHOWN$6 = `shown${EVENT_KEY$a}`;
+  const EVENT_HIDE$6 = `hide${EVENT_KEY$a}`;
+  const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$a}`;
+  const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
+  const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$a}${DATA_API_KEY$6}`;
+  const SELECTOR_DATA_TOGGLE$7 = '[data-bs-toggle="datepicker"]';
+  const HIDE_DELAY = 100; // ms delay before hiding after selection
+
+  const Default$d = {
+    datepickerTheme: null,
+    // 'light', 'dark', 'auto' - explicit theme for datepicker popover only
+    dateMin: null,
+    dateMax: null,
+    dateFormat: null,
+    // Intl.DateTimeFormat options, or function(date, locale) => string
+    displayElement: null,
+    // Element to show formatted date (defaults to element for buttons)
+    displayMonthsCount: 1,
+    // Number of months to display side-by-side
+    firstWeekday: 1,
+    // Monday
+    inline: false,
+    // Render calendar inline (no popup)
+    locale: 'default',
+    positionElement: null,
+    // Element to position calendar relative to (defaults to input)
+    selectedDates: [],
+    selectionMode: 'single',
+    // 'single', 'multiple', 'multiple-ranged'
+    placement: 'left',
+    // 'left', 'center', 'right', 'auto'
+    vcpOptions: {} // Pass-through for any VCP option
+  };
+  const DefaultType$d = {
+    datepickerTheme: '(null|string)',
+    dateMin: '(null|string|number|object)',
+    dateMax: '(null|string|number|object)',
+    dateFormat: '(null|object|function)',
+    displayElement: '(null|string|element|boolean)',
+    displayMonthsCount: 'number',
+    firstWeekday: 'number',
+    inline: 'boolean',
+    locale: 'string',
+    positionElement: '(null|string|element)',
+    selectedDates: 'array',
+    selectionMode: 'string',
+    placement: 'string',
+    vcpOptions: 'object'
+  };
+
+  /**
+   * Class definition
+   */
+
+  class Datepicker extends BaseComponent {
+    constructor(element, config) {
+      super(element, config);
+      this._calendar = null;
+      this._isShown = false;
+      this._initCalendar();
+    }
+
+    // Getters
+    static get Default() {
+      return Default$d;
+    }
+    static get DefaultType() {
+      return DefaultType$d;
+    }
+    static get NAME() {
+      return NAME$e;
+    }
+
+    // Public
+    toggle() {
+      if (this._config.inline) {
+        return; // Inline calendars are always visible
+      }
+      return this._isShown ? this.hide() : this.show();
+    }
+    show() {
+      if (this._config.inline) {
+        return; // Inline calendars are always visible
+      }
+      if (!this._calendar || isDisabled(this._element) || this._isShown) {
+        return;
+      }
+      const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$6);
+      if (showEvent.defaultPrevented) {
+        return;
+      }
+      this._calendar.show();
+      this._isShown = true;
+      EventHandler.trigger(this._element, EVENT_SHOWN$6);
+    }
+    hide() {
+      if (this._config.inline) {
+        return; // Inline calendars are always visible
+      }
+      if (!this._calendar || !this._isShown) {
+        return;
+      }
+      const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$6);
+      if (hideEvent.defaultPrevented) {
+        return;
+      }
+      this._calendar.hide();
+      this._isShown = false;
+      EventHandler.trigger(this._element, EVENT_HIDDEN$6);
+    }
+    dispose() {
+      if (this._themeObserver) {
+        this._themeObserver.disconnect();
+        this._themeObserver = null;
+      }
+      if (this._calendar) {
+        this._calendar.destroy();
+      }
+      this._calendar = null;
+      super.dispose();
+    }
+    getSelectedDates() {
+      const dates = this._calendar?.context?.selectedDates;
+      return dates ? [...dates] : [];
+    }
+    setSelectedDates(dates) {
+      if (this._calendar) {
+        this._calendar.set({
+          selectedDates: dates
+        });
+      }
+    }
+
+    // Private
+    _initCalendar() {
+      this._isInput = this._element.tagName === 'INPUT';
+      this._isInline = this._config.inline;
+
+      // For inline mode, look for a hidden input child to bind to
+      if (this._isInline && !this._isInput) {
+        this._boundInput = this._element.querySelector('input[type="hidden"], input[name]');
+      }
+      this._positionElement = this._resolvePositionElement();
+      this._displayElement = this._resolveDisplayElement();
+      const calendarOptions = this._buildCalendarOptions();
+
+      // Create calendar on the position element (for correct popup positioning)
+      // but value updates still go to this._element (the input)
+      this._calendar = new Calendar(this._positionElement, calendarOptions);
+      this._calendar.init();
+
+      // Watch for theme changes on ancestor elements (for live theme switching)
+      this._setupThemeObserver();
+
+      // Set initial value if input has a value
+      if (this._isInput && this._element.value) {
+        this._parseInputValue();
+      }
+
+      // Populate input/display with preselected dates
+      this._updateDisplayWithSelectedDates();
+    }
+    _updateDisplayWithSelectedDates() {
+      const {
+        selectedDates
+      } = this._config;
+      if (!selectedDates || selectedDates.length === 0) {
+        return;
+      }
+      const formattedDate = this._formatDateForInput(selectedDates);
+      if (this._isInput) {
+        this._element.value = formattedDate;
+      }
+      if (this._boundInput) {
+        this._boundInput.value = selectedDates.join(',');
+      }
+      if (this._displayElement) {
+        this._displayElement.textContent = formattedDate;
+      }
+    }
+    _resolvePositionElement() {
+      let {
+        positionElement
+      } = this._config;
+      if (typeof positionElement === 'string') {
+        positionElement = document.querySelector(positionElement);
+      }
+
+      // Use input's parent if in form-adorn
+      if (!positionElement && this._isInput && !this._isInline) {
+        const parent = this._element.closest('.form-adorn');
+        if (parent) {
+          positionElement = parent;
+        }
+      }
+      return positionElement || this._element;
+    }
+    _resolveDisplayElement() {
+      const {
+        displayElement
+      } = this._config;
+      if (typeof displayElement === 'string') {
+        return document.querySelector(displayElement);
+      }
+
+      // For buttons/non-inputs (not inline), look for a [data-bs-datepicker-display] child
+      if (displayElement === true || displayElement === null && !this._isInput && !this._isInline) {
+        const displayChild = this._element.querySelector('[data-bs-datepicker-display]');
+        return displayChild || this._element;
+      }
+      return displayElement;
+    }
+    _getThemeAncestor() {
+      return this._element.closest('[data-bs-theme]');
+    }
+    _getEffectiveTheme() {
+      // Priority: explicit datepickerTheme config > inherited from ancestor > none
+      const {
+        datepickerTheme
+      } = this._config;
+      if (datepickerTheme) {
+        return datepickerTheme;
+      }
+      const ancestor = this._getThemeAncestor();
+      return ancestor?.getAttribute('data-bs-theme') || null;
+    }
+    _syncThemeAttribute(element) {
+      if (!element) {
+        return;
+      }
+      const theme = this._getEffectiveTheme();
+      if (theme) {
+        // Copy theme to popover (needed because VCP appends to body, breaking CSS inheritance)
+        element.setAttribute('data-bs-theme', theme);
+      } else {
+        // No theme - remove attribute to allow natural inheritance
+        element.removeAttribute('data-bs-theme');
+      }
+    }
+    _setupThemeObserver() {
+      // Watch for theme changes on ancestor elements
+      const ancestor = this._getThemeAncestor();
+      if (!ancestor || this._config.datepickerTheme) {
+        // No ancestor to watch, or explicit datepickerTheme overrides
+        return;
+      }
+      this._themeObserver = new MutationObserver(() => {
+        this._syncThemeAttribute(this._calendar?.context?.mainElement);
+      });
+      this._themeObserver.observe(ancestor, {
+        attributes: true,
+        attributeFilter: ['data-bs-theme']
+      });
+    }
+    _buildCalendarOptions() {
+      // Get theme for VCP - use 'system' for auto-detection if no explicit theme
+      const theme = this._getEffectiveTheme();
+      // VCP uses 'system' for auto, Bootstrap uses 'auto'
+      const vcpTheme = !theme || theme === 'auto' ? 'system' : theme;
+      const calendarOptions = {
+        ...this._config.vcpOptions,
+        inputMode: !this._isInline,
+        positionToInput: this._config.placement,
+        firstWeekday: this._config.firstWeekday,
+        locale: this._config.locale,
+        selectionDatesMode: this._config.selectionMode,
+        selectedDates: this._config.selectedDates,
+        displayMonthsCount: this._config.displayMonthsCount,
+        type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
+        selectedTheme: vcpTheme,
+        themeAttrDetect: '[data-bs-theme]',
+        onClickDate: (self, event) => this._handleDateClick(self, event),
+        onInit: self => {
+          this._syncThemeAttribute(self.context.mainElement);
+        },
+        onShow: () => {
+          this._isShown = true;
+          this._syncThemeAttribute(this._calendar.context.mainElement);
+        },
+        onHide: () => {
+          this._isShown = false;
+        }
+      };
+
+      // Navigate to the month of the first selected date
+      if (this._config.selectedDates.length > 0) {
+        const firstDate = this._parseDate(this._config.selectedDates[0]);
+        calendarOptions.selectedMonth = firstDate.getMonth();
+        calendarOptions.selectedYear = firstDate.getFullYear();
+      }
+      if (this._config.dateMin) {
+        calendarOptions.dateMin = this._config.dateMin;
+      }
+      if (this._config.dateMax) {
+        calendarOptions.dateMax = this._config.dateMax;
+      }
+      return calendarOptions;
+    }
+    _handleDateClick(self, event) {
+      const selectedDates = [...self.context.selectedDates];
+      if (selectedDates.length > 0) {
+        const formattedDate = this._formatDateForInput(selectedDates);
+        if (this._isInput) {
+          this._element.value = formattedDate;
+        }
+        if (this._boundInput) {
+          this._boundInput.value = selectedDates.join(',');
+        }
+        if (this._displayElement) {
+          this._displayElement.textContent = formattedDate;
+        }
+      }
+      EventHandler.trigger(this._element, EVENT_CHANGE, {
+        dates: selectedDates,
+        event
+      });
+      this._maybeHideAfterSelection(selectedDates);
+    }
+    _maybeHideAfterSelection(selectedDates) {
+      if (this._isInline) {
+        return;
+      }
+      const shouldHide = this._config.selectionMode === 'single' && selectedDates.length > 0 || this._config.selectionMode === 'multiple-ranged' && selectedDates.length >= 2;
+      if (shouldHide) {
+        setTimeout(() => this.hide(), HIDE_DELAY);
+      }
+    }
+    _parseDate(dateStr) {
+      const [year, month, day] = dateStr.split('-');
+      return new Date(year, month - 1, day);
+    }
+    _formatDate(dateStr) {
+      const date = this._parseDate(dateStr);
+      const locale = this._config.locale === 'default' ? undefined : this._config.locale;
+      const {
+        dateFormat
+      } = this._config;
+
+      // Custom function formatter
+      if (typeof dateFormat === 'function') {
+        return dateFormat(date, locale);
+      }
+
+      // Intl.DateTimeFormat options object
+      if (dateFormat && typeof dateFormat === 'object') {
+        return new Intl.DateTimeFormat(locale, dateFormat).format(date);
+      }
+
+      // Default: locale-aware formatting
+      return date.toLocaleDateString(locale);
+    }
+    _formatDateForInput(dates) {
+      if (dates.length === 0) {
+        return '';
+      }
+      if (dates.length === 1) {
+        return this._formatDate(dates[0]);
+      }
+
+      // For date ranges, use en-dash; for multiple dates, use comma
+      const separator = this._config.selectionMode === 'multiple-ranged' ? ' – ' : ', ';
+      return dates.map(d => this._formatDate(d)).join(separator);
+    }
+    _parseInputValue() {
+      // Try to parse the input value as a date
+      const value = this._element.value.trim();
+      if (!value) {
+        return;
+      }
+      const date = new Date(value);
+      if (!Number.isNaN(date.getTime())) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const formatted = `${year}-${month}-${day}`;
+        this._calendar.set({
+          selectedDates: [formatted]
+        });
+      }
+    }
+  }
+
+  /**
+   * Data API implementation
+   */
+
+  EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$7, function (event) {
+    // Only handle if not an input (inputs use focus)
+    // Skip inline datepickers (they're always visible)
+    if (this.tagName === 'INPUT' || this.dataset.bsInline === 'true') {
+      return;
+    }
+    event.preventDefault();
+    Datepicker.getOrCreateInstance(this).toggle();
+  });
+  EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE$7, function () {
+    // Handle focus for input elements
+    if (this.tagName !== 'INPUT') {
+      return;
+    }
+    Datepicker.getOrCreateInstance(this).show();
+  });
+
+  // Auto-initialize inline datepickers on DOMContentLoaded
+  EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$a}${DATA_API_KEY$6}`, () => {
+    for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE$7}[data-bs-inline="true"]`)) {
+      Datepicker.getOrCreateInstance(element);
     }
   });
 
@@ -1551,29 +2010,29 @@
    * Constants
    */
 
-  const NAME$a = 'dialog';
-  const DATA_KEY$6 = 'bs.dialog';
-  const EVENT_KEY$6 = `.${DATA_KEY$6}`;
-  const DATA_API_KEY$3 = '.data-api';
-  const EVENT_SHOW$5 = `show${EVENT_KEY$6}`;
-  const EVENT_SHOWN$5 = `shown${EVENT_KEY$6}`;
-  const EVENT_HIDE$5 = `hide${EVENT_KEY$6}`;
-  const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$6}`;
-  const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$6}`;
-  const EVENT_CANCEL = `cancel${EVENT_KEY$6}`;
-  const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`;
+  const NAME$d = 'dialog';
+  const DATA_KEY$9 = 'bs.dialog';
+  const EVENT_KEY$9 = `.${DATA_KEY$9}`;
+  const DATA_API_KEY$5 = '.data-api';
+  const EVENT_SHOW$5 = `show${EVENT_KEY$9}`;
+  const EVENT_SHOWN$5 = `shown${EVENT_KEY$9}`;
+  const EVENT_HIDE$5 = `hide${EVENT_KEY$9}`;
+  const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$9}`;
+  const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$9}`;
+  const EVENT_CANCEL = `cancel${EVENT_KEY$9}`;
+  const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$9}${DATA_API_KEY$5}`;
   const CLASS_NAME_STATIC = 'dialog-static';
   const CLASS_NAME_OPEN = 'dialog-open';
   const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
-  const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dialog"]';
+  const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="dialog"]';
   const SELECTOR_OPEN_MODAL_DIALOG = 'dialog.dialog[open]:not(.dialog-nonmodal)';
-  const Default$9 = {
+  const Default$c = {
     backdrop: true,
     // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
     keyboard: true,
     modal: true // true uses showModal(), false uses show() for non-modal dialogs
   };
-  const DefaultType$9 = {
+  const DefaultType$c = {
     backdrop: '(boolean|string)',
     keyboard: 'boolean',
     modal: 'boolean'
@@ -1592,13 +2051,13 @@
 
     // Getters
     static get Default() {
-      return Default$9;
+      return Default$c;
     }
     static get DefaultType() {
-      return DefaultType$9;
+      return DefaultType$c;
     }
     static get NAME() {
-      return NAME$a;
+      return NAME$d;
     }
 
     // Public
@@ -1645,7 +2104,7 @@
       this._queueCallback(() => this._hideDialog(), this._element, this._isAnimated());
     }
     dispose() {
-      EventHandler.off(this._element, EVENT_KEY$6);
+      EventHandler.off(this._element, EVENT_KEY$9);
       super.dispose();
     }
     handleUpdate() {
@@ -1727,7 +2186,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$5, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$6, function (event) {
     const target = SelectorEngine.getElementFromSelector(this);
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
@@ -3506,49 +3965,80 @@
    * Constants
    */
 
-  const NAME$9 = 'dropdown';
-  const DATA_KEY$5 = 'bs.dropdown';
-  const EVENT_KEY$5 = `.${DATA_KEY$5}`;
-  const DATA_API_KEY$2 = '.data-api';
+  const NAME$c = 'dropdown';
+  const DATA_KEY$8 = 'bs.dropdown';
+  const EVENT_KEY$8 = `.${DATA_KEY$8}`;
+  const DATA_API_KEY$4 = '.data-api';
   const ESCAPE_KEY$1 = 'Escape';
   const TAB_KEY$1 = 'Tab';
   const ARROW_UP_KEY$1 = 'ArrowUp';
   const ARROW_DOWN_KEY$1 = 'ArrowDown';
-  const RIGHT_MOUSE_BUTTON = 2; // MouseEvent.button value for the secondary button, usually the right button
+  const ARROW_LEFT_KEY$1 = 'ArrowLeft';
+  const ARROW_RIGHT_KEY$1 = 'ArrowRight';
+  const HOME_KEY$1 = 'Home';
+  const END_KEY$1 = 'End';
+  const ENTER_KEY = 'Enter';
+  const SPACE_KEY = ' ';
+  const RIGHT_MOUSE_BUTTON = 2;
 
-  const EVENT_HIDE$4 = `hide${EVENT_KEY$5}`;
-  const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$5}`;
-  const EVENT_SHOW$4 = `show${EVENT_KEY$5}`;
-  const EVENT_SHOWN$4 = `shown${EVENT_KEY$5}`;
-  const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$5}${DATA_API_KEY$2}`;
-  const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$5}${DATA_API_KEY$2}`;
-  const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$5}${DATA_API_KEY$2}`;
+  // Hover intent delay (ms) - grace period before closing submenu
+  const SUBMENU_CLOSE_DELAY = 100;
+  const EVENT_HIDE$4 = `hide${EVENT_KEY$8}`;
+  const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$8}`;
+  const EVENT_SHOW$4 = `show${EVENT_KEY$8}`;
+  const EVENT_SHOWN$4 = `shown${EVENT_KEY$8}`;
+  const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$8}${DATA_API_KEY$4}`;
+  const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$8}${DATA_API_KEY$4}`;
+  const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$8}${DATA_API_KEY$4}`;
   const CLASS_NAME_SHOW$5 = 'show';
-  const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
-  const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE$4}.${CLASS_NAME_SHOW$5}`;
+  const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
+  const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE$5}.${CLASS_NAME_SHOW$5}`;
   const SELECTOR_MENU = '.dropdown-menu';
+  const SELECTOR_SUBMENU = '.dropdown-submenu';
+  const SELECTOR_SUBMENU_TOGGLE = '.dropdown-submenu > .dropdown-item';
   const SELECTOR_NAVBAR_NAV = '.navbar-nav';
-  const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+  const SELECTOR_VISIBLE_ITEMS = '.dropdown-item:not(.disabled):not(:disabled)';
 
-  // Default placement with RTL support
-  const DEFAULT_PLACEMENT = isRTL$1() ? 'bottom-end' : 'bottom-start';
-  const Default$8 = {
+  // Default logical placement (uses start/end which get resolved to left/right based on RTL)
+  const DEFAULT_PLACEMENT = 'bottom-start';
+  const SUBMENU_PLACEMENT = 'end-start';
+
+  // Resolve logical placement (start/end) to physical (left/right) based on RTL
+  const resolveLogicalPlacement = placement => {
+    if (isRTL$1()) {
+      // RTL: start → right, end → left
+      return placement.replace(/^start(?=-|$)/, 'right').replace(/^end(?=-|$)/, 'left');
+    }
+
+    // LTR: start → left, end → right
+    return placement.replace(/^start(?=-|$)/, 'left').replace(/^end(?=-|$)/, 'right');
+  };
+
+  // Helper for barycentric coordinate calculation (point in triangle check)
+  const triangleSign = (p1, p2, p3) => (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
+  const Default$b = {
     autoClose: true,
     boundary: 'clippingParents',
     display: 'dynamic',
     offset: [0, 2],
     floatingConfig: null,
     placement: DEFAULT_PLACEMENT,
-    reference: 'toggle'
+    reference: 'toggle',
+    // Submenu options
+    submenuTrigger: 'both',
+    // 'click', 'hover', or 'both'
+    submenuDelay: SUBMENU_CLOSE_DELAY
   };
-  const DefaultType$8 = {
+  const DefaultType$b = {
     autoClose: '(boolean|string)',
     boundary: '(string|element)',
     display: 'string',
     offset: '(array|string|function)',
     floatingConfig: '(null|object|function)',
     placement: 'string',
-    reference: '(string|element|object)'
+    reference: '(string|element|object)',
+    submenuTrigger: 'string',
+    submenuDelay: 'number'
   };
 
   /**
@@ -3565,22 +4055,30 @@
       this._mediaQueryListeners = [];
       this._responsivePlacements = null;
       this._parent = this._element.parentNode; // dropdown wrapper
+      this._isSubmenu = this._parent.classList.contains('dropdown-submenu');
+      this._openSubmenus = new Map(); // Map of submenu element -> cleanup function
+      this._submenuCloseTimeouts = new Map(); // Map of submenu element -> timeout ID
+      this._hoverIntentData = null; // For safe triangle calculation
+
       // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
       this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine.findOne(SELECTOR_MENU, this._parent);
 
       // Parse responsive placements on init
       this._parseResponsivePlacements();
+
+      // Set up submenu event listeners
+      this._setupSubmenuListeners();
     }
 
     // Getters
     static get Default() {
-      return Default$8;
+      return Default$b;
     }
     static get DefaultType() {
-      return DefaultType$8;
+      return DefaultType$b;
     }
     static get NAME() {
-      return NAME$9;
+      return NAME$c;
     }
 
     // Public
@@ -3610,9 +4108,10 @@
         }
       }
       this._element.focus();
-      this._element.setAttribute('aria-expanded', true);
+      this._element.setAttribute('aria-expanded', 'true');
       this._menu.classList.add(CLASS_NAME_SHOW$5);
       this._element.classList.add(CLASS_NAME_SHOW$5);
+      this._parent.classList.add(CLASS_NAME_SHOW$5);
       EventHandler.trigger(this._element, EVENT_SHOWN$4, relatedTarget);
     }
     hide() {
@@ -3627,6 +4126,8 @@
     dispose() {
       this._disposeFloating();
       this._disposeMediaQueryListeners();
+      this._closeAllSubmenus();
+      this._clearAllSubmenuTimeouts();
       super.dispose();
     }
     update() {
@@ -3642,6 +4143,9 @@
         return;
       }
 
+      // Close all open submenus first
+      this._closeAllSubmenus();
+
       // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
@@ -3652,6 +4156,7 @@
       this._disposeFloating();
       this._menu.classList.remove(CLASS_NAME_SHOW$5);
       this._element.classList.remove(CLASS_NAME_SHOW$5);
+      this._parent.classList.remove(CLASS_NAME_SHOW$5);
       this._element.setAttribute('aria-expanded', 'false');
       Manipulator.removeDataAttribute(this._menu, 'placement');
       Manipulator.removeDataAttribute(this._menu, 'display');
@@ -3661,7 +4166,7 @@
       config = super._getConfig(config);
       if (typeof config.reference === 'object' && !isElement$1(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
         // Floating UI virtual elements require a getBoundingClientRect method
-        throw new TypeError(`${NAME$9.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
+        throw new TypeError(`${NAME$c.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
       }
       return config;
     }
@@ -3686,8 +4191,7 @@
       this._floatingCleanup = autoUpdate(referenceElement, this._menu, () => this._updateFloatingPosition(referenceElement));
     }
     async _updateFloatingPosition(referenceElement = null) {
-      // Check if menu exists and is still in the DOM
-      if (!this._menu || !this._menu.isConnected) {
+      if (!this._menu) {
         return;
       }
       if (!referenceElement) {
@@ -3704,37 +4208,17 @@
       const placement = this._getPlacement();
       const middleware = this._getFloatingMiddleware();
       const floatingConfig = this._getFloatingConfig(placement, middleware);
-      const {
-        x,
-        y,
-        placement: finalPlacement
-      } = await computePosition(referenceElement, this._menu, floatingConfig);
-
-      // Menu may have been disposed during the async computePosition call
-      if (!this._menu || !this._menu.isConnected) {
-        return;
-      }
-
-      // Apply position to dropdown menu
-      Object.assign(this._menu.style, {
-        position: 'absolute',
-        left: `${x}px`,
-        top: `${y}px`,
-        margin: '0'
-      });
-
-      // Set placement attribute for CSS styling
-      Manipulator.setDataAttribute(this._menu, 'placement', finalPlacement);
+      await this._applyFloatingPosition(referenceElement, this._menu, floatingConfig.placement, floatingConfig.middleware);
     }
     _isShown() {
       return this._menu.classList.contains(CLASS_NAME_SHOW$5);
     }
     _getPlacement() {
       // If we have responsive placements, find the appropriate one for current viewport
-      if (this._responsivePlacements) {
-        return getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT);
-      }
-      return this._config.placement;
+      const placement = this._responsivePlacements ? getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT) : this._config.placement;
+
+      // Resolve logical placements (start/end) to physical (left/right) based on RTL
+      return resolveLogicalPlacement(placement);
     }
     _parseResponsivePlacements() {
       this._responsivePlacements = parseResponsivePlacement(this._config.placement, DEFAULT_PLACEMENT);
@@ -3756,18 +4240,18 @@
     }
     _getOffset() {
       const {
-        offset
+        offset: offsetConfig
       } = this._config;
-      if (typeof offset === 'string') {
-        return offset.split(',').map(value => Number.parseInt(value, 10));
+      if (typeof offsetConfig === 'string') {
+        return offsetConfig.split(',').map(value => Number.parseInt(value, 10));
       }
-      if (typeof offset === 'function') {
+      if (typeof offsetConfig === 'function') {
         // Floating UI passes different args, adapt the interface for offset function callbacks
         return ({
           placement,
           rects
         }) => {
-          const result = offset({
+          const result = offsetConfig({
             placement,
             reference: rects.reference,
             floating: rects.floating
@@ -3775,7 +4259,7 @@
           return result;
         };
       }
-      return offset;
+      return offsetConfig;
     }
     _getFloatingMiddleware() {
       const offsetValue = this._getOffset();
@@ -3833,11 +4317,296 @@
         this._floatingCleanup = null;
       }
     }
+
+    // Shared helper for positioning any floating element
+    async _applyFloatingPosition(reference, floating, placement, middleware) {
+      if (!floating.isConnected) {
+        return null;
+      }
+      const {
+        x,
+        y,
+        placement: finalPlacement
+      } = await computePosition(reference, floating, {
+        placement,
+        middleware
+      });
+      if (!floating.isConnected) {
+        return null;
+      }
+      Object.assign(floating.style, {
+        position: 'absolute',
+        left: `${x}px`,
+        top: `${y}px`,
+        margin: '0'
+      });
+      Manipulator.setDataAttribute(floating, 'placement', finalPlacement);
+      return finalPlacement;
+    }
+
+    // -------------------------------------------------------------------------
+    // Submenu handling
+    // -------------------------------------------------------------------------
+
+    _setupSubmenuListeners() {
+      // Set up hover listeners for submenu triggers
+      if (this._config.submenuTrigger === 'hover' || this._config.submenuTrigger === 'both') {
+        EventHandler.on(this._menu, 'mouseenter', SELECTOR_SUBMENU_TOGGLE, event => {
+          this._onSubmenuTriggerEnter(event);
+        });
+        EventHandler.on(this._menu, 'mouseleave', SELECTOR_SUBMENU, event => {
+          this._onSubmenuLeave(event);
+        });
+
+        // Track mouse movement for safe triangle calculation
+        EventHandler.on(this._menu, 'mousemove', event => {
+          this._trackMousePosition(event);
+        });
+      }
+
+      // Set up click listener for submenu triggers
+      if (this._config.submenuTrigger === 'click' || this._config.submenuTrigger === 'both') {
+        EventHandler.on(this._menu, 'click', SELECTOR_SUBMENU_TOGGLE, event => {
+          this._onSubmenuTriggerClick(event);
+        });
+      }
+    }
+    _onSubmenuTriggerEnter(event) {
+      const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE);
+      if (!trigger) {
+        return;
+      }
+      const submenuWrapper = trigger.closest(SELECTOR_SUBMENU);
+      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+      if (!submenu) {
+        return;
+      }
+
+      // Cancel any pending close timeout for this submenu
+      this._cancelSubmenuCloseTimeout(submenu);
+
+      // Close other open submenus at the same level
+      this._closeSiblingSubmenus(submenuWrapper);
+
+      // Open this submenu
+      this._openSubmenu(trigger, submenu, submenuWrapper);
+    }
+    _onSubmenuLeave(event) {
+      const submenuWrapper = event.target.closest(SELECTOR_SUBMENU);
+      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+      if (!submenu || !this._openSubmenus.has(submenu)) {
+        return;
+      }
+
+      // Check if we're moving toward the submenu (safe triangle)
+      if (this._isMovingTowardSubmenu(event, submenu)) {
+        return;
+      }
+
+      // Schedule submenu close with delay
+      this._scheduleSubmenuClose(submenu, submenuWrapper);
+    }
+    _onSubmenuTriggerClick(event) {
+      const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE);
+      if (!trigger) {
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      const submenuWrapper = trigger.closest(SELECTOR_SUBMENU);
+      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+      if (!submenu) {
+        return;
+      }
+
+      // Toggle submenu
+      if (this._openSubmenus.has(submenu)) {
+        this._closeSubmenu(submenu, submenuWrapper);
+      } else {
+        this._closeSiblingSubmenus(submenuWrapper);
+        this._openSubmenu(trigger, submenu, submenuWrapper);
+      }
+    }
+    _openSubmenu(trigger, submenu, submenuWrapper) {
+      if (this._openSubmenus.has(submenu)) {
+        return;
+      }
+
+      // Set ARIA attributes
+      trigger.setAttribute('aria-expanded', 'true');
+      trigger.setAttribute('aria-haspopup', 'true');
+
+      // Position and show submenu
+      submenu.classList.add(CLASS_NAME_SHOW$5);
+      submenuWrapper.classList.add(CLASS_NAME_SHOW$5);
+
+      // Set up Floating UI positioning for submenu
+      const cleanup = this._createSubmenuFloating(trigger, submenu, submenuWrapper);
+      this._openSubmenus.set(submenu, cleanup);
+
+      // Set up mouseenter on submenu to cancel close timeout
+      EventHandler.on(submenu, 'mouseenter', () => {
+        this._cancelSubmenuCloseTimeout(submenu);
+      });
+    }
+    _closeSubmenu(submenu, submenuWrapper) {
+      if (!this._openSubmenus.has(submenu)) {
+        return;
+      }
+
+      // Close any nested submenus first
+      const nestedSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} ${SELECTOR_MENU}.${CLASS_NAME_SHOW$5}`, submenu);
+      for (const nested of nestedSubmenus) {
+        const nestedWrapper = nested.closest(SELECTOR_SUBMENU);
+        this._closeSubmenu(nested, nestedWrapper);
+      }
+
+      // Get the trigger
+      const trigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, submenuWrapper);
+
+      // Clean up Floating UI
+      const cleanup = this._openSubmenus.get(submenu);
+      if (cleanup) {
+        cleanup();
+      }
+      this._openSubmenus.delete(submenu);
+
+      // Remove event listeners
+      EventHandler.off(submenu, 'mouseenter');
+
+      // Update ARIA and visibility
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+      submenu.classList.remove(CLASS_NAME_SHOW$5);
+      submenuWrapper.classList.remove(CLASS_NAME_SHOW$5);
+
+      // Clear inline styles
+      submenu.style.position = '';
+      submenu.style.left = '';
+      submenu.style.top = '';
+      submenu.style.margin = '';
+    }
+    _closeAllSubmenus() {
+      for (const [submenu] of this._openSubmenus) {
+        const submenuWrapper = submenu.closest(SELECTOR_SUBMENU);
+        this._closeSubmenu(submenu, submenuWrapper);
+      }
+    }
+    _closeSiblingSubmenus(currentSubmenuWrapper) {
+      // Find all sibling submenu wrappers and close their menus
+      const parent = currentSubmenuWrapper.parentNode;
+      const siblingSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} > ${SELECTOR_MENU}.${CLASS_NAME_SHOW$5}`, parent);
+      for (const siblingMenu of siblingSubmenus) {
+        const siblingWrapper = siblingMenu.closest(SELECTOR_SUBMENU);
+        if (siblingWrapper !== currentSubmenuWrapper) {
+          this._closeSubmenu(siblingMenu, siblingWrapper);
+        }
+      }
+    }
+    _createSubmenuFloating(trigger, submenu, submenuWrapper) {
+      const referenceElement = submenuWrapper;
+      const placement = resolveLogicalPlacement(SUBMENU_PLACEMENT);
+      const middleware = [offset({
+        mainAxis: 0,
+        crossAxis: -4
+      }), flip({
+        fallbackPlacements: [resolveLogicalPlacement('start-start'), resolveLogicalPlacement('end-end'), resolveLogicalPlacement('start-end')]
+      }), shift({
+        padding: 8
+      })];
+      const updatePosition = () => this._applyFloatingPosition(referenceElement, submenu, placement, middleware);
+      updatePosition();
+      return autoUpdate(referenceElement, submenu, updatePosition);
+    }
+    _scheduleSubmenuClose(submenu, submenuWrapper) {
+      this._cancelSubmenuCloseTimeout(submenu);
+      const timeoutId = setTimeout(() => {
+        this._closeSubmenu(submenu, submenuWrapper);
+        this._submenuCloseTimeouts.delete(submenu);
+      }, this._config.submenuDelay);
+      this._submenuCloseTimeouts.set(submenu, timeoutId);
+    }
+    _cancelSubmenuCloseTimeout(submenu) {
+      const timeoutId = this._submenuCloseTimeouts.get(submenu);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        this._submenuCloseTimeouts.delete(submenu);
+      }
+    }
+    _clearAllSubmenuTimeouts() {
+      for (const timeoutId of this._submenuCloseTimeouts.values()) {
+        clearTimeout(timeoutId);
+      }
+      this._submenuCloseTimeouts.clear();
+    }
+
+    // -------------------------------------------------------------------------
+    // Hover intent / Safe triangle
+    // -------------------------------------------------------------------------
+
+    _trackMousePosition(event) {
+      this._hoverIntentData = {
+        x: event.clientX,
+        y: event.clientY,
+        timestamp: Date.now()
+      };
+    }
+    _isMovingTowardSubmenu(event, submenu) {
+      if (!this._hoverIntentData) {
+        return false;
+      }
+      const submenuRect = submenu.getBoundingClientRect();
+      const currentPos = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      const lastPos = {
+        x: this._hoverIntentData.x,
+        y: this._hoverIntentData.y
+      };
+
+      // Create a triangle from current position to submenu edges
+      // The triangle represents the "safe zone" for diagonal movement
+      const isRtl = isRTL$1();
+
+      // Determine which edge of the submenu to target based on direction
+      const targetX = isRtl ? submenuRect.right : submenuRect.left;
+      const topCorner = {
+        x: targetX,
+        y: submenuRect.top
+      };
+      const bottomCorner = {
+        x: targetX,
+        y: submenuRect.bottom
+      };
+
+      // Check if cursor is moving toward the submenu
+      // by checking if the current position is within the safe triangle
+      return this._pointInTriangle(currentPos, lastPos, topCorner, bottomCorner);
+    }
+    _pointInTriangle(point, v1, v2, v3) {
+      // Barycentric coordinate method to check if point is inside triangle
+      const d1 = triangleSign(point, v1, v2);
+      const d2 = triangleSign(point, v2, v3);
+      const d3 = triangleSign(point, v3, v1);
+      const hasNeg = d1 < 0 || d2 < 0 || d3 < 0;
+      const hasPos = d1 > 0 || d2 > 0 || d3 > 0;
+      return !(hasNeg && hasPos);
+    }
+
+    // -------------------------------------------------------------------------
+    // Keyboard navigation
+    // -------------------------------------------------------------------------
+
     _selectMenuItem({
       key,
       target
     }) {
-      const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(element => isVisible(element));
+      // Get items only from the current menu level (not nested submenus)
+      // If target is inside a menu, use that menu; otherwise use the main menu
+      const currentMenu = target.closest(SELECTOR_MENU) || this._menu;
+      const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu).filter(element => isVisible(element));
       if (!items.length) {
         return;
       }
@@ -3845,6 +4614,89 @@
       // if target isn't included in items (e.g. when expanding the dropdown)
       // allow cycling to get the last item in case key equals ARROW_UP_KEY
       getNextActiveElement(items, target, key === ARROW_DOWN_KEY$1, !items.includes(target)).focus();
+    }
+    _handleSubmenuKeydown(event) {
+      const {
+        key,
+        target
+      } = event;
+      const isRtl = isRTL$1();
+
+      // Determine the "enter submenu" and "exit submenu" keys based on RTL
+      const enterKey = isRtl ? ARROW_LEFT_KEY$1 : ARROW_RIGHT_KEY$1;
+      const exitKey = isRtl ? ARROW_RIGHT_KEY$1 : ARROW_LEFT_KEY$1;
+
+      // Check if target is a submenu trigger
+      const submenuWrapper = target.closest(SELECTOR_SUBMENU);
+      const isSubmenuTrigger = submenuWrapper && target.matches(SELECTOR_SUBMENU_TOGGLE);
+
+      // Handle Enter/Space on submenu trigger
+      if ((key === ENTER_KEY || key === SPACE_KEY) && isSubmenuTrigger) {
+        event.preventDefault();
+        event.stopPropagation();
+        const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+        if (submenu) {
+          this._closeSiblingSubmenus(submenuWrapper);
+          this._openSubmenu(target, submenu, submenuWrapper);
+          // Focus first item in submenu
+          requestAnimationFrame(() => {
+            const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu);
+            if (firstItem) {
+              firstItem.focus();
+            }
+          });
+        }
+        return true;
+      }
+
+      // Handle Right arrow (or Left in RTL) - enter submenu
+      if (key === enterKey && isSubmenuTrigger) {
+        event.preventDefault();
+        event.stopPropagation();
+        const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+        if (submenu) {
+          this._closeSiblingSubmenus(submenuWrapper);
+          this._openSubmenu(target, submenu, submenuWrapper);
+          // Focus first item in submenu
+          requestAnimationFrame(() => {
+            const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu);
+            if (firstItem) {
+              firstItem.focus();
+            }
+          });
+        }
+        return true;
+      }
+
+      // Handle Left arrow (or Right in RTL) - exit submenu
+      if (key === exitKey) {
+        const currentMenu = target.closest(SELECTOR_MENU);
+        const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU);
+        if (parentSubmenuWrapper) {
+          event.preventDefault();
+          event.stopPropagation();
+          const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper);
+          this._closeSubmenu(currentMenu, parentSubmenuWrapper);
+          if (parentTrigger) {
+            parentTrigger.focus();
+          }
+          return true;
+        }
+      }
+
+      // Handle Home/End keys
+      if (key === HOME_KEY$1 || key === END_KEY$1) {
+        event.preventDefault();
+        event.stopPropagation();
+        const currentMenu = target.closest(SELECTOR_MENU);
+        const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu).filter(element => isVisible(element));
+        if (items.length) {
+          const targetItem = key === HOME_KEY$1 ? items[0] : items[items.length - 1];
+          targetItem.focus();
+        }
+        return true;
+      }
+      return false;
     }
     static clearMenus(event) {
       if (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY$1) {
@@ -3876,32 +4728,62 @@
       }
     }
     static dataApiKeydownHandler(event) {
-      // If not an UP | DOWN | ESCAPE key => not a dropdown command
-      // If input/textarea && if key is other than ESCAPE => not a dropdown command
-
+      // If not a relevant key => not a dropdown command
       const isInput = /input|textarea/i.test(event.target.tagName);
       const isEscapeEvent = event.key === ESCAPE_KEY$1;
       const isUpOrDownEvent = [ARROW_UP_KEY$1, ARROW_DOWN_KEY$1].includes(event.key);
-      if (!isUpOrDownEvent && !isEscapeEvent) {
+      const isLeftOrRightEvent = [ARROW_LEFT_KEY$1, ARROW_RIGHT_KEY$1].includes(event.key);
+      const isHomeOrEndEvent = [HOME_KEY$1, END_KEY$1].includes(event.key);
+      const isEnterOrSpaceEvent = [ENTER_KEY, SPACE_KEY].includes(event.key);
+
+      // Allow Enter/Space only on submenu triggers
+      const isSubmenuTrigger = event.target.matches(SELECTOR_SUBMENU_TOGGLE);
+      if (!isUpOrDownEvent && !isEscapeEvent && !isLeftOrRightEvent && !isHomeOrEndEvent && !(isEnterOrSpaceEvent && isSubmenuTrigger)) {
         return;
       }
       if (isInput && !isEscapeEvent) {
         return;
       }
-      event.preventDefault();
 
       // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
-      const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$4) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$4)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE$4)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$4, event.delegateTarget.parentNode);
+      const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$5) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$5)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE$5)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$5, event.delegateTarget.parentNode);
+      if (!getToggleButton) {
+        return;
+      }
       const instance = Dropdown.getOrCreateInstance(getToggleButton);
+
+      // Handle submenu navigation first
+      if ((isLeftOrRightEvent || isHomeOrEndEvent || isEnterOrSpaceEvent && isSubmenuTrigger) && instance._handleSubmenuKeydown(event)) {
+        return;
+      }
+
+      // Handle Up/Down navigation
       if (isUpOrDownEvent) {
+        event.preventDefault();
         event.stopPropagation();
         instance.show();
         instance._selectMenuItem(event);
         return;
       }
-      if (instance._isShown()) {
-        // else is escape and we check if it is shown
+
+      // Handle Escape
+      if (isEscapeEvent && instance._isShown()) {
+        event.preventDefault();
         event.stopPropagation();
+
+        // If in a submenu, close just that submenu
+        const currentMenu = event.target.closest(SELECTOR_MENU);
+        const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU);
+        if (parentSubmenuWrapper && instance._openSubmenus.size > 0) {
+          const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper);
+          instance._closeSubmenu(currentMenu, parentSubmenuWrapper);
+          if (parentTrigger) {
+            parentTrigger.focus();
+          }
+          return;
+        }
+
+        // Otherwise close the whole dropdown
         instance.hide();
         getToggleButton.focus();
       }
@@ -3912,11 +4794,11 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$4, Dropdown.dataApiKeydownHandler);
+  EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$5, Dropdown.dataApiKeydownHandler);
   EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
   EventHandler.on(document, EVENT_CLICK_DATA_API$2, Dropdown.clearMenus);
   EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
-  EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$4, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, function (event) {
     event.preventDefault();
     Dropdown.getOrCreateInstance(this).toggle();
   });
@@ -3933,11 +4815,11 @@
    * Constants
    */
 
-  const NAME$8 = 'backdrop';
+  const NAME$b = 'backdrop';
   const CLASS_NAME_FADE$3 = 'fade';
   const CLASS_NAME_SHOW$4 = 'show';
-  const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$8}`;
-  const Default$7 = {
+  const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$b}`;
+  const Default$a = {
     className: 'modal-backdrop',
     clickCallback: null,
     isAnimated: false,
@@ -3945,7 +4827,7 @@
     // if false, we use the backdrop helper without adding any element to the dom
     rootElement: 'body' // give the choice to place backdrop under different elements
   };
-  const DefaultType$7 = {
+  const DefaultType$a = {
     className: 'string',
     clickCallback: '(function|null)',
     isAnimated: 'boolean',
@@ -3967,13 +4849,13 @@
 
     // Getters
     static get Default() {
-      return Default$7;
+      return Default$a;
     }
     static get DefaultType() {
-      return DefaultType$7;
+      return DefaultType$a;
     }
     static get NAME() {
-      return NAME$8;
+      return NAME$b;
     }
 
     // Public
@@ -4057,19 +4939,19 @@
    * Constants
    */
 
-  const NAME$7 = 'focustrap';
-  const DATA_KEY$4 = 'bs.focustrap';
-  const EVENT_KEY$4 = `.${DATA_KEY$4}`;
-  const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$4}`;
-  const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$4}`;
+  const NAME$a = 'focustrap';
+  const DATA_KEY$7 = 'bs.focustrap';
+  const EVENT_KEY$7 = `.${DATA_KEY$7}`;
+  const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$7}`;
+  const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$7}`;
   const TAB_KEY = 'Tab';
   const TAB_NAV_FORWARD = 'forward';
   const TAB_NAV_BACKWARD = 'backward';
-  const Default$6 = {
+  const Default$9 = {
     autofocus: true,
     trapElement: null // The element to trap focus inside of
   };
-  const DefaultType$6 = {
+  const DefaultType$9 = {
     autofocus: 'boolean',
     trapElement: 'element'
   };
@@ -4088,13 +4970,13 @@
 
     // Getters
     static get Default() {
-      return Default$6;
+      return Default$9;
     }
     static get DefaultType() {
-      return DefaultType$6;
+      return DefaultType$9;
     }
     static get NAME() {
-      return NAME$7;
+      return NAME$a;
     }
 
     // Public
@@ -4105,7 +4987,7 @@
       if (this._config.autofocus) {
         this._config.trapElement.focus();
       }
-      EventHandler.off(document, EVENT_KEY$4); // guard against infinite focus loop
+      EventHandler.off(document, EVENT_KEY$7); // guard against infinite focus loop
       EventHandler.on(document, EVENT_FOCUSIN$3, event => this._handleFocusin(event));
       EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
       this._isActive = true;
@@ -4115,7 +4997,7 @@
         return;
       }
       this._isActive = false;
-      EventHandler.off(document, EVENT_KEY$4);
+      EventHandler.off(document, EVENT_KEY$7);
     }
 
     // Private
@@ -4253,32 +5135,32 @@
    * Constants
    */
 
-  const NAME$6 = 'offcanvas';
-  const DATA_KEY$3 = 'bs.offcanvas';
-  const EVENT_KEY$3 = `.${DATA_KEY$3}`;
-  const DATA_API_KEY$1 = '.data-api';
-  const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$3}${DATA_API_KEY$1}`;
+  const NAME$9 = 'offcanvas';
+  const DATA_KEY$6 = 'bs.offcanvas';
+  const EVENT_KEY$6 = `.${DATA_KEY$6}`;
+  const DATA_API_KEY$3 = '.data-api';
+  const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$6}${DATA_API_KEY$3}`;
   const ESCAPE_KEY = 'Escape';
   const CLASS_NAME_SHOW$3 = 'show';
   const CLASS_NAME_SHOWING$1 = 'showing';
   const CLASS_NAME_HIDING = 'hiding';
   const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
   const OPEN_SELECTOR = '.offcanvas.show';
-  const EVENT_SHOW$3 = `show${EVENT_KEY$3}`;
-  const EVENT_SHOWN$3 = `shown${EVENT_KEY$3}`;
-  const EVENT_HIDE$3 = `hide${EVENT_KEY$3}`;
-  const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$3}`;
-  const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$3}`;
-  const EVENT_RESIZE = `resize${EVENT_KEY$3}`;
-  const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$3}${DATA_API_KEY$1}`;
-  const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$3}`;
-  const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="offcanvas"]';
-  const Default$5 = {
+  const EVENT_SHOW$3 = `show${EVENT_KEY$6}`;
+  const EVENT_SHOWN$3 = `shown${EVENT_KEY$6}`;
+  const EVENT_HIDE$3 = `hide${EVENT_KEY$6}`;
+  const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$6}`;
+  const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$6}`;
+  const EVENT_RESIZE = `resize${EVENT_KEY$6}`;
+  const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`;
+  const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$6}`;
+  const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="offcanvas"]';
+  const Default$8 = {
     backdrop: true,
     keyboard: true,
     scroll: false
   };
-  const DefaultType$5 = {
+  const DefaultType$8 = {
     backdrop: '(boolean|string)',
     keyboard: 'boolean',
     scroll: 'boolean'
@@ -4299,13 +5181,13 @@
 
     // Getters
     static get Default() {
-      return Default$5;
+      return Default$8;
     }
     static get DefaultType() {
-      return DefaultType$5;
+      return DefaultType$8;
     }
     static get NAME() {
-      return NAME$6;
+      return NAME$9;
     }
 
     // Public
@@ -4415,7 +5297,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$3, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$4, function (event) {
     const target = SelectorEngine.getElementFromSelector(this);
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
@@ -4451,6 +5333,459 @@
     }
   });
   enableDismissTrigger(Offcanvas);
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap strength.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+
+  /**
+   * Constants
+   */
+
+  const NAME$8 = 'strength';
+  const DATA_KEY$5 = 'bs.strength';
+  const EVENT_KEY$5 = `.${DATA_KEY$5}`;
+  const DATA_API_KEY$2 = '.data-api';
+  const EVENT_STRENGTH_CHANGE = `strengthChange${EVENT_KEY$5}`;
+  const SELECTOR_DATA_STRENGTH = '[data-bs-strength]';
+  const STRENGTH_LEVELS = ['weak', 'fair', 'good', 'strong'];
+  const Default$7 = {
+    input: null,
+    // Selector or element for password input
+    minLength: 8,
+    messages: {
+      weak: 'Weak',
+      fair: 'Fair',
+      good: 'Good',
+      strong: 'Strong'
+    },
+    weights: {
+      minLength: 1,
+      extraLength: 1,
+      lowercase: 1,
+      uppercase: 1,
+      numbers: 1,
+      special: 1,
+      multipleSpecial: 1,
+      longPassword: 1
+    },
+    thresholds: [2, 4, 6],
+    // weak ≤2, fair ≤4, good ≤6, strong >6
+    scorer: null // Custom scoring function (password) => number
+  };
+  const DefaultType$7 = {
+    input: '(string|element|null)',
+    minLength: 'number',
+    messages: 'object',
+    weights: 'object',
+    thresholds: 'array',
+    scorer: '(function|null)'
+  };
+
+  /**
+   * Class definition
+   */
+
+  class Strength extends BaseComponent {
+    constructor(element, config) {
+      super(element, config);
+      this._input = this._getInput();
+      this._segments = SelectorEngine.find('.strength-segment', this._element);
+      this._textElement = SelectorEngine.findOne('.strength-text', this._element.parentElement);
+      this._currentStrength = null;
+      if (this._input) {
+        this._addEventListeners();
+        // Check initial value
+        this._evaluate();
+      }
+    }
+
+    // Getters
+    static get Default() {
+      return Default$7;
+    }
+    static get DefaultType() {
+      return DefaultType$7;
+    }
+    static get NAME() {
+      return NAME$8;
+    }
+
+    // Public
+    getStrength() {
+      return this._currentStrength;
+    }
+    evaluate() {
+      this._evaluate();
+    }
+
+    // Private
+    _getInput() {
+      if (this._config.input) {
+        return typeof this._config.input === 'string' ? SelectorEngine.findOne(this._config.input) : this._config.input;
+      }
+
+      // Look for preceding password input
+      const parent = this._element.parentElement;
+      return SelectorEngine.findOne('input[type="password"]', parent);
+    }
+    _addEventListeners() {
+      EventHandler.on(this._input, 'input', () => this._evaluate());
+      EventHandler.on(this._input, 'change', () => this._evaluate());
+    }
+    _evaluate() {
+      const password = this._input.value;
+      const score = this._calculateScore(password);
+      const strength = this._scoreToStrength(score);
+      if (strength !== this._currentStrength) {
+        this._currentStrength = strength;
+        this._updateUI(strength, score);
+        EventHandler.trigger(this._element, EVENT_STRENGTH_CHANGE, {
+          strength,
+          score,
+          password: password.length > 0 ? '***' : '' // Don't expose actual password
+        });
+      }
+    }
+    _calculateScore(password) {
+      if (!password) {
+        return 0;
+      }
+
+      // Use custom scorer if provided
+      if (typeof this._config.scorer === 'function') {
+        return this._config.scorer(password);
+      }
+      const {
+        weights
+      } = this._config;
+      let score = 0;
+
+      // Length scoring
+      if (password.length >= this._config.minLength) {
+        score += weights.minLength;
+      }
+      if (password.length >= this._config.minLength + 4) {
+        score += weights.extraLength;
+      }
+
+      // Character variety
+      if (/[a-z]/.test(password)) {
+        score += weights.lowercase;
+      }
+      if (/[A-Z]/.test(password)) {
+        score += weights.uppercase;
+      }
+      if (/\d/.test(password)) {
+        score += weights.numbers;
+      }
+
+      // Special characters
+      if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        score += weights.special;
+      }
+
+      // Extra points for more special chars or length
+      if (/[!@#$%^&*(),.?":{}|<>].*[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        score += weights.multipleSpecial;
+      }
+      if (password.length >= 16) {
+        score += weights.longPassword;
+      }
+      return score;
+    }
+    _scoreToStrength(score) {
+      if (score === 0) {
+        return null;
+      }
+      const [weak, fair, good] = this._config.thresholds;
+      if (score <= weak) {
+        return 'weak';
+      }
+      if (score <= fair) {
+        return 'fair';
+      }
+      if (score <= good) {
+        return 'good';
+      }
+      return 'strong';
+    }
+    _updateUI(strength) {
+      // Update data attribute on element
+      if (strength) {
+        this._element.dataset.bsStrength = strength;
+      } else {
+        delete this._element.dataset.bsStrength;
+      }
+
+      // Update segmented meter
+      const strengthIndex = strength ? STRENGTH_LEVELS.indexOf(strength) : -1;
+      for (const [index, segment] of this._segments.entries()) {
+        if (index <= strengthIndex) {
+          segment.classList.add('active');
+        } else {
+          segment.classList.remove('active');
+        }
+      }
+
+      // Update text feedback
+      if (this._textElement) {
+        if (strength && this._config.messages[strength]) {
+          this._textElement.textContent = this._config.messages[strength];
+          this._textElement.dataset.bsStrength = strength;
+
+          // Also set the color via inheriting from parent or using CSS variable
+          const colorMap = {
+            weak: 'danger',
+            fair: 'warning',
+            good: 'info',
+            strong: 'success'
+          };
+          this._textElement.style.setProperty('--strength-color', `var(--${colorMap[strength]}-text)`);
+        } else {
+          this._textElement.textContent = '';
+          delete this._textElement.dataset.bsStrength;
+        }
+      }
+    }
+  }
+
+  /**
+   * Data API implementation
+   */
+
+  EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`, () => {
+    for (const element of SelectorEngine.find(SELECTOR_DATA_STRENGTH)) {
+      Strength.getOrCreateInstance(element);
+    }
+  });
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap otp-input.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+
+  /**
+   * Constants
+   */
+
+  const NAME$7 = 'otpInput';
+  const DATA_KEY$4 = 'bs.otp-input';
+  const EVENT_KEY$4 = `.${DATA_KEY$4}`;
+  const DATA_API_KEY$1 = '.data-api';
+  const EVENT_COMPLETE = `complete${EVENT_KEY$4}`;
+  const EVENT_INPUT = `input${EVENT_KEY$4}`;
+  const SELECTOR_DATA_OTP = '[data-bs-otp]';
+  const SELECTOR_INPUT = 'input';
+  const Default$6 = {
+    length: 6,
+    mask: false
+  };
+  const DefaultType$6 = {
+    length: 'number',
+    mask: 'boolean'
+  };
+
+  /**
+   * Class definition
+   */
+
+  class OtpInput extends BaseComponent {
+    constructor(element, config) {
+      super(element, config);
+      this._inputs = SelectorEngine.find(SELECTOR_INPUT, this._element);
+      this._setupInputs();
+      this._addEventListeners();
+    }
+
+    // Getters
+    static get Default() {
+      return Default$6;
+    }
+    static get DefaultType() {
+      return DefaultType$6;
+    }
+    static get NAME() {
+      return NAME$7;
+    }
+
+    // Public
+    getValue() {
+      return this._inputs.map(input => input.value).join('');
+    }
+    setValue(value) {
+      const chars = String(value).split('');
+      for (const [index, input] of this._inputs.entries()) {
+        input.value = chars[index] || '';
+      }
+      this._checkComplete();
+    }
+    clear() {
+      for (const input of this._inputs) {
+        input.value = '';
+      }
+      this._inputs[0]?.focus();
+    }
+    focus() {
+      // Focus first empty input, or last input if all filled
+      const emptyInput = this._inputs.find(input => !input.value);
+      if (emptyInput) {
+        emptyInput.focus();
+      } else {
+        this._inputs.at(-1)?.focus();
+      }
+    }
+
+    // Private
+    _setupInputs() {
+      for (const input of this._inputs) {
+        // Set attributes for proper OTP handling
+        input.setAttribute('maxlength', '1');
+        input.setAttribute('inputmode', 'numeric');
+        input.setAttribute('pattern', '\\d*');
+
+        // First input gets autocomplete for browser OTP autofill
+        if (input === this._inputs[0]) {
+          input.setAttribute('autocomplete', 'one-time-code');
+        } else {
+          input.setAttribute('autocomplete', 'off');
+        }
+
+        // Mask input if configured
+        if (this._config.mask) {
+          input.setAttribute('type', 'password');
+        }
+      }
+    }
+    _addEventListeners() {
+      for (const [index, input] of this._inputs.entries()) {
+        EventHandler.on(input, 'input', event => this._handleInput(event, index));
+        EventHandler.on(input, 'keydown', event => this._handleKeydown(event, index));
+        EventHandler.on(input, 'paste', event => this._handlePaste(event));
+        EventHandler.on(input, 'focus', event => this._handleFocus(event));
+      }
+    }
+    _handleInput(event, index) {
+      const input = event.target;
+
+      // Only allow digits
+      if (!/^\d*$/.test(input.value)) {
+        input.value = input.value.replace(/\D/g, '');
+      }
+      const {
+        value
+      } = input;
+
+      // Handle multi-character input (some browsers/autofill)
+      if (value.length > 1) {
+        // Distribute characters across inputs
+        const chars = value.split('');
+        input.value = chars[0] || '';
+        for (let i = 1; i < chars.length && index + i < this._inputs.length; i++) {
+          this._inputs[index + i].value = chars[i];
+        }
+
+        // Focus appropriate input
+        const nextIndex = Math.min(index + chars.length, this._inputs.length - 1);
+        this._inputs[nextIndex].focus();
+      } else if (value && index < this._inputs.length - 1) {
+        // Auto-advance to next input
+        this._inputs[index + 1].focus();
+      }
+      EventHandler.trigger(this._element, EVENT_INPUT, {
+        value: this.getValue(),
+        index
+      });
+      this._checkComplete();
+    }
+    _handleKeydown(event, index) {
+      const {
+        key
+      } = event;
+      switch (key) {
+        case 'Backspace':
+          {
+            if (!this._inputs[index].value && index > 0) {
+              // Move to previous input and clear it
+              event.preventDefault();
+              this._inputs[index - 1].value = '';
+              this._inputs[index - 1].focus();
+            }
+            break;
+          }
+        case 'Delete':
+          {
+            // Clear current and shift remaining values left
+            event.preventDefault();
+            for (let i = index; i < this._inputs.length - 1; i++) {
+              this._inputs[i].value = this._inputs[i + 1].value;
+            }
+            this._inputs.at(-1).value = '';
+            break;
+          }
+        case 'ArrowLeft':
+          {
+            if (index > 0) {
+              event.preventDefault();
+              this._inputs[index - 1].focus();
+            }
+            break;
+          }
+        case 'ArrowRight':
+          {
+            if (index < this._inputs.length - 1) {
+              event.preventDefault();
+              this._inputs[index + 1].focus();
+            }
+            break;
+          }
+
+        // No default
+      }
+    }
+    _handlePaste(event) {
+      event.preventDefault();
+      const pastedData = (event.clipboardData || window.clipboardData).getData('text');
+      const digits = pastedData.replace(/\D/g, '').slice(0, this._inputs.length);
+      if (digits) {
+        this.setValue(digits);
+
+        // Focus last filled input or last input
+        const lastIndex = Math.min(digits.length, this._inputs.length) - 1;
+        this._inputs[lastIndex].focus();
+      }
+    }
+    _handleFocus(event) {
+      // Select the content on focus for easy replacement
+      event.target.select();
+    }
+    _checkComplete() {
+      const value = this.getValue();
+      const isComplete = value.length === this._inputs.length && this._inputs.every(input => input.value !== '');
+      if (isComplete) {
+        EventHandler.trigger(this._element, EVENT_COMPLETE, {
+          value
+        });
+      }
+    }
+  }
+
+  /**
+   * Data API implementation
+   */
+
+  EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$4}${DATA_API_KEY$1}`, () => {
+    for (const element of SelectorEngine.find(SELECTOR_DATA_OTP)) {
+      OtpInput.getOrCreateInstance(element);
+    }
+  });
 
   /**
    * --------------------------------------------------------------------------
@@ -4559,8 +5894,8 @@
    * Constants
    */
 
-  const NAME$5 = 'TemplateFactory';
-  const Default$4 = {
+  const NAME$6 = 'TemplateFactory';
+  const Default$5 = {
     allowList: DefaultAllowlist,
     content: {},
     // { selector : text ,  selector2 : text2 , }
@@ -4570,7 +5905,7 @@
     sanitizeFn: null,
     template: '<div></div>'
   };
-  const DefaultType$4 = {
+  const DefaultType$5 = {
     allowList: 'object',
     content: 'object',
     extraClass: '(string|function)',
@@ -4596,13 +5931,13 @@
 
     // Getters
     static get Default() {
-      return Default$4;
+      return Default$5;
     }
     static get DefaultType() {
-      return DefaultType$4;
+      return DefaultType$5;
     }
     static get NAME() {
-      return NAME$5;
+      return NAME$6;
     }
 
     // Public
@@ -4695,14 +6030,14 @@
    * Constants
    */
 
-  const NAME$4 = 'tooltip';
+  const NAME$5 = 'tooltip';
   const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn']);
   const CLASS_NAME_FADE$2 = 'fade';
   const CLASS_NAME_MODAL = 'modal';
   const CLASS_NAME_SHOW$2 = 'show';
   const SELECTOR_TOOLTIP_INNER = '.tooltip-inner';
   const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
-  const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="tooltip"]';
+  const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="tooltip"]';
   const EVENT_MODAL_HIDE = 'hide.bs.modal';
   const TRIGGER_HOVER = 'hover';
   const TRIGGER_FOCUS = 'focus';
@@ -4713,7 +6048,7 @@
   const EVENT_SHOW$2 = 'show';
   const EVENT_SHOWN$2 = 'shown';
   const EVENT_INSERTED = 'inserted';
-  const EVENT_CLICK$2 = 'click';
+  const EVENT_CLICK$3 = 'click';
   const EVENT_FOCUSIN$2 = 'focusin';
   const EVENT_FOCUSOUT$1 = 'focusout';
   const EVENT_MOUSEENTER$1 = 'mouseenter';
@@ -4725,7 +6060,7 @@
     BOTTOM: 'bottom',
     LEFT: isRTL$1() ? 'right' : 'left'
   };
-  const Default$3 = {
+  const Default$4 = {
     allowList: DefaultAllowlist,
     animation: true,
     boundary: 'clippingParents',
@@ -4744,7 +6079,7 @@
     title: '',
     trigger: 'hover focus'
   };
-  const DefaultType$3 = {
+  const DefaultType$4 = {
     allowList: 'object',
     animation: 'boolean',
     boundary: '(string|element)',
@@ -4797,13 +6132,13 @@
 
     // Getters
     static get Default() {
-      return Default$3;
+      return Default$4;
     }
     static get DefaultType() {
-      return DefaultType$3;
+      return DefaultType$4;
     }
     static get NAME() {
-      return NAME$4;
+      return NAME$5;
     }
 
     // Public
@@ -5151,7 +6486,7 @@
       const triggers = this._config.trigger.split(' ');
       for (const trigger of triggers) {
         if (trigger === 'click') {
-          EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$2), this._config.selector, event => {
+          EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$3), this._config.selector, event => {
             const context = this._initializeOnDelegatedTarget(event);
             context._activeTrigger[TRIGGER_CLICK] = !(context._isShown() && context._activeTrigger[TRIGGER_CLICK]);
             context.toggle();
@@ -5283,7 +6618,7 @@
    */
 
   const initTooltip = event => {
-    const target = event.target.closest(SELECTOR_DATA_TOGGLE$2);
+    const target = event.target.closest(SELECTOR_DATA_TOGGLE$3);
     if (!target) {
       return;
     }
@@ -5297,8 +6632,8 @@
       tooltip._enter();
     }
   };
-  EventHandler.on(document, EVENT_FOCUSIN$2, SELECTOR_DATA_TOGGLE$2, initTooltip);
-  EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$2, initTooltip);
+  EventHandler.on(document, EVENT_FOCUSIN$2, SELECTOR_DATA_TOGGLE$3, initTooltip);
+  EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$3, initTooltip);
 
   /**
    * --------------------------------------------------------------------------
@@ -5312,14 +6647,14 @@
    * Constants
    */
 
-  const NAME$3 = 'popover';
+  const NAME$4 = 'popover';
   const SELECTOR_TITLE = '.popover-header';
   const SELECTOR_CONTENT = '.popover-body';
-  const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="popover"]';
-  const EVENT_CLICK$1 = 'click';
+  const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="popover"]';
+  const EVENT_CLICK$2 = 'click';
   const EVENT_FOCUSIN$1 = 'focusin';
   const EVENT_MOUSEENTER = 'mouseenter';
-  const Default$2 = {
+  const Default$3 = {
     ...Tooltip.Default,
     content: '',
     offset: [0, 8],
@@ -5327,7 +6662,7 @@
     template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>',
     trigger: 'click'
   };
-  const DefaultType$2 = {
+  const DefaultType$3 = {
     ...Tooltip.DefaultType,
     content: '(null|string|element|function)'
   };
@@ -5339,13 +6674,13 @@
   class Popover extends Tooltip {
     // Getters
     static get Default() {
-      return Default$2;
+      return Default$3;
     }
     static get DefaultType() {
-      return DefaultType$2;
+      return DefaultType$3;
     }
     static get NAME() {
-      return NAME$3;
+      return NAME$4;
     }
 
     // Overrides
@@ -5370,7 +6705,7 @@
    */
 
   const initPopover = event => {
-    const target = event.target.closest(SELECTOR_DATA_TOGGLE$1);
+    const target = event.target.closest(SELECTOR_DATA_TOGGLE$2);
     if (!target) {
       return;
     }
@@ -5393,9 +6728,9 @@
   };
 
   // Support click (default), hover, and focus triggers
-  EventHandler.on(document, EVENT_CLICK$1, SELECTOR_DATA_TOGGLE$1, initPopover);
-  EventHandler.on(document, EVENT_FOCUSIN$1, SELECTOR_DATA_TOGGLE$1, initPopover);
-  EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$1, initPopover);
+  EventHandler.on(document, EVENT_CLICK$2, SELECTOR_DATA_TOGGLE$2, initPopover);
+  EventHandler.on(document, EVENT_FOCUSIN$1, SELECTOR_DATA_TOGGLE$2, initPopover);
+  EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$2, initPopover);
 
   /**
    * --------------------------------------------------------------------------
@@ -5409,13 +6744,13 @@
    * Constants
    */
 
-  const NAME$2 = 'scrollspy';
-  const DATA_KEY$2 = 'bs.scrollspy';
-  const EVENT_KEY$2 = `.${DATA_KEY$2}`;
+  const NAME$3 = 'scrollspy';
+  const DATA_KEY$3 = 'bs.scrollspy';
+  const EVENT_KEY$3 = `.${DATA_KEY$3}`;
   const DATA_API_KEY = '.data-api';
-  const EVENT_ACTIVATE = `activate${EVENT_KEY$2}`;
-  const EVENT_CLICK = `click${EVENT_KEY$2}`;
-  const EVENT_LOAD_DATA_API$1 = `load${EVENT_KEY$2}${DATA_API_KEY}`;
+  const EVENT_ACTIVATE = `activate${EVENT_KEY$3}`;
+  const EVENT_CLICK$1 = `click${EVENT_KEY$3}`;
+  const EVENT_LOAD_DATA_API$1 = `load${EVENT_KEY$3}${DATA_API_KEY}`;
   const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
   const CLASS_NAME_ACTIVE$1 = 'active';
   const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
@@ -5427,7 +6762,7 @@
   const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`;
   const SELECTOR_DROPDOWN = '.dropdown';
   const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
-  const Default$1 = {
+  const Default$2 = {
     offset: null,
     // TODO: v6 @deprecated, keep it for backwards compatibility reasons
     rootMargin: '0px 0px -25%',
@@ -5435,7 +6770,7 @@
     target: null,
     threshold: [0.1, 0.5, 1]
   };
-  const DefaultType$1 = {
+  const DefaultType$2 = {
     offset: '(number|null)',
     // TODO v6 @deprecated, keep it for backwards compatibility reasons
     rootMargin: 'string',
@@ -5467,13 +6802,13 @@
 
     // Getters
     static get Default() {
-      return Default$1;
+      return Default$2;
     }
     static get DefaultType() {
-      return DefaultType$1;
+      return DefaultType$2;
     }
     static get NAME() {
-      return NAME$2;
+      return NAME$3;
     }
 
     // Public
@@ -5512,8 +6847,8 @@
       }
 
       // unregister any previous listeners
-      EventHandler.off(this._config.target, EVENT_CLICK);
-      EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
+      EventHandler.off(this._config.target, EVENT_CLICK$1);
+      EventHandler.on(this._config.target, EVENT_CLICK$1, SELECTOR_TARGET_LINKS, event => {
         const observableSection = this._observableSections.get(event.target.hash);
         if (observableSection) {
           event.preventDefault();
@@ -5649,16 +6984,16 @@
    * Constants
    */
 
-  const NAME$1 = 'tab';
-  const DATA_KEY$1 = 'bs.tab';
-  const EVENT_KEY$1 = `.${DATA_KEY$1}`;
-  const EVENT_HIDE$1 = `hide${EVENT_KEY$1}`;
-  const EVENT_HIDDEN$1 = `hidden${EVENT_KEY$1}`;
-  const EVENT_SHOW$1 = `show${EVENT_KEY$1}`;
-  const EVENT_SHOWN$1 = `shown${EVENT_KEY$1}`;
-  const EVENT_CLICK_DATA_API = `click${EVENT_KEY$1}`;
-  const EVENT_KEYDOWN = `keydown${EVENT_KEY$1}`;
-  const EVENT_LOAD_DATA_API = `load${EVENT_KEY$1}`;
+  const NAME$2 = 'tab';
+  const DATA_KEY$2 = 'bs.tab';
+  const EVENT_KEY$2 = `.${DATA_KEY$2}`;
+  const EVENT_HIDE$1 = `hide${EVENT_KEY$2}`;
+  const EVENT_HIDDEN$1 = `hidden${EVENT_KEY$2}`;
+  const EVENT_SHOW$1 = `show${EVENT_KEY$2}`;
+  const EVENT_SHOWN$1 = `shown${EVENT_KEY$2}`;
+  const EVENT_CLICK_DATA_API = `click${EVENT_KEY$2}`;
+  const EVENT_KEYDOWN = `keydown${EVENT_KEY$2}`;
+  const EVENT_LOAD_DATA_API = `load${EVENT_KEY$2}`;
   const ARROW_LEFT_KEY = 'ArrowLeft';
   const ARROW_RIGHT_KEY = 'ArrowRight';
   const ARROW_UP_KEY = 'ArrowUp';
@@ -5675,8 +7010,8 @@
   const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]';
   const SELECTOR_OUTER = '.nav-item, .list-group-item';
   const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_DROPDOWN_TOGGLE}, .list-group-item${NOT_SELECTOR_DROPDOWN_TOGGLE}, [role="tab"]${NOT_SELECTOR_DROPDOWN_TOGGLE}`;
-  const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'; // TODO: could only be `tab` in v6
-  const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`;
+  const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'; // TODO: could only be `tab` in v6
+  const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE$1}`;
   const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="pill"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="list"]`;
 
   /**
@@ -5700,7 +7035,7 @@
 
     // Getters
     static get NAME() {
-      return NAME$1;
+      return NAME$2;
     }
 
     // Public
@@ -5869,7 +7204,7 @@
    * Data API implementation
    */
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE$1, function (event) {
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
     }
@@ -5900,27 +7235,27 @@
    * Constants
    */
 
-  const NAME = 'toast';
-  const DATA_KEY = 'bs.toast';
-  const EVENT_KEY = `.${DATA_KEY}`;
-  const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
-  const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`;
-  const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
-  const EVENT_FOCUSOUT = `focusout${EVENT_KEY}`;
-  const EVENT_HIDE = `hide${EVENT_KEY}`;
-  const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
-  const EVENT_SHOW = `show${EVENT_KEY}`;
-  const EVENT_SHOWN = `shown${EVENT_KEY}`;
+  const NAME$1 = 'toast';
+  const DATA_KEY$1 = 'bs.toast';
+  const EVENT_KEY$1 = `.${DATA_KEY$1}`;
+  const EVENT_MOUSEOVER = `mouseover${EVENT_KEY$1}`;
+  const EVENT_MOUSEOUT = `mouseout${EVENT_KEY$1}`;
+  const EVENT_FOCUSIN = `focusin${EVENT_KEY$1}`;
+  const EVENT_FOCUSOUT = `focusout${EVENT_KEY$1}`;
+  const EVENT_HIDE = `hide${EVENT_KEY$1}`;
+  const EVENT_HIDDEN = `hidden${EVENT_KEY$1}`;
+  const EVENT_SHOW = `show${EVENT_KEY$1}`;
+  const EVENT_SHOWN = `shown${EVENT_KEY$1}`;
   const CLASS_NAME_FADE = 'fade';
   const CLASS_NAME_HIDE = 'hide'; // @deprecated - kept here only for backwards compatibility
   const CLASS_NAME_SHOW = 'show';
   const CLASS_NAME_SHOWING = 'showing';
-  const DefaultType = {
+  const DefaultType$1 = {
     animation: 'boolean',
     autohide: 'boolean',
     delay: 'number'
   };
-  const Default = {
+  const Default$1 = {
     animation: true,
     autohide: true,
     delay: 5000
@@ -5941,13 +7276,13 @@
 
     // Getters
     static get Default() {
-      return Default;
+      return Default$1;
     }
     static get DefaultType() {
-      return DefaultType;
+      return DefaultType$1;
     }
     static get NAME() {
-      return NAME;
+      return NAME$1;
     }
 
     // Public
@@ -6054,6 +7389,89 @@
 
   /**
    * --------------------------------------------------------------------------
+   * Bootstrap toggler.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+
+  /**
+   * Constants
+   */
+
+  const NAME = 'toggler';
+  const DATA_KEY = 'bs.toggler';
+  const EVENT_KEY = `.${DATA_KEY}`;
+  const EVENT_TOGGLE = `toggle${EVENT_KEY}`;
+  const EVENT_TOGGLED = `toggled${EVENT_KEY}`;
+  const EVENT_CLICK = 'click';
+  const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="toggler"]';
+  const DefaultType = {
+    attribute: 'string',
+    value: '(string|number|boolean)'
+  };
+  const Default = {
+    attribute: 'class',
+    value: null
+  };
+
+  /**
+   * Class definition
+   */
+
+  class Toggler extends BaseComponent {
+    // Getters
+    static get Default() {
+      return Default;
+    }
+    static get DefaultType() {
+      return DefaultType;
+    }
+    static get NAME() {
+      return NAME;
+    }
+
+    // Public
+    toggle() {
+      const toggleEvent = EventHandler.trigger(this._element, EVENT_TOGGLE);
+      if (toggleEvent.defaultPrevented) {
+        return;
+      }
+      this._execute();
+      EventHandler.trigger(this._element, EVENT_TOGGLED);
+    }
+
+    // Private
+    _execute() {
+      const {
+        attribute,
+        value
+      } = this._config;
+      if (attribute === 'id') {
+        return; // You have to be kidding
+      }
+      if (attribute === 'class') {
+        this._element.classList.toggle(value);
+        return;
+      }
+
+      // Compare as strings since getAttribute() always returns a string
+      if (this._element.getAttribute(attribute) === String(value)) {
+        this._element.removeAttribute(attribute);
+        return;
+      }
+      this._element.setAttribute(attribute, value);
+    }
+  }
+
+  /**
+   * Data API implementation
+   */
+
+  eventActionOnPlugin(Toggler, EVENT_CLICK, SELECTOR_DATA_TOGGLE, 'toggle');
+
+  /**
+   * --------------------------------------------------------------------------
    * Bootstrap index.umd.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
@@ -6064,13 +7482,17 @@
     Button,
     Carousel,
     Collapse,
+    Datepicker,
     Dialog,
     Dropdown,
     Offcanvas,
+    Strength,
+    OtpInput,
     Popover,
     ScrollSpy,
     Tab,
     Toast,
+    Toggler,
     Tooltip
   };
 
