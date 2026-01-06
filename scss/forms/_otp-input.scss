@@ -52,8 +52,8 @@ $otp-input-gap:               .5rem !default;
       border-color: var(--form-valid-border-color);
 
       &:focus {
-        border-color: var(--form-valid-border-color);
         --focus-ring-color: rgba(var(--success-rgb), .25);
+        border-color: var(--form-valid-border-color);
       }
     }
 
@@ -62,8 +62,8 @@ $otp-input-gap:               .5rem !default;
       border-color: var(--form-invalid-border-color);
 
       &:focus {
-        border-color: var(--form-invalid-border-color);
         --focus-ring-color: rgba(var(--danger-rgb), .25);
+        border-color: var(--form-invalid-border-color);
       }
     }
   }

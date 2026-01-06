@@ -89,9 +89,9 @@ $nav-underline-link-active-color:   var(--emphasis-color) !default;
     }
 
     &:focus-visible {
+      --focus-ring-offset: 1px;
       color: var(--nav-link-hover-color);
       @include focus-ring(true);
-      --focus-ring-offset: 1px;
     }
 
     &.active,

@@ -112,6 +112,8 @@ $input-group-addon-border-color:        $input-border-color !default;
 
   // stylelint-disable-next-line no-duplicate-selectors
   .input-group {
+
+    $validation-messages: "";
     &:not(.has-validation) {
       > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
       > .dropdown-toggle:nth-last-child(n + 3),
@@ -130,11 +132,6 @@ $input-group-addon-border-color:        $input-border-color !default;
       }
     }
 
-    $validation-messages: "";
-    @each $state in map.keys($form-validation-states) {
-      $validation-messages: $validation-messages + ":not(." + string.unquote($state) + "-tooltip)" + ":not(." + string.unquote($state) + "-feedback)";
-    }
-
     > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
       margin-inline-start: calc(-1 * #{$input-border-width});
       @include border-start-radius(0);
@@ -143,6 +140,9 @@ $input-group-addon-border-color:        $input-border-color !default;
     > .form-floating:not(:first-child) > .form-control,
     > .form-floating:not(:first-child) > .form-select {
       @include border-start-radius(0);
+    }
+    @each $state in map.keys($form-validation-states) {
+      $validation-messages: $validation-messages + ":not(." + string.unquote($state) + "-tooltip)" + ":not(." + string.unquote($state) + "-feedback)";
     }
   }
 }
