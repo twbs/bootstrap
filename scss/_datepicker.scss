@@ -144,19 +144,34 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
   }
 
   // Grid layout
-  // [data-vc="grid"] {
-  //   display: flex;
-  //   flex-grow: 1;
-  //   flex-wrap: wrap;
-  //   gap: 1.75rem;
-  // }
+  [data-vc="controls"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    pointer-events: none;
+  }
 
-  // [data-vc="column"] {
-  //   display: flex;
-  //   flex-grow: 1;
-  //   flex-direction: column;
-  //   min-width: 240px;
-  // }
+  [data-vc="grid"] {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+  }
+
+  [data-vc="column"] {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    min-width: 240px;
+  }
 
   //
   // Header
@@ -200,12 +215,6 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
     }
   }
 
-  // Content wrapper
-  // [data-vc="content"],
-  // [data-vc="wrapper"] {
-  //   display: flex;
-  //   flex-grow: 1;
-  // }
 
   [data-vc="content"] {
     display: flex;

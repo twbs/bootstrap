@@ -50,19 +50,26 @@ Enable multiple date selection with `data-bs-selection-mode="multiple"`.
 <Example code={`<label for="datepicker3" class="form-label">Select multiple dates</label>
   <input type="text" class="form-control" id="datepicker3" data-bs-toggle="datepicker" data-bs-selection-mode="multiple" placeholder="Select date range…">`} />
 
-### Date range
-
-Select a range of dates with `data-bs-selection-mode="multiple-ranged"`.
-
-<Example code={`<label for="datepicker4" class="form-label">Select date range</label>
-  <input type="text" class="form-control" id="datepicker4" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" placeholder="Select start and end dates…">`} />
-
 ### Multiple months
 
 Display multiple months side-by-side with the `displayMonthsCount` option. This is useful for date range selection where users need to see more context.
 
 <Example code={`<label for="datepickerMultiMonth" class="form-label">Select date range</label>
   <input type="text" class="form-control" id="datepickerMultiMonth" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-display-months-count="2" placeholder="Select start and end dates">`} />
+
+### Date range
+
+Select a range of dates with `data-bs-selection-mode="multiple-ranged"`. Use `data-bs-selected-dates` to preselect a date range.
+
+<Example code={`<label for="datepicker4" class="form-label">Select date range</label>
+  <input type="text" class="form-control" id="datepicker4" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-selected-dates='["2025-06-10", "2025-06-18"]' placeholder="Select start and end dates…">`} />
+
+### Multi-month date range
+
+For selecting date ranges that span multiple months, combine `data-bs-selection-mode="multiple-ranged"` with `data-bs-display-months-count="2"` to show two months side-by-side, making it easier for users to select across month boundaries.
+
+<Example code={`<label for="datepickerRangeTwoMonths" class="form-label">Select date range</label>
+  <input type="text" class="form-control" id="datepickerRangeTwoMonths" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-display-months-count="2" data-bs-selected-dates='["2025-06-25", "2025-07-08"]' placeholder="Select start and end dates…">`} />
 
 ## Options
 
