@@ -1,0 +1,426 @@
+// stylelint-disable selector-max-attribute, property-disallowed-list, selector-no-qualifying-type -- VCP uses extensive data attributes and requires direct border-radius properties for range selection
+
+@use "config" as *;
+@use "colors" as *;
+@use "variables" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/focus-ring" as *;
+
+// scss-docs-start datepicker-variables
+$datepicker-padding:                1rem !default;
+$datepicker-bg:                     var(--bg-body) !default;
+$datepicker-color:                  var(--fg-body) !default;
+$datepicker-border-color:           var(--border-color-translucent) !default;
+$datepicker-border-width:           var(--border-width) !default;
+$datepicker-border-radius:          var(--border-radius-lg) !default;
+$datepicker-box-shadow:             var(--box-shadow) !default;
+$datepicker-font-size:              var(--font-size-sm) !default;
+$datepicker-min-width:              280px !default;
+
+$datepicker-header-font-weight:     600 !default;
+$datepicker-weekday-color:          var(--fg-3) !default;
+$datepicker-day-hover-bg:           var(--bg-1) !default;
+$datepicker-day-selected-bg:        var(--primary-bg) !default;
+$datepicker-day-selected-color:     var(--primary-contrast) !default;
+$datepicker-day-today-bg:           var(--bg-2) !default;
+$datepicker-day-today-color:        var(--fg-1) !default;
+$datepicker-day-disabled-color:     var(--fg-4) !default;
+// scss-docs-end datepicker-variables
+
+@layer components {
+  [data-vc="calendar"] {
+    // scss-docs-start datepicker-css-vars
+    --datepicker-padding: #{$datepicker-padding};
+    --datepicker-bg: #{$datepicker-bg};
+    --datepicker-color: #{$datepicker-color};
+    --datepicker-border-color: #{$datepicker-border-color};
+    --datepicker-border-width: #{$datepicker-border-width};
+    --datepicker-border-radius: #{$datepicker-border-radius};
+    --datepicker-box-shadow: #{$datepicker-box-shadow};
+    --datepicker-font-size: #{$datepicker-font-size};
+    --datepicker-min-width: #{$datepicker-min-width};
+    --datepicker-zindex: #{$zindex-dropdown};
+
+    --datepicker-header-font-weight: #{$datepicker-header-font-weight};
+    --datepicker-weekday-color: #{$datepicker-weekday-color};
+    --datepicker-day-hover-bg: #{$datepicker-day-hover-bg};
+    --datepicker-day-selected-bg: #{$datepicker-day-selected-bg};
+    --datepicker-day-selected-color: #{$datepicker-day-selected-color};
+    --datepicker-day-today-bg: #{$datepicker-day-today-bg};
+    --datepicker-day-today-color: #{$datepicker-day-today-color};
+    --datepicker-day-disabled-color: #{$datepicker-day-disabled-color};
+    // scss-docs-end datepicker-css-vars
+
+    position: absolute;
+    z-index: var(--datepicker-zindex);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-width: var(--datepicker-min-width);
+    padding: var(--datepicker-padding);
+    font-family: var(--font-sans-serif);
+    font-size: var(--datepicker-font-size);
+    color: var(--datepicker-color);
+    color-scheme: light dark;
+    background-color: var(--datepicker-bg);
+    border: var(--datepicker-border-width) solid var(--datepicker-border-color);
+    @include border-radius(var(--datepicker-border-radius));
+    box-shadow: var(--datepicker-box-shadow);
+    opacity: 1;
+
+    // Respond to Bootstrap's color mode system
+    &[data-bs-theme="light"] {
+      color-scheme: light;
+    }
+
+    &[data-bs-theme="dark"] {
+      color-scheme: dark;
+    }
+
+    // Catch-all for focus styles
+    button:focus-visible {
+      position: relative;
+      z-index: 1;
+      @include focus-ring();
+    }
+  }
+
+  [data-vc-calendar-hidden] {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  // Inline calendars
+  //
+  // Remove popover styling for more neutral styling
+  [data-vc="calendar"]:not([data-vc-input]) {
+    position: relative;
+    width: fit-content;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  [data-vc-position="bottom"] {
+    margin-block-start: .25rem;
+  }
+
+  [data-vc-position="top"] {
+    margin-block-end: -.25rem;
+  }
+
+  [data-vc-arrow] {
+    position: relative;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    color: var(--datepicker-color);
+    pointer-events: auto;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    @include border-radius($border-radius);
+
+    &::before {
+      position: absolute;
+      inset: .25rem;
+      content: "";
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%236b7280' d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/></svg>");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &:hover {
+      background-color: var(--datepicker-day-hover-bg);
+    }
+  }
+
+  [data-vc-arrow="prev"]::before {
+    transform: rotate(90deg);
+  }
+
+  [data-vc-arrow="next"]::before {
+    transform: rotate(-90deg);
+  }
+
+  // Grid layout
+  [data-vc="controls"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    pointer-events: none;
+  }
+
+  [data-vc="grid"] {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+  }
+
+  [data-vc="column"] {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    min-width: 240px;
+  }
+
+  //
+  // Header
+  //
+
+  [data-vc="header"] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: .75rem;
+  }
+
+  // Month and year
+  [data-vc-header="content"] {
+    display: inline-flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    white-space: pre-wrap;
+  }
+
+  [data-vc="month"],
+  [data-vc="year"] {
+    padding: .25rem .5rem;
+    margin-inline: -.125rem;
+    font-size: 1rem;
+    font-weight: var(--datepicker-header-font-weight);
+    color: var(--datepicker-color);
+    // cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    @include border-radius($border-radius);
+
+    &:disabled {
+      color: var(--datepicker-day-disabled-color);
+      pointer-events: none;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--datepicker-day-hover-bg);
+    }
+  }
+
+
+  [data-vc="content"] {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+
+  // Month/Year grids
+  [data-vc="months"],
+  [data-vc="years"] {
+    display: grid;
+    flex-grow: 1;
+    grid-template-columns: repeat(var(--vc-columns, 4), minmax(0, 1fr));
+    row-gap: 1rem;
+    column-gap: .25rem;
+    align-items: center;
+  }
+
+  [data-vc="years"] {
+    --vc-columns: 5;
+  }
+
+  [data-vc-months-month],
+  [data-vc-years-year] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    padding: .25rem;
+    font-size: .75rem;
+    font-weight: 600;
+    line-height: 1rem;
+    color: var(--datepicker-weekday-color);
+    text-align: center;
+    word-break: break-all;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    @include border-radius($border-radius);
+
+    &:disabled {
+      color: var(--datepicker-day-disabled-color);
+      pointer-events: none;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--datepicker-day-hover-bg);
+    }
+
+    &[data-vc-months-month-selected],
+    &[data-vc-years-year-selected] {
+      color: var(--datepicker-day-selected-color);
+      background-color: var(--datepicker-day-selected-bg);
+
+      &:hover {
+        color: var(--datepicker-day-selected-color);
+        background-color: var(--datepicker-day-selected-bg);
+      }
+    }
+  }
+
+  // Week days header
+  [data-vc="week"] {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    margin-bottom: .5rem;
+  }
+
+  [data-vc-week-day] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 1.875rem;
+    padding: 0;
+    margin: 0;
+    font-size: .75rem;
+    font-weight: 600;
+    line-height: 1rem;
+    color: var(--datepicker-weekday-color);
+    background-color: transparent;
+    border: 0;
+  }
+
+  button[data-vc-week-day] {
+    cursor: pointer;
+  }
+
+  // Dates grid
+  [data-vc="dates"] {
+    display: grid;
+    flex-grow: 1;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+    justify-items: center;
+    pointer-events: none;
+  }
+
+  [data-vc-date] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: .125rem;
+    padding-bottom: .125rem;
+    pointer-events: auto;
+
+    &:not(:has([data-vc-date-btn])),
+    &[data-vc-date-disabled],
+    &[data-vc-date-disabled] [data-vc-date-btn] {
+      pointer-events: none;
+    }
+  }
+
+  // Date button
+  [data-vc-date-btn] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 1.875rem;
+    height: 100%;
+    min-height: 1.875rem;
+    padding: 0;
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1rem;
+    color: var(--datepicker-color);
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    border-radius: $border-radius;
+
+    &:hover {
+      background-color: var(--datepicker-day-hover-bg);
+    }
+  }
+
+  // Today
+  [data-vc-date-today] [data-vc-date-btn] {
+    font-weight: 600;
+    color: var(--datepicker-day-today-color);
+    background-color: var(--datepicker-day-today-bg);
+  }
+
+
+  // Outside month
+  [data-vc-date-month="next"] [data-vc-date-btn],
+  [data-vc-date-month="prev"] [data-vc-date-btn] {
+    opacity: .5;
+  }
+
+  // Disabled
+  [data-vc-date-disabled] [data-vc-date-btn] {
+    color: var(--datepicker-day-disabled-color);
+  }
+
+  // Range selection styles
+  [data-vc-date-hover] [data-vc-date-btn] {
+    background-color: var(--datepicker-day-hover-bg);
+    border-radius: 0;
+  }
+
+  [data-vc-date-hover="first"] [data-vc-date-btn] {
+    border-start-start-radius: $border-radius;
+    border-end-start-radius: $border-radius;
+  }
+
+  [data-vc-date-hover="last"] [data-vc-date-btn] {
+    border-start-end-radius: $border-radius;
+    border-end-end-radius: $border-radius;
+  }
+
+  [data-vc-date-hover="first-and-last"] [data-vc-date-btn] {
+    border-radius: $border-radius;
+  }
+
+  [data-vc-date-selected="middle"] [data-vc-date-btn] {
+    border-radius: 0;
+    opacity: .8;
+  }
+
+  // Selected
+  [data-vc-date-selected] [data-vc-date-btn] {
+    color: var(--datepicker-day-selected-color);
+    background-color: var(--datepicker-day-selected-bg);
+
+  }
+
+  [data-vc-date-selected="first"] [data-vc-date-btn] {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  [data-vc-date-selected="last"] [data-vc-date-btn] {
+    border-top-left-radius: 0;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: 0;
+  }
+
+  [data-vc-date-selected="first-and-last"] [data-vc-date-btn] {
+    border-radius: $border-radius;
+  }
+}
