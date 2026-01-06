@@ -4,19 +4,19 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 :root {
-  --bs-blue-025: color-mix(in lab, #fff 94%, oklch(60% 0.24 258deg));
-  --bs-blue-050: color-mix(in lab, #fff 90%, oklch(60% 0.24 258deg));
-  --bs-blue-100: color-mix(in lab, #fff 80%, oklch(60% 0.24 258deg));
-  --bs-blue-200: color-mix(in lab, #fff 60%, oklch(60% 0.24 258deg));
-  --bs-blue-300: color-mix(in lab, #fff 40%, oklch(60% 0.24 258deg));
-  --bs-blue-400: color-mix(in lab, #fff 20%, oklch(60% 0.24 258deg));
-  --bs-blue-500: oklch(60% 0.24 258deg);
-  --bs-blue-600: color-mix(in lab, #000 16%, oklch(60% 0.24 258deg));
-  --bs-blue-700: color-mix(in lab, #000 32%, oklch(60% 0.24 258deg));
-  --bs-blue-800: color-mix(in lab, #000 48%, oklch(60% 0.24 258deg));
-  --bs-blue-900: color-mix(in lab, #000 64%, oklch(60% 0.24 258deg));
-  --bs-blue-950: color-mix(in lab, #000 76%, oklch(60% 0.24 258deg));
-  --bs-blue-975: color-mix(in lab, #000 88%, oklch(60% 0.24 258deg));
+  --bs-blue-025: color-mix(in lab, #fff 94%, oklch(60% 0.24 240deg));
+  --bs-blue-050: color-mix(in lab, #fff 90%, oklch(60% 0.24 240deg));
+  --bs-blue-100: color-mix(in lab, #fff 80%, oklch(60% 0.24 240deg));
+  --bs-blue-200: color-mix(in lab, #fff 60%, oklch(60% 0.24 240deg));
+  --bs-blue-300: color-mix(in lab, #fff 40%, oklch(60% 0.24 240deg));
+  --bs-blue-400: color-mix(in lab, #fff 20%, oklch(60% 0.24 240deg));
+  --bs-blue-500: oklch(60% 0.24 240deg);
+  --bs-blue-600: color-mix(in lab, #000 16%, oklch(60% 0.24 240deg));
+  --bs-blue-700: color-mix(in lab, #000 32%, oklch(60% 0.24 240deg));
+  --bs-blue-800: color-mix(in lab, #000 48%, oklch(60% 0.24 240deg));
+  --bs-blue-900: color-mix(in lab, #000 64%, oklch(60% 0.24 240deg));
+  --bs-blue-950: color-mix(in lab, #000 76%, oklch(60% 0.24 240deg));
+  --bs-blue-975: color-mix(in lab, #000 88%, oklch(60% 0.24 240deg));
   --bs-indigo-025: color-mix(in lab, #fff 94%, oklch(56% 0.26 288deg));
   --bs-indigo-050: color-mix(in lab, #fff 90%, oklch(56% 0.26 288deg));
   --bs-indigo-100: color-mix(in lab, #fff 80%, oklch(56% 0.26 288deg));
@@ -312,7 +312,8 @@
 
 @layer colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
 :root {
-  color-scheme: light dark;
+  --bs-black: #000;
+  --bs-white: #fff;
   --bs-primary-base: var(--bs-blue-500);
   --bs-primary-text: light-dark(var(--bs-blue-600), var(--bs-blue-400));
   --bs-primary-text-emphasis: light-dark(var(--bs-blue-800), var(--bs-blue-200));
@@ -409,19 +410,16 @@
   --bs-border-emphasized: light-dark(var(--bs-gray-400), var(--bs-gray-600));
   --bs-border-white: var(--bs-white);
   --bs-border-black: var(--bs-black);
-  --bs-black: #000;
-  --bs-white: #fff;
+  color-scheme: light dark;
 }
 
 :root,
 [data-bs-theme=light] {
-  color-scheme: light;
   --bs-white-rgb: to-rgb(#fff);
   --bs-black-rgb: to-rgb(#000);
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-root-font-size: 16px;
   --bs-body-font-family: var(--bs-font-sans-serif);
   --bs-font-size-base: 14px;
   --bs-font-size-xs: .75rem;
@@ -450,6 +448,7 @@
   --bs-body-color-rgb: to-rgb(var(--bs-color-body));
   --bs-body-bg-rgb: to-rgb(var(--bs-bg-body));
   --bs-heading-color: inherit;
+  --bs-hr-border-color: var(--bs-border-color);
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-text));
   --bs-link-decoration: underline;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
@@ -471,17 +470,18 @@
   --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-focus-ring-width: 3px;
-  --bs-focus-ring-offset: -1px;
+  --bs-focus-ring-offset: 1px;
   --bs-focus-ring-color: var(--bs-primary-focus-ring);
   --bs-focus-ring: var(--bs-focus-ring-width) solid var(--bs-focus-ring-color);
   --bs-form-valid-color: var(--bs-success);
   --bs-form-valid-border-color: var(--bs-success);
   --bs-form-invalid-color: var(--bs-danger);
   --bs-form-invalid-border-color: var(--bs-danger);
+  color-scheme: light;
+  --bs-root-font-size: 16px;
 }
 
 [data-bs-theme=dark] {
-  color-scheme: dark;
   --bs-emphasis-color: #fff;
   --bs-emphasis-color-rgb: to-rgb(#fff);
   --bs-heading-color: inherit;
@@ -491,6 +491,7 @@
   --bs-form-valid-border-color: var(--bs-green-300);
   --bs-form-invalid-color: var(--bs-red-300);
   --bs-form-invalid-border-color: var(--bs-red-300);
+  color-scheme: dark;
 }
 
 @layer reboot {
@@ -521,10 +522,8 @@
   }
   hr {
     margin: 1rem 0;
-    color: inherit;
     border: 0;
-    border-block-start: var(--bs-border-width) solid;
-    opacity: 0.25;
+    border-block-start: var(--bs-border-width) solid var(--bs-hr-border-color);
   }
   h6,
   .h6, h5,
@@ -633,13 +632,13 @@
     top: -0.5em;
   }
   a {
-    color: var(--bs-link-color);
+    color: var(--bs-theme-text, var(--bs-link-color));
     -webkit-text-decoration: var(--bs-link-decoration);
     text-decoration: var(--bs-link-decoration);
     text-underline-offset: 0.2em;
   }
   a:hover {
-    color: var(--bs-link-hover-color);
+    color: var(--bs-theme-text-emphasis, var(--bs-link-hover-color));
     -webkit-text-decoration: var(--bs-link-hover-decoration, var(--bs-link-decoration));
     text-decoration: var(--bs-link-hover-decoration, var(--bs-link-decoration));
   }
@@ -678,7 +677,7 @@
     padding: 0.1875rem 0.375rem;
     font-size: 95%;
     color: var(--bs-bg-body);
-    background-color: var(--bs-color-body);
+    background-color: var(--bs-fg-body);
     border-radius: 0.375rem;
   }
   kbd kbd {
