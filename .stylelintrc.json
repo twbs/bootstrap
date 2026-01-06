@@ -2,8 +2,23 @@
   "extends": [
     "stylelint-config-twbs-bootstrap"
   ],
+  "plugins": [
+    "stylelint-order"
+  ],
   "reportInvalidScopeDisables": true,
   "reportNeedlessDisables": true,
+  "rules": {
+    "order/order": [
+      [
+        { "type": "at-rule", "name": "use" },
+        { "type": "at-rule", "name": "forward" },
+        "dollar-variables",
+        "custom-properties",
+        "declarations",
+        "rules"
+      ]
+    ]
+  },
   "overrides": [
     {
       "files": "**/*.scss",

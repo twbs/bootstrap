@@ -53,11 +53,11 @@
 
     // Customize the `:focus` state to imitate native WebKit styles.
     &:focus-visible {
+      --focus-ring-offset: -1px;
       color: $input-focus-color;
       background-color: $input-focus-bg;
       border-color: $input-focus-border-color;
       @include focus-ring(true);
-      --focus-ring-offset: -1px;
     }
 
     &::-webkit-date-and-time-value {

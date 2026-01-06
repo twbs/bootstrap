@@ -51,9 +51,9 @@ $form-adorn-icon-color:    var(--fg-2) !default;
 
     // Focus state when ghost input is focused
     &:focus-within {
+      --focus-ring-offset: -1px;
       border-color: $input-focus-border-color;
       @include focus-ring(true);
-      --focus-ring-offset: -1px;
     }
 
     // Ghost input fills remaining space
