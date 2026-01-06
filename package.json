@@ -177,6 +177,7 @@
     "shelljs": "^0.10.0",
     "stylelint": "^16.26.1",
     "stylelint-config-twbs-bootstrap": "^16.1.0",
+    "stylelint-order": "^7.0.1",
     "terser": "^5.44.1",
     "unist-util-visit": "^5.0.0",
     "zod": "^4.1.12"

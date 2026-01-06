@@ -13,11 +13,11 @@
 }
 
 .astro-code {
+  --bs-font-monospace: "Geist Mono";
   display: flex;
   padding: var(--bd-example-padding);
   margin-bottom: 0;
   line-height: 20px;
-  --bs-font-monospace: "Geist Mono";
   background-color: var(--bd-pre-bg) !important; // stylelint-disable-line declaration-no-important
 }
 
