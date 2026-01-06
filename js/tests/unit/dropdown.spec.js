@@ -59,60 +59,37 @@ describe('Dropdown', () => {
       expect(dropdownByElement._element).toEqual(btnDropdown)
     })
 
-    it('should work on invalid markup', () => {
-      return new Promise(resolve => {
-        // TODO: REMOVE in v6
-        fixtureEl.innerHTML = [
-          '<div class="dropdown">',
-          '  <div class="dropdown-menu">',
-          '    <a class="dropdown-item" href="#">Link</a>',
-          '  </div>',
-          '</div>'
-        ].join('')
+    it('should create offset modifier correctly when offset option is a function', async () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
 
-        const dropdownElem = fixtureEl.querySelector('.dropdown-menu')
-        const dropdown = new Dropdown(dropdownElem)
-
-        dropdownElem.addEventListener('shown.bs.dropdown', () => {
-          resolve()
-        })
-
-        expect().nothing()
-        dropdown.show()
+      const getOffset = jasmine.createSpy('getOffset').and.returnValue([10, 20])
+      const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown, {
+        offset: getOffset
       })
-    })
 
-    it('should create offset modifier correctly when offset option is a function', () => {
-      return new Promise(resolve => {
-        fixtureEl.innerHTML = [
-          '<div class="dropdown">',
-          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
-          '  <div class="dropdown-menu">',
-          '    <a class="dropdown-item" href="#">Secondary link</a>',
-          '  </div>',
-          '</div>'
-        ].join('')
+      const offset = dropdown._getOffset()
+      expect(typeof offset).toEqual('function')
 
-        const getOffset = jasmine.createSpy('getOffset').and.returnValue([10, 20])
-        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-        const dropdown = new Dropdown(btnDropdown, {
-          offset: getOffset
-        })
-
-        btnDropdown.addEventListener('shown.bs.dropdown', () => {
-          // Floating UI calls offset function asynchronously
-          setTimeout(() => {
-            expect(getOffset).toHaveBeenCalled()
-            resolve()
-          }, 20)
-        })
-
-        const offset = dropdown._getOffset()
-
-        expect(typeof offset).toEqual('function')
-
-        dropdown.show()
+      const shownPromise = new Promise(resolve => {
+        btnDropdown.addEventListener('shown.bs.dropdown', resolve)
       })
+
+      dropdown.show()
+      await shownPromise
+
+      // Floating UI calls offset function asynchronously
+      await new Promise(resolve => {
+        setTimeout(resolve, 20)
+      })
+      expect(getOffset).toHaveBeenCalled()
     })
 
     it('should create offset modifier correctly when offset option is a string into data attribute', () => {

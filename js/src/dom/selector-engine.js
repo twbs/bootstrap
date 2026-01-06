@@ -70,20 +70,6 @@ const SelectorEngine = {
 
     return []
   },
-  // TODO: this is now unused; remove later along with prev()
-  next(element, selector) {
-    let next = element.nextElementSibling
-
-    while (next) {
-      if (next.matches(selector)) {
-        return [next]
-      }
-
-      next = next.nextElementSibling
-    }
-
-    return []
-  },
 
   focusableChildren(element) {
     const focusables = [
