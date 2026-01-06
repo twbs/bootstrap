@@ -243,6 +243,40 @@ describe('OtpInput', () => {
 
       expect(inputs[0].value).toEqual('1')
     })
+
+    it('should distribute multi-character input across inputs', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp-input')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+      const inputs = otpEl.querySelectorAll('input')
+
+      inputs[0].focus()
+      // Simulate autofill that puts multiple characters in first input
+      inputs[0].value = '1234'
+      inputs[0].dispatchEvent(createEvent('input'))
+
+      expect(inputs[0].value).toEqual('1')
+      expect(inputs[1].value).toEqual('2')
+      expect(inputs[2].value).toEqual('3')
+      expect(inputs[3].value).toEqual('4')
+      expect(document.activeElement).toEqual(inputs[3])
+    })
+
+    it('should not advance when entering digit in last input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp-input')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+      const inputs = otpEl.querySelectorAll('input')
+
+      inputs[5].focus()
+      inputs[5].value = '9'
+      inputs[5].dispatchEvent(createEvent('input'))
+
+      expect(inputs[5].value).toEqual('9')
+      expect(document.activeElement).toEqual(inputs[5])
+    })
   })
 
   describe('keydown handling', () => {
@@ -300,6 +334,86 @@ describe('OtpInput', () => {
       inputs[2].dispatchEvent(arrowEvent)
 
       expect(document.activeElement).toEqual(inputs[3])
+    })
+
+    it('should not navigate left when at first input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp-input')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+      const inputs = otpEl.querySelectorAll('input')
+
+      inputs[0].focus()
+
+      const arrowEvent = new KeyboardEvent('keydown', {
+        key: 'ArrowLeft',
+        bubbles: true
+      })
+      inputs[0].dispatchEvent(arrowEvent)
+
+      expect(document.activeElement).toEqual(inputs[0])
+    })
+
+    it('should not navigate right when at last input', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp-input')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+      const inputs = otpEl.querySelectorAll('input')
+
+      inputs[5].focus()
+
+      const arrowEvent = new KeyboardEvent('keydown', {
+        key: 'ArrowRight',
+        bubbles: true
+      })
+      inputs[5].dispatchEvent(arrowEvent)
+
+      expect(document.activeElement).toEqual(inputs[5])
+    })
+
+    it('should shift values left on Delete key', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp-input')
+      const otp = new OtpInput(otpEl)
+      const inputs = otpEl.querySelectorAll('input')
+
+      otp.setValue('123456')
+      inputs[2].focus()
+
+      const deleteEvent = new KeyboardEvent('keydown', {
+        key: 'Delete',
+        bubbles: true
+      })
+      inputs[2].dispatchEvent(deleteEvent)
+
+      expect(inputs[0].value).toEqual('1')
+      expect(inputs[1].value).toEqual('2')
+      expect(inputs[2].value).toEqual('4')
+      expect(inputs[3].value).toEqual('5')
+      expect(inputs[4].value).toEqual('6')
+      expect(inputs[5].value).toEqual('')
+    })
+
+    it('should not move focus on backspace when current input has value', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp-input')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+      const inputs = otpEl.querySelectorAll('input')
+
+      inputs[1].value = '5'
+      inputs[1].focus()
+
+      const backspaceEvent = new KeyboardEvent('keydown', {
+        key: 'Backspace',
+        bubbles: true
+      })
+      inputs[1].dispatchEvent(backspaceEvent)
+
+      // Should stay on same input (browser handles clearing the value)
+      expect(document.activeElement).toEqual(inputs[1])
     })
   })
 
