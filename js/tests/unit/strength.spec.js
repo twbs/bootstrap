@@ -106,6 +106,40 @@ describe('Strength', () => {
 
       expect(strength._input).toEqual(otherInput)
     })
+
+    it('should handle missing input gracefully', () => {
+      fixtureEl.innerHTML = `
+        <div class="strength" data-bs-strength>
+          <div class="strength-segment"></div>
+          <div class="strength-segment"></div>
+          <div class="strength-segment"></div>
+          <div class="strength-segment"></div>
+        </div>
+      `
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const strength = new Strength(strengthEl)
+
+      expect(strength._input).toBeNull()
+      expect(strength.getStrength()).toBeNull()
+    })
+
+    it('should use element directly when input config is an element', () => {
+      fixtureEl.innerHTML = `
+        <div>
+          <input type="password" id="my-password" class="form-control">
+        </div>
+        <div class="strength" data-bs-strength>
+          <div class="strength-segment"></div>
+        </div>
+      `
+
+      const strengthEl = fixtureEl.querySelector('.strength')
+      const inputEl = fixtureEl.querySelector('#my-password')
+      const strength = new Strength(strengthEl, { input: inputEl })
+
+      expect(strength._input).toEqual(inputEl)
+    })
   })
 
   describe('getStrength', () => {
