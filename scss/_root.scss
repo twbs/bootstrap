@@ -87,7 +87,6 @@
 
   --body-color-rgb: #{to-rgb($body-color)};
   --body-bg-rgb: #{to-rgb($body-bg)};
-  // scss-docs-end root-body-variables
 
   --heading-color: #{$headings-color};
 
@@ -136,16 +135,15 @@
   --form-invalid-color: #{$form-invalid-color};
   --form-invalid-border-color: #{$form-invalid-border-color};
   color-scheme: light;
+  // scss-docs-end root-form-validation-variables
 
   // Root and body
-  // scss-docs-start root-body-variables
   @if $font-size-root != null {
     --root-font-size: #{$font-size-root};
   }
   @if $body-text-align != null {
     --body-text-align: #{$body-text-align};
   }
-  // scss-docs-end root-form-validation-variables
 }
 
 @if $enable-dark-mode {
