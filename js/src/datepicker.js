@@ -193,6 +193,30 @@ class Datepicker extends BaseComponent {
     if (this._isInput && this._element.value) {
       this._parseInputValue()
     }
+
+    // Populate input/display with preselected dates
+    this._updateDisplayWithSelectedDates()
+  }
+
+  _updateDisplayWithSelectedDates() {
+    const { selectedDates } = this._config
+    if (!selectedDates || selectedDates.length === 0) {
+      return
+    }
+
+    const formattedDate = this._formatDateForInput(selectedDates)
+
+    if (this._isInput) {
+      this._element.value = formattedDate
+    }
+
+    if (this._boundInput) {
+      this._boundInput.value = selectedDates.join(',')
+    }
+
+    if (this._displayElement) {
+      this._displayElement.textContent = formattedDate
+    }
   }
 
   _resolvePositionElement() {
@@ -307,6 +331,13 @@ class Datepicker extends BaseComponent {
       onHide: () => {
         this._isShown = false
       }
+    }
+
+    // Navigate to the month of the first selected date
+    if (this._config.selectedDates.length > 0) {
+      const firstDate = this._parseDate(this._config.selectedDates[0])
+      calendarOptions.selectedMonth = firstDate.getMonth()
+      calendarOptions.selectedYear = firstDate.getFullYear()
     }
 
     if (this._config.dateMin) {
