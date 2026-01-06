@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Datepicker</title>
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1>Datepicker <small class="text-body-secondary">Bootstrap Visual Test</small></h1>
+
+      <hr>
+
+      <h2>Basic Input Datepicker</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="basicDatepicker" class="form-label">Select a date</label>
+          <input type="text" class="form-control" id="basicDatepicker" data-bs-toggle="datepicker" placeholder="Click to select">
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>With Min/Max Dates</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="minMaxDatepicker" class="form-label">Only dates in 2025</label>
+          <input type="text" class="form-control" id="minMaxDatepicker" data-bs-toggle="datepicker" data-bs-date-min="2025-01-01" data-bs-date-max="2025-12-31" placeholder="Select a date in 2025">
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>Multiple Selection</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="multipleDatepicker" class="form-label">Select multiple dates</label>
+          <input type="text" class="form-control" id="multipleDatepicker" data-bs-toggle="datepicker" data-bs-selection-mode="multiple" placeholder="Click to select multiple">
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>Range Selection</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="rangeDatepicker" class="form-label">Select a date range</label>
+          <input type="text" class="form-control" id="rangeDatepicker" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" placeholder="Select start and end">
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>Week Numbers</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="weekNumbersDatepicker" class="form-label">With week numbers</label>
+          <input type="text" class="form-control" id="weekNumbersDatepicker" data-bs-toggle="datepicker" data-bs-show-week-numbers="true" placeholder="Select a date">
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>Sunday First</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="sundayFirstDatepicker" class="form-label">Week starts on Sunday</label>
+          <input type="text" class="form-control" id="sundayFirstDatepicker" data-bs-toggle="datepicker" data-bs-first-weekday="0" placeholder="Select a date">
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>Dark Mode</h2>
+      <div class="row mb-4" data-bs-theme="dark">
+        <div class="col-md-6">
+          <div class="p-4 bg-dark rounded">
+            <label for="darkDatepicker" class="form-label text-light">Dark mode datepicker</label>
+            <input type="text" class="form-control" id="darkDatepicker" data-bs-toggle="datepicker" placeholder="Select a date">
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>JavaScript Initialization</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="jsDatepicker" class="form-label">Initialized via JavaScript</label>
+          <input type="text" class="form-control" id="jsDatepicker" placeholder="Click to select">
+          <div class="mt-2">
+            <button type="button" class="btn btn-primary btn-sm" id="showBtn">Show</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="hideBtn">Hide</button>
+            <button type="button" class="btn btn-info btn-sm" id="getDatesBtn">Get Dates</button>
+          </div>
+          <div id="selectedDatesOutput" class="mt-2 text-body-secondary"></div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>Events Test</h2>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="eventsDatepicker" class="form-label">Events datepicker</label>
+          <input type="text" class="form-control" id="eventsDatepicker" data-bs-toggle="datepicker" placeholder="Select a date">
+          <div id="eventsLog" class="mt-2 p-2 bg-light border rounded" style="min-height: 100px; font-family: monospace; font-size: 12px; white-space: pre-wrap;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+    <script>
+      /* global bootstrap: false */
+
+      // Initialize via JavaScript
+      const jsDatepickerEl = document.getElementById('jsDatepicker')
+      const jsDatepicker = new bootstrap.Datepicker(jsDatepickerEl, {
+        firstWeekday: 1,
+        selectedDates: ['2025-01-15']
+      })
+
+      document.getElementById('showBtn').addEventListener('click', () => {
+        jsDatepicker.show()
+      })
+
+      document.getElementById('hideBtn').addEventListener('click', () => {
+        jsDatepicker.hide()
+      })
+
+      document.getElementById('getDatesBtn').addEventListener('click', () => {
+        const dates = jsDatepicker.getSelectedDates()
+        document.getElementById('selectedDatesOutput').textContent = `Selected: ${dates.length ? dates.join(', ') : 'None'}`
+      })
+
+      // Events test
+      const eventsDatepickerEl = document.getElementById('eventsDatepicker')
+      const eventsLog = document.getElementById('eventsLog')
+
+      function logEvent(eventName, detail) {
+        const timestamp = new Date().toLocaleTimeString()
+        const detailStr = detail ? ` - ${JSON.stringify(detail)}` : ''
+        eventsLog.textContent += `[${timestamp}] ${eventName}${detailStr}\n`
+        eventsLog.scrollTop = eventsLog.scrollHeight
+      }
+
+      eventsDatepickerEl.addEventListener('show.bs.datepicker', () => {
+        logEvent('show.bs.datepicker')
+      })
+
+      eventsDatepickerEl.addEventListener('shown.bs.datepicker', () => {
+        logEvent('shown.bs.datepicker')
+      })
+
+      eventsDatepickerEl.addEventListener('hide.bs.datepicker', () => {
+        logEvent('hide.bs.datepicker')
+      })
+
+      eventsDatepickerEl.addEventListener('hidden.bs.datepicker', () => {
+        logEvent('hidden.bs.datepicker')
+      })
+
+      eventsDatepickerEl.addEventListener('change.bs.datepicker', event => {
+        logEvent('change.bs.datepicker', { dates: event.dates })
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+---
+title: Form adorn
+description: Decorate inputs with icons, text, and more using a custom wrapper that easily handles styling and positioning.
+toc: true
+---
+
+## How it works
+
+The `.form-adorn` wrapper replicates `.form-control` styling (border, background, focus states) while using flexbox to position adornments alongside a ghost input. The `.form-ghost` input inside has no visual styling—it's transparent and inherits from the wrapper.
+
+## Example
+
+Wrap an icon and a `.form-ghost` input inside `.form-adorn`. Place the adornment before the input in the DOM for start position (left in LTR).
+
+<Example code={`<div class="form-adorn">
+    <div class="form-adorn-icon">
+      <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+    </div>
+    <input type="text" class="form-ghost" placeholder="Search...">
+  </div>`} />
+
+Use `.form-adorn-end` to position the adornment on the trailing side (keeps DOM order, uses CSS to flip visually):
+
+<Example code={`<div class="form-adorn form-adorn-end">
+    <div class="form-adorn-icon">
+      <svg class="bi" width="16" height="16"><use href="#envelope" /></svg>
+    </div>
+    <input type="email" class="form-ghost" placeholder="you@example.com">
+  </div>`} />
+
+## With labels
+
+Add a label outside the `.form-adorn` wrapper for proper form semantics:
+
+<Example class="vstack gap-3" code={`<div>
+    <label for="searchInput" class="form-label">Search</label>
+    <div class="form-adorn">
+      <div class="form-adorn-icon">
+        <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+      </div>
+      <input type="text" class="form-ghost" id="searchInput" placeholder="Search...">
+    </div>
+  </div>
+  <div>
+    <label for="emailInput" class="form-label">Email address</label>
+    <div class="form-adorn form-adorn-end">
+      <div class="form-adorn-icon">
+        <svg class="bi" width="16" height="16"><use href="#envelope" /></svg>
+      </div>
+      <input type="email" class="form-ghost" id="emailInput" placeholder="you@example.com">
+    </div>
+  </div>`} />
+
+## Text adornments
+
+Use `.form-adorn-text` for currency symbols, units, domain suffixes, and other text-based adornments. Text adornments auto-size to their content.
+
+<Example class="vstack gap-3" code={`<div class="form-adorn">
+    <span class="form-adorn-text">$</span>
+    <input type="text" class="form-ghost" placeholder="0.00">
+  </div>
+  <div class="form-adorn form-adorn-end">
+    <span class="form-adorn-text">USD</span>
+    <input type="text" class="form-ghost" placeholder="Amount">
+  </div>
+  <div class="form-adorn">
+    <span class="form-adorn-text">https://</span>
+    <input type="text" class="form-ghost" placeholder="example.com">
+  </div>
+  <div class="form-adorn form-adorn-end">
+    <span class="form-adorn-text">@example.com</span>
+    <input type="text" class="form-ghost" placeholder="username">
+  </div>`} />
+
+## Sizing
+
+Use `.form-adorn-sm` or `.form-adorn-lg` on the wrapper to adjust sizing.
+
+<Example class="vstack gap-3" code={`<div class="form-adorn form-adorn-sm">
+    <div class="form-adorn-icon">
+      <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+    </div>
+    <input type="text" class="form-ghost" placeholder="Small input">
+  </div>
+  <div class="form-adorn">
+    <div class="form-adorn-icon">
+      <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+    </div>
+    <input type="text" class="form-ghost" placeholder="Default input">
+  </div>
+  <div class="form-adorn form-adorn-lg">
+    <div class="form-adorn-icon">
+      <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+    </div>
+    <input type="text" class="form-ghost" placeholder="Large input">
+  </div>`} />
+
+## Ghost input
+
+The `.form-ghost` class strips all visual styling from an input, making it transparent. It's designed for use inside custom wrappers like `.form-adorn` that handle their own border, background, and focus states.
+
+<Example code={`<input type="text" class="form-ghost" placeholder="Ghost input (no styling)">`} />
+
+## CSS
+
+### Sass variables
+
+<ScssDocs name="form-adorn-variables" file="scss/forms/_form-adorn.scss" />
