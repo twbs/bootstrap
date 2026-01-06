@@ -1,8 +1,9 @@
 /*!
   * Bootstrap v5.3.8 (https://getbootstrap.com/)
-  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
+import { Calendar } from 'vanilla-calendar-pro';
 import { computePosition, autoUpdate, offset, flip, shift, arrow } from '@floating-ui/dom';
 
 /**
@@ -750,6 +751,34 @@ const enableDismissTrigger = (component, method = 'hide') => {
     instance[method]();
   });
 };
+const eventActionOnPlugin = (Plugin, onEvent, stringSelector, method, callback = null) => {
+  eventAction(`${onEvent}.${Plugin.NAME}`, stringSelector, data => {
+    const instances = data.targets.filter(Boolean).map(element => Plugin.getOrCreateInstance(element));
+    if (typeof callback === 'function') {
+      callback({
+        ...data,
+        instances
+      });
+    }
+    for (const instance of instances) {
+      instance[method]();
+    }
+  });
+};
+const eventAction = (onEvent, stringSelector, callback) => {
+  const selector = `${stringSelector}:not(.disabled):not(:disabled)`;
+  EventHandler.on(document, onEvent, selector, function (event) {
+    if (['A', 'AREA'].includes(this.tagName)) {
+      event.preventDefault();
+    }
+    const selector = SelectorEngine.getSelectorFromElement(this);
+    const targets = selector ? SelectorEngine.find(selector) : [this];
+    callback({
+      targets,
+      event
+    });
+  });
+};
 
 /**
  * --------------------------------------------------------------------------
@@ -763,11 +792,11 @@ const enableDismissTrigger = (component, method = 'hide') => {
  * Constants
  */
 
-const NAME$f = 'alert';
-const DATA_KEY$a = 'bs.alert';
-const EVENT_KEY$b = `.${DATA_KEY$a}`;
-const EVENT_CLOSE = `close${EVENT_KEY$b}`;
-const EVENT_CLOSED = `closed${EVENT_KEY$b}`;
+const NAME$j = 'alert';
+const DATA_KEY$e = 'bs.alert';
+const EVENT_KEY$f = `.${DATA_KEY$e}`;
+const EVENT_CLOSE = `close${EVENT_KEY$f}`;
+const EVENT_CLOSED = `closed${EVENT_KEY$f}`;
 const CLASS_NAME_FADE$4 = 'fade';
 const CLASS_NAME_SHOW$7 = 'show';
 
@@ -778,7 +807,7 @@ const CLASS_NAME_SHOW$7 = 'show';
 class Alert extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$f;
+    return NAME$j;
   }
 
   // Public
@@ -818,13 +847,13 @@ enableDismissTrigger(Alert, 'close');
  * Constants
  */
 
-const NAME$e = 'button';
-const DATA_KEY$9 = 'bs.button';
-const EVENT_KEY$a = `.${DATA_KEY$9}`;
-const DATA_API_KEY$6 = '.data-api';
+const NAME$i = 'button';
+const DATA_KEY$d = 'bs.button';
+const EVENT_KEY$e = `.${DATA_KEY$d}`;
+const DATA_API_KEY$9 = '.data-api';
 const CLASS_NAME_ACTIVE$3 = 'active';
-const SELECTOR_DATA_TOGGLE$7 = '[data-bs-toggle="button"]';
-const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
+const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="button"]';
+const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
 
 /**
  * Class definition
@@ -833,7 +862,7 @@ const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
 class Button extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$e;
+    return NAME$i;
   }
 
   // Public
@@ -847,9 +876,9 @@ class Button extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$7, event => {
+EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DATA_TOGGLE$9, event => {
   event.preventDefault();
-  const button = event.target.closest(SELECTOR_DATA_TOGGLE$7);
+  const button = event.target.closest(SELECTOR_DATA_TOGGLE$9);
   const data = Button.getOrCreateInstance(button);
   data.toggle();
 });
@@ -866,23 +895,23 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$7, event 
  * Constants
  */
 
-const NAME$d = 'swipe';
-const EVENT_KEY$9 = '.bs.swipe';
-const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$9}`;
-const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$9}`;
-const EVENT_TOUCHEND = `touchend${EVENT_KEY$9}`;
-const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$9}`;
-const EVENT_POINTERUP = `pointerup${EVENT_KEY$9}`;
+const NAME$h = 'swipe';
+const EVENT_KEY$d = '.bs.swipe';
+const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$d}`;
+const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$d}`;
+const EVENT_TOUCHEND = `touchend${EVENT_KEY$d}`;
+const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$d}`;
+const EVENT_POINTERUP = `pointerup${EVENT_KEY$d}`;
 const POINTER_TYPE_TOUCH = 'touch';
 const POINTER_TYPE_PEN = 'pen';
 const CLASS_NAME_POINTER_EVENT = 'pointer-event';
 const SWIPE_THRESHOLD = 40;
-const Default$c = {
+const Default$g = {
   endCallback: null,
   leftCallback: null,
   rightCallback: null
 };
-const DefaultType$c = {
+const DefaultType$g = {
   endCallback: '(function|null)',
   leftCallback: '(function|null)',
   rightCallback: '(function|null)'
@@ -907,18 +936,18 @@ class Swipe extends Config {
 
   // Getters
   static get Default() {
-    return Default$c;
+    return Default$g;
   }
   static get DefaultType() {
-    return DefaultType$c;
+    return DefaultType$g;
   }
   static get NAME() {
-    return NAME$d;
+    return NAME$h;
   }
 
   // Public
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY$9);
+    EventHandler.off(this._element, EVENT_KEY$d);
   }
 
   // Private
@@ -986,26 +1015,26 @@ class Swipe extends Config {
  * Constants
  */
 
-const NAME$c = 'carousel';
-const DATA_KEY$8 = 'bs.carousel';
-const EVENT_KEY$8 = `.${DATA_KEY$8}`;
-const DATA_API_KEY$5 = '.data-api';
-const ARROW_LEFT_KEY$1 = 'ArrowLeft';
-const ARROW_RIGHT_KEY$1 = 'ArrowRight';
+const NAME$g = 'carousel';
+const DATA_KEY$c = 'bs.carousel';
+const EVENT_KEY$c = `.${DATA_KEY$c}`;
+const DATA_API_KEY$8 = '.data-api';
+const ARROW_LEFT_KEY$2 = 'ArrowLeft';
+const ARROW_RIGHT_KEY$2 = 'ArrowRight';
 const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
 
 const ORDER_NEXT = 'next';
 const ORDER_PREV = 'prev';
 const DIRECTION_LEFT = 'left';
 const DIRECTION_RIGHT = 'right';
-const EVENT_SLIDE = `slide${EVENT_KEY$8}`;
-const EVENT_SLID = `slid${EVENT_KEY$8}`;
-const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$8}`;
-const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$8}`;
-const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$8}`;
-const EVENT_DRAG_START = `dragstart${EVENT_KEY$8}`;
-const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$8}${DATA_API_KEY$5}`;
-const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$8}${DATA_API_KEY$5}`;
+const EVENT_SLIDE = `slide${EVENT_KEY$c}`;
+const EVENT_SLID = `slid${EVENT_KEY$c}`;
+const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$c}`;
+const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$c}`;
+const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$c}`;
+const EVENT_DRAG_START = `dragstart${EVENT_KEY$c}`;
+const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$c}${DATA_API_KEY$8}`;
+const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$c}${DATA_API_KEY$8}`;
 const CLASS_NAME_CAROUSEL = 'carousel';
 const CLASS_NAME_ACTIVE$2 = 'active';
 const CLASS_NAME_SLIDE = 'slide';
@@ -1021,10 +1050,10 @@ const SELECTOR_INDICATORS = '.carousel-indicators';
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]';
 const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]';
 const KEY_TO_DIRECTION = {
-  [ARROW_LEFT_KEY$1]: DIRECTION_RIGHT,
-  [ARROW_RIGHT_KEY$1]: DIRECTION_LEFT
+  [ARROW_LEFT_KEY$2]: DIRECTION_RIGHT,
+  [ARROW_RIGHT_KEY$2]: DIRECTION_LEFT
 };
-const Default$b = {
+const Default$f = {
   interval: 5000,
   keyboard: true,
   pause: 'hover',
@@ -1032,7 +1061,7 @@ const Default$b = {
   touch: true,
   wrap: true
 };
-const DefaultType$b = {
+const DefaultType$f = {
   interval: '(number|boolean)',
   // TODO:v6 remove boolean support
   keyboard: 'boolean',
@@ -1063,13 +1092,13 @@ class Carousel extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$b;
+    return Default$f;
   }
   static get DefaultType() {
-    return DefaultType$b;
+    return DefaultType$f;
   }
   static get NAME() {
-    return NAME$c;
+    return NAME$g;
   }
 
   // Public
@@ -1296,7 +1325,7 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_SLIDE, function (event) {
   const target = SelectorEngine.getElementFromSelector(this);
   if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
     return;
@@ -1336,15 +1365,15 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$3, () => {
  * Constants
  */
 
-const NAME$b = 'collapse';
-const DATA_KEY$7 = 'bs.collapse';
-const EVENT_KEY$7 = `.${DATA_KEY$7}`;
-const DATA_API_KEY$4 = '.data-api';
-const EVENT_SHOW$6 = `show${EVENT_KEY$7}`;
-const EVENT_SHOWN$6 = `shown${EVENT_KEY$7}`;
-const EVENT_HIDE$6 = `hide${EVENT_KEY$7}`;
-const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$7}`;
-const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$7}${DATA_API_KEY$4}`;
+const NAME$f = 'collapse';
+const DATA_KEY$b = 'bs.collapse';
+const EVENT_KEY$b = `.${DATA_KEY$b}`;
+const DATA_API_KEY$7 = '.data-api';
+const EVENT_SHOW$7 = `show${EVENT_KEY$b}`;
+const EVENT_SHOWN$7 = `shown${EVENT_KEY$b}`;
+const EVENT_HIDE$7 = `hide${EVENT_KEY$b}`;
+const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$b}`;
+const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$b}${DATA_API_KEY$7}`;
 const CLASS_NAME_SHOW$6 = 'show';
 const CLASS_NAME_COLLAPSE = 'collapse';
 const CLASS_NAME_COLLAPSING = 'collapsing';
@@ -1354,12 +1383,12 @@ const CLASS_NAME_HORIZONTAL = 'collapse-horizontal';
 const WIDTH = 'width';
 const HEIGHT = 'height';
 const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
-const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="collapse"]';
-const Default$a = {
+const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="collapse"]';
+const Default$e = {
   parent: null,
   toggle: true
 };
-const DefaultType$a = {
+const DefaultType$e = {
   parent: '(null|element)',
   toggle: 'boolean'
 };
@@ -1373,7 +1402,7 @@ class Collapse extends BaseComponent {
     super(element, config);
     this._isTransitioning = false;
     this._triggerArray = [];
-    const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$6);
+    const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$8);
     for (const elem of toggleList) {
       const selector = SelectorEngine.getSelectorFromElement(elem);
       const filterElement = SelectorEngine.find(selector).filter(foundElement => foundElement === this._element);
@@ -1392,13 +1421,13 @@ class Collapse extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$a;
+    return Default$e;
   }
   static get DefaultType() {
-    return DefaultType$a;
+    return DefaultType$e;
   }
   static get NAME() {
-    return NAME$b;
+    return NAME$f;
   }
 
   // Public
@@ -1424,7 +1453,7 @@ class Collapse extends BaseComponent {
     if (activeChildren.length && activeChildren[0]._isTransitioning) {
       return;
     }
-    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$6);
+    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$7);
     if (startEvent.defaultPrevented) {
       return;
     }
@@ -1442,7 +1471,7 @@ class Collapse extends BaseComponent {
       this._element.classList.remove(CLASS_NAME_COLLAPSING);
       this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$6);
       this._element.style[dimension] = '';
-      EventHandler.trigger(this._element, EVENT_SHOWN$6);
+      EventHandler.trigger(this._element, EVENT_SHOWN$7);
     };
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
     const scrollSize = `scroll${capitalizedDimension}`;
@@ -1453,7 +1482,7 @@ class Collapse extends BaseComponent {
     if (this._isTransitioning || !this._isShown()) {
       return;
     }
-    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$6);
+    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$7);
     if (startEvent.defaultPrevented) {
       return;
     }
@@ -1473,7 +1502,7 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false;
       this._element.classList.remove(CLASS_NAME_COLLAPSING);
       this._element.classList.add(CLASS_NAME_COLLAPSE);
-      EventHandler.trigger(this._element, EVENT_HIDDEN$6);
+      EventHandler.trigger(this._element, EVENT_HIDDEN$7);
     };
     this._element.style[dimension] = '';
     this._queueCallback(complete, this._element, true);
@@ -1495,7 +1524,7 @@ class Collapse extends BaseComponent {
     if (!this._config.parent) {
       return;
     }
-    const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$6);
+    const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$8);
     for (const element of children) {
       const selected = SelectorEngine.getElementFromSelector(element);
       if (selected) {
@@ -1523,7 +1552,7 @@ class Collapse extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$6, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, function (event) {
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
   if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
     event.preventDefault();
@@ -1532,6 +1561,434 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$6, functi
     Collapse.getOrCreateInstance(element, {
       toggle: false
     }).toggle();
+  }
+});
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap datepicker.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$e = 'datepicker';
+const DATA_KEY$a = 'bs.datepicker';
+const EVENT_KEY$a = `.${DATA_KEY$a}`;
+const DATA_API_KEY$6 = '.data-api';
+const EVENT_CHANGE = `change${EVENT_KEY$a}`;
+const EVENT_SHOW$6 = `show${EVENT_KEY$a}`;
+const EVENT_SHOWN$6 = `shown${EVENT_KEY$a}`;
+const EVENT_HIDE$6 = `hide${EVENT_KEY$a}`;
+const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$a}`;
+const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
+const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$a}${DATA_API_KEY$6}`;
+const SELECTOR_DATA_TOGGLE$7 = '[data-bs-toggle="datepicker"]';
+const HIDE_DELAY = 100; // ms delay before hiding after selection
+
+const Default$d = {
+  datepickerTheme: null,
+  // 'light', 'dark', 'auto' - explicit theme for datepicker popover only
+  dateMin: null,
+  dateMax: null,
+  dateFormat: null,
+  // Intl.DateTimeFormat options, or function(date, locale) => string
+  displayElement: null,
+  // Element to show formatted date (defaults to element for buttons)
+  displayMonthsCount: 1,
+  // Number of months to display side-by-side
+  firstWeekday: 1,
+  // Monday
+  inline: false,
+  // Render calendar inline (no popup)
+  locale: 'default',
+  positionElement: null,
+  // Element to position calendar relative to (defaults to input)
+  selectedDates: [],
+  selectionMode: 'single',
+  // 'single', 'multiple', 'multiple-ranged'
+  placement: 'left',
+  // 'left', 'center', 'right', 'auto'
+  vcpOptions: {} // Pass-through for any VCP option
+};
+const DefaultType$d = {
+  datepickerTheme: '(null|string)',
+  dateMin: '(null|string|number|object)',
+  dateMax: '(null|string|number|object)',
+  dateFormat: '(null|object|function)',
+  displayElement: '(null|string|element|boolean)',
+  displayMonthsCount: 'number',
+  firstWeekday: 'number',
+  inline: 'boolean',
+  locale: 'string',
+  positionElement: '(null|string|element)',
+  selectedDates: 'array',
+  selectionMode: 'string',
+  placement: 'string',
+  vcpOptions: 'object'
+};
+
+/**
+ * Class definition
+ */
+
+class Datepicker extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+    this._calendar = null;
+    this._isShown = false;
+    this._initCalendar();
+  }
+
+  // Getters
+  static get Default() {
+    return Default$d;
+  }
+  static get DefaultType() {
+    return DefaultType$d;
+  }
+  static get NAME() {
+    return NAME$e;
+  }
+
+  // Public
+  toggle() {
+    if (this._config.inline) {
+      return; // Inline calendars are always visible
+    }
+    return this._isShown ? this.hide() : this.show();
+  }
+  show() {
+    if (this._config.inline) {
+      return; // Inline calendars are always visible
+    }
+    if (!this._calendar || isDisabled(this._element) || this._isShown) {
+      return;
+    }
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$6);
+    if (showEvent.defaultPrevented) {
+      return;
+    }
+    this._calendar.show();
+    this._isShown = true;
+    EventHandler.trigger(this._element, EVENT_SHOWN$6);
+  }
+  hide() {
+    if (this._config.inline) {
+      return; // Inline calendars are always visible
+    }
+    if (!this._calendar || !this._isShown) {
+      return;
+    }
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$6);
+    if (hideEvent.defaultPrevented) {
+      return;
+    }
+    this._calendar.hide();
+    this._isShown = false;
+    EventHandler.trigger(this._element, EVENT_HIDDEN$6);
+  }
+  dispose() {
+    if (this._themeObserver) {
+      this._themeObserver.disconnect();
+      this._themeObserver = null;
+    }
+    if (this._calendar) {
+      this._calendar.destroy();
+    }
+    this._calendar = null;
+    super.dispose();
+  }
+  getSelectedDates() {
+    const dates = this._calendar?.context?.selectedDates;
+    return dates ? [...dates] : [];
+  }
+  setSelectedDates(dates) {
+    if (this._calendar) {
+      this._calendar.set({
+        selectedDates: dates
+      });
+    }
+  }
+
+  // Private
+  _initCalendar() {
+    this._isInput = this._element.tagName === 'INPUT';
+    this._isInline = this._config.inline;
+
+    // For inline mode, look for a hidden input child to bind to
+    if (this._isInline && !this._isInput) {
+      this._boundInput = this._element.querySelector('input[type="hidden"], input[name]');
+    }
+    this._positionElement = this._resolvePositionElement();
+    this._displayElement = this._resolveDisplayElement();
+    const calendarOptions = this._buildCalendarOptions();
+
+    // Create calendar on the position element (for correct popup positioning)
+    // but value updates still go to this._element (the input)
+    this._calendar = new Calendar(this._positionElement, calendarOptions);
+    this._calendar.init();
+
+    // Watch for theme changes on ancestor elements (for live theme switching)
+    this._setupThemeObserver();
+
+    // Set initial value if input has a value
+    if (this._isInput && this._element.value) {
+      this._parseInputValue();
+    }
+
+    // Populate input/display with preselected dates
+    this._updateDisplayWithSelectedDates();
+  }
+  _updateDisplayWithSelectedDates() {
+    const {
+      selectedDates
+    } = this._config;
+    if (!selectedDates || selectedDates.length === 0) {
+      return;
+    }
+    const formattedDate = this._formatDateForInput(selectedDates);
+    if (this._isInput) {
+      this._element.value = formattedDate;
+    }
+    if (this._boundInput) {
+      this._boundInput.value = selectedDates.join(',');
+    }
+    if (this._displayElement) {
+      this._displayElement.textContent = formattedDate;
+    }
+  }
+  _resolvePositionElement() {
+    let {
+      positionElement
+    } = this._config;
+    if (typeof positionElement === 'string') {
+      positionElement = document.querySelector(positionElement);
+    }
+
+    // Use input's parent if in form-adorn
+    if (!positionElement && this._isInput && !this._isInline) {
+      const parent = this._element.closest('.form-adorn');
+      if (parent) {
+        positionElement = parent;
+      }
+    }
+    return positionElement || this._element;
+  }
+  _resolveDisplayElement() {
+    const {
+      displayElement
+    } = this._config;
+    if (typeof displayElement === 'string') {
+      return document.querySelector(displayElement);
+    }
+
+    // For buttons/non-inputs (not inline), look for a [data-bs-datepicker-display] child
+    if (displayElement === true || displayElement === null && !this._isInput && !this._isInline) {
+      const displayChild = this._element.querySelector('[data-bs-datepicker-display]');
+      return displayChild || this._element;
+    }
+    return displayElement;
+  }
+  _getThemeAncestor() {
+    return this._element.closest('[data-bs-theme]');
+  }
+  _getEffectiveTheme() {
+    // Priority: explicit datepickerTheme config > inherited from ancestor > none
+    const {
+      datepickerTheme
+    } = this._config;
+    if (datepickerTheme) {
+      return datepickerTheme;
+    }
+    const ancestor = this._getThemeAncestor();
+    return ancestor?.getAttribute('data-bs-theme') || null;
+  }
+  _syncThemeAttribute(element) {
+    if (!element) {
+      return;
+    }
+    const theme = this._getEffectiveTheme();
+    if (theme) {
+      // Copy theme to popover (needed because VCP appends to body, breaking CSS inheritance)
+      element.setAttribute('data-bs-theme', theme);
+    } else {
+      // No theme - remove attribute to allow natural inheritance
+      element.removeAttribute('data-bs-theme');
+    }
+  }
+  _setupThemeObserver() {
+    // Watch for theme changes on ancestor elements
+    const ancestor = this._getThemeAncestor();
+    if (!ancestor || this._config.datepickerTheme) {
+      // No ancestor to watch, or explicit datepickerTheme overrides
+      return;
+    }
+    this._themeObserver = new MutationObserver(() => {
+      this._syncThemeAttribute(this._calendar?.context?.mainElement);
+    });
+    this._themeObserver.observe(ancestor, {
+      attributes: true,
+      attributeFilter: ['data-bs-theme']
+    });
+  }
+  _buildCalendarOptions() {
+    // Get theme for VCP - use 'system' for auto-detection if no explicit theme
+    const theme = this._getEffectiveTheme();
+    // VCP uses 'system' for auto, Bootstrap uses 'auto'
+    const vcpTheme = !theme || theme === 'auto' ? 'system' : theme;
+    const calendarOptions = {
+      ...this._config.vcpOptions,
+      inputMode: !this._isInline,
+      positionToInput: this._config.placement,
+      firstWeekday: this._config.firstWeekday,
+      locale: this._config.locale,
+      selectionDatesMode: this._config.selectionMode,
+      selectedDates: this._config.selectedDates,
+      displayMonthsCount: this._config.displayMonthsCount,
+      type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
+      selectedTheme: vcpTheme,
+      themeAttrDetect: '[data-bs-theme]',
+      onClickDate: (self, event) => this._handleDateClick(self, event),
+      onInit: self => {
+        this._syncThemeAttribute(self.context.mainElement);
+      },
+      onShow: () => {
+        this._isShown = true;
+        this._syncThemeAttribute(this._calendar.context.mainElement);
+      },
+      onHide: () => {
+        this._isShown = false;
+      }
+    };
+
+    // Navigate to the month of the first selected date
+    if (this._config.selectedDates.length > 0) {
+      const firstDate = this._parseDate(this._config.selectedDates[0]);
+      calendarOptions.selectedMonth = firstDate.getMonth();
+      calendarOptions.selectedYear = firstDate.getFullYear();
+    }
+    if (this._config.dateMin) {
+      calendarOptions.dateMin = this._config.dateMin;
+    }
+    if (this._config.dateMax) {
+      calendarOptions.dateMax = this._config.dateMax;
+    }
+    return calendarOptions;
+  }
+  _handleDateClick(self, event) {
+    const selectedDates = [...self.context.selectedDates];
+    if (selectedDates.length > 0) {
+      const formattedDate = this._formatDateForInput(selectedDates);
+      if (this._isInput) {
+        this._element.value = formattedDate;
+      }
+      if (this._boundInput) {
+        this._boundInput.value = selectedDates.join(',');
+      }
+      if (this._displayElement) {
+        this._displayElement.textContent = formattedDate;
+      }
+    }
+    EventHandler.trigger(this._element, EVENT_CHANGE, {
+      dates: selectedDates,
+      event
+    });
+    this._maybeHideAfterSelection(selectedDates);
+  }
+  _maybeHideAfterSelection(selectedDates) {
+    if (this._isInline) {
+      return;
+    }
+    const shouldHide = this._config.selectionMode === 'single' && selectedDates.length > 0 || this._config.selectionMode === 'multiple-ranged' && selectedDates.length >= 2;
+    if (shouldHide) {
+      setTimeout(() => this.hide(), HIDE_DELAY);
+    }
+  }
+  _parseDate(dateStr) {
+    const [year, month, day] = dateStr.split('-');
+    return new Date(year, month - 1, day);
+  }
+  _formatDate(dateStr) {
+    const date = this._parseDate(dateStr);
+    const locale = this._config.locale === 'default' ? undefined : this._config.locale;
+    const {
+      dateFormat
+    } = this._config;
+
+    // Custom function formatter
+    if (typeof dateFormat === 'function') {
+      return dateFormat(date, locale);
+    }
+
+    // Intl.DateTimeFormat options object
+    if (dateFormat && typeof dateFormat === 'object') {
+      return new Intl.DateTimeFormat(locale, dateFormat).format(date);
+    }
+
+    // Default: locale-aware formatting
+    return date.toLocaleDateString(locale);
+  }
+  _formatDateForInput(dates) {
+    if (dates.length === 0) {
+      return '';
+    }
+    if (dates.length === 1) {
+      return this._formatDate(dates[0]);
+    }
+
+    // For date ranges, use en-dash; for multiple dates, use comma
+    const separator = this._config.selectionMode === 'multiple-ranged' ? ' – ' : ', ';
+    return dates.map(d => this._formatDate(d)).join(separator);
+  }
+  _parseInputValue() {
+    // Try to parse the input value as a date
+    const value = this._element.value.trim();
+    if (!value) {
+      return;
+    }
+    const date = new Date(value);
+    if (!Number.isNaN(date.getTime())) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const formatted = `${year}-${month}-${day}`;
+      this._calendar.set({
+        selectedDates: [formatted]
+      });
+    }
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$7, function (event) {
+  // Only handle if not an input (inputs use focus)
+  // Skip inline datepickers (they're always visible)
+  if (this.tagName === 'INPUT' || this.dataset.bsInline === 'true') {
+    return;
+  }
+  event.preventDefault();
+  Datepicker.getOrCreateInstance(this).toggle();
+});
+EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE$7, function () {
+  // Handle focus for input elements
+  if (this.tagName !== 'INPUT') {
+    return;
+  }
+  Datepicker.getOrCreateInstance(this).show();
+});
+
+// Auto-initialize inline datepickers on DOMContentLoaded
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$a}${DATA_API_KEY$6}`, () => {
+  for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE$7}[data-bs-inline="true"]`)) {
+    Datepicker.getOrCreateInstance(element);
   }
 });
 
@@ -1547,29 +2004,29 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$6, functi
  * Constants
  */
 
-const NAME$a = 'dialog';
-const DATA_KEY$6 = 'bs.dialog';
-const EVENT_KEY$6 = `.${DATA_KEY$6}`;
-const DATA_API_KEY$3 = '.data-api';
-const EVENT_SHOW$5 = `show${EVENT_KEY$6}`;
-const EVENT_SHOWN$5 = `shown${EVENT_KEY$6}`;
-const EVENT_HIDE$5 = `hide${EVENT_KEY$6}`;
-const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$6}`;
-const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$6}`;
-const EVENT_CANCEL = `cancel${EVENT_KEY$6}`;
-const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`;
+const NAME$d = 'dialog';
+const DATA_KEY$9 = 'bs.dialog';
+const EVENT_KEY$9 = `.${DATA_KEY$9}`;
+const DATA_API_KEY$5 = '.data-api';
+const EVENT_SHOW$5 = `show${EVENT_KEY$9}`;
+const EVENT_SHOWN$5 = `shown${EVENT_KEY$9}`;
+const EVENT_HIDE$5 = `hide${EVENT_KEY$9}`;
+const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$9}`;
+const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$9}`;
+const EVENT_CANCEL = `cancel${EVENT_KEY$9}`;
+const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$9}${DATA_API_KEY$5}`;
 const CLASS_NAME_STATIC = 'dialog-static';
 const CLASS_NAME_OPEN = 'dialog-open';
 const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
-const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dialog"]';
+const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="dialog"]';
 const SELECTOR_OPEN_MODAL_DIALOG = 'dialog.dialog[open]:not(.dialog-nonmodal)';
-const Default$9 = {
+const Default$c = {
   backdrop: true,
   // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
   keyboard: true,
   modal: true // true uses showModal(), false uses show() for non-modal dialogs
 };
-const DefaultType$9 = {
+const DefaultType$c = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   modal: 'boolean'
@@ -1588,13 +2045,13 @@ class Dialog extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$9;
+    return Default$c;
   }
   static get DefaultType() {
-    return DefaultType$9;
+    return DefaultType$c;
   }
   static get NAME() {
-    return NAME$a;
+    return NAME$d;
   }
 
   // Public
@@ -1641,7 +2098,7 @@ class Dialog extends BaseComponent {
     this._queueCallback(() => this._hideDialog(), this._element, this._isAnimated());
   }
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY$6);
+    EventHandler.off(this._element, EVENT_KEY$9);
     super.dispose();
   }
   handleUpdate() {
@@ -1723,7 +2180,7 @@ class Dialog extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$5, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$6, function (event) {
   const target = SelectorEngine.getElementFromSelector(this);
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault();
@@ -1891,49 +2348,80 @@ const disposeBreakpointListeners = listeners => {
  * Constants
  */
 
-const NAME$9 = 'dropdown';
-const DATA_KEY$5 = 'bs.dropdown';
-const EVENT_KEY$5 = `.${DATA_KEY$5}`;
-const DATA_API_KEY$2 = '.data-api';
+const NAME$c = 'dropdown';
+const DATA_KEY$8 = 'bs.dropdown';
+const EVENT_KEY$8 = `.${DATA_KEY$8}`;
+const DATA_API_KEY$4 = '.data-api';
 const ESCAPE_KEY$1 = 'Escape';
 const TAB_KEY$1 = 'Tab';
 const ARROW_UP_KEY$1 = 'ArrowUp';
 const ARROW_DOWN_KEY$1 = 'ArrowDown';
-const RIGHT_MOUSE_BUTTON = 2; // MouseEvent.button value for the secondary button, usually the right button
+const ARROW_LEFT_KEY$1 = 'ArrowLeft';
+const ARROW_RIGHT_KEY$1 = 'ArrowRight';
+const HOME_KEY$1 = 'Home';
+const END_KEY$1 = 'End';
+const ENTER_KEY = 'Enter';
+const SPACE_KEY = ' ';
+const RIGHT_MOUSE_BUTTON = 2;
 
-const EVENT_HIDE$4 = `hide${EVENT_KEY$5}`;
-const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$5}`;
-const EVENT_SHOW$4 = `show${EVENT_KEY$5}`;
-const EVENT_SHOWN$4 = `shown${EVENT_KEY$5}`;
-const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$5}${DATA_API_KEY$2}`;
-const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$5}${DATA_API_KEY$2}`;
-const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$5}${DATA_API_KEY$2}`;
+// Hover intent delay (ms) - grace period before closing submenu
+const SUBMENU_CLOSE_DELAY = 100;
+const EVENT_HIDE$4 = `hide${EVENT_KEY$8}`;
+const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$8}`;
+const EVENT_SHOW$4 = `show${EVENT_KEY$8}`;
+const EVENT_SHOWN$4 = `shown${EVENT_KEY$8}`;
+const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$8}${DATA_API_KEY$4}`;
+const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$8}${DATA_API_KEY$4}`;
+const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$8}${DATA_API_KEY$4}`;
 const CLASS_NAME_SHOW$5 = 'show';
-const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
-const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE$4}.${CLASS_NAME_SHOW$5}`;
+const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
+const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE$5}.${CLASS_NAME_SHOW$5}`;
 const SELECTOR_MENU = '.dropdown-menu';
+const SELECTOR_SUBMENU = '.dropdown-submenu';
+const SELECTOR_SUBMENU_TOGGLE = '.dropdown-submenu > .dropdown-item';
 const SELECTOR_NAVBAR_NAV = '.navbar-nav';
-const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+const SELECTOR_VISIBLE_ITEMS = '.dropdown-item:not(.disabled):not(:disabled)';
 
-// Default placement with RTL support
-const DEFAULT_PLACEMENT = isRTL() ? 'bottom-end' : 'bottom-start';
-const Default$8 = {
+// Default logical placement (uses start/end which get resolved to left/right based on RTL)
+const DEFAULT_PLACEMENT = 'bottom-start';
+const SUBMENU_PLACEMENT = 'end-start';
+
+// Resolve logical placement (start/end) to physical (left/right) based on RTL
+const resolveLogicalPlacement = placement => {
+  if (isRTL()) {
+    // RTL: start → right, end → left
+    return placement.replace(/^start(?=-|$)/, 'right').replace(/^end(?=-|$)/, 'left');
+  }
+
+  // LTR: start → left, end → right
+  return placement.replace(/^start(?=-|$)/, 'left').replace(/^end(?=-|$)/, 'right');
+};
+
+// Helper for barycentric coordinate calculation (point in triangle check)
+const triangleSign = (p1, p2, p3) => (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
+const Default$b = {
   autoClose: true,
   boundary: 'clippingParents',
   display: 'dynamic',
   offset: [0, 2],
   floatingConfig: null,
   placement: DEFAULT_PLACEMENT,
-  reference: 'toggle'
+  reference: 'toggle',
+  // Submenu options
+  submenuTrigger: 'both',
+  // 'click', 'hover', or 'both'
+  submenuDelay: SUBMENU_CLOSE_DELAY
 };
-const DefaultType$8 = {
+const DefaultType$b = {
   autoClose: '(boolean|string)',
   boundary: '(string|element)',
   display: 'string',
   offset: '(array|string|function)',
   floatingConfig: '(null|object|function)',
   placement: 'string',
-  reference: '(string|element|object)'
+  reference: '(string|element|object)',
+  submenuTrigger: 'string',
+  submenuDelay: 'number'
 };
 
 /**
@@ -1950,22 +2438,30 @@ class Dropdown extends BaseComponent {
     this._mediaQueryListeners = [];
     this._responsivePlacements = null;
     this._parent = this._element.parentNode; // dropdown wrapper
+    this._isSubmenu = this._parent.classList.contains('dropdown-submenu');
+    this._openSubmenus = new Map(); // Map of submenu element -> cleanup function
+    this._submenuCloseTimeouts = new Map(); // Map of submenu element -> timeout ID
+    this._hoverIntentData = null; // For safe triangle calculation
+
     // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine.findOne(SELECTOR_MENU, this._parent);
 
     // Parse responsive placements on init
     this._parseResponsivePlacements();
+
+    // Set up submenu event listeners
+    this._setupSubmenuListeners();
   }
 
   // Getters
   static get Default() {
-    return Default$8;
+    return Default$b;
   }
   static get DefaultType() {
-    return DefaultType$8;
+    return DefaultType$b;
   }
   static get NAME() {
-    return NAME$9;
+    return NAME$c;
   }
 
   // Public
@@ -1995,9 +2491,10 @@ class Dropdown extends BaseComponent {
       }
     }
     this._element.focus();
-    this._element.setAttribute('aria-expanded', true);
+    this._element.setAttribute('aria-expanded', 'true');
     this._menu.classList.add(CLASS_NAME_SHOW$5);
     this._element.classList.add(CLASS_NAME_SHOW$5);
+    this._parent.classList.add(CLASS_NAME_SHOW$5);
     EventHandler.trigger(this._element, EVENT_SHOWN$4, relatedTarget);
   }
   hide() {
@@ -2012,6 +2509,8 @@ class Dropdown extends BaseComponent {
   dispose() {
     this._disposeFloating();
     this._disposeMediaQueryListeners();
+    this._closeAllSubmenus();
+    this._clearAllSubmenuTimeouts();
     super.dispose();
   }
   update() {
@@ -2027,6 +2526,9 @@ class Dropdown extends BaseComponent {
       return;
     }
 
+    // Close all open submenus first
+    this._closeAllSubmenus();
+
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
@@ -2037,6 +2539,7 @@ class Dropdown extends BaseComponent {
     this._disposeFloating();
     this._menu.classList.remove(CLASS_NAME_SHOW$5);
     this._element.classList.remove(CLASS_NAME_SHOW$5);
+    this._parent.classList.remove(CLASS_NAME_SHOW$5);
     this._element.setAttribute('aria-expanded', 'false');
     Manipulator.removeDataAttribute(this._menu, 'placement');
     Manipulator.removeDataAttribute(this._menu, 'display');
@@ -2046,7 +2549,7 @@ class Dropdown extends BaseComponent {
     config = super._getConfig(config);
     if (typeof config.reference === 'object' && !isElement(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
       // Floating UI virtual elements require a getBoundingClientRect method
-      throw new TypeError(`${NAME$9.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
+      throw new TypeError(`${NAME$c.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
     }
     return config;
   }
@@ -2071,8 +2574,7 @@ class Dropdown extends BaseComponent {
     this._floatingCleanup = autoUpdate(referenceElement, this._menu, () => this._updateFloatingPosition(referenceElement));
   }
   async _updateFloatingPosition(referenceElement = null) {
-    // Check if menu exists and is still in the DOM
-    if (!this._menu || !this._menu.isConnected) {
+    if (!this._menu) {
       return;
     }
     if (!referenceElement) {
@@ -2089,37 +2591,17 @@ class Dropdown extends BaseComponent {
     const placement = this._getPlacement();
     const middleware = this._getFloatingMiddleware();
     const floatingConfig = this._getFloatingConfig(placement, middleware);
-    const {
-      x,
-      y,
-      placement: finalPlacement
-    } = await computePosition(referenceElement, this._menu, floatingConfig);
-
-    // Menu may have been disposed during the async computePosition call
-    if (!this._menu || !this._menu.isConnected) {
-      return;
-    }
-
-    // Apply position to dropdown menu
-    Object.assign(this._menu.style, {
-      position: 'absolute',
-      left: `${x}px`,
-      top: `${y}px`,
-      margin: '0'
-    });
-
-    // Set placement attribute for CSS styling
-    Manipulator.setDataAttribute(this._menu, 'placement', finalPlacement);
+    await this._applyFloatingPosition(referenceElement, this._menu, floatingConfig.placement, floatingConfig.middleware);
   }
   _isShown() {
     return this._menu.classList.contains(CLASS_NAME_SHOW$5);
   }
   _getPlacement() {
     // If we have responsive placements, find the appropriate one for current viewport
-    if (this._responsivePlacements) {
-      return getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT);
-    }
-    return this._config.placement;
+    const placement = this._responsivePlacements ? getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT) : this._config.placement;
+
+    // Resolve logical placements (start/end) to physical (left/right) based on RTL
+    return resolveLogicalPlacement(placement);
   }
   _parseResponsivePlacements() {
     this._responsivePlacements = parseResponsivePlacement(this._config.placement, DEFAULT_PLACEMENT);
@@ -2141,18 +2623,18 @@ class Dropdown extends BaseComponent {
   }
   _getOffset() {
     const {
-      offset
+      offset: offsetConfig
     } = this._config;
-    if (typeof offset === 'string') {
-      return offset.split(',').map(value => Number.parseInt(value, 10));
+    if (typeof offsetConfig === 'string') {
+      return offsetConfig.split(',').map(value => Number.parseInt(value, 10));
     }
-    if (typeof offset === 'function') {
+    if (typeof offsetConfig === 'function') {
       // Floating UI passes different args, adapt the interface for offset function callbacks
       return ({
         placement,
         rects
       }) => {
-        const result = offset({
+        const result = offsetConfig({
           placement,
           reference: rects.reference,
           floating: rects.floating
@@ -2160,7 +2642,7 @@ class Dropdown extends BaseComponent {
         return result;
       };
     }
-    return offset;
+    return offsetConfig;
   }
   _getFloatingMiddleware() {
     const offsetValue = this._getOffset();
@@ -2218,11 +2700,296 @@ class Dropdown extends BaseComponent {
       this._floatingCleanup = null;
     }
   }
+
+  // Shared helper for positioning any floating element
+  async _applyFloatingPosition(reference, floating, placement, middleware) {
+    if (!floating.isConnected) {
+      return null;
+    }
+    const {
+      x,
+      y,
+      placement: finalPlacement
+    } = await computePosition(reference, floating, {
+      placement,
+      middleware
+    });
+    if (!floating.isConnected) {
+      return null;
+    }
+    Object.assign(floating.style, {
+      position: 'absolute',
+      left: `${x}px`,
+      top: `${y}px`,
+      margin: '0'
+    });
+    Manipulator.setDataAttribute(floating, 'placement', finalPlacement);
+    return finalPlacement;
+  }
+
+  // -------------------------------------------------------------------------
+  // Submenu handling
+  // -------------------------------------------------------------------------
+
+  _setupSubmenuListeners() {
+    // Set up hover listeners for submenu triggers
+    if (this._config.submenuTrigger === 'hover' || this._config.submenuTrigger === 'both') {
+      EventHandler.on(this._menu, 'mouseenter', SELECTOR_SUBMENU_TOGGLE, event => {
+        this._onSubmenuTriggerEnter(event);
+      });
+      EventHandler.on(this._menu, 'mouseleave', SELECTOR_SUBMENU, event => {
+        this._onSubmenuLeave(event);
+      });
+
+      // Track mouse movement for safe triangle calculation
+      EventHandler.on(this._menu, 'mousemove', event => {
+        this._trackMousePosition(event);
+      });
+    }
+
+    // Set up click listener for submenu triggers
+    if (this._config.submenuTrigger === 'click' || this._config.submenuTrigger === 'both') {
+      EventHandler.on(this._menu, 'click', SELECTOR_SUBMENU_TOGGLE, event => {
+        this._onSubmenuTriggerClick(event);
+      });
+    }
+  }
+  _onSubmenuTriggerEnter(event) {
+    const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE);
+    if (!trigger) {
+      return;
+    }
+    const submenuWrapper = trigger.closest(SELECTOR_SUBMENU);
+    const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+    if (!submenu) {
+      return;
+    }
+
+    // Cancel any pending close timeout for this submenu
+    this._cancelSubmenuCloseTimeout(submenu);
+
+    // Close other open submenus at the same level
+    this._closeSiblingSubmenus(submenuWrapper);
+
+    // Open this submenu
+    this._openSubmenu(trigger, submenu, submenuWrapper);
+  }
+  _onSubmenuLeave(event) {
+    const submenuWrapper = event.target.closest(SELECTOR_SUBMENU);
+    const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+    if (!submenu || !this._openSubmenus.has(submenu)) {
+      return;
+    }
+
+    // Check if we're moving toward the submenu (safe triangle)
+    if (this._isMovingTowardSubmenu(event, submenu)) {
+      return;
+    }
+
+    // Schedule submenu close with delay
+    this._scheduleSubmenuClose(submenu, submenuWrapper);
+  }
+  _onSubmenuTriggerClick(event) {
+    const trigger = event.target.closest(SELECTOR_SUBMENU_TOGGLE);
+    if (!trigger) {
+      return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+    const submenuWrapper = trigger.closest(SELECTOR_SUBMENU);
+    const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+    if (!submenu) {
+      return;
+    }
+
+    // Toggle submenu
+    if (this._openSubmenus.has(submenu)) {
+      this._closeSubmenu(submenu, submenuWrapper);
+    } else {
+      this._closeSiblingSubmenus(submenuWrapper);
+      this._openSubmenu(trigger, submenu, submenuWrapper);
+    }
+  }
+  _openSubmenu(trigger, submenu, submenuWrapper) {
+    if (this._openSubmenus.has(submenu)) {
+      return;
+    }
+
+    // Set ARIA attributes
+    trigger.setAttribute('aria-expanded', 'true');
+    trigger.setAttribute('aria-haspopup', 'true');
+
+    // Position and show submenu
+    submenu.classList.add(CLASS_NAME_SHOW$5);
+    submenuWrapper.classList.add(CLASS_NAME_SHOW$5);
+
+    // Set up Floating UI positioning for submenu
+    const cleanup = this._createSubmenuFloating(trigger, submenu, submenuWrapper);
+    this._openSubmenus.set(submenu, cleanup);
+
+    // Set up mouseenter on submenu to cancel close timeout
+    EventHandler.on(submenu, 'mouseenter', () => {
+      this._cancelSubmenuCloseTimeout(submenu);
+    });
+  }
+  _closeSubmenu(submenu, submenuWrapper) {
+    if (!this._openSubmenus.has(submenu)) {
+      return;
+    }
+
+    // Close any nested submenus first
+    const nestedSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} ${SELECTOR_MENU}.${CLASS_NAME_SHOW$5}`, submenu);
+    for (const nested of nestedSubmenus) {
+      const nestedWrapper = nested.closest(SELECTOR_SUBMENU);
+      this._closeSubmenu(nested, nestedWrapper);
+    }
+
+    // Get the trigger
+    const trigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, submenuWrapper);
+
+    // Clean up Floating UI
+    const cleanup = this._openSubmenus.get(submenu);
+    if (cleanup) {
+      cleanup();
+    }
+    this._openSubmenus.delete(submenu);
+
+    // Remove event listeners
+    EventHandler.off(submenu, 'mouseenter');
+
+    // Update ARIA and visibility
+    if (trigger) {
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+    submenu.classList.remove(CLASS_NAME_SHOW$5);
+    submenuWrapper.classList.remove(CLASS_NAME_SHOW$5);
+
+    // Clear inline styles
+    submenu.style.position = '';
+    submenu.style.left = '';
+    submenu.style.top = '';
+    submenu.style.margin = '';
+  }
+  _closeAllSubmenus() {
+    for (const [submenu] of this._openSubmenus) {
+      const submenuWrapper = submenu.closest(SELECTOR_SUBMENU);
+      this._closeSubmenu(submenu, submenuWrapper);
+    }
+  }
+  _closeSiblingSubmenus(currentSubmenuWrapper) {
+    // Find all sibling submenu wrappers and close their menus
+    const parent = currentSubmenuWrapper.parentNode;
+    const siblingSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} > ${SELECTOR_MENU}.${CLASS_NAME_SHOW$5}`, parent);
+    for (const siblingMenu of siblingSubmenus) {
+      const siblingWrapper = siblingMenu.closest(SELECTOR_SUBMENU);
+      if (siblingWrapper !== currentSubmenuWrapper) {
+        this._closeSubmenu(siblingMenu, siblingWrapper);
+      }
+    }
+  }
+  _createSubmenuFloating(trigger, submenu, submenuWrapper) {
+    const referenceElement = submenuWrapper;
+    const placement = resolveLogicalPlacement(SUBMENU_PLACEMENT);
+    const middleware = [offset({
+      mainAxis: 0,
+      crossAxis: -4
+    }), flip({
+      fallbackPlacements: [resolveLogicalPlacement('start-start'), resolveLogicalPlacement('end-end'), resolveLogicalPlacement('start-end')]
+    }), shift({
+      padding: 8
+    })];
+    const updatePosition = () => this._applyFloatingPosition(referenceElement, submenu, placement, middleware);
+    updatePosition();
+    return autoUpdate(referenceElement, submenu, updatePosition);
+  }
+  _scheduleSubmenuClose(submenu, submenuWrapper) {
+    this._cancelSubmenuCloseTimeout(submenu);
+    const timeoutId = setTimeout(() => {
+      this._closeSubmenu(submenu, submenuWrapper);
+      this._submenuCloseTimeouts.delete(submenu);
+    }, this._config.submenuDelay);
+    this._submenuCloseTimeouts.set(submenu, timeoutId);
+  }
+  _cancelSubmenuCloseTimeout(submenu) {
+    const timeoutId = this._submenuCloseTimeouts.get(submenu);
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      this._submenuCloseTimeouts.delete(submenu);
+    }
+  }
+  _clearAllSubmenuTimeouts() {
+    for (const timeoutId of this._submenuCloseTimeouts.values()) {
+      clearTimeout(timeoutId);
+    }
+    this._submenuCloseTimeouts.clear();
+  }
+
+  // -------------------------------------------------------------------------
+  // Hover intent / Safe triangle
+  // -------------------------------------------------------------------------
+
+  _trackMousePosition(event) {
+    this._hoverIntentData = {
+      x: event.clientX,
+      y: event.clientY,
+      timestamp: Date.now()
+    };
+  }
+  _isMovingTowardSubmenu(event, submenu) {
+    if (!this._hoverIntentData) {
+      return false;
+    }
+    const submenuRect = submenu.getBoundingClientRect();
+    const currentPos = {
+      x: event.clientX,
+      y: event.clientY
+    };
+    const lastPos = {
+      x: this._hoverIntentData.x,
+      y: this._hoverIntentData.y
+    };
+
+    // Create a triangle from current position to submenu edges
+    // The triangle represents the "safe zone" for diagonal movement
+    const isRtl = isRTL();
+
+    // Determine which edge of the submenu to target based on direction
+    const targetX = isRtl ? submenuRect.right : submenuRect.left;
+    const topCorner = {
+      x: targetX,
+      y: submenuRect.top
+    };
+    const bottomCorner = {
+      x: targetX,
+      y: submenuRect.bottom
+    };
+
+    // Check if cursor is moving toward the submenu
+    // by checking if the current position is within the safe triangle
+    return this._pointInTriangle(currentPos, lastPos, topCorner, bottomCorner);
+  }
+  _pointInTriangle(point, v1, v2, v3) {
+    // Barycentric coordinate method to check if point is inside triangle
+    const d1 = triangleSign(point, v1, v2);
+    const d2 = triangleSign(point, v2, v3);
+    const d3 = triangleSign(point, v3, v1);
+    const hasNeg = d1 < 0 || d2 < 0 || d3 < 0;
+    const hasPos = d1 > 0 || d2 > 0 || d3 > 0;
+    return !(hasNeg && hasPos);
+  }
+
+  // -------------------------------------------------------------------------
+  // Keyboard navigation
+  // -------------------------------------------------------------------------
+
   _selectMenuItem({
     key,
     target
   }) {
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(element => isVisible(element));
+    // Get items only from the current menu level (not nested submenus)
+    // If target is inside a menu, use that menu; otherwise use the main menu
+    const currentMenu = target.closest(SELECTOR_MENU) || this._menu;
+    const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu).filter(element => isVisible(element));
     if (!items.length) {
       return;
     }
@@ -2230,6 +2997,89 @@ class Dropdown extends BaseComponent {
     // if target isn't included in items (e.g. when expanding the dropdown)
     // allow cycling to get the last item in case key equals ARROW_UP_KEY
     getNextActiveElement(items, target, key === ARROW_DOWN_KEY$1, !items.includes(target)).focus();
+  }
+  _handleSubmenuKeydown(event) {
+    const {
+      key,
+      target
+    } = event;
+    const isRtl = isRTL();
+
+    // Determine the "enter submenu" and "exit submenu" keys based on RTL
+    const enterKey = isRtl ? ARROW_LEFT_KEY$1 : ARROW_RIGHT_KEY$1;
+    const exitKey = isRtl ? ARROW_RIGHT_KEY$1 : ARROW_LEFT_KEY$1;
+
+    // Check if target is a submenu trigger
+    const submenuWrapper = target.closest(SELECTOR_SUBMENU);
+    const isSubmenuTrigger = submenuWrapper && target.matches(SELECTOR_SUBMENU_TOGGLE);
+
+    // Handle Enter/Space on submenu trigger
+    if ((key === ENTER_KEY || key === SPACE_KEY) && isSubmenuTrigger) {
+      event.preventDefault();
+      event.stopPropagation();
+      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+      if (submenu) {
+        this._closeSiblingSubmenus(submenuWrapper);
+        this._openSubmenu(target, submenu, submenuWrapper);
+        // Focus first item in submenu
+        requestAnimationFrame(() => {
+          const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu);
+          if (firstItem) {
+            firstItem.focus();
+          }
+        });
+      }
+      return true;
+    }
+
+    // Handle Right arrow (or Left in RTL) - enter submenu
+    if (key === enterKey && isSubmenuTrigger) {
+      event.preventDefault();
+      event.stopPropagation();
+      const submenu = SelectorEngine.findOne(SELECTOR_MENU, submenuWrapper);
+      if (submenu) {
+        this._closeSiblingSubmenus(submenuWrapper);
+        this._openSubmenu(target, submenu, submenuWrapper);
+        // Focus first item in submenu
+        requestAnimationFrame(() => {
+          const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu);
+          if (firstItem) {
+            firstItem.focus();
+          }
+        });
+      }
+      return true;
+    }
+
+    // Handle Left arrow (or Right in RTL) - exit submenu
+    if (key === exitKey) {
+      const currentMenu = target.closest(SELECTOR_MENU);
+      const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU);
+      if (parentSubmenuWrapper) {
+        event.preventDefault();
+        event.stopPropagation();
+        const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper);
+        this._closeSubmenu(currentMenu, parentSubmenuWrapper);
+        if (parentTrigger) {
+          parentTrigger.focus();
+        }
+        return true;
+      }
+    }
+
+    // Handle Home/End keys
+    if (key === HOME_KEY$1 || key === END_KEY$1) {
+      event.preventDefault();
+      event.stopPropagation();
+      const currentMenu = target.closest(SELECTOR_MENU);
+      const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu).filter(element => isVisible(element));
+      if (items.length) {
+        const targetItem = key === HOME_KEY$1 ? items[0] : items[items.length - 1];
+        targetItem.focus();
+      }
+      return true;
+    }
+    return false;
   }
   static clearMenus(event) {
     if (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY$1) {
@@ -2261,32 +3111,62 @@ class Dropdown extends BaseComponent {
     }
   }
   static dataApiKeydownHandler(event) {
-    // If not an UP | DOWN | ESCAPE key => not a dropdown command
-    // If input/textarea && if key is other than ESCAPE => not a dropdown command
-
+    // If not a relevant key => not a dropdown command
     const isInput = /input|textarea/i.test(event.target.tagName);
     const isEscapeEvent = event.key === ESCAPE_KEY$1;
     const isUpOrDownEvent = [ARROW_UP_KEY$1, ARROW_DOWN_KEY$1].includes(event.key);
-    if (!isUpOrDownEvent && !isEscapeEvent) {
+    const isLeftOrRightEvent = [ARROW_LEFT_KEY$1, ARROW_RIGHT_KEY$1].includes(event.key);
+    const isHomeOrEndEvent = [HOME_KEY$1, END_KEY$1].includes(event.key);
+    const isEnterOrSpaceEvent = [ENTER_KEY, SPACE_KEY].includes(event.key);
+
+    // Allow Enter/Space only on submenu triggers
+    const isSubmenuTrigger = event.target.matches(SELECTOR_SUBMENU_TOGGLE);
+    if (!isUpOrDownEvent && !isEscapeEvent && !isLeftOrRightEvent && !isHomeOrEndEvent && !(isEnterOrSpaceEvent && isSubmenuTrigger)) {
       return;
     }
     if (isInput && !isEscapeEvent) {
       return;
     }
-    event.preventDefault();
 
     // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
-    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$4) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$4)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE$4)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$4, event.delegateTarget.parentNode);
+    const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$5) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$5)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE$5)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$5, event.delegateTarget.parentNode);
+    if (!getToggleButton) {
+      return;
+    }
     const instance = Dropdown.getOrCreateInstance(getToggleButton);
+
+    // Handle submenu navigation first
+    if ((isLeftOrRightEvent || isHomeOrEndEvent || isEnterOrSpaceEvent && isSubmenuTrigger) && instance._handleSubmenuKeydown(event)) {
+      return;
+    }
+
+    // Handle Up/Down navigation
     if (isUpOrDownEvent) {
+      event.preventDefault();
       event.stopPropagation();
       instance.show();
       instance._selectMenuItem(event);
       return;
     }
-    if (instance._isShown()) {
-      // else is escape and we check if it is shown
+
+    // Handle Escape
+    if (isEscapeEvent && instance._isShown()) {
+      event.preventDefault();
       event.stopPropagation();
+
+      // If in a submenu, close just that submenu
+      const currentMenu = event.target.closest(SELECTOR_MENU);
+      const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU);
+      if (parentSubmenuWrapper && instance._openSubmenus.size > 0) {
+        const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper);
+        instance._closeSubmenu(currentMenu, parentSubmenuWrapper);
+        if (parentTrigger) {
+          parentTrigger.focus();
+        }
+        return;
+      }
+
+      // Otherwise close the whole dropdown
       instance.hide();
       getToggleButton.focus();
     }
@@ -2297,11 +3177,11 @@ class Dropdown extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$4, Dropdown.dataApiKeydownHandler);
+EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$5, Dropdown.dataApiKeydownHandler);
 EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
 EventHandler.on(document, EVENT_CLICK_DATA_API$2, Dropdown.clearMenus);
 EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
-EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$4, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, function (event) {
   event.preventDefault();
   Dropdown.getOrCreateInstance(this).toggle();
 });
@@ -2318,11 +3198,11 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$4, functi
  * Constants
  */
 
-const NAME$8 = 'backdrop';
+const NAME$b = 'backdrop';
 const CLASS_NAME_FADE$3 = 'fade';
 const CLASS_NAME_SHOW$4 = 'show';
-const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$8}`;
-const Default$7 = {
+const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$b}`;
+const Default$a = {
   className: 'modal-backdrop',
   clickCallback: null,
   isAnimated: false,
@@ -2330,7 +3210,7 @@ const Default$7 = {
   // if false, we use the backdrop helper without adding any element to the dom
   rootElement: 'body' // give the choice to place backdrop under different elements
 };
-const DefaultType$7 = {
+const DefaultType$a = {
   className: 'string',
   clickCallback: '(function|null)',
   isAnimated: 'boolean',
@@ -2352,13 +3232,13 @@ class Backdrop extends Config {
 
   // Getters
   static get Default() {
-    return Default$7;
+    return Default$a;
   }
   static get DefaultType() {
-    return DefaultType$7;
+    return DefaultType$a;
   }
   static get NAME() {
-    return NAME$8;
+    return NAME$b;
   }
 
   // Public
@@ -2442,19 +3322,19 @@ class Backdrop extends Config {
  * Constants
  */
 
-const NAME$7 = 'focustrap';
-const DATA_KEY$4 = 'bs.focustrap';
-const EVENT_KEY$4 = `.${DATA_KEY$4}`;
-const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$4}`;
-const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$4}`;
+const NAME$a = 'focustrap';
+const DATA_KEY$7 = 'bs.focustrap';
+const EVENT_KEY$7 = `.${DATA_KEY$7}`;
+const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$7}`;
+const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$7}`;
 const TAB_KEY = 'Tab';
 const TAB_NAV_FORWARD = 'forward';
 const TAB_NAV_BACKWARD = 'backward';
-const Default$6 = {
+const Default$9 = {
   autofocus: true,
   trapElement: null // The element to trap focus inside of
 };
-const DefaultType$6 = {
+const DefaultType$9 = {
   autofocus: 'boolean',
   trapElement: 'element'
 };
@@ -2473,13 +3353,13 @@ class FocusTrap extends Config {
 
   // Getters
   static get Default() {
-    return Default$6;
+    return Default$9;
   }
   static get DefaultType() {
-    return DefaultType$6;
+    return DefaultType$9;
   }
   static get NAME() {
-    return NAME$7;
+    return NAME$a;
   }
 
   // Public
@@ -2490,7 +3370,7 @@ class FocusTrap extends Config {
     if (this._config.autofocus) {
       this._config.trapElement.focus();
     }
-    EventHandler.off(document, EVENT_KEY$4); // guard against infinite focus loop
+    EventHandler.off(document, EVENT_KEY$7); // guard against infinite focus loop
     EventHandler.on(document, EVENT_FOCUSIN$3, event => this._handleFocusin(event));
     EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
     this._isActive = true;
@@ -2500,7 +3380,7 @@ class FocusTrap extends Config {
       return;
     }
     this._isActive = false;
-    EventHandler.off(document, EVENT_KEY$4);
+    EventHandler.off(document, EVENT_KEY$7);
   }
 
   // Private
@@ -2638,32 +3518,32 @@ class ScrollBarHelper {
  * Constants
  */
 
-const NAME$6 = 'offcanvas';
-const DATA_KEY$3 = 'bs.offcanvas';
-const EVENT_KEY$3 = `.${DATA_KEY$3}`;
-const DATA_API_KEY$1 = '.data-api';
-const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$3}${DATA_API_KEY$1}`;
+const NAME$9 = 'offcanvas';
+const DATA_KEY$6 = 'bs.offcanvas';
+const EVENT_KEY$6 = `.${DATA_KEY$6}`;
+const DATA_API_KEY$3 = '.data-api';
+const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$6}${DATA_API_KEY$3}`;
 const ESCAPE_KEY = 'Escape';
 const CLASS_NAME_SHOW$3 = 'show';
 const CLASS_NAME_SHOWING$1 = 'showing';
 const CLASS_NAME_HIDING = 'hiding';
 const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
 const OPEN_SELECTOR = '.offcanvas.show';
-const EVENT_SHOW$3 = `show${EVENT_KEY$3}`;
-const EVENT_SHOWN$3 = `shown${EVENT_KEY$3}`;
-const EVENT_HIDE$3 = `hide${EVENT_KEY$3}`;
-const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$3}`;
-const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$3}`;
-const EVENT_RESIZE = `resize${EVENT_KEY$3}`;
-const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$3}${DATA_API_KEY$1}`;
-const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$3}`;
-const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="offcanvas"]';
-const Default$5 = {
+const EVENT_SHOW$3 = `show${EVENT_KEY$6}`;
+const EVENT_SHOWN$3 = `shown${EVENT_KEY$6}`;
+const EVENT_HIDE$3 = `hide${EVENT_KEY$6}`;
+const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$6}`;
+const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$6}`;
+const EVENT_RESIZE = `resize${EVENT_KEY$6}`;
+const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`;
+const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$6}`;
+const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="offcanvas"]';
+const Default$8 = {
   backdrop: true,
   keyboard: true,
   scroll: false
 };
-const DefaultType$5 = {
+const DefaultType$8 = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   scroll: 'boolean'
@@ -2684,13 +3564,13 @@ class Offcanvas extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$5;
+    return Default$8;
   }
   static get DefaultType() {
-    return DefaultType$5;
+    return DefaultType$8;
   }
   static get NAME() {
-    return NAME$6;
+    return NAME$9;
   }
 
   // Public
@@ -2800,7 +3680,7 @@ class Offcanvas extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$3, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$4, function (event) {
   const target = SelectorEngine.getElementFromSelector(this);
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault();
@@ -2836,6 +3716,459 @@ EventHandler.on(window, EVENT_RESIZE, () => {
   }
 });
 enableDismissTrigger(Offcanvas);
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap strength.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$8 = 'strength';
+const DATA_KEY$5 = 'bs.strength';
+const EVENT_KEY$5 = `.${DATA_KEY$5}`;
+const DATA_API_KEY$2 = '.data-api';
+const EVENT_STRENGTH_CHANGE = `strengthChange${EVENT_KEY$5}`;
+const SELECTOR_DATA_STRENGTH = '[data-bs-strength]';
+const STRENGTH_LEVELS = ['weak', 'fair', 'good', 'strong'];
+const Default$7 = {
+  input: null,
+  // Selector or element for password input
+  minLength: 8,
+  messages: {
+    weak: 'Weak',
+    fair: 'Fair',
+    good: 'Good',
+    strong: 'Strong'
+  },
+  weights: {
+    minLength: 1,
+    extraLength: 1,
+    lowercase: 1,
+    uppercase: 1,
+    numbers: 1,
+    special: 1,
+    multipleSpecial: 1,
+    longPassword: 1
+  },
+  thresholds: [2, 4, 6],
+  // weak ≤2, fair ≤4, good ≤6, strong >6
+  scorer: null // Custom scoring function (password) => number
+};
+const DefaultType$7 = {
+  input: '(string|element|null)',
+  minLength: 'number',
+  messages: 'object',
+  weights: 'object',
+  thresholds: 'array',
+  scorer: '(function|null)'
+};
+
+/**
+ * Class definition
+ */
+
+class Strength extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+    this._input = this._getInput();
+    this._segments = SelectorEngine.find('.strength-segment', this._element);
+    this._textElement = SelectorEngine.findOne('.strength-text', this._element.parentElement);
+    this._currentStrength = null;
+    if (this._input) {
+      this._addEventListeners();
+      // Check initial value
+      this._evaluate();
+    }
+  }
+
+  // Getters
+  static get Default() {
+    return Default$7;
+  }
+  static get DefaultType() {
+    return DefaultType$7;
+  }
+  static get NAME() {
+    return NAME$8;
+  }
+
+  // Public
+  getStrength() {
+    return this._currentStrength;
+  }
+  evaluate() {
+    this._evaluate();
+  }
+
+  // Private
+  _getInput() {
+    if (this._config.input) {
+      return typeof this._config.input === 'string' ? SelectorEngine.findOne(this._config.input) : this._config.input;
+    }
+
+    // Look for preceding password input
+    const parent = this._element.parentElement;
+    return SelectorEngine.findOne('input[type="password"]', parent);
+  }
+  _addEventListeners() {
+    EventHandler.on(this._input, 'input', () => this._evaluate());
+    EventHandler.on(this._input, 'change', () => this._evaluate());
+  }
+  _evaluate() {
+    const password = this._input.value;
+    const score = this._calculateScore(password);
+    const strength = this._scoreToStrength(score);
+    if (strength !== this._currentStrength) {
+      this._currentStrength = strength;
+      this._updateUI(strength, score);
+      EventHandler.trigger(this._element, EVENT_STRENGTH_CHANGE, {
+        strength,
+        score,
+        password: password.length > 0 ? '***' : '' // Don't expose actual password
+      });
+    }
+  }
+  _calculateScore(password) {
+    if (!password) {
+      return 0;
+    }
+
+    // Use custom scorer if provided
+    if (typeof this._config.scorer === 'function') {
+      return this._config.scorer(password);
+    }
+    const {
+      weights
+    } = this._config;
+    let score = 0;
+
+    // Length scoring
+    if (password.length >= this._config.minLength) {
+      score += weights.minLength;
+    }
+    if (password.length >= this._config.minLength + 4) {
+      score += weights.extraLength;
+    }
+
+    // Character variety
+    if (/[a-z]/.test(password)) {
+      score += weights.lowercase;
+    }
+    if (/[A-Z]/.test(password)) {
+      score += weights.uppercase;
+    }
+    if (/\d/.test(password)) {
+      score += weights.numbers;
+    }
+
+    // Special characters
+    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      score += weights.special;
+    }
+
+    // Extra points for more special chars or length
+    if (/[!@#$%^&*(),.?":{}|<>].*[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      score += weights.multipleSpecial;
+    }
+    if (password.length >= 16) {
+      score += weights.longPassword;
+    }
+    return score;
+  }
+  _scoreToStrength(score) {
+    if (score === 0) {
+      return null;
+    }
+    const [weak, fair, good] = this._config.thresholds;
+    if (score <= weak) {
+      return 'weak';
+    }
+    if (score <= fair) {
+      return 'fair';
+    }
+    if (score <= good) {
+      return 'good';
+    }
+    return 'strong';
+  }
+  _updateUI(strength) {
+    // Update data attribute on element
+    if (strength) {
+      this._element.dataset.bsStrength = strength;
+    } else {
+      delete this._element.dataset.bsStrength;
+    }
+
+    // Update segmented meter
+    const strengthIndex = strength ? STRENGTH_LEVELS.indexOf(strength) : -1;
+    for (const [index, segment] of this._segments.entries()) {
+      if (index <= strengthIndex) {
+        segment.classList.add('active');
+      } else {
+        segment.classList.remove('active');
+      }
+    }
+
+    // Update text feedback
+    if (this._textElement) {
+      if (strength && this._config.messages[strength]) {
+        this._textElement.textContent = this._config.messages[strength];
+        this._textElement.dataset.bsStrength = strength;
+
+        // Also set the color via inheriting from parent or using CSS variable
+        const colorMap = {
+          weak: 'danger',
+          fair: 'warning',
+          good: 'info',
+          strong: 'success'
+        };
+        this._textElement.style.setProperty('--strength-color', `var(--${colorMap[strength]}-text)`);
+      } else {
+        this._textElement.textContent = '';
+        delete this._textElement.dataset.bsStrength;
+      }
+    }
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`, () => {
+  for (const element of SelectorEngine.find(SELECTOR_DATA_STRENGTH)) {
+    Strength.getOrCreateInstance(element);
+  }
+});
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap otp-input.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$7 = 'otpInput';
+const DATA_KEY$4 = 'bs.otp-input';
+const EVENT_KEY$4 = `.${DATA_KEY$4}`;
+const DATA_API_KEY$1 = '.data-api';
+const EVENT_COMPLETE = `complete${EVENT_KEY$4}`;
+const EVENT_INPUT = `input${EVENT_KEY$4}`;
+const SELECTOR_DATA_OTP = '[data-bs-otp]';
+const SELECTOR_INPUT = 'input';
+const Default$6 = {
+  length: 6,
+  mask: false
+};
+const DefaultType$6 = {
+  length: 'number',
+  mask: 'boolean'
+};
+
+/**
+ * Class definition
+ */
+
+class OtpInput extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+    this._inputs = SelectorEngine.find(SELECTOR_INPUT, this._element);
+    this._setupInputs();
+    this._addEventListeners();
+  }
+
+  // Getters
+  static get Default() {
+    return Default$6;
+  }
+  static get DefaultType() {
+    return DefaultType$6;
+  }
+  static get NAME() {
+    return NAME$7;
+  }
+
+  // Public
+  getValue() {
+    return this._inputs.map(input => input.value).join('');
+  }
+  setValue(value) {
+    const chars = String(value).split('');
+    for (const [index, input] of this._inputs.entries()) {
+      input.value = chars[index] || '';
+    }
+    this._checkComplete();
+  }
+  clear() {
+    for (const input of this._inputs) {
+      input.value = '';
+    }
+    this._inputs[0]?.focus();
+  }
+  focus() {
+    // Focus first empty input, or last input if all filled
+    const emptyInput = this._inputs.find(input => !input.value);
+    if (emptyInput) {
+      emptyInput.focus();
+    } else {
+      this._inputs.at(-1)?.focus();
+    }
+  }
+
+  // Private
+  _setupInputs() {
+    for (const input of this._inputs) {
+      // Set attributes for proper OTP handling
+      input.setAttribute('maxlength', '1');
+      input.setAttribute('inputmode', 'numeric');
+      input.setAttribute('pattern', '\\d*');
+
+      // First input gets autocomplete for browser OTP autofill
+      if (input === this._inputs[0]) {
+        input.setAttribute('autocomplete', 'one-time-code');
+      } else {
+        input.setAttribute('autocomplete', 'off');
+      }
+
+      // Mask input if configured
+      if (this._config.mask) {
+        input.setAttribute('type', 'password');
+      }
+    }
+  }
+  _addEventListeners() {
+    for (const [index, input] of this._inputs.entries()) {
+      EventHandler.on(input, 'input', event => this._handleInput(event, index));
+      EventHandler.on(input, 'keydown', event => this._handleKeydown(event, index));
+      EventHandler.on(input, 'paste', event => this._handlePaste(event));
+      EventHandler.on(input, 'focus', event => this._handleFocus(event));
+    }
+  }
+  _handleInput(event, index) {
+    const input = event.target;
+
+    // Only allow digits
+    if (!/^\d*$/.test(input.value)) {
+      input.value = input.value.replace(/\D/g, '');
+    }
+    const {
+      value
+    } = input;
+
+    // Handle multi-character input (some browsers/autofill)
+    if (value.length > 1) {
+      // Distribute characters across inputs
+      const chars = value.split('');
+      input.value = chars[0] || '';
+      for (let i = 1; i < chars.length && index + i < this._inputs.length; i++) {
+        this._inputs[index + i].value = chars[i];
+      }
+
+      // Focus appropriate input
+      const nextIndex = Math.min(index + chars.length, this._inputs.length - 1);
+      this._inputs[nextIndex].focus();
+    } else if (value && index < this._inputs.length - 1) {
+      // Auto-advance to next input
+      this._inputs[index + 1].focus();
+    }
+    EventHandler.trigger(this._element, EVENT_INPUT, {
+      value: this.getValue(),
+      index
+    });
+    this._checkComplete();
+  }
+  _handleKeydown(event, index) {
+    const {
+      key
+    } = event;
+    switch (key) {
+      case 'Backspace':
+        {
+          if (!this._inputs[index].value && index > 0) {
+            // Move to previous input and clear it
+            event.preventDefault();
+            this._inputs[index - 1].value = '';
+            this._inputs[index - 1].focus();
+          }
+          break;
+        }
+      case 'Delete':
+        {
+          // Clear current and shift remaining values left
+          event.preventDefault();
+          for (let i = index; i < this._inputs.length - 1; i++) {
+            this._inputs[i].value = this._inputs[i + 1].value;
+          }
+          this._inputs.at(-1).value = '';
+          break;
+        }
+      case 'ArrowLeft':
+        {
+          if (index > 0) {
+            event.preventDefault();
+            this._inputs[index - 1].focus();
+          }
+          break;
+        }
+      case 'ArrowRight':
+        {
+          if (index < this._inputs.length - 1) {
+            event.preventDefault();
+            this._inputs[index + 1].focus();
+          }
+          break;
+        }
+
+      // No default
+    }
+  }
+  _handlePaste(event) {
+    event.preventDefault();
+    const pastedData = (event.clipboardData || window.clipboardData).getData('text');
+    const digits = pastedData.replace(/\D/g, '').slice(0, this._inputs.length);
+    if (digits) {
+      this.setValue(digits);
+
+      // Focus last filled input or last input
+      const lastIndex = Math.min(digits.length, this._inputs.length) - 1;
+      this._inputs[lastIndex].focus();
+    }
+  }
+  _handleFocus(event) {
+    // Select the content on focus for easy replacement
+    event.target.select();
+  }
+  _checkComplete() {
+    const value = this.getValue();
+    const isComplete = value.length === this._inputs.length && this._inputs.every(input => input.value !== '');
+    if (isComplete) {
+      EventHandler.trigger(this._element, EVENT_COMPLETE, {
+        value
+      });
+    }
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$4}${DATA_API_KEY$1}`, () => {
+  for (const element of SelectorEngine.find(SELECTOR_DATA_OTP)) {
+    OtpInput.getOrCreateInstance(element);
+  }
+});
 
 /**
  * --------------------------------------------------------------------------
@@ -2944,8 +4277,8 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
  * Constants
  */
 
-const NAME$5 = 'TemplateFactory';
-const Default$4 = {
+const NAME$6 = 'TemplateFactory';
+const Default$5 = {
   allowList: DefaultAllowlist,
   content: {},
   // { selector : text ,  selector2 : text2 , }
@@ -2955,7 +4288,7 @@ const Default$4 = {
   sanitizeFn: null,
   template: '<div></div>'
 };
-const DefaultType$4 = {
+const DefaultType$5 = {
   allowList: 'object',
   content: 'object',
   extraClass: '(string|function)',
@@ -2981,13 +4314,13 @@ class TemplateFactory extends Config {
 
   // Getters
   static get Default() {
-    return Default$4;
+    return Default$5;
   }
   static get DefaultType() {
-    return DefaultType$4;
+    return DefaultType$5;
   }
   static get NAME() {
-    return NAME$5;
+    return NAME$6;
   }
 
   // Public
@@ -3080,14 +4413,14 @@ class TemplateFactory extends Config {
  * Constants
  */
 
-const NAME$4 = 'tooltip';
+const NAME$5 = 'tooltip';
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn']);
 const CLASS_NAME_FADE$2 = 'fade';
 const CLASS_NAME_MODAL = 'modal';
 const CLASS_NAME_SHOW$2 = 'show';
 const SELECTOR_TOOLTIP_INNER = '.tooltip-inner';
 const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
-const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="tooltip"]';
+const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="tooltip"]';
 const EVENT_MODAL_HIDE = 'hide.bs.modal';
 const TRIGGER_HOVER = 'hover';
 const TRIGGER_FOCUS = 'focus';
@@ -3098,7 +4431,7 @@ const EVENT_HIDDEN$2 = 'hidden';
 const EVENT_SHOW$2 = 'show';
 const EVENT_SHOWN$2 = 'shown';
 const EVENT_INSERTED = 'inserted';
-const EVENT_CLICK$2 = 'click';
+const EVENT_CLICK$3 = 'click';
 const EVENT_FOCUSIN$2 = 'focusin';
 const EVENT_FOCUSOUT$1 = 'focusout';
 const EVENT_MOUSEENTER$1 = 'mouseenter';
@@ -3110,7 +4443,7 @@ const AttachmentMap = {
   BOTTOM: 'bottom',
   LEFT: isRTL() ? 'right' : 'left'
 };
-const Default$3 = {
+const Default$4 = {
   allowList: DefaultAllowlist,
   animation: true,
   boundary: 'clippingParents',
@@ -3129,7 +4462,7 @@ const Default$3 = {
   title: '',
   trigger: 'hover focus'
 };
-const DefaultType$3 = {
+const DefaultType$4 = {
   allowList: 'object',
   animation: 'boolean',
   boundary: '(string|element)',
@@ -3182,13 +4515,13 @@ class Tooltip extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$3;
+    return Default$4;
   }
   static get DefaultType() {
-    return DefaultType$3;
+    return DefaultType$4;
   }
   static get NAME() {
-    return NAME$4;
+    return NAME$5;
   }
 
   // Public
@@ -3536,7 +4869,7 @@ class Tooltip extends BaseComponent {
     const triggers = this._config.trigger.split(' ');
     for (const trigger of triggers) {
       if (trigger === 'click') {
-        EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$2), this._config.selector, event => {
+        EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK$3), this._config.selector, event => {
           const context = this._initializeOnDelegatedTarget(event);
           context._activeTrigger[TRIGGER_CLICK] = !(context._isShown() && context._activeTrigger[TRIGGER_CLICK]);
           context.toggle();
@@ -3668,7 +5001,7 @@ class Tooltip extends BaseComponent {
  */
 
 const initTooltip = event => {
-  const target = event.target.closest(SELECTOR_DATA_TOGGLE$2);
+  const target = event.target.closest(SELECTOR_DATA_TOGGLE$3);
   if (!target) {
     return;
   }
@@ -3682,8 +5015,8 @@ const initTooltip = event => {
     tooltip._enter();
   }
 };
-EventHandler.on(document, EVENT_FOCUSIN$2, SELECTOR_DATA_TOGGLE$2, initTooltip);
-EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$2, initTooltip);
+EventHandler.on(document, EVENT_FOCUSIN$2, SELECTOR_DATA_TOGGLE$3, initTooltip);
+EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$3, initTooltip);
 
 /**
  * --------------------------------------------------------------------------
@@ -3697,14 +5030,14 @@ EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$2, initToolti
  * Constants
  */
 
-const NAME$3 = 'popover';
+const NAME$4 = 'popover';
 const SELECTOR_TITLE = '.popover-header';
 const SELECTOR_CONTENT = '.popover-body';
-const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="popover"]';
-const EVENT_CLICK$1 = 'click';
+const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="popover"]';
+const EVENT_CLICK$2 = 'click';
 const EVENT_FOCUSIN$1 = 'focusin';
 const EVENT_MOUSEENTER = 'mouseenter';
-const Default$2 = {
+const Default$3 = {
   ...Tooltip.Default,
   content: '',
   offset: [0, 8],
@@ -3712,7 +5045,7 @@ const Default$2 = {
   template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>',
   trigger: 'click'
 };
-const DefaultType$2 = {
+const DefaultType$3 = {
   ...Tooltip.DefaultType,
   content: '(null|string|element|function)'
 };
@@ -3724,13 +5057,13 @@ const DefaultType$2 = {
 class Popover extends Tooltip {
   // Getters
   static get Default() {
-    return Default$2;
+    return Default$3;
   }
   static get DefaultType() {
-    return DefaultType$2;
+    return DefaultType$3;
   }
   static get NAME() {
-    return NAME$3;
+    return NAME$4;
   }
 
   // Overrides
@@ -3755,7 +5088,7 @@ class Popover extends Tooltip {
  */
 
 const initPopover = event => {
-  const target = event.target.closest(SELECTOR_DATA_TOGGLE$1);
+  const target = event.target.closest(SELECTOR_DATA_TOGGLE$2);
   if (!target) {
     return;
   }
@@ -3778,9 +5111,9 @@ const initPopover = event => {
 };
 
 // Support click (default), hover, and focus triggers
-EventHandler.on(document, EVENT_CLICK$1, SELECTOR_DATA_TOGGLE$1, initPopover);
-EventHandler.on(document, EVENT_FOCUSIN$1, SELECTOR_DATA_TOGGLE$1, initPopover);
-EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$1, initPopover);
+EventHandler.on(document, EVENT_CLICK$2, SELECTOR_DATA_TOGGLE$2, initPopover);
+EventHandler.on(document, EVENT_FOCUSIN$1, SELECTOR_DATA_TOGGLE$2, initPopover);
+EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$2, initPopover);
 
 /**
  * --------------------------------------------------------------------------
@@ -3794,13 +5127,13 @@ EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$1, initPopover)
  * Constants
  */
 
-const NAME$2 = 'scrollspy';
-const DATA_KEY$2 = 'bs.scrollspy';
-const EVENT_KEY$2 = `.${DATA_KEY$2}`;
+const NAME$3 = 'scrollspy';
+const DATA_KEY$3 = 'bs.scrollspy';
+const EVENT_KEY$3 = `.${DATA_KEY$3}`;
 const DATA_API_KEY = '.data-api';
-const EVENT_ACTIVATE = `activate${EVENT_KEY$2}`;
-const EVENT_CLICK = `click${EVENT_KEY$2}`;
-const EVENT_LOAD_DATA_API$1 = `load${EVENT_KEY$2}${DATA_API_KEY}`;
+const EVENT_ACTIVATE = `activate${EVENT_KEY$3}`;
+const EVENT_CLICK$1 = `click${EVENT_KEY$3}`;
+const EVENT_LOAD_DATA_API$1 = `load${EVENT_KEY$3}${DATA_API_KEY}`;
 const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
 const CLASS_NAME_ACTIVE$1 = 'active';
 const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
@@ -3812,7 +5145,7 @@ const SELECTOR_LIST_ITEMS = '.list-group-item';
 const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`;
 const SELECTOR_DROPDOWN = '.dropdown';
 const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
-const Default$1 = {
+const Default$2 = {
   offset: null,
   // TODO: v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: '0px 0px -25%',
@@ -3820,7 +5153,7 @@ const Default$1 = {
   target: null,
   threshold: [0.1, 0.5, 1]
 };
-const DefaultType$1 = {
+const DefaultType$2 = {
   offset: '(number|null)',
   // TODO v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: 'string',
@@ -3852,13 +5185,13 @@ class ScrollSpy extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$1;
+    return Default$2;
   }
   static get DefaultType() {
-    return DefaultType$1;
+    return DefaultType$2;
   }
   static get NAME() {
-    return NAME$2;
+    return NAME$3;
   }
 
   // Public
@@ -3897,8 +5230,8 @@ class ScrollSpy extends BaseComponent {
     }
 
     // unregister any previous listeners
-    EventHandler.off(this._config.target, EVENT_CLICK);
-    EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
+    EventHandler.off(this._config.target, EVENT_CLICK$1);
+    EventHandler.on(this._config.target, EVENT_CLICK$1, SELECTOR_TARGET_LINKS, event => {
       const observableSection = this._observableSections.get(event.target.hash);
       if (observableSection) {
         event.preventDefault();
@@ -4034,16 +5367,16 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$1, () => {
  * Constants
  */
 
-const NAME$1 = 'tab';
-const DATA_KEY$1 = 'bs.tab';
-const EVENT_KEY$1 = `.${DATA_KEY$1}`;
-const EVENT_HIDE$1 = `hide${EVENT_KEY$1}`;
-const EVENT_HIDDEN$1 = `hidden${EVENT_KEY$1}`;
-const EVENT_SHOW$1 = `show${EVENT_KEY$1}`;
-const EVENT_SHOWN$1 = `shown${EVENT_KEY$1}`;
-const EVENT_CLICK_DATA_API = `click${EVENT_KEY$1}`;
-const EVENT_KEYDOWN = `keydown${EVENT_KEY$1}`;
-const EVENT_LOAD_DATA_API = `load${EVENT_KEY$1}`;
+const NAME$2 = 'tab';
+const DATA_KEY$2 = 'bs.tab';
+const EVENT_KEY$2 = `.${DATA_KEY$2}`;
+const EVENT_HIDE$1 = `hide${EVENT_KEY$2}`;
+const EVENT_HIDDEN$1 = `hidden${EVENT_KEY$2}`;
+const EVENT_SHOW$1 = `show${EVENT_KEY$2}`;
+const EVENT_SHOWN$1 = `shown${EVENT_KEY$2}`;
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY$2}`;
+const EVENT_KEYDOWN = `keydown${EVENT_KEY$2}`;
+const EVENT_LOAD_DATA_API = `load${EVENT_KEY$2}`;
 const ARROW_LEFT_KEY = 'ArrowLeft';
 const ARROW_RIGHT_KEY = 'ArrowRight';
 const ARROW_UP_KEY = 'ArrowUp';
@@ -4060,8 +5393,8 @@ const NOT_SELECTOR_DROPDOWN_TOGGLE = `:not(${SELECTOR_DROPDOWN_TOGGLE})`;
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]';
 const SELECTOR_OUTER = '.nav-item, .list-group-item';
 const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_DROPDOWN_TOGGLE}, .list-group-item${NOT_SELECTOR_DROPDOWN_TOGGLE}, [role="tab"]${NOT_SELECTOR_DROPDOWN_TOGGLE}`;
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'; // TODO: could only be `tab` in v6
-const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`;
+const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'; // TODO: could only be `tab` in v6
+const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE$1}`;
 const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="pill"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="list"]`;
 
 /**
@@ -4085,7 +5418,7 @@ class Tab extends BaseComponent {
 
   // Getters
   static get NAME() {
-    return NAME$1;
+    return NAME$2;
   }
 
   // Public
@@ -4254,7 +5587,7 @@ class Tab extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE$1, function (event) {
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault();
   }
@@ -4285,27 +5618,27 @@ EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
  * Constants
  */
 
-const NAME = 'toast';
-const DATA_KEY = 'bs.toast';
-const EVENT_KEY = `.${DATA_KEY}`;
-const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
-const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`;
-const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
-const EVENT_FOCUSOUT = `focusout${EVENT_KEY}`;
-const EVENT_HIDE = `hide${EVENT_KEY}`;
-const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
-const EVENT_SHOW = `show${EVENT_KEY}`;
-const EVENT_SHOWN = `shown${EVENT_KEY}`;
+const NAME$1 = 'toast';
+const DATA_KEY$1 = 'bs.toast';
+const EVENT_KEY$1 = `.${DATA_KEY$1}`;
+const EVENT_MOUSEOVER = `mouseover${EVENT_KEY$1}`;
+const EVENT_MOUSEOUT = `mouseout${EVENT_KEY$1}`;
+const EVENT_FOCUSIN = `focusin${EVENT_KEY$1}`;
+const EVENT_FOCUSOUT = `focusout${EVENT_KEY$1}`;
+const EVENT_HIDE = `hide${EVENT_KEY$1}`;
+const EVENT_HIDDEN = `hidden${EVENT_KEY$1}`;
+const EVENT_SHOW = `show${EVENT_KEY$1}`;
+const EVENT_SHOWN = `shown${EVENT_KEY$1}`;
 const CLASS_NAME_FADE = 'fade';
 const CLASS_NAME_HIDE = 'hide'; // @deprecated - kept here only for backwards compatibility
 const CLASS_NAME_SHOW = 'show';
 const CLASS_NAME_SHOWING = 'showing';
-const DefaultType = {
+const DefaultType$1 = {
   animation: 'boolean',
   autohide: 'boolean',
   delay: 'number'
 };
-const Default = {
+const Default$1 = {
   animation: true,
   autohide: true,
   delay: 5000
@@ -4326,13 +5659,13 @@ class Toast extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default;
+    return Default$1;
   }
   static get DefaultType() {
-    return DefaultType;
+    return DefaultType$1;
   }
   static get NAME() {
-    return NAME;
+    return NAME$1;
   }
 
   // Public
@@ -4437,5 +5770,88 @@ class Toast extends BaseComponent {
 
 enableDismissTrigger(Toast);
 
-export { Alert, Button, Carousel, Collapse, Dialog, Dropdown, Offcanvas, Popover, ScrollSpy, Tab, Toast, Tooltip };
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap toggler.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME = 'toggler';
+const DATA_KEY = 'bs.toggler';
+const EVENT_KEY = `.${DATA_KEY}`;
+const EVENT_TOGGLE = `toggle${EVENT_KEY}`;
+const EVENT_TOGGLED = `toggled${EVENT_KEY}`;
+const EVENT_CLICK = 'click';
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="toggler"]';
+const DefaultType = {
+  attribute: 'string',
+  value: '(string|number|boolean)'
+};
+const Default = {
+  attribute: 'class',
+  value: null
+};
+
+/**
+ * Class definition
+ */
+
+class Toggler extends BaseComponent {
+  // Getters
+  static get Default() {
+    return Default;
+  }
+  static get DefaultType() {
+    return DefaultType;
+  }
+  static get NAME() {
+    return NAME;
+  }
+
+  // Public
+  toggle() {
+    const toggleEvent = EventHandler.trigger(this._element, EVENT_TOGGLE);
+    if (toggleEvent.defaultPrevented) {
+      return;
+    }
+    this._execute();
+    EventHandler.trigger(this._element, EVENT_TOGGLED);
+  }
+
+  // Private
+  _execute() {
+    const {
+      attribute,
+      value
+    } = this._config;
+    if (attribute === 'id') {
+      return; // You have to be kidding
+    }
+    if (attribute === 'class') {
+      this._element.classList.toggle(value);
+      return;
+    }
+
+    // Compare as strings since getAttribute() always returns a string
+    if (this._element.getAttribute(attribute) === String(value)) {
+      this._element.removeAttribute(attribute);
+      return;
+    }
+    this._element.setAttribute(attribute, value);
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+eventActionOnPlugin(Toggler, EVENT_CLICK, SELECTOR_DATA_TOGGLE, 'toggle');
+
+export { Alert, Button, Carousel, Collapse, Datepicker, Dialog, Dropdown, Offcanvas, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
 //# sourceMappingURL=bootstrap.esm.js.map
