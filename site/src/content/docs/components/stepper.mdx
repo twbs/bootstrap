@@ -1,10 +1,7 @@
 ---
-layout: docs
 title: Stepper
-description: Create a step-by-step progress bar with Bootstrap's custom stepper component. Ideal for shopping carts, sign-up forms, and more.
-group: components
+description: Create timelines, wizards, or step-by-step progress bars. Ideal for shopping carts, sign-up forms, and more.
 toc: true
-added: "5.4"
 ---
 
 ## Examples
@@ -13,126 +10,85 @@ added: "5.4"
 
 Steppers are built with CSS Grid and `<ol>` elements. By default, steps are displayed vertically. You can transform them into horizontal lists with responsive modifier classes.
 
-{{< example >}}
-<ol class="stepper">
-  <li class="stepper-item active">Create account</li>
-  <li class="stepper-item active">Confirm email</li>
-  <li class="stepper-item">Update profile</li>
-  <li class="stepper-item">Finish</li>
-</ol>
-{{< /example >}}
+<Example code={`<ol class="stepper">
+    <li class="stepper-item active">Create account</li>
+    <li class="stepper-item active">Confirm email</li>
+    <li class="stepper-item">Update profile</li>
+    <li class="stepper-item">Finish</li>
+  </ol>`} />
 
 ### Gap
 
 Customize the gap with styles that override the `--bs-stepper-gap` CSS variable.
 
-{{< example >}}
-<ol class="stepper" style="--bs-stepper-gap: 3rem">
-  <li class="stepper-item active">Create account</li>
-  <li class="stepper-item active">Confirm email</li>
-  <li class="stepper-item">Update profile</li>
-  <li class="stepper-item">Finish</li>
-</ol>
-{{< /example >}}
+<Example code={`<ol class="stepper" style="--bs-stepper-gap: 3rem">
+    <li class="stepper-item active">Create account</li>
+    <li class="stepper-item active">Confirm email</li>
+    <li class="stepper-item">Update profile</li>
+    <li class="stepper-item">Finish</li>
+  </ol>`} />
 
-## Horizontal
+## Playground
 
-Use the `.stepper-horizontal{-sm|-md|-lg|-xl|-xxl}` classes to display steps horizontally starting at the specified breakpoint size. Horizontal steppers are rendered with `display: inline-grid` so their alignment can be modified (see below).
+Experiment with stepper options including orientation, breakpoints, step count, and more.
 
-Here's the same stepper with modifier classes for every breakpoint.
-
-{{< example >}}
-<select class="form-select form-select-sm w-auto mb-4" id="stepper-switcher">
-{{< stepper.inline >}}
-{{- range $.Site.Data.breakpoints -}}
-  <option value="stepper-horizontal{{ .abbr }}">horizontal{{ .abbr }}</option>
-{{- end -}}
-{{< /stepper.inline >}}
-</select>
-
-<ol class="stepper stepper-horizontal" id="stepper">
-  <li class="stepper-item active">Create account</li>
-  <li class="stepper-item active">Confirm email</li>
-  <li class="stepper-item">Update profile</li>
-  <li class="stepper-item">Finish</li>
-</ol>
-{{< /example >}}
-
-<script>
-  const stepperSwitcher = document.getElementById('stepper-switcher');
-  const stepper = document.getElementById('stepper');
-
-  stepperSwitcher.addEventListener('change', function() {
-    const selectedOption = stepperSwitcher.value;
-    stepper.className = `stepper ${selectedOption}`;
-  });
-</script>
+<StepperPlayground />
 
 ### Alignment
 
-Use [text alignment utilities]({{< docsref "/utilities/text#text-alignment" >}}) (because we use `display: inline-grid`) to align the steps. The inline grid arrangement allows us to keep the steps equal width and ensures the connecting lines are rendered correctly.
+Use [text alignment utilities]([[docsref:/utilities/text-alignment]]) (because we use `display: inline-grid`) to align the steps. The inline grid arrangement allows us to keep the steps equal width and ensures the connecting lines are rendered correctly.
 
-{{< example >}}
-<ol class="stepper stepper-horizontal">
-  <li class="stepper-item active">Default stepper</li>
-  <li class="stepper-item active">Confirm email</li>
-  <li class="stepper-item">Update profile</li>
-  <li class="stepper-item">Finish</li>
-</ol>
-{{< /example >}}
+<Example code={`<ol class="stepper stepper-horizontal">
+    <li class="stepper-item active">Default stepper</li>
+    <li class="stepper-item active">Confirm email</li>
+    <li class="stepper-item">Update profile</li>
+    <li class="stepper-item">Finish</li>
+  </ol>`} />
 
-{{< example class="text-center" >}}
-<ol class="stepper stepper-horizontal">
-  <li class="stepper-item active">Center stepper</li>
-  <li class="stepper-item active">Confirm email</li>
-  <li class="stepper-item">Update profile</li>
-  <li class="stepper-item">Finish</li>
-</ol>
-{{< /example >}}
+<Example class="text-center" code={`<ol class="stepper stepper-horizontal">
+    <li class="stepper-item active">Center stepper</li>
+    <li class="stepper-item active">Confirm email</li>
+    <li class="stepper-item">Update profile</li>
+    <li class="stepper-item">Finish</li>
+  </ol>`} />
 
-{{< example class="text-end" >}}
-<ol class="stepper stepper-horizontal">
-  <li class="stepper-item active">End stepper</li>
-  <li class="stepper-item active">Confirm email</li>
-  <li class="stepper-item">Update profile</li>
-  <li class="stepper-item">Finish</li>
-</ol>
-{{< /example >}}
+<Example class="text-end" code={`<ol class="stepper stepper-horizontal">
+    <li class="stepper-item active">End stepper</li>
+    <li class="stepper-item active">Confirm email</li>
+    <li class="stepper-item">Update profile</li>
+    <li class="stepper-item">Finish</li>
+  </ol>`} />
 
 Apply `.w-100` to the stepper to make it full width. Stepper items will be stretched to fill the available space. Alignment doesn't affect full-width steppers.
 
-{{< example >}}
-<ol class="stepper stepper-horizontal w-100">
+<Example code={`<ol class="stepper stepper-horizontal w-100">
   <li class="stepper-item active">Create account</li>
   <li class="stepper-item active">Confirm email</li>
   <li class="stepper-item">Update profile</li>
   <li class="stepper-item">Finish</li>
-</ol>
-{{< /example >}}
+</ol>`} />
 
 ### With anchors
 
 Use anchor elements to build your stepper if it links across multiple pages. Add `role="button"` or use `<button>` elements if you're linking across sections in the same document.
 
-Consider using our [link helpers]({{< docsref "/helpers/colored-links" >}}) for quick color control.
+Consider using our [link utilities]([[docsref:/utilities/link]]) for quick color control.
 
-{{< example >}}
-<div class="stepper">
+<Example code={`<div class="stepper">
   <a href="#" role="button" class="stepper-item link-body-emphasis active">Create account</a>
   <a href="#" role="button" class="stepper-item link-body-emphasis active">Confirm email</a>
   <a href="#" role="button" class="stepper-item link-secondary">Update profile</a>
   <a href="#" role="button" class="stepper-item link-secondary">Finish</a>
-</div>
-{{< /example >}}
+</div>`} />
 
 ## CSS
 
 ### Variables
 
-Steppers use [CSS variables]({{< docsref "/customize/css-variables/" >}}) for easier customization.
+Steppers use [CSS variables]([[docsref:/customize/css-variables]]) for easier customization.
 
-{{< scss-docs name="stepper-css-vars" file="scss/_stepper.scss" >}}
+<ScssDocs name="stepper-css-vars" file="scss/_stepper.scss" />
 
 ### Sass variables
 
-{{< scss-docs name="stepper-variables" file="scss/_variables.scss" >}}
+<ScssDocs name="stepper-variables" file="scss/_stepper.scss" />

@@ -1,0 +1,373 @@
+---
+import { getData } from '@libs/data'
+import Example from '@components/shortcodes/Example.astro'
+
+const breakpoints = getData('breakpoints')
+const orientations = [
+  { value: 'vertical', label: 'Vertical' },
+  { value: 'horizontal', label: 'Horizontal' }
+]
+const stepCounts = [3, 4, 5, 6]
+---
+
+<div class="bg-1 p-3 rounded-3">
+  <div class="d-flex flex-wrap gap-3 align-items-end">
+    <div class="vstack gap-1">
+      <label class="form-label fw-semibold mb-0">Orientation</label>
+      <div class="btn-group" role="group" aria-label="Stepper orientation">
+        {orientations.map((orientation) => (
+          <label class="btn-check btn-outline theme-secondary">
+            <input
+              type="radio"
+              name="stepper-orientation"
+              value={orientation.value}
+              checked={orientation.value === 'vertical'}
+              data-orientation={orientation.value}
+            />
+            {orientation.label}
+          </label>
+        ))}
+      </div>
+    </div>
+
+    <div class="vstack gap-1" id="breakpoint-control">
+      <label class="form-label fw-semibold mb-0">Breakpoint</label>
+      <div class="dropdown">
+        <button
+          type="button"
+          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          id="stepper-breakpoint-dropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          data-breakpoint=""
+          disabled
+          style="min-width: 120px;"
+        >
+          All sizes
+          <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+            <use href="#chevron-expand" />
+          </svg>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="stepper-breakpoint-dropdown">
+          {breakpoints.map((bp) => (
+            <li>
+              <a
+                class:list={['dropdown-item', { 'active': bp.abbr === '' }]}
+                href="#"
+                data-breakpoint={bp.abbr}
+              >
+                {bp.abbr === '' ? 'All sizes' : `${bp.name} (${bp.breakpoint})`}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="vstack gap-1">
+      <label class="form-label fw-semibold mb-0">Steps</label>
+      <div class="dropdown">
+        <button
+          type="button"
+          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          id="stepper-count-dropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          data-count="4"
+          style="min-width: 80px;"
+        >
+          4
+          <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+            <use href="#chevron-expand" />
+          </svg>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="stepper-count-dropdown">
+          {stepCounts.map((count) => (
+            <li>
+              <a
+                class:list={['dropdown-item', { 'active': count === 4 }]}
+                href="#"
+                data-count={count}
+              >
+                {count}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="vstack gap-1">
+      <label class="form-label fw-semibold mb-0">Active step</label>
+      <div class="dropdown">
+        <button
+          type="button"
+          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          id="stepper-active-dropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          data-active="2"
+          style="min-width: 80px;"
+        >
+          2
+          <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+            <use href="#chevron-expand" />
+          </svg>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="stepper-active-dropdown">
+          {stepCounts.map((count) => (
+            <li>
+              <a
+                class:list={['dropdown-item', { 'active': count === 2 }]}
+                href="#"
+                data-active={count}
+              >
+                {count}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="vstack gap-1">
+      <label class="form-label fw-semibold mb-0">Full width</label>
+      <div class="form-check form-switch mb-0">
+        <input class="form-check-input" type="checkbox" role="switch" id="stepper-fullwidth" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<Example
+  code={`<ol class="stepper">
+  <li class="stepper-item active">Create account</li>
+  <li class="stepper-item active">Confirm email</li>
+  <li class="stepper-item">Update profile</li>
+  <li class="stepper-item">Finish</li>
+</ol>`}
+  id="stepper-preview"
+/>
+
+<script>
+  const orientationInputs = document.querySelectorAll('input[name="stepper-orientation"]')
+  const breakpointDropdownButton = document.querySelector('#stepper-breakpoint-dropdown') as HTMLButtonElement
+  const breakpointDropdownItems = document.querySelectorAll('#stepper-breakpoint-dropdown + .dropdown-menu .dropdown-item')
+  const countDropdownButton = document.querySelector('#stepper-count-dropdown') as HTMLButtonElement
+  const countDropdownItems = document.querySelectorAll('#stepper-count-dropdown + .dropdown-menu .dropdown-item')
+  const activeDropdownButton = document.querySelector('#stepper-active-dropdown') as HTMLButtonElement
+  const activeDropdownItems = document.querySelectorAll('#stepper-active-dropdown + .dropdown-menu .dropdown-item')
+  const fullwidthSwitch = document.querySelector('#stepper-fullwidth') as HTMLInputElement
+  const breakpointControl = document.querySelector('#breakpoint-control') as HTMLElement
+  const previewContainer = document.querySelector('#stepper-preview') as HTMLElement
+  const codeSnippet = document.querySelector('#stepper-preview')?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+
+  const stepLabels = ['Create account', 'Confirm email', 'Update profile', 'Finish', 'Complete', 'Done']
+
+  function getOrientation(): string {
+    return (document.querySelector('input[name="stepper-orientation"]:checked') as HTMLInputElement)?.value || 'vertical'
+  }
+
+  function getBreakpoint(): string {
+    return breakpointDropdownButton?.dataset.breakpoint || ''
+  }
+
+  function getStepCount(): number {
+    return parseInt(countDropdownButton?.dataset.count || '4', 10)
+  }
+
+  function getActiveStep(): number {
+    return parseInt(activeDropdownButton?.dataset.active || '2', 10)
+  }
+
+  function isFullWidth(): boolean {
+    return fullwidthSwitch?.checked || false
+  }
+
+  function buildStepperClass(): string {
+    const classes = ['stepper']
+    const orientation = getOrientation()
+    const breakpoint = getBreakpoint()
+    const fullWidth = isFullWidth()
+
+    if (orientation === 'horizontal') {
+      classes.push(`stepper-horizontal${breakpoint}`)
+    }
+
+    if (fullWidth && orientation === 'horizontal') {
+      classes.push('w-100')
+    }
+
+    return classes.join(' ')
+  }
+
+  function generateHTML(): string {
+    const stepCount = getStepCount()
+    const activeStep = getActiveStep()
+    const stepperClass = buildStepperClass()
+
+    let html = `<ol class="${stepperClass}">\n`
+
+    for (let i = 1; i <= stepCount; i++) {
+      const isActive = i <= activeStep
+      const activeClass = isActive ? ' active' : ''
+      const label = stepLabels[i - 1] || `Step ${i}`
+      html += `  <li class="stepper-item${activeClass}">${label}</li>\n`
+    }
+
+    html += '</ol>'
+    return html
+  }
+
+  function updatePreview() {
+    if (!previewContainer) return
+
+    const stepperElement = previewContainer.querySelector('.stepper')
+    if (!stepperElement) return
+
+    const stepCount = getStepCount()
+    const activeStep = getActiveStep()
+    const stepperClass = buildStepperClass()
+
+    // Update stepper classes
+    stepperElement.className = stepperClass
+
+    // Update step items
+    let stepsHtml = ''
+    for (let i = 1; i <= stepCount; i++) {
+      const isActive = i <= activeStep
+      const activeClass = isActive ? ' active' : ''
+      const label = stepLabels[i - 1] || `Step ${i}`
+      stepsHtml += `<li class="stepper-item${activeClass}">${label}</li>`
+    }
+    stepperElement.innerHTML = stepsHtml
+  }
+
+  function updateCodeSnippet() {
+    if (!codeSnippet) return
+
+    const htmlCode = generateHTML()
+    codeSnippet.className = 'language-html'
+    codeSnippet.textContent = htmlCode
+
+    if (typeof window !== 'undefined' && (window as any).Prism) {
+      (window as any).Prism.highlightElement(codeSnippet)
+    }
+  }
+
+  function updateActiveDropdown() {
+    const stepCount = getStepCount()
+    const currentActive = getActiveStep()
+
+    // Update dropdown items visibility
+    activeDropdownItems.forEach((item) => {
+      const value = parseInt((item as HTMLElement).dataset.active || '0', 10)
+      const li = item.parentElement as HTMLElement
+      if (value > stepCount) {
+        li.classList.add('d-none')
+      } else {
+        li.classList.remove('d-none')
+      }
+    })
+
+    // Reset active step if current is higher than step count
+    if (currentActive > stepCount) {
+      activeDropdownButton.dataset.active = String(stepCount)
+      activeDropdownButton.textContent = String(stepCount)
+      activeDropdownItems.forEach((item) => {
+        const value = parseInt((item as HTMLElement).dataset.active || '0', 10)
+        item.classList.toggle('active', value === stepCount)
+      })
+    }
+  }
+
+  function updateBreakpointState() {
+    const orientation = getOrientation()
+    const isHorizontal = orientation === 'horizontal'
+
+    breakpointDropdownButton.disabled = !isHorizontal
+    breakpointControl.classList.toggle('opacity-50', !isHorizontal)
+
+    // Disable fullwidth when vertical
+    fullwidthSwitch.disabled = !isHorizontal
+    fullwidthSwitch.closest('.vstack')?.classList.toggle('opacity-50', !isHorizontal)
+  }
+
+  function update() {
+    updateBreakpointState()
+    updateActiveDropdown()
+    updatePreview()
+    updateCodeSnippet()
+  }
+
+  // Initialize dropdowns
+  if (breakpointDropdownButton) {
+    const breakpointDropdown = bootstrap.Dropdown.getOrCreateInstance(breakpointDropdownButton)
+
+    breakpointDropdownItems.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
+        const breakpoint = (item as HTMLElement).dataset.breakpoint || ''
+        const label = item.textContent?.trim() || 'All sizes'
+
+        breakpointDropdownButton.textContent = label
+        breakpointDropdownButton.dataset.breakpoint = breakpoint
+
+        breakpointDropdownItems.forEach((i) => i.classList.remove('active'))
+        item.classList.add('active')
+
+        breakpointDropdown.hide()
+        update()
+      })
+    })
+  }
+
+  if (countDropdownButton) {
+    const countDropdown = bootstrap.Dropdown.getOrCreateInstance(countDropdownButton)
+
+    countDropdownItems.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
+        const count = (item as HTMLElement).dataset.count || '4'
+
+        countDropdownButton.textContent = count
+        countDropdownButton.dataset.count = count
+
+        countDropdownItems.forEach((i) => i.classList.remove('active'))
+        item.classList.add('active')
+
+        countDropdown.hide()
+        update()
+      })
+    })
+  }
+
+  if (activeDropdownButton) {
+    const activeDropdown = bootstrap.Dropdown.getOrCreateInstance(activeDropdownButton)
+
+    activeDropdownItems.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
+        const active = (item as HTMLElement).dataset.active || '2'
+
+        activeDropdownButton.textContent = active
+        activeDropdownButton.dataset.active = active
+
+        activeDropdownItems.forEach((i) => i.classList.remove('active'))
+        item.classList.add('active')
+
+        activeDropdown.hide()
+        update()
+      })
+    })
+  }
+
+  orientationInputs.forEach((input) => {
+    input.addEventListener('change', update)
+  })
+
+  fullwidthSwitch?.addEventListener('change', update)
+
+  // Initial update
+  update()
+</script>
