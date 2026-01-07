@@ -140,7 +140,10 @@ class Dropdown extends BaseComponent {
     this._submenuCloseTimeouts = new Map() // Map of submenu element -> timeout ID
     this._hoverIntentData = null // For safe triangle calculation
 
-    this._menu = SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+    // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
+    this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
+      SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
+      SelectorEngine.findOne(SELECTOR_MENU, this._parent)
 
     // Parse responsive placements on init
     this._parseResponsivePlacements()
@@ -857,26 +860,6 @@ class Dropdown extends BaseComponent {
     return false
   }
 
-  _handleEscapeKey(event, toggleButton) {
-    // If in a submenu, close just that submenu
-    const currentMenu = event.target.closest(SELECTOR_MENU)
-    const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
-
-    if (parentSubmenuWrapper && this._openSubmenus.size > 0) {
-      const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)
-      this._closeSubmenu(currentMenu, parentSubmenuWrapper)
-      if (parentTrigger) {
-        parentTrigger.focus()
-      }
-
-      return
-    }
-
-    // Otherwise close the whole dropdown
-    this.hide()
-    toggleButton.focus()
-  }
-
   static clearMenus(event) {
     if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
       return
@@ -936,9 +919,12 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ?
       this :
-      SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode)
+      (SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
+        SelectorEngine.next(this, SELECTOR_DATA_TOGGLE)[0] ||
+        SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, event.delegateTarget.parentNode))
 
     if (!getToggleButton) {
       return
@@ -964,7 +950,24 @@ class Dropdown extends BaseComponent {
     if (isEscapeEvent && instance._isShown()) {
       event.preventDefault()
       event.stopPropagation()
-      instance._handleEscapeKey(event, getToggleButton)
+
+      // If in a submenu, close just that submenu
+      const currentMenu = event.target.closest(SELECTOR_MENU)
+      const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
+
+      if (parentSubmenuWrapper && instance._openSubmenus.size > 0) {
+        const parentTrigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, parentSubmenuWrapper)
+        instance._closeSubmenu(currentMenu, parentSubmenuWrapper)
+        if (parentTrigger) {
+          parentTrigger.focus()
+        }
+
+        return
+      }
+
+      // Otherwise close the whole dropdown
+      instance.hide()
+      getToggleButton.focus()
     }
   }
 }
