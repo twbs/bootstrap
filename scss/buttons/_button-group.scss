@@ -33,6 +33,22 @@
     }
   }
 
+  .btn-group-divider {
+    > [class*="btn-"] + [class*="btn-"] {
+      &::before {
+        position: absolute;
+        top: 25%;
+        bottom: 25%;
+        left: calc(var(--btn-border-width) * -1);
+        z-index: 3;
+        width: var(--btn-border-width);
+        content: "";
+        background-color: var(--btn-color);
+        opacity: .25;
+      }
+    }
+  }
+
   // Optional: Group multiple button groups together for a toolbar
   .btn-toolbar {
     display: flex;

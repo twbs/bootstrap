@@ -4,7 +4,7 @@ description: Group a series of buttons together on a single line or stack them i
 toc: true
 ---
 
-## Basic example
+## Examples
 
 Wrap a series of buttons in `.btn-group`.
 
@@ -18,6 +18,8 @@ Wrap a series of buttons in `.btn-group`.
 Button groups require an appropriate `role` attribute and explicit label to ensure assistive technologies like screen readers identify buttons as grouped and announce them. Use `role="group"` for button groups or `role="toolbar"` for button toolbars. Then use `aria-label` or `aria-labelledby` to label them.
 </Callout>
 
+### With links
+
 These classes can also be added to groups of links, as an alternative to the [`.nav` navigation components]([[docsref:/components/navs-tabs]]).
 
 <Example code={`<div class="btn-group">
@@ -26,7 +28,27 @@ These classes can also be added to groups of links, as an alternative to the [`.
     <a href="#" class="btn-solid theme-primary">Link</a>
   </div>`} />
 
-## Mixed variants
+### Dividers
+
+Add a divider between buttons by adding the `.btn-group-divider` class to the `.btn-group`. Most useful when used with buttons that have the same theme color and a solid fill.
+
+<Example code={`<div class="btn-group btn-group-divider" role="group" aria-label="Basic example">
+    <button type="button" class="btn-solid theme-primary">Left</button>
+    <button type="button" class="btn-solid theme-primary">Middle</button>
+    <button type="button" class="btn-solid theme-primary">Right</button>
+  </div>`} />
+
+## Theme variants
+
+Ue the `.theme-{color}` classes to apply a theme color to a set of buttons.
+
+<Example code={`<div class="btn-group" role="group" aria-label="Accent theme example">
+    <button type="button" class="btn-solid theme-accent">Left</button>
+    <button type="button" class="btn-solid theme-accent">Middle</button>
+    <button type="button" class="btn-solid theme-accent">Right</button>
+  </div>`} />
+
+You can mix and match button variants in a button group.
 
 <Example code={`<div class="btn-group" role="group" aria-label="Basic mixed styles example">
     <button type="button" class="btn-solid theme-danger">Left</button>
@@ -34,12 +56,26 @@ These classes can also be added to groups of links, as an alternative to the [`.
     <button type="button" class="btn-solid theme-success">Right</button>
   </div>`} />
 
-## Outline buttons
+## Style variants
 
-<Example code={`<div class="btn-group" role="group" aria-label="Basic outlined example">
+All button styles are supported in button groups. Mix and match with the `.btn-group-divider` class to add dividers between some styles or just use the button borders in others.
+
+<Example code={`<div class="btn-group btn-group-divider" role="group" aria-label="Solid example">
+    <button type="button" class="btn-solid theme-primary">Left</button>
+    <button type="button" class="btn-solid theme-primary">Middle</button>
+    <button type="button" class="btn-solid theme-primary">Right</button>
+  </div>`} />
+
+<Example code={`<div class="btn-group" role="group" aria-label="Outlined example">
     <button type="button" class="btn-outline theme-primary">Left</button>
     <button type="button" class="btn-outline theme-primary">Middle</button>
     <button type="button" class="btn-outline theme-primary">Right</button>
+  </div>`} />
+
+<Example code={`<div class="btn-group btn-group-divider" role="group" aria-label="Subtle example">
+    <button type="button" class="btn-subtle theme-primary">Left</button>
+    <button type="button" class="btn-subtle theme-primary">Middle</button>
+    <button type="button" class="btn-subtle theme-primary">Right</button>
   </div>`} />
 
 ## Toggle buttons
