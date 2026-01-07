@@ -12,12 +12,12 @@ $stepper-size: 2rem !default;
 $stepper-gap: 1rem !default;
 $stepper-track-size: .25rem !default;
 $stepper-bg: var(--bg-2) !default;
-$stepper-active-fg: $component-active-color !default;
-$stepper-active-bg: $component-active-bg !default;
+$stepper-active-fg: var(--primary-contrast) !default;
+$stepper-active-bg: var(--primary-bg) !default;
 // $stepper-vertical-gap: .5rem !default;
 // scss-docs-end stepper-variables
 
-
+// scss-docs-start stepper-horizontal-mixin
 @mixin stepper-horizontal() {
   display: inline-grid;
   grid-auto-columns: 1fr;
@@ -42,7 +42,9 @@ $stepper-active-bg: $component-active-bg !default;
     }
   }
 }
+// scss-docs-end stepper-horizontal-mixin
 
+// scss-docs-start stepper-css
 .stepper {
   // scss-docs-start stepper-css-vars
   --stepper-size: #{$stepper-size};
@@ -98,7 +100,6 @@ $stepper-active-bg: $component-active-bg !default;
     bottom: 100%;
     left: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
     width: var(--stepper-track-size);
-    // height: auto;
     content: "";
     background-color: var(--stepper-bg);
   }
@@ -111,8 +112,8 @@ $stepper-active-bg: $component-active-bg !default;
   &.active {
     &::before,
     &::after {
-      color: var(--stepper-active-color);
-      background-color: var(--stepper-active-bg);
+      color: var(--theme-contrast, var(--stepper-active-color));
+      background-color: var(--theme-bg, var(--stepper-active-bg));
     }
   }
 }
@@ -126,3 +127,17 @@ $stepper-active-bg: $component-active-bg !default;
     }
   }
 }
+
+// scss-docs-start stepper-overflow
+.stepper-overflow {
+  container-type: inline-size;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+
+  > .stepper {
+    width: max-content;
+    min-width: 100%;
+  }
+}
+// scss-docs-end stepper-overflow

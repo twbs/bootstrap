@@ -28,7 +28,7 @@ const logicalPlacements = [
 ]
 ---
 
-<div class="bg-1 p-3 rounded-3 mb-3">
+<div class="bg-1 p-3 fs-sm rounded-3 mb-3">
   <div class="d-flex flex-wrap gap-3 align-items-end">
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Placement type</label>
@@ -67,7 +67,10 @@ const logicalPlacements = [
           data-placement="bottom-start"
           style="min-width: 160px;"
         >
-          bottom-start
+          <span>bottom-start</span>
+          <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+            <use href="#chevron-expand" />
+          </svg>
         </button>
         <ul class="dropdown-menu" aria-labelledby="placement-dropdown">
           {physicalPlacements.map((p) => (
@@ -148,7 +151,8 @@ const logicalPlacements = [
     if (!placementDropdownButton || !previewToggle) return
 
     // Update the placement selector button
-    placementDropdownButton.textContent = placement
+    const labelSpan = placementDropdownButton.querySelector('span')
+    if (labelSpan) labelSpan.textContent = placement
     placementDropdownButton.dataset.placement = placement
 
     // Update active state in dropdown

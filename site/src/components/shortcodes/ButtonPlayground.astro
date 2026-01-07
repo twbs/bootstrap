@@ -25,7 +25,7 @@ const rounded = ['default', 'pill', 'square']
   </symbol>
 </svg>
 
-<div class="bg-1 p-3 rounded-3">
+<div class="bg-1 p-3 fs-sm rounded-3">
   <div class="d-flex flex-wrap gap-3">
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Color</label>
@@ -38,7 +38,7 @@ const rounded = ['default', 'pill', 'square']
           aria-expanded="false"
           data-color="primary"
         >
-          Primary
+          <span>Primary</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
             <use href="#chevron-expand" />
           </svg>
@@ -89,7 +89,7 @@ const rounded = ['default', 'pill', 'square']
           aria-expanded="false"
           data-size=""
         >
-          Medium
+          <span>Medium</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
             <use href="#chevron-expand" />
           </svg>
@@ -270,7 +270,8 @@ const rounded = ['default', 'pill', 'square']
         const colorTitle = item.textContent?.trim() || 'Primary'
 
         // Update button text and data attribute
-        colorDropdownButton.textContent = colorTitle
+        const labelSpan = colorDropdownButton.querySelector('span')
+        if (labelSpan) labelSpan.textContent = colorTitle
         colorDropdownButton.dataset.color = colorName
 
         // Update selected state
@@ -301,7 +302,8 @@ const rounded = ['default', 'pill', 'square']
         const sizeLabel = item.textContent?.trim() || 'Medium'
 
         // Update button text and data attribute
-        sizeDropdownButton.textContent = sizeLabel
+        const labelSpan = sizeDropdownButton.querySelector('span')
+        if (labelSpan) labelSpan.textContent = sizeLabel
         sizeDropdownButton.dataset.size = sizeValue
 
         // Update selected state

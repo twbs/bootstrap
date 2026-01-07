@@ -10,7 +10,7 @@ const orientations = [
 const stepCounts = [3, 4, 5, 6]
 ---
 
-<div class="bg-1 p-3 rounded-3">
+<div class="bg-1 p-3 fs-sm rounded-3">
   <div class="d-flex flex-wrap gap-3 align-items-end">
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Orientation</label>
@@ -43,7 +43,7 @@ const stepCounts = [3, 4, 5, 6]
           disabled
           style="min-width: 120px;"
         >
-          All sizes
+          <span>All sizes</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
             <use href="#chevron-expand" />
           </svg>
@@ -76,7 +76,7 @@ const stepCounts = [3, 4, 5, 6]
           data-count="4"
           style="min-width: 80px;"
         >
-          4
+          <span>4</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
             <use href="#chevron-expand" />
           </svg>
@@ -109,7 +109,7 @@ const stepCounts = [3, 4, 5, 6]
           data-active="2"
           style="min-width: 80px;"
         >
-          2
+          <span>2</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
             <use href="#chevron-expand" />
           </svg>
@@ -131,10 +131,13 @@ const stepCounts = [3, 4, 5, 6]
     </div>
 
     <div class="vstack gap-1">
-      <label class="form-label fw-semibold mb-0">Full width</label>
-      <div class="form-check form-switch mb-0">
-        <input class="form-check-input" type="checkbox" role="switch" id="stepper-fullwidth" />
-      </div>
+      <label class="form-label fw-semibold mb-0 user-select-none">&nbsp;</label>
+      <b-checkgroup class="py-2">
+        <div class="switch">
+          <input type="checkbox" value="" id="stepper-fullwidth" switch>
+        </div>
+        <label for="stepper-fullwidth">Full width</label>
+      </b-checkgroup>
     </div>
   </div>
 </div>
@@ -273,7 +276,8 @@ const stepCounts = [3, 4, 5, 6]
     // Reset active step if current is higher than step count
     if (currentActive > stepCount) {
       activeDropdownButton.dataset.active = String(stepCount)
-      activeDropdownButton.textContent = String(stepCount)
+      const labelSpan = activeDropdownButton.querySelector('span')
+      if (labelSpan) labelSpan.textContent = String(stepCount)
       activeDropdownItems.forEach((item) => {
         const value = parseInt((item as HTMLElement).dataset.active || '0', 10)
         item.classList.toggle('active', value === stepCount)
@@ -310,7 +314,8 @@ const stepCounts = [3, 4, 5, 6]
         const breakpoint = (item as HTMLElement).dataset.breakpoint || ''
         const label = item.textContent?.trim() || 'All sizes'
 
-        breakpointDropdownButton.textContent = label
+        const labelSpan = breakpointDropdownButton.querySelector('span')
+        if (labelSpan) labelSpan.textContent = label
         breakpointDropdownButton.dataset.breakpoint = breakpoint
 
         breakpointDropdownItems.forEach((i) => i.classList.remove('active'))
@@ -330,7 +335,8 @@ const stepCounts = [3, 4, 5, 6]
         e.preventDefault()
         const count = (item as HTMLElement).dataset.count || '4'
 
-        countDropdownButton.textContent = count
+        const labelSpan = countDropdownButton.querySelector('span')
+        if (labelSpan) labelSpan.textContent = count
         countDropdownButton.dataset.count = count
 
         countDropdownItems.forEach((i) => i.classList.remove('active'))
@@ -350,7 +356,8 @@ const stepCounts = [3, 4, 5, 6]
         e.preventDefault()
         const active = (item as HTMLElement).dataset.active || '2'
 
-        activeDropdownButton.textContent = active
+        const labelSpan = activeDropdownButton.querySelector('span')
+        if (labelSpan) labelSpan.textContent = active
         activeDropdownButton.dataset.active = active
 
         activeDropdownItems.forEach((i) => i.classList.remove('active'))
