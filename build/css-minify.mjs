@@ -23,14 +23,14 @@ const targets = browserslistToTargets(['> 0.5%', 'last 2 versions', 'Firefox ESR
 for (const file of cssFiles) {
   const inputPath = path.join(distDir, file)
   const outputPath = path.join(distDir, file.replace('.css', '.min.css'))
-  const mapPath = outputPath + '.map'
+  const mapPath = `${outputPath}.map`
 
   console.log(`Minifying ${file}...`)
 
   const inputCss = fs.readFileSync(inputPath, 'utf8')
-  const inputMap = fs.existsSync(inputPath + '.map')
-    ? JSON.parse(fs.readFileSync(inputPath + '.map', 'utf8'))
-    : undefined
+  const inputMap = fs.existsSync(`${inputPath}.map`) ?
+    JSON.parse(fs.readFileSync(`${inputPath}.map`, 'utf8')) :
+    undefined
 
   try {
     const result = transform({
@@ -43,7 +43,7 @@ for (const file of cssFiles) {
     })
 
     // Write minified CSS with source map reference
-    const minifiedCss = result.code.toString() + `\n/*# sourceMappingURL=${path.basename(mapPath)} */`
+    const minifiedCss = `${result.code.toString()}\n/*# sourceMappingURL=${path.basename(mapPath)} */`
     fs.writeFileSync(outputPath, minifiedCss)
 
     // Write source map
