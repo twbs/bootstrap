@@ -1,0 +1,137 @@
+@use "variables" as *;
+@use "theme" as *;
+@use "mixins/border-radius" as *;
+
+// scss-docs-start avatar-variables
+$avatar-size:                 2.5rem !default;
+$avatar-size-xs:              1.5rem !default;
+$avatar-size-sm:              2rem !default;
+$avatar-size-lg:              3rem !default;
+$avatar-size-xl:              4rem !default;
+$avatar-border-radius:        50% !default;
+$avatar-border-width:         2px !default;
+$avatar-border-color:         var(--bg-body) !default;
+$avatar-bg:                   var(--bg-2) !default;
+$avatar-color:                var(--color-body) !default;
+
+$avatar-status-size:          .75rem !default;
+$avatar-status-border-width:  2px !default;
+$avatar-status-border-color:  var(--bg-body) !default;
+
+$avatar-stack-spacing:        -.3 !default; // Percentage of avatar size (negative for overlap)
+// scss-docs-end avatar-variables
+
+@layer components {
+  .avatar {
+    // scss-docs-start avatar-css-vars
+    --avatar-border-radius: #{$avatar-border-radius};
+    --avatar-border-width: #{$avatar-border-width};
+    --avatar-border-color: #{$avatar-border-color};
+    --avatar-bg: #{$avatar-bg};
+    --avatar-color: #{$avatar-color};
+    --avatar-status-size: #{$avatar-status-size};
+    --avatar-status-border-width: #{$avatar-status-border-width};
+    --avatar-status-border-color: #{$avatar-status-border-color};
+    // scss-docs-end avatar-css-vars
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--avatar-size, #{$avatar-size});
+    height: var(--avatar-size, #{$avatar-size});
+    font-size: calc(var(--avatar-size) * .4);
+    font-weight: $font-weight-medium;
+    line-height: 1;
+    color: var(--theme-contrast, var(--avatar-color));
+    text-transform: uppercase;
+    vertical-align: middle;
+    background-color: var(--theme-bg, var(--avatar-bg));
+    @include border-radius(var(--avatar-border-radius));
+  }
+
+  .avatar-subtle {
+    color: var(--theme-text, var(--avatar-color));
+    background-color: var(--theme-bg-subtle, var(--avatar-bg));
+  }
+
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include border-radius(inherit);
+  }
+
+  .avatar-status {
+    position: absolute;
+    right: calc(var(--avatar-status-border-width) * -1);
+    bottom: calc(var(--avatar-status-border-width) * -1);
+    width: var(--avatar-status-size);
+    height: var(--avatar-status-size);
+    background-color: var(--gray-400);
+    border: var(--avatar-status-border-width) solid var(--avatar-status-border-color);
+    @include border-radius(50%);
+
+    &.status-online {
+      background-color: var(--green-500);
+    }
+
+    &.status-offline {
+      background-color: var(--gray-400);
+      @include border-radius(20%);
+    }
+
+    &.status-busy {
+      background-color: var(--red-500);
+      @include border-radius(20%);
+    }
+
+    &.status-away {
+      background-color: var(--yellow-500);
+    }
+  }
+
+  .avatar-stack {
+    display: inline-flex;
+    flex-direction: row-reverse;
+
+    .avatar {
+      // Stack spacing is calculated as a percentage of avatar size
+      margin-left: calc(var(--avatar-size, #{$avatar-size}) * #{$avatar-stack-spacing});
+      border: var(--avatar-border-width) solid var(--avatar-border-color);
+      mask-image: none;
+
+      &:last-child {
+        margin-left: 0;
+      }
+
+      &:hover {
+        z-index: 1;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .avatar-xs,
+  .avatar-stack-xs {
+    --avatar-size: #{$avatar-size-xs};
+    --avatar-status-size: .625rem;
+  }
+
+  .avatar-sm,
+  .avatar-stack-sm {
+    --avatar-size: #{$avatar-size-sm};
+  }
+
+  .avatar-lg,
+  .avatar-stack-lg {
+    --avatar-size: #{$avatar-size-lg};
+    --avatar-status-size: 1rem;
+  }
+
+  .avatar-xl,
+  .avatar-stack-xl {
+    --avatar-size: #{$avatar-size-xl};
+    --avatar-status-size: 1.25rem;
+  }
+}
