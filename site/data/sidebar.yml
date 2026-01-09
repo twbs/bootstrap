@@ -107,6 +107,7 @@
     - title: Progress
     - title: Scrollspy
     - title: Spinner
+    - title: Stepper
     - title: Toasts
     - title: Toggler
     - title: Tooltip
