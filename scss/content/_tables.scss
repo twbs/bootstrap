@@ -165,7 +165,7 @@ $table-group-separator-color: currentcolor !default;
   .table-striped {
     > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
       --table-color-type: var(--theme-text, var(--table-striped-color));
-      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-striped-bg-factor)}, transparent);
+      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-striped-bg-factor)}, transparent); // stylelint-disable-line scss/dollar-variable-no-missing-interpolation
     }
   }
 
@@ -173,7 +173,7 @@ $table-group-separator-color: currentcolor !default;
   .table-striped-columns {
     > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
       --table-color-type: var(--theme-text, var(--table-striped-color));
-      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-striped-bg-factor)}, transparent);
+      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-striped-bg-factor)}, transparent); // stylelint-disable-line scss/dollar-variable-no-missing-interpolation
     }
   }
 
@@ -183,7 +183,7 @@ $table-group-separator-color: currentcolor !default;
 
   .table-active {
     --table-color-state: var(--theme-text, var(--table-active-color));
-    --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-active-bg-factor)}, transparent);
+    --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-active-bg-factor)}, transparent); // stylelint-disable-line scss/dollar-variable-no-missing-interpolation
   }
 
   // Hover effect
@@ -193,7 +193,7 @@ $table-group-separator-color: currentcolor !default;
   .table-hover {
     > tbody > tr:hover > * {
       --table-color-state: var(--theme-text, var(--table-hover-color));
-      --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-hover-bg-factor)}, transparent);
+      --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-hover-bg-factor)}, transparent); // stylelint-disable-line scss/dollar-variable-no-missing-interpolation
     }
   }
 
