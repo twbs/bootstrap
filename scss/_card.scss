@@ -54,7 +54,7 @@ $card-body-gap:                     $card-spacer-y * .5 !default;
     flex-direction: column;
     min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
     height: var(--card-height);
-    color: var(--color-body);
+    color: var(--fg-body);
     word-wrap: break-word;
     background-color: var(--card-bg);
     // border: var(--card-border-width) solid var(--card-border-color);

@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "../config" as *;
 @use "../colors" as *;
 @use "../variables" as *;
@@ -40,7 +41,7 @@ $form-floating-transition:              opacity .1s ease-in-out, transform .1s e
       height: 100%; // allow textareas
       padding: $form-floating-padding-y $form-floating-padding-x;
       overflow: hidden;
-      color: rgba(var(--body-color-rgb), #{$form-floating-label-opacity});
+      color: color-mix(in oklch, var(--body-color) #{math.percentage($form-floating-label-opacity)}, transparent);
       text-align: start;
       text-overflow: ellipsis;
       white-space: nowrap;

@@ -9,7 +9,7 @@ $control-padding-y: .375rem !default;
 $control-padding-x: .75rem !default;
 $control-font-size: $font-size-base !default;
 $control-line-height: $line-height-base !default;
-$control-color: var(--color-body) !default;
+$control-color: var(--fg-body) !default;
 $control-bg: var(--bg-body) !default;
 $control-border-width: var(--border-width) !default;
 $control-border-color: var(--border-color) !default;
@@ -81,7 +81,7 @@ $input-disabled-color:                  null !default;
 $input-disabled-bg:                     var(--secondary-bg) !default;
 $input-disabled-border-color:           null !default;
 
-$input-color:                           var(--color-body) !default;
+$input-color:                           var(--fg-body) !default;
 $input-border-color:                    var(--border-color) !default;
 $input-border-width:                    var(--border-width) !default;
 $input-box-shadow:                      var(--box-shadow-inset) !default;
@@ -95,7 +95,7 @@ $input-focus-border-color:              var(--primary-border) !default;
 $input-focus-color:                     $input-color !default;
 
 $input-placeholder-color:               var(--secondary-color) !default;
-$input-plaintext-color:                 var(--color-body) !default;
+$input-plaintext-color:                 var(--fg-body) !default;
 
 $input-height-border:                   calc(#{$input-border-width} * 2) !default;
 

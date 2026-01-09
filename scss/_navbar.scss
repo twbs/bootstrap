@@ -36,9 +36,9 @@ $navbar-light-color:                var(--fg-2) !default;
 $navbar-light-hover-color:          var(--fg-1) !default;
 $navbar-light-active-color:         var(--fg) !default;
 $navbar-light-disabled-color:       var(--fg-3) !default;
-$navbar-light-icon-color:           rgba($body-color, .75) !default;
+$navbar-light-icon-color:           color-mix(in oklch, var(--body-color) 75%, transparent) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-light-toggler-border-color: rgba(var(--emphasis-color-rgb), .15) !default;
+$navbar-light-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent) !default;
 $navbar-light-brand-color:          $navbar-light-active-color !default;
 $navbar-light-brand-hover-color:    $navbar-light-active-color !default;
 // scss-docs-end navbar-variables

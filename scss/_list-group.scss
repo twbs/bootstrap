@@ -7,7 +7,7 @@
 @use "layout/breakpoints" as *;
 
 // scss-docs-start list-group-variables
-$list-group-color:                  var(--color-body) !default;
+$list-group-color:                  var(--fg-body) !default;
 $list-group-bg:                     var(--bg-body) !default;
 $list-group-border-color:           var(--border-color) !default;
 $list-group-border-width:           var(--border-width) !default;
@@ -25,9 +25,9 @@ $list-group-disabled-color:         var(--secondary-color) !default;
 $list-group-disabled-bg:            $list-group-bg !default;
 
 $list-group-action-color:           var(--secondary-color) !default;
-$list-group-action-hover-color:     var(--emphasis-color) !default;
+$list-group-action-hover-color:     var(--fg-color) !default;
 
-$list-group-action-active-color:    var(--color-body) !default;
+$list-group-action-active-color:    var(--fg-body) !default;
 $list-group-action-active-bg:       var(--secondary-bg) !default;
 // scss-docs-end list-group-variables
 

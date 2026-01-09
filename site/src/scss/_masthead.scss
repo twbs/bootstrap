@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "../../../scss/config" as *;
 @use "../../../scss/colors" as *;
 @use "../../../scss/variables" as *;
@@ -41,7 +42,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      background-color: rgba(var(--bs-body-color-rgb), .075);
+      background-color: color-mix(in oklch, var(--body-color) #{math.percentage(.075)}, transparent);
       @include border-radius(calc(.5rem - 1px));
 
       @include media-breakpoint-up(lg) {
@@ -107,7 +108,7 @@
 
   .masthead-notice {
     background-color: var(--bd-accent);
-    box-shadow: inset 0 -1px 1px rgba(var(--bs-body-color-rgb), .15), 0 .25rem 1.5rem rgba(var(--bs-body-bg-rgb), .75);
+    box-shadow: inset 0 -1px 1px color-mix(in oklch, var(--body-color) #{math.percentage(.15)}, transparent), 0 .25rem 1.5rem color-mix(in oklch, var(--body-bg) #{math.percentage(.75)}, transparent);
   }
 
   .animate-img {

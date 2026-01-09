@@ -22,7 +22,7 @@ $nav-tabs-border-color:             var(--border-color) !default;
 $nav-tabs-border-width:             var(--border-width) !default;
 $nav-tabs-border-radius:            var(--border-radius) !default;
 $nav-tabs-link-hover-border-color:  var(--border-subtle) !default;
-$nav-tabs-link-active-color:        var(--emphasis-color) !default;
+$nav-tabs-link-active-color:        var(--fg-color) !default;
 $nav-tabs-link-active-bg:           var(--bg-body) !default;
 $nav-tabs-link-active-border-color: var(--border-color) var(--border-color) $nav-tabs-link-active-bg !default;
 
@@ -31,7 +31,7 @@ $nav-pills-link-active-bg:          $component-active-bg !default;
 
 $nav-underline-gap:                 1rem !default;
 $nav-underline-border-width:        .125rem !default;
-$nav-underline-link-active-color:   var(--emphasis-color) !default;
+$nav-underline-link-active-color:   var(--fg-color) !default;
 // scss-docs-end nav-variables
 
 // Base class

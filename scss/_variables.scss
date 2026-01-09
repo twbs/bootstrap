@@ -117,8 +117,6 @@ $position-values: (
 // Settings for the `<body>` element.
 
 $body-text-align:           null !default;
-$body-color:                var(--color-body) !default;
-$body-bg:                   var(--bg-body) !default;
 
 // Links
 //
@@ -165,7 +163,7 @@ $border-widths: (
 ) !default;
 $border-style:                solid !default;
 $border-color:                color-mix(in oklch, var(--gray-100), var(--gray-200)) !default;
-$border-color-translucent:    rgba($black, .175) !default;
+$border-color-translucent:    color-mix(in oklch, var(--fg-body) 15%, transparent) !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables
@@ -333,8 +331,8 @@ $dt-font-weight:              $font-weight-bold !default;
 $list-inline-padding:         .5rem !default;
 
 $mark-padding:                .1875em !default;
-$mark-color:                  $body-color !default;
-$mark-bg:                     var(--yellow-100) !default;
+$mark-color:                  var(--fg-body) !default;
+$mark-bg:                     light-dark(var(--yellow-100), var(--yellow-900)) !default;
 // scss-docs-end type-variables
 
 // Z-index master list
@@ -377,7 +375,7 @@ $offcanvas-border-color:            var(--border-color-translucent) !default;
 $offcanvas-border-width:            var(--border-width) !default;
 $offcanvas-title-line-height:       $line-height-base !default;
 $offcanvas-bg-color:                var(--bg-body) !default;
-$offcanvas-color:                   var(--color-body) !default;
+$offcanvas-color:                   var(--fg-body) !default;
 $offcanvas-box-shadow:              var(--box-shadow-sm) !default;
 $offcanvas-backdrop-bg:             $black !default;
 $offcanvas-backdrop-opacity:        .5 !default;
@@ -411,9 +409,7 @@ $pre-color:                         null !default;
 // $body-secondary-bg-dark:            var(--gray-800) !default;
 // $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
 // $body-tertiary-bg-dark:             color-mix(in srgb, var(--gray-800), var(--gray-900)) !default;
-$body-emphasis-color-dark:          $white !default;
 $border-color-dark:                 var(--gray-700) !default;
-$border-color-translucent-dark:     rgba($white, .15) !default;
 $headings-color-dark:               inherit !default;
 // $mark-color-dark:                   $body-color-dark !default;
 // $mark-bg-dark:                      var(--yellow-800) !default;
