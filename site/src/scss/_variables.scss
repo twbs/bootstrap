@@ -18,10 +18,6 @@ $bd-callout-variants: info, warning, danger !default;
     --bd-purple: #{$bd-purple};
     --bd-violet: #{$bd-violet};
     --bd-accent: #{$bd-accent};
-    // --bd-violet-rgb: #{to-rgb($bd-violet)};
-    // --bd-accent-rgb: #{to-rgb($bd-accent)};
-    // --bd-pink-rgb: #{to-rgb($pink-500)};
-    // --bd-teal-rgb: #{to-rgb($teal-500)};
     --bd-violet-bg: var(--bd-violet);
     --bd-toc-color: light-dark(var(--bd-violet), var(--bs-indigo-300));
     --bd-sidebar-link-bg: light-dark(color-mix(in srgb, var(--bd-violet), transparent 90%), color-mix(in srgb, var(--bd-violet), transparent 70%));
@@ -30,14 +26,4 @@ $bd-callout-variants: info, warning, danger !default;
     --bd-pre-bg: var(--bs-bg-body);
     --bd-swatch-shadow: inset 0 0 0 1px light-dark(rgb(0 0 0 / .1), rgb(255 255 255 / .1));
   }
-
-  // @include color-mode(dark, true) {
-  //   --bd-violet: #{mix($bd-violet, $white, 75%)};
-  //   --bd-violet-bg: #{$bd-violet};
-  //   --bd-toc-color: var(--emphasis-color);
-  //   --bd-sidebar-link-bg: rgba(#{to-rgb(mix($bd-violet, $black, 75%))}, .5);
-  //   --bd-callout-link: #{to-rgb($blue-300)};
-  //   --bd-callout-code-color: #{$pink-300};
-  //   --bd-pre-bg: #{color.adjust(var(--gray-900), $lightness: -2.5%)}; // stylelint-disable-line scss/at-function-named-arguments
-  // }
 }

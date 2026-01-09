@@ -43,9 +43,6 @@
 
   // Note: Custom variable values only support SassScript inside `#{}`.
 
-  --white-rgb: #{to-rgb($white)};
-  --black-rgb: #{to-rgb($black)};
-
   // Fonts
 
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
@@ -84,9 +81,6 @@
   --body-font-size: #{$font-size-base};
   --body-font-weight: #{$font-weight-base};
   --body-line-height: #{$line-height-base};
-
-  --body-color-rgb: #{to-rgb($body-color)};
-  --body-bg-rgb: #{to-rgb($body-bg)};
 
   --heading-color: #{$headings-color};
 
@@ -150,12 +144,9 @@
   @include color-mode(dark, true) {
 
     // scss-docs-start root-dark-mode-vars
-    --emphasis-color: #{$body-emphasis-color-dark};
-    --emphasis-color-rgb: #{to-rgb($body-emphasis-color-dark)};
     --heading-color: #{$headings-color-dark};
 
     --border-color: #{$border-color-dark};
-    --border-color-translucent: #{$border-color-translucent-dark};
 
     --form-valid-color: #{$form-valid-color-dark};
     --form-valid-border-color: #{$form-valid-border-color-dark};
