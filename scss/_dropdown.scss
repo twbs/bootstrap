@@ -7,58 +7,51 @@
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 
-// scss-docs-start dropdown-variables
-$dropdown-gap:                      $spacer * .125 !default;
-$dropdown-min-width:                10rem !default;
-$dropdown-padding-x:                .25rem !default;
-$dropdown-padding-y:                .25rem !default;
-$dropdown-spacer:                   .125rem !default;
-$dropdown-font-size:                $font-size-base !default;
-$dropdown-color:                    var(--fg-body) !default;
-$dropdown-bg:                       var(--bg-body) !default;
-$dropdown-border-color:             var(--border-color-translucent) !default;
-$dropdown-border-radius:            var(--border-radius-lg) !default;
-$dropdown-border-width:             var(--border-width) !default;
-$dropdown-inner-border-radius:      calc(#{$dropdown-border-radius} - #{$dropdown-border-width}) !default;
-$dropdown-box-shadow:               var(--box-shadow) !default;
+// scss-docs-start dropdown-tokens
+// Customizable via @use 'bootstrap/dropdown' with ($tokens: (...))
+$tokens: () !default;
 
-$dropdown-divider-bg:               $dropdown-border-color !default;
-$dropdown-divider-margin-y:         $spacer * .125 !default;
-$dropdown-divider-margin-x:         $spacer * .25 !default;
+// stylelint-disable scss/dollar-variable-default
+$dropdown-tokens: map.merge(
+  (
+    // scss-docs-start dropdown-css-vars
+    --dropdown-zindex: #{$zindex-dropdown},
+    --dropdown-gap: .125rem,
+    --dropdown-min-width: 10rem,
+    --dropdown-padding-x: .25rem,
+    --dropdown-padding-y: .25rem,
+    --dropdown-spacer: .125rem,
+    --dropdown-font-size: #{$font-size-base},
+    --dropdown-color: var(--fg-body),
+    --dropdown-bg: var(--bg-body),
+    --dropdown-border-color: var(--border-color-translucent),
+    --dropdown-border-radius: var(--border-radius-lg),
+    --dropdown-border-width: var(--border-width),
+    --dropdown-inner-border-radius: calc(var(--dropdown-border-radius) - var(--dropdown-border-width)),
+    --dropdown-box-shadow: var(--box-shadow),
+    --dropdown-divider-bg: var(--border-color-translucent),
+    --dropdown-divider-margin-y: .125rem,
+    --dropdown-divider-margin-x: .25rem,
+    --dropdown-link-color: var(--fg-body),
+    --dropdown-link-hover-color: var(--fg-body),
+    --dropdown-link-hover-bg: var(--bg-1),
+    --dropdown-link-active-color: var(--primary-contrast),
+    --dropdown-link-active-bg: var(--primary-bg),
+    --dropdown-link-disabled-color: var(--fg-3),
+    --dropdown-item-gap: .5rem,
+    --dropdown-item-padding-x: .75rem,
+    --dropdown-item-padding-y: .25rem,
+    --dropdown-item-border-radius: var(--border-radius),
+    --dropdown-header-color: var(--fg-2),
+    --dropdown-header-padding-x: .75rem,
+    --dropdown-header-padding-y: .25rem,
+    // scss-docs-end dropdown-css-vars
+  ),
+  $tokens
+);
+// stylelint-enable scss/dollar-variable-default
+// scss-docs-end dropdown-tokens
 
-$dropdown-link-color:               var(--fg-body) !default;
-$dropdown-link-hover-color:         $dropdown-link-color !default;
-$dropdown-link-hover-bg:            var(--bg-1) !default;
-
-$dropdown-link-active-color:        $component-active-color !default;
-$dropdown-link-active-bg:           $component-active-bg !default;
-
-$dropdown-link-disabled-color:      var(--fg-3) !default;
-
-$dropdown-item-padding-y:           $spacer * .25 !default;
-$dropdown-item-padding-x:           $spacer * .75 !default;
-$dropdown-item-border-radius:       var(--border-radius) !default;
-$dropdown-item-gap:                 $spacer * .5 !default;
-
-$dropdown-header-color:             var(--gray-600) !default;
-$dropdown-header-padding-x:         $dropdown-item-padding-x !default;
-$dropdown-header-padding-y:         $dropdown-padding-y !default;
-// scss-docs-end dropdown-variables
-
-// scss-docs-start dropdown-dark-variables
-$dropdown-dark-color:               var(--gray-300) !default;
-$dropdown-dark-bg:                  var(--gray-900) !default;
-$dropdown-dark-border-color:        $dropdown-border-color !default;
-$dropdown-dark-divider-bg:          $dropdown-divider-bg !default;
-$dropdown-dark-box-shadow:          null !default;
-$dropdown-dark-link-color:          $dropdown-dark-color !default;
-$dropdown-dark-link-hover-color:    $white !default;
-$dropdown-dark-link-hover-bg:       rgba($white, .15) !default;
-$dropdown-dark-link-active-color:   $dropdown-link-active-color !default;
-$dropdown-dark-link-active-bg:      $dropdown-link-active-bg !default;
-$dropdown-dark-link-disabled-color: var(--gray-500) !default;
-$dropdown-dark-header-color:        var(--gray-500) !default;
-// scss-docs-end dropdown-dark-variables
 
 @layer components {
   // The dropdown wrapper (`<div>`)
@@ -69,36 +62,9 @@ $dropdown-dark-header-color:        var(--gray-500) !default;
   // The dropdown menu
   .dropdown-menu {
     // scss-docs-start dropdown-css-vars
-    --dropdown-zindex: #{$zindex-dropdown};
-    --dropdown-gap: #{$dropdown-gap};
-    --dropdown-min-width: #{$dropdown-min-width};
-    --dropdown-padding-x: #{$dropdown-padding-x};
-    --dropdown-padding-y: #{$dropdown-padding-y};
-    --dropdown-spacer: #{$dropdown-spacer};
-    --dropdown-font-size: #{$dropdown-font-size};
-    --dropdown-color: #{$dropdown-color};
-    --dropdown-bg: #{$dropdown-bg};
-    --dropdown-border-color: #{$dropdown-border-color};
-    --dropdown-border-radius: #{$dropdown-border-radius};
-    --dropdown-border-width: #{$dropdown-border-width};
-    --dropdown-inner-border-radius: #{$dropdown-inner-border-radius};
-    --dropdown-divider-bg: #{$dropdown-divider-bg};
-    --dropdown-divider-margin-y: #{$dropdown-divider-margin-y};
-    --dropdown-divider-margin-x: #{$dropdown-divider-margin-x};
-    --dropdown-box-shadow: #{$dropdown-box-shadow};
-    --dropdown-link-color: #{$dropdown-link-color};
-    --dropdown-link-hover-color: #{$dropdown-link-hover-color};
-    --dropdown-link-hover-bg: #{$dropdown-link-hover-bg};
-    --dropdown-link-active-color: #{$dropdown-link-active-color};
-    --dropdown-link-active-bg: #{$dropdown-link-active-bg};
-    --dropdown-link-disabled-color: #{$dropdown-link-disabled-color};
-    --dropdown-item-gap: #{$dropdown-item-gap};
-    --dropdown-item-padding-x: #{$dropdown-item-padding-x};
-    --dropdown-item-padding-y: #{$dropdown-item-padding-y};
-    --dropdown-item-border-radius: #{$dropdown-item-border-radius};
-    --dropdown-header-color: #{$dropdown-header-color};
-    --dropdown-header-padding-x: #{$dropdown-header-padding-x};
-    --dropdown-header-padding-y: #{$dropdown-header-padding-y};
+    @each $prop, $value in $dropdown-tokens {
+      #{$prop}: #{$value};
+    }
     // scss-docs-end dropdown-css-vars
 
     position: absolute;
@@ -118,17 +84,6 @@ $dropdown-dark-header-color:        var(--gray-500) !default;
     border: var(--dropdown-border-width) solid var(--dropdown-border-color);
     @include border-radius(var(--dropdown-border-radius));
     @include box-shadow(var(--dropdown-box-shadow));
-
-    @if $dropdown-padding-y == 0 {
-      > .dropdown-item:first-child,
-      > li:first-child .dropdown-item {
-        @include border-top-radius(var(--dropdown-inner-border-radius));
-      }
-      > .dropdown-item:last-child,
-      > li:last-child .dropdown-item {
-        @include border-bottom-radius(var(--dropdown-inner-border-radius));
-      }
-    }
   }
 
   .dropdown-menu.show {
@@ -200,24 +155,6 @@ $dropdown-dark-header-color:        var(--gray-500) !default;
     display: block;
     padding: var(--dropdown-item-padding-y) var(--dropdown-item-padding-x);
     color: var(--fg-2);
-  }
-
-  // Dark dropdowns
-  .dropdown-menu-dark {
-    // scss-docs-start dropdown-dark-css-vars
-    --dropdown-color: #{$dropdown-dark-color};
-    --dropdown-bg: #{$dropdown-dark-bg};
-    --dropdown-border-color: #{$dropdown-dark-border-color};
-    --dropdown-box-shadow: #{$dropdown-dark-box-shadow};
-    --dropdown-link-color: #{$dropdown-dark-link-color};
-    --dropdown-link-hover-color: #{$dropdown-dark-link-hover-color};
-    --dropdown-divider-bg: #{$dropdown-dark-divider-bg};
-    --dropdown-link-hover-bg: #{$dropdown-dark-link-hover-bg};
-    --dropdown-link-active-color: #{$dropdown-dark-link-active-color};
-    --dropdown-link-active-bg: #{$dropdown-dark-link-active-bg};
-    --dropdown-link-disabled-color: #{$dropdown-dark-link-disabled-color};
-    --dropdown-header-color: #{$dropdown-dark-header-color};
-    // scss-docs-end dropdown-dark-css-vars
   }
 
   // scss-docs-start dropdown-submenu
