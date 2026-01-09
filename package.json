@@ -143,7 +143,7 @@
     "github-slugger": "^2.0.0",
     "globby": "^16.0.0",
     "hammer-simulator": "0.0.1",
-    "html-validate": "^8.24.1",
+    "html-validate": "^10.5.0",
     "htmlparser2": "^10.0.0",
     "image-size": "^2.0.2",
     "ip": "^2.0.1",
