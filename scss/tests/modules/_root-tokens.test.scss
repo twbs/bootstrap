@@ -1,0 +1,21 @@
+// Test customizing root tokens
+//
+// =============================================================================
+// OPTION 1: Customize via @use "root" with ($root-tokens: (...))
+// This adds/overrides specific tokens without replacing the generated ones
+// =============================================================================
+
+@use "../../root" as * with (
+  $root-tokens: (
+    // Override existing tokens
+    --black: #111,
+    --white: #fefefe,
+    // Add custom tokens
+    --brand-color: #ff6600,
+    --custom-spacing: 1.5rem,
+  )
+);
+
+// The :root block in _root.scss will output all tokens including your customizations.
+// You can verify by compiling this file:
+//   npx sass scss/tests/modules/_root-tokens.test.scss
