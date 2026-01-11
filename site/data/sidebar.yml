@@ -75,6 +75,7 @@
     - title: Floating labels
     - title: OTP input
     - title: Password strength
+    - title: Chip input
     - title: Form adorn
     - title: Layout
     - title: Validation
