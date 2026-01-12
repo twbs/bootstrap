@@ -18,7 +18,6 @@
 
     nav {
       font-size: .875rem;
-      // @include font-size(.875rem);
 
       ul {
         padding-inline-start: 0;
@@ -33,14 +32,14 @@
       a {
         display: block;
         padding: .125rem 0 .125rem .75rem;
-        color: inherit;
+        color: var(--bs-fg-3);
         text-decoration: none;
         border-inline-start: .125rem solid transparent;
 
         &:hover,
         &.active {
-          color: var(--bd-toc-color);
-          border-inline-start-color: var(--bd-toc-color);
+          color: var(--bs-fg-body);
+          border-inline-start-color: var(--bs-fg-body);
         }
 
         &.active {
