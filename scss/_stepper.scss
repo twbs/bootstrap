@@ -80,7 +80,10 @@ $stepper-active-bg: var(--primary-bg) !default;
   &::before {
     position: relative;
     z-index: 1;
-    display: inline-block;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
     width: var(--stepper-size);
     height: var(--stepper-size);
     padding: .5rem;
