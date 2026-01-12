@@ -1,0 +1,186 @@
+---
+import { codeToHtml } from 'shiki'
+import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
+import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
+
+interface Props {
+  /**
+   * The code to highlight.
+   */
+  code: string
+  /**
+   * The language to use for highlighting.
+   * @default 'bash'
+   */
+  lang?: string
+}
+
+const { code, lang = 'bash' } = Astro.props
+
+// Add line wrapper for shell languages to support shell prompts
+const shouldWrapLines = ['bash', 'sh', 'powershell'].includes(lang)
+
+const classTransformer = {
+  name: 'class-name-transformer',
+  pre(node: any) {
+    const existingClasses = node.properties?.className || []
+    const newClasses = existingClasses.map((cls: any) => {
+      if (typeof cls === 'string') {
+        return cls.replace(/shiki/g, 'astro-code')
+      }
+      return cls
+    })
+    node.properties.className = newClasses
+  }
+}
+
+const lineWrapperTransformer = {
+  name: 'line-wrapper',
+  line(node: any) {
+    const hasOnlyComments = node.children.every((child: any) =>
+      child.type === 'element' &&
+      child.properties?.class &&
+      Array.isArray(child.properties.class) &&
+      child.properties.class.some((cls: any) => typeof cls === 'string' && cls.includes('comment'))
+    )
+
+    if (!hasOnlyComments) {
+      node.properties = node.properties || {}
+      node.properties.class = node.properties.class
+        ? `${node.properties.class} line`
+        : 'line'
+    }
+  }
+}
+
+const transformers: any[] = [classTransformer]
+if (shouldWrapLines) {
+  transformers.push(lineWrapperTransformer)
+}
+
+let highlightedCode = await codeToHtml(code, {
+  lang,
+  themes: {
+    light: bootstrapLight,
+    dark: bootstrapDark
+  },
+  transformers
+})
+
+// Replace 'shiki' with 'astro-code'
+highlightedCode = highlightedCode.replace(/class=(["'])shiki(\s+)/g, 'class=$1astro-code$2')
+highlightedCode = highlightedCode.replace(/class=(["'])shiki(["'])/g, 'class=$1astro-code$2')
+highlightedCode = highlightedCode.replace(/shiki-themes/g, 'astro-code-themes')
+---
+
+<script>
+  import ClipboardJS from 'clipboard'
+
+  const btnTitle = 'Copy to clipboard'
+
+  document.querySelectorAll('.code-copy').forEach((container) => {
+    const btn = container.querySelector('.btn-clipboard')
+    if (btn) {
+      bootstrap.Tooltip.getOrCreateInstance(btn, { title: btnTitle })
+    }
+  })
+
+  const clipboard = new ClipboardJS('.code-copy .btn-clipboard', {
+    text: (trigger) => {
+      return trigger.closest('.code-copy')?.querySelector('.astro-code')?.textContent?.trim() || ''
+    }
+  })
+
+  clipboard.on('success', (event) => {
+    const iconFirstChild = event.trigger.querySelector('.bi')?.firstElementChild
+    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+    const namespace = 'http://www.w3.org/1999/xlink'
+    const originalXhref = iconFirstChild?.getAttributeNS(namespace, 'href')
+    const isCheckIconVisible = originalXhref === '#check2'
+
+    if (isCheckIconVisible) {
+      return
+    }
+
+    tooltipBtn?.setContent({ '.tooltip-inner': 'Copied!' })
+
+    event.trigger.addEventListener(
+      'hidden.bs.tooltip',
+      () => {
+        tooltipBtn?.setContent({ '.tooltip-inner': btnTitle })
+      },
+      { once: true }
+    )
+
+    event.clearSelection()
+
+    if (originalXhref) {
+      iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref.replace('clipboard', 'check2'))
+    }
+
+    setTimeout(() => {
+      if (originalXhref) {
+        iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref)
+      }
+    }, 2000)
+  })
+
+  clipboard.on('error', (event) => {
+    const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
+    const fallbackMsg = `Press ${modifierKey}C to copy`
+    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+
+    tooltipBtn?.setContent({ '.tooltip-inner': fallbackMsg })
+
+    event.trigger.addEventListener(
+      'hidden.bs.tooltip',
+      () => {
+        tooltipBtn?.setContent({ '.tooltip-inner': btnTitle })
+      },
+      { once: true }
+    )
+  })
+</script>
+
+<div class="code-copy">
+  <Fragment set:html={highlightedCode} />
+  <button type="button" class="btn-clipboard" title="Copy to clipboard">
+    <svg class="bi" aria-hidden="true">
+      <use href="#clipboard" />
+    </svg>
+  </button>
+</div>
+
+<style>
+  .code-copy {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    min-height: 2.5rem;
+    margin: 0;
+    padding: .75rem 1rem;
+    font-size: var(--font-size-md);
+    background-color: var(--bg-1);
+    border: 1px solid var(--border-color-translucent);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .code-copy :global(pre) {
+    margin: 0;
+    background-color: transparent !important;
+  }
+
+  .code-copy .btn-clipboard {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    padding: 0;
+    margin: -.5rem -.25rem -.5rem 1rem;
+  }
+</style>
