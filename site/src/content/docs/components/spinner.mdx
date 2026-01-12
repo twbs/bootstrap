@@ -28,7 +28,7 @@ Use the border spinners for a lightweight loading indicator.
 
 The border spinner uses `currentColor` for its `border-color`, meaning you can customize the color with [text color utilities][color]. You can use any of our text color utilities on the standard spinner.
 
-<Example code={getData('theme-colors').map((themeColor) => `<div class="spinner-border text-${themeColor.name}" role="status">
+<Example code={getData('theme-colors').map((themeColor) => `<div class="spinner-border fg-${themeColor.name}" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>`)} />
 
@@ -46,7 +46,7 @@ If you don’t fancy a border spinner, switch to the grow spinner. While it does
 
 Once again, this spinner is built with `currentColor`, so you can easily change its appearance with [text color utilities][color]. Here it is in blue, along with the supported variants.
 
-<Example code={getData('theme-colors').map((themeColor) => `<div class="spinner-grow text-${themeColor.name}" role="status">
+<Example code={getData('theme-colors').map((themeColor) => `<div class="spinner-grow fg-${themeColor.name}" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>`)} />
 
