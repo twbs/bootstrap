@@ -54,9 +54,14 @@
       }
     }
 
+    .nav {
+      --bs-nav-link-hover-bg: transparent;
+      --bs-nav-link-active-bg: transparent;
+    }
+
     .navbar-toggler,
     .nav-link {
-      padding-inline: $spacer * .25;
+      // padding-inline: $spacer * .25;
       // color: rgba($white, .85);
 
       // &:hover,
