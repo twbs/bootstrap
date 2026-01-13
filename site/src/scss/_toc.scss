@@ -1,8 +1,6 @@
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
 
-// stylelint-disable selector-max-type, selector-no-qualifying-type
-
 @layer custom {
   .bd-toc {
     container-type: inline-size;
@@ -12,57 +10,50 @@
       top: 5rem;
       right: 0;
       z-index: 2;
-      height: calc(100vh - 7rem);
-      overflow-y: auto;
+      height: calc(100vh - 6em);
+      // overflow-y: auto;
     }
 
-    nav {
-      font-size: .875rem;
+    .nav {
+      --bs-nav-link-justify: flex-start;
+      --bs-nav-link-padding-x: .75rem;
+      --bs-nav-link-padding-y: .125rem;
+      --bs-nav-link-font-size: .875rem;
+      --bs-nav-link-hover-bg: transparent;
+      --bs-nav-link-active-bg: transparent;
+      --bs-nav-link-active-color: var(--bs-fg-body);
+      --bs-border-radius: 0;
 
-      ul {
-        padding-inline-start: 0;
-        margin-bottom: 0;
-        list-style: none;
+      .nav .nav-link{
+        padding-inline-start: 1.75rem;
+      }
+    }
 
-        ul {
-          padding-inline-start: 1rem;
-        }
+    .nav-link {
+      border-inline-start: .125rem solid transparent;
+
+      &.active {
+        font-weight: 500;
+        border-inline-start-color: var(--bs-fg-body);
       }
 
-      a {
-        display: block;
-        padding: .125rem 0 .125rem .75rem;
-        color: var(--bs-fg-3);
-        text-decoration: none;
-        border-inline-start: .125rem solid transparent;
-
-        &:hover,
-        &.active {
-          color: var(--bs-fg-body);
-          border-inline-start-color: var(--bs-fg-body);
-        }
-
-        &.active {
-          font-weight: 500;
-        }
-
-        code {
-          font: inherit;
-        }
+      code {
+        font: inherit;
       }
     }
   }
+
 
   .bd-toc-toggle {
     display: flex;
     align-items: center;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       justify-content: space-between;
       width: 100%;
     }
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       color: var(--bs-color-body);
       border: 1px solid var(--bs-border-color);
       @include border-radius(var(--bs-border-radius));
@@ -84,7 +75,7 @@
   }
 
   .bd-toc-collapse {
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       nav {
         padding: 1.25rem 1.25rem 1.25rem 1rem;
         background-color: var(--bs-bg-subtle);
@@ -93,7 +84,7 @@
       }
     }
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
       display: block !important; // stylelint-disable-line declaration-no-important
     }
   }
