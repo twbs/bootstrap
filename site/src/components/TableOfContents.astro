@@ -12,12 +12,12 @@ const { entries, headings } = Astro.props
 const toc = entries ? entries : generateToc(headings ?? [])
 ---
 
-<ul>
+<ul class="nav flex-column">
   {
     toc.map(({ children, slug, text }) => {
       return (
         <li>
-          <a href={`#${slug}`}>{text}</a>
+          <a class="nav-link" href={`#${slug}`}>{text}</a>
           {children.length > 0 && <Astro.self entries={children} />}
         </li>
       )

@@ -8,6 +8,8 @@
 // scss-docs-start nav-variables
 $nav-gap:                           .125rem !default;
 $nav-link-gap:                      .5rem !default;
+$nav-link-align:                    center !default;
+$nav-link-justify:                  center !default;
 $nav-link-padding-y:                .5rem !default;
 $nav-link-padding-x:                1rem !default;
 $nav-link-color:                    var(--fg-2) !default;
@@ -44,6 +46,8 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
     // scss-docs-start nav-css-vars
     --nav-gap: #{$nav-gap};
     --nav-link-gap: #{$nav-link-gap};
+    --nav-link-align: #{$nav-link-align};
+    --nav-link-justify: #{$nav-link-justify};
     --nav-link-padding-x: #{$nav-link-padding-x};
     --nav-link-padding-y: #{$nav-link-padding-y};
     --nav-link-color: #{$nav-link-color};
@@ -70,8 +74,8 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
   .nav-link {
     display: flex;
     gap: var(--nav-link-gap);
-    align-items: center;
-    justify-content: center;
+    align-items: var(--nav-link-align);
+    justify-content: var(--nav-link-justify);
     padding: var(--nav-link-padding-y) var(--nav-link-padding-x);
     font-weight: var(--nav-link-font-weight);
     color: var(--nav-link-color);

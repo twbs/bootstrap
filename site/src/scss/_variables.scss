@@ -19,7 +19,7 @@ $bd-callout-variants: info, warning, danger !default;
     --bd-violet: #{$bd-violet};
     --bd-accent: #{$bd-accent};
     --bd-violet-bg: var(--bd-violet);
-    --bd-toc-color: light-dark(var(--bd-violet), var(--bs-indigo-300));
+    --bd-toc-color: var(--bs-fg-body);
     --bd-sidebar-link-bg: light-dark(color-mix(in srgb, var(--bd-violet), transparent 90%), color-mix(in srgb, var(--bd-violet), transparent 70%));
     --bd-callout-link: var(--blue-600);
     --bd-callout-code-color: light-dark(var(--bs-pink-600), var(--bs-pink-300));
