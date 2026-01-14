@@ -1,0 +1,122 @@
+@use "../config" as *;
+@use "../variables" as *;
+@use "../theme" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/transition" as *;
+@use "form-variables" as *;
+
+// scss-docs-start chip-input-variables
+$chip-input-gap:                    .375rem !default;
+$chip-input-padding-y:              .75rem !default;
+$chip-input-padding-x:              .75rem !default;
+$chip-input-chip-padding-y:         .75rem !default;
+$chip-input-chip-padding-x:         .5rem !default;
+$chip-input-ghost-min-width:        5rem !default;
+// scss-docs-end chip-input-variables
+
+@layer forms {
+  .chip-input {
+    // Inherit form-control CSS variables for sizing
+    // --control-min-height: #{$control-min-height};
+    --chip-input-padding-y: #{$chip-input-padding-y};
+    --chip-input-padding-x: #{$chip-input-padding-x};
+    --control-padding-x: #{$control-padding-x};
+    --control-color: #{$control-color};
+    --control-bg: #{$control-bg};
+    --control-border-width: #{$control-border-width};
+    --control-border-color: #{$control-border-color};
+    --control-border-radius: #{$control-border-radius};
+
+    // Chip input specific
+    --chip-input-gap: #{$chip-input-gap};
+    // --chip-input-chip-padding-y: #{$chip-input-chip-padding-y};
+    // --chip-input-chip-padding-x: #{$chip-input-chip-padding-x};
+    // --chip-input-chip-font-size: #{$chip-input-chip-font-size};
+    --chip-input-ghost-min-width: #{$chip-input-ghost-min-width};
+
+    // Flexbox wrapping layout
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--chip-input-gap);
+    align-items: center;
+    padding: var(--chip-input-padding-y) var(--chip-input-padding-x);
+
+    color: var(--control-color);
+    background-color: var(--control-bg);
+    border: var(--control-border-width) solid var(--control-border-color);
+    @include border-radius(var(--control-border-radius), 0);
+
+    // Focus state when ghost input is focused
+    &:focus-within {
+      --focus-ring-offset: -1px;
+      border-color: $input-focus-border-color;
+      @include focus-ring(true);
+    }
+
+    // Ghost input fills remaining space
+    > .form-ghost {
+      flex: 1 1 0;
+      min-width: var(--chip-input-ghost-min-width);
+      min-height: 1.75rem;
+    }
+
+    // Disabled state
+    &.disabled,
+    &:has(.form-ghost:disabled) {
+      background-color: $input-disabled-bg;
+      opacity: 1;
+
+      > .chip {
+        opacity: .65;
+
+        .chip-dismiss {
+          pointer-events: none;
+        }
+      }
+
+      > .form-ghost {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  // Theme cascade: .chip-input.theme-* passes theme to child chips
+  // Chips inherit theme variables from parent
+  // @each $color-name, $theme-props in $theme-map {
+  //   .chip-input.theme-#{$color-name} > .chip {
+  //     // Subtle default state
+  //     --chip-color: var(--theme-text);
+  //     --chip-bg: var(--theme-bg-subtle);
+
+  //     // Selected/active solid state
+  //     --chip-selected-color: var(--theme-contrast);
+  //     --chip-selected-bg: var(--theme-bg);
+  //     --chip-selected-border-color: var(--theme-bg);
+  //   }
+  // }
+
+  // // Sizing variants
+  // .chip-input-sm {
+  //   --control-min-height: #{$control-min-height-sm};
+  //   --control-padding-y: #{$control-padding-y-sm};
+  //   --control-padding-x: #{$control-padding-x-sm};
+  //   --control-font-size: #{$control-font-size-sm};
+  //   --control-line-height: #{$control-line-height-sm};
+  //   --control-border-radius: #{$control-border-radius-sm};
+  //   --chip-input-gap: .25rem;
+  //   --chip-input-chip-font-size: .8125em;
+  // }
+
+  // .chip-input-lg {
+  //   --control-min-height: #{$control-min-height-lg};
+  //   --control-padding-y: #{$control-padding-y-lg};
+  //   --control-padding-x: #{$control-padding-x-lg};
+  //   --control-font-size: #{$control-font-size-lg};
+  //   --control-line-height: #{$control-line-height-lg};
+  //   --control-border-radius: #{$control-border-radius-lg};
+  //   --chip-input-gap: .5rem;
+  //   --chip-input-chip-font-size: .9375em;
+  // }
+}
