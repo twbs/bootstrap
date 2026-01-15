@@ -1,0 +1,6 @@
+@use "../theme" as *;
+
+// Generate theme modifier classes (e.g., .theme-primary, .theme-accent, etc.)
+@layer helpers {
+  @include generate-theme-classes();
+}

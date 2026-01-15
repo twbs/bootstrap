@@ -151,9 +151,6 @@ $new-theme-colors: (
 ) !default;
 // scss-docs-end theme-colors
 
-// Generate theme modifier classes (e.g., .theme-primary, .theme-accent, etc.)
-@include generate-theme-classes();
-
 // mdo-do: consider using muted, subtle, ghost or something instead of linear scale?
 $theme-bgs: (
   "body": light-dark(var(--white), var(--gray-975)),

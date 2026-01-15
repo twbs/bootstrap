@@ -1,0 +1,30 @@
+// Test customizing root tokens when importing full Bootstrap
+//
+// =============================================================================
+// Customize via @use "bootstrap" with ($root-tokens: (...))
+// This imports all of Bootstrap while customizing root tokens
+// =============================================================================
+
+@use "../../bootstrap" as * with (
+  // Customize root tokens
+  $root-tokens: (
+    // Override existing tokens
+    --black: #0a0a0a,
+    --white: #fafafa,
+    // Add custom tokens
+    --brand-primary: #e91e63,
+    --brand-secondary: #9c27b0,
+    --site-max-width: 1400px,
+  ),
+  // Customize dropdown tokens
+  $dropdown-tokens: (
+    --dropdown-bg: var(--bg-2),
+    --dropdown-border-radius: var(--border-radius-xl),
+    --dropdown-padding-x: 1rem,
+    --dropdown-padding-y: 1rem,
+  )
+);
+
+// The full Bootstrap CSS will be output with your customizations merged in.
+// You can verify by compiling this file:
+//   npx sass scss/tests/modules/_root-tokens-bootstrap.test.scss
