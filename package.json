@@ -169,7 +169,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "jquery": "1.9.1 - 3",
+      "jquery": "1.9.1 - 4",
       "popper.js": "^1.16.1"
     }
   }
