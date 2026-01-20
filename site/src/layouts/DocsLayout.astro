@@ -165,11 +165,12 @@ if (currentPageIndex < allPages.length - 1) {
       </div>
 
 
-      <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+      <div class="vstack bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 fg-3">
+        <div class="overflow-y-auto">
         {
           frontmatter.toc && headings && (
             <button
-              class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-flex align-items-center d-md-none"
+              class="btn btn-link p-lg-0 mb-2 mb-lg-0 text-decoration-none bd-toc-toggle d-flex align-items-center d-lg-none"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#tocContents"
@@ -177,12 +178,10 @@ if (currentPageIndex < allPages.length - 1) {
               aria-controls="tocContents"
             >
               On this page
-              <svg class="bi d-md-none ms-2" aria-hidden="true">
+              <svg class="bi d-lg-none ms-2" aria-hidden="true">
                 <use href="#chevron-expand" />
               </svg>
             </button>
-            <div class="d-none d-md-block h6 my-2 ms-3" id="docs-tocs">On this page</div>
-            <hr class="d-none d-md-block my-2 ms-3" />
             <div class="collapse bd-toc-collapse" id="tocContents">
               <nav id="TableOfContents" aria-labelledby="docs-tocs">
                 <TableOfContents headings={headings} />
@@ -190,6 +189,7 @@ if (currentPageIndex < allPages.length - 1) {
             </div>
           )
         }
+        </div>
         <Ads />
       </div>
 
