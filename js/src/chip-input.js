@@ -32,7 +32,7 @@ const CLASS_NAME_CHIP = 'chip'
 const CLASS_NAME_CHIP_DISMISS = 'chip-dismiss'
 const CLASS_NAME_ACTIVE = 'active'
 
-const DEFAULT_DISMISS_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>`
+const DEFAULT_DISMISS_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>'
 
 const Default = {
   separator: ',',
@@ -474,74 +474,25 @@ class ChipInput extends BaseComponent {
       case 'Backspace':
       case 'Delete': {
         event.preventDefault()
-        if (this._selectedChips.size > 0) {
-          // Remove all selected chips
-          const nextIndex = Math.min(currentIndex, chips.length - this._selectedChips.size - 1)
-          this.removeSelected()
-
-          // Focus next chip or input
-          const remainingChips = this._getChipElements()
-          if (remainingChips.length > 0) {
-            const focusIndex = Math.max(0, Math.min(nextIndex, remainingChips.length - 1))
-            remainingChips[focusIndex].focus()
-            this.selectChip(remainingChips[focusIndex])
-          } else {
-            this._input?.focus()
-          }
-        }
-
+        this._handleChipDelete(currentIndex, chips)
         break
       }
 
       case 'ArrowLeft': {
         event.preventDefault()
-        if (currentIndex > 0) {
-          const prevChip = chips[currentIndex - 1]
-          if (event.shiftKey) {
-            this.selectChip(prevChip, { addToSelection: true, rangeSelect: true })
-          } else {
-            this.selectChip(prevChip)
-          }
-
-          prevChip.focus()
-        }
-
+        this._navigateChip(chips, currentIndex, -1, event.shiftKey)
         break
       }
 
       case 'ArrowRight': {
         event.preventDefault()
-        if (currentIndex < chips.length - 1) {
-          const nextChip = chips[currentIndex + 1]
-          if (event.shiftKey) {
-            this.selectChip(nextChip, { addToSelection: true, rangeSelect: true })
-          } else {
-            this.selectChip(nextChip)
-          }
-
-          nextChip.focus()
-        } else {
-          // At the last chip, move to input
-          this.clearSelection()
-          this._input?.focus()
-        }
-
+        this._navigateChip(chips, currentIndex, 1, event.shiftKey)
         break
       }
 
       case 'Home': {
         event.preventDefault()
-        if (chips.length > 0) {
-          const firstChip = chips[0]
-          if (event.shiftKey) {
-            this.selectChip(firstChip, { rangeSelect: true })
-          } else {
-            this.selectChip(firstChip)
-          }
-
-          firstChip.focus()
-        }
-
+        this._navigateToEdge(chips, 0, event.shiftKey)
         break
       }
 
@@ -553,19 +504,7 @@ class ChipInput extends BaseComponent {
       }
 
       case 'a': {
-        // Cmd/Ctrl+A to select all chips
-        if (event.metaKey || event.ctrlKey) {
-          event.preventDefault()
-          for (const c of chips) {
-            this._selectedChips.add(c)
-            c.classList.add(CLASS_NAME_ACTIVE)
-          }
-
-          EventHandler.trigger(this._element, EVENT_SELECT, {
-            selected: this.getSelectedValues()
-          })
-        }
-
+        this._handleSelectAll(event, chips)
         break
       }
 
@@ -578,6 +517,67 @@ class ChipInput extends BaseComponent {
 
       // No default
     }
+  }
+
+  _handleChipDelete(currentIndex, chips) {
+    if (this._selectedChips.size === 0) {
+      return
+    }
+
+    const nextIndex = Math.min(currentIndex, chips.length - this._selectedChips.size - 1)
+    this.removeSelected()
+
+    const remainingChips = this._getChipElements()
+    if (remainingChips.length > 0) {
+      const focusIndex = Math.max(0, Math.min(nextIndex, remainingChips.length - 1))
+      remainingChips[focusIndex].focus()
+      this.selectChip(remainingChips[focusIndex])
+    } else {
+      this._input?.focus()
+    }
+  }
+
+  _navigateChip(chips, currentIndex, direction, shiftKey) {
+    const targetIndex = currentIndex + direction
+
+    if (direction < 0 && targetIndex >= 0) {
+      const targetChip = chips[targetIndex]
+      this.selectChip(targetChip, shiftKey ? { addToSelection: true, rangeSelect: true } : {})
+      targetChip.focus()
+    } else if (direction > 0 && targetIndex < chips.length) {
+      const targetChip = chips[targetIndex]
+      this.selectChip(targetChip, shiftKey ? { addToSelection: true, rangeSelect: true } : {})
+      targetChip.focus()
+    } else if (direction > 0) {
+      this.clearSelection()
+      this._input?.focus()
+    }
+  }
+
+  _navigateToEdge(chips, targetIndex, shiftKey) {
+    if (chips.length === 0) {
+      return
+    }
+
+    const targetChip = chips[targetIndex]
+    this.selectChip(targetChip, shiftKey ? { rangeSelect: true } : {})
+    targetChip.focus()
+  }
+
+  _handleSelectAll(event, chips) {
+    if (!(event.metaKey || event.ctrlKey)) {
+      return
+    }
+
+    event.preventDefault()
+    for (const c of chips) {
+      this._selectedChips.add(c)
+      c.classList.add(CLASS_NAME_ACTIVE)
+    }
+
+    EventHandler.trigger(this._element, EVENT_SELECT, {
+      selected: this.getSelectedValues()
+    })
   }
 
   _handleInput(event) {
