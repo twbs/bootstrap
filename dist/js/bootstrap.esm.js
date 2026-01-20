@@ -126,7 +126,6 @@ function findHandler(events, callable, delegationSelector = null) {
 }
 function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
   const isDelegated = typeof handler === 'string';
-  // TODO: tooltip passes `false` instead of selector, so we need to check
   const callable = isDelegated ? delegationFunction : handler || delegationFunction;
   let typeEvent = getTypeEvent(originalTypeEvent);
   if (!nativeEvents.has(typeEvent)) {
@@ -1062,8 +1061,7 @@ const Default$f = {
   wrap: true
 };
 const DefaultType$f = {
-  interval: '(number|boolean)',
-  // TODO:v6 remove boolean support
+  interval: 'number',
   keyboard: 'boolean',
   pause: '(string|boolean)',
   ride: '(boolean|string)',
@@ -1106,10 +1104,9 @@ class Carousel extends BaseComponent {
     this._slide(ORDER_NEXT);
   }
   nextWhenVisible() {
-    // FIXME TODO use `document.visibilityState`
     // Don't call next when the page isn't visible
     // or the carousel or its parent isn't visible
-    if (!document.hidden && isVisible(this._element)) {
+    if (document.visibilityState === 'visible' && isVisible(this._element)) {
       this.next();
     }
   }
@@ -1266,7 +1263,6 @@ class Carousel extends BaseComponent {
     }
     if (!activeElement || !nextElement) {
       // Some weirdness is happening, so we bail
-      // TODO: change tests that use empty divs to avoid this check
       return;
     }
     const isCycling = Boolean(this._interval);
@@ -4651,13 +4647,7 @@ class Tooltip extends BaseComponent {
   }
   _createTipElement(content) {
     const tip = this._getTemplateFactory(content).toHtml();
-
-    // TODO: remove this check in v6
-    if (!tip) {
-      return null;
-    }
     tip.classList.remove(CLASS_NAME_FADE$2, CLASS_NAME_SHOW$2);
-    // TODO: v6 the following can be achieved with CSS only
     tip.classList.add(`bs-${this.constructor.NAME}-auto`);
     const tipId = getUID(this.constructor.NAME).toString();
     tip.setAttribute('id', tipId);
@@ -5146,16 +5136,12 @@ const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SE
 const SELECTOR_DROPDOWN = '.dropdown';
 const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
 const Default$2 = {
-  offset: null,
-  // TODO: v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: '0px 0px -25%',
   smoothScroll: false,
   target: null,
   threshold: [0.1, 0.5, 1]
 };
 const DefaultType$2 = {
-  offset: '(number|null)',
-  // TODO v6 @deprecated, keep it for backwards compatibility reasons
   rootMargin: 'string',
   smoothScroll: 'boolean',
   target: 'element',
@@ -5214,11 +5200,7 @@ class ScrollSpy extends BaseComponent {
 
   // Private
   _configAfterMerge(config) {
-    // TODO: on v6 target should be given explicitly & remove the {target: 'ss-target'} case
     config.target = getElement(config.target) || document.body;
-
-    // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
-    config.rootMargin = config.offset ? `${config.offset}px 0px -30%` : config.rootMargin;
     if (typeof config.threshold === 'string') {
       config.threshold = config.threshold.split(',').map(value => Number.parseFloat(value));
     }
@@ -5408,7 +5390,7 @@ class Tab extends BaseComponent {
     if (!this._parent) {
       return;
       // TODO: should throw exception in v6
-      // throw new TypeError(`${element.outerHTML} has not a valid parent ${SELECTOR_INNER_ELEM}`)
+      // throw new TypeError(`${element.outerHTML} has not a valid parent ${SELECTOR_TAB_PANEL}`)
     }
 
     // Set up initial aria attributes
