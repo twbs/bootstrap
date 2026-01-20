@@ -15,7 +15,7 @@ Switches work by layering an invisible checkbox over the custom switch indicator
 Switches also include the `switch` attribute for browsers that support it. This provides haptic feedback when toggling the switch.
 
 <Example code={`<div class="switch">
-    <input type="checkbox" value="" id="switch" switch>
+    <input type="checkbox" value="" id="switch" role="switch" switch>
   </div>`} />
 
 ## Label
@@ -26,14 +26,14 @@ Consider margin utilities for additional spacing, and flex utilities for alignme
 
 <Example class="d-flex flex-column gap-3" code={`<b-checkgroup>
     <div class="switch switch-sm mt-1">
-      <input type="checkbox" value="" id="switchSmLabel" switch>
+      <input type="checkbox" value="" id="switchSmLabel" role="switch" switch>
     </div>
     <label for="switchSmLabel">Small switch</label>
   </b-checkgroup>
 
   <b-checkgroup>
     <div class="switch">
-      <input type="checkbox" value="" id="switchMdLabel" switch>
+      <input type="checkbox" value="" id="switchMdLabel" role="switch" switch>
     </div>
     <label for="switchMdLabel">Default switch</label>
   </b-checkgroup>`} />
@@ -44,7 +44,7 @@ Modify the appearance of checked checkboxes by adding the `.checked-{color}` cla
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => ` <b-checkgroup>
     <div class="switch switch-sm mt-1 checked-${themeColor.name}">
-      <input type="checkbox" value="" id="switch${themeColor.name}" switch checked>
+      <input type="checkbox" value="" id="switch${themeColor.name}" role="switch" switch checked>
     </div>
     <label for="switch${themeColor.name}">Example ${themeColor.name} switch</label>
   </b-checkgroup>`)} />
@@ -55,7 +55,7 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 <Example class="d-flex flex-column gap-3" code={`<b-checkgroup>
     <div class="switch">
-      <input type="checkbox" value="" id="switchDisabledLabel" switch disabled>
+      <input type="checkbox" value="" id="switchDisabledLabel" role="switch" switch disabled>
     </div>
     <label for="switchDisabledLabel">Disabled switch</label>
   </b-checkgroup>`} />
@@ -65,13 +65,13 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 Add a size modifier class to make your switch appear smaller or larger.
 
 <Example class="d-flex flex-column gap-3" code={`<div class="switch switch-sm">
-    <input type="checkbox" value="" id="switchSizeSm" switch>
+    <input type="checkbox" value="" id="switchSizeSm" role="switch" switch>
   </div>
   <div class="switch">
-    <input type="checkbox" value="" id="switchSizeMd" switch>
+    <input type="checkbox" value="" id="switchSizeMd" role="switch" switch>
   </div>
   <div class="switch switch-lg">
-    <input type="checkbox" value="" id="switchSizeLg" switch>
+    <input type="checkbox" value="" id="switchSizeLg" role="switch" switch>
   </div>`} />
 
 ## CSS
