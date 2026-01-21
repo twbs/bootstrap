@@ -115,7 +115,7 @@ Within the download you’ll find the following directories and files, logically
   ```
 </details>
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/docs/v2/). All CSS files work for both LTR and RTL layouts thanks to logical properties—simply set `dir="rtl"` on your HTML element.
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Floating UI](https://floating-ui.com/). All CSS files work for both LTR and RTL layouts thanks to logical properties—simply set `dir="rtl"` on your HTML element.
 
 
 ## Bugs and feature requests
