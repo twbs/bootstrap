@@ -32,10 +32,10 @@ We’re building a Webpack project with Bootstrap from scratch, so there are som
    npm i --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin
    ```
 
-3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Popper since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Popper here.
+3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Floating UI here.
 
    ```sh
-   npm i --save bootstrap @popperjs/core
+   npm i --save bootstrap @floating-ui/dom
    ```
 
 4. **Install additional dependencies.** In addition to Webpack and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap’s CSS and JS with Webpack. These include Sass, some loaders, and Autoprefixer.
@@ -234,7 +234,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    *You can also import our stylesheets individually if you want. [Read our Sass import docs]([[docsref:/customize/sass#importing]]) for details.*
 
-3. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Popper will be imported automatically through Bootstrap.
+3. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Floating UI will be imported automatically through Bootstrap.
 
    ```js
    // Import our custom CSS

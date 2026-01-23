@@ -6,7 +6,7 @@ toc: true
 
 ## JS components
 
-Curious which components explicitly require our JavaScript and Popper?
+Curious which components explicitly require our JavaScript and Floating UI?
 
 - Accordions for extending our Collapse plugin
 - Alerts for dismissing
@@ -59,7 +59,7 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 </script>
 ```
 
-Compared to JS bundlers, using ESM in the browser requires you to use the full path and filename instead of the module name. [Read more about JS modules in the browser.](https://v8.dev/features/modules#specifiers) That’s why we use `'bootstrap.esm.min.js'` instead of `'bootstrap'` above. However, this is further complicated by our Popper dependency, which imports Popper into our JavaScript like so:
+Compared to JS bundlers, using ESM in the browser requires you to use the full path and filename instead of the module name. [Read more about JS modules in the browser.](https://v8.dev/features/modules#specifiers) That’s why we use `'bootstrap.esm.min.js'` instead of `'bootstrap'` above. However, this is further complicated by our Floating UI dependency, which imports Floating UI into our JavaScript like so:
 
 ```js
 import * as Popper from "@floating-ui/dom"
@@ -71,7 +71,7 @@ If you try this as-is, you’ll see an error in the console like the following:
 Uncaught TypeError: Failed to resolve module specifier "@floating-ui/dom". Relative references must start with either "/", "./", or "../".
 ```
 
-To fix this, you can use an `importmap` to resolve the arbitrary module names to complete paths. If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap`, you’ll need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) project. Here’s how it works for Bootstrap and Popper:
+To fix this, you can use an `importmap` to resolve the arbitrary module names to complete paths. If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap`, you’ll need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) project. Here’s how it works for Bootstrap and Floating UI:
 
 ```html
 <!doctype html>
