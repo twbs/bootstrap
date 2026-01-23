@@ -98,8 +98,9 @@
     - title: Dialog
     - title: Dropdown
     - title: List group
-    - title: Navbar
     - title: Navs & tabs
+    - title: Nav overflow
+    - title: Navbar
     - title: Offcanvas
     - title: Pagination
     - title: Placeholder

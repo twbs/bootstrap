@@ -367,6 +367,24 @@
   }
 
   //
+  // Resizable examples
+  //
+
+  .bd-example-resizable {
+    position: relative;
+  }
+
+  .bd-resizable-container {
+    max-width: 100%;
+    padding: 1rem;
+    overflow: hidden;
+    resize: horizontal;
+    background-color: var(--bs-bg-body);
+    border: 1px dashed var(--bs-border-color);
+    @include border-radius(var(--bs-border-radius));
+  }
+
+  //
   // Code snippets
   //
 

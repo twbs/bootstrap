@@ -46,11 +46,28 @@ $offcanvas-backdrop-tokens: defaults(
 );
 // scss-docs-end offcanvas-backdrop-tokens
 
+// scss-docs-start offcanvas-variables
+$offcanvas-padding-y:               $spacer !default;
+$offcanvas-padding-x:               $spacer !default;
+$offcanvas-horizontal-width:        400px !default;
+$offcanvas-vertical-height:         30vh !default;
+$offcanvas-transition-duration:     .3s !default;
+$offcanvas-border-color:            var(--border-color-translucent) !default;
+$offcanvas-border-width:            var(--border-width) !default;
+$offcanvas-title-line-height:       $line-height-base !default;
+$offcanvas-bg-color:                var(--bg-body) !default;
+$offcanvas-color:                   var(--fg-body) !default;
+$offcanvas-box-shadow:              var(--box-shadow-lg) !default;
+$offcanvas-backdrop-bg:             $black !default;
+$offcanvas-backdrop-opacity:        .5 !default;
+// scss-docs-end offcanvas-variables
+
 %offcanvas-css-vars {
   @include tokens($offcanvas-tokens);
 }
 
 @layer components {
+  // Apply CSS vars to all offcanvas responsive variants
   @each $breakpoint in map.keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
@@ -60,6 +77,7 @@ $offcanvas-backdrop-tokens: defaults(
     }
   }
 
+  // Responsive offcanvas styles
   @each $breakpoint in map.keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
@@ -80,6 +98,7 @@ $offcanvas-backdrop-tokens: defaults(
         @include box-shadow(var(--offcanvas-box-shadow));
         @include transition(var(--offcanvas-transition));
 
+        // Placement: Start (left in LTR, right in RTL)
         &.offcanvas-start {
           inset-block: 0;
           inset-inline-start: 0;
@@ -92,6 +111,7 @@ $offcanvas-backdrop-tokens: defaults(
           }
         }
 
+        // Placement: End (right in LTR, left in RTL)
         &.offcanvas-end {
           inset-block: 0;
           inset-inline-end: 0;
@@ -104,6 +124,7 @@ $offcanvas-backdrop-tokens: defaults(
           }
         }
 
+        // Placement: Top
         &.offcanvas-top {
           inset: 0 0 auto;
           height: var(--offcanvas-height);
@@ -112,6 +133,7 @@ $offcanvas-backdrop-tokens: defaults(
           transform: translateY(-100%);
         }
 
+        // Placement: Bottom
         &.offcanvas-bottom {
           inset: auto 0 0;
           height: var(--offcanvas-height);
@@ -120,6 +142,18 @@ $offcanvas-backdrop-tokens: defaults(
           transform: translateY(100%);
         }
 
+        // Fullscreen variant - covers entire viewport
+        &.offcanvas-fullscreen {
+          inset: 0;
+          width: 100%;
+          max-width: none;
+          height: 100%;
+          max-height: none;
+          border: 0;
+          transform: translateY(100%);
+        }
+
+        // Show/hide states
         &.showing,
         &.show:not(.hiding) {
           transform: none;
@@ -132,6 +166,7 @@ $offcanvas-backdrop-tokens: defaults(
         }
       }
 
+      // Above breakpoint - show content inline (for responsive offcanvas)
       @if not ($infix == "") {
         @include media-breakpoint-up($next) {
           --offcanvas-height: auto;
@@ -147,7 +182,6 @@ $offcanvas-backdrop-tokens: defaults(
             flex-grow: 0;
             padding: 0;
             overflow-y: visible;
-            // Reset `background-color` in case `.bg-*` classes are used in offcanvas
             background-color: transparent !important; // stylelint-disable-line declaration-no-important
           }
         }
@@ -155,10 +189,12 @@ $offcanvas-backdrop-tokens: defaults(
     }
   }
 
+  // Backdrop overlay
   .offcanvas-backdrop {
     @include overlay-backdrop($zindex-offcanvas-backdrop, map.get($offcanvas-backdrop-tokens, bg), map.get($offcanvas-backdrop-tokens, opacity));
   }
 
+  // Header with close button
   .offcanvas-header {
     display: flex;
     align-items: center;
@@ -166,7 +202,6 @@ $offcanvas-backdrop-tokens: defaults(
 
     .btn-close {
       padding: calc(var(--offcanvas-padding-y) * .5) calc(var(--offcanvas-padding-x) * .5);
-      // Split properties to avoid invalid calc() function if value is 0
       margin-inline-start: auto;
       margin-inline-end: calc(-.5 * var(--offcanvas-padding-x));
       margin-top: calc(-.5 * var(--offcanvas-padding-y));
@@ -174,14 +209,28 @@ $offcanvas-backdrop-tokens: defaults(
     }
   }
 
+  // Title
   .offcanvas-title {
     margin-bottom: 0;
     line-height: var(--offcanvas-title-line-height);
   }
 
+  // Scrollable body
   .offcanvas-body {
     flex-grow: 1;
     padding: var(--offcanvas-padding-y) var(--offcanvas-padding-x);
     overflow-y: auto;
+  }
+
+  // Optional footer
+  .offcanvas-footer {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: center;
+    justify-content: flex-end;
+    padding: var(--offcanvas-padding-y) var(--offcanvas-padding-x);
+    border-block-start: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
   }
 }

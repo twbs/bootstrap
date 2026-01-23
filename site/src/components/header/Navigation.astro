@@ -23,6 +23,7 @@ const { addedIn, layout, title } = Astro.props
 
 <header class="navbar navbar-expand-lg bg-body bd-navbar border-bottom sticky-top bd-sticky-navbar">
   <nav class="container-2xl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    {/* Docs sidebar toggle - only shown on docs pages */}
     {
       layout === 'docs' && (
         <div class="bd-navbar-toggle">
@@ -42,10 +43,12 @@ const { addedIn, layout, title } = Astro.props
     }
     {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
 
+    {/* Brand */}
     <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap" style="color: var(--bs-indigo-500);">
       <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
     </a>
 
+    {/* Search and main nav toggle */}
     <div class="d-flex">
       <div class="bd-search" id="docsearch" data-bd-docs-version={getConfig().docs_version}></div>
 
@@ -61,6 +64,7 @@ const { addedIn, layout, title } = Astro.props
       </button>
     </div>
 
+    {/* Main navigation - offcanvas on mobile, inline on desktop */}
     <div
       class="offcanvas-lg offcanvas-end flex-grow-1"
       tabindex="-1"
@@ -108,6 +112,7 @@ const { addedIn, layout, title } = Astro.props
             <OpenCollectiveIcon class="navbar-nav-svg" height={16} width={16} />
             <small class="d-lg-none ms-2">Open Collective</small>
           </LinkItem>
+
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
             <div class="vr d-none d-lg-flex mx-lg-2 my-auto"></div>
             <hr class="d-lg-none my-2" />

@@ -165,14 +165,15 @@ To make a responsive offcanvas, replace the `.offcanvas` base class with a respo
 
 ## Placement
 
-There’s no default placement for offcanvas components, so you must add one of the modifier classes below.
+There's no default placement for offcanvas components, so you must add one of the modifier classes below.
 
 - `.offcanvas-start` places offcanvas on the left of the viewport (shown above)
 - `.offcanvas-end` places offcanvas on the right of the viewport
 - `.offcanvas-top` places offcanvas on the top of the viewport
 - `.offcanvas-bottom` places offcanvas on the bottom of the viewport
+- `.offcanvas-fullscreen` covers the entire viewport
 
-Try the top, right, and bottom examples out below.
+Try the top, right, bottom, and fullscreen examples out below.
 
 <Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
 
@@ -207,6 +208,36 @@ Try the top, right, and bottom examples out below.
     </div>
     <div class="offcanvas-body small">
       ...
+    </div>
+  </div>`} />
+
+<Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFullscreen" aria-controls="offcanvasFullscreen">Toggle fullscreen offcanvas</button>
+
+  <div class="offcanvas offcanvas-fullscreen" tabindex="-1" id="offcanvasFullscreen" aria-labelledby="offcanvasFullscreenLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasFullscreenLabel">Fullscreen offcanvas</h5>
+      <CloseButton dismiss="offcanvas" />
+    </div>
+    <div class="offcanvas-body">
+      <p>This offcanvas covers the entire viewport, useful for full-page menus or modal-like experiences.</p>
+    </div>
+  </div>`} />
+
+## Footer
+
+Add an optional `.offcanvas-footer` for action buttons or other content at the bottom of the offcanvas.
+
+<Example class="bd-example-offcanvas p-0 bg-body-tertiary overflow-hidden" code={`<div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasFooter" aria-labelledby="offcanvasFooterLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasFooterLabel">Offcanvas with footer</h5>
+      <CloseButton dismiss="offcanvas" />
+    </div>
+    <div class="offcanvas-body">
+      <p>Content for the offcanvas goes here. The footer will stick to the bottom.</p>
+    </div>
+    <div class="offcanvas-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="offcanvas">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
     </div>
   </div>`} />
 

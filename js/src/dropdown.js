@@ -102,6 +102,7 @@ const Default = {
   floatingConfig: null,
   placement: DEFAULT_PLACEMENT,
   reference: 'toggle',
+  strategy: 'absolute',
   // Submenu options
   submenuTrigger: 'both', // 'click', 'hover', or 'both'
   submenuDelay: SUBMENU_CLOSE_DELAY
@@ -115,6 +116,7 @@ const DefaultType = {
   floatingConfig: '(null|object|function)',
   placement: 'string',
   reference: '(string|element|object)',
+  strategy: 'string',
   submenuTrigger: 'string',
   submenuDelay: 'number'
 }
@@ -326,7 +328,8 @@ class Dropdown extends BaseComponent {
       referenceElement,
       this._menu,
       floatingConfig.placement,
-      floatingConfig.middleware
+      floatingConfig.middleware,
+      floatingConfig.strategy
     )
   }
 
@@ -434,7 +437,8 @@ class Dropdown extends BaseComponent {
   _getFloatingConfig(placement, middleware) {
     const defaultConfig = {
       placement,
-      middleware
+      middleware,
+      strategy: this._config.strategy
     }
 
     return {
@@ -451,7 +455,7 @@ class Dropdown extends BaseComponent {
   }
 
   // Shared helper for positioning any floating element
-  async _applyFloatingPosition(reference, floating, placement, middleware) {
+  async _applyFloatingPosition(reference, floating, placement, middleware, strategy = 'absolute') {
     if (!floating.isConnected) {
       return null
     }
@@ -459,7 +463,7 @@ class Dropdown extends BaseComponent {
     const { x, y, placement: finalPlacement } = await computePosition(
       reference,
       floating,
-      { placement, middleware }
+      { placement, middleware, strategy }
     )
 
     if (!floating.isConnected) {
@@ -467,7 +471,7 @@ class Dropdown extends BaseComponent {
     }
 
     Object.assign(floating.style, {
-      position: 'absolute',
+      position: strategy,
       left: `${x}px`,
       top: `${y}px`,
       margin: '0'
