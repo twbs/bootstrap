@@ -1,0 +1,17 @@
+// Placeholder text alignment utilities
+//
+// Utilities for controlling the text-align property of input placeholder text.
+// These utilities allow independent alignment of placeholder text from input value text,
+// useful for RTL/LTR mixed layouts and numeric inputs.
+
+.placeholder-start::placeholder {
+  text-align: left if($enable-important-utilities, !important, null);
+}
+
+.placeholder-end::placeholder {
+  text-align: right if($enable-important-utilities, !important, null);
+}
+
+.placeholder-center::placeholder {
+  text-align: center if($enable-important-utilities, !important, null);
+}
