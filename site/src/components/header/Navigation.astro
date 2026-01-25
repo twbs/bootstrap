@@ -91,12 +91,12 @@ const { addedIn, layout, title } = Astro.props
         <hr class="d-lg-none text-white-50" />
 
         <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-          <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().github_org} target="_blank" rel="noopener">
+          <LinkItem class="nav-link py-2 px-0 px-lg-2 align-items-center" href={getConfig().github_org} target="_blank" rel="noopener">
             <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
             <small class="d-lg-none ms-2">GitHub</small>
           </LinkItem>
           <LinkItem
-            class="nav-link py-2 px-0 px-lg-2"
+            class="nav-link py-2 px-0 px-lg-2 align-items-center"
             href={`https://x.com/${getConfig().x}`}
             target="_blank"
             rel="noopener"
@@ -104,7 +104,7 @@ const { addedIn, layout, title } = Astro.props
             <XIcon class="navbar-nav-svg" height={16} width={16} />
             <small class="d-lg-none ms-2">X</small>
           </LinkItem>
-          <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().opencollective} target="_blank" rel="noopener">
+          <LinkItem class="nav-link py-2 px-0 px-lg-2 align-items-center" href={getConfig().opencollective} target="_blank" rel="noopener">
             <OpenCollectiveIcon class="navbar-nav-svg" height={16} width={16} />
             <small class="d-lg-none ms-2">Open Collective</small>
           </LinkItem>
