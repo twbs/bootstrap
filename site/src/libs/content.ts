@@ -1,4 +1,4 @@
-import { getCollection, getEntry, getEntryBySlug } from 'astro:content'
+import { getCollection, getEntry } from 'astro:content'
 
 export const docsPages = await getCollection('docs')
 export const callouts = await getCollection('callouts')
@@ -9,7 +9,7 @@ export const aliasedDocsPages = await getCollection('docs', ({ data }) => {
 })
 
 export function getCalloutByName(name: string) {
-  return getEntryBySlug('callouts', name)
+  return getEntry('callouts', name)
 }
 
 export function getDetailsByName(name: string) {
