@@ -306,12 +306,15 @@ $datepicker-day-disabled-color:     var(--fg-4) !default;
 
   // Dates grid
   [data-vc="dates"] {
+    pointer-events: none;
+  }
+
+  [data-vc-dates="row"] {
     display: grid;
-    flex-grow: 1;
     grid-template-columns: repeat(7, 1fr);
     align-items: center;
     justify-items: center;
-    pointer-events: none;
+    width: 100%;
   }
 
   [data-vc-date] {
