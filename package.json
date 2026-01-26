@@ -71,7 +71,7 @@
     "js-test-integration-bundle": "rollup --config js/tests/integration/rollup.bundle.js",
     "js-test-integration-modularity": "rollup --config js/tests/integration/rollup.bundle-modularity.js",
     "js-test-cloud": "cross-env BROWSERSTACK=true npm run js-test-karma",
-    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint css-lint lockfile-lint lint-mdx",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint css-lint lockfile-lint lint-mdx docs-lint",
     "lint-mdx": "markdownlint \"site/src/content/**/*.mdx\"",
     "docs": "npm-run-all docs-build docs-lint",
     "docs-build": "npm run astro-build",
