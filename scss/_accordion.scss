@@ -102,6 +102,16 @@ $accordion-icon-transform:                rotate(-180deg) !default;
     background-color: var(--accordion-bg);
     border: var(--accordion-border-width) solid var(--accordion-border-color);
 
+    @media (prefers-reduced-motion: no-preference) {
+      interpolate-size: allow-keywords;
+    }
+
+    &::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      @include transition(content-visibility .2s allow-discrete, block-size .2s);
+    }
+
     &:first-of-type {
       @include border-top-radius(var(--accordion-border-radius));
 
@@ -129,7 +139,11 @@ $accordion-icon-transform:                rotate(-180deg) !default;
 
     // Open state - details[open] applies these styles
     &[open] {
+
       border-color: var(--theme-border, var(--accordion-border-color));
+      &::details-content {
+        block-size: auto;
+      }
 
       > .accordion-header {
         color: var(--theme-text, var(--accordion-active-color));
