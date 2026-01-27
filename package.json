@@ -105,7 +105,7 @@
   "peerDependencies": {
     "@floating-ui/dom": "^1.7.0",
     "postcss-prefix-custom-properties": "^0.1.0",
-    "vanilla-calendar-pro": "^3.0.5"
+    "vanilla-calendar-pro": "^3.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",

@@ -73,6 +73,7 @@
     - title: Range
     - title: Input group
     - title: Floating labels
+    - title: Datepicker
     - title: OTP input
     - title: Password strength
     - title: Chip input
@@ -95,7 +96,6 @@
     - title: Carousel
     - title: Close button
     - title: Collapse
-    - title: Datepicker
     - title: Dialog
     - title: Dropdown
     - title: List group
