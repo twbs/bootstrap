@@ -1,0 +1,23 @@
+// Form caret
+//
+// The dropdown caret icon from form-select as a separate class. Use with
+// `form-control` for typeahead, datalist, or other inputs that need a caret
+// without using the full form-select styling.
+
+.form-caret {
+  --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator)};
+
+  padding-right: $form-select-indicator-padding;
+  background-image: var(--#{$prefix}form-select-bg-img);
+  background-repeat: no-repeat;
+  background-position: $form-select-bg-position;
+  background-size: $form-select-bg-size;
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .form-caret {
+      --#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator-dark)};
+    }
+  }
+}
