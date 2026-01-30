@@ -26,6 +26,7 @@
   @include transition($form-select-transition);
 
   &:focus {
+    background-color: $form-select-focus-bg;
     border-color: $form-select-focus-border-color;
     outline: 0;
     @if $enable-shadows {
