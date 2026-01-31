@@ -5,6 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
+
 import * as Popper from '@popperjs/core'
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
@@ -353,10 +354,10 @@ class Dropdown extends BaseComponent {
     })
   }
 
-  static clearMenus(event) {
-    if (event.button === RIGHT_MOUSE_BUTTON || (event.type === 'keyup' && event.key !== TAB_KEY)) {
-      return
-    }
+ if (event.type === 'keyup' && ![TAB_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)) {
+  return
+}
+
 
     const openToggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE_SHOWN)
 
@@ -364,6 +365,12 @@ class Dropdown extends BaseComponent {
       const context = Dropdown.getInstance(toggle)
       if (!context || context._config.autoClose === false) {
         continue
+
+      if (event.type === 'keyup' && context._config.autoClose === 'outside') {
+  context.hide()
+}
+
+
       }
 
       const composedPath = event.composedPath()
