@@ -9,6 +9,7 @@
 @layer components {
   .nav-overflow {
     flex-wrap: nowrap;
+    min-width: 0; // Allow flex child to shrink below content width
   }
 
   // Container item for overflow

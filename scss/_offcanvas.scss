@@ -178,8 +178,8 @@ $offcanvas-backdrop-opacity:        .5 !default;
           }
 
           .offcanvas-body {
-            display: flex;
             flex-grow: 0;
+            flex-direction: row;
             padding: 0;
             overflow-y: visible;
             background-color: transparent !important; // stylelint-disable-line declaration-no-important
@@ -217,7 +217,10 @@ $offcanvas-backdrop-opacity:        .5 !default;
 
   // Scrollable body
   .offcanvas-body {
+    display: flex;
     flex-grow: 1;
+    flex-direction: column;
+    gap: var(--offcanvas-padding-y);
     padding: var(--offcanvas-padding-y) var(--offcanvas-padding-x);
     overflow-y: auto;
   }

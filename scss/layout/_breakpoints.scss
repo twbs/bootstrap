@@ -135,3 +135,136 @@
     }
   }
 }
+
+
+// Container queries
+//
+// Container queries allow elements to respond to the size of a containing element
+// rather than the viewport. These mixins mirror the media-breakpoint-* mixins above.
+//
+// scss-docs-start container-query-mixins
+
+// Set an element as a query container.
+//
+//    @include set-container();                    // container-type: inline-size
+//    @include set-container(size);                // container-type: size
+//    @include set-container(inline-size, sidebar); // container: sidebar / inline-size
+//
+@mixin set-container($type: inline-size, $name: null) {
+  @if $name {
+    container: #{$name} / #{$type};
+  } @else {
+    container-type: #{$type};
+  }
+}
+
+// Container query of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider within the container.
+//
+//    @include container-breakpoint-up(md) { ... }
+//    @include container-breakpoint-up(lg, sidebar) { ... }  // Query named container
+//
+@mixin container-breakpoint-up($name, $container-name: null, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @if $container-name {
+      @container #{$container-name} (width >= #{$min}) {
+        @content;
+      }
+    } @else {
+      @container (width >= #{$min}) {
+        @content;
+      }
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Container query of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower within the container.
+//
+//    @include container-breakpoint-down(lg) { ... }
+//    @include container-breakpoint-down(lg, sidebar) { ... }  // Query named container
+//
+@mixin container-breakpoint-down($name, $container-name: null, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @if $container-name {
+      @container #{$container-name} (width < #{$max}) {
+        @content;
+      }
+    } @else {
+      @container (width < #{$max}) {
+        @content;
+      }
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Container query that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints within the container.
+//
+//    @include container-breakpoint-between(md, xl) { ... }
+//    @include container-breakpoint-between(md, xl, sidebar) { ... }  // Query named container
+//
+@mixin container-breakpoint-between($lower, $upper, $container-name: null, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($lower, $breakpoints);
+  $max: breakpoint-max($upper, $breakpoints);
+
+  @if $min != null and $max != null {
+    @if $container-name {
+      @container #{$container-name} (width >= #{$min}) and (width < #{$max}) {
+        @content;
+      }
+    } @else {
+      @container (width >= #{$min}) and (width < #{$max}) {
+        @content;
+      }
+    }
+  } @else if $max == null {
+    @include container-breakpoint-up($lower, $container-name, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include container-breakpoint-down($upper, $container-name, $breakpoints) {
+      @content;
+    }
+  }
+}
+
+// Container query between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint within the container.
+//
+//    @include container-breakpoint-only(md) { ... }
+//    @include container-breakpoint-only(md, sidebar) { ... }  // Query named container
+//
+@mixin container-breakpoint-only($name, $container-name: null, $breakpoints: $grid-breakpoints) {
+  $min:  breakpoint-min($name, $breakpoints);
+  $next: breakpoint-next($name, $breakpoints);
+  $max:  breakpoint-max($next, $breakpoints);
+
+  @if $min != null and $max != null {
+    @if $container-name {
+      @container #{$container-name} (width >= #{$min}) and (width < #{$max}) {
+        @content;
+      }
+    } @else {
+      @container (width >= #{$min}) and (width < #{$max}) {
+        @content;
+      }
+    }
+  } @else if $max == null {
+    @include container-breakpoint-up($name, $container-name, $breakpoints) {
+      @content;
+    }
+  } @else if $min == null {
+    @include container-breakpoint-down($next, $container-name, $breakpoints) {
+      @content;
+    }
+  }
+}
+// scss-docs-end container-query-mixins

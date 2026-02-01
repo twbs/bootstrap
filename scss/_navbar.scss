@@ -75,7 +75,7 @@ $navbar-dark-tokens: defaults(
     align-items: center;
     justify-content: space-between;
     padding: var(--navbar-padding-y) var(--navbar-padding-x);
-    container-type: inline-size; // Enable container queries for responsive behavior
+    @include set-container();
     @include gradient-bg();
 
     // Container properties for nested containers
@@ -175,12 +175,18 @@ $navbar-dark-tokens: defaults(
   // Button for toggling the navbar when in its collapsed state
 
   .navbar-toggler {
-    padding: var(--navbar-toggler-padding-y) var(--navbar-toggler-padding-x);
-    font-size: var(--navbar-toggler-font-size);
-    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--navbar-toggler-width);
+    aspect-ratio: 1 / 1;
+    // padding: var(--navbar-toggler-padding-y) var(--navbar-toggler-padding-x);
+    // font-size: var(--navbar-toggler-font-size);
+    // line-height: 1;
     color: var(--navbar-color);
     background-color: transparent;
-    border: var(--border-width) solid var(--navbar-toggler-border-color);
+    border: 0;
+    // border: var(--border-width) solid var(--navbar-toggler-border-color);
     @include border-radius(var(--navbar-toggler-border-radius));
     @include transition(var(--navbar-toggler-transition));
 
@@ -197,10 +203,9 @@ $navbar-dark-tokens: defaults(
   // Navbar toggler icon (inline SVG)
   .navbar-toggler-icon {
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 1rem;
+    height: 1rem;
     color: var(--navbar-color);
-    vertical-align: -.125em;
   }
 
 
@@ -250,6 +255,7 @@ $navbar-dark-tokens: defaults(
       .offcanvas-body {
         display: flex;
         flex-grow: 0;
+        flex-direction: row;
         align-items: center;
         padding: 0;
         overflow-y: visible;
@@ -270,11 +276,10 @@ $navbar-dark-tokens: defaults(
   @each $breakpoint in map.keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
-    $min-width: breakpoint-min($next, $grid-breakpoints);
 
-    @if $next and $min-width {
+    @if $next {
       .navbar-expand#{$infix} {
-        @container (min-width: #{$min-width}) {
+        @include container-breakpoint-up($next) {
           @include navbar-expanded();
         }
       }

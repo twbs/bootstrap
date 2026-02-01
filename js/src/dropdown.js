@@ -97,6 +97,7 @@ const triangleSign = (p1, p2, p3) =>
 const Default = {
   autoClose: true,
   boundary: 'clippingParents',
+  container: false,
   display: 'dynamic',
   offset: [0, 2],
   floatingConfig: null,
@@ -111,6 +112,7 @@ const Default = {
 const DefaultType = {
   autoClose: '(boolean|string)',
   boundary: '(string|element)',
+  container: '(string|element|boolean)',
   display: 'string',
   offset: '(array|string|function)',
   floatingConfig: '(null|object|function)',
@@ -146,6 +148,9 @@ class Dropdown extends BaseComponent {
     this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+
+    // Store original menu parent for container option
+    this._menuOriginalParent = this._menu?.parentNode
 
     // Parse responsive placements on init
     this._parseResponsivePlacements()
@@ -187,6 +192,9 @@ class Dropdown extends BaseComponent {
       return
     }
 
+    // Move menu to container if specified (to escape overflow clipping)
+    this._moveMenuToContainer()
+
     this._createFloating()
 
     // If this is a touch-enabled device we add extra
@@ -222,6 +230,7 @@ class Dropdown extends BaseComponent {
 
   dispose() {
     this._disposeFloating()
+    this._restoreMenuToOriginalParent()
     this._disposeMediaQueryListeners()
     this._closeAllSubmenus()
     this._clearAllSubmenuTimeouts()
@@ -253,6 +262,9 @@ class Dropdown extends BaseComponent {
     }
 
     this._disposeFloating()
+
+    // Restore menu to original parent if it was moved
+    this._restoreMenuToOriginalParent()
 
     this._menu.classList.remove(CLASS_NAME_SHOW)
     this._element.classList.remove(CLASS_NAME_SHOW)
@@ -451,6 +463,38 @@ class Dropdown extends BaseComponent {
     if (this._floatingCleanup) {
       this._floatingCleanup()
       this._floatingCleanup = null
+    }
+  }
+
+  _getContainer() {
+    const { container } = this._config
+    if (container === false) {
+      return null
+    }
+
+    return container === true ? document.body : getElement(container)
+  }
+
+  _moveMenuToContainer() {
+    const container = this._getContainer()
+    if (!container || !this._menu) {
+      return
+    }
+
+    // Only move if not already in the container
+    if (this._menu.parentNode !== container) {
+      container.append(this._menu)
+    }
+  }
+
+  _restoreMenuToOriginalParent() {
+    if (!this._menuOriginalParent || !this._menu) {
+      return
+    }
+
+    // Only restore if menu was moved
+    if (this._menu.parentNode !== this._menuOriginalParent) {
+      this._menuOriginalParent.append(this._menu)
     }
   }
 

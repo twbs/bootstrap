@@ -12,6 +12,7 @@ import Collapse from './src/collapse.js'
 import Datepicker from './src/datepicker.js'
 import Dialog from './src/dialog.js'
 import Dropdown from './src/dropdown.js'
+import NavOverflow from './src/nav-overflow.js'
 import Offcanvas from './src/offcanvas.js'
 import Strength from './src/strength.js'
 import OtpInput from './src/otp-input.js'
@@ -30,6 +31,7 @@ export default {
   Datepicker,
   Dialog,
   Dropdown,
+  NavOverflow,
   Offcanvas,
   Strength,
   OtpInput,

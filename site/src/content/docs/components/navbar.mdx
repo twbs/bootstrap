@@ -10,7 +10,7 @@ import { getConfig } from '@libs/config'
 
 Here's what you need to know before getting started with the navbar:
 
-- Navbars require a wrapping `.navbar` with `.navbar-expand-lg{-sm|-md|-lg|-xl|-2xl}` for responsive collapsing and [color scheme](#color-schemes) classes.
+- Navbars require a wrapping `.navbar` with `.navbar-expand-{breakpoint}` for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
 - Use our [margin]([[docsref:/utilities/margin]]), [padding]([[docsref:/utilities/padding]]), and [flex]([[docsref:/utilities/flex]]) utility classes for controlling spacing and alignment within navbars.
 - Navbars are responsive by default using our **offcanvas component**. On mobile, navigation links slide in from the side as a drawer.
@@ -43,7 +43,7 @@ Here's an example of all the sub-components included in a responsive light-theme
           <CloseButton dismiss="offcanvas" />
         </div>
         <div class="offcanvas-body mb-2 mb-md-0">
-          <ul class="nav nav-pills me-auto">
+          <ul class="nav navbar-nav me-auto">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>

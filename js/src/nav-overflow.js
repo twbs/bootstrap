@@ -8,7 +8,6 @@
 import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
-import Dropdown from './dropdown.js'
 
 /**
  * Constants
@@ -134,7 +133,7 @@ class NavOverflow extends BaseComponent {
     const overflowItem = document.createElement('li')
     overflowItem.className = 'nav-item nav-overflow-item dropdown'
     overflowItem.innerHTML = `
-      <button class="nav-link nav-overflow-toggle dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <button class="nav-link nav-overflow-toggle dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-container="body" data-bs-strategy="fixed" aria-expanded="false">
         <span class="nav-overflow-icon">${this._config.moreIcon}</span>
         <span class="nav-overflow-text">${this._config.moreText}</span>
       </button>
@@ -144,11 +143,6 @@ class NavOverflow extends BaseComponent {
     this._element.append(overflowItem)
     this._overflowToggle = overflowItem.querySelector(SELECTOR_OVERFLOW_TOGGLE)
     this._overflowMenu = overflowItem.querySelector(SELECTOR_OVERFLOW_MENU)
-
-    // Initialize dropdown with fixed strategy to escape overflow containers
-    Dropdown.getOrCreateInstance(this._overflowToggle, {
-      strategy: 'fixed'
-    })
   }
 
   _setupResizeObserver() {
