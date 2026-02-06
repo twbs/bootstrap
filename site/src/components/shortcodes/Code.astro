@@ -269,7 +269,7 @@ if (highlightedCode) {
   })
 
   const clipboard = new ClipboardJS('.btn-clipboard', {
-    target: (trigger) => trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!,
+    target: (trigger) => trigger.closest('.bd-code-snippet')?.querySelector('.astro-code')!,
     text: (trigger) => {
       // For tabbed code, find the active tab's code
       const snippet = trigger.closest('.bd-code-snippet')
