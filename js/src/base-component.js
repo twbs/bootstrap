@@ -14,7 +14,7 @@ import { executeAfterTransition, getElement } from './util/index.js'
  * Constants
  */
 
-const VERSION = '5.3.8'
+const VERSION = '6.0.0-alpha1'
 
 /**
  * Class definition
