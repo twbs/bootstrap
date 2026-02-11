@@ -1,41 +1,22 @@
 ---
 title: Navbar
-description: Documentation and examples for Bootstrap's powerful, responsive navigation header. The navbar includes support for branding, navigation, and more with built-in offcanvas for mobile.
+description: Create flexible, responsive navigation bars. Includes support for branding, navigation, and a built-in offcanvas for mobile.
 toc: true
 ---
 
 import { getConfig } from '@libs/config'
 
-## How it works
+## Example
 
-Here's what you need to know before getting started with the navbar:
-
-- Navbars require a wrapping `.navbar` with `.navbar-expand-{breakpoint}` for responsive collapsing and [color scheme](#color-schemes) classes.
-- Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
-- Use our [margin]([[docsref:/utilities/margin]]), [padding]([[docsref:/utilities/padding]]), and [flex]([[docsref:/utilities/flex]]) utility classes for controlling spacing and alignment within navbars.
-- Navbars are responsive by default using our **offcanvas component**. On mobile, navigation links slide in from the side as a drawer.
-- Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
-- Indicate the current item by using `aria-current="page"` for the current page or `aria-current="true"` for the current item in a set.
-
-<Callout name="info-prefersreducedmotion" />
-
-## Supported content
-
-Navbars come with built-in support for a handful of sub-components. Choose from the following as needed:
-
-- `.navbar-brand` for your company, product, or project name.
-- `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns).
-- `.navbar-toggler` for use with our offcanvas plugin and other [navigation toggling](#responsive-behaviors) behaviors.
-- Flex and spacing utilities for any form controls and actions.
-- `.navbar-text` for adding vertically centered strings of text.
-
-Here's an example of all the sub-components included in a responsive light-themed navbar that automatically shows an offcanvas drawer at the `lg` (large) breakpoint.
+Here's a navbar that includes most supported sub-components and a responsive right drawer with [our Offcanvas plugin]([[docsref:/components/offcanvas]]). Use the lower-right corner grip to resize to preview responsive behavior.
 
 <ResizableExample code={`<nav class="navbar navbar-expand-md bg-1">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+          <path d="M1 3.5h14M1 8h14M1 12.5h14"/>
+        </svg>
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
         <div class="offcanvas-header">
@@ -76,7 +57,28 @@ Here's an example of all the sub-components included in a responsive light-theme
     </div>
   </nav>`} />
 
-This example uses [background]([[docsref:/utilities/background]]) (`bg-body-tertiary`) and [margin]([[docsref:/utilities/margin]]) (`me-auto`, `mb-2`, `mb-lg-0`, `me-2`) utility classes.
+## How it works
+
+Here's what you need to know before getting started with the navbar:
+
+- Navbars require a wrapping `.navbar` with `.navbar-expand-{breakpoint}` for responsive collapsing and [color scheme](#color-schemes) classes.
+- Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
+- Use our [margin]([[docsref:/utilities/margin]]), [padding]([[docsref:/utilities/padding]]), and [flex]([[docsref:/utilities/flex]]) utility classes for controlling spacing and alignment within navbars.
+- Navbars are responsive by default using our **offcanvas component**. On mobile, navigation links slide in from the side as a drawer.
+- Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
+- Indicate the current item by using `aria-current="page"` for the current page or `aria-current="true"` for the current item in a set.
+
+<Callout name="info-prefersreducedmotion" />
+
+## Supported content
+
+Navbars come with built-in support for a handful of sub-components. Choose from the following as needed:
+
+- `.navbar-brand` for your company, product, or project name.
+- `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns).
+- `.navbar-toggler` for use with our offcanvas plugin and other [navigation toggling](#responsive-behaviors) behaviors.
+- Flex and spacing utilities for any form controls and actions.
+- `.navbar-text` for adding vertically centered strings of text.
 
 ### Brand
 

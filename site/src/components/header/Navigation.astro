@@ -11,6 +11,7 @@ import OpenCollectiveIcon from '@components/icons/OpenCollectiveIcon.astro'
 import XIcon from '@components/icons/XIcon.astro'
 import Versions from '@components/header/Versions.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
+import CloseButton from '@components/shortcodes/CloseButton.astro'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']
@@ -28,14 +29,14 @@ const { addedIn, layout, title } = Astro.props
       layout === 'docs' && (
         <div class="bd-navbar-toggle">
           <button
-            class="navbar-toggler p-2"
+            class="navbar-toggler"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#bdSidebar"
             aria-controls="bdSidebar"
             aria-label="Toggle docs navigation"
           >
-            <HamburgerIcon class="bi" height={24} width={24} />
+            <HamburgerIcon class="navbar-toggler-icon" height={20} width={20} />
             <span class="d-none fs-6 pe-1">Browse</span>
           </button>
         </div>
@@ -73,12 +74,7 @@ const { addedIn, layout, title } = Astro.props
     >
       <div class="offcanvas-header px-4 pb-0">
         <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-          data-bs-target="#bdNavbar"></button>
+        <CloseButton dismiss="offcanvas" target="#bdNavbar" />
       </div>
 
       <div class="offcanvas-body p-4 pt-0 p-lg-0">
