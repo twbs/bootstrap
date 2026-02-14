@@ -248,14 +248,3 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 Code and documentation copyright 2011-2025 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors). Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
 
 
-
- // Example usage within .input-group:
-  // <div class="input-group has-validation">
-  //   <span class="input-group-text">@</span>
-  //   <div class="form-floating">
-  //     <input type="text" class="form-control" id="first" required>
-  //     <label for="first">First Name</label>
-  //   </div>
-  //   <!-- Corrected: Moved outside .form-floating -->
-  //   <div class="invalid-feedback">Please provide a first name.</div>
-  // </div>
