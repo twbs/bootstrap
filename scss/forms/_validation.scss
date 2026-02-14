@@ -10,3 +10,25 @@
   @include form-validation-state($state, $data...);
 }
 // scss-docs-end form-validation-states-loop
+
+
+
+test('should apply is-invalid class to .form-floating container on submit', () => {
+  document.body.innerHTML = `
+    <form class="needs-validation" novalidate>
+      <div class="input-group">
+        <div class="form-floating">
+          <input type="text" class="form-control" required>
+        </div>
+        <div class="invalid-feedback">Required field</div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>`;
+
+  // Trigger your validation script
+  const form = document.querySelector('form');
+  form.dispatchEvent(new Event('submit'));
+
+  const container = document.querySelector('.form-floating');
+  expect(container.classList.contains('is-invalid')).toBe(true);
+});
