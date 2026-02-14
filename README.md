@@ -55,10 +55,6 @@ Several quick start options are available:
 Read the [Getting started page](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
 
 
-When using `.form-floating` inside an `.input-group`, it is mandatory to:
-1. Place the `.invalid-feedback` **outside** of the `.form-floating` div.
-2. Use JavaScript to add the `.is-invalid` class to the `.form-floating` parent to display error messages correctly.
-
 
 
 ## Status
