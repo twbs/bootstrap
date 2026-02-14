@@ -54,7 +54,7 @@ Several quick start options are available:
 
 Read the [Getting started page](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
 
-### Validation in Input Groups and Floating Labels
+
 When using `.form-floating` inside an `.input-group`, it is mandatory to:
 1. Place the `.invalid-feedback` **outside** of the `.form-floating` div.
 2. Use JavaScript to add the `.is-invalid` class to the `.form-floating` parent to display error messages correctly.
@@ -250,3 +250,16 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 ## Copyright and license
 
 Code and documentation copyright 2011-2025 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors). Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+
+
+
+ // Example usage within .input-group:
+  // <div class="input-group has-validation">
+  //   <span class="input-group-text">@</span>
+  //   <div class="form-floating">
+  //     <input type="text" class="form-control" id="first" required>
+  //     <label for="first">First Name</label>
+  //   </div>
+  //   <!-- Corrected: Moved outside .form-floating -->
+  //   <div class="invalid-feedback">Please provide a first name.</div>
+  // </div>

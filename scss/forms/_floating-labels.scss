@@ -1,16 +1,11 @@
+
+
+
+
 .form-floating {
   position: relative;
 
-  // Example usage within .input-group:
-  // <div class="input-group has-validation">
-  //   <span class="input-group-text">@</span>
-  //   <div class="form-floating">
-  //     <input type="text" class="form-control" id="first" required>
-  //     <label for="first">First Name</label>
-  //   </div>
-  //   <!-- Corrected: Moved outside .form-floating -->
-  //   <div class="invalid-feedback">Please provide a first name.</div>
-  // </div>
+ 
 
   > .form-control,
   > .form-control-plaintext,
