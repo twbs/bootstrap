@@ -96,6 +96,24 @@ To cover cases where you have to keep the `href` attribute on a disabled link, t
 <Example code={`<a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">Primary link</a>
 <a href="#" class="btn btn-secondary disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>`} />
 
+## Change button pointer
+
+To change the pointer when hovered on a button use the cursor class. Use the following classes: 
+
+| Class | Cursor |
+| --- | --- |
+| .cursor-default | default |
+| .cursor-pointer | pointer |
+| .cursor-move | move |
+| .cursor-not-allowed | not-allowed |
+
+<Example code={`
+<button class="btn cursor-default" >Default pointer button</button>
+<button class="btn cursor-pointer" >Default pointer button</button>
+<button class="btn cursor-move" >Default pointer button</button>
+<button class="btn cursor-not-allowed" >Default pointer button</button>
+`} />
+
 ## Block buttons
 
 Create responsive stacks of full-width, “block buttons” like those in Bootstrap 4 with a mix of our display and gap utilities. By using utilities instead of button-specific classes, we have much greater control over spacing, alignment, and responsive behaviors.
@@ -225,3 +243,5 @@ There are three mixins for buttons: button and button outline variant mixins (bo
 Button variants (for regular and outline buttons) use their respective mixins with our `$theme-colors` map to generate the modifier classes in `scss/_buttons.scss`.
 
 <ScssDocs name="btn-variant-loops" file="scss/_buttons.scss" />
+
+

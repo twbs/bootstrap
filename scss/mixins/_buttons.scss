@@ -67,4 +67,5 @@
   @include rfs($font-size, --#{$prefix}btn-font-size);
   --#{$prefix}btn-border-radius: #{$border-radius};
 }
+
 // scss-docs-end btn-size-mixin
