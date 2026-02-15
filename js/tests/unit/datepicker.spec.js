@@ -408,7 +408,7 @@ describe('Datepicker', () => {
 
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl)
-      const dates = ['2025-01-15']
+      const dates = ['2026-01-15']
 
       datepicker.setSelectedDates(dates)
 
@@ -420,12 +420,12 @@ describe('Datepicker', () => {
 
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl)
-      const dates = ['2025-01-15']
+      const dates = ['2026-01-15']
 
       datepicker.setSelectedDates(dates)
 
       const result = datepicker.getSelectedDates()
-      result.push('2025-01-20')
+      result.push('2026-01-20')
 
       expect(datepicker.getSelectedDates()).toEqual(dates)
     })
@@ -462,21 +462,21 @@ describe('Datepicker', () => {
 
   describe('options', () => {
     it('should respect dateMin option', () => {
-      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" data-bs-date-min="2025-01-01">'
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" data-bs-date-min="2026-01-01">'
 
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl)
 
-      expect(datepicker._config.dateMin).toEqual('2025-01-01')
+      expect(datepicker._config.dateMin).toEqual('2026-01-01')
     })
 
     it('should respect dateMax option', () => {
-      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" data-bs-date-max="2025-12-31">'
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" data-bs-date-max="2026-12-31">'
 
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl)
 
-      expect(datepicker._config.dateMax).toEqual('2025-12-31')
+      expect(datepicker._config.dateMax).toEqual('2026-12-31')
     })
 
     it('should respect selectionMode option', () => {
@@ -684,7 +684,7 @@ describe('Datepicker', () => {
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl)
 
-      const result = datepicker._formatDate('2025-01-15')
+      const result = datepicker._formatDate('2026-01-15')
 
       // Should be a string (format varies by system locale)
       expect(typeof result).toEqual('string')
@@ -700,9 +700,9 @@ describe('Datepicker', () => {
         locale: 'en-US'
       })
 
-      const result = datepicker._formatDate('2025-01-15')
+      const result = datepicker._formatDate('2026-01-15')
 
-      expect(result).toEqual('Jan 15, 2025')
+      expect(result).toEqual('Jan 15, 2026')
     })
 
     it('should format date with custom function', () => {
@@ -713,9 +713,9 @@ describe('Datepicker', () => {
         dateFormat: date => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
       })
 
-      const result = datepicker._formatDate('2025-01-15')
+      const result = datepicker._formatDate('2026-01-15')
 
-      expect(result).toEqual('2025-1-15')
+      expect(result).toEqual('2026-1-15')
     })
 
     it('should use en-dash for date ranges', () => {
@@ -726,7 +726,7 @@ describe('Datepicker', () => {
         locale: 'en-US'
       })
 
-      const result = datepicker._formatDateForInput(['2025-01-15', '2025-01-20'])
+      const result = datepicker._formatDateForInput(['2026-01-15', '2026-01-20'])
 
       expect(result).toContain(' – ')
     })
@@ -739,7 +739,7 @@ describe('Datepicker', () => {
         locale: 'en-US'
       })
 
-      const result = datepicker._formatDateForInput(['2025-01-15', '2025-01-20'])
+      const result = datepicker._formatDateForInput(['2026-01-15', '2026-01-20'])
 
       expect(result).toContain(', ')
     })
@@ -920,7 +920,7 @@ describe('Datepicker', () => {
 
   describe('input value parsing', () => {
     it('should parse initial input value', () => {
-      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" value="2025-01-15">'
+      fixtureEl.innerHTML = '<input type="text" data-bs-toggle="datepicker" value="2026-01-15">'
 
       const inputEl = fixtureEl.querySelector('input')
       const datepicker = new Datepicker(inputEl)
@@ -981,7 +981,7 @@ describe('Datepicker', () => {
 
         // Simulate VCP date click callback
         datepicker._handleDateClick({
-          context: { selectedDates: ['2025-01-15'] }
+          context: { selectedDates: ['2026-01-15'] }
         }, new Event('click'))
       })
     })
@@ -993,7 +993,7 @@ describe('Datepicker', () => {
       const datepicker = new Datepicker(inputEl)
 
       datepicker._handleDateClick({
-        context: { selectedDates: ['2025-01-15'] }
+        context: { selectedDates: ['2026-01-15'] }
       }, new Event('click'))
 
       expect(inputEl.value).not.toEqual('')
@@ -1011,7 +1011,7 @@ describe('Datepicker', () => {
       const datepicker = new Datepicker(buttonEl)
 
       datepicker._handleDateClick({
-        context: { selectedDates: ['2025-01-15'] }
+        context: { selectedDates: ['2026-01-15'] }
       }, new Event('click'))
 
       expect(displayEl.textContent).not.toEqual('Select date')
@@ -1029,10 +1029,10 @@ describe('Datepicker', () => {
       const datepicker = new Datepicker(divEl)
 
       datepicker._handleDateClick({
-        context: { selectedDates: ['2025-01-15'] }
+        context: { selectedDates: ['2026-01-15'] }
       }, new Event('click'))
 
-      expect(hiddenInput.value).toEqual('2025-01-15')
+      expect(hiddenInput.value).toEqual('2026-01-15')
     })
 
     it('should auto-hide after single date selection', () => {
@@ -1045,7 +1045,7 @@ describe('Datepicker', () => {
         const hideSpy = spyOn(datepicker, 'hide')
 
         datepicker._handleDateClick({
-          context: { selectedDates: ['2025-01-15'] }
+          context: { selectedDates: ['2026-01-15'] }
         }, new Event('click'))
 
         setTimeout(() => {
@@ -1065,7 +1065,7 @@ describe('Datepicker', () => {
         const hideSpy = spyOn(datepicker, 'hide')
 
         datepicker._handleDateClick({
-          context: { selectedDates: ['2025-01-15', '2025-01-20'] }
+          context: { selectedDates: ['2026-01-15', '2026-01-20'] }
         }, new Event('click'))
 
         setTimeout(() => {
@@ -1085,7 +1085,7 @@ describe('Datepicker', () => {
         const hideSpy = spyOn(datepicker, 'hide')
 
         datepicker._handleDateClick({
-          context: { selectedDates: ['2025-01-15'] }
+          context: { selectedDates: ['2026-01-15'] }
         }, new Event('click'))
 
         setTimeout(() => {
@@ -1105,7 +1105,7 @@ describe('Datepicker', () => {
         const hideSpy = spyOn(datepicker, 'hide')
 
         datepicker._handleDateClick({
-          context: { selectedDates: ['2025-01-15'] }
+          context: { selectedDates: ['2026-01-15'] }
         }, new Event('click'))
 
         setTimeout(() => {
@@ -1144,7 +1144,7 @@ describe('Datepicker', () => {
 
         const hideSpy = spyOn(datepicker, 'hide')
 
-        datepicker._maybeHideAfterSelection(['2025-01-15'])
+        datepicker._maybeHideAfterSelection(['2026-01-15'])
 
         setTimeout(() => {
           expect(hideSpy).not.toHaveBeenCalled()
