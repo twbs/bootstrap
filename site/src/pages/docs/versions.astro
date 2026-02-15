@@ -29,18 +29,22 @@ function getVersionsSortedDesc<TKey extends string, TVersions extends Record<TKe
                 .slice()
                 .sort((a, b) => b.localeCompare(a))
                 .map((version) => {
-                  const isCurrentVersion = version === getConfig().docs_version
+                  // TODO: revert to getConfig().docs_version once we have v6.0.0 released
+                  // const isCurrentVersion = version === getConfig().docs_version
+                  const isCurrentVersion = version === '5.3'
+                  const isAlpha = version === '6.0'
 
                   return (
                     <a
                       class:list={[
                         'list-group-item list-group-item-action py-2 text-primary',
-                        isCurrentVersion && 'd-flex justify-content-between align-items-center'
+                        (isCurrentVersion || isAlpha) && 'd-flex justify-content-between align-items-center'
                       ]}
                       href={`${docsVersion.baseurl}/${version}/`}
                     >
                       {version}
                       {isCurrentVersion && <span class="badge text-bg-primary">Latest</span>}
+                      {isAlpha && <span class="badge text-bg-warning">Alpha</span>}
                     </a>
                   )
                 })}
