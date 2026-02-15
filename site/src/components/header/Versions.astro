@@ -21,10 +21,6 @@ if (layout === 'docs' && version === getConfig().docs_version) {
 } else if (layout === 'single' && Astro.url.pathname.startsWith(getVersionedDocsPath(''))) {
   versionsLink = Astro.url.pathname.replace(getVersionedDocsPath(''), '')
 }
-
-const addedIn51 = addedIn?.version === '5.1'
-const addedIn52 = addedIn?.version === '5.2'
-const addedIn53 = addedIn?.version === '5.3'
 ---
 
 <li class="nav-item dropdown">
@@ -42,52 +38,20 @@ const addedIn53 = addedIn?.version === '5.3'
     <span class="visually-hidden">(switch to other versions)</span>
   </button>
   <ul class="dropdown-menu dropdown-menu-end" id="bd-versions-menu">
-    <li><h6 class="dropdown-header">v5 releases</h6></li>
+    <li><h6 class="dropdown-header">v6 releases</h6></li>
     <li>
       <a
         class="dropdown-item d-flex align-items-center justify-content-between active"
         aria-current="true"
         href={isHome ? '/' : `/docs/${getConfig().docs_version}/${versionsLink}`}
       >
-        Latest ({getConfig().docs_version}.x)
+        {getConfig().docs_version}.x <span class="fg-contrast-accent fg-50">(Alpha)</span>
         <svg class="bi" aria-hidden="true"><use href="#check2"></use></svg>
       </a>
     </li>
-    <li>
-      {
-        addedIn53 ? (
-          <div class="dropdown-item disabled">v5.2.3</div>
-        ) : (
-          <a class="dropdown-item" href={`https://getbootstrap.com/docs/5.2/${versionsLink}`}>
-            v5.2.3
-          </a>
-        )
-      }
-    </li>
-    <li>
-      {
-        addedIn52 || addedIn53 ? (
-          <div class="dropdown-item disabled">v5.1.3</div>
-        ) : (
-          <a class="dropdown-item" href={`https://getbootstrap.com/docs/5.1/${versionsLink}`}>
-            v5.1.3
-          </a>
-        )
-      }
-    </li>
-    <li>
-      {
-        addedIn51 || addedIn52 || addedIn53 ? (
-          <div class="dropdown-item disabled">v5.0.2</div>
-        ) : (
-          <a class="dropdown-item" href={`https://getbootstrap.com/docs/5.0/${versionsLink}`}>
-            v5.0.2
-          </a>
-        )
-      }
-    </li>
     <li><hr class="dropdown-divider" /></li>
     <li><h6 class="dropdown-header">Previous releases</h6></li>
+    <li><a class="dropdown-item" href="https://getbootstrap.com/docs/5.3/">v5.3.x <span class="fg-secondary">(Latest)</span></a></li>
     <li><a class="dropdown-item" href="https://getbootstrap.com/docs/4.6/">v4.6.x</a></li>
     <li><a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a></li>
     <li><a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a></li>
