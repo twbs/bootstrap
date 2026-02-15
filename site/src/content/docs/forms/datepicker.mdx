@@ -40,8 +40,8 @@ Use the [form adorn component](/docs/forms/form-adorn) to add a calendar icon al
 
 Restrict the selectable date range using `data-bs-date-min` and `data-bs-date-max`.
 
-<Example code={`<label for="datepicker2" class="form-label">Event date (2025 only)</label>
-  <input type="text" class="form-control w-12" id="datepicker2" data-bs-toggle="datepicker" data-bs-date-min="2025-01-01" data-bs-date-max="2025-12-31" placeholder="Select a date in 2025">`} />
+<Example code={`<label for="datepicker2" class="form-label">Event date (2026 only)</label>
+  <input type="text" class="form-control w-12" id="datepicker2" data-bs-toggle="datepicker" data-bs-date-min="2026-01-01" data-bs-date-max="2026-12-31" placeholder="Select a date in 2026">`} />
 
 ### Multiple dates
 
@@ -62,14 +62,14 @@ Display multiple months side-by-side with the `displayMonthsCount` option. This 
 Select a range of dates with `data-bs-selection-mode="multiple-ranged"`. Use `data-bs-selected-dates` to preselect a date range.
 
 <Example code={`<label for="datepicker4" class="form-label">Select date range</label>
-  <input type="text" class="form-control" id="datepicker4" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-selected-dates='["2025-06-10", "2025-06-18"]' placeholder="Select start and end dates…">`} />
+  <input type="text" class="form-control" id="datepicker4" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-selected-dates='["2026-06-10", "2026-06-18"]' placeholder="Select start and end dates…">`} />
 
 ### Multi-month date range
 
 For selecting date ranges that span multiple months, combine `data-bs-selection-mode="multiple-ranged"` with `data-bs-display-months-count="2"` to show two months side-by-side, making it easier for users to select across month boundaries.
 
 <Example code={`<label for="datepickerRangeTwoMonths" class="form-label">Select date range</label>
-  <input type="text" class="form-control" id="datepickerRangeTwoMonths" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-display-months-count="2" data-bs-selected-dates='["2025-06-25", "2025-07-08"]' placeholder="Select start and end dates…">`} />
+  <input type="text" class="form-control" id="datepickerRangeTwoMonths" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged" data-bs-display-months-count="2" data-bs-selected-dates='["2026-06-25", "2026-07-08"]' placeholder="Select start and end dates…">`} />
 
 ## Options
 
@@ -155,7 +155,7 @@ Control how dates are displayed using the `dateFormat` option. Pass an [`Intl.Da
 // Using Intl.DateTimeFormat options
 const datepicker = new bootstrap.Datepicker(element, {
   dateFormat: { month: 'short', day: 'numeric', year: 'numeric' }
-  // Output: "Dec 23, 2025 – Dec 28, 2025"
+  // Output: "Dec 23, 2026 – Dec 28, 2026"
 })
 
 // Using a custom function
@@ -239,8 +239,8 @@ const datepicker = new bootstrap.Datepicker(element, {
   vcpOptions: {
     disableDatesPast: true,                     // Disable past dates
     disableWeekdays: [0, 6],                    // Disable weekends
-    disableDates: ['2025-12-25', '2025-12-26'], // Disable specific dates
-    selectedHolidays: ['2025-01-01'],           // Highlight holidays
+    disableDates: ['2026-12-25', '2026-12-26'], // Disable specific dates
+    selectedHolidays: ['2026-01-01'],           // Highlight holidays
     selectionTimeMode: 24                       // Enable 24-hour time selection
   }
 })
