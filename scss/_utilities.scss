@@ -542,7 +542,7 @@ $utilities: map-merge(( // scss-docs-start utils-vertical-align
           invisible: hidden,
         )),
       //cursor
-      "cursor": (property: cursor,
+      "cursors": (property: cursor,
         class: cursor,
         values: pointer default move not-allowed),
       // scss-docs-end utils-visibility
