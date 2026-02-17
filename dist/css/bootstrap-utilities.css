@@ -2548,6 +2548,22 @@
   z-index: 3 !important;
 }
 
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+.cursor-move {
+  cursor: move !important;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
 @media (min-width: 576px) {
   .float-sm-start {
     float: left !important;
