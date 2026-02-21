@@ -788,13 +788,13 @@ const eventAction = (onEvent, stringSelector, callback) => {
  * Constants
  */
 
-const NAME$k = 'alert';
-const DATA_KEY$f = 'bs.alert';
-const EVENT_KEY$g = `.${DATA_KEY$f}`;
-const EVENT_CLOSE = `close${EVENT_KEY$g}`;
-const EVENT_CLOSED = `closed${EVENT_KEY$g}`;
+const NAME$l = 'alert';
+const DATA_KEY$g = 'bs.alert';
+const EVENT_KEY$h = `.${DATA_KEY$g}`;
+const EVENT_CLOSE = `close${EVENT_KEY$h}`;
+const EVENT_CLOSED = `closed${EVENT_KEY$h}`;
 const CLASS_NAME_FADE$4 = 'fade';
-const CLASS_NAME_SHOW$7 = 'show';
+const CLASS_NAME_SHOW$8 = 'show';
 
 /**
  * Class definition
@@ -803,7 +803,7 @@ const CLASS_NAME_SHOW$7 = 'show';
 class Alert extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$k;
+    return NAME$l;
   }
 
   // Public
@@ -812,7 +812,7 @@ class Alert extends BaseComponent {
     if (closeEvent.defaultPrevented) {
       return;
     }
-    this._element.classList.remove(CLASS_NAME_SHOW$7);
+    this._element.classList.remove(CLASS_NAME_SHOW$8);
     const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$4);
     this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
   }
@@ -843,13 +843,13 @@ enableDismissTrigger(Alert, 'close');
  * Constants
  */
 
-const NAME$j = 'button';
-const DATA_KEY$e = 'bs.button';
-const EVENT_KEY$f = `.${DATA_KEY$e}`;
-const DATA_API_KEY$9 = '.data-api';
+const NAME$k = 'button';
+const DATA_KEY$f = 'bs.button';
+const EVENT_KEY$g = `.${DATA_KEY$f}`;
+const DATA_API_KEY$a = '.data-api';
 const CLASS_NAME_ACTIVE$3 = 'active';
-const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="button"]';
-const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$f}${DATA_API_KEY$9}`;
+const SELECTOR_DATA_TOGGLE$a = '[data-bs-toggle="button"]';
+const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$g}${DATA_API_KEY$a}`;
 
 /**
  * Class definition
@@ -858,7 +858,7 @@ const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$f}${DATA_API_KEY$9}`;
 class Button extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$j;
+    return NAME$k;
   }
 
   // Public
@@ -872,9 +872,9 @@ class Button extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DATA_TOGGLE$9, event => {
+EventHandler.on(document, EVENT_CLICK_DATA_API$8, SELECTOR_DATA_TOGGLE$a, event => {
   event.preventDefault();
-  const button = event.target.closest(SELECTOR_DATA_TOGGLE$9);
+  const button = event.target.closest(SELECTOR_DATA_TOGGLE$a);
   const data = Button.getOrCreateInstance(button);
   data.toggle();
 });
@@ -891,23 +891,23 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DATA_TOGGLE$9, event 
  * Constants
  */
 
-const NAME$i = 'swipe';
-const EVENT_KEY$e = '.bs.swipe';
-const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$e}`;
-const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$e}`;
-const EVENT_TOUCHEND = `touchend${EVENT_KEY$e}`;
-const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$e}`;
-const EVENT_POINTERUP = `pointerup${EVENT_KEY$e}`;
+const NAME$j = 'swipe';
+const EVENT_KEY$f = '.bs.swipe';
+const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$f}`;
+const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$f}`;
+const EVENT_TOUCHEND = `touchend${EVENT_KEY$f}`;
+const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$f}`;
+const EVENT_POINTERUP = `pointerup${EVENT_KEY$f}`;
 const POINTER_TYPE_TOUCH = 'touch';
 const POINTER_TYPE_PEN = 'pen';
 const CLASS_NAME_POINTER_EVENT = 'pointer-event';
 const SWIPE_THRESHOLD = 40;
-const Default$h = {
+const Default$i = {
   endCallback: null,
   leftCallback: null,
   rightCallback: null
 };
-const DefaultType$h = {
+const DefaultType$i = {
   endCallback: '(function|null)',
   leftCallback: '(function|null)',
   rightCallback: '(function|null)'
@@ -932,18 +932,18 @@ class Swipe extends Config {
 
   // Getters
   static get Default() {
-    return Default$h;
+    return Default$i;
   }
   static get DefaultType() {
-    return DefaultType$h;
+    return DefaultType$i;
   }
   static get NAME() {
-    return NAME$i;
+    return NAME$j;
   }
 
   // Public
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY$e);
+    EventHandler.off(this._element, EVENT_KEY$f);
   }
 
   // Private
@@ -1011,10 +1011,10 @@ class Swipe extends Config {
  * Constants
  */
 
-const NAME$h = 'carousel';
-const DATA_KEY$d = 'bs.carousel';
-const EVENT_KEY$d = `.${DATA_KEY$d}`;
-const DATA_API_KEY$8 = '.data-api';
+const NAME$i = 'carousel';
+const DATA_KEY$e = 'bs.carousel';
+const EVENT_KEY$e = `.${DATA_KEY$e}`;
+const DATA_API_KEY$9 = '.data-api';
 const ARROW_LEFT_KEY$2 = 'ArrowLeft';
 const ARROW_RIGHT_KEY$2 = 'ArrowRight';
 const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
@@ -1023,14 +1023,14 @@ const ORDER_NEXT = 'next';
 const ORDER_PREV = 'prev';
 const DIRECTION_LEFT = 'left';
 const DIRECTION_RIGHT = 'right';
-const EVENT_SLIDE = `slide${EVENT_KEY$d}`;
-const EVENT_SLID = `slid${EVENT_KEY$d}`;
-const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$d}`;
-const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$d}`;
-const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$d}`;
-const EVENT_DRAG_START = `dragstart${EVENT_KEY$d}`;
-const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$d}${DATA_API_KEY$8}`;
-const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
+const EVENT_SLIDE = `slide${EVENT_KEY$e}`;
+const EVENT_SLID = `slid${EVENT_KEY$e}`;
+const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$e}`;
+const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$e}`;
+const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$e}`;
+const EVENT_DRAG_START = `dragstart${EVENT_KEY$e}`;
+const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$e}${DATA_API_KEY$9}`;
+const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
 const CLASS_NAME_CAROUSEL = 'carousel';
 const CLASS_NAME_ACTIVE$2 = 'active';
 const CLASS_NAME_SLIDE = 'slide';
@@ -1039,8 +1039,8 @@ const CLASS_NAME_START = 'carousel-item-start';
 const CLASS_NAME_NEXT = 'carousel-item-next';
 const CLASS_NAME_PREV = 'carousel-item-prev';
 const SELECTOR_ACTIVE = '.active';
-const SELECTOR_ITEM = '.carousel-item';
-const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM;
+const SELECTOR_ITEM$1 = '.carousel-item';
+const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM$1;
 const SELECTOR_ITEM_IMG = '.carousel-item img';
 const SELECTOR_INDICATORS = '.carousel-indicators';
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]';
@@ -1049,7 +1049,7 @@ const KEY_TO_DIRECTION = {
   [ARROW_LEFT_KEY$2]: DIRECTION_RIGHT,
   [ARROW_RIGHT_KEY$2]: DIRECTION_LEFT
 };
-const Default$g = {
+const Default$h = {
   interval: 5000,
   keyboard: true,
   pause: 'hover',
@@ -1057,7 +1057,7 @@ const Default$g = {
   touch: true,
   wrap: true
 };
-const DefaultType$g = {
+const DefaultType$h = {
   interval: 'number',
   keyboard: 'boolean',
   pause: '(string|boolean)',
@@ -1087,13 +1087,13 @@ class Carousel extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$g;
+    return Default$h;
   }
   static get DefaultType() {
-    return DefaultType$g;
+    return DefaultType$h;
   }
   static get NAME() {
-    return NAME$h;
+    return NAME$i;
   }
 
   // Public
@@ -1292,7 +1292,7 @@ class Carousel extends BaseComponent {
     return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
   }
   _getItems() {
-    return SelectorEngine.find(SELECTOR_ITEM, this._element);
+    return SelectorEngine.find(SELECTOR_ITEM$1, this._element);
   }
   _clearInterval() {
     if (this._interval) {
@@ -1318,7 +1318,7 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_SLIDE, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DATA_SLIDE, function (event) {
   const target = SelectorEngine.getElementFromSelector(this);
   if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
     return;
@@ -1358,16 +1358,16 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$3, () => {
  * Constants
  */
 
-const NAME$g = 'collapse';
-const DATA_KEY$c = 'bs.collapse';
-const EVENT_KEY$c = `.${DATA_KEY$c}`;
-const DATA_API_KEY$7 = '.data-api';
-const EVENT_SHOW$7 = `show${EVENT_KEY$c}`;
-const EVENT_SHOWN$7 = `shown${EVENT_KEY$c}`;
-const EVENT_HIDE$7 = `hide${EVENT_KEY$c}`;
-const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$c}`;
-const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
-const CLASS_NAME_SHOW$6 = 'show';
+const NAME$h = 'collapse';
+const DATA_KEY$d = 'bs.collapse';
+const EVENT_KEY$d = `.${DATA_KEY$d}`;
+const DATA_API_KEY$8 = '.data-api';
+const EVENT_SHOW$8 = `show${EVENT_KEY$d}`;
+const EVENT_SHOWN$8 = `shown${EVENT_KEY$d}`;
+const EVENT_HIDE$8 = `hide${EVENT_KEY$d}`;
+const EVENT_HIDDEN$8 = `hidden${EVENT_KEY$d}`;
+const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
+const CLASS_NAME_SHOW$7 = 'show';
 const CLASS_NAME_COLLAPSE = 'collapse';
 const CLASS_NAME_COLLAPSING = 'collapsing';
 const CLASS_NAME_COLLAPSED = 'collapsed';
@@ -1376,12 +1376,12 @@ const CLASS_NAME_HORIZONTAL = 'collapse-horizontal';
 const WIDTH = 'width';
 const HEIGHT = 'height';
 const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
-const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="collapse"]';
-const Default$f = {
+const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="collapse"]';
+const Default$g = {
   parent: null,
   toggle: true
 };
-const DefaultType$f = {
+const DefaultType$g = {
   parent: '(null|element)',
   toggle: 'boolean'
 };
@@ -1395,7 +1395,7 @@ class Collapse extends BaseComponent {
     super(element, config);
     this._isTransitioning = false;
     this._triggerArray = [];
-    const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$8);
+    const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$9);
     for (const elem of toggleList) {
       const selector = SelectorEngine.getSelectorFromElement(elem);
       const filterElement = SelectorEngine.find(selector).filter(foundElement => foundElement === this._element);
@@ -1414,13 +1414,13 @@ class Collapse extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$f;
+    return Default$g;
   }
   static get DefaultType() {
-    return DefaultType$f;
+    return DefaultType$g;
   }
   static get NAME() {
-    return NAME$g;
+    return NAME$h;
   }
 
   // Public
@@ -1446,7 +1446,7 @@ class Collapse extends BaseComponent {
     if (activeChildren.length && activeChildren[0]._isTransitioning) {
       return;
     }
-    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$7);
+    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$8);
     if (startEvent.defaultPrevented) {
       return;
     }
@@ -1462,9 +1462,9 @@ class Collapse extends BaseComponent {
     const complete = () => {
       this._isTransitioning = false;
       this._element.classList.remove(CLASS_NAME_COLLAPSING);
-      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$6);
+      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
       this._element.style[dimension] = '';
-      EventHandler.trigger(this._element, EVENT_SHOWN$7);
+      EventHandler.trigger(this._element, EVENT_SHOWN$8);
     };
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
     const scrollSize = `scroll${capitalizedDimension}`;
@@ -1475,7 +1475,7 @@ class Collapse extends BaseComponent {
     if (this._isTransitioning || !this._isShown()) {
       return;
     }
-    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$7);
+    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$8);
     if (startEvent.defaultPrevented) {
       return;
     }
@@ -1483,7 +1483,7 @@ class Collapse extends BaseComponent {
     this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
     reflow(this._element);
     this._element.classList.add(CLASS_NAME_COLLAPSING);
-    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$6);
+    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
     for (const trigger of this._triggerArray) {
       const element = SelectorEngine.getElementFromSelector(trigger);
       if (element && !this._isShown(element)) {
@@ -1495,7 +1495,7 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false;
       this._element.classList.remove(CLASS_NAME_COLLAPSING);
       this._element.classList.add(CLASS_NAME_COLLAPSE);
-      EventHandler.trigger(this._element, EVENT_HIDDEN$7);
+      EventHandler.trigger(this._element, EVENT_HIDDEN$8);
     };
     this._element.style[dimension] = '';
     this._queueCallback(complete, this._element, true);
@@ -1503,7 +1503,7 @@ class Collapse extends BaseComponent {
 
   // Private
   _isShown(element = this._element) {
-    return element.classList.contains(CLASS_NAME_SHOW$6);
+    return element.classList.contains(CLASS_NAME_SHOW$7);
   }
   _configAfterMerge(config) {
     config.toggle = Boolean(config.toggle); // Coerce string values
@@ -1517,7 +1517,7 @@ class Collapse extends BaseComponent {
     if (!this._config.parent) {
       return;
     }
-    const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$8);
+    const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$9);
     for (const element of children) {
       const selected = SelectorEngine.getElementFromSelector(element);
       if (selected) {
@@ -1545,7 +1545,7 @@ class Collapse extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$9, function (event) {
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
   if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
     event.preventDefault();
@@ -1556,664 +1556,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, functi
     }).toggle();
   }
 });
-
-/*! name: vanilla-calendar-pro v3.1.0 | url: https://github.com/uvarov-frontend/vanilla-calendar-pro */
-var __defProp=Object.defineProperty,__defProps=Object.defineProperties,__getOwnPropDescs=Object.getOwnPropertyDescriptors,__getOwnPropSymbols=Object.getOwnPropertySymbols,__hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable,__defNormalProp=(e,t,n)=>t in e?__defProp(e,t,{enumerable:true,configurable:true,writable:true,value:n}):e[t]=n,__spreadValues=(e,t)=>{for(var n in t||(t={}))__hasOwnProp.call(t,n)&&__defNormalProp(e,n,t[n]);if(__getOwnPropSymbols)for(var n of __getOwnPropSymbols(t))__propIsEnum.call(t,n)&&__defNormalProp(e,n,t[n]);return e},__spreadProps=(e,t)=>__defProps(e,__getOwnPropDescs(t)),__publicField=(e,t,n)=>(__defNormalProp(e,"symbol"!=typeof t?t+"":t,n),n);const errorMessages={notFoundSelector:e=>`${e} is not found, check the first argument passed to new Calendar.`,notInit:'The calendar has not been initialized, please initialize it using the "init()" method first.',notLocale:"You specified an incorrect language label or did not specify the required number of values ​​for «locale.weekdays» or «locale.months».",incorrectTime:"The value of the time property can be: false, 12 or 24.",incorrectMonthsCount:"For the «multiple» calendar type, the «displayMonthsCount» parameter can have a value from 2 to 12, and for all others it cannot be greater than 1."},setContext=(e,t,n)=>{e.context[t]=n;},destroy=e=>{var t,n,a,o,l;if(!e.context.isInit)throw new Error(errorMessages.notInit);e.inputMode?(null==(t=e.context.mainElement.parentElement)||t.removeChild(e.context.mainElement),null==(a=null==(n=e.context.inputElement)?void 0:n.replaceWith)||a.call(n,e.context.originalElement),setContext(e,"inputElement",void 0)):null==(l=(o=e.context.mainElement).replaceWith)||l.call(o,e.context.originalElement),setContext(e,"mainElement",e.context.originalElement),e.onDestroy&&e.onDestroy(e);},skipOpenOnFocus=new WeakSet,shouldSkipOpenOnFocus=e=>skipOpenOnFocus.has(e),setSkipOpenOnFocus=e=>{skipOpenOnFocus.add(e);},clearSkipOpenOnFocus=e=>{skipOpenOnFocus.delete(e);},PREV_TABINDEX_ATTR="data-vc-prev-tabindex",isFocusable=e=>e.tabIndex>=0&&!e.hasAttribute("disabled")&&"true"!==e.getAttribute("aria-disabled"),storePrevTabIndex=e=>{if(e.hasAttribute(PREV_TABINDEX_ATTR))return;const t=e.getAttribute("tabindex");e.setAttribute(PREV_TABINDEX_ATTR,null!=t?t:"");},restorePrevTabIndex=e=>{if(!e.hasAttribute(PREV_TABINDEX_ATTR))return;const t=e.getAttribute(PREV_TABINDEX_ATTR);""===t||null===t?e.removeAttribute("tabindex"):e.setAttribute("tabindex",t),e.removeAttribute(PREV_TABINDEX_ATTR);},disableTabbing=e=>{isFocusable(e)&&(storePrevTabIndex(e),e.tabIndex=-1);const t=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,{acceptNode:e=>isFocusable(e)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP});for(;t.nextNode();){const e=t.currentNode;storePrevTabIndex(e),e.tabIndex=-1;}},restoreTabbing=e=>{restorePrevTabIndex(e),e.querySelectorAll(`[${PREV_TABINDEX_ATTR}]`).forEach(restorePrevTabIndex);},hide=e=>{if(e.context.isShowInInputMode&&e.context.currentType){if(e.context.mainElement.dataset.vcCalendarHidden="",setContext(e,"isShowInInputMode",false),e.inputMode&&disableTabbing(e.context.mainElement),e.context.cleanupHandlers[0]&&(e.context.cleanupHandlers.forEach((e=>e())),setContext(e,"cleanupHandlers",[])),e.inputMode&&e.context.inputElement&&e.context.mainElement.contains(document.activeElement)){("function"==typeof e.openOnFocus||true===e.openOnFocus)&&setSkipOpenOnFocus(e),e.context.inputElement.focus();}e.onHide&&e.onHide(e);}};function getOffset(e){if(!e||!e.getBoundingClientRect)return {top:0,bottom:0,left:0,right:0};const t=e.getBoundingClientRect(),n=document.documentElement;return {bottom:t.bottom,right:t.right,top:t.top+window.scrollY-n.clientTop,left:t.left+window.scrollX-n.clientLeft}}function getViewportDimensions(){return {vw:Math.max(document.documentElement.clientWidth||0,window.innerWidth||0),vh:Math.max(document.documentElement.clientHeight||0,window.innerHeight||0)}}function getWindowScrollPosition(){return {left:window.scrollX||document.documentElement.scrollLeft||0,top:window.scrollY||document.documentElement.scrollTop||0}}function calculateAvailableSpace(e){const{top:t,left:n}=getWindowScrollPosition(),{top:a,left:o}=getOffset(e),{vh:l,vw:s}=getViewportDimensions(),i=a-t,r=o-n;return {top:i,bottom:l-(i+e.clientHeight),left:r,right:s-(r+e.clientWidth)}}function getAvailablePosition(e,t,n=5){const a={top:true,bottom:true,left:true,right:true},o=[];if(!t||!e)return {canShow:a,parentPositions:o};const{bottom:l,top:s}=calculateAvailableSpace(e),{top:i,left:r}=getOffset(e),{height:c,width:d}=t.getBoundingClientRect(),{vh:u,vw:m}=getViewportDimensions(),p=m/2,h=u/2;return [{condition:i<h,position:"top"},{condition:i>h,position:"bottom"},{condition:r<p,position:"left"},{condition:r>p,position:"right"}].forEach((({condition:e,position:t})=>{e&&o.push(t);})),Object.assign(a,{top:c<=s-n,bottom:c<=l-n,left:d<=r,right:d<=m-r}),{canShow:a,parentPositions:o}}const handleDay=(e,t,n,a)=>{var o;const l=a.querySelector(`[data-vc-date="${t}"]`),s=null==l?void 0:l.querySelector("[data-vc-date-btn]");if(!l||!s)return;if((null==n?void 0:n.modifier)&&s.classList.add(...n.modifier.trim().split(" ")),!(null==n?void 0:n.html))return;const i=document.createElement("div");i.className=e.styles.datePopup,i.dataset.vcDatePopup="",i.innerHTML=e.sanitizerHTML(n.html),s.ariaExpanded="true",s.ariaLabel=`${s.ariaLabel}, ${null==(o=null==i?void 0:i.textContent)?void 0:o.replace(/^\s+|\s+(?=\s)|\s+$/g,"").replace(/&nbsp;/g," ")}`,l.appendChild(i),requestAnimationFrame((()=>{if(!i)return;const{canShow:e}=getAvailablePosition(l,i),t=e.bottom?l.offsetHeight:-i.offsetHeight,n=e.left&&!e.right?l.offsetWidth-i.offsetWidth/2:!e.left&&e.right?i.offsetWidth/2:0;Object.assign(i.style,{left:`${n}px`,top:`${t}px`});}));},createDatePopup=(e,t)=>{var n;e.popups&&(null==(n=Object.entries(e.popups))||n.forEach((([n,a])=>handleDay(e,n,a,t))));},getDate=e=>new Date(`${e}T00:00:00`),getDateString=e=>`${e.getFullYear()}-${String(e.getMonth()+1).padStart(2,"0")}-${String(e.getDate()).padStart(2,"0")}`,parseDates=e=>e.reduce(((e,t)=>{if(t instanceof Date||"number"==typeof t){const n=t instanceof Date?t:new Date(t);e.push(n.toISOString().substring(0,10));}else t.match(/^(\d{4}-\d{2}-\d{2})$/g)?e.push(t):t.replace(/(\d{4}-\d{2}-\d{2}).*?(\d{4}-\d{2}-\d{2})/g,((t,n,a)=>{const o=getDate(n),l=getDate(a),s=new Date(o.getTime());for(;s<=l;s.setDate(s.getDate()+1))e.push(getDateString(s));return t}));return e}),[]),updateAttribute=(e,t,n,a="")=>{t?e.setAttribute(n,a):e.getAttribute(n)===a&&e.removeAttribute(n);},setDateModifier=(e,t,n,a,o,l,s)=>{var i,r,c,d;const u=getDate(e.context.displayDateMin)>getDate(l)||getDate(e.context.displayDateMax)<getDate(l)||(null==(i=e.context.disableDates)?void 0:i.includes(l))||!e.selectionMonthsMode&&"current"!==s||!e.selectionYearsMode&&getDate(l).getFullYear()!==t;updateAttribute(n,u,"data-vc-date-disabled"),a&&updateAttribute(a,u,"aria-disabled","true"),a&&updateAttribute(a,u,"tabindex","-1"),updateAttribute(n,!e.disableToday&&e.context.dateToday===l,"data-vc-date-today"),updateAttribute(n,!e.disableToday&&e.context.dateToday===l,"aria-current","date"),updateAttribute(n,null==(r=e.selectedWeekends)?void 0:r.includes(o),"data-vc-date-weekend");const m=(null==(c=e.selectedHolidays)?void 0:c[0])?parseDates(e.selectedHolidays):[];if(updateAttribute(n,m.includes(l),"data-vc-date-holiday"),(null==(d=e.context.selectedDates)?void 0:d.includes(l))?(n.setAttribute("data-vc-date-selected",""),a&&a.setAttribute("aria-selected","true"),e.context.selectedDates.length>1&&"multiple-ranged"===e.selectionDatesMode&&(e.context.selectedDates[0]===l&&e.context.selectedDates[e.context.selectedDates.length-1]===l?n.setAttribute("data-vc-date-selected","first-and-last"):e.context.selectedDates[0]===l?n.setAttribute("data-vc-date-selected","first"):e.context.selectedDates[e.context.selectedDates.length-1]===l&&n.setAttribute("data-vc-date-selected","last"),e.context.selectedDates[0]!==l&&e.context.selectedDates[e.context.selectedDates.length-1]!==l&&n.setAttribute("data-vc-date-selected","middle"))):n.hasAttribute("data-vc-date-selected")&&(n.removeAttribute("data-vc-date-selected"),a&&a.removeAttribute("aria-selected")),!e.context.disableDates.includes(l)&&e.enableEdgeDatesOnly&&e.context.selectedDates.length>1&&"multiple-ranged"===e.selectionDatesMode){const t=getDate(e.context.selectedDates[0]),a=getDate(e.context.selectedDates[e.context.selectedDates.length-1]),o=getDate(l);updateAttribute(n,o>t&&o<a,"data-vc-date-selected","middle");}},getLocaleString=(e,t,n)=>new Date(`${e}T00:00:00.000Z`).toLocaleString(t,n),getWeekNumber=(e,t)=>{const n=getDate(e),a=(n.getDay()-t+7)%7;n.setDate(n.getDate()+4-a);const o=new Date(n.getFullYear(),0,1),l=Math.ceil(((+n-+o)/864e5+1)/7);return {year:n.getFullYear(),week:l}},addWeekNumberForDate=(e,t,n)=>{const a=getWeekNumber(n,e.firstWeekday);a&&(t.dataset.vcDateWeekNumber=String(a.week));},setDaysAsDisabled=(e,t,n)=>{var a,o,l,s,i;const r=null==(a=e.disableWeekdays)?void 0:a.includes(n),c=e.disableAllDates&&!!(null==(o=e.context.enableDates)?void 0:o[0]);!r&&!c||(null==(l=e.context.enableDates)?void 0:l.includes(t))||(null==(s=e.context.disableDates)?void 0:s.includes(t))||(e.context.disableDates.push(t),null==(i=e.context.disableDates)||i.sort(((e,t)=>+new Date(e)-+new Date(t))));},createDate=(e,t,n,a,o,l)=>{const s=getDate(o).getDay(),i="string"==typeof e.locale&&e.locale.length?e.locale:"en",r=document.createElement("div");let c;r.className=e.styles.date,r.dataset.vcDate=o,r.dataset.vcDateMonth=l,r.dataset.vcDateWeekDay=String(s),r.role="gridcell",("current"===l||e.displayDatesOutside)&&(c=document.createElement("button"),c.className=e.styles.dateBtn,c.type="button",c.ariaLabel=getLocaleString(o,i,{dateStyle:"long",timeZone:"UTC"}),c.dataset.vcDateBtn="",c.innerText=String(a),r.appendChild(c)),e.enableWeekNumbers&&addWeekNumberForDate(e,r,o),setDaysAsDisabled(e,o,s),setDateModifier(e,t,r,c,s,o,l),n.addDate(r),e.onCreateDateEls&&e.onCreateDateEls(e,r);},createDatesFromCurrentMonth=(e,t,n,a,o)=>{for(let l=1;l<=n;l++){const n=new Date(a,o,l);createDate(e,a,t,l,getDateString(n),"current");}},createDatesFromNextMonth=(e,t,n,a,o)=>{const l=o+1===12?a+1:a,s=o+1===12?"01":o+2<10?`0${o+2}`:o+2;for(let o=1;o<=n;o++){const n=o<10?`0${o}`:String(o);createDate(e,a,t,o,`${l}-${s}-${n}`,"next");}},createDatesFromPrevMonth=(e,t,n,a,o)=>{let l=new Date(n,a,0).getDate()-(o-1);const s=0===a?n-1:n,i=0===a?12:a<10?`0${a}`:a;for(let a=o;a>0;a--,l++){createDate(e,n,t,l,`${s}-${i}-${l}`,"prev");}},createWeekNumbers=(e,t,n,a,o)=>{if(!e.enableWeekNumbers)return;a.textContent="";const l=document.createElement("b");l.className=e.styles.weekNumbersTitle,l.innerText="#",l.dataset.vcWeekNumbers="title",a.appendChild(l);const s=document.createElement("div");s.className=e.styles.weekNumbersContent,s.dataset.vcWeekNumbers="content",a.appendChild(s);const i=document.createElement("button");i.type="button",i.className=e.styles.weekNumber;const r=o.querySelectorAll("[data-vc-date]"),c=Math.ceil((t+n)/7);for(let t=0;t<c;t++){const n=r[0===t?6:7*t].dataset.vcDate,a=getWeekNumber(n,e.firstWeekday);if(!a)return;const o=i.cloneNode(true);o.innerText=String(a.week),o.dataset.vcWeekNumber=String(a.week),o.dataset.vcWeekYear=String(a.year),o.role="rowheader",o.ariaLabel=`${a.week}`,s.appendChild(o);}},createDates=e=>{const t=new Date(e.context.selectedYear,e.context.selectedMonth,1),n=e.context.mainElement.querySelectorAll('[data-vc="dates"]'),a=e.context.mainElement.querySelectorAll('[data-vc-week="numbers"]');n.forEach(((n,o)=>{e.selectionDatesMode||(n.dataset.vcDatesDisabled=""),n.textContent="";const l=new Date(t);l.setMonth(l.getMonth()+o);const s=l.getMonth(),i=l.getFullYear(),r=(new Date(i,s,1).getDay()-e.firstWeekday+7)%7,c=new Date(i,s+1,0).getDate(),d=r+c,u=Math.ceil(d/7),m=7*u-d,p=[];for(let t=0;t<u;t++){const t=document.createElement("div");t.className=e.styles.datesRow,t.setAttribute("data-vc-dates","row"),t.setAttribute("role","row"),p.push(t);}let h=0,v=0;const g={addDate:e=>{p[h].appendChild(e),v++,v>=7&&(h++,v=0);}};createDatesFromPrevMonth(e,g,i,s,r),createDatesFromCurrentMonth(e,g,c,i,s),createDatesFromNextMonth(e,g,m,i,s);for(const e of p)n.appendChild(e);createDatePopup(e,n),createWeekNumbers(e,r,c,a[o],n);}));},layoutDefault=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <#WeekNumbers />\n    <div class="${e.styles.content}" data-vc="content" role="grid">\n      <#Week />\n      <#Dates />\n      <#DateRangeTooltip />\n    </div>\n  </div>\n  <#ControlTime />\n`,layoutMonths=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <div class="${e.styles.content}" data-vc="content">\n      <#Months />\n    </div>\n  </div>\n`,layoutMultiple=e=>`\n  <div class="${e.styles.controls}" data-vc="controls" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.grid}" data-vc="grid">\n    <#Multiple>\n      <div class="${e.styles.column}" data-vc="column" role="region">\n        <div class="${e.styles.header}" data-vc="header">\n          <div class="${e.styles.headerContent}" data-vc-header="content">\n            <#Month />\n            <#Year />\n          </div>\n        </div>\n        <div class="${e.styles.wrapper}" data-vc="wrapper">\n          <#WeekNumbers />\n          <div class="${e.styles.content}" data-vc="content" role="grid">\n            <#Week />\n            <#Dates />\n          </div>\n        </div>\n      </div>\n    <#/Multiple>\n    <#DateRangeTooltip />\n  </div>\n  <#ControlTime />\n`,layoutYears=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [year] />\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n    <#ArrowNext [year] />\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <div class="${e.styles.content}" data-vc="content">\n      <#Years />\n    </div>\n  </div>\n`,ArrowNext=(e,t)=>`<button type="button" class="${e.styles.arrowNext}" data-vc-arrow="next" aria-label="${e.labels.arrowNext[t]}"></button>`,ArrowPrev=(e,t)=>`<button type="button" class="${e.styles.arrowPrev}" data-vc-arrow="prev" aria-label="${e.labels.arrowPrev[t]}"></button>`,ControlTime=e=>e.selectionTimeMode?`<div class="${e.styles.time}" data-vc="time" role="group" aria-label="${e.labels.selectingTime}"></div>`:"",DateRangeTooltip=e=>e.onCreateDateRangeTooltip?`<div class="${e.styles.dateRangeTooltip}" data-vc-date-range-tooltip="hidden"></div>`:"",Dates=e=>`<div class="${e.styles.dates}" data-vc="dates" aria-live="assertive" aria-label="${e.labels.dates}" ${"multiple"===e.type?"aria-multiselectable":""}></div>`,Month=e=>`<button type="button" class="${e.styles.month}" data-vc="month"></button>`,Months=e=>`<div class="${e.styles.months}" data-vc="months" role="grid" aria-live="assertive" aria-label="${e.labels.months}"></div>`,Week=e=>`<div class="${e.styles.week}" data-vc="week" role="row" aria-label="${e.labels.week}"></div>`,WeekNumbers=e=>e.enableWeekNumbers?`<div class="${e.styles.weekNumbers}" data-vc-week="numbers" role="row" aria-label="${e.labels.weekNumber}"></div>`:"",Year=e=>`<button type="button" class="${e.styles.year}" data-vc="year"></button>`,Years=e=>`<div class="${e.styles.years}" data-vc="years" role="grid" aria-live="assertive" aria-label="${e.labels.years}"></div>`,components={ArrowNext:ArrowNext,ArrowPrev:ArrowPrev,ControlTime:ControlTime,Dates:Dates,DateRangeTooltip:DateRangeTooltip,Month:Month,Months:Months,Week:Week,WeekNumbers:WeekNumbers,Year:Year,Years:Years},getComponent=e=>components[e],parseLayout=(e,t)=>t.replace(/[\n\t]/g,"").replace(/<#(?!\/?Multiple)(.*?)>/g,((t,n)=>{const a=(n.match(/\[(.*?)\]/)||[])[1],o=n.replace(/[/\s\n\t]|\[(.*?)\]/g,""),l=getComponent(o),s=l?l(e,null!=a?a:null):"";return e.sanitizerHTML(s)})).replace(/[\n\t]/g,""),parseMultipleLayout=(e,t)=>t.replace(new RegExp("<#Multiple>(.*?)<#\\/Multiple>","gs"),((t,n)=>{const a=Array(e.context.displayMonthsCount).fill(n).join("");return e.sanitizerHTML(a)})).replace(/[\n\t]/g,""),createLayouts=(e,t)=>{const n={default:layoutDefault,month:layoutMonths,year:layoutYears,multiple:layoutMultiple};if(Object.keys(n).forEach((t=>{const a=t;e.layouts[a].length||(e.layouts[a]=n[a](e));})),e.context.mainElement.className=e.styles.calendar,e.context.mainElement.dataset.vc="calendar",e.context.mainElement.dataset.vcType=e.context.currentType,e.context.mainElement.role="application",e.context.mainElement.tabIndex=0,e.context.mainElement.ariaLabel=e.labels.application,"multiple"!==e.context.currentType){if("multiple"===e.type&&t){const n=e.context.mainElement.querySelector('[data-vc="controls"]'),a=e.context.mainElement.querySelector('[data-vc="grid"]'),o=t.closest('[data-vc="column"]');return n&&n.remove(),a&&(a.dataset.vcGrid="hidden"),o&&(o.dataset.vcColumn=e.context.currentType),void(o&&(o.innerHTML=e.sanitizerHTML(parseLayout(e,e.layouts[e.context.currentType]))))}e.context.mainElement.innerHTML=e.sanitizerHTML(parseLayout(e,e.layouts[e.context.currentType]));}else e.context.mainElement.innerHTML=e.sanitizerHTML(parseMultipleLayout(e,parseLayout(e,e.layouts[e.context.currentType])));},setVisibilityArrows=(e,t,n,a)=>{e.style.visibility=n?"hidden":"",t.style.visibility=a?"hidden":"";},handleDefaultType=(e,t,n)=>{const a=getDate(getDateString(new Date(e.context.selectedYear,e.context.selectedMonth,1))),o=new Date(a.getTime()),l=new Date(a.getTime());o.setMonth(o.getMonth()-e.monthsToSwitch),l.setMonth(l.getMonth()+e.monthsToSwitch);const s=getDate(e.context.dateMin),i=getDate(e.context.dateMax);e.selectionYearsMode||(s.setFullYear(a.getFullYear()),i.setFullYear(a.getFullYear()));const r=!e.selectionMonthsMode||o.getFullYear()<s.getFullYear()||o.getFullYear()===s.getFullYear()&&o.getMonth()<s.getMonth(),c=!e.selectionMonthsMode||l.getFullYear()>i.getFullYear()||l.getFullYear()===i.getFullYear()&&l.getMonth()>i.getMonth()-(e.context.displayMonthsCount-1);setVisibilityArrows(t,n,r,c);},handleYearType=(e,t,n)=>{const a=getDate(e.context.dateMin),o=getDate(e.context.dateMax),l=!!(a.getFullYear()&&e.context.displayYear-7<=a.getFullYear()),s=!!(o.getFullYear()&&e.context.displayYear+7>=o.getFullYear());setVisibilityArrows(t,n,l,s);},visibilityArrows=e=>{if("month"===e.context.currentType)return;const t=e.context.mainElement.querySelector('[data-vc-arrow="prev"]'),n=e.context.mainElement.querySelector('[data-vc-arrow="next"]');if(!t||!n)return;({default:()=>handleDefaultType(e,t,n),year:()=>handleYearType(e,t,n)})["multiple"===e.context.currentType?"default":e.context.currentType]();},visibilityHandler=(e,t,n,a,o)=>{const l=new Date(a.setFullYear(e.context.selectedYear,e.context.selectedMonth+n)).getFullYear(),s=new Date(a.setMonth(e.context.selectedMonth+n)).getMonth(),i=e.context.locale.months.long[s],r=t.closest('[data-vc="column"]');r&&(r.ariaLabel=`${i} ${l}`);const c={month:{id:s,label:i},year:{id:l,label:l}};t.innerText=String(c[o].label),t.dataset[`vc${o.charAt(0).toUpperCase()+o.slice(1)}`]=String(c[o].id),t.ariaLabel=`${e.labels[o]} ${c[o].label}`;const d={month:e.selectionMonthsMode,year:e.selectionYearsMode},u=false===d[o]||"only-arrows"===d[o];u&&(t.tabIndex=-1),t.disabled=u;},visibilityTitle=e=>{const t=e.context.mainElement.querySelectorAll('[data-vc="month"]'),n=e.context.mainElement.querySelectorAll('[data-vc="year"]'),a=new Date(e.context.selectedYear,e.context.selectedMonth,1);[t,n].forEach((t=>null==t?void 0:t.forEach(((t,n)=>visibilityHandler(e,t,n,a,t.dataset.vc)))));},setYearModifier=(e,t,n,a,o)=>{var l;const s={month:"[data-vc-months-month]",year:"[data-vc-years-year]"},i={month:{selected:"data-vc-months-month-selected",aria:"aria-selected",value:"vcMonthsMonth",selectedProperty:"selectedMonth"},year:{selected:"data-vc-years-year-selected",aria:"aria-selected",value:"vcYearsYear",selectedProperty:"selectedYear"}};o&&(null==(l=e.context.mainElement.querySelectorAll(s[n]))||l.forEach((e=>{e.removeAttribute(i[n].selected),e.removeAttribute(i[n].aria);})),setContext(e,i[n].selectedProperty,Number(t.dataset[i[n].value])),visibilityTitle(e),"year"===n&&visibilityArrows(e)),a&&(t.setAttribute(i[n].selected,""),t.setAttribute(i[n].aria,"true"));},getColumnID=(e,t)=>{var n;if("multiple"!==e.type)return {currentValue:null,columnID:0};const a=e.context.mainElement.querySelectorAll('[data-vc="column"]'),o=Array.from(a).findIndex((e=>e.closest(`[data-vc-column="${t}"]`)));return {currentValue:o>=0?Number(null==(n=a[o].querySelector(`[data-vc="${t}"]`))?void 0:n.getAttribute(`data-vc-${t}`)):null,columnID:Math.max(o,0)}},createMonthEl=(e,t,n,a,o,l,s)=>{const i=t.cloneNode(false);return i.className=e.styles.monthsMonth,i.innerText=a,i.ariaLabel=o,i.role="gridcell",i.dataset.vcMonthsMonth=`${s}`,l&&(i.ariaDisabled="true"),l&&(i.tabIndex=-1),i.disabled=l,setYearModifier(e,i,"month",n===s,false),i},createMonths=(e,t)=>{var n,a;const o=null==(n=null==t?void 0:t.closest('[data-vc="header"]'))?void 0:n.querySelector('[data-vc="year"]'),l=o?Number(o.dataset.vcYear):e.context.selectedYear,s=(null==t?void 0:t.dataset.vcMonth)?Number(t.dataset.vcMonth):e.context.selectedMonth;setContext(e,"currentType","month"),createLayouts(e,t),visibilityTitle(e);const i=e.context.mainElement.querySelector('[data-vc="months"]');if(!e.selectionMonthsMode||!i)return;const r=e.monthsToSwitch>1?e.context.locale.months.long.map(((t,n)=>s-e.monthsToSwitch*n)).concat(e.context.locale.months.long.map(((t,n)=>s+e.monthsToSwitch*n))).filter((e=>e>=0&&e<=12)):Array.from(Array(12).keys()),c=document.createElement("button");c.type="button";for(let t=0;t<12;t++){const n=getDate(e.context.dateMin),a=getDate(e.context.dateMax),o=e.context.displayMonthsCount-1,{columnID:d}=getColumnID(e,"month"),u=l<=n.getFullYear()&&t<n.getMonth()+d||l>=a.getFullYear()&&t>a.getMonth()-o+d||l>a.getFullYear()||t!==s&&!r.includes(t),m=createMonthEl(e,c,s,e.context.locale.months.short[t],e.context.locale.months.long[t],u,t);i.appendChild(m),e.onCreateMonthEls&&e.onCreateMonthEls(e,m);}null==(a=e.context.mainElement.querySelector("[data-vc-months-month]:not([disabled])"))||a.focus();},TimeInput=(e,t,n,a,o)=>`\n  <label class="${t}" data-vc-time-input="${e}">\n    <input type="text" name="${e}" maxlength="2" aria-label="${n[`input${e.charAt(0).toUpperCase()+e.slice(1)}`]}" value="${a}" ${o?"disabled":""}>\n  </label>\n`,TimeRange=(e,t,n,a,o,l,s)=>`\n  <label class="${t}" data-vc-time-range="${e}">\n    <input type="range" name="${e}" min="${a}" max="${o}" step="${l}" aria-label="${n[`range${e.charAt(0).toUpperCase()+e.slice(1)}`]}" value="${s}">\n  </label>\n`,handleActions=(e,t,n,a)=>{(({hour:()=>setContext(e,"selectedHours",n),minute:()=>setContext(e,"selectedMinutes",n)}))[a](),setContext(e,"selectedTime",`${e.context.selectedHours}:${e.context.selectedMinutes}${e.context.selectedKeeping?` ${e.context.selectedKeeping}`:""}`),e.onChangeTime&&e.onChangeTime(e,t,false),e.inputMode&&e.context.inputElement&&e.context.mainElement&&e.onChangeToInput&&e.onChangeToInput(e,t);},transformTime24=(e,t)=>{var n;return (null==(n={0:{AM:"00",PM:"12"},1:{AM:"01",PM:"13"},2:{AM:"02",PM:"14"},3:{AM:"03",PM:"15"},4:{AM:"04",PM:"16"},5:{AM:"05",PM:"17"},6:{AM:"06",PM:"18"},7:{AM:"07",PM:"19"},8:{AM:"08",PM:"20"},9:{AM:"09",PM:"21"},10:{AM:"10",PM:"22"},11:{AM:"11",PM:"23"},12:{AM:"00",PM:"12"}}[Number(e)])?void 0:n[t])||String(e)},handleClickKeepingTime=(e,t,n,a,o)=>{const l=l=>{const s="AM"===e.context.selectedKeeping?"PM":"AM",i=transformTime24(e.context.selectedHours,s);Number(i)<=a&&Number(i)>=o?(setContext(e,"selectedKeeping",s),n.value=i,handleActions(e,l,e.context.selectedHours,"hour"),t.ariaLabel=`${e.labels.btnKeeping} ${e.context.selectedKeeping}`,t.innerText=e.context.selectedKeeping):e.onChangeTime&&e.onChangeTime(e,l,true);};return t.addEventListener("click",l),()=>{t.removeEventListener("click",l);}},transformTime12=e=>({0:"12",13:"01",14:"02",15:"03",16:"04",17:"05",18:"06",19:"07",20:"08",21:"09",22:"10",23:"11"}[Number(e)]||String(e)),updateInputAndRange=(e,t,n,a)=>{e.value=n,t.value=a;},updateKeepingTime$1=(e,t,n)=>{t&&n&&(setContext(e,"selectedKeeping",n),t.innerText=n);},handleInput$1=(e,t,n,a,o,l,s)=>{const i={hour:(i,r,c)=>{if(!e.selectionTimeMode)return;({12:()=>{if(!e.context.selectedKeeping)return;const d=Number(transformTime24(r,e.context.selectedKeeping));if(!(d<=l&&d>=s))return updateInputAndRange(n,t,e.context.selectedHours,e.context.selectedHours),void(e.onChangeTime&&e.onChangeTime(e,c,true));updateInputAndRange(n,t,transformTime12(r),transformTime24(r,e.context.selectedKeeping)),i>12&&updateKeepingTime$1(e,a,"PM"),handleActions(e,c,transformTime12(r),o);},24:()=>{if(!(i<=l&&i>=s))return updateInputAndRange(n,t,e.context.selectedHours,e.context.selectedHours),void(e.onChangeTime&&e.onChangeTime(e,c,true));updateInputAndRange(n,t,r,r),handleActions(e,c,r,o);}})[e.selectionTimeMode]();},minute:(a,i,r)=>{if(!(a<=l&&a>=s))return n.value=e.context.selectedMinutes,void(e.onChangeTime&&e.onChangeTime(e,r,true));n.value=i,t.value=i,handleActions(e,r,i,o);}},r=e=>{const t=Number(n.value),a=n.value.padStart(2,"0");i[o]&&i[o](t,a,e);};return n.addEventListener("change",r),()=>{n.removeEventListener("change",r);}},updateInputAndTime=(e,t,n,a,o)=>{t.value=o,handleActions(e,n,o,a);},updateKeepingTime=(e,t,n)=>{t&&(setContext(e,"selectedKeeping",n),t.innerText=n);},handleRange=(e,t,n,a,o)=>{const l=l=>{const s=Number(t.value),i=t.value.padStart(2,"0"),r="hour"===o,c=24===e.selectionTimeMode,d=s>0&&s<12;r&&!c&&updateKeepingTime(e,a,0===s||d?"AM":"PM"),updateInputAndTime(e,n,l,o,!r||c||d?i:transformTime12(t.value));};return t.addEventListener("input",l),()=>{t.removeEventListener("input",l);}},handleMouseOver=e=>e.setAttribute("data-vc-input-focus",""),handleMouseOut=e=>e.removeAttribute("data-vc-input-focus"),handleTime=(e,t)=>{const n=t.querySelector('[data-vc-time-range="hour"] input[name="hour"]'),a=t.querySelector('[data-vc-time-range="minute"] input[name="minute"]'),o=t.querySelector('[data-vc-time-input="hour"] input[name="hour"]'),l=t.querySelector('[data-vc-time-input="minute"] input[name="minute"]'),s=t.querySelector('[data-vc-time="keeping"]');if(!(n&&a&&o&&l))return;const i=e=>{e.target===n&&handleMouseOver(o),e.target===a&&handleMouseOver(l);},r=e=>{e.target===n&&handleMouseOut(o),e.target===a&&handleMouseOut(l);};return t.addEventListener("mouseover",i),t.addEventListener("mouseout",r),handleInput$1(e,n,o,s,"hour",e.timeMaxHour,e.timeMinHour),handleInput$1(e,a,l,s,"minute",e.timeMaxMinute,e.timeMinMinute),handleRange(e,n,o,s,"hour"),handleRange(e,a,l,s,"minute"),s&&handleClickKeepingTime(e,s,n,e.timeMaxHour,e.timeMinHour),()=>{t.removeEventListener("mouseover",i),t.removeEventListener("mouseout",r);}},createTime=e=>{const t=e.context.mainElement.querySelector('[data-vc="time"]');if(!e.selectionTimeMode||!t)return;const[n,a]=[e.timeMinHour,e.timeMaxHour],[o,l]=[e.timeMinMinute,e.timeMaxMinute],s=e.context.selectedKeeping?transformTime24(e.context.selectedHours,e.context.selectedKeeping):e.context.selectedHours,i="range"===e.timeControls;var r;t.innerHTML=e.sanitizerHTML(`\n    <div class="${e.styles.timeContent}" data-vc-time="content">\n      ${TimeInput("hour",e.styles.timeHour,e.labels,e.context.selectedHours,i)}\n      ${TimeInput("minute",e.styles.timeMinute,e.labels,e.context.selectedMinutes,i)}\n      ${12===e.selectionTimeMode?(r=e.context.selectedKeeping,`<button type="button" class="${e.styles.timeKeeping}" aria-label="${e.labels.btnKeeping} ${r}" data-vc-time="keeping" ${i?"disabled":""}>${r}</button>`):""}\n    </div>\n    <div class="${e.styles.timeRanges}" data-vc-time="ranges">\n      ${TimeRange("hour",e.styles.timeRange,e.labels,n,a,e.timeStepHour,s)}\n      ${TimeRange("minute",e.styles.timeRange,e.labels,o,l,e.timeStepMinute,e.context.selectedMinutes)}\n    </div>\n  `),handleTime(e,t);},createWeek=e=>{const t=e.selectedWeekends?[...e.selectedWeekends]:[],n=[...e.context.locale.weekdays.long].reduce(((n,a,o)=>[...n,{id:o,titleShort:e.context.locale.weekdays.short[o],titleLong:a,isWeekend:t.includes(o)}]),[]),a=[...n.slice(e.firstWeekday),...n.slice(0,e.firstWeekday)];e.context.mainElement.querySelectorAll('[data-vc="week"]').forEach((t=>{const n=e.onClickWeekDay?document.createElement("button"):document.createElement("b");e.onClickWeekDay&&(n.type="button"),a.forEach((a=>{const o=n.cloneNode(true);o.innerText=a.titleShort,o.className=e.styles.weekDay,o.role="columnheader",o.ariaLabel=a.titleLong,o.dataset.vcWeekDay=String(a.id),a.isWeekend&&(o.dataset.vcWeekDayOff=""),t.appendChild(o);}));}));},createYearEl=(e,t,n,a,o)=>{const l=t.cloneNode(false);return l.className=e.styles.yearsYear,l.innerText=String(o),l.ariaLabel=String(o),l.role="gridcell",l.dataset.vcYearsYear=`${o}`,a&&(l.ariaDisabled="true"),a&&(l.tabIndex=-1),l.disabled=a,setYearModifier(e,l,"year",n===o,false),l},createYears=(e,t)=>{var n;const a=(null==t?void 0:t.dataset.vcYear)?Number(t.dataset.vcYear):e.context.selectedYear;setContext(e,"currentType","year"),createLayouts(e,t),visibilityTitle(e),visibilityArrows(e);const o=e.context.mainElement.querySelector('[data-vc="years"]');if(!e.selectionYearsMode||!o)return;const l="multiple"!==e.type||e.context.selectedYear===a?0:1,s=document.createElement("button");s.type="button";for(let t=e.context.displayYear-7;t<e.context.displayYear+8;t++){const n=t<getDate(e.context.dateMin).getFullYear()+l||t>getDate(e.context.dateMax).getFullYear(),i=createYearEl(e,s,a,n,t);o.appendChild(i),e.onCreateYearEls&&e.onCreateYearEls(e,i);}null==(n=e.context.mainElement.querySelector("[data-vc-years-year]:not([disabled])"))||n.focus();},trackChangesHTMLElement=(e,t,n)=>{new MutationObserver((e=>{for(let a=0;a<e.length;a++){if(e[a].attributeName===t){n();break}}})).observe(e,{attributes:true});},haveListener={value:false,set:()=>haveListener.value=true,check:()=>haveListener.value},setTheme=(e,t)=>e.dataset.vcTheme=t,trackChangesThemeInSystemSettings=(e,t)=>{if(setTheme(e.context.mainElement,t.matches?"dark":"light"),"system"!==e.selectedTheme||haveListener.check())return;const n=e=>{const t=document.querySelectorAll('[data-vc="calendar"]');null==t||t.forEach((t=>setTheme(t,e.matches?"dark":"light")));};t.addEventListener?t.addEventListener("change",n):t.addListener(n),haveListener.set();},detectTheme=(e,t)=>{const n=e.themeAttrDetect.length?document.querySelector(e.themeAttrDetect):null,a=e.themeAttrDetect.replace(/^.*\[(.+)\]/g,((e,t)=>t));if(!n||"system"===n.getAttribute(a))return void trackChangesThemeInSystemSettings(e,t);const o=n.getAttribute(a);o?(setTheme(e.context.mainElement,o),trackChangesHTMLElement(n,a,(()=>{const t=n.getAttribute(a);t&&setTheme(e.context.mainElement,t);}))):trackChangesThemeInSystemSettings(e,t);},handleTheme=e=>{"not all"!==window.matchMedia("(prefers-color-scheme)").media?"system"===e.selectedTheme?detectTheme(e,window.matchMedia("(prefers-color-scheme: dark)")):setTheme(e.context.mainElement,e.selectedTheme):setTheme(e.context.mainElement,"light");},capitalizeFirstLetter=e=>e.charAt(0).toUpperCase()+e.slice(1).replace(/\./,""),getLocaleWeekday=(e,t,n)=>{const a=new Date(`1978-01-0${t+1}T00:00:00.000Z`),o=a.toLocaleString(n,{weekday:"short",timeZone:"UTC"}),l=a.toLocaleString(n,{weekday:"long",timeZone:"UTC"});e.context.locale.weekdays.short.push(capitalizeFirstLetter(o)),e.context.locale.weekdays.long.push(capitalizeFirstLetter(l));},getLocaleMonth=(e,t,n)=>{const a=new Date(`1978-${String(t+1).padStart(2,"0")}-01T00:00:00.000Z`),o=a.toLocaleString(n,{month:"short",timeZone:"UTC"}),l=a.toLocaleString(n,{month:"long",timeZone:"UTC"});e.context.locale.months.short.push(capitalizeFirstLetter(o)),e.context.locale.months.long.push(capitalizeFirstLetter(l));},getLocale=e=>{var t,n,a,o,l,s,i,r;if(!(e.context.locale.weekdays.short[6]&&e.context.locale.weekdays.long[6]&&e.context.locale.months.short[11]&&e.context.locale.months.long[11]))if("string"==typeof e.locale){if("string"==typeof e.locale&&!e.locale.length)throw new Error(errorMessages.notLocale);Array.from({length:7},((t,n)=>getLocaleWeekday(e,n,e.locale))),Array.from({length:12},((t,n)=>getLocaleMonth(e,n,e.locale)));}else {if(!((null==(n=null==(t=e.locale)?void 0:t.weekdays)?void 0:n.short[6])&&(null==(o=null==(a=e.locale)?void 0:a.weekdays)?void 0:o.long[6])&&(null==(s=null==(l=e.locale)?void 0:l.months)?void 0:s.short[11])&&(null==(r=null==(i=e.locale)?void 0:i.months)?void 0:r.long[11])))throw new Error(errorMessages.notLocale);setContext(e,"locale",__spreadValues({},e.locale));}},create=e=>{const t={default:()=>{createWeek(e),createDates(e);},multiple:()=>{createWeek(e),createDates(e);},month:()=>createMonths(e),year:()=>createYears(e)};handleTheme(e),getLocale(e),createLayouts(e),visibilityTitle(e),visibilityArrows(e),createTime(e),t[e.context.currentType]();},handleArrowKeys=e=>{const t=t=>{var n;const a=t.target;if(!["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(t.key)||"button"!==a.localName)return;const o=Array.from(e.context.mainElement.querySelectorAll('[data-vc="calendar"] button')),l=o.indexOf(a);if(-1===l)return;const s=(i=o[l]).hasAttribute("data-vc-date-btn")?7:i.hasAttribute("data-vc-months-month")?4:i.hasAttribute("data-vc-years-year")?5:1;var i;const r=(0, {ArrowUp:()=>Math.max(0,l-s),ArrowDown:()=>Math.min(o.length-1,l+s),ArrowLeft:()=>Math.max(0,l-1),ArrowRight:()=>Math.min(o.length-1,l+1)}[t.key])();null==(n=o[r])||n.focus();};return e.context.mainElement.addEventListener("keydown",t),()=>e.context.mainElement.removeEventListener("keydown",t)},handleMonth=(e,t)=>{const n=getDate(getDateString(new Date(e.context.selectedYear,e.context.selectedMonth,1)));(({prev:()=>n.setMonth(n.getMonth()-e.monthsToSwitch),next:()=>n.setMonth(n.getMonth()+e.monthsToSwitch)}))[t](),setContext(e,"selectedMonth",n.getMonth()),setContext(e,"selectedYear",n.getFullYear()),visibilityTitle(e),visibilityArrows(e),createDates(e);},handleClickArrow=(e,t)=>{const n=t.target.closest("[data-vc-arrow]");if(n){if(["default","multiple"].includes(e.context.currentType))handleMonth(e,n.dataset.vcArrow);else if("year"===e.context.currentType&&void 0!==e.context.displayYear){const a={prev:-15,next:15}[n.dataset.vcArrow];setContext(e,"displayYear",e.context.displayYear+a),createYears(e,t.target);}e.onClickArrow&&e.onClickArrow(e,t);}},resolveToggle=(e,t)=>void 0===t||("function"==typeof t?t(e):t),canToggleSelection=e=>resolveToggle(e,e.enableDateToggle),handleSelectDate=(e,t,n)=>{const a=t.dataset.vcDate,o=t.closest("[data-vc-date][data-vc-date-selected]"),l=canToggleSelection(e);if(o&&!l)return;const s=o?e.context.selectedDates.filter((e=>e!==a)):n?[...e.context.selectedDates,a]:[a];setContext(e,"selectedDates",s);},createDateRangeTooltip=(e,t,n)=>{if(!t)return;if(!n)return t.dataset.vcDateRangeTooltip="hidden",void(t.textContent="");const a=e.context.mainElement.getBoundingClientRect(),o=n.getBoundingClientRect();t.style.left=o.left-a.left+o.width/2+"px",t.style.top=o.bottom-a.top-o.height+"px",t.dataset.vcDateRangeTooltip="visible",t.innerHTML=e.sanitizerHTML(e.onCreateDateRangeTooltip(e,n,t,o,a));},state={self:null,lastDateEl:null,isHovering:false,rangeMin:void 0,rangeMax:void 0,tooltipEl:null,timeoutId:null},addHoverEffect=(e,t,n)=>{var a,o,l;if(!(null==(o=null==(a=state.self)?void 0:a.context)?void 0:o.selectedDates[0]))return;const s=getDateString(e);(null==(l=state.self.context.disableDates)?void 0:l.includes(s))||(state.self.context.mainElement.querySelectorAll(`[data-vc-date="${s}"]`).forEach((e=>e.dataset.vcDateHover="")),t.forEach((e=>e.dataset.vcDateHover="first")),n.forEach((e=>{"first"===e.dataset.vcDateHover?e.dataset.vcDateHover="first-and-last":e.dataset.vcDateHover="last";})));},removeHoverEffect=()=>{var e,t;if(!(null==(t=null==(e=state.self)?void 0:e.context)?void 0:t.mainElement))return;state.self.context.mainElement.querySelectorAll("[data-vc-date-hover]").forEach((e=>e.removeAttribute("data-vc-date-hover")));},handleHoverDatesEvent=e=>{var t,n;if(!e||!(null==(n=null==(t=state.self)?void 0:t.context)?void 0:n.selectedDates[0]))return;if(!e.closest('[data-vc="dates"]'))return state.lastDateEl=null,createDateRangeTooltip(state.self,state.tooltipEl,null),void removeHoverEffect();const a=e.closest("[data-vc-date]");if(!a||state.lastDateEl===a)return;state.lastDateEl=a,createDateRangeTooltip(state.self,state.tooltipEl,a),removeHoverEffect();const o=a.dataset.vcDate,l=getDate(state.self.context.selectedDates[0]),s=getDate(o),i=state.self.context.mainElement.querySelectorAll(`[data-vc-date="${state.self.context.selectedDates[0]}"]`),r=state.self.context.mainElement.querySelectorAll(`[data-vc-date="${o}"]`),[c,d]=l<s?[i,r]:[r,i],[u,m]=l<s?[l,s]:[s,l];for(let e=new Date(u);e<=m;e.setDate(e.getDate()+1))addHoverEffect(e,c,d);},handleHoverSelectedDatesRangeEvent=e=>{const t=null==e?void 0:e.closest("[data-vc-date-selected]");if(!t&&state.lastDateEl)return state.lastDateEl=null,void createDateRangeTooltip(state.self,state.tooltipEl,null);t&&state.lastDateEl!==t&&(state.lastDateEl=t,createDateRangeTooltip(state.self,state.tooltipEl,t));},optimizedHoverHandler=e=>t=>{const n=t.target;state.isHovering||(state.isHovering=true,requestAnimationFrame((()=>{e(n),state.isHovering=false;})));},optimizedHandleHoverDatesEvent=optimizedHoverHandler(handleHoverDatesEvent),optimizedHandleHoverSelectedDatesRangeEvent=optimizedHoverHandler(handleHoverSelectedDatesRangeEvent),handleCancelSelectionDates=e=>{state.self&&"Escape"===e.key&&(state.lastDateEl=null,setContext(state.self,"selectedDates",[]),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),createDateRangeTooltip(state.self,state.tooltipEl,null),removeHoverEffect());},handleMouseLeave=()=>{null!==state.timeoutId&&clearTimeout(state.timeoutId),state.timeoutId=setTimeout((()=>{state.lastDateEl=null,createDateRangeTooltip(state.self,state.tooltipEl,null),removeHoverEffect();}),50);},updateDisabledDates=()=>{var e,t,n,a;if(!(null==(n=null==(t=null==(e=state.self)?void 0:e.context)?void 0:t.selectedDates)?void 0:n[0])||!(null==(a=state.self.context.disableDates)?void 0:a[0]))return;const o=getDate(state.self.context.selectedDates[0]),[l,s]=state.self.context.disableDates.map((e=>getDate(e))).reduce((([e,t],n)=>[o>=n?n:e,o<n&&null===t?n:t]),[null,null]);l&&setContext(state.self,"displayDateMin",getDateString(new Date(l.setDate(l.getDate()+1)))),s&&setContext(state.self,"displayDateMax",getDateString(new Date(s.setDate(s.getDate()-1))));state.self.disableDatesPast&&!state.self.disableAllDates&&getDate(state.self.context.displayDateMin)<getDate(state.self.context.dateToday)&&setContext(state.self,"displayDateMin",state.self.context.dateToday);},handleSelectDateRange=(e,t)=>{state.self=e,state.lastDateEl=t,removeHoverEffect(),e.disableDatesGaps&&(state.rangeMin=state.rangeMin?state.rangeMin:e.context.displayDateMin,state.rangeMax=state.rangeMax?state.rangeMax:e.context.displayDateMax),e.onCreateDateRangeTooltip&&(state.tooltipEl=e.context.mainElement.querySelector("[data-vc-date-range-tooltip]"));const n=null==t?void 0:t.dataset.vcDate;if(n){const t=1===e.context.selectedDates.length&&e.context.selectedDates[0].includes(n),a=t&&!canToggleSelection(e)?[n,n]:t&&canToggleSelection(e)?[]:e.context.selectedDates.length>1?[n]:[...e.context.selectedDates,n];setContext(e,"selectedDates",a),e.context.selectedDates.length>1&&e.context.selectedDates.sort(((e,t)=>+new Date(e)-+new Date(t)));}({set:()=>(e.disableDatesGaps&&updateDisabledDates(),createDateRangeTooltip(state.self,state.tooltipEl,t),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),state.self.context.mainElement.addEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.addEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.addEventListener("keydown",handleCancelSelectionDates),()=>{state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates);}),reset:()=>{const[n,a]=[e.context.selectedDates[0],e.context.selectedDates[e.context.selectedDates.length-1]],o=e.context.selectedDates[0]!==e.context.selectedDates[e.context.selectedDates.length-1],l=parseDates([`${n}:${a}`]).filter((t=>!e.context.disableDates.includes(t))),s=o?e.enableEdgeDatesOnly?[n,a]:l:[e.context.selectedDates[0],e.context.selectedDates[0]];if(setContext(e,"selectedDates",s),e.disableDatesGaps&&(setContext(e,"displayDateMin",state.rangeMin),setContext(e,"displayDateMax",state.rangeMax)),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),e.onCreateDateRangeTooltip)return e.context.selectedDates[0]||(state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),createDateRangeTooltip(state.self,state.tooltipEl,null)),e.context.selectedDates[0]&&(state.self.context.mainElement.addEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.addEventListener("mouseleave",handleMouseLeave),createDateRangeTooltip(state.self,state.tooltipEl,t)),()=>{state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave);}}})[1===e.context.selectedDates.length?"set":"reset"]();},updateDateModifier=e=>{e.context.mainElement.querySelectorAll("[data-vc-date]").forEach((t=>{const n=t.querySelector("[data-vc-date-btn]"),a=t.dataset.vcDate,o=getDate(a).getDay();setDateModifier(e,e.context.selectedYear,t,n,o,a,"current");}));},handleClickDate=(e,t)=>{var n;const a=t.target,o=a.closest("[data-vc-date-btn]");if(!e.selectionDatesMode||!["single","multiple","multiple-ranged"].includes(e.selectionDatesMode)||!o)return;const l=o.closest("[data-vc-date]");(({single:()=>handleSelectDate(e,l,false),multiple:()=>handleSelectDate(e,l,true),"multiple-ranged":()=>handleSelectDateRange(e,l)}))[e.selectionDatesMode](),null==(n=e.context.selectedDates)||n.sort(((e,t)=>+new Date(e)-+new Date(t))),e.onClickDate&&e.onClickDate(e,t),e.inputMode&&e.context.inputElement&&e.context.mainElement&&e.onChangeToInput&&e.onChangeToInput(e,t);const s=a.closest('[data-vc-date-month="prev"]'),i=a.closest('[data-vc-date-month="next"]');({prev:()=>e.enableMonthChangeOnDayClick?handleMonth(e,"prev"):updateDateModifier(e),next:()=>e.enableMonthChangeOnDayClick?handleMonth(e,"next"):updateDateModifier(e),current:()=>updateDateModifier(e)})[s?"prev":i?"next":"current"]();},typeClick=["month","year"],getValue=(e,t,n)=>{const{currentValue:a,columnID:o}=getColumnID(e,t);return "month"===e.context.currentType&&o>=0?n-o:"year"===e.context.currentType&&e.context.selectedYear!==a?n-1:n},handleMultipleYearSelection=(e,t)=>{const n=getValue(e,"year",Number(t.dataset.vcYearsYear)),a=getDate(e.context.dateMin),o=getDate(e.context.dateMax),l=e.context.displayMonthsCount-1,{columnID:s}=getColumnID(e,"year"),i=e.context.selectedMonth<a.getMonth()&&n<=a.getFullYear(),r=e.context.selectedMonth>o.getMonth()-l+s&&n>=o.getFullYear(),c=n<a.getFullYear(),d=n>o.getFullYear(),u=i||c?a.getFullYear():r||d?o.getFullYear():n,m=i||c?a.getMonth():r||d?o.getMonth()-l+s:e.context.selectedMonth;setContext(e,"selectedYear",u),setContext(e,"selectedMonth",m);},handleMultipleMonthSelection=(e,t)=>{const n=t.closest('[data-vc-column="month"]').querySelector('[data-vc="year"]'),a=getValue(e,"month",Number(t.dataset.vcMonthsMonth)),o=Number(n.dataset.vcYear),l=getDate(e.context.dateMin),s=getDate(e.context.dateMax),i=a<l.getMonth()&&o<=l.getFullYear(),r=a>s.getMonth()&&o>=s.getFullYear();setContext(e,"selectedYear",o),setContext(e,"selectedMonth",i?l.getMonth():r?s.getMonth():a);},handleItemClick=(e,t,n,a)=>{var o;({year:()=>{if("multiple"===e.type)return handleMultipleYearSelection(e,a);setContext(e,"selectedYear",Number(a.dataset.vcYearsYear));},month:()=>{if("multiple"===e.type)return handleMultipleMonthSelection(e,a);setContext(e,"selectedMonth",Number(a.dataset.vcMonthsMonth));}})[n]();(({year:()=>{var n;return null==(n=e.onClickYear)?void 0:n.call(e,e,t)},month:()=>{var n;return null==(n=e.onClickMonth)?void 0:n.call(e,e,t)}}))[n](),e.context.currentType!==e.type?(setContext(e,"currentType",e.type),create(e),null==(o=e.context.mainElement.querySelector(`[data-vc="${n}"]`))||o.focus()):setYearModifier(e,a,n,true,true);},handleClickType=(e,t,n)=>{var a;const o=t.target,l=o.closest(`[data-vc="${n}"]`),s={year:()=>createYears(e,o),month:()=>createMonths(e,o)};if(l&&e.onClickTitle&&e.onClickTitle(e,t),l&&e.context.currentType!==n)return s[n]();const i=o.closest(`[data-vc-${n}s-${n}]`);if(i)return handleItemClick(e,t,n,i);const r=o.closest('[data-vc="grid"]'),c=o.closest('[data-vc="column"]');(e.context.currentType===n&&l||"multiple"===e.type&&e.context.currentType===n&&r&&!c)&&(setContext(e,"currentType",e.type),create(e),null==(a=e.context.mainElement.querySelector(`[data-vc="${n}"]`))||a.focus());},handleClickMonthOrYear=(e,t)=>{const n={month:e.selectionMonthsMode,year:e.selectionYearsMode};typeClick.forEach((a=>{n[a]&&t.target&&handleClickType(e,t,a);}));},handleClickWeekNumber=(e,t)=>{if(!e.enableWeekNumbers||!e.onClickWeekNumber)return;const n=t.target.closest("[data-vc-week-number]"),a=e.context.mainElement.querySelectorAll("[data-vc-date-week-number]");if(!n||!a[0])return;const o=Number(n.innerText),l=Number(n.dataset.vcWeekYear),s=Array.from(a).filter((e=>Number(e.dataset.vcDateWeekNumber)===o));e.onClickWeekNumber(e,o,l,s,t);},handleClickWeekDay=(e,t)=>{if(!e.onClickWeekDay)return;const n=t.target.closest("[data-vc-week-day]"),a=t.target.closest('[data-vc="column"]'),o=a?a.querySelectorAll("[data-vc-date-week-day]"):e.context.mainElement.querySelectorAll("[data-vc-date-week-day]");if(!n||!o[0])return;const l=Number(n.dataset.vcWeekDay),s=Array.from(o).filter((e=>Number(e.dataset.vcDateWeekDay)===l));e.onClickWeekDay(e,l,s,t);},handleClick=e=>{const t=t=>{handleClickArrow(e,t),handleClickWeekDay(e,t),handleClickWeekNumber(e,t),handleClickDate(e,t),handleClickMonthOrYear(e,t);};return e.context.mainElement.addEventListener("click",t),()=>e.context.mainElement.removeEventListener("click",t)},initMonthsCount=e=>{if("multiple"===e.type&&(e.displayMonthsCount<=1||e.displayMonthsCount>12))throw new Error(errorMessages.incorrectMonthsCount);if("multiple"!==e.type&&e.displayMonthsCount>1)throw new Error(errorMessages.incorrectMonthsCount);setContext(e,"displayMonthsCount",e.displayMonthsCount?e.displayMonthsCount:"multiple"===e.type?2:1);},getLocalDate=()=>{const e=new Date;return new Date(e.getTime()-6e4*e.getTimezoneOffset()).toISOString().substring(0,10)},resolveDate=(e,t)=>"today"===e?getLocalDate():e instanceof Date||"number"==typeof e||"string"==typeof e?parseDates([e])[0]:t,initRange=e=>{var t,n,a;const o=resolveDate(e.dateMin,e.dateMin),l=resolveDate(e.dateMax,e.dateMax),s=resolveDate(e.displayDateMin,o),i=resolveDate(e.displayDateMax,l);setContext(e,"dateToday",resolveDate(e.dateToday,e.dateToday)),setContext(e,"displayDateMin",s?getDate(o)>=getDate(s)?o:s:o),setContext(e,"displayDateMax",i?getDate(l)<=getDate(i)?l:i:l);const r=e.disableDatesPast&&!e.disableAllDates&&getDate(s)<getDate(e.context.dateToday);setContext(e,"displayDateMin",r||e.disableAllDates?e.context.dateToday:s),setContext(e,"displayDateMax",e.disableAllDates?e.context.dateToday:i),setContext(e,"disableDates",e.disableDates[0]&&!e.disableAllDates?parseDates(e.disableDates):e.disableAllDates?[e.context.displayDateMin]:[]),e.context.disableDates.length>1&&e.context.disableDates.sort(((e,t)=>+new Date(e)-+new Date(t))),setContext(e,"enableDates",e.enableDates[0]?parseDates(e.enableDates):[]),(null==(t=e.context.enableDates)?void 0:t[0])&&(null==(n=e.context.disableDates)?void 0:n[0])&&setContext(e,"disableDates",e.context.disableDates.filter((t=>!e.context.enableDates.includes(t)))),e.context.enableDates.length>1&&e.context.enableDates.sort(((e,t)=>+new Date(e)-+new Date(t))),(null==(a=e.context.enableDates)?void 0:a[0])&&e.disableAllDates&&(setContext(e,"displayDateMin",e.context.enableDates[0]),setContext(e,"displayDateMax",e.context.enableDates[e.context.enableDates.length-1])),setContext(e,"dateMin",e.displayDisabledDates?o:e.context.displayDateMin),setContext(e,"dateMax",e.displayDisabledDates?l:e.context.displayDateMax);},initSelectedDates=e=>{var t;setContext(e,"selectedDates",(null==(t=e.selectedDates)?void 0:t[0])?parseDates(e.selectedDates):[]);},displayClosestValidDate=e=>{const t=t=>{const n=new Date(t);setInitialContext(e,n.getMonth(),n.getFullYear());};if(e.displayDateMin&&"today"!==e.displayDateMin&&(n=e.displayDateMin,a=new Date,new Date(n).getTime()>a.getTime())){const n=e.selectedDates.length&&e.selectedDates[0]?parseDates(e.selectedDates)[0]:e.displayDateMin;return t(getDate(resolveDate(n,e.displayDateMin))),true}var n,a;if(e.displayDateMax&&"today"!==e.displayDateMax&&((e,t)=>new Date(e).getTime()<t.getTime())(e.displayDateMax,new Date)){const n=e.selectedDates.length&&e.selectedDates[0]?parseDates(e.selectedDates)[0]:e.displayDateMax;return t(getDate(resolveDate(n,e.displayDateMax))),true}return  false},setInitialContext=(e,t,n)=>{setContext(e,"selectedMonth",t),setContext(e,"selectedYear",n),setContext(e,"displayYear",n);},initSelectedMonthYear=e=>{var t;if(e.enableJumpToSelectedDate&&(null==(t=e.selectedDates)?void 0:t[0])&&void 0===e.selectedMonth&&void 0===e.selectedYear){const t=getDate(parseDates(e.selectedDates)[0]);return void setInitialContext(e,t.getMonth(),t.getFullYear())}if(displayClosestValidDate(e))return;const n=void 0!==e.selectedMonth&&Number(e.selectedMonth)>=0&&Number(e.selectedMonth)<12,a=void 0!==e.selectedYear&&Number(e.selectedYear)>=0&&Number(e.selectedYear)<=9999;setInitialContext(e,n?Number(e.selectedMonth):getDate(e.context.dateToday).getMonth(),a?Number(e.selectedYear):getDate(e.context.dateToday).getFullYear());},initTime=e=>{var t,n,a;if(!e.selectionTimeMode)return;if(![12,24].includes(e.selectionTimeMode))throw new Error(errorMessages.incorrectTime);const o=12===e.selectionTimeMode,l=o?/^(0[1-9]|1[0-2]):([0-5][0-9]) ?(AM|PM)?$/i:/^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/;let[s,i,r]=null!=(a=null==(n=null==(t=e.selectedTime)?void 0:t.match(l))?void 0:n.slice(1))?a:[];s?o&&!r&&(r="AM"):(s=o?transformTime12(String(e.timeMinHour)):String(e.timeMinHour),i=String(e.timeMinMinute),r=o?Number(transformTime12(String(e.timeMinHour)))>=12?"PM":"AM":null),setContext(e,"selectedHours",s.padStart(2,"0")),setContext(e,"selectedMinutes",i.padStart(2,"0")),setContext(e,"selectedKeeping",r),setContext(e,"selectedTime",`${e.context.selectedHours}:${e.context.selectedMinutes}${r?` ${r}`:""}`);},initAllVariables=e=>{setContext(e,"currentType",e.type),initMonthsCount(e),initRange(e),initSelectedMonthYear(e),initSelectedDates(e),initTime(e);},reset=(e,{year:t,month:n,dates:a,time:o,locale:l},s=true)=>{var i;const r={year:e.selectedYear,month:e.selectedMonth,dates:e.selectedDates,time:e.selectedTime};if(e.selectedYear=t?r.year:e.context.selectedYear,e.selectedMonth=n?r.month:e.context.selectedMonth,e.selectedTime=o?r.time:e.context.selectedTime,e.selectedDates="only-first"===a&&(null==(i=e.context.selectedDates)?void 0:i[0])?[e.context.selectedDates[0]]:true===a?r.dates:e.context.selectedDates,l){setContext(e,"locale",{months:{short:[],long:[]},weekdays:{short:[],long:[]}});}initAllVariables(e),s&&create(e),e.selectedYear=r.year,e.selectedMonth=r.month,e.selectedDates=r.dates,e.selectedTime=r.time,"multiple-ranged"===e.selectionDatesMode&&a&&handleSelectDateRange(e,null);},createToInput=e=>{const t=document.createElement("div");return t.className=e.styles.calendar,t.dataset.vc="calendar",t.dataset.vcInput="",t.dataset.vcCalendarHidden="",setContext(e,"inputModeInit",true),setContext(e,"isShowInInputMode",false),setContext(e,"mainElement",t),document.body.appendChild(e.context.mainElement),reset(e,{year:true,month:true,dates:true,time:true,locale:true}),setTimeout((()=>show(e))),e.onInit&&e.onInit(e),handleArrowKeys(e),handleClick(e)},canOpenOnFocus=e=>resolveToggle(e,e.openOnFocus),handleInput=e=>{setContext(e,"inputElement",e.context.mainElement);const t=()=>{e.context.inputModeInit?setTimeout((()=>show(e))):createToInput(e);};e.context.inputElement.addEventListener("click",t);const n="function"==typeof e.openOnFocus||true===e.openOnFocus,a=()=>{shouldSkipOpenOnFocus(e)?clearSkipOpenOnFocus(e):canOpenOnFocus(e)&&t();};n&&e.context.inputElement.addEventListener("focus",a);const o=t=>{const n="Tab"===t.key&&!t.shiftKey,a=["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(t.key);(n||a)&&(t=>{var n;if(!e.context.isShowInInputMode)return  false;if(document.activeElement!==e.context.inputElement)return  false;const a=e=>e.tabIndex>=0&&!e.hasAttribute("disabled")&&"true"!==e.getAttribute("aria-disabled"),o=null!=(n=document.createTreeWalker(e.context.mainElement,NodeFilter.SHOW_ELEMENT,{acceptNode:e=>a(e)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP}).nextNode())?n:a(e.context.mainElement)?e.context.mainElement:null;!o||o.tabIndex<0||(t.preventDefault(),o.focus());})(t);};return e.context.inputElement.addEventListener("keydown",o),()=>{e.context.inputElement.removeEventListener("click",t),n&&e.context.inputElement.removeEventListener("focus",a),e.context.inputElement.removeEventListener("keydown",o);}},init=e=>(setContext(e,"originalElement",e.context.mainElement.cloneNode(true)),setContext(e,"isInit",true),e.inputMode?handleInput(e):(initAllVariables(e),create(e),e.onInit&&e.onInit(e),handleArrowKeys(e),handleClick(e))),update=(e,t)=>{if(!e.context.isInit)throw new Error(errorMessages.notInit);reset(e,__spreadValues(__spreadValues({},{year:true,month:true,dates:true,time:true,locale:true}),t),!(e.inputMode&&!e.context.inputModeInit)),e.onUpdate&&e.onUpdate(e);},replaceProperties=(e,t)=>{const n=Object.keys(t);for(let a=0;a<n.length;a++){const o=n[a];"object"!=typeof e[o]||"object"!=typeof t[o]||t[o]instanceof Date||Array.isArray(t[o])?void 0!==t[o]&&(e[o]=t[o]):replaceProperties(e[o],t[o]);}},set=(e,t,n)=>{replaceProperties(e,t),e.context.isInit&&update(e,n);};function findBestPickerPosition(e,t){const n="left";if(!t||!e)return n;const{canShow:a,parentPositions:o}=getAvailablePosition(e,t),l=a.left&&a.right;return (l&&a.bottom?"center":l&&a.top?["top","center"]:Array.isArray(o)?["bottom"===o[0]?"top":"bottom",...o.slice(1)]:o)||n}const setPosition=(e,t,n)=>{if(!e)return;const a="auto"===n?findBestPickerPosition(e,t):n,o={top:-t.offsetHeight,bottom:e.offsetHeight,left:0,center:e.offsetWidth/2-t.offsetWidth/2,right:e.offsetWidth-t.offsetWidth},l=Array.isArray(a)?a[0]:"bottom",s=Array.isArray(a)?a[1]:a;t.dataset.vcPosition=l;const{top:i,left:r}=getOffset(e),c=i+o[l];let d=r+o[s];const{vw:u}=getViewportDimensions();if(d+t.clientWidth>u){const e=window.innerWidth-document.body.clientWidth;d=u-t.clientWidth-e;}else d<0&&(d=0);Object.assign(t.style,{left:`${d}px`,top:`${c}px`});},show=e=>{if(e.context.isShowInInputMode)return;if(!e.context.currentType)return void e.context.mainElement.click();setContext(e,"cleanupHandlers",[]),setContext(e,"isShowInInputMode",true),e.inputMode&&restoreTabbing(e.context.mainElement),setPosition(e.context.inputElement,e.context.mainElement,e.positionToInput),e.context.mainElement.removeAttribute("data-vc-calendar-hidden");const t=()=>{setPosition(e.context.inputElement,e.context.mainElement,e.positionToInput);};window.addEventListener("resize",t),e.context.cleanupHandlers.push((()=>window.removeEventListener("resize",t)));const n=t=>{"Escape"===t.key&&hide(e);};document.addEventListener("keydown",n),e.context.cleanupHandlers.push((()=>document.removeEventListener("keydown",n)));const a=t=>{t.target===e.context.inputElement||e.context.mainElement.contains(t.target)||hide(e);};document.addEventListener("click",a,{capture:true}),e.context.cleanupHandlers.push((()=>document.removeEventListener("click",a,{capture:true}))),e.onShow&&e.onShow(e);},labels={application:"Calendar",navigation:"Calendar Navigation",arrowNext:{month:"Next month",year:"Next list of years"},arrowPrev:{month:"Previous month",year:"Previous list of years"},month:"Select month, current selected month:",months:"List of months",year:"Select year, current selected year:",years:"List of years",week:"Days of the week",weekNumber:"Numbers of weeks in a year",dates:"Dates in the current month",selectingTime:"Selecting a time ",inputHour:"Hours",inputMinute:"Minutes",rangeHour:"Slider for selecting hours",rangeMinute:"Slider for selecting minutes",btnKeeping:"Switch AM/PM, current position:"},styles={calendar:"vc",controls:"vc-controls",grid:"vc-grid",column:"vc-column",header:"vc-header",headerContent:"vc-header__content",month:"vc-month",year:"vc-year",arrowPrev:"vc-arrow vc-arrow_prev",arrowNext:"vc-arrow vc-arrow_next",wrapper:"vc-wrapper",content:"vc-content",months:"vc-months",monthsMonth:"vc-months__month",years:"vc-years",yearsYear:"vc-years__year",week:"vc-week",weekDay:"vc-week__day",weekNumbers:"vc-week-numbers",weekNumbersTitle:"vc-week-numbers__title",weekNumbersContent:"vc-week-numbers__content",weekNumber:"vc-week-number",dates:"vc-dates",datesRow:"vc-dates__row",date:"vc-date",dateBtn:"vc-date__btn",datePopup:"vc-date__popup",dateRangeTooltip:"vc-date-range-tooltip",time:"vc-time",timeContent:"vc-time__content",timeHour:"vc-time__hour",timeMinute:"vc-time__minute",timeKeeping:"vc-time__keeping",timeRanges:"vc-time__ranges",timeRange:"vc-time__range"};class OptionsCalendar{constructor(){__publicField(this,"type","default"),__publicField(this,"inputMode",false),__publicField(this,"openOnFocus",true),__publicField(this,"positionToInput","left"),__publicField(this,"firstWeekday",1),__publicField(this,"monthsToSwitch",1),__publicField(this,"themeAttrDetect","html[data-theme]"),__publicField(this,"locale","en"),__publicField(this,"dateToday","today"),__publicField(this,"dateMin","1970-01-01"),__publicField(this,"dateMax","2470-12-31"),__publicField(this,"displayDateMin"),__publicField(this,"displayDateMax"),__publicField(this,"displayDatesOutside",true),__publicField(this,"displayDisabledDates",false),__publicField(this,"displayMonthsCount"),__publicField(this,"disableDates",[]),__publicField(this,"disableAllDates",false),__publicField(this,"disableDatesPast",false),__publicField(this,"disableDatesGaps",false),__publicField(this,"disableWeekdays",[]),__publicField(this,"disableToday",false),__publicField(this,"enableDates",[]),__publicField(this,"enableEdgeDatesOnly",true),__publicField(this,"enableDateToggle",true),__publicField(this,"enableWeekNumbers",false),__publicField(this,"enableMonthChangeOnDayClick",true),__publicField(this,"enableJumpToSelectedDate",false),__publicField(this,"selectionDatesMode","single"),__publicField(this,"selectionMonthsMode",true),__publicField(this,"selectionYearsMode",true),__publicField(this,"selectionTimeMode",false),__publicField(this,"selectedDates",[]),__publicField(this,"selectedMonth"),__publicField(this,"selectedYear"),__publicField(this,"selectedHolidays",[]),__publicField(this,"selectedWeekends",[0,6]),__publicField(this,"selectedTime"),__publicField(this,"selectedTheme","system"),__publicField(this,"timeMinHour",0),__publicField(this,"timeMaxHour",23),__publicField(this,"timeMinMinute",0),__publicField(this,"timeMaxMinute",59),__publicField(this,"timeControls","all"),__publicField(this,"timeStepHour",1),__publicField(this,"timeStepMinute",1),__publicField(this,"sanitizerHTML",(e=>e)),__publicField(this,"onClickDate"),__publicField(this,"onClickWeekDay"),__publicField(this,"onClickWeekNumber"),__publicField(this,"onClickTitle"),__publicField(this,"onClickMonth"),__publicField(this,"onClickYear"),__publicField(this,"onClickArrow"),__publicField(this,"onChangeTime"),__publicField(this,"onChangeToInput"),__publicField(this,"onCreateDateRangeTooltip"),__publicField(this,"onCreateDateEls"),__publicField(this,"onCreateMonthEls"),__publicField(this,"onCreateYearEls"),__publicField(this,"onInit"),__publicField(this,"onUpdate"),__publicField(this,"onDestroy"),__publicField(this,"onShow"),__publicField(this,"onHide"),__publicField(this,"popups",{}),__publicField(this,"labels",__spreadValues({},labels)),__publicField(this,"layouts",{default:"",multiple:"",month:"",year:""}),__publicField(this,"styles",__spreadValues({},styles));}}const _Calendar=class e extends OptionsCalendar{constructor(t,n){var a;super(),__publicField(this,"init",(()=>init(this))),__publicField(this,"update",(e=>update(this,e))),__publicField(this,"destroy",(()=>destroy(this))),__publicField(this,"show",(()=>show(this))),__publicField(this,"hide",(()=>hide(this))),__publicField(this,"set",((e,t)=>set(this,e,t))),__publicField(this,"context"),this.context=__spreadProps(__spreadValues({},this.context),{locale:{months:{short:[],long:[]},weekdays:{short:[],long:[]}}}),setContext(this,"mainElement","string"==typeof t?null!=(a=e.memoizedElements.get(t))?a:this.queryAndMemoize(t):t),n&&replaceProperties(this,n);}queryAndMemoize(t){const n=document.querySelector(t);if(!n)throw new Error(errorMessages.notFoundSelector(t));return e.memoizedElements.set(t,n),n}};__publicField(_Calendar,"memoizedElements",new Map);let Calendar=_Calendar;
-
-/**
- * --------------------------------------------------------------------------
- * Bootstrap datepicker.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-
-/**
- * Constants
- */
-
-const NAME$f = 'datepicker';
-const DATA_KEY$b = 'bs.datepicker';
-const EVENT_KEY$b = `.${DATA_KEY$b}`;
-const DATA_API_KEY$6 = '.data-api';
-const EVENT_CHANGE = `change${EVENT_KEY$b}`;
-const EVENT_SHOW$6 = `show${EVENT_KEY$b}`;
-const EVENT_SHOWN$6 = `shown${EVENT_KEY$b}`;
-const EVENT_HIDE$6 = `hide${EVENT_KEY$b}`;
-const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$b}`;
-const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$b}${DATA_API_KEY$6}`;
-const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$b}${DATA_API_KEY$6}`;
-const SELECTOR_DATA_TOGGLE$7 = '[data-bs-toggle="datepicker"]';
-const HIDE_DELAY = 100; // ms delay before hiding after selection
-
-const Default$e = {
-  datepickerTheme: null,
-  // 'light', 'dark', 'auto' - explicit theme for datepicker popover only
-  dateMin: null,
-  dateMax: null,
-  dateFormat: null,
-  // Intl.DateTimeFormat options, or function(date, locale) => string
-  displayElement: null,
-  // Element to show formatted date (defaults to element for buttons)
-  displayMonthsCount: 1,
-  // Number of months to display side-by-side
-  firstWeekday: 1,
-  // Monday
-  inline: false,
-  // Render calendar inline (no popup)
-  locale: 'default',
-  positionElement: null,
-  // Element to position calendar relative to (defaults to input)
-  selectedDates: [],
-  selectionMode: 'single',
-  // 'single', 'multiple', 'multiple-ranged'
-  placement: 'left',
-  // 'left', 'center', 'right', 'auto'
-  vcpOptions: {} // Pass-through for any VCP option
-};
-const DefaultType$e = {
-  datepickerTheme: '(null|string)',
-  dateMin: '(null|string|number|object)',
-  dateMax: '(null|string|number|object)',
-  dateFormat: '(null|object|function)',
-  displayElement: '(null|string|element|boolean)',
-  displayMonthsCount: 'number',
-  firstWeekday: 'number',
-  inline: 'boolean',
-  locale: 'string',
-  positionElement: '(null|string|element)',
-  selectedDates: 'array',
-  selectionMode: 'string',
-  placement: 'string',
-  vcpOptions: 'object'
-};
-
-/**
- * Class definition
- */
-
-class Datepicker extends BaseComponent {
-  constructor(element, config) {
-    super(element, config);
-    this._calendar = null;
-    this._isShown = false;
-    this._initCalendar();
-  }
-
-  // Getters
-  static get Default() {
-    return Default$e;
-  }
-  static get DefaultType() {
-    return DefaultType$e;
-  }
-  static get NAME() {
-    return NAME$f;
-  }
-
-  // Public
-  toggle() {
-    if (this._config.inline) {
-      return; // Inline calendars are always visible
-    }
-    return this._isShown ? this.hide() : this.show();
-  }
-  show() {
-    if (this._config.inline) {
-      return; // Inline calendars are always visible
-    }
-    if (!this._calendar || isDisabled(this._element) || this._isShown) {
-      return;
-    }
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$6);
-    if (showEvent.defaultPrevented) {
-      return;
-    }
-    this._calendar.show();
-    this._isShown = true;
-    EventHandler.trigger(this._element, EVENT_SHOWN$6);
-  }
-  hide() {
-    if (this._config.inline) {
-      return; // Inline calendars are always visible
-    }
-    if (!this._calendar || !this._isShown) {
-      return;
-    }
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$6);
-    if (hideEvent.defaultPrevented) {
-      return;
-    }
-    this._calendar.hide();
-    this._isShown = false;
-    EventHandler.trigger(this._element, EVENT_HIDDEN$6);
-  }
-  dispose() {
-    if (this._themeObserver) {
-      this._themeObserver.disconnect();
-      this._themeObserver = null;
-    }
-    if (this._calendar) {
-      this._calendar.destroy();
-    }
-    this._calendar = null;
-    super.dispose();
-  }
-  getSelectedDates() {
-    const dates = this._calendar?.context?.selectedDates;
-    return dates ? [...dates] : [];
-  }
-  setSelectedDates(dates) {
-    if (this._calendar) {
-      this._calendar.set({
-        selectedDates: dates
-      });
-    }
-  }
-
-  // Private
-  _initCalendar() {
-    this._isInput = this._element.tagName === 'INPUT';
-    this._isInline = this._config.inline;
-
-    // For inline mode, look for a hidden input child to bind to
-    if (this._isInline && !this._isInput) {
-      this._boundInput = this._element.querySelector('input[type="hidden"], input[name]');
-    }
-    this._positionElement = this._resolvePositionElement();
-    this._displayElement = this._resolveDisplayElement();
-    const calendarOptions = this._buildCalendarOptions();
-
-    // Create calendar on the position element (for correct popup positioning)
-    // but value updates still go to this._element (the input)
-    this._calendar = new Calendar(this._positionElement, calendarOptions);
-    this._calendar.init();
-
-    // Watch for theme changes on ancestor elements (for live theme switching)
-    this._setupThemeObserver();
-
-    // Set initial value if input has a value
-    if (this._isInput && this._element.value) {
-      this._parseInputValue();
-    }
-
-    // Populate input/display with preselected dates
-    this._updateDisplayWithSelectedDates();
-  }
-  _updateDisplayWithSelectedDates() {
-    const {
-      selectedDates
-    } = this._config;
-    if (!selectedDates || selectedDates.length === 0) {
-      return;
-    }
-    const formattedDate = this._formatDateForInput(selectedDates);
-    if (this._isInput) {
-      this._element.value = formattedDate;
-    }
-    if (this._boundInput) {
-      this._boundInput.value = selectedDates.join(',');
-    }
-    if (this._displayElement) {
-      this._displayElement.textContent = formattedDate;
-    }
-  }
-  _resolvePositionElement() {
-    let {
-      positionElement
-    } = this._config;
-    if (typeof positionElement === 'string') {
-      positionElement = document.querySelector(positionElement);
-    }
-
-    // Use input's parent if in form-adorn
-    if (!positionElement && this._isInput && !this._isInline) {
-      const parent = this._element.closest('.form-adorn');
-      if (parent) {
-        positionElement = parent;
-      }
-    }
-    return positionElement || this._element;
-  }
-  _resolveDisplayElement() {
-    const {
-      displayElement
-    } = this._config;
-    if (typeof displayElement === 'string') {
-      return document.querySelector(displayElement);
-    }
-
-    // For buttons/non-inputs (not inline), look for a [data-bs-datepicker-display] child
-    if (displayElement === true || displayElement === null && !this._isInput && !this._isInline) {
-      const displayChild = this._element.querySelector('[data-bs-datepicker-display]');
-      return displayChild || this._element;
-    }
-    return displayElement;
-  }
-  _getThemeAncestor() {
-    return this._element.closest('[data-bs-theme]');
-  }
-  _getEffectiveTheme() {
-    // Priority: explicit datepickerTheme config > inherited from ancestor > none
-    const {
-      datepickerTheme
-    } = this._config;
-    if (datepickerTheme) {
-      return datepickerTheme;
-    }
-    const ancestor = this._getThemeAncestor();
-    return ancestor?.getAttribute('data-bs-theme') || null;
-  }
-  _syncThemeAttribute(element) {
-    if (!element) {
-      return;
-    }
-    const theme = this._getEffectiveTheme();
-    if (theme) {
-      // Copy theme to popover (needed because VCP appends to body, breaking CSS inheritance)
-      element.setAttribute('data-bs-theme', theme);
-    } else {
-      // No theme - remove attribute to allow natural inheritance
-      element.removeAttribute('data-bs-theme');
-    }
-  }
-  _setupThemeObserver() {
-    // Watch for theme changes on ancestor elements
-    const ancestor = this._getThemeAncestor();
-    if (!ancestor || this._config.datepickerTheme) {
-      // No ancestor to watch, or explicit datepickerTheme overrides
-      return;
-    }
-    this._themeObserver = new MutationObserver(() => {
-      this._syncThemeAttribute(this._calendar?.context?.mainElement);
-    });
-    this._themeObserver.observe(ancestor, {
-      attributes: true,
-      attributeFilter: ['data-bs-theme']
-    });
-  }
-  _buildCalendarOptions() {
-    // Get theme for VCP - use 'system' for auto-detection if no explicit theme
-    const theme = this._getEffectiveTheme();
-    // VCP uses 'system' for auto, Bootstrap uses 'auto'
-    const vcpTheme = !theme || theme === 'auto' ? 'system' : theme;
-    const calendarOptions = {
-      ...this._config.vcpOptions,
-      inputMode: !this._isInline,
-      positionToInput: this._config.placement,
-      firstWeekday: this._config.firstWeekday,
-      locale: this._config.locale,
-      selectionDatesMode: this._config.selectionMode,
-      selectedDates: this._config.selectedDates,
-      displayMonthsCount: this._config.displayMonthsCount,
-      type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
-      selectedTheme: vcpTheme,
-      themeAttrDetect: '[data-bs-theme]',
-      onClickDate: (self, event) => this._handleDateClick(self, event),
-      onInit: self => {
-        this._syncThemeAttribute(self.context.mainElement);
-      },
-      onShow: () => {
-        this._isShown = true;
-        this._syncThemeAttribute(this._calendar.context.mainElement);
-      },
-      onHide: () => {
-        this._isShown = false;
-      }
-    };
-
-    // Navigate to the month of the first selected date
-    if (this._config.selectedDates.length > 0) {
-      const firstDate = this._parseDate(this._config.selectedDates[0]);
-      calendarOptions.selectedMonth = firstDate.getMonth();
-      calendarOptions.selectedYear = firstDate.getFullYear();
-    }
-    if (this._config.dateMin) {
-      calendarOptions.dateMin = this._config.dateMin;
-    }
-    if (this._config.dateMax) {
-      calendarOptions.dateMax = this._config.dateMax;
-    }
-    return calendarOptions;
-  }
-  _handleDateClick(self, event) {
-    const selectedDates = [...self.context.selectedDates];
-    if (selectedDates.length > 0) {
-      const formattedDate = this._formatDateForInput(selectedDates);
-      if (this._isInput) {
-        this._element.value = formattedDate;
-      }
-      if (this._boundInput) {
-        this._boundInput.value = selectedDates.join(',');
-      }
-      if (this._displayElement) {
-        this._displayElement.textContent = formattedDate;
-      }
-    }
-    EventHandler.trigger(this._element, EVENT_CHANGE, {
-      dates: selectedDates,
-      event
-    });
-    this._maybeHideAfterSelection(selectedDates);
-  }
-  _maybeHideAfterSelection(selectedDates) {
-    if (this._isInline) {
-      return;
-    }
-    const shouldHide = this._config.selectionMode === 'single' && selectedDates.length > 0 || this._config.selectionMode === 'multiple-ranged' && selectedDates.length >= 2;
-    if (shouldHide) {
-      setTimeout(() => this.hide(), HIDE_DELAY);
-    }
-  }
-  _parseDate(dateStr) {
-    const [year, month, day] = dateStr.split('-');
-    return new Date(year, month - 1, day);
-  }
-  _formatDate(dateStr) {
-    const date = this._parseDate(dateStr);
-    const locale = this._config.locale === 'default' ? undefined : this._config.locale;
-    const {
-      dateFormat
-    } = this._config;
-
-    // Custom function formatter
-    if (typeof dateFormat === 'function') {
-      return dateFormat(date, locale);
-    }
-
-    // Intl.DateTimeFormat options object
-    if (dateFormat && typeof dateFormat === 'object') {
-      return new Intl.DateTimeFormat(locale, dateFormat).format(date);
-    }
-
-    // Default: locale-aware formatting
-    return date.toLocaleDateString(locale);
-  }
-  _formatDateForInput(dates) {
-    if (dates.length === 0) {
-      return '';
-    }
-    if (dates.length === 1) {
-      return this._formatDate(dates[0]);
-    }
-
-    // For date ranges, use en-dash; for multiple dates, use comma
-    const separator = this._config.selectionMode === 'multiple-ranged' ? ' – ' : ', ';
-    return dates.map(d => this._formatDate(d)).join(separator);
-  }
-  _parseInputValue() {
-    // Try to parse the input value as a date
-    const value = this._element.value.trim();
-    if (!value) {
-      return;
-    }
-    const date = new Date(value);
-    if (!Number.isNaN(date.getTime())) {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      const formatted = `${year}-${month}-${day}`;
-      this._calendar.set({
-        selectedDates: [formatted]
-      });
-    }
-  }
-}
-
-/**
- * Data API implementation
- */
-
-EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$7, function (event) {
-  // Only handle if not an input (inputs use focus)
-  // Skip inline datepickers (they're always visible)
-  if (this.tagName === 'INPUT' || this.dataset.bsInline === 'true') {
-    return;
-  }
-  event.preventDefault();
-  Datepicker.getOrCreateInstance(this).toggle();
-});
-EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE$7, function () {
-  // Handle focus for input elements
-  if (this.tagName !== 'INPUT') {
-    return;
-  }
-  Datepicker.getOrCreateInstance(this).show();
-});
-
-// Auto-initialize inline datepickers on DOMContentLoaded
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$b}${DATA_API_KEY$6}`, () => {
-  for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE$7}[data-bs-inline="true"]`)) {
-    Datepicker.getOrCreateInstance(element);
-  }
-});
-
-/**
- * --------------------------------------------------------------------------
- * Bootstrap dialog.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-
-/**
- * Constants
- */
-
-const NAME$e = 'dialog';
-const DATA_KEY$a = 'bs.dialog';
-const EVENT_KEY$a = `.${DATA_KEY$a}`;
-const DATA_API_KEY$5 = '.data-api';
-const EVENT_SHOW$5 = `show${EVENT_KEY$a}`;
-const EVENT_SHOWN$5 = `shown${EVENT_KEY$a}`;
-const EVENT_HIDE$5 = `hide${EVENT_KEY$a}`;
-const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$a}`;
-const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$a}`;
-const EVENT_CANCEL = `cancel${EVENT_KEY$a}`;
-const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$a}${DATA_API_KEY$5}`;
-const CLASS_NAME_STATIC = 'dialog-static';
-const CLASS_NAME_OPEN = 'dialog-open';
-const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
-const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="dialog"]';
-const SELECTOR_OPEN_MODAL_DIALOG = 'dialog.dialog[open]:not(.dialog-nonmodal)';
-const Default$d = {
-  backdrop: true,
-  // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
-  keyboard: true,
-  modal: true // true uses showModal(), false uses show() for non-modal dialogs
-};
-const DefaultType$d = {
-  backdrop: '(boolean|string)',
-  keyboard: 'boolean',
-  modal: 'boolean'
-};
-
-/**
- * Class definition
- */
-
-class Dialog extends BaseComponent {
-  constructor(element, config) {
-    super(element, config);
-    this._isTransitioning = false;
-    this._addEventListeners();
-  }
-
-  // Getters
-  static get Default() {
-    return Default$d;
-  }
-  static get DefaultType() {
-    return DefaultType$d;
-  }
-  static get NAME() {
-    return NAME$e;
-  }
-
-  // Public
-  toggle(relatedTarget) {
-    return this._element.open ? this.hide() : this.show(relatedTarget);
-  }
-  show(relatedTarget) {
-    if (this._element.open || this._isTransitioning) {
-      return;
-    }
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$5, {
-      relatedTarget
-    });
-    if (showEvent.defaultPrevented) {
-      return;
-    }
-    this._isTransitioning = true;
-    if (this._config.modal) {
-      // Modal dialog: use showModal() for focus trapping, backdrop, and top layer
-      this._element.showModal();
-      // Prevent body scroll for modal dialogs
-      document.body.classList.add(CLASS_NAME_OPEN);
-    } else {
-      // Non-modal dialog: use show() - no backdrop, no focus trap, no top layer
-      this._element.classList.add(CLASS_NAME_NONMODAL);
-      this._element.show();
-    }
-    this._queueCallback(() => {
-      this._isTransitioning = false;
-      EventHandler.trigger(this._element, EVENT_SHOWN$5, {
-        relatedTarget
-      });
-    }, this._element, this._isAnimated());
-  }
-  hide() {
-    if (!this._element.open || this._isTransitioning) {
-      return;
-    }
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$5);
-    if (hideEvent.defaultPrevented) {
-      return;
-    }
-    this._isTransitioning = true;
-    this._queueCallback(() => this._hideDialog(), this._element, this._isAnimated());
-  }
-  dispose() {
-    EventHandler.off(this._element, EVENT_KEY$a);
-    super.dispose();
-  }
-  handleUpdate() {
-    // Provided for API consistency with Modal.
-    // Native dialogs handle their own positioning.
-  }
-
-  // Private
-  _hideDialog() {
-    this._element.close();
-    this._element.classList.remove(CLASS_NAME_NONMODAL);
-    this._isTransitioning = false;
-
-    // Only restore body scroll if no other modal dialogs are open
-    if (!document.querySelector(SELECTOR_OPEN_MODAL_DIALOG)) {
-      document.body.classList.remove(CLASS_NAME_OPEN);
-    }
-    EventHandler.trigger(this._element, EVENT_HIDDEN$5);
-  }
-  _isAnimated() {
-    return this._element.classList.contains('fade');
-  }
-  _triggerBackdropTransition() {
-    const hidePreventedEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED$1);
-    if (hidePreventedEvent.defaultPrevented) {
-      return;
-    }
-    this._element.classList.add(CLASS_NAME_STATIC);
-    this._queueCallback(() => {
-      this._element.classList.remove(CLASS_NAME_STATIC);
-    }, this._element);
-  }
-  _addEventListeners() {
-    // Handle native cancel event (Escape key) - only fires for modal dialogs
-    EventHandler.on(this._element, 'cancel', event => {
-      // Prevent native close behavior - we'll handle it
-      event.preventDefault();
-      if (!this._config.keyboard) {
-        this._triggerBackdropTransition();
-        return;
-      }
-      EventHandler.trigger(this._element, EVENT_CANCEL);
-      this.hide();
-    });
-
-    // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
-    EventHandler.on(this._element, 'keydown', event => {
-      if (event.key !== 'Escape' || this._config.modal) {
-        return;
-      }
-      event.preventDefault();
-      if (!this._config.keyboard) {
-        return;
-      }
-      EventHandler.trigger(this._element, EVENT_CANCEL);
-      this.hide();
-    });
-
-    // Handle backdrop clicks (only applies to modal dialogs)
-    // Native <dialog> fires click on the dialog element when backdrop is clicked
-    EventHandler.on(this._element, 'click', event => {
-      // Only handle clicks directly on the dialog (backdrop area)
-      // Non-modal dialogs don't have a backdrop
-      if (event.target !== this._element || !this._config.modal) {
-        return;
-      }
-      if (this._config.backdrop === 'static') {
-        this._triggerBackdropTransition();
-        return;
-      }
-
-      // Default: click backdrop to dismiss
-      this.hide();
-    });
-  }
-}
-
-/**
- * Data API implementation
- */
-
-EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$6, function (event) {
-  const target = SelectorEngine.getElementFromSelector(this);
-  if (['A', 'AREA'].includes(this.tagName)) {
-    event.preventDefault();
-  }
-  EventHandler.one(target, EVENT_SHOW$5, showEvent => {
-    if (showEvent.defaultPrevented) {
-      return;
-    }
-    EventHandler.one(target, EVENT_HIDDEN$5, () => {
-      if (isVisible(this)) {
-        this.focus();
-      }
-    });
-  });
-
-  // Get config from trigger's data attributes
-  const config = Manipulator.getDataAttributes(this);
-
-  // Check if trigger is inside an open dialog
-  const currentDialog = this.closest('dialog[open]');
-  const shouldSwap = currentDialog && currentDialog !== target;
-  if (shouldSwap) {
-    // Open new dialog first (its backdrop appears over current)
-    const newDialog = Dialog.getOrCreateInstance(target, config);
-    newDialog.show(this);
-
-    // Close the current dialog (no backdrop flash since new one is already open)
-    const currentInstance = Dialog.getInstance(currentDialog);
-    if (currentInstance) {
-      currentInstance.hide();
-    }
-    return;
-  }
-  const data = Dialog.getOrCreateInstance(target, config);
-  data.toggle(this);
-});
-enableDismissTrigger(Dialog);
 
 /**
  * Custom positioning reference element.
@@ -3825,6 +3167,1478 @@ const computePosition = (reference, floating, options) => {
     platform: platformWithCache
   });
 };
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap util/sanitizer.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+// js-docs-start allow-list
+const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
+const DefaultAllowlist = {
+  // Global attributes allowed on any supplied element below.
+  '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
+  a: ['target', 'href', 'title', 'rel'],
+  area: [],
+  b: [],
+  br: [],
+  col: [],
+  code: [],
+  dd: [],
+  div: [],
+  dl: [],
+  dt: [],
+  em: [],
+  hr: [],
+  h1: [],
+  h2: [],
+  h3: [],
+  h4: [],
+  h5: [],
+  h6: [],
+  i: [],
+  img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
+  li: [],
+  ol: [],
+  p: [],
+  pre: [],
+  s: [],
+  small: [],
+  span: [],
+  sub: [],
+  sup: [],
+  strong: [],
+  u: [],
+  ul: []
+};
+// js-docs-end allow-list
+
+const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href']);
+
+/**
+ * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
+ * contexts.
+ *
+ * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
+ */
+const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
+const allowedAttribute = (attribute, allowedAttributeList) => {
+  const attributeName = attribute.nodeName.toLowerCase();
+  if (allowedAttributeList.includes(attributeName)) {
+    if (uriAttributes.has(attributeName)) {
+      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue));
+    }
+    return true;
+  }
+
+  // Check if a regular expression validates the attribute.
+  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp).some(regex => regex.test(attributeName));
+};
+function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
+  if (!unsafeHtml.length) {
+    return unsafeHtml;
+  }
+  if (sanitizeFunction && typeof sanitizeFunction === 'function') {
+    return sanitizeFunction(unsafeHtml);
+  }
+  const domParser = new window.DOMParser();
+  const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
+  const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
+  for (const element of elements) {
+    const elementName = element.nodeName.toLowerCase();
+    if (!Object.keys(allowList).includes(elementName)) {
+      element.remove();
+      continue;
+    }
+    const attributeList = [].concat(...element.attributes);
+    const allowedAttributes = [].concat(allowList['*'] || [], allowList[elementName] || []);
+    for (const attribute of attributeList) {
+      if (!allowedAttribute(attribute, allowedAttributes)) {
+        element.removeAttribute(attribute.nodeName);
+      }
+    }
+  }
+  return createdDocument.body.innerHTML;
+}
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap custom-select.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$g = 'customSelect';
+const DATA_KEY$c = 'bs.custom-select';
+const EVENT_KEY$c = `.${DATA_KEY$c}`;
+const DATA_API_KEY$7 = '.data-api';
+const ESCAPE_KEY$2 = 'Escape';
+const TAB_KEY$2 = 'Tab';
+const ARROW_UP_KEY$2 = 'ArrowUp';
+const ARROW_DOWN_KEY$2 = 'ArrowDown';
+const HOME_KEY$2 = 'Home';
+const END_KEY$2 = 'End';
+const ENTER_KEY$1 = 'Enter';
+const SPACE_KEY$1 = ' ';
+const EVENT_CHANGE$1 = `change${EVENT_KEY$c}`;
+const EVENT_SHOW$7 = `show${EVENT_KEY$c}`;
+const EVENT_SHOWN$7 = `shown${EVENT_KEY$c}`;
+const EVENT_HIDE$7 = `hide${EVENT_KEY$c}`;
+const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$c}`;
+const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
+const EVENT_KEYDOWN_DATA_API$1 = `keydown${EVENT_KEY$c}${DATA_API_KEY$7}`;
+const CLASS_NAME_SHOW$6 = 'show';
+const CLASS_NAME_DISABLED = 'disabled';
+const CLASS_NAME_SELECTED = 'selected';
+const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="custom-select"]';
+const SELECTOR_ITEM = '.custom-select-item';
+const SELECTOR_VISIBLE_ITEMS$1 = '.custom-select-item:not(.disabled):not(:disabled)';
+const Default$f = {
+  allowHtml: false,
+  allowList: DefaultAllowlist,
+  boundary: 'clippingParents',
+  hidePlaceholderOption: true,
+  liveSearch: false,
+  liveSearchNormalize: false,
+  liveSearchPlaceholder: 'Search...',
+  offset: [0, 2],
+  placement: 'bottom-start',
+  sanitize: true,
+  sanitizeFn: null,
+  showCheckmark: true
+};
+const DefaultType$f = {
+  allowHtml: 'boolean',
+  allowList: 'object',
+  boundary: '(string|element)',
+  hidePlaceholderOption: 'boolean',
+  liveSearch: 'boolean',
+  liveSearchNormalize: 'boolean',
+  liveSearchPlaceholder: 'string',
+  offset: '(array|string|function)',
+  placement: 'string',
+  sanitize: 'boolean',
+  sanitizeFn: '(null|function)',
+  showCheckmark: 'boolean'
+};
+
+/**
+ * Class definition
+ */
+
+class CustomSelect extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+    this._select = this._element;
+    this._isMultiple = this._select.multiple;
+    this._toggle = null;
+    this._menu = null;
+    this._searchInput = null;
+    this._items = [];
+    this._floatingCleanup = null;
+    this._isShown = false;
+    this._init();
+  }
+
+  // Getters
+  static get Default() {
+    return Default$f;
+  }
+  static get DefaultType() {
+    return DefaultType$f;
+  }
+  static get NAME() {
+    return NAME$g;
+  }
+
+  // Public
+  toggle() {
+    return this._isShown ? this.hide() : this.show();
+  }
+  show() {
+    if (isDisabled(this._toggle) || this._isShown) {
+      return;
+    }
+    const showEvent = EventHandler.trigger(this._select, EVENT_SHOW$7);
+    if (showEvent.defaultPrevented) {
+      return;
+    }
+    this._isShown = true;
+    this._createFloating();
+    this._menu.classList.add(CLASS_NAME_SHOW$6);
+    this._toggle.classList.add(CLASS_NAME_SHOW$6);
+    this._toggle.setAttribute('aria-expanded', 'true');
+
+    // Focus search input or first item
+    if (this._config.liveSearch && this._searchInput) {
+      this._searchInput.focus();
+    } else {
+      const selectedItem = SelectorEngine.findOne(`.${CLASS_NAME_SELECTED}`, this._menu);
+      if (selectedItem) {
+        selectedItem.focus();
+      }
+    }
+    EventHandler.trigger(this._select, EVENT_SHOWN$7);
+  }
+  hide() {
+    if (!this._isShown) {
+      return;
+    }
+    const hideEvent = EventHandler.trigger(this._select, EVENT_HIDE$7);
+    if (hideEvent.defaultPrevented) {
+      return;
+    }
+    this._isShown = false;
+    this._disposeFloating();
+    this._menu.classList.remove(CLASS_NAME_SHOW$6);
+    this._toggle.classList.remove(CLASS_NAME_SHOW$6);
+    this._toggle.setAttribute('aria-expanded', 'false');
+
+    // Clear search
+    if (this._searchInput) {
+      this._searchInput.value = '';
+      this._filterItems('');
+    }
+    EventHandler.trigger(this._select, EVENT_HIDDEN$7);
+  }
+  refresh() {
+    this._buildMenu();
+    this._updateToggleText();
+  }
+  dispose() {
+    this._disposeFloating();
+
+    // Remove generated elements
+    if (this._toggle) {
+      this._toggle.remove();
+    }
+    if (this._menu) {
+      this._menu.remove();
+    }
+
+    // Show original select
+    this._select.classList.remove('visually-hidden');
+    this._select.removeAttribute('aria-hidden');
+    this._select.removeAttribute('tabindex');
+    super.dispose();
+  }
+
+  // Private
+  _init() {
+    // Hide original select
+    this._select.classList.add('visually-hidden');
+    this._select.setAttribute('aria-hidden', 'true');
+    this._select.setAttribute('tabindex', '-1');
+    this._createToggle();
+    this._createMenu();
+    this._buildMenu();
+
+    // If a placeholder option exists and no option is explicitly selected, select it so the toggle shows placeholder text on load
+    const placeholderOption = this._getPlaceholderOption();
+    const hasExplicitSelection = this._select.querySelector('option[selected]');
+    if (!this._isMultiple && placeholderOption && !hasExplicitSelection) {
+      for (const option of this._select.querySelectorAll('option')) {
+        option.selected = option === placeholderOption;
+      }
+    }
+    this._updateToggleText();
+    this._setupEventListeners();
+  }
+  _createToggle() {
+    this._toggle = document.createElement('button');
+    this._toggle.type = 'button';
+    this._toggle.setAttribute('aria-haspopup', 'listbox');
+    this._toggle.setAttribute('aria-expanded', 'false');
+    this._toggle.id = getUID('custom-select-toggle-');
+
+    // Copy classes from select to toggle
+    const toggleClasses = this._getToggleClasses();
+    this._toggle.classList.add('custom-select-toggle', ...toggleClasses);
+    if (this._select.disabled) {
+      this._toggle.disabled = true;
+      this._toggle.classList.add(CLASS_NAME_DISABLED);
+    }
+
+    // Create inner structure
+    this._toggle.innerHTML = `
+      <span class="custom-select-value"></span>
+      <svg class="custom-select-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/>
+</svg>`;
+    this._select.after(this._toggle);
+  }
+  _getToggleClasses() {
+    const classes = [];
+    const selectClasses = this._select.classList;
+
+    // Check for button variant classes
+    const hasButtonClass = [...selectClasses].some(cls => cls.startsWith('btn-') || cls.startsWith('theme-'));
+    if (hasButtonClass) {
+      // Copy button and theme classes
+      for (const cls of selectClasses) {
+        if (cls.startsWith('btn-') || cls.startsWith('theme-')) {
+          classes.push(cls);
+        }
+      }
+    } else {
+      // Default to form-control style
+      classes.push('form-control');
+
+      // Copy size classes
+      if (selectClasses.contains('form-control-sm')) {
+        classes.push('form-control-sm');
+      } else if (selectClasses.contains('form-control-lg')) {
+        classes.push('form-control-lg');
+      }
+    }
+    return classes;
+  }
+  _createMenu() {
+    this._menu = document.createElement('div');
+    this._menu.classList.add('dropdown-menu', 'custom-select-menu');
+    this._menu.setAttribute('role', 'listbox');
+    this._menu.id = getUID('custom-select-menu-');
+    this._toggle.setAttribute('aria-controls', this._menu.id);
+
+    // Add search input if enabled
+    if (this._config.liveSearch) {
+      const searchWrapper = document.createElement('div');
+      searchWrapper.classList.add('custom-select-search');
+      searchWrapper.innerHTML = `
+        <input type="text"
+          class="form-control custom-select-search-input"
+          placeholder="${this._config.liveSearchPlaceholder}"
+          autocomplete="off"
+          aria-label="${this._config.liveSearchPlaceholder}">
+      `;
+      this._menu.append(searchWrapper);
+      this._searchInput = searchWrapper.querySelector('input');
+    }
+
+    // No results message (hidden by default)
+    const noResults = document.createElement('div');
+    noResults.classList.add('custom-select-no-results', 'd-none');
+    noResults.textContent = 'No results found';
+    this._noResults = noResults;
+    this._toggle.after(this._menu);
+  }
+  _buildMenu() {
+    // Remove existing items (keep search wrapper if present)
+    const existingItems = SelectorEngine.find('.custom-select-item, .custom-select-header, .custom-select-no-results', this._menu);
+    for (const item of existingItems) {
+      item.remove();
+    }
+    this._items = [];
+    const options = this._select.querySelectorAll('option, optgroup');
+    for (const option of options) {
+      if (option.tagName === 'OPTGROUP') {
+        this._createOptgroupHeader(option, this._menu);
+      } else {
+        this._createItem(option, this._menu);
+      }
+    }
+
+    // Add no results message at the end
+    this._menu.append(this._noResults);
+  }
+  _createOptgroupHeader(optgroup, container) {
+    const header = document.createElement('div');
+    header.classList.add('custom-select-header', 'dropdown-header');
+    header.textContent = optgroup.label;
+    if (optgroup.disabled) {
+      header.classList.add(CLASS_NAME_DISABLED);
+    }
+    container.append(header);
+
+    // Add options within this optgroup
+    for (const option of optgroup.querySelectorAll('option')) {
+      this._createItem(option, container, optgroup.disabled);
+    }
+  }
+  _createItem(option, container, parentDisabled = false) {
+    // Skip placeholder options: empty value when hidePlaceholderOption, or data-bs-placeholder on option
+    const isPlaceholder = option.value === '' && this._config.hidePlaceholderOption || option.getAttribute('data-bs-placeholder') === 'true';
+    if (isPlaceholder) {
+      return;
+    }
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.classList.add('dropdown-item', 'custom-select-item');
+    item.setAttribute('role', 'option');
+    item.dataset.value = option.value;
+
+    // Store search tokens
+    const tokens = option.dataset.bsTokens || '';
+    const description = option.dataset.bsDescription || '';
+    item.dataset.searchText = `${option.textContent} ${description} ${tokens}`.toLowerCase();
+    if (option.disabled || parentDisabled) {
+      item.disabled = true;
+      item.classList.add(CLASS_NAME_DISABLED);
+      item.setAttribute('aria-disabled', 'true');
+    }
+    if (option.selected) {
+      item.classList.add(CLASS_NAME_SELECTED);
+      item.setAttribute('aria-selected', 'true');
+    }
+
+    // Build item content
+    item.innerHTML = this._buildItemContent(option);
+    container.append(item);
+    this._items.push({
+      item,
+      option
+    });
+  }
+  _buildItemContent(option) {
+    // Check for full custom content override
+    const customContent = option.dataset.bsContent;
+    if (customContent) {
+      return this._sanitize(`
+        <span class="custom-select-content">
+          <span class="custom-select-text">${customContent}</span>
+        </span>
+        ${this._config.showCheckmark ? this._getCheckmarkHtml() : ''}
+      `);
+    }
+
+    // Build from individual data attributes
+    const icon = option.dataset.bsIcon; // Inline SVG - trusted developer content, not sanitized
+    const image = option.dataset.bsImage;
+    const description = option.dataset.bsDescription;
+    const text = option.textContent;
+    let html = '';
+
+    // Icon (inline SVG) or image - icon is trusted developer content
+    if (icon) {
+      html += `<span class="custom-select-icon">${icon}</span>`;
+    } else if (image) {
+      html += `<span class="custom-select-icon"><img src="${this._sanitize(image)}" alt="" class="custom-select-image"></span>`;
+    }
+    html += '<span class="custom-select-content">';
+    html += `<span class="custom-select-text">${this._sanitize(text)}</span>`;
+    if (description) {
+      html += `<span class="custom-select-description">${this._sanitize(description)}</span>`;
+    }
+    html += '</span>';
+    if (this._config.showCheckmark) {
+      html += this._getCheckmarkHtml();
+    }
+    return html;
+  }
+  _getCheckmarkHtml() {
+    return '<span class="custom-select-check"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg></span>';
+  }
+  _sanitize(content) {
+    if (!this._config.sanitize) {
+      return content;
+    }
+    return sanitizeHtml(String(content), this._config.allowList, this._config.sanitizeFn);
+  }
+  _getPlaceholderOption() {
+    // Option explicitly marked as placeholder, or first empty-value option
+    const marked = this._select.querySelector('option[data-bs-placeholder="true"]');
+    if (marked) {
+      return marked;
+    }
+    return this._select.querySelector('option[value=""]');
+  }
+  _updateToggleText() {
+    const valueElement = SelectorEngine.findOne('.custom-select-value', this._toggle);
+    const selectedOptions = [...this._select.selectedOptions];
+    const onlyPlaceholderSelected = selectedOptions.length === 1 && (selectedOptions[0].value === '' || selectedOptions[0].getAttribute('data-bs-placeholder') === 'true');
+    const noneSelected = selectedOptions.length === 0 || onlyPlaceholderSelected;
+    if (noneSelected) {
+      // Show placeholder: data-bs-placeholder on select, or placeholder option's text
+      const explicitPlaceholder = this._select.getAttribute('data-bs-placeholder');
+      const placeholderOption = this._getPlaceholderOption();
+      valueElement.textContent = explicitPlaceholder || (placeholderOption ? placeholderOption.textContent.trim() : '');
+      valueElement.classList.add('custom-select-placeholder');
+      return;
+    }
+    valueElement.classList.remove('custom-select-placeholder');
+    if (this._isMultiple) {
+      valueElement.textContent = selectedOptions.length === 1 ? selectedOptions[0].textContent : `${selectedOptions.length} selected`;
+    } else {
+      const selected = selectedOptions[0];
+      // Use custom content for toggle if available, otherwise text
+      const icon = selected.dataset.bsIcon; // Trusted developer content
+      const text = selected.textContent;
+      if (icon) {
+        valueElement.innerHTML = `<span class="custom-select-value-icon">${icon}</span> ${this._sanitize(text)}`;
+      } else {
+        valueElement.textContent = text;
+      }
+    }
+  }
+  _setupEventListeners() {
+    // Toggle click
+    EventHandler.on(this._toggle, 'click', event => {
+      event.preventDefault();
+      this.toggle();
+    });
+
+    // Item clicks
+    EventHandler.on(this._menu, 'click', SELECTOR_ITEM, event => {
+      event.preventDefault();
+      const item = event.target.closest(SELECTOR_ITEM);
+      if (item && !item.disabled) {
+        this._selectItem(item);
+      }
+    });
+
+    // Search input
+    if (this._searchInput) {
+      EventHandler.on(this._searchInput, 'input', () => {
+        this._filterItems(this._searchInput.value);
+      });
+      EventHandler.on(this._searchInput, 'keydown', event => {
+        if (event.key === ARROW_DOWN_KEY$2) {
+          event.preventDefault();
+          const firstVisible = SelectorEngine.findOne(`${SELECTOR_VISIBLE_ITEMS$1}:not(.d-none)`, this._menu);
+          if (firstVisible) {
+            firstVisible.focus();
+          }
+        }
+      });
+    }
+
+    // Keyboard navigation
+    EventHandler.on(this._toggle, 'keydown', event => {
+      this._handleToggleKeydown(event);
+    });
+    EventHandler.on(this._menu, 'keydown', event => {
+      this._handleMenuKeydown(event);
+    });
+
+    // Close on outside click
+    EventHandler.on(document, EVENT_CLICK_DATA_API$5, event => {
+      if (this._isShown && !this._menu.contains(event.target) && !this._toggle.contains(event.target)) {
+        this.hide();
+      }
+    });
+
+    // Sync with native select changes
+    EventHandler.on(this._select, 'change', () => {
+      this._syncFromSelect();
+    });
+  }
+  _selectItem(item) {
+    const {
+      value
+    } = item.dataset;
+    const option = this._select.querySelector(`option[value="${CSS.escape(value)}"]`);
+    if (!option) {
+      return;
+    }
+    if (this._isMultiple) {
+      // Toggle selection for multiple
+      option.selected = !option.selected;
+      item.classList.toggle(CLASS_NAME_SELECTED);
+      item.setAttribute('aria-selected', option.selected);
+    } else {
+      // Single select: clear previous selection
+      for (const {
+        item: i,
+        option: o
+      } of this._items) {
+        i.classList.remove(CLASS_NAME_SELECTED);
+        i.setAttribute('aria-selected', 'false');
+        o.selected = false;
+      }
+      option.selected = true;
+      item.classList.add(CLASS_NAME_SELECTED);
+      item.setAttribute('aria-selected', 'true');
+      this.hide();
+    }
+    this._updateToggleText();
+
+    // Dispatch change event on original select
+    EventHandler.trigger(this._select, 'change');
+    EventHandler.trigger(this._select, EVENT_CHANGE$1, {
+      value,
+      option
+    });
+  }
+  _syncFromSelect() {
+    // Sync visual state from native select
+    for (const {
+      item,
+      option
+    } of this._items) {
+      if (option.selected) {
+        item.classList.add(CLASS_NAME_SELECTED);
+        item.setAttribute('aria-selected', 'true');
+      } else {
+        item.classList.remove(CLASS_NAME_SELECTED);
+        item.setAttribute('aria-selected', 'false');
+      }
+    }
+    this._updateToggleText();
+  }
+  _filterItems(query) {
+    const normalizedQuery = this._normalizeText(query.toLowerCase());
+    let visibleCount = 0;
+    for (const {
+      item
+    } of this._items) {
+      const searchText = this._normalizeText(item.dataset.searchText);
+      if (searchText.includes(normalizedQuery)) {
+        item.classList.remove('d-none');
+        visibleCount++;
+      } else {
+        item.classList.add('d-none');
+      }
+    }
+
+    // Handle optgroup headers visibility
+    const headers = SelectorEngine.find('.custom-select-header', this._menu);
+    for (const header of headers) {
+      // Show header if any following items (until next header) are visible
+      let nextSibling = header.nextElementSibling;
+      let hasVisibleItems = false;
+      while (nextSibling && !nextSibling.classList.contains('custom-select-header')) {
+        if (nextSibling.classList.contains('custom-select-item') && !nextSibling.classList.contains('d-none')) {
+          hasVisibleItems = true;
+          break;
+        }
+        nextSibling = nextSibling.nextElementSibling;
+      }
+      header.classList.toggle('d-none', !hasVisibleItems);
+    }
+
+    // Show/hide no results message
+    this._noResults.classList.toggle('d-none', visibleCount > 0 || query === '');
+  }
+  _normalizeText(text) {
+    if (!this._config.liveSearchNormalize) {
+      return text;
+    }
+
+    // Normalize accents
+    return text.normalize('NFD').replace(/[\u0300-\u036F]/g, '');
+  }
+  _handleToggleKeydown(event) {
+    const {
+      key
+    } = event;
+    if ([ARROW_DOWN_KEY$2, ARROW_UP_KEY$2, ENTER_KEY$1, SPACE_KEY$1].includes(key)) {
+      event.preventDefault();
+      if (this._isShown) {
+        const items = SelectorEngine.find(`${SELECTOR_VISIBLE_ITEMS$1}:not(.d-none)`, this._menu);
+        if (items.length) {
+          items[key === ARROW_UP_KEY$2 ? items.length - 1 : 0].focus();
+        }
+      } else {
+        this.show();
+      }
+    }
+    if (key === ESCAPE_KEY$2 && this._isShown) {
+      event.preventDefault();
+      this.hide();
+      this._toggle.focus();
+    }
+  }
+  _handleMenuKeydown(event) {
+    const {
+      key,
+      target
+    } = event;
+    const items = SelectorEngine.find(`${SELECTOR_VISIBLE_ITEMS$1}:not(.d-none)`, this._menu).filter(item => isVisible(item));
+    if ([ARROW_DOWN_KEY$2, ARROW_UP_KEY$2].includes(key)) {
+      event.preventDefault();
+      const {
+        activeElement
+      } = document;
+      const isDown = key === ARROW_DOWN_KEY$2;
+      getNextActiveElement(items, activeElement, isDown, true).focus();
+    }
+    if ([HOME_KEY$2, END_KEY$2].includes(key)) {
+      event.preventDefault();
+      const targetItem = key === HOME_KEY$2 ? items[0] : items[items.length - 1];
+      if (targetItem) {
+        targetItem.focus();
+      }
+    }
+    if ((key === ENTER_KEY$1 || key === SPACE_KEY$1) && target.classList.contains('custom-select-item')) {
+      event.preventDefault();
+      this._selectItem(target);
+    }
+    if (key === ESCAPE_KEY$2) {
+      event.preventDefault();
+      this.hide();
+      this._toggle.focus();
+    }
+    if (key === TAB_KEY$2) {
+      this.hide();
+    }
+  }
+  _createFloating() {
+    const placement = isRTL$1() ? this._config.placement.replace('start', 'temp').replace('end', 'start').replace('temp', 'end') : this._config.placement;
+    const middleware = [offset({
+      mainAxis: this._config.offset[1] || 0,
+      crossAxis: this._config.offset[0] || 0
+    }), flip({
+      boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
+    }), shift({
+      padding: 8
+    })];
+    const updatePosition = async () => {
+      const {
+        x,
+        y,
+        placement: finalPlacement
+      } = await computePosition(this._toggle, this._menu, {
+        placement,
+        middleware
+      });
+      Object.assign(this._menu.style, {
+        position: 'absolute',
+        left: `${x}px`,
+        top: `${y}px`,
+        margin: '0'
+      });
+      Manipulator.setDataAttribute(this._menu, 'placement', finalPlacement);
+    };
+    updatePosition();
+    this._floatingCleanup = autoUpdate(this._toggle, this._menu, updatePosition);
+  }
+  _disposeFloating() {
+    if (this._floatingCleanup) {
+      this._floatingCleanup();
+      this._floatingCleanup = null;
+    }
+  }
+
+  // Static
+  static jQueryInterface(config) {
+    return this.each(function () {
+      const data = CustomSelect.getOrCreateInstance(this, config);
+      if (typeof config !== 'string') {
+        return;
+      }
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`);
+      }
+      data[config]();
+    });
+  }
+  static clearMenus(event) {
+    if (event.button === 2) {
+      return;
+    }
+    const openSelects = SelectorEngine.find(`${SELECTOR_DATA_TOGGLE$8}.${CLASS_NAME_SHOW$6}`);
+    for (const toggle of openSelects) {
+      const selectElement = toggle.previousElementSibling;
+      if (selectElement) {
+        const instance = CustomSelect.getInstance(selectElement);
+        if (instance) {
+          instance.hide();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, EVENT_CLICK_DATA_API$5, event => {
+  // Close any open custom selects when clicking elsewhere
+  const {
+    target
+  } = event;
+  const openToggles = SelectorEngine.find('.custom-select-toggle.show');
+  for (const toggle of openToggles) {
+    const menu = toggle.nextElementSibling;
+    if (!toggle.contains(target) && !menu?.contains(target)) {
+      const select = toggle.previousElementSibling;
+      const instance = CustomSelect.getInstance(select);
+      if (instance) {
+        instance.hide();
+      }
+    }
+  }
+});
+EventHandler.on(document, EVENT_KEYDOWN_DATA_API$1, SELECTOR_DATA_TOGGLE$8, function (event) {
+  const instance = CustomSelect.getOrCreateInstance(this);
+  if ([ARROW_DOWN_KEY$2, ARROW_UP_KEY$2, ENTER_KEY$1, SPACE_KEY$1].includes(event.key)) {
+    event.preventDefault();
+    instance.show();
+  }
+});
+
+// Auto-initialize on DOM ready
+EventHandler.on(window, 'DOMContentLoaded', () => {
+  for (const select of SelectorEngine.find(SELECTOR_DATA_TOGGLE$8)) {
+    CustomSelect.getOrCreateInstance(select);
+  }
+});
+
+/*! name: vanilla-calendar-pro v3.1.0 | url: https://github.com/uvarov-frontend/vanilla-calendar-pro */
+var __defProp=Object.defineProperty,__defProps=Object.defineProperties,__getOwnPropDescs=Object.getOwnPropertyDescriptors,__getOwnPropSymbols=Object.getOwnPropertySymbols,__hasOwnProp=Object.prototype.hasOwnProperty,__propIsEnum=Object.prototype.propertyIsEnumerable,__defNormalProp=(e,t,n)=>t in e?__defProp(e,t,{enumerable:true,configurable:true,writable:true,value:n}):e[t]=n,__spreadValues=(e,t)=>{for(var n in t||(t={}))__hasOwnProp.call(t,n)&&__defNormalProp(e,n,t[n]);if(__getOwnPropSymbols)for(var n of __getOwnPropSymbols(t))__propIsEnum.call(t,n)&&__defNormalProp(e,n,t[n]);return e},__spreadProps=(e,t)=>__defProps(e,__getOwnPropDescs(t)),__publicField=(e,t,n)=>(__defNormalProp(e,"symbol"!=typeof t?t+"":t,n),n);const errorMessages={notFoundSelector:e=>`${e} is not found, check the first argument passed to new Calendar.`,notInit:'The calendar has not been initialized, please initialize it using the "init()" method first.',notLocale:"You specified an incorrect language label or did not specify the required number of values ​​for «locale.weekdays» or «locale.months».",incorrectTime:"The value of the time property can be: false, 12 or 24.",incorrectMonthsCount:"For the «multiple» calendar type, the «displayMonthsCount» parameter can have a value from 2 to 12, and for all others it cannot be greater than 1."},setContext=(e,t,n)=>{e.context[t]=n;},destroy=e=>{var t,n,a,o,l;if(!e.context.isInit)throw new Error(errorMessages.notInit);e.inputMode?(null==(t=e.context.mainElement.parentElement)||t.removeChild(e.context.mainElement),null==(a=null==(n=e.context.inputElement)?void 0:n.replaceWith)||a.call(n,e.context.originalElement),setContext(e,"inputElement",void 0)):null==(l=(o=e.context.mainElement).replaceWith)||l.call(o,e.context.originalElement),setContext(e,"mainElement",e.context.originalElement),e.onDestroy&&e.onDestroy(e);},skipOpenOnFocus=new WeakSet,shouldSkipOpenOnFocus=e=>skipOpenOnFocus.has(e),setSkipOpenOnFocus=e=>{skipOpenOnFocus.add(e);},clearSkipOpenOnFocus=e=>{skipOpenOnFocus.delete(e);},PREV_TABINDEX_ATTR="data-vc-prev-tabindex",isFocusable=e=>e.tabIndex>=0&&!e.hasAttribute("disabled")&&"true"!==e.getAttribute("aria-disabled"),storePrevTabIndex=e=>{if(e.hasAttribute(PREV_TABINDEX_ATTR))return;const t=e.getAttribute("tabindex");e.setAttribute(PREV_TABINDEX_ATTR,null!=t?t:"");},restorePrevTabIndex=e=>{if(!e.hasAttribute(PREV_TABINDEX_ATTR))return;const t=e.getAttribute(PREV_TABINDEX_ATTR);""===t||null===t?e.removeAttribute("tabindex"):e.setAttribute("tabindex",t),e.removeAttribute(PREV_TABINDEX_ATTR);},disableTabbing=e=>{isFocusable(e)&&(storePrevTabIndex(e),e.tabIndex=-1);const t=document.createTreeWalker(e,NodeFilter.SHOW_ELEMENT,{acceptNode:e=>isFocusable(e)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP});for(;t.nextNode();){const e=t.currentNode;storePrevTabIndex(e),e.tabIndex=-1;}},restoreTabbing=e=>{restorePrevTabIndex(e),e.querySelectorAll(`[${PREV_TABINDEX_ATTR}]`).forEach(restorePrevTabIndex);},hide=e=>{if(e.context.isShowInInputMode&&e.context.currentType){if(e.context.mainElement.dataset.vcCalendarHidden="",setContext(e,"isShowInInputMode",false),e.inputMode&&disableTabbing(e.context.mainElement),e.context.cleanupHandlers[0]&&(e.context.cleanupHandlers.forEach((e=>e())),setContext(e,"cleanupHandlers",[])),e.inputMode&&e.context.inputElement&&e.context.mainElement.contains(document.activeElement)){("function"==typeof e.openOnFocus||true===e.openOnFocus)&&setSkipOpenOnFocus(e),e.context.inputElement.focus();}e.onHide&&e.onHide(e);}};function getOffset(e){if(!e||!e.getBoundingClientRect)return {top:0,bottom:0,left:0,right:0};const t=e.getBoundingClientRect(),n=document.documentElement;return {bottom:t.bottom,right:t.right,top:t.top+window.scrollY-n.clientTop,left:t.left+window.scrollX-n.clientLeft}}function getViewportDimensions(){return {vw:Math.max(document.documentElement.clientWidth||0,window.innerWidth||0),vh:Math.max(document.documentElement.clientHeight||0,window.innerHeight||0)}}function getWindowScrollPosition(){return {left:window.scrollX||document.documentElement.scrollLeft||0,top:window.scrollY||document.documentElement.scrollTop||0}}function calculateAvailableSpace(e){const{top:t,left:n}=getWindowScrollPosition(),{top:a,left:o}=getOffset(e),{vh:l,vw:s}=getViewportDimensions(),i=a-t,r=o-n;return {top:i,bottom:l-(i+e.clientHeight),left:r,right:s-(r+e.clientWidth)}}function getAvailablePosition(e,t,n=5){const a={top:true,bottom:true,left:true,right:true},o=[];if(!t||!e)return {canShow:a,parentPositions:o};const{bottom:l,top:s}=calculateAvailableSpace(e),{top:i,left:r}=getOffset(e),{height:c,width:d}=t.getBoundingClientRect(),{vh:u,vw:m}=getViewportDimensions(),p=m/2,h=u/2;return [{condition:i<h,position:"top"},{condition:i>h,position:"bottom"},{condition:r<p,position:"left"},{condition:r>p,position:"right"}].forEach((({condition:e,position:t})=>{e&&o.push(t);})),Object.assign(a,{top:c<=s-n,bottom:c<=l-n,left:d<=r,right:d<=m-r}),{canShow:a,parentPositions:o}}const handleDay=(e,t,n,a)=>{var o;const l=a.querySelector(`[data-vc-date="${t}"]`),s=null==l?void 0:l.querySelector("[data-vc-date-btn]");if(!l||!s)return;if((null==n?void 0:n.modifier)&&s.classList.add(...n.modifier.trim().split(" ")),!(null==n?void 0:n.html))return;const i=document.createElement("div");i.className=e.styles.datePopup,i.dataset.vcDatePopup="",i.innerHTML=e.sanitizerHTML(n.html),s.ariaExpanded="true",s.ariaLabel=`${s.ariaLabel}, ${null==(o=null==i?void 0:i.textContent)?void 0:o.replace(/^\s+|\s+(?=\s)|\s+$/g,"").replace(/&nbsp;/g," ")}`,l.appendChild(i),requestAnimationFrame((()=>{if(!i)return;const{canShow:e}=getAvailablePosition(l,i),t=e.bottom?l.offsetHeight:-i.offsetHeight,n=e.left&&!e.right?l.offsetWidth-i.offsetWidth/2:!e.left&&e.right?i.offsetWidth/2:0;Object.assign(i.style,{left:`${n}px`,top:`${t}px`});}));},createDatePopup=(e,t)=>{var n;e.popups&&(null==(n=Object.entries(e.popups))||n.forEach((([n,a])=>handleDay(e,n,a,t))));},getDate=e=>new Date(`${e}T00:00:00`),getDateString=e=>`${e.getFullYear()}-${String(e.getMonth()+1).padStart(2,"0")}-${String(e.getDate()).padStart(2,"0")}`,parseDates=e=>e.reduce(((e,t)=>{if(t instanceof Date||"number"==typeof t){const n=t instanceof Date?t:new Date(t);e.push(n.toISOString().substring(0,10));}else t.match(/^(\d{4}-\d{2}-\d{2})$/g)?e.push(t):t.replace(/(\d{4}-\d{2}-\d{2}).*?(\d{4}-\d{2}-\d{2})/g,((t,n,a)=>{const o=getDate(n),l=getDate(a),s=new Date(o.getTime());for(;s<=l;s.setDate(s.getDate()+1))e.push(getDateString(s));return t}));return e}),[]),updateAttribute=(e,t,n,a="")=>{t?e.setAttribute(n,a):e.getAttribute(n)===a&&e.removeAttribute(n);},setDateModifier=(e,t,n,a,o,l,s)=>{var i,r,c,d;const u=getDate(e.context.displayDateMin)>getDate(l)||getDate(e.context.displayDateMax)<getDate(l)||(null==(i=e.context.disableDates)?void 0:i.includes(l))||!e.selectionMonthsMode&&"current"!==s||!e.selectionYearsMode&&getDate(l).getFullYear()!==t;updateAttribute(n,u,"data-vc-date-disabled"),a&&updateAttribute(a,u,"aria-disabled","true"),a&&updateAttribute(a,u,"tabindex","-1"),updateAttribute(n,!e.disableToday&&e.context.dateToday===l,"data-vc-date-today"),updateAttribute(n,!e.disableToday&&e.context.dateToday===l,"aria-current","date"),updateAttribute(n,null==(r=e.selectedWeekends)?void 0:r.includes(o),"data-vc-date-weekend");const m=(null==(c=e.selectedHolidays)?void 0:c[0])?parseDates(e.selectedHolidays):[];if(updateAttribute(n,m.includes(l),"data-vc-date-holiday"),(null==(d=e.context.selectedDates)?void 0:d.includes(l))?(n.setAttribute("data-vc-date-selected",""),a&&a.setAttribute("aria-selected","true"),e.context.selectedDates.length>1&&"multiple-ranged"===e.selectionDatesMode&&(e.context.selectedDates[0]===l&&e.context.selectedDates[e.context.selectedDates.length-1]===l?n.setAttribute("data-vc-date-selected","first-and-last"):e.context.selectedDates[0]===l?n.setAttribute("data-vc-date-selected","first"):e.context.selectedDates[e.context.selectedDates.length-1]===l&&n.setAttribute("data-vc-date-selected","last"),e.context.selectedDates[0]!==l&&e.context.selectedDates[e.context.selectedDates.length-1]!==l&&n.setAttribute("data-vc-date-selected","middle"))):n.hasAttribute("data-vc-date-selected")&&(n.removeAttribute("data-vc-date-selected"),a&&a.removeAttribute("aria-selected")),!e.context.disableDates.includes(l)&&e.enableEdgeDatesOnly&&e.context.selectedDates.length>1&&"multiple-ranged"===e.selectionDatesMode){const t=getDate(e.context.selectedDates[0]),a=getDate(e.context.selectedDates[e.context.selectedDates.length-1]),o=getDate(l);updateAttribute(n,o>t&&o<a,"data-vc-date-selected","middle");}},getLocaleString=(e,t,n)=>new Date(`${e}T00:00:00.000Z`).toLocaleString(t,n),getWeekNumber=(e,t)=>{const n=getDate(e),a=(n.getDay()-t+7)%7;n.setDate(n.getDate()+4-a);const o=new Date(n.getFullYear(),0,1),l=Math.ceil(((+n-+o)/864e5+1)/7);return {year:n.getFullYear(),week:l}},addWeekNumberForDate=(e,t,n)=>{const a=getWeekNumber(n,e.firstWeekday);a&&(t.dataset.vcDateWeekNumber=String(a.week));},setDaysAsDisabled=(e,t,n)=>{var a,o,l,s,i;const r=null==(a=e.disableWeekdays)?void 0:a.includes(n),c=e.disableAllDates&&!!(null==(o=e.context.enableDates)?void 0:o[0]);!r&&!c||(null==(l=e.context.enableDates)?void 0:l.includes(t))||(null==(s=e.context.disableDates)?void 0:s.includes(t))||(e.context.disableDates.push(t),null==(i=e.context.disableDates)||i.sort(((e,t)=>+new Date(e)-+new Date(t))));},createDate=(e,t,n,a,o,l)=>{const s=getDate(o).getDay(),i="string"==typeof e.locale&&e.locale.length?e.locale:"en",r=document.createElement("div");let c;r.className=e.styles.date,r.dataset.vcDate=o,r.dataset.vcDateMonth=l,r.dataset.vcDateWeekDay=String(s),r.role="gridcell",("current"===l||e.displayDatesOutside)&&(c=document.createElement("button"),c.className=e.styles.dateBtn,c.type="button",c.ariaLabel=getLocaleString(o,i,{dateStyle:"long",timeZone:"UTC"}),c.dataset.vcDateBtn="",c.innerText=String(a),r.appendChild(c)),e.enableWeekNumbers&&addWeekNumberForDate(e,r,o),setDaysAsDisabled(e,o,s),setDateModifier(e,t,r,c,s,o,l),n.addDate(r),e.onCreateDateEls&&e.onCreateDateEls(e,r);},createDatesFromCurrentMonth=(e,t,n,a,o)=>{for(let l=1;l<=n;l++){const n=new Date(a,o,l);createDate(e,a,t,l,getDateString(n),"current");}},createDatesFromNextMonth=(e,t,n,a,o)=>{const l=o+1===12?a+1:a,s=o+1===12?"01":o+2<10?`0${o+2}`:o+2;for(let o=1;o<=n;o++){const n=o<10?`0${o}`:String(o);createDate(e,a,t,o,`${l}-${s}-${n}`,"next");}},createDatesFromPrevMonth=(e,t,n,a,o)=>{let l=new Date(n,a,0).getDate()-(o-1);const s=0===a?n-1:n,i=0===a?12:a<10?`0${a}`:a;for(let a=o;a>0;a--,l++){createDate(e,n,t,l,`${s}-${i}-${l}`,"prev");}},createWeekNumbers=(e,t,n,a,o)=>{if(!e.enableWeekNumbers)return;a.textContent="";const l=document.createElement("b");l.className=e.styles.weekNumbersTitle,l.innerText="#",l.dataset.vcWeekNumbers="title",a.appendChild(l);const s=document.createElement("div");s.className=e.styles.weekNumbersContent,s.dataset.vcWeekNumbers="content",a.appendChild(s);const i=document.createElement("button");i.type="button",i.className=e.styles.weekNumber;const r=o.querySelectorAll("[data-vc-date]"),c=Math.ceil((t+n)/7);for(let t=0;t<c;t++){const n=r[0===t?6:7*t].dataset.vcDate,a=getWeekNumber(n,e.firstWeekday);if(!a)return;const o=i.cloneNode(true);o.innerText=String(a.week),o.dataset.vcWeekNumber=String(a.week),o.dataset.vcWeekYear=String(a.year),o.role="rowheader",o.ariaLabel=`${a.week}`,s.appendChild(o);}},createDates=e=>{const t=new Date(e.context.selectedYear,e.context.selectedMonth,1),n=e.context.mainElement.querySelectorAll('[data-vc="dates"]'),a=e.context.mainElement.querySelectorAll('[data-vc-week="numbers"]');n.forEach(((n,o)=>{e.selectionDatesMode||(n.dataset.vcDatesDisabled=""),n.textContent="";const l=new Date(t);l.setMonth(l.getMonth()+o);const s=l.getMonth(),i=l.getFullYear(),r=(new Date(i,s,1).getDay()-e.firstWeekday+7)%7,c=new Date(i,s+1,0).getDate(),d=r+c,u=Math.ceil(d/7),m=7*u-d,p=[];for(let t=0;t<u;t++){const t=document.createElement("div");t.className=e.styles.datesRow,t.setAttribute("data-vc-dates","row"),t.setAttribute("role","row"),p.push(t);}let h=0,v=0;const g={addDate:e=>{p[h].appendChild(e),v++,v>=7&&(h++,v=0);}};createDatesFromPrevMonth(e,g,i,s,r),createDatesFromCurrentMonth(e,g,c,i,s),createDatesFromNextMonth(e,g,m,i,s);for(const e of p)n.appendChild(e);createDatePopup(e,n),createWeekNumbers(e,r,c,a[o],n);}));},layoutDefault=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <#WeekNumbers />\n    <div class="${e.styles.content}" data-vc="content" role="grid">\n      <#Week />\n      <#Dates />\n      <#DateRangeTooltip />\n    </div>\n  </div>\n  <#ControlTime />\n`,layoutMonths=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <div class="${e.styles.content}" data-vc="content">\n      <#Months />\n    </div>\n  </div>\n`,layoutMultiple=e=>`\n  <div class="${e.styles.controls}" data-vc="controls" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [month] />\n    <#ArrowNext [month] />\n  </div>\n  <div class="${e.styles.grid}" data-vc="grid">\n    <#Multiple>\n      <div class="${e.styles.column}" data-vc="column" role="region">\n        <div class="${e.styles.header}" data-vc="header">\n          <div class="${e.styles.headerContent}" data-vc-header="content">\n            <#Month />\n            <#Year />\n          </div>\n        </div>\n        <div class="${e.styles.wrapper}" data-vc="wrapper">\n          <#WeekNumbers />\n          <div class="${e.styles.content}" data-vc="content" role="grid">\n            <#Week />\n            <#Dates />\n          </div>\n        </div>\n      </div>\n    <#/Multiple>\n    <#DateRangeTooltip />\n  </div>\n  <#ControlTime />\n`,layoutYears=e=>`\n  <div class="${e.styles.header}" data-vc="header" role="toolbar" aria-label="${e.labels.navigation}">\n    <#ArrowPrev [year] />\n    <div class="${e.styles.headerContent}" data-vc-header="content">\n      <#Month />\n      <#Year />\n    </div>\n    <#ArrowNext [year] />\n  </div>\n  <div class="${e.styles.wrapper}" data-vc="wrapper">\n    <div class="${e.styles.content}" data-vc="content">\n      <#Years />\n    </div>\n  </div>\n`,ArrowNext=(e,t)=>`<button type="button" class="${e.styles.arrowNext}" data-vc-arrow="next" aria-label="${e.labels.arrowNext[t]}"></button>`,ArrowPrev=(e,t)=>`<button type="button" class="${e.styles.arrowPrev}" data-vc-arrow="prev" aria-label="${e.labels.arrowPrev[t]}"></button>`,ControlTime=e=>e.selectionTimeMode?`<div class="${e.styles.time}" data-vc="time" role="group" aria-label="${e.labels.selectingTime}"></div>`:"",DateRangeTooltip=e=>e.onCreateDateRangeTooltip?`<div class="${e.styles.dateRangeTooltip}" data-vc-date-range-tooltip="hidden"></div>`:"",Dates=e=>`<div class="${e.styles.dates}" data-vc="dates" aria-live="assertive" aria-label="${e.labels.dates}" ${"multiple"===e.type?"aria-multiselectable":""}></div>`,Month=e=>`<button type="button" class="${e.styles.month}" data-vc="month"></button>`,Months=e=>`<div class="${e.styles.months}" data-vc="months" role="grid" aria-live="assertive" aria-label="${e.labels.months}"></div>`,Week=e=>`<div class="${e.styles.week}" data-vc="week" role="row" aria-label="${e.labels.week}"></div>`,WeekNumbers=e=>e.enableWeekNumbers?`<div class="${e.styles.weekNumbers}" data-vc-week="numbers" role="row" aria-label="${e.labels.weekNumber}"></div>`:"",Year=e=>`<button type="button" class="${e.styles.year}" data-vc="year"></button>`,Years=e=>`<div class="${e.styles.years}" data-vc="years" role="grid" aria-live="assertive" aria-label="${e.labels.years}"></div>`,components={ArrowNext:ArrowNext,ArrowPrev:ArrowPrev,ControlTime:ControlTime,Dates:Dates,DateRangeTooltip:DateRangeTooltip,Month:Month,Months:Months,Week:Week,WeekNumbers:WeekNumbers,Year:Year,Years:Years},getComponent=e=>components[e],parseLayout=(e,t)=>t.replace(/[\n\t]/g,"").replace(/<#(?!\/?Multiple)(.*?)>/g,((t,n)=>{const a=(n.match(/\[(.*?)\]/)||[])[1],o=n.replace(/[/\s\n\t]|\[(.*?)\]/g,""),l=getComponent(o),s=l?l(e,null!=a?a:null):"";return e.sanitizerHTML(s)})).replace(/[\n\t]/g,""),parseMultipleLayout=(e,t)=>t.replace(new RegExp("<#Multiple>(.*?)<#\\/Multiple>","gs"),((t,n)=>{const a=Array(e.context.displayMonthsCount).fill(n).join("");return e.sanitizerHTML(a)})).replace(/[\n\t]/g,""),createLayouts=(e,t)=>{const n={default:layoutDefault,month:layoutMonths,year:layoutYears,multiple:layoutMultiple};if(Object.keys(n).forEach((t=>{const a=t;e.layouts[a].length||(e.layouts[a]=n[a](e));})),e.context.mainElement.className=e.styles.calendar,e.context.mainElement.dataset.vc="calendar",e.context.mainElement.dataset.vcType=e.context.currentType,e.context.mainElement.role="application",e.context.mainElement.tabIndex=0,e.context.mainElement.ariaLabel=e.labels.application,"multiple"!==e.context.currentType){if("multiple"===e.type&&t){const n=e.context.mainElement.querySelector('[data-vc="controls"]'),a=e.context.mainElement.querySelector('[data-vc="grid"]'),o=t.closest('[data-vc="column"]');return n&&n.remove(),a&&(a.dataset.vcGrid="hidden"),o&&(o.dataset.vcColumn=e.context.currentType),void(o&&(o.innerHTML=e.sanitizerHTML(parseLayout(e,e.layouts[e.context.currentType]))))}e.context.mainElement.innerHTML=e.sanitizerHTML(parseLayout(e,e.layouts[e.context.currentType]));}else e.context.mainElement.innerHTML=e.sanitizerHTML(parseMultipleLayout(e,parseLayout(e,e.layouts[e.context.currentType])));},setVisibilityArrows=(e,t,n,a)=>{e.style.visibility=n?"hidden":"",t.style.visibility=a?"hidden":"";},handleDefaultType=(e,t,n)=>{const a=getDate(getDateString(new Date(e.context.selectedYear,e.context.selectedMonth,1))),o=new Date(a.getTime()),l=new Date(a.getTime());o.setMonth(o.getMonth()-e.monthsToSwitch),l.setMonth(l.getMonth()+e.monthsToSwitch);const s=getDate(e.context.dateMin),i=getDate(e.context.dateMax);e.selectionYearsMode||(s.setFullYear(a.getFullYear()),i.setFullYear(a.getFullYear()));const r=!e.selectionMonthsMode||o.getFullYear()<s.getFullYear()||o.getFullYear()===s.getFullYear()&&o.getMonth()<s.getMonth(),c=!e.selectionMonthsMode||l.getFullYear()>i.getFullYear()||l.getFullYear()===i.getFullYear()&&l.getMonth()>i.getMonth()-(e.context.displayMonthsCount-1);setVisibilityArrows(t,n,r,c);},handleYearType=(e,t,n)=>{const a=getDate(e.context.dateMin),o=getDate(e.context.dateMax),l=!!(a.getFullYear()&&e.context.displayYear-7<=a.getFullYear()),s=!!(o.getFullYear()&&e.context.displayYear+7>=o.getFullYear());setVisibilityArrows(t,n,l,s);},visibilityArrows=e=>{if("month"===e.context.currentType)return;const t=e.context.mainElement.querySelector('[data-vc-arrow="prev"]'),n=e.context.mainElement.querySelector('[data-vc-arrow="next"]');if(!t||!n)return;({default:()=>handleDefaultType(e,t,n),year:()=>handleYearType(e,t,n)})["multiple"===e.context.currentType?"default":e.context.currentType]();},visibilityHandler=(e,t,n,a,o)=>{const l=new Date(a.setFullYear(e.context.selectedYear,e.context.selectedMonth+n)).getFullYear(),s=new Date(a.setMonth(e.context.selectedMonth+n)).getMonth(),i=e.context.locale.months.long[s],r=t.closest('[data-vc="column"]');r&&(r.ariaLabel=`${i} ${l}`);const c={month:{id:s,label:i},year:{id:l,label:l}};t.innerText=String(c[o].label),t.dataset[`vc${o.charAt(0).toUpperCase()+o.slice(1)}`]=String(c[o].id),t.ariaLabel=`${e.labels[o]} ${c[o].label}`;const d={month:e.selectionMonthsMode,year:e.selectionYearsMode},u=false===d[o]||"only-arrows"===d[o];u&&(t.tabIndex=-1),t.disabled=u;},visibilityTitle=e=>{const t=e.context.mainElement.querySelectorAll('[data-vc="month"]'),n=e.context.mainElement.querySelectorAll('[data-vc="year"]'),a=new Date(e.context.selectedYear,e.context.selectedMonth,1);[t,n].forEach((t=>null==t?void 0:t.forEach(((t,n)=>visibilityHandler(e,t,n,a,t.dataset.vc)))));},setYearModifier=(e,t,n,a,o)=>{var l;const s={month:"[data-vc-months-month]",year:"[data-vc-years-year]"},i={month:{selected:"data-vc-months-month-selected",aria:"aria-selected",value:"vcMonthsMonth",selectedProperty:"selectedMonth"},year:{selected:"data-vc-years-year-selected",aria:"aria-selected",value:"vcYearsYear",selectedProperty:"selectedYear"}};o&&(null==(l=e.context.mainElement.querySelectorAll(s[n]))||l.forEach((e=>{e.removeAttribute(i[n].selected),e.removeAttribute(i[n].aria);})),setContext(e,i[n].selectedProperty,Number(t.dataset[i[n].value])),visibilityTitle(e),"year"===n&&visibilityArrows(e)),a&&(t.setAttribute(i[n].selected,""),t.setAttribute(i[n].aria,"true"));},getColumnID=(e,t)=>{var n;if("multiple"!==e.type)return {currentValue:null,columnID:0};const a=e.context.mainElement.querySelectorAll('[data-vc="column"]'),o=Array.from(a).findIndex((e=>e.closest(`[data-vc-column="${t}"]`)));return {currentValue:o>=0?Number(null==(n=a[o].querySelector(`[data-vc="${t}"]`))?void 0:n.getAttribute(`data-vc-${t}`)):null,columnID:Math.max(o,0)}},createMonthEl=(e,t,n,a,o,l,s)=>{const i=t.cloneNode(false);return i.className=e.styles.monthsMonth,i.innerText=a,i.ariaLabel=o,i.role="gridcell",i.dataset.vcMonthsMonth=`${s}`,l&&(i.ariaDisabled="true"),l&&(i.tabIndex=-1),i.disabled=l,setYearModifier(e,i,"month",n===s,false),i},createMonths=(e,t)=>{var n,a;const o=null==(n=null==t?void 0:t.closest('[data-vc="header"]'))?void 0:n.querySelector('[data-vc="year"]'),l=o?Number(o.dataset.vcYear):e.context.selectedYear,s=(null==t?void 0:t.dataset.vcMonth)?Number(t.dataset.vcMonth):e.context.selectedMonth;setContext(e,"currentType","month"),createLayouts(e,t),visibilityTitle(e);const i=e.context.mainElement.querySelector('[data-vc="months"]');if(!e.selectionMonthsMode||!i)return;const r=e.monthsToSwitch>1?e.context.locale.months.long.map(((t,n)=>s-e.monthsToSwitch*n)).concat(e.context.locale.months.long.map(((t,n)=>s+e.monthsToSwitch*n))).filter((e=>e>=0&&e<=12)):Array.from(Array(12).keys()),c=document.createElement("button");c.type="button";for(let t=0;t<12;t++){const n=getDate(e.context.dateMin),a=getDate(e.context.dateMax),o=e.context.displayMonthsCount-1,{columnID:d}=getColumnID(e,"month"),u=l<=n.getFullYear()&&t<n.getMonth()+d||l>=a.getFullYear()&&t>a.getMonth()-o+d||l>a.getFullYear()||t!==s&&!r.includes(t),m=createMonthEl(e,c,s,e.context.locale.months.short[t],e.context.locale.months.long[t],u,t);i.appendChild(m),e.onCreateMonthEls&&e.onCreateMonthEls(e,m);}null==(a=e.context.mainElement.querySelector("[data-vc-months-month]:not([disabled])"))||a.focus();},TimeInput=(e,t,n,a,o)=>`\n  <label class="${t}" data-vc-time-input="${e}">\n    <input type="text" name="${e}" maxlength="2" aria-label="${n[`input${e.charAt(0).toUpperCase()+e.slice(1)}`]}" value="${a}" ${o?"disabled":""}>\n  </label>\n`,TimeRange=(e,t,n,a,o,l,s)=>`\n  <label class="${t}" data-vc-time-range="${e}">\n    <input type="range" name="${e}" min="${a}" max="${o}" step="${l}" aria-label="${n[`range${e.charAt(0).toUpperCase()+e.slice(1)}`]}" value="${s}">\n  </label>\n`,handleActions=(e,t,n,a)=>{(({hour:()=>setContext(e,"selectedHours",n),minute:()=>setContext(e,"selectedMinutes",n)}))[a](),setContext(e,"selectedTime",`${e.context.selectedHours}:${e.context.selectedMinutes}${e.context.selectedKeeping?` ${e.context.selectedKeeping}`:""}`),e.onChangeTime&&e.onChangeTime(e,t,false),e.inputMode&&e.context.inputElement&&e.context.mainElement&&e.onChangeToInput&&e.onChangeToInput(e,t);},transformTime24=(e,t)=>{var n;return (null==(n={0:{AM:"00",PM:"12"},1:{AM:"01",PM:"13"},2:{AM:"02",PM:"14"},3:{AM:"03",PM:"15"},4:{AM:"04",PM:"16"},5:{AM:"05",PM:"17"},6:{AM:"06",PM:"18"},7:{AM:"07",PM:"19"},8:{AM:"08",PM:"20"},9:{AM:"09",PM:"21"},10:{AM:"10",PM:"22"},11:{AM:"11",PM:"23"},12:{AM:"00",PM:"12"}}[Number(e)])?void 0:n[t])||String(e)},handleClickKeepingTime=(e,t,n,a,o)=>{const l=l=>{const s="AM"===e.context.selectedKeeping?"PM":"AM",i=transformTime24(e.context.selectedHours,s);Number(i)<=a&&Number(i)>=o?(setContext(e,"selectedKeeping",s),n.value=i,handleActions(e,l,e.context.selectedHours,"hour"),t.ariaLabel=`${e.labels.btnKeeping} ${e.context.selectedKeeping}`,t.innerText=e.context.selectedKeeping):e.onChangeTime&&e.onChangeTime(e,l,true);};return t.addEventListener("click",l),()=>{t.removeEventListener("click",l);}},transformTime12=e=>({0:"12",13:"01",14:"02",15:"03",16:"04",17:"05",18:"06",19:"07",20:"08",21:"09",22:"10",23:"11"}[Number(e)]||String(e)),updateInputAndRange=(e,t,n,a)=>{e.value=n,t.value=a;},updateKeepingTime$1=(e,t,n)=>{t&&n&&(setContext(e,"selectedKeeping",n),t.innerText=n);},handleInput$1=(e,t,n,a,o,l,s)=>{const i={hour:(i,r,c)=>{if(!e.selectionTimeMode)return;({12:()=>{if(!e.context.selectedKeeping)return;const d=Number(transformTime24(r,e.context.selectedKeeping));if(!(d<=l&&d>=s))return updateInputAndRange(n,t,e.context.selectedHours,e.context.selectedHours),void(e.onChangeTime&&e.onChangeTime(e,c,true));updateInputAndRange(n,t,transformTime12(r),transformTime24(r,e.context.selectedKeeping)),i>12&&updateKeepingTime$1(e,a,"PM"),handleActions(e,c,transformTime12(r),o);},24:()=>{if(!(i<=l&&i>=s))return updateInputAndRange(n,t,e.context.selectedHours,e.context.selectedHours),void(e.onChangeTime&&e.onChangeTime(e,c,true));updateInputAndRange(n,t,r,r),handleActions(e,c,r,o);}})[e.selectionTimeMode]();},minute:(a,i,r)=>{if(!(a<=l&&a>=s))return n.value=e.context.selectedMinutes,void(e.onChangeTime&&e.onChangeTime(e,r,true));n.value=i,t.value=i,handleActions(e,r,i,o);}},r=e=>{const t=Number(n.value),a=n.value.padStart(2,"0");i[o]&&i[o](t,a,e);};return n.addEventListener("change",r),()=>{n.removeEventListener("change",r);}},updateInputAndTime=(e,t,n,a,o)=>{t.value=o,handleActions(e,n,o,a);},updateKeepingTime=(e,t,n)=>{t&&(setContext(e,"selectedKeeping",n),t.innerText=n);},handleRange=(e,t,n,a,o)=>{const l=l=>{const s=Number(t.value),i=t.value.padStart(2,"0"),r="hour"===o,c=24===e.selectionTimeMode,d=s>0&&s<12;r&&!c&&updateKeepingTime(e,a,0===s||d?"AM":"PM"),updateInputAndTime(e,n,l,o,!r||c||d?i:transformTime12(t.value));};return t.addEventListener("input",l),()=>{t.removeEventListener("input",l);}},handleMouseOver=e=>e.setAttribute("data-vc-input-focus",""),handleMouseOut=e=>e.removeAttribute("data-vc-input-focus"),handleTime=(e,t)=>{const n=t.querySelector('[data-vc-time-range="hour"] input[name="hour"]'),a=t.querySelector('[data-vc-time-range="minute"] input[name="minute"]'),o=t.querySelector('[data-vc-time-input="hour"] input[name="hour"]'),l=t.querySelector('[data-vc-time-input="minute"] input[name="minute"]'),s=t.querySelector('[data-vc-time="keeping"]');if(!(n&&a&&o&&l))return;const i=e=>{e.target===n&&handleMouseOver(o),e.target===a&&handleMouseOver(l);},r=e=>{e.target===n&&handleMouseOut(o),e.target===a&&handleMouseOut(l);};return t.addEventListener("mouseover",i),t.addEventListener("mouseout",r),handleInput$1(e,n,o,s,"hour",e.timeMaxHour,e.timeMinHour),handleInput$1(e,a,l,s,"minute",e.timeMaxMinute,e.timeMinMinute),handleRange(e,n,o,s,"hour"),handleRange(e,a,l,s,"minute"),s&&handleClickKeepingTime(e,s,n,e.timeMaxHour,e.timeMinHour),()=>{t.removeEventListener("mouseover",i),t.removeEventListener("mouseout",r);}},createTime=e=>{const t=e.context.mainElement.querySelector('[data-vc="time"]');if(!e.selectionTimeMode||!t)return;const[n,a]=[e.timeMinHour,e.timeMaxHour],[o,l]=[e.timeMinMinute,e.timeMaxMinute],s=e.context.selectedKeeping?transformTime24(e.context.selectedHours,e.context.selectedKeeping):e.context.selectedHours,i="range"===e.timeControls;var r;t.innerHTML=e.sanitizerHTML(`\n    <div class="${e.styles.timeContent}" data-vc-time="content">\n      ${TimeInput("hour",e.styles.timeHour,e.labels,e.context.selectedHours,i)}\n      ${TimeInput("minute",e.styles.timeMinute,e.labels,e.context.selectedMinutes,i)}\n      ${12===e.selectionTimeMode?(r=e.context.selectedKeeping,`<button type="button" class="${e.styles.timeKeeping}" aria-label="${e.labels.btnKeeping} ${r}" data-vc-time="keeping" ${i?"disabled":""}>${r}</button>`):""}\n    </div>\n    <div class="${e.styles.timeRanges}" data-vc-time="ranges">\n      ${TimeRange("hour",e.styles.timeRange,e.labels,n,a,e.timeStepHour,s)}\n      ${TimeRange("minute",e.styles.timeRange,e.labels,o,l,e.timeStepMinute,e.context.selectedMinutes)}\n    </div>\n  `),handleTime(e,t);},createWeek=e=>{const t=e.selectedWeekends?[...e.selectedWeekends]:[],n=[...e.context.locale.weekdays.long].reduce(((n,a,o)=>[...n,{id:o,titleShort:e.context.locale.weekdays.short[o],titleLong:a,isWeekend:t.includes(o)}]),[]),a=[...n.slice(e.firstWeekday),...n.slice(0,e.firstWeekday)];e.context.mainElement.querySelectorAll('[data-vc="week"]').forEach((t=>{const n=e.onClickWeekDay?document.createElement("button"):document.createElement("b");e.onClickWeekDay&&(n.type="button"),a.forEach((a=>{const o=n.cloneNode(true);o.innerText=a.titleShort,o.className=e.styles.weekDay,o.role="columnheader",o.ariaLabel=a.titleLong,o.dataset.vcWeekDay=String(a.id),a.isWeekend&&(o.dataset.vcWeekDayOff=""),t.appendChild(o);}));}));},createYearEl=(e,t,n,a,o)=>{const l=t.cloneNode(false);return l.className=e.styles.yearsYear,l.innerText=String(o),l.ariaLabel=String(o),l.role="gridcell",l.dataset.vcYearsYear=`${o}`,a&&(l.ariaDisabled="true"),a&&(l.tabIndex=-1),l.disabled=a,setYearModifier(e,l,"year",n===o,false),l},createYears=(e,t)=>{var n;const a=(null==t?void 0:t.dataset.vcYear)?Number(t.dataset.vcYear):e.context.selectedYear;setContext(e,"currentType","year"),createLayouts(e,t),visibilityTitle(e),visibilityArrows(e);const o=e.context.mainElement.querySelector('[data-vc="years"]');if(!e.selectionYearsMode||!o)return;const l="multiple"!==e.type||e.context.selectedYear===a?0:1,s=document.createElement("button");s.type="button";for(let t=e.context.displayYear-7;t<e.context.displayYear+8;t++){const n=t<getDate(e.context.dateMin).getFullYear()+l||t>getDate(e.context.dateMax).getFullYear(),i=createYearEl(e,s,a,n,t);o.appendChild(i),e.onCreateYearEls&&e.onCreateYearEls(e,i);}null==(n=e.context.mainElement.querySelector("[data-vc-years-year]:not([disabled])"))||n.focus();},trackChangesHTMLElement=(e,t,n)=>{new MutationObserver((e=>{for(let a=0;a<e.length;a++){if(e[a].attributeName===t){n();break}}})).observe(e,{attributes:true});},haveListener={value:false,set:()=>haveListener.value=true,check:()=>haveListener.value},setTheme=(e,t)=>e.dataset.vcTheme=t,trackChangesThemeInSystemSettings=(e,t)=>{if(setTheme(e.context.mainElement,t.matches?"dark":"light"),"system"!==e.selectedTheme||haveListener.check())return;const n=e=>{const t=document.querySelectorAll('[data-vc="calendar"]');null==t||t.forEach((t=>setTheme(t,e.matches?"dark":"light")));};t.addEventListener?t.addEventListener("change",n):t.addListener(n),haveListener.set();},detectTheme=(e,t)=>{const n=e.themeAttrDetect.length?document.querySelector(e.themeAttrDetect):null,a=e.themeAttrDetect.replace(/^.*\[(.+)\]/g,((e,t)=>t));if(!n||"system"===n.getAttribute(a))return void trackChangesThemeInSystemSettings(e,t);const o=n.getAttribute(a);o?(setTheme(e.context.mainElement,o),trackChangesHTMLElement(n,a,(()=>{const t=n.getAttribute(a);t&&setTheme(e.context.mainElement,t);}))):trackChangesThemeInSystemSettings(e,t);},handleTheme=e=>{"not all"!==window.matchMedia("(prefers-color-scheme)").media?"system"===e.selectedTheme?detectTheme(e,window.matchMedia("(prefers-color-scheme: dark)")):setTheme(e.context.mainElement,e.selectedTheme):setTheme(e.context.mainElement,"light");},capitalizeFirstLetter=e=>e.charAt(0).toUpperCase()+e.slice(1).replace(/\./,""),getLocaleWeekday=(e,t,n)=>{const a=new Date(`1978-01-0${t+1}T00:00:00.000Z`),o=a.toLocaleString(n,{weekday:"short",timeZone:"UTC"}),l=a.toLocaleString(n,{weekday:"long",timeZone:"UTC"});e.context.locale.weekdays.short.push(capitalizeFirstLetter(o)),e.context.locale.weekdays.long.push(capitalizeFirstLetter(l));},getLocaleMonth=(e,t,n)=>{const a=new Date(`1978-${String(t+1).padStart(2,"0")}-01T00:00:00.000Z`),o=a.toLocaleString(n,{month:"short",timeZone:"UTC"}),l=a.toLocaleString(n,{month:"long",timeZone:"UTC"});e.context.locale.months.short.push(capitalizeFirstLetter(o)),e.context.locale.months.long.push(capitalizeFirstLetter(l));},getLocale=e=>{var t,n,a,o,l,s,i,r;if(!(e.context.locale.weekdays.short[6]&&e.context.locale.weekdays.long[6]&&e.context.locale.months.short[11]&&e.context.locale.months.long[11]))if("string"==typeof e.locale){if("string"==typeof e.locale&&!e.locale.length)throw new Error(errorMessages.notLocale);Array.from({length:7},((t,n)=>getLocaleWeekday(e,n,e.locale))),Array.from({length:12},((t,n)=>getLocaleMonth(e,n,e.locale)));}else {if(!((null==(n=null==(t=e.locale)?void 0:t.weekdays)?void 0:n.short[6])&&(null==(o=null==(a=e.locale)?void 0:a.weekdays)?void 0:o.long[6])&&(null==(s=null==(l=e.locale)?void 0:l.months)?void 0:s.short[11])&&(null==(r=null==(i=e.locale)?void 0:i.months)?void 0:r.long[11])))throw new Error(errorMessages.notLocale);setContext(e,"locale",__spreadValues({},e.locale));}},create=e=>{const t={default:()=>{createWeek(e),createDates(e);},multiple:()=>{createWeek(e),createDates(e);},month:()=>createMonths(e),year:()=>createYears(e)};handleTheme(e),getLocale(e),createLayouts(e),visibilityTitle(e),visibilityArrows(e),createTime(e),t[e.context.currentType]();},handleArrowKeys=e=>{const t=t=>{var n;const a=t.target;if(!["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(t.key)||"button"!==a.localName)return;const o=Array.from(e.context.mainElement.querySelectorAll('[data-vc="calendar"] button')),l=o.indexOf(a);if(-1===l)return;const s=(i=o[l]).hasAttribute("data-vc-date-btn")?7:i.hasAttribute("data-vc-months-month")?4:i.hasAttribute("data-vc-years-year")?5:1;var i;const r=(0, {ArrowUp:()=>Math.max(0,l-s),ArrowDown:()=>Math.min(o.length-1,l+s),ArrowLeft:()=>Math.max(0,l-1),ArrowRight:()=>Math.min(o.length-1,l+1)}[t.key])();null==(n=o[r])||n.focus();};return e.context.mainElement.addEventListener("keydown",t),()=>e.context.mainElement.removeEventListener("keydown",t)},handleMonth=(e,t)=>{const n=getDate(getDateString(new Date(e.context.selectedYear,e.context.selectedMonth,1)));(({prev:()=>n.setMonth(n.getMonth()-e.monthsToSwitch),next:()=>n.setMonth(n.getMonth()+e.monthsToSwitch)}))[t](),setContext(e,"selectedMonth",n.getMonth()),setContext(e,"selectedYear",n.getFullYear()),visibilityTitle(e),visibilityArrows(e),createDates(e);},handleClickArrow=(e,t)=>{const n=t.target.closest("[data-vc-arrow]");if(n){if(["default","multiple"].includes(e.context.currentType))handleMonth(e,n.dataset.vcArrow);else if("year"===e.context.currentType&&void 0!==e.context.displayYear){const a={prev:-15,next:15}[n.dataset.vcArrow];setContext(e,"displayYear",e.context.displayYear+a),createYears(e,t.target);}e.onClickArrow&&e.onClickArrow(e,t);}},resolveToggle=(e,t)=>void 0===t||("function"==typeof t?t(e):t),canToggleSelection=e=>resolveToggle(e,e.enableDateToggle),handleSelectDate=(e,t,n)=>{const a=t.dataset.vcDate,o=t.closest("[data-vc-date][data-vc-date-selected]"),l=canToggleSelection(e);if(o&&!l)return;const s=o?e.context.selectedDates.filter((e=>e!==a)):n?[...e.context.selectedDates,a]:[a];setContext(e,"selectedDates",s);},createDateRangeTooltip=(e,t,n)=>{if(!t)return;if(!n)return t.dataset.vcDateRangeTooltip="hidden",void(t.textContent="");const a=e.context.mainElement.getBoundingClientRect(),o=n.getBoundingClientRect();t.style.left=o.left-a.left+o.width/2+"px",t.style.top=o.bottom-a.top-o.height+"px",t.dataset.vcDateRangeTooltip="visible",t.innerHTML=e.sanitizerHTML(e.onCreateDateRangeTooltip(e,n,t,o,a));},state={self:null,lastDateEl:null,isHovering:false,rangeMin:void 0,rangeMax:void 0,tooltipEl:null,timeoutId:null},addHoverEffect=(e,t,n)=>{var a,o,l;if(!(null==(o=null==(a=state.self)?void 0:a.context)?void 0:o.selectedDates[0]))return;const s=getDateString(e);(null==(l=state.self.context.disableDates)?void 0:l.includes(s))||(state.self.context.mainElement.querySelectorAll(`[data-vc-date="${s}"]`).forEach((e=>e.dataset.vcDateHover="")),t.forEach((e=>e.dataset.vcDateHover="first")),n.forEach((e=>{"first"===e.dataset.vcDateHover?e.dataset.vcDateHover="first-and-last":e.dataset.vcDateHover="last";})));},removeHoverEffect=()=>{var e,t;if(!(null==(t=null==(e=state.self)?void 0:e.context)?void 0:t.mainElement))return;state.self.context.mainElement.querySelectorAll("[data-vc-date-hover]").forEach((e=>e.removeAttribute("data-vc-date-hover")));},handleHoverDatesEvent=e=>{var t,n;if(!e||!(null==(n=null==(t=state.self)?void 0:t.context)?void 0:n.selectedDates[0]))return;if(!e.closest('[data-vc="dates"]'))return state.lastDateEl=null,createDateRangeTooltip(state.self,state.tooltipEl,null),void removeHoverEffect();const a=e.closest("[data-vc-date]");if(!a||state.lastDateEl===a)return;state.lastDateEl=a,createDateRangeTooltip(state.self,state.tooltipEl,a),removeHoverEffect();const o=a.dataset.vcDate,l=getDate(state.self.context.selectedDates[0]),s=getDate(o),i=state.self.context.mainElement.querySelectorAll(`[data-vc-date="${state.self.context.selectedDates[0]}"]`),r=state.self.context.mainElement.querySelectorAll(`[data-vc-date="${o}"]`),[c,d]=l<s?[i,r]:[r,i],[u,m]=l<s?[l,s]:[s,l];for(let e=new Date(u);e<=m;e.setDate(e.getDate()+1))addHoverEffect(e,c,d);},handleHoverSelectedDatesRangeEvent=e=>{const t=null==e?void 0:e.closest("[data-vc-date-selected]");if(!t&&state.lastDateEl)return state.lastDateEl=null,void createDateRangeTooltip(state.self,state.tooltipEl,null);t&&state.lastDateEl!==t&&(state.lastDateEl=t,createDateRangeTooltip(state.self,state.tooltipEl,t));},optimizedHoverHandler=e=>t=>{const n=t.target;state.isHovering||(state.isHovering=true,requestAnimationFrame((()=>{e(n),state.isHovering=false;})));},optimizedHandleHoverDatesEvent=optimizedHoverHandler(handleHoverDatesEvent),optimizedHandleHoverSelectedDatesRangeEvent=optimizedHoverHandler(handleHoverSelectedDatesRangeEvent),handleCancelSelectionDates=e=>{state.self&&"Escape"===e.key&&(state.lastDateEl=null,setContext(state.self,"selectedDates",[]),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),createDateRangeTooltip(state.self,state.tooltipEl,null),removeHoverEffect());},handleMouseLeave=()=>{null!==state.timeoutId&&clearTimeout(state.timeoutId),state.timeoutId=setTimeout((()=>{state.lastDateEl=null,createDateRangeTooltip(state.self,state.tooltipEl,null),removeHoverEffect();}),50);},updateDisabledDates=()=>{var e,t,n,a;if(!(null==(n=null==(t=null==(e=state.self)?void 0:e.context)?void 0:t.selectedDates)?void 0:n[0])||!(null==(a=state.self.context.disableDates)?void 0:a[0]))return;const o=getDate(state.self.context.selectedDates[0]),[l,s]=state.self.context.disableDates.map((e=>getDate(e))).reduce((([e,t],n)=>[o>=n?n:e,o<n&&null===t?n:t]),[null,null]);l&&setContext(state.self,"displayDateMin",getDateString(new Date(l.setDate(l.getDate()+1)))),s&&setContext(state.self,"displayDateMax",getDateString(new Date(s.setDate(s.getDate()-1))));state.self.disableDatesPast&&!state.self.disableAllDates&&getDate(state.self.context.displayDateMin)<getDate(state.self.context.dateToday)&&setContext(state.self,"displayDateMin",state.self.context.dateToday);},handleSelectDateRange=(e,t)=>{state.self=e,state.lastDateEl=t,removeHoverEffect(),e.disableDatesGaps&&(state.rangeMin=state.rangeMin?state.rangeMin:e.context.displayDateMin,state.rangeMax=state.rangeMax?state.rangeMax:e.context.displayDateMax),e.onCreateDateRangeTooltip&&(state.tooltipEl=e.context.mainElement.querySelector("[data-vc-date-range-tooltip]"));const n=null==t?void 0:t.dataset.vcDate;if(n){const t=1===e.context.selectedDates.length&&e.context.selectedDates[0].includes(n),a=t&&!canToggleSelection(e)?[n,n]:t&&canToggleSelection(e)?[]:e.context.selectedDates.length>1?[n]:[...e.context.selectedDates,n];setContext(e,"selectedDates",a),e.context.selectedDates.length>1&&e.context.selectedDates.sort(((e,t)=>+new Date(e)-+new Date(t)));}({set:()=>(e.disableDatesGaps&&updateDisabledDates(),createDateRangeTooltip(state.self,state.tooltipEl,t),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),state.self.context.mainElement.addEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.addEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.addEventListener("keydown",handleCancelSelectionDates),()=>{state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates);}),reset:()=>{const[n,a]=[e.context.selectedDates[0],e.context.selectedDates[e.context.selectedDates.length-1]],o=e.context.selectedDates[0]!==e.context.selectedDates[e.context.selectedDates.length-1],l=parseDates([`${n}:${a}`]).filter((t=>!e.context.disableDates.includes(t))),s=o?e.enableEdgeDatesOnly?[n,a]:l:[e.context.selectedDates[0],e.context.selectedDates[0]];if(setContext(e,"selectedDates",s),e.disableDatesGaps&&(setContext(e,"displayDateMin",state.rangeMin),setContext(e,"displayDateMax",state.rangeMax)),state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverDatesEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),state.self.context.mainElement.removeEventListener("keydown",handleCancelSelectionDates),e.onCreateDateRangeTooltip)return e.context.selectedDates[0]||(state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave),createDateRangeTooltip(state.self,state.tooltipEl,null)),e.context.selectedDates[0]&&(state.self.context.mainElement.addEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.addEventListener("mouseleave",handleMouseLeave),createDateRangeTooltip(state.self,state.tooltipEl,t)),()=>{state.self.context.mainElement.removeEventListener("mousemove",optimizedHandleHoverSelectedDatesRangeEvent),state.self.context.mainElement.removeEventListener("mouseleave",handleMouseLeave);}}})[1===e.context.selectedDates.length?"set":"reset"]();},updateDateModifier=e=>{e.context.mainElement.querySelectorAll("[data-vc-date]").forEach((t=>{const n=t.querySelector("[data-vc-date-btn]"),a=t.dataset.vcDate,o=getDate(a).getDay();setDateModifier(e,e.context.selectedYear,t,n,o,a,"current");}));},handleClickDate=(e,t)=>{var n;const a=t.target,o=a.closest("[data-vc-date-btn]");if(!e.selectionDatesMode||!["single","multiple","multiple-ranged"].includes(e.selectionDatesMode)||!o)return;const l=o.closest("[data-vc-date]");(({single:()=>handleSelectDate(e,l,false),multiple:()=>handleSelectDate(e,l,true),"multiple-ranged":()=>handleSelectDateRange(e,l)}))[e.selectionDatesMode](),null==(n=e.context.selectedDates)||n.sort(((e,t)=>+new Date(e)-+new Date(t))),e.onClickDate&&e.onClickDate(e,t),e.inputMode&&e.context.inputElement&&e.context.mainElement&&e.onChangeToInput&&e.onChangeToInput(e,t);const s=a.closest('[data-vc-date-month="prev"]'),i=a.closest('[data-vc-date-month="next"]');({prev:()=>e.enableMonthChangeOnDayClick?handleMonth(e,"prev"):updateDateModifier(e),next:()=>e.enableMonthChangeOnDayClick?handleMonth(e,"next"):updateDateModifier(e),current:()=>updateDateModifier(e)})[s?"prev":i?"next":"current"]();},typeClick=["month","year"],getValue=(e,t,n)=>{const{currentValue:a,columnID:o}=getColumnID(e,t);return "month"===e.context.currentType&&o>=0?n-o:"year"===e.context.currentType&&e.context.selectedYear!==a?n-1:n},handleMultipleYearSelection=(e,t)=>{const n=getValue(e,"year",Number(t.dataset.vcYearsYear)),a=getDate(e.context.dateMin),o=getDate(e.context.dateMax),l=e.context.displayMonthsCount-1,{columnID:s}=getColumnID(e,"year"),i=e.context.selectedMonth<a.getMonth()&&n<=a.getFullYear(),r=e.context.selectedMonth>o.getMonth()-l+s&&n>=o.getFullYear(),c=n<a.getFullYear(),d=n>o.getFullYear(),u=i||c?a.getFullYear():r||d?o.getFullYear():n,m=i||c?a.getMonth():r||d?o.getMonth()-l+s:e.context.selectedMonth;setContext(e,"selectedYear",u),setContext(e,"selectedMonth",m);},handleMultipleMonthSelection=(e,t)=>{const n=t.closest('[data-vc-column="month"]').querySelector('[data-vc="year"]'),a=getValue(e,"month",Number(t.dataset.vcMonthsMonth)),o=Number(n.dataset.vcYear),l=getDate(e.context.dateMin),s=getDate(e.context.dateMax),i=a<l.getMonth()&&o<=l.getFullYear(),r=a>s.getMonth()&&o>=s.getFullYear();setContext(e,"selectedYear",o),setContext(e,"selectedMonth",i?l.getMonth():r?s.getMonth():a);},handleItemClick=(e,t,n,a)=>{var o;({year:()=>{if("multiple"===e.type)return handleMultipleYearSelection(e,a);setContext(e,"selectedYear",Number(a.dataset.vcYearsYear));},month:()=>{if("multiple"===e.type)return handleMultipleMonthSelection(e,a);setContext(e,"selectedMonth",Number(a.dataset.vcMonthsMonth));}})[n]();(({year:()=>{var n;return null==(n=e.onClickYear)?void 0:n.call(e,e,t)},month:()=>{var n;return null==(n=e.onClickMonth)?void 0:n.call(e,e,t)}}))[n](),e.context.currentType!==e.type?(setContext(e,"currentType",e.type),create(e),null==(o=e.context.mainElement.querySelector(`[data-vc="${n}"]`))||o.focus()):setYearModifier(e,a,n,true,true);},handleClickType=(e,t,n)=>{var a;const o=t.target,l=o.closest(`[data-vc="${n}"]`),s={year:()=>createYears(e,o),month:()=>createMonths(e,o)};if(l&&e.onClickTitle&&e.onClickTitle(e,t),l&&e.context.currentType!==n)return s[n]();const i=o.closest(`[data-vc-${n}s-${n}]`);if(i)return handleItemClick(e,t,n,i);const r=o.closest('[data-vc="grid"]'),c=o.closest('[data-vc="column"]');(e.context.currentType===n&&l||"multiple"===e.type&&e.context.currentType===n&&r&&!c)&&(setContext(e,"currentType",e.type),create(e),null==(a=e.context.mainElement.querySelector(`[data-vc="${n}"]`))||a.focus());},handleClickMonthOrYear=(e,t)=>{const n={month:e.selectionMonthsMode,year:e.selectionYearsMode};typeClick.forEach((a=>{n[a]&&t.target&&handleClickType(e,t,a);}));},handleClickWeekNumber=(e,t)=>{if(!e.enableWeekNumbers||!e.onClickWeekNumber)return;const n=t.target.closest("[data-vc-week-number]"),a=e.context.mainElement.querySelectorAll("[data-vc-date-week-number]");if(!n||!a[0])return;const o=Number(n.innerText),l=Number(n.dataset.vcWeekYear),s=Array.from(a).filter((e=>Number(e.dataset.vcDateWeekNumber)===o));e.onClickWeekNumber(e,o,l,s,t);},handleClickWeekDay=(e,t)=>{if(!e.onClickWeekDay)return;const n=t.target.closest("[data-vc-week-day]"),a=t.target.closest('[data-vc="column"]'),o=a?a.querySelectorAll("[data-vc-date-week-day]"):e.context.mainElement.querySelectorAll("[data-vc-date-week-day]");if(!n||!o[0])return;const l=Number(n.dataset.vcWeekDay),s=Array.from(o).filter((e=>Number(e.dataset.vcDateWeekDay)===l));e.onClickWeekDay(e,l,s,t);},handleClick=e=>{const t=t=>{handleClickArrow(e,t),handleClickWeekDay(e,t),handleClickWeekNumber(e,t),handleClickDate(e,t),handleClickMonthOrYear(e,t);};return e.context.mainElement.addEventListener("click",t),()=>e.context.mainElement.removeEventListener("click",t)},initMonthsCount=e=>{if("multiple"===e.type&&(e.displayMonthsCount<=1||e.displayMonthsCount>12))throw new Error(errorMessages.incorrectMonthsCount);if("multiple"!==e.type&&e.displayMonthsCount>1)throw new Error(errorMessages.incorrectMonthsCount);setContext(e,"displayMonthsCount",e.displayMonthsCount?e.displayMonthsCount:"multiple"===e.type?2:1);},getLocalDate=()=>{const e=new Date;return new Date(e.getTime()-6e4*e.getTimezoneOffset()).toISOString().substring(0,10)},resolveDate=(e,t)=>"today"===e?getLocalDate():e instanceof Date||"number"==typeof e||"string"==typeof e?parseDates([e])[0]:t,initRange=e=>{var t,n,a;const o=resolveDate(e.dateMin,e.dateMin),l=resolveDate(e.dateMax,e.dateMax),s=resolveDate(e.displayDateMin,o),i=resolveDate(e.displayDateMax,l);setContext(e,"dateToday",resolveDate(e.dateToday,e.dateToday)),setContext(e,"displayDateMin",s?getDate(o)>=getDate(s)?o:s:o),setContext(e,"displayDateMax",i?getDate(l)<=getDate(i)?l:i:l);const r=e.disableDatesPast&&!e.disableAllDates&&getDate(s)<getDate(e.context.dateToday);setContext(e,"displayDateMin",r||e.disableAllDates?e.context.dateToday:s),setContext(e,"displayDateMax",e.disableAllDates?e.context.dateToday:i),setContext(e,"disableDates",e.disableDates[0]&&!e.disableAllDates?parseDates(e.disableDates):e.disableAllDates?[e.context.displayDateMin]:[]),e.context.disableDates.length>1&&e.context.disableDates.sort(((e,t)=>+new Date(e)-+new Date(t))),setContext(e,"enableDates",e.enableDates[0]?parseDates(e.enableDates):[]),(null==(t=e.context.enableDates)?void 0:t[0])&&(null==(n=e.context.disableDates)?void 0:n[0])&&setContext(e,"disableDates",e.context.disableDates.filter((t=>!e.context.enableDates.includes(t)))),e.context.enableDates.length>1&&e.context.enableDates.sort(((e,t)=>+new Date(e)-+new Date(t))),(null==(a=e.context.enableDates)?void 0:a[0])&&e.disableAllDates&&(setContext(e,"displayDateMin",e.context.enableDates[0]),setContext(e,"displayDateMax",e.context.enableDates[e.context.enableDates.length-1])),setContext(e,"dateMin",e.displayDisabledDates?o:e.context.displayDateMin),setContext(e,"dateMax",e.displayDisabledDates?l:e.context.displayDateMax);},initSelectedDates=e=>{var t;setContext(e,"selectedDates",(null==(t=e.selectedDates)?void 0:t[0])?parseDates(e.selectedDates):[]);},displayClosestValidDate=e=>{const t=t=>{const n=new Date(t);setInitialContext(e,n.getMonth(),n.getFullYear());};if(e.displayDateMin&&"today"!==e.displayDateMin&&(n=e.displayDateMin,a=new Date,new Date(n).getTime()>a.getTime())){const n=e.selectedDates.length&&e.selectedDates[0]?parseDates(e.selectedDates)[0]:e.displayDateMin;return t(getDate(resolveDate(n,e.displayDateMin))),true}var n,a;if(e.displayDateMax&&"today"!==e.displayDateMax&&((e,t)=>new Date(e).getTime()<t.getTime())(e.displayDateMax,new Date)){const n=e.selectedDates.length&&e.selectedDates[0]?parseDates(e.selectedDates)[0]:e.displayDateMax;return t(getDate(resolveDate(n,e.displayDateMax))),true}return  false},setInitialContext=(e,t,n)=>{setContext(e,"selectedMonth",t),setContext(e,"selectedYear",n),setContext(e,"displayYear",n);},initSelectedMonthYear=e=>{var t;if(e.enableJumpToSelectedDate&&(null==(t=e.selectedDates)?void 0:t[0])&&void 0===e.selectedMonth&&void 0===e.selectedYear){const t=getDate(parseDates(e.selectedDates)[0]);return void setInitialContext(e,t.getMonth(),t.getFullYear())}if(displayClosestValidDate(e))return;const n=void 0!==e.selectedMonth&&Number(e.selectedMonth)>=0&&Number(e.selectedMonth)<12,a=void 0!==e.selectedYear&&Number(e.selectedYear)>=0&&Number(e.selectedYear)<=9999;setInitialContext(e,n?Number(e.selectedMonth):getDate(e.context.dateToday).getMonth(),a?Number(e.selectedYear):getDate(e.context.dateToday).getFullYear());},initTime=e=>{var t,n,a;if(!e.selectionTimeMode)return;if(![12,24].includes(e.selectionTimeMode))throw new Error(errorMessages.incorrectTime);const o=12===e.selectionTimeMode,l=o?/^(0[1-9]|1[0-2]):([0-5][0-9]) ?(AM|PM)?$/i:/^([0-1]?[0-9]|2[0-3]):([0-5][0-9])$/;let[s,i,r]=null!=(a=null==(n=null==(t=e.selectedTime)?void 0:t.match(l))?void 0:n.slice(1))?a:[];s?o&&!r&&(r="AM"):(s=o?transformTime12(String(e.timeMinHour)):String(e.timeMinHour),i=String(e.timeMinMinute),r=o?Number(transformTime12(String(e.timeMinHour)))>=12?"PM":"AM":null),setContext(e,"selectedHours",s.padStart(2,"0")),setContext(e,"selectedMinutes",i.padStart(2,"0")),setContext(e,"selectedKeeping",r),setContext(e,"selectedTime",`${e.context.selectedHours}:${e.context.selectedMinutes}${r?` ${r}`:""}`);},initAllVariables=e=>{setContext(e,"currentType",e.type),initMonthsCount(e),initRange(e),initSelectedMonthYear(e),initSelectedDates(e),initTime(e);},reset=(e,{year:t,month:n,dates:a,time:o,locale:l},s=true)=>{var i;const r={year:e.selectedYear,month:e.selectedMonth,dates:e.selectedDates,time:e.selectedTime};if(e.selectedYear=t?r.year:e.context.selectedYear,e.selectedMonth=n?r.month:e.context.selectedMonth,e.selectedTime=o?r.time:e.context.selectedTime,e.selectedDates="only-first"===a&&(null==(i=e.context.selectedDates)?void 0:i[0])?[e.context.selectedDates[0]]:true===a?r.dates:e.context.selectedDates,l){setContext(e,"locale",{months:{short:[],long:[]},weekdays:{short:[],long:[]}});}initAllVariables(e),s&&create(e),e.selectedYear=r.year,e.selectedMonth=r.month,e.selectedDates=r.dates,e.selectedTime=r.time,"multiple-ranged"===e.selectionDatesMode&&a&&handleSelectDateRange(e,null);},createToInput=e=>{const t=document.createElement("div");return t.className=e.styles.calendar,t.dataset.vc="calendar",t.dataset.vcInput="",t.dataset.vcCalendarHidden="",setContext(e,"inputModeInit",true),setContext(e,"isShowInInputMode",false),setContext(e,"mainElement",t),document.body.appendChild(e.context.mainElement),reset(e,{year:true,month:true,dates:true,time:true,locale:true}),setTimeout((()=>show(e))),e.onInit&&e.onInit(e),handleArrowKeys(e),handleClick(e)},canOpenOnFocus=e=>resolveToggle(e,e.openOnFocus),handleInput=e=>{setContext(e,"inputElement",e.context.mainElement);const t=()=>{e.context.inputModeInit?setTimeout((()=>show(e))):createToInput(e);};e.context.inputElement.addEventListener("click",t);const n="function"==typeof e.openOnFocus||true===e.openOnFocus,a=()=>{shouldSkipOpenOnFocus(e)?clearSkipOpenOnFocus(e):canOpenOnFocus(e)&&t();};n&&e.context.inputElement.addEventListener("focus",a);const o=t=>{const n="Tab"===t.key&&!t.shiftKey,a=["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(t.key);(n||a)&&(t=>{var n;if(!e.context.isShowInInputMode)return  false;if(document.activeElement!==e.context.inputElement)return  false;const a=e=>e.tabIndex>=0&&!e.hasAttribute("disabled")&&"true"!==e.getAttribute("aria-disabled"),o=null!=(n=document.createTreeWalker(e.context.mainElement,NodeFilter.SHOW_ELEMENT,{acceptNode:e=>a(e)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP}).nextNode())?n:a(e.context.mainElement)?e.context.mainElement:null;!o||o.tabIndex<0||(t.preventDefault(),o.focus());})(t);};return e.context.inputElement.addEventListener("keydown",o),()=>{e.context.inputElement.removeEventListener("click",t),n&&e.context.inputElement.removeEventListener("focus",a),e.context.inputElement.removeEventListener("keydown",o);}},init=e=>(setContext(e,"originalElement",e.context.mainElement.cloneNode(true)),setContext(e,"isInit",true),e.inputMode?handleInput(e):(initAllVariables(e),create(e),e.onInit&&e.onInit(e),handleArrowKeys(e),handleClick(e))),update=(e,t)=>{if(!e.context.isInit)throw new Error(errorMessages.notInit);reset(e,__spreadValues(__spreadValues({},{year:true,month:true,dates:true,time:true,locale:true}),t),!(e.inputMode&&!e.context.inputModeInit)),e.onUpdate&&e.onUpdate(e);},replaceProperties=(e,t)=>{const n=Object.keys(t);for(let a=0;a<n.length;a++){const o=n[a];"object"!=typeof e[o]||"object"!=typeof t[o]||t[o]instanceof Date||Array.isArray(t[o])?void 0!==t[o]&&(e[o]=t[o]):replaceProperties(e[o],t[o]);}},set=(e,t,n)=>{replaceProperties(e,t),e.context.isInit&&update(e,n);};function findBestPickerPosition(e,t){const n="left";if(!t||!e)return n;const{canShow:a,parentPositions:o}=getAvailablePosition(e,t),l=a.left&&a.right;return (l&&a.bottom?"center":l&&a.top?["top","center"]:Array.isArray(o)?["bottom"===o[0]?"top":"bottom",...o.slice(1)]:o)||n}const setPosition=(e,t,n)=>{if(!e)return;const a="auto"===n?findBestPickerPosition(e,t):n,o={top:-t.offsetHeight,bottom:e.offsetHeight,left:0,center:e.offsetWidth/2-t.offsetWidth/2,right:e.offsetWidth-t.offsetWidth},l=Array.isArray(a)?a[0]:"bottom",s=Array.isArray(a)?a[1]:a;t.dataset.vcPosition=l;const{top:i,left:r}=getOffset(e),c=i+o[l];let d=r+o[s];const{vw:u}=getViewportDimensions();if(d+t.clientWidth>u){const e=window.innerWidth-document.body.clientWidth;d=u-t.clientWidth-e;}else d<0&&(d=0);Object.assign(t.style,{left:`${d}px`,top:`${c}px`});},show=e=>{if(e.context.isShowInInputMode)return;if(!e.context.currentType)return void e.context.mainElement.click();setContext(e,"cleanupHandlers",[]),setContext(e,"isShowInInputMode",true),e.inputMode&&restoreTabbing(e.context.mainElement),setPosition(e.context.inputElement,e.context.mainElement,e.positionToInput),e.context.mainElement.removeAttribute("data-vc-calendar-hidden");const t=()=>{setPosition(e.context.inputElement,e.context.mainElement,e.positionToInput);};window.addEventListener("resize",t),e.context.cleanupHandlers.push((()=>window.removeEventListener("resize",t)));const n=t=>{"Escape"===t.key&&hide(e);};document.addEventListener("keydown",n),e.context.cleanupHandlers.push((()=>document.removeEventListener("keydown",n)));const a=t=>{t.target===e.context.inputElement||e.context.mainElement.contains(t.target)||hide(e);};document.addEventListener("click",a,{capture:true}),e.context.cleanupHandlers.push((()=>document.removeEventListener("click",a,{capture:true}))),e.onShow&&e.onShow(e);},labels={application:"Calendar",navigation:"Calendar Navigation",arrowNext:{month:"Next month",year:"Next list of years"},arrowPrev:{month:"Previous month",year:"Previous list of years"},month:"Select month, current selected month:",months:"List of months",year:"Select year, current selected year:",years:"List of years",week:"Days of the week",weekNumber:"Numbers of weeks in a year",dates:"Dates in the current month",selectingTime:"Selecting a time ",inputHour:"Hours",inputMinute:"Minutes",rangeHour:"Slider for selecting hours",rangeMinute:"Slider for selecting minutes",btnKeeping:"Switch AM/PM, current position:"},styles={calendar:"vc",controls:"vc-controls",grid:"vc-grid",column:"vc-column",header:"vc-header",headerContent:"vc-header__content",month:"vc-month",year:"vc-year",arrowPrev:"vc-arrow vc-arrow_prev",arrowNext:"vc-arrow vc-arrow_next",wrapper:"vc-wrapper",content:"vc-content",months:"vc-months",monthsMonth:"vc-months__month",years:"vc-years",yearsYear:"vc-years__year",week:"vc-week",weekDay:"vc-week__day",weekNumbers:"vc-week-numbers",weekNumbersTitle:"vc-week-numbers__title",weekNumbersContent:"vc-week-numbers__content",weekNumber:"vc-week-number",dates:"vc-dates",datesRow:"vc-dates__row",date:"vc-date",dateBtn:"vc-date__btn",datePopup:"vc-date__popup",dateRangeTooltip:"vc-date-range-tooltip",time:"vc-time",timeContent:"vc-time__content",timeHour:"vc-time__hour",timeMinute:"vc-time__minute",timeKeeping:"vc-time__keeping",timeRanges:"vc-time__ranges",timeRange:"vc-time__range"};class OptionsCalendar{constructor(){__publicField(this,"type","default"),__publicField(this,"inputMode",false),__publicField(this,"openOnFocus",true),__publicField(this,"positionToInput","left"),__publicField(this,"firstWeekday",1),__publicField(this,"monthsToSwitch",1),__publicField(this,"themeAttrDetect","html[data-theme]"),__publicField(this,"locale","en"),__publicField(this,"dateToday","today"),__publicField(this,"dateMin","1970-01-01"),__publicField(this,"dateMax","2470-12-31"),__publicField(this,"displayDateMin"),__publicField(this,"displayDateMax"),__publicField(this,"displayDatesOutside",true),__publicField(this,"displayDisabledDates",false),__publicField(this,"displayMonthsCount"),__publicField(this,"disableDates",[]),__publicField(this,"disableAllDates",false),__publicField(this,"disableDatesPast",false),__publicField(this,"disableDatesGaps",false),__publicField(this,"disableWeekdays",[]),__publicField(this,"disableToday",false),__publicField(this,"enableDates",[]),__publicField(this,"enableEdgeDatesOnly",true),__publicField(this,"enableDateToggle",true),__publicField(this,"enableWeekNumbers",false),__publicField(this,"enableMonthChangeOnDayClick",true),__publicField(this,"enableJumpToSelectedDate",false),__publicField(this,"selectionDatesMode","single"),__publicField(this,"selectionMonthsMode",true),__publicField(this,"selectionYearsMode",true),__publicField(this,"selectionTimeMode",false),__publicField(this,"selectedDates",[]),__publicField(this,"selectedMonth"),__publicField(this,"selectedYear"),__publicField(this,"selectedHolidays",[]),__publicField(this,"selectedWeekends",[0,6]),__publicField(this,"selectedTime"),__publicField(this,"selectedTheme","system"),__publicField(this,"timeMinHour",0),__publicField(this,"timeMaxHour",23),__publicField(this,"timeMinMinute",0),__publicField(this,"timeMaxMinute",59),__publicField(this,"timeControls","all"),__publicField(this,"timeStepHour",1),__publicField(this,"timeStepMinute",1),__publicField(this,"sanitizerHTML",(e=>e)),__publicField(this,"onClickDate"),__publicField(this,"onClickWeekDay"),__publicField(this,"onClickWeekNumber"),__publicField(this,"onClickTitle"),__publicField(this,"onClickMonth"),__publicField(this,"onClickYear"),__publicField(this,"onClickArrow"),__publicField(this,"onChangeTime"),__publicField(this,"onChangeToInput"),__publicField(this,"onCreateDateRangeTooltip"),__publicField(this,"onCreateDateEls"),__publicField(this,"onCreateMonthEls"),__publicField(this,"onCreateYearEls"),__publicField(this,"onInit"),__publicField(this,"onUpdate"),__publicField(this,"onDestroy"),__publicField(this,"onShow"),__publicField(this,"onHide"),__publicField(this,"popups",{}),__publicField(this,"labels",__spreadValues({},labels)),__publicField(this,"layouts",{default:"",multiple:"",month:"",year:""}),__publicField(this,"styles",__spreadValues({},styles));}}const _Calendar=class e extends OptionsCalendar{constructor(t,n){var a;super(),__publicField(this,"init",(()=>init(this))),__publicField(this,"update",(e=>update(this,e))),__publicField(this,"destroy",(()=>destroy(this))),__publicField(this,"show",(()=>show(this))),__publicField(this,"hide",(()=>hide(this))),__publicField(this,"set",((e,t)=>set(this,e,t))),__publicField(this,"context"),this.context=__spreadProps(__spreadValues({},this.context),{locale:{months:{short:[],long:[]},weekdays:{short:[],long:[]}}}),setContext(this,"mainElement","string"==typeof t?null!=(a=e.memoizedElements.get(t))?a:this.queryAndMemoize(t):t),n&&replaceProperties(this,n);}queryAndMemoize(t){const n=document.querySelector(t);if(!n)throw new Error(errorMessages.notFoundSelector(t));return e.memoizedElements.set(t,n),n}};__publicField(_Calendar,"memoizedElements",new Map);let Calendar=_Calendar;
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap datepicker.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$f = 'datepicker';
+const DATA_KEY$b = 'bs.datepicker';
+const EVENT_KEY$b = `.${DATA_KEY$b}`;
+const DATA_API_KEY$6 = '.data-api';
+const EVENT_CHANGE = `change${EVENT_KEY$b}`;
+const EVENT_SHOW$6 = `show${EVENT_KEY$b}`;
+const EVENT_SHOWN$6 = `shown${EVENT_KEY$b}`;
+const EVENT_HIDE$6 = `hide${EVENT_KEY$b}`;
+const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$b}`;
+const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$b}${DATA_API_KEY$6}`;
+const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$b}${DATA_API_KEY$6}`;
+const SELECTOR_DATA_TOGGLE$7 = '[data-bs-toggle="datepicker"]';
+const HIDE_DELAY = 100; // ms delay before hiding after selection
+
+const Default$e = {
+  datepickerTheme: null,
+  // 'light', 'dark', 'auto' - explicit theme for datepicker popover only
+  dateMin: null,
+  dateMax: null,
+  dateFormat: null,
+  // Intl.DateTimeFormat options, or function(date, locale) => string
+  displayElement: null,
+  // Element to show formatted date (defaults to element for buttons)
+  displayMonthsCount: 1,
+  // Number of months to display side-by-side
+  firstWeekday: 1,
+  // Monday
+  inline: false,
+  // Render calendar inline (no popup)
+  locale: 'default',
+  positionElement: null,
+  // Element to position calendar relative to (defaults to input)
+  selectedDates: [],
+  selectionMode: 'single',
+  // 'single', 'multiple', 'multiple-ranged'
+  placement: 'left',
+  // 'left', 'center', 'right', 'auto'
+  vcpOptions: {} // Pass-through for any VCP option
+};
+const DefaultType$e = {
+  datepickerTheme: '(null|string)',
+  dateMin: '(null|string|number|object)',
+  dateMax: '(null|string|number|object)',
+  dateFormat: '(null|object|function)',
+  displayElement: '(null|string|element|boolean)',
+  displayMonthsCount: 'number',
+  firstWeekday: 'number',
+  inline: 'boolean',
+  locale: 'string',
+  positionElement: '(null|string|element)',
+  selectedDates: 'array',
+  selectionMode: 'string',
+  placement: 'string',
+  vcpOptions: 'object'
+};
+
+/**
+ * Class definition
+ */
+
+class Datepicker extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+    this._calendar = null;
+    this._isShown = false;
+    this._initCalendar();
+  }
+
+  // Getters
+  static get Default() {
+    return Default$e;
+  }
+  static get DefaultType() {
+    return DefaultType$e;
+  }
+  static get NAME() {
+    return NAME$f;
+  }
+
+  // Public
+  toggle() {
+    if (this._config.inline) {
+      return; // Inline calendars are always visible
+    }
+    return this._isShown ? this.hide() : this.show();
+  }
+  show() {
+    if (this._config.inline) {
+      return; // Inline calendars are always visible
+    }
+    if (!this._calendar || isDisabled(this._element) || this._isShown) {
+      return;
+    }
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$6);
+    if (showEvent.defaultPrevented) {
+      return;
+    }
+    this._calendar.show();
+    this._isShown = true;
+    EventHandler.trigger(this._element, EVENT_SHOWN$6);
+  }
+  hide() {
+    if (this._config.inline) {
+      return; // Inline calendars are always visible
+    }
+    if (!this._calendar || !this._isShown) {
+      return;
+    }
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$6);
+    if (hideEvent.defaultPrevented) {
+      return;
+    }
+    this._calendar.hide();
+    this._isShown = false;
+    EventHandler.trigger(this._element, EVENT_HIDDEN$6);
+  }
+  dispose() {
+    if (this._themeObserver) {
+      this._themeObserver.disconnect();
+      this._themeObserver = null;
+    }
+    if (this._calendar) {
+      this._calendar.destroy();
+    }
+    this._calendar = null;
+    super.dispose();
+  }
+  getSelectedDates() {
+    const dates = this._calendar?.context?.selectedDates;
+    return dates ? [...dates] : [];
+  }
+  setSelectedDates(dates) {
+    if (this._calendar) {
+      this._calendar.set({
+        selectedDates: dates
+      });
+    }
+  }
+
+  // Private
+  _initCalendar() {
+    this._isInput = this._element.tagName === 'INPUT';
+    this._isInline = this._config.inline;
+
+    // For inline mode, look for a hidden input child to bind to
+    if (this._isInline && !this._isInput) {
+      this._boundInput = this._element.querySelector('input[type="hidden"], input[name]');
+    }
+    this._positionElement = this._resolvePositionElement();
+    this._displayElement = this._resolveDisplayElement();
+    const calendarOptions = this._buildCalendarOptions();
+
+    // Create calendar on the position element (for correct popup positioning)
+    // but value updates still go to this._element (the input)
+    this._calendar = new Calendar(this._positionElement, calendarOptions);
+    this._calendar.init();
+
+    // Watch for theme changes on ancestor elements (for live theme switching)
+    this._setupThemeObserver();
+
+    // Set initial value if input has a value
+    if (this._isInput && this._element.value) {
+      this._parseInputValue();
+    }
+
+    // Populate input/display with preselected dates
+    this._updateDisplayWithSelectedDates();
+  }
+  _updateDisplayWithSelectedDates() {
+    const {
+      selectedDates
+    } = this._config;
+    if (!selectedDates || selectedDates.length === 0) {
+      return;
+    }
+    const formattedDate = this._formatDateForInput(selectedDates);
+    if (this._isInput) {
+      this._element.value = formattedDate;
+    }
+    if (this._boundInput) {
+      this._boundInput.value = selectedDates.join(',');
+    }
+    if (this._displayElement) {
+      this._displayElement.textContent = formattedDate;
+    }
+  }
+  _resolvePositionElement() {
+    let {
+      positionElement
+    } = this._config;
+    if (typeof positionElement === 'string') {
+      positionElement = document.querySelector(positionElement);
+    }
+
+    // Use input's parent if in form-adorn
+    if (!positionElement && this._isInput && !this._isInline) {
+      const parent = this._element.closest('.form-adorn');
+      if (parent) {
+        positionElement = parent;
+      }
+    }
+    return positionElement || this._element;
+  }
+  _resolveDisplayElement() {
+    const {
+      displayElement
+    } = this._config;
+    if (typeof displayElement === 'string') {
+      return document.querySelector(displayElement);
+    }
+
+    // For buttons/non-inputs (not inline), look for a [data-bs-datepicker-display] child
+    if (displayElement === true || displayElement === null && !this._isInput && !this._isInline) {
+      const displayChild = this._element.querySelector('[data-bs-datepicker-display]');
+      return displayChild || this._element;
+    }
+    return displayElement;
+  }
+  _getThemeAncestor() {
+    return this._element.closest('[data-bs-theme]');
+  }
+  _getEffectiveTheme() {
+    // Priority: explicit datepickerTheme config > inherited from ancestor > none
+    const {
+      datepickerTheme
+    } = this._config;
+    if (datepickerTheme) {
+      return datepickerTheme;
+    }
+    const ancestor = this._getThemeAncestor();
+    return ancestor?.getAttribute('data-bs-theme') || null;
+  }
+  _syncThemeAttribute(element) {
+    if (!element) {
+      return;
+    }
+    const theme = this._getEffectiveTheme();
+    if (theme) {
+      // Copy theme to popover (needed because VCP appends to body, breaking CSS inheritance)
+      element.setAttribute('data-bs-theme', theme);
+    } else {
+      // No theme - remove attribute to allow natural inheritance
+      element.removeAttribute('data-bs-theme');
+    }
+  }
+  _setupThemeObserver() {
+    // Watch for theme changes on ancestor elements
+    const ancestor = this._getThemeAncestor();
+    if (!ancestor || this._config.datepickerTheme) {
+      // No ancestor to watch, or explicit datepickerTheme overrides
+      return;
+    }
+    this._themeObserver = new MutationObserver(() => {
+      this._syncThemeAttribute(this._calendar?.context?.mainElement);
+    });
+    this._themeObserver.observe(ancestor, {
+      attributes: true,
+      attributeFilter: ['data-bs-theme']
+    });
+  }
+  _buildCalendarOptions() {
+    // Get theme for VCP - use 'system' for auto-detection if no explicit theme
+    const theme = this._getEffectiveTheme();
+    // VCP uses 'system' for auto, Bootstrap uses 'auto'
+    const vcpTheme = !theme || theme === 'auto' ? 'system' : theme;
+    const calendarOptions = {
+      ...this._config.vcpOptions,
+      inputMode: !this._isInline,
+      positionToInput: this._config.placement,
+      firstWeekday: this._config.firstWeekday,
+      locale: this._config.locale,
+      selectionDatesMode: this._config.selectionMode,
+      selectedDates: this._config.selectedDates,
+      displayMonthsCount: this._config.displayMonthsCount,
+      type: this._config.displayMonthsCount > 1 ? 'multiple' : 'default',
+      selectedTheme: vcpTheme,
+      themeAttrDetect: '[data-bs-theme]',
+      onClickDate: (self, event) => this._handleDateClick(self, event),
+      onInit: self => {
+        this._syncThemeAttribute(self.context.mainElement);
+      },
+      onShow: () => {
+        this._isShown = true;
+        this._syncThemeAttribute(this._calendar.context.mainElement);
+      },
+      onHide: () => {
+        this._isShown = false;
+      }
+    };
+
+    // Navigate to the month of the first selected date
+    if (this._config.selectedDates.length > 0) {
+      const firstDate = this._parseDate(this._config.selectedDates[0]);
+      calendarOptions.selectedMonth = firstDate.getMonth();
+      calendarOptions.selectedYear = firstDate.getFullYear();
+    }
+    if (this._config.dateMin) {
+      calendarOptions.dateMin = this._config.dateMin;
+    }
+    if (this._config.dateMax) {
+      calendarOptions.dateMax = this._config.dateMax;
+    }
+    return calendarOptions;
+  }
+  _handleDateClick(self, event) {
+    const selectedDates = [...self.context.selectedDates];
+    if (selectedDates.length > 0) {
+      const formattedDate = this._formatDateForInput(selectedDates);
+      if (this._isInput) {
+        this._element.value = formattedDate;
+      }
+      if (this._boundInput) {
+        this._boundInput.value = selectedDates.join(',');
+      }
+      if (this._displayElement) {
+        this._displayElement.textContent = formattedDate;
+      }
+    }
+    EventHandler.trigger(this._element, EVENT_CHANGE, {
+      dates: selectedDates,
+      event
+    });
+    this._maybeHideAfterSelection(selectedDates);
+  }
+  _maybeHideAfterSelection(selectedDates) {
+    if (this._isInline) {
+      return;
+    }
+    const shouldHide = this._config.selectionMode === 'single' && selectedDates.length > 0 || this._config.selectionMode === 'multiple-ranged' && selectedDates.length >= 2;
+    if (shouldHide) {
+      setTimeout(() => this.hide(), HIDE_DELAY);
+    }
+  }
+  _parseDate(dateStr) {
+    const [year, month, day] = dateStr.split('-');
+    return new Date(year, month - 1, day);
+  }
+  _formatDate(dateStr) {
+    const date = this._parseDate(dateStr);
+    const locale = this._config.locale === 'default' ? undefined : this._config.locale;
+    const {
+      dateFormat
+    } = this._config;
+
+    // Custom function formatter
+    if (typeof dateFormat === 'function') {
+      return dateFormat(date, locale);
+    }
+
+    // Intl.DateTimeFormat options object
+    if (dateFormat && typeof dateFormat === 'object') {
+      return new Intl.DateTimeFormat(locale, dateFormat).format(date);
+    }
+
+    // Default: locale-aware formatting
+    return date.toLocaleDateString(locale);
+  }
+  _formatDateForInput(dates) {
+    if (dates.length === 0) {
+      return '';
+    }
+    if (dates.length === 1) {
+      return this._formatDate(dates[0]);
+    }
+
+    // For date ranges, use en-dash; for multiple dates, use comma
+    const separator = this._config.selectionMode === 'multiple-ranged' ? ' – ' : ', ';
+    return dates.map(d => this._formatDate(d)).join(separator);
+  }
+  _parseInputValue() {
+    // Try to parse the input value as a date
+    const value = this._element.value.trim();
+    if (!value) {
+      return;
+    }
+    const date = new Date(value);
+    if (!Number.isNaN(date.getTime())) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const formatted = `${year}-${month}-${day}`;
+      this._calendar.set({
+        selectedDates: [formatted]
+      });
+    }
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$7, function (event) {
+  // Only handle if not an input (inputs use focus)
+  // Skip inline datepickers (they're always visible)
+  if (this.tagName === 'INPUT' || this.dataset.bsInline === 'true') {
+    return;
+  }
+  event.preventDefault();
+  Datepicker.getOrCreateInstance(this).toggle();
+});
+EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE$7, function () {
+  // Handle focus for input elements
+  if (this.tagName !== 'INPUT') {
+    return;
+  }
+  Datepicker.getOrCreateInstance(this).show();
+});
+
+// Auto-initialize inline datepickers on DOMContentLoaded
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$b}${DATA_API_KEY$6}`, () => {
+  for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE$7}[data-bs-inline="true"]`)) {
+    Datepicker.getOrCreateInstance(element);
+  }
+});
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap dialog.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$e = 'dialog';
+const DATA_KEY$a = 'bs.dialog';
+const EVENT_KEY$a = `.${DATA_KEY$a}`;
+const DATA_API_KEY$5 = '.data-api';
+const EVENT_SHOW$5 = `show${EVENT_KEY$a}`;
+const EVENT_SHOWN$5 = `shown${EVENT_KEY$a}`;
+const EVENT_HIDE$5 = `hide${EVENT_KEY$a}`;
+const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$a}`;
+const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$a}`;
+const EVENT_CANCEL = `cancel${EVENT_KEY$a}`;
+const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$a}${DATA_API_KEY$5}`;
+const CLASS_NAME_STATIC = 'dialog-static';
+const CLASS_NAME_OPEN = 'dialog-open';
+const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
+const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="dialog"]';
+const SELECTOR_OPEN_MODAL_DIALOG = 'dialog.dialog[open]:not(.dialog-nonmodal)';
+const Default$d = {
+  backdrop: true,
+  // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
+  keyboard: true,
+  modal: true // true uses showModal(), false uses show() for non-modal dialogs
+};
+const DefaultType$d = {
+  backdrop: '(boolean|string)',
+  keyboard: 'boolean',
+  modal: 'boolean'
+};
+
+/**
+ * Class definition
+ */
+
+class Dialog extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+    this._isTransitioning = false;
+    this._addEventListeners();
+  }
+
+  // Getters
+  static get Default() {
+    return Default$d;
+  }
+  static get DefaultType() {
+    return DefaultType$d;
+  }
+  static get NAME() {
+    return NAME$e;
+  }
+
+  // Public
+  toggle(relatedTarget) {
+    return this._element.open ? this.hide() : this.show(relatedTarget);
+  }
+  show(relatedTarget) {
+    if (this._element.open || this._isTransitioning) {
+      return;
+    }
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$5, {
+      relatedTarget
+    });
+    if (showEvent.defaultPrevented) {
+      return;
+    }
+    this._isTransitioning = true;
+    if (this._config.modal) {
+      // Modal dialog: use showModal() for focus trapping, backdrop, and top layer
+      this._element.showModal();
+      // Prevent body scroll for modal dialogs
+      document.body.classList.add(CLASS_NAME_OPEN);
+    } else {
+      // Non-modal dialog: use show() - no backdrop, no focus trap, no top layer
+      this._element.classList.add(CLASS_NAME_NONMODAL);
+      this._element.show();
+    }
+    this._queueCallback(() => {
+      this._isTransitioning = false;
+      EventHandler.trigger(this._element, EVENT_SHOWN$5, {
+        relatedTarget
+      });
+    }, this._element, this._isAnimated());
+  }
+  hide() {
+    if (!this._element.open || this._isTransitioning) {
+      return;
+    }
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$5);
+    if (hideEvent.defaultPrevented) {
+      return;
+    }
+    this._isTransitioning = true;
+    this._queueCallback(() => this._hideDialog(), this._element, this._isAnimated());
+  }
+  dispose() {
+    EventHandler.off(this._element, EVENT_KEY$a);
+    super.dispose();
+  }
+  handleUpdate() {
+    // Provided for API consistency with Modal.
+    // Native dialogs handle their own positioning.
+  }
+
+  // Private
+  _hideDialog() {
+    this._element.close();
+    this._element.classList.remove(CLASS_NAME_NONMODAL);
+    this._isTransitioning = false;
+
+    // Only restore body scroll if no other modal dialogs are open
+    if (!document.querySelector(SELECTOR_OPEN_MODAL_DIALOG)) {
+      document.body.classList.remove(CLASS_NAME_OPEN);
+    }
+    EventHandler.trigger(this._element, EVENT_HIDDEN$5);
+  }
+  _isAnimated() {
+    return this._element.classList.contains('fade');
+  }
+  _triggerBackdropTransition() {
+    const hidePreventedEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED$1);
+    if (hidePreventedEvent.defaultPrevented) {
+      return;
+    }
+    this._element.classList.add(CLASS_NAME_STATIC);
+    this._queueCallback(() => {
+      this._element.classList.remove(CLASS_NAME_STATIC);
+    }, this._element);
+  }
+  _addEventListeners() {
+    // Handle native cancel event (Escape key) - only fires for modal dialogs
+    EventHandler.on(this._element, 'cancel', event => {
+      // Prevent native close behavior - we'll handle it
+      event.preventDefault();
+      if (!this._config.keyboard) {
+        this._triggerBackdropTransition();
+        return;
+      }
+      EventHandler.trigger(this._element, EVENT_CANCEL);
+      this.hide();
+    });
+
+    // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
+    EventHandler.on(this._element, 'keydown', event => {
+      if (event.key !== 'Escape' || this._config.modal) {
+        return;
+      }
+      event.preventDefault();
+      if (!this._config.keyboard) {
+        return;
+      }
+      EventHandler.trigger(this._element, EVENT_CANCEL);
+      this.hide();
+    });
+
+    // Handle backdrop clicks (only applies to modal dialogs)
+    // Native <dialog> fires click on the dialog element when backdrop is clicked
+    EventHandler.on(this._element, 'click', event => {
+      // Only handle clicks directly on the dialog (backdrop area)
+      // Non-modal dialogs don't have a backdrop
+      if (event.target !== this._element || !this._config.modal) {
+        return;
+      }
+      if (this._config.backdrop === 'static') {
+        this._triggerBackdropTransition();
+        return;
+      }
+
+      // Default: click backdrop to dismiss
+      this.hide();
+    });
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$6, function (event) {
+  const target = SelectorEngine.getElementFromSelector(this);
+  if (['A', 'AREA'].includes(this.tagName)) {
+    event.preventDefault();
+  }
+  EventHandler.one(target, EVENT_SHOW$5, showEvent => {
+    if (showEvent.defaultPrevented) {
+      return;
+    }
+    EventHandler.one(target, EVENT_HIDDEN$5, () => {
+      if (isVisible(this)) {
+        this.focus();
+      }
+    });
+  });
+
+  // Get config from trigger's data attributes
+  const config = Manipulator.getDataAttributes(this);
+
+  // Check if trigger is inside an open dialog
+  const currentDialog = this.closest('dialog[open]');
+  const shouldSwap = currentDialog && currentDialog !== target;
+  if (shouldSwap) {
+    // Open new dialog first (its backdrop appears over current)
+    const newDialog = Dialog.getOrCreateInstance(target, config);
+    newDialog.show(this);
+
+    // Close the current dialog (no backdrop flash since new one is already open)
+    const currentInstance = Dialog.getInstance(currentDialog);
+    if (currentInstance) {
+      currentInstance.hide();
+    }
+    return;
+  }
+  const data = Dialog.getOrCreateInstance(target, config);
+  data.toggle(this);
+});
+enableDismissTrigger(Dialog);
 
 /**
  * --------------------------------------------------------------------------
@@ -6075,101 +6889,6 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$4}${DATA_API_KEY$1}`, () 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/sanitizer.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-// js-docs-start allow-list
-const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
-const DefaultAllowlist = {
-  // Global attributes allowed on any supplied element below.
-  '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
-  a: ['target', 'href', 'title', 'rel'],
-  area: [],
-  b: [],
-  br: [],
-  col: [],
-  code: [],
-  dd: [],
-  div: [],
-  dl: [],
-  dt: [],
-  em: [],
-  hr: [],
-  h1: [],
-  h2: [],
-  h3: [],
-  h4: [],
-  h5: [],
-  h6: [],
-  i: [],
-  img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
-  li: [],
-  ol: [],
-  p: [],
-  pre: [],
-  s: [],
-  small: [],
-  span: [],
-  sub: [],
-  sup: [],
-  strong: [],
-  u: [],
-  ul: []
-};
-// js-docs-end allow-list
-
-const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href']);
-
-/**
- * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
- * contexts.
- *
- * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
- */
-const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
-const allowedAttribute = (attribute, allowedAttributeList) => {
-  const attributeName = attribute.nodeName.toLowerCase();
-  if (allowedAttributeList.includes(attributeName)) {
-    if (uriAttributes.has(attributeName)) {
-      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue));
-    }
-    return true;
-  }
-
-  // Check if a regular expression validates the attribute.
-  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp).some(regex => regex.test(attributeName));
-};
-function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
-  if (!unsafeHtml.length) {
-    return unsafeHtml;
-  }
-  if (sanitizeFunction && typeof sanitizeFunction === 'function') {
-    return sanitizeFunction(unsafeHtml);
-  }
-  const domParser = new window.DOMParser();
-  const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
-  const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
-  for (const element of elements) {
-    const elementName = element.nodeName.toLowerCase();
-    if (!Object.keys(allowList).includes(elementName)) {
-      element.remove();
-      continue;
-    }
-    const attributeList = [].concat(...element.attributes);
-    const allowedAttributes = [].concat(allowList['*'] || [], allowList[elementName] || []);
-    for (const attribute of attributeList) {
-      if (!allowedAttribute(attribute, allowedAttributes)) {
-        element.removeAttribute(attribute.nodeName);
-      }
-    }
-  }
-  return createdDocument.body.innerHTML;
-}
-
-/**
- * --------------------------------------------------------------------------
  * Bootstrap util/template-factory.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
@@ -7742,5 +8461,5 @@ class Toggler extends BaseComponent {
 
 eventActionOnPlugin(Toggler, EVENT_CLICK, SELECTOR_DATA_TOGGLE, 'toggle');
 
-export { Alert, Button, Carousel, Collapse, Datepicker, Dialog, Dropdown, NavOverflow, Offcanvas, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
+export { Alert, Button, Carousel, Collapse, CustomSelect, Datepicker, Dialog, Dropdown, NavOverflow, Offcanvas, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
 //# sourceMappingURL=bootstrap.bundle.js.map

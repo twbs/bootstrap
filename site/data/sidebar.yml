@@ -67,6 +67,7 @@
   pages:
     - title: Overview
     - title: Form control
+    - title: Custom select
     - title: Checkbox
     - title: Radio
     - title: Switch

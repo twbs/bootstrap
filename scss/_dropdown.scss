@@ -92,7 +92,7 @@ $dropdown-tokens: defaults(
   .dropdown-item {
     display: flex;
     gap: var(--dropdown-item-gap);
-    align-items: center;
+    align-items: var(--dropdown-item-align, center);
     width: 100%; // For `<button>`s
     padding: var(--dropdown-item-padding-y) var(--dropdown-item-padding-x);
     font-weight: $font-weight-normal;

@@ -136,13 +136,13 @@ $theme-colors: (
     "contrast": light-dark(var(--white), var(--gray-900))
   ),
   "secondary": (
-    "base": var(--gray-200),
+    "base": var(--gray-100),
     "text": light-dark(var(--gray-600), var(--gray-400)),
     "text-emphasis": light-dark(var(--gray-800), var(--gray-200)),
-    "bg": light-dark(var(--gray-100), var(--gray-600)),
+    "bg": light-dark(var(--gray-050), var(--gray-600)),
     "bg-subtle": light-dark(var(--gray-050), var(--gray-800)),
     "bg-muted": light-dark(var(--gray-100), var(--gray-700)),
-    "border": light-dark(var(--gray-300), var(--gray-600)),
+    "border": light-dark(color-mix(in oklch, var(--gray-100), var(--gray-200)), var(--gray-600)),
     "focus-ring": color-mix(in oklch, light-dark(var(--gray-500), var(--gray-300)) 50%, var(--bg-body)),
     "contrast": light-dark(var(--gray-900), var(--white))
   )

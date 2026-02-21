@@ -164,11 +164,32 @@ const rounded = ['default', 'pill', 'square']
   const styleInputs = document.querySelectorAll('input[name="btn-style"]')
   const roundedInputs = document.querySelectorAll('input[name="btn-rounded"]')
   const previewButtons = document.querySelectorAll('#button-preview button')
-  // Find the code snippet inside the Example component
-  const codeSnippet = document.querySelector('#button-preview')?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+  // Find the code snippet inside the Example component (Shiki outputs pre.astro-code > code)
+  const snippetContainer = document.querySelector('#button-preview')?.closest('.bd-example-snippet')
+  const codeSnippet = snippetContainer?.querySelector('pre code') as HTMLElement
+  const preElement = codeSnippet?.parentElement
 
   // Get all theme color names for removal
   const themeColorNames = Array.from(colorDropdownItems).map(item => (item as HTMLElement).dataset.color || '')
+
+  // Lazy-load Shiki for client-side re-highlighting (keeps syntax highlighting when snippet updates)
+  let shikiHighlighter: { codeToHtml: (code: string, opts: { lang: string; theme: string }) => string } | null = null
+  async function getShikiHighlighter() {
+    if (shikiHighlighter) return shikiHighlighter
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- ESM CDN URL
+    // @ts-expect-error - dynamic ESM CDN import
+    const shiki = await import('https://esm.sh/shiki@3')
+    shikiHighlighter = await shiki.createHighlighter({
+      themes: ['github-light', 'github-dark'],
+      langs: ['html']
+    })
+    return shikiHighlighter
+  }
+
+  function getCurrentColorMode(): 'light' | 'dark' {
+    const theme = document.documentElement.getAttribute('data-bs-theme')
+    return (theme === 'dark' ? 'dark' : 'light')
+  }
 
   function generateHTML(button: HTMLElement): string {
     const classes = Array.from(button.classList).filter(cls =>
@@ -184,11 +205,11 @@ const rounded = ['default', 'pill', 'square']
     html += '>'
 
     if (buttonType === 'text') {
-      html += 'Click me'
+      html += 'Button'
     } else if (buttonType === 'left-icon') {
-      html += '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-left" />\n  </svg>\n  With left icon'
+      html += '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-left" />\n  </svg>\n  Left icon'
     } else if (buttonType === 'right-icon') {
-      html += 'With right icon\n  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-right" />\n  </svg>'
+      html += 'Right icon\n  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-right" />\n  </svg>'
     } else if (buttonType === 'icon-only') {
       html += '\n  <svg class="bi" width="16" height="16" aria-hidden="true">\n    <use href="#plus-lg" />\n  </svg>'
     }
@@ -197,20 +218,34 @@ const rounded = ['default', 'pill', 'square']
     return html
   }
 
-  function updateCodeSnippet() {
+  async function updateCodeSnippet() {
     if (!codeSnippet) return
 
     const htmlSnippets = Array.from(previewButtons).map(button => generateHTML(button as HTMLElement))
     const htmlCode = htmlSnippets.join('\n\n')
 
-    // Update the code content
+    // Update immediately with plain text so the snippet reflects options right away
     codeSnippet.className = 'language-html'
     codeSnippet.textContent = htmlCode
 
-    // Trigger Prism highlighting if available
-    // Prism from @astrojs/prism is server-side, but we can try to use Prism.js if loaded
-    if (typeof window !== 'undefined' && (window as any).Prism) {
-      (window as any).Prism.highlightElement(codeSnippet)
+    // Re-highlight with Shiki in the browser to match the rest of the docs
+    try {
+      const highlighter = await getShikiHighlighter()
+      if (!highlighter) return
+      const theme = getCurrentColorMode() === 'dark' ? 'github-dark' : 'github-light'
+      const highlightedHtml = highlighter.codeToHtml(htmlCode, { lang: 'html', theme })
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(highlightedHtml, 'text/html')
+      const highlightedCode = doc.querySelector('pre code')
+      if (highlightedCode) {
+        codeSnippet.innerHTML = highlightedCode.innerHTML
+      }
+      // Keep site styling: ensure pre has astro-code class
+      if (preElement && !preElement.classList.contains('astro-code')) {
+        preElement.classList.add('astro-code')
+      }
+    } catch {
+      // If Shiki fails (e.g. CSP, network), keep the plain text we already set
     }
   }
 
@@ -333,7 +368,6 @@ const rounded = ['default', 'pill', 'square']
     input.addEventListener('change', updateButtons)
   })
 
-  // Initial update
+  // Initial update (updateButtons calls updateCodeSnippet)
   updateButtons()
-  updateCodeSnippet()
 </script>

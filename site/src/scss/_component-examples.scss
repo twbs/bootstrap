@@ -15,16 +15,11 @@
 
     margin: 0 ($bd-gutter-x * -.5);
     background-color: var(--bd-pre-bg);
-    border: solid var(--bs-border-color);
-    border-width: 1px 0;
+    border: 1px solid var(--bs-border-color);
+    @include border-radius(var(--bs-border-radius));
 
-    @include media-breakpoint-up(md) {
-      margin-inline: 0;
-      border-width: 1px;
-      @include border-radius(var(--bs-border-radius));
-    }
-
-    .bd-example {
+    .bd-example,
+    .astro-code {
       &:first-child {
         @include border-top-radius(var(--bd-example-inner-radius));
       }
@@ -47,16 +42,13 @@
     padding-inline-end: calc(var(--bd-example-padding) - .5em);
     background-color: var(--bs-bg-1);
     border-bottom: 1px solid var(--bs-border-color);
-    // @include border-top-radius(calc(var(--bs-border-radius) - 1px));
 
-    @include media-breakpoint-up(md) {
-      &:first-child {
-        @include border-top-radius(calc(var(--bs-border-radius) - 1px));
-      }
+    &:not(:first-child) {
+      border-top: 1px solid var(--bs-border-color);
+    }
 
-      &:not(:first-child) {
-        border-top: 1px solid var(--bs-border-color);
-      }
+    &:first-child {
+      @include border-top-radius(calc(var(--bs-border-radius) - 1px));
     }
   }
 
@@ -89,7 +81,7 @@
     //   margin-top: $spacer;
     // }
 
-    > .dropdown-menu {
+    > .dropdown-menu:not(.custom-select-menu) {
       max-width: 12rem;
     }
 
@@ -166,7 +158,7 @@
 
   .bd-example-buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: .5rem;
     justify-content: start;
   }

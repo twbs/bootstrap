@@ -255,6 +255,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
           --btn-active-#{$property}: oklch(from var(--theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
         }
       }
+
       @each $property, $value in map.get($button-variants, $variant, "base") {
         @if $value == "transparent" {
           --btn-disabled-#{$property}: transparent;
@@ -292,7 +293,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
           } @else if $value == "bg-subtle" {
             --btn-active-#{$property}: var(--theme-#{$value});
           } @else {
-            --btn-active-#{$property}: oklch(from var(--theme-#{$value}) calc(l * .9) calc(c * 1.15) h);
+            --btn-active-#{$property}: oklch(from var(--theme-#{$value}) calc(l * .94) calc(c * 1.15) h);
           }
         }
       }

@@ -366,6 +366,11 @@ $reboot-mark-tokens: defaults(
     vertical-align: middle;
   }
 
+  svg {
+    flex-shrink: 0;
+  }
+
+
   // Tables
   //
   // Prevent double borders

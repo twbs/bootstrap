@@ -24,7 +24,8 @@ Bootstrap includes several button variants, each serving its own semantic purpos
 
 Compare all button variants and styles at once:
 
-<Example class="bd-example-buttons justify-items-start" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid theme-${themeColor.name}">${themeColor.title}</button>
+<Example class="bd-example-buttons justify-items-start" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid btn-styled theme-${themeColor.name}">${themeColor.title}</button>
+<button type="button" class="btn-solid theme-${themeColor.name}">${themeColor.title}</button>
 <button type="button" class="btn-outline theme-${themeColor.name}">${themeColor.title}</button>
 <button type="button" class="btn-subtle theme-${themeColor.name}">${themeColor.title}</button>
 <button type="button" class="btn-text theme-${themeColor.name}">${themeColor.title}</button>`)]} />

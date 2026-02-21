@@ -1,0 +1,462 @@
+---
+title: Custom select
+description: Enhance native `<select>` elements with Bootstrap-styled dropdown menus, custom HTML content, icons, descriptions, and live search.
+toc: true
+---
+
+## Overview
+
+The custom select component transforms standard `<select>` elements into fully styled Bootstrap dropdowns while maintaining form compatibility. Key features include:
+
+- Custom HTML content in options via data attributes
+- Icons and images alongside option text
+- Secondary description text below each option
+- Live search/filtering with keyword support
+- Checkmark indicator for selected items
+- Full keyboard navigation and accessibility
+- Automatic sync with the original `<select>` for form submission
+
+## Example
+
+Add `data-bs-toggle="custom-select"` to any `<select>` element to enhance it. The original select is hidden but remains in the DOM for form submissions.
+
+<Example code={`<label for="basicSelect" class="form-label">Choose an option</label>
+  <select class="form-control" id="basicSelect" data-bs-toggle="custom-select">
+    <option value="">Select an item…</option>
+    <option value="1">Option one</option>
+    <option value="2">Option two</option>
+    <option value="3">Option three</option>
+  </select>`} />
+
+The first option with an empty value (`value=""`) is treated as a placeholder: its text is shown when nothing is selected, and by default it is **not shown in the dropdown list**. Only real choices appear when the menu opens.
+
+### Placeholders
+
+Unlike `input` elements, `select` elements do not have a placeholder attribute, so many people use an `option` element with an empty (`value=""`) as a placeholder. We ignore these options by default (see the previous example) and offer some alternative options for setting placeholder text.
+
+**Use custom placeholder text.** Use `data-bs-placeholder` when you want specific label text while ignoring value-less options.
+
+<Example code={`<label for="placeholderSelect" class="form-label">With explicit placeholder</label>
+  <select class="form-control"
+          id="placeholderSelect"
+          data-bs-toggle="custom-select"
+          data-bs-placeholder="Pick a country…">
+    <option value="">Ignored when data-bs-placeholder is set</option>
+    <option value="us">United States</option>
+    <option value="uk">United Kingdom</option>
+    <option value="ca">Canada</option>
+  </select>`} />
+
+**Show the empty options.** With `data-bs-hide-placeholder-option="false"`, empty options appear in the dropdown so users can re-select them to clear their choice.
+
+<Example code={`<label for="showEmptySelect" class="form-label">Empty option in list</label>
+  <select class="form-control"
+          id="showEmptySelect"
+          data-bs-toggle="custom-select"
+          data-bs-hide-placeholder-option="false">
+    <option value="">None</option>
+    <option value="a">Option A</option>
+    <option value="b">Option B</option>
+  </select>`} />
+
+**Option marked as placeholder.** Use `data-bs-placeholder="true"` on an option (with or without a value) to hide it from the list while still using its text as the initial label.
+
+<Example code={`<label for="optionPlaceholderSelect" class="form-label">Option as placeholder</label>
+  <select class="form-control"
+          id="optionPlaceholderSelect"
+          data-bs-toggle="custom-select">
+    <option value="admin">Admin</option>
+    <option value="editor">Editor</option>
+    <option value="viewer">Viewer</option>
+    <option value="" data-bs-placeholder="true">Choose a role…</option>
+  </select>`} />
+
+## Custom content
+
+### Icons
+
+Add inline SVG icons to options using the `data-bs-icon` attribute.
+
+<Example code={`<label for="iconSelect" class="form-label">Select with icons</label>
+  <select class="form-control" id="iconSelect" data-bs-toggle="custom-select">
+    <option value="">Choose a status…</option>
+    <option value="pending" data-bs-icon="<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z'/><path d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0'/></svg>">Pending</option>
+    <option value="approved" data-bs-icon="<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16'/><path d='m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05'/></svg>">Approved</option>
+    <option value="rejected" data-bs-icon="<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16'/><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708'/></svg>">Rejected</option>
+  </select>`} />
+
+### Descriptions
+
+Add secondary descriptive text below option labels using `data-bs-description`.
+
+<Example code={`<label for="descSelect" class="form-label">Select a plan</label>
+  <select class="form-control" id="descSelect" data-bs-toggle="custom-select">
+    <option value="">Choose a plan…</option>
+    <option value="starter" data-bs-description="For individuals and small projects">Starter</option>
+    <option value="pro" data-bs-description="For growing teams and businesses">Professional</option>
+    <option value="enterprise" data-bs-description="Custom solutions for large organizations">Enterprise</option>
+  </select>`} />
+
+### Icons with descriptions
+
+Combine icons and descriptions for rich option content.
+
+<Example code={`<label for="richSelect" class="form-label">Notification preference</label>
+  <select class="form-control" id="richSelect" data-bs-toggle="custom-select">
+    <option value="">Choose notification type…</option>
+    <option value="email" data-bs-icon="<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path d='M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z'/></svg>" data-bs-description="Receive updates via email">Email notifications</option>
+    <option value="sms" data-bs-icon="<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path d='M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z'/><path d='M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2'/></svg>" data-bs-description="Get SMS alerts to your phone">SMS notifications</option>
+    <option value="push" data-bs-icon="<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path d='M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6'/></svg>" data-bs-description="Browser push notifications">Push notifications</option>
+    <option value="none" data-bs-icon="<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'><path d='M5.164 14H15c-.299-.199-.557-.553-.78-1-.9-1.8-1.22-5.12-1.22-6q0-.396-.06-.776l-.938.938c.02.708.157 2.154.457 3.58.161.767.377 1.566.663 2.258H6.164zm5.581-9.91a4 4 0 0 0-1.948-1.01L8 2.917l-.797.161A4 4 0 0 0 4 7c0 .628-.134 2.197-.459 3.742q-.075.358-.166.718l-1.653 1.653q.03-.055.059-.113C2.679 11.2 3 7.88 3 7c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0c.942.19 1.788.645 2.457 1.284zM10 15a2 2 0 1 1-4 0zM1.354 1.146a.5.5 0 0 0-.708.708l14 14a.5.5 0 0 0 .708-.708z'/></svg>" data-bs-description="Disable all notifications">No notifications</option>
+  </select>`} />
+
+### Full custom HTML
+
+For complete control, use `data-bs-content` to specify raw HTML content. This overrides all other data attributes.
+
+<Example code={`<label for="htmlSelect" class="form-label">Priority level</label>
+  <select class="form-control" id="htmlSelect" data-bs-toggle="custom-select">
+    <option value="">Select priority…</option>
+    <option value="low" data-bs-content="<span class='badge text-bg-secondary'>Low</span> Not urgent">Low priority</option>
+    <option value="medium" data-bs-content="<span class='badge text-bg-warning'>Medium</span> Normal priority">Medium priority</option>
+    <option value="high" data-bs-content="<span class='badge text-bg-danger'>High</span> Needs attention">High priority</option>
+  </select>`} />
+
+<Callout type="warning">
+Custom HTML content is sanitized by default for security. Use the `allowHtml` option with caution if you need to disable sanitization.
+</Callout>
+
+## Live search
+
+Enable filtering with the `data-bs-live-search="true"` attribute. Users can type to filter options by their text content, descriptions, and search tokens.
+
+<Example code={`<label for="searchSelect" class="form-label">Search countries</label>
+  <select class="form-control" id="searchSelect" data-bs-toggle="custom-select" data-bs-live-search="true">
+    <option value="">Type to search…</option>
+    <option value="us">United States</option>
+    <option value="uk">United Kingdom</option>
+    <option value="ca">Canada</option>
+    <option value="au">Australia</option>
+    <option value="de">Germany</option>
+    <option value="fr">France</option>
+    <option value="jp">Japan</option>
+    <option value="br">Brazil</option>
+  </select>`} />
+
+### Search tokens
+
+Add hidden keywords to options using `data-bs-tokens` to improve searchability without showing the keywords in the UI.
+
+<Example code={`<label for="tokenSelect" class="form-label">Find a food item</label>
+  <select class="form-control" id="tokenSelect" data-bs-toggle="custom-select" data-bs-live-search="true">
+    <option value="">Search for food…</option>
+    <option value="hotdog" data-bs-tokens="american fast food">Hot Dog</option>
+    <option value="burger" data-bs-tokens="american beef fast food">Hamburger</option>
+    <option value="sushi" data-bs-tokens="japanese fish rice">Sushi</option>
+    <option value="pizza" data-bs-tokens="italian cheese">Pizza</option>
+    <option value="tacos" data-bs-tokens="mexican beef chicken">Tacos</option>
+  </select>`} />
+
+## Option groups
+
+Standard `<optgroup>` elements are rendered as section headers.
+
+<Example code={`<label for="groupSelect" class="form-label">Select a vehicle</label>
+  <select class="form-control" id="groupSelect" data-bs-toggle="custom-select">
+    <option value="">Choose a vehicle…</option>
+    <optgroup label="Cars">
+      <option value="sedan">Sedan</option>
+      <option value="suv">SUV</option>
+      <option value="sports">Sports Car</option>
+    </optgroup>
+    <optgroup label="Motorcycles">
+      <option value="cruiser">Cruiser</option>
+      <option value="sport">Sport Bike</option>
+    </optgroup>
+    <optgroup label="Trucks">
+      <option value="pickup">Pickup Truck</option>
+      <option value="semi">Semi Truck</option>
+    </optgroup>
+  </select>`} />
+
+## Sizing
+
+Use `.form-control-sm` or `.form-control-lg` classes on the select element for different sizes.
+
+<Example class="vstack gap-3" code={`<select class="form-control form-control-sm" data-bs-toggle="custom-select">
+    <option value="">Small select</option>
+    <option value="1">Option one</option>
+    <option value="2">Option two</option>
+  </select>
+
+  <select class="form-control" data-bs-toggle="custom-select">
+    <option value="">Default select</option>
+    <option value="1">Option one</option>
+    <option value="2">Option two</option>
+  </select>
+
+  <select class="form-control form-control-lg" data-bs-toggle="custom-select">
+    <option value="">Large select</option>
+    <option value="1">Option one</option>
+    <option value="2">Option two</option>
+  </select>`} />
+
+## Button styling
+
+Style the toggle as a button instead of a form control by using button classes.
+
+<Example class="hstack gap-3 flex-wrap" code={`<select class="btn-outline theme-primary" data-bs-toggle="custom-select">
+    <option value="">Outline button</option>
+    <option value="1">Option one</option>
+    <option value="2">Option two</option>
+  </select>
+
+  <select class="btn-solid theme-primary" data-bs-toggle="custom-select">
+    <option value="">Solid button</option>
+    <option value="1">Option one</option>
+    <option value="2">Option two</option>
+  </select>
+
+  <select class="btn-subtle theme-secondary" data-bs-toggle="custom-select">
+    <option value="">Subtle button</option>
+    <option value="1">Option one</option>
+    <option value="2">Option two</option>
+  </select>`} />
+
+## Disabled states
+
+### Disabled select
+
+Add the `disabled` attribute to the select element.
+
+<Example code={`<select class="form-control" data-bs-toggle="custom-select" disabled>
+    <option value="">Disabled select</option>
+    <option value="1">Option one</option>
+    <option value="2">Option two</option>
+  </select>`} />
+
+### Disabled options
+
+Individual options can be disabled.
+
+<Example code={`<select class="form-control" data-bs-toggle="custom-select">
+    <option value="">Choose an option…</option>
+    <option value="1">Available option</option>
+    <option value="2" disabled>Disabled option</option>
+    <option value="3">Another available option</option>
+  </select>`} />
+
+### Disabled option groups
+
+Disable an entire optgroup to disable all options within it.
+
+<Example code={`<select class="form-control" data-bs-toggle="custom-select">
+    <option value="">Choose an option…</option>
+    <optgroup label="Available">
+      <option value="1">Option one</option>
+      <option value="2">Option two</option>
+    </optgroup>
+    <optgroup label="Coming Soon" disabled>
+      <option value="3">Option three</option>
+      <option value="4">Option four</option>
+    </optgroup>
+  </select>`} />
+
+## Usage
+
+### Via data attributes
+
+Add `data-bs-toggle="custom-select"` to your select element to automatically initialize. Options can be passed as data attributes using the `data-bs-` prefix.
+
+```html
+<select class="form-control"
+        data-bs-toggle="custom-select"
+        data-bs-live-search="true"
+        data-bs-live-search-placeholder="Find an option…">
+  <option value="1">Option one</option>
+  <option value="2">Option two</option>
+</select>
+```
+
+### Via JavaScript
+
+Initialize manually with JavaScript:
+
+```js
+const selectElement = document.querySelector('select')
+const customSelect = new bootstrap.CustomSelect(selectElement, {
+  liveSearch: true,
+  showCheckmark: true
+})
+```
+
+### Options
+
+Options can be passed via data attributes or JavaScript:
+
+<BsTable>
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `hidePlaceholderOption` | boolean | `true` | Hide options with empty value or `data-bs-placeholder="true"` from the dropdown; they are used only for the toggle label. |
+| `liveSearch` | boolean | `false` | Enable search input in the dropdown. |
+| `liveSearchPlaceholder` | string | `'Search…'` | Placeholder text for the search input. |
+| `liveSearchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
+| `showCheckmark` | boolean | `true` | Show a checkmark icon on selected options. |
+| `allowHtml` | boolean | `false` | Allow unsanitized HTML in `data-bs-content`. |
+| `sanitize` | boolean | `true` | Sanitize HTML content to prevent XSS. |
+| `sanitizeFn` | function \| null | `null` | Custom sanitization function. |
+| `allowList` | object | Default allowlist | Object containing allowed HTML elements and attributes. |
+| `placement` | string | `'bottom-start'` | Dropdown placement (uses Floating UI). |
+| `offset` | array | `[0, 2]` | Offset from the toggle `[skidding, distance]`. |
+| `boundary` | string \| element | `'clippingParents'` | Overflow constraint boundary. |
+</BsTable>
+
+### Data attributes on the select
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-placeholder` | Placeholder text shown when nothing is selected (overrides empty option text). |
+| `data-bs-hide-placeholder-option` | When `true` (default), empty-value options are hidden from the list. Set to `false` to show them. |
+</BsTable>
+
+### Data attributes on options
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-placeholder` | When `"true"`, treat this option as a placeholder: hidden from the list, used only for the initial label. |
+| `data-bs-content` | Full custom HTML content (overrides other attributes). |
+| `data-bs-icon` | Inline SVG HTML to display before the option text. |
+| `data-bs-image` | Image URL to display before the option text. |
+| `data-bs-description` | Secondary text displayed below the option label. |
+| `data-bs-tokens` | Space-separated keywords for search matching. |
+</BsTable>
+
+### Methods
+
+<BsTable>
+| Method | Description |
+| --- | --- |
+| `show()` | Opens the dropdown menu. |
+| `hide()` | Closes the dropdown menu. |
+| `toggle()` | Toggles the dropdown menu. |
+| `refresh()` | Rebuilds the menu from the current select options. |
+| `dispose()` | Destroys the component and restores the original select. |
+</BsTable>
+
+```js
+const selectElement = document.querySelector('select')
+const customSelect = bootstrap.CustomSelect.getOrCreateInstance(selectElement)
+
+// Open the dropdown
+customSelect.show()
+
+// Refresh after dynamically adding options
+const newOption = document.createElement('option')
+newOption.value = 'new'
+newOption.textContent = 'New Option'
+selectElement.appendChild(newOption)
+customSelect.refresh()
+```
+
+### Events
+
+Events are fired on the original select element:
+
+<BsTable>
+| Event | Description |
+| --- | --- |
+| `show.bs.custom-select` | Fired before the dropdown is shown. |
+| `shown.bs.custom-select` | Fired after the dropdown is shown. |
+| `hide.bs.custom-select` | Fired before the dropdown is hidden. |
+| `hidden.bs.custom-select` | Fired after the dropdown is hidden. |
+| `change.bs.custom-select` | Fired when the selection changes. Contains `value` and `option` properties. |
+</BsTable>
+
+```js
+const selectElement = document.querySelector('select')
+
+selectElement.addEventListener('change.bs.custom-select', event => {
+  console.log('Selected value:', event.value)
+  console.log('Selected option:', event.option)
+})
+
+selectElement.addEventListener('shown.bs.custom-select', () => {
+  console.log('Dropdown opened')
+})
+```
+
+## Keyboard navigation
+
+The custom select supports full keyboard navigation:
+
+### When toggle is focused
+
+<BsTable>
+| Key | Action |
+| --- | --- |
+| `Enter` / `Space` | Open dropdown |
+| `↓` / `↑` | Open dropdown and focus first/last item |
+| `Escape` | Close dropdown |
+</BsTable>
+
+### When dropdown is open
+
+<BsTable>
+| Key | Action |
+| --- | --- |
+| `↓` | Move to next option |
+| `↑` | Move to previous option |
+| `Home` | Move to first option |
+| `End` | Move to last option |
+| `Enter` / `Space` | Select focused option |
+| `Escape` | Close dropdown and focus toggle |
+| `Tab` | Close dropdown |
+</BsTable>
+
+### When search input is focused
+
+<BsTable>
+| Key | Action |
+| --- | --- |
+| `↓` | Move focus to first visible option |
+| Type | Filter options in real-time |
+</BsTable>
+
+## Accessibility
+
+- The toggle button has `aria-haspopup="listbox"` and `aria-expanded` attributes
+- The dropdown menu has `role="listbox"`
+- Each option has `role="option"` and `aria-selected` attributes
+- Disabled options have `aria-disabled="true"`
+- Full keyboard navigation support
+- Original select remains in DOM for screen readers and form submission
+
+## CSS
+
+### Variables
+
+The custom select uses variables from form controls and dropdowns:
+
+```scss
+// Form control variables
+--control-min-height
+--control-padding-y
+--control-padding-x
+--control-border-color
+--control-border-radius
+--control-select-bg  // Caret icon
+
+// Dropdown variables
+--dropdown-link-color
+--dropdown-link-hover-bg
+--dropdown-link-active-color
+--dropdown-link-active-bg
+```
+
+### Sass variables
+
+Custom select styles are defined in `scss/forms/_custom-select.scss` and use variables from `_form-variables.scss`.
+
+<ScssDocs name="form-input-variables" file="scss/forms/_form-variables.scss" />

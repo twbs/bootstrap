@@ -378,13 +378,13 @@
   --bs-inverse-border: light-dark(var(--bs-gray-400), var(--bs-gray-100));
   --bs-inverse-focus-ring: color-mix(in oklch, light-dark(var(--bs-gray-900), var(--bs-gray-100)) 50%, var(--bs-bg-body));
   --bs-inverse-contrast: light-dark(var(--bs-white), var(--bs-gray-900));
-  --bs-secondary-base: var(--bs-gray-200);
+  --bs-secondary-base: var(--bs-gray-100);
   --bs-secondary-text: light-dark(var(--bs-gray-600), var(--bs-gray-400));
   --bs-secondary-text-emphasis: light-dark(var(--bs-gray-800), var(--bs-gray-200));
-  --bs-secondary-bg: light-dark(var(--bs-gray-100), var(--bs-gray-600));
+  --bs-secondary-bg: light-dark(var(--bs-gray-050), var(--bs-gray-600));
   --bs-secondary-bg-subtle: light-dark(var(--bs-gray-050), var(--bs-gray-800));
   --bs-secondary-bg-muted: light-dark(var(--bs-gray-100), var(--bs-gray-700));
-  --bs-secondary-border: light-dark(var(--bs-gray-300), var(--bs-gray-600));
+  --bs-secondary-border: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-600));
   --bs-secondary-focus-ring: color-mix(in oklch, light-dark(var(--bs-gray-500), var(--bs-gray-300)) 50%, var(--bs-bg-body));
   --bs-secondary-contrast: light-dark(var(--bs-gray-900), var(--bs-white));
   --bs-bg-body: light-dark(var(--bs-white), var(--bs-gray-975));
@@ -638,6 +638,9 @@
   img,
   svg {
     vertical-align: middle;
+  }
+  svg {
+    flex-shrink: 0;
   }
   table {
     caption-side: bottom;

@@ -431,8 +431,11 @@ $utilities: map.merge(
       property: --columns,
       class: grid-cols,
       values: (
+        1,
+        2,
         3,
         4,
+        5,
         6
       )
     ),

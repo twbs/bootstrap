@@ -3,8 +3,8 @@
   * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
+import { offset, flip, shift, autoUpdate, computePosition, arrow } from '@floating-ui/dom';
 import { Calendar } from 'vanilla-calendar-pro';
-import { computePosition, autoUpdate, offset, flip, shift, arrow } from '@floating-ui/dom';
 
 /**
  * --------------------------------------------------------------------------
@@ -791,13 +791,13 @@ const eventAction = (onEvent, stringSelector, callback) => {
  * Constants
  */
 
-const NAME$k = 'alert';
-const DATA_KEY$f = 'bs.alert';
-const EVENT_KEY$g = `.${DATA_KEY$f}`;
-const EVENT_CLOSE = `close${EVENT_KEY$g}`;
-const EVENT_CLOSED = `closed${EVENT_KEY$g}`;
+const NAME$l = 'alert';
+const DATA_KEY$g = 'bs.alert';
+const EVENT_KEY$h = `.${DATA_KEY$g}`;
+const EVENT_CLOSE = `close${EVENT_KEY$h}`;
+const EVENT_CLOSED = `closed${EVENT_KEY$h}`;
 const CLASS_NAME_FADE$4 = 'fade';
-const CLASS_NAME_SHOW$7 = 'show';
+const CLASS_NAME_SHOW$8 = 'show';
 
 /**
  * Class definition
@@ -806,7 +806,7 @@ const CLASS_NAME_SHOW$7 = 'show';
 class Alert extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$k;
+    return NAME$l;
   }
 
   // Public
@@ -815,7 +815,7 @@ class Alert extends BaseComponent {
     if (closeEvent.defaultPrevented) {
       return;
     }
-    this._element.classList.remove(CLASS_NAME_SHOW$7);
+    this._element.classList.remove(CLASS_NAME_SHOW$8);
     const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$4);
     this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
   }
@@ -846,13 +846,13 @@ enableDismissTrigger(Alert, 'close');
  * Constants
  */
 
-const NAME$j = 'button';
-const DATA_KEY$e = 'bs.button';
-const EVENT_KEY$f = `.${DATA_KEY$e}`;
-const DATA_API_KEY$9 = '.data-api';
+const NAME$k = 'button';
+const DATA_KEY$f = 'bs.button';
+const EVENT_KEY$g = `.${DATA_KEY$f}`;
+const DATA_API_KEY$a = '.data-api';
 const CLASS_NAME_ACTIVE$3 = 'active';
-const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="button"]';
-const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$f}${DATA_API_KEY$9}`;
+const SELECTOR_DATA_TOGGLE$a = '[data-bs-toggle="button"]';
+const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$g}${DATA_API_KEY$a}`;
 
 /**
  * Class definition
@@ -861,7 +861,7 @@ const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$f}${DATA_API_KEY$9}`;
 class Button extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$j;
+    return NAME$k;
   }
 
   // Public
@@ -875,9 +875,9 @@ class Button extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DATA_TOGGLE$9, event => {
+EventHandler.on(document, EVENT_CLICK_DATA_API$8, SELECTOR_DATA_TOGGLE$a, event => {
   event.preventDefault();
-  const button = event.target.closest(SELECTOR_DATA_TOGGLE$9);
+  const button = event.target.closest(SELECTOR_DATA_TOGGLE$a);
   const data = Button.getOrCreateInstance(button);
   data.toggle();
 });
@@ -894,23 +894,23 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DATA_TOGGLE$9, event 
  * Constants
  */
 
-const NAME$i = 'swipe';
-const EVENT_KEY$e = '.bs.swipe';
-const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$e}`;
-const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$e}`;
-const EVENT_TOUCHEND = `touchend${EVENT_KEY$e}`;
-const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$e}`;
-const EVENT_POINTERUP = `pointerup${EVENT_KEY$e}`;
+const NAME$j = 'swipe';
+const EVENT_KEY$f = '.bs.swipe';
+const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$f}`;
+const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$f}`;
+const EVENT_TOUCHEND = `touchend${EVENT_KEY$f}`;
+const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$f}`;
+const EVENT_POINTERUP = `pointerup${EVENT_KEY$f}`;
 const POINTER_TYPE_TOUCH = 'touch';
 const POINTER_TYPE_PEN = 'pen';
 const CLASS_NAME_POINTER_EVENT = 'pointer-event';
 const SWIPE_THRESHOLD = 40;
-const Default$h = {
+const Default$i = {
   endCallback: null,
   leftCallback: null,
   rightCallback: null
 };
-const DefaultType$h = {
+const DefaultType$i = {
   endCallback: '(function|null)',
   leftCallback: '(function|null)',
   rightCallback: '(function|null)'
@@ -935,18 +935,18 @@ class Swipe extends Config {
 
   // Getters
   static get Default() {
-    return Default$h;
+    return Default$i;
   }
   static get DefaultType() {
-    return DefaultType$h;
+    return DefaultType$i;
   }
   static get NAME() {
-    return NAME$i;
+    return NAME$j;
   }
 
   // Public
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY$e);
+    EventHandler.off(this._element, EVENT_KEY$f);
   }
 
   // Private
@@ -1014,10 +1014,10 @@ class Swipe extends Config {
  * Constants
  */
 
-const NAME$h = 'carousel';
-const DATA_KEY$d = 'bs.carousel';
-const EVENT_KEY$d = `.${DATA_KEY$d}`;
-const DATA_API_KEY$8 = '.data-api';
+const NAME$i = 'carousel';
+const DATA_KEY$e = 'bs.carousel';
+const EVENT_KEY$e = `.${DATA_KEY$e}`;
+const DATA_API_KEY$9 = '.data-api';
 const ARROW_LEFT_KEY$2 = 'ArrowLeft';
 const ARROW_RIGHT_KEY$2 = 'ArrowRight';
 const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
@@ -1026,14 +1026,14 @@ const ORDER_NEXT = 'next';
 const ORDER_PREV = 'prev';
 const DIRECTION_LEFT = 'left';
 const DIRECTION_RIGHT = 'right';
-const EVENT_SLIDE = `slide${EVENT_KEY$d}`;
-const EVENT_SLID = `slid${EVENT_KEY$d}`;
-const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$d}`;
-const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$d}`;
-const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$d}`;
-const EVENT_DRAG_START = `dragstart${EVENT_KEY$d}`;
-const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$d}${DATA_API_KEY$8}`;
-const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
+const EVENT_SLIDE = `slide${EVENT_KEY$e}`;
+const EVENT_SLID = `slid${EVENT_KEY$e}`;
+const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$e}`;
+const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$e}`;
+const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$e}`;
+const EVENT_DRAG_START = `dragstart${EVENT_KEY$e}`;
+const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$e}${DATA_API_KEY$9}`;
+const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
 const CLASS_NAME_CAROUSEL = 'carousel';
 const CLASS_NAME_ACTIVE$2 = 'active';
 const CLASS_NAME_SLIDE = 'slide';
@@ -1042,8 +1042,8 @@ const CLASS_NAME_START = 'carousel-item-start';
 const CLASS_NAME_NEXT = 'carousel-item-next';
 const CLASS_NAME_PREV = 'carousel-item-prev';
 const SELECTOR_ACTIVE = '.active';
-const SELECTOR_ITEM = '.carousel-item';
-const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM;
+const SELECTOR_ITEM$1 = '.carousel-item';
+const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM$1;
 const SELECTOR_ITEM_IMG = '.carousel-item img';
 const SELECTOR_INDICATORS = '.carousel-indicators';
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]';
@@ -1052,7 +1052,7 @@ const KEY_TO_DIRECTION = {
   [ARROW_LEFT_KEY$2]: DIRECTION_RIGHT,
   [ARROW_RIGHT_KEY$2]: DIRECTION_LEFT
 };
-const Default$g = {
+const Default$h = {
   interval: 5000,
   keyboard: true,
   pause: 'hover',
@@ -1060,7 +1060,7 @@ const Default$g = {
   touch: true,
   wrap: true
 };
-const DefaultType$g = {
+const DefaultType$h = {
   interval: 'number',
   keyboard: 'boolean',
   pause: '(string|boolean)',
@@ -1090,13 +1090,13 @@ class Carousel extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$g;
+    return Default$h;
   }
   static get DefaultType() {
-    return DefaultType$g;
+    return DefaultType$h;
   }
   static get NAME() {
-    return NAME$h;
+    return NAME$i;
   }
 
   // Public
@@ -1295,7 +1295,7 @@ class Carousel extends BaseComponent {
     return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
   }
   _getItems() {
-    return SelectorEngine.find(SELECTOR_ITEM, this._element);
+    return SelectorEngine.find(SELECTOR_ITEM$1, this._element);
   }
   _clearInterval() {
     if (this._interval) {
@@ -1321,7 +1321,7 @@ class Carousel extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_SLIDE, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DATA_SLIDE, function (event) {
   const target = SelectorEngine.getElementFromSelector(this);
   if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
     return;
@@ -1361,16 +1361,16 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$3, () => {
  * Constants
  */
 
-const NAME$g = 'collapse';
-const DATA_KEY$c = 'bs.collapse';
-const EVENT_KEY$c = `.${DATA_KEY$c}`;
-const DATA_API_KEY$7 = '.data-api';
-const EVENT_SHOW$7 = `show${EVENT_KEY$c}`;
-const EVENT_SHOWN$7 = `shown${EVENT_KEY$c}`;
-const EVENT_HIDE$7 = `hide${EVENT_KEY$c}`;
-const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$c}`;
-const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
-const CLASS_NAME_SHOW$6 = 'show';
+const NAME$h = 'collapse';
+const DATA_KEY$d = 'bs.collapse';
+const EVENT_KEY$d = `.${DATA_KEY$d}`;
+const DATA_API_KEY$8 = '.data-api';
+const EVENT_SHOW$8 = `show${EVENT_KEY$d}`;
+const EVENT_SHOWN$8 = `shown${EVENT_KEY$d}`;
+const EVENT_HIDE$8 = `hide${EVENT_KEY$d}`;
+const EVENT_HIDDEN$8 = `hidden${EVENT_KEY$d}`;
+const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
+const CLASS_NAME_SHOW$7 = 'show';
 const CLASS_NAME_COLLAPSE = 'collapse';
 const CLASS_NAME_COLLAPSING = 'collapsing';
 const CLASS_NAME_COLLAPSED = 'collapsed';
@@ -1379,12 +1379,12 @@ const CLASS_NAME_HORIZONTAL = 'collapse-horizontal';
 const WIDTH = 'width';
 const HEIGHT = 'height';
 const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
-const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="collapse"]';
-const Default$f = {
+const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="collapse"]';
+const Default$g = {
   parent: null,
   toggle: true
 };
-const DefaultType$f = {
+const DefaultType$g = {
   parent: '(null|element)',
   toggle: 'boolean'
 };
@@ -1398,7 +1398,7 @@ class Collapse extends BaseComponent {
     super(element, config);
     this._isTransitioning = false;
     this._triggerArray = [];
-    const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$8);
+    const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$9);
     for (const elem of toggleList) {
       const selector = SelectorEngine.getSelectorFromElement(elem);
       const filterElement = SelectorEngine.find(selector).filter(foundElement => foundElement === this._element);
@@ -1417,13 +1417,13 @@ class Collapse extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$f;
+    return Default$g;
   }
   static get DefaultType() {
-    return DefaultType$f;
+    return DefaultType$g;
   }
   static get NAME() {
-    return NAME$g;
+    return NAME$h;
   }
 
   // Public
@@ -1449,7 +1449,7 @@ class Collapse extends BaseComponent {
     if (activeChildren.length && activeChildren[0]._isTransitioning) {
       return;
     }
-    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$7);
+    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$8);
     if (startEvent.defaultPrevented) {
       return;
     }
@@ -1465,9 +1465,9 @@ class Collapse extends BaseComponent {
     const complete = () => {
       this._isTransitioning = false;
       this._element.classList.remove(CLASS_NAME_COLLAPSING);
-      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$6);
+      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
       this._element.style[dimension] = '';
-      EventHandler.trigger(this._element, EVENT_SHOWN$7);
+      EventHandler.trigger(this._element, EVENT_SHOWN$8);
     };
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
     const scrollSize = `scroll${capitalizedDimension}`;
@@ -1478,7 +1478,7 @@ class Collapse extends BaseComponent {
     if (this._isTransitioning || !this._isShown()) {
       return;
     }
-    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$7);
+    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$8);
     if (startEvent.defaultPrevented) {
       return;
     }
@@ -1486,7 +1486,7 @@ class Collapse extends BaseComponent {
     this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
     reflow(this._element);
     this._element.classList.add(CLASS_NAME_COLLAPSING);
-    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$6);
+    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
     for (const trigger of this._triggerArray) {
       const element = SelectorEngine.getElementFromSelector(trigger);
       if (element && !this._isShown(element)) {
@@ -1498,7 +1498,7 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false;
       this._element.classList.remove(CLASS_NAME_COLLAPSING);
       this._element.classList.add(CLASS_NAME_COLLAPSE);
-      EventHandler.trigger(this._element, EVENT_HIDDEN$7);
+      EventHandler.trigger(this._element, EVENT_HIDDEN$8);
     };
     this._element.style[dimension] = '';
     this._queueCallback(complete, this._element, true);
@@ -1506,7 +1506,7 @@ class Collapse extends BaseComponent {
 
   // Private
   _isShown(element = this._element) {
-    return element.classList.contains(CLASS_NAME_SHOW$6);
+    return element.classList.contains(CLASS_NAME_SHOW$7);
   }
   _configAfterMerge(config) {
     config.toggle = Boolean(config.toggle); // Coerce string values
@@ -1520,7 +1520,7 @@ class Collapse extends BaseComponent {
     if (!this._config.parent) {
       return;
     }
-    const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$8);
+    const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$9);
     for (const element of children) {
       const selected = SelectorEngine.getElementFromSelector(element);
       if (selected) {
@@ -1548,7 +1548,7 @@ class Collapse extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$9, function (event) {
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
   if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
     event.preventDefault();
@@ -1557,6 +1557,820 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, functi
     Collapse.getOrCreateInstance(element, {
       toggle: false
     }).toggle();
+  }
+});
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap util/sanitizer.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+// js-docs-start allow-list
+const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
+const DefaultAllowlist = {
+  // Global attributes allowed on any supplied element below.
+  '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
+  a: ['target', 'href', 'title', 'rel'],
+  area: [],
+  b: [],
+  br: [],
+  col: [],
+  code: [],
+  dd: [],
+  div: [],
+  dl: [],
+  dt: [],
+  em: [],
+  hr: [],
+  h1: [],
+  h2: [],
+  h3: [],
+  h4: [],
+  h5: [],
+  h6: [],
+  i: [],
+  img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
+  li: [],
+  ol: [],
+  p: [],
+  pre: [],
+  s: [],
+  small: [],
+  span: [],
+  sub: [],
+  sup: [],
+  strong: [],
+  u: [],
+  ul: []
+};
+// js-docs-end allow-list
+
+const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href']);
+
+/**
+ * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
+ * contexts.
+ *
+ * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
+ */
+const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
+const allowedAttribute = (attribute, allowedAttributeList) => {
+  const attributeName = attribute.nodeName.toLowerCase();
+  if (allowedAttributeList.includes(attributeName)) {
+    if (uriAttributes.has(attributeName)) {
+      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue));
+    }
+    return true;
+  }
+
+  // Check if a regular expression validates the attribute.
+  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp).some(regex => regex.test(attributeName));
+};
+function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
+  if (!unsafeHtml.length) {
+    return unsafeHtml;
+  }
+  if (sanitizeFunction && typeof sanitizeFunction === 'function') {
+    return sanitizeFunction(unsafeHtml);
+  }
+  const domParser = new window.DOMParser();
+  const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
+  const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
+  for (const element of elements) {
+    const elementName = element.nodeName.toLowerCase();
+    if (!Object.keys(allowList).includes(elementName)) {
+      element.remove();
+      continue;
+    }
+    const attributeList = [].concat(...element.attributes);
+    const allowedAttributes = [].concat(allowList['*'] || [], allowList[elementName] || []);
+    for (const attribute of attributeList) {
+      if (!allowedAttribute(attribute, allowedAttributes)) {
+        element.removeAttribute(attribute.nodeName);
+      }
+    }
+  }
+  return createdDocument.body.innerHTML;
+}
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap custom-select.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$g = 'customSelect';
+const DATA_KEY$c = 'bs.custom-select';
+const EVENT_KEY$c = `.${DATA_KEY$c}`;
+const DATA_API_KEY$7 = '.data-api';
+const ESCAPE_KEY$2 = 'Escape';
+const TAB_KEY$2 = 'Tab';
+const ARROW_UP_KEY$2 = 'ArrowUp';
+const ARROW_DOWN_KEY$2 = 'ArrowDown';
+const HOME_KEY$2 = 'Home';
+const END_KEY$2 = 'End';
+const ENTER_KEY$1 = 'Enter';
+const SPACE_KEY$1 = ' ';
+const EVENT_CHANGE$1 = `change${EVENT_KEY$c}`;
+const EVENT_SHOW$7 = `show${EVENT_KEY$c}`;
+const EVENT_SHOWN$7 = `shown${EVENT_KEY$c}`;
+const EVENT_HIDE$7 = `hide${EVENT_KEY$c}`;
+const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$c}`;
+const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
+const EVENT_KEYDOWN_DATA_API$1 = `keydown${EVENT_KEY$c}${DATA_API_KEY$7}`;
+const CLASS_NAME_SHOW$6 = 'show';
+const CLASS_NAME_DISABLED = 'disabled';
+const CLASS_NAME_SELECTED = 'selected';
+const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="custom-select"]';
+const SELECTOR_ITEM = '.custom-select-item';
+const SELECTOR_VISIBLE_ITEMS$1 = '.custom-select-item:not(.disabled):not(:disabled)';
+const Default$f = {
+  allowHtml: false,
+  allowList: DefaultAllowlist,
+  boundary: 'clippingParents',
+  hidePlaceholderOption: true,
+  liveSearch: false,
+  liveSearchNormalize: false,
+  liveSearchPlaceholder: 'Search...',
+  offset: [0, 2],
+  placement: 'bottom-start',
+  sanitize: true,
+  sanitizeFn: null,
+  showCheckmark: true
+};
+const DefaultType$f = {
+  allowHtml: 'boolean',
+  allowList: 'object',
+  boundary: '(string|element)',
+  hidePlaceholderOption: 'boolean',
+  liveSearch: 'boolean',
+  liveSearchNormalize: 'boolean',
+  liveSearchPlaceholder: 'string',
+  offset: '(array|string|function)',
+  placement: 'string',
+  sanitize: 'boolean',
+  sanitizeFn: '(null|function)',
+  showCheckmark: 'boolean'
+};
+
+/**
+ * Class definition
+ */
+
+class CustomSelect extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+    this._select = this._element;
+    this._isMultiple = this._select.multiple;
+    this._toggle = null;
+    this._menu = null;
+    this._searchInput = null;
+    this._items = [];
+    this._floatingCleanup = null;
+    this._isShown = false;
+    this._init();
+  }
+
+  // Getters
+  static get Default() {
+    return Default$f;
+  }
+  static get DefaultType() {
+    return DefaultType$f;
+  }
+  static get NAME() {
+    return NAME$g;
+  }
+
+  // Public
+  toggle() {
+    return this._isShown ? this.hide() : this.show();
+  }
+  show() {
+    if (isDisabled(this._toggle) || this._isShown) {
+      return;
+    }
+    const showEvent = EventHandler.trigger(this._select, EVENT_SHOW$7);
+    if (showEvent.defaultPrevented) {
+      return;
+    }
+    this._isShown = true;
+    this._createFloating();
+    this._menu.classList.add(CLASS_NAME_SHOW$6);
+    this._toggle.classList.add(CLASS_NAME_SHOW$6);
+    this._toggle.setAttribute('aria-expanded', 'true');
+
+    // Focus search input or first item
+    if (this._config.liveSearch && this._searchInput) {
+      this._searchInput.focus();
+    } else {
+      const selectedItem = SelectorEngine.findOne(`.${CLASS_NAME_SELECTED}`, this._menu);
+      if (selectedItem) {
+        selectedItem.focus();
+      }
+    }
+    EventHandler.trigger(this._select, EVENT_SHOWN$7);
+  }
+  hide() {
+    if (!this._isShown) {
+      return;
+    }
+    const hideEvent = EventHandler.trigger(this._select, EVENT_HIDE$7);
+    if (hideEvent.defaultPrevented) {
+      return;
+    }
+    this._isShown = false;
+    this._disposeFloating();
+    this._menu.classList.remove(CLASS_NAME_SHOW$6);
+    this._toggle.classList.remove(CLASS_NAME_SHOW$6);
+    this._toggle.setAttribute('aria-expanded', 'false');
+
+    // Clear search
+    if (this._searchInput) {
+      this._searchInput.value = '';
+      this._filterItems('');
+    }
+    EventHandler.trigger(this._select, EVENT_HIDDEN$7);
+  }
+  refresh() {
+    this._buildMenu();
+    this._updateToggleText();
+  }
+  dispose() {
+    this._disposeFloating();
+
+    // Remove generated elements
+    if (this._toggle) {
+      this._toggle.remove();
+    }
+    if (this._menu) {
+      this._menu.remove();
+    }
+
+    // Show original select
+    this._select.classList.remove('visually-hidden');
+    this._select.removeAttribute('aria-hidden');
+    this._select.removeAttribute('tabindex');
+    super.dispose();
+  }
+
+  // Private
+  _init() {
+    // Hide original select
+    this._select.classList.add('visually-hidden');
+    this._select.setAttribute('aria-hidden', 'true');
+    this._select.setAttribute('tabindex', '-1');
+    this._createToggle();
+    this._createMenu();
+    this._buildMenu();
+
+    // If a placeholder option exists and no option is explicitly selected, select it so the toggle shows placeholder text on load
+    const placeholderOption = this._getPlaceholderOption();
+    const hasExplicitSelection = this._select.querySelector('option[selected]');
+    if (!this._isMultiple && placeholderOption && !hasExplicitSelection) {
+      for (const option of this._select.querySelectorAll('option')) {
+        option.selected = option === placeholderOption;
+      }
+    }
+    this._updateToggleText();
+    this._setupEventListeners();
+  }
+  _createToggle() {
+    this._toggle = document.createElement('button');
+    this._toggle.type = 'button';
+    this._toggle.setAttribute('aria-haspopup', 'listbox');
+    this._toggle.setAttribute('aria-expanded', 'false');
+    this._toggle.id = getUID('custom-select-toggle-');
+
+    // Copy classes from select to toggle
+    const toggleClasses = this._getToggleClasses();
+    this._toggle.classList.add('custom-select-toggle', ...toggleClasses);
+    if (this._select.disabled) {
+      this._toggle.disabled = true;
+      this._toggle.classList.add(CLASS_NAME_DISABLED);
+    }
+
+    // Create inner structure
+    this._toggle.innerHTML = `
+      <span class="custom-select-value"></span>
+      <svg class="custom-select-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/>
+</svg>`;
+    this._select.after(this._toggle);
+  }
+  _getToggleClasses() {
+    const classes = [];
+    const selectClasses = this._select.classList;
+
+    // Check for button variant classes
+    const hasButtonClass = [...selectClasses].some(cls => cls.startsWith('btn-') || cls.startsWith('theme-'));
+    if (hasButtonClass) {
+      // Copy button and theme classes
+      for (const cls of selectClasses) {
+        if (cls.startsWith('btn-') || cls.startsWith('theme-')) {
+          classes.push(cls);
+        }
+      }
+    } else {
+      // Default to form-control style
+      classes.push('form-control');
+
+      // Copy size classes
+      if (selectClasses.contains('form-control-sm')) {
+        classes.push('form-control-sm');
+      } else if (selectClasses.contains('form-control-lg')) {
+        classes.push('form-control-lg');
+      }
+    }
+    return classes;
+  }
+  _createMenu() {
+    this._menu = document.createElement('div');
+    this._menu.classList.add('dropdown-menu', 'custom-select-menu');
+    this._menu.setAttribute('role', 'listbox');
+    this._menu.id = getUID('custom-select-menu-');
+    this._toggle.setAttribute('aria-controls', this._menu.id);
+
+    // Add search input if enabled
+    if (this._config.liveSearch) {
+      const searchWrapper = document.createElement('div');
+      searchWrapper.classList.add('custom-select-search');
+      searchWrapper.innerHTML = `
+        <input type="text"
+          class="form-control custom-select-search-input"
+          placeholder="${this._config.liveSearchPlaceholder}"
+          autocomplete="off"
+          aria-label="${this._config.liveSearchPlaceholder}">
+      `;
+      this._menu.append(searchWrapper);
+      this._searchInput = searchWrapper.querySelector('input');
+    }
+
+    // No results message (hidden by default)
+    const noResults = document.createElement('div');
+    noResults.classList.add('custom-select-no-results', 'd-none');
+    noResults.textContent = 'No results found';
+    this._noResults = noResults;
+    this._toggle.after(this._menu);
+  }
+  _buildMenu() {
+    // Remove existing items (keep search wrapper if present)
+    const existingItems = SelectorEngine.find('.custom-select-item, .custom-select-header, .custom-select-no-results', this._menu);
+    for (const item of existingItems) {
+      item.remove();
+    }
+    this._items = [];
+    const options = this._select.querySelectorAll('option, optgroup');
+    for (const option of options) {
+      if (option.tagName === 'OPTGROUP') {
+        this._createOptgroupHeader(option, this._menu);
+      } else {
+        this._createItem(option, this._menu);
+      }
+    }
+
+    // Add no results message at the end
+    this._menu.append(this._noResults);
+  }
+  _createOptgroupHeader(optgroup, container) {
+    const header = document.createElement('div');
+    header.classList.add('custom-select-header', 'dropdown-header');
+    header.textContent = optgroup.label;
+    if (optgroup.disabled) {
+      header.classList.add(CLASS_NAME_DISABLED);
+    }
+    container.append(header);
+
+    // Add options within this optgroup
+    for (const option of optgroup.querySelectorAll('option')) {
+      this._createItem(option, container, optgroup.disabled);
+    }
+  }
+  _createItem(option, container, parentDisabled = false) {
+    // Skip placeholder options: empty value when hidePlaceholderOption, or data-bs-placeholder on option
+    const isPlaceholder = option.value === '' && this._config.hidePlaceholderOption || option.getAttribute('data-bs-placeholder') === 'true';
+    if (isPlaceholder) {
+      return;
+    }
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.classList.add('dropdown-item', 'custom-select-item');
+    item.setAttribute('role', 'option');
+    item.dataset.value = option.value;
+
+    // Store search tokens
+    const tokens = option.dataset.bsTokens || '';
+    const description = option.dataset.bsDescription || '';
+    item.dataset.searchText = `${option.textContent} ${description} ${tokens}`.toLowerCase();
+    if (option.disabled || parentDisabled) {
+      item.disabled = true;
+      item.classList.add(CLASS_NAME_DISABLED);
+      item.setAttribute('aria-disabled', 'true');
+    }
+    if (option.selected) {
+      item.classList.add(CLASS_NAME_SELECTED);
+      item.setAttribute('aria-selected', 'true');
+    }
+
+    // Build item content
+    item.innerHTML = this._buildItemContent(option);
+    container.append(item);
+    this._items.push({
+      item,
+      option
+    });
+  }
+  _buildItemContent(option) {
+    // Check for full custom content override
+    const customContent = option.dataset.bsContent;
+    if (customContent) {
+      return this._sanitize(`
+        <span class="custom-select-content">
+          <span class="custom-select-text">${customContent}</span>
+        </span>
+        ${this._config.showCheckmark ? this._getCheckmarkHtml() : ''}
+      `);
+    }
+
+    // Build from individual data attributes
+    const icon = option.dataset.bsIcon; // Inline SVG - trusted developer content, not sanitized
+    const image = option.dataset.bsImage;
+    const description = option.dataset.bsDescription;
+    const text = option.textContent;
+    let html = '';
+
+    // Icon (inline SVG) or image - icon is trusted developer content
+    if (icon) {
+      html += `<span class="custom-select-icon">${icon}</span>`;
+    } else if (image) {
+      html += `<span class="custom-select-icon"><img src="${this._sanitize(image)}" alt="" class="custom-select-image"></span>`;
+    }
+    html += '<span class="custom-select-content">';
+    html += `<span class="custom-select-text">${this._sanitize(text)}</span>`;
+    if (description) {
+      html += `<span class="custom-select-description">${this._sanitize(description)}</span>`;
+    }
+    html += '</span>';
+    if (this._config.showCheckmark) {
+      html += this._getCheckmarkHtml();
+    }
+    return html;
+  }
+  _getCheckmarkHtml() {
+    return '<span class="custom-select-check"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg></span>';
+  }
+  _sanitize(content) {
+    if (!this._config.sanitize) {
+      return content;
+    }
+    return sanitizeHtml(String(content), this._config.allowList, this._config.sanitizeFn);
+  }
+  _getPlaceholderOption() {
+    // Option explicitly marked as placeholder, or first empty-value option
+    const marked = this._select.querySelector('option[data-bs-placeholder="true"]');
+    if (marked) {
+      return marked;
+    }
+    return this._select.querySelector('option[value=""]');
+  }
+  _updateToggleText() {
+    const valueElement = SelectorEngine.findOne('.custom-select-value', this._toggle);
+    const selectedOptions = [...this._select.selectedOptions];
+    const onlyPlaceholderSelected = selectedOptions.length === 1 && (selectedOptions[0].value === '' || selectedOptions[0].getAttribute('data-bs-placeholder') === 'true');
+    const noneSelected = selectedOptions.length === 0 || onlyPlaceholderSelected;
+    if (noneSelected) {
+      // Show placeholder: data-bs-placeholder on select, or placeholder option's text
+      const explicitPlaceholder = this._select.getAttribute('data-bs-placeholder');
+      const placeholderOption = this._getPlaceholderOption();
+      valueElement.textContent = explicitPlaceholder || (placeholderOption ? placeholderOption.textContent.trim() : '');
+      valueElement.classList.add('custom-select-placeholder');
+      return;
+    }
+    valueElement.classList.remove('custom-select-placeholder');
+    if (this._isMultiple) {
+      valueElement.textContent = selectedOptions.length === 1 ? selectedOptions[0].textContent : `${selectedOptions.length} selected`;
+    } else {
+      const selected = selectedOptions[0];
+      // Use custom content for toggle if available, otherwise text
+      const icon = selected.dataset.bsIcon; // Trusted developer content
+      const text = selected.textContent;
+      if (icon) {
+        valueElement.innerHTML = `<span class="custom-select-value-icon">${icon}</span> ${this._sanitize(text)}`;
+      } else {
+        valueElement.textContent = text;
+      }
+    }
+  }
+  _setupEventListeners() {
+    // Toggle click
+    EventHandler.on(this._toggle, 'click', event => {
+      event.preventDefault();
+      this.toggle();
+    });
+
+    // Item clicks
+    EventHandler.on(this._menu, 'click', SELECTOR_ITEM, event => {
+      event.preventDefault();
+      const item = event.target.closest(SELECTOR_ITEM);
+      if (item && !item.disabled) {
+        this._selectItem(item);
+      }
+    });
+
+    // Search input
+    if (this._searchInput) {
+      EventHandler.on(this._searchInput, 'input', () => {
+        this._filterItems(this._searchInput.value);
+      });
+      EventHandler.on(this._searchInput, 'keydown', event => {
+        if (event.key === ARROW_DOWN_KEY$2) {
+          event.preventDefault();
+          const firstVisible = SelectorEngine.findOne(`${SELECTOR_VISIBLE_ITEMS$1}:not(.d-none)`, this._menu);
+          if (firstVisible) {
+            firstVisible.focus();
+          }
+        }
+      });
+    }
+
+    // Keyboard navigation
+    EventHandler.on(this._toggle, 'keydown', event => {
+      this._handleToggleKeydown(event);
+    });
+    EventHandler.on(this._menu, 'keydown', event => {
+      this._handleMenuKeydown(event);
+    });
+
+    // Close on outside click
+    EventHandler.on(document, EVENT_CLICK_DATA_API$5, event => {
+      if (this._isShown && !this._menu.contains(event.target) && !this._toggle.contains(event.target)) {
+        this.hide();
+      }
+    });
+
+    // Sync with native select changes
+    EventHandler.on(this._select, 'change', () => {
+      this._syncFromSelect();
+    });
+  }
+  _selectItem(item) {
+    const {
+      value
+    } = item.dataset;
+    const option = this._select.querySelector(`option[value="${CSS.escape(value)}"]`);
+    if (!option) {
+      return;
+    }
+    if (this._isMultiple) {
+      // Toggle selection for multiple
+      option.selected = !option.selected;
+      item.classList.toggle(CLASS_NAME_SELECTED);
+      item.setAttribute('aria-selected', option.selected);
+    } else {
+      // Single select: clear previous selection
+      for (const {
+        item: i,
+        option: o
+      } of this._items) {
+        i.classList.remove(CLASS_NAME_SELECTED);
+        i.setAttribute('aria-selected', 'false');
+        o.selected = false;
+      }
+      option.selected = true;
+      item.classList.add(CLASS_NAME_SELECTED);
+      item.setAttribute('aria-selected', 'true');
+      this.hide();
+    }
+    this._updateToggleText();
+
+    // Dispatch change event on original select
+    EventHandler.trigger(this._select, 'change');
+    EventHandler.trigger(this._select, EVENT_CHANGE$1, {
+      value,
+      option
+    });
+  }
+  _syncFromSelect() {
+    // Sync visual state from native select
+    for (const {
+      item,
+      option
+    } of this._items) {
+      if (option.selected) {
+        item.classList.add(CLASS_NAME_SELECTED);
+        item.setAttribute('aria-selected', 'true');
+      } else {
+        item.classList.remove(CLASS_NAME_SELECTED);
+        item.setAttribute('aria-selected', 'false');
+      }
+    }
+    this._updateToggleText();
+  }
+  _filterItems(query) {
+    const normalizedQuery = this._normalizeText(query.toLowerCase());
+    let visibleCount = 0;
+    for (const {
+      item
+    } of this._items) {
+      const searchText = this._normalizeText(item.dataset.searchText);
+      if (searchText.includes(normalizedQuery)) {
+        item.classList.remove('d-none');
+        visibleCount++;
+      } else {
+        item.classList.add('d-none');
+      }
+    }
+
+    // Handle optgroup headers visibility
+    const headers = SelectorEngine.find('.custom-select-header', this._menu);
+    for (const header of headers) {
+      // Show header if any following items (until next header) are visible
+      let nextSibling = header.nextElementSibling;
+      let hasVisibleItems = false;
+      while (nextSibling && !nextSibling.classList.contains('custom-select-header')) {
+        if (nextSibling.classList.contains('custom-select-item') && !nextSibling.classList.contains('d-none')) {
+          hasVisibleItems = true;
+          break;
+        }
+        nextSibling = nextSibling.nextElementSibling;
+      }
+      header.classList.toggle('d-none', !hasVisibleItems);
+    }
+
+    // Show/hide no results message
+    this._noResults.classList.toggle('d-none', visibleCount > 0 || query === '');
+  }
+  _normalizeText(text) {
+    if (!this._config.liveSearchNormalize) {
+      return text;
+    }
+
+    // Normalize accents
+    return text.normalize('NFD').replace(/[\u0300-\u036F]/g, '');
+  }
+  _handleToggleKeydown(event) {
+    const {
+      key
+    } = event;
+    if ([ARROW_DOWN_KEY$2, ARROW_UP_KEY$2, ENTER_KEY$1, SPACE_KEY$1].includes(key)) {
+      event.preventDefault();
+      if (this._isShown) {
+        const items = SelectorEngine.find(`${SELECTOR_VISIBLE_ITEMS$1}:not(.d-none)`, this._menu);
+        if (items.length) {
+          items[key === ARROW_UP_KEY$2 ? items.length - 1 : 0].focus();
+        }
+      } else {
+        this.show();
+      }
+    }
+    if (key === ESCAPE_KEY$2 && this._isShown) {
+      event.preventDefault();
+      this.hide();
+      this._toggle.focus();
+    }
+  }
+  _handleMenuKeydown(event) {
+    const {
+      key,
+      target
+    } = event;
+    const items = SelectorEngine.find(`${SELECTOR_VISIBLE_ITEMS$1}:not(.d-none)`, this._menu).filter(item => isVisible(item));
+    if ([ARROW_DOWN_KEY$2, ARROW_UP_KEY$2].includes(key)) {
+      event.preventDefault();
+      const {
+        activeElement
+      } = document;
+      const isDown = key === ARROW_DOWN_KEY$2;
+      getNextActiveElement(items, activeElement, isDown, true).focus();
+    }
+    if ([HOME_KEY$2, END_KEY$2].includes(key)) {
+      event.preventDefault();
+      const targetItem = key === HOME_KEY$2 ? items[0] : items[items.length - 1];
+      if (targetItem) {
+        targetItem.focus();
+      }
+    }
+    if ((key === ENTER_KEY$1 || key === SPACE_KEY$1) && target.classList.contains('custom-select-item')) {
+      event.preventDefault();
+      this._selectItem(target);
+    }
+    if (key === ESCAPE_KEY$2) {
+      event.preventDefault();
+      this.hide();
+      this._toggle.focus();
+    }
+    if (key === TAB_KEY$2) {
+      this.hide();
+    }
+  }
+  _createFloating() {
+    const placement = isRTL() ? this._config.placement.replace('start', 'temp').replace('end', 'start').replace('temp', 'end') : this._config.placement;
+    const middleware = [offset({
+      mainAxis: this._config.offset[1] || 0,
+      crossAxis: this._config.offset[0] || 0
+    }), flip({
+      boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
+    }), shift({
+      padding: 8
+    })];
+    const updatePosition = async () => {
+      const {
+        x,
+        y,
+        placement: finalPlacement
+      } = await computePosition(this._toggle, this._menu, {
+        placement,
+        middleware
+      });
+      Object.assign(this._menu.style, {
+        position: 'absolute',
+        left: `${x}px`,
+        top: `${y}px`,
+        margin: '0'
+      });
+      Manipulator.setDataAttribute(this._menu, 'placement', finalPlacement);
+    };
+    updatePosition();
+    this._floatingCleanup = autoUpdate(this._toggle, this._menu, updatePosition);
+  }
+  _disposeFloating() {
+    if (this._floatingCleanup) {
+      this._floatingCleanup();
+      this._floatingCleanup = null;
+    }
+  }
+
+  // Static
+  static jQueryInterface(config) {
+    return this.each(function () {
+      const data = CustomSelect.getOrCreateInstance(this, config);
+      if (typeof config !== 'string') {
+        return;
+      }
+      if (typeof data[config] === 'undefined') {
+        throw new TypeError(`No method named "${config}"`);
+      }
+      data[config]();
+    });
+  }
+  static clearMenus(event) {
+    if (event.button === 2) {
+      return;
+    }
+    const openSelects = SelectorEngine.find(`${SELECTOR_DATA_TOGGLE$8}.${CLASS_NAME_SHOW$6}`);
+    for (const toggle of openSelects) {
+      const selectElement = toggle.previousElementSibling;
+      if (selectElement) {
+        const instance = CustomSelect.getInstance(selectElement);
+        if (instance) {
+          instance.hide();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, EVENT_CLICK_DATA_API$5, event => {
+  // Close any open custom selects when clicking elsewhere
+  const {
+    target
+  } = event;
+  const openToggles = SelectorEngine.find('.custom-select-toggle.show');
+  for (const toggle of openToggles) {
+    const menu = toggle.nextElementSibling;
+    if (!toggle.contains(target) && !menu?.contains(target)) {
+      const select = toggle.previousElementSibling;
+      const instance = CustomSelect.getInstance(select);
+      if (instance) {
+        instance.hide();
+      }
+    }
+  }
+});
+EventHandler.on(document, EVENT_KEYDOWN_DATA_API$1, SELECTOR_DATA_TOGGLE$8, function (event) {
+  const instance = CustomSelect.getOrCreateInstance(this);
+  if ([ARROW_DOWN_KEY$2, ARROW_UP_KEY$2, ENTER_KEY$1, SPACE_KEY$1].includes(event.key)) {
+    event.preventDefault();
+    instance.show();
+  }
+});
+
+// Auto-initialize on DOM ready
+EventHandler.on(window, 'DOMContentLoaded', () => {
+  for (const select of SelectorEngine.find(SELECTOR_DATA_TOGGLE$8)) {
+    CustomSelect.getOrCreateInstance(select);
   }
 });
 
@@ -4464,101 +5278,6 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$4}${DATA_API_KEY$1}`, () 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap util/sanitizer.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- * --------------------------------------------------------------------------
- */
-
-// js-docs-start allow-list
-const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
-const DefaultAllowlist = {
-  // Global attributes allowed on any supplied element below.
-  '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
-  a: ['target', 'href', 'title', 'rel'],
-  area: [],
-  b: [],
-  br: [],
-  col: [],
-  code: [],
-  dd: [],
-  div: [],
-  dl: [],
-  dt: [],
-  em: [],
-  hr: [],
-  h1: [],
-  h2: [],
-  h3: [],
-  h4: [],
-  h5: [],
-  h6: [],
-  i: [],
-  img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
-  li: [],
-  ol: [],
-  p: [],
-  pre: [],
-  s: [],
-  small: [],
-  span: [],
-  sub: [],
-  sup: [],
-  strong: [],
-  u: [],
-  ul: []
-};
-// js-docs-end allow-list
-
-const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href']);
-
-/**
- * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
- * contexts.
- *
- * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
- */
-const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
-const allowedAttribute = (attribute, allowedAttributeList) => {
-  const attributeName = attribute.nodeName.toLowerCase();
-  if (allowedAttributeList.includes(attributeName)) {
-    if (uriAttributes.has(attributeName)) {
-      return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue));
-    }
-    return true;
-  }
-
-  // Check if a regular expression validates the attribute.
-  return allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp).some(regex => regex.test(attributeName));
-};
-function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
-  if (!unsafeHtml.length) {
-    return unsafeHtml;
-  }
-  if (sanitizeFunction && typeof sanitizeFunction === 'function') {
-    return sanitizeFunction(unsafeHtml);
-  }
-  const domParser = new window.DOMParser();
-  const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
-  const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
-  for (const element of elements) {
-    const elementName = element.nodeName.toLowerCase();
-    if (!Object.keys(allowList).includes(elementName)) {
-      element.remove();
-      continue;
-    }
-    const attributeList = [].concat(...element.attributes);
-    const allowedAttributes = [].concat(allowList['*'] || [], allowList[elementName] || []);
-    for (const attribute of attributeList) {
-      if (!allowedAttribute(attribute, allowedAttributes)) {
-        element.removeAttribute(attribute.nodeName);
-      }
-    }
-  }
-  return createdDocument.body.innerHTML;
-}
-
-/**
- * --------------------------------------------------------------------------
  * Bootstrap util/template-factory.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
@@ -6131,5 +6850,5 @@ class Toggler extends BaseComponent {
 
 eventActionOnPlugin(Toggler, EVENT_CLICK, SELECTOR_DATA_TOGGLE, 'toggle');
 
-export { Alert, Button, Carousel, Collapse, Datepicker, Dialog, Dropdown, NavOverflow, Offcanvas, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
+export { Alert, Button, Carousel, Collapse, CustomSelect, Datepicker, Dialog, Dropdown, NavOverflow, Offcanvas, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
 //# sourceMappingURL=bootstrap.js.map

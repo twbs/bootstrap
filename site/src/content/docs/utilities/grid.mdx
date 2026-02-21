@@ -21,7 +21,16 @@ Use grid utilities to control CSS Grid layout behavior. These utilities work wit
 
 ## Column counts
 
-Use `grid-cols-{value}` utilities to set the number of columns in a CSS Grid container by modifying the `--bs-columns` CSS variable. Bootstrap's CSS Grid system supports 3, 4, and 6 column layouts out of the box.
+Use `grid-cols-{value}` utilities to set the number of columns in a CSS Grid container by modifying the `--bs-columns` CSS variable. Bootstrap's CSS Grid system supports 1–6 column layouts out of the box.
+
+<Example class="bd-example-cssgrid" code={`<div class="grid text-center grid-cols-1">
+    <div>Column</div>
+  </div>`} />
+
+<Example class="bd-example-cssgrid" code={`<div class="grid text-center grid-cols-2">
+    <div>Column</div>
+    <div>Column</div>
+  </div>`} />
 
 <Example class="bd-example-cssgrid" code={`<div class="grid text-center grid-cols-3">
     <div>Column</div>
@@ -33,6 +42,14 @@ Use `grid-cols-{value}` utilities to set the number of columns in a CSS Grid con
   </div>`} />
 
 <Example class="bd-example-cssgrid" code={`<div class="grid text-center grid-cols-4">
+    <div>Column</div>
+    <div>Column</div>
+    <div>Column</div>
+    <div>Column</div>
+  </div>`} />
+
+<Example class="bd-example-cssgrid" code={`<div class="grid text-center grid-cols-5">
+    <div>Column</div>
     <div>Column</div>
     <div>Column</div>
     <div>Column</div>

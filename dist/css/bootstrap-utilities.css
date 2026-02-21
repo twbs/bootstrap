@@ -378,13 +378,13 @@
   --bs-inverse-border: light-dark(var(--bs-gray-400), var(--bs-gray-100));
   --bs-inverse-focus-ring: color-mix(in oklch, light-dark(var(--bs-gray-900), var(--bs-gray-100)) 50%, var(--bs-bg-body));
   --bs-inverse-contrast: light-dark(var(--bs-white), var(--bs-gray-900));
-  --bs-secondary-base: var(--bs-gray-200);
+  --bs-secondary-base: var(--bs-gray-100);
   --bs-secondary-text: light-dark(var(--bs-gray-600), var(--bs-gray-400));
   --bs-secondary-text-emphasis: light-dark(var(--bs-gray-800), var(--bs-gray-200));
-  --bs-secondary-bg: light-dark(var(--bs-gray-100), var(--bs-gray-600));
+  --bs-secondary-bg: light-dark(var(--bs-gray-050), var(--bs-gray-600));
   --bs-secondary-bg-subtle: light-dark(var(--bs-gray-050), var(--bs-gray-800));
   --bs-secondary-bg-muted: light-dark(var(--bs-gray-100), var(--bs-gray-700));
-  --bs-secondary-border: light-dark(var(--bs-gray-300), var(--bs-gray-600));
+  --bs-secondary-border: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-600));
   --bs-secondary-focus-ring: color-mix(in oklch, light-dark(var(--bs-gray-500), var(--bs-gray-300)) 50%, var(--bs-bg-body));
   --bs-secondary-contrast: light-dark(var(--bs-gray-900), var(--bs-white));
   --bs-bg-body: light-dark(var(--bs-white), var(--bs-gray-975));
@@ -1079,7 +1079,7 @@
     border-color: var(--bs-border-color);
   }
   .border-secondary {
-    --bs-border-color: light-dark(var(--bs-gray-100), var(--bs-gray-600));
+    --bs-border-color: light-dark(var(--bs-gray-050), var(--bs-gray-600));
     border-color: var(--bs-border-color);
   }
   .border-bg {
@@ -1139,7 +1139,7 @@
     border-color: var(--bs-border-color);
   }
   .border-subtle-secondary {
-    --bs-border-color: light-dark(var(--bs-gray-300), var(--bs-gray-600));
+    --bs-border-color: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-600));
     border-color: var(--bs-border-color);
   }
   .border-1 {
@@ -1441,11 +1441,20 @@
   .place-items-stretch {
     place-items: stretch;
   }
+  .grid-cols-1 {
+    --bs-columns: 1;
+  }
+  .grid-cols-2 {
+    --bs-columns: 2;
+  }
   .grid-cols-3 {
     --bs-columns: 3;
   }
   .grid-cols-4 {
     --bs-columns: 4;
+  }
+  .grid-cols-5 {
+    --bs-columns: 5;
   }
   .grid-cols-6 {
     --bs-columns: 6;
@@ -2460,7 +2469,7 @@
     background-color: var(--bs-bg);
   }
   .bg-secondary {
-    --bs-bg: light-dark(var(--bs-gray-100), var(--bs-gray-600));
+    --bs-bg: light-dark(var(--bs-gray-050), var(--bs-gray-600));
     background-color: var(--bs-bg);
   }
   .bg-body {
@@ -3028,11 +3037,20 @@
     .place-items-sm-stretch {
       place-items: stretch;
     }
+    .grid-cols-sm-1 {
+      --bs-columns: 1;
+    }
+    .grid-cols-sm-2 {
+      --bs-columns: 2;
+    }
     .grid-cols-sm-3 {
       --bs-columns: 3;
     }
     .grid-cols-sm-4 {
       --bs-columns: 4;
+    }
+    .grid-cols-sm-5 {
+      --bs-columns: 5;
     }
     .grid-cols-sm-6 {
       --bs-columns: 6;
@@ -3727,11 +3745,20 @@
     .place-items-md-stretch {
       place-items: stretch;
     }
+    .grid-cols-md-1 {
+      --bs-columns: 1;
+    }
+    .grid-cols-md-2 {
+      --bs-columns: 2;
+    }
     .grid-cols-md-3 {
       --bs-columns: 3;
     }
     .grid-cols-md-4 {
       --bs-columns: 4;
+    }
+    .grid-cols-md-5 {
+      --bs-columns: 5;
     }
     .grid-cols-md-6 {
       --bs-columns: 6;
@@ -4426,11 +4453,20 @@
     .place-items-lg-stretch {
       place-items: stretch;
     }
+    .grid-cols-lg-1 {
+      --bs-columns: 1;
+    }
+    .grid-cols-lg-2 {
+      --bs-columns: 2;
+    }
     .grid-cols-lg-3 {
       --bs-columns: 3;
     }
     .grid-cols-lg-4 {
       --bs-columns: 4;
+    }
+    .grid-cols-lg-5 {
+      --bs-columns: 5;
     }
     .grid-cols-lg-6 {
       --bs-columns: 6;
@@ -5125,11 +5161,20 @@
     .place-items-xl-stretch {
       place-items: stretch;
     }
+    .grid-cols-xl-1 {
+      --bs-columns: 1;
+    }
+    .grid-cols-xl-2 {
+      --bs-columns: 2;
+    }
     .grid-cols-xl-3 {
       --bs-columns: 3;
     }
     .grid-cols-xl-4 {
       --bs-columns: 4;
+    }
+    .grid-cols-xl-5 {
+      --bs-columns: 5;
     }
     .grid-cols-xl-6 {
       --bs-columns: 6;
@@ -5824,11 +5869,20 @@
     .place-items-2xl-stretch {
       place-items: stretch;
     }
+    .grid-cols-2xl-1 {
+      --bs-columns: 1;
+    }
+    .grid-cols-2xl-2 {
+      --bs-columns: 2;
+    }
     .grid-cols-2xl-3 {
       --bs-columns: 3;
     }
     .grid-cols-2xl-4 {
       --bs-columns: 4;
+    }
+    .grid-cols-2xl-5 {
+      --bs-columns: 5;
     }
     .grid-cols-2xl-6 {
       --bs-columns: 6;

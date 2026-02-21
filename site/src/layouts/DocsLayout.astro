@@ -160,7 +160,6 @@ if (currentPageIndex < allPages.length - 1) {
         </div>
       </div>
 
-
       <div class="vstack bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 fg-3">
         <div class="overflow-y-auto">
         {
@@ -192,7 +191,7 @@ if (currentPageIndex < allPages.length - 1) {
       <div class="bd-content prose ps-lg-2">
         {
           frontmatter.sections && (
-            <div class="grid grid-cols-3 mb-5">
+            <div class="grid grid-cols-1 grid-cols-md-3 gap-2 gap-md-3 mb-3 mb-md-5">
               {frontmatter.sections.map((section) => (
                 <a
                   class="d-block text-decoration-none bg-1 hover-bg-2 rounded-3 p-3"

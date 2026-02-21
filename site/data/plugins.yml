@@ -14,6 +14,10 @@
   description: Expand and collapse areas of content, or create accordions.
   link: components/collapse/
 
+- name: Custom Select
+  description: Enhance native selects with custom HTML, icons, and search.
+  link: forms/custom-select/
+
 - name: Datepicker
   description: Add date selection to form inputs. Built on Vanilla Calendar Pro.
   link: forms/datepicker/

@@ -1,0 +1,185 @@
+@use "../variables" as *;
+@use "../mixins/border-radius" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/transition" as *;
+
+// Custom Select
+//
+// Replaces native select dropdowns with Bootstrap-styled dropdown menus
+// supporting custom HTML content, icons, descriptions, and live search.
+
+@mixin custom-select-icon-container() {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  align-self: flex-start;
+  justify-content: center;
+  width: 1rem;
+  padding-top: .125rem;
+}
+
+@layer components {
+  .custom-select-toggle {
+    display: inline-flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline-end: var(--control-padding-x);
+    text-align: start;
+    cursor: pointer;
+
+    &.show {
+      background-color: var(--bg-1);
+    }
+
+    &:disabled,
+    &.disabled {
+      cursor: not-allowed;
+      opacity: .65;
+    }
+  }
+
+  .custom-select-value {
+    display: flex;
+    flex: 1;
+    gap: .5rem;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .form-control.custom-select-placeholder {
+    color: color-mix(in oklch, currentcolor 65%, transparent);
+  }
+
+  .custom-select-caret {
+    flex-shrink: 0;
+    @include transition(transform .2s ease-in-out);
+
+    .show > & {
+      transform: rotate(180deg);
+    }
+  }
+
+  .custom-select-menu {
+    --dropdown-min-width: 12rem;
+
+    max-height: 300px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    &:not(.show) {
+      display: none;
+    }
+  }
+
+  .custom-select-search {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: var(--dropdown-padding-x);
+    background-color: var(--dropdown-bg);
+  }
+
+  .custom-select-search-input {
+    width: 100%;
+  }
+
+  .custom-select-header {
+    position: sticky;
+    top: calc(var(--dropdown-padding-y) * -1);
+    z-index: 1;
+    padding: .5rem .75rem;
+    font-size: var(--font-size-sm);
+    font-weight: $font-weight-semibold;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    background-color: var(--dropdown-bg);
+
+    &:not(:first-child) {
+      padding-block: .75rem;
+    }
+  }
+
+  .custom-select-item {
+    // Keep focus ring inside the item so it doesn't show as a line in the gap between items
+    &:focus-visible {
+      @include focus-ring(true);
+      outline-offset: -2px;
+    }
+
+    &.selected {
+      color: var(--dropdown-link-active-color, var(--primary-text, var(--primary)));
+
+      .custom-select-check {
+        opacity: 1;
+      }
+    }
+  }
+
+  .custom-select-icon {
+    @include custom-select-icon-container();
+    color: var(--custom-select-icon-fg, var(--fg-3));
+
+    .selected & {
+      color: inherit;
+    }
+
+    > svg {
+      width: 1rem;
+      height: 1rem;
+      fill: currentcolor;
+    }
+  }
+
+  .custom-select-value-icon {
+    display: inline-flex;
+    align-items: center;
+
+    > svg {
+      width: 1rem;
+      height: 1rem;
+      fill: currentcolor;
+    }
+  }
+
+  .custom-select-image {
+    width: 1.25em;
+    height: 1.25em;
+    object-fit: cover;
+    @include border-radius(var(--border-radius-sm));
+  }
+
+  .custom-select-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0; // Allow text truncation
+  }
+
+  .custom-select-description {
+    font-size: var(--font-size-sm);
+    line-height: $line-height-sm;
+    color: color-mix(in oklch, currentcolor 65%, transparent);
+
+    .selected & {
+      color: inherit;
+    }
+  }
+
+  .custom-select-check {
+    @include custom-select-icon-container();
+    margin-left: auto;
+    opacity: 0;
+    @include transition(opacity .15s ease-in-out);
+  }
+
+  .custom-select-no-results {
+    padding: 1rem;
+    font-size: var(--font-size-sm);
+    color: var(--fg-3);
+    text-align: center;
+  }
+}
