@@ -7,15 +7,16 @@
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 
-// scss-docs-start stepper-variables
-$stepper-size: 2rem !default;
-$stepper-gap: 1rem !default;
-$stepper-track-size: .25rem !default;
-$stepper-bg: var(--bg-2) !default;
-$stepper-active-fg: var(--primary-contrast) !default;
-$stepper-active-bg: var(--primary-bg) !default;
-// $stepper-vertical-gap: .5rem !default;
-// scss-docs-end stepper-variables
+// scss-docs-start stepper-tokens
+$stepper-tokens: (
+  --stepper-size: 2rem,
+  --stepper-gap: 1rem,
+  --stepper-bg: var(--bg-2),
+  --stepper-track-size: .25rem,
+  --stepper-active-color: var(--primary-contrast),
+  --stepper-active-bg: var(--primary-bg),
+) !default;
+// scss-docs-end stepper-tokens
 
 // scss-docs-start stepper-horizontal-mixin
 @mixin stepper-horizontal() {
@@ -47,12 +48,9 @@ $stepper-active-bg: var(--primary-bg) !default;
 // scss-docs-start stepper-css
 .stepper {
   // scss-docs-start stepper-css-vars
-  --stepper-size: #{$stepper-size};
-  --stepper-gap: #{$stepper-gap};
-  --stepper-bg: #{$stepper-bg};
-  --stepper-track-size: #{$stepper-track-size};
-  --stepper-active-color: #{$stepper-active-fg};
-  --stepper-active-bg: #{$stepper-active-bg};
+  @each $prop, $value in $stepper-tokens {
+    #{$prop}: #{$value};
+  }
   // scss-docs-end stepper-css-vars
 
   display: grid;

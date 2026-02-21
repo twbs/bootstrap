@@ -5,47 +5,33 @@
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
 
-// scss-docs-start chip-variables
-// $chip-font-size:                    .875em !default;
-// $chip-font-weight:                  $font-weight-normal !default;
-// $chip-padding-y:                    .25rem !default;
-$chip-height:                       1.75rem !default;
-$chip-padding-x:                    .625rem !default;
-$chip-gap:                          .3125rem !default;
-$chip-border-radius:                var(--border-radius-pill) !default;
-$chip-icon-size:                    1rem !default;
-$chip-img-size:                     1.25rem !default;
-$chip-dismiss-size:                 1rem !default;
-$chip-dismiss-opacity:              .65 !default;
-$chip-dismiss-hover-opacity:        1 !default;
-// scss-docs-end chip-variables
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start chip-tokens
+$chip-tokens: (
+  --chip-height: 1.75rem,
+  --chip-padding-x: .625rem,
+  --chip-gap: .3125rem,
+  --chip-border-radius: var(--border-radius-pill),
+  --chip-img-size: 1.25rem,
+  --chip-icon-size: 1rem,
+  --chip-dismiss-size: 1rem,
+  --chip-dismiss-opacity: .65,
+  --chip-dismiss-hover-opacity: 1,
+  --chip-color: var(--theme-text, var(--fg-body)),
+  --chip-bg: var(--theme-bg-subtle, var(--bg-2)),
+  --chip-border-color: transparent,
+  --chip-selected-color: var(--theme-contrast, var(--primary-contrast)),
+  --chip-selected-bg: var(--theme-bg, var(--primary-bg)),
+  --chip-selected-border-color: var(--theme-bg, var(--primary-bg)),
+) !default;
+// scss-docs-end chip-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer components {
   .chip {
-    // scss-docs-start chip-css-vars
-    // --chip-padding-y: #{$chip-padding-y};
-    --chip-height: #{$chip-height};
-    --chip-padding-x: #{$chip-padding-x};
-    --chip-gap: #{$chip-gap};
-    // --chip-font-size: #{$chip-font-size};
-    // --chip-font-weight: #{$chip-font-weight};
-    --chip-border-radius: #{$chip-border-radius};
-    --chip-img-size: #{$chip-img-size};
-    --chip-icon-size: #{$chip-icon-size};
-    --chip-dismiss-size: #{$chip-dismiss-size};
-    --chip-dismiss-opacity: #{$chip-dismiss-opacity};
-    --chip-dismiss-hover-opacity: #{$chip-dismiss-hover-opacity};
-
-    // Default (subtle) appearance - uses theme when available
-    --chip-color: var(--theme-text, var(--fg-body));
-    --chip-bg: var(--theme-bg-subtle, var(--bg-2));
-    --chip-border-color: transparent;
-
-    // Selected/active state colors (solid appearance)
-    --chip-selected-color: var(--theme-contrast, var(--primary-contrast));
-    --chip-selected-bg: var(--theme-bg, var(--primary-bg));
-    --chip-selected-border-color: var(--theme-bg, var(--primary-bg));
-    // scss-docs-end chip-css-vars
+    @each $prop, $value in $chip-tokens {
+      #{$prop}: #{$value};
+    }
 
     display: inline-flex;
     gap: var(--chip-gap);
@@ -73,7 +59,6 @@ $chip-dismiss-hover-opacity:        1 !default;
       // @include focus-ring();
     }
 
-    // Active/selected state - solid appearance
     &.active {
       --chip-color: var(--chip-selected-color);
       --chip-bg: var(--chip-selected-bg);
@@ -85,7 +70,6 @@ $chip-dismiss-hover-opacity:        1 !default;
       }
     }
 
-    // Disabled state
     &.disabled,
     &:disabled {
       pointer-events: none;

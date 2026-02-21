@@ -9,7 +9,6 @@
 
 // scss-docs-start dropdown-tokens
 $dropdown-tokens: (
-  // scss-docs-start dropdown-css-vars
   --dropdown-zindex: #{$zindex-dropdown},
   --dropdown-gap: .125rem,
   --dropdown-min-width: 10rem,
@@ -40,24 +39,18 @@ $dropdown-tokens: (
   --dropdown-header-color: var(--fg-2),
   --dropdown-header-padding-x: .75rem,
   --dropdown-header-padding-y: .25rem,
-  // scss-docs-end dropdown-css-vars
 ) !default;
 // scss-docs-end dropdown-tokens
 
-
 @layer components {
-  // The dropdown wrapper (`<div>`)
   .dropdown {
     position: relative;
   }
 
-  // The dropdown menu
   .dropdown-menu {
-    // scss-docs-start dropdown-css-vars
     @each $prop, $value in $dropdown-tokens {
       #{$prop}: #{$value};
     }
-    // scss-docs-end dropdown-css-vars
 
     position: absolute;
     z-index: var(--dropdown-zindex);
@@ -82,7 +75,6 @@ $dropdown-tokens: (
     display: flex;
   }
 
-  // Dividers (basically an `<hr>`) within the dropdown
   .dropdown-divider {
     height: 0;
     margin: var(--dropdown-divider-margin-y) var(--dropdown-divider-margin-x);
@@ -132,7 +124,6 @@ $dropdown-tokens: (
     }
   }
 
-  // Dropdown section headers
   .dropdown-header {
     display: block;
     padding: var(--dropdown-header-padding-y) var(--dropdown-header-padding-x);
@@ -142,7 +133,6 @@ $dropdown-tokens: (
     white-space: nowrap; // as with > li > a
   }
 
-  // Dropdown text
   .dropdown-item-text {
     display: block;
     padding: var(--dropdown-item-padding-y) var(--dropdown-item-padding-x);
@@ -157,14 +147,12 @@ $dropdown-tokens: (
   .dropdown-submenu {
     position: relative;
 
-    // Submenu trigger styling
     > .dropdown-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    // Submenu caret indicator
     > .dropdown-item::after {
       display: inline-block;
       flex-shrink: 0;
@@ -190,14 +178,12 @@ $dropdown-tokens: (
       margin-top: calc(-1 * var(--dropdown-padding-y));
     }
 
-    // Hover state for submenu trigger
     &:hover > .dropdown-item,
     &:focus-within > .dropdown-item {
       color: var(--dropdown-link-hover-color);
       background-color: var(--dropdown-link-hover-bg);
     }
 
-    // Active/open state
     &.show > .dropdown-item {
       color: var(--dropdown-link-hover-color);
       background-color: var(--dropdown-link-hover-bg);

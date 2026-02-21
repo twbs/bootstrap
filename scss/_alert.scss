@@ -4,29 +4,26 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 
-// scss-docs-start alert-variables
-$alert-gap:                     $spacer * .75 !default;
-$alert-padding-y:               $spacer !default;
-$alert-padding-x:               $spacer !default;
-$alert-border-radius:           var(--border-radius) !default;
-$alert-link-font-weight:        $font-weight-semibold !default;
-$alert-border-width:            var(--border-width) !default;
-// scss-docs-end alert-variables
+// scss-docs-start alert-tokens
+$alert-tokens: (
+  --alert-gap: #{$spacer * .75},
+  --alert-bg: var(--theme-bg-subtle, var(--bg-1)),
+  --alert-padding-x: #{$spacer},
+  --alert-padding-y: #{$spacer},
+  --alert-color: var(--theme-text, inherit),
+  --alert-border-color: var(--theme-border, var(--border-color)),
+  --alert-border: var(--border-width) solid var(--alert-border-color),
+  --alert-border-radius: var(--border-radius),
+  --alert-link-color: inherit,
+  --hr-border-color: var(--theme-border, var(--border-color)),
+) !default;
+// scss-docs-end alert-tokens
 
 @layer components {
   .alert {
-    // scss-docs-start alert-css-vars
-    --alert-gap: #{$alert-gap};
-    --alert-bg: var(--theme-bg-subtle, var(--bg-1));
-    --alert-padding-x: #{$alert-padding-x};
-    --alert-padding-y: #{$alert-padding-y};
-    --alert-color: var(--theme-text, inherit);
-    --alert-border-color: var(--theme-border, var(--border-color));
-    --alert-border: #{$alert-border-width} solid var(--alert-border-color);
-    --alert-border-radius: #{$alert-border-radius};
-    --alert-link-color: inherit;
-    --hr-border-color: var(--theme-border, var(--border-color));
-    // scss-docs-end alert-css-vars
+    @each $prop, $value in $alert-tokens {
+      #{$prop}: #{$value};
+    }
 
     display: flex;
     gap: var(--alert-gap);
@@ -45,7 +42,7 @@ $alert-border-width:            var(--border-width) !default;
 
   // Provide class for links that match alerts
   .alert-link {
-    font-weight: $alert-link-font-weight;
+    font-weight: var(--font-weight-semibold);
     color: var(--alert-link-color);
   }
 }

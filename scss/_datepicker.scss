@@ -6,50 +6,34 @@
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
 
-// scss-docs-start datepicker-variables
-$datepicker-padding:                1rem !default;
-$datepicker-bg:                     var(--bg-body) !default;
-$datepicker-color:                  var(--fg-body) !default;
-$datepicker-border-color:           var(--border-color-translucent) !default;
-$datepicker-border-width:           var(--border-width) !default;
-$datepicker-border-radius:          var(--border-radius-lg) !default;
-$datepicker-box-shadow:             var(--box-shadow) !default;
-$datepicker-font-size:              var(--font-size-sm) !default;
-$datepicker-min-width:              280px !default;
-
-$datepicker-header-font-weight:     600 !default;
-$datepicker-weekday-color:          var(--fg-3) !default;
-$datepicker-day-hover-bg:           var(--bg-1) !default;
-$datepicker-day-selected-bg:        var(--primary-bg) !default;
-$datepicker-day-selected-color:     var(--primary-contrast) !default;
-$datepicker-day-today-bg:           var(--bg-2) !default;
-$datepicker-day-today-color:        var(--fg-1) !default;
-$datepicker-day-disabled-color:     var(--fg-4) !default;
-// scss-docs-end datepicker-variables
+// scss-docs-start datepicker-tokens
+$datepicker-tokens: (
+  --datepicker-padding: 1rem,
+  --datepicker-bg: var(--bg-body),
+  --datepicker-color: var(--fg-body),
+  --datepicker-border-color: var(--border-color-translucent),
+  --datepicker-border-width: var(--border-width),
+  --datepicker-border-radius: var(--border-radius-lg),
+  --datepicker-box-shadow: var(--box-shadow),
+  --datepicker-font-size: var(--font-size-sm),
+  --datepicker-min-width: 280px,
+  --datepicker-zindex: #{$zindex-dropdown},
+  --datepicker-header-font-weight: 600,
+  --datepicker-weekday-color: var(--fg-3),
+  --datepicker-day-hover-bg: var(--bg-1),
+  --datepicker-day-selected-bg: var(--primary-bg),
+  --datepicker-day-selected-color: var(--primary-contrast),
+  --datepicker-day-today-bg: var(--bg-2),
+  --datepicker-day-today-color: var(--fg-1),
+  --datepicker-day-disabled-color: var(--fg-4),
+) !default;
+// scss-docs-end datepicker-tokens
 
 @layer components {
   [data-vc="calendar"] {
-    // scss-docs-start datepicker-css-vars
-    --datepicker-padding: #{$datepicker-padding};
-    --datepicker-bg: #{$datepicker-bg};
-    --datepicker-color: #{$datepicker-color};
-    --datepicker-border-color: #{$datepicker-border-color};
-    --datepicker-border-width: #{$datepicker-border-width};
-    --datepicker-border-radius: #{$datepicker-border-radius};
-    --datepicker-box-shadow: #{$datepicker-box-shadow};
-    --datepicker-font-size: #{$datepicker-font-size};
-    --datepicker-min-width: #{$datepicker-min-width};
-    --datepicker-zindex: #{$zindex-dropdown};
-
-    --datepicker-header-font-weight: #{$datepicker-header-font-weight};
-    --datepicker-weekday-color: #{$datepicker-weekday-color};
-    --datepicker-day-hover-bg: #{$datepicker-day-hover-bg};
-    --datepicker-day-selected-bg: #{$datepicker-day-selected-bg};
-    --datepicker-day-selected-color: #{$datepicker-day-selected-color};
-    --datepicker-day-today-bg: #{$datepicker-day-today-bg};
-    --datepicker-day-today-color: #{$datepicker-day-today-color};
-    --datepicker-day-disabled-color: #{$datepicker-day-disabled-color};
-    // scss-docs-end datepicker-css-vars
+    @each $prop, $value in $datepicker-tokens {
+      #{$prop}: #{$value};
+    }
 
     position: absolute;
     z-index: var(--datepicker-zindex);

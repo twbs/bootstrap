@@ -4,50 +4,34 @@
 @use "mixins/box-shadow" as *;
 @use "layout/breakpoints" as *;
 
-// scss-docs-start card-variables
-$card-spacer-y:                     $spacer !default;
-$card-spacer-x:                     $spacer !default;
-$card-subtitle-color:               null !default;
-$card-border-width:                 var(--border-width) !default;
-$card-border-color:                 var(--border-color-translucent) !default;
-$card-border-radius:                var(--border-radius-lg) !default;
-$card-box-shadow:                   null !default;
-$card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-padding-y:                $card-spacer-y * .75 !default;
-$card-cap-padding-x:                $card-spacer-x !default;
-$card-cap-bg:                       var(--bg-1) !default;
-$card-cap-color:                    null !default;
-$card-height:                       null !default;
-$card-color:                        null !default;
-$card-bg:                           var(--bg-body) !default;
-$card-img-overlay-padding:          $spacer !default;
-$card-group-margin:                 $grid-gutter-width * .5 !default;
-
-$card-body-gap:                     $card-spacer-y * .5 !default;
-// scss-docs-end card-variables
+// scss-docs-start card-tokens
+$card-tokens: (
+  --card-spacer-y: #{$spacer},
+  --card-spacer-x: #{$spacer},
+  --card-subtitle-color: inherit,
+  --card-border-width: var(--border-width),
+  --card-border-color: var(--border-color-translucent),
+  --card-border-radius: var(--border-radius-lg),
+  --card-box-shadow: none,
+  --card-inner-border-radius: calc(var(--border-radius-lg) - var(--border-width)),
+  --card-cap-padding-y: #{$spacer * .75},
+  --card-cap-padding-x: #{$spacer},
+  --card-cap-bg: var(--bg-1),
+  --card-cap-color: inherit,
+  --card-height: auto,
+  --card-color: inherit,
+  --card-bg: var(--bg-body),
+  --card-img-overlay-padding: #{$spacer},
+  --card-group-margin: #{$grid-gutter-width * .5},
+  --card-body-gap: #{$spacer * .5},
+) !default;
+// scss-docs-end card-tokens
 
 @layer components {
   .card {
-    // scss-docs-start card-css-vars
-    --card-spacer-y: #{$card-spacer-y};
-    --card-spacer-x: #{$card-spacer-x};
-    --card-subtitle-color: #{$card-subtitle-color};
-    --card-border-width: #{$card-border-width};
-    --card-border-color: #{$card-border-color};
-    --card-border-radius: #{$card-border-radius};
-    --card-box-shadow: #{$card-box-shadow};
-    --card-inner-border-radius: #{$card-inner-border-radius};
-    --card-cap-padding-y: #{$card-cap-padding-y};
-    --card-cap-padding-x: #{$card-cap-padding-x};
-    --card-cap-bg: #{$card-cap-bg};
-    --card-cap-color: #{$card-cap-color};
-    --card-height: #{$card-height};
-    --card-color: #{$card-color};
-    --card-bg: #{$card-bg};
-    --card-img-overlay-padding: #{$card-img-overlay-padding};
-    --card-group-margin: #{$card-group-margin};
-    --card-body-gap: #{$card-body-gap};
-    // scss-docs-end card-css-vars
+    @each $prop, $value in $card-tokens {
+      #{$prop}: #{$value};
+    }
 
     position: relative;
     display: flex;

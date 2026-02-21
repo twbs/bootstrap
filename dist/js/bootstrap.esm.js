@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v5.3.8 (https://getbootstrap.com/)
+  * Bootstrap v6.0.0-alpha1 (https://getbootstrap.com/)
   * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -578,7 +578,7 @@ class Config {
  * Constants
  */
 
-const VERSION = '5.3.8';
+const VERSION = '6.0.0-alpha1';
 
 /**
  * Class definition

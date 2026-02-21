@@ -2,20 +2,25 @@
 @use "config" as *;
 @use "variables" as *;
 
-// scss-docs-start placeholders
-$placeholder-opacity-max:           .5 !default;
-$placeholder-opacity-min:           .2 !default;
-// scss-docs-end placeholders
-
+// scss-docs-start placeholder-tokens
+$placeholder-tokens: (
+  --placeholder-opacity-max: .5,
+  --placeholder-opacity-min: .2,
+) !default;
+// scss-docs-end placeholder-tokens
 
 @layer components {
   .placeholder {
+    @each $prop, $value in $placeholder-tokens {
+      #{$prop}: #{$value};
+    }
+
     display: inline-block;
     min-height: 1em;
     vertical-align: middle;
     cursor: wait;
     background-color: currentcolor;
-    opacity: $placeholder-opacity-max;
+    opacity: var(--placeholder-opacity-max);
 
     &.btn::before {
       display: inline-block;
@@ -45,12 +50,12 @@ $placeholder-opacity-min:           .2 !default;
 
   @keyframes placeholder-glow {
     50% {
-      opacity: $placeholder-opacity-min;
+      opacity: var(--placeholder-opacity-min);
     }
   }
 
   .placeholder-wave {
-    mask-image: linear-gradient(130deg, $black 55%, rgba(0, 0, 0, (1 - $placeholder-opacity-min)) 75%, $black 95%);
+    mask-image: linear-gradient(130deg, $black 55%, rgba(0, 0, 0, calc(1 - var(--placeholder-opacity-min))) 75%, $black 95%);
     mask-size: 200% 100%;
     animation: placeholder-wave 2s linear infinite;
   }

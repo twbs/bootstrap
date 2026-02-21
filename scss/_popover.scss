@@ -4,53 +4,37 @@
 @use "mixins/box-shadow" as *;
 @use "mixins/reset-text" as *;
 
-// scss-docs-start popover-variables
-$popover-font-size:                 var(--font-size-sm) !default;
-$popover-bg:                        var(--bg-body) !default;
-$popover-max-width:                 280px !default;
-$popover-border-width:              var(--border-width) !default;
-$popover-border-color:              var(--border-color-translucent) !default;
-$popover-border-radius:             var(--border-radius-lg) !default;
-$popover-inner-border-radius:       calc(#{$popover-border-radius} - #{$popover-border-width}) !default;
-$popover-box-shadow:                var(--box-shadow) !default;
-
-$popover-header-font-size:          $font-size-base !default;
-$popover-header-bg:                 var(--bg-1) !default;
-$popover-header-color:              $headings-color !default;
-$popover-header-padding-y:          $spacer * .75 !default;
-$popover-header-padding-x:          $spacer !default;
-
-$popover-body-color:                var(--fg-body) !default;
-$popover-body-padding-y:            $spacer * .75 !default;
-$popover-body-padding-x:            $spacer !default;
-
-$popover-arrow-width:               1rem !default;
-$popover-arrow-height:              .5rem !default;
-// scss-docs-end popover-variables
+// scss-docs-start popover-tokens
+$popover-tokens: (
+  --popover-zindex: #{$zindex-popover},
+  --popover-max-width: 280px,
+  --popover-font-size: var(--font-size-sm),
+  --popover-bg: var(--bg-body),
+  --popover-border-width: var(--border-width),
+  --popover-border-color: var(--border-color-translucent),
+  --popover-border-radius: var(--border-radius-lg),
+  --popover-inner-border-radius: calc(var(--border-radius-lg) - var(--border-width)),
+  --popover-box-shadow: var(--box-shadow),
+  --popover-header-padding-x: #{$spacer},
+  --popover-header-padding-y: #{$spacer * .75},
+  --popover-header-font-size: #{$font-size-base},
+  --popover-header-color: #{$headings-color},
+  --popover-header-bg: var(--bg-1),
+  --popover-body-padding-x: #{$spacer},
+  --popover-body-padding-y: #{$spacer * .75},
+  --popover-body-color: var(--fg-body),
+  --popover-arrow-width: 1rem,
+  --popover-arrow-height: .5rem,
+  --popover-arrow-border: var(--popover-border-color),
+) !default;
+// scss-docs-end popover-tokens
 
 @layer components {
   .popover {
     // scss-docs-start popover-css-vars
-    --popover-zindex: #{$zindex-popover};
-    --popover-max-width: #{$popover-max-width};
-    --popover-font-size: #{$popover-font-size};
-    --popover-bg: #{$popover-bg};
-    --popover-border-width: #{$popover-border-width};
-    --popover-border-color: #{$popover-border-color};
-    --popover-border-radius: #{$popover-border-radius};
-    --popover-inner-border-radius: #{$popover-inner-border-radius};
-    --popover-box-shadow: #{$popover-box-shadow};
-    --popover-header-padding-x: #{$popover-header-padding-x};
-    --popover-header-padding-y: #{$popover-header-padding-y};
-    --popover-header-font-size: #{$popover-header-font-size};
-    --popover-header-color: #{$popover-header-color};
-    --popover-header-bg: #{$popover-header-bg};
-    --popover-body-padding-x: #{$popover-body-padding-x};
-    --popover-body-padding-y: #{$popover-body-padding-y};
-    --popover-body-color: #{$popover-body-color};
-    --popover-arrow-width: #{$popover-arrow-width};
-    --popover-arrow-height: #{$popover-arrow-height};
-    --popover-arrow-border: var(--popover-border-color);
+    @each $prop, $value in $popover-tokens {
+      #{$prop}: #{$value};
+    }
     // scss-docs-end popover-css-vars
 
     z-index: var(--popover-zindex);
