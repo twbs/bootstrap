@@ -9,7 +9,6 @@ toc: true
 Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, top, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
 
 - Offcanvas shares some of the same JavaScript code as dialogs. Conceptually, they are quite similar, but they are separate plugins.
-- Similarly, some [source Sass](#sass-variables) variables for offcanvas’s styles and dimensions are inherited from the modal’s variables.
 - When shown, offcanvas includes a default backdrop that can be clicked to hide the offcanvas.
 - Similar to dialogs, only one offcanvas can be shown at a time.
 
@@ -221,11 +220,11 @@ Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-l
 
 <CSSVariables component="Offcanvas" className="offcanvas" />
 
-<ScssDocs name="offcanvas-css-vars" file="scss/_offcanvas.scss" />
+<ScssDocs name="offcanvas-tokens" file="scss/_offcanvas.scss" />
 
-### Sass variables
+Tokens for the offcanvas backdrop are available in a separate map as they apply to `.offcanvas-backdrop`, a sibling to `.offcanvas`.
 
-<ScssDocs name="offcanvas-variables" file="scss/_variables.scss" />
+<ScssDocs name="offcanvas-backdrop-tokens" file="scss/_offcanvas.scss" />
 
 ## Usage
 

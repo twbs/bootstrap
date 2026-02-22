@@ -10,75 +10,52 @@
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 
-// scss-docs-start navbar-variables
-$navbar-padding-y:                  $spacer * .5 !default;
-$navbar-padding-x:                  null !default;
+// mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
 
-$navbar-nav-link-padding-x:         .75rem !default;
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start navbar-tokens
+$navbar-tokens: (
+  --navbar-padding-x: 0,
+  --navbar-padding-y: #{$spacer * .5},
+  --navbar-color: var(--fg-2),
+  --navbar-hover-color: var(--fg-1),
+  --navbar-disabled-color: var(--fg-3),
+  --navbar-active-color: var(--fg),
+  --navbar-brand-padding-y: .75rem,
+  --navbar-brand-margin-end: 1rem,
+  --navbar-brand-font-size: var(--font-size-lg),
+  --navbar-brand-color: var(--fg),
+  --navbar-brand-hover-color: var(--fg),
+  --navbar-nav-link-padding-x: .75rem,
+  --navbar-toggler-padding-y: .25rem,
+  --navbar-toggler-padding-x: .75rem,
+  --navbar-toggler-font-size: var(--font-size-lg),
+  --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{color-mix(in oklch, var(--body-color) 75%, transparent)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
+  --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
+  --navbar-toggler-border-radius: var(--border-radius),
+  --navbar-toggler-transition: box-shadow .15s ease-in-out,
+) !default;
+// scss-docs-end navbar-tokens
 
-$navbar-brand-font-size:            $font-size-lg !default;
-// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-// mdo-do: fix this
-// $nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
-// $navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
-$navbar-brand-height:               1.5rem !default;
-// $navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * .5 !default;
-$navbar-brand-padding-y:            $navbar-brand-height * .5 !default;
-$navbar-brand-margin-end:           1rem !default;
-
-$navbar-toggler-padding-y:          .25rem !default;
-$navbar-toggler-padding-x:          .75rem !default;
-$navbar-toggler-font-size:          $font-size-lg !default;
-$navbar-toggler-border-radius:      var(--border-radius) !default;
-$navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
-
-$navbar-light-color:                var(--fg-2) !default;
-$navbar-light-hover-color:          var(--fg-1) !default;
-$navbar-light-active-color:         var(--fg) !default;
-$navbar-light-disabled-color:       var(--fg-3) !default;
-$navbar-light-icon-color:           color-mix(in oklch, var(--body-color) 75%, transparent) !default;
-$navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-light-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent) !default;
-$navbar-light-brand-color:          $navbar-light-active-color !default;
-$navbar-light-brand-hover-color:    $navbar-light-active-color !default;
-// scss-docs-end navbar-variables
-
-// scss-docs-start navbar-dark-variables
-$navbar-dark-color:                 rgba($white, .55) !default;
-$navbar-dark-hover-color:           rgba($white, .75) !default;
-$navbar-dark-active-color:          $white !default;
-$navbar-dark-disabled-color:        rgba($white, .25) !default;
-$navbar-dark-icon-color:            $navbar-dark-color !default;
-$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-dark-toggler-border-color:  rgba($white, .1) !default;
-$navbar-dark-brand-color:           $navbar-dark-active-color !default;
-$navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
-// scss-docs-end navbar-dark-variables
+// scss-docs-start navbar-dark-tokens
+$navbar-dark-tokens: (
+  --navbar-color: color-mix(in oklch, var(--white) .55, transparent),
+  --navbar-hover-color: color-mix(in oklch, var(--white) .75, transparent),
+  --navbar-disabled-color: color-mix(in oklch, var(--white) .25, transparent),
+  --navbar-active-color: var(--white),
+  --navbar-brand-color: var(--white),
+  --navbar-brand-hover-color: var(--white),
+  --navbar-toggler-border-color: color-mix(in oklch, var(--white) .1, transparent),
+  --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
+) !default;
+// scss-docs-end navbar-dark-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer components {
   .navbar {
-    // scss-docs-start navbar-css-vars
-    // stylelint-disable-next-line scss/at-function-named-arguments
-    --navbar-padding-x: #{if(sass($navbar-padding-x == null): 0; else: $navbar-padding-x)};
-    --navbar-padding-y: #{$navbar-padding-y};
-    --navbar-color: #{$navbar-light-color};
-    --navbar-hover-color: #{$navbar-light-hover-color};
-    --navbar-disabled-color: #{$navbar-light-disabled-color};
-    --navbar-active-color: #{$navbar-light-active-color};
-    --navbar-brand-padding-y: #{$navbar-brand-padding-y};
-    --navbar-brand-margin-end: #{$navbar-brand-margin-end};
-    --navbar-brand-font-size: #{$navbar-brand-font-size};
-    --navbar-brand-color: #{$navbar-light-brand-color};
-    --navbar-brand-hover-color: #{$navbar-light-brand-hover-color};
-    --navbar-nav-link-padding-x: #{$navbar-nav-link-padding-x};
-    --navbar-toggler-padding-y: #{$navbar-toggler-padding-y};
-    --navbar-toggler-padding-x: #{$navbar-toggler-padding-x};
-    --navbar-toggler-font-size: #{$navbar-toggler-font-size};
-    --navbar-toggler-icon-bg: #{escape-svg($navbar-light-toggler-icon-bg)};
-    --navbar-toggler-border-color: #{$navbar-light-toggler-border-color};
-    --navbar-toggler-border-radius: #{$navbar-toggler-border-radius};
-    --navbar-toggler-transition: #{$navbar-toggler-transition};
-    // scss-docs-end navbar-css-vars
+    @each $prop, $value in $navbar-tokens {
+      #{$prop}: #{$value};
+    }
 
     position: relative;
     display: flex;
@@ -317,22 +294,15 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
 
   .navbar-dark,
   .navbar[data-bs-theme="dark"] {
-    // scss-docs-start navbar-dark-css-vars
-    --navbar-color: #{$navbar-dark-color};
-    --navbar-hover-color: #{$navbar-dark-hover-color};
-    --navbar-disabled-color: #{$navbar-dark-disabled-color};
-    --navbar-active-color: #{$navbar-dark-active-color};
-    --navbar-brand-color: #{$navbar-dark-brand-color};
-    --navbar-brand-hover-color: #{$navbar-dark-brand-hover-color};
-    --navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
-    --navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
-    // scss-docs-end navbar-dark-css-vars
+    @each $prop, $value in $navbar-dark-tokens {
+      #{$prop}: #{$value};
+    }
   }
 
   @if $enable-dark-mode {
     @include color-mode(dark) {
       .navbar-toggler-icon {
-        --navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
+        --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))};
       }
     }
   }
