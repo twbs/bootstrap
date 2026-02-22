@@ -18,7 +18,7 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-- Please **do not** use the issue tracker for personal support requests. Stack Overflow ([`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5) tag), [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions) or [IRC](/README.md#community) are better places to get help.
+- Please **do not** use the issue tracker for personal support requests. Stack Overflow ([`bootstrap-6`](https://stackoverflow.com/questions/tagged/bootstrap-6) tag), [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions) or [IRC](/README.md#community) are better places to get help.
 
 - Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -44,7 +44,7 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 - `css` - Issues stemming from our compiled CSS or source Sass files.
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
-- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
+- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v6.0.0` to `v6.1.0`).
 - `build` - Issues with our build system, which is used to run all our tests, concatenate and compile source files, and more.
 - `help wanted` - Issues we need or would love help from the community to resolve.
 - `js` - Issues stemming from our compiled or source JavaScript files.
