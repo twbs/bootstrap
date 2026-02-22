@@ -190,7 +190,6 @@ $focus-ring-blur:       0 !default;
 $focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
 // scss-docs-end focus-ring-variables
 
-$component-active-color:      var(--primary-contrast) !default;
 $component-active-bg:         var(--primary-bg) !default;
 
 $transition-base:             all .2s ease-in-out !default;
@@ -362,24 +361,6 @@ $zindex-levels: (
 ) !default;
 // scss-docs-end zindex-levels-map
 
-
-// Offcanvas
-
-// scss-docs-start offcanvas-variables
-$offcanvas-padding-y:               $spacer !default;
-$offcanvas-padding-x:               $spacer !default;
-$offcanvas-horizontal-width:        400px !default;
-$offcanvas-vertical-height:         30vh !default;
-$offcanvas-transition-duration:     .3s !default;
-$offcanvas-border-color:            var(--border-color-translucent) !default;
-$offcanvas-border-width:            var(--border-width) !default;
-$offcanvas-title-line-height:       $line-height-base !default;
-$offcanvas-bg-color:                var(--bg-body) !default;
-$offcanvas-color:                   var(--fg-body) !default;
-$offcanvas-box-shadow:              var(--box-shadow-sm) !default;
-$offcanvas-backdrop-bg:             $black !default;
-$offcanvas-backdrop-opacity:        .5 !default;
-// scss-docs-end offcanvas-variables
 
 // Code
 
