@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config'
-import astroBrokenLinksChecker from 'astro-broken-links-checker';
+import astroBrokenLinksChecker from 'astro-broken-links-checker'
 import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
 import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
 import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
@@ -32,7 +32,7 @@ export default defineConfig({
       cacheExternalLinks: false,
       throwError: true,
       linkCheckerDir: '.link-checker'
-    }),
+    })
   ],
   markdown: {
     smartypants: false,
