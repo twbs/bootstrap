@@ -27,15 +27,6 @@ $control-font-size-lg: $font-size-lg !default;
 $control-line-height-lg: $line-height-lg !default;
 $control-border-radius-lg: var(--border-radius-lg) !default;
 
-$control-select-indicator-color:       var(--gray-600) !default;
-$control-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$control-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
-$control-select-bg-position:           right $control-padding-x center !default;
-$control-select-bg-size:               16px 12px !default;
-
-$control-select-indicator-color-dark:  #fff !default;
-$control-select-indicator-dark:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$control-select-indicator-color-dark}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>") !default;
-
-
 // scss-docs-start input-btn-variables
 $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
@@ -77,9 +68,9 @@ $input-padding-x-lg:                    $input-btn-padding-x-lg !default;
 $input-font-size-lg:                    $input-btn-font-size-lg !default;
 
 $input-bg:                              var(--bg-body) !default;
-$input-disabled-color:                  null !default;
+// $input-disabled-color:                  null !default;
 $input-disabled-bg:                     var(--secondary-bg) !default;
-$input-disabled-border-color:           null !default;
+// $input-disabled-border-color:           null !default;
 
 $input-color:                           var(--fg-body) !default;
 $input-border-color:                    var(--border-color) !default;
@@ -94,8 +85,8 @@ $input-focus-bg:                        $input-bg !default;
 $input-focus-border-color:              var(--primary-border) !default;
 $input-focus-color:                     $input-color !default;
 
-$input-placeholder-color:               var(--secondary-color) !default;
-$input-plaintext-color:                 var(--fg-body) !default;
+// $input-placeholder-color:               var(--secondary-color) !default;
+// $input-plaintext-color:                 var(--fg-body) !default;
 
 $input-height-border:                   calc(#{$input-border-width} * 2) !default;
 

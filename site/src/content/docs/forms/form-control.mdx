@@ -5,18 +5,18 @@ toc: true
 ---
 
 <Callout type="info">
-  **Heads up!** As of v6, `<select>` elements are now styled with the `.form-control` class. This reduces a ton of duplication and abstraction while making it easier to consistently customize the appearance of form controls.
+  **Heads up!** In v6, `<select>` elements are styled with `.form-control`. This reduces duplication and abstraction while making it easier to consistently customize the appearance of form elements.
 </Callout>
 
 ## Example
 
 Form controls are styled with a mix of Sass and CSS variables, allowing them to adapt to color modes and support any customization method.
 
-<Example code={`<div class="mb-3">
+<Example class="vstack gap-3" code={`<div>
     <label for="exampleFormControlInput1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
-  <div class="mb-3">
+  <div>
     <label for="exampleFormControlSelect1" class="form-label">Example select</label>
     <select class="form-control" id="exampleFormControlSelect1">
       <option>Open this select menu</option>
@@ -34,11 +34,11 @@ Form controls are styled with a mix of Sass and CSS variables, allowing them to 
 
 Change the size of a form control by using classes like `.form-control-lg` and `.form-control-sm`. This adjusts `height`, `padding`, `font-size`, `line-height`, and `border-radius`.
 
-<Example code={`<div class="mb-3">
+<Example class="vstack gap-3" code={`<div>
     <label for="largeInput" class="form-label">Large input</label>
     <input class="form-control form-control-lg" type="text" id="largeInput" placeholder="Large input" aria-label="Large input example">
   </div>
-  <div class="mb-3">
+  <div>
     <label for="largeSelect" class="form-label">Large select</label>
     <select class="form-control form-control-lg" id="largeSelect">
       <option>Open this select menu</option>
@@ -52,11 +52,11 @@ Change the size of a form control by using classes like `.form-control-lg` and `
     <textarea class="form-control form-control-lg" id="largeTextarea" rows="3" placeholder="Large textarea" aria-label="Large textarea example"></textarea>
   </div>`} />
 
-<Example code={`<div class="mb-3">
+<Example class="vstack gap-3" code={`<div>
     <label for="smallInput" class="form-label">Small input</label>
     <input class="form-control form-control-sm" type="text" id="smallInput" placeholder="Small input" aria-label="Small input example">
   </div>
-  <div class="mb-3">
+  <div>
     <label for="smallSelect" class="form-label">Small select</label>
     <select class="form-control form-control-sm" id="smallSelect">
       <option>Open this select menu</option>
@@ -71,6 +71,13 @@ Change the size of a form control by using classes like `.form-control-lg` and `
   </div>`} />
 
 ## Select
+
+<Example code={`<select class="form-control" id="exampleFormControlSelect2">
+    <option>Choose one…</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>`} />
 
 The `multiple` attribute is supported on select elements:
 
@@ -201,6 +208,22 @@ Set the `type="color"` and add `.form-control-color` to the `<input>`. We use th
 
 <Example code={`<label for="exampleColorInput" class="form-label">Color picker</label>
 <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">`} />
+
+## Ghost input
+
+Use `.form-ghost` to remove all default input styling when your wrapper handles spacing, border, and focus styles. This is useful for custom composites like search bars and command inputs.
+
+<Callout type="warning">
+  `.form-ghost` removes the input's own focus outline. Use `:focus-within` on a parent element to provide a visible focus indicator.
+</Callout>
+
+<Example code={`<label for="exampleGhostInput" class="form-label">Search</label>
+  <div class="d-flex align-items-center gap-2 p-2 border rounded">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+    </svg>
+    <input type="search" class="form-ghost" id="exampleGhostInput" placeholder="Search docs" aria-label="Search docs"><!-- [!code highlight] -->
+  </div>`} />
 
 ## Datalists
 

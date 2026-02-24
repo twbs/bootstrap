@@ -8,15 +8,20 @@
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
-// scss-docs-start check-variables
-$check-border-color: var(--border-color) !default;
-$check-checked-bg: var(--primary-base) !default;
-$check-checked-border-color: $check-checked-bg !default;
-$check-indeterminate-bg: var(--primary-base) !default;
-$check-indeterminate-border-color: $check-indeterminate-bg !default;
-$check-disabled-bg: var(--bg-3) !default;
-$check-disabled-opacity: .65 !default;
-// scss-docs-end check-variables
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start check-tokens
+$check-tokens: (
+  --check-bg: transparent,
+  --check-border-color: var(--border-color),
+  --check-checked-bg: var(--primary-base),
+  --check-checked-border-color: var(--primary-base),
+  --check-indeterminate-bg: var(--primary-base),
+  --check-indeterminate-border-color: var(--primary-base),
+  --check-disabled-bg: var(--bg-3),
+  --check-disabled-opacity: .65,
+) !default;
+// scss-docs-end check-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
   b-checkgroup {
@@ -25,21 +30,14 @@ $check-disabled-opacity: .65 !default;
     align-items: var(--align-items, start);
 
     .description {
-      color: var(--secondary-text);
+      color: var(--fg-3);
     }
   }
 
   .check {
-    // scss-docs-start check-css-variables
-    --check-bg: transparent;
-    --check-border-color: #{$check-border-color};
-    --check-checked-bg: #{$check-checked-bg};
-    --check-checked-border-color: #{$check-checked-border-color};
-    --check-indeterminate-bg: #{$check-indeterminate-bg};
-    --check-indeterminate-border-color: #{$check-indeterminate-border-color};
-    --check-disabled-bg: #{$check-disabled-bg};
-    --check-disabled-opacity: #{$check-disabled-opacity};
-    // scss-docs-end check-css-variables
+    @each $token, $value in $check-tokens {
+      #{$token}: #{$value};
+    }
 
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));

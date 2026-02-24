@@ -8,13 +8,18 @@
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
-// scss-docs-start radio-variables
-$radio-border-color: var(--border-color) !default;
-$radio-checked-bg: var(--primary-base) !default;
-$radio-checked-border-color: $radio-checked-bg !default;
-$radio-disabled-bg: var(--bg-3) !default;
-$radio-disabled-opacity: .65 !default;
-// scss-docs-end radio-variables
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start radio-tokens
+$radio-tokens: (
+  --radio-bg: transparent,
+  --radio-border-color: var(--border-color),
+  --radio-checked-bg: var(--primary-base),
+  --radio-checked-border-color: var(--primary-base),
+  --radio-disabled-bg: var(--bg-3),
+  --radio-disabled-opacity: .65,
+) !default;
+// scss-docs-end radio-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
   b-radiogroup {
@@ -23,19 +28,14 @@ $radio-disabled-opacity: .65 !default;
     align-items: var(--align-items, start);
 
     .description {
-      color: var(--secondary-text);
+      color: var(--fg-3);
     }
   }
 
   .radio {
-    // scss-docs-start radio-css-variables
-    --radio-bg: transparent;
-    --radio-border-color: #{$radio-border-color};
-    --radio-checked-bg: #{$radio-checked-bg};
-    --radio-checked-border-color: #{$radio-checked-border-color};
-    --radio-disabled-bg: #{$radio-disabled-bg};
-    --radio-disabled-opacity: #{$radio-disabled-opacity};
-    // scss-docs-end radio-css-variables
+    @each $token, $value in $radio-tokens {
+      #{$token}: #{$value};
+    }
 
     position: relative;
     flex-shrink: 0;
