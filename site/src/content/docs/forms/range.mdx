@@ -55,6 +55,14 @@ The value of the range input can be shown using the `output` element and a bit o
 
 ## CSS
 
-### Sass variables
+### Variables
 
-<ScssDocs name="form-range-variables" file="scss/forms/_form-range.scss" />
+<CSSVariables component="Range" className="form-range" />
+
+<ScssDocs name="range-tokens" file="scss/forms/_form-range.scss" />
+
+### Sass mixins
+
+Two mixins are used to style the range input to generate vendor-specific styles for the range’s track and thumb elements. Please be aware that selectors for pseudo-elements in WebKit and Firefox browsers cannot be combined—each must be used in a separate CSS rule otherwise the styles will not apply.
+
+<ScssDocs name="range-mixins" file="scss/forms/_form-range.scss" />
