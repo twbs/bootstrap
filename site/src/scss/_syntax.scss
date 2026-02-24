@@ -19,6 +19,18 @@
   margin-bottom: 0;
   line-height: 20px;
   background-color: var(--bd-pre-bg) !important; // stylelint-disable-line declaration-no-important
+
+  > code {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.astro-code .line.highlighted {
+  width: calc(100% + 2.5rem);
+  padding-inline: 1.25rem;
+  margin-inline: -1.25rem;
+  background-color: var(--bs-primary-bg-subtle);
 }
 
 // Dark mode theming for Shiki

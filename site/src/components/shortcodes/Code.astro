@@ -2,7 +2,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { codeToHtml } from 'shiki'
-import { transformerNotationDiff } from '@shikijs/transformers'
+import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
 import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
 import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
 import { replaceConfigInText } from '@libs/remark'
@@ -161,7 +161,8 @@ const lineWrapperTransformer = {
 }
 
 const transformers: any[] = [
-  transformerNotationDiff(), // Run diff transformer first, supports // [!code ++] and // [!code --] notation
+  transformerNotationDiff(), // Supports // [!code ++] and // [!code --] notation
+  transformerNotationHighlight(), // Supports line highlight notation
   classTransformer
 ]
 if (shouldWrapLines) {
@@ -181,6 +182,7 @@ if (tabs && tabs.length > 0) {
 
       const tabTransformers: any[] = [
         transformerNotationDiff(),
+        transformerNotationHighlight(),
         classTransformer
       ]
       if (shouldWrapTabLines) {
