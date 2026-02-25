@@ -94,6 +94,29 @@ $root-tokens: (
   --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color),
   // scss-docs-end root-focus-variables
 
+  // scss-docs-start root-form-control-variables
+  --btn-input-min-height: 2.375rem,
+  --btn-input-padding-y: .375rem,
+  --btn-input-padding-x: .75rem,
+  --btn-input-font-size: var(--font-size-base),
+  --btn-input-line-height: var(--line-height-base),
+  --btn-input-border-radius: var(--border-radius),
+
+  --btn-input-sm-min-height: 2rem,
+  --btn-input-sm-padding-y: .25rem,
+  --btn-input-sm-padding-x: .5rem,
+  --btn-input-sm-font-size: var(--font-size-xs),
+  --btn-input-sm-line-height: var(--line-height-xs),
+  --btn-input-sm-border-radius: var(--border-radius-sm),
+
+  --btn-input-lg-min-height: 2.75rem,
+  --btn-input-lg-padding-y: .5rem,
+  --btn-input-lg-padding-x: 1rem,
+  --btn-input-lg-font-size: var(--font-size-md),
+  --btn-input-lg-line-height: var(--line-height-md),
+  --btn-input-lg-border-radius: var(--border-radius-lg),
+  // scss-docs-end root-form-control-variables
+
   // scss-docs-start root-form-validation-variables
   --form-valid-color: #{$form-valid-color},
   --form-valid-border-color: #{$form-valid-border-color},

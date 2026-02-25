@@ -4,21 +4,21 @@ description: Easily extend form controls by adding text, buttons, or button grou
 toc: true
 ---
 
-## Basic example
+## Examples
 
 Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<label>`s outside the input group.
 
-<Example code={`<div class="input-group mb-3">
+<Example class="vstack gap-3" code={`<div class="input-group">
     <span class="input-group-text" id="basic-addon1">@</span>
     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
   </div>
 
-  <div class="input-group mb-3">
+  <div class="input-group">
     <input type="text" class="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username" aria-describedby="basic-addon2">
     <span class="input-group-text" id="basic-addon2">@example.com</span>
   </div>
 
-  <div class="mb-3">
+  <div>
     <label for="basic-url" class="form-label">Your vanity URL</label>
     <div class="input-group">
       <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
@@ -27,14 +27,14 @@ Place one add-on or button on either side of an input. You may also place one on
     <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
   </div>
 
-  <div class="input-group mb-3">
+  <div class="input-group">
     <span class="input-group-text">$</span>
     <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
     <span class="input-group-text">.00</span>
   </div>
 
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
     <span class="input-group-text">@</span>
     <input type="text" class="form-control" placeholder="Server" aria-label="Server">
   </div>
@@ -42,6 +42,11 @@ Place one add-on or button on either side of an input. You may also place one on
   <div class="input-group">
     <span class="input-group-text">With textarea</span>
     <textarea class="form-control" aria-label="With textarea"></textarea>
+  </div>
+
+  <div class="input-group">
+    <button class="btn-outline theme-secondary input-group-btn" type="button" id="button-addon1">Button</button>
+    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
   </div>`} />
 
 ## Wrapping
@@ -130,32 +135,32 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 
 ## Button addons
 
-<Example code={`<div class="input-group mb-3">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button>
+<Example class="vstack gap-3" code={`<div class="input-group">
+    <button class="btn-outline theme-secondary input-group-btn" type="button" id="button-addon1">Button</button>
     <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
   </div>
 
   <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+    <button class="btn-outline theme-secondary input-group-btn" type="button" id="button-addon2">Button</button>
   </div>
 
   <div class="input-group mb-3">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-    <button class="btn btn-outline-secondary" type="button">Button</button>
+    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
+    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
     <input type="text" class="form-control" placeholder="" aria-label="Example text with two button addons">
   </div>
 
   <div class="input-group">
     <input type="text" class="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username with two button addons">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-    <button class="btn btn-outline-secondary" type="button">Button</button>
+    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
+    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
   </div>`} />
 
 ## Buttons with dropdowns
 
-<Example code={`<div class="input-group mb-3">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+<Example class="vstack gap-3" code={`<div class="input-group">
+    <button class="btn-outline theme-secondary input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -166,9 +171,9 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <input type="text" class="form-control" aria-label="Text input with dropdown button">
   </div>
 
-  <div class="input-group mb-3">
+  <div class="input-group">
     <input type="text" class="form-control" aria-label="Text input with dropdown button">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+    <button class="btn-outline theme-secondary input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
     <ul class="dropdown-menu dropdown-menu-end">
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -179,7 +184,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
   </div>
 
   <div class="input-group">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+    <button class="btn-outline theme-secondary input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action before</a></li>
       <li><a class="dropdown-item" href="#">Another action before</a></li>
@@ -188,7 +193,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
     <input type="text" class="form-control" aria-label="Text input with 2 dropdown buttons">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+    <button class="btn-outline theme-secondary input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
     <ul class="dropdown-menu dropdown-menu-end">
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -201,8 +206,8 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 ## Segmented buttons
 
 <Example code={`<div class="input-group mb-3">
-    <button type="button" class="btn btn-outline-secondary">Action</button>
-    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <button type="button" class="btn-outline theme-secondary input-group-btn">Action</button>
+    <button type="button" class="btn-outline theme-secondary input-group-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
       <span class="visually-hidden">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu">
@@ -217,8 +222,8 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 
   <div class="input-group">
     <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-    <button type="button" class="btn btn-outline-secondary">Action</button>
-    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <button type="button" class="btn-outline theme-secondary input-group-btn">Action</button>
+    <button type="button" class="btn-outline theme-secondary input-group-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
       <span class="visually-hidden">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu dropdown-menu-end">
@@ -238,7 +243,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 <Example code={`<div class="input-group mb-3">
     <label class="input-group-text" for="inputGroupSelect01">Options</label>
-    <select class="form-select" id="inputGroupSelect01">
+    <select class="form-control" id="inputGroupSelect01">
       <option selected>Choose...</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -247,7 +252,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
   </div>
 
   <div class="input-group mb-3">
-    <select class="form-select" id="inputGroupSelect02">
+    <select class="form-control" id="inputGroupSelect02">
       <option selected>Choose...</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -257,8 +262,8 @@ Input groups include support for custom selects and custom file inputs. Browser 
   </div>
 
   <div class="input-group mb-3">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-    <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
+    <select class="form-control" id="inputGroupSelect03" aria-label="Example select with button addon">
       <option selected>Choose...</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -267,13 +272,13 @@ Input groups include support for custom selects and custom file inputs. Browser 
   </div>
 
   <div class="input-group">
-    <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+    <select class="form-control" id="inputGroupSelect04" aria-label="Example select with button addon">
       <option selected>Choose...</option>
       <option value="1">One</option>
       <option value="2">Two</option>
       <option value="3">Three</option>
     </select>
-    <button class="btn btn-outline-secondary" type="button">Button</button>
+    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
   </div>`} />
 
 ### Custom file input
@@ -289,17 +294,25 @@ Input groups include support for custom selects and custom file inputs. Browser 
   </div>
 
   <div class="input-group mb-3">
-    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
+    <button class="btn-outline theme-secondary input-group-btn" type="button" id="inputGroupFileAddon03">Button</button>
     <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
   </div>
 
   <div class="input-group">
     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+    <button class="btn-outline theme-secondary input-group-btn" type="button" id="inputGroupFileAddon04">Button</button>
   </div>`} />
 
 ## CSS
 
-### Sass variables
+### Variables
 
-<ScssDocs name="input-group-variables" file="scss/forms/_input-group.scss" />
+<CSSVariables component="Input group addons" className="input-group-text" />
+
+<ScssDocs name="input-group-addon-tokens" file="scss/forms/_input-group.scss" />
+
+### Sass list
+
+We use a Sass list to define the sizes of the input group, so you can easily add or modify sizes by fetching the associated root variables for each size. This list should generally match the sizes defined in the `$form-control-sizes` Sass map in `_form-control.scss`.
+
+<ScssDocs name="input-group-sizes" file="scss/forms/_input-group.scss" />

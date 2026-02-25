@@ -9,30 +9,6 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $btn-padding-y-lg.
 
-// scss-docs-start theme-color-variables
-// $primary:       $blue-500 !default;
-// $secondary:     var(--gray-600) !default;
-// $success:       $green-500 !default;
-// $info:          $cyan-500 !default;
-// $warning:       $yellow-500 !default;
-// $danger:        $red-500 !default;
-// $light:         var(--gray-100) !default;
-// $dark:          var(--gray-900) !default;
-// scss-docs-end theme-color-variables
-
-// scss-docs-start theme-colors-map
-// $theme-colors: (
-//   "primary":    $primary,
-//   "secondary":  $secondary,
-//   "success":    $success,
-//   "info":       $info,
-//   "warning":    $warning,
-//   "danger":     $danger,
-//   "light":      $light,
-//   "dark":       $dark
-// ) !default;
-// scss-docs-end theme-colors-map
-
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
   ("<", "%3c"),
@@ -41,38 +17,6 @@ $escaped-characters: (
   ("(", "%28"),
   (")", "%29"),
 ) !default;
-
-// // Options
-// //
-// // Quickly modify global styling by enabling or disabling optional features.
-
-// $enable-caret:                true !default;
-// $enable-rounded:              true !default;
-// $enable-shadows:              false !default;
-// $enable-gradients:            false !default;
-// $enable-transitions:          true !default;
-// $enable-reduced-motion:       true !default;
-// $enable-smooth-scroll:        true !default;
-// $enable-grid-classes:         true !default;
-// $enable-container-classes:    true !default;
-// $enable-cssgrid:              false !default;
-// $enable-button-pointers:      true !default;
-// $enable-rfs:                  true !default;
-// $enable-validation-icons:     true !default;
-// $enable-negative-margins:     false !default;
-// $enable-deprecation-messages: true !default;
-
-// $enable-dark-mode:            true !default;
-// $color-mode-type:             data !default; // `data` or `media-query`
-
-// // Prefix for :root CSS variables
-// :                      bs- !default;
-
-// $color-mode-type:          "media-query" !default;
-// $color-contrast-dark:      #000 !default;
-// $color-contrast-light:     #fff !default;
-// $min-contrast-ratio:         4.5 !default;
-
 
 // Gradient
 //
@@ -190,7 +134,7 @@ $focus-ring-blur:       0 !default;
 $focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
 // scss-docs-end focus-ring-variables
 
-$component-active-bg:         var(--primary-bg) !default;
+// $component-active-bg:         var(--primary-bg) !default;
 
 $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
