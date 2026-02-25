@@ -1,22 +1,27 @@
 @use "../config" as *;
 @use "../variables" as *;
 @use "form-variables" as *;
+@use "../mixins/border-radius" as *;
 
-// scss-docs-start otp-input-variables
-$otp-input-size:              3rem !default;
-$otp-input-size-sm:           2.25rem !default;
-$otp-input-size-lg:           3.5rem !default;
-$otp-input-font-size:         $font-size-lg !default;
-$otp-input-font-size-sm:      $font-size-base !default;
-$otp-input-font-size-lg:      $font-size-lg * 1.25 !default;
-$otp-input-gap:               .5rem !default;
-// scss-docs-end otp-input-variables
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start otp-tokens
+$otp-tokens: (
+  --otp-size: var(--btn-input-lg-min-height),
+  --otp-font-size: var(--btn-input-font-size),
+  --otp-gap: .5rem,
+) !default;
+// scss-docs-end otp-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
-@layer forms {
+// scss-docs-start otp-sizes
+$otp-sizes: sm, lg !default;
+// scss-docs-end otp-sizes
+
+@layer components {
   .otp {
-    --otp-size: #{$otp-input-size};
-    --otp-font-size: #{$otp-input-font-size};
-    --otp-gap: #{$otp-input-gap};
+    @each $prop, $value in $otp-tokens {
+      #{$prop}: #{$value};
+    }
 
     display: inline-flex;
     gap: var(--otp-gap);
@@ -29,6 +34,7 @@ $otp-input-gap:               .5rem !default;
       font-weight: 500;
       line-height: 1;
       text-align: center;
+      @include border-radius(var(--otp-border-radius, var(--btn-input-border-radius)));
 
       // Remove default number spinners
       &::-webkit-outer-spin-button,
@@ -87,13 +93,11 @@ $otp-input-gap:               .5rem !default;
     user-select: none;
   }
 
-  .otp-sm {
-    --otp-size: #{$otp-input-size-sm};
-    --otp-font-size: #{$otp-input-font-size-sm};
-  }
-
-  .otp-lg {
-    --otp-size: #{$otp-input-size-lg};
-    --otp-font-size: #{$otp-input-font-size-lg};
+  @each $size in $otp-sizes {
+    .otp-#{$size} {
+      --otp-size: var(--btn-input-#{$size}-min-height);
+      --otp-font-size: var(--btn-input-#{$size}-font-size);
+      --otp-border-radius: var(--btn-input-#{$size}-border-radius);
+    }
   }
 }
