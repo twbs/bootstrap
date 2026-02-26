@@ -205,6 +205,7 @@ const chipInput = new bootstrap.ChipInput(chipInputElement, {
 
 Options can be passed via data attributes or JavaScript:
 
+<BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `separator` | string \| null | `','` | Character that triggers chip creation when typed. Set to `null` to disable. |
@@ -214,9 +215,11 @@ Options can be passed via data attributes or JavaScript:
 | `dismissible` | boolean | `true` | Add dismiss buttons to created chips. |
 | `dismissIcon` | string | `'<svg>...</svg>'` | HTML string for the dismiss button icon. |
 | `createOnBlur` | boolean | `true` | Create chip from input value when the input loses focus. |
+</BsTable>
 
 ### Methods
 
+<BsTable>
 | Method | Description |
 | --- | --- |
 | `add(value)` | Adds a chip with the given value. Returns the chip element or `null` if rejected. |
@@ -229,6 +232,7 @@ Options can be passed via data attributes or JavaScript:
 | `selectChip(chip, options)` | Selects a chip. Options: `addToSelection`, `rangeSelect`. |
 | `focus()` | Focuses the ghost input. |
 | `dispose()` | Destroys the component instance. |
+</BsTable>
 
 ```js
 const chipInputElement = document.querySelector('.chip-input')
@@ -250,12 +254,14 @@ chipInput.clear()
 
 ### Events
 
+<BsTable>
 | Event | Description |
 | --- | --- |
 | `add.bs.chip-input` | Fired before a chip is added. Call `event.preventDefault()` to cancel. |
 | `remove.bs.chip-input` | Fired before a chip is removed. Call `event.preventDefault()` to cancel. |
 | `change.bs.chip-input` | Fired after any chip is added or removed. Contains `values` array. |
 | `select.bs.chip-input` | Fired when chip selection changes. Contains `selected` array of values. |
+</BsTable>
 
 ```js
 const chipInputElement = document.querySelector('.chip-input')
@@ -289,6 +295,7 @@ Chip inputs support Mail.app-style keyboard navigation with chip selection.
 
 ### When input is focused
 
+<BsTable>
 | Key | Action |
 | --- | --- |
 | `Enter` | Create chip from current input value |
@@ -297,9 +304,11 @@ Chip inputs support Mail.app-style keyboard navigation with chip selection.
 | `←` | When cursor is at start, move focus to last chip |
 | `Shift+←` | Select last chip and extend selection |
 | `Escape` | Clear selection, clear input, and blur |
+</BsTable>
 
 ### When a chip is focused
 
+<BsTable>
 | Key | Action |
 | --- | --- |
 | `Backspace` / `Delete` | Remove selected chips, then select and focus the next closest chip |
@@ -310,14 +319,17 @@ Chip inputs support Mail.app-style keyboard navigation with chip selection.
 | `End` | Move to input |
 | `Cmd/Ctrl+A` | Select all chips |
 | `Escape` | Clear selection and focus input |
+</BsTable>
 
 ### Mouse selection
 
+<BsTable>
 | Action | Effect |
 | --- | --- |
 | Click chip | Select chip (deselects others) |
 | `Cmd/Ctrl+Click` | Toggle chip in selection |
 | `Shift+Click` | Range select from anchor to clicked chip |
+</BsTable>
 
 ## Accessibility
 
@@ -331,8 +343,12 @@ Chip inputs support Mail.app-style keyboard navigation with chip selection.
 
 ### Chip variables
 
+<CSSVariables component="Chip" className="chip" />
+
 <ScssDocs name="chip-tokens" file="scss/_chip.scss" />
 
 ### Chip input variables
 
-<ScssDocs name="chip-input-variables" file="scss/forms/_chip-input.scss" />
+These variables are scoped to the `.chip-input` container.
+
+<ScssDocs name="chip-input-tokens" file="scss/forms/_chip-input.scss" />

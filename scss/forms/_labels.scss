@@ -1,8 +1,13 @@
 @use "../variables" as *;
 @use "form-variables" as *;
 
+// scss-docs-start form-label-tokens
+$form-label-tokens: (
+  --form-label-margin-bottom: .5rem,
+) !default;
+// scss-docs-end form-label-tokens
+
 // scss-docs-start form-label-variables
-$form-label-margin-bottom: .5rem !default;
 $form-label-font-size:     null !default;
 $form-label-font-style:    null !default;
 $form-label-font-weight:   null !default;
@@ -12,7 +17,11 @@ $form-label-color:         null !default;
 
 @layer forms {
   .form-label {
-    margin-bottom: $form-label-margin-bottom;
+    @each $prop, $value in $form-label-tokens {
+      #{$prop}: #{$value};
+    }
+
+    margin-bottom: var(--form-label-margin-bottom);
     font-size: $form-label-font-size;
     font-style: $form-label-font-style;
     font-weight: $form-label-font-weight;
@@ -22,25 +31,25 @@ $form-label-color:         null !default;
   // For use with horizontal and inline forms, when you need the label (or legend)
   // text to align with the form controls.
   .col-form-label {
-    padding-top: add($input-padding-y, $input-border-width);
-    padding-bottom: add($input-padding-y, $input-border-width);
+    padding-top: calc(var(--btn-input-padding-y) + var(--border-width));
+    padding-bottom: calc(var(--btn-input-padding-y) + var(--border-width));
     margin-bottom: 0; // Override the `<legend>` default
     font-size: inherit; // Override the `<legend>` default
     font-style: $form-label-font-style;
     font-weight: $form-label-font-weight;
-    line-height: $input-line-height;
+    line-height: var(--btn-input-line-height);
     color: $form-label-color;
   }
 
   .col-form-label-lg {
-    padding-top: add($input-padding-y-lg, $input-border-width);
-    padding-bottom: add($input-padding-y-lg, $input-border-width);
-    font-size: $input-font-size-lg;
+    padding-top: calc(var(--btn-input-lg-padding-y) + var(--border-width));
+    padding-bottom: calc(var(--btn-input-lg-padding-y) + var(--border-width));
+    font-size: var(--btn-input-lg-font-size);
   }
 
   .col-form-label-sm {
-    padding-top: add($input-padding-y-sm, $input-border-width);
-    padding-bottom: add($input-padding-y-sm, $input-border-width);
-    font-size: $input-font-size-sm;
+    padding-top: calc(var(--btn-input-sm-padding-y) + var(--border-width));
+    padding-bottom: calc(var(--btn-input-sm-padding-y) + var(--border-width));
+    font-size: var(--btn-input-sm-font-size);
   }
 }

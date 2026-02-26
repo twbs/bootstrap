@@ -126,13 +126,13 @@ $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
 // scss-docs-end box-shadow-variables
 
-// scss-docs-start focus-ring-variables
-$focus-ring-width:      .25rem !default;
-$focus-ring-opacity:    .25 !default;
-$focus-ring-color:      var(--primary-focus-ring) !default;
-$focus-ring-blur:       0 !default;
-$focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
-// scss-docs-end focus-ring-variables
+// // scss-docs-start focus-ring-variables
+// $focus-ring-width:      .25rem !default;
+// $focus-ring-opacity:    .25 !default;
+// $focus-ring-color:      var(--primary-focus-ring) !default;
+// $focus-ring-blur:       0 !default;
+// $focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
+// // scss-docs-end focus-ring-variables
 
 // $component-active-bg:         var(--primary-bg) !default;
 

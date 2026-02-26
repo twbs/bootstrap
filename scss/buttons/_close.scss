@@ -5,37 +5,33 @@
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 
-// scss-docs-start close-variables
-$btn-close-size:             1.25rem !default;
-$btn-close-color:            var(--fg-body) !default;
-$btn-close-opacity:          .5 !default;
-$btn-close-hover-opacity:    .75 !default;
-$btn-close-focus-opacity:    .85 !default;
-$btn-close-disabled-opacity: .25 !default;
-// scss-docs-end close-variables
+// scss-docs-start btn-close-tokens
+$btn-close-tokens: (
+  --btn-close-size: 1.25rem,
+  --btn-close-color: var(--fg-body),
+  --btn-close-opacity: .5,
+  --btn-close-hover-opacity: .75,
+  --btn-close-focus-opacity: .85,
+  --btn-close-disabled-opacity: .25,
+) !default;
+// scss-docs-end btn-close-tokens
 
-// Transparent background and border properties included for button version.
 // iOS requires the button element instead of an anchor tag.
 // If you want the anchor version, it requires `href="#"`.
 // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
 
 @layer components {
   .btn-close {
-    // scss-docs-start close-css-vars
-    --btn-close-size: #{$btn-close-size};
-    --btn-close-color: #{$btn-close-color};
-    --btn-close-opacity: #{$btn-close-opacity};
-    --btn-close-hover-opacity: #{$btn-close-hover-opacity};
-    --btn-close-focus-opacity: #{$btn-close-focus-opacity};
-    --btn-close-disabled-opacity: #{$btn-close-disabled-opacity};
-    // scss-docs-end close-css-vars
+    @each $prop, $value in $btn-close-tokens {
+      #{$prop}: #{$value};
+    }
 
     box-sizing: content-box;
     width: var(--btn-close-size);
     height: var(--btn-close-size);
     padding: 0;
     color: var(--btn-close-color);
-    background: transparent;
+    background: transparent; // for button elements
     border: 0; // for button elements
     @include border-radius(var(--border-radius-sm));
     opacity: var(--btn-close-opacity);
@@ -54,9 +50,9 @@ $btn-close-disabled-opacity: .25 !default;
       opacity: var(--btn-close-hover-opacity);
     }
 
-    &:focus {
-      @include focus-ring();
+    &:focus-visible {
       opacity: var(--btn-close-focus-opacity);
+      @include focus-ring();
     }
 
     &:disabled,

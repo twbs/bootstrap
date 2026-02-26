@@ -7,34 +7,25 @@
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
-// scss-docs-start chip-input-variables
-$chip-input-gap:                    .375rem !default;
-$chip-input-padding-y:              .75rem !default;
-$chip-input-padding-x:              .75rem !default;
-$chip-input-chip-padding-y:         .75rem !default;
-$chip-input-chip-padding-x:         .5rem !default;
-$chip-input-ghost-min-width:        5rem !default;
-// scss-docs-end chip-input-variables
+// scss-docs-start chip-input-tokens
+$chip-input-tokens: (
+  --chip-input-padding-y: .75rem,
+  --chip-input-padding-x: .75rem,
+  --chip-input-gap: .375rem,
+  --chip-input-ghost-min-width: 5rem,
+  --control-color: var(--fg-body),
+  --control-bg: var(--bg-body),
+  --control-border-width: var(--border-width),
+  --control-border-color: var(--border-color),
+  --control-border-radius: var(--border-radius),
+) !default;
+// scss-docs-end chip-input-tokens
 
 @layer forms {
   .chip-input {
-    // Inherit form-control CSS variables for sizing
-    // --control-min-height: #{$control-min-height};
-    --chip-input-padding-y: #{$chip-input-padding-y};
-    --chip-input-padding-x: #{$chip-input-padding-x};
-    --control-padding-x: #{$control-padding-x};
-    --control-color: #{$control-color};
-    --control-bg: #{$control-bg};
-    --control-border-width: #{$control-border-width};
-    --control-border-color: #{$control-border-color};
-    --control-border-radius: #{$control-border-radius};
-
-    // Chip input specific
-    --chip-input-gap: #{$chip-input-gap};
-    // --chip-input-chip-padding-y: #{$chip-input-chip-padding-y};
-    // --chip-input-chip-padding-x: #{$chip-input-chip-padding-x};
-    // --chip-input-chip-font-size: #{$chip-input-chip-font-size};
-    --chip-input-ghost-min-width: #{$chip-input-ghost-min-width};
+    @each $prop, $value in $chip-input-tokens {
+      #{$prop}: #{$value};
+    }
 
     // Flexbox wrapping layout
     display: flex;
@@ -51,7 +42,7 @@ $chip-input-ghost-min-width:        5rem !default;
     // Focus state when ghost input is focused
     &:focus-within {
       --focus-ring-offset: -1px;
-      border-color: $input-focus-border-color;
+      border-color: var(--focus-ring-color);
       @include focus-ring(true);
     }
 
@@ -65,7 +56,7 @@ $chip-input-ghost-min-width:        5rem !default;
     // Disabled state
     &.disabled,
     &:has(.form-ghost:disabled) {
-      background-color: $input-disabled-bg;
+      background-color: var(--bg-2);
       opacity: 1;
 
       > .chip {
