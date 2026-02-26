@@ -94,10 +94,10 @@ $root-tokens: (
   --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color),
   // scss-docs-end root-focus-variables
 
+  // scss-docs-start root-form-variables
   --input-bg: var(--bg-body),
   --input-color: var(--fg-body),
 
-  // scss-docs-start root-form-control-variables
   --btn-input-min-height: 2.375rem,
   --btn-input-padding-y: .375rem,
   --btn-input-padding-x: .75rem,
@@ -118,7 +118,7 @@ $root-tokens: (
   --btn-input-lg-font-size: var(--font-size-md),
   --btn-input-lg-line-height: var(--line-height-md),
   --btn-input-lg-border-radius: var(--border-radius-lg),
-  // scss-docs-end root-form-control-variables
+  // scss-docs-end root-form-variables
 
   // scss-docs-start root-form-validation-variables
   --form-valid-color: #{$form-valid-color},
