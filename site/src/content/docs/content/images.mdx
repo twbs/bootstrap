@@ -29,6 +29,24 @@ Align images with the [helper float classes]([[docsref:/utilities/float]]) or [t
     <Placeholder width="200" height="200" class="rounded" />
   </div>`} />
 
+## Figures
+
+Anytime you need to display a piece of content—like an image with an optional caption, consider using a `<figure>` Figures are flex containers in Bootstrap, so you can easily modify the layout and alignment with our [flex utilities]([[docsref:/utilities/flex]]).
+
+Use the included `.figure`, `.figure-img` and `.figure-caption` classes to provide some baseline styles for the HTML5 `<figure>` and `<figcaption>` elements. Images in figures have no explicit size, so be sure to add the `.img-fluid` class to your `<img>` to make it responsive.
+
+<Example code={`<figure class="figure">
+    <Placeholder width="400" height="300" class="figure-img img-fluid rounded-3" />
+    <figcaption class="figure-caption">A caption for the above image.</figcaption>
+  </figure>`} />
+
+And with a reverse alignment:
+
+<Example code={`<figure class="figure align-items-end"><!-- [!code highlight] -->
+    <Placeholder width="400" height="300" class="figure-img img-fluid rounded-3" />
+    <figcaption class="figure-caption">A caption for the above image.</figcaption>
+  </figure>`} />
+
 ## Picture
 
 If you are using the `<picture>` element to specify multiple `<source>` elements for a specific `<img>`, make sure to add the `.img-*` classes to the `<img>` and not to the `<picture>` tag.
@@ -42,8 +60,12 @@ If you are using the `<picture>` element to specify multiple `<source>` elements
 
 ## CSS
 
-### Sass variables
+### Variables
 
-Variables are available for image thumbnails.
+<CSSVariables component="Images" className="img-thumbnail" />
 
-<ScssDocs name="thumbnail-variables" file="scss/content/_images.scss" />
+<ScssDocs name="thumbnail-tokens" file="scss/content/_images.scss" />
+
+And for figures as well:
+
+<ScssDocs name="figure-tokens" file="scss/content/_images.scss" />

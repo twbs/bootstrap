@@ -86,7 +86,8 @@ $root-tokens: (
   --box-shadow-lg: #{$box-shadow-lg},
   --box-shadow-inset: #{$box-shadow-inset},
 
-  // Focus styles
+  --spacer: 1rem,
+
   // scss-docs-start root-focus-variables
   --focus-ring-width: 3px,
   --focus-ring-offset: 1px,

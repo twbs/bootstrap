@@ -4,19 +4,24 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 
-// scss-docs-start thumbnail-variables
-$thumbnail-padding:                 .25rem !default;
-$thumbnail-bg:                      var(--bg-body) !default;
-$thumbnail-border-width:            var(--border-width) !default;
-$thumbnail-border-color:            var(--border-color) !default;
-$thumbnail-border-radius:           var(--border-radius) !default;
-$thumbnail-box-shadow:              var(--box-shadow-sm) !default;
-// scss-docs-end thumbnail-variables
+// scss-docs-start thumbnail-tokens
+$thumbnail-tokens: (
+  --thumbnail-padding: .25rem,
+  --thumbnail-bg: var(--bg-body),
+  --thumbnail-border-width: var(--border-width),
+  --thumbnail-border-color: var(--border-color),
+  --thumbnail-border-radius: var(--border-radius),
+  --thumbnail-box-shadow: var(--box-shadow-sm),
+) !default;
+// scss-docs-end thumbnail-tokens
 
-// scss-docs-start figure-variables
-$figure-caption-font-size:          $small-font-size !default;
-$figure-caption-color:              var(--fg-3) !default;
-// scss-docs-end figure-variables
+// scss-docs-start figure-tokens
+$figure-tokens: (
+  --figure-gap: calc(var(--spacer) * .5),
+  --figure-caption-font-size: var(--font-size-sm),
+  --figure-caption-color: var(--fg-3),
+) !default;
+// scss-docs-end figure-tokens
 
 @layer content {
   // Responsive images (ensure images don't scale beyond their parents)
@@ -30,35 +35,32 @@ $figure-caption-color:              var(--fg-3) !default;
     @include img-fluid();
   }
 
-
-  // Image thumbnails
   .img-thumbnail {
-    padding: $thumbnail-padding;
-    background-color: $thumbnail-bg;
-    border: $thumbnail-border-width solid $thumbnail-border-color;
-    @include border-radius($thumbnail-border-radius);
-    @include box-shadow($thumbnail-box-shadow);
+    @each $prop, $value in $thumbnail-tokens {
+      #{$prop}: #{$value};
+    }
+    padding: var(--thumbnail-padding);
+    background-color: var(--thumbnail-bg);
+    border: var(--thumbnail-border-width) solid var(--thumbnail-border-color);
+    @include border-radius(var(--thumbnail-border-radius));
+    @include box-shadow(var(--thumbnail-box-shadow));
 
     // Keep them at most 100% wide
     @include img-fluid();
   }
 
-  //
-  // Figures
-  //
-
   .figure {
+    @each $prop, $value in $figure-tokens {
+      #{$prop}: #{$value};
+    }
     // Ensures the caption's text aligns with the image.
-    display: inline-block;
-  }
-
-  .figure-img {
-    margin-bottom: $spacer * .5;
-    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--figure-gap);
   }
 
   .figure-caption {
-    font-size: $figure-caption-font-size;
-    color: $figure-caption-color;
+    font-size: var(--figure-caption-font-size);
+    color: var(--figure-caption-color);
   }
 }

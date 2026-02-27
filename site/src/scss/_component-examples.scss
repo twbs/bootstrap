@@ -387,15 +387,6 @@
   // Code snippets
   //
 
-  .astro-code {
-    position: relative;
-    background-color: var(--bd-pre-bg);
-
-    @include media-breakpoint-up(md) {
-      @include border-radius(calc(var(--bs-border-radius) - 1px));
-    }
-  }
-
   .bd-example-snippet .highlight pre {
     margin-inline-end: 0;
   }

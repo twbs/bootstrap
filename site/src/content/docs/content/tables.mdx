@@ -18,46 +18,42 @@ Using the most basic table markup, here’s how `.table`-based tables look in Bo
 
 Use theme-specific color classes to style tables, table rows, or individual cells. These adapt to color modes as well.
 
-<div class="bd-example">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Class</th>
-        <th scope="col">Heading</th>
-        <th scope="col">Heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Default</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-      {getData('theme-colors').map((themeColor) => {
-        return (
-          <tr class={`theme-${themeColor.name}`}>
-            <th scope="row">{themeColor.title}</th>
-            <td>Cell</td>
-            <td>Cell</td>
-          </tr>
-        )
-      })}
-    </tbody>
-  </table>
-</div>
-
-<Code code={[
+<Example code={[
+  `<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Class</th>
+      <th scope="col">Heading</th>
+      <th scope="col">Heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Default</th>
+      <td>Cell</td>
+      <td>Cell</td>
+    </tr>`,
+  ...getData('theme-colors').map((themeColor) => `    <tr class="theme-${themeColor.name}">
+      <th scope="row">${themeColor.title}</th>
+      <td>Cell</td>
+      <td>Cell</td>
+    </tr>`),
+  `  </tbody>
+</table>`
+]} customMarkup={[
   `<!-- On tables -->`,
   ...getData('theme-colors').map((themeColor) => `<table class="table theme-${themeColor.name}">...</table>`),
   `
+
 <!-- On rows -->`,
   ...getData('theme-colors').map((themeColor) => `<tr class="theme-${themeColor.name}">...</tr>`),
   `
+\n\n
 <!-- On cells (\`td\` or \`th\`) -->
 <tr>`,
   ...getData('theme-colors').map((themeColor) => `  <td class="theme-${themeColor.name}">...</td>`),
   `</tr>`
-]} lang="html" />
+]} />
 
 <Details name="warning-color-assistive-technologies" />
 
