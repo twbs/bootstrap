@@ -37,7 +37,7 @@ $root-tokens: (
   --font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem),
   --font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
 
-  --line-height-xs: 1.5,
+  --line-height-xs: 1.25,
   --line-height-sm: 1.5,
   --line-height-md: 1.5,
   --line-height-lg: 1.5,
@@ -74,6 +74,7 @@ $root-tokens: (
 
   // scss-docs-start root-border-radius-var
   --border-radius: #{$border-radius},
+  --border-radius-xs: #{$border-radius-sm},
   --border-radius-sm: #{$border-radius-sm},
   --border-radius-lg: #{$border-radius-lg},
   --border-radius-xl: #{$border-radius-xl},
@@ -104,6 +105,13 @@ $root-tokens: (
   --btn-input-font-size: var(--font-size-base),
   --btn-input-line-height: var(--line-height-base),
   --btn-input-border-radius: var(--border-radius),
+
+  --btn-input-xs-min-height: 1.5rem,
+  --btn-input-xs-padding-y: .125rem,
+  --btn-input-xs-padding-x: .375rem,
+  --btn-input-xs-font-size: var(--font-size-xs),
+  --btn-input-xs-line-height: 1.125,
+  --btn-input-xs-border-radius: var(--border-radius-xs),
 
   --btn-input-sm-min-height: 2rem,
   --btn-input-sm-padding-y: .25rem,

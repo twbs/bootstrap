@@ -9,7 +9,6 @@
 @use "../mixins/gradients" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
-@use "../buttons/button-variables" as *; // mdo-do: remove?
 
 // scss-docs-start form-control-tokens
 $form-control-tokens: (
