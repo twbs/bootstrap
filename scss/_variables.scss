@@ -107,17 +107,7 @@ $border-widths: (
 ) !default;
 $border-style:                solid !default;
 $border-color:                color-mix(in oklch, var(--gray-100), var(--gray-200)) !default;
-$border-color-translucent:    color-mix(in oklch, var(--fg-body) 15%, transparent) !default;
 // scss-docs-end border-variables
-
-// scss-docs-start border-radius-variables
-$border-radius:               .5rem !default;
-$border-radius-sm:            .375rem !default;
-$border-radius-lg:            .75rem !default;
-$border-radius-xl:            1rem !default;
-$border-radius-2xl:           2rem !default;
-$border-radius-pill:          50rem !default;
-// scss-docs-end border-radius-variables
 
 // scss-docs-start box-shadow-variables
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
@@ -126,18 +116,9 @@ $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
 // scss-docs-end box-shadow-variables
 
-// // scss-docs-start focus-ring-variables
-// $focus-ring-width:      .25rem !default;
-// $focus-ring-opacity:    .25 !default;
-// $focus-ring-color:      var(--primary-focus-ring) !default;
-// $focus-ring-blur:       0 !default;
-// $focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
-// // scss-docs-end focus-ring-variables
-
-// $component-active-bg:         var(--primary-bg) !default;
-
 $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
+
 // scss-docs-start collapse-transition
 $transition-collapse:         height .35s ease !default;
 $transition-collapse-width:   width .35s ease !default;
@@ -272,10 +253,6 @@ $legend-font-weight:          null !default;
 $dt-font-weight:              $font-weight-bold !default;
 
 $list-inline-padding:         .5rem !default;
-
-$mark-padding:                .1875em !default;
-$mark-color:                  var(--fg-body) !default;
-$mark-bg:                     light-dark(var(--yellow-100), var(--yellow-900)) !default;
 // scss-docs-end type-variables
 
 // Z-index master list
@@ -304,50 +281,3 @@ $zindex-levels: (
   3: 3
 ) !default;
 // scss-docs-end zindex-levels-map
-
-
-// Code
-
-$code-font-size:                    95% !default;
-$code-color:                        var(--secondary-text) !default;
-
-$kbd-padding-y:                     .1875rem !default;
-$kbd-padding-x:                     .375rem !default;
-$kbd-font-size:                     $code-font-size !default;
-$kbd-color:                         var(--bg-body) !default;
-$kbd-bg:                            var(--fg-body) !default;
-
-$pre-color:                         null !default;
-
-// Dark color mode variables
-//
-// Custom variables for the `[data-bs-theme="dark"]` theme. Use this as a starting point for your own custom color modes by creating a new theme-specific file like `_variables-dark.scss` and adding the variables you need.
-
-//
-// Global colors
-//
-
-// scss-docs-start sass-dark-mode-vars
-// $body-color-dark:                   var(--gray-200) !default;
-// $body-bg-dark:                      var(--gray-975) !default;
-// $body-secondary-color-dark:         rgba($body-color-dark, .75) !default;
-// $body-secondary-bg-dark:            var(--gray-800) !default;
-// $body-tertiary-color-dark:          rgba($body-color-dark, .5) !default;
-// $body-tertiary-bg-dark:             color-mix(in srgb, var(--gray-800), var(--gray-900)) !default;
-$border-color-dark:                 var(--gray-700) !default;
-$headings-color-dark:               inherit !default;
-// $mark-color-dark:                   $body-color-dark !default;
-// $mark-bg-dark:                      var(--yellow-800) !default;
-
-
-//
-// Forms
-//
-
-// scss-docs-start form-validation-colors-dark
-$form-valid-color-dark:             var(--green-300) !default;
-$form-valid-border-color-dark:      var(--green-300) !default;
-$form-invalid-color-dark:           var(--red-300) !default;
-$form-invalid-border-color-dark:    var(--red-300) !default;
-// scss-docs-end form-validation-colors-dark
-// scss-docs-end sass-dark-mode-vars

@@ -17,7 +17,7 @@ $toast-tokens: (
   --toast-border-color: var(--border-color-translucent),
   --toast-border-radius: var(--border-radius),
   --toast-box-shadow: var(--box-shadow),
-  --toast-header-color: var(--secondary-color),
+  --toast-header-color: var(--fg-3),
   --toast-header-bg: rgba(var(--body-bg-rgb), .85),
   --toast-header-border-color: var(--border-color-translucent),
 ) !default;

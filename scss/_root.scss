@@ -61,9 +61,8 @@ $root-tokens: (
   --link-decoration: #{$link-decoration},
   --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
 
-  --code-color: #{$code-color},
-  --highlight-color: #{$mark-color},
-  --highlight-bg: #{$mark-bg},
+  --code-font-size: 95%,
+  --code-color: var(--fg-2),
 
   // scss-docs-start root-border-var
   --border-width: #{$border-width},
@@ -73,13 +72,13 @@ $root-tokens: (
   // scss-docs-end root-border-var
 
   // scss-docs-start root-border-radius-var
-  --border-radius: #{$border-radius},
-  --border-radius-xs: #{$border-radius-sm},
-  --border-radius-sm: #{$border-radius-sm},
-  --border-radius-lg: #{$border-radius-lg},
-  --border-radius-xl: #{$border-radius-xl},
-  --border-radius-2xl: #{$border-radius-2xl},
-  --border-radius-pill: #{$border-radius-pill},
+  --border-radius: .5rem,
+  --border-radius-xs: .375rem,
+  --border-radius-sm: .375rem,
+  --border-radius-lg: .75rem,
+  --border-radius-xl: 1rem,
+  --border-radius-2xl: 2rem,
+  --border-radius-pill: 50rem,
   // scss-docs-end root-border-radius-var
 
   --box-shadow: #{$box-shadow},
@@ -173,97 +172,6 @@ $root-tokens: (
 
 :root,
 [data-bs-theme="light"] {
-
-  // // Note: Custom variable values only support SassScript inside `#{}`.
-
-  // // Fonts
-
-  // // Note: Use `inspect` for lists so that quoted items keep the quotes.
-  // // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  // --font-sans-serif: #{meta.inspect($font-family-sans-serif)};
-  // --font-monospace: #{meta.inspect($font-family-monospace)};
-  // --gradient: #{$gradient};
-  // --body-font-family: #{meta.inspect($font-family-base)};
-
-  // // scss-docs-start root-font-size-variables
-  // --font-size-base: #{$font-size-base}; // 14px
-
-  // --font-size-xs: .75rem;
-  // --font-size-sm: .875rem;
-  // --font-size-md: 1rem;
-  // --font-size-lg: clamp(1.25rem, 1rem + .625vw, 1.5rem);
-  // --font-size-xl: clamp(1.5rem, 1.1rem + .75vw, 1.75rem);
-  // --font-size-2xl: clamp(1.75rem, 1.3rem + 1vw, 2rem);
-  // --font-size-3xl: clamp(2rem, 1.5rem + 1.875vw, 2.5rem);
-  // --font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
-  // --font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem);
-  // --font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem);
-
-  // --line-height-xs: 1.5;
-  // --line-height-sm: 1.5;
-  // --line-height-md: 1.5;
-  // --line-height-lg: 1.5;
-  // --line-height-xl: calc(2.5 / 1.75);
-  // --line-height-2xl: calc(3 / 2.25);
-  // --line-height-3xl: 1.2;
-  // --line-height-4xl: 1.1;
-  // --line-height-5xl: 1.1;
-  // --line-height-6xl: 1;
-  // // scss-docs-end root-font-size-variables
-
-  // --body-font-size: #{$font-size-base};
-  // --body-font-weight: #{$font-weight-base};
-  // --body-line-height: #{$line-height-base};
-
-  // --heading-color: #{$headings-color};
-
-  // --hr-border-color: var(--border-color);
-
-  // --link-color: light-dark(var(--primary-base), var(--primary-text));
-  // --link-decoration: #{$link-decoration};
-  // --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000);
-
-  // --code-color: #{$code-color};
-  // --highlight-color: #{$mark-color};
-  // --highlight-bg: #{$mark-bg};
-
-  // // scss-docs-start root-border-var
-  // --border-width: #{$border-width};
-  // --border-style: #{$border-style};
-  // --border-color: #{$border-color};
-  // --border-color-translucent: #{$border-color-translucent};
-  // // scss-docs-end root-border-var
-
-  // // scss-docs-start root-border-radius-var
-  // --border-radius: #{$border-radius};
-  // --border-radius-sm: #{$border-radius-sm};
-  // --border-radius-lg: #{$border-radius-lg};
-  // --border-radius-xl: #{$border-radius-xl};
-  // --border-radius-2xl: #{$border-radius-2xl};
-  // --border-radius-pill: #{$border-radius-pill};
-  // // scss-docs-end root-border-radius-var
-
-  // --box-shadow: #{$box-shadow};
-  // --box-shadow-sm: #{$box-shadow-sm};
-  // --box-shadow-lg: #{$box-shadow-lg};
-  // --box-shadow-inset: #{$box-shadow-inset};
-
-  // // Focus styles
-  // // scss-docs-start root-focus-variables
-  // --focus-ring-width: 3px;
-  // --focus-ring-offset: 1px;
-  // --focus-ring-color: var(--primary-focus-ring);
-  // --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color);
-  // // scss-docs-end root-focus-variables
-
-  // // scss-docs-start root-form-validation-variables
-  // --form-valid-color: #{$form-valid-color};
-  // --form-valid-border-color: #{$form-valid-border-color};
-  // --form-invalid-color: #{$form-invalid-color};
-  // --form-invalid-border-color: #{$form-invalid-border-color};
-  // color-scheme: light;
-  // // scss-docs-end root-form-validation-variables
-
   // Root and body
   @if $font-size-root != null {
     --root-font-size: #{$font-size-root};
@@ -272,20 +180,3 @@ $root-tokens: (
     --body-text-align: #{$body-text-align};
   }
 }
-
-// @if $enable-dark-mode {
-//   @include color-mode(dark, true) {
-
-//     // scss-docs-start root-dark-mode-vars
-//     --heading-color: #{$headings-color-dark};
-
-//     --border-color: #{$border-color-dark};
-
-//     --form-valid-color: #{$form-valid-color-dark};
-//     --form-valid-border-color: #{$form-valid-border-color-dark};
-//     --form-invalid-color: #{$form-invalid-color-dark};
-//     --form-invalid-border-color: #{$form-invalid-border-color-dark};
-//     color-scheme: dark;
-//     // scss-docs-end root-dark-mode-vars
-//   }
-// }
