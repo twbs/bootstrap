@@ -47,25 +47,22 @@ export default () => {
     })
   }
 
-  // Instantiate all toasts in docs pages only
+  // Show all toasts in docs examples (with autohide disabled)
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
-      const toast = new bootstrap.Toast(toastNode, {
-        autohide: false
-      })
-
-      toast.show()
+      toastNode.style.setProperty('--bs-toast-delay', '99999s')
+      bootstrap.Toast.getOrCreateInstance(toastNode).show()
     })
 
-  // Instantiate all toasts in docs pages only
+  // Live toast demo
   // js-docs-start live-toast
   const toastTrigger = document.getElementById('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
 
   if (toastTrigger) {
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    const toastInstance = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
     toastTrigger.addEventListener('click', () => {
-      toastBootstrap.show()
+      toastInstance.show()
     })
   }
   // js-docs-end live-toast
