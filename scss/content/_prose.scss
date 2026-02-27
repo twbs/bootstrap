@@ -1,12 +1,21 @@
 @use "../config" as *;
 @use "../mixins/transition" as *;
 
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start prose-tokens
+$prose-tokens: (
+  --content-font-size: var(--font-size-sm),
+  --content-gap: 20px,
+  --heading-color: light-dark(var(--gray-900), var(--white)),
+) !default;
+// scss-docs-end prose-tokens
+// stylelint-enable custom-property-no-missing-var-function
+
 @layer content {
   .prose {
-    --content-font-size: var(--font-size-sm);
-    --content-gap: 20px;
-    --heading-color: light-dark(var(--gray-900), var(--white));
-
+    @each $prop, $value in $prose-tokens {
+      #{$prop}: #{$value};
+    }
     position: relative;
     display: flex;
     flex-direction: column;
