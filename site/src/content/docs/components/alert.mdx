@@ -10,7 +10,7 @@ import { getData } from '@libs/data'
 
 ## Default alert
 
-Alerts are available for any length of text, as well as an optional close button. Alerts are designed to be used with theme colors, but have neutral fallback colors for when no theme color is applied. For inline dismissal, use the [alerts JavaScript plugin](#dismiss).
+Alerts are available for any length of text, as well as an optional close button. Alerts are designed to be used with theme colors, but have neutral fallback colors for when no theme color is applied. For inline dismissal, use a [hidden checkbox and `:has()` selector](#dismiss) — no JavaScript required.
 
 <Example code={`<div class="alert" role="alert">
     A simple alert—check it out!
@@ -25,17 +25,6 @@ Use any of our variant theme classes for color mode adaptive, contextual styling
   </div>`)} />
 
 <Details name="warning-color-assistive-technologies" />
-
-## Live example
-
-Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
-
-<Example addStackblitzJs class="d-flex flex-column align-items-start gap-3" code={`<div id="liveAlertPlaceholder"></div>
-<button type="button" class="btn-solid theme-primary flex-grow-0" id="liveAlertBtn">Show live alert</button>`} />
-
-We use the following JavaScript to trigger our live alert demo:
-
-<JsDocs name="live-alert" file="site/src/assets/partials/snippets.js" />
 
 ## Link color
 
@@ -63,7 +52,7 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
 Similarly, you can use [flexbox utilities]([[docsref:/utilities/flex]]) and [Bootstrap Icons]([[config:icons]]) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
 
 <Example code={`<div class="alert theme-primary d-flex align-items-center" role="alert">
-    <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi flex-shrink-0" viewBox="0 0 16 16" role="img" aria-label="Warning:">
       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
     </svg>
     <div>
@@ -73,23 +62,779 @@ Similarly, you can use [flexbox utilities]([[docsref:/utilities/flex]]) and [Boo
 
 ## Dismiss
 
-Using the alert JavaScript plugin, it’s possible to dismiss any alert inline. Here’s how:
+Alerts can be dismissed without JavaScript using a hidden checkbox inside a `<label>` element. The checkbox acts as a state holder — when toggled, the `:has()` CSS selector hides the alert.
 
-- Be sure you’ve loaded the alert plugin, or the compiled Bootstrap JavaScript.
-- Add a [close button]([[docsref:/components/close-button]]) and the `.alert-dismissible` class, which adds extra padding to the right of the alert and positions the close button.
-- On the close button, add the `data-bs-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
-- To animate alerts when dismissing them, be sure to add the `.fade` and `.show` classes.
+- Wrap a hidden `<input type="checkbox" class="alert-dismiss">` inside a `<label>` with the `.btn-close` class.
+- The checkbox is visually hidden but remains focusable — pressing **Space** on the focused close button dismisses the alert.
+- Use `ms-auto` to push the close button to the end.
+- For a smooth fade-and-collapse animation, add the `.fade` and `.show` classes to the alert.
 
-You can see this in action with a live demo:
-
-<Example code={`<div class="alert theme-warning alert-dismissible fade show" role="alert">
-    Something’s wrong, check the fields below and try again.
-    <CloseButton dismiss="alert" class="ms-auto" />
+<Example code={`<div class="alert theme-warning fade show" role="alert">
+    Something's wrong, check the fields below and try again.
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
   </div>`} />
 
-<Callout type="warning">
-When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document. For this reason, we recommend including additional JavaScript that listens for the `closed.bs.alert` event and programmatically sets `focus()` to the most appropriate location in the page. If you’re planning to move focus to a non-interactive element that normally does not receive focus, make sure to add `tabindex="-1"` to the element.
+<Callout>
+Unlike the previous JavaScript dismiss which removed the element from the DOM (causing focus loss), CSS-only dismiss hides the alert visually. The element remains in the DOM but is collapsed to zero height with `visibility: hidden`, removing it from the accessibility tree. Focus moves naturally to the next focusable element.
 </Callout>
+
+### Dismissible with icons
+
+Combine the dismiss checkbox with icons and themed variants.
+
+<Example code={`<div class="alert theme-danger d-flex align-items-center fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi flex-shrink-0" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+    <div>A critical error occurred. Please try again.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+  </div>`} />
+
+### Additional content dismissible
+
+Use `position-relative` and `position-absolute` for multi-line alerts with the close button pinned top-right.
+
+<Example code={`<div class="alert theme-success position-relative fade show" role="alert" style="padding-inline-end: 3rem;">
+    <label role="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+    <vstack>
+      <h4 class="alert-heading mb-2">Well done!</h4>
+      <p>Your order has been placed and is being processed.</p>
+      <hr class="my-3">
+      <p class="mb-0">You'll receive a confirmation email shortly.</p>
+    </vstack>
+  </div>`} />
+
+## With list content
+
+Alerts containing a heading and a bullet list, useful for form validation summaries.
+
+<Example code={`<div class="alert theme-danger position-relative pe-5 fade show" role="alert">
+    <label role="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+    <vstack>
+      <strong>Please fix the following errors:</strong>
+      <ul class="mb-0 ps-4 mt-2">
+        <li>Email address is required</li>
+        <li>Password must be at least 8 characters</li>
+        <li>Terms and conditions must be accepted</li>
+      </ul>
+    </vstack>
+  </div>`} />
+
+<Example code={`<div class="alert theme-warning position-relative pe-5 fade show" role="alert">
+    <label role="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+    <vstack>
+      <strong>Before you continue, please note:</strong>
+      <ul class="mb-0 ps-4 mt-2">
+        <li>Your trial expires in 3 days</li>
+        <li>Exported data will be in CSV format</li>
+        <li>This action cannot be undone</li>
+      </ul>
+    </vstack>
+  </div>`} />
+
+## Additional content with actions
+
+Rich alerts with heading, paragraph, divider, and action buttons.
+
+<Example code={`<div class="alert theme-success position-relative pe-5 fade show" role="alert">
+    <label role="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+    <vstack class="flex-grow-1">
+      <h5 class="mb-0">Order confirmed</h5>
+      <p class="mt-2 mb-2">Your order #12345 has been placed and is being processed. You'll receive a confirmation email shortly with tracking details.</p>
+      <hr>
+      <div class="d-flex gap-2">
+        <a href="#" class="btn btn-sm btn-solid theme-success">View order</a>
+        <a href="#" class="btn btn-sm btn-outline theme-success">Download receipt</a>
+      </div>
+    </vstack>
+  </div>`} />
+
+<Example code={`<div class="alert theme-warning position-relative pe-5 fade show" role="alert">
+    <label role="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+    <vstack class="flex-grow-1">
+      <h5 class="mb-0">Subscription expiring</h5>
+      <p class="mt-2 mb-2">Your Pro plan expires on March 15, 2026. Renew now to avoid any interruption to your premium features and data exports.</p>
+      <hr>
+      <div class="d-flex gap-2">
+        <a href="#" class="btn btn-sm btn-solid theme-warning">Renew now</a>
+        <a href="#" class="btn btn-sm btn-outline theme-warning">Compare plans</a>
+      </div>
+    </vstack>
+  </div>`} />
+
+## Modern minimalist
+
+Clean neutral background with bold title and description. Uses `.bg-body` and `.border` utilities for a subtle, dashboard-friendly aesthetic.
+
+<Example code={`<div class="alert bg-body border d-flex align-items-start theme-primary" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-3 mt-1" viewBox="0 0 16 16" role="img" aria-label="Info:">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.399l-.502-.032.1-.446 2.322-.256zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+    </svg>
+    <div>
+      <strong class="d-block">Heads up!</strong>
+      <span class="text-body-secondary small">You can add components to your app using the CLI.</span>
+    </div>
+  </div>`} />
+
+<Example code={`<div class="alert bg-body border d-flex align-items-start theme-danger" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-3 mt-1" viewBox="0 0 16 16" role="img" aria-label="Error:">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+    </svg>
+    <div>
+      <strong class="d-block">Error</strong>
+      <span class="text-body-secondary small">Your session has expired. Please log in again.</span>
+    </div>
+  </div>`} />
+
+<Example code={`<div class="alert bg-body border d-flex align-items-start theme-success" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-3 mt-1" viewBox="0 0 16 16" role="img" aria-label="Success:">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </svg>
+    <div>
+      <strong class="d-block">Deployed</strong>
+      <span class="text-body-secondary small">Your application has been deployed to production successfully.</span>
+    </div>
+  </div>`} />
+
+## Elevated card
+
+Add `.shadow-sm` and `.rounded-4` to any alert for a floating notification card appearance.
+
+<Example code={`<div class="alert theme-success shadow-sm rounded-4 d-flex align-items-center fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-3" viewBox="0 0 16 16" role="img" aria-label="Success:">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </svg>
+    <div class="flex-grow-1">
+      <strong>Congratulations!</strong> Your account has been verified and is ready to use.
+    </div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+  </div>`} />
+
+<Example code={`<div class="alert theme-info shadow-sm rounded-4 d-flex align-items-center fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-3" viewBox="0 0 16 16" role="img" aria-label="Info:">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.399l-.502-.032.1-.446 2.322-.256zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+    </svg>
+    <div class="flex-grow-1">
+      <strong>Sync complete.</strong> All your files are up to date across devices.
+    </div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+  </div>`} />
+
+<Example code={`<div class="alert theme-warning shadow-sm rounded-4 d-flex align-items-center fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-3" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+    </svg>
+    <div class="flex-grow-1">
+      <strong>API rate limit warning.</strong> You've used 85% of your hourly quota.
+    </div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+      </svg>
+    </label>
+  </div>`} />
+
+## Task list
+
+Structured alert cards with status icons, category badges, titles, and descriptions. Useful for task lists, automation steps, or activity feeds.
+
+<Example code={`<div class="d-flex flex-column gap-3">
+    <div class="alert mb-0 d-flex align-items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-accent">Build</span>
+          <span class="fw-bold">Compile Assets</span>
+        </div>
+        <span class="small text-body-secondary">Bundled 42 modules in 1.8s with no warnings.</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-primary">Test</span>
+          <span class="fw-bold">Run Test Suite</span>
+        </div>
+        <span class="small text-body-secondary">128 passed, 0 failed — coverage 97.2%</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-danger">Deploy</span>
+          <span class="fw-bold">Push to Production</span>
+        </div>
+        <span class="small text-body-secondary">Deployed to us-east-1 in 12s.</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-danger">Deploy</span>
+          <span class="fw-bold">Invalidate Cache</span>
+        </div>
+        <span class="small text-body-secondary">CDN edge nodes refreshed in 3 regions.</span>
+      </div>
+    </div>
+  </div>`} />
+
+## Border accent
+
+Add `.alert-accent-start`, `.alert-accent-top`, or `.alert-accent-bottom` to emphasize an alert with a thick colored border on one side. Commonly used in SaaS dashboards for status notifications.
+
+### Left border
+
+<Example code={`<div class="alert theme-primary alert-accent-start d-flex align-items-center fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.399l-.502-.032.1-.446 2.322-.256zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+    </svg>
+    <div class="flex-grow-1">This is an informational notice. Review the details and take action if needed.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+  </div>
+  <div class="alert theme-success alert-accent-start d-flex align-items-center fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </svg>
+    <div class="flex-grow-1">Profile updated. All changes have been saved to your account.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+  </div>
+  <div class="alert theme-warning alert-accent-start d-flex align-items-center fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+    </svg>
+    <div class="flex-grow-1">Storage almost full. You've used 95% of your available space.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+  </div>
+  <div class="alert theme-danger alert-accent-start d-flex align-items-center fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+    </svg>
+    <div class="flex-grow-1">Payment failed. Please verify your billing information.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+  </div>`} />
+
+### Top and bottom borders
+
+Use `.alert-accent-top` or `.alert-accent-bottom` for alternate placement.
+
+<Example code={`<div class="alert theme-info alert-accent-top d-flex align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.399l-.502-.032.1-.446 2.322-.256zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+    </svg>
+    <div>Scheduled maintenance tonight from 2:00 AM to 4:00 AM UTC.</div>
+  </div>
+  <div class="alert theme-success alert-accent-bottom d-flex align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </svg>
+    <div>All systems operational. Your services are running smoothly.</div>
+  </div>`} />
+
+## Callout
+
+Minimal, borderless alert with a thick left accent and no background. Ideal for documentation, notes, warnings, and tips within prose content. Add `.alert-callout` to an alert and use `.alert-callout-title` for the heading.
+
+<Example code={`<div class="alert alert-callout theme-primary" role="alert">
+    <div class="alert-callout-title">Note</div>
+    This feature is available starting in version 3.2. See the migration guide for details.
+  </div>
+  <div class="alert alert-callout theme-warning" role="alert">
+    <div class="alert-callout-title">Warning</div>
+    This API is deprecated and will be removed in the next major release.
+  </div>
+  <div class="alert alert-callout theme-danger" role="alert">
+    <div class="alert-callout-title">Danger</div>
+    Running this command will permanently delete all data. This action cannot be undone.
+  </div>
+  <div class="alert alert-callout theme-success" role="alert">
+    <div class="alert-callout-title">Tip</div>
+    You can speed up builds by enabling incremental compilation in your config.
+  </div>`} />
+
+## Compact
+
+Add `.alert-compact` for reduced vertical padding, useful in data-dense dashboards and form validation contexts.
+
+<Example code={`<div class="alert alert-compact theme-primary d-flex align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.399l-.502-.032.1-.446 2.322-.256zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+    </svg>
+    <div>A compact informational alert with reduced padding.</div>
+  </div>
+  <div class="alert alert-compact theme-success d-flex align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </svg>
+    <div>Changes saved successfully.</div>
+  </div>
+  <div class="alert alert-compact theme-danger d-flex align-items-center" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+    </svg>
+    <div>Validation failed. Check the fields below.</div>
+  </div>`} />
+
+## Expandable details
+
+Use `.alert-details` with a native `<details>` / `<summary>` element to provide collapsible content inside an alert — perfect for stack traces, error logs, or technical information.
+
+<Example code={`<div class="alert alert-details theme-danger position-relative pe-5 fade show" role="alert">
+    <label role="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <vstack>
+      <strong>TypeError: Cannot read properties of undefined (reading 'map')</strong>
+      <details>
+        <summary>View stack trace</summary>
+        <pre>TypeError: Cannot read properties of undefined (reading 'map')
+    at UserList.render (src/components/UserList.tsx:42:18)
+    at finishClassComponent (react-dom.development.js:17485:31)
+    at updateClassComponent (react-dom.development.js:17435:24)
+    at beginWork (react-dom.development.js:19073:16)</pre>
+      </details>
+    </vstack>
+  </div>
+  <div class="alert alert-details theme-warning position-relative pe-5 fade show" role="alert">
+    <label role="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <vstack>
+      <strong>DeprecationWarning: Buffer() is deprecated</strong>
+      <details>
+        <summary>View details</summary>
+        <pre>[DEP0005] DeprecationWarning: Buffer() is deprecated due to
+security and usability issues. Please use Buffer.alloc(),
+Buffer.allocUnsafe(), or Buffer.from() methods instead.</pre>
+      </details>
+    </vstack>
+  </div>`} />
+
+## Split layout
+
+Use `.alert-split` with `.alert-icon-side` and `.alert-content` for a two-column alert with a solid-colored icon panel on the left and content on the right.
+
+<Example code={`<div class="alert theme-primary alert-split fade show" role="alert">
+    <div class="alert-icon-side">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.399l-.502-.032.1-.446 2.322-.256zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+      </svg>
+    </div>
+    <div class="alert-content d-flex align-items-center">
+      <div class="flex-grow-1"><strong>New update!</strong> Version 2.0 is now live with enhanced features.</div>
+      <label role="button" class="btn-close ms-2" aria-label="Close">
+        <input type="checkbox" class="alert-dismiss" autocomplete="off">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+      </label>
+    </div>
+  </div>
+  <div class="alert theme-success alert-split fade show" role="alert">
+    <div class="alert-icon-side">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+    </div>
+    <div class="alert-content d-flex align-items-center">
+      <div class="flex-grow-1"><strong>Payment received.</strong> Your invoice has been processed.</div>
+      <label role="button" class="btn-close ms-2" aria-label="Close">
+        <input type="checkbox" class="alert-dismiss" autocomplete="off">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+      </label>
+    </div>
+  </div>
+  <div class="alert theme-danger alert-split fade show" role="alert">
+    <div class="alert-icon-side">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+      </svg>
+    </div>
+    <div class="alert-content d-flex align-items-center">
+      <div class="flex-grow-1"><strong>Security breach detected.</strong> Your password was changed from an unknown device.</div>
+      <label role="button" class="btn-close ms-2" aria-label="Close">
+        <input type="checkbox" class="alert-dismiss" autocomplete="off">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+      </label>
+    </div>
+  </div>`} />
+
+## Progress indicators
+
+Add `.alert-progress-bar` inside a `position-relative` alert for a thin progress line at the bottom. Combine with animation classes for different behaviors. Control duration with `--alert-progress-duration`.
+
+<Example code={`<style>
+    #progress-replay:checked ~ .alert .alert-progress-steps,
+    #progress-replay:checked ~ .alert .alert-progress-countdown,
+    #progress-replay:checked ~ .alert .alert-progress-countup {
+      animation-name: none;
+    }
+  </style>
+  <input type="checkbox" id="progress-replay" class="visually-hidden" autocomplete="off">
+  <label for="progress-replay" class="btn btn-sm btn-outline-secondary mb-3">Replay animations</label>
+  <div class="alert theme-info position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383"/>
+    </svg>
+    <div class="flex-grow-1">Uploading files… Please don't close this window.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar alert-progress-indeterminate bg-info"></div>
+  </div>
+  <div class="alert theme-success position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </svg>
+    <div class="flex-grow-1">Deployment in progress… step 3 of 5</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar alert-progress-steps bg-success"></div>
+  </div>
+  <div class="alert theme-warning position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+    </svg>
+    <div class="flex-grow-1">This notification will auto-dismiss in a few seconds…</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar alert-progress-countdown bg-warning"></div>
+  </div>
+  <div class="alert theme-primary position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.399l-.502-.032.1-.446 2.322-.256zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+    </svg>
+    <div class="flex-grow-1">Loading resources… please wait.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar alert-progress-countup bg-primary"></div>
+  </div>
+  <div class="alert theme-danger position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+    </svg>
+    <div class="flex-grow-1">Storage almost full — 75% used.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar bg-danger w-75"></div>
+  </div>`}
+customMarkup={`<div class="alert theme-info position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383"/>
+    </svg>
+    <div class="flex-grow-1">Uploading files… Please don't close this window.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar alert-progress-indeterminate bg-info"></div>
+  </div>
+  <div class="alert theme-success position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+    </svg>
+    <div class="flex-grow-1">Deployment in progress… step 3 of 5</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar alert-progress-steps bg-success"></div>
+  </div>
+  <div class="alert theme-warning position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+    </svg>
+    <div class="flex-grow-1">This notification will auto-dismiss in a few seconds…</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar alert-progress-countdown bg-warning"></div>
+  </div>
+  <div class="alert theme-primary position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.399l-.502-.032.1-.446 2.322-.256zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+    </svg>
+    <div class="flex-grow-1">Loading resources… please wait.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar alert-progress-countup bg-primary"></div>
+  </div>
+  <div class="alert theme-danger position-relative d-flex align-items-center overflow-hidden fade show" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+    </svg>
+    <div class="flex-grow-1">Storage almost full — 75% used.</div>
+    <label role="button" class="btn-close ms-auto" aria-label="Close">
+      <input type="checkbox" class="alert-dismiss" autocomplete="off">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg>
+    </label>
+    <div class="alert-progress-bar bg-danger w-75"></div>
+  </div>`} />
+
+Every progress bar needs `.alert-progress-bar` and a background color (e.g., `.bg-primary`). Add one of the following classes to control behavior:
+
+| Class | Direction | Use case |
+| --- | --- | --- |
+| `.alert-progress-indeterminate` | Loops left → right continuously | Uploads, background tasks with unknown duration |
+| `.alert-progress-steps` | Fills in discrete jumps (0 → 100%) | Multi-step workflows like deployments or wizards |
+| `.alert-progress-countdown` | Shrinks from 100% → 0% | Auto-dismiss timers, session expiry warnings |
+| `.alert-progress-countup` | Grows from 0% → 100% | Loading indicators, file processing |
+| _(none)_ | Static — no animation | Fixed-value indicators; set width with a utility class (`.w-75`) or inline `style="width: 90%"` |
+
+Use `--alert-progress-duration` to change the animation time (default `8s`) and `--alert-progress-steps` to set the number of discrete steps (default `5`). For example, a 3-step deploy: `style="--alert-progress-steps: 3; --alert-progress-duration: 4s"`.
+
+## Live toggle
+
+Show or hide an alert with a CSS-only toggle using a hidden checkbox. Place an `<input type="checkbox" class="alert-show-trigger">` as a sibling before the `.alert-live` element. The alert position (above or below the button) depends on DOM order.
+
+### Show alert above button
+
+Place the `.alert-live` element before the trigger `<label>` so the alert appears above.
+
+<Example code={`<div>
+    <input type="checkbox" id="live-top" class="alert-show-trigger">
+    <div class="alert theme-success alert-live d-flex align-items-center" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div class="flex-grow-1">Nice, you triggered this alert message!</div>
+      <label for="live-top" role="button" class="btn-close ms-auto" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg></label>
+    </div>
+    <label for="live-top" class="btn btn-solid theme-success">Show alert above</label>
+  </div>`} />
+
+### Show alert below button
+
+Place the trigger `<label>` before the `.alert-live` element so the alert appears below.
+
+<Example code={`<div>
+    <input type="checkbox" id="live-bottom" class="alert-show-trigger">
+    <label for="live-bottom" class="btn btn-solid theme-danger mb-3">Show alert below</label>
+    <div class="alert theme-danger alert-live d-flex align-items-center" role="alert">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi flex-shrink-0 me-2" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+      </svg>
+      <div class="flex-grow-1">Something went wrong! Check the details below.</div>
+      <label for="live-bottom" role="button" class="btn-close ms-auto" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none"><path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/></svg></label>
+    </div>
+  </div>`} />
+
+## Alert sizing
+
+Override `--alert-padding-x` and `--alert-padding-y` CSS custom properties to change alert density. Combine with font-size and gap utilities for full control.
+
+### Compact
+
+<Example code={`<div class="d-flex flex-column gap-2">
+    <div class="alert mb-0 d-flex align-items-start gap-2" style="--alert-padding-y: .5rem; --alert-padding-x: .75rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge theme-accent">Build</span>
+          <span class="fw-bold small">Compile Assets</span>
+        </div>
+        <span class="text-body-secondary" style="font-size: .75rem;">Bundled 42 modules in 1.8s with no warnings.</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-2" style="--alert-padding-y: .5rem; --alert-padding-x: .75rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge theme-primary">Test</span>
+          <span class="fw-bold small">Run Test Suite</span>
+        </div>
+        <span class="text-body-secondary" style="font-size: .75rem;">128 passed, 0 failed — coverage 97.2%</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-2" style="--alert-padding-y: .5rem; --alert-padding-x: .75rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge theme-danger">Deploy</span>
+          <span class="fw-bold small">Push to Production</span>
+        </div>
+        <span class="text-body-secondary" style="font-size: .75rem;">Deployed to us-east-1 in 12s.</span>
+      </div>
+    </div>
+  </div>`} />
+
+### Default
+
+<Example code={`<div class="d-flex flex-column gap-3">
+    <div class="alert mb-0 d-flex align-items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-accent">Build</span>
+          <span class="fw-bold">Compile Assets</span>
+        </div>
+        <span class="small text-body-secondary">Bundled 42 modules in 1.8s with no warnings.</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-primary">Test</span>
+          <span class="fw-bold">Run Test Suite</span>
+        </div>
+        <span class="small text-body-secondary">128 passed, 0 failed — coverage 97.2%</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-danger">Deploy</span>
+          <span class="fw-bold">Push to Production</span>
+        </div>
+        <span class="small text-body-secondary">Deployed to us-east-1 in 12s.</span>
+      </div>
+    </div>
+  </div>`} />
+
+### Spacious
+
+<Example code={`<div class="d-flex flex-column gap-3">
+    <div class="alert mb-0 d-flex align-items-start gap-3" style="--alert-padding-y: 1.25rem; --alert-padding-x: 1.5rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-accent">Build</span>
+          <span class="fw-bold fs-6">Compile Assets</span>
+        </div>
+        <span class="text-body-secondary">Bundled 42 modules in 1.8s with no warnings.</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-3" style="--alert-padding-y: 1.25rem; --alert-padding-x: 1.5rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-primary">Test</span>
+          <span class="fw-bold fs-6">Run Test Suite</span>
+        </div>
+        <span class="text-body-secondary">128 passed, 0 failed — coverage 97.2%</span>
+      </div>
+    </div>
+    <div class="alert mb-0 d-flex align-items-start gap-3" style="--alert-padding-y: 1.25rem; --alert-padding-x: 1.5rem;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi opacity-50 flex-shrink-0 mt-1" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </svg>
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-1">
+          <span class="badge theme-danger">Deploy</span>
+          <span class="fw-bold fs-6">Push to Production</span>
+        </div>
+        <span class="text-body-secondary">Deployed to us-east-1 in 12s.</span>
+      </div>
+    </div>
+  </div>`} />
+
+## Usage
+
+The alert component is entirely CSS-only in v6 — no JavaScript plugin is shipped. Dismiss, live toggle, and progress animations all work through CSS selectors (`:has()`, `~`, and `@keyframes`).
+
+For dynamic control via JavaScript, manipulate the underlying HTML directly:
+
+- **Dismiss** — check the `.alert-dismiss` checkbox programmatically, or remove the alert element from the DOM.
+- **Show / hide** — toggle the `.show` class on a `.fade` alert, or check/uncheck the `.alert-show-trigger` input.
+- **Progress** — add or remove animation classes, set `style.width` for static bars, or update custom properties with `element.style.setProperty('--alert-progress-duration', '4s')`.
 
 ## CSS
 
@@ -102,76 +847,3 @@ When an alert is dismissed, the element is completely removed from the page stru
 ### Sass variables
 
 <ScssDocs name="alert-variables" file="scss/_alert.scss" />
-
-### Sass loops
-
-Loop that generates the modifier classes with an overriding of CSS variables.
-
-## JavaScript behavior
-
-### Initialize
-
-Initialize elements as alerts
-
-```js
-const alertList = document.querySelectorAll('.alert')
-const alerts = [...alertList].map(element => new bootstrap.Alert(element))
-```
-
-<Callout>
-For the sole purpose of dismissing an alert, it isn’t necessary to initialize the component manually via the JS API. By making use of `data-bs-dismiss="alert"`, the component will be initialized automatically and properly dismissed.
-
-See the [triggers](#triggers) section for more details.
-</Callout>
-
-### Triggers
-
-<JsDismiss name="alert" />
-
-**Note that closing an alert will remove it from the DOM.**
-
-### Methods
-
-You can create an alert instance with the alert constructor, for example:
-
-```js
-const bsAlert = new bootstrap.Alert('#myAlert')
-```
-
-This makes an alert listen for click events on descendant elements which have the `data-bs-dismiss="alert"` attribute. (Not necessary when using the data-api’s auto-initialization.)
-
-<BsTable>
-| Method | Description |
-| --- | --- |
-| `close` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
-| `dispose` | Destroys an element’s alert. (Removes stored data on the DOM element) |
-| `getInstance` | Static method which allows you to get the alert instance associated to a DOM element. For example: `bootstrap.Alert.getInstance(alert)`. |
-| `getOrCreateInstance` | Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Alert.getOrCreateInstance(element)`. |
-</BsTable>
-
-Basic usage:
-
-```js
-const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
-alert.close()
-```
-
-### Events
-
-Bootstrap’s alert plugin exposes a few events for hooking into alert functionality.
-
-<BsTable>
-| Event | Description |
-| --- | --- |
-| `close.bs.alert` | Fires immediately when the `close` instance method is called. |
-| `closed.bs.alert` | Fired when the alert has been closed and CSS transitions have completed. |
-</BsTable>
-
-```js
-const myAlert = document.getElementById('myAlert')
-myAlert.addEventListener('closed.bs.alert', event => {
-  // do something, for instance, explicitly move focus to the most appropriate element,
-  // so it doesn’t get lost/reset to the start of the page
-  // document.getElementById('...').focus()
-})
-```

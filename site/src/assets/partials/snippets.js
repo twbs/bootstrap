@@ -70,33 +70,6 @@ export default () => {
   }
   // js-docs-end live-toast
 
-  // -------------------------------
-  // Alerts
-  // -------------------------------
-  // Used in 'Show live alert' example in docs or StackBlitz
-
-  // js-docs-start live-alert
-  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-  const appendAlert = (message, type) => {
-    const wrapper = document.createElement('div')
-    wrapper.innerHTML = [
-      `<div class="alert theme-${type} alert-dismissible" role="alert">`,
-      `   <div>${message}</div>`,
-      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-      '</div>'
-    ].join('')
-
-    alertPlaceholder.append(wrapper)
-  }
-
-  const alertTrigger = document.getElementById('liveAlertBtn')
-  if (alertTrigger) {
-    alertTrigger.addEventListener('click', () => {
-      appendAlert('Nice, you triggered this alert message!', 'success')
-    })
-  }
-  // js-docs-end live-alert
-
   // --------
   // Carousels
   // --------

@@ -1,0 +1,24 @@
+@use "../variables" as *;
+
+// scss-docs-start accent-border-mixins
+// Thick accent border on one side of a component.
+// Shared by .alert-accent-*, .alert-callout, and prose blockquotes.
+
+@mixin accent-border-start($width: $alert-accent-border-width, $color: var(--theme-base, currentcolor)) {
+  border-inline-start: $width solid $color;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+@mixin accent-border-top($width: $alert-accent-border-width, $color: var(--theme-base, currentcolor)) {
+  border-block-start: $width solid $color;
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+}
+
+@mixin accent-border-bottom($width: $alert-accent-border-width, $color: var(--theme-base, currentcolor)) {
+  border-block-end: $width solid $color;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+// scss-docs-end accent-border-mixins

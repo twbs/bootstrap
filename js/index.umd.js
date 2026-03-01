@@ -5,7 +5,6 @@
  * --------------------------------------------------------------------------
  */
 
-import Alert from './src/alert.js'
 import Button from './src/button.js'
 import Carousel from './src/carousel.js'
 import Collapse from './src/collapse.js'
@@ -23,7 +22,6 @@ import Toggler from './src/toggler.js'
 import Tooltip from './src/tooltip.js'
 
 export default {
-  Alert,
   Button,
   Carousel,
   Collapse,

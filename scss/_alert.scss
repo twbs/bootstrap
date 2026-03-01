@@ -2,7 +2,11 @@
 @use "config" as *;
 @use "theme" as *;
 @use "variables" as *;
+@use "mixins/accent-border" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/focus-ring" as *;
+@use "mixins/transition" as *;
+@use "mixins/visually-hidden" as *;
 
 // scss-docs-start alert-variables
 $alert-gap:                     $spacer * .75 !default;
@@ -11,6 +15,14 @@ $alert-padding-x:               $spacer !default;
 $alert-border-radius:           var(--border-radius) !default;
 $alert-link-font-weight:        $font-weight-semibold !default;
 $alert-border-width:            var(--border-width) !default;
+$alert-dismiss-transition:      opacity .15s linear !default;
+$alert-accent-border-width:     4px !default;
+$alert-compact-padding-y:       $spacer * .5 !default;
+$alert-callout-padding-y:       $spacer * .75 !default;
+$alert-callout-padding-x:       $spacer !default;
+$alert-details-max-height:      150px !default;
+$alert-progress-height:         3px !default;
+$alert-progress-duration:       8s !default;
 // scss-docs-end alert-variables
 
 @layer components {
@@ -48,4 +60,220 @@ $alert-border-width:            var(--border-width) !default;
     font-weight: $alert-link-font-weight;
     color: var(--alert-link-color);
   }
+
+  // scss-docs-start alert-dismiss
+  // CSS-only dismiss — uses a hidden checkbox inside a <label> as state holder.
+  // The checkbox is visually hidden but focusable. When checked (via click or
+  // Space key), the :has() selector collapses the alert.
+
+  .alert-dismiss {
+    @include visually-hidden();
+  }
+
+  // Proxy focus ring from hidden checkbox to the visible .btn-close label.
+  // Matches the .btn-check:has(input:focus-visible) pattern in _button.scss:379.
+  .btn-close:has(.alert-dismiss:focus-visible) {
+    @include focus-ring(true);
+    opacity: var(--btn-close-focus-opacity);
+  }
+
+  // Instant dismiss (no .fade.show on the alert)
+  .alert:has(.alert-dismiss:checked) {
+    display: none;
+  }
+
+  // Animated dismiss (requires .fade.show on the alert)
+  // Opacity fades first (0.15s), then height/padding/margin/visibility collapse after delay
+  .alert.fade.show:has(.alert-dismiss:checked) {
+    display: flex; // Override instant dismiss so fade animation can play
+    height: 0;
+    padding-block: 0;
+    margin-block-end: 0;
+    overflow: hidden;
+    visibility: hidden;
+    border-width: 0;
+    opacity: 0;
+    @include transition($alert-dismiss-transition, visibility 0s .15s, height 0s .15s, padding 0s .15s, margin 0s .15s, border-width 0s .15s, overflow 0s .15s);
+  }
+  // scss-docs-end alert-dismiss
+
+  // scss-docs-start alert-accent
+  // Border accent — thick colored border on one side for visual emphasis.
+  // Uses shared accent-border mixins from scss/mixins/_accent-border.scss.
+
+  .alert-accent-start {
+    @include accent-border-start($alert-accent-border-width);
+  }
+
+  .alert-accent-top {
+    @include accent-border-top($alert-accent-border-width);
+  }
+
+  .alert-accent-bottom {
+    @include accent-border-bottom($alert-accent-border-width);
+  }
+  // scss-docs-end alert-accent
+
+  // scss-docs-start alert-callout
+  // Callout — minimal GitHub/docs-style alert with left border, no background.
+  // Reuses the accent-border-start mixin to avoid duplicating the border pattern.
+
+  .alert-callout {
+    --alert-bg: transparent;
+    --alert-border: 0;
+    --alert-padding-y: #{$alert-callout-padding-y};
+    --alert-padding-x: #{$alert-callout-padding-x};
+    @include accent-border-start($alert-accent-border-width);
+  }
+
+  .alert-callout-title {
+    font-weight: $alert-link-font-weight;
+    margin-block-end: $spacer * .25;
+  }
+  // scss-docs-end alert-callout
+
+  // scss-docs-start alert-compact
+  // Compact — reduced vertical padding for data-dense UIs.
+
+  .alert-compact {
+    --alert-padding-y: #{$alert-compact-padding-y};
+  }
+  // scss-docs-end alert-compact
+
+  // scss-docs-start alert-details
+  // Expandable details — uses native <details>/<summary> for collapsible content
+  // inside an alert (e.g., stack traces, technical logs).
+
+  .alert-details {
+    summary {
+      cursor: pointer;
+      font-weight: $alert-link-font-weight;
+      font-size: .875rem;
+      margin-block-start: $spacer * .5;
+      user-select: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    pre {
+      max-height: $alert-details-max-height;
+      overflow-y: auto;
+      font-size: .75rem;
+      background: rgb(0 0 0 / .05);
+      @include border-radius(var(--border-radius-sm));
+      padding: $spacer * .5;
+      margin: ($spacer * .5) 0 0;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  }
+  // scss-docs-end alert-details
+
+  // scss-docs-start alert-split
+  // Split — icon sidebar layout with a colored side panel and content area.
+
+  .alert-split {
+    --alert-padding-x: 0;
+    --alert-padding-y: 0;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  .alert-icon-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacer * .75 $spacer;
+    flex-shrink: 0;
+    background-color: var(--theme-bg);
+    color: var(--theme-contrast);
+  }
+
+  .alert-content {
+    padding: $spacer * .75 $spacer;
+    flex-grow: 1;
+  }
+  // scss-docs-end alert-split
+
+  // scss-docs-start alert-progress
+  // Progress bar — positioned at the bottom of an alert for auto-dismiss
+  // or upload indicators. Supports countdown, countup, indeterminate, and steps.
+
+  .alert-progress-bar {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    height: $alert-progress-height;
+    @include border-bottom-radius(var(--alert-border-radius));
+  }
+
+  @keyframes alert-progress-countdown {
+    from { width: 100%; }
+    to { width: 0%; }
+  }
+
+  .alert-progress-countdown {
+    animation: alert-progress-countdown var(--alert-progress-duration, #{$alert-progress-duration}) linear forwards;
+  }
+
+  @keyframes alert-progress-countup {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+
+  .alert-progress-countup {
+    animation: alert-progress-countup var(--alert-progress-duration, #{$alert-progress-duration}) linear forwards;
+  }
+
+  @keyframes alert-progress-indeterminate {
+    0% { inset-inline-start: -30%; width: 30%; }
+    50% { inset-inline-start: 50%; width: 30%; }
+    100% { inset-inline-start: 100%; width: 30%; }
+  }
+
+  .alert-progress-indeterminate {
+    width: 30%;
+    animation: alert-progress-indeterminate 1.5s ease-in-out infinite;
+  }
+
+  @keyframes alert-progress-steps {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+
+  .alert-progress-steps {
+    animation: alert-progress-steps var(--alert-progress-duration, #{$alert-progress-duration}) steps(var(--alert-progress-steps, 5)) forwards;
+  }
+  // scss-docs-end alert-progress
+
+  // scss-docs-start alert-live
+  // Live toggle — CSS-only show/hide using a hidden checkbox as state.
+  // The checkbox must be a sibling before the .alert-live element.
+
+  .alert-show-trigger {
+    @include visually-hidden();
+  }
+
+  .alert-show-trigger ~ .alert-live {
+    opacity: 0;
+    max-height: 0;
+    padding-block: 0;
+    margin-block-end: 0;
+    border: 0;
+    overflow: hidden;
+    @include transition(opacity .15s linear, max-height 0s .15s, padding 0s .15s, margin 0s .15s, border 0s .15s);
+  }
+
+  .alert-show-trigger:checked ~ .alert-live {
+    opacity: 1;
+    max-height: 200px;
+    padding-block: var(--alert-padding-y);
+    margin-block-end: $spacer;
+    border: var(--alert-border);
+    overflow: visible;
+    @include transition(opacity .15s linear, max-height 0s);
+  }
+  // scss-docs-end alert-live
 }

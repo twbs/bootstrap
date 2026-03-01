@@ -652,9 +652,14 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <div class="alert alert-${themeColor.name} alert-dismissible fade show" role="alert">
+        <div class="alert mb-3 theme-${themeColor.name} fade show" role="alert">
           A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <label class="btn-close ms-auto" aria-label="Close">
+            <input type="checkbox" class="alert-dismiss" autocomplete="off">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+              <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+            </svg>
+          </label>
         </div>
         `)} />
 
