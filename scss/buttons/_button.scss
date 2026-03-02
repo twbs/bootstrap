@@ -12,6 +12,7 @@
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/gradients" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
@@ -152,9 +153,7 @@ $btn-variant-selectors: () !default;
 @layer components {
   .btn,
   #{$btn-variant-selectors} {
-    @each $token, $value in $button-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($button-tokens);
 
     display: inline-flex;
     gap: var(--btn-gap, .25rem);
@@ -301,9 +300,7 @@ $btn-variant-selectors: () !default;
 
   // Make a button look and behave like a link
   .btn-link {
-    @each $token, $value in $button-link-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($button-link-tokens);
 
     color: var(--theme-text, var(--btn-color));
     text-decoration: var(--link-decoration);

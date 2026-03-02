@@ -7,6 +7,7 @@
 @use "../mixins/box-shadow" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
@@ -37,9 +38,7 @@ $switch-tokens: map.merge(
 
 @layer forms {
   .switch {
-    @each $token, $value in $switch-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($switch-tokens);
 
     position: relative;
     display: flex;

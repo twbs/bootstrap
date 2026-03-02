@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "config" as *;
 @use "variables" as *;
+@use "mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $spinner-border-tokens: () !default;
@@ -63,9 +64,7 @@ $spinner-grow-tokens: map.merge(
   // scss-docs-end spinner-border-keyframes
 
   .spinner-border {
-    @each $prop, $value in $spinner-border-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($spinner-border-tokens);
 
     border: var(--spinner-border-width) solid currentcolor;
     border-inline-end-color: transparent;
@@ -96,9 +95,7 @@ $spinner-grow-tokens: map.merge(
   // scss-docs-end spinner-grow-keyframes
 
   .spinner-grow {
-    @each $prop, $value in $spinner-grow-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($spinner-grow-tokens);
 
     background-color: currentcolor;
     opacity: 0;

@@ -4,6 +4,7 @@
 @use "../mixins/image" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
+@use "../mixins/tokens" as *;
 
 $thumbnail-tokens: () !default;
 
@@ -49,9 +50,7 @@ $figure-tokens: map.merge(
   }
 
   .img-thumbnail {
-    @each $prop, $value in $thumbnail-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($thumbnail-tokens);
     padding: var(--thumbnail-padding);
     background-color: var(--thumbnail-bg);
     border: var(--thumbnail-border-width) solid var(--thumbnail-border-color);
@@ -63,9 +62,7 @@ $figure-tokens: map.merge(
   }
 
   .figure {
-    @each $prop, $value in $figure-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($figure-tokens);
     // Ensures the caption's text aligns with the image.
     display: flex;
     flex-direction: column;

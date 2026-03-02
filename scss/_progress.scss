@@ -6,6 +6,7 @@
 @use "mixins/gradients" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/tokens" as *;
 
 $progress-tokens: () !default;
 
@@ -41,9 +42,7 @@ $progress-tokens: map.merge(
 
   .progress,
   .progress-stacked {
-    @each $prop, $value in $progress-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($progress-tokens);
 
     display: flex;
     height: var(--progress-height);

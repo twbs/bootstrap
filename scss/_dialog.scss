@@ -5,6 +5,7 @@
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/transition" as *;
+@use "mixins/tokens" as *;
 
 // Native <dialog> component
 // Uses the browser's native dialog element with showModal()/show()/close() APIs
@@ -56,9 +57,7 @@ $dialog-sizes: (
   }
 
   .dialog {
-    @each $prop, $value in $dialog-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($dialog-tokens);
 
     // Reset native dialog styles
     max-width: var(--dialog-width);

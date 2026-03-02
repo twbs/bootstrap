@@ -3,6 +3,7 @@
 @use "theme" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/tokens" as *;
 
 $alert-tokens: () !default;
 
@@ -27,9 +28,7 @@ $alert-tokens: map.merge(
 
 @layer components {
   .alert {
-    @each $prop, $value in $alert-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($alert-tokens);
 
     display: flex;
     gap: var(--alert-gap);

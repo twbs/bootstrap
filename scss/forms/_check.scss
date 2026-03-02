@@ -6,6 +6,7 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
@@ -42,9 +43,7 @@ $check-tokens: map.merge(
   }
 
   .check {
-    @each $token, $value in $check-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($check-tokens);
 
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));

@@ -4,6 +4,7 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
@@ -23,9 +24,7 @@ $form-adorn-tokens: map.merge(
 
 @layer forms {
   .form-adorn {
-    @each $prop, $value in $form-adorn-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($form-adorn-tokens);
 
     gap: var(--form-adorn-gap);
     align-items: center;

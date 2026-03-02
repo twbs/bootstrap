@@ -6,6 +6,7 @@
 @use "theme" as *;
 // @use "maps" as *;
 @use "mixins/color-mode" as *;
+@use "mixins/tokens" as *;
 @use "forms/form-variables" as *;
 
 // mdo-do: do we need theme?
@@ -169,9 +170,7 @@ $root-tokens: map.merge(
 // scss-docs-end root-theme-tokens
 
 :root {
-  @each $prop, $value in $root-tokens {
-    #{$prop}: #{$value};
-  }
+  @include tokens($root-tokens);
 
   color-scheme: light dark;
 }

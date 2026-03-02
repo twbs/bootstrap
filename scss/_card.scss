@@ -3,6 +3,7 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/tokens" as *;
 @use "layout/breakpoints" as *;
 
 $card-tokens: () !default;
@@ -36,9 +37,7 @@ $card-tokens: map.merge(
 
 @layer components {
   .card {
-    @each $prop, $value in $card-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($card-tokens);
 
     position: relative;
     display: flex;

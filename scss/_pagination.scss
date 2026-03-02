@@ -6,6 +6,7 @@
 @use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
+@use "mixins/tokens" as *;
 
 // mdo-do: Update pagination to support variant themes
 
@@ -52,9 +53,7 @@ $pagination-tokens: map.merge(
 
 @layer components {
   .pagination {
-    @each $prop, $value in $pagination-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($pagination-tokens);
 
     display: flex;
     @include list-unstyled();

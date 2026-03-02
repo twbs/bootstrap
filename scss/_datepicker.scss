@@ -6,6 +6,7 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
+@use "mixins/tokens" as *;
 
 $datepicker-tokens: () !default;
 
@@ -38,9 +39,7 @@ $datepicker-tokens: map.merge(
 
 @layer components {
   [data-vc="calendar"] {
-    @each $prop, $value in $datepicker-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($datepicker-tokens);
 
     position: absolute;
     z-index: var(--datepicker-zindex);

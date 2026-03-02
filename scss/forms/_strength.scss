@@ -3,6 +3,7 @@
 @use "../config" as *;
 @use "../variables" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
@@ -38,9 +39,7 @@ $strength-transition: background-color .2s ease-in-out, width .3s ease-in-out !d
 @layer forms {
   // Strength meter container
   .strength {
-    @each $prop, $value in $strength-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($strength-tokens);
 
     display: flex;
     gap: var(--strength-gap);
@@ -83,9 +82,7 @@ $strength-transition: background-color .2s ease-in-out, width .3s ease-in-out !d
 
   // Alternative: Single bar variant (like a progress bar)
   .strength-bar {
-    @each $prop, $value in $strength-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($strength-tokens);
 
     --strength-color: transparent;
     --strength-width: 0%;

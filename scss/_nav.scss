@@ -4,6 +4,7 @@
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
+@use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
 $nav-tokens: () !default;
@@ -85,9 +86,7 @@ $nav-underline-tokens: map.merge(
 
 @layer components {
   .nav {
-    @each $prop, $value in $nav-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($nav-tokens);
 
     display: flex;
     flex-wrap: wrap;
@@ -150,9 +149,7 @@ $nav-underline-tokens: map.merge(
 
   .nav-tabs {
     // scss-docs-start nav-tabs-css-vars
-    @each $prop, $value in $nav-tabs-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($nav-tabs-tokens);
     // scss-docs-end nav-tabs-css-vars
 
     border-block-end: var(--nav-tabs-border-width) solid var(--nav-tabs-border-color);
@@ -193,9 +190,7 @@ $nav-underline-tokens: map.merge(
 
   .nav-pills {
     // scss-docs-start nav-pills-css-vars
-    @each $prop, $value in $nav-pills-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($nav-pills-tokens);
     // scss-docs-end nav-pills-css-vars
 
     .nav-link.active,
@@ -212,9 +207,7 @@ $nav-underline-tokens: map.merge(
 
   .nav-underline {
     // scss-docs-start nav-underline-css-vars
-    @each $prop, $value in $nav-underline-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($nav-underline-tokens);
     // scss-docs-end nav-underline-css-vars
 
     .nav-link {

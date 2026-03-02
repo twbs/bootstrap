@@ -4,6 +4,7 @@
 @use "mixins/border-radius" as *;
 @use "mixins/deprecate" as *;
 @use "mixins/reset-text" as *;
+@use "mixins/tokens" as *;
 
 
 $tooltip-tokens: () !default;
@@ -40,9 +41,7 @@ $form-feedback-tooltip-border-radius: var(--tooltip-border-radius) !default;
 
 @layer components {
   .tooltip {
-    @each $prop, $value in $tooltip-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($tooltip-tokens);
 
     z-index: var(--tooltip-zindex);
     display: block;

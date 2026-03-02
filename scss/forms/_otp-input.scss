@@ -3,6 +3,7 @@
 @use "sass:map";
 @use "form-variables" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $otp-tokens: () !default;
@@ -26,9 +27,7 @@ $otp-sizes: sm, lg !default;
 
 @layer components {
   .otp {
-    @each $prop, $value in $otp-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($otp-tokens);
 
     display: inline-flex;
     gap: var(--otp-gap);

@@ -3,6 +3,7 @@
 @use "../config" as *;
 @use "../variables" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
@@ -101,7 +102,7 @@ $reboot-mark-tokens: map.merge(
   // scss-docs-end reboot-body-rules
 
   hr {
-    margin: $hr-margin-y 0;
+    margin: var(--hr-margin-y, var(--spacer)) 0;
     border: 0;
     border-block-start: var(--border-width) solid var(--hr-border-color);
   }
@@ -230,6 +231,9 @@ $reboot-mark-tokens: map.merge(
 
   blockquote {
     margin: 0 0 1rem;
+    > * {
+      margin-block: 0;
+    }
   }
 
 
@@ -249,7 +253,7 @@ $reboot-mark-tokens: map.merge(
 
   small,
   .small {
-    font-size: $small-font-size;
+    font-size: var(--small-font-size, var(--font-size-sm));
   }
 
 
@@ -257,9 +261,7 @@ $reboot-mark-tokens: map.merge(
 
   mark,
   .mark {
-    @each $prop, $value in $reboot-mark-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($reboot-mark-tokens);
     padding: var(--mark-padding);
     color: var(--mark-color);
     background-color: var(--mark-bg);
@@ -274,7 +276,7 @@ $reboot-mark-tokens: map.merge(
   sub,
   sup {
     position: relative;
-    font-size: $sub-sup-font-size;
+    font-size: var(--sub-sup-font-size, .75em);
     line-height: 0;
     vertical-align: baseline;
   }
@@ -354,9 +356,7 @@ $reboot-mark-tokens: map.merge(
   }
 
   kbd {
-    @each $prop, $value in $reboot-kbd-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($reboot-kbd-tokens);
     padding: var(--kbd-padding-y) var(--kbd-padding-x);
     font-size: var(--kbd-font-size);
     color: var(--kbd-color);

@@ -5,6 +5,7 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
@@ -30,9 +31,7 @@ $chip-input-tokens: map.merge(
 
 @layer forms {
   .chip-input {
-    @each $prop, $value in $chip-input-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($chip-input-tokens);
 
     // Flexbox wrapping layout
     display: flex;

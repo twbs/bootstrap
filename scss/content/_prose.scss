@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../config" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
@@ -20,9 +21,7 @@ $prose-tokens: map.merge(
 
 @layer content {
   .prose {
-    @each $prop, $value in $prose-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($prose-tokens);
     position: relative;
     display: flex;
     flex-direction: column;

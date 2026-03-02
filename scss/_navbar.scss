@@ -8,6 +8,7 @@
 @use "mixins/color-mode" as *;
 @use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
+@use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
 // mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
@@ -65,9 +66,7 @@ $navbar-dark-tokens: map.merge(
 
 @layer components {
   .navbar {
-    @each $prop, $value in $navbar-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($navbar-tokens);
 
     position: relative;
     display: flex;
@@ -306,9 +305,7 @@ $navbar-dark-tokens: map.merge(
 
   .navbar-dark,
   .navbar[data-bs-theme="dark"] {
-    @each $prop, $value in $navbar-dark-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($navbar-dark-tokens);
   }
 
   @if $enable-dark-mode {

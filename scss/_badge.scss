@@ -4,6 +4,7 @@
 @use "theme" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/gradients" as *;
+@use "mixins/tokens" as *;
 
 $badge-tokens: () !default;
 
@@ -42,9 +43,7 @@ $badge-variants: (
 
 @layer components {
   .badge {
-    @each $prop, $value in $badge-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($badge-tokens);
 
     display: inline-flex;
     align-items: center;

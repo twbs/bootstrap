@@ -1,21 +1,31 @@
+@use "sass:map";
 @use "../config" as *;
-@use "../variables" as *;
-@use "form-variables" as *;
+@use "../mixins/tokens" as *;
 
-// scss-docs-start form-text-variables
-$form-text-margin-top:  .25rem !default;
-$form-text-font-size:   $small-font-size !default;
-$form-text-font-style:  null !default;
-$form-text-font-weight: null !default;
-$form-text-color:       var(--fg-3) !default;
-// scss-docs-end form-text-variables
+$form-text-tokens: () !default;
+
+// scss-docs-start form-text-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$form-text-tokens: map.merge(
+  (
+    --form-text-margin-top: .25rem,
+    --form-text-font-size: var(--font-size-sm),
+    --form-text-font-style: null,
+    --form-text-font-weight: null,
+    --form-text-color: var(--fg-3),
+  ),
+  $form-text-tokens
+);
+// scss-docs-end form-text-tokens
 
 @layer forms {
   .form-text {
-    margin-top: $form-text-margin-top;
-    font-size: $form-text-font-size;
-    font-style: $form-text-font-style;
-    font-weight: $form-text-font-weight;
-    color: $form-text-color;
+    @include tokens($form-text-tokens);
+
+    margin-top: var(--form-text-margin-top);
+    font-size: var(--form-text-font-size);
+    font-style: var(--form-text-font-style);
+    font-weight: var(--form-text-font-weight);
+    color: var(--form-text-color);
   }
 }

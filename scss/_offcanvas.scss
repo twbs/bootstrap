@@ -5,6 +5,7 @@
 @use "mixins/transition" as *;
 @use "mixins/backdrop" as *;
 @use "layout/breakpoints" as *;
+@use "mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $offcanvas-tokens: () !default;
@@ -45,9 +46,7 @@ $offcanvas-backdrop-tokens: map.merge(
 // scss-docs-end offcanvas-backdrop-tokens
 
 %offcanvas-css-vars {
-  @each $prop, $value in $offcanvas-tokens {
-    #{$prop}: #{$value};
-  }
+  @include tokens($offcanvas-tokens);
 }
 
 @layer components {

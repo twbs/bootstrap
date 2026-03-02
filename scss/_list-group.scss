@@ -5,6 +5,7 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "layout/breakpoints" as *;
+@use "mixins/tokens" as *;
 
 $list-group-tokens: () !default;
 
@@ -36,9 +37,7 @@ $list-group-tokens: map.merge(
 
 @layer components {
   .list-group {
-    @each $prop, $value in $list-group-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($list-group-tokens);
 
     display: flex;
     flex-direction: column;

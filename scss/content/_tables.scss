@@ -6,6 +6,7 @@
 @use "../variables" as *;
 @use "../functions" as *;
 @use "../layout/breakpoints" as *;
+@use "../mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $table-tokens: () !default;
@@ -47,9 +48,7 @@ $table-striped-columns-order: even !default;
 
 @layer content {
   .table {
-    @each $prop, $value in $table-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($table-tokens);
 
     // Reset needed for nesting tables
     --table-color-type: initial;

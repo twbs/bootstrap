@@ -37,8 +37,4 @@ They can also be used in [stacks]([[docsref:/helpers/stacks]]):
 
 ## CSS
 
-### Sass variables
-
-Customize the vertical rule Sass variable to change its width.
-
-<ScssDocs name="vr-variables" file="scss/_variables.scss" />
+Vertical rules use a CSS variable with fallback for their default border width. Out of the box, `--vr-border-width` is unassigned, meaning it defaults to the value of `--border-width`.

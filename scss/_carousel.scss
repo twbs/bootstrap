@@ -5,6 +5,7 @@
 @use "mixins/transition" as *;
 @use "mixins/gradients" as *;
 @use "mixins/color-mode" as *;
+@use "mixins/tokens" as *;
 
 $carousel-tokens: () !default;
 
@@ -70,10 +71,7 @@ $carousel-dark-tokens: map.merge(
 @layer components {
   .carousel {
     position: relative;
-
-    @each $prop, $value in $carousel-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($carousel-tokens);
   }
 
   .carousel.pointer-event {
@@ -269,9 +267,7 @@ $carousel-dark-tokens: map.merge(
   // Dark mode carousel
 
   @mixin carousel-dark() {
-    @each $prop, $value in $carousel-dark-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($carousel-dark-tokens);
   }
 
   .carousel-dark {

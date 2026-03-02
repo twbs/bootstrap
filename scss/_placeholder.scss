@@ -2,6 +2,7 @@
 @use "colors" as *;
 @use "config" as *;
 @use "variables" as *;
+@use "mixins/tokens" as *;
 
 $placeholder-tokens: () !default;
 
@@ -18,9 +19,7 @@ $placeholder-tokens: map.merge(
 
 @layer components {
   .placeholder {
-    @each $prop, $value in $placeholder-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($placeholder-tokens);
 
     display: inline-block;
     min-height: 1em;

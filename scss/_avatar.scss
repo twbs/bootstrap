@@ -3,6 +3,7 @@
 @use "theme" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/transition" as *;
+@use "mixins/tokens" as *;
 
 $avatar-tokens: () !default;
 
@@ -51,9 +52,7 @@ $avatar-sizes: (
 
 @layer components {
   .avatar {
-    @each $prop, $value in $avatar-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($avatar-tokens);
 
     position: relative;
     display: inline-flex;

@@ -4,6 +4,7 @@
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/reset-text" as *;
+@use "mixins/tokens" as *;
 
 $popover-tokens: () !default;
 
@@ -39,9 +40,7 @@ $popover-tokens: map.merge(
 @layer components {
   .popover {
     // scss-docs-start popover-css-vars
-    @each $prop, $value in $popover-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($popover-tokens);
     // scss-docs-end popover-css-vars
 
     z-index: var(--popover-zindex);

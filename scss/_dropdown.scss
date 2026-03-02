@@ -5,6 +5,7 @@
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/gradients" as *;
+@use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
 $dropdown-tokens: () !default;
@@ -54,9 +55,7 @@ $dropdown-tokens: map.merge(
   }
 
   .dropdown-menu {
-    @each $prop, $value in $dropdown-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($dropdown-tokens);
 
     position: absolute;
     z-index: var(--dropdown-zindex);

@@ -6,6 +6,7 @@
 @use "../mixins/focus-ring" as *;
 @use "../mixins/transition" as *;
 @use "../mixins/gradients" as *;
+@use "../mixins/tokens" as *;
 @use "sass:map";
 @use "form-variables" as *;
 
@@ -67,9 +68,7 @@ $range-tokens: map.merge(
 
 @layer forms {
   .form-range {
-    @each $token, $value in $range-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($range-tokens);
 
     width: 100%;
     height: calc(var(--range-thumb-height) + (var(--focus-ring-width) * 2));

@@ -4,6 +4,7 @@
 @use "theme" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
+@use "mixins/tokens" as *;
 
 $chip-tokens: () !default;
 
@@ -35,9 +36,7 @@ $chip-tokens: map.merge(
 
 @layer components {
   .chip {
-    @each $prop, $value in $chip-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($chip-tokens);
 
     display: inline-flex;
     gap: var(--chip-gap);

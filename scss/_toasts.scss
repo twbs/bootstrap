@@ -2,6 +2,7 @@
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/tokens" as *;
 
 $toast-tokens: () !default;
 
@@ -33,9 +34,7 @@ $toast-tokens: map.merge(
 
 @layer components {
   .toast {
-    @each $prop, $value in $toast-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($toast-tokens);
 
     width: var(--toast-max-width);
     max-width: 100%;

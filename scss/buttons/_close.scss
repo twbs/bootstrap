@@ -5,6 +5,7 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/tokens" as *;
 
 $btn-close-tokens: () !default;
 
@@ -29,9 +30,7 @@ $btn-close-tokens: map.merge(
 
 @layer components {
   .btn-close {
-    @each $prop, $value in $btn-close-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($btn-close-tokens);
 
     box-sizing: content-box;
     width: var(--btn-close-size);

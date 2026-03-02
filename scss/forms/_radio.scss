@@ -6,6 +6,7 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
@@ -40,9 +41,7 @@ $radio-tokens: map.merge(
   }
 
   .radio {
-    @each $token, $value in $radio-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($radio-tokens);
 
     position: relative;
     flex-shrink: 0;

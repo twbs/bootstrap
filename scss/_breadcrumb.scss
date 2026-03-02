@@ -5,6 +5,7 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/transition" as *;
+@use "mixins/tokens" as *;
 
 $breadcrumb-tokens: () !default;
 
@@ -31,9 +32,7 @@ $breadcrumb-tokens: map.merge(
 
 @layer components {
   .breadcrumb {
-    @each $prop, $value in $breadcrumb-tokens {
-      #{$prop}: #{$value};
-    }
+    @include tokens($breadcrumb-tokens);
 
     display: flex;
     flex-wrap: wrap;
