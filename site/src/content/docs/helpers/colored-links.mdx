@@ -1,0 +1,33 @@
+---
+title: Colored links
+description: Colored links with hover states
+toc: true
+---
+
+import { getData } from '@libs/data'
+
+## Link colors
+
+You can use the `.link-*` classes to colorize links. Unlike the [`.text-*` classes]([[docsref:/utilities/colors]]), these classes have a `:hover` and `:focus` state. Some of the link styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
+
+<Callout>
+**Heads up!** `.link-body-emphasis` is currently the only colored link that adapts to color modes. It’s treated as a special case until v6 arrives and we can more thoroughly rebuild our theme colors for color modes. Until then, it’s a unique, high-contrast link color with custom `:hover` and `:focus` styles. However, it still responds to the new link utilities.
+</Callout>
+
+<Example code={[
+  ...getData('theme-colors').map((themeColor) => `<p><a href="#" class="link-${themeColor.name}">${themeColor.title} link</a></p>`),
+  `<p><a href="#" class="link-body-emphasis">Emphasis link</a></p>`
+]} />
+
+<Callout name="warning-color-assistive-technologies" />
+
+## Link utilities
+
+<AddedIn version="5.3.0"/>
+
+Colored links can also be modified by our [link utilities]([[docsref:/utilities/link/]]).
+
+<Example code={[
+  ...getData('theme-colors').map((themeColor) => `<p><a href="#" class="link-${themeColor.name} link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">${themeColor.title} link</a></p>`),
+  `<p><a href="#" class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Emphasis link</a></p>`
+]} />

@@ -2,7 +2,7 @@
 
 /*!
  * Script to update version number references in the project.
- * Copyright 2017-2024 The Bootstrap Authors
+ * Copyright 2017-2025 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -16,7 +16,7 @@ const DRY_RUN = process.argv.includes('--dry') || process.argv.includes('--dry-r
 // These are the files we only care about replacing the version
 const FILES = [
   'README.md',
-  'hugo.yml',
+  'config.yml',
   'js/src/base-component.js',
   'package.js',
   'scss/mixins/_banner.scss',

@@ -1,0 +1,37 @@
+---
+import Ads from '@components/Ads.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+
+interface Props {
+  description: string
+  title: string
+}
+
+const { description, title } = Astro.props
+---
+
+<BaseLayout {...Astro.props} layout="single">
+  <Fragment slot="main">
+    <header class="py-5 border-bottom">
+      <div class="container-xxl bd-gutter pt-md-1 pb-md-4">
+        <div class="row">
+          <div class="col-xl-8">
+            <h1 class="bd-title mt-0">{title}</h1>
+            <p class="bd-subtitle">{description}</p>
+            <slot name="header-content" />
+          </div>
+          <div class="col-xl-4 d-lg-flex justify-content-xl-end">
+            <Ads />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="bd-content order-1 py-5" id="content">
+      <div class="container-xxl bd-gutter">
+        <slot />
+        <slot name="main-content" />
+      </div>
+    </main>
+  </Fragment>
+</BaseLayout>

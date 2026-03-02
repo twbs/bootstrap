@@ -1,8 +1,8 @@
 - breakpoint: xs
-  abbr: ""
+  abbr: ''
   name: X-Small
   min-width: 0px
-  container: ""
+  container: ''
 
 - breakpoint: sm
   abbr: -sm

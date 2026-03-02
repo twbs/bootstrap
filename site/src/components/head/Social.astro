@@ -1,0 +1,31 @@
+---
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import { getStaticImageSize } from '@libs/image'
+import type { Layout } from '@libs/layout'
+
+interface Props {
+  description: string
+  layout: Layout
+  thumbnail: string
+  title: string
+}
+
+const { description, layout, thumbnail, title } = Astro.props
+
+const socialImageUrl = new URL(getVersionedDocsPath(`assets/${thumbnail}`), Astro.site)
+const socialImageSize = await getStaticImageSize(`/docs/[version]/assets/${thumbnail}`)
+---
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content=`@${getConfig().x}` />
+<meta name="twitter:creator" content=`@${getConfig().x}` />
+
+<meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={layout === 'docs' ? 'article' : 'website'} />
+<meta property="og:image" content={socialImageUrl} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content={String(socialImageSize.width)} />
+<meta property="og:image:height" content={String(socialImageSize.height)} />

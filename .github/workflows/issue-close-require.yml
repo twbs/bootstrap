@@ -17,7 +17,7 @@ jobs:
     if: github.repository == 'twbs/bootstrap'
     steps:
       - name: awaiting reply
-        uses: actions-cool/issues-helper@v3
+        uses: actions-cool/issues-helper@50068f49b7b2b3857270ead65e2d02e4459b022c # v3.6.2
         with:
           actions: "close-issues"
           labels: "awaiting-reply"

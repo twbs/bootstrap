@@ -1,0 +1,64 @@
+---
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import type { Layout } from '@libs/layout'
+import Stylesheet from '@components/head/Stylesheet.astro'
+import Favicons from '@components/head/Favicons.astro'
+import Social from '@components/head/Social.astro'
+import Analytics from '@components/head/Analytics.astro'
+
+interface Props {
+  description: string
+  direction?: 'rtl'
+  layout: Layout
+  robots: string | undefined
+  thumbnail: string
+  title: string
+}
+
+const { description, direction, layout, robots, thumbnail, title } = Astro.props
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+
+const isHome = Astro.url.pathname === '/'
+const pageTitle = isHome
+  ? `${getConfig().title} · ${getConfig().subtitle}`
+  : `${title} · ${getConfig().title} v${getConfig().docs_version}`
+
+// Dynamic imports to avoid build-time processing
+const Scss = import.meta.env.PROD ? null : await import('@components/head/Scss.astro')
+const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.astro') : null
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="description" content={description} />
+
+<meta name="author" content={getConfig().authors} />
+<meta name="generator" content={Astro.generator} />
+<meta name="docsearch:language" content="en" />
+<meta name="docsearch:version" content={getConfig().docs_version} />
+
+<link rel="canonical" href={canonicalUrl} />
+
+<link rel="preconnect" href=`https://${getConfig().algolia.app_id}-dsn.algolia.net` crossorigin />
+
+<title>{pageTitle}</title>
+
+{robots && <meta name="robots" content={robots} />}
+
+<script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
+
+{import.meta.env.PROD && ScssProd && (
+  <Stylesheet direction={direction} layout={layout} />
+  <ScssProd.default />
+)}
+
+{!import.meta.env.PROD && Scss && (
+  <Scss.default />
+)}
+
+<Favicons />
+<Social description={description} layout={layout} thumbnail={thumbnail} title={title} />
+<Analytics />

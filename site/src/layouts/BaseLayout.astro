@@ -1,0 +1,86 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getConfig } from '@libs/config'
+import type { Layout, LayoutOverridesHTMLAttributes } from '@libs/layout'
+import Head from '@components/head/Head.astro'
+import Header from '@components/header/Header.astro'
+import Scripts from '@components/Scripts.astro'
+import Footer from '@components/footer/Footer.astro'
+import { stripMarkdown } from '@libs/utils'
+
+// The following props can be directly passed to the base layout component from any page or layout extending it,
+// e.g. <BaseLayout layout="docs" robots="noindex" />.
+type Props = {
+  // A specific layout to use for the current page used to determine if some components should be rendered or not.
+  // Available layouts are defined in `src/libs/layout.ts`.
+  layout?: Layout
+  // An object containing HTML attributes that can be overridden for some HTML elements used in the base layout keyed by
+  // HTML element names.
+  overrides?: {
+    body?: LayoutOverridesHTMLAttributes<'body'>
+    // Note that main can also be overridden by the Astro slot named "main" and that the slot will take precedence over
+    // any override.
+    main?: LayoutOverridesHTMLAttributes<'main'>
+  }
+  // A string containing the robots meta tag content. If not set, the tag will not be rendered.
+  robots?: string
+  // An override for the page title. If not defined, the title will either be the content of the `title` frontmatter
+  // property when rendering a markdown page or default back to the one defined in the `config.yml` file.
+  title?: string
+} & MarkdownProps
+
+// The following props are automatically set by Astro (if defined) based on the markdown frontmatter when rendering a
+// markdown page. They can be accessed through the `Astro.props.frontmatter` object but note that they won't be set when
+// not rendering a markdown page.
+type MarkdownProps = { frontmatter?: Partial<CollectionEntry<'docs'>['data']> }
+
+const { frontmatter, layout, overrides, robots } = Astro.props
+
+const title = Astro.props.title ?? frontmatter?.title ?? getConfig().title
+const description = frontmatter?.description ? stripMarkdown(frontmatter.description) : getConfig().description
+const thumbnail = frontmatter?.thumbnail ? `img/${frontmatter.thumbnail}` : 'brand/bootstrap-social.png'
+
+const bodyProps = overrides?.body ?? {}
+const mainProps = overrides?.main ?? {}
+---
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <Head
+      description={description}
+      direction={frontmatter?.direction}
+      layout={layout}
+      robots={robots}
+      thumbnail={thumbnail}
+      title={title}
+    />
+  </head>
+  <body {...bodyProps}>
+    <Header layout={layout} title={title} addedIn={frontmatter?.added} />
+
+    {
+      Astro.slots.has('main') ? (
+        <slot name="main" />
+      ) : (
+        <main {...mainProps}>
+          <slot />
+        </main>
+      )
+    }
+
+    <Footer />
+
+    <Scripts layout={layout} />
+
+    {frontmatter?.extra_js && frontmatter.extra_js.map((js) => <script is:inline async={js.async} src={js.src} />)}
+
+    {
+      layout === 'docs' && (
+        <div class="position-fixed" aria-hidden="true">
+          <input type="text" tabindex="-1" />
+        </div>
+      )
+    }
+  </body>
+</html>
