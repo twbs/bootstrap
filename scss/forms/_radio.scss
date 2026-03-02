@@ -2,6 +2,7 @@
 @use "../colors" as *;
 @use "../variables" as *;
 @use "../functions" as *;
+@use "sass:map";
 @use "../mixins/border-radius" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
@@ -9,8 +10,10 @@
 @use "form-variables" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
+$radio-tokens: () !default;
+
 // scss-docs-start radio-tokens
-$radio-tokens: (
+$radio-tokens-internal: (
   --radio-bg: transparent,
   --radio-border-color: var(--border-color),
   --radio-checked-bg: var(--primary-base),
@@ -19,6 +22,9 @@ $radio-tokens: (
   --radio-disabled-opacity: .65,
 ) !default;
 // scss-docs-end radio-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$radio-tokens: map.merge($radio-tokens-internal, $radio-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {

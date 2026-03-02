@@ -1,13 +1,19 @@
+@use "sass:map";
 @use "colors" as *;
 @use "config" as *;
 @use "variables" as *;
 
+$placeholder-tokens: () !default;
+
 // scss-docs-start placeholder-tokens
-$placeholder-tokens: (
+$placeholder-tokens-internal: (
   --placeholder-opacity-max: .5,
   --placeholder-opacity-min: .2,
 ) !default;
 // scss-docs-end placeholder-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$placeholder-tokens: map.merge($placeholder-tokens-internal, $placeholder-tokens);
 
 @layer components {
   .placeholder {

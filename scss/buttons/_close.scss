@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../config" as *;
 @use "../colors" as *;
 @use "../variables" as *;
@@ -5,8 +6,10 @@
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 
+$btn-close-tokens: () !default;
+
 // scss-docs-start btn-close-tokens
-$btn-close-tokens: (
+$btn-close-tokens-internal: (
   --btn-close-size: 1.25rem,
   --btn-close-color: var(--fg-body),
   --btn-close-opacity: .5,
@@ -15,6 +18,9 @@ $btn-close-tokens: (
   --btn-close-disabled-opacity: .25,
 ) !default;
 // scss-docs-end btn-close-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$btn-close-tokens: map.merge($btn-close-tokens-internal, $btn-close-tokens);
 
 // iOS requires the button element instead of an anchor tag.
 // If you want the anchor version, it requires `href="#"`.

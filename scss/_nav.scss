@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
@@ -5,8 +6,10 @@
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 
+$nav-tokens: () !default;
+
 // scss-docs-start nav-tokens
-$nav-tokens: (
+$nav-tokens-internal: (
   --nav-gap: .125rem,
   --nav-link-gap: .5rem,
   --nav-link-align: center,
@@ -25,8 +28,13 @@ $nav-tokens: (
 ) !default;
 // scss-docs-end nav-tokens
 
+// stylelint-disable-next-line scss/dollar-variable-default
+$nav-tokens: map.merge($nav-tokens-internal, $nav-tokens);
+
+$nav-tabs-tokens: () !default;
+
 // scss-docs-start nav-tabs-tokens
-$nav-tabs-tokens: (
+$nav-tabs-tokens-internal: (
   --nav-tabs-border-width: var(--border-width),
   --nav-tabs-border-color: var(--border-color),
   --nav-tabs-border-radius: var(--border-radius),
@@ -37,21 +45,34 @@ $nav-tabs-tokens: (
 ) !default;
 // scss-docs-end nav-tabs-tokens
 
+// stylelint-disable-next-line scss/dollar-variable-default
+$nav-tabs-tokens: map.merge($nav-tabs-tokens-internal, $nav-tabs-tokens);
+
+$nav-pills-tokens: () !default;
+
 // scss-docs-start nav-pills-tokens
-$nav-pills-tokens: (
+$nav-pills-tokens-internal: (
   --nav-pills-link-active-color: var(--component-active-color),
   --nav-pills-link-active-bg: var(--component-active-bg),
 ) !default;
 // scss-docs-end nav-pills-tokens
 
+// stylelint-disable-next-line scss/dollar-variable-default
+$nav-pills-tokens: map.merge($nav-pills-tokens-internal, $nav-pills-tokens);
+
+$nav-underline-tokens: () !default;
+
 // scss-docs-start nav-underline-tokens
-$nav-underline-tokens: (
+$nav-underline-tokens-internal: (
   --nav-gap: 1rem,
   --nav-link-active-bg: transparent,
   --nav-underline-border-width: .125rem,
   --nav-underline-link-active-color: var(--fg-color),
 ) !default;
 // scss-docs-end nav-underline-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$nav-underline-tokens: map.merge($nav-underline-tokens-internal, $nav-underline-tokens);
 
 // Base class
 //

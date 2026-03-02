@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
 @use "functions" as *;
@@ -5,8 +6,10 @@
 @use "mixins/transition" as *;
 @use "mixins/focus-ring" as *;
 
+$accordion-tokens: () !default;
+
 // scss-docs-start accordion-tokens
-$accordion-tokens: (
+$accordion-tokens-internal: (
   --accordion-padding-x: 1.25rem,
   --accordion-padding-y: 1rem,
   --accordion-color: var(--fg-body),
@@ -26,6 +29,9 @@ $accordion-tokens: (
   --accordion-active-bg: var(--bg-2),
 ) !default;
 // scss-docs-end accordion-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$accordion-tokens: map.merge($accordion-tokens-internal, $accordion-tokens);
 
 @layer components {
   .accordion {

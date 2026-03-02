@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/lists" as *;
@@ -9,8 +10,10 @@
 // mdo-do: Update pagination to support variant themes
 
 // stylelint-disable custom-property-no-missing-var-function
+$pagination-tokens: () !default;
+
 // scss-docs-start pagination-tokens
-$pagination-tokens: (
+$pagination-tokens-internal: (
   --pagination-padding-x: .75rem,
   --pagination-padding-y: .375rem,
   --pagination-font-size: var(--font-size-base),
@@ -32,6 +35,9 @@ $pagination-tokens: (
   --pagination-disabled-border-color: var(--border-color),
 ) !default;
 // scss-docs-end pagination-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$pagination-tokens: map.merge($pagination-tokens-internal, $pagination-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start pagination-mixin

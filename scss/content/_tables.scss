@@ -8,8 +8,10 @@
 @use "../layout/breakpoints" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
+$table-tokens: () !default;
+
 // scss-docs-start table-tokens
-$table-tokens: (
+$table-tokens-internal: (
   --table-cell-padding-y: .5rem,
   --table-cell-padding-x: .5rem,
   --table-cell-vertical-align: top,
@@ -30,6 +32,9 @@ $table-tokens: (
   --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
 ) !default;
 // scss-docs-end table-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$table-tokens: map.merge($table-tokens-internal, $table-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 $table-striped-order: odd !default;

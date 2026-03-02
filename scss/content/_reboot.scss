@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../colors" as *;
 @use "../config" as *;
 @use "../variables" as *;
@@ -5,7 +6,10 @@
 
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
-$reboot-kbd-tokens: (
+$reboot-kbd-tokens: () !default;
+
+// scss-docs-start reboot-kbd-tokens
+$reboot-kbd-tokens-internal: (
   --kbd-padding-y: .125rem,
   --kbd-padding-x: .25rem,
   --kbd-font-size: var(--font-size-xs),
@@ -13,12 +17,23 @@ $reboot-kbd-tokens: (
   --kbd-bg: var(--fg-2),
   --kbd-border-radius: var(--border-radius-sm),
 ) !default;
+// scss-docs-end reboot-kbd-tokens
 
-$reboot-mark-tokens: (
+// stylelint-disable-next-line scss/dollar-variable-default
+$reboot-kbd-tokens: map.merge($reboot-kbd-tokens-internal, $reboot-kbd-tokens);
+
+$reboot-mark-tokens: () !default;
+
+// scss-docs-start reboot-mark-tokens
+$reboot-mark-tokens-internal: (
   --mark-padding: .1875em,
   --mark-color: var(--fg-body),
   --mark-bg: light-dark(var(--yellow-100), var(--yellow-900)),
 ) !default;
+// scss-docs-end reboot-mark-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$reboot-mark-tokens: map.merge($reboot-mark-tokens-internal, $reboot-mark-tokens);
 
 @layer reboot {
   // Reboot

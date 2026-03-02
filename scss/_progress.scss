@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "config" as *;
 @use "colors" as *;
 @use "variables" as *;
@@ -6,8 +7,10 @@
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 
+$progress-tokens: () !default;
+
 // scss-docs-start progress-tokens
-$progress-tokens: (
+$progress-tokens-internal: (
   --progress-height: 1rem,
   --progress-font-size: var(--font-size-sm),
   --progress-bg: var(--bg-2),
@@ -19,6 +22,9 @@ $progress-tokens: (
   --progress-bar-animation: progress-bar-stripes 1s linear infinite,
 ) !default;
 // scss-docs-end progress-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$progress-tokens: map.merge($progress-tokens-internal, $progress-tokens);
 
 
 // Disable animation if transitions are disabled

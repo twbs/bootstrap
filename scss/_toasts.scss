@@ -1,10 +1,13 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 
+$toast-tokens: () !default;
+
 // scss-docs-start toast-tokens
 // stylelint-disable custom-property-no-missing-var-function
-$toast-tokens: (
+$toast-tokens-internal: (
   --toast-zindex: #{$zindex-toast},
   --toast-padding-x: .75rem,
   --toast-padding-y: .5rem,
@@ -23,6 +26,9 @@ $toast-tokens: (
 ) !default;
 // stylelint-enable custom-property-no-missing-var-function
 // scss-docs-end toast-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$toast-tokens: map.merge($toast-tokens-internal, $toast-tokens);
 
 @layer components {
   .toast {

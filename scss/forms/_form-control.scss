@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "sass:math";
 @use "../config" as *;
 @use "../variables" as *;
@@ -10,8 +11,10 @@
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
+$form-control-tokens: () !default;
+
 // scss-docs-start form-control-tokens
-$form-control-tokens: (
+$form-control-tokens-internal: (
   --control-min-height: var(--btn-input-min-height),
   --control-padding-y: var(--btn-input-padding-y),
   --control-padding-x: var(--btn-input-padding-x),
@@ -38,6 +41,9 @@ $form-control-tokens: (
   --control-select-bg-dark: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
 ) !default;
 // scss-docs-end form-control-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$form-control-tokens: map.merge($form-control-tokens-internal, $form-control-tokens);
 
 // scss-docs-start form-control-sizes
 $form-control-sizes: (

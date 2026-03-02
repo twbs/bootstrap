@@ -15,8 +15,10 @@
 @use "../mixins/transition" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
+$button-tokens: () !default;
+
 // scss-docs-start btn-tokens
-$button-tokens: (
+$button-tokens-internal: (
   --btn-min-height: var(--btn-input-min-height),
   --btn-padding-x: var(--btn-input-padding-x),
   --btn-padding-y: var(--btn-input-padding-y),
@@ -36,8 +38,13 @@ $button-tokens: (
 ) !default;
 // scss-docs-end btn-tokens
 
+// stylelint-disable-next-line scss/dollar-variable-default
+$button-tokens: map.merge($button-tokens-internal, $button-tokens);
+
+$button-link-tokens: () !default;
+
 // scss-docs-start button-link-tokens
-$button-link-tokens: (
+$button-link-tokens-internal: (
   --btn-font-weight: var(--font-weight-normal),
   --btn-color: var(--link-color),
   --btn-bg: transparent,
@@ -52,6 +59,9 @@ $button-link-tokens: (
   --btn-disabled-border-color: transparent,
 ) !default;
 // scss-docs-end button-link-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$button-link-tokens: map.merge($button-link-tokens-internal, $button-link-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start button-sizes

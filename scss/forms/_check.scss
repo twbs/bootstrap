@@ -2,6 +2,7 @@
 @use "../colors" as *;
 @use "../variables" as *;
 @use "../functions" as *;
+@use "sass:map";
 @use "../mixins/border-radius" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
@@ -9,8 +10,10 @@
 @use "form-variables" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
+$check-tokens: () !default;
+
 // scss-docs-start check-tokens
-$check-tokens: (
+$check-tokens-internal: (
   --check-bg: transparent,
   --check-border-color: var(--border-color),
   --check-checked-bg: var(--primary-base),
@@ -21,6 +24,9 @@ $check-tokens: (
   --check-disabled-opacity: .65,
 ) !default;
 // scss-docs-end check-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$check-tokens: map.merge($check-tokens-internal, $check-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {

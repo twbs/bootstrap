@@ -13,8 +13,10 @@
 // mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
 
 // stylelint-disable custom-property-no-missing-var-function
+$navbar-tokens: () !default;
+
 // scss-docs-start navbar-tokens
-$navbar-tokens: (
+$navbar-tokens-internal: (
   --navbar-padding-x: 0,
   --navbar-padding-y: #{$spacer * .5},
   --navbar-color: var(--fg-2),
@@ -37,8 +39,13 @@ $navbar-tokens: (
 ) !default;
 // scss-docs-end navbar-tokens
 
+// stylelint-disable-next-line scss/dollar-variable-default
+$navbar-tokens: map.merge($navbar-tokens-internal, $navbar-tokens);
+
+$navbar-dark-tokens: () !default;
+
 // scss-docs-start navbar-dark-tokens
-$navbar-dark-tokens: (
+$navbar-dark-tokens-internal: (
   --navbar-color: color-mix(in oklch, var(--white) .55, transparent),
   --navbar-hover-color: color-mix(in oklch, var(--white) .75, transparent),
   --navbar-disabled-color: color-mix(in oklch, var(--white) .25, transparent),
@@ -49,6 +56,9 @@ $navbar-dark-tokens: (
   --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
 ) !default;
 // scss-docs-end navbar-dark-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$navbar-dark-tokens: map.merge($navbar-dark-tokens-internal, $navbar-dark-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer components {

@@ -7,8 +7,10 @@
 @use "layout/breakpoints" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
+$offcanvas-tokens: () !default;
+
 // scss-docs-start offcanvas-tokens
-$offcanvas-tokens: (
+$offcanvas-tokens-internal: (
   --offcanvas-zindex: #{$zindex-offcanvas},
   --offcanvas-width: 400px,
   --offcanvas-height: 30vh,
@@ -23,14 +25,22 @@ $offcanvas-tokens: (
   --offcanvas-title-line-height: 1.5,
 ) !default;
 // scss-docs-end offcanvas-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$offcanvas-tokens: map.merge($offcanvas-tokens-internal, $offcanvas-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
+$offcanvas-backdrop-tokens: () !default;
+
 // scss-docs-start offcanvas-backdrop-tokens
-$offcanvas-backdrop-tokens: (
+$offcanvas-backdrop-tokens-internal: (
   bg: rgba(0, 0, 0, .5),
   opacity: .5,
 ) !default;
 // scss-docs-end offcanvas-backdrop-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$offcanvas-backdrop-tokens: map.merge($offcanvas-backdrop-tokens-internal, $offcanvas-backdrop-tokens);
 
 %offcanvas-css-vars {
   @each $prop, $value in $offcanvas-tokens {

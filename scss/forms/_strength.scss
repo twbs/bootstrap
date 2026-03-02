@@ -1,4 +1,5 @@
 @use "sass:list";
+@use "sass:map";
 @use "../config" as *;
 @use "../variables" as *;
 @use "../mixins/border-radius" as *;
@@ -6,8 +7,10 @@
 @use "form-variables" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
+$strength-tokens: () !default;
+
 // scss-docs-start strength-tokens
-$strength-tokens: (
+$strength-tokens-internal: (
   --strength-height: .375rem,
   --strength-gap: .25rem,
   --strength-margin-top: .25rem,
@@ -20,6 +23,9 @@ $strength-tokens: (
   --strength-strong-color: var(--success-bg),
 ) !default;
 // scss-docs-end strength-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$strength-tokens: map.merge($strength-tokens-internal, $strength-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start strength-levels

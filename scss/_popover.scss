@@ -1,11 +1,14 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/reset-text" as *;
 
+$popover-tokens: () !default;
+
 // scss-docs-start popover-tokens
-$popover-tokens: (
+$popover-tokens-internal: (
   --popover-zindex: #{$zindex-popover},
   --popover-max-width: 280px,
   --popover-font-size: var(--font-size-sm),
@@ -28,6 +31,9 @@ $popover-tokens: (
   --popover-arrow-border: var(--popover-border-color),
 ) !default;
 // scss-docs-end popover-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$popover-tokens: map.merge($popover-tokens-internal, $popover-tokens);
 
 @layer components {
   .popover {

@@ -2,6 +2,7 @@
 @use "../colors" as *;
 @use "../variables" as *;
 @use "../functions" as *;
+@use "sass:map";
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/color-mode" as *;
@@ -10,8 +11,10 @@
 @use "form-variables" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
+$switch-tokens: () !default;
+
 // scss-docs-start switch-tokens
-$switch-tokens: (
+$switch-tokens-internal: (
   --switch-height: 1.25rem,
   --switch-width: calc(var(--switch-height) * 1.5),
   --switch-padding: .0625rem,
@@ -26,6 +29,9 @@ $switch-tokens: (
   --switch-disabled-indicator-bg: var(--fg-3),
 ) !default;
 // scss-docs-end switch-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$switch-tokens: map.merge($switch-tokens-internal, $switch-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {

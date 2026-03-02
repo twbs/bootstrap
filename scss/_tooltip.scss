@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
@@ -5,8 +6,10 @@
 @use "mixins/reset-text" as *;
 
 
+$tooltip-tokens: () !default;
+
 // scss-docs-start tooltip-tokens
-$tooltip-tokens: (
+$tooltip-tokens-internal: (
   --tooltip-zindex: #{$zindex-tooltip},
   --tooltip-max-width: 200px,
   --tooltip-padding-x: #{$spacer * .75},
@@ -20,6 +23,9 @@ $tooltip-tokens: (
   --tooltip-arrow-height: .4rem,
 ) !default;
 // scss-docs-end tooltip-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$tooltip-tokens: map.merge($tooltip-tokens-internal, $tooltip-tokens);
 
 // Form tooltips must come after regular tooltips
 // scss-docs-start tooltip-feedback-variables

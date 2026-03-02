@@ -5,9 +5,11 @@
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
 
+$chip-tokens: () !default;
+
 // stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start chip-tokens
-$chip-tokens: (
+$chip-tokens-internal: (
   --chip-height: 1.75rem,
   --chip-padding-x: .625rem,
   --chip-gap: .3125rem,
@@ -26,6 +28,9 @@ $chip-tokens: (
 ) !default;
 // scss-docs-end chip-tokens
 // stylelint-enable custom-property-no-missing-var-function
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$chip-tokens: map.merge($chip-tokens-internal, $chip-tokens);
 
 @layer components {
   .chip {

@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config'
 import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
 import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
-import { transformerNotationDiff } from '@shikijs/transformers'
+import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
 
 import { bootstrap } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
@@ -35,6 +35,7 @@ export default defineConfig({
       },
       transformers: [
         transformerNotationDiff(),
+        transformerNotationHighlight(),
         {
           name: 'add-language-attribute',
           pre(node) {

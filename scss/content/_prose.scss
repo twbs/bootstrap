@@ -1,14 +1,20 @@
+@use "sass:map";
 @use "../config" as *;
 @use "../mixins/transition" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
+$prose-tokens: () !default;
+
 // scss-docs-start prose-tokens
-$prose-tokens: (
+$prose-tokens-internal: (
   --content-font-size: var(--font-size-sm),
   --content-gap: 20px,
   --heading-color: light-dark(var(--gray-900), var(--white)),
 ) !default;
 // scss-docs-end prose-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$prose-tokens: map.merge($prose-tokens-internal, $prose-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer content {

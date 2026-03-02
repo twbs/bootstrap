@@ -11,8 +11,10 @@
 // Leverages native [open] attribute and ::backdrop pseudo-element
 
 // stylelint-disable custom-property-no-missing-var-function
+$dialog-tokens: () !default;
+
 // scss-docs-start dialog-tokens
-$dialog-tokens: (
+$dialog-tokens-internal: (
   --dialog-padding: 1rem,
   --dialog-width: 500px,
   --dialog-margin: 1.75rem,
@@ -32,6 +34,9 @@ $dialog-tokens: (
   --dialog-footer-gap: .5rem,
 ) !default;
 // scss-docs-end dialog-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$dialog-tokens: map.merge($dialog-tokens-internal, $dialog-tokens);
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start dialog-sizes

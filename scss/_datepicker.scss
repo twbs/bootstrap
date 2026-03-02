@@ -1,13 +1,16 @@
 // stylelint-disable selector-max-attribute, property-disallowed-list, selector-no-qualifying-type -- VCP uses extensive data attributes and requires direct border-radius properties for range selection
 
+@use "sass:map";
 @use "config" as *;
 @use "colors" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
 
+$datepicker-tokens: () !default;
+
 // scss-docs-start datepicker-tokens
-$datepicker-tokens: (
+$datepicker-tokens-internal: (
   --datepicker-padding: 1rem,
   --datepicker-bg: var(--bg-body),
   --datepicker-color: var(--fg-body),
@@ -28,6 +31,9 @@ $datepicker-tokens: (
   --datepicker-day-disabled-color: var(--fg-4),
 ) !default;
 // scss-docs-end datepicker-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$datepicker-tokens: map.merge($datepicker-tokens-internal, $datepicker-tokens);
 
 @layer components {
   [data-vc="calendar"] {

@@ -1,11 +1,14 @@
+@use "sass:map";
 @use "../config" as *;
 @use "../variables" as *;
 @use "../mixins/image" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 
+$thumbnail-tokens: () !default;
+
 // scss-docs-start thumbnail-tokens
-$thumbnail-tokens: (
+$thumbnail-tokens-internal: (
   --thumbnail-padding: .25rem,
   --thumbnail-bg: var(--bg-body),
   --thumbnail-border-width: var(--border-width),
@@ -15,13 +18,21 @@ $thumbnail-tokens: (
 ) !default;
 // scss-docs-end thumbnail-tokens
 
+// stylelint-disable-next-line scss/dollar-variable-default
+$thumbnail-tokens: map.merge($thumbnail-tokens-internal, $thumbnail-tokens);
+
+$figure-tokens: () !default;
+
 // scss-docs-start figure-tokens
-$figure-tokens: (
+$figure-tokens-internal: (
   --figure-gap: calc(var(--spacer) * .5),
   --figure-caption-font-size: var(--font-size-sm),
   --figure-caption-color: var(--fg-3),
 ) !default;
 // scss-docs-end figure-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$figure-tokens: map.merge($figure-tokens-internal, $figure-tokens);
 
 @layer content {
   // Responsive images (ensure images don't scale beyond their parents)

@@ -6,10 +6,13 @@
 @use "../mixins/focus-ring" as *;
 @use "../mixins/transition" as *;
 @use "../mixins/gradients" as *;
+@use "sass:map";
 @use "form-variables" as *;
 
+$range-tokens: () !default;
+
 // scss-docs-start range-tokens
-$range-tokens: (
+$range-tokens-internal: (
   --range-track-width: 100%,
   --range-track-height: .5rem,
   --range-track-cursor: pointer,
@@ -29,6 +32,9 @@ $range-tokens: (
   --range-thumb-transition: var(--range-thumb-transition-property) var(--range-thumb-transition-timing),
 ) !default;
 // scss-docs-end range-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$range-tokens: map.merge($range-tokens-internal, $range-tokens);
 
 // scss-docs-start range-mixins
 @mixin range-thumb() {

@@ -7,8 +7,10 @@
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 
+$stepper-tokens: () !default;
+
 // scss-docs-start stepper-tokens
-$stepper-tokens: (
+$stepper-tokens-internal: (
   --stepper-size: 2rem,
   --stepper-gap: 1rem,
   --stepper-bg: var(--bg-2),
@@ -17,6 +19,9 @@ $stepper-tokens: (
   --stepper-active-bg: var(--primary-bg),
 ) !default;
 // scss-docs-end stepper-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$stepper-tokens: map.merge($stepper-tokens-internal, $stepper-tokens);
 
 // scss-docs-start stepper-horizontal-mixin
 @mixin stepper-horizontal() {

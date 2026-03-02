@@ -1,11 +1,14 @@
+@use "sass:map";
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "layout/breakpoints" as *;
 
+$card-tokens: () !default;
+
 // scss-docs-start card-tokens
-$card-tokens: (
+$card-tokens-internal: (
   --card-spacer-y: #{$spacer},
   --card-spacer-x: #{$spacer},
   --card-subtitle-color: inherit,
@@ -26,6 +29,9 @@ $card-tokens: (
   --card-body-gap: #{$spacer * .5},
 ) !default;
 // scss-docs-end card-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$card-tokens: map.merge($card-tokens-internal, $card-tokens);
 
 @layer components {
   .card {

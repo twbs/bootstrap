@@ -6,8 +6,10 @@
 @use "mixins/border-radius" as *;
 @use "layout/breakpoints" as *;
 
+$list-group-tokens: () !default;
+
 // scss-docs-start list-group-tokens
-$list-group-tokens: (
+$list-group-tokens-internal: (
   --list-group-color: var(--fg-body),
   --list-group-bg: var(--bg-body),
   --list-group-border-color: var(--border-color),
@@ -27,6 +29,9 @@ $list-group-tokens: (
   --list-group-active-border-color: var(--primary-bg),
 ) !default;
 // scss-docs-end list-group-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$list-group-tokens: map.merge($list-group-tokens-internal, $list-group-tokens);
 
 @layer components {
   .list-group {

@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "sass:string";
 @use "config" as *;
 @use "variables" as *;
@@ -5,8 +6,10 @@
 @use "mixins/border-radius" as *;
 @use "mixins/transition" as *;
 
+$breadcrumb-tokens: () !default;
+
 // scss-docs-start breadcrumb-tokens
-$breadcrumb-tokens: (
+$breadcrumb-tokens-internal: (
   --breadcrumb-margin-bottom: 1rem,
   --breadcrumb-font-size: inherit,
   --breadcrumb-bg: transparent,
@@ -21,6 +24,9 @@ $breadcrumb-tokens: (
   --breadcrumb-link-border-radius: var(--border-radius-lg),
 ) !default;
 // scss-docs-end breadcrumb-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$breadcrumb-tokens: map.merge($breadcrumb-tokens-internal, $breadcrumb-tokens);
 
 @layer components {
   .breadcrumb {

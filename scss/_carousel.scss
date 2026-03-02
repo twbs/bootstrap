@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "config" as *;
 @use "colors" as *;
 @use "variables" as *;
@@ -5,8 +6,10 @@
 @use "mixins/gradients" as *;
 @use "mixins/color-mode" as *;
 
+$carousel-tokens: () !default;
+
 // scss-docs-start carousel-tokens
-$carousel-tokens: (
+$carousel-tokens-internal: (
   --carousel-control-color: #{$white},
   --carousel-control-width: 15%,
   --carousel-control-opacity: .5,
@@ -33,13 +36,21 @@ $carousel-tokens: (
 ) !default;
 // scss-docs-end carousel-tokens
 
+// stylelint-disable-next-line scss/dollar-variable-default
+$carousel-tokens: map.merge($carousel-tokens-internal, $carousel-tokens);
+
+$carousel-dark-tokens: () !default;
+
 // scss-docs-start carousel-dark-tokens
-$carousel-dark-tokens: (
+$carousel-dark-tokens-internal: (
   --carousel-indicator-active-bg: #{$black},
   --carousel-caption-color: #{$black},
   --carousel-control-icon-filter: invert(1) grayscale(100),
 ) !default;
 // scss-docs-end carousel-dark-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$carousel-dark-tokens: map.merge($carousel-dark-tokens-internal, $carousel-dark-tokens);
 
 // Notes on the classes:
 //

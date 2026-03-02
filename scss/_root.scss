@@ -11,9 +11,11 @@
 // mdo-do: do we need theme?
 @layer colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
 
+$root-tokens: () !default;
+
 // scss-docs-start root-tokens
 // stylelint-disable @stylistic/value-list-max-empty-lines
-$root-tokens: (
+$root-tokens-internal: (
   --black: #{$black},
   --white: #{$white},
   // Fonts
@@ -136,6 +138,9 @@ $root-tokens: (
   // scss-docs-end root-form-validation-variables
 ) !default;
 // stylelint-enable @stylistic/value-list-max-empty-lines
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$root-tokens: map.merge($root-tokens-internal, $root-tokens);
 
 // Generate semantic theme colors
 @each $color-name, $color-map in $new-theme-colors {

@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../config" as *;
 @use "../variables" as *;
 @use "../theme" as *;
@@ -7,8 +8,10 @@
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
+$chip-input-tokens: () !default;
+
 // scss-docs-start chip-input-tokens
-$chip-input-tokens: (
+$chip-input-tokens-internal: (
   --chip-input-padding-y: .75rem,
   --chip-input-padding-x: .75rem,
   --chip-input-gap: .375rem,
@@ -20,6 +23,9 @@ $chip-input-tokens: (
   --control-border-radius: var(--border-radius),
 ) !default;
 // scss-docs-end chip-input-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$chip-input-tokens: map.merge($chip-input-tokens-internal, $chip-input-tokens);
 
 @layer forms {
   .chip-input {

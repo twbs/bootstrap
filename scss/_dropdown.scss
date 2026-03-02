@@ -7,8 +7,10 @@
 @use "mixins/gradients" as *;
 @use "mixins/transition" as *;
 
+$dropdown-tokens: () !default;
+
 // scss-docs-start dropdown-tokens
-$dropdown-tokens: (
+$dropdown-tokens-internal: (
   --dropdown-zindex: #{$zindex-dropdown},
   --dropdown-gap: .125rem,
   --dropdown-min-width: 10rem,
@@ -41,6 +43,9 @@ $dropdown-tokens: (
   --dropdown-header-padding-y: .25rem,
 ) !default;
 // scss-docs-end dropdown-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$dropdown-tokens: map.merge($dropdown-tokens-internal, $dropdown-tokens);
 
 @layer components {
   .dropdown {

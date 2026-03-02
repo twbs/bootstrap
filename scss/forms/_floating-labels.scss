@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "sass:math";
 @use "../config" as *;
 @use "../colors" as *;
@@ -6,8 +7,10 @@
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
+$form-floating-tokens: () !default;
+
 // scss-docs-start form-floating-tokens
-$form-floating-tokens: (
+$form-floating-tokens-internal: (
   --form-floating-height: calc(3.5rem + (var(--border-width) * 2)),
   --form-floating-line-height: 1.25,
   --form-floating-padding-x: var(--btn-input-padding-x),
@@ -23,6 +26,9 @@ $form-floating-tokens: (
   --form-floating-transition: var(--form-floating-transition-property) var(--form-floating-transition-timing),
 ) !default;
 // scss-docs-end form-floating-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$form-floating-tokens: map.merge($form-floating-tokens-internal, $form-floating-tokens);
 
 @layer forms {
   .form-floating {

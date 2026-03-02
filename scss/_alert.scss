@@ -4,8 +4,10 @@
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 
+$alert-tokens: () !default;
+
 // scss-docs-start alert-tokens
-$alert-tokens: (
+$alert-tokens-internal: (
   --alert-gap: #{$spacer * .75},
   --alert-bg: var(--theme-bg-subtle, var(--bg-1)),
   --alert-padding-x: #{$spacer},
@@ -18,6 +20,9 @@ $alert-tokens: (
   --hr-border-color: var(--theme-border, var(--border-color)),
 ) !default;
 // scss-docs-end alert-tokens
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$alert-tokens: map.merge($alert-tokens-internal, $alert-tokens);
 
 @layer components {
   .alert {
