@@ -8,14 +8,14 @@
 // scss-docs-start gray-color-variables
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
+$gray-200: #e8ecee !default;
+$gray-300: #dde2e5 !default;
+$gray-400: #ced5da !default;
+$gray-500: #acb5bc !default;
+$gray-600: #6b757c !default;
+$gray-700: #495157 !default;
+$gray-800: #343b40 !default;
+$gray-900: #202528 !default;
 $black:    #000 !default;
 // scss-docs-end gray-color-variables
 
@@ -36,16 +36,16 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
-$blue:    #0d6efd !default;
+$blue:    #0070bf !default;
 $indigo:  #6610f2 !default;
-$purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #198754 !default;
-$teal:    #20c997 !default;
-$cyan:    #0dcaf0 !default;
+$purple:  #6c38ba !default;
+$pink:    #c92a7a !default;
+$red:     #db2c32 !default;
+$orange:  #e39400 !default;
+$yellow:  #f2ca00 !default;
+$green:   #1d804e !default;
+$teal:    #1b8c76 !default;
+$cyan:    #15a3b0 !default;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
@@ -333,12 +333,12 @@ $dark-text-emphasis:      $gray-700 !default;
 // scss-docs-end theme-text-variables
 
 // scss-docs-start theme-bg-subtle-variables
-$primary-bg-subtle:       tint-color($primary, 80%) !default;
-$secondary-bg-subtle:     tint-color($secondary, 80%) !default;
-$success-bg-subtle:       tint-color($success, 80%) !default;
-$info-bg-subtle:          tint-color($info, 80%) !default;
-$warning-bg-subtle:       tint-color($warning, 80%) !default;
-$danger-bg-subtle:        tint-color($danger, 80%) !default;
+$primary-bg-subtle:       tint-color($primary, 90%) !default;
+$secondary-bg-subtle:     tint-color($secondary, 90%) !default;
+$success-bg-subtle:       tint-color($success, 90%) !default;
+$info-bg-subtle:          tint-color($info, 90%) !default;
+$warning-bg-subtle:       tint-color($warning, 90%) !default;
+$danger-bg-subtle:        tint-color($danger, 90%) !default;
 $light-bg-subtle:         mix($gray-100, $white) !default;
 $dark-bg-subtle:          $gray-400 !default;
 // scss-docs-end theme-bg-subtle-variables
