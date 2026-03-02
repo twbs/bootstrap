@@ -127,8 +127,8 @@ $alert-progress-duration:       8s !default;
   }
 
   .alert-callout-title {
-    font-weight: $alert-link-font-weight;
     margin-block-end: $spacer * .25;
+    font-weight: $alert-link-font-weight;
   }
   // scss-docs-end alert-callout
 
@@ -146,10 +146,10 @@ $alert-progress-duration:       8s !default;
 
   .alert-details {
     summary {
-      cursor: pointer;
-      font-weight: $alert-link-font-weight;
-      font-size: .875rem;
       margin-block-start: $spacer * .5;
+      font-size: .875rem;
+      font-weight: $alert-link-font-weight;
+      cursor: pointer;
       user-select: none;
 
       &:hover {
@@ -159,14 +159,14 @@ $alert-progress-duration:       8s !default;
 
     pre {
       max-height: $alert-details-max-height;
-      overflow-y: auto;
-      font-size: .75rem;
-      background: rgb(0 0 0 / .05);
-      @include border-radius(var(--border-radius-sm));
       padding: $spacer * .5;
       margin: ($spacer * .5) 0 0;
-      white-space: pre-wrap;
+      overflow-y: auto;
+      font-size: .75rem;
       word-break: break-all;
+      white-space: pre-wrap;
+      background: rgb(0 0 0 / .05);
+      @include border-radius(var(--border-radius-sm));
     }
   }
   // scss-docs-end alert-details
@@ -183,17 +183,17 @@ $alert-progress-duration:       8s !default;
 
   .alert-icon-side {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     padding: $spacer * .75 $spacer;
-    flex-shrink: 0;
-    background-color: var(--theme-bg);
     color: var(--theme-contrast);
+    background-color: var(--theme-bg);
   }
 
   .alert-content {
-    padding: $spacer * .75 $spacer;
     flex-grow: 1;
+    padding: $spacer * .75 $spacer;
   }
   // scss-docs-end alert-split
 
@@ -228,9 +228,20 @@ $alert-progress-duration:       8s !default;
   }
 
   @keyframes alert-progress-indeterminate {
-    0% { inset-inline-start: -30%; width: 30%; }
-    50% { inset-inline-start: 50%; width: 30%; }
-    100% { inset-inline-start: 100%; width: 30%; }
+    0% {
+      inset-inline-start: -30%;
+      width: 30%;
+    }
+
+    50% {
+      inset-inline-start: 50%;
+      width: 30%;
+    }
+
+    100% {
+      inset-inline-start: 100%;
+      width: 30%;
+    }
   }
 
   .alert-progress-indeterminate {
@@ -257,22 +268,22 @@ $alert-progress-duration:       8s !default;
   }
 
   .alert-show-trigger ~ .alert-live {
-    opacity: 0;
     max-height: 0;
     padding-block: 0;
     margin-block-end: 0;
-    border: 0;
     overflow: hidden;
+    border: 0;
+    opacity: 0;
     @include transition(opacity .15s linear, max-height 0s .15s, padding 0s .15s, margin 0s .15s, border 0s .15s);
   }
 
   .alert-show-trigger:checked ~ .alert-live {
-    opacity: 1;
     max-height: 200px;
     padding-block: var(--alert-padding-y);
     margin-block-end: $spacer;
-    border: var(--alert-border);
     overflow: visible;
+    border: var(--alert-border);
+    opacity: 1;
     @include transition(opacity .15s linear, max-height 0s);
   }
   // scss-docs-end alert-live
