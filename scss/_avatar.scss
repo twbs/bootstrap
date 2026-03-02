@@ -17,6 +17,7 @@ $avatar-tokens: map.merge(
     --avatar-border-color: var(--bg-body),
     --avatar-bg: var(--bg-2),
     --avatar-color: var(--fg-body),
+    // --avatar-font-weight: var(--font-weight-medium), // Defaults to fallback
     --avatar-status-size: .75rem,
     --avatar-status-border-width: 2px,
     --avatar-status-border-color: var(--bg-body),
@@ -61,7 +62,7 @@ $avatar-sizes: (
     width: var(--avatar-size);
     height: var(--avatar-size);
     font-size: calc(var(--avatar-size) * .4);
-    font-weight: $font-weight-medium;
+    font-weight: var(--avatar-font-weight, var(--font-weight-medium));
     line-height: 1;
     color: var(--theme-contrast, var(--avatar-color));
     text-transform: uppercase;

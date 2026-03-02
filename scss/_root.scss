@@ -142,7 +142,9 @@ $root-tokens: map.merge(
   $root-tokens
 );
 // stylelint-enable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines
+// scss-docs-end root-tokens
 
+// scss-docs-start root-theme-tokens
 // Generate semantic theme colors
 @each $color-name, $color-map in $new-theme-colors {
   @each $key, $value in $color-map {
@@ -164,15 +166,12 @@ $root-tokens: map.merge(
 @each $key, $value in $theme-borders {
   $root-tokens: map.set($root-tokens, --border-#{$key}, $value);
 }
-// scss-docs-end root-tokens
-
+// scss-docs-end root-theme-tokens
 
 :root {
-  // scss-docs-start root-theme-variables
   @each $prop, $value in $root-tokens {
     #{$prop}: #{$value};
   }
-  // scss-docs-end root-theme-variables
 
   color-scheme: light dark;
 }
