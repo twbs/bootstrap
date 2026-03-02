@@ -8,10 +8,13 @@ Toasts are lightweight notifications designed to mimic the push notifications th
 
 ## Overview
 
-Things to know when using the toast plugin:
+Things to know when using the toast component:
 
-- Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
-- Toasts will automatically hide if you do not specify `autohide: false`.
+- Toasts use a lightweight `Toast` class that extends `BaseComponent` — show and hide via `Toast.getOrCreateInstance(el).show()` / `.hide()`.
+- Autohide is **CSS-driven** via animation — toasts hide after `5s` by default. Customize with the `--bs-toast-delay` CSS custom property.
+- Dismiss buttons with `data-bs-dismiss="toast"` work automatically via a delegated click handler.
+- Toasts fire custom events (`show.bs.toast`, `shown.bs.toast`, `hide.bs.toast`, `hidden.bs.toast`) that can be prevented.
+- Toasts pause their autohide timer on hover and focus-within.
 
 <Callout name="info-prefersreducedmotion" />
 
@@ -34,10 +37,6 @@ Toasts are as flexible as you need and have very little required markup. At a mi
       Hello, world! This is a toast message.
     </div>
   </div>`} />
-
-<Callout type="warning">
-Previously, our scripts dynamically added the `.hide` class to completely hide a toast (with `display:none`, rather than just with `opacity:0`). This is now not necessary anymore. However, for backwards compatibility, our script will continue to toggle the class (even though there is no practical need for it) until the next major version.
-</Callout>
 
 ### Live example
 
@@ -81,7 +80,17 @@ Click the button below to show a toast (positioned with our utilities in the low
 
 We use the following JavaScript to trigger our live toast demo:
 
-<JsDocs name="live-toast" file="site/src/assets/partials/snippets.js" />
+```js
+const toastTrigger = document.getElementById('liveToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
+
+if (toastTrigger) {
+  const toastInstance = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+  toastTrigger.addEventListener('click', () => {
+    toastInstance.show()
+  })
+}
+```
 
 ### Translucent
 
@@ -164,6 +173,166 @@ Building on the above example, you can create different toast color schemes with
         Hello, world! This is a toast message.
       </div>
       <CloseButton dismiss="toast" class="me-2 m-auto" />
+    </div>
+  </div>`} />
+
+### Status toasts
+
+Combine [color utilities]([[docsref:/utilities/colors]]) with inline SVG icons for clear success, error, and warning feedback. Use `text-bg-*` with `border-0` for bold, full-color toasts.
+
+<Example code={`<div class="toast-container position-static">
+    <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="flex-shrink-0 me-2" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>
+          Changes saved.
+        </div>
+        <CloseButton dismiss="toast" class="me-2 m-auto" />
+      </div>
+    </div>
+
+    <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="flex-shrink-0 me-2" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+          </svg>
+          Could not complete the request.
+        </div>
+        <CloseButton dismiss="toast" class="me-2 m-auto" />
+      </div>
+    </div>
+
+    <div class="toast align-items-center text-bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="flex-shrink-0 me-2" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+          </svg>
+          Your session expires in 5 minutes.
+        </div>
+        <CloseButton dismiss="toast" class="me-2 m-auto" />
+      </div>
+    </div>
+  </div>`} />
+
+### With icon badges
+
+For a subtler look, pair a neutral toast background with small colored icon circles. The badge draws the eye to the status without overwhelming the message.
+
+<Example code={`<div class="toast-container position-static">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body d-flex align-items-center">
+        <div class="avatar avatar-sm bg-success text-white flex-shrink-0 me-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+          </svg>
+        </div>
+        <div class="flex-grow-1">Profile updated.</div>
+        <CloseButton dismiss="toast" class="ms-2" />
+      </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body d-flex align-items-center">
+        <div class="avatar avatar-sm bg-danger text-white flex-shrink-0 me-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </div>
+        <div class="flex-grow-1">Upload failed. Please try again.</div>
+        <CloseButton dismiss="toast" class="ms-2" />
+      </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body d-flex align-items-center">
+        <div class="avatar avatar-sm bg-warning flex-shrink-0 me-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.553.553 0 0 1-1.1 0L7.1 4.995z"/>
+          </svg>
+        </div>
+        <div class="flex-grow-1">Storage almost full.</div>
+        <CloseButton dismiss="toast" class="ms-2" />
+      </div>
+    </div>
+  </div>`} />
+
+### Undo action
+
+Include an undo link next to the dismiss button so users can reverse recent actions.
+
+<Example code={`<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Message moved to trash.
+      </div>
+      <a href="#" class="link-primary fw-semibold text-decoration-none m-auto">Undo</a>
+      <CloseButton dismiss="toast" class="me-2 m-auto" />
+    </div>
+  </div>`} />
+
+### Call to action
+
+Pair an icon badge with a heading, description, and action buttons for prompts that need user interaction.
+
+<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      <div class="d-flex align-items-center mb-2">
+        <div class="avatar avatar-sm bg-primary-subtle text-primary flex-shrink-0 me-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+          </svg>
+        </div>
+        <strong>New version available</strong>
+      </div>
+      <small class="text-body-secondary">v6.0.1 includes performance improvements and bug fixes.</small>
+      <div class="mt-2 pt-2 border-top">
+        <button type="button" class="btn btn-primary btn-sm">Restart now</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Later</button>
+      </div>
+    </div>
+  </div>`} />
+
+### With illustration
+
+Use a placeholder image alongside a call-to-action for onboarding or promotional toasts.
+
+<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body d-flex gap-3 align-items-start">
+      <Placeholder width="80" height="80" class="rounded flex-shrink-0" background="#6f42c1" text={false} />
+      <div>
+        <strong class="d-block mb-1">Complete your profile</strong>
+        <small class="text-body-secondary">Add a photo and bio so teammates can recognize you.</small>
+        <div class="mt-2">
+          <button type="button" class="btn btn-primary btn-sm">Set up</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Skip</button>
+        </div>
+      </div>
+    </div>
+  </div>`} />
+
+### With progress bar
+
+Show task progress inside a toast using Bootstrap's [progress component]([[docsref:/components/progress]]).
+
+<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Importing data...</strong>
+      <small class="text-body-secondary">Step 3 of 4</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      <div class="d-flex justify-content-between mb-1">
+        <small>customers-2024.csv</small>
+        <small class="text-body-secondary">75%</small>
+      </div>
+      <div class="progress" role="progressbar" aria-label="Import progress" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="height: 6px;">
+        <div class="progress-bar" style="width: 75%"></div>
+      </div>
     </div>
   </div>`} />
 
@@ -266,17 +435,17 @@ Note that the live region needs to be present in the markup *before* the toast i
 
 You also need to adapt the `role` and `aria-live` level depending on the content. If it’s an important message like an error, use `role="alert" aria-live="assertive"`, otherwise use `role="status" aria-live="polite"` attributes.
 
-As the content you’re displaying changes, be sure to update the [`delay` timeout](#options) so that users have enough time to read the toast.
+As the content you're displaying changes, be sure to update the [`--bs-toast-delay`](#variables) value so that users have enough time to read the toast.
 
 ```html
-<div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-bs-delay="10000">
+<div class="toast" role="alert" aria-live="polite" aria-atomic="true" style="--bs-toast-delay: 10s">
   <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
 </div>
 ```
 
-When using `autohide: false`, you must add a close button to allow users to dismiss the toast.
+When disabling autohide, you must add a close button to allow users to dismiss the toast.
 
-<Example code={`<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
+<Example code={`<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" style="--bs-toast-delay: 99999s">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -288,7 +457,7 @@ When using `autohide: false`, you must add a close button to allow users to dism
     </div>
   </div>`} />
 
-While technically it’s possible to add focusable/actionable controls (such as additional buttons or links) in your toast, you should avoid doing this for autohiding toasts. Even if you give the toast a long [`delay` timeout](#options), keyboard and assistive technology users may find it difficult to reach the toast in time to take action (since toasts don’t receive focus when they are displayed). If you absolutely must have further controls, we recommend using a toast with `autohide: false`.
+While technically it's possible to add focusable/actionable controls (such as additional buttons or links) in your toast, you should avoid doing this for autohiding toasts. Even if you give the toast a long `--bs-toast-delay`, keyboard and assistive technology users may find it difficult to reach the toast in time to take action (since toasts don't receive focus when they are displayed). If you absolutely must have further controls, we recommend using a toast with a very long `--bs-toast-delay`.
 
 ## CSS
 
@@ -304,58 +473,66 @@ While technically it’s possible to add focusable/actionable controls (such as 
 
 ## Usage
 
-Initialize toasts via JavaScript:
+Show and hide toasts via the `Toast` class, which provides instance methods and custom events.
+
+### Show and hide
 
 ```js
-const toastElList = document.querySelectorAll('.toast')
-const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
+const myToastEl = document.getElementById('myToast')
+const toast = bootstrap.Toast.getOrCreateInstance(myToastEl)
+
+// Show a toast
+toast.show()
+
+// Hide a toast
+toast.hide()
 ```
 
-### Triggers
+### Autohide delay
 
-<JsDismiss name="toast" />
+Toasts automatically hide after `5s` by default. Customize the delay with the `--bs-toast-delay` CSS custom property:
 
-### Options
+```html
+<!-- Custom 10-second delay -->
+<div class="toast" style="--bs-toast-delay: 10s">...</div>
 
-<JsDataAttributes />
+<!-- Effectively disable autohide -->
+<div class="toast" style="--bs-toast-delay: 99999s">...</div>
+```
 
-<BsTable>
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| `animation` | boolean | `true` | Apply a CSS fade transition to the toast. |
-| `autohide` | boolean | `true` | Automatically hide the toast after the delay. |
-| `delay` | number | `5000` | Delay in milliseconds before hiding the toast. |
-</BsTable>
+You can also set the delay programmatically:
 
-### Methods
+```js
+document.getElementById('myToast').style.setProperty('--bs-toast-delay', '10s')
+```
 
-<Callout name="danger-async-methods" type="danger" />
+### Dismiss
 
-<BsTable>
-| Method | Description |
-| --- | --- |
-| `dispose` | Hides an element’s toast. Your toast will remain on the DOM but won’t show anymore. |
-| `getInstance` | *Static* method which allows you to get the toast instance associated with a DOM element. <br/> For example: `const myToastEl = document.getElementById('myToastEl')` `const myToast = bootstrap.Toast.getInstance(myToastEl)` Returns a Bootstrap toast instance. |
-| `getOrCreateInstance` | *Static* method which allows you to get the toast instance associated with a DOM element, or create a new one, in case it wasn’t initialized. <br/>`const myToastEl = document.getElementById('myToastEl')` `const myToast = bootstrap.Toast.getOrCreateInstance(myToastEl)` Returns a Bootstrap toast instance. |
-| `hide` | Hides an element’s toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`. |
-| `isShown` | Returns a boolean according to toast’s visibility state. |
-| `show` | Reveals an element’s toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs). You have to manually call this method, instead your toast won’t show. |
-</BsTable>
+Dismissal is handled automatically via a delegated click handler. Add `data-bs-dismiss="toast"` to a button **within the toast**:
+
+```html
+<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+```
+
+### Pause on interaction
+
+Toasts pause their autohide countdown when hovered or when they contain a focused element (`:focus-within`). This is handled entirely via CSS `animation-play-state`.
 
 ### Events
 
 <BsTable>
 | Event | Description |
 | --- | --- |
-| `hide.bs.toast` | This event is fired immediately when the `hide` instance method has been called. |
-| `hidden.bs.toast` | This event is fired when the toast has finished being hidden from the user. |
-| `show.bs.toast` | This event fires immediately when the `show` instance method is called. |
-| `shown.bs.toast` | This event is fired when the toast has been made visible to the user. |
+| `show.bs.toast` | Fires immediately when the `show` instance method is called. |
+| `shown.bs.toast` | Fired when the toast has been made visible. |
+| `hide.bs.toast` | Fires immediately when the `hide` instance method is called. |
+| `hidden.bs.toast` | Fired when the toast has been hidden. |
 </BsTable>
 
 ```js
 const myToastEl = document.getElementById('myToast')
+
 myToastEl.addEventListener('hidden.bs.toast', () => {
-  // do something...
+  // do something when the toast is hidden
 })
 ```

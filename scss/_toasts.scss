@@ -1,6 +1,7 @@
 @use "config" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/transition" as *;
 
 // scss-docs-start toast-variables
 $toast-max-width:                   350px !default;
@@ -38,8 +39,11 @@ $toast-header-border-color:         $toast-border-color !default;
     --toast-header-color: #{$toast-header-color};
     --toast-header-bg: #{$toast-header-background-color};
     --toast-header-border-color: #{$toast-header-border-color};
+    --toast-delay: 5s;
     // scss-docs-end toast-css-vars
 
+    // Hidden by default
+    display: none;
     width: var(--toast-max-width);
     max-width: 100%;
     font-size: var(--toast-font-size);
@@ -49,14 +53,49 @@ $toast-header-border-color:         $toast-border-color !default;
     background-clip: padding-box;
     border: var(--toast-border-width) solid var(--toast-border-color);
     box-shadow: var(--toast-box-shadow);
+    opacity: 0%;
+    transform: translateY(1rem);
     @include border-radius(var(--toast-border-radius));
 
-    &.showing {
-      opacity: 0;
+    // Entry/exit transitions
+    @include transition(opacity .3s ease, transform .3s ease, display .3s allow-discrete);
+
+    // Visible state
+    &.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+
+      // Entry animation starting point
+      @starting-style {
+        opacity: 0;
+        transform: translateY(1rem);
+      }
+
+      // Autohide via CSS animation (fires after --toast-delay)
+      animation: toast-autohide .3s ease var(--toast-delay) forwards;
     }
 
-    &:not(.show) {
+    // Pause autohide on hover or focus
+    &.show:hover,
+    &.show:focus-within {
+      animation-play-state: paused;
+    }
+
+    // Reduced motion: instant autohide (transition handled by mixin)
+    @media (prefers-reduced-motion: reduce) {
+      &.show {
+        animation-duration: .01ms;
+      }
+    }
+  }
+
+  // Autohide keyframes — fades out after the animation-delay
+  @keyframes toast-autohide {
+    to {
       display: none;
+      opacity: 0;
+      transform: translateY(1rem);
     }
   }
 
@@ -68,6 +107,11 @@ $toast-header-border-color:         $toast-border-color !default;
     width: max-content;
     max-width: 100%;
     pointer-events: none;
+
+    // Auto-hide container when no visible toasts
+    &:not(:has(.toast.show)) {
+      display: none;
+    }
 
     > :not(:last-child) {
       margin-bottom: var(--toast-spacing);
@@ -85,8 +129,7 @@ $toast-header-border-color:         $toast-border-color !default;
     @include border-top-radius(calc(var(--toast-border-radius) - var(--toast-border-width)));
 
     .btn-close {
-      margin-inline-start: var(--toast-padding-x);
-      margin-inline-end: calc(-.5 * var(--toast-padding-x));
+      margin-inline: var(--toast-padding-x) calc(-.5 * var(--toast-padding-x));
     }
   }
 

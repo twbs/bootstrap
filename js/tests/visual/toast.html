@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Toast</title>
-    <style>
-      .notifications {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
@@ -25,8 +18,8 @@
       </div>
     </div>
 
-    <div class="notifications">
-      <div id="toastAutoHide" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
+    <div class="toast-container position-absolute top-0 end-0 p-3">
+      <div id="toastAutoHide" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="--bs-toast-delay: 2s">
         <div class="toast-header">
           <span class="d-block bg-primary rounded me-2" style="width: 20px; height: 20px;"></span>
           <strong class="me-auto">Bootstrap</strong>
@@ -37,12 +30,16 @@
         </div>
       </div>
 
-      <div class="toast" data-bs-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast" style="--bs-toast-delay: 99999s" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
           <span class="d-block bg-primary rounded me-2" style="width: 20px; height: 20px;"></span>
           <strong class="me-auto">Bootstrap</strong>
           <small class="text-body-secondary">2 seconds ago</small>
-          <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
+              <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
+            </svg>
+          </button>
         </div>
         <div class="toast-body">
           Heads up, toasts will stack automatically
@@ -52,18 +49,15 @@
 
     <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
-      /* global bootstrap: false */
+      /* global bootstrap */
+      const { Toast } = bootstrap
 
-      window.addEventListener('load', () => {
-        document.querySelectorAll('.toast').forEach(toastEl => new bootstrap.Toast(toastEl))
+      document.getElementById('btnShowToast').addEventListener('click', () => {
+        document.querySelectorAll('.toast').forEach(toastEl => Toast.getOrCreateInstance(toastEl).show())
+      })
 
-        document.getElementById('btnShowToast').addEventListener('click', () => {
-          document.querySelectorAll('.toast').forEach(toastEl => bootstrap.Toast.getInstance(toastEl).show())
-        })
-
-        document.getElementById('btnHideToast').addEventListener('click', () => {
-          document.querySelectorAll('.toast').forEach(toastEl => bootstrap.Toast.getInstance(toastEl).hide())
-        })
+      document.getElementById('btnHideToast').addEventListener('click', () => {
+        document.querySelectorAll('.toast').forEach(toastEl => Toast.getOrCreateInstance(toastEl).hide())
       })
     </script>
   </body>
