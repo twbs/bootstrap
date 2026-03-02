@@ -8,24 +8,25 @@ $avatar-tokens: () !default;
 
 // stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start avatar-tokens
-$avatar-tokens-internal: (
-  --avatar-size: 2.5rem,
-  --avatar-border-radius: 50%,
-  --avatar-border-width: 2px,
-  --avatar-border-color: var(--bg-body),
-  --avatar-bg: var(--bg-2),
-  --avatar-color: var(--fg-body),
-  --avatar-status-size: .75rem,
-  --avatar-status-border-width: 2px,
-  --avatar-status-border-color: var(--bg-body),
-  --avatar-stack-spacing: -.3,
-  --avatar-stack-transition: "transform .2s ease-in-out",
-) !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$avatar-tokens: map.merge(
+  (
+    --avatar-size: 2.5rem,
+    --avatar-border-radius: 50%,
+    --avatar-border-width: 2px,
+    --avatar-border-color: var(--bg-body),
+    --avatar-bg: var(--bg-2),
+    --avatar-color: var(--fg-body),
+    --avatar-status-size: .75rem,
+    --avatar-status-border-width: 2px,
+    --avatar-status-border-color: var(--bg-body),
+    --avatar-stack-spacing: -.3,
+    --avatar-stack-transition: "transform .2s ease-in-out",
+  ),
+  $avatar-tokens
+);
 // scss-docs-end avatar-tokens
 // stylelint-enable custom-property-no-missing-var-function
-
-// stylelint-disable-next-line scss/dollar-variable-default
-$avatar-tokens: map.merge($avatar-tokens-internal, $avatar-tokens);
 
 // scss-docs-start avatar-sizes
 $avatar-sizes: (

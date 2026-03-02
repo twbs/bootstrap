@@ -10,22 +10,23 @@
 $strength-tokens: () !default;
 
 // scss-docs-start strength-tokens
-$strength-tokens-internal: (
-  --strength-height: .375rem,
-  --strength-gap: .25rem,
-  --strength-margin-top: .25rem,
-  --strength-border-radius: var(--border-radius-pill),
-  --strength-bg: var(--bg-2),
-  --strength-color: var(--bg-2),
-  --strength-weak-color: var(--danger-bg),
-  --strength-fair-color: var(--warning-bg),
-  --strength-good-color: var(--info-bg),
-  --strength-strong-color: var(--success-bg),
-) !default;
-// scss-docs-end strength-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$strength-tokens: map.merge($strength-tokens-internal, $strength-tokens);
+$strength-tokens: map.merge(
+  (
+    --strength-height: .375rem,
+    --strength-gap: .25rem,
+    --strength-margin-top: .25rem,
+    --strength-border-radius: var(--border-radius-pill),
+    --strength-bg: var(--bg-2),
+    --strength-color: var(--bg-2),
+    --strength-weak-color: var(--danger-bg),
+    --strength-fair-color: var(--warning-bg),
+    --strength-good-color: var(--info-bg),
+    --strength-strong-color: var(--success-bg),
+  ),
+  $strength-tokens
+);
+// scss-docs-end strength-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start strength-levels

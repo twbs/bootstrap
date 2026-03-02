@@ -12,29 +12,30 @@
 $range-tokens: () !default;
 
 // scss-docs-start range-tokens
-$range-tokens-internal: (
-  --range-track-width: 100%,
-  --range-track-height: .5rem,
-  --range-track-cursor: pointer,
-  --range-track-bg: var(--bg-3),
-  --range-track-border-radius: 1rem,
-  --range-track-box-shadow: var(--box-shadow-inset),
-  --range-thumb-width: 1rem,
-  --range-thumb-height: var(--range-thumb-width),
-  --range-thumb-bg: var(--primary-base),
-  --range-thumb-border: 0,
-  --range-thumb-border-radius: 1rem,
-  --range-thumb-box-shadow: 0 .1rem .25rem rgba($black, .1),
-  --range-thumb-active-bg: color-mix(in oklch, var(--primary-base) 70%, var(--bg-body)),
-  --range-thumb-disabled-bg: var(--fg-3),
-  --range-thumb-transition-property: "background-color, border-color, box-shadow",
-  --range-thumb-transition-timing: .15s ease-in-out,
-  --range-thumb-transition: var(--range-thumb-transition-property) var(--range-thumb-transition-timing),
-) !default;
-// scss-docs-end range-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$range-tokens: map.merge($range-tokens-internal, $range-tokens);
+$range-tokens: map.merge(
+  (
+    --range-track-width: 100%,
+    --range-track-height: .5rem,
+    --range-track-cursor: pointer,
+    --range-track-bg: var(--bg-3),
+    --range-track-border-radius: 1rem,
+    --range-track-box-shadow: var(--box-shadow-inset),
+    --range-thumb-width: 1rem,
+    --range-thumb-height: var(--range-thumb-width),
+    --range-thumb-bg: var(--primary-base),
+    --range-thumb-border: 0,
+    --range-thumb-border-radius: 1rem,
+    --range-thumb-box-shadow: 0 .1rem .25rem rgba($black, .1),
+    --range-thumb-active-bg: color-mix(in oklch, var(--primary-base) 70%, var(--bg-body)),
+    --range-thumb-disabled-bg: var(--fg-3),
+    --range-thumb-transition-property: "background-color, border-color, box-shadow",
+    --range-thumb-transition-timing: .15s ease-in-out,
+    --range-thumb-transition: var(--range-thumb-transition-property) var(--range-thumb-transition-timing),
+  ),
+  $range-tokens
+);
+// scss-docs-end range-tokens
 
 // scss-docs-start range-mixins
 @mixin range-thumb() {

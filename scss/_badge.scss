@@ -8,21 +8,22 @@
 $badge-tokens: () !default;
 
 // scss-docs-start badge-tokens
-$badge-tokens-internal: (
-  --badge-padding-x: .625em,
-  --badge-padding-y: .25em,
-  --badge-font-size: clamp(12px, .75em, .75em),
-  --badge-font-weight: var(--font-weight-semibold),
-  --badge-color: inherit,
-  --badge-bg: var(--bg-2),
-  --badge-border-width: var(--border-width),
-  --badge-border-color: transparent,
-  --badge-border-radius: var(--border-radius-lg),
-) !default;
-// scss-docs-end badge-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$badge-tokens: map.merge($badge-tokens-internal, $badge-tokens);
+$badge-tokens: map.merge(
+  (
+    --badge-padding-x: .625em,
+    --badge-padding-y: .25em,
+    --badge-font-size: clamp(12px, .75em, .75em),
+    --badge-font-weight: var(--font-weight-semibold),
+    --badge-color: inherit,
+    --badge-bg: var(--bg-2),
+    --badge-border-width: var(--border-width),
+    --badge-border-color: transparent,
+    --badge-border-radius: var(--border-radius-lg),
+  ),
+  $badge-tokens
+);
+// scss-docs-end badge-tokens
 
 // scss-docs-start badge-variants
 $badge-variants: (

@@ -18,50 +18,52 @@
 $button-tokens: () !default;
 
 // scss-docs-start btn-tokens
-$button-tokens-internal: (
-  --btn-min-height: var(--btn-input-min-height),
-  --btn-padding-x: var(--btn-input-padding-x),
-  --btn-padding-y: var(--btn-input-padding-y),
-  --btn-font-size: var(--btn-input-font-size),
-  --btn-font-weight: var(--btn-input-font-weight),
-  --btn-line-height: var(--btn-input-line-height),
-  --btn-color: var(--fg-body),
-  --btn-white-space: nowrap,
-  --btn-border-width: var(--border-width),
-  --btn-border-color: transparent,
-  --btn-border-radius: var(--border-radius),
-  --btn-hover-border-color: transparent,
-  --btn-disabled-opacity: .65,
-  --btn-transition-timing: .15s ease-in-out,
-  --btn-transition-property: "color, background-color, border-color, box-shadow",
-  --btn-transition: var(--btn-transition-property) var(--btn-transition-timing),
-) !default;
-// scss-docs-end btn-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$button-tokens: map.merge($button-tokens-internal, $button-tokens);
+$button-tokens: map.merge(
+  (
+    --btn-min-height: var(--btn-input-min-height),
+    --btn-padding-x: var(--btn-input-padding-x),
+    --btn-padding-y: var(--btn-input-padding-y),
+    --btn-font-size: var(--btn-input-font-size),
+    --btn-font-weight: var(--btn-input-font-weight),
+    --btn-line-height: var(--btn-input-line-height),
+    --btn-color: var(--fg-body),
+    --btn-white-space: nowrap,
+    --btn-border-width: var(--border-width),
+    --btn-border-color: transparent,
+    --btn-border-radius: var(--border-radius),
+    --btn-hover-border-color: transparent,
+    --btn-disabled-opacity: .65,
+    --btn-transition-timing: .15s ease-in-out,
+    --btn-transition-property: "color, background-color, border-color, box-shadow",
+    --btn-transition: var(--btn-transition-property) var(--btn-transition-timing),
+  ),
+  $button-tokens
+);
+// scss-docs-end btn-tokens
 
 $button-link-tokens: () !default;
 
 // scss-docs-start button-link-tokens
-$button-link-tokens-internal: (
-  --btn-font-weight: var(--font-weight-normal),
-  --btn-color: var(--link-color),
-  --btn-bg: transparent,
-  --btn-border-color: transparent,
-  --btn-hover-color: var(--link-hover-color),
-  --btn-hover-bg: transparent,
-  --btn-hover-border-color: transparent,
-  --btn-active-color: var(--link-hover-color),
-  --btn-active-bg: transparent,
-  --btn-active-border-color: transparent,
-  --btn-disabled-color: var(--fg-3),
-  --btn-disabled-border-color: transparent,
-) !default;
-// scss-docs-end button-link-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$button-link-tokens: map.merge($button-link-tokens-internal, $button-link-tokens);
+$button-link-tokens: map.merge(
+  (
+    --btn-font-weight: var(--font-weight-normal),
+    --btn-color: var(--link-color),
+    --btn-bg: transparent,
+    --btn-border-color: transparent,
+    --btn-hover-color: var(--link-hover-color),
+    --btn-hover-bg: transparent,
+    --btn-hover-border-color: transparent,
+    --btn-active-color: var(--link-hover-color),
+    --btn-active-bg: transparent,
+    --btn-active-border-color: transparent,
+    --btn-disabled-color: var(--fg-3),
+    --btn-disabled-border-color: transparent,
+  ),
+  $button-link-tokens
+);
+// scss-docs-end button-link-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start button-sizes

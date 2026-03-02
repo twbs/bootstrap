@@ -10,37 +10,39 @@
 $offcanvas-tokens: () !default;
 
 // scss-docs-start offcanvas-tokens
-$offcanvas-tokens-internal: (
-  --offcanvas-zindex: #{$zindex-offcanvas},
-  --offcanvas-width: 400px,
-  --offcanvas-height: 30vh,
-  --offcanvas-padding-x: 1rem,
-  --offcanvas-padding-y: 1rem,
-  --offcanvas-color: var(--fg-body),
-  --offcanvas-bg: var(--bg-body),
-  --offcanvas-border-width: var(--border-width),
-  --offcanvas-border-color: var(--border-color-translucent),
-  --offcanvas-box-shadow: var(--box-shadow-lg),
-  --offcanvas-transition: transform .3s ease-in-out,
-  --offcanvas-title-line-height: 1.5,
-) !default;
-// scss-docs-end offcanvas-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$offcanvas-tokens: map.merge($offcanvas-tokens-internal, $offcanvas-tokens);
+$offcanvas-tokens: map.merge(
+  (
+    --offcanvas-zindex: #{$zindex-offcanvas},
+    --offcanvas-width: 400px,
+    --offcanvas-height: 30vh,
+    --offcanvas-padding-x: 1rem,
+    --offcanvas-padding-y: 1rem,
+    --offcanvas-color: var(--fg-body),
+    --offcanvas-bg: var(--bg-body),
+    --offcanvas-border-width: var(--border-width),
+    --offcanvas-border-color: var(--border-color-translucent),
+    --offcanvas-box-shadow: var(--box-shadow-lg),
+    --offcanvas-transition: transform .3s ease-in-out,
+    --offcanvas-title-line-height: 1.5,
+  ),
+  $offcanvas-tokens
+);
+// scss-docs-end offcanvas-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 $offcanvas-backdrop-tokens: () !default;
 
 // scss-docs-start offcanvas-backdrop-tokens
-$offcanvas-backdrop-tokens-internal: (
-  bg: rgba(0, 0, 0, .5),
-  opacity: .5,
-) !default;
-// scss-docs-end offcanvas-backdrop-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$offcanvas-backdrop-tokens: map.merge($offcanvas-backdrop-tokens-internal, $offcanvas-backdrop-tokens);
+$offcanvas-backdrop-tokens: map.merge(
+  (
+    bg: rgba(0, 0, 0, .5),
+    opacity: .5,
+  ),
+  $offcanvas-backdrop-tokens
+);
+// scss-docs-end offcanvas-backdrop-tokens
 
 %offcanvas-css-vars {
   @each $prop, $value in $offcanvas-tokens {

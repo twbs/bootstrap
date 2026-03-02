@@ -14,133 +14,134 @@
 $root-tokens: () !default;
 
 // scss-docs-start root-tokens
-// stylelint-disable @stylistic/value-list-max-empty-lines
-$root-tokens-internal: (
-  --black: #{$black},
-  --white: #{$white},
-  // Fonts
-  // Note: Use `inspect` for lists so that quoted items keep the quotes.
-  // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-  --font-sans-serif: #{meta.inspect($font-family-sans-serif)},
-  --font-monospace: #{meta.inspect($font-family-monospace)},
-  --gradient: #{$gradient},
-  --body-font-family: #{meta.inspect($font-family-base)},
-
-  // scss-docs-start root-font-size-variables
-  --font-size-base: #{$font-size-base},
-  --font-size-xs: .75rem,
-  --font-size-sm: .875rem,
-  --font-size-md: 1rem,
-  --font-size-lg: clamp(1.25rem, 1rem + .625vw, 1.5rem),
-  --font-size-xl: clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
-  --font-size-2xl: clamp(1.75rem, 1.3rem + 1vw, 2rem),
-  --font-size-3xl: clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
-  --font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
-  --font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem),
-  --font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
-
-  --line-height-xs: 1.25,
-  --line-height-sm: 1.5,
-  --line-height-md: 1.5,
-  --line-height-lg: 1.5,
-  --line-height-xl: calc(2.5 / 1.75),
-  --line-height-2xl: calc(3 / 2.25),
-  --line-height-3xl: 1.2,
-  --line-height-4xl: 1.1,
-  --line-height-5xl: 1.1,
-  --line-height-6xl: 1,
-  // scss-docs-end root-font-size-variables
-
-  --body-font-size: #{$font-size-base},
-  --body-font-weight: #{$font-weight-base},
-  --body-line-height: #{$line-height-base},
-
-  --heading-color: #{$headings-color},
-
-  --hr-border-color: var(--border-color),
-
-  --link-color: light-dark(var(--primary-base), var(--primary-text)),
-  --link-decoration: #{$link-decoration},
-  --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
-
-  --code-font-size: 95%,
-  --code-color: var(--fg-2),
-
-  // scss-docs-start root-border-var
-  --border-width: #{$border-width},
-  --border-style: #{$border-style},
-  --border-color: light-dark(color-mix(in oklch, var(--gray-100), var(--gray-200)), var(--gray-700)),
-  --border-color-translucent: color-mix(in oklch, var(--fg-body) 15%, transparent),
-  // scss-docs-end root-border-var
-
-  // scss-docs-start root-border-radius-var
-  --border-radius: .5rem,
-  --border-radius-xs: .375rem,
-  --border-radius-sm: .375rem,
-  --border-radius-lg: .75rem,
-  --border-radius-xl: 1rem,
-  --border-radius-2xl: 2rem,
-  --border-radius-pill: 50rem,
-  // scss-docs-end root-border-radius-var
-
-  --box-shadow: #{$box-shadow},
-  --box-shadow-sm: #{$box-shadow-sm},
-  --box-shadow-lg: #{$box-shadow-lg},
-  --box-shadow-inset: #{$box-shadow-inset},
-
-  --spacer: 1rem,
-
-  // scss-docs-start root-focus-variables
-  --focus-ring-width: 3px,
-  --focus-ring-offset: 1px,
-  --focus-ring-color: var(--primary-focus-ring),
-  --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color),
-  // scss-docs-end root-focus-variables
-
-  // scss-docs-start root-form-variables
-  --input-bg: var(--bg-body),
-  --input-color: var(--fg-body),
-
-  --btn-input-min-height: 2.375rem,
-  --btn-input-padding-y: .375rem,
-  --btn-input-padding-x: .75rem,
-  --btn-input-font-size: var(--font-size-base),
-  --btn-input-line-height: var(--line-height-base),
-  --btn-input-border-radius: var(--border-radius),
-
-  --btn-input-xs-min-height: 1.5rem,
-  --btn-input-xs-padding-y: .125rem,
-  --btn-input-xs-padding-x: .375rem,
-  --btn-input-xs-font-size: var(--font-size-xs),
-  --btn-input-xs-line-height: 1.125,
-  --btn-input-xs-border-radius: var(--border-radius-xs),
-
-  --btn-input-sm-min-height: 2rem,
-  --btn-input-sm-padding-y: .25rem,
-  --btn-input-sm-padding-x: .5rem,
-  --btn-input-sm-font-size: var(--font-size-xs),
-  --btn-input-sm-line-height: var(--line-height-xs),
-  --btn-input-sm-border-radius: var(--border-radius-sm),
-
-  --btn-input-lg-min-height: 2.75rem,
-  --btn-input-lg-padding-y: .5rem,
-  --btn-input-lg-padding-x: 1rem,
-  --btn-input-lg-font-size: var(--font-size-md),
-  --btn-input-lg-line-height: var(--line-height-md),
-  --btn-input-lg-border-radius: var(--border-radius-lg),
-  // scss-docs-end root-form-variables
-
-  // scss-docs-start root-form-validation-variables
-  --form-valid-color: #{$form-valid-color},
-  --form-valid-border-color: #{$form-valid-border-color},
-  --form-invalid-color: #{$form-invalid-color},
-  --form-invalid-border-color: #{$form-invalid-border-color},
-  // scss-docs-end root-form-validation-variables
-) !default;
-// stylelint-enable @stylistic/value-list-max-empty-lines
-
+// stylelint-disable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines
 // stylelint-disable-next-line scss/dollar-variable-default
-$root-tokens: map.merge($root-tokens-internal, $root-tokens);
+$root-tokens: map.merge(
+  (
+    --black: #{$black},
+    --white: #{$white},
+    // Fonts
+    // Note: Use `inspect` for lists so that quoted items keep the quotes.
+    // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
+    --font-sans-serif: #{meta.inspect($font-family-sans-serif)},
+    --font-monospace: #{meta.inspect($font-family-monospace)},
+    --gradient: #{$gradient},
+    --body-font-family: #{meta.inspect($font-family-base)},
+
+    // scss-docs-start root-font-size-variables
+    --font-size-base: #{$font-size-base},
+    --font-size-xs: .75rem,
+    --font-size-sm: .875rem,
+    --font-size-md: 1rem,
+    --font-size-lg: clamp(1.25rem, 1rem + .625vw, 1.5rem),
+    --font-size-xl: clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
+    --font-size-2xl: clamp(1.75rem, 1.3rem + 1vw, 2rem),
+    --font-size-3xl: clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
+    --font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
+    --font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem),
+    --font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
+
+    --line-height-xs: 1.25,
+    --line-height-sm: 1.5,
+    --line-height-md: 1.5,
+    --line-height-lg: 1.5,
+    --line-height-xl: calc(2.5 / 1.75),
+    --line-height-2xl: calc(3 / 2.25),
+    --line-height-3xl: 1.2,
+    --line-height-4xl: 1.1,
+    --line-height-5xl: 1.1,
+    --line-height-6xl: 1,
+    // scss-docs-end root-font-size-variables
+
+    --body-font-size: #{$font-size-base},
+    --body-font-weight: #{$font-weight-base},
+    --body-line-height: #{$line-height-base},
+
+    --heading-color: #{$headings-color},
+
+    --hr-border-color: var(--border-color),
+
+    --link-color: light-dark(var(--primary-base), var(--primary-text)),
+    --link-decoration: #{$link-decoration},
+    --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
+
+    --code-font-size: 95%,
+    --code-color: var(--fg-2),
+
+    // scss-docs-start root-border-var
+    --border-width: #{$border-width},
+    --border-style: #{$border-style},
+    --border-color: light-dark(color-mix(in oklch, var(--gray-100), var(--gray-200)), var(--gray-700)),
+    --border-color-translucent: color-mix(in oklch, var(--fg-body) 15%, transparent),
+    // scss-docs-end root-border-var
+
+    // scss-docs-start root-border-radius-var
+    --border-radius: .5rem,
+    --border-radius-xs: .375rem,
+    --border-radius-sm: .375rem,
+    --border-radius-lg: .75rem,
+    --border-radius-xl: 1rem,
+    --border-radius-2xl: 2rem,
+    --border-radius-pill: 50rem,
+    // scss-docs-end root-border-radius-var
+
+    --box-shadow: #{$box-shadow},
+    --box-shadow-sm: #{$box-shadow-sm},
+    --box-shadow-lg: #{$box-shadow-lg},
+    --box-shadow-inset: #{$box-shadow-inset},
+
+    --spacer: 1rem,
+
+    // scss-docs-start root-focus-variables
+    --focus-ring-width: 3px,
+    --focus-ring-offset: 1px,
+    --focus-ring-color: var(--primary-focus-ring),
+    --focus-ring: var(--focus-ring-width) solid var(--focus-ring-color),
+    // scss-docs-end root-focus-variables
+
+    // scss-docs-start root-form-variables
+    --input-bg: var(--bg-body),
+    --input-color: var(--fg-body),
+
+    --btn-input-min-height: 2.375rem,
+    --btn-input-padding-y: .375rem,
+    --btn-input-padding-x: .75rem,
+    --btn-input-font-size: var(--font-size-base),
+    --btn-input-line-height: var(--line-height-base),
+    --btn-input-border-radius: var(--border-radius),
+
+    --btn-input-xs-min-height: 1.5rem,
+    --btn-input-xs-padding-y: .125rem,
+    --btn-input-xs-padding-x: .375rem,
+    --btn-input-xs-font-size: var(--font-size-xs),
+    --btn-input-xs-line-height: 1.125,
+    --btn-input-xs-border-radius: var(--border-radius-xs),
+
+    --btn-input-sm-min-height: 2rem,
+    --btn-input-sm-padding-y: .25rem,
+    --btn-input-sm-padding-x: .5rem,
+    --btn-input-sm-font-size: var(--font-size-xs),
+    --btn-input-sm-line-height: var(--line-height-xs),
+    --btn-input-sm-border-radius: var(--border-radius-sm),
+
+    --btn-input-lg-min-height: 2.75rem,
+    --btn-input-lg-padding-y: .5rem,
+    --btn-input-lg-padding-x: 1rem,
+    --btn-input-lg-font-size: var(--font-size-md),
+    --btn-input-lg-line-height: var(--line-height-md),
+    --btn-input-lg-border-radius: var(--border-radius-lg),
+    // scss-docs-end root-form-variables
+
+    // scss-docs-start root-form-validation-variables
+    --form-valid-color: #{$form-valid-color},
+    --form-valid-border-color: #{$form-valid-border-color},
+    --form-invalid-color: #{$form-invalid-color},
+    --form-invalid-border-color: #{$form-invalid-border-color},
+    // scss-docs-end root-form-validation-variables
+  ),
+  $root-tokens
+);
+// stylelint-enable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines
 
 // Generate semantic theme colors
 @each $color-name, $color-map in $new-theme-colors {

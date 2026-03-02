@@ -11,30 +11,31 @@
 $table-tokens: () !default;
 
 // scss-docs-start table-tokens
-$table-tokens-internal: (
-  --table-cell-padding-y: .5rem,
-  --table-cell-padding-x: .5rem,
-  --table-cell-vertical-align: top,
-  --table-color: var(--fg-body),
-  --table-bg: var(--bg-body),
-  --table-accent-bg: transparent,
-  --table-border-width: var(--border-width),
-  --table-border-color: var(--border-color),
-  --table-group-separator-color: currentcolor,
-  --table-striped-color: var(--table-color),
-  --table-striped-bg-factor: .05,
-  --table-striped-bg: color-mix(in srgb, var(--table-color) var(--table-striped-bg-factor), transparent),
-  --table-active-color: var(--table-color),
-  --table-active-bg-factor: .1,
-  --table-active-bg: color-mix(in srgb, var(--table-color) var(--table-active-bg-factor), transparent),
-  --table-hover-color: var(--table-color),
-  --table-hover-bg-factor: .075,
-  --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
-) !default;
-// scss-docs-end table-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$table-tokens: map.merge($table-tokens-internal, $table-tokens);
+$table-tokens: map.merge(
+  (
+    --table-cell-padding-y: .5rem,
+    --table-cell-padding-x: .5rem,
+    --table-cell-vertical-align: top,
+    --table-color: var(--fg-body),
+    --table-bg: var(--bg-body),
+    --table-accent-bg: transparent,
+    --table-border-width: var(--border-width),
+    --table-border-color: var(--border-color),
+    --table-group-separator-color: currentcolor,
+    --table-striped-color: var(--table-color),
+    --table-striped-bg-factor: .05,
+    --table-striped-bg: color-mix(in srgb, var(--table-color) var(--table-striped-bg-factor), transparent),
+    --table-active-color: var(--table-color),
+    --table-active-bg-factor: .1,
+    --table-active-bg: color-mix(in srgb, var(--table-color) var(--table-active-bg-factor), transparent),
+    --table-hover-color: var(--table-color),
+    --table-hover-bg-factor: .075,
+    --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
+  ),
+  $table-tokens
+);
+// scss-docs-end table-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 $table-striped-order: odd !default;

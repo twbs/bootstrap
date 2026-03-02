@@ -9,23 +9,24 @@
 $tooltip-tokens: () !default;
 
 // scss-docs-start tooltip-tokens
-$tooltip-tokens-internal: (
-  --tooltip-zindex: #{$zindex-tooltip},
-  --tooltip-max-width: 200px,
-  --tooltip-padding-x: #{$spacer * .75},
-  --tooltip-padding-y: #{$spacer * .375},
-  --tooltip-font-size: var(--font-size-sm),
-  --tooltip-color: var(--bg-body),
-  --tooltip-bg: var(--fg-body),
-  --tooltip-border-radius: var(--border-radius),
-  --tooltip-opacity: .95,
-  --tooltip-arrow-width: .8rem,
-  --tooltip-arrow-height: .4rem,
-) !default;
-// scss-docs-end tooltip-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$tooltip-tokens: map.merge($tooltip-tokens-internal, $tooltip-tokens);
+$tooltip-tokens: map.merge(
+  (
+    --tooltip-zindex: #{$zindex-tooltip},
+    --tooltip-max-width: 200px,
+    --tooltip-padding-x: #{$spacer * .75},
+    --tooltip-padding-y: #{$spacer * .375},
+    --tooltip-font-size: var(--font-size-sm),
+    --tooltip-color: var(--bg-body),
+    --tooltip-bg: var(--fg-body),
+    --tooltip-border-radius: var(--border-radius),
+    --tooltip-opacity: .95,
+    --tooltip-arrow-width: .8rem,
+    --tooltip-arrow-height: .4rem,
+  ),
+  $tooltip-tokens
+);
+// scss-docs-end tooltip-tokens
 
 // Form tooltips must come after regular tooltips
 // scss-docs-start tooltip-feedback-variables

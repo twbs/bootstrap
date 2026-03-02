@@ -9,29 +9,30 @@
 $list-group-tokens: () !default;
 
 // scss-docs-start list-group-tokens
-$list-group-tokens-internal: (
-  --list-group-color: var(--fg-body),
-  --list-group-bg: var(--bg-body),
-  --list-group-border-color: var(--border-color),
-  --list-group-border-width: var(--border-width),
-  --list-group-border-radius: var(--border-radius),
-  --list-group-item-padding-x: #{$spacer},
-  --list-group-item-padding-y: #{$spacer * .5},
-  --list-group-action-color: var(--fg-2),
-  --list-group-action-hover-color: var(--fg-1),
-  --list-group-action-hover-bg: var(--bg-1),
-  --list-group-action-active-color: var(--fg-body),
-  --list-group-action-active-bg: var(--bg-2),
-  --list-group-disabled-color: var(--fg-3),
-  --list-group-disabled-bg: var(--bg-body),
-  --list-group-active-color: var(--primary-contrast),
-  --list-group-active-bg: var(--primary-bg),
-  --list-group-active-border-color: var(--primary-bg),
-) !default;
-// scss-docs-end list-group-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$list-group-tokens: map.merge($list-group-tokens-internal, $list-group-tokens);
+$list-group-tokens: map.merge(
+  (
+    --list-group-color: var(--fg-body),
+    --list-group-bg: var(--bg-body),
+    --list-group-border-color: var(--border-color),
+    --list-group-border-width: var(--border-width),
+    --list-group-border-radius: var(--border-radius),
+    --list-group-item-padding-x: #{$spacer},
+    --list-group-item-padding-y: #{$spacer * .5},
+    --list-group-action-color: var(--fg-2),
+    --list-group-action-hover-color: var(--fg-1),
+    --list-group-action-hover-bg: var(--bg-1),
+    --list-group-action-active-color: var(--fg-body),
+    --list-group-action-active-bg: var(--bg-2),
+    --list-group-disabled-color: var(--fg-3),
+    --list-group-disabled-bg: var(--bg-body),
+    --list-group-active-color: var(--primary-contrast),
+    --list-group-active-bg: var(--primary-bg),
+    --list-group-active-border-color: var(--primary-bg),
+  ),
+  $list-group-tokens
+);
+// scss-docs-end list-group-tokens
 
 @layer components {
   .list-group {

@@ -13,20 +13,21 @@
 $check-tokens: () !default;
 
 // scss-docs-start check-tokens
-$check-tokens-internal: (
-  --check-bg: transparent,
-  --check-border-color: var(--border-color),
-  --check-checked-bg: var(--primary-base),
-  --check-checked-border-color: var(--primary-base),
-  --check-indeterminate-bg: var(--primary-base),
-  --check-indeterminate-border-color: var(--primary-base),
-  --check-disabled-bg: var(--bg-3),
-  --check-disabled-opacity: .65,
-) !default;
-// scss-docs-end check-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$check-tokens: map.merge($check-tokens-internal, $check-tokens);
+$check-tokens: map.merge(
+  (
+    --check-bg: transparent,
+    --check-border-color: var(--border-color),
+    --check-checked-bg: var(--primary-base),
+    --check-checked-border-color: var(--primary-base),
+    --check-indeterminate-bg: var(--primary-base),
+    --check-indeterminate-border-color: var(--primary-base),
+    --check-disabled-bg: var(--bg-3),
+    --check-disabled-opacity: .65,
+  ),
+  $check-tokens
+);
+// scss-docs-end check-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {

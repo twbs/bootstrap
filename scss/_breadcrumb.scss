@@ -9,24 +9,25 @@
 $breadcrumb-tokens: () !default;
 
 // scss-docs-start breadcrumb-tokens
-$breadcrumb-tokens-internal: (
-  --breadcrumb-margin-bottom: 1rem,
-  --breadcrumb-font-size: inherit,
-  --breadcrumb-bg: transparent,
-  --breadcrumb-border-radius: var(--border-radius),
-  --breadcrumb-divider-color: var(--fg-4),
-  --breadcrumb-link-padding-x: .75rem,
-  --breadcrumb-link-padding-y: .25rem,
-  --breadcrumb-link-color: var(--fg-3),
-  --breadcrumb-link-hover-color: var(--fg-2),
-  --breadcrumb-link-hover-bg: var(--bg-1),
-  --breadcrumb-link-active-color: var(--fg-1),
-  --breadcrumb-link-border-radius: var(--border-radius-lg),
-) !default;
-// scss-docs-end breadcrumb-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$breadcrumb-tokens: map.merge($breadcrumb-tokens-internal, $breadcrumb-tokens);
+$breadcrumb-tokens: map.merge(
+  (
+    --breadcrumb-margin-bottom: 1rem,
+    --breadcrumb-font-size: inherit,
+    --breadcrumb-bg: transparent,
+    --breadcrumb-border-radius: var(--border-radius),
+    --breadcrumb-divider-color: var(--fg-4),
+    --breadcrumb-link-padding-x: .75rem,
+    --breadcrumb-link-padding-y: .25rem,
+    --breadcrumb-link-color: var(--fg-3),
+    --breadcrumb-link-hover-color: var(--fg-2),
+    --breadcrumb-link-hover-bg: var(--bg-1),
+    --breadcrumb-link-active-color: var(--fg-1),
+    --breadcrumb-link-border-radius: var(--border-radius-lg),
+  ),
+  $breadcrumb-tokens
+);
+// scss-docs-end breadcrumb-tokens
 
 @layer components {
   .breadcrumb {

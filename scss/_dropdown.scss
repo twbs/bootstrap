@@ -10,42 +10,43 @@
 $dropdown-tokens: () !default;
 
 // scss-docs-start dropdown-tokens
-$dropdown-tokens-internal: (
-  --dropdown-zindex: #{$zindex-dropdown},
-  --dropdown-gap: .125rem,
-  --dropdown-min-width: 10rem,
-  --dropdown-padding-x: .25rem,
-  --dropdown-padding-y: .25rem,
-  --dropdown-spacer: .125rem,
-  --dropdown-font-size: #{$font-size-base},
-  --dropdown-color: var(--fg-body),
-  --dropdown-bg: var(--bg-body),
-  --dropdown-border-color: var(--border-color-translucent),
-  --dropdown-border-radius: var(--border-radius-lg),
-  --dropdown-border-width: var(--border-width),
-  --dropdown-inner-border-radius: calc(var(--dropdown-border-radius) - var(--dropdown-border-width)),
-  --dropdown-box-shadow: var(--box-shadow),
-  --dropdown-divider-bg: var(--border-color-translucent),
-  --dropdown-divider-margin-y: .125rem,
-  --dropdown-divider-margin-x: .25rem,
-  --dropdown-link-color: var(--fg-body),
-  --dropdown-link-hover-color: var(--fg-body),
-  --dropdown-link-hover-bg: var(--bg-1),
-  --dropdown-link-active-color: var(--primary-contrast),
-  --dropdown-link-active-bg: var(--primary-bg),
-  --dropdown-link-disabled-color: var(--fg-3),
-  --dropdown-item-gap: .5rem,
-  --dropdown-item-padding-x: .75rem,
-  --dropdown-item-padding-y: .25rem,
-  --dropdown-item-border-radius: var(--border-radius),
-  --dropdown-header-color: var(--fg-2),
-  --dropdown-header-padding-x: .75rem,
-  --dropdown-header-padding-y: .25rem,
-) !default;
-// scss-docs-end dropdown-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$dropdown-tokens: map.merge($dropdown-tokens-internal, $dropdown-tokens);
+$dropdown-tokens: map.merge(
+  (
+    --dropdown-zindex: #{$zindex-dropdown},
+    --dropdown-gap: .125rem,
+    --dropdown-min-width: 10rem,
+    --dropdown-padding-x: .25rem,
+    --dropdown-padding-y: .25rem,
+    --dropdown-spacer: .125rem,
+    --dropdown-font-size: #{$font-size-base},
+    --dropdown-color: var(--fg-body),
+    --dropdown-bg: var(--bg-body),
+    --dropdown-border-color: var(--border-color-translucent),
+    --dropdown-border-radius: var(--border-radius-lg),
+    --dropdown-border-width: var(--border-width),
+    --dropdown-inner-border-radius: calc(var(--dropdown-border-radius) - var(--dropdown-border-width)),
+    --dropdown-box-shadow: var(--box-shadow),
+    --dropdown-divider-bg: var(--border-color-translucent),
+    --dropdown-divider-margin-y: .125rem,
+    --dropdown-divider-margin-x: .25rem,
+    --dropdown-link-color: var(--fg-body),
+    --dropdown-link-hover-color: var(--fg-body),
+    --dropdown-link-hover-bg: var(--bg-1),
+    --dropdown-link-active-color: var(--primary-contrast),
+    --dropdown-link-active-bg: var(--primary-bg),
+    --dropdown-link-disabled-color: var(--fg-3),
+    --dropdown-item-gap: .5rem,
+    --dropdown-item-padding-x: .75rem,
+    --dropdown-item-padding-y: .25rem,
+    --dropdown-item-border-radius: var(--border-radius),
+    --dropdown-header-color: var(--fg-2),
+    --dropdown-header-padding-x: .75rem,
+    --dropdown-header-padding-y: .25rem,
+  ),
+  $dropdown-tokens
+);
+// scss-docs-end dropdown-tokens
 
 @layer components {
   .dropdown {

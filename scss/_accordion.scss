@@ -9,29 +9,30 @@
 $accordion-tokens: () !default;
 
 // scss-docs-start accordion-tokens
-$accordion-tokens-internal: (
-  --accordion-padding-x: 1.25rem,
-  --accordion-padding-y: 1rem,
-  --accordion-color: var(--fg-body),
-  --accordion-bg: var(--bg-body),
-  --accordion-transition-property: "color, background-color, border-radius",
-  --accordion-transition-timing: ".15s ease-in-out",
-  --accordion-transition: var(--accordion-transition-property) var(--accordion-timing),
-  --accordion-border-color: var(--border-color),
-  --accordion-border-width: var(--border-width),
-  --accordion-border-radius: var(--accordion-radius, var(--border-radius-lg)),
-  --accordion-btn-color: var(--fg-2),
-  --accordion-btn-bg: var(--bg-body),
-  --accordion-btn-icon-width: 1rem,
-  --accordion-btn-icon-transform: rotate(-180deg),
-  --accordion-btn-icon-transition: transform .2s ease-in-out,
-  --accordion-active-color: var(--fg),
-  --accordion-active-bg: var(--bg-2),
-) !default;
-// scss-docs-end accordion-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$accordion-tokens: map.merge($accordion-tokens-internal, $accordion-tokens);
+$accordion-tokens: map.merge(
+  (
+    --accordion-padding-x: 1.25rem,
+    --accordion-padding-y: 1rem,
+    --accordion-color: var(--fg-body),
+    --accordion-bg: var(--bg-body),
+    --accordion-transition-property: "color, background-color, border-radius",
+    --accordion-transition-timing: ".15s ease-in-out",
+    --accordion-transition: var(--accordion-transition-property) var(--accordion-timing),
+    --accordion-border-color: var(--border-color),
+    --accordion-border-width: var(--border-width),
+    --accordion-border-radius: var(--accordion-radius, var(--border-radius-lg)),
+    --accordion-btn-color: var(--fg-2),
+    --accordion-btn-bg: var(--bg-body),
+    --accordion-btn-icon-width: 1rem,
+    --accordion-btn-icon-transform: rotate(-180deg),
+    --accordion-btn-icon-transition: transform .2s ease-in-out,
+    --accordion-active-color: var(--fg),
+    --accordion-active-bg: var(--bg-2),
+  ),
+  $accordion-tokens
+);
+// scss-docs-end accordion-tokens
 
 @layer components {
   .accordion {

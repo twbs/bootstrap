@@ -6,33 +6,35 @@
 $spinner-border-tokens: () !default;
 
 // scss-docs-start spinner-border-tokens
-$spinner-border-tokens-internal: (
-  --spinner-width: 2rem,
-  --spinner-height: 2rem,
-  --spinner-vertical-align: -.125em,
-  --spinner-border-width: .25em,
-  --spinner-animation-speed: .75s,
-  --spinner-animation-name: spinner-border,
-) !default;
-// scss-docs-end spinner-border-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$spinner-border-tokens: map.merge($spinner-border-tokens-internal, $spinner-border-tokens);
+$spinner-border-tokens: map.merge(
+  (
+    --spinner-width: 2rem,
+    --spinner-height: 2rem,
+    --spinner-vertical-align: -.125em,
+    --spinner-border-width: .25em,
+    --spinner-animation-speed: .75s,
+    --spinner-animation-name: spinner-border,
+  ),
+  $spinner-border-tokens
+);
+// scss-docs-end spinner-border-tokens
 
 $spinner-grow-tokens: () !default;
 
 // scss-docs-start spinner-grow-tokens
-$spinner-grow-tokens-internal: (
-  --spinner-width: 2rem,
-  --spinner-height: 2rem,
-  --spinner-vertical-align: -.125em,
-  --spinner-animation-speed: .75s,
-  --spinner-animation-name: spinner-grow,
-) !default;
-// scss-docs-end spinner-grow-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$spinner-grow-tokens: map.merge($spinner-grow-tokens-internal, $spinner-grow-tokens);
+$spinner-grow-tokens: map.merge(
+  (
+    --spinner-width: 2rem,
+    --spinner-height: 2rem,
+    --spinner-vertical-align: -.125em,
+    --spinner-animation-speed: .75s,
+    --spinner-animation-name: spinner-grow,
+  ),
+  $spinner-grow-tokens
+);
+// scss-docs-end spinner-grow-tokens
 
 // stylelint-enable custom-property-no-missing-var-function
 

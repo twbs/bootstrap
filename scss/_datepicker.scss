@@ -10,30 +10,31 @@
 $datepicker-tokens: () !default;
 
 // scss-docs-start datepicker-tokens
-$datepicker-tokens-internal: (
-  --datepicker-padding: 1rem,
-  --datepicker-bg: var(--bg-body),
-  --datepicker-color: var(--fg-body),
-  --datepicker-border-color: var(--border-color-translucent),
-  --datepicker-border-width: var(--border-width),
-  --datepicker-border-radius: var(--border-radius-lg),
-  --datepicker-box-shadow: var(--box-shadow),
-  --datepicker-font-size: var(--font-size-sm),
-  --datepicker-min-width: 280px,
-  --datepicker-zindex: #{$zindex-dropdown},
-  --datepicker-header-font-weight: 600,
-  --datepicker-weekday-color: var(--fg-3),
-  --datepicker-day-hover-bg: var(--bg-1),
-  --datepicker-day-selected-bg: var(--primary-bg),
-  --datepicker-day-selected-color: var(--primary-contrast),
-  --datepicker-day-today-bg: var(--bg-2),
-  --datepicker-day-today-color: var(--fg-1),
-  --datepicker-day-disabled-color: var(--fg-4),
-) !default;
-// scss-docs-end datepicker-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$datepicker-tokens: map.merge($datepicker-tokens-internal, $datepicker-tokens);
+$datepicker-tokens: map.merge(
+  (
+    --datepicker-padding: 1rem,
+    --datepicker-bg: var(--bg-body),
+    --datepicker-color: var(--fg-body),
+    --datepicker-border-color: var(--border-color-translucent),
+    --datepicker-border-width: var(--border-width),
+    --datepicker-border-radius: var(--border-radius-lg),
+    --datepicker-box-shadow: var(--box-shadow),
+    --datepicker-font-size: var(--font-size-sm),
+    --datepicker-min-width: 280px,
+    --datepicker-zindex: #{$zindex-dropdown},
+    --datepicker-header-font-weight: 600,
+    --datepicker-weekday-color: var(--fg-3),
+    --datepicker-day-hover-bg: var(--bg-1),
+    --datepicker-day-selected-bg: var(--primary-bg),
+    --datepicker-day-selected-color: var(--primary-contrast),
+    --datepicker-day-today-bg: var(--bg-2),
+    --datepicker-day-today-color: var(--fg-1),
+    --datepicker-day-disabled-color: var(--fg-4),
+  ),
+  $datepicker-tokens
+);
+// scss-docs-end datepicker-tokens
 
 @layer components {
   [data-vc="calendar"] {

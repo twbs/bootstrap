@@ -8,32 +8,33 @@
 $popover-tokens: () !default;
 
 // scss-docs-start popover-tokens
-$popover-tokens-internal: (
-  --popover-zindex: #{$zindex-popover},
-  --popover-max-width: 280px,
-  --popover-font-size: var(--font-size-sm),
-  --popover-bg: var(--bg-body),
-  --popover-border-width: var(--border-width),
-  --popover-border-color: var(--border-color-translucent),
-  --popover-border-radius: var(--border-radius-lg),
-  --popover-inner-border-radius: calc(var(--border-radius-lg) - var(--border-width)),
-  --popover-box-shadow: var(--box-shadow),
-  --popover-header-padding-x: #{$spacer},
-  --popover-header-padding-y: #{$spacer * .75},
-  --popover-header-font-size: #{$font-size-base},
-  --popover-header-color: #{$headings-color},
-  --popover-header-bg: var(--bg-1),
-  --popover-body-padding-x: #{$spacer},
-  --popover-body-padding-y: #{$spacer * .75},
-  --popover-body-color: var(--fg-body),
-  --popover-arrow-width: 1rem,
-  --popover-arrow-height: .5rem,
-  --popover-arrow-border: var(--popover-border-color),
-) !default;
-// scss-docs-end popover-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$popover-tokens: map.merge($popover-tokens-internal, $popover-tokens);
+$popover-tokens: map.merge(
+  (
+    --popover-zindex: #{$zindex-popover},
+    --popover-max-width: 280px,
+    --popover-font-size: var(--font-size-sm),
+    --popover-bg: var(--bg-body),
+    --popover-border-width: var(--border-width),
+    --popover-border-color: var(--border-color-translucent),
+    --popover-border-radius: var(--border-radius-lg),
+    --popover-inner-border-radius: calc(var(--border-radius-lg) - var(--border-width)),
+    --popover-box-shadow: var(--box-shadow),
+    --popover-header-padding-x: #{$spacer},
+    --popover-header-padding-y: #{$spacer * .75},
+    --popover-header-font-size: #{$font-size-base},
+    --popover-header-color: #{$headings-color},
+    --popover-header-bg: var(--bg-1),
+    --popover-body-padding-x: #{$spacer},
+    --popover-body-padding-y: #{$spacer * .75},
+    --popover-body-color: var(--fg-body),
+    --popover-arrow-width: 1rem,
+    --popover-arrow-height: .5rem,
+    --popover-arrow-border: var(--popover-border-color),
+  ),
+  $popover-tokens
+);
+// scss-docs-end popover-tokens
 
 @layer components {
   .popover {

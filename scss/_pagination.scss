@@ -13,31 +13,32 @@
 $pagination-tokens: () !default;
 
 // scss-docs-start pagination-tokens
-$pagination-tokens-internal: (
-  --pagination-padding-x: .75rem,
-  --pagination-padding-y: .375rem,
-  --pagination-font-size: var(--font-size-base),
-  --pagination-color: var(--link-color),
-  --pagination-bg: var(--bg-body),
-  --pagination-border-width: var(--border-width),
-  --pagination-border-color: var(--border-color),
-  --pagination-border-radius: var(--border-radius),
-  --pagination-hover-color: var(--link-hover-color),
-  --pagination-hover-bg: var(--bg-1),
-  --pagination-hover-border-color: var(--border-color),
-  --pagination-focus-color: var(--link-hover-color),
-  --pagination-focus-bg: var(--bg-2),
-  --pagination-active-color: var(--primary-contrast),
-  --pagination-active-bg: var(--primary-bg),
-  --pagination-active-border-color: var(--primary-bg),
-  --pagination-disabled-color: var(--fg-3),
-  --pagination-disabled-bg: var(--bg-2),
-  --pagination-disabled-border-color: var(--border-color),
-) !default;
-// scss-docs-end pagination-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$pagination-tokens: map.merge($pagination-tokens-internal, $pagination-tokens);
+$pagination-tokens: map.merge(
+  (
+    --pagination-padding-x: .75rem,
+    --pagination-padding-y: .375rem,
+    --pagination-font-size: var(--font-size-base),
+    --pagination-color: var(--link-color),
+    --pagination-bg: var(--bg-body),
+    --pagination-border-width: var(--border-width),
+    --pagination-border-color: var(--border-color),
+    --pagination-border-radius: var(--border-radius),
+    --pagination-hover-color: var(--link-hover-color),
+    --pagination-hover-bg: var(--bg-1),
+    --pagination-hover-border-color: var(--border-color),
+    --pagination-focus-color: var(--link-hover-color),
+    --pagination-focus-bg: var(--bg-2),
+    --pagination-active-color: var(--primary-contrast),
+    --pagination-active-bg: var(--primary-bg),
+    --pagination-active-border-color: var(--primary-bg),
+    --pagination-disabled-color: var(--fg-3),
+    --pagination-disabled-bg: var(--bg-2),
+    --pagination-disabled-border-color: var(--border-color),
+  ),
+  $pagination-tokens
+);
+// scss-docs-end pagination-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start pagination-mixin

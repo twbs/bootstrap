@@ -10,25 +10,26 @@
 $form-floating-tokens: () !default;
 
 // scss-docs-start form-floating-tokens
-$form-floating-tokens-internal: (
-  --form-floating-height: calc(3.5rem + (var(--border-width) * 2)),
-  --form-floating-line-height: 1.25,
-  --form-floating-padding-x: var(--btn-input-padding-x),
-  --form-floating-padding-y: 1rem,
-  --form-floating-input-padding-t: 1.625rem,
-  --form-floating-input-padding-b: .625rem,
-  --form-floating-label-height: 1.5em,
-  --form-floating-label-opacity: .65,
-  --form-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem),
-  --form-floating-label-disabled-color: var(--fg-3),
-  --form-floating-transition-property: "opacity, transform",
-  --form-floating-transition-timing: .1s ease-in-out,
-  --form-floating-transition: var(--form-floating-transition-property) var(--form-floating-transition-timing),
-) !default;
-// scss-docs-end form-floating-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$form-floating-tokens: map.merge($form-floating-tokens-internal, $form-floating-tokens);
+$form-floating-tokens: map.merge(
+  (
+    --form-floating-height: calc(3.5rem + (var(--border-width) * 2)),
+    --form-floating-line-height: 1.25,
+    --form-floating-padding-x: var(--btn-input-padding-x),
+    --form-floating-padding-y: 1rem,
+    --form-floating-input-padding-t: 1.625rem,
+    --form-floating-input-padding-b: .625rem,
+    --form-floating-label-height: 1.5em,
+    --form-floating-label-opacity: .65,
+    --form-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem),
+    --form-floating-label-disabled-color: var(--fg-3),
+    --form-floating-transition-property: "opacity, transform",
+    --form-floating-transition-timing: .1s ease-in-out,
+    --form-floating-transition: var(--form-floating-transition-property) var(--form-floating-transition-timing),
+  ),
+  $form-floating-tokens
+);
+// scss-docs-end form-floating-tokens
 
 @layer forms {
   .form-floating {

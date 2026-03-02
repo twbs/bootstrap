@@ -7,28 +7,29 @@ $toast-tokens: () !default;
 
 // scss-docs-start toast-tokens
 // stylelint-disable custom-property-no-missing-var-function
-$toast-tokens-internal: (
-  --toast-zindex: #{$zindex-toast},
-  --toast-padding-x: .75rem,
-  --toast-padding-y: .5rem,
-  --toast-spacing: #{$container-padding-x},
-  --toast-max-width: 350px,
-  --toast-font-size: .875rem,
-  --toast-color: null,
-  --toast-bg: rgba(var(--body-bg-rgb), .85),
-  --toast-border-width: var(--border-width),
-  --toast-border-color: var(--border-color-translucent),
-  --toast-border-radius: var(--border-radius),
-  --toast-box-shadow: var(--box-shadow),
-  --toast-header-color: var(--fg-3),
-  --toast-header-bg: rgba(var(--body-bg-rgb), .85),
-  --toast-header-border-color: var(--border-color-translucent),
-) !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$toast-tokens: map.merge(
+  (
+    --toast-zindex: #{$zindex-toast},
+    --toast-padding-x: .75rem,
+    --toast-padding-y: .5rem,
+    --toast-spacing: #{$container-padding-x},
+    --toast-max-width: 350px,
+    --toast-font-size: .875rem,
+    --toast-color: null,
+    --toast-bg: rgba(var(--body-bg-rgb), .85),
+    --toast-border-width: var(--border-width),
+    --toast-border-color: var(--border-color-translucent),
+    --toast-border-radius: var(--border-radius),
+    --toast-box-shadow: var(--box-shadow),
+    --toast-header-color: var(--fg-3),
+    --toast-header-bg: rgba(var(--body-bg-rgb), .85),
+    --toast-header-border-color: var(--border-color-translucent),
+  ),
+  $toast-tokens
+);
 // stylelint-enable custom-property-no-missing-var-function
 // scss-docs-end toast-tokens
-
-// stylelint-disable-next-line scss/dollar-variable-default
-$toast-tokens: map.merge($toast-tokens-internal, $toast-tokens);
 
 @layer components {
   .toast {

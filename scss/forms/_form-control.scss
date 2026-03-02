@@ -14,36 +14,37 @@
 $form-control-tokens: () !default;
 
 // scss-docs-start form-control-tokens
-$form-control-tokens-internal: (
-  --control-min-height: var(--btn-input-min-height),
-  --control-padding-y: var(--btn-input-padding-y),
-  --control-padding-x: var(--btn-input-padding-x),
-  --control-font-size: var(--btn-input-font-size),
-  --control-line-height: var(--btn-input-line-height),
-  --control-color: var(--input-color),
-  --control-bg: var(--input-bg),
-  --control-border-width: var(--border-width),
-  --control-border-color: var(--border-color),
-  --control-border-radius: var(--border-radius),
-  --control-box-shadow: var(--box-shadow-inset),
-  --control-action-bg: var(--bg-1),
-  --control-action-hover-bg: var(--bg-2),
-  --control-transition-property: "border-color, box-shadow",
-  --control-transition-timing: .15s ease-in-out,
-  --control-transition: var(--control-transition-property) var(--control-transition-timing),
-  --control-placeholder-color: var(--fg-3),
-  --control-disabled-color: var(--control-color),
-  --control-disabled-bg: var(--bg-2),
-  --control-disabled-border-color: var(--control-border-color),
-  --control-select-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#00000080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
-  --control-select-bg-position: right .75rem center,
-  --control-select-bg-size: 16px 12px,
-  --control-select-bg-dark: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
-) !default;
-// scss-docs-end form-control-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$form-control-tokens: map.merge($form-control-tokens-internal, $form-control-tokens);
+$form-control-tokens: map.merge(
+  (
+    --control-min-height: var(--btn-input-min-height),
+    --control-padding-y: var(--btn-input-padding-y),
+    --control-padding-x: var(--btn-input-padding-x),
+    --control-font-size: var(--btn-input-font-size),
+    --control-line-height: var(--btn-input-line-height),
+    --control-color: var(--input-color),
+    --control-bg: var(--input-bg),
+    --control-border-width: var(--border-width),
+    --control-border-color: var(--border-color),
+    --control-border-radius: var(--border-radius),
+    --control-box-shadow: var(--box-shadow-inset),
+    --control-action-bg: var(--bg-1),
+    --control-action-hover-bg: var(--bg-2),
+    --control-transition-property: "border-color, box-shadow",
+    --control-transition-timing: .15s ease-in-out,
+    --control-transition: var(--control-transition-property) var(--control-transition-timing),
+    --control-placeholder-color: var(--fg-3),
+    --control-disabled-color: var(--control-color),
+    --control-disabled-bg: var(--bg-2),
+    --control-disabled-border-color: var(--control-border-color),
+    --control-select-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#00000080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
+    --control-select-bg-position: right .75rem center,
+    --control-select-bg-size: 16px 12px,
+    --control-select-bg-dark: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
+  ),
+  $form-control-tokens
+);
+// scss-docs-end form-control-tokens
 
 // scss-docs-start form-control-sizes
 $form-control-sizes: (

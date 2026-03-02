@@ -11,21 +11,22 @@
 $chip-input-tokens: () !default;
 
 // scss-docs-start chip-input-tokens
-$chip-input-tokens-internal: (
-  --chip-input-padding-y: .75rem,
-  --chip-input-padding-x: .75rem,
-  --chip-input-gap: .375rem,
-  --chip-input-ghost-min-width: 5rem,
-  --control-color: var(--fg-body),
-  --control-bg: var(--bg-body),
-  --control-border-width: var(--border-width),
-  --control-border-color: var(--border-color),
-  --control-border-radius: var(--border-radius),
-) !default;
-// scss-docs-end chip-input-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$chip-input-tokens: map.merge($chip-input-tokens-internal, $chip-input-tokens);
+$chip-input-tokens: map.merge(
+  (
+    --chip-input-padding-y: .75rem,
+    --chip-input-padding-x: .75rem,
+    --chip-input-gap: .375rem,
+    --chip-input-ghost-min-width: 5rem,
+    --control-color: var(--fg-body),
+    --control-bg: var(--bg-body),
+    --control-border-width: var(--border-width),
+    --control-border-color: var(--border-color),
+    --control-border-radius: var(--border-radius),
+  ),
+  $chip-input-tokens
+);
+// scss-docs-end chip-input-tokens
 
 @layer forms {
   .chip-input {

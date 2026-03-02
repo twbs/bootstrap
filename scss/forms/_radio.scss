@@ -13,18 +13,19 @@
 $radio-tokens: () !default;
 
 // scss-docs-start radio-tokens
-$radio-tokens-internal: (
-  --radio-bg: transparent,
-  --radio-border-color: var(--border-color),
-  --radio-checked-bg: var(--primary-base),
-  --radio-checked-border-color: var(--primary-base),
-  --radio-disabled-bg: var(--bg-3),
-  --radio-disabled-opacity: .65,
-) !default;
-// scss-docs-end radio-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$radio-tokens: map.merge($radio-tokens-internal, $radio-tokens);
+$radio-tokens: map.merge(
+  (
+    --radio-bg: transparent,
+    --radio-border-color: var(--border-color),
+    --radio-checked-bg: var(--primary-base),
+    --radio-checked-border-color: var(--primary-base),
+    --radio-disabled-bg: var(--bg-3),
+    --radio-disabled-opacity: .65,
+  ),
+  $radio-tokens
+);
+// scss-docs-end radio-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {

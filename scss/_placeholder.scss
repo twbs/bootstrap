@@ -6,14 +6,15 @@
 $placeholder-tokens: () !default;
 
 // scss-docs-start placeholder-tokens
-$placeholder-tokens-internal: (
-  --placeholder-opacity-max: .5,
-  --placeholder-opacity-min: .2,
-) !default;
-// scss-docs-end placeholder-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$placeholder-tokens: map.merge($placeholder-tokens-internal, $placeholder-tokens);
+$placeholder-tokens: map.merge(
+  (
+    --placeholder-opacity-max: .5,
+    --placeholder-opacity-min: .2,
+  ),
+  $placeholder-tokens
+);
+// scss-docs-end placeholder-tokens
 
 @layer components {
   .placeholder {

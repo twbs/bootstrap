@@ -8,15 +8,16 @@
 $otp-tokens: () !default;
 
 // scss-docs-start otp-tokens
-$otp-tokens-internal: (
-  --otp-size: var(--btn-input-lg-min-height),
-  --otp-font-size: var(--btn-input-font-size),
-  --otp-gap: .5rem,
-) !default;
-// scss-docs-end otp-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$otp-tokens: map.merge($otp-tokens-internal, $otp-tokens);
+$otp-tokens: map.merge(
+  (
+    --otp-size: var(--btn-input-lg-min-height),
+    --otp-font-size: var(--btn-input-font-size),
+    --otp-gap: .5rem,
+  ),
+  $otp-tokens
+);
+// scss-docs-end otp-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start otp-sizes

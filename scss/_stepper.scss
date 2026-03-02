@@ -10,18 +10,19 @@
 $stepper-tokens: () !default;
 
 // scss-docs-start stepper-tokens
-$stepper-tokens-internal: (
-  --stepper-size: 2rem,
-  --stepper-gap: 1rem,
-  --stepper-bg: var(--bg-2),
-  --stepper-track-size: .25rem,
-  --stepper-active-color: var(--primary-contrast),
-  --stepper-active-bg: var(--primary-bg),
-) !default;
-// scss-docs-end stepper-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$stepper-tokens: map.merge($stepper-tokens-internal, $stepper-tokens);
+$stepper-tokens: map.merge(
+  (
+    --stepper-size: 2rem,
+    --stepper-gap: 1rem,
+    --stepper-bg: var(--bg-2),
+    --stepper-track-size: .25rem,
+    --stepper-active-color: var(--primary-contrast),
+    --stepper-active-bg: var(--primary-bg),
+  ),
+  $stepper-tokens
+);
+// scss-docs-end stepper-tokens
 
 // scss-docs-start stepper-horizontal-mixin
 @mixin stepper-horizontal() {

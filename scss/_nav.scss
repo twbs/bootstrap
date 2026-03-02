@@ -9,70 +9,74 @@
 $nav-tokens: () !default;
 
 // scss-docs-start nav-tokens
-$nav-tokens-internal: (
-  --nav-gap: .125rem,
-  --nav-link-gap: .5rem,
-  --nav-link-align: center,
-  --nav-link-justify: center,
-  --nav-link-padding-x: 1rem,
-  --nav-link-padding-y: .5rem,
-  --nav-link-color: var(--fg-2),
-  --nav-link-hover-color: var(--fg-1),
-  --nav-link-hover-bg: var(--bg-1),
-  --nav-link-active-color: var(--fg-body),
-  --nav-link-active-bg: var(--bg-2),
-  --nav-link-disabled-color: var(--fg-4),
-  --nav-link-transition-property: "color, background-color, border-color",
-  --nav-link-transition-timing: .15s ease-in-out,
-  --nav-link-transition: var(--nav-link-transition-property) var(--nav-link-transition-timing),
-) !default;
-// scss-docs-end nav-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$nav-tokens: map.merge($nav-tokens-internal, $nav-tokens);
+$nav-tokens: map.merge(
+  (
+    --nav-gap: .125rem,
+    --nav-link-gap: .5rem,
+    --nav-link-align: center,
+    --nav-link-justify: center,
+    --nav-link-padding-x: 1rem,
+    --nav-link-padding-y: .5rem,
+    --nav-link-color: var(--fg-2),
+    --nav-link-hover-color: var(--fg-1),
+    --nav-link-hover-bg: var(--bg-1),
+    --nav-link-active-color: var(--fg-body),
+    --nav-link-active-bg: var(--bg-2),
+    --nav-link-disabled-color: var(--fg-4),
+    --nav-link-transition-property: "color, background-color, border-color",
+    --nav-link-transition-timing: .15s ease-in-out,
+    --nav-link-transition: var(--nav-link-transition-property) var(--nav-link-transition-timing),
+  ),
+  $nav-tokens
+);
+// scss-docs-end nav-tokens
 
 $nav-tabs-tokens: () !default;
 
 // scss-docs-start nav-tabs-tokens
-$nav-tabs-tokens-internal: (
-  --nav-tabs-border-width: var(--border-width),
-  --nav-tabs-border-color: var(--border-color),
-  --nav-tabs-border-radius: var(--border-radius),
-  --nav-tabs-link-hover-border-color: var(--border-subtle),
-  --nav-tabs-link-active-color: var(--fg-color),
-  --nav-tabs-link-active-bg: var(--bg-body),
-  --nav-tabs-link-active-border-color: var(--border-color) var(--border-color) var(--bg-body),
-) !default;
-// scss-docs-end nav-tabs-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$nav-tabs-tokens: map.merge($nav-tabs-tokens-internal, $nav-tabs-tokens);
+$nav-tabs-tokens: map.merge(
+  (
+    --nav-tabs-border-width: var(--border-width),
+    --nav-tabs-border-color: var(--border-color),
+    --nav-tabs-border-radius: var(--border-radius),
+    --nav-tabs-link-hover-border-color: var(--border-subtle),
+    --nav-tabs-link-active-color: var(--fg-color),
+    --nav-tabs-link-active-bg: var(--bg-body),
+    --nav-tabs-link-active-border-color: var(--border-color) var(--border-color) var(--bg-body),
+  ),
+  $nav-tabs-tokens
+);
+// scss-docs-end nav-tabs-tokens
 
 $nav-pills-tokens: () !default;
 
 // scss-docs-start nav-pills-tokens
-$nav-pills-tokens-internal: (
-  --nav-pills-link-active-color: var(--component-active-color),
-  --nav-pills-link-active-bg: var(--component-active-bg),
-) !default;
-// scss-docs-end nav-pills-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$nav-pills-tokens: map.merge($nav-pills-tokens-internal, $nav-pills-tokens);
+$nav-pills-tokens: map.merge(
+  (
+    --nav-pills-link-active-color: var(--component-active-color),
+    --nav-pills-link-active-bg: var(--component-active-bg),
+  ),
+  $nav-pills-tokens
+);
+// scss-docs-end nav-pills-tokens
 
 $nav-underline-tokens: () !default;
 
 // scss-docs-start nav-underline-tokens
-$nav-underline-tokens-internal: (
-  --nav-gap: 1rem,
-  --nav-link-active-bg: transparent,
-  --nav-underline-border-width: .125rem,
-  --nav-underline-link-active-color: var(--fg-color),
-) !default;
-// scss-docs-end nav-underline-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$nav-underline-tokens: map.merge($nav-underline-tokens-internal, $nav-underline-tokens);
+$nav-underline-tokens: map.merge(
+  (
+    --nav-gap: 1rem,
+    --nav-link-active-bg: transparent,
+    --nav-underline-border-width: .125rem,
+    --nav-underline-link-active-color: var(--fg-color),
+  ),
+  $nav-underline-tokens
+);
+// scss-docs-end nav-underline-tokens
 
 // Base class
 //

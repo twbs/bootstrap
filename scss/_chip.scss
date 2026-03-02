@@ -9,28 +9,29 @@ $chip-tokens: () !default;
 
 // stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start chip-tokens
-$chip-tokens-internal: (
-  --chip-height: 1.75rem,
-  --chip-padding-x: .625rem,
-  --chip-gap: .3125rem,
-  --chip-border-radius: var(--border-radius-pill),
-  --chip-img-size: 1.25rem,
-  --chip-icon-size: 1rem,
-  --chip-dismiss-size: 1rem,
-  --chip-dismiss-opacity: .65,
-  --chip-dismiss-hover-opacity: 1,
-  --chip-color: var(--theme-text, var(--fg-body)),
-  --chip-bg: var(--theme-bg-subtle, var(--bg-2)),
-  --chip-border-color: transparent,
-  --chip-selected-color: var(--theme-contrast, var(--primary-contrast)),
-  --chip-selected-bg: var(--theme-bg, var(--primary-bg)),
-  --chip-selected-border-color: var(--theme-bg, var(--primary-bg)),
-) !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$chip-tokens: map.merge(
+  (
+    --chip-height: 1.75rem,
+    --chip-padding-x: .625rem,
+    --chip-gap: .3125rem,
+    --chip-border-radius: var(--border-radius-pill),
+    --chip-img-size: 1.25rem,
+    --chip-icon-size: 1rem,
+    --chip-dismiss-size: 1rem,
+    --chip-dismiss-opacity: .65,
+    --chip-dismiss-hover-opacity: 1,
+    --chip-color: var(--theme-text, var(--fg-body)),
+    --chip-bg: var(--theme-bg-subtle, var(--bg-2)),
+    --chip-border-color: transparent,
+    --chip-selected-color: var(--theme-contrast, var(--primary-contrast)),
+    --chip-selected-bg: var(--theme-bg, var(--primary-bg)),
+    --chip-selected-border-color: var(--theme-bg, var(--primary-bg)),
+  ),
+  $chip-tokens
+);
 // scss-docs-end chip-tokens
 // stylelint-enable custom-property-no-missing-var-function
-
-// stylelint-disable-next-line scss/dollar-variable-default
-$chip-tokens: map.merge($chip-tokens-internal, $chip-tokens);
 
 @layer components {
   .chip {

@@ -160,15 +160,18 @@ To override token values at compile time, use `@use ... with ()` when importing 
 );
 ```
 
-Under the hood, every token map uses a two-variable pattern:
+Under the hood, every token map uses a two-step pattern:
 
 ```scss
-$alert-tokens: () !default;              // receives your with() overrides
-$alert-tokens-internal: ( ... ) !default; // the built-in defaults
-$alert-tokens: map.merge($alert-tokens-internal, $alert-tokens);
+$alert-tokens: () !default;
+
+$alert-tokens: map.merge(
+  ( ... built-in defaults ... ),
+  $alert-tokens
+);
 ```
 
-When you pass values via `with()`, they populate `$alert-tokens`. Bootstrap then merges your entries on top of the internal defaults, so unspecified keys keep their original values.
+The `() !default` declaration receives your `with()` overrides. Then `map.merge()` layers your entries on top of the built-in defaults, so unspecified keys keep their original values.
 
 ### Runtime overrides
 

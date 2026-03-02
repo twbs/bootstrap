@@ -8,31 +8,33 @@
 $thumbnail-tokens: () !default;
 
 // scss-docs-start thumbnail-tokens
-$thumbnail-tokens-internal: (
-  --thumbnail-padding: .25rem,
-  --thumbnail-bg: var(--bg-body),
-  --thumbnail-border-width: var(--border-width),
-  --thumbnail-border-color: var(--border-color),
-  --thumbnail-border-radius: var(--border-radius),
-  --thumbnail-box-shadow: var(--box-shadow-sm),
-) !default;
-// scss-docs-end thumbnail-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$thumbnail-tokens: map.merge($thumbnail-tokens-internal, $thumbnail-tokens);
+$thumbnail-tokens: map.merge(
+  (
+    --thumbnail-padding: .25rem,
+    --thumbnail-bg: var(--bg-body),
+    --thumbnail-border-width: var(--border-width),
+    --thumbnail-border-color: var(--border-color),
+    --thumbnail-border-radius: var(--border-radius),
+    --thumbnail-box-shadow: var(--box-shadow-sm),
+  ),
+  $thumbnail-tokens
+);
+// scss-docs-end thumbnail-tokens
 
 $figure-tokens: () !default;
 
 // scss-docs-start figure-tokens
-$figure-tokens-internal: (
-  --figure-gap: calc(var(--spacer) * .5),
-  --figure-caption-font-size: var(--font-size-sm),
-  --figure-caption-color: var(--fg-3),
-) !default;
-// scss-docs-end figure-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$figure-tokens: map.merge($figure-tokens-internal, $figure-tokens);
+$figure-tokens: map.merge(
+  (
+    --figure-gap: calc(var(--spacer) * .5),
+    --figure-caption-font-size: var(--font-size-sm),
+    --figure-caption-color: var(--fg-3),
+  ),
+  $figure-tokens
+);
+// scss-docs-end figure-tokens
 
 @layer content {
   // Responsive images (ensure images don't scale beyond their parents)

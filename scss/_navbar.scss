@@ -16,49 +16,51 @@
 $navbar-tokens: () !default;
 
 // scss-docs-start navbar-tokens
-$navbar-tokens-internal: (
-  --navbar-padding-x: 0,
-  --navbar-padding-y: #{$spacer * .5},
-  --navbar-color: var(--fg-2),
-  --navbar-hover-color: var(--fg-1),
-  --navbar-disabled-color: var(--fg-3),
-  --navbar-active-color: var(--fg),
-  --navbar-brand-padding-y: .75rem,
-  --navbar-brand-margin-end: 1rem,
-  --navbar-brand-font-size: var(--font-size-lg),
-  --navbar-brand-color: var(--fg),
-  --navbar-brand-hover-color: var(--fg),
-  --navbar-nav-link-padding-x: .75rem,
-  --navbar-toggler-padding-y: .25rem,
-  --navbar-toggler-padding-x: .75rem,
-  --navbar-toggler-font-size: var(--font-size-lg),
-  --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{color-mix(in oklch, var(--body-color) 75%, transparent)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
-  --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
-  --navbar-toggler-border-radius: var(--border-radius),
-  --navbar-toggler-transition: box-shadow .15s ease-in-out,
-) !default;
-// scss-docs-end navbar-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$navbar-tokens: map.merge($navbar-tokens-internal, $navbar-tokens);
+$navbar-tokens: map.merge(
+  (
+    --navbar-padding-x: 0,
+    --navbar-padding-y: #{$spacer * .5},
+    --navbar-color: var(--fg-2),
+    --navbar-hover-color: var(--fg-1),
+    --navbar-disabled-color: var(--fg-3),
+    --navbar-active-color: var(--fg),
+    --navbar-brand-padding-y: .75rem,
+    --navbar-brand-margin-end: 1rem,
+    --navbar-brand-font-size: var(--font-size-lg),
+    --navbar-brand-color: var(--fg),
+    --navbar-brand-hover-color: var(--fg),
+    --navbar-nav-link-padding-x: .75rem,
+    --navbar-toggler-padding-y: .25rem,
+    --navbar-toggler-padding-x: .75rem,
+    --navbar-toggler-font-size: var(--font-size-lg),
+    --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{color-mix(in oklch, var(--body-color) 75%, transparent)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
+    --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
+    --navbar-toggler-border-radius: var(--border-radius),
+    --navbar-toggler-transition: box-shadow .15s ease-in-out,
+  ),
+  $navbar-tokens
+);
+// scss-docs-end navbar-tokens
 
 $navbar-dark-tokens: () !default;
 
 // scss-docs-start navbar-dark-tokens
-$navbar-dark-tokens-internal: (
-  --navbar-color: color-mix(in oklch, var(--white) .55, transparent),
-  --navbar-hover-color: color-mix(in oklch, var(--white) .75, transparent),
-  --navbar-disabled-color: color-mix(in oklch, var(--white) .25, transparent),
-  --navbar-active-color: var(--white),
-  --navbar-brand-color: var(--white),
-  --navbar-brand-hover-color: var(--white),
-  --navbar-toggler-border-color: color-mix(in oklch, var(--white) .1, transparent),
-  --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
-) !default;
-// scss-docs-end navbar-dark-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$navbar-dark-tokens: map.merge($navbar-dark-tokens-internal, $navbar-dark-tokens);
+$navbar-dark-tokens: map.merge(
+  (
+    --navbar-color: color-mix(in oklch, var(--white) .55, transparent),
+    --navbar-hover-color: color-mix(in oklch, var(--white) .75, transparent),
+    --navbar-disabled-color: color-mix(in oklch, var(--white) .25, transparent),
+    --navbar-active-color: var(--white),
+    --navbar-brand-color: var(--white),
+    --navbar-brand-hover-color: var(--white),
+    --navbar-toggler-border-color: color-mix(in oklch, var(--white) .1, transparent),
+    --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
+  ),
+  $navbar-dark-tokens
+);
+// scss-docs-end navbar-dark-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer components {

@@ -14,24 +14,25 @@
 $switch-tokens: () !default;
 
 // scss-docs-start switch-tokens
-$switch-tokens-internal: (
-  --switch-height: 1.25rem,
-  --switch-width: calc(var(--switch-height) * 1.5),
-  --switch-padding: .0625rem,
-  --switch-bg: var(--bg-3),
-  --switch-border-width: var(--border-width),
-  --switch-border-color: var(--border-color),
-  --switch-indicator-bg: var(--white),
-  --switch-checked-bg: var(--primary-base),
-  --switch-checked-border-color: var(--switch-checked-bg),
-  --switch-checked-indicator-bg: var(--white),
-  --switch-disabled-bg: var(--bg-3),
-  --switch-disabled-indicator-bg: var(--fg-3),
-) !default;
-// scss-docs-end switch-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$switch-tokens: map.merge($switch-tokens-internal, $switch-tokens);
+$switch-tokens: map.merge(
+  (
+    --switch-height: 1.25rem,
+    --switch-width: calc(var(--switch-height) * 1.5),
+    --switch-padding: .0625rem,
+    --switch-bg: var(--bg-3),
+    --switch-border-width: var(--border-width),
+    --switch-border-color: var(--border-color),
+    --switch-indicator-bg: var(--white),
+    --switch-checked-bg: var(--primary-base),
+    --switch-checked-border-color: var(--switch-checked-bg),
+    --switch-checked-indicator-bg: var(--white),
+    --switch-disabled-bg: var(--bg-3),
+    --switch-disabled-indicator-bg: var(--fg-3),
+  ),
+  $switch-tokens
+);
+// scss-docs-end switch-tokens
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {

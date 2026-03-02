@@ -9,48 +9,50 @@
 $carousel-tokens: () !default;
 
 // scss-docs-start carousel-tokens
-$carousel-tokens-internal: (
-  --carousel-control-color: #{$white},
-  --carousel-control-width: 15%,
-  --carousel-control-opacity: .5,
-  --carousel-control-hover-opacity: .9,
-  --carousel-control-transition: opacity .15s ease,
-  --carousel-control-icon-filter: none,
-  --carousel-indicator-width: 30px,
-  --carousel-indicator-height: 3px,
-  --carousel-indicator-hit-area-height: 10px,
-  --carousel-indicator-spacer: 3px,
-  --carousel-indicator-opacity: .5,
-  --carousel-indicator-active-bg: var(--white),
-  --carousel-indicator-active-opacity: 1,
-  --carousel-indicator-transition: opacity .6s ease,
-  --carousel-caption-width: 70%,
-  --carousel-caption-color: var(--white),
-  --carousel-caption-padding-y: 1.25rem,
-  --carousel-caption-spacer: 1.25rem,
-  --carousel-control-icon-width: 2rem,
-  --carousel-control-prev-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>"),
-  --carousel-control-next-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>"),
-  --carousel-transition-duration: .6s,
-  --carousel-transition: transform .6s ease-in-out,
-) !default;
-// scss-docs-end carousel-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$carousel-tokens: map.merge($carousel-tokens-internal, $carousel-tokens);
+$carousel-tokens: map.merge(
+  (
+    --carousel-control-color: #{$white},
+    --carousel-control-width: 15%,
+    --carousel-control-opacity: .5,
+    --carousel-control-hover-opacity: .9,
+    --carousel-control-transition: opacity .15s ease,
+    --carousel-control-icon-filter: none,
+    --carousel-indicator-width: 30px,
+    --carousel-indicator-height: 3px,
+    --carousel-indicator-hit-area-height: 10px,
+    --carousel-indicator-spacer: 3px,
+    --carousel-indicator-opacity: .5,
+    --carousel-indicator-active-bg: var(--white),
+    --carousel-indicator-active-opacity: 1,
+    --carousel-indicator-transition: opacity .6s ease,
+    --carousel-caption-width: 70%,
+    --carousel-caption-color: var(--white),
+    --carousel-caption-padding-y: 1.25rem,
+    --carousel-caption-spacer: 1.25rem,
+    --carousel-control-icon-width: 2rem,
+    --carousel-control-prev-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>"),
+    --carousel-control-next-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>"),
+    --carousel-transition-duration: .6s,
+    --carousel-transition: transform .6s ease-in-out,
+  ),
+  $carousel-tokens
+);
+// scss-docs-end carousel-tokens
 
 $carousel-dark-tokens: () !default;
 
 // scss-docs-start carousel-dark-tokens
-$carousel-dark-tokens-internal: (
-  --carousel-indicator-active-bg: #{$black},
-  --carousel-caption-color: #{$black},
-  --carousel-control-icon-filter: invert(1) grayscale(100),
-) !default;
-// scss-docs-end carousel-dark-tokens
-
 // stylelint-disable-next-line scss/dollar-variable-default
-$carousel-dark-tokens: map.merge($carousel-dark-tokens-internal, $carousel-dark-tokens);
+$carousel-dark-tokens: map.merge(
+  (
+    --carousel-indicator-active-bg: #{$black},
+    --carousel-caption-color: #{$black},
+    --carousel-control-icon-filter: invert(1) grayscale(100),
+  ),
+  $carousel-dark-tokens
+);
+// scss-docs-end carousel-dark-tokens
 
 // Notes on the classes:
 //
