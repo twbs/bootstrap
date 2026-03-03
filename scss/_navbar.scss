@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "config" as *;
 @use "colors" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
@@ -18,7 +19,7 @@ $navbar-tokens: () !default;
 
 // scss-docs-start navbar-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$navbar-tokens: map.merge(
+$navbar-tokens: defaults(
   (
     --navbar-padding-x: 0,
     --navbar-padding-y: #{$spacer * .5},
@@ -48,7 +49,7 @@ $navbar-dark-tokens: () !default;
 
 // scss-docs-start navbar-dark-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$navbar-dark-tokens: map.merge(
+$navbar-dark-tokens: defaults(
   (
     --navbar-color: color-mix(in oklch, var(--white) .55, transparent),
     --navbar-hover-color: color-mix(in oklch, var(--white) .75, transparent),

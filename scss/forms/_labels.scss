@@ -1,12 +1,13 @@
 @use "sass:map";
 @use "../variables" as *;
+@use "../functions" as *;
 @use "form-variables" as *;
 
 $form-label-tokens: () !default;
 
 // scss-docs-start form-label-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$form-label-tokens: map.merge(
+$form-label-tokens: defaults(
   (
     --label-margin-bottom: calc(var(--spacer) / 2),
     --label-font-size: null,

@@ -2,6 +2,7 @@
 @use "../config" as *;
 @use "../colors" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
@@ -11,7 +12,7 @@ $btn-close-tokens: () !default;
 
 // scss-docs-start btn-close-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$btn-close-tokens: map.merge(
+$btn-close-tokens: defaults(
   (
     --btn-close-size: 1.25rem,
     --btn-close-color: var(--fg-body),

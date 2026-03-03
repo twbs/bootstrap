@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/transition" as *;
@@ -12,7 +13,7 @@ $offcanvas-tokens: () !default;
 
 // scss-docs-start offcanvas-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$offcanvas-tokens: map.merge(
+$offcanvas-tokens: defaults(
   (
     --offcanvas-zindex: #{$zindex-offcanvas},
     --offcanvas-width: 400px,
@@ -36,7 +37,7 @@ $offcanvas-backdrop-tokens: () !default;
 
 // scss-docs-start offcanvas-backdrop-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$offcanvas-backdrop-tokens: map.merge(
+$offcanvas-backdrop-tokens: defaults(
   (
     bg: rgba(0, 0, 0, .5),
     opacity: .5,

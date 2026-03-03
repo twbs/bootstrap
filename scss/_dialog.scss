@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
@@ -16,7 +17,7 @@ $dialog-tokens: () !default;
 
 // scss-docs-start dialog-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$dialog-tokens: map.merge(
+$dialog-tokens: defaults(
   (
     --dialog-padding: 1rem,
     --dialog-width: 500px,
@@ -42,11 +43,16 @@ $dialog-tokens: map.merge(
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start dialog-sizes
-$dialog-sizes: (
-  sm: 280px,
-  lg: 800px,
-  xl: 1140px,
-) !default;
+$dialog-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$dialog-sizes: defaults(
+  (
+    sm: 280px,
+    lg: 800px,
+    xl: 1140px,
+  ),
+  $dialog-sizes
+);
 // scss-docs-end dialog-sizes
 
 @layer components {

@@ -1,12 +1,13 @@
 @use "sass:map";
 @use "../config" as *;
+@use "../functions" as *;
 @use "../mixins/tokens" as *;
 
 $form-text-tokens: () !default;
 
 // scss-docs-start form-text-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$form-text-tokens: map.merge(
+$form-text-tokens: defaults(
   (
     --form-text-margin-top: .25rem,
     --form-text-font-size: var(--font-size-sm),

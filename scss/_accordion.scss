@@ -11,7 +11,7 @@ $accordion-tokens: () !default;
 
 // scss-docs-start accordion-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$accordion-tokens: map.merge(
+$accordion-tokens: defaults(
   (
     --accordion-padding-x: 1.25rem,
     --accordion-padding-y: 1rem,

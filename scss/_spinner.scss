@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/tokens" as *;
 
@@ -8,7 +9,7 @@ $spinner-border-tokens: () !default;
 
 // scss-docs-start spinner-border-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$spinner-border-tokens: map.merge(
+$spinner-border-tokens: defaults(
   (
     --spinner-width: 2rem,
     --spinner-height: 2rem,
@@ -25,7 +26,7 @@ $spinner-grow-tokens: () !default;
 
 // scss-docs-start spinner-grow-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$spinner-grow-tokens: map.merge(
+$spinner-grow-tokens: defaults(
   (
     --spinner-width: 2rem,
     --spinner-height: 2rem,

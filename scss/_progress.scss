@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "config" as *;
 @use "colors" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/transition" as *;
 @use "mixins/gradients" as *;
@@ -12,7 +13,7 @@ $progress-tokens: () !default;
 
 // scss-docs-start progress-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$progress-tokens: map.merge(
+$progress-tokens: defaults(
   (
     --progress-height: 1rem,
     --progress-font-size: var(--font-size-sm),

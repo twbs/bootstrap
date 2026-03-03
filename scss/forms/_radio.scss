@@ -15,7 +15,7 @@ $radio-tokens: () !default;
 
 // scss-docs-start radio-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$radio-tokens: map.merge(
+$radio-tokens: defaults(
   (
     --radio-bg: transparent,
     --radio-border-color: var(--border-color),

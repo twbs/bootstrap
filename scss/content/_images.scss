@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../config" as *;
+@use "../functions" as *;
 @use "../variables" as *;
 @use "../mixins/image" as *;
 @use "../mixins/border-radius" as *;
@@ -10,7 +11,7 @@ $thumbnail-tokens: () !default;
 
 // scss-docs-start thumbnail-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$thumbnail-tokens: map.merge(
+$thumbnail-tokens: defaults(
   (
     --thumbnail-padding: .25rem,
     --thumbnail-bg: var(--bg-body),
@@ -27,7 +28,7 @@ $figure-tokens: () !default;
 
 // scss-docs-start figure-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$figure-tokens: map.merge(
+$figure-tokens: defaults(
   (
     --figure-gap: calc(var(--spacer) * .5),
     --figure-caption-font-size: var(--font-size-sm),

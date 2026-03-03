@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "colors" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "theme" as *;
 @use "mixins/border-radius" as *;
@@ -11,7 +12,7 @@ $chip-tokens: () !default;
 // stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start chip-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$chip-tokens: map.merge(
+$chip-tokens: defaults(
   (
     --chip-height: 1.75rem,
     --chip-padding-x: .625rem,

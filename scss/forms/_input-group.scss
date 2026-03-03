@@ -3,6 +3,7 @@
 @use "../config" as *;
 @use "../colors" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "form-variables" as *;
 
@@ -10,7 +11,7 @@ $input-group-addon-tokens: () !default;
 
 // scss-docs-start input-group-addon-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$input-group-addon-tokens: map.merge(
+$input-group-addon-tokens: defaults(
   (
     --input-group-addon-padding-y: var(--btn-input-padding-y),
     --input-group-addon-padding-x: var(--btn-input-padding-x),
@@ -25,7 +26,12 @@ $input-group-addon-tokens: map.merge(
 // scss-docs-end input-group-addon-tokens
 
 // scss-docs-start input-group-sizes
-$input-group-sizes: sm, lg !default;
+$input-group-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$input-group-sizes: defaults(
+  ("sm": true, "lg": true),
+  $input-group-sizes
+);
 // scss-docs-end input-group-sizes
 
 @layer components {
@@ -94,7 +100,7 @@ $input-group-sizes: sm, lg !default;
   // Remix the default form control sizing classes into new ones for easier
   // manipulation.
 
-  @each $size in $input-group-sizes {
+  @each $size, $_ in $input-group-sizes {
     .input-group-#{$size} {
       > .form-control,
       > .input-group-text,

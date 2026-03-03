@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
@@ -12,7 +13,7 @@ $stepper-tokens: () !default;
 
 // scss-docs-start stepper-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$stepper-tokens: map.merge(
+$stepper-tokens: defaults(
   (
     --stepper-size: 2rem,
     --stepper-gap: 1rem,

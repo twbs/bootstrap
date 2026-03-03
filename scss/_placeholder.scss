@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "colors" as *;
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/tokens" as *;
 
@@ -8,7 +9,7 @@ $placeholder-tokens: () !default;
 
 // scss-docs-start placeholder-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$placeholder-tokens: map.merge(
+$placeholder-tokens: defaults(
   (
     --placeholder-opacity-max: .5,
     --placeholder-opacity-min: .2,

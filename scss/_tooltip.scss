@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/deprecate" as *;
@@ -11,7 +12,7 @@ $tooltip-tokens: () !default;
 
 // scss-docs-start tooltip-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$tooltip-tokens: map.merge(
+$tooltip-tokens: defaults(
   (
     --tooltip-zindex: #{$zindex-tooltip},
     --tooltip-max-width: 200px,

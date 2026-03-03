@@ -128,6 +128,18 @@
   @return $result;
 }
 
+// Merge overrides on top of defaults, stripping null entries.
+// Null values let users remove map keys via @use ... with().
+@function defaults($defaults, $overrides) {
+  $merged: map.merge($defaults, $overrides);
+  @each $key, $value in $merged {
+    @if $value == null {
+      $merged: map.remove($merged, $key);
+    }
+  }
+  @return $merged;
+}
+
 // Merge multiple maps
 @function map-merge-multiple($maps...) {
   $merged-maps: ();

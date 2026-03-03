@@ -2,6 +2,7 @@
 @use "sass:map";
 @use "colors" as *;
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "theme" as *;
 // @use "maps" as *;
@@ -17,7 +18,7 @@ $root-tokens: () !default;
 // scss-docs-start root-tokens
 // stylelint-disable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines
 // stylelint-disable-next-line scss/dollar-variable-default
-$root-tokens: map.merge(
+$root-tokens: defaults(
   (
     --black: #{$black},
     --white: #{$white},

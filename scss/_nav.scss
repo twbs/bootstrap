@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
@@ -11,7 +12,7 @@ $nav-tokens: () !default;
 
 // scss-docs-start nav-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$nav-tokens: map.merge(
+$nav-tokens: defaults(
   (
     --nav-gap: .125rem,
     --nav-link-gap: .5rem,
@@ -37,7 +38,7 @@ $nav-tabs-tokens: () !default;
 
 // scss-docs-start nav-tabs-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$nav-tabs-tokens: map.merge(
+$nav-tabs-tokens: defaults(
   (
     --nav-tabs-border-width: var(--border-width),
     --nav-tabs-border-color: var(--border-color),
@@ -55,7 +56,7 @@ $nav-pills-tokens: () !default;
 
 // scss-docs-start nav-pills-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$nav-pills-tokens: map.merge(
+$nav-pills-tokens: defaults(
   (
     --nav-pills-link-active-color: var(--component-active-color),
     --nav-pills-link-active-bg: var(--component-active-bg),
@@ -68,7 +69,7 @@ $nav-underline-tokens: () !default;
 
 // scss-docs-start nav-underline-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$nav-underline-tokens: map.merge(
+$nav-underline-tokens: defaults(
   (
     --nav-gap: 1rem,
     --nav-link-active-bg: transparent,

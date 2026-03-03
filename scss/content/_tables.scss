@@ -13,7 +13,7 @@ $table-tokens: () !default;
 
 // scss-docs-start table-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$table-tokens: map.merge(
+$table-tokens: defaults(
   (
     --table-cell-padding-y: .5rem,
     --table-cell-padding-x: .5rem,

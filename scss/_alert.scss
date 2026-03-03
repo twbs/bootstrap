@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "theme" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
@@ -9,7 +10,7 @@ $alert-tokens: () !default;
 
 // scss-docs-start alert-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$alert-tokens: map.merge(
+$alert-tokens: defaults(
   (
     --alert-gap: #{$spacer * .75},
     --alert-bg: var(--theme-bg-subtle, var(--bg-1)),

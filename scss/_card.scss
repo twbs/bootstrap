@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
@@ -10,7 +11,7 @@ $card-tokens: () !default;
 
 // scss-docs-start card-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$card-tokens: map.merge(
+$card-tokens: defaults(
   (
     --card-spacer-y: #{$spacer},
     --card-spacer-x: #{$spacer},

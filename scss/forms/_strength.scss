@@ -2,6 +2,7 @@
 @use "sass:map";
 @use "../config" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
@@ -12,7 +13,7 @@ $strength-tokens: () !default;
 
 // scss-docs-start strength-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$strength-tokens: map.merge(
+$strength-tokens: defaults(
   (
     --strength-height: .375rem,
     --strength-gap: .25rem,

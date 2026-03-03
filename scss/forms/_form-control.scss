@@ -15,7 +15,7 @@ $form-control-tokens: () !default;
 
 // scss-docs-start form-control-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$form-control-tokens: map.merge(
+$form-control-tokens: defaults(
   (
     --control-min-height: var(--btn-input-min-height),
     --control-padding-y: var(--btn-input-padding-y),
@@ -47,24 +47,29 @@ $form-control-tokens: map.merge(
 // scss-docs-end form-control-tokens
 
 // scss-docs-start form-control-sizes
-$form-control-sizes: (
-  "sm": (
-    --control-min-height: var(--btn-input-sm-min-height),
-    --control-padding-y: var(--btn-input-sm-padding-y),
-    --control-padding-x: var(--btn-input-sm-padding-x),
-    --control-font-size: var(--btn-input-sm-font-size),
-    --control-line-height: var(--btn-input-sm-line-height),
-    --control-border-radius: var(--btn-input-sm-border-radius),
+$form-control-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$form-control-sizes: defaults(
+  (
+    "sm": (
+      --control-min-height: var(--btn-input-sm-min-height),
+      --control-padding-y: var(--btn-input-sm-padding-y),
+      --control-padding-x: var(--btn-input-sm-padding-x),
+      --control-font-size: var(--btn-input-sm-font-size),
+      --control-line-height: var(--btn-input-sm-line-height),
+      --control-border-radius: var(--btn-input-sm-border-radius),
+    ),
+    "lg": (
+      --control-min-height: var(--btn-input-lg-min-height),
+      --control-padding-y: var(--btn-input-lg-padding-y),
+      --control-padding-x: var(--btn-input-lg-padding-x),
+      --control-font-size: var(--btn-input-lg-font-size),
+      --control-line-height: var(--btn-input-lg-line-height),
+      --control-border-radius: var(--btn-input-lg-border-radius),
+    ),
   ),
-  "lg": (
-    --control-min-height: var(--btn-input-lg-min-height),
-    --control-padding-y: var(--btn-input-lg-padding-y),
-    --control-padding-x: var(--btn-input-lg-padding-x),
-    --control-font-size: var(--btn-input-lg-font-size),
-    --control-line-height: var(--btn-input-lg-line-height),
-    --control-border-radius: var(--btn-input-lg-border-radius),
-  ),
-) !default;
+  $form-control-sizes
+);
 // scss-docs-end form-control-sizes
 
 @layer forms {

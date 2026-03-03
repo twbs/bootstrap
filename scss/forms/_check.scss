@@ -15,7 +15,7 @@ $check-tokens: () !default;
 
 // scss-docs-start check-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$check-tokens: map.merge(
+$check-tokens: defaults(
   (
     --check-bg: transparent,
     --check-border-color: var(--border-color),

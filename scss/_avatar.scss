@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "functions" as *;
 @use "variables" as *;
 @use "theme" as *;
 @use "mixins/border-radius" as *;
@@ -10,7 +11,7 @@ $avatar-tokens: () !default;
 // stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start avatar-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$avatar-tokens: map.merge(
+$avatar-tokens: defaults(
   (
     --avatar-size: 2.5rem,
     --avatar-border-radius: 50%,
@@ -31,23 +32,28 @@ $avatar-tokens: map.merge(
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start avatar-sizes
-$avatar-sizes: (
-  "xs": (
-    size: 1.5rem,
-    status-size: .625rem,
+$avatar-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$avatar-sizes: defaults(
+  (
+    "xs": (
+      size: 1.5rem,
+      status-size: .625rem,
+    ),
+    "sm": (
+      size: 2rem,
+    ),
+    "lg": (
+      size: 3rem,
+      status-size: 1rem,
+    ),
+    "xl": (
+      size: 4rem,
+      status-size: 1.25rem,
+    ),
   ),
-  "sm": (
-    size: 2rem,
-  ),
-  "lg": (
-    size: 3rem,
-    status-size: 1rem,
-  ),
-  "xl": (
-    size: 4rem,
-    status-size: 1.25rem,
-  ),
-) !default;
+  $avatar-sizes
+);
 // scss-docs-end avatar-sizes
 
 @layer components {

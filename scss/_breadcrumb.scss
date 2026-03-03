@@ -11,7 +11,7 @@ $breadcrumb-tokens: () !default;
 
 // scss-docs-start breadcrumb-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$breadcrumb-tokens: map.merge(
+$breadcrumb-tokens: defaults(
   (
     --breadcrumb-margin-bottom: 1rem,
     --breadcrumb-font-size: inherit,

@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../config" as *;
+@use "../functions" as *;
 @use "../variables" as *;
 @use "../mixins/lists" as *;
 @use "../mixins/tokens" as *;
@@ -8,7 +9,7 @@ $blockquote-tokens: () !default;
 
 // scss-docs-start blockquote-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$blockquote-tokens: map.merge(
+$blockquote-tokens: defaults(
   (
     --blockquote-gap: calc(var(--spacer) / 2),
     --blockquote-margin-y: 1rem,

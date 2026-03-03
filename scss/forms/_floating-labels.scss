@@ -3,6 +3,7 @@
 @use "../config" as *;
 @use "../colors" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
@@ -11,7 +12,7 @@ $form-floating-tokens: () !default;
 
 // scss-docs-start form-floating-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$form-floating-tokens: map.merge(
+$form-floating-tokens: defaults(
   (
     --form-floating-height: calc(3.5rem + (var(--border-width) * 2)),
     --form-floating-line-height: 1.25,

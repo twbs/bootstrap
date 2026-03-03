@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/lists" as *;
 @use "mixins/border-radius" as *;
@@ -15,7 +16,7 @@ $pagination-tokens: () !default;
 
 // scss-docs-start pagination-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$pagination-tokens: map.merge(
+$pagination-tokens: defaults(
   (
     --pagination-padding-x: .75rem,
     --pagination-padding-y: .375rem,

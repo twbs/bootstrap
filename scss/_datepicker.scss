@@ -3,6 +3,7 @@
 @use "sass:map";
 @use "config" as *;
 @use "colors" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
@@ -12,7 +13,7 @@ $datepicker-tokens: () !default;
 
 // scss-docs-start datepicker-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$datepicker-tokens: map.merge(
+$datepicker-tokens: defaults(
   (
     --datepicker-padding: 1rem,
     --datepicker-bg: var(--bg-body),

@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "colors" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "theme" as *;
 @use "mixins/border-radius" as *;
@@ -10,7 +11,7 @@ $badge-tokens: () !default;
 
 // scss-docs-start badge-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$badge-tokens: map.merge(
+$badge-tokens: defaults(
   (
     --badge-padding-x: .625em,
     --badge-padding-y: .25em,

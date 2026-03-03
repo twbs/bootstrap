@@ -1,14 +1,9 @@
 // Mixin to output tokens as CSS custom properties
-//
-// Checks if the value is not `null`, and if so, outputs the property and value
-// as a CSS custom property. Properties with null values are skipped.
 
 // scss-docs-start mixin-tokens
 @mixin tokens($map) {
   @each $prop, $value in $map {
-    @if $value != null {
-      #{$prop}: #{$value};
-    }
+    #{$prop}: #{$value};
   }
 }
 // scss-docs-end mixin-tokens

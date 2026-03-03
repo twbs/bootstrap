@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "../config" as *;
+@use "../functions" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -8,7 +9,7 @@ $prose-tokens: () !default;
 
 // scss-docs-start prose-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$prose-tokens: map.merge(
+$prose-tokens: defaults(
   (
     --content-font-size: var(--font-size-sm),
     --content-gap: 20px,
@@ -67,11 +68,11 @@ $prose-tokens: map.merge(
     }
 
     :where(h1, h2):not(:first-child):not(:where(.not-prose, .not-prose *)) {
-      margin-top: calc(var(--content-gap) * 1.5);
+      margin-top: calc(var(--content-gap) * .75);
     }
 
     :where(h3, h4, h5, h6):not(:first-child):not(:where(.not-prose, .not-prose *)) {
-      margin-top: calc(var(--content-gap) * 1.25);
+      margin-top: calc(var(--content-gap) * .5);
     }
 
     :where(h1):not(:where(.not-prose, .not-prose *)) {

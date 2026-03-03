@@ -16,7 +16,7 @@ $switch-tokens: () !default;
 
 // scss-docs-start switch-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$switch-tokens: map.merge(
+$switch-tokens: defaults(
   (
     --switch-height: 1.25rem,
     --switch-width: calc(var(--switch-height) * 1.5),

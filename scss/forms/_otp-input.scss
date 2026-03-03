@@ -1,5 +1,6 @@
 @use "../config" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "sass:map";
 @use "form-variables" as *;
 @use "../mixins/border-radius" as *;
@@ -10,7 +11,7 @@ $otp-tokens: () !default;
 
 // scss-docs-start otp-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$otp-tokens: map.merge(
+$otp-tokens: defaults(
   (
     --otp-size: var(--btn-input-lg-min-height),
     --otp-font-size: var(--btn-input-font-size),
@@ -22,7 +23,12 @@ $otp-tokens: map.merge(
 // stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start otp-sizes
-$otp-sizes: sm, lg !default;
+$otp-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$otp-sizes: defaults(
+  ("sm": true, "lg": true),
+  $otp-sizes
+);
 // scss-docs-end otp-sizes
 
 @layer components {
@@ -99,7 +105,7 @@ $otp-sizes: sm, lg !default;
     user-select: none;
   }
 
-  @each $size in $otp-sizes {
+  @each $size, $_ in $otp-sizes {
     .otp-#{$size} {
       --otp-size: var(--btn-input-#{$size}-min-height);
       --otp-font-size: var(--btn-input-#{$size}-font-size);

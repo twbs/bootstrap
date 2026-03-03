@@ -281,13 +281,23 @@ Buttons use CSS variables for real-time customization. These are set on the base
 
 Each variant class (`.btn-solid`, `.btn-outline`, etc.) updates these variables based on the current theme color, allowing buttons to adapt automatically when used with `.theme-*` classes.
 
-### Sass list
+Styled buttons use the `$button-styled-tokens` Sass map.
 
-Button sizes are defined in the `$button-sizes` Sass list. Each size specifies several variables through a Sass loop. These mostly line up with textual form controls.
+<ScssDocs name="button-styled-tokens" file="scss/buttons/_button.scss" />
+
+Link buttons use the `$button-link-tokens` Sass map.
+
+<ScssDocs name="button-link-tokens" file="scss/buttons/_button.scss" />
+
+### Sass maps
+
+#### Sizes
+
+Button sizes are defined in the `$button-sizes` Sass map. Each size specifies several variables through a Sass loop. These mostly line up with textual form controls.
 
 <ScssDocs name="button-sizes" file="scss/buttons/_button.scss" />
 
-### Sass map
+#### Variants
 
 Button variants are defined in the `$button-variants` Sass map. Each variant specifies which theme color tokens to use for its base, hover, and active states. The map uses token names (like `"bg"`, `"contrast"`, `"border"`) that reference the current theme's color palette.
 

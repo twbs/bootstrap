@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "../config" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../theme" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
@@ -13,7 +14,7 @@ $chip-input-tokens: () !default;
 
 // scss-docs-start chip-input-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$chip-input-tokens: map.merge(
+$chip-input-tokens: defaults(
   (
     --chip-input-padding-y: .75rem,
     --chip-input-padding-x: .75rem,

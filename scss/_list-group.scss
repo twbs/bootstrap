@@ -2,6 +2,7 @@
 @use "colors" as *;
 @use "theme" as *;
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "layout/breakpoints" as *;
@@ -11,7 +12,7 @@ $list-group-tokens: () !default;
 
 // scss-docs-start list-group-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$list-group-tokens: map.merge(
+$list-group-tokens: defaults(
   (
     --list-group-color: var(--fg-body),
     --list-group-bg: var(--bg-body),

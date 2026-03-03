@@ -1,6 +1,7 @@
 @use "../config" as *;
 @use "../colors" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
@@ -14,7 +15,7 @@ $range-tokens: () !default;
 
 // scss-docs-start range-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$range-tokens: map.merge(
+$range-tokens: defaults(
   (
     --range-track-width: 100%,
     --range-track-height: .5rem,

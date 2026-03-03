@@ -1,6 +1,7 @@
 @use "sass:map";
 @use "../config" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
@@ -12,7 +13,7 @@ $form-adorn-tokens: () !default;
 
 // scss-docs-start form-adorn-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
-$form-adorn-tokens: map.merge(
+$form-adorn-tokens: defaults(
   (
     --form-adorn-gap: .375rem,
     --form-adorn-icon-size: 1rem,
