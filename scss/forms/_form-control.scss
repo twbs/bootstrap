@@ -8,12 +8,14 @@
 @use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/gradients" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
 $form-control-tokens: () !default;
 
 // scss-docs-start form-control-tokens
+// stylelint-disable custom-property-no-missing-var-function
 // stylelint-disable-next-line scss/dollar-variable-default
 $form-control-tokens: defaults(
   (
@@ -50,33 +52,15 @@ $form-control-tokens: defaults(
 $form-control-sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $form-control-sizes: defaults(
-  (
-    "sm": (
-      --control-min-height: var(--btn-input-sm-min-height),
-      --control-padding-y: var(--btn-input-sm-padding-y),
-      --control-padding-x: var(--btn-input-sm-padding-x),
-      --control-font-size: var(--btn-input-sm-font-size),
-      --control-line-height: var(--btn-input-sm-line-height),
-      --control-border-radius: var(--btn-input-sm-border-radius),
-    ),
-    "lg": (
-      --control-min-height: var(--btn-input-lg-min-height),
-      --control-padding-y: var(--btn-input-lg-padding-y),
-      --control-padding-x: var(--btn-input-lg-padding-x),
-      --control-font-size: var(--btn-input-lg-font-size),
-      --control-line-height: var(--btn-input-lg-line-height),
-      --control-border-radius: var(--btn-input-lg-border-radius),
-    ),
-  ),
+  ("sm", "lg"),
   $form-control-sizes
 );
 // scss-docs-end form-control-sizes
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
   .form-control {
-    @each $token, $value in $form-control-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($form-control-tokens);
 
     display: flex;
     width: 100%;
@@ -238,11 +222,14 @@ $form-control-sizes: defaults(
   // height and font-size of form controls.
   //
   // Repeated in `_input_group.scss` to avoid Sass extend issues.
-  @each $size, $properties in $form-control-sizes {
+  @each $size, $_ in $form-control-sizes {
     .form-control-#{$size} {
-      @each $token, $value in $properties {
-        #{$token}: #{$value};
-      }
+      --control-min-height: var(--btn-input-#{$size}-min-height);
+      --control-padding-y: var(--btn-input-#{$size}-padding-y);
+      --control-padding-x: var(--btn-input-#{$size}-padding-x);
+      --control-font-size: var(--btn-input-#{$size}-font-size);
+      --control-line-height: var(--btn-input-#{$size}-line-height);
+      --control-border-radius: var(--btn-input-#{$size}-border-radius);
     }
   }
 

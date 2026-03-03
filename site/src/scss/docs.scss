@@ -21,20 +21,6 @@
 //
 // Happy Bootstrapping!
 
-// Load Bootstrap variables and mixins
-// @use "../../../scss/config";
-// @use "../../../scss/colors";
-// @use "../../../scss/functions";
-// @use "../../../scss/mixins";
-// @use "../../../scss/variables";
-// @use "../../../scss/layout/breakpoints";
-
-// // fusv-disable
-// $enable-grid-classes: false;
-// $enable-cssgrid: true;
-// // fusv-enable
-// @use "../../../scss/layout/";
-
 // Load docs components
 // @use "variables";
 @use "navbar";
@@ -50,7 +36,6 @@
 @use "callouts";
 @use "details";
 @use "brand";
-@use "colors";
 @use "clipboard-js";
 @use "placeholder-img";
 @use "scrolling";

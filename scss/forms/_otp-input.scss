@@ -26,7 +26,7 @@ $otp-tokens: defaults(
 $otp-sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $otp-sizes: defaults(
-  ("sm": true, "lg": true),
+  ("sm", "lg"),
   $otp-sizes
 );
 // scss-docs-end otp-sizes

@@ -5,6 +5,7 @@
 @use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
@@ -34,9 +35,7 @@ $form-floating-tokens: defaults(
 
 @layer forms {
   .form-floating {
-    @each $token, $value in $form-floating-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($form-floating-tokens);
 
     position: relative;
 

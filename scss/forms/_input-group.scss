@@ -5,6 +5,7 @@
 @use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 @use "form-variables" as *;
 
 $input-group-addon-tokens: () !default;
@@ -29,16 +30,14 @@ $input-group-addon-tokens: defaults(
 $input-group-sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $input-group-sizes: defaults(
-  ("sm": true, "lg": true),
+  ("sm", "lg"),
   $input-group-sizes
 );
 // scss-docs-end input-group-sizes
 
 @layer components {
   .input-group {
-    @each $token, $value in $input-group-addon-tokens {
-      #{$token}: #{$value};
-    }
+    @include tokens($input-group-addon-tokens);
 
     position: relative;
     display: flex;

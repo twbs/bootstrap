@@ -16,12 +16,10 @@
     padding: 1.25rem;
     font-size: .875rem;
     line-height: 1.5;
-    // color: var(--bd-callout-color, inherit);
     background-color: var(--bd-callout-bg, var(--bs-gray-100));
     border: 1px solid var(--bd-callout-border, var(--bs-border-color));
     border-inline-start: .25rem solid var(--bd-callout-border, var(--bs-gray-300));
     @include border-radius(var(--bs-border-radius));
-    // box-shadow: inset .25rem 0 0 var(--bd-callout-border, var(--bs-gray-300));
 
     h4 {
       margin-bottom: .25rem;
@@ -36,16 +34,11 @@
     + .bd-callout {
       margin-top: -.25rem;
     }
-
-    // .highlight {
-    //   background-color: rgba($black, .05);
-    // }
   }
 
   // Variations
   @each $variant in $bd-callout-variants {
     .bd-callout-#{$variant} {
-      // --bd-callout-color: var(--bs-#{$variant}-text);
       --bd-callout-bg: color-mix(in srgb, var(--bs-#{$variant}-bg-subtle), transparent 50%);
       --bd-callout-border: var(--bs-#{$variant}-border);
     }

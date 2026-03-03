@@ -86,7 +86,7 @@ $button-styled-tokens: defaults(
 // scss-docs-start button-sizes
 $button-sizes: () !default;
 $button-sizes: defaults(
-  ("xs": true, "sm": true, "lg": true),
+  ("xs", "sm", "lg"),
   $button-sizes
 );
 // scss-docs-end button-sizes
