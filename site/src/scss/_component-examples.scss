@@ -9,15 +9,6 @@
 // Docs examples
 //
 
-// .bd-code-snippet
-//   .bd-example
-//   .highlight-toolbar
-//   pre.astro-code
-
-// .bd-code-snippet
-//   .highlight-toolbar
-//   pre.astro-code
-
 @layer custom {
   .bd-code-snippet {
     --bd-example-padding: 1.25rem;
@@ -80,10 +71,7 @@
 
     @include media-breakpoint-up(md) {
       --bd-example-padding: 1.5rem;
-
       margin-inline: 0;
-      // border-width: 1px;
-      // @include border-radius(var(--bs-border-radius));
     }
 
     + p {
@@ -105,8 +93,6 @@
 
     > .dropdown-menu {
       max-width: 12rem;
-      //   position: static;
-      //   display: block;
     }
 
     > :last-child,
@@ -386,15 +372,6 @@
   //
   // Code snippets
   //
-
-  .astro-code {
-    position: relative;
-    background-color: var(--bd-pre-bg);
-
-    @include media-breakpoint-up(md) {
-      @include border-radius(calc(var(--bs-border-radius) - 1px));
-    }
-  }
 
   .bd-example-snippet .highlight pre {
     margin-inline-end: 0;

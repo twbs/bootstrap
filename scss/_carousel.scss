@@ -1,46 +1,60 @@
+@use "sass:map";
 @use "config" as *;
 @use "colors" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/transition" as *;
 @use "mixins/gradients" as *;
 @use "mixins/color-mode" as *;
+@use "mixins/tokens" as *;
 
-// scss-docs-start carousel-variables
-$carousel-control-color:             $white !default;
-$carousel-control-width:             15% !default;
-$carousel-control-opacity:           .5 !default;
-$carousel-control-hover-opacity:     .9 !default;
-$carousel-control-transition:        opacity .15s ease !default;
-$carousel-control-icon-filter:       null !default;
+$carousel-tokens: () !default;
 
-$carousel-indicator-width:           30px !default;
-$carousel-indicator-height:          3px !default;
-$carousel-indicator-hit-area-height: 10px !default;
-$carousel-indicator-spacer:          3px !default;
-$carousel-indicator-opacity:         .5 !default;
-$carousel-indicator-active-bg:       $white !default;
-$carousel-indicator-active-opacity:  1 !default;
-$carousel-indicator-transition:      opacity .6s ease !default;
+// scss-docs-start carousel-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$carousel-tokens: defaults(
+  (
+    --carousel-control-color: #{$white},
+    --carousel-control-width: 15%,
+    --carousel-control-opacity: .5,
+    --carousel-control-hover-opacity: .9,
+    --carousel-control-transition: opacity .15s ease,
+    --carousel-control-icon-filter: none,
+    --carousel-indicator-width: 30px,
+    --carousel-indicator-height: 3px,
+    --carousel-indicator-hit-area-height: 10px,
+    --carousel-indicator-spacer: 3px,
+    --carousel-indicator-opacity: .5,
+    --carousel-indicator-active-bg: var(--white),
+    --carousel-indicator-active-opacity: 1,
+    --carousel-indicator-transition: opacity .6s ease,
+    --carousel-caption-width: 70%,
+    --carousel-caption-color: var(--white),
+    --carousel-caption-padding-y: 1.25rem,
+    --carousel-caption-spacer: 1.25rem,
+    --carousel-control-icon-width: 2rem,
+    --carousel-control-prev-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>"),
+    --carousel-control-next-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>"),
+    --carousel-transition-duration: .6s,
+    --carousel-transition: transform .6s ease-in-out,
+  ),
+  $carousel-tokens
+);
+// scss-docs-end carousel-tokens
 
-$carousel-caption-width:             70% !default;
-$carousel-caption-color:             $white !default;
-$carousel-caption-padding-y:         1.25rem !default;
-$carousel-caption-spacer:            1.25rem !default;
+$carousel-dark-tokens: () !default;
 
-$carousel-control-icon-width:        2rem !default;
-
-$carousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>") !default;
-$carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$carousel-control-color}'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>") !default;
-
-$carousel-transition-duration:       .6s !default;
-$carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
-// scss-docs-end carousel-variables
-
-// scss-docs-start carousel-dark-variables
-$carousel-indicator-active-bg-dark:   $black !default;
-$carousel-caption-color-dark:         $black !default;
-$carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
-// scss-docs-end carousel-dark-variables
+// scss-docs-start carousel-dark-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$carousel-dark-tokens: defaults(
+  (
+    --carousel-indicator-active-bg: #{$black},
+    --carousel-caption-color: #{$black},
+    --carousel-control-icon-filter: invert(1) grayscale(100),
+  ),
+  $carousel-dark-tokens
+);
+// scss-docs-end carousel-dark-tokens
 
 // Notes on the classes:
 //
@@ -58,6 +72,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
 @layer components {
   .carousel {
     position: relative;
+    @include tokens($carousel-tokens);
   }
 
   .carousel.pointer-event {
@@ -78,7 +93,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     width: 100%;
     margin-inline-end: -100%;
     backface-visibility: hidden;
-    @include transition($carousel-transition);
+    @include transition(var(--carousel-transition));
   }
 
   .carousel-item.active,
@@ -120,7 +135,7 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     .active.carousel-item-end {
       z-index: 0;
       opacity: 0;
-      @include transition(opacity 0s $carousel-transition-duration);
+      @include transition(opacity 0s var(--carousel-transition-duration));
     }
   }
 
@@ -138,23 +153,23 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     display: flex; // 1. allow flex styles
     align-items: center; // 2. vertically center contents
     justify-content: center; // 3. horizontally center contents
-    width: $carousel-control-width;
+    width: var(--carousel-control-width);
     padding: 0;
-    color: $carousel-control-color;
+    color: var(--carousel-control-color);
     text-align: center;
     background: none;
     filter: var(--carousel-control-icon-filter);
     border: 0;
-    opacity: $carousel-control-opacity;
-    @include transition($carousel-control-transition);
+    opacity: var(--carousel-control-opacity);
+    @include transition(var(--carousel-control-transition));
 
     // Hover/focus state
     &:hover,
     &:focus {
-      color: $carousel-control-color;
+      color: var(--carousel-control-color);
       text-decoration: none;
       outline: 0;
-      opacity: $carousel-control-hover-opacity;
+      opacity: var(--carousel-control-hover-opacity);
     }
   }
   .carousel-control-prev {
@@ -172,27 +187,27 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     display: inline-block;
-    width: $carousel-control-icon-width;
-    height: $carousel-control-icon-width;
+    width: var(--carousel-control-icon-width);
+    height: var(--carousel-control-icon-width);
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: 100% 100%;
   }
 
   .carousel-control-prev-icon {
-    background-image: escape-svg($carousel-control-prev-icon-bg);
+    background-image: var(--carousel-control-prev-icon-bg);
   }
 
   [dir="rtl"] .carousel-control-prev-icon {
-    background-image: escape-svg($carousel-control-next-icon-bg);
+    background-image: var(--carousel-control-next-icon-bg);
   }
 
   .carousel-control-next-icon {
-    background-image: escape-svg($carousel-control-next-icon-bg);
+    background-image: var(--carousel-control-next-icon-bg);
   }
 
   [dir="rtl"] .carousel-control-next-icon {
-    background-image: escape-svg($carousel-control-prev-icon-bg);
+    background-image: var(--carousel-control-prev-icon-bg);
   }
 
   // Optional indicator pips/controls
@@ -208,29 +223,29 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
     justify-content: center;
     padding: 0;
     // Use the .carousel-control's width as margin so we don't overlay those
-    margin-inline: $carousel-control-width;
+    margin-inline: var(--carousel-control-width);
     margin-bottom: 1rem;
 
     [data-bs-target] {
       box-sizing: content-box;
       flex: 0 1 auto;
-      width: $carousel-indicator-width;
-      height: $carousel-indicator-height;
+      width: var(--carousel-indicator-width);
+      height: var(--carousel-indicator-height);
       padding: 0;
-      margin-inline: $carousel-indicator-spacer;
+      margin-inline: var(--carousel-indicator-spacer);
       text-indent: -999px;
       cursor: pointer;
       background-color: var(--carousel-indicator-active-bg);
       background-clip: padding-box;
       border: 0;
       // Use transparent borders to increase the hit area by 10px on top and bottom.
-      border-block: $carousel-indicator-hit-area-height solid transparent;
-      opacity: $carousel-indicator-opacity;
-      @include transition($carousel-indicator-transition);
+      border-block: var(--carousel-indicator-hit-area-height) solid transparent;
+      opacity: var(--carousel-indicator-opacity);
+      @include transition(var(--carousel-indicator-transition));
     }
 
     .active {
-      opacity: $carousel-indicator-active-opacity;
+      opacity: var(--carousel-indicator-active-opacity);
     }
   }
 
@@ -241,11 +256,11 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
 
   .carousel-caption {
     position: absolute;
-    right: (100% - $carousel-caption-width) * .5;
-    bottom: $carousel-caption-spacer;
-    left: (100% - $carousel-caption-width) * .5;
-    padding-top: $carousel-caption-padding-y;
-    padding-bottom: $carousel-caption-padding-y;
+    right: calc((100% - var(--carousel-caption-width)) * .5);
+    bottom: var(--carousel-caption-spacer);
+    left: calc((100% - var(--carousel-caption-width)) * .5);
+    padding-top: var(--carousel-caption-padding-y);
+    padding-bottom: var(--carousel-caption-padding-y);
     color: var(--carousel-caption-color);
     text-align: center;
   }
@@ -253,20 +268,11 @@ $carousel-control-icon-filter-dark:   invert(1) grayscale(100) !default;
   // Dark mode carousel
 
   @mixin carousel-dark() {
-    --carousel-indicator-active-bg: #{$carousel-indicator-active-bg-dark};
-    --carousel-caption-color: #{$carousel-caption-color-dark};
-    --carousel-control-icon-filter: #{$carousel-control-icon-filter-dark};
+    @include tokens($carousel-dark-tokens);
   }
 
   .carousel-dark {
     @include carousel-dark();
-  }
-
-  :root,
-  [data-bs-theme="light"] {
-    --carousel-indicator-active-bg: #{$carousel-indicator-active-bg};
-    --carousel-caption-color: #{$carousel-caption-color};
-    --carousel-control-icon-filter: #{$carousel-control-icon-filter};
   }
 
   @if $enable-dark-mode {

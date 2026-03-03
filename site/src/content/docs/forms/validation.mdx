@@ -32,7 +32,7 @@ With that in mind, consider the following demos for our custom form validation s
 
 For custom Bootstrap form validation messages, you’ll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you’ll see the `:invalid` and `:valid` styles applied to your form controls.
 
-Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.form-select`, and not `.form-control`.
+Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.form-control`, and not `.form-control`.
 
 <Example code={`<form class="row g-3 needs-validation" novalidate>
     <div class="col-md-4">
@@ -68,7 +68,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     </div>
     <div class="col-md-3">
       <label for="validationCustom04" class="form-label">State</label>
-      <select class="form-select" id="validationCustom04" required>
+      <select class="form-control" id="validationCustom04" required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
@@ -82,6 +82,10 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
       <div class="invalid-feedback">
         Please provide a valid zip.
       </div>
+    </div>
+    <div class="col-md-6">
+      <label for="validationCustom06" class="form-label">Notes</label>
+      <textarea class="form-control" id="validationCustom06" required></textarea>
     </div>
     <div class="col-12">
       <div class="form-check">
@@ -129,7 +133,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     </div>
     <div class="col-md-3">
       <label for="validationDefault04" class="form-label">State</label>
-      <select class="form-select" id="validationDefault04" required>
+      <select class="form-control" id="validationDefault04" required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
@@ -193,7 +197,7 @@ To fix [issues with border radius](https://github.com/twbs/bootstrap/issues/2511
     </div>
     <div class="col-md-3">
       <label for="validationServer04" class="form-label">State</label>
-      <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+      <select class="form-control is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
@@ -229,7 +233,7 @@ To fix [issues with border radius](https://github.com/twbs/bootstrap/issues/2511
 Validation styles are available for the following form controls and components:
 
 - `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
-- `<select>`s with `.form-select`
+- `<select>`s with `.form-control`
 - `.form-check`s
 
 <Example code={`<form class="was-validated">
@@ -258,7 +262,7 @@ Validation styles are available for the following form controls and components:
     </div>
 
     <div class="mb-3">
-      <select class="form-select" required aria-label="select example">
+      <select class="form-control" required aria-label="select example">
         <option value="">Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -315,7 +319,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
     </div>
     <div class="col-md-3 position-relative">
       <label for="validationTooltip04" class="form-label">State</label>
-      <select class="form-select" id="validationTooltip04" required>
+      <select class="form-control" id="validationTooltip04" required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
@@ -350,8 +354,6 @@ These variables are also color mode adaptive, meaning they change color while in
 <ScssDocs name="form-feedback-variables" file="scss/forms/_form-variables.scss" />
 
 <ScssDocs name="form-validation-colors" file="scss/forms/_form-variables.scss" />
-
-{/* <ScssDocs name="form-validation-colors-dark" file="scss/_variables.scss" /> */}
 
 ### Sass mixins
 

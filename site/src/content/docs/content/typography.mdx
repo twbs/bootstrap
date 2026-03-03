@@ -117,18 +117,25 @@ Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 ## Blockquotes
 
-For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around any HTML as the quote.
+Wrap `<blockquote class="blockquote">` around any HTML to quote blocks of content from another source within your document. We make `.blockquote` a flex container for easier spacing, which means you can use [flex utilities]([[docsref:/utilities/flex]]) for alignment, spacing, and more.
 
 <Example code={`<blockquote class="blockquote">
     <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>`} />
 
-### Naming a source
+<Example code={`<blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+    <p>And the second part of the original quote—like another paragraph—would be placed here as well. This paragraph is a little longer to show how text would wrap within the blockquote styling.</p>
+  </blockquote>`} />
 
-The HTML spec requires that blockquote attribution be placed outside the `<blockquote>`. When providing attribution, wrap your `<blockquote>` in a `<figure>` and use a `<figcaption>` or a block level element (e.g., `<p>`) with the `.blockquote-footer` class. Be sure to wrap the name of the source work in `<cite>` as well.
+### Sources
 
-<Example code={`<figure>
-    <blockquote class="blockquote">
+The HTML spec requires that blockquote attribution be placed **outside** the `<blockquote>`. In this case, use a `<figure>` element and place the `.blockquote` class on it instead of the `<blockquote>` element. This ensures access to CSS variables across blockquote and attribution element.
+
+For source attribution, use a `<figcaption>` or a block level element (e.g., `<p>`) with the `.blockquote-footer` class. Wrap the name of any source work in `<cite>` as well.
+
+<Example code={`<figure class="blockquote">
+    <blockquote>
       <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
     <figcaption class="blockquote-footer">
@@ -138,10 +145,10 @@ The HTML spec requires that blockquote attribution be placed outside the `<block
 
 ### Alignment
 
-Use text utilities as needed to change the alignment of your blockquote.
+Use text or flex utilities as needed to change the alignment of your blockquote.
 
-<Example code={`<figure class="text-center">
-    <blockquote class="blockquote">
+<Example code={`<figure class="blockquote text-center">
+    <blockquote>
       <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
     <figcaption class="blockquote-footer">
@@ -149,8 +156,8 @@ Use text utilities as needed to change the alignment of your blockquote.
     </figcaption>
   </figure>`} />
 
-<Example code={`<figure class="text-end">
-    <blockquote class="blockquote">
+<Example code={`<figure class="blockquote align-items-end">
+    <blockquote>
       <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
     <figcaption class="blockquote-footer">

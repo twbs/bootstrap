@@ -1,51 +1,46 @@
 @use "sass:color";
 @use "sass:map";
-@use "sass:math";
 @use "../config" as *;
 @use "../colors" as *;
 @use "../theme" as *;
 @use "../variables" as *;
 @use "../functions" as *;
 @use "../layout/breakpoints" as *;
+@use "../mixins/tokens" as *;
 
-// scss-docs-start table-variables
-$table-cell-padding-y:        .5rem !default;
-$table-cell-padding-x:        .5rem !default;
-$table-cell-padding-y-sm:     .25rem !default;
-$table-cell-padding-x-sm:     .25rem !default;
+// stylelint-disable custom-property-no-missing-var-function
+$table-tokens: () !default;
 
-$table-cell-vertical-align:   top !default;
+// scss-docs-start table-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$table-tokens: defaults(
+  (
+    --table-cell-padding-y: .5rem,
+    --table-cell-padding-x: .5rem,
+    --table-cell-vertical-align: top,
+    --table-color: var(--fg-body),
+    --table-bg: var(--bg-body),
+    --table-accent-bg: transparent,
+    --table-border-width: var(--border-width),
+    --table-border-color: var(--border-color),
+    --table-group-separator-color: currentcolor,
+    --table-striped-color: var(--table-color),
+    --table-striped-bg-factor: .05,
+    --table-striped-bg: color-mix(in srgb, var(--table-color) var(--table-striped-bg-factor), transparent),
+    --table-active-color: var(--table-color),
+    --table-active-bg-factor: .1,
+    --table-active-bg: color-mix(in srgb, var(--table-color) var(--table-active-bg-factor), transparent),
+    --table-hover-color: var(--table-color),
+    --table-hover-bg-factor: .075,
+    --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
+  ),
+  $table-tokens
+);
+// scss-docs-end table-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
-$table-color:                 var(--fg-body) !default;
-$table-bg:                    var(--bg-body) !default;
-$table-accent-bg:             transparent !default;
-
-// $table-th-font-weight:        null !default;
-
-$table-striped-color:         $table-color !default;
-$table-striped-bg-factor:     .05 !default;
-$table-striped-bg:            color-mix(in srgb, var(--table-color) #{math.percentage($table-striped-bg-factor)}, transparent) !default;
-
-$table-active-color:          $table-color !default;
-$table-active-bg-factor:      .1 !default;
-$table-active-bg:             color-mix(in srgb, var(--table-color) #{math.percentage($table-active-bg-factor)}, transparent) !default;
-
-$table-hover-color:           $table-color !default;
-$table-hover-bg-factor:       .075 !default;
-$table-hover-bg:              color-mix(in srgb, var(--table-color) #{math.percentage($table-hover-bg-factor)}, transparent) !default;
-
-$table-border-width:          var(--border-width) !default;
-$table-border-color:          var(--border-color) !default;
-
-$table-striped-order:         odd !default;
+$table-striped-order: odd !default;
 $table-striped-columns-order: even !default;
-
-$table-group-separator-color: currentcolor !default;
-
-// $table-caption-color:         var(--secondary-color) !default;
-
-// scss-docs-end table-variables
-
 
 //
 // Basic Bootstrap table
@@ -53,6 +48,8 @@ $table-group-separator-color: currentcolor !default;
 
 @layer content {
   .table {
+    @include tokens($table-tokens);
+
     // Reset needed for nesting tables
     --table-color-type: initial;
     --table-bg-type: initial;
@@ -60,22 +57,9 @@ $table-group-separator-color: currentcolor !default;
     --table-bg-state: initial;
     // End of reset
 
-    // scss-docs-start table-css-variables
-    --table-color: #{$table-color};
-    --table-bg: #{$table-bg};
-    --table-border-color: #{$table-border-color};
-    --table-accent-bg: #{$table-accent-bg};
-    --table-striped-color: #{$table-striped-color};
-    --table-striped-bg: #{$table-striped-bg};
-    --table-active-color: #{$table-active-color};
-    --table-active-bg: #{$table-active-bg};
-    --table-hover-color: #{$table-hover-color};
-    --table-hover-bg: #{$table-hover-bg};
-    // scss-docs-end table-css-variables
-
     width: 100%;
     margin-bottom: $spacer;
-    vertical-align: $table-cell-vertical-align;
+    vertical-align: var(--table-cell-vertical-align);
     border-color: var(--theme-border, var(--table-border-color));
 
     // Target th & td
@@ -84,11 +68,11 @@ $table-group-separator-color: currentcolor !default;
     // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
     // stylelint-disable-next-line selector-max-universal
     > :not(caption) > * > * {
-      padding: $table-cell-padding-y $table-cell-padding-x;
+      padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
       // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
       color: var(--table-color-state, var(--table-color-type, var(--theme-text, var(--table-color))));
       background-color: var(--theme-bg-subtle, var(--table-bg));
-      border-block-end-width: $table-border-width;
+      border-block-end-width: var(--table-border-width);
       box-shadow: inset 0 0 0 9999px var(--table-bg-state, var(--table-bg-type, var(--theme-bg-subtle, var(--table-accent-bg))));
     }
 
@@ -102,7 +86,7 @@ $table-group-separator-color: currentcolor !default;
   }
 
   .table-group-divider {
-    border-block-start: calc(#{$table-border-width} * 2) solid $table-group-separator-color;
+    border-block-start: calc(var(--table-border-width) * 2) solid var(--table-group-separator-color);
   }
 
   //
@@ -121,7 +105,8 @@ $table-group-separator-color: currentcolor !default;
   .table-sm {
     // stylelint-disable-next-line selector-max-universal
     > :not(caption) > * > * {
-      padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
+      --table-cell-padding-y: .25rem;
+      --table-cell-padding-x: .25rem;
     }
   }
 
@@ -137,11 +122,11 @@ $table-group-separator-color: currentcolor !default;
 
   .table-bordered {
     > :not(caption) > * {
-      border-width: $table-border-width 0;
+      border-width: var(--table-border-width) 0;
 
       // stylelint-disable-next-line selector-max-universal
       > * {
-        border-width: 0 $table-border-width;
+        border-width: 0 var(--table-border-width);
       }
     }
   }
@@ -165,7 +150,7 @@ $table-group-separator-color: currentcolor !default;
   .table-striped {
     > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
       --table-color-type: var(--theme-text, var(--table-striped-color));
-      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-striped-bg-factor)}, transparent);
+      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-striped-bg-factor), transparent);
     }
   }
 
@@ -173,7 +158,7 @@ $table-group-separator-color: currentcolor !default;
   .table-striped-columns {
     > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
       --table-color-type: var(--theme-text, var(--table-striped-color));
-      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-striped-bg-factor)}, transparent);
+      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-striped-bg-factor), transparent);
     }
   }
 
@@ -183,7 +168,7 @@ $table-group-separator-color: currentcolor !default;
 
   .table-active {
     --table-color-state: var(--theme-text, var(--table-active-color));
-    --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-active-bg-factor)}, transparent);
+    --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-active-bg-factor), transparent);
   }
 
   // Hover effect
@@ -193,7 +178,7 @@ $table-group-separator-color: currentcolor !default;
   .table-hover {
     > tbody > tr:hover > * {
       --table-color-state: var(--theme-text, var(--table-hover-color));
-      --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) #{math.percentage($table-hover-bg-factor)}, transparent);
+      --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-hover-bg-factor), transparent);
     }
   }
 

@@ -1,12 +1,28 @@
+@use "sass:map";
 @use "../config" as *;
+@use "../functions" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
+
+// stylelint-disable custom-property-no-missing-var-function
+$prose-tokens: () !default;
+
+// scss-docs-start prose-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$prose-tokens: defaults(
+  (
+    --content-font-size: var(--font-size-sm),
+    --content-gap: 20px,
+    --heading-color: light-dark(var(--gray-900), var(--white)),
+  ),
+  $prose-tokens
+);
+// scss-docs-end prose-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer content {
   .prose {
-    --content-font-size: var(--font-size-sm);
-    --content-gap: 20px;
-    --heading-color: light-dark(var(--gray-900), var(--white));
-
+    @include tokens($prose-tokens);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -52,11 +68,11 @@
     }
 
     :where(h1, h2):not(:first-child):not(:where(.not-prose, .not-prose *)) {
-      margin-top: calc(var(--content-gap) * 1.5);
+      margin-top: calc(var(--content-gap) * .75);
     }
 
     :where(h3, h4, h5, h6):not(:first-child):not(:where(.not-prose, .not-prose *)) {
-      margin-top: calc(var(--content-gap) * 1.25);
+      margin-top: calc(var(--content-gap) * .5);
     }
 
     :where(h1):not(:where(.not-prose, .not-prose *)) {

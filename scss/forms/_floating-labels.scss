@@ -1,59 +1,71 @@
+@use "sass:map";
 @use "sass:math";
 @use "../config" as *;
 @use "../colors" as *;
 @use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 @use "form-variables" as *;
 
-// scss-docs-start form-floating-variables
-$form-floating-height:                  calc(3.5rem + #{$input-height-border}) !default;
-$form-floating-line-height:             1.25 !default;
-$form-floating-padding-x:               $input-padding-x !default;
-$form-floating-padding-y:               1rem !default;
-$form-floating-input-padding-t:         1.625rem !default;
-$form-floating-input-padding-b:         .625rem !default;
-$form-floating-label-height:            1.5em !default;
-$form-floating-label-opacity:           .65 !default;
-$form-floating-label-transform:         scale(.85) translateY(-.5rem) translateX(.15rem) !default;
-$form-floating-label-disabled-color:    var(--gray-600) !default;
-$form-floating-transition:              opacity .1s ease-in-out, transform .1s ease-in-out !default;
-// scss-docs-end form-floating-variables
+$form-floating-tokens: () !default;
+
+// scss-docs-start form-floating-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$form-floating-tokens: defaults(
+  (
+    --form-floating-height: calc(3.5rem + (var(--border-width) * 2)),
+    --form-floating-line-height: 1.25,
+    --form-floating-padding-x: var(--btn-input-padding-x),
+    --form-floating-padding-y: 1rem,
+    --form-floating-input-padding-t: 1.625rem,
+    --form-floating-input-padding-b: .625rem,
+    --form-floating-label-height: 1.5em,
+    --form-floating-label-opacity: .65,
+    --form-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem),
+    --form-floating-label-disabled-color: var(--fg-3),
+    --form-floating-transition-property: "opacity, transform",
+    --form-floating-transition-timing: .1s ease-in-out,
+    --form-floating-transition: var(--form-floating-transition-property) var(--form-floating-transition-timing),
+  ),
+  $form-floating-tokens
+);
+// scss-docs-end form-floating-tokens
 
 @layer forms {
   .form-floating {
-    position: relative;
+    @include tokens($form-floating-tokens);
 
-    > .form-control,
-    > .form-control-plaintext,
-    > .form-select {
-      height: $form-floating-height;
-      min-height: $form-floating-height;
-      line-height: $form-floating-line-height;
-    }
+    position: relative;
 
     > label {
       position: absolute;
       inset-block-start: 0;
       inset-inline-start: 0;
       z-index: 2;
+      display: flex;
+      align-items: center;
       max-width: 100%;
       height: 100%; // allow textareas
-      padding: $form-floating-padding-y $form-floating-padding-x;
+      padding: var(--form-floating-padding-y) var(--form-floating-padding-x);
       overflow: hidden;
-      color: color-mix(in oklch, var(--body-color) #{math.percentage($form-floating-label-opacity)}, transparent);
+      color: color-mix(in oklch, var(--fg-body) var(--form-floating-label-opacity), transparent);
       text-align: start;
       text-overflow: ellipsis;
       white-space: nowrap;
       pointer-events: none;
-      border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
+      border: var(--input-btn-border-width) solid transparent; // Required for aligning label's text with the input as it affects inner box model
       transform-origin: 0 0;
-      @include transition($form-floating-transition);
+      @include transition(var(--form-floating-transition));
     }
 
     > .form-control,
     > .form-control-plaintext {
-      padding: $form-floating-padding-y $form-floating-padding-x;
+      height: var(--form-floating-height);
+      min-height: var(--form-floating-height);
+      padding: var(--form-floating-padding-y) var(--form-floating-padding-x);
+      line-height: var(--form-floating-line-height);
 
       &::placeholder {
         color: transparent;
@@ -61,61 +73,55 @@ $form-floating-transition:              opacity .1s ease-in-out, transform .1s e
 
       &:focus,
       &:not(:placeholder-shown) {
-        padding-top: $form-floating-input-padding-t;
-        padding-bottom: $form-floating-input-padding-b;
+        padding-top: var(--form-floating-input-padding-t);
+        padding-bottom: var(--form-floating-input-padding-b);
       }
       // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
       &:-webkit-autofill {
-        padding-top: $form-floating-input-padding-t;
-        padding-bottom: $form-floating-input-padding-b;
+        padding-top: var(--form-floating-input-padding-t);
+        padding-bottom: var(--form-floating-input-padding-b);
       }
-    }
-
-    > .form-select {
-      padding-inline-start: $form-floating-padding-x;
-      padding-top: $form-floating-input-padding-t;
-      padding-bottom: $form-floating-input-padding-b;
     }
 
     > .form-control:focus,
     > .form-control:not(:placeholder-shown),
-    > .form-control-plaintext,
-    > .form-select {
+    > .form-control-plaintext {
       ~ label {
-        transform: $form-floating-label-transform;
+        transform: var(--form-floating-label-transform);
       }
     }
+
     // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
     > .form-control:-webkit-autofill {
       ~ label {
-        transform: $form-floating-label-transform;
+        transform: var(--form-floating-label-transform);
       }
     }
     > textarea:focus,
     > textarea:not(:placeholder-shown) {
       ~ label::after {
         position: absolute;
-        inset: $form-floating-padding-y ($form-floating-padding-x * .5);
+        inset: var(--form-floating-padding-y) calc(var(--form-floating-padding-x) * .5);
         z-index: -1;
-        height: $form-floating-label-height;
+        height: var(--form-floating-label-height);
         content: "";
-        background-color: $input-bg;
-        @include border-radius($input-border-radius);
+        background-color: var(--input-bg);
+        @include border-radius(var(--btn-input-border-radius));
       }
     }
     > textarea:disabled ~ label::after {
-      background-color: $input-disabled-bg;
+      background-color: var(--control-disabled-bg);
     }
 
     > .form-control-plaintext {
       ~ label {
-        border-width: $input-border-width 0; // Required to properly position label text - as explained above
+        border-width: var(--control-border-width) 0; // Required to properly position label text - as explained above
       }
     }
 
     > :disabled ~ label,
     > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
-      color: $form-floating-label-disabled-color;
+      color: var(--form-floating-label-disabled-color);
     }
   }
 }

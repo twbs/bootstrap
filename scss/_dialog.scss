@@ -1,37 +1,59 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/transition" as *;
+@use "mixins/tokens" as *;
 
 // Native <dialog> component
 // Uses the browser's native dialog element with showModal()/show()/close() APIs
 // Leverages native [open] attribute and ::backdrop pseudo-element
 
-// scss-docs-start dialog-css-vars
-$dialog-padding:                1rem !default;
-$dialog-width:                  500px !default;
-$dialog-width-sm:               280px !default;
-$dialog-width-lg:               800px !default;
-$dialog-width-xl:               1140px !default;
-$dialog-margin:                 1.75rem !default;
-$dialog-color:                  var(--fg-body) !default;
-$dialog-bg:                     var(--bg-body) !default;
-$dialog-border-color:           var(--border-color-translucent) !default;
-$dialog-border-width:           var(--border-width) !default;
-$dialog-border-radius:          var(--border-radius-lg) !default;
-$dialog-box-shadow:             var(--box-shadow-lg) !default;
-$dialog-backdrop-bg:            rgba(0, 0, 0, .5) !default;
-$dialog-header-padding:         1rem !default;
-$dialog-header-border-color:    var(--border-color) !default;
-$dialog-header-border-width:    var(--border-width) !default;
-$dialog-footer-padding:         1rem !default;
-$dialog-footer-border-color:    var(--border-color) !default;
-$dialog-footer-border-width:    var(--border-width) !default;
-$dialog-footer-gap:             .5rem !default;
-// scss-docs-end dialog-css-vars
+// stylelint-disable custom-property-no-missing-var-function
+$dialog-tokens: () !default;
+
+// scss-docs-start dialog-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$dialog-tokens: defaults(
+  (
+    --dialog-padding: 1rem,
+    --dialog-width: 500px,
+    --dialog-margin: 1.75rem,
+    --dialog-color: var(--fg-body),
+    --dialog-bg: var(--bg-body),
+    --dialog-border-color: var(--border-color-translucent),
+    --dialog-border-width: var(--border-width),
+    --dialog-border-radius: var(--border-radius-lg),
+    --dialog-box-shadow: var(--box-shadow-lg),
+    --dialog-backdrop-bg: rgba(0, 0, 0, .5),
+    --dialog-header-padding: 1rem,
+    --dialog-header-border-color: var(--border-color),
+    --dialog-header-border-width: var(--border-width),
+    --dialog-footer-padding: 1rem,
+    --dialog-footer-border-color: var(--border-color),
+    --dialog-footer-border-width: var(--border-width),
+    --dialog-footer-gap: .5rem,
+  ),
+  $dialog-tokens
+);
+// scss-docs-end dialog-tokens
+// stylelint-enable custom-property-no-missing-var-function
+
+// scss-docs-start dialog-sizes
+$dialog-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$dialog-sizes: defaults(
+  (
+    sm: 280px,
+    lg: 800px,
+    xl: 1140px,
+  ),
+  $dialog-sizes
+);
+// scss-docs-end dialog-sizes
 
 @layer components {
   // Prevent body scroll when dialog is open
@@ -41,23 +63,7 @@ $dialog-footer-gap:             .5rem !default;
   }
 
   .dialog {
-    --dialog-padding: #{$dialog-padding};
-    --dialog-width: #{$dialog-width};
-    --dialog-margin: #{$dialog-margin};
-    --dialog-color: #{$dialog-color};
-    --dialog-bg: #{$dialog-bg};
-    --dialog-border-color: #{$dialog-border-color};
-    --dialog-border-width: #{$dialog-border-width};
-    --dialog-border-radius: #{$dialog-border-radius};
-    --dialog-box-shadow: #{$dialog-box-shadow};
-    --dialog-backdrop-bg: #{$dialog-backdrop-bg};
-    --dialog-header-padding: #{$dialog-header-padding};
-    --dialog-header-border-color: #{$dialog-header-border-color};
-    --dialog-header-border-width: #{$dialog-header-border-width};
-    --dialog-footer-padding: #{$dialog-footer-padding};
-    --dialog-footer-border-color: #{$dialog-footer-border-color};
-    --dialog-footer-border-width: #{$dialog-footer-border-width};
-    --dialog-footer-gap: #{$dialog-footer-gap};
+    @include tokens($dialog-tokens);
 
     // Reset native dialog styles
     max-width: var(--dialog-width);
@@ -155,9 +161,9 @@ $dialog-footer-gap:             .5rem !default;
   }
 
   // Dialog sizes
-  .dialog-sm { --dialog-width: #{$dialog-width-sm}; }
-  .dialog-lg { --dialog-width: #{$dialog-width-lg}; }
-  .dialog-xl { --dialog-width: #{$dialog-width-xl}; }
+  @each $size, $value in $dialog-sizes {
+    .dialog-#{$size} { --dialog-width: #{$value}; }
+  }
 
   // Fullscreen dialog
   .dialog-fullscreen {

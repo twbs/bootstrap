@@ -101,10 +101,8 @@ While using visually hidden content (`.visually-hidden`, `aria-label`, and even 
 
 ## CSS
 
-Many form variables are set at a general level to be re-used and extended by individual form components. You’ll see these most often as `$input-btn-*` and `$input-*` variables.
+### Variables
 
-### Sass variables
+Some form variables are set at the root level to be re-used and extended by individual form components, but you’ll most often see variables set at the form control level. Root variables are often `--btn-input-*`, which are shared with [buttons]([[docsref:/components/buttons]]), and `--input-*` variables.
 
-`$input-btn-*` variables are shared global variables between our [buttons]([[docsref:/components/buttons]]) and our form components. You’ll find these frequently reassigned as values to other component-specific variables.
-
-<ScssDocs name="input-btn-variables" file="scss/forms/_form-variables.scss" />
+<ScssDocs name="root-form-variables" file="scss/_root.scss" />

@@ -4,6 +4,78 @@ description: Learn about the guiding principles, strategies, and techniques used
 toc: true
 ---
 
+## Sass & CSS
+
+Bootstrap 6 has a new philosophy of using Sass and CSS together to customize the project for your needs. At a high level, **Sass is for programmatic customization** and **CSS variables are for visual customization**. Previous iterations have treated Sass as both programmatic and visual customization with CSS variables adding a more complicated secondary layer. This has been greatly improved in v6.
+
+### Sass
+
+Sass is used for the following:
+
+- Import (`@use` and `@forward`) individual stylesheets that compile into CSS.
+- Manage repetitive snippets of code with mixins and functions.
+- Toggle global options like `$enable-smooth-scroll`, `$enable-reduced-motion`, etc.
+- Configure and generate component variants (theme colors, sizes, etc) through Sass maps, loops, and more.
+- Bulk-generate CSS variables for all every tint and shade of our colors.
+- Manage component token lists (e.g., `$alert-tokens`) and apply them to specific classes.
+- Power the utilities API to customize and generate utility classes.
+
+### CSS
+
+While you can use Sass to customize how Bootstrap looks, the preferred way now is to use CSS variables whenever possible, including when working with Sass. Here's how we use CSS:
+
+- Customize individual global and component tokens like `--bs-border-radius`, `--bs-alert-padding-x`, etc.
+- Customize token values using Sass’s `with (...tokens)` syntax to override the default values.
+- Mix colors to generate our tints and shades for each hue.
+- Use `calc()` for dynamic values based on the value of another token or CSS variable.
+
+### Examples
+
+Here's how we'd use a mix of Sass and CSS to customize Bootstrap. The Sass helps us manage features and gives us access to generative tokens, while the CSS allows us to customize individual tokens and values.
+
+```scss
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  // Manage global options
+  $enable-smooth-scroll: true,
+
+  // Modify global tokens
+  $root-tokens: (
+    --border-radius: .25rem,
+    --spacer: 1.5rem,
+  ),
+
+  // Modify component tokens
+  $alert-tokens: (
+    --alert-padding-x: calc(var(--spacer) * 2),
+    --alert-border-radius: 1rem,
+  ),
+);
+```
+
+Here's a Sass-specific example, where we cannot use CSS to easily achieve the same result. The following will remove the `text` and `subtle` variants from the `button-variants` map, and override the `button-sizes` map to only include `sm` and `lg` sizes.
+
+```scss
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  // Modify button sizes to remove default `xs` size
+  $button-sizes: ("sm", "lg"),
+
+  // Remove default `text` and `subtle` button variants with `null`
+  $button-variants: (
+    "text": null,
+    "subtle": null,
+  ),
+);
+```
+
+Here's an example of just using pure CSS to customize a CSS variables from the compiled CSS. Wherever `var(--bs-border-radius)` is used, it will be replaced with the value `.25rem`.
+
+```css
+:root {
+  --border-radius: .25rem;
+  --spacer: 1.5rem;
+}
+```
+
 ## Modern essentials
 
 Bootstrap employs a handful of important global styles and settings geared towards normalizing browser styles, enabling responsive and mobile-first design, and providing a modern foundation to build upon.

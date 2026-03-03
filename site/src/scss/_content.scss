@@ -124,8 +124,12 @@
   }
 
   .bd-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 300;
+
+    @media (width >= 1024px) {
+      font-size: 1.25rem;
+    }
   }
 
   .bi {

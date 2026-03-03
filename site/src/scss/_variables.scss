@@ -11,7 +11,7 @@ $bd-purple-light:  color.adjust(color.adjust($bd-purple, $saturation: 5%), $ligh
 $bd-accent:        #ffe484;
 
 $bd-gutter-x: 3rem;
-$bd-callout-variants: info, warning, danger !default;
+$bd-callout-variants: info, warning, danger;
 
 @layer custom {
   :root {

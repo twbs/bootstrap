@@ -2,7 +2,6 @@
 @use "../variables" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
-@use "button-variables" as *;
 
 @layer components {
   // Make the div behave like a button
@@ -46,12 +45,12 @@
   }
 
   .btn-group {
-    @include border-radius($btn-border-radius);
+    @include border-radius(var(--btn-border-radius));
 
     // Prevent double borders when buttons are next to each other
     > [class*="btn-"]:not(:first-child),
     > .btn-group:not(:first-child) {
-      margin-inline-start: calc(-1 * #{$btn-border-width});
+      margin-inline-start: calc(-1 * var(--btn-border-width));
     }
 
     // Reset rounded corners
@@ -67,20 +66,12 @@
     }
   }
 
-  // Sizing
-  //
-  // Remix the default button sizing classes into new ones for easier manipulation.
-
-  // .btn-group-sm > [class*="btn-"] { @extend .btn-sm; }
-  // .btn-group-lg > [class*="btn-"] { @extend .btn-lg; }
-
-
   //
   // Split button dropdowns
   //
 
   .dropdown-toggle-split {
-    padding-inline: $btn-padding-x * .75;
+    padding-inline: calc(var(--btn-padding-x) * .75);
 
     &::after,
     .dropup &::after,
@@ -91,14 +82,6 @@
     .dropstart &::before {
       margin-inline-end: 0;
     }
-  }
-
-  .btn-sm + .dropdown-toggle-split {
-    padding-inline: $btn-padding-x-sm * .75;
-  }
-
-  .btn-lg + .dropdown-toggle-split {
-    padding-inline: $btn-padding-x-lg * .75;
   }
 
   //
@@ -117,7 +100,7 @@
 
     > [class*="btn-"]:not(:first-child),
     > .btn-group:not(:first-child) {
-      margin-top: calc(-1 * #{$btn-border-width});
+      margin-top: calc(-1 * var(--btn-border-width));
     }
 
     // Reset rounded corners

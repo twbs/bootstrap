@@ -1,9 +1,43 @@
+@use "sass:map";
 @use "../colors" as *;
 @use "../config" as *;
+@use "../functions" as *;
 @use "../variables" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
+
+$reboot-kbd-tokens: () !default;
+
+// scss-docs-start reboot-kbd-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$reboot-kbd-tokens: defaults(
+  (
+    --kbd-padding-y: .125rem,
+    --kbd-padding-x: .25rem,
+    --kbd-font-size: var(--font-size-xs),
+    --kbd-color: var(--bg-body),
+    --kbd-bg: var(--fg-2),
+    --kbd-border-radius: var(--border-radius-sm),
+  ),
+  $reboot-kbd-tokens
+);
+// scss-docs-end reboot-kbd-tokens
+
+$reboot-mark-tokens: () !default;
+
+// scss-docs-start reboot-mark-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$reboot-mark-tokens: defaults(
+  (
+    --mark-padding: .1875em,
+    --mark-color: var(--fg-body),
+    --mark-bg: light-dark(var(--yellow-100), var(--yellow-900)),
+  ),
+  $reboot-mark-tokens
+);
+// scss-docs-end reboot-mark-tokens
 
 @layer reboot {
   // Reboot
@@ -69,7 +103,7 @@
   // scss-docs-end reboot-body-rules
 
   hr {
-    margin: $hr-margin-y 0;
+    margin: var(--hr-margin-y, var(--spacer)) 0;
     border: 0;
     border-block-start: var(--border-width) solid var(--hr-border-color);
   }
@@ -198,6 +232,9 @@
 
   blockquote {
     margin: 0 0 1rem;
+    > * {
+      margin-block: 0;
+    }
   }
 
 
@@ -217,7 +254,7 @@
 
   small,
   .small {
-    font-size: $small-font-size;
+    font-size: var(--small-font-size, var(--font-size-sm));
   }
 
 
@@ -225,9 +262,10 @@
 
   mark,
   .mark {
-    padding: $mark-padding;
-    color: var(--highlight-color);
-    background-color: var(--highlight-bg);
+    @include tokens($reboot-mark-tokens);
+    padding: var(--mark-padding);
+    color: var(--mark-color);
+    background-color: var(--mark-bg);
   }
 
 
@@ -239,7 +277,7 @@
   sub,
   sup {
     position: relative;
-    font-size: $sub-sup-font-size;
+    font-size: var(--sub-sup-font-size, .75em);
     line-height: 0;
     vertical-align: baseline;
   }
@@ -296,8 +334,8 @@
     margin-top: 0; // 1
     margin-bottom: 1rem; // 2
     overflow: auto; // 3
-    font-size: $code-font-size;
-    color: $pre-color;
+    font-size: var(--code-font-size);
+    color: var(--code-color, inherit);
 
     // Account for some code outputs that place code tags in pre tags
     code {
@@ -308,7 +346,7 @@
   }
 
   code {
-    font-size: $code-font-size;
+    font-size: var(--code-font-size);
     color: var(--code-color);
     word-wrap: break-word;
 
@@ -319,11 +357,12 @@
   }
 
   kbd {
-    padding: $kbd-padding-y $kbd-padding-x;
-    font-size: $kbd-font-size;
-    color: $kbd-color;
-    background-color: $kbd-bg;
-    @include border-radius($border-radius-sm);
+    @include tokens($reboot-kbd-tokens);
+    padding: var(--kbd-padding-y) var(--kbd-padding-x);
+    font-size: var(--kbd-font-size);
+    color: var(--kbd-color);
+    background-color: var(--kbd-bg);
+    @include border-radius(var(--kbd-border-radius));
 
     kbd {
       padding: 0;
@@ -364,7 +403,7 @@
     // padding-bottom: $table-cell-padding-y;
     // color: $table-caption-color;
     padding-block: .5rem;
-    color: var(--secondary-color);
+    color: var(--fg-3);
     text-align: start;
   }
 

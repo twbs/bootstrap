@@ -1,26 +1,53 @@
 @use "sass:map";
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/transition" as *;
 @use "mixins/backdrop" as *;
 @use "layout/breakpoints" as *;
+@use "mixins/tokens" as *;
+
+// stylelint-disable custom-property-no-missing-var-function
+$offcanvas-tokens: () !default;
+
+// scss-docs-start offcanvas-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$offcanvas-tokens: defaults(
+  (
+    --offcanvas-zindex: #{$zindex-offcanvas},
+    --offcanvas-width: 400px,
+    --offcanvas-height: 30vh,
+    --offcanvas-padding-x: 1rem,
+    --offcanvas-padding-y: 1rem,
+    --offcanvas-color: var(--fg-body),
+    --offcanvas-bg: var(--bg-body),
+    --offcanvas-border-width: var(--border-width),
+    --offcanvas-border-color: var(--border-color-translucent),
+    --offcanvas-box-shadow: var(--box-shadow-lg),
+    --offcanvas-transition: transform .3s ease-in-out,
+    --offcanvas-title-line-height: 1.5,
+  ),
+  $offcanvas-tokens
+);
+// scss-docs-end offcanvas-tokens
+// stylelint-enable custom-property-no-missing-var-function
+
+$offcanvas-backdrop-tokens: () !default;
+
+// scss-docs-start offcanvas-backdrop-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$offcanvas-backdrop-tokens: defaults(
+  (
+    bg: rgba(0, 0, 0, .5),
+    opacity: .5,
+  ),
+  $offcanvas-backdrop-tokens
+);
+// scss-docs-end offcanvas-backdrop-tokens
 
 %offcanvas-css-vars {
-  // scss-docs-start offcanvas-css-vars
-  --offcanvas-zindex: #{$zindex-offcanvas};
-  --offcanvas-width: #{$offcanvas-horizontal-width};
-  --offcanvas-height: #{$offcanvas-vertical-height};
-  --offcanvas-padding-x: #{$offcanvas-padding-x};
-  --offcanvas-padding-y: #{$offcanvas-padding-y};
-  --offcanvas-color: #{$offcanvas-color};
-  --offcanvas-bg: #{$offcanvas-bg-color};
-  --offcanvas-border-width: #{$offcanvas-border-width};
-  --offcanvas-border-color: #{$offcanvas-border-color};
-  --offcanvas-box-shadow: #{$offcanvas-box-shadow};
-  --offcanvas-transition: #{transform $offcanvas-transition-duration ease-in-out};
-  --offcanvas-title-line-height: #{$offcanvas-title-line-height};
-  // scss-docs-end offcanvas-css-vars
+  @include tokens($offcanvas-tokens);
 }
 
 @layer components {
@@ -129,7 +156,7 @@
   }
 
   .offcanvas-backdrop {
-    @include overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+    @include overlay-backdrop($zindex-offcanvas-backdrop, map.get($offcanvas-backdrop-tokens, bg), map.get($offcanvas-backdrop-tokens, opacity));
   }
 
   .offcanvas-header {
