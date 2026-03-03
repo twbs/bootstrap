@@ -145,7 +145,7 @@ Every token map in Bootstrap includes the `!default` flag, allowing you to overr
 
 ### Compile-time overrides
 
-To override token values at compile time, use `@use ... with ()` when importing Bootstrap. You only need to include the keys you want to change — Bootstrap merges your overrides with its defaults via `map.merge()`, so all other tokens remain intact.
+To override token values at compile time, use `@use ... with ()` when importing Bootstrap. You only need to include the keys you want to change — Bootstrap merges your overrides with its defaults using the `defaults()` function, so all other tokens remain intact.
 
 ```scss
 @use "../node_modules/bootstrap/scss/bootstrap" with (
@@ -164,14 +164,15 @@ Under the hood, every token map uses a two-step pattern:
 
 ```scss
 $alert-tokens: () !default;
-
-$alert-tokens: map.merge(
-  ( ... built-in defaults ... ),
+$alert-tokens: defaults(
+  (
+    // Default tokens here
+  ),
   $alert-tokens
 );
 ```
 
-The `() !default` declaration receives your `with()` overrides. Then `map.merge()` layers your entries on top of the built-in defaults, so unspecified keys keep their original values.
+The `() !default` declaration receives your `with()` overrides. Then `defaults()` merges your entries on top of the built-in defaults, so unspecified keys keep their original values. Any keys set to `null` are removed from the map entirely, letting you drop tokens you don't need.
 
 ### Runtime overrides
 
@@ -246,13 +247,11 @@ Here's the alert component as an example:
 
 <ScssDocs name="alert-tokens" file="scss/_alert.scss" />
 
-The tokens are output on the `.alert` class:
+The tokens are output on the `.alert` class using the `tokens()` mixin:
 
 ```scss
 .alert {
-  @each $prop, $value in $alert-tokens {
-    #{$prop}: #{$value};
-  }
+  @include tokens($alert-tokens);
 
   padding: var(--alert-padding-y) var(--alert-padding-x);
   color: var(--alert-color);
@@ -278,6 +277,18 @@ Use `with ()` to override specific component token values at compile time with S
 
 This works for every component: `$card-tokens`, `$button-tokens`, `$dropdown-tokens`, `$nav-tokens`, and so on — any `$*-tokens` map supports partial overrides through the same merge pattern.
 
+### Remove tokens with `null`
+
+Set any map key to `null` to remove it entirely. The `defaults()` function strips null entries before the map is used, so no CSS is generated for those keys:
+
+```scss
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $alert-tokens: (
+    --alert-margin-bottom: null,
+  )
+);
+```
+
 ### Override CSS tokens
 
 You can also override the CSS custom properties directly without Sass:
@@ -290,6 +301,55 @@ You can also override the CSS custom properties directly without Sass:
 }
 ```
 
+## Size maps
+
+In addition to token maps, Bootstrap uses size maps to generate size variant classes like `.btn-sm`, `.btn-lg`, `.form-control-sm`, etc. These use the same `defaults()` function and support the same override and removal patterns.
+
+Size maps accept a simple list of size names:
+
+```scss
+$button-sizes: () !default;
+$button-sizes: defaults(
+  ("xs", "sm", "lg"),
+  $button-sizes
+);
+```
+
+The loop then derives CSS custom property values from each size name:
+
+```scss
+@each $size, $_ in $button-sizes {
+  .btn-#{$size} {
+    --btn-min-height: var(--btn-input-#{$size}-min-height);
+    --btn-padding-y: var(--btn-input-#{$size}-padding-y);
+    // ...
+  }
+}
+```
+
+To remove a size, set its key to `null` via `with()`:
+
+```scss
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $button-sizes: ("xs": null),
+);
+```
+
+## Variant maps
+
+Some components use variant maps to generate style variants. For example, `$button-variants` defines `solid`, `outline`, `subtle`, and `text` button styles. These are also processed by `defaults()` and support `null` removal:
+
+```scss
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $button-variants: (
+    "text": null,
+    "subtle": null,
+  ),
+);
+```
+
+This removes the `.btn-text` and `.btn-subtle` classes from the compiled CSS while keeping `.btn-solid` and `.btn-outline` intact.
+
 ## Required keys
 
 Bootstrap assumes the presence of some specific keys within Sass maps as we use and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
@@ -297,6 +357,16 @@ Bootstrap assumes the presence of some specific keys within Sass maps as we use 
 For `$new-theme-colors`, the `primary`, `success`, and `danger` keys are required for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues.
 
 ## Functions
+
+### Defaults
+
+The `defaults()` function is the backbone of Bootstrap's customization system. It merges user overrides on top of built-in defaults and strips any `null` entries from the result. Every token map, size map, and variant map uses it:
+
+```scss
+@function defaults($defaults, $overrides) { ... }
+```
+
+It accepts either a map or a list as the first argument. Lists are automatically converted to maps with `true` values, which is how size maps like `$button-sizes` work with a clean `("xs", "sm", "lg")` syntax.
 
 ### Colors
 
@@ -381,6 +451,19 @@ $border-width: 0;
 ## Mixins
 
 Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap and can also be used across your own project.
+
+### Tokens
+
+The `tokens()` mixin outputs a Sass map as CSS custom properties. Every component uses it to render its token map:
+
+<ScssDocs name="mixin-tokens" file="scss/mixins/_tokens.scss" />
+
+```scss
+.alert {
+  @include tokens($alert-tokens);
+  // Outputs: --alert-padding-x: ...; --alert-padding-y: ...; etc.
+}
+```
 
 ### Color schemes
 
