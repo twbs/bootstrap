@@ -53,6 +53,7 @@
     "css-prefix": "npm-run-all --aggregate-output --parallel css-prefix-*",
     "css-prefix-main": "postcss --config build/postcss.config.mjs --replace \"dist/css/*.css\" \"!dist/css/*.min.css\" \"!dist/css/*.tmp.css\"",
     "css-prefix-examples": "postcss --config build/postcss.config.mjs --replace \"site/src/assets/examples/**/*.css\"",
+    "example": "sass --no-error-css examples/sass-customization/custom.scss examples/sass-customization/custom.css && postcss --config build/postcss.config.mjs --replace examples/sass-customization/custom.css",
     "css-test": "jasmine --config=scss/tests/jasmine.js",
     "js": "npm-run-all js-compile js-minify",
     "js-compile": "npm-run-all --aggregate-output --parallel js-compile-*",

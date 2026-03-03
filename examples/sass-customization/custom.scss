@@ -1,0 +1,36 @@
+// Override base color hues and token maps via with()
+// Scalar values replace directly; token overrides get merged with defaults.
+@use "../../scss/bootstrap" with (
+  $new-blue: oklch(55% .28 260),
+  $new-green: oklch(68% .19 155),
+
+  $root-tokens: (
+    --border-radius: 1rem,
+    --spacer: 2rem,
+  ),
+
+  $alert-tokens: (
+    --alert-padding-x: 2rem,
+    --alert-padding-y: 2rem,
+    --alert-border-radius: 2rem,
+  ),
+
+  $button-sizes: ("xs": null),
+  $button-variants: (
+    "text": null,
+    "subtle": null,
+  ),
+);
+
+// Custom styles using Bootstrap's token system
+.demo-section {
+  padding: var(--spacer);
+  margin-block-end: calc(var(--spacer) * 2);
+}
+
+.custom-hero {
+  padding: calc(var(--spacer) * 3) calc(var(--spacer) * 2);
+  color: var(--fg-body);
+  background-color: var(--bg-1);
+  border: var(--border-width) solid var(--border-muted);
+}

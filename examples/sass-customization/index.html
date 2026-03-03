@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Sass Customization Example</title>
+    <link href="custom.css" rel="stylesheet">
+  </head>
+  <body class="p-4">
+    <div class="container">
+      <div class="custom-hero mb-4">
+        <h1>Sass Tokens Demo</h1>
+        <p class="fg-2 mb-0">Compiled from local Bootstrap source with custom styles using the token system.</p>
+      </div>
+
+      <h2 class="h5 mb-3">Theme color buttons</h2>
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <button class="btn btn-solid theme-primary">Primary</button>
+        <button class="btn btn-solid theme-accent">Accent</button>
+        <button class="btn btn-solid theme-success">Success</button>
+        <button class="btn btn-solid theme-danger">Danger</button>
+        <button class="btn btn-solid theme-warning">Warning</button>
+        <button class="btn btn-solid theme-info">Info</button>
+        <button class="btn btn-solid theme-inverse">Inverse</button>
+        <button class="btn btn-solid theme-secondary">Secondary</button>
+      </div>
+
+      <h2 class="h5 mb-3">Alerts</h2>
+      <div class="demo-section">
+        <div class="alert theme-primary" role="alert">
+          <div>A primary alert using theme tokens.</div>
+        </div>
+        <div class="alert theme-success" role="alert">
+          <div>A success alert using theme tokens.</div>
+        </div>
+        <div class="alert theme-danger" role="alert">
+          <div>A danger alert using theme tokens.</div>
+        </div>
+      </div>
+
+      <h2 class="h5 mb-3">Cards</h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Default card</h5>
+              <p class="card-text">Using global background and foreground tokens.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card theme-primary">
+            <div class="card-body">
+              <h5 class="card-title">Primary card</h5>
+              <p class="card-text">Themed with primary color tokens.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card theme-success">
+            <div class="card-body">
+              <h5 class="card-title">Success card</h5>
+              <p class="card-text">Themed with success color tokens.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

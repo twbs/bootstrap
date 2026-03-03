@@ -39,6 +39,10 @@ Thumbs.db
 /js/coverage/
 /node_modules/
 
+# Example compiled output
+/examples/**/custom.css
+/examples/**/custom.css.map
+
 # Site
 /site/dist
 /site/node_modules
