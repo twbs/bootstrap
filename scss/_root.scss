@@ -148,7 +148,7 @@ $root-tokens: defaults(
 
 // scss-docs-start root-theme-tokens
 // Generate semantic theme colors
-@each $color-name, $color-map in $new-theme-colors {
+@each $color-name, $color-map in $theme-colors {
   @each $key, $value in $color-map {
     $root-tokens: map.set($root-tokens, --#{$color-name}-#{$key}, $value);
   }

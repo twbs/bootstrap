@@ -6,7 +6,7 @@
 @function theme-color-values($key) {
   $result: ();
 
-  @each $color-name, $color-map in $new-theme-colors {
+  @each $color-name, $color-map in $theme-colors {
     @if map.has-key($color-map, $key) {
       $result: map.merge($result, ($color-name: map.get($color-map, $key)));
     }
@@ -35,7 +35,7 @@
 
 // Generate theme classes dynamically based on the keys in each theme color map
 @mixin generate-theme-classes() {
-  @each $color-name, $color-map in $new-theme-colors {
+  @each $color-name, $color-map in $theme-colors {
     .theme-#{$color-name} {
       @each $key, $value in $color-map {
         --theme-#{$key}: var(--#{$color-name}-#{$key});
@@ -59,7 +59,7 @@
 }
 
 // scss-docs-start theme-colors
-$new-theme-colors: (
+$theme-colors: (
   "primary": (
     "base": var(--blue-500),
     "text": light-dark(var(--blue-600), var(--blue-400)),

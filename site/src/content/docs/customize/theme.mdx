@@ -42,7 +42,7 @@ export const themeFgs = [
 
 ## How it works
 
-Theme colors are defined in the `$new-theme-colors` Sass map. This map is used to generate our theme color values. You'll find these values in the `_theme.scss` file. These are where we define our design tokens for Bootstrap, across both light and dark color modes.
+Theme colors are defined in the `$theme-colors` Sass map. This map is used to generate our theme color values. You'll find these values in the `_theme.scss` file. These are where we define our design tokens for Bootstrap, across both light and dark color modes.
 
 Theme colors include the following semantic colors:
 
@@ -118,7 +118,7 @@ Not all colors can be used for all purposes due to accessibility, color contrast
 
 ## Layer colors
 
-Color tokens that are used for foreground, background, and border colors are called **theme layer colors** in Bootstrap. These layer colors are configured outside the `$new-theme-colors` Sass map in their own respective Sass maps as they have more nuanced theming use cases.
+Color tokens that are used for foreground, background, and border colors are called **theme layer colors** in Bootstrap. These layer colors are configured outside the `$theme-colors` Sass map in their own respective Sass maps as they have more nuanced theming use cases.
 
 Tokens for these three themes are defined in the `$theme-fgs`, `$theme-bgs`, and `$theme-borders` Sass maps. These maps are used to generate color mode adaptive `color`, `background-color`, and `border-color` values that are then consumed by our utilities and components. You'll find these values in the `_theme.scss` file.
 
@@ -196,7 +196,7 @@ Here are some examples showing them together. Note
 
 ## Theme utility classes
 
-We generate theme utility classes from the `$new-theme-colors` Sass map that make all theme color tokens available as CSS variables. We use these in our component variants to allow for quick theming with a single, global class. This requires components to support theme colors, and not every component does.
+We generate theme utility classes from the `$theme-colors` Sass map that make all theme color tokens available as CSS variables. We use these in our component variants to allow for quick theming with a single, global class. This requires components to support theme colors, and not every component does.
 
 With theme utilities, you can apply a theme color to an element with a single class.
 
@@ -252,6 +252,6 @@ We use a large, nested Sass map to generate our theme color values.
 
 ## CSS variables
 
-CSS variables are generated from the `$new-theme-colors` Sass map at the `:root` level inside `_root.scss` using a Sass loop.
+CSS variables are generated from the `$theme-colors` Sass map at the `:root` level inside `_root.scss` using a Sass loop.
 
 <ScssDocs name="root-theme-tokens" file="scss/_root.scss" />
