@@ -102,8 +102,14 @@ $root-tokens: defaults(
     // scss-docs-end root-focus-variables
 
     // scss-docs-start root-form-variables
-    --input-bg: var(--bg-body),
-    --input-color: var(--fg-body),
+    --control-bg: var(--bg-body),
+    --control-fg: var(--fg-body),
+    --control-checked-bg: var(--primary-base),
+    --control-checked-border-color: var(--control-checked-bg),
+    --control-active-bg: var(--primary-base),
+    --control-active-border-color: var(--control-active-bg),
+    --control-disabled-bg: var(--bg-3),
+    --control-disabled-opacity: .65,
 
     --btn-input-min-height: 2.375rem,
     --btn-input-padding-y: .375rem,

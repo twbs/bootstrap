@@ -105,7 +105,7 @@ $form-floating-tokens: defaults(
         z-index: -1;
         height: var(--form-floating-label-height);
         content: "";
-        background-color: var(--input-bg);
+        background-color: var(--control-bg);
         @include border-radius(var(--btn-input-border-radius));
       }
     }
