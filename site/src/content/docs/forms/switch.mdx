@@ -20,45 +20,45 @@ Switches also include the `switch` attribute for browsers that support it. This 
 
 ## Label
 
-Wrap the `.switch` in a `<b-checkgroup>` layout component and add your label. We use a custom element for layout here that sets some basic flexbox styling. Switches are checkboxes under the hood, so we reused the same custom element here.
+Wrap the `.switch` in a `.checkgroup` layout wrapper and add your label. This sets some basic flexbox styling. Switches are checkboxes under the hood, so we reuse the same layout class here.
 
 Consider margin utilities for additional spacing, and flex utilities for alignment, especially when using small or large switches.
 
-<Example class="d-flex flex-column gap-3" code={`<b-checkgroup>
+<Example class="d-flex flex-column gap-3" code={`<div class="checkgroup">
     <div class="switch switch-sm mt-1">
       <input type="checkbox" value="" id="switchSmLabel" role="switch" switch>
     </div>
     <label for="switchSmLabel">Small switch</label>
-  </b-checkgroup>
+  </div>
 
-  <b-checkgroup>
+  <div class="checkgroup">
     <div class="switch">
       <input type="checkbox" value="" id="switchMdLabel" role="switch" switch>
     </div>
     <label for="switchMdLabel">Default switch</label>
-  </b-checkgroup>`} />
+  </div>`} />
 
 ## Theme colors
 
 Modify the appearance of checked checkboxes by adding the `.checked-{color}` class to the `.switch` element. This will set the checked background and border color to the theme color.
 
-<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => ` <b-checkgroup>
-    <div class="switch switch-sm mt-1 checked-${themeColor.name}">
+<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => ` <div class="checkgroup">
+    <div class="switch switch-sm mt-1 theme-${themeColor.name}">
       <input type="checkbox" value="" id="switch${themeColor.name}" role="switch" switch checked>
     </div>
     <label for="switch${themeColor.name}">Example ${themeColor.name} switch</label>
-  </b-checkgroup>`)} />
+  </div>`)} />
 
 ## Disabled
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example class="d-flex flex-column gap-3" code={`<b-checkgroup>
+<Example class="d-flex flex-column gap-3" code={`<div class="checkgroup">
     <div class="switch">
       <input type="checkbox" value="" id="switchDisabledLabel" role="switch" switch disabled>
     </div>
     <label for="switchDisabledLabel">Disabled switch</label>
-  </b-checkgroup>`} />
+  </div>`} />
 
 ## Sizes
 

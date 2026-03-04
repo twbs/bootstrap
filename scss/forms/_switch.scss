@@ -25,10 +25,10 @@ $switch-tokens: defaults(
     --switch-border-width: var(--border-width),
     --switch-border-color: var(--border-color),
     --switch-indicator-bg: var(--white),
-    --switch-checked-bg: var(--primary-base),
+    --switch-checked-bg: var(--control-checked-bg),
     --switch-checked-border-color: var(--switch-checked-bg),
     --switch-checked-indicator-bg: var(--white),
-    --switch-disabled-bg: var(--bg-3),
+    --switch-disabled-bg: var(--control-disabled-bg),
     --switch-disabled-indicator-bg: var(--fg-3),
   ),
   $switch-tokens
@@ -62,7 +62,7 @@ $switch-tokens: defaults(
       width: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2);
       height: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2);
       content: "";
-      background-color: var(--switch-indicator-bg);
+      background-color: var(--theme-contrast, var(--switch-indicator-bg));
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 50%;
       box-shadow: 0 1px 2px rgba($black, .1);

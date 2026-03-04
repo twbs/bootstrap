@@ -17,12 +17,13 @@ $radio-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $radio-tokens: defaults(
   (
+    --radio-size: 1rem,
     --radio-bg: transparent,
     --radio-border-color: var(--border-color),
-    --radio-checked-bg: var(--primary-base),
-    --radio-checked-border-color: var(--primary-base),
-    --radio-disabled-bg: var(--bg-3),
-    --radio-disabled-opacity: .65,
+    --radio-checked-bg: var(--control-checked-bg),
+    --radio-checked-border-color: var(--control-checked-border-color),
+    --radio-disabled-bg: var(--control-disabled-bg),
+    --radio-disabled-opacity: var(--control-disabled-opacity),
   ),
   $radio-tokens
 );
@@ -30,7 +31,7 @@ $radio-tokens: defaults(
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
-  b-radiogroup {
+  .radiogroup {
     display: flex;
     gap: var(--gap, .5rem);
     align-items: var(--align-items, start);
@@ -45,8 +46,8 @@ $radio-tokens: defaults(
 
     position: relative;
     flex-shrink: 0;
-    width: 1rem;
-    height: 1rem;
+    width: var(--radio-size);
+    height: var(--radio-size);
     margin-block: .125rem;
     appearance: none;
     background-color: var(--theme-bg, var(--radio-bg));
