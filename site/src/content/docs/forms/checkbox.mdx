@@ -6,13 +6,6 @@ toc: true
 
 import { getData } from '@libs/data'
 
-**Trialing new components with the following rules:**
-
-- New components are purely components, they don't assume layout of any kind.
-- New options for form layout:
-  - Use new form groups to lay out your forms: `.control-group`, `.check-group`, `.radio-group`.
-  - Use helpers to lay out your forms—`.hstack` and `.vstack`—with utilities.
-
 ## Basic checkbox
 
 All checkbox styling is contained to a wrapper class, `.check`. This does the following:
@@ -27,9 +20,9 @@ Checkbox layout and labels are handled with additional HTML and CSS.
 
 <Example code={`<div class="check">
     <input type="checkbox" id="check" checked />
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
-      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
     </svg>
   </div>`} />
 
@@ -39,87 +32,89 @@ Checkboxes can utilize the indeterminate pseudo class when manually set via Java
 
 <Example addStackblitzJs class="bd-example-indeterminate" code={`<div class="check">
     <input type="checkbox" id="checkIndeterminate" />
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
-      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
     </svg>
   </div>`} />
 
 ## Label
 
-Wrap the `.check` in a `<b-checkgroup>` layout component and add your label. We use a custom element for layout here that sets some basic flexbox styling.
+Wrap the `.check` in a `.checkgroup` layout wrapper and add your label. This sets some basic flexbox styling.
 
 Consider margin utilities for additional spacing, and flex utilities for alignment.
 
-<Example code={`<b-checkgroup>
+<Example code={`<div class="checkgroup">
     <div class="check">
       <input type="checkbox" id="checkLabel" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
       </svg>
     </div>
     <label for="checkLabel">Example new checkbox</label>
-  </b-checkgroup>`} />
+  </div>`} />
 
 ## Theme colors
 
 Modify the appearance of checked checkboxes by adding the `.theme-{color}` class to the `.check` element. This will set the checked background and border color to the theme color.
 
-<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<b-checkgroup>
+<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<div class="checkgroup">
     <div class="check theme-${themeColor.name}">
       <input type="checkbox" id="check${themeColor.name}" checked />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
       </svg>
     </div>
     <label for="check${themeColor.name}">Example ${themeColor.name} checkbox</label>
-  </b-checkgroup>`)} />
+  </div>`)} />
 
 ## Description
 
 With this layout approach, you can easily add a description or other content after the label. Here we use another custom element, `<b-vstack>`, to stack the label and description.
 
-<Example code={`<b-checkgroup>
+<Example code={`<div class="checkgroup">
     <div class="check">
       <input type="checkbox" id="checkDescription" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
       </svg>
     </div>
     <b-vstack>
       <label for="checkDescription">Example new checkbox</label>
       <small class="description">Supporting description for the above label.</small>
     </b-vstack>
-  </b-checkgroup>`} />
+  </div>`} />
 
 ## Disabled
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example code={`<b-checkgroup>
+<Example code={`<div class="checkgroup">
     <div class="check">
       <input type="checkbox" id="checkDisabled" disabled />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
       </svg>
     </div>
     <label for="checkDisabled">Example new checkbox</label>
-  </b-checkgroup>`} />
+  </div>`} />
 
-<Example code={`<b-checkgroup>
+Applies to checked states, too.
+
+<Example code={`<div class="checkgroup">
     <div class="check">
       <input type="checkbox" id="checkDisabledChecked" checked disabled />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
       </svg>
     </div>
     <label for="checkDisabledChecked">Example new checkbox</label>
-  </b-checkgroup>`} />
+  </div>`} />
 
 ## CSS
 

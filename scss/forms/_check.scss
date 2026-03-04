@@ -17,14 +17,17 @@ $check-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $check-tokens: defaults(
   (
+    --check-size: 1rem,
     --check-bg: transparent,
     --check-border-color: var(--border-color),
-    --check-checked-bg: var(--primary-base),
-    --check-checked-border-color: var(--primary-base),
-    --check-indeterminate-bg: var(--primary-base),
-    --check-indeterminate-border-color: var(--primary-base),
-    --check-disabled-bg: var(--bg-3),
-    --check-disabled-opacity: .65,
+    --check-checked-bg: var(--control-checked-bg),
+    --check-checked-border-color: var(--control-checked-border-color),
+    --check-indeterminate-bg: var(--control-checked-bg),
+    --check-indeterminate-border-color: var(--control-checked-border-color),
+    --check-active-bg: var(--control-active-bg),
+    --check-active-border-color: var(--control-active-border-color),
+    --check-disabled-bg: var(--control-disabled-bg),
+    --check-disabled-opacity: var(--control-disabled-opacity),
   ),
   $check-tokens
 );
@@ -32,7 +35,7 @@ $check-tokens: defaults(
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
-  b-checkgroup {
+  .checkgroup {
     display: flex;
     gap: var(--gap, .5rem);
     align-items: var(--align-items, start);
@@ -53,8 +56,8 @@ $check-tokens: defaults(
       flex-shrink: 0;
       grid-row-start: 1;
       grid-column-start: 1;
-      width: 1rem;
-      height: 1rem;
+      width: var(--check-size);
+      height: var(--check-size);
     }
 
     :where(input) {
@@ -63,7 +66,7 @@ $check-tokens: defaults(
       background-color: var(--theme-bg, var(--check-bg));
       border: 1px solid var(--theme-bg, var(--check-border-color));
       // stylelint-disable-next-line property-disallowed-list
-      border-radius: .25em;
+      border-radius: .3em;
     }
 
     :where(input:checked, input:indeterminate) {
@@ -78,7 +81,7 @@ $check-tokens: defaults(
     &:has(input:checked) .checked,
     &:has(input:indeterminate) .indeterminate {
       display: block;
-      color: var(--primary-contrast);
+      color: var(--theme-contrast, var(--primary-contrast));
       stroke: currentcolor;
     }
 
@@ -86,7 +89,7 @@ $check-tokens: defaults(
       --check-bg: var(--check-disabled-bg);
 
       ~ label {
-        color: var(--secondary-text);
+        color: var(--fg-3);
         cursor: default;
       }
     }
