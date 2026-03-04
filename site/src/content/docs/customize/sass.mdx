@@ -130,7 +130,7 @@ The layers, from lowest to highest level:
 
 1. **Color scales** (`_colors.scss`) — Base hue variables defined in `oklch()` generate a full scale of color steps (025–975) as CSS custom properties using `color-mix()`. For example, `--blue-500`, `--red-200`, `--gray-900`.
 
-2. **Theme colors** (`_theme.scss`) — The `$new-theme-colors` map defines semantic color roles like `primary`, `success`, and `danger`. Each theme color is a nested map with sub-keys: `base`, `text`, `text-emphasis`, `bg`, `bg-subtle`, `bg-muted`, `border`, `focus-ring`, and `contrast`.
+2. **Theme colors** (`_theme.scss`) — The `$theme-colors` map defines semantic color roles like `primary`, `success`, and `danger`. Each theme color is a nested map with sub-keys: `base`, `text`, `text-emphasis`, `bg`, `bg-subtle`, `bg-muted`, `border`, `focus-ring`, and `contrast`.
 
 3. **Global tokens** (`_theme.scss` and `_root.scss`) — Semantic tokens for backgrounds (`$theme-bgs`), foregrounds (`$theme-fgs`), and borders (`$theme-borders`) are defined alongside the `$root-tokens` map, which aggregates everything into `:root` CSS custom properties.
 
@@ -204,14 +204,14 @@ Bootstrap includes several Sass maps that generate families of related CSS custo
 
 ### Theme color map
 
-The `$new-theme-colors` map defines the semantic color palette. Each entry is a nested map with sub-keys like `base`, `text`, `bg`, `border`, and more. See the [Theme documentation]([[docsref:/customize/theme]]) for the full map, sub-key reference, and usage examples.
+The `$theme-colors` map defines the semantic color palette. Each entry is a nested map with sub-keys like `base`, `text`, `bg`, `border`, and more. See the [Theme documentation]([[docsref:/customize/theme]]) for the full map, sub-key reference, and usage examples.
 
 To modify, add, or remove theme colors at compile time:
 
 ```scss
 @use "sass:map";
 @use "../node_modules/bootstrap/scss/theme" with (
-  $new-theme-colors: (
+  $theme-colors: (
     "primary": (
       "base": var(--indigo-500),
       "text": light-dark(var(--indigo-600), var(--indigo-400)),
@@ -354,7 +354,7 @@ This removes the `.btn-text` and `.btn-subtle` classes from the compiled CSS whi
 
 Bootstrap assumes the presence of some specific keys within Sass maps as we use and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
 
-For `$new-theme-colors`, the `primary`, `success`, and `danger` keys are required for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues.
+For `$theme-colors`, the `primary`, `success`, and `danger` keys are required for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues.
 
 ## Functions
 
@@ -396,10 +396,10 @@ In order to meet the [Web Content Accessibility Guidelines (WCAG)](https://www.w
 
 To help with this, we included the `color-contrast` function in Bootstrap. It uses the [WCAG contrast ratio algorithm](https://www.w3.org/TR/WCAG/#dfn-contrast-ratio) for calculating contrast thresholds based on [relative luminance](https://www.w3.org/TR/WCAG/#dfn-relative-luminance) in an `sRGB` color space to automatically return a light (`#fff`), dark (`#212529`) or black (`#000`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
 
-For example, to generate color swatches from our `$new-theme-colors` map:
+For example, to generate color swatches from our `$theme-colors` map:
 
 ```scss
-@each $color, $value in $new-theme-colors {
+@each $color, $value in $theme-colors {
   .swatch-#{$color} {
     color: color-contrast(map.get($value, "base"));
   }
