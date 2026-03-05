@@ -5,6 +5,8 @@
 
 @layer custom {
   .bd-sidebar {
+    font-size: var(--font-size-sm);
+
     @include media-breakpoint-up(lg) {
       position: sticky;
       top: 5rem;
@@ -30,7 +32,7 @@
     .nav {
       --bs-nav-gap: 2px;
       --bs-nav-link-justify: flex-start;
-      --bs-nav-link-font-size: #{$font-size-sm};
+      --bs-nav-link-font-size: var(--font-size-sm);
       --bs-nav-link-padding-x: .75rem;
       --bs-nav-link-padding-y: .25rem;
       margin-top: .25rem;

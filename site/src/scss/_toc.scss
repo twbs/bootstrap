@@ -4,6 +4,7 @@
 @layer custom {
   .bd-toc {
     container-type: inline-size;
+    font-size: var(--font-size-sm);
 
     @include media-breakpoint-up(lg) {
       position: sticky;
