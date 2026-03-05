@@ -622,8 +622,8 @@ $utilities: map.merge(
       property: font-family,
       class: font,
       values: (
-        "monospace": var(--font-monospace),
-        "body": var(--font-sans-serif),
+        "monospace": var(--font-mono),
+        "body": var(--body-font-family),
       )
     ),
     // scss-docs-end utils-font-family

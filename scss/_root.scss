@@ -22,16 +22,11 @@ $root-tokens: defaults(
   (
     --black: #{$black},
     --white: #{$white},
-    // Fonts
-    // Note: Use `inspect` for lists so that quoted items keep the quotes.
-    // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
-    --font-sans-serif: #{meta.inspect($font-family-sans-serif)},
-    --font-monospace: #{meta.inspect($font-family-monospace)},
+
     --gradient: #{$gradient},
-    --body-font-family: #{meta.inspect($font-family-base)},
 
     // scss-docs-start root-font-size-variables
-    --font-size-base: #{$font-size-base},
+    --font-size-base: 1rem,
     --font-size-xs: .75rem,
     --font-size-sm: .875rem,
     --font-size-md: 1rem,
@@ -55,7 +50,8 @@ $root-tokens: defaults(
     --line-height-6xl: 1,
     // scss-docs-end root-font-size-variables
 
-    --body-font-size: #{$font-size-base},
+    --body-font-family: system-ui,
+    --body-font-size: var(--font-size-base),
     --body-font-weight: #{$font-weight-base},
     --body-line-height: #{$line-height-base},
 
@@ -67,6 +63,7 @@ $root-tokens: defaults(
     --link-decoration: #{$link-decoration},
     --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
 
+    --font-mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
     --code-font-size: 95%,
     --code-color: var(--fg-2),
 
@@ -80,17 +77,19 @@ $root-tokens: defaults(
     // scss-docs-start root-border-radius-var
     --border-radius: .5rem,
     --border-radius-xs: .375rem,
-    --border-radius-sm: .375rem,
+    --border-radius-sm: .5rem,
     --border-radius-lg: .75rem,
     --border-radius-xl: 1rem,
     --border-radius-2xl: 2rem,
     --border-radius-pill: 50rem,
     // scss-docs-end root-border-radius-var
 
-    --box-shadow: #{$box-shadow},
-    --box-shadow-sm: #{$box-shadow-sm},
-    --box-shadow-lg: #{$box-shadow-lg},
-    --box-shadow-inset: #{$box-shadow-inset},
+    // scss-docs-start root-box-shadow-variables
+    --box-shadow: 0 .5rem 1rem rgb(0 0 0 / 15%),
+    --box-shadow-sm: 0 .125rem .25rem rgb(0 0 0 / 7.5%),
+    --box-shadow-lg: 0 1rem 3rem rgb(0 0 0 / 17.5%),
+    --box-shadow-inset: inset 0 1px 2px rgb(0 0 0 / 7.5%),
+    // scss-docs-end root-box-shadow-variables
 
     --spacer: 1rem,
 
@@ -111,7 +110,7 @@ $root-tokens: defaults(
     --control-disabled-bg: var(--bg-3),
     --control-disabled-opacity: .65,
 
-    --btn-input-min-height: 2.375rem,
+    --btn-input-min-height: 2.5rem,
     --btn-input-padding-y: .375rem,
     --btn-input-padding-x: .75rem,
     --btn-input-font-size: var(--font-size-base),
@@ -120,19 +119,19 @@ $root-tokens: defaults(
 
     --btn-input-xs-min-height: 1.5rem,
     --btn-input-xs-padding-y: .125rem,
-    --btn-input-xs-padding-x: .375rem,
+    --btn-input-xs-padding-x: .5rem,
     --btn-input-xs-font-size: var(--font-size-xs),
     --btn-input-xs-line-height: 1.125,
     --btn-input-xs-border-radius: var(--border-radius-xs),
 
-    --btn-input-sm-min-height: 2rem,
+    --btn-input-sm-min-height: 2.25rem,
     --btn-input-sm-padding-y: .25rem,
-    --btn-input-sm-padding-x: .5rem,
-    --btn-input-sm-font-size: var(--font-size-xs),
-    --btn-input-sm-line-height: var(--line-height-xs),
+    --btn-input-sm-padding-x: .625rem,
+    --btn-input-sm-font-size: var(--font-size-sm),
+    --btn-input-sm-line-height: var(--line-height-sm),
     --btn-input-sm-border-radius: var(--border-radius-sm),
 
-    --btn-input-lg-min-height: 2.75rem,
+    --btn-input-lg-min-height: 3rem,
     --btn-input-lg-padding-y: .5rem,
     --btn-input-lg-padding-x: 1rem,
     --btn-input-lg-font-size: var(--font-size-md),
@@ -180,15 +179,4 @@ $root-tokens: defaults(
   @include tokens($root-tokens);
 
   color-scheme: light dark;
-}
-
-:root,
-[data-bs-theme="light"] {
-  // Root and body
-  @if $font-size-root != null {
-    --root-font-size: #{$font-size-root};
-  }
-  @if $body-text-align != null {
-    --body-text-align: #{$body-text-align};
-  }
 }

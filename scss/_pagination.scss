@@ -18,14 +18,14 @@ $pagination-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $pagination-tokens: defaults(
   (
-    --pagination-padding-x: .75rem,
-    --pagination-padding-y: .375rem,
-    --pagination-font-size: var(--font-size-base),
+    --pagination-padding-x: var(--btn-input-padding-x),
+    --pagination-padding-y: var(--btn-input-padding-y),
+    --pagination-font-size: var(--btn-input-font-size),
     --pagination-color: var(--link-color),
     --pagination-bg: var(--bg-body),
     --pagination-border-width: var(--border-width),
     --pagination-border-color: var(--border-color),
-    --pagination-border-radius: var(--border-radius),
+    --pagination-border-radius: var(--btn-input-border-radius),
     --pagination-hover-color: var(--link-hover-color),
     --pagination-hover-bg: var(--bg-1),
     --pagination-hover-border-color: var(--border-color),
@@ -41,16 +41,16 @@ $pagination-tokens: defaults(
   $pagination-tokens
 );
 // scss-docs-end pagination-tokens
-// stylelint-enable custom-property-no-missing-var-function
 
-// scss-docs-start pagination-mixin
-@mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
-  --pagination-padding-x: #{$padding-x};
-  --pagination-padding-y: #{$padding-y};
-  --pagination-font-size: #{$font-size};
-  --pagination-border-radius: #{$border-radius};
-}
-// scss-docs-end pagination-mixin
+// scss-docs-start pagination-sizes
+$pagination-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$pagination-sizes: defaults(
+  ("sm", "lg"),
+  $pagination-sizes
+);
+// scss-docs-end pagination-sizes
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer components {
   .pagination {
@@ -125,11 +125,14 @@ $pagination-tokens: defaults(
   // Sizing
   //
 
-  .pagination-lg {
-    @include pagination-size(.75rem, 1.5rem, $font-size-lg, var(--border-radius-lg));
+  // scss-docs-start pagination-sizes-loop
+  @each $size, $_ in $pagination-sizes {
+    .pagination-#{$size} {
+      --pagination-padding-y: var(--btn-input-#{$size}-padding-y);
+      --pagination-padding-x: var(--btn-input-#{$size}-padding-x);
+      --pagination-font-size: var(--btn-input-#{$size}-font-size);
+      --pagination-border-radius: var(--btn-input-#{$size}-border-radius);
+    }
   }
-
-  .pagination-sm {
-    @include pagination-size(.25rem, .5rem, $font-size-sm, var(--border-radius-sm));
-  }
+  // scss-docs-end pagination-sizes-loop
 }

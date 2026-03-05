@@ -95,6 +95,12 @@ $card-tokens: defaults(
     }
   }
 
+  .card-title,
+  .card-subtitle,
+  .card-text {
+    align-self: stretch;
+  }
+
   .card-subtitle {
     margin-top: calc(var(--card-body-gap) * -.5);
   }

@@ -17,9 +17,11 @@ $check-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $check-tokens: defaults(
   (
-    --check-size: 1rem,
+    --check-size: 1.25rem,
+    --check-margin-block: .125rem,
     --check-bg: transparent,
     --check-border-color: var(--border-color),
+    --check-border-radius: .375rem,
     --check-checked-bg: var(--control-checked-bg),
     --check-checked-border-color: var(--control-checked-border-color),
     --check-indeterminate-bg: var(--control-checked-bg),
@@ -50,7 +52,7 @@ $check-tokens: defaults(
 
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    margin-block: .125rem;
+    margin-block: var(--check-margin-block);
 
     :where(svg, input) {
       flex-shrink: 0;
@@ -104,5 +106,13 @@ $check-tokens: defaults(
     :where(svg path) {
       display: none;
     }
+  }
+
+  .check-sm {
+    --check-size: 1rem;
+  }
+  .check-lg {
+    --check-size: 1.5rem;
+    --check-margin-block: 0;
   }
 }

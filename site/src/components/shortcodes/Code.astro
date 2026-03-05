@@ -112,13 +112,13 @@ let codeToDisplay = filePath
     : code
 
 if (filePath && fileMatch && codeToDisplay) {
-  const match = codeToDisplay.match(new RegExp(fileMatch))
+  const matches = [...codeToDisplay.matchAll(new RegExp(fileMatch, 'g'))]
 
-  if (!match || !match[0]) {
-    throw new Error(`The file at ${filePath} does not contains a match for the regex '${fileMatch}'.`)
+  if (matches.length === 0) {
+    throw new Error(`The file at ${filePath} does not contain a match for the regex '${fileMatch}'.`)
   }
 
-  codeToDisplay = match[0]
+  codeToDisplay = matches.map(m => m[0]).join('\n\n')
 }
 
 // Add line wrapper for shell languages to support shell prompts

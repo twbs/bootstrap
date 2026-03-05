@@ -25,13 +25,6 @@ Wrap the `.switch` in a `.checkgroup` layout wrapper and add your label. This se
 Consider margin utilities for additional spacing, and flex utilities for alignment, especially when using small or large switches.
 
 <Example class="d-flex flex-column gap-3" code={`<div class="checkgroup">
-    <div class="switch switch-sm mt-1">
-      <input type="checkbox" value="" id="switchSmLabel" role="switch" switch>
-    </div>
-    <label for="switchSmLabel">Small switch</label>
-  </div>
-
-  <div class="checkgroup">
     <div class="switch">
       <input type="checkbox" value="" id="switchMdLabel" role="switch" switch>
     </div>
@@ -43,7 +36,7 @@ Consider margin utilities for additional spacing, and flex utilities for alignme
 Modify the appearance of checked checkboxes by adding the `.checked-{color}` class to the `.switch` element. This will set the checked background and border color to the theme color.
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => ` <div class="checkgroup">
-    <div class="switch switch-sm mt-1 theme-${themeColor.name}">
+    <div class="switch theme-${themeColor.name}">
       <input type="checkbox" value="" id="switch${themeColor.name}" role="switch" switch checked>
     </div>
     <label for="switch${themeColor.name}">Example ${themeColor.name} switch</label>
@@ -64,14 +57,23 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 Add a size modifier class to make your switch appear smaller or larger.
 
-<Example class="d-flex flex-column gap-3" code={`<div class="switch switch-sm">
+<Example class="d-flex flex-column gap-3" code={`<div class="checkgroup">
+    <div class="switch switch-sm">
     <input type="checkbox" value="" id="switchSizeSm" role="switch" switch>
+    </div>
+    <label for="switchSizeSm">Small switch</label>
   </div>
-  <div class="switch">
-    <input type="checkbox" value="" id="switchSizeMd" role="switch" switch>
+  <div class="checkgroup">
+    <div class="switch">
+      <input type="checkbox" value="" id="switchSizeMd" role="switch" switch>
+    </div>
+    <label for="switchSizeMd">Default switch</label>
   </div>
-  <div class="switch switch-lg">
-    <input type="checkbox" value="" id="switchSizeLg" role="switch" switch>
+  <div class="checkgroup">
+    <div class="switch switch-lg">
+      <input type="checkbox" value="" id="switchSizeLg" role="switch" switch>
+    </div>
+    <label for="switchSizeLg">Large switch</label>
   </div>`} />
 
 ## CSS
