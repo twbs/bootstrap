@@ -181,14 +181,3 @@ $root-tokens: defaults(
 
   color-scheme: light dark;
 }
-
-:root,
-[data-bs-theme="light"] {
-  // Root and body
-  @if $font-size-root != null {
-    --root-font-size: #{$font-size-root};
-  }
-  @if $body-text-align != null {
-    --body-text-align: #{$body-text-align};
-  }
-}

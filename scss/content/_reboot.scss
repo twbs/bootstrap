@@ -65,10 +65,7 @@ $reboot-mark-tokens: defaults(
   // null by default, thus nothing is generated.
 
   :root {
-    @if $font-size-root != null {
-      font-size: var(--root-font-size);
-      // @include font-size(var(--root-font-size));
-    }
+    // Assume browser default font-size of 16px, or a user's preference
 
     @if $enable-smooth-scroll {
       @media (prefers-reduced-motion: no-preference) {
