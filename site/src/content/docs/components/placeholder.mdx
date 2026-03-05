@@ -21,7 +21,7 @@ In the example below, we take a typical card component and recreate it with plac
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
   </div>
 
@@ -38,7 +38,7 @@ In the example below, we take a typical card component and recreate it with plac
         <span class="placeholder col-6"></span>
         <span class="placeholder col-8"></span>
       </p>
-      <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+      <a class="btn-solid theme-primary disabled col-6" aria-disabled="true"></a>
     </div>
   </div>`} />
 
@@ -49,7 +49,7 @@ In the example below, we take a typical card component and recreate it with plac
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn-solid theme-primary">Go somewhere</a>
   </div>
 </div>
 
@@ -66,7 +66,7 @@ In the example below, we take a typical card component and recreate it with plac
       <span class="placeholder col-6"></span>
       <span class="placeholder col-8"></span>
     </p>
-    <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+    <a class="btn-solid theme-primary disabled placeholder col-6" aria-disabled="true"></a>
   </div>
 </div>
 ```
@@ -81,13 +81,13 @@ We apply additional styling to `.btn`s via `::before` to ensure the `height` is 
     <span class="placeholder col-6"></span>
   </p>
 
-  <a class="btn btn-primary disabled placeholder col-4" aria-disabled="true"></a>`} />
+  <a class="btn-solid theme-primary disabled col-4" aria-disabled="true"></a>`} />
 
 <Callout>
 The use of `aria-hidden="true"` only indicates that the element should be hidden to screen readers. The *loading* behavior of the placeholder depends on how authors will actually use the placeholder styles, how they plan to update things, etc. Some JavaScript code may be needed to *swap* the state of the placeholder and inform AT users of the update.
 </Callout>
 
-### Width
+## Width
 
 You can change the `width` through grid column classes, width utilities, or inline styles.
 
@@ -95,26 +95,26 @@ You can change the `width` through grid column classes, width utilities, or inli
 <span class="placeholder w-75"></span>
 <span class="placeholder" style="width: 25%;"></span>`} />
 
-### Color
+## Color
 
 By default, the `placeholder` uses `currentColor`. This can be overridden with a custom color or utility class.
 
 <Example code={[
-  `<span class="placeholder col-12"></span>
+  `<span class="placeholder col-9"></span>
   `,
-  ...getData('theme-colors').map((themeColor) => `<span class="placeholder col-12 bg-${themeColor.name}"></span>`)
+  ...getData('theme-colors').map((themeColor) => `<span class="placeholder col-6 bg-${themeColor.name}"></span>`)
 ]} />
 
-### Sizing
+## Sizing
 
 The size of `.placeholder`s are based on the typographic style of the parent element. Customize them with sizing modifiers: `.placeholder-lg`, `.placeholder-sm`, or `.placeholder-xs`.
 
-<Example code={`<span class="placeholder col-12 placeholder-lg"></span>
+<Example class="vstack gap-2" code={`<span class="placeholder col-12 placeholder-lg"></span>
 <span class="placeholder col-12"></span>
 <span class="placeholder col-12 placeholder-sm"></span>
 <span class="placeholder col-12 placeholder-xs"></span>`} />
 
-### Animation
+## Animation
 
 Animate placeholders with `.placeholder-glow` or `.placeholder-wave` to better convey the perception of something being *actively* loaded.
 
@@ -125,6 +125,12 @@ Animate placeholders with `.placeholder-glow` or `.placeholder-wave` to better c
   <p class="placeholder-wave">
     <span class="placeholder col-12"></span>
   </p>`} />
+
+### Text
+
+Add `placeholder-wave` to an inline element with text to apply the placeholder animations to the text.
+
+<Example code={`<span class="placeholder-wave fg-3">Working on it…</span>`} />
 
 ## CSS
 

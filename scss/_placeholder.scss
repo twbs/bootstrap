@@ -3,18 +3,29 @@
 @use "config" as *;
 @use "functions" as *;
 @use "variables" as *;
+@use "mixins/border-radius" as *;
 @use "mixins/tokens" as *;
 
 $placeholder-tokens: () !default;
+$placeholder-wave-tokens: () !default;
 
 // scss-docs-start placeholder-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
 $placeholder-tokens: defaults(
   (
-    --placeholder-opacity-max: .5,
-    --placeholder-opacity-min: .2,
+    --placeholder-opacity-max: .18,
+    --placeholder-opacity-min: .1,
   ),
   $placeholder-tokens
+);
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$placeholder-wave-tokens: defaults(
+  (
+    --placeholder-opacity-max: .5,
+    --placeholder-opacity-min: .25,
+  ),
+  $placeholder-wave-tokens
 );
 // scss-docs-end placeholder-tokens
 
@@ -23,10 +34,11 @@ $placeholder-tokens: defaults(
     @include tokens($placeholder-tokens);
 
     display: inline-block;
-    min-height: 1em;
+    min-height: 1.25em;
     vertical-align: middle;
     cursor: wait;
     background-color: currentcolor;
+    @include border-radius(var(--border-radius-xs));
     opacity: var(--placeholder-opacity-max);
 
     &.btn::before {
@@ -37,15 +49,15 @@ $placeholder-tokens: defaults(
 
   // Sizing
   .placeholder-xs {
-    min-height: .6em;
+    min-height: .75em;
   }
 
   .placeholder-sm {
-    min-height: .8em;
+    min-height: 1em;
   }
 
   .placeholder-lg {
-    min-height: 1.2em;
+    min-height: 1.75em;
   }
 
   // Animation
@@ -62,7 +74,9 @@ $placeholder-tokens: defaults(
   }
 
   .placeholder-wave {
-    mask-image: linear-gradient(130deg, $black 55%, rgba(0, 0, 0, calc(1 - var(--placeholder-opacity-min))) 75%, $black 95%);
+    @include tokens($placeholder-wave-tokens);
+
+    mask-image: linear-gradient(110deg, var(--black) 40%, rgb(0 0 0 / calc(1 - var(--placeholder-opacity-max))) 50%, var(--black) 60%);
     mask-size: 200% 100%;
     animation: placeholder-wave 2s linear infinite;
   }
