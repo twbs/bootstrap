@@ -31,7 +31,7 @@ $root-tokens: defaults(
     --body-font-family: #{meta.inspect($font-family-base)},
 
     // scss-docs-start root-font-size-variables
-    --font-size-base: #{$font-size-base},
+    --font-size-base: 1rem,
     --font-size-xs: .75rem,
     --font-size-sm: .875rem,
     --font-size-md: 1rem,
@@ -55,7 +55,7 @@ $root-tokens: defaults(
     --line-height-6xl: 1,
     // scss-docs-end root-font-size-variables
 
-    --body-font-size: #{$font-size-base},
+    --body-font-size: var(--font-size-base),
     --body-font-weight: #{$font-weight-base},
     --body-line-height: #{$line-height-base},
 
