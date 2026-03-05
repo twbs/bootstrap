@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Engine — Section-Based Theming Demo</title>
+  <link rel="stylesheet" href="../dist/css/bootstrap.css">
+  <style>
+    .color-schema-ocean {
+      --bs-primary: #0077b6;
+      --bs-primary-rgb: 0, 119, 182;
+      --bs-secondary: #457b9d;
+      --bs-secondary-rgb: 69, 123, 157;
+      --bs-success: #2a9d8f;
+      --bs-success-rgb: 42, 157, 143;
+      --bs-info: #48cae4;
+      --bs-info-rgb: 72, 202, 228;
+      --bs-warning: #e9c46a;
+      --bs-warning-rgb: 233, 196, 106;
+      --bs-danger: #e76f51;
+      --bs-danger-rgb: 231, 111, 81;
+      --bs-body-bg: #f8f9fa;
+      --bs-body-color: #1d3557;
+    }
+
+    .color-schema-sunset {
+      --bs-primary: #bc4749;
+      --bs-primary-rgb: 188, 71, 73;
+      --bs-secondary: #6a4c93;
+      --bs-secondary-rgb: 106, 76, 147;
+      --bs-success: #386641;
+      --bs-success-rgb: 56, 102, 65;
+      --bs-info: #1982c4;
+      --bs-info-rgb: 25, 130, 196;
+      --bs-warning: #f4a261;
+      --bs-warning-rgb: 244, 162, 97;
+      --bs-danger: #9b2226;
+      --bs-danger-rgb: 155, 34, 38;
+      --bs-body-bg: #fdf6ec;
+      --bs-body-color: #2b2d42;
+    }
+
+    .color-schema-neon {
+      --bs-primary: #06d6a0;
+      --bs-primary-rgb: 6, 214, 160;
+      --bs-secondary: #118ab2;
+      --bs-secondary-rgb: 17, 138, 178;
+      --bs-success: #2dc653;
+      --bs-success-rgb: 45, 198, 83;
+      --bs-info: #7209b7;
+      --bs-info-rgb: 114, 9, 183;
+      --bs-warning: #fee440;
+      --bs-warning-rgb: 254, 228, 64;
+      --bs-danger: #ef476f;
+      --bs-danger-rgb: 239, 71, 111;
+      --bs-body-bg: #0b0c10;
+      --bs-body-color: #e0e0e0;
+    }
+
+    .schema-section {
+      padding: 3rem 0;
+      background-color: var(--bs-body-bg);
+      color: var(--bs-body-color);
+    }
+    .schema-section + .schema-section {
+      border-top: 4px solid var(--bs-primary);
+    }
+    .section-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--bs-border-color);
+    }
+    .component-group {
+      margin-bottom: 2.5rem;
+    }
+    .component-group h4 {
+      margin-bottom: 1rem;
+      opacity: .7;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="schema-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Default (Vanilla Bootstrap)</h2>
+        <p class="text-body-secondary">No <code>.color-schema-*</code> class — uses fallback hex values from <code>:root</code></p>
+      </div>
+      <div id="components-default"></div>
+    </div>
+  </section>
+
+  <section class="schema-section color-schema-ocean">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ocean Schema</h2>
+        <p class="text-body-secondary">Primary: <code>#0077b6</code> — cool blue-green palette</p>
+      </div>
+      <div id="components-ocean"></div>
+    </div>
+  </section>
+
+  <section class="schema-section color-schema-sunset">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sunset Schema</h2>
+        <p class="text-body-secondary">Primary: <code>#bc4749</code> — warm earthy palette</p>
+      </div>
+      <div id="components-sunset"></div>
+    </div>
+  </section>
+
+  <section class="schema-section color-schema-neon">
+    <div class="container">
+      <div class="section-header">
+        <h2>Neon Schema</h2>
+        <p class="text-body-secondary">Primary: <code>#06d6a0</code> — vivid dark palette</p>
+      </div>
+      <div id="components-neon"></div>
+    </div>
+  </section>
+
+
+  <script src="../dist/js/bootstrap.bundle.js"></script>
+  <script>
+    function componentHTML(sectionId) {
+      return `
+
+      <div class="component-group">
+        <h4>Buttons</h4>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <button class="btn btn-primary">Primary</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-success">Success</button>
+          <button class="btn btn-danger">Danger</button>
+          <button class="btn btn-warning">Warning</button>
+          <button class="btn btn-info">Info</button>
+          <button class="btn btn-light">Light</button>
+          <button class="btn btn-dark">Dark</button>
+        </div>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <button class="btn btn-outline-primary">Primary</button>
+          <button class="btn btn-outline-secondary">Secondary</button>
+          <button class="btn btn-outline-success">Success</button>
+          <button class="btn btn-outline-danger">Danger</button>
+          <button class="btn btn-outline-warning">Warning</button>
+          <button class="btn btn-outline-info">Info</button>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-primary btn-lg">Large</button>
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary" disabled>Disabled</button>
+          <a href="#" class="btn btn-primary">Link btn</a>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Button Group</h4>
+        <div class="btn-group" role="group">
+          <button class="btn btn-primary">Left</button>
+          <button class="btn btn-primary">Middle</button>
+          <button class="btn btn-primary">Right</button>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Alerts</h4>
+        <div class="alert alert-primary" role="alert">Primary alert — check it out!</div>
+        <div class="alert alert-secondary" role="alert">Secondary alert</div>
+        <div class="alert alert-success" role="alert">Success alert</div>
+        <div class="alert alert-danger" role="alert">Danger alert</div>
+        <div class="alert alert-warning" role="alert">Warning alert</div>
+        <div class="alert alert-info" role="alert">Info alert</div>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+          Dismissible alert with <a href="#" class="alert-link">a link</a>.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Badges</h4>
+        <div class="d-flex flex-wrap gap-2 mb-2">
+          <span class="badge text-bg-primary">Primary</span>
+          <span class="badge text-bg-secondary">Secondary</span>
+          <span class="badge text-bg-success">Success</span>
+          <span class="badge text-bg-danger">Danger</span>
+          <span class="badge text-bg-warning">Warning</span>
+          <span class="badge text-bg-info">Info</span>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge rounded-pill text-bg-primary">Pill Primary</span>
+          <span class="badge rounded-pill text-bg-danger">Pill Danger</span>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Cards</h4>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Default Card</h5>
+                <p class="card-text">Some quick example text to build on the card title.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-bg-primary">
+              <div class="card-body">
+                <h5 class="card-title">Primary Card</h5>
+                <p class="card-text">Using <code>.text-bg-primary</code> for themed background.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-primary">
+              <div class="card-header">Featured</div>
+              <div class="card-body">
+                <h5 class="card-title text-primary">Bordered Card</h5>
+                <p class="card-text">Using <code>.border-primary</code> and <code>.text-primary</code>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>List Group</h4>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <ul class="list-group">
+              <li class="list-group-item active">Active item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+              <li class="list-group-item disabled">Disabled item</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-primary">Primary item</li>
+              <li class="list-group-item list-group-item-secondary">Secondary item</li>
+              <li class="list-group-item list-group-item-success">Success item</li>
+              <li class="list-group-item list-group-item-danger">Danger item</li>
+              <li class="list-group-item list-group-item-warning">Warning item</li>
+              <li class="list-group-item list-group-item-info">Info item</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Tables</h4>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr><th>#</th><th>Name</th><th>Role</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Alice</td><td>Admin</td><td><span class="badge text-bg-success">Active</span></td></tr>
+            <tr><td>2</td><td>Bob</td><td>User</td><td><span class="badge text-bg-warning">Pending</span></td></tr>
+            <tr class="table-primary"><td>3</td><td>Charlie</td><td>Editor</td><td><span class="badge text-bg-primary">Highlighted</span></td></tr>
+            <tr><td>4</td><td>Diana</td><td>Viewer</td><td><span class="badge text-bg-danger">Blocked</span></td></tr>
+          </tbody>
+        </table>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <table class="table table-bordered">
+              <tr class="table-primary"><td>table-primary</td></tr>
+              <tr class="table-secondary"><td>table-secondary</td></tr>
+              <tr class="table-success"><td>table-success</td></tr>
+              <tr class="table-danger"><td>table-danger</td></tr>
+              <tr class="table-warning"><td>table-warning</td></tr>
+              <tr class="table-info"><td>table-info</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Forms</h4>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label">Text input</label>
+              <input type="text" class="form-control" placeholder="Focus me to see focus ring">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Select</label>
+              <select class="form-select">
+                <option>Focus me too</option>
+                <option>Option 2</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Textarea</label>
+              <textarea class="form-control" rows="2" placeholder="Themed focus ring"></textarea>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="chk1-${sectionId}" checked>
+                <label class="form-check-label" for="chk1-${sectionId}">Checked checkbox</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="chk2-${sectionId}">
+                <label class="form-check-label" for="chk2-${sectionId}">Unchecked checkbox</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio-${sectionId}" id="rad1-${sectionId}" checked>
+                <label class="form-check-label" for="rad1-${sectionId}">Radio one</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio-${sectionId}" id="rad2-${sectionId}">
+                <label class="form-check-label" for="rad2-${sectionId}">Radio two</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="sw1-${sectionId}" checked>
+                <label class="form-check-label" for="sw1-${sectionId}">Switch on</label>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="sw2-${sectionId}">
+                <label class="form-check-label" for="sw2-${sectionId}">Switch off</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Range</label>
+              <input type="range" class="form-range">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Navs & Tabs</h4>
+        <ul class="nav nav-tabs mb-3">
+          <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Another</a></li>
+          <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+        </ul>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Another</a></li>
+        </ul>
+      </div>
+
+      <div class="component-group">
+        <h4>Navbar</h4>
+        <nav class="navbar navbar-expand-sm bg-primary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Brand</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nb-${sectionId}">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nb-${sectionId}">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <nav class="navbar mt-2">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Light navbar</a>
+            <button class="navbar-toggler" type="button">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      <div class="component-group">
+        <h4>Breadcrumb</h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active">Data</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="component-group">
+        <h4>Pagination</h4>
+        <nav>
+          <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="component-group">
+        <h4>Progress</h4>
+        <div class="progress mb-2" style="height: 20px;">
+          <div class="progress-bar" style="width: 65%;">65%</div>
+        </div>
+        <div class="progress mb-2" style="height: 20px;">
+          <div class="progress-bar bg-success" style="width: 40%;">Success</div>
+        </div>
+        <div class="progress" style="height: 20px;">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 80%;">Animated</div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Spinners</h4>
+        <div class="d-flex gap-3">
+          <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+          <div class="spinner-border text-secondary" role="status"><span class="visually-hidden">Loading...</span></div>
+          <div class="spinner-border text-success" role="status"><span class="visually-hidden">Loading...</span></div>
+          <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+          <div class="spinner-grow text-danger" role="status"><span class="visually-hidden">Loading...</span></div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Accordion</h4>
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#acc1-${sectionId}">
+                Accordion Item #1
+              </button>
+            </h2>
+            <div class="accordion-collapse collapse show" id="acc1-${sectionId}">
+              <div class="accordion-body">Content for item 1. The active state uses <code>primary-text-emphasis</code> and <code>primary-bg-subtle</code>.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc2-${sectionId}">
+                Accordion Item #2
+              </button>
+            </h2>
+            <div class="accordion-collapse collapse" id="acc2-${sectionId}">
+              <div class="accordion-body">Content for item 2.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Dropdown</h4>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Dropdown
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item active" href="#">Active</a></li>
+            <li><a class="dropdown-item" href="#">Something else</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item disabled" href="#">Disabled</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Modal (click to open)</h4>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-${sectionId}">
+          Open Modal
+        </button>
+        <div class="modal fade" id="modal-${sectionId}" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Themed Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <p>This modal inherits the section's theme because it's defined inside it.</p>
+                <button class="btn btn-primary">Primary inside modal</button>
+                <button class="btn btn-outline-danger ms-2">Danger outline</button>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Toast</h4>
+        <div class="toast show" role="alert">
+          <div class="toast-header">
+            <span class="badge text-bg-primary me-2">&nbsp;</span>
+            <strong class="me-auto">Notification</strong>
+            <small class="text-body-secondary">just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+          </div>
+          <div class="toast-body">This toast uses the section's primary color.</div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Offcanvas</h4>
+        <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-${sectionId}">
+          Open Offcanvas
+        </button>
+        <div class="offcanvas offcanvas-start" id="offcanvas-${sectionId}" tabindex="-1">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Themed Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+          </div>
+          <div class="offcanvas-body">
+            <p>Content with themed buttons:</p>
+            <button class="btn btn-primary mb-2 d-block">Primary</button>
+            <button class="btn btn-outline-success d-block">Outline Success</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Colored Links</h4>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#" class="link-primary">Primary link</a>
+          <a href="#" class="link-secondary">Secondary link</a>
+          <a href="#" class="link-success">Success link</a>
+          <a href="#" class="link-danger">Danger link</a>
+          <a href="#" class="link-warning">Warning link</a>
+          <a href="#" class="link-info">Info link</a>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Text & Background Utilities</h4>
+        <div class="row g-2 mb-3">
+          <div class="col-md-2"><div class="p-2 text-bg-primary rounded">.text-bg-primary</div></div>
+          <div class="col-md-2"><div class="p-2 text-bg-secondary rounded">.text-bg-secondary</div></div>
+          <div class="col-md-2"><div class="p-2 text-bg-success rounded">.text-bg-success</div></div>
+          <div class="col-md-2"><div class="p-2 text-bg-danger rounded">.text-bg-danger</div></div>
+          <div class="col-md-2"><div class="p-2 text-bg-warning rounded">.text-bg-warning</div></div>
+          <div class="col-md-2"><div class="p-2 text-bg-info rounded">.text-bg-info</div></div>
+        </div>
+        <p>
+          <span class="text-primary">Text primary</span> —
+          <span class="text-secondary">Text secondary</span> —
+          <span class="text-success">Text success</span> —
+          <span class="text-danger">Text danger</span> —
+          <span class="text-warning">Text warning</span> —
+          <span class="text-info">Text info</span>
+        </p>
+      </div>
+
+      <div class="component-group">
+        <h4>Border Utilities</h4>
+        <div class="d-flex flex-wrap gap-3">
+          <div class="p-3 border border-primary rounded">border-primary</div>
+          <div class="p-3 border border-secondary rounded">border-secondary</div>
+          <div class="p-3 border border-success rounded">border-success</div>
+          <div class="p-3 border border-danger rounded">border-danger</div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Focus Ring</h4>
+        <p class="text-body-secondary">Tab through these to see the themed focus ring:</p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="#" class="d-inline-flex focus-ring px-2 py-1 text-decoration-none border rounded-2">Focus ring link</a>
+          <button class="btn btn-outline-primary">Tab to me</button>
+          <input class="form-control" style="width: 200px" placeholder="Focus me">
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Tooltips & Popovers</h4>
+        <div class="d-flex gap-2">
+          <button class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Themed tooltip!">
+            Hover for Tooltip
+          </button>
+          <button class="btn btn-primary" data-bs-toggle="popover" data-bs-title="Themed Popover" data-bs-content="Content inherits section theme." data-bs-trigger="focus">
+            Click for Popover
+          </button>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Close Button</h4>
+        <div class="d-flex gap-3 align-items-center">
+          <button type="button" class="btn-close"></button>
+          <button type="button" class="btn-close" disabled></button>
+          <div class="bg-dark p-2 rounded">
+            <button type="button" class="btn-close btn-close-white"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <h4>Placeholders</h4>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title placeholder-glow"><span class="placeholder col-6"></span></h5>
+            <p class="card-text placeholder-glow">
+              <span class="placeholder col-7"></span>
+              <span class="placeholder col-4"></span>
+              <span class="placeholder col-6"></span>
+            </p>
+            <a class="btn btn-primary disabled placeholder col-6"></a>
+          </div>
+        </div>
+      </div>
+`;
+    }
+
+    ['default', 'ocean', 'sunset', 'neon'].forEach(id => {
+      const el = document.getElementById('components-' + id);
+      if (el) el.innerHTML = componentHTML(id);
+    });
+
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+      new bootstrap.Tooltip(el);
+    });
+    document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => {
+      new bootstrap.Popover(el);
+    });
+  </script>
+</body>
+</html>

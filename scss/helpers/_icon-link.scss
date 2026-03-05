@@ -2,7 +2,7 @@
   display: inline-flex;
   gap: $icon-link-gap;
   align-items: center;
-  text-decoration-color: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-opacity, .5));
+  text-decoration-color: rgb(from var(--#{$prefix}link-color) r g b / var(--#{$prefix}link-opacity, .5));
   text-underline-offset: $icon-link-underline-offset;
   backface-visibility: hidden;
 

@@ -175,10 +175,9 @@
   width: 1.5em;
   height: 1.5em;
   vertical-align: middle;
-  background-image: var(--#{$prefix}navbar-toggler-icon-bg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
+  background: var(--#{$prefix}navbar-color);
+  -webkit-mask: var(--#{$prefix}navbar-toggler-icon-bg) center / 100% no-repeat;
+  mask: var(--#{$prefix}navbar-toggler-icon-bg) center / 100% no-repeat;
 }
 
 .navbar-nav-scroll {
@@ -276,14 +275,18 @@
   --#{$prefix}navbar-brand-color: #{$navbar-dark-brand-color};
   --#{$prefix}navbar-brand-hover-color: #{$navbar-dark-brand-hover-color};
   --#{$prefix}navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
-  --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
   // scss-docs-end navbar-dark-css-vars
 }
 
-@if $enable-dark-mode {
-  @include color-mode(dark) {
-    .navbar-toggler-icon {
-      --#{$prefix}navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
-    }
+@each $color, $value in $theme-colors {
+  .navbar.bg-#{$color} {
+    $on: var(--#{$prefix}on-#{$color}, #{color-contrast($value)});
+    --#{$prefix}navbar-color: color-mix(in srgb, #{$on} 65%, transparent);
+    --#{$prefix}navbar-hover-color: color-mix(in srgb, #{$on} 80%, transparent);
+    --#{$prefix}navbar-active-color: #{$on};
+    --#{$prefix}navbar-disabled-color: color-mix(in srgb, #{$on} 30%, transparent);
+    --#{$prefix}navbar-brand-color: #{$on};
+    --#{$prefix}navbar-brand-hover-color: #{$on};
+    --#{$prefix}navbar-toggler-border-color: color-mix(in srgb, #{$on} 15%, transparent);
   }
 }

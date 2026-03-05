@@ -71,6 +71,14 @@
   --bs-dark-border-subtle: #adb5bd;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
+  --bs-on-primary: #fff;
+  --bs-on-secondary: #fff;
+  --bs-on-success: #fff;
+  --bs-on-info: #000;
+  --bs-on-warning: #000;
+  --bs-on-danger: #fff;
+  --bs-on-light: #000;
+  --bs-on-dark: #fff;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
@@ -125,6 +133,31 @@
   --bs-form-invalid-border-color: #dc3545;
 }
 
+* {
+  --bs-secondary-color: color-mix(in srgb, var(--bs-body-color) 75%, transparent);
+  --bs-secondary-bg: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 10%);
+  --bs-tertiary-color: color-mix(in srgb, var(--bs-body-color) 50%, transparent);
+  --bs-tertiary-bg: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 3%);
+  --bs-link-color: var(--bs-primary);
+  --bs-link-hover-color: color-mix(in srgb, var(--bs-primary), black 20%);
+  --bs-border-color: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 15%);
+  --bs-border-color-translucent: color-mix(in srgb, var(--bs-body-color) 17.5%, transparent);
+  --bs-focus-ring-color: color-mix(in srgb, var(--bs-primary) 25%, transparent);
+}
+
+@supports (color: oklch(from red l c h)) {
+  * {
+    --bs-on-primary: oklch(from var(--bs-primary) calc((0.6 - l) * 999) 0 h);
+    --bs-on-secondary: oklch(from var(--bs-secondary) calc((0.6 - l) * 999) 0 h);
+    --bs-on-success: oklch(from var(--bs-success) calc((0.6 - l) * 999) 0 h);
+    --bs-on-info: oklch(from var(--bs-info) calc((0.6 - l) * 999) 0 h);
+    --bs-on-warning: oklch(from var(--bs-warning) calc((0.6 - l) * 999) 0 h);
+    --bs-on-danger: oklch(from var(--bs-danger) calc((0.6 - l) * 999) 0 h);
+    --bs-on-light: oklch(from var(--bs-light) calc((0.6 - l) * 999) 0 h);
+    --bs-on-dark: oklch(from var(--bs-dark) calc((0.6 - l) * 999) 0 h);
+    --bs-emphasis-color: oklch(from var(--bs-body-bg) calc((0.6 - l) * 999) 0 h);
+  }
+}
 [data-bs-theme=dark] {
   color-scheme: dark;
   --bs-body-color: #dee2e6;
@@ -349,11 +382,11 @@ sup {
 }
 
 a {
-  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+  color: rgb(from var(--bs-link-color) r g b/var(--bs-link-opacity, 1));
   text-decoration: underline;
 }
 a:hover {
-  --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
+  --bs-link-color: var(--bs-link-hover-color);
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -704,7 +737,7 @@ progress {
   margin-top: -1rem;
   margin-bottom: 1rem;
   font-size: 0.875em;
-  color: #6c757d;
+  color: var(--bs-secondary-color);
 }
 .blockquote-footer::before {
   content: "— ";
@@ -1869,11 +1902,11 @@ progress {
   --bs-table-border-color: var(--bs-border-color);
   --bs-table-accent-bg: transparent;
   --bs-table-striped-color: var(--bs-emphasis-color);
-  --bs-table-striped-bg: rgba(var(--bs-emphasis-color-rgb), 0.05);
+  --bs-table-striped-bg: color-mix(in srgb, var(--bs-emphasis-color) 5%, transparent);
   --bs-table-active-color: var(--bs-emphasis-color);
-  --bs-table-active-bg: rgba(var(--bs-emphasis-color-rgb), 0.1);
+  --bs-table-active-bg: color-mix(in srgb, var(--bs-emphasis-color) 10%, transparent);
   --bs-table-hover-color: var(--bs-emphasis-color);
-  --bs-table-hover-bg: rgba(var(--bs-emphasis-color-rgb), 0.075);
+  --bs-table-hover-bg: color-mix(in srgb, var(--bs-emphasis-color) 7.5%, transparent);
   width: 100%;
   margin-bottom: 1rem;
   vertical-align: top;
@@ -1940,113 +1973,113 @@ progress {
 }
 
 .table-primary {
-  --bs-table-color: #000;
-  --bs-table-bg: #cfe2ff;
-  --bs-table-border-color: #a6b5cc;
-  --bs-table-striped-bg: #c5d7f2;
-  --bs-table-striped-color: #000;
-  --bs-table-active-bg: #bacbe6;
-  --bs-table-active-color: #000;
-  --bs-table-hover-bg: #bfd1ec;
-  --bs-table-hover-color: #000;
+  --bs-table-color: color-mix(in srgb, var(--bs-primary), black 60%);
+  --bs-table-bg: color-mix(in srgb, var(--bs-primary), white 80%);
+  --bs-table-border-color: color-mix(in srgb, color-mix(in srgb, var(--bs-primary), white 80%), color-mix(in srgb, var(--bs-primary), black 60%) 20%);
+  --bs-table-striped-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-primary), white 80%), color-mix(in srgb, var(--bs-primary), black 60%) 5%);
+  --bs-table-striped-color: color-mix(in srgb, var(--bs-primary), black 60%);
+  --bs-table-active-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-primary), white 80%), color-mix(in srgb, var(--bs-primary), black 60%) 10%);
+  --bs-table-active-color: color-mix(in srgb, var(--bs-primary), black 60%);
+  --bs-table-hover-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-primary), white 80%), color-mix(in srgb, var(--bs-primary), black 60%) 7.5%);
+  --bs-table-hover-color: color-mix(in srgb, var(--bs-primary), black 60%);
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
 
 .table-secondary {
-  --bs-table-color: #000;
-  --bs-table-bg: #e2e3e5;
-  --bs-table-border-color: #b5b6b7;
-  --bs-table-striped-bg: #d7d8da;
-  --bs-table-striped-color: #000;
-  --bs-table-active-bg: #cbccce;
-  --bs-table-active-color: #000;
-  --bs-table-hover-bg: #d1d2d4;
-  --bs-table-hover-color: #000;
+  --bs-table-color: color-mix(in srgb, var(--bs-secondary), black 60%);
+  --bs-table-bg: color-mix(in srgb, var(--bs-secondary), white 80%);
+  --bs-table-border-color: color-mix(in srgb, color-mix(in srgb, var(--bs-secondary), white 80%), color-mix(in srgb, var(--bs-secondary), black 60%) 20%);
+  --bs-table-striped-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-secondary), white 80%), color-mix(in srgb, var(--bs-secondary), black 60%) 5%);
+  --bs-table-striped-color: color-mix(in srgb, var(--bs-secondary), black 60%);
+  --bs-table-active-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-secondary), white 80%), color-mix(in srgb, var(--bs-secondary), black 60%) 10%);
+  --bs-table-active-color: color-mix(in srgb, var(--bs-secondary), black 60%);
+  --bs-table-hover-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-secondary), white 80%), color-mix(in srgb, var(--bs-secondary), black 60%) 7.5%);
+  --bs-table-hover-color: color-mix(in srgb, var(--bs-secondary), black 60%);
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
 
 .table-success {
-  --bs-table-color: #000;
-  --bs-table-bg: #d1e7dd;
-  --bs-table-border-color: #a7b9b1;
-  --bs-table-striped-bg: #c7dbd2;
-  --bs-table-striped-color: #000;
-  --bs-table-active-bg: #bcd0c7;
-  --bs-table-active-color: #000;
-  --bs-table-hover-bg: #c1d6cc;
-  --bs-table-hover-color: #000;
+  --bs-table-color: color-mix(in srgb, var(--bs-success), black 60%);
+  --bs-table-bg: color-mix(in srgb, var(--bs-success), white 80%);
+  --bs-table-border-color: color-mix(in srgb, color-mix(in srgb, var(--bs-success), white 80%), color-mix(in srgb, var(--bs-success), black 60%) 20%);
+  --bs-table-striped-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-success), white 80%), color-mix(in srgb, var(--bs-success), black 60%) 5%);
+  --bs-table-striped-color: color-mix(in srgb, var(--bs-success), black 60%);
+  --bs-table-active-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-success), white 80%), color-mix(in srgb, var(--bs-success), black 60%) 10%);
+  --bs-table-active-color: color-mix(in srgb, var(--bs-success), black 60%);
+  --bs-table-hover-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-success), white 80%), color-mix(in srgb, var(--bs-success), black 60%) 7.5%);
+  --bs-table-hover-color: color-mix(in srgb, var(--bs-success), black 60%);
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
 
 .table-info {
-  --bs-table-color: #000;
-  --bs-table-bg: #cff4fc;
-  --bs-table-border-color: #a6c3ca;
-  --bs-table-striped-bg: #c5e8ef;
-  --bs-table-striped-color: #000;
-  --bs-table-active-bg: #badce3;
-  --bs-table-active-color: #000;
-  --bs-table-hover-bg: #bfe2e9;
-  --bs-table-hover-color: #000;
+  --bs-table-color: color-mix(in srgb, var(--bs-info), black 60%);
+  --bs-table-bg: color-mix(in srgb, var(--bs-info), white 80%);
+  --bs-table-border-color: color-mix(in srgb, color-mix(in srgb, var(--bs-info), white 80%), color-mix(in srgb, var(--bs-info), black 60%) 20%);
+  --bs-table-striped-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-info), white 80%), color-mix(in srgb, var(--bs-info), black 60%) 5%);
+  --bs-table-striped-color: color-mix(in srgb, var(--bs-info), black 60%);
+  --bs-table-active-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-info), white 80%), color-mix(in srgb, var(--bs-info), black 60%) 10%);
+  --bs-table-active-color: color-mix(in srgb, var(--bs-info), black 60%);
+  --bs-table-hover-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-info), white 80%), color-mix(in srgb, var(--bs-info), black 60%) 7.5%);
+  --bs-table-hover-color: color-mix(in srgb, var(--bs-info), black 60%);
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
 
 .table-warning {
-  --bs-table-color: #000;
-  --bs-table-bg: #fff3cd;
-  --bs-table-border-color: #ccc2a4;
-  --bs-table-striped-bg: #f2e7c3;
-  --bs-table-striped-color: #000;
-  --bs-table-active-bg: #e6dbb9;
-  --bs-table-active-color: #000;
-  --bs-table-hover-bg: #ece1be;
-  --bs-table-hover-color: #000;
+  --bs-table-color: color-mix(in srgb, var(--bs-warning), black 60%);
+  --bs-table-bg: color-mix(in srgb, var(--bs-warning), white 80%);
+  --bs-table-border-color: color-mix(in srgb, color-mix(in srgb, var(--bs-warning), white 80%), color-mix(in srgb, var(--bs-warning), black 60%) 20%);
+  --bs-table-striped-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-warning), white 80%), color-mix(in srgb, var(--bs-warning), black 60%) 5%);
+  --bs-table-striped-color: color-mix(in srgb, var(--bs-warning), black 60%);
+  --bs-table-active-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-warning), white 80%), color-mix(in srgb, var(--bs-warning), black 60%) 10%);
+  --bs-table-active-color: color-mix(in srgb, var(--bs-warning), black 60%);
+  --bs-table-hover-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-warning), white 80%), color-mix(in srgb, var(--bs-warning), black 60%) 7.5%);
+  --bs-table-hover-color: color-mix(in srgb, var(--bs-warning), black 60%);
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
 
 .table-danger {
-  --bs-table-color: #000;
-  --bs-table-bg: #f8d7da;
-  --bs-table-border-color: #c6acae;
-  --bs-table-striped-bg: #eccccf;
-  --bs-table-striped-color: #000;
-  --bs-table-active-bg: #dfc2c4;
-  --bs-table-active-color: #000;
-  --bs-table-hover-bg: #e5c7ca;
-  --bs-table-hover-color: #000;
+  --bs-table-color: color-mix(in srgb, var(--bs-danger), black 60%);
+  --bs-table-bg: color-mix(in srgb, var(--bs-danger), white 80%);
+  --bs-table-border-color: color-mix(in srgb, color-mix(in srgb, var(--bs-danger), white 80%), color-mix(in srgb, var(--bs-danger), black 60%) 20%);
+  --bs-table-striped-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-danger), white 80%), color-mix(in srgb, var(--bs-danger), black 60%) 5%);
+  --bs-table-striped-color: color-mix(in srgb, var(--bs-danger), black 60%);
+  --bs-table-active-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-danger), white 80%), color-mix(in srgb, var(--bs-danger), black 60%) 10%);
+  --bs-table-active-color: color-mix(in srgb, var(--bs-danger), black 60%);
+  --bs-table-hover-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-danger), white 80%), color-mix(in srgb, var(--bs-danger), black 60%) 7.5%);
+  --bs-table-hover-color: color-mix(in srgb, var(--bs-danger), black 60%);
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
 
 .table-light {
-  --bs-table-color: #000;
-  --bs-table-bg: #f8f9fa;
-  --bs-table-border-color: #c6c7c8;
-  --bs-table-striped-bg: #ecedee;
-  --bs-table-striped-color: #000;
-  --bs-table-active-bg: #dfe0e1;
-  --bs-table-active-color: #000;
-  --bs-table-hover-bg: #e5e6e7;
-  --bs-table-hover-color: #000;
+  --bs-table-color: color-mix(in srgb, var(--bs-light), black 60%);
+  --bs-table-bg: color-mix(in srgb, var(--bs-light), white 80%);
+  --bs-table-border-color: color-mix(in srgb, color-mix(in srgb, var(--bs-light), white 80%), color-mix(in srgb, var(--bs-light), black 60%) 20%);
+  --bs-table-striped-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-light), white 80%), color-mix(in srgb, var(--bs-light), black 60%) 5%);
+  --bs-table-striped-color: color-mix(in srgb, var(--bs-light), black 60%);
+  --bs-table-active-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-light), white 80%), color-mix(in srgb, var(--bs-light), black 60%) 10%);
+  --bs-table-active-color: color-mix(in srgb, var(--bs-light), black 60%);
+  --bs-table-hover-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-light), white 80%), color-mix(in srgb, var(--bs-light), black 60%) 7.5%);
+  --bs-table-hover-color: color-mix(in srgb, var(--bs-light), black 60%);
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
 
 .table-dark {
-  --bs-table-color: #fff;
-  --bs-table-bg: #212529;
-  --bs-table-border-color: #4d5154;
-  --bs-table-striped-bg: #2c3034;
-  --bs-table-striped-color: #fff;
-  --bs-table-active-bg: #373b3e;
-  --bs-table-active-color: #fff;
-  --bs-table-hover-bg: #323539;
-  --bs-table-hover-color: #fff;
+  --bs-table-color: color-mix(in srgb, var(--bs-dark), black 60%);
+  --bs-table-bg: color-mix(in srgb, var(--bs-dark), white 80%);
+  --bs-table-border-color: color-mix(in srgb, color-mix(in srgb, var(--bs-dark), white 80%), color-mix(in srgb, var(--bs-dark), black 60%) 20%);
+  --bs-table-striped-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-dark), white 80%), color-mix(in srgb, var(--bs-dark), black 60%) 5%);
+  --bs-table-striped-color: color-mix(in srgb, var(--bs-dark), black 60%);
+  --bs-table-active-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-dark), white 80%), color-mix(in srgb, var(--bs-dark), black 60%) 10%);
+  --bs-table-active-color: color-mix(in srgb, var(--bs-dark), black 60%);
+  --bs-table-hover-bg: color-mix(in srgb, color-mix(in srgb, var(--bs-dark), white 80%), color-mix(in srgb, var(--bs-dark), black 60%) 7.5%);
+  --bs-table-hover-color: color-mix(in srgb, var(--bs-dark), black 60%);
   color: var(--bs-table-color);
   border-color: var(--bs-table-border-color);
 }
@@ -2147,9 +2180,9 @@ progress {
 .form-control:focus {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
-  border-color: #86b7fe;
+  border-color: color-mix(in srgb, var(--bs-primary, #0d6efd), var(--bs-body-bg, #fff) 50%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
 }
 .form-control::-webkit-date-and-time-value {
   min-width: 85px;
@@ -2332,9 +2365,9 @@ textarea.form-control-lg {
   }
 }
 .form-select:focus {
-  border-color: #86b7fe;
+  border-color: color-mix(in srgb, var(--bs-primary, #0d6efd), var(--bs-body-bg, #fff) 50%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
 }
 .form-select[multiple], .form-select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -2420,13 +2453,13 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #86b7fe;
+  border-color: color-mix(in srgb, var(--bs-primary, #0d6efd), var(--bs-body-bg, #fff) 50%);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
 }
 .form-check-input:checked {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: var(--bs-primary, #0d6efd);
+  border-color: var(--bs-primary, #0d6efd);
 }
 .form-check-input:checked[type=checkbox] {
   --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
@@ -2435,8 +2468,8 @@ textarea.form-control-lg {
   --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
 }
 .form-check-input[type=checkbox]:indeterminate {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: var(--bs-primary, #0d6efd);
+  border-color: var(--bs-primary, #0d6efd);
   --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 .form-check-input:disabled {
@@ -2515,10 +2548,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px var(--bs-body-bg, #fff), 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px var(--bs-body-bg, #fff), 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
@@ -2529,7 +2562,7 @@ textarea.form-control-lg {
   margin-top: -0.25rem;
   -webkit-appearance: none;
   appearance: none;
-  background-color: #0d6efd;
+  background-color: var(--bs-primary, #0d6efd);
   border: 0;
   border-radius: 1rem;
   -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2542,7 +2575,7 @@ textarea.form-control-lg {
   }
 }
 .form-range::-webkit-slider-thumb:active {
-  background-color: #b6d4fe;
+  background-color: color-mix(in srgb, var(--bs-primary, #0d6efd), white 70%);
 }
 .form-range::-webkit-slider-runnable-track {
   width: 100%;
@@ -2558,7 +2591,7 @@ textarea.form-control-lg {
   height: 1rem;
   -moz-appearance: none;
   appearance: none;
-  background-color: #0d6efd;
+  background-color: var(--bs-primary, #0d6efd);
   border: 0;
   border-radius: 1rem;
   -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2571,7 +2604,7 @@ textarea.form-control-lg {
   }
 }
 .form-range::-moz-range-thumb:active {
-  background-color: #b6d4fe;
+  background-color: color-mix(in srgb, var(--bs-primary, #0d6efd), white 70%);
 }
 .form-range::-moz-range-track {
   width: 100%;
@@ -2611,7 +2644,7 @@ textarea.form-control-lg {
   height: 100%;
   padding: 1rem 0.75rem;
   overflow: hidden;
-  color: rgba(var(--bs-body-color-rgb), 0.65);
+  color: color-mix(in srgb, var(--bs-body-color) 65%, transparent);
   text-align: start;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2676,7 +2709,7 @@ textarea.form-control-lg {
 }
 .form-floating > :disabled ~ label,
 .form-floating > .form-control:disabled ~ label {
-  color: #6c757d;
+  color: var(--bs-secondary-color);
 }
 
 .input-group {
@@ -3032,274 +3065,274 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #0d6efd;
-  --bs-btn-border-color: #0d6efd;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0b5ed7;
-  --bs-btn-hover-border-color: #0a58ca;
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #0a58ca;
-  --bs-btn-active-border-color: #0a53be;
+  --bs-btn-color: var(--bs-on-primary);
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-color: var(--bs-on-primary);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-primary), var(--bs-on-primary) 8%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-primary), var(--bs-on-primary) 8%);
+  --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+  --bs-btn-active-color: var(--bs-on-primary);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-primary), var(--bs-on-primary) 12%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-primary), var(--bs-on-primary) 12%);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #0d6efd;
-  --bs-btn-disabled-border-color: #0d6efd;
+  --bs-btn-disabled-color: var(--bs-on-primary);
+  --bs-btn-disabled-bg: var(--bs-primary);
+  --bs-btn-disabled-border-color: var(--bs-primary);
 }
 
 .btn-secondary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #6c757d;
-  --bs-btn-border-color: #6c757d;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #5c636a;
-  --bs-btn-hover-border-color: #565e64;
-  --bs-btn-focus-shadow-rgb: 130, 138, 145;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #565e64;
-  --bs-btn-active-border-color: #51585e;
+  --bs-btn-color: var(--bs-on-secondary);
+  --bs-btn-bg: var(--bs-secondary);
+  --bs-btn-border-color: var(--bs-secondary);
+  --bs-btn-hover-color: var(--bs-on-secondary);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-secondary), var(--bs-on-secondary) 8%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-secondary), var(--bs-on-secondary) 8%);
+  --bs-btn-focus-shadow-rgb: var(--bs-secondary-rgb);
+  --bs-btn-active-color: var(--bs-on-secondary);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-secondary), var(--bs-on-secondary) 12%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-secondary), var(--bs-on-secondary) 12%);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #6c757d;
-  --bs-btn-disabled-border-color: #6c757d;
+  --bs-btn-disabled-color: var(--bs-on-secondary);
+  --bs-btn-disabled-bg: var(--bs-secondary);
+  --bs-btn-disabled-border-color: var(--bs-secondary);
 }
 
 .btn-success {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #198754;
-  --bs-btn-border-color: #198754;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #157347;
-  --bs-btn-hover-border-color: #146c43;
-  --bs-btn-focus-shadow-rgb: 60, 153, 110;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #146c43;
-  --bs-btn-active-border-color: #13653f;
+  --bs-btn-color: var(--bs-on-success);
+  --bs-btn-bg: var(--bs-success);
+  --bs-btn-border-color: var(--bs-success);
+  --bs-btn-hover-color: var(--bs-on-success);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-success), var(--bs-on-success) 8%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-success), var(--bs-on-success) 8%);
+  --bs-btn-focus-shadow-rgb: var(--bs-success-rgb);
+  --bs-btn-active-color: var(--bs-on-success);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-success), var(--bs-on-success) 12%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-success), var(--bs-on-success) 12%);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #198754;
-  --bs-btn-disabled-border-color: #198754;
+  --bs-btn-disabled-color: var(--bs-on-success);
+  --bs-btn-disabled-bg: var(--bs-success);
+  --bs-btn-disabled-border-color: var(--bs-success);
 }
 
 .btn-info {
-  --bs-btn-color: #000;
-  --bs-btn-bg: #0dcaf0;
-  --bs-btn-border-color: #0dcaf0;
-  --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #31d2f2;
-  --bs-btn-hover-border-color: #25cff2;
-  --bs-btn-focus-shadow-rgb: 11, 172, 204;
-  --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #3dd5f3;
-  --bs-btn-active-border-color: #25cff2;
+  --bs-btn-color: var(--bs-on-info);
+  --bs-btn-bg: var(--bs-info);
+  --bs-btn-border-color: var(--bs-info);
+  --bs-btn-hover-color: var(--bs-on-info);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-info), var(--bs-on-info) 8%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-info), var(--bs-on-info) 8%);
+  --bs-btn-focus-shadow-rgb: var(--bs-info-rgb);
+  --bs-btn-active-color: var(--bs-on-info);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-info), var(--bs-on-info) 12%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-info), var(--bs-on-info) 12%);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #0dcaf0;
-  --bs-btn-disabled-border-color: #0dcaf0;
+  --bs-btn-disabled-color: var(--bs-on-info);
+  --bs-btn-disabled-bg: var(--bs-info);
+  --bs-btn-disabled-border-color: var(--bs-info);
 }
 
 .btn-warning {
-  --bs-btn-color: #000;
-  --bs-btn-bg: #ffc107;
-  --bs-btn-border-color: #ffc107;
-  --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #ffca2c;
-  --bs-btn-hover-border-color: #ffc720;
-  --bs-btn-focus-shadow-rgb: 217, 164, 6;
-  --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #ffcd39;
-  --bs-btn-active-border-color: #ffc720;
+  --bs-btn-color: var(--bs-on-warning);
+  --bs-btn-bg: var(--bs-warning);
+  --bs-btn-border-color: var(--bs-warning);
+  --bs-btn-hover-color: var(--bs-on-warning);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-warning), var(--bs-on-warning) 8%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-warning), var(--bs-on-warning) 8%);
+  --bs-btn-focus-shadow-rgb: var(--bs-warning-rgb);
+  --bs-btn-active-color: var(--bs-on-warning);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-warning), var(--bs-on-warning) 12%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-warning), var(--bs-on-warning) 12%);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #ffc107;
-  --bs-btn-disabled-border-color: #ffc107;
+  --bs-btn-disabled-color: var(--bs-on-warning);
+  --bs-btn-disabled-bg: var(--bs-warning);
+  --bs-btn-disabled-border-color: var(--bs-warning);
 }
 
 .btn-danger {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #dc3545;
-  --bs-btn-border-color: #dc3545;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #bb2d3b;
-  --bs-btn-hover-border-color: #b02a37;
-  --bs-btn-focus-shadow-rgb: 225, 83, 97;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #b02a37;
-  --bs-btn-active-border-color: #a52834;
+  --bs-btn-color: var(--bs-on-danger);
+  --bs-btn-bg: var(--bs-danger);
+  --bs-btn-border-color: var(--bs-danger);
+  --bs-btn-hover-color: var(--bs-on-danger);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-danger), var(--bs-on-danger) 8%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-danger), var(--bs-on-danger) 8%);
+  --bs-btn-focus-shadow-rgb: var(--bs-danger-rgb);
+  --bs-btn-active-color: var(--bs-on-danger);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-danger), var(--bs-on-danger) 12%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-danger), var(--bs-on-danger) 12%);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #dc3545;
-  --bs-btn-disabled-border-color: #dc3545;
+  --bs-btn-disabled-color: var(--bs-on-danger);
+  --bs-btn-disabled-bg: var(--bs-danger);
+  --bs-btn-disabled-border-color: var(--bs-danger);
 }
 
 .btn-light {
-  --bs-btn-color: #000;
-  --bs-btn-bg: #f8f9fa;
-  --bs-btn-border-color: #f8f9fa;
-  --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #d3d4d5;
-  --bs-btn-hover-border-color: #c6c7c8;
-  --bs-btn-focus-shadow-rgb: 211, 212, 213;
-  --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #c6c7c8;
-  --bs-btn-active-border-color: #babbbc;
+  --bs-btn-color: var(--bs-on-light);
+  --bs-btn-bg: var(--bs-light);
+  --bs-btn-border-color: var(--bs-light);
+  --bs-btn-hover-color: var(--bs-on-light);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-light), var(--bs-on-light) 8%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-light), var(--bs-on-light) 8%);
+  --bs-btn-focus-shadow-rgb: var(--bs-light-rgb);
+  --bs-btn-active-color: var(--bs-on-light);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-light), var(--bs-on-light) 12%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-light), var(--bs-on-light) 12%);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #f8f9fa;
-  --bs-btn-disabled-border-color: #f8f9fa;
+  --bs-btn-disabled-color: var(--bs-on-light);
+  --bs-btn-disabled-bg: var(--bs-light);
+  --bs-btn-disabled-border-color: var(--bs-light);
 }
 
 .btn-dark {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #212529;
-  --bs-btn-border-color: #212529;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #424649;
-  --bs-btn-hover-border-color: #373b3e;
-  --bs-btn-focus-shadow-rgb: 66, 70, 73;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #4d5154;
-  --bs-btn-active-border-color: #373b3e;
+  --bs-btn-color: var(--bs-on-dark);
+  --bs-btn-bg: var(--bs-dark);
+  --bs-btn-border-color: var(--bs-dark);
+  --bs-btn-hover-color: var(--bs-on-dark);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--bs-dark), var(--bs-on-dark) 8%);
+  --bs-btn-hover-border-color: color-mix(in srgb, var(--bs-dark), var(--bs-on-dark) 8%);
+  --bs-btn-focus-shadow-rgb: var(--bs-dark-rgb);
+  --bs-btn-active-color: var(--bs-on-dark);
+  --bs-btn-active-bg: color-mix(in srgb, var(--bs-dark), var(--bs-on-dark) 12%);
+  --bs-btn-active-border-color: color-mix(in srgb, var(--bs-dark), var(--bs-on-dark) 12%);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #212529;
-  --bs-btn-disabled-border-color: #212529;
+  --bs-btn-disabled-color: var(--bs-on-dark);
+  --bs-btn-disabled-bg: var(--bs-dark);
+  --bs-btn-disabled-border-color: var(--bs-dark);
 }
 
 .btn-outline-primary {
-  --bs-btn-color: #0d6efd;
-  --bs-btn-border-color: #0d6efd;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0d6efd;
-  --bs-btn-hover-border-color: #0d6efd;
-  --bs-btn-focus-shadow-rgb: 13, 110, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #0d6efd;
-  --bs-btn-active-border-color: #0d6efd;
+  --bs-btn-color: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-color: var(--bs-on-primary);
+  --bs-btn-hover-bg: var(--bs-primary);
+  --bs-btn-hover-border-color: var(--bs-primary);
+  --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+  --bs-btn-active-color: var(--bs-on-primary);
+  --bs-btn-active-bg: var(--bs-primary);
+  --bs-btn-active-border-color: var(--bs-primary);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #0d6efd;
+  --bs-btn-disabled-color: var(--bs-primary);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #0d6efd;
+  --bs-btn-disabled-border-color: var(--bs-primary);
   --bs-gradient: none;
 }
 
 .btn-outline-secondary {
-  --bs-btn-color: #6c757d;
-  --bs-btn-border-color: #6c757d;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #6c757d;
-  --bs-btn-hover-border-color: #6c757d;
-  --bs-btn-focus-shadow-rgb: 108, 117, 125;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #6c757d;
-  --bs-btn-active-border-color: #6c757d;
+  --bs-btn-color: var(--bs-secondary);
+  --bs-btn-border-color: var(--bs-secondary);
+  --bs-btn-hover-color: var(--bs-on-secondary);
+  --bs-btn-hover-bg: var(--bs-secondary);
+  --bs-btn-hover-border-color: var(--bs-secondary);
+  --bs-btn-focus-shadow-rgb: var(--bs-secondary-rgb);
+  --bs-btn-active-color: var(--bs-on-secondary);
+  --bs-btn-active-bg: var(--bs-secondary);
+  --bs-btn-active-border-color: var(--bs-secondary);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #6c757d;
+  --bs-btn-disabled-color: var(--bs-secondary);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #6c757d;
+  --bs-btn-disabled-border-color: var(--bs-secondary);
   --bs-gradient: none;
 }
 
 .btn-outline-success {
-  --bs-btn-color: #198754;
-  --bs-btn-border-color: #198754;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #198754;
-  --bs-btn-hover-border-color: #198754;
-  --bs-btn-focus-shadow-rgb: 25, 135, 84;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #198754;
-  --bs-btn-active-border-color: #198754;
+  --bs-btn-color: var(--bs-success);
+  --bs-btn-border-color: var(--bs-success);
+  --bs-btn-hover-color: var(--bs-on-success);
+  --bs-btn-hover-bg: var(--bs-success);
+  --bs-btn-hover-border-color: var(--bs-success);
+  --bs-btn-focus-shadow-rgb: var(--bs-success-rgb);
+  --bs-btn-active-color: var(--bs-on-success);
+  --bs-btn-active-bg: var(--bs-success);
+  --bs-btn-active-border-color: var(--bs-success);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #198754;
+  --bs-btn-disabled-color: var(--bs-success);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #198754;
+  --bs-btn-disabled-border-color: var(--bs-success);
   --bs-gradient: none;
 }
 
 .btn-outline-info {
-  --bs-btn-color: #0dcaf0;
-  --bs-btn-border-color: #0dcaf0;
-  --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #0dcaf0;
-  --bs-btn-hover-border-color: #0dcaf0;
-  --bs-btn-focus-shadow-rgb: 13, 202, 240;
-  --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #0dcaf0;
-  --bs-btn-active-border-color: #0dcaf0;
+  --bs-btn-color: var(--bs-info);
+  --bs-btn-border-color: var(--bs-info);
+  --bs-btn-hover-color: var(--bs-on-info);
+  --bs-btn-hover-bg: var(--bs-info);
+  --bs-btn-hover-border-color: var(--bs-info);
+  --bs-btn-focus-shadow-rgb: var(--bs-info-rgb);
+  --bs-btn-active-color: var(--bs-on-info);
+  --bs-btn-active-bg: var(--bs-info);
+  --bs-btn-active-border-color: var(--bs-info);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #0dcaf0;
+  --bs-btn-disabled-color: var(--bs-info);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #0dcaf0;
+  --bs-btn-disabled-border-color: var(--bs-info);
   --bs-gradient: none;
 }
 
 .btn-outline-warning {
-  --bs-btn-color: #ffc107;
-  --bs-btn-border-color: #ffc107;
-  --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #ffc107;
-  --bs-btn-hover-border-color: #ffc107;
-  --bs-btn-focus-shadow-rgb: 255, 193, 7;
-  --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #ffc107;
-  --bs-btn-active-border-color: #ffc107;
+  --bs-btn-color: var(--bs-warning);
+  --bs-btn-border-color: var(--bs-warning);
+  --bs-btn-hover-color: var(--bs-on-warning);
+  --bs-btn-hover-bg: var(--bs-warning);
+  --bs-btn-hover-border-color: var(--bs-warning);
+  --bs-btn-focus-shadow-rgb: var(--bs-warning-rgb);
+  --bs-btn-active-color: var(--bs-on-warning);
+  --bs-btn-active-bg: var(--bs-warning);
+  --bs-btn-active-border-color: var(--bs-warning);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #ffc107;
+  --bs-btn-disabled-color: var(--bs-warning);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #ffc107;
+  --bs-btn-disabled-border-color: var(--bs-warning);
   --bs-gradient: none;
 }
 
 .btn-outline-danger {
-  --bs-btn-color: #dc3545;
-  --bs-btn-border-color: #dc3545;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #dc3545;
-  --bs-btn-hover-border-color: #dc3545;
-  --bs-btn-focus-shadow-rgb: 220, 53, 69;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #dc3545;
-  --bs-btn-active-border-color: #dc3545;
+  --bs-btn-color: var(--bs-danger);
+  --bs-btn-border-color: var(--bs-danger);
+  --bs-btn-hover-color: var(--bs-on-danger);
+  --bs-btn-hover-bg: var(--bs-danger);
+  --bs-btn-hover-border-color: var(--bs-danger);
+  --bs-btn-focus-shadow-rgb: var(--bs-danger-rgb);
+  --bs-btn-active-color: var(--bs-on-danger);
+  --bs-btn-active-bg: var(--bs-danger);
+  --bs-btn-active-border-color: var(--bs-danger);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #dc3545;
+  --bs-btn-disabled-color: var(--bs-danger);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #dc3545;
+  --bs-btn-disabled-border-color: var(--bs-danger);
   --bs-gradient: none;
 }
 
 .btn-outline-light {
-  --bs-btn-color: #f8f9fa;
-  --bs-btn-border-color: #f8f9fa;
-  --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #f8f9fa;
-  --bs-btn-hover-border-color: #f8f9fa;
-  --bs-btn-focus-shadow-rgb: 248, 249, 250;
-  --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #f8f9fa;
-  --bs-btn-active-border-color: #f8f9fa;
+  --bs-btn-color: var(--bs-light);
+  --bs-btn-border-color: var(--bs-light);
+  --bs-btn-hover-color: var(--bs-on-light);
+  --bs-btn-hover-bg: var(--bs-light);
+  --bs-btn-hover-border-color: var(--bs-light);
+  --bs-btn-focus-shadow-rgb: var(--bs-light-rgb);
+  --bs-btn-active-color: var(--bs-on-light);
+  --bs-btn-active-bg: var(--bs-light);
+  --bs-btn-active-border-color: var(--bs-light);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #f8f9fa;
+  --bs-btn-disabled-color: var(--bs-light);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #f8f9fa;
+  --bs-btn-disabled-border-color: var(--bs-light);
   --bs-gradient: none;
 }
 
 .btn-outline-dark {
-  --bs-btn-color: #212529;
-  --bs-btn-border-color: #212529;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #212529;
-  --bs-btn-hover-border-color: #212529;
-  --bs-btn-focus-shadow-rgb: 33, 37, 41;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #212529;
-  --bs-btn-active-border-color: #212529;
+  --bs-btn-color: var(--bs-dark);
+  --bs-btn-border-color: var(--bs-dark);
+  --bs-btn-hover-color: var(--bs-on-dark);
+  --bs-btn-hover-bg: var(--bs-dark);
+  --bs-btn-hover-border-color: var(--bs-dark);
+  --bs-btn-focus-shadow-rgb: var(--bs-dark-rgb);
+  --bs-btn-active-color: var(--bs-on-dark);
+  --bs-btn-active-bg: var(--bs-dark);
+  --bs-btn-active-border-color: var(--bs-dark);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #212529;
+  --bs-btn-disabled-color: var(--bs-dark);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #212529;
+  --bs-btn-disabled-border-color: var(--bs-dark);
   --bs-gradient: none;
 }
 
@@ -3312,10 +3345,10 @@ textarea.form-control-lg {
   --bs-btn-hover-border-color: transparent;
   --bs-btn-active-color: var(--bs-link-hover-color);
   --bs-btn-active-border-color: transparent;
-  --bs-btn-disabled-color: #6c757d;
+  --bs-btn-disabled-color: var(--bs-secondary-color);
   --bs-btn-disabled-border-color: transparent;
   --bs-btn-box-shadow: 0 0 0 #000;
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
   text-decoration: underline;
 }
 .btn-link:focus-visible {
@@ -3421,12 +3454,12 @@ textarea.form-control-lg {
   --bs-dropdown-link-color: var(--bs-body-color);
   --bs-dropdown-link-hover-color: var(--bs-body-color);
   --bs-dropdown-link-hover-bg: var(--bs-tertiary-bg);
-  --bs-dropdown-link-active-color: #fff;
-  --bs-dropdown-link-active-bg: #0d6efd;
+  --bs-dropdown-link-active-color: var(--bs-on-primary, #fff);
+  --bs-dropdown-link-active-bg: var(--bs-primary, #0d6efd);
   --bs-dropdown-link-disabled-color: var(--bs-tertiary-color);
   --bs-dropdown-item-padding-x: 1rem;
   --bs-dropdown-item-padding-y: 0.25rem;
-  --bs-dropdown-header-color: #6c757d;
+  --bs-dropdown-header-color: var(--bs-secondary-color);
   --bs-dropdown-header-padding-x: 1rem;
   --bs-dropdown-header-padding-y: 0.5rem;
   position: absolute;
@@ -3687,8 +3720,8 @@ textarea.form-control-lg {
   --bs-dropdown-link-hover-color: #fff;
   --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
   --bs-dropdown-link-hover-bg: rgba(255, 255, 255, 0.15);
-  --bs-dropdown-link-active-color: #fff;
-  --bs-dropdown-link-active-bg: #0d6efd;
+  --bs-dropdown-link-active-color: var(--bs-on-primary, #fff);
+  --bs-dropdown-link-active-bg: var(--bs-primary, #0d6efd);
   --bs-dropdown-link-disabled-color: #adb5bd;
   --bs-dropdown-header-color: #adb5bd;
 }
@@ -3829,7 +3862,7 @@ textarea.form-control-lg {
 }
 .nav-link:focus-visible {
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
 }
 .nav-link.disabled, .nav-link:disabled {
   color: var(--bs-nav-link-disabled-color);
@@ -3871,8 +3904,8 @@ textarea.form-control-lg {
 
 .nav-pills {
   --bs-nav-pills-border-radius: var(--bs-border-radius);
-  --bs-nav-pills-link-active-color: #fff;
-  --bs-nav-pills-link-active-bg: #0d6efd;
+  --bs-nav-pills-link-active-color: var(--bs-on-primary, #fff);
+  --bs-nav-pills-link-active-bg: var(--bs-primary, #0d6efd);
 }
 .nav-pills .nav-link {
   border-radius: var(--bs-nav-pills-border-radius);
@@ -3932,21 +3965,21 @@ textarea.form-control-lg {
 .navbar {
   --bs-navbar-padding-x: 0;
   --bs-navbar-padding-y: 0.5rem;
-  --bs-navbar-color: rgba(var(--bs-emphasis-color-rgb), 0.65);
-  --bs-navbar-hover-color: rgba(var(--bs-emphasis-color-rgb), 0.8);
-  --bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3);
-  --bs-navbar-active-color: rgba(var(--bs-emphasis-color-rgb), 1);
+  --bs-navbar-color: color-mix(in srgb, var(--bs-emphasis-color) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-emphasis-color) 80%, transparent);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-emphasis-color) 30%, transparent);
+  --bs-navbar-active-color: var(--bs-emphasis-color);
   --bs-navbar-brand-padding-y: 0.3125rem;
   --bs-navbar-brand-margin-end: 1rem;
   --bs-navbar-brand-font-size: 1.25rem;
-  --bs-navbar-brand-color: rgba(var(--bs-emphasis-color-rgb), 1);
-  --bs-navbar-brand-hover-color: rgba(var(--bs-emphasis-color-rgb), 1);
+  --bs-navbar-brand-color: var(--bs-emphasis-color);
+  --bs-navbar-brand-hover-color: var(--bs-emphasis-color);
   --bs-navbar-nav-link-padding-x: 0.5rem;
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0.75rem;
   --bs-navbar-toggler-font-size: 1.25rem;
-  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-  --bs-navbar-toggler-border-color: rgba(var(--bs-emphasis-color-rgb), 0.15);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23000' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-emphasis-color) 15%, transparent);
   --bs-navbar-toggler-border-radius: var(--bs-border-radius);
   --bs-navbar-toggler-focus-width: 0.25rem;
   --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
@@ -4048,10 +4081,9 @@ textarea.form-control-lg {
   width: 1.5em;
   height: 1.5em;
   vertical-align: middle;
-  background-image: var(--bs-navbar-toggler-icon-bg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
+  background: var(--bs-navbar-color);
+  -webkit-mask: var(--bs-navbar-toggler-icon-bg) center/100% no-repeat;
+  mask: var(--bs-navbar-toggler-icon-bg) center/100% no-repeat;
 }
 
 .navbar-nav-scroll {
@@ -4349,11 +4381,86 @@ textarea.form-control-lg {
   --bs-navbar-brand-color: #fff;
   --bs-navbar-brand-hover-color: #fff;
   --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
-  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-[data-bs-theme=dark] .navbar-toggler-icon {
-  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+.navbar.bg-primary {
+  --bs-navbar-color: color-mix(in srgb, var(--bs-on-primary, #fff) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-on-primary, #fff) 80%, transparent);
+  --bs-navbar-active-color: var(--bs-on-primary, #fff);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-on-primary, #fff) 30%, transparent);
+  --bs-navbar-brand-color: var(--bs-on-primary, #fff);
+  --bs-navbar-brand-hover-color: var(--bs-on-primary, #fff);
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-on-primary, #fff) 15%, transparent);
+}
+
+.navbar.bg-secondary {
+  --bs-navbar-color: color-mix(in srgb, var(--bs-on-secondary, #fff) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-on-secondary, #fff) 80%, transparent);
+  --bs-navbar-active-color: var(--bs-on-secondary, #fff);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-on-secondary, #fff) 30%, transparent);
+  --bs-navbar-brand-color: var(--bs-on-secondary, #fff);
+  --bs-navbar-brand-hover-color: var(--bs-on-secondary, #fff);
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-on-secondary, #fff) 15%, transparent);
+}
+
+.navbar.bg-success {
+  --bs-navbar-color: color-mix(in srgb, var(--bs-on-success, #fff) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-on-success, #fff) 80%, transparent);
+  --bs-navbar-active-color: var(--bs-on-success, #fff);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-on-success, #fff) 30%, transparent);
+  --bs-navbar-brand-color: var(--bs-on-success, #fff);
+  --bs-navbar-brand-hover-color: var(--bs-on-success, #fff);
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-on-success, #fff) 15%, transparent);
+}
+
+.navbar.bg-info {
+  --bs-navbar-color: color-mix(in srgb, var(--bs-on-info, #000) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-on-info, #000) 80%, transparent);
+  --bs-navbar-active-color: var(--bs-on-info, #000);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-on-info, #000) 30%, transparent);
+  --bs-navbar-brand-color: var(--bs-on-info, #000);
+  --bs-navbar-brand-hover-color: var(--bs-on-info, #000);
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-on-info, #000) 15%, transparent);
+}
+
+.navbar.bg-warning {
+  --bs-navbar-color: color-mix(in srgb, var(--bs-on-warning, #000) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-on-warning, #000) 80%, transparent);
+  --bs-navbar-active-color: var(--bs-on-warning, #000);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-on-warning, #000) 30%, transparent);
+  --bs-navbar-brand-color: var(--bs-on-warning, #000);
+  --bs-navbar-brand-hover-color: var(--bs-on-warning, #000);
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-on-warning, #000) 15%, transparent);
+}
+
+.navbar.bg-danger {
+  --bs-navbar-color: color-mix(in srgb, var(--bs-on-danger, #fff) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-on-danger, #fff) 80%, transparent);
+  --bs-navbar-active-color: var(--bs-on-danger, #fff);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-on-danger, #fff) 30%, transparent);
+  --bs-navbar-brand-color: var(--bs-on-danger, #fff);
+  --bs-navbar-brand-hover-color: var(--bs-on-danger, #fff);
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-on-danger, #fff) 15%, transparent);
+}
+
+.navbar.bg-light {
+  --bs-navbar-color: color-mix(in srgb, var(--bs-on-light, #000) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-on-light, #000) 80%, transparent);
+  --bs-navbar-active-color: var(--bs-on-light, #000);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-on-light, #000) 30%, transparent);
+  --bs-navbar-brand-color: var(--bs-on-light, #000);
+  --bs-navbar-brand-hover-color: var(--bs-on-light, #000);
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-on-light, #000) 15%, transparent);
+}
+
+.navbar.bg-dark {
+  --bs-navbar-color: color-mix(in srgb, var(--bs-on-dark, #fff) 65%, transparent);
+  --bs-navbar-hover-color: color-mix(in srgb, var(--bs-on-dark, #fff) 80%, transparent);
+  --bs-navbar-active-color: var(--bs-on-dark, #fff);
+  --bs-navbar-disabled-color: color-mix(in srgb, var(--bs-on-dark, #fff) 30%, transparent);
+  --bs-navbar-brand-color: var(--bs-on-dark, #fff);
+  --bs-navbar-brand-hover-color: var(--bs-on-dark, #fff);
+  --bs-navbar-toggler-border-color: color-mix(in srgb, var(--bs-on-dark, #fff) 15%, transparent);
 }
 
 .card {
@@ -4369,7 +4476,7 @@ textarea.form-control-lg {
   --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
   --bs-card-cap-padding-y: 0.5rem;
   --bs-card-cap-padding-x: 1rem;
-  --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+  --bs-card-cap-bg: color-mix(in srgb, var(--bs-body-color) 3%, transparent);
   --bs-card-cap-color: ;
   --bs-card-height: ;
   --bs-card-color: ;
@@ -4555,16 +4662,16 @@ textarea.form-control-lg {
   --bs-accordion-btn-padding-y: 1rem;
   --bs-accordion-btn-color: var(--bs-body-color);
   --bs-accordion-btn-bg: var(--bs-accordion-bg);
-  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23212529' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
   --bs-accordion-btn-icon-width: 1.25rem;
   --bs-accordion-btn-icon-transform: rotate(-180deg);
   --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
-  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23052c65' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
   --bs-accordion-body-padding-x: 1.25rem;
   --bs-accordion-body-padding-y: 1rem;
-  --bs-accordion-active-color: var(--bs-primary-text-emphasis);
-  --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
+  --bs-accordion-active-color: color-mix(in srgb, var(--bs-primary), black 60%);
+  --bs-accordion-active-bg: color-mix(in srgb, var(--bs-primary), white 80%);
 }
 
 .accordion-button {
@@ -4593,7 +4700,9 @@ textarea.form-control-lg {
   box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
 }
 .accordion-button:not(.collapsed)::after {
-  background-image: var(--bs-accordion-btn-active-icon);
+  background: var(--bs-accordion-active-color);
+  -webkit-mask-image: var(--bs-accordion-btn-active-icon);
+  mask-image: var(--bs-accordion-btn-active-icon);
   transform: var(--bs-accordion-btn-icon-transform);
 }
 .accordion-button::after {
@@ -4602,9 +4711,9 @@ textarea.form-control-lg {
   height: var(--bs-accordion-btn-icon-width);
   margin-left: auto;
   content: "";
-  background-image: var(--bs-accordion-btn-icon);
-  background-repeat: no-repeat;
-  background-size: var(--bs-accordion-btn-icon-width);
+  background: var(--bs-accordion-btn-color);
+  -webkit-mask: var(--bs-accordion-btn-icon) center/var(--bs-accordion-btn-icon-width) no-repeat;
+  mask: var(--bs-accordion-btn-icon) center/var(--bs-accordion-btn-icon-width) no-repeat;
   transition: var(--bs-accordion-btn-icon-transition);
 }
 @media (prefers-reduced-motion: reduce) {
@@ -4675,11 +4784,6 @@ textarea.form-control-lg {
   border-radius: 0;
 }
 
-[data-bs-theme=dark] .accordion-button::after {
-  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%236ea8fe'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/%3e%3c/svg%3e");
-  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%236ea8fe'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/%3e%3c/svg%3e");
-}
-
 .breadcrumb {
   --bs-breadcrumb-padding-x: 0;
   --bs-breadcrumb-padding-y: 0;
@@ -4726,10 +4830,10 @@ textarea.form-control-lg {
   --bs-pagination-hover-border-color: var(--bs-border-color);
   --bs-pagination-focus-color: var(--bs-link-hover-color);
   --bs-pagination-focus-bg: var(--bs-secondary-bg);
-  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-  --bs-pagination-active-color: #fff;
-  --bs-pagination-active-bg: #0d6efd;
-  --bs-pagination-active-border-color: #0d6efd;
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+  --bs-pagination-active-color: var(--bs-on-primary, #fff);
+  --bs-pagination-active-bg: var(--bs-primary, #0d6efd);
+  --bs-pagination-active-border-color: var(--bs-primary, #0d6efd);
   --bs-pagination-disabled-color: var(--bs-secondary-color);
   --bs-pagination-disabled-bg: var(--bs-secondary-bg);
   --bs-pagination-disabled-border-color: var(--bs-border-color);
@@ -4873,59 +4977,59 @@ textarea.form-control-lg {
 }
 
 .alert-primary {
-  --bs-alert-color: var(--bs-primary-text-emphasis);
-  --bs-alert-bg: var(--bs-primary-bg-subtle);
-  --bs-alert-border-color: var(--bs-primary-border-subtle);
-  --bs-alert-link-color: var(--bs-primary-text-emphasis);
+  --bs-alert-color: color-mix(in srgb, var(--bs-primary), black 60%);
+  --bs-alert-bg: color-mix(in srgb, var(--bs-primary), white 80%);
+  --bs-alert-border-color: color-mix(in srgb, var(--bs-primary), white 60%);
+  --bs-alert-link-color: color-mix(in srgb, var(--bs-primary), black 60%);
 }
 
 .alert-secondary {
-  --bs-alert-color: var(--bs-secondary-text-emphasis);
-  --bs-alert-bg: var(--bs-secondary-bg-subtle);
-  --bs-alert-border-color: var(--bs-secondary-border-subtle);
-  --bs-alert-link-color: var(--bs-secondary-text-emphasis);
+  --bs-alert-color: color-mix(in srgb, var(--bs-secondary), black 60%);
+  --bs-alert-bg: color-mix(in srgb, var(--bs-secondary), white 80%);
+  --bs-alert-border-color: color-mix(in srgb, var(--bs-secondary), white 60%);
+  --bs-alert-link-color: color-mix(in srgb, var(--bs-secondary), black 60%);
 }
 
 .alert-success {
-  --bs-alert-color: var(--bs-success-text-emphasis);
-  --bs-alert-bg: var(--bs-success-bg-subtle);
-  --bs-alert-border-color: var(--bs-success-border-subtle);
-  --bs-alert-link-color: var(--bs-success-text-emphasis);
+  --bs-alert-color: color-mix(in srgb, var(--bs-success), black 60%);
+  --bs-alert-bg: color-mix(in srgb, var(--bs-success), white 80%);
+  --bs-alert-border-color: color-mix(in srgb, var(--bs-success), white 60%);
+  --bs-alert-link-color: color-mix(in srgb, var(--bs-success), black 60%);
 }
 
 .alert-info {
-  --bs-alert-color: var(--bs-info-text-emphasis);
-  --bs-alert-bg: var(--bs-info-bg-subtle);
-  --bs-alert-border-color: var(--bs-info-border-subtle);
-  --bs-alert-link-color: var(--bs-info-text-emphasis);
+  --bs-alert-color: color-mix(in srgb, var(--bs-info), black 60%);
+  --bs-alert-bg: color-mix(in srgb, var(--bs-info), white 80%);
+  --bs-alert-border-color: color-mix(in srgb, var(--bs-info), white 60%);
+  --bs-alert-link-color: color-mix(in srgb, var(--bs-info), black 60%);
 }
 
 .alert-warning {
-  --bs-alert-color: var(--bs-warning-text-emphasis);
-  --bs-alert-bg: var(--bs-warning-bg-subtle);
-  --bs-alert-border-color: var(--bs-warning-border-subtle);
-  --bs-alert-link-color: var(--bs-warning-text-emphasis);
+  --bs-alert-color: color-mix(in srgb, var(--bs-warning), black 60%);
+  --bs-alert-bg: color-mix(in srgb, var(--bs-warning), white 80%);
+  --bs-alert-border-color: color-mix(in srgb, var(--bs-warning), white 60%);
+  --bs-alert-link-color: color-mix(in srgb, var(--bs-warning), black 60%);
 }
 
 .alert-danger {
-  --bs-alert-color: var(--bs-danger-text-emphasis);
-  --bs-alert-bg: var(--bs-danger-bg-subtle);
-  --bs-alert-border-color: var(--bs-danger-border-subtle);
-  --bs-alert-link-color: var(--bs-danger-text-emphasis);
+  --bs-alert-color: color-mix(in srgb, var(--bs-danger), black 60%);
+  --bs-alert-bg: color-mix(in srgb, var(--bs-danger), white 80%);
+  --bs-alert-border-color: color-mix(in srgb, var(--bs-danger), white 60%);
+  --bs-alert-link-color: color-mix(in srgb, var(--bs-danger), black 60%);
 }
 
 .alert-light {
-  --bs-alert-color: var(--bs-light-text-emphasis);
-  --bs-alert-bg: var(--bs-light-bg-subtle);
-  --bs-alert-border-color: var(--bs-light-border-subtle);
-  --bs-alert-link-color: var(--bs-light-text-emphasis);
+  --bs-alert-color: color-mix(in srgb, var(--bs-light), black 60%);
+  --bs-alert-bg: color-mix(in srgb, var(--bs-light), white 80%);
+  --bs-alert-border-color: color-mix(in srgb, var(--bs-light), white 60%);
+  --bs-alert-link-color: color-mix(in srgb, var(--bs-light), black 60%);
 }
 
 .alert-dark {
-  --bs-alert-color: var(--bs-dark-text-emphasis);
-  --bs-alert-bg: var(--bs-dark-bg-subtle);
-  --bs-alert-border-color: var(--bs-dark-border-subtle);
-  --bs-alert-link-color: var(--bs-dark-text-emphasis);
+  --bs-alert-color: color-mix(in srgb, var(--bs-dark), black 60%);
+  --bs-alert-bg: color-mix(in srgb, var(--bs-dark), white 80%);
+  --bs-alert-border-color: color-mix(in srgb, var(--bs-dark), white 60%);
+  --bs-alert-link-color: color-mix(in srgb, var(--bs-dark), black 60%);
 }
 
 @keyframes progress-bar-stripes {
@@ -4940,8 +5044,8 @@ textarea.form-control-lg {
   --bs-progress-bg: var(--bs-secondary-bg);
   --bs-progress-border-radius: var(--bs-border-radius);
   --bs-progress-box-shadow: var(--bs-box-shadow-inset);
-  --bs-progress-bar-color: #fff;
-  --bs-progress-bar-bg: #0d6efd;
+  --bs-progress-bar-color: var(--bs-on-primary, #fff);
+  --bs-progress-bar-bg: var(--bs-primary, #0d6efd);
   --bs-progress-bar-transition: width 0.6s ease;
   display: flex;
   height: var(--bs-progress-height);
@@ -5005,9 +5109,9 @@ textarea.form-control-lg {
   --bs-list-group-action-active-bg: var(--bs-secondary-bg);
   --bs-list-group-disabled-color: var(--bs-secondary-color);
   --bs-list-group-disabled-bg: var(--bs-body-bg);
-  --bs-list-group-active-color: #fff;
-  --bs-list-group-active-bg: #0d6efd;
-  --bs-list-group-active-border-color: #0d6efd;
+  --bs-list-group-active-color: var(--bs-on-primary, #fff);
+  --bs-list-group-active-bg: var(--bs-primary, #0d6efd);
+  --bs-list-group-active-border-color: var(--bs-primary, #0d6efd);
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -5230,107 +5334,107 @@ textarea.form-control-lg {
 }
 
 .list-group-item-primary {
-  --bs-list-group-color: var(--bs-primary-text-emphasis);
-  --bs-list-group-bg: var(--bs-primary-bg-subtle);
-  --bs-list-group-border-color: var(--bs-primary-border-subtle);
+  --bs-list-group-color: color-mix(in srgb, var(--bs-primary), black 60%);
+  --bs-list-group-bg: color-mix(in srgb, var(--bs-primary), white 80%);
+  --bs-list-group-border-color: color-mix(in srgb, var(--bs-primary), white 60%);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-primary-border-subtle);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--bs-primary), white 60%);
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-primary-border-subtle);
-  --bs-list-group-active-color: var(--bs-primary-bg-subtle);
-  --bs-list-group-active-bg: var(--bs-primary-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-primary-text-emphasis);
+  --bs-list-group-action-active-bg: color-mix(in srgb, var(--bs-primary), white 60%);
+  --bs-list-group-active-color: color-mix(in srgb, var(--bs-primary), white 80%);
+  --bs-list-group-active-bg: color-mix(in srgb, var(--bs-primary), black 60%);
+  --bs-list-group-active-border-color: color-mix(in srgb, var(--bs-primary), black 60%);
 }
 
 .list-group-item-secondary {
-  --bs-list-group-color: var(--bs-secondary-text-emphasis);
-  --bs-list-group-bg: var(--bs-secondary-bg-subtle);
-  --bs-list-group-border-color: var(--bs-secondary-border-subtle);
+  --bs-list-group-color: color-mix(in srgb, var(--bs-secondary), black 60%);
+  --bs-list-group-bg: color-mix(in srgb, var(--bs-secondary), white 80%);
+  --bs-list-group-border-color: color-mix(in srgb, var(--bs-secondary), white 60%);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-secondary-border-subtle);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--bs-secondary), white 60%);
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-secondary-border-subtle);
-  --bs-list-group-active-color: var(--bs-secondary-bg-subtle);
-  --bs-list-group-active-bg: var(--bs-secondary-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-secondary-text-emphasis);
+  --bs-list-group-action-active-bg: color-mix(in srgb, var(--bs-secondary), white 60%);
+  --bs-list-group-active-color: color-mix(in srgb, var(--bs-secondary), white 80%);
+  --bs-list-group-active-bg: color-mix(in srgb, var(--bs-secondary), black 60%);
+  --bs-list-group-active-border-color: color-mix(in srgb, var(--bs-secondary), black 60%);
 }
 
 .list-group-item-success {
-  --bs-list-group-color: var(--bs-success-text-emphasis);
-  --bs-list-group-bg: var(--bs-success-bg-subtle);
-  --bs-list-group-border-color: var(--bs-success-border-subtle);
+  --bs-list-group-color: color-mix(in srgb, var(--bs-success), black 60%);
+  --bs-list-group-bg: color-mix(in srgb, var(--bs-success), white 80%);
+  --bs-list-group-border-color: color-mix(in srgb, var(--bs-success), white 60%);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-success-border-subtle);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--bs-success), white 60%);
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-success-border-subtle);
-  --bs-list-group-active-color: var(--bs-success-bg-subtle);
-  --bs-list-group-active-bg: var(--bs-success-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-success-text-emphasis);
+  --bs-list-group-action-active-bg: color-mix(in srgb, var(--bs-success), white 60%);
+  --bs-list-group-active-color: color-mix(in srgb, var(--bs-success), white 80%);
+  --bs-list-group-active-bg: color-mix(in srgb, var(--bs-success), black 60%);
+  --bs-list-group-active-border-color: color-mix(in srgb, var(--bs-success), black 60%);
 }
 
 .list-group-item-info {
-  --bs-list-group-color: var(--bs-info-text-emphasis);
-  --bs-list-group-bg: var(--bs-info-bg-subtle);
-  --bs-list-group-border-color: var(--bs-info-border-subtle);
+  --bs-list-group-color: color-mix(in srgb, var(--bs-info), black 60%);
+  --bs-list-group-bg: color-mix(in srgb, var(--bs-info), white 80%);
+  --bs-list-group-border-color: color-mix(in srgb, var(--bs-info), white 60%);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-info-border-subtle);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--bs-info), white 60%);
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-info-border-subtle);
-  --bs-list-group-active-color: var(--bs-info-bg-subtle);
-  --bs-list-group-active-bg: var(--bs-info-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-info-text-emphasis);
+  --bs-list-group-action-active-bg: color-mix(in srgb, var(--bs-info), white 60%);
+  --bs-list-group-active-color: color-mix(in srgb, var(--bs-info), white 80%);
+  --bs-list-group-active-bg: color-mix(in srgb, var(--bs-info), black 60%);
+  --bs-list-group-active-border-color: color-mix(in srgb, var(--bs-info), black 60%);
 }
 
 .list-group-item-warning {
-  --bs-list-group-color: var(--bs-warning-text-emphasis);
-  --bs-list-group-bg: var(--bs-warning-bg-subtle);
-  --bs-list-group-border-color: var(--bs-warning-border-subtle);
+  --bs-list-group-color: color-mix(in srgb, var(--bs-warning), black 60%);
+  --bs-list-group-bg: color-mix(in srgb, var(--bs-warning), white 80%);
+  --bs-list-group-border-color: color-mix(in srgb, var(--bs-warning), white 60%);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-warning-border-subtle);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--bs-warning), white 60%);
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-warning-border-subtle);
-  --bs-list-group-active-color: var(--bs-warning-bg-subtle);
-  --bs-list-group-active-bg: var(--bs-warning-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-warning-text-emphasis);
+  --bs-list-group-action-active-bg: color-mix(in srgb, var(--bs-warning), white 60%);
+  --bs-list-group-active-color: color-mix(in srgb, var(--bs-warning), white 80%);
+  --bs-list-group-active-bg: color-mix(in srgb, var(--bs-warning), black 60%);
+  --bs-list-group-active-border-color: color-mix(in srgb, var(--bs-warning), black 60%);
 }
 
 .list-group-item-danger {
-  --bs-list-group-color: var(--bs-danger-text-emphasis);
-  --bs-list-group-bg: var(--bs-danger-bg-subtle);
-  --bs-list-group-border-color: var(--bs-danger-border-subtle);
+  --bs-list-group-color: color-mix(in srgb, var(--bs-danger), black 60%);
+  --bs-list-group-bg: color-mix(in srgb, var(--bs-danger), white 80%);
+  --bs-list-group-border-color: color-mix(in srgb, var(--bs-danger), white 60%);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-danger-border-subtle);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--bs-danger), white 60%);
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-danger-border-subtle);
-  --bs-list-group-active-color: var(--bs-danger-bg-subtle);
-  --bs-list-group-active-bg: var(--bs-danger-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-danger-text-emphasis);
+  --bs-list-group-action-active-bg: color-mix(in srgb, var(--bs-danger), white 60%);
+  --bs-list-group-active-color: color-mix(in srgb, var(--bs-danger), white 80%);
+  --bs-list-group-active-bg: color-mix(in srgb, var(--bs-danger), black 60%);
+  --bs-list-group-active-border-color: color-mix(in srgb, var(--bs-danger), black 60%);
 }
 
 .list-group-item-light {
-  --bs-list-group-color: var(--bs-light-text-emphasis);
-  --bs-list-group-bg: var(--bs-light-bg-subtle);
-  --bs-list-group-border-color: var(--bs-light-border-subtle);
+  --bs-list-group-color: color-mix(in srgb, var(--bs-light), black 60%);
+  --bs-list-group-bg: color-mix(in srgb, var(--bs-light), white 80%);
+  --bs-list-group-border-color: color-mix(in srgb, var(--bs-light), white 60%);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-light-border-subtle);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--bs-light), white 60%);
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-light-border-subtle);
-  --bs-list-group-active-color: var(--bs-light-bg-subtle);
-  --bs-list-group-active-bg: var(--bs-light-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-light-text-emphasis);
+  --bs-list-group-action-active-bg: color-mix(in srgb, var(--bs-light), white 60%);
+  --bs-list-group-active-color: color-mix(in srgb, var(--bs-light), white 80%);
+  --bs-list-group-active-bg: color-mix(in srgb, var(--bs-light), black 60%);
+  --bs-list-group-active-border-color: color-mix(in srgb, var(--bs-light), black 60%);
 }
 
 .list-group-item-dark {
-  --bs-list-group-color: var(--bs-dark-text-emphasis);
-  --bs-list-group-bg: var(--bs-dark-bg-subtle);
-  --bs-list-group-border-color: var(--bs-dark-border-subtle);
+  --bs-list-group-color: color-mix(in srgb, var(--bs-dark), black 60%);
+  --bs-list-group-bg: color-mix(in srgb, var(--bs-dark), white 80%);
+  --bs-list-group-border-color: color-mix(in srgb, var(--bs-dark), white 60%);
   --bs-list-group-action-hover-color: var(--bs-emphasis-color);
-  --bs-list-group-action-hover-bg: var(--bs-dark-border-subtle);
+  --bs-list-group-action-hover-bg: color-mix(in srgb, var(--bs-dark), white 60%);
   --bs-list-group-action-active-color: var(--bs-emphasis-color);
-  --bs-list-group-action-active-bg: var(--bs-dark-border-subtle);
-  --bs-list-group-active-color: var(--bs-dark-bg-subtle);
-  --bs-list-group-active-bg: var(--bs-dark-text-emphasis);
-  --bs-list-group-active-border-color: var(--bs-dark-text-emphasis);
+  --bs-list-group-action-active-bg: color-mix(in srgb, var(--bs-dark), white 60%);
+  --bs-list-group-active-color: color-mix(in srgb, var(--bs-dark), white 80%);
+  --bs-list-group-active-bg: color-mix(in srgb, var(--bs-dark), black 60%);
+  --bs-list-group-active-border-color: color-mix(in srgb, var(--bs-dark), black 60%);
 }
 
 .btn-close {
@@ -5338,7 +5442,7 @@ textarea.form-control-lg {
   --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/%3e%3c/svg%3e");
   --bs-btn-close-opacity: 0.5;
   --bs-btn-close-hover-opacity: 0.75;
-  --bs-btn-close-focus-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  --bs-btn-close-focus-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
   --bs-btn-close-focus-opacity: 1;
   --bs-btn-close-disabled-opacity: 0.25;
   box-sizing: content-box;
@@ -5346,8 +5450,9 @@ textarea.form-control-lg {
   height: 1em;
   padding: 0.25em 0.25em;
   color: var(--bs-btn-close-color);
-  background: transparent var(--bs-btn-close-bg) center/1em auto no-repeat;
-  filter: var(--bs-btn-close-filter);
+  background: var(--bs-emphasis-color);
+  -webkit-mask: var(--bs-btn-close-bg) center/1em auto no-repeat;
+  mask: var(--bs-btn-close-bg) center/1em auto no-repeat;
   border: 0;
   border-radius: 0.375rem;
   opacity: var(--bs-btn-close-opacity);
@@ -5371,16 +5476,11 @@ textarea.form-control-lg {
 }
 
 .btn-close-white {
-  --bs-btn-close-filter: invert(1) grayscale(100%) brightness(200%);
-}
-
-:root,
-[data-bs-theme=light] {
-  --bs-btn-close-filter: ;
+  background: #fff;
 }
 
 [data-bs-theme=dark] {
-  --bs-btn-close-filter: invert(1) grayscale(100%) brightness(200%);
+  background: #fff;
 }
 
 .toast {
@@ -5391,13 +5491,13 @@ textarea.form-control-lg {
   --bs-toast-max-width: 350px;
   --bs-toast-font-size: 0.875rem;
   --bs-toast-color: ;
-  --bs-toast-bg: rgba(var(--bs-body-bg-rgb), 0.85);
+  --bs-toast-bg: color-mix(in srgb, var(--bs-body-bg) 85%, transparent);
   --bs-toast-border-width: var(--bs-border-width);
   --bs-toast-border-color: var(--bs-border-color-translucent);
   --bs-toast-border-radius: var(--bs-border-radius);
   --bs-toast-box-shadow: var(--bs-box-shadow);
   --bs-toast-header-color: var(--bs-secondary-color);
-  --bs-toast-header-bg: rgba(var(--bs-body-bg-rgb), 0.85);
+  --bs-toast-header-bg: color-mix(in srgb, var(--bs-body-bg) 85%, transparent);
   --bs-toast-header-border-color: var(--bs-border-color-translucent);
   width: var(--bs-toast-max-width);
   max-width: 100%;
@@ -5861,7 +5961,7 @@ textarea.form-control-lg {
   --bs-popover-header-padding-x: 1rem;
   --bs-popover-header-padding-y: 0.5rem;
   --bs-popover-header-font-size: 1rem;
-  --bs-popover-header-color: inherit;
+  --bs-popover-header-color: var(--bs-emphasis-color);
   --bs-popover-header-bg: var(--bs-secondary-bg);
   --bs-popover-body-padding-x: 1rem;
   --bs-popover-body-padding-y: 1rem;
@@ -6829,142 +6929,142 @@ textarea.form-control-lg {
 }
 
 .text-bg-primary {
-  color: #fff !important;
+  color: var(--bs-on-primary) !important;
   background-color: RGBA(var(--bs-primary-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-secondary {
-  color: #fff !important;
+  color: var(--bs-on-secondary) !important;
   background-color: RGBA(var(--bs-secondary-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-success {
-  color: #fff !important;
+  color: var(--bs-on-success) !important;
   background-color: RGBA(var(--bs-success-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-info {
-  color: #000 !important;
+  color: var(--bs-on-info) !important;
   background-color: RGBA(var(--bs-info-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-warning {
-  color: #000 !important;
+  color: var(--bs-on-warning) !important;
   background-color: RGBA(var(--bs-warning-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-danger {
-  color: #fff !important;
+  color: var(--bs-on-danger) !important;
   background-color: RGBA(var(--bs-danger-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-light {
-  color: #000 !important;
+  color: var(--bs-on-light) !important;
   background-color: RGBA(var(--bs-light-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-dark {
-  color: #fff !important;
+  color: var(--bs-on-dark) !important;
   background-color: RGBA(var(--bs-dark-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
 .link-primary {
-  color: RGBA(var(--bs-primary-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-primary-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-primary-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-primary) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-primary) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-primary) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-primary:hover, .link-primary:focus {
-  color: RGBA(10, 88, 202, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(10, 88, 202, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(10, 88, 202, var(--bs-link-underline-opacity, 1)) !important;
+  color: color-mix(in srgb, var(--bs-primary), black 20%) !important;
+  -webkit-text-decoration-color: color-mix(in srgb, var(--bs-primary), black 20%) !important;
+  text-decoration-color: color-mix(in srgb, var(--bs-primary), black 20%) !important;
 }
 
 .link-secondary {
-  color: RGBA(var(--bs-secondary-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-secondary-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-secondary-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-secondary) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-secondary) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-secondary) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-secondary:hover, .link-secondary:focus {
-  color: RGBA(86, 94, 100, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(86, 94, 100, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(86, 94, 100, var(--bs-link-underline-opacity, 1)) !important;
+  color: color-mix(in srgb, var(--bs-secondary), black 20%) !important;
+  -webkit-text-decoration-color: color-mix(in srgb, var(--bs-secondary), black 20%) !important;
+  text-decoration-color: color-mix(in srgb, var(--bs-secondary), black 20%) !important;
 }
 
 .link-success {
-  color: RGBA(var(--bs-success-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-success-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-success-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-success) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-success) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-success) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-success:hover, .link-success:focus {
-  color: RGBA(20, 108, 67, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(20, 108, 67, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(20, 108, 67, var(--bs-link-underline-opacity, 1)) !important;
+  color: color-mix(in srgb, var(--bs-success), black 20%) !important;
+  -webkit-text-decoration-color: color-mix(in srgb, var(--bs-success), black 20%) !important;
+  text-decoration-color: color-mix(in srgb, var(--bs-success), black 20%) !important;
 }
 
 .link-info {
-  color: RGBA(var(--bs-info-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-info-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-info-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-info) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-info) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-info) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-info:hover, .link-info:focus {
-  color: RGBA(61, 213, 243, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(61, 213, 243, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(61, 213, 243, var(--bs-link-underline-opacity, 1)) !important;
+  color: color-mix(in srgb, var(--bs-info), black 20%) !important;
+  -webkit-text-decoration-color: color-mix(in srgb, var(--bs-info), black 20%) !important;
+  text-decoration-color: color-mix(in srgb, var(--bs-info), black 20%) !important;
 }
 
 .link-warning {
-  color: RGBA(var(--bs-warning-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-warning-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-warning-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-warning) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-warning) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-warning) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-warning:hover, .link-warning:focus {
-  color: RGBA(255, 205, 57, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(255, 205, 57, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(255, 205, 57, var(--bs-link-underline-opacity, 1)) !important;
+  color: color-mix(in srgb, var(--bs-warning), black 20%) !important;
+  -webkit-text-decoration-color: color-mix(in srgb, var(--bs-warning), black 20%) !important;
+  text-decoration-color: color-mix(in srgb, var(--bs-warning), black 20%) !important;
 }
 
 .link-danger {
-  color: RGBA(var(--bs-danger-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-danger-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-danger-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-danger) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-danger) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-danger) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-danger:hover, .link-danger:focus {
-  color: RGBA(176, 42, 55, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(176, 42, 55, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(176, 42, 55, var(--bs-link-underline-opacity, 1)) !important;
+  color: color-mix(in srgb, var(--bs-danger), black 20%) !important;
+  -webkit-text-decoration-color: color-mix(in srgb, var(--bs-danger), black 20%) !important;
+  text-decoration-color: color-mix(in srgb, var(--bs-danger), black 20%) !important;
 }
 
 .link-light {
-  color: RGBA(var(--bs-light-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-light-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-light-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-light) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-light) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-light) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-light:hover, .link-light:focus {
-  color: RGBA(249, 250, 251, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(249, 250, 251, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(249, 250, 251, var(--bs-link-underline-opacity, 1)) !important;
+  color: color-mix(in srgb, var(--bs-light), black 20%) !important;
+  -webkit-text-decoration-color: color-mix(in srgb, var(--bs-light), black 20%) !important;
+  text-decoration-color: color-mix(in srgb, var(--bs-light), black 20%) !important;
 }
 
 .link-dark {
-  color: RGBA(var(--bs-dark-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-dark-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-dark-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-dark) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-dark) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-dark) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-dark:hover, .link-dark:focus {
-  color: RGBA(26, 30, 33, var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(26, 30, 33, var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(26, 30, 33, var(--bs-link-underline-opacity, 1)) !important;
+  color: color-mix(in srgb, var(--bs-dark), black 20%) !important;
+  -webkit-text-decoration-color: color-mix(in srgb, var(--bs-dark), black 20%) !important;
+  text-decoration-color: color-mix(in srgb, var(--bs-dark), black 20%) !important;
 }
 
 .link-body-emphasis {
-  color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-opacity, 1)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  color: rgb(from var(--bs-emphasis-color) r g b/var(--bs-link-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-emphasis-color) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-emphasis-color) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-body-emphasis:hover, .link-body-emphasis:focus {
-  color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-opacity, 0.75)) !important;
-  -webkit-text-decoration-color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-underline-opacity, 0.75)) !important;
-  text-decoration-color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-underline-opacity, 0.75)) !important;
+  color: rgb(from var(--bs-emphasis-color) r g b/var(--bs-link-opacity, 0.75)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-emphasis-color) r g b/var(--bs-link-underline-opacity, 0.75)) !important;
+  text-decoration-color: rgb(from var(--bs-emphasis-color) r g b/var(--bs-link-underline-opacity, 0.75)) !important;
 }
 
 .focus-ring:focus {
@@ -6976,8 +7076,8 @@ textarea.form-control-lg {
   display: inline-flex;
   gap: 0.375rem;
   align-items: center;
-  -webkit-text-decoration-color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 0.5));
-  text-decoration-color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 0.5));
+  -webkit-text-decoration-color: rgb(from var(--bs-link-color) r g b/var(--bs-link-opacity, 0.5));
+  text-decoration-color: rgb(from var(--bs-link-color) r g b/var(--bs-link-opacity, 0.5));
   text-underline-offset: 0.25em;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -7381,35 +7481,35 @@ textarea.form-control-lg {
 }
 
 .focus-ring-primary {
-  --bs-focus-ring-color: rgba(var(--bs-primary-rgb), var(--bs-focus-ring-opacity));
+  --bs-focus-ring-color: rgb(from var(--bs-primary) r g b/var(--bs-focus-ring-opacity));
 }
 
 .focus-ring-secondary {
-  --bs-focus-ring-color: rgba(var(--bs-secondary-rgb), var(--bs-focus-ring-opacity));
+  --bs-focus-ring-color: rgb(from var(--bs-secondary) r g b/var(--bs-focus-ring-opacity));
 }
 
 .focus-ring-success {
-  --bs-focus-ring-color: rgba(var(--bs-success-rgb), var(--bs-focus-ring-opacity));
+  --bs-focus-ring-color: rgb(from var(--bs-success) r g b/var(--bs-focus-ring-opacity));
 }
 
 .focus-ring-info {
-  --bs-focus-ring-color: rgba(var(--bs-info-rgb), var(--bs-focus-ring-opacity));
+  --bs-focus-ring-color: rgb(from var(--bs-info) r g b/var(--bs-focus-ring-opacity));
 }
 
 .focus-ring-warning {
-  --bs-focus-ring-color: rgba(var(--bs-warning-rgb), var(--bs-focus-ring-opacity));
+  --bs-focus-ring-color: rgb(from var(--bs-warning) r g b/var(--bs-focus-ring-opacity));
 }
 
 .focus-ring-danger {
-  --bs-focus-ring-color: rgba(var(--bs-danger-rgb), var(--bs-focus-ring-opacity));
+  --bs-focus-ring-color: rgb(from var(--bs-danger) r g b/var(--bs-focus-ring-opacity));
 }
 
 .focus-ring-light {
-  --bs-focus-ring-color: rgba(var(--bs-light-rgb), var(--bs-focus-ring-opacity));
+  --bs-focus-ring-color: rgb(from var(--bs-light) r g b/var(--bs-focus-ring-opacity));
 }
 
 .focus-ring-dark {
-  --bs-focus-ring-color: rgba(var(--bs-dark-rgb), var(--bs-focus-ring-opacity));
+  --bs-focus-ring-color: rgb(from var(--bs-dark) r g b/var(--bs-focus-ring-opacity));
 }
 
 .position-static {
@@ -7535,52 +7635,52 @@ textarea.form-control-lg {
 
 .border-primary {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-primary-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-primary) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-secondary {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-secondary-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-secondary) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-success {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-success) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-info {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-info-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-info) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-warning {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-warning-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-warning) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-danger {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-danger-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-danger) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-light {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-light-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-light) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-dark {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-dark-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-dark) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-black {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-black-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-black) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-white {
   --bs-border-opacity: 1;
-  border-color: rgba(var(--bs-white-rgb), var(--bs-border-opacity)) !important;
+  border-color: rgb(from var(--bs-white) r g b/var(--bs-border-opacity)) !important;
 }
 
 .border-primary-subtle {
@@ -8492,57 +8592,57 @@ textarea.form-control-lg {
 /* rtl:end:remove */
 .text-primary {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-primary) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-secondary {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-secondary) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-success {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-success) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-info {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-info-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-info) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-warning {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-warning) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-danger {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-danger) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-light {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-light) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-dark {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-dark) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-black {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-black) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-white {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-white) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-body {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-body-color-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(from var(--bs-body-color) r g b/var(--bs-text-opacity)) !important;
 }
 
 .text-muted {
@@ -8694,56 +8794,56 @@ textarea.form-control-lg {
 
 .link-underline-primary {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-primary-rgb), var(--bs-link-underline-opacity)) !important;
-  text-decoration-color: rgba(var(--bs-primary-rgb), var(--bs-link-underline-opacity)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-primary) r g b/var(--bs-link-underline-opacity)) !important;
+  text-decoration-color: rgb(from var(--bs-primary) r g b/var(--bs-link-underline-opacity)) !important;
 }
 
 .link-underline-secondary {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-secondary-rgb), var(--bs-link-underline-opacity)) !important;
-  text-decoration-color: rgba(var(--bs-secondary-rgb), var(--bs-link-underline-opacity)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-secondary) r g b/var(--bs-link-underline-opacity)) !important;
+  text-decoration-color: rgb(from var(--bs-secondary) r g b/var(--bs-link-underline-opacity)) !important;
 }
 
 .link-underline-success {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-success-rgb), var(--bs-link-underline-opacity)) !important;
-  text-decoration-color: rgba(var(--bs-success-rgb), var(--bs-link-underline-opacity)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-success) r g b/var(--bs-link-underline-opacity)) !important;
+  text-decoration-color: rgb(from var(--bs-success) r g b/var(--bs-link-underline-opacity)) !important;
 }
 
 .link-underline-info {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-info-rgb), var(--bs-link-underline-opacity)) !important;
-  text-decoration-color: rgba(var(--bs-info-rgb), var(--bs-link-underline-opacity)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-info) r g b/var(--bs-link-underline-opacity)) !important;
+  text-decoration-color: rgb(from var(--bs-info) r g b/var(--bs-link-underline-opacity)) !important;
 }
 
 .link-underline-warning {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-warning-rgb), var(--bs-link-underline-opacity)) !important;
-  text-decoration-color: rgba(var(--bs-warning-rgb), var(--bs-link-underline-opacity)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-warning) r g b/var(--bs-link-underline-opacity)) !important;
+  text-decoration-color: rgb(from var(--bs-warning) r g b/var(--bs-link-underline-opacity)) !important;
 }
 
 .link-underline-danger {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-danger-rgb), var(--bs-link-underline-opacity)) !important;
-  text-decoration-color: rgba(var(--bs-danger-rgb), var(--bs-link-underline-opacity)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-danger) r g b/var(--bs-link-underline-opacity)) !important;
+  text-decoration-color: rgb(from var(--bs-danger) r g b/var(--bs-link-underline-opacity)) !important;
 }
 
 .link-underline-light {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-light-rgb), var(--bs-link-underline-opacity)) !important;
-  text-decoration-color: rgba(var(--bs-light-rgb), var(--bs-link-underline-opacity)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-light) r g b/var(--bs-link-underline-opacity)) !important;
+  text-decoration-color: rgb(from var(--bs-light) r g b/var(--bs-link-underline-opacity)) !important;
 }
 
 .link-underline-dark {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-dark-rgb), var(--bs-link-underline-opacity)) !important;
-  text-decoration-color: rgba(var(--bs-dark-rgb), var(--bs-link-underline-opacity)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-dark) r g b/var(--bs-link-underline-opacity)) !important;
+  text-decoration-color: rgb(from var(--bs-dark) r g b/var(--bs-link-underline-opacity)) !important;
 }
 
 .link-underline {
   --bs-link-underline-opacity: 1;
-  -webkit-text-decoration-color: rgba(var(--bs-link-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
-  text-decoration-color: rgba(var(--bs-link-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
+  -webkit-text-decoration-color: rgb(from var(--bs-link-color) r g b/var(--bs-link-underline-opacity, 1)) !important;
+  text-decoration-color: rgb(from var(--bs-link-color) r g b/var(--bs-link-underline-opacity, 1)) !important;
 }
 
 .link-underline-opacity-0 {
@@ -8796,57 +8896,57 @@ textarea.form-control-lg {
 
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-primary) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-secondary) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-success {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-success) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-info {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-info-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-info) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-warning {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-warning) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-danger {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-danger) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-light {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-light) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-dark) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-black {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-black) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-white {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-white) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-body {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-body-bg-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-body-bg) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-transparent {
@@ -8856,12 +8956,12 @@ textarea.form-control-lg {
 
 .bg-body-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-secondary-bg-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-secondary-bg) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-body-tertiary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(from var(--bs-tertiary-bg) r g b/var(--bs-bg-opacity)) !important;
 }
 
 .bg-opacity-10 {

@@ -59,10 +59,10 @@
 // Generate contextual modifier classes for colorizing the alert
 @each $state in map-keys($theme-colors) {
   .alert-#{$state} {
-    --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text-emphasis);
-    --#{$prefix}alert-bg: var(--#{$prefix}#{$state}-bg-subtle);
-    --#{$prefix}alert-border-color: var(--#{$prefix}#{$state}-border-subtle);
-    --#{$prefix}alert-link-color: var(--#{$prefix}#{$state}-text-emphasis);
+    --#{$prefix}alert-color: color-mix(in srgb, var(--#{$prefix}#{$state}), black 60%);
+    --#{$prefix}alert-bg: color-mix(in srgb, var(--#{$prefix}#{$state}), white 80%);
+    --#{$prefix}alert-border-color: color-mix(in srgb, var(--#{$prefix}#{$state}), white 60%);
+    --#{$prefix}alert-link-color: color-mix(in srgb, var(--#{$prefix}#{$state}), black 60%);
   }
 }
 // scss-docs-end alert-modifiers

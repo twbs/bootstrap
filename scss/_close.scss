@@ -19,8 +19,9 @@
   height: $btn-close-height;
   padding: $btn-close-padding-y $btn-close-padding-x;
   color: var(--#{$prefix}btn-close-color);
-  background: transparent var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat; // include transparent for button elements
-  filter: var(--#{$prefix}btn-close-filter);
+  background: var(--#{$prefix}emphasis-color);
+  -webkit-mask: var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat;
+  mask: var(--#{$prefix}btn-close-bg) center / $btn-close-width auto no-repeat;
   border: 0; // for button elements
   @include border-radius();
   opacity: var(--#{$prefix}btn-close-opacity);
@@ -47,18 +48,15 @@
 }
 
 @mixin btn-close-white() {
-  --#{$prefix}btn-close-filter: #{$btn-close-filter-dark};
+  background: $white;
 }
 
 .btn-close-white {
   @include btn-close-white();
 }
 
-:root,
-[data-bs-theme="light"] {
-  --#{$prefix}btn-close-filter: #{$btn-close-filter};
-}
-
+// Dark mode: close button icon should be white on dark backgrounds.
+// With the mask approach, background IS the icon color, so we set it to white.
 @if $enable-dark-mode {
   @include color-mode(dark, true) {
     @include btn-close-white();

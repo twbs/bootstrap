@@ -18,7 +18,7 @@
     height: 100%; // allow textareas
     padding: $form-floating-padding-y $form-floating-padding-x;
     overflow: hidden;
-    color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
+    color: color-mix(in srgb, var(--#{$prefix}body-color) #{percentage($form-floating-label-opacity)}, transparent);
     text-align: start;
     text-overflow: ellipsis;
     white-space: nowrap;

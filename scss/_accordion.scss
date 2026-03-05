@@ -49,21 +49,22 @@
     box-shadow: inset 0 calc(-1 * var(--#{$prefix}accordion-border-width)) 0 var(--#{$prefix}accordion-border-color); // stylelint-disable-line function-disallowed-list
 
     &::after {
-      background-image: var(--#{$prefix}accordion-btn-active-icon);
+      background: var(--#{$prefix}accordion-active-color);
+      -webkit-mask-image: var(--#{$prefix}accordion-btn-active-icon);
+      mask-image: var(--#{$prefix}accordion-btn-active-icon);
       transform: var(--#{$prefix}accordion-btn-icon-transform);
     }
   }
 
-  // Accordion icon
   &::after {
     flex-shrink: 0;
     width: var(--#{$prefix}accordion-btn-icon-width);
     height: var(--#{$prefix}accordion-btn-icon-width);
     margin-left: auto;
     content: "";
-    background-image: var(--#{$prefix}accordion-btn-icon);
-    background-repeat: no-repeat;
-    background-size: var(--#{$prefix}accordion-btn-icon-width);
+    background: var(--#{$prefix}accordion-btn-color);
+    -webkit-mask: var(--#{$prefix}accordion-btn-icon) center / var(--#{$prefix}accordion-btn-icon-width) no-repeat;
+    mask: var(--#{$prefix}accordion-btn-icon) center / var(--#{$prefix}accordion-btn-icon-width) no-repeat;
     @include transition(var(--#{$prefix}accordion-btn-icon-transition));
   }
 
@@ -140,14 +141,5 @@
       @include border-radius(0);
     }
     // stylelint-enable selector-max-class
-  }
-}
-
-@if $enable-dark-mode {
-  @include color-mode(dark) {
-    .accordion-button::after {
-      --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon-dark)};
-      --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon-dark)};
-    }
   }
 }

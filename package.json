@@ -117,6 +117,7 @@
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "@docsearch/js": "^3.9.0",
+    "@playwright/test": "^1.58.2",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-commonjs": "^29.0.0",

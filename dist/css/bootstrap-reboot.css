@@ -70,6 +70,14 @@
   --bs-dark-border-subtle: #adb5bd;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
+  --bs-on-primary: #fff;
+  --bs-on-secondary: #fff;
+  --bs-on-success: #fff;
+  --bs-on-info: #000;
+  --bs-on-warning: #000;
+  --bs-on-danger: #fff;
+  --bs-on-light: #000;
+  --bs-on-dark: #fff;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
@@ -124,6 +132,31 @@
   --bs-form-invalid-border-color: #dc3545;
 }
 
+* {
+  --bs-secondary-color: color-mix(in srgb, var(--bs-body-color) 75%, transparent);
+  --bs-secondary-bg: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 10%);
+  --bs-tertiary-color: color-mix(in srgb, var(--bs-body-color) 50%, transparent);
+  --bs-tertiary-bg: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 3%);
+  --bs-link-color: var(--bs-primary);
+  --bs-link-hover-color: color-mix(in srgb, var(--bs-primary), black 20%);
+  --bs-border-color: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 15%);
+  --bs-border-color-translucent: color-mix(in srgb, var(--bs-body-color) 17.5%, transparent);
+  --bs-focus-ring-color: color-mix(in srgb, var(--bs-primary) 25%, transparent);
+}
+
+@supports (color: oklch(from red l c h)) {
+  * {
+    --bs-on-primary: oklch(from var(--bs-primary) calc((0.6 - l) * 999) 0 h);
+    --bs-on-secondary: oklch(from var(--bs-secondary) calc((0.6 - l) * 999) 0 h);
+    --bs-on-success: oklch(from var(--bs-success) calc((0.6 - l) * 999) 0 h);
+    --bs-on-info: oklch(from var(--bs-info) calc((0.6 - l) * 999) 0 h);
+    --bs-on-warning: oklch(from var(--bs-warning) calc((0.6 - l) * 999) 0 h);
+    --bs-on-danger: oklch(from var(--bs-danger) calc((0.6 - l) * 999) 0 h);
+    --bs-on-light: oklch(from var(--bs-light) calc((0.6 - l) * 999) 0 h);
+    --bs-on-dark: oklch(from var(--bs-dark) calc((0.6 - l) * 999) 0 h);
+    --bs-emphasis-color: oklch(from var(--bs-body-bg) calc((0.6 - l) * 999) 0 h);
+  }
+}
 [data-bs-theme=dark] {
   color-scheme: dark;
   --bs-body-color: #dee2e6;
@@ -348,11 +381,11 @@ sup {
 }
 
 a {
-  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+  color: rgb(from var(--bs-link-color) r g b/var(--bs-link-opacity, 1));
   text-decoration: underline;
 }
 a:hover {
-  --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
+  --bs-link-color: var(--bs-link-hover-color);
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {

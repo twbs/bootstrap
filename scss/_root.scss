@@ -37,6 +37,10 @@
   --#{$prefix}white-rgb: #{to-rgb($white)};
   --#{$prefix}black-rgb: #{to-rgb($black)};
 
+  @each $color, $value in $theme-colors {
+    --#{$prefix}on-#{$color}: #{color-contrast($value)};
+  }
+
   // Fonts
 
   // Note: Use `inspect` for lists so that quoted items keep the quotes.
@@ -118,7 +122,7 @@
   // scss-docs-start root-focus-variables
   --#{$prefix}focus-ring-width: #{$focus-ring-width};
   --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
-  --#{$prefix}focus-ring-color: #{$focus-ring-color};
+  --#{$prefix}focus-ring-color: #{rgba($primary, $focus-ring-opacity)};
   // scss-docs-end root-focus-variables
 
   // scss-docs-start root-form-validation-variables
@@ -127,6 +131,35 @@
   --#{$prefix}form-invalid-color: #{$form-invalid-color};
   --#{$prefix}form-invalid-border-color: #{$form-invalid-border-color};
   // scss-docs-end root-form-validation-variables
+}
+
+// The * selector forces derived tokens to re-resolve at every element,
+// picking up section overrides. :root retains static fallbacks (higher specificity).
+// Disable with $enable-derived-vars: false if you don't need section-level theming.
+@if $enable-derived-vars {
+  * {
+    --#{$prefix}secondary-color: color-mix(in srgb, var(--#{$prefix}body-color) 75%, transparent);
+    --#{$prefix}secondary-bg: color-mix(in srgb, var(--#{$prefix}body-bg), var(--#{$prefix}body-color) 10%);
+    --#{$prefix}tertiary-color: color-mix(in srgb, var(--#{$prefix}body-color) 50%, transparent);
+    --#{$prefix}tertiary-bg: color-mix(in srgb, var(--#{$prefix}body-bg), var(--#{$prefix}body-color) 3%);
+
+    --#{$prefix}link-color: var(--#{$prefix}primary);
+    --#{$prefix}link-hover-color: color-mix(in srgb, var(--#{$prefix}primary), black #{$link-shade-percentage});
+
+    --#{$prefix}border-color: color-mix(in srgb, var(--#{$prefix}body-bg), var(--#{$prefix}body-color) 15%);
+    --#{$prefix}border-color-translucent: color-mix(in srgb, var(--#{$prefix}body-color) 17.5%, transparent);
+
+    --#{$prefix}focus-ring-color: color-mix(in srgb, var(--#{$prefix}primary) #{percentage($focus-ring-opacity)}, transparent);
+  }
+
+  @supports (color: oklch(from red l c h)) {
+    * {
+      @each $color, $value in $theme-colors {
+        --#{$prefix}on-#{$color}: oklch(from var(--#{$prefix}#{$color}) calc((0.6 - l) * 999) 0 h);
+      }
+      --#{$prefix}emphasis-color: oklch(from var(--#{$prefix}body-bg) calc((0.6 - l) * 999) 0 h);
+    }
+  }
 }
 
 @if $enable-dark-mode {

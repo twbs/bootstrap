@@ -20,6 +20,184 @@
 </p>
 
 
+## Fork: CSS-var-driven section theming
+
+This is a fork of Bootstrap 5.3.8 that makes all component colors **fully CSS-var-driven**. Override a few base tokens on any element and all derived colors (contrast, emphasis, link, border, etc.) auto-update via modern CSS.
+
+### Usage
+
+Set base colors on any element. Everything else auto-derives:
+
+```css
+.color-schema-ocean {
+  --bs-primary: #0077b6;
+  --bs-primary-rgb: 0, 119, 182;
+  --bs-body-bg: #f8f9fa;
+  --bs-body-color: #1d3557;
+}
+```
+
+Auto-derived tokens (no manual override needed):
+
+| Token | Derived from | Method |
+|---|---|---|
+| `--bs-on-*` (contrast text) | `--bs-{color}` | oklch lightness flip |
+| `--bs-emphasis-color` | `--bs-body-bg` | oklch lightness flip |
+| `--bs-link-color` | `--bs-primary` | `var()` |
+| `--bs-link-hover-color` | `--bs-primary` | `color-mix()` shade 20% |
+| `--bs-secondary-color` | `--bs-body-color` | `color-mix()` 75% opacity |
+| `--bs-tertiary-color` | `--bs-body-color` | `color-mix()` 50% opacity |
+| `--bs-secondary-bg` | `--bs-body-bg` + `--bs-body-color` | `color-mix()` 10% tint |
+| `--bs-tertiary-bg` | `--bs-body-bg` + `--bs-body-color` | `color-mix()` 3% tint |
+| `--bs-border-color` | `--bs-body-bg` + `--bs-body-color` | `color-mix()` 15% |
+| `--bs-border-color-translucent` | `--bs-body-color` | `color-mix()` 17.5% opacity |
+| `--bs-focus-ring-color` | `--bs-primary` | `color-mix()` 25% opacity |
+
+### Why derived tokens live on `*` (not `:root`)
+
+CSS custom properties with `var()` references resolve **where the property is defined**, not where it's inherited. This creates a fundamental problem for section-level theming:
+
+```css
+/* Vanilla Bootstrap approach — BROKEN for sections */
+:root {
+  --bs-primary: #0d6efd;
+  --bs-link-color: var(--bs-primary);       /* resolves to #0d6efd at :root */
+  --bs-focus-ring-color: color-mix(in srgb, var(--bs-primary) 25%, transparent);
+}
+
+.color-schema-ocean {
+  --bs-primary: #0077b6;
+  /* --bs-link-color is STILL #0d6efd — inherited from :root where it was computed */
+}
+```
+
+The `:root` element computed `--bs-link-color` using its own `--bs-primary` value (`#0d6efd`). Children inherit the **computed result**, not the `var()` expression. Overriding `--bs-primary` on a child has no effect on `--bs-link-color`.
+
+The fix: define derived tokens on `*`, so every element gets its own computation:
+
+```css
+:root {
+  --bs-primary: #0d6efd;
+  --bs-link-color: #0d6efd;                 /* static fallback, wins on :root (specificity 0,1,0) */
+}
+
+* {
+  --bs-link-color: var(--bs-primary);        /* re-resolves per element (specificity 0,0,0) */
+}
+
+.color-schema-ocean {
+  --bs-primary: #0077b6;
+  /* Now --bs-link-color resolves to #0077b6 inside this section */
+}
+```
+
+**Why this is safe:**
+- `*` has specificity `(0,0,0)` — any class, attribute, or id selector overrides it
+- `:root` retains static fallbacks at specificity `(0,1,0)`, winning on the `<html>` element
+- Dark mode (`.dark-mode` / `[data-bs-theme=dark]`) has specificity `(0,1,0)`, always overriding `*`
+- CSS engines optimize custom property resolution — `*` does not cause measurable performance overhead
+- The pattern is used by design systems like Open Props and Material Web Components
+
+**What `*` does NOT do:**
+- It does not apply layout, box model, or visual properties to every element
+- It only sets custom properties (which are inherited by default anyway)
+- It does not interfere with component-level CSS variable overrides
+
+### Why not component-level selectors?
+
+The conventional advice is to define derived calculations at component level (e.g. `.btn { --hover-bg: color-mix(...) }`). This works when you have a handful of components, but breaks down when the derived tokens are **cross-cutting** — used by buttons, links, alerts, tables, focus rings, borders, and text utilities simultaneously. You'd need to repeat the same `color-mix()` expressions in dozens of selectors and keep them in sync.
+
+The `*` selector is the only approach that lets consumers override a single base token (`--bs-primary`) and have all derived tokens update everywhere, without repeating calculations per component.
+
+### Opting out of `*`
+
+If you don't need section-level theming, disable the `*` block:
+
+```scss
+$enable-derived-vars: false;
+@import "bootstrap";
+```
+
+Bootstrap then behaves like vanilla — all tokens are static on `:root`. If you still want per-section theming without `*`, you must set all derived tokens yourself on each section class:
+
+```css
+.color-schema-ocean {
+  --bs-primary: #0077b6;
+  --bs-primary-rgb: 0, 119, 182;
+
+  /* All derived tokens — you must repeat these per section */
+  --bs-on-primary: #fff;
+  --bs-link-color: #0077b6;
+  --bs-link-hover-color: color-mix(in srgb, #0077b6, black 20%);
+  --bs-focus-ring-color: color-mix(in srgb, #0077b6 25%, transparent);
+  --bs-border-color: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 15%);
+  --bs-border-color-translucent: color-mix(in srgb, var(--bs-body-color) 17.5%, transparent);
+  --bs-secondary-color: color-mix(in srgb, var(--bs-body-color) 75%, transparent);
+  --bs-secondary-bg: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 10%);
+  --bs-tertiary-color: color-mix(in srgb, var(--bs-body-color) 50%, transparent);
+  --bs-tertiary-bg: color-mix(in srgb, var(--bs-body-bg), var(--bs-body-color) 3%);
+  --bs-emphasis-color: oklch(from var(--bs-body-bg) calc((0.6 - l) * 999) 0 h);
+}
+```
+
+**Further reading:**
+- [How Custom Property Values are Computed](https://moderncss.dev/how-custom-property-values-are-computed/) — Stephanie Eckles explains why `:root` computed values are "inheritable, but immutable" and won't update when descendants override input variables
+- [Breaking CSS Custom Properties out of :root](https://css-tricks.com/breaking-css-custom-properties-out-of-root-might-be-a-good-idea/) — CSS-Tricks on why not everything belongs on `:root` and the case for scoped custom properties
+- [CSS Custom Properties Beyond the :root](https://matthiasott.com/notes/custom-properties-beyond-the-root) — Matthias Ott argues there is "no real reason" for the `:root` convention and demonstrates component-scoped patterns
+- [A Strategy Guide To CSS Custom Properties](https://www.smashingmagazine.com/2018/05/css-custom-properties-strategy-guide/) — Smashing Magazine deep dive on local vs global scoping strategies
+- [CSS Custom Properties In The Cascade](https://www.smashingmagazine.com/2019/07/css-custom-properties-cascade/) — how custom properties participate in the cascade and why that matters for theming
+
+### Contrast text
+
+`--bs-on-*` uses the oklch lightness trick: `oklch(from var(--bs-primary) calc((0.6 - l) * 999) 0 h)` — dark colors get white text, light colors get black text. Wrapped in `@supports` with static fallbacks on `:root` for older browsers.
+
+### Browser support
+
+**Tier 1** (`color-mix()`, unconditional): Chrome 111+, Firefox 113+, Safari 16.2+. Covers link, hover, secondary/tertiary, border, and focus ring tokens.
+
+**Tier 2** (oklch relative color syntax, `@supports` gated): Chrome 122+, Firefox 128+, Safari 18+. Covers `--bs-on-*` contrast tokens and `--bs-emphasis-color`.
+
+Without Tier 2 support, `css-var-scoping.js` (included in `bootstrap.js`) automatically computes contrast colors for section overrides via JavaScript.
+
+### Tooltips and popovers
+
+Bootstrap appends tooltips/popovers to `<body>`. `css-var-scoping.js` (included in `bootstrap.js`) automatically copies the section's color-schema class to the tip element so it inherits the correct theme.
+
+### Modals and offcanvas
+
+Modals and offcanvas are standalone overlays — they don't automatically inherit a section's theme. To theme them, either place them inside a `.color-schema-*` element, or add the class directly:
+
+```html
+<div class="modal color-schema-ocean" id="myModal">...</div>
+<div class="offcanvas color-schema-neon" id="myOffcanvas">...</div>
+```
+
+### SVG icons
+
+Bootstrap uses SVG data URIs for component icons (checkmarks, chevrons, togglers). SVGs can't reference CSS custom properties, so icon colors are normally hardcoded at compile time.
+
+This fork uses **CSS `mask-image`** to decouple icon shape from color — the SVG becomes a shape mask and the visible color comes from `background`, which CAN use CSS vars:
+
+| Component | Approach | Icon color follows |
+|---|---|---|
+| Close button | `mask` | `--bs-emphasis-color` |
+| Accordion chevron | `mask` | `--bs-accordion-btn-color` / `--bs-accordion-active-color` |
+| Navbar toggler | `mask` | `--bs-navbar-color` |
+
+Dark-mode SVG overrides for these components are eliminated — the color adapts automatically.
+
+**Not convertible** (element shares `background-color` with the icon):
+
+| Component | Reason | Mitigation |
+|---|---|---|
+| Form select chevron | `<select>` has its own bg-color | Dark-mode override via `color-mode()` |
+| Form switch circles | `<input>` track IS the bg-color | Dark-mode override via `color-mode()` |
+| Checkbox/radio/indeterminate | White on primary bg — universally correct | No change needed |
+| Carousel arrows | White on dark overlay — universally correct | No change needed |
+| Validation icons | Colors track `$form-validation-states` map | Already themeable via Sass |
+
+---
+
 ## Bootstrap 5
 
 Our default branch is for development of our Bootstrap 5 release. Head to the [`v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev) to view the readme, documentation, and source code for Bootstrap 4.

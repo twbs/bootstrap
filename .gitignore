@@ -43,3 +43,6 @@ Thumbs.db
 /site/node_modules
 /site/.astro
 /site/public
+
+# Playwright
+test-results/

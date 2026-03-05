@@ -640,7 +640,7 @@ $utilities: map-merge(
       values: map-merge(
         $utilities-links-underline,
         (
-          null: rgba(var(--#{$prefix}link-color-rgb), var(--#{$prefix}link-underline-opacity, 1)),
+          null: rgb(from var(--#{$prefix}link-color) r g b / var(--#{$prefix}link-underline-opacity, 1)),
         )
       )
     ),
@@ -669,8 +669,8 @@ $utilities: map-merge(
         $utilities-bg-colors,
         (
           "transparent": transparent,
-          "body-secondary": rgba(var(--#{$prefix}secondary-bg-rgb), var(--#{$prefix}bg-opacity)),
-          "body-tertiary": rgba(var(--#{$prefix}tertiary-bg-rgb), var(--#{$prefix}bg-opacity)),
+          "body-secondary": rgb(from var(--#{$prefix}secondary-bg) r g b / var(--#{$prefix}bg-opacity)),
+          "body-tertiary": rgb(from var(--#{$prefix}tertiary-bg) r g b / var(--#{$prefix}bg-opacity)),
         )
       )
     ),

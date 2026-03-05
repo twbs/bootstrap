@@ -17,6 +17,7 @@ import ScrollSpy from './src/scrollspy.js'
 import Tab from './src/tab.js'
 import Toast from './src/toast.js'
 import Tooltip from './src/tooltip.js'
+import './src/util/css-var-scoping.js'
 
 export default {
   Alert,
