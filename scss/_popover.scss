@@ -24,7 +24,7 @@ $popover-tokens: defaults(
     --popover-box-shadow: var(--box-shadow),
     --popover-header-padding-x: #{$spacer},
     --popover-header-padding-y: #{$spacer * .75},
-    --popover-header-font-size: #{$font-size-base},
+    --popover-header-font-size: var(--font-size-sm),
     --popover-header-color: #{$headings-color},
     --popover-header-bg: var(--bg-1),
     --popover-body-padding-x: #{$spacer},

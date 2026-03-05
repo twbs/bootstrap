@@ -44,9 +44,9 @@ $chip-tokens: defaults(
     align-items: center;
     height: var(--chip-height);
     padding-inline: var(--chip-padding-x);
-    // font-size: var(--chip-font-size);
-    // font-weight: var(--chip-font-weight);
-    // line-height: 1.25;
+    font-size: var(--chip-font-size, var(--font-size-sm));
+    font-weight: var(--chip-font-weight, var(--font-weight-base));
+    line-height: var(--chip-line-height, 1.25rem);
     color: var(--chip-color);
     text-decoration: none;
     white-space: nowrap;

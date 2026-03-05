@@ -21,6 +21,7 @@ $switch-tokens: defaults(
     --switch-height: 1.25rem,
     --switch-width: calc(var(--switch-height) * 1.5),
     --switch-padding: .0625rem,
+    --switch-margin-block: .125rem,
     --switch-bg: var(--bg-3),
     --switch-border-width: var(--border-width),
     --switch-border-color: var(--border-color),
@@ -48,6 +49,7 @@ $switch-tokens: defaults(
     width: var(--switch-width);
     height: var(--switch-height);
     padding: var(--switch-padding);
+    margin-block: var(--switch-margin-block);
     background-color: var(--switch-bg);
     border: var(--switch-border-width) solid var(--switch-border-color);
     // stylelint-disable-next-line property-disallowed-list
@@ -99,9 +101,10 @@ $switch-tokens: defaults(
     }
   }
   .switch-sm {
-    --switch-height: 1em;
+    --switch-height: 1rem;
   }
   .switch-lg {
-    --switch-height: 2em;
+    --switch-height: 1.5rem;
+    --switch-margin-block: 0;
   }
 }

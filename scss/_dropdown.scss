@@ -21,7 +21,7 @@ $dropdown-tokens: defaults(
     --dropdown-padding-x: .25rem,
     --dropdown-padding-y: .25rem,
     --dropdown-spacer: .125rem,
-    --dropdown-font-size: #{$font-size-base},
+    --dropdown-font-size: var(--font-size-sm),
     --dropdown-color: var(--fg-body),
     --dropdown-bg: var(--bg-body),
     --dropdown-border-color: var(--border-color-translucent),
@@ -134,7 +134,7 @@ $dropdown-tokens: defaults(
     display: block;
     padding: var(--dropdown-header-padding-y) var(--dropdown-header-padding-x);
     margin-bottom: 0; // for use with heading elements
-    font-size: $font-size-sm;
+    font-size: var(--font-size-sm);
     color: var(--dropdown-header-color);
     white-space: nowrap; // as with > li > a
   }

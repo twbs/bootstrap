@@ -66,14 +66,13 @@ $reboot-mark-tokens: defaults(
 
   :root {
     // Assume browser default font-size of 16px, or a user's preference
+    accent-color: var(--primary-base);
 
     @if $enable-smooth-scroll {
       @media (prefers-reduced-motion: no-preference) {
         scroll-behavior: smooth;
       }
     }
-
-    accent-color: var(--primary-base);
   }
 
 
@@ -318,7 +317,7 @@ $reboot-mark-tokens: defaults(
   code,
   kbd,
   samp {
-    font-family: $font-family-code;
+    font-family: var(--font-mono);
     font-size: 1em; // Correct the odd `em` font sizing in all browsers.
   }
 

@@ -17,7 +17,8 @@ $radio-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $radio-tokens: defaults(
   (
-    --radio-size: 1rem,
+    --radio-size: 1.25rem,
+    --radio-margin-block: .125rem,
     --radio-bg: transparent,
     --radio-border-color: var(--border-color),
     --radio-checked-bg: var(--control-checked-bg),
@@ -48,7 +49,7 @@ $radio-tokens: defaults(
     flex-shrink: 0;
     width: var(--radio-size);
     height: var(--radio-size);
-    margin-block: .125rem;
+    margin-block: var(--radio-margin-block);
     appearance: none;
     background-color: var(--theme-bg, var(--radio-bg));
     border: 1px solid var(--theme-bg, var(--radio-border-color));
@@ -82,6 +83,13 @@ $radio-tokens: defaults(
     &:focus-visible {
       @include focus-ring(true);
     }
+  }
 
+  .radio-sm {
+    --radio-size: 1rem;
+  }
+  .radio-lg {
+    --radio-size: 1.5rem;
+    --radio-margin-block: 0;
   }
 }
