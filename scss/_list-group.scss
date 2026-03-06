@@ -1,6 +1,4 @@
 @use "sass:map";
-@use "colors" as *;
-@use "theme" as *;
 @use "config" as *;
 @use "functions" as *;
 @use "variables" as *;
@@ -175,7 +173,6 @@ $list-group-tokens: defaults(
       }
     }
   }
-
 
   // Flush list items
   //

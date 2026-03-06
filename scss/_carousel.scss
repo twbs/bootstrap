@@ -1,10 +1,7 @@
-@use "sass:map";
 @use "config" as *;
 @use "colors" as *;
 @use "functions" as *;
-@use "variables" as *;
 @use "mixins/transition" as *;
-@use "mixins/gradients" as *;
 @use "mixins/color-mode" as *;
 @use "mixins/tokens" as *;
 
@@ -112,7 +109,6 @@ $carousel-dark-tokens: defaults(
     transform: translateX(-100%);
   }
 
-
   //
   // Alternate transitions
   //
@@ -138,7 +134,6 @@ $carousel-dark-tokens: defaults(
       @include transition(opacity 0s var(--carousel-transition-duration));
     }
   }
-
 
   //
   // Left/right controls for nav
@@ -248,7 +243,6 @@ $carousel-dark-tokens: defaults(
       opacity: var(--carousel-indicator-active-opacity);
     }
   }
-
 
   // Optional captions
   //

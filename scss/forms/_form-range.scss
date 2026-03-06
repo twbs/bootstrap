@@ -1,6 +1,4 @@
-@use "../config" as *;
 @use "../colors" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
@@ -8,8 +6,6 @@
 @use "../mixins/transition" as *;
 @use "../mixins/gradients" as *;
 @use "../mixins/tokens" as *;
-@use "sass:map";
-@use "form-variables" as *;
 
 $range-tokens: () !default;
 
@@ -79,7 +75,6 @@ $range-tokens: defaults(
 
     &:focus {
       outline: 0;
-
 
       // Pseudo-elements must be split across multiple rulesets to have an effect.
       &::-webkit-slider-thumb {

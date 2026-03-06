@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "config" as *;
 @use "functions" as *;
 @use "variables" as *;
@@ -190,7 +189,6 @@ $card-tokens: defaults(
   .card-img-bottom {
     @include border-bottom-radius(var(--card-inner-border-radius));
   }
-
 
   .card-row {
     flex-direction: row;

@@ -1,8 +1,5 @@
-@use "sass:map";
 @use "config" as *;
-@use "colors" as *;
 @use "functions" as *;
-@use "variables" as *;
 @use "mixins/transition" as *;
 @use "mixins/gradients" as *;
 @use "mixins/border-radius" as *;
@@ -28,7 +25,6 @@ $progress-tokens: defaults(
   $progress-tokens
 );
 // scss-docs-end progress-tokens
-
 
 // Disable animation if transitions are disabled
 

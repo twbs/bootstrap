@@ -1,7 +1,6 @@
 @use "sass:map";
 @use "sass:meta";
 @use "../config" as *;
-@use "../variables" as *;
 @use "../layout/breakpoints" as *;
 @use "../mixins/utilities" as *;
 @use "../utilities" as *;
@@ -24,7 +23,6 @@
       }
     }
   }
-
 
   // Print utilities
   @media print {

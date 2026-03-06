@@ -1,12 +1,8 @@
 @use "sass:list";
-@use "sass:map";
-@use "../config" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
-@use "form-variables" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $strength-tokens: () !default;

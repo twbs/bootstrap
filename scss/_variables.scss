@@ -1,6 +1,3 @@
-@use "sass:color";
-@use "sass:map";
-@use "sass:string";
 @use "colors" as *;
 @use "config" as *;
 @use "functions" as *;
@@ -91,7 +88,6 @@ $icon-link-icon-transform:    translate3d(.25em, 0, 0) !default;
 // Style p element.
 
 $paragraph-margin-bottom:   1rem !default;
-
 
 // Components
 //

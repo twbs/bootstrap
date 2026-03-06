@@ -1,11 +1,7 @@
 @use "sass:math";
-@use "../../../scss/config" as *;
-@use "../../../scss/colors" as *;
-@use "../../../scss/variables" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
 @use "../../../scss/mixins/transition" as *;
-@use "../../../scss/mixins/color-mode" as *;
 
 @layer custom {
   .bd-masthead {

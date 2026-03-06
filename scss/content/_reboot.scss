@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "../colors" as *;
 @use "../config" as *;
 @use "../functions" as *;
@@ -47,7 +46,6 @@ $reboot-mark-tokens: defaults(
   //
   // Normalize is licensed MIT. https://github.com/necolas/normalize.css
 
-
   // Document
   //
   // Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
@@ -57,7 +55,6 @@ $reboot-mark-tokens: defaults(
   *::after {
     box-sizing: border-box;
   }
-
 
   // Root
   //
@@ -74,7 +71,6 @@ $reboot-mark-tokens: defaults(
       }
     }
   }
-
 
   // Body
   //
@@ -103,7 +99,6 @@ $reboot-mark-tokens: defaults(
     border: 0;
     border-block-start: var(--border-width) solid var(--hr-border-color);
   }
-
 
   // Typography
   //
@@ -157,7 +152,6 @@ $reboot-mark-tokens: defaults(
     font-size: $h6-font-size;
   }
 
-
   // Reset margins on paragraphs
   //
   // Similarly, the top margin on `<p>`s get reset. However, we also reset the
@@ -167,7 +161,6 @@ $reboot-mark-tokens: defaults(
     margin-top: 0;
     margin-bottom: $paragraph-margin-bottom;
   }
-
 
   // Abbreviations
   //
@@ -181,7 +174,6 @@ $reboot-mark-tokens: defaults(
     text-decoration-skip-ink: none; // 3
   }
 
-
   // Address
 
   address {
@@ -189,7 +181,6 @@ $reboot-mark-tokens: defaults(
     font-style: normal;
     line-height: inherit;
   }
-
 
   // Lists
 
@@ -223,7 +214,6 @@ $reboot-mark-tokens: defaults(
     margin-bottom: .5rem;
   }
 
-
   // Blockquote
 
   blockquote {
@@ -232,7 +222,6 @@ $reboot-mark-tokens: defaults(
       margin-block: 0;
     }
   }
-
 
   // Strong
   //
@@ -243,7 +232,6 @@ $reboot-mark-tokens: defaults(
     font-weight: $font-weight-bolder;
   }
 
-
   // Small
   //
   // Add the correct font size in all browsers
@@ -252,7 +240,6 @@ $reboot-mark-tokens: defaults(
   .small {
     font-size: var(--small-font-size, var(--font-size-sm));
   }
-
 
   // Mark
 
@@ -263,7 +250,6 @@ $reboot-mark-tokens: defaults(
     color: var(--mark-color);
     background-color: var(--mark-bg);
   }
-
 
   // Sub and Sup
   //
@@ -280,7 +266,6 @@ $reboot-mark-tokens: defaults(
 
   sub { bottom: -.25em; }
   sup { top: -.5em; }
-
 
   // Links
 
@@ -309,7 +294,6 @@ $reboot-mark-tokens: defaults(
       text-decoration: none;
     }
   }
-
 
   // Code
 
@@ -367,7 +351,6 @@ $reboot-mark-tokens: defaults(
     }
   }
 
-
   // Figures
   //
   // Apply a consistent margin strategy (matches our type styles).
@@ -376,14 +359,12 @@ $reboot-mark-tokens: defaults(
     margin: 0 0 1rem;
   }
 
-
   // Images and content
 
   img,
   svg {
     vertical-align: middle;
   }
-
 
   // Tables
   //
@@ -423,7 +404,6 @@ $reboot-mark-tokens: defaults(
     border-style: solid;
     border-width: 0;
   }
-
 
   // Forms
   //
@@ -613,7 +593,6 @@ $reboot-mark-tokens: defaults(
     padding: 0;
   }
 
-
   // 1. Inherit font family and line height for file input buttons
   // 2. Correct the inability to style clickable types in iOS and Safari.
 
@@ -643,7 +622,6 @@ $reboot-mark-tokens: defaults(
     cursor: pointer;
   }
 
-
   // Progress
   //
   // Add the correct vertical alignment in Chrome, Firefox, and Opera.
@@ -651,7 +629,6 @@ $reboot-mark-tokens: defaults(
   progress {
     vertical-align: baseline;
   }
-
 
   // Hidden attribute
   //

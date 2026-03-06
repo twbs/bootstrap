@@ -1,8 +1,5 @@
-@use "sass:color";
 @use "sass:map";
 @use "../config" as *;
-@use "../colors" as *;
-@use "../theme" as *;
 @use "../variables" as *;
 @use "../functions" as *;
 @use "../layout/breakpoints" as *;
@@ -97,7 +94,6 @@ $table-striped-columns-order: even !default;
     caption-side: top;
   }
 
-
   //
   // Condensed table w/ half padding
   //
@@ -109,7 +105,6 @@ $table-striped-columns-order: even !default;
       --table-cell-padding-x: .25rem;
     }
   }
-
 
   // Border versions
   //

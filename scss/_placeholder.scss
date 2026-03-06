@@ -1,8 +1,5 @@
-@use "sass:map";
 @use "colors" as *;
-@use "config" as *;
 @use "functions" as *;
-@use "variables" as *;
 @use "mixins/tokens" as *;
 
 $placeholder-tokens: () !default;

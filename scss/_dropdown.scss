@@ -1,13 +1,10 @@
-@use "sass:map";
 @use "config" as *;
-@use "colors" as *;
 @use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/gradients" as *;
 @use "mixins/tokens" as *;
-@use "mixins/transition" as *;
 
 $dropdown-tokens: () !default;
 

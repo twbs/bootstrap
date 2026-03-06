@@ -1,13 +1,7 @@
-@use "sass:map";
-@use "sass:math";
-@use "../config" as *;
-@use "../colors" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
-@use "form-variables" as *;
 
 $form-floating-tokens: () !default;
 

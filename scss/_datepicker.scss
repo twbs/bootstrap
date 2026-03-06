@@ -1,8 +1,5 @@
 // stylelint-disable selector-max-attribute, property-disallowed-list, selector-no-qualifying-type -- VCP uses extensive data attributes and requires direct border-radius properties for range selection
 
-@use "sass:map";
-@use "config" as *;
-@use "colors" as *;
 @use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
@@ -206,7 +203,6 @@ $datepicker-tokens: defaults(
     }
   }
 
-
   [data-vc="content"] {
     display: flex;
     flex-grow: 1;
@@ -355,7 +351,6 @@ $datepicker-tokens: defaults(
     color: var(--datepicker-day-today-color);
     background-color: var(--datepicker-day-today-bg);
   }
-
 
   // Outside month
   [data-vc-date-month="next"] [data-vc-date-btn],

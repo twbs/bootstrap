@@ -1,13 +1,9 @@
 @use "sass:map";
 @use "config" as *;
 @use "functions" as *;
-@use "variables" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/box-shadow" as *;
-@use "mixins/gradients" as *;
 @use "mixins/tokens" as *;
-@use "mixins/transition" as *;
 
 $stepper-tokens: () !default;
 
@@ -78,7 +74,6 @@ $stepper-tokens: defaults(
   justify-items: start;
   text-align: center;
   text-decoration: none;
-
 
   // The counter
   &::before {

@@ -1,17 +1,12 @@
-@use "sass:color";
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
-@use "../colors" as *;
 @use "../config" as *;
-@use "../theme" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
-@use "../mixins/gradients" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -166,7 +161,6 @@ $button-variants: defaults(
 // scss-docs-end btn-variants
 // stylelint-enable custom-property-no-missing-var-function, scss/dollar-variable-default
 
-
 //
 // Base styles
 //
@@ -238,7 +232,6 @@ $btn-variant-selectors: () !default;
     }
   }
 
-
   // Main button style generator mixin
   // Generate button variant classes (e.g., .btn-solid, .btn-outline, etc.)
   // scss-docs-start btn-variant-mixin
@@ -268,7 +261,6 @@ $btn-variant-selectors: () !default;
           --btn-disabled-#{$property}: var(--theme-#{$value});
         }
       }
-
 
       &:hover {
         @each $property, $value in map.get($button-variants, $variant, "hover") {
@@ -345,7 +337,6 @@ $btn-variant-selectors: () !default;
 
     // No need for an active state here
   }
-
 
   //
   // Button Sizes

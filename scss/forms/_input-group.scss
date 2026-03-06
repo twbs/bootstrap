@@ -1,8 +1,5 @@
 @use "sass:map";
 @use "sass:string";
-@use "../config" as *;
-@use "../colors" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
@@ -72,7 +69,6 @@ $input-group-sizes: defaults(
     }
   }
 
-
   // Textual addons
   //
   // Serves as a catch-all element for any text or radio/checkbox input you wish
@@ -92,7 +88,6 @@ $input-group-sizes: defaults(
     border: var(--border-width) solid var(--input-group-addon-border-color);
     @include border-radius(var(--btn-input-border-radius));
   }
-
 
   // Sizing
   //

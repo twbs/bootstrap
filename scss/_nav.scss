@@ -1,5 +1,3 @@
-@use "sass:map";
-@use "config" as *;
 @use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
@@ -184,7 +182,6 @@ $nav-underline-tokens: defaults(
     }
   }
 
-
   //
   // Pills
   //
@@ -200,7 +197,6 @@ $nav-underline-tokens: defaults(
       @include gradient-bg(var(--nav-pills-link-active-bg));
     }
   }
-
 
   //
   // Underline
@@ -230,7 +226,6 @@ $nav-underline-tokens: defaults(
     }
   }
 
-
   //
   // Justified variants
   //
@@ -258,7 +253,6 @@ $nav-underline-tokens: defaults(
       width: 100%; // Make sure button will grow
     }
   }
-
 
   // Tabbable tabs
   //

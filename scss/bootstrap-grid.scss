@@ -2,10 +2,7 @@
   $file: "Grid"
 );
 
-@use "sass:map";
-@use "colors" as *;
 @use "config" as *;
-@use "variables" as *;
 @use "functions" as *;
 // @use "maps" as *;
 
@@ -56,4 +53,5 @@ $utilities: map-get-multiple(
   )
 );
 
+// check-unused-imports-disable-next-line — side-effect import: generates utility CSS.
 @use "utilities/api";

@@ -1,7 +1,4 @@
-@use "sass:map";
-@use "config" as *;
 @use "functions" as *;
-@use "variables" as *;
 @use "mixins/lists" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
@@ -119,7 +116,6 @@ $pagination-sizes: defaults(
       }
     }
   }
-
 
   //
   // Sizing
