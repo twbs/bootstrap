@@ -2,6 +2,7 @@
 @use "config" as *;
 @use "functions" as *;
 @use "variables" as *;
+@use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/transition" as *;
 @use "mixins/backdrop" as *;
@@ -52,14 +53,17 @@ $offcanvas-padding-x:               $spacer !default;
 $offcanvas-horizontal-width:        400px !default;
 $offcanvas-vertical-height:         30vh !default;
 $offcanvas-transition-duration:     .3s !default;
+$offcanvas-inset:                   1rem !default;
 $offcanvas-border-color:            var(--border-color-translucent) !default;
 $offcanvas-border-width:            var(--border-width) !default;
+$offcanvas-border-radius:           var(--border-radius-xl) !default;
 $offcanvas-title-line-height:       $line-height-base !default;
 $offcanvas-bg-color:                var(--bg-body) !default;
 $offcanvas-color:                   var(--fg-body) !default;
 $offcanvas-box-shadow:              var(--box-shadow-lg) !default;
 $offcanvas-backdrop-bg:             $black !default;
-$offcanvas-backdrop-opacity:        .5 !default;
+$offcanvas-backdrop-opacity:        .15 !default;
+$offcanvas-backdrop-blur:           8px !default;
 // scss-docs-end offcanvas-variables
 
 %offcanvas-css-vars {
@@ -85,25 +89,26 @@ $offcanvas-backdrop-opacity:        .5 !default;
     .offcanvas#{$infix} {
       @include media-breakpoint-down($next) {
         position: fixed;
-        bottom: 0;
         z-index: var(--offcanvas-zindex);
         display: flex;
         flex-direction: column;
-        max-width: 100%;
+        max-width: calc(100% - var(--offcanvas-inset) * 2);
+        max-height: calc(100% - var(--offcanvas-inset) * 2);
         color: var(--offcanvas-color);
         visibility: hidden;
         background-color: var(--offcanvas-bg);
         background-clip: padding-box;
+        border: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
+        @include border-radius(var(--offcanvas-border-radius));
         outline: 0;
         @include box-shadow(var(--offcanvas-box-shadow));
         @include transition(var(--offcanvas-transition));
 
         // Placement: Start (left in LTR, right in RTL)
         &.offcanvas-start {
-          inset-block: 0;
-          inset-inline-start: 0;
+          inset-block: var(--offcanvas-inset);
+          inset-inline-start: var(--offcanvas-inset);
           width: var(--offcanvas-width);
-          border-inline-end: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
           transform: translateX(-100%);
 
           :root:dir(rtl) & {
@@ -113,10 +118,9 @@ $offcanvas-backdrop-opacity:        .5 !default;
 
         // Placement: End (right in LTR, left in RTL)
         &.offcanvas-end {
-          inset-block: 0;
-          inset-inline-end: 0;
+          inset-block: var(--offcanvas-inset);
+          inset-inline-end: var(--offcanvas-inset);
           width: var(--offcanvas-width);
-          border-inline-start: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
           transform: translateX(100%);
 
           :root:dir(rtl) & {
@@ -126,30 +130,25 @@ $offcanvas-backdrop-opacity:        .5 !default;
 
         // Placement: Top
         &.offcanvas-top {
-          inset: 0 0 auto;
+          inset: var(--offcanvas-inset) var(--offcanvas-inset) auto;
           height: var(--offcanvas-height);
-          max-height: 100%;
-          border-block-end: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
           transform: translateY(-100%);
         }
 
         // Placement: Bottom
         &.offcanvas-bottom {
-          inset: auto 0 0;
+          inset: auto var(--offcanvas-inset) var(--offcanvas-inset);
           height: var(--offcanvas-height);
-          max-height: 100%;
-          border-block-start: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
           transform: translateY(100%);
         }
 
         // Fullscreen variant - covers entire viewport
         &.offcanvas-fullscreen {
-          inset: 0;
-          width: 100%;
+          inset: var(--offcanvas-inset);
+          width: auto;
           max-width: none;
-          height: 100%;
+          height: auto;
           max-height: none;
-          border: 0;
           transform: translateY(100%);
         }
 
@@ -191,7 +190,13 @@ $offcanvas-backdrop-opacity:        .5 !default;
 
   // Backdrop overlay
   .offcanvas-backdrop {
-    @include overlay-backdrop($zindex-offcanvas-backdrop, map.get($offcanvas-backdrop-tokens, bg), map.get($offcanvas-backdrop-tokens, opacity));
+    @include overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+    background-color: rgba($offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
+    backdrop-filter: blur(#{$offcanvas-backdrop-blur});
+
+    &.show {
+      opacity: 1;
+    }
   }
 
   // Header with close button
