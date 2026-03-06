@@ -3,9 +3,6 @@
 // A responsive navigation pattern that automatically moves items
 // to an overflow dropdown when space is limited.
 
-@use "config" as *;
-@use "variables" as *;
-
 @layer components {
   .nav-overflow {
     flex-wrap: nowrap;

@@ -16,15 +16,17 @@ $offcanvas-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $offcanvas-tokens: defaults(
   (
+    --offcanvas-inset: var(--spacer),
     --offcanvas-zindex: #{$zindex-offcanvas},
     --offcanvas-width: 400px,
     --offcanvas-height: 30vh,
-    --offcanvas-padding-x: 1rem,
-    --offcanvas-padding-y: 1rem,
+    --offcanvas-padding-x: var(--spacer),
+    --offcanvas-padding-y: var(--spacer),
     --offcanvas-color: var(--fg-body),
     --offcanvas-bg: var(--bg-body),
     --offcanvas-border-width: var(--border-width),
     --offcanvas-border-color: var(--border-color-translucent),
+    --offcanvas-border-radius: var(--border-radius-lg),
     --offcanvas-box-shadow: var(--box-shadow-lg),
     --offcanvas-transition: transform .3s ease-in-out,
     --offcanvas-title-line-height: 1.5,
@@ -40,31 +42,13 @@ $offcanvas-backdrop-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $offcanvas-backdrop-tokens: defaults(
   (
-    bg: rgba(0, 0, 0, .5),
-    opacity: .5,
+    --offcanvas-backdrop-bg: var(--black),
+    --offcanvas-backdrop-opacity: 25%,
+    --offcanvas-backdrop-blur: 8px,
   ),
   $offcanvas-backdrop-tokens
 );
 // scss-docs-end offcanvas-backdrop-tokens
-
-// scss-docs-start offcanvas-variables
-$offcanvas-padding-y:               $spacer !default;
-$offcanvas-padding-x:               $spacer !default;
-$offcanvas-horizontal-width:        400px !default;
-$offcanvas-vertical-height:         30vh !default;
-$offcanvas-transition-duration:     .3s !default;
-$offcanvas-inset:                   1rem !default;
-$offcanvas-border-color:            var(--border-color-translucent) !default;
-$offcanvas-border-width:            var(--border-width) !default;
-$offcanvas-border-radius:           var(--border-radius-xl) !default;
-$offcanvas-title-line-height:       $line-height-base !default;
-$offcanvas-bg-color:                var(--bg-body) !default;
-$offcanvas-color:                   var(--fg-body) !default;
-$offcanvas-box-shadow:              var(--box-shadow-lg) !default;
-$offcanvas-backdrop-bg:             $black !default;
-$offcanvas-backdrop-opacity:        .15 !default;
-$offcanvas-backdrop-blur:           8px !default;
-// scss-docs-end offcanvas-variables
 
 %offcanvas-css-vars {
   @include tokens($offcanvas-tokens);
@@ -190,13 +174,8 @@ $offcanvas-backdrop-blur:           8px !default;
 
   // Backdrop overlay
   .offcanvas-backdrop {
-    @include overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
-    background-color: rgba($offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
-    backdrop-filter: blur(#{$offcanvas-backdrop-blur});
-
-    &.show {
-      opacity: 1;
-    }
+    @include tokens($offcanvas-backdrop-tokens);
+    @include overlay-backdrop($zindex-offcanvas-backdrop, var(--offcanvas-backdrop-bg), var(--offcanvas-backdrop-opacity), var(--offcanvas-backdrop-blur));
   }
 
   // Header with close button
