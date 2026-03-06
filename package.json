@@ -47,6 +47,7 @@
     "css-docs": "node build/generate-utilities-json.mjs",
     "css-lint": "npm-run-all --aggregate-output --continue-on-error --parallel css-lint-*",
     "css-lint-stylelint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache",
+    "css-lint-imports": "node build/check-unused-imports.mjs scss/ site/src/scss/",
     "css-lint-vars": "fusv scss/ site/src/scss/",
     "css-minify": "npm-run-all --aggregate-output --parallel css-minify-*",
     "css-minify-main": "node build/css-minify.mjs",

@@ -1,6 +1,5 @@
 @use "sass:map";
 @use "config" as *;
-@use "colors" as *;
 @use "functions" as *;
 @use "variables" as *;
 @use "layout/breakpoints" as *;
@@ -99,7 +98,6 @@ $navbar-dark-tokens: defaults(
     }
   }
 
-
   // Navbar brand
   //
   // Used for brand, project, or site names.
@@ -118,7 +116,6 @@ $navbar-dark-tokens: defaults(
       color: var(--navbar-brand-hover-color);
     }
   }
-
 
   // Navbar nav
   //
@@ -154,7 +151,6 @@ $navbar-dark-tokens: defaults(
     // }
   }
 
-
   // Navbar text
   //
   //
@@ -171,7 +167,6 @@ $navbar-dark-tokens: defaults(
       color: var(--navbar-active-color);
     }
   }
-
 
   // Responsive navbar
   //

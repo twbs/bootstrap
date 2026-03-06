@@ -1,7 +1,3 @@
-@use "../config" as *;
-@use "../colors" as *;
-@use "../variables" as *;
-
 // scss-docs-start form-feedback-variables
 $form-feedback-margin-top:          .5rem !default;
 $form-feedback-font-size:           var(--font-size-xs) !default;

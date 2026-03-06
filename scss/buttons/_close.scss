@@ -1,10 +1,5 @@
-@use "sass:map";
-@use "../config" as *;
-@use "../colors" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
-@use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/tokens" as *;
 

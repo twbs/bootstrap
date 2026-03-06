@@ -1,5 +1,3 @@
-@use "../variables" as *;
-
 @mixin reset-text {
   font-family: var(--body-font-family);
   // We deliberately do NOT reset font-size or overflow-wrap / word-wrap.

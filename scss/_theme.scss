@@ -1,7 +1,5 @@
 @use "sass:meta";
 @use "sass:map";
-@use "config" as *;
-@use "colors" as *;
 
 @function theme-color-values($key) {
   $result: ();

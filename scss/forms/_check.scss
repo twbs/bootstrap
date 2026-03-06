@@ -1,14 +1,6 @@
-@use "../config" as *;
-@use "../colors" as *;
-@use "../variables" as *;
 @use "../functions" as *;
-@use "sass:map";
-@use "../mixins/border-radius" as *;
-@use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/tokens" as *;
-@use "../mixins/transition" as *;
-@use "form-variables" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $check-tokens: () !default;

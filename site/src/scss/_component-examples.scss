@@ -2,7 +2,6 @@
 @use "../../../scss/variables" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
-@use "../../../scss/mixins/box-shadow" as *;
 @use "variables" as *;
 
 //
@@ -219,7 +218,6 @@
       @include border-radius(var(--bs-border-radius));
     }
   }
-
 
   .bd-example-offcanvas {
     .offcanvas {

@@ -1,7 +1,4 @@
-@use "sass:map";
-@use "../config" as *;
 @use "../functions" as *;
-@use "../variables" as *;
 @use "../mixins/lists" as *;
 @use "../mixins/tokens" as *;
 
@@ -44,7 +41,6 @@ $blockquote-tokens: defaults(
       margin-inline-end: var(--list-inline-padding, var(--spacer) / 2);
     }
   }
-
 
   //
   // Misc
