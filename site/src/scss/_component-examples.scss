@@ -224,6 +224,7 @@
       position: static;
       display: block;
       height: 200px;
+      margin: var(--offcanvas-inset);
       visibility: visible;
       transform: translate(0);
     }
