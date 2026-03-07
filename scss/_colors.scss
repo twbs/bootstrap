@@ -57,8 +57,8 @@ $colors: defaults(
 
 // scss-docs-start color-mix-options
 $color-mix-space: lab !default;
-$tint-color: $white !default;
-$shade-color: $black !default;
+$tint-color: var(--white) !default;
+$shade-color: var(--black) !default;
 
 $color-tints: (
   "025": 94%,

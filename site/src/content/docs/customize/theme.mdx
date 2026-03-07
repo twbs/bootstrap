@@ -79,7 +79,7 @@ And within each semantic theme color, you'll find the following keys, most of wh
 
 Every token is available as a CSS variable, and most are then consumed by our utilities and components. So for the `primary` color, you have the following colors:
 
-<div class="grid gap-0" style={{gridTemplateColumns: 'repeat(9, 1fr)', gap: '8px', minWidth: '0'}}>
+<div class="grid bd-theme-colors-grid small">
   {getData('theme-colors').map((color) => {
     return (
       <div class="d-contents grid-cols-fill">
