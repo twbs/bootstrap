@@ -1,5 +1,3 @@
-@use "sass:map";
-@use "config" as *;
 @use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
@@ -42,7 +40,7 @@ $offcanvas-backdrop-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $offcanvas-backdrop-tokens: defaults(
   (
-    --offcanvas-backdrop-bg: var(--black),
+    --offcanvas-backdrop-bg: var(--bg-body),
     --offcanvas-backdrop-opacity: 25%,
     --offcanvas-backdrop-blur: 8px,
   ),
@@ -56,20 +54,14 @@ $offcanvas-backdrop-tokens: defaults(
 
 @layer components {
   // Apply CSS vars to all offcanvas responsive variants
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
-
+  @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
     .offcanvas#{$infix} {
       @extend %offcanvas-css-vars;
     }
   }
 
   // Responsive offcanvas styles
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
-
+  @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
     .offcanvas#{$infix} {
       @include media-breakpoint-down($next) {
         position: fixed;

@@ -27,24 +27,21 @@ const { addedIn, layout, title } = Astro.props
     {/* Docs sidebar toggle - only shown on docs pages */}
     {
       layout === 'docs' && (
-        <div class="bd-navbar-toggle">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#bdSidebar"
-            aria-controls="bdSidebar"
-            aria-label="Toggle docs navigation"
-          >
-            <HamburgerIcon class="navbar-toggler-icon" height={20} width={20} />
-            <span class="d-none fs-6 pe-1">Browse</span>
-          </button>
-        </div>
+        <button
+          class="btn btn-icon navbar-btn-icon d-lg-none ms--2"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar"
+          aria-label="Toggle docs navigation"
+        >
+          <HamburgerIcon class="navbar-toggler-icon" height={20} width={20} />
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
       )
     }
     {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
 
-    {/* Brand */}
     <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap" style="color: var(--bs-indigo-500);">
       <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
     </a>
@@ -54,7 +51,7 @@ const { addedIn, layout, title } = Astro.props
       <div class="bd-search" id="docsearch" data-bd-docs-version={getConfig().docs_version}></div>
 
       <button
-        class="navbar-toggler d-flex d-lg-none order-3 p-2"
+        class="btn btn-icon navbar-btn-icon d-lg-none order-3 me--2"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#bdNavbar"

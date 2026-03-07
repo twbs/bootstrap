@@ -66,6 +66,38 @@
   @return if(sass(breakpoint-min($name, $breakpoints) == null): ""; else: "-#{$name}");
 }
 
+// Iterate all breakpoints and provide the current name and infix.
+//
+//    @include loop-breakpoints-up() using ($breakpoint, $infix) {
+//      // ...
+//    }
+@mixin loop-breakpoints-up($breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    @content($breakpoint, $infix);
+  }
+}
+
+// Iterate all breakpoints and provide the current name, next name, and next infix.
+//
+//    @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
+//      // ...
+//    }
+@mixin loop-breakpoints-down($breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
+    $next: breakpoint-next($breakpoint, $breakpoints);
+    $infix: breakpoint-infix($next, $breakpoints);
+    @content($breakpoint, $next, $infix);
+  }
+}
+
+// Backwards-compatible alias for next/down breakpoint loops.
+@mixin loop-breakpoints($breakpoints: $grid-breakpoints) {
+  @include loop-breakpoints-down($breakpoints) using ($breakpoint, $next, $infix) {
+    @content($breakpoint, $next, $infix);
+  }
+}
+
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {

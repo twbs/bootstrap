@@ -30,6 +30,8 @@ $min-contrast-ratio:         4.5 !default;
 // scss-docs-start spacer-variables-maps
 $spacer: 1rem !default;
 $spacers: (
+  -2: $spacer * -.5,
+  -1: $spacer * -.25,
   0: 0,
   1: $spacer * .25,
   2: $spacer * .5,

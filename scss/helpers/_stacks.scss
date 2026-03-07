@@ -1,28 +1,33 @@
-// stylelint-disable selector-no-qualifying-type
+@use "../layout/breakpoints" as *;
+@use "../layout/containers" as *;
 
 @layer helpers {
   // scss-docs-start stacks
-  .hstack,
-  b-hstack {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-self: stretch;
-  }
-  .hstack-start,
-  b-hstack[align="start"] {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    align-self: stretch;
+  .stack-container {
+    @include set-container();
   }
 
-  .vstack,
-  b-vstack {
+  [class*="hstack"],
+  [class*="vstack"] {
     display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    align-self: stretch;
+    flex: var(--stack-flex, 1 1 auto);
+    flex-direction: var(--stack-direction, row);
+    align-items: var(--stack-align-items, center);
+    align-self: var(--stack-align-self, stretch);
+  }
+
+  @include loop-breakpoints-up() using ($breakpoint, $infix) {
+    .vstack#{$infix} {
+      @include container-breakpoint-up($breakpoint) {
+        --stack-direction: column;
+        --stack-align-items: stretch;
+      }
+    }
+    .hstack#{$infix} {
+      @include container-breakpoint-up($breakpoint) {
+        --stack-direction: row;
+      }
+    }
   }
   // scss-docs-end stacks
 }

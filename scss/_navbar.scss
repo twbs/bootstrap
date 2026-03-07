@@ -1,18 +1,13 @@
-@use "sass:map";
 @use "config" as *;
 @use "functions" as *;
 @use "layout/breakpoints" as *;
-@use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/color-mode" as *;
-@use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
 // mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
 
-// stylelint-disable custom-property-no-missing-var-function
 $navbar-tokens: () !default;
 
 // scss-docs-start navbar-tokens
@@ -31,10 +26,11 @@ $navbar-tokens: defaults(
     --navbar-brand-color: var(--fg),
     --navbar-brand-hover-color: var(--fg),
     --navbar-nav-link-padding-x: .75rem,
+    --navbar-toggler-width: 2rem,
     --navbar-toggler-padding-y: .25rem,
     --navbar-toggler-padding-x: .75rem,
     --navbar-toggler-font-size: var(--font-size-lg),
-    --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{color-mix(in oklch, var(--body-color) 75%, transparent)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
+    // --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{color-mix(in oklch, var(--body-color) 75%, transparent)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
     --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
     --navbar-toggler-border-radius: var(--border-radius),
     --navbar-toggler-transition: box-shadow .15s ease-in-out,
@@ -56,12 +52,11 @@ $navbar-dark-tokens: defaults(
     --navbar-brand-color: var(--white),
     --navbar-brand-hover-color: var(--white),
     --navbar-toggler-border-color: color-mix(in oklch, var(--white) .1, transparent),
-    --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
+    // --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
   ),
   $navbar-dark-tokens
 );
 // scss-docs-end navbar-dark-tokens
-// stylelint-enable custom-property-no-missing-var-function
 
 @layer components {
   // Base navbar
@@ -173,31 +168,36 @@ $navbar-dark-tokens: defaults(
   //
   // Button for toggling the navbar when in its collapsed state
 
-  .navbar-toggler {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--navbar-toggler-width);
-    aspect-ratio: 1 / 1;
-    // padding: var(--navbar-toggler-padding-y) var(--navbar-toggler-padding-x);
-    // font-size: var(--navbar-toggler-font-size);
-    // line-height: 1;
-    color: var(--navbar-color);
-    background-color: transparent;
-    border: 0;
-    // border: var(--border-width) solid var(--navbar-toggler-border-color);
-    @include border-radius(var(--navbar-toggler-border-radius));
-    @include transition(var(--navbar-toggler-transition));
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:focus-visible {
-      text-decoration: none;
-      @include focus-ring(true);
-    }
+  .navbar-btn-icon {
+    --btn-bg: transparent;
+    --btn-hover-bg: var(--bg-1);
   }
+
+  // .navbar-toggler {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   width: var(--navbar-toggler-width);
+  //   aspect-ratio: 1 / 1;
+  //   // padding: var(--navbar-toggler-padding-y) var(--navbar-toggler-padding-x);
+  //   // font-size: var(--navbar-toggler-font-size);
+  //   // line-height: 1;
+  //   color: var(--navbar-color);
+  //   background-color: transparent;
+  //   border: 0;
+  //   // border: var(--border-width) solid var(--navbar-toggler-border-color);
+  //   @include border-radius(var(--navbar-toggler-border-radius));
+  //   @include transition(var(--navbar-toggler-transition));
+
+  //   &:hover {
+  //     text-decoration: none;
+  //   }
+
+  //   &:focus-visible {
+  //     text-decoration: none;
+  //     @include focus-ring(true);
+  //   }
+  // }
 
   // Navbar toggler icon (inline SVG)
   .navbar-toggler-icon {
@@ -272,10 +272,7 @@ $navbar-dark-tokens: defaults(
   }
 
   // Responsive navbar expand classes using container queries
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
-
+  @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
     @if $next {
       .navbar-expand#{$infix} {
         @include container-breakpoint-up($next) {
@@ -295,11 +292,11 @@ $navbar-dark-tokens: defaults(
     @include tokens($navbar-dark-tokens);
   }
 
-  @if $enable-dark-mode {
-    @include color-mode(dark) {
-      .navbar-toggler-icon {
-        --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))};
-      }
-    }
-  }
+  // @if $enable-dark-mode {
+  //   @include color-mode(dark) {
+  //     .navbar-toggler-icon {
+  //       --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))};
+  //     }
+  //   }
+  // }
 }

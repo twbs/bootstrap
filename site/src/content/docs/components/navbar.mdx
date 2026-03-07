@@ -13,7 +13,7 @@ Here's a navbar that includes most supported sub-components and a responsive rig
 <ResizableExample code={`<nav class="navbar navbar-expand-md bg-1">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="btn btn-icon navbar-btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
           <path d="M1 3.5h14M1 8h14M1 12.5h14"/>
         </svg>
@@ -46,9 +46,9 @@ Here's a navbar that includes most supported sub-components and a responsive rig
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-icon btn-solid theme-secondary" type="submit">
+          <form class="hstack gap-2" role="search">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn-solid btn-icon theme-secondary" type="submit">
               <svg class="bi" width="16" height="16"><use href="#search" /></svg>
             </button>
           </form>
