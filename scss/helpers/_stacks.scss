@@ -26,6 +26,7 @@
     .hstack#{$infix} {
       @include container-breakpoint-up($breakpoint) {
         --stack-direction: row;
+        --stack-align-items: flex-start;
       }
     }
   }

@@ -19,12 +19,13 @@ $navbar-tokens: defaults(
     --navbar-color: var(--fg-2),
     --navbar-hover-color: var(--fg-1),
     --navbar-disabled-color: var(--fg-3),
-    --navbar-active-color: var(--fg),
+    --navbar-active-color: var(--fg-body),
     --navbar-brand-padding-y: .75rem,
     --navbar-brand-margin-end: 1rem,
-    --navbar-brand-font-size: var(--font-size-lg),
-    --navbar-brand-color: var(--fg),
-    --navbar-brand-hover-color: var(--fg),
+    --navbar-brand-font-size: var(--font-size-md),
+    --navbar-brand-font-weight: var(--font-weight-medium),
+    --navbar-brand-color: var(--fg-body),
+    --navbar-brand-hover-color: var(--fg-body),
     --navbar-nav-link-padding-x: .75rem,
     --navbar-toggler-width: 2rem,
     --navbar-toggler-padding-y: .25rem,
@@ -101,6 +102,7 @@ $navbar-dark-tokens: defaults(
     padding-bottom: var(--navbar-brand-padding-y);
     margin-inline-end: var(--navbar-brand-margin-end);
     font-size: var(--navbar-brand-font-size);
+    font-weight: var(--navbar-brand-font-weight);
     color: var(--navbar-brand-color);
     text-decoration: none;
     white-space: nowrap;
@@ -168,45 +170,10 @@ $navbar-dark-tokens: defaults(
   //
   // Button for toggling the navbar when in its collapsed state
 
-  .navbar-btn-icon {
+  .navbar-toggler {
     --btn-bg: transparent;
     --btn-hover-bg: var(--bg-1);
   }
-
-  // .navbar-toggler {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   width: var(--navbar-toggler-width);
-  //   aspect-ratio: 1 / 1;
-  //   // padding: var(--navbar-toggler-padding-y) var(--navbar-toggler-padding-x);
-  //   // font-size: var(--navbar-toggler-font-size);
-  //   // line-height: 1;
-  //   color: var(--navbar-color);
-  //   background-color: transparent;
-  //   border: 0;
-  //   // border: var(--border-width) solid var(--navbar-toggler-border-color);
-  //   @include border-radius(var(--navbar-toggler-border-radius));
-  //   @include transition(var(--navbar-toggler-transition));
-
-  //   &:hover {
-  //     text-decoration: none;
-  //   }
-
-  //   &:focus-visible {
-  //     text-decoration: none;
-  //     @include focus-ring(true);
-  //   }
-  // }
-
-  // Navbar toggler icon (inline SVG)
-  .navbar-toggler-icon {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    color: var(--navbar-color);
-  }
-
 
   // scss-docs-start navbar-expand-loop
   // Generate series of `.navbar-expand-*` responsive classes for configuring

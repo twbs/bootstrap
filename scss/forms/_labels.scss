@@ -22,7 +22,7 @@ $form-label-tokens: defaults(
     font-size: var(--label-font-size, var(--font-size-sm));
     font-style: var(--label-font-style, inherit);
     font-weight: var(--label-font-weight, inherit);
-    color: var(--label-color, inherit);
+    color: var(--label-color, var(--fg-body));
   }
 
   .form-label {

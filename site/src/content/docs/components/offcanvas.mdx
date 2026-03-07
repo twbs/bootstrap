@@ -22,7 +22,7 @@ Offcanvas is a sidebar component that can be toggled via JavaScript to appear fr
 
 Below is an offcanvas example that is shown by default (via `.show` on `.offcanvas`). Offcanvas includes support for a header with a close button and an optional body class for some initial `padding`. We suggest that you include offcanvas headers with dismiss actions whenever possible, or provide an explicit dismiss action.
 
-<Example class="bd-example-offcanvas p-0 bg-body-tertiary overflow-hidden" code={`<div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+<Example class="bd-example-offcanvas p-0 bg-1 overflow-hidden" code={`<div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
       <CloseButton dismiss="offcanvas" />
@@ -126,7 +126,7 @@ When backdrop is set to static, the offcanvas will not close when clicking outsi
 
 Change the appearance of offcanvases with utilities to better match them to different contexts like dark navbars. Here we add `data-bs-theme="dark"` to the `.offcanvas`, and it makes all nested elements within use dark mode.
 
-<Example class="bd-example-offcanvas p-0 bg-body-secondary overflow-hidden" code={`<div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel" data-bs-theme="dark">
+<Example class="bd-example-offcanvas p-0 bg-1 overflow-hidden" code={`<div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasDark" aria-labelledby="offcanvasDarkLabel" data-bs-theme="dark">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasDarkLabel">Offcanvas</h5>
       <CloseButton dismiss="offcanvasDark" />
@@ -227,7 +227,7 @@ Try the top, right, bottom, and fullscreen examples out below.
 
 Add an optional `.offcanvas-footer` for action buttons or other content at the bottom of the offcanvas.
 
-<Example class="bd-example-offcanvas p-0 bg-body-tertiary overflow-hidden" code={`<div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasFooter" aria-labelledby="offcanvasFooterLabel">
+<Example class="bd-example-offcanvas p-0 bg-1 overflow-hidden" code={`<div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasFooter" aria-labelledby="offcanvasFooterLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasFooterLabel">Offcanvas with footer</h5>
       <CloseButton dismiss="offcanvas" />

@@ -18,8 +18,8 @@ $form-control-tokens: defaults(
     --control-padding-x: var(--btn-input-padding-x),
     --control-font-size: var(--btn-input-font-size),
     --control-line-height: var(--btn-input-line-height),
-    --control-color: var(--control-fg),
-    --control-bg: var(--control-bg),
+    --control-fg: var(--btn-input-fg),
+    --control-bg: var(--btn-input-bg),
     --control-border-width: var(--border-width),
     --control-border-color: var(--border-color),
     --control-border-radius: var(--border-radius),
@@ -30,7 +30,7 @@ $form-control-tokens: defaults(
     --control-transition-timing: .15s ease-in-out,
     --control-transition: var(--control-transition-property) var(--control-transition-timing),
     --control-placeholder-color: var(--fg-3),
-    --control-disabled-color: var(--control-color),
+    --control-disabled-color: var(--control-fg),
     --control-disabled-bg: var(--bg-2),
     --control-disabled-border-color: var(--control-border-color),
     --control-select-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#00000080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
@@ -62,7 +62,7 @@ $form-control-sizes: defaults(
     padding: var(--control-padding-y) var(--control-padding-x);
     font-size: var(--control-font-size);
     line-height: var(--control-line-height);
-    color: var(--control-color);
+    color: var(--control-fg);
     appearance: none;
     background-color: var(--control-bg);
     background-clip: padding-box;
@@ -146,7 +146,7 @@ $form-control-sizes: defaults(
       padding: var(--control-padding-y) var(--control-padding-x);
       margin: calc(var(--control-padding-y) * -1) calc(var(--control-padding-x) * -1);
       margin-inline-end: var(--control-padding-x);
-      color: var(--control-color);
+      color: var(--control-fg);
       @include gradient-bg(var(--control-action-bg));
       pointer-events: none;
       border-color: inherit;
@@ -173,7 +173,7 @@ $form-control-sizes: defaults(
     padding: var(--control-padding-y) 0;
     margin-bottom: 0; // match inputs if this class comes on inputs with default margins
     line-height: var(--control-line-height);
-    color: var(--control-color);
+    color: var(--control-fg);
     background-color: transparent;
     border: solid transparent;
     border-width: var(--control-border-width) 0;

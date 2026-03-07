@@ -13,7 +13,7 @@ Here's a navbar that includes most supported sub-components and a responsive rig
 <ResizableExample code={`<nav class="navbar navbar-expand-md bg-1">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
-      <button class="btn btn-icon navbar-btn-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="btn btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
           <path d="M1 3.5h14M1 8h14M1 12.5h14"/>
         </svg>
@@ -32,7 +32,7 @@ Here's a navbar that includes most supported sub-components and a responsive rig
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-container="body" aria-expanded="false">
                 Dropdown
               </a>
               <ul class="dropdown-menu">
@@ -216,7 +216,7 @@ You can also use dropdowns in your navbar. Dropdown menus require a wrapping ele
               <a class="nav-link" href="#">Pricing</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-container="body" aria-expanded="false">
                 Dropdown link
               </a>
               <ul class="dropdown-menu">
@@ -321,12 +321,64 @@ Mix and match with other components and utilities as needed.
     </div>
   </nav>`} />
 
+## Dark navbar
+
+To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
+
+<ResizableExample code={`<nav class="navbar navbar-expand-md bg-1" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Dark navbar</a>
+      <button class="btn btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarDarkOffcanvas" aria-controls="navbarDarkOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
+          <path d="M1 3.5h14M1 8h14M1 12.5h14"/>
+        </svg>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarDarkOffcanvas" aria-labelledby="navbarDarkOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="navbarDarkOffcanvasLabel">Menu</h5>
+          <CloseButton dismiss="offcanvas" />
+        </div>
+        <div class="offcanvas-body mb-2 mb-md-0">
+          <ul class="nav navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-container="body" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+          <form class="hstack gap-2" role="search">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn-solid btn-icon theme-secondary" type="submit">
+              <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>`} />
+
+
 ## Color schemes
 
 Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `data-bs-theme="dark"` to the `.navbar` parent for dark background colors. Then, customize with `.bg-*` and additional utilities.
 
 <ResizableExample className="d-flex flex-column gap-2" showMarkup={false} code={`
-<nav class="navbar navbar-expand-md bg-body border-bottom border-body" data-bs-theme="dark">
+<nav class="navbar navbar-expand-md" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">

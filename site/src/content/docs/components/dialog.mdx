@@ -70,6 +70,28 @@ The markup for a dialog is straightforward:
 </button>
 ```
 
+## Dark dialog
+
+To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
+
+<dialog class="dialog" id="exampleDialogDark" data-bs-theme="dark">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Dark dialog title</h1>
+    <CloseButton dismiss="dialog" />
+  </div>
+  <div class="dialog-body">
+    <p>This is a native dialog element, only it’s set to dark mode. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogDark">
+  Open dark dialog
+</button>`} />
+
 ## Static backdrop
 
 When `backdrop` is set to `static`, the dialog will not close when clicking outside of it. Click the button below to try it.

@@ -28,7 +28,8 @@ $dialog-tokens: defaults(
     --dialog-border-width: var(--border-width),
     --dialog-border-radius: var(--border-radius-lg),
     --dialog-box-shadow: var(--box-shadow-lg),
-    --dialog-backdrop-bg: rgba(0, 0, 0, .5),
+    --dialog-backdrop-bg: rgb(0 0 0 / 50%),
+    --dialog-backdrop-blur: 8px,
     --dialog-header-padding: 1rem,
     --dialog-header-border-color: var(--border-color),
     --dialog-header-border-width: var(--border-width),
@@ -80,6 +81,7 @@ $dialog-sizes: defaults(
     // Native backdrop styling via ::backdrop pseudo-element
     &::backdrop {
       background-color: var(--dialog-backdrop-bg);
+      backdrop-filter: blur(var(--dialog-backdrop-blur));
     }
 
     // Animation support using native [open] attribute

@@ -13,8 +13,8 @@ $chip-input-tokens: defaults(
     --chip-input-padding-x: .75rem,
     --chip-input-gap: .375rem,
     --chip-input-ghost-min-width: 5rem,
-    --control-color: var(--fg-body),
-    --control-bg: var(--bg-body),
+    --control-fg: var(--btn-input-fg),
+    --control-bg: var(--btn-input-bg),
     --control-border-width: var(--border-width),
     --control-border-color: var(--border-color),
     --control-border-radius: var(--border-radius),
@@ -34,7 +34,7 @@ $chip-input-tokens: defaults(
     align-items: center;
     padding: var(--chip-input-padding-y) var(--chip-input-padding-x);
 
-    color: var(--control-color);
+    color: var(--control-fg);
     background-color: var(--control-bg);
     border: var(--control-border-width) solid var(--control-border-color);
     @include border-radius(var(--control-border-radius), 0);
