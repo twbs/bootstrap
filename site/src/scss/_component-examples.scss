@@ -76,18 +76,18 @@
       margin-top: 2rem;
     }
 
-    > .form-control {
-      + .form-control {
-        margin-top: .5rem;
-      }
-    }
+    // > .form-control {
+    //   + .form-control {
+    //     margin-top: .5rem;
+    //   }
+    // }
 
-    > .nav + .nav,
-    > .alert + .alert,
-    > .navbar + .navbar,
-    > .progress + .progress {
-      margin-top: $spacer;
-    }
+    // > .nav + .nav,
+    // > .alert + .alert,
+    // > .navbar + .navbar,
+    // > .progress + .progress {
+    //   margin-top: $spacer;
+    // }
 
     > .dropdown-menu {
       max-width: 12rem;
@@ -224,6 +224,7 @@
       position: static;
       display: block;
       height: 200px;
+      margin: var(--offcanvas-inset);
       visibility: visible;
       transform: translate(0);
     }
@@ -367,6 +368,24 @@
   }
 
   //
+  // Resizable examples
+  //
+
+  .bd-example-resizable {
+    position: relative;
+  }
+
+  .bd-resizable-container {
+    max-width: 100%;
+    padding: 1rem;
+    overflow: hidden;
+    resize: horizontal;
+    background-color: var(--bs-bg-body);
+    border: 1px dashed var(--bs-border-color);
+    @include border-radius(var(--bs-border-radius));
+  }
+
+  //
   // Code snippets
   //
 
@@ -374,4 +393,24 @@
     margin-inline-end: 0;
   }
 
+
+  .bd-colors-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    min-width: 0;
+
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: repeat(13, 1fr);
+    }
+  }
+
+  .bd-theme-colors-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    min-width: 0;
+
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: repeat(9, 1fr);
+    }
+  }
 }

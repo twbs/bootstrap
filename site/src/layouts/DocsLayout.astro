@@ -16,6 +16,7 @@ import { getData } from '@libs/data'
 import GitHubIcon from '@components/icons/GitHubIcon.astro'
 import MdnIcon from '@components/icons/MdnIcon.astro'
 import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
+import CloseButton from '@components/shortcodes/CloseButton.astro'
 
 interface NavigationPage {
   title: string
@@ -93,12 +94,7 @@ if (currentPageIndex < allPages.length - 1) {
       <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
         <div class="offcanvas-header border-bottom">
           <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse docs</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-            data-bs-target="#bdSidebar"></button>
+          <CloseButton dismiss="offcanvas" target="#bdSidebar" />
         </div>
 
         <div class="offcanvas-body">
@@ -170,7 +166,7 @@ if (currentPageIndex < allPages.length - 1) {
         {
           frontmatter.toc && headings && (
             <button
-              class="btn btn-link p-lg-0 mb-2 mb-lg-0 text-decoration-none bd-toc-toggle d-flex align-items-center d-lg-none"
+              class="btn-sm btn-subtle mb-2 bd-toc-toggle d-lg-none"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#tocContents"

@@ -79,7 +79,7 @@ And within each semantic theme color, you'll find the following keys, most of wh
 
 Every token is available as a CSS variable, and most are then consumed by our utilities and components. So for the `primary` color, you have the following colors:
 
-<div class="grid gap-0" style={{gridTemplateColumns: 'repeat(9, 1fr)', gap: '8px', minWidth: '0'}}>
+<div class="grid bd-theme-colors-grid small">
   {getData('theme-colors').map((color) => {
     return (
       <div class="d-contents grid-cols-fill">
@@ -193,6 +193,77 @@ Here are some examples showing them together. Note
       fg-1 on bg-3
     </div>
   </div>`} />
+
+## Color modes
+
+Bootstrap's theme and layer colors are **color mode adaptive** thanks to our use of CSS’s `light-dark()` function. This lets us specify two colors at once for a component, one for light and one for dark mode. These colors are switched by using the `data-bs-theme` attribute to set the `color-scheme` property to `light` or `dark`.
+
+By default, `color-scheme: light dark` is set on the `:root` element, meaning Bootstrap respects the user’s system preference. You can override this at any level by setting `data-bs-theme="light"` or `data-bs-theme="dark"` on any element to force a specific mode for that subtree. Depending on the element, you may need to include `.bg-body`, `.fg-body`, or similar utilities to ensure correct color application.
+
+Here's the same set of components rendered in both light and dark modes side by side. Note the use of `.bg-body` for the backgrounds. Without it, the light mode demo wouldn’t have a white background—just light mode components on a dark background.
+
+<Example class="p-0 overflow-hidden" code={`<div class="row g-0">
+    <div class="col-md-6 vstack gap-3 p-4 bg-body" data-bs-theme="light">
+      <h6 class="fw-semibold">Light mode</h6>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="alert theme-primary">This is a primary alert.</div>
+      <input type="text" class="form-control" placeholder="Form control">
+      <div class="checkgroup">
+        <div class="check">
+          <input type="checkbox" id="checkLabel" />
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+          </svg>
+        </div>
+        <label class="form-label" for="checkLabel">Example new checkbox</label>
+      </div>
+      <div class="vstack gap-2">
+        <button type="button" class="btn btn-solid theme-primary">Primary</button>
+        <button type="button" class="btn btn-subtle theme-secondary">Secondary</button>
+      </div>
+    </div>
+    <div class="col-md-6 vstack gap-3 p-4 bg-body" data-bs-theme="dark">
+      <h6 class="fw-semibold">Dark mode</h6>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="alert theme-primary">This is a primary alert.</div>
+      <input type="text" class="form-control" placeholder="Form control">
+      <div class="checkgroup">
+        <div class="check">
+          <input type="checkbox" id="checkDarkLabel" />
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+          </svg>
+        </div>
+        <label class="form-label" for="checkDarkLabel">Example new checkbox</label>
+      </div>
+      <div class="vstack gap-2">
+        <button type="button" class="btn btn-solid theme-primary">Primary</button>
+        <button type="button" class="btn btn-subtle theme-secondary">Secondary</button>
+      </div>
+    </div>
+  </div>`} />
+
+Under the hood, token values like `--bs-primary-text` resolve differently depending on the active color mode. For example, in our `_theme.scss`, the primary text color is defined as:
+
+```scss
+"text": light-dark(var(--blue-600), var(--blue-400)),
+```
+
+When `data-bs-theme="light"` is active (or the user's system preference is light), this resolves to `var(--blue-600)`. In dark mode, it resolves to `var(--blue-400)`—a lighter shade that maintains readability against dark backgrounds. The same pattern applies to backgrounds, borders, and all other adaptive tokens.
+
+For more details on toggling color modes globally, building custom modes, and JavaScript toggler examples, see the [color modes documentation]([[docsref:/customize/color-modes/]]).
 
 ## Theme utility classes
 

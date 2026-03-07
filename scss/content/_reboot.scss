@@ -238,7 +238,7 @@ $reboot-mark-tokens: defaults(
 
   small,
   .small {
-    font-size: var(--small-font-size, var(--font-size-sm));
+    font-size: var(--small-font-size, 87.5%);
   }
 
   // Mark

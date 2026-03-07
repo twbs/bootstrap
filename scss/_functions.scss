@@ -41,53 +41,6 @@
   }
 }
 
-// Colors
-@function to-rgb($value) {
-  @return color.channel($value, "red"), color.channel($value, "green"), color.channel($value, "blue");
-}
-
-// stylelint-disable scss/dollar-variable-pattern
-@function rgba-css-var($identifier, $target) {
-  @if $identifier == "body" and $target == "bg" {
-    @return rgba(var(--#{$identifier}-bg-rgb), var(--#{$target}-opacity));
-  } @if $identifier == "body" and $target == "text" {
-    @return rgba(var(--#{$identifier}-color-rgb), var(--#{$target}-opacity));
-  } @else {
-    @return rgba(var(--#{$identifier}-rgb), var(--#{$target}-opacity));
-  }
-}
-
-@function map-loop($map, $func, $args...) {
-  $_map: ();
-
-  @each $key, $value in $map {
-    // allow to pass the $key and $value of the map as an function argument
-    $_args: ();
-    @each $arg in $args {
-      $resolved-arg: $arg;
-      @if $arg == "$key" {
-        $resolved-arg: $key;
-      } @else if $arg == "$value" {
-        $resolved-arg: $value;
-      }
-      $_args: list.append($_args, $resolved-arg);
-    }
-
-    $_map: map.merge($_map, ($key: meta.call(meta.get-function($func), $_args...)));
-  }
-
-  @return $_map;
-}
-// stylelint-enable scss/dollar-variable-pattern
-
-@function varify($list) {
-  $result: null;
-  @each $entry in $list {
-    $result: list.append($result, var(--#{$entry}), space);
-  }
-  @return $result;
-}
-
 // Internal Bootstrap function to turn maps into its negative variant.
 // It prefixes the keys with `n` and makes the value negative.
 @function negativify-map($map) {
@@ -253,20 +206,3 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 @function opaque($background, $foreground) {
   @return color-mix(in srgb, rgba($foreground, 1), $background, color.opacity($foreground) * 100%);
 }
-
-// scss-docs-start color-functions
-// // Tint a color: mix a color with white
-@function tint-color($color, $weight) {
-  @return color.mix(white, $color, $weight);
-}
-
-// // Shade a color: mix a color with black
-@function shade-color($color, $weight) {
-  @return color.mix(black, $color, $weight);
-}
-
-// // Shade the color if the weight is positive, else tint it
-@function shift-color($color, $weight) {
-  @return if(sass($weight > 0): shade-color($color, $weight); else: tint-color($color, -$weight));
-}
-// scss-docs-end color-functions

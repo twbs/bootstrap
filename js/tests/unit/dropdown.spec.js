@@ -788,6 +788,142 @@ describe('Dropdown', () => {
         }, 10)
       })
     })
+
+    it('should move menu to body when container is set to body', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+        const dropdown = new Dropdown(btnDropdown, {
+          container: 'body'
+        })
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(dropdownMenu.parentNode).toEqual(document.body)
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should move menu to body when container is set to true', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+        const dropdown = new Dropdown(btnDropdown, {
+          container: true
+        })
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(dropdownMenu.parentNode).toEqual(document.body)
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should move menu to specified element when container is an element', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="custom-container"></div>',
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+        const customContainer = fixtureEl.querySelector('#custom-container')
+        const dropdown = new Dropdown(btnDropdown, {
+          container: customContainer
+        })
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(dropdownMenu.parentNode).toEqual(customContainer)
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should restore menu to original parent when hidden', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+        const originalParent = dropdownMenu.parentNode
+        const dropdown = new Dropdown(btnDropdown, {
+          container: 'body'
+        })
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(dropdownMenu.parentNode).toEqual(document.body)
+          dropdown.hide()
+        })
+
+        btnDropdown.addEventListener('hidden.bs.dropdown', () => {
+          expect(dropdownMenu.parentNode).toEqual(originalParent)
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
+
+    it('should work with container via data attribute', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-container="body">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <a class="dropdown-item" href="#">Link</a>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const dropdownMenu = fixtureEl.querySelector('.dropdown-menu')
+        const dropdown = new Dropdown(btnDropdown)
+
+        btnDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(dropdownMenu.parentNode).toEqual(document.body)
+          resolve()
+        })
+
+        dropdown.show()
+      })
+    })
   })
 
   describe('hide', () => {

@@ -16,8 +16,8 @@ $nav-tokens: defaults(
     --nav-link-gap: .5rem,
     --nav-link-align: center,
     --nav-link-justify: center,
-    --nav-link-padding-x: 1rem,
-    --nav-link-padding-y: .5rem,
+    --nav-link-padding-x: .75rem,
+    --nav-link-padding-y: .375rem,
     --nav-link-color: var(--fg-2),
     --nav-link-hover-color: var(--fg-1),
     --nav-link-hover-bg: var(--bg-1),
@@ -97,7 +97,6 @@ $nav-underline-tokens: defaults(
 
   .nav-item {
     display: flex;
-
   }
 
   .nav-link {
@@ -109,6 +108,7 @@ $nav-underline-tokens: defaults(
     font-weight: var(--nav-link-font-weight);
     color: var(--nav-link-color);
     text-decoration: none;
+    white-space: nowrap;
     background: none;
     border: 0;
     @include border-radius(var(--border-radius));

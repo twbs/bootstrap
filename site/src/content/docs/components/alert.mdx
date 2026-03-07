@@ -20,7 +20,7 @@ Alerts are available for any length of text, as well as an optional close button
 
 Use any of our variant theme classes for color mode adaptive, contextual styling.
 
-<Example code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
+<Example class="vstack gap-3" code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
     A simple ${themeColor.name} alert—check it out!
   </div>`)} />
 
@@ -41,7 +41,7 @@ We use the following JavaScript to trigger our live alert demo:
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
-<Example code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
+<Example class="vstack gap-3" code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
     A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
   </div>`)} />
 

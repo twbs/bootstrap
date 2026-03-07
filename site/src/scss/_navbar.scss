@@ -1,7 +1,5 @@
-@use "../../../scss/config" as *;
 @use "../../../scss/colors" as *;
 @use "../../../scss/mixins" as *;
-@use "../../../scss/variables" as *;
 @use "../../../scss/layout/breakpoints" as *;
 
 :root {
@@ -54,9 +52,15 @@
       }
     }
 
+    .nav {
+      --bs-nav-link-hover-bg: transparent;
+      --bs-nav-link-active-bg: transparent;
+    }
+
     .navbar-toggler,
     .nav-link {
-      padding-inline: $spacer * .25;
+      font-size: var(--font-size-sm);
+      // padding-inline: $spacer * .25;
       // color: rgba($white, .85);
 
       // &:hover,

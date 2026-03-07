@@ -43,22 +43,22 @@ And with [vertical rules]([[docsref:/helpers/vertical-rule]]):
     <div class="p-2">Third item</div>
   </div>`} />
 
-## Examples
+## Responsive
 
-Use `.vstack` to stack buttons and other elements:
+Consider this example of stacking buttons on narrow mobile devices, and making them horizontal on larger devices.
 
 <Example code={`<div class="vstack gap-2 col-md-5 mx-auto">
     <button type="button" class="btn-solid theme-primary">Save changes</button>
     <button type="button" class="btn-outline theme-secondary">Cancel</button>
   </div>`} />
 
-Create an inline form with `.hstack`:
+Here's how you'd do it with responsive stacks, which are based on a container media queries. Wrap the stack in an extra element or add `.stack-container` to an existing parent to give the stack a "container" to adapt its layout from.
 
-<Example code={`<div class="hstack gap-3">
-    <input class="form-control me-auto" type="text" placeholder="Add your item here..." aria-label="Add your item here...">
-    <button type="button" class="btn-solid theme-secondary">Submit</button>
-    <div class="vr my-2"></div>
-    <button type="button" class="btn-subtle theme-danger">Reset</button>
+<ResizableExample code={`<div class="stack-container">
+    <div class="vstack gap-2 hstack-sm">
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
+      <button type="button" class="btn-outline theme-secondary">Cancel</button>
+    </div>
   </div>`} />
 
 ## CSS

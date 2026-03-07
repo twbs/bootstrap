@@ -165,3 +165,153 @@ Which results in:
 // Apply styles starting from medium devices and up to extra large devices
 @media (width >= 768px) and (width < 1200px) { ... }
 ```
+
+## Container queries
+
+In addition to viewport-based media queries, Bootstrap uses [container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries) for certain components. Container queries allow elements to respond to the size of a parent element rather than the viewport, enabling more flexible and modular responsive behavior.
+
+Container queries use the same breakpoint values as viewport media queries.
+
+### Usage in Bootstrap
+
+The following components use container queries:
+
+- **[Navbar]([[docsref:/components/navbar]])** — Uses container queries for its responsive expand behavior. The `.navbar` element is set as a query container, and the `.navbar-expand-*` classes use `@container` queries instead of `@media` queries. This means the navbar responds to its own width rather than the viewport width, making it more adaptable when placed in different layout contexts (e.g., within a sidebar or constrained container).
+
+- **[Stepper]([[docsref:/components/stepper]])** — The `.stepper-overflow` wrapper uses `container-type: inline-size` to establish a containment context for the horizontally scrolling stepper pattern.
+
+Here's how the navbar implements container queries:
+
+```scss
+// The navbar is defined as a query container
+.navbar {
+  container-type: inline-size;
+}
+
+// Responsive classes use container queries
+.navbar-expand-lg {
+  @container (min-width: 1024px) {
+    // Expanded navbar styles...
+  }
+}
+```
+
+### Setting a container
+
+Use the `set-container()` mixin to establish an element as a query container:
+
+```scss
+// Default: inline-size containment
+.my-component {
+  @include set-container();
+  // Output: container-type: inline-size;
+}
+
+// With explicit type
+.my-component {
+  @include set-container(size);
+  // Output: container-type: size;
+}
+
+// With a name (uses shorthand property)
+.my-component {
+  @include set-container(inline-size, sidebar);
+  // Output: container: sidebar / inline-size;
+}
+```
+
+### Container query mixins
+
+Similar to the `media-breakpoint-*` mixins for viewport-based media queries, Bootstrap provides container query mixins that use the same breakpoint values and range syntax.
+
+#### Min-width
+
+Use `container-breakpoint-up()` to apply styles when the container is at least the given breakpoint width:
+
+```scss
+.my-component {
+  @include set-container();
+}
+
+.my-component-child {
+  // …
+
+  @include container-breakpoint-up(md) {
+    // Styles for when container is at least 768px wide
+  }
+
+  @include container-breakpoint-up(lg) {
+    // Styles for when container is at least 1024px wide
+  }
+}
+```
+
+These mixins use the same modern range syntax as media queries. For example:
+
+```scss
+@container (width >= 768px) { ... }
+@container (width >= 1024px) { ... }
+```
+
+#### Max-width
+
+Use `container-breakpoint-down()` to apply styles when the container is narrower than the given breakpoint:
+
+```scss
+// Sass usage
+@include container-breakpoint-down(lg) { ... }
+
+// Compiled CSS
+@container (width < 1024px) { ... }
+```
+
+#### Single breakpoint
+
+Use `container-breakpoint-only()` to target a single breakpoint range:
+
+```scss
+// Sass usage
+@include container-breakpoint-only(md) { ... }
+
+// Compiled CSS
+@container (width >= 768px) and (width < 1024px) { ... }
+```
+
+#### Between breakpoints
+
+Use `container-breakpoint-between()` to span multiple breakpoint widths:
+
+```scss
+// Sass usage
+@include container-breakpoint-between(md, xl) { ... }
+
+// Compiled CSS
+@container (width >= 768px) and (width < 1280px) { ... }
+```
+
+### Named containers
+
+All container query mixins accept an optional container name parameter for querying a specific ancestor container. This is useful when you have nested containers:
+
+```scss
+.sidebar {
+  @include set-container(inline-size, sidebar);
+}
+
+.main-content {
+  @include set-container(inline-size, main);
+}
+
+// Query the sidebar container specifically, even if nested inside main
+.widget {
+  @include container-breakpoint-up(md, sidebar) {
+    // …
+  }
+}
+```
+
+The compiled output includes the container name:
+
+```scss
+@container sidebar (width >= 768px) { ... }
+```
