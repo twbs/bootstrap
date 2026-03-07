@@ -76,18 +76,18 @@
       margin-top: 2rem;
     }
 
-    > .form-control {
-      + .form-control {
-        margin-top: .5rem;
-      }
-    }
+    // > .form-control {
+    //   + .form-control {
+    //     margin-top: .5rem;
+    //   }
+    // }
 
-    > .nav + .nav,
-    > .alert + .alert,
-    > .navbar + .navbar,
-    > .progress + .progress {
-      margin-top: $spacer;
-    }
+    // > .nav + .nav,
+    // > .alert + .alert,
+    // > .navbar + .navbar,
+    // > .progress + .progress {
+    //   margin-top: $spacer;
+    // }
 
     > .dropdown-menu {
       max-width: 12rem;

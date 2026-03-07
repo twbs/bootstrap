@@ -8,14 +8,16 @@
 
 // mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
 
+$navbar-breakpoints: $grid-breakpoints !default;
+
 $navbar-tokens: () !default;
 
 // scss-docs-start navbar-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
 $navbar-tokens: defaults(
   (
-    --navbar-padding-x: null,
-    --navbar-padding-y: calc(var(--spacer) / 2),
+    --navbar-padding-x: 0,
+    --navbar-padding-y: .5rem,
     --navbar-color: var(--fg-2),
     --navbar-hover-color: var(--fg-1),
     --navbar-disabled-color: var(--fg-3),
@@ -31,7 +33,6 @@ $navbar-tokens: defaults(
     --navbar-toggler-padding-y: .25rem,
     --navbar-toggler-padding-x: .75rem,
     --navbar-toggler-font-size: var(--font-size-lg),
-    // --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{color-mix(in oklch, var(--body-color) 75%, transparent)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
     --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
     --navbar-toggler-border-radius: var(--border-radius),
     --navbar-toggler-transition: box-shadow .15s ease-in-out,
@@ -53,7 +54,6 @@ $navbar-dark-tokens: defaults(
     --navbar-brand-color: var(--white),
     --navbar-brand-hover-color: var(--white),
     --navbar-toggler-border-color: color-mix(in oklch, var(--white) .1, transparent),
-    // --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))},
   ),
   $navbar-dark-tokens
 );
@@ -96,7 +96,6 @@ $navbar-dark-tokens: defaults(
   // Navbar brand
   //
   // Used for brand, project, or site names.
-
   .navbar-brand {
     padding-top: var(--navbar-brand-padding-y);
     padding-bottom: var(--navbar-brand-padding-y);
@@ -113,11 +112,10 @@ $navbar-dark-tokens: defaults(
     }
   }
 
-  // Navbar nav
-  //
   // Navigation within navbars. Sets all nav-link CSS variables needed for
-  // proper styling. Can be used standalone or with `.nav` base class.
-
+  // proper styling.
+  //
+  // Relies on `.nav` base class.
   .navbar-nav {
     // scss-docs-start navbar-nav-css-vars
     // Set all nav-link variables for self-contained styling
@@ -141,8 +139,6 @@ $navbar-dark-tokens: defaults(
     list-style: none;
 
     .nav-link {
-      white-space: nowrap;
-
       &.active,
       &.show {
         color: var(--navbar-active-color);
@@ -153,7 +149,6 @@ $navbar-dark-tokens: defaults(
   // Navbar text
   //
   // For adding text or inline elements to the navbar
-
   .navbar-text {
     padding-top: var(--navbar-brand-padding-y);
     padding-bottom: var(--navbar-brand-padding-y);
@@ -166,13 +161,10 @@ $navbar-dark-tokens: defaults(
     }
   }
 
-  // Responsive navbar
-  //
   // Button for toggling the navbar when in its collapsed state
-
   .navbar-toggler {
     --btn-bg: transparent;
-    --btn-hover-bg: var(--bg-1);
+    --btn-hover-bg: var(--bg-2);
   }
 
   // scss-docs-start navbar-expand-loop
@@ -239,7 +231,7 @@ $navbar-dark-tokens: defaults(
   }
 
   // Responsive navbar expand classes using container queries
-  @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
+  @include loop-breakpoints-down($navbar-breakpoints) using ($breakpoint, $next, $infix) {
     @if $next {
       .navbar-expand#{$infix} {
         @include container-breakpoint-up($next) {
@@ -250,20 +242,7 @@ $navbar-dark-tokens: defaults(
   }
   // scss-docs-end navbar-expand-loop
 
-
-  // Navbar themes
-  //
-  // Style for dark navbar backgrounds. Use data-bs-theme="dark" for modern approach.
-
   .navbar[data-bs-theme="dark"] {
     @include tokens($navbar-dark-tokens);
   }
-
-  // @if $enable-dark-mode {
-  //   @include color-mode(dark) {
-  //     .navbar-toggler-icon {
-  //       --navbar-toggler-icon-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(255, 255, 255, .55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>"))};
-  //     }
-  //   }
-  // }
 }
