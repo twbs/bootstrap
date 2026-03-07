@@ -713,8 +713,14 @@ When you do this, we recommend including additional JavaScript to move the focus
 
 <ScssDocs name="navbar-dark-tokens" file="scss/_navbar.scss" />
 
+### Sass map
+
+We reassign the global `$grid-breakpoints` map to `$navbar-breakpoints` in `scss/_navbar.scss` and use this for our loop to generate the responsive navbar expand/collapse classes. This allows you to customize the breakpoints for navbars independently of the global breakpoints.
+
+<ScssDocs name="navbar-breakpoints" file="scss/_navbar.scss" />
+
 ### Sass loops
 
-[Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$breakpoints` map and generated through a loop in `scss/_navbar.scss`.
+[Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$navbar-breakpoints` map and generated through a loop in `scss/_navbar.scss`.
 
 <ScssDocs name="navbar-expand-loop" file="scss/_navbar.scss" />
