@@ -147,26 +147,28 @@ For example, you can create a “blue theme” with the selector `data-bs-theme=
 
 <ScssDocs name="custom-color-mode" file="site/src/scss/_content.scss" />
 
-<Example showMarkup={false} code={`<div class="bd-example text-body bg-body" data-bs-theme="blue">
-  <div class="h4">Example blue theme</div>
-  <p>Some paragraph text to show how the blue theme might look with written copy.</p>
+<Example showMarkup={false} code={`<div data-bs-theme="blue">
+    <div class="bd-example fg-body bg-body">
+      <div class="h4">Example blue theme</div>
+      <p>Some paragraph text to show how the blue theme might look with written copy.</p>
 
-  <hr class="my-4"/>
+      <hr class="my-4"/>
 
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCustom" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropdown button
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonCustom">
-      <li><a class="dropdown-item active" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-  </div>
-</div>`} />
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCustom" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonCustom">
+          <li><a class="dropdown-item active" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>`} />
 
 ```html
 <div data-bs-theme="blue">

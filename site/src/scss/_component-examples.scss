@@ -393,4 +393,18 @@
     margin-inline-end: 0;
   }
 
+
+  .bd-colors-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    min-width: 0;
+
+    @include media-breakpoint-up(md) {
+      // grid-template-columns: repeat(13, 1fr);
+    }
+
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: repeat(13, 1fr);
+    }
+  }
 }

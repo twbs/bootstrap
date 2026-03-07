@@ -1,59 +1,102 @@
 // stylelint-disable hue-degree-notation, @stylistic/number-leading-zero
 
+@use "sass:map";
+@use "functions" as *;
+@use "mixins/tokens" as *;
+
 // Easily convert colors to oklch() with https://oklch.com/
-$new-blue: oklch(60% 0.24 240) !default;
-$new-indigo: oklch(56% 0.26 288) !default;
-$new-violet: oklch(56% 0.24 300) !default;
-$new-purple: oklch(56% 0.24 320) !default;
-$new-pink: oklch(60% 0.22 4) !default;
-$new-red: oklch(60% 0.22 20) !default;
-$new-orange: oklch(70% 0.22 52) !default;
-$new-amber: oklch(79% 0.2 78) !default;
-$new-yellow: oklch(88% 0.24 88) !default;
-$new-lime: oklch(65% 0.24 135) !default;
-$new-green: oklch(64% 0.22 160) !default;
-$new-teal: oklch(68% 0.22 190) !default;
-$new-cyan: oklch(69% 0.22 220) !default;
-$new-brown: oklch(60% 0.12 54) !default;
-$new-gray: oklch(60% 0.02 245) !default;
-$new-pewter: oklch(65% 0.01 290) !default;
-
-$hues: (
-  "blue": $new-blue,
-  "indigo": $new-indigo,
-  "violet": $new-violet,
-  "purple": $new-purple,
-  "pink": $new-pink,
-  "red": $new-red,
-  "orange": $new-orange,
-  "amber": $new-amber,
-  "yellow": $new-yellow,
-  "lime": $new-lime,
-  "green": $new-green,
-  "teal": $new-teal,
-  "cyan": $new-cyan,
-  "brown": $new-brown,
-  "gray": $new-gray,
-  "pewter": $new-pewter
-) !default;
-
-:root {
-  @each $color, $hue in $hues {
-    --#{$color}-025: color-mix(in lab, #fff 94%, #{$hue});
-    --#{$color}-050: color-mix(in lab, #fff 90%, #{$hue});
-    --#{$color}-100: color-mix(in lab, #fff 80%, #{$hue});
-    --#{$color}-200: color-mix(in lab, #fff 60%, #{$hue});
-    --#{$color}-300: color-mix(in lab, #fff 40%, #{$hue});
-    --#{$color}-400: color-mix(in lab, #fff 20%, #{$hue});
-    --#{$color}-500: #{$hue};
-    --#{$color}-600: color-mix(in lab, #000 16%, #{$hue});
-    --#{$color}-700: color-mix(in lab, #000 32%, #{$hue});
-    --#{$color}-800: color-mix(in lab, #000 48%, #{$hue});
-    --#{$color}-900: color-mix(in lab, #000 64%, #{$hue});
-    --#{$color}-950: color-mix(in lab, #000 76%, #{$hue});
-    --#{$color}-975: color-mix(in lab, #000 88%, #{$hue});
-  }
-}
 
 $white: #fff !default;
 $black: #000 !default;
+
+// scss-docs-start colors-list
+$blue: oklch(60% 0.24 240) !default;
+$indigo: oklch(56% 0.26 288) !default;
+$violet: oklch(56% 0.24 300) !default;
+$purple: oklch(56% 0.24 320) !default;
+$pink: oklch(60% 0.22 4) !default;
+$red: oklch(60% 0.22 20) !default;
+$orange: oklch(70% 0.22 52) !default;
+$amber: oklch(79% 0.2 78) !default;
+$yellow: oklch(88% 0.24 88) !default;
+$lime: oklch(65% 0.24 135) !default;
+$green: oklch(64% 0.22 160) !default;
+$teal: oklch(68% 0.22 190) !default;
+$cyan: oklch(69% 0.22 220) !default;
+$brown: oklch(60% 0.12 54) !default;
+$gray: oklch(60% 0.02 245) !default;
+$pewter: oklch(65% 0.01 290) !default;
+// scss-docs-end colors-list
+
+// scss-docs-start colors-map
+$colors: () !default;
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: defaults(
+  (
+    "blue": $blue,
+    "indigo": $indigo,
+    "violet": $violet,
+    "purple": $purple,
+    "pink": $pink,
+    "red": $red,
+    "orange": $orange,
+    "amber": $amber,
+    "yellow": $yellow,
+    "lime": $lime,
+    "green": $green,
+    "teal": $teal,
+    "cyan": $cyan,
+    "brown": $brown,
+    "gray": $gray,
+    "pewter": $pewter,
+  ),
+  $colors
+);
+// scss-docs-end colors-map
+
+// scss-docs-start color-mix-options
+$color-mix-space: lab !default;
+$tint-color: $white !default;
+$shade-color: $black !default;
+
+$color-tints: (
+  "025": 94%,
+  "050": 90%,
+  "100": 80%,
+  "200": 60%,
+  "300": 40%,
+  "400": 20%,
+) !default;
+
+$color-shades: (
+  "600": 16%,
+  "700": 32%,
+  "800": 48%,
+  "900": 64%,
+  "950": 76%,
+  "975": 88%,
+) !default;
+// scss-docs-end color-mix-options
+
+// scss-docs-start color-tokens
+$color-tokens: () !default;
+
+$-color-defaults: () !default;
+@each $color, $value in $colors {
+  @each $stop, $percent in $color-tints {
+    $-color-defaults: map.set($-color-defaults, --#{$color}-#{$stop}, color-mix(in #{$color-mix-space}, #{$tint-color} #{$percent}, #{$value}));
+  }
+  $-color-defaults: map.set($-color-defaults, --#{$color}-500, #{$value});
+  @each $stop, $percent in $color-shades {
+    $-color-defaults: map.set($-color-defaults, --#{$color}-#{$stop}, color-mix(in #{$color-mix-space}, #{$shade-color} #{$percent}, #{$value}));
+  }
+}
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$color-tokens: defaults($-color-defaults, $color-tokens);
+// scss-docs-end color-tokens
+
+:root {
+  @include tokens($color-tokens);
+}
