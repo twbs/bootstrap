@@ -119,9 +119,13 @@
         - title: List group
     - group: Interactions
       pages:
+        - title: Accordion
         - title: Carousel
         - title: Collapse
         - title: Toggler
+    - group: Miscellaneous
+      pages:
+        - title: Avatar
 
 - title: Helpers
   icon: magic
