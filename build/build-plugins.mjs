@@ -22,26 +22,15 @@ const jsFiles = await globby(`${sourcePath}/**/*.js`)
 // Array which holds the resolved plugins
 const resolvedPlugins = []
 
-// Trims the "js" extension and uppercases => first letter, hyphens, backslashes & slashes
-const filenameToEntity = filename => filename.replace('.js', '')
-  .replace(/(?:^|-|\/|\\)[a-z]/g, str => str.slice(-1).toUpperCase())
-
 for (const file of jsFiles) {
   resolvedPlugins.push({
     src: file,
     dist: file.replace('src', 'dist'),
-    fileName: path.basename(file),
-    className: filenameToEntity(path.basename(file))
-    // safeClassName: filenameToEntity(path.relative(sourcePath, file))
+    fileName: path.basename(file)
   })
 }
 
 const build = async plugin => {
-  /**
-   * @type {import('rollup').GlobalsOption}
-   */
-  const globals = {}
-
   const bundle = await rollup({
     input: plugin.src,
     plugins: [
@@ -52,45 +41,21 @@ const build = async plugin => {
         babelHelpers: 'bundled'
       })
     ],
-    external(source) {
-      // Pattern to identify local files
-      const pattern = /^(\.{1,2})\//
-
-      // It's not a local file, e.g a Node.js package
-      if (!pattern.test(source)) {
-        globals[source] = source
-        return true
-      }
-
-      const usedPlugin = resolvedPlugins.find(plugin => {
-        return plugin.src.includes(source.replace(pattern, ''))
-      })
-
-      if (!usedPlugin) {
-        throw new Error(`Source ${source} is not mapped!`)
-      }
-
-      // We can change `Index` with `UtilIndex` etc if we use
-      // `safeClassName` instead of `className` everywhere
-      globals[path.normalize(usedPlugin.src)] = usedPlugin.className
-      return true
-    }
+    external: () => true
   })
 
   await bundle.write({
     banner: banner(plugin.fileName),
-    format: 'umd',
-    name: plugin.className,
+    format: 'esm',
     sourcemap: true,
-    globals,
     generatedCode: 'es2015',
     file: plugin.dist
   })
 
-  console.log(`Built ${plugin.className}`)
+  console.log(`Built ${plugin.fileName}`)
 }
 
-(async () => {
+;(async () => {
   try {
     const basename = path.basename(__filename)
     const timeLabel = `[${basename}] finished`

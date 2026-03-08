@@ -10,7 +10,7 @@ module.exports = {
   // spec_files: ['**/*.{test,spec}.scss'],
   spec_files: ['**/_utilities.test.scss', '**/modules/_configuration.test.scss', '**/modules/_root-tokens.test.scss'],
   // Compile them into JS scripts running `sass-true`
-  requires: [path.join(__dirname, 'sass-true/register')],
+  requires: [path.join(__dirname, 'sass-true/register.cjs')],
   // Ensure we use `require` so that the require.extensions works
   // as `import` completely bypasses it
   jsLoader: 'require'
