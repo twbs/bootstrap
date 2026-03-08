@@ -81,6 +81,7 @@
 }
 
 @mixin generate-utility($utility, $infix: "") {
+  // Validate required keys
   @if not map.has-key($utility, property) {
     @error "Utility is missing required `property` key: #{$utility}";
   }
@@ -88,13 +89,31 @@
     @error "Utility is missing required `values` key: #{$utility}";
   }
 
+  // Warn on unknown keys (likely typos)
+  $valid-keys: property, values, class, selector, responsive, print, important, state, variables;
+  @each $key in map.keys($utility) {
+    @if not list.index($valid-keys, $key) {
+      @warn "Unknown utility key `#{$key}` found. Valid keys are: #{$valid-keys}";
+    }
+  }
+
   // Determine if we're generating a class, or an attribute selector
   $selectorType: "class";
   @if map.has-key($utility, selector) {
     $selectorType: map.get($utility, selector);
+    // Validate selector type
+    $valid-selectors: "class", "attr-starts", "attr-includes";
+    @if not list.index($valid-selectors, $selectorType) {
+      @error "Invalid `selector` value `#{$selectorType}`. Must be one of: #{$valid-selectors}";
+    }
   }
   // Then get the class name to use in a class (e.g., .class) or in a attribute selector (e.g., [class^="class"])
   $selectorClass: map.get($utility, class);
+
+  // Attribute selectors require a `class` key
+  @if $selectorType != "class" and not map.has-key($utility, class) {
+    @error "Utility with `selector: #{$selectorType}` requires a `class` key.";
+  }
 
   // Get the list or map of values and ensure it's a map
   $values: map.get($utility, values);
