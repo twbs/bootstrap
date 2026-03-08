@@ -81,6 +81,13 @@
 }
 
 @mixin generate-utility($utility, $infix: "") {
+  @if not map.has-key($utility, property) {
+    @error "Utility is missing required `property` key: #{$utility}";
+  }
+  @if not map.has-key($utility, values) {
+    @error "Utility is missing required `values` key: #{$utility}";
+  }
+
   // Determine if we're generating a class, or an attribute selector
   $selectorType: "class";
   @if map.has-key($utility, selector) {
