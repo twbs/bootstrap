@@ -75,11 +75,13 @@
   const Default = {
     autoClose: true,
     boundary: 'clippingParents',
+    container: false,
     display: 'dynamic',
     offset: [0, 2],
     floatingConfig: null,
     placement: DEFAULT_PLACEMENT,
     reference: 'toggle',
+    strategy: 'absolute',
     // Submenu options
     submenuTrigger: 'both',
     // 'click', 'hover', or 'both'
@@ -88,11 +90,13 @@
   const DefaultType = {
     autoClose: '(boolean|string)',
     boundary: '(string|element)',
+    container: '(string|element|boolean)',
     display: 'string',
     offset: '(array|string|function)',
     floatingConfig: '(null|object|function)',
     placement: 'string',
     reference: '(string|element|object)',
+    strategy: 'string',
     submenuTrigger: 'string',
     submenuDelay: 'number'
   };
@@ -118,6 +122,9 @@
 
       // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
       this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine.findOne(SELECTOR_MENU, this._parent);
+
+      // Store original menu parent for container option
+      this._menuOriginalParent = this._menu?.parentNode;
 
       // Parse responsive placements on init
       this._parseResponsivePlacements();
@@ -152,6 +159,9 @@
       if (showEvent.defaultPrevented) {
         return;
       }
+
+      // Move menu to container if specified (to escape overflow clipping)
+      this._moveMenuToContainer();
       this._createFloating();
 
       // If this is a touch-enabled device we add extra
@@ -181,6 +191,7 @@
     }
     dispose() {
       this._disposeFloating();
+      this._restoreMenuToOriginalParent();
       this._disposeMediaQueryListeners();
       this._closeAllSubmenus();
       this._clearAllSubmenuTimeouts();
@@ -210,6 +221,9 @@
         }
       }
       this._disposeFloating();
+
+      // Restore menu to original parent if it was moved
+      this._restoreMenuToOriginalParent();
       this._menu.classList.remove(CLASS_NAME_SHOW);
       this._element.classList.remove(CLASS_NAME_SHOW);
       this._parent.classList.remove(CLASS_NAME_SHOW);
@@ -264,7 +278,7 @@
       const placement = this._getPlacement();
       const middleware = this._getFloatingMiddleware();
       const floatingConfig = this._getFloatingConfig(placement, middleware);
-      await this._applyFloatingPosition(referenceElement, this._menu, floatingConfig.placement, floatingConfig.middleware);
+      await this._applyFloatingPosition(referenceElement, this._menu, floatingConfig.placement, floatingConfig.middleware, floatingConfig.strategy);
     }
     _isShown() {
       return this._menu.classList.contains(CLASS_NAME_SHOW);
@@ -360,7 +374,8 @@
     _getFloatingConfig(placement, middleware) {
       const defaultConfig = {
         placement,
-        middleware
+        middleware,
+        strategy: this._config.strategy
       };
       return {
         ...defaultConfig,
@@ -373,9 +388,39 @@
         this._floatingCleanup = null;
       }
     }
+    _getContainer() {
+      const {
+        container
+      } = this._config;
+      if (container === false) {
+        return null;
+      }
+      return container === true ? document.body : index_js.getElement(container);
+    }
+    _moveMenuToContainer() {
+      const container = this._getContainer();
+      if (!container || !this._menu) {
+        return;
+      }
+
+      // Only move if not already in the container
+      if (this._menu.parentNode !== container) {
+        container.append(this._menu);
+      }
+    }
+    _restoreMenuToOriginalParent() {
+      if (!this._menuOriginalParent || !this._menu) {
+        return;
+      }
+
+      // Only restore if menu was moved
+      if (this._menu.parentNode !== this._menuOriginalParent) {
+        this._menuOriginalParent.append(this._menu);
+      }
+    }
 
     // Shared helper for positioning any floating element
-    async _applyFloatingPosition(reference, floating, placement, middleware) {
+    async _applyFloatingPosition(reference, floating, placement, middleware, strategy = 'absolute') {
       if (!floating.isConnected) {
         return null;
       }
@@ -385,13 +430,14 @@
         placement: finalPlacement
       } = await dom.computePosition(reference, floating, {
         placement,
-        middleware
+        middleware,
+        strategy
       });
       if (!floating.isConnected) {
         return null;
       }
       Object.assign(floating.style, {
-        position: 'absolute',
+        position: strategy,
         left: `${x}px`,
         top: `${y}px`,
         margin: '0'

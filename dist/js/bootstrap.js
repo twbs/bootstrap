@@ -794,11 +794,11 @@
    * Constants
    */
 
-  const NAME$j = 'alert';
-  const DATA_KEY$e = 'bs.alert';
-  const EVENT_KEY$f = `.${DATA_KEY$e}`;
-  const EVENT_CLOSE = `close${EVENT_KEY$f}`;
-  const EVENT_CLOSED = `closed${EVENT_KEY$f}`;
+  const NAME$k = 'alert';
+  const DATA_KEY$f = 'bs.alert';
+  const EVENT_KEY$g = `.${DATA_KEY$f}`;
+  const EVENT_CLOSE = `close${EVENT_KEY$g}`;
+  const EVENT_CLOSED = `closed${EVENT_KEY$g}`;
   const CLASS_NAME_FADE$4 = 'fade';
   const CLASS_NAME_SHOW$7 = 'show';
 
@@ -809,7 +809,7 @@
   class Alert extends BaseComponent {
     // Getters
     static get NAME() {
-      return NAME$j;
+      return NAME$k;
     }
 
     // Public
@@ -849,13 +849,13 @@
    * Constants
    */
 
-  const NAME$i = 'button';
-  const DATA_KEY$d = 'bs.button';
-  const EVENT_KEY$e = `.${DATA_KEY$d}`;
+  const NAME$j = 'button';
+  const DATA_KEY$e = 'bs.button';
+  const EVENT_KEY$f = `.${DATA_KEY$e}`;
   const DATA_API_KEY$9 = '.data-api';
   const CLASS_NAME_ACTIVE$3 = 'active';
   const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="button"]';
-  const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
+  const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$f}${DATA_API_KEY$9}`;
 
   /**
    * Class definition
@@ -864,7 +864,7 @@
   class Button extends BaseComponent {
     // Getters
     static get NAME() {
-      return NAME$i;
+      return NAME$j;
     }
 
     // Public
@@ -897,23 +897,23 @@
    * Constants
    */
 
-  const NAME$h = 'swipe';
-  const EVENT_KEY$d = '.bs.swipe';
-  const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$d}`;
-  const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$d}`;
-  const EVENT_TOUCHEND = `touchend${EVENT_KEY$d}`;
-  const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$d}`;
-  const EVENT_POINTERUP = `pointerup${EVENT_KEY$d}`;
+  const NAME$i = 'swipe';
+  const EVENT_KEY$e = '.bs.swipe';
+  const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$e}`;
+  const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$e}`;
+  const EVENT_TOUCHEND = `touchend${EVENT_KEY$e}`;
+  const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$e}`;
+  const EVENT_POINTERUP = `pointerup${EVENT_KEY$e}`;
   const POINTER_TYPE_TOUCH = 'touch';
   const POINTER_TYPE_PEN = 'pen';
   const CLASS_NAME_POINTER_EVENT = 'pointer-event';
   const SWIPE_THRESHOLD = 40;
-  const Default$g = {
+  const Default$h = {
     endCallback: null,
     leftCallback: null,
     rightCallback: null
   };
-  const DefaultType$g = {
+  const DefaultType$h = {
     endCallback: '(function|null)',
     leftCallback: '(function|null)',
     rightCallback: '(function|null)'
@@ -938,18 +938,18 @@
 
     // Getters
     static get Default() {
-      return Default$g;
+      return Default$h;
     }
     static get DefaultType() {
-      return DefaultType$g;
+      return DefaultType$h;
     }
     static get NAME() {
-      return NAME$h;
+      return NAME$i;
     }
 
     // Public
     dispose() {
-      EventHandler.off(this._element, EVENT_KEY$d);
+      EventHandler.off(this._element, EVENT_KEY$e);
     }
 
     // Private
@@ -1017,9 +1017,9 @@
    * Constants
    */
 
-  const NAME$g = 'carousel';
-  const DATA_KEY$c = 'bs.carousel';
-  const EVENT_KEY$c = `.${DATA_KEY$c}`;
+  const NAME$h = 'carousel';
+  const DATA_KEY$d = 'bs.carousel';
+  const EVENT_KEY$d = `.${DATA_KEY$d}`;
   const DATA_API_KEY$8 = '.data-api';
   const ARROW_LEFT_KEY$2 = 'ArrowLeft';
   const ARROW_RIGHT_KEY$2 = 'ArrowRight';
@@ -1029,14 +1029,14 @@
   const ORDER_PREV = 'prev';
   const DIRECTION_LEFT = 'left';
   const DIRECTION_RIGHT = 'right';
-  const EVENT_SLIDE = `slide${EVENT_KEY$c}`;
-  const EVENT_SLID = `slid${EVENT_KEY$c}`;
-  const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$c}`;
-  const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$c}`;
-  const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$c}`;
-  const EVENT_DRAG_START = `dragstart${EVENT_KEY$c}`;
-  const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$c}${DATA_API_KEY$8}`;
-  const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$c}${DATA_API_KEY$8}`;
+  const EVENT_SLIDE = `slide${EVENT_KEY$d}`;
+  const EVENT_SLID = `slid${EVENT_KEY$d}`;
+  const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$d}`;
+  const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$d}`;
+  const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$d}`;
+  const EVENT_DRAG_START = `dragstart${EVENT_KEY$d}`;
+  const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$d}${DATA_API_KEY$8}`;
+  const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
   const CLASS_NAME_CAROUSEL = 'carousel';
   const CLASS_NAME_ACTIVE$2 = 'active';
   const CLASS_NAME_SLIDE = 'slide';
@@ -1055,7 +1055,7 @@
     [ARROW_LEFT_KEY$2]: DIRECTION_RIGHT,
     [ARROW_RIGHT_KEY$2]: DIRECTION_LEFT
   };
-  const Default$f = {
+  const Default$g = {
     interval: 5000,
     keyboard: true,
     pause: 'hover',
@@ -1063,7 +1063,7 @@
     touch: true,
     wrap: true
   };
-  const DefaultType$f = {
+  const DefaultType$g = {
     interval: 'number',
     keyboard: 'boolean',
     pause: '(string|boolean)',
@@ -1093,13 +1093,13 @@
 
     // Getters
     static get Default() {
-      return Default$f;
+      return Default$g;
     }
     static get DefaultType() {
-      return DefaultType$f;
+      return DefaultType$g;
     }
     static get NAME() {
-      return NAME$g;
+      return NAME$h;
     }
 
     // Public
@@ -1364,15 +1364,15 @@
    * Constants
    */
 
-  const NAME$f = 'collapse';
-  const DATA_KEY$b = 'bs.collapse';
-  const EVENT_KEY$b = `.${DATA_KEY$b}`;
+  const NAME$g = 'collapse';
+  const DATA_KEY$c = 'bs.collapse';
+  const EVENT_KEY$c = `.${DATA_KEY$c}`;
   const DATA_API_KEY$7 = '.data-api';
-  const EVENT_SHOW$7 = `show${EVENT_KEY$b}`;
-  const EVENT_SHOWN$7 = `shown${EVENT_KEY$b}`;
-  const EVENT_HIDE$7 = `hide${EVENT_KEY$b}`;
-  const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$b}`;
-  const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$b}${DATA_API_KEY$7}`;
+  const EVENT_SHOW$7 = `show${EVENT_KEY$c}`;
+  const EVENT_SHOWN$7 = `shown${EVENT_KEY$c}`;
+  const EVENT_HIDE$7 = `hide${EVENT_KEY$c}`;
+  const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$c}`;
+  const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
   const CLASS_NAME_SHOW$6 = 'show';
   const CLASS_NAME_COLLAPSE = 'collapse';
   const CLASS_NAME_COLLAPSING = 'collapsing';
@@ -1383,11 +1383,11 @@
   const HEIGHT = 'height';
   const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
   const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="collapse"]';
-  const Default$e = {
+  const Default$f = {
     parent: null,
     toggle: true
   };
-  const DefaultType$e = {
+  const DefaultType$f = {
     parent: '(null|element)',
     toggle: 'boolean'
   };
@@ -1420,13 +1420,13 @@
 
     // Getters
     static get Default() {
-      return Default$e;
+      return Default$f;
     }
     static get DefaultType() {
-      return DefaultType$e;
+      return DefaultType$f;
     }
     static get NAME() {
-      return NAME$f;
+      return NAME$g;
     }
 
     // Public
@@ -1575,21 +1575,21 @@
    * Constants
    */
 
-  const NAME$e = 'datepicker';
-  const DATA_KEY$a = 'bs.datepicker';
-  const EVENT_KEY$a = `.${DATA_KEY$a}`;
+  const NAME$f = 'datepicker';
+  const DATA_KEY$b = 'bs.datepicker';
+  const EVENT_KEY$b = `.${DATA_KEY$b}`;
   const DATA_API_KEY$6 = '.data-api';
-  const EVENT_CHANGE = `change${EVENT_KEY$a}`;
-  const EVENT_SHOW$6 = `show${EVENT_KEY$a}`;
-  const EVENT_SHOWN$6 = `shown${EVENT_KEY$a}`;
-  const EVENT_HIDE$6 = `hide${EVENT_KEY$a}`;
-  const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$a}`;
-  const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
-  const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$a}${DATA_API_KEY$6}`;
+  const EVENT_CHANGE = `change${EVENT_KEY$b}`;
+  const EVENT_SHOW$6 = `show${EVENT_KEY$b}`;
+  const EVENT_SHOWN$6 = `shown${EVENT_KEY$b}`;
+  const EVENT_HIDE$6 = `hide${EVENT_KEY$b}`;
+  const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$b}`;
+  const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$b}${DATA_API_KEY$6}`;
+  const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$b}${DATA_API_KEY$6}`;
   const SELECTOR_DATA_TOGGLE$7 = '[data-bs-toggle="datepicker"]';
   const HIDE_DELAY = 100; // ms delay before hiding after selection
 
-  const Default$d = {
+  const Default$e = {
     datepickerTheme: null,
     // 'light', 'dark', 'auto' - explicit theme for datepicker popover only
     dateMin: null,
@@ -1614,7 +1614,7 @@
     // 'left', 'center', 'right', 'auto'
     vcpOptions: {} // Pass-through for any VCP option
   };
-  const DefaultType$d = {
+  const DefaultType$e = {
     datepickerTheme: '(null|string)',
     dateMin: '(null|string|number|object)',
     dateMax: '(null|string|number|object)',
@@ -1645,13 +1645,13 @@
 
     // Getters
     static get Default() {
-      return Default$d;
+      return Default$e;
     }
     static get DefaultType() {
-      return DefaultType$d;
+      return DefaultType$e;
     }
     static get NAME() {
-      return NAME$e;
+      return NAME$f;
     }
 
     // Public
@@ -1985,7 +1985,7 @@
   });
 
   // Auto-initialize inline datepickers on DOMContentLoaded
-  EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$a}${DATA_API_KEY$6}`, () => {
+  EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$b}${DATA_API_KEY$6}`, () => {
     for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE$7}[data-bs-inline="true"]`)) {
       Datepicker.getOrCreateInstance(element);
     }
@@ -2003,29 +2003,29 @@
    * Constants
    */
 
-  const NAME$d = 'dialog';
-  const DATA_KEY$9 = 'bs.dialog';
-  const EVENT_KEY$9 = `.${DATA_KEY$9}`;
+  const NAME$e = 'dialog';
+  const DATA_KEY$a = 'bs.dialog';
+  const EVENT_KEY$a = `.${DATA_KEY$a}`;
   const DATA_API_KEY$5 = '.data-api';
-  const EVENT_SHOW$5 = `show${EVENT_KEY$9}`;
-  const EVENT_SHOWN$5 = `shown${EVENT_KEY$9}`;
-  const EVENT_HIDE$5 = `hide${EVENT_KEY$9}`;
-  const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$9}`;
-  const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$9}`;
-  const EVENT_CANCEL = `cancel${EVENT_KEY$9}`;
-  const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$9}${DATA_API_KEY$5}`;
+  const EVENT_SHOW$5 = `show${EVENT_KEY$a}`;
+  const EVENT_SHOWN$5 = `shown${EVENT_KEY$a}`;
+  const EVENT_HIDE$5 = `hide${EVENT_KEY$a}`;
+  const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$a}`;
+  const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$a}`;
+  const EVENT_CANCEL = `cancel${EVENT_KEY$a}`;
+  const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$a}${DATA_API_KEY$5}`;
   const CLASS_NAME_STATIC = 'dialog-static';
   const CLASS_NAME_OPEN = 'dialog-open';
   const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
   const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="dialog"]';
   const SELECTOR_OPEN_MODAL_DIALOG = 'dialog.dialog[open]:not(.dialog-nonmodal)';
-  const Default$c = {
+  const Default$d = {
     backdrop: true,
     // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
     keyboard: true,
     modal: true // true uses showModal(), false uses show() for non-modal dialogs
   };
-  const DefaultType$c = {
+  const DefaultType$d = {
     backdrop: '(boolean|string)',
     keyboard: 'boolean',
     modal: 'boolean'
@@ -2044,13 +2044,13 @@
 
     // Getters
     static get Default() {
-      return Default$c;
+      return Default$d;
     }
     static get DefaultType() {
-      return DefaultType$c;
+      return DefaultType$d;
     }
     static get NAME() {
-      return NAME$d;
+      return NAME$e;
     }
 
     // Public
@@ -2097,7 +2097,7 @@
       this._queueCallback(() => this._hideDialog(), this._element, this._isAnimated());
     }
     dispose() {
-      EventHandler.off(this._element, EVENT_KEY$9);
+      EventHandler.off(this._element, EVENT_KEY$a);
       super.dispose();
     }
     handleUpdate() {
@@ -2347,9 +2347,9 @@
    * Constants
    */
 
-  const NAME$c = 'dropdown';
-  const DATA_KEY$8 = 'bs.dropdown';
-  const EVENT_KEY$8 = `.${DATA_KEY$8}`;
+  const NAME$d = 'dropdown';
+  const DATA_KEY$9 = 'bs.dropdown';
+  const EVENT_KEY$9 = `.${DATA_KEY$9}`;
   const DATA_API_KEY$4 = '.data-api';
   const ESCAPE_KEY$1 = 'Escape';
   const TAB_KEY$1 = 'Tab';
@@ -2365,13 +2365,13 @@
 
   // Hover intent delay (ms) - grace period before closing submenu
   const SUBMENU_CLOSE_DELAY = 100;
-  const EVENT_HIDE$4 = `hide${EVENT_KEY$8}`;
-  const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$8}`;
-  const EVENT_SHOW$4 = `show${EVENT_KEY$8}`;
-  const EVENT_SHOWN$4 = `shown${EVENT_KEY$8}`;
-  const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$8}${DATA_API_KEY$4}`;
-  const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$8}${DATA_API_KEY$4}`;
-  const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$8}${DATA_API_KEY$4}`;
+  const EVENT_HIDE$4 = `hide${EVENT_KEY$9}`;
+  const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$9}`;
+  const EVENT_SHOW$4 = `show${EVENT_KEY$9}`;
+  const EVENT_SHOWN$4 = `shown${EVENT_KEY$9}`;
+  const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$9}${DATA_API_KEY$4}`;
+  const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$9}${DATA_API_KEY$4}`;
+  const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$9}${DATA_API_KEY$4}`;
   const CLASS_NAME_SHOW$5 = 'show';
   const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)';
   const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE$5}.${CLASS_NAME_SHOW$5}`;
@@ -2398,27 +2398,31 @@
 
   // Helper for barycentric coordinate calculation (point in triangle check)
   const triangleSign = (p1, p2, p3) => (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
-  const Default$b = {
+  const Default$c = {
     autoClose: true,
     boundary: 'clippingParents',
+    container: false,
     display: 'dynamic',
     offset: [0, 2],
     floatingConfig: null,
     placement: DEFAULT_PLACEMENT,
     reference: 'toggle',
+    strategy: 'absolute',
     // Submenu options
     submenuTrigger: 'both',
     // 'click', 'hover', or 'both'
     submenuDelay: SUBMENU_CLOSE_DELAY
   };
-  const DefaultType$b = {
+  const DefaultType$c = {
     autoClose: '(boolean|string)',
     boundary: '(string|element)',
+    container: '(string|element|boolean)',
     display: 'string',
     offset: '(array|string|function)',
     floatingConfig: '(null|object|function)',
     placement: 'string',
     reference: '(string|element|object)',
+    strategy: 'string',
     submenuTrigger: 'string',
     submenuDelay: 'number'
   };
@@ -2445,6 +2449,9 @@
       // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
       this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine.findOne(SELECTOR_MENU, this._parent);
 
+      // Store original menu parent for container option
+      this._menuOriginalParent = this._menu?.parentNode;
+
       // Parse responsive placements on init
       this._parseResponsivePlacements();
 
@@ -2454,13 +2461,13 @@
 
     // Getters
     static get Default() {
-      return Default$b;
+      return Default$c;
     }
     static get DefaultType() {
-      return DefaultType$b;
+      return DefaultType$c;
     }
     static get NAME() {
-      return NAME$c;
+      return NAME$d;
     }
 
     // Public
@@ -2478,6 +2485,9 @@
       if (showEvent.defaultPrevented) {
         return;
       }
+
+      // Move menu to container if specified (to escape overflow clipping)
+      this._moveMenuToContainer();
       this._createFloating();
 
       // If this is a touch-enabled device we add extra
@@ -2507,6 +2517,7 @@
     }
     dispose() {
       this._disposeFloating();
+      this._restoreMenuToOriginalParent();
       this._disposeMediaQueryListeners();
       this._closeAllSubmenus();
       this._clearAllSubmenuTimeouts();
@@ -2536,6 +2547,9 @@
         }
       }
       this._disposeFloating();
+
+      // Restore menu to original parent if it was moved
+      this._restoreMenuToOriginalParent();
       this._menu.classList.remove(CLASS_NAME_SHOW$5);
       this._element.classList.remove(CLASS_NAME_SHOW$5);
       this._parent.classList.remove(CLASS_NAME_SHOW$5);
@@ -2548,7 +2562,7 @@
       config = super._getConfig(config);
       if (typeof config.reference === 'object' && !isElement(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
         // Floating UI virtual elements require a getBoundingClientRect method
-        throw new TypeError(`${NAME$c.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
+        throw new TypeError(`${NAME$d.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
       }
       return config;
     }
@@ -2590,7 +2604,7 @@
       const placement = this._getPlacement();
       const middleware = this._getFloatingMiddleware();
       const floatingConfig = this._getFloatingConfig(placement, middleware);
-      await this._applyFloatingPosition(referenceElement, this._menu, floatingConfig.placement, floatingConfig.middleware);
+      await this._applyFloatingPosition(referenceElement, this._menu, floatingConfig.placement, floatingConfig.middleware, floatingConfig.strategy);
     }
     _isShown() {
       return this._menu.classList.contains(CLASS_NAME_SHOW$5);
@@ -2686,7 +2700,8 @@
     _getFloatingConfig(placement, middleware) {
       const defaultConfig = {
         placement,
-        middleware
+        middleware,
+        strategy: this._config.strategy
       };
       return {
         ...defaultConfig,
@@ -2699,9 +2714,39 @@
         this._floatingCleanup = null;
       }
     }
+    _getContainer() {
+      const {
+        container
+      } = this._config;
+      if (container === false) {
+        return null;
+      }
+      return container === true ? document.body : getElement(container);
+    }
+    _moveMenuToContainer() {
+      const container = this._getContainer();
+      if (!container || !this._menu) {
+        return;
+      }
+
+      // Only move if not already in the container
+      if (this._menu.parentNode !== container) {
+        container.append(this._menu);
+      }
+    }
+    _restoreMenuToOriginalParent() {
+      if (!this._menuOriginalParent || !this._menu) {
+        return;
+      }
+
+      // Only restore if menu was moved
+      if (this._menu.parentNode !== this._menuOriginalParent) {
+        this._menuOriginalParent.append(this._menu);
+      }
+    }
 
     // Shared helper for positioning any floating element
-    async _applyFloatingPosition(reference, floating, placement, middleware) {
+    async _applyFloatingPosition(reference, floating, placement, middleware, strategy = 'absolute') {
       if (!floating.isConnected) {
         return null;
       }
@@ -2711,13 +2756,14 @@
         placement: finalPlacement
       } = await dom.computePosition(reference, floating, {
         placement,
-        middleware
+        middleware,
+        strategy
       });
       if (!floating.isConnected) {
         return null;
       }
       Object.assign(floating.style, {
-        position: 'absolute',
+        position: strategy,
         left: `${x}px`,
         top: `${y}px`,
         margin: '0'
@@ -3183,6 +3229,256 @@
   EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, function (event) {
     event.preventDefault();
     Dropdown.getOrCreateInstance(this).toggle();
+  });
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap nav-overflow.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+
+  /**
+   * Constants
+   */
+
+  const NAME$c = 'navoverflow';
+  const DATA_KEY$8 = 'bs.navoverflow';
+  const EVENT_KEY$8 = `.${DATA_KEY$8}`;
+  const EVENT_UPDATE = `update${EVENT_KEY$8}`;
+  const EVENT_OVERFLOW = `overflow${EVENT_KEY$8}`;
+  const CLASS_NAME_OVERFLOW = 'nav-overflow';
+  const CLASS_NAME_OVERFLOW_MENU = 'nav-overflow-menu';
+  const CLASS_NAME_HIDDEN = 'd-none';
+  const SELECTOR_NAV_ITEM = '.nav-item';
+  const SELECTOR_NAV_LINK = '.nav-link';
+  const SELECTOR_OVERFLOW_TOGGLE = '.nav-overflow-toggle';
+  const SELECTOR_OVERFLOW_MENU = '.nav-overflow-menu';
+  const CLASS_NAME_KEEP = 'nav-overflow-keep';
+  const Default$b = {
+    moreText: 'More',
+    moreIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>',
+    threshold: 0 // Minimum items to keep visible before showing overflow
+  };
+  const DefaultType$b = {
+    moreText: 'string',
+    moreIcon: 'string',
+    threshold: 'number'
+  };
+
+  /**
+   * Class definition
+   */
+
+  class NavOverflow extends BaseComponent {
+    constructor(element, config) {
+      super(element, config);
+      this._items = [];
+      this._overflowItems = [];
+      this._overflowMenu = null;
+      this._overflowToggle = null;
+      this._resizeObserver = null;
+      this._isInitialized = false;
+      this._init();
+    }
+
+    // Getters
+    static get Default() {
+      return Default$b;
+    }
+    static get DefaultType() {
+      return DefaultType$b;
+    }
+    static get NAME() {
+      return NAME$c;
+    }
+
+    // Public
+    update() {
+      this._calculateOverflow();
+      EventHandler.trigger(this._element, EVENT_UPDATE);
+    }
+    dispose() {
+      if (this._resizeObserver) {
+        this._resizeObserver.disconnect();
+      }
+
+      // Move items back to original positions
+      this._restoreItems();
+
+      // Remove overflow menu
+      if (this._overflowToggle && this._overflowToggle.parentElement) {
+        this._overflowToggle.parentElement.remove();
+      }
+      super.dispose();
+    }
+
+    // Private
+    _init() {
+      // Add overflow class to nav
+      this._element.classList.add(CLASS_NAME_OVERFLOW);
+
+      // Get all nav items
+      this._items = [...SelectorEngine.find(SELECTOR_NAV_ITEM, this._element)];
+
+      // Store original order data
+      for (const [index, item] of this._items.entries()) {
+        item.dataset.bsNavOrder = index;
+      }
+
+      // Create overflow dropdown if it doesn't exist
+      this._createOverflowMenu();
+
+      // Setup resize observer
+      this._setupResizeObserver();
+
+      // Initial calculation
+      this._calculateOverflow();
+      this._isInitialized = true;
+    }
+    _createOverflowMenu() {
+      // Check if overflow menu already exists
+      this._overflowToggle = SelectorEngine.findOne(SELECTOR_OVERFLOW_TOGGLE, this._element);
+      if (this._overflowToggle) {
+        this._overflowMenu = SelectorEngine.findOne(SELECTOR_OVERFLOW_MENU, this._element);
+        return;
+      }
+
+      // Create the overflow dropdown item
+      const overflowItem = document.createElement('li');
+      overflowItem.className = 'nav-item nav-overflow-item dropdown';
+      overflowItem.innerHTML = `
+      <button class="nav-link nav-overflow-toggle dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-container="body" data-bs-strategy="fixed" aria-expanded="false">
+        <span class="nav-overflow-icon">${this._config.moreIcon}</span>
+        <span class="nav-overflow-text">${this._config.moreText}</span>
+      </button>
+      <ul class="${CLASS_NAME_OVERFLOW_MENU} dropdown-menu dropdown-menu-end"></ul>
+    `;
+      this._element.append(overflowItem);
+      this._overflowToggle = overflowItem.querySelector(SELECTOR_OVERFLOW_TOGGLE);
+      this._overflowMenu = overflowItem.querySelector(SELECTOR_OVERFLOW_MENU);
+    }
+    _setupResizeObserver() {
+      if (typeof ResizeObserver === 'undefined') {
+        // Fallback for older browsers
+        EventHandler.on(window, 'resize', () => this._calculateOverflow());
+        return;
+      }
+      this._resizeObserver = new ResizeObserver(() => {
+        this._calculateOverflow();
+      });
+      this._resizeObserver.observe(this._element);
+    }
+    _calculateOverflow() {
+      // First, restore all items to measure properly
+      this._restoreItems();
+      const navWidth = this._element.offsetWidth;
+      const overflowItem = this._overflowToggle?.closest('.nav-item');
+      const overflowWidth = overflowItem?.offsetWidth || 0;
+      let usedWidth = 0;
+      const itemsToOverflow = [];
+      const overflowThreshold = navWidth - overflowWidth - 10; // 10px buffer
+
+      // Calculate which items need to overflow (skip items with keep class)
+      for (const item of this._items) {
+        const itemWidth = item.offsetWidth;
+        usedWidth += itemWidth;
+
+        // Never overflow items with the keep class
+        if (item.classList.contains(CLASS_NAME_KEEP)) {
+          continue;
+        }
+        if (usedWidth > overflowThreshold) {
+          itemsToOverflow.push(item);
+        }
+      }
+
+      // Check if we need threshold minimum visible
+      const visibleCount = this._items.length - itemsToOverflow.length;
+      if (visibleCount < this._config.threshold && this._items.length > this._config.threshold) {
+        // Add more items to overflow until we reach threshold (but not keep items)
+        const toMove = this._items.slice(this._config.threshold).filter(item => !item.classList.contains(CLASS_NAME_KEEP));
+        itemsToOverflow.length = 0;
+        itemsToOverflow.push(...toMove);
+      }
+
+      // Move items to overflow menu
+      this._moveToOverflow(itemsToOverflow);
+
+      // Show/hide overflow toggle
+      if (overflowItem) {
+        if (itemsToOverflow.length > 0) {
+          overflowItem.classList.remove(CLASS_NAME_HIDDEN);
+        } else {
+          overflowItem.classList.add(CLASS_NAME_HIDDEN);
+        }
+      }
+
+      // Trigger overflow event if items changed
+      if (itemsToOverflow.length > 0) {
+        EventHandler.trigger(this._element, EVENT_OVERFLOW, {
+          overflowCount: itemsToOverflow.length,
+          visibleCount: this._items.length - itemsToOverflow.length
+        });
+      }
+    }
+    _moveToOverflow(items) {
+      if (!this._overflowMenu) {
+        return;
+      }
+
+      // Clear existing overflow items
+      this._overflowMenu.innerHTML = '';
+      this._overflowItems = [];
+      for (const item of items) {
+        // Clone the nav link as a dropdown item
+        const link = SelectorEngine.findOne(SELECTOR_NAV_LINK, item);
+        if (!link) {
+          continue;
+        }
+        const dropdownItem = document.createElement('li');
+        const clonedLink = link.cloneNode(true);
+        clonedLink.className = 'dropdown-item';
+
+        // Preserve active state
+        if (link.classList.contains('active')) {
+          clonedLink.classList.add('active');
+        }
+
+        // Preserve disabled state
+        if (link.classList.contains('disabled') || link.hasAttribute('disabled')) {
+          clonedLink.classList.add('disabled');
+        }
+        dropdownItem.append(clonedLink);
+        this._overflowMenu.append(dropdownItem);
+
+        // Hide original item
+        item.classList.add(CLASS_NAME_HIDDEN);
+        item.dataset.bsNavOverflow = 'true';
+        this._overflowItems.push(item);
+      }
+    }
+    _restoreItems() {
+      for (const item of this._items) {
+        item.classList.remove(CLASS_NAME_HIDDEN);
+        delete item.dataset.bsNavOverflow;
+      }
+      if (this._overflowMenu) {
+        this._overflowMenu.innerHTML = '';
+      }
+      this._overflowItems = [];
+    }
+  }
+
+  /**
+   * Data API implementation
+   */
+
+  EventHandler.on(document, 'DOMContentLoaded', () => {
+    for (const element of SelectorEngine.find('[data-bs-toggle="nav-overflow"]')) {
+      NavOverflow.getOrCreateInstance(element);
+    }
   });
 
   /**
@@ -5853,6 +6149,7 @@
     Datepicker,
     Dialog,
     Dropdown,
+    NavOverflow,
     Offcanvas,
     Strength,
     OtpInput,

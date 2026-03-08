@@ -4,225 +4,222 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 :root {
-  --bs-blue-025: color-mix(in lab, #fff 94%, oklch(60% 0.24 240deg));
-  --bs-blue-050: color-mix(in lab, #fff 90%, oklch(60% 0.24 240deg));
-  --bs-blue-100: color-mix(in lab, #fff 80%, oklch(60% 0.24 240deg));
-  --bs-blue-200: color-mix(in lab, #fff 60%, oklch(60% 0.24 240deg));
-  --bs-blue-300: color-mix(in lab, #fff 40%, oklch(60% 0.24 240deg));
-  --bs-blue-400: color-mix(in lab, #fff 20%, oklch(60% 0.24 240deg));
+  --bs-blue-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.24 240deg));
+  --bs-blue-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.24 240deg));
+  --bs-blue-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.24 240deg));
+  --bs-blue-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.24 240deg));
+  --bs-blue-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.24 240deg));
+  --bs-blue-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.24 240deg));
   --bs-blue-500: oklch(60% 0.24 240deg);
-  --bs-blue-600: color-mix(in lab, #000 16%, oklch(60% 0.24 240deg));
-  --bs-blue-700: color-mix(in lab, #000 32%, oklch(60% 0.24 240deg));
-  --bs-blue-800: color-mix(in lab, #000 48%, oklch(60% 0.24 240deg));
-  --bs-blue-900: color-mix(in lab, #000 64%, oklch(60% 0.24 240deg));
-  --bs-blue-950: color-mix(in lab, #000 76%, oklch(60% 0.24 240deg));
-  --bs-blue-975: color-mix(in lab, #000 88%, oklch(60% 0.24 240deg));
-  --bs-indigo-025: color-mix(in lab, #fff 94%, oklch(56% 0.26 288deg));
-  --bs-indigo-050: color-mix(in lab, #fff 90%, oklch(56% 0.26 288deg));
-  --bs-indigo-100: color-mix(in lab, #fff 80%, oklch(56% 0.26 288deg));
-  --bs-indigo-200: color-mix(in lab, #fff 60%, oklch(56% 0.26 288deg));
-  --bs-indigo-300: color-mix(in lab, #fff 40%, oklch(56% 0.26 288deg));
-  --bs-indigo-400: color-mix(in lab, #fff 20%, oklch(56% 0.26 288deg));
+  --bs-blue-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.24 240deg));
+  --bs-blue-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.24 240deg));
+  --bs-blue-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.24 240deg));
+  --bs-blue-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.24 240deg));
+  --bs-blue-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.24 240deg));
+  --bs-blue-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.24 240deg));
+  --bs-indigo-025: color-mix(in lab, var(--bs-white) 94%, oklch(56% 0.26 288deg));
+  --bs-indigo-050: color-mix(in lab, var(--bs-white) 90%, oklch(56% 0.26 288deg));
+  --bs-indigo-100: color-mix(in lab, var(--bs-white) 80%, oklch(56% 0.26 288deg));
+  --bs-indigo-200: color-mix(in lab, var(--bs-white) 60%, oklch(56% 0.26 288deg));
+  --bs-indigo-300: color-mix(in lab, var(--bs-white) 40%, oklch(56% 0.26 288deg));
+  --bs-indigo-400: color-mix(in lab, var(--bs-white) 20%, oklch(56% 0.26 288deg));
   --bs-indigo-500: oklch(56% 0.26 288deg);
-  --bs-indigo-600: color-mix(in lab, #000 16%, oklch(56% 0.26 288deg));
-  --bs-indigo-700: color-mix(in lab, #000 32%, oklch(56% 0.26 288deg));
-  --bs-indigo-800: color-mix(in lab, #000 48%, oklch(56% 0.26 288deg));
-  --bs-indigo-900: color-mix(in lab, #000 64%, oklch(56% 0.26 288deg));
-  --bs-indigo-950: color-mix(in lab, #000 76%, oklch(56% 0.26 288deg));
-  --bs-indigo-975: color-mix(in lab, #000 88%, oklch(56% 0.26 288deg));
-  --bs-violet-025: color-mix(in lab, #fff 94%, oklch(56% 0.24 300deg));
-  --bs-violet-050: color-mix(in lab, #fff 90%, oklch(56% 0.24 300deg));
-  --bs-violet-100: color-mix(in lab, #fff 80%, oklch(56% 0.24 300deg));
-  --bs-violet-200: color-mix(in lab, #fff 60%, oklch(56% 0.24 300deg));
-  --bs-violet-300: color-mix(in lab, #fff 40%, oklch(56% 0.24 300deg));
-  --bs-violet-400: color-mix(in lab, #fff 20%, oklch(56% 0.24 300deg));
+  --bs-indigo-600: color-mix(in lab, var(--bs-black) 16%, oklch(56% 0.26 288deg));
+  --bs-indigo-700: color-mix(in lab, var(--bs-black) 32%, oklch(56% 0.26 288deg));
+  --bs-indigo-800: color-mix(in lab, var(--bs-black) 48%, oklch(56% 0.26 288deg));
+  --bs-indigo-900: color-mix(in lab, var(--bs-black) 64%, oklch(56% 0.26 288deg));
+  --bs-indigo-950: color-mix(in lab, var(--bs-black) 76%, oklch(56% 0.26 288deg));
+  --bs-indigo-975: color-mix(in lab, var(--bs-black) 88%, oklch(56% 0.26 288deg));
+  --bs-violet-025: color-mix(in lab, var(--bs-white) 94%, oklch(56% 0.24 300deg));
+  --bs-violet-050: color-mix(in lab, var(--bs-white) 90%, oklch(56% 0.24 300deg));
+  --bs-violet-100: color-mix(in lab, var(--bs-white) 80%, oklch(56% 0.24 300deg));
+  --bs-violet-200: color-mix(in lab, var(--bs-white) 60%, oklch(56% 0.24 300deg));
+  --bs-violet-300: color-mix(in lab, var(--bs-white) 40%, oklch(56% 0.24 300deg));
+  --bs-violet-400: color-mix(in lab, var(--bs-white) 20%, oklch(56% 0.24 300deg));
   --bs-violet-500: oklch(56% 0.24 300deg);
-  --bs-violet-600: color-mix(in lab, #000 16%, oklch(56% 0.24 300deg));
-  --bs-violet-700: color-mix(in lab, #000 32%, oklch(56% 0.24 300deg));
-  --bs-violet-800: color-mix(in lab, #000 48%, oklch(56% 0.24 300deg));
-  --bs-violet-900: color-mix(in lab, #000 64%, oklch(56% 0.24 300deg));
-  --bs-violet-950: color-mix(in lab, #000 76%, oklch(56% 0.24 300deg));
-  --bs-violet-975: color-mix(in lab, #000 88%, oklch(56% 0.24 300deg));
-  --bs-purple-025: color-mix(in lab, #fff 94%, oklch(56% 0.24 320deg));
-  --bs-purple-050: color-mix(in lab, #fff 90%, oklch(56% 0.24 320deg));
-  --bs-purple-100: color-mix(in lab, #fff 80%, oklch(56% 0.24 320deg));
-  --bs-purple-200: color-mix(in lab, #fff 60%, oklch(56% 0.24 320deg));
-  --bs-purple-300: color-mix(in lab, #fff 40%, oklch(56% 0.24 320deg));
-  --bs-purple-400: color-mix(in lab, #fff 20%, oklch(56% 0.24 320deg));
+  --bs-violet-600: color-mix(in lab, var(--bs-black) 16%, oklch(56% 0.24 300deg));
+  --bs-violet-700: color-mix(in lab, var(--bs-black) 32%, oklch(56% 0.24 300deg));
+  --bs-violet-800: color-mix(in lab, var(--bs-black) 48%, oklch(56% 0.24 300deg));
+  --bs-violet-900: color-mix(in lab, var(--bs-black) 64%, oklch(56% 0.24 300deg));
+  --bs-violet-950: color-mix(in lab, var(--bs-black) 76%, oklch(56% 0.24 300deg));
+  --bs-violet-975: color-mix(in lab, var(--bs-black) 88%, oklch(56% 0.24 300deg));
+  --bs-purple-025: color-mix(in lab, var(--bs-white) 94%, oklch(56% 0.24 320deg));
+  --bs-purple-050: color-mix(in lab, var(--bs-white) 90%, oklch(56% 0.24 320deg));
+  --bs-purple-100: color-mix(in lab, var(--bs-white) 80%, oklch(56% 0.24 320deg));
+  --bs-purple-200: color-mix(in lab, var(--bs-white) 60%, oklch(56% 0.24 320deg));
+  --bs-purple-300: color-mix(in lab, var(--bs-white) 40%, oklch(56% 0.24 320deg));
+  --bs-purple-400: color-mix(in lab, var(--bs-white) 20%, oklch(56% 0.24 320deg));
   --bs-purple-500: oklch(56% 0.24 320deg);
-  --bs-purple-600: color-mix(in lab, #000 16%, oklch(56% 0.24 320deg));
-  --bs-purple-700: color-mix(in lab, #000 32%, oklch(56% 0.24 320deg));
-  --bs-purple-800: color-mix(in lab, #000 48%, oklch(56% 0.24 320deg));
-  --bs-purple-900: color-mix(in lab, #000 64%, oklch(56% 0.24 320deg));
-  --bs-purple-950: color-mix(in lab, #000 76%, oklch(56% 0.24 320deg));
-  --bs-purple-975: color-mix(in lab, #000 88%, oklch(56% 0.24 320deg));
-  --bs-pink-025: color-mix(in lab, #fff 94%, oklch(60% 0.22 4deg));
-  --bs-pink-050: color-mix(in lab, #fff 90%, oklch(60% 0.22 4deg));
-  --bs-pink-100: color-mix(in lab, #fff 80%, oklch(60% 0.22 4deg));
-  --bs-pink-200: color-mix(in lab, #fff 60%, oklch(60% 0.22 4deg));
-  --bs-pink-300: color-mix(in lab, #fff 40%, oklch(60% 0.22 4deg));
-  --bs-pink-400: color-mix(in lab, #fff 20%, oklch(60% 0.22 4deg));
+  --bs-purple-600: color-mix(in lab, var(--bs-black) 16%, oklch(56% 0.24 320deg));
+  --bs-purple-700: color-mix(in lab, var(--bs-black) 32%, oklch(56% 0.24 320deg));
+  --bs-purple-800: color-mix(in lab, var(--bs-black) 48%, oklch(56% 0.24 320deg));
+  --bs-purple-900: color-mix(in lab, var(--bs-black) 64%, oklch(56% 0.24 320deg));
+  --bs-purple-950: color-mix(in lab, var(--bs-black) 76%, oklch(56% 0.24 320deg));
+  --bs-purple-975: color-mix(in lab, var(--bs-black) 88%, oklch(56% 0.24 320deg));
+  --bs-pink-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.22 4deg));
+  --bs-pink-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.22 4deg));
+  --bs-pink-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.22 4deg));
+  --bs-pink-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.22 4deg));
+  --bs-pink-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.22 4deg));
+  --bs-pink-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.22 4deg));
   --bs-pink-500: oklch(60% 0.22 4deg);
-  --bs-pink-600: color-mix(in lab, #000 16%, oklch(60% 0.22 4deg));
-  --bs-pink-700: color-mix(in lab, #000 32%, oklch(60% 0.22 4deg));
-  --bs-pink-800: color-mix(in lab, #000 48%, oklch(60% 0.22 4deg));
-  --bs-pink-900: color-mix(in lab, #000 64%, oklch(60% 0.22 4deg));
-  --bs-pink-950: color-mix(in lab, #000 76%, oklch(60% 0.22 4deg));
-  --bs-pink-975: color-mix(in lab, #000 88%, oklch(60% 0.22 4deg));
-  --bs-red-025: color-mix(in lab, #fff 94%, oklch(60% 0.22 20deg));
-  --bs-red-050: color-mix(in lab, #fff 90%, oklch(60% 0.22 20deg));
-  --bs-red-100: color-mix(in lab, #fff 80%, oklch(60% 0.22 20deg));
-  --bs-red-200: color-mix(in lab, #fff 60%, oklch(60% 0.22 20deg));
-  --bs-red-300: color-mix(in lab, #fff 40%, oklch(60% 0.22 20deg));
-  --bs-red-400: color-mix(in lab, #fff 20%, oklch(60% 0.22 20deg));
+  --bs-pink-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.22 4deg));
+  --bs-pink-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.22 4deg));
+  --bs-pink-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.22 4deg));
+  --bs-pink-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.22 4deg));
+  --bs-pink-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.22 4deg));
+  --bs-pink-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.22 4deg));
+  --bs-red-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.22 20deg));
+  --bs-red-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.22 20deg));
+  --bs-red-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.22 20deg));
+  --bs-red-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.22 20deg));
+  --bs-red-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.22 20deg));
+  --bs-red-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.22 20deg));
   --bs-red-500: oklch(60% 0.22 20deg);
-  --bs-red-600: color-mix(in lab, #000 16%, oklch(60% 0.22 20deg));
-  --bs-red-700: color-mix(in lab, #000 32%, oklch(60% 0.22 20deg));
-  --bs-red-800: color-mix(in lab, #000 48%, oklch(60% 0.22 20deg));
-  --bs-red-900: color-mix(in lab, #000 64%, oklch(60% 0.22 20deg));
-  --bs-red-950: color-mix(in lab, #000 76%, oklch(60% 0.22 20deg));
-  --bs-red-975: color-mix(in lab, #000 88%, oklch(60% 0.22 20deg));
-  --bs-orange-025: color-mix(in lab, #fff 94%, oklch(70% 0.22 52deg));
-  --bs-orange-050: color-mix(in lab, #fff 90%, oklch(70% 0.22 52deg));
-  --bs-orange-100: color-mix(in lab, #fff 80%, oklch(70% 0.22 52deg));
-  --bs-orange-200: color-mix(in lab, #fff 60%, oklch(70% 0.22 52deg));
-  --bs-orange-300: color-mix(in lab, #fff 40%, oklch(70% 0.22 52deg));
-  --bs-orange-400: color-mix(in lab, #fff 20%, oklch(70% 0.22 52deg));
+  --bs-red-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.22 20deg));
+  --bs-red-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.22 20deg));
+  --bs-red-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.22 20deg));
+  --bs-red-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.22 20deg));
+  --bs-red-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.22 20deg));
+  --bs-red-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.22 20deg));
+  --bs-orange-025: color-mix(in lab, var(--bs-white) 94%, oklch(70% 0.22 52deg));
+  --bs-orange-050: color-mix(in lab, var(--bs-white) 90%, oklch(70% 0.22 52deg));
+  --bs-orange-100: color-mix(in lab, var(--bs-white) 80%, oklch(70% 0.22 52deg));
+  --bs-orange-200: color-mix(in lab, var(--bs-white) 60%, oklch(70% 0.22 52deg));
+  --bs-orange-300: color-mix(in lab, var(--bs-white) 40%, oklch(70% 0.22 52deg));
+  --bs-orange-400: color-mix(in lab, var(--bs-white) 20%, oklch(70% 0.22 52deg));
   --bs-orange-500: oklch(70% 0.22 52deg);
-  --bs-orange-600: color-mix(in lab, #000 16%, oklch(70% 0.22 52deg));
-  --bs-orange-700: color-mix(in lab, #000 32%, oklch(70% 0.22 52deg));
-  --bs-orange-800: color-mix(in lab, #000 48%, oklch(70% 0.22 52deg));
-  --bs-orange-900: color-mix(in lab, #000 64%, oklch(70% 0.22 52deg));
-  --bs-orange-950: color-mix(in lab, #000 76%, oklch(70% 0.22 52deg));
-  --bs-orange-975: color-mix(in lab, #000 88%, oklch(70% 0.22 52deg));
-  --bs-amber-025: color-mix(in lab, #fff 94%, oklch(79% 0.2 78deg));
-  --bs-amber-050: color-mix(in lab, #fff 90%, oklch(79% 0.2 78deg));
-  --bs-amber-100: color-mix(in lab, #fff 80%, oklch(79% 0.2 78deg));
-  --bs-amber-200: color-mix(in lab, #fff 60%, oklch(79% 0.2 78deg));
-  --bs-amber-300: color-mix(in lab, #fff 40%, oklch(79% 0.2 78deg));
-  --bs-amber-400: color-mix(in lab, #fff 20%, oklch(79% 0.2 78deg));
+  --bs-orange-600: color-mix(in lab, var(--bs-black) 16%, oklch(70% 0.22 52deg));
+  --bs-orange-700: color-mix(in lab, var(--bs-black) 32%, oklch(70% 0.22 52deg));
+  --bs-orange-800: color-mix(in lab, var(--bs-black) 48%, oklch(70% 0.22 52deg));
+  --bs-orange-900: color-mix(in lab, var(--bs-black) 64%, oklch(70% 0.22 52deg));
+  --bs-orange-950: color-mix(in lab, var(--bs-black) 76%, oklch(70% 0.22 52deg));
+  --bs-orange-975: color-mix(in lab, var(--bs-black) 88%, oklch(70% 0.22 52deg));
+  --bs-amber-025: color-mix(in lab, var(--bs-white) 94%, oklch(79% 0.2 78deg));
+  --bs-amber-050: color-mix(in lab, var(--bs-white) 90%, oklch(79% 0.2 78deg));
+  --bs-amber-100: color-mix(in lab, var(--bs-white) 80%, oklch(79% 0.2 78deg));
+  --bs-amber-200: color-mix(in lab, var(--bs-white) 60%, oklch(79% 0.2 78deg));
+  --bs-amber-300: color-mix(in lab, var(--bs-white) 40%, oklch(79% 0.2 78deg));
+  --bs-amber-400: color-mix(in lab, var(--bs-white) 20%, oklch(79% 0.2 78deg));
   --bs-amber-500: oklch(79% 0.2 78deg);
-  --bs-amber-600: color-mix(in lab, #000 16%, oklch(79% 0.2 78deg));
-  --bs-amber-700: color-mix(in lab, #000 32%, oklch(79% 0.2 78deg));
-  --bs-amber-800: color-mix(in lab, #000 48%, oklch(79% 0.2 78deg));
-  --bs-amber-900: color-mix(in lab, #000 64%, oklch(79% 0.2 78deg));
-  --bs-amber-950: color-mix(in lab, #000 76%, oklch(79% 0.2 78deg));
-  --bs-amber-975: color-mix(in lab, #000 88%, oklch(79% 0.2 78deg));
-  --bs-yellow-025: color-mix(in lab, #fff 94%, oklch(88% 0.24 88deg));
-  --bs-yellow-050: color-mix(in lab, #fff 90%, oklch(88% 0.24 88deg));
-  --bs-yellow-100: color-mix(in lab, #fff 80%, oklch(88% 0.24 88deg));
-  --bs-yellow-200: color-mix(in lab, #fff 60%, oklch(88% 0.24 88deg));
-  --bs-yellow-300: color-mix(in lab, #fff 40%, oklch(88% 0.24 88deg));
-  --bs-yellow-400: color-mix(in lab, #fff 20%, oklch(88% 0.24 88deg));
+  --bs-amber-600: color-mix(in lab, var(--bs-black) 16%, oklch(79% 0.2 78deg));
+  --bs-amber-700: color-mix(in lab, var(--bs-black) 32%, oklch(79% 0.2 78deg));
+  --bs-amber-800: color-mix(in lab, var(--bs-black) 48%, oklch(79% 0.2 78deg));
+  --bs-amber-900: color-mix(in lab, var(--bs-black) 64%, oklch(79% 0.2 78deg));
+  --bs-amber-950: color-mix(in lab, var(--bs-black) 76%, oklch(79% 0.2 78deg));
+  --bs-amber-975: color-mix(in lab, var(--bs-black) 88%, oklch(79% 0.2 78deg));
+  --bs-yellow-025: color-mix(in lab, var(--bs-white) 94%, oklch(88% 0.24 88deg));
+  --bs-yellow-050: color-mix(in lab, var(--bs-white) 90%, oklch(88% 0.24 88deg));
+  --bs-yellow-100: color-mix(in lab, var(--bs-white) 80%, oklch(88% 0.24 88deg));
+  --bs-yellow-200: color-mix(in lab, var(--bs-white) 60%, oklch(88% 0.24 88deg));
+  --bs-yellow-300: color-mix(in lab, var(--bs-white) 40%, oklch(88% 0.24 88deg));
+  --bs-yellow-400: color-mix(in lab, var(--bs-white) 20%, oklch(88% 0.24 88deg));
   --bs-yellow-500: oklch(88% 0.24 88deg);
-  --bs-yellow-600: color-mix(in lab, #000 16%, oklch(88% 0.24 88deg));
-  --bs-yellow-700: color-mix(in lab, #000 32%, oklch(88% 0.24 88deg));
-  --bs-yellow-800: color-mix(in lab, #000 48%, oklch(88% 0.24 88deg));
-  --bs-yellow-900: color-mix(in lab, #000 64%, oklch(88% 0.24 88deg));
-  --bs-yellow-950: color-mix(in lab, #000 76%, oklch(88% 0.24 88deg));
-  --bs-yellow-975: color-mix(in lab, #000 88%, oklch(88% 0.24 88deg));
-  --bs-lime-025: color-mix(in lab, #fff 94%, oklch(65% 0.24 135deg));
-  --bs-lime-050: color-mix(in lab, #fff 90%, oklch(65% 0.24 135deg));
-  --bs-lime-100: color-mix(in lab, #fff 80%, oklch(65% 0.24 135deg));
-  --bs-lime-200: color-mix(in lab, #fff 60%, oklch(65% 0.24 135deg));
-  --bs-lime-300: color-mix(in lab, #fff 40%, oklch(65% 0.24 135deg));
-  --bs-lime-400: color-mix(in lab, #fff 20%, oklch(65% 0.24 135deg));
+  --bs-yellow-600: color-mix(in lab, var(--bs-black) 16%, oklch(88% 0.24 88deg));
+  --bs-yellow-700: color-mix(in lab, var(--bs-black) 32%, oklch(88% 0.24 88deg));
+  --bs-yellow-800: color-mix(in lab, var(--bs-black) 48%, oklch(88% 0.24 88deg));
+  --bs-yellow-900: color-mix(in lab, var(--bs-black) 64%, oklch(88% 0.24 88deg));
+  --bs-yellow-950: color-mix(in lab, var(--bs-black) 76%, oklch(88% 0.24 88deg));
+  --bs-yellow-975: color-mix(in lab, var(--bs-black) 88%, oklch(88% 0.24 88deg));
+  --bs-lime-025: color-mix(in lab, var(--bs-white) 94%, oklch(65% 0.24 135deg));
+  --bs-lime-050: color-mix(in lab, var(--bs-white) 90%, oklch(65% 0.24 135deg));
+  --bs-lime-100: color-mix(in lab, var(--bs-white) 80%, oklch(65% 0.24 135deg));
+  --bs-lime-200: color-mix(in lab, var(--bs-white) 60%, oklch(65% 0.24 135deg));
+  --bs-lime-300: color-mix(in lab, var(--bs-white) 40%, oklch(65% 0.24 135deg));
+  --bs-lime-400: color-mix(in lab, var(--bs-white) 20%, oklch(65% 0.24 135deg));
   --bs-lime-500: oklch(65% 0.24 135deg);
-  --bs-lime-600: color-mix(in lab, #000 16%, oklch(65% 0.24 135deg));
-  --bs-lime-700: color-mix(in lab, #000 32%, oklch(65% 0.24 135deg));
-  --bs-lime-800: color-mix(in lab, #000 48%, oklch(65% 0.24 135deg));
-  --bs-lime-900: color-mix(in lab, #000 64%, oklch(65% 0.24 135deg));
-  --bs-lime-950: color-mix(in lab, #000 76%, oklch(65% 0.24 135deg));
-  --bs-lime-975: color-mix(in lab, #000 88%, oklch(65% 0.24 135deg));
-  --bs-green-025: color-mix(in lab, #fff 94%, oklch(64% 0.22 160deg));
-  --bs-green-050: color-mix(in lab, #fff 90%, oklch(64% 0.22 160deg));
-  --bs-green-100: color-mix(in lab, #fff 80%, oklch(64% 0.22 160deg));
-  --bs-green-200: color-mix(in lab, #fff 60%, oklch(64% 0.22 160deg));
-  --bs-green-300: color-mix(in lab, #fff 40%, oklch(64% 0.22 160deg));
-  --bs-green-400: color-mix(in lab, #fff 20%, oklch(64% 0.22 160deg));
+  --bs-lime-600: color-mix(in lab, var(--bs-black) 16%, oklch(65% 0.24 135deg));
+  --bs-lime-700: color-mix(in lab, var(--bs-black) 32%, oklch(65% 0.24 135deg));
+  --bs-lime-800: color-mix(in lab, var(--bs-black) 48%, oklch(65% 0.24 135deg));
+  --bs-lime-900: color-mix(in lab, var(--bs-black) 64%, oklch(65% 0.24 135deg));
+  --bs-lime-950: color-mix(in lab, var(--bs-black) 76%, oklch(65% 0.24 135deg));
+  --bs-lime-975: color-mix(in lab, var(--bs-black) 88%, oklch(65% 0.24 135deg));
+  --bs-green-025: color-mix(in lab, var(--bs-white) 94%, oklch(64% 0.22 160deg));
+  --bs-green-050: color-mix(in lab, var(--bs-white) 90%, oklch(64% 0.22 160deg));
+  --bs-green-100: color-mix(in lab, var(--bs-white) 80%, oklch(64% 0.22 160deg));
+  --bs-green-200: color-mix(in lab, var(--bs-white) 60%, oklch(64% 0.22 160deg));
+  --bs-green-300: color-mix(in lab, var(--bs-white) 40%, oklch(64% 0.22 160deg));
+  --bs-green-400: color-mix(in lab, var(--bs-white) 20%, oklch(64% 0.22 160deg));
   --bs-green-500: oklch(64% 0.22 160deg);
-  --bs-green-600: color-mix(in lab, #000 16%, oklch(64% 0.22 160deg));
-  --bs-green-700: color-mix(in lab, #000 32%, oklch(64% 0.22 160deg));
-  --bs-green-800: color-mix(in lab, #000 48%, oklch(64% 0.22 160deg));
-  --bs-green-900: color-mix(in lab, #000 64%, oklch(64% 0.22 160deg));
-  --bs-green-950: color-mix(in lab, #000 76%, oklch(64% 0.22 160deg));
-  --bs-green-975: color-mix(in lab, #000 88%, oklch(64% 0.22 160deg));
-  --bs-teal-025: color-mix(in lab, #fff 94%, oklch(68% 0.22 190deg));
-  --bs-teal-050: color-mix(in lab, #fff 90%, oklch(68% 0.22 190deg));
-  --bs-teal-100: color-mix(in lab, #fff 80%, oklch(68% 0.22 190deg));
-  --bs-teal-200: color-mix(in lab, #fff 60%, oklch(68% 0.22 190deg));
-  --bs-teal-300: color-mix(in lab, #fff 40%, oklch(68% 0.22 190deg));
-  --bs-teal-400: color-mix(in lab, #fff 20%, oklch(68% 0.22 190deg));
+  --bs-green-600: color-mix(in lab, var(--bs-black) 16%, oklch(64% 0.22 160deg));
+  --bs-green-700: color-mix(in lab, var(--bs-black) 32%, oklch(64% 0.22 160deg));
+  --bs-green-800: color-mix(in lab, var(--bs-black) 48%, oklch(64% 0.22 160deg));
+  --bs-green-900: color-mix(in lab, var(--bs-black) 64%, oklch(64% 0.22 160deg));
+  --bs-green-950: color-mix(in lab, var(--bs-black) 76%, oklch(64% 0.22 160deg));
+  --bs-green-975: color-mix(in lab, var(--bs-black) 88%, oklch(64% 0.22 160deg));
+  --bs-teal-025: color-mix(in lab, var(--bs-white) 94%, oklch(68% 0.22 190deg));
+  --bs-teal-050: color-mix(in lab, var(--bs-white) 90%, oklch(68% 0.22 190deg));
+  --bs-teal-100: color-mix(in lab, var(--bs-white) 80%, oklch(68% 0.22 190deg));
+  --bs-teal-200: color-mix(in lab, var(--bs-white) 60%, oklch(68% 0.22 190deg));
+  --bs-teal-300: color-mix(in lab, var(--bs-white) 40%, oklch(68% 0.22 190deg));
+  --bs-teal-400: color-mix(in lab, var(--bs-white) 20%, oklch(68% 0.22 190deg));
   --bs-teal-500: oklch(68% 0.22 190deg);
-  --bs-teal-600: color-mix(in lab, #000 16%, oklch(68% 0.22 190deg));
-  --bs-teal-700: color-mix(in lab, #000 32%, oklch(68% 0.22 190deg));
-  --bs-teal-800: color-mix(in lab, #000 48%, oklch(68% 0.22 190deg));
-  --bs-teal-900: color-mix(in lab, #000 64%, oklch(68% 0.22 190deg));
-  --bs-teal-950: color-mix(in lab, #000 76%, oklch(68% 0.22 190deg));
-  --bs-teal-975: color-mix(in lab, #000 88%, oklch(68% 0.22 190deg));
-  --bs-cyan-025: color-mix(in lab, #fff 94%, oklch(69% 0.22 220deg));
-  --bs-cyan-050: color-mix(in lab, #fff 90%, oklch(69% 0.22 220deg));
-  --bs-cyan-100: color-mix(in lab, #fff 80%, oklch(69% 0.22 220deg));
-  --bs-cyan-200: color-mix(in lab, #fff 60%, oklch(69% 0.22 220deg));
-  --bs-cyan-300: color-mix(in lab, #fff 40%, oklch(69% 0.22 220deg));
-  --bs-cyan-400: color-mix(in lab, #fff 20%, oklch(69% 0.22 220deg));
+  --bs-teal-600: color-mix(in lab, var(--bs-black) 16%, oklch(68% 0.22 190deg));
+  --bs-teal-700: color-mix(in lab, var(--bs-black) 32%, oklch(68% 0.22 190deg));
+  --bs-teal-800: color-mix(in lab, var(--bs-black) 48%, oklch(68% 0.22 190deg));
+  --bs-teal-900: color-mix(in lab, var(--bs-black) 64%, oklch(68% 0.22 190deg));
+  --bs-teal-950: color-mix(in lab, var(--bs-black) 76%, oklch(68% 0.22 190deg));
+  --bs-teal-975: color-mix(in lab, var(--bs-black) 88%, oklch(68% 0.22 190deg));
+  --bs-cyan-025: color-mix(in lab, var(--bs-white) 94%, oklch(69% 0.22 220deg));
+  --bs-cyan-050: color-mix(in lab, var(--bs-white) 90%, oklch(69% 0.22 220deg));
+  --bs-cyan-100: color-mix(in lab, var(--bs-white) 80%, oklch(69% 0.22 220deg));
+  --bs-cyan-200: color-mix(in lab, var(--bs-white) 60%, oklch(69% 0.22 220deg));
+  --bs-cyan-300: color-mix(in lab, var(--bs-white) 40%, oklch(69% 0.22 220deg));
+  --bs-cyan-400: color-mix(in lab, var(--bs-white) 20%, oklch(69% 0.22 220deg));
   --bs-cyan-500: oklch(69% 0.22 220deg);
-  --bs-cyan-600: color-mix(in lab, #000 16%, oklch(69% 0.22 220deg));
-  --bs-cyan-700: color-mix(in lab, #000 32%, oklch(69% 0.22 220deg));
-  --bs-cyan-800: color-mix(in lab, #000 48%, oklch(69% 0.22 220deg));
-  --bs-cyan-900: color-mix(in lab, #000 64%, oklch(69% 0.22 220deg));
-  --bs-cyan-950: color-mix(in lab, #000 76%, oklch(69% 0.22 220deg));
-  --bs-cyan-975: color-mix(in lab, #000 88%, oklch(69% 0.22 220deg));
-  --bs-brown-025: color-mix(in lab, #fff 94%, oklch(60% 0.12 54deg));
-  --bs-brown-050: color-mix(in lab, #fff 90%, oklch(60% 0.12 54deg));
-  --bs-brown-100: color-mix(in lab, #fff 80%, oklch(60% 0.12 54deg));
-  --bs-brown-200: color-mix(in lab, #fff 60%, oklch(60% 0.12 54deg));
-  --bs-brown-300: color-mix(in lab, #fff 40%, oklch(60% 0.12 54deg));
-  --bs-brown-400: color-mix(in lab, #fff 20%, oklch(60% 0.12 54deg));
+  --bs-cyan-600: color-mix(in lab, var(--bs-black) 16%, oklch(69% 0.22 220deg));
+  --bs-cyan-700: color-mix(in lab, var(--bs-black) 32%, oklch(69% 0.22 220deg));
+  --bs-cyan-800: color-mix(in lab, var(--bs-black) 48%, oklch(69% 0.22 220deg));
+  --bs-cyan-900: color-mix(in lab, var(--bs-black) 64%, oklch(69% 0.22 220deg));
+  --bs-cyan-950: color-mix(in lab, var(--bs-black) 76%, oklch(69% 0.22 220deg));
+  --bs-cyan-975: color-mix(in lab, var(--bs-black) 88%, oklch(69% 0.22 220deg));
+  --bs-brown-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.12 54deg));
+  --bs-brown-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.12 54deg));
+  --bs-brown-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.12 54deg));
+  --bs-brown-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.12 54deg));
+  --bs-brown-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.12 54deg));
+  --bs-brown-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.12 54deg));
   --bs-brown-500: oklch(60% 0.12 54deg);
-  --bs-brown-600: color-mix(in lab, #000 16%, oklch(60% 0.12 54deg));
-  --bs-brown-700: color-mix(in lab, #000 32%, oklch(60% 0.12 54deg));
-  --bs-brown-800: color-mix(in lab, #000 48%, oklch(60% 0.12 54deg));
-  --bs-brown-900: color-mix(in lab, #000 64%, oklch(60% 0.12 54deg));
-  --bs-brown-950: color-mix(in lab, #000 76%, oklch(60% 0.12 54deg));
-  --bs-brown-975: color-mix(in lab, #000 88%, oklch(60% 0.12 54deg));
-  --bs-gray-025: color-mix(in lab, #fff 94%, oklch(60% 0.02 245deg));
-  --bs-gray-050: color-mix(in lab, #fff 90%, oklch(60% 0.02 245deg));
-  --bs-gray-100: color-mix(in lab, #fff 80%, oklch(60% 0.02 245deg));
-  --bs-gray-200: color-mix(in lab, #fff 60%, oklch(60% 0.02 245deg));
-  --bs-gray-300: color-mix(in lab, #fff 40%, oklch(60% 0.02 245deg));
-  --bs-gray-400: color-mix(in lab, #fff 20%, oklch(60% 0.02 245deg));
+  --bs-brown-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.12 54deg));
+  --bs-brown-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.12 54deg));
+  --bs-brown-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.12 54deg));
+  --bs-brown-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.12 54deg));
+  --bs-brown-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.12 54deg));
+  --bs-brown-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.12 54deg));
+  --bs-gray-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.02 245deg));
+  --bs-gray-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.02 245deg));
+  --bs-gray-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.02 245deg));
+  --bs-gray-200: color-mix(in lab, var(--bs-white) 60%, oklch(60% 0.02 245deg));
+  --bs-gray-300: color-mix(in lab, var(--bs-white) 40%, oklch(60% 0.02 245deg));
+  --bs-gray-400: color-mix(in lab, var(--bs-white) 20%, oklch(60% 0.02 245deg));
   --bs-gray-500: oklch(60% 0.02 245deg);
-  --bs-gray-600: color-mix(in lab, #000 16%, oklch(60% 0.02 245deg));
-  --bs-gray-700: color-mix(in lab, #000 32%, oklch(60% 0.02 245deg));
-  --bs-gray-800: color-mix(in lab, #000 48%, oklch(60% 0.02 245deg));
-  --bs-gray-900: color-mix(in lab, #000 64%, oklch(60% 0.02 245deg));
-  --bs-gray-950: color-mix(in lab, #000 76%, oklch(60% 0.02 245deg));
-  --bs-gray-975: color-mix(in lab, #000 88%, oklch(60% 0.02 245deg));
-  --bs-pewter-025: color-mix(in lab, #fff 94%, oklch(65% 0.01 290deg));
-  --bs-pewter-050: color-mix(in lab, #fff 90%, oklch(65% 0.01 290deg));
-  --bs-pewter-100: color-mix(in lab, #fff 80%, oklch(65% 0.01 290deg));
-  --bs-pewter-200: color-mix(in lab, #fff 60%, oklch(65% 0.01 290deg));
-  --bs-pewter-300: color-mix(in lab, #fff 40%, oklch(65% 0.01 290deg));
-  --bs-pewter-400: color-mix(in lab, #fff 20%, oklch(65% 0.01 290deg));
+  --bs-gray-600: color-mix(in lab, var(--bs-black) 16%, oklch(60% 0.02 245deg));
+  --bs-gray-700: color-mix(in lab, var(--bs-black) 32%, oklch(60% 0.02 245deg));
+  --bs-gray-800: color-mix(in lab, var(--bs-black) 48%, oklch(60% 0.02 245deg));
+  --bs-gray-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.02 245deg));
+  --bs-gray-950: color-mix(in lab, var(--bs-black) 76%, oklch(60% 0.02 245deg));
+  --bs-gray-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.02 245deg));
+  --bs-pewter-025: color-mix(in lab, var(--bs-white) 94%, oklch(65% 0.01 290deg));
+  --bs-pewter-050: color-mix(in lab, var(--bs-white) 90%, oklch(65% 0.01 290deg));
+  --bs-pewter-100: color-mix(in lab, var(--bs-white) 80%, oklch(65% 0.01 290deg));
+  --bs-pewter-200: color-mix(in lab, var(--bs-white) 60%, oklch(65% 0.01 290deg));
+  --bs-pewter-300: color-mix(in lab, var(--bs-white) 40%, oklch(65% 0.01 290deg));
+  --bs-pewter-400: color-mix(in lab, var(--bs-white) 20%, oklch(65% 0.01 290deg));
   --bs-pewter-500: oklch(65% 0.01 290deg);
-  --bs-pewter-600: color-mix(in lab, #000 16%, oklch(65% 0.01 290deg));
-  --bs-pewter-700: color-mix(in lab, #000 32%, oklch(65% 0.01 290deg));
-  --bs-pewter-800: color-mix(in lab, #000 48%, oklch(65% 0.01 290deg));
-  --bs-pewter-900: color-mix(in lab, #000 64%, oklch(65% 0.01 290deg));
-  --bs-pewter-950: color-mix(in lab, #000 76%, oklch(65% 0.01 290deg));
-  --bs-pewter-975: color-mix(in lab, #000 88%, oklch(65% 0.01 290deg));
+  --bs-pewter-600: color-mix(in lab, var(--bs-black) 16%, oklch(65% 0.01 290deg));
+  --bs-pewter-700: color-mix(in lab, var(--bs-black) 32%, oklch(65% 0.01 290deg));
+  --bs-pewter-800: color-mix(in lab, var(--bs-black) 48%, oklch(65% 0.01 290deg));
+  --bs-pewter-900: color-mix(in lab, var(--bs-black) 64%, oklch(65% 0.01 290deg));
+  --bs-pewter-950: color-mix(in lab, var(--bs-black) 76%, oklch(65% 0.01 290deg));
+  --bs-pewter-975: color-mix(in lab, var(--bs-black) 88%, oklch(65% 0.01 290deg));
 }
 
 @layer colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
 :root {
   --bs-black: #000;
   --bs-white: #fff;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-font-size-base: 14px;
+  --bs-gradient: linear-gradient(180deg, color-mix(var(--bs-white) 15%, transparent), color-mix(var(--bs-white) 0%, transparent));
+  --bs-font-size-base: 1rem;
   --bs-font-size-xs: 0.75rem;
   --bs-font-size-sm: 0.875rem;
   --bs-font-size-md: 1rem;
@@ -233,7 +230,7 @@
   --bs-font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem);
   --bs-font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem);
   --bs-font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem);
-  --bs-line-height-xs: 1.5;
+  --bs-line-height-xs: 1.25;
   --bs-line-height-sm: 1.5;
   --bs-line-height-md: 1.5;
   --bs-line-height-lg: 1.5;
@@ -243,7 +240,15 @@
   --bs-line-height-4xl: 1.1;
   --bs-line-height-5xl: 1.1;
   --bs-line-height-6xl: 1;
-  --bs-body-font-size: 14px;
+  --bs-font-weight-lighter: lighter;
+  --bs-font-weight-light: 300;
+  --bs-font-weight-normal: 400;
+  --bs-font-weight-medium: 500;
+  --bs-font-weight-semibold: 600;
+  --bs-font-weight-bold: 700;
+  --bs-font-weight-bolder: bolder;
+  --bs-body-font-family: system-ui;
+  --bs-body-font-size: var(--bs-font-size-base);
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-heading-color: inherit;
@@ -251,15 +256,16 @@
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-text));
   --bs-link-decoration: underline;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
-  --bs-code-color: var(--bs-secondary-text);
-  --bs-highlight-color: var(--bs-fg-body);
-  --bs-highlight-bg: light-dark(var(--bs-yellow-100), var(--bs-yellow-900));
+  --bs-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --bs-code-font-size: 95%;
+  --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-700));
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
   --bs-border-radius: 0.5rem;
-  --bs-border-radius-sm: 0.375rem;
+  --bs-border-radius-xs: 0.375rem;
+  --bs-border-radius-sm: 0.5rem;
   --bs-border-radius-lg: 0.75rem;
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
@@ -268,14 +274,47 @@
   --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  --bs-spacer: 1rem;
   --bs-focus-ring-width: 3px;
   --bs-focus-ring-offset: 1px;
   --bs-focus-ring-color: var(--bs-primary-focus-ring);
   --bs-focus-ring: var(--bs-focus-ring-width) solid var(--bs-focus-ring-color);
-  --bs-form-valid-color: var(--bs-success);
-  --bs-form-valid-border-color: var(--bs-success);
-  --bs-form-invalid-color: var(--bs-danger);
-  --bs-form-invalid-border-color: var(--bs-danger);
+  --bs-control-checked-bg: var(--bs-primary-base);
+  --bs-control-checked-border-color: var(--bs-control-checked-bg);
+  --bs-control-active-bg: var(--bs-primary-base);
+  --bs-control-active-border-color: var(--bs-control-active-bg);
+  --bs-control-disabled-bg: var(--bs-bg-3);
+  --bs-control-disabled-opacity: 0.65;
+  --bs-btn-input-fg: var(--bs-fg-body);
+  --bs-btn-input-bg: var(--bs-bg-body);
+  --bs-btn-input-min-height: 2.5rem;
+  --bs-btn-input-padding-y: 0.375rem;
+  --bs-btn-input-padding-x: 0.75rem;
+  --bs-btn-input-font-size: var(--bs-font-size-base);
+  --bs-btn-input-line-height: var(--bs-line-height-base);
+  --bs-btn-input-border-radius: var(--bs-border-radius);
+  --bs-btn-input-xs-min-height: 1.5rem;
+  --bs-btn-input-xs-padding-y: 0.125rem;
+  --bs-btn-input-xs-padding-x: 0.5rem;
+  --bs-btn-input-xs-font-size: var(--bs-font-size-xs);
+  --bs-btn-input-xs-line-height: 1.125;
+  --bs-btn-input-xs-border-radius: var(--bs-border-radius-xs);
+  --bs-btn-input-sm-min-height: 2.25rem;
+  --bs-btn-input-sm-padding-y: 0.25rem;
+  --bs-btn-input-sm-padding-x: 0.625rem;
+  --bs-btn-input-sm-font-size: var(--bs-font-size-sm);
+  --bs-btn-input-sm-line-height: var(--bs-line-height-sm);
+  --bs-btn-input-sm-border-radius: var(--bs-border-radius-sm);
+  --bs-btn-input-lg-min-height: 3rem;
+  --bs-btn-input-lg-padding-y: 0.5rem;
+  --bs-btn-input-lg-padding-x: 1rem;
+  --bs-btn-input-lg-font-size: var(--bs-font-size-md);
+  --bs-btn-input-lg-line-height: var(--bs-line-height-md);
+  --bs-btn-input-lg-border-radius: var(--bs-border-radius-lg);
+  --bs-form-valid-color: var(--bs-success-text);
+  --bs-form-valid-border-color: var(--bs-success-text);
+  --bs-form-invalid-color: var(--bs-danger-text);
+  --bs-form-invalid-border-color: var(--bs-danger-text);
   --bs-primary-base: var(--bs-blue-500);
   --bs-primary-text: light-dark(var(--bs-blue-600), var(--bs-blue-400));
   --bs-primary-text-emphasis: light-dark(var(--bs-blue-800), var(--bs-blue-200));
@@ -283,7 +322,7 @@
   --bs-primary-bg-subtle: light-dark(var(--bs-blue-100), var(--bs-blue-900));
   --bs-primary-bg-muted: light-dark(var(--bs-blue-200), var(--bs-blue-800));
   --bs-primary-border: light-dark(var(--bs-blue-300), var(--bs-blue-600));
-  --bs-primary-focus-ring: color-mix(in oklch, light-dark(var(--bs-blue-500), var(--bs-blue-400)) 50%, var(--bs-bg-body));
+  --bs-primary-focus-ring: light-dark(color-mix(in oklch, var(--bs-blue-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-blue-500) 75%, var(--bs-bg-body)));
   --bs-primary-contrast: var(--bs-white);
   --bs-accent-base: var(--bs-indigo-500);
   --bs-accent-text: light-dark(var(--bs-indigo-600), color-mix(in oklch, var(--bs-indigo-400), var(--bs-indigo-300)));
@@ -292,7 +331,7 @@
   --bs-accent-bg-subtle: light-dark(var(--bs-indigo-100), var(--bs-indigo-900));
   --bs-accent-bg-muted: light-dark(var(--bs-indigo-200), var(--bs-indigo-800));
   --bs-accent-border: light-dark(var(--bs-indigo-300), var(--bs-indigo-600));
-  --bs-accent-focus-ring: color-mix(in oklch, light-dark(var(--bs-indigo-500), var(--bs-indigo-400)) 50%, var(--bs-bg-body));
+  --bs-accent-focus-ring: light-dark(color-mix(in oklch, var(--bs-indigo-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-indigo-500) 75%, var(--bs-bg-body)));
   --bs-accent-contrast: var(--bs-white);
   --bs-success-base: var(--bs-green-500);
   --bs-success-text: light-dark(var(--bs-green-600), var(--bs-green-400));
@@ -301,7 +340,7 @@
   --bs-success-bg-subtle: light-dark(var(--bs-green-100), var(--bs-green-900));
   --bs-success-bg-muted: light-dark(var(--bs-green-200), var(--bs-green-800));
   --bs-success-border: light-dark(var(--bs-green-300), var(--bs-green-600));
-  --bs-success-focus-ring: color-mix(in oklch, light-dark(var(--bs-green-500), var(--bs-green-400)) 50%, var(--bs-bg-body));
+  --bs-success-focus-ring: light-dark(color-mix(in oklch, var(--bs-green-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-green-500) 75%, var(--bs-bg-body)));
   --bs-success-contrast: var(--bs-white);
   --bs-danger-base: var(--bs-red-500);
   --bs-danger-text: light-dark(var(--bs-red-600), var(--bs-red-400));
@@ -310,7 +349,7 @@
   --bs-danger-bg-subtle: light-dark(var(--bs-red-100), var(--bs-red-900));
   --bs-danger-bg-muted: light-dark(var(--bs-red-200), var(--bs-red-800));
   --bs-danger-border: light-dark(var(--bs-red-300), var(--bs-red-600));
-  --bs-danger-focus-ring: color-mix(in oklch, light-dark(var(--bs-red-500), var(--bs-red-400)) 50%, var(--bs-bg-body));
+  --bs-danger-focus-ring: light-dark(color-mix(in oklch, var(--bs-red-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-red-500) 75%, var(--bs-bg-body)));
   --bs-danger-contrast: var(--bs-white);
   --bs-warning-base: var(--bs-yellow-500);
   --bs-warning-text: light-dark(var(--bs-yellow-700), var(--bs-yellow-400));
@@ -319,7 +358,7 @@
   --bs-warning-bg-subtle: light-dark(var(--bs-yellow-100), var(--bs-yellow-900));
   --bs-warning-bg-muted: light-dark(var(--bs-yellow-200), var(--bs-yellow-800));
   --bs-warning-border: light-dark(var(--bs-yellow-300), var(--bs-yellow-600));
-  --bs-warning-focus-ring: color-mix(in oklch, light-dark(var(--bs-yellow-500), var(--bs-yellow-400)) 50%, var(--bs-bg-body));
+  --bs-warning-focus-ring: light-dark(color-mix(in oklch, var(--bs-yellow-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-yellow-400) 85%, var(--bs-bg-body)));
   --bs-warning-contrast: var(--bs-gray-900);
   --bs-info-base: var(--bs-cyan-500);
   --bs-info-text: light-dark(var(--bs-cyan-600), var(--bs-cyan-400));
@@ -328,7 +367,7 @@
   --bs-info-bg-subtle: light-dark(var(--bs-cyan-100), var(--bs-cyan-900));
   --bs-info-bg-muted: light-dark(var(--bs-cyan-200), var(--bs-cyan-800));
   --bs-info-border: light-dark(var(--bs-cyan-300), var(--bs-cyan-600));
-  --bs-info-focus-ring: color-mix(in oklch, light-dark(var(--bs-cyan-500), var(--bs-cyan-400)) 50%, var(--bs-bg-body));
+  --bs-info-focus-ring: light-dark(color-mix(in oklch, var(--bs-cyan-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-cyan-500) 75%, var(--bs-bg-body)));
   --bs-info-contrast: var(--bs-gray-900);
   --bs-inverse-base: var(--bs-gray-900);
   --bs-inverse-text: light-dark(var(--bs-gray-900), var(--bs-gray-200));
@@ -375,9 +414,12 @@
   color-scheme: light dark;
 }
 
-:root,
+[data-bs-theme=dark] {
+  color-scheme: dark;
+}
+
 [data-bs-theme=light] {
-  --bs-root-font-size: 16px;
+  color-scheme: light;
 }
 
 @layer helpers {
@@ -493,26 +535,84 @@
   }
 }
 @layer helpers {
-  .hstack,
-  b-hstack {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-self: stretch;
+  .stack-container {
+    container-type: inline-size;
   }
-  .hstack-start,
-  b-hstack[align=start] {
+  [class*=hstack],
+  [class*=vstack] {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    align-self: stretch;
+    flex: var(--bs-stack-flex, 1 1 auto);
+    flex-direction: var(--bs-stack-direction, row);
+    align-items: var(--bs-stack-align-items, center);
+    align-self: var(--bs-stack-align-self, stretch);
   }
-  .vstack,
-  b-vstack {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    align-self: stretch;
+  .vstack {
+    --bs-stack-direction: column;
+    --bs-stack-align-items: stretch;
+  }
+  .hstack {
+    --bs-stack-direction: row;
+    --bs-stack-align-items: flex-start;
+  }
+  @container (width >= 576px) {
+    .vstack-sm {
+      --bs-stack-direction: column;
+      --bs-stack-align-items: stretch;
+    }
+  }
+  @container (width >= 576px) {
+    .hstack-sm {
+      --bs-stack-direction: row;
+      --bs-stack-align-items: flex-start;
+    }
+  }
+  @container (width >= 768px) {
+    .vstack-md {
+      --bs-stack-direction: column;
+      --bs-stack-align-items: stretch;
+    }
+  }
+  @container (width >= 768px) {
+    .hstack-md {
+      --bs-stack-direction: row;
+      --bs-stack-align-items: flex-start;
+    }
+  }
+  @container (width >= 1024px) {
+    .vstack-lg {
+      --bs-stack-direction: column;
+      --bs-stack-align-items: stretch;
+    }
+  }
+  @container (width >= 1024px) {
+    .hstack-lg {
+      --bs-stack-direction: row;
+      --bs-stack-align-items: flex-start;
+    }
+  }
+  @container (width >= 1280px) {
+    .vstack-xl {
+      --bs-stack-direction: column;
+      --bs-stack-align-items: stretch;
+    }
+  }
+  @container (width >= 1280px) {
+    .hstack-xl {
+      --bs-stack-direction: row;
+      --bs-stack-align-items: flex-start;
+    }
+  }
+  @container (width >= 1536px) {
+    .vstack-2xl {
+      --bs-stack-direction: column;
+      --bs-stack-align-items: stretch;
+    }
+  }
+  @container (width >= 1536px) {
+    .hstack-2xl {
+      --bs-stack-direction: row;
+      --bs-stack-align-items: flex-start;
+    }
   }
 }
 @layer helpers {
@@ -645,7 +745,7 @@
   .vr {
     display: inline-block;
     align-self: stretch;
-    width: var(--bs-border-width);
+    width: var(--bs-vr-border-width, var(--bs-border-width));
     min-height: 1em;
     background-color: var(--bs-border-color);
   }
@@ -819,22 +919,22 @@
     box-shadow: none;
   }
   .focus-ring-primary {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-blue-500), var(--bs-blue-400)) 50%, var(--bs-bg-body));
+    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-blue-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-blue-500) 75%, var(--bs-bg-body)));
   }
   .focus-ring-accent {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-indigo-500), var(--bs-indigo-400)) 50%, var(--bs-bg-body));
+    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-indigo-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-indigo-500) 75%, var(--bs-bg-body)));
   }
   .focus-ring-success {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-green-500), var(--bs-green-400)) 50%, var(--bs-bg-body));
+    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-green-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-green-500) 75%, var(--bs-bg-body)));
   }
   .focus-ring-danger {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-red-500), var(--bs-red-400)) 50%, var(--bs-bg-body));
+    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-red-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-red-500) 75%, var(--bs-bg-body)));
   }
   .focus-ring-warning {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-yellow-500), var(--bs-yellow-400)) 50%, var(--bs-bg-body));
+    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-yellow-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-yellow-400) 85%, var(--bs-bg-body)));
   }
   .focus-ring-info {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-cyan-500), var(--bs-cyan-400)) 50%, var(--bs-bg-body));
+    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-cyan-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-cyan-500) 75%, var(--bs-bg-body)));
   }
   .focus-ring-inverse {
     --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-gray-900), var(--bs-gray-100)) 50%, var(--bs-bg-body));
@@ -1380,6 +1480,12 @@
   .order-last {
     order: 6;
   }
+  .m--2 {
+    margin: -0.5rem;
+  }
+  .m--1 {
+    margin: -0.25rem;
+  }
   .m-0 {
     margin: 0;
   }
@@ -1400,6 +1506,12 @@
   }
   .m-auto {
     margin: auto;
+  }
+  .mx--2 {
+    margin-inline: -0.5rem;
+  }
+  .mx--1 {
+    margin-inline: -0.25rem;
   }
   .mx-0 {
     margin-inline: 0;
@@ -1422,6 +1534,12 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .my--2 {
+    margin-block: -0.5rem;
+  }
+  .my--1 {
+    margin-block: -0.25rem;
+  }
   .my-0 {
     margin-block: 0;
   }
@@ -1442,6 +1560,12 @@
   }
   .my-auto {
     margin-block: auto;
+  }
+  .mt--2 {
+    margin-block-start: -0.5rem;
+  }
+  .mt--1 {
+    margin-block-start: -0.25rem;
   }
   .mt-0 {
     margin-block-start: 0;
@@ -1464,6 +1588,12 @@
   .mt-auto {
     margin-block-start: auto;
   }
+  .me--2 {
+    margin-inline-end: -0.5rem;
+  }
+  .me--1 {
+    margin-inline-end: -0.25rem;
+  }
   .me-0 {
     margin-inline-end: 0;
   }
@@ -1484,6 +1614,12 @@
   }
   .me-auto {
     margin-inline-end: auto;
+  }
+  .mb--2 {
+    margin-block-end: -0.5rem;
+  }
+  .mb--1 {
+    margin-block-end: -0.25rem;
   }
   .mb-0 {
     margin-block-end: 0;
@@ -1506,6 +1642,12 @@
   .mb-auto {
     margin-block-end: auto;
   }
+  .ms--2 {
+    margin-inline-start: -0.5rem;
+  }
+  .ms--1 {
+    margin-inline-start: -0.25rem;
+  }
   .ms-0 {
     margin-inline-start: 0;
   }
@@ -1527,6 +1669,12 @@
   .ms-auto {
     margin-inline-start: auto;
   }
+  .p--2 {
+    padding: -0.5rem;
+  }
+  .p--1 {
+    padding: -0.25rem;
+  }
   .p-0 {
     padding: 0;
   }
@@ -1544,6 +1692,12 @@
   }
   .p-5 {
     padding: 3rem;
+  }
+  .px--2 {
+    padding-inline: -0.5rem;
+  }
+  .px--1 {
+    padding-inline: -0.25rem;
   }
   .px-0 {
     padding-inline: 0;
@@ -1563,6 +1717,12 @@
   .px-5 {
     padding-inline: 3rem;
   }
+  .py--2 {
+    padding-block: -0.5rem;
+  }
+  .py--1 {
+    padding-block: -0.25rem;
+  }
   .py-0 {
     padding-block: 0;
   }
@@ -1580,6 +1740,12 @@
   }
   .py-5 {
     padding-block: 3rem;
+  }
+  .pt--2 {
+    padding-block-start: -0.5rem;
+  }
+  .pt--1 {
+    padding-block-start: -0.25rem;
   }
   .pt-0 {
     padding-block-start: 0;
@@ -1599,6 +1765,12 @@
   .pt-5 {
     padding-block-start: 3rem;
   }
+  .pe--2 {
+    padding-inline-end: -0.5rem;
+  }
+  .pe--1 {
+    padding-inline-end: -0.25rem;
+  }
   .pe-0 {
     padding-inline-end: 0;
   }
@@ -1616,6 +1788,12 @@
   }
   .pe-5 {
     padding-inline-end: 3rem;
+  }
+  .pb--2 {
+    padding-block-end: -0.5rem;
+  }
+  .pb--1 {
+    padding-block-end: -0.25rem;
   }
   .pb-0 {
     padding-block-end: 0;
@@ -1635,6 +1813,12 @@
   .pb-5 {
     padding-block-end: 3rem;
   }
+  .ps--2 {
+    padding-inline-start: -0.5rem;
+  }
+  .ps--1 {
+    padding-inline-start: -0.25rem;
+  }
   .ps-0 {
     padding-inline-start: 0;
   }
@@ -1652,6 +1836,12 @@
   }
   .ps-5 {
     padding-inline-start: 3rem;
+  }
+  .gap--2 {
+    gap: -0.5rem;
+  }
+  .gap--1 {
+    gap: -0.25rem;
   }
   .gap-0 {
     gap: 0;
@@ -1671,6 +1861,12 @@
   .gap-5 {
     gap: 3rem;
   }
+  .row-gap--2 {
+    row-gap: -0.5rem;
+  }
+  .row-gap--1 {
+    row-gap: -0.25rem;
+  }
   .row-gap-0 {
     row-gap: 0;
   }
@@ -1688,6 +1884,14 @@
   }
   .row-gap-5 {
     row-gap: 3rem;
+  }
+  .column-gap--2 {
+    -moz-column-gap: -0.5rem;
+    column-gap: -0.5rem;
+  }
+  .column-gap--1 {
+    -moz-column-gap: -0.25rem;
+    column-gap: -0.25rem;
   }
   .column-gap-0 {
     -moz-column-gap: 0;
@@ -1714,10 +1918,10 @@
     column-gap: 3rem;
   }
   .font-monospace {
-    font-family: var(--bs-font-monospace);
+    font-family: var(--bs-font-mono);
   }
   .font-body {
-    font-family: var(--bs-font-sans-serif);
+    font-family: var(--bs-body-font-family);
   }
   .fs-xs {
     font-size: var(--bs-font-size-xs);
@@ -2863,6 +3067,12 @@
     .order-sm-last {
       order: 6;
     }
+    .m-sm--2 {
+      margin: -0.5rem;
+    }
+    .m-sm--1 {
+      margin: -0.25rem;
+    }
     .m-sm-0 {
       margin: 0;
     }
@@ -2883,6 +3093,12 @@
     }
     .m-sm-auto {
       margin: auto;
+    }
+    .mx-sm--2 {
+      margin-inline: -0.5rem;
+    }
+    .mx-sm--1 {
+      margin-inline: -0.25rem;
     }
     .mx-sm-0 {
       margin-inline: 0;
@@ -2905,6 +3121,12 @@
     .mx-sm-auto {
       margin-inline: auto;
     }
+    .my-sm--2 {
+      margin-block: -0.5rem;
+    }
+    .my-sm--1 {
+      margin-block: -0.25rem;
+    }
     .my-sm-0 {
       margin-block: 0;
     }
@@ -2925,6 +3147,12 @@
     }
     .my-sm-auto {
       margin-block: auto;
+    }
+    .mt-sm--2 {
+      margin-block-start: -0.5rem;
+    }
+    .mt-sm--1 {
+      margin-block-start: -0.25rem;
     }
     .mt-sm-0 {
       margin-block-start: 0;
@@ -2947,6 +3175,12 @@
     .mt-sm-auto {
       margin-block-start: auto;
     }
+    .me-sm--2 {
+      margin-inline-end: -0.5rem;
+    }
+    .me-sm--1 {
+      margin-inline-end: -0.25rem;
+    }
     .me-sm-0 {
       margin-inline-end: 0;
     }
@@ -2967,6 +3201,12 @@
     }
     .me-sm-auto {
       margin-inline-end: auto;
+    }
+    .mb-sm--2 {
+      margin-block-end: -0.5rem;
+    }
+    .mb-sm--1 {
+      margin-block-end: -0.25rem;
     }
     .mb-sm-0 {
       margin-block-end: 0;
@@ -2989,6 +3229,12 @@
     .mb-sm-auto {
       margin-block-end: auto;
     }
+    .ms-sm--2 {
+      margin-inline-start: -0.5rem;
+    }
+    .ms-sm--1 {
+      margin-inline-start: -0.25rem;
+    }
     .ms-sm-0 {
       margin-inline-start: 0;
     }
@@ -3010,6 +3256,12 @@
     .ms-sm-auto {
       margin-inline-start: auto;
     }
+    .p-sm--2 {
+      padding: -0.5rem;
+    }
+    .p-sm--1 {
+      padding: -0.25rem;
+    }
     .p-sm-0 {
       padding: 0;
     }
@@ -3027,6 +3279,12 @@
     }
     .p-sm-5 {
       padding: 3rem;
+    }
+    .px-sm--2 {
+      padding-inline: -0.5rem;
+    }
+    .px-sm--1 {
+      padding-inline: -0.25rem;
     }
     .px-sm-0 {
       padding-inline: 0;
@@ -3046,6 +3304,12 @@
     .px-sm-5 {
       padding-inline: 3rem;
     }
+    .py-sm--2 {
+      padding-block: -0.5rem;
+    }
+    .py-sm--1 {
+      padding-block: -0.25rem;
+    }
     .py-sm-0 {
       padding-block: 0;
     }
@@ -3063,6 +3327,12 @@
     }
     .py-sm-5 {
       padding-block: 3rem;
+    }
+    .pt-sm--2 {
+      padding-block-start: -0.5rem;
+    }
+    .pt-sm--1 {
+      padding-block-start: -0.25rem;
     }
     .pt-sm-0 {
       padding-block-start: 0;
@@ -3082,6 +3352,12 @@
     .pt-sm-5 {
       padding-block-start: 3rem;
     }
+    .pe-sm--2 {
+      padding-inline-end: -0.5rem;
+    }
+    .pe-sm--1 {
+      padding-inline-end: -0.25rem;
+    }
     .pe-sm-0 {
       padding-inline-end: 0;
     }
@@ -3099,6 +3375,12 @@
     }
     .pe-sm-5 {
       padding-inline-end: 3rem;
+    }
+    .pb-sm--2 {
+      padding-block-end: -0.5rem;
+    }
+    .pb-sm--1 {
+      padding-block-end: -0.25rem;
     }
     .pb-sm-0 {
       padding-block-end: 0;
@@ -3118,6 +3400,12 @@
     .pb-sm-5 {
       padding-block-end: 3rem;
     }
+    .ps-sm--2 {
+      padding-inline-start: -0.5rem;
+    }
+    .ps-sm--1 {
+      padding-inline-start: -0.25rem;
+    }
     .ps-sm-0 {
       padding-inline-start: 0;
     }
@@ -3135,6 +3423,12 @@
     }
     .ps-sm-5 {
       padding-inline-start: 3rem;
+    }
+    .gap-sm--2 {
+      gap: -0.5rem;
+    }
+    .gap-sm--1 {
+      gap: -0.25rem;
     }
     .gap-sm-0 {
       gap: 0;
@@ -3154,6 +3448,12 @@
     .gap-sm-5 {
       gap: 3rem;
     }
+    .row-gap-sm--2 {
+      row-gap: -0.5rem;
+    }
+    .row-gap-sm--1 {
+      row-gap: -0.25rem;
+    }
     .row-gap-sm-0 {
       row-gap: 0;
     }
@@ -3171,6 +3471,14 @@
     }
     .row-gap-sm-5 {
       row-gap: 3rem;
+    }
+    .column-gap-sm--2 {
+      -moz-column-gap: -0.5rem;
+      column-gap: -0.5rem;
+    }
+    .column-gap-sm--1 {
+      -moz-column-gap: -0.25rem;
+      column-gap: -0.25rem;
     }
     .column-gap-sm-0 {
       -moz-column-gap: 0;
@@ -3458,6 +3766,12 @@
     .order-md-last {
       order: 6;
     }
+    .m-md--2 {
+      margin: -0.5rem;
+    }
+    .m-md--1 {
+      margin: -0.25rem;
+    }
     .m-md-0 {
       margin: 0;
     }
@@ -3478,6 +3792,12 @@
     }
     .m-md-auto {
       margin: auto;
+    }
+    .mx-md--2 {
+      margin-inline: -0.5rem;
+    }
+    .mx-md--1 {
+      margin-inline: -0.25rem;
     }
     .mx-md-0 {
       margin-inline: 0;
@@ -3500,6 +3820,12 @@
     .mx-md-auto {
       margin-inline: auto;
     }
+    .my-md--2 {
+      margin-block: -0.5rem;
+    }
+    .my-md--1 {
+      margin-block: -0.25rem;
+    }
     .my-md-0 {
       margin-block: 0;
     }
@@ -3520,6 +3846,12 @@
     }
     .my-md-auto {
       margin-block: auto;
+    }
+    .mt-md--2 {
+      margin-block-start: -0.5rem;
+    }
+    .mt-md--1 {
+      margin-block-start: -0.25rem;
     }
     .mt-md-0 {
       margin-block-start: 0;
@@ -3542,6 +3874,12 @@
     .mt-md-auto {
       margin-block-start: auto;
     }
+    .me-md--2 {
+      margin-inline-end: -0.5rem;
+    }
+    .me-md--1 {
+      margin-inline-end: -0.25rem;
+    }
     .me-md-0 {
       margin-inline-end: 0;
     }
@@ -3562,6 +3900,12 @@
     }
     .me-md-auto {
       margin-inline-end: auto;
+    }
+    .mb-md--2 {
+      margin-block-end: -0.5rem;
+    }
+    .mb-md--1 {
+      margin-block-end: -0.25rem;
     }
     .mb-md-0 {
       margin-block-end: 0;
@@ -3584,6 +3928,12 @@
     .mb-md-auto {
       margin-block-end: auto;
     }
+    .ms-md--2 {
+      margin-inline-start: -0.5rem;
+    }
+    .ms-md--1 {
+      margin-inline-start: -0.25rem;
+    }
     .ms-md-0 {
       margin-inline-start: 0;
     }
@@ -3605,6 +3955,12 @@
     .ms-md-auto {
       margin-inline-start: auto;
     }
+    .p-md--2 {
+      padding: -0.5rem;
+    }
+    .p-md--1 {
+      padding: -0.25rem;
+    }
     .p-md-0 {
       padding: 0;
     }
@@ -3622,6 +3978,12 @@
     }
     .p-md-5 {
       padding: 3rem;
+    }
+    .px-md--2 {
+      padding-inline: -0.5rem;
+    }
+    .px-md--1 {
+      padding-inline: -0.25rem;
     }
     .px-md-0 {
       padding-inline: 0;
@@ -3641,6 +4003,12 @@
     .px-md-5 {
       padding-inline: 3rem;
     }
+    .py-md--2 {
+      padding-block: -0.5rem;
+    }
+    .py-md--1 {
+      padding-block: -0.25rem;
+    }
     .py-md-0 {
       padding-block: 0;
     }
@@ -3658,6 +4026,12 @@
     }
     .py-md-5 {
       padding-block: 3rem;
+    }
+    .pt-md--2 {
+      padding-block-start: -0.5rem;
+    }
+    .pt-md--1 {
+      padding-block-start: -0.25rem;
     }
     .pt-md-0 {
       padding-block-start: 0;
@@ -3677,6 +4051,12 @@
     .pt-md-5 {
       padding-block-start: 3rem;
     }
+    .pe-md--2 {
+      padding-inline-end: -0.5rem;
+    }
+    .pe-md--1 {
+      padding-inline-end: -0.25rem;
+    }
     .pe-md-0 {
       padding-inline-end: 0;
     }
@@ -3694,6 +4074,12 @@
     }
     .pe-md-5 {
       padding-inline-end: 3rem;
+    }
+    .pb-md--2 {
+      padding-block-end: -0.5rem;
+    }
+    .pb-md--1 {
+      padding-block-end: -0.25rem;
     }
     .pb-md-0 {
       padding-block-end: 0;
@@ -3713,6 +4099,12 @@
     .pb-md-5 {
       padding-block-end: 3rem;
     }
+    .ps-md--2 {
+      padding-inline-start: -0.5rem;
+    }
+    .ps-md--1 {
+      padding-inline-start: -0.25rem;
+    }
     .ps-md-0 {
       padding-inline-start: 0;
     }
@@ -3730,6 +4122,12 @@
     }
     .ps-md-5 {
       padding-inline-start: 3rem;
+    }
+    .gap-md--2 {
+      gap: -0.5rem;
+    }
+    .gap-md--1 {
+      gap: -0.25rem;
     }
     .gap-md-0 {
       gap: 0;
@@ -3749,6 +4147,12 @@
     .gap-md-5 {
       gap: 3rem;
     }
+    .row-gap-md--2 {
+      row-gap: -0.5rem;
+    }
+    .row-gap-md--1 {
+      row-gap: -0.25rem;
+    }
     .row-gap-md-0 {
       row-gap: 0;
     }
@@ -3766,6 +4170,14 @@
     }
     .row-gap-md-5 {
       row-gap: 3rem;
+    }
+    .column-gap-md--2 {
+      -moz-column-gap: -0.5rem;
+      column-gap: -0.5rem;
+    }
+    .column-gap-md--1 {
+      -moz-column-gap: -0.25rem;
+      column-gap: -0.25rem;
     }
     .column-gap-md-0 {
       -moz-column-gap: 0;
@@ -4053,6 +4465,12 @@
     .order-lg-last {
       order: 6;
     }
+    .m-lg--2 {
+      margin: -0.5rem;
+    }
+    .m-lg--1 {
+      margin: -0.25rem;
+    }
     .m-lg-0 {
       margin: 0;
     }
@@ -4073,6 +4491,12 @@
     }
     .m-lg-auto {
       margin: auto;
+    }
+    .mx-lg--2 {
+      margin-inline: -0.5rem;
+    }
+    .mx-lg--1 {
+      margin-inline: -0.25rem;
     }
     .mx-lg-0 {
       margin-inline: 0;
@@ -4095,6 +4519,12 @@
     .mx-lg-auto {
       margin-inline: auto;
     }
+    .my-lg--2 {
+      margin-block: -0.5rem;
+    }
+    .my-lg--1 {
+      margin-block: -0.25rem;
+    }
     .my-lg-0 {
       margin-block: 0;
     }
@@ -4115,6 +4545,12 @@
     }
     .my-lg-auto {
       margin-block: auto;
+    }
+    .mt-lg--2 {
+      margin-block-start: -0.5rem;
+    }
+    .mt-lg--1 {
+      margin-block-start: -0.25rem;
     }
     .mt-lg-0 {
       margin-block-start: 0;
@@ -4137,6 +4573,12 @@
     .mt-lg-auto {
       margin-block-start: auto;
     }
+    .me-lg--2 {
+      margin-inline-end: -0.5rem;
+    }
+    .me-lg--1 {
+      margin-inline-end: -0.25rem;
+    }
     .me-lg-0 {
       margin-inline-end: 0;
     }
@@ -4157,6 +4599,12 @@
     }
     .me-lg-auto {
       margin-inline-end: auto;
+    }
+    .mb-lg--2 {
+      margin-block-end: -0.5rem;
+    }
+    .mb-lg--1 {
+      margin-block-end: -0.25rem;
     }
     .mb-lg-0 {
       margin-block-end: 0;
@@ -4179,6 +4627,12 @@
     .mb-lg-auto {
       margin-block-end: auto;
     }
+    .ms-lg--2 {
+      margin-inline-start: -0.5rem;
+    }
+    .ms-lg--1 {
+      margin-inline-start: -0.25rem;
+    }
     .ms-lg-0 {
       margin-inline-start: 0;
     }
@@ -4200,6 +4654,12 @@
     .ms-lg-auto {
       margin-inline-start: auto;
     }
+    .p-lg--2 {
+      padding: -0.5rem;
+    }
+    .p-lg--1 {
+      padding: -0.25rem;
+    }
     .p-lg-0 {
       padding: 0;
     }
@@ -4217,6 +4677,12 @@
     }
     .p-lg-5 {
       padding: 3rem;
+    }
+    .px-lg--2 {
+      padding-inline: -0.5rem;
+    }
+    .px-lg--1 {
+      padding-inline: -0.25rem;
     }
     .px-lg-0 {
       padding-inline: 0;
@@ -4236,6 +4702,12 @@
     .px-lg-5 {
       padding-inline: 3rem;
     }
+    .py-lg--2 {
+      padding-block: -0.5rem;
+    }
+    .py-lg--1 {
+      padding-block: -0.25rem;
+    }
     .py-lg-0 {
       padding-block: 0;
     }
@@ -4253,6 +4725,12 @@
     }
     .py-lg-5 {
       padding-block: 3rem;
+    }
+    .pt-lg--2 {
+      padding-block-start: -0.5rem;
+    }
+    .pt-lg--1 {
+      padding-block-start: -0.25rem;
     }
     .pt-lg-0 {
       padding-block-start: 0;
@@ -4272,6 +4750,12 @@
     .pt-lg-5 {
       padding-block-start: 3rem;
     }
+    .pe-lg--2 {
+      padding-inline-end: -0.5rem;
+    }
+    .pe-lg--1 {
+      padding-inline-end: -0.25rem;
+    }
     .pe-lg-0 {
       padding-inline-end: 0;
     }
@@ -4289,6 +4773,12 @@
     }
     .pe-lg-5 {
       padding-inline-end: 3rem;
+    }
+    .pb-lg--2 {
+      padding-block-end: -0.5rem;
+    }
+    .pb-lg--1 {
+      padding-block-end: -0.25rem;
     }
     .pb-lg-0 {
       padding-block-end: 0;
@@ -4308,6 +4798,12 @@
     .pb-lg-5 {
       padding-block-end: 3rem;
     }
+    .ps-lg--2 {
+      padding-inline-start: -0.5rem;
+    }
+    .ps-lg--1 {
+      padding-inline-start: -0.25rem;
+    }
     .ps-lg-0 {
       padding-inline-start: 0;
     }
@@ -4325,6 +4821,12 @@
     }
     .ps-lg-5 {
       padding-inline-start: 3rem;
+    }
+    .gap-lg--2 {
+      gap: -0.5rem;
+    }
+    .gap-lg--1 {
+      gap: -0.25rem;
     }
     .gap-lg-0 {
       gap: 0;
@@ -4344,6 +4846,12 @@
     .gap-lg-5 {
       gap: 3rem;
     }
+    .row-gap-lg--2 {
+      row-gap: -0.5rem;
+    }
+    .row-gap-lg--1 {
+      row-gap: -0.25rem;
+    }
     .row-gap-lg-0 {
       row-gap: 0;
     }
@@ -4361,6 +4869,14 @@
     }
     .row-gap-lg-5 {
       row-gap: 3rem;
+    }
+    .column-gap-lg--2 {
+      -moz-column-gap: -0.5rem;
+      column-gap: -0.5rem;
+    }
+    .column-gap-lg--1 {
+      -moz-column-gap: -0.25rem;
+      column-gap: -0.25rem;
     }
     .column-gap-lg-0 {
       -moz-column-gap: 0;
@@ -4648,6 +5164,12 @@
     .order-xl-last {
       order: 6;
     }
+    .m-xl--2 {
+      margin: -0.5rem;
+    }
+    .m-xl--1 {
+      margin: -0.25rem;
+    }
     .m-xl-0 {
       margin: 0;
     }
@@ -4668,6 +5190,12 @@
     }
     .m-xl-auto {
       margin: auto;
+    }
+    .mx-xl--2 {
+      margin-inline: -0.5rem;
+    }
+    .mx-xl--1 {
+      margin-inline: -0.25rem;
     }
     .mx-xl-0 {
       margin-inline: 0;
@@ -4690,6 +5218,12 @@
     .mx-xl-auto {
       margin-inline: auto;
     }
+    .my-xl--2 {
+      margin-block: -0.5rem;
+    }
+    .my-xl--1 {
+      margin-block: -0.25rem;
+    }
     .my-xl-0 {
       margin-block: 0;
     }
@@ -4710,6 +5244,12 @@
     }
     .my-xl-auto {
       margin-block: auto;
+    }
+    .mt-xl--2 {
+      margin-block-start: -0.5rem;
+    }
+    .mt-xl--1 {
+      margin-block-start: -0.25rem;
     }
     .mt-xl-0 {
       margin-block-start: 0;
@@ -4732,6 +5272,12 @@
     .mt-xl-auto {
       margin-block-start: auto;
     }
+    .me-xl--2 {
+      margin-inline-end: -0.5rem;
+    }
+    .me-xl--1 {
+      margin-inline-end: -0.25rem;
+    }
     .me-xl-0 {
       margin-inline-end: 0;
     }
@@ -4752,6 +5298,12 @@
     }
     .me-xl-auto {
       margin-inline-end: auto;
+    }
+    .mb-xl--2 {
+      margin-block-end: -0.5rem;
+    }
+    .mb-xl--1 {
+      margin-block-end: -0.25rem;
     }
     .mb-xl-0 {
       margin-block-end: 0;
@@ -4774,6 +5326,12 @@
     .mb-xl-auto {
       margin-block-end: auto;
     }
+    .ms-xl--2 {
+      margin-inline-start: -0.5rem;
+    }
+    .ms-xl--1 {
+      margin-inline-start: -0.25rem;
+    }
     .ms-xl-0 {
       margin-inline-start: 0;
     }
@@ -4795,6 +5353,12 @@
     .ms-xl-auto {
       margin-inline-start: auto;
     }
+    .p-xl--2 {
+      padding: -0.5rem;
+    }
+    .p-xl--1 {
+      padding: -0.25rem;
+    }
     .p-xl-0 {
       padding: 0;
     }
@@ -4812,6 +5376,12 @@
     }
     .p-xl-5 {
       padding: 3rem;
+    }
+    .px-xl--2 {
+      padding-inline: -0.5rem;
+    }
+    .px-xl--1 {
+      padding-inline: -0.25rem;
     }
     .px-xl-0 {
       padding-inline: 0;
@@ -4831,6 +5401,12 @@
     .px-xl-5 {
       padding-inline: 3rem;
     }
+    .py-xl--2 {
+      padding-block: -0.5rem;
+    }
+    .py-xl--1 {
+      padding-block: -0.25rem;
+    }
     .py-xl-0 {
       padding-block: 0;
     }
@@ -4848,6 +5424,12 @@
     }
     .py-xl-5 {
       padding-block: 3rem;
+    }
+    .pt-xl--2 {
+      padding-block-start: -0.5rem;
+    }
+    .pt-xl--1 {
+      padding-block-start: -0.25rem;
     }
     .pt-xl-0 {
       padding-block-start: 0;
@@ -4867,6 +5449,12 @@
     .pt-xl-5 {
       padding-block-start: 3rem;
     }
+    .pe-xl--2 {
+      padding-inline-end: -0.5rem;
+    }
+    .pe-xl--1 {
+      padding-inline-end: -0.25rem;
+    }
     .pe-xl-0 {
       padding-inline-end: 0;
     }
@@ -4884,6 +5472,12 @@
     }
     .pe-xl-5 {
       padding-inline-end: 3rem;
+    }
+    .pb-xl--2 {
+      padding-block-end: -0.5rem;
+    }
+    .pb-xl--1 {
+      padding-block-end: -0.25rem;
     }
     .pb-xl-0 {
       padding-block-end: 0;
@@ -4903,6 +5497,12 @@
     .pb-xl-5 {
       padding-block-end: 3rem;
     }
+    .ps-xl--2 {
+      padding-inline-start: -0.5rem;
+    }
+    .ps-xl--1 {
+      padding-inline-start: -0.25rem;
+    }
     .ps-xl-0 {
       padding-inline-start: 0;
     }
@@ -4920,6 +5520,12 @@
     }
     .ps-xl-5 {
       padding-inline-start: 3rem;
+    }
+    .gap-xl--2 {
+      gap: -0.5rem;
+    }
+    .gap-xl--1 {
+      gap: -0.25rem;
     }
     .gap-xl-0 {
       gap: 0;
@@ -4939,6 +5545,12 @@
     .gap-xl-5 {
       gap: 3rem;
     }
+    .row-gap-xl--2 {
+      row-gap: -0.5rem;
+    }
+    .row-gap-xl--1 {
+      row-gap: -0.25rem;
+    }
     .row-gap-xl-0 {
       row-gap: 0;
     }
@@ -4956,6 +5568,14 @@
     }
     .row-gap-xl-5 {
       row-gap: 3rem;
+    }
+    .column-gap-xl--2 {
+      -moz-column-gap: -0.5rem;
+      column-gap: -0.5rem;
+    }
+    .column-gap-xl--1 {
+      -moz-column-gap: -0.25rem;
+      column-gap: -0.25rem;
     }
     .column-gap-xl-0 {
       -moz-column-gap: 0;
@@ -5243,6 +5863,12 @@
     .order-2xl-last {
       order: 6;
     }
+    .m-2xl--2 {
+      margin: -0.5rem;
+    }
+    .m-2xl--1 {
+      margin: -0.25rem;
+    }
     .m-2xl-0 {
       margin: 0;
     }
@@ -5263,6 +5889,12 @@
     }
     .m-2xl-auto {
       margin: auto;
+    }
+    .mx-2xl--2 {
+      margin-inline: -0.5rem;
+    }
+    .mx-2xl--1 {
+      margin-inline: -0.25rem;
     }
     .mx-2xl-0 {
       margin-inline: 0;
@@ -5285,6 +5917,12 @@
     .mx-2xl-auto {
       margin-inline: auto;
     }
+    .my-2xl--2 {
+      margin-block: -0.5rem;
+    }
+    .my-2xl--1 {
+      margin-block: -0.25rem;
+    }
     .my-2xl-0 {
       margin-block: 0;
     }
@@ -5305,6 +5943,12 @@
     }
     .my-2xl-auto {
       margin-block: auto;
+    }
+    .mt-2xl--2 {
+      margin-block-start: -0.5rem;
+    }
+    .mt-2xl--1 {
+      margin-block-start: -0.25rem;
     }
     .mt-2xl-0 {
       margin-block-start: 0;
@@ -5327,6 +5971,12 @@
     .mt-2xl-auto {
       margin-block-start: auto;
     }
+    .me-2xl--2 {
+      margin-inline-end: -0.5rem;
+    }
+    .me-2xl--1 {
+      margin-inline-end: -0.25rem;
+    }
     .me-2xl-0 {
       margin-inline-end: 0;
     }
@@ -5347,6 +5997,12 @@
     }
     .me-2xl-auto {
       margin-inline-end: auto;
+    }
+    .mb-2xl--2 {
+      margin-block-end: -0.5rem;
+    }
+    .mb-2xl--1 {
+      margin-block-end: -0.25rem;
     }
     .mb-2xl-0 {
       margin-block-end: 0;
@@ -5369,6 +6025,12 @@
     .mb-2xl-auto {
       margin-block-end: auto;
     }
+    .ms-2xl--2 {
+      margin-inline-start: -0.5rem;
+    }
+    .ms-2xl--1 {
+      margin-inline-start: -0.25rem;
+    }
     .ms-2xl-0 {
       margin-inline-start: 0;
     }
@@ -5390,6 +6052,12 @@
     .ms-2xl-auto {
       margin-inline-start: auto;
     }
+    .p-2xl--2 {
+      padding: -0.5rem;
+    }
+    .p-2xl--1 {
+      padding: -0.25rem;
+    }
     .p-2xl-0 {
       padding: 0;
     }
@@ -5407,6 +6075,12 @@
     }
     .p-2xl-5 {
       padding: 3rem;
+    }
+    .px-2xl--2 {
+      padding-inline: -0.5rem;
+    }
+    .px-2xl--1 {
+      padding-inline: -0.25rem;
     }
     .px-2xl-0 {
       padding-inline: 0;
@@ -5426,6 +6100,12 @@
     .px-2xl-5 {
       padding-inline: 3rem;
     }
+    .py-2xl--2 {
+      padding-block: -0.5rem;
+    }
+    .py-2xl--1 {
+      padding-block: -0.25rem;
+    }
     .py-2xl-0 {
       padding-block: 0;
     }
@@ -5443,6 +6123,12 @@
     }
     .py-2xl-5 {
       padding-block: 3rem;
+    }
+    .pt-2xl--2 {
+      padding-block-start: -0.5rem;
+    }
+    .pt-2xl--1 {
+      padding-block-start: -0.25rem;
     }
     .pt-2xl-0 {
       padding-block-start: 0;
@@ -5462,6 +6148,12 @@
     .pt-2xl-5 {
       padding-block-start: 3rem;
     }
+    .pe-2xl--2 {
+      padding-inline-end: -0.5rem;
+    }
+    .pe-2xl--1 {
+      padding-inline-end: -0.25rem;
+    }
     .pe-2xl-0 {
       padding-inline-end: 0;
     }
@@ -5479,6 +6171,12 @@
     }
     .pe-2xl-5 {
       padding-inline-end: 3rem;
+    }
+    .pb-2xl--2 {
+      padding-block-end: -0.5rem;
+    }
+    .pb-2xl--1 {
+      padding-block-end: -0.25rem;
     }
     .pb-2xl-0 {
       padding-block-end: 0;
@@ -5498,6 +6196,12 @@
     .pb-2xl-5 {
       padding-block-end: 3rem;
     }
+    .ps-2xl--2 {
+      padding-inline-start: -0.5rem;
+    }
+    .ps-2xl--1 {
+      padding-inline-start: -0.25rem;
+    }
     .ps-2xl-0 {
       padding-inline-start: 0;
     }
@@ -5515,6 +6219,12 @@
     }
     .ps-2xl-5 {
       padding-inline-start: 3rem;
+    }
+    .gap-2xl--2 {
+      gap: -0.5rem;
+    }
+    .gap-2xl--1 {
+      gap: -0.25rem;
     }
     .gap-2xl-0 {
       gap: 0;
@@ -5534,6 +6244,12 @@
     .gap-2xl-5 {
       gap: 3rem;
     }
+    .row-gap-2xl--2 {
+      row-gap: -0.5rem;
+    }
+    .row-gap-2xl--1 {
+      row-gap: -0.25rem;
+    }
     .row-gap-2xl-0 {
       row-gap: 0;
     }
@@ -5551,6 +6267,14 @@
     }
     .row-gap-2xl-5 {
       row-gap: 3rem;
+    }
+    .column-gap-2xl--2 {
+      -moz-column-gap: -0.5rem;
+      column-gap: -0.5rem;
+    }
+    .column-gap-2xl--1 {
+      -moz-column-gap: -0.25rem;
+      column-gap: -0.25rem;
     }
     .column-gap-2xl-0 {
       -moz-column-gap: 0;
