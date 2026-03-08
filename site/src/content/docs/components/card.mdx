@@ -8,14 +8,14 @@ import { getData } from '@libs/data'
 
 Cards are flexible and extensible content containers. They include options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. **Cards have no fixed width to start**, so they’ll naturally fill the full width of its parent element, or slot into your grid columns. This is easily customized with our various [sizing options](#width).
 
-<Example code={`<div class="card" style="width: 280px">
-    <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
+<Example code={`<section class="card" style="width: 280px">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
       <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
-  </div>`} />
+    <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
+  </section>`} />
 
 ## How it works
 
@@ -30,6 +30,8 @@ Cards are built with as little markup and styles as possible, but still manage t
 - Card and card body are both `flex` containers, so content can be aligned and stretched as needed with utilities and whatever HTML you require.
 
 - Cards can have nearly any content, including text, images, lists, and more.
+
+- Our examples use `<div>`s for card elements, but you can use whatever semantic HTML makes sense for your content. Use `<section>` for cards that represent a thematic grouping of content, `<article>` for self-contained compositions like blog posts or news items, or keep using `<div>`s when no additional semantics are needed.
 
 ## Content types
 
@@ -56,7 +58,7 @@ Titles, text, and links within cards all have required class names for managing 
 <Example code={`<div class="card" style="width: 18rem;">
     <div class="card-body">
       <h4 class="card-title">Example card title</h4>
-      <h6 class="card-subtitle fg-3">With a card subtitle</h6>
+      <p class="card-subtitle fg-3">With a card subtitle</p>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
       <a href="#">Card link</a>
     </div>
