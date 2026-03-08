@@ -9,7 +9,7 @@
 // mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
 
 // scss-docs-start navbar-breakpoints
-$navbar-breakpoints: $grid-breakpoints !default;
+$navbar-breakpoints: $breakpoints !default;
 // scss-docs-end navbar-breakpoints
 
 $navbar-tokens: () !default;

@@ -1,9 +1,9 @@
 @use "sass:map";
 @use "colors" as *;
+@use "config" as *;
 @use "functions" as *;
 @use "variables" as *;
 @use "theme" as *;
-// @use "maps" as *;
 @use "mixins/tokens" as *;
 @use "forms/form-variables" as *;
 
@@ -183,6 +183,11 @@ $root-tokens: defaults(
   $root-tokens: map.set($root-tokens, --border-#{$key}, $value);
 }
 // scss-docs-end root-theme-tokens
+
+// Generate breakpoint tokens
+@each $name, $value in $breakpoints {
+  $root-tokens: map.set($root-tokens, --breakpoint-#{$name}, $value);
+}
 
 :root {
   @include tokens($root-tokens);

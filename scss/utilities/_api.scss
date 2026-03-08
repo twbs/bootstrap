@@ -7,11 +7,11 @@
 
 @layer utilities {
   // Loop over each breakpoint
-  @each $breakpoint in map.keys($grid-breakpoints) {
+  @each $breakpoint in map.keys($breakpoints) {
 
     // Generate media query if needed
     @include media-breakpoint-up($breakpoint) {
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+      $infix: breakpoint-infix($breakpoint, $breakpoints);
 
       // Loop over each utility property
       @each $key, $utility in $utilities {
