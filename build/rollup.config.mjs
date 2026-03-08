@@ -12,7 +12,7 @@ const BUNDLE = process.env.BUNDLE === 'true'
 const ESM = process.env.ESM === 'true'
 
 let destinationFile = `bootstrap${ESM ? '.esm' : ''}`
-const external = ['@floating-ui/dom']
+const external = ['@floating-ui/dom', 'vanilla-calendar-pro']
 const plugins = [
   babel({
     // Only transpile our source code
@@ -22,14 +22,16 @@ const plugins = [
   })
 ]
 const globals = {
-  '@floating-ui/dom': 'FloatingUIDOM'
+  '@floating-ui/dom': 'FloatingUIDOM',
+  'vanilla-calendar-pro': 'VanillaCalendarPro'
 }
 
 if (BUNDLE) {
   destinationFile += '.bundle'
-  // Remove last entry in external array to bundle Floating UI
-  external.pop()
+  // Remove all entries in external array to bundle Floating UI and Vanilla Calendar Pro
+  external.length = 0
   delete globals['@floating-ui/dom']
+  delete globals['vanilla-calendar-pro']
   plugins.push(
     replace({
       'process.env.NODE_ENV': '"production"',

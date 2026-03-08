@@ -32,10 +32,10 @@ We’re building a Parcel project with Bootstrap from scratch, so there are some
    npm i --save-dev parcel
    ```
 
-3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Floating UI here.
+3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using dropdowns, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom
+   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
    ```
 
 Now that we have all the necessary dependencies installed, we can get to work creating the project files and importing Bootstrap.
@@ -138,7 +138,7 @@ Importing Bootstrap into Parcel requires two imports, one into our `styles.scss`
    }
    ```
 
-2. **Import Bootstrap’s JS.** Add the following to `src/js/main.js` to import all of Bootstrap’s JS. Floating UI will be imported automatically through Bootstrap.
+2. **Import Bootstrap’s JS.** Add the following to `src/js/main.js` to import all of Bootstrap’s JS. Floating UI and Vanilla Calendar Pro will be imported automatically through Bootstrap.
 
    ```js
    // Import all of Bootstrap’s JS

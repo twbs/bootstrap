@@ -83,10 +83,11 @@ Here are our primary CDN links for CSS and JavaScript:
 <script src="[[config:cdn.js_bundle]]" integrity="[[config:cdn.js_bundle_hash]]" crossorigin="anonymous"></script>
 ```
 
-If you’re using our compiled JavaScript and prefer to include Floating UI separately, add Floating UI before our JS, via a CDN preferably.
+If you’re using our compiled JavaScript and prefer to include Floating UI and Vanilla Calendar Pro separately, add them before our JS, via a CDN preferably.
 
 ```html
 <script src="[[config:cdn.floating_ui]]" integrity="[[config:cdn.floating_ui_hash]]" crossorigin="anonymous"></script>
+<script src="[[config:cdn.vanilla_calendar_pro]]" integrity="[[config:cdn.vanilla_calendar_pro_hash]]" crossorigin="anonymous"></script>
 <script src="[[config:cdn.js]]" integrity="[[config:cdn.js_hash]]" crossorigin="anonymous"></script>
 ```
 
@@ -94,7 +95,7 @@ If you’re using our compiled JavaScript and prefer to include Floating UI sepa
 | File type | URL |
 | --- | --- |
 | CSS | [`[[config:cdn.css]]`]([[config:cdn.css]]) |
-| JS (with Floating UI) | [`[[config:cdn.js_bundle]]`]([[config:cdn.js_bundle]]) |
+| JS bundle (with Floating UI and Vanilla Calendar Pro) | [`[[config:cdn.js_bundle]]`]([[config:cdn.js_bundle]]) |
 </BsTable>
 
 ### Using CDNs
@@ -130,7 +131,7 @@ You can also do the old fashioned thing and download Bootstrap manually. Choose 
 <BsTable>
 | Type | Description | Link |
 | --- | --- | --- |
-| <strong class="text-nowrap">Distribution files</strong> | Ready-to-use compiled and minified CSS and JavaScript files. Doesn't include documentation, source files, or dependencies like Floating UI. | <a href="[[config:download.dist]]" class="btn btn-subtle theme-accent">Download</a> |
+| <strong class="text-nowrap">Distribution files</strong> | Ready-to-use compiled and minified CSS and JavaScript files. Doesn't include documentation, source files, or dependencies like Floating UI and Vanilla Calendar Pro. | <a href="[[config:download.dist]]" class="btn btn-subtle theme-accent">Download</a> |
 | <strong class="text-nowrap">Source files</strong> | Sass, JavaScript, and documentation files for compiling with your own asset pipeline. Requires [Sass compiler]([[docsref:/guides/contribute#sass]]), [Autoprefixer](https://github.com/postcss/autoprefixer), and a JavaScript bundler like [Rollup](https://rollupjs.org/) or [Webpack](https://webpack.js.org/). | <a href="[[config:download.source]]" class="btn btn-subtle theme-accent">Download</a> |
 </BsTable>
 

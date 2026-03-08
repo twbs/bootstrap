@@ -22,10 +22,10 @@ We’re building a npm project with Bootstrap from scratch, so there are some pr
    npm init -y
    ```
 
-2. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Floating UI here.
+2. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using dropdowns, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom
+   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
    ```
 3. **Install additional dependencies.** In addition to Vite and Bootstrap, we have some dependencies used to import and bundle Bootstrap’s CSS. Sass compiles our source `.scss` files into CSS and then Autoprefixer and PostCSS handle browser compatibility. We install the `postcss-cli` package so we can work with PostCSS via CLI.
 
