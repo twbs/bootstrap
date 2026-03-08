@@ -56,13 +56,13 @@ $sizes: (
   12: calc($spacer * 12),
 ) !default;
 
-// Grid breakpoints
+// Breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
-// scss-docs-start grid-breakpoints
-$grid-breakpoints: (
+// scss-docs-start breakpoints
+$breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
@@ -70,10 +70,10 @@ $grid-breakpoints: (
   xl: 1280px,
   2xl: 1536px
 ) !default;
-// scss-docs-end grid-breakpoints
+// scss-docs-end breakpoints
 
-// @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-// @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+// @include _assert-ascending($breakpoints, "$breakpoints");
+// @include _assert-starts-at-zero($breakpoints, "$breakpoints");
 
 // Grid columns
 //

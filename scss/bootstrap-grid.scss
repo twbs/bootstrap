@@ -9,6 +9,12 @@
 @forward "utilities"; // Make utilities available downstream
 @use "utilities" as *; // Bring utilities into the current namespace
 
+:root {
+  @each $name, $value in $breakpoints {
+    --breakpoint-#{$name}: #{$value};
+  }
+}
+
 @forward "layout/containers";
 @forward "layout/grid";
 

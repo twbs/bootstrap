@@ -184,6 +184,11 @@ $root-tokens: defaults(
 }
 // scss-docs-end root-theme-tokens
 
+// Generate breakpoint tokens
+@each $name, $value in $breakpoints {
+  $root-tokens: map.set($root-tokens, --breakpoint-#{$name}, $value);
+}
+
 :root {
   @include tokens($root-tokens);
 

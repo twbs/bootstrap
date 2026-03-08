@@ -4,12 +4,6 @@
 // mdo-do
 // - check gap utilities as replacement for gutter classes from v5
 
-:root {
-  @each $name, $value in $grid-breakpoints {
-    --breakpoint-#{$name}: #{$value};
-  }
-}
-
 @layer layout {
   @if $enable-grid-classes {
     .row {
