@@ -219,6 +219,23 @@ Add `.disabled` to items in the dropdown to style them as disabled.
     <li><a class="dropdown-item" href="#">Another link</a></li>
   </ul>`} />
 
+### Variants
+
+You can use the `theme-` prefix to apply a theme color to a dropdown item.
+
+<Example class="hstack gap-3" code={`<ul class="dropdown-menu show position-static">
+    <li><a class="dropdown-item theme-primary" href="#">Primary link</a></li>
+    <li><a class="dropdown-item theme-secondary" href="#">Secondary link</a></li>
+    <li><a class="dropdown-item theme-success" href="#">Success link</a></li>
+    <li><a class="dropdown-item theme-danger" href="#">Danger link</a></li>
+  </ul>
+  <ul class="dropdown-menu show position-static">
+    <li><a class="dropdown-item active theme-primary" href="#">Primary link</a></li>
+    <li><a class="dropdown-item active theme-secondary" href="#">Secondary link</a></li>
+    <li><a class="dropdown-item active theme-success" href="#">Success link</a></li>
+    <li><a class="dropdown-item active theme-danger" href="#">Danger link</a></li>
+  </ul>`} />
+
 ## Menu content
 
 ### Headers

@@ -96,7 +96,7 @@ $dropdown-tokens: defaults(
     width: 100%; // For `<button>`s
     padding: var(--dropdown-item-padding-y) var(--dropdown-item-padding-x);
     font-weight: $font-weight-normal;
-    color: var(--dropdown-link-color);
+    color: var(--theme-text, var(--dropdown-link-color));
     text-align: inherit; // For `<button>`s
     text-decoration: none;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
@@ -106,14 +106,14 @@ $dropdown-tokens: defaults(
 
     &:hover,
     &:focus {
-      color: var(--dropdown-link-hover-color);
-      @include gradient-bg(var(--dropdown-link-hover-bg));
+      color: var(--theme-text, var(--dropdown-link-hover-color));
+      @include gradient-bg(var(--theme-bg-subtle, var(--dropdown-link-hover-bg)));
     }
 
     &.active,
     &:active {
-      color: var(--dropdown-link-active-color);
-      @include gradient-bg(var(--dropdown-link-active-bg));
+      color: var(--theme-contrast, var(--dropdown-link-active-color));
+      @include gradient-bg(var(--theme-bg, var(--dropdown-link-active-bg)));
     }
 
     &.disabled,
