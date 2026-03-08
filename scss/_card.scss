@@ -28,7 +28,7 @@ $card-tokens: defaults(
     --card-color: inherit,
     --card-bg: var(--bg-body),
     --card-img-overlay-padding: #{$spacer},
-    --card-group-margin: #{$grid-gutter-width * .5},
+    --card-group-margin: #{$grid-gutter-x * .5},
     --card-body-gap: #{$spacer * .5},
   ),
   $card-tokens
