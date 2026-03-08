@@ -111,7 +111,10 @@ const formatPromises = htmlFiles.map(async file => {
 
 await Promise.all(formatPromises)
 
-// create the zip file
+// remove .DS_Store files and create the zip file
+sh.find(distFolder)
+  .filter(file => path.basename(file) === '.DS_Store')
+  .forEach(file => sh.rm('-f', file))
 sh.exec(`zip -qr9 "${distFolder}.zip" "${distFolder}"`)
 
 // remove the folder we created
