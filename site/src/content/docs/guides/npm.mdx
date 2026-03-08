@@ -5,7 +5,7 @@ toc: true
 thumbnail: guides/bootstrap-npm@2x.png
 ---
 
-<img class="d-block mx-auto img-fluid rounded-3" srcset="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png, /docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm@2x.png 2x" src="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png" width="1000" height="500" alt=""/>
+<img class="d-block mx-auto mb-4 img-fluid rounded-3" srcset="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png, /docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm@2x.png 2x" src="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png" width="1000" height="500" alt=""/>
 
 <Callout>
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/sass-js/). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/sass-js?file=index.html).
@@ -27,7 +27,7 @@ We’re building a npm project with Bootstrap from scratch, so there are some pr
    ```sh
    npm i --save bootstrap @floating-ui/dom
    ```
-3. **Install additional dependencies.** In addition to Vite and Bootstrap, we have some dependencies used to import and bundle Bootstrap’s CSS. Sass compiles our source `.scss` files into CSS and then Autoprefixer and PostCSS handle browser compatibility. We install the `postcss-cli` package so we can work with PostCSS via CLI.
+3. **Install additional dependencies.** In addition to Bootstrap, we need a few more dependencies to compile and post-process our CSS. Sass compiles our source `.scss` files into CSS, and Autoprefixer and PostCSS handle browser compatibility. We install the `postcss-cli` package so we can run PostCSS from the command line.
 
    ```sh
    npm i --save-dev autoprefixer postcss postcss-cli sass
@@ -49,7 +49,7 @@ We’ve already created the `my-project` folder and initialized npm. Now we'll a
 
 ```sh
 mkdir {css,js,scss}
-touch index.html js/main.js scss/styles.scss .stylelintrc.json
+touch index.html js/main.js scss/styles.scss postcss.config.js .stylelintrc.json
 ```
 
 When you’re done, your project should look like this:
@@ -61,18 +61,107 @@ my-project/
 │   └── main.js
 ├── scss/
 │   └── styles.scss
+├── .stylelintrc.json
 ├── index.html
 ├── package-lock.json
-└── package.json
+├── package.json
+└── postcss.config.js
 ```
 
-At this point, everything is in the right place, but we’ll need to add some npm scripts to use our dependencies and compile the CSS.
+At this point, everything is in the right place, but we’ll need to configure our files and add some npm scripts to compile the CSS.
 
-## Configure
+## Configure npm
 
-- npm scripts
-- stylelint configuration
+With dependencies installed and our project folder ready for us to start coding, we can now configure our npm scripts and run our project locally.
+
+1. **Open `postcss.config.js` in your editor.** We’ll need to add some configuration to run Autoprefixer after our Sass is compiled.
+
+   ```js
+   const autoprefixer = require('autoprefixer')
+
+   module.exports = {
+     plugins: [
+       autoprefixer
+     ]
+   }
+   ```
+
+2. **Fill in the `index.html` file.** We need an HTML page to render our project. This page links to the compiled CSS file and includes Bootstrap’s pre-built JavaScript bundle.
+
+   ```html
+   <!doctype html>
+   <html lang="en">
+     <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Bootstrap w/ npm</title>
+       <link rel="stylesheet" href="css/styles.css">
+     </head>
+     <body>
+       <div class="container py-4 px-3 mx-auto">
+         <h1>Hello, Bootstrap and npm!</h1>
+         <button class="btn btn-primary">Primary button</button>
+       </div>
+       <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+     </body>
+   </html>
+   ```
+
+   We’re including a little bit of Bootstrap styling here with the `div class="container"` and `<button>` so that we see when Bootstrap’s CSS is loaded by our npm scripts.
+
+3. **Add npm scripts to `package.json`.** Open `package.json` and add the following scripts. We use `sass` to compile our Sass, `postcss-cli` to apply Autoprefixer, `nodemon` to watch for changes, `npm-run-all` to run scripts in sequence or in parallel, `sirv-cli` to serve our project, and `stylelint` to lint our Sass.
+
+   ```json
+   {
+     // ...
+     "scripts": {
+       "css-compile": "sass --style expanded --source-map --embed-sources scss:css",
+       "css-prefix": "postcss --config postcss.config.js --replace \"css/*.css\" \"!css/*.min.css\"",
+       "build": "npm-run-all --sequential css-compile css-prefix",
+       "watch": "nodemon --watch scss/ --ext scss --exec \"npm run build\"",
+       "serve": "sirv --port 8080 --dev .",
+       "start": "npm-run-all build --parallel watch serve",
+       "lint": "stylelint \"scss/**/*.scss\""
+     },
+     // ...
+   }
+   ```
+
+4. **Configure `.stylelintrc.json`.** We’re using `stylelint-config-twbs-bootstrap` to keep our Sass linting consistent with Bootstrap’s own code style.
+
+   ```json
+   {
+     "extends": "stylelint-config-twbs-bootstrap"
+   }
+   ```
+
+5. **And finally, we can start the npm scripts.** From the `my-project` folder in your terminal, run that newly added npm script:
+
+   ```sh
+   npm start
+   ```
+
+   <img class="img-fluid" src="/docs/[[config:docs_version]]/assets/img/guides/npm-dev-server.png" alt="npm dev server running" />
+
+In the next and final section to this guide, we’ll import all of Bootstrap’s CSS.
 
 ## Import Bootstrap
+
+Importing Bootstrap into our project requires adding a Sass import to our `scss/styles.scss` file.
+
+1. **Import Bootstrap’s CSS.** Add the following to `scss/styles.scss` to import all of Bootstrap’s source Sass. We’re using the modern `@use` rule instead of `@import`.
+
+   ```scss
+   // Import all of Bootstrap's CSS
+   @use "bootstrap/scss/bootstrap";
+   ```
+
+   *You can also import our stylesheets individually if you want. [Read our Sass import docs]([[docsref:/customize/sass#importing]]) for details.*
+
+2. **And you’re done! 🎉** With Bootstrap’s source Sass fully loaded, your local development server should now look like this:
+
+   <img class="img-fluid" src="/docs/[[config:docs_version]]/assets/img/guides/npm-dev-server-bootstrap.png" alt="npm dev server running with Bootstrap" />
+
+   Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete npm Sass and JS example project](https://github.com/twbs/examples/tree/main/sass-js) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap’s CSS and JS that you need.
 
 <GuideFooter />
