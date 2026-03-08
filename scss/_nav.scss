@@ -151,11 +151,11 @@ $nav-underline-tokens: defaults(
     @include tokens($nav-tabs-tokens);
     // scss-docs-end nav-tabs-css-vars
 
-    border-block-end: var(--nav-tabs-border-width) solid var(--nav-tabs-border-color);
+    box-shadow: inset 0 calc(-1 * var(--nav-tabs-border-width)) 0 var(--nav-tabs-border-color);
 
     .nav-link {
-      margin-bottom: calc(-1 * var(--nav-tabs-border-width));
       border: var(--nav-tabs-border-width) solid transparent;
+      border-bottom-color: var(--nav-tabs-border-color);
       @include border-bottom-radius(0);
 
       &:hover {
