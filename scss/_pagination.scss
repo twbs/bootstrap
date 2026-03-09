@@ -15,6 +15,7 @@ $pagination-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $pagination-tokens: defaults(
   (
+    --pagination-min-height: var(--btn-input-min-height),
     --pagination-padding-x: var(--btn-input-padding-x),
     --pagination-padding-y: var(--btn-input-padding-y),
     --pagination-font-size: var(--btn-input-font-size),
@@ -59,7 +60,10 @@ $pagination-sizes: defaults(
 
   .page-link {
     position: relative;
-    display: block;
+    display: flex;
+    min-height: var(--pagination-min-height);
+    align-items: center;
+    justify-content: center;
     padding: var(--pagination-padding-y) var(--pagination-padding-x);
     font-size: var(--pagination-font-size);
     color: var(--pagination-color);
@@ -128,6 +132,7 @@ $pagination-sizes: defaults(
       --pagination-padding-x: var(--btn-input-#{$size}-padding-x);
       --pagination-font-size: var(--btn-input-#{$size}-font-size);
       --pagination-border-radius: var(--btn-input-#{$size}-border-radius);
+      --pagination-min-height: var(--bs-btn-input-#{$size}-min-height);
     }
   }
   // scss-docs-end pagination-sizes-loop
