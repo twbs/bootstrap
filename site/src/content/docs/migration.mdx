@@ -7,71 +7,122 @@ toc: true
 
 ## v6.0.0 Migration
 
-Bootstrap 6 is a major release with many breaking changes to modernize our codebase, adopt newer build tools, and improve customization. Keep reading for a guide on how to migrate from v5 to v6, and a full changelog of what's new.
+Bootstrap 6 is a major release with significant breaking changes to modernize our codebase, adopt newer CSS features, improve theming and customization, and add new components. This guide covers how to migrate from v5 to v6, followed by a full changelog.
 
-1. Bump your Bootstrap dependency:
+### Quick start
 
-   ```json
-   {
-     "dependencies": {
-       "bootstrap": "^6.0.0"
-     }
-   }
-   ```
+1. Bump your Bootstrap dependency and swap Popper for Floating UI:
 
-2. If using all of Bootstrap's Sass files, include it in your Sass using `@use`:
+```json
+{
+  "dependencies": {
+    "bootstrap": "^6.0.0",
+    "@floating-ui/dom": "^1.7.0"
+  }
+}
+```
 
-   ```scss
-   @use "bootstrap/scss/bootstrap";
-   ```
+2. If using all of Bootstrap's Sass files, include it with `@use` instead of `@import`:
 
-   With this, you can then easily override Bootstrap's Sass variables and maps:
+```scss
+// v5
+@import "bootstrap/scss/bootstrap";
 
-   ```scss
-   @use "bootstrap/scss/bootstrap" with (
-    $spacer: 1rem,
-    $enable-reduced-motion: true,
-   );
-   ```
+// v6
+@use "bootstrap/scss/bootstrap";
+```
 
-3. If using only certain parts of Bootstrap's Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
+Override Sass variables and maps with the `with` syntax:
 
-   ```scss
-   @use "bootstrap/scss/forms";
-   ```
+```scss
+@use "bootstrap/scss/bootstrap" with (
+  $spacer: 1rem,
+  $enable-reduced-motion: true,
+);
+```
 
-4. Update HTML and CSS per the changelog and updates in the documentation.
+3. If using only certain parts of Bootstrap's Sass, use `@use` to import them individually. Our file structure has changed significantly, so you will need to update your imports.
 
-5. Recompile your Sass to see the changes.
+```scss
+@use "bootstrap/scss/forms";
+@use "bootstrap/scss/buttons";
+```
+
+4. Update your HTML, CSS, and JS per the changelog below.
+
+5. Recompile your Sass and rebuild your JavaScript.
 
 ## v6.0.0 Changelog
 
+### Color system
+
+- **Colors are now defined in OKLCH** in the new `_colors.scss` file, split out from `_variables.scss`.
+- New base colors added: `$violet`, `$amber`, `$lime`, `$brown`, `$pewter`.
+- Tints and shades are generated via `color-mix()` with numbered stops (025, 050, 100-400 for tints; 500 for base; 600-975 for shades).
+- All `-rgb` CSS variables have been removed. `rgba()` usage is replaced by `color-mix()` in OKLCH.
+
+### Theming
+
+- **Completely overhauled theming system.** The old approach of flat Sass maps (`$theme-colors`), separate dark mode variables (`_variables-dark.scss`), and per-component variant classes is replaced by a unified token-based system.
+  - Removed `_maps.scss` and `_variables-dark.scss`.
+  - Added `_colors.scss` for base color definitions, `_theme.scss` for semantic token maps, and `_config.scss` for settings and layout variables.
+- **Theme colors are now nested maps** with semantic keys (`base`, `text`, `text-emphasis`, `bg`, `bg-subtle`, `bg-muted`, `border`, `focus-ring`, `contrast`) instead of flat color values.
+- **Dark mode uses `light-dark()`** CSS function instead of a separate set of Sass variables. No more duplicated dark mode variable maps.
+- **New `accent` theme color** (indigo). Replaces `dark`/`light` theme colors with `inverse` and `secondary`.
+- **New `.theme-*` helper classes** (`.theme-primary`, `.theme-success`, `.theme-danger`, etc.) set `--theme-*` CSS variables. Components reference these variables, so coloring is now done by adding a `.theme-*` class instead of per-component variant classes:
+
+```html
+<!-- v5 -->
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-outline-danger">Danger</button>
+<div class="alert alert-success">...</div>
+
+<!-- v6 -->
+<button class="btn-solid theme-primary">Primary</button>
+<button class="btn-outline theme-danger">Danger</button>
+<div class="alert theme-success">...</div>
+```
+
+- **Neutral scales** for backgrounds, foregrounds, and borders via `$theme-bgs` (body, 1-4, white, black, transparent, inherit), `$theme-fgs`, and `$theme-borders`.
+- Replaced `.text-bg-*` color-background helpers, `.link-*` colored links, and most per-component color variant patterns with `.theme-*` classes.
+
 ### CSS
 
-- **Implemented CSS layers** in `_root.scss` and applied them to all our Sass files.
-  - Layers are set in `_root.scss` and then utilized across separate Sass partials.
-  - We cannot, unfortunately, wrap `@use` or `@forward` statements in `@layer`—Sass expects those to be top level at all times. Also, while CSS allows `@import "file.css" layer(name)`, Sass also does not support that.
-- Clarified and simplified CSS-Sass setup.
-- New, streamlined color modes and theming.
-  - Removed `_maps.scss`
-  - Removed `_variables-dark.scss`
-  - Added `_colors.scss`, splitting them out from `_variables.scss`,
-  - Added `_theme.scss` where we setup all our global theming for how colors are applied
-- **Updated lg, xl, and 2xl breakpoints and containers.**
-  - Increased the `lg` breakpoint from 992px to 1024px; it's container remains the same at 960px.
-  - Increased the `xl` breakpoint from 1200px to 1280px, and it's container from 1140px to 1200px.
-  - Renamed `xxl` to `2xl` for better scaling with additional custom breakpoints
-  - Increased the `2xl` breakpoint from 1400px to 1536px, and it's container from 1320px to 1440px.
+- **Implemented CSS layers.** All styles are organized into `@layer` declarations: `colors`, `theme`, `config`, `root`, `reboot`, `layout`, `content`, `forms`, `components`, `custom`, `helpers`, `utilities`. Each partial wraps its output in the appropriate layer. Sass does not support wrapping `@use`/`@forward` in `@layer`, so layers are declared in `_root.scss` and applied within each partial.
+- **CSS variable prefix handled by PostCSS.** The `$prefix` Sass variable is removed. CSS custom properties are written unprefixed in source (e.g., `--border-radius` not `--bs-border-radius`) and prefixed automatically via `postcss-prefix-custom-properties` during the build. To customize the prefix, update your PostCSS configuration.
+- **CSS Grid enabled by default.** `$enable-cssgrid` now defaults to `true` (was `false` in v5). Both the traditional float/flexbox grid and CSS Grid are available.
+- **Shadows enabled by default.** `$enable-shadows` now defaults to `true` (was `false` in v5).
+- **Logical properties replace physical properties.** RTLCSS is removed, and RTL support is now native:
+  - `margin-left`/`right` replaced by `margin-inline-start`/`end`
+  - `padding-left`/`right` replaced by `padding-inline-start`/`end`
+  - `border-left`/`right` replaced by `border-inline-start`/`end`
+  - `top`/`bottom` replaced by `inset-block-start`/`end`
+  - `float: left`/`right` replaced by `float: inline-start`/`end`
+  - Border-radius corners use `border-start-start-radius`, `border-start-end-radius`, `border-end-start-radius`, `border-end-end-radius`
+  - No more generated `.rtl.css` files.
+- **Removed RFS.** `scss/vendor/_rfs.scss` is deleted and `$enable-rfs` is removed. Fluid typography now uses `clamp()` for font sizes (e.g., `--font-size-base`, `--font-size-xs` through `--font-size-6xl`).
+- **Design tokens via CSS variables.** Components define their own `$component-tokens` maps using a `defaults()` function, output via `@include tokens(...)`. This replaces the old pattern of setting individual `--bs-*` variables from Sass variables.
+- **Media queries use modern range syntax:** `(width >= 768px)` instead of `(min-width: 768px)`.
+- **Focus styles standardized** with a new `focus-ring` mixin that uses `outline` instead of `box-shadow`.
 
 ### Sass
 
-- Dropped support for Node Sass, including no longer testing any of our source CSS against it.
-  - Rearranged several Sass files in the process.
+- **Migrated to Sass modules.** Every file uses `@use` and `@forward` instead of `@import`. The entry point `bootstrap.scss` uses `@forward` exclusively.
+- Dropped support for Node Sass, including no longer testing source CSS against it.
 - Removed `add()` and `subtract()` functions. Use `calc()` instead.
-- **CSS variable prefixing now handled by PostCSS.** The `$prefix` Sass variable has been removed. CSS custom properties are now written without a prefix in the Sass source and prefixed automatically via `postcss-prefix-custom-properties` during the build. To customize the prefix, update your PostCSS configuration instead of Sass.
+- Upgraded to Sass v1.95.0 with new `if()` syntax.
+- **Reorganized Sass file structure.** Files are grouped into subdirectories:
+  - `buttons/` — `_button.scss`, `_button-group.scss`, `_close.scss`
+  - `content/` — `_reboot.scss`, `_type.scss`, `_images.scss`, `_tables.scss`, `_prose.scss`
+  - `forms/` — `_form-control.scss`, `_check.scss`, `_radio.scss`, `_switch.scss`, `_chip-input.scss`, `_otp-input.scss`, `_strength.scss`, `_form-adorn.scss`, and more
+  - `layout/` — `_breakpoints.scss`, `_containers.scss`, `_grid.scss`
+  - `helpers/` — `_theme-colors.scss`, `_focus-ring.scss`, `_icon-link.scss`, and more
+  - `mixins/` — `_tokens.scss`, `_focus-ring.scss`, and more
+- **Removed files:** `_maps.scss`, `_variables-dark.scss`, `_mixins.scss` (now `mixins/index.scss`), `_helpers.scss` (now `helpers/index.scss`), `_forms.scss` (now `forms/index.scss`), `_modal.scss`, `_buttons.scss`, `_button-group.scss`, `_close.scss`, `_containers.scss`, `_grid.scss`, `_images.scss`, `_tables.scss`, `_type.scss`, `_reboot.scss` (all moved into subdirectories), `_placeholders.scss`, `_spinners.scss`, `vendor/_rfs.scss`
+- **Removed mixins:** `_alert.scss`, `_breakpoints.scss` (replaced by `layout/_breakpoints.scss`), `_buttons.scss`, `_clearfix.scss`, `_container.scss`, `_list-group.scss`, `_pagination.scss`, `_table-variants.scss`
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.
-  - Removed `muted`, `black-50`, and `white-50` from text colors utilities map
+  - Removed `muted`, `black-50`, and `white-50` from text colors utilities map.
   - Consolidated carousel dark variables, removing `$carousel-dark-indicator-active-bg`, `$carousel-dark-caption-color`, and `$carousel-dark-control-icon-filter` for their reassigned counterparts.
   - Removed `$btn-close-white-filter` for `$btn-close-filter-dark`.
   - Removed `$border-radius-xxl`, use `$border-radius-2xl`.
@@ -80,47 +131,266 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed unused `$dropdown-header-padding` for the `-x`/`-y` split variables.
   - Removed unused `$accordion-button-focus-border-color`.
   - Removed unused `$tooltip-arrow-color`.
-  - Removed unused `$popover-arrow-color` and `$popover-arrow-outer-color`
-  - Removed unused `$alert-bg-scale`, `$alert-border-scale`, and `$alert-color-scale` (replaced by theme tokens)
-  - Removed unused `$list-group-item-bg-scale` and `$list-group-item-color-scale` (replaced by theme tokens)
+  - Removed unused `$popover-arrow-color` and `$popover-arrow-outer-color`.
+  - Removed unused `$alert-bg-scale`, `$alert-border-scale`, and `$alert-color-scale` (replaced by theme tokens).
+  - Removed unused `$list-group-item-bg-scale` and `$list-group-item-color-scale` (replaced by theme tokens).
+- Most component Sass variables have been relocated from `_variables.scss` into their respective component files as token maps.
+- **Spacers now include negative values** (`-2`, `-1`) directly in the `$spacers` map. The `$enable-negative-margins` toggle and generated `$negative-spacers` map are removed.
+- **New `$sizes` map** with values from `1` to `12` (in `$spacer` increments) for additional sizing utilities.
+
+### Breakpoints
+
+Updated the larger breakpoints and renamed `xxl`.
+
+<BsTable>
+| Breakpoint | v5 | v6 |
+| --- | --- | --- |
+| `sm` | 576px | 576px |
+| `md` | 768px | 768px |
+| `lg` | 992px | **1024px** |
+| `xl` | 1200px | **1280px** |
+| `xxl` / `2xl` | 1400px | **1536px** (renamed to `2xl`) |
+</BsTable>
+
+- Renamed `$grid-breakpoints` to `$breakpoints`.
+- Updated container max-widths: `xl` is now 1200px, `2xl` is now 1440px.
+- Renamed `xxl` to `2xl` everywhere—CSS classes, Sass variables, and breakpoint references. Update `.col-xxl-*`, `.d-xxl-*`, etc. to use `2xl`.
+
+### JavaScript
+
+- **Removed jQuery support.** `defineJQueryPlugin()` and `getjQuery()` are removed from all plugins. The `jquery` dev dependency and jQuery test suite are removed.
+- **Migrated from Popper to Floating UI.** `@popperjs/core` is replaced by `@floating-ui/dom` (^1.7.0).
+  - The `popperConfig` option is renamed to `floatingConfig` on Dropdown, Tooltip, and Popover.
+  - A new `util/floating-ui.js` module provides responsive placement helpers (e.g., `md:top-end`).
+  - Rollup externals/globals updated from `Popper` to `FloatingUIDOM`.
+- **Modal replaced by Dialog.** See the Components section below for details.
+- **New JavaScript plugins:** Dialog, Toggler, Datepicker, OtpInput, Strength, ChipInput (standalone, not in main bundle), NavOverflow.
+- **Dropdown enhancements:**
+  - Submenu support via `.dropdown-submenu` with hover/click triggers and safe-triangle hover intent logic.
+  - New options: `submenuTrigger`, `submenuDelay`, `container`.
+  - Keyboard navigation for submenus: Arrow keys, Home/End, Enter/Space.
+- Tooltip and Popover `show()` methods are now `async`.
+- All plugins use EventHandler-based data API initialization.
+
+### Components
+
+#### New components
+
+- **Avatar** — Image or initials-based avatar with status indicators, size variants (xs, sm, lg, xl), and stacking.
+- **Stepper** — CSS-only vertical and horizontal step indicator for multi-step flows.
+- **Dialog** — Native `<dialog>` element replacement for Modal (see below).
+- **Nav overflow** — Priority+ navigation pattern that moves overflowing nav items into a "More" dropdown using ResizeObserver.
+- **Toggler** — Attribute/class toggler via `data-bs-toggle="toggler"`.
+- **Chip / Chip Input** — Tag-like multi-value input component.
+- **Datepicker** — Date picker wrapping vanilla-calendar-pro, with `data-bs-toggle="datepicker"`.
+- **OTP Input** — Multi-digit one-time password input via `data-bs-otp`.
+- **Password Strength** — Password strength meter via `data-bs-strength`.
+- **Form Adorn** — Icon and text adornments for form inputs.
+- **Prose** — Long-form content styling via `.prose` class (replaces Figures), with `.not-prose` escape hatch.
+
+#### Modal to Dialog
+
+The Modal component is removed and replaced by Dialog, built on the native `<dialog>` element.
+
+```html
+<!-- v5: Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">...</div>
+      <div class="modal-body">...</div>
+      <div class="modal-footer">...</div>
+    </div>
+  </div>
+</div>
+<button data-bs-toggle="modal" data-bs-target="#exampleModal">Open</button>
+
+<!-- v6: Dialog -->
+<dialog class="dialog fade" id="exampleDialog">
+  <div class="dialog-header">...</div>
+  <div class="dialog-body">...</div>
+  <div class="dialog-footer">...</div>
+</dialog>
+<button data-bs-toggle="dialog" data-bs-target="#exampleDialog">Open</button>
+```
+
+- Uses browser-native `showModal()`, `show()`, and `close()` APIs.
+- Native `::backdrop` pseudo-element replaces the custom Backdrop component (with blur support via `--dialog-backdrop-blur`).
+- Native focus trapping replaces the FocusTrap utility.
+- Same events as Modal (`show`, `shown`, `hide`, `hidden`, `hidePrevented`) plus `cancel`.
+- The `.modal-dialog` wrapper is no longer needed — content goes directly inside `<dialog>`.
+
+#### Buttons overhaul
+
+Per-color button classes (`.btn-primary`, `.btn-outline-primary`, etc.) are replaced by a **variant + theme** pattern.
+
+```html
+<!-- v5 -->
+<button class="btn btn-primary">Solid</button>
+<button class="btn btn-outline-danger">Outline</button>
+
+<!-- v6 -->
+<button class="btn btn-solid theme-primary">Solid</button>
+<button class="btn btn-outline theme-danger">Outline</button>
+<button class="btn btn-subtle theme-success">Subtle</button>
+<button class="btn btn-text theme-info">Text</button>
+```
+
+- Four named variants: `solid`, `outline`, `subtle`, `text` (plus `btn-link`).
+- `.btn-styled` provides decorated buttons with gradients and shadows.
+- Toggle buttons refactored: `.btn-check` goes on the label with the input nested inside, using CSS `:has()` instead of sibling selectors. No more `id`/`for` attributes required.
+
+```html
+<!-- v5 -->
+<input type="checkbox" class="btn-check" id="btn1" autocomplete="off">
+<label class="btn btn-outline-primary" for="btn1">Toggle</label>
+
+<!-- v6 -->
+<label class="btn-check btn-solid theme-primary">
+  <input type="checkbox" autocomplete="off">Toggle
+</label>
+```
+
+- Button Sass variables replaced by `$button-tokens` and `$button-variants` token maps.
+
+#### Forms
+
+- **Consolidated `.form-select` into `.form-control`.** Remove `.form-select` and use `.form-control` on `<select>` elements instead.
+- **Split checks, radios, and switches** from `_form-check.scss` into `_check.scss`, `_radio.scss`, and `_switch.scss` with distinct styling and CSS variables for each.
+- Checkboxes now use a wrapping element with an SVG for checked and indeterminate states.
+- Revamped layout for checks, radios, and switches with flexbox-based label and description structure.
+- New `--btn-input-*` shared CSS variables for consistent button and input sizing.
+- `accent-color` added in Reboot for native form control styling.
+- `.form-control` now has a `min-height` at all times, not just on `<textarea>`.
+
+#### Renamed components (plural to singular)
+
+Component names have been singularized in documentation, file names, and CSS classes where applicable:
+
+- Alerts → Alert
+- Dropdowns → Dropdown
+- Placeholders → Placeholder
+- Popovers → Popover
+- Spinners → Spinner
+- Tooltips → Tooltip
+
+#### Other component changes
+
+- **Accordion:** Button uses CSS `mask` instead of background images; dark mode styles simplified.
+- **Badge:** Variants generated from theme tokens.
+- **Breadcrumb:** Revamped styling.
+- **Cards:** Updated with theme token integration.
+- **Close button:** Rebuilt from scratch with new token-based styling.
+- **Dropdown:** Added submenu support with hover intent (safe-triangle) logic and keyboard navigation.
+- **Nav tabs:** Use `box-shadow` instead of borders to prevent subpixel rendering issues.
+- **Navbar:** Refreshed styling.
 
 ### Reboot
 
-- Relocated heading classes (like `.h1`) and some type classes (`.mark` and `.small`) to Reboot from `_type.scss`. This avoids a dependency in Sass modules and we like to avoid extending selectors in general.
-
-### Forms
-
-- **Refactor checks, radios, and switches.**
-  - Split apart `_form-check.scss` into separate stylesheets: `_checkbox.scss`, `_radio.scss`, and `_switch.scss`.
-  - Also split apart the documentation pages for checks, radios, and switches.
-  - Added new CSS variables on each of these components. _Side note: we could've shared variables here, but chose not to for simplicity's sake._
-  - Removed several now unused Sass variables.
-  - Checkboxes now have a wrapping element and an SVG in the DOM for checked and indeterminate states. Radios and switches do not.
-  - Revamped layout for checks, radios, and switches with labels (and descriptions). We now have custom elements for layout that include basic flexbox styling.
-  - Refactored toggle buttons to use a nested input structure. The `.btn-check` class now goes on the label (not the input), with the input nested inside. This eliminates the need for `id`/`for` attributes and uses CSS `:has()` selector instead of sibling selectors. Example: `<label class="btn-check btn-solid theme-primary"><input type="checkbox">Toggle</label>`.
-- **Consolidate `.form-select` into `.form-control`.**
-  - Removed `.form-select`—use `.form-control` on `<select>` elements now. Too much abstraction and duplication at the same time.
-  - Adds new CSS variables on `.form-control` for easier customization without Sass compilation.
-  - `.form-control` now has a `min-height` at all times as opposed to just on `<textarea>` elements. This reduces some CSS for us.
+- Relocated heading classes (`.h1`–`.h6`) and type classes (`.mark`, `.small`) from `_type.scss` to `_reboot.scss` to avoid Sass module dependency issues and reduce selector extends.
+- Added `accent-color` for native form control styling.
+- Switched from `xlink:href` to `href` on SVG `<use>` elements.
+- Restored 16px base font-size.
 
 ### Helpers
 
-- Ratio helpers have been moved to utilities.
-- Dropped clearfix helper for `.d-flow-root` utility.
+- **Removed clearfix helper.** Use `.d-flow-root` utility instead.
+- **Removed `.text-bg-*` color-background helpers.** Use `.theme-*` classes instead.
+- **Removed `.link-*` colored link helpers.** Use `.theme-*` classes or `.fg-*` utilities instead.
+- **Moved ratio helpers to utilities** as `.aspect-ratio-*`.
+- **New `.theme-*` helper classes** generated from `$theme-colors` map via `generate-theme-classes()` mixin.
+- Focus ring helper now uses `outline` via `:focus-visible` instead of `box-shadow` on `:focus`.
 
 ### Utilities
 
-- Ratio helpers are now powered by the utility API and use simplified values without `calc()`.
-- mdo-do: Need to refactor utilities API if we want to restore the commented out custom ratios.
-- **Display utilities:** added `flow-root` option for a modern clearfix.
-- **Sizing utilities:**
-  - Renamed `.mh-*`/`.mw-*` to `.max-h-*`/`.max-w-*`
-  - Added `.min-h-*` and `.min-w-*` utilities with two default values, `0` and `100%`
-  - Added `auto`, `min-content`, `max-content`, and `fit-content` to `width` and `height` utilities.
-- **Flex & Grid utilities:**
-  - Added `.place-items` and `.justify-items` utilities.
+#### Renamed utilities
+
+| v5 | v6 |
+| --- | --- |
+| `.text-{color}` (text color) | `.fg-{color}` (foreground) |
+| `.text-opacity-*` | `.fg-opacity-*` |
+| `.mw-*` | `.max-w-*` |
+| `.mh-*` | `.max-h-*` |
+| `.link-offset-*` | `.underline-offset-*` |
+| `.link-underline-*` | `.underline-color-*` |
+| `.link-underline-opacity-*` | `.underline-opacity-*` |
+| `.float-start` / `.float-end` | `.float-inline-start` / `.float-inline-end` |
+| `.rounded-top` / `.rounded-end` / etc. | Logical property equivalents |
+| `.col-xxl-*`, `.d-xxl-*`, etc. | `.col-2xl-*`, `.d-2xl-*`, etc. |
+
+```html
+<!-- v5 -->
+<p class="text-primary">...</p>
+<p class="text-opacity-50">...</p>
+<div class="mw-100">...</div>
+<a class="link-offset-2 link-underline link-underline-opacity-50">...</a>
+
+<!-- v6 -->
+<p class="fg-primary">...</p>
+<p class="fg-opacity-50">...</p>
+<div class="max-w-100">...</div>
+<a class="underline-offset-2 underline-color underline-opacity-50">...</a>
+```
+
+#### New utilities
+
+- **Sizing:** `.min-w-*`, `.min-h-*`, plus `auto`, `min-content`, `max-content`, and `fit-content` values for width and height.
+- **Flex & Grid:** `.justify-items-*`, `.justify-self-*`, `.place-items-*`.
+- **Aspect ratio:** `.aspect-ratio-*` (moved from helpers).
+- **Foreground:** `.fg-emphasis-*`, `.fg-contrast-*`.
+- **Neutral scales:** `.bg-1` through `.bg-4` (backgrounds), `.fg-1` through `.fg-4` (foregrounds).
+- **Theme:** `.theme-contrast`, `.theme-subtle`, `.theme-muted`, `.theme-border`.
+- **Display:** `.d-flow-root` (modern clearfix), `.d-contents`.
+
+#### `!important` changes
+
+- The `$enable-important-utilities` global toggle is removed.
+- `!important` is now **opt-in per utility** in the utility map definition.
+- Utilities no longer include `!important` by default.
+
+#### Utility API changes
+
+- Removed `css-var`, `local-vars`, and `rtl` options from utility definitions.
+- Refactored `generate-utility()` mixin.
+- New selector types: `attr-starts`, `attr-includes`.
+- Required keys: `property` and `values` (warns on unknown keys).
+- **Display utilities:** Added `flow-root` and `contents` options.
+- Ratio helpers are now powered by the utility API with simplified values.
+
+### Browser support
+
+Updated minimum browser versions:
+
+| Browser | v5 | v6 |
+| --- | --- | --- |
+| Chrome | 60+ | **120+** |
+| Firefox | 60+ (including ESR) | **121+** (ESR dropped) |
+| Safari | 12+ | **15.6+** |
+| iOS Safari | 12+ | **15.6+** |
+
+- Removed the `>= 0.5%` global usage threshold from browserslist.
+
+### Build tooling
+
+- **CSS minification:** Switched from `clean-css-cli` to **LightningCSS**.
+- **HTML validation:** Switched from `vnu-jar` (Java) to **html-validate** (Node).
+- **Code highlighting (docs):** Switched from Prism to **Shiki**.
+- **RTL build removed.** No more `rtlcss` dependency or generated RTL stylesheets.
+- **PostCSS:** Added `postcss-prefix-custom-properties` for CSS variable prefixing.
+- **New dev tooling:** `stylelint-order` plugin for CSS property ordering, `markdownlint-cli` for MDX linting, `bundlewatch-table.mjs` for tabular bundle size output, `check-unused-imports.mjs` for detecting unused Sass `@use` statements.
+- **New peer dependencies:** `@floating-ui/dom`, `postcss-prefix-custom-properties`, `vanilla-calendar-pro`.
+- **Removed dependencies:** `@popperjs/core`, `jquery`, `clean-css-cli`, `rtlcss`, `vnu-jar`.
 
 ### Docs
 
-- Removed all `AddedIn` badges.
-- Rearranged utilities documentation to break apart larger pages that included groups of utilities. Sizing, spacing, flex, type, and more have been broken out into smaller pages with new sub-group headings in the sidebar.
+- **Restructured documentation navigation.**
+  - **Extend** section removed. Approach moved to Getting Started; Icons page removed.
+  - **Guides** section added with Quickstart, npm, Webpack, Parcel, Vite, and Contribute pages.
+  - **Utilities** split into individual pages — each utility gets its own page with reference tables. Sizing, spacing, flex, type, borders, and more are broken out from combined pages.
+  - **Forms** restructured: checks-and-radios split into Checkbox, Radio, and Switch pages. New pages for Datepicker, OTP Input, Password Strength, Chip Input, and Form Adorn.
+  - **Components** organized into sub-groups: Feedback, Overlays, Buttons, Navigation, Layout, Interactions, Miscellaneous.
+- Modal docs replaced by Dialog docs. Dropdowns renamed to Dropdown (singular).
+- Figures page folded into Prose.
+- Removed all `AddedIn` version badges.
+- New reference table shortcodes for utilities and helpers.
+- Removed browsers-and-devices, Contents, RFS, and best-practices pages.
