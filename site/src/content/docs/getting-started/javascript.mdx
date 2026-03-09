@@ -53,7 +53,7 @@ Bootstrap's JavaScript is built as native ES modules (`bootstrap.js` and `bootst
 
 ```html
 <script type="module">
-  import { Toast } from 'bootstrap.min.js'
+  import { Toast } from './bootstrap.min.js'
 
   Array.from(document.querySelectorAll('.toast'))
     .forEach(toastNode => new Toast(toastNode))
