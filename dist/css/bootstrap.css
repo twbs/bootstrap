@@ -412,6 +412,12 @@
   --bs-border-emphasized: light-dark(var(--bs-gray-400), var(--bs-gray-600));
   --bs-border-white: var(--bs-white);
   --bs-border-black: var(--bs-black);
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 1024px;
+  --bs-breakpoint-xl: 1280px;
+  --bs-breakpoint-2xl: 1536px;
   color-scheme: light dark;
 }
 
@@ -1129,15 +1135,6 @@
     }
   }
 }
-:root {
-  --bs-breakpoint-xs: 0;
-  --bs-breakpoint-sm: 576px;
-  --bs-breakpoint-md: 768px;
-  --bs-breakpoint-lg: 1024px;
-  --bs-breakpoint-xl: 1280px;
-  --bs-breakpoint-2xl: 1536px;
-}
-
 @layer layout {
   .row {
     --bs-gutter-x: 1.5rem;
@@ -5855,7 +5852,7 @@
     width: 100%;
     padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
     font-weight: 400;
-    color: var(--bs-dropdown-link-color);
+    color: var(--bs-theme-text, var(--bs-dropdown-link-color));
     text-align: inherit;
     text-decoration: none;
     white-space: nowrap;
@@ -5864,12 +5861,12 @@
     border-radius: var(--bs-dropdown-item-border-radius, 0);
   }
   .dropdown-item:hover, .dropdown-item:focus {
-    color: var(--bs-dropdown-link-hover-color);
-    background-color: var(--bs-dropdown-link-hover-bg);
+    color: var(--bs-theme-text, var(--bs-dropdown-link-hover-color));
+    background-color: var(--bs-theme-bg-subtle, var(--bs-dropdown-link-hover-bg));
   }
   .dropdown-item.active, .dropdown-item:active {
-    color: var(--bs-dropdown-link-active-color);
-    background-color: var(--bs-dropdown-link-active-bg);
+    color: var(--bs-theme-contrast, var(--bs-dropdown-link-active-color));
+    background-color: var(--bs-theme-bg, var(--bs-dropdown-link-active-bg));
   }
   .dropdown-item.disabled, .dropdown-item:disabled {
     color: var(--bs-dropdown-link-disabled-color);
@@ -6234,11 +6231,11 @@
     --bs-nav-tabs-link-active-color: var(--bs-fg-color);
     --bs-nav-tabs-link-active-bg: var(--bs-bg-body);
     --bs-nav-tabs-link-active-border-color: var(--bs-border-color) var(--bs-border-color) var(--bs-bg-body);
-    border-block-end: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+    box-shadow: inset 0 calc(-1 * var(--bs-nav-tabs-border-width)) 0 var(--bs-nav-tabs-border-color);
   }
   .nav-tabs .nav-link {
-    margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
     border: var(--bs-nav-tabs-border-width) solid transparent;
+    border-bottom-color: var(--bs-nav-tabs-border-color);
     border-end-start-radius: 0;
     border-end-end-radius: 0;
   }

@@ -411,6 +411,12 @@
   --bs-border-emphasized: light-dark(var(--bs-gray-400), var(--bs-gray-600));
   --bs-border-white: var(--bs-white);
   --bs-border-black: var(--bs-black);
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 1024px;
+  --bs-breakpoint-xl: 1280px;
+  --bs-breakpoint-2xl: 1536px;
   color-scheme: light dark;
 }
 
