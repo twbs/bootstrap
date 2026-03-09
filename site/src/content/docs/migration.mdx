@@ -230,10 +230,10 @@ Per-color button classes (`.btn-primary`, `.btn-outline-primary`, etc.) are repl
 <button class="btn btn-outline-danger">Outline</button>
 
 <!-- v6 -->
-<button class="btn btn-solid theme-primary">Solid</button>
-<button class="btn btn-outline theme-danger">Outline</button>
-<button class="btn btn-subtle theme-success">Subtle</button>
-<button class="btn btn-text theme-info">Text</button>
+<button class="btn-solid theme-primary">Solid</button>
+<button class="btn-outline theme-danger">Outline</button>
+<button class="btn-subtle theme-success">Subtle</button>
+<button class="btn-text theme-info">Text</button>
 ```
 
 - Four named variants: `solid`, `outline`, `subtle`, `text` (plus `btn-link`).
@@ -305,6 +305,7 @@ Component names have been singularized in documentation, file names, and CSS cla
 
 #### Renamed utilities
 
+<BsTable>
 | v5 | v6 |
 | --- | --- |
 | `.text-{color}` (text color) | `.fg-{color}` (foreground) |
@@ -317,6 +318,7 @@ Component names have been singularized in documentation, file names, and CSS cla
 | `.float-start` / `.float-end` | `.float-inline-start` / `.float-inline-end` |
 | `.rounded-top` / `.rounded-end` / etc. | Logical property equivalents |
 | `.col-xxl-*`, `.d-xxl-*`, etc. | `.col-2xl-*`, `.d-2xl-*`, etc. |
+</BsTable>
 
 ```html
 <!-- v5 -->
@@ -361,12 +363,14 @@ Component names have been singularized in documentation, file names, and CSS cla
 
 Updated minimum browser versions:
 
+<BsTable>
 | Browser | v5 | v6 |
 | --- | --- | --- |
 | Chrome | 60+ | **120+** |
 | Firefox | 60+ (including ESR) | **121+** (ESR dropped) |
 | Safari | 12+ | **15.6+** |
 | iOS Safari | 12+ | **15.6+** |
+</BsTable>
 
 - Removed the `>= 0.5%` global usage threshold from browserslist.
 
