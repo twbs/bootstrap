@@ -67,7 +67,7 @@ Guidelines for bug reports:
    reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
-   latest `main` (or `v4-dev` branch if the issue is about v4) in the repository.
+   latest `main` (or `v6-dev` branch if the issue is about v6) in the repository.
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](https://css-tricks.com/reduced-test-cases/) and a live example.
