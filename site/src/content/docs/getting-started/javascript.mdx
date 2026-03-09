@@ -27,7 +27,11 @@ Curious which components explicitly require our JavaScript and Floating UI or Va
 
 Plugins can be included individually (using Bootstrap's individual `js/dist/*.js`), or all at once using `bootstrap.js` or the minified `bootstrap.min.js` (don't include both).
 
-If you use a bundler (Webpack, Parcel, Vite…), you can use `/js/dist/*.js` files which are ES modules.
+If you use a bundler (Webpack, Parcel, Vite…), you can import only the plugins you need and your bundler will automatically tree-shake the rest:
+
+```js
+import { Toast, Tooltip } from 'bootstrap'
+```
 
 ## Usage with JavaScript frameworks
 
