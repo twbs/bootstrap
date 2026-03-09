@@ -11,7 +11,14 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global bootstrap: false */
+/* eslint-disable import/namespace */
+import {
+  Tooltip,
+  Popover,
+  Toast,
+  Carousel
+} from '../../../../dist/js/bootstrap.bundle.js'
+/* eslint-enable import/namespace */
 
 export default () => {
   // --------
@@ -20,7 +27,7 @@ export default () => {
   // Instantiate all tooltips in a docs or StackBlitz
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
-      new bootstrap.Tooltip(tooltip)
+      new Tooltip(tooltip)
     })
 
   // --------
@@ -29,7 +36,7 @@ export default () => {
   // Instantiate all popovers in docs or StackBlitz
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(popover => {
-      new bootstrap.Popover(popover)
+      new Popover(popover)
     })
 
   // -------------------------------
@@ -50,7 +57,7 @@ export default () => {
   // Instantiate all toasts in docs pages only
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
-      const toast = new bootstrap.Toast(toastNode, {
+      const toast = new Toast(toastNode, {
         autohide: false
       })
 
@@ -63,7 +70,7 @@ export default () => {
   const toastLiveExample = document.getElementById('liveToast')
 
   if (toastTrigger) {
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    const toastBootstrap = Toast.getOrCreateInstance(toastLiveExample)
     toastTrigger.addEventListener('click', () => {
       toastBootstrap.show()
     })
@@ -103,7 +110,7 @@ export default () => {
   // Instantiate all non-autoplaying carousels in docs or StackBlitz
   document.querySelectorAll('.carousel:not([data-bs-ride="carousel"])')
     .forEach(carousel => {
-      bootstrap.Carousel.getOrCreateInstance(carousel)
+      Carousel.getOrCreateInstance(carousel)
     })
 
   // -------------------------------

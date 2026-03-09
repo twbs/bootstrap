@@ -118,6 +118,8 @@ const logicalPlacements = [
 />
 
 <script>
+  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+
   const placementDropdownButton = document.querySelector('#placement-dropdown') as HTMLButtonElement
   const placementDropdownItems = document.querySelectorAll('#placement-dropdown + .dropdown-menu .dropdown-item')
   const placementTypeInputs = document.querySelectorAll('input[name="placement-type"]')
@@ -165,11 +167,11 @@ const logicalPlacements = [
     previewToggle.setAttribute('data-bs-placement', placement)
 
     // Dispose and recreate the dropdown instance to pick up new placement
-    const instance = bootstrap.Dropdown.getInstance(previewToggle)
+    const instance = Dropdown.getInstance(previewToggle)
     if (instance) {
       instance.dispose()
     }
-    bootstrap.Dropdown.getOrCreateInstance(previewToggle)
+    Dropdown.getOrCreateInstance(previewToggle)
 
     // Update code snippet
     updateCodeSnippet(placement)
@@ -199,7 +201,7 @@ const logicalPlacements = [
 
   // Initialize placement dropdown
   if (placementDropdownButton) {
-    const placementDropdown = bootstrap.Dropdown.getOrCreateInstance(placementDropdownButton)
+    const placementDropdown = Dropdown.getOrCreateInstance(placementDropdownButton)
 
     placementDropdownItems.forEach(item => {
       item.addEventListener('click', (e) => {

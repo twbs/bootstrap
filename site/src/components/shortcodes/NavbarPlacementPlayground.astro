@@ -54,6 +54,8 @@ const placements = [
 />
 
 <script>
+  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+
   const placementDropdownButton = document.querySelector('#navbar-placement-dropdown') as HTMLButtonElement
   const placementDropdownItems = document.querySelectorAll('#navbar-placement-dropdown + .dropdown-menu .dropdown-item')
   const previewContainer = document.querySelector('#navbar-placement-preview') as HTMLElement
@@ -128,7 +130,7 @@ const placements = [
 
   // Initialize dropdown
   if (placementDropdownButton) {
-    const placementDropdown = bootstrap.Dropdown.getOrCreateInstance(placementDropdownButton)
+    const placementDropdown = Dropdown.getOrCreateInstance(placementDropdownButton)
 
     placementDropdownItems.forEach(item => {
       item.addEventListener('click', (e) => {

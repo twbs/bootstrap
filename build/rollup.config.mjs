@@ -23,6 +23,7 @@ const plugins = [
 
 if (BUNDLE) {
   destinationFile += '.bundle'
+  // Bundle all dependencies (Floating UI, Vanilla Calendar Pro, etc.)
   external.length = 0
   plugins.push(
     replace({

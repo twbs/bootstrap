@@ -155,6 +155,8 @@ const rounded = ['default', 'pill', 'square']
 />
 
 <script>
+  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+
   const colorDropdownButton = document.querySelector('#btn-color-dropdown') as HTMLButtonElement
   const colorDropdownItems = document.querySelectorAll('#btn-color-dropdown + .dropdown-menu .dropdown-item')
   const sizeDropdownButton = document.querySelector('#btn-size-dropdown') as HTMLButtonElement
@@ -260,7 +262,7 @@ const rounded = ['default', 'pill', 'square']
 
   // Initialize Bootstrap dropdowns
   if (colorDropdownButton) {
-    const colorDropdown = bootstrap.Dropdown.getOrCreateInstance(colorDropdownButton)
+    const colorDropdown = Dropdown.getOrCreateInstance(colorDropdownButton)
 
     // Handle dropdown item clicks
     colorDropdownItems.forEach((item) => {
@@ -292,7 +294,7 @@ const rounded = ['default', 'pill', 'square']
   }
 
   if (sizeDropdownButton) {
-    const sizeDropdown = bootstrap.Dropdown.getOrCreateInstance(sizeDropdownButton)
+    const sizeDropdown = Dropdown.getOrCreateInstance(sizeDropdownButton)
 
     // Handle dropdown item clicks
     sizeDropdownItems.forEach((item) => {
