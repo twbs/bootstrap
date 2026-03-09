@@ -55,7 +55,7 @@ const build = async plugin => {
   console.log(`Built ${plugin.fileName}`)
 }
 
-;(async () => {
+(async () => {
   try {
     const basename = path.basename(__filename)
     const timeLabel = `[${basename}] finished`
