@@ -13,7 +13,7 @@
       display: grid;
       grid-template-areas: "sidebar main";
       grid-template-columns: 1fr 5fr;
-      gap: $grid-gutter-width;
+      gap: $grid-gutter-x;
     }
 
     @include media-breakpoint-up(xl) {

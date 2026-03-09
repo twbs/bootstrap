@@ -21,7 +21,7 @@
     .grid {
       --columns: #{$grid-columns};
       --rows: 1;
-      --gap: #{$grid-gutter-width};
+      --gap: #{$grid-gutter-x};
 
       display: grid;
       grid-template-rows: repeat(var(--rows), 1fr);
@@ -39,7 +39,7 @@
   }
 
   .grid-fill {
-    --gap: #{$grid-gutter-width};
+    --gap: #{$grid-gutter-x};
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
