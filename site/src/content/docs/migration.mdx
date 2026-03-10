@@ -99,7 +99,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
     </script>
     ```
   - Data attribute APIs (`data-bs-toggle`, `data-bs-dismiss`, etc.) continue to work automatically with no code changes beyond adding `type="module"` to the script tag.
-  - For bundler users (Webpack, Vite, Parcel, etc.), no changes are needed — `import { Tooltip } from 'bootstrap'` works as before and now supports tree shaking.
+  - For modern ESM-based bundler setups (Vite, Webpack 5, Parcel 2, Rollup, etc.), no changes are needed — `import { Tooltip } from 'bootstrap'` works as before and now supports full tree shaking. Projects still using CommonJS `require()` calls will need to update to ESM `import` syntax.
 - Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
 - Removed `js/index.umd.js` entry point.
 - Removed jQuery support and the `js-test-jquery` test target.

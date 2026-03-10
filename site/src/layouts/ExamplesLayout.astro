@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import { getBsJsGlobalShim } from '@libs/bootstrap'
+import { getVersionedBsJsProps } from '@libs/bootstrap'
 import { getConfig } from '@libs/config'
 import type { ExampleFrontmatter } from '@libs/examples'
 import { getVersionedDocsPath } from '@libs/path'
@@ -117,7 +117,7 @@ const htmlProps: HTMLAttributes<'html'> = direction === 'rtl' ? { lang: 'ar', di
     {
       include_js !== false && (
         <Fragment>
-          <script is:inline type="module" set:html={getBsJsGlobalShim()} />
+          <script is:inline {...getVersionedBsJsProps()} />
           {extra_js?.map((js) => (
             <script
               is:inline

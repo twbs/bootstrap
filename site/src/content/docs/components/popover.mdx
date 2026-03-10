@@ -19,7 +19,7 @@ Click the button below to trigger a popover:
 
 Things to know when using the popover plugin:
 
-- Popovers rely on the third party library [Floating UI](https://floating-ui.com/) for positioning. You must include [floating-ui.dom.umd.min.js]([[config:cdn.floating_ui]]) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Floating UI.
+- Popovers rely on the third party library [Floating UI](https://floating-ui.com/) for positioning. Use `bootstrap.bundle.min.js` which includes Floating UI, or include Floating UI separately via an [import map]([[docsref:/getting-started/javascript#using-bootstrap-as-a-module]]).
 - Popovers require the [popover plugin]([[docsref:/components/popover]]) as a dependency.
 - Popovers are automatically initialized when using `data-bs-toggle="popover"`.
 - Zero-length `title` and `content` values will never show a popover.

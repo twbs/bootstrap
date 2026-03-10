@@ -44,14 +44,3 @@ export function getVersionedBsJsProps() {
   return bsJsLinkProps
 }
 
-export function getBsJsGlobalShim() {
-  let bsJsScriptSrc = '/dist/js/bootstrap.bundle'
-
-  if (import.meta.env.PROD) {
-    bsJsScriptSrc = `${bsJsScriptSrc}.min`
-  }
-
-  bsJsScriptSrc = `${bsJsScriptSrc}.js`
-
-  return `import * as bootstrap from '${getVersionedDocsPath(bsJsScriptSrc)}'; window.bootstrap = bootstrap;`
-}
