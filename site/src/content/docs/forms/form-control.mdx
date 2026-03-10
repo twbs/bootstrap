@@ -16,19 +16,58 @@ Form controls are styled with a mix of Sass and CSS variables, allowing them to 
 <Example class="vstack gap-3" code={`<div>
     <label for="exampleFormControlInput1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>`} />
+
+## Textarea
+
+Textareas use the same `.form-control` class as inputs. Modify their height by using the `rows` attribute or using custom CSS.
+
+<Example class="vstack gap-3" code={`<div>
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
   </div>
+
   <div>
-    <label for="exampleFormControlSelect1" class="form-label">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Open this select menu</option>
+    <label for="exampleFormControlTextarea2" class="form-label">Taller textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea2" rows="4"></textarea>
+  </div>`} />
+
+## Select
+
+Basic select element styles are provided by the `.form-control` class. Styles are limited by the browser—options and popovers cannot be styled.
+
+<Example code={`<div>
+    <label for="exampleFormControlSelect2" class="form-label">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect2">
+      <option>Choose one…</option>
       <option value="1">One</option>
       <option value="2">Two</option>
       <option value="3">Three</option>
     </select>
-  </div>
-  <div>
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>`} />
+
+The `multiple` attribute is supported on select elements:
+
+<Example code={`<div>
+    <label for="exampleFormControlSelect3" class="form-label">Multiple select</label>
+    <select class="form-control" id="exampleFormControlSelect3" multiple aria-label="Multiple select example">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>`} />
+
+As is the `size` attribute:
+
+<Example code={`<div>
+    <label for="exampleFormControlSelect4" class="form-label">Size 3 select</label>
+    <select class="form-control" id="exampleFormControlSelect4" size="3" aria-label="Size 3 select example">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
   </div>`} />
 
 ## Sizes
@@ -36,30 +75,38 @@ Form controls are styled with a mix of Sass and CSS variables, allowing them to 
 Change the size of a form control by using classes like `.form-control-lg` and `.form-control-sm`. This adjusts `height`, `padding`, `font-size`, `line-height`, and `border-radius`.
 
 <Example class="vstack gap-3" code={`<div>
-    <label for="largeInput" class="form-label">Large input</label>
-    <input class="form-control form-control-lg" type="text" id="largeInput" placeholder="Large input" aria-label="Large input example">
+    <label for="sizesInputSmall" class="form-label">Small input</label>
+    <input class="form-control form-control-sm" type="text" id="sizesInputSmall" placeholder="Small input" aria-label="Small input example">
   </div>
   <div>
-    <label for="largeSelect" class="form-label">Large select</label>
-    <select class="form-control form-control-lg" id="largeSelect">
-      <option>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
+    <label for="sizesInputDefault" class="form-label">Default input</label>
+    <input class="form-control" type="text" id="sizesInputDefault" placeholder="Default input" aria-label="Default input example">
   </div>
   <div>
-    <label for="largeTextarea" class="form-label">Large textarea</label>
-    <textarea class="form-control form-control-lg" id="largeTextarea" rows="3" placeholder="Large textarea" aria-label="Large textarea example"></textarea>
+    <label for="sizesInputLarge" class="form-label">Large input</label>
+    <input class="form-control form-control-lg" type="text" id="sizesInputLarge" placeholder="Large input" aria-label="Large input example">
   </div>`} />
+
+And for textareas:
 
 <Example class="vstack gap-3" code={`<div>
-    <label for="smallInput" class="form-label">Small input</label>
-    <input class="form-control form-control-sm" type="text" id="smallInput" placeholder="Small input" aria-label="Small input example">
+    <label for="sizesTextareaSmall" class="form-label">Small textarea</label>
+    <textarea class="form-control form-control-sm" id="sizesTextareaSmall" placeholder="Small textarea" aria-label="Small textarea example"></textarea>
   </div>
   <div>
-    <label for="smallSelect" class="form-label">Small select</label>
-    <select class="form-control form-control-sm" id="smallSelect">
+    <label for="sizesTextareaDefault" class="form-label">Default textarea</label>
+    <textarea class="form-control" id="sizesTextareaDefault" placeholder="Default textarea" aria-label="Default textarea example"></textarea>
+  </div>
+  <div>
+    <label for="sizesTextareaLarge" class="form-label">Large textarea</label>
+    <textarea class="form-control form-control-lg" id="sizesTextareaLarge" placeholder="Large textarea" aria-label="Large textarea example"></textarea>
+  </div>`} />
+
+And for selects:
+
+<Example class="vstack gap-3" code={`<div>
+    <label for="sizesSelectSmall" class="form-label">Small select</label>
+    <select class="form-control form-control-sm" id="sizesSelectSmall">
       <option>Open this select menu</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -67,38 +114,23 @@ Change the size of a form control by using classes like `.form-control-lg` and `
     </select>
   </div>
   <div>
-    <label for="smallTextarea" class="form-label">Small textarea</label>
-    <textarea class="form-control form-control-sm" id="smallTextarea" rows="3" placeholder="Small textarea" aria-label="Small textarea example"></textarea>
+    <label for="sizesSelectDefault" class="form-label">Default select</label>
+    <select class="form-control" id="sizesSelectDefault">
+      <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+  <div>
+    <label for="sizesSelectLarge" class="form-label">Large select</label>
+    <select class="form-control form-control-lg" id="sizesSelectLarge">
+      <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
   </div>`} />
-
-## Select
-
-Basic select element styles are provided by the `.form-control` class. Styles are limited by the browser—options and popovers cannot be styled.
-
-<Example code={`<select class="form-control" id="exampleFormControlSelect2">
-    <option>Choose one…</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>`} />
-
-The `multiple` attribute is supported on select elements:
-
-<Example code={`<select class="form-select" multiple aria-label="Multiple select example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>`} />
-
-As is the `size` attribute:
-
-<Example code={`<select class="form-select" size="3" aria-label="Size 3 select example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>`} />
 
 ## Form text
 
