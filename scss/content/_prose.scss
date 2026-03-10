@@ -9,7 +9,7 @@ $prose-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $prose-tokens: defaults(
   (
-    --content-font-size: var(--font-size-sm),
+    --content-font-size: 1rem,
     --content-gap: 20px,
     --heading-color: light-dark(var(--gray-900), var(--white)),
   ),
