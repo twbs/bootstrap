@@ -1,19 +1,23 @@
 ---
 title: Bootstrap and npm
-description: The official guide for how to build a starter project with Bootstrap’s CSS and JavaScript in your project using just npm.
+description: The official guide for how to build a starter project with Bootstrap's CSS and JavaScript in your project using just npm.
 toc: true
 thumbnail: guides/bootstrap-npm@2x.png
 ---
 
-<img class="d-block mx-auto img-fluid rounded-3" srcset="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png, /docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm@2x.png 2x" src="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png" width="1000" height="500" alt=""/>
+<img class="d-block mx-auto mb-4 img-fluid rounded-3" srcset="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png, /docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm@2x.png 2x" src="/docs/[[config:docs_version]]/assets/img/guides/bootstrap-npm.png" width="1000" height="500" alt=""/>
 
 <Callout>
 **Want to skip to the end?** Download the source code and working demo for this guide from the [twbs/examples repository](https://github.com/twbs/examples/tree/sass-js/). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/sass-js?file=index.html).
 </Callout>
 
+## What is npm?
+
+[npm](https://www.npmjs.com/) is the default package manager for Node.js. In this guide, we use npm to install Bootstrap and its dependencies, then compile Sass to CSS using command-line tools—no bundler required.
+
 ## Setup
 
-We’re building a npm project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
+We're building a npm project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
 1. **Create a project folder and set up npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
@@ -22,12 +26,13 @@ We’re building a npm project with Bootstrap from scratch, so there are some pr
    npm init -y
    ```
 
-2. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Floating UI here.
+2. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don't plan on using those components, you can omit Floating UI here.
 
    ```sh
    npm i --save bootstrap @floating-ui/dom
    ```
-3. **Install additional dependencies.** In addition to Vite and Bootstrap, we have some dependencies used to import and bundle Bootstrap’s CSS. Sass compiles our source `.scss` files into CSS and then Autoprefixer and PostCSS handle browser compatibility. We install the `postcss-cli` package so we can work with PostCSS via CLI.
+
+3. **Install additional dependencies.** In addition to Bootstrap, we need a few more dependencies to compile and post-process our CSS. Sass compiles our source `.scss` files into CSS, and Autoprefixer and PostCSS handle browser compatibility. We install the `postcss-cli` package so we can run PostCSS from the command line.
 
    ```sh
    npm i --save-dev autoprefixer postcss postcss-cli sass
@@ -45,34 +50,140 @@ Now that we have all the necessary dependencies installed, we can get to work cr
 
 ## Project structure
 
-We’ve already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
+We've already created the `my-project` folder and initialized npm. Now we'll also create our `scss` folder, stylesheet, and configuration files to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
 
 ```sh
-mkdir {css,js,scss}
-touch index.html js/main.js scss/styles.scss .stylelintrc.json
+mkdir {css,scss}
+touch index.html scss/styles.scss postcss.config.js .stylelintrc.json
 ```
 
-When you’re done, your project should look like this:
+When you're done, your project should look like this:
 
 ```text
 my-project/
 ├── css/
-├── js/
-│   └── main.js
 ├── scss/
 │   └── styles.scss
+├── .stylelintrc.json
 ├── index.html
 ├── package-lock.json
-└── package.json
+├── package.json
+└── postcss.config.js
 ```
 
-At this point, everything is in the right place, but we’ll need to add some npm scripts to use our dependencies and compile the CSS.
+At this point, everything is in the right place, but we'll need to configure our files and add some npm scripts to compile the CSS.
 
-## Configure
+## Configure npm
 
-- npm scripts
-- stylelint configuration
+With dependencies installed and our project folder ready for us to start coding, we can now configure our npm scripts and run our project locally.
+
+1. **Open `postcss.config.js` in your editor.** We need to configure Autoprefixer to run after Sass compilation for browser compatibility.
+
+   ```js
+   const autoprefixer = require('autoprefixer')
+
+   module.exports = {
+     plugins: [
+       autoprefixer
+     ]
+   }
+   ```
+
+2. **Fill in the `index.html` file.** We need an HTML page to render our project. This page links to the compiled CSS file and includes Bootstrap's pre-built JavaScript bundle.
+
+   ```html
+   <!doctype html>
+   <html lang="en">
+     <head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Bootstrap w/ npm</title>
+       <link rel="stylesheet" href="css/styles.css">
+     </head>
+     <body>
+       <div class="container py-4 px-3 mx-auto">
+         <h1>Hello, Bootstrap and npm!</h1>
+         <button class="btn-solid theme-primary">Primary button</button>
+       </div>
+       <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+     </body>
+   </html>
+   ```
+
+   We're including a little bit of Bootstrap styling here with the `div class="container"` and `<button>` so that we see when Bootstrap's CSS is loaded by our npm scripts. Since this setup doesn't use a JavaScript bundler, we load Bootstrap's pre-built JS bundle directly via a `<script>` tag.
+
+   *[Read our JavaScript docs]([[docsref:/getting-started/javascript/]]) for more information on how to use Bootstrap's plugins.*
+
+3. **Add npm scripts to `package.json`.** Open `package.json` and add the following scripts. We use `sass` to compile our Sass (with `--load-path=node_modules` so it can resolve Bootstrap), `postcss-cli` to apply Autoprefixer, `nodemon` to watch for changes, `npm-run-all` to run scripts in sequence or in parallel, `sirv-cli` to serve our project, and `stylelint` to lint our Sass.
+
+   ```json
+   {
+     // ...
+     "scripts": {
+       "css-compile": "sass --load-path=node_modules --style expanded --source-map --embed-sources scss:css",
+       "css-prefix": "postcss --config postcss.config.js --replace \"css/*.css\" \"!css/*.min.css\"",
+       "build": "npm-run-all --sequential css-compile css-prefix",
+       "watch": "nodemon --watch scss/ --ext scss --exec \"npm run build\"",
+       "serve": "sirv --port 8080 --dev .",
+       "start": "npm-run-all build --parallel watch serve",
+       "lint": "stylelint \"scss/**/*.scss\""
+     },
+     // ...
+   }
+   ```
+
+4. **Configure `.stylelintrc.json`.** We're using `stylelint-config-twbs-bootstrap` to keep our Sass linting consistent with Bootstrap's own code style.
+
+   ```json
+   {
+     "extends": "stylelint-config-twbs-bootstrap"
+   }
+   ```
+
+5. **And finally, we can start the npm scripts.** From the `my-project` folder in your terminal, run that newly added npm script:
+
+   ```sh
+   npm start
+   ```
+
+   <img class="img-fluid" src="/docs/[[config:docs_version]]/assets/img/guides/npm-dev-server.png" alt="npm dev server running" />
+
+In the next and final section to this guide, we'll import all of Bootstrap's CSS.
 
 ## Import Bootstrap
+
+Importing Bootstrap into our project requires adding a Sass import to our `scss/styles.scss` file.
+
+1. **Import Bootstrap's CSS.** Add the following to `scss/styles.scss` to import all of Bootstrap's source Sass. We use the `@use` rule, which is the modern Sass module system.
+
+   ```scss
+   // Import all of Bootstrap's CSS
+   @use "bootstrap/scss/bootstrap";
+   ```
+
+   *You can also import our stylesheets individually if you want. [Read our Sass import docs]([[docsref:/customize/sass#importing]]) for details.*
+
+2. **Optionally, customize Bootstrap's Sass tokens.** Since Bootstrap uses Sass modules (`@use`/`@forward`), you can override default values using the `with ()` syntax. You only need to include the keys you want to change — Bootstrap merges your overrides with its defaults.
+
+   ```scss
+   @use "bootstrap/scss/bootstrap" with (
+     $root-tokens: (
+       --border-radius: .25rem,
+       --spacer: 1.5rem,
+     ),
+     $alert-tokens: (
+       --alert-padding-x: 2rem,
+       --alert-border-radius: 1rem,
+     )
+   );
+   ```
+
+   *[Read our Sass customization docs]([[docsref:/customize/sass#token-defaults]]) for the full list of available token maps and options.*
+
+3. **And you're done! 🎉** With Bootstrap's source Sass fully loaded, your local development server should now look like this:
+
+   <img class="img-fluid" src="/docs/[[config:docs_version]]/assets/img/guides/npm-dev-server-bootstrap.png" alt="npm dev server running with Bootstrap" />
+
+   Now you can start adding any Bootstrap components you want to use. Be sure to [check out the complete npm Sass and JS example project](https://github.com/twbs/examples/tree/main/sass-js) for how to include additional custom Sass and optimize your build by importing only the parts of Bootstrap's CSS and JS that you need.
 
 <GuideFooter />
