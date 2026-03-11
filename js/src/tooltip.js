@@ -677,11 +677,11 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    if (typeof config.title === 'number') {
+    if (typeof config.title === 'number' || typeof config.title === 'boolean') {
       config.title = config.title.toString()
     }
 
-    if (typeof config.content === 'number') {
+    if (typeof config.content === 'number' || typeof config.content === 'boolean') {
       config.content = config.content.toString()
     }
 
