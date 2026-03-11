@@ -23,6 +23,10 @@ interface Props {
    */
   class?: string
   /**
+   * A file path to display in the highlight toolbar instead of the language label.
+   */
+  file?: string
+  /**
    * The preview wrapping `div` element ID.
    */
   id?: string
@@ -48,6 +52,7 @@ const {
   code,
   customMarkup,
   class: className,
+  file,
   id,
   lang = 'html',
   showMarkup = true,
@@ -80,6 +85,6 @@ const simplifiedMarkup = sourceMarkup
     </div>
   )}
   {showMarkup && (
-    <Code code={simplifiedMarkup} lang={lang} nestedInExample={true} addStackblitzJs={addStackblitzJs} />
+    <Code code={simplifiedMarkup} lang={lang} file={file} nestedInExample={true} addStackblitzJs={addStackblitzJs} />
   )}
 </div>
