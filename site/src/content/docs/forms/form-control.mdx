@@ -221,6 +221,18 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 Nearly all input types are supported, but not all are documented here. Input types requiring additional classes or changes are shown below.
 
+### Date and time
+
+No additional classes are needed for date and time inputs. Exact functionality and appearance are dependent on the browser and operating system.
+
+<Example class="vstack gap-3" code={`<input type="datetime-local" class="form-control" aria-label="Date and time picker" value="2026-02-24T13:00">
+<input type="datetime-local" class="form-control" aria-label="Date and time picker with seconds" value="2026-02-24T13:00:30" step="1">
+<input type="datetime-local" class="form-control" aria-label="Date and time picker with milliseconds" value="2026-02-24T13:00:30.500" step="0.001">
+<input type="date" class="form-control" aria-label="Date picker" value="2026-02-24">
+<input type="time" class="form-control" aria-label="Time picker" value="13:00">
+<input type="month" class="form-control" aria-label="Month picker" value="2026-02">
+<input type="week" class="form-control" aria-label="Week picker" value="2026-W09">`} />
+
 ### Color
 
 Set the `type="color"` and add `.form-control-color` to the `<input>` alongside `.form-control`. We use the modifier class to set fixed `height`s and override some inconsistencies between browsers.
