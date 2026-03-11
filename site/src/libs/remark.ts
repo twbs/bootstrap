@@ -26,7 +26,7 @@ export const remarkBsConfig: Plugin<[], Root> = function () {
 
     // https://github.com/syntax-tree/mdast#nodes
     // https://github.com/syntax-tree/mdast-util-mdx-jsx#nodes
-    visit(ast, ['code', 'definition', 'image', 'inlineCode', 'link', 'mdxJsxFlowElement', 'text'], (node) => {
+    visit(ast, ['code', 'definition', 'image', 'inlineCode', 'link', 'mdxJsxFlowElement', 'mdxJsxTextElement', 'text'], (node) => {
       switch (node.type) {
         case 'code':
         case 'inlineCode':
@@ -47,7 +47,8 @@ export const remarkBsConfig: Plugin<[], Root> = function () {
           node.url = replaceConfigInText(node.url)
           break
         }
-        case 'mdxJsxFlowElement': {
+        case 'mdxJsxFlowElement':
+        case 'mdxJsxTextElement': {
           node.attributes = replaceConfigInAttributes(node.attributes)
           break
         }
@@ -70,13 +71,14 @@ export const remarkBsDocsref: Plugin<[], Root> = function () {
 
     // https://github.com/syntax-tree/mdast#nodes
     // https://github.com/syntax-tree/mdast-util-mdx-jsx#nodes
-    visit(ast, ['definition', 'link', 'mdxJsxTextElement'], (node) => {
+    visit(ast, ['definition', 'link', 'mdxJsxFlowElement', 'mdxJsxTextElement'], (node) => {
       switch (node.type) {
         case 'definition':
         case 'link': {
           node.url = replaceDocsrefInText(node.url)
           break
         }
+        case 'mdxJsxFlowElement':
         case 'mdxJsxTextElement': {
           node.attributes = replaceDocsrefInAttributes(node.attributes)
           break
