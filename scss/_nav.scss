@@ -58,7 +58,8 @@ $nav-pills-tokens: () !default;
 $nav-pills-tokens: defaults(
   (
     --nav-pills-link-active-color: var(--component-active-color),
-    --nav-pills-link-active-bg: var(--component-active-bg),
+--nav-pills-link-active-color: var(--primary-contrast),
+--nav-pills-link-active-bg: var(--primary-bg),
   ),
   $nav-pills-tokens
 );
