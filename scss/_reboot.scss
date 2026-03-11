@@ -513,9 +513,13 @@ legend {
 
 ::-webkit-datetime-edit-fields-wrapper,
 ::-webkit-datetime-edit-text,
-::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-millisecond-field,
+::-webkit-datetime-edit-second-field,
+::-webkit-datetime-edit-minute-field,
 ::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-ampm-field,
 ::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-week-field,
 ::-webkit-datetime-edit-month-field,
 ::-webkit-datetime-edit-year-field {
   padding: 0;
