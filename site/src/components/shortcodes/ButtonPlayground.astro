@@ -32,7 +32,7 @@ const rounded = ['default', 'pill', 'square']
       <div class="dropdown">
         <button
           type="button"
-          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
           id="btn-color-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -60,9 +60,9 @@ const rounded = ['default', 'pill', 'square']
       </div>
     </div>
 
-    <div class="vstack gap-1">
+    <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Style</label>
-      <div class="btn-group text-capitalize" role="group" aria-label="Button style">
+      <div class="btn-group text-capitalize btn-group-sm" role="group" aria-label="Button style">
         {styles.map((style) => (
           <label class="btn-check btn-outline theme-secondary">
             <input
@@ -83,7 +83,7 @@ const rounded = ['default', 'pill', 'square']
       <div class="dropdown">
         <button
           type="button"
-          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
           id="btn-size-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -113,7 +113,7 @@ const rounded = ['default', 'pill', 'square']
 
     <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Rounded</label>
-      <div class="btn-group text-capitalize" role="group" aria-label="Button rounded">
+      <div class="btn-group text-capitalize btn-group-sm" role="group" aria-label="Button rounded">
         {rounded.map((round) => (
           <label class="btn-check btn-outline theme-secondary">
             <input
@@ -133,20 +133,20 @@ const rounded = ['default', 'pill', 'square']
 
 <Example
   class="d-flex align-items-start gap-2"
-  code={`<button type="button" class="btn btn-solid theme-primary" data-button-type="text">Button</button>
-<button type="button" class="btn btn-solid theme-primary" data-button-type="left-icon">
+  code={`<button type="button" class="btn-solid theme-primary btn-sm" data-button-type="text">Button</button>
+<button type="button" class="btn-solid theme-primary" data-button-type="left-icon">
   <svg class="bi me-1" width="16" height="16" aria-hidden="true">
     <use href="#arrow-left" />
   </svg>
   Left icon
 </button>
-<button type="button" class="btn btn-solid theme-primary" data-button-type="right-icon">
+<button type="button" class="btn-solid theme-primary btn-sm" data-button-type="right-icon">
   Right icon
   <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
     <use href="#arrow-right" />
   </svg>
 </button>
-<button type="button" class="btn btn-solid btn-icon theme-primary" data-button-type="icon-only" aria-label="Icon only">
+<button type="button" class="btn-solid btn-icon theme-primary btn-sm" data-button-type="icon-only" aria-label="Icon only">
   <svg class="bi" width="16" height="16" aria-hidden="true">
     <use href="#plus-lg" />
   </svg>

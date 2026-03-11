@@ -10,7 +10,7 @@ toc: true
 
 Hover the button below to see a tooltip. By default, the tooltip will appear above their trigger element (anything with the `data-bs-toggle="tooltip"` attribute).
 
-<Example addStackblitzJs class="tooltip-demo" code={`<button type="button" class="btn btn-solid theme-primary"
+<Example addStackblitzJs class="tooltip-demo" code={`<button type="button" class="btn-solid theme-primary"
           data-bs-toggle="tooltip"
           data-bs-title="Tooltip on top">
     Example tooltip
@@ -50,7 +50,7 @@ You can customize the appearance of tooltips using [CSS variables](#variables). 
 
 <ScssDocs name="custom-tooltip" file="site/src/scss/_component-examples.scss" />
 
-<Example addStackblitzJs class="tooltip-demo" code={`<button type="button" class="btn btn-solid theme-secondary"
+<Example addStackblitzJs class="tooltip-demo" code={`<button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="tooltip" data-bs-placement="top"
           data-bs-custom-class="custom-tooltip"
           data-bs-title="This top tooltip is themed via CSS variables.">
@@ -61,25 +61,25 @@ You can customize the appearance of tooltips using [CSS variables](#variables). 
 
 Set `data-bs-placement` to change the direction. Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL.
 
-<Example class="tooltip-demo" code={`<button type="button" class="btn btn-solid theme-secondary"
+<Example class="tooltip-demo" code={`<button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="tooltip"
           data-bs-placement="left"
           data-bs-title="Tooltip on left">
     Tooltip on left
   </button>
-  <button type="button" class="btn btn-solid theme-secondary"
+  <button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           data-bs-title="Tooltip on top">
     Tooltip on top
   </button>
-  <button type="button" class="btn btn-solid theme-secondary"
+  <button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="tooltip"
           data-bs-placement="bottom"
           data-bs-title="Tooltip on bottom">
     Tooltip on bottom
   </button>
-  <button type="button" class="btn btn-solid theme-secondary"
+  <button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="tooltip"
           data-bs-placement="right"
           data-bs-title="Tooltip on right">
@@ -90,13 +90,13 @@ Set `data-bs-placement` to change the direction. Hover over the buttons below to
 
 Change placement at different breakpoints using responsive prefixes. The syntax is `breakpoint:placement`, where breakpoint is one of `sm`, `md`, `lg`, `xl`, or `2xl`.
 
-<Example class="tooltip-demo" code={`<button type="button" class="btn btn-solid theme-secondary"
+<Example class="tooltip-demo" code={`<button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="tooltip"
           data-bs-placement="top md:right lg:bottom"
           data-bs-title="Responsive tooltip">
     Top → md:right → lg:bottom
   </button>
-  <button type="button" class="btn btn-solid theme-secondary"
+  <button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="tooltip"
           data-bs-placement="left lg:top"
           data-bs-title="Responsive tooltip">
@@ -109,7 +109,7 @@ Resize your browser to see the tooltip placement change at different breakpoints
 
 And with custom HTML added:
 
-<Example class="tooltip-demo" code={`<button type="button" class="btn btn-solid theme-secondary"
+<Example class="tooltip-demo" code={`<button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="tooltip"
           data-bs-html="true"
           data-bs-title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
@@ -135,7 +135,7 @@ Elements with the `disabled` attribute aren’t interactive, meaning users canno
 <Example class="tooltip-demo" addStackblitzJs code={`<span class="d-inline-block" tabindex="0"
           data-bs-toggle="tooltip"
           data-bs-title="Disabled tooltip">
-    <button class="btn btn-primary" type="button" disabled>Disabled button</button>
+    <button class="btn-solid theme-primary" type="button" disabled>Disabled button</button>
   </span>`} />
 
 ## CSS

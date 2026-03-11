@@ -21,7 +21,7 @@ Alternatively, you can also switch to a media query implementation thanks to our
 For example, to change the color mode of a dropdown menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent `.dropdown`. Now, no matter the global color mode, these dropdowns will display with the specified theme value.
 
 <Example class="d-flex justify-content-between" code={`<div class="dropdown" data-bs-theme="light">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
       Default dropdown
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
@@ -35,7 +35,7 @@ For example, to change the color mode of a dropdown menu, add `data-bs-theme="li
   </div>
 
   <div class="dropdown" data-bs-theme="dark">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
       Dark dropdown
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark">
@@ -155,7 +155,7 @@ For example, you can create a “blue theme” with the selector `data-bs-theme=
       <hr class="my-4"/>
 
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCustom" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCustom" data-bs-toggle="dropdown" aria-expanded="false">
           Dropdown button
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonCustom">

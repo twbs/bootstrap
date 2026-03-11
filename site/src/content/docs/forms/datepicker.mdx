@@ -103,14 +103,14 @@ Control where the calendar appears relative to the input with `data-bs-placement
 
 Use a button instead of an input for use cases like dashboard date filters. Add `data-bs-datepicker-display` to the text element to preserve icons when the date updates.
 
-<Example code={`<button type="button" class="btn btn-outline-secondary" data-bs-toggle="datepicker">
+<Example code={`<button type="button" class="btn-outline theme-secondary" data-bs-toggle="datepicker">
   <svg class="bi" width="16" height="16"><use href="#calendar-week" /></svg>
   <span data-bs-datepicker-display>Select date</span>
 </button>`} />
 
 For date range selection (e.g., dashboard time filters), use `data-bs-selection-mode="multiple-ranged"`. The calendar will close after both start and end dates are selected.
 
-<Example code={`<button type="button" class="btn btn-outline-secondary" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged">
+<Example code={`<button type="button" class="btn-outline theme-secondary" data-bs-toggle="datepicker" data-bs-selection-mode="multiple-ranged">
     <svg class="bi" width="16" height="16"><use href="#calendar-week" /></svg>
     <span data-bs-datepicker-display>Last 7 days</span>
   </button>`} />
@@ -144,7 +144,7 @@ To bind to a form field, include a hidden input inside the container. The value 
   <div data-bs-toggle="datepicker" data-bs-inline="true">
     <input type="hidden" name="selected_date">
   </div>
-  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  <button type="submit" class="btn-solid theme-primary mt-3">Submit</button>
 </form>`} />
 
 ### Custom date formatting

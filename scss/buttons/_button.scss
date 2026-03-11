@@ -165,13 +165,14 @@ $button-variants: defaults(
 // Base styles
 //
 
-$btn-variant-selectors: () !default;
+// scss-docs-start btn-variant-selectors
+$btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), string.unquote(".btn-icon")) !default;
 @each $variant, $config in $button-variants {
   $btn-variant-selectors: list.append($btn-variant-selectors, string.unquote(".btn-#{$variant}"), comma);
 }
+// scss-docs-end btn-variant-selectors
 
 @layer components {
-  .btn,
   #{$btn-variant-selectors} {
     @include tokens($button-tokens);
 

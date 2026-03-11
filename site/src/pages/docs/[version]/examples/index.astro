@@ -18,12 +18,12 @@ export function getStaticPaths() {
   <div class="d-flex flex-column flex-md-row gap-3" slot="header-content">
     <a
       href={getConfig().download.dist_examples}
-      class="btn btn-lg bd-btn-lg btn-bd-primary d-flex align-items-center justify-content-center fw-semibold"
+      class="btn-lg btn-solid theme-accent d-flex align-items-center justify-content-center fw-semibold"
     >
       <svg class="bi me-2" aria-hidden="true"><use href="#box-seam"></use></svg>
       Download examples
     </a>
-    <a href={getConfig().download.source} class="btn btn-lg bd-btn-lg btn-outline-secondary"> Download source code</a>
+    <a href={getConfig().download.source} class="btn-lg btn-outline theme-secondary"> Download source code</a>
   </div>
   <Fragment slot="main-content">
     <ExamplesMain />
