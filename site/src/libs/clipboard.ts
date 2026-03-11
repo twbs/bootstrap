@@ -4,10 +4,7 @@ declare const bootstrap: any
 
 const btnTitle = 'Copy'
 
-export function initCopyButtons(
-  selector: string,
-  textFn: (trigger: Element) => string
-): ClipboardJS {
+export function initCopyButtons(selector: string, textFn: (trigger: Element) => string): ClipboardJS {
   document.querySelectorAll(selector).forEach((btn) => {
     bootstrap.Tooltip.getOrCreateInstance(btn, { title: btnTitle })
   })

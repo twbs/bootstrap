@@ -18,18 +18,17 @@ const classTransformer: ShikiTransformer = {
 const lineWrapperTransformer: ShikiTransformer = {
   name: 'line-wrapper',
   line(node) {
-    const hasOnlyComments = node.children.every((child) =>
-      child.type === 'element' &&
-      child.properties?.class &&
-      Array.isArray(child.properties.class) &&
-      child.properties.class.some((cls) => typeof cls === 'string' && cls.includes('comment'))
+    const hasOnlyComments = node.children.every(
+      (child) =>
+        child.type === 'element' &&
+        child.properties?.class &&
+        Array.isArray(child.properties.class) &&
+        child.properties.class.some((cls) => typeof cls === 'string' && cls.includes('comment'))
     )
 
     if (!hasOnlyComments) {
       node.properties = node.properties || {}
-      node.properties.class = node.properties.class
-        ? `${node.properties.class} line`
-        : 'line'
+      node.properties.class = node.properties.class ? `${node.properties.class} line` : 'line'
     }
   }
 }
