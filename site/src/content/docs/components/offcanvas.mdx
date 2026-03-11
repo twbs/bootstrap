@@ -41,10 +41,10 @@ Use the buttons below to show and hide an offcanvas element via JavaScript that 
 
 You can use a link with the `href` attribute, or a button with the `data-bs-target` attribute. In both cases, the `data-bs-toggle="offcanvas"` is required.
 
-<Example code={`<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+<Example code={`<a class="btn-solid theme-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
     Link with href
   </a>
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  <button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
     Button with data-bs-target
   </button>
 
@@ -74,7 +74,7 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
 
 Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the `data-bs-scroll` attribute to enable `<body>` scrolling.
 
-<Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
 
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
     <div class="offcanvas-header">
@@ -90,7 +90,7 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
 
 You can also enable `<body>` scrolling with a visible backdrop.
 
-<Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
 
   <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
@@ -106,7 +106,7 @@ You can also enable `<body>` scrolling with a visible backdrop.
 
 When backdrop is set to static, the offcanvas will not close when clicking outside of it.
 
-<Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
     Toggle static offcanvas
   </button>
 
@@ -175,7 +175,7 @@ There's no default placement for offcanvas components, so you must add one of th
 
 Try the top, right, bottom, and fullscreen examples out below.
 
-<Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
 
   <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
     <div class="offcanvas-header">
@@ -187,7 +187,7 @@ Try the top, right, bottom, and fullscreen examples out below.
     </div>
   </div>`} />
 
-<Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
@@ -199,7 +199,7 @@ Try the top, right, bottom, and fullscreen examples out below.
     </div>
   </div>`} />
 
-<Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
 
   <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
     <div class="offcanvas-header">
@@ -211,7 +211,7 @@ Try the top, right, bottom, and fullscreen examples out below.
     </div>
   </div>`} />
 
-<Example code={`<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFullscreen" aria-controls="offcanvasFullscreen">Toggle fullscreen offcanvas</button>
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFullscreen" aria-controls="offcanvasFullscreen">Toggle fullscreen offcanvas</button>
 
   <div class="offcanvas offcanvas-fullscreen" tabindex="-1" id="offcanvasFullscreen" aria-labelledby="offcanvasFullscreenLabel">
     <div class="offcanvas-header">
@@ -236,8 +236,8 @@ Add an optional `.offcanvas-footer` for action buttons or other content at the b
       <p>Content for the offcanvas goes here. The footer will stick to the bottom.</p>
     </div>
     <div class="offcanvas-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="offcanvas">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="offcanvas">Close</button>
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
     </div>
   </div>`} />
 

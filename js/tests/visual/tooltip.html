@@ -26,35 +26,35 @@
 
       <div class="row">
         <p>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="auto" title="Tooltip on auto">
+          <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="auto" title="Tooltip on auto">
             Tooltip on auto
           </button>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+          <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
             Tooltip on top
           </button>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">
+          <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">
             Tooltip on end
           </button>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+          <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
             Tooltip on bottom
           </button>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
+          <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
             Tooltip on start
           </button>
         </p>
       </div>
       <div class="row">
         <p>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with container (selector)" data-bs-container="#customContainer">
+          <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with container (selector)" data-bs-container="#customContainer">
             Tooltip with container (selector)
           </button>
-          <button id="tooltipElement" type="button" class="btn btn-secondary" data-bs-placement="left" title="Tooltip with container (element)">
+          <button id="tooltipElement" type="button" class="btn-solid theme-secondary" data-bs-placement="left" title="Tooltip with container (element)">
             Tooltip with container (element)
           </button>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+          <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
             Tooltip with HTML
           </button>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with XSS" data-bs-container="<img src=1 onerror=alert(123)>">
+          <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip with XSS" data-bs-container="<img src=1 onerror=alert(123)>">
             Tooltip with XSS
           </button>
         </p>
@@ -72,13 +72,13 @@
         <div class="h4">Test Selector triggered tooltips</div>
         <div id="wrapperTriggeredBySelector">
           <div class="py-2 selectorButtonsBlock">
-            <button type="button" class="btn btn-secondary bs-dynamic-tooltip" title="random title">Using title</button>
-            <button type="button" class="btn btn-secondary bs-dynamic-tooltip" data-bs-title="random title">Using bs-title</button>
+            <button type="button" class="btn-solid theme-secondary bs-dynamic-tooltip" title="random title">Using title</button>
+            <button type="button" class="btn-solid theme-secondary bs-dynamic-tooltip" data-bs-title="random title">Using bs-title</button>
           </div>
 
         </div>
         <div class="mt-3">
-          <button type="button" class="btn btn-primary" onclick="duplicateButtons()">Duplicate above two buttons</button>
+          <button type="button" class="btn-solid theme-primary" onclick="duplicateButtons()">Duplicate above two buttons</button>
         </div>
       </div>
     </div>
@@ -90,10 +90,10 @@
       if (typeof document.body.attachShadow === 'function') {
         const shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
         shadowRoot.innerHTML =
-          '<button id="firstShadowTooltip" type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top in a shadow dom">' +
+          '<button id="firstShadowTooltip" type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top in a shadow dom">' +
           '  Tooltip on top in a shadow dom' +
           '</button>' +
-          '<button id="secondShadowTooltip" type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top in a shadow dom with container option">' +
+          '<button id="secondShadowTooltip" type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top in a shadow dom with container option">' +
           '  Tooltip on top in a shadow dom' +
           '</button>'
 
