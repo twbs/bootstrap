@@ -26,34 +26,38 @@ export const remarkBsConfig: Plugin<[], Root> = function () {
 
     // https://github.com/syntax-tree/mdast#nodes
     // https://github.com/syntax-tree/mdast-util-mdx-jsx#nodes
-    visit(ast, ['code', 'definition', 'image', 'inlineCode', 'link', 'mdxJsxFlowElement', 'mdxJsxTextElement', 'text'], (node) => {
-      switch (node.type) {
-        case 'code':
-        case 'inlineCode':
-        case 'text': {
-          node.value = replaceConfigInText(node.value)
-          break
-        }
-        case 'image': {
-          if (node.alt) {
-            node.alt = replaceConfigInText(node.alt)
+    visit(
+      ast,
+      ['code', 'definition', 'image', 'inlineCode', 'link', 'mdxJsxFlowElement', 'mdxJsxTextElement', 'text'],
+      (node) => {
+        switch (node.type) {
+          case 'code':
+          case 'inlineCode':
+          case 'text': {
+            node.value = replaceConfigInText(node.value)
+            break
           }
+          case 'image': {
+            if (node.alt) {
+              node.alt = replaceConfigInText(node.alt)
+            }
 
-          node.url = replaceConfigInText(node.url)
-          break
-        }
-        case 'definition':
-        case 'link': {
-          node.url = replaceConfigInText(node.url)
-          break
-        }
-        case 'mdxJsxFlowElement':
-        case 'mdxJsxTextElement': {
-          node.attributes = replaceConfigInAttributes(node.attributes)
-          break
+            node.url = replaceConfigInText(node.url)
+            break
+          }
+          case 'definition':
+          case 'link': {
+            node.url = replaceConfigInText(node.url)
+            break
+          }
+          case 'mdxJsxFlowElement':
+          case 'mdxJsxTextElement': {
+            node.attributes = replaceConfigInAttributes(node.attributes)
+            break
+          }
         }
       }
-    })
+    )
   }
 }
 
