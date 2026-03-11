@@ -11,17 +11,6 @@ import { getSlug } from '@libs/utils'
       <div class="bd-content">
         <h2 id={getSlug(category)}>{category}</h2>
         <p>{description}</p>
-        {category === 'RTL' && (
-          <div class="bd-callout bd-callout-warning small">
-            <p>
-              <strong>RTL is still experimental</strong> and will evolve with feedback. Spotted something or have an
-              improvement to suggest?
-            </p>
-            <p>
-              <a href={`${getConfig().repo}/issues/new/choose`}>Please open an issue.</a>
-            </p>
-          </div>
-        )}
         <div class="row">
           {examples.map((example, index) => {
             if (external) {
@@ -69,7 +58,6 @@ import { getSlug } from '@libs/utils'
                 <a
                   class="d-block link-offset-1"
                   href={`/docs/${getConfig().docs_version}/examples/${getSlug(example.name)}/`}
-                  hreflang={example.name.includes('RTL') ? 'ar' : undefined}
                 >
                   <img
                     class="img-thumbnail mb-3"
