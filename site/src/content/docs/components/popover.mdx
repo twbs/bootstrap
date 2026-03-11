@@ -10,7 +10,7 @@ aliases:
 
 Click the button below to trigger a popover:
 
-<Example addStackblitzJs code={`<button type="button" class="btn btn-solid theme-primary"
+<Example addStackblitzJs code={`<button type="button" class="btn-solid theme-primary"
           data-bs-toggle="popover"
           data-bs-title="Popover title"
           data-bs-content="This is the popover content—make it as long as you want.">
@@ -44,7 +44,7 @@ Titles are set via `data-bs-title` and body content is set via `data-bs-content`
 
 <Callout name="warning-data-bs-title-vs-title" type="warning" />
 
-<Example addStackblitzJs code={`<button type="button" class="btn btn-solid theme-primary"
+<Example addStackblitzJs code={`<button type="button" class="btn-solid theme-primary"
           data-bs-toggle="popover"
           data-bs-title="Popover title"
           data-bs-content="And here’s some amazing content. It’s very engaging. Right?">
@@ -55,21 +55,21 @@ Titles are set via `data-bs-title` and body content is set via `data-bs-content`
 
 Set `data-bs-placement` to change the direction. Four options are available: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL.
 
-<Example addStackblitzJs code={`<button type="button" class="btn btn-solid theme-secondary"
+<Example addStackblitzJs code={`<button type="button" class="btn-solid theme-secondary"
           data-bs-container="body"
           data-bs-toggle="popover"
           data-bs-placement="left"
           data-bs-content="Left popover">
     Popover on left
   </button>
-  <button type="button" class="btn btn-solid theme-secondary"
+  <button type="button" class="btn-solid theme-secondary"
           data-bs-container="body"
           data-bs-toggle="popover"
           data-bs-placement="top"
           data-bs-content="Top popover">
     Popover on top
   </button>
-  <button type="button" class="btn btn-solid theme-secondary"
+  <button type="button" class="btn-solid theme-secondary"
           data-bs-container="body"
           data-bs-toggle="popover"
           data-bs-placement="bottom"
@@ -77,7 +77,7 @@ Set `data-bs-placement` to change the direction. Four options are available: top
     Popover on bottom
   </button>
 
-  <button type="button" class="btn btn-solid theme-secondary"
+  <button type="button" class="btn-solid theme-secondary"
           data-bs-container="body"
           data-bs-toggle="popover"
           data-bs-placement="right"
@@ -89,14 +89,14 @@ Set `data-bs-placement` to change the direction. Four options are available: top
 
 Change placement at different breakpoints using responsive prefixes. The syntax is `breakpoint:placement`, where breakpoint is one of `sm`, `md`, `lg`, `xl`, or `2xl`.
 
-<Example addStackblitzJs code={`<button type="button" class="btn btn-solid theme-secondary"
+<Example addStackblitzJs code={`<button type="button" class="btn-solid theme-secondary"
           data-bs-container="body"
           data-bs-toggle="popover"
           data-bs-placement="top md:right lg:bottom"
           data-bs-content="This popover changes placement at different breakpoints.">
     Top → md:right → lg:bottom
   </button>
-  <button type="button" class="btn btn-solid theme-secondary"
+  <button type="button" class="btn-solid theme-secondary"
           data-bs-container="body"
           data-bs-toggle="popover"
           data-bs-placement="left lg:top"
@@ -130,7 +130,7 @@ You can customize the appearance of popovers using [CSS variables](#variables). 
 
 <ScssDocs name="custom-popovers" file="site/src/scss/_component-examples.scss" />
 
-<Example addStackblitzJs class="custom-popover-demo" code={`<button type="button" class="btn btn-solid theme-secondary"
+<Example addStackblitzJs class="custom-popover-demo" code={`<button type="button" class="btn-solid theme-secondary"
           data-bs-toggle="popover" data-bs-placement="right"
           data-bs-custom-class="custom-popover"
           data-bs-title="Custom popover"
@@ -146,7 +146,7 @@ Use the `focus` trigger to dismiss popovers on the user’s next click of an ele
 **Dismissing on next click requires specific HTML for proper cross-browser and cross-platform behavior.** You can only use `<a>` elements, not `<button>`s, and you must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex).
 </Callout>
 
-<Example addStackblitzJs code={`<a tabindex="0" class="btn btn-solid theme-secondary" role="button"
+<Example addStackblitzJs code={`<a tabindex="0" class="btn-solid theme-secondary" role="button"
           data-bs-toggle="popover"
           data-bs-trigger="focus"
           data-bs-title="Dismissible popover"

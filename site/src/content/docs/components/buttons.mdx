@@ -98,7 +98,10 @@ You can even roll your own custom sizing with CSS variables:
 
 Use `.btn-icon` for square buttons that contain only an icon. This class sets `aspect-ratio: 1` and removes padding, making the button perfectly square based on its `min-height`. Always include an `aria-label` attribute on icon-only buttons to ensure they are accessible to screen reader users.
 
-<Example code={`<button type="button" class="btn-solid theme-primary btn-icon" aria-label="Confirm">
+<Example code={`<button type="button" class="btn-icon" aria-label="Magic">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#magic"></use></svg>
+  </button>
+  <button type="button" class="btn-solid theme-primary btn-icon" aria-label="Confirm">
     <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
   </button>
   <button type="button" class="btn-outline theme-secondary btn-icon" aria-label="Auto theme">
@@ -340,6 +343,12 @@ To remove a variant you don't need, use Sass's `map.remove()`:
   $button-variants: map.remove($button-variants, "text", "subtle")
 );
 ```
+
+#### Selectors
+
+The `$btn-variant-selectors` list controls which selectors receive the base button styles (tokens, display, padding, font, etc.). By default it includes `.btn`, `.btn-link`, `.btn-icon`, and all classes generated from the `$button-variants` map. This means variant classes like `.btn-solid` work standalone without requiring `.btn`.
+
+<ScssDocs name="btn-variant-selectors" file="scss/buttons/_button.scss" />
 
 ### Sass loops
 

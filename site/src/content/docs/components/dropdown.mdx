@@ -11,7 +11,7 @@ aliases:
 Toggle dropdown menus with buttons whenever possible. Here's an example using a Bootstrap button:
 
 <Example code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Toggle dropdown
     </button>
     <ul class="dropdown-menu">
@@ -34,7 +34,7 @@ Wrap the dropdown’s toggle (your button or link) and the dropdown menu within 
 While `<button>` is the recommended control for a dropdown toggle, there might be situations where you have to use an `<a>` element. If you do, we recommend adding a `role="button"` attribute to appropriately convey control’s purpose to assistive technologies such as screen readers.
 
 <Example code={`<div class="dropdown">
-    <a class="btn btn-solid theme-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="btn-solid theme-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       Toggle dropdown
     </a>
 
@@ -52,8 +52,8 @@ Similarly, create split button dropdowns with virtually the same markup as singl
 We use this extra class to reduce the horizontal `padding` on either side of the caret by 25% and remove the `margin-left` that’s added for regular button dropdowns. Those extra changes keep the caret centered in the split button and provide a more appropriately sized hit area next to the main button.
 
 <Example showMarkup={false} code={`<div class="btn-group">
-    <button type="button" class="btn btn-solid theme-primary">Primary</button>
-    <button type="button" class="btn btn-solid theme-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <button type="button" class="btn-solid theme-primary">Primary</button>
+    <button type="button" class="btn-solid theme-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
       <span class="visually-hidden">Toggle Dropdown</span>
     </button>
     <ul class="dropdown-menu">
@@ -68,8 +68,8 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 ```html
 <!-- Example split danger button -->
 <div class="btn-group">
-  <button type="button" class="btn btn-danger">Danger</button>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+  <button type="button" class="btn-solid theme-danger">Danger</button>
+  <button type="button" class="btn-solid theme-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu">
@@ -87,7 +87,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 Opt into darker dropdowns to match a dark navbar or custom style by adding `data-bs-theme="dark"` onto an existing `.dropdown-menu`. No changes are required to the dropdown items.
 
 <Example code={`<div class="dropdown" data-bs-theme="dark">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Dropdown button
     </button>
     <ul class="dropdown-menu dropdown-menu-dark">
@@ -110,7 +110,7 @@ And putting it to use in a navbar:
       <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
         <ul class="navbar-nav">
           <li class="nav-item dropdown" data-bs-theme="dark">
-            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn-solid theme-inverse dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
@@ -147,7 +147,7 @@ For example, `data-bs-placement="bottom-start md:bottom-end lg:end-start"` will:
 - Switch to `right-start` at the `lg` breakpoint
 
 <Example class="d-flex gap-2" code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom-start md:bottom-end" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom-start md:bottom-end" aria-expanded="false">
       Bottom start → md:bottom-end
     </button>
     <ul class="dropdown-menu">
@@ -156,7 +156,7 @@ For example, `data-bs-placement="bottom-start md:bottom-end lg:end-start"` will:
     </ul>
   </div>
   <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom lg:right" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom lg:right" aria-expanded="false">
       Bottom → lg:right
     </button>
     <ul class="dropdown-menu">
@@ -165,7 +165,7 @@ For example, `data-bs-placement="bottom-start md:bottom-end lg:end-start"` will:
     </ul>
   </div>
   <div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="top-end md:right-start xl:bottom-start" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-placement="top-end md:right-start xl:bottom-start" aria-expanded="false">
       Multi-breakpoint
     </button>
     <ul class="dropdown-menu">
@@ -315,7 +315,7 @@ Create nested dropdown menus with the `.dropdown-submenu` wrapper class. Submenu
 Wrap a `.dropdown-item` trigger and a nested `.dropdown-menu` inside a `.dropdown-submenu` element.
 
 <Example code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Dropdown with submenu
     </button>
     <ul class="dropdown-menu">
@@ -339,7 +339,7 @@ Wrap a `.dropdown-item` trigger and a nested `.dropdown-menu` inside a `.dropdow
 Submenus can be nested to multiple levels. Each level opens to the side and flips direction when there's not enough viewport space.
 
 <Example code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Multi-level menu
     </button>
     <ul class="dropdown-menu">
@@ -367,7 +367,7 @@ Submenus can be nested to multiple levels. Each level opens to the side and flip
 When multiple submenu triggers exist at the same level, opening one automatically closes the others.
 
 <Example code={`<div class="dropdown">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Multiple submenus
     </button>
     <ul class="dropdown-menu">
@@ -405,7 +405,7 @@ Use `data-bs-offset` or `data-bs-reference` to change the location of the dropdo
 
 <Example code={`<div class="d-flex">
     <div class="dropdown me-1">
-      <button type="button" class="btn btn-solid theme-secondary" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+      <button type="button" class="btn-solid theme-secondary" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
         Offset
       </button>
       <ul class="dropdown-menu">
@@ -415,8 +415,8 @@ Use `data-bs-offset` or `data-bs-reference` to change the location of the dropdo
       </ul>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn btn-solid theme-secondary">Reference</button>
-      <button type="button" class="btn btn-solid theme-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+      <button type="button" class="btn-solid theme-secondary">Reference</button>
+      <button type="button" class="btn-solid theme-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
         <span class="visually-hidden">Toggle Dropdown</span>
       </button>
       <ul class="dropdown-menu">
@@ -434,7 +434,7 @@ Use `data-bs-offset` or `data-bs-reference` to change the location of the dropdo
 By default, the dropdown menu is closed when clicking inside or outside the dropdown menu. You can use the `autoClose` option to change this behavior of the dropdown.
 
 <Example code={`<div class="btn-group">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
       Default dropdown
     </button>
     <ul class="dropdown-menu">
@@ -445,7 +445,7 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
   </div>
 
   <div class="btn-group">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
       Clickable inside
     </button>
     <ul class="dropdown-menu">
@@ -456,7 +456,7 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
   </div>
 
   <div class="btn-group">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
       Clickable outside
     </button>
     <ul class="dropdown-menu">
@@ -467,7 +467,7 @@ By default, the dropdown menu is closed when clicking inside or outside the drop
   </div>
 
   <div class="btn-group">
-    <button class="btn btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
       Manual close
     </button>
     <ul class="dropdown-menu">

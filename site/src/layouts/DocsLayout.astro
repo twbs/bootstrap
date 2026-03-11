@@ -120,7 +120,7 @@ if (currentPageIndex < allPages.length - 1) {
               )
           }
           <a
-            class="btn btn-subtle btn-sm theme-secondary"
+            class="btn-subtle btn-sm theme-secondary"
             href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
             title="View and edit this file on GitHub"
             target="_blank"
@@ -132,7 +132,7 @@ if (currentPageIndex < allPages.length - 1) {
           {
             frontmatter.mdn && (
               <a
-                class="btn btn-subtle btn-sm theme-secondary"
+                class="btn-subtle btn-sm theme-secondary"
                 href={frontmatter.mdn}
                 title="View on MDN"
                 target="_blank"
@@ -146,7 +146,7 @@ if (currentPageIndex < allPages.length - 1) {
           {
             frontmatter.csstricks && (
               <a
-                class="btn btn-secondary-text btn-sm"
+                class="btn-secondary-text btn-sm"
                 href={typeof frontmatter.csstricks === 'string' ? frontmatter.csstricks : frontmatter.csstricks.url}
                 title="View on CSS-Tricks"
                 target="_blank"
