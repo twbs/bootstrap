@@ -40,6 +40,10 @@ const files = [
   {
     file: 'node_modules/@floating-ui/dom/dist/floating-ui.dom.umd.min.js',
     configPropertyName: 'floating_ui_hash'
+  },
+  {
+    file: 'node_modules/vanilla-calendar-pro/index.js',
+    configPropertyName: 'vanilla_calendar_pro_hash'
   }
 ]
 

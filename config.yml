@@ -43,6 +43,9 @@ cdn:
   floating_ui:          "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.0/dist/floating-ui.dom.umd.min.js"
   floating_ui_hash:     "sha384-R7p1RqabZNhI+RdPNIzTouzd/LBVorZ0Tn3ApcogSOk+HF3o+P0HIenrUw/n0MOj"
   floating_ui_esm:      "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.0/dist/floating-ui.dom.esm.min.js"
+  vanilla_calendar_pro: "https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.1.0/index.js"
+  vanilla_calendar_pro_hash: "sha384-uufJjV19/4zCvBe4t3zJFWdYpBIrAC78Ef5NN2i4VjmTowSYuAx+m56vF6ccI4V3"
+  vanilla_calendar_pro_esm: "https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.1.0/index.mjs"
 
 anchors:
   min:                  2
