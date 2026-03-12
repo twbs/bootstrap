@@ -15,7 +15,8 @@
       margin-bottom: .25rem;
 
       // stylelint-disable selector-max-type, selector-max-compound-selectors
-      > p ~ ul {
+      > p ~ ul,
+      > p ~ p {
         margin-top: -.5rem;
         margin-bottom: 1rem;
       }
