@@ -24,6 +24,7 @@ $nav-tokens: defaults(
     --nav-link-active-color: var(--fg-body),
     --nav-link-active-bg: var(--bg-2),
     --nav-link-disabled-color: var(--fg-4),
+    --nav-link-border-width: var(--border-width),
     --nav-link-transition-property: "color, background-color, border-color",
     --nav-link-transition-timing: .15s ease-in-out,
     --nav-link-transition: var(--nav-link-transition-property) var(--nav-link-transition-timing),
@@ -56,8 +57,8 @@ $nav-pills-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $nav-pills-tokens: defaults(
   (
-    --nav-pills-link-active-color: var(--component-active-color),
-    --nav-pills-link-active-bg: var(--component-active-bg),
+    --nav-pills-link-active-color: var(--primary-contrast),
+    --nav-pills-link-active-bg: var(--primary-bg),
   ),
   $nav-pills-tokens
 );
@@ -110,7 +111,7 @@ $nav-underline-tokens: defaults(
     text-decoration: none;
     white-space: nowrap;
     background: none;
-    border: 0;
+    border: var(--nav-link-border-width) solid transparent;
     @include border-radius(var(--border-radius));
     // @include font-size(var(--nav-link-font-size));
     @include transition(var(--nav-link-transition));
@@ -209,6 +210,7 @@ $nav-underline-tokens: defaults(
 
     .nav-link {
       padding-inline: 0;
+      border: 0;
       border-block-end: var(--nav-underline-border-width) solid transparent;
       @include border-radius(0);
 
