@@ -35,7 +35,11 @@
     }
   ],
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "./js/src/*.js",
+    "./js/dist/*.js",
+    "./dist/js/*.js"
+  ],
   "exports": {
     ".": "./js/index.js",
     "./js/src/*": "./js/src/*",

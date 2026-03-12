@@ -1,19 +1,18 @@
 import ClipboardJS from 'clipboard'
-
-declare const bootstrap: any
+import { Tooltip } from '../../../dist/js/bootstrap.bundle.js'
 
 const btnTitle = 'Copy'
 
 export function initCopyButtons(selector: string, textFn: (trigger: Element) => string): ClipboardJS {
   document.querySelectorAll(selector).forEach((btn) => {
-    bootstrap.Tooltip.getOrCreateInstance(btn, { title: btnTitle })
+    Tooltip.getOrCreateInstance(btn, { title: btnTitle })
   })
 
   const clipboard = new ClipboardJS(selector, { text: textFn })
 
   clipboard.on('success', (event) => {
     const useEl = event.trigger.querySelector('.bi use')
-    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+    const tooltipBtn = Tooltip.getInstance(event.trigger)
     const originalHref = useEl?.getAttribute('href')
 
     if (originalHref === '#check2') {
@@ -46,7 +45,7 @@ export function initCopyButtons(selector: string, textFn: (trigger: Element) => 
   clipboard.on('error', (event) => {
     const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
     const fallbackMsg = `Press ${modifierKey}C to copy`
-    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
+    const tooltipBtn = Tooltip.getInstance(event.trigger)
 
     tooltipBtn?.setContent({ '.tooltip-inner': fallbackMsg })
 

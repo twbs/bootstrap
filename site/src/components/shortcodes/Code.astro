@@ -155,11 +155,11 @@ const highlightedCode = codeToDisplay && detectedLang
 ---
 
 <script>
+  import { Tooltip } from '../../../../dist/js/bootstrap.bundle.js'
   import { initCopyButtons } from '@libs/clipboard'
 
-  // StackBlitz tooltip
   document.querySelectorAll('.btn-edit').forEach((btn) => {
-    bootstrap.Tooltip.getOrCreateInstance(btn, { title: 'Edit on StackBlitz' })
+    Tooltip.getOrCreateInstance(btn, { title: 'Edit on StackBlitz' })
   })
 
   // Handle tab switching
