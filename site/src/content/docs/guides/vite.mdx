@@ -32,10 +32,10 @@ We’re building a Vite project with Bootstrap from scratch, so there are some p
    npm i --save-dev vite
    ```
 
-3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Floating UI here.
+3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using dropdowns, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom
+   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
    ```
 
 4. **Install additional dependency.** In addition to Vite and Bootstrap, we need another dependency (Sass) to properly import and bundle Bootstrap’s CSS.
@@ -148,7 +148,7 @@ In the next and final section to this guide, we’ll import all of Bootstrap’s
 
    *You can also import our stylesheets individually if you want. [Read our Sass import docs]([[docsref:/customize/sass#importing]]) for details.*
 
-2. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Floating UI will be imported automatically through Bootstrap.
+2. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Floating UI and Vanilla Calendar Pro will be imported automatically through Bootstrap.
 
    ```js
    // Import our custom CSS

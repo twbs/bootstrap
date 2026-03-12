@@ -202,13 +202,15 @@
     "shim": {
       "js/bootstrap": {
         "deps": [
-          "@floating-ui/dom"
+          "@floating-ui/dom",
+          "vanilla-calendar-pro"
         ]
       }
     },
     "dependencies": {},
     "peerDependencies": {
-      "@floating-ui/dom": "^1.7.0"
+      "@floating-ui/dom": "^1.7.0",
+      "vanilla-calendar-pro": "^3.1.0"
     }
   },
   "overrides": {
