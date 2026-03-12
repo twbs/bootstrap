@@ -67,7 +67,7 @@ const dataDefinitions = {
   plugins: z
     .object({
       description: z.string(),
-      link: z.string().startsWith('components/'),
+      link: z.string().regex(/^(components|forms)\//),
       name: z.string()
     })
     .array(),
