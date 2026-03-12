@@ -57,9 +57,8 @@ $nav-pills-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $nav-pills-tokens: defaults(
   (
-    --nav-pills-link-active-color: var(--component-active-color),
---nav-pills-link-active-color: var(--primary-contrast),
---nav-pills-link-active-bg: var(--primary-bg),
+    --nav-pills-link-active-color: var(--primary-contrast),
+    --nav-pills-link-active-bg: var(--primary-bg),
   ),
   $nav-pills-tokens
 );
@@ -211,8 +210,7 @@ $nav-underline-tokens: defaults(
 
     .nav-link {
       padding-inline: 0;
-      border-inline: 0;
-      border-block-start: 0;
+      border: 0;
       border-block-end: var(--nav-underline-border-width) solid transparent;
       @include border-radius(0);
 
