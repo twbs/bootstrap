@@ -2,7 +2,7 @@
 
 const path = require('node:path')
 
-const runnerPath = path.join(__dirname, 'runner').replace(/\\/g, '/')
+const runnerPath = path.join(__dirname, 'runner.cjs').replace(/\\/g, '/')
 
 require.extensions['.scss'] = (module, filename) => {
   const normalizedFilename = filename.replace(/\\/g, '/')

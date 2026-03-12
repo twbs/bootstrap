@@ -84,6 +84,36 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed unused `$alert-bg-scale`, `$alert-border-scale`, and `$alert-color-scale` (replaced by theme tokens)
   - Removed unused `$list-group-item-bg-scale` and `$list-group-item-color-scale` (replaced by theme tokens)
 
+### JavaScript
+
+- **Bootstrap's JavaScript is now ESM-only.** We no longer ship UMD bundles. All dist files (`bootstrap.js`, `bootstrap.bundle.js`, and their minified versions) are native ES modules. The plugin APIs themselves are unchanged—only how you load and reference them is different.
+  - CDN `<script>` tags must add `type="module"`:
+    ```html
+    <script type="module" src="bootstrap.bundle.min.js"></script>
+    ```
+  - In v5, the UMD bundle automatically created a `window.bootstrap` global. ES modules don't do this, so there is no longer a `bootstrap` global object. If you called plugin APIs through the global namespace, you must update to explicit imports:
+
+    **Before (v5):**
+    ```js
+    const tooltip = bootstrap.Tooltip.getOrCreateInstance(el)
+    ```
+
+    **After (v6):**
+    ```js
+    import { Tooltip } from './bootstrap.bundle.min.js'
+    const tooltip = Tooltip.getOrCreateInstance(el)
+    ```
+  - **Data attribute APIs are unchanged.** If you only use `data-bs-toggle`, `data-bs-dismiss`, and other data attributes—without calling the JavaScript API directly—the only change you need is adding `type="module"` to your script tag. All data attribute behavior continues to work automatically.
+  - For modern ESM-based bundler setups (Vite, Webpack 5, Parcel 2, Rollup, etc.), no changes are needed — `import { Tooltip } from 'bootstrap'` works as before and now supports full tree shaking. Projects still using CommonJS `require()` calls will need to update to ESM `import` syntax.
+- Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
+- Removed `js/index.umd.js` entry point.
+- Removed jQuery support and the `js-test-jquery` test target.
+- Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for dropdown, tooltip, and popover positioning.
+- Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component.
+- Removed the `jspm` configuration from `package.json`.
+- Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap's plugins register at the top level.
+- Added `"exports"` map to `package.json` for explicit subpath access to source, dist, and Sass files.
+
 ### Reboot
 
 - Relocated heading classes (like `.h1`) and some type classes (`.mark` and `.small`) to Reboot from `_type.scss`. This avoids a dependency in Sass modules and we like to avoid extending selectors in general.

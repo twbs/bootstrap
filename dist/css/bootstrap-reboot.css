@@ -287,7 +287,7 @@
   --bs-control-disabled-opacity: 0.65;
   --bs-btn-input-fg: var(--bs-fg-body);
   --bs-btn-input-bg: var(--bs-bg-body);
-  --bs-btn-input-min-height: 2.5rem;
+  --bs-btn-input-min-height: 2.375rem;
   --bs-btn-input-padding-y: 0.375rem;
   --bs-btn-input-padding-x: 0.75rem;
   --bs-btn-input-font-size: var(--bs-font-size-base);
@@ -299,13 +299,13 @@
   --bs-btn-input-xs-font-size: var(--bs-font-size-xs);
   --bs-btn-input-xs-line-height: 1.125;
   --bs-btn-input-xs-border-radius: var(--bs-border-radius-xs);
-  --bs-btn-input-sm-min-height: 2.25rem;
+  --bs-btn-input-sm-min-height: 2rem;
   --bs-btn-input-sm-padding-y: 0.25rem;
   --bs-btn-input-sm-padding-x: 0.625rem;
   --bs-btn-input-sm-font-size: var(--bs-font-size-sm);
   --bs-btn-input-sm-line-height: var(--bs-line-height-sm);
   --bs-btn-input-sm-border-radius: var(--bs-border-radius-sm);
-  --bs-btn-input-lg-min-height: 3rem;
+  --bs-btn-input-lg-min-height: 2.75rem;
   --bs-btn-input-lg-padding-y: 0.5rem;
   --bs-btn-input-lg-padding-x: 1rem;
   --bs-btn-input-lg-font-size: var(--bs-font-size-md);
@@ -411,6 +411,12 @@
   --bs-border-emphasized: light-dark(var(--bs-gray-400), var(--bs-gray-600));
   --bs-border-white: var(--bs-white);
   --bs-border-black: var(--bs-black);
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 1024px;
+  --bs-breakpoint-xl: 1280px;
+  --bs-breakpoint-2xl: 1536px;
   color-scheme: light dark;
 }
 
@@ -729,9 +735,13 @@
   }
   ::-webkit-datetime-edit-fields-wrapper,
   ::-webkit-datetime-edit-text,
-  ::-webkit-datetime-edit-minute,
+  ::-webkit-datetime-edit-millisecond-field,
+  ::-webkit-datetime-edit-second-field,
+  ::-webkit-datetime-edit-minute-field,
   ::-webkit-datetime-edit-hour-field,
+  ::-webkit-datetime-edit-ampm-field,
   ::-webkit-datetime-edit-day-field,
+  ::-webkit-datetime-edit-week-field,
   ::-webkit-datetime-edit-month-field,
   ::-webkit-datetime-edit-year-field {
     padding: 0;

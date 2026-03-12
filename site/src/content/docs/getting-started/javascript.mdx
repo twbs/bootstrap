@@ -25,13 +25,17 @@ Curious which components explicitly require our JavaScript and Floating UI or Va
 
 ## Individual or compiled
 
-Plugins can be included individually (using Bootstrap’s individual `js/dist/*.js`), or all at once using `bootstrap.js` or the minified `bootstrap.min.js` (don’t include both).
+Plugins can be included individually (using Bootstrap's individual `js/dist/*.js`), or all at once using `bootstrap.js` or the minified `bootstrap.min.js` (don't include both).
 
-If you use a bundler (Webpack, Parcel, Vite…), you can use `/js/dist/*.js` files which are UMD ready.
+If you use a bundler (Webpack, Parcel, Vite…), you can import only the plugins you need and your bundler will automatically tree-shake the rest:
+
+```js
+import { Toast, Tooltip } from 'bootstrap'
+```
 
 ## Usage with JavaScript frameworks
 
-While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScript is not fully compatible with JavaScript frameworks like React, Vue, and Angular** which assume full knowledge of the DOM. Both Bootstrap and the framework may attempt to mutate the same DOM element, resulting in bugs like dropdowns that are stuck in the “open” position.
+While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScript is not fully compatible with JavaScript frameworks like React, Vue, and Angular** which assume full knowledge of the DOM. Both Bootstrap and the framework may attempt to mutate the same DOM element, resulting in bugs like dropdowns that are stuck in the "open" position.
 
 A better alternative for those using this type of frameworks is to use a framework-specific package **instead of** the Bootstrap JavaScript. Here are some of the most popular options:
 
@@ -49,32 +53,18 @@ A better alternative for those using this type of frameworks is to use a framewo
 **Try it yourself!** Download the source code and working demo for using Bootstrap as an ES module from the [twbs/examples repository](https://github.com/twbs/examples/tree/main/sass-js-esm). You can also [open the example in StackBlitz](https://stackblitz.com/github/twbs/examples/tree/main/sass-js-esm?file=index.html).
 </Callout>
 
-We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in the browser, if your [targeted browsers support it](https://caniuse.com/es6-module).
+Bootstrap's JavaScript is built as native ES modules (`bootstrap.js` and `bootstrap.min.js`). Use `<script type="module">` to load Bootstrap in the browser:
 
 ```html
 <script type="module">
-  import { Toast } from 'bootstrap.esm.min.js'
+  import { Toast } from './bootstrap.min.js'
 
   Array.from(document.querySelectorAll('.toast'))
     .forEach(toastNode => new Toast(toastNode))
 </script>
 ```
 
-Compared to JS bundlers, using ESM in the browser requires you to use the full path and filename instead of the module name. [Read more about JS modules in the browser.](https://v8.dev/features/modules#specifiers) That’s why we use `'bootstrap.esm.min.js'` instead of `'bootstrap'` above. However, this is further complicated by our Floating UI and Vanilla Calendar Pro dependencies, which are imported into our JavaScript like so:
-
-```js
-import * as Popper from "@floating-ui/dom"
-import { Calendar } from "vanilla-calendar-pro"
-```
-
-If you try this as-is, you’ll see an error in the console like the following:
-
-```text
-Uncaught TypeError: Failed to resolve module specifier "@floating-ui/dom". Relative references must start with either "/", "./", or "../".
-Uncaught TypeError: Failed to resolve module specifier "vanilla-calendar-pro". Relative references must start with either "/", "./", or "../".
-```
-
-To fix this, you can use an `importmap` to resolve the arbitrary module names to complete paths. If your [targeted browsers](https://caniuse.com/?search=importmap) do not support `importmap`, you’ll need to use the [es-module-shims](https://github.com/guybedford/es-module-shims) project. Here’s how it works for Bootstrap, Floating UI, and Vanilla Calendar Pro:
+Using ESM in the browser requires full paths or an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) for bare module specifiers like `@floating-ui/dom` and `vanilla-calendar-pro`. Here's a complete example using an import map:
 
 ```html
 <!doctype html>
@@ -89,13 +79,12 @@ To fix this, you can use an `importmap` to resolve the arbitrary module names to
     <h1>Hello, modularity!</h1>
     <button id="popoverButton" type="button" class="btn-solid theme-primary btn-lg" data-bs-toggle="popover" title="ESM in Browser" data-bs-content="Bang!">Custom popover</button>
 
-    <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
     <script type="importmap">
     {
       "imports": {
         "@floating-ui/dom": "[[config:cdn.floating_ui_esm]]",
         "vanilla-calendar-pro": "[[config:cdn.vanilla_calendar_pro_esm]]",
-        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@[[config:current_version]]/dist/js/bootstrap.esm.min.js"
+        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@[[config:current_version]]/dist/js/bootstrap.min.js"
       }
     }
     </script>
@@ -106,6 +95,17 @@ To fix this, you can use an `importmap` to resolve the arbitrary module names to
     </script>
   </body>
 </html>
+```
+
+Components that don't depend on Floating UI (like Toast, Alert, Collapse, etc.) can be imported individually without any import map:
+
+```html
+<script type="module">
+  import Toast from './js/dist/toast.js'
+
+  Array.from(document.querySelectorAll('.toast'))
+    .forEach(toastNode => new Toast(toastNode))
+</script>
 ```
 
 ## Dependencies
@@ -126,7 +126,7 @@ We use the native `querySelector` and `querySelectorAll` methods to query DOM el
 
 ## Events
 
-Bootstrap provides custom events for most plugins’ unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. `show`) is triggered at the start of an event, and its past participle form (ex. `shown`) is triggered on the completion of an action.
+Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. `show`) is triggered at the start of an event, and its past participle form (ex. `shown`) is triggered on the completion of an action.
 
 All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
@@ -150,7 +150,7 @@ const configObject = { keyboard: false }
 const dialog1 = new bootstrap.Dialog(myDialogEl, configObject) // initialized with no keyboard
 ```
 
-If you’d like to get a particular plugin instance, each plugin exposes a `getInstance` method. For example, to retrieve an instance directly from an element:
+If you'd like to get a particular plugin instance, each plugin exposes a `getInstance` method. For example, to retrieve an instance directly from an element:
 
 ```js
 bootstrap.Popover.getInstance(myPopoverEl)
@@ -158,13 +158,13 @@ bootstrap.Popover.getInstance(myPopoverEl)
 
 This method will return `null` if an instance is not initiated over the requested element.
 
-Alternatively, `getOrCreateInstance` can be used to get the instance associated with a DOM element, or create a new one in case it wasn’t initialized.
+Alternatively, `getOrCreateInstance` can be used to get the instance associated with a DOM element, or create a new one in case it wasn't initialized.
 
 ```js
 bootstrap.Popover.getOrCreateInstance(myPopoverEl, configObject)
 ```
 
-In case an instance wasn’t initialized, it may accept and use an optional configuration object as second argument.
+In case an instance wasn't initialized, it may accept and use an optional configuration object as second argument.
 
 ### CSS selectors in constructors
 
@@ -205,7 +205,7 @@ carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not 
 
 #### `dispose` method
 
-While it may seem correct to use the `dispose` method immediately after `hide()`, it will lead to incorrect results. Here’s an example of the problem use:
+While it may seem correct to use the `dispose` method immediately after `hide()`, it will lead to incorrect results. Here's an example of the problem use:
 
 ```js
 const myToast = document.querySelector('#myToast')
@@ -219,10 +219,10 @@ myToast.addEventListener('hidden.bs.toast', event => {
 
 ### Default settings
 
-You can change the default settings for a plugin by modifying the plugin’s `Constructor.Default` object:
+You can change the default settings for a plugin by modifying the plugin's `Constructor.Default` object:
 
 ```js
-// changes default for the toast plugin’s `autohide` option to false
+// changes default for the toast plugin's `autohide` option to false
 bootstrap.Toast.Default.autohide = false
 ```
 
@@ -235,14 +235,14 @@ Every Bootstrap plugin exposes the following methods and static properties.
 | --- | --- |
 | `dispose` | Destroys an element's plugin instance. (Removes stored data on the DOM element) |
 | `getInstance` | *Static* method which allows you to get the plugin instance associated with a DOM element. |
-| `getOrCreateInstance` | *Static* method which allows you to get the plugin instance associated with a DOM element, or create a new one in case it wasn’t initialized. |
+| `getOrCreateInstance` | *Static* method which allows you to get the plugin instance associated with a DOM element, or create a new one in case it wasn't initialized. |
 </BsTable>
 
 <BsTable class="table">
 | Static property | Description |
 | --- | --- |
 | `NAME` | Returns the plugin name. (Example: `bootstrap.Tooltip.NAME`) |
-| `VERSION` | The version of each of Bootstrap’s plugins can be accessed via the `VERSION` property of the plugin’s constructor (Example: `bootstrap.Tooltip.VERSION`) |
+| `VERSION` | The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor (Example: `bootstrap.Tooltip.VERSION`) |
 </BsTable>
 
 ## Sanitizer
@@ -255,7 +255,7 @@ The tags and attributes allowed by default are as follows. Any tags or attribute
 <JsDocs name="allow-list" file="js/src/util/sanitizer.js" removeIndentation={false} />
 
 <Callout type="warning">
-**Exercise caution when using these advanced options.** Refer to [OWASP’s Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information. Vulnerabilities caused solely by disabling or modifying content sanitization are not considered within scope for Bootstrap’s security model.
+**Exercise caution when using these advanced options.** Refer to [OWASP's Cross Site Scripting Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) for more information. Vulnerabilities caused solely by disabling or modifying content sanitization are not considered within scope for Bootstrap's security model.
 </Callout>
 
 You can add new values to this default `allowList`:
@@ -288,4 +288,4 @@ const tooltip = new bootstrap.Tooltip(yourTooltipEl, {
 
 ## Disabled JavaScript
 
-Bootstrap’s plugins have no special fallback when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
+Bootstrap's plugins have no special fallback when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.

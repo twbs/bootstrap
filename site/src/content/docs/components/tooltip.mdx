@@ -18,7 +18,7 @@ Hover the button below to see a tooltip. By default, the tooltip will appear abo
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the third party library [Floating UI](https://floating-ui.com/) for positioning. You must include [floating-ui.dom.umd.min.js]([[config:cdn.floating_ui]]) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Floating UI.
+- Tooltips rely on the third party library [Floating UI](https://floating-ui.com/) for positioning. Use `bootstrap.bundle.min.js` which includes Floating UI, or include Floating UI separately via an [import map]([[docsref:/getting-started/javascript#using-bootstrap-as-a-module]]).
 - Tooltips are automatically initialized when using `data-bs-toggle="tooltip"`.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).

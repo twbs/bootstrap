@@ -33,6 +33,7 @@ export function getVersionedBsJsProps() {
   bsJsScriptSrc = `${bsJsScriptSrc}.js`
 
   const bsJsLinkProps: HTMLAttributes<'script'> = {
+    type: 'module',
     src: getVersionedDocsPath(bsJsScriptSrc)
   }
 

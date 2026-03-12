@@ -43,15 +43,6 @@
     }
   }
 }
-:root {
-  --bs-breakpoint-xs: 0;
-  --bs-breakpoint-sm: 576px;
-  --bs-breakpoint-md: 768px;
-  --bs-breakpoint-lg: 1024px;
-  --bs-breakpoint-xl: 1280px;
-  --bs-breakpoint-2xl: 1536px;
-}
-
 @layer layout {
   .row {
     --bs-gutter-x: 1.5rem;
@@ -4922,6 +4913,14 @@
       padding-inline-start: 3rem;
     }
   }
+}
+:root {
+  --bs-breakpoint-xs: 0;
+  --bs-breakpoint-sm: 576px;
+  --bs-breakpoint-md: 768px;
+  --bs-breakpoint-lg: 1024px;
+  --bs-breakpoint-xl: 1280px;
+  --bs-breakpoint-2xl: 1536px;
 }
 
 /*# sourceMappingURL=bootstrap-grid.css.map */
