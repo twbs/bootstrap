@@ -43,4 +43,3 @@ export function getVersionedBsJsProps() {
 
   return bsJsLinkProps
 }
-
