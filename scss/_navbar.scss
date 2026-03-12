@@ -132,6 +132,7 @@ $navbar-dark-tokens: defaults(
     --nav-link-active-bg: transparent;
     --nav-link-disabled-color: var(--navbar-disabled-color);
     --nav-link-border-width: var(--border-width);
+    //--nav-link-border-color: var(--border-color),
     // scss-docs-end navbar-nav-css-vars
 
     display: flex;
