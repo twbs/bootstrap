@@ -86,19 +86,24 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 ### JavaScript
 
-- **Bootstrap's JavaScript is now ESM-only.** We no longer ship UMD bundles. All dist files (`bootstrap.js`, `bootstrap.bundle.js`, and their minified versions) are native ES modules.
+- **Bootstrap's JavaScript is now ESM-only.** We no longer ship UMD bundles. All dist files (`bootstrap.js`, `bootstrap.bundle.js`, and their minified versions) are native ES modules. The plugin APIs themselves are unchanged—only how you load and reference them is different.
   - CDN `<script>` tags must add `type="module"`:
     ```html
     <script type="module" src="bootstrap.bundle.min.js"></script>
     ```
-  - There is no longer a `bootstrap` global object. Programmatic usage requires an `import`:
-    ```html
-    <script type="module">
-      import { Tooltip } from './bootstrap.bundle.min.js'
-      new Tooltip(document.getElementById('myTooltip'))
-    </script>
+  - In v5, the UMD bundle automatically created a `window.bootstrap` global. ES modules don't do this, so there is no longer a `bootstrap` global object. If you called plugin APIs through the global namespace, you must update to explicit imports:
+
+    **Before (v5):**
+    ```js
+    const tooltip = bootstrap.Tooltip.getOrCreateInstance(el)
     ```
-  - Data attribute APIs (`data-bs-toggle`, `data-bs-dismiss`, etc.) continue to work automatically with no code changes beyond adding `type="module"` to the script tag.
+
+    **After (v6):**
+    ```js
+    import { Tooltip } from './bootstrap.bundle.min.js'
+    const tooltip = Tooltip.getOrCreateInstance(el)
+    ```
+  - **Data attribute APIs are unchanged.** If you only use `data-bs-toggle`, `data-bs-dismiss`, and other data attributes—without calling the JavaScript API directly—the only change you need is adding `type="module"` to your script tag. All data attribute behavior continues to work automatically.
   - For modern ESM-based bundler setups (Vite, Webpack 5, Parcel 2, Rollup, etc.), no changes are needed — `import { Tooltip } from 'bootstrap'` works as before and now supports full tree shaking. Projects still using CommonJS `require()` calls will need to update to ESM `import` syntax.
 - Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
 - Removed `js/index.umd.js` entry point.
@@ -106,7 +111,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for dropdown, tooltip, and popover positioning.
 - Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component.
 - Removed the `jspm` configuration from `package.json`.
-- Added `"sideEffects": false` to `package.json` to enable tree shaking in bundlers.
+- Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap's plugins register at the top level.
 - Added `"exports"` map to `package.json` for explicit subpath access to source, dist, and Sass files.
 
 ### Reboot
