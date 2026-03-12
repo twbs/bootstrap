@@ -145,8 +145,8 @@ $navbar-dark-tokens: defaults(
     .nav-link {
       &.active,
       &.show {
-        border: var(--nav-link-border-width) solid var(--nav-link-border-color, transparent);
         color: var(--navbar-active-color);
+        border: var(--nav-link-border-width) solid var(--nav-link-border-color, transparent);
       }
     }
   }
