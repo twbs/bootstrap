@@ -126,13 +126,13 @@ $navbar-dark-tokens: defaults(
     --nav-link-padding-x: .5rem;
     --nav-link-padding-y: .375rem;
     --nav-link-color: var(--navbar-color);
+    --nav-link-border-width: var(--border-width);
+    //--nav-link-border-color: var(--border-color);
     --nav-link-hover-color: var(--navbar-hover-color);
     --nav-link-hover-bg: transparent;
     --nav-link-active-color: var(--navbar-active-color);
     --nav-link-active-bg: transparent;
     --nav-link-disabled-color: var(--navbar-disabled-color);
-    --nav-link-border-width: var(--border-width);
-    //--nav-link-border-color: var(--border-color);
     // scss-docs-end navbar-nav-css-vars
 
     display: flex;
