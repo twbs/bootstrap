@@ -124,13 +124,14 @@ $navbar-dark-tokens: defaults(
     --nav-gap: .25rem;
     --nav-link-gap: .5rem;
     --nav-link-padding-x: .5rem;
-    --nav-link-padding-y: .5rem;
+    --nav-link-padding-y: .375rem;
     --nav-link-color: var(--navbar-color);
     --nav-link-hover-color: var(--navbar-hover-color);
     --nav-link-hover-bg: transparent;
     --nav-link-active-color: var(--navbar-active-color);
     --nav-link-active-bg: transparent;
     --nav-link-disabled-color: var(--navbar-disabled-color);
+    --nav-link-border-width: var(--border-width);
     // scss-docs-end navbar-nav-css-vars
 
     display: flex;
@@ -143,6 +144,7 @@ $navbar-dark-tokens: defaults(
     .nav-link {
       &.active,
       &.show {
+        border: var(--nav-link-border-width) solid transparent;
         color: var(--navbar-active-color);
       }
     }
