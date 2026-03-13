@@ -450,22 +450,14 @@ class CustomSelect extends BaseComponent {
 
     const textSpan = document.createElement('span')
     textSpan.classList.add('custom-select-text')
-    if (this._config.allowHtml) {
-      textSpan.innerHTML = this._sanitize(text)
-    } else {
-      textSpan.textContent = text
-    }
+    textSpan.textContent = text
 
     contentWrapper.append(textSpan)
 
     if (description) {
       const descSpan = document.createElement('span')
       descSpan.classList.add('custom-select-description')
-      if (this._config.allowHtml) {
-        descSpan.innerHTML = this._sanitize(description)
-      } else {
-        descSpan.textContent = description
-      }
+      descSpan.textContent = description
 
       contentWrapper.append(descSpan)
     }
