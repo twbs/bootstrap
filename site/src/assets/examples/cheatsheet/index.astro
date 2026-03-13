@@ -652,7 +652,7 @@ export const body_class = 'bg-body-tertiary'
       <div>
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
         <div class="alert theme-${themeColor.name} alert-dismissible fade show mb-3" role="alert">
-          A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+          <p>A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</p>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         `)} />

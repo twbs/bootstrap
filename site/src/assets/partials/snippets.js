@@ -86,7 +86,7 @@ export default () => {
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
       `<div class="alert theme-${type} alert-dismissible" role="alert">`,
-      `   <div>${message}</div>`,
+      `   <p>${message}</p>`,
       '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
       '</div>'
     ].join('')

@@ -38,6 +38,10 @@ $alert-tokens: defaults(
     @include border-radius(var(--alert-border-radius));
   }
 
+  .alert > p {
+    margin-bottom: 0;
+  }
+
   .alert-heading {
     // Specified to prevent conflicts of changing $headings-color
     color: inherit;
