@@ -33,6 +33,7 @@ $stepper-tokens: defaults(
     grid-template-rows: repeat(2, var(--stepper-size));
     grid-template-columns: auto;
     justify-items: center;
+    align-items: start;
 
     &::after {
       top: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
