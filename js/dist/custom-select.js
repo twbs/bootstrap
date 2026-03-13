@@ -49,7 +49,6 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="custom-select"]';
 const SELECTOR_ITEM = '.custom-select-item';
 const SELECTOR_VISIBLE_ITEMS = '.custom-select-item:not(.disabled):not(:disabled)';
 const Default = {
-  allowHtml: false,
   allowList: DefaultAllowlist,
   boundary: 'clippingParents',
   hidePlaceholderOption: true,
@@ -63,7 +62,6 @@ const Default = {
   showCheckmark: true
 };
 const DefaultType = {
-  allowHtml: 'boolean',
   allowList: 'object',
   boundary: '(string|element)',
   hidePlaceholderOption: 'boolean',
@@ -367,10 +365,9 @@ class CustomSelect extends BaseComponent {
     const description = option.dataset.bsDescription;
     const text = option.textContent;
     if (icon) {
-      // Inline SVG from data-bs-icon — trusted developer markup
       const iconSpan = document.createElement('span');
       iconSpan.classList.add('custom-select-icon');
-      iconSpan.innerHTML = icon;
+      iconSpan.innerHTML = this._sanitize(icon);
       fragment.append(iconSpan);
     } else if (image) {
       const iconSpan = document.createElement('span');
@@ -386,20 +383,12 @@ class CustomSelect extends BaseComponent {
     contentWrapper.classList.add('custom-select-content');
     const textSpan = document.createElement('span');
     textSpan.classList.add('custom-select-text');
-    if (this._config.allowHtml) {
-      textSpan.innerHTML = this._sanitize(text);
-    } else {
-      textSpan.textContent = text;
-    }
+    textSpan.textContent = text;
     contentWrapper.append(textSpan);
     if (description) {
       const descSpan = document.createElement('span');
       descSpan.classList.add('custom-select-description');
-      if (this._config.allowHtml) {
-        descSpan.innerHTML = this._sanitize(description);
-      } else {
-        descSpan.textContent = description;
-      }
+      descSpan.textContent = description;
       contentWrapper.append(descSpan);
     }
     fragment.append(contentWrapper);
@@ -453,7 +442,7 @@ class CustomSelect extends BaseComponent {
         valueElement.textContent = '';
         const iconSpan = document.createElement('span');
         iconSpan.classList.add('custom-select-value-icon');
-        iconSpan.innerHTML = icon; // Trusted developer markup
+        iconSpan.innerHTML = this._sanitize(icon);
         valueElement.append(iconSpan, ` ${text}`);
       } else {
         valueElement.textContent = text;

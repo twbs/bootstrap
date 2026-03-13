@@ -62,7 +62,6 @@ const SELECTOR_VISIBLE_ITEMS = '.custom-select-item:not(.disabled):not(:disabled
 const _SELECTOR_SEARCH = '.custom-select-search-input'
 
 const Default = {
-  allowHtml: false,
   allowList: DefaultAllowlist,
   boundary: 'clippingParents',
   hidePlaceholderOption: true,
@@ -77,7 +76,6 @@ const Default = {
 }
 
 const DefaultType = {
-  allowHtml: 'boolean',
   allowList: 'object',
   boundary: '(string|element)',
   hidePlaceholderOption: 'boolean',
@@ -429,10 +427,9 @@ class CustomSelect extends BaseComponent {
     const text = option.textContent
 
     if (icon) {
-      // Inline SVG from data-bs-icon — trusted developer markup
       const iconSpan = document.createElement('span')
       iconSpan.classList.add('custom-select-icon')
-      iconSpan.innerHTML = icon
+      iconSpan.innerHTML = this._sanitize(icon)
       fragment.append(iconSpan)
     } else if (image) {
       const iconSpan = document.createElement('span')
@@ -527,7 +524,7 @@ class CustomSelect extends BaseComponent {
         valueElement.textContent = ''
         const iconSpan = document.createElement('span')
         iconSpan.classList.add('custom-select-value-icon')
-        iconSpan.innerHTML = icon // Trusted developer markup
+        iconSpan.innerHTML = this._sanitize(icon)
         valueElement.append(iconSpan, ` ${text}`)
       } else {
         valueElement.textContent = text

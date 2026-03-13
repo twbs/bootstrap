@@ -123,7 +123,7 @@ For complete control, use `data-bs-content` to specify raw HTML content. This ov
   </select>`} />
 
 <Callout type="warning">
-Custom HTML content is sanitized by default for security. Use the `allowHtml` option with caution if you need to disable sanitization.
+Custom HTML content is sanitized by default for security. Use the `sanitize` option with caution if you need to disable sanitization.
 </Callout>
 
 ## Live search
@@ -302,7 +302,6 @@ Options can be passed via data attributes or JavaScript:
 | `liveSearchPlaceholder` | string | `'Search…'` | Placeholder text for the search input. |
 | `liveSearchNormalize` | boolean | `false` | Normalize accented characters for search matching. |
 | `showCheckmark` | boolean | `true` | Show a checkmark icon on selected options. |
-| `allowHtml` | boolean | `false` | Allow unsanitized HTML in `data-bs-content`. |
 | `sanitize` | boolean | `true` | Sanitize HTML content to prevent XSS. |
 | `sanitizeFn` | function \| null | `null` | Custom sanitization function. |
 | `allowList` | object | Default allowlist | Object containing allowed HTML elements and attributes. |
