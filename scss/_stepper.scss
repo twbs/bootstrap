@@ -37,15 +37,15 @@ $stepper-tokens: defaults(
 
     &::after {
       top: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
-      inset-inline-end: 0;
+      inset-inline-end: 100%;
       bottom: auto;
-      inset-inline-start: calc(-50% - var(--stepper-gap));
-      width: auto;
+      inset-inline-start: 50%;
+      width: 100%;
       height: var(--stepper-track-size);
     }
 
     &:last-child::after {
-      inset-inline-end: 50%;
+      right: 100%;
     }
   }
 }
@@ -101,8 +101,8 @@ $stepper-tokens: defaults(
   // Connecting lines
   &::after {
     position: absolute;
-    top: calc(var(--stepper-gap) * -1);
-    bottom: 100%;
+    top: 0;
+    bottom: calc(var(--stepper-gap) * -1);
     inset-inline-start: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
     width: var(--stepper-track-size);
     content: "";
@@ -110,7 +110,7 @@ $stepper-tokens: defaults(
   }
 
   // Avoid sibling selector for easier CSS overrides
-  &:first-child::after {
+  &:last-child::after {
     display: none;
   }
 
@@ -121,6 +121,11 @@ $stepper-tokens: defaults(
       background-color: var(--theme-bg, var(--stepper-active-bg));
     }
   }
+}
+
+// Targets the last .active element from a sequence of active elements
+.stepper-item.active:not(:has(+ .stepper-item.active))::after {
+  background-color: var(--stepper-bg);
 }
 
 @each $breakpoint in map.keys($breakpoints) {
