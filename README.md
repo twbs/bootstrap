@@ -156,7 +156,7 @@ Get updates on Bootstrap’s development and chat with the project maintainers a
 
 - Follow [@getbootstrap on X](https://x.com/getbootstrap).
 - Read and subscribe to [The Official Bootstrap Blog](https://blog.getbootstrap.com/).
-- Ask questions and explore [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions).
+- Ask questions and explore [our GitHub Discussions](https://github.com/orgs/twbs/discussions).
 - Discuss, ask questions, and more on [the community Discord](https://discord.gg/bZUvakRU3M) or [Bootstrap subreddit](https://www.reddit.com/r/bootstrap/).
 - Chat with fellow Bootstrappers in IRC. On the `irc.libera.chat` server, in the `#bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5)).
