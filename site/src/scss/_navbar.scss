@@ -13,8 +13,9 @@
   }
 
   .bd-navbar {
+    --bs-navbar-padding-x: 0;
+    --bs-navbar-padding-y: .75rem;
     --bs-border-color: color-mix(in oklch, var(--bs-fg-body) 12%, transparent);
-    padding: .75rem 0;
     margin-bottom: -1px;
     background-clip: padding-box;
 

@@ -96,7 +96,8 @@ $navbar-nav-tokens: defaults(
     justify-content: space-between;
     padding: var(--navbar-padding-y) var(--navbar-padding-x);
     @include set-container();
-    @include gradient-bg();
+    color: var(--navbar-color, var(--fg-body));
+    @include gradient-bg(var(--navbar-bg, var(--bg-body)));
 
     // Container properties for nested containers
     %container-flex-properties {
