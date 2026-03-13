@@ -8,11 +8,14 @@
 
 // mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
 
+// stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start navbar-breakpoints
 $navbar-breakpoints: $breakpoints !default;
 // scss-docs-end navbar-breakpoints
 
 $navbar-tokens: () !default;
+$navbar-dark-tokens: () !default;
+$navbar-nav-tokens: () !default;
 
 // scss-docs-start navbar-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -43,8 +46,6 @@ $navbar-tokens: defaults(
 );
 // scss-docs-end navbar-tokens
 
-$navbar-dark-tokens: () !default;
-
 // scss-docs-start navbar-dark-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
 $navbar-dark-tokens: defaults(
@@ -60,6 +61,28 @@ $navbar-dark-tokens: defaults(
   $navbar-dark-tokens
 );
 // scss-docs-end navbar-dark-tokens
+
+// scss-docs-start navbar-nav-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$navbar-nav-tokens: defaults(
+  (
+    --nav-gap: .25rem,
+    --nav-link-gap: .5rem,
+    --nav-link-padding-x: .5rem,
+    --nav-link-padding-y: .375rem,
+    --nav-link-color: var(--navbar-color),
+    --nav-link-border-width: var(--border-width),
+    //--nav-link-border-color: var(--border-color),
+    --nav-link-hover-color: var(--navbar-hover-color),
+    --nav-link-hover-bg: transparent,
+    --nav-link-active-color: var(--navbar-active-color),
+    --nav-link-active-bg: transparent,
+    --nav-link-disabled-color: var(--navbar-disabled-color),
+  ),
+  $navbar-nav-tokens
+);
+// scss-docs-end navbar-nav-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer components {
   // Base navbar
@@ -119,21 +142,7 @@ $navbar-dark-tokens: defaults(
   //
   // Relies on `.nav` base class.
   .navbar-nav {
-    // scss-docs-start navbar-nav-css-vars
-    // Set all nav-link variables for self-contained styling
-    --nav-gap: .25rem;
-    --nav-link-gap: .5rem;
-    --nav-link-padding-x: .5rem;
-    --nav-link-padding-y: .375rem;
-    --nav-link-color: var(--navbar-color);
-    --nav-link-border-width: var(--border-width);
-    //--nav-link-border-color: var(--border-color);
-    --nav-link-hover-color: var(--navbar-hover-color);
-    --nav-link-hover-bg: transparent;
-    --nav-link-active-color: var(--navbar-active-color);
-    --nav-link-active-bg: transparent;
-    --nav-link-disabled-color: var(--navbar-disabled-color);
-    // scss-docs-end navbar-nav-css-vars
+    @include tokens($navbar-nav-tokens);
 
     display: flex;
     flex-direction: column;

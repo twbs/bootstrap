@@ -113,7 +113,6 @@ $nav-underline-tokens: defaults(
     background: none;
     border: var(--nav-link-border-width) solid transparent;
     @include border-radius(var(--border-radius));
-    // @include font-size(var(--nav-link-font-size));
     @include transition(var(--nav-link-transition));
 
     &:hover,
