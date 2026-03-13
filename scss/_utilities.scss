@@ -507,51 +507,8 @@ $utilities: map.merge(
       responsive: true,
       property: margin-inline-start,
       class: ms,
-      values: map.merge($spacers, (auto: auto))
+      values: map-merge-multiple($spacers, $negative-spacers, (auto: auto))
     ),
-    // Negative margin utilities
-    // "negative-margin": (
-    //   responsive: true,
-    //   property: margin,
-    //   class: m,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-x": (
-    //   responsive: true,
-    //   property: margin-inline,
-    //   class: mx,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-y": (
-    //   responsive: true,
-    //   property: margin-block,
-    //   class: my,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-top": (
-    //   responsive: true,
-    //   property: margin-block-start,
-    //   class: mt,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-end": (
-    //   responsive: true,
-    //   property: margin-inline-end,
-    //   class: me,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-bottom": (
-    //   responsive: true,
-    //   property: margin-block-end,
-    //   class: mb,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-start": (
-    //   responsive: true,
-    //   property: margin-inline-start,
-    //   class: ms,
-    //   values: $negative-spacers
-    // ),
     // Padding utilities
     "padding": (
       responsive: true,
