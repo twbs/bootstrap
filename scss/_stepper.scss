@@ -30,7 +30,7 @@ $stepper-tokens: defaults(
   grid-auto-flow: column;
 
   .stepper-item {
-    grid-template-rows: repeat(2, var(--stepper-size));
+    grid-template-rows: var(--stepper-size) auto;
     grid-template-columns: auto;
     justify-items: center;
     align-items: start;
