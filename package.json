@@ -139,7 +139,7 @@
     "@types/prismjs": "^1.26.5",
     "astro": "^5.16.6",
     "astro-auto-import": "^0.4.5",
-    "astro-broken-links-checker": "^1.0.6",
+    "astro-broken-links-checker": "^1.0.7",
     "autoprefixer": "^10.4.23",
     "bootstrap-vscode-theme": "^0.0.9",
     "bundlewatch": "^0.4.1",
