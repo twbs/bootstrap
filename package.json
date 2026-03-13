@@ -172,7 +172,7 @@
     "karma-rollup-preprocessor": "7.0.7",
     "lightningcss": "^1.30.2",
     "lockfile-lint": "^4.14.1",
-    "markdownlint-cli": "^0.45.0",
+    "markdownlint-cli": "^0.48.0",
     "mime": "^4.1.0",
     "nodemon": "^3.1.11",
     "npm-run-all2": "^8.0.4",
