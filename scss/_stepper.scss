@@ -37,15 +37,15 @@ $stepper-tokens: defaults(
 
     &::after {
       top: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
-      right: 0;
+      inset-inline-end: 0;
       bottom: auto;
-      left: calc(-50% - var(--stepper-gap));
+      inset-inline-start: calc(-50% - var(--stepper-gap));
       width: auto;
       height: var(--stepper-track-size);
     }
 
     &:last-child::after {
-      right: 50%;
+      inset-inline-end: 50%;
     }
   }
 }
@@ -61,7 +61,7 @@ $stepper-tokens: defaults(
   grid-auto-rows: 1fr;
   grid-auto-flow: row;
   gap: var(--stepper-gap);
-  padding-left: 0;
+  padding-inline-start: 0;
   list-style: none;
   counter-reset: stepper;
 }
@@ -103,7 +103,7 @@ $stepper-tokens: defaults(
     position: absolute;
     top: calc(var(--stepper-gap) * -1);
     bottom: 100%;
-    left: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
+    inset-inline-start: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
     width: var(--stepper-track-size);
     content: "";
     background-color: var(--stepper-bg);
