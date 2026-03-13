@@ -125,7 +125,7 @@
     "@stackblitz/sdk": "^1.11.0",
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
-    "@types/prismjs": "^1.26.5",
+    "@types/prismjs": "^1.26.6",
     "astro": "^5.16.6",
     "astro-auto-import": "^0.4.5",
     "astro-broken-links-checker": "^1.0.7",
