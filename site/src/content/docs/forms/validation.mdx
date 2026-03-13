@@ -363,7 +363,7 @@ Two mixins are combined, through our [loop](#sass-loops), to generate our form v
 
 ### Sass maps
 
-This is the validation Sass map from `_variables.scss`. Override or extend this to generate different or additional states.
+This is the validation Sass map from `forms/_form-variables.scss`. Override or extend this to generate different or additional states.
 
 <ScssDocs name="form-validation-states" file="scss/forms/_form-variables.scss" />
 
@@ -377,4 +377,4 @@ Used to iterate over `$form-validation-states` map values to generate our valida
 
 ### Customizing
 
-Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state’s color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `forms/_form-variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state’s color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.

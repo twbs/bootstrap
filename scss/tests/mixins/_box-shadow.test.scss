@@ -1,6 +1,6 @@
 // check-unused-imports-disable — test infrastructure imports.
 @use "../../functions" as *;
-@use "../../variables" as *;
+@use "../../config" as *;
 @use "../../mixins" as *;
 
 $true-terminal-output: false;

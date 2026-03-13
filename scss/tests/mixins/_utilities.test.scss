@@ -1,5 +1,5 @@
 // check-unused-imports-disable — test infrastructure imports.
-@use "../../variables" as *;
+@use "../../config" as *;
 @use "../../functions" as *;
 @use "../../mixins/utilities" as *;
 
