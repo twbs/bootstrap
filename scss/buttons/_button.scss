@@ -1,154 +1,180 @@
-@use "sass:color";
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
 @use "sass:string";
-@use "../colors" as *;
 @use "../config" as *;
-@use "../theme" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
-@use "../mixins/gradients" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
-@use "button-variables" as *;
+
+// stylelint-disable custom-property-no-missing-var-function, scss/dollar-variable-default
+
+$button-tokens: () !default;
+
+// scss-docs-start btn-tokens
+$button-tokens: defaults(
+  (
+    --btn-min-height: var(--btn-input-min-height),
+    --btn-padding-x: var(--btn-input-padding-x),
+    --btn-padding-y: var(--btn-input-padding-y),
+    --btn-font-size: var(--btn-input-font-size),
+    --btn-font-weight: var(--btn-input-font-weight),
+    --btn-line-height: var(--btn-input-line-height),
+    --btn-color: var(--fg-body),
+    --btn-white-space: nowrap,
+    --btn-border-width: var(--border-width),
+    --btn-border-color: transparent,
+    --btn-border-radius: var(--border-radius),
+    --btn-hover-border-color: transparent,
+    --btn-disabled-opacity: .65,
+    --btn-transition-timing: .15s ease-in-out,
+    --btn-transition-property: "color, background-color, border-color, box-shadow",
+    --btn-transition: var(--btn-transition-property) var(--btn-transition-timing),
+  ),
+  $button-tokens
+);
+// scss-docs-end btn-tokens
+
+$button-link-tokens: () !default;
+
+// scss-docs-start button-link-tokens
+$button-link-tokens: defaults(
+  (
+    --btn-font-weight: var(--font-weight-normal),
+    --btn-color: var(--link-color),
+    --btn-bg: transparent,
+    --btn-border-color: transparent,
+    --btn-hover-color: var(--link-hover-color),
+    --btn-hover-bg: transparent,
+    --btn-hover-border-color: transparent,
+    --btn-active-color: var(--link-hover-color),
+    --btn-active-bg: transparent,
+    --btn-active-border-color: transparent,
+    --btn-disabled-color: var(--fg-3),
+    --btn-disabled-border-color: transparent,
+  ),
+  $button-link-tokens
+);
+// scss-docs-end button-link-tokens
+
+$button-styled-tokens: () !default;
+
+// scss-docs-start button-styled-tokens
+$button-styled-tokens: defaults(
+  (
+    --btn-gradient-start: rgb(255 255 255 / 12.5%),
+    --btn-gradient-end: rgb(0 0 0 / 7.5%) ,
+    --btn-border-mix-color: #000,
+    --btn-border-mix-amount: 10%,
+    --btn-border-hover-mix-amount: 12.5%,
+    --btn-border-active-mix-amount: 20%,
+    --btn-shadow: "0 1px 2px rgb(0 0 0 / 15%), inset 0 1px 0 rgb(255 255 255 / 10%)",
+    --btn-active-shadow: inset 0 2px 4px rgba(0, 0, 0, .15) ,
+  ),
+  $button-styled-tokens
+);
+// scss-docs-end button-styled-tokens
+
+// scss-docs-start button-sizes
+$button-sizes: () !default;
+$button-sizes: defaults(
+  ("xs", "sm", "lg"),
+  $button-sizes
+);
+// scss-docs-end button-sizes
+
+$button-variants: () !default;
 
 // scss-docs-start btn-variants
-$button-variants: (
-  "solid": (
-    "base": (
-      "bg": "bg",
-      "color": "contrast",
-      "border-color": "bg"
+$button-variants: defaults(
+  (
+    "solid": (
+      "base": (
+        "bg": "bg",
+        "color": "contrast",
+        "border-color": "bg"
+      ),
+      "hover": (
+        "bg": "bg",
+        "border-color": "bg",
+        "color": "contrast"
+      ),
+      "active": (
+        "bg": "bg",
+        "border-color": "bg",
+        "color": "contrast"
+      )
     ),
-    "hover": (
-      "bg": "bg",
-      "border-color": "bg",
-      "color": "contrast"
+    "outline": (
+      "base": (
+        "bg": "transparent",
+        "color": "text",
+        "border-color": "border"
+      ),
+      "hover": (
+        "bg": "bg",
+        "color": "contrast",
+        "border-color": "bg"
+      ),
+      "active": (
+        "bg": "bg",
+        "color": "contrast",
+        "border-color": "bg"
+      )
     ),
-    "active": (
-      "bg": "bg",
-      "border-color": "bg",
-      "color": "contrast"
+    "subtle": (
+      "base": (
+        "bg": "bg-subtle",
+        "color": "text",
+        "border-color": "transparent"
+      ),
+      "hover": (
+        "bg": ("bg-muted", "bg-subtle"),
+        "color": "text-emphasis"
+      ),
+      "active": (
+        "bg": "bg-subtle",
+        "color": "text-emphasis"
+      )
+    ),
+    "text": (
+      "base": (
+        "color": "text",
+        "bg": "transparent",
+        "border-color": "transparent"
+      ),
+      "hover": (
+        "color": "text",
+        "bg": "bg-subtle"
+      ),
+      "active": (
+        "color": "text",
+        "bg": "bg-subtle"
+      )
     )
   ),
-  "outline": (
-    "base": (
-      "bg": "transparent",
-      "color": "text",
-      "border-color": "border"
-    ),
-    "hover": (
-      "bg": "bg",
-      "color": "contrast",
-      "border-color": "bg"
-    ),
-    "active": (
-      "bg": "bg",
-      "color": "contrast",
-      "border-color": "bg"
-    )
-  ),
-  "subtle": (
-    "base": (
-      "bg": "bg-subtle",
-      "color": "text",
-      "border-color": "transparent"
-    ),
-    "hover": (
-      "bg": ("bg-muted", "bg-subtle"),
-      "color": "text-emphasis"
-    ),
-    "active": (
-      "bg": "bg-subtle",
-      "color": "text-emphasis"
-    )
-  ),
-  "text": (
-    "base": (
-      "color": "text",
-      "bg": "transparent",
-      "border-color": "transparent"
-    ),
-    "hover": (
-      "color": "text",
-      "bg": "bg-subtle"
-    ),
-    "active": (
-      "color": "text",
-      "bg": "bg-subtle"
-    )
-  )
-) !default;
+  $button-variants
+);
 // scss-docs-end btn-variants
-
-// scss-docs-start btn-sizes
-$button-sizes: (
-  "xs": (
-    "padding-y": $btn-padding-y-xs,
-    "padding-x": $btn-padding-x-xs,
-    "font-size": $btn-font-size-xs,
-    "line-height": $btn-line-height-xs,
-    "border-radius": $btn-border-radius-xs,
-    "min-height": 1.5rem
-  ),
-  "sm": (
-    "padding-y": $btn-padding-y-sm,
-    "padding-x": $btn-padding-x-sm,
-    "font-size": $btn-font-size-sm,
-    "line-height": $btn-line-height-sm,
-    "border-radius": $btn-border-radius-sm,
-    "min-height": 2rem
-  ),
-  "lg": (
-    "padding-y": $btn-padding-y-lg,
-    "padding-x": $btn-padding-x-lg,
-    "font-size": $btn-font-size-lg,
-    "line-height": $btn-line-height-lg,
-    "border-radius": $btn-border-radius-lg,
-    "min-height": 2.75rem
-  ),
-  // Commented out by default on purpose
-  // "xl": (
-  //   "padding-y": $btn-padding-y-xl,
-  //   "padding-x": $btn-padding-x-xl,
-  //   "font-size": $btn-font-size-xl,
-  //   "line-height": $btn-line-height-xl,
-  //   "border-radius": $btn-border-radius-xl,
-  //   "min-height": 3.25rem
-  // ),
-) !default;
-// scss-docs-end btn-sizes
+// stylelint-enable custom-property-no-missing-var-function, scss/dollar-variable-default
 
 //
 // Base styles
 //
 
-$btn-variant-selectors: () !default;
-@each $variant in map.keys($button-variants) {
+// scss-docs-start btn-variant-selectors
+$btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), string.unquote(".btn-icon")) !default;
+@each $variant, $config in $button-variants {
   $btn-variant-selectors: list.append($btn-variant-selectors, string.unquote(".btn-#{$variant}"), comma);
 }
+// scss-docs-end btn-variant-selectors
 
 @layer components {
-  .btn,
   #{$btn-variant-selectors} {
-    // scss-docs-start btn-css-vars
-    --btn-min-height: 2.25rem;
-    --btn-padding-x: #{$btn-padding-x};
-    --btn-padding-y: #{$btn-padding-y};
-    // --btn-font-family: #{$btn-font-family};
-    --btn-font-size: #{$btn-font-size};
-    --btn-font-weight: #{$btn-font-weight};
-    --btn-line-height: #{$btn-line-height};
-    --btn-color: #{$btn-color};
-    --btn-border-width: #{$btn-border-width};
-    --btn-border-color: transparent;
-    --btn-border-radius: #{$btn-border-radius};
-    --btn-hover-border-color: transparent;
-    --btn-disabled-opacity: #{$btn-disabled-opacity};
-    // scss-docs-end btn-css-vars
+    @include tokens($button-tokens);
 
     display: inline-flex;
     gap: var(--btn-gap, .25rem);
@@ -162,7 +188,7 @@ $btn-variant-selectors: () !default;
     line-height: var(--btn-line-height);
     color: var(--btn-color);
     text-decoration: none;
-    white-space: $btn-white-space;
+    white-space: var(--btn-white-space);
     vertical-align: middle;
     // stylelint-disable-next-line scss/at-function-named-arguments
     cursor: if(sass($enable-button-pointers): pointer; else: null);
@@ -170,7 +196,7 @@ $btn-variant-selectors: () !default;
     background-color: var(--btn-bg, var(--bg-2));
     border: var(--btn-border-width) solid var(--btn-border-color);
     @include border-radius(var(--btn-border-radius));
-    @include transition($btn-transition);
+    @include transition(var(--btn-transition));
 
     &:hover {
       color: var(--btn-hover-color);
@@ -207,11 +233,10 @@ $btn-variant-selectors: () !default;
     }
   }
 
-
   // Main button style generator mixin
   // Generate button variant classes (e.g., .btn-solid, .btn-outline, etc.)
   // scss-docs-start btn-variant-mixin
-  @each $variant, $_ in $button-variants {
+  @each $variant, $config in $button-variants {
     .btn-#{$variant} {
       @each $property, $value in map.get($button-variants, $variant, "base") {
         @if $value == "transparent" {
@@ -237,7 +262,6 @@ $btn-variant-selectors: () !default;
           --btn-disabled-#{$property}: var(--theme-#{$value});
         }
       }
-
 
       &:hover {
         @each $property, $value in map.get($button-variants, $variant, "hover") {
@@ -295,18 +319,7 @@ $btn-variant-selectors: () !default;
 
   // Make a button look and behave like a link
   .btn-link {
-    --btn-font-weight: #{$font-weight-normal};
-    --btn-color: #{$btn-link-color};
-    --btn-bg: transparent;
-    --btn-border-color: transparent;
-    --btn-hover-color: #{$btn-link-hover-color};
-    --btn-hover-bg: transparent;
-    --btn-hover-border-color: transparent;
-    --btn-active-color: #{$btn-link-hover-color};
-    --btn-active-bg: transparent;
-    --btn-active-border-color: transparent;
-    --btn-disabled-color: #{$btn-link-disabled-color};
-    --btn-disabled-border-color: transparent;
+    @include tokens($button-link-tokens);
 
     color: var(--theme-text, var(--btn-color));
     text-decoration: var(--link-decoration);
@@ -326,24 +339,26 @@ $btn-variant-selectors: () !default;
     // No need for an active state here
   }
 
-
   //
   // Button Sizes
   //
 
   // Generate button size classes from the $button-sizes map
   // Skip "md" as it's the default size for .btn
-  @each $size, $properties in $button-sizes {
+
+  // scss-docs-start btn-sizes-loop
+  @each $size, $_ in $button-sizes {
     .btn-#{$size},
     .btn-group-#{$size} > [class*="btn-"] {
-      --btn-min-height: #{map.get($properties, "min-height")};
-      --btn-padding-y: #{map.get($properties, "padding-y")};
-      --btn-padding-x: #{map.get($properties, "padding-x")};
-      --btn-font-size: #{map.get($properties, "font-size")};
-      --btn-line-height: #{map.get($properties, "line-height")};
-      --btn-border-radius: #{map.get($properties, "border-radius")};
+      --btn-min-height: var(--btn-input-#{$size}-min-height);
+      --btn-padding-y: var(--btn-input-#{$size}-padding-y);
+      --btn-padding-x: var(--btn-input-#{$size}-padding-x);
+      --btn-font-size: var(--btn-input-#{$size}-font-size);
+      --btn-line-height: var(--btn-input-#{$size}-line-height);
+      --btn-border-radius: var(--btn-input-#{$size}-border-radius);
     }
   }
+  // scss-docs-end btn-sizes-loop
 
   .btn-icon {
     align-items: center;
@@ -399,14 +414,7 @@ $btn-variant-selectors: () !default;
   // Add visual depth with gradients and shadows. Customize via CSS variables.
 
   .btn-styled {
-    --btn-gradient-start: rgb(255 255 255 / 12.5%);
-    --btn-gradient-end: rgb(0 0 0 / 7.5%);
-    --btn-border-mix-color: #000;
-    --btn-border-mix-amount: 10%;
-    --btn-border-hover-mix-amount: 12.5%;
-    --btn-border-active-mix-amount: 20%;
-    --btn-shadow: 0 1px 2px rgb(0 0 0 / 15%), inset 0 1px 0 rgb(255 255 255 / 10%);
-    --btn-active-shadow: inset 0 2px 4px rgba(0, 0, 0, .15);
+    @include tokens($button-styled-tokens);
 
     background-image:
       linear-gradient(

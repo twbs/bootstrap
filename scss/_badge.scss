@@ -1,18 +1,27 @@
-@use "sass:map";
-@use "colors" as *;
-@use "variables" as *;
-@use "theme" as *;
+@use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/gradients" as *;
+@use "mixins/tokens" as *;
 
-// scss-docs-start badge-variables
-$badge-font-size:                   clamp(12px, .75em, .75em) !default;
-$badge-font-weight:                 $font-weight-semibold !default;
-$badge-color:                       inherit !default;
-$badge-padding-y:                   .25em !default;
-$badge-padding-x:                   .625em !default;
-$badge-border-radius:               var(--border-radius-lg) !default;
-// scss-docs-end badge-variables
+$badge-tokens: () !default;
+
+// scss-docs-start badge-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$badge-tokens: defaults(
+  (
+    --badge-padding-x: .625em,
+    --badge-padding-y: .25em,
+    --badge-font-size: clamp(12px, .75em, .75em),
+    --badge-font-weight: var(--font-weight-semibold),
+    --badge-color: inherit,
+    --badge-bg: var(--bg-2),
+    --badge-border-width: var(--border-width),
+    --badge-border-color: transparent,
+    --badge-border-radius: var(--border-radius-lg),
+  ),
+  $badge-tokens
+);
+// scss-docs-end badge-tokens
 
 // scss-docs-start badge-variants
 $badge-variants: (
@@ -31,17 +40,7 @@ $badge-variants: (
 
 @layer components {
   .badge {
-    // scss-docs-start badge-css-vars
-    --badge-padding-x: #{$badge-padding-x};
-    --badge-padding-y: #{$badge-padding-y};
-    --badge-font-size: #{$badge-font-size};
-    --badge-font-weight: #{$badge-font-weight};
-    --badge-color: #{$badge-color};
-    --badge-bg: var(--bg-2);
-    --badge-border-width: #{$border-width};
-    --badge-border-color: transparent;
-    --badge-border-radius: #{$badge-border-radius};
-    // scss-docs-end badge-css-vars
+    @include tokens($badge-tokens);
 
     display: inline-flex;
     align-items: center;

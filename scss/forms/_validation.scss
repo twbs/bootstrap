@@ -2,7 +2,7 @@
 @use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
-@use "../mixins/box-shadow" as *;
+@use "../mixins/focus-ring" as *;
 @use "form-variables" as *;
 @use "../tooltip" as *; // bring in tooltip variables
 
@@ -36,7 +36,7 @@
   $icon,
   $tooltip-color: color-contrast($color),
   $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
-  $focus-box-shadow: null, // mdo-do: fix
+  $focus-ring-color: null, // mdo-do: fix
   $border-color: $color
 ) {
   .#{$state}-feedback {
@@ -75,21 +75,22 @@
       border-color: $border-color;
 
       @if $enable-validation-icons {
-        padding-inline-end: $input-height-inner;
+        padding-inline-end: calc(var(--control-padding-x) * 3.5);
         background-image: escape-svg($icon);
         background-repeat: no-repeat;
-        background-position: right $input-height-inner-quarter center;
-        background-size: $input-height-inner-half $input-height-inner-half;
+        background-position: right var(--control-padding-x) center;
+        background-size: 1rem;
       }
 
-      &:focus {
+      &:focus-visible {
+        @include focus-ring(true, $color: $focus-ring-color);
         border-color: $border-color;
-        @if $enable-shadows {
-          @include box-shadow($input-box-shadow, $focus-box-shadow);
-        } @else {
-          // Avoid using mixin so we can pass custom focus shadow properly
-          box-shadow: $focus-box-shadow;
-        }
+      }
+    }
+
+    &::-webkit-contacts-auto-fill-button {
+      @if $enable-validation-icons {
+        // margin-inline-end: calc(var(--control-padding-x) * 3);
       }
     }
   }
@@ -98,42 +99,17 @@
   textarea.form-control {
     @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
-        padding-inline-end: $input-height-inner;
-        background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
+        // padding-inline-end: $input-height-inner;
+        background-position: right var(--control-padding-x) top var(--control-padding-x);
+        // background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
       }
     }
   }
 
-  // .form-select {
-  //   @include form-validation-state-selector($state) {
-  //     border-color: $border-color;
-
-  //     @if $enable-validation-icons {
-  //       &:not([multiple]):not([size]),
-  //       &:not([multiple])[size="1"] {
-  //         --form-select-bg-icon: #{escape-svg($icon)};
-  //         padding-right: $form-select-feedback-icon-padding-end;
-  //         background-position: $form-select-bg-position, $form-select-feedback-icon-position;
-  //         background-size: $form-select-bg-size, $form-select-feedback-icon-size;
-  //       }
-  //     }
-
-  //     &:focus {
-  //       border-color: $border-color;
-  //       @if $enable-shadows {
-  //         @include box-shadow($form-select-box-shadow, $focus-box-shadow);
-  //       } @else {
-  //         // Avoid using mixin so we can pass custom focus shadow properly
-  //         box-shadow: $focus-box-shadow;
-  //       }
-  //     }
-  //   }
-  // }
-
   .form-control-color {
     @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
-        width: add($form-color-width, $input-height-inner);
+        // width: add($form-color-width, $input-height-inner);
       }
     }
   }
@@ -147,7 +123,7 @@
       }
 
       &:focus {
-        box-shadow: $focus-box-shadow;
+        // box-shadow: $focus-box-shadow;
       }
 
       ~ .form-check-label {
@@ -177,7 +153,7 @@
 }
 // scss-docs-end form-validation-mixins
 
-@layer forms {
+@layer components {
   // scss-docs-start form-validation-states-loop
   @each $state, $data in $form-validation-states {
     @include form-validation-state($state, $data...);

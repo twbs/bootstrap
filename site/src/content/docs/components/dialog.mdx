@@ -35,12 +35,12 @@ Toggle a dialog by clicking the button below. The dialog uses the native `showMo
     <p>This is a native dialog element. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary">Save changes</button>
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
   Open dialog
 </button>`} />
 
@@ -60,15 +60,37 @@ The markup for a dialog is straightforward:
     <p>Dialog body content goes here.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary">Save changes</button>
   </div>
 </dialog>
 
-<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
   Open dialog
 </button>
 ```
+
+## Dark dialog
+
+To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
+
+<dialog class="dialog" id="exampleDialogDark" data-bs-theme="dark">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Dark dialog title</h1>
+    <CloseButton dismiss="dialog" />
+  </div>
+  <div class="dialog-body">
+    <p>This is a native dialog element, only it’s set to dark mode. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary">Save changes</button>
+  </div>
+</dialog>
+
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogDark">
+  Open dark dialog
+</button>`} />
 
 ## Static backdrop
 
@@ -83,11 +105,11 @@ When `backdrop` is set to `static`, the dialog will not close when clicking outs
     <p>I will not close if you click outside of me. Use the close button or press Escape.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdropDialog" data-bs-backdrop="static">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdropDialog" data-bs-backdrop="static">
   Open static backdrop dialog
 </button>`} />
 
@@ -112,12 +134,12 @@ When dialogs have content that exceeds the viewport height, the entire dialog sc
     <p>This content should appear at the bottom after you scroll.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary">Save changes</button>
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollingLongDialog">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollingLongDialog">
   Launch scrolling dialog
 </button>`} />
 
@@ -139,12 +161,12 @@ You can also create a scrollable dialog that scrolls the dialog body while keepi
     <p>This content should appear at the bottom after you scroll.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary">Save changes</button>
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollableBodyDialog">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollableBodyDialog">
   Launch scrollable body dialog
 </button>`} />
 
@@ -163,7 +185,7 @@ You can also create a scrollable dialog that scrolls the dialog body while keepi
     <!-- Long content here -->
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
   </div>
 </dialog>
 ```
@@ -187,13 +209,13 @@ For a dialog that extends beyond the viewport and scrolls as a whole, add `.dial
       <p>You've reached the bottom of the overflow dialog!</p>
     </div>
     <div class="dialog-footer">
-      <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-      <button type="button" class="btn btn-solid theme-primary">Save changes</button>
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
     </div>
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#overflowDialog">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#overflowDialog">
   Launch overflow dialog
 </button>`} />
 
@@ -223,8 +245,8 @@ When a toggle trigger is inside an open dialog, clicking it will **swap** dialog
     <p>Click below to swap to a second dialog. Notice the backdrop stays visible—no flash!</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog2">Go to second dialog</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog2">Go to second dialog</button>
   </div>
 </dialog>
 
@@ -237,12 +259,12 @@ When a toggle trigger is inside an open dialog, clicking it will **swap** dialog
     <p>This is the second dialog. You can swap back to the first, or close this one entirely.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">Back to first dialog</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">Back to first dialog</button>
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">
   Open first dialog
 </button>`} />
 
@@ -256,7 +278,7 @@ The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is insid
   </div>
   <div class="dialog-footer">
     <!-- This trigger is inside dialog1, so clicking it will swap -->
-    <button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialog2">
+    <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialog2">
       Go to dialog 2
     </button>
   </div>
@@ -268,7 +290,7 @@ The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is insid
     <p>You're now in dialog 2.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialog1">
+    <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialog1">
       Back to dialog 1
     </button>
   </div>
@@ -294,11 +316,11 @@ By default, dialogs open as modals using the native `showModal()` method. You ca
     <p>This dialog doesn't block the page. You can still interact with content behind it.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
   </div>
 </dialog>
 
-  <Example code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#nonModalDialog" data-bs-modal="false">
+  <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#nonModalDialog" data-bs-modal="false">
     Open non-modal dialog
   </button>`} />
 
@@ -350,13 +372,13 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogXl">
   Extra large dialog
 </button>
-<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogLg">
+<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogLg">
   Large dialog
 </button>
-<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogSm">
+<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogSm">
   Small dialog
 </button>`} />
 
@@ -379,11 +401,11 @@ Use `.dialog-fullscreen` to make the dialog cover the entire viewport.
     <p>This dialog covers the entire viewport.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreen">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreen">
   Fullscreen dialog
 </button>`} />
 
@@ -407,17 +429,29 @@ Responsive fullscreen variants are also available. These make the dialog fullscr
     <p>This dialog is fullscreen below the <code>lg</code> breakpoint.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
   </div>
 </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreenLg">
+<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreenLg">
   Fullscreen below lg
 </button>`} />
 
 ```html
 <dialog class="dialog dialog-fullscreen-lg-down">...</dialog>
 ```
+
+## CSS
+
+### Variables
+
+<ScssDocs name="dialog-tokens" file="scss/_dialog.scss" />
+
+### Sass maps
+
+Dialog sizes are defined in the `$dialog-sizes` Sass map. Each size specifies the dialog `width`.
+
+<ScssDocs name="dialog-sizes" file="scss/_dialog.scss" />
 
 ## JavaScript behavior
 

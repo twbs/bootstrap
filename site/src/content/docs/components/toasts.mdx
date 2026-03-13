@@ -58,11 +58,11 @@ Click the button below to show a toast (positioned with our utilities in the low
 </div>
 
 <Example showMarkup={false} code={`
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+<button type="button" class="btn-solid theme-primary" id="liveToastBtn">Show live toast</button>
 `} />
 
 ```html
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+<button type="button" class="btn-solid theme-primary" id="liveToastBtn">Show live toast</button>
 
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -148,8 +148,8 @@ Alternatively, you can also add additional controls and components to toasts.
     <div class="toast-body">
       Hello, world! This is a toast message.
       <div class="mt-2 pt-2 border-top">
-        <button type="button" class="btn btn-primary btn-sm">Take action</button>
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+        <button type="button" class="btn-solid theme-primary btn-sm">Take action</button>
+        <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
       </div>
     </div>
   </div>`} />
@@ -188,7 +188,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
       </select>
     </div>
   </form>
-  <div aria-live="polite" aria-atomic="true" class="bg-body-secondary position-relative bd-example-toasts rounded-3">
+  <div aria-live="polite" aria-atomic="true" class="bg-1 position-relative bd-example-toasts rounded-3">
     <div class="toast-container p-3" id="toastPlacement">
       <div class="toast">
         <div class="toast-header">
@@ -296,11 +296,7 @@ While technically it’s possible to add focusable/actionable controls (such as 
 
 <CSSVariables component="Toasts" className="toast" />
 
-<ScssDocs name="toast-css-vars" file="scss/_toasts.scss" />
-
-### Sass variables
-
-<ScssDocs name="toast-variables" file="scss/_toasts.scss" />
+<ScssDocs name="toast-tokens" file="scss/_toasts.scss" />
 
 ## Usage
 

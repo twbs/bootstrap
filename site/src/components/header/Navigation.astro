@@ -11,6 +11,7 @@ import OpenCollectiveIcon from '@components/icons/OpenCollectiveIcon.astro'
 import XIcon from '@components/icons/XIcon.astro'
 import Versions from '@components/header/Versions.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
+import CloseButton from '@components/shortcodes/CloseButton.astro'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']
@@ -23,21 +24,20 @@ const { addedIn, layout, title } = Astro.props
 
 <header class="navbar navbar-expand-lg bg-body bd-navbar border-bottom sticky-top bd-sticky-navbar">
   <nav class="container-2xl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+    {/* Docs sidebar toggle - only shown on docs pages */}
     {
       layout === 'docs' && (
-        <div class="bd-navbar-toggle">
-          <button
-            class="navbar-toggler p-2"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#bdSidebar"
-            aria-controls="bdSidebar"
-            aria-label="Toggle docs navigation"
-          >
-            <HamburgerIcon class="bi" height={24} width={24} />
-            <span class="d-none fs-6 pe-1">Browse</span>
-          </button>
-        </div>
+        <button
+          class="btn-icon navbar-btn-icon d-lg-none ms--2"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar"
+          aria-label="Toggle docs navigation"
+        >
+          <HamburgerIcon class="navbar-toggler-icon" height={20} width={20} />
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
       )
     }
     {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
@@ -46,11 +46,12 @@ const { addedIn, layout, title } = Astro.props
       <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
     </a>
 
+    {/* Search and main nav toggle */}
     <div class="d-flex">
       <div class="bd-search" id="docsearch" data-bd-docs-version={getConfig().docs_version}></div>
 
       <button
-        class="navbar-toggler d-flex d-lg-none order-3 p-2"
+        class="btn-icon navbar-btn-icon d-lg-none order-3 me--2"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#bdNavbar"
@@ -61,6 +62,7 @@ const { addedIn, layout, title } = Astro.props
       </button>
     </div>
 
+    {/* Main navigation - offcanvas on mobile, inline on desktop */}
     <div
       class="offcanvas-lg offcanvas-end flex-grow-1"
       tabindex="-1"
@@ -69,17 +71,12 @@ const { addedIn, layout, title } = Astro.props
     >
       <div class="offcanvas-header px-4 pb-0">
         <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-          data-bs-target="#bdNavbar"></button>
+        <CloseButton dismiss="offcanvas" target="#bdNavbar" />
       </div>
 
       <div class="offcanvas-body p-4 pt-0 p-lg-0">
         <hr class="d-lg-none text-white-50" />
-        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+        <ul class="nav navbar-nav flex-row flex-wrap bd-navbar-nav">
           <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/install/')} track>
             Docs
           </LinkItem>
@@ -90,7 +87,7 @@ const { addedIn, layout, title } = Astro.props
 
         <hr class="d-lg-none text-white-50" />
 
-        <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+        <ul class="nav navbar-nav flex-row flex-wrap ms-md-auto">
           <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().github_org} target="_blank" rel="noopener">
             <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
             <small class="d-lg-none ms-2">GitHub</small>
@@ -108,6 +105,7 @@ const { addedIn, layout, title } = Astro.props
             <OpenCollectiveIcon class="navbar-nav-svg" height={16} width={16} />
             <small class="d-lg-none ms-2">Open Collective</small>
           </LinkItem>
+
           <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
             <div class="vr d-none d-lg-flex mx-lg-2 my-auto"></div>
             <hr class="d-lg-none my-2" />

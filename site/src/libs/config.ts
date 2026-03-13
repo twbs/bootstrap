@@ -27,9 +27,8 @@ const configSchema = z.object({
     js_hash: z.string(),
     js_bundle: z.string().url(),
     js_bundle_hash: z.string(),
-    floating_ui: z.string().url(),
     floating_ui_esm: z.string().url(),
-    floating_ui_hash: z.string()
+    vanilla_calendar_pro_esm: z.string().url()
   }),
   current_version: zVersionSemver,
   current_ruby_version: zVersionSemver,

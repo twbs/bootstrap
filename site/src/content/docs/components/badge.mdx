@@ -29,7 +29,7 @@ Badges adapt to the `font-size` of the parent element.
 
 Badges can be used as part of links or buttons to provide a counter.
 
-<Example code={`<button type="button" class="btn btn-primary">
+<Example code={`<button type="button" class="btn-solid theme-primary">
     Notifications <span class="badge theme-danger">4</span>
   </button>`} />
 
@@ -41,7 +41,7 @@ Unless the context is clear (as with the “Notifications” example, where it i
 
 Use utilities to modify a `.badge` and position it in the corner of a link or button.
 
-<Example code={`<button type="button" class="btn btn-primary position-relative">
+<Example code={`<button type="button" class="btn-solid theme-primary position-relative">
     Inbox
     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill border border-bg theme-danger">
       99+
@@ -51,7 +51,7 @@ Use utilities to modify a `.badge` and position it in the corner of a link or bu
 
 You can also replace the `.badge` class with a few more utilities without a count for a more generic indicator.
 
-<Example code={`<button type="button" class="btn btn-primary position-relative">
+<Example code={`<button type="button" class="btn-solid theme-primary position-relative">
     Profile
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-bg rounded-circle">
       <span class="visually-hidden">New alerts</span>
@@ -74,8 +74,4 @@ Use the contextual `.theme-{color}` classes to apply a semantic theme color to b
 
 <CSSVariables component="Badges" className="badge" />
 
-<ScssDocs name="badge-css-vars" file="scss/_badge.scss" />
-
-### Sass variables
-
-<ScssDocs name="badge-variables" file="scss/_badge.scss" />
+<ScssDocs name="badge-tokens" file="scss/_badge.scss" />

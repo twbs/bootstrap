@@ -1,36 +1,47 @@
-@use "../config" as *;
-@use "../variables" as *;
+@use "sass:list";
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
-@use "form-variables" as *;
 
-// scss-docs-start strength-variables
-$strength-height:          .375rem !default;
-$strength-gap:             .25rem !default;
-$strength-margin-top:      .25rem !default;
-$strength-border-radius:   var(--border-radius-pill) !default;
-$strength-bg:              var(--bg-2) !default;
-$strength-transition:      background-color .2s ease-in-out, width .3s ease-in-out !default;
+// stylelint-disable custom-property-no-missing-var-function
+$strength-tokens: () !default;
 
-$strength-weak-color:      var(--danger-bg) !default;
-$strength-fair-color:      var(--warning-bg) !default;
-$strength-good-color:      var(--info-bg) !default;
-$strength-strong-color:    var(--success-bg) !default;
-// scss-docs-end strength-variables
+// scss-docs-start strength-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$strength-tokens: defaults(
+  (
+    --strength-height: .375rem,
+    --strength-gap: .25rem,
+    --strength-margin-top: .25rem,
+    --strength-border-radius: var(--border-radius-pill),
+    --strength-bg: var(--bg-2),
+    --strength-color: var(--bg-2),
+    --strength-weak-color: var(--danger-bg),
+    --strength-fair-color: var(--warning-bg),
+    --strength-good-color: var(--info-bg),
+    --strength-strong-color: var(--success-bg),
+  ),
+  $strength-tokens
+);
+// scss-docs-end strength-tokens
+// stylelint-enable custom-property-no-missing-var-function
+
+// scss-docs-start strength-levels
+$strength-levels: weak, fair, good, strong !default;
+// scss-docs-end strength-levels
+
+$strength-transition: background-color .2s ease-in-out, width .3s ease-in-out !default;
 
 @layer forms {
   // Strength meter container
   .strength {
-    --strength-height: #{$strength-height};
-    --strength-gap: #{$strength-gap};
-    --strength-bg: #{$strength-bg};
-    --strength-border-radius: #{$strength-border-radius};
-    --strength-color: #{$strength-bg};
+    @include tokens($strength-tokens);
 
     display: flex;
     gap: var(--strength-gap);
     width: 100%;
-    margin-top: $strength-margin-top;
+    margin-top: var(--strength-margin-top);
   }
 
   // Individual strength segments
@@ -47,29 +58,17 @@ $strength-strong-color:    var(--success-bg) !default;
     }
   }
 
-  // Strength levels - set the color variable
-  .strength[data-bs-strength="weak"] {
-    --strength-color: #{$strength-weak-color};
+  @each $level in $strength-levels {
+    .strength[data-bs-strength="#{$level}"] {
+      --strength-color: var(--strength-#{$level}-color);
+    }
   }
-
-  .strength[data-bs-strength="fair"] {
-    --strength-color: #{$strength-fair-color};
-  }
-
-  .strength[data-bs-strength="good"] {
-    --strength-color: #{$strength-good-color};
-  }
-
-  .strength[data-bs-strength="strong"] {
-    --strength-color: #{$strength-strong-color};
-  }
-
   // Optional text feedback
   .strength-text {
     display: block;
-    margin-top: $strength-margin-top;
-    font-size: $small-font-size;
-    color: var(--strength-color, var(--secondary-color));
+    margin-top: var(--strength-margin-top);
+    font-size: var(--font-size-xs);
+    color: var(--strength-color, var(--fg-3));
     @include transition(color .2s ease-in-out);
 
     // Hide when empty
@@ -80,15 +79,14 @@ $strength-strong-color:    var(--success-bg) !default;
 
   // Alternative: Single bar variant (like a progress bar)
   .strength-bar {
-    --strength-height: #{$strength-height};
-    --strength-bg: #{$strength-bg};
-    --strength-border-radius: #{$strength-border-radius};
+    @include tokens($strength-tokens);
+
     --strength-color: transparent;
     --strength-width: 0%;
 
     width: 100%;
     height: var(--strength-height);
-    margin-top: $strength-margin-top;
+    margin-top: var(--strength-margin-top);
     overflow: hidden;
     background-color: var(--strength-bg);
     @include border-radius(var(--strength-border-radius));
@@ -103,24 +101,11 @@ $strength-strong-color:    var(--success-bg) !default;
       @include transition($strength-transition);
     }
 
-    &[data-bs-strength="weak"] {
-      --strength-color: #{$strength-weak-color};
-      --strength-width: 25%;
-    }
-
-    &[data-bs-strength="fair"] {
-      --strength-color: #{$strength-fair-color};
-      --strength-width: 50%;
-    }
-
-    &[data-bs-strength="good"] {
-      --strength-color: #{$strength-good-color};
-      --strength-width: 75%;
-    }
-
-    &[data-bs-strength="strong"] {
-      --strength-color: #{$strength-strong-color};
-      --strength-width: 100%;
+    @each $level in $strength-levels {
+      &[data-bs-strength="#{$level}"] {
+        --strength-color: var(--strength-#{$level}-color);
+        --strength-width: #{list.index($strength-levels, $level) * 25%};
+      }
     }
   }
 }

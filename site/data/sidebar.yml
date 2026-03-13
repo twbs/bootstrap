@@ -35,6 +35,7 @@
     - title: Color modes
     - title: Components
     - title: CSS variables
+    - title: RTL
     - title: Optimize
 
 - title: Layout
@@ -58,7 +59,6 @@
     - title: Typography
     - title: Images
     - title: Tables
-    - title: Figures
     - title: Prose
 
 - title: Forms
@@ -85,33 +85,48 @@
   icon: menu-button-wide-fill
   icon_color: cyan
   pages:
-    - title: Accordion
-    - title: Alert
-    - title: Avatar
-    - title: Badge
-    - title: Breadcrumb
-    - title: Buttons
-    - title: Button group
-    - title: Card
-    - title: Carousel
-    - title: Close button
-    - title: Collapse
-    - title: Dialog
-    - title: Dropdown
-    - title: List group
-    - title: Navbar
-    - title: Navs & tabs
-    - title: Offcanvas
-    - title: Pagination
-    - title: Placeholder
-    - title: Popover
-    - title: Progress
-    - title: Scrollspy
-    - title: Spinner
-    - title: Stepper
-    - title: Toasts
-    - title: Toggler
-    - title: Tooltip
+    - group: Feedback
+      pages:
+        - title: Alert
+        - title: Badge
+        - title: Placeholder
+        - title: Progress
+        - title: Scrollspy
+        - title: Spinner
+        - title: Toasts
+    - group: Overlays
+      pages:
+        - title: Dialog
+        - title: Offcanvas
+        - title: Popover
+        - title: Tooltip
+    - group: Buttons
+      pages:
+        - title: Buttons
+        - title: Button group
+        - title: Close button
+    - group: Navigation
+      pages:
+        - title: Breadcrumb
+        - title: Dropdown
+        - title: Navs & tabs
+        - title: Nav overflow
+        - title: Navbar
+        - title: Pagination
+        - title: Stepper
+    - group: Layout
+      pages:
+        - title: Card
+        - title: List group
+    - group: Interactions
+      pages:
+        - title: Accordion
+        - title: Carousel
+        - title: Collapse
+        - title: Toggler
+    - group: Miscellaneous
+      pages:
+        - title: Avatar
 
 - title: Helpers
   icon: magic

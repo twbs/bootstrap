@@ -1,47 +1,71 @@
-@use "variables" as *;
-@use "theme" as *;
+@use "sass:map";
+@use "functions" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/transition" as *;
+@use "mixins/tokens" as *;
 
-// scss-docs-start avatar-variables
-$avatar-size:                 2.5rem !default;
-$avatar-size-xs:              1.5rem !default;
-$avatar-size-sm:              2rem !default;
-$avatar-size-lg:              3rem !default;
-$avatar-size-xl:              4rem !default;
-$avatar-border-radius:        50% !default;
-$avatar-border-width:         2px !default;
-$avatar-border-color:         var(--bg-body) !default;
-$avatar-bg:                   var(--bg-2) !default;
-$avatar-color:                var(--fg-body) !default;
+$avatar-tokens: () !default;
 
-$avatar-status-size:          .75rem !default;
-$avatar-status-border-width:  2px !default;
-$avatar-status-border-color:  var(--bg-body) !default;
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start avatar-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$avatar-tokens: defaults(
+  (
+    --avatar-size: 2.5rem,
+    --avatar-border-radius: 50%,
+    --avatar-border-width: 2px,
+    --avatar-border-color: var(--bg-body),
+    --avatar-bg: var(--bg-2),
+    --avatar-color: var(--fg-body),
+    // --avatar-font-weight: var(--font-weight-medium), // Defaults to fallback
+    --avatar-status-size: .75rem,
+    --avatar-status-border-width: 2px,
+    --avatar-status-border-color: var(--bg-body),
+    --avatar-stack-spacing: -.3,
+    --avatar-stack-transition: "transform .2s ease-in-out",
+  ),
+  $avatar-tokens
+);
+// scss-docs-end avatar-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
-$avatar-stack-spacing:        -.3 !default; // Percentage of avatar size (negative for overlap)
-// scss-docs-end avatar-variables
+// scss-docs-start avatar-sizes
+$avatar-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$avatar-sizes: defaults(
+  (
+    "xs": (
+      size: 1.5rem,
+      status-size: .625rem,
+    ),
+    "sm": (
+      size: 2rem,
+    ),
+    "lg": (
+      size: 3rem,
+      status-size: 1rem,
+    ),
+    "xl": (
+      size: 4rem,
+      status-size: 1.25rem,
+    ),
+  ),
+  $avatar-sizes
+);
+// scss-docs-end avatar-sizes
 
 @layer components {
   .avatar {
-    // scss-docs-start avatar-css-vars
-    --avatar-border-radius: #{$avatar-border-radius};
-    --avatar-border-width: #{$avatar-border-width};
-    --avatar-border-color: #{$avatar-border-color};
-    --avatar-bg: #{$avatar-bg};
-    --avatar-color: #{$avatar-color};
-    --avatar-status-size: #{$avatar-status-size};
-    --avatar-status-border-width: #{$avatar-status-border-width};
-    --avatar-status-border-color: #{$avatar-status-border-color};
-    // scss-docs-end avatar-css-vars
+    @include tokens($avatar-tokens);
 
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--avatar-size, #{$avatar-size});
-    height: var(--avatar-size, #{$avatar-size});
+    width: var(--avatar-size);
+    height: var(--avatar-size);
     font-size: calc(var(--avatar-size) * .4);
-    font-weight: $font-weight-medium;
+    font-weight: var(--avatar-font-weight, var(--font-weight-medium));
     line-height: 1;
     color: var(--theme-contrast, var(--avatar-color));
     text-transform: uppercase;
@@ -97,9 +121,10 @@ $avatar-stack-spacing:        -.3 !default; // Percentage of avatar size (negati
 
     .avatar {
       // Stack spacing is calculated as a percentage of avatar size
-      margin-left: calc(var(--avatar-size, #{$avatar-size}) * #{$avatar-stack-spacing});
+      margin-left: calc(var(--avatar-size) * var(--avatar-stack-spacing));
       border: var(--avatar-border-width) solid var(--avatar-border-color);
       mask-image: none;
+      @include transition(var(--avatar-stack-transition));
 
       &:last-child {
         margin-left: 0;
@@ -112,26 +137,14 @@ $avatar-stack-spacing:        -.3 !default; // Percentage of avatar size (negati
     }
   }
 
-  .avatar-xs,
-  .avatar-stack-xs {
-    --avatar-size: #{$avatar-size-xs};
-    --avatar-status-size: .625rem;
-  }
+  @each $size, $tokens in $avatar-sizes {
+    .avatar-#{$size},
+    .avatar-stack-#{$size} {
+      --avatar-size: #{map.get($tokens, size)};
 
-  .avatar-sm,
-  .avatar-stack-sm {
-    --avatar-size: #{$avatar-size-sm};
-  }
-
-  .avatar-lg,
-  .avatar-stack-lg {
-    --avatar-size: #{$avatar-size-lg};
-    --avatar-status-size: 1rem;
-  }
-
-  .avatar-xl,
-  .avatar-stack-xl {
-    --avatar-size: #{$avatar-size-xl};
-    --avatar-status-size: 1.25rem;
+      @if map.has-key($tokens, status-size) {
+        --avatar-status-size: #{map.get($tokens, status-size)};
+      }
+    }
   }
 }

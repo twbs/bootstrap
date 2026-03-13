@@ -25,8 +25,8 @@
       <h2>With Min/Max Dates</h2>
       <div class="row mb-4">
         <div class="col-md-6">
-          <label for="minMaxDatepicker" class="form-label">Only dates in 2025</label>
-          <input type="text" class="form-control" id="minMaxDatepicker" data-bs-toggle="datepicker" data-bs-date-min="2025-01-01" data-bs-date-max="2025-12-31" placeholder="Select a date in 2025">
+          <label for="minMaxDatepicker" class="form-label">Only dates in 2026</label>
+          <input type="text" class="form-control" id="minMaxDatepicker" data-bs-toggle="datepicker" data-bs-date-min="2026-01-01" data-bs-date-max="2026-12-31" placeholder="Select a date in 2026">
         </div>
       </div>
 
@@ -90,9 +90,9 @@
           <label for="jsDatepicker" class="form-label">Initialized via JavaScript</label>
           <input type="text" class="form-control" id="jsDatepicker" placeholder="Click to select">
           <div class="mt-2">
-            <button type="button" class="btn btn-primary btn-sm" id="showBtn">Show</button>
-            <button type="button" class="btn btn-secondary btn-sm" id="hideBtn">Hide</button>
-            <button type="button" class="btn btn-info btn-sm" id="getDatesBtn">Get Dates</button>
+            <button type="button" class="btn-solid theme-primary btn-sm" id="showBtn">Show</button>
+            <button type="button" class="btn-solid theme-secondary btn-sm" id="hideBtn">Hide</button>
+            <button type="button" class="btn-solid theme-info btn-sm" id="getDatesBtn">Get Dates</button>
           </div>
           <div id="selectedDatesOutput" class="mt-2 text-body-secondary"></div>
         </div>
@@ -119,7 +119,7 @@
       const jsDatepickerEl = document.getElementById('jsDatepicker')
       const jsDatepicker = new bootstrap.Datepicker(jsDatepickerEl, {
         firstWeekday: 1,
-        selectedDates: ['2025-01-15']
+        selectedDates: ['2026-01-15']
       })
 
       document.getElementById('showBtn').addEventListener('click', () => {

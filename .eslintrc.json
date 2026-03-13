@@ -217,6 +217,19 @@
     },
     {
       "files": [
+        "site/src/assets/examples/cheatsheet/cheatsheet.js",
+        "site/src/assets/examples/sidebars/sidebars.js"
+      ],
+      "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2020
+      },
+      "rules": {
+        "import/no-unresolved": "off"
+      }
+    },
+    {
+      "files": [
         "**/*.md"
       ],
       "plugins": [

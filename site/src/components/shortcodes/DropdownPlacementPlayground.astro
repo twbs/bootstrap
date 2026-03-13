@@ -60,7 +60,7 @@ const logicalPlacements = [
       <div class="dropdown">
         <button
           type="button"
-          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
           id="placement-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -105,7 +105,7 @@ const logicalPlacements = [
   class="d-flex justify-content-center align-items-center"
   style="min-height: 200px;"
   code={`<div class="dropdown">
-  <button class="btn btn-solid theme-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom-start" aria-expanded="false">
+  <button class="btn-solid theme-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="bottom-start" aria-expanded="false">
     Toggle dropdown
   </button>
   <ul class="dropdown-menu">
@@ -118,6 +118,8 @@ const logicalPlacements = [
 />
 
 <script>
+  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+
   const placementDropdownButton = document.querySelector('#placement-dropdown') as HTMLButtonElement
   const placementDropdownItems = document.querySelectorAll('#placement-dropdown + .dropdown-menu .dropdown-item')
   const placementTypeInputs = document.querySelectorAll('input[name="placement-type"]')
@@ -165,11 +167,11 @@ const logicalPlacements = [
     previewToggle.setAttribute('data-bs-placement', placement)
 
     // Dispose and recreate the dropdown instance to pick up new placement
-    const instance = bootstrap.Dropdown.getInstance(previewToggle)
+    const instance = Dropdown.getInstance(previewToggle)
     if (instance) {
       instance.dispose()
     }
-    bootstrap.Dropdown.getOrCreateInstance(previewToggle)
+    Dropdown.getOrCreateInstance(previewToggle)
 
     // Update code snippet
     updateCodeSnippet(placement)
@@ -179,7 +181,7 @@ const logicalPlacements = [
     if (!codeSnippet) return
 
     const htmlCode = `<div class="dropdown">
-  <button class="btn btn-solid theme-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="${placement}" aria-expanded="false">
+  <button class="btn-solid theme-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="${placement}" aria-expanded="false">
     Toggle dropdown
   </button>
   <ul class="dropdown-menu">
@@ -199,7 +201,7 @@ const logicalPlacements = [
 
   // Initialize placement dropdown
   if (placementDropdownButton) {
-    const placementDropdown = bootstrap.Dropdown.getOrCreateInstance(placementDropdownButton)
+    const placementDropdown = Dropdown.getOrCreateInstance(placementDropdownButton)
 
     placementDropdownItems.forEach(item => {
       item.addEventListener('click', (e) => {

@@ -16,6 +16,7 @@
 # OS or Editor folders
 ._*
 .cache
+.claude
 .DS_Store
 .idea
 .nvmrc

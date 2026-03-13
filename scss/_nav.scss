@@ -1,40 +1,83 @@
-@use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
+@use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
-// scss-docs-start nav-variables
-$nav-gap:                           .125rem !default;
-$nav-link-gap:                      .5rem !default;
-$nav-link-align:                    center !default;
-$nav-link-justify:                  center !default;
-$nav-link-padding-y:                .5rem !default;
-$nav-link-padding-x:                1rem !default;
-$nav-link-color:                    var(--fg-2) !default;
-$nav-link-hover-color:              var(--fg-1) !default;
-$nav-link-hover-bg:                 var(--bg-1) !default;
-$nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
-$nav-link-disabled-color:           var(--fg-4) !default;
-$nav-link-active-color:             var(--fg-body) !default;
-$nav-link-active-bg:                var(--bg-2) !default;
+$nav-tokens: () !default;
 
-$nav-tabs-border-color:             var(--border-color) !default;
-$nav-tabs-border-width:             var(--border-width) !default;
-$nav-tabs-border-radius:            var(--border-radius) !default;
-$nav-tabs-link-hover-border-color:  var(--border-subtle) !default;
-$nav-tabs-link-active-color:        var(--fg-color) !default;
-$nav-tabs-link-active-bg:           var(--bg-body) !default;
-$nav-tabs-link-active-border-color: var(--border-color) var(--border-color) $nav-tabs-link-active-bg !default;
+// scss-docs-start nav-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$nav-tokens: defaults(
+  (
+    --nav-gap: .125rem,
+    --nav-link-gap: .5rem,
+    --nav-link-align: center,
+    --nav-link-justify: center,
+    --nav-link-padding-x: .75rem,
+    --nav-link-padding-y: .375rem,
+    --nav-link-color: var(--fg-2),
+    --nav-link-hover-color: var(--fg-1),
+    --nav-link-hover-bg: var(--bg-1),
+    --nav-link-active-color: var(--fg-body),
+    --nav-link-active-bg: var(--bg-2),
+    --nav-link-disabled-color: var(--fg-4),
+    --nav-link-border-width: var(--border-width),
+    --nav-link-transition-property: "color, background-color, border-color",
+    --nav-link-transition-timing: .15s ease-in-out,
+    --nav-link-transition: var(--nav-link-transition-property) var(--nav-link-transition-timing),
+  ),
+  $nav-tokens
+);
+// scss-docs-end nav-tokens
 
-$nav-pills-link-active-color:       $component-active-color !default;
-$nav-pills-link-active-bg:          $component-active-bg !default;
+$nav-tabs-tokens: () !default;
 
-$nav-underline-gap:                 1rem !default;
-$nav-underline-border-width:        .125rem !default;
-$nav-underline-link-active-color:   var(--fg-color) !default;
-// scss-docs-end nav-variables
+// scss-docs-start nav-tabs-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$nav-tabs-tokens: defaults(
+  (
+    --nav-tabs-border-width: var(--border-width),
+    --nav-tabs-border-color: var(--border-color),
+    --nav-tabs-border-radius: var(--border-radius),
+    --nav-tabs-link-hover-border-color: var(--border-subtle),
+    --nav-tabs-link-active-color: var(--fg-color),
+    --nav-tabs-link-active-bg: var(--bg-body),
+    --nav-tabs-link-active-border-color: var(--border-color) var(--border-color) var(--bg-body),
+  ),
+  $nav-tabs-tokens
+);
+// scss-docs-end nav-tabs-tokens
+
+$nav-pills-tokens: () !default;
+
+// scss-docs-start nav-pills-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$nav-pills-tokens: defaults(
+  (
+    --nav-pills-link-active-color: var(--primary-contrast),
+    --nav-pills-link-active-bg: var(--primary-bg),
+  ),
+  $nav-pills-tokens
+);
+// scss-docs-end nav-pills-tokens
+
+$nav-underline-tokens: () !default;
+
+// scss-docs-start nav-underline-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$nav-underline-tokens: defaults(
+  (
+    --nav-gap: 1rem,
+    --nav-link-active-bg: transparent,
+    --nav-underline-border-width: .125rem,
+    --nav-underline-link-active-color: var(--fg-color),
+  ),
+  $nav-underline-tokens
+);
+// scss-docs-end nav-underline-tokens
 
 // Base class
 //
@@ -43,20 +86,7 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
 
 @layer components {
   .nav {
-    // scss-docs-start nav-css-vars
-    --nav-gap: #{$nav-gap};
-    --nav-link-gap: #{$nav-link-gap};
-    --nav-link-align: #{$nav-link-align};
-    --nav-link-justify: #{$nav-link-justify};
-    --nav-link-padding-x: #{$nav-link-padding-x};
-    --nav-link-padding-y: #{$nav-link-padding-y};
-    --nav-link-color: #{$nav-link-color};
-    --nav-link-hover-color: #{$nav-link-hover-color};
-    --nav-link-hover-bg: #{$nav-link-hover-bg};
-    --nav-link-active-color: #{$nav-link-active-color};
-    --nav-link-active-bg: #{$nav-link-active-bg};
-    --nav-link-disabled-color: #{$nav-link-disabled-color};
-    // scss-docs-end nav-css-vars
+    @include tokens($nav-tokens);
 
     display: flex;
     flex-wrap: wrap;
@@ -68,7 +98,6 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
 
   .nav-item {
     display: flex;
-
   }
 
   .nav-link {
@@ -80,11 +109,11 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
     font-weight: var(--nav-link-font-weight);
     color: var(--nav-link-color);
     text-decoration: none;
+    white-space: nowrap;
     background: none;
-    border: 0;
+    border: var(--nav-link-border-width) solid transparent;
     @include border-radius(var(--border-radius));
-    // @include font-size(var(--nav-link-font-size));
-    @include transition($nav-link-transition);
+    @include transition(var(--nav-link-transition));
 
     &:hover,
     &:focus {
@@ -119,20 +148,14 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
 
   .nav-tabs {
     // scss-docs-start nav-tabs-css-vars
-    --nav-tabs-border-width: #{$nav-tabs-border-width};
-    --nav-tabs-border-color: #{$nav-tabs-border-color};
-    --nav-tabs-border-radius: #{$nav-tabs-border-radius};
-    --nav-tabs-link-hover-border-color: #{$nav-tabs-link-hover-border-color};
-    --nav-tabs-link-active-color: #{$nav-tabs-link-active-color};
-    --nav-tabs-link-active-bg: #{$nav-tabs-link-active-bg};
-    --nav-tabs-link-active-border-color: #{$nav-tabs-link-active-border-color};
+    @include tokens($nav-tabs-tokens);
     // scss-docs-end nav-tabs-css-vars
 
-    border-block-end: var(--nav-tabs-border-width) solid var(--nav-tabs-border-color);
+    box-shadow: inset 0 calc(-1 * var(--nav-tabs-border-width)) 0 var(--nav-tabs-border-color);
 
     .nav-link {
-      margin-bottom: calc(-1 * var(--nav-tabs-border-width));
       border: var(--nav-tabs-border-width) solid transparent;
+      border-bottom-color: var(--nav-tabs-border-color);
       @include border-bottom-radius(0);
 
       &:hover {
@@ -159,15 +182,13 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
     }
   }
 
-
   //
   // Pills
   //
 
   .nav-pills {
     // scss-docs-start nav-pills-css-vars
-    --nav-pills-link-active-color: #{$nav-pills-link-active-color};
-    --nav-pills-link-active-bg: #{$nav-pills-link-active-bg};
+    @include tokens($nav-pills-tokens);
     // scss-docs-end nav-pills-css-vars
 
     .nav-link.active,
@@ -177,22 +198,18 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
     }
   }
 
-
   //
   // Underline
   //
 
   .nav-underline {
     // scss-docs-start nav-underline-css-vars
-    --nav-gap: #{$nav-underline-gap};
-    --nav-link-active-bg: transparent;
-    // --nav-underline-gap: #{$nav-underline-gap};
-    --nav-underline-border-width: #{$nav-underline-border-width};
-    --nav-underline-link-active-color: #{$nav-underline-link-active-color};
+    @include tokens($nav-underline-tokens);
     // scss-docs-end nav-underline-css-vars
 
     .nav-link {
       padding-inline: 0;
+      border: 0;
       border-block-end: var(--nav-underline-border-width) solid transparent;
       @include border-radius(0);
 
@@ -209,7 +226,6 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
       border-block-end-color: currentcolor;
     }
   }
-
 
   //
   // Justified variants
@@ -238,7 +254,6 @@ $nav-underline-link-active-color:   var(--fg-color) !default;
       width: 100%; // Make sure button will grow
     }
   }
-
 
   // Tabbable tabs
   //

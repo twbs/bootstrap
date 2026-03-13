@@ -1,44 +1,40 @@
 @use "config" as *;
+@use "functions" as *;
 @use "variables" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/tokens" as *;
 
-// scss-docs-start toast-variables
-$toast-max-width:                   350px !default;
-$toast-padding-x:                   .75rem !default;
-$toast-padding-y:                   .5rem !default;
-$toast-font-size:                   .875rem !default;
-$toast-color:                       null !default;
-$toast-background-color:            rgba(var(--body-bg-rgb), .85) !default;
-$toast-border-width:                var(--border-width) !default;
-$toast-border-color:                var(--border-color-translucent) !default;
-$toast-border-radius:               var(--border-radius) !default;
-$toast-box-shadow:                  var(--box-shadow) !default;
-$toast-spacing:                     $container-padding-x !default;
+$toast-tokens: () !default;
 
-$toast-header-color:                var(--secondary-color) !default;
-$toast-header-background-color:     rgba(var(--body-bg-rgb), .85) !default;
-$toast-header-border-color:         $toast-border-color !default;
-// scss-docs-end toast-variables
+// scss-docs-start toast-tokens
+// stylelint-disable custom-property-no-missing-var-function
+// stylelint-disable-next-line scss/dollar-variable-default
+$toast-tokens: defaults(
+  (
+    --toast-zindex: #{$zindex-toast},
+    --toast-padding-x: .75rem,
+    --toast-padding-y: .5rem,
+    --toast-spacing: #{$container-padding-x},
+    --toast-max-width: 350px,
+    --toast-font-size: .875rem,
+    --toast-color: null,
+    --toast-bg: rgba(var(--body-bg-rgb), .85),
+    --toast-border-width: var(--border-width),
+    --toast-border-color: var(--border-color-translucent),
+    --toast-border-radius: var(--border-radius),
+    --toast-box-shadow: var(--box-shadow),
+    --toast-header-color: var(--fg-3),
+    --toast-header-bg: rgba(var(--body-bg-rgb), .85),
+    --toast-header-border-color: var(--border-color-translucent),
+  ),
+  $toast-tokens
+);
+// stylelint-enable custom-property-no-missing-var-function
+// scss-docs-end toast-tokens
 
 @layer components {
   .toast {
-    // scss-docs-start toast-css-vars
-    --toast-zindex: #{$zindex-toast};
-    --toast-padding-x: #{$toast-padding-x};
-    --toast-padding-y: #{$toast-padding-y};
-    --toast-spacing: #{$toast-spacing};
-    --toast-max-width: #{$toast-max-width};
-    --toast-font-size: #{$toast-font-size};
-    --toast-color: #{$toast-color};
-    --toast-bg: #{$toast-background-color};
-    --toast-border-width: #{$toast-border-width};
-    --toast-border-color: #{$toast-border-color};
-    --toast-border-radius: #{$toast-border-radius};
-    --toast-box-shadow: #{$toast-box-shadow};
-    --toast-header-color: #{$toast-header-color};
-    --toast-header-bg: #{$toast-header-background-color};
-    --toast-header-border-color: #{$toast-header-border-color};
-    // scss-docs-end toast-css-vars
+    @include tokens($toast-tokens);
 
     width: var(--toast-max-width);
     max-width: 100%;

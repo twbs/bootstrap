@@ -1,0 +1,144 @@
+---
+title: RTL
+description: Learn how to enable support for right-to-left text in Bootstrap across our layout, components, and utilities.
+toc: true
+---
+
+<Callout type="info">
+  **ProTip:** Get familiar with Bootstrap first with our [getting started guide]([[docsref:/getting-started/]]) before working with RTL.
+</Callout>
+
+## How it works
+
+Bootstrap uses **CSS logical properties** throughout the framework to make RTL support native and automatic. Set `dir="rtl"` and add a `lang` attribute, like `lang="ar"`, on your HTML element and the browser will handle the directional layout changes for you. No separate stylesheets are needed.
+
+Logical properties are CSS properties that adapt to the writing mode and direction of content. Instead of using physical directions like `left` and `right`, they use logical concepts like `start` and `end`:
+
+- `margin-left` → `margin-inline-start`
+- `margin-right` → `margin-inline-end`
+- `padding-left` → `padding-inline-start`
+- `border-right` → `border-inline-end`
+
+When you set `dir="rtl"`, these logical properties automatically flip to match the right-to-left layout without requiring any additional CSS transformations. Only HTML changes are required.
+
+### Required HTML
+
+One line of changes to your HTML is all it takes to enable RTL. Bootstrap will then automatically adapt to the RTL direction using logical properties.
+
+```diff
+- <html lang="en">
++ <html lang="ar" dir="rtl">
+```
+
+### Live demo
+
+Toggle between LTR and RTL on this page to see Bootstrap's logical properties in action:
+
+<div class="bd-example">
+  <div class="checkgroup">
+    <div class="switch">
+      <input type="checkbox" value="" id="rtlSwitch" role="switch" switch />
+    </div>
+    <label for="rtlSwitch">Enable RTL mode</label>
+  </div>
+</div>
+
+<script>
+{`
+(function() {
+  const rtlSwitch = document.getElementById('rtlSwitch');
+  const htmlElement = document.documentElement;
+
+  // Check current direction on load
+  if (htmlElement.getAttribute('dir') === 'rtl') {
+    rtlSwitch.checked = true;
+  }
+
+  rtlSwitch.addEventListener('change', function() {
+    if (this.checked) {
+      htmlElement.setAttribute('dir', 'rtl');
+      htmlElement.setAttribute('lang', 'ar');
+    } else {
+      htmlElement.setAttribute('dir', 'ltr');
+      htmlElement.setAttribute('lang', 'en');
+    }
+  });
+})();
+`}
+</script>
+
+### Starter template
+
+Here's a modified RTL starter template:
+
+```html
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="[[config:cdn.css]]" integrity="[[config:cdn.css_hash]]" crossorigin="anonymous">
+
+    <title>مرحبًا بالعالم!</title>
+  </head>
+  <body>
+    <h1>مرحبًا بالعالم!</h1>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Floating UI and Vanilla Calendar Pro -->
+    <script type="module" src="[[config:cdn.js_bundle]]" integrity="[[config:cdn.js_bundle_hash]]" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Floating UI, Vanilla Calendar Pro, and Bootstrap JS via import map -->
+    <!--
+    <script type="importmap">
+    {
+      "imports": {
+        "@floating-ui/dom": "[[config:cdn.floating_ui_esm]]",
+        "vanilla-calendar-pro": "[[config:cdn.vanilla_calendar_pro_esm]]"
+      }
+    }
+    </script>
+    <script type="module" src="[[config:cdn.js]]" integrity="[[config:cdn.js_hash]]" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
+```
+
+## Switching directions
+
+**Need both LTR and RTL on the same page?** Wrap your content in containers with different `dir` attributes:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="[[config:cdn.css]]" integrity="[[config:cdn.css_hash]]" crossorigin="anonymous">
+    <title>LTR and RTL</title>
+  </head>
+  <body>
+    <!-- LTR content -->
+    <div dir="ltr" lang="en">
+      <h1>This is left-to-right text</h1>
+      <p>Content flows from left to right.</p>
+    </div>
+
+    <!-- RTL content -->
+    <div dir="rtl" lang="ar">
+      <h1>هذا نص من اليمين إلى اليسار</h1>
+      <p>المحتوى يتدفق من اليمين إلى اليسار.</p>
+    </div>
+  </body>
+</html>
+```
+
+## Additional resources
+
+- [MDN: CSS Logical Properties and Values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties)
+- [CSS Logical Properties - web.dev](https://web.dev/learn/css/logical-properties/)
+- [RTL Styling 101](https://rtlstyling.com/posts/rtl-styling)

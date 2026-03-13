@@ -13,7 +13,7 @@ import Code from '@shortcodes/Code.astro'
     Jump right into building with Bootstrap—use the CDN, install it via package manager, or download the source code.
   </p>
   <p class="d-flex justify-content-md-center lead fw-normal">
-    <a href={getVersionedDocsPath('getting-started/download/')} class="icon-link icon-link-hover fw-semibold ps-md-4">
+    <a href={getVersionedDocsPath('getting-started/install/')} class="icon-link icon-link-hover fw-semibold ps-md-4">
       Read installation docs
       <svg class="bi" aria-hidden="true"><use href="#arrow-right"></use></svg>
     </a>
@@ -33,7 +33,7 @@ import Code from '@shortcodes/Code.astro'
     <Code code={`npm install bootstrap@${getConfig().current_version}`} lang="sh" />
     <Code code={`gem install bootstrap -v ${getConfig().current_ruby_version}`} lang="sh" />
     <p>
-      <a href={getVersionedDocsPath('getting-started/download')}>Read our installation docs</a> for more info and additional
+      <a href={getVersionedDocsPath('getting-started/install')}>Read our installation docs</a> for more info and additional
       package managers.
     </p>
   </div>
@@ -54,7 +54,7 @@ import Code from '@shortcodes/Code.astro'
       lang="html"
     />
     <Code
-      code={`<script src="${getConfig().cdn.js_bundle}" integrity="${
+      code={`<script type="module" src="${getConfig().cdn.js_bundle}" integrity="${
         getConfig().cdn.js_bundle_hash
       }" crossorigin="anonymous"></script>`}
       lang="html"

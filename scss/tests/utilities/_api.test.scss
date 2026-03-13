@@ -1,3 +1,4 @@
+// check-unused-imports-disable — test infrastructure imports.
 @use "../../functions";
 @use "../../variables";
 @use "../../maps";
@@ -27,7 +28,7 @@ $utilities: ();
       )
     ) !global;
 
-    $grid-breakpoints: (
+    $breakpoints: (
       xs: 0,
       sm: 333px,
       md: 666px

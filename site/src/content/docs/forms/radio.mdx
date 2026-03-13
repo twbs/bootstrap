@@ -14,43 +14,43 @@ Similar to checkboxes, radios are styled with the `.radio` class. However, there
 
 ## Label
 
-Wrap the `.radio` in a `<b-radiogroup>` layout component and add your label. We use a custom element for layout here that sets some basic flexbox styling.
+Wrap the `.radio` in a `.radiogroup` layout wrapper and add your label. This sets some basic flexbox styling.
 
-<Example code={`<b-radiogroup>
+<Example code={`<div class="radiogroup">
     <input type="radio" id="radioLabel" class="radio" />
     <label for="radioLabel">Example new radio</label>
-  </b-radiogroup>`} />
+  </div>`} />
 
 ## Theme colors
 
 Modify the appearance of checked checkboxes by adding the `.theme-{color}` class to the `.radio` element. This will set the checked background and border color to the theme color.
 
-<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<b-radiogroup>
+<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<div class="radiogroup">
     <input type="radio" id="radio${themeColor.name}" class="radio theme-${themeColor.name}" checked />
     <label for="radio${themeColor.name}">Example ${themeColor.name} radio</label>
-  </b-radiogroup>`)} />
+  </div>`)} />
 
 ## Description
 
 With this layout approach, you can easily add a description or other content after the label. Here we use another custom element, `<b-vstack>`, to stack the label and description.
 
-<Example code={`<b-radiogroup>
+<Example code={`<div class="radiogroup">
     <input type="radio" id="radioLabelDescription" class="radio" />
     <b-vstack>
       <label for="radioLabelDescription">Example new radio</label>
       <small class="description">Supporting description for the above label.</small>
     </b-vstack>
-  </b-radiogroup>
+  </div>
   `} />
 
 ## Disabled
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example code={`<b-radiogroup>
+<Example code={`<div class="radiogroup">
     <input type="radio" id="radioDisabled" class="radio" disabled />
     <label for="radioDisabled">Example new radio</label>
-  </b-radiogroup>
+  </div>
   `} />
 
 ## CSS
@@ -59,8 +59,4 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 CSS variables for the radio component are built on the Sass variables.
 
-<ScssDocs name="radio-css-variables" file="scss/forms/_radio.scss" />
-
-### Sass variables
-
-<ScssDocs name="radio-variables" file="scss/forms/_radio.scss" />
+<ScssDocs name="radio-tokens" file="scss/forms/_radio.scss" />

@@ -16,7 +16,6 @@ export const body_class = 'bg-body-tertiary'
       <img src={getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')} width="38" height="30" class="me-3" alt="Bootstrap">
       Cheatsheet
     </h1>
-    <a href={getVersionedDocsPath('examples/cheatsheet-rtl/')} class="ms-auto link-light" hreflang="ar">RTL cheatsheet</a>
   </div>
 </header>
 <aside class="bd-aside sticky-xl-top text-body-secondary align-self-start mb-3 mb-xl-5 px-2">
@@ -290,7 +289,7 @@ export const body_class = 'bg-body-tertiary'
     <article class="my-3" id="figures">
       <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
         <h3>Figures</h3>
-        <a class="d-flex align-items-center" href={getVersionedDocsPath('content/figures')}>Documentation</a>
+        <a class="d-flex align-items-center" href={getVersionedDocsPath('content/images#figures')}>Documentation</a>
       </div>
 
       <div>
@@ -360,7 +359,7 @@ export const body_class = 'bg-body-tertiary'
             <label for="customRange3" class="form-label">Example range</label>
             <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn-solid theme-primary">Submit</button>
         </form>`} />
       </div>
     </article>
@@ -415,7 +414,7 @@ export const body_class = 'bg-body-tertiary'
               <label for="disabledRange" class="form-label">Disabled range</label>
               <input type="range" class="form-range" min="0" max="5" step="0.5" id="disabledRange">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn-solid theme-primary">Submit</button>
           </fieldset>
         </form>`} />
       </div>
@@ -584,7 +583,7 @@ export const body_class = 'bg-body-tertiary'
             </div>
           </div>
           <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn-solid theme-primary" type="submit">Submit form</button>
           </div>
         </form>
         `} />
@@ -717,18 +716,18 @@ export const body_class = 'bg-body-tertiary'
       <div>
         <Example showMarkup={false} code={[
           ...getData('theme-colors').map((themeColor) => `
-          <button type="button" class="btn btn-${themeColor.name}">${themeColor.title}</button>
+          <button type="button" class="btn-solid theme-${themeColor.name}">${themeColor.title}</button>
           `),
-          `<button type="button" class="btn btn-link">Link</button>`]} />
+          `<button type="button" class="btn-solid theme-link">Link</button>`]} />
 
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-          <button type="button" class="btn btn-outline-${themeColor.name}">${themeColor.title}</button>
+          <button type="button" class="btn-solid theme-outline-${themeColor.name}">${themeColor.title}</button>
           `)} />
 
         <Example showMarkup={false} code={`
-          <button type="button" class="btn btn-primary btn-sm">Small button</button>
-          <button type="button" class="btn btn-primary">Standard button</button>
-          <button type="button" class="btn btn-primary btn-lg">Large button</button>
+          <button type="button" class="btn-solid theme-primary btn-sm">Small button</button>
+          <button type="button" class="btn-solid theme-primary">Standard button</button>
+          <button type="button" class="btn-solid theme-primary btn-lg">Large button</button>
           `} />
       </div>
     </article>
@@ -742,18 +741,18 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={`
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
           <div class="btn-group me-2" role="group" aria-label="First group">
-            <button type="button" class="btn btn-secondary">1</button>
-            <button type="button" class="btn btn-secondary">2</button>
-            <button type="button" class="btn btn-secondary">3</button>
-            <button type="button" class="btn btn-secondary">4</button>
+            <button type="button" class="btn-solid theme-secondary">1</button>
+            <button type="button" class="btn-solid theme-secondary">2</button>
+            <button type="button" class="btn-solid theme-secondary">3</button>
+            <button type="button" class="btn-solid theme-secondary">4</button>
           </div>
           <div class="btn-group me-2" role="group" aria-label="Second group">
-            <button type="button" class="btn btn-secondary">5</button>
-            <button type="button" class="btn btn-secondary">6</button>
-            <button type="button" class="btn btn-secondary">7</button>
+            <button type="button" class="btn-solid theme-secondary">5</button>
+            <button type="button" class="btn-solid theme-secondary">6</button>
+            <button type="button" class="btn-solid theme-secondary">7</button>
           </div>
           <div class="btn-group" role="group" aria-label="Third group">
-            <button type="button" class="btn btn-secondary">8</button>
+            <button type="button" class="btn-solid theme-secondary">8</button>
           </div>
         </div>
         `} />
@@ -774,7 +773,7 @@ export const body_class = 'bg-body-tertiary'
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <a href="#" class="btn-solid theme-primary">Go somewhere</a>
                 </div>
               </div>
             </div>
@@ -786,7 +785,7 @@ export const body_class = 'bg-body-tertiary'
                 <div class="card-body">
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <a href="#" class="btn-solid theme-primary">Go somewhere</a>
                 </div>
                 <div class="card-footer text-body-secondary">
                   2 days ago
@@ -887,10 +886,10 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={`
-        <button type="button" class="btn btn-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+        <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
           Launch demo dialog
         </button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdropDialog">
+        <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdropDialog">
           Launch static backdrop dialog
         </button>
         `} />
@@ -905,7 +904,7 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={`
         <div class="btn-group w-100 align-items-center justify-content-between flex-wrap me-0">
           <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn-solid theme-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown button
             </button>
             <ul class="dropdown-menu">
@@ -918,7 +917,7 @@ export const body_class = 'bg-body-tertiary'
             </ul>
           </div>
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown button
             </button>
             <ul class="dropdown-menu">
@@ -931,7 +930,7 @@ export const body_class = 'bg-body-tertiary'
             </ul>
           </div>
           <div class="dropdown">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn-solid theme-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown button
             </button>
             <ul class="dropdown-menu">
@@ -948,8 +947,8 @@ export const body_class = 'bg-body-tertiary'
 
         <Example showMarkup={false} code={`
           <div class="btn-group">
-            <button type="button" class="btn btn-primary">Primary</button>
-            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn-solid theme-primary">Primary</button>
+            <button type="button" class="btn-solid theme-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
@@ -959,8 +958,8 @@ export const body_class = 'bg-body-tertiary'
             </ul>
           </div><!-- /btn-group -->
           <div class="btn-group">
-            <button type="button" class="btn btn-secondary">Secondary</button>
-            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn-solid theme-secondary">Secondary</button>
+            <button type="button" class="btn-solid theme-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
@@ -970,8 +969,8 @@ export const body_class = 'bg-body-tertiary'
             </ul>
           </div><!-- /btn-group -->
           <div class="btn-group">
-            <button type="button" class="btn btn-success">Success</button>
-            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn-solid theme-success">Success</button>
+            <button type="button" class="btn-solid theme-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
@@ -981,8 +980,8 @@ export const body_class = 'bg-body-tertiary'
             </ul>
           </div><!-- /btn-group -->
           <div class="btn-group">
-            <button type="button" class="btn btn-info">Info</button>
-            <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn-solid theme-info">Info</button>
+            <button type="button" class="btn-solid theme-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
@@ -992,8 +991,8 @@ export const body_class = 'bg-body-tertiary'
             </ul>
           </div><!-- /btn-group -->
           <div class="btn-group">
-            <button type="button" class="btn btn-warning">Warning</button>
-            <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn-solid theme-warning">Warning</button>
+            <button type="button" class="btn-solid theme-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
@@ -1003,8 +1002,8 @@ export const body_class = 'bg-body-tertiary'
             </ul>
           </div><!-- /btn-group -->
           <div class="btn-group">
-            <button type="button" class="btn btn-danger">Danger</button>
-            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn-solid theme-danger">Danger</button>
+            <button type="button" class="btn-solid theme-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu">
@@ -1018,7 +1017,7 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={`
           <div class="btn-group w-100 align-items-center justify-content-between flex-wrap me-0">
             <div class="dropend">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropend button
               </button>
               <ul class="dropdown-menu">
@@ -1031,7 +1030,7 @@ export const body_class = 'bg-body-tertiary'
               </ul>
             </div>
             <div class="dropup">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropup button
               </button>
               <ul class="dropdown-menu">
@@ -1044,7 +1043,7 @@ export const body_class = 'bg-body-tertiary'
               </ul>
             </div>
             <div class="dropstart">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropstart button
               </button>
               <ul class="dropdown-menu">
@@ -1062,7 +1061,7 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={`
           <div class="btn-group">
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 End-aligned menu
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
@@ -1182,7 +1181,7 @@ export const body_class = 'bg-body-tertiary'
                 <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy" style="filter: invert(1) grayscale(100%) brightness(200%);">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -1209,7 +1208,7 @@ export const body_class = 'bg-body-tertiary'
                 </ul>
                 <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-dark" type="submit">Search</button>
+                  <button class="btn-solid theme-outline-dark" type="submit">Search</button>
                 </form>
               </div>
             </div>
@@ -1221,7 +1220,7 @@ export const body_class = 'bg-body-tertiary'
                 <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -1248,7 +1247,7 @@ export const body_class = 'bg-body-tertiary'
                 </ul>
                 <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-light" type="submit">Search</button>
+                  <button class="btn-solid theme-outline-light" type="submit">Search</button>
                 </form>
               </div>
             </div>
@@ -1322,20 +1321,20 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={`
-        <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+        <button type="button" class="btn-solid theme-danger btn-lg" data-bs-toggle="popover" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
         `} />
 
         <Example showMarkup={false} code={`
-        <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn-solid theme-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on top
         </button>
-        <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn-solid theme-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on end
         </button>
-        <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn-solid theme-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on bottom
         </button>
-        <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        <button type="button" class="btn-solid theme-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
           Popover on start
         </button>
         `} />
@@ -1471,11 +1470,11 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} class="tooltip-demo" code={`
-        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Tooltip on top</button>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on end">Tooltip on end</button>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on start">Tooltip on start</button>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
+        <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Tooltip on top</button>
+        <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on end">Tooltip on end</button>
+        <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+        <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on start">Tooltip on start</button>
+        <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
         `} />
       </div>
     </article>
@@ -1491,8 +1490,8 @@ export const body_class = 'bg-body-tertiary'
     <p>This is a native dialog element using Bootstrap's Dialog component.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn btn-primary">Save changes</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary">Save changes</button>
   </div>
 </dialog>
 
@@ -1505,7 +1504,7 @@ export const body_class = 'bg-body-tertiary'
     <p>I will not close if you click outside of me. Use the close button or press Escape.</p>
   </div>
   <div class="dialog-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn btn-primary">Understood</button>
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    <button type="button" class="btn-solid theme-primary">Understood</button>
   </div>
 </dialog>

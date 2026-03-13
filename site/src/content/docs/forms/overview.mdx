@@ -6,10 +6,10 @@ aliases: "/docs/[[config:docs_version]]/forms/"
 sections:
   - title: Form control
     description: Style textual inputs and textareas with support for multiple states.
-  - title: Select
-    description: Improve browser default select elements with a custom initial appearance.
-  - title: Checks & radios
-    description: Use our custom radio buttons and checkboxes in forms for selecting input options.
+  - title: Checkbox
+    description: Use our custom checkboxes in forms for selecting input options.
+  - title: Radio
+    description: Use our custom radio buttons in forms for selecting input options.
   - title: Range
     description: Replace browser default range inputs with our custom version.
   - title: Input group
@@ -44,7 +44,7 @@ Here’s a quick example to demonstrate Bootstrap’s form styles. Keep reading 
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn-solid theme-primary">Submit</button>
   </form>`} />
 
 ## Disabled forms
@@ -57,7 +57,7 @@ Add the `disabled` boolean attribute on an input to prevent user interactions an
 
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within. Browsers treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them.
 
-However, if your form also includes custom button-like elements such as `<a class="btn btn-*">...</a>`, these will only be given a style of `pointer-events: none`, meaning they are still focusable and operable using the keyboard. In this case, you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
+However, if your form also includes custom button-like elements such as `<a class="btn-*">...</a>`, these will only be given a style of `pointer-events: none`, meaning they are still focusable and operable using the keyboard. In this case, you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
 
 <Example code={`<form>
     <fieldset disabled>
@@ -80,7 +80,7 @@ However, if your form also includes custom button-like elements such as `<a clas
           </label>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn-solid theme-primary">Submit</button>
     </fieldset>
   </form>`} />
 
@@ -101,10 +101,8 @@ While using visually hidden content (`.visually-hidden`, `aria-label`, and even 
 
 ## CSS
 
-Many form variables are set at a general level to be re-used and extended by individual form components. You’ll see these most often as `$input-btn-*` and `$input-*` variables.
+### Variables
 
-### Sass variables
+Some form variables are set at the root level to be re-used and extended by individual form components, but you’ll most often see variables set at the form control level. Root variables are often `--btn-input-*`, which are shared with [buttons]([[docsref:/components/buttons]]), and `--input-*` variables.
 
-`$input-btn-*` variables are shared global variables between our [buttons]([[docsref:/components/buttons]]) and our form components. You’ll find these frequently reassigned as values to other component-specific variables.
-
-<ScssDocs name="input-btn-variables" file="scss/forms/_form-variables.scss" />
+<ScssDocs name="root-form-variables" file="scss/_root.scss" />

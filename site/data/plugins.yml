@@ -14,13 +14,17 @@
   description: Expand and collapse areas of content, or create accordions.
   link: components/collapse/
 
+- name: Datepicker
+  description: Add date selection to form inputs. Built on Vanilla Calendar Pro.
+  link: forms/datepicker/
+
+- name: Dialog
+  description: Add flexible and responsive dialogs to your project.
+  link: components/dialog/
+
 - name: Dropdown
   description: Create menus of links, actions, forms, and more.
   link: components/dropdowns/
-
-- name: Modal
-  description: Add flexible and responsive dialogs to your project.
-  link: components/modal/
 
 - name: Offcanvas
   description: Build and toggle hidden sidebars into any page.

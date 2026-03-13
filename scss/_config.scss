@@ -14,7 +14,7 @@ $enable-container-classes:    true !default;
 $enable-cssgrid:              true !default;
 $enable-button-pointers:      true !default;
 $enable-validation-icons:     true !default;
-$enable-negative-margins:     false !default;
+// $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 
 $enable-dark-mode:            true !default;
@@ -30,6 +30,8 @@ $min-contrast-ratio:         4.5 !default;
 // scss-docs-start spacer-variables-maps
 $spacer: 1rem !default;
 $spacers: (
+  -2: $spacer * -.5,
+  -1: $spacer * -.25,
   0: 0,
   1: $spacer * .25,
   2: $spacer * .5,
@@ -54,13 +56,13 @@ $sizes: (
   12: calc($spacer * 12),
 ) !default;
 
-// Grid breakpoints
+// Breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
-// scss-docs-start grid-breakpoints
-$grid-breakpoints: (
+// scss-docs-start breakpoints
+$breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
@@ -68,17 +70,18 @@ $grid-breakpoints: (
   xl: 1280px,
   2xl: 1536px
 ) !default;
-// scss-docs-end grid-breakpoints
+// scss-docs-end breakpoints
 
-// @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-// @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+// @include _assert-ascending($breakpoints, "$breakpoints");
+// @include _assert-starts-at-zero($breakpoints, "$breakpoints");
 
 // Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns: 12 !default;
-$grid-gutter-width: 1.5rem !default;
+$grid-gutter-x: 1.5rem !default;
+$grid-gutter-y: 0 !default;
 $grid-row-columns: 6 !default;
 
 $gutters: $spacers !default;
@@ -97,7 +100,7 @@ $container-max-widths: (
 ) !default;
 // scss-docs-end container-max-widths
 
-$container-padding-x: $grid-gutter-width !default;
+$container-padding-x: $grid-gutter-x !default;
 
 $utilities: () !default;
 

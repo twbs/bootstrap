@@ -2,12 +2,8 @@
   $file: "Grid"
 );
 
-@use "sass:map";
-@use "colors" as *;
 @use "config" as *;
-@use "variables" as *;
 @use "functions" as *;
-// @use "maps" as *;
 
 @forward "utilities"; // Make utilities available downstream
 @use "utilities" as *; // Bring utilities into the current namespace
@@ -56,4 +52,11 @@ $utilities: map-get-multiple(
   )
 );
 
+// check-unused-imports-disable-next-line — side-effect import: generates utility CSS.
 @use "utilities/api";
+
+:root {
+  @each $name, $value in $breakpoints {
+    --breakpoint-#{$name}: #{$value};
+  }
+}

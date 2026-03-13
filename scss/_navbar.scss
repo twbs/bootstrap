@@ -1,96 +1,104 @@
-@use "sass:map";
 @use "config" as *;
-@use "colors" as *;
-@use "variables" as *;
+@use "functions" as *;
 @use "layout/breakpoints" as *;
-@use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/color-mode" as *;
-@use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
+@use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
-// scss-docs-start navbar-variables
-$navbar-padding-y:                  $spacer * .5 !default;
-$navbar-padding-x:                  null !default;
+// mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
 
-$navbar-nav-link-padding-x:         .75rem !default;
+// stylelint-disable custom-property-no-missing-var-function
+// scss-docs-start navbar-breakpoints
+$navbar-breakpoints: $breakpoints !default;
+// scss-docs-end navbar-breakpoints
 
-$navbar-brand-font-size:            $font-size-lg !default;
-// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-// mdo-do: fix this
-// $nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
-// $navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
-$navbar-brand-height:               1.5rem !default;
-// $navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) * .5 !default;
-$navbar-brand-padding-y:            $navbar-brand-height * .5 !default;
-$navbar-brand-margin-end:           1rem !default;
+$navbar-tokens: () !default;
+$navbar-dark-tokens: () !default;
+$navbar-nav-tokens: () !default;
 
-$navbar-toggler-padding-y:          .25rem !default;
-$navbar-toggler-padding-x:          .75rem !default;
-$navbar-toggler-font-size:          $font-size-lg !default;
-$navbar-toggler-border-radius:      var(--border-radius) !default;
-$navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
+// scss-docs-start navbar-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$navbar-tokens: defaults(
+  (
+    --navbar-padding-x: 0,
+    --navbar-padding-y: .5rem,
+    --navbar-color: var(--fg-2),
+    --navbar-hover-color: var(--fg-1),
+    --navbar-disabled-color: var(--fg-3),
+    --navbar-active-color: var(--fg-body),
+    --navbar-brand-padding-y: .75rem,
+    --navbar-brand-margin-end: 1rem,
+    --navbar-brand-font-size: var(--font-size-md),
+    --navbar-brand-font-weight: var(--font-weight-medium),
+    --navbar-brand-color: var(--fg-body),
+    --navbar-brand-hover-color: var(--fg-body),
+    --navbar-nav-link-padding-x: .75rem,
+    --navbar-toggler-width: 2rem,
+    --navbar-toggler-padding-y: .25rem,
+    --navbar-toggler-padding-x: .75rem,
+    --navbar-toggler-font-size: var(--font-size-lg),
+    --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
+    --navbar-toggler-border-radius: var(--border-radius),
+    --navbar-toggler-transition: box-shadow .15s ease-in-out,
+  ),
+  $navbar-tokens
+);
+// scss-docs-end navbar-tokens
 
-$navbar-light-color:                var(--fg-2) !default;
-$navbar-light-hover-color:          var(--fg-1) !default;
-$navbar-light-active-color:         var(--fg) !default;
-$navbar-light-disabled-color:       var(--fg-3) !default;
-$navbar-light-icon-color:           color-mix(in oklch, var(--body-color) 75%, transparent) !default;
-$navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-light-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent) !default;
-$navbar-light-brand-color:          $navbar-light-active-color !default;
-$navbar-light-brand-hover-color:    $navbar-light-active-color !default;
-// scss-docs-end navbar-variables
+// scss-docs-start navbar-dark-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$navbar-dark-tokens: defaults(
+  (
+    --navbar-color: color-mix(in oklch, var(--white) .55, transparent),
+    --navbar-hover-color: color-mix(in oklch, var(--white) .75, transparent),
+    --navbar-disabled-color: color-mix(in oklch, var(--white) .25, transparent),
+    --navbar-active-color: var(--white),
+    --navbar-brand-color: var(--white),
+    --navbar-brand-hover-color: var(--white),
+    --navbar-toggler-border-color: color-mix(in oklch, var(--white) .1, transparent),
+  ),
+  $navbar-dark-tokens
+);
+// scss-docs-end navbar-dark-tokens
 
-// scss-docs-start navbar-dark-variables
-$navbar-dark-color:                 rgba($white, .55) !default;
-$navbar-dark-hover-color:           rgba($white, .75) !default;
-$navbar-dark-active-color:          $white !default;
-$navbar-dark-disabled-color:        rgba($white, .25) !default;
-$navbar-dark-icon-color:            $navbar-dark-color !default;
-$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-icon-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-dark-toggler-border-color:  rgba($white, .1) !default;
-$navbar-dark-brand-color:           $navbar-dark-active-color !default;
-$navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
-// scss-docs-end navbar-dark-variables
+// scss-docs-start navbar-nav-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$navbar-nav-tokens: defaults(
+  (
+    --nav-gap: .25rem,
+    --nav-link-gap: .5rem,
+    --nav-link-padding-x: .5rem,
+    --nav-link-padding-y: .375rem,
+    --nav-link-color: var(--navbar-color),
+    --nav-link-border-width: var(--border-width),
+    //--nav-link-border-color: var(--border-color),
+    --nav-link-hover-color: var(--navbar-hover-color),
+    --nav-link-hover-bg: transparent,
+    --nav-link-active-color: var(--navbar-active-color),
+    --nav-link-active-bg: transparent,
+    --nav-link-disabled-color: var(--navbar-disabled-color),
+  ),
+  $navbar-nav-tokens
+);
+// scss-docs-end navbar-nav-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer components {
+  // Base navbar
   .navbar {
-    // scss-docs-start navbar-css-vars
-    // stylelint-disable-next-line scss/at-function-named-arguments
-    --navbar-padding-x: #{if(sass($navbar-padding-x == null): 0; else: $navbar-padding-x)};
-    --navbar-padding-y: #{$navbar-padding-y};
-    --navbar-color: #{$navbar-light-color};
-    --navbar-hover-color: #{$navbar-light-hover-color};
-    --navbar-disabled-color: #{$navbar-light-disabled-color};
-    --navbar-active-color: #{$navbar-light-active-color};
-    --navbar-brand-padding-y: #{$navbar-brand-padding-y};
-    --navbar-brand-margin-end: #{$navbar-brand-margin-end};
-    --navbar-brand-font-size: #{$navbar-brand-font-size};
-    --navbar-brand-color: #{$navbar-light-brand-color};
-    --navbar-brand-hover-color: #{$navbar-light-brand-hover-color};
-    --navbar-nav-link-padding-x: #{$navbar-nav-link-padding-x};
-    --navbar-toggler-padding-y: #{$navbar-toggler-padding-y};
-    --navbar-toggler-padding-x: #{$navbar-toggler-padding-x};
-    --navbar-toggler-font-size: #{$navbar-toggler-font-size};
-    --navbar-toggler-icon-bg: #{escape-svg($navbar-light-toggler-icon-bg)};
-    --navbar-toggler-border-color: #{$navbar-light-toggler-border-color};
-    --navbar-toggler-border-radius: #{$navbar-toggler-border-radius};
-    --navbar-toggler-transition: #{$navbar-toggler-transition};
-    // scss-docs-end navbar-css-vars
+    @include tokens($navbar-tokens);
 
     position: relative;
     display: flex;
-    flex-wrap: wrap; // allow us to do the line break for collapsing content
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between; // space out brand from logo
+    justify-content: space-between;
     padding: var(--navbar-padding-y) var(--navbar-padding-x);
+    @include set-container();
     @include gradient-bg();
 
-    // Because flex properties aren't inherited, we need to redeclare these first
-    // few properties so that content nested within behave properly.
-    // The `flex-wrap` property is inherited to simplify the expanded navbars
+    // Container properties for nested containers
     %container-flex-properties {
       display: flex;
       flex-wrap: inherit;
@@ -110,16 +118,15 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
     }
   }
 
-
   // Navbar brand
   //
   // Used for brand, project, or site names.
-
   .navbar-brand {
     padding-top: var(--navbar-brand-padding-y);
     padding-bottom: var(--navbar-brand-padding-y);
     margin-inline-end: var(--navbar-brand-margin-end);
     font-size: var(--navbar-brand-font-size);
+    font-weight: var(--navbar-brand-font-weight);
     color: var(--navbar-brand-color);
     text-decoration: none;
     white-space: nowrap;
@@ -130,25 +137,16 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
     }
   }
 
-
-  // Navbar nav
+  // Navigation within navbars. Sets all nav-link CSS variables needed for
+  // proper styling.
   //
-  // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
-
+  // Relies on `.nav` base class.
   .navbar-nav {
-    // scss-docs-start navbar-nav-css-vars
-    // --nav-link-padding-x: 0;
-    // @mdo-do: fix this, navbar shouldn't need to reuse nav link variables mb? or we need to bring them in…
-    // --nav-link-padding-y: #{$nav-link-padding-y};
-    // @include rfs($nav-link-font-size, --nav-link-font-size);
-    // --nav-link-font-weight: #{$nav-link-font-weight};
-    --nav-link-color: var(--navbar-color);
-    --nav-link-hover-color: var(--navbar-hover-color);
-    --nav-link-disabled-color: var(--navbar-disabled-color);
-    // scss-docs-end navbar-nav-css-vars
+    @include tokens($navbar-nav-tokens);
 
     display: flex;
-    flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+    flex-direction: column;
+    gap: var(--nav-gap);
     padding-inline-start: 0;
     margin-bottom: 0;
     list-style: none;
@@ -157,183 +155,108 @@ $navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
       &.active,
       &.show {
         color: var(--navbar-active-color);
+        border: var(--nav-link-border-width) solid var(--nav-link-border-color, transparent);
       }
     }
-
-    // .dropdown-menu {
-    //   position: static;
-    // }
   }
-
 
   // Navbar text
   //
-  //
-
+  // For adding text or inline elements to the navbar
   .navbar-text {
-    // @mdo-do: fix this too
-    // padding-top: $nav-link-padding-y;
-    // padding-bottom: $nav-link-padding-y;
+    padding-top: var(--navbar-brand-padding-y);
+    padding-bottom: var(--navbar-brand-padding-y);
     color: var(--navbar-color);
 
     a,
     a:hover,
-    a:focus  {
+    a:focus {
       color: var(--navbar-active-color);
     }
   }
 
-
-  // Responsive navbar
-  //
-  // Custom styles for responsive collapsing and toggling of navbar contents.
-  // Powered by the collapse Bootstrap JavaScript plugin.
-
-  // When collapsed, prevent the toggleable navbar contents from appearing in
-  // the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
-  // on the `.navbar` parent.
-  .navbar-collapse {
-    flex-grow: 1;
-    flex-basis: 100%;
-    // For always expanded or extra full navbars, ensure content aligns itself
-    // properly vertically. Can be easily overridden with flex utilities.
-    align-items: center;
-  }
-
   // Button for toggling the navbar when in its collapsed state
   .navbar-toggler {
-    padding: var(--navbar-toggler-padding-y) var(--navbar-toggler-padding-x);
-    font-size: var(--navbar-toggler-font-size);
-    line-height: 1;
-    color: var(--navbar-color);
-    background-color: transparent; // remove default button style
-    border: var(--border-width) solid var(--navbar-toggler-border-color); // remove default button style
-    @include border-radius(var(--navbar-toggler-border-radius));
-    @include transition(var(--navbar-toggler-transition));
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:focus-visible {
-      text-decoration: none;
-      @include focus-ring(true);
-    }
-  }
-
-  // Keep as a separate element so folks can easily override it with another icon
-  // or image file as needed.
-  .navbar-toggler-icon {
-    display: inline-block;
-    width: 1.5em;
-    height: 1.5em;
-    vertical-align: middle;
-    background-image: var(--navbar-toggler-icon-bg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-  }
-
-  .navbar-nav-scroll {
-    max-height: var(--scroll-height, 75vh);
-    overflow-y: auto;
+    --btn-bg: transparent;
+    --btn-hover-bg: var(--bg-2);
   }
 
   // scss-docs-start navbar-expand-loop
   // Generate series of `.navbar-expand-*` responsive classes for configuring
-  // where your navbar collapses.
+  // where your navbar collapses and expands. Uses container queries so the
+  // navbar responds to its own width, not the viewport width.
+
+  // Mixin for expanded state styles (applied to descendants)
+  @mixin navbar-expanded {
+    // Style the inner container since we can't style .navbar itself with container queries
+    > .container,
+    > .container-fluid,
+    %navbar-expand-container {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+
+    .navbar-nav {
+      --nav-link-padding-x: var(--navbar-nav-link-padding-x);
+      flex-direction: row;
+    }
+
+    .navbar-toggler {
+      display: none !important; // stylelint-disable-line declaration-no-important
+    }
+
+    .offcanvas {
+      // stylelint-disable declaration-no-important
+      position: static;
+      z-index: auto;
+      flex-grow: 1;
+      width: auto !important;
+      height: auto !important;
+      visibility: visible !important;
+      background-color: transparent !important;
+      border: 0 !important;
+      transform: none !important;
+      @include box-shadow(none);
+      @include transition(none);
+      // stylelint-enable declaration-no-important
+
+      .offcanvas-header {
+        display: none;
+      }
+
+      .offcanvas-body {
+        display: flex;
+        flex-grow: 0;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        overflow-y: visible;
+      }
+    }
+  }
+
+  // Always expanded (no responsive behavior)
   .navbar-expand {
-    @each $breakpoint in map.keys($grid-breakpoints) {
-      $next: breakpoint-next($breakpoint, $grid-breakpoints);
-      $infix: breakpoint-infix($next, $grid-breakpoints);
+    @include navbar-expanded();
 
-      // stylelint-disable-next-line scss/selector-no-union-class-name
-      &#{$infix} {
-        @include media-breakpoint-up($next) {
-          flex-wrap: nowrap;
-          justify-content: flex-start;
+    // Also set on navbar itself for non-responsive case
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
 
-          .navbar-nav {
-            --nav-link-padding-x: var(--navbar-nav-link-padding-x);
-            flex-direction: row;
-
-            // .dropdown-menu {
-            //   position: absolute;
-            // }
-
-            // .nav-link {
-            //   padding-inline: var(--navbar-nav-link-padding-x);
-            // }
-          }
-
-          .navbar-nav-scroll {
-            overflow: visible;
-          }
-
-          .navbar-collapse {
-            display: flex !important; // stylelint-disable-line declaration-no-important
-            flex-basis: auto;
-          }
-
-          .navbar-toggler {
-            display: none !important; // stylelint-disable-line declaration-no-important
-          }
-
-          .offcanvas {
-            // stylelint-disable declaration-no-important
-            position: static;
-            z-index: auto;
-            flex-grow: 1;
-            width: auto !important;
-            height: auto !important;
-            visibility: visible !important;
-            background-color: transparent !important;
-            border: 0 !important;
-            transform: none !important;
-            @include box-shadow(none);
-            @include transition(none);
-            // stylelint-enable declaration-no-important
-
-            .offcanvas-header {
-              display: none;
-            }
-
-            .offcanvas-body {
-              display: flex;
-              flex-grow: 0;
-              padding: 0;
-              overflow-y: visible;
-            }
-          }
+  // Responsive navbar expand classes using container queries
+  @include loop-breakpoints-down($navbar-breakpoints) using ($breakpoint, $next, $infix) {
+    @if $next {
+      .navbar-expand#{$infix} {
+        @include container-breakpoint-up($next) {
+          @include navbar-expanded();
         }
       }
     }
   }
   // scss-docs-end navbar-expand-loop
 
-  // Navbar themes
-  //
-  // Styles for switching between navbars with light or dark background.
-
-  .navbar-dark,
   .navbar[data-bs-theme="dark"] {
-    // scss-docs-start navbar-dark-css-vars
-    --navbar-color: #{$navbar-dark-color};
-    --navbar-hover-color: #{$navbar-dark-hover-color};
-    --navbar-disabled-color: #{$navbar-dark-disabled-color};
-    --navbar-active-color: #{$navbar-dark-active-color};
-    --navbar-brand-color: #{$navbar-dark-brand-color};
-    --navbar-brand-hover-color: #{$navbar-dark-brand-hover-color};
-    --navbar-toggler-border-color: #{$navbar-dark-toggler-border-color};
-    --navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
-    // scss-docs-end navbar-dark-css-vars
-  }
-
-  @if $enable-dark-mode {
-    @include color-mode(dark) {
-      .navbar-toggler-icon {
-        --navbar-toggler-icon-bg: #{escape-svg($navbar-dark-toggler-icon-bg)};
-      }
-    }
+    @include tokens($navbar-dark-tokens);
   }
 }

@@ -8,7 +8,7 @@ toc: true
 
 Bootstrap’s components are largely built with a base-modifier nomenclature. We group as many shared properties as possible into a base class, like `.btn`, and then group individual styles for each variant into modifier classes, like `.btn-primary` or `.btn-success`.
 
-To build our modifier classes, we use Sass’s `@each` loops to iterate over a Sass map. This is especially helpful for generating variants of a component by our `$theme-colors` and creating responsive variants for each breakpoint. As you customize these Sass maps and recompile, you’ll automatically see your changes reflected in these loops.
+To build our modifier classes, we use Sass’s `@each` loops to iterate over Sass maps. This is especially helpful for generating variants of a component from our `$theme-colors` nested map and creating responsive variants for each breakpoint. As you customize these Sass maps and recompile, you’ll automatically see your changes reflected in these loops.
 
 Check out [our Sass maps and loops docs]([[docsref:/customize/sass#maps-and-loops]]) for how to customize these loops and extend Bootstrap’s base-modifier approach to your own code.
 
@@ -20,13 +20,13 @@ Check out [our Sass maps and loops docs]([[docsref:/customize/sass#maps-and-loop
 
 ## Responsive
 
-These Sass loops aren't limited to color maps, either. You can also generate responsive variations of your components. Take for example our responsive navbar expand classes where we mix an `@each` loop for the `$grid-breakpoints` Sass map with a media query include.
+These Sass loops aren't limited to color maps, either. You can also generate responsive variations of your components. Take for example our responsive navbar expand classes where we mix an `@each` loop for the `$breakpoints` Sass map with a media query include.
 
 <ScssDocs name="navbar-expand-loop" file="scss/_navbar.scss" />
 
-Should you modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
+Should you modify your `$breakpoints`, your changes will apply to all the loops iterating over that map.
 
-<ScssDocs name="grid-breakpoints" file="scss/_config.scss" />
+<ScssDocs name="breakpoints" file="scss/_config.scss" />
 
 For more information and examples on how to modify our Sass maps and variables, please refer to [the CSS section of the Grid documentation]([[docsref:/layout/grid#css]]).
 

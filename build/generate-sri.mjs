@@ -5,7 +5,7 @@
  * Remember to use the same vendor files as the CDN ones,
  * otherwise the hashes won't match!
  *
- * Copyright 2017-2025 The Bootstrap Authors
+ * Copyright 2017-2026 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -36,10 +36,6 @@ const files = [
   {
     file: 'dist/js/bootstrap.bundle.min.js',
     configPropertyName: 'js_bundle_hash'
-  },
-  {
-    file: 'node_modules/@floating-ui/dom/dist/floating-ui.dom.umd.min.js',
-    configPropertyName: 'floating_ui_hash'
   }
 ]
 

@@ -1,21 +1,26 @@
 @use "sass:map";
 @use "config" as *;
-@use "variables" as *;
+@use "functions" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/box-shadow" as *;
-@use "mixins/gradients" as *;
-@use "mixins/transition" as *;
+@use "mixins/tokens" as *;
 
-// scss-docs-start stepper-variables
-$stepper-size: 2rem !default;
-$stepper-gap: 1rem !default;
-$stepper-track-size: .25rem !default;
-$stepper-bg: var(--bg-2) !default;
-$stepper-active-fg: var(--primary-contrast) !default;
-$stepper-active-bg: var(--primary-bg) !default;
-// $stepper-vertical-gap: .5rem !default;
-// scss-docs-end stepper-variables
+$stepper-tokens: () !default;
+
+// scss-docs-start stepper-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$stepper-tokens: defaults(
+  (
+    --stepper-size: 2rem,
+    --stepper-gap: 1rem,
+    --stepper-bg: var(--bg-2),
+    --stepper-track-size: .25rem,
+    --stepper-active-color: var(--primary-contrast),
+    --stepper-active-bg: var(--primary-bg),
+  ),
+  $stepper-tokens
+);
+// scss-docs-end stepper-tokens
 
 // scss-docs-start stepper-horizontal-mixin
 @mixin stepper-horizontal() {
@@ -47,12 +52,7 @@ $stepper-active-bg: var(--primary-bg) !default;
 // scss-docs-start stepper-css
 .stepper {
   // scss-docs-start stepper-css-vars
-  --stepper-size: #{$stepper-size};
-  --stepper-gap: #{$stepper-gap};
-  --stepper-bg: #{$stepper-bg};
-  --stepper-track-size: #{$stepper-track-size};
-  --stepper-active-color: #{$stepper-active-fg};
-  --stepper-active-bg: #{$stepper-active-bg};
+  @include tokens($stepper-tokens);
   // scss-docs-end stepper-css-vars
 
   display: grid;
@@ -74,7 +74,6 @@ $stepper-active-bg: var(--primary-bg) !default;
   justify-items: start;
   text-align: center;
   text-decoration: none;
-
 
   // The counter
   &::before {
@@ -121,9 +120,9 @@ $stepper-active-bg: var(--primary-bg) !default;
   }
 }
 
-@each $breakpoint in map.keys($grid-breakpoints) {
+@each $breakpoint in map.keys($breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
 
     .stepper-horizontal#{$infix} {
       @include stepper-horizontal();

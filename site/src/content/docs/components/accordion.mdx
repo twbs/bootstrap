@@ -143,6 +143,69 @@ Omit the `name` attribute on each `<details>` element to allow multiple accordio
     </details>
   </div>`} />
 
+## Nested
+
+Accordions can be nested inside each other by placing a full `.accordion` within an `.accordion-body`. Use unique `name` attribute values for each level so the parent and child accordions operate independently.
+
+<Example code={`<div class="accordion">
+    <details class="accordion-item" name="accordionNested" open>
+      <summary class="accordion-header">
+        Accordion Item #1
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It contains a nested accordion below.
+        <div class="accordion mt-3">
+          <details class="accordion-item" name="accordionNestedInner" open>
+            <summary class="accordion-header">
+              Nested Item #1
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              This is the body of the first nested accordion item.
+            </div>
+          </details>
+          <details class="accordion-item" name="accordionNestedInner">
+            <summary class="accordion-header">
+              Nested Item #2
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              This is the body of the second nested accordion item.
+            </div>
+          </details>
+          <details class="accordion-item" name="accordionNestedInner">
+            <summary class="accordion-header">
+              Nested Item #3
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              This is the body of the third nested accordion item.
+            </div>
+          </details>
+        </div>
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionNested">
+      <summary class="accordion-header">
+        Accordion Item #2
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It does not contain a nested accordion.
+      </div>
+    </details>
+    <details class="accordion-item" name="accordionNested">
+      <summary class="accordion-header">
+        Accordion Item #3
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+      </summary>
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It does not contain a nested accordion.
+      </div>
+    </details>
+  </div>`} />
+
 ## Accessibility
 
 The native `<details>` and `<summary>` elements provide built-in accessibility:
@@ -158,11 +221,7 @@ The native `<details>` and `<summary>` elements provide built-in accessibility:
 
 <CSSVariables component="Accordions" className="accordion" />
 
-<ScssDocs name="accordion-css-vars" file="scss/_accordion.scss" />
-
-### Sass variables
-
-<ScssDocs name="accordion-variables" file="scss/_accordion.scss" />
+<ScssDocs name="accordion-tokens" file="scss/_accordion.scss" />
 
 ## Customize
 

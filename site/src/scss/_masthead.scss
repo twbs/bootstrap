@@ -1,11 +1,7 @@
 @use "sass:math";
-@use "../../../scss/config" as *;
-@use "../../../scss/colors" as *;
-@use "../../../scss/variables" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
 @use "../../../scss/mixins/transition" as *;
-@use "../../../scss/mixins/color-mode" as *;
 
 @layer custom {
   .bd-masthead {
@@ -20,11 +16,11 @@
 
     h1 {
       --bs-heading-color: var(--bs-emphasis-color);
-      font-size: 4rem;
+      font-size: var(--font-size-4xl);
     }
 
     .lead {
-      font-size: 1rem;
+      font-size: 1.125rem;
       font-weight: 400;
       color: var(--bs-secondary-color);
     }
@@ -70,7 +66,7 @@
 
     @include media-breakpoint-up(md) {
       .lead {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
     }
   }
@@ -124,12 +120,4 @@
       transform: scale(1);
     }
   }
-
-  // @if $enable-dark-mode {
-  //   [data-bs-theme="dark"] {
-  //     .masthead-followup-icon {
-  //       mix-blend-mode: lighten;
-  //     }
-  //   }
-  // }
 }

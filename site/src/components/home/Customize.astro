@@ -25,39 +25,32 @@ import Code from '@shortcodes/Code.astro'
     <h3>Include all of Bootstrap’s Sass</h3>
     <p>Import one stylesheet and you're off to the races with every feature of our CSS.</p>
     <Code
-      code={`// Variable overrides first
-$primary: #900;
-$enable-shadows: true;
+      code={`// Import all of Bootstrap
+@use "bootstrap/scss/bootstrap";
 
-// Then import Bootstrap
-@import "../node_modules/bootstrap/scss/bootstrap";`}
+// Add your custom styles below`}
       lang="scss"
     />
-    <p>Learn more about our <a href={getVersionedDocsPath('customize/options')}>global Sass options</a>.</p>
+    <p>Learn more about our <a href={getVersionedDocsPath('customize/sass')}>Sass customization options</a>.</p>
   </div>
   <div class="col-lg-6">
     <h3>Include what you need</h3>
     <p>The easiest way to customize Bootstrap—include only the CSS you need.</p>
     <Code
-      code={`// Functions first
-@import "../node_modules/bootstrap/scss/functions";
+      code={`// Include root (configuration, colors, tokens)
+@use "bootstrap/scss/root";
 
-// Variable overrides second
-$primary: #900;
-$enable-shadows: true;
+// Include only what you need
+@use "bootstrap/scss/content";
+@use "bootstrap/scss/layout";
+@use "bootstrap/scss/forms";
+@use "bootstrap/scss/buttons";
+@use "bootstrap/scss/alert";
+@use "bootstrap/scss/card";
 
-// Required Bootstrap imports
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/root";
-
-// Optional components
-@import "../node_modules/bootstrap/scss/utilities";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/containers";
-@import "../node_modules/bootstrap/scss/grid";
-@import "../node_modules/bootstrap/scss/helpers";
-@import "../node_modules/bootstrap/scss/utilities/api";`}
+// Helpers and utilities
+@use "bootstrap/scss/helpers";
+@use "bootstrap/scss/utilities/api";`}
       lang="scss"
     />
     <p>Learn more about <a href={getVersionedDocsPath('customize/sass')}>using Bootstrap with Sass</a>.</p>

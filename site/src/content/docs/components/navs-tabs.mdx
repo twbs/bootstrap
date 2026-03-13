@@ -39,6 +39,21 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </nav>`} />
 
+Where appropriate, you can also use `<button>` elements instead of `<a>` elements for the nav links. You can even mix and match—for example, by using buttons for dropdowns.
+
+<Example code={`<nav class="nav">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+    <a class="nav-link" href="#">Link</a>
+    <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+  </nav>`} />
+
 ## Available styles
 
 Change the style of `.nav`s component with modifiers and utilities. Mix and match as needed, or build your own.
@@ -299,23 +314,19 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 
 On the `.nav` base class:
 
-<ScssDocs name="nav-css-vars" file="scss/_nav.scss" />
+<ScssDocs name="nav-tokens" file="scss/_nav.scss" />
 
 On the `.nav-tabs` modifier class:
 
-<ScssDocs name="nav-tabs-css-vars" file="scss/_nav.scss" />
+<ScssDocs name="nav-tabs-tokens" file="scss/_nav.scss" />
 
 On the `.nav-pills` modifier class:
 
-<ScssDocs name="nav-pills-css-vars" file="scss/_nav.scss" />
+<ScssDocs name="nav-pills-tokens" file="scss/_nav.scss" />
 
 On the `.nav-underline` modifier class:
 
-<ScssDocs name="nav-underline-css-vars" file="scss/_nav.scss" />
-
-### Sass variables
-
-<ScssDocs name="nav-variables" file="scss/_nav.scss" />
+<ScssDocs name="nav-underline-tokens" file="scss/_nav.scss" />
 
 ## JavaScript behavior
 

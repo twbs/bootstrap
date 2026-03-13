@@ -14,13 +14,15 @@ Wrap your content in the `.prose` class to get modified font-size, line-height, 
 - Some headings get an additional `margin-top` to ensure proper spacing between headings and other content.
 - Style blockquotes, code, and other inline elements.
 
+<Callout>
+  The `.not-prose` utility class can be used to opt out of `.prose` typography styles in specific elements. This is useful for components that have their own styling, such as code snippets or examples. Adding a `.prose` within a `.not-prose` won't work.
+</Callout>
+
 ## Example
 
-This is an example of source Markdown that shows several types of HTML content supported in this `.prose` wrapper class.
+Below is an example of Markdown demonstrating several types of HTML content supported in the `.prose` class.
 
-<hr class="my-5" />
-
-<div class="prose">
+<div class="prose border rounded-3 p-3 p-lg-5 max-w-100">
 # Getting started with documentation
 Writing clear and effective documentation is essential for any project. When you create content that others will read and use, [proper formatting](#) makes all the difference. *Good documentation* helps users understand complex concepts quickly and efficiently.
 
@@ -50,7 +52,7 @@ Effective documentation requires careful attention to structure and flow. When o
 
 Inline code is available with the `<code>` element. Snippets of multiple lines of code are supported through Rouge. Longer lines will automatically scroll horizontally when needed. You may also use code fencing (triple backticks) for rendering code.
 
-```js
+<pre>
 // Example can be run directly in your JavaScript console
 
 // Create a function that takes two arguments and returns the sum of those arguments
@@ -59,7 +61,7 @@ var adder = new Function("a", "b", "return a + b");
 // Call the function
 adder(2, 6);
 // > 8
-```
+</pre>
 
 Code examples should be practical and directly related to the concepts being explained. Always test your code snippets to ensure they work as expected before including them in documentation.
 

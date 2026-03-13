@@ -1,8 +1,4 @@
 @use "sass:color";
-@use "../../../scss/config" as *;
-@use "../../../scss/colors" as *;
-@use "../../../scss/functions" as *;
-@use "../../../scss/mixins/color-mode" as *;
 
 // Local docs variables
 $bd-purple:        #4c0bce;
@@ -11,7 +7,7 @@ $bd-purple-light:  color.adjust(color.adjust($bd-purple, $saturation: 5%), $ligh
 $bd-accent:        #ffe484;
 
 $bd-gutter-x: 3rem;
-$bd-callout-variants: info, warning, danger !default;
+$bd-callout-variants: info, warning, danger;
 
 @layer custom {
   :root {

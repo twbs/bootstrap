@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config'
+import astroBrokenLinksChecker from 'astro-broken-links-checker'
 import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
 import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
-import { transformerNotationDiff } from '@shikijs/transformers'
+import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
 
 import { bootstrap } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
@@ -24,7 +25,15 @@ export default defineConfig({
   build: {
     assets: `docs/${getConfig().docs_version}/assets`
   },
-  integrations: [bootstrap()],
+  integrations: [
+    bootstrap(),
+    astroBrokenLinksChecker({
+      checkExternalLinks: false,
+      cacheExternalLinks: false,
+      throwError: true,
+      linkCheckerDir: '.link-checker'
+    })
+  ],
   markdown: {
     smartypants: false,
     syntaxHighlight: 'shiki',
@@ -35,6 +44,7 @@ export default defineConfig({
       },
       transformers: [
         transformerNotationDiff(),
+        transformerNotationHighlight(),
         {
           name: 'add-language-attribute',
           pre(node) {

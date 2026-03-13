@@ -1,96 +1,85 @@
-@use "sass:math";
-@use "../config" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
-@use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/gradients" as *;
+@use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
-@use "form-variables" as *;
-@use "../buttons/button-variables" as *; // mdo-do: remove?
+
+$form-control-tokens: () !default;
+
+// scss-docs-start form-control-tokens
+// stylelint-disable custom-property-no-missing-var-function
+// stylelint-disable-next-line scss/dollar-variable-default
+$form-control-tokens: defaults(
+  (
+    --control-min-height: var(--btn-input-min-height),
+    --control-padding-y: var(--btn-input-padding-y),
+    --control-padding-x: var(--btn-input-padding-x),
+    --control-font-size: var(--btn-input-font-size),
+    --control-line-height: var(--btn-input-line-height),
+    --control-fg: var(--btn-input-fg),
+    --control-bg: var(--btn-input-bg),
+    --control-border-width: var(--border-width),
+    --control-border-color: var(--border-color),
+    --control-border-radius: var(--border-radius),
+    --control-box-shadow: var(--box-shadow-inset),
+    --control-action-bg: var(--bg-1),
+    --control-action-hover-bg: var(--bg-2),
+    --control-transition-property: "border-color, box-shadow",
+    --control-transition-timing: .15s ease-in-out,
+    --control-transition: var(--control-transition-property) var(--control-transition-timing),
+    --control-placeholder-color: var(--fg-3),
+    --control-disabled-color: var(--control-fg),
+    --control-disabled-bg: var(--bg-2),
+    --control-disabled-border-color: var(--control-border-color),
+    --control-select-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#00000080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
+    --control-select-bg-position: right .75rem center,
+    --control-select-bg-size: 16px 12px,
+    --control-select-bg-dark: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
+  ),
+  $form-control-tokens
+);
+// scss-docs-end form-control-tokens
+
+// scss-docs-start form-control-sizes
+$form-control-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$form-control-sizes: defaults(
+  ("sm", "lg"),
+  $form-control-sizes
+);
+// scss-docs-end form-control-sizes
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
   .form-control {
-    --control-min-height: #{$control-min-height};
-    --control-padding-y: #{$control-padding-y};
-    --control-padding-x: #{$control-padding-x};
-    --control-font-size: #{$control-font-size};
-    --control-line-height: #{$control-line-height};
-    --control-color: #{$control-color};
-    --control-bg: #{$control-bg};
-    --control-border-width: #{$control-border-width};
-    --control-border-color: #{$control-border-color};
-    --control-border-radius: #{$control-border-radius};
-    --control-select-bg-color: #{$control-select-indicator-color};
-    --control-select-bg: #{escape-svg($control-select-indicator)};
-    --control-select-bg-position: #{$control-select-bg-position};
-    --control-select-bg-size: #{$control-select-bg-size};
+    @include tokens($form-control-tokens);
 
-    display: block;
+    display: flex;
     width: 100%;
     min-height: var(--control-min-height);
     padding: var(--control-padding-y) var(--control-padding-x);
     font-size: var(--control-font-size);
     line-height: var(--control-line-height);
-    color: var(--control-color);
+    color: var(--control-fg);
     appearance: none;
     background-color: var(--control-bg);
     background-clip: padding-box;
     border: var(--control-border-width) solid var(--control-border-color);
     @include border-radius(var(--control-border-radius), 0);
-    @include box-shadow($input-box-shadow);
-    @include transition($input-transition);
-
-    &[type="file"] {
-      overflow: hidden; // prevent pseudo element button overlap
-
-      &:not(:disabled):not([readonly]) {
-        cursor: pointer;
-      }
-    }
+    @include box-shadow(var(--control-box-shadow));
+    @include transition(var(--control-transition));
 
     // Customize the `:focus` state to imitate native WebKit styles.
     &:focus-visible {
       --focus-ring-offset: -1px;
-      color: $input-focus-color;
-      background-color: $input-focus-bg;
-      border-color: $input-focus-border-color;
       @include focus-ring(true);
-    }
-
-    &::-webkit-date-and-time-value {
-      // On Android Chrome, form-control's "width: 100%" makes the input width too small
-      // Tested under Android 11 / Chrome 89, Android 12 / Chrome 100, Android 13 / Chrome 109
-      //
-      // On iOS Safari, form-control's "appearance: none" + "width: 100%" makes the input width too small
-      // Tested under iOS 16.2 / Safari 16.2
-      min-width: 85px; // Seems to be a good minimum safe width
-
-      // Add some height to date inputs on iOS
-      // https://github.com/twbs/bootstrap/issues/23307
-      // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
-      // Multiply line-height by 1em if it has no unit
-      // stylelint-disable-next-line scss/at-function-named-arguments
-      height: if(sass(math.unit($input-line-height) == ""): $input-line-height * 1em; else: $input-line-height);
-
-      // Android Chrome type="date" is taller than the other inputs
-      // because of "margin: 1px 24px 1px 4px" inside the shadow DOM
-      // Tested under Android 11 / Chrome 89, Android 12 / Chrome 100, Android 13 / Chrome 109
-      margin: 0;
-    }
-
-    // Prevent excessive date input height in Webkit
-    // https://github.com/twbs/bootstrap/issues/34433
-    &::-webkit-datetime-edit {
-      display: block;
-      padding: 0;
     }
 
     // Placeholder
     &::placeholder {
-      color: $input-placeholder-color;
+      color: var(--control-placeholder-color);
       // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
       opacity: 1;
     }
@@ -101,32 +90,75 @@
     // disabled if the fieldset is disabled. Due to implementation difficulty, we
     // don't honor that edge case; we style them as disabled anyway.
     &:disabled {
-      color: $input-disabled-color;
-      background-color: $input-disabled-bg;
-      border-color: $input-disabled-border-color;
+      color: var(--control-disabled-color);
+      background-color: var(--control-disabled-bg);
+      border-color: var(--control-disabled-border-color);
       // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
       opacity: 1;
     }
 
-    // File input buttons theming
+    // Date and time inputs
+    // &::-webkit-date-and-time-value {
+    //   // On Android Chrome, form-control's "width: 100%" makes the input width too small
+    //   // Tested under Android 11 / Chrome 89, Android 12 / Chrome 100, Android 13 / Chrome 109
+    //   //
+    //   // On iOS Safari, form-control's "appearance: none" + "width: 100%" makes the input width too small
+    //   // Tested under iOS 16.2 / Safari 16.2
+    //   min-width: 85px; // Seems to be a good minimum safe width
+
+    //   // Add some height to date inputs on iOS
+    //   // https://github.com/twbs/bootstrap/issues/23307
+    //   // TODO: we can remove this workaround once https://bugs.webkit.org/show_bug.cgi?id=198959 is resolved
+    //   // Multiply line-height by 1em if it has no unit
+    //   height: 1.5em;
+
+    //   // Android Chrome type="date" is taller than the other inputs
+    //   // because of "margin: 1px 24px 1px 4px" inside the shadow DOM
+    //   // Tested under Android 11 / Chrome 89, Android 12 / Chrome 100, Android 13 / Chrome 109
+    //   margin: 0;
+    //   background-color: var(--red-500);
+    // }
+
+    // Prevent excessive date input height in Webkit
+    // https://github.com/twbs/bootstrap/issues/34433
+
+    // mdo-do: need to check this stuff out across browsers
+    &::-webkit-datetime-edit {
+      display: block;
+      height: 1.5rem;
+      padding: 0;
+      margin-bottom: -.125rem;
+    }
+    &::-webkit-datetime-edit-fields-wrapper {
+      height: 1.5rem;
+    }
+
+    // File inputs
+    &[type="file"] {
+      overflow: hidden; // prevent pseudo element button overlap
+
+      &:not(:disabled):not([readonly]) {
+        cursor: pointer;
+      }
+    }
     &::file-selector-button {
       min-height: var(--control-min-height);
       padding: var(--control-padding-y) var(--control-padding-x);
       margin: calc(var(--control-padding-y) * -1) calc(var(--control-padding-x) * -1);
       margin-inline-end: var(--control-padding-x);
-      color: $form-file-button-color;
-      @include gradient-bg($form-file-button-bg);
+      color: var(--control-fg);
+      @include gradient-bg(var(--control-action-bg));
       pointer-events: none;
       border-color: inherit;
       border-style: solid;
       border-width: 0;
       border-inline-end-width: var(--control-border-width);
       border-radius: 0; // stylelint-disable-line property-disallowed-list
-      @include transition($btn-transition);
+      @include transition(var(--control-transition));
     }
 
     &:hover:not(:disabled):not([readonly])::file-selector-button {
-      background-color: $form-file-button-hover-bg;
+      background-color: var(--control-action-hover-bg);
     }
   }
 
@@ -138,13 +170,13 @@
   .form-control-plaintext {
     display: block;
     width: 100%;
-    padding: $input-padding-y 0;
+    padding: var(--control-padding-y) 0;
     margin-bottom: 0; // match inputs if this class comes on inputs with default margins
-    line-height: $input-line-height;
-    color: $input-plaintext-color;
+    line-height: var(--control-line-height);
+    color: var(--control-fg);
     background-color: transparent;
     border: solid transparent;
-    border-width: $input-border-width 0;
+    border-width: var(--control-border-width) 0;
 
     &:focus {
       outline: 0;
@@ -169,11 +201,11 @@
       padding-inline-end: var(--control-padding-x);
       background-image: none;
     }
+  }
 
-    @if $enable-dark-mode {
-      @include color-mode(dark) {
-        --control-select-indicator: #{escape-svg($control-select-indicator-dark)};
-      }
+  @media (prefers-color-scheme: dark) {
+    select.form-control {
+      background-image: var(--control-select-bg-dark);
     }
   }
   // stylelint-enable selector-no-qualifying-type
@@ -184,47 +216,20 @@
   // height and font-size of form controls.
   //
   // Repeated in `_input_group.scss` to avoid Sass extend issues.
-
-  .form-control-sm {
-    --control-min-height: #{$control-min-height-sm};
-    --control-padding-y: #{$control-padding-y-sm};
-    --control-padding-x: #{$control-padding-x-sm};
-    --control-font-size: #{$control-font-size-sm};
-    --control-line-height: #{$control-line-height-sm};
-    --control-border-radius: #{$control-border-radius-sm};
+  @each $size, $_ in $form-control-sizes {
+    .form-control-#{$size} {
+      --control-min-height: var(--btn-input-#{$size}-min-height);
+      --control-padding-y: var(--btn-input-#{$size}-padding-y);
+      --control-padding-x: var(--btn-input-#{$size}-padding-x);
+      --control-font-size: var(--btn-input-#{$size}-font-size);
+      --control-line-height: var(--btn-input-#{$size}-line-height);
+      --control-border-radius: var(--btn-input-#{$size}-border-radius);
+    }
   }
-
-  .form-control-lg {
-    --control-min-height: #{$control-min-height-lg};
-    --control-padding-y: #{$control-padding-y-lg};
-    --control-padding-x: #{$control-padding-x-lg};
-    --control-font-size: #{$control-font-size-lg};
-    --control-line-height: #{$control-line-height-lg};
-    --control-border-radius: #{$control-border-radius-lg};
-  }
-
-  // // Make sure textareas don't shrink too much when resized
-  // // https://github.com/twbs/bootstrap/pull/29124
-  // // stylelint-disable selector-no-qualifying-type
-  // textarea {
-  //   &.form-control {
-  //     min-height: $input-height;
-  //   }
-
-  //   &.form-control-sm {
-  //     min-height: $input-height-sm;
-  //   }
-
-  //   &.form-control-lg {
-  //     min-height: $input-height-lg;
-  //   }
-  // }
-  // // stylelint-enable selector-no-qualifying-type
 
   .form-control-color {
-    width: $form-color-width;
-    height: $input-height;
-    padding: $input-padding-y;
+    width: var(--control-min-height);
+    padding: var(--control-padding-y);
 
     &:not(:disabled):not([readonly]) {
       cursor: pointer;
@@ -232,16 +237,13 @@
 
     &::-moz-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius($input-border-radius);
+      @include border-radius(var(--border-radius-sm));
     }
 
     &::-webkit-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius($input-border-radius);
+      @include border-radius(var(--border-radius-sm));
     }
-
-    &.form-control-sm { height: $input-height-sm; }
-    &.form-control-lg { height: $input-height-lg; }
   }
 
   // Ghost input - removes all visual styling

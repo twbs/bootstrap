@@ -1,7 +1,3 @@
-@use "sass:color";
-@use "../../../scss/colors" as *;
-@use "../../../scss/config" as *;
-@use "../../../scss/variables" as *;
 @use "../../../scss/layout/breakpoints" as *;
 
 //
@@ -19,7 +15,11 @@
       margin-bottom: .25rem;
 
       // stylelint-disable selector-max-type, selector-max-compound-selectors
-      > p ~ ul {
+      > p {
+        margin-block: 1rem;
+      }
+
+      > p ~ ul{
         margin-top: -.5rem;
         margin-bottom: 1rem;
       }
@@ -124,8 +124,12 @@
   }
 
   .bd-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 300;
+
+    @media (width >= 1024px) {
+      font-size: 1.25rem;
+    }
   }
 
   .bi {
@@ -162,26 +166,26 @@
   }
 
   // scss-docs-start custom-color-mode
-  // [data-bs-theme="blue"] {
-  //   --bs-fg-body: var(--bs-white);
-  //   --bs-bg-body: var(--bs-blue);
-  //   --bs-bg-3: #{$blue-600};
+  [data-bs-theme="blue"] {
+    --fg-body: var(--white);
+    --bg-body: var(--blue);
+    --bg-3: var(--blue-600);
 
-  //   .dropdown-menu {
-  //     --bs-dropdown-bg: #{color.mix($blue-500, $blue-600)};
-  //     --bs-dropdown-link-active-bg: #{$blue-700};
-  //   }
+    .dropdown-menu {
+      --dropdown-bg: color-mix(in lab, var(--blue-500), var(--blue-600));
+      --dropdown-link-active-bg: var(--blue-700);
+    }
 
-  //   .btn-secondary {
-  //     --bs-btn-bg: #{color.mix($gray-600, $blue-400)};
-  //     --bs-btn-border-color: #{rgba($white, .25)};
-  //     --bs-btn-hover-bg: #{color.scale(color.mix($gray-600, $blue-400), $lightness: -5%)}; // stylelint-disable-line scss/at-function-named-arguments
-  //     --bs-btn-hover-border-color: #{rgba($white, .25)};
-  //     --bs-btn-active-bg: #{color.scale(color.mix($gray-600, $blue-400), $lightness: -10%)}; // stylelint-disable-line scss/at-function-named-arguments
-  //     --bs-btn-active-border-color: #{rgba($white, .5)};
-  //     --bs-btn-focus-border-color: #{rgba($white, .5)};
-  //     --bs-btn-focus-box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .2);
-  //   }
-  // }
+    .btn-secondary {
+      --btn-bg: color-mix(in lab, var(--gray-600), var(--blue-400));
+      --btn-border-color: color-mix(in lab, var(--fg-body) 25%, transparent);
+      --btn-hover-bg: color-mix(in lab, var(--gray-600), var(--blue-400));
+      --btn-hover-border-color: color-mix(in lab, var(--fg-body) 25%, transparent);
+      --btn-active-bg: color-mix(in lab, color-mix(in lab, var(--gray-600), var(--blue-400)), var(--black) 10%);
+      --btn-active-border-color: color-mix(in lab, var(--fg-body), transparent);
+      --btn-focus-border-color: color-mix(in lab, var(--fg-body), transparent);
+      --btn-focus-box-shadow: 0 0 0 .25rem rgb(255 255 255 / .2);
+    }
+  }
   // scss-docs-end custom-color-mode
 }

@@ -98,7 +98,7 @@ And just like active page items, you can swap out the disabled `<a>` for a `<spa
 
 Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for additional sizes.
 
-<Example code={`<nav aria-label="...">
+<Example class="vstack gap-3" code={`<nav aria-label="...">
     <ul class="pagination pagination-lg">
       <li class="page-item active" >
         <a class="page-link" aria-current="page">1</a>
@@ -106,9 +106,19 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
-  </nav>`} />
+  </nav>
 
-<Example code={`<nav aria-label="...">
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item active">
+        <a class="page-link" aria-current="page">1</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+    </ul>
+  </nav>
+
+  <nav aria-label="...">
     <ul class="pagination pagination-sm">
       <li class="page-item active">
         <a class="page-link" aria-current="page">1</a>
@@ -116,7 +126,16 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
-  </nav>`} />
+  </nav>`} customMarkup={`<nav aria-label="…">
+    <ul class="pagination pagination-sm">…</ul>
+  </nav>
+  <nav aria-label="…">
+    <ul class="pagination pagination">…</ul>
+  </nav>
+  <nav aria-label="…">
+    <ul class="pagination pagination-lg">…</ul>
+  </nav>
+  `} />
 
 ## Alignment
 
@@ -158,12 +177,10 @@ Or with `.justify-content-end`:
 
 <CSSVariables component="Pagination" className="pagination" />
 
-<ScssDocs name="pagination-css-vars" file="scss/_pagination.scss" />
+<ScssDocs name="pagination-tokens" file="scss/_pagination.scss" />
 
-### Sass variables
+### Sass sizes
 
-<ScssDocs name="pagination-variables" file="scss/_pagination.scss" />
+<ScssDocs name="pagination-sizes" file="scss/_pagination.scss" />
 
-### Sass mixins
-
-<ScssDocs name="pagination-mixin" file="scss/_pagination.scss" />
+<ScssDocs name="pagination-sizes-loop" file="scss/_pagination.scss" />

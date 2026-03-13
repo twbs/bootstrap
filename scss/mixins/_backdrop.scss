@@ -1,11 +1,14 @@
 // Shared between modals and offcanvases
-@mixin overlay-backdrop($zindex, $backdrop-bg, $backdrop-opacity) {
+@mixin overlay-backdrop($zindex, $backdrop-bg, $backdrop-opacity, $backdrop-blur) {
   position: fixed;
   inset: 0;
   z-index: $zindex;
-  background-color: $backdrop-bg;
+  background-color: color-mix(in oklch, var(--offcanvas-backdrop-bg) var(--offcanvas-backdrop-opacity), transparent);
+  @if $backdrop-blur {
+    backdrop-filter: blur($backdrop-blur);
+  }
 
   // Fade for backdrop
   &.fade { opacity: 0; }
-  &.show { opacity: $backdrop-opacity; }
+  &.show { opacity: 1; }
 }

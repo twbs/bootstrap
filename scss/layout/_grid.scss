@@ -1,16 +1,8 @@
-@use "sass:map";
 @use "../config" as *;
 @use "../mixins/grid" as *;
-@use "breakpoints" as *;
 
 // mdo-do
 // - check gap utilities as replacement for gutter classes from v5
-
-:root {
-  @each $name, $value in $grid-breakpoints {
-    --breakpoint-#{$name}: #{$value};
-  }
-}
 
 @layer layout {
   @if $enable-grid-classes {
@@ -29,7 +21,7 @@
     .grid {
       --columns: #{$grid-columns};
       --rows: 1;
-      --gap: #{$grid-gutter-width};
+      --gap: #{$grid-gutter-x};
 
       display: grid;
       grid-template-rows: repeat(var(--rows), 1fr);
@@ -47,7 +39,7 @@
   }
 
   .grid-fill {
-    --gap: #{$grid-gutter-width};
+    --gap: #{$grid-gutter-x};
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));

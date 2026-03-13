@@ -2,21 +2,11 @@
 @use "../../../scss/variables" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
-@use "../../../scss/mixins/box-shadow" as *;
 @use "variables" as *;
 
 //
 // Docs examples
 //
-
-// .bd-code-snippet
-//   .bd-example
-//   .highlight-toolbar
-//   pre.astro-code
-
-// .bd-code-snippet
-//   .highlight-toolbar
-//   pre.astro-code
 
 @layer custom {
   .bd-code-snippet {
@@ -24,7 +14,6 @@
     --bd-example-inner-radius: calc(var(--bs-border-radius) - 1px);
 
     margin: 0 ($bd-gutter-x * -.5);
-    font-size: var(--font-size-sm);
     background-color: var(--bd-pre-bg);
     border: solid var(--bs-border-color);
     border-width: 1px 0;
@@ -53,7 +42,7 @@
   }
 
   .highlight-toolbar {
-    padding-block: .375rem;
+    padding-block: .5rem;
     padding-inline-start: var(--bd-example-padding);
     padding-inline-end: calc(var(--bd-example-padding) - .5em);
     background-color: var(--bs-bg-1);
@@ -80,33 +69,28 @@
 
     @include media-breakpoint-up(md) {
       --bd-example-padding: 1.5rem;
-
       margin-inline: 0;
-      // border-width: 1px;
-      // @include border-radius(var(--bs-border-radius));
     }
 
     + p {
       margin-top: 2rem;
     }
 
-    > .form-control {
-      + .form-control {
-        margin-top: .5rem;
-      }
-    }
+    // > .form-control {
+    //   + .form-control {
+    //     margin-top: .5rem;
+    //   }
+    // }
 
-    > .nav + .nav,
-    > .alert + .alert,
-    > .navbar + .navbar,
-    > .progress + .progress {
-      margin-top: $spacer;
-    }
+    // > .nav + .nav,
+    // > .alert + .alert,
+    // > .navbar + .navbar,
+    // > .progress + .progress {
+    //   margin-top: $spacer;
+    // }
 
     > .dropdown-menu {
       max-width: 12rem;
-      //   position: static;
-      //   display: block;
     }
 
     > :last-child,
@@ -235,12 +219,12 @@
     }
   }
 
-
   .bd-example-offcanvas {
     .offcanvas {
       position: static;
       display: block;
       height: 200px;
+      margin: var(--offcanvas-inset);
       visibility: visible;
       transform: translate(0);
     }
@@ -384,20 +368,49 @@
   }
 
   //
-  // Code snippets
+  // Resizable examples
   //
 
-  .astro-code {
+  .bd-example-resizable {
     position: relative;
-    background-color: var(--bd-pre-bg);
-
-    @include media-breakpoint-up(md) {
-      @include border-radius(calc(var(--bs-border-radius) - 1px));
-    }
   }
+
+  .bd-resizable-container {
+    max-width: 100%;
+    padding: 1rem;
+    overflow: hidden;
+    resize: horizontal;
+    background-color: var(--bs-bg-body);
+    border: 1px dashed var(--bs-border-color);
+    @include border-radius(var(--bs-border-radius));
+  }
+
+  //
+  // Code snippets
+  //
 
   .bd-example-snippet .highlight pre {
     margin-inline-end: 0;
   }
 
+
+  .bd-colors-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    min-width: 0;
+
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: repeat(13, 1fr);
+    }
+  }
+
+  .bd-theme-colors-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    min-width: 0;
+
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: repeat(9, 1fr);
+    }
+  }
 }

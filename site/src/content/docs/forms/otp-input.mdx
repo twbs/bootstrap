@@ -31,7 +31,7 @@ Wrap your inputs in a container with `.otp` and add `data-bs-otp` to enable the 
 
 ## Connected inputs
 
-Add `.input-group` to visually connect the inputs into a single cohesive field, leveraging Bootstrap's [input group](/docs/forms/input-group/) styles.
+Add `.input-group` to visually connect the inputs into a single cohesive field, leveraging Bootstrap's [input group]([[docsref:/forms/input-group]]) styles. We override the `width` to prevent stretching the inputs.
 
 <Example code={`<div class="otp input-group" data-bs-otp>
     <input type="text" class="form-control" aria-label="Digit 1">
@@ -152,9 +152,9 @@ Add `.is-valid` or `.is-invalid` to the container to show validation states.
 
 Use a form label and help text for better accessibility.
 
-<Example code={`<div class="mb-3">
+<Example code={`<div class="vstack gap-2">
     <label class="form-label" id="otpLabel">Verification code</label>
-    <div class="otp input-group" data-bs-otp aria-labelledby="otpLabel" aria-describedby="otpHelp">
+    <div class="otp" data-bs-otp aria-labelledby="otpLabel" aria-describedby="otpHelp">
       <input type="text" class="form-control" aria-label="Digit 1">
       <input type="text" class="form-control" aria-label="Digit 2">
       <input type="text" class="form-control" aria-label="Digit 3">
@@ -193,12 +193,15 @@ const otpInput = new bootstrap.OtpInput(otpElement)
 
 Options can be passed via data attributes or JavaScript:
 
+<BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `mask` | boolean | `false` | If `true`, inputs will use `type="password"` to hide the entered values. |
+</BsTable>
 
 ### Methods
 
+<BsTable>
 | Method | Description |
 | --- | --- |
 | `getValue()` | Returns the complete OTP value as a string. |
@@ -206,6 +209,7 @@ Options can be passed via data attributes or JavaScript:
 | `clear()` | Clears all inputs and focuses the first one. |
 | `focus()` | Focuses the first empty input, or the last input if all are filled. |
 | `dispose()` | Destroys the component instance. |
+</BsTable>
 
 ```js
 const otpElement = document.querySelector('.otp')
@@ -223,10 +227,12 @@ otpInput.clear()
 
 ### Events
 
+<BsTable>
 | Event | Description |
 | --- | --- |
 | `complete.bs.otp` | Fired when all inputs are filled. The event's `value` property contains the complete code. |
 | `input.bs.otp` | Fired on each input change. Includes `value` (current combined value) and `index` (changed input index). |
+</BsTable>
 
 ```js
 const otpElement = document.querySelector('.otp')
@@ -251,6 +257,14 @@ otpElement.addEventListener('input.bs.otp', event => {
 
 ## CSS
 
-### Sass variables
+### Variables
 
-<ScssDocs name="otp-input-variables" file="scss/forms/_otp-input.scss" />
+<CSSVariables component="OTP input" className="otp" />
+
+<ScssDocs name="otp-tokens" file="scss/forms/_otp-input.scss" />
+
+### Sass list
+
+We use a Sass list to define the sizes of the OTP input, so you can easily add or modify sizes by fetching the associated root variables for each size. This list should generally match the sizes defined in the `$form-control-sizes` Sass map in `_form-control.scss`.
+
+<ScssDocs name="otp-sizes" file="scss/forms/_otp-input.scss" />

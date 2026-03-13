@@ -8,14 +8,14 @@ import { getData } from '@libs/data'
 
 Cards are flexible and extensible content containers. They include options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. **Cards have no fixed width to start**, so they’ll naturally fill the full width of its parent element, or slot into your grid columns. This is easily customized with our various [sizing options](#width).
 
-<Example code={`<div class="card" style="width: 280px">
-    <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
+<Example code={`<section class="card" style="width: 280px">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
       <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
-  </div>`} />
+    <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
+  </section>`} />
 
 ## How it works
 
@@ -30,6 +30,8 @@ Cards are built with as little markup and styles as possible, but still manage t
 - Card and card body are both `flex` containers, so content can be aligned and stretched as needed with utilities and whatever HTML you require.
 
 - Cards can have nearly any content, including text, images, lists, and more.
+
+- Our examples use `<div>`s for card elements, but you can use whatever semantic HTML makes sense for your content. Use `<section>` for cards that represent a thematic grouping of content, `<article>` for self-contained compositions like blog posts or news items, or keep using `<div>`s when no additional semantics are needed.
 
 ## Content types
 
@@ -56,7 +58,7 @@ Titles, text, and links within cards all have required class names for managing 
 <Example code={`<div class="card" style="width: 18rem;">
     <div class="card-body">
       <h4 class="card-title">Example card title</h4>
-      <h6 class="card-subtitle fg-3">With a card subtitle</h6>
+      <p class="card-subtitle fg-3">With a card subtitle</p>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
       <a href="#">Card link</a>
     </div>
@@ -147,7 +149,7 @@ Add an optional header and/or footer within a card.
     <div class="card-body">
       <h4 class="card-title">Special title treatment</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
   </div>`} />
 
@@ -158,7 +160,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
     <div class="card-body">
       <h4 class="card-title">Special title treatment</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
   </div>`} />
 
@@ -185,7 +187,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
     <div class="card-body">
       <h4 class="card-title">Special title treatment</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
     <div class="card-footer text-body-secondary">
       2 days ago
@@ -206,7 +208,7 @@ Using the grid, wrap cards in columns and rows as needed.
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#" class="btn-solid theme-primary">Go somewhere</a>
         </div>
       </div>
     </div>
@@ -215,7 +217,7 @@ Using the grid, wrap cards in columns and rows as needed.
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#" class="btn-solid theme-primary">Go somewhere</a>
         </div>
       </div>
     </div>
@@ -229,7 +231,7 @@ Use our handful of [available sizing utilities]([[docsref:/utilities/width]]) to
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Button</a>
+      <a href="#" class="btn-solid theme-primary">Button</a>
     </div>
   </div>
 
@@ -237,7 +239,7 @@ Use our handful of [available sizing utilities]([[docsref:/utilities/width]]) to
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Button</a>
+      <a href="#" class="btn-solid theme-primary">Button</a>
     </div>
   </div>`} />
 
@@ -249,7 +251,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
   </div>`} />
 
@@ -274,7 +276,7 @@ Add some navigation to a card’s header (or block) with Bootstrap’s [nav comp
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
   </div>`} />
 
@@ -297,7 +299,7 @@ This works with `.nav-pills` as well.
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
   </div>`} />
 
@@ -633,8 +635,4 @@ In `v4` we used a CSS-only technique to mimic the behavior of [Masonry](https://
 
 <CSSVariables component="Cards" className="card" />
 
-<ScssDocs name="card-css-vars" file="scss/_card.scss" />
-
-### Sass variables
-
-<ScssDocs name="card-variables" file="scss/_card.scss" />
+<ScssDocs name="card-tokens" file="scss/_card.scss" />

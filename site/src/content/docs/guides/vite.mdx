@@ -32,10 +32,10 @@ We’re building a Vite project with Bootstrap from scratch, so there are some p
    npm i --save-dev vite
    ```
 
-3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Floating UI here.
+3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using dropdowns, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom
+   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
    ```
 
 4. **Install additional dependency.** In addition to Vite and Bootstrap, we need another dependency (Sass) to properly import and bundle Bootstrap’s CSS.
@@ -88,24 +88,9 @@ With dependencies installed and our project folder ready for us to start coding,
      },
      server: {
        port: 8080
-     },
-     // Optional: Silence Sass deprecation warnings. See note below.
-     css: {
-        preprocessorOptions: {
-           scss: {
-             silenceDeprecations: [
-               'import',
-               'mixed-decls',
-               'color-functions',
-               'global-builtin',
-             ],
-           },
-        },
-     },
+     }
    }
    ```
-
-   **Note:** Sass deprecation warnings are shown when compiling source Sass files with the latest versions of Dart Sass. This does not prevent compilation or usage of Bootstrap. We’re [working on a long-term fix]([[config:repo]]/issues/40962), but in the meantime these deprecation notices can be ignored.
 
 2. **Next we fill in `src/index.html`.** This is the HTML page Vite will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps.
 
@@ -121,7 +106,7 @@ With dependencies installed and our project folder ready for us to start coding,
      <body>
        <div class="container py-4 px-3 mx-auto">
          <h1>Hello, Bootstrap and Vite!</h1>
-         <button class="btn btn-primary">Primary button</button>
+         <button class="btn-solid theme-primary">Primary button</button>
        </div>
      </body>
    </html>
@@ -158,12 +143,12 @@ In the next and final section to this guide, we’ll import all of Bootstrap’s
 
    ```scss
    // Import all of Bootstrap’s CSS
-   @import "bootstrap/scss/bootstrap";
+   @use "bootstrap/scss/bootstrap";
    ```
 
    *You can also import our stylesheets individually if you want. [Read our Sass import docs]([[docsref:/customize/sass#importing]]) for details.*
 
-2. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Floating UI will be imported automatically through Bootstrap.
+2. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Floating UI and Vanilla Calendar Pro will be imported automatically through Bootstrap.
 
    ```js
    // Import our custom CSS

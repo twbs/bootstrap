@@ -1,12 +1,10 @@
 @use "sass:meta";
 @use "sass:map";
-@use "config" as *;
-@use "colors" as *;
 
 @function theme-color-values($key) {
   $result: ();
 
-  @each $color-name, $color-map in $new-theme-colors {
+  @each $color-name, $color-map in $theme-colors {
     @if map.has-key($color-map, $key) {
       $result: map.merge($result, ($color-name: map.get($color-map, $key)));
     }
@@ -35,7 +33,7 @@
 
 // Generate theme classes dynamically based on the keys in each theme color map
 @mixin generate-theme-classes() {
-  @each $color-name, $color-map in $new-theme-colors {
+  @each $color-name, $color-map in $theme-colors {
     .theme-#{$color-name} {
       @each $key, $value in $color-map {
         --theme-#{$key}: var(--#{$color-name}-#{$key});
@@ -59,7 +57,7 @@
 }
 
 // scss-docs-start theme-colors
-$new-theme-colors: (
+$theme-colors: (
   "primary": (
     "base": var(--blue-500),
     "text": light-dark(var(--blue-600), var(--blue-400)),
@@ -68,7 +66,7 @@ $new-theme-colors: (
     "bg-subtle": light-dark(var(--blue-100), var(--blue-900)),
     "bg-muted": light-dark(var(--blue-200), var(--blue-800)),
     "border": light-dark(var(--blue-300), var(--blue-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--blue-500), var(--blue-400)) 50%, var(--bg-body)),
+    "focus-ring": light-dark(color-mix(in oklch, var(--blue-500) 50%, var(--bg-body)), color-mix(in oklch, var(--blue-500) 75%, var(--bg-body))),
     "contrast": var(--white)
   ),
   "accent": (
@@ -79,7 +77,7 @@ $new-theme-colors: (
     "bg-subtle": light-dark(var(--indigo-100), var(--indigo-900)),
     "bg-muted": light-dark(var(--indigo-200), var(--indigo-800)),
     "border": light-dark(var(--indigo-300), var(--indigo-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--indigo-500), var(--indigo-400)) 50%, var(--bg-body)),
+    "focus-ring": light-dark(color-mix(in oklch, var(--indigo-500) 50%, var(--bg-body)), color-mix(in oklch, var(--indigo-500) 75%, var(--bg-body))),
     "contrast": var(--white)
   ),
   "success": (
@@ -90,7 +88,7 @@ $new-theme-colors: (
     "bg-subtle": light-dark(var(--green-100), var(--green-900)),
     "bg-muted": light-dark(var(--green-200), var(--green-800)),
     "border": light-dark(var(--green-300), var(--green-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--green-500), var(--green-400)) 50%, var(--bg-body)),
+    "focus-ring": light-dark(color-mix(in oklch, var(--green-500) 50%, var(--bg-body)), color-mix(in oklch, var(--green-500) 75%, var(--bg-body))),
     "contrast": var(--white)
   ),
   "danger": (
@@ -101,7 +99,7 @@ $new-theme-colors: (
     "bg-subtle": light-dark(var(--red-100), var(--red-900)),
     "bg-muted": light-dark(var(--red-200), var(--red-800)),
     "border": light-dark(var(--red-300), var(--red-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--red-500), var(--red-400)) 50%, var(--bg-body)),
+    "focus-ring": light-dark(color-mix(in oklch, var(--red-500) 50%, var(--bg-body)), color-mix(in oklch, var(--red-500) 75%, var(--bg-body))),
     "contrast": var(--white)
   ),
   "warning": (
@@ -112,7 +110,7 @@ $new-theme-colors: (
     "bg-subtle": light-dark(var(--yellow-100), var(--yellow-900)),
     "bg-muted": light-dark(var(--yellow-200), var(--yellow-800)),
     "border": light-dark(var(--yellow-300), var(--yellow-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--yellow-500), var(--yellow-400)) 50%, var(--bg-body)),
+    "focus-ring": light-dark(color-mix(in oklch, var(--yellow-500) 50%, var(--bg-body)), color-mix(in oklch, var(--yellow-400) 85%, var(--bg-body))),
     "contrast": var(--gray-900)
   ),
   "info": (
@@ -123,7 +121,7 @@ $new-theme-colors: (
     "bg-subtle": light-dark(var(--cyan-100), var(--cyan-900)),
     "bg-muted": light-dark(var(--cyan-200), var(--cyan-800)),
     "border": light-dark(var(--cyan-300), var(--cyan-600)),
-    "focus-ring": color-mix(in oklch, light-dark(var(--cyan-500), var(--cyan-400)) 50%, var(--bg-body)),
+    "focus-ring": light-dark(color-mix(in oklch, var(--cyan-500) 50%, var(--bg-body)), color-mix(in oklch, var(--cyan-500) 75%, var(--bg-body))),
     "contrast": var(--gray-900)
   ),
   "inverse": (
@@ -150,9 +148,6 @@ $new-theme-colors: (
   )
 ) !default;
 // scss-docs-end theme-colors
-
-// Generate theme modifier classes (e.g., .theme-primary, .theme-accent, etc.)
-@include generate-theme-classes();
 
 // mdo-do: consider using muted, subtle, ghost or something instead of linear scale?
 $theme-bgs: (

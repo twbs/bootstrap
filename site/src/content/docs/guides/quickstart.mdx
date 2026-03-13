@@ -25,7 +25,7 @@ Get started using Bootstrap in seconds by including our production-ready CSS and
    </html>
    ```
 
-2. **Include Bootstrap’s CSS and JS.** Place the `<link>` tag in the `<head>` for our CSS, and the `<script>` tag for our JavaScript bundle (including Floating UI for positioning dropdowns, popovers, and tooltips) before the closing `</body>`. Learn more about [our CDN links]([[docsref:/getting-started/install#cdn]]).
+2. **Include Bootstrap’s CSS and JS.** Place the `<link>` tag in the `<head>` for our CSS, and the `<script>` tag for our JavaScript bundle (including Floating UI for positioning dropdowns, popovers, and tooltips, and Vanilla Calendar Pro for the datepicker) before the closing `</body>`. Learn more about [our CDN links]([[docsref:/getting-started/install#cdn]]).
 
    ```html
    <!doctype html>
@@ -38,16 +38,23 @@ Get started using Bootstrap in seconds by including our production-ready CSS and
      </head>
      <body>
        <h1>Hello, world!</h1>
-       <script src="[[config:cdn.js_bundle]]" integrity="[[config:cdn.js_bundle_hash]]" crossorigin="anonymous"></script> // [!code ++]
+       <script type="module" src="[[config:cdn.js_bundle]]" integrity="[[config:cdn.js_bundle_hash]]" crossorigin="anonymous"></script> // [!code ++]
      </body>
    </html>
    ```
 
-   You can also include [Floating UI](https://floating-ui.com/) and our JS separately. If you don’t plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Floating UI.
+   You can also include [Floating UI](https://floating-ui.com/) and [Vanilla Calendar Pro](https://vanilla-calendar.pro/) and our JS separately via an import map. If you don't plan to use dropdowns, popovers, or tooltips, save some kilobytes by not including Floating UI. If you don't plan to use the datepicker, you can omit Vanilla Calendar Pro.
 
    ```html
-   <script src="[[config:cdn.floating_ui]]" integrity="[[config:cdn.floating_ui_hash]]" crossorigin="anonymous"></script>
-   <script src="[[config:cdn.js]]" integrity="[[config:cdn.js_hash]]" crossorigin="anonymous"></script>
+   <script type="importmap">
+   {
+     "imports": {
+       "@floating-ui/dom": "[[config:cdn.floating_ui_esm]]",
+       "vanilla-calendar-pro": "[[config:cdn.vanilla_calendar_pro_esm]]"
+     }
+   }
+   </script>
+   <script type="module" src="[[config:cdn.js]]" integrity="[[config:cdn.js_hash]]" crossorigin="anonymous"></script>
    ```
 
 3. **Hello, world!** Open the page in your browser of choice to see your Bootstrapped page. Now you can start building with Bootstrap by creating your own [layout]([[docsref:/layout/grid]]), adding dozens of [components]([[docsref:/components/buttons]]), and utilizing [our official examples]([[docsref:/examples]]).

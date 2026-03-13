@@ -2,93 +2,135 @@
 title: Form controls
 description: Give textual `<input>`, `<textarea>`, and `<select>` elements an upgrade with custom styles, sizing, focus states, and more.
 toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input
 ---
 
 <Callout type="info">
-  **Heads up!** As of v6, `<select>` elements are now styled with the `.form-control` class. This reduces a ton of duplication and abstraction while making it easier to consistently customize the appearance of form controls.
+  **Heads up!** In v6, `<select>` elements are styled with `.form-control`. This reduces duplication and abstraction while making it easier to consistently customize the appearance of form elements.
 </Callout>
 
 ## Example
 
 Form controls are styled with a mix of Sass and CSS variables, allowing them to adapt to color modes and support any customization method.
 
-<Example code={`<div class="mb-3">
+<Example class="vstack gap-3" code={`<div>
     <label for="exampleFormControlInput1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlSelect1" class="form-label">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </div>
-  <div>
+  </div>`} />
+
+## Textarea
+
+Textareas use the same `.form-control` class as inputs. Modify their height by using the `rows` attribute or using custom CSS.
+
+<Example class="vstack gap-3" code={`<div>
     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>`} />
-
-## Sizing
-
-Change the size of a form control by using classes like `.form-control-lg` and `.form-control-sm`. This adjusts `height`, `padding`, `font-size`, `line-height`, and `border-radius`.
-
-<Example code={`<div class="mb-3">
-    <label for="largeInput" class="form-label">Large input</label>
-    <input class="form-control form-control-lg" type="text" id="largeInput" placeholder="Large input" aria-label="Large input example">
+    <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
   </div>
-  <div class="mb-3">
-    <label for="largeSelect" class="form-label">Large select</label>
-    <select class="form-control form-control-lg" id="largeSelect">
-      <option>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </div>
+
   <div>
-    <label for="largeTextarea" class="form-label">Large textarea</label>
-    <textarea class="form-control form-control-lg" id="largeTextarea" rows="3" placeholder="Large textarea" aria-label="Large textarea example"></textarea>
-  </div>`} />
-
-<Example code={`<div class="mb-3">
-    <label for="smallInput" class="form-label">Small input</label>
-    <input class="form-control form-control-sm" type="text" id="smallInput" placeholder="Small input" aria-label="Small input example">
-  </div>
-  <div class="mb-3">
-    <label for="smallSelect" class="form-label">Small select</label>
-    <select class="form-control form-control-sm" id="smallSelect">
-      <option>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </div>
-  <div>
-    <label for="smallTextarea" class="form-label">Small textarea</label>
-    <textarea class="form-control form-control-sm" id="smallTextarea" rows="3" placeholder="Small textarea" aria-label="Small textarea example"></textarea>
+    <label for="exampleFormControlTextarea2" class="form-label">Taller textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea2" rows="4"></textarea>
   </div>`} />
 
 ## Select
 
+Basic select element styles are provided by the `.form-control` class. Styles are limited by the browser—options and popovers cannot be styled.
+
+<Example code={`<div>
+    <label for="exampleFormControlSelect2" class="form-label">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect2">
+      <option>Choose one…</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>`} />
+
 The `multiple` attribute is supported on select elements:
 
-<Example code={`<select class="form-select" multiple aria-label="Multiple select example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>`} />
+<Example code={`<div>
+    <label for="exampleFormControlSelect3" class="form-label">Multiple select</label>
+    <select class="form-control" id="exampleFormControlSelect3" multiple aria-label="Multiple select example">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>`} />
 
 As is the `size` attribute:
 
-<Example code={`<select class="form-select" size="3" aria-label="Size 3 select example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>`} />
+<Example code={`<div>
+    <label for="exampleFormControlSelect4" class="form-label">Size 3 select</label>
+    <select class="form-control" id="exampleFormControlSelect4" size="3" aria-label="Size 3 select example">
+      <option selected>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>`} />
+
+## Sizes
+
+Change the size of a form control by using classes like `.form-control-lg` and `.form-control-sm`. This adjusts `height`, `padding`, `font-size`, `line-height`, and `border-radius`.
+
+<Example class="vstack gap-3" code={`<div>
+    <label for="sizesInputSmall" class="form-label">Small input</label>
+    <input class="form-control form-control-sm" type="text" id="sizesInputSmall" placeholder="Small input" aria-label="Small input example">
+  </div>
+  <div>
+    <label for="sizesInputDefault" class="form-label">Default input</label>
+    <input class="form-control" type="text" id="sizesInputDefault" placeholder="Default input" aria-label="Default input example">
+  </div>
+  <div>
+    <label for="sizesInputLarge" class="form-label">Large input</label>
+    <input class="form-control form-control-lg" type="text" id="sizesInputLarge" placeholder="Large input" aria-label="Large input example">
+  </div>`} />
+
+And for textareas:
+
+<Example class="vstack gap-3" code={`<div>
+    <label for="sizesTextareaSmall" class="form-label">Small textarea</label>
+    <textarea class="form-control form-control-sm" id="sizesTextareaSmall" placeholder="Small textarea" aria-label="Small textarea example"></textarea>
+  </div>
+  <div>
+    <label for="sizesTextareaDefault" class="form-label">Default textarea</label>
+    <textarea class="form-control" id="sizesTextareaDefault" placeholder="Default textarea" aria-label="Default textarea example"></textarea>
+  </div>
+  <div>
+    <label for="sizesTextareaLarge" class="form-label">Large textarea</label>
+    <textarea class="form-control form-control-lg" id="sizesTextareaLarge" placeholder="Large textarea" aria-label="Large textarea example"></textarea>
+  </div>`} />
+
+And for selects:
+
+<Example class="vstack gap-3" code={`<div>
+    <label for="sizesSelectSmall" class="form-label">Small select</label>
+    <select class="form-control form-control-sm" id="sizesSelectSmall">
+      <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+  <div>
+    <label for="sizesSelectDefault" class="form-label">Default select</label>
+    <select class="form-control" id="sizesSelectDefault">
+      <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+  <div>
+    <label for="sizesSelectLarge" class="form-label">Large select</label>
+    <select class="form-control form-control-lg" id="sizesSelectLarge">
+      <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>`} />
 
 ## Form text
 
@@ -122,26 +164,29 @@ Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`
     </div>
   </div>`} />
 
-## Disabled
+## States
+
+### Disabled
 
 Add the `disabled` boolean attribute on an input to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
-<Example code={`<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
-<input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
-<select class="form-select" aria-label="Disabled select example" disabled>
+<Example class="vstack gap-3" code={`<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
+  <input class="form-control" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly>
+  <select class="form-control" aria-label="Disabled select example" disabled>
     <option selected>Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
-  </select>`} />
+  </select>
+  <textarea class="form-control" rows="3" placeholder="Disabled textarea" aria-label="Disabled textarea example" disabled></textarea>`} />
 
-## Readonly
+### Readonly
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input’s value. `readonly` inputs can still be focused and selected, while `disabled` inputs cannot.
 
 <Example code={`<input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>`} />
 
-## Readonly plain text
+### Readonly plain text
 
 If you want to have `<input readonly>` elements in your form styled as plain text, replace `.form-control` with `.form-control-plaintext` to remove the default form field styling and preserve the correct `margin` and `padding`.
 
@@ -168,11 +213,76 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
       <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
     </div>
     <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+      <button type="submit" class="btn-solid theme-primary mb-3">Confirm identity</button>
     </div>
   </form>`} />
 
-## File input
+## Types
+
+Nearly all input types are supported, but not all are documented here. Input types requiring additional classes or changes are shown below.
+
+### Date and time
+
+No additional classes are needed for date and time inputs. Exact functionality and appearance are dependent on the browser and operating system.
+
+<Example class="vstack gap-3" code={`<input type="datetime-local" class="form-control" aria-label="Date and time picker" value="2026-02-24T13:00">
+<input type="datetime-local" class="form-control" aria-label="Date and time picker with seconds" value="2026-02-24T13:00:30" step="1">
+<input type="datetime-local" class="form-control" aria-label="Date and time picker with milliseconds" value="2026-02-24T13:00:30.500" step="0.001">
+<input type="date" class="form-control" aria-label="Date picker" value="2026-02-24">
+<input type="time" class="form-control" aria-label="Time picker" value="13:00">
+<input type="month" class="form-control" aria-label="Month picker" value="2026-02">
+<input type="week" class="form-control" aria-label="Week picker" value="2026-W09">`} />
+
+### Color
+
+Set the `type="color"` and add `.form-control-color` to the `<input>` alongside `.form-control`. We use the modifier class to set fixed `height`s and override some inconsistencies between browsers.
+
+<Example code={`<label for="exampleColorInput" class="form-label">Color picker</label>
+<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#631aff" title="Choose your color">`} />
+
+Sizes are also supported:
+
+<Example class="vstack gap-3" code={`<div>
+    <label for="exampleColorInputLg" class="form-label">Large color picker</label>
+    <input type="color" class="form-control form-control-lg form-control-color" id="exampleColorInputLg" value="#631aff" title="Choose your color">
+  </div>
+  <div>
+    <label for="exampleColorInputSm" class="form-label">Small color picker</label>
+    <input type="color" class="form-control form-control-sm form-control-color" id="exampleColorInputSm" value="#631aff" title="Choose your color">
+  </div>`} />
+
+### Datalists
+
+Datalists allow you to create a group of `<option>`s that can be accessed (and autocompleted) from within an `<input>`. These are similar to `<select>` elements, but come with more menu styling limitations and differences. While most browsers and operating systems include some support for `<datalist>` elements, their styling is inconsistent at best.
+
+Learn more about [support for datalist elements](https://caniuse.com/datalist).
+
+<Example code={`<label for="exampleDataList" class="form-label">Datalist example</label>
+  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+  <datalist id="datalistOptions">
+    <option value="San Francisco">
+    <option value="New York">
+    <option value="Seattle">
+    <option value="Los Angeles">
+    <option value="Chicago">
+  </datalist>`} />
+
+### Date & time
+
+No additional classes are needed for date and time inputs.
+
+<Example code={`<label for="exampleDateTimeInput" class="form-label">Date and time picker</label>
+<input type="datetime-local" class="form-control" id="exampleDateTimeInput" value="2026-02-24T13:00">`} />
+
+<Example code={`<label for="exampleDateInput" class="form-label">Date picker</label>
+<input type="date" class="form-control" id="exampleDateInput" value="2026-02-24">`} />
+
+<Example code={`<label for="exampleTimeInput" class="form-label">Time picker</label>
+<input type="time" class="form-control" id="exampleTimeInput" value="13:00">`} />
+
+### File
+
+`input[type="file"]` elements are styled with the `::file-selector-button` pseudo element to add a button to the input. You only need to add the `.form-control` class, plus any size modifiers you need.
 
 <Example code={`<div class="mb-3">
     <label for="formFile" class="form-label">Default file input example</label>
@@ -195,34 +305,53 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
     <input class="form-control form-control-lg" id="formFileLg" type="file">
   </div>`} />
 
-## Color
+### Ghost
 
-Set the `type="color"` and add `.form-control-color` to the `<input>`. We use the modifier class to set fixed `height`s and override some inconsistencies between browsers.
+Ghost inputs are a special type of input, not native to the browser, that removes all default input styling when your wrapper handles spacing, border, and focus styles. This is useful for custom composites like search bars and command inputs. Swap the `.form-control` class for `.form-ghost` to remove the default styling.
 
-<Example code={`<label for="exampleColorInput" class="form-label">Color picker</label>
-<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">`} />
+<Callout type="warning">
+  `.form-ghost` removes the input's own focus outline. Use `:focus-within` on a parent element to provide a visible focus indicator.
+</Callout>
 
-## Datalists
-
-Datalists allow you to create a group of `<option>`s that can be accessed (and autocompleted) from within an `<input>`. These are similar to `<select>` elements, but come with more menu styling limitations and differences. While most browsers and operating systems include some support for `<datalist>` elements, their styling is inconsistent at best.
-
-Learn more about [support for datalist elements](https://caniuse.com/datalist).
-
-<Example code={`<label for="exampleDataList" class="form-label">Datalist example</label>
-  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-  <datalist id="datalistOptions">
-    <option value="San Francisco">
-    <option value="New York">
-    <option value="Seattle">
-    <option value="Los Angeles">
-    <option value="Chicago">
-  </datalist>`} />
+<Example code={`<label for="exampleGhostInput" class="form-label">Search</label>
+  <div class="d-flex align-items-center gap-2 p-2 border rounded">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+    </svg>
+    <input type="search" class="form-ghost" id="exampleGhostInput" placeholder="Search docs" aria-label="Search docs"><!-- [!code highlight] -->
+  </div>`} />
 
 ## CSS
 
-### Sass variables
+### Variables
 
-`$input-*` are shared across most of our form controls (and not buttons).
+<CSSVariables component="Form controls" className="form-control" />
+
+<ScssDocs name="form-control-tokens" file="scss/forms/_form-control.scss" />
+
+And for `.form-label`:
+
+<ScssDocs name="form-label-tokens" file="scss/forms/_labels.scss" />
+
+And for `.form-text`:
+
+<ScssDocs name="form-text-tokens" file="scss/forms/_form-text.scss" />
+
+### Root variables
+
+Some inputs and buttons share some root variables for consistency across all form elements, primarily for sizing.
+
+<ScssDocs name="root-form-variables" file="scss/_root.scss" />
+
+### Sass maps
+
+We use a Sass map to define the sizes of the form controls, so you can easily add or modify sizes.
+
+<ScssDocs name="form-control-sizes" file="scss/forms/_form-control.scss" />
+
+{/* mdo-do: clean these up, possibly find new homes */}
+
+{/* `$input-*` are shared across most of our form controls (and not buttons).
 
 <ScssDocs name="form-input-variables" file="scss/forms/_form-variables.scss" />
 
@@ -234,4 +363,4 @@ Learn more about [support for datalist elements](https://caniuse.com/datalist).
 
 `$form-file-*` are for file input.
 
-<ScssDocs name="form-file-variables" file="scss/forms/_form-variables.scss" />
+<ScssDocs name="form-file-variables" file="scss/forms/_form-variables.scss" /> */}

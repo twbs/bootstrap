@@ -4,11 +4,19 @@ description: Utilize our source Sass files to take advantage of variables, maps,
 toc: true
 ---
 
-Utilize our source Sass files to take advantage of variables, maps, mixins, and more.
+## About Sass
+
+[Sass](https://sass-lang.com/) is a CSS preprocessor that adds features like variables, nesting, mixins, and functions to standard CSS. You write `.scss` files, compile them, and the output is plain CSS that browsers understand. If you're new to Sass, check out the [Sass documentation](https://sass-lang.com/guide/) to learn the basics.
+
+Bootstrap is written in Sass. Our source `.scss` files use Sass maps to define design tokens, mixins to generate repetitive CSS patterns, and the `@use`/`@forward` module system to organize everything. When compiled, these Sass files produce the CSS that powers every Bootstrap component and utility. This lets you override token values, remove unused components, or extend the system with your own additions. If you don't need that level of control, you can skip Sass entirely and [customize via CSS custom properties]([[docsref:/customize/css-variables]]) at runtime instead.
+
+<Callout type="info">
+**New to working with Sass and Bootstrap?** Start with [our npm guide]([[docsref:/guides/npm]]) for a step-by-step setup, or check out our [examples repository](https://github.com/twbs/examples) for ready-to-use starter projects.
+</Callout>
 
 ## File structure
 
-Whenever possible, avoid modifying Bootstrap’s core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you’re using a package manager like npm, you’ll have a file structure that looks like this:
+Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/), you'll have a file structure that looks like this:
 
 ```text
 your-project/
@@ -21,7 +29,7 @@ your-project/
 └── index.html
 ```
 
-If you’ve downloaded our source files and aren’t using a package manager, you’ll want to manually create something similar to that structure, keeping Bootstrap’s source files separate from your own.
+If you've downloaded our source files and aren't using a package manager, you'll want to manually create something similar to that structure, keeping Bootstrap's source files separate from your own.
 
 ```text
 your-project/
@@ -35,15 +43,13 @@ your-project/
 
 ## Importing
 
-In your `custom.scss`, you’ll import Bootstrap’s source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
+In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
 
 ```scss
 // Custom.scss
 // Option A: Include all of Bootstrap
 
-// Include any default variable overrides here (though functions won’t be available)
-
-@import "../node_modules/bootstrap/scss/bootstrap";
+@use "../node_modules/bootstrap/scss/bootstrap";
 
 // Then add additional custom code here
 ```
@@ -52,39 +58,30 @@ In your `custom.scss`, you’ll import Bootstrap’s source Sass files. You have
 // Custom.scss
 // Option B: Include parts of Bootstrap
 
-// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-@import "../node_modules/bootstrap/scss/functions";
+// 1. Include root first (configuration, colors, tokens, and CSS layers)
+@use "../node_modules/bootstrap/scss/root";
 
-// 2. Include any default variable overrides here
+// 2. Include any other partials as needed
+@use "../node_modules/bootstrap/scss/content";
+@use "../node_modules/bootstrap/scss/layout";
+@use "../node_modules/bootstrap/scss/forms";
+@use "../node_modules/bootstrap/scss/buttons";
 
-// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/variables-dark";
-
-// 4. Include any default map overrides here
-
-// 5. Include remainder of required parts
-@import "../node_modules/bootstrap/scss/maps";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/root";
-
-// 6. Include any other optional stylesheet partials as desired; list below is not inclusive of all available stylesheets
-@import "../node_modules/bootstrap/scss/utilities";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
-@import "../node_modules/bootstrap/scss/images";
-@import "../node_modules/bootstrap/scss/containers";
-@import "../node_modules/bootstrap/scss/grid";
-@import "../node_modules/bootstrap/scss/helpers";
+// 3. Components
+@use "../node_modules/bootstrap/scss/alert";
+@use "../node_modules/bootstrap/scss/card";
 // ...
 
-// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
-@import "../node_modules/bootstrap/scss/utilities/api";
+// 4. Helpers and utilities
+@use "../node_modules/bootstrap/scss/helpers";
+@use "../node_modules/bootstrap/scss/utilities/api";
 
-// 8. Add additional custom code here
+// 5. Add additional custom code here
 ```
 
-With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
+With that setup in place, you can begin to modify any of the Sass token maps in your `custom.scss`. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
+
+<ScssDocs name="import-stack" file="scss/bootstrap.scss" />
 
 ## Compiling
 
@@ -108,7 +105,7 @@ Learn more about your options at [sass-lang.com/install](https://sass-lang.com/i
 
 ## Including
 
-Once your CSS is compiled, you can include it in your HTML files. Inside your `index.html` you’ll want to include your compiled CSS file. Be sure to update the path to your compiled CSS file if you’ve changed it.
+Once your CSS is compiled, you can include it in your HTML files. Inside your `index.html` you'll want to include your compiled CSS file. Be sure to update the path to your compiled CSS file if you've changed it.
 
 ```html
 <!doctype html>
@@ -117,7 +114,7 @@ Once your CSS is compiled, you can include it in your HTML files. Inside your `i
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Custom Bootstrap</title>
-    <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet"><!-- [!code highlight] -->
   </head>
   <body>
     <h1>Hello, world!</h1>
@@ -125,172 +122,283 @@ Once your CSS is compiled, you can include it in your HTML files. Inside your `i
 </html>
 ```
 
-## Variable defaults
+## Token architecture
 
-Every Sass variable in Bootstrap includes the `!default` flag allowing you to override the variable’s default value in your own Sass without modifying Bootstrap’s source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won’t be re-assigned by the default values in Bootstrap.
+Bootstrap v6 uses a layered token system built on CSS custom properties. Sass maps define the tokens at compile time, and CSS custom properties are generated from those maps for runtime use.
 
-You will find the complete list of Bootstrap’s variables in `scss/_variables.scss`. Some variables are set to `null`, these variables don’t output the property unless they are overridden in your configuration.
+The layers, from lowest to highest level:
 
-Variable overrides must come after our functions are imported, but before the rest of the imports.
+1. **Color scales** (`_colors.scss`) — Base hue variables defined in `oklch()` generate a full scale of color steps (025–975) as CSS custom properties using `color-mix()`. For example, `--blue-500`, `--red-200`, `--gray-900`.
 
-Here’s an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
+2. **Theme colors** (`_theme.scss`) — The `$theme-colors` map defines semantic color roles like `primary`, `success`, and `danger`. Each theme color is a nested map with sub-keys: `base`, `text`, `text-emphasis`, `bg`, `bg-subtle`, `bg-muted`, `border`, `focus-ring`, and `contrast`.
+
+3. **Global tokens** (`_theme.scss` and `_root.scss`) — Semantic tokens for backgrounds (`$theme-bgs`), foregrounds (`$theme-fgs`), and borders (`$theme-borders`) are defined alongside the `$root-tokens` map, which aggregates everything into `:root` CSS custom properties.
+
+4. **Component tokens** (e.g., `_alert.scss`) — Each component defines its own `$*-tokens` map (e.g., `$alert-tokens`) that gets output as CSS custom properties scoped to the component's class.
+
+## Token defaults
+
+Every token map in Bootstrap includes the `!default` flag, allowing you to override values before Bootstrap's files are loaded. Since Bootstrap uses Sass modules (`@use`/`@forward`), you can override `!default` variables using the `with ()` syntax. For CSS custom property tokens, you have two customization paths:
+
+1. **At compile time** — Override the Sass maps that generate the CSS custom properties.
+2. **At runtime** — Override the CSS custom properties directly in your stylesheet, no Sass required.
+
+### Compile-time overrides
+
+To override token values at compile time, use `@use ... with ()` when importing Bootstrap. You only need to include the keys you want to change — Bootstrap merges your overrides with its defaults using the `defaults()` function, so all other tokens remain intact.
 
 ```scss
-// Required
-@import "../node_modules/bootstrap/scss/functions";
-
-// Default variable overrides
-$body-bg: #000;
-$body-color: #111;
-
-// Required
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/variables-dark";
-@import "../node_modules/bootstrap/scss/maps";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/root";
-
-// Optional Bootstrap components here
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
-// etc
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $root-tokens: (
+    --border-radius: .25rem,
+    --spacer: 1.5rem,
+  ),
+  $alert-tokens: (
+    --alert-padding-x: 2rem,
+    --alert-border-radius: 1rem,
+  )
+);
 ```
 
-Repeat as necessary for any variable in Bootstrap, including the global options below.
+Under the hood, every token map uses a two-step pattern:
+
+```scss
+$alert-tokens: () !default;
+$alert-tokens: defaults(
+  (
+    // Default tokens here
+  ),
+  $alert-tokens
+);
+```
+
+The `() !default` declaration receives your `with()` overrides. Then `defaults()` merges your entries on top of the built-in defaults, so unspecified keys keep their original values. Any keys set to `null` are removed from the map entirely, letting you drop tokens you don't need.
+
+### Runtime overrides
+
+Because tokens are output as CSS custom properties, you can override them directly in CSS without any Sass compilation:
+
+```css
+:root {
+  --border-radius: .25rem;
+  --primary-base: oklch(55% 0.25 260);
+  --bg-body: #f8f9fa;
+}
+```
+
+You can also scope overrides to specific components:
+
+```css
+.alert {
+  --alert-padding-x: 2rem;
+  --alert-padding-y: 1.5rem;
+  --alert-border-radius: 1rem;
+}
+```
 
 <Callout name="info-npm-starter" />
 
 ## Maps and loops
 
-Bootstrap includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
+Bootstrap includes several Sass maps that generate families of related CSS custom properties. These maps all include the `!default` flag and can be overridden.
 
-Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making _removing_ items from a map slightly more difficult.
+### Theme color map
 
-### Modify map
+The `$theme-colors` map defines the semantic color palette. Each entry is a nested map with sub-keys like `base`, `text`, `bg`, `border`, and more. See the [Theme documentation]([[docsref:/customize/theme]]) for the full map, sub-key reference, and usage examples.
 
-All variables in the `$theme-colors` map are defined as standalone variables. To modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
-
-```scss
-$primary: #0074d9;
-$danger: #ff4136;
-```
-
-Later on, these variables are set in Bootstrap’s `$theme-colors` map:
+To modify, add, or remove theme colors at compile time:
 
 ```scss
-$theme-colors: (
-  "primary": $primary,
-  "danger": $danger
+@use "sass:map";
+@use "../node_modules/bootstrap/scss/theme" with (
+  $theme-colors: (
+    "primary": (
+      "base": var(--indigo-500),
+      "text": light-dark(var(--indigo-600), var(--indigo-400)),
+      "bg": var(--indigo-500),
+      "bg-subtle": light-dark(var(--indigo-100), var(--indigo-900)),
+      "border": light-dark(var(--indigo-300), var(--indigo-600)),
+      "focus-ring": light-dark(color-mix(in oklch, var(--indigo-500) 50%, var(--bg-body)), color-mix(in oklch, var(--indigo-500) 75%, var(--bg-body))),
+      "contrast": var(--white)
+    )
+  )
 );
 ```
 
-### Add to map
+### Global token maps
 
-Add new colors to `$theme-colors`, or any other map, by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new `$custom-colors` map and merge it with `$theme-colors`.
+Background (`$theme-bgs`), foreground (`$theme-fgs`), and border (`$theme-borders`) token maps define semantic layer colors. These are also covered in the [Theme documentation]([[docsref:/customize/theme#layer-colors]]).
+
+### Root tokens (`$root-tokens`)
+
+The `$root-tokens` map aggregates global design tokens like fonts, spacing, borders, and form variables. Theme colors, backgrounds, foregrounds, and border tokens are merged into it before output.
+
+<ScssDocs name="root-tokens" file="scss/_root.scss" />
+
+All root tokens are output to `:root` as CSS custom properties:
+
+<ScssDocs name="root-theme-tokens" file="scss/_root.scss" />
+
+## Component tokens
+
+Each component defines its own token map that gets output as CSS custom properties scoped to the component's class. This makes components self-contained and easy to customize.
+
+Here's the alert component as an example:
+
+<ScssDocs name="alert-tokens" file="scss/_alert.scss" />
+
+The tokens are output on the `.alert` class using the `tokens()` mixin:
 
 ```scss
-// Create your own map
-$custom-colors: (
-  "custom-color": #900
+.alert {
+  @include tokens($alert-tokens);
+
+  padding: var(--alert-padding-y) var(--alert-padding-x);
+  color: var(--alert-color);
+  background-color: var(--alert-bg);
+  border: var(--alert-border);
+  // ...
+}
+```
+
+### Override Sass tokens
+
+Use `with ()` to override specific component token values at compile time with Sass. Your overrides are merged with the defaults, so you only need to specify the keys you want to change:
+
+```scss
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $alert-tokens: (
+    --alert-padding-x: 2rem,
+    --alert-bg: var(--bg-2),
+    --alert-border-radius: 0,
+  )
 );
-
-// Merge the maps
-$theme-colors: map-merge($theme-colors, $custom-colors);
 ```
 
-### Remove from map
+This works for every component: `$card-tokens`, `$button-tokens`, `$dropdown-tokens`, `$nav-tokens`, and so on — any `$*-tokens` map supports partial overrides through the same merge pattern.
 
-To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert `$theme-colors` between our requirements just after its definition in `variables` and before its usage in `maps`:
+### Remove tokens with `null`
+
+Set any map key to `null` to remove it entirely. The `defaults()` function strips null entries before the map is used, so no CSS is generated for those keys:
 
 ```scss
-// Required
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/variables-dark";
-
-$theme-colors: map-remove($theme-colors, "info", "light", "dark");
-
-@import "../node_modules/bootstrap/scss/maps";
-@import "../node_modules/bootstrap/scss/mixins";
-@import "../node_modules/bootstrap/scss/root";
-
-// Optional
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
-// etc
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $alert-tokens: (
+    --alert-margin-bottom: null,
+  )
+);
 ```
+
+### Override CSS tokens
+
+You can also override the CSS custom properties directly without Sass:
+
+```css
+.alert {
+  --alert-padding-x: 2rem;
+  --alert-bg: var(--bg-2);
+  --alert-border-radius: 0;
+}
+```
+
+## Size maps
+
+In addition to token maps, Bootstrap uses size maps to generate size variant classes like `.btn-sm`, `.btn-lg`, `.form-control-sm`, etc. These use the same `defaults()` function and support the same override and removal patterns.
+
+Size maps accept a simple list of size names:
+
+```scss
+$button-sizes: () !default;
+$button-sizes: defaults(
+  ("xs", "sm", "lg"),
+  $button-sizes
+);
+```
+
+The loop then derives CSS custom property values from each size name:
+
+```scss
+@each $size, $_ in $button-sizes {
+  .btn-#{$size} {
+    --btn-min-height: var(--btn-input-#{$size}-min-height);
+    --btn-padding-y: var(--btn-input-#{$size}-padding-y);
+    // ...
+  }
+}
+```
+
+To remove a size, set its key to `null` via `with()`:
+
+```scss
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $button-sizes: ("xs": null),
+);
+```
+
+## Variant maps
+
+Some components use variant maps to generate style variants. For example, `$button-variants` defines `solid`, `outline`, `subtle`, and `text` button styles. These are also processed by `defaults()` and support `null` removal:
+
+```scss
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $button-variants: (
+    "text": null,
+    "subtle": null,
+  ),
+);
+```
+
+This removes the `.btn-text` and `.btn-subtle` classes from the compiled CSS while keeping `.btn-solid` and `.btn-outline` intact.
 
 ## Required keys
 
-Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map’s key is being used.
+Bootstrap assumes the presence of some specific keys within Sass maps as we use and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
 
-For example, we use the `primary`, `success`, and `danger` keys from `$theme-colors` for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you’ll need to modify the Sass code that makes use of those values.
+For `$theme-colors`, the `primary`, `success`, and `danger` keys are required for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues.
 
 ## Functions
 
+### Defaults
+
+The `defaults()` function is the backbone of Bootstrap's customization system. It merges user overrides on top of built-in defaults and strips any `null` entries from the result. Every token map, size map, and variant map uses it:
+
+```scss
+@function defaults($defaults, $overrides) { ... }
+```
+
+It accepts either a map or a list as the first argument. Lists are automatically converted to maps with `true` values, which is how size maps like `$button-sizes` work with a clean `("xs", "sm", "lg")` syntax.
+
 ### Colors
 
-Next to the [Sass maps]([[docsref:/customize/color#color-sass-maps]]) we have, theme colors can also be used as standalone variables, like `$primary`.
+Base colors are defined as `oklch()` values and expanded into full scales via `color-mix()`. Each hue generates steps from `025` to `975`:
 
 ```scss
-.custom-element {
-  color: $gray-100;
-  background-color: $dark;
-}
+// Example generated custom properties from _colors.scss
+--blue-025: color-mix(in lab, #fff 94%, oklch(60% 0.24 240));
+--blue-050: color-mix(in lab, #fff 90%, oklch(60% 0.24 240));
+--blue-100: color-mix(in lab, #fff 80%, oklch(60% 0.24 240));
+// ...
+--blue-500: oklch(60% 0.24 240);
+// ...
+--blue-900: color-mix(in lab, #000 64%, oklch(60% 0.24 240));
+--blue-975: color-mix(in lab, #000 88%, oklch(60% 0.24 240));
 ```
 
-You can lighten or darken colors with Bootstrap’s `tint-color()` and `shade-color()` functions. These functions will mix colors with black or white, unlike Sass’ native `lighten()` and `darken()` functions which will change the lightness by a fixed amount, which often doesn’t lead to the desired effect.
-
-`shift-color()` combines these two functions by shading the color if the weight is positive and tinting the color if the weight is negative.
-
-<ScssDocs name="color-functions" file="scss/_functions.scss" />
-
-In practice, you’d call the function and pass in the color and weight parameters.
-
-```scss
-.custom-element {
-  color: tint-color($primary, 10%);
-}
-
-.custom-element-2 {
-  color: shade-color($danger, 30%);
-}
-
-.custom-element-3 {
-  color: shift-color($success, 40%);
-  background-color: shift-color($success, -60%);
-}
-```
+You can reference any color scale step as a CSS custom property: `var(--blue-500)`, `var(--red-200)`, `var(--gray-900)`, etc.
 
 ### Color contrast
 
 In order to meet the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG/) contrast requirements, authors **must** provide a minimum [text color contrast of 4.5:1](https://www.w3.org/TR/WCAG/#contrast-minimum) and a minimum [non-text color contrast of 3:1](https://www.w3.org/TR/WCAG/#non-text-contrast), with very few exceptions.
 
-To help with this, we included the `color-contrast` function in Bootstrap. It uses the [WCAG contrast ratio algorithm](https://www.w3.org/TR/WCAG/#dfn-contrast-ratio) for calculating contrast thresholds based on [relative luminance](https://www.w3.org/TR/WCAG/#dfn-relative-luminance) in an `sRGB` color space to automatically return a light (`#fff`), dark (`#212529`) or black (`#000`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you’re generating multiple classes.
+To help with this, we included the `color-contrast` function in Bootstrap. It uses the [WCAG contrast ratio algorithm](https://www.w3.org/TR/WCAG/#dfn-contrast-ratio) for calculating contrast thresholds based on [relative luminance](https://www.w3.org/TR/WCAG/#dfn-relative-luminance) in an `sRGB` color space to automatically return a light (`#fff`), dark (`#212529`) or black (`#000`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
 
 For example, to generate color swatches from our `$theme-colors` map:
 
 ```scss
 @each $color, $value in $theme-colors {
   .swatch-#{$color} {
-    color: color-contrast($value);
+    color: color-contrast(map.get($value, "base"));
   }
-}
-```
-
-It can also be used for one-off contrast needs:
-
-```scss
-.custom-element {
-  color: color-contrast(#000); // returns `color: #fff`
-}
-```
-
-You can also specify a base color with our color map functions:
-
-```scss
-.custom-element {
-  color: color-contrast($dark); // returns `color: #fff`
 }
 ```
 
@@ -300,7 +408,7 @@ We use the `escape-svg` function to escape the `<`, `>` and `#` characters for S
 
 ### Add and Subtract functions
 
-We use the `add` and `subtract` functions to wrap the CSS `calc` function. The primary purpose of these functions is to avoid errors when a “unitless” `0` value is passed into a `calc` expression. Expressions like `calc(10px - 0)` will return an error in all browsers, despite being mathematically correct.
+We use the `add` and `subtract` functions to wrap the CSS `calc` function. The primary purpose of these functions is to avoid errors when a "unitless" `0` value is passed into a `calc` expression. Expressions like `calc(10px - 0)` will return an error in all browsers, despite being mathematically correct.
 
 Example where the calc is valid:
 
@@ -339,6 +447,19 @@ $border-width: 0;
 ## Mixins
 
 Our `scss/mixins/` directory has a ton of mixins that power parts of Bootstrap and can also be used across your own project.
+
+### Tokens
+
+The `tokens()` mixin outputs a Sass map as CSS custom properties. Every component uses it to render its token map:
+
+<ScssDocs name="mixin-tokens" file="scss/mixins/_tokens.scss" />
+
+```scss
+.alert {
+  @include tokens($alert-tokens);
+  // Outputs: --alert-padding-x: ...; --alert-padding-y: ...; etc.
+}
+```
 
 ### Color schemes
 

@@ -9,7 +9,7 @@ export const extra_css = ['navbar-fixed.css']
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Fixed navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
@@ -25,7 +25,7 @@ export const extra_css = ['navbar-fixed.css']
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn-outline theme-success" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -35,6 +35,6 @@ export const extra_css = ['navbar-fixed.css']
   <div class="bg-body-tertiary p-5 rounded">
     <h1>Navbar example</h1>
     <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser’s viewport.</p>
-    <a class="btn btn-lg btn-primary" href={getVersionedDocsPath('/components/navbar')} role="button">View navbar docs &raquo;</a>
+    <a class="btn-solid theme-primary btn-lg" href={getVersionedDocsPath('/components/navbar')} role="button">View navbar docs &raquo;</a>
   </div>
 </main>

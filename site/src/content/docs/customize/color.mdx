@@ -16,11 +16,11 @@ export const additionalColors = [
 
 There are 13 shades of 16 colors in Bootstrap's new color system, meaning we have 208 colors to work with when using Bootstrap.
 
-All Bootstrap colors are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we don’t create text or background color classes for each of these variables. Instead, we choose a subset of these colors for a [theme palette](#theme-colors).
+All Bootstrap colors are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we don’t create text or background color classes for each of these variables. Instead, we choose a subset of these colors for a [theme palette]([[docsref:/customize/theme]]).
 
 Be sure to monitor contrast ratios as you customize colors. As shown below, we’ve added three contrast ratios to each of the main colors—one for the swatch’s current colors, one for against white, and one for against black.
 
-<div class="grid gap-0" style={{gridTemplateColumns: 'repeat(13, 1fr)', gap: '4px', minWidth: '0'}}>
+<div class="grid bd-colors-grid">
   {getData('colors').map((color) => {
      return (
        <div class="d-contents grid-cols-fill">
@@ -51,72 +51,65 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, we�
    </div>
 </div>
 
-<Callout>
-  @mdo-do: Move this content to Theme page most likely. Replace with how to modify color variables.
-</Callout>
+## How it works
 
-### Using the new colors
+Bootstrap generates its colors from a series of Sass variables and a Sass map called `$colors` in `scss/_colors.scss`. These are our base colors—blue, indigo, violet, etc—and are used to generate the tints and shades of each color you see above. You can customize these colors by adding or removing colors from the `$colors` map.
 
-These new colors are accessible via CSS variables and utility classes—like `--bs-primary-bg-subtle` and `.bg-primary-subtle`—allowing you to compose your own CSS rules with the variables, or to quickly apply styles via classes. The utilities are built with the color’s associated CSS variables, and since we customize those CSS variables for dark mode, they are also adaptive to color mode by default.
+### Default colors
 
-<Example code={`<div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-    Example element with utilities
-  </div>`} />
+Below is our default list of colors. Colors are unique in Bootstrap in that they're still Sass variables by default. In addition, they're in `oklch()` format, which is a modern color space that is designed to be perceptually uniform.
 
-### Theme colors
+<ScssDocs name="colors-list" file="scss/_colors.scss" />
 
-We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstrap’s `scss/_variables.scss` file.
+The above colors are then turned into a Sass map called `$colors`.
 
-<div class="row">
-  {getData('theme-colors').map((themeColor) => {
-    return (
-      <div class="col-md-4">
-        <div class={`p-3 mb-3 text-bg-${themeColor.name} rounded-3`}>{themeColor.title}</div>
-      </div>
-    )
-  })}
-</div>
+<ScssDocs name="colors-map" file="scss/_colors.scss" />
 
-All these colors are available as a Sass map, `$theme-colors`.
+### Color mixing
 
-<ScssDocs name="theme-colors-map" file="scss/_variables.scss" />
+As mentioned already, we generate lighter (tints) and darker (shades) versions of each color using the `color-mix()` function. This allows us to quickly and easily generate a full scale of colors.
 
-Check out [our Sass maps and loops docs]([[docsref:/customize/sass#maps-and-loops]]) for how to modify these colors.
+The tint and shade stops, the `color-mix()` color space, and the mix colors are all customizable.
 
-### Notes on Sass
+<ScssDocs name="color-mix-options" file="scss/_colors.scss" />
 
-Sass cannot programmatically generate variables, so we manually created variables for every tint and shade ourselves. We specify the midpoint value (e.g., `$blue-500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass’s `mix()` color function.
+Those options and the `$colors` map are used to generate a `$color-tokens` map, which is output as CSS custom properties on `:root`.
 
-Using `mix()` is not the same as `lighten()` and `darken()`—the former blends the specified color with white or black, while the latter only adjusts the lightness value of each color. The result is a much more complete suite of colors, as [shown in this CodePen demo](https://codepen.io/emdeoh/pen/zYOQOPB).
+<ScssDocs name="color-tokens" file="scss/_colors.scss" />
 
-Our `tint-color()` and `shade-color()` functions use `mix()` alongside our `$theme-color-interval` variable, which specifies a stepped percentage value for each mixed color we produce. See the `scss/_functions.scss` and `scss/_variables.scss` files for the full source code.
+## Customizing
 
-## Color Sass maps
+You can customize the colors by adding or removing colors from the `$colors` map. You can also customize the tint and shade stops, the `color-mix()` color space, and the mix colors. Say you want to add another blue-gray color, like slate.
 
-Bootstrap’s source Sass files include three maps to help you quickly and easily loop over a list of colors and their hex values.
+1. Create a new Sass variable for the new color, in `oklch()` format.
+2. Add the new color to the `$colors` map.
+3. Recompile source Sass to generate the new colors.
 
-- `$colors` lists all our available base (`500`) colors
-- `$theme-colors` lists all semantically named theme colors (shown below)
-
-Within `scss/_variables.scss`, you’ll find Bootstrap’s color variables and Sass map. Here’s an example of the `$colors` Sass map:
-
-{/*<ScssDocs name="colors-map" file="scss/_variables.scss" />*/}
-
-Add, remove, or modify values within the map to update how they’re used in many other components. Unfortunately at this time, not *every* component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the `${color}` variables and this Sass map.
-
-### Example
-
-Here’s how you can use these in your Sass:
+Here's how that would look:
 
 ```scss
-.alpha { color: $purple; }
-.beta {
-  color: $yellow-300;
-  background-color: $indigo-900;
-}
+$slate: oklch(55% 0.07 260);
+
+@use "bootstrap" as * with (
+  $colors: (
+    "slate": $slate,
+  ),
+);
 ```
 
-[Color]([[docsref:/utilities/colors]]) and [background]([[docsref:/utilities/background]]) utility classes are also available for setting `color` and `background-color` using the `500` color values.
+To remove a color, set the value to `null`.
+
+```scss
+@use "bootstrap" as * with (
+  $colors: (
+    "pewter": null,
+  ),
+);
+```
+
+<Callout type="warning">
+mdo-do: Update the content below
+</Callout>
 
 ## Generating utilities
 

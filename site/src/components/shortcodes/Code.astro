@@ -1,10 +1,9 @@
 ---
 import fs from 'node:fs'
 import path from 'node:path'
-import { codeToHtml } from 'shiki'
-import { transformerNotationDiff } from '@shikijs/transformers'
-import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
-import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
+import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
+import { getConfig } from '@libs/config'
+import { highlightCode } from '@libs/highlight'
 import { replaceConfigInText } from '@libs/remark'
 
 interface Tab {
@@ -53,6 +52,10 @@ interface Props {
    */
   filePath?: string
   /**
+   * A file path to display in the highlight toolbar instead of the language label.
+   */
+  file?: string
+  /**
    * Defines if the `<Code>` component is nested inside an `<Example>` component or not.
    * @default false
    */
@@ -75,6 +78,7 @@ const {
   code,
   containerClass,
   'data-language': dataLanguage,
+  file,
   fileMatch,
   filePath,
   lang,
@@ -82,6 +86,10 @@ const {
   noToolbar = false,
   tabs
 } = Astro.props
+
+const fileUrl = file
+  ? `${getConfig().repo}/blob/v${getConfig().current_version}/${file}`.replaceAll('\\', '/')
+  : null
 
 // Extract language from multiple possible sources (for markdown code blocks)
 // Priority: lang prop > data-language attribute > className pattern
@@ -112,144 +120,51 @@ let codeToDisplay = filePath
     : code
 
 if (filePath && fileMatch && codeToDisplay) {
-  const match = codeToDisplay.match(new RegExp(fileMatch))
+  const matches = [...codeToDisplay.matchAll(new RegExp(fileMatch, 'g'))]
 
-  if (!match || !match[0]) {
-    throw new Error(`The file at ${filePath} does not contains a match for the regex '${fileMatch}'.`)
+  if (matches.length === 0) {
+    throw new Error(`The file at ${filePath} does not contain a match for the regex '${fileMatch}'.`)
   }
 
-  codeToDisplay = match[0]
+  codeToDisplay = matches.map(m => m[0]).join('\n\n')
 }
 
-// Add line wrapper for shell languages to support shell prompts
-const shouldWrapLines = detectedLang && ['bash', 'sh', 'powershell'].includes(detectedLang)
-
-// Transformer to ensure class name is always 'astro-code' instead of 'shiki'
-const classTransformer = {
-  name: 'class-name-transformer',
-  pre(node: any) {
-    // Force replace all 'shiki' classes with 'astro-code'
-    const existingClasses = node.properties?.className || []
-    const newClasses = existingClasses.map((cls: any) => {
-      if (typeof cls === 'string') {
-        return cls.replace(/shiki/g, 'astro-code')
-      }
-      return cls
-    })
-    node.properties.className = newClasses
-  }
-}
-
-const lineWrapperTransformer = {
-  name: 'line-wrapper',
-  line(node: any) {
-    // Wrap non-comment lines in a span with .line class for shell prompt styling
-    const hasOnlyComments = node.children.every((child: any) =>
-      child.type === 'element' &&
-      child.properties?.class &&
-      Array.isArray(child.properties.class) &&
-      child.properties.class.some((cls: any) => typeof cls === 'string' && cls.includes('comment'))
-    )
-
-    if (!hasOnlyComments) {
-      node.properties = node.properties || {}
-      node.properties.class = node.properties.class
-        ? `${node.properties.class} line`
-        : 'line'
-    }
-  }
-}
-
-const transformers: any[] = [
-  transformerNotationDiff(), // Run diff transformer first, supports // [!code ++] and // [!code --] notation
-  classTransformer
+const diffTransformers = [
+  transformerNotationDiff(),
+  transformerNotationHighlight()
 ]
-if (shouldWrapLines) {
-  transformers.push(lineWrapperTransformer)
-}
 
 // Process tabs if provided
 let highlightedTabs: Array<{ label: string; code: string }> | null = null
 if (tabs && tabs.length > 0) {
   highlightedTabs = await Promise.all(
-    tabs.map(async (tab) => {
-      // Replace config placeholders in the code
-      const processedCode = replaceConfigInText(tab.code)
-
-      const tabLang = tab.lang || detectedLang || 'bash'
-      const shouldWrapTabLines = ['bash', 'sh', 'powershell'].includes(tabLang)
-
-      const tabTransformers: any[] = [
-        transformerNotationDiff(),
-        classTransformer
-      ]
-      if (shouldWrapTabLines) {
-        tabTransformers.push(lineWrapperTransformer)
-      }
-
-      let tabHighlighted = await codeToHtml(processedCode, {
-        lang: tabLang,
-        themes: {
-          light: bootstrapLight,
-          dark: bootstrapDark
-        },
-        transformers: tabTransformers
-      })
-
-      // Replace 'shiki' with 'astro-code' in the generated HTML
-      tabHighlighted = tabHighlighted.replace(/class=(["'])shiki(\s+)/g, 'class=$1astro-code$2')
-      tabHighlighted = tabHighlighted.replace(/class=(["'])shiki(["'])/g, 'class=$1astro-code$2')
-      tabHighlighted = tabHighlighted.replace(/shiki-themes/g, 'astro-code-themes')
-
-      return {
-        label: tab.label,
-        code: tabHighlighted
-      }
-    })
+    tabs.map(async (tab) => ({
+      label: tab.label,
+      code: await highlightCode(
+        replaceConfigInText(tab.code),
+        tab.lang || detectedLang || 'bash',
+        diffTransformers
+      )
+    }))
   )
 }
 
-let highlightedCode = codeToDisplay && detectedLang
-  ? await codeToHtml(codeToDisplay, {
-      lang: detectedLang,
-      themes: {
-        light: bootstrapLight,
-        dark: bootstrapDark
-      },
-      transformers
-    })
+const highlightedCode = codeToDisplay && detectedLang
+  ? await highlightCode(codeToDisplay, detectedLang, diffTransformers)
   : null
-
-// Replace 'shiki' with 'astro-code' in the generated HTML
-if (highlightedCode) {
-  // Replace class="shiki" or class='shiki' (preserving other classes like has-diff)
-  highlightedCode = highlightedCode.replace(/class=(["'])shiki(\s+)/g, 'class=$1astro-code$2')
-  highlightedCode = highlightedCode.replace(/class=(["'])shiki(["'])/g, 'class=$1astro-code$2')
-  // Replace shiki-themes if it exists
-  highlightedCode = highlightedCode.replace(/shiki-themes/g, 'astro-code-themes')
-}
 ---
 
 <script>
-  import ClipboardJS from 'clipboard'
+  import { Tooltip } from '../../../../dist/js/bootstrap.bundle.js'
+  import { initCopyButtons } from '@libs/clipboard'
 
-  const btnTitle = 'Copy to clipboard'
-  const btnEdit = 'Edit on StackBlitz'
-
-  function snippetButtonTooltip(selector: string, title: string) {
-    document.querySelectorAll(selector).forEach((btn) => {
-      bootstrap.Tooltip.getOrCreateInstance(btn, { title })
-    })
-  }
-
-  snippetButtonTooltip('.btn-clipboard', btnTitle)
-  snippetButtonTooltip('.btn-edit', btnEdit)
+  document.querySelectorAll('.btn-edit').forEach((btn) => {
+    Tooltip.getOrCreateInstance(btn, { title: 'Edit on StackBlitz' })
+  })
 
   // Handle tab switching
   document.querySelectorAll('.code-tabs').forEach((tabContainer) => {
     const buttons = tabContainer.querySelectorAll('.code-tab-btn')
-    // Find the parent container that holds both tabs and content
-    // Could be .bd-code-snippet or .bd-example-snippet
     const parentContainer = tabContainer.closest('.bd-code-snippet') ||
                            tabContainer.closest('.bd-example-snippet') ||
                            tabContainer.parentElement?.parentElement
@@ -257,88 +172,30 @@ if (highlightedCode) {
 
     buttons.forEach((button, index) => {
       button.addEventListener('click', () => {
-        // Remove active class from all buttons and hide all code blocks
         buttons.forEach((btn) => btn.classList.remove('active'))
         codeBlocks?.forEach((block) => block.classList.remove('active'))
 
-        // Add active class to clicked button and show corresponding code block
         button.classList.add('active')
         codeBlocks?.[index]?.classList.add('active')
       })
     })
   })
 
-  const clipboard = new ClipboardJS('.btn-clipboard', {
-    target: (trigger) => trigger.closest('.bd-code-snippet')?.querySelector('.highlight')!,
-    text: (trigger) => {
-      // For tabbed code, find the active tab's code
-      const snippet = trigger.closest('.bd-code-snippet')
-      const activeTab = snippet?.querySelector('.code-tab-content.active .astro-code')
-      if (activeTab) {
-        return activeTab.textContent?.trim()!
-      }
-      // Trim text to workaround a Firefox issue where the structure of the DOM (uncontrolled) is relevant for the
-      // copied text.
-      // https://github.com/zenorocha/clipboard.js/issues/439#issuecomment-312344621
-      return snippet?.querySelector('.astro-code')!.textContent?.trim()!
-    }
-  })
-
-  clipboard.on('success', (event) => {
-    const iconFirstChild = event.trigger.querySelector('.bi')?.firstElementChild
-    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
-    const namespace = 'http://www.w3.org/1999/xlink'
-    const originalXhref = iconFirstChild?.getAttributeNS(namespace, 'href')
-    const isCheckIconVisible = originalXhref === '#check2'
-
-    if (isCheckIconVisible) {
-      return
+  initCopyButtons('.bd-code-snippet [data-bd-clipboard]', (trigger) => {
+    const snippet = trigger.closest('.bd-code-snippet')
+    const activeTab = snippet?.querySelector('.code-tab-content.active .astro-code')
+    if (activeTab) {
+      return activeTab.textContent?.trim() || ''
     }
 
-    tooltipBtn?.setContent({ '.tooltip-inner': 'Copied!' })
-
-    event.trigger.addEventListener(
-      'hidden.bs.tooltip',
-      () => {
-        tooltipBtn?.setContent({ '.tooltip-inner': btnTitle })
-      },
-      { once: true }
-    )
-
-    event.clearSelection()
-
-    if (originalXhref) {
-      iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref.replace('clipboard', 'check2'))
-    }
-
-    setTimeout(() => {
-      if (originalXhref) {
-        iconFirstChild?.setAttributeNS(namespace, 'href', originalXhref)
-      }
-    }, 2000)
-  })
-
-  clipboard.on('error', (event) => {
-    const modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
-    const fallbackMsg = `Press ${modifierKey}C to copy`
-    const tooltipBtn = bootstrap.Tooltip.getInstance(event.trigger)
-
-    tooltipBtn?.setContent({ '.tooltip-inner': fallbackMsg })
-
-    event.trigger.addEventListener(
-      'hidden.bs.tooltip',
-      () => {
-        tooltipBtn?.setContent({ '.tooltip-inner': btnTitle })
-      },
-      { once: true }
-    )
+    return snippet?.querySelector('.astro-code')?.textContent?.trim() || ''
   })
 </script>
 
 {nestedInExample ? (
   <>
     {!noToolbar && (
-      <div class="hstack highlight-toolbar">
+      <div class="hstack highlight-toolbar align-items-center">
         {highlightedTabs ? (
           <div class="code-tabs">
             {highlightedTabs.map((tab, index) => (
@@ -350,6 +207,8 @@ if (highlightedCode) {
               </button>
             ))}
           </div>
+        ) : file ? (
+          <a class="text-decoration-none font-monospace fs-xs fg-3" href={fileUrl} target="_blank" rel="noopener noreferrer">{file}</a>
         ) : (
           <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
         )}
@@ -361,9 +220,9 @@ if (highlightedCode) {
               </svg>
             </button>
           )}
-          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
-            <svg class="bi" aria-hidden="true">
-              <use href="#clipboard" />
+          <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
+            <svg class="bi fs-md" aria-hidden="true">
+              <use href="#copy" />
             </svg>
           </button>
         </div>
@@ -384,9 +243,9 @@ if (highlightedCode) {
     )}
   </>
 ) : (
-  <div class="bd-code-snippet">
+  <div class:list={["bd-code-snippet", containerClass]}>
     {!noToolbar && (
-      <div class="hstack highlight-toolbar">
+      <div class="hstack highlight-toolbar align-items-center">
         {highlightedTabs ? (
           <div class="code-tabs">
             {highlightedTabs.map((tab, index) => (
@@ -398,13 +257,15 @@ if (highlightedCode) {
               </button>
             ))}
           </div>
+        ) : file ? (
+          <a class="text-decoration-none font-monospace fs-xs fg-3" href={fileUrl} target="_blank" rel="noopener noreferrer">{file}</a>
         ) : (
           <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
         )}
         <div class="d-flex ms-auto">
-          <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
-            <svg class="bi" aria-hidden="true">
-              <use href="#clipboard" />
+          <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
+            <svg class="bi fs-md" aria-hidden="true">
+              <use href="#copy" />
             </svg>
           </button>
         </div>

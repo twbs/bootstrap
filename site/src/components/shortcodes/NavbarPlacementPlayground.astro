@@ -1,0 +1,144 @@
+---
+import Example from '@components/shortcodes/Example.astro'
+
+const placements = [
+  { value: '', label: 'Default (static)' },
+  { value: 'fixed-top', label: 'Fixed top' },
+  { value: 'fixed-bottom', label: 'Fixed bottom' },
+  { value: 'sticky-top', label: 'Sticky top' },
+  { value: 'sticky-bottom', label: 'Sticky bottom' }
+]
+---
+
+<div class="bg-1 p-3 fs-sm rounded-3">
+  <div class="vstack gap-1">
+    <label class="form-label fw-semibold mb-0">Placement</label>
+    <div class="dropdown">
+      <button
+        type="button"
+        class="btn-outline theme-secondary dropdown-toggle"
+        id="navbar-placement-dropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        data-placement=""
+      >
+        <span>Default (static)</span>
+        <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+          <use href="#chevron-expand" />
+        </svg>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="navbar-placement-dropdown">
+        {placements.map((p) => (
+          <li>
+            <a
+              class:list={['dropdown-item', { 'active': p.value === '' }]}
+              href="#"
+              data-placement={p.value}
+            >
+              {p.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<Example
+  code={`<nav class="navbar bg-1">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Default</a>
+  </div>
+</nav>`}
+  id="navbar-placement-preview"
+/>
+
+<script>
+  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+
+  const placementDropdownButton = document.querySelector('#navbar-placement-dropdown') as HTMLButtonElement
+  const placementDropdownItems = document.querySelectorAll('#navbar-placement-dropdown + .dropdown-menu .dropdown-item')
+  const previewContainer = document.querySelector('#navbar-placement-preview') as HTMLElement
+  const previewNavbar = previewContainer?.querySelector('.navbar') as HTMLElement
+  const codeSnippet = previewContainer?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+
+  const placementClasses = ['fixed-top', 'fixed-bottom', 'sticky-top', 'sticky-bottom']
+
+  const placementLabels: Record<string, string> = {
+    '': 'Default',
+    'fixed-top': 'Fixed top',
+    'fixed-bottom': 'Fixed bottom',
+    'sticky-top': 'Sticky top',
+    'sticky-bottom': 'Sticky bottom'
+  }
+
+  function updatePlacement(placement: string) {
+    if (!previewNavbar || !placementDropdownButton) return
+
+    // Update dropdown button text
+    const labelSpan = placementDropdownButton.querySelector('span')
+    if (labelSpan) {
+      labelSpan.textContent = placementLabels[placement] ? `${placementLabels[placement]}${placement ? '' : ' (static)'}` : 'Default (static)'
+    }
+    placementDropdownButton.dataset.placement = placement
+
+    // Update active state in dropdown
+    placementDropdownItems.forEach(item => {
+      const itemPlacement = (item as HTMLElement).dataset.placement
+      item.classList.toggle('active', itemPlacement === placement)
+    })
+
+    // Remove all placement classes
+    placementClasses.forEach(cls => {
+      previewNavbar.classList.remove(cls)
+    })
+
+    // Add new placement class if not default
+    if (placement) {
+      previewNavbar.classList.add(placement)
+    }
+
+    // Update the brand text to show current placement
+    const brand = previewNavbar.querySelector('.navbar-brand')
+    if (brand) {
+      brand.textContent = placementLabels[placement] || 'Default'
+    }
+
+    // Update code snippet
+    updateCodeSnippet(placement)
+  }
+
+  function updateCodeSnippet(placement: string) {
+    if (!codeSnippet) return
+
+    const placementClass = placement ? ` ${placement}` : ''
+    const label = placementLabels[placement] || 'Default'
+
+    const htmlCode = `<nav class="navbar${placementClass} bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">${label}</a>
+  </div>
+</nav>`
+
+    codeSnippet.className = 'language-html'
+    codeSnippet.textContent = htmlCode
+
+    if (typeof window !== 'undefined' && (window as any).Prism) {
+      (window as any).Prism.highlightElement(codeSnippet)
+    }
+  }
+
+  // Initialize dropdown
+  if (placementDropdownButton) {
+    const placementDropdown = Dropdown.getOrCreateInstance(placementDropdownButton)
+
+    placementDropdownItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
+        const placement = (item as HTMLElement).dataset.placement || ''
+        updatePlacement(placement)
+        placementDropdown.hide()
+      })
+    })
+  }
+</script>

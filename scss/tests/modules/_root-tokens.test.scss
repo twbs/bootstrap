@@ -1,0 +1,73 @@
+@use "sass:map";
+
+// Test customizing root tokens via @use "root" with ($root-tokens: (...))
+@use "../../root" as * with (
+  $root-tokens: (
+    --black: #111,
+    --white: #fefefe,
+    --brand-color: #f60,
+    --custom-spacing: 1.5rem,
+  )
+);
+
+$true-terminal-output: false;
+
+@include describe("Root token customization") {
+  @include describe("@use with $root-tokens overrides") {
+    @include it("should override existing token values") {
+      @include assert() {
+        @include output() {
+          .test {
+            color: map.get($root-tokens, --black);
+            background: map.get($root-tokens, --white);
+          }
+        }
+
+        @include expect() {
+          .test {
+            color: #111;
+            background: #fefefe;
+          }
+        }
+      }
+    }
+
+    @include it("should include custom tokens added via configuration") {
+      @include assert() {
+        @include output() {
+          .test {
+            padding: map.get($root-tokens, --custom-spacing);
+            color: map.get($root-tokens, --brand-color);
+          }
+        }
+
+        @include expect() {
+          .test {
+            padding: 1.5rem;
+            color: #f60;
+          }
+        }
+      }
+    }
+
+    @include it("should still include dynamically generated theme tokens") {
+      @include assert() {
+        @include output() {
+          .test {
+            has-bg-body: #{map.has-key($root-tokens, --bg-body)};
+            has-fg-body: #{map.has-key($root-tokens, --fg-body)};
+            has-primary-base: #{map.has-key($root-tokens, --primary-base)};
+          }
+        }
+
+        @include expect() {
+          .test {
+            has-bg-body: true;
+            has-fg-body: true;
+            has-primary-base: true;
+          }
+        }
+      }
+    }
+  }
+}

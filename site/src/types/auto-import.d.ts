@@ -20,7 +20,9 @@ export declare global {
   export const Example: typeof import('@shortcodes/Example.astro').default
   export const JsDismiss: typeof import('@shortcodes/JsDismiss.astro').default
   export const JsDocs: typeof import('@shortcodes/JsDocs.astro').default
+  export const NavbarPlacementPlayground: typeof import('@shortcodes/NavbarPlacementPlayground.astro').default
   export const Placeholder: typeof import('@shortcodes/Placeholder.astro').default
+  export const ResizableExample: typeof import('@shortcodes/ResizableExample.astro').default
   export const ScssDocs: typeof import('@shortcodes/ScssDocs.astro').default
   export const StepperPlayground: typeof import('@shortcodes/StepperPlayground.astro').default
   export const Swatch: typeof import('@shortcodes/Swatch.astro').default

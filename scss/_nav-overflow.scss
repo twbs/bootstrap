@@ -1,0 +1,27 @@
+// Nav Overflow (Priority+ Pattern)
+//
+// A responsive navigation pattern that automatically moves items
+// to an overflow dropdown when space is limited.
+
+@layer components {
+  .nav-overflow {
+    flex-wrap: nowrap;
+    min-width: 0; // Allow flex child to shrink below content width
+  }
+
+  // Container item for overflow
+  .nav-overflow-item {
+    flex-shrink: 0;
+    margin-inline-start: auto;
+  }
+
+  // Hide items that have been moved to overflow
+  .nav-overflow [data-bs-nav-overflow="true"] {
+    display: none;
+  }
+
+  // Preserve items that should never overflow
+  .nav-overflow-keep {
+    flex-shrink: 0;
+  }
+}

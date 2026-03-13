@@ -1,56 +1,57 @@
-@use "../config" as *;
-@use "../colors" as *;
-@use "../variables" as *;
 @use "../functions" as *;
-@use "../mixins/border-radius" as *;
-@use "../mixins/color-mode" as *;
 @use "../mixins/focus-ring" as *;
-@use "../mixins/transition" as *;
-@use "form-variables" as *;
+@use "../mixins/tokens" as *;
 
-// scss-docs-start check-variables
-$check-border-color: var(--border-color) !default;
-$check-checked-bg: var(--primary-base) !default;
-$check-checked-border-color: $check-checked-bg !default;
-$check-indeterminate-bg: var(--primary-base) !default;
-$check-indeterminate-border-color: $check-indeterminate-bg !default;
-$check-disabled-bg: var(--bg-3) !default;
-$check-disabled-opacity: .65 !default;
-// scss-docs-end check-variables
+// stylelint-disable custom-property-no-missing-var-function
+$check-tokens: () !default;
+
+// scss-docs-start check-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$check-tokens: defaults(
+  (
+    --check-size: 1.25rem,
+    --check-margin-block: .125rem,
+    --check-bg: transparent,
+    --check-border-color: var(--border-color),
+    --check-border-radius: .375rem,
+    --check-checked-bg: var(--control-checked-bg),
+    --check-checked-border-color: var(--control-checked-border-color),
+    --check-indeterminate-bg: var(--control-checked-bg),
+    --check-indeterminate-border-color: var(--control-checked-border-color),
+    --check-active-bg: var(--control-active-bg),
+    --check-active-border-color: var(--control-active-border-color),
+    --check-disabled-bg: var(--control-disabled-bg),
+    --check-disabled-opacity: var(--control-disabled-opacity),
+  ),
+  $check-tokens
+);
+// scss-docs-end check-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
-  b-checkgroup {
+  .checkgroup {
     display: flex;
     gap: var(--gap, .5rem);
     align-items: var(--align-items, start);
 
     .description {
-      color: var(--secondary-text);
+      color: var(--fg-3);
     }
   }
 
   .check {
-    // scss-docs-start check-css-variables
-    --check-bg: transparent;
-    --check-border-color: #{$check-border-color};
-    --check-checked-bg: #{$check-checked-bg};
-    --check-checked-border-color: #{$check-checked-border-color};
-    --check-indeterminate-bg: #{$check-indeterminate-bg};
-    --check-indeterminate-border-color: #{$check-indeterminate-border-color};
-    --check-disabled-bg: #{$check-disabled-bg};
-    --check-disabled-opacity: #{$check-disabled-opacity};
-    // scss-docs-end check-css-variables
+    @include tokens($check-tokens);
 
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    margin-block: .125rem;
+    margin-block: var(--check-margin-block);
 
     :where(svg, input) {
       flex-shrink: 0;
       grid-row-start: 1;
       grid-column-start: 1;
-      width: 1rem;
-      height: 1rem;
+      width: var(--check-size);
+      height: var(--check-size);
     }
 
     :where(input) {
@@ -59,7 +60,7 @@ $check-disabled-opacity: .65 !default;
       background-color: var(--theme-bg, var(--check-bg));
       border: 1px solid var(--theme-bg, var(--check-border-color));
       // stylelint-disable-next-line property-disallowed-list
-      border-radius: .25em;
+      border-radius: .3em;
     }
 
     :where(input:checked, input:indeterminate) {
@@ -74,7 +75,7 @@ $check-disabled-opacity: .65 !default;
     &:has(input:checked) .checked,
     &:has(input:indeterminate) .indeterminate {
       display: block;
-      color: var(--primary-contrast);
+      color: var(--theme-contrast, var(--primary-contrast));
       stroke: currentcolor;
     }
 
@@ -82,7 +83,7 @@ $check-disabled-opacity: .65 !default;
       --check-bg: var(--check-disabled-bg);
 
       ~ label {
-        color: var(--secondary-text);
+        color: var(--fg-3);
         cursor: default;
       }
     }
@@ -97,5 +98,13 @@ $check-disabled-opacity: .65 !default;
     :where(svg path) {
       display: none;
     }
+  }
+
+  .check-sm {
+    --check-size: 1rem;
+  }
+  .check-lg {
+    --check-size: 1.5rem;
+    --check-margin-block: 0;
   }
 }

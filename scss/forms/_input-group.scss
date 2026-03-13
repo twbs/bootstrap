@@ -1,22 +1,41 @@
 @use "sass:map";
 @use "sass:string";
-@use "../config" as *;
-@use "../colors" as *;
-@use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/tokens" as *;
 @use "form-variables" as *;
 
-// scss-docs-start input-group-variables
-$input-group-addon-padding-y:           $input-padding-y !default;
-$input-group-addon-padding-x:           $input-padding-x !default;
-// $input-group-addon-font-weight:         $input-font-weight !default;
-$input-group-addon-color:               $input-color !default;
-$input-group-addon-bg:                  var(--tertiary-bg) !default;
-$input-group-addon-border-color:        $input-border-color !default;
-// scss-docs-end input-group-variables
+$input-group-addon-tokens: () !default;
 
-@layer forms {
+// scss-docs-start input-group-addon-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$input-group-addon-tokens: defaults(
+  (
+    --input-group-addon-padding-y: var(--btn-input-padding-y),
+    --input-group-addon-padding-x: var(--btn-input-padding-x),
+    --input-group-addon-font-size: var(--btn-input-font-size),
+    --input-group-addon-line-height: var(--btn-input-line-height),
+    --input-group-addon-color: var(--fg-body),
+    --input-group-addon-bg: var(--bg-2),
+    --input-group-addon-border-color: var(--border-color),
+  ),
+  $input-group-addon-tokens
+);
+// scss-docs-end input-group-addon-tokens
+
+// scss-docs-start input-group-sizes
+$input-group-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$input-group-sizes: defaults(
+  ("sm", "lg"),
+  $input-group-sizes
+);
+// scss-docs-end input-group-sizes
+
+@layer components {
   .input-group {
+    @include tokens($input-group-addon-tokens);
+
     position: relative;
     display: flex;
     flex-wrap: wrap; // For form validation feedback
@@ -24,7 +43,6 @@ $input-group-addon-border-color:        $input-border-color !default;
     width: 100%;
 
     > .form-control,
-    > .form-select,
     > .form-floating {
       position: relative; // For focus state's z-index
       flex: 1 1 auto;
@@ -34,7 +52,6 @@ $input-group-addon-border-color:        $input-border-color !default;
 
     // Bring the "active" form control to the top of surrounding elements
     > .form-control:focus,
-    > .form-select:focus,
     > .form-floating:focus-within {
       z-index: 5;
     }
@@ -42,7 +59,7 @@ $input-group-addon-border-color:        $input-border-color !default;
     // Ensure buttons are always above inputs for more visually pleasing borders.
     // This isn't needed for `.input-group-text` since it shares the same border-color
     // as our inputs.
-    .btn {
+    > .input-group-btn {
       position: relative;
       z-index: 2;
 
@@ -52,7 +69,6 @@ $input-group-addon-border-color:        $input-border-color !default;
     }
   }
 
-
   // Textual addons
   //
   // Serves as a catch-all element for any text or radio/checkbox input you wish
@@ -61,48 +77,35 @@ $input-group-addon-border-color:        $input-border-color !default;
   .input-group-text {
     display: flex;
     align-items: center;
-    padding: $input-group-addon-padding-y $input-group-addon-padding-x;
-    font-size: $input-font-size; // Match inputs
+    padding: var(--input-group-addon-padding-y) var(--input-group-addon-padding-x);
+    font-size: var(--input-group-addon-font-size); // Match inputs
     // font-weight: $input-group-addon-font-weight;
-    line-height: $input-line-height;
-    color: $input-group-addon-color;
+    line-height: var(--input-group-addon-line-height);
+    color: var(--input-group-addon-color);
     text-align: center;
     white-space: nowrap;
-    background-color: $input-group-addon-bg;
-    border: $input-border-width solid $input-group-addon-border-color;
-    @include border-radius($input-border-radius);
+    background-color: var(--input-group-addon-bg);
+    border: var(--border-width) solid var(--input-group-addon-border-color);
+    @include border-radius(var(--btn-input-border-radius));
   }
-
 
   // Sizing
   //
   // Remix the default form control sizing classes into new ones for easier
   // manipulation.
 
-  .input-group-lg > .form-control,
-  .input-group-lg > .form-select,
-  .input-group-lg > .input-group-text,
-  .input-group-lg > .btn {
-    padding: $input-padding-y-lg $input-padding-x-lg;
-    font-size: $input-font-size-lg;
-    @include border-radius($input-border-radius-lg);
+  @each $size, $_ in $input-group-sizes {
+    .input-group-#{$size} {
+      > .form-control,
+      > .input-group-text,
+      > .btn {
+        min-height: var(--btn-input-#{$size}-min-height);
+        padding: var(--btn-input-#{$size}-padding-y) var(--btn-input-#{$size}-padding-x);
+        font-size: var(--btn-input-#{$size}-font-size);
+        @include border-radius(var(--btn-input-#{$size}-border-radius));
+      }
+    }
   }
-
-  .input-group-sm > .form-control,
-  .input-group-sm > .form-select,
-  .input-group-sm > .input-group-text,
-  .input-group-sm > .btn {
-    padding: $input-padding-y-sm $input-padding-x-sm;
-    font-size: $input-font-size-sm;
-    @include border-radius($input-border-radius-sm);
-  }
-
-  .input-group-lg > .form-select,
-  .input-group-sm > .form-select {
-    // mdo-do: need to revisit this
-    // padding-right: $form-select-padding-x + $form-select-indicator-padding;
-  }
-
 
   // Rounded corners
   //
@@ -133,7 +136,7 @@ $input-group-addon-border-color:        $input-border-color !default;
     }
 
     > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
-      margin-inline-start: calc(-1 * #{$input-border-width});
+      margin-inline-start: calc(-1 * var(--border-width));
       @include border-start-radius(0);
     }
 

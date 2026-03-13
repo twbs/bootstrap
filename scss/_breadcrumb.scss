@@ -1,51 +1,39 @@
-@use "sass:string";
-@use "config" as *;
-@use "variables" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/transition" as *;
+@use "mixins/tokens" as *;
 
-// scss-docs-start breadcrumb-variables
-$breadcrumb-font-size:              null !default;
-$breadcrumb-padding-y:              0 !default;
-$breadcrumb-padding-x:              0 !default;
-$breadcrumb-margin-bottom:          1rem !default;
-$breadcrumb-bg:                     null !default;
-$breadcrumb-divider-color:          var(--fg-4) !default;
-$breadcrumb-border-radius:          var(--border-radius) !default;
+$breadcrumb-tokens: () !default;
 
-$breadcrumb-link-padding-x:         .75rem !default;
-$breadcrumb-link-padding-y:         .25rem !default;
-$breadcrumb-link-color:             var(--fg-3) !default;
-$breadcrumb-link-hover-color:       var(--fg-2) !default;
-$breadcrumb-link-hover-bg:          var(--bg-1) !default;
-$breadcrumb-link-active-color:      var(--fg-1) !default;
-$breadcrumb-link-border-radius:     var(--border-radius-lg) !default;
-// scss-docs-end breadcrumb-variables
+// scss-docs-start breadcrumb-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$breadcrumb-tokens: defaults(
+  (
+    --breadcrumb-margin-bottom: 1rem,
+    --breadcrumb-font-size: inherit,
+    --breadcrumb-bg: transparent,
+    --breadcrumb-border-radius: var(--border-radius),
+    --breadcrumb-divider-color: var(--fg-4),
+    --breadcrumb-link-padding-x: .75rem,
+    --breadcrumb-link-padding-y: .25rem,
+    --breadcrumb-link-color: var(--fg-3),
+    --breadcrumb-link-hover-color: var(--fg-2),
+    --breadcrumb-link-hover-bg: var(--bg-1),
+    --breadcrumb-link-active-color: var(--fg-1),
+    --breadcrumb-link-border-radius: var(--border-radius-lg),
+  ),
+  $breadcrumb-tokens
+);
+// scss-docs-end breadcrumb-tokens
 
 @layer components {
   .breadcrumb {
-    // scss-docs-start breadcrumb-css-vars
-    --breadcrumb-padding-x: #{$breadcrumb-padding-x};
-    --breadcrumb-padding-y: #{$breadcrumb-padding-y};
-    --breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
-    --breadcrumb-font-size: #{$breadcrumb-font-size};
-    --breadcrumb-bg: #{$breadcrumb-bg};
-    --breadcrumb-border-radius: #{$breadcrumb-border-radius};
-    --breadcrumb-divider-color: #{$breadcrumb-divider-color};
-    --breadcrumb-link-padding-x: #{$breadcrumb-link-padding-x};
-    --breadcrumb-link-padding-y: #{$breadcrumb-link-padding-y};
-    --breadcrumb-link-color: #{$breadcrumb-link-color};
-    --breadcrumb-link-hover-color: #{$breadcrumb-link-hover-color};
-    --breadcrumb-link-hover-bg: #{$breadcrumb-link-hover-bg};
-    --breadcrumb-link-active-color: #{$breadcrumb-link-active-color};
-    --breadcrumb-link-border-radius: #{$breadcrumb-link-border-radius};
-    // scss-docs-end breadcrumb-css-vars
+    @include tokens($breadcrumb-tokens);
 
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: var(--breadcrumb-padding-y) var(--breadcrumb-padding-x);
+    padding: var(--breadcrumb-padding-y, 0) var(--breadcrumb-padding-x, 0);
     font-size: var(--breadcrumb-font-size);
     list-style: none;
     background-color: var(--breadcrumb-bg);

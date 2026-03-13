@@ -1,10 +1,8 @@
-@use "../variables" as *;
-
 @layer helpers {
   .vr {
     display: inline-block;
     align-self: stretch;
-    width: $vr-border-width;
+    width: var(--vr-border-width, var(--border-width));
     min-height: 1em;
     background-color: var(--border-color);
   }

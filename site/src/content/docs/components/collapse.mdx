@@ -21,10 +21,10 @@ Click the buttons below to show and hide another element via class changes:
 Generally, we recommend using a `<button>` with the `data-bs-target` attribute. While not recommended from a semantic point of view, you can also use an `<a>` link with the `href` attribute (and a `role="button"`). In both cases, the `data-bs-toggle="collapse"` is required.
 
 <Example code={`<p class="d-inline-flex gap-1">
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn-solid theme-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
       Link with href
     </a>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Button with data-bs-target
     </button>
   </p>
@@ -43,7 +43,7 @@ Please note that while the example below has a `min-height` set to avoid excessi
 </Callout>
 
 <Example code={`<p>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+    <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
       Toggle width collapse
     </button>
   </p>
@@ -61,9 +61,9 @@ A `<button>` or `<a>` element can show and hide multiple elements by referencing
 Conversely, multiple `<button>` or `<a>` elements can show and hide the same element if they each reference it with their `data-bs-target` or `href` attribute.
 
 <Example code={`<p class="d-inline-flex gap-1">
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+    <a class="btn-solid theme-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+    <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+    <button class="btn-solid theme-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
   </p>
   <div class="row">
     <div class="col">

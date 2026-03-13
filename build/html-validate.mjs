@@ -10,7 +10,7 @@
  * - Easy to configure with rule-based system
  * - Better integration with Node.js build tools
  *
- * Copyright 2017-2025 The Bootstrap Authors
+ * Copyright 2017-2026 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 

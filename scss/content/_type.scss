@@ -1,6 +1,25 @@
-@use "../config" as *;
-@use "../variables" as *;
+@use "../functions" as *;
 @use "../mixins/lists" as *;
+@use "../mixins/tokens" as *;
+
+$blockquote-tokens: () !default;
+
+// scss-docs-start blockquote-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$blockquote-tokens: defaults(
+  (
+    --blockquote-gap: calc(var(--spacer) / 2),
+    --blockquote-padding-x: var(--spacer),
+    --blockquote-margin-y: 1rem,
+    --blockquote-font-size: var(--font-size-md),
+    --blockquote-border-width: .25rem,
+    --blockquote-border-color: var(--border-color),
+    --blockquote-footer-font-size: var(--font-size-sm),
+    --blockquote-footer-color: var(--fg-3),
+  ),
+  $blockquote-tokens
+);
+// scss-docs-end blockquote-tokens
 
 @layer content {
   //
@@ -19,10 +38,9 @@
     display: inline-block;
 
     &:not(:last-child) {
-      margin-inline-end: $list-inline-padding;
+      margin-inline-end: var(--list-inline-padding, var(--spacer) / 2);
     }
   }
-
 
   //
   // Misc
@@ -30,25 +48,36 @@
 
   // Builds on `abbr`
   .initialism {
-    font-size: $initialism-font-size;
+    font-size: var(--initialism-font-size, var(--font-size-xs));
     text-transform: uppercase;
   }
 
   // Blockquotes
   .blockquote {
-    margin-bottom: $blockquote-margin-y;
-    font-size: $blockquote-font-size;
+    @include tokens($blockquote-tokens);
+    display: flex;
+    flex-direction: column;
+    gap: var(--blockquote-gap);
+    padding-inline-start: var(--blockquote-padding-x);
+    margin-bottom: var(--blockquote-margin-y);
+    font-size: var(--blockquote-font-size);
+    border-inline-start: var(--blockquote-border-width) solid var(--blockquote-border-color);
 
-    > :last-child {
+    > * {
+      margin-bottom: 0;
+    }
+  }
+
+  // stylelint-disable-next-line selector-no-qualifying-type
+  figure.blockquote {
+    blockquote {
       margin-bottom: 0;
     }
   }
 
   .blockquote-footer {
-    margin-top: -$blockquote-margin-y;
-    margin-bottom: $blockquote-margin-y;
-    font-size: $blockquote-footer-font-size;
-    color: $blockquote-footer-color;
+    font-size: var(--blockquote-footer-font-size);
+    color: var(--blockquote-footer-color);
 
     &::before {
       content: "\2014\00A0"; // em dash, nbsp

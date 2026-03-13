@@ -10,11 +10,11 @@ Bootstrap sets basic global display, typography, and link styles. When more cont
 
 - Use a [native font stack]([[docsref:/content/reboot#native-font-stack]]) that selects the best `font-family` for each OS and device.
 - For a more inclusive and accessible type scale, we use the browser’s default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.
-- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
+- Use the `--body-font-family`, `--body-font-size`, and `--body-line-height` attributes as our typographic base applied to the `<body>`.
 - Set the global link color via `--bs-link-color`.
 - Use `--bs-body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
-These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to set `$font-size-base` in `rem`.
+These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to set `--font-size-base` in `rem`.
 
 ## Headings
 
@@ -98,10 +98,10 @@ Utility classes are available for most common text-related CSS properties.
 - [Font style]([[docsref:/utilities/font-style]])
 - [Font weight]([[docsref:/utilities/font-weight]])
 - [Line height]([[docsref:/utilities/line-height]])
-- [Text alignment]([[docsref:/utilities/text-alignment])
-- [Text transform]([[docsref:/utilities/text-transform])
-- [Text decoration]([[docsref:/utilities/text-decoration])
-- [Text wrapping]([[docsref:/utilities/text-wrapping])
+- [Text alignment]([[docsref:/utilities/text-alignment]])
+- [Text transform]([[docsref:/utilities/text-transform]])
+- [Text decoration]([[docsref:/utilities/text-decoration]])
+- [Text wrapping]([[docsref:/utilities/text-wrapping]])
 - [Vertical alignment]([[docsref:/utilities/vertical-align]])
 
 Change text alignment, transform, style, weight, line-height, decoration and color with our text and [color utilities]([[docsref:/utilities/colors]]).
@@ -117,31 +117,47 @@ Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 ## Blockquotes
 
-For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around any HTML as the quote.
+Wrap `<blockquote class="blockquote">` around any HTML to quote blocks of content from another source within your document. We make `.blockquote` a flex container for easier spacing, which means you can use [flex utilities]([[docsref:/utilities/flex]]) for alignment, spacing, and more.
 
 <Example code={`<blockquote class="blockquote">
     <p>A well-known quote, contained in a blockquote element.</p>
   </blockquote>`} />
 
-### Naming a source
+<Example code={`<blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+    <p>And the second part of the original quote—like another paragraph—would be placed here as well. This paragraph is a little longer to show how text would wrap within the blockquote styling.</p>
+  </blockquote>`} />
 
-The HTML spec requires that blockquote attribution be placed outside the `<blockquote>`. When providing attribution, wrap your `<blockquote>` in a `<figure>` and use a `<figcaption>` or a block level element (e.g., `<p>`) with the `.blockquote-footer` class. Be sure to wrap the name of the source work in `<cite>` as well.
+### Sources
 
-<Example code={`<figure>
-    <blockquote class="blockquote">
+The HTML spec requires that blockquote attribution be placed **outside** the `<blockquote>`. In this case, use a `<figure>` element and place the `.blockquote` class on it instead of the `<blockquote>` element. This ensures access to CSS variables across blockquote and attribution element.
+
+For source attribution, use a `<figcaption>` or a block level element (e.g., `<p>`) with the `.blockquote-footer` class. Wrap the name of any source work in `<cite>` as well.
+
+<Example code={`<figure class="blockquote">
+    <blockquote>
       <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
     <figcaption class="blockquote-footer">
       Someone famous in <cite title="Source Title">Source Title</cite>
     </figcaption>
   </figure>`} />
+
+### Nested
+
+<Example code={`<blockquote class="blockquote">
+    <p>A well-known quote, contained in a blockquote element.</p>
+    <blockquote class="blockquote">
+      <p>A well-known quote, contained in a blockquote element.</p>
+    </blockquote>
+  </blockquote>`} />
 
 ### Alignment
 
-Use text utilities as needed to change the alignment of your blockquote.
+Use text or flex utilities as needed to change the alignment of your blockquote.
 
-<Example code={`<figure class="text-center">
-    <blockquote class="blockquote">
+<Example code={`<figure class="blockquote text-center">
+    <blockquote>
       <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
     <figcaption class="blockquote-footer">
@@ -149,8 +165,8 @@ Use text utilities as needed to change the alignment of your blockquote.
     </figcaption>
   </figure>`} />
 
-<Example code={`<figure class="text-end">
-    <blockquote class="blockquote">
+<Example code={`<figure class="blockquote align-items-end">
+    <blockquote>
       <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
     <figcaption class="blockquote-footer">

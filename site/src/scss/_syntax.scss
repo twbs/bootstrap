@@ -1,9 +1,4 @@
-@use "sass:color";
-@use "../../../scss/config" as *;
-@use "../../../scss/colors" as *;
-@use "../../../scss/variables" as *;
 @use "../../../scss/mixins/border-radius" as *;
-@use "../../../scss/mixins/color-mode" as *;
 @use "../../../scss/mixins/transition" as *;
 
 // Shell prompt colors for light mode
@@ -14,11 +9,29 @@
 
 .astro-code {
   --bs-font-monospace: "Geist Mono";
+
+  position: relative;
   display: flex;
   padding: var(--bd-example-padding);
   margin-bottom: 0;
+  font-size: 13px;
   line-height: 20px;
   background-color: var(--bd-pre-bg) !important; // stylelint-disable-line declaration-no-important
+  @include border-radius(calc(var(--bs-border-radius) - 1px));
+
+  > code {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+}
+
+.astro-code .line.highlighted {
+  width: calc(100% + 2.5rem);
+  padding-inline: 1.25rem;
+  margin-inline: -1.25rem;
+  background-color: color-mix(in oklch, var(--primary-bg) 10%, transparent);
 }
 
 // Dark mode theming for Shiki

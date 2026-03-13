@@ -1,0 +1,69 @@
+---
+import { replacePlaceholdersInHtml } from '@libs/placeholder'
+import Code from '@components/shortcodes/Code.astro'
+
+interface Props {
+  /**
+   * The example code.
+   */
+  code: string | string[]
+  /**
+   * The CSS class(es) to be added to the resizable container.
+   */
+  class?: string
+  /**
+   * Alias for class prop.
+   */
+  className?: string
+  /**
+   * Initial width of the resizable container.
+   * @default '100%'
+   */
+  initialWidth?: string
+  /**
+   * Minimum width of the resizable container.
+   * @default '200px'
+   */
+  minWidth?: string
+  /**
+   * Whether to show the code markup below.
+   * @default true
+   */
+  showMarkup?: boolean
+}
+
+const {
+  code,
+  class: classFromClass,
+  className,
+  initialWidth = '100%',
+  minWidth = '200px',
+  showMarkup = true
+} = Astro.props
+
+// Support both class and className props
+const containerClass = className || classFromClass
+
+let markup = Array.isArray(code) ? code.join('\n') : code
+markup = replacePlaceholdersInHtml(markup)
+
+const simplifiedMarkup = markup
+  .replace(
+    /<svg.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>/g,
+    (match, classes) => `<img src="..."${classes ? ` class="${classes}"` : ''} alt="...">`
+  )
+---
+
+<div class="bd-example-snippet bd-code-snippet">
+  <div class="bd-example bd-example-resizable p-2">
+    <div
+      class:list={['bd-resizable-container', containerClass]}
+      style={`width: ${initialWidth}; min-width: ${minWidth};`}
+    >
+      <Fragment set:html={markup} />
+    </div>
+  </div>
+  {showMarkup && (
+    <Code code={simplifiedMarkup} lang="html" nestedInExample={true} />
+  )}
+</div>

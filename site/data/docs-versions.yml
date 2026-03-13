@@ -57,6 +57,6 @@
 
 - group: v6.x
   baseurl: 'https://getbootstrap.com/docs'
-  description: 'Upcoming major release. First release will be v6.0.'
+  description: 'Upcoming major release. First release is v6.0.0-alpha1.'
   versions:
     - '6.0'

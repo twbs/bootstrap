@@ -32,10 +32,10 @@ We’re building a Webpack project with Bootstrap from scratch, so there are som
    npm i --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin
    ```
 
-3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI since our dropdowns, popovers, and tooltips depend on it for their positioning. If you don’t plan on using those components, you can omit Floating UI here.
+3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using dropdowns, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
 
    ```sh
-   npm i --save bootstrap @floating-ui/dom
+   npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
    ```
 
 4. **Install additional dependencies.** In addition to Webpack and Bootstrap, we need a few more dependencies to properly import and bundle Bootstrap’s CSS and JS with Webpack. These include Sass, some loaders, and Autoprefixer.
@@ -115,7 +115,7 @@ With dependencies installed and our project folder ready for us to start coding,
      <body>
        <div class="container py-4 px-3 mx-auto">
          <h1>Hello, Bootstrap and Webpack!</h1>
-         <button class="btn btn-primary">Primary button</button>
+         <button class="btn-solid theme-primary">Primary button</button>
        </div>
      </body>
    </html>
@@ -201,18 +201,7 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
              },
              {
                // Loads a SASS/SCSS file and compiles it to CSS
-               loader: 'sass-loader',
-               options: {
-                 sassOptions: {
-                   // Optional: Silence Sass deprecation warnings. See note below.
-                   silenceDeprecations: [
-                     'mixed-decls',
-                     'color-functions',
-                     'global-builtin',
-                     'import'
-                   ]
-                 }
-               }
+               loader: 'sass-loader'
              }
            ]
          }
@@ -223,18 +212,16 @@ Importing Bootstrap into Webpack requires the loaders we installed in the first 
 
    Here’s a recap of why we need all these loaders. `style-loader` injects the CSS into a `<style>` element in the `<head>` of the HTML page, `css-loader` helps with using `@import` and `url()`, `postcss-loader` is required for Autoprefixer, and `sass-loader` allows us to use Sass.
 
-   **Note:** Sass deprecation warnings are shown when compiling source Sass files with the latest versions of Dart Sass. This does not prevent compilation or usage of Bootstrap. We’re [working on a long-term fix]([[config:repo]]/issues/40962), but in the meantime these deprecation notices can be ignored.
-
 2. **Now, let’s import Bootstrap’s CSS.** Add the following to `src/scss/styles.scss` to import all of Bootstrap’s source Sass.
 
    ```scss
    // Import all of Bootstrap’s CSS
-   @import "bootstrap/scss/bootstrap";
+   @use "bootstrap/scss/bootstrap";
    ```
 
    *You can also import our stylesheets individually if you want. [Read our Sass import docs]([[docsref:/customize/sass#importing]]) for details.*
 
-3. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Floating UI will be imported automatically through Bootstrap.
+3. **Next we load the CSS and import Bootstrap’s JavaScript.** Add the following to `src/js/main.js` to load the CSS and import all of Bootstrap’s JS. Floating UI and Vanilla Calendar Pro will be imported automatically through Bootstrap.
 
    ```js
    // Import our custom CSS

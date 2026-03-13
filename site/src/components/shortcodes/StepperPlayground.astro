@@ -35,7 +35,7 @@ const stepCounts = [3, 4, 5, 6]
       <div class="dropdown">
         <button
           type="button"
-          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
           id="stepper-breakpoint-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -69,7 +69,7 @@ const stepCounts = [3, 4, 5, 6]
       <div class="dropdown">
         <button
           type="button"
-          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
           id="stepper-count-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -102,7 +102,7 @@ const stepCounts = [3, 4, 5, 6]
       <div class="dropdown">
         <button
           type="button"
-          class="btn btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
           id="stepper-active-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -132,12 +132,12 @@ const stepCounts = [3, 4, 5, 6]
 
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0 user-select-none">&nbsp;</label>
-      <b-checkgroup class="py-2">
+      <div class="checkgroup py-2">
         <div class="switch">
           <input type="checkbox" value="" id="stepper-fullwidth" role="switch" switch>
         </div>
         <label for="stepper-fullwidth">Full width</label>
-      </b-checkgroup>
+      </div>
     </div>
   </div>
 </div>
@@ -153,6 +153,8 @@ const stepCounts = [3, 4, 5, 6]
 />
 
 <script>
+  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+
   const orientationInputs = document.querySelectorAll('input[name="stepper-orientation"]')
   const breakpointDropdownButton = document.querySelector('#stepper-breakpoint-dropdown') as HTMLButtonElement
   const breakpointDropdownItems = document.querySelectorAll('#stepper-breakpoint-dropdown + .dropdown-menu .dropdown-item')
@@ -306,7 +308,7 @@ const stepCounts = [3, 4, 5, 6]
 
   // Initialize dropdowns
   if (breakpointDropdownButton) {
-    const breakpointDropdown = bootstrap.Dropdown.getOrCreateInstance(breakpointDropdownButton)
+    const breakpointDropdown = Dropdown.getOrCreateInstance(breakpointDropdownButton)
 
     breakpointDropdownItems.forEach((item) => {
       item.addEventListener('click', (e) => {
@@ -328,7 +330,7 @@ const stepCounts = [3, 4, 5, 6]
   }
 
   if (countDropdownButton) {
-    const countDropdown = bootstrap.Dropdown.getOrCreateInstance(countDropdownButton)
+    const countDropdown = Dropdown.getOrCreateInstance(countDropdownButton)
 
     countDropdownItems.forEach((item) => {
       item.addEventListener('click', (e) => {
@@ -349,7 +351,7 @@ const stepCounts = [3, 4, 5, 6]
   }
 
   if (activeDropdownButton) {
-    const activeDropdown = bootstrap.Dropdown.getOrCreateInstance(activeDropdownButton)
+    const activeDropdown = Dropdown.getOrCreateInstance(activeDropdownButton)
 
     activeDropdownItems.forEach((item) => {
       item.addEventListener('click', (e) => {
