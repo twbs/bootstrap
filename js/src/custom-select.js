@@ -305,15 +305,15 @@ class CustomSelect extends BaseComponent {
     if (this._config.liveSearch) {
       const searchWrapper = document.createElement('div')
       searchWrapper.classList.add('custom-select-search')
-      searchWrapper.innerHTML = `
-        <input type="text"
-          class="form-control custom-select-search-input"
-          placeholder="${this._config.liveSearchPlaceholder}"
-          autocomplete="off"
-          aria-label="${this._config.liveSearchPlaceholder}">
-      `
+      const input = document.createElement('input')
+      input.type = 'text'
+      input.classList.add('form-control', 'custom-select-search-input')
+      input.placeholder = this._config.liveSearchPlaceholder
+      input.autocomplete = 'off'
+      input.setAttribute('aria-label', this._config.liveSearchPlaceholder)
+      searchWrapper.append(input)
       this._menu.append(searchWrapper)
-      this._searchInput = searchWrapper.querySelector('input')
+      this._searchInput = input
     }
 
     // No results message (hidden by default)
@@ -396,57 +396,94 @@ class CustomSelect extends BaseComponent {
     }
 
     // Build item content
-    item.innerHTML = this._buildItemContent(option)
+    item.append(this._buildItemContent(option))
 
     container.append(item)
     this._items.push({ item, option })
   }
 
   _buildItemContent(option) {
-    // Check for full custom content override
+    const fragment = document.createDocumentFragment()
+
+    // Full custom content override (developer HTML, sanitized)
     const customContent = option.dataset.bsContent
     if (customContent) {
-      return this._sanitize(`
-        <span class="custom-select-content">
-          <span class="custom-select-text">${customContent}</span>
-        </span>
-        ${this._config.showCheckmark ? this._getCheckmarkHtml() : ''}
-      `)
+      const contentWrapper = document.createElement('span')
+      contentWrapper.classList.add('custom-select-content')
+      const textSpan = document.createElement('span')
+      textSpan.classList.add('custom-select-text')
+      textSpan.innerHTML = this._sanitize(customContent)
+      contentWrapper.append(textSpan)
+      fragment.append(contentWrapper)
+
+      if (this._config.showCheckmark) {
+        fragment.append(this._createCheckmark())
+      }
+
+      return fragment
     }
 
-    // Build from individual data attributes
-    const icon = option.dataset.bsIcon // Inline SVG - trusted developer content, not sanitized
+    const icon = option.dataset.bsIcon
     const image = option.dataset.bsImage
     const description = option.dataset.bsDescription
     const text = option.textContent
 
-    let html = ''
-
-    // Icon (inline SVG) or image - icon is trusted developer content
     if (icon) {
-      html += `<span class="custom-select-icon">${icon}</span>`
+      // Inline SVG from data-bs-icon — trusted developer markup
+      const iconSpan = document.createElement('span')
+      iconSpan.classList.add('custom-select-icon')
+      iconSpan.innerHTML = icon
+      fragment.append(iconSpan)
     } else if (image) {
-      html += `<span class="custom-select-icon"><img src="${this._sanitize(image)}" alt="" class="custom-select-image"></span>`
+      const iconSpan = document.createElement('span')
+      iconSpan.classList.add('custom-select-icon')
+      const img = document.createElement('img')
+      img.src = image
+      img.alt = ''
+      img.classList.add('custom-select-image')
+      iconSpan.append(img)
+      fragment.append(iconSpan)
     }
 
-    html += '<span class="custom-select-content">'
-    html += `<span class="custom-select-text">${this._sanitize(text)}</span>`
+    const contentWrapper = document.createElement('span')
+    contentWrapper.classList.add('custom-select-content')
+
+    const textSpan = document.createElement('span')
+    textSpan.classList.add('custom-select-text')
+    if (this._config.allowHtml) {
+      textSpan.innerHTML = this._sanitize(text)
+    } else {
+      textSpan.textContent = text
+    }
+
+    contentWrapper.append(textSpan)
 
     if (description) {
-      html += `<span class="custom-select-description">${this._sanitize(description)}</span>`
+      const descSpan = document.createElement('span')
+      descSpan.classList.add('custom-select-description')
+      if (this._config.allowHtml) {
+        descSpan.innerHTML = this._sanitize(description)
+      } else {
+        descSpan.textContent = description
+      }
+
+      contentWrapper.append(descSpan)
     }
 
-    html += '</span>'
+    fragment.append(contentWrapper)
 
     if (this._config.showCheckmark) {
-      html += this._getCheckmarkHtml()
+      fragment.append(this._createCheckmark())
     }
 
-    return html
+    return fragment
   }
 
-  _getCheckmarkHtml() {
-    return '<span class="custom-select-check"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg></span>'
+  _createCheckmark() {
+    const span = document.createElement('span')
+    span.classList.add('custom-select-check')
+    span.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>'
+    return span
   }
 
   _sanitize(content) {
@@ -491,11 +528,15 @@ class CustomSelect extends BaseComponent {
     } else {
       const selected = selectedOptions[0]
       // Use custom content for toggle if available, otherwise text
-      const icon = selected.dataset.bsIcon // Trusted developer content
+      const icon = selected.dataset.bsIcon
       const text = selected.textContent
 
       if (icon) {
-        valueElement.innerHTML = `<span class="custom-select-value-icon">${icon}</span> ${this._sanitize(text)}`
+        valueElement.textContent = ''
+        const iconSpan = document.createElement('span')
+        iconSpan.classList.add('custom-select-value-icon')
+        iconSpan.innerHTML = icon // Trusted developer markup
+        valueElement.append(iconSpan, ` ${text}`)
       } else {
         valueElement.textContent = text
       }
