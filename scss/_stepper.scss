@@ -13,6 +13,7 @@ $stepper-tokens: defaults(
   (
     --stepper-size: 2rem,
     --stepper-gap: 1rem,
+    --stepper-font-size: var(--font-size-sm),
     --stepper-bg: var(--bg-2),
     --stepper-track-size: .25rem,
     --stepper-active-color: var(--primary-contrast),
@@ -86,6 +87,7 @@ $stepper-tokens: defaults(
     width: var(--stepper-size);
     height: var(--stepper-size);
     padding: .5rem;
+    font-size: var(--stepper-font-size);
     font-weight: 600;
     line-height: 1;
     text-align: center;
