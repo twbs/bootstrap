@@ -1,7 +1,7 @@
 // stylelint-disable selector-max-attribute, property-disallowed-list, selector-no-qualifying-type -- VCP uses extensive data attributes and requires direct border-radius properties for range selection
 
 @use "functions" as *;
-@use "variables" as *;
+@use "config" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
 @use "mixins/tokens" as *;

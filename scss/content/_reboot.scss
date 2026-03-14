@@ -1,13 +1,13 @@
 @use "../colors" as *;
 @use "../config" as *;
 @use "../functions" as *;
-@use "../variables" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
 
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
 $reboot-kbd-tokens: () !default;
+$reboot-mark-tokens: () !default;
 
 // scss-docs-start reboot-kbd-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -23,8 +23,6 @@ $reboot-kbd-tokens: defaults(
   $reboot-kbd-tokens
 );
 // scss-docs-end reboot-kbd-tokens
-
-$reboot-mark-tokens: () !default;
 
 // scss-docs-start reboot-mark-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -119,37 +117,37 @@ $reboot-mark-tokens: defaults(
   h1,
   .h1 {
     @extend %heading;
-    font-size: $h1-font-size;
+    font-size: var(--font-size-3xl);
   }
 
   h2,
   .h2 {
     @extend %heading;
-    font-size: $h2-font-size;
+    font-size: var(--font-size-2xl);
   }
 
   h3,
   .h3 {
     @extend %heading;
-    font-size: $h3-font-size;
+    font-size: var(--font-size-xl);
   }
 
   h4,
   .h4 {
     @extend %heading;
-    font-size: $h4-font-size;
+    font-size: var(--font-size-lg);
   }
 
   h5,
   .h5 {
     @extend %heading;
-    font-size: $h5-font-size;
+    font-size: var(--font-size-md);
   }
 
   h6,
   .h6 {
     @extend %heading;
-    font-size: $h6-font-size;
+    font-size: var(--font-size-sm);
   }
 
   // Reset margins on paragraphs

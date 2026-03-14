@@ -1,6 +1,29 @@
+@use "sass:map";
+@use "sass:meta";
+
 // Configuration
 //
 // Variables and settings not related to theme, components, and more go here. It does include layout.
+
+// Merge overrides on top of defaults, stripping null entries.
+// Null values let users remove map keys via @use ... with().
+// Accepts a list as $defaults (converted to a map with `true` values).
+@function defaults($defaults, $overrides) {
+  @if meta.type-of($defaults) == "list" {
+    $map: ();
+    @each $key in $defaults {
+      $map: map.merge($map, ($key: true));
+    }
+    $defaults: $map;
+  }
+  $merged: map.merge($defaults, $overrides);
+  @each $key, $value in $merged {
+    @if $value == null {
+      $merged: map.remove($merged, $key);
+    }
+  }
+  @return $merged;
+}
 
 $enable-caret:                true !default;
 $enable-rounded:              true !default;
@@ -18,9 +41,6 @@ $enable-validation-icons:     true !default;
 $enable-deprecation-messages: true !default;
 
 $enable-dark-mode:            true !default;
-$color-mode-type:             data !default; // `data` or `media-query`
-
-// more to come here…
 
 $color-mode-type:          "media-query" !default;
 $color-contrast-dark:      #000 !default;
@@ -115,3 +135,199 @@ $escaped-characters: (
   ("(", "%28"),
   (")", "%29"),
 ) !default;
+
+// Gradient
+//
+// The gradient which is added to components if `$enable-gradients` is `true`
+// This gradient is also added to elements with `.bg-gradient`
+// scss-docs-start variable-gradient
+$gradient: linear-gradient(180deg, color-mix(var(--white) 15%, transparent), color-mix(var(--white) 0%, transparent)) !default;
+// scss-docs-end variable-gradient
+
+// Position
+//
+// Define the edge positioning anchors of the position utilities.
+
+// scss-docs-start position-map
+$position-values: (
+  0: 0,
+  50: 50%,
+  100: 100%
+) !default;
+// scss-docs-end position-map
+
+// Links
+//
+// Style anchor elements.
+
+$link-decoration:                         underline !default;
+$link-underline-offset:                   .2em !default;
+
+$stretched-link-pseudo-element:           after !default;
+$stretched-link-z-index:                  1 !default;
+
+// Icon links
+// scss-docs-start icon-link-variables
+$icon-link-gap:               .375rem !default;
+$icon-link-underline-offset:  .25em !default;
+$icon-link-icon-size:         1em !default;
+$icon-link-icon-transition:   .2s ease-in-out transform !default;
+$icon-link-icon-transform:    translate3d(.25em, 0, 0) !default;
+// scss-docs-end icon-link-variables
+
+// Paragraphs
+//
+// Style p element.
+
+$paragraph-margin-bottom:   1rem !default;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+// scss-docs-start border-variables
+$border-width:                1px !default;
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+) !default;
+$border-style:                solid !default;
+$border-color:                color-mix(in oklch, var(--gray-100), var(--gray-200)) !default;
+// scss-docs-end border-variables
+
+$transition-base:             all .2s ease-in-out !default;
+$transition-fade:             opacity .15s linear !default;
+
+// scss-docs-start collapse-transition
+$transition-collapse:         height .35s ease !default;
+$transition-collapse-width:   width .35s ease !default;
+// scss-docs-end collapse-transition
+
+// scss-docs-start aspect-ratios
+$aspect-ratios: (
+  "auto": auto,
+  "1x1": #{"1 / 1"},
+  "4x3": #{"4 / 3"},
+  "16x9": #{"16 / 9"},
+  "21x9": #{"21 / 9"}
+) !default;
+// scss-docs-end aspect-ratios
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// scss-docs-start font-variables
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-medium:          500 !default;
+$font-weight-semibold:        600 !default;
+$font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
+
+$font-weight-base:            $font-weight-normal !default;
+
+$line-height-base:            1.5 !default;
+$line-height-sm:              1.25 !default;
+$line-height-lg:              2 !default;
+// scss-docs-end font-variables
+
+// scss-docs-start font-sizes
+$font-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$font-sizes: defaults(
+  (
+    "xs": (
+      "font-size": .75rem,
+      "line-height": 1.25
+    ),
+    "sm": (
+      "font-size": .875rem,
+      "line-height": 1.5
+    ),
+    "md": (
+      "font-size": 1rem,
+      "line-height": 1.5
+    ),
+    "lg": (
+      "font-size": clamp(1.25rem, 1rem + .625vw, 1.5rem),
+      "line-height": 1.5
+    ),
+    "xl": (
+      "font-size": clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
+      "line-height": calc(2.5 / 1.75)
+    ),
+    "2xl": (
+      "font-size": clamp(1.75rem, 1.3rem + 1vw, 2rem),
+      "line-height": calc(3 / 2.25)
+    ),
+    "3xl": (
+      "font-size": clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
+      "line-height": 1.2
+    ),
+    "4xl": (
+      "font-size": clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
+      "line-height": 1.1
+    ),
+    "5xl": (
+      "font-size": clamp(3rem, 2rem + 5vw, 4rem),
+      "line-height": 1.1
+    ),
+    "6xl": (
+      "font-size": clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
+      "line-height": 1
+    ),
+  ),
+  $font-sizes
+);
+// scss-docs-end font-sizes
+
+// scss-docs-start headings-variables
+$headings-margin-bottom:      $spacer * .5 !default;
+$headings-font-family:        null !default;
+$headings-font-style:         null !default;
+$headings-font-weight:        500 !default;
+$headings-line-height:        1.2 !default;
+$headings-color:              inherit !default;
+// scss-docs-end headings-variables
+
+// scss-docs-start type-variables
+
+$legend-margin-bottom:        .5rem !default;
+$legend-font-size:            1.5rem !default;
+$legend-font-weight:          null !default;
+
+$dt-font-weight:              $font-weight-bold !default;
+
+// scss-docs-end type-variables
+
+// Z-index master list
+//
+// Warning: Avoid customizing these values. They're used for a bird's eye view
+// of components dependent on the z-axis and are designed to all work together.
+
+// scss-docs-start zindex-stack
+$zindex-dropdown:                   1000 !default;
+$zindex-sticky:                     1020 !default;
+$zindex-fixed:                      1030 !default;
+$zindex-offcanvas-backdrop:         1040 !default;
+$zindex-offcanvas:                  1045 !default;
+$zindex-dialog:                     1055 !default;
+$zindex-popover:                    1070 !default;
+$zindex-tooltip:                    1080 !default;
+$zindex-toast:                      1090 !default;
+// scss-docs-end zindex-stack
+
+// scss-docs-start zindex-levels-map
+$zindex-levels: (
+  n1: -1,
+  0: 0,
+  1: 1,
+  2: 2,
+  3: 3
+) !default;
+// scss-docs-end zindex-levels-map

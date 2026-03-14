@@ -14,11 +14,11 @@ Bootstrap sets basic global display, typography, and link styles. When more cont
 - Set the global link color via `--bs-link-color`.
 - Use `--bs-body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
-These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to set `--font-size-base` in `rem`.
+These styles can be found within `_reboot.scss`, and the global variables are defined in `_config.scss`. Make sure to set `--font-size-base` in `rem`.
 
 ## Headings
 
-All HTML headings, `<h1>` through `<h6>`, are available.
+As mentioned in [Reboot]([[docsref:/content/reboot#headings]]), all HTML headings, `<h1>` through `<h6>`, are available, as element or class selectors.
 
 <BsTable>
 | Heading | Example |
@@ -38,27 +38,33 @@ All HTML headings, `<h1>` through `<h6>`, are available.
 <h4>h4. Bootstrap heading</h4>
 <h5>h5. Bootstrap heading</h5>
 <h6>h6. Bootstrap heading</h6>
-```
 
-`.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.
-
-<Example code={`<p class="h1">h1. Bootstrap heading</p>
+<p class="h1">h1. Bootstrap heading</p>
 <p class="h2">h2. Bootstrap heading</p>
 <p class="h3">h3. Bootstrap heading</p>
 <p class="h4">h4. Bootstrap heading</p>
 <p class="h5">h5. Bootstrap heading</p>
-<p class="h6">h6. Bootstrap heading</p>`} />
+<p class="h6">h6. Bootstrap heading</p>
+```
 
 Head to our [font size utilities]([[docsref:/utilities/font-size]]) for more control over the `font-size` and `line-height`.
 
-### Customizing headings
+## Global font sizes
 
-Use the included utility classes to recreate the small secondary heading text from Bootstrap 3.
+Headings are sized with our responsive font-size root CSS variables. You can use these yourself, or with our heading classes, [font size utilities]([[docsref:/utilities/font-size]]), and [text size utilities]([[docsref:/utilities/font-size#with-line-height]]) (where you’ll get a `line-height` as well).
 
-<Example code={`<h3>
-    Fancy display heading
-    <small class="text-body-secondary">With faded secondary text</small>
-  </h3>`} />
+Learn more about how these work down below in the [CSS](#css) section.
+
+<Example code={`<div class="fs-xs">.fs-xs</div>
+<div class="fs-sm">.fs-sm</div>
+<div class="fs-md">.fs-md</div>
+<div class="fs-lg">.fs-lg</div>
+<div class="fs-xl">.fs-xl</div>
+<div class="fs-2xl">.fs-2xl</div>
+<div class="fs-3xl">.fs-3xl</div>
+<div class="fs-4xl">.fs-4xl</div>
+<div class="fs-5xl">.fs-5xl</div>
+<div class="fs-6xl">.fs-6xl</div>`} />
 
 ## Inline text elements
 
@@ -240,16 +246,56 @@ Bootstrap uses CSS's `clamp()` function to enable responsive font sizes, allowin
 
 ## CSS
 
+### Variables
+
+All `--font-size-*` and `--line-height-*` CSS custom properties are defined in `_root.scss`, generated from the `$font-sizes` Sass map in `_config.scss`.
+
+```css
+:root {
+  /* Abbreviated list for example purposes… */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  /* Plus the rest… */
+}
+```
+
 ### Sass variables
 
 Headings have some dedicated variables for sizing and spacing.
 
-<ScssDocs name="headings-variables" file="scss/_variables.scss" />
+<ScssDocs name="headings-variables" file="scss/_config.scss" />
 
 Miscellaneous typography elements covered here and in [Reboot]([[docsref:/content/reboot]]) also have dedicated variables.
 
-<ScssDocs name="type-variables" file="scss/_variables.scss" />
+<ScssDocs name="type-variables" file="scss/_config.scss" />
 
-### Sass mixins
+### Sass maps
 
-There are no dedicated mixins for typography.
+The `$font-sizes` map in `_config.scss` defines Bootstrap's type scale. Each key (e.g., `xs`, `md`, `3xl`) holds a nested map with `font-size` and `line-height` values. Larger sizes use `clamp()` for responsive scaling.
+
+<ScssDocs name="font-sizes" file="scss/_config.scss" />
+
+You can override individual keys, replace the entire map, or remove keys by setting them to `null`:
+
+```scss
+// Per-key override
+@use "bootstrap/scss/config" with (
+  $font-sizes: ("xs": ("font-size": .625rem, "line-height": 1.25))
+);
+
+// Remove a key
+@use "bootstrap/scss/config" with (
+  $font-sizes: ("6xl": null)
+);
+```
+
+### Sass loops
+
+The font-size map is used to generate `--font-size-*` and `--line-height-*` CSS custom properties in `_root.scss`, as well as `.fs-*` and `.text-*` utility classes in `_utilities.scss`.
+
+<ScssDocs name="root-font-size-loop" file="scss/_root.scss" />
+
+<ScssDocs name="utils-font-size" file="scss/_utilities.scss" />
