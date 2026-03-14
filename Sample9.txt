@@ -1,7 +1,7 @@
 using System;
 
 
-class Fibonocci
+class Fibonocci_series
 {
     static void Main()
     {
