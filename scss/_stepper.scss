@@ -40,7 +40,7 @@ $stepper-tokens: defaults(
       inset-inline-end: 100%;
       bottom: auto;
       inset-inline-start: 50%;
-      width: 100%;
+      width: calc(100% + var(--stepper-gap));
       height: var(--stepper-track-size);
     }
 
