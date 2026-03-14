@@ -1,0 +1,23 @@
+using System;
+
+
+class Fibonocci_series
+{
+    static void Main()
+    {
+        Console.Write("Enter the number of terms for the Fibonacci series: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int first = 0, second = 1;
+
+        Console.WriteLine("Fibonacci series up to " + n + " terms:");
+
+        for (int i = 2; i <= n; i++)
+        {
+            Console.Write(first + " ");
+            int next = first + second;
+            first = second;
+            second = next;
+        }
+    }
+}
