@@ -21,31 +21,6 @@ $root-tokens: defaults(
 
     --gradient: #{$gradient},
 
-    // scss-docs-start root-font-size-variables
-    --font-size-base: 1rem,
-    --font-size-xs: .75rem,
-    --font-size-sm: .875rem,
-    --font-size-md: 1rem,
-    --font-size-lg: clamp(1.25rem, 1rem + .625vw, 1.5rem),
-    --font-size-xl: clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
-    --font-size-2xl: clamp(1.75rem, 1.3rem + 1vw, 2rem),
-    --font-size-3xl: clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
-    --font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
-    --font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem),
-    --font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
-
-    --line-height-xs: 1.25,
-    --line-height-sm: 1.5,
-    --line-height-md: 1.5,
-    --line-height-lg: 1.5,
-    --line-height-xl: calc(2.5 / 1.75),
-    --line-height-2xl: calc(3 / 2.25),
-    --line-height-3xl: 1.2,
-    --line-height-4xl: 1.1,
-    --line-height-5xl: 1.1,
-    --line-height-6xl: 1,
-    // scss-docs-end root-font-size-variables
-
     // scss-docs-start root-font-weight-variables
     --font-weight-lighter: lighter,
     --font-weight-light: 300,
@@ -158,6 +133,14 @@ $root-tokens: defaults(
 );
 // stylelint-enable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines
 // scss-docs-end root-tokens
+
+// scss-docs-start root-font-size-loop
+// Generate font-size and line-height tokens
+@each $name, $props in $font-sizes {
+  $root-tokens: map.set($root-tokens, --font-size-#{$name}, map.get($props, "font-size"));
+  $root-tokens: map.set($root-tokens, --line-height-#{$name}, map.get($props, "line-height"));
+}
+// scss-docs-end root-font-size-loop
 
 // scss-docs-start root-theme-tokens
 // Generate semantic theme colors

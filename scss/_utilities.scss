@@ -9,54 +9,6 @@
 // update:
 // - focus-ring if needed
 
-// Font sizes with line-height for utilities
-// stylelint-disable-next-line scss/dollar-variable-default
-$font-sizes: defaults(
-  (
-    "xs": (
-      "font-size": var(--font-size-xs),
-      "line-height": var(--line-height-xs)
-    ),
-    "sm": (
-      "font-size": var(--font-size-sm),
-      "line-height": var(--line-height-sm)
-    ),
-    "md": (
-      "font-size": var(--font-size-md),
-      "line-height": var(--line-height-md)
-    ),
-    "lg": (
-      "font-size": var(--font-size-lg),
-      "line-height": var(--line-height-lg)
-    ),
-    "xl": (
-      "font-size": var(--font-size-xl),
-      "line-height": var(--line-height-xl)
-    ),
-    "2xl": (
-      "font-size": var(--font-size-2xl),
-      "line-height": var(--line-height-2xl)
-    ),
-    "3xl": (
-      "font-size": var(--font-size-3xl),
-      "line-height": var(--line-height-3xl)
-    ),
-    "4xl": (
-      "font-size": var(--font-size-4xl),
-      "line-height": var(--line-height-4xl)
-    ),
-    "5xl": (
-      "font-size": var(--font-size-5xl),
-      "line-height": var(--line-height-5xl)
-    ),
-    "6xl": (
-      "font-size": var(--font-size-6xl),
-      "line-height": var(--line-height-6xl)
-    ),
-  ),
-  $font-sizes
-);
-
 $utilities: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $utilities: map.merge(

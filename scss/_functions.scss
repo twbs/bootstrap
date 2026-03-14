@@ -4,6 +4,7 @@
 @use "sass:math";
 @use "sass:meta";
 @use "sass:string";
+@forward "config" show defaults;
 @use "config" as *;
 
 // Bootstrap functions
@@ -78,26 +79,6 @@
     }
   }
   @return $result;
-}
-
-// Merge overrides on top of defaults, stripping null entries.
-// Null values let users remove map keys via @use ... with().
-// Accepts a list as $defaults (converted to a map with `true` values).
-@function defaults($defaults, $overrides) {
-  @if meta.type-of($defaults) == "list" {
-    $map: ();
-    @each $key in $defaults {
-      $map: map.merge($map, ($key: true));
-    }
-    $defaults: $map;
-  }
-  $merged: map.merge($defaults, $overrides);
-  @each $key, $value in $merged {
-    @if $value == null {
-      $merged: map.remove($merged, $key);
-    }
-  }
-  @return $merged;
 }
 
 // Merge multiple maps

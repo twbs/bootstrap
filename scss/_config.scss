@@ -1,6 +1,29 @@
+@use "sass:map";
+@use "sass:meta";
+
 // Configuration
 //
 // Variables and settings not related to theme, components, and more go here. It does include layout.
+
+// Merge overrides on top of defaults, stripping null entries.
+// Null values let users remove map keys via @use ... with().
+// Accepts a list as $defaults (converted to a map with `true` values).
+@function defaults($defaults, $overrides) {
+  @if meta.type-of($defaults) == "list" {
+    $map: ();
+    @each $key in $defaults {
+      $map: map.merge($map, ($key: true));
+    }
+    $defaults: $map;
+  }
+  $merged: map.merge($defaults, $overrides);
+  @each $key, $value in $merged {
+    @if $value == null {
+      $merged: map.remove($merged, $key);
+    }
+  }
+  @return $merged;
+}
 
 $enable-caret:                true !default;
 $enable-rounded:              true !default;
@@ -211,17 +234,57 @@ $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
 $line-height-lg:              2 !default;
-
-$h1-font-size: var(--font-size-3xl) !default;
-$h2-font-size: var(--font-size-2xl) !default;
-$h3-font-size: var(--font-size-xl) !default;
-$h4-font-size: var(--font-size-lg) !default;
-$h5-font-size: var(--font-size-md) !default;
-$h6-font-size: var(--font-size-sm) !default;
 // scss-docs-end font-variables
 
-// Font sizes with line-height for utilities
+// scss-docs-start font-sizes
 $font-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$font-sizes: defaults(
+  (
+    "xs": (
+      "font-size": .75rem,
+      "line-height": 1.25
+    ),
+    "sm": (
+      "font-size": .875rem,
+      "line-height": 1.5
+    ),
+    "md": (
+      "font-size": 1rem,
+      "line-height": 1.5
+    ),
+    "lg": (
+      "font-size": clamp(1.25rem, 1rem + .625vw, 1.5rem),
+      "line-height": 1.5
+    ),
+    "xl": (
+      "font-size": clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
+      "line-height": calc(2.5 / 1.75)
+    ),
+    "2xl": (
+      "font-size": clamp(1.75rem, 1.3rem + 1vw, 2rem),
+      "line-height": calc(3 / 2.25)
+    ),
+    "3xl": (
+      "font-size": clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
+      "line-height": 1.2
+    ),
+    "4xl": (
+      "font-size": clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
+      "line-height": 1.1
+    ),
+    "5xl": (
+      "font-size": clamp(3rem, 2rem + 5vw, 4rem),
+      "line-height": 1.1
+    ),
+    "6xl": (
+      "font-size": clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
+      "line-height": 1
+    ),
+  ),
+  $font-sizes
+);
+// scss-docs-end font-sizes
 
 // scss-docs-start headings-variables
 $headings-margin-bottom:      $spacer * .5 !default;
