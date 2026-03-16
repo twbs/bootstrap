@@ -1,4 +1,4 @@
-Git Practice Assignment
+## Git Practice Assignment
 
 This document demonstrates the Git commands practiced during the assignment along with screenshots.
 
