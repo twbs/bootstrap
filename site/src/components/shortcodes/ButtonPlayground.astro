@@ -206,12 +206,6 @@ const rounded = ['default', 'pill', 'square']
     // Update the code content
     codeSnippet.className = 'language-html'
     codeSnippet.textContent = htmlCode
-
-    // Trigger Prism highlighting if available
-    // Prism from @astrojs/prism is server-side, but we can try to use Prism.js if loaded
-    if (typeof window !== 'undefined' && (window as any).Prism) {
-      (window as any).Prism.highlightElement(codeSnippet)
-    }
   }
 
   function updateButtons() {
