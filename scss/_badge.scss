@@ -4,8 +4,9 @@
 
 $badge-tokens: () !default;
 
+// stylelint-disable custom-property-no-missing-var-function, scss/dollar-variable-default
+
 // scss-docs-start badge-tokens
-// stylelint-disable-next-line scss/dollar-variable-default
 $badge-tokens: defaults(
   (
     --badge-padding-x: .625em,
@@ -37,6 +38,8 @@ $badge-variants: (
 ) !default;
 // scss-docs-end badge-variants
 
+// stylelint-enable custom-property-no-missing-var-function, scss/dollar-variable-default
+
 @layer components {
   .badge {
     @include tokens($badge-tokens);
@@ -64,6 +67,11 @@ $badge-variants: (
     }
   }
 
+  // stylelint-disable-next-line selector-no-qualifying-type
+  a.badge {
+    text-decoration: none;
+  }
+
   // Quick fix for badges in buttons
   .btn .badge {
     position: relative;
@@ -87,4 +95,9 @@ $badge-variants: (
     }
   }
   // scss-docs-end badge-variant-loop
+
+  .badge-lg {
+    --badge-padding-x: 1rem;
+    --badge-padding-y: .5rem;
+  }
 }

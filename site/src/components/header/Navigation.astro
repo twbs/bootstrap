@@ -25,7 +25,7 @@ const { addedIn, layout, title } = Astro.props
 const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Docs'
 ---
 
-<header class="navbar lg:navbar-expand bd-navbar border-bottom">
+<header class="navbar lg:navbar-expand bd-navbar border-bottom border-inverse border-20">
   <nav class="2xl:container bd-gutter flex-wrap lg:flex-nowrap justify-content-start" aria-label="Main navigation">
     <div class="d-flex align-items-center gap-2 lg:gap-1">
       <a class="navbar-brand p-0 me-0 lg:me-2" href="/" aria-label="Bootstrap" style="color: var(--bs-indigo-500);">
