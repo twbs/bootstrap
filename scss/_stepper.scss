@@ -14,8 +14,9 @@ $stepper-tokens: defaults(
     --stepper-size: 2rem,
     --stepper-gap: 1rem,
     --stepper-font-size: var(--font-size-sm),
-    --stepper-bg: var(--bg-2),
+    --stepper-text-gap: .5rem,
     --stepper-track-size: .125rem,
+    --stepper-bg: var(--bg-2),
     --stepper-active-color: var(--primary-contrast),
     --stepper-active-bg: var(--primary-bg),
   ),
@@ -34,11 +35,12 @@ $stepper-tokens: defaults(
     grid-template-columns: auto;
     justify-items: center;
     align-items: start;
+    text-align: center;
 
     &::after {
-      top: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
+      inset-block-start: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
       inset-inline-end: 100%;
-      bottom: auto;
+      inset-block-end: auto;
       inset-inline-start: 50%;
       width: calc(100% + var(--stepper-gap));
       height: var(--stepper-track-size);
@@ -58,7 +60,6 @@ $stepper-tokens: defaults(
   // scss-docs-end stepper-css-vars
 
   display: grid;
-  grid-auto-rows: 1fr;
   grid-auto-flow: row;
   gap: var(--stepper-gap);
   padding-inline-start: 0;
@@ -71,10 +72,8 @@ $stepper-tokens: defaults(
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: var(--stepper-size) auto;
-  gap: .5rem;
-  place-items: center;
-  justify-items: start;
-  text-align: center;
+  gap: var(--stepper-text-gap);
+  align-items: center;
   text-decoration: none;
 
   // The counter
@@ -101,9 +100,10 @@ $stepper-tokens: defaults(
   // Connecting lines
   &::after {
     position: absolute;
-    top: 0;
-    bottom: calc(var(--stepper-gap) * -1);
+    inset-block-start: 50%;
+    inset-block-end: 100%;
     inset-inline-start: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
+    height: calc(100% + var(--stepper-gap));
     width: var(--stepper-track-size);
     content: "";
     background-color: var(--stepper-bg);
