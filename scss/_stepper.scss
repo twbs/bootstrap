@@ -60,6 +60,7 @@ $stepper-tokens: defaults(
   // scss-docs-end stepper-css-vars
 
   display: grid;
+  grid-auto-rows: 1fr;
   grid-auto-flow: row;
   gap: var(--stepper-gap);
   padding-inline-start: 0;
