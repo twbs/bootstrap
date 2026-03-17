@@ -1,6 +1,5 @@
 import type { HTMLAttributes } from 'astro/types'
 import * as htmlparser2 from 'htmlparser2'
-import { getData } from './data'
 
 const placeholderRegex = /<Placeholder\s+([^>]+)\/>/g
 const closeButtonRegex = /<CloseButton\s*([^>]*?)\/>/g

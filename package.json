@@ -154,7 +154,7 @@
     "globby": "^16.0.0",
     "hammer-simulator": "0.0.1",
     "html-validate": "^10.5.0",
-    "htmlparser2": "^10.0.0",
+    "htmlparser2": "^10.1.0",
     "image-size": "^2.0.2",
     "ip": "^2.0.1",
     "jasmine": "^5.13.0",
