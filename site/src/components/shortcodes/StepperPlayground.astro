@@ -254,10 +254,6 @@ const stepCounts = [3, 4, 5, 6]
     const htmlCode = generateHTML()
     codeSnippet.className = 'language-html'
     codeSnippet.textContent = htmlCode
-
-    if (typeof window !== 'undefined' && (window as any).Prism) {
-      (window as any).Prism.highlightElement(codeSnippet)
-    }
   }
 
   function updateActiveDropdown() {
