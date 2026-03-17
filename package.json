@@ -168,7 +168,7 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "karma-rollup-preprocessor": "7.0.7",
-    "lightningcss": "^1.30.2",
+    "lightningcss": "^1.32.0",
     "lockfile-lint": "^4.14.1",
     "markdownlint-cli": "^0.48.0",
     "mime": "^4.1.0",
