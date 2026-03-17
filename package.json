@@ -198,7 +198,8 @@
     "js/{src,dist}/**/*.{js,map}",
     "js/index.js",
     "scss/**/*.scss",
-    "!scss/tests/**"
+    "!scss/tests/**",
+    ".browserslistrc"
   ],
   "overrides": {
     "volar-service-emmet": "0.0.63"
