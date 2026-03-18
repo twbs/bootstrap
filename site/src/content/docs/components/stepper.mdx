@@ -71,7 +71,7 @@ Experiment with stepper options including orientation, breakpoints, step count, 
 
 <StepperPlayground />
 
-### Alignment
+## Alignment
 
 Use [text alignment utilities]([[docsref:/utilities/text-alignment]]) (because we use `display: inline-grid`) to align the steps. The inline grid arrangement allows us to keep the steps equal width and ensures the connecting lines are rendered correctly.
 
@@ -105,17 +105,17 @@ Apply `.w-100` to the stepper to make it full width. Stepper items will be stret
     <li class="stepper-item">Finish</li>
   </ol>`} />
 
-### With anchors
+## With anchors
 
 Use anchor elements to build your stepper if it links across multiple pages. Add `role="button"` or use `<button>` elements if you're linking across sections in the same document.
 
 Consider using our [link utilities]([[docsref:/utilities/link]]) for quick color control.
 
 <Example code={`<div class="stepper">
-    <a href="#" role="button" class="stepper-item link-body-emphasis active">Create account</a>
-    <a href="#" role="button" class="stepper-item link-body-emphasis active">Confirm email</a>
-    <a href="#" role="button" class="stepper-item link-secondary">Update profile</a>
-    <a href="#" role="button" class="stepper-item link-secondary">Finish</a>
+    <a href="#" role="button" class="stepper-item active">Create account</a>
+    <a href="#" role="button" class="stepper-item active">Confirm email</a>
+    <a href="#" role="button" class="stepper-item theme-secondary">Update profile</a>
+    <a href="#" role="button" class="stepper-item theme-secondary">Finish</a>
   </div>`} />
 
 ## CSS

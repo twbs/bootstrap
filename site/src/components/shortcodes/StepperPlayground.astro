@@ -12,9 +12,9 @@ const stepCounts = [3, 4, 5, 6]
 
 <div class="bg-1 p-3 fs-sm rounded-3">
   <div class="d-flex flex-wrap gap-3 align-items-end">
-    <div class="vstack gap-1">
+    <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Orientation</label>
-      <div class="btn-group" role="group" aria-label="Stepper orientation">
+      <div class="btn-group btn-group-sm" role="group" aria-label="Stepper orientation">
         {orientations.map((orientation) => (
           <label class="btn-check btn-outline theme-secondary">
             <input
@@ -30,12 +30,12 @@ const stepCounts = [3, 4, 5, 6]
       </div>
     </div>
 
-    <div class="vstack gap-1" id="breakpoint-control">
+    <div class="vstack gap-1 flex-grow-0" id="breakpoint-control">
       <label class="form-label fw-semibold mb-0">Breakpoint</label>
       <div class="dropdown">
         <button
           type="button"
-          class="btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
           id="stepper-breakpoint-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -64,12 +64,12 @@ const stepCounts = [3, 4, 5, 6]
       </div>
     </div>
 
-    <div class="vstack gap-1">
+    <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Steps</label>
       <div class="dropdown">
         <button
           type="button"
-          class="btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
           id="stepper-count-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -97,12 +97,12 @@ const stepCounts = [3, 4, 5, 6]
       </div>
     </div>
 
-    <div class="vstack gap-1">
+    <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Active step</label>
       <div class="dropdown">
         <button
           type="button"
-          class="btn-outline theme-secondary dropdown-toggle w-100 justify-content-between"
+          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
           id="stepper-active-dropdown"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -132,7 +132,7 @@ const stepCounts = [3, 4, 5, 6]
 
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0 user-select-none">&nbsp;</label>
-      <div class="checkgroup py-2">
+      <div class="checkgroup py-1">
         <div class="switch">
           <input type="checkbox" value="" id="stepper-fullwidth" role="switch" switch>
         </div>
