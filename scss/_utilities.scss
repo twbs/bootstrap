@@ -86,6 +86,14 @@ $utilities: map.merge(
       values: auto hidden visible scroll,
     ),
     // scss-docs-end utils-overflow
+    "container": (
+      property: container-type,
+      class: contains,
+      values: (
+        "inline": inline-size,
+        "size": size,
+      )
+    ),
     // scss-docs-start utils-display
     "display": (
       responsive: true,

@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "config" as *;
 @use "functions" as *;
 @use "layout/breakpoints" as *;
@@ -33,15 +32,15 @@ $stepper-tokens: defaults(
   .stepper-item {
     grid-template-rows: var(--stepper-size) auto;
     grid-template-columns: auto;
-    justify-items: center;
     align-items: start;
+    justify-items: center;
     text-align: center;
 
     &::after {
       inset-block-start: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
-      inset-inline-end: 100%;
       inset-block-end: auto;
       inset-inline-start: 50%;
+      inset-inline-end: 100%;
       width: calc(100% + var(--stepper-gap));
       height: var(--stepper-track-size);
     }
@@ -53,102 +52,105 @@ $stepper-tokens: defaults(
 }
 // scss-docs-end stepper-horizontal-mixin
 
-// scss-docs-start stepper-css
-.stepper {
-  // scss-docs-start stepper-css-vars
-  @include tokens($stepper-tokens);
-  // scss-docs-end stepper-css-vars
+@layer components {
+  .stepper {
+    @include tokens($stepper-tokens);
 
-  display: grid;
-  grid-auto-rows: 1fr;
-  grid-auto-flow: row;
-  gap: var(--stepper-gap);
-  padding-inline-start: 0;
-  list-style: none;
-  counter-reset: stepper;
-}
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-auto-flow: row;
+    gap: var(--stepper-gap);
+    padding-inline-start: 0;
+    list-style: none;
+    counter-reset: stepper;
+  }
 
-.stepper-item {
-  position: relative;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: var(--stepper-size) auto;
-  gap: var(--stepper-text-gap);
-  align-items: center;
-  text-decoration: none;
-
-  // The counter
-  &::before {
+  .stepper-item {
     position: relative;
-    z-index: 1;
-    display: flex;
-    flex-shrink: 0;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: var(--stepper-size) auto;
+    gap: var(--stepper-text-gap);
     align-items: center;
-    justify-content: center;
-    width: var(--stepper-size);
-    height: var(--stepper-size);
-    padding: .5rem;
-    font-size: var(--stepper-font-size);
-    font-weight: 600;
-    line-height: 1;
-    text-align: center;
-    content: counter(stepper);
-    counter-increment: stepper;
-    background-color: var(--stepper-bg);
-    @include border-radius(50%);
-  }
+    text-decoration: none;
 
-  // Connecting lines
-  &::after {
-    position: absolute;
-    inset-block-start: 50%;
-    inset-block-end: 100%;
-    inset-inline-start: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
-    height: calc(100% + var(--stepper-gap));
-    width: var(--stepper-track-size);
-    content: "";
-    background-color: var(--stepper-bg);
-  }
+    // The counter
+    &::before {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: var(--stepper-size);
+      height: var(--stepper-size);
+      padding: .5rem;
+      font-size: var(--stepper-font-size);
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+      content: counter(stepper);
+      counter-increment: stepper;
+      background-color: var(--stepper-bg);
+      @include border-radius(50%);
+    }
 
-  // Avoid sibling selector for easier CSS overrides
-  &:last-child::after {
-    display: none;
-  }
-
-  &.active {
-    &::before,
+    // Connecting lines
     &::after {
-      color: var(--theme-contrast, var(--stepper-active-color));
-      background-color: var(--theme-bg, var(--stepper-active-bg));
+      position: absolute;
+      inset-block-start: 50%;
+      inset-block-end: 100%;
+      inset-inline-start: calc((var(--stepper-size) * .5) - (var(--stepper-track-size) * .5));
+      width: var(--stepper-track-size);
+      height: calc(100% + var(--stepper-gap));
+      content: "";
+      background-color: var(--stepper-bg);
+    }
+
+    // Avoid sibling selector for easier CSS overrides
+    &:last-child::after {
+      display: none;
+    }
+
+    &.active {
+      &::before,
+      &::after {
+        color: var(--theme-contrast, var(--stepper-active-color));
+        background-color: var(--theme-bg, var(--stepper-active-bg));
+      }
     }
   }
-}
 
-// Targets the last .active element from a sequence of active elements
-.stepper-item.active:not(:has(+ .stepper-item.active))::after {
-  background-color: var(--stepper-bg);
-}
+  // Targets the last .active element from a sequence of active elements
+  .stepper-item.active:not(:has(+ .stepper-item.active))::after {
+    background-color: var(--stepper-bg);
+  }
 
-@each $breakpoint in map.keys($breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
+  .stepper-horizontal {
+    @include stepper-horizontal();
+  }
 
-    .stepper-horizontal#{$infix} {
-      @include stepper-horizontal();
+  @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
+    @if $next {
+      .stepper-horizontal#{$infix} {
+        @include container-breakpoint-up($next) {
+          @include stepper-horizontal();
+        }
+      }
     }
   }
-}
 
-// scss-docs-start stepper-overflow
-.stepper-overflow {
-  container-type: inline-size;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
+  // scss-docs-start stepper-overflow
+  .stepper-overflow {
+    container-type: inline-size;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
 
-  > .stepper {
-    width: max-content;
-    min-width: 100%;
+    > .stepper {
+      width: max-content;
+      min-width: 100%;
+    }
   }
+  // scss-docs-end stepper-overflow
 }
-// scss-docs-end stepper-overflow
