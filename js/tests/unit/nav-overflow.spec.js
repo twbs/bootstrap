@@ -270,6 +270,29 @@ describe('NavOverflow', () => {
       navOverflow.dispose()
     })
 
+    it('should overflow direct button nav links', () => {
+      fixtureEl.innerHTML = [
+        '<div style="width: 250px;">',
+        '  <div class="nav nav-tabs" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',
+        '    <button class="nav-link active" type="button" style="flex: 0 0 100px; width: 100px;">Tab 1</button>',
+        '    <button class="nav-link" type="button" style="flex: 0 0 100px; width: 100px;">Tab 2</button>',
+        '    <button class="nav-link" type="button" style="flex: 0 0 100px; width: 100px;">Tab 3</button>',
+        '    <button class="nav-link" type="button" style="flex: 0 0 100px; width: 100px;">Tab 4</button>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
+      const navOverflow = new NavOverflow(navEl)
+      const hiddenItems = navEl.querySelectorAll('.nav-link[data-bs-nav-overflow="true"]')
+      const dropdownButtons = navEl.querySelectorAll('.nav-overflow-menu button.dropdown-item')
+
+      expect(hiddenItems.length).toBeGreaterThan(0)
+      expect(dropdownButtons.length).toEqual(hiddenItems.length)
+
+      navOverflow.dispose()
+    })
+
     it('should show overflow toggle when items overflow', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',

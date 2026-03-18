@@ -22,6 +22,7 @@ const EVENT_OVERFLOW = `overflow${EVENT_KEY}`
 
 const CLASS_NAME_OVERFLOW = 'nav-overflow'
 const CLASS_NAME_OVERFLOW_MENU = 'nav-overflow-menu'
+const CLASS_NAME_OVERFLOW_ITEM = 'nav-overflow-item'
 const CLASS_NAME_HIDDEN = 'd-none'
 
 const SELECTOR_NAV_ITEM = '.nav-item'
@@ -100,8 +101,16 @@ class NavOverflow extends BaseComponent {
     // Add overflow class to nav
     this._element.classList.add(CLASS_NAME_OVERFLOW)
 
-    // Get all nav items
-    this._items = [...SelectorEngine.find(SELECTOR_NAV_ITEM, this._element)]
+    // Get all supported nav items from direct children:
+    // - .nav-item containers
+    // - direct .nav-link elements (e.g. button-based tabs)
+    this._items = [...this._element.children].filter(item => {
+      if (item.classList.contains(CLASS_NAME_OVERFLOW_ITEM) || item.classList.contains(CLASS_NAME_OVERFLOW_MENU)) {
+        return false
+      }
+
+      return item.matches(SELECTOR_NAV_ITEM) || item.matches(`${SELECTOR_NAV_LINK}:not(${SELECTOR_OVERFLOW_TOGGLE})`)
+    })
 
     // Store original order data
     for (const [index, item] of this._items.entries()) {
@@ -227,7 +236,7 @@ class NavOverflow extends BaseComponent {
 
     for (const item of items) {
       // Clone the nav link as a dropdown item
-      const link = SelectorEngine.findOne(SELECTOR_NAV_LINK, item)
+      const link = item.matches(SELECTOR_NAV_LINK) ? item : SelectorEngine.findOne(SELECTOR_NAV_LINK, item)
       if (!link) {
         continue
       }
