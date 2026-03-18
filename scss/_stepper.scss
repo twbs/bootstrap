@@ -71,7 +71,7 @@ $stepper-tokens: defaults(
     grid-template-rows: auto;
     grid-template-columns: var(--stepper-size) auto;
     gap: var(--stepper-text-gap);
-    align-items: center;
+    align-items: var(--stepper-align-items, center);
     text-decoration: none;
 
     // The counter

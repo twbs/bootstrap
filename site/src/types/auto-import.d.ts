@@ -24,7 +24,6 @@ export declare global {
   export const Placeholder: typeof import('@shortcodes/Placeholder.astro').default
   export const ResizableExample: typeof import('@shortcodes/ResizableExample.astro').default
   export const ScssDocs: typeof import('@shortcodes/ScssDocs.astro').default
-  export const StepperPlayground: typeof import('@shortcodes/StepperPlayground.astro').default
   export const Swatch: typeof import('@shortcodes/Swatch.astro').default
   export const Table: typeof import('@shortcodes/Table.astro').default
 }
