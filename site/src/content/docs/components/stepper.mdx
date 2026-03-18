@@ -24,7 +24,7 @@ Here's a simple example of a vertical stepper.
 Steppers can be made horizontal at specific breakpoints using the `contains-inline` utility on a parent element and by adding the responsive `.stepper-horizontal-{breakpoint}` modifier classes on the stepper. The extra parent element is required when using container queries.
 
 <ResizableExample code={`<div class="contains-inline">
-    <ol class="stepper stepper-horizontal-sm">
+    <ol class="stepper sm:stepper-horizontal">
       <li class="stepper-item active">Create account</li>
       <li class="stepper-item active">Confirm email</li>
       <li class="stepper-item">Update profile</li>

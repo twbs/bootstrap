@@ -156,28 +156,28 @@ Add `.offcanvas-translucent` to the offcanvas panel to blur and saturate the bac
 
 ## Responsive
 
-Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.offcanvas-lg` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Responsive offcanvas classes are available for each breakpoint.
+Responsive offcanvas classes hide content outside the viewport from a specified breakpoint and down. Above that breakpoint, the contents within will behave as usual. For example, `.lg:offcanvas` hides content in an offcanvas below the `lg` breakpoint, but shows the content above the `lg` breakpoint. Responsive offcanvas classes are available for each breakpoint.
 
 - `.offcanvas`
-- `.offcanvas-sm`
-- `.offcanvas-md`
-- `.offcanvas-lg`
-- `.offcanvas-xl`
-- `.offcanvas-2xl`
+- `.sm:offcanvas`
+- `.md:offcanvas`
+- `.lg:offcanvas`
+- `.xl:offcanvas`
+- `.2xl:offcanvas`
 
 To make a responsive offcanvas, replace the `.offcanvas` base class with a responsive variant and ensure your close button has an explicit `data-bs-target`.
 
-<Example code={`<button class="btn-solid theme-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Toggle offcanvas</button>
+<Example code={`<button class="btn-solid theme-primary lg:d-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Toggle offcanvas</button>
 
-  <div class="alert theme-info d-none d-lg-block"><p>Resize your browser to show the responsive offcanvas toggle.</p></div>
+  <div class="alert theme-info d-none lg:d-block"><p>Resize your browser to show the responsive offcanvas toggle.</p></div>
 
-  <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
+  <div class="lg:offcanvas offcanvas-end" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Responsive offcanvas</h5>
       <CloseButton dismiss="offcanvas" />
     </div>
     <div class="offcanvas-body">
-      <p class="mb-0">This is content within an <code>.offcanvas-lg</code>.</p>
+      <p class="mb-0">This is content within an <code>.lg:offcanvas</code>.</p>
     </div>
   </div>`} />
 

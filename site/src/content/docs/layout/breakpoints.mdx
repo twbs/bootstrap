@@ -176,7 +176,7 @@ Container queries use the same breakpoint values as viewport media queries.
 
 The following components use container queries:
 
-- **[Navbar]([[docsref:/components/navbar]])** — Uses container queries for its responsive expand behavior. The `.navbar` element is set as a query container, and the `.navbar-expand-*` classes use `@container` queries instead of `@media` queries. This means the navbar responds to its own width rather than the viewport width, making it more adaptable when placed in different layout contexts (e.g., within a sidebar or constrained container).
+- **[Navbar]([[docsref:/components/navbar]])** — Uses container queries for its responsive expand behavior. The `.navbar` element is set as a query container, and the `.*:navbar-expand` classes use `@container` queries instead of `@media` queries. This means the navbar responds to its own width rather than the viewport width, making it more adaptable when placed in different layout contexts (e.g., within a sidebar or constrained container).
 
 - **[Stepper]([[docsref:/components/stepper]])** — The `.stepper-overflow` wrapper uses `container-type: inline-size` to establish a containment context for the horizontally scrolling stepper pattern.
 
@@ -189,7 +189,7 @@ Here's how the navbar implements container queries:
 }
 
 // Responsive classes use container queries
-.navbar-expand-lg {
+.lg\:navbar-expand {
   @container (min-width: 1024px) {
     // Expanded navbar styles...
   }

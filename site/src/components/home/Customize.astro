@@ -3,7 +3,7 @@ import { getVersionedDocsPath } from '@libs/path'
 import Code from '@shortcodes/Code.astro'
 ---
 
-<section class="col-lg-7 mb-5">
+<section class="lg:col-7 mb-5">
   <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bs-primary-rgb);">
     <svg class="bi fs-1" aria-hidden="true"><use href="#palette2"></use></svg>
   </div>
@@ -20,8 +20,8 @@ import Code from '@shortcodes/Code.astro'
   </p>
 </section>
 
-<section class="row g-md-5 mb-5 pb-md-5">
-  <div class="col-lg-6">
+<section class="row md:g-5 mb-5 md:pb-5">
+  <div class="lg:col-6">
     <h3>Include all of Bootstrap’s Sass</h3>
     <p>Import one stylesheet and you're off to the races with every feature of our CSS.</p>
     <Code
@@ -33,7 +33,7 @@ import Code from '@shortcodes/Code.astro'
     />
     <p>Learn more about our <a href={getVersionedDocsPath('customize/sass')}>Sass customization options</a>.</p>
   </div>
-  <div class="col-lg-6">
+  <div class="lg:col-6">
     <h3>Include what you need</h3>
     <p>The easiest way to customize Bootstrap—include only the CSS you need.</p>
     <Code

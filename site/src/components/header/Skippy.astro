@@ -9,11 +9,11 @@ const { layout } = Astro.props
 ---
 
 <div class="skippy visually-hidden-focusable overflow-hidden">
-  <div class="container-xl">
+  <div class="xl:container">
     <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
     {
       layout === 'docs' && (
-        <a class="d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">
+        <a class="d-none md:d-inline-flex p-2 m-1" href="#bd-docs-nav">
           Skip to docs navigation
         </a>
       )

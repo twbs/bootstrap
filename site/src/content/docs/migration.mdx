@@ -63,6 +63,28 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Increased the `xl` breakpoint from 1200px to 1280px, and it's container from 1140px to 1200px.
   - Renamed `xxl` to `2xl` for better scaling with additional custom breakpoints
   - Increased the `2xl` breakpoint from 1400px to 1536px, and it's container from 1320px to 1440px.
+- **Responsive classes now use a breakpoint prefix instead of an infix.** Class names follow the Tailwind-style `breakpoint:class` pattern (e.g., `md:d-none` instead of `d-md-none`). In HTML, use the unescaped colon: `class="md:d-none"`. This applies to utilities, grid, and all responsive components.
+
+<BsTable>
+| Category | Before (v5) | After (v6) |
+|---|---|---|
+| Utilities | `.d-md-none`, `.p-lg-3` | `.md:d-none`, `.lg:p-3` |
+| Grid columns | `.col-md-6` | `.md:col-6` |
+| Row columns | `.row-cols-md-3` | `.md:row-cols-3` |
+| Offsets | `.offset-md-2` | `.md:offset-2` |
+| Gutters | `.g-md-3`, `.gx-md-3` | `.md:g-3`, `.md:gx-3` |
+| CSS Grid | `.g-col-md-4` | `.md:g-col-4` |
+| Containers | `.container-sm` | `.sm:container` |
+| Navbar | `.navbar-expand-md` | `.md:navbar-expand` |
+| Offcanvas | `.offcanvas-md` | `.md:offcanvas` |
+| Tables | `.table-responsive-md` | `.md:table-responsive` |
+| List group | `.list-group-horizontal-md` | `.md:list-group-horizontal` |
+| Sticky | `.sticky-md-top` | `.md:sticky-top` |
+| Stacks | `.vstack-md` | `.md:vstack` |
+| Stepper | `.stepper-horizontal-md` | `.md:stepper-horizontal` |
+| Dialog | `.dialog-fullscreen-sm-down` | `.sm-down:dialog-fullscreen` |
+| Print | `.d-print-none` | `.print:d-none` |
+</BsTable>
 
 ### Sass
 
@@ -70,6 +92,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Rearranged several Sass files in the process.
 - Removed `add()` and `subtract()` functions. Use `calc()` instead.
 - Removed `create-css-vars()` mixin (unused).
+- **Renamed `breakpoint-infix()` to `breakpoint-prefix()`.** The function now returns a prefix string (e.g., `"md\:"`) instead of an infix (e.g., `"-md"`). The `loop-breakpoints-up` and `loop-breakpoints-down` mixins now expose `$prefix` instead of `$infix`. Update any custom Sass that calls these functions or mixins.
 - **CSS variable prefixing now handled by PostCSS.** The `$prefix` Sass variable has been removed. CSS custom properties are now written without a prefix in the Sass source and prefixed automatically via `postcss-prefix-custom-properties` during the build. To customize the prefix, update your PostCSS configuration instead of Sass.
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.

@@ -113,7 +113,7 @@ $navbar-nav-tokens: defaults(
     }
 
     @each $breakpoint, $container-max-width in $container-max-widths {
-      > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+      > .#{breakpoint-prefix($breakpoint, $container-max-widths)}container {
         @extend %container-flex-properties;
       }
     }
@@ -183,7 +183,7 @@ $navbar-nav-tokens: defaults(
   }
 
   // scss-docs-start navbar-expand-loop
-  // Generate series of `.navbar-expand-*` responsive classes for configuring
+  // Generate series of responsive `.navbar-expand` classes for configuring
   // where your navbar collapses and expands. Uses container queries so the
   // navbar responds to its own width, not the viewport width.
 
@@ -246,9 +246,9 @@ $navbar-nav-tokens: defaults(
   }
 
   // Responsive navbar expand classes using container queries
-  @include loop-breakpoints-down($navbar-breakpoints) using ($breakpoint, $next, $infix) {
+  @include loop-breakpoints-down($navbar-breakpoints) using ($breakpoint, $next, $prefix) {
     @if $next {
-      .navbar-expand#{$infix} {
+      .#{$prefix}navbar-expand {
         @include container-breakpoint-up($next) {
           @include navbar-expanded();
         }

@@ -22,13 +22,13 @@ interface Props {
 const { addedIn, layout, title } = Astro.props
 ---
 
-<header class="navbar navbar-translucent navbar-expand-lg bd-navbar border-bottom sticky-top bd-sticky-navbar">
-  <nav class="container-2xl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+<header class="navbar navbar-translucent lg:navbar-expand bd-navbar border-bottom sticky-top bd-sticky-navbar">
+  <nav class="2xl:container bd-gutter flex-wrap lg:flex-nowrap" aria-label="Main navigation">
     {/* Docs sidebar toggle - only shown on docs pages */}
     {
       layout === 'docs' && (
         <button
-          class="btn-icon navbar-btn-icon d-lg-none ms--2"
+          class="btn-icon navbar-btn-icon lg:d-none ms--2"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#bdSidebar"
@@ -40,9 +40,9 @@ const { addedIn, layout, title } = Astro.props
         </button>
       )
     }
-    {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
+    {layout !== 'docs' && <div class="lg:d-none" style="width: 4.25rem;" />}
 
-    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap" style="color: var(--bs-indigo-500);">
+    <a class="navbar-brand p-0 me-0 lg:me-2" href="/" aria-label="Bootstrap" style="color: var(--bs-indigo-500);">
       <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
     </a>
 
@@ -51,7 +51,7 @@ const { addedIn, layout, title } = Astro.props
       <div class="bd-search" id="docsearch" data-bd-docs-version={getConfig().docs_version}></div>
 
       <button
-        class="btn-icon navbar-btn-icon d-lg-none order-3 me--2"
+        class="btn-icon navbar-btn-icon lg:d-none order-3 me--2"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#bdNavbar"
@@ -64,7 +64,7 @@ const { addedIn, layout, title } = Astro.props
 
     {/* Main navigation - offcanvas on mobile, inline on desktop */}
     <div
-      class="offcanvas-lg offcanvas-end flex-grow-1 offcanvas-fit-content"
+      class="lg:offcanvas offcanvas-end flex-grow-1 offcanvas-fit-content"
       tabindex="-1"
       id="bdNavbar"
       aria-labelledby="bdNavbarOffcanvasLabel"
@@ -74,8 +74,8 @@ const { addedIn, layout, title } = Astro.props
         <CloseButton dismiss="offcanvas" target="#bdNavbar" />
       </div>
 
-      <div class="offcanvas-body p-4 pt-0 p-lg-0">
-        <hr class="d-lg-none mb-0" />
+      <div class="offcanvas-body p-4 pt-0 lg:p-0">
+        <hr class="lg:d-none mb-0" />
         <ul class="nav navbar-nav flex-row flex-wrap bd-navbar-nav">
           <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/install/')} track>
             Docs
@@ -85,25 +85,25 @@ const { addedIn, layout, title } = Astro.props
           <LinkItem href={getConfig().blog} target="_blank" rel="noopener" track>Blog</LinkItem>
         </ul>
 
-        <hr class="d-lg-none my-0" />
+        <hr class="lg:d-none my-0" />
 
-        <ul class="nav navbar-nav ms-md-auto">
-          <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().github_org} target="_blank" rel="noopener">
+        <ul class="nav navbar-nav md:ms-auto">
+          <LinkItem class="nav-link py-2 px-0 lg:px-2" href={getConfig().github_org} target="_blank" rel="noopener">
             <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none">GitHub</small>
+            <small class="lg:d-none">GitHub</small>
           </LinkItem>
           <LinkItem
-            class="nav-link py-2 px-0 px-lg-2"
+            class="nav-link py-2 px-0 lg:px-2"
             href={`https://x.com/${getConfig().x}`}
             target="_blank"
             rel="noopener"
           >
             <XIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none">X</small>
+            <small class="lg:d-none">X</small>
           </LinkItem>
-          <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().opencollective} target="_blank" rel="noopener">
+          <LinkItem class="nav-link py-2 px-0 lg:px-2" href={getConfig().opencollective} target="_blank" rel="noopener">
             <OpenCollectiveIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none">Open Collective</small>
+            <small class="lg:d-none">Open Collective</small>
           </LinkItem>
 
           <Versions layout={layout} addedIn={addedIn} />

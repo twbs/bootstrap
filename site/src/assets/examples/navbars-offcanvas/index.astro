@@ -86,7 +86,7 @@ export const extra_css = ['navbars-offcanvas.css']
     </div>
   </nav>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
+  <nav class="navbar lg:navbar-expand navbar-dark bg-dark" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Responsive offcanvas navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
@@ -117,7 +117,7 @@ export const extra_css = ['navbars-offcanvas.css']
               </div>
             </li>
           </ul>
-          <form class="d-flex mt-3 mt-lg-0" role="search">
+          <form class="d-flex mt-3 lg:mt-0" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn-outline theme-success" type="submit">Search</button>
           </form>
@@ -128,7 +128,7 @@ export const extra_css = ['navbars-offcanvas.css']
 
   <div class="container my-5">
     <div class="bg-body-tertiary p-5 rounded">
-      <div class="col-sm-8 py-5 mx-auto">
+      <div class="sm:col-8 py-5 mx-auto">
         <h1 class="display-5 fw-normal">Navbar with offcanvas examples</h1>
         <p class="fs-5">This example shows how responsive offcanvas menus work within the navbar. For positioning of navbars, checkout the <a href={getVersionedDocsPath('/examples/navbar-static/')}>top</a> and <a href={getVersionedDocsPath('/examples/navbar-fixed/')}>fixed top</a> examples.</p>
         <p>From the top down, you'll see a dark navbar, light navbar and a responsive navbar—each with offcanvases built in. Resize your browser window to the large breakpoint to see the toggle for the offcanvas.</p>

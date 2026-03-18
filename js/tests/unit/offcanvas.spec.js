@@ -160,7 +160,7 @@ describe('Offcanvas', () => {
 
     it('should call `hide` on resize, if element\'s position is not fixed any more', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<div class="offcanvas-lg"></div>'
+        fixtureEl.innerHTML = '<div class="lg:offcanvas"></div>'
 
         const offCanvasEl = fixtureEl.querySelector('div')
         const offCanvas = new Offcanvas(offCanvasEl)

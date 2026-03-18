@@ -15,14 +15,14 @@
     align-self: var(--stack-align-self, stretch);
   }
 
-  @include loop-breakpoints-up() using ($breakpoint, $infix) {
-    .vstack#{$infix} {
+  @include loop-breakpoints-up() using ($breakpoint, $prefix) {
+    .#{$prefix}vstack {
       @include container-breakpoint-up($breakpoint) {
         --stack-direction: column;
         --stack-align-items: stretch;
       }
     }
-    .hstack#{$infix} {
+    .#{$prefix}hstack {
       @include container-breakpoint-up($breakpoint) {
         --stack-direction: row;
         --stack-align-items: flex-start;

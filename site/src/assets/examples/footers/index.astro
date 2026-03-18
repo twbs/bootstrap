@@ -17,13 +17,13 @@ export const title = 'Footers'
 
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary">&copy; {new Date().getFullYear()} Company, Inc</p>
+    <p class="md:col-4 mb-0 text-body-secondary">&copy; {new Date().getFullYear()} Company, Inc</p>
 
-    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap">
+    <a href="/" class="md:col-4 d-flex align-items-center justify-content-center mb-3 md:mb-0 md:me-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap">
       <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
     </a>
 
-    <ul class="nav col-md-4 justify-content-end">
+    <ul class="nav md:col-4 justify-content-end">
       <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
@@ -37,14 +37,14 @@ export const title = 'Footers'
 
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1" aria-label="Bootstrap">
+    <div class="md:col-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 md:mb-0 text-body-secondary text-decoration-none lh-1" aria-label="Bootstrap">
         <svg class="bi" width="30" height="24" aria-hidden="true"><use href="#bootstrap"/></svg>
       </a>
-      <span class="mb-3 mb-md-0 text-body-secondary">&copy; {new Date().getFullYear()} Company, Inc</span>
+      <span class="mb-3 md:mb-0 text-body-secondary">&copy; {new Date().getFullYear()} Company, Inc</span>
     </div>
 
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+    <ul class="nav md:col-4 justify-content-end list-unstyled d-flex">
       <li class="ms-3"><a class="text-body-secondary" href="#" aria-label="Instagram"><svg class="bi" width="24" height="24" aria-hidden="true"><use href="#instagram"/></svg></a></li>
       <li class="ms-3"><a class="text-body-secondary" href="#" aria-label="Facebook"><svg class="bi" width="24" height="24"><use href="#facebook"/></svg></a></li>
     </ul>
@@ -69,7 +69,7 @@ export const title = 'Footers'
 <div class="b-example-divider"></div>
 
 <div class="container">
-  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+  <footer class="row row-cols-1 sm:row-cols-2 md:row-cols-5 py-5 my-5 border-top">
     <div class="col mb-3">
       <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none" aria-label="Bootstrap">
         <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
@@ -122,7 +122,7 @@ export const title = 'Footers'
 <div class="container">
   <footer class="py-5">
     <div class="row">
-      <div class="col-6 col-md-2 mb-3">
+      <div class="col-6 md:col-2 mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
@@ -133,7 +133,7 @@ export const title = 'Footers'
         </ul>
       </div>
 
-      <div class="col-6 col-md-2 mb-3">
+      <div class="col-6 md:col-2 mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
@@ -144,7 +144,7 @@ export const title = 'Footers'
         </ul>
       </div>
 
-      <div class="col-6 col-md-2 mb-3">
+      <div class="col-6 md:col-2 mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
@@ -155,11 +155,11 @@ export const title = 'Footers'
         </ul>
       </div>
 
-      <div class="col-md-5 offset-md-1 mb-3">
+      <div class="md:col-5 md:offset-1 mb-3">
         <form>
           <h5>Subscribe to our newsletter</h5>
           <p>Monthly digest of what's new and exciting from us.</p>
-          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+          <div class="d-flex flex-column sm:flex-row w-100 gap-2">
             <label for="newsletter1" class="visually-hidden">Email address</label>
             <input id="newsletter1" type="email" class="form-control" placeholder="Email address">
             <button class="btn-solid theme-primary" type="button">Subscribe</button>
@@ -168,7 +168,7 @@ export const title = 'Footers'
       </div>
     </div>
 
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+    <div class="d-flex flex-column sm:flex-row justify-content-between py-4 my-4 border-top">
       <p>&copy; {new Date().getFullYear()} Company, Inc. All rights reserved.</p>
       <ul class="list-unstyled d-flex">
         <li class="ms-3"><a class="link-body-emphasis" href="#" aria-label="Instagram"><svg class="bi" width="24" height="24"><use href="#instagram"/></svg></a></li>

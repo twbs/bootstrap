@@ -4,7 +4,7 @@ import { getVersionedDocsPath } from '@libs/path'
 import Code from '@shortcodes/Code.astro'
 ---
 
-<div class="col-lg-7 mx-auto pb-3 mb-3 mb-md-5 text-md-center">
+<div class="lg:col-7 mx-auto pb-3 mb-3 md:mb-5 md:text-center">
   <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-violet-rgb);">
     <svg class="bi fs-1" aria-hidden="true"><use href="#code"></use></svg>
   </div>
@@ -12,19 +12,19 @@ import Code from '@shortcodes/Code.astro'
   <p class="lead fw-normal">
     Jump right into building with Bootstrap—use the CDN, install it via package manager, or download the source code.
   </p>
-  <p class="d-flex justify-content-md-center lead fw-normal">
-    <a href={getVersionedDocsPath('getting-started/install/')} class="icon-link icon-link-hover fw-semibold ps-md-4">
+  <p class="d-flex md:justify-content-center lead fw-normal">
+    <a href={getVersionedDocsPath('getting-started/install/')} class="icon-link icon-link-hover fw-semibold md:ps-4">
       Read installation docs
       <svg class="bi" aria-hidden="true"><use href="#arrow-right"></use></svg>
     </a>
   </p>
 </div>
 
-<section class="row g-3 g-md-5 mb-5 pb-5 justify-content-center">
-  <div class="col-lg-6 py-lg-4 pe-lg-5">
+<section class="row g-3 md:g-5 mb-5 pb-5 justify-content-center">
+  <div class="lg:col-6 lg:py-4 lg:pe-5">
     <svg class="bi mb-2 fs-2 fg-3" aria-hidden="true"><use href="#box-seam"></use></svg>
     <h3 class="fw-semibold">Install via package manager</h3>
-    <p class="pe-lg-5">
+    <p class="lg:pe-5">
       Install Bootstrap’s source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package-managed
       installs don’t include documentation or our full build scripts. You can also <a
         href="https://github.com/twbs/examples/">use any demo from our Examples repo</a
@@ -37,10 +37,10 @@ import Code from '@shortcodes/Code.astro'
       package managers.
     </p>
   </div>
-  <div class="col-lg-6 py-lg-4 ps-lg-5 border-lg-start">
+  <div class="lg:col-6 lg:py-4 lg:ps-5 border-lg-start">
     <svg class="bi mb-2 fs-2 fg-3" aria-hidden="true"><use href="#globe2"></use></svg>
     <h3 class="fw-semibold">Include via CDN</h3>
-    <p class="pe-lg-5">
+    <p class="lg:pe-5">
       When you only need to include Bootstrap’s compiled CSS or JS, you can use <a
         href="https://www.jsdelivr.com/package/npm/bootstrap">jsDelivr</a
       >. See it in action with our simple <a href={getVersionedDocsPath('guides/quickstart/')}
@@ -61,7 +61,7 @@ import Code from '@shortcodes/Code.astro'
     />
   </div>
 
-  <div class="col-md-8 mx-auto text-center">
+  <div class="md:col-8 mx-auto text-center">
     <h4 class="fw-semibold">Read our getting started guides</h4>
     <p>Get a jump on including Bootstrap's source files in a new project with our official guides.</p>
     <div class="d-flex flex-wrap align-items-center justify-content-center gap-4 mt-4">

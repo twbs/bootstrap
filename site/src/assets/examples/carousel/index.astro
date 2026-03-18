@@ -5,14 +5,14 @@ import Placeholder from "@shortcodes/Placeholder.astro"
 ---
 
 <header data-bs-theme="dark">
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <nav class="navbar md:navbar-expand navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Carousel</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ul class="navbar-nav me-auto mb-2 md:mb-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -91,24 +91,24 @@ import Placeholder from "@shortcodes/Placeholder.astro"
 
     <!-- Three columns of text below the carousel -->
     <div class="row">
-      <div class="col-lg-4">
+      <div class="lg:col-4">
         <Placeholder width="140" height="140" background="var(--bs-secondary-color)" text={false} class="rounded-circle" />
         <h2 class="fw-normal">Heading</h2>
         <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
         <p><a class="btn-solid theme-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
+      </div><!-- /.lg:col-4 -->
+      <div class="lg:col-4">
         <Placeholder width="140" height="140" background="var(--bs-secondary-color)" text={false} class="rounded-circle" />
         <h2 class="fw-normal">Heading</h2>
         <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
         <p><a class="btn-solid theme-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
+      </div><!-- /.lg:col-4 -->
+      <div class="lg:col-4">
         <Placeholder width="140" height="140" background="var(--bs-secondary-color)" text={false} class="rounded-circle" />
         <h2 class="fw-normal">Heading</h2>
         <p>And lastly this, the third column of representative placeholder content.</p>
         <p><a class="btn-solid theme-secondary" href="#">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
+      </div><!-- /.lg:col-4 -->
     </div><!-- /.row -->
 
 
@@ -117,11 +117,11 @@ import Placeholder from "@shortcodes/Placeholder.astro"
     <hr class="featurette-divider">
 
     <div class="row featurette">
-      <div class="col-md-7">
+      <div class="md:col-7">
         <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
         <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
       </div>
-      <div class="col-md-5">
+      <div class="md:col-5">
         <Placeholder width="500" height="500" background="var(--bs-secondary-bg)" color="var(--bs-secondary-color)" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" />
       </div>
     </div>
@@ -129,11 +129,11 @@ import Placeholder from "@shortcodes/Placeholder.astro"
     <hr class="featurette-divider">
 
     <div class="row featurette">
-      <div class="col-md-7 order-md-2">
+      <div class="md:col-7 md:order-2">
         <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-body-secondary">See for yourself.</span></h2>
         <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
       </div>
-      <div class="col-md-5 order-md-1">
+      <div class="md:col-5 md:order-1">
         <Placeholder width="500" height="500" background="var(--bs-secondary-bg)" color="var(--bs-secondary-color)" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" />
       </div>
     </div>
@@ -141,11 +141,11 @@ import Placeholder from "@shortcodes/Placeholder.astro"
     <hr class="featurette-divider">
 
     <div class="row featurette">
-      <div class="col-md-7">
+      <div class="md:col-7">
         <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
         <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
       </div>
-      <div class="col-md-5">
+      <div class="md:col-5">
         <Placeholder width="500" height="500" background="var(--bs-secondary-bg)" color="var(--bs-secondary-color)" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" />
       </div>
     </div>

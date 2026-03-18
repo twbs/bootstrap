@@ -32,12 +32,12 @@ body {
 -------------------------------------------------- */
 
 /* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
+.marketing .lg\:col-4 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
 /* rtl:begin:ignore */
-.marketing .col-lg-4 p {
+.marketing .lg\:col-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
 }

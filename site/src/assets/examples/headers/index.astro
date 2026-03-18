@@ -32,7 +32,7 @@ export const extra_css = ['headers.css']
 
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <a href="/" class="d-flex align-items-center mb-3 md:mb-0 md:me-auto link-body-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
         <span class="fs-4">Simple header</span>
       </a>
@@ -64,14 +64,14 @@ export const extra_css = ['headers.css']
   <div class="b-example-divider"></div>
 
   <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
+    <header class="d-flex flex-wrap align-items-center justify-content-center md:justify-content-between py-3 mb-4 border-bottom">
+      <div class="md:col-3 mb-2 md:mb-0">
         <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
           <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use href="#bootstrap"/></svg>
         </a>
       </div>
 
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <ul class="nav col-12 md:col-auto mb-2 justify-content-center md:mb-0">
         <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
         <li><a href="#" class="nav-link px-2">Features</a></li>
         <li><a href="#" class="nav-link px-2">Pricing</a></li>
@@ -79,7 +79,7 @@ export const extra_css = ['headers.css']
         <li><a href="#" class="nav-link px-2">About</a></li>
       </ul>
 
-      <div class="col-md-3 text-end">
+      <div class="md:col-3 text-end">
         <button type="button" class="btn-outline theme-primary me-2">Login</button>
         <button type="button" class="btn-solid theme-primary">Sign up</button>
       </div>
@@ -90,12 +90,12 @@ export const extra_css = ['headers.css']
 
   <header class="p-3 bg-body fg-body" data-bs-theme="dark">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+      <div class="d-flex flex-wrap align-items-center justify-content-center lg:justify-content-start">
+        <a href="/" class="d-flex align-items-center mb-2 lg:mb-0 text-white text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use href="#bootstrap"/></svg>
         </a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <ul class="nav col-12 lg:col-auto lg:me-auto mb-2 justify-content-center md:mb-0">
           <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
@@ -103,7 +103,7 @@ export const extra_css = ['headers.css']
           <li><a href="#" class="nav-link px-2 text-white">About</a></li>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <form class="col-12 lg:col-auto mb-3 lg:mb-0 lg:me-3" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 
@@ -119,19 +119,19 @@ export const extra_css = ['headers.css']
 
   <header class="p-3 mb-3 border-bottom">
     <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+      <div class="d-flex flex-wrap align-items-center justify-content-center lg:justify-content-start">
+        <a href="/" class="d-flex align-items-center mb-2 lg:mb-0 link-body-emphasis text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use href="#bootstrap"/></svg>
         </a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <ul class="nav col-12 lg:col-auto lg:me-auto mb-2 justify-content-center md:mb-0">
           <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <form class="col-12 lg:col-auto mb-3 lg:mb-0 lg:me-3" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 
@@ -156,7 +156,7 @@ export const extra_css = ['headers.css']
   <header class="py-3 mb-3 border-bottom">
     <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
       <div>
-        <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-body-emphasis text-decoration-none" data-bs-toggle="menu" aria-expanded="false" aria-label="Bootstrap menu">
+        <a href="#" class="d-flex align-items-center lg:col-4 mb-2 lg:mb-0 link-body-emphasis text-decoration-none" data-bs-toggle="menu" aria-expanded="false" aria-label="Bootstrap menu">
           <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
         </a>
         <div class="menu text-small shadow">
@@ -221,11 +221,11 @@ export const extra_css = ['headers.css']
   </nav>
   <header class="py-3 mb-4 border-bottom">
     <div class="container d-flex flex-wrap justify-content-center">
-      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+      <a href="/" class="d-flex align-items-center mb-3 lg:mb-0 lg:me-auto link-body-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
         <span class="fs-4">Double header</span>
       </a>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+      <form class="col-12 lg:col-auto mb-3 lg:mb-0" role="search">
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
       </form>
     </div>
@@ -236,12 +236,12 @@ export const extra_css = ['headers.css']
   <header>
     <div class="px-3 py-2 text-bg-dark border-bottom">
       <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+        <div class="d-flex flex-wrap align-items-center justify-content-center lg:justify-content-start">
+          <a href="/" class="d-flex align-items-center my-2 lg:my-0 lg:me-auto text-white text-decoration-none">
             <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use href="#bootstrap"/></svg>
           </a>
 
-          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <ul class="nav col-12 lg:col-auto my-2 justify-content-center md:my-0 text-small">
             <li>
               <a href="#" class="nav-link text-secondary">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24" aria-hidden="true"><use href="#home"/></svg>
@@ -278,7 +278,7 @@ export const extra_css = ['headers.css']
     </div>
     <div class="px-3 py-2 border-bottom mb-3">
       <div class="container d-flex flex-wrap justify-content-center">
-        <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+        <form class="col-12 lg:col-auto mb-2 lg:mb-0 lg:me-auto" role="search">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 

@@ -203,7 +203,7 @@ Cards assume no specific `width` to start, so they’ll be 100% wide unless othe
 Using the grid, wrap cards in columns and rows as needed.
 
 <Example code={`<div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="sm:col-6 mb-3 sm:mb-0">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
@@ -212,7 +212,7 @@ Using the grid, wrap cards in columns and rows as needed.
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="sm:col-6">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
@@ -487,9 +487,9 @@ When using card groups with footers, their content will automatically line up.
 
 ### Grid cards
 
-Use the Bootstrap grid system and its [`.row-cols` classes]([[docsref:/layout/grid#row-columns]]) to control how many grid columns (wrapped around your cards) you show per row. For example, here’s `.row-cols-1` laying out the cards on one column, and `.row-cols-md-2` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
+Use the Bootstrap grid system and its [`.row-cols` classes]([[docsref:/layout/grid#row-columns]]) to control how many grid columns (wrapped around your cards) you show per row. For example, here’s `.row-cols-1` laying out the cards on one column, and `.md:row-cols-2` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
 
-<Example code={`<div class="row row-cols-1 row-cols-md-2 g-4">
+<Example code={`<div class="row row-cols-1 md:row-cols-2 g-4">
     <div class="col">
       <div class="card">
         <Placeholder width="100%" height="140" class="card-img-top" text="Image cap" />
@@ -530,7 +530,7 @@ Use the Bootstrap grid system and its [`.row-cols` classes]([[docsref:/layout/gr
 
 Change it to `.row-cols-3` and you’ll see the fourth card wrap.
 
-<Example code={`<div class="row row-cols-1 row-cols-md-3 g-4">
+<Example code={`<div class="row row-cols-1 md:row-cols-3 g-4">
     <div class="col">
       <div class="card">
         <Placeholder width="100%" height="140" class="card-img-top" text="Image cap" />
@@ -571,7 +571,7 @@ Change it to `.row-cols-3` and you’ll see the fourth card wrap.
 
 When you need equal height, add `.h-100` to the cards. If you want equal heights by default, you can set `$card-height: 100%` in Sass.
 
-<Example code={`<div class="row row-cols-1 row-cols-md-3 g-4">
+<Example code={`<div class="row row-cols-1 md:row-cols-3 g-4">
     <div class="col">
       <div class="card h-100">
         <Placeholder width="100%" height="140" class="card-img-top" text="Image cap" />
@@ -612,7 +612,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
 
 Just like with card groups, card footers will automatically line up.
 
-<Example code={`<div class="row row-cols-1 row-cols-md-3 g-4">
+<Example code={`<div class="row row-cols-1 md:row-cols-3 g-4">
     <div class="col">
       <div class="card h-100">
         <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
