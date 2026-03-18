@@ -21,14 +21,16 @@ Here's a simple example of a vertical stepper.
 
 ### Responsive
 
-Steppers sometimes need to be responsive, so you can use the responsive modifier classes to change them from vertical to horizontal at different breakpoints. Responsive modifier classes are available for `sm`, `md`, `lg`, `xl`, and `2xl` breakpoints.
+Steppers can be made horizontal at specific breakpoints using the `contains-inline` utility on a parent element and by adding the responsive `.stepper-horizontal-{breakpoint}` modifier classes on the stepper. The extra parent element is required when using container queries.
 
-<Example code={`<ol class="stepper stepper-horizontal-md">
-    <li class="stepper-item active">Create account</li>
-    <li class="stepper-item active">Confirm email</li>
-    <li class="stepper-item">Update profile</li>
-    <li class="stepper-item">Finish</li>
-  </ol>`} />
+<ResizableExample code={`<div class="contains-inline">
+    <ol class="stepper stepper-horizontal-sm">
+      <li class="stepper-item active">Create account</li>
+      <li class="stepper-item active">Confirm email</li>
+      <li class="stepper-item">Update profile</li>
+      <li class="stepper-item">Finish</li>
+    </ol>
+  </div>`} />
 
 ### Gap
 
@@ -41,7 +43,7 @@ Customize the gap with styles that override the `--bs-stepper-gap` CSS variable.
     <li class="stepper-item">Finish</li>
   </ol>`} />
 
-### Variants
+## Variants
 
 <Example code={`<ol class="stepper stepper-horizontal">
     <li class="stepper-item active theme-accent">Create account</li>
@@ -50,7 +52,7 @@ Customize the gap with styles that override the `--bs-stepper-gap` CSS variable.
     <li class="stepper-item active theme-danger">Finish</li>
   </ol>`} />
 
-### Overflow
+## Overflow
 
 Wrap your horizontal stepper in a `.stepper-overflow` container to enable horizontal scrolling when the stepper overflows its parent. Uses `container-type: inline-size` for container query support as opposed to a viewport-based media query.
 
@@ -64,14 +66,7 @@ Wrap your horizontal stepper in a `.stepper-overflow` container to enable horizo
       <li class="stepper-item">Finish onboarding</li>
     </ol>
   </div>`} />
-
-## Playground
-
-Experiment with stepper options including orientation, breakpoints, step count, and more.
-
-<StepperPlayground />
-
-### Alignment
+## Alignment
 
 Use [text alignment utilities]([[docsref:/utilities/text-alignment]]) (because we use `display: inline-grid`) to align the steps. The inline grid arrangement allows us to keep the steps equal width and ensures the connecting lines are rendered correctly.
 
@@ -105,17 +100,17 @@ Apply `.w-100` to the stepper to make it full width. Stepper items will be stret
     <li class="stepper-item">Finish</li>
   </ol>`} />
 
-### With anchors
+## With anchors
 
 Use anchor elements to build your stepper if it links across multiple pages. Add `role="button"` or use `<button>` elements if you're linking across sections in the same document.
 
 Consider using our [link utilities]([[docsref:/utilities/link]]) for quick color control.
 
 <Example code={`<div class="stepper">
-    <a href="#" role="button" class="stepper-item link-body-emphasis active">Create account</a>
-    <a href="#" role="button" class="stepper-item link-body-emphasis active">Confirm email</a>
-    <a href="#" role="button" class="stepper-item link-secondary">Update profile</a>
-    <a href="#" role="button" class="stepper-item link-secondary">Finish</a>
+    <a href="#" role="button" class="stepper-item active">Create account</a>
+    <a href="#" role="button" class="stepper-item active">Confirm email</a>
+    <a href="#" role="button" class="stepper-item theme-secondary">Update profile</a>
+    <a href="#" role="button" class="stepper-item theme-secondary">Finish</a>
   </div>`} />
 
 ## CSS
