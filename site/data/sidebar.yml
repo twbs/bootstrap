@@ -191,6 +191,7 @@
       pages:
         - title: Margin
         - title: Padding
+        - title: Space
     - group: Type
       pages:
         - title: Font family
@@ -210,6 +211,7 @@
         - title: Border
         - title: Border color
         - title: Border radius
+        - title: Divide
     - group: Interactions
       pages:
         - title: Pointer events

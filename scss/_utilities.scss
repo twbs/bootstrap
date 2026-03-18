@@ -582,6 +582,44 @@ $utilities: map.merge(
       values: $spacers
     ),
     // scss-docs-end utils-spacing
+    // scss-docs-start utils-space
+    "space-x": (
+      responsive: true,
+      property: margin-inline-end,
+      class: space-x,
+      child-selector: "> :not(:last-child)",
+      values: $spacers
+    ),
+    "space-y": (
+      responsive: true,
+      property: margin-block-end,
+      class: space-y,
+      child-selector: "> :not(:last-child)",
+      values: $spacers
+    ),
+    // scss-docs-end utils-space
+    // scss-docs-start utils-divide
+    "divide-x": (
+      responsive: true,
+      property: border-inline-start,
+      class: divide-x,
+      child-selector: "> :not(:first-child)",
+      values: (
+        null: var(--border-width) var(--border-style) var(--border-color),
+        0: 0,
+      )
+    ),
+    "divide-y": (
+      responsive: true,
+      property: border-block-start,
+      class: divide-y,
+      child-selector: "> :not(:first-child)",
+      values: (
+        null: var(--border-width) var(--border-style) var(--border-color),
+        0: 0,
+      )
+    ),
+    // scss-docs-end utils-divide
     // Text
     // scss-docs-start utils-font-family
     "font-family": (
