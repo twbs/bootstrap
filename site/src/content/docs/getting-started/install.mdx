@@ -97,6 +97,10 @@ If you prefer to include Floating UI and Vanilla Calendar Pro separately instead
   "imports": {
     "@floating-ui/dom": "[[config:cdn.floating_ui_esm]]",
     "vanilla-calendar-pro": "[[config:cdn.vanilla_calendar_pro_esm]]"
+  },
+  "integrity": {
+    "[[config:cdn.floating_ui_esm]]": "[[config:cdn.floating_ui_esm_hash]]",
+    "[[config:cdn.vanilla_calendar_pro_esm]]": "[[config:cdn.vanilla_calendar_pro_esm_hash]]"
   }
 }
 </script>
@@ -108,7 +112,13 @@ If you prefer to include Floating UI and Vanilla Calendar Pro separately instead
 | --- | --- |
 | CSS | [`[[config:cdn.css]]`]([[config:cdn.css]]) |
 | JS bundle (with Floating UI and Vanilla Calendar Pro) | [`[[config:cdn.js_bundle]]`]([[config:cdn.js_bundle]]) |
+| Floating UI ESM | [`[[config:cdn.floating_ui_esm]]`]([[config:cdn.floating_ui_esm]]) |
+| Vanilla Calendar Pro ESM | [`[[config:cdn.vanilla_calendar_pro_esm]]`]([[config:cdn.vanilla_calendar_pro_esm]]) |
 </BsTable>
+
+<Callout>
+jsDelivr also provides a minified ESM version of Floating UI, but it can't be used with the integrity attribute.
+</Callout>
 
 ### Using CDNs
 

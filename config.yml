@@ -34,14 +34,16 @@ download:
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:                  "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/css/bootstrap.min.css"
-  css_hash:             "sha384-TDmpFhAO5TwSQwPF95I/odgwpTUuv0aaVm9/0fL7b+kKe7hFBp/+9cBCMkydgGOi"
-  js:                   "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.min.js"
-  js_hash:              "sha384-Php492snRLTR5p+hMyxpV6gYwp1avWXn4AaX31MgANrvsjr9Dpodl3Nw60L7Pewl"
-  js_bundle:            "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.bundle.min.js"
-  js_bundle_hash:       "sha384-I2J4jlw924JZXHU9un9Mcuixq/rKhd5A8/B1NQ6ifPAiBFacZjwNcec8d6L38jQv"
-  floating_ui_esm:      "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.6/dist/floating-ui.dom.esm.min.js"
-  vanilla_calendar_pro_esm: "https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.1.0/index.mjs"
+  css:                           "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/css/bootstrap.min.css"
+  css_hash:                      "sha384-TDmpFhAO5TwSQwPF95I/odgwpTUuv0aaVm9/0fL7b+kKe7hFBp/+9cBCMkydgGOi"
+  js:                            "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.min.js"
+  js_hash:                       "sha384-Php492snRLTR5p+hMyxpV6gYwp1avWXn4AaX31MgANrvsjr9Dpodl3Nw60L7Pewl"
+  js_bundle:                     "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  js_bundle_hash:                "sha384-I2J4jlw924JZXHU9un9Mcuixq/rKhd5A8/B1NQ6ifPAiBFacZjwNcec8d6L38jQv"
+  floating_ui_esm:               "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.6/dist/floating-ui.dom.esm.js"
+  floating_ui_esm_hash:          "sha384-xovEHHpm3FhkiFUAGz5wPlJL39EW6cK9oRkwHaIjtGaw0nF5RtjHWV6oJB+tNbc2"
+  vanilla_calendar_pro_esm:      "https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.1.0/index.mjs"
+  vanilla_calendar_pro_esm_hash: "sha384-5quhKh5ILxed/sN+sno/4zf+ksFY5P4ekIM5SnguE49mgszu8obwGevh7IUEV3rm"
 
 anchors:
   min:                  2

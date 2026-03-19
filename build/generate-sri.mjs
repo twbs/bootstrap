@@ -36,6 +36,14 @@ const files = [
   {
     file: 'dist/js/bootstrap.bundle.min.js',
     configPropertyName: 'js_bundle_hash'
+  },
+  {
+    file: 'node_modules/@floating-ui/dom/dist/floating-ui.dom.esm.js',
+    configPropertyName: 'floating_ui_esm_hash'
+  },
+  {
+    file: 'node_modules/vanilla-calendar-pro/index.mjs',
+    configPropertyName: 'vanilla_calendar_pro_esm_hash'
   }
 ]
 
