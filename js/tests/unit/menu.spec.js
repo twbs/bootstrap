@@ -1279,7 +1279,7 @@ describe('Menu', () => {
     it('should use Floating UI positioning in navbar', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
-          '<nav class="navbar navbar-expand-md bg-light">',
+          '<nav class="navbar md:navbar-expand bg-light">',
           '  <div>',
           '    <button class="btn" data-bs-toggle="menu" aria-expanded="false">Menu</button>',
           '    <div class="menu">',

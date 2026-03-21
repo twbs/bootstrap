@@ -26,18 +26,18 @@ if (layout === 'docs' && version === getConfig().docs_version) {
 <li class="nav-item">
   <button
     type="button"
-    class="btn btn-link nav-link py-2 px-0 px-lg-2"
+    class="btn btn-link nav-link py-2 px-0 lg:px-2"
     data-bs-toggle="menu"
     data-bs-placement="bottom-end"
     aria-expanded="false"
   >
     <svg class="bi" aria-hidden="true"><use href="#stack"></use></svg>
-    <span class="d-lg-none" aria-hidden="true">
+    <span class="lg:d-none" aria-hidden="true">
       Bootstrap v{
         getConfig().docs_version
       }
     </span>
-    <svg class="bi bi-sm ms-lg--1" aria-hidden="true"><use href="#chevron-expand"></use></svg>
+    <svg class="bi bi-sm lg:ms--1" aria-hidden="true"><use href="#chevron-expand"></use></svg>
   </button>
   <div class="menu" id="bd-versions-menu">
     <h6 class="menu-header">v6 releases</h6>

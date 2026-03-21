@@ -163,7 +163,7 @@ Right-aligned with `.justify-content-end`:
 
 ### Vertical
 
-Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
+Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.sm:flex-column`).
 
 <Example code={`<ul class="nav flex-column">
     <li class="nav-item">
@@ -247,11 +247,11 @@ Similar to the `.nav-fill` example using a `<nav>`-based navigation.
 
 If you need responsive nav variations, consider using a series of [flexbox utilities]([[docsref:/utilities/flex]]). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
-<Example code={`<nav class="nav nav-pills flex-column flex-sm-row">
-    <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Active</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="#">Longer nav link</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
-    <a class="flex-sm-fill text-sm-center nav-link disabled" aria-disabled="true">Disabled</a>
+<Example code={`<nav class="nav nav-pills flex-column sm:flex-row">
+    <a class="sm:flex-fill sm:text-center nav-link active" aria-current="page" href="#">Active</a>
+    <a class="sm:flex-fill sm:text-center nav-link" href="#">Longer nav link</a>
+    <a class="sm:flex-fill sm:text-center nav-link" href="#">Link</a>
+    <a class="sm:flex-fill sm:text-center nav-link disabled" aria-disabled="true">Disabled</a>
   </nav>`} />
 
 ## Regarding accessibility

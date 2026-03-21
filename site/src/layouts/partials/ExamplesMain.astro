@@ -15,7 +15,7 @@ import { getSlug } from '@libs/utils'
           {examples.map((example, index) => {
             if (external) {
               return (
-                <article class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+                <article class="md:col-6 lg:col-4 mb-3 d-flex gap-3">
                   <svg class="bi fs-5 flex-shrink-0 mt-1" aria-hidden="true">
                     <use href="#box-seam" />
                   </svg>
@@ -54,7 +54,7 @@ import { getSlug } from '@libs/utils'
             }
 
             return (
-              <article class="col-sm-6 col-md-3 mb-3">
+              <article class="sm:col-6 md:col-3 mb-3">
                 <a
                   class="d-block link-offset-1"
                   href={`/docs/${getConfig().docs_version}/examples/${getSlug(example.name)}/`}

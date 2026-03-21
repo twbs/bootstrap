@@ -130,9 +130,9 @@ $stepper-tokens: defaults(
     @include stepper-horizontal();
   }
 
-  @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
+  @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
     @if $next {
-      .stepper-horizontal#{$infix} {
+      .#{$prefix}stepper-horizontal {
         @include container-breakpoint-up($next) {
           @include stepper-horizontal();
         }

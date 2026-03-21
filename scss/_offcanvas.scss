@@ -54,15 +54,15 @@ $offcanvas-backdrop-tokens: defaults(
 
 @layer components {
   // Apply CSS vars to all offcanvas responsive variants
-  @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
-    .offcanvas#{$infix} {
+  @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
+    .#{$prefix}offcanvas {
       @extend %offcanvas-css-vars;
     }
   }
 
   // Responsive offcanvas styles
-  @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
-    .offcanvas#{$infix} {
+  @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
+    .#{$prefix}offcanvas {
       @include media-breakpoint-down($next) {
         position: fixed;
         z-index: var(--offcanvas-zindex);
@@ -142,7 +142,7 @@ $offcanvas-backdrop-tokens: defaults(
       }
 
       // Above breakpoint - show content inline (for responsive offcanvas)
-      @if not ($infix == "") {
+      @if not ($prefix == "") {
         @include media-breakpoint-up($next) {
           --offcanvas-height: auto;
           --offcanvas-border-width: 0;

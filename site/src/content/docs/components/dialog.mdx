@@ -414,13 +414,13 @@ Responsive fullscreen variants are also available. These make the dialog fullscr
 | Class | Fullscreen below |
 | --- | --- |
 | `.dialog-fullscreen` | Always |
-| `.dialog-fullscreen-sm-down` | `576px` |
-| `.dialog-fullscreen-md-down` | `768px` |
-| `.dialog-fullscreen-lg-down` | `1024px` |
-| `.dialog-fullscreen-xl-down` | `1280px` |
-| `.dialog-fullscreen-2xl-down` | `1536px` |
+| `.sm-down:dialog-fullscreen` | `576px` |
+| `.md-down:dialog-fullscreen` | `768px` |
+| `.lg-down:dialog-fullscreen` | `1024px` |
+| `.xl-down:dialog-fullscreen` | `1280px` |
+| `.2xl-down:dialog-fullscreen` | `1536px` |
 
-<dialog class="dialog dialog-fullscreen-lg-down" id="exampleDialogFullscreenLg">
+<dialog class="dialog lg-down:dialog-fullscreen" id="exampleDialogFullscreenLg">
   <div class="dialog-header">
     <h1 class="dialog-title">Fullscreen below lg</h1>
     <CloseButton dismiss="dialog" />
@@ -438,7 +438,7 @@ Responsive fullscreen variants are also available. These make the dialog fullscr
 </button>`} />
 
 ```html
-<dialog class="dialog dialog-fullscreen-lg-down">...</dialog>
+<dialog class="dialog lg-down:dialog-fullscreen">...</dialog>
 ```
 
 ## CSS

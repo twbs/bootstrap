@@ -89,9 +89,9 @@ if (currentPageIndex < allPages.length - 1) {
 ---
 
 <BaseLayout {...Astro.props} layout="docs" overrides={{ body: bodyProps }}>
-  <div slot="main" class="container-2xl bd-gutter mt-3 my-md-4 bd-layout">
+  <div slot="main" class="2xl:container bd-gutter mt-3 md:my-4 bd-layout">
     <aside class="bd-sidebar">
-      <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
+      <div class="lg:offcanvas offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
         <div class="offcanvas-header border-bottom">
           <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse docs</h5>
           <CloseButton dismiss="offcanvas" target="#bdSidebar" />
@@ -104,12 +104,12 @@ if (currentPageIndex < allPages.length - 1) {
     </aside>
 
     <main class="bd-main order-1">
-      <div class="bd-intro pt-2 ps-lg-2">
+      <div class="bd-intro pt-2 lg:ps-2">
         <h1 class="bd-title mb-0" id="content">{frontmatter.title}</h1>
         <div class="bd-subtitle">
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
         </div>
-        <div class="mb-3 mb-md-0 d-flex gap-2 text-nowrap">
+        <div class="mb-3 md:mb-0 d-flex gap-2 text-nowrap">
           {
             frontmatter.added &&
               ((frontmatter.added.show_badge !== undefined && frontmatter.added.show_badge === true) ||
@@ -161,12 +161,12 @@ if (currentPageIndex < allPages.length - 1) {
       </div>
 
 
-      <div class="vstack bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 fg-3">
+      <div class="vstack bd-toc mt-3 mb-5 lg:my-0 lg:mb-5 sm:px-1 fg-3">
         <div class="overflow-y-auto">
         {
           frontmatter.toc && headings && (
             <button
-              class="btn-sm btn-subtle mb-2 bd-toc-toggle d-lg-none"
+              class="btn-sm btn-subtle mb-2 bd-toc-toggle lg:d-none"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#tocContents"
@@ -174,7 +174,7 @@ if (currentPageIndex < allPages.length - 1) {
               aria-controls="tocContents"
             >
               On this page
-              <svg class="bi d-lg-none ms-2" aria-hidden="true">
+              <svg class="bi lg:d-none ms-2" aria-hidden="true">
                 <use href="#chevron-expand" />
               </svg>
             </button>
@@ -189,7 +189,7 @@ if (currentPageIndex < allPages.length - 1) {
         <Ads />
       </div>
 
-      <div class="bd-content prose ps-lg-2">
+      <div class="bd-content prose lg:ps-2">
         {
           frontmatter.sections && (
             <div class="grid grid-cols-3 mb-5">
@@ -229,7 +229,7 @@ if (currentPageIndex < allPages.length - 1) {
         <slot />
 
         <nav class="bd-links-nav py-5 mt-5 border-top">
-          <div class="d-flex flex-column flex-md-row justify-content-stretch gap-3 gap-md-5">
+          <div class="d-flex flex-column md:flex-row justify-content-stretch gap-3 md:gap-5">
             {
               prevPage && (
                 <a href={prevPage.url} class="d-block p-3 text-decoration-none border rounded-3 flex-grow-1">

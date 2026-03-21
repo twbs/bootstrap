@@ -178,14 +178,14 @@ $table-striped-columns-order: even !default;
 
   // Responsive tables
   //
-  // Generate series of `.table-responsive-*` classes for configuring the screen
-  // size of where your table will overflow.
+  // Generate series of responsive `.table-responsive` classes for configuring
+  // the screen size of where your table will overflow.
 
   @each $breakpoint in map.keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
+    $prefix: breakpoint-prefix($breakpoint, $breakpoints);
 
     @include media-breakpoint-down($breakpoint) {
-      .table-responsive#{$infix} {
+      .#{$prefix}table-responsive {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }

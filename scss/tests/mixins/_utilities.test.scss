@@ -346,49 +346,49 @@ $true-terminal-output: false;
     // }
   }
 
-  // @include describe("$infix") {
-  //   @include it("inserts the given infix") {
-  //     @include test-generate-utility(
-  //       (
-  //         property: "padding",
-  //         values: (null: 1rem, small: .5rem, large: 2rem)
-  //       ),
-  //       $infix: -sm
-  //     ) {
-  //       .padding-sm {
-  //         padding: 1rem;
-  //       }
+  @include describe("$prefix") {
+    @include it("prepends the given prefix") {
+      @include test-generate-utility(
+        (
+          property: "padding",
+          values: (null: 1rem, small: .5rem, large: 2rem)
+        ),
+        $prefix: "sm\\:"
+      ) {
+        .sm\:padding {
+          padding: 1rem;
+        }
 
-  //       .padding-sm-small {
-  //         padding: .5rem;
-  //       }
+        .sm\:padding-small {
+          padding: .5rem;
+        }
 
-  //       .padding-sm-large {
-  //         padding: 2rem;
-  //       }
-  //     }
-  //   }
+        .sm\:padding-large {
+          padding: 2rem;
+        }
+      }
+    }
 
-  //   @include it("strips leading - if class is null") {
-  //     @include test-generate-utility(
-  //       (
-  //         property: visibility,
-  //         class: null,
-  //         values: (
-  //           visible: visible,
-  //           invisible: hidden,
-  //         )
-  //       ),
-  //       -sm
-  //     ) {
-  //       .sm-visible {
-  //         visibility: visible;
-  //       }
+    @include it("works with null class") {
+      @include test-generate-utility(
+        (
+          property: visibility,
+          class: null,
+          values: (
+            visible: visible,
+            invisible: hidden,
+          )
+        ),
+        "sm\\:"
+      ) {
+        .sm\:visible {
+          visibility: visible;
+        }
 
-  //       .sm-invisible {
-  //         visibility: hidden;
-  //       }
-  //     }
-  //   }
-  // }
+        .sm\:invisible {
+          visibility: hidden;
+        }
+      }
+    }
+  }
 }

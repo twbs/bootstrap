@@ -68,7 +68,7 @@
   flex: 1;
 }
 @media (min-width: 768px) {
-  .flex-md-equal > * {
+  .md\:flex-equal > * {
     flex: 1;
   }
 }

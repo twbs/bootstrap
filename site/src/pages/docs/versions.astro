@@ -21,7 +21,7 @@ function getVersionsSortedDesc<TKey extends string, TVersions extends Record<TKe
     {
       getVersionsSortedDesc(getData('docs-versions'), 'group').map((docsVersion) => {
         return (
-          <div class="col-md-6 col-lg-4 col-xl mb-4">
+          <div class="md:col-6 lg:col-4 xl:col mb-4">
             <h2>{docsVersion.group}</h2>
             <p>{docsVersion.description}</p>
             <div class="list-group">

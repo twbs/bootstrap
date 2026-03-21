@@ -180,13 +180,11 @@ $dialog-sizes: defaults(
 
   // Responsive fullscreen dialogs
   @each $breakpoint in map.keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
-    // stylelint-disable-next-line scss/at-function-named-arguments
-    $postfix: if(sass($infix != ""): #{$infix}-down; else: "");
+    $prefix: breakpoint-prefix($breakpoint, $breakpoints);
 
-    @if $postfix != "" {
+    @if $prefix != "" {
       @include media-breakpoint-down($breakpoint) {
-        .dialog-fullscreen#{$postfix} {
+        .#{css-escape-ident($breakpoint)}-down\:dialog-fullscreen {
           --dialog-width: 100vw;
           --dialog-margin: 0;
           --dialog-border-radius: 0;

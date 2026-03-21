@@ -57,11 +57,11 @@ By adding [gutter modifier classes]([[docsref:/layout/gutters]]), you can have c
 More complex layouts can also be created with the grid system.
 
 <Example code={`<form class="row g-3">
-    <div class="col-md-6">
+    <div class="md:col-6">
       <label for="inputEmail4" class="form-label">Email</label>
       <input type="email" class="form-control" id="inputEmail4">
     </div>
-    <div class="col-md-6">
+    <div class="md:col-6">
       <label for="inputPassword4" class="form-label">Password</label>
       <input type="password" class="form-control" id="inputPassword4">
     </div>
@@ -73,18 +73,18 @@ More complex layouts can also be created with the grid system.
       <label for="inputAddress2" class="form-label">Address 2</label>
       <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
     </div>
-    <div class="col-md-6">
+    <div class="md:col-6">
       <label for="inputCity" class="form-label">City</label>
       <input type="text" class="form-control" id="inputCity">
     </div>
-    <div class="col-md-4">
+    <div class="md:col-4">
       <label for="inputState" class="form-label">State</label>
       <select id="inputState" class="form-select">
         <option selected>Choose...</option>
         <option>...</option>
       </select>
     </div>
-    <div class="col-md-2">
+    <div class="md:col-2">
       <label for="inputZip" class="form-label">Zip</label>
       <input type="text" class="form-control" id="inputZip">
     </div>
@@ -109,20 +109,20 @@ At times, you maybe need to use margin or padding utilities to create that perfe
 
 <Example code={`<form>
     <div class="row mb-3">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
+      <label for="inputEmail3" class="sm:col-2 col-form-label">Email</label>
+      <div class="sm:col-10">
         <input type="email" class="form-control" id="inputEmail3">
       </div>
     </div>
     <div class="row mb-3">
-      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-      <div class="col-sm-10">
+      <label for="inputPassword3" class="sm:col-2 col-form-label">Password</label>
+      <div class="sm:col-10">
         <input type="password" class="form-control" id="inputPassword3">
       </div>
     </div>
     <fieldset class="row mb-3">
-      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-      <div class="col-sm-10">
+      <legend class="col-form-label sm:col-2 pt-0">Radios</legend>
+      <div class="sm:col-10">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
           <label class="form-check-label" for="gridRadios1">
@@ -144,7 +144,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
       </div>
     </fieldset>
     <div class="row mb-3">
-      <div class="col-sm-10 offset-sm-2">
+      <div class="sm:col-10 sm:offset-2">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="gridCheck1">
           <label class="form-check-label" for="gridCheck1">
@@ -161,36 +161,36 @@ At times, you maybe need to use margin or padding utilities to create that perfe
 Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s or `<legend>`s to correctly follow the size of `.form-control-lg` and `.form-control-sm`.
 
 <Example code={`<div class="row mb-3">
-    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
-    <div class="col-sm-10">
+    <label for="colFormLabelSm" class="sm:col-2 col-form-label col-form-label-sm">Email</label>
+    <div class="sm:col-10">
       <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
     </div>
   </div>
   <div class="row mb-3">
-    <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
+    <label for="colFormLabel" class="sm:col-2 col-form-label">Email</label>
+    <div class="sm:col-10">
       <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
     </div>
   </div>
   <div class="row">
-    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
-    <div class="col-sm-10">
+    <label for="colFormLabelLg" class="sm:col-2 col-form-label col-form-label-lg">Email</label>
+    <div class="sm:col-10">
       <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
     </div>
   </div>`} />
 
 ## Column sizing
 
-As shown in the previous examples, our grid system allows you to place any number of `.col`s within a `.row`. They’ll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.col-sm-7`.
+As shown in the previous examples, our grid system allows you to place any number of `.col`s within a `.row`. They’ll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.sm:col-7`.
 
 <Example code={`<div class="row g-3">
-    <div class="col-sm-7">
+    <div class="sm:col-7">
       <input type="text" class="form-control" placeholder="City" aria-label="City">
     </div>
-    <div class="col-sm">
+    <div class="sm:col">
       <input type="text" class="form-control" placeholder="State" aria-label="State">
     </div>
-    <div class="col-sm">
+    <div class="sm:col">
       <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
     </div>
   </div>`} />
@@ -236,18 +236,18 @@ The example below uses a flexbox utility to vertically center the contents and c
 You can then remix that once again with size-specific column classes.
 
 <Example code={`<form class="row gx-3 gy-2 align-items-center">
-    <div class="col-sm-3">
+    <div class="sm:col-3">
       <label class="visually-hidden" for="specificSizeInputName">Name</label>
       <input type="text" class="form-control" id="specificSizeInputName" placeholder="Jane Doe">
     </div>
-    <div class="col-sm-3">
+    <div class="sm:col-3">
       <label class="visually-hidden" for="specificSizeInputGroupUsername">Username</label>
       <div class="input-group">
         <div class="input-group-text">@</div>
         <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Username">
       </div>
     </div>
-    <div class="col-sm-3">
+    <div class="sm:col-3">
       <label class="visually-hidden" for="specificSizeSelect">Preference</label>
       <select class="form-select" id="specificSizeSelect">
         <option selected>Choose...</option>
@@ -273,7 +273,7 @@ You can then remix that once again with size-specific column classes.
 
 Use the `.row-cols-*` classes to create responsive horizontal layouts. By adding [gutter modifier classes]([[docsref:/layout/gutters]]), we'll have gutters in horizontal and vertical directions. On narrow mobile viewports, the `.col-12` helps stack the form controls and more. The `.align-items-center` aligns the form elements to the middle, making the `.form-check` align properly.
 
-<Example code={`<form class="row row-cols-lg-auto g-3 align-items-center">
+<Example code={`<form class="row lg:row-cols-auto g-3 align-items-center">
     <div class="col-12">
       <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
       <div class="input-group">

@@ -55,19 +55,19 @@ $utilities: ();
         }
 
         @media (width >= 333px) {
-          .padding-sm-1rem {
+          .sm\:padding-1rem {
             padding: 1rem !important;
           }
         }
 
         @media (width >= 666px) {
-          .padding-md-1rem {
+          .md\:padding-1rem {
             padding: 1rem !important;
           }
         }
 
         @media print {
-          .font-size-print-large {
+          .print\:font-size-large {
             font-size: 1.25rem !important;
           }
         }

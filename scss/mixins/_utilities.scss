@@ -80,7 +80,7 @@
   }
 }
 
-@mixin generate-utility($utility, $infix: "") {
+@mixin generate-utility($utility, $prefix: "") {
   // Validate required keys
   @if not map.has-key($utility, property) {
     @error "Utility is missing required `property` key: #{$utility}";
@@ -129,21 +129,14 @@
     }
   }
 
-  // Calculate infix once, before the loop
-  // Note: $infix already includes the leading dash from breakpoint-infix()
-  // $infix: if($infix == "", "", "-" + $infix);
-
   @each $key, $value in $values {
     $properties: map.get($utility, property);
     $propertyMap: null;
     $customClass: "";
 
     // Check if property is a map (new Property-Value Mapping approach)
-    // @debug "Properties type: #{meta.type-of($properties)}";
-    // @debug "Properties: #{$properties}";
     @if meta.type-of($properties) == "map" {
       $propertyMap: $properties;
-      // For property maps, we need to determine the class from the utility definition
       $customClass: "";
       @if map.has-key($utility, class) {
         $customClass: map.get($utility, class);
@@ -164,22 +157,16 @@
       }
     }
 
-    // Use custom CSS variable name if present, otherwise default to `class`
-    // mdo-do: restore?
-    // $css-variable-name: if(map.has-key($utility, css-variable-name), map.get($utility, css-variable-name), map.get($utility, class));
-
     // State params to generate state variants
     $state: ();
     @if map.has-key($utility, state) {
       $state: map.get($utility, state);
     }
 
-    // $infix: if($customClass == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
-
-    // Don't prefix if value key is null (e.g. with shadow class)
+    // Don't add a dash before value key if value key is null (e.g. with shadow class)
     $customClassModifier: "";
     @if $key {
-      @if $customClass == "" and $infix == "" {
+      @if $customClass == "" {
         $customClassModifier: $key;
       } @else {
         $customClassModifier: "-" + $key;
@@ -188,11 +175,12 @@
 
     $selector: "";
     @if $selectorType == "class" {
-      // Use the fallback of the first property if no `class` key is used
       @if $customClass != "" {
-        $selector: ".#{$customClass + $infix + $customClassModifier}";
+        $selector: ".#{$prefix + $customClass + $customClassModifier}";
+      } @else if $selectorClass != null and $selectorClass != "" {
+        $selector: ".#{$prefix + $selectorClass + $customClassModifier}";
       } @else {
-        $selector: ".#{$selectorClass + $infix + $customClassModifier}";
+        $selector: ".#{$prefix + $customClassModifier}";
       }
     } @else if $selectorType == "attr-starts" {
       $selector: "[class^=\"#{$selectorClass}\"]";

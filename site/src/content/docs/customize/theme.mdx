@@ -203,7 +203,7 @@ By default, `color-scheme: light dark` is set on the `:root` element, meaning Bo
 Here's the same set of components rendered in both light and dark modes side by side. Note the use of `.bg-body` for the backgrounds. Without it, the light mode demo wouldn’t have a white background—just light mode components on a dark background.
 
 <Example class="p-0 overflow-hidden" code={`<div class="row g-0">
-    <div class="col-md-6 vstack gap-3 p-4 bg-body" data-bs-theme="light">
+    <div class="md:col-6 vstack gap-3 p-4 bg-body" data-bs-theme="light">
       <h6 class="fw-semibold">Light mode</h6>
       <div class="card">
         <div class="card-body">
@@ -228,7 +228,7 @@ Here's the same set of components rendered in both light and dark modes side by 
         <button type="button" class="btn-subtle theme-secondary">Secondary</button>
       </div>
     </div>
-    <div class="col-md-6 vstack gap-3 p-4 bg-body" data-bs-theme="dark">
+    <div class="md:col-6 vstack gap-3 p-4 bg-body" data-bs-theme="dark">
       <h6 class="fw-semibold">Dark mode</h6>
       <div class="card">
         <div class="card-body">

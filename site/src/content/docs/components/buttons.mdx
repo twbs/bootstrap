@@ -156,9 +156,9 @@ Use the `.d-grid` utility to create responsive stacks of full-width “block but
     <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
 
-Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoint, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
+Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoint, where `.md:d-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
 
-<Example code={`<div class="d-grid gap-2 d-md-block">
+<Example code={`<div class="d-grid gap-2 md:d-block">
     <button class="btn-solid theme-primary" type="button">Button</button>
     <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
@@ -172,8 +172,8 @@ You can adjust the width of your block buttons with grid column width classes. F
 
 Additional utilities can be used to adjust the alignment of buttons when horizontal. Here we’ve taken our previous responsive example and added some flex utilities and a margin utility on the button to right-align the buttons when they’re no longer stacked.
 
-<Example code={`<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button class="btn-solid theme-primary me-md-2" type="button">Button</button>
+<Example code={`<div class="d-grid gap-2 md:d-flex md:justify-content-end">
+    <button class="btn-solid theme-primary md:me-2" type="button">Button</button>
     <button class="btn-solid theme-primary" type="button">Button</button>
   </div>`} />
 

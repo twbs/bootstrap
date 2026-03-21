@@ -10,7 +10,7 @@ import { getConfig } from '@libs/config'
 
 Here's a navbar that includes most supported sub-components and a responsive right drawer with [our Offcanvas plugin]([[docsref:/components/offcanvas]]). Use the lower-right corner grip to resize to preview responsive behavior.
 
-<ResizableExample code={`<nav class="navbar navbar-expand-md bg-1">
+<ResizableExample code={`<nav class="navbar md:navbar-expand bg-1">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@ Here's a navbar that includes most supported sub-components and a responsive rig
           <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
         </div>
-        <div class="offcanvas-body mb-2 mb-md-0">
+        <div class="offcanvas-body mb-2 md:mb-0">
           <ul class="nav navbar-nav me-auto">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -135,7 +135,7 @@ Add the `.active` class on `.nav-link` to indicate the current page.
 
 Please note that you should also add the `aria-current` attribute on the active `.nav-link`.
 
-<ResizableExample code={`<nav class="navbar navbar-expand-sm bg-1 fg-2">
+<ResizableExample code={`<nav class="navbar sm:navbar-expand bg-1 fg-2">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -168,7 +168,7 @@ Please note that you should also add the `aria-current` attribute on the active 
 
 And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
 
-<ResizableExample code={`<nav class="navbar navbar-expand-sm bg-1 fg-2">
+<ResizableExample code={`<nav class="navbar sm:navbar-expand bg-1 fg-2">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -193,7 +193,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 
 You can also use menus in your navbar. Menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
-<ResizableExample code={`<nav class="navbar navbar-expand-lg bg-1 fg-2">
+<ResizableExample code={`<nav class="navbar lg:navbar-expand bg-1 fg-2">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNavMenu" aria-controls="navbarNavMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -290,7 +290,7 @@ Navbars may contain bits of text with the help of `.navbar-text`. This class adj
 
 Mix and match with other components and utilities as needed.
 
-<ResizableExample code={`<nav class="navbar navbar-expand-md bg-1 fg-2">
+<ResizableExample code={`<nav class="navbar md:navbar-expand bg-1 fg-2">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar w/ text</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -302,7 +302,7 @@ Mix and match with other components and utilities as needed.
           <CloseButton dismiss="offcanvas" />
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <ul class="navbar-nav me-auto mb-2 md:mb-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
@@ -325,7 +325,7 @@ Mix and match with other components and utilities as needed.
 
 To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
 
-<ResizableExample code={`<nav class="navbar navbar-expand-md bg-1" data-bs-theme="dark">
+<ResizableExample code={`<nav class="navbar md:navbar-expand bg-1" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Dark navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarDarkOffcanvas" aria-controls="navbarDarkOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
@@ -338,7 +338,7 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
           <h5 class="offcanvas-title" id="navbarDarkOffcanvasLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
         </div>
-        <div class="offcanvas-body mb-2 mb-md-0">
+        <div class="offcanvas-body mb-2 md:mb-0">
           <ul class="nav navbar-nav me-auto">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -376,7 +376,7 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
 
 Add `.navbar-translucent` to blur and saturate the background of a navbar. This works well for navbars positioned over content, such as fixed or sticky navbars.
 
-<Example code={`<nav class="navbar navbar-translucent navbar-expand-md" data-bs-theme="dark">
+<Example code={`<nav class="navbar navbar-translucent md:navbar-expand" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <ul class="navbar-nav">
@@ -398,7 +398,7 @@ Add `.navbar-translucent` to blur and saturate the background of a navbar. This 
 Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `data-bs-theme="dark"` to the `.navbar` parent for dark background colors. Then, customize with `.bg-*` and additional utilities.
 
 <ResizableExample className="d-flex flex-column gap-2" showMarkup={false} code={`
-<nav class="navbar navbar-expand-md" data-bs-theme="dark">
+<nav class="navbar md:navbar-expand" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -410,7 +410,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
         <CloseButton dismiss="offcanvas" />
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ul class="navbar-nav me-auto mb-2 md:mb-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -433,7 +433,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
   </div>
 </nav>
 
-<nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+<nav class="navbar md:navbar-expand bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -445,7 +445,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
         <CloseButton dismiss="offcanvas" />
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ul class="navbar-nav me-auto mb-2 md:mb-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -468,7 +468,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
   </div>
 </nav>
 
-<nav class="navbar navbar-expand-md bg-1" data-bs-theme="light">
+<nav class="navbar md:navbar-expand bg-1" data-bs-theme="light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -480,7 +480,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
         <CloseButton dismiss="offcanvas" />
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <ul class="navbar-nav me-auto mb-2 md:mb-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -523,7 +523,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
 Although it's not required, you can wrap a navbar in a `.container` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `.navbar` to only center the contents of a [fixed or static top navbar](#placement).
 
 <Example code={`<div class="container">
-    <nav class="navbar navbar-expand-lg bg-1 fg-2">
+    <nav class="navbar lg:navbar-expand bg-1 fg-2">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
       </div>
@@ -532,8 +532,8 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 
 Use any of the responsive containers to change how wide the content in your navbar is presented.
 
-<Example code={`<nav class="navbar navbar-expand-lg bg-1 fg-2">
-    <div class="container-md">
+<Example code={`<nav class="navbar lg:navbar-expand bg-1 fg-2">
+    <div class="md:container">
       <a class="navbar-brand" href="#">Navbar</a>
     </div>
   </nav>`} />
@@ -548,9 +548,9 @@ Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow
 
 ## Responsive behaviors
 
-Navbars can use `.navbar-toggler`, and `.navbar-expand-lg{-sm|-md|-lg|-xl|-2xl}` classes to determine when their content appears in an offcanvas drawer or inline. In combination with other utilities, you can easily choose when to show or hide particular elements.
+Navbars can use `.navbar-toggler`, and `.lg:navbar-expand{-sm|-md|-lg|-xl|-2xl}` classes to determine when their content appears in an offcanvas drawer or inline. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
-For navbars that never collapse, add the `.navbar-expand-lg` class on the navbar. For navbars that always show the offcanvas drawer, don't add any `.navbar-expand-lg` class.
+For navbars that never collapse, add the `.lg:navbar-expand` class on the navbar. For navbars that always show the offcanvas drawer, don't add any `.lg:navbar-expand` class.
 
 ### Offcanvas drawer
 
@@ -565,9 +565,9 @@ You can customize which side the drawer appears from using offcanvas placement c
 - `.offcanvas-top` - slides in from the top
 - `.offcanvas-bottom` - slides in from the bottom
 
-These examples omit the `.navbar-expand-lg-*` class to always show the drawer behavior. Click the toggler to see the drawer slide in from different directions.
+These examples omit the `.lg:navbar-expand` class to always show the drawer behavior. Click the toggler to see the drawer slide in from different directions.
 
-<ResizableExample code={`<nav class="navbar navbar-expand-md bg-1 fg-2">
+<ResizableExample code={`<nav class="navbar md:navbar-expand bg-1 fg-2">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Left Drawer</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarLeftDrawer" aria-controls="navbarLeftDrawer" aria-expanded="false" aria-label="Toggle navigation">
@@ -579,7 +579,7 @@ These examples omit the `.navbar-expand-lg-*` class to always show the drawer be
           <CloseButton dismiss="offcanvas" />
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <ul class="navbar-nav me-auto mb-2 md:mb-0">
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
             <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Disabled</a></li>
@@ -589,7 +589,7 @@ These examples omit the `.navbar-expand-lg-*` class to always show the drawer be
     </div>
   </nav>`} />
 
-<ResizableExample code={`<nav class="navbar navbar-expand-md bg-1 fg-2">
+<ResizableExample code={`<nav class="navbar md:navbar-expand bg-1 fg-2">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Top Drawer</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarTopDrawer" aria-controls="navbarTopDrawer" aria-expanded="false" aria-label="Toggle navigation">
@@ -601,7 +601,7 @@ These examples omit the `.navbar-expand-lg-*` class to always show the drawer be
           <CloseButton dismiss="offcanvas" />
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <ul class="navbar-nav me-auto mb-2 md:mb-0">
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
             <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Disabled</a></li>
@@ -615,11 +615,11 @@ These examples omit the `.navbar-expand-lg-*` class to always show the drawer be
 
 Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler.
 
-These examples omit the `.navbar-expand-lg-*` class to always show the collapsed state with the toggler visible. Click the toggler to open the offcanvas drawer.
+These examples omit the `.lg:navbar-expand` class to always show the collapsed state with the toggler visible. Click the toggler to open the offcanvas drawer.
 
 With no `.navbar-brand` shown (hidden inside the drawer):
 
-<ResizableExample code={`<nav class="navbar navbar-expand-md bg-1 fg-2">
+<ResizableExample code={`<nav class="navbar md:navbar-expand bg-1 fg-2">
     <div class="container-fluid">
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
@@ -631,7 +631,7 @@ With no `.navbar-brand` shown (hidden inside the drawer):
         </div>
         <div class="offcanvas-body">
           <a class="navbar-brand" href="#">Hidden brand</a>
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <ul class="navbar-nav me-auto mb-2 md:mb-0">
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
             <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Disabled</a></li>
@@ -744,6 +744,6 @@ We reassign the global `$breakpoints` map to `$navbar-breakpoints` in `scss/_nav
 
 ### Sass loops
 
-[Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$navbar-breakpoints` map and generated through a loop in `scss/_navbar.scss`.
+[Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.lg:navbar-expand`) are combined with the `$navbar-breakpoints` map and generated through a loop in `scss/_navbar.scss`.
 
 <ScssDocs name="navbar-expand-loop" file="scss/_navbar.scss" />

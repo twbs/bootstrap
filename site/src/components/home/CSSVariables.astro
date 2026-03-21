@@ -3,8 +3,8 @@ import { getVersionedDocsPath } from '@libs/path'
 import Code from '@shortcodes/Code.astro'
 ---
 
-<section class="row g-md-5 pb-md-5 mb-5 align-items-center">
-  <div class="col-lg-8 mb-5">
+<section class="row md:g-5 md:pb-5 mb-5 align-items-center">
+  <div class="lg:col-8 mb-5">
     <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-pink-rgb);">
       <svg class="bi fs-1" aria-hidden="true"><use href="#braces"></use></svg>
     </div>
@@ -23,8 +23,8 @@ import Code from '@shortcodes/Code.astro'
       </a>
     </p>
   </div>
-  <div class="row gx-md-5">
-    <div class="col-lg-6 mb-3">
+  <div class="row md:gx-5">
+    <div class="lg:col-6 mb-3">
       <h3 class="fw-semibold">Using CSS variables</h3>
       <p>
         Use any of our <a href={getVersionedDocsPath('customize/css-variables/#root-variables')}
@@ -46,7 +46,7 @@ import Code from '@shortcodes/Code.astro'
         lang="scss"
       />
     </div>
-    <div class="col-lg-6 mb-3">
+    <div class="lg:col-6 mb-3">
       <h3 class="fw-semibold">Customizing via CSS variables</h3>
       <p>
         Override global, component, or utility class variables to customize Bootstrap just how you like. No need to

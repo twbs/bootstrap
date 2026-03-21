@@ -155,14 +155,14 @@ Breaking columns to a new line in flexbox requires a small hack: add an element 
 
 <Example class="bd-example-row" code={`<div class="container text-center">
     <div class="row">
-      <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-      <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+      <div class="col-6 sm:col-3">.col-6 .sm:col-3</div>
+      <div class="col-6 sm:col-3">.col-6 .sm:col-3</div>
 
       <!-- Force next columns to break to new line -->
       <div class="w-100"></div>
 
-      <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-      <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+      <div class="col-6 sm:col-3">.col-6 .sm:col-3</div>
+      <div class="col-6 sm:col-3">.col-6 .sm:col-3</div>
     </div>
   </div>`} />
 
@@ -170,14 +170,14 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 <Example class="bd-example-row" code={`<div class="container text-center">
     <div class="row">
-      <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
-      <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+      <div class="col-6 sm:col-4">.col-6 .sm:col-4</div>
+      <div class="col-6 sm:col-4">.col-6 .sm:col-4</div>
 
       <!-- Force next columns to break to new line at md breakpoint and up -->
-      <div class="w-100 d-none d-md-block"></div>
+      <div class="w-100 d-none md:d-block"></div>
 
-      <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
-      <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+      <div class="col-6 sm:col-4">.col-6 .sm:col-4</div>
+      <div class="col-6 sm:col-4">.col-6 .sm:col-4</div>
     </div>
   </div>`} />
 
@@ -185,7 +185,7 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 ### Order classes
 
-Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all six grid tiers.
+Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.md:order-2`). Includes support for `1` through `5` across all six grid tiers.
 
 <Example class="bd-example-row" code={`<div class="container text-center">
     <div class="row">
@@ -229,8 +229,8 @@ $utilities: map-merge(
         values: map-merge(
           map-get(map-get($utilities, "order"), "values"),
           (
-            6: 6, // Add a new `.order-{breakpoint}-6` utility
-            last: 7 // Change the `.order-{breakpoint}-last` utility to use the next number
+            6: 6, // Add a new `.{breakpoint}:order-6` utility
+            last: 7 // Change the `.{breakpoint}:order-last` utility to use the next number
           )
         ),
       ),
@@ -245,19 +245,19 @@ You can offset grid columns in two ways: our responsive `.offset-` grid classes 
 
 #### Offset classes
 
-Move columns to the right using `.offset-md-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.offset-md-4` moves `.col-md-4` over four columns.
+Move columns to the right using `.md:offset-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.md:offset-4` moves `.md:col-4` over four columns.
 
 <Example class="bd-example-row" code={`<div class="container text-center">
     <div class="row">
-      <div class="col-md-4">.col-md-4</div>
-      <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+      <div class="md:col-4">.md:col-4</div>
+      <div class="md:col-4 md:offset-4">.md:col-4 .md:offset-4</div>
     </div>
     <div class="row">
-      <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
-      <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+      <div class="md:col-3 md:offset-3">.md:col-3 .md:offset-3</div>
+      <div class="md:col-3 md:offset-3">.md:col-3 .md:offset-3</div>
     </div>
     <div class="row">
-      <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+      <div class="md:col-6 md:offset-3">.md:col-6 .md:offset-3</div>
     </div>
   </div>`} />
 
@@ -265,12 +265,12 @@ In addition to column clearing at responsive breakpoints, you may need to reset 
 
 <Example class="bd-example-row" code={`<div class="container text-center">
     <div class="row">
-      <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
-      <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+      <div class="sm:col-5 md:col-6">.sm:col-5 .md:col-6</div>
+      <div class="sm:col-5 sm:offset-2 md:col-6 md:offset-0">.sm:col-5 .sm:offset-2 .md:col-6 .md:offset-0</div>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
-      <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+      <div class="sm:col-6 md:col-5 lg:col-6">.sm:col-6 .md:col-5 .lg:col-6</div>
+      <div class="sm:col-6 md:col-5 md:offset-2 lg:col-6 lg:offset-0">.sm:col-6 .md:col-5 .md:offset-2 .lg:col-6 .lg:offset-0</div>
     </div>
   </div>`} />
 
@@ -280,12 +280,12 @@ With the move to flexbox in v4, you can use margin utilities like `.me-auto` to 
 
 <Example class="bd-example-row" code={`<div class="container text-center">
     <div class="row">
-      <div class="col-md-4">.col-md-4</div>
-      <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+      <div class="md:col-4">.md:col-4</div>
+      <div class="md:col-4 ms-auto">.md:col-4 .ms-auto</div>
     </div>
     <div class="row">
-      <div class="col-md-3 ms-md-auto">.col-md-3 .ms-md-auto</div>
-      <div class="col-md-3 ms-md-auto">.col-md-3 .ms-md-auto</div>
+      <div class="md:col-3 md:ms-auto">.md:col-3 .md:ms-auto</div>
+      <div class="md:col-3 md:ms-auto">.md:col-3 .md:ms-auto</div>
     </div>
     <div class="row">
       <div class="col-auto me-auto">.col-auto .me-auto</div>
@@ -301,14 +301,14 @@ The `.col-*` classes can also be used outside a `.row` to give an element a spec
     .col-3: width of 25%
   </div>
 
-  <div class="col-sm-9 p-3">
-    .col-sm-9: width of 75% above sm breakpoint
+  <div class="sm:col-9 p-3">
+    .sm:col-9: width of 75% above sm breakpoint
   </div>`} />
 
 The classes can be used together with utilities to create responsive floated images. Make sure to wrap the content in a [`.d-flow-root`]([[docsref:/utilities/display#clearfix]]) wrapper to clear the float if the text is shorter.
 
 <Example code={`<div class="d-flow-root">
-    <Placeholder width="100%" height="210" class="col-md-6 float-md-end mb-3 ms-md-3" text="Responsive floated image" />
+    <Placeholder width="100%" height="210" class="md:col-6 md:float-end mb-3 md:ms-3" text="Responsive floated image" />
 
     <p>
       A paragraph of placeholder text. We’re using it here to show the use of the clearfix class. We’re adding quite a few meaningless phrases here to demonstrate how the columns interact here with the floated image.

@@ -191,14 +191,14 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 If you want to have `<input readonly>` elements in your form styled as plain text, replace `.form-control` with `.form-control-plaintext` to remove the default form field styling and preserve the correct `margin` and `padding`.
 
 <Example code={`<div class="mb-3 row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
+    <label for="staticEmail" class="sm:col-2 col-form-label">Email</label>
+    <div class="sm:col-10">
       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
     </div>
   </div>
   <div class="mb-3 row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
+    <label for="inputPassword" class="sm:col-2 col-form-label">Password</label>
+    <div class="sm:col-10">
       <input type="password" class="form-control" id="inputPassword">
     </div>
   </div>`} />
