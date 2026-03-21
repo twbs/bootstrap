@@ -13,7 +13,7 @@ import { getData } from '@libs/data'
 Alerts are available for any length of text, as well as an optional close button. Alerts are designed to be used with theme colors, but have neutral fallback colors for when no theme color is applied. For inline dismissal, use the [alerts JavaScript plugin](#dismiss).
 
 <Example code={`<div class="alert" role="alert">
-    A simple alert—check it out!
+    <p>A simple alert—check it out!</p>
   </div>`} />
 
 ## Variants
@@ -21,7 +21,7 @@ Alerts are available for any length of text, as well as an optional close button
 Use any of our variant theme classes for color mode adaptive, contextual styling.
 
 <Example class="vstack gap-3" code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
-    A simple ${themeColor.name} alert—check it out!
+    <p>A simple ${themeColor.name} alert—check it out!</p>
   </div>`)} />
 
 <Details name="warning-color-assistive-technologies" />
@@ -42,7 +42,7 @@ We use the following JavaScript to trigger our live alert demo:
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
 <Example class="vstack gap-3" code={getData('theme-colors').map((themeColor) => `<div class="alert theme-${themeColor.name}" role="alert">
-    A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+    <p>A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</p>
   </div>`)} />
 
 ## Additional content
@@ -66,9 +66,7 @@ Similarly, you can use [flexbox utilities]([[docsref:/utilities/flex]]) and [Boo
     <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0" viewBox="0 0 16 16" role="img" aria-label="Warning:">
       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
     </svg>
-    <div>
-      An example alert with an icon
-    </div>
+    <p>An example alert with an icon</p>
   </div>`} />
 
 ## Dismiss
@@ -83,7 +81,7 @@ Using the alert JavaScript plugin, it’s possible to dismiss any alert inline. 
 You can see this in action with a live demo:
 
 <Example code={`<div class="alert theme-warning alert-dismissible fade show" role="alert">
-    Something’s wrong, check the fields below and try again.
+    <p>Something’s wrong, check the fields below and try again.</p>
     <CloseButton dismiss="alert" class="ms-auto" />
   </div>`} />
 

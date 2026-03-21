@@ -211,7 +211,7 @@ Here's the same set of components rendered in both light and dark modes side by 
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
-      <div class="alert theme-primary">This is a primary alert.</div>
+      <div class="alert theme-primary"><p>This is a primary alert.</p></div>
       <input type="text" class="form-control" placeholder="Form control">
       <div class="checkgroup">
         <div class="check">
@@ -236,7 +236,7 @@ Here's the same set of components rendered in both light and dark modes side by 
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
-      <div class="alert theme-primary">This is a primary alert.</div>
+      <div class="alert theme-primary"><p>This is a primary alert.</p></div>
       <input type="text" class="form-control" placeholder="Form control">
       <div class="checkgroup">
         <div class="check">
@@ -271,7 +271,7 @@ We generate theme utility classes from the `$theme-colors` Sass map that make al
 
 With theme utilities, you can apply a theme color to an element with a single class.
 
-<Example class="vstack gap-3" code={`<div class="alert theme-primary">Primary alert</div>
+<Example class="vstack gap-3" code={`<div class="alert theme-primary"><p>Primary alert</p></div>
   <div>
     <button type="button" class="btn-solid theme-primary">Primary button</button>
     <button type="button" class="btn-outline theme-primary">Primary outline button</button>
@@ -286,7 +286,7 @@ With theme utilities, you can apply a theme color to an element with a single cl
 And you can apply a theme color utility to a container and any theme-aware children will inherit the theme color.
 
 <Example code={`<div class="vstack gap-3 theme-primary">
-    <div class="alert">Primary alert</div>
+    <div class="alert"><p>Primary alert</p></div>
     <div>
       <button type="button" class="btn-solid">Primary button</button>
       <button type="button" class="btn-outline">Primary outline button</button>
@@ -302,7 +302,7 @@ And you can apply a theme color utility to a container and any theme-aware child
 This also means you can override a container's theme color with another theme color on specific components.
 
 <Example code={`<div class="vstack gap-3 theme-primary">
-    <div class="alert">Primary alert</div>
+    <div class="alert"><p>Primary alert</p></div>
     <div>
       <button type="button" class="btn-solid theme-emphasis">Emphasis button</button>
       <button type="button" class="btn-outline">Primary outline button</button>
