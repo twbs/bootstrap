@@ -23,6 +23,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    .line:empty {
+      min-height: 1lh;
+    }
   }
 
 }
