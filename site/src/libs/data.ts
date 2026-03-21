@@ -33,7 +33,7 @@ const dataDefinitions = {
   'docs-versions': z
     .object({
       group: z.string(),
-      baseurl: z.string().url(),
+      baseurl: z.url(),
       description: z.string(),
       versions: z.union([zVersionSemver, zVersionMajorMinor]).array()
     })
@@ -58,13 +58,13 @@ const dataDefinitions = {
     preferred: z
       .object({
         name: z.string(),
-        website: z.string().url()
+        website: z.url()
       })
       .array(),
     more: z
       .object({
         name: z.string(),
-        website: z.string().url()
+        website: z.url()
       })
       .array()
   }),
@@ -104,7 +104,7 @@ const dataDefinitions = {
       name: z.string(),
       code: zLanguageCode,
       description: z.string(),
-      url: z.string().url()
+      url: z.url()
     })
     .array()
 } satisfies Record<string, DataSchema>
