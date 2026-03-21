@@ -1,4 +1,5 @@
 import { z, defineCollection } from 'astro:content'
+import { glob } from 'astro/loaders'
 
 const docsSchema = z.object({
   added: z
@@ -56,12 +57,20 @@ const docsSchema = z.object({
 })
 
 const docsCollection = defineCollection({
+  loader: glob({
+    base: './src/content/docs',
+    pattern: '**/*.{md,mdx}'
+  }),
   schema: docsSchema
 })
 
 const calloutsSchema = z.object({})
 
 const calloutsCollection = defineCollection({
+  loader: glob({
+    base: './src/content/callouts',
+    pattern: '**/*.{md,mdx}'
+  }),
   schema: calloutsSchema
 })
 
@@ -70,6 +79,10 @@ const detailsSchema = z.object({
 })
 
 const detailsCollection = defineCollection({
+  loader: glob({
+    base: './src/content/details',
+    pattern: '**/*.{md,mdx}'
+  }),
   schema: detailsSchema
 })
 
