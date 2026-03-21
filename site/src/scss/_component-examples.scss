@@ -89,8 +89,8 @@
     // }
 
     > .tab-content {
-      padding: var(--bs-spacer);
       min-height: 120px;
+      padding: var(--bs-spacer);
       background-color: var(--bs-bg-1);
       @include border-radius(var(--bs-border-radius));
     }
