@@ -18,17 +18,17 @@ const configSchema = z.object({
     max: z.number()
   }),
   authors: z.string(),
-  baseURL: z.string().url(),
-  blog: z.string().url(),
+  baseURL: z.url(),
+  blog: z.url(),
   cdn: z.object({
-    css: z.string().url(),
+    css: z.url(),
     css_hash: z.string(),
-    js: z.string().url(),
+    js: z.url(),
     js_hash: z.string(),
-    js_bundle: z.string().url(),
+    js_bundle: z.url(),
     js_bundle_hash: z.string(),
-    floating_ui_esm: z.string().url(),
-    vanilla_calendar_pro_esm: z.string().url()
+    floating_ui_esm: z.url(),
+    vanilla_calendar_pro_esm: z.url()
   }),
   current_version: zVersionSemver,
   current_ruby_version: zVersionSemver,
@@ -36,17 +36,17 @@ const configSchema = z.object({
   docs_version: zVersionMajorMinor,
   docsDir: z.string(),
   download: z.object({
-    dist: z.string().url(),
-    dist_examples: z.string().url(),
-    source: z.string().url()
+    dist: z.url(),
+    dist_examples: z.url(),
+    source: z.url()
   }),
-  github_org: z.string().url(),
-  icons: z.string().url(),
-  opencollective: z.string().url(),
-  repo: z.string().url(),
+  github_org: z.url(),
+  icons: z.url(),
+  opencollective: z.url(),
+  repo: z.url(),
   rfs_version: zPrefixedVersionSemver,
   subtitle: z.string(),
-  swag: z.string().url(),
+  swag: z.url(),
   title: z.string(),
   toc: z.object({
     min: z.number(),
