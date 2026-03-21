@@ -9,7 +9,7 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE: 22
+  NODE: 24
 
 permissions:
   contents: read
