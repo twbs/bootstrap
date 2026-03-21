@@ -26,8 +26,8 @@ const pageTitle = isHome
   : `${title} · ${getConfig().title} v${getConfig().docs_version}`
 
 // Dynamic imports to avoid build-time processing
-const Scss = import.meta.env.PROD ? null : await import('@components/head/Scss.astro')
-const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.astro') : null
+const Scss = import.meta.env.PROD ? undefined : await import('@components/head/Scss.astro')
+const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.astro') : undefined
 ---
 
 <meta charset="UTF-8" />
