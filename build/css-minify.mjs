@@ -17,8 +17,17 @@ const distDir = path.join(process.cwd(), 'dist/css')
 const cssFiles = fs.readdirSync(distDir)
   .filter(file => file.endsWith('.css') && !file.endsWith('.min.css'))
 
-// Target browsers (matching Bootstrap's browser support)
-const targets = browserslistToTargets(['> 0.5%', 'last 2 versions', 'Firefox ESR', 'not dead'])
+// Target browsers (read from .browserslistrc when available)
+let targets
+try {
+  // eslint-disable-next-line import/no-extraneous-dependencies
+  const { default: browserslist } = await import('browserslist')
+  const browsers = browserslist()
+  console.log('Target browsers from .browserslistrc:', browsers)
+  targets = browserslistToTargets(browsers)
+} catch {
+  console.error('Could not load browserslist')
+}
 
 for (const file of cssFiles) {
   const inputPath = path.join(distDir, file)
