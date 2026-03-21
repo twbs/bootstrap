@@ -1,7 +1,7 @@
 ---
 import { getData } from '@libs/data'
 import { getConfig } from '@libs/config'
-import { docsPages } from '@libs/content'
+import { docsPages, getDocsPageSlug } from '@libs/content'
 import { getSlug } from '@libs/utils'
 
 const sidebar = getData('sidebar')
@@ -43,7 +43,7 @@ const sidebar = getData('sidebar')
                         const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
                         const active = Astro.params.slug === unversionedPageSlug
 
-                        const generatedPage = docsPages.find((page) => page.slug === unversionedPageSlug)
+                        const generatedPage = docsPages.find((page) => getDocsPageSlug(page.id) === unversionedPageSlug)
 
                         // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
                         if (!generatedPage) {
@@ -75,7 +75,7 @@ const sidebar = getData('sidebar')
                 const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
                 const active = Astro.params.slug === unversionedPageSlug
 
-                const generatedPage = docsPages.find((page) => page.slug === unversionedPageSlug)
+                const generatedPage = docsPages.find((page) => getDocsPageSlug(page.id) === unversionedPageSlug)
 
                 // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
                 if (!generatedPage) {
