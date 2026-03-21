@@ -77,6 +77,24 @@ Those options and the `$colors` map are used to generate a `$color-tokens` map, 
 
 <ScssDocs name="color-tokens" file="scss/_colors.scss" />
 
+In practice, our CSS variables that get output from this looks like this:
+
+```scss
+// Example generated custom properties from _colors.scss
+--bs-blue-025: color-mix(in lab, var(--bs-white) 94%, oklch(60% 0.24 240));
+--bs-blue-050: color-mix(in lab, var(--bs-white) 90%, oklch(60% 0.24 240));
+--bs-blue-100: color-mix(in lab, var(--bs-white) 80%, oklch(60% 0.24 240));
+// ...
+--bs-blue-500: oklch(60% 0.24 240);
+// ...
+--bs-blue-900: color-mix(in lab, var(--bs-black) 64%, oklch(60% 0.24 240));
+--bs-blue-975: color-mix(in lab, var(--bs-black) 88%, oklch(60% 0.24 240));
+```
+
+<Callout type="info">
+We use CSS variables `var(--bs-white)` and `var(--bs-black)` to prevent LightningCSS from converting the real-time mixing into static `lab()` values. Unfortunately, this feature cannot be disabled in LightningCSS at this time.
+</Callout>
+
 ## Customizing
 
 You can customize the colors by adding or removing colors from the `$colors` map. You can also customize the tint and shade stops, the `color-mix()` color space, and the mix colors. Say you want to add another blue-gray color, like slate.

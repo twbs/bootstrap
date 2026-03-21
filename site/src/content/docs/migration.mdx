@@ -69,6 +69,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Dropped support for Node Sass, including no longer testing any of our source CSS against it.
   - Rearranged several Sass files in the process.
 - Removed `add()` and `subtract()` functions. Use `calc()` instead.
+- Removed `create-css-vars()` mixin (unused).
 - **CSS variable prefixing now handled by PostCSS.** The `$prefix` Sass variable has been removed. CSS custom properties are now written without a prefix in the Sass source and prefixed automatically via `postcss-prefix-custom-properties` during the build. To customize the prefix, update your PostCSS configuration instead of Sass.
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.
