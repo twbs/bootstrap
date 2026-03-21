@@ -192,7 +192,7 @@
     "stylelint-order": "^7.0.1",
     "terser": "^5.44.1",
     "unist-util-visit": "^5.0.0",
-    "zod": "^4.1.12"
+    "zod": "^4.3.6"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
