@@ -88,8 +88,8 @@
     //   margin-top: $spacer;
     // }
 
-    > .dropdown-menu {
-      max-width: 12rem;
+    > .menu.position-static {
+      max-width: fit-content;
     }
 
     > :last-child,

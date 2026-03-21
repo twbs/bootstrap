@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Menu</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Menu <small>Bootstrap Visual Test</small></h1>
+
+      <nav class="navbar navbar-expand-md bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="menu" aria-expanded="false">Menu</a>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <ul class="nav nav-pills mt-3">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-bs-toggle="menu" aria-expanded="false">Menu</a>
+          <div class="menu">
+            <a class="menu-item" href="#">Action</a>
+            <a class="menu-item" href="#">Another action</a>
+            <a class="menu-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="row">
+        <div class="col-sm-12 mt-4">
+          <div>
+            <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" aria-expanded="false">Menu</button>
+            <div class="menu">
+              <input id="textField" type="text">
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn-solid theme-secondary">Menu (top) split</button>
+            <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" data-bs-placement="top-start" aria-expanded="false">
+              <span class="visually-hidden">Menu (top) split</span>
+            </button>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 mt-4">
+          <div class="btn-group">
+            <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" data-bs-placement="top-start" aria-expanded="false">Menu (top)</button>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">
+              This menu is end-aligned
+            </button>
+            <div class="menu">
+              <button class="menu-item" type="button">Action</button>
+              <button class="menu-item" type="button">Another action</button>
+              <button class="menu-item" type="button">Something else here</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 mt-4">
+          <div class="btn-group">
+            <a href="#" class="btn-solid theme-secondary">Menu (top) split align end</a>
+            <button type="button" id="menu-page-subheader-button-3" class="btn-solid theme-secondary menu-toggle-split" data-bs-toggle="menu" data-bs-placement="top-end" aria-expanded="false">
+              <span class="visually-hidden">Product actions</span>
+            </button>
+            <div class="menu">
+              <button class="menu-item" type="button">Action</button>
+              <button class="menu-item" type="button">Another action</button>
+              <button class="menu-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" data-bs-placement="top-end" aria-expanded="false">Menu (top) align end</button>
+            <div class="menu">
+              <button class="menu-item" type="button">Action</button>
+              <button class="menu-item" type="button">Another action</button>
+              <button class="menu-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 mt-4">
+          <div class="btn-group">
+            <a href="#" class="btn-solid theme-secondary">Menu (end) split</a>
+            <button type="button" id="menu-page-subheader-button-4" class="btn-solid theme-secondary menu-toggle-split" data-bs-toggle="menu" data-bs-placement="right-start" aria-expanded="false">
+              <span class="visually-hidden">Product actions</span>
+            </button>
+            <div class="menu">
+              <button class="menu-item" type="button">Action</button>
+              <button class="menu-item" type="button">Another action</button>
+              <button class="menu-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-placement="right-start" aria-expanded="false">
+              Menu (end)
+            </button>
+            <div class="menu">
+              <button class="menu-item" type="button">Action</button>
+              <button class="menu-item" type="button">Another action</button>
+              <button class="menu-item" type="button">Something else here</button>
+            </div>
+          </div>
+          <div class="btn-group">
+            <a href="#" class="btn-solid theme-secondary">Menu (start) split</a>
+            <button type="button" id="menu-page-subheader-button-5" class="btn-solid theme-secondary menu-toggle-split" data-bs-toggle="menu" data-bs-placement="left-start" aria-expanded="false">
+              <span class="visually-hidden">Product actions</span>
+            </button>
+            <div class="menu">
+              <button class="menu-item" type="button">Action</button>
+              <button class="menu-item" type="button">Another action</button>
+              <button class="menu-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-placement="left-start" aria-expanded="false">
+              Menu (start)
+            </button>
+            <div class="menu">
+              <button class="menu-item" type="button">Action</button>
+              <button class="menu-item" type="button">Another action</button>
+              <button class="menu-item" type="button">Something else here</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3 mt-4">
+          <div class="btn-group">
+            <button type="button" class="btn-solid theme-secondary">Menu reference</button>
+            <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" aria-expanded="false" data-bs-reference="parent">
+              <span class="visually-hidden">Menu split</span>
+            </button>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-4">
+          <div>
+            <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-display="static" aria-expanded="false">
+              Menu with static display
+            </button>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+  </body>
+</html>

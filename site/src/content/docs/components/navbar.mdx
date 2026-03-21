@@ -31,16 +31,16 @@ Here's a navbar that includes most supported sub-components and a responsive rig
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-container="body" aria-expanded="false">
-                Dropdown
+            <li class="nav-item">
+              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+                Menu
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -75,7 +75,7 @@ Here's what you need to know before getting started with the navbar:
 Navbars come with built-in support for a handful of sub-components. Choose from the following as needed:
 
 - `.navbar-brand` for your company, product, or project name.
-- `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns).
+- `.navbar-nav` for a full-height and lightweight navigation (including support for menus).
 - `.navbar-toggler` for use with our offcanvas plugin and other [navigation toggling](#responsive-behaviors) behaviors.
 - Flex and spacing utilities for any form controls and actions.
 - `.navbar-text` for adding vertically centered strings of text.
@@ -191,17 +191,17 @@ And because we use classes for our navs, you can avoid the list-based approach e
     </div>
   </nav>`} />
 
-You can also use dropdowns in your navbar. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
+You can also use menus in your navbar. Menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
 <ResizableExample code={`<nav class="navbar navbar-expand-lg bg-1 fg-2">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
-      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNavMenu" aria-controls="navbarNavMenu" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNavDropdown" aria-labelledby="navbarNavDropdownLabel">
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNavMenu" aria-labelledby="navbarNavMenuLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="navbarNavDropdownLabel">Menu</h5>
+          <h5 class="offcanvas-title" id="navbarNavMenuLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
         </div>
         <div class="offcanvas-body">
@@ -215,15 +215,15 @@ You can also use dropdowns in your navbar. Dropdown menus require a wrapping ele
             <li class="nav-item">
               <a class="nav-link" href="#">Pricing</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-container="body" aria-expanded="false">
-                Dropdown link
+            <li class="nav-item">
+              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+                Menu link
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -346,16 +346,16 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-container="body" aria-expanded="false">
-                Dropdown
+            <li class="nav-item">
+              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+                Menu
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -369,6 +369,27 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
           </form>
         </div>
       </div>
+    </div>
+  </nav>`} />
+
+## Translucent navbar
+
+Add `.navbar-translucent` to blur and saturate the background of a navbar. This works well for navbars positioned over content, such as fixed or sticky navbars.
+
+<Example code={`<nav class="navbar navbar-translucent navbar-expand-md" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+      </ul>
     </div>
   </nav>`} />
 

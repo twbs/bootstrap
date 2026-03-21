@@ -21,7 +21,7 @@ $datepicker-tokens: defaults(
     --datepicker-box-shadow: var(--box-shadow),
     --datepicker-font-size: var(--font-size-sm),
     --datepicker-min-width: 280px,
-    --datepicker-zindex: #{$zindex-dropdown},
+    --datepicker-zindex: #{$zindex-menu},
     --datepicker-header-font-weight: 600,
     --datepicker-weekday-color: var(--fg-3),
     --datepicker-day-hover-bg: var(--bg-1),

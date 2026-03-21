@@ -49,8 +49,8 @@
       description: 'Common navigation patterns ideal for offcanvas or multi-column layouts.'
     - name: Footers
       description: 'Finish every page strong with an awesome footer, big or small.'
-    - name: Dropdowns
-      description: 'Enhance your dropdowns with filters, icons, custom styles, and more.'
+    # - name: Menus
+    #   description: 'Enhance your menus with filters, icons, custom styles, and more.'
     - name: List groups
       description: 'Extend list groups with utilities and custom styles for any content.'
     - name: Dialogs

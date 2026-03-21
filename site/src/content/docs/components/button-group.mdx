@@ -158,26 +158,26 @@ Instead of applying button sizing classes to every button in a group, just add `
 
 ## Nesting
 
-Place a `.btn-group` within another `.btn-group` when you want dropdown menus mixed with a series of buttons.
+Place a `.btn-group` within another `.btn-group` when you want menus mixed with a series of buttons.
 
-<Example code={`<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+<Example code={`<div class="btn-group" role="group" aria-label="Button group with nested menu">
     <button type="button" class="btn-solid theme-primary">1</button>
     <button type="button" class="btn-solid theme-primary">2</button>
 
     <div class="btn-group" role="group">
-      <button type="button" class="btn-solid theme-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
+      <button type="button" class="btn-solid theme-primary" data-bs-toggle="menu" aria-expanded="false">
+        Menu
       </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-      </ul>
+      <div class="menu">
+        <a class="menu-item" href="#">Menu link</a>
+        <a class="menu-item" href="#">Menu link</a>
+      </div>
     </div>
   </div>`} />
 
 ## Vertical variation
 
-Make a set of buttons appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
+Make a set of buttons appear vertically stacked rather than horizontally. **Split button menus are not supported here.**
 
 <Example code={`<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <button type="button" class="btn-solid theme-primary">Button</button>
@@ -188,42 +188,42 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
 
 <Example code={`<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <div class="btn-group" role="group">
-      <button type="button" class="btn-solid theme-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
+      <button type="button" class="btn-solid theme-primary" data-bs-toggle="menu" aria-expanded="false">
+        Menu
       </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-      </ul>
+      <div class="menu">
+        <a class="menu-item" href="#">Menu link</a>
+        <a class="menu-item" href="#">Menu link</a>
+      </div>
     </div>
     <button type="button" class="btn-solid theme-primary">Button</button>
     <button type="button" class="btn-solid theme-primary">Button</button>
-    <div class="btn-group dropstart" role="group">
-      <button type="button" class="btn-solid theme-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
+    <div class="btn-group" role="group">
+      <button type="button" class="btn-solid theme-primary" data-bs-toggle="menu" data-bs-placement="left-start" aria-expanded="false">
+        Menu
       </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-      </ul>
+      <div class="menu">
+        <a class="menu-item" href="#">Menu link</a>
+        <a class="menu-item" href="#">Menu link</a>
+      </div>
     </div>
-    <div class="btn-group dropend" role="group">
-      <button type="button" class="btn-solid theme-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
+    <div class="btn-group" role="group">
+      <button type="button" class="btn-solid theme-primary" data-bs-toggle="menu" data-bs-placement="right-start" aria-expanded="false">
+        Menu
       </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-      </ul>
+      <div class="menu">
+        <a class="menu-item" href="#">Menu link</a>
+        <a class="menu-item" href="#">Menu link</a>
+      </div>
     </div>
-    <div class="btn-group dropup" role="group">
-      <button type="button" class="btn-solid theme-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
+    <div class="btn-group" role="group">
+      <button type="button" class="btn-solid theme-primary" data-bs-toggle="menu" data-bs-placement="top-start" aria-expanded="false">
+        Menu
       </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-      </ul>
+      <div class="menu">
+        <a class="menu-item" href="#">Menu link</a>
+        <a class="menu-item" href="#">Menu link</a>
+      </div>
     </div>
   </div>`} />
 

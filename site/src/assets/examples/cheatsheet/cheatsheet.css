@@ -82,11 +82,8 @@ body {
 [id="buttons"] .bd-example .btn,
 [id="tooltips"] .bd-example .btn,
 [id="popovers"] .bd-example .btn,
-[id="dropdowns"] .bd-example .btn-group,
-[id="dropdowns"] .bd-example .dropdown,
-[id="dropdowns"] .bd-example .dropup,
-[id="dropdowns"] .bd-example .dropend,
-[id="dropdowns"] .bd-example .dropstart {
+[id="menus"] .bd-example .btn-group,
+[id="menus"] .bd-example .menu {
   margin: 0 1rem 1rem 0;
 }
 

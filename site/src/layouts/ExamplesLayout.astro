@@ -98,7 +98,7 @@ const htmlProps: HTMLAttributes<'html'> = direction === 'rtl' ? { lang: 'ar', di
         height: 1em;
       }
 
-      .bd-mode-toggle .dropdown-menu .active .bi {
+      .bd-mode-toggle .menu .active .bi {
         display: block !important;
       }
     </style>
@@ -108,7 +108,7 @@ const htmlProps: HTMLAttributes<'html'> = direction === 'rtl' ? { lang: 'ar', di
   <body class:list={body_class}>
     <Icons />
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+    <div class="position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <ThemeToggler layout="examples" />
     </div>
 

@@ -1,12 +1,12 @@
-.dropdown-item-danger {
+.menu-item-danger {
   color: var(--bs-bs-bs-bs-bs-red);
 }
-.dropdown-item-danger:hover,
-.dropdown-item-danger:focus {
+.menu-item-danger:hover,
+.menu-item-danger:focus {
   color: #fff;
   background-color: var(--bs-bs-bs-bs-bs-red);
 }
-.dropdown-item-danger.active {
+.menu-item-danger.active {
   background-color: var(--bs-bs-bs-bs-bs-red);
 }
 

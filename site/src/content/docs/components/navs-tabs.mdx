@@ -39,18 +39,18 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </nav>`} />
 
-Where appropriate, you can also use `<button>` elements instead of `<a>` elements for the nav links. You can even mix and match—for example, by using buttons for dropdowns.
+Where appropriate, you can also use `<button>` elements instead of `<a>` elements for the nav links. You can even mix and match—for example, by using buttons for menus.
 
 <Example code={`<nav class="nav">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
     <a class="nav-link" href="#">Link</a>
-    <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
+    <button class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</button>
+    <div class="menu">
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Something else here</a>
+    </div>
     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </nav>`} />
 
@@ -254,25 +254,25 @@ If you’re using navs to provide a navigation bar, be sure to add a `role="navi
 
 Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [ARIA Authoring Practices Guide tabs pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/). See [JavaScript behavior](#javascript-behavior) for dynamic tabbed interfaces in this section for an example. The `aria-current` attribute is not necessary on dynamic tabbed interfaces since our JavaScript handles the selected state by adding `aria-selected="true"` on the active tab.
 
-## Using dropdowns
+## Using menus
 
-Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin]([[docsref:/components/dropdowns#usage]]).
+Add menus with a little extra HTML and the [menus JavaScript plugin]([[docsref:/components/menus#usage]]).
 
-### Tabs with dropdowns
+### Tabs with menus
 
 <Example code={`<ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</a>
+      <div class="menu">
+        <a class="menu-item" href="#">Action</a>
+        <a class="menu-item" href="#">Another action</a>
+        <a class="menu-item" href="#">Something else here</a>
+        <hr class="menu-divider">
+        <a class="menu-item" href="#">Separated link</a>
+      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Link</a>
@@ -282,21 +282,21 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
     </li>
   </ul>`} />
 
-### Pills with dropdowns
+### Pills with menus
 
 <Example code={`<ul class="nav nav-pills">
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</a>
+      <div class="menu">
+        <a class="menu-item" href="#">Action</a>
+        <a class="menu-item" href="#">Another action</a>
+        <a class="menu-item" href="#">Something else here</a>
+        <hr class="menu-divider">
+        <a class="menu-item" href="#">Separated link</a>
+      </div>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Link</a>
@@ -547,7 +547,7 @@ In general, to facilitate keyboard navigation, it’s recommended to make the ta
 </Callout>
 
 <Callout type="danger">
-The tab JavaScript plugin **does not** support tabbed interfaces that contain dropdown menus, as these cause both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab’s trigger element is not immediately visible (as it’s inside the closed dropdown menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.
+The tab JavaScript plugin **does not** support tabbed interfaces that contain menus, as these cause both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab’s trigger element is not immediately visible (as it’s inside the closed menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.
 </Callout>
 
 ### Using data attributes

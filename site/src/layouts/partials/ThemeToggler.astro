@@ -9,53 +9,47 @@ const { layout } = Astro.props
 ---
 
 <button
-  class=`btn ${layout === 'examples' ? 'btn-solid theme-accent' : 'btn-link nav-link px-0 px-lg-2'} py-2 dropdown-toggle d-flex align-items-center`
+  class=`btn ${layout === 'examples' ? 'btn-solid theme-accent' : 'btn-link nav-link px-0 px-lg-2'} py-2`
   id="bd-theme"
   type="button"
   aria-expanded="false"
-  data-bs-toggle="dropdown"
-  data-bs-target="#bd-theme-menu"
+  data-bs-toggle="menu"
   data-bs-placement="bottom-end"
   aria-label="Toggle theme (auto)"
 >
-  <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
-  <span class=`${layout === 'examples' ? 'visually-hidden' : 'd-lg-none ms-2'}` id="bd-theme-text">Toggle theme</span>
+  <svg class="bi theme-icon-active" aria-hidden="true"><use href="#circle-half"></use></svg>
+  <span class=`${layout === 'examples' ? 'visually-hidden' : 'd-lg-none'}` id="bd-theme-text">Toggle theme</span>
+  <svg class="bi bi-sm ms-lg--1" aria-hidden="true"><use href="#chevron-expand"></use></svg>
 </button>
-<ul class="dropdown-menu" id="bd-theme-menu" aria-labelledby="bd-theme-text" style="--bs-dropdown-min-width: 8rem;">
-  <li>
-    <button
-      type="button"
-      class="dropdown-item"
-      data-bs-theme-value="light"
-      aria-pressed="false"
-    >
-      <svg class="bi opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
-      Light
-      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
-    </button>
-  </li>
-  <li>
-    <button
-      type="button"
-      class="dropdown-item"
-      data-bs-theme-value="dark"
-      aria-pressed="false"
-    >
-      <svg class="bi opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
-      Dark
-      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
-    </button>
-  </li>
-  <li>
-    <button
-      type="button"
-      class="dropdown-item active"
-      data-bs-theme-value="auto"
-      aria-pressed="true"
-    >
-      <svg class="bi opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
-      Auto
-      <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
-    </button>
-  </li>
-</ul>
+<div class="menu" id="bd-theme-menu" aria-labelledby="bd-theme-text" style="--bs-menu-min-width: 8rem;">
+  <button
+    type="button"
+    class="menu-item"
+    data-bs-theme-value="light"
+    aria-pressed="false"
+  >
+    <svg class="bi opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
+    Light
+    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button
+    type="button"
+    class="menu-item"
+    data-bs-theme-value="dark"
+    aria-pressed="false"
+  >
+    <svg class="bi opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
+    Dark
+    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button
+    type="button"
+    class="menu-item active"
+    data-bs-theme-value="auto"
+    aria-pressed="true"
+  >
+    <svg class="bi opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
+    Auto
+    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+</div>

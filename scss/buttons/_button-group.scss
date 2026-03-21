@@ -51,7 +51,7 @@
     }
 
     // Reset rounded corners
-    > [class*="btn-"]:not(:last-child):not(.dropdown-toggle),
+    > [class*="btn-"]:not(:last-child):not(:has(+ .menu)),
     > .btn-group:not(:last-child) > [class*="btn-"] {
       @include border-end-radius(0);
     }
@@ -60,24 +60,6 @@
     > [class*="btn-"]:not(:first-child),
     > .btn-group:not(:first-child) > [class*="btn-"] {
       @include border-start-radius(0);
-    }
-  }
-
-  //
-  // Split button dropdowns
-  //
-
-  .dropdown-toggle-split {
-    padding-inline: calc(var(--btn-padding-x) * .75);
-
-    &::after,
-    .dropup &::after,
-    .dropend &::after {
-      margin-inline-start: 0;
-    }
-
-    .dropstart &::before {
-      margin-inline-end: 0;
     }
   }
 
@@ -101,7 +83,7 @@
     }
 
     // Reset rounded corners
-    > [class*="btn-"]:not(:last-child):not(.dropdown-toggle),
+    > [class*="btn-"]:not(:last-child):not(:has(+ .menu)),
     > .btn-group:not(:last-child) > [class*="btn-"] {
       @include border-bottom-radius(0);
     }

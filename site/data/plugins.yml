@@ -22,9 +22,9 @@
   description: Add flexible and responsive dialogs to your project.
   link: components/dialog/
 
-- name: Dropdown
+- name: Menu
   description: Create menus of links, actions, forms, and more.
-  link: components/dropdowns/
+  link: components/menus/
 
 - name: Offcanvas
   description: Build and toggle hidden sidebars into any page.

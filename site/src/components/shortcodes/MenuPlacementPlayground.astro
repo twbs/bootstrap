@@ -1,0 +1,203 @@
+---
+import Example from '@components/shortcodes/Example.astro'
+
+// Physical placements
+const physicalPlacements = [
+  { value: 'top-start', label: 'top-start' },
+  { value: 'top', label: 'top' },
+  { value: 'top-end', label: 'top-end' },
+  { value: 'right-start', label: 'right-start' },
+  { value: 'right', label: 'right' },
+  { value: 'right-end', label: 'right-end' },
+  { value: 'bottom-start', label: 'bottom-start' },
+  { value: 'bottom', label: 'bottom' },
+  { value: 'bottom-end', label: 'bottom-end' },
+  { value: 'left-start', label: 'left-start' },
+  { value: 'left', label: 'left' },
+  { value: 'left-end', label: 'left-end' }
+]
+
+// Logical placements
+const logicalPlacements = [
+  { value: 'start-start', label: 'start-start' },
+  { value: 'start', label: 'start' },
+  { value: 'start-end', label: 'start-end' },
+  { value: 'end-start', label: 'end-start' },
+  { value: 'end', label: 'end' },
+  { value: 'end-end', label: 'end-end' }
+]
+---
+
+<div class="bg-1 p-3 fs-sm rounded-3">
+  <div class="d-flex flex-wrap gap-3 align-items-end">
+    <div class="vstack gap-1 flex-grow-0">
+      <label class="form-label fw-semibold mb-0">Placement type</label>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Placement type">
+        <label class="btn-check btn-outline theme-secondary">
+          <input
+            type="radio"
+            name="menu-placement-type"
+            value="physical"
+            checked
+            data-placement-type="physical"
+          />
+          Physical
+        </label>
+        <label class="btn-check btn-outline theme-secondary">
+          <input
+            type="radio"
+            name="menu-placement-type"
+            value="logical"
+            data-placement-type="logical"
+          />
+          Logical
+        </label>
+      </div>
+    </div>
+
+    <div class="vstack gap-1 flex-grow-0">
+      <label class="form-label fw-semibold mb-0">Placement</label>
+      <div>
+        <button
+          type="button"
+          class="btn-outline btn-sm theme-secondary w-100 justify-content-between"
+          id="menu-placement-selector"
+          data-bs-toggle="menu"
+          aria-expanded="false"
+          data-placement="bottom-start"
+          style="min-width: 160px;"
+        >
+          <span>bottom-start</span>
+          <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+            <use href="#chevron-expand" />
+          </svg>
+        </button>
+        <div class="menu" id="menu-placement-selector-menu">
+          {physicalPlacements.map((p) => (
+            <button
+              class:list={['menu-item', { 'active': p.value === 'bottom-start' }]}
+              type="button"
+              data-placement-group="physical"
+              data-placement={p.value}
+            >
+              {p.label}
+            </button>
+          ))}
+          {logicalPlacements.map((p) => (
+            <button
+              class="menu-item d-none"
+              type="button"
+              data-placement-group="logical"
+              data-placement={p.value}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<Example
+  class="d-flex justify-content-center align-items-center"
+  style="min-height: 200px;"
+  code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="menu" data-bs-placement="bottom-start" aria-expanded="false">
+  Toggle menu
+</button>
+<div class="menu">
+  <button class="menu-item" type="button">Action</button>
+  <button class="menu-item" type="button">Another action</button>
+  <button class="menu-item" type="button">Something else here</button>
+</div>`}
+  id="menu-placement-preview"
+/>
+
+<script>
+  import { Menu } from '../../../../dist/js/bootstrap.bundle.js'
+
+  const selectorButton = document.querySelector('#menu-placement-selector') as HTMLButtonElement
+  const selectorItems = document.querySelectorAll('#menu-placement-selector-menu .menu-item')
+  const placementTypeInputs = document.querySelectorAll('input[name="menu-placement-type"]')
+  const previewContainer = document.querySelector('#menu-placement-preview')
+  const previewToggle = previewContainer?.querySelector('[data-bs-toggle="menu"]') as HTMLButtonElement
+  const codeSnippet = previewContainer?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+
+  function updateSelectorItems() {
+    const selectedType = (document.querySelector('input[name="menu-placement-type"]:checked') as HTMLInputElement)?.value || 'physical'
+
+    document.querySelectorAll('#menu-placement-selector-menu [data-placement-group="physical"]').forEach(el => {
+      el.classList.toggle('d-none', selectedType !== 'physical')
+    })
+    document.querySelectorAll('#menu-placement-selector-menu [data-placement-group="logical"]').forEach(el => {
+      el.classList.toggle('d-none', selectedType !== 'logical')
+    })
+
+    const currentPlacement = selectorButton?.dataset.placement || ''
+    const isPhysical = !currentPlacement.startsWith('start') && !currentPlacement.startsWith('end')
+    const needsReset = (selectedType === 'physical' && !isPhysical) || (selectedType === 'logical' && isPhysical)
+
+    if (needsReset) {
+      const defaultPlacement = selectedType === 'physical' ? 'bottom-start' : 'start-start'
+      updatePlacement(defaultPlacement)
+    }
+  }
+
+  function updatePlacement(placement: string) {
+    if (!selectorButton || !previewToggle) return
+
+    const labelSpan = selectorButton.querySelector('span')
+    if (labelSpan) labelSpan.textContent = placement
+    selectorButton.dataset.placement = placement
+
+    selectorItems.forEach(item => {
+      const itemPlacement = (item as HTMLElement).dataset.placement
+      item.classList.toggle('active', itemPlacement === placement)
+    })
+
+    previewToggle.setAttribute('data-bs-placement', placement)
+
+    const instance = Menu.getInstance(previewToggle)
+    if (instance) {
+      instance.dispose()
+    }
+    Menu.getOrCreateInstance(previewToggle)
+
+    updateCodeSnippet(placement)
+  }
+
+  function updateCodeSnippet(placement: string) {
+    if (!codeSnippet) return
+
+    const htmlCode = `<button class="btn-solid theme-primary" type="button" data-bs-toggle="menu" data-bs-placement="${placement}" aria-expanded="false">
+  Toggle menu
+</button>
+<div class="menu">
+  <button class="menu-item" type="button">Action</button>
+  <button class="menu-item" type="button">Another action</button>
+  <button class="menu-item" type="button">Something else here</button>
+</div>`
+
+    codeSnippet.className = 'language-html'
+    codeSnippet.textContent = htmlCode
+  }
+
+  if (selectorButton) {
+    const selectorMenu = Menu.getOrCreateInstance(selectorButton)
+
+    selectorItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
+        const placement = (item as HTMLElement).dataset.placement || 'bottom-start'
+        updatePlacement(placement)
+        selectorMenu.hide()
+      })
+    })
+  }
+
+  placementTypeInputs.forEach(input => {
+    input.addEventListener('change', updateSelectorItems)
+  })
+
+  updateSelectorItems()
+</script>

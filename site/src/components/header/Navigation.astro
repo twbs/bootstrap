@@ -22,7 +22,7 @@ interface Props {
 const { addedIn, layout, title } = Astro.props
 ---
 
-<header class="navbar navbar-expand-lg bg-body bd-navbar border-bottom sticky-top bd-sticky-navbar">
+<header class="navbar navbar-translucent navbar-expand-lg bd-navbar border-bottom sticky-top bd-sticky-navbar">
   <nav class="container-2xl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
     {/* Docs sidebar toggle - only shown on docs pages */}
     {
@@ -64,7 +64,7 @@ const { addedIn, layout, title } = Astro.props
 
     {/* Main navigation - offcanvas on mobile, inline on desktop */}
     <div
-      class="offcanvas-lg offcanvas-end flex-grow-1"
+      class="offcanvas-lg offcanvas-end flex-grow-1 offcanvas-fit-content"
       tabindex="-1"
       id="bdNavbar"
       aria-labelledby="bdNavbarOffcanvasLabel"
@@ -75,7 +75,7 @@ const { addedIn, layout, title } = Astro.props
       </div>
 
       <div class="offcanvas-body p-4 pt-0 p-lg-0">
-        <hr class="d-lg-none text-white-50" />
+        <hr class="d-lg-none mb-0" />
         <ul class="nav navbar-nav flex-row flex-wrap bd-navbar-nav">
           <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/install/')} track>
             Docs
@@ -85,12 +85,12 @@ const { addedIn, layout, title } = Astro.props
           <LinkItem href={getConfig().blog} target="_blank" rel="noopener" track>Blog</LinkItem>
         </ul>
 
-        <hr class="d-lg-none text-white-50" />
+        <hr class="d-lg-none my-0" />
 
-        <ul class="nav navbar-nav flex-row flex-wrap ms-md-auto">
+        <ul class="nav navbar-nav ms-md-auto">
           <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().github_org} target="_blank" rel="noopener">
             <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none ms-2">GitHub</small>
+            <small class="d-lg-none">GitHub</small>
           </LinkItem>
           <LinkItem
             class="nav-link py-2 px-0 px-lg-2"
@@ -99,26 +99,16 @@ const { addedIn, layout, title } = Astro.props
             rel="noopener"
           >
             <XIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none ms-2">X</small>
+            <small class="d-lg-none">X</small>
           </LinkItem>
           <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().opencollective} target="_blank" rel="noopener">
             <OpenCollectiveIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none ms-2">Open Collective</small>
+            <small class="d-lg-none">Open Collective</small>
           </LinkItem>
-
-          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-            <div class="vr d-none d-lg-flex mx-lg-2 my-auto"></div>
-            <hr class="d-lg-none my-2" />
-          </li>
 
           <Versions layout={layout} addedIn={addedIn} />
 
-          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-            <div class="vr d-none d-lg-flex mx-lg-2 my-auto"></div>
-            <hr class="d-lg-none my-2" />
-          </li>
-
-          <li class="nav-item dropdown">
+          <li class="nav-item">
             <ThemeToggler layout={layout} />
           </li>
         </ul>

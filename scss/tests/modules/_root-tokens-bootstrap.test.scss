@@ -16,12 +16,12 @@
     --brand-secondary: #9c27b0,
     --site-max-width: 1400px,
   ),
-  // Customize dropdown tokens
-  $dropdown-tokens: (
-    --dropdown-bg: var(--bg-2),
-    --dropdown-border-radius: var(--border-radius-xl),
-    --dropdown-padding-x: 1rem,
-    --dropdown-padding-y: 1rem,
+  // Customize menu tokens
+  $menu-tokens: (
+    --menu-bg: var(--bg-2),
+    --menu-item-border-radius: var(--border-radius-xl),
+    --menu-padding-x: 1rem,
+    --menu-padding-y: 1rem,
   )
 );
 

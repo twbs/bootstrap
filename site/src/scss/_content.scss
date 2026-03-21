@@ -132,11 +132,17 @@
     }
   }
 
-  .bi {
-    width: 1em;
-    height: 1em;
-    vertical-align: -.125em;
+  :where(.bi) {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    // vertical-align: -.125em;
     fill: currentcolor;
+  }
+
+  :where(.bi-sm) {
+    width: .75rem;
+    height: .75rem;
   }
 
   .border-lg-start {
@@ -171,9 +177,9 @@
     --bg-body: var(--blue);
     --bg-3: var(--blue-600);
 
-    .dropdown-menu {
-      --dropdown-bg: color-mix(in lab, var(--blue-500), var(--blue-600));
-      --dropdown-link-active-bg: var(--blue-700);
+    .menu {
+      --menu-bg: color-mix(in lab, var(--blue-500), var(--blue-600));
+      --menu-item-active-bg: var(--blue-700);
     }
 
     .btn-secondary {

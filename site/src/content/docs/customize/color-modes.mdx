@@ -18,34 +18,34 @@ Alternatively, you can also switch to a media query implementation thanks to our
 
 ## Example
 
-For example, to change the color mode of a dropdown menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent `.dropdown`. Now, no matter the global color mode, these dropdowns will display with the specified theme value.
+For example, to change the color mode of a menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent element. Now, no matter the global color mode, these menus will display with the specified theme value.
 
-<Example class="d-flex justify-content-between" code={`<div class="dropdown" data-bs-theme="light">
-    <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
-      Default dropdown
+<Example class="d-flex justify-content-between" code={`<div data-bs-theme="light">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+      Default menu
     </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
-      <li><a class="dropdown-item active" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+    <div class="menu">
+      <a class="menu-item active" href="#">Action</a>
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
   </div>
 
-  <div class="dropdown" data-bs-theme="dark">
-    <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
-      Dark dropdown
+  <div data-bs-theme="dark">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+      Dark menu
     </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark">
-      <li><a class="dropdown-item active" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+    <div class="menu">
+      <a class="menu-item active" href="#">Action</a>
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
   </div>`} />
 
 ## How it works
@@ -154,18 +154,18 @@ For example, you can create a “blue theme” with the selector `data-bs-theme=
 
       <hr class="my-4"/>
 
-      <div class="dropdown">
-        <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCustom" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown button
+      <div>
+        <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+          Menu
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonCustom">
-          <li><a class="dropdown-item active" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Separated link</a></li>
-        </ul>
+        <div class="menu">
+          <a class="menu-item active" href="#">Action</a>
+          <a class="menu-item" href="#">Action</a>
+          <a class="menu-item" href="#">Another action</a>
+          <a class="menu-item" href="#">Something else here</a>
+          <hr class="menu-divider">
+          <a class="menu-item" href="#">Separated link</a>
+        </div>
       </div>
     </div>
   </div>`} />
