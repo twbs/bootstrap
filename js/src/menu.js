@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap dropdown.js
+ * Bootstrap menu.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -37,8 +37,8 @@ import {
  * Constants
  */
 
-const NAME = 'dropdown'
-const DATA_KEY = 'bs.dropdown'
+const NAME = 'menu'
+const DATA_KEY = 'bs.menu'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
@@ -54,7 +54,6 @@ const ENTER_KEY = 'Enter'
 const SPACE_KEY = ' '
 const RIGHT_MOUSE_BUTTON = 2
 
-// Hover intent delay (ms) - grace period before closing submenu
 const SUBMENU_CLOSE_DELAY = 100
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -67,30 +66,25 @@ const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_SHOW = 'show'
 
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dropdown"]:not(.disabled):not(:disabled)'
-const SELECTOR_DATA_TOGGLE_SHOWN = `${SELECTOR_DATA_TOGGLE}.${CLASS_NAME_SHOW}`
-const SELECTOR_MENU = '.dropdown-menu'
-const SELECTOR_SUBMENU = '.dropdown-submenu'
-const SELECTOR_SUBMENU_TOGGLE = '.dropdown-submenu > .dropdown-item'
-const SELECTOR_NAVBAR_NAV = '.navbar-nav'
-const SELECTOR_VISIBLE_ITEMS = '.dropdown-item:not(.disabled):not(:disabled)'
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="menu"]:not(.disabled):not(:disabled)'
 
-// Default logical placement (uses start/end which get resolved to left/right based on RTL)
+const SELECTOR_MENU = '.menu'
+const SELECTOR_SUBMENU = '.submenu'
+const SELECTOR_SUBMENU_TOGGLE = '.submenu > .menu-item'
+const SELECTOR_NAVBAR_NAV = '.navbar-nav'
+const SELECTOR_VISIBLE_ITEMS = '.menu-item:not(.disabled):not(:disabled)'
+
 const DEFAULT_PLACEMENT = 'bottom-start'
 const SUBMENU_PLACEMENT = 'end-start'
 
-// Resolve logical placement (start/end) to physical (left/right) based on RTL
 const resolveLogicalPlacement = placement => {
   if (isRTL()) {
-    // RTL: start → right, end → left
     return placement.replace(/^start(?=-|$)/, 'right').replace(/^end(?=-|$)/, 'left')
   }
 
-  // LTR: start → left, end → right
   return placement.replace(/^start(?=-|$)/, 'left').replace(/^end(?=-|$)/, 'right')
 }
 
-// Helper for barycentric coordinate calculation (point in triangle check)
 const triangleSign = (p1, p2, p3) =>
   ((p1.x - p3.x) * (p2.y - p3.y)) - ((p2.x - p3.x) * (p1.y - p3.y))
 
@@ -101,11 +95,11 @@ const Default = {
   display: 'dynamic',
   offset: [0, 2],
   floatingConfig: null,
+  menu: null,
   placement: DEFAULT_PLACEMENT,
   reference: 'toggle',
   strategy: 'absolute',
-  // Submenu options
-  submenuTrigger: 'both', // 'click', 'hover', or 'both'
+  submenuTrigger: 'both',
   submenuDelay: SUBMENU_CLOSE_DELAY
 }
 
@@ -116,6 +110,7 @@ const DefaultType = {
   display: 'string',
   offset: '(array|string|function)',
   floatingConfig: '(null|object|function)',
+  menu: '(null|element)',
   placement: 'string',
   reference: '(string|element|object)',
   strategy: 'string',
@@ -127,10 +122,12 @@ const DefaultType = {
  * Class definition
  */
 
-class Dropdown extends BaseComponent {
+class Menu extends BaseComponent {
+  static _openInstances = new Set()
+
   constructor(element, config) {
     if (typeof computePosition === 'undefined') {
-      throw new TypeError('Bootstrap\'s dropdowns require Floating UI (https://floating-ui.com)')
+      throw new TypeError('Bootstrap\'s menus require Floating UI (https://floating-ui.com)')
     }
 
     super(element, config)
@@ -138,24 +135,17 @@ class Dropdown extends BaseComponent {
     this._floatingCleanup = null
     this._mediaQueryListeners = []
     this._responsivePlacements = null
-    this._parent = this._element.parentNode // dropdown wrapper
-    this._isSubmenu = this._parent.classList.contains('dropdown-submenu')
-    this._openSubmenus = new Map() // Map of submenu element -> cleanup function
-    this._submenuCloseTimeouts = new Map() // Map of submenu element -> timeout ID
-    this._hoverIntentData = null // For safe triangle calculation
+    this._parent = this._element.parentNode
+    this._isSubmenu = this._parent.classList?.contains('submenu')
+    this._openSubmenus = new Map()
+    this._submenuCloseTimeouts = new Map()
+    this._hoverIntentData = null
 
-    // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
-    this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
-      SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
-      SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+    this._menu = this._config.menu || this._findMenu()
 
-    // Store original menu parent for container option
     this._menuOriginalParent = this._menu?.parentNode
 
-    // Parse responsive placements on init
     this._parseResponsivePlacements()
-
-    // Set up submenu event listeners
     this._setupSubmenuListeners()
   }
 
@@ -192,27 +182,26 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Move menu to container if specified (to escape overflow clipping)
     this._moveMenuToContainer()
-
     this._createFloating()
 
-    // If this is a touch-enabled device we add extra
-    // empty mouseover listeners to the body's immediate children;
-    // only needed because of broken event delegation on iOS
-    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
       for (const element of [].concat(...document.body.children)) {
         EventHandler.on(element, 'mouseover', noop)
       }
     }
 
-    this._element.focus()
+    this._element.focus({ focusVisible: false })
     this._element.setAttribute('aria-expanded', 'true')
 
     this._menu.classList.add(CLASS_NAME_SHOW)
     this._element.classList.add(CLASS_NAME_SHOW)
-    this._parent.classList.add(CLASS_NAME_SHOW)
+
+    if (this._parent) {
+      this._parent.classList.add(CLASS_NAME_SHOW)
+    }
+
+    Menu._openInstances.add(this)
     EventHandler.trigger(this._element, EVENT_SHOWN, relatedTarget)
   }
 
@@ -234,6 +223,7 @@ class Dropdown extends BaseComponent {
     this._disposeMediaQueryListeners()
     this._closeAllSubmenus()
     this._clearAllSubmenuTimeouts()
+    Menu._openInstances.delete(this)
     super.dispose()
   }
 
@@ -244,17 +234,20 @@ class Dropdown extends BaseComponent {
   }
 
   // Private
+  _findMenu() {
+    return SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
+      SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
+      SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+  }
+
   _completeHide(relatedTarget) {
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, relatedTarget)
     if (hideEvent.defaultPrevented) {
       return
     }
 
-    // Close all open submenus first
     this._closeAllSubmenus()
 
-    // If this is a touch-enabled device we remove the extra
-    // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
       for (const element of [].concat(...document.body.children)) {
         EventHandler.off(element, 'mouseover', noop)
@@ -262,16 +255,19 @@ class Dropdown extends BaseComponent {
     }
 
     this._disposeFloating()
-
-    // Restore menu to original parent if it was moved
     this._restoreMenuToOriginalParent()
 
     this._menu.classList.remove(CLASS_NAME_SHOW)
     this._element.classList.remove(CLASS_NAME_SHOW)
-    this._parent.classList.remove(CLASS_NAME_SHOW)
+
+    if (this._parent) {
+      this._parent.classList.remove(CLASS_NAME_SHOW)
+    }
+
     this._element.setAttribute('aria-expanded', 'false')
     Manipulator.removeDataAttribute(this._menu, 'placement')
     Manipulator.removeDataAttribute(this._menu, 'display')
+    Menu._openInstances.delete(this)
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
@@ -281,7 +277,6 @@ class Dropdown extends BaseComponent {
     if (typeof config.reference === 'object' && !isElement(config.reference) &&
       typeof config.reference.getBoundingClientRect !== 'function'
     ) {
-      // Floating UI virtual elements require a getBoundingClientRect method
       throw new TypeError(`${NAME.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`)
     }
 
@@ -304,10 +299,8 @@ class Dropdown extends BaseComponent {
       referenceElement = this._config.reference
     }
 
-    // Initial position update
     this._updateFloatingPosition(referenceElement)
 
-    // Set up auto-update for scroll/resize
     this._floatingCleanup = autoUpdate(
       referenceElement,
       this._menu,
@@ -350,12 +343,10 @@ class Dropdown extends BaseComponent {
   }
 
   _getPlacement() {
-    // If we have responsive placements, find the appropriate one for current viewport
     const placement = this._responsivePlacements ?
       getResponsivePlacement(this._responsivePlacements, DEFAULT_PLACEMENT) :
       this._config.placement
 
-    // Resolve logical placements (start/end) to physical (left/right) based on RTL
     return resolveLogicalPlacement(placement)
   }
 
@@ -389,7 +380,6 @@ class Dropdown extends BaseComponent {
     }
 
     if (typeof offsetConfig === 'function') {
-      // Floating UI passes different args, adapt the interface for offset function callbacks
       return ({ placement, rects }) => {
         const result = offsetConfig({ placement, reference: rects.reference, floating: rects.floating }, this._element)
         return result
@@ -403,17 +393,14 @@ class Dropdown extends BaseComponent {
     const offsetValue = this._getOffset()
 
     const middleware = [
-      // Offset middleware - handles distance from reference
       offset(
         typeof offsetValue === 'function' ?
           offsetValue :
           { mainAxis: offsetValue[1] || 0, crossAxis: offsetValue[0] || 0 }
       ),
-      // Flip middleware - handles fallback placements
       flip({
         fallbackPlacements: this._getFallbackPlacements()
       }),
-      // Shift middleware - prevents overflow
       shift({
         boundary: this._config.boundary === 'clippingParents' ? 'clippingAncestors' : this._config.boundary
       })
@@ -423,11 +410,8 @@ class Dropdown extends BaseComponent {
   }
 
   _getFallbackPlacements() {
-    // Get appropriate fallback placements based on current placement
-    // Fallbacks should preserve alignment (start/end) when possible
     const placement = this._getPlacement()
 
-    // Handle all possible Floating UI placements
     const fallbackMap = {
       bottom: ['top', 'bottom-start', 'bottom-end', 'top-start', 'top-end'],
       'bottom-start': ['top-start', 'bottom-end', 'top-end'],
@@ -481,7 +465,6 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Only move if not already in the container
     if (this._menu.parentNode !== container) {
       container.append(this._menu)
     }
@@ -492,13 +475,11 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Only restore if menu was moved
     if (this._menu.parentNode !== this._menuOriginalParent) {
       this._menuOriginalParent.append(this._menu)
     }
   }
 
-  // Shared helper for positioning any floating element
   async _applyFloatingPosition(reference, floating, placement, middleware, strategy = 'absolute') {
     if (!floating.isConnected) {
       return null
@@ -530,7 +511,6 @@ class Dropdown extends BaseComponent {
   // -------------------------------------------------------------------------
 
   _setupSubmenuListeners() {
-    // Set up hover listeners for submenu triggers
     if (this._config.submenuTrigger === 'hover' || this._config.submenuTrigger === 'both') {
       EventHandler.on(this._menu, 'mouseenter', SELECTOR_SUBMENU_TOGGLE, event => {
         this._onSubmenuTriggerEnter(event)
@@ -540,13 +520,11 @@ class Dropdown extends BaseComponent {
         this._onSubmenuLeave(event)
       })
 
-      // Track mouse movement for safe triangle calculation
       EventHandler.on(this._menu, 'mousemove', event => {
         this._trackMousePosition(event)
       })
     }
 
-    // Set up click listener for submenu triggers
     if (this._config.submenuTrigger === 'click' || this._config.submenuTrigger === 'both') {
       EventHandler.on(this._menu, 'click', SELECTOR_SUBMENU_TOGGLE, event => {
         this._onSubmenuTriggerClick(event)
@@ -566,13 +544,8 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Cancel any pending close timeout for this submenu
     this._cancelSubmenuCloseTimeout(submenu)
-
-    // Close other open submenus at the same level
     this._closeSiblingSubmenus(submenuWrapper)
-
-    // Open this submenu
     this._openSubmenu(trigger, submenu, submenuWrapper)
   }
 
@@ -583,12 +556,10 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Check if we're moving toward the submenu (safe triangle)
     if (this._isMovingTowardSubmenu(event, submenu)) {
       return
     }
 
-    // Schedule submenu close with delay
     this._scheduleSubmenuClose(submenu, submenuWrapper)
   }
 
@@ -607,7 +578,6 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Toggle submenu
     if (this._openSubmenus.has(submenu)) {
       this._closeSubmenu(submenu, submenuWrapper)
     } else {
@@ -621,19 +591,15 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Set ARIA attributes
     trigger.setAttribute('aria-expanded', 'true')
     trigger.setAttribute('aria-haspopup', 'true')
 
-    // Position and show submenu
     submenu.classList.add(CLASS_NAME_SHOW)
     submenuWrapper.classList.add(CLASS_NAME_SHOW)
 
-    // Set up Floating UI positioning for submenu
     const cleanup = this._createSubmenuFloating(trigger, submenu, submenuWrapper)
     this._openSubmenus.set(submenu, cleanup)
 
-    // Set up mouseenter on submenu to cancel close timeout
     EventHandler.on(submenu, 'mouseenter', () => {
       this._cancelSubmenuCloseTimeout(submenu)
     })
@@ -644,28 +610,22 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Close any nested submenus first
     const nestedSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} ${SELECTOR_MENU}.${CLASS_NAME_SHOW}`, submenu)
     for (const nested of nestedSubmenus) {
       const nestedWrapper = nested.closest(SELECTOR_SUBMENU)
       this._closeSubmenu(nested, nestedWrapper)
     }
 
-    // Get the trigger
     const trigger = SelectorEngine.findOne(SELECTOR_SUBMENU_TOGGLE, submenuWrapper)
 
-    // Clean up Floating UI
     const cleanup = this._openSubmenus.get(submenu)
     if (cleanup) {
       cleanup()
     }
 
     this._openSubmenus.delete(submenu)
-
-    // Remove event listeners
     EventHandler.off(submenu, 'mouseenter')
 
-    // Update ARIA and visibility
     if (trigger) {
       trigger.setAttribute('aria-expanded', 'false')
     }
@@ -673,7 +633,6 @@ class Dropdown extends BaseComponent {
     submenu.classList.remove(CLASS_NAME_SHOW)
     submenuWrapper.classList.remove(CLASS_NAME_SHOW)
 
-    // Clear inline styles
     submenu.style.position = ''
     submenu.style.left = ''
     submenu.style.top = ''
@@ -688,7 +647,6 @@ class Dropdown extends BaseComponent {
   }
 
   _closeSiblingSubmenus(currentSubmenuWrapper) {
-    // Find all sibling submenu wrappers and close their menus
     const parent = currentSubmenuWrapper.parentNode
     const siblingSubmenus = SelectorEngine.find(`${SELECTOR_SUBMENU} > ${SELECTOR_MENU}.${CLASS_NAME_SHOW}`, parent)
 
@@ -769,22 +727,15 @@ class Dropdown extends BaseComponent {
     const currentPos = { x: event.clientX, y: event.clientY }
     const lastPos = { x: this._hoverIntentData.x, y: this._hoverIntentData.y }
 
-    // Create a triangle from current position to submenu edges
-    // The triangle represents the "safe zone" for diagonal movement
     const isRtl = isRTL()
-
-    // Determine which edge of the submenu to target based on direction
     const targetX = isRtl ? submenuRect.right : submenuRect.left
     const topCorner = { x: targetX, y: submenuRect.top }
     const bottomCorner = { x: targetX, y: submenuRect.bottom }
 
-    // Check if cursor is moving toward the submenu
-    // by checking if the current position is within the safe triangle
     return this._pointInTriangle(currentPos, lastPos, topCorner, bottomCorner)
   }
 
   _pointInTriangle(point, v1, v2, v3) {
-    // Barycentric coordinate method to check if point is inside triangle
     const d1 = triangleSign(point, v1, v2)
     const d2 = triangleSign(point, v2, v3)
     const d3 = triangleSign(point, v3, v1)
@@ -800,18 +751,14 @@ class Dropdown extends BaseComponent {
   // -------------------------------------------------------------------------
 
   _selectMenuItem({ key, target }) {
-    // Get items only from the current menu level (not nested submenus)
-    // If target is inside a menu, use that menu; otherwise use the main menu
     const currentMenu = target.closest(SELECTOR_MENU) || this._menu
-    const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
+    const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
       .filter(element => isVisible(element))
 
     if (!items.length) {
       return
     }
 
-    // if target isn't included in items (e.g. when expanding the dropdown)
-    // allow cycling to get the last item in case key equals ARROW_UP_KEY
     getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus()
   }
 
@@ -819,15 +766,12 @@ class Dropdown extends BaseComponent {
     const { key, target } = event
     const isRtl = isRTL()
 
-    // Determine the "enter submenu" and "exit submenu" keys based on RTL
     const enterKey = isRtl ? ARROW_LEFT_KEY : ARROW_RIGHT_KEY
     const exitKey = isRtl ? ARROW_RIGHT_KEY : ARROW_LEFT_KEY
 
-    // Check if target is a submenu trigger
     const submenuWrapper = target.closest(SELECTOR_SUBMENU)
     const isSubmenuTrigger = submenuWrapper && target.matches(SELECTOR_SUBMENU_TOGGLE)
 
-    // Handle Enter/Space on submenu trigger
     if ((key === ENTER_KEY || key === SPACE_KEY) && isSubmenuTrigger) {
       event.preventDefault()
       event.stopPropagation()
@@ -836,7 +780,6 @@ class Dropdown extends BaseComponent {
       if (submenu) {
         this._closeSiblingSubmenus(submenuWrapper)
         this._openSubmenu(target, submenu, submenuWrapper)
-        // Focus first item in submenu
         requestAnimationFrame(() => {
           const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
           if (firstItem) {
@@ -848,7 +791,6 @@ class Dropdown extends BaseComponent {
       return true
     }
 
-    // Handle Right arrow (or Left in RTL) - enter submenu
     if (key === enterKey && isSubmenuTrigger) {
       event.preventDefault()
       event.stopPropagation()
@@ -857,7 +799,6 @@ class Dropdown extends BaseComponent {
       if (submenu) {
         this._closeSiblingSubmenus(submenuWrapper)
         this._openSubmenu(target, submenu, submenuWrapper)
-        // Focus first item in submenu
         requestAnimationFrame(() => {
           const firstItem = SelectorEngine.findOne(SELECTOR_VISIBLE_ITEMS, submenu)
           if (firstItem) {
@@ -869,7 +810,6 @@ class Dropdown extends BaseComponent {
       return true
     }
 
-    // Handle Left arrow (or Right in RTL) - exit submenu
     if (key === exitKey) {
       const currentMenu = target.closest(SELECTOR_MENU)
       const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
@@ -888,13 +828,12 @@ class Dropdown extends BaseComponent {
       }
     }
 
-    // Handle Home/End keys
     if (key === HOME_KEY || key === END_KEY) {
       event.preventDefault()
       event.stopPropagation()
 
       const currentMenu = target.closest(SELECTOR_MENU)
-      const items = SelectorEngine.find(`:scope > li > ${SELECTOR_VISIBLE_ITEMS}, :scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
+      const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS}`, currentMenu)
         .filter(element => isVisible(element))
 
       if (items.length) {
@@ -913,41 +852,36 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const openToggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE_SHOWN)
-
-    for (const toggle of openToggles) {
-      const context = Dropdown.getInstance(toggle)
-      if (!context || context._config.autoClose === false) {
+    for (const instance of Menu._openInstances) {
+      if (instance._config.autoClose === false) {
         continue
       }
 
       const composedPath = event.composedPath()
-      const isMenuTarget = composedPath.includes(context._menu)
+      const isMenuTarget = composedPath.includes(instance._menu)
       if (
-        composedPath.includes(context._element) ||
-        (context._config.autoClose === 'inside' && !isMenuTarget) ||
-        (context._config.autoClose === 'outside' && isMenuTarget)
+        composedPath.includes(instance._element) ||
+        (instance._config.autoClose === 'inside' && !isMenuTarget) ||
+        (instance._config.autoClose === 'outside' && isMenuTarget)
       ) {
         continue
       }
 
-      // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
-      if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+      if (instance._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
         continue
       }
 
-      const relatedTarget = { relatedTarget: context._element }
+      const relatedTarget = { relatedTarget: instance._element }
 
       if (event.type === 'click') {
         relatedTarget.clickEvent = event
       }
 
-      context._completeHide(relatedTarget)
+      instance._completeHide(relatedTarget)
     }
   }
 
   static dataApiKeydownHandler(event) {
-    // If not a relevant key => not a dropdown command
     const isInput = /input|textarea/i.test(event.target.tagName)
     const isEscapeEvent = event.key === ESCAPE_KEY
     const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
@@ -955,7 +889,6 @@ class Dropdown extends BaseComponent {
     const isHomeOrEndEvent = [HOME_KEY, END_KEY].includes(event.key)
     const isEnterOrSpaceEvent = [ENTER_KEY, SPACE_KEY].includes(event.key)
 
-    // Allow Enter/Space only on submenu triggers
     const isSubmenuTrigger = event.target.matches(SELECTOR_SUBMENU_TOGGLE)
 
     if (!isUpOrDownEvent && !isEscapeEvent && !isLeftOrRightEvent && !isHomeOrEndEvent &&
@@ -967,7 +900,6 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
     const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE) ?
       this :
       (SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0] ||
@@ -978,14 +910,12 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    const instance = Dropdown.getOrCreateInstance(getToggleButton)
+    const instance = Menu.getOrCreateInstance(getToggleButton)
 
-    // Handle submenu navigation first
     if ((isLeftOrRightEvent || isHomeOrEndEvent || (isEnterOrSpaceEvent && isSubmenuTrigger)) && instance._handleSubmenuKeydown(event)) {
       return
     }
 
-    // Handle Up/Down navigation
     if (isUpOrDownEvent) {
       event.preventDefault()
       event.stopPropagation()
@@ -994,12 +924,10 @@ class Dropdown extends BaseComponent {
       return
     }
 
-    // Handle Escape
     if (isEscapeEvent && instance._isShown()) {
       event.preventDefault()
       event.stopPropagation()
 
-      // If in a submenu, close just that submenu
       const currentMenu = event.target.closest(SELECTOR_MENU)
       const parentSubmenuWrapper = currentMenu?.closest(SELECTOR_SUBMENU)
 
@@ -1013,7 +941,6 @@ class Dropdown extends BaseComponent {
         return
       }
 
-      // Otherwise close the whole dropdown
       instance.hide()
       getToggleButton.focus()
     }
@@ -1024,13 +951,13 @@ class Dropdown extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE, Dropdown.dataApiKeydownHandler)
-EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler)
-EventHandler.on(document, EVENT_CLICK_DATA_API, Dropdown.clearMenus)
-EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus)
+EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE, Menu.dataApiKeydownHandler)
+EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Menu.dataApiKeydownHandler)
+EventHandler.on(document, EVENT_CLICK_DATA_API, Menu.clearMenus)
+EventHandler.on(document, EVENT_KEYUP_DATA_API, Menu.clearMenus)
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
-  Dropdown.getOrCreateInstance(this).toggle()
+  Menu.getOrCreateInstance(this).toggle()
 })
 
-export default Dropdown
+export default Menu

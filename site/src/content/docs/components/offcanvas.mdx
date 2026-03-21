@@ -57,15 +57,15 @@ You can use a link with the `href` attribute, or a button with the `data-bs-targ
       <div>
         Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
       </div>
-      <div class="dropdown mt-3">
-        <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-          Dropdown button
+      <div class="mt-3">
+        <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu">
+          Menu
         </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
+        <div class="menu">
+          <a class="menu-item" href="#">Action</a>
+          <a class="menu-item" href="#">Another action</a>
+          <a class="menu-item" href="#">Something else here</a>
+        </div>
       </div>
     </div>
   </div>`} />
@@ -133,6 +133,24 @@ Change the appearance of offcanvases with utilities to better match them to diff
     </div>
     <div class="offcanvas-body">
       <p>Place offcanvas content here.</p>
+    </div>
+  </div>`} />
+
+## Translucent offcanvas
+
+Add `.offcanvas-translucent` to the offcanvas panel to blur and saturate the background. This makes the panel semi-transparent so content behind it shows through.
+
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTranslucent" aria-controls="offcanvasTranslucent">
+    Toggle translucent offcanvas
+  </button>
+
+  <div class="offcanvas offcanvas-start offcanvas-translucent" tabindex="-1" id="offcanvasTranslucent" aria-labelledby="offcanvasTranslucentLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasTranslucentLabel">Translucent offcanvas</h5>
+      <CloseButton dismiss="offcanvas" />
+    </div>
+    <div class="offcanvas-body">
+      Content for the translucent offcanvas goes here. The background blurs and saturates whatever is behind it.
     </div>
   </div>`} />
 

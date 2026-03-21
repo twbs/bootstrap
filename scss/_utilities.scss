@@ -435,12 +435,14 @@ $utilities: map.merge(
     ),
     "grid-column-counts": (
       responsive: true,
-      property: --columns,
+      // property: --columns,
+      property: grid-template-columns,
       class: grid-cols,
       values: (
-        3,
-        4,
-        6
+        "2": repeat(2, 1fr),
+        "3": repeat(3, 1fr),
+        "4": repeat(4, 1fr),
+        "6": repeat(6, 1fr),
       )
     ),
     "grid-columns": (

@@ -1,0 +1,312 @@
+@use "config" as *;
+@use "functions" as *;
+@use "mixins/border-radius" as *;
+@use "mixins/box-shadow" as *;
+@use "mixins/gradients" as *;
+@use "mixins/tokens" as *;
+
+// stylelint-disable scss/dollar-variable-default, custom-property-no-missing-var-function
+$menu-tokens: () !default;
+
+// scss-docs-start menu-tokens
+$menu-tokens: defaults(
+  (
+    --menu-zindex: #{$zindex-menu},
+    --menu-gap: .125rem,
+    --menu-min-width: 10rem,
+    --menu-padding-x: .25rem,
+    --menu-padding-y: .25rem,
+    --menu-spacer: .125rem,
+    --menu-font-size: var(--font-size-sm),
+    --menu-color: var(--fg-body),
+    --menu-bg: var(--bg-body),
+    // --menu-border-color: var(--border-color-translucent),
+    // --menu-border-radius: var(--border-radius-lg),
+    // --menu-border-width: var(--border-width),
+    --menu-box-shadow: var(--box-shadow),
+    // --menu-max-height: none,
+    --menu-divider-bg: var(--border-color-translucent),
+    --menu-divider-margin-y: .125rem,
+    --menu-divider-margin-x: .25rem,
+    --menu-item-color: var(--menu-color, var(--fg-body)),
+    --menu-item-hover-color: var(--menu-color, var(--fg-body)),
+    --menu-item-hover-bg: var(--bg-1),
+    --menu-item-active-color: var(--primary-contrast),
+    --menu-item-active-bg: var(--primary-bg),
+    --menu-item-disabled-color: var(--fg-3),
+    --menu-item-gap: .5rem,
+    --menu-item-padding-x: .75rem,
+    --menu-item-padding-y: .25rem,
+    --menu-item-border-radius: var(--border-radius),
+    --menu-icon-size: 1rem,
+    --menu-image-size: 1.5rem,
+    --menu-description-font-size: var(--font-size-xs),
+    --menu-check-color: currentcolor,
+    --menu-header-color: var(--fg-3),
+    --menu-header-padding-x: .75rem,
+    --menu-header-padding-y: .25rem,
+  ),
+  $menu-tokens
+);
+// scss-docs-end menu-tokens
+
+// stylelint-enable custom-property-no-missing-var-function, scss/dollar-variable-default
+
+@layer components {
+  .menu {
+    @include tokens($menu-tokens);
+
+    position: absolute;
+    z-index: var(--menu-zindex);
+    display: none;
+    flex-direction: column;
+    gap: var(--menu-gap);
+    min-width: var(--menu-min-width);
+    max-height: var(--menu-max-height, none);
+    padding: var(--menu-padding-y) var(--menu-padding-x);
+    margin: 0;
+    overflow-y: var(--menu-overflow-y, initial);
+    overscroll-behavior: contain;
+    font-size: var(--menu-font-size);
+    color: var(--menu-color);
+    text-align: start;
+    list-style: none;
+    background-color: var(--menu-bg);
+    background-clip: padding-box;
+    border: var(--menu-border-width, var(--border-width)) solid var(--menu-border-color, var(--border-color-translucent));
+    @include border-radius(var(--menu-border-radius, var(--border-radius-lg)));
+    @include box-shadow(var(--menu-box-shadow));
+
+    &.show {
+      display: flex;
+    }
+  }
+
+  .menu-scrollable {
+    --menu-max-height: 80dvh;
+    --menu-overflow-y: auto;
+  }
+
+  .menu-translucent {
+    --menu-item-hover-bg-light: color-mix(in oklch, var(--bg-1) 90%, transparent);
+    --menu-item-hover-bg-dark: color-mix(in oklch, var(--bg-1) 80%, transparent);
+
+    --menu-item-active-bg-light: color-mix(in oklch, var(--primary-bg) 80%, transparent);
+    --menu-item-active-bg-dark: color-mix(in oklch, var(--primary-bg) 70%, transparent);
+
+    --menu-item-active-bg: light-dark(var(--menu-item-active-bg-light), var(--menu-item-active-bg-dark));
+    --menu-item-hover-bg: light-dark(var(--menu-item-hover-bg-light), var(--menu-item-hover-bg-dark));
+
+    background-color: color-mix(in oklch, var(--menu-bg) 80%, transparent);
+    backdrop-filter: blur(5px) saturate(180%);
+  }
+
+  .menu-divider {
+    height: 0;
+    margin: var(--menu-divider-margin-y) var(--menu-divider-margin-x);
+    overflow: hidden;
+    border-block-start: 1px solid var(--menu-divider-bg);
+    opacity: 1;
+  }
+
+  .menu-item {
+    display: flex;
+    gap: var(--menu-item-gap);
+    align-items: center;
+    width: 100%;
+    padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
+    font-weight: var(--menu-item-font-weight, var(--font-weight-normal));
+    color: var(--theme-text, var(--menu-item-color));
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    @include border-radius(var(--menu-item-border-radius, 0));
+
+    &:hover,
+    &:focus {
+      color: var(--theme-text, var(--menu-item-hover-color));
+      @include gradient-bg(var(--theme-bg-subtle, var(--menu-item-hover-bg)));
+    }
+
+    &.active,
+    &:active {
+      color: var(--theme-contrast, var(--menu-item-active-color));
+      @include gradient-bg(var(--theme-bg, var(--menu-item-active-bg)));
+
+      .menu-item-icon {
+        color: inherit !important; // stylelint-disable-line declaration-no-important
+      }
+    }
+
+    &.selected {
+      font-weight: $font-weight-semibold;
+    }
+
+    &.disabled,
+    &:disabled {
+      color: var(--menu-item-disabled-color);
+      pointer-events: none;
+      background-color: transparent;
+      // stylelint-disable-next-line scss/at-function-named-arguments
+      background-image: if(sass($enable-gradients): none; else: null);
+    }
+  }
+
+  .menu-item-icon {
+    flex-shrink: 0;
+    align-self: flex-start;
+    width: var(--menu-icon-size);
+    height: auto;
+    margin-top: .125rem;
+  }
+
+  .menu-image {
+    width: var(--menu-image-size);
+    height: var(--menu-image-size);
+    object-fit: cover;
+    @include border-radius(var(--border-radius-sm));
+  }
+
+  .menu-item-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: fit-content;
+  }
+
+  .menu-item-description {
+    font-size: var(--menu-description-font-size);
+    font-weight: var(--font-weight-normal);
+    color: color-mix(in oklch, currentcolor 65%, transparent);
+  }
+
+  .menu-item-check {
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-block-start: .125rem;
+    margin-inline-start: auto;
+    color: var(--menu-check-color);
+    visibility: hidden;
+
+    .selected > & {
+      visibility: visible;
+    }
+  }
+
+  .menu-header {
+    display: block;
+    padding: var(--menu-header-padding-y) var(--menu-header-padding-x);
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+    color: var(--menu-header-color);
+    white-space: nowrap;
+  }
+
+  .menu-text {
+    display: block;
+    padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
+    color: var(--fg-2);
+  }
+
+  // scss-docs-start submenu
+  .submenu {
+    position: relative;
+
+    > .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    > .menu-item::after {
+      display: inline-block;
+      flex-shrink: 0;
+      width: .375em;
+      height: .375em;
+      margin-inline-start: auto;
+      content: "";
+      border-color: currentcolor;
+      border-style: solid;
+      border-width: 0 .125em .125em 0;
+      transform: rotate(-45deg);
+
+      [dir="rtl"] & {
+        transform: rotate(135deg);
+      }
+    }
+
+    > .menu {
+      top: 0;
+      margin-top: calc(-1 * var(--menu-padding-y));
+    }
+
+    &:hover > .menu-item,
+    &:focus-within > .menu-item {
+      color: var(--menu-item-hover-color);
+      background-color: var(--menu-item-hover-bg);
+    }
+
+    &.show > .menu-item {
+      color: var(--menu-item-hover-color);
+      background-color: var(--menu-item-hover-bg);
+    }
+  }
+
+  // Mobile stacking: submenu covers the parent menu in-place
+  @media (max-width: 575.98px) {
+    .submenu:has(.submenu-stacked) {
+      position: static;
+    }
+
+    .submenu-stacked {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--menu-gap);
+      min-width: 0;
+      padding: var(--menu-padding-y) var(--menu-padding-x);
+      background-color: var(--menu-bg);
+      border: 0;
+      @include border-radius(0);
+      box-shadow: none;
+    }
+
+    .submenu-back {
+      display: flex;
+      gap: var(--menu-item-gap);
+      align-items: center;
+      padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
+      font-weight: var(--font-weight-semibold, 600);
+      color: var(--menu-item-color);
+
+      &::before {
+        display: inline-block;
+        flex-shrink: 0;
+        width: .375em;
+        height: .375em;
+        content: "";
+        border-color: currentcolor;
+        border-style: solid;
+        border-width: .125em 0 0 .125em;
+        transform: rotate(-45deg);
+
+        [dir="rtl"] & {
+          border-width: 0 .125em .125em 0;
+        }
+      }
+    }
+
+    .submenu-dimmed {
+      pointer-events: none;
+      filter: blur(2px);
+      opacity: .3;
+    }
+  }
+  // scss-docs-end submenu
+}

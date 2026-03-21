@@ -108,7 +108,7 @@
     - group: Navigation
       pages:
         - title: Breadcrumb
-        - title: Dropdown
+        - title: Menu
         - title: Navs & tabs
         - title: Nav overflow
         - title: Navbar

@@ -13,12 +13,12 @@ const placements = [
 <div class="bg-1 p-3 fs-sm rounded-3">
   <div class="vstack gap-1">
     <label class="form-label fw-semibold mb-0">Placement</label>
-    <div class="dropdown">
+    <div>
       <button
         type="button"
-        class="btn-outline theme-secondary dropdown-toggle"
-        id="navbar-placement-dropdown"
-        data-bs-toggle="dropdown"
+        class="btn-outline theme-secondary"
+        id="navbar-placement-menu"
+        data-bs-toggle="menu"
         aria-expanded="false"
         data-placement=""
       >
@@ -27,19 +27,17 @@ const placements = [
           <use href="#chevron-expand" />
         </svg>
       </button>
-      <ul class="dropdown-menu" aria-labelledby="navbar-placement-dropdown">
+      <div class="menu">
         {placements.map((p) => (
-          <li>
-            <a
-              class:list={['dropdown-item', { 'active': p.value === '' }]}
-              href="#"
-              data-placement={p.value}
-            >
-              {p.label}
-            </a>
-          </li>
+          <a
+            class:list={['menu-item', { 'active': p.value === '' }]}
+            href="#"
+            data-placement={p.value}
+          >
+            {p.label}
+          </a>
         ))}
-      </ul>
+      </div>
     </div>
   </div>
 </div>
@@ -54,10 +52,10 @@ const placements = [
 />
 
 <script>
-  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+  import { Menu } from '../../../../dist/js/bootstrap.bundle.js'
 
-  const placementDropdownButton = document.querySelector('#navbar-placement-dropdown') as HTMLButtonElement
-  const placementDropdownItems = document.querySelectorAll('#navbar-placement-dropdown + .dropdown-menu .dropdown-item')
+  const placementMenuButton = document.querySelector('#navbar-placement-menu') as HTMLButtonElement
+  const placementMenuItems = document.querySelectorAll('#navbar-placement-menu + .menu .menu-item')
   const previewContainer = document.querySelector('#navbar-placement-preview') as HTMLElement
   const previewNavbar = previewContainer?.querySelector('.navbar') as HTMLElement
   const codeSnippet = previewContainer?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
@@ -73,17 +71,15 @@ const placements = [
   }
 
   function updatePlacement(placement: string) {
-    if (!previewNavbar || !placementDropdownButton) return
+    if (!previewNavbar || !placementMenuButton) return
 
-    // Update dropdown button text
-    const labelSpan = placementDropdownButton.querySelector('span')
+    const labelSpan = placementMenuButton.querySelector('span')
     if (labelSpan) {
       labelSpan.textContent = placementLabels[placement] ? `${placementLabels[placement]}${placement ? '' : ' (static)'}` : 'Default (static)'
     }
-    placementDropdownButton.dataset.placement = placement
+    placementMenuButton.dataset.placement = placement
 
-    // Update active state in dropdown
-    placementDropdownItems.forEach(item => {
+    placementMenuItems.forEach(item => {
       const itemPlacement = (item as HTMLElement).dataset.placement
       item.classList.toggle('active', itemPlacement === placement)
     })
@@ -124,16 +120,15 @@ const placements = [
     codeSnippet.textContent = htmlCode
   }
 
-  // Initialize dropdown
-  if (placementDropdownButton) {
-    const placementDropdown = Dropdown.getOrCreateInstance(placementDropdownButton)
+  if (placementMenuButton) {
+    const placementMenu = Menu.getOrCreateInstance(placementMenuButton)
 
-    placementDropdownItems.forEach(item => {
+    placementMenuItems.forEach(item => {
       item.addEventListener('click', (e) => {
         e.preventDefault()
         const placement = (item as HTMLElement).dataset.placement || ''
         updatePlacement(placement)
-        placementDropdown.hide()
+        placementMenu.hide()
       })
     })
   }

@@ -103,7 +103,7 @@ class NavOverflow extends BaseComponent {
       item.dataset.bsNavOrder = index;
     }
 
-    // Create overflow dropdown if it doesn't exist
+    // Create overflow menu if it doesn't exist
     this._createOverflowMenu();
 
     // Setup resize observer
@@ -120,16 +120,14 @@ class NavOverflow extends BaseComponent {
       this._overflowMenu = SelectorEngine.findOne(SELECTOR_OVERFLOW_MENU, this._element);
       return;
     }
-
-    // Create the overflow dropdown item
     const overflowItem = document.createElement('li');
-    overflowItem.className = 'nav-item nav-overflow-item dropdown';
+    overflowItem.className = 'nav-item nav-overflow-item';
     overflowItem.innerHTML = `
-      <button class="nav-link nav-overflow-toggle dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-container="body" data-bs-strategy="fixed" aria-expanded="false">
+      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">
         <span class="nav-overflow-icon">${this._config.moreIcon}</span>
         <span class="nav-overflow-text">${this._config.moreText}</span>
       </button>
-      <ul class="${CLASS_NAME_OVERFLOW_MENU} dropdown-menu dropdown-menu-end"></ul>
+      <div class="${CLASS_NAME_OVERFLOW_MENU} menu"></div>
     `;
     this._element.append(overflowItem);
     this._overflowToggle = overflowItem.querySelector(SELECTOR_OVERFLOW_TOGGLE);
@@ -208,26 +206,19 @@ class NavOverflow extends BaseComponent {
     this._overflowMenu.innerHTML = '';
     this._overflowItems = [];
     for (const item of items) {
-      // Clone the nav link as a dropdown item
       const link = SelectorEngine.findOne(SELECTOR_NAV_LINK, item);
       if (!link) {
         continue;
       }
-      const dropdownItem = document.createElement('li');
       const clonedLink = link.cloneNode(true);
-      clonedLink.className = 'dropdown-item';
-
-      // Preserve active state
+      clonedLink.className = 'menu-item';
       if (link.classList.contains('active')) {
         clonedLink.classList.add('active');
       }
-
-      // Preserve disabled state
       if (link.classList.contains('disabled') || link.hasAttribute('disabled')) {
         clonedLink.classList.add('disabled');
       }
-      dropdownItem.append(clonedLink);
-      this._overflowMenu.append(dropdownItem);
+      this._overflowMenu.append(clonedLink);
 
       // Hide original item
       item.classList.add(CLASS_NAME_HIDDEN);

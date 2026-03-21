@@ -67,7 +67,7 @@ describe('NavOverflow', () => {
       navOverflow.dispose()
     })
 
-    it('should create overflow menu toggle and dropdown', () => {
+    it('should create overflow menu toggle and menu', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav" data-bs-toggle="nav-overflow">',
         '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
@@ -82,8 +82,8 @@ describe('NavOverflow', () => {
 
       expect(toggle).not.toBeNull()
       expect(menu).not.toBeNull()
-      expect(toggle).toHaveClass('dropdown-toggle')
-      expect(menu).toHaveClass('dropdown-menu')
+      expect(toggle.getAttribute('data-bs-toggle')).toEqual('menu')
+      expect(menu).toHaveClass('menu')
 
       navOverflow.dispose()
     })
@@ -212,7 +212,7 @@ describe('NavOverflow', () => {
   })
 
   describe('overflow behavior', () => {
-    it('should use dropdown with container option for overflow menu', () => {
+    it('should use placement option for overflow menu', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav" data-bs-toggle="nav-overflow">',
         '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
@@ -223,8 +223,8 @@ describe('NavOverflow', () => {
       const navOverflow = new NavOverflow(navEl)
 
       const toggle = navEl.querySelector('.nav-overflow-toggle')
-      expect(toggle.getAttribute('data-bs-container')).toEqual('body')
-      expect(toggle.getAttribute('data-bs-strategy')).toEqual('fixed')
+      expect(toggle.getAttribute('data-bs-toggle')).toEqual('menu')
+      expect(toggle.getAttribute('data-bs-placement')).toEqual('bottom-end')
 
       navOverflow.dispose()
     })
@@ -306,7 +306,7 @@ describe('NavOverflow', () => {
       navOverflow.dispose()
     })
 
-    it('should clone overflowed items into the dropdown menu', () => {
+    it('should clone overflowed items into the menu', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav" style="display: flex; width: 250px;" data-bs-toggle="nav-overflow">',
         '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
@@ -320,13 +320,13 @@ describe('NavOverflow', () => {
       const navOverflow = new NavOverflow(navEl)
 
       const menu = navEl.querySelector('.nav-overflow-menu')
-      const dropdownItems = menu.querySelectorAll('.dropdown-item')
-      expect(dropdownItems.length).toBeGreaterThan(0)
+      const menuItems = menu.querySelectorAll('.menu-item')
+      expect(menuItems.length).toBeGreaterThan(0)
 
       navOverflow.dispose()
     })
 
-    it('should preserve active state on cloned dropdown items', () => {
+    it('should preserve active state on cloned menu items', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav" style="display: flex; width: 150px;" data-bs-toggle="nav-overflow">',
         '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
@@ -339,17 +339,17 @@ describe('NavOverflow', () => {
       const navOverflow = new NavOverflow(navEl)
 
       const menu = navEl.querySelector('.nav-overflow-menu')
-      const activeDropdownItems = menu.querySelectorAll('.dropdown-item.active')
+      const activeMenuItems = menu.querySelectorAll('.menu-item.active')
       const originalActiveHidden = navEl.querySelector('.nav-item[data-bs-nav-overflow="true"] .nav-link.active')
 
       if (originalActiveHidden) {
-        expect(activeDropdownItems.length).toBeGreaterThan(0)
+        expect(activeMenuItems.length).toBeGreaterThan(0)
       }
 
       navOverflow.dispose()
     })
 
-    it('should preserve disabled state on cloned dropdown items', () => {
+    it('should preserve disabled state on cloned menu items', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav" style="display: flex; width: 150px;" data-bs-toggle="nav-overflow">',
         '  <li class="nav-item" style="flex: 0 0 100px; width: 100px;"><a class="nav-link" href="#">Link 1</a></li>',
@@ -362,11 +362,11 @@ describe('NavOverflow', () => {
       const navOverflow = new NavOverflow(navEl)
 
       const menu = navEl.querySelector('.nav-overflow-menu')
-      const disabledDropdownItems = menu.querySelectorAll('.dropdown-item.disabled')
+      const disabledMenuItems = menu.querySelectorAll('.menu-item.disabled')
       const originalDisabledHidden = navEl.querySelector('.nav-item[data-bs-nav-overflow="true"] .nav-link.disabled')
 
       if (originalDisabledHidden) {
-        expect(disabledDropdownItems.length).toBeGreaterThan(0)
+        expect(disabledMenuItems.length).toBeGreaterThan(0)
       }
 
       navOverflow.dispose()
@@ -450,9 +450,9 @@ describe('NavOverflow', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav" data-bs-toggle="nav-overflow">',
         '  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>',
-        '  <li class="nav-item dropdown">',
-        '    <button class="nav-link nav-overflow-toggle dropdown-toggle" type="button">More</button>',
-        '    <ul class="nav-overflow-menu dropdown-menu"></ul>',
+        '  <li class="nav-item">',
+        '    <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu">More</button>',
+        '    <div class="nav-overflow-menu menu"></div>',
         '  </li>',
         '</ul>'
       ].join('')

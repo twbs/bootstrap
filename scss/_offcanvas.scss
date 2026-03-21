@@ -81,7 +81,7 @@ $offcanvas-backdrop-tokens: defaults(
         @include transition(var(--offcanvas-transition));
 
         // Placement: Start (left in LTR, right in RTL)
-        &.offcanvas-start {
+        &:where(.offcanvas-start) {
           inset-block: var(--offcanvas-inset);
           inset-inline-start: var(--offcanvas-inset);
           width: var(--offcanvas-width);
@@ -93,7 +93,7 @@ $offcanvas-backdrop-tokens: defaults(
         }
 
         // Placement: End (right in LTR, left in RTL)
-        &.offcanvas-end {
+        &:where(.offcanvas-end) {
           inset-block: var(--offcanvas-inset);
           inset-inline-end: var(--offcanvas-inset);
           width: var(--offcanvas-width);
@@ -105,21 +105,21 @@ $offcanvas-backdrop-tokens: defaults(
         }
 
         // Placement: Top
-        &.offcanvas-top {
+        &:where(.offcanvas-top) {
           inset: var(--offcanvas-inset) var(--offcanvas-inset) auto;
           height: var(--offcanvas-height);
           transform: translateY(-100%);
         }
 
         // Placement: Bottom
-        &.offcanvas-bottom {
+        &:where(.offcanvas-bottom) {
           inset: auto var(--offcanvas-inset) var(--offcanvas-inset);
           height: var(--offcanvas-height);
           transform: translateY(100%);
         }
 
         // Fullscreen variant - covers entire viewport
-        &.offcanvas-fullscreen {
+        &:where(.offcanvas-fullscreen) {
           inset: var(--offcanvas-inset);
           width: auto;
           max-width: none;
@@ -170,6 +170,11 @@ $offcanvas-backdrop-tokens: defaults(
     @include overlay-backdrop($zindex-offcanvas-backdrop, var(--offcanvas-backdrop-bg), var(--offcanvas-backdrop-opacity), var(--offcanvas-backdrop-blur));
   }
 
+  .offcanvas-translucent {
+    background-color: color-mix(in oklch, var(--offcanvas-bg) 80%, transparent);
+    backdrop-filter: blur(5px) saturate(180%);
+  }
+
   // Header with close button
   .offcanvas-header {
     display: flex;
@@ -211,5 +216,9 @@ $offcanvas-backdrop-tokens: defaults(
     justify-content: flex-end;
     padding: var(--offcanvas-padding-y) var(--offcanvas-padding-x);
     border-block-start: var(--offcanvas-border-width) solid var(--offcanvas-border-color);
+  }
+
+  .offcanvas-fit-content {
+    inset-block-end: auto;
   }
 }

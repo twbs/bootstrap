@@ -1,18 +1,18 @@
 ---
 title: Nav overflow
-description: Automatically collapse navigation items into a "More" dropdown when space is limited using the Priority+ pattern.
+description: Automatically collapse navigation items into a "More" menu when space is limited using the Priority+ pattern.
 toc: true
 ---
 
 ## How it works
 
-The nav overflow component (also known as the "Priority+" pattern) automatically detects when navigation items don't fit within their container and moves them into a dropdown menu. This provides a responsive navigation experience without requiring different markup for different screen sizes.
+The nav overflow component (also known as the "Priority+" pattern) automatically detects when navigation items don't fit within their container and moves them into a menu. This provides a responsive navigation experience without requiring different markup for different screen sizes.
 
 Here's what you need to know before getting started:
 
 - Add `data-bs-toggle="nav-overflow"` to any `.nav` element to enable automatic overflow detection.
 - **Responds to container size**, not viewport size. The component uses a ResizeObserver to monitor its own width, so it works perfectly in embedded contexts, documentation examples, and responsive containers.
-- Overflow items are cloned into a "More" dropdown menu while the originals are hidden.
+- Overflow items are cloned into a "More" menu while the originals are hidden.
 - Works with all nav styles: default, pills, tabs, and underline.
 - Active and disabled states are preserved in the overflow menu.
 
@@ -20,7 +20,7 @@ Here's what you need to know before getting started:
 
 ## Examples
 
-Add `data-bs-toggle="nav-overflow"` to your nav element. When items don't fit, they'll automatically move to a "More" dropdown. Drag the right edge of the container below to see how nav items automatically move to the "More" dropdown as space becomes limited.
+Add `data-bs-toggle="nav-overflow"` to your nav element. When items don't fit, they'll automatically move to a "More" menu. Drag the right edge of the container below to see how nav items automatically move to the "More" menu as space becomes limited.
 
 <ResizableExample code={`<ul class="nav nav-pills" data-bs-toggle="nav-overflow">
     <li class="nav-item">

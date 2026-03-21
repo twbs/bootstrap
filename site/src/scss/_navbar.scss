@@ -1,4 +1,3 @@
-@use "../../../scss/colors" as *;
 @use "../../../scss/mixins" as *;
 @use "../../../scss/layout/breakpoints" as *;
 
@@ -9,7 +8,7 @@
 
 @layer custom {
   .bd-sticky-navbar.is-stuck {
-    box-shadow: 0 .125rem .5rem rgba($black, .05);
+    box-shadow: 0 .125rem .5rem rgb(0 0 0 / .05);
   }
 
   .bd-navbar {
@@ -45,7 +44,6 @@
     }
 
     .navbar-brand {
-      // color: $white;
       @include transition(transform .2s ease-in-out);
 
       &:hover {
@@ -58,60 +56,29 @@
       --bs-nav-link-active-bg: transparent;
     }
 
-    .navbar-toggler,
     .nav-link {
       font-size: var(--font-size-sm);
-      // padding-inline: $spacer * .25;
-      // color: rgba($white, .85);
-
-      // &:hover,
-      // &:focus {
-      //   color: $white;
-      // }
 
       &.active {
         font-weight: 600;
-        // color: $white;
       }
     }
 
-    .navbar-nav-svg {
-      display: inline-block;
-      vertical-align: -.125rem;
-    }
-
-    .offcanvas-lg {
-      border-inline-start: 0;
-
-      @include media-breakpoint-down(lg) {
-        box-shadow: var(--box-shadow-lg);
-      }
-    }
-
-    .dropdown-toggle {
+    [data-bs-toggle="menu"] {
       &:focus:not(:focus-visible) {
         outline: 0;
       }
     }
 
-    .dropdown-menu {
-      --bs-dropdown-min-width: 12rem;
-      --bs-dropdown-padding-x: .25rem;
-      --bs-dropdown-padding-y: .25rem;
-      --bs-dropdown-link-hover-bg: color-mix(in srgb, var(--bd-violet), transparent 90%);
-      --bs-dropdown-link-active-bg: var(--bd-violet);
-      // @include rfs(.875rem, --bs-dropdown-font-size);
-      // @include font-size(.875rem);
-      // @include border-radius(.5rem);
-      box-shadow: var(--dropdown-box-shadow);
+    .menu {
+      --menu-min-width: 12rem;
+      --menu-padding-x: .25rem;
+      --menu-padding-y: .25rem;
+      --menu-item-hover-color: var(--bs-accent-text-emphasis);
+      --menu-item-hover-bg: var(--bs-accent-bg-subtle);
+      --menu-item-active-bg: var(--bs-accent-bg);
 
-      li + li {
-        margin-top: .125rem;
-      }
-
-      .dropdown-item {
-        @include border-radius(.25rem);
-
+      .menu-item {
         &:active {
           .bi {
             color: inherit !important; // stylelint-disable-line declaration-no-important
@@ -126,16 +93,6 @@
           display: block !important; // stylelint-disable-line declaration-no-important
         }
       }
-    }
-
-    .dropdown-menu-end {
-      --bs-dropdown-min-width: 8rem;
-    }
-  }
-
-  @include color-mode(dark) {
-    .bd-navbar {
-      box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
     }
   }
 }

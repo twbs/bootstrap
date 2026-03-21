@@ -32,27 +32,23 @@ const plugins = getData('plugins')
         first-class data API, allowing you to use JavaScript just by adding <code>data</code> attributes.
       </p>
       <div class="p-4 mb-3 border rounded-3">
-        <div class="dropdown">
-          <button class="btn-solid theme-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </button>
-          <ul class="dropdown-menu">
-            <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-            <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-            <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-          </ul>
+        <button class="btn-solid theme-primary" type="button" data-bs-toggle="menu" aria-expanded="false">
+          Menu
+        </button>
+        <div class="menu">
+          <button class="menu-item" type="button">Menu item</button>
+          <button class="menu-item" type="button">Menu item</button>
+          <button class="menu-item" type="button">Menu item</button>
         </div>
       </div>
       <Code
-        code={`<div class="dropdown">
-  <button class="btn-solid theme-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown
-  </button>
-  <ul class="dropdown-menu">
-    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
-  </ul>
+        code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="menu" aria-expanded="false">
+  Menu
+</button>
+<div class="menu">
+  <button class="menu-item" type="button">Menu item</button>
+  <button class="menu-item" type="button">Menu item</button>
+  <button class="menu-item" type="button">Menu item</button>
 </div>`}
         lang="html"
       />

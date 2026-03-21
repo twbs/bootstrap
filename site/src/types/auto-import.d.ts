@@ -16,10 +16,10 @@ export declare global {
   export const CodeCopy: typeof import('@shortcodes/CodeCopy.astro').default
   export const DeprecatedIn: typeof import('@shortcodes/DeprecatedIn.astro').default
   export const Details: typeof import('@shortcodes/Details.astro').default
-  export const DropdownPlacementPlayground: typeof import('@shortcodes/DropdownPlacementPlayground.astro').default
   export const Example: typeof import('@shortcodes/Example.astro').default
   export const JsDismiss: typeof import('@shortcodes/JsDismiss.astro').default
   export const JsDocs: typeof import('@shortcodes/JsDocs.astro').default
+  export const MenuPlacementPlayground: typeof import('@shortcodes/MenuPlacementPlayground.astro').default
   export const NavbarPlacementPlayground: typeof import('@shortcodes/NavbarPlacementPlayground.astro').default
   export const Placeholder: typeof import('@shortcodes/Placeholder.astro').default
   export const ResizableExample: typeof import('@shortcodes/ResizableExample.astro').default

@@ -29,12 +29,12 @@ const rounded = ['default', 'pill', 'square']
   <div class="d-flex flex-wrap gap-3">
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Color</label>
-      <div class="dropdown">
+      <div>
         <button
           type="button"
-          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
-          id="btn-color-dropdown"
-          data-bs-toggle="dropdown"
+          class="btn-outline theme-secondary btn-sm w-100 justify-content-between"
+          id="btn-color-menu"
+          data-bs-toggle="menu"
           aria-expanded="false"
           data-color="primary"
         >
@@ -43,20 +43,18 @@ const rounded = ['default', 'pill', 'square']
             <use href="#chevron-expand" />
           </svg>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="btn-color-dropdown">
+        <div class="menu">
           {themeColors.map((themeColor) => (
-            <li>
-              <a
-                class:list={['dropdown-item', { 'active': themeColor.name === 'primary' }]}
-                href="#"
-                data-color={themeColor.name}
-                data-selected={themeColor.name === 'primary'}
-              >
-                {themeColor.title}
-              </a>
-            </li>
+            <a
+              class:list={['menu-item', { 'active': themeColor.name === 'primary' }]}
+              href="#"
+              data-color={themeColor.name}
+              data-selected={themeColor.name === 'primary'}
+            >
+              {themeColor.title}
+            </a>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
 
@@ -80,12 +78,12 @@ const rounded = ['default', 'pill', 'square']
 
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Size</label>
-      <div class="dropdown">
+      <div>
         <button
           type="button"
-          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
-          id="btn-size-dropdown"
-          data-bs-toggle="dropdown"
+          class="btn-outline theme-secondary btn-sm w-100 justify-content-between"
+          id="btn-size-menu"
+          data-bs-toggle="menu"
           aria-expanded="false"
           data-size=""
         >
@@ -94,20 +92,18 @@ const rounded = ['default', 'pill', 'square']
             <use href="#chevron-expand" />
           </svg>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="btn-size-dropdown">
+        <div class="menu">
           {sizes.map((size) => (
-            <li>
-              <a
-                class:list={['dropdown-item', { 'active': size.value === '' }]}
-                href="#"
-                data-size={size.value}
-                data-selected={size.value === ''}
-              >
-                {size.label}
-              </a>
-            </li>
+            <a
+              class:list={['menu-item', { 'active': size.value === '' }]}
+              href="#"
+              data-size={size.value}
+              data-selected={size.value === ''}
+            >
+              {size.label}
+            </a>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
 
@@ -155,12 +151,12 @@ const rounded = ['default', 'pill', 'square']
 />
 
 <script>
-  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+  import { Menu } from '../../../../dist/js/bootstrap.bundle.js'
 
-  const colorDropdownButton = document.querySelector('#btn-color-dropdown') as HTMLButtonElement
-  const colorDropdownItems = document.querySelectorAll('#btn-color-dropdown + .dropdown-menu .dropdown-item')
-  const sizeDropdownButton = document.querySelector('#btn-size-dropdown') as HTMLButtonElement
-  const sizeDropdownItems = document.querySelectorAll('#btn-size-dropdown + .dropdown-menu .dropdown-item')
+  const colorMenuButton = document.querySelector('#btn-color-menu') as HTMLButtonElement
+  const colorMenuItems = document.querySelectorAll('#btn-color-menu + .menu .menu-item')
+  const sizeMenuButton = document.querySelector('#btn-size-menu') as HTMLButtonElement
+  const sizeMenuItems = document.querySelectorAll('#btn-size-menu + .menu .menu-item')
   const styleInputs = document.querySelectorAll('input[name="btn-style"]')
   const roundedInputs = document.querySelectorAll('input[name="btn-rounded"]')
   const previewButtons = document.querySelectorAll('#button-preview button')
@@ -168,7 +164,7 @@ const rounded = ['default', 'pill', 'square']
   const codeSnippet = document.querySelector('#button-preview')?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
 
   // Get all theme color names for removal
-  const themeColorNames = Array.from(colorDropdownItems).map(item => (item as HTMLElement).dataset.color || '')
+  const themeColorNames = Array.from(colorMenuItems).map(item => (item as HTMLElement).dataset.color || '')
 
   function generateHTML(button: HTMLElement): string {
     const classes = Array.from(button.classList).filter(cls =>
@@ -209,9 +205,9 @@ const rounded = ['default', 'pill', 'square']
   }
 
   function updateButtons() {
-    const selectedColor = colorDropdownButton?.dataset.color || 'primary'
+    const selectedColor = colorMenuButton?.dataset.color || 'primary'
     const selectedStyle = (document.querySelector('input[name="btn-style"]:checked') as HTMLInputElement)?.value || 'solid'
-    const selectedSize = sizeDropdownButton?.dataset.size || ''
+    const selectedSize = sizeMenuButton?.dataset.size || ''
     const selectedRounded = (document.querySelector('input[name="btn-rounded"]:checked') as HTMLInputElement)?.value || 'default'
 
     previewButtons.forEach((button) => {
@@ -254,66 +250,53 @@ const rounded = ['default', 'pill', 'square']
     updateCodeSnippet()
   }
 
-  // Initialize Bootstrap dropdowns
-  if (colorDropdownButton) {
-    const colorDropdown = Dropdown.getOrCreateInstance(colorDropdownButton)
+  if (colorMenuButton) {
+    const colorMenu = Menu.getOrCreateInstance(colorMenuButton)
 
-    // Handle dropdown item clicks
-    colorDropdownItems.forEach((item) => {
+    colorMenuItems.forEach((item) => {
       item.addEventListener('click', (e) => {
         e.preventDefault()
         const colorName = (item as HTMLElement).dataset.color || 'primary'
         const colorTitle = item.textContent?.trim() || 'Primary'
 
-        // Update button text and data attribute
-        const labelSpan = colorDropdownButton.querySelector('span')
+        const labelSpan = colorMenuButton.querySelector('span')
         if (labelSpan) labelSpan.textContent = colorTitle
-        colorDropdownButton.dataset.color = colorName
+        colorMenuButton.dataset.color = colorName
 
-        // Update selected state
-        colorDropdownItems.forEach((i) => {
+        colorMenuItems.forEach((i) => {
           i.classList.remove('active')
           i.setAttribute('data-selected', 'false')
         })
         item.classList.add('active')
         item.setAttribute('data-selected', 'true')
 
-        // Hide dropdown
-        colorDropdown.hide()
-
-        // Update buttons
+        colorMenu.hide()
         updateButtons()
       })
     })
   }
 
-  if (sizeDropdownButton) {
-    const sizeDropdown = Dropdown.getOrCreateInstance(sizeDropdownButton)
+  if (sizeMenuButton) {
+    const sizeMenu = Menu.getOrCreateInstance(sizeMenuButton)
 
-    // Handle dropdown item clicks
-    sizeDropdownItems.forEach((item) => {
+    sizeMenuItems.forEach((item) => {
       item.addEventListener('click', (e) => {
         e.preventDefault()
         const sizeValue = (item as HTMLElement).dataset.size || ''
         const sizeLabel = item.textContent?.trim() || 'Medium'
 
-        // Update button text and data attribute
-        const labelSpan = sizeDropdownButton.querySelector('span')
+        const labelSpan = sizeMenuButton.querySelector('span')
         if (labelSpan) labelSpan.textContent = sizeLabel
-        sizeDropdownButton.dataset.size = sizeValue
+        sizeMenuButton.dataset.size = sizeValue
 
-        // Update selected state
-        sizeDropdownItems.forEach((i) => {
+        sizeMenuItems.forEach((i) => {
           i.classList.remove('active')
           i.setAttribute('data-selected', 'false')
         })
         item.classList.add('active')
         item.setAttribute('data-selected', 'true')
 
-        // Hide dropdown
-        sizeDropdown.hide()
-
-        // Update buttons
+        sizeMenu.hide()
         updateButtons()
       })
     })

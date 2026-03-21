@@ -78,6 +78,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `$border-radius-xxl`, use `$border-radius-2xl`.
   - Removed `$text-muted` for secondary color.
   - Removed `$hr-bg-color` for `$hr-border-color` and `$hr-height` for `$hr-border-width`.
+  - Renamed `$zindex-dropdown` to `$zindex-menu`.
   - Removed unused `$dropdown-header-padding` for the `-x`/`-y` split variables.
   - Removed unused `$accordion-button-focus-border-color`.
   - Removed unused `$tooltip-arrow-color`.
@@ -109,7 +110,17 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
 - Removed `js/index.umd.js` entry point.
 - Removed jQuery support and the `js-test-jquery` test target.
-- Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for dropdown, tooltip, and popover positioning.
+- **Replaced the Dropdown component with Menu.** All `.dropdown-*` classes are now `.menu-*` classes, and `data-bs-toggle="dropdown"` is now `data-bs-toggle="menu"`. See the [Menu docs]([[docsref:/components/menus]]) for full details.
+  - Renamed CSS classes: `.dropdown-menu` to `.menu`, `.dropdown-item` to `.menu-item`, `.dropdown-divider` to `.menu-divider`, `.dropdown-header` to `.menu-header`, `.dropdown-submenu` to `.submenu`.
+  - Removed the `.dropdown-toggle` class — menu toggles no longer require a toggle class.
+  - Removed the `.dropdown` wrapper — no wrapper element is required. The toggle and `.menu` are direct siblings.
+  - Simplified markup from `<ul><li><a class="dropdown-item">` to a flat `<div class="menu"><a class="menu-item">` structure.
+  - Removed `.dropdown-toggle-split` — button group border radius for split menus is now handled automatically via `:has(+ .menu)`.
+  - Renamed the JavaScript export from `Dropdown` to `Menu` — update imports to `import { Menu } from 'bootstrap'`.
+  - Renamed events: `show.bs.dropdown` to `show.bs.menu`, `shown.bs.dropdown` to `shown.bs.menu`, `hide.bs.dropdown` to `hide.bs.menu`, `hidden.bs.dropdown` to `hidden.bs.menu`.
+  - Renamed the data key from `bs.dropdown` to `bs.menu` (affects `Menu.getInstance()` and `Menu.getOrCreateInstance()`).
+- **Added new Combobox component.** A searchable select built on top of Menu, with single and multi-select support. See the [Combobox docs]([[docsref:/forms/combobox]]).
+- Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for menu, tooltip, and popover positioning.
 - Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component.
 - Removed the `jspm` configuration from `package.json`.
 - Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap's plugins register at the top level.
@@ -133,6 +144,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `.form-select`—use `.form-control` on `<select>` elements now. Too much abstraction and duplication at the same time.
   - Adds new CSS variables on `.form-control` for easier customization without Sass compilation.
   - `.form-control` now has a `min-height` at all times as opposed to just on `<textarea>` elements. This reduces some CSS for us.
+- **Added new Combobox form component.** A searchable, filterable select with single and multi-select modes, built on top of the Menu component. See the [Combobox docs]([[docsref:/forms/combobox]]).
 
 ### Helpers
 

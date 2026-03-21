@@ -174,10 +174,8 @@ $nav-underline-tokens: defaults(
       border-bottom-color: var(--nav-tabs-link-active-bg);
     }
 
-    .dropdown-menu {
-      // Make dropdown border overlap tab border
+    .menu {
       margin-top: calc(-1 * var(--nav-tabs-border-width));
-      // Remove the top rounded corners here since there is a hard edge above the menu
       @include border-top-radius(0);
     }
   }

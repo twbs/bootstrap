@@ -126,6 +126,16 @@ $card-tokens: defaults(
     }
   }
 
+  .card-translucent {
+    background-color: color-mix(in oklch, var(--card-bg) 80%, transparent);
+    backdrop-filter: blur(5px) saturate(180%);
+
+    .card-header,
+    .card-footer {
+      background-color: color-mix(in oklch, var(--card-cap-bg) 60%, transparent);
+    }
+  }
+
   .card-subtle {
     border-color: var(--theme-border, var(--card-border-color));
 

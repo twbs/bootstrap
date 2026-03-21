@@ -20,7 +20,7 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 
 ### Navbar
 
-Scroll the area below the navbar and watch the active class change. Open the dropdown menu and watch the dropdown items be highlighted as well.
+Scroll the area below the navbar and watch the active class change. Open the menu and watch the menu items be highlighted as well.
 
 <Example showMarkup={false} code={`<nav id="navbar-example2" class="navbar bg-1 px-3 mb-3 rounded-2">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -31,14 +31,14 @@ Scroll the area below the navbar and watch the active class change. Open the dro
       <li class="nav-item">
         <a class="nav-link" href="#scrollspyHeading2">Second</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-          <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-        </ul>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</a>
+        <div class="menu">
+          <a class="menu-item" href="#scrollspyHeading3">Third</a>
+          <a class="menu-item" href="#scrollspyHeading4">Fourth</a>
+          <hr class="menu-divider">
+          <a class="menu-item" href="#scrollspyHeading5">Fifth</a>
+        </div>
       </li>
     </ul>
   </nav>
@@ -65,14 +65,14 @@ Scroll the area below the navbar and watch the active class change. Open the dro
     <li class="nav-item">
       <a class="nav-link" href="#scrollspyHeading2">Second</a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-        <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-      </ul>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</a>
+      <div class="menu">
+        <a class="menu-item" href="#scrollspyHeading3">Third</a>
+        <a class="menu-item" href="#scrollspyHeading4">Fourth</a>
+        <hr class="menu-divider">
+        <a class="menu-item" href="#scrollspyHeading5">Fifth</a>
+      </div>
     </li>
   </ul>
 </nav>

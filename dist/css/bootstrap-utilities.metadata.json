@@ -563,8 +563,6 @@
       "class": "m",
       "property": "margin",
       "classes": [
-        "m--2",
-        "m--1",
         "m-0",
         "m-1",
         "m-2",
@@ -578,8 +576,6 @@
       "class": "mx",
       "property": "margin-inline",
       "classes": [
-        "mx--2",
-        "mx--1",
         "mx-0",
         "mx-1",
         "mx-2",
@@ -593,8 +589,6 @@
       "class": "my",
       "property": "margin-block",
       "classes": [
-        "my--2",
-        "my--1",
         "my-0",
         "my-1",
         "my-2",
@@ -608,8 +602,6 @@
       "class": "mt",
       "property": "margin-block-start",
       "classes": [
-        "mt--2",
-        "mt--1",
         "mt-0",
         "mt-1",
         "mt-2",
@@ -623,8 +615,6 @@
       "class": "me",
       "property": "margin-inline-end",
       "classes": [
-        "me--2",
-        "me--1",
         "me-0",
         "me-1",
         "me-2",
@@ -638,8 +628,6 @@
       "class": "mb",
       "property": "margin-block-end",
       "classes": [
-        "mb--2",
-        "mb--1",
         "mb-0",
         "mb-1",
         "mb-2",
@@ -653,14 +641,14 @@
       "class": "ms",
       "property": "margin-inline-start",
       "classes": [
-        "ms--2",
-        "ms--1",
         "ms-0",
         "ms-1",
         "ms-2",
         "ms-3",
         "ms-4",
         "ms-5",
+        "ms--1",
+        "ms--2",
         "ms-auto"
       ]
     },
@@ -668,8 +656,6 @@
       "class": "p",
       "property": "padding",
       "classes": [
-        "p--2",
-        "p--1",
         "p-0",
         "p-1",
         "p-2",
@@ -682,8 +668,6 @@
       "class": "px",
       "property": "padding-inline",
       "classes": [
-        "px--2",
-        "px--1",
         "px-0",
         "px-1",
         "px-2",
@@ -696,8 +680,6 @@
       "class": "py",
       "property": "padding-block",
       "classes": [
-        "py--2",
-        "py--1",
         "py-0",
         "py-1",
         "py-2",
@@ -710,8 +692,6 @@
       "class": "pt",
       "property": "padding-block-start",
       "classes": [
-        "pt--2",
-        "pt--1",
         "pt-0",
         "pt-1",
         "pt-2",
@@ -724,8 +704,6 @@
       "class": "pe",
       "property": "padding-inline-end",
       "classes": [
-        "pe--2",
-        "pe--1",
         "pe-0",
         "pe-1",
         "pe-2",
@@ -738,8 +716,6 @@
       "class": "pb",
       "property": "padding-block-end",
       "classes": [
-        "pb--2",
-        "pb--1",
         "pb-0",
         "pb-1",
         "pb-2",
@@ -752,8 +728,6 @@
       "class": "ps",
       "property": "padding-inline-start",
       "classes": [
-        "ps--2",
-        "ps--1",
         "ps-0",
         "ps-1",
         "ps-2",
@@ -766,8 +740,6 @@
       "class": "gap",
       "property": "gap",
       "classes": [
-        "gap--2",
-        "gap--1",
         "gap-0",
         "gap-1",
         "gap-2",
@@ -780,8 +752,6 @@
       "class": "row-gap",
       "property": "row-gap",
       "classes": [
-        "row-gap--2",
-        "row-gap--1",
         "row-gap-0",
         "row-gap-1",
         "row-gap-2",
@@ -794,8 +764,6 @@
       "class": "column-gap",
       "property": "column-gap",
       "classes": [
-        "column-gap--2",
-        "column-gap--1",
         "column-gap-0",
         "column-gap-1",
         "column-gap-2",
@@ -1149,6 +1117,7 @@
       "classes": [
         "user-select-all",
         "user-select-auto",
+        "user-select-text",
         "user-select-none"
       ]
     },

@@ -14,7 +14,7 @@ Curious which components explicitly require our JavaScript and Floating UI or Va
 - Carousel for all slide behaviors, controls, and indicators
 - Collapse for toggling visibility of content
 - Datepicker for date selection (also requires [Vanilla Calendar Pro](https://vanilla-calendar.pro/))
-- Dropdowns for displaying and positioning (also requires [Floating UI](https://floating-ui.com/))
+- Menus for displaying and positioning (also requires [Floating UI](https://floating-ui.com/))
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse and Offcanvas plugins to implement responsive behaviors
 - Navs with the Tab plugin for toggling content panes
@@ -35,7 +35,7 @@ import { Toast, Tooltip } from 'bootstrap'
 
 ## Usage with JavaScript frameworks
 
-While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScript is not fully compatible with JavaScript frameworks like React, Vue, and Angular** which assume full knowledge of the DOM. Both Bootstrap and the framework may attempt to mutate the same DOM element, resulting in bugs like dropdowns that are stuck in the "open" position.
+While the Bootstrap CSS can be used with any framework, **the Bootstrap JavaScript is not fully compatible with JavaScript frameworks like React, Vue, and Angular** which assume full knowledge of the DOM. Both Bootstrap and the framework may attempt to mutate the same DOM element, resulting in bugs like menus that are stuck in the "open" position.
 
 A better alternative for those using this type of frameworks is to use a framework-specific package **instead of** the Bootstrap JavaScript. Here are some of the most popular options:
 
@@ -112,7 +112,7 @@ Components that don't depend on Floating UI (like Toast, Alert, Collapse, etc.) 
 
 Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
-Our dropdowns, popovers, and tooltips also depend on [Floating UI](https://floating-ui.com/). Our datepicker also depends on [Vanilla Calendar Pro](https://vanilla-calendar.pro/).
+Our menus, popovers, and tooltips also depend on [Floating UI](https://floating-ui.com/). Our datepicker also depends on [Vanilla Calendar Pro](https://vanilla-calendar.pro/).
 
 ## Data attributes
 
@@ -172,7 +172,7 @@ In addition to the `getInstance` and `getOrCreateInstance` methods, all plugin c
 
 ```js
 const dialog = new bootstrap.Dialog('#myDialog')
-const dropdown = new bootstrap.Dropdown('[data-bs-toggle="dropdown"]')
+const menu = new bootstrap.Menu('[data-bs-toggle="menu"]')
 const offcanvas = bootstrap.Offcanvas.getInstance('#myOffcanvas')
 const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
 ```

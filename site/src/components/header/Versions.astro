@@ -23,39 +23,39 @@ if (layout === 'docs' && version === getConfig().docs_version) {
 }
 ---
 
-<li class="nav-item dropdown">
+<li class="nav-item">
   <button
     type="button"
-    class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle"
-    data-bs-toggle="dropdown"
-    data-bs-target="#bd-versions-menu"
+    class="btn btn-link nav-link py-2 px-0 px-lg-2"
+    data-bs-toggle="menu"
     data-bs-placement="bottom-end"
     aria-expanded="false"
   >
-    <span class="d-lg-none" aria-hidden="true">Bootstrap</span><span class="visually-hidden">Bootstrap&nbsp;</span> v{
-      getConfig().docs_version
-    }
-    <span class="visually-hidden">(switch to other versions)</span>
+    <svg class="bi" aria-hidden="true"><use href="#stack"></use></svg>
+    <span class="d-lg-none" aria-hidden="true">
+      Bootstrap v{
+        getConfig().docs_version
+      }
+    </span>
+    <svg class="bi bi-sm ms-lg--1" aria-hidden="true"><use href="#chevron-expand"></use></svg>
   </button>
-  <ul class="dropdown-menu dropdown-menu-end" id="bd-versions-menu">
-    <li><h6 class="dropdown-header">v6 releases</h6></li>
-    <li>
-      <a
-        class="dropdown-item d-flex align-items-center justify-content-between active"
-        aria-current="true"
-        href={isHome ? '/' : `/docs/${getConfig().docs_version}/${versionsLink}`}
-      >
-        {getConfig().docs_version}.x <span class="fg-contrast-accent fg-50">(Alpha)</span>
-        <svg class="bi" aria-hidden="true"><use href="#check2"></use></svg>
-      </a>
-    </li>
-    <li><hr class="dropdown-divider" /></li>
-    <li><h6 class="dropdown-header">Previous releases</h6></li>
-    <li><a class="dropdown-item" href="https://getbootstrap.com/docs/5.3/">v5.3.x <span class="fg-secondary">(Latest)</span></a></li>
-    <li><a class="dropdown-item" href="https://getbootstrap.com/docs/4.6/">v4.6.x</a></li>
-    <li><a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a></li>
-    <li><a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a></li>
-    <li><hr class="dropdown-divider" /></li>
-    <li><a class="dropdown-item" href="/docs/versions/">All versions</a></li>
-  </ul>
+  <div class="menu" id="bd-versions-menu">
+    <h6 class="menu-header">v6 releases</h6>
+    <a
+      class="menu-item active"
+      aria-current="true"
+      href={isHome ? '/' : `/docs/${getConfig().docs_version}/${versionsLink}`}
+    >
+      {getConfig().docs_version}.x <span class="fg-contrast-accent fg-50">(Alpha)</span>
+      <svg class="bi ms-auto" aria-hidden="true"><use href="#check2"></use></svg>
+    </a>
+    <hr class="menu-divider" />
+    <h6 class="menu-header">Previous releases</h6>
+    <a class="menu-item" href="https://getbootstrap.com/docs/5.3/">v5.3.x <span class="fg-3">(Latest)</span></a>
+    <a class="menu-item" href="https://getbootstrap.com/docs/4.6/">v4.6.x</a>
+    <a class="menu-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
+    <a class="menu-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
+    <hr class="menu-divider" />
+    <a class="menu-item" href="/docs/versions/">All versions…</a>
+  </div>
 </li>

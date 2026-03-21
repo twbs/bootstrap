@@ -54,7 +54,7 @@ export const body_class = 'bg-body-tertiary'
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#card">Card</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#carousel">Carousel</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#dialog">Dialog</a></li>
-          <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#dropdowns">Dropdowns</a></li>
+          <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#menus">Menus</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#list-group">List group</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navs">Navs</a></li>
           <li><a class="d-inline-flex align-items-center rounded text-decoration-none" href="#navbar">Navbar</a></li>
@@ -897,52 +897,52 @@ export const body_class = 'bg-body-tertiary'
         `} />
       </div>
     </article>
-    <article class="my-3" id="dropdowns">
+    <article class="my-3" id="menus">
       <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
-        <h3>Dropdowns</h3>
-        <a class="d-flex align-items-center" href={getVersionedDocsPath('components/dropdowns')}>Documentation</a>
+        <h3>Menus</h3>
+        <a class="d-flex align-items-center" href={getVersionedDocsPath('components/menus')}>Documentation</a>
       </div>
       <div>
         <Example showMarkup={false} code={`
         <div class="btn-group w-100 align-items-center justify-content-between flex-wrap me-0">
-          <div class="dropdown">
-            <button class="btn-solid theme-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
+          <div>
+            <button class="btn-solid theme-secondary btn-sm" type="button" data-bs-toggle="menu" aria-expanded="false">
+              Menu
             </button>
-            <ul class="dropdown-menu">
-              <li><h6 class="dropdown-header">Dropdown header</h6></li>
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
+            <div class="menu">
+              <h6 class="menu-header">Menu header</h6>
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+              <hr class="menu-divider">
+              <a class="menu-item" href="#">Separated link</a>
+            </div>
           </div>
-          <div class="dropdown">
-            <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
+          <div>
+            <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+              Menu
             </button>
-            <ul class="dropdown-menu">
-              <li><h6 class="dropdown-header">Dropdown header</h6></li>
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
+            <div class="menu">
+              <h6 class="menu-header">Menu header</h6>
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+              <hr class="menu-divider">
+              <a class="menu-item" href="#">Separated link</a>
+            </div>
           </div>
-          <div class="dropdown">
-            <button class="btn-solid theme-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown button
+          <div>
+            <button class="btn-solid theme-secondary btn-lg" type="button" data-bs-toggle="menu" aria-expanded="false">
+              Menu
             </button>
-            <ul class="dropdown-menu">
-              <li><h6 class="dropdown-header">Dropdown header</h6></li>
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
+            <div class="menu">
+              <h6 class="menu-header">Menu header</h6>
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+              <hr class="menu-divider">
+              <a class="menu-item" href="#">Separated link</a>
+            </div>
           </div>
         </div>
         `} />
@@ -950,129 +950,129 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={`
           <div class="btn-group">
             <button type="button" class="btn-solid theme-primary">Primary</button>
-            <button type="button" class="btn-solid theme-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
+            <button type="button" class="btn-solid theme-primary menu-toggle-split" data-bs-toggle="menu" aria-expanded="false">
+              <span class="visually-hidden">Toggle Menu</span>
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
           </div><!-- /btn-group -->
           <div class="btn-group">
             <button type="button" class="btn-solid theme-secondary">Secondary</button>
-            <button type="button" class="btn-solid theme-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
+            <button type="button" class="btn-solid theme-secondary menu-toggle-split" data-bs-toggle="menu" aria-expanded="false">
+              <span class="visually-hidden">Toggle Menu</span>
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
           </div><!-- /btn-group -->
           <div class="btn-group">
             <button type="button" class="btn-solid theme-success">Success</button>
-            <button type="button" class="btn-solid theme-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
+            <button type="button" class="btn-solid theme-success menu-toggle-split" data-bs-toggle="menu" aria-expanded="false">
+              <span class="visually-hidden">Toggle Menu</span>
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
           </div><!-- /btn-group -->
           <div class="btn-group">
             <button type="button" class="btn-solid theme-info">Info</button>
-            <button type="button" class="btn-solid theme-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
+            <button type="button" class="btn-solid theme-info menu-toggle-split" data-bs-toggle="menu" aria-expanded="false">
+              <span class="visually-hidden">Toggle Menu</span>
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
           </div><!-- /btn-group -->
           <div class="btn-group">
             <button type="button" class="btn-solid theme-warning">Warning</button>
-            <button type="button" class="btn-solid theme-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
+            <button type="button" class="btn-solid theme-warning menu-toggle-split" data-bs-toggle="menu" aria-expanded="false">
+              <span class="visually-hidden">Toggle Menu</span>
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
           </div><!-- /btn-group -->
           <div class="btn-group">
             <button type="button" class="btn-solid theme-danger">Danger</button>
-            <button type="button" class="btn-solid theme-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="visually-hidden">Toggle Dropdown</span>
+            <button type="button" class="btn-solid theme-danger menu-toggle-split" data-bs-toggle="menu" aria-expanded="false">
+              <span class="visually-hidden">Toggle Menu</span>
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <div class="menu">
+              <a class="menu-item" href="#">Action</a>
+              <a class="menu-item" href="#">Another action</a>
+              <a class="menu-item" href="#">Something else here</a>
+            </div>
           </div><!-- /btn-group -->
           `} />
 
         <Example showMarkup={false} code={`
           <div class="btn-group w-100 align-items-center justify-content-between flex-wrap me-0">
-            <div class="dropend">
-              <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropend button
+            <div>
+              <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-placement="right-start" aria-expanded="false">
+                End menu
               </button>
-              <ul class="dropdown-menu">
-                <li><h6 class="dropdown-header">Dropdown header</h6></li>
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-              </ul>
+              <div class="menu">
+                <h6 class="menu-header">Menu header</h6>
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <a class="menu-item" href="#">Something else here</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Separated link</a>
+              </div>
             </div>
-            <div class="dropup">
-              <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropup button
+            <div>
+              <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-placement="top-start" aria-expanded="false">
+                Up menu
               </button>
-              <ul class="dropdown-menu">
-                <li><h6 class="dropdown-header">Dropdown header</h6></li>
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-              </ul>
+              <div class="menu">
+                <h6 class="menu-header">Menu header</h6>
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <a class="menu-item" href="#">Something else here</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Separated link</a>
+              </div>
             </div>
-            <div class="dropstart">
-              <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropstart button
+            <div>
+              <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-placement="left-start" aria-expanded="false">
+                Start menu
               </button>
-              <ul class="dropdown-menu">
-                <li><h6 class="dropdown-header">Dropdown header</h6></li>
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-              </ul>
+              <div class="menu">
+                <h6 class="menu-header">Menu header</h6>
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <a class="menu-item" href="#">Something else here</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Separated link</a>
+              </div>
             </div>
           </div>
           `} />
 
         <Example showMarkup={false} code={`
           <div class="btn-group">
-            <div class="dropdown">
-              <button class="btn-solid theme-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div>
+              <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">
                 End-aligned menu
               </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><h6 class="dropdown-header">Dropdown header</h6></li>
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-              </ul>
+              <div class="menu">
+                <h6 class="menu-header">Menu header</h6>
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Separated link</a>
+              </div>
             </div>
           </div>
           `} />
@@ -1193,16 +1193,16 @@ export const body_class = 'bg-body-tertiary'
                   <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+                      Menu
                     </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <div class="menu">
+                      <a class="menu-item" href="#">Action</a>
+                      <a class="menu-item" href="#">Another action</a>
+                      <hr class="menu-divider">
+                      <a class="menu-item" href="#">Something else here</a>
+                    </div>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -1232,16 +1232,16 @@ export const body_class = 'bg-body-tertiary'
                   <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+                      Menu
                     </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
+                    <div class="menu">
+                      <a class="menu-item" href="#">Action</a>
+                      <a class="menu-item" href="#">Another action</a>
+                      <hr class="menu-divider">
+                      <a class="menu-item" href="#">Something else here</a>
+                    </div>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -1396,14 +1396,14 @@ export const body_class = 'bg-body-tertiary'
             <li class="nav-item">
               <a class="nav-link" href="#scrollspyHeading2">Second</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-                <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-              </ul>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</a>
+              <div class="menu">
+                <a class="menu-item" href="#scrollspyHeading3">Third</a>
+                <a class="menu-item" href="#scrollspyHeading4">Fourth</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#scrollspyHeading5">Fifth</a>
+              </div>
             </li>
           </ul>
         </nav>

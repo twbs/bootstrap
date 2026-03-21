@@ -389,6 +389,32 @@ Customize cards by using our theme color utilities. By default, cards use `bg` f
     </div>
   </div>`)} customMarkup={getData('theme-colors').map((themeColor) => `<div class="card card-subtle theme-${themeColor.name}">…</div>`)} />
 
+## Translucent cards
+
+Add `.card-translucent` to blur and saturate the background of a card. Header and footer backgrounds are also adjusted for a consistent look.
+
+<Example class="bg-dark" code={`<div class="card card-translucent" style="width: 18rem;">
+    <div class="card-body">
+      <h4 class="card-title">Translucent card</h4>
+      <p class="card-text">This card has a translucent background with a backdrop blur effect.</p>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
+    </div>
+  </div>`} />
+
+<Example class="bg-dark" code={`<div class="card card-translucent" style="width: 18rem;">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">Card with header</h4>
+      <p class="card-text">Headers and footers are also made translucent to maintain a consistent look.</p>
+      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+      2 days ago
+    </div>
+  </div>`} />
+
 ## Card layout
 
 In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. For the time being, **these layout options are not yet responsive**.

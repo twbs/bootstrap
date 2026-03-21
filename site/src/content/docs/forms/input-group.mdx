@@ -157,82 +157,82 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
   </div>`} />
 
-## Buttons with dropdowns
+## Buttons with menus
 
 <Example class="vstack gap-3" code={`<div class="input-group">
-    <button class="btn-outline theme-secondary input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+    <button class="btn-outline theme-secondary input-group-btn" type="button" data-bs-toggle="menu" aria-expanded="false">Menu</button>
+    <div class="menu">
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
+    <input type="text" class="form-control" aria-label="Text input with menu button">
   </div>
 
   <div class="input-group">
-    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-    <button class="btn-outline theme-secondary input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-    <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+    <input type="text" class="form-control" aria-label="Text input with menu button">
+    <button class="btn-outline theme-secondary input-group-btn" type="button" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">Menu</button>
+    <div class="menu">
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
   </div>
 
   <div class="input-group">
-    <button class="btn-outline theme-secondary input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action before</a></li>
-      <li><a class="dropdown-item" href="#">Another action before</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-    <input type="text" class="form-control" aria-label="Text input with 2 dropdown buttons">
-    <button class="btn-outline theme-secondary input-group-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-    <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+    <button class="btn-outline theme-secondary input-group-btn" type="button" data-bs-toggle="menu" aria-expanded="false">Menu</button>
+    <div class="menu">
+      <a class="menu-item" href="#">Action before</a>
+      <a class="menu-item" href="#">Another action before</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
+    <input type="text" class="form-control" aria-label="Text input with 2 menu buttons">
+    <button class="btn-outline theme-secondary input-group-btn" type="button" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">Menu</button>
+    <div class="menu">
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
   </div>`} />
 
 ## Segmented buttons
 
 <Example code={`<div class="input-group mb-3">
     <button type="button" class="btn-outline theme-secondary input-group-btn">Action</button>
-    <button type="button" class="btn-outline theme-secondary input-group-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="visually-hidden">Toggle Dropdown</span>
+    <button type="button" class="btn-outline theme-secondary input-group-btn menu-toggle-split" data-bs-toggle="menu" aria-expanded="false">
+      <span class="visually-hidden">Toggle Menu</span>
     </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+    <div class="menu">
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
+    <input type="text" class="form-control" aria-label="Text input with segmented menu button">
   </div>
 
   <div class="input-group">
-    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+    <input type="text" class="form-control" aria-label="Text input with segmented menu button">
     <button type="button" class="btn-outline theme-secondary input-group-btn">Action</button>
-    <button type="button" class="btn-outline theme-secondary input-group-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="visually-hidden">Toggle Dropdown</span>
+    <button type="button" class="btn-outline theme-secondary input-group-btn menu-toggle-split" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">
+      <span class="visually-hidden">Toggle Menu</span>
     </button>
-    <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+    <div class="menu">
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
   </div>`} />
 
 ## Custom forms
