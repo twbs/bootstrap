@@ -1,4 +1,5 @@
 ---
+import { render } from 'astro:content'
 import { getCalloutByName } from '@libs/content'
 import type { MarkdownInstance } from 'astro'
 
@@ -33,7 +34,7 @@ if (name) {
     throw new Error(`Could not find callout with name '${name}'.`)
   }
 
-  const namedCallout = await callout.render() as any
+  const namedCallout = await render(callout) as any
   Content = namedCallout.Content
 }
 ---

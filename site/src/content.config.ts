@@ -31,7 +31,7 @@ const docsSchema = z.object({
     .object({
       class: z.string(),
       description: z.string().optional(),
-      styles: z.union([z.string(), z.string().array(), z.record(z.string())]).optional()
+      styles: z.union([z.string(), z.string().array(), z.record(z.string(), z.string())]).optional()
     })
     .array()
     .optional(),

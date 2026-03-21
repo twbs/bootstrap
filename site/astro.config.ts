@@ -25,6 +25,9 @@ export default defineConfig({
   build: {
     assets: `docs/${getConfig().docs_version}/assets`
   },
+  legacy: {
+    collectionsBackwardsCompat: true
+  },
   integrations: [
     bootstrap(),
     astroBrokenLinksChecker({
