@@ -337,6 +337,15 @@ Tokens for the [dark carousel](#dark-carousel):
 
 Use data attributes to easily control the position of the carousel. `data-bs-slide` accepts the keywords `prev` or `next`, which alters the slide position relative to its current position. Alternatively, use `data-bs-slide-to` to pass a raw slide index to the carousel `data-bs-slide-to="2"`, which shifts the slide position to a particular index beginning with `0`.
 
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-ride` | Starts autoplay after the first manual cycle (`true`) or on load (`carousel`). |
+| `data-bs-slide` | `prev` or `next` to move the carousel relative to the current slide. |
+| `data-bs-slide-to` | Zero-based index of the slide to show. |
+| `data-bs-interval` | Autoplay interval in milliseconds between slides. |
+</BsTable>
+
 ### Via JavaScript
 
 Call carousel manually with:

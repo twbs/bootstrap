@@ -82,6 +82,15 @@ You could also use this to toggle the `disabled` attribute on a `fieldset` eleme
 
 Add `data-bs-toggle="toggler"` to the element to automatically. The `data-bs-target` is optional, and attribute accepts a CSS selector to apply the toggler functionality to. Be sure to add the `data-bs-attribute` and `data-bs-value` attributes to the toggled element's markup.
 
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="toggler"` | Initializes the toggler on the trigger element. |
+| `data-bs-target` | Optional CSS selector for the element whose attribute is toggled. |
+| `data-bs-attribute` | Name of the HTML attribute to toggle (e.g. `hidden`, `disabled`). |
+| `data-bs-value` | Value to set when the attribute is “on” (often paired with removal when “off”). |
+</BsTable>
+
 ### Via JavaScript
 
 We don't recommend using this component programmatically, as the initial purpose of it is to avoid using JavaScript. However, you can enable manually with:

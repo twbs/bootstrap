@@ -183,6 +183,16 @@ Disable the ghost input to prevent adding new chips. Existing chips become non-i
 
 Add `data-bs-chip-input` to your container element to automatically initialize the chip input behavior. Options can be passed as data attributes.
 
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-chip-input` | Initializes the chip input on the container element. |
+| `data-bs-separator` | Character that creates a new chip when typed (or `null` to disable). |
+| `data-bs-allow-duplicates` | Whether duplicate chip values are allowed. |
+| `data-bs-max-chips` | Maximum number of chips (`null` for no limit). |
+| `data-bs-create-on-blur` | Create a chip from the input value when focus leaves the field. |
+</BsTable>
+
 ```html
 <div class="chip-input theme-primary" data-bs-chip-input data-bs-separator="," data-bs-allow-duplicates="false">
   <input type="text" class="form-ghost" placeholder="Add tags...">

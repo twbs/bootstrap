@@ -198,6 +198,20 @@ Avoid adding an excessive amount of content in popovers with the `html` option. 
 Popovers do not manage keyboard focus order, and their placement can be random in the DOM, so be careful when adding interactive elements (like forms or links), as it may lead to an illogical focus order or make the popover content itself completely unreachable for keyboard users. In cases where you must use these elements, consider using a dialog instead.
 </Callout>
 
+### Via data attributes
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="popover"` | Initializes the popover on the trigger element. |
+| `data-bs-title` | Title content shown in the popover header. |
+| `data-bs-content` | Body content of the popover. |
+| `data-bs-placement` | Where to place the popover relative to the trigger. |
+| `data-bs-trigger` | How the popover opens (`click`, `hover`, `focus`, `manual`, or a combination). |
+| `data-bs-custom-class` | Extra class names added to the popover for theming. |
+| `data-bs-html` | When `true`, allows HTML in the title and content (use with care for untrusted input). |
+</BsTable>
+
 ### Dependencies
 
 The popover plugin extends the tooltip plugin, so it requires all tooltip dependencies plus its own:
