@@ -872,6 +872,12 @@
   .overflow-y-scroll {
     overflow-y: scroll;
   }
+  .contains-inline {
+    container-type: inline-size;
+  }
+  .contains-size {
+    container-type: size;
+  }
   .d-inline {
     display: inline;
   }

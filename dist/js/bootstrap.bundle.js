@@ -788,11 +788,11 @@ const eventAction = (onEvent, stringSelector, callback) => {
  * Constants
  */
 
-const NAME$l = 'alert';
-const DATA_KEY$g = 'bs.alert';
-const EVENT_KEY$h = `.${DATA_KEY$g}`;
-const EVENT_CLOSE = `close${EVENT_KEY$h}`;
-const EVENT_CLOSED = `closed${EVENT_KEY$h}`;
+const NAME$m = 'alert';
+const DATA_KEY$h = 'bs.alert';
+const EVENT_KEY$i = `.${DATA_KEY$h}`;
+const EVENT_CLOSE = `close${EVENT_KEY$i}`;
+const EVENT_CLOSED = `closed${EVENT_KEY$i}`;
 const CLASS_NAME_FADE$4 = 'fade';
 const CLASS_NAME_SHOW$8 = 'show';
 
@@ -803,7 +803,7 @@ const CLASS_NAME_SHOW$8 = 'show';
 class Alert extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$l;
+    return NAME$m;
   }
 
   // Public
@@ -843,13 +843,13 @@ enableDismissTrigger(Alert, 'close');
  * Constants
  */
 
-const NAME$k = 'button';
-const DATA_KEY$f = 'bs.button';
-const EVENT_KEY$g = `.${DATA_KEY$f}`;
-const DATA_API_KEY$a = '.data-api';
-const CLASS_NAME_ACTIVE$3 = 'active';
+const NAME$l = 'button';
+const DATA_KEY$g = 'bs.button';
+const EVENT_KEY$h = `.${DATA_KEY$g}`;
+const DATA_API_KEY$b = '.data-api';
+const CLASS_NAME_ACTIVE$4 = 'active';
 const SELECTOR_DATA_TOGGLE$a = '[data-bs-toggle="button"]';
-const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$g}${DATA_API_KEY$a}`;
+const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$h}${DATA_API_KEY$b}`;
 
 /**
  * Class definition
@@ -858,13 +858,13 @@ const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$g}${DATA_API_KEY$a}`;
 class Button extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$k;
+    return NAME$l;
   }
 
   // Public
   toggle() {
     // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
-    this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
+    this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$4));
   }
 }
 
@@ -891,23 +891,23 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$8, SELECTOR_DATA_TOGGLE$a, event 
  * Constants
  */
 
-const NAME$j = 'swipe';
-const EVENT_KEY$f = '.bs.swipe';
-const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$f}`;
-const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$f}`;
-const EVENT_TOUCHEND = `touchend${EVENT_KEY$f}`;
-const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$f}`;
-const EVENT_POINTERUP = `pointerup${EVENT_KEY$f}`;
+const NAME$k = 'swipe';
+const EVENT_KEY$g = '.bs.swipe';
+const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$g}`;
+const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$g}`;
+const EVENT_TOUCHEND = `touchend${EVENT_KEY$g}`;
+const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$g}`;
+const EVENT_POINTERUP = `pointerup${EVENT_KEY$g}`;
 const POINTER_TYPE_TOUCH = 'touch';
 const POINTER_TYPE_PEN = 'pen';
 const CLASS_NAME_POINTER_EVENT = 'pointer-event';
 const SWIPE_THRESHOLD = 40;
-const Default$i = {
+const Default$j = {
   endCallback: null,
   leftCallback: null,
   rightCallback: null
 };
-const DefaultType$i = {
+const DefaultType$j = {
   endCallback: '(function|null)',
   leftCallback: '(function|null)',
   rightCallback: '(function|null)'
@@ -932,18 +932,18 @@ class Swipe extends Config {
 
   // Getters
   static get Default() {
-    return Default$i;
+    return Default$j;
   }
   static get DefaultType() {
-    return DefaultType$i;
+    return DefaultType$j;
   }
   static get NAME() {
-    return NAME$j;
+    return NAME$k;
   }
 
   // Public
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY$f);
+    EventHandler.off(this._element, EVENT_KEY$g);
   }
 
   // Private
@@ -1011,10 +1011,10 @@ class Swipe extends Config {
  * Constants
  */
 
-const NAME$i = 'carousel';
-const DATA_KEY$e = 'bs.carousel';
-const EVENT_KEY$e = `.${DATA_KEY$e}`;
-const DATA_API_KEY$9 = '.data-api';
+const NAME$j = 'carousel';
+const DATA_KEY$f = 'bs.carousel';
+const EVENT_KEY$f = `.${DATA_KEY$f}`;
+const DATA_API_KEY$a = '.data-api';
 const ARROW_LEFT_KEY$2 = 'ArrowLeft';
 const ARROW_RIGHT_KEY$2 = 'ArrowRight';
 const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
@@ -1023,16 +1023,16 @@ const ORDER_NEXT = 'next';
 const ORDER_PREV = 'prev';
 const DIRECTION_LEFT = 'left';
 const DIRECTION_RIGHT = 'right';
-const EVENT_SLIDE = `slide${EVENT_KEY$e}`;
-const EVENT_SLID = `slid${EVENT_KEY$e}`;
-const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$e}`;
-const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$e}`;
-const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$e}`;
-const EVENT_DRAG_START = `dragstart${EVENT_KEY$e}`;
-const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$e}${DATA_API_KEY$9}`;
-const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
+const EVENT_SLIDE = `slide${EVENT_KEY$f}`;
+const EVENT_SLID = `slid${EVENT_KEY$f}`;
+const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$f}`;
+const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$f}`;
+const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$f}`;
+const EVENT_DRAG_START = `dragstart${EVENT_KEY$f}`;
+const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$f}${DATA_API_KEY$a}`;
+const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$f}${DATA_API_KEY$a}`;
 const CLASS_NAME_CAROUSEL = 'carousel';
-const CLASS_NAME_ACTIVE$2 = 'active';
+const CLASS_NAME_ACTIVE$3 = 'active';
 const CLASS_NAME_SLIDE = 'slide';
 const CLASS_NAME_END = 'carousel-item-end';
 const CLASS_NAME_START = 'carousel-item-start';
@@ -1049,7 +1049,7 @@ const KEY_TO_DIRECTION = {
   [ARROW_LEFT_KEY$2]: DIRECTION_RIGHT,
   [ARROW_RIGHT_KEY$2]: DIRECTION_LEFT
 };
-const Default$h = {
+const Default$i = {
   interval: 5000,
   keyboard: true,
   pause: 'hover',
@@ -1057,7 +1057,7 @@ const Default$h = {
   touch: true,
   wrap: true
 };
-const DefaultType$h = {
+const DefaultType$i = {
   interval: 'number',
   keyboard: 'boolean',
   pause: '(string|boolean)',
@@ -1087,13 +1087,13 @@ class Carousel extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$h;
+    return Default$i;
   }
   static get DefaultType() {
-    return DefaultType$h;
+    return DefaultType$i;
   }
   static get NAME() {
-    return NAME$i;
+    return NAME$j;
   }
 
   // Public
@@ -1219,11 +1219,11 @@ class Carousel extends BaseComponent {
       return;
     }
     const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement);
-    activeIndicator.classList.remove(CLASS_NAME_ACTIVE$2);
+    activeIndicator.classList.remove(CLASS_NAME_ACTIVE$3);
     activeIndicator.removeAttribute('aria-current');
     const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement);
     if (newActiveIndicator) {
-      newActiveIndicator.classList.add(CLASS_NAME_ACTIVE$2);
+      newActiveIndicator.classList.add(CLASS_NAME_ACTIVE$3);
       newActiveIndicator.setAttribute('aria-current', 'true');
     }
   }
@@ -1275,8 +1275,8 @@ class Carousel extends BaseComponent {
     nextElement.classList.add(directionalClassName);
     const completeCallBack = () => {
       nextElement.classList.remove(directionalClassName, orderClassName);
-      nextElement.classList.add(CLASS_NAME_ACTIVE$2);
-      activeElement.classList.remove(CLASS_NAME_ACTIVE$2, orderClassName, directionalClassName);
+      nextElement.classList.add(CLASS_NAME_ACTIVE$3);
+      activeElement.classList.remove(CLASS_NAME_ACTIVE$3, orderClassName, directionalClassName);
       this._isSliding = false;
       triggerEvent(EVENT_SLID);
     };
@@ -1358,15 +1358,15 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$3, () => {
  * Constants
  */
 
-const NAME$h = 'collapse';
-const DATA_KEY$d = 'bs.collapse';
-const EVENT_KEY$d = `.${DATA_KEY$d}`;
-const DATA_API_KEY$8 = '.data-api';
-const EVENT_SHOW$8 = `show${EVENT_KEY$d}`;
-const EVENT_SHOWN$8 = `shown${EVENT_KEY$d}`;
-const EVENT_HIDE$8 = `hide${EVENT_KEY$d}`;
-const EVENT_HIDDEN$8 = `hidden${EVENT_KEY$d}`;
-const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
+const NAME$i = 'collapse';
+const DATA_KEY$e = 'bs.collapse';
+const EVENT_KEY$e = `.${DATA_KEY$e}`;
+const DATA_API_KEY$9 = '.data-api';
+const EVENT_SHOW$8 = `show${EVENT_KEY$e}`;
+const EVENT_SHOWN$8 = `shown${EVENT_KEY$e}`;
+const EVENT_HIDE$8 = `hide${EVENT_KEY$e}`;
+const EVENT_HIDDEN$8 = `hidden${EVENT_KEY$e}`;
+const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
 const CLASS_NAME_SHOW$7 = 'show';
 const CLASS_NAME_COLLAPSE = 'collapse';
 const CLASS_NAME_COLLAPSING = 'collapsing';
@@ -1377,11 +1377,11 @@ const WIDTH = 'width';
 const HEIGHT = 'height';
 const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
 const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="collapse"]';
-const Default$g = {
+const Default$h = {
   parent: null,
   toggle: true
 };
-const DefaultType$g = {
+const DefaultType$h = {
   parent: '(null|element)',
   toggle: 'boolean'
 };
@@ -1414,13 +1414,13 @@ class Collapse extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$g;
+    return Default$h;
   }
   static get DefaultType() {
-    return DefaultType$g;
+    return DefaultType$h;
   }
   static get NAME() {
-    return NAME$h;
+    return NAME$i;
   }
 
   // Public
@@ -1576,10 +1576,6 @@ const oppositeSideMap = {
   bottom: 'top',
   top: 'bottom'
 };
-const oppositeAlignmentMap = {
-  start: 'end',
-  end: 'start'
-};
 function clamp(start, value, end) {
   return max(start, min(value, end));
 }
@@ -1598,9 +1594,9 @@ function getOppositeAxis(axis) {
 function getAxisLength(axis) {
   return axis === 'y' ? 'height' : 'width';
 }
-const yAxisSides = /*#__PURE__*/new Set(['top', 'bottom']);
 function getSideAxis(placement) {
-  return yAxisSides.has(getSide(placement)) ? 'y' : 'x';
+  const firstChar = placement[0];
+  return firstChar === 't' || firstChar === 'b' ? 'y' : 'x';
 }
 function getAlignmentAxis(placement) {
   return getOppositeAxis(getSideAxis(placement));
@@ -1623,7 +1619,7 @@ function getExpandedPlacements(placement) {
   return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
 }
 function getOppositeAlignmentPlacement(placement) {
-  return placement.replace(/start|end/g, alignment => oppositeAlignmentMap[alignment]);
+  return placement.includes('start') ? placement.replace('start', 'end') : placement.replace('end', 'start');
 }
 const lrPlacement = ['left', 'right'];
 const rlPlacement = ['right', 'left'];
@@ -1654,7 +1650,8 @@ function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
   return list;
 }
 function getOppositePlacement(placement) {
-  return placement.replace(/left|right|bottom|top/g, side => oppositeSideMap[side]);
+  const side = getSide(placement);
+  return oppositeSideMap[side] + placement.slice(side.length);
 }
 function expandPaddingObject(padding) {
   return {
@@ -1749,97 +1746,6 @@ function computeCoordsFromPlacement(_ref, placement, rtl) {
 }
 
 /**
- * Computes the `x` and `y` coordinates that will place the floating element
- * next to a given reference element.
- *
- * This export does not have any `platform` interface logic. You will need to
- * write one for the platform you are using Floating UI with.
- */
-const computePosition$1 = async (reference, floating, config) => {
-  const {
-    placement = 'bottom',
-    strategy = 'absolute',
-    middleware = [],
-    platform
-  } = config;
-  const validMiddleware = middleware.filter(Boolean);
-  const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(floating));
-  let rects = await platform.getElementRects({
-    reference,
-    floating,
-    strategy
-  });
-  let {
-    x,
-    y
-  } = computeCoordsFromPlacement(rects, placement, rtl);
-  let statefulPlacement = placement;
-  let middlewareData = {};
-  let resetCount = 0;
-  for (let i = 0; i < validMiddleware.length; i++) {
-    const {
-      name,
-      fn
-    } = validMiddleware[i];
-    const {
-      x: nextX,
-      y: nextY,
-      data,
-      reset
-    } = await fn({
-      x,
-      y,
-      initialPlacement: placement,
-      placement: statefulPlacement,
-      strategy,
-      middlewareData,
-      rects,
-      platform,
-      elements: {
-        reference,
-        floating
-      }
-    });
-    x = nextX != null ? nextX : x;
-    y = nextY != null ? nextY : y;
-    middlewareData = {
-      ...middlewareData,
-      [name]: {
-        ...middlewareData[name],
-        ...data
-      }
-    };
-    if (reset && resetCount <= 50) {
-      resetCount++;
-      if (typeof reset === 'object') {
-        if (reset.placement) {
-          statefulPlacement = reset.placement;
-        }
-        if (reset.rects) {
-          rects = reset.rects === true ? await platform.getElementRects({
-            reference,
-            floating,
-            strategy
-          }) : reset.rects;
-        }
-        ({
-          x,
-          y
-        } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
-      }
-      i = -1;
-    }
-  }
-  return {
-    x,
-    y,
-    placement: statefulPlacement,
-    strategy,
-    middlewareData
-  };
-};
-
-/**
  * Resolves with an object of overflow side offsets that determine how much the
  * element is overflowing a given clipping boundary on each side.
  * - positive = overflowing the boundary by that number of pixels
@@ -1903,6 +1809,104 @@ async function detectOverflow(state, options) {
     right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
   };
 }
+
+// Maximum number of resets that can occur before bailing to avoid infinite reset loops.
+const MAX_RESET_COUNT = 50;
+
+/**
+ * Computes the `x` and `y` coordinates that will place the floating element
+ * next to a given reference element.
+ *
+ * This export does not have any `platform` interface logic. You will need to
+ * write one for the platform you are using Floating UI with.
+ */
+const computePosition$1 = async (reference, floating, config) => {
+  const {
+    placement = 'bottom',
+    strategy = 'absolute',
+    middleware = [],
+    platform
+  } = config;
+  const platformWithDetectOverflow = platform.detectOverflow ? platform : {
+    ...platform,
+    detectOverflow
+  };
+  const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(floating));
+  let rects = await platform.getElementRects({
+    reference,
+    floating,
+    strategy
+  });
+  let {
+    x,
+    y
+  } = computeCoordsFromPlacement(rects, placement, rtl);
+  let statefulPlacement = placement;
+  let resetCount = 0;
+  const middlewareData = {};
+  for (let i = 0; i < middleware.length; i++) {
+    const currentMiddleware = middleware[i];
+    if (!currentMiddleware) {
+      continue;
+    }
+    const {
+      name,
+      fn
+    } = currentMiddleware;
+    const {
+      x: nextX,
+      y: nextY,
+      data,
+      reset
+    } = await fn({
+      x,
+      y,
+      initialPlacement: placement,
+      placement: statefulPlacement,
+      strategy,
+      middlewareData,
+      rects,
+      platform: platformWithDetectOverflow,
+      elements: {
+        reference,
+        floating
+      }
+    });
+    x = nextX != null ? nextX : x;
+    y = nextY != null ? nextY : y;
+    middlewareData[name] = {
+      ...middlewareData[name],
+      ...data
+    };
+    if (reset && resetCount < MAX_RESET_COUNT) {
+      resetCount++;
+      if (typeof reset === 'object') {
+        if (reset.placement) {
+          statefulPlacement = reset.placement;
+        }
+        if (reset.rects) {
+          rects = reset.rects === true ? await platform.getElementRects({
+            reference,
+            floating,
+            strategy
+          }) : reset.rects;
+        }
+        ({
+          x,
+          y
+        } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
+      }
+      i = -1;
+    }
+  }
+  return {
+    x,
+    y,
+    placement: statefulPlacement,
+    strategy,
+    middlewareData
+  };
+};
 
 /**
  * Provides data to position an inner element of the floating element so that it
@@ -2036,7 +2040,7 @@ const flip$1 = function (options) {
         fallbackPlacements.push(...getOppositeAxisPlacements(initialPlacement, flipAlignment, fallbackAxisSideDirection, rtl));
       }
       const placements = [initialPlacement, ...fallbackPlacements];
-      const overflow = await detectOverflow(state, detectOverflowOptions);
+      const overflow = await platform.detectOverflow(state, detectOverflowOptions);
       const overflows = [];
       let overflowsData = ((_middlewareData$flip = middlewareData.flip) == null ? void 0 : _middlewareData$flip.overflows) || [];
       if (checkMainAxis) {
@@ -2220,7 +2224,8 @@ const shift$1 = function (options) {
       const {
         x,
         y,
-        placement
+        placement,
+        platform
       } = state;
       const {
         mainAxis: checkMainAxis = true,
@@ -2243,7 +2248,7 @@ const shift$1 = function (options) {
         x,
         y
       };
-      const overflow = await detectOverflow(state, detectOverflowOptions);
+      const overflow = await platform.detectOverflow(state, detectOverflowOptions);
       const crossAxis = getSideAxis(getSide(placement));
       const mainAxis = getOppositeAxis(crossAxis);
       let mainAxisCoord = coords[mainAxis];
@@ -2326,7 +2331,6 @@ function isShadowRoot(value) {
   }
   return value instanceof ShadowRoot || value instanceof getWindow(value).ShadowRoot;
 }
-const invalidOverflowDisplayValues = /*#__PURE__*/new Set(['inline', 'contents']);
 function isOverflowElement(element) {
   const {
     overflow,
@@ -2334,32 +2338,35 @@ function isOverflowElement(element) {
     overflowY,
     display
   } = getComputedStyle$1(element);
-  return /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) && !invalidOverflowDisplayValues.has(display);
+  return /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) && display !== 'inline' && display !== 'contents';
 }
-const tableElements = /*#__PURE__*/new Set(['table', 'td', 'th']);
 function isTableElement(element) {
-  return tableElements.has(getNodeName(element));
+  return /^(table|td|th)$/.test(getNodeName(element));
 }
-const topLayerSelectors = [':popover-open', ':modal'];
 function isTopLayer(element) {
-  return topLayerSelectors.some(selector => {
-    try {
-      return element.matches(selector);
-    } catch (_e) {
-      return false;
+  try {
+    if (element.matches(':popover-open')) {
+      return true;
     }
-  });
+  } catch (_e) {
+    // no-op
+  }
+  try {
+    return element.matches(':modal');
+  } catch (_e) {
+    return false;
+  }
 }
-const transformProperties = ['transform', 'translate', 'scale', 'rotate', 'perspective'];
-const willChangeValues = ['transform', 'translate', 'scale', 'rotate', 'perspective', 'filter'];
-const containValues = ['paint', 'layout', 'strict', 'content'];
+const willChangeRe = /transform|translate|scale|rotate|perspective|filter/;
+const containRe = /paint|layout|strict|content/;
+const isNotNone = value => !!value && value !== 'none';
+let isWebKitValue;
 function isContainingBlock(elementOrCss) {
-  const webkit = isWebKit();
   const css = isElement(elementOrCss) ? getComputedStyle$1(elementOrCss) : elementOrCss;
 
   // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
   // https://drafts.csswg.org/css-transforms-2/#individual-transforms
-  return transformProperties.some(value => css[value] ? css[value] !== 'none' : false) || (css.containerType ? css.containerType !== 'normal' : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !webkit && (css.filter ? css.filter !== 'none' : false) || willChangeValues.some(value => (css.willChange || '').includes(value)) || containValues.some(value => (css.contain || '').includes(value));
+  return isNotNone(css.transform) || isNotNone(css.translate) || isNotNone(css.scale) || isNotNone(css.rotate) || isNotNone(css.perspective) || !isWebKit() && (isNotNone(css.backdropFilter) || isNotNone(css.filter)) || willChangeRe.test(css.willChange || '') || containRe.test(css.contain || '');
 }
 function getContainingBlock(element) {
   let currentNode = getParentNode(element);
@@ -2374,12 +2381,13 @@ function getContainingBlock(element) {
   return null;
 }
 function isWebKit() {
-  if (typeof CSS === 'undefined' || !CSS.supports) return false;
-  return CSS.supports('-webkit-backdrop-filter', 'none');
+  if (isWebKitValue == null) {
+    isWebKitValue = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('-webkit-backdrop-filter', 'none');
+  }
+  return isWebKitValue;
 }
-const lastTraversableNodeNames = /*#__PURE__*/new Set(['html', 'body', '#document']);
 function isLastTraversableNode(node) {
-  return lastTraversableNodeNames.has(getNodeName(node));
+  return /^(html|body|#document)$/.test(getNodeName(node));
 }
 function getComputedStyle$1(element) {
   return getWindow(element).getComputedStyle(element);
@@ -2435,8 +2443,9 @@ function getOverflowAncestors(node, list, traverseIframes) {
   if (isBody) {
     const frameElement = getFrameElement(win);
     return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], frameElement && traverseIframes ? getOverflowAncestors(frameElement) : []);
+  } else {
+    return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor, [], traverseIframes));
   }
-  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor, [], traverseIframes));
 }
 function getFrameElement(win) {
   return win.parent && Object.getPrototypeOf(win.parent) ? win.frameElement : null;
@@ -2613,7 +2622,7 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
     if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
       scroll = getNodeScroll(offsetParent);
     }
-    if (isHTMLElement(offsetParent)) {
+    if (isOffsetParentAnElement) {
       const offsetRect = getBoundingClientRect(offsetParent);
       scale = getScale(offsetParent);
       offsets.x = offsetRect.x + offsetParent.clientLeft;
@@ -2701,7 +2710,6 @@ function getViewportRect(element, strategy) {
   };
 }
 
-const absoluteOrFixed = /*#__PURE__*/new Set(['absolute', 'fixed']);
 // Returns the inner client rect, subtracting scrollbars if present.
 function getInnerBoundingClientRect(element, strategy) {
   const clientRect = getBoundingClientRect(element, true, strategy === 'fixed');
@@ -2766,7 +2774,7 @@ function getClippingElementAncestors(element, cache) {
     if (!currentNodeIsContaining && computedStyle.position === 'fixed') {
       currentContainingBlockComputedStyle = null;
     }
-    const shouldDropCurrentNode = elementIsFixed ? !currentNodeIsContaining && !currentContainingBlockComputedStyle : !currentNodeIsContaining && computedStyle.position === 'static' && !!currentContainingBlockComputedStyle && absoluteOrFixed.has(currentContainingBlockComputedStyle.position) || isOverflowElement(currentNode) && !currentNodeIsContaining && hasFixedPositionAncestor(element, currentNode);
+    const shouldDropCurrentNode = elementIsFixed ? !currentNodeIsContaining && !currentContainingBlockComputedStyle : !currentNodeIsContaining && computedStyle.position === 'static' && !!currentContainingBlockComputedStyle && (currentContainingBlockComputedStyle.position === 'absolute' || currentContainingBlockComputedStyle.position === 'fixed') || isOverflowElement(currentNode) && !currentNodeIsContaining && hasFixedPositionAncestor(element, currentNode);
     if (shouldDropCurrentNode) {
       // Drop non-containing blocks.
       result = result.filter(ancestor => ancestor !== currentNode);
@@ -2791,20 +2799,23 @@ function getClippingRect(_ref) {
   } = _ref;
   const elementClippingAncestors = boundary === 'clippingAncestors' ? isTopLayer(element) ? [] : getClippingElementAncestors(element, this._c) : [].concat(boundary);
   const clippingAncestors = [...elementClippingAncestors, rootBoundary];
-  const firstClippingAncestor = clippingAncestors[0];
-  const clippingRect = clippingAncestors.reduce((accRect, clippingAncestor) => {
-    const rect = getClientRectFromClippingAncestor(element, clippingAncestor, strategy);
-    accRect.top = max(rect.top, accRect.top);
-    accRect.right = min(rect.right, accRect.right);
-    accRect.bottom = min(rect.bottom, accRect.bottom);
-    accRect.left = max(rect.left, accRect.left);
-    return accRect;
-  }, getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy));
+  const firstRect = getClientRectFromClippingAncestor(element, clippingAncestors[0], strategy);
+  let top = firstRect.top;
+  let right = firstRect.right;
+  let bottom = firstRect.bottom;
+  let left = firstRect.left;
+  for (let i = 1; i < clippingAncestors.length; i++) {
+    const rect = getClientRectFromClippingAncestor(element, clippingAncestors[i], strategy);
+    top = max(rect.top, top);
+    right = min(rect.right, right);
+    bottom = min(rect.bottom, bottom);
+    left = max(rect.left, left);
+  }
   return {
-    width: clippingRect.right - clippingRect.left,
-    height: clippingRect.bottom - clippingRect.top,
-    x: clippingRect.left,
-    y: clippingRect.top
+    width: right - left,
+    height: bottom - top,
+    x: left,
+    y: top
   };
 }
 
@@ -3055,7 +3066,7 @@ function autoUpdate(reference, floating, update, options) {
     animationFrame = false
   } = options;
   const referenceEl = unwrapElement(reference);
-  const ancestors = ancestorScroll || ancestorResize ? [...(referenceEl ? getOverflowAncestors(referenceEl) : []), ...getOverflowAncestors(floating)] : [];
+  const ancestors = ancestorScroll || ancestorResize ? [...(referenceEl ? getOverflowAncestors(referenceEl) : []), ...(floating ? getOverflowAncestors(floating) : [])] : [];
   ancestors.forEach(ancestor => {
     ancestorScroll && ancestor.addEventListener('scroll', update, {
       passive: true
@@ -3068,7 +3079,7 @@ function autoUpdate(reference, floating, update, options) {
   if (elementResize) {
     resizeObserver = new ResizeObserver(_ref => {
       let [firstEntry] = _ref;
-      if (firstEntry && firstEntry.target === referenceEl && resizeObserver) {
+      if (firstEntry && firstEntry.target === referenceEl && resizeObserver && floating) {
         // Prevent update loops when using the `size` middleware.
         // https://github.com/floating-ui/floating-ui/issues/1740
         resizeObserver.unobserve(floating);
@@ -3083,7 +3094,9 @@ function autoUpdate(reference, floating, update, options) {
     if (referenceEl && !animationFrame) {
       resizeObserver.observe(referenceEl);
     }
-    resizeObserver.observe(floating);
+    if (floating) {
+      resizeObserver.observe(floating);
+    }
   }
   let frameId;
   let prevRefRect = animationFrame ? getBoundingClientRect(reference) : null;
@@ -3297,10 +3310,10 @@ const disposeBreakpointListeners = listeners => {
  * Constants
  */
 
-const NAME$g = 'menu';
-const DATA_KEY$c = 'bs.menu';
-const EVENT_KEY$c = `.${DATA_KEY$c}`;
-const DATA_API_KEY$7 = '.data-api';
+const NAME$h = 'menu';
+const DATA_KEY$d = 'bs.menu';
+const EVENT_KEY$d = `.${DATA_KEY$d}`;
+const DATA_API_KEY$8 = '.data-api';
 const ESCAPE_KEY$2 = 'Escape';
 const TAB_KEY$2 = 'Tab';
 const ARROW_UP_KEY$2 = 'ArrowUp';
@@ -3313,13 +3326,13 @@ const ENTER_KEY$1 = 'Enter';
 const SPACE_KEY$1 = ' ';
 const RIGHT_MOUSE_BUTTON = 2;
 const SUBMENU_CLOSE_DELAY = 100;
-const EVENT_HIDE$7 = `hide${EVENT_KEY$c}`;
-const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$c}`;
-const EVENT_SHOW$7 = `show${EVENT_KEY$c}`;
-const EVENT_SHOWN$7 = `shown${EVENT_KEY$c}`;
-const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
-const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$c}${DATA_API_KEY$7}`;
-const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$c}${DATA_API_KEY$7}`;
+const EVENT_HIDE$7 = `hide${EVENT_KEY$d}`;
+const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$d}`;
+const EVENT_SHOW$7 = `show${EVENT_KEY$d}`;
+const EVENT_SHOWN$7 = `shown${EVENT_KEY$d}`;
+const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
+const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$d}${DATA_API_KEY$8}`;
+const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$d}${DATA_API_KEY$8}`;
 const CLASS_NAME_SHOW$6 = 'show';
 const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="menu"]:not(.disabled):not(:disabled)';
 const SELECTOR_MENU$2 = '.menu';
@@ -3336,7 +3349,7 @@ const resolveLogicalPlacement = placement => {
   return placement.replace(/^start(?=-|$)/, 'left').replace(/^end(?=-|$)/, 'right');
 };
 const triangleSign = (p1, p2, p3) => (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
-const Default$f = {
+const Default$g = {
   autoClose: true,
   boundary: 'clippingParents',
   container: false,
@@ -3350,7 +3363,7 @@ const Default$f = {
   submenuTrigger: 'both',
   submenuDelay: SUBMENU_CLOSE_DELAY
 };
-const DefaultType$f = {
+const DefaultType$g = {
   autoClose: '(boolean|string)',
   boundary: '(string|element)',
   container: '(string|element|boolean)',
@@ -3392,13 +3405,13 @@ class Menu extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$f;
+    return Default$g;
   }
   static get DefaultType() {
-    return DefaultType$f;
+    return DefaultType$g;
   }
   static get NAME() {
-    return NAME$g;
+    return NAME$h;
   }
 
   // Public
@@ -3490,7 +3503,7 @@ class Menu extends BaseComponent {
   _getConfig(config) {
     config = super._getConfig(config);
     if (typeof config.reference === 'object' && !isElement$1(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
-      throw new TypeError(`${NAME$g.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
+      throw new TypeError(`${NAME$h.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
     }
     return config;
   }
@@ -4062,10 +4075,10 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, functi
  * Constants
  */
 
-const NAME$f = 'combobox';
-const DATA_KEY$b = 'bs.combobox';
-const EVENT_KEY$b = `.${DATA_KEY$b}`;
-const DATA_API_KEY$6 = '.data-api';
+const NAME$g = 'combobox';
+const DATA_KEY$c = 'bs.combobox';
+const EVENT_KEY$c = `.${DATA_KEY$c}`;
+const DATA_API_KEY$7 = '.data-api';
 const ESCAPE_KEY$1 = 'Escape';
 const TAB_KEY$1 = 'Tab';
 const ARROW_UP_KEY$1 = 'ArrowUp';
@@ -4074,12 +4087,12 @@ const HOME_KEY$1 = 'Home';
 const END_KEY$1 = 'End';
 const ENTER_KEY = 'Enter';
 const SPACE_KEY = ' ';
-const EVENT_CHANGE$1 = `change${EVENT_KEY$b}`;
-const EVENT_SHOW$6 = `show${EVENT_KEY$b}`;
-const EVENT_SHOWN$6 = `shown${EVENT_KEY$b}`;
-const EVENT_HIDE$6 = `hide${EVENT_KEY$b}`;
-const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$b}`;
-const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$b}${DATA_API_KEY$6}`;
+const EVENT_CHANGE$2 = `change${EVENT_KEY$c}`;
+const EVENT_SHOW$6 = `show${EVENT_KEY$c}`;
+const EVENT_SHOWN$6 = `shown${EVENT_KEY$c}`;
+const EVENT_HIDE$6 = `hide${EVENT_KEY$c}`;
+const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$c}`;
+const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
 const CLASS_NAME_SHOW$5 = 'show';
 const CLASS_NAME_SELECTED = 'selected';
 const CLASS_NAME_PLACEHOLDER = 'combobox-placeholder';
@@ -4090,7 +4103,7 @@ const SELECTOR_VISIBLE_ITEMS = '.menu-item[data-bs-value]:not(.disabled):not(:di
 const SELECTOR_VALUE = '.combobox-value';
 const SELECTOR_SEARCH_INPUT = '.combobox-search-input';
 const SELECTOR_NO_RESULTS = '.combobox-no-results';
-const Default$e = {
+const Default$f = {
   boundary: 'clippingParents',
   multiple: false,
   name: null,
@@ -4100,7 +4113,7 @@ const Default$e = {
   search: false,
   searchNormalize: false
 };
-const DefaultType$e = {
+const DefaultType$f = {
   boundary: '(string|element)',
   multiple: 'boolean',
   name: '(string|null)',
@@ -4133,13 +4146,13 @@ class Combobox extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$e;
+    return Default$f;
   }
   static get DefaultType() {
-    return DefaultType$e;
+    return DefaultType$f;
   }
   static get NAME() {
-    return NAME$f;
+    return NAME$g;
   }
 
   // Public
@@ -4182,8 +4195,8 @@ class Combobox extends BaseComponent {
       this._hiddenInput.remove();
       this._hiddenInput = null;
     }
-    EventHandler.off(this._menu, EVENT_KEY$b);
-    EventHandler.off(this._toggle, EVENT_KEY$b);
+    EventHandler.off(this._menu, EVENT_KEY$c);
+    EventHandler.off(this._toggle, EVENT_KEY$c);
     super.dispose();
   }
 
@@ -4273,7 +4286,7 @@ class Combobox extends BaseComponent {
     this._updateToggleText();
     this._updateHiddenInput();
     const value = this._config.multiple ? this._getSelectedItems().map(el => el.dataset.bsValue) : item.dataset.bsValue;
-    EventHandler.trigger(this._toggle, EVENT_CHANGE$1, {
+    EventHandler.trigger(this._toggle, EVENT_CHANGE$2, {
       value,
       item
     });
@@ -4450,21 +4463,21 @@ var __defProp=Object.defineProperty,__defProps=Object.defineProperties,__getOwnP
  * Constants
  */
 
-const NAME$e = 'datepicker';
-const DATA_KEY$a = 'bs.datepicker';
-const EVENT_KEY$a = `.${DATA_KEY$a}`;
-const DATA_API_KEY$5 = '.data-api';
-const EVENT_CHANGE = `change${EVENT_KEY$a}`;
-const EVENT_SHOW$5 = `show${EVENT_KEY$a}`;
-const EVENT_SHOWN$5 = `shown${EVENT_KEY$a}`;
-const EVENT_HIDE$5 = `hide${EVENT_KEY$a}`;
-const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$a}`;
-const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$a}${DATA_API_KEY$5}`;
-const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$a}${DATA_API_KEY$5}`;
+const NAME$f = 'datepicker';
+const DATA_KEY$b = 'bs.datepicker';
+const EVENT_KEY$b = `.${DATA_KEY$b}`;
+const DATA_API_KEY$6 = '.data-api';
+const EVENT_CHANGE$1 = `change${EVENT_KEY$b}`;
+const EVENT_SHOW$5 = `show${EVENT_KEY$b}`;
+const EVENT_SHOWN$5 = `shown${EVENT_KEY$b}`;
+const EVENT_HIDE$5 = `hide${EVENT_KEY$b}`;
+const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$b}`;
+const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$b}${DATA_API_KEY$6}`;
+const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$b}${DATA_API_KEY$6}`;
 const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="datepicker"]';
 const HIDE_DELAY = 100; // ms delay before hiding after selection
 
-const Default$d = {
+const Default$e = {
   datepickerTheme: null,
   // 'light', 'dark', 'auto' - explicit theme for datepicker popover only
   dateMin: null,
@@ -4489,7 +4502,7 @@ const Default$d = {
   // 'left', 'center', 'right', 'auto'
   vcpOptions: {} // Pass-through for any VCP option
 };
-const DefaultType$d = {
+const DefaultType$e = {
   datepickerTheme: '(null|string)',
   dateMin: '(null|string|number|object)',
   dateMax: '(null|string|number|object)',
@@ -4520,13 +4533,13 @@ class Datepicker extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$d;
+    return Default$e;
   }
   static get DefaultType() {
-    return DefaultType$d;
+    return DefaultType$e;
   }
   static get NAME() {
-    return NAME$e;
+    return NAME$f;
   }
 
   // Public
@@ -4768,7 +4781,7 @@ class Datepicker extends BaseComponent {
         this._displayElement.textContent = formattedDate;
       }
     }
-    EventHandler.trigger(this._element, EVENT_CHANGE, {
+    EventHandler.trigger(this._element, EVENT_CHANGE$1, {
       dates: selectedDates,
       event
     });
@@ -4860,7 +4873,7 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE$6, functi
 });
 
 // Auto-initialize inline datepickers on DOMContentLoaded
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$a}${DATA_API_KEY$5}`, () => {
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$b}${DATA_API_KEY$6}`, () => {
   for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE$6}[data-bs-inline="true"]`)) {
     Datepicker.getOrCreateInstance(element);
   }
@@ -4878,29 +4891,29 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$a}${DATA_API_KEY$5}`, () 
  * Constants
  */
 
-const NAME$d = 'dialog';
-const DATA_KEY$9 = 'bs.dialog';
-const EVENT_KEY$9 = `.${DATA_KEY$9}`;
-const DATA_API_KEY$4 = '.data-api';
-const EVENT_SHOW$4 = `show${EVENT_KEY$9}`;
-const EVENT_SHOWN$4 = `shown${EVENT_KEY$9}`;
-const EVENT_HIDE$4 = `hide${EVENT_KEY$9}`;
-const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$9}`;
-const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$9}`;
-const EVENT_CANCEL = `cancel${EVENT_KEY$9}`;
-const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$9}${DATA_API_KEY$4}`;
+const NAME$e = 'dialog';
+const DATA_KEY$a = 'bs.dialog';
+const EVENT_KEY$a = `.${DATA_KEY$a}`;
+const DATA_API_KEY$5 = '.data-api';
+const EVENT_SHOW$4 = `show${EVENT_KEY$a}`;
+const EVENT_SHOWN$4 = `shown${EVENT_KEY$a}`;
+const EVENT_HIDE$4 = `hide${EVENT_KEY$a}`;
+const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$a}`;
+const EVENT_HIDE_PREVENTED$1 = `hidePrevented${EVENT_KEY$a}`;
+const EVENT_CANCEL = `cancel${EVENT_KEY$a}`;
+const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$a}${DATA_API_KEY$5}`;
 const CLASS_NAME_STATIC = 'dialog-static';
 const CLASS_NAME_OPEN = 'dialog-open';
 const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
 const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dialog"]';
 const SELECTOR_OPEN_MODAL_DIALOG = 'dialog.dialog[open]:not(.dialog-nonmodal)';
-const Default$c = {
+const Default$d = {
   backdrop: true,
   // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
   keyboard: true,
   modal: true // true uses showModal(), false uses show() for non-modal dialogs
 };
-const DefaultType$c = {
+const DefaultType$d = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   modal: 'boolean'
@@ -4919,13 +4932,13 @@ class Dialog extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$c;
+    return Default$d;
   }
   static get DefaultType() {
-    return DefaultType$c;
+    return DefaultType$d;
   }
   static get NAME() {
-    return NAME$d;
+    return NAME$e;
   }
 
   // Public
@@ -4972,7 +4985,7 @@ class Dialog extends BaseComponent {
     this._queueCallback(() => this._hideDialog(), this._element, this._isAnimated());
   }
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY$9);
+    EventHandler.off(this._element, EVENT_KEY$a);
     super.dispose();
   }
   handleUpdate() {
@@ -5105,11 +5118,11 @@ enableDismissTrigger(Dialog);
  * Constants
  */
 
-const NAME$c = 'navoverflow';
-const DATA_KEY$8 = 'bs.navoverflow';
-const EVENT_KEY$8 = `.${DATA_KEY$8}`;
-const EVENT_UPDATE = `update${EVENT_KEY$8}`;
-const EVENT_OVERFLOW = `overflow${EVENT_KEY$8}`;
+const NAME$d = 'navoverflow';
+const DATA_KEY$9 = 'bs.navoverflow';
+const EVENT_KEY$9 = `.${DATA_KEY$9}`;
+const EVENT_UPDATE = `update${EVENT_KEY$9}`;
+const EVENT_OVERFLOW = `overflow${EVENT_KEY$9}`;
 const CLASS_NAME_OVERFLOW = 'nav-overflow';
 const CLASS_NAME_OVERFLOW_MENU = 'nav-overflow-menu';
 const CLASS_NAME_HIDDEN = 'd-none';
@@ -5118,12 +5131,12 @@ const SELECTOR_NAV_LINK = '.nav-link';
 const SELECTOR_OVERFLOW_TOGGLE = '.nav-overflow-toggle';
 const SELECTOR_OVERFLOW_MENU = '.nav-overflow-menu';
 const CLASS_NAME_KEEP = 'nav-overflow-keep';
-const Default$b = {
+const Default$c = {
   moreText: 'More',
   moreIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>',
   threshold: 0 // Minimum items to keep visible before showing overflow
 };
-const DefaultType$b = {
+const DefaultType$c = {
   moreText: 'string',
   moreIcon: 'string',
   threshold: 'number'
@@ -5147,13 +5160,13 @@ class NavOverflow extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$b;
+    return Default$c;
   }
   static get DefaultType() {
-    return DefaultType$b;
+    return DefaultType$c;
   }
   static get NAME() {
-    return NAME$c;
+    return NAME$d;
   }
 
   // Public
@@ -5346,11 +5359,11 @@ EventHandler.on(document, 'DOMContentLoaded', () => {
  * Constants
  */
 
-const NAME$b = 'backdrop';
+const NAME$c = 'backdrop';
 const CLASS_NAME_FADE$3 = 'fade';
 const CLASS_NAME_SHOW$4 = 'show';
-const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$b}`;
-const Default$a = {
+const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$c}`;
+const Default$b = {
   className: 'modal-backdrop',
   clickCallback: null,
   isAnimated: false,
@@ -5358,7 +5371,7 @@ const Default$a = {
   // if false, we use the backdrop helper without adding any element to the dom
   rootElement: 'body' // give the choice to place backdrop under different elements
 };
-const DefaultType$a = {
+const DefaultType$b = {
   className: 'string',
   clickCallback: '(function|null)',
   isAnimated: 'boolean',
@@ -5380,13 +5393,13 @@ class Backdrop extends Config {
 
   // Getters
   static get Default() {
-    return Default$a;
+    return Default$b;
   }
   static get DefaultType() {
-    return DefaultType$a;
+    return DefaultType$b;
   }
   static get NAME() {
-    return NAME$b;
+    return NAME$c;
   }
 
   // Public
@@ -5470,19 +5483,19 @@ class Backdrop extends Config {
  * Constants
  */
 
-const NAME$a = 'focustrap';
-const DATA_KEY$7 = 'bs.focustrap';
-const EVENT_KEY$7 = `.${DATA_KEY$7}`;
-const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$7}`;
-const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$7}`;
+const NAME$b = 'focustrap';
+const DATA_KEY$8 = 'bs.focustrap';
+const EVENT_KEY$8 = `.${DATA_KEY$8}`;
+const EVENT_FOCUSIN$3 = `focusin${EVENT_KEY$8}`;
+const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$8}`;
 const TAB_KEY = 'Tab';
 const TAB_NAV_FORWARD = 'forward';
 const TAB_NAV_BACKWARD = 'backward';
-const Default$9 = {
+const Default$a = {
   autofocus: true,
   trapElement: null // The element to trap focus inside of
 };
-const DefaultType$9 = {
+const DefaultType$a = {
   autofocus: 'boolean',
   trapElement: 'element'
 };
@@ -5501,13 +5514,13 @@ class FocusTrap extends Config {
 
   // Getters
   static get Default() {
-    return Default$9;
+    return Default$a;
   }
   static get DefaultType() {
-    return DefaultType$9;
+    return DefaultType$a;
   }
   static get NAME() {
-    return NAME$a;
+    return NAME$b;
   }
 
   // Public
@@ -5518,7 +5531,7 @@ class FocusTrap extends Config {
     if (this._config.autofocus) {
       this._config.trapElement.focus();
     }
-    EventHandler.off(document, EVENT_KEY$7); // guard against infinite focus loop
+    EventHandler.off(document, EVENT_KEY$8); // guard against infinite focus loop
     EventHandler.on(document, EVENT_FOCUSIN$3, event => this._handleFocusin(event));
     EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
     this._isActive = true;
@@ -5528,7 +5541,7 @@ class FocusTrap extends Config {
       return;
     }
     this._isActive = false;
-    EventHandler.off(document, EVENT_KEY$7);
+    EventHandler.off(document, EVENT_KEY$8);
   }
 
   // Private
@@ -5666,32 +5679,32 @@ class ScrollBarHelper {
  * Constants
  */
 
-const NAME$9 = 'offcanvas';
-const DATA_KEY$6 = 'bs.offcanvas';
-const EVENT_KEY$6 = `.${DATA_KEY$6}`;
-const DATA_API_KEY$3 = '.data-api';
-const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$6}${DATA_API_KEY$3}`;
+const NAME$a = 'offcanvas';
+const DATA_KEY$7 = 'bs.offcanvas';
+const EVENT_KEY$7 = `.${DATA_KEY$7}`;
+const DATA_API_KEY$4 = '.data-api';
+const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$7}${DATA_API_KEY$4}`;
 const ESCAPE_KEY = 'Escape';
 const CLASS_NAME_SHOW$3 = 'show';
 const CLASS_NAME_SHOWING$1 = 'showing';
 const CLASS_NAME_HIDING = 'hiding';
 const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
 const OPEN_SELECTOR = '.offcanvas.show';
-const EVENT_SHOW$3 = `show${EVENT_KEY$6}`;
-const EVENT_SHOWN$3 = `shown${EVENT_KEY$6}`;
-const EVENT_HIDE$3 = `hide${EVENT_KEY$6}`;
-const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$6}`;
-const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$6}`;
-const EVENT_RESIZE = `resize${EVENT_KEY$6}`;
-const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`;
-const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$6}`;
+const EVENT_SHOW$3 = `show${EVENT_KEY$7}`;
+const EVENT_SHOWN$3 = `shown${EVENT_KEY$7}`;
+const EVENT_HIDE$3 = `hide${EVENT_KEY$7}`;
+const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$7}`;
+const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$7}`;
+const EVENT_RESIZE = `resize${EVENT_KEY$7}`;
+const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$7}${DATA_API_KEY$4}`;
+const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$7}`;
 const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="offcanvas"]';
-const Default$8 = {
+const Default$9 = {
   backdrop: true,
   keyboard: true,
   scroll: false
 };
-const DefaultType$8 = {
+const DefaultType$9 = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   scroll: 'boolean'
@@ -5712,13 +5725,13 @@ class Offcanvas extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$8;
+    return Default$9;
   }
   static get DefaultType() {
-    return DefaultType$8;
+    return DefaultType$9;
   }
   static get NAME() {
-    return NAME$9;
+    return NAME$a;
   }
 
   // Public
@@ -5877,14 +5890,14 @@ enableDismissTrigger(Offcanvas);
  * Constants
  */
 
-const NAME$8 = 'strength';
-const DATA_KEY$5 = 'bs.strength';
-const EVENT_KEY$5 = `.${DATA_KEY$5}`;
-const DATA_API_KEY$2 = '.data-api';
-const EVENT_STRENGTH_CHANGE = `strengthChange${EVENT_KEY$5}`;
+const NAME$9 = 'strength';
+const DATA_KEY$6 = 'bs.strength';
+const EVENT_KEY$6 = `.${DATA_KEY$6}`;
+const DATA_API_KEY$3 = '.data-api';
+const EVENT_STRENGTH_CHANGE = `strengthChange${EVENT_KEY$6}`;
 const SELECTOR_DATA_STRENGTH = '[data-bs-strength]';
 const STRENGTH_LEVELS = ['weak', 'fair', 'good', 'strong'];
-const Default$7 = {
+const Default$8 = {
   input: null,
   // Selector or element for password input
   minLength: 8,
@@ -5908,7 +5921,7 @@ const Default$7 = {
   // weak ≤2, fair ≤4, good ≤6, strong >6
   scorer: null // Custom scoring function (password) => number
 };
-const DefaultType$7 = {
+const DefaultType$8 = {
   input: '(string|element|null)',
   minLength: 'number',
   messages: 'object',
@@ -5937,13 +5950,13 @@ class Strength extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$7;
+    return Default$8;
   }
   static get DefaultType() {
-    return DefaultType$7;
+    return DefaultType$8;
   }
   static get NAME() {
-    return NAME$8;
+    return NAME$9;
   }
 
   // Public
@@ -6089,7 +6102,7 @@ class Strength extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`, () => {
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$6}${DATA_API_KEY$3}`, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_STRENGTH)) {
     Strength.getOrCreateInstance(element);
   }
@@ -6107,19 +6120,19 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`, () 
  * Constants
  */
 
-const NAME$7 = 'otpInput';
-const DATA_KEY$4 = 'bs.otp-input';
-const EVENT_KEY$4 = `.${DATA_KEY$4}`;
-const DATA_API_KEY$1 = '.data-api';
-const EVENT_COMPLETE = `complete${EVENT_KEY$4}`;
-const EVENT_INPUT = `input${EVENT_KEY$4}`;
+const NAME$8 = 'otpInput';
+const DATA_KEY$5 = 'bs.otp-input';
+const EVENT_KEY$5 = `.${DATA_KEY$5}`;
+const DATA_API_KEY$2 = '.data-api';
+const EVENT_COMPLETE = `complete${EVENT_KEY$5}`;
+const EVENT_INPUT = `input${EVENT_KEY$5}`;
 const SELECTOR_DATA_OTP = '[data-bs-otp]';
 const SELECTOR_INPUT = 'input';
-const Default$6 = {
+const Default$7 = {
   length: 6,
   mask: false
 };
-const DefaultType$6 = {
+const DefaultType$7 = {
   length: 'number',
   mask: 'boolean'
 };
@@ -6138,13 +6151,13 @@ class OtpInput extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$6;
+    return Default$7;
   }
   static get DefaultType() {
-    return DefaultType$6;
+    return DefaultType$7;
   }
   static get NAME() {
-    return NAME$7;
+    return NAME$8;
   }
 
   // Public
@@ -6312,9 +6325,583 @@ class OtpInput extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$4}${DATA_API_KEY$1}`, () => {
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_OTP)) {
     OtpInput.getOrCreateInstance(element);
+  }
+});
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap chip-input.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$7 = 'chipInput';
+const DATA_KEY$4 = 'bs.chip-input';
+const EVENT_KEY$4 = `.${DATA_KEY$4}`;
+const DATA_API_KEY$1 = '.data-api';
+const EVENT_ADD = `add${EVENT_KEY$4}`;
+const EVENT_REMOVE = `remove${EVENT_KEY$4}`;
+const EVENT_CHANGE = `change${EVENT_KEY$4}`;
+const EVENT_SELECT = `select${EVENT_KEY$4}`;
+const SELECTOR_DATA_CHIP_INPUT = '[data-bs-chip-input]';
+const SELECTOR_GHOST_INPUT = '.form-ghost';
+const SELECTOR_CHIP = '.chip';
+const SELECTOR_CHIP_DISMISS = '.chip-dismiss';
+const CLASS_NAME_CHIP = 'chip';
+const CLASS_NAME_CHIP_DISMISS = 'chip-dismiss';
+const CLASS_NAME_ACTIVE$2 = 'active';
+const DEFAULT_DISMISS_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>';
+const Default$6 = {
+  separator: ',',
+  allowDuplicates: false,
+  maxChips: null,
+  placeholder: '',
+  dismissible: true,
+  dismissIcon: DEFAULT_DISMISS_ICON,
+  createOnBlur: true
+};
+const DefaultType$6 = {
+  separator: '(string|null)',
+  allowDuplicates: 'boolean',
+  maxChips: '(number|null)',
+  placeholder: 'string',
+  dismissible: 'boolean',
+  dismissIcon: 'string',
+  createOnBlur: 'boolean'
+};
+
+/**
+ * Class definition
+ */
+
+class ChipInput extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+    this._input = SelectorEngine.findOne(SELECTOR_GHOST_INPUT, this._element);
+    this._chips = [];
+    this._selectedChips = new Set();
+    this._anchorChip = null; // For shift+click range selection
+
+    if (!this._input) {
+      this._createInput();
+    }
+    this._initializeExistingChips();
+    this._addEventListeners();
+  }
+
+  // Getters
+  static get Default() {
+    return Default$6;
+  }
+  static get DefaultType() {
+    return DefaultType$6;
+  }
+  static get NAME() {
+    return NAME$7;
+  }
+
+  // Public
+  add(value) {
+    const trimmedValue = String(value).trim();
+    if (!trimmedValue) {
+      return null;
+    }
+
+    // Check for duplicates
+    if (!this._config.allowDuplicates && this._chips.includes(trimmedValue)) {
+      return null;
+    }
+
+    // Check max chips limit
+    if (this._config.maxChips !== null && this._chips.length >= this._config.maxChips) {
+      return null;
+    }
+    const addEvent = EventHandler.trigger(this._element, EVENT_ADD, {
+      value: trimmedValue,
+      relatedTarget: this._input
+    });
+    if (addEvent.defaultPrevented) {
+      return null;
+    }
+    const chip = this._createChip(trimmedValue);
+    this._element.insertBefore(chip, this._input);
+    this._chips.push(trimmedValue);
+    EventHandler.trigger(this._element, EVENT_CHANGE, {
+      values: this.getValues()
+    });
+    return chip;
+  }
+  remove(chipOrValue) {
+    let chip;
+    let value;
+    if (typeof chipOrValue === 'string') {
+      value = chipOrValue;
+      chip = this._findChipByValue(value);
+    } else {
+      chip = chipOrValue;
+      value = this._getChipValue(chip);
+    }
+    if (!chip || !value) {
+      return false;
+    }
+    const removeEvent = EventHandler.trigger(this._element, EVENT_REMOVE, {
+      value,
+      chip,
+      relatedTarget: this._input
+    });
+    if (removeEvent.defaultPrevented) {
+      return false;
+    }
+
+    // Remove from selection
+    this._selectedChips.delete(chip);
+    if (this._anchorChip === chip) {
+      this._anchorChip = null;
+    }
+
+    // Remove from DOM and array
+    chip.remove();
+    this._chips = this._chips.filter(v => v !== value);
+    EventHandler.trigger(this._element, EVENT_CHANGE, {
+      values: this.getValues()
+    });
+    return true;
+  }
+  removeSelected() {
+    const chipsToRemove = [...this._selectedChips];
+    for (const chip of chipsToRemove) {
+      this.remove(chip);
+    }
+    this._input?.focus();
+  }
+  getValues() {
+    return [...this._chips];
+  }
+  getSelectedValues() {
+    return [...this._selectedChips].map(chip => this._getChipValue(chip));
+  }
+  clear() {
+    const chips = SelectorEngine.find(SELECTOR_CHIP, this._element);
+    for (const chip of chips) {
+      chip.remove();
+    }
+    this._chips = [];
+    this._selectedChips.clear();
+    this._anchorChip = null;
+    EventHandler.trigger(this._element, EVENT_CHANGE, {
+      values: []
+    });
+  }
+  clearSelection() {
+    for (const chip of this._selectedChips) {
+      chip.classList.remove(CLASS_NAME_ACTIVE$2);
+    }
+    this._selectedChips.clear();
+    this._anchorChip = null;
+    EventHandler.trigger(this._element, EVENT_SELECT, {
+      selected: []
+    });
+  }
+  selectChip(chip, options = {}) {
+    const {
+      addToSelection = false,
+      rangeSelect = false
+    } = options;
+    const chipElements = this._getChipElements();
+    if (!chipElements.includes(chip)) {
+      return;
+    }
+    if (rangeSelect && this._anchorChip) {
+      // Range selection from anchor to chip
+      const anchorIndex = chipElements.indexOf(this._anchorChip);
+      const chipIndex = chipElements.indexOf(chip);
+      const start = Math.min(anchorIndex, chipIndex);
+      const end = Math.max(anchorIndex, chipIndex);
+      if (!addToSelection) {
+        this.clearSelection();
+      }
+      for (let i = start; i <= end; i++) {
+        this._selectedChips.add(chipElements[i]);
+        chipElements[i].classList.add(CLASS_NAME_ACTIVE$2);
+      }
+    } else if (addToSelection) {
+      // Toggle selection
+      if (this._selectedChips.has(chip)) {
+        this._selectedChips.delete(chip);
+        chip.classList.remove(CLASS_NAME_ACTIVE$2);
+      } else {
+        this._selectedChips.add(chip);
+        chip.classList.add(CLASS_NAME_ACTIVE$2);
+        this._anchorChip = chip;
+      }
+    } else {
+      // Single selection
+      this.clearSelection();
+      this._selectedChips.add(chip);
+      chip.classList.add(CLASS_NAME_ACTIVE$2);
+      this._anchorChip = chip;
+    }
+    EventHandler.trigger(this._element, EVENT_SELECT, {
+      selected: this.getSelectedValues()
+    });
+  }
+  focus() {
+    this._input?.focus();
+  }
+
+  // Private
+  _getChipElements() {
+    return SelectorEngine.find(SELECTOR_CHIP, this._element);
+  }
+  _createInput() {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'form-ghost';
+    if (this._config.placeholder) {
+      input.placeholder = this._config.placeholder;
+    }
+    this._element.append(input);
+    this._input = input;
+  }
+  _initializeExistingChips() {
+    const existingChips = SelectorEngine.find(SELECTOR_CHIP, this._element);
+    for (const chip of existingChips) {
+      const value = this._getChipValue(chip);
+      if (value) {
+        this._chips.push(value);
+        this._setupChip(chip);
+      }
+    }
+  }
+  _setupChip(chip) {
+    // Make chip focusable
+    chip.setAttribute('tabindex', '0');
+
+    // Add dismiss button if needed
+    if (this._config.dismissible && !SelectorEngine.findOne(SELECTOR_CHIP_DISMISS, chip)) {
+      chip.append(this._createDismissButton());
+    }
+  }
+  _createChip(value) {
+    const chip = document.createElement('span');
+    chip.className = CLASS_NAME_CHIP;
+    chip.dataset.bsChipValue = value;
+
+    // Add text node
+    chip.append(document.createTextNode(value));
+
+    // Setup chip (tabindex, dismiss button)
+    this._setupChip(chip);
+    return chip;
+  }
+  _createDismissButton() {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = CLASS_NAME_CHIP_DISMISS;
+    button.setAttribute('aria-label', 'Remove');
+    button.setAttribute('tabindex', '-1'); // Not in tab order, chips handle keyboard
+    button.innerHTML = this._config.dismissIcon;
+    return button;
+  }
+  _findChipByValue(value) {
+    const chips = this._getChipElements();
+    return chips.find(chip => this._getChipValue(chip) === value);
+  }
+  _getChipValue(chip) {
+    if (chip.dataset.bsChipValue) {
+      return chip.dataset.bsChipValue;
+    }
+    const clone = chip.cloneNode(true);
+    const dismiss = SelectorEngine.findOne(SELECTOR_CHIP_DISMISS, clone);
+    if (dismiss) {
+      dismiss.remove();
+    }
+    return clone.textContent?.trim() || '';
+  }
+  _addEventListeners() {
+    // Input events
+    EventHandler.on(this._input, 'keydown', event => this._handleInputKeydown(event));
+    EventHandler.on(this._input, 'input', event => this._handleInput(event));
+    EventHandler.on(this._input, 'paste', event => this._handlePaste(event));
+    EventHandler.on(this._input, 'focus', () => this.clearSelection());
+    if (this._config.createOnBlur) {
+      EventHandler.on(this._input, 'blur', event => {
+        // Don't create chip if clicking on a chip
+        if (!event.relatedTarget?.closest(SELECTOR_CHIP)) {
+          this._createChipFromInput();
+        }
+      });
+    }
+
+    // Chip click events (delegated)
+    EventHandler.on(this._element, 'click', SELECTOR_CHIP, event => {
+      // Ignore clicks on dismiss button
+      if (event.target.closest(SELECTOR_CHIP_DISMISS)) {
+        return;
+      }
+      const chip = event.target.closest(SELECTOR_CHIP);
+      if (chip) {
+        event.preventDefault();
+        this.selectChip(chip, {
+          addToSelection: event.metaKey || event.ctrlKey,
+          rangeSelect: event.shiftKey
+        });
+        chip.focus();
+      }
+    });
+
+    // Dismiss button clicks (delegated)
+    EventHandler.on(this._element, 'click', SELECTOR_CHIP_DISMISS, event => {
+      event.stopPropagation();
+      const chip = event.target.closest(SELECTOR_CHIP);
+      if (chip) {
+        this.remove(chip);
+        this._input?.focus();
+      }
+    });
+
+    // Chip keyboard events (delegated)
+    EventHandler.on(this._element, 'keydown', SELECTOR_CHIP, event => {
+      this._handleChipKeydown(event);
+    });
+
+    // Focus input when clicking container background
+    EventHandler.on(this._element, 'click', event => {
+      if (event.target === this._element) {
+        this.clearSelection();
+        this._input?.focus();
+      }
+    });
+  }
+  _handleInputKeydown(event) {
+    const {
+      key
+    } = event;
+    switch (key) {
+      case 'Enter':
+        {
+          event.preventDefault();
+          this._createChipFromInput();
+          break;
+        }
+      case 'Backspace':
+      case 'Delete':
+        {
+          if (this._input.value === '') {
+            event.preventDefault();
+            const chips = this._getChipElements();
+            if (chips.length > 0) {
+              // Select last chip and focus it
+              const lastChip = chips.at(-1);
+              this.selectChip(lastChip);
+              lastChip.focus();
+            }
+          }
+          break;
+        }
+      case 'ArrowLeft':
+        {
+          if (this._input.selectionStart === 0 && this._input.selectionEnd === 0) {
+            event.preventDefault();
+            const chips = this._getChipElements();
+            if (chips.length > 0) {
+              const lastChip = chips.at(-1);
+              if (event.shiftKey) {
+                this.selectChip(lastChip, {
+                  addToSelection: true
+                });
+              } else {
+                this.selectChip(lastChip);
+              }
+              lastChip.focus();
+            }
+          }
+          break;
+        }
+      case 'Escape':
+        {
+          this._input.value = '';
+          this.clearSelection();
+          this._input.blur();
+          break;
+        }
+
+      // No default
+    }
+  }
+  _handleChipKeydown(event) {
+    const {
+      key
+    } = event;
+    const chip = event.target.closest(SELECTOR_CHIP);
+    if (!chip) {
+      return;
+    }
+    const chips = this._getChipElements();
+    const currentIndex = chips.indexOf(chip);
+    switch (key) {
+      case 'Backspace':
+      case 'Delete':
+        {
+          event.preventDefault();
+          this._handleChipDelete(currentIndex, chips);
+          break;
+        }
+      case 'ArrowLeft':
+        {
+          event.preventDefault();
+          this._navigateChip(chips, currentIndex, -1, event.shiftKey);
+          break;
+        }
+      case 'ArrowRight':
+        {
+          event.preventDefault();
+          this._navigateChip(chips, currentIndex, 1, event.shiftKey);
+          break;
+        }
+      case 'Home':
+        {
+          event.preventDefault();
+          this._navigateToEdge(chips, 0, event.shiftKey);
+          break;
+        }
+      case 'End':
+        {
+          event.preventDefault();
+          this.clearSelection();
+          this._input?.focus();
+          break;
+        }
+      case 'a':
+        {
+          this._handleSelectAll(event, chips);
+          break;
+        }
+      case 'Escape':
+        {
+          event.preventDefault();
+          this.clearSelection();
+          this._input?.focus();
+          break;
+        }
+
+      // No default
+    }
+  }
+  _handleChipDelete(currentIndex, chips) {
+    if (this._selectedChips.size === 0) {
+      return;
+    }
+    const nextIndex = Math.min(currentIndex, chips.length - this._selectedChips.size - 1);
+    this.removeSelected();
+    const remainingChips = this._getChipElements();
+    if (remainingChips.length > 0) {
+      const focusIndex = Math.max(0, Math.min(nextIndex, remainingChips.length - 1));
+      remainingChips[focusIndex].focus();
+      this.selectChip(remainingChips[focusIndex]);
+    } else {
+      this._input?.focus();
+    }
+  }
+  _navigateChip(chips, currentIndex, direction, shiftKey) {
+    const targetIndex = currentIndex + direction;
+    if (direction < 0 && targetIndex >= 0) {
+      const targetChip = chips[targetIndex];
+      this.selectChip(targetChip, shiftKey ? {
+        addToSelection: true,
+        rangeSelect: true
+      } : {});
+      targetChip.focus();
+    } else if (direction > 0 && targetIndex < chips.length) {
+      const targetChip = chips[targetIndex];
+      this.selectChip(targetChip, shiftKey ? {
+        addToSelection: true,
+        rangeSelect: true
+      } : {});
+      targetChip.focus();
+    } else if (direction > 0) {
+      this.clearSelection();
+      this._input?.focus();
+    }
+  }
+  _navigateToEdge(chips, targetIndex, shiftKey) {
+    if (chips.length === 0) {
+      return;
+    }
+    const targetChip = chips[targetIndex];
+    this.selectChip(targetChip, shiftKey ? {
+      rangeSelect: true
+    } : {});
+    targetChip.focus();
+  }
+  _handleSelectAll(event, chips) {
+    if (!(event.metaKey || event.ctrlKey)) {
+      return;
+    }
+    event.preventDefault();
+    for (const c of chips) {
+      this._selectedChips.add(c);
+      c.classList.add(CLASS_NAME_ACTIVE$2);
+    }
+    EventHandler.trigger(this._element, EVENT_SELECT, {
+      selected: this.getSelectedValues()
+    });
+  }
+  _handleInput(event) {
+    const {
+      value
+    } = event.target;
+    const {
+      separator
+    } = this._config;
+    if (separator && value.includes(separator)) {
+      const parts = value.split(separator);
+      for (const part of parts.slice(0, -1)) {
+        this.add(part.trim());
+      }
+      this._input.value = parts.at(-1);
+    }
+  }
+  _handlePaste(event) {
+    const {
+      separator
+    } = this._config;
+    if (!separator) {
+      return;
+    }
+    const pastedData = (event.clipboardData || window.clipboardData).getData('text');
+    if (pastedData.includes(separator)) {
+      event.preventDefault();
+      const parts = pastedData.split(separator);
+      for (const part of parts) {
+        this.add(part.trim());
+      }
+    }
+  }
+  _createChipFromInput() {
+    const value = this._input.value.trim();
+    if (value) {
+      this.add(value);
+      this._input.value = '';
+    }
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$4}${DATA_API_KEY$1}`, () => {
+  for (const element of SelectorEngine.find(SELECTOR_DATA_CHIP_INPUT)) {
+    ChipInput.getOrCreateInstance(element);
   }
 });
 
@@ -7528,9 +8115,9 @@ const NOT_SELECTOR_MENU_TOGGLE = `:not(${SELECTOR_MENU_TOGGLE})`;
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]';
 const SELECTOR_OUTER = '.nav-item, .list-group-item';
 const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_MENU_TOGGLE}, .list-group-item${NOT_SELECTOR_MENU_TOGGLE}, [role="tab"]${NOT_SELECTOR_MENU_TOGGLE}`;
-const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'; // TODO: could only be `tab` in v6
+const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="tab"]';
 const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE$1}`;
-const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="pill"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="list"]`;
+const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"]`;
 
 /**
  * Class definition
@@ -7986,5 +8573,5 @@ class Toggler extends BaseComponent {
 
 eventActionOnPlugin(Toggler, EVENT_CLICK, SELECTOR_DATA_TOGGLE, 'toggle');
 
-export { Alert, Button, Carousel, Collapse, Combobox, Datepicker, Dialog, Menu, NavOverflow, Offcanvas, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
+export { Alert, Button, Carousel, ChipInput, Collapse, Combobox, Datepicker, Dialog, Menu, NavOverflow, Offcanvas, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
 //# sourceMappingURL=bootstrap.bundle.js.map
