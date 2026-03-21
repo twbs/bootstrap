@@ -85,6 +85,10 @@ $toast-tokens: defaults(
     }
   }
 
+  .toast-translucent {
+    backdrop-filter: blur(5px) saturate(180%);
+  }
+
   .toast-body {
     padding: var(--toast-padding-x);
     word-wrap: break-word;

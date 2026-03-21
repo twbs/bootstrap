@@ -99,6 +99,20 @@ Toasts are slightly translucent to blend in with what’s below them.
     </div>
   </div>`} />
 
+Add `.toast-translucent` to enhance the translucency with a backdrop blur and saturation filter.
+
+<Example class="bg-dark" code={`<div class="toast toast-translucent" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="text-body-secondary">11 mins ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a translucent toast message.
+    </div>
+  </div>`} />
+
 ### Stacking
 
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.

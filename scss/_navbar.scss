@@ -257,6 +257,21 @@ $navbar-nav-tokens: defaults(
   }
   // scss-docs-end navbar-expand-loop
 
+  .navbar-translucent {
+    position: relative;
+    background-color: transparent;
+
+    &::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      background-color: color-mix(in oklch, var(--navbar-bg, var(--bg-body)) 80%, transparent);
+      background-image: none;
+      backdrop-filter: blur(5px) saturate(180%);
+    }
+  }
+
   .navbar[data-bs-theme="dark"] {
     @include tokens($navbar-dark-tokens);
   }
