@@ -444,6 +444,19 @@ values: map-get-nested($font-sizes, "font-size")
 // Returns: ("xs": clamp(...), "sm": clamp(...), ...)
 ```
 
+#### `negativify-map($map)`
+
+Turns a map into its negative variant by prefixing each key with `n` and negating the value. Keys equal to `0` are skipped. This is used internally to generate negative spacer utilities (e.g., `n1`, `n2`, etc.) from the `$spacers` map.
+
+```scss
+@function negativify-map($map) { ... }
+
+// Example: generate negative spacers from a spacers map
+$spacers: (0: 0, 1: .25rem, 2: .5rem, 3: 1rem);
+$negative-spacers: negativify-map($spacers);
+// Returns: ("n1": -.25rem, "n2": -.5rem, "n3": -1rem)
+```
+
 ### Theme color values
 
 The [`theme-color-values($key)`]([[docsref:/customize/theme]]) function in `scss/_theme.scss` extracts a specific sub-key from every entry in the `$theme-colors` map, returning a flat map of color names to values. Since each theme color is a nested map with sub-keys like `base`, `text`, `bg`, `border`, etc., this function lets you pull one of those sub-keys across all colors at once. It powers most of the color-related utilities in `_utilities.scss`:
