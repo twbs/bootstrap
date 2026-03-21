@@ -1,0 +1,71 @@
+@use "../mixins/transition" as *;
+
+@layer components {
+  .combobox-toggle {
+    display: inline-flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline-end: var(--control-padding-x);
+    text-align: start;
+    cursor: pointer;
+
+    &.show {
+      background-color: var(--bg-1);
+    }
+
+    &:disabled,
+    &.disabled {
+      cursor: not-allowed;
+      opacity: .65;
+    }
+  }
+
+  .combobox-value {
+    display: flex;
+    flex: 1;
+    gap: .5rem;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .combobox-placeholder {
+    color: color-mix(in oklch, currentcolor 65%, transparent);
+  }
+
+  .combobox-caret {
+    flex-shrink: 0;
+    @include transition(transform .2s ease-in-out);
+
+    .show > & {
+      transform: rotate(180deg);
+    }
+  }
+
+  .combobox-toggle + .menu {
+    --menu-max-height: 300px;
+    --menu-overflow-y: auto;
+  }
+
+  .combobox-search {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: var(--menu-padding-x, .25rem);
+    background-color: var(--menu-bg, var(--bg-body));
+  }
+
+  .combobox-search-input {
+    width: 100%;
+  }
+
+  .combobox-no-results {
+    padding: 1rem;
+    font-size: var(--font-size-sm);
+    color: var(--fg-3);
+    text-align: center;
+  }
+}
