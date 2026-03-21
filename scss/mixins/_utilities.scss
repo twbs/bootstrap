@@ -166,7 +166,7 @@
     // Don't add a dash before value key if value key is null (e.g. with shadow class)
     $customClassModifier: "";
     @if $key {
-      @if $customClass == "" and $prefix == "" {
+      @if $customClass == "" {
         $customClassModifier: $key;
       } @else {
         $customClassModifier: "-" + $key;
