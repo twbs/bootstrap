@@ -11,14 +11,12 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* eslint-disable import/namespace */
 import {
   Tooltip,
   Popover,
   Toast,
   Carousel
 } from '../../../../dist/js/bootstrap.bundle.js'
-/* eslint-enable import/namespace */
 
 export default () => {
   // --------

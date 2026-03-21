@@ -12,7 +12,6 @@
  */
 
 import sdk from '@stackblitz/sdk'
-// eslint-disable-next-line import/no-unresolved
 import snippetsContent from './partials/snippets.js?raw'
 
 // These values will be replaced by Astro's Vite plugin
