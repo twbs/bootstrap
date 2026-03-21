@@ -111,7 +111,8 @@
     "watch-js-docs": "nodemon --watch site/src/assets/ --ext js --exec \"npm run js-lint\"",
     "astro-dev": "astro dev --root site --port 9001",
     "astro-build": "astro build --root site && rm -rf _site && cp -r site/dist _site",
-    "astro-preview": "astro preview --root site --port 9001"
+    "astro-preview": "astro preview --root site --port 9001",
+    "spellcheck": "cspell --config .cspell.json \"**/*.{md,mdx}\""
   },
   "peerDependencies": {
     "@floating-ui/dom": "^1.7.6",
@@ -143,6 +144,7 @@
     "bundlewatch": "^0.4.1",
     "clipboard": "^2.0.11",
     "cross-env": "^10.1.0",
+    "cspell": "^9.7.0",
     "eslint": "^10.1.0",
     "eslint-config-xo": "^0.50.0",
     "eslint-plugin-html": "^8.1.4",

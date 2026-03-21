@@ -118,7 +118,7 @@
   .form-control-color {
     @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
-        width: add($form-color-width, $input-height-inner);
+        width: calc($form-color-width + $input-height-inner);
       }
     }
   }
