@@ -321,6 +321,17 @@ const toastElList = document.querySelectorAll('.toast')
 const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
 ```
 
+### Via data attributes
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-dismiss="toast"` | On a close control, dismisses the toast when activated. |
+| `data-bs-autohide` | Whether the toast hides automatically after the delay. |
+| `data-bs-delay` | Time in milliseconds before hiding (when autohide is enabled). |
+| `data-bs-animation` | Whether to use the fade transition when showing and hiding. |
+</BsTable>
+
 ### Triggers
 
 <JsDismiss name="toast" />

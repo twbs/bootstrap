@@ -371,6 +371,19 @@ For multiple selection, the hidden input value is a comma-separated list of sele
 
 ## JavaScript
 
+### Via data attributes
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="combobox"` | Initializes the combobox on the toggle button. |
+| `data-bs-value` | On a `.menu-item`, the value submitted and shown when that option is selected. |
+| `data-bs-search` | Enables the search/filter field inside the menu. |
+| `data-bs-multiple` | Enables multi-select behavior. |
+| `data-bs-name` | `name` of the auto-created hidden input for form submission. |
+| `data-bs-placeholder` | Placeholder text shown in the toggle when nothing is selected. |
+</BsTable>
+
 ### Options
 
 Options can be passed via data attributes on the toggle button (e.g., `data-bs-search="true"`) or as a config object when initializing via JavaScript.

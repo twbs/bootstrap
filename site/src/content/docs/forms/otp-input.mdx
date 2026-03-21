@@ -171,6 +171,13 @@ Use a form label and help text for better accessibility.
 
 Add `data-bs-otp` to your container element to automatically initialize the OTP input behavior.
 
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-otp` | Initializes the OTP input on the container wrapping the digit fields. |
+| `data-bs-mask` | When `true`, uses password fields to mask entered digits. |
+</BsTable>
+
 ```html
 <div class="otp" data-bs-otp>
   <input type="text" class="form-control">

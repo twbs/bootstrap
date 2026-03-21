@@ -166,6 +166,18 @@ const tooltip = new bootstrap.Tooltip('#example', {
 
 </Callout>
 
+### Via data attributes
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="tooltip"` | Initializes the tooltip on the trigger element. |
+| `data-bs-title` | Text (or HTML when allowed) shown in the tooltip body. |
+| `data-bs-placement` | Where to place the tooltip (`top`, `right`, `bottom`, `left`, or responsive variants). |
+| `data-bs-custom-class` | Extra class names added to the tooltip for theming. |
+| `data-bs-html` | When `true`, allows HTML in the title (use with care; prefer plain text for user content). |
+</BsTable>
+
 ### Markup
 
 The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).

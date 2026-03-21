@@ -459,6 +459,14 @@ Dialog sizes are defined in the `$dialog-sizes` Sass map. Each size specifies th
 
 Toggle a dialog without writing JavaScript. Set `data-bs-toggle="dialog"` on a controller element, like a button, along with a `data-bs-target="#foo"` to target a specific dialog to toggle.
 
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="dialog"` | Opens or toggles the dialog from the trigger element. |
+| `data-bs-target` | CSS selector for the dialog element to show or hide. |
+| `data-bs-dismiss="dialog"` | On a control inside the dialog, closes the dialog when activated. |
+</BsTable>
+
 ```html
 <button type="button" data-bs-toggle="dialog" data-bs-target="#myDialog">
   Launch dialog

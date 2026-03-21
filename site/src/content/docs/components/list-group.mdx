@@ -311,9 +311,16 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 </div>
 ```
 
-### Using data attributes
+### Via data attributes
 
 You can activate a list group navigation without writing any JavaScript by simply specifying `data-bs-toggle="list"` or on an element. Use these data attributes on `.list-group-item`.
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="list"` | Activates list-group tab behavior on the item. |
+| `data-bs-target` | Selector for the tab pane (`href` may be used instead for in-page targets). |
+</BsTable>
 
 ```html
 <div role="tabpanel">

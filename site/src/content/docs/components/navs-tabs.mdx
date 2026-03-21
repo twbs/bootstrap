@@ -550,9 +550,17 @@ In general, to facilitate keyboard navigation, it’s recommended to make the ta
 The tab JavaScript plugin **does not** support tabbed interfaces that contain menus, as these cause both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab’s trigger element is not immediately visible (as it’s inside the closed menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.
 </Callout>
 
-### Using data attributes
+### Via data attributes
 
 You can activate a tab or pill navigation without writing any JavaScript by simply specifying `data-bs-toggle="tab"` or `data-bs-toggle="pill"` on an element. Use these data attributes on `.nav-tabs` or `.nav-pills`.
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="tab"` | Activates tab-style navigation on the trigger. |
+| `data-bs-toggle="pill"` | Activates pill-style navigation on the trigger. |
+| `data-bs-target` | CSS selector for the tab pane to show (must pair with a corresponding `.tab-pane`). |
+</BsTable>
 
 ```html
 <!-- Nav tabs -->

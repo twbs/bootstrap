@@ -344,6 +344,13 @@ document.querySelectorAll('#nav-tab>[data-bs-toggle="tab"]').forEach(el => {
 
 To easily add scrollspy behavior to your topbar navigation, add `data-bs-spy="scroll"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-bs-target` attribute with the `id` or class name of the parent element of any Bootstrap `.nav` component.
 
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-spy="scroll"` | Enables ScrollSpy on the scrollable element (often `<body>`). |
+| `data-bs-target` | CSS selector for the nav whose links match sections in the spied element. |
+</BsTable>
+
 ```html
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
   ...
