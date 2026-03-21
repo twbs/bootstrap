@@ -44,24 +44,24 @@ Add the required data attributes and `id` to your navigation to make it tabbable
 To help fit your needs, this works with `<ul>`-based markup, as shown above, or with any arbitrary “roll your own” markup. Note that if you’re using `<nav>`, you shouldn’t add `role="tablist"` directly to it, as this would override the element’s native role as a navigation landmark. Instead, switch to an alternative element (in the example below, a simple `<div>`) and wrap the `<nav>` around it.
 
 <Example class="vstack gap-3" code={`<nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
-      <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" disabled>Disabled</button>
+    <div class="nav nav-tabs" id="nav-tab2" role="tablist">
+      <button class="nav-link active" id="nav-home-tab2" data-bs-toggle="tab" data-bs-target="#nav-home2" type="button" role="tab" aria-controls="nav-home2" aria-selected="true">Home</button>
+      <button class="nav-link" id="nav-profile-tab2" data-bs-toggle="tab" data-bs-target="#nav-profile2" type="button" role="tab" aria-controls="nav-profile2" aria-selected="false">Profile</button>
+      <button class="nav-link" id="nav-contact-tab2" data-bs-toggle="tab" data-bs-target="#nav-contact2" type="button" role="tab" aria-controls="nav-contact2" aria-selected="false">Contact</button>
+      <button class="nav-link" id="nav-disabled-tab2" data-bs-toggle="tab" data-bs-target="#nav-disabled2" type="button" role="tab" aria-controls="nav-disabled2" aria-selected="false" disabled>Disabled</button>
     </div>
   </nav>
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+  <div class="tab-content" id="nav-tabContent2">
+    <div class="tab-pane fade show active" id="nav-home2" role="tabpanel" aria-labelledby="nav-home-tab2" tabindex="0">
       <p>This is some placeholder content the <strong>Home tab’s</strong> associated content.</p>
     </div>
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+    <div class="tab-pane fade" id="nav-profile2" role="tabpanel" aria-labelledby="nav-profile-tab2" tabindex="0">
       <p>This is some placeholder content the <strong>Profile tab’s</strong> associated content.</p>
     </div>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+    <div class="tab-pane fade" id="nav-contact2" role="tabpanel" aria-labelledby="nav-contact-tab2" tabindex="0">
       <p>This is some placeholder content the <strong>Contact tab’s</strong> associated content.</p>
     </div>
-    <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
+    <div class="tab-pane fade" id="nav-disabled2" role="tabpanel" aria-labelledby="nav-disabled-tab2" tabindex="0">
       <p>This is some placeholder content the <strong>Disabled tab’s</strong> associated content.</p>
     </div>
   </div>`} />
@@ -142,7 +142,7 @@ The tab plugin also works with [list groups]([[docsref:/components/list-group]])
     </div>
   </div>
   <div class="col-8">
-    <div class="tab-content" id="nav-tabContent">
+    <div class="tab-content" id="list-tabContent">
       <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
         <p>Some placeholder content in a paragraph relating to "Home".</p>
       </div>
