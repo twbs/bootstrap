@@ -54,7 +54,7 @@ We’ve already created the `my-project` folder and initialized npm. Now we’ll
 
 ```sh
 mkdir {css,scss}
-touch index.html scss/styles.scss postcss.config.js .stylelintrc.json
+touch index.html scss/styles.scss postcss.config.js stylelint.config.mjs
 ```
 
 When you’re done, your project should look like this:
@@ -64,7 +64,7 @@ my-project/
 ├── css/
 ├── scss/
 │   └── styles.scss
-├── .stylelintrc.json
+├── stylelint.config.mjs
 ├── index.html
 ├── package-lock.json
 ├── package.json
@@ -132,11 +132,12 @@ With dependencies installed and our project folder ready for us to start coding,
    }
    ```
 
-4. **Configure `.stylelintrc.json`.** We’re using `stylelint-config-twbs-bootstrap` to keep our Sass linting consistent with Bootstrap’s own code style.
+4. **Configure `stylelint.config.mjs`.** We’re using `stylelint-config-twbs-bootstrap` to keep our Sass linting consistent with Bootstrap’s own code style.
 
-   ```json
-   {
-     "extends": "stylelint-config-twbs-bootstrap"
+   ```js
+   /** @type {import('stylelint').Config} */
+   export default {
+     extends: 'stylelint-config-twbs-bootstrap',
    }
    ```
 
