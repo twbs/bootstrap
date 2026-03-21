@@ -109,7 +109,8 @@
       pages:
         - title: Breadcrumb
         - title: Menu
-        - title: Navs & tabs
+        - title: Nav
+        - title: Tab
         - title: Nav overflow
         - title: Navbar
         - title: Pagination

@@ -88,6 +88,13 @@
     //   margin-top: $spacer;
     // }
 
+    > .tab-content {
+      padding: var(--bs-spacer);
+      min-height: 120px;
+      background-color: var(--bs-bg-1);
+      @include border-radius(var(--bs-border-radius));
+    }
+
     > .menu.position-static {
       max-width: fit-content;
     }

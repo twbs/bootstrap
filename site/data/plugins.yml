@@ -40,7 +40,7 @@
 
 - name: Tab
   description: Allow Bootstrap nav components to toggle contents.
-  link: components/navs-tabs/
+  link: components/tab/
 
 - name: Toast
   description: Show and hide notifications to your visitors.
