@@ -1,18 +1,17 @@
 ---
 title: Offcanvas
-description: Build hidden sidebars into your project for navigation, shopping carts, and more with a few classes and our JavaScript plugin.
+description: Build hidden sidebars or drawers into your project for navigation, shopping carts, and more with a few classes and our JavaScript plugin.
 toc: true
 ---
 
 ## How it works
 
-Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, top, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
+Offcanvas is a drawer component that can be toggled via JavaScript to appear from the left, right, top, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
 
-- Offcanvas shares some of the same JavaScript code as dialogs. Conceptually, they are quite similar, but they are separate plugins.
+- Offcanvas cannot be built off our Dialog component unfortunately, as we rely on it being a responsive feature of our navbar component.
 - When shown, offcanvas includes a default backdrop that can be clicked to hide the offcanvas.
-- Similar to dialogs, only one offcanvas can be shown at a time.
-
-**Heads up!** Given how CSS handles animations, you cannot use `margin` or `translate` on an `.offcanvas` element. Instead, use the class as an independent wrapping element.
+- Only one offcanvas can be shown at a time.
+- Due to how CSS handles animations, you cannot use `margin` or `translate` on an `.offcanvas` element. Instead, use the class as an independent wrapping element.
 
 <Callout name="info-prefersreducedmotion" />
 

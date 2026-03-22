@@ -26,7 +26,7 @@ $offcanvas-tokens: defaults(
     --offcanvas-border-color: var(--border-color-translucent),
     --offcanvas-border-radius: var(--border-radius-lg),
     --offcanvas-box-shadow: var(--box-shadow-lg),
-    --offcanvas-transition: transform .3s ease-in-out,
+    --offcanvas-transition: transform .3s cubic-bezier(.22, 1, .36, 1),
     --offcanvas-title-line-height: 1.5,
   ),
   $offcanvas-tokens
