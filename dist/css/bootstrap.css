@@ -4260,7 +4260,7 @@
 @layer components {
   .btn-close {
     --bs-btn-close-size: 1.25rem;
-    --bs-btn-close-color: var(--bs-fg-body);
+    --bs-btn-close-color: inherit;
     --bs-btn-close-opacity: 0.5;
     --bs-btn-close-hover-opacity: 0.75;
     --bs-btn-close-focus-opacity: 0.85;
@@ -4439,6 +4439,9 @@
     background-color: var(--bs-alert-bg);
     border: var(--bs-alert-border);
     border-radius: var(--bs-alert-border-radius);
+  }
+  .alert > p {
+    margin-bottom: 0;
   }
   .alert-heading {
     color: inherit;
@@ -5553,45 +5556,51 @@
     --bs-dialog-footer-border-color: var(--bs-border-color);
     --bs-dialog-footer-border-width: var(--bs-border-width);
     --bs-dialog-footer-gap: 0.5rem;
-    max-width: var(--bs-dialog-width);
+    width: var(--bs-dialog-width);
+    max-width: 100%;
     max-height: calc(100% - var(--bs-dialog-margin) * 2);
     padding: 0;
     margin: auto;
+    overflow: visible;
     color: var(--bs-dialog-color);
     background-color: var(--bs-dialog-bg);
     background-clip: padding-box;
     border: var(--bs-dialog-border-width) solid var(--bs-dialog-border-color);
     border-radius: var(--bs-dialog-border-radius);
     box-shadow: var(--bs-dialog-box-shadow);
+    opacity: 0;
+    transition: opacity var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), transform var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dialog {
+      transition: none;
+    }
+  }
+  .dialog.dialog-slide-down {
+    transform: translateY(3rem);
+  }
+  .dialog.dialog-slide-up {
+    transform: translateY(-3rem);
+  }
+  .dialog[open] {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    opacity: 1;
+    transform: none;
   }
   .dialog::backdrop {
     background-color: var(--bs-dialog-backdrop-bg);
     -webkit-backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
     backdrop-filter: blur(var(--bs-dialog-backdrop-blur));
-  }
-  .dialog.fade {
-    opacity: 0;
-    transition: opacity 0.15s linear;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .dialog.fade {
-      transition: none;
-    }
-  }
-  .dialog.fade::backdrop {
-    opacity: 0;
-    transition: opacity 0.15s linear;
+    transition: background-color var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing);
+    transition: background-color var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete;
+    transition: background-color var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing), display var(--bs-dialog-transition-duration) allow-discrete, overlay var(--bs-dialog-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-dialog-transition-duration) var(--bs-dialog-transition-timing);
   }
   @media (prefers-reduced-motion: reduce) {
-    .dialog.fade::backdrop {
+    .dialog::backdrop {
       transition: none;
     }
-  }
-  .dialog.fade[open] {
-    opacity: 1;
-  }
-  .dialog.fade[open]::backdrop {
-    opacity: 1;
   }
   .dialog.dialog-static {
     transform: scale(1.02);
@@ -5637,6 +5646,24 @@
   }
   .dialog.dialog-scrollable[open] .dialog-body {
     overflow-y: auto;
+  }
+  @starting-style {
+    .dialog[open] {
+      opacity: 0;
+    }
+    .dialog.dialog-slide-down[open] {
+      opacity: 0;
+      transform: translateY(-3rem);
+    }
+    .dialog.dialog-slide-up[open] {
+      opacity: 0;
+      transform: translateY(3rem);
+    }
+    .dialog::backdrop {
+      background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+    }
   }
   .dialog-sm {
     --bs-dialog-width: 280px;
@@ -5730,7 +5757,6 @@
     position: relative;
     flex: 1 1 auto;
     padding: var(--bs-dialog-padding);
-    overflow-y: auto;
   }
   .dialog-footer {
     display: flex;
@@ -6493,12 +6519,18 @@
   .navbar-expand .navbar-toggler {
     display: none !important;
   }
-  .navbar-expand .offcanvas {
-    position: static;
+  .navbar-expand [class*=offcanvas] {
+    position: static !important;
+    inset: auto !important;
     z-index: auto;
+    display: flex !important;
     flex-grow: 1;
     width: auto !important;
+    max-width: none !important;
     height: auto !important;
+    max-height: none !important;
+    padding: 0;
+    margin: 0;
     visibility: visible !important;
     background-color: transparent !important;
     border: 0 !important;
@@ -6506,12 +6538,12 @@
     box-shadow: none;
     transition: none;
   }
-  .navbar-expand .offcanvas .offcanvas-header {
-    display: none;
+  .navbar-expand [class*=offcanvas] .offcanvas-header {
+    display: none !important;
   }
-  .navbar-expand .offcanvas .offcanvas-body {
+  .navbar-expand [class*=offcanvas] .offcanvas-body {
     display: flex;
-    flex-grow: 0;
+    flex-grow: 1;
     flex-direction: row;
     align-items: center;
     padding: 0;
@@ -6534,12 +6566,18 @@
     .sm\:navbar-expand .navbar-toggler {
       display: none !important;
     }
-    .sm\:navbar-expand .offcanvas {
-      position: static;
+    .sm\:navbar-expand [class*=offcanvas] {
+      position: static !important;
+      inset: auto !important;
       z-index: auto;
+      display: flex !important;
       flex-grow: 1;
       width: auto !important;
+      max-width: none !important;
       height: auto !important;
+      max-height: none !important;
+      padding: 0;
+      margin: 0;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -6547,12 +6585,12 @@
       box-shadow: none;
       transition: none;
     }
-    .sm\:navbar-expand .offcanvas .offcanvas-header {
-      display: none;
+    .sm\:navbar-expand [class*=offcanvas] .offcanvas-header {
+      display: none !important;
     }
-    .sm\:navbar-expand .offcanvas .offcanvas-body {
+    .sm\:navbar-expand [class*=offcanvas] .offcanvas-body {
       display: flex;
-      flex-grow: 0;
+      flex-grow: 1;
       flex-direction: row;
       align-items: center;
       padding: 0;
@@ -6572,12 +6610,18 @@
     .md\:navbar-expand .navbar-toggler {
       display: none !important;
     }
-    .md\:navbar-expand .offcanvas {
-      position: static;
+    .md\:navbar-expand [class*=offcanvas] {
+      position: static !important;
+      inset: auto !important;
       z-index: auto;
+      display: flex !important;
       flex-grow: 1;
       width: auto !important;
+      max-width: none !important;
       height: auto !important;
+      max-height: none !important;
+      padding: 0;
+      margin: 0;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -6585,12 +6629,12 @@
       box-shadow: none;
       transition: none;
     }
-    .md\:navbar-expand .offcanvas .offcanvas-header {
-      display: none;
+    .md\:navbar-expand [class*=offcanvas] .offcanvas-header {
+      display: none !important;
     }
-    .md\:navbar-expand .offcanvas .offcanvas-body {
+    .md\:navbar-expand [class*=offcanvas] .offcanvas-body {
       display: flex;
-      flex-grow: 0;
+      flex-grow: 1;
       flex-direction: row;
       align-items: center;
       padding: 0;
@@ -6610,12 +6654,18 @@
     .lg\:navbar-expand .navbar-toggler {
       display: none !important;
     }
-    .lg\:navbar-expand .offcanvas {
-      position: static;
+    .lg\:navbar-expand [class*=offcanvas] {
+      position: static !important;
+      inset: auto !important;
       z-index: auto;
+      display: flex !important;
       flex-grow: 1;
       width: auto !important;
+      max-width: none !important;
       height: auto !important;
+      max-height: none !important;
+      padding: 0;
+      margin: 0;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -6623,12 +6673,12 @@
       box-shadow: none;
       transition: none;
     }
-    .lg\:navbar-expand .offcanvas .offcanvas-header {
-      display: none;
+    .lg\:navbar-expand [class*=offcanvas] .offcanvas-header {
+      display: none !important;
     }
-    .lg\:navbar-expand .offcanvas .offcanvas-body {
+    .lg\:navbar-expand [class*=offcanvas] .offcanvas-body {
       display: flex;
-      flex-grow: 0;
+      flex-grow: 1;
       flex-direction: row;
       align-items: center;
       padding: 0;
@@ -6648,12 +6698,18 @@
     .xl\:navbar-expand .navbar-toggler {
       display: none !important;
     }
-    .xl\:navbar-expand .offcanvas {
-      position: static;
+    .xl\:navbar-expand [class*=offcanvas] {
+      position: static !important;
+      inset: auto !important;
       z-index: auto;
+      display: flex !important;
       flex-grow: 1;
       width: auto !important;
+      max-width: none !important;
       height: auto !important;
+      max-height: none !important;
+      padding: 0;
+      margin: 0;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -6661,12 +6717,12 @@
       box-shadow: none;
       transition: none;
     }
-    .xl\:navbar-expand .offcanvas .offcanvas-header {
-      display: none;
+    .xl\:navbar-expand [class*=offcanvas] .offcanvas-header {
+      display: none !important;
     }
-    .xl\:navbar-expand .offcanvas .offcanvas-body {
+    .xl\:navbar-expand [class*=offcanvas] .offcanvas-body {
       display: flex;
-      flex-grow: 0;
+      flex-grow: 1;
       flex-direction: row;
       align-items: center;
       padding: 0;
@@ -6686,12 +6742,18 @@
     .\32 xl\:navbar-expand .navbar-toggler {
       display: none !important;
     }
-    .\32 xl\:navbar-expand .offcanvas {
-      position: static;
+    .\32 xl\:navbar-expand [class*=offcanvas] {
+      position: static !important;
+      inset: auto !important;
       z-index: auto;
+      display: flex !important;
       flex-grow: 1;
       width: auto !important;
+      max-width: none !important;
       height: auto !important;
+      max-height: none !important;
+      padding: 0;
+      margin: 0;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -6699,16 +6761,24 @@
       box-shadow: none;
       transition: none;
     }
-    .\32 xl\:navbar-expand .offcanvas .offcanvas-header {
-      display: none;
+    .\32 xl\:navbar-expand [class*=offcanvas] .offcanvas-header {
+      display: none !important;
     }
-    .\32 xl\:navbar-expand .offcanvas .offcanvas-body {
+    .\32 xl\:navbar-expand [class*=offcanvas] .offcanvas-body {
       display: flex;
-      flex-grow: 0;
+      flex-grow: 1;
       flex-direction: row;
       align-items: center;
       padding: 0;
       overflow-y: visible;
+    }
+  }
+  .navbar [class*=offcanvas]:not([open]) {
+    transition: none !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .navbar [class*=offcanvas]:not([open]) {
+      transition: none;
     }
   }
   .navbar-translucent {
@@ -6748,7 +6818,8 @@
   --bs-offcanvas-border-color: var(--bs-border-color-translucent);
   --bs-offcanvas-border-radius: var(--bs-border-radius-lg);
   --bs-offcanvas-box-shadow: var(--bs-box-shadow-lg);
-  --bs-offcanvas-transition: transform 0.3s ease-in-out;
+  --bs-offcanvas-transition-duration: 0.3s;
+  --bs-offcanvas-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
   --bs-offcanvas-title-line-height: 1.5;
 }
 
@@ -6756,20 +6827,25 @@
   @media (width < 576px) {
     .sm\:offcanvas {
       position: fixed;
+      inset: auto;
       z-index: var(--bs-offcanvas-zindex);
       display: flex;
       flex-direction: column;
+      width: auto;
       max-width: calc(100% - var(--bs-offcanvas-inset) * 2);
+      height: auto;
       max-height: calc(100% - var(--bs-offcanvas-inset) * 2);
+      padding: 0;
+      margin: 0;
       color: var(--bs-offcanvas-color);
       visibility: hidden;
       background-color: var(--bs-offcanvas-bg);
       background-clip: padding-box;
       border: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
-      border-radius: var(--bs-offcanvas-border-radius);
       outline: 0;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s var(--bs-offcanvas-transition-duration);
+      border-radius: var(--bs-offcanvas-border-radius);
       box-shadow: var(--bs-offcanvas-box-shadow);
-      transition: var(--bs-offcanvas-transition);
     }
   }
   @media (width < 576px) and (prefers-reduced-motion: reduce) {
@@ -6782,29 +6858,29 @@
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-start: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .sm\:offcanvas:where(.offcanvas-start) {
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     .sm\:offcanvas:where(.offcanvas-end) {
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-end: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .sm\:offcanvas:where(.offcanvas-end) {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .sm\:offcanvas:where(.offcanvas-top) {
       inset: var(--bs-offcanvas-inset) var(--bs-offcanvas-inset) auto;
       height: var(--bs-offcanvas-height);
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .sm\:offcanvas:where(.offcanvas-bottom) {
       inset: auto var(--bs-offcanvas-inset) var(--bs-offcanvas-inset);
       height: var(--bs-offcanvas-height);
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
     .sm\:offcanvas:where(.offcanvas-fullscreen) {
       inset: var(--bs-offcanvas-inset);
@@ -6812,27 +6888,58 @@
       max-width: none;
       height: auto;
       max-height: none;
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
-    .sm\:offcanvas.showing, .sm\:offcanvas.show:not(.hiding) {
+    .sm\:offcanvas[open] {
+      visibility: visible;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s;
       transform: none;
     }
-    .sm\:offcanvas.showing, .sm\:offcanvas.hiding, .sm\:offcanvas.show {
-      visibility: visible;
+  }
+  @media (width < 576px) and (prefers-reduced-motion: reduce) {
+    .sm\:offcanvas[open] {
+      transition: none;
     }
   }
   @media (width >= 576px) {
     .sm\:offcanvas {
       --bs-offcanvas-height: auto;
       --bs-offcanvas-border-width: 0;
+      position: static !important;
+      inset: auto;
+      z-index: auto;
+      display: flex !important;
+      flex-grow: 1;
+      width: auto !important;
+      max-width: none;
+      height: auto !important;
+      max-height: none;
+      padding: 0;
+      margin: 0;
+      visibility: visible !important;
       background-color: transparent !important;
+      border: 0 !important;
+      transform: none !important;
+      transition: none !important;
+      border-radius: 0;
+      box-shadow: none;
     }
+  }
+  @media (width >= 576px) and (prefers-reduced-motion: reduce) {
+    .sm\:offcanvas {
+      transition: none;
+    }
+  }
+  @media (width >= 576px) {
     .sm\:offcanvas .offcanvas-header {
       display: none;
     }
     .sm\:offcanvas .offcanvas-body {
+      display: flex;
       flex-grow: 0;
       flex-direction: row;
+      align-items: center;
+      width: 100%;
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
@@ -6841,20 +6948,25 @@
   @media (width < 768px) {
     .md\:offcanvas {
       position: fixed;
+      inset: auto;
       z-index: var(--bs-offcanvas-zindex);
       display: flex;
       flex-direction: column;
+      width: auto;
       max-width: calc(100% - var(--bs-offcanvas-inset) * 2);
+      height: auto;
       max-height: calc(100% - var(--bs-offcanvas-inset) * 2);
+      padding: 0;
+      margin: 0;
       color: var(--bs-offcanvas-color);
       visibility: hidden;
       background-color: var(--bs-offcanvas-bg);
       background-clip: padding-box;
       border: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
-      border-radius: var(--bs-offcanvas-border-radius);
       outline: 0;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s var(--bs-offcanvas-transition-duration);
+      border-radius: var(--bs-offcanvas-border-radius);
       box-shadow: var(--bs-offcanvas-box-shadow);
-      transition: var(--bs-offcanvas-transition);
     }
   }
   @media (width < 768px) and (prefers-reduced-motion: reduce) {
@@ -6867,29 +6979,29 @@
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-start: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .md\:offcanvas:where(.offcanvas-start) {
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     .md\:offcanvas:where(.offcanvas-end) {
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-end: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .md\:offcanvas:where(.offcanvas-end) {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .md\:offcanvas:where(.offcanvas-top) {
       inset: var(--bs-offcanvas-inset) var(--bs-offcanvas-inset) auto;
       height: var(--bs-offcanvas-height);
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .md\:offcanvas:where(.offcanvas-bottom) {
       inset: auto var(--bs-offcanvas-inset) var(--bs-offcanvas-inset);
       height: var(--bs-offcanvas-height);
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
     .md\:offcanvas:where(.offcanvas-fullscreen) {
       inset: var(--bs-offcanvas-inset);
@@ -6897,27 +7009,58 @@
       max-width: none;
       height: auto;
       max-height: none;
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
-    .md\:offcanvas.showing, .md\:offcanvas.show:not(.hiding) {
+    .md\:offcanvas[open] {
+      visibility: visible;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s;
       transform: none;
     }
-    .md\:offcanvas.showing, .md\:offcanvas.hiding, .md\:offcanvas.show {
-      visibility: visible;
+  }
+  @media (width < 768px) and (prefers-reduced-motion: reduce) {
+    .md\:offcanvas[open] {
+      transition: none;
     }
   }
   @media (width >= 768px) {
     .md\:offcanvas {
       --bs-offcanvas-height: auto;
       --bs-offcanvas-border-width: 0;
+      position: static !important;
+      inset: auto;
+      z-index: auto;
+      display: flex !important;
+      flex-grow: 1;
+      width: auto !important;
+      max-width: none;
+      height: auto !important;
+      max-height: none;
+      padding: 0;
+      margin: 0;
+      visibility: visible !important;
       background-color: transparent !important;
+      border: 0 !important;
+      transform: none !important;
+      transition: none !important;
+      border-radius: 0;
+      box-shadow: none;
     }
+  }
+  @media (width >= 768px) and (prefers-reduced-motion: reduce) {
+    .md\:offcanvas {
+      transition: none;
+    }
+  }
+  @media (width >= 768px) {
     .md\:offcanvas .offcanvas-header {
       display: none;
     }
     .md\:offcanvas .offcanvas-body {
+      display: flex;
       flex-grow: 0;
       flex-direction: row;
+      align-items: center;
+      width: 100%;
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
@@ -6926,20 +7069,25 @@
   @media (width < 1024px) {
     .lg\:offcanvas {
       position: fixed;
+      inset: auto;
       z-index: var(--bs-offcanvas-zindex);
       display: flex;
       flex-direction: column;
+      width: auto;
       max-width: calc(100% - var(--bs-offcanvas-inset) * 2);
+      height: auto;
       max-height: calc(100% - var(--bs-offcanvas-inset) * 2);
+      padding: 0;
+      margin: 0;
       color: var(--bs-offcanvas-color);
       visibility: hidden;
       background-color: var(--bs-offcanvas-bg);
       background-clip: padding-box;
       border: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
-      border-radius: var(--bs-offcanvas-border-radius);
       outline: 0;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s var(--bs-offcanvas-transition-duration);
+      border-radius: var(--bs-offcanvas-border-radius);
       box-shadow: var(--bs-offcanvas-box-shadow);
-      transition: var(--bs-offcanvas-transition);
     }
   }
   @media (width < 1024px) and (prefers-reduced-motion: reduce) {
@@ -6952,29 +7100,29 @@
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-start: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .lg\:offcanvas:where(.offcanvas-start) {
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     .lg\:offcanvas:where(.offcanvas-end) {
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-end: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .lg\:offcanvas:where(.offcanvas-end) {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .lg\:offcanvas:where(.offcanvas-top) {
       inset: var(--bs-offcanvas-inset) var(--bs-offcanvas-inset) auto;
       height: var(--bs-offcanvas-height);
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .lg\:offcanvas:where(.offcanvas-bottom) {
       inset: auto var(--bs-offcanvas-inset) var(--bs-offcanvas-inset);
       height: var(--bs-offcanvas-height);
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
     .lg\:offcanvas:where(.offcanvas-fullscreen) {
       inset: var(--bs-offcanvas-inset);
@@ -6982,27 +7130,58 @@
       max-width: none;
       height: auto;
       max-height: none;
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
-    .lg\:offcanvas.showing, .lg\:offcanvas.show:not(.hiding) {
+    .lg\:offcanvas[open] {
+      visibility: visible;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s;
       transform: none;
     }
-    .lg\:offcanvas.showing, .lg\:offcanvas.hiding, .lg\:offcanvas.show {
-      visibility: visible;
+  }
+  @media (width < 1024px) and (prefers-reduced-motion: reduce) {
+    .lg\:offcanvas[open] {
+      transition: none;
     }
   }
   @media (width >= 1024px) {
     .lg\:offcanvas {
       --bs-offcanvas-height: auto;
       --bs-offcanvas-border-width: 0;
+      position: static !important;
+      inset: auto;
+      z-index: auto;
+      display: flex !important;
+      flex-grow: 1;
+      width: auto !important;
+      max-width: none;
+      height: auto !important;
+      max-height: none;
+      padding: 0;
+      margin: 0;
+      visibility: visible !important;
       background-color: transparent !important;
+      border: 0 !important;
+      transform: none !important;
+      transition: none !important;
+      border-radius: 0;
+      box-shadow: none;
     }
+  }
+  @media (width >= 1024px) and (prefers-reduced-motion: reduce) {
+    .lg\:offcanvas {
+      transition: none;
+    }
+  }
+  @media (width >= 1024px) {
     .lg\:offcanvas .offcanvas-header {
       display: none;
     }
     .lg\:offcanvas .offcanvas-body {
+      display: flex;
       flex-grow: 0;
       flex-direction: row;
+      align-items: center;
+      width: 100%;
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
@@ -7011,20 +7190,25 @@
   @media (width < 1280px) {
     .xl\:offcanvas {
       position: fixed;
+      inset: auto;
       z-index: var(--bs-offcanvas-zindex);
       display: flex;
       flex-direction: column;
+      width: auto;
       max-width: calc(100% - var(--bs-offcanvas-inset) * 2);
+      height: auto;
       max-height: calc(100% - var(--bs-offcanvas-inset) * 2);
+      padding: 0;
+      margin: 0;
       color: var(--bs-offcanvas-color);
       visibility: hidden;
       background-color: var(--bs-offcanvas-bg);
       background-clip: padding-box;
       border: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
-      border-radius: var(--bs-offcanvas-border-radius);
       outline: 0;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s var(--bs-offcanvas-transition-duration);
+      border-radius: var(--bs-offcanvas-border-radius);
       box-shadow: var(--bs-offcanvas-box-shadow);
-      transition: var(--bs-offcanvas-transition);
     }
   }
   @media (width < 1280px) and (prefers-reduced-motion: reduce) {
@@ -7037,29 +7221,29 @@
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-start: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .xl\:offcanvas:where(.offcanvas-start) {
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     .xl\:offcanvas:where(.offcanvas-end) {
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-end: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .xl\:offcanvas:where(.offcanvas-end) {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .xl\:offcanvas:where(.offcanvas-top) {
       inset: var(--bs-offcanvas-inset) var(--bs-offcanvas-inset) auto;
       height: var(--bs-offcanvas-height);
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .xl\:offcanvas:where(.offcanvas-bottom) {
       inset: auto var(--bs-offcanvas-inset) var(--bs-offcanvas-inset);
       height: var(--bs-offcanvas-height);
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
     .xl\:offcanvas:where(.offcanvas-fullscreen) {
       inset: var(--bs-offcanvas-inset);
@@ -7067,27 +7251,58 @@
       max-width: none;
       height: auto;
       max-height: none;
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
-    .xl\:offcanvas.showing, .xl\:offcanvas.show:not(.hiding) {
+    .xl\:offcanvas[open] {
+      visibility: visible;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s;
       transform: none;
     }
-    .xl\:offcanvas.showing, .xl\:offcanvas.hiding, .xl\:offcanvas.show {
-      visibility: visible;
+  }
+  @media (width < 1280px) and (prefers-reduced-motion: reduce) {
+    .xl\:offcanvas[open] {
+      transition: none;
     }
   }
   @media (width >= 1280px) {
     .xl\:offcanvas {
       --bs-offcanvas-height: auto;
       --bs-offcanvas-border-width: 0;
+      position: static !important;
+      inset: auto;
+      z-index: auto;
+      display: flex !important;
+      flex-grow: 1;
+      width: auto !important;
+      max-width: none;
+      height: auto !important;
+      max-height: none;
+      padding: 0;
+      margin: 0;
+      visibility: visible !important;
       background-color: transparent !important;
+      border: 0 !important;
+      transform: none !important;
+      transition: none !important;
+      border-radius: 0;
+      box-shadow: none;
     }
+  }
+  @media (width >= 1280px) and (prefers-reduced-motion: reduce) {
+    .xl\:offcanvas {
+      transition: none;
+    }
+  }
+  @media (width >= 1280px) {
     .xl\:offcanvas .offcanvas-header {
       display: none;
     }
     .xl\:offcanvas .offcanvas-body {
+      display: flex;
       flex-grow: 0;
       flex-direction: row;
+      align-items: center;
+      width: 100%;
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
@@ -7096,20 +7311,25 @@
   @media (width < 1536px) {
     .\32 xl\:offcanvas {
       position: fixed;
+      inset: auto;
       z-index: var(--bs-offcanvas-zindex);
       display: flex;
       flex-direction: column;
+      width: auto;
       max-width: calc(100% - var(--bs-offcanvas-inset) * 2);
+      height: auto;
       max-height: calc(100% - var(--bs-offcanvas-inset) * 2);
+      padding: 0;
+      margin: 0;
       color: var(--bs-offcanvas-color);
       visibility: hidden;
       background-color: var(--bs-offcanvas-bg);
       background-clip: padding-box;
       border: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
-      border-radius: var(--bs-offcanvas-border-radius);
       outline: 0;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s var(--bs-offcanvas-transition-duration);
+      border-radius: var(--bs-offcanvas-border-radius);
       box-shadow: var(--bs-offcanvas-box-shadow);
-      transition: var(--bs-offcanvas-transition);
     }
   }
   @media (width < 1536px) and (prefers-reduced-motion: reduce) {
@@ -7122,29 +7342,29 @@
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-start: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .\32 xl\:offcanvas:where(.offcanvas-start) {
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     .\32 xl\:offcanvas:where(.offcanvas-end) {
       inset-block: var(--bs-offcanvas-inset);
       inset-inline-end: var(--bs-offcanvas-inset);
       width: var(--bs-offcanvas-width);
-      transform: translateX(100%);
+      transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
     }
     :root:dir(rtl) .\32 xl\:offcanvas:where(.offcanvas-end) {
-      transform: translateX(-100%);
+      transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .\32 xl\:offcanvas:where(.offcanvas-top) {
       inset: var(--bs-offcanvas-inset) var(--bs-offcanvas-inset) auto;
       height: var(--bs-offcanvas-height);
-      transform: translateY(-100%);
+      transform: translateY(calc(-100% - var(--bs-offcanvas-inset)));
     }
     .\32 xl\:offcanvas:where(.offcanvas-bottom) {
       inset: auto var(--bs-offcanvas-inset) var(--bs-offcanvas-inset);
       height: var(--bs-offcanvas-height);
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
     .\32 xl\:offcanvas:where(.offcanvas-fullscreen) {
       inset: var(--bs-offcanvas-inset);
@@ -7152,27 +7372,58 @@
       max-width: none;
       height: auto;
       max-height: none;
-      transform: translateY(100%);
+      transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
     }
-    .\32 xl\:offcanvas.showing, .\32 xl\:offcanvas.show:not(.hiding) {
+    .\32 xl\:offcanvas[open] {
+      visibility: visible;
+      transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s;
       transform: none;
     }
-    .\32 xl\:offcanvas.showing, .\32 xl\:offcanvas.hiding, .\32 xl\:offcanvas.show {
-      visibility: visible;
+  }
+  @media (width < 1536px) and (prefers-reduced-motion: reduce) {
+    .\32 xl\:offcanvas[open] {
+      transition: none;
     }
   }
   @media (width >= 1536px) {
     .\32 xl\:offcanvas {
       --bs-offcanvas-height: auto;
       --bs-offcanvas-border-width: 0;
+      position: static !important;
+      inset: auto;
+      z-index: auto;
+      display: flex !important;
+      flex-grow: 1;
+      width: auto !important;
+      max-width: none;
+      height: auto !important;
+      max-height: none;
+      padding: 0;
+      margin: 0;
+      visibility: visible !important;
       background-color: transparent !important;
+      border: 0 !important;
+      transform: none !important;
+      transition: none !important;
+      border-radius: 0;
+      box-shadow: none;
     }
+  }
+  @media (width >= 1536px) and (prefers-reduced-motion: reduce) {
+    .\32 xl\:offcanvas {
+      transition: none;
+    }
+  }
+  @media (width >= 1536px) {
     .\32 xl\:offcanvas .offcanvas-header {
       display: none;
     }
     .\32 xl\:offcanvas .offcanvas-body {
+      display: flex;
       flex-grow: 0;
       flex-direction: row;
+      align-items: center;
+      width: 100%;
       padding: 0;
       overflow-y: visible;
       background-color: transparent !important;
@@ -7180,53 +7431,60 @@
   }
   .offcanvas {
     position: fixed;
+    inset: auto;
     z-index: var(--bs-offcanvas-zindex);
     display: flex;
     flex-direction: column;
+    width: auto;
     max-width: calc(100% - var(--bs-offcanvas-inset) * 2);
+    height: auto;
     max-height: calc(100% - var(--bs-offcanvas-inset) * 2);
+    padding: 0;
+    margin: 0;
     color: var(--bs-offcanvas-color);
     visibility: hidden;
     background-color: var(--bs-offcanvas-bg);
     background-clip: padding-box;
     border: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
-    border-radius: var(--bs-offcanvas-border-radius);
     outline: 0;
-    box-shadow: var(--bs-offcanvas-box-shadow);
-    transition: var(--bs-offcanvas-transition);
+    transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s var(--bs-offcanvas-transition-duration);
   }
   @media (prefers-reduced-motion: reduce) {
     .offcanvas {
       transition: none;
     }
   }
+  .offcanvas {
+    border-radius: var(--bs-offcanvas-border-radius);
+    box-shadow: var(--bs-offcanvas-box-shadow);
+  }
   .offcanvas:where(.offcanvas-start) {
     inset-block: var(--bs-offcanvas-inset);
     inset-inline-start: var(--bs-offcanvas-inset);
     width: var(--bs-offcanvas-width);
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
   }
   :root:dir(rtl) .offcanvas:where(.offcanvas-start) {
-    transform: translateX(100%);
+    transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
   }
   .offcanvas:where(.offcanvas-end) {
     inset-block: var(--bs-offcanvas-inset);
     inset-inline-end: var(--bs-offcanvas-inset);
     width: var(--bs-offcanvas-width);
-    transform: translateX(100%);
+    transform: translateX(calc(100% + var(--bs-offcanvas-inset)));
   }
   :root:dir(rtl) .offcanvas:where(.offcanvas-end) {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - var(--bs-offcanvas-inset)));
   }
   .offcanvas:where(.offcanvas-top) {
     inset: var(--bs-offcanvas-inset) var(--bs-offcanvas-inset) auto;
     height: var(--bs-offcanvas-height);
-    transform: translateY(-100%);
+    transform: translateY(calc(-100% - var(--bs-offcanvas-inset)));
   }
   .offcanvas:where(.offcanvas-bottom) {
     inset: auto var(--bs-offcanvas-inset) var(--bs-offcanvas-inset);
     height: var(--bs-offcanvas-height);
-    transform: translateY(100%);
+    transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
   }
   .offcanvas:where(.offcanvas-fullscreen) {
     inset: var(--bs-offcanvas-inset);
@@ -7234,30 +7492,240 @@
     max-width: none;
     height: auto;
     max-height: none;
-    transform: translateY(100%);
+    transform: translateY(calc(100% + var(--bs-offcanvas-inset)));
   }
-  .offcanvas.showing, .offcanvas.show:not(.hiding) {
+  .offcanvas[open] {
+    visibility: visible;
+    transition: transform var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), visibility 0s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .offcanvas[open] {
+      transition: none;
+    }
+  }
+  .offcanvas[open] {
     transform: none;
   }
-  .offcanvas.showing, .offcanvas.hiding, .offcanvas.show {
-    visibility: visible;
-  }
-  .offcanvas-backdrop {
+  .sm\:offcanvas::backdrop {
     --bs-offcanvas-backdrop-bg: var(--bs-bg-body);
     --bs-offcanvas-backdrop-opacity: 25%;
     --bs-offcanvas-backdrop-blur: 8px;
-    position: fixed;
-    inset: 0;
-    z-index: 1040;
+    --bs-offcanvas-inset: var(--bs-spacer);
+    --bs-offcanvas-zindex: 1045;
+    --bs-offcanvas-width: 400px;
+    --bs-offcanvas-height: 30vh;
+    --bs-offcanvas-padding-x: var(--bs-spacer);
+    --bs-offcanvas-padding-y: var(--bs-spacer);
+    --bs-offcanvas-color: var(--bs-fg-body);
+    --bs-offcanvas-bg: var(--bs-bg-body);
+    --bs-offcanvas-border-width: var(--bs-border-width);
+    --bs-offcanvas-border-color: var(--bs-border-color-translucent);
+    --bs-offcanvas-border-radius: var(--bs-border-radius-lg);
+    --bs-offcanvas-box-shadow: var(--bs-box-shadow-lg);
+    --bs-offcanvas-transition-duration: 0.3s;
+    --bs-offcanvas-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --bs-offcanvas-title-line-height: 1.5;
     background-color: color-mix(in oklch, var(--bs-offcanvas-backdrop-bg) var(--bs-offcanvas-backdrop-opacity), transparent);
     -webkit-backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
     backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete;
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
   }
-  .offcanvas-backdrop.fade {
-    opacity: 0;
+  @media (prefers-reduced-motion: reduce) {
+    .sm\:offcanvas::backdrop {
+      transition: none;
+    }
   }
-  .offcanvas-backdrop.show {
-    opacity: 1;
+  .md\:offcanvas::backdrop {
+    --bs-offcanvas-backdrop-bg: var(--bs-bg-body);
+    --bs-offcanvas-backdrop-opacity: 25%;
+    --bs-offcanvas-backdrop-blur: 8px;
+    --bs-offcanvas-inset: var(--bs-spacer);
+    --bs-offcanvas-zindex: 1045;
+    --bs-offcanvas-width: 400px;
+    --bs-offcanvas-height: 30vh;
+    --bs-offcanvas-padding-x: var(--bs-spacer);
+    --bs-offcanvas-padding-y: var(--bs-spacer);
+    --bs-offcanvas-color: var(--bs-fg-body);
+    --bs-offcanvas-bg: var(--bs-bg-body);
+    --bs-offcanvas-border-width: var(--bs-border-width);
+    --bs-offcanvas-border-color: var(--bs-border-color-translucent);
+    --bs-offcanvas-border-radius: var(--bs-border-radius-lg);
+    --bs-offcanvas-box-shadow: var(--bs-box-shadow-lg);
+    --bs-offcanvas-transition-duration: 0.3s;
+    --bs-offcanvas-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --bs-offcanvas-title-line-height: 1.5;
+    background-color: color-mix(in oklch, var(--bs-offcanvas-backdrop-bg) var(--bs-offcanvas-backdrop-opacity), transparent);
+    -webkit-backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete;
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .md\:offcanvas::backdrop {
+      transition: none;
+    }
+  }
+  .lg\:offcanvas::backdrop {
+    --bs-offcanvas-backdrop-bg: var(--bs-bg-body);
+    --bs-offcanvas-backdrop-opacity: 25%;
+    --bs-offcanvas-backdrop-blur: 8px;
+    --bs-offcanvas-inset: var(--bs-spacer);
+    --bs-offcanvas-zindex: 1045;
+    --bs-offcanvas-width: 400px;
+    --bs-offcanvas-height: 30vh;
+    --bs-offcanvas-padding-x: var(--bs-spacer);
+    --bs-offcanvas-padding-y: var(--bs-spacer);
+    --bs-offcanvas-color: var(--bs-fg-body);
+    --bs-offcanvas-bg: var(--bs-bg-body);
+    --bs-offcanvas-border-width: var(--bs-border-width);
+    --bs-offcanvas-border-color: var(--bs-border-color-translucent);
+    --bs-offcanvas-border-radius: var(--bs-border-radius-lg);
+    --bs-offcanvas-box-shadow: var(--bs-box-shadow-lg);
+    --bs-offcanvas-transition-duration: 0.3s;
+    --bs-offcanvas-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --bs-offcanvas-title-line-height: 1.5;
+    background-color: color-mix(in oklch, var(--bs-offcanvas-backdrop-bg) var(--bs-offcanvas-backdrop-opacity), transparent);
+    -webkit-backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete;
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lg\:offcanvas::backdrop {
+      transition: none;
+    }
+  }
+  .xl\:offcanvas::backdrop {
+    --bs-offcanvas-backdrop-bg: var(--bs-bg-body);
+    --bs-offcanvas-backdrop-opacity: 25%;
+    --bs-offcanvas-backdrop-blur: 8px;
+    --bs-offcanvas-inset: var(--bs-spacer);
+    --bs-offcanvas-zindex: 1045;
+    --bs-offcanvas-width: 400px;
+    --bs-offcanvas-height: 30vh;
+    --bs-offcanvas-padding-x: var(--bs-spacer);
+    --bs-offcanvas-padding-y: var(--bs-spacer);
+    --bs-offcanvas-color: var(--bs-fg-body);
+    --bs-offcanvas-bg: var(--bs-bg-body);
+    --bs-offcanvas-border-width: var(--bs-border-width);
+    --bs-offcanvas-border-color: var(--bs-border-color-translucent);
+    --bs-offcanvas-border-radius: var(--bs-border-radius-lg);
+    --bs-offcanvas-box-shadow: var(--bs-box-shadow-lg);
+    --bs-offcanvas-transition-duration: 0.3s;
+    --bs-offcanvas-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --bs-offcanvas-title-line-height: 1.5;
+    background-color: color-mix(in oklch, var(--bs-offcanvas-backdrop-bg) var(--bs-offcanvas-backdrop-opacity), transparent);
+    -webkit-backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete;
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .xl\:offcanvas::backdrop {
+      transition: none;
+    }
+  }
+  .\32 xl\:offcanvas::backdrop {
+    --bs-offcanvas-backdrop-bg: var(--bs-bg-body);
+    --bs-offcanvas-backdrop-opacity: 25%;
+    --bs-offcanvas-backdrop-blur: 8px;
+    --bs-offcanvas-inset: var(--bs-spacer);
+    --bs-offcanvas-zindex: 1045;
+    --bs-offcanvas-width: 400px;
+    --bs-offcanvas-height: 30vh;
+    --bs-offcanvas-padding-x: var(--bs-spacer);
+    --bs-offcanvas-padding-y: var(--bs-spacer);
+    --bs-offcanvas-color: var(--bs-fg-body);
+    --bs-offcanvas-bg: var(--bs-bg-body);
+    --bs-offcanvas-border-width: var(--bs-border-width);
+    --bs-offcanvas-border-color: var(--bs-border-color-translucent);
+    --bs-offcanvas-border-radius: var(--bs-border-radius-lg);
+    --bs-offcanvas-box-shadow: var(--bs-box-shadow-lg);
+    --bs-offcanvas-transition-duration: 0.3s;
+    --bs-offcanvas-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --bs-offcanvas-title-line-height: 1.5;
+    background-color: color-mix(in oklch, var(--bs-offcanvas-backdrop-bg) var(--bs-offcanvas-backdrop-opacity), transparent);
+    -webkit-backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete;
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .\32 xl\:offcanvas::backdrop {
+      transition: none;
+    }
+  }
+  .offcanvas::backdrop {
+    --bs-offcanvas-backdrop-bg: var(--bs-bg-body);
+    --bs-offcanvas-backdrop-opacity: 25%;
+    --bs-offcanvas-backdrop-blur: 8px;
+    --bs-offcanvas-inset: var(--bs-spacer);
+    --bs-offcanvas-zindex: 1045;
+    --bs-offcanvas-width: 400px;
+    --bs-offcanvas-height: 30vh;
+    --bs-offcanvas-padding-x: var(--bs-spacer);
+    --bs-offcanvas-padding-y: var(--bs-spacer);
+    --bs-offcanvas-color: var(--bs-fg-body);
+    --bs-offcanvas-bg: var(--bs-bg-body);
+    --bs-offcanvas-border-width: var(--bs-border-width);
+    --bs-offcanvas-border-color: var(--bs-border-color-translucent);
+    --bs-offcanvas-border-radius: var(--bs-border-radius-lg);
+    --bs-offcanvas-box-shadow: var(--bs-box-shadow-lg);
+    --bs-offcanvas-transition-duration: 0.3s;
+    --bs-offcanvas-transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --bs-offcanvas-title-line-height: 1.5;
+    background-color: color-mix(in oklch, var(--bs-offcanvas-backdrop-bg) var(--bs-offcanvas-backdrop-opacity), transparent);
+    -webkit-backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    backdrop-filter: blur(var(--bs-offcanvas-backdrop-blur));
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete;
+    transition: background-color var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing), display var(--bs-offcanvas-transition-duration) allow-discrete, overlay var(--bs-offcanvas-transition-duration) allow-discrete, -webkit-backdrop-filter var(--bs-offcanvas-transition-duration) var(--bs-offcanvas-transition-timing);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .offcanvas::backdrop {
+      transition: none;
+    }
+  }
+  @starting-style {
+    .sm\:offcanvas::backdrop {
+      background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+    }
+    .md\:offcanvas::backdrop {
+      background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+    }
+    .lg\:offcanvas::backdrop {
+      background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+    }
+    .xl\:offcanvas::backdrop {
+      background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+    }
+    .\32 xl\:offcanvas::backdrop {
+      background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+    }
+    .offcanvas::backdrop {
+      background-color: transparent;
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+    }
+  }
+  .offcanvas-static {
+    transform: scale(1.02);
   }
   .offcanvas-translucent {
     background-color: color-mix(in oklch, var(--bs-offcanvas-bg) 80%, transparent);
@@ -7939,29 +8407,31 @@
 @layer components {
   .toast {
     --bs-toast-zindex: 1090;
-    --bs-toast-padding-x: 0.75rem;
-    --bs-toast-padding-y: 0.5rem;
+    --bs-toast-padding-x: 1rem;
+    --bs-toast-padding-y: 0.75rem;
     --bs-toast-spacing: 1.5rem;
     --bs-toast-max-width: 350px;
-    --bs-toast-font-size: 0.875rem;
-    --bs-toast-bg: rgba(var(--bs-body-bg-rgb), 0.85);
+    --bs-toast-font-size: var(--bs-font-size-sm);
+    --bs-toast-bg: var(--bs-bg-body);
     --bs-toast-border-width: var(--bs-border-width);
     --bs-toast-border-color: var(--bs-border-color-translucent);
-    --bs-toast-border-radius: var(--bs-border-radius);
     --bs-toast-box-shadow: var(--bs-box-shadow);
     --bs-toast-header-color: var(--bs-fg-3);
-    --bs-toast-header-bg: rgba(var(--bs-body-bg-rgb), 0.85);
+    --bs-toast-header-bg: var(--bs-bg-1);
     --bs-toast-header-border-color: var(--bs-border-color-translucent);
+    display: flex;
+    flex-direction: column;
     width: var(--bs-toast-max-width);
     max-width: 100%;
+    overflow: hidden;
     font-size: var(--bs-toast-font-size);
-    color: var(--bs-toast-color);
+    color: var(--bs-toast-color, var(--bs-fg-body));
     pointer-events: auto;
     background-color: var(--bs-toast-bg);
     background-clip: padding-box;
-    border: var(--bs-toast-border-width) solid var(--bs-toast-border-color);
+    border: var(--bs-toast-border-width) solid var(--bs-theme-border, var(--bs-toast-border-color));
     box-shadow: var(--bs-toast-box-shadow);
-    border-radius: var(--bs-toast-border-radius);
+    border-radius: var(--bs-toast-border-radius, var(--bs-border-radius-lg));
   }
   .toast.showing {
     opacity: 0;
@@ -7984,16 +8454,14 @@
     display: flex;
     align-items: center;
     padding: var(--bs-toast-padding-y) var(--bs-toast-padding-x);
-    color: var(--bs-toast-header-color);
-    background-color: var(--bs-toast-header-bg);
-    background-clip: padding-box;
-    border-block-end: var(--bs-toast-border-width) solid var(--bs-toast-header-border-color);
-    border-start-start-radius: calc(var(--bs-toast-border-radius) - var(--bs-toast-border-width));
-    border-start-end-radius: calc(var(--bs-toast-border-radius) - var(--bs-toast-border-width));
+    color: var(--bs-theme-text-emphasis, var(--bs-toast-header-color));
+    background-color: var(--bs-theme-bg-subtle, var(--bs-toast-header-bg));
+    border-block-end: var(--bs-toast-border-width, var(--bs-border-width)) solid var(--bs-theme-border, var(--bs-toast-header-border-color, var(--bs-border-color-translucent)));
   }
   .toast-header .btn-close {
-    margin-inline-start: var(--bs-toast-padding-x);
-    margin-inline-end: calc(-0.5 * var(--bs-toast-padding-x));
+    margin-inline-start: calc(0.5 * var(--bs-toast-padding-x));
+    margin-inline-end: calc(-0.25 * var(--bs-toast-padding-x));
+    color: inherit;
   }
   .toast-translucent {
     -webkit-backdrop-filter: blur(5px) saturate(180%);

@@ -222,7 +222,11 @@ class Tooltip extends BaseComponent {
 
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
 
-    const { container } = this._config
+    let { container } = this._config
+    const closestDialog = this._element.closest('dialog[open]')
+    if (closestDialog && container === document.body) {
+      container = closestDialog
+    }
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip)

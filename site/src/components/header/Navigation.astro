@@ -63,7 +63,7 @@ const { addedIn, layout, title } = Astro.props
     </div>
 
     {/* Main navigation - offcanvas on mobile, inline on desktop */}
-    <div
+    <dialog
       class="lg:offcanvas offcanvas-end flex-grow-1 offcanvas-fit-content"
       tabindex="-1"
       id="bdNavbar"
@@ -113,6 +113,6 @@ const { addedIn, layout, title } = Astro.props
           </li>
         </ul>
       </div>
-    </div>
+    </dialog>
   </nav>
 </header>

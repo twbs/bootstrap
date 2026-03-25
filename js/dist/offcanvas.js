@@ -3,14 +3,11 @@
   * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
-import BaseComponent from './base-component.js';
+import DialogBase from './dialog-base.js';
 import EventHandler from './dom/event-handler.js';
 import SelectorEngine from './dom/selector-engine.js';
-import Backdrop from './util/backdrop.js';
 import { enableDismissTrigger } from './util/component-functions.js';
-import FocusTrap from './util/focustrap.js';
 import { isDisabled, isVisible } from './util/index.js';
-import ScrollBarHelper from './util/scrollbar.js';
 
 /**
  * --------------------------------------------------------------------------
@@ -29,20 +26,12 @@ const DATA_KEY = 'bs.offcanvas';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
-const ESCAPE_KEY = 'Escape';
-const CLASS_NAME_SHOW = 'show';
-const CLASS_NAME_SHOWING = 'showing';
-const CLASS_NAME_HIDING = 'hiding';
-const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
-const OPEN_SELECTOR = '.offcanvas.show';
 const EVENT_SHOW = `show${EVENT_KEY}`;
 const EVENT_SHOWN = `shown${EVENT_KEY}`;
 const EVENT_HIDE = `hide${EVENT_KEY}`;
-const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
 const EVENT_RESIZE = `resize${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
-const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY}`;
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="offcanvas"]';
 const Default = {
   backdrop: true,
@@ -59,15 +48,7 @@ const DefaultType = {
  * Class definition
  */
 
-class Offcanvas extends BaseComponent {
-  constructor(element, config) {
-    super(element, config);
-    this._isShown = false;
-    this._backdrop = this._initializeBackDrop();
-    this._focustrap = this._initializeFocusTrap();
-    this._addEventListeners();
-  }
-
+class Offcanvas extends DialogBase {
   // Getters
   static get Default() {
     return Default;
@@ -81,10 +62,10 @@ class Offcanvas extends BaseComponent {
 
   // Public
   toggle(relatedTarget) {
-    return this._isShown ? this.hide() : this.show(relatedTarget);
+    return this._element.open ? this.hide() : this.show(relatedTarget);
   }
   show(relatedTarget) {
-    if (this._isShown) {
+    if (this._element.open || this._isTransitioning) {
       return;
     }
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
@@ -93,92 +74,50 @@ class Offcanvas extends BaseComponent {
     if (showEvent.defaultPrevented) {
       return;
     }
-    this._isShown = true;
-    this._backdrop.show();
-    if (!this._config.scroll) {
-      new ScrollBarHelper().hide();
-    }
-    this._element.setAttribute('aria-modal', true);
-    this._element.setAttribute('role', 'dialog');
-    this._element.classList.add(CLASS_NAME_SHOWING);
-    const completeCallBack = () => {
-      if (!this._config.scroll || this._config.backdrop) {
-        this._focustrap.activate();
-      }
-      this._element.classList.add(CLASS_NAME_SHOW);
-      this._element.classList.remove(CLASS_NAME_SHOWING);
+    this._isTransitioning = true;
+
+    // Determine modal mode:
+    // - Use showModal() (modal) when backdrop is enabled or scroll is disabled
+    // - Use show() (non-modal) when backdrop is false AND scroll is true
+    //   (matches behavior where focus trap is skipped for this combo)
+    const useModal = Boolean(this._config.backdrop) || !this._config.scroll;
+    this._showElement({
+      modal: useModal,
+      preventBodyScroll: !this._config.scroll
+    });
+
+    // CSS @starting-style handles the entry animation automatically.
+    // Wait for the transform transition to complete, then fire shown.
+    this._queueCallback(() => {
+      this._isTransitioning = false;
       EventHandler.trigger(this._element, EVENT_SHOWN, {
         relatedTarget
       });
-    };
-    this._queueCallback(completeCallBack, this._element, true);
+    }, this._element, true);
   }
   hide() {
-    if (!this._isShown) {
+    if (!this._element.open || this._isTransitioning) {
       return;
     }
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE);
     if (hideEvent.defaultPrevented) {
       return;
     }
-    this._focustrap.deactivate();
-    this._element.blur();
-    this._isShown = false;
-    this._element.classList.add(CLASS_NAME_HIDING);
-    this._backdrop.hide();
-    const completeCallback = () => {
-      this._element.classList.remove(CLASS_NAME_SHOW, CLASS_NAME_HIDING);
-      this._element.removeAttribute('aria-modal');
-      this._element.removeAttribute('role');
-      if (!this._config.scroll) {
-        new ScrollBarHelper().reset();
-      }
+    this._isTransitioning = true;
+
+    // Call close() immediately — CSS handles the exit animation via
+    // transition-behavior: allow-discrete on display and overlay,
+    // keeping the element visible and in the top layer until complete.
+    this._hideElement();
+    this._queueCallback(() => {
+      this._isTransitioning = false;
       EventHandler.trigger(this._element, EVENT_HIDDEN);
-    };
-    this._queueCallback(completeCallback, this._element, true);
-  }
-  dispose() {
-    this._backdrop.dispose();
-    this._focustrap.deactivate();
-    super.dispose();
+    }, this._element, true);
   }
 
   // Private
-  _initializeBackDrop() {
-    const clickCallback = () => {
-      if (this._config.backdrop === 'static') {
-        EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
-        return;
-      }
-      this.hide();
-    };
-
-    // 'static' option will be translated to true, and booleans will keep their value
-    const isVisible = Boolean(this._config.backdrop);
-    return new Backdrop({
-      className: CLASS_NAME_BACKDROP,
-      isVisible,
-      isAnimated: true,
-      rootElement: this._element.parentNode,
-      clickCallback: isVisible ? clickCallback : null
-    });
-  }
-  _initializeFocusTrap() {
-    return new FocusTrap({
-      trapElement: this._element
-    });
-  }
-  _addEventListeners() {
-    EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
-      if (event.key !== ESCAPE_KEY) {
-        return;
-      }
-      if (this._config.keyboard) {
-        this.hide();
-        return;
-      }
-      EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
-    });
+  _getStaticClassName() {
+    return 'offcanvas-static';
   }
 }
 
@@ -195,14 +134,14 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     return;
   }
   EventHandler.one(target, EVENT_HIDDEN, () => {
-    // focus on trigger when it is closed
+    // Focus on trigger when it is closed
     if (isVisible(this)) {
       this.focus();
     }
   });
 
-  // avoid conflict when clicking a toggler of an offcanvas, while another is open
-  const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR);
+  // Avoid conflict when clicking a toggler of an offcanvas, while another is open
+  const alreadyOpen = SelectorEngine.findOne('dialog.offcanvas[open]');
   if (alreadyOpen && alreadyOpen !== target) {
     Offcanvas.getInstance(alreadyOpen).hide();
   }
@@ -210,12 +149,12 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   data.toggle(this);
 });
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  for (const selector of SelectorEngine.find(OPEN_SELECTOR)) {
+  for (const selector of SelectorEngine.find('dialog.offcanvas[open]')) {
     Offcanvas.getOrCreateInstance(selector).show();
   }
 });
 EventHandler.on(window, EVENT_RESIZE, () => {
-  for (const element of SelectorEngine.find('[aria-modal][class*=show][class*=offcanvas-]')) {
+  for (const element of SelectorEngine.find('dialog[open][class*="\\:offcanvas"]')) {
     if (getComputedStyle(element).position !== 'fixed') {
       Offcanvas.getOrCreateInstance(element).hide();
     }

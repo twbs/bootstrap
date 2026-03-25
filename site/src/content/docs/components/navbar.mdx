@@ -18,7 +18,7 @@ Here's a navbar that includes most supported sub-components and a responsive rig
           <path d="M1 3.5h14M1 8h14M1 12.5h14"/>
         </svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -53,7 +53,7 @@ Here's a navbar that includes most supported sub-components and a responsive rig
             </button>
           </form>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -141,7 +141,7 @@ Please note that you should also add the `aria-current` attribute on the active 
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarNavLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -162,7 +162,7 @@ Please note that you should also add the `aria-current` attribute on the active 
             </li>
           </ul>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -174,7 +174,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNavAltMarkup" aria-labelledby="navbarNavAltMarkupLabel">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarNavAltMarkup" aria-labelledby="navbarNavAltMarkupLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarNavAltMarkupLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -187,7 +187,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
           </div>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -199,7 +199,7 @@ You can also use menus in your navbar. Menus require a wrapping element for posi
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNavMenu" aria-controls="navbarNavMenu" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarNavMenu" aria-labelledby="navbarNavMenuLabel">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarNavMenu" aria-labelledby="navbarNavMenuLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarNavMenuLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -227,7 +227,7 @@ You can also use menus in your navbar. Menus require a wrapping element for posi
             </li>
           </ul>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -296,7 +296,7 @@ Mix and match with other components and utilities as needed.
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarText" aria-labelledby="navbarTextLabel">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarText" aria-labelledby="navbarTextLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarTextLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -317,7 +317,7 @@ Mix and match with other components and utilities as needed.
             Navbar text with an inline element
           </span>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -333,7 +333,7 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
           <path d="M1 3.5h14M1 8h14M1 12.5h14"/>
         </svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarDarkOffcanvas" aria-labelledby="navbarDarkOffcanvasLabel">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarDarkOffcanvas" aria-labelledby="navbarDarkOffcanvasLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarDarkOffcanvasLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -368,7 +368,7 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
             </button>
           </form>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -404,7 +404,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
     </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarColor01" aria-labelledby="navbarColor01Label">
+    <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarColor01" aria-labelledby="navbarColor01Label">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="navbarColor01Label">Menu</h5>
         <CloseButton dismiss="offcanvas" />
@@ -429,7 +429,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
           <button class="btn btn-outline theme-secondary" type="submit">Search</button>
         </form>
       </div>
-    </div>
+    </dialog>
   </div>
 </nav>
 
@@ -439,7 +439,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
     </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarColor02" aria-labelledby="navbarColor02Label">
+    <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarColor02" aria-labelledby="navbarColor02Label">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="navbarColor02Label">Menu</h5>
         <CloseButton dismiss="offcanvas" />
@@ -464,7 +464,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
           <button class="btn btn-solid theme-inverse" type="submit">Search</button>
         </form>
       </div>
-    </div>
+    </dialog>
   </div>
 </nav>
 
@@ -474,7 +474,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
     </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarColor03" aria-labelledby="navbarColor03Label">
+    <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarColor03" aria-labelledby="navbarColor03Label">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="navbarColor03Label">Menu</h5>
         <CloseButton dismiss="offcanvas" />
@@ -499,7 +499,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
       </div>
-    </div>
+    </dialog>
   </div>
 </nav>
 `} />
@@ -573,7 +573,7 @@ These examples omit the `.lg:navbar-expand` class to always show the drawer beha
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarLeftDrawer" aria-controls="navbarLeftDrawer" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarLeftDrawer" aria-labelledby="navbarLeftDrawerLabel">
+      <dialog class="offcanvas offcanvas-start" tabindex="-1" id="navbarLeftDrawer" aria-labelledby="navbarLeftDrawerLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarLeftDrawerLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -585,7 +585,7 @@ These examples omit the `.lg:navbar-expand` class to always show the drawer beha
             <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Disabled</a></li>
           </ul>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -595,7 +595,7 @@ These examples omit the `.lg:navbar-expand` class to always show the drawer beha
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarTopDrawer" aria-controls="navbarTopDrawer" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-top" tabindex="-1" id="navbarTopDrawer" aria-labelledby="navbarTopDrawerLabel">
+      <dialog class="offcanvas offcanvas-top" tabindex="-1" id="navbarTopDrawer" aria-labelledby="navbarTopDrawerLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarTopDrawerLabel">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -607,7 +607,7 @@ These examples omit the `.lg:navbar-expand` class to always show the drawer beha
             <li class="nav-item"><a class="nav-link disabled" aria-disabled="true">Disabled</a></li>
           </ul>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -624,7 +624,7 @@ With no `.navbar-brand` shown (hidden inside the drawer):
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarTogglerDemo01" aria-labelledby="navbarTogglerDemo01Label">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarTogglerDemo01" aria-labelledby="navbarTogglerDemo01Label">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarTogglerDemo01Label">Hidden brand</h5>
           <CloseButton dismiss="offcanvas" />
@@ -641,7 +641,7 @@ With no `.navbar-brand` shown (hidden inside the drawer):
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -653,7 +653,7 @@ With a brand name shown on the left and toggler on the right:
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarTogglerDemo02" aria-labelledby="navbarTogglerDemo02Label">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarTogglerDemo02" aria-labelledby="navbarTogglerDemo02Label">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarTogglerDemo02Label">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -669,7 +669,7 @@ With a brand name shown on the left and toggler on the right:
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -681,7 +681,7 @@ With a toggler on the left and brand name on the right:
         <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
       </button>
       <a class="navbar-brand" href="#">Navbar</a>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarTogglerDemo03" aria-labelledby="navbarTogglerDemo03Label">
+      <dialog class="offcanvas offcanvas-end" tabindex="-1" id="navbarTogglerDemo03" aria-labelledby="navbarTogglerDemo03Label">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="navbarTogglerDemo03Label">Menu</h5>
           <CloseButton dismiss="offcanvas" />
@@ -697,7 +697,7 @@ With a toggler on the left and brand name on the right:
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
-      </div>
+      </dialog>
     </div>
   </nav>`} />
 
@@ -705,7 +705,7 @@ With a toggler on the left and brand name on the right:
 
 Sometimes you want to use the offcanvas plugin to trigger a container element for content that structurally sits outside of the `.navbar`. Because our plugin works on the `id` and `data-bs-target` matching, that's easily done!
 
-<ResizableExample code={`<div class="offcanvas offcanvas-top" tabindex="-1" id="navbarToggleExternalContent" data-bs-theme="dark" aria-labelledby="navbarToggleExternalContentLabel">
+<ResizableExample code={`<dialog class="offcanvas offcanvas-top" tabindex="-1" id="navbarToggleExternalContent" data-bs-theme="dark" aria-labelledby="navbarToggleExternalContentLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="navbarToggleExternalContentLabel">Collapsed content</h5>
       <CloseButton dismiss="offcanvas" />
@@ -713,7 +713,7 @@ Sometimes you want to use the offcanvas plugin to trigger a container element fo
     <div class="offcanvas-body">
       <span class="text-body-secondary">Toggleable via the navbar toggler.</span>
     </div>
-  </div>
+  </dialog>
   <nav class="navbar bg-body" data-bs-theme="dark">
     <div class="container-fluid">
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">

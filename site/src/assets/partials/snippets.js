@@ -75,6 +75,16 @@ export default () => {
   }
   // js-docs-end live-toast
 
+  const dialogToastTrigger = document.getElementById('dialogToastBtn')
+  const dialogToastEl = document.getElementById('dialogToast')
+
+  if (dialogToastTrigger) {
+    const dialogToast = Toast.getOrCreateInstance(dialogToastEl)
+    dialogToastTrigger.addEventListener('click', () => {
+      dialogToast.show()
+    })
+  }
+
   // -------------------------------
   // Alerts
   // -------------------------------
