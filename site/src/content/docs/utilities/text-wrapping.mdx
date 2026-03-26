@@ -34,10 +34,6 @@ Prevent long strings of text from breaking your components' layout by using `.te
 
 <Example code={`<p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>`} />
 
-<Callout type="warning">
-Note that [breaking words isn't possible in Arabic](https://rtlstyling.com/posts/rtl-styling#3.-line-break), which is the most used RTL language. Therefore `.text-break` is removed from our RTL compiled CSS.
-</Callout>
-
 ## CSS
 
 ### Sass utilities API
@@ -57,6 +53,5 @@ Text wrapping utilities are declared in our utilities API in `scss/_utilities.sc
   property: word-wrap word-break,
   class: text,
   values: (break: break-word),
-  rtl: false
 ),
 ```
