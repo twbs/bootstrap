@@ -181,9 +181,13 @@ class Tooltip extends BaseComponent {
     this._disposeFloating();
     const tip = this._getTipElement();
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'));
-    const {
+    let {
       container
     } = this._config;
+    const closestDialog = this._element.closest('dialog[open]');
+    if (closestDialog && container === document.body) {
+      container = closestDialog;
+    }
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip);
       EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED));
