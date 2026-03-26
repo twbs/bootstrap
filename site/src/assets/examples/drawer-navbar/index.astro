@@ -1,22 +1,22 @@
 ---
 import { getVersionedDocsPath } from '@libs/path'
 
-export const title = 'Offcanvas navbar template'
-export const extra_css = ['offcanvas-navbar.css']
-export const extra_js = [{ src: 'offcanvas-navbar.js' }]
+export const title = 'Drawer navbar template'
+export const extra_css = ['drawer-navbar.css']
+export const extra_js = [{ src: 'drawer-navbar.js' }]
 export const body_class = 'bg-body-tertiary'
-export const aliases = '/docs/[[config:docs_version]]/examples/offcanvas/'
+export const aliases = '/docs/[[config:docs_version]]/examples/drawer/'
 import Placeholder from "@shortcodes/Placeholder.astro"
 ---
 
 <nav class="navbar lg:navbar-expand fixed-top navbar-dark bg-dark" aria-label="Main navigation">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Offcanvas navbar</a>
+    <a class="navbar-brand" href="#">Drawer navbar</a>
     <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
       <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
     </button>
 
-    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+    <div class="navbar-collapse drawer-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav me-auto mb-2 lg:mb-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Dashboard</a>

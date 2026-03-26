@@ -67,7 +67,7 @@ export const extra_js = [
       </button>
     </li>
     <li class="nav-item text-nowrap">
-      <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="nav-link px-3 text-white" type="button" data-bs-toggle="drawer" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="bi" aria-hidden="true"><use href="#list"/></svg>
       </button>
     </li>
@@ -81,12 +81,12 @@ export const extra_js = [
 <div class="container-fluid">
   <div class="row">
     <div class="sidebar border border-right md:col-3 lg:col-2 p-0 bg-body-tertiary">
-      <dialog class="md:offcanvas offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="sidebarMenuLabel">Company name</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+      <dialog class="md:drawer drawer-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="sidebarMenuLabel">Company name</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="drawer" data-bs-target="#sidebarMenu" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body md:d-flex flex-column p-0 lg:pt-3 overflow-y-auto">
+        <div class="drawer-body md:d-flex flex-column p-0 lg:pt-3 overflow-y-auto">
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">

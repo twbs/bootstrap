@@ -46,7 +46,7 @@
     - name: Features
       description: 'Explain the features, benefits, or other details in your marketing content.'
     - name: Sidebars
-      description: 'Common navigation patterns ideal for offcanvas or multi-column layouts.'
+      description: 'Common navigation patterns ideal for drawer or multi-column layouts.'
     - name: Footers
       description: 'Finish every page strong with an awesome footer, big or small.'
     # - name: Menus
@@ -107,16 +107,16 @@
   examples:
     - name: Navbars
       description: 'Demonstration of all responsive and container options for the navbar.'
-    - name: Navbars offcanvas
-      description: 'Same as the Navbars example, but with our offcanvas component.'
+    - name: Navbars drawer
+      description: 'Same as the Navbars example, but with our drawer component.'
     - name: Navbar static
       description: 'Single navbar example of a static top navbar along with some additional content.'
     - name: Navbar fixed
       description: 'Single navbar example with a fixed top navbar along with some additional content.'
     - name: Navbar bottom
       description: 'Single navbar example with a bottom navbar along with some additional content.'
-    - name: Offcanvas navbar
-      description: "Turn your expandable navbar into a sliding offcanvas menu (doesn't use our offcanvas component)."
+    - name: Drawer navbar
+      description: "Turn your expandable navbar into a sliding drawer menu (doesn't use our drawer component)."
 
 - category: Integrations
   description: 'Integrations with external libraries.'

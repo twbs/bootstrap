@@ -206,11 +206,11 @@ $navbar-nav-tokens: defaults(
       display: none !important; // stylelint-disable-line declaration-no-important
     }
 
-    [class*="offcanvas"] {
+    [class*="drawer"] {
       // stylelint-disable declaration-no-important
       // Reset native <dialog> UA styles and below-breakpoint drawer styles.
       // Must use !important to override both UA <dialog> defaults and the
-      // responsive offcanvas styles from media-breakpoint-down().
+      // responsive drawer styles from media-breakpoint-down().
       position: static !important;
       inset: auto !important;
       z-index: auto;
@@ -230,11 +230,11 @@ $navbar-nav-tokens: defaults(
       @include transition(none);
       // stylelint-enable declaration-no-important
 
-      .offcanvas-header {
+      .drawer-header {
         display: none !important; // stylelint-disable-line declaration-no-important
       }
 
-      .offcanvas-body {
+      .drawer-body {
         display: flex;
         flex-grow: 1;
         flex-direction: row;
@@ -266,15 +266,15 @@ $navbar-nav-tokens: defaults(
   }
   // scss-docs-end navbar-expand-loop
 
-  // Prevent offcanvas flash on breakpoint crossing.
+  // Prevent drawer flash on breakpoint crossing.
   // When the navbar crosses from expanded (inline) to collapsed (drawer),
-  // the offcanvas transitions from visibility:visible to visibility:hidden.
+  // the drawer transitions from visibility:visible to visibility:hidden.
   // Without this override, the slide transition plays — briefly showing the
   // panel sliding away. Disabling transitions when not [open] ensures only
   // intentional show/hide actions animate.
   // stylelint-disable-next-line no-duplicate-selectors
   .navbar {
-    [class*="offcanvas"]:not([open]) {
+    [class*="drawer"]:not([open]):not(.hiding) {
       @include transition(none !important);
     }
   }

@@ -160,9 +160,29 @@ Tooltips, popovers, toasts, and menus all work inside modal dialogs. Modal dialo
     </div>
   </dialog>`} />
 
-## Sliding
+## Animations
 
-Add `.dialog-slide-down` or `.dialog-slide-up` to the `<dialog>` element for a vertical slide entrance instead of the default fade.
+### Instant
+
+By default, dialogs animate with a fade on open and close. To disable animations, add `.dialog-instant` to the `<dialog>` element.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#instantDialog">
+    Instant dialog
+  </button>
+
+  <dialog class="dialog dialog-instant" id="instantDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Instant dialog</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This dialog doesn’t animate and appears instantly on open and close.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
+    </div>
+  </dialog>`} />
 
 ### Slide down
 

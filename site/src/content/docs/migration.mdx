@@ -76,7 +76,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | CSS Grid | `.g-col-md-4` | `.md:g-col-4` |
 | Containers | `.container-sm` | `.sm:container` |
 | Navbar | `.navbar-expand-md` | `.md:navbar-expand` |
-| Offcanvas | `.offcanvas-md` | `.md:offcanvas` |
+| Drawer | `.offcanvas-md` | `.md:drawer` |
 | Tables | `.table-responsive-md` | `.md:table-responsive` |
 | List group | `.list-group-horizontal-md` | `.md:list-group-horizontal` |
 | Sticky | `.sticky-md-top` | `.md:sticky-top` |
@@ -149,6 +149,19 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed the `jspm` configuration from `package.json`.
 - Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap's plugins register at the top level.
 - Added `"exports"` map to `package.json` for explicit subpath access to source, dist, and Sass files.
+
+### Components
+
+- **Offcanvas renamed to Drawer.** All class names, data attributes, events, CSS variables, and JavaScript APIs have been renamed:
+  - CSS classes: `.offcanvas` &rarr; `.drawer`, `.offcanvas-start` &rarr; `.drawer-start`, `.offcanvas-header` &rarr; `.drawer-header`, etc.
+  - Data attributes: `data-bs-toggle="offcanvas"` &rarr; `data-bs-toggle="drawer"`, `data-bs-dismiss="offcanvas"` &rarr; `data-bs-dismiss="drawer"`
+  - JavaScript: `bootstrap.Offcanvas` &rarr; `bootstrap.Drawer`
+  - Events: `show.bs.offcanvas` &rarr; `show.bs.drawer`, etc.
+  - CSS variables: `--offcanvas-*` &rarr; `--drawer-*`
+  - Sass: `$zindex-offcanvas` &rarr; `$zindex-drawer`
+- **New `.drawer-sheet` variant** for flush-to-edge panels with no inset, border-radius, or shadow.
+- **Swipe-to-dismiss** gesture support on touch devices for Drawer components. Drawers automatically detect their placement and dismiss on the appropriate swipe direction.
+- **Dialog and Drawer share `DialogBase`** — the show/hide/toggle lifecycle, keyboard handling, backdrop clicks, and static backdrop bounce are consolidated in a shared base class.
 
 ### Reboot
 

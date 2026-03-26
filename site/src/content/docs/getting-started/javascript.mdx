@@ -16,9 +16,9 @@ Curious which components explicitly require our JavaScript and Floating UI or Va
 - Datepicker for date selection (also requires [Vanilla Calendar Pro](https://vanilla-calendar.pro/))
 - Menus for displaying and positioning (also requires [Floating UI](https://floating-ui.com/))
 - Modals for displaying, positioning, and scroll behavior
-- Navbar for extending our Collapse and Offcanvas plugins to implement responsive behaviors
+- Navbar for extending our Collapse and Drawer plugins to implement responsive behaviors
 - [Nav]([[docsref:/components/nav]]) for navigation markup and styles; [Tab]([[docsref:/components/tab]]) plugin for toggling tab panes
-- Offcanvases for displaying, positioning, and scroll behavior
+- Draweres for displaying, positioning, and scroll behavior
 - Scrollspy for scroll behavior and navigation updates
 - Toasts for displaying and dismissing
 - Tooltips and popovers for displaying and positioning (also requires [Floating UI](https://floating-ui.com/))
@@ -173,7 +173,7 @@ In addition to the `getInstance` and `getOrCreateInstance` methods, all plugin c
 ```js
 const dialog = new bootstrap.Dialog('#myDialog')
 const menu = new bootstrap.Menu('[data-bs-toggle="menu"]')
-const offcanvas = bootstrap.Offcanvas.getInstance('#myOffcanvas')
+const drawer = bootstrap.Drawer.getInstance('#myDrawer')
 const alert = bootstrap.Alert.getOrCreateInstance('#myAlert')
 ```
 

@@ -4,6 +4,7 @@
 @use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/dialog-shared" as *;
 @use "mixins/transition" as *;
 @use "mixins/tokens" as *;
 
@@ -65,7 +66,10 @@ $dialog-sizes: defaults(
   .dialog {
     @include tokens($dialog-tokens);
 
-    // Reset native dialog styles
+    // Override UA display:none so visibility controls the hidden state,
+    // enabling reliable cross-browser exit animations after close().
+    display: flex;
+    flex-direction: column;
     width: var(--dialog-width);
     max-width: 100%;
     max-height: calc(100% - var(--dialog-margin) * 2);
@@ -73,60 +77,79 @@ $dialog-sizes: defaults(
     margin: auto;
     overflow: visible;
     color: var(--dialog-color);
+    visibility: hidden;
     background-color: var(--dialog-bg);
     background-clip: padding-box;
     border: var(--dialog-border-width) solid var(--dialog-border-color);
     @include border-radius(var(--dialog-border-radius));
     @include box-shadow(var(--dialog-box-shadow));
 
-    // Exit state: faded out
-    opacity: 0;
+    // Animated variant (default) — transitions, opacity fade, slide transforms.
+    // Adding .dialog-instant skips all animations (instant show/hide).
+    &:not(.dialog-instant) {
+      // Exit state: faded out
+      opacity: 0;
 
-    // Transitions on the base so they apply to both entry and exit.
-    // display/overlay use allow-discrete to keep the element visible
-    // and in the top layer throughout the exit animation.
-    @include transition(
-      opacity var(--dialog-transition-duration) var(--dialog-transition-timing),
-      transform var(--dialog-transition-duration) var(--dialog-transition-timing),
-      display var(--dialog-transition-duration) allow-discrete,
-      overlay var(--dialog-transition-duration) allow-discrete
-    );
+      // Exit transition: opacity and transform animate out, then visibility
+      // flips hidden after the animation completes (via the delay).
+      @include transition(
+        opacity var(--dialog-transition-duration) var(--dialog-transition-timing),
+        transform var(--dialog-transition-duration) var(--dialog-transition-timing),
+        visibility 0s var(--dialog-transition-duration)
+      );
 
-    // Slide-down variant: enters from above, exits below.
-    // Must come BEFORE [open] so that [open]'s transform: none wins by source order.
-    &.dialog-slide-down {
-      transform: translateY(3rem);
+      // Slide-down variant: enters from above, exits below.
+      &.dialog-slide-down {
+        transform: translateY(3rem);
+      }
+
+      // Slide-up variant: enters from below, exits above.
+      &.dialog-slide-up {
+        transform: translateY(-3rem);
+      }
+
+      // Open state: visible and faded in.
+      // Entry transition: visibility flips visible immediately (0s, no delay),
+      // then opacity and transform animate in.
+      &[open] {
+        overflow: visible;
+        visibility: visible;
+        opacity: 1;
+        @include transition(
+          opacity var(--dialog-transition-duration) var(--dialog-transition-timing),
+          transform var(--dialog-transition-duration) var(--dialog-transition-timing),
+          visibility 0s
+        );
+        transform: none;
+      }
+
+      // Static backdrop "bounce" animation (modal dialogs only)
+      &.dialog-static {
+        transform: scale(1.02);
+      }
+
+      // Native backdrop styling with transitions
+      &::backdrop {
+        background-color: var(--dialog-backdrop-bg);
+        backdrop-filter: blur(var(--dialog-backdrop-blur));
+        @include backdrop-transitions(var(--dialog-transition-duration), var(--dialog-transition-timing));
+      }
     }
 
-    // Slide-up variant: enters from below, exits above.
-    &.dialog-slide-up {
-      transform: translateY(-3rem);
+    // Instant variant — no transitions, just snap visibility
+    &.dialog-instant {
+      &::backdrop {
+        background-color: var(--dialog-backdrop-bg);
+        backdrop-filter: blur(var(--dialog-backdrop-blur));
+      }
     }
 
-    // Open state: visible and faded in
+    // Open state base (always applies, regardless of animation mode)
     &[open] {
-      display: flex;
-      flex-direction: column;
       overflow: visible;
+      visibility: visible;
       opacity: 1;
       transform: none;
-    }
-
-    // Native backdrop styling via ::backdrop pseudo-element
-    &::backdrop {
-      background-color: var(--dialog-backdrop-bg);
-      backdrop-filter: blur(var(--dialog-backdrop-blur));
-      @include transition(
-        background-color var(--dialog-transition-duration) var(--dialog-transition-timing),
-        backdrop-filter var(--dialog-transition-duration) var(--dialog-transition-timing),
-        display var(--dialog-transition-duration) allow-discrete,
-        overlay var(--dialog-transition-duration) allow-discrete
-      );
-    }
-
-    // Static backdrop "bounce" animation (modal dialogs only)
-    &.dialog-static {
-      transform: scale(1.02);
     }
 
     // Non-modal dialog positioning
@@ -173,8 +196,6 @@ $dialog-sizes: defaults(
 
     // Scrollable dialog body (header/footer stay fixed)
     &.dialog-scrollable[open] {
-      display: flex;
-      flex-direction: column;
       max-height: calc(100% - var(--dialog-margin) * 2);
 
       .dialog-body {
@@ -186,25 +207,23 @@ $dialog-sizes: defaults(
   // Entry animations via @starting-style.
   // Slide variants need this because the base transform is the EXIT position,
   // but entry must start from the opposite direction.
-  // ::backdrop also needs it since it only exists in the top layer.
+  // ::backdrop needs it since it only exists in the top layer.
+  // Default dialog (fade only) does NOT need @starting-style — the base
+  // opacity: 0 state serves as the entry-from state with visibility trick.
   @starting-style {
-    .dialog[open] {
-      opacity: 0;
-    }
-
     // Slide-down: enters from above (negative Y), slides down into view
-    .dialog.dialog-slide-down[open] {
+    .dialog:not(.dialog-instant).dialog-slide-down[open] {
       opacity: 0;
       transform: translateY(-3rem);
     }
 
     // Slide-up: enters from below (positive Y), slides up into view
-    .dialog.dialog-slide-up[open] {
+    .dialog:not(.dialog-instant).dialog-slide-up[open] {
       opacity: 0;
       transform: translateY(3rem);
     }
 
-    .dialog::backdrop {
+    .dialog:not(.dialog-instant)::backdrop {
       background-color: transparent;
       backdrop-filter: blur(0);
     }
@@ -249,10 +268,7 @@ $dialog-sizes: defaults(
 
   // Dialog header
   .dialog-header {
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    padding: var(--dialog-header-padding);
+    @include dialog-header(var(--dialog-header-padding));
     border-block-end: var(--dialog-header-border-width) solid var(--dialog-header-border-color);
 
     .btn-close {
@@ -262,27 +278,18 @@ $dialog-sizes: defaults(
 
   // Dialog title
   .dialog-title {
-    margin-bottom: 0;
+    @include dialog-title();
     font-size: var(--font-size-md);
-    line-height: 1.5;
   }
 
   // Dialog body
   .dialog-body {
     position: relative;
-    flex: 1 1 auto;
-    padding: var(--dialog-padding);
+    @include dialog-body(var(--dialog-padding));
   }
 
   // Dialog footer
   .dialog-footer {
-    display: flex;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    gap: var(--dialog-footer-gap);
-    align-items: center;
-    justify-content: flex-end;
-    padding: var(--dialog-footer-padding);
-    border-block-start: var(--dialog-footer-border-width) solid var(--dialog-footer-border-color);
+    @include dialog-footer(var(--dialog-footer-padding), var(--dialog-footer-gap), var(--dialog-footer-border-width), var(--dialog-footer-border-color));
   }
 }

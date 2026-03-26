@@ -8,7 +8,7 @@ body {
 }
 
 @media (max-width: 991.98px) {
-  .offcanvas-collapse {
+  .drawer-collapse {
     position: fixed;
     top: 56px; /* Height of navbar */
     bottom: 0;
@@ -21,7 +21,7 @@ body {
     background-color: #343a40;
     transition: transform .3s ease-in-out, visibility .3s ease-in-out;
   }
-  .offcanvas-collapse.open {
+  .drawer-collapse.open {
     visibility: visible;
     transform: translateX(-100%);
   }

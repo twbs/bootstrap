@@ -225,12 +225,12 @@
     }
   }
 
-  .bd-example-offcanvas {
-    .offcanvas {
+  .bd-example-drawer {
+    .drawer {
       position: static;
       display: block;
       height: 200px;
-      margin: var(--offcanvas-inset);
+      margin: var(--drawer-inset);
       visibility: visible;
       transform: translate(0);
     }
