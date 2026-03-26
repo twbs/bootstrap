@@ -115,8 +115,6 @@
       description: 'Single navbar example with a fixed top navbar along with some additional content.'
     - name: Navbar bottom
       description: 'Single navbar example with a bottom navbar along with some additional content.'
-    - name: Drawer navbar
-      description: "Turn your expandable navbar into a sliding drawer menu (doesn't use our drawer component)."
 
 - category: Integrations
   description: 'Integrations with external libraries.'
