@@ -108,6 +108,7 @@
 
   &.has-validation {
     > :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
+    > .form-select:nth-last-child(n + 3),
     > .dropdown-toggle:nth-last-child(n + 4),
     > .form-floating:nth-last-child(n + 3) > .form-control,
     > .form-floating:nth-last-child(n + 3) > .form-select {
@@ -120,7 +121,8 @@
     $validation-messages: $validation-messages + ":not(." + unquote($state) + "-tooltip)" + ":not(." + unquote($state) + "-feedback)";
   }
 
-  > :not(:first-child):not(.dropdown-menu)#{$validation-messages} {
+  > :not(:first-child):not(.dropdown-menu)#{$validation-messages},
+  > .form-select:not(:first-child) {
     margin-left: calc(-1 * #{$input-border-width}); // stylelint-disable-line function-disallowed-list
     @include border-start-radius(0);
   }
