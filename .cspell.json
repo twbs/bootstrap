@@ -90,7 +90,6 @@
     "relref",
     "rgba",
     "roboto",
-    "RTLCSS",
     "ruleset",
     "sassrc",
     "screenreaders",
@@ -129,7 +128,6 @@
     ".cspell.json",
     "dist/",
     "*.min.*",
-    "**/*rtl*",
     "**/tests/**"
   ],
   "useGitignore": true
