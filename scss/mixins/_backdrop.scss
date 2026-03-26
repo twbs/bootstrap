@@ -1,4 +1,4 @@
-// Shared between modals and draweres
+// Shared between modals and drawers
 @mixin overlay-backdrop($zindex, $backdrop-bg, $backdrop-opacity, $backdrop-blur) {
   position: fixed;
   inset: 0;
