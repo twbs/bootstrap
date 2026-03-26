@@ -5,7 +5,8 @@ const placeholderRegex = /<Placeholder\s+([^>]+)\/>/g
 const closeButtonRegex = /([ \t]*)<CloseButton\s*([^>]*?)\/>/g
 
 // Close button SVG icon
-const CLOSE_BUTTON_SVG_PATH = 'M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z'
+const CLOSE_BUTTON_SVG_PATH =
+  'M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z'
 
 /**
  * Generates all the placeholder attributes and options required to render a placeholder.
