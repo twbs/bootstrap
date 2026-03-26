@@ -6,6 +6,7 @@
  */
 
 import BaseComponent from './base-component.js'
+import Data from './dom/data.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 
@@ -195,7 +196,7 @@ class DialogBase extends BaseComponent {
     const selector = '[data-bs-toggle="tooltip"], [data-bs-toggle="popover"]'
 
     for (const el of SelectorEngine.find(selector, this._element)) {
-      const instance = BaseComponent.getInstance(el)
+      const instance = Data.getAny(el)
       if (instance && typeof instance.hide === 'function') {
         instance.hide()
       }
@@ -203,7 +204,7 @@ class DialogBase extends BaseComponent {
 
     // Hide any visible toasts
     for (const el of SelectorEngine.find('.toast.show', this._element)) {
-      const instance = BaseComponent.getInstance(el)
+      const instance = Data.getAny(el)
       if (instance && typeof instance.hide === 'function') {
         instance.hide()
       }

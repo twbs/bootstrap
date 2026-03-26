@@ -1,6 +1,8 @@
+import Data from '../../src/dom/data.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import Drawer from '../../src/drawer.js'
-import { isVisible } from '../../src/util/index.js'
+import Swipe from '../../src/util/swipe.js'
+import { isVisible, noop } from '../../src/util/index.js'
 import {
   clearBodyAndDocument, clearFixture, createEvent, getFixture
 } from '../helpers/fixture.js'
@@ -756,6 +758,380 @@ describe('Drawer', () => {
       expect(drawer2).toEqual(drawer)
 
       expect(drawer2._config.scroll).toBeTrue()
+    })
+  })
+
+  describe('child component cleanup', () => {
+    it('should hide tooltip instances inside drawer when drawer closes', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<dialog class="drawer">',
+          '  <button data-bs-toggle="tooltip" title="tip">Hover</button>',
+          '</dialog>'
+        ].join('')
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const tooltipTrigger = fixtureEl.querySelector('[data-bs-toggle="tooltip"]')
+        const drawer = new Drawer(drawerEl)
+
+        const fakeTooltip = { hide: jasmine.createSpy('tooltipHide') }
+        Data.set(tooltipTrigger, 'bs.tooltip', fakeTooltip)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(fakeTooltip.hide).toHaveBeenCalled()
+          Data.remove(tooltipTrigger, 'bs.tooltip')
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should hide popover instances inside drawer when drawer closes', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<dialog class="drawer">',
+          '  <button data-bs-toggle="popover" title="pop">Click</button>',
+          '</dialog>'
+        ].join('')
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const popoverTrigger = fixtureEl.querySelector('[data-bs-toggle="popover"]')
+        const drawer = new Drawer(drawerEl)
+
+        const fakePopover = { hide: jasmine.createSpy('popoverHide') }
+        Data.set(popoverTrigger, 'bs.popover', fakePopover)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(fakePopover.hide).toHaveBeenCalled()
+          Data.remove(popoverTrigger, 'bs.popover')
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should hide toast instances inside drawer when drawer closes', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<dialog class="drawer">',
+          '  <div class="toast show">Toast content</div>',
+          '</dialog>'
+        ].join('')
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const toastEl = fixtureEl.querySelector('.toast')
+        const drawer = new Drawer(drawerEl)
+
+        const fakeToast = { hide: jasmine.createSpy('toastHide') }
+        Data.set(toastEl, 'bs.toast', fakeToast)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(fakeToast.hide).toHaveBeenCalled()
+          Data.remove(toastEl, 'bs.toast')
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+  })
+
+  describe('drawer-instant', () => {
+    it('should show and fire shown event when drawer-instant class is present', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-instant"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          expect(drawer._isTransitioning).toBeFalse()
+          expect(drawerEl.open).toBeTrue()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should not report as animated when drawer-instant is present', () => {
+      fixtureEl.innerHTML = '<dialog class="drawer drawer-instant"></dialog>'
+
+      const drawerEl = fixtureEl.querySelector('.drawer')
+      const drawer = new Drawer(drawerEl)
+
+      expect(drawer._isAnimated()).toBeFalse()
+    })
+
+    it('should report as animated when drawer-instant is not present', () => {
+      fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+      const drawerEl = fixtureEl.querySelector('.drawer')
+      const drawer = new Drawer(drawerEl)
+
+      expect(drawer._isAnimated()).toBeTrue()
+    })
+  })
+
+  describe('hiding class', () => {
+    it('should add hiding class during hide and remove after hidden', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawer.hide()
+          expect(drawerEl.classList.contains('hiding')).toBeTrue()
+        })
+
+        drawerEl.addEventListener('hidden.bs.drawer', () => {
+          expect(drawerEl.classList.contains('hiding')).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+  })
+
+  describe('swipe', () => {
+    afterEach(() => {
+      delete document.documentElement.ontouchstart
+    })
+
+    it('should initialize swipe helper with leftCallback for drawer-start (LTR)', () => {
+      return new Promise(resolve => {
+        document.documentElement.ontouchstart = noop
+
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-instant"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          expect(drawer._swipeHelper).not.toBeNull()
+          expect(drawer._swipeHelper._config.leftCallback).toBeDefined()
+
+          const spy = spyOn(drawer, 'hide')
+          drawer._swipeHelper._config.leftCallback()
+          expect(spy).toHaveBeenCalled()
+
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should initialize swipe helper with rightCallback for drawer-end (LTR)', () => {
+      return new Promise(resolve => {
+        document.documentElement.ontouchstart = noop
+
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-end drawer-instant"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          expect(drawer._swipeHelper).not.toBeNull()
+          expect(drawer._swipeHelper._config.rightCallback).toBeDefined()
+
+          const spy = spyOn(drawer, 'hide')
+          drawer._swipeHelper._config.rightCallback()
+          expect(spy).toHaveBeenCalled()
+
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should initialize swipe helper with downCallback for drawer-bottom', () => {
+      return new Promise(resolve => {
+        document.documentElement.ontouchstart = noop
+
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-bottom drawer-instant"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          expect(drawer._swipeHelper).not.toBeNull()
+          expect(drawer._swipeHelper._config.downCallback).toBeDefined()
+
+          const spy = spyOn(drawer, 'hide')
+          drawer._swipeHelper._config.downCallback()
+          expect(spy).toHaveBeenCalled()
+
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should initialize swipe helper with upCallback for drawer-top', () => {
+      return new Promise(resolve => {
+        document.documentElement.ontouchstart = noop
+
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-top drawer-instant"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          expect(drawer._swipeHelper).not.toBeNull()
+          expect(drawer._swipeHelper._config.upCallback).toBeDefined()
+
+          const spy = spyOn(drawer, 'hide')
+          drawer._swipeHelper._config.upCallback()
+          expect(spy).toHaveBeenCalled()
+
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+
+    it('should not initialize swipe when Swipe is not supported', () => {
+      fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+      spyOn(Swipe, 'isSupported').and.returnValue(false)
+
+      const drawerEl = fixtureEl.querySelector('.drawer')
+      const drawer = new Drawer(drawerEl)
+
+      drawerEl.showModal()
+      drawer._onBeforeShow()
+
+      expect(drawer._swipeHelper).toBeNull()
+    })
+  })
+
+  describe('dispose with swipe', () => {
+    it('should dispose swipe helper when drawer is disposed', () => {
+      return new Promise(resolve => {
+        document.documentElement.ontouchstart = noop
+
+        fixtureEl.innerHTML = '<dialog class="drawer drawer-instant" style="width:300px;height:300px;"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          expect(drawer._swipeHelper).not.toBeNull()
+
+          const swipeSpy = spyOn(drawer._swipeHelper, 'dispose').and.callThrough()
+          drawer.dispose()
+
+          expect(swipeSpy).toHaveBeenCalled()
+          expect(Drawer.getInstance(drawerEl)).toBeNull()
+
+          delete document.documentElement.ontouchstart
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
+  })
+
+  describe('drawer-static class', () => {
+    it('should add drawer-static class when static backdrop is clicked, then remove it', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const drawer = new Drawer(drawerEl, {
+          backdrop: 'static'
+        })
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          const clickEvent = createEvent('click')
+          Object.defineProperty(clickEvent, 'target', { value: drawerEl })
+          drawerEl.dispatchEvent(clickEvent)
+
+          expect(drawerEl.classList.contains('drawer-static')).toBeTrue()
+          expect(drawerEl.classList.contains('dialog-static')).toBeFalse()
+
+          setTimeout(() => {
+            expect(drawerEl.classList.contains('drawer-static')).toBeFalse()
+            resolve()
+          }, 300)
+        })
+
+        drawer.show()
+      })
+    })
+  })
+
+  describe('resize negative path', () => {
+    it('should not hide drawer on resize when position is still fixed', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="lg:drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('dialog')
+        const drawer = new Drawer(drawerEl)
+
+        const spy = spyOn(drawer, 'hide')
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          drawerEl.style.position = 'fixed'
+
+          const resizeEvent = createEvent('resize')
+          window.dispatchEvent(resizeEvent)
+
+          setTimeout(() => {
+            expect(spy).not.toHaveBeenCalled()
+            expect(drawerEl.open).toBeTrue()
+            resolve()
+          }, 10)
+        })
+
+        drawer.show()
+      })
+    })
+  })
+
+  describe('data-api link trigger', () => {
+    it('should prevent default when the trigger is <a>', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<a href="#" data-bs-toggle="drawer" data-bs-target="#drawerEl">Toggle</a>',
+          '<dialog id="drawerEl" class="drawer"></dialog>'
+        ].join('')
+
+        const drawerEl = fixtureEl.querySelector('.drawer')
+        const trigger = fixtureEl.querySelector('[data-bs-toggle="drawer"]')
+
+        const spy = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          expect(drawerEl.open).toBeTrue()
+          expect(spy).toHaveBeenCalled()
+          resolve()
+        })
+
+        trigger.click()
+      })
     })
   })
 })
