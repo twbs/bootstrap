@@ -26,20 +26,6 @@ Native `<dialog>` elements support two methods: `show()` opens the dialog inline
 
 Toggle a dialog by clicking the button below. The dialog uses the native `showModal()` API for true modal behavior.
 
-<dialog class="dialog" id="exampleDialog">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Dialog title</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This is a native dialog element. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn-solid theme-primary">Save changes</button>
-  </div>
-</dialog>
-
 <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
     Open dialog
   </button>
