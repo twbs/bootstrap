@@ -67,47 +67,6 @@ Toggle between LTR and RTL on this page to see Bootstrap's logical properties in
 `}
 </script>
 
-### Starter template
-
-Here's a modified RTL starter template:
-
-```html
-<!doctype html>
-<html lang="ar" dir="rtl">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="[[config:cdn.css]]" integrity="[[config:cdn.css_hash]]" crossorigin="anonymous">
-
-    <title>مرحبًا بالعالم!</title>
-  </head>
-  <body>
-    <h1>مرحبًا بالعالم!</h1>
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Floating UI and Vanilla Calendar Pro -->
-    <script type="module" src="[[config:cdn.js_bundle]]" integrity="[[config:cdn.js_bundle_hash]]" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Floating UI, Vanilla Calendar Pro, and Bootstrap JS via import map -->
-    <!--
-    <script type="importmap">
-    {
-      "imports": {
-        "@floating-ui/dom": "[[config:cdn.floating_ui_esm]]",
-        "vanilla-calendar-pro": "[[config:cdn.vanilla_calendar_pro_esm]]"
-      }
-    }
-    </script>
-    <script type="module" src="[[config:cdn.js]]" integrity="[[config:cdn.js_hash]]" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
-```
-
 ## Switching directions
 
 **Need both LTR and RTL on the same page?** Wrap your content in containers with different `dir` attributes:
