@@ -6,11 +6,11 @@
 
     @include media-breakpoint-up(lg) {
       position: sticky;
-      top: 5rem;
+      top: var(--bd-navbar-offset);
       // Override collapse behaviors
       // stylelint-disable-next-line declaration-no-important
       display: block !important;
-      height: calc(100vh - 6rem);
+      height: calc(100vh - 8.5rem);
       // Prevent focus styles to be cut off:
       padding-inline-start: .25rem;
       margin-inline-start: -.25rem;

@@ -22,7 +22,7 @@ interface Props {
 const { addedIn, layout, title } = Astro.props
 ---
 
-<header class="navbar navbar-translucent lg:navbar-expand bd-navbar border-bottom sticky-top bd-sticky-navbar">
+<header class="navbar lg:navbar-expand bd-navbar border-bottom">
   <nav class="2xl:container bd-gutter flex-wrap lg:flex-nowrap" aria-label="Main navigation">
     {/* Docs sidebar toggle - only shown on docs pages */}
     {
@@ -47,7 +47,7 @@ const { addedIn, layout, title } = Astro.props
     </a>
 
     {/* Search and main nav toggle */}
-    <div class="d-flex">
+    <div class="d-flex gap-3">
       <div class="bd-search" id="docsearch" data-bd-docs-version={getConfig().docs_version}></div>
 
       <button

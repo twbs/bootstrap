@@ -1,0 +1,108 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getVersionedDocsPath } from '@libs/path'
+import { getSlug } from '@libs/utils'
+
+interface Props {
+  frontmatter: CollectionEntry<'docs'>['data']
+  parentDirectory: string
+}
+
+const { frontmatter, parentDirectory } = Astro.props
+
+const layerLabels: Record<string, string> = {
+  reboot: 'Reboot',
+  layout: 'Layout',
+  content: 'Content',
+  forms: 'Forms',
+  components: 'Components',
+  helpers: 'Helpers',
+  utilities: 'Utilities'
+}
+
+const layerTooltips: Record<string, string> = {
+  reboot: 'Scoped to the Reboot CSS layer',
+  layout: 'Scoped to the Layout CSS layer',
+  content: 'Scoped to the Content CSS layer',
+  forms: 'Scoped to the Forms CSS layer',
+  components: 'Scoped to the Components CSS layer',
+  helpers: 'Scoped to the Helpers CSS layer',
+  utilities: 'Scoped to the Utilities CSS layer'
+}
+
+const deps = frontmatter.deps ?? []
+const depsCount = deps.length
+---
+
+{frontmatter.js === 'required' && (
+  <span
+    class="bd-badge theme-warning"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-custom-class="bd-meta-tooltip"
+    title="Requires JavaScript to function"
+  >
+    <svg class="bi" aria-hidden="true"><use href="#filetype-js" /></svg>
+    Required
+  </span>
+)}
+
+{frontmatter.js === 'optional' && (
+  <span
+    class="bd-badge theme-warning"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-custom-class="bd-meta-tooltip"
+    title="Some features require JavaScript"
+  >
+    <svg class="bi" aria-hidden="true"><use href="#filetype-js" /></svg>
+    Optional
+  </span>
+)}
+
+{frontmatter.css_layer && (
+  <span
+    class="bd-badge theme-accent"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    data-bs-custom-class="bd-meta-tooltip"
+    title={layerTooltips[frontmatter.css_layer]}
+  >
+    <svg class="bi" aria-hidden="true"><use href="#layers" /></svg>
+    {layerLabels[frontmatter.css_layer]}
+  </span>
+)}
+
+{depsCount > 0 && (
+  <Fragment>
+    <button
+      class="btn-subtle btn-sm theme-secondary"
+      type="button"
+      data-bs-toggle="menu"
+      aria-expanded="false"
+      data-bs-custom-class="bd-meta-tooltip"
+    >
+      <svg class="bi" aria-hidden="true"><use href="#box-seam" /></svg>
+      {depsCount}
+      <span>{depsCount === 1 ? 'dependency' : 'dependencies'}</span>
+      <svg class="bi bi-sm" aria-hidden="true"><use href="#chevron-expand" /></svg>
+    </button>
+    <div class="menu">
+      {deps.map((dep) => (
+        dep.url?.startsWith('http') ? (
+          <a class="menu-item" href={dep.url} target="_blank" rel="noopener">
+            {dep.title}
+          </a>
+        ) : dep.url ? (
+          <a class="menu-item" href={dep.url}>
+            {dep.title}
+          </a>
+        ) : (
+          <a class="menu-item" href={getVersionedDocsPath(`components/${getSlug(dep.title)}/`)}>
+            {dep.title}
+          </a>
+        )
+      ))}
+    </div>
+  </Fragment>
+)}

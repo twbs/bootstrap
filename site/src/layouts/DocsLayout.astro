@@ -17,6 +17,7 @@ import GitHubIcon from '@components/icons/GitHubIcon.astro'
 import MdnIcon from '@components/icons/MdnIcon.astro'
 import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
+import PageMeta from '@components/PageMeta.astro'
 
 interface NavigationPage {
   title: string
@@ -120,14 +121,14 @@ if (currentPageIndex < allPages.length - 1) {
               )
           }
           <a
-            class="btn-subtle btn-sm theme-secondary"
+            class="btn-subtle btn-sm theme-secondary me-auto"
             href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
             title="View and edit this file on GitHub"
             target="_blank"
             rel="noopener"
           >
             <GitHubIcon height={16} width={16} class="bi" />
-            Edit on GitHub
+            Edit
           </a>
           {
             frontmatter.mdn && (
@@ -157,6 +158,7 @@ if (currentPageIndex < allPages.length - 1) {
               </a>
             )
           }
+          <PageMeta frontmatter={frontmatter} parentDirectory={parentDirectory} />
         </div>
       </div>
 

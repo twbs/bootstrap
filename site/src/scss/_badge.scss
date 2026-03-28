@@ -1,0 +1,24 @@
+@use "../../../scss/mixins/border-radius" as *;
+@use "variables" as *;
+
+//
+// Callouts
+//
+
+@layer custom {
+  .bd-badge {
+    display: inline-flex;
+    gap: .375rem;
+    align-items: center;
+    padding: .25rem .75rem;
+    font-size: .8125rem;
+    line-height: 1.25rem;
+    color: var(--bs-theme-text, var(--bs-fg-2));
+    background-color: var(--bs-theme-bg-subtle, var(--bs-gray-100));
+    @include border-radius(var(--bs-border-radius));
+  }
+
+  .bd-meta-tooltip {
+    --bs-tooltip-max-width: 280px;
+  }
+}

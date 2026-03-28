@@ -4,6 +4,8 @@
 :root {
   --bs-font-sans-serif: "Geist", sans-serif;
   --bs-font-monospace: "Geist Mono", monospace;
+
+  --bd-navbar-offset: 8.75rem;
 }
 
 @layer custom {
@@ -16,6 +18,7 @@
     --bs-navbar-padding-y: .75rem;
     --bs-border-color: color-mix(in oklch, var(--bs-fg-body) 12%, transparent);
     margin-bottom: -1px;
+    background-color: transparent;
     background-clip: padding-box;
 
     .bd-navbar-toggle {

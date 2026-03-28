@@ -51,6 +51,17 @@ const docsSchema = z.object({
     })
     .array()
     .optional(),
+  css_layer: z
+    .enum(['reboot', 'layout', 'content', 'forms', 'components', 'helpers', 'utilities'])
+    .optional(),
+  deps: z
+    .object({
+      title: z.string(),
+      url: z.string().optional()
+    })
+    .array()
+    .optional(),
+  js: z.enum(['required', 'optional']).optional(),
   thumbnail: z.string().optional(),
   title: z.string(),
   toc: z.boolean().optional()

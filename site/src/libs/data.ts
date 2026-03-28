@@ -74,11 +74,13 @@ const dataDefinitions = {
   sidebar: z
     .object({
       title: z.string(),
+      section: z.string().optional(),
       icon: z.string().optional(),
       icon_color: z.string().optional(),
       pages: z
         .object({
           title: z.string().optional(),
+          href: z.string().optional(),
           group: z.string().optional(),
           pages: z
             .object({

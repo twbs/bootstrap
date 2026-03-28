@@ -2,6 +2,8 @@
 title: Nav overflow
 description: Automatically collapse navigation items into a "More" menu when space is limited using the Priority+ pattern.
 toc: true
+css_layer: components
+js: required
 ---
 
 ## How it works
@@ -195,13 +197,37 @@ new bootstrap.NavOverflow(nav, {
 
 ### Custom icon
 
-Provide a custom icon via the `moreIcon` option:
+Provide a custom icon via the `moreIcon` option. Any HTML string works, including inline SVGs:
 
 ```js
 const nav = document.querySelector('.nav')
 new bootstrap.NavOverflow(nav, {
-  moreIcon: '<i class="bi bi-three-dots"></i>',
+  moreIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>',
   moreText: '' // Hide text, show only icon
+})
+```
+
+Alternatively, place an element with `data-bs-overflow-icon` directly inside the nav. The component will pick it up, use it as the toggle icon, and remove the original element from the DOM. This takes priority over the `moreIcon` option.
+
+```html
+<ul class="nav nav-pills" data-bs-toggle="nav-overflow">
+  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>
+  <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+  <svg data-bs-overflow-icon xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492"/>
+  </svg>
+</ul>
+```
+
+### Icon placement
+
+Use the `iconPlacement` option to position the icon before (`'start'`, the default) or after (`'end'`) the text:
+
+```js
+const nav = document.querySelector('.nav')
+new bootstrap.NavOverflow(nav, {
+  moreText: 'Menu',
+  iconPlacement: 'end'
 })
 ```
 
@@ -215,6 +241,29 @@ new bootstrap.NavOverflow(nav, {
   threshold: 3 // Always keep at least 3 items visible
 })
 ```
+
+### Collapse all
+
+Use the `collapseBelow` option to force all items into the overflow dropdown when the nav element's width is below a threshold. Pass a breakpoint name to resolve the value from `--bs-breakpoint-{name}`, or a number for a direct pixel value.
+
+```html
+<ul class="nav nav-pills" data-bs-toggle="nav-overflow" data-bs-collapse-below="md">
+  <li class="nav-item"><a class="nav-link" href="#">Link 1</a></li>
+  <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
+  <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li>
+</ul>
+```
+
+Or via JavaScript with a raw pixel value:
+
+```js
+const nav = document.querySelector('.nav')
+new bootstrap.NavOverflow(nav, {
+  collapseBelow: 768
+})
+```
+
+Above the threshold, normal progressive collapse resumes. Items with `.nav-overflow-keep` are never collapsed.
 
 ## Usage
 
@@ -256,8 +305,11 @@ const navOverflow = new bootstrap.NavOverflow(navElement, {
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `collapseBelow` | number\|string | `0` | Width threshold below which all items collapse into the overflow dropdown. Pass a breakpoint name (e.g., `'md'`) to resolve from `--bs-breakpoint-{name}`, or a number for a direct pixel value. `0` disables. |
+| `iconPlacement` | string | `'start'` | Position of the icon relative to the text in the toggle button. Use `'start'` for before the text or `'end'` for after. |
+| `menuPlacement` | string | `'bottom-end'` | Placement of the overflow dropdown menu, passed as `data-bs-placement` to the menu toggle. |
 | `moreText` | string | `'More'` | Text label for the overflow toggle button. |
-| `moreIcon` | string | `'<svg>...</svg>'` | SVG or HTML icon for the overflow toggle button. |
+| `moreIcon` | string | `'<svg>...</svg>'` | SVG or HTML icon for the overflow toggle button. Overridden by a child element with `data-bs-overflow-icon` if present. |
 | `threshold` | number | `0` | Minimum number of items to keep visible before showing overflow. |
 </BsTable>
 

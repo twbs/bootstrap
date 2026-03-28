@@ -8,7 +8,7 @@
 
     @include media-breakpoint-up(lg) {
       position: sticky;
-      top: 5rem;
+      top: var(--bd-navbar-offset);
       right: 0;
       z-index: 2;
       height: calc(100vh - 6em);

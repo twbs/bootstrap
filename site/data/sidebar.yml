@@ -1,18 +1,25 @@
 # This file holds all sidebar menu's entries.
-# The logic for the sidebar generation is in "site/layouts/partials/docs-sidebar.html".
+# Each group has a `section` field that determines which sub-navbar tab it belongs to.
 
 - title: Getting started
+  section: Getting Started
   icon: book-half
   icon_color: indigo
   pages:
     - title: Install
     # - title: Introduction
     - title: Approach
+    - title: CSS variables
     - title: JavaScript
     - title: Accessibility
     # - title: Community
+    - title: Examples
+      href: examples/
+    - title: Migration
+      href: migration/
 
 - title: Guides
+  section: Guides
   icon: map
   icon_color: green
   pages:
@@ -24,6 +31,7 @@
     - title: Contribute
 
 - title: Customize
+  section: Guides
   icon: palette2
   icon_color: pink
   pages:
@@ -34,11 +42,11 @@
     - title: Theme
     - title: Color modes
     - title: Components
-    - title: CSS variables
     - title: RTL
     - title: Optimize
 
 - title: Layout
+  section: Base
   icon: grid-fill
   icon_color: teal
   pages:
@@ -52,6 +60,7 @@
     - title: CSS Grid
 
 - title: Content
+  section: Base
   icon: file-earmark-richtext
   icon_color: gray
   pages:
@@ -62,6 +71,7 @@
     - title: Prose
 
 - title: Forms
+  section: Forms
   icon: ui-radios
   icon_color: blue
   pages:
@@ -82,33 +92,33 @@
     - title: Validation
 
 - title: Components
+  section: Components
   icon: menu-button-wide-fill
   icon_color: cyan
   pages:
+    - group: Buttons
+      pages:
+        - title: Buttons
+        - title: Button group
+        - title: Close button
     - group: Feedback
       pages:
         - title: Alert
         - title: Badge
         - title: Placeholder
         - title: Progress
-        - title: Scrollspy
         - title: Spinner
-        - title: Toasts
     - group: Overlays
       pages:
+        - title: Menu
         - title: Dialog
         - title: Drawer
         - title: Popover
+        - title: Toasts
         - title: Tooltip
-    - group: Buttons
-      pages:
-        - title: Buttons
-        - title: Button group
-        - title: Close button
     - group: Navigation
       pages:
         - title: Breadcrumb
-        - title: Menu
         - title: Nav
         - title: Tab
         - title: Nav overflow
@@ -124,12 +134,14 @@
         - title: Accordion
         - title: Carousel
         - title: Collapse
+        - title: Scrollspy
         - title: Toggler
     - group: Miscellaneous
       pages:
         - title: Avatar
 
 - title: Helpers
+  section: Helpers
   icon: magic
   icon_color: orange
   pages:
@@ -143,6 +155,7 @@
     - title: Visually hidden
 
 - title: Utilities
+  section: Utilities
   icon: braces-asterisk
   icon_color: red
   pages:
@@ -210,6 +223,7 @@
         - title: Shadows
 
 - title: About
+  section: About
   icon: globe2
   icon_color: indigo
   pages:
@@ -218,5 +232,3 @@
     - title: Brand
     - title: License
     - title: Translations
-
-- title: Migration
