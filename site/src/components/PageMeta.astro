@@ -1,14 +1,19 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { getConfig } from '@libs/config'
 import { getVersionedDocsPath } from '@libs/path'
 import { getSlug } from '@libs/utils'
+import GitHubIcon from '@components/icons/GitHubIcon.astro'
+import MdnIcon from '@components/icons/MdnIcon.astro'
+import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
 
 interface Props {
   frontmatter: CollectionEntry<'docs'>['data']
+  id: CollectionEntry<'docs'>['id']
   parentDirectory: string
 }
 
-const { frontmatter, parentDirectory } = Astro.props
+const { frontmatter, id, parentDirectory } = Astro.props
 
 const layerLabels: Record<string, string> = {
   reboot: 'Reboot',
@@ -34,75 +39,74 @@ const deps = frontmatter.deps ?? []
 const depsCount = deps.length
 ---
 
-{frontmatter.js === 'required' && (
-  <span
-    class="bd-badge theme-warning"
-    data-bs-toggle="tooltip"
-    data-bs-placement="top"
-    data-bs-custom-class="bd-meta-tooltip"
-    title="Requires JavaScript to function"
-  >
-    <svg class="bi" aria-hidden="true"><use href="#filetype-js" /></svg>
-    Required
-  </span>
-)}
-
-{frontmatter.js === 'optional' && (
-  <span
-    class="bd-badge theme-warning"
-    data-bs-toggle="tooltip"
-    data-bs-placement="top"
-    data-bs-custom-class="bd-meta-tooltip"
-    title="Some features require JavaScript"
-  >
-    <svg class="bi" aria-hidden="true"><use href="#filetype-js" /></svg>
-    Optional
-  </span>
-)}
-
-{frontmatter.css_layer && (
-  <span
-    class="bd-badge theme-accent"
-    data-bs-toggle="tooltip"
-    data-bs-placement="top"
-    data-bs-custom-class="bd-meta-tooltip"
-    title={layerTooltips[frontmatter.css_layer]}
-  >
-    <svg class="bi" aria-hidden="true"><use href="#layers" /></svg>
-    {layerLabels[frontmatter.css_layer]}
-  </span>
-)}
-
-{depsCount > 0 && (
-  <Fragment>
-    <button
-      class="btn-subtle btn-sm theme-secondary"
-      type="button"
-      data-bs-toggle="menu"
-      aria-expanded="false"
-      data-bs-custom-class="bd-meta-tooltip"
-    >
-      <svg class="bi" aria-hidden="true"><use href="#box-seam" /></svg>
-      {depsCount}
-      <span>{depsCount === 1 ? 'dependency' : 'dependencies'}</span>
-      <svg class="bi bi-sm" aria-hidden="true"><use href="#chevron-expand" /></svg>
-    </button>
-    <div class="menu">
-      {deps.map((dep) => (
-        dep.url?.startsWith('http') ? (
-          <a class="menu-item" href={dep.url} target="_blank" rel="noopener">
-            {dep.title}
-          </a>
-        ) : dep.url ? (
-          <a class="menu-item" href={dep.url}>
-            {dep.title}
-          </a>
-        ) : (
-          <a class="menu-item" href={getVersionedDocsPath(`components/${getSlug(dep.title)}/`)}>
-            {dep.title}
-          </a>
-        )
-      ))}
+<div class="bd-page-meta d-flex flex-wrap gap-5 row-gap-2 px-4 py-3 bg-1 fg-2 fs-sm rounded-3">
+  {frontmatter.js === 'required' && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-warning" aria-hidden="true"><use href="#filetype-js" /></svg>
+      Requires JavaScript
     </div>
-  </Fragment>
-)}
+  )}
+  {frontmatter.js === 'optional' && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-warning opacity-50" aria-hidden="true"><use href="#filetype-js" /></svg>
+      Optional JavaScript-based features
+    </div>
+  )}
+  {frontmatter.css_layer && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-accent" aria-hidden="true"><use href="#layers" /></svg>
+      <span>In <code class="fg-body">{frontmatter.css_layer}</code> CSS layer</span>
+    </div>
+  )}
+  {depsCount > 0 && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-2" aria-hidden="true"><use href="#box-seam" /></svg>
+      <div>
+        Depends on
+        {deps.map((dep, i) => (
+          <Fragment>
+            {i > 0 && ', '}
+            {dep.url?.startsWith('http') ? (
+              <a class="fg-2 text-decoration-none" href={dep.url} target="_blank" rel="noopener">
+                {dep.title}
+              </a>
+            ) : dep.url ? (
+              <a class="fg-2 text-decoration-none" href={dep.url}>
+                {dep.title}
+              </a>
+            ) : (
+              <a class="fg-2 text-decoration-none" href={getVersionedDocsPath(`components/${getSlug(dep.title)}/`)}>
+                {dep.title}
+              </a>
+            )}
+          </Fragment>
+        ))}
+      </div>
+    </div>
+  )}
+  {frontmatter.added &&
+    ((frontmatter.added.show_badge === undefined || frontmatter.added.show_badge === true)) && (
+    <div class="hstack align-items-center gap-2">
+      <svg class="bi fg-success" aria-hidden="true"><use href="#plus" /></svg>
+      Added in v{frontmatter.added.version}
+    </div>
+  )}
+  {frontmatter.mdn && (
+    <div class="hstack align-items-center gap-2">
+      <MdnIcon height={16} width={16} class="bi fg-2" />
+      <a class="fg-2 text-decoration-none" href={frontmatter.mdn} target="_blank" rel="noopener">MDN</a>
+    </div>
+  )}
+  {frontmatter.csstricks && (
+    <div class="hstack align-items-center gap-2">
+      <CssTricksIcon height={16} width={16} class="bi fg-2" />
+      <a class="fg-2 text-decoration-none" href={typeof frontmatter.csstricks === 'string' ? frontmatter.csstricks : frontmatter.csstricks.url} target="_blank" rel="noopener">
+        {typeof frontmatter.csstricks === 'string' ? 'CSS-Tricks' : (frontmatter.csstricks.label || 'CSS-Tricks')}
+      </a>
+    </div>
+  )}
+  <div class="hstack align-items-center gap-2">
+    <svg class="bi fg-2" aria-hidden="true"><use href="#github" /></svg>
+    <a class="fg-2 text-decoration-none" href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`} target="_blank" rel="noopener">Source</a>
+  </div>
+</div>

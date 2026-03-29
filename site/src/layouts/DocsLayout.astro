@@ -13,9 +13,6 @@ import ReferenceTable from '@components/ReferenceTable.astro'
 import UtilityReferenceTable from '@components/UtilityReferenceTable.astro'
 import HelperReferenceTable from '@components/HelperReferenceTable.astro'
 import { getData } from '@libs/data'
-import GitHubIcon from '@components/icons/GitHubIcon.astro'
-import MdnIcon from '@components/icons/MdnIcon.astro'
-import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
 import PageMeta from '@components/PageMeta.astro'
 
@@ -111,57 +108,9 @@ if (currentPageIndex < allPages.length - 1) {
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
         </div>
         <div class="mb-3 md:mb-0 d-flex gap-2 text-nowrap">
-          {
-            frontmatter.added &&
-              ((frontmatter.added.show_badge !== undefined && frontmatter.added.show_badge === true) ||
-                frontmatter.added.show_badge === undefined) && (
-                <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">
-                  Added in v{frontmatter.added.version}
-                </small>
-              )
-          }
-          <a
-            class="btn-subtle btn-sm theme-secondary me-auto"
-            href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
-            title="View and edit this file on GitHub"
-            target="_blank"
-            rel="noopener"
-          >
-            <GitHubIcon height={16} width={16} class="bi" />
-            Edit
-          </a>
-          {
-            frontmatter.mdn && (
-              <a
-                class="btn-subtle btn-sm theme-secondary"
-                href={frontmatter.mdn}
-                title="View on MDN"
-                target="_blank"
-                rel="noopener"
-              >
-                <MdnIcon height={16} width={16} class="bi" />
-                MDN
-              </a>
-            )
-          }
-          {
-            frontmatter.csstricks && (
-              <a
-                class="btn-secondary-text btn-sm"
-                href={typeof frontmatter.csstricks === 'string' ? frontmatter.csstricks : frontmatter.csstricks.url}
-                title="View on CSS-Tricks"
-                target="_blank"
-                rel="noopener"
-              >
-                <CssTricksIcon height={16} width={16} class="bi" />
-                {typeof frontmatter.csstricks === 'string' ? 'CSS-Tricks' : (frontmatter.csstricks.label || 'CSS-Tricks')}
-              </a>
-            )
-          }
-          <PageMeta frontmatter={frontmatter} parentDirectory={parentDirectory} />
+          <PageMeta frontmatter={frontmatter} id={id} parentDirectory={parentDirectory} />
         </div>
       </div>
-
 
       <div class="vstack bd-toc mt-3 mb-5 lg:my-0 lg:mb-5 sm:px-1 fg-3">
         <div class="overflow-y-auto">

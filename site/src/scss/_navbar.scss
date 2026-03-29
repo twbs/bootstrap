@@ -1,14 +1,21 @@
 @use "../../../scss/mixins" as *;
 @use "../../../scss/layout/breakpoints" as *;
 
-:root {
-  --bs-font-sans-serif: "Geist", sans-serif;
-  --bs-font-monospace: "Geist Mono", monospace;
-
-  --bd-navbar-offset: 8.75rem;
-}
-
 @layer custom {
+  :root {
+    --bd-navbar-offset: 6rem;
+  }
+
+  body {
+    font-family: Geist, var(--bs-body-font-family);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  code,
+  pre {
+    font-family: "Geist Mono", var(--bs-font-mono);
+  }
+
   .bd-sticky-navbar.is-stuck {
     box-shadow: 0 .125rem .5rem rgb(0 0 0 / .05);
   }

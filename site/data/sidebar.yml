@@ -13,10 +13,6 @@
     - title: JavaScript
     - title: Accessibility
     # - title: Community
-    - title: Examples
-      href: examples/
-    - title: Migration
-      href: migration/
 
 - title: Guides
   section: Guides
@@ -222,13 +218,16 @@
         - title: Opacity
         - title: Shadows
 
-- title: About
-  section: About
-  icon: globe2
-  icon_color: indigo
-  pages:
-    - title: Overview
-    - title: Team
-    - title: Brand
-    - title: License
-    - title: Translations
+# - title: About
+#   section: About
+#   icon: globe2
+#   icon_color: indigo
+#   pages:
+#     - title: Overview
+#     - title: Team
+#     - title: Brand
+#     - title: License
+#     - title: Translations
+
+- title: Migration
+  href: migration/

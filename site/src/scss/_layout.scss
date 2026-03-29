@@ -65,4 +65,13 @@
     min-width: 1px; // Fix width when bd-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
     max-width: 100%;
   }
+
+  .bd-page-meta {
+    > :not(:last-child)::after {
+      display: block;
+      margin-inline-start: .25rem;
+      margin-inline-end: -.375rem;
+      content: "•";
+    }
+  }
 }
