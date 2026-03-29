@@ -116,7 +116,7 @@ if (currentPageIndex < allPages.length - 1) {
         <button
           class="btn-solid theme-secondary rounded-pill px-5"
           type="button"
-          data-bs-toggle="offcanvas"
+          data-bs-toggle="drawer"
           data-bs-target="#bdTocSidebar"
           aria-controls="bdTocSidebar"
         >
@@ -126,13 +126,13 @@ if (currentPageIndex < allPages.length - 1) {
       </div>
 
       <div class="bd-toc mt-3 mb-5 lg:my-0 lg:mb-5 sm:px-1">
-        <div class="lg:offcanvas offcanvas-bottom" tabindex="-1" id="bdTocSidebar" aria-labelledby="bdTocOffcanvasLabel">
-          <div class="offcanvas-header border-bottom">
-            <h5 class="offcanvas-title" id="bdTocOffcanvasLabel">On this page</h5>
-            <CloseButton dismiss="offcanvas" target="#bdTocSidebar" />
+        <dialog class="lg:drawer drawer-bottom" tabindex="-1" id="bdTocSidebar" aria-labelledby="bdTocDrawerLabel">
+          <div class="drawer-header border-bottom">
+            <h5 class="drawer-title" id="bdTocDrawerLabel">On this page</h5>
+            <CloseButton dismiss="drawer" target="#bdTocSidebar" />
           </div>
 
-          <div class="offcanvas-body">
+          <div class="drawer-body">
             {
               frontmatter.toc && headings && (
                 <nav id="TableOfContents" aria-label="Table of contents">
@@ -141,7 +141,7 @@ if (currentPageIndex < allPages.length - 1) {
               )
             }
           </div>
-        </div>
+        </dialog>
         <Ads />
       </div>
 
