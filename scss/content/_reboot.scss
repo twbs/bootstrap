@@ -489,13 +489,6 @@ $reboot-mark-tokens: defaults(
     }
   }
 
-  // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
-
-  ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
-  }
-
   // 1. Textareas should really only resize vertically so they don't break their (horizontal) containers.
 
   textarea {
