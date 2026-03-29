@@ -112,30 +112,35 @@ if (currentPageIndex < allPages.length - 1) {
         </div>
       </div>
 
-      <div class="vstack bd-toc mt-3 mb-5 lg:my-0 lg:mb-5 sm:px-1 fg-3">
-        <div class="overflow-y-auto">
-        {
-          frontmatter.toc && headings && (
-            <button
-              class="btn-sm btn-subtle mb-2 bd-toc-toggle lg:d-none"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#tocContents"
-              aria-expanded="false"
-              aria-controls="tocContents"
-            >
-              On this page
-              <svg class="bi lg:d-none ms-2" aria-hidden="true">
-                <use href="#chevron-expand" />
-              </svg>
-            </button>
-            <div class="collapse bd-toc-collapse" id="tocContents">
-              <nav id="TableOfContents" aria-labelledby="docs-tocs">
-                <TableOfContents headings={headings} />
-              </nav>
-            </div>
-          )
-        }
+      <div class="lg:d-none d-flex justify-content-center bd-toc-toggle">
+        <button
+          class="btn-solid theme-secondary rounded-pill px-5"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#bdTocSidebar"
+          aria-controls="bdTocSidebar"
+        >
+          <svg class="bi" aria-hidden="true"><use href="#list"></use></svg>
+          On this page…
+        </button>
+      </div>
+
+      <div class="bd-toc mt-3 mb-5 lg:my-0 lg:mb-5 sm:px-1">
+        <div class="lg:offcanvas offcanvas-bottom" tabindex="-1" id="bdTocSidebar" aria-labelledby="bdTocOffcanvasLabel">
+          <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="bdTocOffcanvasLabel">On this page</h5>
+            <CloseButton dismiss="offcanvas" target="#bdTocSidebar" />
+          </div>
+
+          <div class="offcanvas-body">
+            {
+              frontmatter.toc && headings && (
+                <nav id="TableOfContents" aria-label="Table of contents">
+                  <TableOfContents headings={headings} />
+                </nav>
+              )
+            }
+          </div>
         </div>
         <Ads />
       </div>

@@ -1,5 +1,4 @@
 @use "../../../scss/layout/breakpoints" as *;
-@use "../../../scss/mixins/border-radius" as *;
 
 @layer custom {
   .bd-toc {
@@ -11,8 +10,19 @@
       top: var(--bd-navbar-offset);
       right: 0;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
       height: calc(100vh - 6em);
-      // overflow-y: auto;
+      padding-inline-end: .25rem;
+      margin-inline-end: -.25rem;
+      overflow-y: auto;
+    }
+
+    @include media-breakpoint-down(lg) {
+      .lg\:offcanvas {
+        border-inline-start-color: var(--bs-border-color);
+        box-shadow: var(--bs-box-shadow-lg);
+      }
     }
 
     .nav {
@@ -44,49 +54,27 @@
     }
   }
 
-
-  .bd-toc-toggle {
-    display: flex;
-    align-items: center;
-
-    @include media-breakpoint-down(md) {
-      justify-content: space-between;
-      width: 100%;
+  // stylelint-disable-next-line selector-id-pattern, selector-max-id
+  #bdTocSidebar {
+    @include media-breakpoint-up(lg) {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
     }
 
     @include media-breakpoint-down(lg) {
-      color: var(--bs-color-body);
-      border: 1px solid var(--bs-border-color);
-      @include border-radius(var(--bs-border-radius));
-
-      &:hover,
-      &:focus,
-      &:active,
-      &[aria-expanded="true"] {
-        color: var(--bd-violet);
-        background-color: var(--bs-bg-body);
-        border-color: var(--bd-violet);
-      }
-
-      &:focus,
-      &[aria-expanded="true"] {
-        box-shadow: 0 0 0 3px rgba(var(--bd-violet-rgb), .25);
-      }
+      height: 80dvh;
     }
   }
 
-  .bd-toc-collapse {
-    @include media-breakpoint-down(lg) {
-      nav {
-        padding: 1.25rem 1.25rem 1.25rem 1rem;
-        background-color: var(--bs-bg-subtle);
-        border: 1px solid var(--bs-border-color);
-        @include border-radius(var(--bs-border-radius));
-      }
-    }
-
-    @include media-breakpoint-up(lg) {
-      display: block !important; // stylelint-disable-line declaration-no-important
-    }
+  .bd-toc-toggle {
+    position: fixed;
+    right: 0;
+    bottom: 2rem;
+    left: 0;
+    z-index: 1030;
+    margin-inline: auto;
+    font-size: var(--font-size-sm);
+    box-shadow: var(--bs-box-shadow-lg);
   }
 }
