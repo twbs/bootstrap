@@ -441,11 +441,6 @@ $reboot-mark-tokens: defaults(
     line-height: inherit;
   }
 
-  // Remove the inheritance of text transform in Firefox
-  button,
-  select {
-    text-transform: none;
-  }
   // Set the cursor for non-`<button>` buttons
   //
   // Details at https://github.com/twbs/bootstrap/pull/30562
@@ -545,7 +540,8 @@ $reboot-mark-tokens: defaults(
     padding: 0;
   }
 
-  ::-webkit-inner-spin-button {
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
     height: auto;
   }
 

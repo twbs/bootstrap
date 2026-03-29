@@ -154,6 +154,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 - Relocated heading classes (like `.h1`) and some type classes (`.mark` and `.small`) to Reboot from `_type.scss`. This avoids a dependency in Sass modules and we like to avoid extending selectors in general.
 - Removed the `::-moz-focus-inner` styles, as the pseudo selector is deprecated in Firefox.
+- Removed `text-transform: none` from `button` and `select` elements, as Firefox no longer incorrectly inherits text-transform.
 
 ### Forms
 
