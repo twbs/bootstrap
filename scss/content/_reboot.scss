@@ -441,11 +441,6 @@ $reboot-mark-tokens: defaults(
     line-height: inherit;
   }
 
-  // Remove the inheritance of text transform in Firefox
-  button,
-  select {
-    text-transform: none;
-  }
   // Set the cursor for non-`<button>` buttons
   //
   // Details at https://github.com/twbs/bootstrap/pull/30562
@@ -487,13 +482,6 @@ $reboot-mark-tokens: defaults(
         cursor: pointer; // 3
       }
     }
-  }
-
-  // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
-
-  ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
   }
 
   // 1. Textareas should really only resize vertically so they don't break their (horizontal) containers.
@@ -552,7 +540,8 @@ $reboot-mark-tokens: defaults(
     padding: 0;
   }
 
-  ::-webkit-inner-spin-button {
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
     height: auto;
   }
 
