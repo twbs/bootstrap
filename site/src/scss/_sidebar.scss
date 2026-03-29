@@ -18,7 +18,7 @@
     }
 
     @include media-breakpoint-down(lg) {
-      .lg\:offcanvas {
+      .lg\:drawer {
         border-inline-end-color: var(--bs-border-color);
         box-shadow: var(--bs-box-shadow-lg);
       }

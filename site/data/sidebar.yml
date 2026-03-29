@@ -97,7 +97,7 @@
     - group: Overlays
       pages:
         - title: Dialog
-        - title: Offcanvas
+        - title: Drawer
         - title: Popover
         - title: Tooltip
     - group: Buttons

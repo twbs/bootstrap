@@ -10,7 +10,7 @@ $btn-close-tokens: () !default;
 $btn-close-tokens: defaults(
   (
     --btn-close-size: 1.25rem,
-    --btn-close-color: var(--fg-body),
+    --btn-close-color: inherit,
     --btn-close-opacity: .5,
     --btn-close-hover-opacity: .75,
     --btn-close-focus-opacity: .85,

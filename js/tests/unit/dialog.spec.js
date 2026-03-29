@@ -1,3 +1,4 @@
+import Data from '../../src/dom/data.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import Dialog from '../../src/dialog.js'
 import {
@@ -942,6 +943,279 @@ describe('Dialog', () => {
       expect(dialog2).toEqual(dialog)
 
       expect(dialog2._config.backdrop).toEqual('static')
+    })
+  })
+
+  describe('child component cleanup', () => {
+    it('should hide tooltip instances inside dialog when dialog closes', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<dialog class="dialog">',
+          '  <button data-bs-toggle="tooltip" title="tip">Hover</button>',
+          '</dialog>'
+        ].join('')
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const tooltipTrigger = fixtureEl.querySelector('[data-bs-toggle="tooltip"]')
+        const dialog = new Dialog(dialogEl)
+
+        const fakeTooltip = { hide: jasmine.createSpy('tooltipHide') }
+        Data.set(tooltipTrigger, 'bs.tooltip', fakeTooltip)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialog.hide()
+        })
+
+        dialogEl.addEventListener('hidden.bs.dialog', () => {
+          expect(fakeTooltip.hide).toHaveBeenCalled()
+          Data.remove(tooltipTrigger, 'bs.tooltip')
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
+
+    it('should hide popover instances inside dialog when dialog closes', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<dialog class="dialog">',
+          '  <button data-bs-toggle="popover" title="pop">Click</button>',
+          '</dialog>'
+        ].join('')
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const popoverTrigger = fixtureEl.querySelector('[data-bs-toggle="popover"]')
+        const dialog = new Dialog(dialogEl)
+
+        const fakePopover = { hide: jasmine.createSpy('popoverHide') }
+        Data.set(popoverTrigger, 'bs.popover', fakePopover)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialog.hide()
+        })
+
+        dialogEl.addEventListener('hidden.bs.dialog', () => {
+          expect(fakePopover.hide).toHaveBeenCalled()
+          Data.remove(popoverTrigger, 'bs.popover')
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
+
+    it('should hide toast instances inside dialog when dialog closes', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<dialog class="dialog">',
+          '  <div class="toast show">Toast content</div>',
+          '</dialog>'
+        ].join('')
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const toastEl = fixtureEl.querySelector('.toast')
+        const dialog = new Dialog(dialogEl)
+
+        const fakeToast = { hide: jasmine.createSpy('toastHide') }
+        Data.set(toastEl, 'bs.toast', fakeToast)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialog.hide()
+        })
+
+        dialogEl.addEventListener('hidden.bs.dialog', () => {
+          expect(fakeToast.hide).toHaveBeenCalled()
+          Data.remove(toastEl, 'bs.toast')
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
+  })
+
+  describe('stacked modals', () => {
+    it('should keep dialog-open on body when closing one of two open modal dialogs', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<dialog id="dialog1" class="dialog"></dialog>',
+          '<dialog id="dialog2" class="dialog"></dialog>'
+        ].join('')
+
+        const dialog1El = fixtureEl.querySelector('#dialog1')
+        const dialog2El = fixtureEl.querySelector('#dialog2')
+        const dialog1 = new Dialog(dialog1El)
+        const dialog2 = new Dialog(dialog2El)
+
+        dialog1El.addEventListener('shown.bs.dialog', () => {
+          dialog2.show()
+        })
+
+        dialog2El.addEventListener('shown.bs.dialog', () => {
+          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+          dialog1.hide()
+        })
+
+        dialog1El.addEventListener('hidden.bs.dialog', () => {
+          expect(dialog2El.open).toBeTrue()
+          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+          dialog2.hide()
+        })
+
+        dialog2El.addEventListener('hidden.bs.dialog', () => {
+          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          resolve()
+        })
+
+        dialog1.show()
+      })
+    })
+  })
+
+  describe('dialog-instant', () => {
+    it('should show and fire shown event when dialog-instant class is present', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog dialog-instant"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          expect(dialog._isTransitioning).toBeFalse()
+          expect(dialogEl.open).toBeTrue()
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
+
+    it('should not report as animated when dialog-instant is present', () => {
+      fixtureEl.innerHTML = '<dialog class="dialog dialog-instant"></dialog>'
+
+      const dialogEl = fixtureEl.querySelector('.dialog')
+      const dialog = new Dialog(dialogEl)
+
+      expect(dialog._isAnimated()).toBeFalse()
+    })
+
+    it('should report as animated when dialog-instant is not present', () => {
+      fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+      const dialogEl = fixtureEl.querySelector('.dialog')
+      const dialog = new Dialog(dialogEl)
+
+      expect(dialog._isAnimated()).toBeTrue()
+    })
+  })
+
+  describe('hiding class', () => {
+    it('should add hiding class during hide and remove after hidden', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialog.hide()
+          // hiding class should be present during the transition
+          expect(dialogEl.classList.contains('hiding')).toBeTrue()
+        })
+
+        dialogEl.addEventListener('hidden.bs.dialog', () => {
+          expect(dialogEl.classList.contains('hiding')).toBeFalse()
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
+  })
+
+  describe('hidePrevented', () => {
+    it('should not add dialog-static class when hidePrevented is default prevented', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl, {
+          backdrop: 'static'
+        })
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          dialogEl.addEventListener('hidePrevented.bs.dialog', event => {
+            event.preventDefault()
+
+            setTimeout(() => {
+              expect(dialogEl.classList.contains('dialog-static')).toBeFalse()
+              resolve()
+            }, 10)
+          })
+
+          const clickEvent = createEvent('click')
+          Object.defineProperty(clickEvent, 'target', { value: dialogEl })
+          dialogEl.dispatchEvent(clickEvent)
+        })
+
+        dialog.show()
+      })
+    })
+  })
+
+  describe('non-modal keyboard', () => {
+    it('should fire cancel.bs.dialog event on Escape for non-modal dialog', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl, {
+          modal: false,
+          keyboard: true
+        })
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          const keydownEvent = createEvent('keydown')
+          keydownEvent.key = 'Escape'
+          dialogEl.dispatchEvent(keydownEvent)
+        })
+
+        dialogEl.addEventListener('cancel.bs.dialog', () => {
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
+
+    it('should not close and not trigger backdrop transition for non-modal with keyboard = false on Escape', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl, {
+          modal: false,
+          keyboard: false
+        })
+
+        const hideSpy = spyOn(dialog, 'hide')
+        const backdropSpy = spyOn(dialog, '_triggerBackdropTransition')
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          const keydownEvent = createEvent('keydown')
+          keydownEvent.key = 'Escape'
+          dialogEl.dispatchEvent(keydownEvent)
+
+          setTimeout(() => {
+            expect(hideSpy).not.toHaveBeenCalled()
+            expect(backdropSpy).not.toHaveBeenCalled()
+            resolve()
+          }, 10)
+        })
+
+        dialog.show()
+      })
     })
   })
 })

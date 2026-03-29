@@ -26,9 +26,9 @@
   description: Create menus of links, actions, forms, and more.
   link: components/menus/
 
-- name: Offcanvas
+- name: Drawer
   description: Build and toggle hidden sidebars into any page.
-  link: components/offcanvas/
+  link: components/drawer/
 
 - name: Popover
   description: Create custom overlays. Built on Floating UI.

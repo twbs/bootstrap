@@ -38,6 +38,14 @@ export default {
     return null
   },
 
+  getAny(element) {
+    if (elementMap.has(element)) {
+      return elementMap.get(element).values().next().value || null
+    }
+
+    return null
+  },
+
   remove(element, key) {
     if (!elementMap.has(element)) {
       return

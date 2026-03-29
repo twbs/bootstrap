@@ -1,9 +1,9 @@
-// Shared between modals and offcanvases
+// Shared between modals and drawers
 @mixin overlay-backdrop($zindex, $backdrop-bg, $backdrop-opacity, $backdrop-blur) {
   position: fixed;
   inset: 0;
   z-index: $zindex;
-  background-color: color-mix(in oklch, var(--offcanvas-backdrop-bg) var(--offcanvas-backdrop-opacity), transparent);
+  background-color: color-mix(in oklch, var(--drawer-backdrop-bg) var(--drawer-backdrop-opacity), transparent);
   @if $backdrop-blur {
     backdrop-filter: blur($backdrop-blur);
   }

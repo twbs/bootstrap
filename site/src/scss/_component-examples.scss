@@ -99,7 +99,7 @@
       max-width: fit-content;
     }
 
-    > :last-child,
+    // > :last-child,
     > nav:last-child .breadcrumb {
       margin-bottom: 0;
     }
@@ -225,12 +225,12 @@
     }
   }
 
-  .bd-example-offcanvas {
-    .offcanvas {
+  .bd-example-drawer {
+    .drawer {
       position: static;
       display: block;
       height: 200px;
-      margin: var(--offcanvas-inset);
+      margin: var(--drawer-inset);
       visibility: visible;
       transform: translate(0);
     }

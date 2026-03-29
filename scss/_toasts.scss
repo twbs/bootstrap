@@ -11,19 +11,19 @@ $toast-tokens: () !default;
 $toast-tokens: defaults(
   (
     --toast-zindex: #{$zindex-toast},
-    --toast-padding-x: .75rem,
-    --toast-padding-y: .5rem,
+    --toast-padding-x: 1rem,
+    --toast-padding-y: .75rem,
     --toast-spacing: #{$container-padding-x},
     --toast-max-width: 350px,
-    --toast-font-size: .875rem,
+    --toast-font-size: var(--font-size-sm),
     --toast-color: null,
-    --toast-bg: rgba(var(--body-bg-rgb), .85),
+    --toast-bg: var(--bg-body),
     --toast-border-width: var(--border-width),
     --toast-border-color: var(--border-color-translucent),
-    --toast-border-radius: var(--border-radius),
+    --toast-border-radius: null,
     --toast-box-shadow: var(--box-shadow),
     --toast-header-color: var(--fg-3),
-    --toast-header-bg: rgba(var(--body-bg-rgb), .85),
+    --toast-header-bg: var(--bg-1),
     --toast-header-border-color: var(--border-color-translucent),
   ),
   $toast-tokens
@@ -35,16 +35,19 @@ $toast-tokens: defaults(
   .toast {
     @include tokens($toast-tokens);
 
+    display: flex;
+    flex-direction: column;
     width: var(--toast-max-width);
     max-width: 100%;
+    overflow: hidden;
     font-size: var(--toast-font-size);
-    color: var(--toast-color);
+    color: var(--toast-color, var(--fg-body));
     pointer-events: auto;
     background-color: var(--toast-bg);
     background-clip: padding-box;
-    border: var(--toast-border-width) solid var(--toast-border-color);
+    border: var(--toast-border-width) solid var(--theme-border, var(--toast-border-color));
     box-shadow: var(--toast-box-shadow);
-    @include border-radius(var(--toast-border-radius));
+    @include border-radius(var(--toast-border-radius, var(--border-radius-lg)));
 
     &.showing {
       opacity: 0;
@@ -73,15 +76,15 @@ $toast-tokens: defaults(
     display: flex;
     align-items: center;
     padding: var(--toast-padding-y) var(--toast-padding-x);
-    color: var(--toast-header-color);
-    background-color: var(--toast-header-bg);
-    background-clip: padding-box;
-    border-block-end: var(--toast-border-width) solid var(--toast-header-border-color);
-    @include border-top-radius(calc(var(--toast-border-radius) - var(--toast-border-width)));
+    color: var(--theme-text-emphasis, var(--toast-header-color));
+    background-color: var(--theme-bg-subtle, var(--toast-header-bg));
+    // background-clip: padding-box;
+    border-block-end: var(--toast-border-width, var(--border-width)) solid var(--theme-border, var(--toast-header-border-color, var(--border-color-translucent)));
 
     .btn-close {
-      margin-inline-start: var(--toast-padding-x);
-      margin-inline-end: calc(-.5 * var(--toast-padding-x));
+      margin-inline-start: calc(.5 * var(--toast-padding-x));
+      margin-inline-end: calc(-.25 * var(--toast-padding-x));
+      color: inherit;
     }
   }
 

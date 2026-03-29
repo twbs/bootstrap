@@ -30,7 +30,7 @@ const { addedIn, layout, title } = Astro.props
         <button
           class="btn-icon navbar-btn-icon lg:d-none ms--2"
           type="button"
-          data-bs-toggle="offcanvas"
+          data-bs-toggle="drawer"
           data-bs-target="#bdSidebar"
           aria-controls="bdSidebar"
           aria-label="Toggle docs navigation"
@@ -53,7 +53,7 @@ const { addedIn, layout, title } = Astro.props
       <button
         class="btn-icon navbar-btn-icon lg:d-none order-3 me--2"
         type="button"
-        data-bs-toggle="offcanvas"
+        data-bs-toggle="drawer"
         data-bs-target="#bdNavbar"
         aria-controls="bdNavbar"
         aria-label="Toggle navigation"
@@ -62,19 +62,19 @@ const { addedIn, layout, title } = Astro.props
       </button>
     </div>
 
-    {/* Main navigation - offcanvas on mobile, inline on desktop */}
-    <div
-      class="lg:offcanvas offcanvas-end flex-grow-1 offcanvas-fit-content"
+    {/* Main navigation - drawer on mobile, inline on desktop */}
+    <dialog
+      class="lg:drawer drawer-end flex-grow-1 drawer-fit-content"
       tabindex="-1"
       id="bdNavbar"
-      aria-labelledby="bdNavbarOffcanvasLabel"
+      aria-labelledby="bdNavbarDrawerLabel"
     >
-      <div class="offcanvas-header px-4 pb-0">
-        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
-        <CloseButton dismiss="offcanvas" target="#bdNavbar" />
+      <div class="drawer-header px-4 pb-0">
+        <h5 class="drawer-title text-white" id="bdNavbarDrawerLabel">Bootstrap</h5>
+        <CloseButton dismiss="drawer" target="#bdNavbar" />
       </div>
 
-      <div class="offcanvas-body p-4 pt-0 lg:p-0">
+      <div class="drawer-body p-4 pt-0 lg:p-0">
         <hr class="lg:d-none mb-0" />
         <ul class="nav navbar-nav flex-row flex-wrap bd-navbar-nav">
           <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/install/')} track>
@@ -113,6 +113,6 @@ const { addedIn, layout, title } = Astro.props
           </li>
         </ul>
       </div>
-    </div>
+    </dialog>
   </nav>
 </header>

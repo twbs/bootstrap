@@ -23,7 +23,7 @@ To encourage extensible and predictable toasts, we recommend a header and body. 
 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your “toasted” content and strongly encourage a dismiss button.
 
-<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<Example class="bg-1" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -87,7 +87,7 @@ We use the following JavaScript to trigger our live toast demo:
 
 Toasts are slightly translucent to blend in with what’s below them.
 
-<Example class="bg-dark" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<Example class="bg-1" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -143,16 +143,72 @@ You can stack toasts by wrapping them in a toast container, which will verticall
     </div>
   </div>`} />
 
+### Dark toasts
+
+Set a toast to dark mode by adding the `data-bs-theme="dark"` attribute to the `.toast` element.
+
+<Example class="vstack gap-3" code={`<div class="toast" data-bs-theme="dark" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="opacity-60">2 seconds ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      This toast is in dark mode by default.
+      <div class="hstack gap-2 mt-2">
+        <button type="button" class="btn-solid theme-primary btn-sm">Take action</button>
+        <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+      </div>
+    </div>
+  </div>`} />
+
+### Variants
+
+Toasts can be themed with our [theme color utilities]([[docsref:/customize/theme]]). Apply to the entire toast or individual elements within the toast.
+
+<Example class="vstack gap-3" code={`<div class="toast theme-primary" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="opacity-60">2 seconds ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      This toast is a primary themed toast.
+      <div class="hstack gap-2 mt-2">
+        <button type="button" class="btn-solid btn-sm">Take action</button>
+        <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast theme-accent" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="opacity-60">2 seconds ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      This toast is a primary themed toast.
+      <div class="hstack gap-2 mt-2">
+        <button type="button" class="btn-solid btn-sm">Take action</button>
+        <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+      </div>
+    </div>
+  </div>`} />
+
 ### Custom content
 
 Customize your toasts by removing sub-components, tweaking them with [utilities]([[docsref:/utilities/api]]), or by adding your own markup. Here we’ve created a simpler toast by removing the default `.toast-header`, adding a custom hide icon from [Bootstrap Icons]([[config:icons]]), and using some [flexbox utilities]([[docsref:/utilities/flex]]) to adjust the layout.
 
-<Example code={`<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
+<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex justify-content-between">
       <div class="toast-body">
         Hello, world! This is a toast message.
       </div>
-      <CloseButton dismiss="toast" class="me-2 m-auto" />
+      <CloseButton dismiss="toast" class="me-3 m-auto" />
     </div>
   </div>`} />
 
@@ -160,24 +216,12 @@ Alternatively, you can also add additional controls and components to toasts.
 
 <Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body">
-      Hello, world! This is a toast message.
-      <div class="mt-2 pt-2 border-top">
+      This is a custom toast message with additional content like a horizontal rule and buttons.
+      <hr class="my-3" />
+      <div class="hstack gap-2">
         <button type="button" class="btn-solid theme-primary btn-sm">Take action</button>
         <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
       </div>
-    </div>
-  </div>`} />
-
-### Color schemes
-
-Building on the above example, you can create different toast color schemes with our [color]([[docsref:/utilities/colors]]) and [background]([[docsref:/utilities/background]]) utilities. Here we’ve added `.text-bg-primary` to the `.toast`. For a crisp edge, we remove the default border with `.border-0`.
-
-<Example code={`<div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        Hello, world! This is a toast message.
-      </div>
-      <CloseButton dismiss="toast" class="me-2 m-auto" />
     </div>
   </div>`} />
 

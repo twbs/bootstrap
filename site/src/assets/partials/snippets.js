@@ -75,6 +75,16 @@ export default () => {
   }
   // js-docs-end live-toast
 
+  const dialogToastTrigger = document.getElementById('dialogToastBtn')
+  const dialogToastEl = document.getElementById('dialogToast')
+
+  if (dialogToastTrigger) {
+    const dialogToast = Toast.getOrCreateInstance(dialogToastEl)
+    dialogToastTrigger.addEventListener('click', () => {
+      dialogToast.show()
+    })
+  }
+
   // -------------------------------
   // Alerts
   // -------------------------------
@@ -134,13 +144,13 @@ export default () => {
     })
 
   // -------------------------------
-  // Offcanvas
+  // Drawer
   // -------------------------------
-  // 'Offcanvas components' example in docs only
-  const myOffcanvas = document.querySelectorAll('.bd-example-offcanvas .offcanvas')
-  if (myOffcanvas) {
-    myOffcanvas.forEach(offcanvas => {
-      offcanvas.addEventListener('show.bs.offcanvas', event => {
+  // 'Drawer components' example in docs only
+  const myDrawer = document.querySelectorAll('.bd-example-drawer .drawer')
+  if (myDrawer) {
+    myDrawer.forEach(drawer => {
+      drawer.addEventListener('show.bs.drawer', event => {
         event.preventDefault()
       }, false)
     })

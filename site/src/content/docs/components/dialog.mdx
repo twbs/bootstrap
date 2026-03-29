@@ -26,280 +26,294 @@ Native `<dialog>` elements support two methods: `show()` opens the dialog inline
 
 Toggle a dialog by clicking the button below. The dialog uses the native `showModal()` API for true modal behavior.
 
-<dialog class="dialog" id="exampleDialog">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Dialog title</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This is a native dialog element. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn-solid theme-primary">Save changes</button>
-  </div>
-</dialog>
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
+    Open dialog
+  </button>
 
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
-  Open dialog
-</button>`} />
-
-The markup for a dialog is straightforward:
-
-```html
-<dialog class="dialog" id="exampleDialog">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Dialog title</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
-        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
-      </svg>
-    </button>
-  </div>
-  <div class="dialog-body">
-    <p>Dialog body content goes here.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn-solid theme-primary">Save changes</button>
-  </div>
-</dialog>
-
-<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialog">
-  Open dialog
-</button>
-```
-
-## Dark dialog
-
-To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
-
-<dialog class="dialog" id="exampleDialogDark" data-bs-theme="dark">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Dark dialog title</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This is a native dialog element, only it’s set to dark mode. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn-solid theme-primary">Save changes</button>
-  </div>
-</dialog>
-
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogDark">
-  Open dark dialog
-</button>`} />
-
-## Static backdrop
-
-When `backdrop` is set to `static`, the dialog will not close when clicking outside of it. Click the button below to try it.
-
-<dialog class="dialog" id="staticBackdropDialog">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Static backdrop</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>I will not close if you click outside of me. Use the close button or press Escape.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-  </div>
-</dialog>
-
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#staticBackdropDialog" data-bs-backdrop="static">
-  Open static backdrop dialog
-</button>`} />
-
-## Scrolling long content
-
-When dialogs have content that exceeds the viewport height, the entire dialog scrolls within the viewport. The header, body, and footer all scroll together.
-
-<dialog class="dialog" id="scrollingLongDialog">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Scrolling dialog</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This is some placeholder content to show the scrolling behavior for dialogs. When the content exceeds the viewport height, you can scroll the entire dialog within the window—the header, body, and footer all move together.</p>
-    <p>The dialog component is built on the native HTML <code>&lt;dialog&gt;</code> element, which provides built-in accessibility features like focus trapping, backdrop handling, and proper keyboard interactions. This approach leverages browser-native functionality rather than custom JavaScript implementations.</p>
-    <p>When using <code>showModal()</code>, the dialog is rendered in the browser's top layer, ensuring it appears above all other content regardless of z-index values. The backdrop is created using the <code>::backdrop</code> pseudo-element, which can be styled with CSS.</p>
-    <p>Focus management is handled automatically by the browser. When a modal dialog opens, focus moves to the first focusable element inside. When closed, focus returns to the element that triggered the dialog. This behavior is essential for accessibility and keyboard navigation.</p>
-    <p>The Escape key closes modal dialogs by default, though this can be prevented using the <code>cancel</code> event. Non-modal dialogs opened with <code>show()</code> don't trap focus or block interaction with the rest of the page.</p>
-    <p>Bootstrap's Dialog component wraps the native element with additional features: custom animations, static backdrop option, programmatic control via JavaScript, and integration with data attributes for declarative usage.</p>
-    <p>Scrolling behavior varies based on content length. Short dialogs center in the viewport. Long dialogs scroll within the viewport by default, though you can use <code>.dialog-scrollable</code> to scroll only the body while keeping header and footer fixed.</p>
-    <p>The component fires standard Bootstrap events: <code>show.bs.dialog</code>, <code>shown.bs.dialog</code>, <code>hide.bs.dialog</code>, and <code>hidden.bs.dialog</code>. These allow you to hook into the dialog lifecycle and execute custom logic.</p>
-    <p>This content should appear at the bottom after you scroll.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn-solid theme-primary">Save changes</button>
-  </div>
-</dialog>
-
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollingLongDialog">
-  Launch scrolling dialog
-</button>`} />
-
-You can also create a scrollable dialog that scrolls the dialog body while keeping the header and footer fixed. Add `.dialog-scrollable` to the `.dialog` element.
-
-<dialog class="dialog dialog-scrollable" id="scrollableBodyDialog">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Scrollable body</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This is some placeholder content to show the scrolling behavior for dialogs. We use repeated line breaks to demonstrate how content can exceed the dialog's inner height, showing scrolling within the body while the header and footer remain fixed.</p>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    <p>This content should appear at the bottom after you scroll.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn-solid theme-primary">Save changes</button>
-  </div>
-</dialog>
-
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollableBodyDialog">
-  Launch scrollable body dialog
-</button>`} />
-
-```html
-<!-- Scrollable body dialog -->
-<dialog class="dialog dialog-scrollable" id="scrollableBodyDialog">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Scrollable body</h1>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
-        <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
-      </svg>
-    </button>
-  </div>
-  <div class="dialog-body">
-    <!-- Long content here -->
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-  </div>
-</dialog>
-```
-
-For a dialog that extends beyond the viewport and scrolls as a whole, add `.dialog-overflow` and wrap the content in a `.dialog-box` element. The `<dialog>` becomes a full-viewport scrollable container, and the `.dialog-box` is the visual dialog that scrolls up and down.
-
-<dialog class="dialog dialog-overflow" id="overflowDialog">
-  <div class="dialog-box">
+  <dialog class="dialog" id="exampleDialog">
     <div class="dialog-header">
-      <h1 class="dialog-title">Overflow dialog</h1>
+      <h1 class="dialog-title">Dialog title</h1>
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
-      <p>This dialog extends beyond the viewport height. Scroll to see more content. Notice how the entire dialog—including header and footer—shifts up and down as you scroll.</p>
-      <p>The <code>.dialog-overflow</code> modifier creates a full-viewport scrollable container. The <code>.dialog-box</code> wrapper contains the visual dialog that moves up and down as you scroll. This pattern is useful for very long content like terms of service or detailed forms.</p>
-      <p>Unlike the default scrolling behavior where the dialog is constrained to the viewport, overflow dialogs can extend beyond it. This gives users a more document-like reading experience for lengthy content.</p>
-      <p>The backdrop remains fixed while the dialog content scrolls. Clicking outside the dialog box still closes it (unless using a static backdrop). Keyboard navigation and focus trapping work the same as standard dialogs.</p>
-      <p>Consider using <code>.dialog-scrollable</code> instead if you want the header and footer to remain visible while scrolling. The scrollable variant keeps navigation controls accessible at all times, which may be preferable for forms with submit buttons.</p>
-      <p>Both approaches leverage the native <code>&lt;dialog&gt;</code> element's top layer rendering. This ensures the dialog appears above all other content, including elements with high z-index values, fixed positioning, or transforms.</p>
-      <p>The choice between scrolling behaviors depends on your content and user experience goals. Document-like content often works well with overflow scrolling, while interactive content may benefit from fixed header and footer.</p>
-      <p>You've reached the bottom of the overflow dialog!</p>
+      <p>This is a native dialog element. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
     </div>
     <div class="dialog-footer">
       <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
       <button type="button" class="btn-solid theme-primary">Save changes</button>
     </div>
-  </div>
-</dialog>
+  </dialog>`} />
 
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#overflowDialog">
-  Launch overflow dialog
-</button>`} />
+## Dark dialog
 
-```html
-<!-- Overflow dialog (entire dialog scrolls within viewport) -->
-<dialog class="dialog dialog-overflow" id="overflowDialog">
-  <div class="dialog-box">
-    <div class="dialog-header">...</div>
-    <div class="dialog-body">
-      <!-- Very long content here -->
+To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogDark">
+    Open dark dialog
+  </button>
+
+  <dialog class="dialog" id="exampleDialogDark" data-bs-theme="dark"><!-- [!code highlight] -->
+    <div class="dialog-header">
+      <h1 class="dialog-title">Dark dialog title</h1>
+      <CloseButton dismiss="dialog" />
     </div>
-    <div class="dialog-footer">...</div>
-  </div>
-</dialog>
-```
+    <div class="dialog-body">
+      <p>This is a native dialog element, only it’s set to dark mode. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
+    </div>
+  </dialog>`} />
+
+## Static backdrop
+
+When `backdrop` is set to `static`, the dialog will not close when clicking outside of it. Click the button below to try it.
+
+<Example code={`<button type="button" class="btn-solid theme-primary"data-bs-toggle="dialog" data-bs-target="#staticBackdropDialog" data-bs-backdrop="static"><!-- [!code highlight] -->
+    Open static backdrop dialog
+  </button>
+
+  <dialog class="dialog" id="staticBackdropDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Static backdrop</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>I will not close if you click outside of me. Use the close button or press Escape.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    </div>
+  </dialog>`} />
+
+## Overlays
+
+Tooltips, popovers, and toasts all work inside dialogs, but require some extra care. Since dialogs render in the browser's top layer, overlays appended to `<body>` will appear behind the dialog. Set `data-bs-container` to the dialog element so tooltips and popovers render inside it. Toasts already work as long as they're placed in the dialog markup.
+
+Tooltips, popovers, toasts, and menus all work inside modal dialogs. Modal dialogs use `showModal()`, which promotes the dialog to the browser's top layer -- a special rendering layer above everything else on the page.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialogWithComponents">
+    Open dialog
+  </button>
+
+  <dialog class="dialog not-prose" id="dialogWithComponents">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Overlays inside dialogs</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>These components work inside modal dialogs.</p>
+      <div class="d-flex gap-2 flex-wrap">
+        <button type="button" class="btn-solid theme-secondary" data-bs-toggle="tooltip" data-bs-title="Tooltip inside a dialog!">Tooltip</button>
+        <button type="button" class="btn-solid theme-secondary" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="This popover is inside a dialog and renders in the top layer. We include some longer content here to demonstrate the placement and wrapping behavior." data-bs-placement="top">Popover</button>
+        <button type="button" class="btn-solid theme-secondary" id="dialogToastBtn">Show toast</button>
+        <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">Menu</button>
+        <div class="menu">
+          <a class="menu-item" href="#">Action</a>
+          <a class="menu-item" href="#">Another action</a>
+          <hr class="menu-divider" />
+          <div class="submenu">
+            <button class="menu-item" type="button">More options</button>
+            <div class="menu">
+              <a class="menu-item" href="#">Sub-action A</a>
+              <a class="menu-item" href="#">Sub-action B</a>
+              <div class="submenu">
+                <button class="menu-item" type="button">Even more</button>
+                <div class="menu">
+                  <a class="menu-item" href="#">Deep action 1</a>
+                  <a class="menu-item" href="#">Deep action 2</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div class="toast" id="dialogToast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+          Toast inside a dialog!
+          <div class="mt-2 pt-2 border-top">
+            <button type="button" class="btn-solid theme-primary btn-sm" data-bs-dismiss="toast">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>`} />
+
+## Animations
+
+### Instant
+
+By default, dialogs animate with a fade on open and close. To disable animations, add `.dialog-instant` to the `<dialog>` element.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#instantDialog">
+    Instant dialog
+  </button>
+
+  <dialog class="dialog dialog-instant" id="instantDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Instant dialog</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This dialog doesn’t animate and appears instantly on open and close.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
+    </div>
+  </dialog>`} />
+
+### Slide down
+
+Add `.dialog-slide-down` to the `<dialog>` and it will slide **down** from the top of the viewport when opened.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#slideDownDialog">
+    Slide down dialog
+  </button>
+
+  <dialog class="dialog dialog-slide-down" id="slideDownDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Slide down dialog</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This dialog slides down from the top of the viewport.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
+    </div>
+  </dialog>`} />
+
+### Slide up
+
+Add `.dialog-slide-up` to the `<dialog>` and it will slide **up** from the bottom of the viewport when opened.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#slideUpDialog">
+    Slide up dialog
+  </button>
+
+  <dialog class="dialog dialog-slide-up" id="slideUpDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Slide up dialog</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This dialog slides up from the bottom of the viewport.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
+    </div>
+  </dialog>`} />
+
+## Scrolling
+
+### Inner scroll
+
+You can also create a scrollable dialog that scrolls the dialog body while keeping the header and footer fixed. Add `.dialog-scrollable` to the `.dialog` element.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollableBodyDialog">
+    Launch scrollable body dialog
+  </button>
+
+  <dialog class="dialog dialog-scrollable" id="scrollableBodyDialog"><!-- [!code highlight] -->
+    <div class="dialog-header">
+      <h1 class="dialog-title">Scrollable body</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This is some placeholder content to show the scrolling behavior for dialogs. We use repeated line breaks to demonstrate how content can exceed the dialog's inner height, showing scrolling within the body while the header and footer remain fixed.</p>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <p>This content should appear at the bottom after you scroll.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary">Save changes</button>
+    </div>
+  </dialog>`} />
+
+### Overflow scroll
+
+For a dialog that extends beyond the viewport and scrolls as a whole, add `.dialog-overflow` and wrap the content in a `.dialog-box` element. The `<dialog>` becomes a full-viewport scrollable container, and the `.dialog-box` is the visual dialog that scrolls up and down.
+
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#overflowDialog">
+    Launch overflow dialog
+  </button>
+
+  <dialog class="dialog dialog-overflow" id="overflowDialog"><!-- [!code highlight] -->
+    <div class="dialog-box"><!-- [!code highlight] -->
+      <div class="dialog-header">
+        <h1 class="dialog-title">Overflow dialog</h1>
+        <CloseButton dismiss="dialog" />
+      </div>
+      <div class="dialog-body">
+        <p>This dialog extends beyond the viewport height. Scroll to see more content. Notice how the entire dialog—including header and footer—shifts up and down as you scroll.</p>
+        <p>The <code>.dialog-overflow</code> modifier creates a full-viewport scrollable container. The <code>.dialog-box</code> wrapper contains the visual dialog that moves up and down as you scroll. This pattern is useful for very long content like terms of service or detailed forms.</p>
+        <p>Unlike the default scrolling behavior where the dialog is constrained to the viewport, overflow dialogs can extend beyond it. This gives users a more document-like reading experience for lengthy content.</p>
+        <p>The backdrop remains fixed while the dialog content scrolls. Clicking outside the dialog box still closes it (unless using a static backdrop). Keyboard navigation and focus trapping work the same as standard dialogs.</p>
+        <p>Consider using <code>.dialog-scrollable</code> instead if you want the header and footer to remain visible while scrolling. The scrollable variant keeps navigation controls accessible at all times, which may be preferable for forms with submit buttons.</p>
+        <p>Both approaches leverage the native <code>&lt;dialog&gt;</code> element's top layer rendering. This ensures the dialog appears above all other content, including elements with high z-index values, fixed positioning, or transforms.</p>
+        <p>The choice between scrolling behaviors depends on your content and user experience goals. Document-like content often works well with overflow scrolling, while interactive content may benefit from fixed header and footer.</p>
+        <p>You've reached the bottom of the overflow dialog!</p>
+      </div>
+      <div class="dialog-footer">
+        <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+        <button type="button" class="btn-solid theme-primary">Save changes</button>
+      </div>
+    </div>
+  </dialog>`} />
 
 ## Swapping dialogs
 
-When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash.
+When a toggle trigger is inside an open dialog, clicking it will **swap** dialogs—opening the new one before closing the current. This ensures the backdrop stays visible throughout the transition with no flash. The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog.
 
-<dialog class="dialog" id="swapDialog1">
-  <div class="dialog-header">
-    <h1 class="dialog-title">First dialog</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>Click below to swap to a second dialog. Notice the backdrop stays visible—no flash!</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog2">Go to second dialog</button>
-  </div>
-</dialog>
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">
+    Open first dialog
+  </button>
 
-<dialog class="dialog" id="swapDialog2">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Second dialog</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This is the second dialog. You can swap back to the first, or close this one entirely.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-    <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">Back to first dialog</button>
-  </div>
-</dialog>
+  <dialog class="dialog" id="swapDialog1">
+    <div class="dialog-header">
+      <h1 class="dialog-title">First dialog</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>Click below to swap to a second dialog. Notice the backdrop stays visible—no flash!</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog2">Go to second dialog</button><!-- [!code highlight] -->
+    </div>
+  </dialog>
 
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">
-  Open first dialog
-</button>`} />
-
-The swap behavior is automatic when a `data-bs-toggle="dialog"` trigger is inside an already-open dialog:
-
-```html
-<!-- First dialog -->
-<dialog class="dialog" id="dialog1">
-  <div class="dialog-body">
-    <p>Click below to swap to dialog 2.</p>
-  </div>
-  <div class="dialog-footer">
-    <!-- This trigger is inside dialog1, so clicking it will swap -->
-    <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialog2">
-      Go to dialog 2
-    </button>
-  </div>
-</dialog>
-
-<!-- Second dialog -->
-<dialog class="dialog" id="dialog2">
-  <div class="dialog-body">
-    <p>You're now in dialog 2.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialog1">
-      Back to dialog 1
-    </button>
-  </div>
-</dialog>
-```
+  <dialog class="dialog" id="swapDialog2">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Second dialog</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This is the second dialog. You can swap back to the first, or close this one entirely.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+      <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#swapDialog1">Back to first dialog</button><!-- [!code highlight] -->
+    </div>
+  </dialog>`} />
 
 ## Non-modal dialogs
 
-By default, dialogs open as modals using the native `showModal()` method. You can also open dialogs as non-modal using `show()` by setting `modal` to `false`. Non-modal dialogs:
+By default, dialogs open as modals using the browser-native `showModal()` method. You can also open dialogs as non-modal using `show()` by setting `modal` to `false`. Non-modal dialogs:
 
 - Have no backdrop
 - Don't trap focus
@@ -307,22 +321,24 @@ By default, dialogs open as modals using the native `showModal()` method. You ca
 - Don't render in the browser's top layer
 - Still respond to Escape key (if `keyboard: true`)
 
-<dialog class="dialog" id="nonModalDialog">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Non-modal dialog</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This dialog doesn't block the page. You can still interact with content behind it.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-  </div>
-</dialog>
-
-  <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#nonModalDialog" data-bs-modal="false">
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#nonModalDialog" data-bs-modal="false"><!-- [!code highlight] -->
     Open non-modal dialog
-  </button>`} />
+  </button>
+
+  <dialog class="dialog" id="nonModalDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Non-modal dialog</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This dialog doesn't block the page. You can still interact with content behind it.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    </div>
+  </dialog>`} />
+
+Use the `modal` option to create a non-modal dialog if building with JavaScript:
 
 ```js
 const dialog = new bootstrap.Dialog('#myDialog', { modal: false })
@@ -362,6 +378,16 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
   </div>
 </dialog>
 
+<dialog class="dialog" id="exampleDialogMd">
+  <div class="dialog-header">
+    <h1 class="dialog-title">Medium (default) dialog</h1>
+    <CloseButton dismiss="dialog" />
+  </div>
+  <div class="dialog-body">
+    <p>This is a medium (default) dialog—there’s no modifier class for this size.</p>
+  </div>
+</dialog>
+
 <dialog class="dialog dialog-sm" id="exampleDialogSm">
   <div class="dialog-header">
     <h1 class="dialog-title">Small dialog</h1>
@@ -378,39 +404,44 @@ Dialogs have three optional sizes, available via modifier classes to be placed o
 <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogLg">
   Large dialog
 </button>
+<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogMd">
+  Default dialog
+</button>
 <button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogSm">
   Small dialog
 </button>`} />
 
 ```html
-<dialog class="dialog dialog-xl">...</dialog>
-<dialog class="dialog dialog-lg">...</dialog>
-<dialog class="dialog dialog-sm">...</dialog>
+<dialog class="dialog dialog-xl">…</dialog>
+<dialog class="dialog dialog-lg">…</dialog>
+<dialog class="dialog">…</dialog>
+<dialog class="dialog dialog-sm">…</dialog>
 ```
 
 ## Fullscreen dialog
 
 Use `.dialog-fullscreen` to make the dialog cover the entire viewport.
 
-<dialog class="dialog dialog-fullscreen" id="exampleDialogFullscreen">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Fullscreen dialog</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This dialog covers the entire viewport.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-  </div>
-</dialog>
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreen">
+    Fullscreen dialog
+  </button>
 
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreen">
-  Fullscreen dialog
-</button>`} />
+  <dialog class="dialog dialog-fullscreen" id="exampleDialogFullscreen">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Fullscreen dialog</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This dialog covers the entire viewport.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    </div>
+  </dialog>`} />
 
 Responsive fullscreen variants are also available. These make the dialog fullscreen only below a specific breakpoint.
 
+<BsTable>
 | Class | Fullscreen below |
 | --- | --- |
 | `.dialog-fullscreen` | Always |
@@ -419,27 +450,24 @@ Responsive fullscreen variants are also available. These make the dialog fullscr
 | `.lg-down:dialog-fullscreen` | `1024px` |
 | `.xl-down:dialog-fullscreen` | `1280px` |
 | `.2xl-down:dialog-fullscreen` | `1536px` |
+</BsTable>
 
-<dialog class="dialog lg-down:dialog-fullscreen" id="exampleDialogFullscreenLg">
-  <div class="dialog-header">
-    <h1 class="dialog-title">Fullscreen below lg</h1>
-    <CloseButton dismiss="dialog" />
-  </div>
-  <div class="dialog-body">
-    <p>This dialog is fullscreen below the <code>lg</code> breakpoint.</p>
-  </div>
-  <div class="dialog-footer">
-    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-  </div>
-</dialog>
+<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreenLg">
+    Fullscreen below lg
+  </button>
 
-<Example showMarkup={false} code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#exampleDialogFullscreenLg">
-  Fullscreen below lg
-</button>`} />
-
-```html
-<dialog class="dialog lg-down:dialog-fullscreen">...</dialog>
-```
+  <dialog class="dialog lg-down:dialog-fullscreen" id="exampleDialogFullscreenLg"><!-- [!code highlight] -->
+    <div class="dialog-header">
+      <h1 class="dialog-title">Fullscreen below lg</h1>
+      <CloseButton dismiss="dialog" />
+    </div>
+    <div class="dialog-body">
+      <p>This dialog is fullscreen below the <code>lg</code> breakpoint.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+    </div>
+  </dialog>`} />
 
 ## CSS
 
