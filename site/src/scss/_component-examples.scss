@@ -1,7 +1,6 @@
 @use "../../../scss/config" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
-@use "variables" as *;
 
 //
 // Docs examples
@@ -12,16 +11,10 @@
     --bd-example-padding: 1.25rem;
     --bd-example-inner-radius: calc(var(--bs-border-radius) - 1px);
 
-    margin: 0 ($bd-gutter-x * -.5);
+    margin: 0;
     background-color: var(--bd-pre-bg);
-    border: solid var(--bs-border-color);
-    border-width: 1px 0;
-
-    @include media-breakpoint-up(md) {
-      margin-inline: 0;
-      border-width: 1px;
-      @include border-radius(var(--bs-border-radius));
-    }
+    border: 1px solid var(--bs-border-color);
+    @include border-radius(var(--bs-border-radius));
 
     .bd-example {
       &:first-child {
@@ -46,16 +39,13 @@
     padding-inline-end: calc(var(--bd-example-padding) - .5em);
     background-color: var(--bs-bg-1);
     border-bottom: 1px solid var(--bs-border-color);
-    // @include border-top-radius(calc(var(--bs-border-radius) - 1px));
 
-    @include media-breakpoint-up(md) {
-      &:first-child {
-        @include border-top-radius(calc(var(--bs-border-radius) - 1px));
-      }
+    &:first-child {
+      @include border-top-radius(calc(var(--bs-border-radius) - 1px));
+    }
 
-      &:not(:first-child) {
-        border-top: 1px solid var(--bs-border-color);
-      }
+    &:not(:first-child) {
+      border-top: 1px solid var(--bs-border-color);
     }
   }
 
@@ -68,25 +58,11 @@
 
     @include media-breakpoint-up(md) {
       --bd-example-padding: 1.5rem;
-      margin-inline: 0;
     }
 
     + p {
       margin-top: 2rem;
     }
-
-    // > .form-control {
-    //   + .form-control {
-    //     margin-top: .5rem;
-    //   }
-    // }
-
-    // > .nav + .nav,
-    // > .alert + .alert,
-    // > .navbar + .navbar,
-    // > .progress + .progress {
-    //   margin-top: $spacer;
-    // }
 
     > .tab-content {
       min-height: 120px;

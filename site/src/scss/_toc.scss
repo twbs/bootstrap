@@ -63,7 +63,8 @@
     }
 
     @include media-breakpoint-down(lg) {
-      height: 80dvh;
+      height: auto;
+      max-height: 80dvh;
     }
   }
 
@@ -75,6 +76,9 @@
     z-index: 1030;
     margin-inline: auto;
     font-size: var(--font-size-sm);
-    box-shadow: var(--bs-box-shadow-lg);
+
+    > .btn-solid {
+      box-shadow: var(--bs-box-shadow-lg);
+    }
   }
 }

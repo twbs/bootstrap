@@ -19,6 +19,8 @@
 
     @include media-breakpoint-down(lg) {
       .lg\:drawer {
+        height: auto;
+        max-height: 90dvh;
         border-inline-end-color: var(--bs-border-color);
         box-shadow: var(--bs-box-shadow-lg);
       }

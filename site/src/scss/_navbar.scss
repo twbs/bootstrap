@@ -28,25 +28,11 @@
     background-color: transparent;
     background-clip: padding-box;
 
-    .bd-navbar-toggle {
-      @include media-breakpoint-down(lg) {
-        width: 4.25rem;
-      }
-    }
-
-    .navbar-toggler {
+    .navbar-btn-icon {
       padding: 0;
       margin-inline-end: -.5rem;
+      background-color: transparent;
       border: 0;
-
-      &:first-child {
-        margin-inline-start: -.5rem;
-      }
-
-      .bi {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
 
       &:focus {
         box-shadow: none;
@@ -67,7 +53,9 @@
     }
 
     .nav-link {
-      font-size: var(--font-size-sm);
+      @include media-breakpoint-up(lg) {
+        font-size: var(--font-size-sm);
+      }
 
       &.active {
         font-weight: 600;

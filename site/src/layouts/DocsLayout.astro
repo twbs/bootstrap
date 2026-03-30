@@ -89,7 +89,7 @@ if (currentPageIndex < allPages.length - 1) {
 <BaseLayout {...Astro.props} layout="docs" overrides={{ body: bodyProps }}>
   <div slot="main" class="2xl:container bd-gutter mt-3 md:my-4 bd-layout">
     <aside class="bd-sidebar">
-      <dialog class="lg:drawer drawer-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarDrawerLabel">
+      <dialog class="lg:drawer drawer-bottom" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarDrawerLabel">
         <div class="drawer-header border-bottom">
           <h5 class="drawer-title" id="bdSidebarDrawerLabel">Browse docs</h5>
           <CloseButton dismiss="drawer" target="#bdSidebar" />
@@ -114,7 +114,7 @@ if (currentPageIndex < allPages.length - 1) {
 
       <div class="lg:d-none d-flex justify-content-center bd-toc-toggle">
         <button
-          class="btn-solid theme-secondary rounded-pill px-5"
+          class="btn-solid theme-inverse rounded-pill px-5"
           type="button"
           data-bs-toggle="drawer"
           data-bs-target="#bdTocSidebar"
