@@ -11,16 +11,14 @@ import Icons from '@layouts/partials/Icons.astro'
 
 type Props = ExampleFrontmatter
 
-const { body_class, direction, extra_css, extra_js, html_class, include_js, title = 'Example' } = Astro.props
+const { body_class, extra_css, extra_js, html_class, include_js, title = 'Example' } = Astro.props
 
 const pageTitle = `${title} · ${getConfig().title} v${getConfig().docs_version}`
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
-
-const htmlProps: HTMLAttributes<'html'> = direction === 'rtl' ? { lang: 'ar', dir: 'rtl' } : { lang: 'en' }
 ---
 
 <!DOCTYPE html>
-<html {...htmlProps} class:list={html_class} data-bs-theme="auto">
+<html lang="en" class:list={html_class} data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +31,7 @@ const htmlProps: HTMLAttributes<'html'> = direction === 'rtl' ? { lang: 'ar', di
 
     <script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
 
-    <Stylesheet direction={direction} layout="examples" />
+    <Stylesheet layout="examples" />
     <Favicons />
 
     <style is:global>

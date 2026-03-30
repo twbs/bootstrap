@@ -6,7 +6,6 @@ import { getDocsFsPath } from './path'
 
 export const exampleFrontmatterSchema = z.object({
   body_class: z.string().optional(),
-  direction: z.literal('rtl').optional(),
   extra_css: z.string().array().optional(),
   extra_js: z
     .object({
