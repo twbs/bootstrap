@@ -21,7 +21,7 @@ interface Props {
 
 const { addedIn, layout, title } = Astro.props
 
-const activeSection = title === 'Examples' ? 'Examples' : 'Docs'
+const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Docs'
 ---
 
 <header class="navbar lg:navbar-expand bd-navbar border-bottom">
@@ -45,6 +45,10 @@ const activeSection = title === 'Examples' ? 'Examples' : 'Docs'
           <svg class="bi bi-sm" aria-hidden="true"><use href="#chevron-expand"></use></svg>
         </button>
         <div class="menu">
+          <a class:list={['menu-item', { active: !layout }]} href="/">
+            Home
+            {!layout && <svg class="bi ms-auto" aria-hidden="true"><use href="#check2"></use></svg>}
+          </a>
           <a
             class:list={['menu-item', { active: layout === 'docs' }]}
             href={getVersionedDocsPath('getting-started/install/')}
@@ -61,24 +65,24 @@ const activeSection = title === 'Examples' ? 'Examples' : 'Docs'
           </a>
           <a class="menu-item" href={getConfig().icons} target="_blank" rel="noopener">
             Icons
-            <svg class="bi ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
           </a>
           <a class="menu-item" href={getConfig().blog} target="_blank" rel="noopener">
             Blog
-            <svg class="bi ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
           </a>
           <hr class="menu-divider" />
           <a class="menu-item" href={getConfig().github_org} target="_blank" rel="noopener">
             GitHub
-            <svg class="bi ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
           </a>
           <a class="menu-item" href={getConfig().opencollective} target="_blank" rel="noopener">
             OpenCollective
-            <svg class="bi ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
           </a>
           <a class="menu-item" href={`https://x.com/${getConfig().x}`} target="_blank" rel="noopener">
             Twitter/X
-            <svg class="bi ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
           </a>
         </div>
       </div>

@@ -151,6 +151,10 @@
     grid-template-columns: repeat(4, 1fr);
     gap: .5rem;
     justify-content: start;
+
+    @include media-breakpoint-down(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   // // Grid mixins

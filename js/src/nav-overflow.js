@@ -187,7 +187,7 @@ class NavOverflow extends BaseComponent {
     if (typeof value === 'string' && value !== '') {
       const cssValue = getComputedStyle(document.documentElement)
         .getPropertyValue(`--bs-breakpoint-${value}`)
-      return parseFloat(cssValue) || 0
+      return Number.parseFloat(cssValue) || 0
     }
 
     return 0

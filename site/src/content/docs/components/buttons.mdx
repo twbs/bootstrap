@@ -25,7 +25,7 @@ Bootstrap includes several button variants, each serving its own semantic purpos
 
 Compare all button variants and styles at once:
 
-<Example class="bd-example-buttons justify-items-start" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid theme-${themeColor.name}">${themeColor.title}</button>
+<Example class="bd-example-buttons md:justify-items-start" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid theme-${themeColor.name}">${themeColor.title}</button>
 <button type="button" class="btn-outline theme-${themeColor.name}">${themeColor.title}</button>
 <button type="button" class="btn-subtle theme-${themeColor.name}">${themeColor.title}</button>
 <button type="button" class="btn-text theme-${themeColor.name}">${themeColor.title}</button>`)]} />
@@ -46,7 +46,7 @@ Link buttons can also be styled with the theme colors.
 
 Add visual depth to solid buttons with gradients and shadows using the `.btn-styled` modifier class. This provides a more three-dimensional appearance that can be customized further with CSS variables.
 
-<Example code={[...getData('theme-colors').map((themeColor) => `<button class="btn-solid btn-styled theme-${themeColor.name}">${themeColor.title}</button>`)]} />
+<Example class="d-flex flex-wrap gap-2" code={[...getData('theme-colors').map((themeColor) => `<button class="btn-solid btn-styled theme-${themeColor.name}">${themeColor.title}</button>`)]} />
 
 The gradient and shadow can be customized via CSS variables:
 
@@ -69,7 +69,7 @@ The `.btn` classes are designed to be used with the `<button>` element. However,
 
 When using button classes on `<a>` elements that are used to trigger in-page functionality (like collapsing content), rather than linking to new pages or sections within the current page, these links should be given a `role="button"` to appropriately convey their purpose to assistive technologies such as screen readers.
 
-<Example code={`<a class="btn-solid theme-primary" href="#" role="button">Link</a>
+<Example class="d-flex flex-wrap gap-2" code={`<a class="btn-solid theme-primary" href="#" role="button">Link</a>
 <button class="btn-solid theme-primary" type="submit">Button</button>
 <input class="btn-solid theme-primary" type="button" value="Input">
 <input class="btn-solid theme-primary" type="submit" value="Submit">
@@ -131,7 +131,7 @@ Combine with size classes for different icon button sizes:
 
 Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element. Disabled buttons have `pointer-events: none`, preventing hover and active states from triggering, and some additional styling to indicate the disabled state.
 
-<Example code={`<button type="button" class="btn-solid theme-primary" disabled>Primary button</button>
+<Example class="d-flex flex-wrap gap-2" code={`<button type="button" class="btn-solid theme-primary" disabled>Primary button</button>
 <button type="button" class="btn-solid theme-secondary" disabled>Button</button>
 <button type="button" class="btn-outline theme-primary" disabled>Primary button</button>
 <button type="button" class="btn-outline theme-secondary" disabled>Button</button>`} />
@@ -190,7 +190,7 @@ Visually, these toggle buttons are identical to our [JavaScript toggle buttons](
 
 Checkboxes can be checked, unchecked, or disabled. Checkbox-based toggle buttons only toggle a single button’s state.
 
-<Example code={`<label class="btn-check btn-solid theme-primary">
+<Example class="d-flex flex-wrap gap-2" code={`<label class="btn-check btn-solid theme-primary">
     <input type="checkbox" checked autocomplete="off">
     Checked
   </label>
@@ -209,7 +209,7 @@ Checkboxes can be checked, unchecked, or disabled. Checkbox-based toggle buttons
 
 Radios can be checked, unchecked, or disabled. Use radio-based toggle buttons to toggle states between a set of buttons that include input elements with the same `name` attribute value.
 
-<Example code={`<label class="btn-check btn-solid theme-primary">
+<Example class="d-flex flex-wrap gap-2" code={`<label class="btn-check btn-solid theme-primary">
     <input type="radio" name="options" autocomplete="off" checked>
     Checked
   </label>
@@ -241,11 +241,11 @@ Visually, these toggle buttons are identical to our [input toggle buttons](#togg
 
 Add `data-bs-toggle="button"` to toggle a button’s `active` state. If you’re pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to ensure that it is conveyed appropriately to assistive technologies.
 
-<Example class="d-inline-flex gap-1" code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="button">Toggle button</button>
+<Example class="d-flex flex-wrap gap-2"  code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="button">Toggle button</button>
   <button type="button" class="btn-solid theme-primary active" data-bs-toggle="button" aria-pressed="true">Active toggle button</button>
   <button type="button" class="btn-solid theme-primary" disabled data-bs-toggle="button">Disabled toggle button</button>`} />
 
-<Example class="d-inline-flex gap-1" code={`<a href="#" class="btn-solid theme-primary" role="button" data-bs-toggle="button">Toggle link</a>
+<Example class="d-flex flex-wrap gap-2" code={`<a href="#" class="btn-solid theme-primary" role="button" data-bs-toggle="button">Toggle link</a>
   <a href="#" class="btn-solid theme-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle link</a>
   <a class="btn-solid theme-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle link</a>`} />
 
