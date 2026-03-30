@@ -12,6 +12,7 @@ import Swipe from './util/swipe.js'
 import { enableDismissTrigger } from './util/component-functions.js'
 import {
   isDisabled,
+  isRTL,
   isVisible
 } from './util/index.js'
 
@@ -114,20 +115,17 @@ class Drawer extends DialogBase {
       swipeConfig.upCallback = () => this.hide()
     } else if (element.classList.contains('drawer-end')) {
       // RTL: swipe left to dismiss end drawer
-      const isRtl = document.documentElement.dir === 'rtl'
-      if (isRtl) {
+      if (isRTL()) {
         swipeConfig.leftCallback = () => this.hide()
       } else {
         swipeConfig.rightCallback = () => this.hide()
       }
+    } else if (isRTL()) {
+      // drawer-start (default): swipe right to dismiss in RTL
+      swipeConfig.rightCallback = () => this.hide()
     } else {
       // drawer-start (default): swipe left to dismiss in LTR
-      const isRtl = document.documentElement.dir === 'rtl'
-      if (isRtl) {
-        swipeConfig.rightCallback = () => this.hide()
-      } else {
-        swipeConfig.leftCallback = () => this.hide()
-      }
+      swipeConfig.leftCallback = () => this.hide()
     }
 
     this._swipeHelper = new Swipe(element, swipeConfig)
