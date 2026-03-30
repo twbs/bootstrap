@@ -16,8 +16,6 @@
   ·
   <a href="https://github.com/twbs/bootstrap/issues/new?assignees=&labels=feature&template=feature_request.yml">Request feature</a>
   ·
-  <a href="https://themes.getbootstrap.com/">Themes</a>
-  ·
   <a href="https://blog.getbootstrap.com/">Blog</a>
 </p>
 
@@ -46,12 +44,12 @@ Our default branch is for development of our Bootstrap 5 release. Head to the [`
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.3.5.zip)
+- [Download the latest release](https://github.com/twbs/bootstrap/archive/v5.3.8.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.5`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.5`
-- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.5`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.5`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@v5.3.8`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@v5.3.8`
+- Install with [Bun](https://bun.sh/): `bun add bootstrap@v5.3.8`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:5.3.8`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/5.3/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
@@ -70,6 +68,7 @@ Read the [Getting started page](https://getbootstrap.com/docs/5.3/getting-starte
 [![CSS Brotli size](https://img.badgesize.io/twbs/bootstrap/main/dist/css/bootstrap.min.css?compression=brotli&label=CSS%20Brotli%20size)](https://github.com/twbs/bootstrap/blob/main/dist/css/bootstrap.min.css)
 [![JS gzip size](https://img.badgesize.io/twbs/bootstrap/main/dist/js/bootstrap.min.js?compression=gzip&label=JS%20gzip%20size)](https://github.com/twbs/bootstrap/blob/main/dist/js/bootstrap.min.js)
 [![JS Brotli size](https://img.badgesize.io/twbs/bootstrap/main/dist/js/bootstrap.min.js?compression=brotli&label=JS%20Brotli%20size)](https://github.com/twbs/bootstrap/blob/main/dist/js/bootstrap.min.js)
+![Open Source Security Foundation Scorecard](https://img.shields.io/ossf-scorecard/github.com/twbs/bootstrap)
 [![Backers on Open Collective](https://img.shields.io/opencollective/backers/bootstrap?logo=opencollective&logoColor=fff)](#backers)
 [![Sponsors on Open Collective](https://img.shields.io/opencollective/sponsors/bootstrap?logo=opencollective&logoColor=fff)](#sponsors)
 
@@ -151,7 +150,7 @@ Documentation search is powered by [Algolia's DocSearch](https://docsearch.algol
 1. Run `npm install` to install the Node.js dependencies, including Astro (the site builder).
 2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 3. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
-4. Open `http://localhost:9001/` in your browser, and voilà.
+4. Open <http://localhost:9001> in your browser, and voilà.
 
 Learn more about using Astro by reading its [documentation](https://docs.astro.build/en/getting-started/).
 
@@ -244,4 +243,4 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 ## Copyright and license
 
-Code and documentation copyright 2011-2025 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors). Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Code and documentation copyright 2011-2026 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors). Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).

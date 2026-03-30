@@ -2,7 +2,7 @@
 
 /*!
  * Script to run vnu-jar if Java is available.
- * Copyright 2017-2025 The Bootstrap Authors
+ * Copyright 2017-2026 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
@@ -35,7 +35,13 @@ execFile('java', ['-version'], (error, stdout, stderr) => {
     'Attribute “is:raw” is not serializable as XML 1.0.',
     'Attribute “is:raw” not allowed on element “code” at this point.',
     // Astro's expecting trailing slashes on HTML tags such as <br />
+<<<<<<< HEAD
     'Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.'
+=======
+    'Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.',
+    // Allow `switch` attribute.
+    'Attribute “switch” not allowed on element “input” at this point.'
+>>>>>>> main
   ].join('|')
 
   const args = [

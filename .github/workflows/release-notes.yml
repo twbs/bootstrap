@@ -18,6 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'twbs/bootstrap'
     steps:
-      - uses: release-drafter/release-drafter@v6
+      - uses: release-drafter/release-drafter@3a7fb5c85b80b1dda66e1ccb94009adbbd32fce3 # v7.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

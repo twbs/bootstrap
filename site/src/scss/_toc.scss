@@ -1,6 +1,9 @@
 // stylelint-disable selector-max-type, selector-no-qualifying-type
 
 .bd-toc {
+  font-size: .875rem;
+  container-type: inline-size;
+
   @include media-breakpoint-up(lg) {
     position: sticky;
     top: 5rem;

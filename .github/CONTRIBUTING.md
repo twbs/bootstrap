@@ -24,11 +24,8 @@ restrictions:
   respect the opinions of others.
 
 - Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
-  Use [GitHub's "reactions" feature](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)
+  Use [GitHub's "reactions" feature](https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/)
   instead. We reserve the right to delete comments which violate this rule.
-
-- Please **do not** open issues regarding the official themes offered on <https://themes.getbootstrap.com/>.
-  Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
 
 ## Issues assignment

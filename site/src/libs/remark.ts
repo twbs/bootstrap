@@ -56,7 +56,11 @@ export const remarkBsConfig: Plugin<[], Root> = function () {
   }
 }
 
+<<<<<<< HEAD
 // A remark plugin to add versionned docs links in markdown (or MDX) files.
+=======
+// A remark plugin to add versioned docs links in markdown (or MDX) files.
+>>>>>>> main
 // For example, [[docsref:/foo]] will be replaced with the `/docs/${docs_version}/foo` value with the `docs_version`
 // value being read from the `config.yml` file.
 // Note: this also works in frontmatter.
@@ -147,8 +151,13 @@ function replaceInFrontmatter(record: Record<string, unknown>, replacer: (value:
         return typeof arrayValue === 'string'
           ? replacer(arrayValue)
           : typeof arrayValue === 'object'
+<<<<<<< HEAD
           ? replaceInFrontmatter(arrayValue, replacer)
           : arrayValue
+=======
+            ? replaceInFrontmatter(arrayValue, replacer)
+            : arrayValue
+>>>>>>> main
       })
     }
   }

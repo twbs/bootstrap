@@ -65,7 +65,11 @@ if (frontmatter.toc) {
             }
             <a
               class="btn btn-sm btn-bd-light rounded-2"
+<<<<<<< HEAD
               href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/${id}`}
+=======
+              href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
+>>>>>>> main
               title="View and edit this file on GitHub"
               target="_blank"
               rel="noopener"
@@ -78,12 +82,21 @@ if (frontmatter.toc) {
         <div class="bd-subtitle">
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
         </div>
+<<<<<<< HEAD
         <Ads />
       </div>
 
       {
         frontmatter.toc && headings && (
           <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+=======
+      </div>
+
+
+      <div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+        {
+          frontmatter.toc && headings && (
+>>>>>>> main
             <button
               class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none"
               type="button"
@@ -97,6 +110,7 @@ if (frontmatter.toc) {
                 <use xlink:href="#chevron-expand" />
               </svg>
             </button>
+<<<<<<< HEAD
             <strong class="d-none d-md-block h6 my-2 ms-3">On this page</strong>
             <hr class="d-none d-md-block my-2 ms-3" />
             <div class="collapse bd-toc-collapse" id="tocContents">
@@ -107,6 +121,19 @@ if (frontmatter.toc) {
           </div>
         )
       }
+=======
+            <strong class="d-none d-md-block h6 my-2 ms-3" id="docs-tocs">On this page</strong>
+            <hr class="d-none d-md-block my-2 ms-3" />
+            <div class="collapse bd-toc-collapse" id="tocContents">
+              <nav id="TableOfContents" aria-labelledby="docs-tocs">
+                <TableOfContents headings={headings} />
+              </nav>
+            </div>
+          )
+        }
+        <Ads />
+      </div>
+>>>>>>> main
 
       <div class="bd-content ps-lg-2">
         {

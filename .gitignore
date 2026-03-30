@@ -26,7 +26,6 @@
 *.sublime-workspace
 nbproject
 Thumbs.db
-/.vscode/
 # Local Netlify folder
 .netlify
 
@@ -44,7 +43,10 @@ Thumbs.db
 /site/node_modules
 /site/.astro
 /site/public
+<<<<<<< HEAD
 
 # TODO(Astro migration): temporary files and directories during the migration
 resources/
 .hugo_build.lock
+=======
+>>>>>>> main

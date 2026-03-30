@@ -9,7 +9,7 @@ on:
 
 env:
   FORCE_COLOR: 2
-  NODE: 20
+  NODE: 22
 
 permissions:
   contents: read
@@ -20,12 +20,12 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: "${{ env.NODE }}"
           cache: npm
@@ -42,9 +42,9 @@ jobs:
         run: npm run docs-vnu
 
       - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@v1
+        uses: JustinBeckwith/linkinator-action@f62ba0c110a76effb2ee6022cc6ce4ab161085e3 # v2.4
         with:
           paths: _site
           recurse: true
           verbosity: error
-          skip: "^(?!http://localhost)"
+          skip: "^http://localhost"
