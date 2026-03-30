@@ -8,8 +8,13 @@ toc: true
 
 Create custom `<input type="range">` controls with `.form-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Firefox supports “filling” their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
 
+<<<<<<< HEAD
+<Example code={`<label for="customRange1" class="form-label">Example range</label>
+<input type="range" class="form-range" id="customRange1">`} />
+=======
 <Example code={`<label for="range1" class="form-label">Example range</label>
 <input type="range" class="form-range" id="range1">`} />
+>>>>>>> main
 
 ## Disabled
 
@@ -22,13 +27,22 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
+<<<<<<< HEAD
+<Example code={`<label for="customRange2" class="form-label">Example range</label>
+<input type="range" class="form-range" min="0" max="5" id="customRange2">`} />
+=======
 <Example code={`<label for="range2" class="form-label">Example range</label>
 <input type="range" class="form-range" min="0" max="5" id="range2">`} />
+>>>>>>> main
 
 ## Steps
 
 By default, range inputs “snap” to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
 
+<<<<<<< HEAD
+<Example code={`<label for="customRange3" class="form-label">Example range</label>
+<input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">`} />
+=======
 <Example code={`<label for="range3" class="form-label">Example range</label>
 <input type="range" class="form-range" min="0" max="5" step="0.5" id="range3">`} />
 
@@ -52,6 +66,7 @@ The value of the range input can be shown using the `output` element and a bit o
       rangeOutput.textContent = this.value;
     });
   </script>`} />
+>>>>>>> main
 
 ## CSS
 

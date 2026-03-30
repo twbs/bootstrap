@@ -33,6 +33,11 @@ interface Props {
    * This takes precedence over the `code` prop.
    */
   filePath?: string
+<<<<<<< HEAD
+}
+
+const { class: className, code, containerClass, fileMatch, filePath, lang } = Astro.props
+=======
   /**
    * Defines if the `<Code>` component is nested inside an `<Example>` component or not.
    * @default false
@@ -41,12 +46,18 @@ interface Props {
 }
 
 const { class: className, code, containerClass, fileMatch, filePath, lang, nestedInExample = false } = Astro.props
+>>>>>>> main
 
 let codeToDisplay = filePath
   ? fs.readFileSync(path.join(process.cwd(), filePath), 'utf8')
   : Array.isArray(code)
+<<<<<<< HEAD
+  ? code.join('\n')
+  : code
+=======
     ? code.join('\n')
     : code
+>>>>>>> main
 
 if (filePath && fileMatch && codeToDisplay) {
   const match = codeToDisplay.match(new RegExp(fileMatch))
@@ -135,6 +146,21 @@ if (filePath && fileMatch && codeToDisplay) {
   })
 </script>
 
+<<<<<<< HEAD
+<div class:list={['bd-code-snippet', containerClass]}>
+  {
+    Astro.slots.has('pre') ? (
+      <slot name="pre" />
+    ) : (
+      <div class="bd-clipboard">
+        <button type="button" class="btn-clipboard">
+          <svg class="bi" role="img" aria-label="Copy">
+            <use xlink:href="#clipboard" />
+          </svg>
+        </button>
+      </div>
+    )
+=======
 <div class:list={[{ 'bd-code-snippet': !nestedInExample }, containerClass]}>
   {
     nestedInExample
@@ -152,6 +178,7 @@ if (filePath && fileMatch && codeToDisplay) {
             </button>
           </div>
         )
+>>>>>>> main
   }
   <div class="highlight">
     {

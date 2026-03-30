@@ -48,7 +48,11 @@
 
 - group: v5.x
   baseurl: 'https://getbootstrap.com/docs'
+<<<<<<< HEAD
+  description: 'Current major release. Last update was v5.3.5.'
+=======
   description: 'Current major release. Last update was v5.3.8.'
+>>>>>>> main
   versions:
     - '5.0'
     - '5.1'

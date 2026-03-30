@@ -1,0 +1,61 @@
+---
+interface Tab {
+  id: string;
+  title: string;
+  active?: boolean;
+  content: string;
+}
+
+interface Props {
+  tabs: Tab[];
+  id?: string;
+}
+
+const { tabs, id = "tabNav" } = Astro.props;
+---
+
+<ul class="nav nav-tabs" id={id} role="tablist">
+  {tabs.map((tab, index) => (
+    <li class="nav-item" role="presentation">
+      <button
+        class={`nav-link ${tab.active ? 'active' : ''}`}
+        id={`${tab.id}-tab`}
+        data-bs-toggle="tab"
+        data-bs-target={`#${tab.id}`}
+        type="button"
+        role="tab"
+        aria-controls={tab.id}
+        aria-selected={tab.active ? 'true' : 'false'}
+      >
+        {tab.title}
+      </button>
+    </li>
+  ))}
+</ul>
+
+<div class="tab-content">
+  {tabs.map((tab) => (
+    <div
+      class={`tab-pane ${tab.active ? 'active' : ''}`}
+      id={tab.id}
+      role="tabpanel"
+      aria-labelledby={`${tab.id}-tab`}
+      tabindex="0"
+    >
+      <Fragment set:html={tab.content} />
+    </div>
+  ))}
+</div>
+
+<script>
+  // Initialize Bootstrap tabs if they haven't been already
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if Bootstrap is available
+    if (typeof bootstrap !== 'undefined') {
+      const tabElements = document.querySelectorAll('[data-bs-toggle="tab"]');
+      tabElements.forEach(el => {
+        new bootstrap.Tab(el);
+      });
+    }
+  });
+</script>

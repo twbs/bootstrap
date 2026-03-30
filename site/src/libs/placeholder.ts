@@ -215,13 +215,21 @@ export interface PlaceholderOptions {
    */
   markup: 'img' | 'svg'
   /**
+<<<<<<< HEAD
+   * The text to show in the image. You can explicitely pass the `false` boolean value (and not the string "false") to
+=======
    * The text to show in the image. You can explicitly pass the `false` boolean value (and not the string "false") to
+>>>>>>> main
    * hide the text.
    * @default "${width}x{$height)"
    */
   text: string | false
   /**
+<<<<<<< HEAD
+   * Used in the SVG `title` tag. You can explicitely pass the `false` boolean value (and not the string "false") to
+=======
    * Used in the SVG `title` tag. You can explicitly pass the `false` boolean value (and not the string "false") to
+>>>>>>> main
    * hide the title.
    * @default "Placeholder"
    */

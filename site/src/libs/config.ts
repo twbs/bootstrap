@@ -18,6 +18,21 @@ const configSchema = z.object({
     max: z.number()
   }),
   authors: z.string(),
+<<<<<<< HEAD
+  baseURL: z.string().url(),
+  blog: z.string().url(),
+  cdn: z.object({
+    css: z.string().url(),
+    css_rtl: z.string().url(),
+    css_hash: z.string(),
+    css_rtl_hash: z.string(),
+    js: z.string().url(),
+    js_hash: z.string(),
+    js_bundle: z.string().url(),
+    js_bundle_hash: z.string(),
+    popper: z.string().url(),
+    popper_esm: z.string().url(),
+=======
   baseURL: z.url(),
   blog: z.url(),
   cdn: z.object({
@@ -31,6 +46,7 @@ const configSchema = z.object({
     js_bundle_hash: z.string(),
     popper: z.url(),
     popper_esm: z.url(),
+>>>>>>> main
     popper_hash: z.string()
   }),
   current_version: zVersionSemver,
@@ -39,6 +55,20 @@ const configSchema = z.object({
   docs_version: zVersionMajorMinor,
   docsDir: z.string(),
   download: z.object({
+<<<<<<< HEAD
+    dist: z.string().url(),
+    dist_examples: z.string().url(),
+    source: z.string().url()
+  }),
+  github_org: z.string().url(),
+  icons: z.string().url(),
+  opencollective: z.string().url(),
+  repo: z.string().url(),
+  rfs_version: zPrefixedVersionSemver,
+  subtitle: z.string(),
+  swag: z.string().url(),
+  themes: z.string().url(),
+=======
     dist: z.url(),
     dist_examples: z.url(),
     source: z.url()
@@ -50,6 +80,7 @@ const configSchema = z.object({
   rfs_version: zPrefixedVersionSemver,
   subtitle: z.string(),
   swag: z.url(),
+>>>>>>> main
   title: z.string(),
   toc: z.object({
     min: z.number(),

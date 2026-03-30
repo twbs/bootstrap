@@ -1,6 +1,9 @@
 ---
 import Code from '@shortcodes/Code.astro'
+<<<<<<< HEAD
+=======
 import Example from '@shortcodes/Example.astro'
+>>>>>>> main
 import * as tableContent from '@shortcodes/TableContent.md'
 
 interface Props {
@@ -21,6 +24,15 @@ const { class: className, simplified = true } = Astro.props
 const tableCode = `<table${className ? ` class="${className}"` : ''}>
 ${simplified ? '  ...' : await tableContent.compiledContent()}
 </table>`
+<<<<<<< HEAD
+---
+
+<div class="bd-example">
+  <table class={className}>
+    <tableContent.Content />
+  </table>
+</div>
+=======
 
 const exampleCode = `<table${className ? ` class="${className}"` : ''}>
 ${await tableContent.compiledContent()}
@@ -28,5 +40,6 @@ ${await tableContent.compiledContent()}
 ---
 
 <Example showMarkup={false} code={exampleCode} />
+>>>>>>> main
 
 <Code code={tableCode} lang="html" />
