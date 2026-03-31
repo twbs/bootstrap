@@ -2,6 +2,8 @@
 title: Chip input
 description: Create tag-like inputs for multi-value fields like skills, categories, or email recipients using themed chips.
 toc: true
+css_layer: forms
+js: required
 ---
 
 import { getData } from '@libs/data'
@@ -23,7 +25,7 @@ See examples of all of this in action below.
 
 Use `.chip` for standalone chips. Add `.chip-icon` for a leading icon, `.chip-img` for an image like an avatar, and `.chip-dismiss` for a remove button. Note that we use an inline SVG for the dismiss button icon—you can modify this as needed. JavaScript users can use the `dismissIcon` option for passing a custom SVG.
 
-<Example code={`<span class="chip">Basic chip</span>
+<Example class="d-flex flex-wrap gap-2" code={`<span class="chip">Basic chip</span>
 
   <span class="chip">
     <img src="https://github.com/mdo.png" class="chip-img" width="16" height="16" alt="">
@@ -50,7 +52,7 @@ Use `.chip` for standalone chips. Add `.chip-icon` for a leading icon, `.chip-im
 
 Apply `.theme-*` classes to color your chips. Chips are subtle by default as this allows for a clear, themed active state.
 
-<Example code={[
+<Example class="d-flex flex-wrap gap-2" code={[
   `<span class="chip">Default</span>`,
   ...getData('theme-colors').map((themeColor) => `<span class="chip theme-${themeColor.name}">${themeColor.title}</span>`)
 ]} />
@@ -59,7 +61,7 @@ Apply `.theme-*` classes to color your chips. Chips are subtle by default as thi
 
 Add `.active` to make chips use the solid appearance (bg/contrast). This is useful for toggle-style chip selections.
 
-<Example code={`<span class="chip theme-primary">Default</span>
+<Example class="d-flex flex-wrap gap-2" code={`<span class="chip theme-primary">Default</span>
   <span class="chip theme-primary active">Active</span>
   <span class="chip theme-success">Default</span>
   <span class="chip theme-success active">Active</span>`} />
