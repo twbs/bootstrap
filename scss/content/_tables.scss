@@ -21,13 +21,13 @@ $table-tokens: defaults(
     --table-border-color: var(--border-color),
     --table-group-separator-color: currentcolor,
     --table-striped-color: var(--table-color),
-    --table-striped-bg-factor: .05,
+    --table-striped-bg-factor: 5%,
     --table-striped-bg: color-mix(in srgb, var(--table-color) var(--table-striped-bg-factor), transparent),
     --table-active-color: var(--table-color),
-    --table-active-bg-factor: .1,
+    --table-active-bg-factor: 10%,
     --table-active-bg: color-mix(in srgb, var(--table-color) var(--table-active-bg-factor), transparent),
     --table-hover-color: var(--table-color),
-    --table-hover-bg-factor: .075,
+    --table-hover-bg-factor: 7.5%,
     --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
   ),
   $table-tokens
@@ -178,16 +178,77 @@ $table-striped-columns-order: even !default;
 
   // Responsive tables
   //
-  // Generate series of responsive `.table-responsive` classes for configuring
-  // the screen size of where your table will overflow.
+  // Generate `.table-responsive` classes that act as container query contexts
+  // and enable horizontal scrolling when table content overflows.
 
   @each $breakpoint in map.keys($breakpoints) {
     $prefix: breakpoint-prefix($breakpoint, $breakpoints);
 
-    @include media-breakpoint-down($breakpoint) {
-      .#{$prefix}table-responsive {
+    .#{$prefix}table-responsive {
+      container-type: inline-size;
+
+      @include media-breakpoint-down($breakpoint) {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+      }
+    }
+  }
+
+  // Stacked tables
+  //
+  // Generate `.table-stacked` classes that convert table rows into stacked
+  // blocks using container queries. Requires a `.table-responsive` ancestor
+  // and `data-cell` attributes on `<td>` elements for column labels.
+
+  @each $breakpoint in map.keys($breakpoints) {
+    $prefix: breakpoint-prefix($breakpoint, $breakpoints);
+
+    @include container-breakpoint-down($breakpoint) {
+      .#{$prefix}table-stacked {
+        > thead {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+
+        > tbody > tr {
+          display: block;
+          padding-block: var(--table-cell-padding-y);
+
+          + tr {
+            border-block-start: var(--table-border-width) solid var(--table-border-color);
+          }
+
+          > td {
+            display: block;
+            padding: calc(var(--table-cell-padding-y) * .25) calc(var(--table-cell-padding-x) * 2);
+            border: 0;
+
+            &:first-child {
+              font-weight: var(--font-weight-bold);
+            }
+
+            // + td::before {
+            //   margin-block-start: .25rem;
+            // }
+
+            &[data-cell]:not(:first-child)::before {
+              display: block;
+              font-weight: var(--font-weight-semibold);
+              content: attr(data-cell);
+            }
+          }
+
+          > td:not(:first-child) + td::before {
+            margin-block-start: .25rem;
+          }
+        }
       }
     }
   }

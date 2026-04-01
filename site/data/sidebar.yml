@@ -79,6 +79,7 @@
     - title: Range
     - title: Input group
     - title: Floating labels
+    - title: Combobox
     - title: Datepicker
     - title: OTP input
     - title: Password strength

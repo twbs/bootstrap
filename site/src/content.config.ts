@@ -51,9 +51,7 @@ const docsSchema = z.object({
     })
     .array()
     .optional(),
-  css_layer: z
-    .enum(['reboot', 'layout', 'content', 'forms', 'components', 'helpers', 'utilities'])
-    .optional(),
+  css_layer: z.enum(['reboot', 'layout', 'content', 'forms', 'components', 'helpers', 'utilities']).optional(),
   css_media: z.enum(['container', 'viewport']).optional(),
   deps: z
     .object({
