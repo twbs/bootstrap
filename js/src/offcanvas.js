@@ -108,7 +108,7 @@ class Offcanvas extends BaseComponent {
       new ScrollBarHelper().hide()
     }
 
-    this._element.setAttribute('aria-modal', true)
+    this._element.setAttribute('aria-modal', Boolean(this._config.backdrop))
     this._element.setAttribute('role', 'dialog')
     this._element.classList.add(CLASS_NAME_SHOWING)
 
