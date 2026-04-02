@@ -33,9 +33,9 @@ describe('Tab', () => {
 
       const tabEl = fixtureEl.querySelector('[href="#home"]')
       const tabBySelector = new Tab('[href="#home"]')
-      const tabByElement = new Tab(tabEl)
-
       expect(tabBySelector._element).toEqual(tabEl)
+
+      const tabByElement = new Tab(tabEl)
       expect(tabByElement._element).toEqual(tabEl)
     })
 
