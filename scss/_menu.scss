@@ -2,7 +2,6 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/gradients" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
@@ -165,14 +164,16 @@ $menu-tokens: defaults(
 
     &:hover,
     &:focus {
-      color: var(--theme-text, var(--menu-item-hover-color));
-      @include gradient-bg(var(--theme-bg-subtle, var(--menu-item-hover-bg)));
+      color: var(--theme-text-emphasis, var(--menu-item-hover-color));
+      background-color: var(--theme-bg-subtle, var(--menu-item-hover-bg));
+      // @include gradient-bg(var(--theme-bg-subtle, var(--menu-item-hover-bg)));
     }
 
     &.active,
     &:active {
       color: var(--theme-contrast, var(--menu-item-active-color));
-      @include gradient-bg(var(--theme-bg, var(--menu-item-active-bg)));
+      background-color: var(--theme-bg, var(--menu-item-active-bg));
+      // @include gradient-bg(var(--theme-bg, var(--menu-item-active-bg)));
 
       .menu-item-icon {
         color: inherit !important; // stylelint-disable-line declaration-no-important

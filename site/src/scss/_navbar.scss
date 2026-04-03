@@ -77,9 +77,16 @@
       --menu-item-active-bg: var(--bs-accent-bg);
 
       .menu-item {
-        &:active {
+        .bi {
+          filter: brightness(.65);
+        }
+
+        &:active,
+        &.active {
+          // stylelint-disable-next-line selector-max-class
           .bi {
             color: inherit !important; // stylelint-disable-line declaration-no-important
+            filter: brightness(1);
           }
         }
       }
