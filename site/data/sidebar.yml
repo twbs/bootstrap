@@ -25,6 +25,7 @@
     - title: Parcel
     - title: Vite
     - title: Contribute
+    - title: Migration
 
 - title: Customize
   section: Guides
@@ -220,7 +221,6 @@
       pages:
         - title: Opacity
         - title: Shadows
-
 # - title: About
 #   section: About
 #   icon: globe2
@@ -231,6 +231,3 @@
 #     - title: Brand
 #     - title: License
 #     - title: Translations
-
-- title: Migration
-  href: migration/
