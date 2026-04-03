@@ -10,6 +10,7 @@
 //   - class: .class
 //   - attr-starts: [class^="class"]
 //   - attr-includes: [class*="class"]
+// - Utilities can target children via `child-selector`, wrapped in :where() for zero specificity
 // - Utilities can generate regular CSS properties and CSS custom properties
 // - Utilities can be responsive or not
 // - Utilities can have state variants (e.g., hover, focus, active)
@@ -90,7 +91,7 @@
   }
 
   // Warn on unknown keys (likely typos)
-  $valid-keys: property, values, class, selector, responsive, print, important, state, variables;
+  $valid-keys: property, values, class, selector, responsive, print, important, state, variables, child-selector;
   @each $key in map.keys($utility) {
     @if not list.index($valid-keys, $key) {
       @warn "Unknown utility key `#{$key}` found. Valid keys are: #{$valid-keys}";
@@ -194,7 +195,18 @@
     // @debug $properties;
     // @debug $values;
 
-    #{$selector} {
+    // Apply child-selector wrapping if present (wraps in :where() for zero specificity)
+    $child-sel: null;
+    @if map.has-key($utility, child-selector) {
+      $child-sel: map.get($utility, child-selector);
+    }
+
+    $final-selector: $selector;
+    @if $child-sel {
+      $final-selector: ":where(#{$selector} #{$child-sel})";
+    }
+
+    #{$final-selector} {
       // Generate CSS custom properties (variables) if provided
       // Variables receive the current utility value, then properties reference them
       @if map.has-key($utility, variables) {
@@ -217,7 +229,12 @@
     // Generate state variants
     @if $state != () {
       @each $state-variant in $state {
-        #{$selector}-#{$state-variant}:#{$state-variant} {
+        $state-selector: "#{$selector}-#{$state-variant}:#{$state-variant}";
+        @if $child-sel {
+          $state-selector: ":where(#{$state-selector} #{$child-sel})";
+        }
+
+        #{$state-selector} {
           // Generate CSS custom properties (variables) if provided
           @if map.has-key($utility, variables) {
             $variables: map.get($utility, variables);

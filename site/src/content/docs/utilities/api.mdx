@@ -15,6 +15,7 @@ The `$utilities` map contains all our utilities and is later merged with your cu
 | [`property`](#property) | **Required** | – | Name of the property, this can be a string or an array of strings (e.g., horizontal paddings or margins). |
 | [`values`](#values) | **Required** | – | List of values, or a map if you don't want the class name to be the same as the value. If `null` is used as map key, `class` is not prepended to the class name. |
 | [`selector`](#selector) | Optional | `class` | Type of CSS selector in the generated CSS ruleset. Can be `class`, `attr-starts`, or `attr-includes`. |
+| [`child-selector`](#child-selector) | Optional | null | A child/descendant selector appended to the utility's selector, wrapped in `:where()` for zero specificity. Use to target children instead of the element itself. |
 | [`class`](#class) | Optional | null | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. If not provided and `property` is a string, the `values` keys are used for the `class` names. |
 | [`css-var`](#css-variable-utilities) | Optional | `false` | Boolean to generate CSS variables instead of CSS rules. |
 | [`css-variable-name`](#css-variable-utilities) | Optional | null | Custom un-prefixed name for the CSS variable inside the ruleset. |
@@ -153,6 +154,79 @@ Which outputs the following:
 .ratio-4x3 { --bs-ratio: 4 / 3; }
 .ratio-16x9 { --bs-ratio: 16 / 9; }
 .ratio-21x9 { --bs-ratio: 21 / 9; }
+```
+
+### `child-selector`
+
+Use the `child-selector` option to apply a CSS property to children of the element with the utility class rather than the element itself. The generated selector is wrapped in `:where()` for zero specificity, making it easy to override. This powers our built-in [`space-x/y`]([[docsref:/utilities/space]]) and [`divide-x/y`]([[docsref:/utilities/divide]]) utilities.
+
+For example, our `space-x` utility uses `child-selector` to add horizontal spacing between direct children:
+
+```scss
+$utilities: (
+  "space-x": (
+    property: margin-inline-end,
+    class: space-x,
+    child-selector: "> :not(:last-child)",
+    values: (
+      1: .25rem,
+      2: .5rem,
+      3: 1rem,
+    )
+  )
+);
+```
+
+Output:
+
+```css
+:where(.space-x-1 > :not(:last-child)) { margin-inline-end: .25rem; }
+:where(.space-x-2 > :not(:last-child)) { margin-inline-end: .5rem; }
+:where(.space-x-3 > :not(:last-child)) { margin-inline-end: 1rem; }
+```
+
+The `child-selector` value can be any valid CSS selector. For example, you could create a striped row utility using `:nth-child()`:
+
+```scss
+$utilities: (
+  "striped-bg": (
+    property: background-color,
+    class: striped,
+    child-selector: "> :nth-child(odd)",
+    values: (
+      null: var(--bs-tertiary-bg),
+    )
+  )
+);
+```
+
+Output:
+
+```css
+:where(.striped > :nth-child(odd)) { background-color: var(--bs-tertiary-bg); }
+```
+
+Or target all direct children with `> *`:
+
+```scss
+$utilities: (
+  "child-rounded": (
+    property: border-radius,
+    class: child-rounded,
+    child-selector: "> *",
+    values: (
+      null: var(--bs-border-radius),
+      0: 0,
+    )
+  )
+);
+```
+
+Output:
+
+```css
+:where(.child-rounded > *) { border-radius: var(--bs-border-radius); }
+:where(.child-rounded-0 > *) { border-radius: 0; }
 ```
 
 ### `class`
