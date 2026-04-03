@@ -532,6 +532,7 @@
       "class": "grid-cols",
       "property": "grid-template-columns",
       "classes": [
+        "grid-cols-1",
         "grid-cols-2",
         "grid-cols-3",
         "grid-cols-4",
@@ -578,6 +579,10 @@
         "m-3",
         "m-4",
         "m-5",
+        "m-6",
+        "m-7",
+        "m-8",
+        "m-9",
         "m-auto"
       ]
     },
@@ -591,6 +596,10 @@
         "mx-3",
         "mx-4",
         "mx-5",
+        "mx-6",
+        "mx-7",
+        "mx-8",
+        "mx-9",
         "mx-auto"
       ]
     },
@@ -604,6 +613,10 @@
         "my-3",
         "my-4",
         "my-5",
+        "my-6",
+        "my-7",
+        "my-8",
+        "my-9",
         "my-auto"
       ]
     },
@@ -617,6 +630,10 @@
         "mt-3",
         "mt-4",
         "mt-5",
+        "mt-6",
+        "mt-7",
+        "mt-8",
+        "mt-9",
         "mt-auto"
       ]
     },
@@ -630,6 +647,10 @@
         "me-3",
         "me-4",
         "me-5",
+        "me-6",
+        "me-7",
+        "me-8",
+        "me-9",
         "me-auto"
       ]
     },
@@ -643,6 +664,10 @@
         "mb-3",
         "mb-4",
         "mb-5",
+        "mb-6",
+        "mb-7",
+        "mb-8",
+        "mb-9",
         "mb-auto"
       ]
     },
@@ -656,6 +681,10 @@
         "ms-3",
         "ms-4",
         "ms-5",
+        "ms-6",
+        "ms-7",
+        "ms-8",
+        "ms-9",
         "ms--1",
         "ms--2",
         "ms-auto"
@@ -670,7 +699,11 @@
         "p-2",
         "p-3",
         "p-4",
-        "p-5"
+        "p-5",
+        "p-6",
+        "p-7",
+        "p-8",
+        "p-9"
       ]
     },
     "padding-x": {
@@ -682,7 +715,11 @@
         "px-2",
         "px-3",
         "px-4",
-        "px-5"
+        "px-5",
+        "px-6",
+        "px-7",
+        "px-8",
+        "px-9"
       ]
     },
     "padding-y": {
@@ -694,7 +731,11 @@
         "py-2",
         "py-3",
         "py-4",
-        "py-5"
+        "py-5",
+        "py-6",
+        "py-7",
+        "py-8",
+        "py-9"
       ]
     },
     "padding-top": {
@@ -706,7 +747,11 @@
         "pt-2",
         "pt-3",
         "pt-4",
-        "pt-5"
+        "pt-5",
+        "pt-6",
+        "pt-7",
+        "pt-8",
+        "pt-9"
       ]
     },
     "padding-end": {
@@ -718,7 +763,11 @@
         "pe-2",
         "pe-3",
         "pe-4",
-        "pe-5"
+        "pe-5",
+        "pe-6",
+        "pe-7",
+        "pe-8",
+        "pe-9"
       ]
     },
     "padding-bottom": {
@@ -730,7 +779,11 @@
         "pb-2",
         "pb-3",
         "pb-4",
-        "pb-5"
+        "pb-5",
+        "pb-6",
+        "pb-7",
+        "pb-8",
+        "pb-9"
       ]
     },
     "padding-start": {
@@ -742,7 +795,11 @@
         "ps-2",
         "ps-3",
         "ps-4",
-        "ps-5"
+        "ps-5",
+        "ps-6",
+        "ps-7",
+        "ps-8",
+        "ps-9"
       ]
     },
     "gap": {
@@ -754,7 +811,11 @@
         "gap-2",
         "gap-3",
         "gap-4",
-        "gap-5"
+        "gap-5",
+        "gap-6",
+        "gap-7",
+        "gap-8",
+        "gap-9"
       ]
     },
     "row-gap": {
@@ -766,7 +827,11 @@
         "row-gap-2",
         "row-gap-3",
         "row-gap-4",
-        "row-gap-5"
+        "row-gap-5",
+        "row-gap-6",
+        "row-gap-7",
+        "row-gap-8",
+        "row-gap-9"
       ]
     },
     "column-gap": {
@@ -778,7 +843,11 @@
         "column-gap-2",
         "column-gap-3",
         "column-gap-4",
-        "column-gap-5"
+        "column-gap-5",
+        "column-gap-6",
+        "column-gap-7",
+        "column-gap-8",
+        "column-gap-9"
       ]
     },
     "font-family": {

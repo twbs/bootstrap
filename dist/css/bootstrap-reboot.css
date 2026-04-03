@@ -680,10 +680,6 @@
     font-size: inherit;
     line-height: inherit;
   }
-  button,
-  select {
-    text-transform: none;
-  }
   [role=button] {
     cursor: pointer;
   }
@@ -707,10 +703,6 @@
   [type=reset]:not(:disabled),
   [type=submit]:not(:disabled) {
     cursor: pointer;
-  }
-  ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
   }
   textarea {
     resize: vertical;
@@ -745,7 +737,8 @@
   ::-webkit-datetime-edit-year-field {
     padding: 0;
   }
-  ::-webkit-inner-spin-button {
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
     height: auto;
   }
   [type=search] {
