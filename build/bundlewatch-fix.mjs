@@ -51,5 +51,5 @@ for (const line of failLines) {
   }
 }
 
-fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n')
+fs.writeFileSync(configPath, `${JSON.stringify(config, null, 2)}\n`)
 console.log(`\nUpdated ${configPath}`)
