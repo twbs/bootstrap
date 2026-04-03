@@ -25,6 +25,7 @@
     - title: Parcel
     - title: Vite
     - title: Contribute
+    - title: Migration
 
 - title: Customize
   section: Guides
@@ -231,6 +232,3 @@
 #     - title: Brand
 #     - title: License
 #     - title: Translations
-
-- title: Migration
-  href: migration/
