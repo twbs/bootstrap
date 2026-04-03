@@ -1,78 +1,34 @@
 @use "../../../scss/mixins/border-radius" as *;
 
-// stylelint-disable declaration-no-important, selector-max-id
+// stylelint-disable selector-max-id, declaration-no-important
 
 //
 // Carbon ads
 //
 
 @layer custom {
-  #carbonads {
-    position: static;
-    max-width: 400px;
-    padding: .75rem .75rem .75rem 160px;
-    margin: 1rem 0;
-    overflow: hidden;
-    font-size: var(--bs-font-size-sm);
-    line-height: 1.4;
-    text-align: start;
-    background-color: var(--bs-bg-1);
-    @include border-radius(var(--bs-border-radius-lg));
-
-    a {
-      color: var(--bs-body-color);
-      text-decoration: none;
-    }
+  #carbon-responsive .carbon-responsive-wrap {
+    padding: 1rem !important;
+    background-color: var(--bs-bg-1) !important;
+    border: 0 !important;
+    @include border-radius(var(--bs-border-radius-lg) !important);
   }
-
+  #carbon-responsive a,
+  .carbon-description {
+    color: var(--bs-fg-1) !important;
+  }
   .carbon-img {
-    float: inline-start;
-    margin-inline-start: -145px;
+    position: relative;
+    overflow: hidden;
+    @include border-radius(var(--bs-border-radius));
 
-    > img {
-      @include border-radius(var(--bs-border-radius-sm));
-    }
-  }
-
-  @container (max-width: 300px) {
-    #carbonads {
-      position: sticky;
-      bottom: 0;
-      flex-shrink: 0;
-      padding-block: 1.25rem;
-      padding-inline: 0;
-      background-color: var(--bs-bg-body);
-      border-top: 1px solid var(--bs-border-color);
-      @include border-radius(0);
-    }
-
-    .carbon-img {
-      position: relative;
+    &::after {
+      position: absolute;
+      inset: 0;
       display: block;
-      float: none;
-      width: fit-content;
-      margin-inline-start: 0;
-
-      &::after {
-        position: absolute;
-        inset: 0;
-        display: block;
-        content: "";
-        border: 1px solid var(--bs-border-color-translucent);
-        @include border-radius(var(--bs-border-radius-sm));
-      }
+      content: "";
+      border: 1px solid var(--bs-border-color-translucent);
+      @include border-radius(var(--bs-border-radius));
     }
-
-    .carbon-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-    }
-  }
-
-  .carbon-poweredby {
-    display: block;
-    margin-top: .5rem;
-    color: var(--bs-fg-3) !important;
   }
 }
