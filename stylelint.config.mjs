@@ -1,17 +1,17 @@
 /** @type {import('stylelint').Config} */
 export default {
   extends: [
-    'stylelint-config-twbs-bootstrap',
+    'stylelint-config-twbs-bootstrap'
   ],
   plugins: [
-    'stylelint-order',
+    'stylelint-order'
   ],
   reportInvalidScopeDisables: true,
   reportNeedlessDisables: true,
   rules: {
     'selector-class-pattern': [
       '^([a-z][a-z0-9]*(-[a-z0-9]+)*:)?([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
-      { message: 'Expected class selector "%s" to be kebab-case (with optional breakpoint prefix)' },
+      { message: 'Expected class selector "%s" to be kebab-case (with optional breakpoint prefix)' }
     ],
     'order/order': [
       [
@@ -20,9 +20,9 @@ export default {
         'dollar-variables',
         'custom-properties',
         'declarations',
-        'rules',
-      ],
-    ],
+        'rules'
+      ]
+    ]
   },
   overrides: [
     {
@@ -30,11 +30,11 @@ export default {
       rules: {
         'declaration-property-value-disallowed-list': {
           border: 'none',
-          outline: 'none',
+          outline: 'none'
         },
         'function-disallowed-list': [
           'lighten',
-          'darken',
+          'darken'
         ],
         'property-disallowed-list': [
           'border-radius',
@@ -42,29 +42,29 @@ export default {
           'border-top-right-radius',
           'border-bottom-right-radius',
           'border-bottom-left-radius',
-          'transition',
+          'transition'
         ],
         'scss/dollar-variable-default': [
           true,
           {
-            ignore: 'local',
-          },
+            ignore: 'local'
+          }
         ],
-        'scss/selector-no-union-class-name': true,
-      },
+        'scss/selector-no-union-class-name': true
+      }
     },
     {
       files: 'scss/**/*.{test,spec}.scss',
       rules: {
         'scss/dollar-variable-default': null,
-        'declaration-no-important': null,
-      },
+        'declaration-no-important': null
+      }
     },
     {
       files: 'site/**/*.scss',
       rules: {
-        'scss/dollar-variable-default': null,
-      },
+        'scss/dollar-variable-default': null
+      }
     },
     {
       files: 'site/**/examples/**/*.css',
@@ -72,8 +72,8 @@ export default {
         'comment-empty-line-before': null,
         'property-no-vendor-prefix': null,
         'selector-no-qualifying-type': null,
-        'value-no-vendor-prefix': null,
-      },
-    },
-  ],
+        'value-no-vendor-prefix': null
+      }
+    }
+  ]
 }
