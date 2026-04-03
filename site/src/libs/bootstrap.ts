@@ -2,7 +2,7 @@ import type { HTMLAttributes } from 'astro/types'
 import { getConfig } from '@libs/config'
 import { getVersionedDocsPath } from '@libs/path'
 
-export function getVersionedBsCssProps(direction: 'rtl' | undefined) {
+export function getVersionedBsCssProps() {
   let bsCssLinkHref = '/dist/css/bootstrap'
 
   if (import.meta.env.PROD) {

@@ -19,7 +19,6 @@ const docsSchema = z.object({
     ])
     .optional(),
   description: z.string(),
-  direction: z.literal('rtl').optional(),
   extra_js: z
     .object({
       async: z.boolean().optional(),

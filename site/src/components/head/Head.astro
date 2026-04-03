@@ -9,14 +9,13 @@ import Analytics from '@components/head/Analytics.astro'
 
 interface Props {
   description: string
-  direction?: 'rtl'
   layout: Layout
   robots: string | undefined
   thumbnail: string
   title: string
 }
 
-const { description, direction, layout, robots, thumbnail, title } = Astro.props
+const { description, layout, robots, thumbnail, title } = Astro.props
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 
@@ -63,7 +62,7 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 </script>
 
 {import.meta.env.PROD && ScssProd && (
-  <Stylesheet direction={direction} layout={layout} />
+  <Stylesheet layout={layout} />
   <ScssProd.default />
 )}
 
