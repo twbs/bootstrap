@@ -13,10 +13,8 @@ import ReferenceTable from '@components/ReferenceTable.astro'
 import UtilityReferenceTable from '@components/UtilityReferenceTable.astro'
 import HelperReferenceTable from '@components/HelperReferenceTable.astro'
 import { getData } from '@libs/data'
-import GitHubIcon from '@components/icons/GitHubIcon.astro'
-import MdnIcon from '@components/icons/MdnIcon.astro'
-import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
+import PageMeta from '@components/PageMeta.astro'
 
 interface NavigationPage {
   title: string
@@ -91,7 +89,7 @@ if (currentPageIndex < allPages.length - 1) {
 <BaseLayout {...Astro.props} layout="docs" overrides={{ body: bodyProps }}>
   <div slot="main" class="2xl:container bd-gutter mt-3 md:my-4 bd-layout">
     <aside class="bd-sidebar">
-      <dialog class="lg:drawer drawer-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarDrawerLabel">
+      <dialog class="lg:drawer drawer-bottom" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarDrawerLabel">
         <div class="drawer-header border-bottom">
           <h5 class="drawer-title" id="bdSidebarDrawerLabel">Browse docs</h5>
           <CloseButton dismiss="drawer" target="#bdSidebar" />
@@ -110,89 +108,47 @@ if (currentPageIndex < allPages.length - 1) {
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
         </div>
         <div class="mb-3 md:mb-0 d-flex gap-2 text-nowrap">
-          {
-            frontmatter.added &&
-              ((frontmatter.added.show_badge !== undefined && frontmatter.added.show_badge === true) ||
-                frontmatter.added.show_badge === undefined) && (
-                <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">
-                  Added in v{frontmatter.added.version}
-                </small>
-              )
-          }
-          <a
-            class="btn-subtle btn-sm theme-secondary"
-            href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
-            title="View and edit this file on GitHub"
-            target="_blank"
-            rel="noopener"
-          >
-            <GitHubIcon height={16} width={16} class="bi" />
-            Edit on GitHub
-          </a>
-          {
-            frontmatter.mdn && (
-              <a
-                class="btn-subtle btn-sm theme-secondary"
-                href={frontmatter.mdn}
-                title="View on MDN"
-                target="_blank"
-                rel="noopener"
-              >
-                <MdnIcon height={16} width={16} class="bi" />
-                MDN
-              </a>
-            )
-          }
-          {
-            frontmatter.csstricks && (
-              <a
-                class="btn-secondary-text btn-sm"
-                href={typeof frontmatter.csstricks === 'string' ? frontmatter.csstricks : frontmatter.csstricks.url}
-                title="View on CSS-Tricks"
-                target="_blank"
-                rel="noopener"
-              >
-                <CssTricksIcon height={16} width={16} class="bi" />
-                {typeof frontmatter.csstricks === 'string' ? 'CSS-Tricks' : (frontmatter.csstricks.label || 'CSS-Tricks')}
-              </a>
-            )
-          }
+          <PageMeta frontmatter={frontmatter} id={id} parentDirectory={parentDirectory} />
         </div>
       </div>
 
+      <div class="lg:d-none d-flex justify-content-center bd-toc-toggle">
+        <button
+          class="btn-solid theme-inverse rounded-pill px-5"
+          type="button"
+          data-bs-toggle="drawer"
+          data-bs-target="#bdTocSidebar"
+          aria-controls="bdTocSidebar"
+        >
+          <svg class="bi" aria-hidden="true"><use href="#list"></use></svg>
+          On this page…
+        </button>
+      </div>
 
-      <div class="vstack bd-toc mt-3 mb-5 lg:my-0 lg:mb-5 sm:px-1 fg-3">
-        <div class="overflow-y-auto">
-        {
-          frontmatter.toc && headings && (
-            <button
-              class="btn-sm btn-subtle mb-2 bd-toc-toggle lg:d-none"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#tocContents"
-              aria-expanded="false"
-              aria-controls="tocContents"
-            >
-              On this page
-              <svg class="bi lg:d-none ms-2" aria-hidden="true">
-                <use href="#chevron-expand" />
-              </svg>
-            </button>
-            <div class="collapse bd-toc-collapse" id="tocContents">
-              <nav id="TableOfContents" aria-labelledby="docs-tocs">
-                <TableOfContents headings={headings} />
-              </nav>
-            </div>
-          )
-        }
-        </div>
+      <div class="bd-toc mt-3 mb-5 lg:my-0 lg:mb-5 sm:px-1">
+        <dialog class="lg:drawer drawer-bottom" tabindex="-1" id="bdTocSidebar" aria-labelledby="bdTocDrawerLabel">
+          <div class="drawer-header border-bottom">
+            <h5 class="drawer-title" id="bdTocDrawerLabel">On this page</h5>
+            <CloseButton dismiss="drawer" target="#bdTocSidebar" />
+          </div>
+
+          <div class="drawer-body">
+            {
+              frontmatter.toc && headings && (
+                <nav id="TableOfContents" aria-label="Table of contents">
+                  <TableOfContents headings={headings} />
+                </nav>
+              )
+            }
+          </div>
+        </dialog>
         <Ads />
       </div>
 
       <div class="bd-content prose lg:ps-2">
         {
           frontmatter.sections && (
-            <div class="grid grid-cols-3 mb-5">
+            <div class="grid grid-cols-1 lg:grid-cols-3 mb-5">
               {frontmatter.sections.map((section) => (
                 <a
                   class="d-block text-decoration-none bg-1 hover-bg-2 rounded-3 p-3"

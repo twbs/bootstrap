@@ -40,6 +40,12 @@ const Data = {
     }
     return null;
   },
+  getAny(element) {
+    if (elementMap.has(element)) {
+      return elementMap.get(element).values().next().value || null;
+    }
+    return null;
+  },
   remove(element, key) {
     if (!elementMap.has(element)) {
       return;
@@ -908,12 +914,16 @@ const SWIPE_THRESHOLD = 40;
 const Default$h = {
   endCallback: null,
   leftCallback: null,
-  rightCallback: null
+  rightCallback: null,
+  upCallback: null,
+  downCallback: null
 };
 const DefaultType$h = {
   endCallback: '(function|null)',
   leftCallback: '(function|null)',
-  rightCallback: '(function|null)'
+  rightCallback: '(function|null)',
+  upCallback: '(function|null)',
+  downCallback: '(function|null)'
 };
 
 /**
@@ -929,6 +939,7 @@ class Swipe extends Config {
     }
     this._config = this._getConfig(config);
     this._deltaX = 0;
+    this._deltaY = 0;
     this._supportPointerEvents = Boolean(window.PointerEvent);
     this._initEvents();
   }
@@ -953,33 +964,57 @@ class Swipe extends Config {
   _start(event) {
     if (!this._supportPointerEvents) {
       this._deltaX = event.touches[0].clientX;
+      this._deltaY = event.touches[0].clientY;
       return;
     }
     if (this._eventIsPointerPenTouch(event)) {
       this._deltaX = event.clientX;
+      this._deltaY = event.clientY;
     }
   }
   _end(event) {
     if (this._eventIsPointerPenTouch(event)) {
       this._deltaX = event.clientX - this._deltaX;
+      this._deltaY = event.clientY - this._deltaY;
     }
     this._handleSwipe();
     execute(this._config.endCallback);
   }
   _move(event) {
-    this._deltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this._deltaX;
+    if (event.touches && event.touches.length > 1) {
+      this._deltaX = 0;
+      this._deltaY = 0;
+      return;
+    }
+    this._deltaX = event.touches[0].clientX - this._deltaX;
+    this._deltaY = event.touches[0].clientY - this._deltaY;
   }
   _handleSwipe() {
     const absDeltaX = Math.abs(this._deltaX);
-    if (absDeltaX <= SWIPE_THRESHOLD) {
+    const absDeltaY = Math.abs(this._deltaY);
+
+    // Determine primary axis: whichever has greater movement wins
+    if (absDeltaY > absDeltaX && absDeltaY > SWIPE_THRESHOLD) {
+      // Vertical swipe
+      const direction = this._deltaY > 0 ? 'down' : 'up';
+      this._deltaX = 0;
+      this._deltaY = 0;
+      execute(direction === 'down' ? this._config.downCallback : this._config.upCallback);
       return;
     }
-    const direction = absDeltaX / this._deltaX;
+    if (absDeltaX > SWIPE_THRESHOLD) {
+      // Horizontal swipe
+      const direction = absDeltaX / this._deltaX;
+      this._deltaX = 0;
+      this._deltaY = 0;
+      if (!direction) {
+        return;
+      }
+      execute(direction > 0 ? this._config.rightCallback : this._config.leftCallback);
+      return;
+    }
     this._deltaX = 0;
-    if (!direction) {
-      return;
-    }
-    execute(direction > 0 ? this._config.rightCallback : this._config.leftCallback);
+    this._deltaY = 0;
   }
   _initEvents() {
     if (this._supportPointerEvents) {
@@ -1365,9 +1400,9 @@ const NAME$g = 'collapse';
 const DATA_KEY$d = 'bs.collapse';
 const EVENT_KEY$d = `.${DATA_KEY$d}`;
 const DATA_API_KEY$9 = '.data-api';
-const EVENT_SHOW$8 = `show${EVENT_KEY$d}`;
-const EVENT_SHOWN$8 = `shown${EVENT_KEY$d}`;
-const EVENT_HIDE$8 = `hide${EVENT_KEY$d}`;
+const EVENT_SHOW$7 = `show${EVENT_KEY$d}`;
+const EVENT_SHOWN$6 = `shown${EVENT_KEY$d}`;
+const EVENT_HIDE$6 = `hide${EVENT_KEY$d}`;
 const EVENT_HIDDEN$8 = `hidden${EVENT_KEY$d}`;
 const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$d}${DATA_API_KEY$9}`;
 const CLASS_NAME_SHOW$5 = 'show';
@@ -1449,7 +1484,7 @@ class Collapse extends BaseComponent {
     if (activeChildren.length && activeChildren[0]._isTransitioning) {
       return;
     }
-    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$8);
+    const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$7);
     if (startEvent.defaultPrevented) {
       return;
     }
@@ -1467,7 +1502,7 @@ class Collapse extends BaseComponent {
       this._element.classList.remove(CLASS_NAME_COLLAPSING);
       this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$5);
       this._element.style[dimension] = '';
-      EventHandler.trigger(this._element, EVENT_SHOWN$8);
+      EventHandler.trigger(this._element, EVENT_SHOWN$6);
     };
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
     const scrollSize = `scroll${capitalizedDimension}`;
@@ -1478,7 +1513,7 @@ class Collapse extends BaseComponent {
     if (this._isTransitioning || !this._isShown()) {
       return;
     }
-    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$8);
+    const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$6);
     if (startEvent.defaultPrevented) {
       return;
     }
@@ -1705,10 +1740,10 @@ const ENTER_KEY$1 = 'Enter';
 const SPACE_KEY$1 = ' ';
 const RIGHT_MOUSE_BUTTON = 2;
 const SUBMENU_CLOSE_DELAY = 100;
-const EVENT_HIDE$7 = `hide${EVENT_KEY$c}`;
+const EVENT_HIDE$5 = `hide${EVENT_KEY$c}`;
 const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$c}`;
-const EVENT_SHOW$7 = `show${EVENT_KEY$c}`;
-const EVENT_SHOWN$7 = `shown${EVENT_KEY$c}`;
+const EVENT_SHOW$6 = `show${EVENT_KEY$c}`;
+const EVENT_SHOWN$5 = `shown${EVENT_KEY$c}`;
 const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$c}${DATA_API_KEY$8}`;
 const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$c}${DATA_API_KEY$8}`;
 const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$c}${DATA_API_KEY$8}`;
@@ -1804,7 +1839,7 @@ class Menu extends BaseComponent {
     const relatedTarget = {
       relatedTarget: this._element
     };
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$7, relatedTarget);
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$6, relatedTarget);
     if (showEvent.defaultPrevented) {
       return;
     }
@@ -1825,7 +1860,7 @@ class Menu extends BaseComponent {
       this._parent.classList.add(CLASS_NAME_SHOW$4);
     }
     Menu._openInstances.add(this);
-    EventHandler.trigger(this._element, EVENT_SHOWN$7, relatedTarget);
+    EventHandler.trigger(this._element, EVENT_SHOWN$5, relatedTarget);
   }
   hide() {
     if (isDisabled(this._element) || !this._isShown()) {
@@ -1856,7 +1891,7 @@ class Menu extends BaseComponent {
     return SelectorEngine.next(this._element, SELECTOR_MENU$2)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU$2)[0] || SelectorEngine.findOne(SELECTOR_MENU$2, this._parent);
   }
   _completeHide(relatedTarget) {
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$7, relatedTarget);
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$5, relatedTarget);
     if (hideEvent.defaultPrevented) {
       return;
     }
@@ -2467,9 +2502,9 @@ const END_KEY$1 = 'End';
 const ENTER_KEY = 'Enter';
 const SPACE_KEY = ' ';
 const EVENT_CHANGE$2 = `change${EVENT_KEY$b}`;
-const EVENT_SHOW$6 = `show${EVENT_KEY$b}`;
-const EVENT_SHOWN$6 = `shown${EVENT_KEY$b}`;
-const EVENT_HIDE$6 = `hide${EVENT_KEY$b}`;
+const EVENT_SHOW$5 = `show${EVENT_KEY$b}`;
+const EVENT_SHOWN$4 = `shown${EVENT_KEY$b}`;
+const EVENT_HIDE$4 = `hide${EVENT_KEY$b}`;
 const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$b}`;
 const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$b}${DATA_API_KEY$7}`;
 const CLASS_NAME_SHOW$3 = 'show';
@@ -2542,7 +2577,7 @@ class Combobox extends BaseComponent {
     if (isDisabled(this._toggle) || this._isShown()) {
       return;
     }
-    const showEvent = EventHandler.trigger(this._toggle, EVENT_SHOW$6);
+    const showEvent = EventHandler.trigger(this._toggle, EVENT_SHOW$5);
     if (showEvent.defaultPrevented) {
       return;
     }
@@ -2552,13 +2587,13 @@ class Combobox extends BaseComponent {
       this._filterItems('');
       requestAnimationFrame(() => this._searchInput.focus());
     }
-    EventHandler.trigger(this._toggle, EVENT_SHOWN$6);
+    EventHandler.trigger(this._toggle, EVENT_SHOWN$4);
   }
   hide() {
     if (!this._isShown()) {
       return;
     }
-    const hideEvent = EventHandler.trigger(this._toggle, EVENT_HIDE$6);
+    const hideEvent = EventHandler.trigger(this._toggle, EVENT_HIDE$4);
     if (hideEvent.defaultPrevented) {
       return;
     }
@@ -2844,9 +2879,9 @@ const DATA_KEY$a = 'bs.datepicker';
 const EVENT_KEY$a = `.${DATA_KEY$a}`;
 const DATA_API_KEY$6 = '.data-api';
 const EVENT_CHANGE$1 = `change${EVENT_KEY$a}`;
-const EVENT_SHOW$5 = `show${EVENT_KEY$a}`;
-const EVENT_SHOWN$5 = `shown${EVENT_KEY$a}`;
-const EVENT_HIDE$5 = `hide${EVENT_KEY$a}`;
+const EVENT_SHOW$4 = `show${EVENT_KEY$a}`;
+const EVENT_SHOWN$3 = `shown${EVENT_KEY$a}`;
+const EVENT_HIDE$3 = `hide${EVENT_KEY$a}`;
 const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$a}`;
 const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
 const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$a}${DATA_API_KEY$6}`;
@@ -2932,13 +2967,13 @@ class Datepicker extends BaseComponent {
     if (!this._calendar || isDisabled(this._element) || this._isShown) {
       return;
     }
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$5);
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$4);
     if (showEvent.defaultPrevented) {
       return;
     }
     this._calendar.show();
     this._isShown = true;
-    EventHandler.trigger(this._element, EVENT_SHOWN$5);
+    EventHandler.trigger(this._element, EVENT_SHOWN$3);
   }
   hide() {
     if (this._config.inline) {
@@ -2947,7 +2982,7 @@ class Datepicker extends BaseComponent {
     if (!this._calendar || !this._isShown) {
       return;
     }
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$5);
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$3);
     if (hideEvent.defaultPrevented) {
       return;
     }
@@ -3272,14 +3307,16 @@ const CLASS_NAME_OPEN = 'dialog-open';
 /**
  * Class definition
  *
- * Shared base class for Dialog and Offcanvas components that use
+ * Shared base class for Dialog and Drawer components that use
  * the native <dialog> element. Provides common behavior for:
+ * - Show/hide/toggle lifecycle with events
  * - Opening/closing via showModal()/show()/close()
  * - Escape key handling (modal and non-modal)
  * - Backdrop click handling
  * - Static backdrop transition ("bounce")
  * - Body scroll prevention
  * - Transition coordination
+ * - Child component cleanup (tooltips, popovers, toasts)
  */
 
 class DialogBase extends BaseComponent {
@@ -3291,12 +3328,88 @@ class DialogBase extends BaseComponent {
   }
 
   // Getters — subclasses override NAME with their own component name.
-  // This base name is only used if DialogBase is instantiated directly.
   static get NAME() {
     return 'dialogbase';
   }
 
-  // Protected - subclasses use these to implement show()/hide()
+  // Public — shared lifecycle methods
+
+  toggle(relatedTarget) {
+    return this._element.open ? this.hide() : this.show(relatedTarget);
+  }
+  show(relatedTarget) {
+    if (this._element.open || this._isTransitioning) {
+      return;
+    }
+    const showEvent = EventHandler.trigger(this._element, this.constructor.eventName('show'), {
+      relatedTarget
+    });
+    if (showEvent.defaultPrevented) {
+      return;
+    }
+    this._isTransitioning = true;
+    this._onBeforeShow();
+    const {
+      modal,
+      preventBodyScroll
+    } = this._getShowOptions();
+    this._showElement({
+      modal,
+      preventBodyScroll
+    });
+    this._queueCallback(() => {
+      this._isTransitioning = false;
+      EventHandler.trigger(this._element, this.constructor.eventName('shown'), {
+        relatedTarget
+      });
+    }, this._element, this._isAnimated());
+  }
+  hide() {
+    if (!this._element.open || this._isTransitioning) {
+      return;
+    }
+    const hideEvent = EventHandler.trigger(this._element, this.constructor.eventName('hide'));
+    if (hideEvent.defaultPrevented) {
+      return;
+    }
+    this._isTransitioning = true;
+    this._hideElement();
+    this._onAfterHide();
+    this._queueCallback(() => {
+      this._element.classList.remove('hiding');
+      this._isTransitioning = false;
+      EventHandler.trigger(this._element, this.constructor.eventName('hidden'));
+    }, this._element, this._isAnimated());
+  }
+
+  // Protected — hooks for subclasses to override
+
+  _getShowOptions() {
+    return {
+      modal: true,
+      preventBodyScroll: true
+    };
+  }
+  _onBeforeShow() {
+    // No-op by default — Dialog overrides to add nonmodal class
+  }
+  _onAfterHide() {
+    // No-op by default — Dialog overrides to remove nonmodal class
+  }
+  _isAnimated() {
+    return !this._element.classList.contains(this._getInstantClassName());
+  }
+  _getInstantClassName() {
+    return 'dialog-instant';
+  }
+  _getStaticClassName() {
+    return 'dialog-static';
+  }
+  _onCancel() {
+    // No-op by default — Dialog overrides to fire cancel event
+  }
+
+  // Protected — shared mechanics
 
   _showElement({
     modal = true,
@@ -3313,34 +3426,18 @@ class DialogBase extends BaseComponent {
     }
   }
   _hideElement() {
-    // this._hideChildComponents()
+    this._hideChildComponents();
+
+    // Add .hiding before close() so CSS exit transitions can play.
+    // Without this, the navbar's `:not([open])` transition-kill rule
+    // would prevent the slide-out animation.
+    this._element.classList.add('hiding');
     this._element.close();
     this._openedAsModal = false;
 
     // Only restore body scroll if no other modal dialogs are open
     if (!document.querySelector('dialog[open]:modal')) {
       document.body.classList.remove(CLASS_NAME_OPEN);
-    }
-  }
-
-  // Hide any tooltips, popovers, or toasts inside the dialog before closing.
-  // These components append to the dialog (for top-layer rendering) and would
-  // otherwise persist visibly after close().
-  _hideChildComponents() {
-    const selector = '[data-bs-toggle="tooltip"], [data-bs-toggle="popover"]';
-    for (const el of SelectorEngine.find(selector, this._element)) {
-      const instance = BaseComponent.getInstance(el);
-      if (instance && typeof instance.hide === 'function') {
-        instance.hide();
-      }
-    }
-
-    // Hide any visible toasts
-    for (const el of SelectorEngine.find('.toast.show', this._element)) {
-      const instance = BaseComponent.getInstance(el);
-      if (instance && typeof instance.hide === 'function') {
-        instance.hide();
-      }
     }
   }
   _triggerBackdropTransition() {
@@ -3355,9 +3452,25 @@ class DialogBase extends BaseComponent {
     }, this._element);
   }
 
-  // Overrideable by subclasses for component-specific class names
-  _getStaticClassName() {
-    return 'dialog-static';
+  // Hide any tooltips, popovers, or toasts inside the dialog before closing.
+  // These components append to the dialog (for top-layer rendering) and would
+  // otherwise persist visibly after close().
+  _hideChildComponents() {
+    const selector = '[data-bs-toggle="tooltip"], [data-bs-toggle="popover"]';
+    for (const el of SelectorEngine.find(selector, this._element)) {
+      const instance = Data.getAny(el);
+      if (instance && typeof instance.hide === 'function') {
+        instance.hide();
+      }
+    }
+
+    // Hide any visible toasts
+    for (const el of SelectorEngine.find('.toast.show', this._element)) {
+      const instance = Data.getAny(el);
+      if (instance && typeof instance.hide === 'function') {
+        instance.hide();
+      }
+    }
   }
 
   // Private
@@ -3366,10 +3479,7 @@ class DialogBase extends BaseComponent {
     const eventKey = this.constructor.EVENT_KEY;
 
     // Handle native cancel event (Escape key) — only fires for modal dialogs
-    // Note: 'cancel' is not in EventHandler's nativeEvents set, so we must
-    // register it without namespace to properly bind to the native event.
     EventHandler.on(this._element, 'cancel', event => {
-      // Prevent native close behavior — we handle it
       event.preventDefault();
       if (!this._config.keyboard) {
         this._triggerBackdropTransition();
@@ -3393,9 +3503,7 @@ class DialogBase extends BaseComponent {
     });
 
     // Handle backdrop clicks — only applies to modal dialogs
-    // Native <dialog> fires click on the dialog element itself when backdrop is clicked
     EventHandler.on(this._element, `click${eventKey}`, event => {
-      // Only handle clicks directly on the dialog (backdrop area), not child content
       if (event.target !== this._element || !this._openedAsModal) {
         return;
       }
@@ -3405,11 +3513,6 @@ class DialogBase extends BaseComponent {
       }
       this.hide();
     });
-  }
-
-  // Hook for subclasses to fire component-specific cancel events
-  _onCancel() {
-    // No-op by default — Dialog overrides this to fire its cancel event
   }
 }
 
@@ -3429,9 +3532,7 @@ const NAME$c = 'dialog';
 const DATA_KEY$9 = 'bs.dialog';
 const EVENT_KEY$9 = `.${DATA_KEY$9}`;
 const DATA_API_KEY$5 = '.data-api';
-const EVENT_SHOW$4 = `show${EVENT_KEY$9}`;
-const EVENT_SHOWN$4 = `shown${EVENT_KEY$9}`;
-const EVENT_HIDE$4 = `hide${EVENT_KEY$9}`;
+const EVENT_SHOW$3 = `show${EVENT_KEY$9}`;
 const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$9}`;
 const EVENT_CANCEL = `cancel${EVENT_KEY$9}`;
 const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$9}${DATA_API_KEY$5}`;
@@ -3439,9 +3540,8 @@ const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
 const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dialog"]';
 const Default$b = {
   backdrop: true,
-  // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
   keyboard: true,
-  modal: true // true uses showModal(), false uses show() for non-modal dialogs
+  modal: true
 };
 const DefaultType$b = {
   backdrop: '(boolean|string)',
@@ -3466,61 +3566,26 @@ class Dialog extends DialogBase {
   }
 
   // Public
-  toggle(relatedTarget) {
-    return this._element.open ? this.hide() : this.show(relatedTarget);
+  handleUpdate() {
+    // Provided for API consistency with Modal.
   }
-  show(relatedTarget) {
-    if (this._element.open || this._isTransitioning) {
-      return;
-    }
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$4, {
-      relatedTarget
-    });
-    if (showEvent.defaultPrevented) {
-      return;
-    }
-    this._isTransitioning = true;
+
+  // Protected — hook overrides
+
+  _getShowOptions() {
+    return {
+      modal: this._config.modal,
+      preventBodyScroll: this._config.modal
+    };
+  }
+  _onBeforeShow() {
     if (!this._config.modal) {
       this._element.classList.add(CLASS_NAME_NONMODAL);
     }
-    this._showElement({
-      modal: this._config.modal,
-      preventBodyScroll: this._config.modal
-    });
-
-    // CSS @starting-style handles the entry animation automatically.
-    this._queueCallback(() => {
-      this._isTransitioning = false;
-      EventHandler.trigger(this._element, EVENT_SHOWN$4, {
-        relatedTarget
-      });
-    }, this._element, true);
   }
-  hide() {
-    if (!this._element.open || this._isTransitioning) {
-      return;
-    }
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$4);
-    if (hideEvent.defaultPrevented) {
-      return;
-    }
-    this._isTransitioning = true;
-
-    // Call close() immediately — CSS handles the exit animation via
-    // transition-behavior: allow-discrete on display and overlay.
-    this._hideElement();
+  _onAfterHide() {
     this._element.classList.remove(CLASS_NAME_NONMODAL);
-    this._queueCallback(() => {
-      this._isTransitioning = false;
-      EventHandler.trigger(this._element, EVENT_HIDDEN$4);
-    }, this._element, true);
   }
-  handleUpdate() {
-    // Provided for API consistency with Modal.
-    // Native dialogs handle their own positioning.
-  }
-
-  // Private
   _onCancel() {
     EventHandler.trigger(this._element, EVENT_CANCEL);
   }
@@ -3535,7 +3600,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, functi
   if (['A', 'AREA'].includes(this.tagName)) {
     event.preventDefault();
   }
-  EventHandler.one(target, EVENT_SHOW$4, showEvent => {
+  EventHandler.one(target, EVENT_SHOW$3, showEvent => {
     if (showEvent.defaultPrevented) {
       return;
     }
@@ -3549,15 +3614,12 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, functi
   // Get config from trigger's data attributes
   const config = Manipulator.getDataAttributes(this);
 
-  // Check if trigger is inside an open dialog
+  // Check if trigger is inside an open dialog (dialog swapping)
   const currentDialog = this.closest('dialog[open]');
   const shouldSwap = currentDialog && currentDialog !== target;
   if (shouldSwap) {
-    // Open new dialog first (its backdrop appears over current)
     const newDialog = Dialog.getOrCreateInstance(target, config);
     newDialog.show(this);
-
-    // Close the current dialog (no backdrop flash since new one is already open)
     const currentInstance = Dialog.getInstance(currentDialog);
     if (currentInstance) {
       currentInstance.hide();
@@ -3593,13 +3655,20 @@ const SELECTOR_NAV_ITEM = '.nav-item';
 const SELECTOR_NAV_LINK = '.nav-link';
 const SELECTOR_OVERFLOW_TOGGLE = '.nav-overflow-toggle';
 const SELECTOR_OVERFLOW_MENU = '.nav-overflow-menu';
+const SELECTOR_CUSTOM_ICON = '[data-bs-overflow-icon]';
 const CLASS_NAME_KEEP = 'nav-overflow-keep';
 const Default$a = {
+  collapseBelow: 0,
+  iconPlacement: 'start',
+  menuPlacement: 'bottom-end',
   moreText: 'More',
   moreIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>',
   threshold: 0 // Minimum items to keep visible before showing overflow
 };
 const DefaultType$a = {
+  collapseBelow: '(number|string)',
+  iconPlacement: 'string',
+  menuPlacement: 'string',
   moreText: 'string',
   moreIcon: 'string',
   threshold: 'number'
@@ -3617,6 +3686,7 @@ class NavOverflow extends BaseComponent {
     this._overflowMenu = null;
     this._overflowToggle = null;
     this._resizeObserver = null;
+    this._collapseBelow = 0;
     this._isInitialized = false;
     this._init();
   }
@@ -3665,6 +3735,9 @@ class NavOverflow extends BaseComponent {
       item.dataset.bsNavOrder = index;
     }
 
+    // Resolve collapseBelow threshold once
+    this._collapseBelow = this._resolveCollapseBelow();
+
     // Create overflow menu if it doesn't exist
     this._createOverflowMenu();
 
@@ -3682,18 +3755,43 @@ class NavOverflow extends BaseComponent {
       this._overflowMenu = SelectorEngine.findOne(SELECTOR_OVERFLOW_MENU, this._element);
       return;
     }
+    const iconHtml = this._resolveIcon();
+    const iconSpan = `<span class="nav-overflow-icon">${iconHtml}</span>`;
+    const textSpan = `<span class="nav-overflow-text">${this._config.moreText}</span>`;
+    const toggleContent = this._config.iconPlacement === 'end' ? `${textSpan}${iconSpan}` : `${iconSpan}${textSpan}`;
     const overflowItem = document.createElement('li');
     overflowItem.className = 'nav-item nav-overflow-item';
     overflowItem.innerHTML = `
-      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">
-        <span class="nav-overflow-icon">${this._config.moreIcon}</span>
-        <span class="nav-overflow-text">${this._config.moreText}</span>
+      <button class="nav-link nav-overflow-toggle" type="button" data-bs-toggle="menu" data-bs-placement="${this._config.menuPlacement}" aria-expanded="false">
+        ${toggleContent}
       </button>
       <div class="${CLASS_NAME_OVERFLOW_MENU} menu"></div>
     `;
     this._element.append(overflowItem);
     this._overflowToggle = overflowItem.querySelector(SELECTOR_OVERFLOW_TOGGLE);
     this._overflowMenu = overflowItem.querySelector(SELECTOR_OVERFLOW_MENU);
+  }
+  _resolveIcon() {
+    const customIconElement = SelectorEngine.findOne(SELECTOR_CUSTOM_ICON, this._element);
+    if (!customIconElement) {
+      return this._config.moreIcon;
+    }
+    const iconClone = customIconElement.cloneNode(true);
+    iconClone.removeAttribute('data-bs-overflow-icon');
+    const iconHtml = iconClone.outerHTML;
+    customIconElement.remove();
+    return iconHtml;
+  }
+  _resolveCollapseBelow() {
+    const value = this._config.collapseBelow;
+    if (typeof value === 'number') {
+      return value;
+    }
+    if (typeof value === 'string' && value !== '') {
+      const cssValue = getComputedStyle(document.documentElement).getPropertyValue(`--bs-breakpoint-${value}`);
+      return Number.parseFloat(cssValue) || 0;
+    }
+    return 0;
   }
   _setupResizeObserver() {
     if (typeof ResizeObserver === 'undefined') {
@@ -3711,6 +3809,26 @@ class NavOverflow extends BaseComponent {
     this._restoreItems();
     const navWidth = this._element.offsetWidth;
     const overflowItem = this._overflowToggle?.closest('.nav-item');
+
+    // When below the collapseBelow threshold, force all items into overflow
+    if (this._collapseBelow > 0 && navWidth < this._collapseBelow) {
+      const itemsToOverflow = this._items.filter(item => !item.classList.contains(CLASS_NAME_KEEP));
+      this._moveToOverflow(itemsToOverflow);
+      if (overflowItem) {
+        if (itemsToOverflow.length > 0) {
+          overflowItem.classList.remove(CLASS_NAME_HIDDEN);
+        } else {
+          overflowItem.classList.add(CLASS_NAME_HIDDEN);
+        }
+      }
+      if (itemsToOverflow.length > 0) {
+        EventHandler.trigger(this._element, EVENT_OVERFLOW, {
+          overflowCount: itemsToOverflow.length,
+          visibleCount: this._items.length - itemsToOverflow.length
+        });
+      }
+      return;
+    }
     const overflowWidth = overflowItem?.offsetWidth || 0;
     let usedWidth = 0;
     const itemsToOverflow = [];
@@ -3812,7 +3930,7 @@ EventHandler.on(document, 'DOMContentLoaded', () => {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap offcanvas.js
+ * Bootstrap drawer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3822,18 +3940,15 @@ EventHandler.on(document, 'DOMContentLoaded', () => {
  * Constants
  */
 
-const NAME$a = 'offcanvas';
-const DATA_KEY$7 = 'bs.offcanvas';
+const NAME$a = 'drawer';
+const DATA_KEY$7 = 'bs.drawer';
 const EVENT_KEY$7 = `.${DATA_KEY$7}`;
 const DATA_API_KEY$4 = '.data-api';
 const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$7}${DATA_API_KEY$4}`;
-const EVENT_SHOW$3 = `show${EVENT_KEY$7}`;
-const EVENT_SHOWN$3 = `shown${EVENT_KEY$7}`;
-const EVENT_HIDE$3 = `hide${EVENT_KEY$7}`;
 const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$7}`;
 const EVENT_RESIZE = `resize${EVENT_KEY$7}`;
 const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$7}${DATA_API_KEY$4}`;
-const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="offcanvas"]';
+const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="drawer"]';
 const Default$9 = {
   backdrop: true,
   keyboard: true,
@@ -3849,7 +3964,12 @@ const DefaultType$9 = {
  * Class definition
  */
 
-class Offcanvas extends DialogBase {
+class Drawer extends DialogBase {
+  constructor(element, config) {
+    super(element, config);
+    this._swipeHelper = null;
+  }
+
   // Getters
   static get Default() {
     return Default$9;
@@ -3862,63 +3982,61 @@ class Offcanvas extends DialogBase {
   }
 
   // Public
-  toggle(relatedTarget) {
-    return this._element.open ? this.hide() : this.show(relatedTarget);
+  dispose() {
+    if (this._swipeHelper) {
+      this._swipeHelper.dispose();
+    }
+    super.dispose();
   }
-  show(relatedTarget) {
-    if (this._element.open || this._isTransitioning) {
-      return;
-    }
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$3, {
-      relatedTarget
-    });
-    if (showEvent.defaultPrevented) {
-      return;
-    }
-    this._isTransitioning = true;
 
-    // Determine modal mode:
-    // - Use showModal() (modal) when backdrop is enabled or scroll is disabled
-    // - Use show() (non-modal) when backdrop is false AND scroll is true
-    //   (matches behavior where focus trap is skipped for this combo)
+  // Protected — hook overrides
+
+  _getShowOptions() {
     const useModal = Boolean(this._config.backdrop) || !this._config.scroll;
-    this._showElement({
+    return {
       modal: useModal,
       preventBodyScroll: !this._config.scroll
-    });
-
-    // CSS @starting-style handles the entry animation automatically.
-    // Wait for the transform transition to complete, then fire shown.
-    this._queueCallback(() => {
-      this._isTransitioning = false;
-      EventHandler.trigger(this._element, EVENT_SHOWN$3, {
-        relatedTarget
-      });
-    }, this._element, true);
+    };
   }
-  hide() {
-    if (!this._element.open || this._isTransitioning) {
-      return;
-    }
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$3);
-    if (hideEvent.defaultPrevented) {
-      return;
-    }
-    this._isTransitioning = true;
-
-    // Call close() immediately — CSS handles the exit animation via
-    // transition-behavior: allow-discrete on display and overlay,
-    // keeping the element visible and in the top layer until complete.
-    this._hideElement();
-    this._queueCallback(() => {
-      this._isTransitioning = false;
-      EventHandler.trigger(this._element, EVENT_HIDDEN$3);
-    }, this._element, true);
+  _onBeforeShow() {
+    this._initSwipe();
+  }
+  _getInstantClassName() {
+    return 'drawer-instant';
+  }
+  _getStaticClassName() {
+    return 'drawer-static';
   }
 
   // Private
-  _getStaticClassName() {
-    return 'offcanvas-static';
+
+  _initSwipe() {
+    if (this._swipeHelper || !Swipe.isSupported()) {
+      return;
+    }
+
+    // Determine which swipe direction dismisses based on placement
+    const swipeConfig = {};
+    const element = this._element;
+    if (element.classList.contains('drawer-bottom')) {
+      swipeConfig.downCallback = () => this.hide();
+    } else if (element.classList.contains('drawer-top')) {
+      swipeConfig.upCallback = () => this.hide();
+    } else if (element.classList.contains('drawer-end')) {
+      // RTL: swipe left to dismiss end drawer
+      if (isRTL()) {
+        swipeConfig.leftCallback = () => this.hide();
+      } else {
+        swipeConfig.rightCallback = () => this.hide();
+      }
+    } else if (isRTL()) {
+      // drawer-start (default): swipe right to dismiss in RTL
+      swipeConfig.rightCallback = () => this.hide();
+    } else {
+      // drawer-start (default): swipe left to dismiss in LTR
+      swipeConfig.leftCallback = () => this.hide();
+    }
+    this._swipeHelper = new Swipe(element, swipeConfig);
   }
 }
 
@@ -3935,33 +4053,32 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$4, functi
     return;
   }
   EventHandler.one(target, EVENT_HIDDEN$3, () => {
-    // Focus on trigger when it is closed
     if (isVisible(this)) {
       this.focus();
     }
   });
 
-  // Avoid conflict when clicking a toggler of an offcanvas, while another is open
-  const alreadyOpen = SelectorEngine.findOne('dialog.offcanvas[open]');
+  // Avoid conflict when clicking a toggler of a drawer, while another is open
+  const alreadyOpen = SelectorEngine.findOne('dialog.drawer[open]');
   if (alreadyOpen && alreadyOpen !== target) {
-    Offcanvas.getInstance(alreadyOpen).hide();
+    Drawer.getInstance(alreadyOpen).hide();
   }
-  const data = Offcanvas.getOrCreateInstance(target);
+  const data = Drawer.getOrCreateInstance(target);
   data.toggle(this);
 });
 EventHandler.on(window, EVENT_LOAD_DATA_API$2, () => {
-  for (const selector of SelectorEngine.find('dialog.offcanvas[open]')) {
-    Offcanvas.getOrCreateInstance(selector).show();
+  for (const selector of SelectorEngine.find('dialog.drawer[open]')) {
+    Drawer.getOrCreateInstance(selector).show();
   }
 });
 EventHandler.on(window, EVENT_RESIZE, () => {
-  for (const element of SelectorEngine.find('dialog[open][class*="\\:offcanvas"]')) {
+  for (const element of SelectorEngine.find('dialog[open][class*="\\:drawer"]')) {
     if (getComputedStyle(element).position !== 'fixed') {
-      Offcanvas.getOrCreateInstance(element).hide();
+      Drawer.getOrCreateInstance(element).hide();
     }
   }
 });
-enableDismissTrigger(Offcanvas);
+enableDismissTrigger(Drawer);
 
 /**
  * --------------------------------------------------------------------------
@@ -6662,5 +6779,5 @@ class Toggler extends BaseComponent {
 
 eventActionOnPlugin(Toggler, EVENT_CLICK, SELECTOR_DATA_TOGGLE, 'toggle');
 
-export { Alert, Button, Carousel, ChipInput, Collapse, Combobox, Datepicker, Dialog, Menu, NavOverflow, Offcanvas, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
+export { Alert, Button, Carousel, ChipInput, Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, NavOverflow, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
 //# sourceMappingURL=bootstrap.js.map

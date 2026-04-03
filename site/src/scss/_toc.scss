@@ -1,5 +1,4 @@
 @use "../../../scss/layout/breakpoints" as *;
-@use "../../../scss/mixins/border-radius" as *;
 
 @layer custom {
   .bd-toc {
@@ -8,17 +7,47 @@
 
     @include media-breakpoint-up(lg) {
       position: sticky;
-      top: 5rem;
+      top: var(--bd-navbar-offset);
       right: 0;
       z-index: 2;
-      height: calc(100vh - 6em);
-      // overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: flex-start;
+      width: 100%;
+      height: calc(100vh - var(--bd-navbar-offset) - 1rem);
+      padding-inline-end: .25rem;
+      margin-inline-end: -.25rem;
+      overflow-y: auto;
+
+      .lg\:drawer {
+        flex-grow: 0 !important; // stylelint-disable-line declaration-no-important
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      // stylelint-disable-next-line selector-max-id
+      #carbonads {
+        position: sticky;
+        bottom: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    @include media-breakpoint-down(lg) {
+      .lg\:drawer {
+        border-inline-start-color: var(--bs-border-color);
+        box-shadow: var(--bs-box-shadow-lg);
+      }
     }
 
     .nav {
+      --bs-nav-gap: 0;
       --bs-nav-link-justify: flex-start;
       --bs-nav-link-padding-x: .75rem;
-      --bs-nav-link-padding-y: .125rem;
+      --bs-nav-link-padding-y: .0625rem;
       --bs-nav-link-font-size: .875rem;
       --bs-nav-link-hover-bg: transparent;
       --bs-nav-link-active-bg: transparent;
@@ -44,49 +73,31 @@
     }
   }
 
-
-  .bd-toc-toggle {
-    display: flex;
-    align-items: center;
-
-    @include media-breakpoint-down(md) {
-      justify-content: space-between;
-      width: 100%;
+  // stylelint-disable-next-line selector-id-pattern, selector-max-id
+  #bdTocSidebar {
+    @include media-breakpoint-up(lg) {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
     }
 
     @include media-breakpoint-down(lg) {
-      color: var(--bs-color-body);
-      border: 1px solid var(--bs-border-color);
-      @include border-radius(var(--bs-border-radius));
-
-      &:hover,
-      &:focus,
-      &:active,
-      &[aria-expanded="true"] {
-        color: var(--bd-violet);
-        background-color: var(--bs-bg-body);
-        border-color: var(--bd-violet);
-      }
-
-      &:focus,
-      &[aria-expanded="true"] {
-        box-shadow: 0 0 0 3px rgba(var(--bd-violet-rgb), .25);
-      }
+      height: auto;
+      max-height: 80dvh;
     }
   }
 
-  .bd-toc-collapse {
-    @include media-breakpoint-down(lg) {
-      nav {
-        padding: 1.25rem 1.25rem 1.25rem 1rem;
-        background-color: var(--bs-bg-subtle);
-        border: 1px solid var(--bs-border-color);
-        @include border-radius(var(--bs-border-radius));
-      }
-    }
+  .bd-toc-toggle {
+    position: fixed;
+    right: 0;
+    bottom: 1rem;
+    left: 0;
+    z-index: 1030;
+    margin-inline: auto;
+    font-size: var(--font-size-sm);
 
-    @include media-breakpoint-up(lg) {
-      display: block !important; // stylelint-disable-line declaration-no-important
+    > .btn-solid {
+      box-shadow: var(--bs-box-shadow-lg);
     }
   }
 }

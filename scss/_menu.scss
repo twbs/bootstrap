@@ -2,8 +2,8 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/gradients" as *;
 @use "mixins/tokens" as *;
+@use "mixins/transition" as *;
 
 // stylelint-disable scss/dollar-variable-default, custom-property-no-missing-var-function
 $menu-tokens: () !default;
@@ -45,6 +45,8 @@ $menu-tokens: defaults(
     --menu-header-color: var(--fg-3),
     --menu-header-padding-x: .75rem,
     --menu-header-padding-y: .25rem,
+    --menu-transition-duration: .15s,
+    --menu-transition-timing: cubic-bezier(.22, 1, .36, 1),
   ),
   $menu-tokens
 );
@@ -76,9 +78,43 @@ $menu-tokens: defaults(
     border: var(--menu-border-width, var(--border-width)) solid var(--menu-border-color, var(--border-color-translucent));
     @include border-radius(var(--menu-border-radius, var(--border-radius-lg)));
     @include box-shadow(var(--menu-box-shadow));
+    opacity: 0;
+    transform: scale(.95);
+    transform-origin: top start;
+
+    &[data-bs-placement^="top"] {
+      transform-origin: bottom start;
+    }
+
+    &[data-bs-placement="bottom-end"] {
+      transform-origin: top end;
+    }
+
+    &[data-bs-placement="top-end"] {
+      transform-origin: bottom end;
+    }
+
+    &[data-bs-placement^="left"] {
+      transform-origin: top end;
+    }
+
+    @include transition(
+      opacity var(--menu-transition-duration) var(--menu-transition-timing),
+      transform var(--menu-transition-duration) var(--menu-transition-timing),
+      display var(--menu-transition-duration) allow-discrete
+    );
 
     &.show {
       display: flex;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @starting-style {
+    .menu.show {
+      opacity: 0;
+      transform: scale(.95);
     }
   }
 
@@ -128,14 +164,16 @@ $menu-tokens: defaults(
 
     &:hover,
     &:focus {
-      color: var(--theme-text, var(--menu-item-hover-color));
-      @include gradient-bg(var(--theme-bg-subtle, var(--menu-item-hover-bg)));
+      color: var(--theme-text-emphasis, var(--menu-item-hover-color));
+      background-color: var(--theme-bg-subtle, var(--menu-item-hover-bg));
+      // @include gradient-bg(var(--theme-bg-subtle, var(--menu-item-hover-bg)));
     }
 
     &.active,
     &:active {
       color: var(--theme-contrast, var(--menu-item-active-color));
-      @include gradient-bg(var(--theme-bg, var(--menu-item-active-bg)));
+      background-color: var(--theme-bg, var(--menu-item-active-bg));
+      // @include gradient-bg(var(--theme-bg, var(--menu-item-active-bg)));
 
       .menu-item-icon {
         color: inherit !important; // stylelint-disable-line declaration-no-important

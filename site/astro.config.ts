@@ -58,6 +58,9 @@ export default defineConfig({
       ]
     }
   },
+  devToolbar: {
+    enabled: false
+  },
   site,
   vite: {
     plugins: [algoliaPlugin(), stackblitzPlugin()]

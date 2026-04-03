@@ -2,6 +2,8 @@
 title: Tables
 description: Documentation and examples for opt-in styling of tables (given their prevalent use in JavaScript plugins) with Bootstrap.
 toc: true
+css_layer: content
+css_media: container
 ---
 
 import { getData } from '@libs/data'
@@ -545,13 +547,85 @@ You can also put the `<caption>` on the top of the table with `.caption-top`.
     </tbody>
   </table>`} />
 
+## Stacked tables
+
+Add `.table-stacked` to convert a table's rows into stacked blocks when space is limited. Each row becomes a vertical block with the first cell acting as a bold title and the remaining cells displayed as label–value pairs. Labels are generated from `data-cell` attributes on each `<td>`.
+
+Both `.table-stacked` and `.table-responsive` use container queries, so the `.table-responsive` wrapper is required as the query container. Use `.md:table-stacked`, `.lg:table-stacked`, etc. to only stack below a specific container width. The default `.table-stacked` always stacks.
+
+<ResizableExample code={`
+<div class="table-responsive">
+  <table class="table md:table-stacked">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Default</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-cell="Name">backdrop</td>
+        <td data-cell="Type">boolean or 'static'</td>
+        <td data-cell="Default">true</td>
+        <td data-cell="Description">Includes a backdrop element. Specify static for a backdrop which doesn't close on click.</td>
+      </tr>
+      <tr>
+        <td data-cell="Name">keyboard</td>
+        <td data-cell="Type">boolean</td>
+        <td data-cell="Default">true</td>
+        <td data-cell="Description">Closes the component when escape key is pressed.</td>
+      </tr>
+      <tr>
+        <td data-cell="Name">focus</td>
+        <td data-cell="Type">boolean</td>
+        <td data-cell="Default">true</td>
+        <td data-cell="Description">Puts the focus on the component when initialized.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`} customMarkup={`
+<div class="table-responsive">
+  <table class="table md:table-stacked">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        ...
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-cell="Name">backdrop</td>
+        <td data-cell="Type">boolean or 'static'</td>
+        ...
+      </tr>
+    </tbody>
+  </table>
+</div>
+`} />
+
+```html
+<!-- Always stacked -->
+<div class="table-responsive">
+  <table class="table table-stacked">...</table>
+</div>
+
+<!-- Stacked below md container width -->
+<div class="table-responsive">
+  <table class="table md:table-stacked">...</table>
+</div>
+```
+
 ## Responsive tables
 
 Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl|-2xl}`.
 
-<Callout type="warning">
-##### Vertical clipping/truncation
+The `.table-responsive` wrapper also acts as the container query context for [stacked tables](#stacked-tables).
 
+<Callout type="warning">
 Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off menus and other third-party widgets.
 </Callout>
 

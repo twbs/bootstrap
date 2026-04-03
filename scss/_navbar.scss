@@ -2,7 +2,6 @@
 @use "functions" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/gradients" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
@@ -97,7 +96,8 @@ $navbar-nav-tokens: defaults(
     padding: var(--navbar-padding-y) var(--navbar-padding-x);
     @include set-container();
     color: var(--navbar-color, var(--fg-body));
-    @include gradient-bg(var(--navbar-bg, var(--bg-body)));
+    background-color: var(--navbar-bg, var(--bg-body));
+    // @include gradient-bg(var(--navbar-bg, var(--bg-body)));
 
     // Container properties for nested containers
     %container-flex-properties {

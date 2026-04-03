@@ -1,12 +1,21 @@
 @use "../../../scss/mixins" as *;
 @use "../../../scss/layout/breakpoints" as *;
 
-:root {
-  --bs-font-sans-serif: "Geist", sans-serif;
-  --bs-font-monospace: "Geist Mono", monospace;
-}
-
 @layer custom {
+  :root {
+    --bd-navbar-offset: 6rem;
+  }
+
+  body {
+    font-family: Geist, var(--bs-body-font-family);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  code,
+  pre {
+    font-family: "Geist Mono", var(--bs-font-mono);
+  }
+
   .bd-sticky-navbar.is-stuck {
     box-shadow: 0 .125rem .5rem rgb(0 0 0 / .05);
   }
@@ -16,27 +25,14 @@
     --bs-navbar-padding-y: .75rem;
     --bs-border-color: color-mix(in oklch, var(--bs-fg-body) 12%, transparent);
     margin-bottom: -1px;
+    background-color: transparent;
     background-clip: padding-box;
 
-    .bd-navbar-toggle {
-      @include media-breakpoint-down(lg) {
-        width: 4.25rem;
-      }
-    }
-
-    .navbar-toggler {
+    .navbar-btn-icon {
       padding: 0;
       margin-inline-end: -.5rem;
+      background-color: transparent;
       border: 0;
-
-      &:first-child {
-        margin-inline-start: -.5rem;
-      }
-
-      .bi {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
 
       &:focus {
         box-shadow: none;
@@ -57,7 +53,9 @@
     }
 
     .nav-link {
-      font-size: var(--font-size-sm);
+      @include media-breakpoint-up(lg) {
+        font-size: var(--font-size-sm);
+      }
 
       &.active {
         font-weight: 600;
@@ -79,9 +77,16 @@
       --menu-item-active-bg: var(--bs-accent-bg);
 
       .menu-item {
-        &:active {
+        .bi {
+          filter: brightness(.65);
+        }
+
+        &:active,
+        &.active {
+          // stylelint-disable-next-line selector-max-class
           .bi {
             color: inherit !important; // stylelint-disable-line declaration-no-important
+            filter: brightness(1);
           }
         }
       }

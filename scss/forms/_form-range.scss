@@ -1,4 +1,3 @@
-@use "../colors" as *;
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
@@ -22,9 +21,9 @@ $range-tokens: defaults(
     --range-thumb-width: 1rem,
     --range-thumb-height: var(--range-thumb-width),
     --range-thumb-bg: var(--primary-base),
-    --range-thumb-border: 0,
+    --range-thumb-border: var(--range-thumb-bg) solid var(--border-color),
     --range-thumb-border-radius: 1rem,
-    --range-thumb-box-shadow: 0 .1rem .25rem rgba($black, .1),
+    --range-thumb-box-shadow: "0 1px 2px rgb(0 0 0 / 7.5%), 0 2px 4px rgb(0 0 0 / 7.5%)",
     --range-thumb-active-bg: color-mix(in oklch, var(--primary-base) 70%, var(--bg-body)),
     --range-thumb-disabled-bg: var(--fg-3),
     --range-thumb-transition-property: "background-color, border-color, box-shadow",
@@ -73,17 +72,26 @@ $range-tokens: defaults(
     appearance: none;
     background-color: transparent;
 
-    &:focus {
+    &:hover {
+      &::-webkit-slider-thumb {
+        @include focus-ring(false, color-mix(in oklch, var(--primary-focus-ring), transparent));
+      }
+      &::-moz-range-thumb     {
+        @include focus-ring(false, color-mix(in oklch, var(--primary-focus-ring), transparent));
+      }
+    }
+
+    &:focus-visible {
       outline: 0;
 
       // Pseudo-elements must be split across multiple rulesets to have an effect.
       &::-webkit-slider-thumb {
         @include focus-ring(true);
-        --focus-ring-offset: 1px;
+        --focus-ring-offset: 0;
       }
       &::-moz-range-thumb     {
         @include focus-ring(true);
-        --focus-ring-offset: 1px;
+        --focus-ring-offset: 0;
       }
     }
 

@@ -1,0 +1,115 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import { getSlug } from '@libs/utils'
+import GitHubIcon from '@components/icons/GitHubIcon.astro'
+import MdnIcon from '@components/icons/MdnIcon.astro'
+import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
+
+interface Props {
+  frontmatter: CollectionEntry<'docs'>['data']
+  id: CollectionEntry<'docs'>['id']
+  parentDirectory: string
+}
+
+const { frontmatter, id, parentDirectory } = Astro.props
+
+const layerLabels: Record<string, string> = {
+  reboot: 'Reboot',
+  layout: 'Layout',
+  content: 'Content',
+  forms: 'Forms',
+  components: 'Components',
+  helpers: 'Helpers',
+  utilities: 'Utilities'
+}
+
+const layerTooltips: Record<string, string> = {
+  reboot: 'Scoped to the Reboot CSS layer',
+  layout: 'Scoped to the Layout CSS layer',
+  content: 'Scoped to the Content CSS layer',
+  forms: 'Scoped to the Forms CSS layer',
+  components: 'Scoped to the Components CSS layer',
+  helpers: 'Scoped to the Helpers CSS layer',
+  utilities: 'Scoped to the Utilities CSS layer'
+}
+
+const deps = frontmatter.deps ?? []
+const depsCount = deps.length
+---
+
+<div class="bd-page-meta w-100 d-grid md:grid-cols-2 lg:d-flex gap-5 row-gap-2 px-4 py-3 bg-1 fg-2 fs-sm rounded-3">
+  {frontmatter.js === 'required' && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-warning" aria-hidden="true"><use href="#filetype-js" /></svg>
+      Requires JavaScript
+    </div>
+  )}
+  {frontmatter.js === 'optional' && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-warning opacity-50" aria-hidden="true"><use href="#filetype-js" /></svg>
+      JavaScript is optional
+    </div>
+  )}
+  {frontmatter.css_layer && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-accent" aria-hidden="true"><use href="#css" /></svg>
+      <span>In <code class="fg-body">{frontmatter.css_layer}</code> layer</span>
+    </div>
+  )}
+  {frontmatter.css_media === 'container' && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi" aria-hidden="true" style="color: var(--bs-pink-500);"><use href="#bounding-box-fill" /></svg>
+      Container queries
+    </div>
+  )}
+  {frontmatter.css_media === 'viewport' && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi" aria-hidden="true" style="color: var(--bs-purple-500);"><use href="#aspect-ratio-fill" /></svg>
+      Viewport queries
+    </div>
+  )}
+  {depsCount > 0 && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-2" aria-hidden="true"><use href="#box-seam-fill" /></svg>
+      <div>
+        Depends on
+        {deps.map((dep, i) => (
+          <Fragment>{i > 0 && ', '}{dep.url?.startsWith('http') ? (
+              <a class="fg-2 text-decoration-none" href={dep.url} target="_blank" rel="noopener">{dep.title}</a>
+            ) : dep.url ? (
+              <a class="fg-2 text-decoration-none" href={dep.url}>{dep.title}</a>
+            ) : (
+              <a class="fg-2 text-decoration-none" href={getVersionedDocsPath(`components/${getSlug(dep.title)}/`)}>{dep.title}</a>
+            )}</Fragment>
+        ))}
+      </div>
+    </div>
+  )}
+  {frontmatter.added &&
+    ((frontmatter.added.show_badge === undefined || frontmatter.added.show_badge === true)) && (
+    <div class="d-flex align-items-center gap-2">
+      <svg class="bi fg-success" aria-hidden="true"><use href="#plus" /></svg>
+      Added in v{frontmatter.added.version}
+    </div>
+  )}
+  {frontmatter.mdn && (
+    <div class="d-flex align-items-center gap-2">
+      <MdnIcon height={16} width={16} class="bi fg-2" />
+      <a class="fg-2 text-decoration-none" href={frontmatter.mdn} target="_blank" rel="noopener">MDN Reference</a>
+    </div>
+  )}
+  {frontmatter.csstricks && (
+    <div class="d-flex align-items-center gap-2">
+      <CssTricksIcon height={16} width={16} class="bi fg-2" />
+      <a class="fg-2 text-decoration-none" href={typeof frontmatter.csstricks === 'string' ? frontmatter.csstricks : frontmatter.csstricks.url} target="_blank" rel="noopener">
+        {typeof frontmatter.csstricks === 'string' ? 'CSS-Tricks' : (frontmatter.csstricks.label || 'CSS-Tricks')}
+      </a>
+    </div>
+  )}
+  <div class="d-flex align-items-center gap-2">
+    <svg class="bi fg-2" aria-hidden="true"><use href="#github" /></svg>
+    <a class="fg-2 text-decoration-none" href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`} target="_blank" rel="noopener">View & Edit</a>
+  </div>
+</div>

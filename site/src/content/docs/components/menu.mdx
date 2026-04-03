@@ -1,16 +1,22 @@
 ---
 title: Menu
-description: Toggle contextual menus and custom overlays for lists of links, forms, and more with the Bootstrap menu plugin. Powered by [Floating UI](https://floating-ui.com/).
+description: Toggle contextual menus and custom overlays for lists of buttons, links, forms, and other custom content.
 toc: true
 aliases:
   - /docs/[[config:docs_version]]/components/menus/
+css_layer: components
+css_media: viewport
+js: required
+deps:
+  - title: Floating UI
+    url: https://floating-ui.com/
 ---
 
 ## Overview
 
 Toggle menus with buttons whenever possible. Here's an example using a Bootstrap button:
 
-<Example code={`<button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+<Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="menu" aria-expanded="false">
     Toggle menu
   </button>
   <div class="menu">
@@ -128,7 +134,7 @@ For example, `data-bs-placement="bottom-start md:bottom-end lg:end-start"` will:
 - Switch to `bottom-end` at the `md` breakpoint
 - Switch to `right-start` at the `lg` breakpoint
 
-<Example class="d-flex gap-2" code={`<button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-placement="bottom-start md:bottom-end" aria-expanded="false">
+<Example class="d-flex flex-column lg:flex-row gap-2" code={`<button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-placement="bottom-start md:bottom-end" aria-expanded="false">
     Bottom start → md:bottom-end
   </button>
   <div class="menu">
@@ -484,7 +490,7 @@ Use `data-bs-offset` or `data-bs-reference` to change the location of the menu. 
 
 By default, the menu is closed when clicking inside or outside the menu. You can use the `autoClose` option to change this behavior of the menu.
 
-<Example code={`<div class="btn-group">
+<Example class="d-flex flex-wrap gap-2" code={`<div class="btn-group">
     <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-auto-close="true" aria-expanded="false">
       Default menu
     </button>

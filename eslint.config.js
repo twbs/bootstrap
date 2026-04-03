@@ -136,7 +136,9 @@ export default [
       '**/*.d.ts',
       '**/*.astro',
       // Meteor metadata file (uses unsupported eslint-env comment)
-      'package.js'
+      'package.js',
+      // Claude worktrees
+      '.claude/worktrees/**'
     ]
   },
 

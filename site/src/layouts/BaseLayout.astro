@@ -57,7 +57,9 @@ const mainProps = overrides?.main ?? {}
     />
   </head>
   <body {...bodyProps}>
-    <Header layout={layout} title={title} addedIn={frontmatter?.added} />
+    <div class="navbar-translucent sticky-top bd-sticky-navbar">
+      <Header layout={layout} title={title} addedIn={frontmatter?.added} />
+    </div>
 
     {
       Astro.slots.has('main') ? (

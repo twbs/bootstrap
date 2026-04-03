@@ -52,9 +52,9 @@ $datepicker-tokens: defaults(
     color-scheme: light dark;
     background-color: var(--datepicker-bg);
     border: var(--datepicker-border-width) solid var(--datepicker-border-color);
-    @include border-radius(var(--datepicker-border-radius));
     box-shadow: var(--datepicker-box-shadow);
     opacity: 1;
+    @include border-radius(var(--datepicker-border-radius));
 
     // Respond to Bootstrap's color mode system
     &[data-bs-theme="light"] {
