@@ -850,6 +850,54 @@
         "column-gap-9"
       ]
     },
+    "space-x": {
+      "class": "space-x",
+      "property": "margin-inline-end",
+      "classes": [
+        "space-x-0",
+        "space-x-1",
+        "space-x-2",
+        "space-x-3",
+        "space-x-4",
+        "space-x-5",
+        "space-x-6",
+        "space-x-7",
+        "space-x-8",
+        "space-x-9"
+      ]
+    },
+    "space-y": {
+      "class": "space-y",
+      "property": "margin-block-end",
+      "classes": [
+        "space-y-0",
+        "space-y-1",
+        "space-y-2",
+        "space-y-3",
+        "space-y-4",
+        "space-y-5",
+        "space-y-6",
+        "space-y-7",
+        "space-y-8",
+        "space-y-9"
+      ]
+    },
+    "divide-x": {
+      "class": "divide-x",
+      "property": "border-inline-start",
+      "classes": [
+        "divide-x",
+        "divide-x-0"
+      ]
+    },
+    "divide-y": {
+      "class": "divide-y",
+      "property": "border-block-start",
+      "classes": [
+        "divide-y",
+        "divide-y-0"
+      ]
+    },
     "font-family": {
       "class": "font",
       "property": "font-family",
