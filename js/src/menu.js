@@ -186,7 +186,7 @@ class Menu extends BaseComponent {
     this._createFloating()
 
     if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.on(element, 'mouseover', noop)
       }
     }
@@ -249,7 +249,7 @@ class Menu extends BaseComponent {
     this._closeAllSubmenus()
 
     if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.off(element, 'mouseover', noop)
       }
     }
@@ -837,7 +837,7 @@ class Menu extends BaseComponent {
         .filter(element => isVisible(element))
 
       if (items.length) {
-        const targetItem = key === HOME_KEY ? items[0] : items[items.length - 1]
+        const targetItem = key === HOME_KEY ? items[0] : items.at(-1)
         targetItem.focus()
       }
 

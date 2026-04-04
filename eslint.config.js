@@ -95,12 +95,12 @@ const localRules = {
   'unicorn/no-unused-properties': 'error',
   'unicorn/numeric-separators-style': 'off',
   'unicorn/prefer-array-flat': 'off',
-  'unicorn/prefer-at': 'off',
+  'unicorn/prefer-at': 'error',
   'unicorn/prefer-dom-node-dataset': 'off',
   'unicorn/prefer-global-this': 'off',
   'unicorn/prefer-module': 'off',
   'unicorn/prefer-query-selector': 'off',
-  'unicorn/prefer-spread': 'off',
+  'unicorn/prefer-spread': 'error',
   'unicorn/prefer-string-raw': 'off',
   'unicorn/prefer-string-replace-all': 'off',
   'unicorn/prefer-structured-clone': 'off',
@@ -266,17 +266,14 @@ const eslintConfig = [
     }
   },
 
-  // site/** — browser, script mode, older ecmaVersion
+  // site/** — browser, script mode
   {
     files: ['site/**'],
     languageOptions: {
       globals: {
         ...globals.browser
       },
-      sourceType: 'script',
-      parserOptions: {
-        ecmaVersion: 2019
-      }
+      sourceType: 'script'
     },
     rules: {
       'no-new': 'off',
@@ -296,10 +293,7 @@ const eslintConfig = [
       'site/src/plugins/*.js'
     ],
     languageOptions: {
-      sourceType: 'module',
-      parserOptions: {
-        ecmaVersion: 2020
-      }
+      sourceType: 'module'
     },
     // These files may have eslint-disable directives for the old import plugin
     linterOptions: {
@@ -322,10 +316,7 @@ const eslintConfig = [
       'site/src/assets/examples/sidebars/sidebars.js'
     ],
     languageOptions: {
-      sourceType: 'module',
-      parserOptions: {
-        ecmaVersion: 2020
-      }
+      sourceType: 'module'
     },
     rules: {
       'import/no-unresolved': 'off'

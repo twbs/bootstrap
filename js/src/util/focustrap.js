@@ -97,7 +97,7 @@ class FocusTrap extends Config {
     if (elements.length === 0) {
       trapElement.focus()
     } else if (this._lastTabNavDirection === TAB_NAV_BACKWARD) {
-      elements[elements.length - 1].focus()
+      elements.at(-1).focus()
     } else {
       elements[0].focus()
     }

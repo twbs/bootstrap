@@ -130,7 +130,7 @@ describe('Collapse', () => {
         const collapseEl1 = fixtureEl.querySelector('#collapse1')
         const collapseEl2 = fixtureEl.querySelector('#collapse2')
 
-        const collapseList = [].concat(...fixtureEl.querySelectorAll('.collapse'))
+        const collapseList = [...fixtureEl.querySelectorAll('.collapse')]
           .map(el => new Collapse(el, {
             parent,
             toggle: false
