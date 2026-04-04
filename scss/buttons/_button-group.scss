@@ -51,7 +51,7 @@
     }
 
     // Reset rounded corners
-    > [class*="btn-"]:not(:last-child):not(:has(+ .menu)),
+    > [class*="btn-"]:not(:last-child, :has(+ .menu)),
     > .btn-group:not(:last-child) > [class*="btn-"] {
       @include border-end-radius(0);
     }
@@ -83,7 +83,7 @@
     }
 
     // Reset rounded corners
-    > [class*="btn-"]:not(:last-child):not(:has(+ .menu)),
+    > [class*="btn-"]:not(:last-child, :has(+ .menu)),
     > .btn-group:not(:last-child) > [class*="btn-"] {
       @include border-bottom-radius(0);
     }

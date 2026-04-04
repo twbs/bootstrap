@@ -88,7 +88,7 @@ $card-tokens: defaults(
       border-bottom-width: var(--card-border-width);
     }
 
-    &:not(:first-child):not(:last-child) {
+    &:not(:first-child, :last-child) {
       border-block-end-width: var(--card-border-width);
     }
   }
@@ -217,7 +217,7 @@ $card-tokens: defaults(
         border-inline-end-width: var(--card-border-width);
       }
 
-      &:not(:first-child):not(:last-child) {
+      &:not(:first-child, :last-child) {
         border-inline-end-width: var(--card-border-width);
       }
     }

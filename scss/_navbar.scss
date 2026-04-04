@@ -274,7 +274,7 @@ $navbar-nav-tokens: defaults(
   // intentional show/hide actions animate.
   // stylelint-disable-next-line no-duplicate-selectors
   .navbar {
-    [class*="drawer"]:not([open]):not(.hiding) {
+    [class*="drawer"]:not([open], .hiding) {
       @include transition(none !important);
     }
   }

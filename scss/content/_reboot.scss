@@ -284,7 +284,7 @@ $reboot-mark-tokens: defaults(
   // causes specificity issues in many other styles that are too complex to fix.
   // See https://github.com/twbs/bootstrap/issues/19402
 
-  a:not([href]):not([class]) {
+  a:not([href], [class]) {
     &,
     &:hover {
       color: inherit;
@@ -461,7 +461,7 @@ $reboot-mark-tokens: defaults(
   // Remove the dropdown arrow only from text type inputs built with datalists in Chrome.
   // See https://stackoverflow.com/a/54997118
 
-  [list]:not([type="date"]):not([type="datetime-local"]):not([type="month"]):not([type="week"]):not([type="time"])::-webkit-calendar-picker-indicator {
+  [list]:not([type="date"], [type="datetime-local"], [type="month"], [type="week"], [type="time"])::-webkit-calendar-picker-indicator {
     display: none !important;
   }
 

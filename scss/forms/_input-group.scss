@@ -118,7 +118,7 @@ $input-group-sizes: defaults(
 
     $validation-messages: "";
     &:not(.has-validation) {
-      > :not(:last-child):not(.menu-toggle-split):not(.menu):not(.form-floating),
+      > :not(:last-child, .menu-toggle-split, .menu, .form-floating),
       > .menu-toggle-split:nth-last-child(n + 3),
       > .form-floating:not(:last-child) > .form-control,
       > .form-floating:not(:last-child) > .form-select {
@@ -127,7 +127,7 @@ $input-group-sizes: defaults(
     }
 
     &.has-validation {
-      > :nth-last-child(n + 3):not(.menu-toggle-split):not(.menu):not(.form-floating),
+      > :nth-last-child(n + 3):not(.menu-toggle-split, .menu, .form-floating),
       > .menu-toggle-split:nth-last-child(n + 4),
       > .form-floating:nth-last-child(n + 3) > .form-control,
       > .form-floating:nth-last-child(n + 3) > .form-select {
@@ -135,7 +135,7 @@ $input-group-sizes: defaults(
       }
     }
 
-    > :not(:first-child):not(.menu)#{$validation-messages} {
+    > :not(:first-child, .menu)#{$validation-messages} {
       margin-inline-start: calc(-1 * var(--border-width));
       @include border-start-radius(0);
     }

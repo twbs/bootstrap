@@ -137,7 +137,7 @@ $form-control-sizes: defaults(
     &[type="file"] {
       overflow: hidden; // prevent pseudo element button overlap
 
-      &:not(:disabled):not([readonly]) {
+      &:not(:disabled, [readonly]) {
         cursor: pointer;
       }
     }
@@ -157,7 +157,7 @@ $form-control-sizes: defaults(
       @include transition(var(--control-transition));
     }
 
-    &:hover:not(:disabled):not([readonly])::file-selector-button {
+    &:hover:not(:disabled, [readonly])::file-selector-button {
       background-color: var(--control-action-hover-bg);
     }
   }
@@ -231,7 +231,7 @@ $form-control-sizes: defaults(
     width: var(--control-min-height);
     padding: var(--control-padding-y);
 
-    &:not(:disabled):not([readonly]) {
+    &:not(:disabled, [readonly]) {
       cursor: pointer;
     }
 

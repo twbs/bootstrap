@@ -94,7 +94,7 @@
       border-color: $border-color;
 
       @if $enable-validation-icons {
-        &:not([multiple]):not([size]),
+        &:not([multiple], [size]),
         &:not([multiple])[size="1"] {
           --form-select-bg-icon: #{escape-svg($icon)};
           padding-inline-end: $form-select-feedback-icon-padding-end;

@@ -9,6 +9,7 @@ export default {
   reportInvalidScopeDisables: true,
   reportNeedlessDisables: true,
   rules: {
+    'selector-not-notation': 'complex',
     'selector-class-pattern': [
       '^([a-z][a-z0-9]*(-[a-z0-9]+)*:)?([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
       { message: 'Expected class selector "%s" to be kebab-case (with optional breakpoint prefix)' }
