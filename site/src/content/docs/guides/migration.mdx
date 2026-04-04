@@ -67,12 +67,13 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Increased the `2xl` breakpoint from 1400px to 1536px, and it's container from 1320px to 1440px.
 - **Adopted modern CSS color functions.** All Sass color variables now use `oklch()` notation (e.g., `$blue: oklch(60% 0.24 240)`) and tint/shade scales are generated with `color-mix(in lab, ...)` in the compiled CSS. The v5 `$*-rgb` CSS custom properties and `rgba()` patterns have been removed. This requires browser support for `color-mix()` and `oklch()`.
 - **New theme token system with `.theme-*` classes.** Per-component color variant classes (like `.alert-primary`, `.badge.bg-primary`, `.btn-primary`) are replaced by a composable `.theme-{name}` pattern. Adding `.theme-primary` to a component sets `--theme-bg`, `--theme-text`, `--theme-border`, `--theme-contrast`, and other semantic CSS custom properties that the component reads. This applies across buttons, badges, alerts, cards, accordions, and more.
-- **Responsive classes now use a breakpoint prefix instead of an infix.** Class names follow the Tailwind-style `breakpoint:class` pattern (e.g., `md:d-none` instead of `d-md-none`). In HTML, use the unescaped colon: `class="md:d-none"`. This applies to utilities, grid, and all responsive components.
+- **Responsive and state classes now use a prefix instead of an infix or suffix.** Class names follow the Tailwind-style `prefix:class` pattern (e.g., `md:d-none` instead of `d-md-none`, `hover:opacity-50` instead of `opacity-50-hover`). In HTML, use the unescaped colon: `class="md:d-none"`. This applies to utilities, grid, pseudo-state variants, and all responsive components.
 
 <BsTable>
 | Category | Before (v5) | After (v6) |
 |---|---|---|
 | Utilities | `.d-md-none`, `.p-lg-3` | `.md:d-none`, `.lg:p-3` |
+| State variants | `.opacity-50-hover:hover` | `.hover\:opacity-50:hover` |
 | Grid columns | `.col-md-6` | `.md:col-6` |
 | Row columns | `.row-cols-md-3` | `.md:row-cols-3` |
 | Offsets | `.offset-md-2` | `.md:offset-2` |
@@ -323,6 +324,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Added `.grid-cols-*` utilities for `grid-template-columns` (1–4 and 6 column layouts), `.grid-cols-fill` for spanning all columns, and `.grid-auto-flow` utility.
 - **Container query utilities.** New `.contains-inline` and `.contains-size` utilities for `container-type`.
 - Ratio helpers are now powered by the utility API and use simplified values without `calc()`.
+- **State variants now use prefix syntax.** Pseudo-state utility classes like hover and focus variants now use a `state:class` prefix pattern (e.g., `hover:opacity-50` instead of `opacity-50-hover`), matching the responsive prefix convention.
+- **Utility API cleanup.** Removed `css-var`, `css-variable-name`, and `local-vars` options from the utility API. Use the `property` map approach for CSS custom properties and `variables` for static CSS custom properties within utility classes.
 
 ### New components and plugins
 

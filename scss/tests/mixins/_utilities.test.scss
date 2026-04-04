@@ -177,29 +177,41 @@ $true-terminal-output: false;
       }
     }
 
-    // @include describe("state") {
-    //   @include it("Generates selectors for each states") {
-    //     @include test-generate-utility(
-    //       (
-    //         property: padding,
-    //         values: 1rem,
-    //         state: hover focus,
-    //       )
-    //     ) {
-    //       .padding-1rem {
-    //         padding: 1rem;
-    //       }
+    @include describe("state") {
+      @include it("generates prefix-style selectors for each state") {
+        @include test-generate-utility(
+          (
+            property: padding,
+            values: (small: .5rem, large: 2rem),
+            state: hover focus,
+          )
+        ) {
+          .padding-small {
+            padding: .5rem;
+          }
 
-    //       .padding-1rem-hover:hover {
-    //         padding: 1rem;
-    //       }
+          .hover\:padding-small:hover {
+            padding: .5rem;
+          }
 
-    //       .padding-1rem-focus:focus {
-    //         padding: 1rem;
-    //       }
-    //     }
-    //   }
-    // }
+          .focus\:padding-small:focus {
+            padding: .5rem;
+          }
+
+          .padding-large {
+            padding: 2rem;
+          }
+
+          .hover\:padding-large:hover {
+            padding: 2rem;
+          }
+
+          .focus\:padding-large:focus {
+            padding: 2rem;
+          }
+        }
+      }
+    }
 
     // @include describe("css-var"){
     //   @include it("sets a CSS variable instead of the property") {

@@ -174,15 +174,21 @@
       }
     }
 
-    $selector: "";
+    // Build the class name fragment (without prefix or dot) for reuse in state variants
+    $className: "";
     @if $selectorType == "class" {
       @if $customClass != "" {
-        $selector: ".#{$prefix + $customClass + $customClassModifier}";
+        $className: $customClass + $customClassModifier;
       } @else if $selectorClass != null and $selectorClass != "" {
-        $selector: ".#{$prefix + $selectorClass + $customClassModifier}";
+        $className: $selectorClass + $customClassModifier;
       } @else {
-        $selector: ".#{$prefix + $customClassModifier}";
+        $className: $customClassModifier;
       }
+    }
+
+    $selector: "";
+    @if $selectorType == "class" {
+      $selector: ".#{$prefix + $className}";
     } @else if $selectorType == "attr-starts" {
       $selector: "[class^=\"#{$selectorClass}\"]";
     } @else if $selectorType == "attr-includes" {
@@ -226,10 +232,10 @@
       @include generate-properties($utility, $propertyMap, $properties, $value);
     }
 
-    // Generate state variants
+    // Generate state variants (e.g., hover:link-10 instead of link-10-hover)
     @if $state != () {
       @each $state-variant in $state {
-        $state-selector: "#{$selector}-#{$state-variant}:#{$state-variant}";
+        $state-selector: ".#{$prefix}#{$state-variant}\\:#{$className}:#{$state-variant}";
         @if $child-sel {
           $state-selector: ":where(#{$state-selector} #{$child-sel})";
         }

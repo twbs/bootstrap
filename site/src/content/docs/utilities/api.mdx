@@ -5,7 +5,7 @@ aliases: "/docs/[[config:docs_version]]/utilities/"
 toc: true
 ---
 
-Bootstrap utilities are generated with our utility API and can be used to modify or extend our default set of utility classes via Sass. Our utility API is based on a series of Sass maps and functions for generating families of classes with various options. If you’re unfamiliar with Sass maps, read up on the [official Sass docs](https://sass-lang.com/documentation/values/maps/) to get started.
+Bootstrap utilities are generated with our utility API and can be used to modify or extend our default set of utility classes via Sass. Our utility API is based on a series of Sass maps and functions for generating families of classes with various options. If you're unfamiliar with Sass maps, read up on the [official Sass docs](https://sass-lang.com/documentation/values/maps/) to get started.
 
 The `$utilities` map contains all our utilities and is later merged with your custom `$utilities` map, if present. The utility map contains a keyed list of utility groups which accept the following options:
 
@@ -17,10 +17,8 @@ The `$utilities` map contains all our utilities and is later merged with your cu
 | [`selector`](#selector) | Optional | `class` | Type of CSS selector in the generated CSS ruleset. Can be `class`, `attr-starts`, or `attr-includes`. |
 | [`child-selector`](#child-selector) | Optional | null | A child/descendant selector appended to the utility's selector, wrapped in `:where()` for zero specificity. Use to target children instead of the element itself. |
 | [`class`](#class) | Optional | null | Name of the generated class. If not provided and `property` is an array of strings, `class` will default to the first element of the `property` array. If not provided and `property` is a string, the `values` keys are used for the `class` names. |
-| [`css-var`](#css-variable-utilities) | Optional | `false` | Boolean to generate CSS variables instead of CSS rules. |
-| [`css-variable-name`](#css-variable-utilities) | Optional | null | Custom un-prefixed name for the CSS variable inside the ruleset. |
-| [`local-vars`](#local-css-variables) | Optional | null | Map of local CSS variables to generate in addition to the CSS rules. |
-| [`state`](#states) | Optional | null | List of pseudo-class variants (e.g., `:hover` or `:focus`) to generate. |
+| [`variables`](#variables) | Optional | null | List or map of CSS custom properties to generate within each utility class. When a list, each variable receives the utility value. When a map, the provided static values are used. |
+| [`state`](#states) | Optional | null | List of pseudo-class variants (e.g., `:hover` or `:focus`) to generate as prefix-style classes. |
 | [`responsive`](#responsive) | Optional | `false` | Boolean indicating if responsive classes should be generated. |
 | [`important`](#importance) | Optional | `false` | Boolean indicating if `!important` should be added to the utility's CSS rules. |
 | [`print`](#print) | Optional | `false` | Boolean indicating if print classes need to be generated. |
@@ -59,7 +57,7 @@ Which outputs the following:
 
 <div class="badge fs-6 bg-accent mb-3">Required</div>
 
-The `property` key must be set for any utility, and it must contain a valid CSS property. This property is used in the generated utility’s ruleset. When the `class` key is omitted, it also serves as the default class name. Consider the `text-decoration` utility:
+The `property` key must be set for any utility, and it must contain a valid CSS property. This property is used in the generated utility's ruleset. When the `class` key is omitted, it also serves as the default class name. Consider the `text-decoration` utility:
 
 ```scss
 $utilities: (
@@ -281,23 +279,22 @@ Output:
 .invisible { visibility: hidden; }
 ```
 
-### CSS variable utilities
+### Variables
 
-Set the `css-var` boolean option to `true` and the API will generate local CSS variables for the given selector instead of the usual `property: value` rules. Add an optional `css-variable-name` to set a different CSS variable name than the class name.
+Use the `variables` option to generate CSS custom properties within each utility class's ruleset. The value can be either a **list** or a **map**.
 
-Consider our `.text-opacity-*` utilities. If we add the `css-variable-name` option, we'll get a custom output.
+When `variables` is a **list**, each variable receives the current utility value:
 
 ```scss
 $utilities: (
-  "text-opacity": (
-    css-var: true,
-    css-variable-name: text-alpha,
-    class: text-opacity,
+  "link-opacity": (
+    property: color,
+    class: link,
+    variables: (link-color),
     values: (
-      25: .25,
-      50: .5,
-      75: .75,
-      100: 1
+      10: 10%,
+      50: 50%,
+      100: 100%,
     )
   ),
 );
@@ -306,30 +303,22 @@ $utilities: (
 Output:
 
 ```css
-.text-opacity-25 { --bs-text-alpha: .25; }
-.text-opacity-50 { --bs-text-alpha: .5; }
-.text-opacity-75 { --bs-text-alpha: .75; }
-.text-opacity-100 { --bs-text-alpha: 1; }
+.link-10 { --bs-link-color: 10%; color: 10%; }
+.link-50 { --bs-link-color: 50%; color: 50%; }
+.link-100 { --bs-link-color: 100%; color: 100%; }
 ```
 
-### Local CSS variables
-
-Use the `local-vars` option to specify a Sass map that will generate local CSS variables within the utility class’s ruleset. Please note that it may require additional work to consume those local CSS variables in the generated CSS rules. For example, consider our `.bg-*` utilities:
+When `variables` is a **map**, the provided static values are used on every generated class:
 
 ```scss
 $utilities: (
-  "background-color": (
-    property: background-color,
-    class: bg,
-    local-vars: (
-      "bg-opacity": 1
+  "link-underline": (
+    property: text-decoration-color,
+    class: link-underline,
+    variables: (
+      "link-underline-opacity": 1
     ),
-    values: map-merge(
-      $utilities-bg-colors,
-      (
-        "transparent": transparent
-      )
-    )
+    values: (...)
   )
 );
 ```
@@ -337,15 +326,15 @@ $utilities: (
 Output:
 
 ```css
-.bg-primary {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity));
+.link-underline-primary {
+  --bs-link-underline-opacity: 1;
+  text-decoration-color: ...;
 }
 ```
 
 ### States
 
-Use the `state` option to generate pseudo-class variations. Example pseudo-classes are `:hover` and `:focus`. When a list of states are provided, classnames are created for that pseudo-class. For example, to change opacity on hover, add `state: hover` and you’ll get `.opacity-hover:hover` in your compiled CSS.
+Use the `state` option to generate pseudo-class variations. Example pseudo-classes are `:hover` and `:focus`. When a list of states are provided, classnames are created for that pseudo-class with a prefix-style syntax matching the responsive prefix pattern. For example, to change opacity on hover, add `state: hover` and you'll get `.hover\:opacity:hover` in your compiled CSS.
 
 Need multiple pseudo-classes? Use a space-separated list of states: `state: hover focus`.
 
@@ -369,16 +358,16 @@ $utilities: (
 Output:
 
 ```css
-.opacity-0-hover:hover { opacity: 0; }
-.opacity-25-hover:hover { opacity: .25; }
-.opacity-50-hover:hover { opacity: .5; }
-.opacity-75-hover:hover { opacity: .75; }
-.opacity-100-hover:hover { opacity: 1; }
+.hover\:opacity-0:hover { opacity: 0; }
+.hover\:opacity-25:hover { opacity: .25; }
+.hover\:opacity-50:hover { opacity: .5; }
+.hover\:opacity-75:hover { opacity: .75; }
+.hover\:opacity-100:hover { opacity: 1; }
 ```
 
 ### Responsive
 
-Add the `responsive` boolean to generate responsive utilities (e.g., `.opacity-md-25`) across [all breakpoints]([[docsref:/layout/breakpoints]]).
+Add the `responsive` boolean to generate responsive utilities (e.g., `.md\:opacity-25`) across [all breakpoints]([[docsref:/layout/breakpoints]]).
 
 ```scss
 $utilities: (
@@ -406,43 +395,43 @@ Output:
 .opacity-100 { opacity: 1; }
 
 @media (min-width: 576px) {
-  .opacity-sm-0 { opacity: 0; }
-  .opacity-sm-25 { opacity: .25; }
-  .opacity-sm-50 { opacity: .5; }
-  .opacity-sm-75 { opacity: .75; }
-  .opacity-sm-100 { opacity: 1; }
+  .sm\:opacity-0 { opacity: 0; }
+  .sm\:opacity-25 { opacity: .25; }
+  .sm\:opacity-50 { opacity: .5; }
+  .sm\:opacity-75 { opacity: .75; }
+  .sm\:opacity-100 { opacity: 1; }
 }
 
 @media (min-width: 768px) {
-  .opacity-md-0 { opacity: 0; }
-  .opacity-md-25 { opacity: .25; }
-  .opacity-md-50 { opacity: .5; }
-  .opacity-md-75 { opacity: .75; }
-  .opacity-md-100 { opacity: 1; }
+  .md\:opacity-0 { opacity: 0; }
+  .md\:opacity-25 { opacity: .25; }
+  .md\:opacity-50 { opacity: .5; }
+  .md\:opacity-75 { opacity: .75; }
+  .md\:opacity-100 { opacity: 1; }
 }
 
 @media (min-width: 1024px) {
-  .opacity-lg-0 { opacity: 0; }
-  .opacity-lg-25 { opacity: .25; }
-  .opacity-lg-50 { opacity: .5; }
-  .opacity-lg-75 { opacity: .75; }
-  .opacity-lg-100 { opacity: 1; }
+  .lg\:opacity-0 { opacity: 0; }
+  .lg\:opacity-25 { opacity: .25; }
+  .lg\:opacity-50 { opacity: .5; }
+  .lg\:opacity-75 { opacity: .75; }
+  .lg\:opacity-100 { opacity: 1; }
 }
 
 @media (min-width: 1280px) {
-  .opacity-xl-0 { opacity: 0; }
-  .opacity-xl-25 { opacity: .25; }
-  .opacity-xl-50 { opacity: .5; }
-  .opacity-xl-75 { opacity: .75; }
-  .opacity-xl-100 { opacity: 1; }
+  .xl\:opacity-0 { opacity: 0; }
+  .xl\:opacity-25 { opacity: .25; }
+  .xl\:opacity-50 { opacity: .5; }
+  .xl\:opacity-75 { opacity: .75; }
+  .xl\:opacity-100 { opacity: 1; }
 }
 
 @media (min-width: 1536px) {
-  .opacity-2xl-0 { opacity: 0; }
-  .opacity-2xl-25 { opacity: .25; }
-  .opacity-2xl-50 { opacity: .5; }
-  .opacity-2xl-75 { opacity: .75; }
-  .opacity-2xl-100 { opacity: 1; }
+  .\32 xl\:opacity-0 { opacity: 0; }
+  .\32 xl\:opacity-25 { opacity: .25; }
+  .\32 xl\:opacity-50 { opacity: .5; }
+  .\32 xl\:opacity-75 { opacity: .75; }
+  .\32 xl\:opacity-100 { opacity: 1; }
 }
 ```
 
@@ -476,11 +465,11 @@ Output:
 .opacity-100 { opacity: 1; }
 
 @media print {
-  .opacity-print-0 { opacity: 0; }
-  .opacity-print-25 { opacity: .25; }
-  .opacity-print-50 { opacity: .5; }
-  .opacity-print-75 { opacity: .75; }
-  .opacity-print-100 { opacity: 1; }
+  .print\:opacity-0 { opacity: 0; }
+  .print\:opacity-25 { opacity: .25; }
+  .print\:opacity-50 { opacity: .5; }
+  .print\:opacity-75 { opacity: .75; }
+  .print\:opacity-100 { opacity: 1; }
 }
 ```
 
@@ -514,11 +503,9 @@ This will generate utilities with `!important`:
 .opacity-100 { opacity: 1 !important; }
 ```
 
-Some utilities like `display`, `position`, and `visibility` have `important: true` set by default as they commonly need to override component styles.
-
 ## Using the API
 
-Now that you’re familiar with how the utilities API works, learn how to add your own custom classes and modify our default utilities.
+Now that you're familiar with how the utilities API works, learn how to add your own custom classes and modify our default utilities.
 
 ### Override utilities
 
@@ -536,17 +523,12 @@ $utilities: (
 
 ### Add utilities
 
-New utilities can be added to the default `$utilities` map with a `map-merge`. Make sure our required Sass files and `_utilities.scss` are imported first, then use the `map-merge` to add your additional utilities. For example, here’s how to add a responsive `cursor` utility with three values.
+New utilities can be added to the default `$utilities` map with a `map.merge`. Make sure our required Sass files and `_utilities.scss` are loaded first, then use `map.merge` to add your additional utilities. For example, here's how to add a responsive `cursor` utility with three values.
 
 ```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@use "bootstrap/scss/bootstrap" as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   $utilities,
   (
     "cursor": (
@@ -558,29 +540,24 @@ $utilities: map-merge(
   )
 );
 
-@import "bootstrap/scss/utilities/api";
+@use "bootstrap/scss/utilities/api";
 ```
 
 ### Modify utilities
 
-Modify existing utilities in the default `$utilities` map with `map-get` and `map-merge` functions. In the example below, we’re adding an additional value to the `width` utilities. Start with an initial `map-merge` and then specify which utility you want to modify. From there, fetch the nested `"width"` map with `map-get` to access and modify the utility’s options and values.
+Modify existing utilities in the default `$utilities` map with `map.get` and `map.merge` functions. In the example below, we're adding an additional value to the `width` utilities. Start with an initial `map.merge` and then specify which utility you want to modify. From there, fetch the nested `"width"` map with `map.get` to access and modify the utility's options and values.
 
 ```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@use "bootstrap/scss/bootstrap" as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   $utilities,
   (
-    "width": map-merge(
-      map-get($utilities, "width"),
+    "width": map.merge(
+      map.get($utilities, "width"),
       (
-        values: map-merge(
-          map-get(map-get($utilities, "width"), "values"),
+        values: map.merge(
+          map.get(map.get($utilities, "width"), "values"),
           (10: 10%),
         ),
       ),
@@ -588,7 +565,7 @@ $utilities: map-merge(
   )
 );
 
-@import "bootstrap/scss/utilities/api";
+@use "bootstrap/scss/utilities/api";
 ```
 
 #### Enable responsive
@@ -596,24 +573,19 @@ $utilities: map-merge(
 You can enable responsive classes for an existing set of utilities that are not currently responsive by default. For example, to make the `border` classes responsive:
 
 ```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@use "bootstrap/scss/bootstrap" as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   $utilities,
   (
-    "border": map-merge(
-      map-get($utilities, "border"),
+    "border": map.merge(
+      map.get($utilities, "border"),
       ( responsive: true ),
     ),
   )
 );
 
-@import "bootstrap/scss/utilities/api";
+@use "bootstrap/scss/utilities/api";
 ```
 
 This will now generate responsive variations of `.border` and `.border-0` for each breakpoint. Your generated CSS will look like this:
@@ -653,84 +625,63 @@ This will now generate responsive variations of `.border` and `.border-0` for ea
 Missing v4 utilities, or used to another naming convention? The utilities API can be used to override the resulting `class` of a given utility—for example, to rename `.ms-*` utilities to oldish `.ml-*`:
 
 ```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@use "bootstrap/scss/bootstrap" as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   $utilities,
   (
-    "margin-start": map-merge(
-      map-get($utilities, "margin-start"),
+    "margin-start": map.merge(
+      map.get($utilities, "margin-start"),
       ( class: ml ),
     ),
   )
 );
 
-@import "bootstrap/scss/utilities/api";
+@use "bootstrap/scss/utilities/api";
 ```
 
 ### Remove utilities
 
-Remove any of the default utilities with the [`map-remove()` Sass function](https://sass-lang.com/documentation/modules/map/#remove).
+Remove any of the default utilities with the [`map.remove()` Sass function](https://sass-lang.com/documentation/modules/map/#remove).
 
 ```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@use "bootstrap/scss/bootstrap" as *;
 
-// Remove multiple utilities with a comma-separated list
-$utilities: map-remove($utilities, "width", "float");
+$utilities: map.remove($utilities, "width", "float");
 
-@import "bootstrap/scss/utilities/api";
+@use "bootstrap/scss/utilities/api";
 ```
 
-You can also use the [`map-merge()` Sass function](https://sass-lang.com/documentation/modules/map/#merge) and set the group key to `null` to remove the utility.
+You can also use the [`map.merge()` Sass function](https://sass-lang.com/documentation/modules/map/#merge) and set the group key to `null` to remove the utility.
 
 ```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@use "bootstrap/scss/bootstrap" as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   $utilities,
   (
     "width": null
   )
 );
 
-@import "bootstrap/scss/utilities/api";
+@use "bootstrap/scss/utilities/api";
 ```
 
 ### Add, remove, modify
 
-You can add, remove, and modify many utilities all at once with the [`map-merge()` Sass function](https://sass-lang.com/documentation/modules/map/#merge). Here’s how you can combine the previous examples into one larger map.
+You can add, remove, and modify many utilities all at once with the [`map.merge()` Sass function](https://sass-lang.com/documentation/modules/map/#merge). Here's how you can combine the previous examples into one larger map.
 
 ```scss
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@use "bootstrap/scss/bootstrap" as *;
 
-$utilities: map-merge(
+$utilities: map.merge(
   $utilities,
   (
     // Remove the `width` utility
     "width": null,
     // Make an existing utility responsive
-    "border": map-merge(
-      map-get($utilities, "border"),
+    "border": map.merge(
+      map.get($utilities, "border"),
       ( responsive: true ),
     ),
     // Add new utilities
@@ -743,5 +694,5 @@ $utilities: map-merge(
   )
 );
 
-@import "bootstrap/scss/utilities/api";
+@use "bootstrap/scss/utilities/api";
 ```
