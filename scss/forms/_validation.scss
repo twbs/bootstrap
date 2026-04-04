@@ -34,7 +34,7 @@
   $color,
   $icon,
   $tooltip-color: color-contrast($color),
-  $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
+  $tooltip-bg-color: color-mix(in oklch, #{$color #form-feedback-tooltip-opacity}, transparent),
   $focus-ring-color: null, // mdo-do: fix
   $border-color: $color
 ) {

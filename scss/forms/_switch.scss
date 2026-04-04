@@ -1,4 +1,3 @@
-@use "../colors" as *;
 @use "../functions" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/tokens" as *;
@@ -46,7 +45,7 @@ $switch-tokens: defaults(
     border: var(--switch-border-width) solid var(--switch-border-color);
     // stylelint-disable-next-line property-disallowed-list
     border-radius: 10rem;
-    box-shadow: inset 0 1px 2px rgba($black, .05);
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / .05);
     // stylelint-disable-next-line property-disallowed-list
     transition: .15s ease-in-out;
     transition-property: padding-inline-start, background-color;
@@ -59,7 +58,7 @@ $switch-tokens: defaults(
       background-color: var(--theme-contrast, var(--switch-indicator-bg));
       // stylelint-disable-next-line property-disallowed-list
       border-radius: 50%;
-      box-shadow: 0 1px 2px rgba($black, .1);
+      box-shadow: 0 1px 2px rgb(0 0 0 / .1);
     }
 
     input {

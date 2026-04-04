@@ -92,13 +92,13 @@ $enable-shadows: true !global;
     @include assert() {
       @include output() {
         .test {
-          @include box-shadow(0 0 10px rgba(0, 0, 0, .5));
+          @include box-shadow(0 0 10px rgb(0 0 0 / .5));
         }
       }
 
       @include expect() {
         .test {
-          box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+          box-shadow: 0 0 10px rgb(0 0 0 / .5);
         }
       }
     }
@@ -108,13 +108,13 @@ $enable-shadows: true !global;
     @include assert() {
       @include output() {
         .test {
-          @include box-shadow(0 0 10px rgba(0, 0, 0, .5), 0 0 20px rgba(0, 0, 0, .3));
+          @include box-shadow(0 0 10px rgb(0 0 0 / .5), 0 0 20px rgb(0 0 0 / .3));
         }
       }
 
       @include expect() {
         .test {
-          box-shadow: 0 0 10px rgba(0, 0, 0, .5), 0 0 20px rgba(0, 0, 0, .3);
+          box-shadow: 0 0 10px rgb(0 0 0 / .5), 0 0 20px rgb(0 0 0 / .3);
         }
       }
     }
@@ -124,13 +124,13 @@ $enable-shadows: true !global;
     @include assert() {
       @include output() {
         .test {
-          @include box-shadow(null, 0 0 10px rgba(0, 0, 0, .5), null);
+          @include box-shadow(null, 0 0 10px rgb(0 0 0 / .5), null);
         }
       }
 
       @include expect() {
         .test {
-          box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+          box-shadow: 0 0 10px rgb(0 0 0 / .5);
         }
       }
     }
@@ -140,7 +140,7 @@ $enable-shadows: true !global;
     @include assert() {
       @include output() {
         .test {
-          @include box-shadow(none, 0 0 10px rgba(0, 0, 0, .5));
+          @include box-shadow(none, 0 0 10px rgb(0 0 0 / .5));
         }
       }
 
@@ -173,7 +173,7 @@ $enable-shadows: true !global;
     @include assert() {
       @include output() {
         .test {
-          @include box-shadow(0 0 10px rgba(0, 0, 0, .5));
+          @include box-shadow(0 0 10px rgb(0 0 0 / .5));
         }
       }
 
