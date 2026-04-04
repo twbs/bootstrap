@@ -170,12 +170,12 @@ $carousel-dark-tokens: defaults(
   .carousel-control-prev {
     inset-inline-start: 0;
     // stylelint-disable-next-line scss/at-function-named-arguments, @stylistic/function-whitespace-after
-    background-image: if(sass($enable-gradients): linear-gradient(90deg, rgba($black, .25), rgba($black, .001)); else: null);
+    background-image: if(sass($enable-gradients): linear-gradient(90deg, rgb(0 0 0 / .25), rgb(0 0 0 / .001)); else: null);
   }
   .carousel-control-next {
     inset-inline-end: 0;
     // stylelint-disable-next-line scss/at-function-named-arguments, @stylistic/function-whitespace-after
-    background-image: if(sass($enable-gradients): linear-gradient(270deg, rgba($black, .25), rgba($black, .001)); else: null);
+    background-image: if(sass($enable-gradients): linear-gradient(270deg, rgb(0 0 0 / .25), rgb(0 0 0 / .001)); else: null);
   }
 
   // Icons for within
