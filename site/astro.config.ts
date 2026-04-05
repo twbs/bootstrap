@@ -55,9 +55,7 @@ export default defineConfig({
 
             const allowedClasses = new Set(['shiki', 'shiki-themes'])
             const classes = (node.properties?.className as string[]) || []
-            node.properties.className = classes.filter(
-              (cls) => typeof cls !== 'string' || allowedClasses.has(cls)
-            )
+            node.properties.className = classes.filter((cls) => typeof cls !== 'string' || allowedClasses.has(cls))
           }
         }
       ]
