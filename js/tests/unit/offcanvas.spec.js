@@ -158,6 +158,31 @@ describe('Offcanvas', () => {
       })
     })
 
+    it('should hide on Esc after clicking static backdrop', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div class="offcanvas"></div>'
+
+        const offCanvasEl = fixtureEl.querySelector('div')
+        const offCanvas = new Offcanvas(offCanvasEl, { backdrop: 'static' })
+
+        const clickEvent = new Event('mousedown', { bubbles: true, cancelable: true })
+        const keyDownEsc = createEvent('keydown')
+        keyDownEsc.key = 'Escape'
+
+        const spyHide = spyOn(offCanvas, 'hide').and.callThrough()
+
+        offCanvasEl.addEventListener('shown.bs.offcanvas', () => {
+          offCanvas._backdrop._getElement().dispatchEvent(clickEvent)
+
+          offCanvasEl.dispatchEvent(keyDownEsc)
+          expect(spyHide).toHaveBeenCalled()
+          resolve()
+        })
+
+        offCanvas.show()
+      })
+    })
+
     it('should call `hide` on resize, if element\'s position is not fixed any more', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div class="offcanvas-lg"></div>'

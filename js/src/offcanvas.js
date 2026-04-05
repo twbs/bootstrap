@@ -168,6 +168,7 @@ class Offcanvas extends BaseComponent {
     const clickCallback = () => {
       if (this._config.backdrop === 'static') {
         EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
+        this._element.focus()
         return
       }
 
