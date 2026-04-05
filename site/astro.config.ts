@@ -39,8 +39,8 @@ export default defineConfig({
     syntaxHighlight: 'shiki',
     shikiConfig: {
       themes: {
-        light: bootstrapLight,
-        dark: bootstrapDark
+        light: { ...bootstrapLight, name: '' },
+        dark: { ...bootstrapDark, name: '' }
       },
       transformers: [
         transformerNotationDiff(),
@@ -48,7 +48,6 @@ export default defineConfig({
         {
           name: 'add-language-attribute',
           pre(node) {
-            // Add data-language attribute to pre tag so Code component can access it
             const lang = this.options.lang
             if (lang) {
               node.properties['dataLanguage'] = lang

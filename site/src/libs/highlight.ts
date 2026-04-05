@@ -55,8 +55,8 @@ export async function highlightCode(
   const highlighted = await codeToHtml(code, {
     lang,
     themes: {
-      light: bootstrapLight as any,
-      dark: bootstrapDark as any
+      light: { ...(bootstrapLight as any), name: '' },
+      dark: { ...(bootstrapDark as any), name: '' }
     },
     transformers
   })
