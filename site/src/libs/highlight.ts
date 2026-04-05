@@ -2,16 +2,15 @@ import { codeToHtml, type ShikiTransformer } from 'shiki'
 import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
 import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
 
+const ALLOWED_PRE_CLASSES = new Set(['astro-code', 'astro-code-themes'])
+
 const classTransformer: ShikiTransformer = {
   name: 'class-name-transformer',
   pre(node) {
     const existingClasses = (node.properties?.className as string[]) || []
-    node.properties.className = existingClasses.map((cls) => {
-      if (typeof cls === 'string') {
-        return cls.replace(/shiki/g, 'astro-code')
-      }
-      return cls
-    })
+    node.properties.className = existingClasses
+      .map((cls) => (typeof cls === 'string' ? cls.replace(/shiki/g, 'astro-code') : cls))
+      .filter((cls) => typeof cls !== 'string' || ALLOWED_PRE_CLASSES.has(cls))
   }
 }
 
@@ -37,7 +36,7 @@ function replaceShikiClasses(html: string): string {
   return html
     .replace(/class=(["'])shiki(\s+)/g, 'class=$1astro-code$2')
     .replace(/class=(["'])shiki(["'])/g, 'class=$1astro-code$2')
-    .replace(/shiki-themes/g, 'astro-code-themes')
+    .replace(/shiki-themes[^"']*/g, 'astro-code-themes')
 }
 
 export async function highlightCode(

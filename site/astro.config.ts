@@ -48,11 +48,16 @@ export default defineConfig({
         {
           name: 'add-language-attribute',
           pre(node) {
-            // Add data-language attribute to pre tag so Code component can access it
             const lang = this.options.lang
             if (lang) {
               node.properties['dataLanguage'] = lang
             }
+
+            const allowedClasses = new Set(['shiki', 'shiki-themes'])
+            const classes = (node.properties?.className as string[]) || []
+            node.properties.className = classes.filter(
+              (cls) => typeof cls !== 'string' || allowedClasses.has(cls)
+            )
           }
         }
       ]
