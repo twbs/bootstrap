@@ -64,6 +64,32 @@
   > .list-group + .card-footer {
     border-top: 0;
   }
+
+  // Tables directly inside a card need their corner cells to carry the card's
+  // inner border-radius so the solid `--bs-table-bg` doesn't paint over the
+  // card's rounded corners (regression introduced in v5.3).
+  // stylelint-disable-next-line selector-max-universal
+  > .table {
+    &:first-child {
+      // Top-left and top-right cells of the first row
+      > :first-child > tr:first-child > :first-child {
+        @include border-top-start-radius(var(--#{$prefix}card-inner-border-radius));
+      }
+      > :first-child > tr:first-child > :last-child {
+        @include border-top-end-radius(var(--#{$prefix}card-inner-border-radius));
+      }
+    }
+
+    &:last-child {
+      // Bottom-left and bottom-right cells of the last row
+      > :last-child > tr:last-child > :first-child {
+        @include border-bottom-start-radius(var(--#{$prefix}card-inner-border-radius));
+      }
+      > :last-child > tr:last-child > :last-child {
+        @include border-bottom-end-radius(var(--#{$prefix}card-inner-border-radius));
+      }
+    }
+  }
 }
 
 .card-body {
