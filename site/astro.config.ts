@@ -39,8 +39,8 @@ export default defineConfig({
     syntaxHighlight: 'shiki',
     shikiConfig: {
       themes: {
-        light: bootstrapLight,
-        dark: bootstrapDark
+        light: { ...bootstrapLight, name: '' },
+        dark: { ...bootstrapDark, name: '' }
       },
       transformers: [
         transformerNotationDiff(),
@@ -52,10 +52,6 @@ export default defineConfig({
             if (lang) {
               node.properties['dataLanguage'] = lang
             }
-
-            const allowedClasses = new Set(['shiki', 'shiki-themes'])
-            const classes = (node.properties?.className as string[]) || []
-            node.properties.className = classes.filter((cls) => typeof cls !== 'string' || allowedClasses.has(cls))
           }
         }
       ]
