@@ -1346,7 +1346,15 @@
         "z-0",
         "z-1",
         "z-2",
-        "z-3"
+        "z-3",
+        "z-menu",
+        "z-sticky",
+        "z-fixed",
+        "z-drawer",
+        "z-dialog",
+        "z-popover",
+        "z-tooltip",
+        "z-toast"
       ]
     }
   }
