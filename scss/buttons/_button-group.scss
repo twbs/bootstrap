@@ -33,14 +33,36 @@
     > [class*="btn-"] + [class*="btn-"] {
       &::before {
         position: absolute;
-        top: 25%;
-        bottom: 25%;
-        left: calc(var(--btn-border-width) * -1);
+        // top: 25%;
+        // bottom: 25%;
+        // left: calc(var(--btn-border-width) * -1);
         z-index: 3;
-        width: var(--btn-border-width);
+        // width: var(--btn-border-width);
         content: "";
         background-color: var(--btn-color);
         opacity: .25;
+      }
+    }
+  }
+
+  .btn-group:where(.btn-group-divider) {
+    > [class*="btn-"] + [class*="btn-"] {
+      &::before {
+        top: 25%;
+        bottom: 25%;
+        left: calc(var(--btn-border-width) * -1);
+        width: var(--btn-border-width);
+      }
+    }
+  }
+
+  .btn-group-vertical:where(.btn-group-divider) {
+    > [class*="btn-"] + [class*="btn-"] {
+      &::before {
+        top: calc(var(--btn-border-width) * -1);
+        right: var(--btn-padding-x);
+        left: var(--btn-padding-x);
+        height: var(--btn-border-width);
       }
     }
   }
