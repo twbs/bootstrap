@@ -188,7 +188,7 @@
     "remark-html": "^16.0.1",
     "rollup": "^4.54.0",
     "rollup-plugin-istanbul": "^5.0.0",
-    "sass": "^1.98.0",
+    "sass": "^1.99.0",
     "sass-true": "^10.1.0",
     "shelljs": "^0.10.0",
     "stylelint": "^16.26.1",
