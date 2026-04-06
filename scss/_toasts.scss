@@ -10,7 +10,7 @@ $toast-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $toast-tokens: defaults(
   (
-    --toast-zindex: #{$zindex-toast},
+    --toast-zindex: var(--z-toast),
     --toast-padding-x: 1rem,
     --toast-padding-y: .75rem,
     --toast-spacing: #{$container-padding-x},
@@ -59,7 +59,7 @@ $toast-tokens: defaults(
   }
 
   .toast-container {
-    --toast-zindex: #{$zindex-toast};
+    --toast-zindex: var(--z-toast);
 
     position: absolute;
     z-index: var(--toast-zindex);

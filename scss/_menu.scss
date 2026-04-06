@@ -11,7 +11,7 @@ $menu-tokens: () !default;
 // scss-docs-start menu-tokens
 $menu-tokens: defaults(
   (
-    --menu-zindex: #{$zindex-menu},
+    --menu-zindex: var(--z-menu),
     --menu-gap: .125rem,
     --menu-min-width: 10rem,
     --menu-padding-x: .25rem,
