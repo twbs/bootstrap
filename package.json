@@ -146,7 +146,7 @@
     "bundlewatch": "^0.4.1",
     "clipboard": "^2.0.11",
     "cross-env": "^10.1.0",
-    "cspell": "^9.7.0",
+    "cspell": "^10.0.0",
     "eslint": "^10.1.0",
     "eslint-config-xo": "^0.50.0",
     "eslint-plugin-html": "^8.1.4",
