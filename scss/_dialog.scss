@@ -160,7 +160,7 @@ $dialog-sizes: defaults(
       position: fixed;
       inset-block-start: 50%;
       inset-inline-start: 50%;
-      z-index: $zindex-dialog;
+      z-index: var(--z-dialog);
       margin-inline: 0;
       transform: translate(-50%, -50%);
     }

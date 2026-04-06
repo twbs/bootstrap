@@ -10,15 +10,34 @@ utility:
 
 Use `z-index` utilities to stack elements on top of one another. Requires a `position` value other than `static`, which can be set with custom styles or using our [position utilities]([[docsref:/utilities/position/]]).
 
-<Callout>
+### Low-level stack
+
 We call these “low-level” `z-index` utilities because of their default values of `-1` through `3`, which we use for the layout of overlapping components. High-level `z-index` values are used for overlay components like modals and tooltips.
-</Callout>
 
 <Example class="bd-example-zindex-levels position-relative" code={`<div class="z-3 position-absolute p-5 rounded-3"><span>z-3</span></div>
 <div class="z-2 position-absolute p-5 rounded-3"><span>z-2</span></div>
 <div class="z-1 position-absolute p-5 rounded-3"><span>z-1</span></div>
 <div class="z-0 position-absolute p-5 rounded-3"><span>z-0</span></div>
 <div class="z-n1 position-absolute p-5 rounded-3"><span>z-n1</span></div>`} />
+
+### Component stack
+
+The component `z-index` utilities are used for overlay components like dialogs, popovers, and more. Classes are available for all of them, and their CSS variables are used in their respective components out of the box.
+
+<BsTable>
+| Class | Value | CSS variable |
+| --- | --- | --- |
+| `z-menu` | `1000` | `var(--z-menu)` |
+| `z-sticky` | `1010` | `var(--z-sticky)` |
+| `z-fixed` | `1020` | `var(--z-fixed)` |
+| `z-drawer` | `1030` | `var(--z-drawer)` |
+| `z-dialog` | `1040` | `var(--z-dialog)` |
+| `z-popover` | `1050` | `var(--z-popover)` |
+| `z-tooltip` | `1060` | `var(--z-tooltip)` |
+| `z-toast` | `1070` | `var(--z-toast)` |
+</BsTable>
+
+Read more about the component `z-index` values in the [`z-index` layout page]([[docsref:/layout/z-index]]).
 
 ## Overlays
 

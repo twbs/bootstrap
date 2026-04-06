@@ -15,7 +15,7 @@ $drawer-tokens: () !default;
 $drawer-tokens: defaults(
   (
     --drawer-inset: var(--spacer),
-    --drawer-zindex: #{$zindex-drawer},
+    --drawer-zindex: var(--z-drawer),
     --drawer-width: 400px,
     --drawer-height: 30vh,
     --drawer-padding-x: var(--spacer),

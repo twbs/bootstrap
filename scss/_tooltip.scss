@@ -10,7 +10,7 @@ $tooltip-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $tooltip-tokens: defaults(
   (
-    --tooltip-zindex: #{$zindex-tooltip},
+    --tooltip-zindex: var(--z-tooltip),
     --tooltip-max-width: 200px,
     --tooltip-padding-x: #{$spacer * .75},
     --tooltip-padding-y: #{$spacer * .375},

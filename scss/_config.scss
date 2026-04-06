@@ -314,24 +314,20 @@ $dt-font-weight:              $font-weight-bold !default;
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 
-// scss-docs-start zindex-stack
-$zindex-menu:                       1000 !default;
-$zindex-sticky:                     1020 !default;
-$zindex-fixed:                      1030 !default;
-// $zindex-drawer-backdrop:         1040 !default;
-$zindex-drawer:                  1045 !default;
-$zindex-dialog:                     1055 !default;
-$zindex-popover:                    1070 !default;
-$zindex-tooltip:                    1080 !default;
-$zindex-toast:                      1090 !default;
-// scss-docs-end zindex-stack
-
 // scss-docs-start zindex-levels-map
 $zindex-levels: (
   n1: -1,
   0: 0,
   1: 1,
   2: 2,
-  3: 3
+  3: 3,
+  menu: 1000,
+  sticky: 1010,
+  fixed: 1020,
+  drawer: 1030,
+  dialog: 1040,
+  popover: 1050,
+  tooltip: 1060,
+  toast: 1070,
 ) !default;
 // scss-docs-end zindex-levels-map

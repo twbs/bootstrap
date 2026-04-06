@@ -11,7 +11,7 @@ $popover-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $popover-tokens: defaults(
   (
-    --popover-zindex: #{$zindex-popover},
+    --popover-zindex: var(--z-popover),
     --popover-max-width: 280px,
     --popover-font-size: var(--font-size-sm),
     --popover-bg: var(--bg-body),
