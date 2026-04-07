@@ -41,7 +41,7 @@ jobs:
         run: npm run docs-html-validate
 
       - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@f62ba0c110a76effb2ee6022cc6ce4ab161085e3 # v2.4
+        uses: JustinBeckwith/linkinator-action@363572b2714d25a059fceb2fa332a98e7ea3baff # v2.4.1
         with:
           paths: _site
           recurse: true
