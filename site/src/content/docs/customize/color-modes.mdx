@@ -100,7 +100,7 @@ $color-mode-type: data;
 
 @include color-mode(dark) {
   .element {
-    color: var(--bs-primary-text-emphasis);
+    color: var(--bs-primary-fg-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
@@ -110,7 +110,7 @@ Outputs to:
 
 ```css
 [data-bs-theme=dark] .element {
-  color: var(--bs-primary-text-emphasis);
+  color: var(--bs-primary-fg-emphasis);
   background-color: var(--bs-primary-bg-subtle);
 }
 ```
@@ -122,7 +122,7 @@ $color-mode-type: media-query;
 
 @include color-mode(dark) {
   .element {
-    color: var(--bs-primary-text-emphasis);
+    color: var(--bs-primary-fg-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
@@ -133,7 +133,7 @@ Outputs to:
 ```css
 @media (prefers-color-scheme: dark) {
   .element {
-    color: var(--bs-primary-text-emphasis);
+    color: var(--bs-primary-fg-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
@@ -147,8 +147,7 @@ For example, you can create a “blue theme” with the selector `data-bs-theme=
 
 <ScssDocs name="custom-color-mode" file="site/src/scss/_content.scss" />
 
-<Example showMarkup={false} code={`<div data-bs-theme="blue">
-    <div class="bd-example fg-body bg-body">
+<Example showMarkup={false} code={`<div class="p-5 fg-body bg-body rounded-3" data-bs-theme="blue">
       <div class="h4">Example blue theme</div>
       <p>Some paragraph text to show how the blue theme might look with written copy.</p>
 
@@ -167,7 +166,6 @@ For example, you can create a “blue theme” with the selector `data-bs-theme=
           <a class="menu-item" href="#">Separated link</a>
         </div>
       </div>
-    </div>
   </div>`} />
 
 ```html

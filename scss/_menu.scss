@@ -152,7 +152,7 @@ $menu-tokens: defaults(
     width: 100%;
     padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
     font-weight: var(--menu-item-font-weight, var(--font-weight-normal));
-    color: var(--theme-text, var(--menu-item-color));
+    color: var(--theme-fg, var(--menu-item-color));
     text-align: inherit;
     text-decoration: none;
     white-space: nowrap;
@@ -164,7 +164,7 @@ $menu-tokens: defaults(
 
     &:hover,
     &:focus {
-      color: var(--theme-text-emphasis, var(--menu-item-hover-color));
+      color: var(--theme-fg-emphasis, var(--menu-item-hover-color));
       background-color: var(--theme-bg-subtle, var(--menu-item-hover-bg));
       // @include gradient-bg(var(--theme-bg-subtle, var(--menu-item-hover-bg)));
     }

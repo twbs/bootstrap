@@ -15,13 +15,13 @@ import { getData } from '@libs/data'
 
 ## Colors
 
-Change the `border-color` using utilities built on our theme colors using `.border-{color}` and `.border-subtle-{color}`. All these border color utilities set the `border-color` property to a local CSS variable, `--bs-border-color`, which has the value of the theme color. Color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
+Change the `border-color` using utilities built on our theme colors using `.border-{color}` and `.border-subtle-{color}`. All these border color utilities set the `border-color` property to a local CSS variable, `--bs-border-color`, which has the value of the theme color. The root color tokens color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
 
-For example, `.border-primary` sets the `--bs-border-color` variable to `var(--bs-blue-500)`:
+For example, `.border-primary` sets the `--bs-border-color` variable to `var(--bs-primary-border)`:
 
 ```css
 .border-primary {
-  --bs-border-color: var(--bs-blue-500);
+  --bs-border-color: var(--bs-primary-border);
   border-color: var(--bs-border-color);
 }
 ```
@@ -29,15 +29,15 @@ For example, `.border-primary` sets the `--bs-border-color` variable to `var(--b
 This approach allows us to also easily support translucency with our `.border-{opacity}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
 
 <Example class="d-flex flex-column gap-2 bd-example-border-color-utils" code={[
-  ...getData('theme-colors').map((themeColor) => `<span class="border border-5 border-${themeColor.name}">${themeColor.name}</span>
-<span class="border border-5 border-subtle-${themeColor.name}">${themeColor.name} subtle</span>`),
-  `<span class="border border-5 border-bg">bg</span>
-  <span class="border border-5 border-body">body</span>
-  <span class="border border-5 border-muted">muted</span>
-  <span class="border border-5 border-subtle">subtle</span>
-  <span class="border border-5 border-emphasized">emphasized</span>
-  <span class="border border-5 border-black">black</span>
-<span class="border border-5 border-white">white</span>`
+  ...getData('theme-colors').map((themeColor) => `<div class="border border-5 border-${themeColor.name}">${themeColor.name}</div>
+<div class="border border-5 border-subtle-${themeColor.name}">${themeColor.name} subtle</div>`),
+  `<div class="border border-5 border-bg">bg</div>
+  <div class="border border-5 border-body">body</div>
+  <div class="border border-5 border-muted">muted</div>
+  <div class="border border-5 border-subtle">subtle</div>
+  <div class="border border-5 border-emphasized">emphasized</div>
+  <div class="border border-5 border-black">black</div>
+<div class="border border-5 border-white">white</div>`
 ]} />
 
 Or modify the default `border-color` of a component:

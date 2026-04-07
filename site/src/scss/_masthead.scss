@@ -15,14 +15,14 @@
     // stylelint-enable
 
     h1 {
-      --bs-heading-color: var(--bs-emphasis-color);
-      font-size: var(--font-size-4xl);
+      --bs-heading-color: var(--bs-fg-body);
+      font-size: var(--bs-font-size-4xl);
     }
 
     .lead {
       font-size: 1.125rem;
       font-weight: 400;
-      color: var(--bs-secondary-color);
+      color: var(--bs-fg-3);
     }
 
     .bd-code-snippet {
@@ -38,7 +38,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      background-color: color-mix(in oklch, var(--body-color) #{math.percentage(.075)}, transparent);
+      background-color: color-mix(in oklch, var(--bs-fg-body) #{math.percentage(.075)}, transparent);
       @include border-radius(calc(.5rem - 1px));
 
       @include media-breakpoint-up(lg) {
@@ -75,7 +75,7 @@
     h2,
     h3,
     h4 {
-      --bs-heading-color: var(--bs-emphasis-color);
+      --bs-heading-color: var(--bs-fg-body);
     }
 
     .lead {

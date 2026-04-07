@@ -192,7 +192,7 @@ $utilities: (
     class: striped,
     child-selector: "> :nth-child(odd)",
     values: (
-      null: var(--bs-tertiary-bg),
+      null: var(--bs-bg-1),
     )
   )
 );
@@ -201,7 +201,7 @@ $utilities: (
 Output:
 
 ```css
-:where(.striped > :nth-child(odd)) { background-color: var(--bs-tertiary-bg); }
+:where(.striped > :nth-child(odd)) { background-color: var(--bs-bg-1); }
 ```
 
 Or target all direct children with `> *`:

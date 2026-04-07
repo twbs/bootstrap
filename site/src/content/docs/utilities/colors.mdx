@@ -15,13 +15,13 @@ import { getData } from '@libs/data'
 
 ## Colors
 
-Change the `color` using utilities built on our theme colors using `.fg-{color}` and `.fg-emphasis-{color}`. All these color utilities set the `color` property to a local CSS variable, `--bs-fg`, which has the value of the theme color. Color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
+Change the `color` using utilities built on our theme colors using `.fg-{color}` and `.fg-emphasis-{color}`. All these color utilities set the `color` property to a local CSS variable, `--bs-fg`, which has the value of the theme color. The root color tokens color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
 
-For example, `.fg-primary` sets the `--bs-fg` variable to `light-dark(var(--bs-blue-600), var(--bs-blue-400))`:
+For example, `.fg-primary` sets the `--bs-fg` variable to `var(--bs-primary-fg)`:
 
 ```css
 .fg-primary {
-  --bs-fg: light-dark(var(--bs-blue-600), var(--bs-blue-400));
+  --bs-fg: var(--bs-primary-fg);
   color: var(--bs-fg);
 }
 ```

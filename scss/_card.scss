@@ -140,13 +140,13 @@ $card-tokens: defaults(
     border-color: var(--theme-border, var(--card-border-color));
 
     .card-header {
-      color: var(--theme-text-emphasis, currentcolor);
+      color: var(--theme-fg-emphasis, currentcolor);
       background-color: var(--theme-bg-subtle, var(--card-cap-bg));
       border-color: var(--theme-border, var(--card-border-color));
     }
 
     .card-footer {
-      color: var(--theme-text-emphasis, currentcolor);
+      color: var(--theme-fg-emphasis, currentcolor);
       background-color: var(--theme-bg-subtle, var(--card-cap-bg));
       border-color: var(--theme-border, var(--card-border-color));
     }

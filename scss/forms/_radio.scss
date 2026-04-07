@@ -67,7 +67,7 @@ $radio-tokens: defaults(
       --radio-bg: var(--radio-disabled-bg);
 
       ~ label {
-        color: var(--secondary-text);
+        color: var(--secondary-fg);
         cursor: default;
       }
     }
