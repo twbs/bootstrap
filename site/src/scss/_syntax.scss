@@ -21,15 +21,15 @@
 
   > code {
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
-    width: fit-content;
+    width: max-content;
     min-width: 100%;
 
     .line:empty {
       min-height: 1lh;
     }
   }
-
 }
 
 .astro-code .line.highlighted {
