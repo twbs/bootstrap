@@ -8,8 +8,8 @@ import { getData } from '@libs/data'
 
 export const themeTokens = [
   'base',
-  'text',
-  'text-emphasis',
+  'fg',
+  'fg-emphasis',
   'bg',
   'bg-subtle',
   'bg-muted',
@@ -65,10 +65,10 @@ And within each semantic theme color, you'll find the following keys, most of wh
 | Theme token | Description |
 | --- | --- |
 | `base` | The default color value for the semantic color |
-| `text` | Accessible text color (against body, plus `subtle` and `muted` color tokens) |
-| `text-emphasis` | Emphasized text color for use with `muted` background tokens |
+| `fg` | Accessible text color (against body, plus `subtle` and `muted` color tokens) |
+| `fg-emphasis` | Emphasized text color for use with `muted` background tokens |
 | `bg` | For solid colored backgrounds with high contrast |
-| `bg-subtle` | Lowest contrast backgrounds, usually paired with `text` key for text color |
+| `bg-subtle` | Lowest contrast backgrounds, usually paired with `fg` key for text color |
 | `bg-muted` | Lower contrast backgrounds, often used for disabled states |
 | `border` | Borders and dividers |
 | `focus-ring` | For visible focus indicators and outline styles |
@@ -100,18 +100,18 @@ Every token is available as a CSS variable, and most are then consumed by our ut
 Not all colors can be used for all purposes due to accessibility, color contrast, and general aesthetic considerations. Here are some recommended pairings.
 
 - `contrast` work best with `bg`
-- `text` works best with `subtle`
-- `text-emphasis` works best with `muted`
+- `fg` works best with `subtle`
+- `fg-emphasis` works best with `muted`
 - `border` works best with `subtle`, but can be used with `muted`
 
 <Example code={`<div class="theme-primary vstack gap-3">
     <div style="color: var(--bs-theme-contrast); background: var(--bs-theme-bg);" class="p-3 rounded-3">
       Example element with theme color
     </div>
-    <div style="color: var(--bs-theme-text-emphasis); background: var(--bs-theme-bg-muted); border: 1px solid var(--bs-theme-border);" class="p-3 rounded-3">
+    <div style="color: var(--bs-theme-fg-emphasis); background: var(--bs-theme-bg-muted); border: 1px solid var(--bs-theme-border);" class="p-3 rounded-3">
       Example element with theme color
     </div>
-    <div style="color: var(--bs-theme-text); background: var(--bs-theme-bg-subtle); border: 1px solid var(--bs-theme-border);" class="p-3 rounded-3">
+    <div style="color: var(--bs-theme-fg); background: var(--bs-theme-bg-subtle); border: 1px solid var(--bs-theme-border);" class="p-3 rounded-3">
       Example element with theme color
     </div>
   </div>`} />
@@ -255,10 +255,10 @@ Here's the same set of components rendered in both light and dark modes side by 
     </div>
   </div>`} />
 
-Under the hood, token values like `--bs-primary-text` resolve differently depending on the active color mode. For example, in our `_theme.scss`, the primary text color is defined as:
+Under the hood, token values like `--bs-primary-fg` resolve differently depending on the active color mode. For example, in our `_theme.scss`, the primary text color is defined as:
 
 ```scss
-"text": light-dark(var(--blue-600), var(--blue-400)),
+"fg": light-dark(var(--blue-600), var(--blue-400)),
 ```
 
 When `data-bs-theme="light"` is active (or the user's system preference is light), this resolves to `var(--blue-600)`. In dark mode, it resolves to `var(--blue-400)`—a lighter shade that maintains readability against dark backgrounds. The same pattern applies to backgrounds, borders, and all other adaptive tokens.

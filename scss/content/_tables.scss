@@ -66,7 +66,7 @@ $table-striped-columns-order: even !default;
     > :not(caption) > * > * {
       padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
       // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
-      color: var(--table-color-state, var(--table-color-type, var(--theme-text, var(--table-color))));
+      color: var(--table-color-state, var(--table-color-type, var(--theme-fg, var(--table-color))));
       background-color: var(--theme-bg-subtle, var(--table-bg));
       border-block-end-width: var(--table-border-width);
       box-shadow: inset 0 0 0 9999px var(--table-bg-state, var(--table-bg-type, var(--theme-bg-subtle, var(--table-accent-bg))));
@@ -143,16 +143,16 @@ $table-striped-columns-order: even !default;
   // For rows
   .table-striped {
     > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
-      --table-color-type: var(--theme-text, var(--table-striped-color));
-      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-striped-bg-factor), transparent);
+      --table-color-type: var(--theme-fg, var(--table-striped-color));
+      --table-bg-type: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-striped-bg-factor), transparent);
     }
   }
 
   // For columns
   .table-striped-columns {
     > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
-      --table-color-type: var(--theme-text, var(--table-striped-color));
-      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-striped-bg-factor), transparent);
+      --table-color-type: var(--theme-fg, var(--table-striped-color));
+      --table-bg-type: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-striped-bg-factor), transparent);
     }
   }
 
@@ -161,8 +161,8 @@ $table-striped-columns-order: even !default;
   // The `.table-active` class can be added to highlight rows or cells
 
   .table-active {
-    --table-color-state: var(--theme-text, var(--table-active-color));
-    --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-active-bg-factor), transparent);
+    --table-color-state: var(--theme-fg, var(--table-active-color));
+    --table-bg-state: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-active-bg-factor), transparent);
   }
 
   // Hover effect
@@ -171,8 +171,8 @@ $table-striped-columns-order: even !default;
 
   .table-hover {
     > tbody > tr:hover > * {
-      --table-color-state: var(--theme-text, var(--table-hover-color));
-      --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-hover-bg-factor), transparent);
+      --table-color-state: var(--theme-fg, var(--table-hover-color));
+      --table-bg-state: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-hover-bg-factor), transparent);
     }
   }
 

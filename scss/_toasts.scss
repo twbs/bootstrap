@@ -76,7 +76,7 @@ $toast-tokens: defaults(
     display: flex;
     align-items: center;
     padding: var(--toast-padding-y) var(--toast-padding-x);
-    color: var(--theme-text-emphasis, var(--toast-header-color));
+    color: var(--theme-fg-emphasis, var(--toast-header-color));
     background-color: var(--theme-bg-subtle, var(--toast-header-bg));
     // background-clip: padding-box;
     border-block-end: var(--toast-border-width, var(--border-width)) solid var(--theme-border, var(--toast-header-border-color, var(--border-color-translucent)));

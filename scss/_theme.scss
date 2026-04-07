@@ -12,6 +12,39 @@
   @return $result;
 }
 
+// Themes map sub-keys
+//
+// Return var() references to root tokens instead of raw values.
+// Ex: theme-color-refs("bg") => (primary: var(--primary-bg), accent: var(--accent-bg), ...)
+@function theme-color-refs($key) {
+  $result: ();
+
+  @each $color-name, $color-map in $theme-colors {
+    @if map.has-key($color-map, $key) {
+      $result: map.merge($result, ($color-name: var(--#{$color-name}-#{$key})));
+    }
+  }
+
+  @return $result;
+}
+
+// Theme token to root tokens
+//
+// Returns the global :root token reference for a given a given token map, prefix, and key.
+// Ex: theme-token-refs($theme-bgs, "bg") => (body: var(--bg-body), 1: var(--bg-1), ...)
+// Skips `inherit` since it's a CSS-wide keyword that can't be stored in a custom property.
+@function theme-token-refs($map, $prefix) {
+  $result: ();
+
+  @each $key, $value in $map {
+    @if $value != inherit {
+      $result: map.merge($result, ($key: var(--#{$prefix}-#{$key})));
+    }
+  }
+
+  @return $result;
+}
+
 // Generate opacity values using color-mix()
 @function theme-opacity-values($color-var, $opacities: $util-opacity) {
   $result: ();
@@ -45,8 +78,8 @@
 $theme-colors: (
   "primary": (
     "base": var(--blue-500),
-    "text": light-dark(var(--blue-600), var(--blue-400)),
-    "text-emphasis": light-dark(var(--blue-800), var(--blue-200)),
+    "fg": light-dark(var(--blue-600), var(--blue-400)),
+    "fg-emphasis": light-dark(var(--blue-800), var(--blue-200)),
     "bg": var(--blue-500),
     "bg-subtle": light-dark(var(--blue-100), var(--blue-900)),
     "bg-muted": light-dark(var(--blue-200), var(--blue-800)),
@@ -56,8 +89,8 @@ $theme-colors: (
   ),
   "accent": (
     "base": var(--indigo-500),
-    "text": light-dark(var(--indigo-600), color-mix(in oklch, var(--indigo-400), var(--indigo-300))),
-    "text-emphasis": light-dark(var(--indigo-800), var(--indigo-300)),
+    "fg": light-dark(var(--indigo-600), color-mix(in oklch, var(--indigo-400), var(--indigo-300))),
+    "fg-emphasis": light-dark(var(--indigo-800), var(--indigo-300)),
     "bg": var(--indigo-500),
     "bg-subtle": light-dark(var(--indigo-100), var(--indigo-900)),
     "bg-muted": light-dark(var(--indigo-200), var(--indigo-800)),
@@ -67,8 +100,8 @@ $theme-colors: (
   ),
   "success": (
     "base": var(--green-500),
-    "text": light-dark(var(--green-600), var(--green-400)),
-    "text-emphasis": light-dark(var(--green-800), var(--green-300)),
+    "fg": light-dark(var(--green-600), var(--green-400)),
+    "fg-emphasis": light-dark(var(--green-800), var(--green-300)),
     "bg": var(--green-500),
     "bg-subtle": light-dark(var(--green-100), var(--green-900)),
     "bg-muted": light-dark(var(--green-200), var(--green-800)),
@@ -78,8 +111,8 @@ $theme-colors: (
   ),
   "danger": (
     "base": var(--red-500),
-    "text": light-dark(var(--red-600), var(--red-400)),
-    "text-emphasis": light-dark(var(--red-800), var(--red-300)),
+    "fg": light-dark(var(--red-600), var(--red-400)),
+    "fg-emphasis": light-dark(var(--red-800), var(--red-300)),
     "bg": var(--red-500),
     "bg-subtle": light-dark(var(--red-100), var(--red-900)),
     "bg-muted": light-dark(var(--red-200), var(--red-800)),
@@ -89,8 +122,8 @@ $theme-colors: (
   ),
   "warning": (
     "base": var(--yellow-500),
-    "text": light-dark(var(--yellow-700), var(--yellow-400)),
-    "text-emphasis": light-dark(var(--yellow-800), var(--yellow-300)),
+    "fg": light-dark(var(--yellow-700), var(--yellow-400)),
+    "fg-emphasis": light-dark(var(--yellow-800), var(--yellow-300)),
     "bg": var(--yellow-500),
     "bg-subtle": light-dark(var(--yellow-100), var(--yellow-900)),
     "bg-muted": light-dark(var(--yellow-200), var(--yellow-800)),
@@ -100,8 +133,8 @@ $theme-colors: (
   ),
   "info": (
     "base": var(--cyan-500),
-    "text": light-dark(var(--cyan-600), var(--cyan-400)),
-    "text-emphasis": light-dark(var(--cyan-800), var(--cyan-300)),
+    "fg": light-dark(var(--cyan-600), var(--cyan-400)),
+    "fg-emphasis": light-dark(var(--cyan-800), var(--cyan-300)),
     "bg": var(--cyan-500),
     "bg-subtle": light-dark(var(--cyan-100), var(--cyan-900)),
     "bg-muted": light-dark(var(--cyan-200), var(--cyan-800)),
@@ -111,8 +144,8 @@ $theme-colors: (
   ),
   "inverse": (
     "base": var(--gray-900),
-    "text": light-dark(var(--gray-900), var(--gray-200)),
-    "text-emphasis": light-dark(var(--gray-975), var(--white)),
+    "fg": light-dark(var(--gray-900), var(--gray-200)),
+    "fg-emphasis": light-dark(var(--gray-975), var(--white)),
     "bg": light-dark(var(--gray-900), var(--gray-025)),
     "bg-subtle": light-dark(var(--gray-100), var(--gray-900)),
     "bg-muted": light-dark(var(--gray-200), var(--gray-300)),
@@ -122,8 +155,8 @@ $theme-colors: (
   ),
   "secondary": (
     "base": var(--gray-200),
-    "text": light-dark(var(--gray-600), var(--gray-400)),
-    "text-emphasis": light-dark(var(--gray-800), var(--gray-200)),
+    "fg": light-dark(var(--gray-600), var(--gray-400)),
+    "fg-emphasis": light-dark(var(--gray-800), var(--gray-200)),
     "bg": light-dark(var(--gray-100), var(--gray-600)),
     "bg-subtle": light-dark(var(--gray-050), var(--gray-800)),
     "bg-muted": light-dark(var(--gray-100), var(--gray-700)),

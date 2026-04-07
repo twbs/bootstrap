@@ -217,7 +217,7 @@ $utilities: map.merge(
         "border-color": var(--border-color)
       ),
       class: border,
-      values: map.merge(theme-color-values("bg"), $theme-borders),
+      values: map.merge(theme-color-refs("bg"), theme-token-refs($theme-borders, "border")),
     ),
     "border-color-subtle": (
       property: (
@@ -225,7 +225,7 @@ $utilities: map.merge(
         "border-color": var(--border-color)
       ),
       class: border-subtle,
-      values: theme-color-values("border"),
+      values: theme-color-refs("border"),
     ),
     "border-width": (
       property: border-width,
@@ -729,7 +729,7 @@ $utilities: map.merge(
         "color": var(--fg)
       ),
       class: fg,
-      values: map.merge(theme-color-values("text"), $theme-fgs),
+      values: map.merge(theme-color-refs("fg"), theme-token-refs($theme-fgs, "fg")),
     ),
     "fg-emphasis": (
       property: (
@@ -737,7 +737,7 @@ $utilities: map.merge(
         "color": var(--fg)
       ),
       class: fg-emphasis,
-      values: theme-color-values("text-emphasis"),
+      values: theme-color-refs("fg-emphasis"),
     ),
     "fg-contrast": (
       property: (
@@ -745,7 +745,7 @@ $utilities: map.merge(
         "color": var(--fg)
       ),
       class: fg-contrast,
-      values: theme-color-values("contrast"),
+      values: theme-color-refs("contrast"),
     ),
     "fg-opacity": (
       class: fg,
@@ -776,7 +776,7 @@ $utilities: map.merge(
     "underline-color": (
       property: text-decoration-color,
       class: underline,
-      values: theme-color-values("text"),
+      values: theme-color-values("fg"),
     ),
     "underline-opacity": (
       property: text-decoration-color,
@@ -804,7 +804,7 @@ $utilities: map.merge(
         "background-color": var(--bg)
       ),
       class: bg,
-      values: map.merge(theme-color-values("bg"), $theme-bgs),
+      values: map.merge(theme-color-refs("bg"), theme-token-refs($theme-bgs, "bg")),
     ),
     "bg-color-subtle": (
       property: (
@@ -812,7 +812,7 @@ $utilities: map.merge(
         "background-color": var(--bg)
       ),
       class: bg-subtle,
-      values: theme-color-values("bg-subtle"),
+      values: theme-color-refs("bg-subtle"),
     ),
     "bg-color-muted": (
       property: (
@@ -820,7 +820,7 @@ $utilities: map.merge(
         "background-color": var(--bg)
       ),
       class: bg-muted,
-      values: theme-color-values("bg-muted"),
+      values: theme-color-refs("bg-muted"),
     ),
     "bg-opacity": (
       class: bg,
@@ -841,7 +841,7 @@ $utilities: map.merge(
     "theme-subtle": (
       property: (
         "background-color": var(--theme-bg-subtle),
-        "color": var(--theme-text)
+        "color": var(--theme-fg)
       ),
       class: theme-subtle,
       values: (null: null)
@@ -849,7 +849,7 @@ $utilities: map.merge(
     "theme-muted": (
       property: (
         "background-color": var(--theme-bg-muted),
-        "color": var(--theme-text-emphasis)
+        "color": var(--theme-fg-emphasis)
       ),
       class: theme-muted,
       values: (null: null)

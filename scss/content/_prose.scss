@@ -10,7 +10,8 @@ $prose-tokens: () !default;
 $prose-tokens: defaults(
   (
     --content-font-size: 1rem,
-    --content-gap: 20px,
+    --content-line-height: 1.5,
+    --content-gap: calc(var(--content-font-size) * var(--content-line-height)),
     --heading-color: light-dark(var(--gray-900), var(--white)),
   ),
   $prose-tokens
@@ -28,11 +29,12 @@ $prose-tokens: defaults(
     max-width: 1000px;
     margin-inline: auto;
     font-size: var(--content-font-size);
-    line-height: 1.5;
+    line-height: var(--content-line-height);
 
     @media (width >= 1024px) {
       --content-font-size: var(--font-size-md);
-      --content-gap: 24px;
+      --content-line-height: 1.625;
+      // --content-gap: calc(var(--content-font-size) * var(--content-line-height));
     }
 
     :where(p, ul, ol, dl, pre, table, blockquote):not(:where(.not-prose, .not-prose *)) {

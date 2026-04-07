@@ -15,7 +15,7 @@
       margin-bottom: .25rem;
 
       // stylelint-disable selector-max-type, selector-max-compound-selectors
-      > p {
+      > p:not(:first-child) {
         margin-block: 1rem;
       }
 
@@ -61,8 +61,7 @@
       --bs-table-border-color: var(--bs-border-color);
 
       max-width: 100%;
-      margin-bottom: 1.5rem;
-      font-size: .875rem;
+      font-size: var(--bs-font-size-sm);
 
       @include media-breakpoint-down(lg) {
         &.table-bordered {
@@ -82,12 +81,12 @@
       }
 
       th {
-        color: var(--bs-emphasis-color);
+        color: var(--bs-fg-body);
         border-block-end-color: currentcolor;
       }
 
       &:not(.bd-callout) > strong { // Keep callout correct color when used within tables
-        color: var(--bs-emphasis-color);
+        color: var(--bs-fg-body);
       }
 
       // Prevent breaking of code
@@ -162,35 +161,28 @@
   }
   // stylelint-enable selector-no-qualifying-type
 
-  // stylelint-disable-next-line selector-no-qualifying-type
-  rect[fill="#adb5bd"] {
-    fill: var(--bs-bg-2);
-  }
-  // stylelint-disable-next-line selector-no-qualifying-type
-  text[fill="#e9ecef"] {
-    fill: var(--bs-fg-4);
-  }
-
   // scss-docs-start custom-color-mode
   [data-bs-theme="blue"] {
-    --fg-body: var(--white);
-    --bg-body: var(--blue);
-    --bg-3: var(--blue-600);
+    --bs-fg-body: var(--bs-white);
+    --bs-bg-body: var(--bs-blue-500);
+    --bs-bg-3: var(--bs-blue-600);
+    --bs-hr-border-color: var(--bs-blue-400);
 
     .menu {
-      --menu-bg: color-mix(in lab, var(--blue-500), var(--blue-600));
-      --menu-item-active-bg: var(--blue-700);
+      --bs-menu-bg: color-mix(in lab, var(--bs-blue-600), var(--bs-blue-700));
+      --bs-menu-item-hover-bg: var(--bs-blue-700);
+      --bs-menu-item-active-bg: var(--bs-blue-800);
     }
 
-    .btn-secondary {
-      --btn-bg: color-mix(in lab, var(--gray-600), var(--blue-400));
-      --btn-border-color: color-mix(in lab, var(--fg-body) 25%, transparent);
-      --btn-hover-bg: color-mix(in lab, var(--gray-600), var(--blue-400));
-      --btn-hover-border-color: color-mix(in lab, var(--fg-body) 25%, transparent);
-      --btn-active-bg: color-mix(in lab, color-mix(in lab, var(--gray-600), var(--blue-400)), var(--black) 10%);
-      --btn-active-border-color: color-mix(in lab, var(--fg-body), transparent);
-      --btn-focus-border-color: color-mix(in lab, var(--fg-body), transparent);
-      --btn-focus-box-shadow: 0 0 0 .25rem rgb(255 255 255 / .2);
+    .btn-solid {
+      --bs-btn-bg: color-mix(in lab, var(--bs-gray-600), var(--bs-blue-400));
+      --bs-btn-border-color: color-mix(in lab, var(--bs-fg-body) 25%, transparent);
+      --bs-btn-hover-bg: color-mix(in lab, var(--bs-gray-600), var(--bs-blue-400));
+      --bs-btn-hover-border-color: color-mix(in lab, var(--bs-fg-body) 25%, transparent);
+      --bs-btn-active-bg: color-mix(in lab, color-mix(in lab, var(--bs-gray-600), var(--bs-blue-400)), var(--bs-black) 10%);
+      --bs-btn-active-border-color: color-mix(in lab, var(--bs-fg-body), transparent);
+      --bs-btn-focus-border-color: color-mix(in lab, var(--bs-fg-body), transparent);
+      --bs-btn-focus-box-shadow: 0 0 0 .25rem rgb(255 255 255 / .2);
     }
   }
   // scss-docs-end custom-color-mode

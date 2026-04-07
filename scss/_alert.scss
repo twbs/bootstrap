@@ -13,7 +13,7 @@ $alert-tokens: defaults(
     --alert-bg: var(--theme-bg-subtle, var(--bg-1)),
     --alert-padding-x: #{$spacer},
     --alert-padding-y: #{$spacer},
-    --alert-color: var(--theme-text, inherit),
+    --alert-color: var(--theme-fg, inherit),
     --alert-border-color: var(--theme-border, var(--border-color)),
     --alert-border: var(--border-width) solid var(--alert-border-color),
     --alert-border-radius: var(--border-radius),

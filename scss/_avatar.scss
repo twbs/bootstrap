@@ -75,7 +75,7 @@ $avatar-sizes: defaults(
   }
 
   .avatar-subtle {
-    color: var(--theme-text, var(--avatar-color));
+    color: var(--theme-fg, var(--avatar-color));
     background-color: var(--theme-bg-subtle, var(--avatar-bg));
   }
 

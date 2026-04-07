@@ -86,7 +86,7 @@ $switch-tokens: defaults(
       &::before { opacity: .4; }
 
       ~ label {
-        color: var(--secondary-text);
+        color: var(--secondary-fg);
         cursor: default;
       }
     }

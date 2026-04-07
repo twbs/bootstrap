@@ -78,7 +78,7 @@ $chip-input-tokens: defaults(
   // @each $color-name, $theme-props in $theme-map {
   //   .chip-input.theme-#{$color-name} > .chip {
   //     // Subtle default state
-  //     --chip-color: var(--theme-text);
+  //     --chip-color: var(--theme-fg);
   //     --chip-bg: var(--theme-bg-subtle);
 
   //     // Selected/active solid state

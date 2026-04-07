@@ -170,8 +170,8 @@ function getOptionsWithDefaults(options: Partial<PlaceholderOptions>) {
   const optionsWithDefaults = Object.assign(
     {},
     {
-      background: '#adb5bd',
-      color: '#e9ecef',
+      background: 'var(--bs-bg-2)',
+      color: 'var(--bs-fg-4)',
       height: '180',
       markup: 'svg',
       title: 'Placeholder',
@@ -197,7 +197,7 @@ function getPlaceholderSrc(
   const textColor = color.replace(/^#/, '')
 
   // Build the raw SVG string first
-  let svg = `<svg style='font-size: 1.125rem; font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; -webkit-user-select: none; -moz-user-select: none; user-select: none; text-anchor: middle;' width='200' height='200' xmlns='http://www.w3.org/2000/svg'>`
+  let svg = `<svg style='font-size: 1.125rem; font-family:system-ui; -webkit-user-select: none; -moz-user-select: none; user-select: none; text-anchor: middle;' width='200' height='200' xmlns='http://www.w3.org/2000/svg'>`
 
   if (showTitle) {
     svg += `<title>${title}</title>`

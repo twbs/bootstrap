@@ -321,7 +321,7 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
   .btn-link {
     @include tokens($button-link-tokens);
 
-    color: var(--theme-text, var(--btn-color));
+    color: var(--theme-fg, var(--btn-color));
     text-decoration: var(--link-decoration);
 
     @if $enable-gradients {
@@ -329,11 +329,11 @@ $btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), st
     }
 
     &:focus-visible {
-      color: var(--theme-text, var(--btn-color));
+      color: var(--theme-fg, var(--btn-color));
     }
 
     &:hover {
-      color: var(--theme-text-emphasis, var(--btn-hover-color));
+      color: var(--theme-fg-emphasis, var(--btn-hover-color));
     }
 
     // No need for an active state here

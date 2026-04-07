@@ -6,7 +6,14 @@ toc: true
 
 ## Sass & CSS
 
-Bootstrap 6 has a new philosophy of using Sass and CSS together to customize the project for your needs. At a high level, **Sass is for programmatic customization** and **CSS variables are for visual customization**. Previous iterations have treated Sass as both programmatic and visual customization with CSS variables adding a more complicated secondary layer. This has been greatly improved in v6.
+Bootstrap 6 brings with it a new philosophy of using Sass and CSS together to build and customize projects for your specific needs. At a high level:
+
+- **Sass is for programmatic configuration —** Think functions, loops, mixins, and more for generative constructs.
+- **CSS is for visual customization —** CSS variables for visual properties like colors, spacing, typography, etc.
+
+Previous major versions have treated Sass as both programmatic and visual customization with CSS variables adding a more complicated, and less complete, secondary layer. This has been greatly improved in v6.
+
+On top of that, we use [PostCSS](https://postcss.org/) to prefix our CSS variables with the `bs-` prefix and add vendor prefixes to our CSS properties, as appropriate.
 
 ### Sass
 
@@ -31,7 +38,24 @@ While you can use Sass to customize how Bootstrap looks, the preferred way now i
 
 ### Examples
 
-Here's how we'd use a mix of Sass and CSS to customize Bootstrap. The Sass helps us manage features and gives us access to generative tokens, while the CSS allows us to customize individual tokens and values.
+Here's how we'd use a mix of Sass and CSS to customize Bootstrap. The Sass helps us manage features and gives us access to generative tokens, while the CSS allows us to customize individual tokens and values. In almost all our components, we setup a Sass map of "tokens" that are really just CSS variables. Using this map, we then generate the CSS custom properties on the component's class.
+
+For example, the alert component has a `$alert-tokens` map that is used to generate the CSS custom properties on the `.alert` class.
+
+```scss
+$alert-tokens: (
+  --alert-padding-x: 2rem,
+  --alert-border-radius: 1rem,
+  // …
+);
+
+.alert {
+  @include tokens($alert-tokens);
+  // …
+}
+```
+
+In practice for you and your projects, this means you can use Sass's module system to override the CSS variables at build-time for a specific component, or even globally.
 
 ```scss
 @use "../node_modules/bootstrap/scss/bootstrap" with (
@@ -82,10 +106,10 @@ Bootstrap employs a handful of important global styles and settings geared towar
 
 ### Responsive design
 
-Responsive web design is the practice of building a website that responds to the viewport size of the device it's being viewed on. This is achieved by using media queries to apply different styles to the website based on the viewport size.
+Responsive web design is the practice of building a website that responds to the viewport size of the device it's being viewed on. This is achieved by using range media queries to apply different styles to the website based on the viewport size.
 
 ```css
-@media (max-width: 768px) {
+@media (width < 768px) {
   .container {
     max-width: 100%;
   }
@@ -99,9 +123,9 @@ Bootstrap ships with several responsive tiers or breakpoints that allow you to s
 Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some funky and incomplete styling.
 
 ```html
-<!doctype html>
+<!doctype html><!--[!code highlight]-->
 <html lang="en">
-  ...
+  …
 </html>
 ```
 
@@ -110,7 +134,16 @@ Bootstrap requires the use of the HTML5 doctype. Without it, you’ll see some f
 Bootstrap is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, add the responsive viewport meta tag to your `<head>`.
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!--[!code highlight]-->
+    …
+  </head>
+  <body>
+    …
+  </body>
+</html>
 ```
 
 You can see an example of this in action in [the quick start]([[docsref:/guides/quickstart/]]).
@@ -135,7 +168,7 @@ For improved cross-browser rendering, we use [Reboot]([[docsref:/content/reboot]
 
 ### Browser support
 
-You can find our supported range of browsers and their versions [in our `.browserslistrc file`]([[config:repo]]/blob/v[[config:current_version]]/.browserslistrc):
+You can find our supported range of browsers and their versions [in our `.browserslistrc` file]([[config:repo]]/blob/v[[config:current_version]]/.browserslistrc):
 
 <Code lang="plaintext" filePath=".browserslistrc" />
 
@@ -153,6 +186,8 @@ Beyond what Bootstrap does, here's *why* we do it—our philosophy for building 
 - Prefer an HTML and CSS implementation over JavaScript
 - Use utilities over custom styles
 - Avoid enforcing strict HTML requirements (immediate children selectors)
+
+These rules cannot always be followed to the letter, but we strive to follow them as much as possible.
 
 ### Responsive
 
@@ -181,7 +216,7 @@ Some components in Bootstrap are built with overlapping elements to prevent doub
 
 Components built with overlays also have a predefined z-index scale, beginning at `1000`. This starting number was chosen arbitrarily and serves as a small buffer between our styles and your project’s custom styles.
 
-<ScssDocs name="zindex-stack" file="scss/_config.scss" />
+<ScssDocs name="zindex-levels-map" file="scss/_config.scss" />
 
 Each overlay component increases its `z-index` value slightly in such a way that common UI principles allow user focused or hovered elements to remain in view at all times. For example, a modal is document blocking (e.g., you cannot take any other action save for the modal’s action), so we put that above our navbars.
 

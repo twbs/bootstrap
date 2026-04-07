@@ -65,7 +65,7 @@ $list-group-tokens: defaults(
     position: relative;
     display: block;
     padding: var(--list-group-item-padding-y) var(--list-group-item-padding-x);
-    color: var(--theme-text, var(--list-group-color));
+    color: var(--theme-fg, var(--list-group-color));
     // stylelint-disable-next-line scss/at-function-named-arguments
     text-decoration: if(sass($link-decoration == none): null);
     background-color: var(--theme-bg-subtle, var(--list-group-bg));
@@ -112,7 +112,7 @@ $list-group-tokens: defaults(
 
   .list-group-item-action {
     width: 100%; // For `<button>`s (anchors become 100% by default though)
-    color: var(--theme-text, var(--list-group-action-color));
+    color: var(--theme-fg, var(--list-group-action-color));
     text-align: inherit; // For `<button>`s (anchors inherit)
     text-decoration: none;
 
@@ -121,13 +121,13 @@ $list-group-tokens: defaults(
       &:hover,
       &:focus {
         z-index: 1; // Place hover/focus items above their siblings for proper border styling
-        color: var(--theme-text-emphasis, var(--list-group-action-hover-color));
+        color: var(--theme-fg-emphasis, var(--list-group-action-hover-color));
         text-decoration: none;
         background-color: var(--theme-bg-muted, var(--list-group-action-hover-bg));
       }
 
       &:active {
-        color: var(--theme-text-emphasis, var(--list-group-action-active-color));
+        color: var(--theme-fg-emphasis, var(--list-group-action-active-color));
         background-color: var(--theme-bg-muted, var(--list-group-action-active-bg));
       }
     }

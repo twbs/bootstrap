@@ -50,10 +50,10 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 ### CSS
 
+- **Clarified and simplified CSS-Sass setup.** Read more about our [approach]([[docsref:/getting-started/approach]]) for how we use Sass and CSS together to build and customize projects for your specific needs, in particular how we use CSS variables inside Sass maps as our first-class customization layer.
 - **Implemented CSS layers** in `_root.scss` and applied them to all our Sass files.
   - Layers are set in `_root.scss` and then utilized across separate Sass partials.
   - We cannot, unfortunately, wrap `@use` or `@forward` statements in `@layer`—Sass expects those to be top level at all times. Also, while CSS allows `@import "file.css" layer(name)`, Sass also does not support that.
-- Clarified and simplified CSS-Sass setup.
 - New, streamlined color modes and theming.
   - Removed `_maps.scss`
   - Removed `_variables-dark.scss`
@@ -66,7 +66,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Renamed `xxl` to `2xl` for better scaling with additional custom breakpoints
   - Increased the `2xl` breakpoint from 1400px to 1536px, and it's container from 1320px to 1440px.
 - **Adopted modern CSS color functions.** All Sass color variables now use `oklch()` notation (e.g., `$blue: oklch(60% 0.24 240)`) and tint/shade scales are generated with `color-mix(in lab, ...)` in the compiled CSS. The v5 `$*-rgb` CSS custom properties and `rgba()` patterns have been removed. This requires browser support for `color-mix()` and `oklch()`.
-- **New theme token system with `.theme-*` classes.** Per-component color variant classes (like `.alert-primary`, `.badge.bg-primary`, `.btn-primary`) are replaced by a composable `.theme-{name}` pattern. Adding `.theme-primary` to a component sets `--theme-bg`, `--theme-text`, `--theme-border`, `--theme-contrast`, and other semantic CSS custom properties that the component reads. This applies across buttons, badges, alerts, cards, accordions, and more.
+- **New theme token system with `.theme-*` classes.** Per-component color variant classes (like `.alert-primary`, `.badge.bg-primary`, `.btn-primary`) are replaced by a composable `.theme-{name}` pattern. Adding `.theme-primary` to a component sets `--theme-bg`, `--theme-fg`, `--theme-border`, `--theme-contrast`, and other semantic CSS custom properties that the component reads. This applies across buttons, badges, alerts, cards, accordions, and more.
 - **Responsive and state classes now use a prefix instead of an infix or suffix.** Class names follow the Tailwind-style `prefix:class` pattern (e.g., `md:d-none` instead of `d-md-none`, `hover:opacity-50` instead of `opacity-50-hover`). In HTML, use the unescaped colon: `class="md:d-none"`. This applies to utilities, grid, pseudo-state variants, and all responsive components.
 
 <BsTable>

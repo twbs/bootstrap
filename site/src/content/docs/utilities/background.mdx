@@ -17,13 +17,13 @@ import { getData } from '@libs/data'
 
 ## Colors
 
-Change the `background-color` using utilities built on our theme colors using `.bg-{color}`, `.bg-muted-{color}`, and `.bg-subtle-{color}`. All these background color utilities set the `background-color` property to a local CSS variable, `--bs-bg`, which has the value of the theme color. Most color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
+Change the `background-color` using utilities built on our theme colors using `.bg-{color}`, `.bg-muted-{color}`, and `.bg-subtle-{color}`. All these background color utilities set the `background-color` property to a local CSS variable, `--bs-bg`, which has the value of the theme color. The root color tokens also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
 
-For example, `.bg-primary` sets the `--bs-bg` variable to `var(--bs-primary-500)`:
+For example, `.bg-primary` sets the `--bs-bg` variable to `var(--bs-primary-bg)`:
 
 ```css
 .bg-primary {
-  --bs-bg: var(--bs-primary-500);
+  --bs-bg: var(--bs-primary-bg);
   background-color: var(--bs-bg);
 }
 ```
@@ -69,6 +69,13 @@ Change the opacity of a background color by using any of the `.bg-<percentage>` 
 <div class="bg-success p-2 text-dark bg-30">This is 30% opacity success background</div>
 <div class="bg-success p-2 text-dark bg-20">This is 20% opacity success background</div>
 <div class="bg-success p-2 text-dark bg-10">This is 10% opacity success background</div>`} />
+
+The same can be applied to subtle and muted background colors.
+
+<Example class="d-flex flex-column gap-2" code={`<div class="bg-subtle-success p-2 text-success">This is subtle success background</div>
+<div class="bg-muted-success bg-40 p-2 text-success">This is 40% success background</div>
+<div class="bg-muted-success bg-20 p-2 text-success">This is 20% success background</div>
+`} />
 
 ## CSS
 

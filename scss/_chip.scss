@@ -19,7 +19,7 @@ $chip-tokens: defaults(
     --chip-dismiss-size: 1rem,
     --chip-dismiss-opacity: .65,
     --chip-dismiss-hover-opacity: 1,
-    --chip-color: var(--theme-text, var(--fg-body)),
+    --chip-color: var(--theme-fg, var(--fg-body)),
     --chip-bg: var(--theme-bg-subtle, var(--bg-2)),
     --chip-border-color: transparent,
     --chip-selected-color: var(--theme-contrast, var(--primary-contrast)),
