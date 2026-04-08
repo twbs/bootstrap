@@ -148,7 +148,7 @@
     "cross-env": "^10.1.0",
     "cspell": "^10.0.0",
     "eslint": "^10.2.0",
-    "eslint-config-xo": "^0.50.0",
+    "eslint-config-xo": "^0.51.0",
     "eslint-plugin-html": "^8.1.4",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-markdown": "^5.1.0",

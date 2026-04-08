@@ -1,4 +1,4 @@
-import xoBrowser from 'eslint-config-xo/browser'
+import eslintConfigXo from 'eslint-config-xo'
 import unicorn from 'eslint-plugin-unicorn'
 import importXPlugin from 'eslint-plugin-import-x'
 import html from 'eslint-plugin-html'
@@ -106,6 +106,16 @@ const localRules = {
   'unicorn/prefer-structured-clone': 'off',
   'unicorn/prevent-abbreviations': 'off',
   // Rules new/changed in ESLint 10 / updated plugins — disable to preserve old behaviour
+  'import-x/no-anonymous-default-export': 'off',
+  'import-x/no-extraneous-dependencies': 'off',
+  'import-x/no-unassigned-import': 'off',
+  'n/file-extension-in-import': 'off',
+  'n/no-deprecated-api': 'off',
+  'n/no-extraneous-import': 'off',
+  'n/prefer-global/buffer': 'off',
+  'n/prefer-global/process': 'off',
+  'n/prefer-promises/fs': 'off',
+  'no-shadow': 'off',
   'require-unicode-regexp': 'off',
   '@stylistic/indent-binary-ops': 'off',
   '@stylistic/curly-newline': 'off',
@@ -115,10 +125,13 @@ const localRules = {
 }
 
 // Base config: xo/browser + unicorn + import-x for all JS/HTML/MD files
-const [xoBrowserConfig] = xoBrowser
+const xoBrowserConfigs = eslintConfigXo({ browser: true, space: false })
+const xoBrowserConfig = xoBrowserConfigs.find(config =>
+  config.files?.includes('**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,vue,svelte,astro}')
+) ?? xoBrowserConfigs[0]
 const unicornConfig = unicorn.configs['flat/recommended']
 
-export default [
+const eslintConfig = [
   // Global ignores (replaces .eslintignore)
   {
     ignores: [
@@ -330,3 +343,5 @@ export default [
     }
   }
 ]
+
+export default eslintConfig
