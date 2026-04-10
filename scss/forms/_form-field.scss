@@ -1,0 +1,45 @@
+@use "../mixins/border-radius" as *;
+
+// scss-docs-start form-field
+@layer forms {
+  .form-field {
+    display: grid;
+    gap: .5rem;
+    width: 100%;
+
+    &:has(> .check, > .radio, > .switch) {
+      grid-template-columns: auto 1fr;
+      column-gap: .5rem;
+      align-items: start;
+
+      > .check,
+      > .radio,
+      > .switch {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      > :not(.check, .radio, .switch) {
+        grid-column: 2;
+      }
+    }
+  }
+
+  .form-field-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-field-group {
+    padding: calc(var(--spacer) * .75);
+    border: var(--border-width) solid transparent;
+
+    &:has(:checked) {
+      background-color: var(--bg-1);
+      border-color: var(--border-color);
+      @include border-radius(var(--border-radius-lg));
+    }
+  }
+}
+// scss-docs-end form-field

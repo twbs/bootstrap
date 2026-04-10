@@ -54,6 +54,7 @@
     display: flow-root;
     padding: var(--bd-example-padding);
     font-size: var(--font-size-base);
+    line-height: var(--body-line-height);
     background-color: var(--bs-bg-body);
 
     @include media-breakpoint-up(md) {

@@ -61,8 +61,7 @@ $otp-sizes: defaults(
       }
     }
 
-    &.is-valid .form-control,
-    .was-validated &:valid .form-control {
+    &:is(:user-valid, .is-valid) .form-control {
       border-color: var(--form-valid-border-color);
 
       &:focus {
@@ -71,8 +70,7 @@ $otp-sizes: defaults(
       }
     }
 
-    &.is-invalid .form-control,
-    .was-validated &:invalid .form-control {
+    &:is(:user-invalid, .is-invalid) .form-control {
       border-color: var(--form-invalid-border-color);
 
       &:focus {

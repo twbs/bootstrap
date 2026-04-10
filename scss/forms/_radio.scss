@@ -24,16 +24,6 @@ $radio-tokens: defaults(
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
-  .radiogroup {
-    display: flex;
-    gap: var(--gap, .5rem);
-    align-items: var(--align-items, start);
-
-    .description {
-      color: var(--fg-3);
-    }
-  }
-
   .radio {
     @include tokens($radio-tokens);
 

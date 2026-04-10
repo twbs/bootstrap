@@ -29,16 +29,6 @@ $check-tokens: defaults(
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
-  .checkgroup {
-    display: flex;
-    gap: var(--gap, .5rem);
-    align-items: var(--align-items, start);
-
-    .description {
-      color: var(--fg-3);
-    }
-  }
-
   .check {
     @include tokens($check-tokens);
 

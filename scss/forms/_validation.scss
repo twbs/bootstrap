@@ -7,24 +7,33 @@
 
 // Form validation
 //
-// Provide feedback to users when form field values are valid or invalid. Works
-// primarily for client-side validation via scoped `:invalid` and `:valid`
-// pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
-// server-side validation.
-
-// This mixin uses an `if()` technique to be compatible with Dart Sass
-// See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+// Provide feedback to users when form field values are valid or invalid.
+// Server-side: `.is-invalid` / `.is-valid` classes work globally.
+// Client-side: `:user-invalid` / `:user-valid` pseudo-classes are scoped
+// behind `[data-bs-validate]` so forms must opt in to native validation styling.
+// Custom states (e.g., "warning") use only the `.is-*` class.
 
 // scss-docs-start form-validation-mixins
 @mixin form-validation-state-selector($state) {
-  @if ($state == "valid" or $state == "invalid") {
-    .was-validated #{if(sass(&): "&"; else: "")}:#{$state},
-    #{if(sass(&): "&"; else: "")}.is-#{$state} {
+  @if & {
+    &.is-#{$state} {
       @content;
     }
+
+    @if $state == "valid" or $state == "invalid" {
+      @at-root [data-bs-validate] #{&}:user-#{$state} {
+        @content;
+      }
+    }
   } @else {
-    #{if(sass(&): "&"; else: "")}.is-#{$state} {
+    .is-#{$state} {
       @content;
+    }
+
+    @if $state == "valid" or $state == "invalid" {
+      [data-bs-validate] :user-#{$state} {
+        @content;
+      }
     }
   }
 }
@@ -62,6 +71,8 @@
     @include border-radius($form-feedback-tooltip-border-radius);
   }
 
+  // Generic sibling feedback display — works for .form-control, .form-range,
+  // and any element where feedback is a direct sibling.
   @include form-validation-state-selector($state) {
     ~ .#{$state}-feedback,
     ~ .#{$state}-tooltip {
@@ -86,34 +97,19 @@
         border-color: $border-color;
       }
     }
-
-    &::-webkit-contacts-auto-fill-button {
-      @if $enable-validation-icons {
-        // margin-inline-end: calc(var(--control-padding-x) * 3);
-      }
-    }
   }
 
   // stylelint-disable-next-line selector-no-qualifying-type
   textarea.form-control {
     @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
-        // padding-inline-end: $input-height-inner;
         background-position: right var(--control-padding-x) top var(--control-padding-x);
-        // background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
       }
     }
   }
 
-  .form-control-color {
-    @include form-validation-state-selector($state) {
-      @if $enable-validation-icons {
-        // width: calc($form-color-width + $input-height-inner);
-      }
-    }
-  }
-
-  .form-check-input {
+  // Checkbox — control-level styling (border, checked bg, focus ring).
+  .check input {
     @include form-validation-state-selector($state) {
       border-color: $border-color;
 
@@ -121,24 +117,175 @@
         background-color: $color;
       }
 
-      &:focus {
-        // box-shadow: $focus-box-shadow;
-      }
-
-      ~ .form-check-label {
-        color: $color;
+      &:focus-visible {
+        @include focus-ring(true, $color: $focus-ring-color);
+        border-color: $border-color;
       }
     }
   }
-  .form-check-inline .form-check-input {
-    ~ .#{$state}-feedback {
-      margin-inline-start: .5em;
+
+  // Checkbox — label color and feedback display via .form-field:has().
+  // Works regardless of whether feedback is a sibling or inside .form-field-content.
+  .form-field:has(.check input.is-#{$state}) {
+    label { color: $color; }
+
+    .#{$state}-feedback,
+    .#{$state}-tooltip { display: block; }
+  }
+
+  @if $state == "valid" or $state == "invalid" {
+    [data-bs-validate] .form-field:has(.check input:user-#{$state}) {
+      label { color: $color; }
+
+      .#{$state}-feedback,
+      .#{$state}-tooltip { display: block; }
+    }
+  }
+
+  // Radio — control-level styling.
+  .radio {
+    @include form-validation-state-selector($state) {
+      border-color: $border-color;
+
+      &:checked {
+        background-color: $color;
+      }
+
+      &:focus-visible {
+        @include focus-ring(true, $color: $focus-ring-color);
+        border-color: $border-color;
+      }
+    }
+  }
+
+  // Radio — label color and feedback display via .form-field:has().
+  .form-field:has(.radio.is-#{$state}) {
+    label { color: $color; }
+
+    .#{$state}-feedback,
+    .#{$state}-tooltip { display: block; }
+  }
+
+  @if $state == "valid" or $state == "invalid" {
+    [data-bs-validate] .form-field:has(.radio:user-#{$state}) {
+      label { color: $color; }
+
+      .#{$state}-feedback,
+      .#{$state}-tooltip { display: block; }
+    }
+  }
+
+  // Switch — control-level styling. The input is an invisible overlay;
+  // all visuals are on the .switch wrapper.
+  .switch:has(input.is-#{$state}) {
+    border-color: $border-color;
+
+    &:focus-within {
+      @include focus-ring(true, $color: $focus-ring-color);
+      border-color: $border-color;
+    }
+  }
+
+  @if $state == "valid" or $state == "invalid" {
+    [data-bs-validate] .switch:has(input:user-#{$state}) {
+      border-color: $border-color;
+
+      &:focus-within {
+        @include focus-ring(true, $color: $focus-ring-color);
+        border-color: $border-color;
+      }
+    }
+  }
+
+  // Switch — label color and feedback display via .form-field:has().
+  .form-field:has(.switch input.is-#{$state}) {
+    label { color: $color; }
+
+    .#{$state}-feedback,
+    .#{$state}-tooltip { display: block; }
+  }
+
+  @if $state == "valid" or $state == "invalid" {
+    [data-bs-validate] .form-field:has(.switch input:user-#{$state}) {
+      label { color: $color; }
+
+      .#{$state}-feedback,
+      .#{$state}-tooltip { display: block; }
+    }
+  }
+
+  // Chip input — wrapper has the visible border; the .form-ghost inside
+  // receives the native pseudo-class.
+  .chip-input:has(.form-ghost.is-#{$state}) {
+    border-color: $border-color;
+
+    &:focus-within {
+      @include focus-ring(true, $color: $focus-ring-color);
+      border-color: $border-color;
+    }
+
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip { display: block; }
+  }
+
+  @if $state == "valid" or $state == "invalid" {
+    [data-bs-validate] .chip-input:has(.form-ghost:user-#{$state}) {
+      border-color: $border-color;
+
+      &:focus-within {
+        @include focus-ring(true, $color: $focus-ring-color);
+        border-color: $border-color;
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip { display: block; }
+    }
+  }
+
+  // Form adorn — :user-invalid fires on the inner .form-ghost, so we
+  // propagate it to the visible wrapper with :has().
+  .form-adorn:has(.form-ghost.is-#{$state}) {
+    border-color: $border-color;
+
+    &:focus-within {
+      @include focus-ring(true, $color: $focus-ring-color);
+      border-color: $border-color;
+    }
+  }
+
+  @if $state == "valid" or $state == "invalid" {
+    [data-bs-validate] .form-adorn:has(.form-ghost:user-#{$state}) {
+      border-color: $border-color;
+
+      &:focus-within {
+        @include focus-ring(true, $color: $focus-ring-color);
+        border-color: $border-color;
+      }
+    }
+  }
+
+  // Range — .form-range IS the <input>, so the mixin applies directly.
+  .form-range {
+    @include form-validation-state-selector($state) {
+      &::-webkit-slider-thumb { background: $color; }
+      &::-moz-range-thumb { background: $color; }
+
+      &:focus-visible {
+        &::-webkit-slider-thumb {
+          @include focus-ring(true, $color: $focus-ring-color);
+        }
+        &::-moz-range-thumb {
+          @include focus-ring(true, $color: $focus-ring-color);
+        }
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip { display: block; }
     }
   }
 
   .input-group {
     > .form-control:not(:focus),
-    > .form-select:not(:focus),
     > .form-floating:not(:focus-within) {
       @include form-validation-state-selector($state) {
         @if $state == "valid" {

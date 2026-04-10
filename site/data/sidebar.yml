@@ -73,6 +73,7 @@
   icon_color: blue
   pages:
     - title: Overview
+    - title: Field
     - title: Form control
     - title: Checkbox
     - title: Radio

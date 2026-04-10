@@ -19,14 +19,14 @@ $form-label-tokens: defaults(
 @layer forms {
   .form-label,
   .col-form-label {
-    font-size: var(--label-font-size, var(--font-size-sm));
+    font-size: var(--label-font-size, inherit);
     font-style: var(--label-font-style, inherit);
-    font-weight: var(--label-font-weight, inherit);
+    font-weight: var(--label-font-weight, 500);
     color: var(--label-color, var(--fg-body));
   }
 
   .form-label {
-    margin-bottom: var(--label-margin-bottom, calc(var(--spacer) / 2));
+    // margin-bottom: var(--label-margin-bottom, calc(var(--spacer) / 2));
   }
 
   // For use with horizontal and inline forms, when you need the label (or legend)

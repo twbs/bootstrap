@@ -11,19 +11,13 @@ extra_js:
 
 import { getDocsRelativePath } from '@libs/path'
 
-<Callout type="warning">
-We are aware that currently the client-side custom validation styles and tooltips are not accessible, since they are not exposed to assistive technologies. While we work on a solution, we’d recommend either using the server-side option or the default browser validation method.
-</Callout>
-
 ## How it works
 
-Here’s how form validation works with Bootstrap:
+Here's how form validation works with Bootstrap:
 
-- HTML form validation is applied via CSS’s two pseudo-classes, `:invalid` and `:valid`. It applies to `<input>`, `<select>`, and `<textarea>` elements.
-- Bootstrap scopes the `:invalid` and `:valid` styles to parent `.was-validated` class, usually applied to the `<form>`. Otherwise, any required field without a value shows up as invalid on page load. This way, you may choose when to activate them (typically after form submission is attempted).
-- To reset the appearance of the form (for instance, in the case of dynamic form submissions using Ajax), remove the `.was-validated` class from the `<form>` again after submission.
-- As a fallback, `.is-invalid` and `.is-valid` classes may be used instead of the pseudo-classes for [server-side validation](#server-side). They do not require a `.was-validated` parent class.
-- Due to constraints in how CSS works, we cannot (at present) apply styles to a `<label>` that comes before a form control in the DOM without the help of custom JavaScript.
+- **Client-side validation** uses the CSS pseudo-classes `:user-invalid` and `:user-valid`, scoped behind the `data-bs-validate` attribute. Add `data-bs-validate` to your `<form>` to opt in—validation styles only appear **after the user interacts** with a control (e.g., typing and blurring, or attempting to submit), so required fields don't show up as invalid on page load.
+- **Server-side validation** uses the `.is-invalid` and `.is-valid` classes to indicate field state without requiring user interaction. These work globally—no `data-bs-validate` attribute needed.
+- Custom validation states beyond `valid`/`invalid` (e.g., `warning`) are supported via the `.is-*` class pattern and the `$form-validation-states` Sass map.
 - All modern browsers support the [constraint validation API](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#the-constraint-validation-api), a series of JavaScript methods for validating form controls.
 - Feedback messages may utilize the [browser defaults](#browser-defaults) (different for each browser, and unstylable via CSS) or our custom feedback styles with additional HTML and CSS.
 - You may provide custom validity messages with `setCustomValidity` in JavaScript.
@@ -32,11 +26,11 @@ With that in mind, consider the following demos for our custom form validation s
 
 ## Custom styles
 
-For custom Bootstrap form validation messages, you’ll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you’ll see the `:invalid` and `:valid` styles applied to your form controls.
+For custom Bootstrap form validation messages, add `data-bs-validate` and the `novalidate` boolean attribute to your `<form>`. The `data-bs-validate` attribute opts in to Bootstrap's `:user-invalid` and `:user-valid` styling, while `novalidate` disables the browser default feedback tooltips. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you.
 
-Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.form-control`, and not `.form-control`.
+Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback.
 
-<Example code={`<form class="row g-3 needs-validation" novalidate>
+<Example code={`<form class="row g-3" data-bs-validate novalidate>
     <div class="md:col-4">
       <label for="validationCustom01" class="form-label">First name</label>
       <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
@@ -89,15 +83,39 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
       <label for="validationCustom06" class="form-label">Notes</label>
       <textarea class="form-control" id="validationCustom06" required></textarea>
     </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-        <label class="form-check-label" for="invalidCheck">
-          Agree to terms and conditions
-        </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
+    <div class="md:col-6">
+      <fieldset>
+        <legend class="form-label">Shipping method</legend>
+        <div class="form-field mb-1">
+          <input type="radio" id="validationCustomRadio1" class="radio" name="shipping" required>
+          <label for="validationCustomRadio1">Standard</label>
         </div>
+        <div class="form-field">
+          <input type="radio" id="validationCustomRadio2" class="radio" name="shipping" required>
+          <label for="validationCustomRadio2">Express</label>
+          <div class="invalid-feedback">Please select a shipping method.</div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="md:col-6">
+      <div class="form-field">
+        <div class="switch">
+          <input type="checkbox" id="validationCustomSwitch" role="switch" switch>
+        </div>
+        <label for="validationCustomSwitch">Subscribe to newsletter</label>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" id="invalidCheck" required>
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+          </svg>
+        </div>
+        <label for="invalidCheck">Agree to terms and conditions</label>
+        <div class="invalid-feedback">You must agree before submitting.</div>
       </div>
     </div>
     <div class="col-12">
@@ -109,7 +127,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 
 ## Browser defaults
 
-Not interested in custom validation feedback messages or writing JavaScript to change form behaviors? All good, you can use the browser defaults. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.
+Not interested in custom validation feedback messages or writing JavaScript to change form behaviors? All good, you can use the browser defaults. Try submitting the form below. Depending on your browser and OS, you'll see a slightly different style of feedback.
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
@@ -144,12 +162,37 @@ While these feedback styles cannot be styled with CSS, you can still customize t
       <label for="validationDefault05" class="form-label">Zip</label>
       <input type="text" class="form-control" id="validationDefault05" required>
     </div>
+    <div class="md:col-6">
+      <fieldset>
+        <legend class="form-label">Shipping method</legend>
+        <div class="form-field mb-1">
+          <input type="radio" id="validationDefaultRadio1" class="radio" name="shippingDefault" required>
+          <label for="validationDefaultRadio1">Standard</label>
+        </div>
+        <div class="form-field">
+          <input type="radio" id="validationDefaultRadio2" class="radio" name="shippingDefault" required>
+          <label for="validationDefaultRadio2">Express</label>
+        </div>
+      </fieldset>
+    </div>
+    <div class="md:col-6">
+      <div class="form-field">
+        <div class="switch">
+          <input type="checkbox" id="validationDefaultSwitch" role="switch" switch>
+        </div>
+        <label for="validationDefaultSwitch">Subscribe to newsletter</label>
+      </div>
+    </div>
     <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-        <label class="form-check-label" for="invalidCheck2">
-          Agree to terms and conditions
-        </label>
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" id="invalidCheck2" required>
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+          </svg>
+        </div>
+        <label for="invalidCheck2">Agree to terms and conditions</label>
       </div>
     </div>
     <div class="col-12">
@@ -214,15 +257,40 @@ To fix [issues with border radius](https://github.com/twbs/bootstrap/issues/2511
         Please provide a valid zip.
       </div>
     </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-        <label class="form-check-label" for="invalidCheck3">
-          Agree to terms and conditions
-        </label>
-        <div id="invalidCheck3Feedback" class="invalid-feedback">
-          You must agree before submitting.
+    <div class="md:col-6">
+      <fieldset>
+        <legend class="form-label">Shipping method</legend>
+        <div class="form-field mb-1">
+          <input type="radio" id="validationServerRadio1" class="radio is-invalid" name="shippingServer" required>
+          <label for="validationServerRadio1">Standard</label>
         </div>
+        <div class="form-field">
+          <input type="radio" id="validationServerRadio2" class="radio is-invalid" name="shippingServer" required>
+          <label for="validationServerRadio2">Express</label>
+          <div id="validationServerRadioFeedback" class="invalid-feedback">Please select a shipping method.</div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="md:col-6">
+      <div class="form-field">
+        <div class="switch">
+          <input type="checkbox" id="validationServerSwitch" role="switch" switch class="is-invalid">
+        </div>
+        <label for="validationServerSwitch">Accept marketing emails</label>
+        <div class="invalid-feedback">This field is required.</div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" id="invalidCheck3" class="is-invalid" aria-describedby="invalidCheck3Feedback" required>
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+          </svg>
+        </div>
+        <label for="invalidCheck3">Agree to terms and conditions</label>
+        <div id="invalidCheck3Feedback" class="invalid-feedback">You must agree before submitting.</div>
       </div>
     </div>
     <div class="col-12">
@@ -234,37 +302,59 @@ To fix [issues with border radius](https://github.com/twbs/bootstrap/issues/2511
 
 Validation styles are available for the following form controls and components:
 
-- `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
+- `<input>`s and `<textarea>`s with `.form-control`
 - `<select>`s with `.form-control`
-- `.form-check`s
+- `.check` checkboxes
+- `.radio` radios
+- `.switch` switches
+- `.form-range` range inputs
+- `.form-floating` floating labels
+- `.form-adorn` adorned inputs
+- `.chip-input` chip inputs
+- `.combobox-toggle` comboboxes (class-based only)
+- Input groups with `.has-validation`
 
-<Example code={`<form class="was-validated">
+<Example code={`<form>
     <div class="mb-3">
       <label for="validationTextarea" class="form-label">Textarea</label>
-      <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+      <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
       <div class="invalid-feedback">
         Please enter a message in the textarea.
       </div>
     </div>
 
-    <div class="form-check mb-3">
-      <input type="checkbox" class="form-check-input" id="validationFormCheck1" required>
-      <label class="form-check-label" for="validationFormCheck1">Check this checkbox</label>
+    <div class="form-field mb-3">
+      <div class="check">
+        <input type="checkbox" class="is-invalid" id="validationFormCheck1" required>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+          <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+          <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+        </svg>
+      </div>
+      <label for="validationFormCheck1">Check this checkbox</label>
       <div class="invalid-feedback">Example invalid feedback text</div>
     </div>
 
-    <div class="form-check">
-      <input type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
-      <label class="form-check-label" for="validationFormCheck2">Toggle this radio</label>
+    <div class="form-field">
+      <input type="radio" class="radio is-invalid" id="validationFormCheck2" name="radio-stacked" required>
+      <label for="validationFormCheck2">Toggle this radio</label>
     </div>
-    <div class="form-check mb-3">
-      <input type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked" required>
-      <label class="form-check-label" for="validationFormCheck3">Or toggle this other radio</label>
+    <div class="form-field mb-3">
+      <input type="radio" class="radio is-invalid" id="validationFormCheck3" name="radio-stacked" required>
+      <label for="validationFormCheck3">Or toggle this other radio</label>
       <div class="invalid-feedback">More example invalid feedback text</div>
     </div>
 
+    <div class="form-field mb-3">
+      <div class="switch">
+        <input type="checkbox" id="validationFormSwitch" role="switch" switch class="is-invalid">
+      </div>
+      <label for="validationFormSwitch">Toggle this switch</label>
+      <div class="invalid-feedback">Example invalid switch feedback</div>
+    </div>
+
     <div class="mb-3">
-      <select class="form-control" required aria-label="select example">
+      <select class="form-control is-invalid" required aria-label="select example">
         <option value="">Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -274,8 +364,42 @@ Validation styles are available for the following form controls and components:
     </div>
 
     <div class="mb-3">
-      <input type="file" class="form-control" aria-label="file example" required>
+      <input type="file" class="form-control is-invalid" aria-label="file example" required>
       <div class="invalid-feedback">Example invalid form file feedback</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="validationRange" class="form-label">Range</label>
+      <input type="range" class="form-range is-invalid" id="validationRange" min="0" max="5" required>
+      <div class="invalid-feedback">Example invalid range feedback</div>
+    </div>
+
+    <div class="mb-3">
+      <div class="form-floating">
+        <input type="email" class="form-control is-invalid" id="validationFloating" placeholder="name@example.com" value="test@example.com">
+        <label for="validationFloating">Email address</label>
+      </div>
+      <div class="invalid-feedback d-block">Example invalid floating label feedback</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="validationAdorn" class="form-label">Adorned input</label>
+      <div class="form-control form-adorn is-invalid">
+        <div class="form-adorn-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
+        </div>
+        <input type="text" class="form-ghost" id="validationAdorn" placeholder="Search...">
+      </div>
+      <div class="invalid-feedback">Example invalid adorned input feedback</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="validationChipInput">Tags</label>
+      <div class="chip-input">
+        <span class="chip">Example</span>
+        <input type="text" class="form-ghost is-invalid" id="validationChipInput" placeholder="Add tag...">
+      </div>
+      <div class="invalid-feedback">Please add at least one tag</div>
     </div>
 
     <div class="mb-3">
@@ -287,7 +411,7 @@ Validation styles are available for the following form controls and components:
 
 If your form layout allows it, you can swap the `.{valid|invalid}-feedback` classes for `.{valid|invalid}-tooltip` classes to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
 
-<Example code={`<form class="row g-3 needs-validation" novalidate>
+<Example code={`<form class="row g-3" data-bs-validate novalidate>
     <div class="md:col-4 position-relative">
       <label for="validationTooltip01" class="form-label">First name</label>
       <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
@@ -345,7 +469,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 
 ### Variables
 
-As part of Bootstrap’s evolving CSS variables approach, forms now use local CSS variables for validation for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+As part of Bootstrap's evolving CSS variables approach, forms now use local CSS variables for validation for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
 <ScssDocs name="root-form-validation-variables" file="scss/_root.scss" />
 
@@ -379,4 +503,4 @@ Used to iterate over `$form-validation-states` map values to generate our valida
 
 ### Customizing
 
-Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `forms/_form-variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state’s color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `forms/_form-variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.

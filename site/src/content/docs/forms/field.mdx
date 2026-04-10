@@ -1,0 +1,199 @@
+---
+title: Field
+description: A universal layout wrapper for form controls that handles label, description, and validation feedback placement with CSS grid.
+toc: true
+css_layer: forms
+extra_js:
+  - src: "[[docsref:/assets/js/validate-forms.js]]"
+    async: true
+---
+
+## How it works
+
+The `.form-field` wrapper uses CSS grid to manage the layout of a form control alongside its label, description, and validation feedback.
+
+- **Default layout** is a single-column grid where everything stacks vertically. Use this for text inputs, selects, and textareas.
+- **Two-column layout** activates automatically via `:has()` when a `.check`, `.radio`, or `.switch` is a direct child. The control pins to column 1 while the label, description, and feedback stack in column 2.
+
+## Text input
+
+Wrap a `.form-control` and its label in `.form-field` for a simple vertical stack.
+
+<Example code={`<div class="form-field">
+    <label for="fieldText" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="fieldText" placeholder="name@example.com">
+    <div class="form-text">
+      We'll never share your email with anyone else.
+    </div>
+  </div>`} />
+
+## Textarea
+
+Works the same way with `<textarea>` elements. Descriptions are optional.
+
+<Example code={`<div class="form-field">
+    <label for="fieldTextarea" class="form-label">Message</label>
+    <textarea class="form-control" id="fieldTextarea" rows="3"></textarea>
+    <div class="form-text">
+      Be sure to include relevant details.
+    </div>
+  </div>`} />
+
+## Checkbox
+
+When a `.check` is a direct child, the grid switches to a two-column layout with the checkbox in column 1 and the label in column 2.
+
+<Example code={`<div class="form-field">
+    <div class="check">
+      <input type="checkbox" id="fieldCheck" />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+      </svg>
+    </div>
+    <label for="fieldCheck">Remember me</label>
+  </div>`} />
+
+## Radio
+
+Radios use the same two-column layout. Wrap each radio + label pair in its own `.form-field`.
+
+<Example class="d-flex flex-column gap-2" code={`<div class="form-field">
+    <input type="radio" id="fieldRadio1" class="radio" name="fieldRadioGroup" />
+    <label for="fieldRadio1">Option one</label>
+  </div>
+  <div class="form-field">
+    <input type="radio" id="fieldRadio2" class="radio" name="fieldRadioGroup" />
+    <label for="fieldRadio2">Option two</label>
+  </div>`} />
+
+## Grouped
+
+<Example code={`<div class="vstack gap-1">
+    <div class="form-field form-field-group">
+      <input type="radio" id="fieldRadioGroup1" class="radio" name="fieldRadioGrouped" checked />
+      <div class="form-field-content">
+        <label for="fieldRadioGroup1">Option one</label>
+        <small class="form-text">This is the first option.</small>
+      </div>
+    </div>
+    <div class="form-field form-field-group">
+      <input type="radio" id="fieldRadioGroup2" class="radio" name="fieldRadioGrouped" />
+      <div class="form-field-content">
+        <label for="fieldRadioGroup2">Option two</label>
+        <small class="form-text">This is the second option.</small>
+      </div>
+    </div>
+  </div>
+  `} />
+
+## Switch
+
+Switches also trigger the two-column grid.
+
+<Example code={`<div class="form-field">
+    <div class="switch">
+      <input type="checkbox" id="fieldSwitch" role="switch" switch>
+    </div>
+    <label for="fieldSwitch">Enable notifications</label>
+  </div>`} />
+
+## Descriptions
+
+Add a `<small class="form-text">` after the label and wrap it in a `.form-field-content` to ensure appropriate spacing and alignment.
+
+<Example class="d-flex flex-column gap-3" code={`<div class="form-field">
+    <div class="check">
+      <input type="checkbox" id="fieldCheckDesc" />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+      </svg>
+    </div>
+    <div class="form-field-content">
+      <label for="fieldCheckDesc">Subscribe to updates</label>
+      <small class="form-text">We'll send you a weekly digest of what's new.</small>
+    </div>
+  </div>
+  <div class="form-field">
+    <input type="radio" id="fieldRadioDesc" class="radio" name="fieldRadioDesc" />
+    <div class="form-field-content">
+      <label for="fieldRadioDesc">Standard shipping</label>
+      <small class="form-text">Arrives in 5-7 business days.</small>
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="fieldTextDesc" class="form-label">Username</label>
+    <input type="text" class="form-control" id="fieldTextDesc">
+    <small class="form-text">Must be 3-20 characters, letters and numbers only.</small>
+  </div>`} />
+
+## Validation
+
+Validation feedback (`.invalid-feedback`, `.valid-feedback`) stacks correctly inside `.form-field` for all control types.
+
+### Client-side
+
+Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` and `:user-valid` styling. These pseudo-classes activate after the user interacts with a control. Add `novalidate` to suppress browser tooltips while keeping the constraint validation API available.
+
+<Example code={`<form class="vstack gap-3 align-items-start" data-bs-validate novalidate>
+    <div class="form-field flex-1">
+      <label for="fieldValidateEmail" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="fieldValidateEmail" required>
+      <div class="invalid-feedback">Please enter a valid email address.</div>
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div class="form-field">
+      <div class="check">
+        <input type="checkbox" id="fieldValidateCheck" required>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+          <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+          <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+        </svg>
+      </div>
+      <div class="form-field-content">
+        <label for="fieldValidateCheck">Agree to terms and conditions</label>
+        <div class="invalid-feedback">You must agree before submitting.</div>
+      </div>
+    </div>
+    <button class="btn-solid theme-primary" type="submit">Submit</button>
+  </form>`} />
+
+### Server-side
+
+Apply `.is-invalid` or `.is-valid` directly to the control for server-side validation. Feedback is visible immediately on page load.
+
+<Example code={`<div class="form-field mb-3">
+    <label for="fieldServerEmail" class="form-label">Email address</label>
+    <input type="email" class="form-control is-invalid" id="fieldServerEmail" value="not-an-email" required>
+    <div class="invalid-feedback">Please enter a valid email address.</div>
+  </div>
+  <div class="form-field mb-3">
+    <label for="fieldServerName" class="form-label">Full name</label>
+    <input type="text" class="form-control is-valid" id="fieldServerName" value="Mark Otto" required>
+    <div class="valid-feedback">Looks good!</div>
+  </div>
+  <div class="form-field mb-3">
+    <div class="check">
+      <input type="checkbox" id="fieldServerCheck" class="is-invalid" required>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+      </svg>
+    </div>
+    <label for="fieldServerCheck">Agree to terms and conditions</label>
+    <div class="invalid-feedback">You must agree before submitting.</div>
+  </div>
+  <div class="form-field mb-3">
+    <div class="switch">
+      <input type="checkbox" id="fieldServerSwitch" role="switch" switch class="is-invalid">
+    </div>
+    <label for="fieldServerSwitch">Accept marketing emails</label>
+    <div class="invalid-feedback">This field is required.</div>
+  </div>`} />
+
+## CSS
+
+### Sass
+
+<ScssDocs name="form-field" file="scss/forms/_form-field.scss" />

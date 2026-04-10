@@ -14,9 +14,12 @@ mdn: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input
 
 Form controls are styled with a mix of Sass and CSS variables, allowing them to adapt to color modes and support any customization method.
 
-<Example class="vstack gap-3" code={`<div>
+<Example class="vstack gap-3" code={`<div class="form-field">
     <label for="exampleFormControlInput1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <div class="form-text">
+      We'll never share your email with anyone else.
+    </div>
   </div>`} />
 
 ## Textarea

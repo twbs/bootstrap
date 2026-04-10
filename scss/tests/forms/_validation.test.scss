@@ -1,0 +1,102 @@
+// Inline copy of the selector mixin for isolated testing.
+// Source: scss/forms/_validation.scss
+//
+// Note: The [data-bs-validate] :user-* scoped selector uses @at-root, which
+// escapes sass-true's test wrapper. That output is verified by the compile
+// check instead. Tests here cover the .is-* (global) selector behavior.
+@mixin form-validation-state-selector($state) {
+  @if & {
+    &.is-#{$state} {
+      @content;
+    }
+
+    @if $state == "valid" or $state == "invalid" {
+      @at-root [data-bs-validate] #{&}:user-#{$state} {
+        @content;
+      }
+    }
+  } @else {
+    .is-#{$state} {
+      @content;
+    }
+
+    @if $state == "valid" or $state == "invalid" {
+      [data-bs-validate] :user-#{$state} {
+        @content;
+      }
+    }
+  }
+}
+
+@include describe("form-validation-state-selector") {
+
+  @include it("invalid: generates .is-invalid selector") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("invalid") {
+            border-color: #d00;
+          }
+        }
+      }
+      @include contains() {
+        .form-control.is-invalid {
+          border-color: #d00;
+        }
+      }
+    }
+  }
+
+  @include it("valid: generates .is-valid selector") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("valid") {
+            border-color: #0d0;
+          }
+        }
+      }
+      @include contains() {
+        .form-control.is-valid {
+          border-color: #0d0;
+        }
+      }
+    }
+  }
+
+  @include it("custom state (warning): only .is-warning, no :user-*") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("warning") {
+            border-color: #f80;
+          }
+        }
+      }
+      @include expect() {
+        .form-control.is-warning {
+          border-color: #f80;
+        }
+      }
+    }
+  }
+
+  @include it("sibling combinator works for feedback display") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("invalid") {
+            ~ .invalid-feedback {
+              display: block;
+            }
+          }
+        }
+      }
+      @include contains() {
+        .form-control.is-invalid ~ .invalid-feedback {
+          display: block;
+        }
+      }
+    }
+  }
+}
