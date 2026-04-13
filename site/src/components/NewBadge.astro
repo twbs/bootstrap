@@ -1,0 +1,15 @@
+---
+interface Props {
+  version: string
+}
+
+const { version } = Astro.props
+---
+
+<span
+  class="badge theme-secondary ms-auto fg-3 fw-normal me--1"
+  data-bs-toggle="tooltip"
+  data-bs-title={`Added in v${version}`}
+>
+  New
+</span>

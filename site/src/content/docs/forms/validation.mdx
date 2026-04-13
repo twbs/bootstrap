@@ -30,39 +30,34 @@ For custom Bootstrap form validation messages, add `data-bs-validate` and the `n
 
 Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback.
 
-<Example code={`<form class="row g-3" data-bs-validate novalidate>
-    <div class="md:col-4">
-      <label for="validationCustom01" class="form-label">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
+<Example code={`<form class="row g-4 mx-auto" data-bs-validate novalidate>
+    <div class="form-field md:col-6">
+      <label for="validationCustom01" class="form-label">Name</label>
+      <input type="text" class="form-control" id="validationCustom01" value="Mark Otto" required>
+      <div class="valid-feedback">Looks good!</div>
     </div>
-    <div class="md:col-4">
-      <label for="validationCustom02" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-      <div class="valid-feedback">
-        Looks good!
+        <div class="form-field md:col-6">
+      <label for="validationCustomUsername" class="form-label">Donation amount</label>
+      <div class="input-group">
+        <span class="input-group-text" id="inputGroupPrepend">$</span>
+        <input type="number" class="form-control" value="100" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
       </div>
+      <div class="valid-feedback">Amazing, thank you!</div>
+      <div class="invalid-feedback">Please enter a valid donation amount.</div>
     </div>
-    <div class="md:col-4">
-      <label for="validationCustomUsername" class="form-label">Username</label>
-      <div class="input-group has-validation">
-        <span class="input-group-text" id="inputGroupPrepend">@</span>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-      </div>
+    <div class="form-field">
+      <label for="validationCustomAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="validationCustomAddress" value="1234 Main St" required>
+      <div class="invalid-feedback">Please enter a valid mailing address.</div>
     </div>
-    <div class="md:col-6">
+    <div class="form-field md:col-6">
       <label for="validationCustom03" class="form-label">City</label>
       <input type="text" class="form-control" id="validationCustom03" required>
       <div class="invalid-feedback">
         Please provide a valid city.
       </div>
     </div>
-    <div class="md:col-3">
+    <div class="form-field md:col-4">
       <label for="validationCustom04" class="form-label">State</label>
       <select class="form-control" id="validationCustom04" required>
         <option selected disabled value="">Choose...</option>
@@ -72,55 +67,37 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
         Please select a valid state.
       </div>
     </div>
-    <div class="md:col-3">
+    <div class="form-field md:col-2">
       <label for="validationCustom05" class="form-label">Zip</label>
       <input type="text" class="form-control" id="validationCustom05" required>
       <div class="invalid-feedback">
-        Please provide a valid zip.
+        Required
       </div>
     </div>
-    <div class="md:col-6">
-      <label for="validationCustom06" class="form-label">Notes</label>
-      <textarea class="form-control" id="validationCustom06" required></textarea>
-    </div>
-    <div class="md:col-6">
-      <fieldset>
-        <legend class="form-label">Shipping method</legend>
-        <div class="form-field mb-1">
-          <input type="radio" id="validationCustomRadio1" class="radio" name="shipping" required>
+    <fieldset>
+      <legend class="form-label">Shipping method</legend>
+      <div class="form-field mb-1">
+        <input type="radio" id="validationCustomRadio1" class="radio" name="shipping" required>
+        <div class="form-field-content">
           <label for="validationCustomRadio1">Standard</label>
+          <small class="form-text">Arrives in 5-7 business days.</small>
         </div>
-        <div class="form-field">
-          <input type="radio" id="validationCustomRadio2" class="radio" name="shipping" required>
+      </div>
+      <div class="form-field">
+        <input type="radio" id="validationCustomRadio2" class="radio" name="shipping" required>
+        <div class="form-field-content">
           <label for="validationCustomRadio2">Express</label>
-          <div class="invalid-feedback">Please select a shipping method.</div>
+          <small class="form-text">Arrives in 2-3 business days.</small>
         </div>
-      </fieldset>
-    </div>
-    <div class="md:col-6">
-      <div class="form-field">
-        <div class="switch">
-          <input type="checkbox" id="validationCustomSwitch" role="switch" switch>
-        </div>
-        <label for="validationCustomSwitch">Subscribe to newsletter</label>
       </div>
-    </div>
-    <div class="col-12">
-      <div class="form-field">
-        <div class="check">
-          <input type="checkbox" id="invalidCheck" required>
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
-          </svg>
-        </div>
-        <label for="invalidCheck">Agree to terms and conditions</label>
-        <div class="invalid-feedback">You must agree before submitting.</div>
+    </fieldset>
+    <div class="form-field">
+      <div class="switch">
+        <input type="checkbox" id="validationCustomSwitch" role="switch" switch>
       </div>
+      <label for="validationCustomSwitch">Subscribe to newsletter</label>
     </div>
-    <div class="col-12">
-      <button class="btn-solid theme-primary" type="submit">Submit form</button>
-    </div>
+    <button class="btn-solid theme-primary w-auto" type="submit">Submit form</button>
   </form>`} />
 
 <Code containerClass="bd-example-snippet" lang="js" filePath={getDocsRelativePath('/static/docs/[version]/assets/js/validate-forms.js')} />
@@ -206,10 +183,8 @@ We recommend using client-side validation, but in case you require server-side v
 
 For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
-To fix [issues with border radius](https://github.com/twbs/bootstrap/issues/25110), input groups require an additional `.has-validation` class.
-
 <Example code={`<form class="row g-3">
-    <div class="md:col-4">
+    <div class="form-field md:col-4">
       <label for="validationServer01" class="form-label">First name</label>
       <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
       <div class="valid-feedback">
@@ -224,10 +199,12 @@ To fix [issues with border radius](https://github.com/twbs/bootstrap/issues/2511
       </div>
     </div>
     <div class="md:col-4">
-      <label for="validationServerUsername" class="form-label">Username</label>
-      <div class="input-group has-validation">
-        <span class="input-group-text" id="inputGroupPrepend3">@</span>
-        <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+      <div class="form-field">
+        <label for="validationServerUsername" class="form-label">Username</label>
+        <div class="input-group">
+          <span class="input-group-text" id="inputGroupPrepend3">@</span>
+          <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+        </div>
         <div id="validationServerUsernameFeedback" class="invalid-feedback">
           Please choose a username.
         </div>
@@ -312,7 +289,7 @@ Validation styles are available for the following form controls and components:
 - `.form-adorn` adorned inputs
 - `.chip-input` chip inputs
 - `.combobox-toggle` comboboxes (class-based only)
-- Input groups with `.has-validation`
+- Input groups (with feedback in a parent `.form-field`)
 
 <Example code={`<form>
     <div class="mb-3">
@@ -427,10 +404,12 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
       </div>
     </div>
     <div class="md:col-4 position-relative">
-      <label for="validationTooltipUsername" class="form-label">Username</label>
-      <div class="input-group has-validation">
-        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-        <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+      <div class="form-field">
+        <label for="validationTooltipUsername" class="form-label">Username</label>
+        <div class="input-group">
+          <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+          <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+        </div>
         <div class="invalid-tooltip">
           Please choose a unique and valid username.
         </div>
@@ -477,9 +456,7 @@ These variables are also color mode adaptive, meaning they change color while in
 
 ### Sass variables
 
-<ScssDocs name="form-feedback-variables" file="scss/forms/_form-variables.scss" />
-
-<ScssDocs name="form-validation-colors" file="scss/forms/_form-variables.scss" />
+<ScssDocs name="form-feedback-variables" file="scss/forms/_validation.scss" />
 
 ### Sass mixins
 
@@ -489,9 +466,9 @@ Two mixins are combined, through our [loop](#sass-loops), to generate our form v
 
 ### Sass maps
 
-This is the validation Sass map from `forms/_form-variables.scss`. Override or extend this to generate different or additional states.
+This is the validation Sass map from `forms/_validation.scss`. Override or extend this to generate different or additional states.
 
-<ScssDocs name="form-validation-states" file="scss/forms/_form-variables.scss" />
+<ScssDocs name="form-validation-states" file="scss/forms/_validation.scss" />
 
 Maps of `$form-validation-states` can contain three optional parameters to override tooltips and focus styles.
 
@@ -503,4 +480,4 @@ Used to iterate over `$form-validation-states` map values to generate our valida
 
 ### Customizing
 
-Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `forms/_form-variables.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, icon, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `forms/_validation.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.

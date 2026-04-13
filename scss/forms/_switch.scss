@@ -17,6 +17,8 @@ $switch-tokens: defaults(
     --switch-border-width: var(--border-width),
     --switch-border-color: var(--border-color),
     --switch-indicator-bg: var(--white),
+    --switch-indicator-width: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2),
+    --switch-indicator-height: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2),
     --switch-checked-bg: var(--control-checked-bg),
     --switch-checked-border-color: var(--switch-checked-bg),
     --switch-checked-indicator-bg: var(--white),
@@ -33,10 +35,7 @@ $switch-tokens: defaults(
     @include tokens($switch-tokens);
 
     position: relative;
-    display: flex;
     flex-shrink: 0;
-    align-items: stretch;
-    justify-content: flex-start;
     width: var(--switch-width);
     height: var(--switch-height);
     padding: var(--switch-padding);
@@ -47,18 +46,21 @@ $switch-tokens: defaults(
     border-radius: 10rem;
     box-shadow: inset 0 1px 2px rgb(0 0 0 / .05);
     // stylelint-disable-next-line property-disallowed-list
-    transition: .15s ease-in-out;
-    transition-property: padding-inline-start, background-color;
+    transition: background-color .15s ease-in-out;
 
     &::before {
-      flex-shrink: 0;
-      width: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2);
-      height: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2);
+      position: absolute;
+      inset-block: var(--switch-padding);
+      inset-inline-start: var(--switch-padding);
+      width: var(--switch-indicator-width);
+      height: var(--switch-indicator-height);
       content: "";
       background-color: var(--theme-contrast, var(--switch-indicator-bg));
       // stylelint-disable-next-line property-disallowed-list
-      border-radius: 50%;
+      border-radius: 10rem;
       box-shadow: 0 1px 2px rgb(0 0 0 / .1);
+      // stylelint-disable-next-line property-disallowed-list
+      transition: inset-inline-start .15s ease-in-out;
     }
 
     input {
@@ -74,9 +76,12 @@ $switch-tokens: defaults(
     }
 
     &:has(input:checked) {
-      padding-inline-start: calc(var(--switch-height) / 2 + var(--switch-padding));
       background-color: var(--theme-bg, var(--switch-checked-bg));
       border-color: var(--theme-bg, var(--switch-checked-border-color));
+
+      &::before {
+        inset-inline-start: calc(100% - var(--switch-indicator-width) - var(--switch-padding));
+      }
     }
 
     &:has(input:disabled) {

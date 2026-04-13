@@ -82,9 +82,11 @@ const dataDefinitions = {
           title: z.string().optional(),
           href: z.string().optional(),
           group: z.string().optional(),
+          meta: z.object({ added: z.string() }).array().optional(),
           pages: z
             .object({
-              title: z.string()
+              title: z.string(),
+              meta: z.object({ added: z.string() }).array().optional()
             })
             .array()
             .optional()

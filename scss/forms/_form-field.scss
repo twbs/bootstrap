@@ -3,9 +3,16 @@
 // scss-docs-start form-field
 @layer forms {
   .form-field {
+    position: relative;
     display: grid;
     gap: .5rem;
-    width: 100%;
+    // width: 100%;
+
+    > label,
+    > .form-label {
+      justify-self: start;
+      margin-bottom: 0;
+    }
 
     &:has(> .check, > .radio, > .switch) {
       grid-template-columns: auto 1fr;
@@ -15,12 +22,15 @@
       > .check,
       > .radio,
       > .switch {
-        grid-row: 1;
         grid-column: 1;
       }
 
       > :not(.check, .radio, .switch) {
         grid-column: 2;
+      }
+
+      > .form-label {
+        grid-column: 1 / -1;
       }
     }
   }
@@ -32,13 +42,25 @@
   }
 
   .form-field-group {
+    position: relative;
     padding: calc(var(--spacer) * .75);
+    cursor: pointer;
     border: var(--border-width) solid transparent;
+    @include border-radius(var(--border-radius-lg));
+
+    &:hover {
+      background-color: var(--bg-1);
+    }
 
     &:has(:checked) {
       background-color: var(--bg-1);
       border-color: var(--border-color);
-      @include border-radius(var(--border-radius-lg));
+    }
+
+    label::before {
+      position: absolute;
+      inset: 0;
+      content: "";
     }
   }
 }

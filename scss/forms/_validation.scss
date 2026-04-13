@@ -2,7 +2,6 @@
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/focus-ring" as *;
-@use "form-variables" as *;
 @use "../tooltip" as *; // bring in tooltip variables
 
 // Form validation
@@ -12,6 +11,31 @@
 // Client-side: `:user-invalid` / `:user-valid` pseudo-classes are scoped
 // behind `[data-bs-validate]` so forms must opt in to native validation styling.
 // Custom states (e.g., "warning") use only the `.is-*` class.
+
+// scss-docs-start form-feedback-variables
+$form-feedback-margin-top:          0 !default;
+$form-feedback-font-size:           var(--font-size-sm) !default;
+$form-feedback-font-style:          null !default;
+// scss-docs-end form-feedback-variables
+
+// scss-docs-start form-validation-states
+$form-validation-states: (
+  "valid": (
+    "color": var(--form-valid-color),
+    "tooltip-color": var(--success-contrast),
+    "tooltip-bg-color": var(--success-bg),
+    "focus-ring-color": var(--success-focus-ring),
+    "border-color": var(--success-border),
+  ),
+  "invalid": (
+    "color": var(--form-invalid-color),
+    "tooltip-color": var(--danger-contrast),
+    "tooltip-bg-color": var(--danger-bg),
+    "focus-ring-color": var(--danger-focus-ring),
+    "border-color": var(--danger-border),
+  )
+) !default;
+// scss-docs-end form-validation-states
 
 // scss-docs-start form-validation-mixins
 @mixin form-validation-state-selector($state) {
@@ -41,7 +65,6 @@
 @mixin form-validation-state(
   $state,
   $color,
-  $icon,
   $tooltip-color: color-contrast($color),
   $tooltip-bg-color: color-mix(in oklch, #{$color #form-feedback-tooltip-opacity}, transparent),
   $focus-ring-color: null, // mdo-do: fix
@@ -84,14 +107,6 @@
     @include form-validation-state-selector($state) {
       border-color: $border-color;
 
-      @if $enable-validation-icons {
-        padding-inline-end: calc(var(--control-padding-x) * 3.5);
-        background-image: escape-svg($icon);
-        background-repeat: no-repeat;
-        background-position: right var(--control-padding-x) center;
-        background-size: 1rem;
-      }
-
       &:focus-visible {
         @include focus-ring(true, $color: $focus-ring-color);
         border-color: $border-color;
@@ -99,14 +114,6 @@
     }
   }
 
-  // stylelint-disable-next-line selector-no-qualifying-type
-  textarea.form-control {
-    @include form-validation-state-selector($state) {
-      @if $enable-validation-icons {
-        background-position: right var(--control-padding-x) top var(--control-padding-x);
-      }
-    }
-  }
 
   // Checkbox — control-level styling (border, checked bg, focus ring).
   .check input {
@@ -251,6 +258,9 @@
       @include focus-ring(true, $color: $focus-ring-color);
       border-color: $border-color;
     }
+
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip { display: block; }
   }
 
   @if $state == "valid" or $state == "invalid" {
@@ -261,6 +271,9 @@
         @include focus-ring(true, $color: $focus-ring-color);
         border-color: $border-color;
       }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip { display: block; }
     }
   }
 
@@ -281,6 +294,20 @@
 
       ~ .#{$state}-feedback,
       ~ .#{$state}-tooltip { display: block; }
+    }
+  }
+
+  // Input group — feedback lives outside the input-group in the parent
+  // .form-field, so we use :has() to toggle display.
+  .form-field:has(.input-group .form-control.is-#{$state}) {
+    .#{$state}-feedback,
+    .#{$state}-tooltip { display: block; }
+  }
+
+  @if $state == "valid" or $state == "invalid" {
+    [data-bs-validate] .form-field:has(.input-group .form-control:user-#{$state}) {
+      .#{$state}-feedback,
+      .#{$state}-tooltip { display: block; }
     }
   }
 

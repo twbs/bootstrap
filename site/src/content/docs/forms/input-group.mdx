@@ -5,9 +5,7 @@ toc: true
 css_layer: components
 ---
 
-## Examples
-
-Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<label>`s outside the input group.
+Input groups attach add-on elements to a textual input field. Add-ons can be text, buttons, or button groups. Add labels, help text, and validation styles with [form fields]([[docsref:/forms/field]]).
 
 <Example class="vstack gap-3" code={`<div class="input-group">
     <span class="input-group-text" id="basic-addon1">@</span>
@@ -17,112 +15,153 @@ Place one add-on or button on either side of an input. You may also place one on
   <div class="input-group">
     <input type="text" class="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username" aria-describedby="basic-addon2">
     <span class="input-group-text" id="basic-addon2">@example.com</span>
-  </div>
+  </div>`} />
 
-  <div>
-    <label for="basic-url" class="form-label">Your vanity URL</label>
+## Examples
+
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<label>`s outside the input group.
+
+## With form field
+
+Wrap an `.input-group` in a `.form-field` to pair it with a label and description text.
+
+<Example code={`<div class="form-field">
+    <label for="inputGroupField" class="form-label">Your vanity URL</label>
     <div class="input-group">
-      <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+      <span class="input-group-text">https://example.com/</span>
+      <input type="text" class="form-control" id="inputGroupField" placeholder="username">
     </div>
-    <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-text">$</span>
-    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-    <span class="input-group-text">.00</span>
-  </div>
-
-  <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-    <span class="input-group-text">@</span>
-    <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-  </div>
-
-  <div class="input-group">
-    <span class="input-group-text">With textarea</span>
-    <textarea class="form-control" aria-label="With textarea"></textarea>
-  </div>
-
-  <div class="input-group">
-    <button class="btn-outline theme-secondary input-group-btn" type="button" id="button-addon">Button</button>
-    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon">
+    <small class="form-text">Choose a unique URL for your profile.</small>
   </div>`} />
 
-## Wrapping
+### Buttons
 
-Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custom form field validation within an input group. You may disable this with `.flex-nowrap`.
-
-<Example code={`<div class="input-group flex-nowrap">
-    <span class="input-group-text" id="addon-wrapping">@</span>
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-  </div>`} />
-
-## Border radius
-
-Due to limitations of browser support at the time, `border-radius` styles can only be applied to the first and last children within the `.input-group` class. Any non-visible element in one of those positions will cause the input group to render incorrectly. This will unfortunately not be fixed until v6 most likely.
+Use [buttons]([[docsref:/components/buttons]]) instead of addons for supporting interactive options.
 
 <Example code={`<div class="input-group">
-    <span class="input-group-text" id="visible-addon">@</span>
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon">
-    <input type="text" class="form-control d-none" placeholder="Hidden input" aria-label="Hidden input" aria-describedby="visible-addon">
+    <button class="btn-outline theme-secondary input-group-btn" type="button" id="button-addon1">Button</button>
+    <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
   </div>`} />
 
-## Sizing
+### Textarea
 
-Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
+Input groups adapt to the height of textarea elements.
 
-**Sizing on the individual input group elements isn’t supported.**
+<Example code={`<div class="input-group">
+    <span class="input-group-text">With textarea</span>
+    <textarea class="form-control" aria-label="With textarea"></textarea>
+  </div>`} />
 
-<Example code={`<div class="input-group input-group-sm mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
-    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+### Select
+
+
+<Example code={`<div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+    <select class="form-control" id="inputGroupSelect01">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
   </div>
 
   <div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    <select class="form-control" id="inputGroupSelect02">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <label class="input-group-text" for="inputGroupSelect02">Options</label>
   </div>
 
-  <div class="input-group input-group-lg">
-    <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
-    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+  <div class="input-group mb-3">
+    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
+    <select class="form-control" id="inputGroupSelect03" aria-label="Example select with button addon">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+
+  <div class="input-group">
+    <select class="form-control" id="inputGroupSelect04" aria-label="Example select with button addon">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
   </div>`} />
 
-## Checkboxes and radios
+### File input
 
-Place any checkbox or radio option within an input group’s addon instead of text. We recommend adding `.mt-0` to the `.form-check-input` when there’s no visible text next to the input.
+<Example code={`<div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+    <input type="file" class="form-control" id="inputGroupFile01">
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="file" class="form-control" id="inputGroupFile02">
+    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+  </div>
+
+  <div class="input-group mb-3">
+    <button class="btn-outline theme-secondary input-group-btn" type="button" id="inputGroupFileAddon03">Button</button>
+    <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+  </div>
+
+  <div class="input-group">
+    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+    <button class="btn-outline theme-secondary input-group-btn" type="button" id="inputGroupFileAddon04">Button</button>
+  </div>`} />
+
+### Checkboxes and radios
+
+Place any checkbox or radio within an input group’s addon instead of text.
 
 <Example code={`<div class="input-group mb-3">
     <div class="input-group-text">
-      <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+      <div class="check">
+        <input type="checkbox" aria-label="Checkbox for following text input">
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+          <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+          <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
+        </svg>
+      </div>
     </div>
     <input type="text" class="form-control" aria-label="Text input with checkbox">
   </div>
 
   <div class="input-group">
     <div class="input-group-text">
-      <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
+      <input type="radio" class="radio" aria-label="Radio button for following text input">
     </div>
     <input type="text" class="form-control" aria-label="Text input with radio button">
   </div>`} />
 
-## Multiple inputs
+### Multiple inputs
 
 While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
 
-<Example code={`<div class="input-group">
+<Example class="vstack gap-3" code={`<div class="input-group">
     <span class="input-group-text">First and last name</span>
     <input type="text" aria-label="First name" class="form-control">
     <input type="text" aria-label="Last name" class="form-control">
+  </div>
+
+  <div class="input-group">
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+    <span class="input-group-text">@</span>
+    <input type="text" class="form-control" placeholder="Server" aria-label="Server">
   </div>`} />
 
-## Multiple addons
+### Multiple addons
 
 Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
 
-<Example code={`<div class="input-group mb-3">
+<Example class="vstack gap-3" code={`<div class="input-group">
     <span class="input-group-text">$</span>
     <span class="input-group-text">0.00</span>
     <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
@@ -132,9 +171,15 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
     <span class="input-group-text">$</span>
     <span class="input-group-text">0.00</span>
+  </div>
+
+  <div class="input-group">
+    <span class="input-group-text">$</span>
+    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+    <span class="input-group-text">.00</span>
   </div>`} />
 
-## Button addons
+### Button addons
 
 <Example class="vstack gap-3" code={`<div class="input-group">
     <button class="btn-outline theme-secondary input-group-btn" type="button" id="button-addon1">Button</button>
@@ -158,7 +203,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
   </div>`} />
 
-## Buttons with menus
+### Buttons with menus
 
 <Example class="vstack gap-3" code={`<div class="input-group">
     <button class="btn-outline theme-secondary input-group-btn" type="button" data-bs-toggle="menu" aria-expanded="false">Menu</button>
@@ -204,12 +249,13 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     </div>
   </div>`} />
 
-## Segmented buttons
+### Segmented buttons
 
 <Example code={`<div class="input-group mb-3">
     <button type="button" class="btn-outline theme-secondary input-group-btn">Action</button>
     <button type="button" class="btn-outline theme-secondary input-group-btn menu-toggle-split" data-bs-toggle="menu" aria-expanded="false">
       <span class="visually-hidden">Toggle Menu</span>
+      <svg class="bi"><use href="#chevron-expand"></use></svg>
     </button>
     <div class="menu">
       <a class="menu-item" href="#">Action</a>
@@ -226,6 +272,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <button type="button" class="btn-outline theme-secondary input-group-btn">Action</button>
     <button type="button" class="btn-outline theme-secondary input-group-btn menu-toggle-split" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">
       <span class="visually-hidden">Toggle Menu</span>
+      <svg class="bi"><use href="#chevron-expand"></use></svg>
     </button>
     <div class="menu">
       <a class="menu-item" href="#">Action</a>
@@ -236,72 +283,37 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     </div>
   </div>`} />
 
-## Custom forms
+## Border radius
 
-Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
+Sometimes building these components gets complicated, and CSS selectors can only do so much. We've accounted for most of the common use cases, but in case you need to provide an extra element and skip the border-radius logic, add the `.input-group-ignore` class to the element.
 
-### Custom select
+Consider this extra hidden input example:
 
-<Example code={`<div class="input-group mb-3">
-    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-    <select class="form-control" id="inputGroupSelect01">
-      <option selected>Choose...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </div>
-
-  <div class="input-group mb-3">
-    <select class="form-control" id="inputGroupSelect02">
-      <option selected>Choose...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <label class="input-group-text" for="inputGroupSelect02">Options</label>
-  </div>
-
-  <div class="input-group mb-3">
-    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
-    <select class="form-control" id="inputGroupSelect03" aria-label="Example select with button addon">
-      <option selected>Choose...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-  </div>
-
-  <div class="input-group">
-    <select class="form-control" id="inputGroupSelect04" aria-label="Example select with button addon">
-      <option selected>Choose...</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-    <button class="btn-outline theme-secondary input-group-btn" type="button">Button</button>
+<Example code={`<div class="input-group">
+    <span class="input-group-text" id="visible-addon">@</span>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="visible-addon">
+    <input type="text" class="form-control input-group-ignore d-none" placeholder="Hidden input" aria-label="Hidden input" aria-describedby="visible-addon"><!-- [!code highlight] -->
   </div>`} />
 
-### Custom file input
+## Sizing
 
-<Example code={`<div class="input-group mb-3">
-    <label class="input-group-text" for="inputGroupFile01">Upload</label>
-    <input type="file" class="form-control" id="inputGroupFile01">
-  </div>
+Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
 
-  <div class="input-group mb-3">
-    <input type="file" class="form-control" id="inputGroupFile02">
-    <label class="input-group-text" for="inputGroupFile02">Upload</label>
-  </div>
+**Sizing on the individual input group elements isn’t supported.**
 
-  <div class="input-group mb-3">
-    <button class="btn-outline theme-secondary input-group-btn" type="button" id="inputGroupFileAddon03">Button</button>
-    <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
+<Example class="vstack gap-3" code={`<div class="input-group input-group-sm">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
   </div>
 
   <div class="input-group">
-    <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-    <button class="btn-outline theme-secondary input-group-btn" type="button" id="inputGroupFileAddon04">Button</button>
+    <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+
+  <div class="input-group input-group-lg">
+    <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
   </div>`} />
 
 ## CSS

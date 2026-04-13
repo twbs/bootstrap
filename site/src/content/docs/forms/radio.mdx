@@ -10,17 +10,29 @@ import { getData } from '@libs/data'
 
 ## Basic radio
 
-Similar to checkboxes, radios are styled with the `.radio` class. However, there's no custom SVG as we use a Unicode character for the checked state.
+Similar to checkboxes, radios are styled with the `.radio` class. However, there's no custom SVG as we pure CSS to style the input and its checked state.
 
 <Example code={`<input type="radio" id="radio" class="radio" />`} />
 
-## Label
+## With form field
 
 Wrap the `.radio` in a `.form-field` layout wrapper and add your label. The grid layout places the radio and label side by side.
 
 <Example code={`<div class="form-field">
     <input type="radio" id="radioLabel" class="radio" />
     <label for="radioLabel">Example new radio</label>
+  </div>`} />
+
+## Description
+
+Add a description or other content after the label. We recommend wrapping the label and description in a `.form-field-content` to ensure appropriate spacing and alignment.
+
+<Example code={`<div class="form-field">
+    <input type="radio" id="radioLabelDescription" class="radio" />
+    <div class="form-field-content">
+      <label for="radioLabelDescription" class="fw-medium">Example new radio</label>
+      <small class="form-text">Supporting description for the above label.</small>
+    </div>
   </div>`} />
 
 ## Theme colors
@@ -31,18 +43,6 @@ Modify the appearance of checked checkboxes by adding the `.theme-{color}` class
     <input type="radio" id="radio${themeColor.name}" class="radio theme-${themeColor.name}" checked />
     <label for="radio${themeColor.name}">Example ${themeColor.name} radio</label>
   </div>`)} />
-
-## Description
-
-Add a description or other content after the label. We recommend wrapping the label and description in a `.form-field-content` to ensure appropriate spacing and alignment.
-
-<Example code={`<div class="form-field">
-    <input type="radio" id="radioLabelDescription" class="radio" />
-    <div class="form-field-content">
-      <label for="radioLabelDescription" class="fw-medium">Example new radio</label>
-      <small class="description">Supporting description for the above label.</small>
-    </div>
-  </div>`} />
 
 ## Disabled
 

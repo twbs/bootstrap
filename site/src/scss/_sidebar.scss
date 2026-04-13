@@ -68,4 +68,10 @@
     margin-inline-start: 1.75rem;
     color: var(--bs-fg-body);
   }
+
+  .bd-links .badge {
+    min-height: 0;
+    padding: .125rem .375rem;
+    font-size: .625rem;
+  }
 }

@@ -11,7 +11,7 @@ $radio-tokens: defaults(
   (
     --radio-size: 1.25rem,
     --radio-margin-block: .125rem,
-    --radio-bg: transparent,
+    --radio-bg: var(--bg-body),
     --radio-border-color: var(--border-color),
     --radio-checked-bg: var(--control-checked-bg),
     --radio-checked-border-color: var(--control-checked-border-color),

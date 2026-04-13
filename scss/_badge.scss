@@ -1,6 +1,5 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
-@use "mixins/gradients" as *;
 @use "mixins/tokens" as *;
 
 $badge-tokens: () !default;
@@ -57,7 +56,7 @@ $badge-variants: (
     background-color: var(--theme-bg, var(--badge-bg));
     border: var(--badge-border-width) solid var(--badge-border-color);
     @include border-radius(var(--badge-border-radius));
-    @include gradient-bg();
+    // @include gradient-bg();
 
     // Empty badges collapse automatically
     &:empty {

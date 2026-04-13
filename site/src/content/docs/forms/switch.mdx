@@ -9,17 +9,13 @@ import { getData } from '@libs/data'
 
 ## Basic switch
 
-Switches are built with checkboxes under the hood, so their HTML closely mirrors that of checkboxes, including optional layout components.
-
-Switches work by layering an invisible checkbox over the custom switch indicator. This preserves interactivity while giving you a completely customizable layer underneath.
-
-Switches also include the `switch` attribute for browsers that support it. This provides haptic feedback when toggling the switch.
+Switches work by layering an invisible checkbox over the custom switch indicator. This preserves interactivity while giving you a completely customizable layer underneath. Switches also include the `switch` attribute for browsers that support it, which provides haptic feedback when toggling.
 
 <Example code={`<div class="switch">
     <input type="checkbox" value="" id="switch" role="switch" switch>
   </div>`} />
 
-## Label
+## With form field
 
 Wrap the `.switch` in a `.form-field` layout wrapper and add your label. The grid layout places the switch and label side by side.
 
@@ -73,6 +69,17 @@ Add a size modifier class to make your switch appear smaller or larger.
       <input type="checkbox" value="" id="switchSizeLg" role="switch" switch>
     </div>
     <label for="switchSizeLg">Large switch</label>
+  </div>`} />
+
+## Custom width
+
+Customize your switch for any width and indicator size you need by overriding the CSS variables. For example, for a more modern look, you could widen the switch and indicator.
+
+<Example class="d-flex flex-column gap-3" code={`<div class="form-field">
+    <div class="switch" style="--bs-switch-width: 2.75rem; --bs-switch-indicator-width: 1.5rem;"><!--[!code highlight]-->
+      <input type="checkbox" value="" id="switchCustomWidth" role="switch" switch>
+    </div>
+    <label for="switchCustomWidth">Custom width switch</label>
   </div>`} />
 
 ## CSS

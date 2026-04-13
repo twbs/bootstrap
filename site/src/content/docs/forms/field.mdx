@@ -6,18 +6,10 @@ css_layer: forms
 extra_js:
   - src: "[[docsref:/assets/js/validate-forms.js]]"
     async: true
+
 ---
 
-## How it works
-
-The `.form-field` wrapper uses CSS grid to manage the layout of a form control alongside its label, description, and validation feedback.
-
-- **Default layout** is a single-column grid where everything stacks vertically. Use this for text inputs, selects, and textareas.
-- **Two-column layout** activates automatically via `:has()` when a `.check`, `.radio`, or `.switch` is a direct child. The control pins to column 1 while the label, description, and feedback stack in column 2.
-
-## Text input
-
-Wrap a `.form-control` and its label in `.form-field` for a simple vertical stack.
+The Field component provides essential layout, spacing, and functionality for your form input or component of choice. They even scale to support laying out checkboxes, radios, and switches in a two-column layout.
 
 <Example code={`<div class="form-field">
     <label for="fieldText" class="form-label">Email address</label>
@@ -27,7 +19,32 @@ Wrap a `.form-control` and its label in `.form-field` for a simple vertical stac
     </div>
   </div>`} />
 
-## Textarea
+## How it works
+
+The `.form-field` wrapper uses CSS grid to manage the layout of a form control alongside its label, description, and validation feedback.
+
+- **Default layout** is a single-column grid where everything stacks vertically. Use this for text inputs, selects, textareas, ranges, input groups, and adorned inputs.
+- **Two-column layout** activates automatically via `:has()` when a `.check`, `.radio`, or `.switch` is a direct child. The control pins to column 1 while the label, description, and feedback stack in column 2.
+- **Overhead label** — when a `.form-label` is present alongside a check, radio, or switch, it spans both columns and sits above the control row.
+- **Grouped controls** — nest multiple `.form-field`s inside an outer `.form-field` to group radios, checkboxes, or switches under a shared label with shared description and validation feedback.
+
+## Examples
+
+### Select
+
+Works the same way with `<select>` elements.
+
+<Example code={`<div class="form-field">
+    <label for="fieldSelect" class="form-label">Country</label>
+    <select class="form-control" id="fieldSelect">
+      <option selected>Choose one…</option>
+      <option value="1">United States</option>
+      <option value="2">Canada</option>
+      <option value="3">United Kingdom</option>
+    </select>
+  </div>`} />
+
+### Textarea
 
 Works the same way with `<textarea>` elements. Descriptions are optional.
 
@@ -39,22 +56,22 @@ Works the same way with `<textarea>` elements. Descriptions are optional.
     </div>
   </div>`} />
 
-## Checkbox
+### Checkbox
 
 When a `.check` is a direct child, the grid switches to a two-column layout with the checkbox in column 1 and the label in column 2.
 
 <Example code={`<div class="form-field">
     <div class="check">
       <input type="checkbox" id="fieldCheck" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
       </svg>
     </div>
     <label for="fieldCheck">Remember me</label>
   </div>`} />
 
-## Radio
+### Radio
 
 Radios use the same two-column layout. Wrap each radio + label pair in its own `.form-field`.
 
@@ -67,27 +84,48 @@ Radios use the same two-column layout. Wrap each radio + label pair in its own `
     <label for="fieldRadio2">Option two</label>
   </div>`} />
 
-## Grouped
+### Grouped
 
-<Example code={`<div class="vstack gap-1">
-    <div class="form-field form-field-group">
-      <input type="radio" id="fieldRadioGroup1" class="radio" name="fieldRadioGrouped" checked />
-      <div class="form-field-content">
-        <label for="fieldRadioGroup1">Option one</label>
-        <small class="form-text">This is the first option.</small>
+Nest multiple `.form-field`s inside an outer `.form-field` to group related controls under a shared label. The outer wrapper stays in single-column mode because it has no direct `.check`, `.radio`, or `.switch` child, while each inner `.form-field` gets its own two-column layout.
+
+<Example code={`<div class="form-field">
+    <label class="form-label">Shipping method</label>
+    <div class="form-field">
+      <input type="radio" id="fieldGroupRadio1" class="radio" name="fieldGroupRadio" required />
+      <label for="fieldGroupRadio1">Standard</label>
+    </div>
+    <div class="form-field">
+      <input type="radio" id="fieldGroupRadio2" class="radio" name="fieldGroupRadio" required />
+      <label for="fieldGroupRadio2">Express</label>
+    </div>
+    <small class="form-text">Choose your preferred shipping speed.</small>
+  </div>`} />
+
+### Group cards
+
+Add `.form-field-group` to each inner `.form-field` for a card-style treatment that highlights the selected option. Wrap the inner fields in a container with tighter spacing for a more compact look.
+
+<Example code={`<div class="form-field">
+    <label class="form-label">Select a plan</label>
+    <div class="vstack gap-1">
+      <div class="form-field form-field-group">
+        <input type="radio" id="fieldRadioGroup1" class="radio" name="fieldRadioGrouped" checked />
+        <div class="form-field-content">
+          <label for="fieldRadioGroup1">Basic</label>
+          <small class="form-text">$9/month — For individuals.</small>
+        </div>
+      </div>
+      <div class="form-field form-field-group">
+        <input type="radio" id="fieldRadioGroup2" class="radio" name="fieldRadioGrouped" />
+        <div class="form-field-content">
+          <label for="fieldRadioGroup2">Pro</label>
+          <small class="form-text">$29/month — For teams.</small>
+        </div>
       </div>
     </div>
-    <div class="form-field form-field-group">
-      <input type="radio" id="fieldRadioGroup2" class="radio" name="fieldRadioGrouped" />
-      <div class="form-field-content">
-        <label for="fieldRadioGroup2">Option two</label>
-        <small class="form-text">This is the second option.</small>
-      </div>
-    </div>
-  </div>
-  `} />
+  </div>`} />
 
-## Switch
+### Switch
 
 Switches also trigger the two-column grid.
 
@@ -98,6 +136,46 @@ Switches also trigger the two-column grid.
     <label for="fieldSwitch">Enable notifications</label>
   </div>`} />
 
+### Combobox
+
+Comboboxes—as well as datepickers, OTPs, and any other form component—are support as well.
+
+<Example code={`<div class="form-field">
+    <label>Combobox</label>
+    <button class="form-control combobox-toggle" type="button"
+        data-bs-toggle="combobox"
+        data-bs-name="option"
+        data-bs-placeholder="Select an item…">
+      <span class="combobox-value">Select an item…</span>
+      <svg class="combobox-caret" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.46967 5.46967C0.762563 5.17678 1.23744 5.17678 1.53033 5.46967L5 8.93934L8.46967 5.46967C8.76256 5.17678 9.23744 5.17678 9.53033 5.46967C9.82322 5.76256 9.82322 6.23744 9.53033 6.53033L5.53033 10.5303C5.23744 10.8232 4.76256 10.8232 4.46967 10.5303L0.46967 6.53033C0.176777 6.23744 0.176777 5.76256 0.46967 5.46967Z" fill="currentcolor"/></svg>
+    </button>
+    <div class="menu">
+      <button class="menu-item" type="button" data-bs-value="1">Option one</button>
+      <button class="menu-item" type="button" data-bs-value="2">Option two</button>
+      <button class="menu-item" type="button" data-bs-value="3">Option three</button>
+    </div>
+    <div class="form-text">Choose an item from the menu above.</div>
+  </div>`} />
+
+## Overhead label
+
+When a check, radio, or switch needs a field title above it, add a `.form-label`. It automatically spans both columns and sits on its own row above the control.
+
+<Example code={`<div class="form-field">
+    <label class="form-label">Terms and conditions</label>
+    <div class="check">
+      <input type="checkbox" id="fieldOverheadCheck" required />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
+      </svg>
+    </div>
+    <div class="form-field-content">
+      <label for="fieldOverheadCheck">I agree to the terms</label>
+      <small class="form-text">Please read before agreeing.</small>
+    </div>
+  </div>`} />
+
 ## Descriptions
 
 Add a `<small class="form-text">` after the label and wrap it in a `.form-field-content` to ensure appropriate spacing and alignment.
@@ -105,9 +183,9 @@ Add a `<small class="form-text">` after the label and wrap it in a `.form-field-
 <Example class="d-flex flex-column gap-3" code={`<div class="form-field">
     <div class="check">
       <input type="checkbox" id="fieldCheckDesc" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
       </svg>
     </div>
     <div class="form-field-content">
@@ -134,9 +212,9 @@ Validation feedback (`.invalid-feedback`, `.valid-feedback`) stacks correctly in
 
 ### Client-side
 
-Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` and `:user-valid` styling. These pseudo-classes activate after the user interacts with a control. Add `novalidate` to suppress browser tooltips while keeping the constraint validation API available.
+Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` and `:user-valid` styling. These pseudo-classes activate after the user interacts with a control. Add `novalidate` to suppress native browser validation tooltips while keeping the constraint validation API available.
 
-<Example code={`<form class="vstack gap-3 align-items-start" data-bs-validate novalidate>
+<Example code={`<form class="vstack gap-3" data-bs-validate novalidate><!-- [!code highlight] -->
     <div class="form-field flex-1">
       <label for="fieldValidateEmail" class="form-label">Email address</label>
       <input type="email" class="form-control" id="fieldValidateEmail" required>
@@ -146,9 +224,9 @@ Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` and `:user-
     <div class="form-field">
       <div class="check">
         <input type="checkbox" id="fieldValidateCheck" required>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-          <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-          <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+          <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+          <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
         </svg>
       </div>
       <div class="form-field-content">
@@ -156,7 +234,7 @@ Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` and `:user-
         <div class="invalid-feedback">You must agree before submitting.</div>
       </div>
     </div>
-    <button class="btn-solid theme-primary" type="submit">Submit</button>
+    <button class="btn-solid theme-primary align-self-start" type="submit">Submit</button>
   </form>`} />
 
 ### Server-side
@@ -176,9 +254,9 @@ Apply `.is-invalid` or `.is-valid` directly to the control for server-side valid
   <div class="form-field mb-3">
     <div class="check">
       <input type="checkbox" id="fieldServerCheck" class="is-invalid" required>
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
       </svg>
     </div>
     <label for="fieldServerCheck">Agree to terms and conditions</label>
