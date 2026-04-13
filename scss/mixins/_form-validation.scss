@@ -1,0 +1,25 @@
+// scss-docs-start form-validation-state-selector
+@mixin form-validation-state-selector($state) {
+  @if & {
+    &.is-#{$state} {
+      @content;
+    }
+
+    @if $state == "valid" or $state == "invalid" {
+      @at-root [data-bs-validate] #{&}:user-#{$state} {
+        @content;
+      }
+    }
+  } @else {
+    .is-#{$state} {
+      @content;
+    }
+
+    @if $state == "valid" or $state == "invalid" {
+      [data-bs-validate] :user-#{$state} {
+        @content;
+      }
+    }
+  }
+}
+// scss-docs-end form-validation-state-selector

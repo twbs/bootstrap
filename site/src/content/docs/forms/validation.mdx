@@ -17,7 +17,7 @@ Here's how form validation works with Bootstrap:
 
 - **Client-side validation** uses the CSS pseudo-classes `:user-invalid` and `:user-valid`, scoped behind the `data-bs-validate` attribute. Add `data-bs-validate` to your `<form>` to opt in—validation styles only appear **after the user interacts** with a control (e.g., typing and blurring, or attempting to submit), so required fields don't show up as invalid on page load.
 - **Server-side validation** uses the `.is-invalid` and `.is-valid` classes to indicate field state without requiring user interaction. These work globally—no `data-bs-validate` attribute needed.
-- Custom validation states beyond `valid`/`invalid` (e.g., `warning`) are supported via the `.is-*` class pattern and the `$form-validation-states` Sass map.
+- Custom validation states beyond `valid`/`invalid` (e.g., `warning`) are supported via the `.is-*` class pattern and the `$validation-states` Sass map.
 - All modern browsers support the [constraint validation API](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#the-constraint-validation-api), a series of JavaScript methods for validating form controls.
 - Feedback messages may utilize the [browser defaults](#browser-defaults) (different for each browser, and unstylable via CSS) or our custom feedback styles with additional HTML and CSS.
 - You may provide custom validity messages with `setCustomValidity` in JavaScript.
@@ -456,13 +456,17 @@ These variables are also color mode adaptive, meaning they change color while in
 
 ### Sass variables
 
-<ScssDocs name="form-feedback-variables" file="scss/forms/_validation.scss" />
+<ScssDocs name="form-feedback-variables" file="scss/forms/_form-variables.scss" />
 
 ### Sass mixins
 
-Two mixins are combined, through our [loop](#sass-loops), to generate our form validation feedback styles.
+The `form-validation-state` mixin generates all validation feedback styles from a state name and theme color. It is called through our [loop](#sass-loops).
 
-<ScssDocs name="form-validation-mixins" file="scss/forms/_validation.scss" />
+<ScssDocs name="form-validation-state-mixin" file="scss/forms/_validation.scss" />
+
+The `form-validation-state-selector` mixin handles selector generation for both `.is-*` classes and `:user-*` pseudo-classes.
+
+<ScssDocs name="form-validation-state-selector" file="scss/mixins/_form-validation.scss" />
 
 ### Sass maps
 
@@ -470,14 +474,14 @@ This is the validation Sass map from `forms/_validation.scss`. Override or exten
 
 <ScssDocs name="form-validation-states" file="scss/forms/_validation.scss" />
 
-Maps of `$form-validation-states` can contain three optional parameters to override tooltips and focus styles.
+Each key in the map is a validation state name (e.g., `"valid"`) and the value is a theme color name (e.g., `"success"`). All styling is derived from the theme color's CSS custom properties.
 
 ### Sass loops
 
-Used to iterate over `$form-validation-states` map values to generate our validation styles. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop.
+Used to iterate over `$validation-states` map values to generate our validation styles. Any modifications to the above Sass map will be reflected in your compiled CSS via this loop.
 
 <ScssDocs name="form-validation-states-loop" file="scss/forms/_validation.scss" />
 
 ### Customizing
 
-Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `forms/_validation.scss` file, this Sass map is how we generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color, tooltip color, and focus shadow. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+Validation states can be customized via Sass with the `$validation-states` map. Located in our `forms/_form-variables.scss` file, this Sass map pairs each state name to a theme color name. All styling is derived from the theme color's existing CSS custom properties (`--{theme}-fg`, `--{theme}-border`, `--{theme}-bg`, etc.). While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.

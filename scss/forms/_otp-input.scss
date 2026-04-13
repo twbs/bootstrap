@@ -1,6 +1,9 @@
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/focus-ring" as *;
+@use "../mixins/form-validation" as *;
 @use "../mixins/tokens" as *;
+@use "form-variables" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $otp-tokens: () !default;
@@ -61,21 +64,16 @@ $otp-sizes: defaults(
       }
     }
 
-    &:is(:user-valid, .is-valid) .form-control {
-      border-color: var(--form-valid-border-color);
+    @each $state, $theme in $validation-states {
+      @include form-validation-state-selector($state) {
+        .form-control {
+          --control-border-color: var(--#{$theme}-border);
+        }
 
-      &:focus {
-        --focus-ring-color: rgba(var(--success-rgb), .25);
-        border-color: var(--form-valid-border-color);
-      }
-    }
-
-    &:is(:user-invalid, .is-invalid) .form-control {
-      border-color: var(--form-invalid-border-color);
-
-      &:focus {
-        --focus-ring-color: rgba(var(--danger-rgb), .25);
-        border-color: var(--form-invalid-border-color);
+        .form-control:focus {
+          @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
+          --control-border-color: var(--#{$theme}-border);
+        }
       }
     }
   }
