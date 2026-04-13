@@ -1,5 +1,5 @@
-**/*.min.css
-**/dist/
+(**/*.min.css)
+**/dist/)
 **/vendor/
 /_site/
 /site/public/
