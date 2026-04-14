@@ -1,32 +1,4 @@
-// Inline copy of the selector mixin for isolated testing.
-// Source: scss/forms/_validation.scss
-//
-// Note: The [data-bs-validate] :user-* scoped selector uses @at-root, which
-// escapes sass-true's test wrapper. That output is verified by the compile
-// check instead. Tests here cover the .is-* (global) selector behavior.
-@mixin form-validation-state-selector($state) {
-  @if & {
-    &.is-#{$state} {
-      @content;
-    }
-
-    @if $state == "valid" or $state == "invalid" {
-      @at-root [data-bs-validate] #{&}:user-#{$state} {
-        @content;
-      }
-    }
-  } @else {
-    .is-#{$state} {
-      @content;
-    }
-
-    @if $state == "valid" or $state == "invalid" {
-      [data-bs-validate] :user-#{$state} {
-        @content;
-      }
-    }
-  }
-}
+@use "../../mixins/form-validation" as *;
 
 @include describe("form-validation-state-selector") {
 
@@ -95,6 +67,40 @@
       @include contains() {
         .form-control.is-invalid ~ .invalid-feedback {
           display: block;
+        }
+      }
+    }
+  }
+
+  @include it("invalid: uses [data-bs-validate] for :user-invalid") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("invalid") {
+            border-color: #d00;
+          }
+        }
+      }
+      @include contains(false) {
+        [data-bs-validate] .test-output .form-control:user-invalid {
+          border-color: #d00;
+        }
+      }
+    }
+  }
+
+  @include it("valid: uses [data-bs-validate~=valid] for :user-valid") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("valid") {
+            border-color: #0d0;
+          }
+        }
+      }
+      @include contains(false) {
+        [data-bs-validate~="valid"] .test-output .form-control:user-valid {
+          border-color: #0d0;
         }
       }
     }

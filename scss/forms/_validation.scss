@@ -40,8 +40,6 @@ $validation-states: (
     background-color: var(--#{$theme}-bg);
     opacity: 1;
     @include border-radius(var(--tooltip-border-radius));
-
-    // @include border-radius($form-feedback-tooltip-border-radius);
   }
 
   // Generic sibling feedback display — works for .form-control, .form-range,
