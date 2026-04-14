@@ -118,6 +118,11 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed unused `$popover-arrow-color` and `$popover-arrow-outer-color`
   - Removed unused `$alert-bg-scale`, `$alert-border-scale`, and `$alert-color-scale` (replaced by theme tokens)
   - Removed unused `$list-group-item-bg-scale` and `$list-group-item-color-scale` (replaced by theme tokens)
+- **Removed form validation Sass variables and files.**
+  - Removed `scss/forms/_form-variables.scss`. Feedback/tooltip Sass variables and validation icon SVG data URIs are gone. Validation styling now uses theme-derived CSS custom properties.
+  - Renamed `scss/mixins/_forms.scss` to `scss/mixins/_form-validation.scss`. Contains only the `form-validation-state-selector` mixin.
+  - Removed `$enable-validation-icons` from `scss/_config.scss`.
+  - Replaced `$form-validation-states` with `$validation-states` (state name to theme key map).
 
 ### JavaScript
 
@@ -229,6 +234,25 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Adds new CSS variables on `.form-control` for easier customization without Sass compilation.
   - `.form-control` now has a `min-height` at all times as opposed to just on `<textarea>` elements. This reduces some CSS for us.
 - **Added new Combobox form component.** A searchable, filterable select with single and multi-select modes, built on top of the Menu component. See the [Combobox docs]([[docsref:/forms/combobox]]).
+- **New `.form-field` layout component.** Replaces `.checkgroup` and `.radiogroup` wrappers with a unified grid-based layout primitive for label + control + help text + validation feedback. Use `.form-field`, `.form-field-content`, and `.form-field-card` for structured form layouts, and `.form-group` for grouping related fields. See the [Field docs]([[docsref:/forms/field]]).
+- **Overhauled form validation.**
+  - Client-side validation no longer uses `.was-validated` or bare `:valid` / `:invalid` pseudo-classes. Instead, add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` styling that activates only after user interaction. To also show success styling, use `data-bs-validate="valid"`.
+  - Server-side validation with `.is-invalid` / `.is-valid` classes is unchanged and works globally without `data-bs-validate`.
+  - Custom validation states (e.g., "warning") use only `.is-*` classes—no pseudo-class support.
+  - Validation feedback tooltips now require both `.tooltip` and `.valid-tooltip` / `.invalid-tooltip` classes (e.g., `<div class="tooltip invalid-tooltip">`).
+  - Removed `$enable-validation-icons` and all built-in validation background icons on form controls.
+  - The `$form-validation-states` Sass map is replaced by `$validation-states`, a simpler map pairing state names to theme keys (e.g., `"invalid": "danger"`). Styling uses theme-derived CSS custom properties (`--danger-fg`, `--danger-border`, etc.) instead of per-state Sass variables.
+  - The `form-validation-state` mixin signature changed from `($state, $color, $icon, ...)` to `($state, $theme)`.
+  - Renamed `scss/mixins/_forms.scss` to `scss/mixins/_form-validation.scss`. The mixin now only contains the selector logic; the full state mixin lives in `scss/forms/_validation.scss`.
+  - Removed `scss/forms/_form-variables.scss` (feedback variables and icon SVG data URIs).
+  - Validation JS: replace `document.querySelectorAll('.needs-validation')` with `document.querySelectorAll('form[data-bs-validate]')` and remove the `form.classList.add('was-validated')` line.
+- **Simplified input groups.**
+  - Removed `.has-validation`—border-radius logic no longer branches on it.
+  - Added `.input-group-ignore` for elements that should be skipped by adjoined border-radius rules.
+  - Removed `flex-wrap: wrap` from `.input-group`; validation feedback now lives outside the input-group in a parent `.form-field`.
+- **Updated form label defaults.** `.form-label` and `.col-form-label` now default to `font-weight: 500` (was `inherit`) and `font-size: inherit` (was `var(--font-size-sm)`).
+- **Updated form helper text.** `.form-text` color changed from `var(--fg-3)` to `var(--fg-2)`. The `margin-top` from `--form-text-margin-top` is removed; spacing is handled by the parent `.form-field` grid gap.
+- **Reworked switch internals.** The switch thumb is now absolutely positioned with `inset-inline-start` transitions instead of padding-based animation. New tokens: `--switch-indicator-width`, `--switch-indicator-height`. Themes overriding old padding-based switch behavior will need updating.
 
 ### Helpers
 
@@ -310,10 +334,10 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 </BsTable>
 
 - **Font weight additions.** Added `.fw-medium` (`500`) and `.fw-semibold` (`600`) utilities. v5 only had `lighter`, `light` (`300`), `normal` (`400`), `bold` (`700`), and `bolder`.
-- **Negative margins limited.** Negative spacers are reduced to only `-1` (`-0.25rem`) and `-2` (`-0.5rem`), and only applied to `margin-inline-start` (`.ms-n1`, `.ms-n2`). The v5 full negative margin utilities across all sides have been removed.
+- **Negative margins limited.** Negative spacers are reduced to only `-1` (`-0.25rem`) and `-2` (`-0.5rem`), and only applied to `margin-inline-start` (`.ms-n1`, `.ms-n2`) and `margin-inline-end` (`.me--1`, `.me--2`). The v5 full negative margin utilities across all sides have been removed.
 - **Spacing and border utilities now use CSS logical properties.** `margin-top` &rarr; `margin-block-start`, `margin-right` &rarr; `margin-inline-end`, `padding-left` &rarr; `padding-inline-start`, `border-right` &rarr; `border-inline-end`, etc. Class names (`.mt-*`, `.me-*`, `.ps-*`, `.border-end`) remain the same, but the underlying CSS properties are now logical, improving RTL and writing-mode support.
 - **Text wrap additions.** Added `.text-balance` and `.text-pretty` values to the text-wrap utility.
-- **Color utility renames.** `.text-*` color utilities have been replaced by `.fg-*` (foreground) utilities. New `.fg-emphasis-*` and `.fg-contrast-*` variants. Background utilities now include `.bg-subtle-*` and `.bg-muted-*` in addition to `.bg-*`.
+- **Color utility renames.** `.text-*` color utilities have been replaced by `.fg-*` (foreground) utilities. New `.fg-emphasis-*` and `.fg-contrast-*` variants. Background utilities now include `.bg-subtle-*` and `.bg-muted-*` in addition to `.bg-*`. Added `.fg-bg` and `.bg-fg` cross-reference utilities; removed `.fg-inherit` and `.bg-inherit`.
 - **Display utilities:** added `flow-root` and `contents` options.
 - **Sizing utilities:**
   - Renamed `.mh-*`/`.mw-*` to `.max-h-*`/`.max-w-*`
