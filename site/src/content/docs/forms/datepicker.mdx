@@ -1,6 +1,6 @@
 ---
 title: Datepicker
-description: A flexible date picker component powered by Vanilla Calendar Pro, with Bootstrap styling and data attribute support.
+description: A flexible calendar and date picker popover with support for input or button toggles, range selection, multiple months, and more.
 toc: true
 css_layer: components
 js: required
@@ -14,7 +14,7 @@ deps:
 The Bootstrap Datepicker is a wrapper around [Vanilla Calendar Pro](https://vanilla-calendar.pro/) that provides a consistent, accessible date selection experience. It supports light/dark themes, input binding, and flexible configuration via data attributes or JavaScript.
 
 <Example code={`<label for="datepicker1" class="form-label">Datepicker</label>
-  <input type="text" class="form-control w-12" data-bs-toggle="datepicker" placeholder="Choose date…">`} />
+  <input type="text" class="form-control w-12" id="datepicker1" data-bs-toggle="datepicker" placeholder="Choose date…">`} />
 
 Note that we're using a width utility of `.w-12` to ensure the input is wide enough to accommodate the date format and imply some affordance for the expected type of input.
 
@@ -28,6 +28,18 @@ Note that we're using a width utility of `.w-12` to ensure the input is wide eno
 - Configurable with any [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings) via `vcpOptions` when initializing with JavaScript
 
 ## Examples
+
+### With form field
+
+Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your inputs with a label, description, and validation feedback messages in a vertical stack.
+
+<Example code={`<div class="form-field">
+    <label for="datepicker2" class="form-label">Datepicker field</label>
+    <input type="text" class="form-control w-12" id="datepicker2" data-bs-toggle="datepicker" placeholder="Choose date…">
+    <div class="form-text">
+      We'll never share your email with anyone else.
+    </div>
+  </div>`} />
 
 ### With icon
 
@@ -45,8 +57,8 @@ Use the [form adorn component]([[docsref:/forms/form-adorn]]) to add a calendar 
 
 Restrict the selectable date range using `data-bs-date-min` and `data-bs-date-max`.
 
-<Example code={`<label for="datepicker2" class="form-label">Event date (2026 only)</label>
-  <input type="text" class="form-control w-12" id="datepicker2" data-bs-toggle="datepicker" data-bs-date-min="2026-01-01" data-bs-date-max="2026-12-31" placeholder="Select a date in 2026">`} />
+<Example code={`<label for="datepickerMinMax" class="form-label">Event date (2026 only)</label>
+  <input type="text" class="form-control w-12" id="datepickerMinMax" data-bs-toggle="datepicker" data-bs-date-min="2026-01-01" data-bs-date-max="2026-12-31" placeholder="Select a date in 2026">`} />
 
 ### Multiple dates
 

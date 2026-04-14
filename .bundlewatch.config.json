@@ -26,11 +26,11 @@
     },
     {
       "path": "./dist/css/bootstrap.css",
-      "maxSize": "48.0 kB"
+      "maxSize": "48.25 kB"
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "44.75 kB"
+      "maxSize": "45.0 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",

@@ -1,0 +1,108 @@
+@use "../../mixins/form-validation" as *;
+
+@include describe("form-validation-state-selector") {
+
+  @include it("invalid: generates .is-invalid selector") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("invalid") {
+            border-color: #d00;
+          }
+        }
+      }
+      @include contains() {
+        .form-control.is-invalid {
+          border-color: #d00;
+        }
+      }
+    }
+  }
+
+  @include it("valid: generates .is-valid selector") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("valid") {
+            border-color: #0d0;
+          }
+        }
+      }
+      @include contains() {
+        .form-control.is-valid {
+          border-color: #0d0;
+        }
+      }
+    }
+  }
+
+  @include it("custom state (warning): only .is-warning, no :user-*") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("warning") {
+            border-color: #f80;
+          }
+        }
+      }
+      @include expect() {
+        .form-control.is-warning {
+          border-color: #f80;
+        }
+      }
+    }
+  }
+
+  @include it("sibling combinator works for feedback display") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("invalid") {
+            ~ .invalid-feedback {
+              display: block;
+            }
+          }
+        }
+      }
+      @include contains() {
+        .form-control.is-invalid ~ .invalid-feedback {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @include it("invalid: uses [data-bs-validate] for :user-invalid") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("invalid") {
+            border-color: #d00;
+          }
+        }
+      }
+      @include contains(false) {
+        [data-bs-validate] .test-output .form-control:user-invalid {
+          border-color: #d00;
+        }
+      }
+    }
+  }
+
+  @include it("valid: uses [data-bs-validate~=valid] for :user-valid") {
+    @include assert() {
+      @include output() {
+        .form-control {
+          @include form-validation-state-selector("valid") {
+            border-color: #0d0;
+          }
+        }
+      }
+      @include contains(false) {
+        [data-bs-validate~="valid"] .test-output .form-control:user-valid {
+          border-color: #0d0;
+        }
+      }
+    }
+  }
+}

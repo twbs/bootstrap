@@ -7,28 +7,36 @@ mdn: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input
 ---
 
 <Callout type="info">
-  **Heads up!** In v6, `<select>` elements are styled with `.form-control`. This reduces duplication and abstraction while making it easier to consistently customize the appearance of form elements.
+  **Heads up!** `<select>` elements are now styled with `.form-control` for ease of use.
 </Callout>
 
-## Example
+Form control styles are available for most textual inputs (including date and time types), textareas, and select elements. We uniformly style them with the `.form-control` class with element-specific modifiers as needed.
 
-Form controls are styled with a mix of Sass and CSS variables, allowing them to adapt to color modes and support any customization method.
+<Example code={`<label for="exampleFormControlInput" class="form-label mb-2">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput" placeholder="name@example.com">`} />
 
-<Example class="vstack gap-3" code={`<div>
+## With form field
+
+Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your inputs with a label, description, and validation feedback messages in a vertical stack.
+
+<Example class="vstack gap-3" code={`<div class="form-field">
     <label for="exampleFormControlInput1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <div class="form-text">
+      We'll never share your email with anyone else.
+    </div>
   </div>`} />
 
 ## Textarea
 
 Textareas use the same `.form-control` class as inputs. Modify their height by using the `rows` attribute or using custom CSS.
 
-<Example class="vstack gap-3" code={`<div>
+<Example class="vstack gap-3" code={`<div class="form-field">
     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
     <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
   </div>
 
-  <div>
+  <div class="form-field">
     <label for="exampleFormControlTextarea2" class="form-label">Taller textarea</label>
     <textarea class="form-control" id="exampleFormControlTextarea2" rows="4"></textarea>
   </div>`} />
@@ -37,7 +45,7 @@ Textareas use the same `.form-control` class as inputs. Modify their height by u
 
 Basic select element styles are provided by the `.form-control` class. Styles are limited by the browser—options and popovers cannot be styled.
 
-<Example code={`<div>
+<Example code={`<div class="form-field">
     <label for="exampleFormControlSelect2" class="form-label">Example select</label>
     <select class="form-control" id="exampleFormControlSelect2">
       <option>Choose one…</option>
@@ -285,23 +293,23 @@ No additional classes are needed for date and time inputs.
 
 `input[type="file"]` elements are styled with the `::file-selector-button` pseudo element to add a button to the input. You only need to add the `.form-control` class, plus any size modifiers you need.
 
-<Example code={`<div class="mb-3">
+<Example class="vstack gap-5" code={`<div class="form-field">
     <label for="formFile" class="form-label">Default file input example</label>
     <input class="form-control" type="file" id="formFile">
   </div>
-  <div class="mb-3">
+  <div class="form-field">
     <label for="formFileMultiple" class="form-label">Multiple files input example</label>
     <input class="form-control" type="file" id="formFileMultiple" multiple>
   </div>
-  <div class="mb-3">
+  <div class="form-field">
     <label for="formFileDisabled" class="form-label">Disabled file input example</label>
     <input class="form-control" type="file" id="formFileDisabled" disabled>
   </div>
-  <div class="mb-3">
+  <div class="form-field">
     <label for="formFileSm" class="form-label">Small file input example</label>
     <input class="form-control form-control-sm" id="formFileSm" type="file">
   </div>
-  <div>
+  <div class="form-field">
     <label for="formFileLg" class="form-label">Large file input example</label>
     <input class="form-control form-control-lg" id="formFileLg" type="file">
   </div>`} />
@@ -310,17 +318,19 @@ No additional classes are needed for date and time inputs.
 
 Ghost inputs are a special type of input, not native to the browser, that removes all default input styling when your wrapper handles spacing, border, and focus styles. This is useful for custom composites like search bars and command inputs. Swap the `.form-control` class for `.form-ghost` to remove the default styling.
 
-<Callout type="warning">
-  `.form-ghost` removes the input's own focus outline. Use `:focus-within` on a parent element to provide a visible focus indicator.
-</Callout>
+`.form-ghost` removes the input’s focus outline, so consider using `:focus-within` on a parent element to provide a visible focus indicator.
 
-<Example code={`<label for="exampleGhostInput" class="form-label">Search</label>
-  <div class="d-flex align-items-center gap-2 p-2 border rounded">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16">
-      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-    </svg>
-    <input type="search" class="form-ghost" id="exampleGhostInput" placeholder="Search docs" aria-label="Search docs"><!-- [!code highlight] -->
+<Example code={`<div class="form-field">
+    <label for="exampleGhostInput" class="form-label">Search</label>
+    <div class="d-flex align-items-center gap-3 p-3 border rounded-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" aria-hidden="true" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+      </svg>
+      <input type="search" class="form-ghost" id="exampleGhostInput" placeholder="Search docs" aria-label="Search docs"><!-- [!code highlight] -->
+    </div>
   </div>`} />
+
+You can also use the [form-adorn component]([[docsref:/forms/form-adorn]]) to provide prebuilt styles for your ghost input.
 
 ## CSS
 

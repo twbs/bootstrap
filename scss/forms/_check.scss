@@ -11,7 +11,7 @@ $check-tokens: defaults(
   (
     --check-size: 1.25rem,
     --check-margin-block: .125rem,
-    --check-bg: transparent,
+    --check-bg: var(--bg-body),
     --check-border-color: var(--border-color),
     --check-border-radius: .375rem,
     --check-checked-bg: var(--control-checked-bg),
@@ -29,16 +29,6 @@ $check-tokens: defaults(
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
-  .checkgroup {
-    display: flex;
-    gap: var(--gap, .5rem);
-    align-items: var(--align-items, start);
-
-    .description {
-      color: var(--fg-3);
-    }
-  }
-
   .check {
     @include tokens($check-tokens);
 
@@ -70,6 +60,7 @@ $check-tokens: defaults(
 
     :where(input:focus-visible) {
       @include focus-ring(true);
+      --focus-ring-offset: -1px;
     }
 
     &:has(input:checked) .checked,

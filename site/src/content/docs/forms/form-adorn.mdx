@@ -54,6 +54,21 @@ Add a label outside the `.form-adorn` wrapper for proper form semantics:
     </div>
   </div>`} />
 
+## With form field
+
+Wrap a `.form-adorn` in a `.form-field` to pair it with a label and description text.
+
+<Example code={`<div class="form-field">
+    <label for="adornField" class="form-label">Search</label>
+    <div class="form-control form-adorn">
+      <div class="form-adorn-icon">
+        <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+      </div>
+      <input type="text" class="form-ghost" id="adornField" placeholder="Search...">
+    </div>
+    <small class="form-text">Search across all pages and posts.</small>
+  </div>`} />
+
 ## Text adornments
 
 Use `.form-adorn-text` for currency symbols, units, domain suffixes, and other text-based adornments. Text adornments auto-size to their content.

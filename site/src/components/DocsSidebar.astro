@@ -3,6 +3,7 @@ import { getData } from '@libs/data'
 import { getConfig } from '@libs/config'
 import { docsPages, getDocsPageSlug } from '@libs/content'
 import { getSlug } from '@libs/utils'
+import NewBadge from '@components/NewBadge.astro'
 
 const sidebar = getData('sidebar')
 ---
@@ -52,6 +53,8 @@ const sidebar = getData('sidebar')
                           )
                         }
 
+                        const addedMeta = page.meta?.find((m: any) => m.added)
+
                         return (
                           <li>
                             <a
@@ -60,6 +63,7 @@ const sidebar = getData('sidebar')
                               aria-current={active ? 'page' : undefined}
                             >
                               {page.title}
+                              {addedMeta && <NewBadge version={addedMeta.added} />}
                             </a>
                           </li>
                         )
@@ -84,6 +88,8 @@ const sidebar = getData('sidebar')
                   )
                 }
 
+                const itemAddedMeta = item.meta?.find((m: any) => m.added)
+
                 return (
                   <li>
                     <a
@@ -92,6 +98,7 @@ const sidebar = getData('sidebar')
                       aria-current={active ? 'page' : undefined}
                     >
                       {item.title}
+                      {itemAddedMeta && <NewBadge version={itemAddedMeta.added} />}
                     </a>
                   </li>
                 )

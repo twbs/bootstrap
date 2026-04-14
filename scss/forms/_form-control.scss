@@ -2,7 +2,6 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
-@use "../mixins/gradients" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -147,8 +146,9 @@ $form-control-sizes: defaults(
       margin: calc(var(--control-padding-y) * -1) calc(var(--control-padding-x) * -1);
       margin-inline-end: var(--control-padding-x);
       color: var(--control-fg);
-      @include gradient-bg(var(--control-action-bg));
+      // @include gradient-bg(var(--control-action-bg));
       pointer-events: none;
+      background-color: var(--control-action-bg);
       border-color: inherit;
       border-style: solid;
       border-width: 0;

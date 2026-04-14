@@ -505,7 +505,7 @@ $utilities: map.merge(
       responsive: true,
       property: margin-inline-end,
       class: me,
-      values: map.merge($spacers, (auto: auto))
+      values: map-merge-multiple($spacers, $negative-spacers, (auto: auto))
     ),
     "margin-bottom": (
       responsive: true,

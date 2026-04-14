@@ -40,13 +40,11 @@ Checkboxes can utilize the indeterminate pseudo class when manually set via Java
     </svg>
   </div>`} />
 
-## Label
+## With form field
 
-Wrap the `.check` in a `.checkgroup` layout wrapper and add your label. This sets some basic flexbox styling.
+Wrap the `.check` in a `.form-field` layout wrapper and add your label. The grid layout places the checkbox and label side by side.
 
-Consider margin utilities for additional spacing, and flex utilities for alignment.
-
-<Example code={`<div class="checkgroup">
+<Example code={`<div class="form-field">
     <div class="check">
       <input type="checkbox" id="checkLabel" />
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
@@ -57,11 +55,29 @@ Consider margin utilities for additional spacing, and flex utilities for alignme
     <label for="checkLabel">Example new checkbox</label>
   </div>`} />
 
+## Description
+
+Add a description or other content after the label. We recommend wrapping the label and description in a `.form-field-content` to ensure appropriate spacing and alignment.
+
+<Example code={`<div class="form-field">
+    <div class="check">
+      <input type="checkbox" id="checkDescription" />
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+      </svg>
+    </div>
+    <div class="form-field-content">
+      <label for="checkDescription">Example new checkbox</label>
+      <small class="form-text">Supporting description for the above label.</small>
+    </div>
+  </div>`} />
+
 ## Theme colors
 
 Modify the appearance of checked checkboxes by adding the `.theme-{color}` class to the `.check` element. This will set the checked background and border color to the theme color.
 
-<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<div class="checkgroup">
+<Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<div class="form-field">
     <div class="check theme-${themeColor.name}">
       <input type="checkbox" id="check${themeColor.name}" checked />
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
@@ -72,29 +88,11 @@ Modify the appearance of checked checkboxes by adding the `.theme-{color}` class
     <label for="check${themeColor.name}">Example ${themeColor.name} checkbox</label>
   </div>`)} />
 
-## Description
-
-With this layout approach, you can easily add a description or other content after the label. Here we use another custom element, `<b-vstack>`, to stack the label and description.
-
-<Example code={`<div class="checkgroup">
-    <div class="check">
-      <input type="checkbox" id="checkDescription" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
-      </svg>
-    </div>
-    <b-vstack>
-      <label for="checkDescription">Example new checkbox</label>
-      <small class="description">Supporting description for the above label.</small>
-    </b-vstack>
-  </div>`} />
-
 ## Disabled
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example code={`<div class="checkgroup">
+<Example code={`<div class="form-field">
     <div class="check">
       <input type="checkbox" id="checkDisabled" disabled />
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
@@ -107,7 +105,7 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 Applies to checked states, too.
 
-<Example code={`<div class="checkgroup">
+<Example code={`<div class="form-field">
     <div class="check">
       <input type="checkbox" id="checkDisabledChecked" checked disabled />
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>

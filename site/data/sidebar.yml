@@ -66,6 +66,8 @@
     - title: Images
     - title: Tables
     - title: Prose
+      meta:
+        - added: 6.0.0
 
 - title: Forms
   section: Forms
@@ -73,6 +75,9 @@
   icon_color: blue
   pages:
     - title: Overview
+    - title: Field
+      meta:
+        - added: 6.0.0
     - title: Form control
     - title: Checkbox
     - title: Radio
@@ -80,12 +85,24 @@
     - title: Range
     - title: Input group
     - title: Floating labels
-    - title: Combobox
-    - title: Datepicker
-    - title: OTP input
-    - title: Password strength
-    - title: Chip input
     - title: Form adorn
+      meta:
+        - added: 6.0.0
+    - title: Chip input
+      meta:
+        - added: 6.0.0
+    - title: Combobox
+      meta:
+        - added: 6.0.0
+    - title: Datepicker
+      meta:
+        - added: 6.0.0
+    - title: OTP input
+      meta:
+        - added: 6.0.0
+    - title: Password strength
+      meta:
+        - added: 6.0.0
     - title: Layout
     - title: Validation
 
@@ -109,8 +126,14 @@
     - group: Overlays
       pages:
         - title: Menu
+          meta:
+            - added: 6.0.0
         - title: Dialog
+          meta:
+            - added: 6.0.0
         - title: Drawer
+          meta:
+            - added: 6.0.0
         - title: Popover
         - title: Toasts
         - title: Tooltip
@@ -120,7 +143,11 @@
         - title: Nav
         - title: Tab
         - title: Nav overflow
+          meta:
+            - added: 6.0.0
         - title: Navbar
+          meta:
+            - added: 6.0.0
         - title: Pagination
         - title: Stepper
     - group: Layout
@@ -134,9 +161,14 @@
         - title: Collapse
         - title: Scrollspy
         - title: Toggler
+          meta:
+            - added: 6.0.0
+
     - group: Miscellaneous
       pages:
         - title: Avatar
+          meta:
+            - added: 6.0.0
 
 - title: Helpers
   section: Helpers
@@ -163,6 +195,8 @@
         - title: Colors
         - title: Background
         - title: Theme
+          meta:
+            - added: 6.0.0
     - group: Layout
       pages:
         - title: Aspect ratio
@@ -193,6 +227,8 @@
         - title: Margin
         - title: Padding
         - title: Space
+          meta:
+            - added: 6.0.0
     - group: Type
       pages:
         - title: Font family

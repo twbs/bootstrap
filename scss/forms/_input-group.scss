@@ -1,9 +1,6 @@
-@use "sass:map";
-@use "sass:string";
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
-@use "form-variables" as *;
 
 $input-group-addon-tokens: () !default;
 
@@ -38,7 +35,6 @@ $input-group-sizes: defaults(
 
     position: relative;
     display: flex;
-    flex-wrap: wrap; // For form validation feedback
     align-items: stretch;
     width: 100%;
 
@@ -115,37 +111,25 @@ $input-group-sizes: defaults(
 
   // stylelint-disable-next-line no-duplicate-selectors
   .input-group {
-
-    $validation-messages: "";
-    &:not(.has-validation) {
-      > :not(:last-child, .menu-toggle-split, .menu, .form-floating),
-      > .menu-toggle-split:nth-last-child(n + 3),
-      > .form-floating:not(:last-child) > .form-control,
-      > .form-floating:not(:last-child) > .form-select {
-        @include border-end-radius(0);
-      }
+    > :not(:last-child, .menu-toggle-split, .menu, .input-group-ignore, .form-floating, :has(+ :is(.menu, .input-group-ignore):last-child)),
+    > .menu-toggle-split:nth-last-child(n + 3),
+    > .form-floating:not(:last-child) > .form-control,
+    > .form-floating:not(:last-child) > .form-select {
+      @include border-end-radius(0);
     }
 
-    &.has-validation {
-      > :nth-last-child(n + 3):not(.menu-toggle-split, .menu, .form-floating),
-      > .menu-toggle-split:nth-last-child(n + 4),
-      > .form-floating:nth-last-child(n + 3) > .form-control,
-      > .form-floating:nth-last-child(n + 3) > .form-select {
-        @include border-end-radius(0);
-      }
-    }
-
-    > :not(:first-child, .menu)#{$validation-messages} {
+    > :not(:first-child, .menu, .input-group-ignore) {
       margin-inline-start: calc(-1 * var(--border-width));
       @include border-start-radius(0);
+    }
+
+    > :first-child:is(.input-group-ignore) + :not(.menu, .input-group-ignore) {
+      @include border-start-radius(var(--btn-input-border-radius));
     }
 
     > .form-floating:not(:first-child) > .form-control,
     > .form-floating:not(:first-child) > .form-select {
       @include border-start-radius(0);
-    }
-    @each $state in map.keys($form-validation-states) {
-      $validation-messages: $validation-messages + ":not(." + string.unquote($state) + "-tooltip)" + ":not(." + string.unquote($state) + "-feedback)";
     }
   }
 }
