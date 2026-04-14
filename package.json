@@ -207,6 +207,7 @@
     ".browserslistrc"
   ],
   "overrides": {
+    "axios": "^1.15.0",
     "volar-service-emmet": "0.0.63"
   }
 }
