@@ -72,6 +72,7 @@ describe('Dropdown', () => {
 
         const dropdownElem = fixtureEl.querySelector('.dropdown-menu')
         const dropdown = new Dropdown(dropdownElem)
+        expect(dropdown).toBeDefined()
 
         dropdownElem.addEventListener('shown.bs.dropdown', () => {
           resolve()
