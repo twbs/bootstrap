@@ -86,9 +86,9 @@ Radios use the same two-column layout. Wrap each radio + label pair in its own `
 
 ### Grouped
 
-Nest multiple `.form-field`s inside an outer `.form-field` to group related controls under a shared label. The outer wrapper stays in single-column mode because it has no direct `.check`, `.radio`, or `.switch` child, while each inner `.form-field` gets its own two-column layout.
+Wrap multiple `.form-field`s in a `.form-group` to group related controls under a shared label. The group provides consistent spacing while each inner `.form-field` keeps its own layout.
 
-<Example code={`<div class="form-field">
+<Example code={`<div class="form-group">
     <label class="form-label">Shipping method</label>
     <div class="form-field">
       <input type="radio" id="fieldGroupRadio1" class="radio" name="fieldGroupRadio" required />
@@ -103,19 +103,19 @@ Nest multiple `.form-field`s inside an outer `.form-field` to group related cont
 
 ### Group cards
 
-Add `.form-field-group` to each inner `.form-field` for a card-style treatment that highlights the selected option. Wrap the inner fields in a container with tighter spacing for a more compact look.
+Add `.form-field-card` to each inner `.form-field` for a card-style treatment that highlights the selected option. Wrap the inner fields in a `.form-group` with tighter spacing for a more compact look.
 
-<Example code={`<div class="form-field">
+<Example code={`<div class="form-group">
     <label class="form-label">Select a plan</label>
     <div class="vstack gap-1">
-      <div class="form-field form-field-group">
+      <div class="form-field form-field-card">
         <input type="radio" id="fieldRadioGroup1" class="radio" name="fieldRadioGrouped" checked />
         <div class="form-field-content">
           <label for="fieldRadioGroup1">Basic</label>
           <small class="form-text">$9/month — For individuals.</small>
         </div>
       </div>
-      <div class="form-field form-field-group">
+      <div class="form-field form-field-card">
         <input type="radio" id="fieldRadioGroup2" class="radio" name="fieldRadioGrouped" />
         <div class="form-field-content">
           <label for="fieldRadioGroup2">Pro</label>
@@ -212,7 +212,7 @@ Validation feedback (`.invalid-feedback`, `.valid-feedback`) stacks correctly in
 
 ### Client-side
 
-Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` and `:user-valid` styling. These pseudo-classes activate after the user interacts with a control. Add `novalidate` to suppress native browser validation tooltips while keeping the constraint validation API available.
+Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` styling. These pseudo-classes activate after the user interacts with a control. To also show success styling on valid fields, use `data-bs-validate="valid"`. Add `novalidate` to suppress native browser validation tooltips while keeping the constraint validation API available.
 
 <Example code={`<form class="vstack gap-3" data-bs-validate novalidate><!-- [!code highlight] -->
     <div class="form-field flex-1">

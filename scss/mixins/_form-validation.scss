@@ -5,8 +5,12 @@
       @content;
     }
 
-    @if $state == "valid" or $state == "invalid" {
-      @at-root [data-bs-validate] #{&}:user-#{$state} {
+    @if $state == "invalid" {
+      @at-root [data-bs-validate] #{&}:user-invalid {
+        @content;
+      }
+    } @else if $state == "valid" {
+      @at-root [data-bs-validate~="valid"] #{&}:user-valid {
         @content;
       }
     }
@@ -15,8 +19,12 @@
       @content;
     }
 
-    @if $state == "valid" or $state == "invalid" {
-      [data-bs-validate] :user-#{$state} {
+    @if $state == "invalid" {
+      [data-bs-validate] :user-invalid {
+        @content;
+      }
+    } @else if $state == "valid" {
+      [data-bs-validate~="valid"] :user-valid {
         @content;
       }
     }

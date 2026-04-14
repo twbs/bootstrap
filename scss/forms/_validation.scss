@@ -1,42 +1,47 @@
-@use "sass:map";
 @use "../mixins/border-radius" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/form-validation" as *;
-@use "form-variables" as *;
-@use "../tooltip" as *;
 
 // Form validation
 //
 // Provide feedback to users when form field values are valid or invalid.
 // Server-side: `.is-invalid` / `.is-valid` classes work globally.
-// Client-side: `:user-invalid` / `:user-valid` pseudo-classes are scoped
-// behind `[data-bs-validate]` so forms must opt in to native validation styling.
-// Custom states (e.g., "warning") use only the `.is-*` class.
+// Client-side: `:user-invalid` pseudo-class is scoped behind `[data-bs-validate]`.
+// `:user-valid` is scoped behind `[data-bs-validate~="valid"]` so success styling is opt-in.
+// Custom states (e.g., "warning") use only `.is-*` classes.
+
+// scss-docs-start form-validation-states
+$validation-states: (
+  "valid": "success",
+  "invalid": "danger",
+) !default;
+// scss-docs-end form-validation-states
 
 // scss-docs-start form-validation-state-mixin
 @mixin form-validation-state($state, $theme) {
   .#{$state}-feedback {
     display: none;
     width: 100%;
-    margin-top: $form-feedback-margin-top;
-    font-size: $form-feedback-font-size;
-    font-style: $form-feedback-font-style;
+    font-size: var(--font-size-sm);
     color: var(--#{$theme}-fg);
   }
 
-  .#{$state}-tooltip {
+  // More specific to override base tooltip styles
+  .tooltip.#{$state}-tooltip {
     position: absolute;
     top: 100%;
     z-index: 5;
     display: none;
     max-width: 100%;
-    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
+    padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
     margin-top: .1rem;
-    font-size: $form-feedback-tooltip-font-size;
-    line-height: $form-feedback-tooltip-line-height;
     color: var(--#{$theme}-contrast);
+    text-align: center;
     background-color: var(--#{$theme}-bg);
-    @include border-radius($form-feedback-tooltip-border-radius);
+    opacity: 1;
+    @include border-radius(var(--tooltip-border-radius));
+
+    // @include border-radius($form-feedback-tooltip-border-radius);
   }
 
   // Generic sibling feedback display — works for .form-control, .form-range,
@@ -81,12 +86,19 @@
     .#{$state}-tooltip { display: block; }
   }
 
-  @if $state == "valid" or $state == "invalid" {
-    [data-bs-validate] .form-field:has(.check input:user-#{$state}) {
+  @if $state == "invalid" {
+    [data-bs-validate] .form-field:has(.check input:user-invalid) {
       label { color: var(--#{$theme}-fg); }
 
-      .#{$state}-feedback,
-      .#{$state}-tooltip { display: block; }
+      .invalid-feedback,
+      .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .form-field:has(.check input:user-valid) {
+      label { color: var(--#{$theme}-fg); }
+
+      .valid-feedback,
+      .valid-tooltip { display: block; }
     }
   }
 
@@ -111,12 +123,19 @@
     .#{$state}-tooltip { display: block; }
   }
 
-  @if $state == "valid" or $state == "invalid" {
-    [data-bs-validate] .form-field:has(.radio:user-#{$state}) {
+  @if $state == "invalid" {
+    [data-bs-validate] .form-field:has(.radio:user-invalid) {
       label { color: var(--#{$theme}-fg); }
 
-      .#{$state}-feedback,
-      .#{$state}-tooltip { display: block; }
+      .invalid-feedback,
+      .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .form-field:has(.radio:user-valid) {
+      label { color: var(--#{$theme}-fg); }
+
+      .valid-feedback,
+      .valid-tooltip { display: block; }
     }
   }
 
@@ -132,8 +151,18 @@
     }
   }
 
-  @if $state == "valid" or $state == "invalid" {
-    [data-bs-validate] .switch:has(input:user-#{$state}) {
+  @if $state == "invalid" {
+    [data-bs-validate] .switch:has(input:user-invalid) {
+      --switch-border-color: var(--#{$theme}-border);
+      --switch-checked-bg: var(--#{$theme}-bg);
+      --switch-checked-border-color: var(--#{$theme}-bg);
+
+      &:focus-within {
+        @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
+      }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .switch:has(input:user-valid) {
       --switch-border-color: var(--#{$theme}-border);
       --switch-checked-bg: var(--#{$theme}-bg);
       --switch-checked-border-color: var(--#{$theme}-bg);
@@ -152,12 +181,19 @@
     .#{$state}-tooltip { display: block; }
   }
 
-  @if $state == "valid" or $state == "invalid" {
-    [data-bs-validate] .form-field:has(.switch input:user-#{$state}) {
+  @if $state == "invalid" {
+    [data-bs-validate] .form-field:has(.switch input:user-invalid) {
       label { color: var(--#{$theme}-fg); }
 
-      .#{$state}-feedback,
-      .#{$state}-tooltip { display: block; }
+      .invalid-feedback,
+      .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .form-field:has(.switch input:user-valid) {
+      label { color: var(--#{$theme}-fg); }
+
+      .valid-feedback,
+      .valid-tooltip { display: block; }
     }
   }
 
@@ -175,8 +211,8 @@
     ~ .#{$state}-tooltip { display: block; }
   }
 
-  @if $state == "valid" or $state == "invalid" {
-    [data-bs-validate] .chip-input:has(.form-ghost:user-#{$state}) {
+  @if $state == "invalid" {
+    [data-bs-validate] .chip-input:has(.form-ghost:user-invalid) {
       border-color: var(--#{$theme}-border);
 
       &:focus-within {
@@ -184,8 +220,20 @@
         border-color: var(--#{$theme}-border);
       }
 
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip { display: block; }
+      ~ .invalid-feedback,
+      ~ .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .chip-input:has(.form-ghost:user-valid) {
+      border-color: var(--#{$theme}-border);
+
+      &:focus-within {
+        @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
+        border-color: var(--#{$theme}-border);
+      }
+
+      ~ .valid-feedback,
+      ~ .valid-tooltip { display: block; }
     }
   }
 
@@ -203,8 +251,8 @@
     ~ .#{$state}-tooltip { display: block; }
   }
 
-  @if $state == "valid" or $state == "invalid" {
-    [data-bs-validate] .form-adorn:has(.form-ghost:user-#{$state}) {
+  @if $state == "invalid" {
+    [data-bs-validate] .form-adorn:has(.form-ghost:user-invalid) {
       border-color: var(--#{$theme}-border);
 
       &:focus-within {
@@ -212,8 +260,20 @@
         border-color: var(--#{$theme}-border);
       }
 
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip { display: block; }
+      ~ .invalid-feedback,
+      ~ .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .form-adorn:has(.form-ghost:user-valid) {
+      border-color: var(--#{$theme}-border);
+
+      &:focus-within {
+        @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
+        border-color: var(--#{$theme}-border);
+      }
+
+      ~ .valid-feedback,
+      ~ .valid-tooltip { display: block; }
     }
   }
 
@@ -244,10 +304,15 @@
     .#{$state}-tooltip { display: block; }
   }
 
-  @if $state == "valid" or $state == "invalid" {
-    [data-bs-validate] .form-field:has(.input-group .form-control:user-#{$state}) {
-      .#{$state}-feedback,
-      .#{$state}-tooltip { display: block; }
+  @if $state == "invalid" {
+    [data-bs-validate] .form-field:has(.input-group .form-control:user-invalid) {
+      .invalid-feedback,
+      .invalid-tooltip { display: block; }
+    }
+  } @else if $state == "valid" {
+    [data-bs-validate~="valid"] .form-field:has(.input-group .form-control:user-valid) {
+      .valid-feedback,
+      .valid-tooltip { display: block; }
     }
   }
 

@@ -41,7 +41,7 @@
     align-items: flex-start;
   }
 
-  .form-field-group {
+  .form-field-card {
     position: relative;
     padding: calc(var(--spacer) * .75);
     cursor: pointer;
@@ -61,6 +61,18 @@
       position: absolute;
       inset: 0;
       content: "";
+    }
+  }
+
+  .form-group {
+    display: grid;
+    gap: .5rem;
+
+    > label,
+    > .form-label,
+    > legend {
+      justify-self: start;
+      margin-bottom: 0;
     }
   }
 }
