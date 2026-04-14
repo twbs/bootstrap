@@ -183,6 +183,9 @@
     "vnu-jar": "25.11.25",
     "zod": "^4.3.6"
   },
+  "overrides": {
+    "axios": "^1.15.0"
+  },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
     "js/{src,dist}/**/*.{js,map}",
