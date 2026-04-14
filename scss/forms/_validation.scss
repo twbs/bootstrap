@@ -1,3 +1,4 @@
+@use "../config" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/form-validation" as *;
@@ -11,10 +12,15 @@
 // Custom states (e.g., "warning") use only `.is-*` classes.
 
 // scss-docs-start form-validation-states
-$validation-states: (
-  "valid": "success",
-  "invalid": "danger",
-) !default;
+$validation-states: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$validation-states: defaults(
+  (
+    "valid": "success",
+    "invalid": "danger",
+  ),
+  $validation-states
+);
 // scss-docs-end form-validation-states
 
 // scss-docs-start form-validation-state-mixin

@@ -476,7 +476,7 @@ This example functions the same as the [custom styles example](#custom-styles). 
 
 ### Sass mixins
 
-The `form-validation-state` mixin generates all validation feedback styles from a state name and theme color. It is called through our [loop](#sass-loops).
+We use one large mixin, `form-validation-state`, to generate all validation feedback styles from a state name and theme color. This mixin is called through [a Sass loop](#sass-loops) to compile the CSS.
 
 <ScssDocs name="form-validation-state-mixin" file="scss/forms/_validation.scss" />
 
@@ -500,4 +500,4 @@ Used to iterate over `$validation-states` map values to generate our validation 
 
 ### Customizing
 
-Validation states can be customized via Sass with the `$validation-states` map. Located in our `forms/_form-variables.scss` file, this Sass map pairs each state name to a theme color name. All styling is derived from the theme color's existing CSS custom properties (`--{theme}-fg`, `--{theme}-border`, `--{theme}-bg`, etc.). While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+Validation states can be customized via Sass with the `$validation-states` map. Located in our `forms/_validation.scss` file, this Sass map pairs each state name to a theme color name. All styling is derived from the theme color's existing CSS custom properties (`--{theme}-fg`, `--{theme}-border`, `--{theme}-bg`, etc.). While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.

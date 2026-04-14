@@ -3,7 +3,7 @@
 @use "../mixins/focus-ring" as *;
 @use "../mixins/form-validation" as *;
 @use "../mixins/tokens" as *;
-@use "form-variables" as *;
+@use "validation" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
 $otp-tokens: () !default;
