@@ -332,6 +332,20 @@ $validation-states: defaults(
       }
     }
   }
+
+  // OTP — validation applies to the wrapper; inner .form-control inherits.
+  .otp {
+    @include form-validation-state-selector($state) {
+      .form-control {
+        --control-border-color: var(--#{$theme}-border);
+      }
+
+      .form-control:focus {
+        @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
+        --control-border-color: var(--#{$theme}-border);
+      }
+    }
+  }
 }
 // scss-docs-end form-validation-state-mixin
 
