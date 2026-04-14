@@ -42,7 +42,7 @@ jobs:
         run: npm run docs-vnu
 
       - name: Run linkinator
-        uses: JustinBeckwith/linkinator-action@363572b2714d25a059fceb2fa332a98e7ea3baff # v2.4.1
+        uses: JustinBeckwith/linkinator-action@7b6b0bc671f6264e1a8daa4488a5bd91ce61dcd4 # v2.4.2
         with:
           paths: _site
           recurse: true
