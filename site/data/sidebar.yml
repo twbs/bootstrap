@@ -127,13 +127,13 @@
       pages:
         - title: Menu
           meta:
-          - added: 6.0.0
+            - added: 6.0.0
         - title: Dialog
           meta:
-          - added: 6.0.0
+            - added: 6.0.0
         - title: Drawer
           meta:
-          - added: 6.0.0
+            - added: 6.0.0
         - title: Popover
         - title: Toasts
         - title: Tooltip
@@ -144,10 +144,10 @@
         - title: Tab
         - title: Nav overflow
           meta:
-          - added: 6.0.0
+            - added: 6.0.0
         - title: Navbar
           meta:
-          - added: 6.0.0
+            - added: 6.0.0
         - title: Pagination
         - title: Stepper
     - group: Layout
@@ -162,13 +162,13 @@
         - title: Scrollspy
         - title: Toggler
           meta:
-          - added: 6.0.0
+            - added: 6.0.0
 
     - group: Miscellaneous
       pages:
         - title: Avatar
           meta:
-          - added: 6.0.0
+            - added: 6.0.0
 
 - title: Helpers
   section: Helpers
@@ -196,7 +196,7 @@
         - title: Background
         - title: Theme
           meta:
-          - added: 6.0.0
+            - added: 6.0.0
     - group: Layout
       pages:
         - title: Aspect ratio
