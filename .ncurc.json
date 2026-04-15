@@ -1,0 +1,13 @@
+{
+  "reject": [
+    "@docsearch/js",
+    "eslint",
+    "eslint-config-xo",
+    "eslint-plugin-unicorn",
+    "hammer-simulator",
+    "karma-browserstack-launcher",
+    "karma-rollup-preprocessor",
+    "sass",
+    "vnu-jar"
+  ]
+}

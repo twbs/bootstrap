@@ -23,6 +23,43 @@ updates:
       timezone: Europe/Athens
     versioning-strategy: increase
     rebase-strategy: disabled
+    ignore:
+      - dependency-name: "@docsearch/js"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "eslint"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "eslint-config-xo"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "eslint-plugin-unicorn"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "hammer-simulator"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "karma-browserstack-launcher"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "karma-rollup-preprocessor"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "sass"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "vnu-jar"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
     groups:
       production-dependencies:
         dependency-type: "production"
