@@ -1,5 +1,7 @@
 ---
 import type { Layout } from '@libs/layout'
+import applicationScriptUrl from '@assets/application.js?url'
+import searchScriptUrl from '@assets/search.js?url'
 import DocsScripts from './DocsScripts.astro'
 
 interface Props {
@@ -9,7 +11,7 @@ interface Props {
 const { layout } = Astro.props
 ---
 
-<script src="../assets/application.js"></script>
-<script src="../assets/search.js"></script>
+<script src={applicationScriptUrl}></script>
+<script src={searchScriptUrl}></script>
 
 {layout === 'docs' && <DocsScripts />}
