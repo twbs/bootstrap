@@ -109,8 +109,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/markdown-remark": "^6.3.11",
-    "@astrojs/mdx": "^4.3.14",
+    "@astrojs/markdown-remark": "^7.1.0",
+    "@astrojs/mdx": "^5.0.3",
     "@astrojs/prism": "^4.0.1",
     "@astrojs/sitemap": "^3.7.2",
     "@babel/cli": "^7.28.6",
