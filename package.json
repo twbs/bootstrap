@@ -138,7 +138,7 @@
     "@stackblitz/sdk": "^1.11.0",
     "@types/js-yaml": "^4.0.9",
     "@types/mime": "^4.0.0",
-    "astro": "^6.1.6",
+    "astro": "^6.1.7",
     "astro-auto-import": "^0.5.1",
     "astro-broken-links-checker": "^1.1.0",
     "autoprefixer": "^10.4.27",
