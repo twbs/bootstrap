@@ -109,7 +109,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/markdown-remark": "^6.3.11",
+    "@astrojs/markdown-remark": "^7.1.0",
     "@astrojs/mdx": "^4.3.14",
     "@astrojs/prism": "^4.0.1",
     "@astrojs/sitemap": "^3.7.2",
