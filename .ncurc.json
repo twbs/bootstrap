@@ -1,6 +1,7 @@
 {
   "reject": [
     "@docsearch/js",
+    "astro",
     "eslint",
     "eslint-config-xo",
     "eslint-plugin-unicorn",

@@ -28,6 +28,9 @@ updates:
         update-types:
           - "version-update:semver-major"
           - "version-update:semver-minor"
+      - dependency-name: "astro"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "eslint"
         update-types:
           - "version-update:semver-major"
