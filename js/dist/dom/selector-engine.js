@@ -3,7 +3,7 @@
   * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
-import { isVisible, isDisabled, parseSelector } from '../util/index.js';
+import { isDisabled, isVisible, parseSelector } from '../util/index.js';
 
 /**
  * --------------------------------------------------------------------------

@@ -651,6 +651,8 @@
         "me-7",
         "me-8",
         "me-9",
+        "me--1",
+        "me--2",
         "me-auto"
       ]
     },
@@ -1028,9 +1030,9 @@
         "fg-2",
         "fg-3",
         "fg-4",
+        "fg-bg",
         "fg-white",
-        "fg-black",
-        "fg-inherit"
+        "fg-black"
       ]
     },
     "fg-emphasis": {
@@ -1157,10 +1159,10 @@
         "bg-2",
         "bg-3",
         "bg-4",
+        "bg-fg",
         "bg-white",
         "bg-black",
-        "bg-transparent",
-        "bg-inherit"
+        "bg-transparent"
       ]
     },
     "bg-color-subtle": {
