@@ -1,5 +1,6 @@
 {
   "reject": [
+    "@astrojs/mdx",
     "@docsearch/js",
     "astro",
     "eslint",

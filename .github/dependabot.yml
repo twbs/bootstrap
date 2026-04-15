@@ -24,6 +24,9 @@ updates:
     versioning-strategy: increase
     rebase-strategy: disabled
     ignore:
+      - dependency-name: "@astrojs/mdx"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "@docsearch/js"
         update-types:
           - "version-update:semver-major"
