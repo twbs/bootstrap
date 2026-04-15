@@ -148,7 +148,7 @@
     "image-size": "^2.0.2",
     "ip": "^2.0.1",
     "jasmine": "^6.2.0",
-    "jquery": "^3.7.1",
+    "jquery": "3.7.1",
     "js-yaml": "^4.1.1",
     "karma": "^6.4.4",
     "karma-browserstack-launcher": "1.4.0",

@@ -5,6 +5,7 @@
     "eslint-config-xo",
     "eslint-plugin-unicorn",
     "hammer-simulator",
+    "jquery",
     "karma-browserstack-launcher",
     "karma-rollup-preprocessor",
     "sass",

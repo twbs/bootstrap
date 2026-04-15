@@ -44,6 +44,10 @@ updates:
         update-types:
           - "version-update:semver-major"
           - "version-update:semver-minor"
+      - dependency-name: "jquery"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
       - dependency-name: "karma-browserstack-launcher"
         update-types:
           - "version-update:semver-major"
