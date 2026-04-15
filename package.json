@@ -131,7 +131,7 @@
     "@babel/preset-env": "^7.29.2",
     "@docsearch/js": "3.9.0",
     "@floating-ui/dom": "^1.7.6",
-    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-babel": "^7.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-replace": "^6.0.3",
     "@shikijs/transformers": "^4.0.2",
