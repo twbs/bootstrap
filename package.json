@@ -155,7 +155,7 @@
     "eslint-plugin-unicorn": "^64.0.0",
     "find-unused-sass-variables": "^6.1.1",
     "github-slugger": "^2.0.0",
-    "globals": "^17.0.0",
+    "globals": "^17.5.0",
     "globby": "^16.2.0",
     "hammer-simulator": "0.0.1",
     "html-validate": "^10.12.2",
