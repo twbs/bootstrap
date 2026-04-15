@@ -8,6 +8,7 @@
     "karma-browserstack-launcher",
     "karma-rollup-preprocessor",
     "sass",
+    "stylelint",
     "vnu-jar"
   ]
 }

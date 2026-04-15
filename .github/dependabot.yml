@@ -56,6 +56,10 @@ updates:
         update-types:
           - "version-update:semver-major"
           - "version-update:semver-minor"
+      - dependency-name: "stylelint"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
       - dependency-name: "vnu-jar"
         update-types:
           - "version-update:semver-major"

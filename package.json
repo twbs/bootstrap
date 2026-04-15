@@ -176,7 +176,7 @@
     "sass": "1.78.0",
     "sass-true": "^10.1.0",
     "shelljs": "^0.10.0",
-    "stylelint": "^16.26.1",
+    "stylelint": "16.26.1",
     "stylelint-config-twbs-bootstrap": "^16.1.0",
     "terser": "^5.44.1",
     "unist-util-visit": "^5.1.0",
