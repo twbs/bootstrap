@@ -60,7 +60,15 @@ import { getSlug } from '@libs/utils'
                   href={`/docs/${getConfig().docs_version}/examples/${getSlug(example.name)}/`}
                 >
                   <img
-                    class="img-thumbnail mb-3"
+                    class="img-thumbnail mb-3 examples-thumb"
+                    data-light-src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}
+                    data-light-srcset={`${getVersionedDocsPath(
+                      `/assets/img/examples/${getSlug(example.name)}.png`
+                    )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
+                    data-dark-src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}-dark.png`)}
+                    data-dark-srcset={`${getVersionedDocsPath(
+                      `/assets/img/examples/${getSlug(example.name)}-dark.png`
+                    )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}-dark@2x.png`)} 2x`}
                     srcset={`${getVersionedDocsPath(
                       `/assets/img/examples/${getSlug(example.name)}.png`
                     )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
@@ -81,3 +89,30 @@ import { getSlug } from '@libs/utils'
     )
   })
 }
+
+<script is:inline>
+  const applyExamplesThumbTheme = () => {
+    const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark'
+    const thumbs = document.querySelectorAll('.examples-thumb')
+
+    thumbs.forEach((thumb) => {
+      const src = isDark ? thumb.dataset.darkSrc : thumb.dataset.lightSrc
+      const srcset = isDark ? thumb.dataset.darkSrcset : thumb.dataset.lightSrcset
+
+      if (src && thumb.getAttribute('src') !== src) {
+        thumb.setAttribute('src', src)
+      }
+
+      if (srcset && thumb.getAttribute('srcset') !== srcset) {
+        thumb.setAttribute('srcset', srcset)
+      }
+    })
+  }
+
+  applyExamplesThumbTheme()
+
+  new MutationObserver(applyExamplesThumbTheme).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-bs-theme']
+  })
+</script>
