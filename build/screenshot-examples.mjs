@@ -181,6 +181,7 @@ async function run() {
       // Single page load — reuse for light & dark, both scales (sharp handles resizing)
       const page = await browser.newPage({ viewport: CAPTURE_VIEWPORT, deviceScaleFactor: 1 })
       await page.goto(url, { waitUntil: 'networkidle' })
+      await page.addStyleTag({ content: '.bd-mode-toggle { display: none !important; }' })
       await screenshot(page, slug, 'light', 1)
       await screenshot(page, slug, 'light', 2)
       await screenshot(page, slug, 'dark', 1)
