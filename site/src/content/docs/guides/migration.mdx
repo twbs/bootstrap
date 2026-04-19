@@ -229,8 +229,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Checkboxes now have a wrapping element and an SVG in the DOM for checked and indeterminate states. Radios and switches do not.
   - Revamped layout for checks, radios, and switches with labels (and descriptions). We now have custom elements for layout that include basic flexbox styling.
   - Refactored toggle buttons to use a nested input structure. The `.btn-check` class now goes on the label (not the input), with the input nested inside. This eliminates the need for `id`/`for` attributes and uses CSS `:has()` selector instead of sibling selectors. Example: `<label class="btn-check btn-solid theme-primary"><input type="checkbox">Toggle</label>`.
-- **Consolidate `.form-select` into `.form-control`.**
-  - Removed `.form-select`—use `.form-control` on `<select>` elements now. Too much abstraction and duplication at the same time.
+- **Consolidate `.form-control` into `.form-control`.**
+  - Removed `.form-control`—use `.form-control` on `<select>` elements now. Too much abstraction and duplication at the same time.
   - Adds new CSS variables on `.form-control` for easier customization without Sass compilation.
   - `.form-control` now has a `min-height` at all times as opposed to just on `<textarea>` elements. This reduces some CSS for us.
 - **Added new Combobox form component.** A searchable, filterable select with single and multi-select modes, built on top of the Menu component. See the [Combobox docs]([[docsref:/forms/combobox]]).
