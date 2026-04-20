@@ -91,7 +91,7 @@
 
 .card-link {
   &:hover {
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    text-decoration: none;
   }
 
   + .card-link {

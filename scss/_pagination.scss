@@ -32,7 +32,7 @@
   padding: var(--#{$prefix}pagination-padding-y) var(--#{$prefix}pagination-padding-x);
   @include font-size(var(--#{$prefix}pagination-font-size));
   color: var(--#{$prefix}pagination-color);
-  text-decoration: if($link-decoration == none, null, none);
+  text-decoration: none;
   background-color: var(--#{$prefix}pagination-bg);
   border: var(--#{$prefix}pagination-border-width) solid var(--#{$prefix}pagination-border-color);
   @include transition($pagination-transition);
@@ -40,7 +40,7 @@
   &:hover {
     z-index: 2;
     color: var(--#{$prefix}pagination-hover-color);
-    text-decoration: if($link-hover-decoration == underline, none, null);
+    text-decoration: none;
     background-color: var(--#{$prefix}pagination-hover-bg);
     border-color: var(--#{$prefix}pagination-hover-border-color);
   }
