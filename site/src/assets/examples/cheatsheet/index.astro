@@ -332,28 +332,36 @@ export const body_class = 'bg-body-tertiary'
               <option value="3">Three</option>
             </select>
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <div class="mb-3 form-field">
+            <div class="check">
+              <input type="checkbox" id="exampleCheck1">
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+                <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+                <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+              </svg>
+            </div>
+            <label for="exampleCheck1">Check me out</label>
           </div>
           <fieldset class="mb-3">
             <legend>Radios buttons</legend>
-            <div class="form-check">
-              <input type="radio" name="radios" class="form-check-input" id="exampleRadio1">
-              <label class="form-check-label" for="exampleRadio1">Default radio</label>
+            <div class="form-field">
+              <input type="radio" name="radios" class="radio" id="exampleRadio1">
+              <label for="exampleRadio1">Default radio</label>
             </div>
-            <div class="mb-3 form-check">
-              <input type="radio" name="radios" class="form-check-input" id="exampleRadio2">
-              <label class="form-check-label" for="exampleRadio2">Another radio</label>
+            <div class="mb-3 form-field">
+              <input type="radio" name="radios" class="radio" id="exampleRadio2">
+              <label for="exampleRadio2">Another radio</label>
             </div>
           </fieldset>
           <div class="mb-3">
             <label class="form-label" for="customFile">Upload</label>
             <input type="file" class="form-control" id="customFile">
           </div>
-          <div class="mb-3 form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" checked>
-            <label class="form-check-label" for="switchCheckChecked">Checked switch checkbox input</label>
+          <div class="mb-3 form-field">
+            <div class="switch">
+              <input type="checkbox" role="switch" id="switchCheckChecked" checked>
+            </div>
+            <label for="switchCheckChecked">Checked switch checkbox input</label>
           </div>
           <div class="mb-3">
             <label for="customRange3" class="form-label">Example range</label>
@@ -383,32 +391,38 @@ export const body_class = 'bg-body-tertiary'
                 <option>Disabled select</option>
               </select>
             </div>
-            <div class="mb-3">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-                <label class="form-check-label" for="disabledFieldsetCheck">
-                  Can't check this
-                </label>
+            <div class="mb-3 form-field">
+              <div class="check">
+                <input type="checkbox" id="disabledFieldsetCheck" disabled>
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+                  <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+                  <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+                </svg>
               </div>
+              <label for="disabledFieldsetCheck">
+                Can't check this
+              </label>
             </div>
             <fieldset class="mb-3">
               <legend>Disabled radios buttons</legend>
-              <div class="form-check">
-                <input type="radio" name="radios" class="form-check-input" id="disabledRadio1" disabled>
-                <label class="form-check-label" for="disabledRadio1">Disabled radio</label>
+              <div class="form-field">
+                <input type="radio" name="radios" class="radio" id="disabledRadio1" disabled>
+                <label for="disabledRadio1">Disabled radio</label>
               </div>
-              <div class="mb-3 form-check">
-                <input type="radio" name="radios" class="form-check-input" id="disabledRadio2" disabled>
-                <label class="form-check-label" for="disabledRadio2">Another radio</label>
+              <div class="mb-3 form-field">
+                <input type="radio" name="radios" class="radio" id="disabledRadio2" disabled>
+                <label for="disabledRadio2">Another radio</label>
               </div>
             </fieldset>
             <div class="mb-3">
               <label class="form-label" for="disabledCustomFile">Upload</label>
               <input type="file" class="form-control" id="disabledCustomFile" disabled>
             </div>
-            <div class="mb-3 form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="disabledSwitchCheckChecked" checked disabled>
-              <label class="form-check-label" for="disabledSwitchCheckChecked">Disabled checked switch checkbox input</label>
+            <div class="mb-3 form-field">
+              <div class="switch">
+                <input type="checkbox" role="switch" id="disabledSwitchCheckChecked" checked disabled>
+              </div>
+              <label for="disabledSwitchCheckChecked">Disabled checked switch checkbox input</label>
             </div>
             <div class="mb-3">
               <label for="disabledRange" class="form-label">Disabled range</label>
@@ -572,9 +586,15 @@ export const body_class = 'bg-body-tertiary'
             </div>
           </div>
           <div class="col-12">
-            <div class="form-check">
-              <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-              <label class="form-check-label" for="invalidCheck3">
+            <div class="form-field">
+              <div class="check">
+                <input class="is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+                  <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+                  <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+                </svg>
+              </div>
+              <label for="invalidCheck3">
                 Agree to terms and conditions
               </label>
               <div class="invalid-feedback">

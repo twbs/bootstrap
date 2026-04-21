@@ -206,31 +206,55 @@ Place Bootstrap’s checkboxes and radios within list group items and customize 
 
 <Example code={`<ul class="list-group">
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-      <label class="form-check-label" for="firstCheckbox">First checkbox</label>
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" value="" id="firstCheckbox">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
+          </svg>
+        </div>
+        <label for="firstCheckbox">First checkbox</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-      <label class="form-check-label" for="secondCheckbox">Second checkbox</label>
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" value="" id="secondCheckbox">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
+          </svg>
+        </div>
+        <label for="secondCheckbox">Second checkbox</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-      <label class="form-check-label" for="thirdCheckbox">Third checkbox</label>
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" value="" id="thirdCheckbox">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
+          </svg>
+        </div>
+        <label for="thirdCheckbox">Third checkbox</label>
+      </div>
     </li>
   </ul>`} />
 
 <Example code={`<ul class="list-group">
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
-      <label class="form-check-label" for="firstRadio">First radio</label>
+      <input class="radio me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+      <label for="firstRadio">First radio</label>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
-      <label class="form-check-label" for="secondRadio">Second radio</label>
+      <input class="radio me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
+      <label for="secondRadio">Second radio</label>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
-      <label class="form-check-label" for="thirdRadio">Third radio</label>
+      <input class="radio me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
+      <label for="thirdRadio">Third radio</label>
     </li>
   </ul>`} />
 
@@ -238,16 +262,40 @@ You can use `.stretched-link` on `<label>`s to make the whole list group item cl
 
 <Example code={`<ul class="list-group">
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">
-      <label class="form-check-label stretched-link" for="firstCheckboxStretched">First checkbox</label>
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" value="" id="firstCheckboxStretched">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
+          </svg>
+        </div>
+        <label class="stretched-link" for="firstCheckboxStretched">First checkbox</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckboxStretched">
-      <label class="form-check-label stretched-link" for="secondCheckboxStretched">Second checkbox</label>
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" value="" id="secondCheckboxStretched">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
+          </svg>
+        </div>
+        <label class="stretched-link" for="secondCheckboxStretched">Second checkbox</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckboxStretched">
-      <label class="form-check-label stretched-link" for="thirdCheckboxStretched">Third checkbox</label>
+      <div class="form-field">
+        <div class="check">
+          <input type="checkbox" value="" id="thirdCheckboxStretched">
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
+          </svg>
+        </div>
+        <label class="stretched-link" for="thirdCheckboxStretched">Third checkbox</label>
+      </div>
     </li>
   </ul>`} />
 

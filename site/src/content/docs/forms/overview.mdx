@@ -40,9 +40,15 @@ Here’s a quick example to demonstrate Bootstrap’s form styles. Keep reading 
       <label for="exampleInputPassword1" class="form-label">Password</label>
       <input type="password" class="form-control" id="exampleInputPassword1">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    <div class="mb-3 form-field">
+      <div class="check">
+        <input type="checkbox" id="exampleCheck1">
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+          <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+          <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+        </svg>
+      </div>
+      <label for="exampleCheck1">Check me out</label>
     </div>
     <button type="submit" class="btn-solid theme-primary">Submit</button>
   </form>`} />
@@ -72,13 +78,17 @@ However, if your form also includes custom button-like elements such as `<a clas
           <option>Disabled select</option>
         </select>
       </div>
-      <div class="mb-3">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-          <label class="form-check-label" for="disabledFieldsetCheck">
-            Can’t check this
-          </label>
+      <div class="mb-3 form-field">
+        <div class="check">
+          <input type="checkbox" id="disabledFieldsetCheck" disabled>
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+            <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+            <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+          </svg>
         </div>
+        <label for="disabledFieldsetCheck">
+          Can’t check this
+        </label>
       </div>
       <button type="submit" class="btn-solid theme-primary">Submit</button>
     </fieldset>
