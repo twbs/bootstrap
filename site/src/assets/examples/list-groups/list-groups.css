@@ -8,7 +8,7 @@
   opacity: .5;
 }
 
-.check-input-placeholder {
+.check-input-placeholder input {
   border-style: dashed;
 }
 [contenteditable]:focus {
