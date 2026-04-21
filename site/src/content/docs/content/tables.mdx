@@ -621,7 +621,7 @@ Both `.table-stacked` and `.table-responsive` use container queries, so the `.ta
 
 ## Responsive tables
 
-Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl|-2xl}`.
+Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.{sm|md|lg|xl|2xl}:table-responsive`.
 
 The `.table-responsive` wrapper also acts as the container query context for [stacked tables](#stacked-tables).
 
@@ -700,14 +700,14 @@ Across every breakpoint, use `.table-responsive` for horizontally scrolling tabl
 
 ### Breakpoint specific
 
-Use `.table-responsive{-sm|-md|-lg|-xl|-2xl}` as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.
+Use `.{sm|md|lg|xl|2xl}:table-responsive` as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.
 
 **These tables may appear broken until their responsive styles apply at specific viewport widths.**
 
 {getData('breakpoints').map((breakpoint) => {
   return (
     <div class="bd-example">
-      <div class={`table-responsive${breakpoint.abbr}`}>
+      <div class={`${breakpoint.abbr}table-responsive`}>
         <table class="table">
           <thead>
             <tr>
@@ -763,7 +763,7 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-2xl}` as needed to create responsive tab
   )
 })}
 
-<Code code={getData('breakpoints').map((breakpoint) => `<div class="table-responsive${breakpoint.abbr}">
+<Code code={getData('breakpoints').map((breakpoint) => `<div class="${breakpoint.abbr}table-responsive">
     <table class="table">
       ...
     </table>
