@@ -17,7 +17,9 @@ Progress components are built with two HTML elements, some CSS to set the width,
 
 Put that all together, and you have the following examples.
 
-<Example code={`<div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+<Example
+  class="vstack gap-3"
+  code={`<div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
     <div class="progress-bar" style="width: 0%"></div>
   </div>
   <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
@@ -76,7 +78,9 @@ If the text can overlap the progress bar, we often recommend displaying the labe
 
 Use background utility classes to change the appearance of individual progress bars.
 
-<Example code={`<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+<Example
+  class="vstack gap-3"
+  code={`<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
     <div class="progress-bar bg-success" style="width: 25%"></div>
   </div>
   <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
@@ -93,7 +97,9 @@ Use background utility classes to change the appearance of individual progress b
 
 If you’re adding labels to progress bars with a custom background color, make sure to also set an appropriate [text color]([[docsref:/utilities/colors#colors]]), so the labels remain readable and have sufficient contrast. We recommend using the [theme contrast]([[docsref:/utilities/theme#contrast]]) helper classes.
 
-<Example code={`<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+<Example
+  class="vstack gap-3"
+  code={`<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
     <div class="progress-bar theme-success" style="width: 25%">25%</div>
   </div>
   <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
@@ -126,7 +132,9 @@ You can include multiple progress components inside a container with `.progress-
 
 Add `.progress-bar-striped` to any `.progress-bar` to apply a stripe via CSS gradient over the progress bar’s background color.
 
-<Example code={`<div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+<Example
+  class="vstack gap-3"
+  code={`<div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
     <div class="progress-bar progress-bar-striped" style="width: 10%"></div>
   </div>
   <div class="progress" role="progressbar" aria-label="Success striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
