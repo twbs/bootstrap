@@ -536,7 +536,7 @@ class Tooltip extends BaseComponent {
     return Object.values(this._activeTrigger).includes(true)
   }
 
-  _getConfig(config) {
+  _getInitialConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this._element)
 
     for (const dataAttribute of Object.keys(dataAttributes)) {

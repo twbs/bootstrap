@@ -209,8 +209,8 @@ class Dropdown extends BaseComponent {
     EventHandler.trigger(this._element, EVENT_HIDDEN, relatedTarget)
   }
 
-  _getConfig(config) {
-    config = super._getConfig(config)
+  _getInitialConfig(config) {
+    config = super._getInitialConfig(config)
 
     if (typeof config.reference === 'object' && !isElement(config.reference) &&
       typeof config.reference.getBoundingClientRect !== 'function'
