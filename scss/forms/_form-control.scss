@@ -35,7 +35,7 @@ $form-control-tokens: defaults(
     --control-select-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#00000080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
     --control-select-bg-position: right .75rem center,
     --control-select-bg-size: 16px 12px,
-    --control-select-bg-dark: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
+    --control-select-bg-dark: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#ffffff80' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
   ),
   $form-control-tokens
 );
@@ -189,7 +189,8 @@ $form-control-sizes: defaults(
   }
 
   // stylelint-disable selector-no-qualifying-type
-  select.form-control {
+  select.form-control,
+  .form-control-caret {
     padding-inline-end: calc(var(--control-padding-x) * 3);
     background-image: var(--control-select-bg);
     background-repeat: no-repeat;
@@ -204,7 +205,8 @@ $form-control-sizes: defaults(
   }
 
   @media (prefers-color-scheme: dark) {
-    select.form-control {
+    select.form-control,
+    .form-control-caret {
       background-image: var(--control-select-bg-dark);
     }
   }

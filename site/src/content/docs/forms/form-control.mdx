@@ -276,6 +276,18 @@ Learn more about [support for datalist elements](https://caniuse.com/datalist).
     <option value="Chicago">
   </datalist>`} />
 
+You can also combine with the `.form-control-caret` class to add a caret to inputs without requiring a select element.
+
+<Example code={`<label for="exampleDataListCaret" class="form-label">Datalist example with caret</label>
+  <input class="form-control form-control-caret" list="datalistOptionsCaret" id="exampleDataListCaret" placeholder="Type to search...">
+  <datalist id="datalistOptionsCaret">
+    <option value="San Francisco">
+    <option value="New York">
+    <option value="Seattle">
+    <option value="Los Angeles">
+    <option value="Chicago">
+  </datalist>`} />
+
 ### Date & time
 
 No additional classes are needed for date and time inputs.
