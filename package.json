@@ -144,7 +144,7 @@
     "astro-broken-links-checker": "^1.1.0",
     "autoprefixer": "^10.5.0",
     "bootstrap-vscode-theme": "^0.0.9",
-    "bundlewatch": "^0.4.1",
+    "bundlewatch": "^0.4.2",
     "clipboard": "^2.0.11",
     "cross-env": "^10.1.0",
     "cspell": "^10.0.0",
