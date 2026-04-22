@@ -14,7 +14,9 @@ import snippets from './partials/snippets.js'
 import stickyNav from './partials/sticky.js'
 import tocDrawer from './partials/toc.js'
 
-sidebarScroll()
-snippets()
-stickyNav()
-tocDrawer()
+export default () => {
+  sidebarScroll()
+  snippets()
+  stickyNav()
+  tocDrawer()
+}
