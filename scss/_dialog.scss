@@ -240,6 +240,16 @@ $dialog-sizes: defaults(
       background-color: transparent;
       backdrop-filter: blur(0);
     }
+
+    // Swap entry: when this dialog is opened as the target of a swap, the
+    // outgoing dialog's ::backdrop is being removed synchronously in the same
+    // JS tick. To avoid any flicker (either a dip from a fade-in over nothing,
+    // or double-darkening from two stacked backdrops), start this backdrop
+    // already-opaque so it takes over from the outgoing one seamlessly.
+    .dialog.dialog-swap-in:not(.dialog-instant)::backdrop {
+      background-color: var(--dialog-backdrop-bg);
+      backdrop-filter: blur(var(--dialog-backdrop-blur));
+    }
   }
 
   // Dialog sizes
