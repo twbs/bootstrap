@@ -733,16 +733,17 @@ const initTooltip = event => {
     return
   }
 
-  // Get or create instance and trigger the appropriate action
-  const tooltip = Tooltip.getOrCreateInstance(target)
-
-  // For focus events, manually trigger enter to show
-  if (event.type === 'focusin') {
-    tooltip._activeTrigger.focus = true
-    tooltip._enter()
-  }
+  // Lazily create the instance. The instance's own `_setListeners()` registers
+  // the appropriate listeners on the element for the configured triggers
+  // (hover/focus by default), so we don't mutate `_activeTrigger` or call
+  // `_enter` here — doing so would show tooltips for triggers the user didn't
+  // opt into (e.g. `focusin` firing for click-focused buttons in Chromium,
+  // even when `trigger="hover"` or `trigger="manual"`) and leave stale state
+  // on `_activeTrigger`.
+  Tooltip.getOrCreateInstance(target)
 }
 
+// Auto-initialize tooltips on first interaction for hover and focus triggers
 EventHandler.on(document, EVENT_FOCUSIN, SELECTOR_DATA_TOGGLE, initTooltip)
 EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE, initTooltip)
 
