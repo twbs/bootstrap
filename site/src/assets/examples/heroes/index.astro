@@ -74,10 +74,15 @@ export const extra_css = ['heroes.css']
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
           </div>
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
+          <div class="form-field mb-3">
+            <div class="check">
+              <input type="checkbox" value="remember-me" id="heroRememberMe">
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
+                <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
+                <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
+              </svg>
+            </div>
+            <label for="heroRememberMe">Remember me</label>
           </div>
           <button class="w-100 btn-solid theme-primary btn-lg" type="submit">Sign up</button>
           <hr class="my-4">
