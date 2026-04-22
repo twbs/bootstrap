@@ -38,7 +38,7 @@ Use gap utilities to control the space between children in flexbox and grid layo
 
 Gap utilities that apply to all breakpoints, from `xs` to `2xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 
-The classes are named using the format `{property}-{size}` for `xs` and `{property}-{breakpoint}-{size}` for `sm`, `md`, `lg`, `xl`, and `2xl`.
+The classes are named using the format `{property}-{size}` for `xs` and `{breakpoint}:{property}-{size}` for `sm`, `md`, `lg`, `xl`, and `2xl`.
 
 Where *property* is one of:
 
@@ -154,7 +154,7 @@ All gap utilities are responsive and include all breakpoints.
 <ul>
 {getData('breakpoints').map((breakpoint) => {
   return (
-    <li><code>.gap{breakpoint.abbr}-0</code> through <code>.gap{breakpoint.abbr}-5</code></li>
+    <li><code>.{breakpoint.abbr}gap-0</code> through <code>.{breakpoint.abbr}gap-5</code></li>
   )
 })}
 </ul>
@@ -162,7 +162,7 @@ All gap utilities are responsive and include all breakpoints.
 <ul>
 {getData('breakpoints').map((breakpoint) => {
   return (
-    <li><code>.row-gap{breakpoint.abbr}-0</code> through <code>.row-gap{breakpoint.abbr}-5</code></li>
+    <li><code>.{breakpoint.abbr}row-gap-0</code> through <code>.{breakpoint.abbr}row-gap-5</code></li>
   )
 })}
 </ul>
@@ -170,7 +170,7 @@ All gap utilities are responsive and include all breakpoints.
 <ul>
 {getData('breakpoints').map((breakpoint) => {
   return (
-    <li><code>.column-gap{breakpoint.abbr}-0</code> through <code>.column-gap{breakpoint.abbr}-5</code></li>
+    <li><code>.{breakpoint.abbr}column-gap-0</code> through <code>.{breakpoint.abbr}column-gap-5</code></li>
   )
 })}
 </ul>

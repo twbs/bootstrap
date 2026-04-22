@@ -154,10 +154,10 @@ All grid utilities are responsive and include all breakpoints.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.grid-cols{breakpoint.abbr}-3</code></li>
-      <li><code>.grid-cols{breakpoint.abbr}-4</code></li>
-      <li><code>.grid-cols{breakpoint.abbr}-6</code></li>
-      <li><code>.grid-cols{breakpoint.abbr}-fill</code></li>
+      <li><code>.{breakpoint.abbr}grid-cols-3</code></li>
+      <li><code>.{breakpoint.abbr}grid-cols-4</code></li>
+      <li><code>.{breakpoint.abbr}grid-cols-6</code></li>
+      <li><code>.{breakpoint.abbr}grid-cols-fill</code></li>
     </Fragment>
   )
 })}
@@ -169,9 +169,9 @@ All grid utilities are responsive and include all breakpoints.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.grid-auto-flow{breakpoint.abbr}-row</code></li>
-      <li><code>.grid-auto-flow{breakpoint.abbr}-column</code></li>
-      <li><code>.grid-auto-flow{breakpoint.abbr}-dense</code></li>
+      <li><code>.{breakpoint.abbr}grid-auto-flow-row</code></li>
+      <li><code>.{breakpoint.abbr}grid-auto-flow-column</code></li>
+      <li><code>.{breakpoint.abbr}grid-auto-flow-dense</code></li>
     </Fragment>
   )
 })}
