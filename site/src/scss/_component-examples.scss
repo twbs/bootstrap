@@ -209,8 +209,8 @@
   .bd-example-drawer {
     .drawer {
       position: static;
-      display: block;
-      height: 200px;
+      display: flex;
+      height: 400px;
       margin: var(--drawer-inset);
       visibility: visible;
       transform: translate(0);
