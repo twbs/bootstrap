@@ -22,19 +22,21 @@ const CONFIG = {
 }
 
 // Open in StackBlitz logic
-document.querySelectorAll('.btn-edit').forEach(btn => {
-  btn.addEventListener('click', event => {
-    const codeSnippet = event.target.closest('.bd-code-snippet')
-    const exampleEl = codeSnippet.querySelector('.bd-example')
+export default () => {
+  document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', event => {
+      const codeSnippet = event.target.closest('.bd-code-snippet')
+      const exampleEl = codeSnippet.querySelector('.bd-example')
 
-    const htmlSnippet = exampleEl.innerHTML
-    const jsSnippet = codeSnippet.querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
-    // Get extra classes for this example
-    const classes = Array.from(exampleEl.classList).join(' ')
+      const htmlSnippet = exampleEl.innerHTML
+      const jsSnippet = codeSnippet.querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
+      // Get extra classes for this example
+      const classes = Array.from(exampleEl.classList).join(' ')
 
-    openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
+      openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
+    })
   })
-})
+}
 
 const openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
   const indexHtml = `<!doctype html>

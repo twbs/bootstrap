@@ -11,7 +11,7 @@
 
 import docsearch from '@docsearch/js'
 
-(() => {
+export default () => {
   // These values will be replaced by Astro's Vite plugin
   const CONFIG = {
     apiKey: '__API_KEY__',
@@ -56,4 +56,4 @@ import docsearch from '@docsearch/js'
       })
     }
   })
-})()
+}

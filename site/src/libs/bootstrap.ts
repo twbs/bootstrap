@@ -26,13 +26,6 @@ export function getVersionedBsCssProps() {
 export function getVersionedBsJsProps() {
   let bsJsScriptSrc = '/dist/js/bootstrap.bundle'
 
-  if (import.meta.env.DEV) {
-    return {
-      type: 'module',
-      src: '/src/assets/bootstrap.bundle.js'
-    } satisfies HTMLAttributes<'script'>
-  }
-
   if (import.meta.env.PROD) {
     bsJsScriptSrc = `${bsJsScriptSrc}.min`
   }
