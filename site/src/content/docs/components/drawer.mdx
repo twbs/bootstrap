@@ -11,11 +11,15 @@ js: required
 
 Drawer builds on the native `<dialog>` element and our Dialog component to manage hidden sidebars via JavaScript. These sidebars, or drawers, can appear from the left, right, top, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
 
-- Drawer shares a common base with our [Dialog component]([[docsref:/components/dialog]]), leveraging native `<dialog>` APIs for focus trapping, backdrop, and top-layer rendering.
-- Drawer uses the `<dialog>` element, which must be used instead of a `<div>`.
-- When shown, drawer includes a native `::backdrop` that can be clicked to hide the drawer.
-- Only one drawer can be shown at a time.
-- Due to how CSS handles animations, you cannot use `margin` or `translate` on an `.drawer` element. Instead, use the class as an independent wrapping element.
+- **Drawer shares the same base as [our Dialog component]([[docsref:/components/dialog]])**, using native `<dialog>` APIs for focus trapping, backdrop, and top-layer rendering.
+- **Use the `<dialog>` element**, not a `<div>`. Due to how CSS handles animations, don't apply `margin` or `translate` directly to `.drawer` — wrap it if you need those.
+- **Modal by default, or scroll-through** — the default opens the drawer modally with a backdrop; set `scroll: true` to render without a backdrop and without locking body scroll.
+- **Built-in backdrop** via `::backdrop` (modal only) closes the drawer on click; set `backdrop: "static"` to lock clicks outside, or `backdrop: false` to hide it.
+- **Escape key handling** closes the drawer by default; set `keyboard: false` to disable.
+- **Swipe to dismiss** — drawer auto-wires a placement-aware swipe (swipe left to close `drawer-start` in LTR, swipe down to close `drawer-bottom`, etc.).
+- **Responsive placement** — `.sm-drawer`, `.md-drawer`, and up stay drawer-like below their breakpoint and collapse inline above it, making drawers useful as responsive navbars.
+- **Only one drawer can be shown at a time** (enforced by the data API).
+- **Animated open and close** — drawer slides back out to its placement-specific off-screen position on close, with the `::backdrop` fading alongside it when opened modally. When authoring custom CSS, qualify your `[open]` rules with `:not(.hiding)` so the exit transition can fall through to the base state; add `.drawer-instant` to skip animations.
 
 <Callout name="info-prefersreducedmotion" />
 
