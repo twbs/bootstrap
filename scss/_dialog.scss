@@ -73,7 +73,7 @@ $dialog-sizes: defaults(
     display: flex;
     flex-direction: column;
     width: var(--dialog-width);
-    max-width: 100%;
+    max-width: calc(100% - var(--dialog-margin) * 2);
     max-height: calc(100% - var(--dialog-margin) * 2);
     padding: 0;
     margin: auto;
