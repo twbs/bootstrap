@@ -100,14 +100,18 @@ $dialog-sizes: defaults(
         visibility 0s var(--dialog-transition-duration)
       );
 
-      // Slide-down variant: enters from above, exits below.
+      // Slide-down variant: enters from above sliding down, exits by reversing
+      // back up. Base value is the entry-from / exit-to position so the
+      // animation works on every open (not just the first, which is the only
+      // time @starting-style applies for a persistent <dialog> element).
       &.dialog-slide-down {
-        transform: translateY(3rem);
+        transform: translateY(-3rem);
       }
 
-      // Slide-up variant: enters from below, exits above.
+      // Slide-up variant: enters from below sliding up, exits by reversing
+      // back down. See note above re: base value choice.
       &.dialog-slide-up {
-        transform: translateY(-3rem);
+        transform: translateY(3rem);
       }
 
       // Open state: visible and faded in.
@@ -206,25 +210,13 @@ $dialog-sizes: defaults(
     }
   }
 
-  // Entry animations via @starting-style.
-  // Slide variants need this because the base transform is the EXIT position,
-  // but entry must start from the opposite direction.
-  // ::backdrop needs it since it only exists in the top layer.
-  // Default dialog (fade only) does NOT need @starting-style — the base
-  // opacity: 0 state serves as the entry-from state with visibility trick.
+  // Entry animation for ::backdrop via @starting-style. The backdrop only
+  // exists while the dialog is in the top layer, so its starting state can't
+  // be expressed on the base selector.
+  // Default dialog (fade only) and the slide variants do NOT need
+  // @starting-style — the base opacity: 0 (and base transform for slides)
+  // serves as the entry-from state with the visibility trick.
   @starting-style {
-    // Slide-down: enters from above (negative Y), slides down into view
-    .dialog:not(.dialog-instant).dialog-slide-down[open] {
-      opacity: 0;
-      transform: translateY(-3rem);
-    }
-
-    // Slide-up: enters from below (positive Y), slides up into view
-    .dialog:not(.dialog-instant).dialog-slide-up[open] {
-      opacity: 0;
-      transform: translateY(3rem);
-    }
-
     .dialog:not(.dialog-instant)::backdrop {
       background-color: transparent;
       backdrop-filter: blur(0);
