@@ -59,11 +59,11 @@ Responsive variations also exist for `align-items`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.align-items{breakpoint.abbr}-start</code></li>
-      <li><code>.align-items{breakpoint.abbr}-end</code></li>
-      <li><code>.align-items{breakpoint.abbr}-center</code></li>
-      <li><code>.align-items{breakpoint.abbr}-baseline</code></li>
-      <li><code>.align-items{breakpoint.abbr}-stretch</code></li>
+      <li><code>.{breakpoint.abbr}align-items-start</code></li>
+      <li><code>.{breakpoint.abbr}align-items-end</code></li>
+      <li><code>.{breakpoint.abbr}align-items-center</code></li>
+      <li><code>.{breakpoint.abbr}align-items-baseline</code></li>
+      <li><code>.{breakpoint.abbr}align-items-stretch</code></li>
     </Fragment>
   )
 })}

@@ -181,12 +181,12 @@ Responsive variations also exist for `align-content`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.align-content{breakpoint.abbr}-start</code></li>
-      <li><code>.align-content{breakpoint.abbr}-end</code></li>
-      <li><code>.align-content{breakpoint.abbr}-center</code></li>
-      <li><code>.align-content{breakpoint.abbr}-between</code></li>
-      <li><code>.align-content{breakpoint.abbr}-around</code></li>
-      <li><code>.align-content{breakpoint.abbr}-stretch</code></li>
+      <li><code>.{breakpoint.abbr}align-content-start</code></li>
+      <li><code>.{breakpoint.abbr}align-content-end</code></li>
+      <li><code>.{breakpoint.abbr}align-content-center</code></li>
+      <li><code>.{breakpoint.abbr}align-content-between</code></li>
+      <li><code>.{breakpoint.abbr}align-content-around</code></li>
+      <li><code>.{breakpoint.abbr}align-content-stretch</code></li>
     </Fragment>
   )
 })}
