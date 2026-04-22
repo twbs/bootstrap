@@ -214,11 +214,9 @@ Add `.dialog-slide-up` to the `<dialog>` and it will slide **up** from the botto
     </div>
   </dialog>`} />
 
-## Scrolling
+## Scrollable
 
-### Inner scroll
-
-You can also create a scrollable dialog that scrolls the dialog body while keeping the header and footer fixed. Add `.dialog-scrollable` to the `.dialog` element.
+Create a scrollable dialog that scrolls the dialog body while keeping the header and footer fixed. Add `.dialog-scrollable` to the `.dialog` element.
 
 <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#scrollableBodyDialog">
     Launch scrollable body dialog
@@ -242,37 +240,6 @@ You can also create a scrollable dialog that scrolls the dialog body while keepi
     <div class="dialog-footer">
       <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
       <button type="button" class="btn-solid theme-primary">Save changes</button>
-    </div>
-  </dialog>`} />
-
-### Overflow scroll
-
-For a dialog that extends beyond the viewport and scrolls as a whole, add `.dialog-overflow` and wrap the content in a `.dialog-box` element. The `<dialog>` becomes a full-viewport scrollable container, and the `.dialog-box` is the visual dialog that scrolls up and down.
-
-<Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#overflowDialog">
-    Launch overflow dialog
-  </button>
-
-  <dialog class="dialog dialog-overflow" id="overflowDialog"><!-- [!code highlight] -->
-    <div class="dialog-box"><!-- [!code highlight] -->
-      <div class="dialog-header">
-        <h1 class="dialog-title">Overflow dialog</h1>
-        <CloseButton dismiss="dialog" />
-      </div>
-      <div class="dialog-body">
-        <p>This dialog extends beyond the viewport height. Scroll to see more content. Notice how the entire dialog—including header and footer—shifts up and down as you scroll.</p>
-        <p>The <code>.dialog-overflow</code> modifier creates a full-viewport scrollable container. The <code>.dialog-box</code> wrapper contains the visual dialog that moves up and down as you scroll. This pattern is useful for very long content like terms of service or detailed forms.</p>
-        <p>Unlike the default scrolling behavior where the dialog is constrained to the viewport, overflow dialogs can extend beyond it. This gives users a more document-like reading experience for lengthy content.</p>
-        <p>The backdrop remains fixed while the dialog content scrolls. Clicking outside the dialog box still closes it (unless using a static backdrop). Keyboard navigation and focus trapping work the same as standard dialogs.</p>
-        <p>Consider using <code>.dialog-scrollable</code> instead if you want the header and footer to remain visible while scrolling. The scrollable variant keeps navigation controls accessible at all times, which may be preferable for forms with submit buttons.</p>
-        <p>Both approaches leverage the native <code>&lt;dialog&gt;</code> element's top layer rendering. This ensures the dialog appears above all other content, including elements with high z-index values, fixed positioning, or transforms.</p>
-        <p>The choice between scrolling behaviors depends on your content and user experience goals. Document-like content often works well with overflow scrolling, while interactive content may benefit from fixed header and footer.</p>
-        <p>You've reached the bottom of the overflow dialog!</p>
-      </div>
-      <div class="dialog-footer">
-        <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
-        <button type="button" class="btn-solid theme-primary">Save changes</button>
-      </div>
     </div>
   </dialog>`} />
 
