@@ -65,12 +65,12 @@ Responsive variations also exist for `justify-content`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.justify-content{breakpoint.abbr}-start</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-end</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-center</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-between</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-around</code></li>
-      <li><code>.justify-content{breakpoint.abbr}-evenly</code></li>
+      <li><code>.{breakpoint.abbr}justify-content-start</code></li>
+      <li><code>.{breakpoint.abbr}justify-content-end</code></li>
+      <li><code>.{breakpoint.abbr}justify-content-center</code></li>
+      <li><code>.{breakpoint.abbr}justify-content-between</code></li>
+      <li><code>.{breakpoint.abbr}justify-content-around</code></li>
+      <li><code>.{breakpoint.abbr}justify-content-evenly</code></li>
     </Fragment>
   )
 })}

@@ -31,8 +31,8 @@ Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.d{breakpoint.abbr}-flex</code></li>
-      <li><code>.d{breakpoint.abbr}-inline-flex</code></li>
+      <li><code>.{breakpoint.abbr}d-flex</code></li>
+      <li><code>.{breakpoint.abbr}d-inline-flex</code></li>
     </Fragment>
   )
 })}
@@ -73,10 +73,10 @@ Responsive variations also exist for `flex-direction`.
 <ul>
 {getSequence(0, 5).map((i) => (
   <Fragment>
-    <li><code>.flex{getData('breakpoints')[i].abbr}-row</code></li>
-    <li><code>.flex{getData('breakpoints')[i].abbr}-row-reverse</code></li>
-    <li><code>.flex{getData('breakpoints')[i].abbr}-column</code></li>
-    <li><code>.flex{getData('breakpoints')[i].abbr}-column-reverse</code></li>
+    <li><code>.{getData('breakpoints')[i].abbr}flex-row</code></li>
+    <li><code>.{getData('breakpoints')[i].abbr}flex-row-reverse</code></li>
+    <li><code>.{getData('breakpoints')[i].abbr}flex-column</code></li>
+    <li><code>.{getData('breakpoints')[i].abbr}flex-column-reverse</code></li>
   </Fragment>
 ))}
 </ul>
@@ -96,7 +96,7 @@ Responsive variations also exist for `flex-fill`.
 <ul>
 {getData('breakpoints').map((breakpoint) => {
   return (
-    <li><code>.flex{breakpoint.abbr}-fill</code></li>
+    <li><code>.{breakpoint.abbr}flex-fill</code></li>
   )
 })}
 </ul>
@@ -124,10 +124,10 @@ Responsive variations also exist for `flex-grow` and `flex-shrink`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.flex{breakpoint.abbr}-grow-0</code></li>
-      <li><code>.flex{breakpoint.abbr}-grow-1</code></li>
-      <li><code>.flex{breakpoint.abbr}-shrink-0</code></li>
-      <li><code>.flex{breakpoint.abbr}-shrink-1</code></li>
+      <li><code>.{breakpoint.abbr}flex-grow-0</code></li>
+      <li><code>.{breakpoint.abbr}flex-grow-1</code></li>
+      <li><code>.{breakpoint.abbr}flex-shrink-0</code></li>
+      <li><code>.{breakpoint.abbr}flex-shrink-1</code></li>
     </Fragment>
   )
 })}
@@ -209,9 +209,9 @@ Responsive variations also exist for `flex-wrap`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.flex{breakpoint.abbr}-nowrap</code></li>
-      <li><code>.flex{breakpoint.abbr}-wrap</code></li>
-      <li><code>.flex{breakpoint.abbr}-wrap-reverse</code></li>
+      <li><code>.{breakpoint.abbr}flex-nowrap</code></li>
+      <li><code>.{breakpoint.abbr}flex-wrap</code></li>
+      <li><code>.{breakpoint.abbr}flex-wrap-reverse</code></li>
     </Fragment>
   )
 })}

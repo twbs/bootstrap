@@ -55,10 +55,10 @@ Responsive variations also exist for `place-items`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.place-items{breakpoint.abbr}-start</code></li>
-      <li><code>.place-items{breakpoint.abbr}-end</code></li>
-      <li><code>.place-items{breakpoint.abbr}-center</code></li>
-      <li><code>.place-items{breakpoint.abbr}-stretch</code></li>
+      <li><code>.{breakpoint.abbr}place-items-start</code></li>
+      <li><code>.{breakpoint.abbr}place-items-end</code></li>
+      <li><code>.{breakpoint.abbr}place-items-center</code></li>
+      <li><code>.{breakpoint.abbr}place-items-stretch</code></li>
     </Fragment>
   )
 })}
