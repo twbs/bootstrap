@@ -126,20 +126,6 @@
         "shadow-none"
       ]
     },
-    "focus-ring": {
-      "class": "focus-ring",
-      "property": "--focus-ring-color",
-      "classes": [
-        "focus-ring-primary",
-        "focus-ring-accent",
-        "focus-ring-success",
-        "focus-ring-danger",
-        "focus-ring-warning",
-        "focus-ring-info",
-        "focus-ring-inverse",
-        "focus-ring-secondary"
-      ]
-    },
     "position": {
       "class": "position",
       "property": "position",

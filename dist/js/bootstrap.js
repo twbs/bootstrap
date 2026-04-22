@@ -5941,15 +5941,17 @@ const initTooltip = event => {
     return;
   }
 
-  // Get or create instance and trigger the appropriate action
-  const tooltip = Tooltip.getOrCreateInstance(target);
-
-  // For focus events, manually trigger enter to show
-  if (event.type === 'focusin') {
-    tooltip._activeTrigger.focus = true;
-    tooltip._enter();
-  }
+  // Lazily create the instance. The instance's own `_setListeners()` registers
+  // the appropriate listeners on the element for the configured triggers
+  // (hover/focus by default), so we don't mutate `_activeTrigger` or call
+  // `_enter` here — doing so would show tooltips for triggers the user didn't
+  // opt into (e.g. `focusin` firing for click-focused buttons in Chromium,
+  // even when `trigger="hover"` or `trigger="manual"`) and leave stale state
+  // on `_activeTrigger`.
+  Tooltip.getOrCreateInstance(target);
 };
+
+// Auto-initialize tooltips on first interaction for hover and focus triggers
 EventHandler.on(document, EVENT_FOCUSIN$2, SELECTOR_DATA_TOGGLE$3, initTooltip);
 EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$3, initTooltip);
 
@@ -6028,24 +6030,19 @@ const initPopover = event => {
     return;
   }
 
-  // Prevent default for click events to avoid navigation
+  // Prevent default for click events to avoid navigation (e.g. <a href="#">)
   if (event.type === 'click') {
     event.preventDefault();
   }
 
-  // Get or create instance
-  const popover = Popover.getOrCreateInstance(target);
-
-  // Trigger the appropriate action based on event type
-  if (event.type === 'click') {
-    popover.toggle();
-  } else if (event.type === 'focusin') {
-    popover._activeTrigger.focus = true;
-    popover._enter();
-  }
+  // Lazily create the instance. The instance's own `_setListeners()` registers
+  // the appropriate listeners on the element for the configured triggers
+  // (click/focus/hover), so we don't toggle or call `_enter` here — doing so
+  // would duplicate handlers and leave stale state on `_activeTrigger`.
+  Popover.getOrCreateInstance(target);
 };
 
-// Support click (default), hover, and focus triggers
+// Auto-initialize popovers on first interaction for click, hover, and focus triggers
 EventHandler.on(document, EVENT_CLICK$2, SELECTOR_DATA_TOGGLE$2, initPopover);
 EventHandler.on(document, EVENT_FOCUSIN$1, SELECTOR_DATA_TOGGLE$2, initPopover);
 EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$2, initPopover);

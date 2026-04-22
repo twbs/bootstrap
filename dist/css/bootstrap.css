@@ -3082,7 +3082,7 @@
     --bs-control-select-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2300000080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
     --bs-control-select-bg-position: right 0.75rem center;
     --bs-control-select-bg-size: 16px 12px;
-    --bs-control-select-bg-dark: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    --bs-control-select-bg-dark: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff80' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
     display: flex;
     width: 100%;
     min-height: var(--bs-control-min-height);
@@ -3174,19 +3174,23 @@
   .form-control-plaintext.form-control-sm, .form-control-plaintext.form-control-lg {
     padding-inline: 0;
   }
-  select.form-control {
+  select.form-control,
+  .form-control-caret {
     padding-inline-end: calc(var(--bs-control-padding-x) * 3);
     background-image: var(--bs-control-select-bg);
     background-repeat: no-repeat;
     background-position: var(--bs-control-select-bg-position);
     background-size: var(--bs-control-select-bg-size);
   }
-  select.form-control[multiple], select.form-control[size]:not([size="1"]) {
+  select.form-control[multiple], select.form-control[size]:not([size="1"]),
+  .form-control-caret[multiple],
+  .form-control-caret[size]:not([size="1"]) {
     padding-inline-end: var(--bs-control-padding-x);
     background-image: none;
   }
   @media (prefers-color-scheme: dark) {
-    select.form-control {
+    select.form-control,
+    .form-control-caret {
       background-image: var(--bs-control-select-bg-dark);
     }
   }
@@ -9551,7 +9555,7 @@
 
 @layer helpers {
   .focus-ring:focus-visible {
-    outline: var(--bs-focus-ring);
+    outline: var(--bs-focus-ring-width) solid var(--bs-theme-focus-ring, var(--bs-focus-ring-color));
   }
 }
 @layer helpers {
@@ -10050,30 +10054,6 @@
   }
   .shadow-none {
     box-shadow: none;
-  }
-  .focus-ring-primary {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-blue-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-blue-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-accent {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-indigo-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-indigo-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-success {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-green-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-green-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-danger {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-red-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-red-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-warning {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-yellow-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-yellow-400) 85%, var(--bs-bg-body)));
-  }
-  .focus-ring-info {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-cyan-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-cyan-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-inverse {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-gray-900), var(--bs-gray-100)) 50%, var(--bs-bg-body));
-  }
-  .focus-ring-secondary {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-gray-500), var(--bs-gray-300)) 50%, var(--bs-bg-body));
   }
   .position-static {
     position: static;

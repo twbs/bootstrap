@@ -81,24 +81,19 @@ const initPopover = event => {
     return;
   }
 
-  // Prevent default for click events to avoid navigation
+  // Prevent default for click events to avoid navigation (e.g. <a href="#">)
   if (event.type === 'click') {
     event.preventDefault();
   }
 
-  // Get or create instance
-  const popover = Popover.getOrCreateInstance(target);
-
-  // Trigger the appropriate action based on event type
-  if (event.type === 'click') {
-    popover.toggle();
-  } else if (event.type === 'focusin') {
-    popover._activeTrigger.focus = true;
-    popover._enter();
-  }
+  // Lazily create the instance. The instance's own `_setListeners()` registers
+  // the appropriate listeners on the element for the configured triggers
+  // (click/focus/hover), so we don't toggle or call `_enter` here — doing so
+  // would duplicate handlers and leave stale state on `_activeTrigger`.
+  Popover.getOrCreateInstance(target);
 };
 
-// Support click (default), hover, and focus triggers
+// Auto-initialize popovers on first interaction for click, hover, and focus triggers
 EventHandler.on(document, EVENT_CLICK, SELECTOR_DATA_TOGGLE, initPopover);
 EventHandler.on(document, EVENT_FOCUSIN, SELECTOR_DATA_TOGGLE, initPopover);
 EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE, initPopover);

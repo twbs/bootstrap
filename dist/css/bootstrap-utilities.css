@@ -427,7 +427,7 @@
 
 @layer helpers {
   .focus-ring:focus-visible {
-    outline: var(--bs-focus-ring);
+    outline: var(--bs-focus-ring-width) solid var(--bs-theme-focus-ring, var(--bs-focus-ring-color));
   }
 }
 @layer helpers {
@@ -926,30 +926,6 @@
   }
   .shadow-none {
     box-shadow: none;
-  }
-  .focus-ring-primary {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-blue-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-blue-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-accent {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-indigo-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-indigo-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-success {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-green-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-green-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-danger {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-red-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-red-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-warning {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-yellow-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-yellow-400) 85%, var(--bs-bg-body)));
-  }
-  .focus-ring-info {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-cyan-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-cyan-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-inverse {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-gray-900), var(--bs-gray-100)) 50%, var(--bs-bg-body));
-  }
-  .focus-ring-secondary {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-gray-500), var(--bs-gray-300)) 50%, var(--bs-bg-body));
   }
   .position-static {
     position: static;
