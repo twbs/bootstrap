@@ -15,13 +15,11 @@ The Dialog component leverages the browser's native `<dialog>` element, providin
 
 Key features of the native dialog:
 
-- **Native modal behavior** via `showModal()` with automatic focus trapping
-- **Built-in backdrop** using the `::backdrop` pseudo-element
-- **Escape key handling** closes the dialog by default
-- **Accessibility** with proper focus management and ARIA attributes
-- **Top layer rendering** ensures the dialog appears above all other content
-
-Native `<dialog>` elements support two methods: `show()` opens the dialog inline without a backdrop or focus trapping, while `showModal()` opens it as a true modal in the browser's top layer with a backdrop, focus trapping, and Escape key handling. Bootstrap's Dialog component uses `showModal()` to provide the expected modal experience.
+- **Modal or inline** via `showModal()` / `show()` — `modal: true` (default) promotes the dialog to the browser's top layer with a backdrop and focus trapping; `modal: false` renders it inline.
+- **Built-in backdrop** using the `::backdrop` pseudo-element (modal only); set `backdrop: "static"` to lock clicks outside, or `backdrop: false` to hide it.
+- **Escape key handling** closes the dialog by default; set `keyboard: false` to disable.
+- **Accessibility** — focus is trapped inside modal dialogs and returned to the trigger on close, with native `<dialog>` ARIA semantics.
+- **Animated open and close** — circumvent browser restrictions by using a `.hiding` class to keep dialogs in the top layer during close so the exit transition (including `::backdrop`) are animated properly.
 
 <Callout name="info-prefersreducedmotion" />
 

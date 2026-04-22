@@ -84,6 +84,16 @@ class Dialog extends DialogBase {
     this._element.classList.remove(CLASS_NAME_NONMODAL)
   }
 
+  // Keep the dialog in the top layer until the exit transition ends. This
+  // preserves the browser's modal centering and the native ::backdrop, both
+  // of which disappear synchronously the moment close() is called. Without
+  // this, the dialog would jump to the top of the page and the backdrop
+  // blur would vanish instantly while the dialog faded — making the exit
+  // animation appear to skip entirely.
+  _shouldDeferClose() {
+    return this._isAnimated()
+  }
+
   _onCancel() {
     EventHandler.trigger(this._element, EVENT_CANCEL)
   }

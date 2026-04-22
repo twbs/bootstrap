@@ -117,7 +117,11 @@ $dialog-sizes: defaults(
       // Open state: visible and faded in.
       // Entry transition: visibility flips visible immediately (0s, no delay),
       // then opacity and transform animate in.
-      &[open] {
+      // The :not(.hiding) qualifier lets the exit transition fall back to the
+      // base "exit" state above while [open] is still present (the JS keeps
+      // the dialog in the top layer during the exit so the ::backdrop and
+      // the browser's modal centering remain intact).
+      &[open]:not(.hiding) {
         overflow: visible;
         visibility: visible;
         opacity: 1;
@@ -129,8 +133,12 @@ $dialog-sizes: defaults(
         transform: none;
       }
 
-      // Static backdrop "bounce" animation (modal dialogs only)
-      &.dialog-static {
+      // Static backdrop "bounce" animation (modal dialogs only). Qualified
+      // with [open] (to outrank the open-state `transform: none` selector
+      // which now also includes `:not(.hiding)`) and `:not(.hiding)` (so
+      // a backdrop click while the dialog is mid-exit doesn't fight the
+      // slide-out transform).
+      &[open].dialog-static:not(.hiding) {
         transform: scale(1.02);
       }
 
@@ -139,6 +147,14 @@ $dialog-sizes: defaults(
         background-color: var(--dialog-backdrop-bg);
         backdrop-filter: blur(var(--dialog-backdrop-blur));
         @include backdrop-transitions(var(--dialog-transition-duration), var(--dialog-transition-timing));
+      }
+
+      // Exit: fade the native backdrop out alongside the dialog. The dialog
+      // is kept in the top layer (and thus the ::backdrop is still rendered)
+      // for the duration of the exit transition.
+      &.hiding::backdrop {
+        background-color: transparent;
+        backdrop-filter: blur(0);
       }
     }
 
@@ -150,8 +166,11 @@ $dialog-sizes: defaults(
       }
     }
 
-    // Open state base (always applies, regardless of animation mode)
-    &[open] {
+    // Open state base (always applies, regardless of animation mode).
+    // Excluded while .hiding is present so the animated exit (above) can
+    // fall through to the base "exit" state — for instant dialogs, .hiding
+    // is removed synchronously after close() so this still applies normally.
+    &[open]:not(.hiding) {
       overflow: visible;
       visibility: visible;
       opacity: 1;
