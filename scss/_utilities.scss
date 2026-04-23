@@ -347,6 +347,19 @@ $utilities: map-merge(
       ),
     ),
     // scss-docs-end utils-flex
+    // Animation direction utilities
+    // scss-docs-start utils-animation-direction
+    "animation-direction": (
+      property: animation-direction,
+      class: animation-direction,
+      values: (
+        normal: normal,
+        reverse: reverse,
+        alternate: alternate,
+        alternate-reverse: alternate-reverse,
+      )
+    ),
+    // scss-docs-end utils-animation-direction
     // Margin utilities
     // scss-docs-start utils-spacing
     "margin": (
