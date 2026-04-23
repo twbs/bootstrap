@@ -117,7 +117,7 @@ Start with just the ghost input—chips are created as users type.
 
 Use a form label for better accessibility.
 
-<Example code={`<div class="mb-3">
+<Example code={`<div class="form-field">
     <label class="form-label" for="skillsInputLabel">Skills</label>
     <div class="chip-input theme-primary" data-bs-chip-input>
       <span class="chip">
@@ -129,40 +129,6 @@ Use a form label for better accessibility.
       <input type="text" class="form-ghost" id="skillsInputLabel" placeholder="Add skill...">
     </div>
     <div class="form-text">Press Enter or comma to add a skill.</div>
-  </div>`} />
-
-## Sizing
-
-Use `.chip-input-sm` or `.chip-input-lg` for different sizes.
-
-<Example class="vstack gap-3" code={`<div class="chip-input chip-input-sm theme-primary" data-bs-chip-input>
-    <span class="chip">
-      Small
-      <button type="button" class="chip-dismiss" aria-label="Remove">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
-      </button>
-    </span>
-    <input type="text" class="form-ghost" placeholder="Small...">
-  </div>
-
-  <div class="chip-input theme-primary" data-bs-chip-input>
-    <span class="chip">
-      Default
-      <button type="button" class="chip-dismiss" aria-label="Remove">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
-      </button>
-    </span>
-    <input type="text" class="form-ghost" placeholder="Default...">
-  </div>
-
-  <div class="chip-input chip-input-lg theme-primary" data-bs-chip-input>
-    <span class="chip">
-      Large
-      <button type="button" class="chip-dismiss" aria-label="Remove">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
-      </button>
-    </span>
-    <input type="text" class="form-ghost" placeholder="Large...">
   </div>`} />
 
 ## Disabled

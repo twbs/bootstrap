@@ -242,19 +242,24 @@ class NavOverflow extends BaseComponent {
 
     const overflowWidth = overflowItem?.offsetWidth || 0
 
+    // Keep items are always visible; subtract their widths so the threshold
+    // reflects actual available space for non-keep items.
+    const keepWidth = this._items
+      .filter(item => item.classList.contains(CLASS_NAME_KEEP))
+      .reduce((sum, item) => sum + item.offsetWidth, 0)
+
     let usedWidth = 0
     const itemsToOverflow = []
-    const overflowThreshold = navWidth - overflowWidth - 10 // 10px buffer
+    const overflowThreshold = navWidth - overflowWidth - keepWidth - 10 // 10px buffer
 
     // Calculate which items need to overflow (skip items with keep class)
     for (const item of this._items) {
-      const itemWidth = item.offsetWidth
-      usedWidth += itemWidth
-
       // Never overflow items with the keep class
       if (item.classList.contains(CLASS_NAME_KEEP)) {
         continue
       }
+
+      usedWidth += item.offsetWidth
 
       if (usedWidth > overflowThreshold) {
         itemsToOverflow.push(item)

@@ -145,6 +145,12 @@ Place any checkbox or radio within an input group’s addon instead of text.
 While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
 
 <Example class="vstack gap-3" code={`<div class="input-group">
+    <input type="text" aria-label="First name" class="form-control">
+    <input type="text" aria-label="Middle name" class="form-control">
+    <input type="text" aria-label="Last name" class="form-control">
+  </div>
+
+  <div class="input-group">
     <span class="input-group-text">First and last name</span>
     <input type="text" aria-label="First name" class="form-control">
     <input type="text" aria-label="Last name" class="form-control">

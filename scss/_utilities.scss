@@ -873,75 +873,75 @@ $utilities: map.merge(
       property: border-radius,
       class: rounded,
       values: (
-        null: var(--border-radius),
+        null: var(--radius-2),
         0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
+        1: var(--radius-1),
+        2: var(--radius-2),
+        3: var(--radius-3),
+        4: var(--radius-4),
+        5: var(--radius-7),
         circle: 50%,
-        pill: var(--border-radius-pill)
+        pill: var(--radius-pill)
       )
     ),
     "rounded-top": (
       property: border-start-start-radius border-start-end-radius,
       class: rounded-top,
       values: (
-        null: var(--border-radius),
+        null: var(--radius-2),
         0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
+        1: var(--radius-1),
+        2: var(--radius-2),
+        3: var(--radius-3),
+        4: var(--radius-4),
+        5: var(--radius-7),
         circle: 50%,
-        pill: var(--border-radius-pill)
+        pill: var(--radius-pill)
       )
     ),
     "rounded-end": (
       property: border-end-end-radius border-end-start-radius,
       class: rounded-end,
       values: (
-        null: var(--border-radius),
+        null: var(--radius-2),
         0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
+        1: var(--radius-1),
+        2: var(--radius-2),
+        3: var(--radius-3),
+        4: var(--radius-4),
+        5: var(--radius-7),
         circle: 50%,
-        pill: var(--border-radius-pill)
+        pill: var(--radius-pill)
       )
     ),
     "rounded-bottom": (
       property: border-end-end-radius border-end-start-radius,
       class: rounded-bottom,
       values: (
-        null: var(--border-radius),
+        null: var(--radius-2),
         0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
+        1: var(--radius-1),
+        2: var(--radius-2),
+        3: var(--radius-3),
+        4: var(--radius-4),
+        5: var(--radius-7),
         circle: 50%,
-        pill: var(--border-radius-pill)
+        pill: var(--radius-pill)
       )
     ),
     "rounded-start": (
       property: border-start-start-radius border-start-end-radius,
       class: rounded-start,
       values: (
-        null: var(--border-radius),
+        null: var(--radius-2),
         0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
+        1: var(--radius-1),
+        2: var(--radius-2),
+        3: var(--radius-3),
+        4: var(--radius-4),
+        5: var(--radius-7),
         circle: 50%,
-        pill: var(--border-radius-pill)
+        pill: var(--radius-pill)
       )
     ),
     // scss-docs-end utils-border-radius
