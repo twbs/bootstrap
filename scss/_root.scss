@@ -162,6 +162,11 @@ $root-tokens: defaults(
   $root-tokens: map.set($root-tokens, --breakpoint-#{$name}, $value);
 }
 
+// Generate spacer tokens
+@each $key, $value in $spacers {
+  $root-tokens: map.set($root-tokens, --spacer-#{$key}, $value);
+}
+
 :root {
   @include tokens($root-tokens);
 

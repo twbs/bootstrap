@@ -66,7 +66,7 @@ class OtpInput extends BaseComponent {
   }
 
   setValue(value) {
-    const chars = String(value).split('')
+    const chars = [...String(value)]
     for (const [index, input] of this._inputs.entries()) {
       input.value = chars[index] || ''
     }
@@ -136,7 +136,7 @@ class OtpInput extends BaseComponent {
     // Handle multi-character input (some browsers/autofill)
     if (value.length > 1) {
       // Distribute characters across inputs
-      const chars = value.split('')
+      const chars = [...value]
       input.value = chars[0] || ''
 
       for (let i = 1; i < chars.length && index + i < this._inputs.length; i++) {

@@ -11,24 +11,24 @@ $card-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $card-tokens: defaults(
   (
-    --card-spacer-y: #{$spacer},
-    --card-spacer-x: #{$spacer},
+    --card-spacer-y: var(--spacer-5),
+    --card-spacer-x: var(--spacer-5),
     --card-subtitle-color: inherit,
     --card-border-width: var(--border-width),
     --card-border-color: var(--border-color-translucent),
     --card-border-radius: var(--border-radius-lg),
     --card-box-shadow: none,
     --card-inner-border-radius: calc(var(--border-radius-lg) - var(--border-width)),
-    --card-cap-padding-y: #{$spacer * .75},
-    --card-cap-padding-x: #{$spacer},
+    --card-cap-padding-y: var(--spacer-3),
+    --card-cap-padding-x: var(--spacer),
     --card-cap-bg: var(--bg-1),
     --card-cap-color: inherit,
     --card-height: auto,
     --card-color: inherit,
     --card-bg: var(--bg-body),
-    --card-img-overlay-padding: #{$spacer},
+    --card-img-overlay-padding: var(--card-spacer-y),
     --card-group-margin: #{$grid-gutter-x * .5},
-    --card-body-gap: #{$spacer * .5},
+    --card-body-gap: calc(var(--card-spacer-y) * .5),
   ),
   $card-tokens
 );
@@ -262,11 +262,13 @@ $card-tokens: defaults(
             @include border-end-radius(0);
 
             > .card-img-top,
-            > .card-header {
+            > .card-header,
+            > .card-body {
               border-start-end-radius: 0;
             }
             > .card-img-bottom,
-            > .card-footer {
+            > .card-footer,
+            > .card-body {
               border-end-end-radius: 0;
             }
           }
@@ -275,11 +277,13 @@ $card-tokens: defaults(
             @include border-start-radius(0);
 
             > .card-img-top,
-            > .card-header {
+            > .card-header,
+            > .card-body {
               border-start-start-radius: 0;
             }
             > .card-img-bottom,
-            > .card-footer {
+            > .card-footer,
+            > .card-body {
               border-end-start-radius: 0;
             }
           }

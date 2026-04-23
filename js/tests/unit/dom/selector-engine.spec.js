@@ -68,7 +68,7 @@ describe('SelectorEngine', () => {
       ].join('')
 
       const list = fixtureEl.querySelector('ul')
-      const liList = [].concat(...fixtureEl.querySelectorAll('li'))
+      const liList = [...fixtureEl.querySelectorAll('li')]
       const result = SelectorEngine.children(list, 'li')
 
       expect(result).toEqual(liList)
@@ -356,7 +356,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual([...fixtureEl.querySelectorAll('.target')])
     })
 
     it('should get elements if several ids are given', () => {
@@ -368,7 +368,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual([...fixtureEl.querySelectorAll('.target')])
     })
 
     it('should get elements if several ids with special chars are given', () => {
@@ -380,7 +380,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual([...fixtureEl.querySelectorAll('.target')])
     })
 
     it('should get elements in array, from href if no data-bs-target set', () => {
@@ -392,7 +392,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual([...fixtureEl.querySelectorAll('.target')])
     })
 
     it('should return empty array if elements not found', () => {

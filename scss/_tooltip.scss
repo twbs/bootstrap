@@ -12,8 +12,8 @@ $tooltip-tokens: defaults(
   (
     --tooltip-zindex: #{$zindex-tooltip},
     --tooltip-max-width: 200px,
-    --tooltip-padding-x: #{$spacer * .75},
-    --tooltip-padding-y: #{$spacer * .375},
+    --tooltip-padding-x: var(--spacer-3),
+    --tooltip-padding-y: calc(var(--spacer) * .375),
     --tooltip-font-size: var(--font-size-sm),
     --tooltip-color: var(--bg-body),
     --tooltip-bg: var(--fg-body),

@@ -8,7 +8,7 @@ css_media: viewport
 
 import { getData } from '@libs/data'
 
-Cards are flexible and extensible content containers. They include options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. **Cards have no fixed width to start**, so they’ll naturally fill the full width of its parent element, or slot into your grid columns. This is easily customized with our various [sizing options](#width).
+Cards are flexible and extensible content containers with support for headers and footers, a wide variety of content, contextual background colors, and additional display options. **Cards have no fixed width to start**, so they’ll naturally fill the width of their parent element, or slot into your grid columns.
 
 <Example code={`<section class="card" style="width: 280px">
     <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
@@ -25,9 +25,11 @@ Cards are built with as little markup and styles as possible, but still manage t
 
 - Cards are built with flexbox, so they offer easy alignment via [flexbox utilities]([[docsref:/utilities/flex]]) and [grid column classes]([[docsref:/layout/grid#column-classes]]).
 
-- Cards have no `margin` by default, so use [margin utilities]([[docsref:/utilities/margin]]) as needed.
+- **Cards require both `.card` and `.card-body`** to best support perfect borders, rounded corners, and various content and layout options.
 
-- Cards are broken down into three categories of sub-components: header, body, and footer. Headers and footers are optional while the body is required. Images can also serve as headers and footers.
+- Cards have no `margin` by default, so use [margin utilities]([[docsref:/utilities/margin]]) or [gap utilities]([[docsref:/utilities/gap]]) as needed.
+
+- Cards are broken down into three categories of sub-components: header, body, and footer. Headers and footers are optional while **the body is required**. Images can also serve as headers and footers.
 
 - Card and card body are both `flex` containers, so content can be aligned and stretched as needed with utilities and whatever HTML you require.
 
@@ -37,8 +39,6 @@ Cards are built with as little markup and styles as possible, but still manage t
 
 ## Content types
 
-Cards support a wide variety of content, including images, text, list groups, links, and more. Below are examples of what’s supported.
-
 ### Body
 
 The building block of a card is the `.card-body`. Use it whenever you need a padded section within a card.
@@ -47,6 +47,12 @@ The building block of a card is the `.card-body`. Use it whenever you need a pad
     <div class="card-body">
       This is some text within a card body.
     </div>
+  </div>`} />
+
+For simple cards, you can use the `.card-body` class directly on the card element.
+
+<Example code={`<div class="card card-body">
+    This is some text within a card body.
   </div>`} />
 
 ### Titles, text, and links
@@ -101,7 +107,7 @@ When combined with other card sub-components, use `.card-list` to manage borders
     <div class="card-header">
       Featured
     </div>
-    <ul class="list-group list-group-flush card-list">
+    <ul class="list-group list-group-flush card-list"><!-- [!code highlight] -->
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -109,7 +115,7 @@ When combined with other card sub-components, use `.card-list` to manage borders
   </div>`} />
 
 <Example code={`<div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush card-list">
+    <ul class="list-group list-group-flush card-list"><!-- [!code highlight] -->
       <li class="list-group-item">An item</li>
       <li class="list-group-item">A second item</li>
       <li class="list-group-item">A third item</li>
@@ -182,16 +188,16 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
     </div>
   </div>`} />
 
-<Example code={`<div class="card text-center">
+<Example code={`<div class="card text-center"><!-- [!code highlight] -->
     <div class="card-header">
       Featured
     </div>
     <div class="card-body">
       <h4 class="card-title">Special title treatment</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary mx-auto">Go somewhere</a><!-- [!code highlight] -->
     </div>
-    <div class="card-footer text-body-secondary">
+    <div class="card-footer fg-2">
       2 days ago
     </div>
   </div>`} />
@@ -278,7 +284,7 @@ Add some navigation to a card’s header (or block) with Bootstrap’s [nav comp
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary mx-auto">Go somewhere</a>
     </div>
   </div>`} />
 
@@ -301,7 +307,7 @@ This works with `.nav-pills` as well.
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn-solid theme-primary">Go somewhere</a>
+      <a href="#" class="btn-solid theme-primary mx-auto">Go somewhere</a>
     </div>
   </div>`} />
 
@@ -318,14 +324,14 @@ Similar to headers and footers, cards can include top and bottom “image caps�
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
     </div>
     <Placeholder width="100%" height="180" class="card-img-bottom" text="Image cap" />
   </div>`} />
@@ -356,7 +362,7 @@ Use the `.card-row` class to make a card horizontal. For image caps, use the `.c
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
     </div>
   </div>`} />
 
@@ -366,7 +372,7 @@ And with the reverse layout:
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
     </div>
     <Placeholder width="100%" height="250" text="Image" class="card-img-end" />
   </div>`} />
@@ -375,7 +381,7 @@ And with the reverse layout:
 
 Customize cards by using our theme color utilities. By default, cards use `bg` for their background and border colors when applying a theme color. Use `.card-subtle` to swap the background and border colors for a more subtle look.
 
-<Example class="d-grid grid md:grid-cols-3" code={getData('theme-colors').map((themeColor) => `<div class="card theme-${themeColor.name}">
+<Example class="d-grid grid grid-cols-1 md:grid-cols-2 gap-4" code={getData('theme-colors').map((themeColor) => `<div class="card theme-${themeColor.name}">
     <div class="card-header">${themeColor.title}</div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
@@ -383,7 +389,7 @@ Customize cards by using our theme color utilities. By default, cards use `bg` f
     </div>
   </div>`)} customMarkup={getData('theme-colors').map((themeColor) => `<div class="card card-${themeColor.name}">…</div>`)} />
 
-<Example class="d-grid grid md:grid-cols-3" code={getData('theme-colors').map((themeColor) => `<div class="card card-subtle theme-${themeColor.name}">
+<Example class="d-grid grid grid-cols-1 md:grid-cols-2 gap-4" code={getData('theme-colors').map((themeColor) => `<div class="card card-subtle theme-${themeColor.name}">
     <div class="card-header">${themeColor.title}</div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
@@ -412,7 +418,7 @@ Add `.card-translucent` to blur and saturate the background of a card. Header an
       <p class="card-text">Headers and footers are also made translucent to maintain a consistent look.</p>
       <a href="#" class="btn-solid theme-primary">Go somewhere</a>
     </div>
-    <div class="card-footer text-body-secondary">
+    <div class="card-footer fg-2">
       2 days ago
     </div>
   </div>`} />
@@ -431,7 +437,7 @@ Use card groups to render cards as a single, attached element with equal width a
       <div class="card-body">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
       </div>
     </div>
     <div class="card">
@@ -439,7 +445,7 @@ Use card groups to render cards as a single, attached element with equal width a
       <div class="card-body">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
       </div>
     </div>
     <div class="card">
@@ -447,7 +453,7 @@ Use card groups to render cards as a single, attached element with equal width a
       <div class="card-body">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
       </div>
     </div>
   </div>`} />
@@ -462,7 +468,7 @@ When using card groups with footers, their content will automatically line up.
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
       <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
+        <small class="fg-2">Last updated 3 mins ago</small>
       </div>
     </div>
     <div class="card">
@@ -472,7 +478,7 @@ When using card groups with footers, their content will automatically line up.
         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
       </div>
       <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
+        <small class="fg-2">Last updated 3 mins ago</small>
       </div>
     </div>
     <div class="card">
@@ -482,7 +488,7 @@ When using card groups with footers, their content will automatically line up.
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
       </div>
       <div class="card-footer">
-        <small class="text-body-secondary">Last updated 3 mins ago</small>
+        <small class="fg-2">Last updated 3 mins ago</small>
       </div>
     </div>
   </div>`} />
@@ -623,7 +629,7 @@ Just like with card groups, card footers will automatically line up.
           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         </div>
         <div class="card-footer">
-          <small class="text-body-secondary">Last updated 3 mins ago</small>
+          <small class="fg-2">Last updated 3 mins ago</small>
         </div>
       </div>
     </div>
@@ -635,7 +641,7 @@ Just like with card groups, card footers will automatically line up.
           <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
         </div>
         <div class="card-footer">
-          <small class="text-body-secondary">Last updated 3 mins ago</small>
+          <small class="fg-2">Last updated 3 mins ago</small>
         </div>
       </div>
     </div>
@@ -647,15 +653,11 @@ Just like with card groups, card footers will automatically line up.
           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
         </div>
         <div class="card-footer">
-          <small class="text-body-secondary">Last updated 3 mins ago</small>
+          <small class="fg-2">Last updated 3 mins ago</small>
         </div>
       </div>
     </div>
   </div>`} />
-
-### Masonry
-
-In `v4` we used a CSS-only technique to mimic the behavior of [Masonry](https://masonry.desandro.com/)-like columns, but this technique came with lots of unpleasant [side effects](https://github.com/twbs/bootstrap/pull/28922). If you want to have this type of layout in `v5`, you can just make use of Masonry plugin. **Masonry is not included in Bootstrap**, but we’ve made a [demo example]([[docsref:/examples/masonry]]) to help you get started.
 
 ## CSS
 
