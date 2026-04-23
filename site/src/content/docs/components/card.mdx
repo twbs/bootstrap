@@ -375,7 +375,7 @@ And with the reverse layout:
 
 Customize cards by using our theme color utilities. By default, cards use `bg` for their background and border colors when applying a theme color. Use `.card-subtle` to swap the background and border colors for a more subtle look.
 
-<Example class="d-grid grid md:grid-cols-2" code={getData('theme-colors').map((themeColor) => `<div class="card theme-${themeColor.name}">
+<Example class="d-grid grid grid-cols-1 md:grid-cols-2 gap-4" code={getData('theme-colors').map((themeColor) => `<div class="card theme-${themeColor.name}">
     <div class="card-header">${themeColor.title}</div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
@@ -383,7 +383,7 @@ Customize cards by using our theme color utilities. By default, cards use `bg` f
     </div>
   </div>`)} customMarkup={getData('theme-colors').map((themeColor) => `<div class="card card-${themeColor.name}">…</div>`)} />
 
-<Example class="d-grid grid md:grid-cols-3" code={getData('theme-colors').map((themeColor) => `<div class="card card-subtle theme-${themeColor.name}">
+<Example class="d-grid grid grid-cols-1 md:grid-cols-2 gap-4" code={getData('theme-colors').map((themeColor) => `<div class="card card-subtle theme-${themeColor.name}">
     <div class="card-header">${themeColor.title}</div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
