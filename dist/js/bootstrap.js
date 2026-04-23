@@ -29,7 +29,7 @@ const Data = {
     // can be removed later when multiple key/instances are fine to be used
     if (!instanceMap.has(key) && instanceMap.size !== 0) {
       // eslint-disable-next-line no-console
-      console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${Array.from(instanceMap.keys())[0]}.`);
+      console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${[...instanceMap.keys()][0]}.`);
       return;
     }
     instanceMap.set(key, instance);
@@ -673,13 +673,13 @@ const getSelector = element => {
 };
 const SelectorEngine = {
   find(selector, element = document.documentElement) {
-    return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
+    return [...Element.prototype.querySelectorAll.call(element, selector)];
   },
   findOne(selector, element = document.documentElement) {
     return Element.prototype.querySelector.call(element, selector);
   },
   children(element, selector) {
-    return [].concat(...element.children).filter(child => child.matches(selector));
+    return [...element.children].filter(child => child.matches(selector));
   },
   parents(element, selector) {
     const parents = [];
@@ -1846,7 +1846,7 @@ class Menu extends BaseComponent {
     this._moveMenuToContainer();
     this._createFloating();
     if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.on(element, 'mouseover', noop);
       }
     }
@@ -1897,7 +1897,7 @@ class Menu extends BaseComponent {
     }
     this._closeAllSubmenus();
     if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.off(element, 'mouseover', noop);
       }
     }
@@ -2384,7 +2384,7 @@ class Menu extends BaseComponent {
       const currentMenu = target.closest(SELECTOR_MENU$2);
       const items = SelectorEngine.find(`:scope > ${SELECTOR_VISIBLE_ITEMS$1}`, currentMenu).filter(element => isVisible(element));
       if (items.length) {
-        const targetItem = key === HOME_KEY$2 ? items[0] : items[items.length - 1];
+        const targetItem = key === HOME_KEY$2 ? items[0] : items.at(-1);
         targetItem.focus();
       }
       return true;
@@ -2780,7 +2780,7 @@ class Combobox extends BaseComponent {
       }
       const items = this._getVisibleItems();
       if (items.length > 0) {
-        const target = key === ARROW_DOWN_KEY$1 ? items[0] : items[items.length - 1];
+        const target = key === ARROW_DOWN_KEY$1 ? items[0] : items.at(-1);
         target.focus();
       }
       return;
@@ -2819,7 +2819,7 @@ class Combobox extends BaseComponent {
       event.preventDefault();
       const items = this._getVisibleItems();
       if (items.length > 0) {
-        const targetItem = key === HOME_KEY$1 ? items[0] : items[items.length - 1];
+        const targetItem = key === HOME_KEY$1 ? items[0] : items.at(-1);
         targetItem.focus();
       }
       return;
@@ -4367,7 +4367,7 @@ class OtpInput extends BaseComponent {
     return this._inputs.map(input => input.value).join('');
   }
   setValue(value) {
-    const chars = String(value).split('');
+    const chars = [...String(value)];
     for (const [index, input] of this._inputs.entries()) {
       input.value = chars[index] || '';
     }
@@ -4432,7 +4432,7 @@ class OtpInput extends BaseComponent {
     // Handle multi-character input (some browsers/autofill)
     if (value.length > 1) {
       // Distribute characters across inputs
-      const chars = value.split('');
+      const chars = [...value];
       input.value = chars[0] || '';
       for (let i = 1; i < chars.length && index + i < this._inputs.length; i++) {
         this._inputs[index + i].value = chars[i];
@@ -5184,15 +5184,15 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
   }
   const domParser = new window.DOMParser();
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
-  const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
+  const elements = [...createdDocument.body.querySelectorAll('*')];
   for (const element of elements) {
     const elementName = element.nodeName.toLowerCase();
     if (!Object.keys(allowList).includes(elementName)) {
       element.remove();
       continue;
     }
-    const attributeList = [].concat(...element.attributes);
-    const allowedAttributes = [].concat(allowList['*'] || [], allowList[elementName] || []);
+    const attributeList = [...element.attributes];
+    const allowedAttributes = [...(allowList['*'] || []), ...(allowList[elementName] || [])];
     for (const attribute of attributeList) {
       if (!allowedAttribute(attribute, allowedAttributes)) {
         element.removeAttribute(attribute.nodeName);
@@ -5526,7 +5526,7 @@ class Tooltip extends BaseComponent {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.on(element, 'mouseover', noop);
       }
     }
@@ -5553,7 +5553,7 @@ class Tooltip extends BaseComponent {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.off(element, 'mouseover', noop);
       }
     }
@@ -6422,7 +6422,7 @@ class Tab extends BaseComponent {
     const children = this._getChildren().filter(element => !isDisabled(element));
     let nextActiveElement;
     if ([HOME_KEY, END_KEY].includes(event.key)) {
-      nextActiveElement = children[event.key === HOME_KEY ? 0 : children.length - 1];
+      nextActiveElement = event.key === HOME_KEY ? children[0] : children.at(-1);
     } else {
       const isNext = [ARROW_RIGHT_KEY, ARROW_DOWN_KEY].includes(event.key);
       nextActiveElement = getNextActiveElement(children, event.target, isNext, true);
