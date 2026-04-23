@@ -44,16 +44,10 @@ const bodyProps = overrides?.body ?? {}
 const mainProps = overrides?.main ?? {}
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
-    <Head
-      description={description}
-      layout={layout}
-      robots={robots}
-      thumbnail={thumbnail}
-      title={title}
-    />
+    <Head description={description} layout={layout} robots={robots} thumbnail={thumbnail} title={title} />
   </head>
   <body {...bodyProps}>
     <div class="navbar-translucent sticky-top bd-sticky-navbar">

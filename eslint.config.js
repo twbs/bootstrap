@@ -288,7 +288,6 @@ const eslintConfig = [
       'site/src/assets/application.js',
       'site/src/assets/partials/*.js',
       'site/src/assets/search.js',
-      'site/src/assets/snippets.js',
       'site/src/assets/stackblitz.js',
       'site/src/plugins/*.js'
     ],

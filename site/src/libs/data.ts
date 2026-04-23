@@ -114,6 +114,13 @@ const dataDefinitions = {
     .array()
 } satisfies Record<string, DataSchema>
 
+// Inferred types for individual data files. Exported so consumers can avoid
+// re-deriving them via `ReturnType<typeof getData<'sidebar'>>` and don't have
+// to fall back to `any` when iterating nested arrays.
+export type SidebarGroup = z.infer<typeof dataDefinitions.sidebar>[number]
+export type SidebarItem = NonNullable<SidebarGroup['pages']>[number]
+export type SidebarSubItem = NonNullable<SidebarItem['pages']>[number]
+
 let data = new Map<DataType, z.infer<DataSchema>>()
 
 // A helper to get data loaded fom a yml file in the `./site/data/` directory. If the data does not match its associated

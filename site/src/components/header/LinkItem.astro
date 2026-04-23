@@ -14,11 +14,7 @@ const content = await Astro.slots.render('default')
 ---
 
 <li class="nav-item">
-  <a
-    aria-current={active ? true : undefined}
-    class:list={['nav-link px-2', className, { active }]}
-    {...props}
-  >
+  <a aria-current={active ? true : undefined} class:list={['nav-link px-2', className, { active }]} {...props}>
     <slot />
   </a>
 </li>

@@ -47,21 +47,36 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
         <div class="menu">
           <a class:list={['menu-item', { active: !layout }]} href="/">
             Home
-            {!layout && <svg class="bi ms-auto" aria-hidden="true"><use href="#check2"></use></svg>}
+            {
+              !layout && (
+                <svg class="bi ms-auto" aria-hidden="true">
+                  <use href="#check2" />
+                </svg>
+              )
+            }
           </a>
           <a
             class:list={['menu-item', { active: layout === 'docs' }]}
             href={getVersionedDocsPath('getting-started/install/')}
           >
             Docs
-            {layout === 'docs' && <svg class="bi ms-auto" aria-hidden="true"><use href="#check2"></use></svg>}
+            {
+              layout === 'docs' && (
+                <svg class="bi ms-auto" aria-hidden="true">
+                  <use href="#check2" />
+                </svg>
+              )
+            }
           </a>
-          <a
-            class:list={['menu-item', { active: title === 'Examples' }]}
-            href={getVersionedDocsPath('examples/')}
-          >
+          <a class:list={['menu-item', { active: title === 'Examples' }]} href={getVersionedDocsPath('examples/')}>
             Examples
-            {title === 'Examples' && <svg class="bi ms-auto" aria-hidden="true"><use href="#check2"></use></svg>}
+            {
+              title === 'Examples' && (
+                <svg class="bi ms-auto" aria-hidden="true">
+                  <use href="#check2" />
+                </svg>
+              )
+            }
           </a>
           <a class="menu-item" href={getConfig().icons} target="_blank" rel="noopener">
             Icons
@@ -101,11 +116,11 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
     <ul class="nav navbar-nav flex-row ms-auto">
       <li class="nav-item nav-link px-1" id="docsearch" data-bd-docs-version={getConfig().docs_version}></li>
 
-      <Versions layout={layout} addedIn={addedIn} />
-
       <LinkItem class="px-1 d-none lg:d-flex" href={getConfig().github_org} target="_blank" rel="noopener">
         <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
       </LinkItem>
+
+      <Versions layout={layout} addedIn={addedIn} />
 
       <li class="nav-item">
         <ThemeToggler layout={layout} />

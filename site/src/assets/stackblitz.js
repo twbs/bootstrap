@@ -1,8 +1,5 @@
-// NOTICE!!! Initially embedded in our docs this JavaScript
-// file contains elements that can help you create reproducible
-// use cases in StackBlitz for instance.
-// In a real project please adapt this content to your needs.
-// ++++++++++++++++++++++++++++++++++++++++++
+// NOTICE: Drives the "Open in StackBlitz" button on docs examples; bundles
+// `partials/snippets.js` as raw text into the generated playground.
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)

@@ -43,32 +43,33 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 
 <link rel="preconnect" href=`https://${getConfig().algolia.app_id}-dsn.algolia.net` crossorigin />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap"
+  rel="stylesheet"
+/>
 
 <title>{pageTitle}</title>
 
 {robots && <meta name="robots" content={robots} />}
 
+{/* Loaded as `is:inline` (not via Vite) so the theme is applied before paint. */}
+{/* The script lives in `site/static/docs/[version]/assets/js/` so it can */}
+{/* render-block at this exact spot in the head without going through the */}
+{/* bundler (which would defer it and cause a flash of the wrong theme). */}
 <script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
 
-<!-- CSS Anchor Positioning polyfill for Firefox/Safari -->
-<script is:inline type="module">
-  if (!CSS.supports('anchor-name', '--test')) {
-    import('https://unpkg.com/@oddbird/css-anchor-positioning/dist/css-anchor-positioning-fn.js')
-      .then(mod => mod.default())
-  }
-</script>
+{
+  import.meta.env.PROD && ScssProd && (
+    <>
+      <Stylesheet />
+      <ScssProd.default />
+    </>
+  )
+}
 
-{import.meta.env.PROD && ScssProd && (
-  <Stylesheet layout={layout} />
-  <ScssProd.default />
-)}
-
-{!import.meta.env.PROD && Scss && (
-  <Scss.default />
-)}
+{!import.meta.env.PROD && Scss && <Scss.default />}
 
 <Favicons />
 <Social description={description} layout={layout} thumbnail={thumbnail} title={title} />

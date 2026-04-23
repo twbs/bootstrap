@@ -1,6 +1,4 @@
-// NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-// IT'S ALL JUST JUNK FOR OUR DOCS!
-// ++++++++++++++++++++++++++++++++++++++++++
+// NOTICE: Internal docs helpers — not shipped in Bootstrap; not for reuse.
 
 /*
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
@@ -9,7 +7,7 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-import { Drawer } from '../../../../dist/js/bootstrap.bundle.js'
+import { Drawer } from '@bootstrap'
 
 export default () => {
   const tocSidebar = document.querySelector('#bdTocSidebar')

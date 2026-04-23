@@ -63,9 +63,7 @@ let markup = Array.isArray(code) ? code.join('\n') : code
 markup = replacePlaceholdersInHtml(markup)
 
 // Use customMarkup for source code display if provided, otherwise use the processed markup
-let sourceMarkup = customMarkup
-  ? (Array.isArray(customMarkup) ? customMarkup.join('\n') : customMarkup)
-  : markup
+let sourceMarkup = customMarkup ? (Array.isArray(customMarkup) ? customMarkup.join('\n') : customMarkup) : markup
 
 const simplifiedMarkup = sourceMarkup
   .replace(
@@ -79,12 +77,16 @@ const simplifiedMarkup = sourceMarkup
 ---
 
 <div class="bd-example-snippet bd-code-snippet not-prose">
-  {showPreview && (
-    <div id={id} class:list={['bd-example', className]}>
-      <Fragment set:html={markup} />
-    </div>
-  )}
-  {showMarkup && (
-    <Code code={simplifiedMarkup} lang={lang} file={file} nestedInExample={true} addStackblitzJs={addStackblitzJs} />
-  )}
+  {
+    showPreview && (
+      <div id={id} class:list={['bd-example', className]}>
+        <Fragment set:html={markup} />
+      </div>
+    )
+  }
+  {
+    showMarkup && (
+      <Code code={simplifiedMarkup} lang={lang} file={file} nestedInExample={true} addStackblitzJs={addStackblitzJs} />
+    )
+  }
 </div>
