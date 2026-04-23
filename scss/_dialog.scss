@@ -73,7 +73,7 @@ $dialog-sizes: defaults(
     display: flex;
     flex-direction: column;
     width: var(--dialog-width);
-    max-width: 100%;
+    max-width: calc(100% - var(--dialog-margin) * 2);
     max-height: calc(100% - var(--dialog-margin) * 2);
     padding: 0;
     margin: auto;
@@ -100,20 +100,28 @@ $dialog-sizes: defaults(
         visibility 0s var(--dialog-transition-duration)
       );
 
-      // Slide-down variant: enters from above, exits below.
+      // Slide-down variant: enters from above sliding down, exits by reversing
+      // back up. Base value is the entry-from / exit-to position so the
+      // animation works on every open (not just the first, which is the only
+      // time @starting-style applies for a persistent <dialog> element).
       &.dialog-slide-down {
-        transform: translateY(3rem);
+        transform: translateY(-3rem);
       }
 
-      // Slide-up variant: enters from below, exits above.
+      // Slide-up variant: enters from below sliding up, exits by reversing
+      // back down. See note above re: base value choice.
       &.dialog-slide-up {
-        transform: translateY(-3rem);
+        transform: translateY(3rem);
       }
 
       // Open state: visible and faded in.
       // Entry transition: visibility flips visible immediately (0s, no delay),
       // then opacity and transform animate in.
-      &[open] {
+      // The :not(.hiding) qualifier lets the exit transition fall back to the
+      // base "exit" state above while [open] is still present (the JS keeps
+      // the dialog in the top layer during the exit so the ::backdrop and
+      // the browser's modal centering remain intact).
+      &[open]:not(.hiding) {
         overflow: visible;
         visibility: visible;
         opacity: 1;
@@ -125,8 +133,12 @@ $dialog-sizes: defaults(
         transform: none;
       }
 
-      // Static backdrop "bounce" animation (modal dialogs only)
-      &.dialog-static {
+      // Static backdrop "bounce" animation (modal dialogs only). Qualified
+      // with [open] (to outrank the open-state `transform: none` selector
+      // which now also includes `:not(.hiding)`) and `:not(.hiding)` (so
+      // a backdrop click while the dialog is mid-exit doesn't fight the
+      // slide-out transform).
+      &[open].dialog-static:not(.hiding) {
         transform: scale(1.02);
       }
 
@@ -135,6 +147,14 @@ $dialog-sizes: defaults(
         background-color: var(--dialog-backdrop-bg);
         backdrop-filter: blur(var(--dialog-backdrop-blur));
         @include backdrop-transitions(var(--dialog-transition-duration), var(--dialog-transition-timing));
+      }
+
+      // Exit: fade the native backdrop out alongside the dialog. The dialog
+      // is kept in the top layer (and thus the ::backdrop is still rendered)
+      // for the duration of the exit transition.
+      &.hiding::backdrop {
+        background-color: transparent;
+        backdrop-filter: blur(0);
       }
     }
 
@@ -146,8 +166,11 @@ $dialog-sizes: defaults(
       }
     }
 
-    // Open state base (always applies, regardless of animation mode)
-    &[open] {
+    // Open state base (always applies, regardless of animation mode).
+    // Excluded while .hiding is present so the animated exit (above) can
+    // fall through to the base "exit" state — for instant dialogs, .hiding
+    // is removed synchronously after close() so this still applies normally.
+    &[open]:not(.hiding) {
       overflow: visible;
       visibility: visible;
       opacity: 1;
@@ -165,37 +188,6 @@ $dialog-sizes: defaults(
       transform: translate(-50%, -50%);
     }
 
-    // Overflow dialog - scrollable viewport container with dialog box inside
-    &.dialog-overflow {
-      // Make dialog element the full-viewport scrollable container
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      max-width: 100%;
-      height: 100%;
-      max-height: 100%;
-      padding: var(--dialog-margin);
-      margin: 0;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-
-      // The visual dialog box is a child wrapper
-      > .dialog-box {
-        max-width: var(--dialog-width);
-        margin-block-end: var(--dialog-margin);
-        margin-inline: auto;
-        color: var(--dialog-color);
-        background-color: var(--dialog-bg);
-        background-clip: padding-box;
-        border: var(--dialog-border-width) solid var(--dialog-border-color);
-        @include border-radius(var(--dialog-border-radius));
-        @include box-shadow(var(--dialog-box-shadow));
-      }
-    }
-
     // Scrollable dialog body (header/footer stay fixed)
     &.dialog-scrollable[open] {
       max-height: calc(100% - var(--dialog-margin) * 2);
@@ -206,28 +198,26 @@ $dialog-sizes: defaults(
     }
   }
 
-  // Entry animations via @starting-style.
-  // Slide variants need this because the base transform is the EXIT position,
-  // but entry must start from the opposite direction.
-  // ::backdrop needs it since it only exists in the top layer.
-  // Default dialog (fade only) does NOT need @starting-style — the base
-  // opacity: 0 state serves as the entry-from state with visibility trick.
+  // Entry animation for ::backdrop via @starting-style. The backdrop only
+  // exists while the dialog is in the top layer, so its starting state can't
+  // be expressed on the base selector.
+  // Default dialog (fade only) and the slide variants do NOT need
+  // @starting-style — the base opacity: 0 (and base transform for slides)
+  // serves as the entry-from state with the visibility trick.
   @starting-style {
-    // Slide-down: enters from above (negative Y), slides down into view
-    .dialog:not(.dialog-instant).dialog-slide-down[open] {
-      opacity: 0;
-      transform: translateY(-3rem);
-    }
-
-    // Slide-up: enters from below (positive Y), slides up into view
-    .dialog:not(.dialog-instant).dialog-slide-up[open] {
-      opacity: 0;
-      transform: translateY(3rem);
-    }
-
     .dialog:not(.dialog-instant)::backdrop {
       background-color: transparent;
       backdrop-filter: blur(0);
+    }
+
+    // Swap entry: when this dialog is opened as the target of a swap, the
+    // outgoing dialog's ::backdrop is being removed synchronously in the same
+    // JS tick. To avoid any flicker (either a dip from a fade-in over nothing,
+    // or double-darkening from two stacked backdrops), start this backdrop
+    // already-opaque so it takes over from the outgoing one seamlessly.
+    .dialog.dialog-swap-in:not(.dialog-instant)::backdrop {
+      background-color: var(--dialog-backdrop-bg);
+      backdrop-filter: blur(var(--dialog-backdrop-blur));
     }
   }
 

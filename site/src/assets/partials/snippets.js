@@ -53,8 +53,15 @@ export default () => {
   }
 
   // Instantiate all toasts in docs pages only
+  // Skip toasts inside <dialog> elements; those are shown explicitly
+  // via their own trigger (e.g. the "Show toast" button in the dialog
+  // overlays example) and shouldn't auto-appear when the dialog opens.
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
+      if (toastNode.closest('dialog')) {
+        return
+      }
+
       const toast = new Toast(toastNode, {
         autohide: false
       })

@@ -13,10 +13,10 @@
     border: 0 !important;
     @include border-radius(var(--bs-border-radius-lg) !important);
   }
-  #carbon-responsive a,
-  .carbon-description {
-    color: var(--bs-fg-1) !important;
-  }
+  // #carbon-responsive a,
+  // .carbon-description {
+  //   color: var(--bs-fg-1) !important;
+  // }
   .carbon-img {
     position: relative;
     overflow: hidden;
