@@ -17,7 +17,9 @@ const toc = entries ? entries : generateToc(headings ?? [])
     toc.map(({ children, slug, text }) => {
       return (
         <li>
-          <a class="nav-link" href={`#${slug}`}>{text}</a>
+          <a class="nav-link" href={`#${slug}`}>
+            {text}
+          </a>
           {children.length > 0 && <Astro.self entries={children} />}
         </li>
       )

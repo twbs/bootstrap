@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url'
+
 import { defineConfig } from 'astro/config'
 import astroBrokenLinksChecker from 'astro-broken-links-checker'
 import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
@@ -8,6 +10,11 @@ import { bootstrap } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
 import { algoliaPlugin } from './src/plugins/algolia-plugin'
 import { stackblitzPlugin } from './src/plugins/stackblitz-plugin'
+
+// Resolve `@bootstrap` to the same on-disk Bootstrap bundle the docs ship, so
+// every docs script imports from a single module instance (no duplicated
+// component registries). Mirrors the `@bootstrap` alias in `tsconfig.json`.
+const bootstrapBundlePath = fileURLToPath(new URL('../dist/js/bootstrap.bundle.js', import.meta.url))
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -62,6 +69,11 @@ export default defineConfig({
   },
   site,
   vite: {
-    plugins: [algoliaPlugin(), stackblitzPlugin()]
+    plugins: [algoliaPlugin(), stackblitzPlugin()],
+    resolve: {
+      alias: {
+        '@bootstrap': bootstrapBundlePath
+      }
+    }
   }
 })

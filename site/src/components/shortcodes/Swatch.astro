@@ -46,7 +46,7 @@ const isLowContrastDark = contrastDarkRatio !== null && contrastDarkRatio < 4.5
 
 const contrastStyles = {
   marginLeft: 'auto',
-  opacity: .5,
+  opacity: 0.5,
   fontSize: '.75rem',
   fontFamily: 'var(--bs-font-monospace)',
   color: isLowContrast ? 'red' : 'inherit'
@@ -69,11 +69,11 @@ const displayCssVar = bg
   }
 
   /* Show dark contrast in dark mode */
-  :global([data-bs-theme="dark"]) .contrast-light {
+  :global([data-bs-theme='dark']) .contrast-light {
     display: none;
   }
 
-  :global([data-bs-theme="dark"]) .contrast-dark {
+  :global([data-bs-theme='dark']) .contrast-dark {
     display: inline;
   }
 
@@ -92,49 +92,75 @@ const displayCssVar = bg
   }
 
   /* Show dark value in dark mode */
-  :global([data-bs-theme="dark"]) .css-var-light {
+  :global([data-bs-theme='dark']) .css-var-light {
     display: none;
   }
 
-  :global([data-bs-theme="dark"]) .css-var-dark {
+  :global([data-bs-theme='dark']) .css-var-dark {
     display: inline;
   }
 </style>
 
-{size === 'inline' ? (
-  <>
+{
+  size === 'inline' ? (
+    <>
+      <span style={combinedStyles}>
+        <slot />
+        {contrast && (
+          <span style={contrastStyles} class="contrast-light">
+            {contrast}
+          </span>
+        )}
+        {contrastDark && (
+          <span style={{ ...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit' }} class="contrast-dark">
+            {contrastDark}
+          </span>
+        )}
+      </span>
+      {showVar && displayCssVar && (
+        <code class="css-var" data-css-var={`--bs-${displayCssVar}`}>
+          <span class="css-var-light">Loading...</span>
+          <span class="css-var-dark">Loading...</span>
+        </code>
+      )}
+    </>
+  ) : size === 'large' ? (
     <span style={combinedStyles}>
       <slot />
-      {contrast && <span style={contrastStyles} class="contrast-light">{contrast}</span>}
-      {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
+      {contrast && (
+        <span style={contrastStyles} class="contrast-light">
+          {contrast}
+        </span>
+      )}
+      {contrastDark && (
+        <span style={{ ...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit' }} class="contrast-dark">
+          {contrastDark}
+        </span>
+      )}
     </span>
-    {showVar && displayCssVar && (
-      <code class="css-var" data-css-var={`--bs-${displayCssVar}`}>
-        <span class="css-var-light">Loading...</span>
-        <span class="css-var-dark">Loading...</span>
-      </code>
-    )}
-  </>
-) : size === 'large' ? (
-  <span style={combinedStyles}>
-    <slot />
-    {contrast && <span style={contrastStyles} class="contrast-light">{contrast}</span>}
-    {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
-  </span>
-) : (
-  <div style={combinedStyles}>
-    <slot />
-    {contrast && <span style={contrastStyles} class="contrast-light">{contrast}</span>}
-    {contrastDark && <span style={{...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit'}} class="contrast-dark">{contrastDark}</span>}
-  </div>
-)}
+  ) : (
+    <div style={combinedStyles}>
+      <slot />
+      {contrast && (
+        <span style={contrastStyles} class="contrast-light">
+          {contrast}
+        </span>
+      )}
+      {contrastDark && (
+        <span style={{ ...contrastStyles, color: isLowContrastDark ? 'red' : 'inherit' }} class="contrast-dark">
+          {contrastDark}
+        </span>
+      )}
+    </div>
+  )
+}
 
 <script>
   // Handle dynamic CSS variable display with light-dark() function support
   document.addEventListener('DOMContentLoaded', () => {
     const cssVarElements = document.querySelectorAll('.css-var[data-css-var]')
 
-    cssVarElements.forEach(element => {
+    cssVarElements.forEach((element) => {
       const cssVarName = element.getAttribute('data-css-var')
 
       if (cssVarName) {

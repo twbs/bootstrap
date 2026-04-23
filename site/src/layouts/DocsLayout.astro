@@ -12,7 +12,7 @@ import TableOfContents from '@components/TableOfContents.astro'
 import ReferenceTable from '@components/ReferenceTable.astro'
 import UtilityReferenceTable from '@components/UtilityReferenceTable.astro'
 import HelperReferenceTable from '@components/HelperReferenceTable.astro'
-import { getData } from '@libs/data'
+import { getData, type SidebarItem, type SidebarSubItem } from '@libs/data'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
 import PageMeta from '@components/PageMeta.astro'
 
@@ -51,31 +51,32 @@ let nextPage: NavigationPage | undefined
 // Create a flat array of all pages with their groups, handling nested groups
 const allPages: NavigationPage[] = sidebar.flatMap((group) => {
   if (!group.pages) return []
-  return group.pages.flatMap((item: any) => {
+  return group.pages.flatMap((item: SidebarItem) => {
     // Handle nested groups (e.g., Utilities > Borders > Border)
     if (item.group && item.pages) {
-      return item.pages.map((page: any) => ({
+      const subgroupTitle = item.group
+      return item.pages.map((page: SidebarSubItem) => ({
         title: page.title,
         url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(page.title)}/`,
-        groupTitle: item.group
+        groupTitle: subgroupTitle
       }))
     }
     // Handle direct pages
     if (item.title) {
-      return [{
-        title: item.title,
-        url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(item.title)}/`,
-        groupTitle: group.title
-      }]
+      return [
+        {
+          title: item.title,
+          url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(item.title)}/`,
+          groupTitle: group.title
+        }
+      ]
     }
     return []
   })
 })
 
 // Find the current page index
-const currentPageIndex = allPages.findIndex(
-  (page) => page.url === `/docs/${getConfig().docs_version}/${slug}/`
-)
+const currentPageIndex = allPages.findIndex((page) => page.url === `/docs/${getConfig().docs_version}/${slug}/`)
 
 if (currentPageIndex > 0) {
   prevPage = allPages[currentPageIndex - 1]
@@ -164,23 +165,11 @@ if (currentPageIndex < allPages.length - 1) {
           )
         }
 
-        {
-          frontmatter.reference && (
-            <ReferenceTable reference={frontmatter.reference} />
-          )
-        }
+        {frontmatter.reference && <ReferenceTable reference={frontmatter.reference} />}
 
-        {
-          frontmatter.utility && (
-            <UtilityReferenceTable utility={frontmatter.utility} />
-          )
-        }
+        {frontmatter.utility && <UtilityReferenceTable utility={frontmatter.utility} />}
 
-        {
-          frontmatter.classes && (
-            <HelperReferenceTable classes={frontmatter.classes} />
-          )
-        }
+        {frontmatter.classes && <HelperReferenceTable classes={frontmatter.classes} />}
 
         <slot />
 

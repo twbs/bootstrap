@@ -1,5 +1,5 @@
 ---
-import { getData } from '@libs/data'
+import { getData, type SidebarItem, type SidebarSubItem } from '@libs/data'
 import { getConfig } from '@libs/config'
 import { docsPages, getDocsPageSlug } from '@libs/content'
 import { getSlug } from '@libs/utils'
@@ -20,7 +20,10 @@ const sidebar = getData('sidebar')
               {group.icon && (
                 <svg
                   class="bi me-2"
-                  style={group.icon_color && `color: light-dark(var(--bs-${group.icon_color}-500), var(--bs-${group.icon_color}-400));`}
+                  style={
+                    group.icon_color &&
+                    `color: light-dark(var(--bs-${group.icon_color}-500), var(--bs-${group.icon_color}-400));`
+                  }
                   aria-hidden="true"
                 >
                   <use href={`#${group.icon}`} />
@@ -29,15 +32,13 @@ const sidebar = getData('sidebar')
               {group.title}
             </strong>
             <ul class="nav flex-column bd-links-nav">
-              {group.pages?.map((item: any) => {
+              {group.pages?.map((item: SidebarItem) => {
                 // Handle sub-groups
                 if (item.group && item.pages) {
                   return (
                     <>
-                      <li class="bd-links-subgroup fw-semibold mt-3">
-                        {item.group}
-                      </li>
-                      {item.pages.map((page: any) => {
+                      <li class="bd-links-subgroup fw-semibold mt-3">{item.group}</li>
+                      {item.pages.map((page: SidebarSubItem) => {
                         const docSlug = getSlug(page.title)
                         const unversionedPageSlug = `${groupSlug}/${docSlug}`
 
@@ -53,7 +54,7 @@ const sidebar = getData('sidebar')
                           )
                         }
 
-                        const addedMeta = page.meta?.find((m: any) => m.added)
+                        const addedMeta = page.meta?.find((m) => m.added)
 
                         return (
                           <li>
@@ -73,6 +74,10 @@ const sidebar = getData('sidebar')
                 }
 
                 // Handle regular pages
+                if (!item.title) {
+                  return null
+                }
+
                 const docSlug = getSlug(item.title)
                 const unversionedPageSlug = `${groupSlug}/${docSlug}`
 
@@ -88,7 +93,7 @@ const sidebar = getData('sidebar')
                   )
                 }
 
-                const itemAddedMeta = item.meta?.find((m: any) => m.added)
+                const itemAddedMeta = item.meta?.find((m) => m.added)
 
                 return (
                   <li>

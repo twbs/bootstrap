@@ -15,13 +15,21 @@ const rounded = ['default', 'pill', 'square']
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="arrow-left" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+    <path
+      fill-rule="evenodd"
+      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+    ></path>
   </symbol>
   <symbol id="arrow-right" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+    <path
+      fill-rule="evenodd"
+      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+    ></path>
   </symbol>
   <symbol id="plus-lg" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+    <path
+      fill-rule="evenodd"
+      d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"></path>
   </symbol>
 </svg>
 
@@ -40,20 +48,22 @@ const rounded = ['default', 'pill', 'square']
         >
           <span>Primary</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
-            <use href="#chevron-expand" />
+            <use href="#chevron-expand"></use>
           </svg>
         </button>
         <div class="menu">
-          {themeColors.map((themeColor) => (
-            <a
-              class:list={['menu-item', { 'active': themeColor.name === 'primary' }]}
-              href="#"
-              data-color={themeColor.name}
-              data-selected={themeColor.name === 'primary'}
-            >
-              {themeColor.title}
-            </a>
-          ))}
+          {
+            themeColors.map((themeColor) => (
+              <a
+                class:list={['menu-item', { active: themeColor.name === 'primary' }]}
+                href="#"
+                data-color={themeColor.name}
+                data-selected={themeColor.name === 'primary'}
+              >
+                {themeColor.title}
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -61,18 +71,14 @@ const rounded = ['default', 'pill', 'square']
     <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Style</label>
       <div class="btn-group text-capitalize btn-group-sm" role="group" aria-label="Button style">
-        {styles.map((style) => (
-          <label class="btn-check btn-outline theme-secondary">
-            <input
-              type="radio"
-              name="btn-style"
-              value={style}
-              checked={style === 'styled'}
-              data-style={style}
-            />
-            {style || 'default'}
-          </label>
-        ))}
+        {
+          styles.map((style) => (
+            <label class="btn-check btn-outline theme-secondary">
+              <input type="radio" name="btn-style" value={style} checked={style === 'styled'} data-style={style} />
+              {style || 'default'}
+            </label>
+          ))
+        }
       </div>
     </div>
 
@@ -89,20 +95,22 @@ const rounded = ['default', 'pill', 'square']
         >
           <span>Medium</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
-            <use href="#chevron-expand" />
+            <use href="#chevron-expand"></use>
           </svg>
         </button>
         <div class="menu">
-          {sizes.map((size) => (
-            <a
-              class:list={['menu-item', { 'active': size.value === '' }]}
-              href="#"
-              data-size={size.value}
-              data-selected={size.value === ''}
-            >
-              {size.label}
-            </a>
-          ))}
+          {
+            sizes.map((size) => (
+              <a
+                class:list={['menu-item', { active: size.value === '' }]}
+                href="#"
+                data-size={size.value}
+                data-selected={size.value === ''}
+              >
+                {size.label}
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -110,18 +118,14 @@ const rounded = ['default', 'pill', 'square']
     <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Rounded</label>
       <div class="btn-group text-capitalize btn-group-sm" role="group" aria-label="Button rounded">
-        {rounded.map((round) => (
-          <label class="btn-check btn-outline theme-secondary">
-            <input
-              type="radio"
-              name="btn-rounded"
-              value={round}
-              checked={round === 'default'}
-              data-rounded={round}
-            />
-            {round}
-          </label>
-        ))}
+        {
+          rounded.map((round) => (
+            <label class="btn-check btn-outline theme-secondary">
+              <input type="radio" name="btn-rounded" value={round} checked={round === 'default'} data-rounded={round} />
+              {round}
+            </label>
+          ))
+        }
       </div>
     </div>
   </div>
@@ -151,7 +155,7 @@ const rounded = ['default', 'pill', 'square']
 />
 
 <script>
-  import { Menu } from '../../../../dist/js/bootstrap.bundle.js'
+  import { Menu } from '@bootstrap'
 
   const colorMenuButton = document.querySelector('#btn-color-menu') as HTMLButtonElement
   const colorMenuItems = document.querySelectorAll('#btn-color-menu + .menu .menu-item')
@@ -161,15 +165,18 @@ const rounded = ['default', 'pill', 'square']
   const roundedInputs = document.querySelectorAll('input[name="btn-rounded"]')
   const previewButtons = document.querySelectorAll('#button-preview button')
   // Find the code snippet inside the Example component
-  const codeSnippet = document.querySelector('#button-preview')?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+  const codeSnippet = document
+    .querySelector('#button-preview')
+    ?.closest('.bd-example-snippet')
+    ?.querySelector('.highlight code') as HTMLElement
 
   // Get all theme color names for removal
-  const themeColorNames = Array.from(colorMenuItems).map(item => (item as HTMLElement).dataset.color || '')
+  const themeColorNames = Array.from(colorMenuItems).map((item) => (item as HTMLElement).dataset.color || '')
 
   function generateHTML(button: HTMLElement): string {
-    const classes = Array.from(button.classList).filter(cls =>
-      cls === 'btn' || cls.startsWith('btn-') || cls.startsWith('theme-') || cls.startsWith('rounded')
-    ).join(' ')
+    const classes = Array.from(button.classList)
+      .filter((cls) => cls === 'btn' || cls.startsWith('btn-') || cls.startsWith('theme-') || cls.startsWith('rounded'))
+      .join(' ')
     const buttonType = button.getAttribute('data-button-type')
     const ariaLabel = button.getAttribute('aria-label')
 
@@ -182,9 +189,11 @@ const rounded = ['default', 'pill', 'square']
     if (buttonType === 'text') {
       html += 'Click me'
     } else if (buttonType === 'left-icon') {
-      html += '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-left" />\n  </svg>\n  With left icon'
+      html +=
+        '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-left" />\n  </svg>\n  With left icon'
     } else if (buttonType === 'right-icon') {
-      html += 'With right icon\n  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-right" />\n  </svg>'
+      html +=
+        'With right icon\n  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-right" />\n  </svg>'
     } else if (buttonType === 'icon-only') {
       html += '\n  <svg class="bi" width="16" height="16" aria-hidden="true">\n    <use href="#plus-lg" />\n  </svg>'
     }
@@ -196,7 +205,7 @@ const rounded = ['default', 'pill', 'square']
   function updateCodeSnippet() {
     if (!codeSnippet) return
 
-    const htmlSnippets = Array.from(previewButtons).map(button => generateHTML(button as HTMLElement))
+    const htmlSnippets = Array.from(previewButtons).map((button) => generateHTML(button as HTMLElement))
     const htmlCode = htmlSnippets.join('\n\n')
 
     // Update the code content
@@ -206,13 +215,15 @@ const rounded = ['default', 'pill', 'square']
 
   function updateButtons() {
     const selectedColor = colorMenuButton?.dataset.color || 'primary'
-    const selectedStyle = (document.querySelector('input[name="btn-style"]:checked') as HTMLInputElement)?.value || 'solid'
+    const selectedStyle =
+      (document.querySelector('input[name="btn-style"]:checked') as HTMLInputElement)?.value || 'solid'
     const selectedSize = sizeMenuButton?.dataset.size || ''
-    const selectedRounded = (document.querySelector('input[name="btn-rounded"]:checked') as HTMLInputElement)?.value || 'default'
+    const selectedRounded =
+      (document.querySelector('input[name="btn-rounded"]:checked') as HTMLInputElement)?.value || 'default'
 
     previewButtons.forEach((button) => {
       // Remove all theme color classes
-      themeColorNames.forEach(color => button.classList.remove(`theme-${color}`))
+      themeColorNames.forEach((color) => button.classList.remove(`theme-${color}`))
       // Add selected theme color
       button.classList.add(`theme-${selectedColor}`)
 
@@ -236,7 +247,7 @@ const rounded = ['default', 'pill', 'square']
 
       // Handle rounded - remove all rounded classes first
       const roundedClasses = ['rounded-pill', 'rounded-0', 'rounded']
-      roundedClasses.forEach(cls => button.classList.remove(cls))
+      roundedClasses.forEach((cls) => button.classList.remove(cls))
 
       if (selectedRounded === 'pill') {
         button.classList.add('rounded-pill')

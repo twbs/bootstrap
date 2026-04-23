@@ -47,11 +47,10 @@ const containerClass = className || classFromClass
 let markup = Array.isArray(code) ? code.join('\n') : code
 markup = replacePlaceholdersInHtml(markup)
 
-const simplifiedMarkup = markup
-  .replace(
-    /<svg.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>/g,
-    (match, classes) => `<img src="..."${classes ? ` class="${classes}"` : ''} alt="...">`
-  )
+const simplifiedMarkup = markup.replace(
+  /<svg.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>/g,
+  (match, classes) => `<img src="..."${classes ? ` class="${classes}"` : ''} alt="...">`
+)
 ---
 
 <div class="bd-example-snippet bd-code-snippet">
@@ -63,7 +62,5 @@ const simplifiedMarkup = markup
       <Fragment set:html={markup} />
     </div>
   </div>
-  {showMarkup && (
-    <Code code={simplifiedMarkup} lang="html" nestedInExample={true} />
-  )}
+  {showMarkup && <Code code={simplifiedMarkup} lang="html" nestedInExample={true} />}
 </div>

@@ -34,22 +34,11 @@ const logicalPlacements = [
       <label class="form-label fw-semibold mb-0">Placement type</label>
       <div class="btn-group btn-group-sm" role="group" aria-label="Placement type">
         <label class="btn-check btn-outline theme-secondary">
-          <input
-            type="radio"
-            name="menu-placement-type"
-            value="physical"
-            checked
-            data-placement-type="physical"
-          />
+          <input type="radio" name="menu-placement-type" value="physical" checked data-placement-type="physical" />
           Physical
         </label>
         <label class="btn-check btn-outline theme-secondary">
-          <input
-            type="radio"
-            name="menu-placement-type"
-            value="logical"
-            data-placement-type="logical"
-          />
+          <input type="radio" name="menu-placement-type" value="logical" data-placement-type="logical" />
           Logical
         </label>
       </div>
@@ -69,30 +58,29 @@ const logicalPlacements = [
         >
           <span>bottom-start</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
-            <use href="#chevron-expand" />
+            <use href="#chevron-expand"></use>
           </svg>
         </button>
         <div class="menu" id="menu-placement-selector-menu">
-          {physicalPlacements.map((p) => (
-            <button
-              class:list={['menu-item', { 'active': p.value === 'bottom-start' }]}
-              type="button"
-              data-placement-group="physical"
-              data-placement={p.value}
-            >
-              {p.label}
-            </button>
-          ))}
-          {logicalPlacements.map((p) => (
-            <button
-              class="menu-item d-none"
-              type="button"
-              data-placement-group="logical"
-              data-placement={p.value}
-            >
-              {p.label}
-            </button>
-          ))}
+          {
+            physicalPlacements.map((p) => (
+              <button
+                class:list={['menu-item', { active: p.value === 'bottom-start' }]}
+                type="button"
+                data-placement-group="physical"
+                data-placement={p.value}
+              >
+                {p.label}
+              </button>
+            ))
+          }
+          {
+            logicalPlacements.map((p) => (
+              <button class="menu-item d-none" type="button" data-placement-group="logical" data-placement={p.value}>
+                {p.label}
+              </button>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -114,7 +102,7 @@ const logicalPlacements = [
 />
 
 <script>
-  import { Menu } from '../../../../dist/js/bootstrap.bundle.js'
+  import { Menu } from '@bootstrap'
 
   const selectorButton = document.querySelector('#menu-placement-selector') as HTMLButtonElement
   const selectorItems = document.querySelectorAll('#menu-placement-selector-menu .menu-item')
@@ -124,12 +112,13 @@ const logicalPlacements = [
   const codeSnippet = previewContainer?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
 
   function updateSelectorItems() {
-    const selectedType = (document.querySelector('input[name="menu-placement-type"]:checked') as HTMLInputElement)?.value || 'physical'
+    const selectedType =
+      (document.querySelector('input[name="menu-placement-type"]:checked') as HTMLInputElement)?.value || 'physical'
 
-    document.querySelectorAll('#menu-placement-selector-menu [data-placement-group="physical"]').forEach(el => {
+    document.querySelectorAll('#menu-placement-selector-menu [data-placement-group="physical"]').forEach((el) => {
       el.classList.toggle('d-none', selectedType !== 'physical')
     })
-    document.querySelectorAll('#menu-placement-selector-menu [data-placement-group="logical"]').forEach(el => {
+    document.querySelectorAll('#menu-placement-selector-menu [data-placement-group="logical"]').forEach((el) => {
       el.classList.toggle('d-none', selectedType !== 'logical')
     })
 
@@ -150,7 +139,7 @@ const logicalPlacements = [
     if (labelSpan) labelSpan.textContent = placement
     selectorButton.dataset.placement = placement
 
-    selectorItems.forEach(item => {
+    selectorItems.forEach((item) => {
       const itemPlacement = (item as HTMLElement).dataset.placement
       item.classList.toggle('active', itemPlacement === placement)
     })
@@ -185,7 +174,7 @@ const logicalPlacements = [
   if (selectorButton) {
     const selectorMenu = Menu.getOrCreateInstance(selectorButton)
 
-    selectorItems.forEach(item => {
+    selectorItems.forEach((item) => {
       item.addEventListener('click', (e) => {
         e.preventDefault()
         const placement = (item as HTMLElement).dataset.placement || 'bottom-start'
@@ -195,7 +184,7 @@ const logicalPlacements = [
     })
   }
 
-  placementTypeInputs.forEach(input => {
+  placementTypeInputs.forEach((input) => {
     input.addEventListener('change', updateSelectorItems)
   })
 

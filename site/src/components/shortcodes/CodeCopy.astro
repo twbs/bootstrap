@@ -30,7 +30,7 @@ const highlightedCode = await highlightCode(code, lang)
   <Fragment set:html={highlightedCode} />
   <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
     <svg class="bi fs-md" aria-hidden="true">
-      <use href="#copy" />
+      <use href="#copy"></use>
     </svg>
   </button>
 </div>
@@ -41,10 +41,10 @@ const highlightedCode = await highlightCode(code, lang)
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: .5rem;
+    gap: 0.5rem;
     min-height: 2.5rem;
     margin: 0;
-    padding: .75rem 1rem;
+    padding: 0.75rem 1rem;
     font-size: var(--font-size-md);
     background-color: var(--bg-1);
     border: 1px solid var(--border-color-translucent);
@@ -65,6 +65,6 @@ const highlightedCode = await highlightCode(code, lang)
     height: 1.5rem;
     flex-shrink: 0;
     padding: 0;
-    margin: -.5rem -.25rem -.5rem 1rem;
+    margin: -0.5rem -0.25rem -0.5rem 1rem;
   }
 </style>
