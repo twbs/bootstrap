@@ -82,7 +82,7 @@
     }
 
     > hr:last-child {
-      margin-bottom: $spacer;
+      margin-bottom: var(--spacer);
     }
 
     // Images
