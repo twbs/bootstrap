@@ -122,7 +122,7 @@ class Collapse extends BaseComponent {
         .map(element => Collapse.getOrCreateInstance(element, { toggle: false }))
     }
 
-    if (activeChildren.length && activeChildren[0]._isTransitioning) {
+    if (activeChildren.some(instance => instance._isTransitioning)) {
       return
     }
 
@@ -137,7 +137,6 @@ class Collapse extends BaseComponent {
 
     const dimension = this._getDimension()
 
-    this._element.classList.remove(CLASS_NAME_COLLAPSE)
     this._element.classList.add(CLASS_NAME_COLLAPSING)
 
     this._element.style[dimension] = 0
@@ -149,7 +148,7 @@ class Collapse extends BaseComponent {
       this._isTransitioning = false
 
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
-      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
+      this._element.classList.add(CLASS_NAME_SHOW)
 
       this._element.style[dimension] = ''
 
@@ -180,7 +179,7 @@ class Collapse extends BaseComponent {
     reflow(this._element)
 
     this._element.classList.add(CLASS_NAME_COLLAPSING)
-    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
+    this._element.classList.remove(CLASS_NAME_SHOW)
 
     for (const trigger of this._triggerArray) {
       const element = SelectorEngine.getElementFromSelector(trigger)
@@ -195,7 +194,6 @@ class Collapse extends BaseComponent {
     const complete = () => {
       this._isTransitioning = false
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
-      this._element.classList.add(CLASS_NAME_COLLAPSE)
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
