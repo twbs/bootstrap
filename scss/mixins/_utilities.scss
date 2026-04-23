@@ -47,6 +47,14 @@
     $is-css-var: map-get($utility, css-var);
     $is-local-vars: map-get($utility, local-vars);
     $is-rtl: map-get($utility, rtl);
+    $has-important: map-has-key($utility, important);
+    
+    $is-important: $enable-important-utilities;
+
+    @if $has-important {
+      $is-important: map-get($utility, important);
+    }
+
 
     @if $value != null {
       @if $is-rtl == false {
@@ -71,7 +79,7 @@
                 --#{$prefix}#{$local-var}: #{$variable};
               }
             }
-            #{$property}: $value if($enable-important-utilities, !important, null);
+            #{$property}: $value if($is-important, !important, null);
           }
         }
 
@@ -83,7 +91,7 @@
                   --#{$prefix}#{$local-var}: #{$variable};
                 }
               }
-              #{$property}: $value if($enable-important-utilities, !important, null);
+              #{$property}: $value if($is-important, !important, null);
             }
           }
         }
