@@ -17,7 +17,7 @@ $chip-input-tokens: defaults(
     --control-bg: var(--btn-input-bg),
     --control-border-width: var(--border-width),
     --control-border-color: var(--border-color),
-    --control-border-radius: var(--border-radius),
+    --control-border-radius: var(--radius-2),
   ),
   $chip-input-tokens
 );
@@ -56,58 +56,14 @@ $chip-input-tokens: defaults(
     // Disabled state
     &.disabled,
     &:has(.form-ghost:disabled) {
+      cursor: not-allowed;
       background-color: var(--bg-2);
       opacity: 1;
 
       > .chip {
+        pointer-events: none;
         opacity: var(--control-disabled-opacity);
-
-        .chip-dismiss {
-          pointer-events: none;
-        }
-      }
-
-      > .form-ghost {
-        cursor: not-allowed;
       }
     }
   }
-
-  // Theme cascade: .chip-input.theme-* passes theme to child chips
-  // Chips inherit theme variables from parent
-  // @each $color-name, $theme-props in $theme-map {
-  //   .chip-input.theme-#{$color-name} > .chip {
-  //     // Subtle default state
-  //     --chip-color: var(--theme-fg);
-  //     --chip-bg: var(--theme-bg-subtle);
-
-  //     // Selected/active solid state
-  //     --chip-selected-color: var(--theme-contrast);
-  //     --chip-selected-bg: var(--theme-bg);
-  //     --chip-selected-border-color: var(--theme-bg);
-  //   }
-  // }
-
-  // // Sizing variants
-  // .chip-input-sm {
-  //   --control-min-height: #{$control-min-height-sm};
-  //   --control-padding-y: #{$control-padding-y-sm};
-  //   --control-padding-x: #{$control-padding-x-sm};
-  //   --control-font-size: #{$control-font-size-sm};
-  //   --control-line-height: #{$control-line-height-sm};
-  //   --control-border-radius: #{$control-border-radius-sm};
-  //   --chip-input-gap: .25rem;
-  //   --chip-input-chip-font-size: .8125em;
-  // }
-
-  // .chip-input-lg {
-  //   --control-min-height: #{$control-min-height-lg};
-  //   --control-padding-y: #{$control-padding-y-lg};
-  //   --control-padding-x: #{$control-padding-x-lg};
-  //   --control-font-size: #{$control-font-size-lg};
-  //   --control-line-height: #{$control-line-height-lg};
-  //   --control-border-radius: #{$control-border-radius-lg};
-  //   --chip-input-gap: .5rem;
-  //   --chip-input-chip-font-size: .9375em;
-  // }
 }

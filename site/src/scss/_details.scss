@@ -7,7 +7,7 @@
     line-height: var(--bs-line-height-sm);
     color: var(--bs-fg-3);
     background-color: var(--bs-bg-1);
-    @include border-radius(var(--bs-border-radius-lg));
+    @include border-radius(var(--radius-3));
 
     &:hover,
     &[open] {

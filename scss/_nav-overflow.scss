@@ -9,6 +9,18 @@
     min-width: 0; // Allow flex child to shrink below content width
   }
 
+  // Pills use inline-flex by default; override so the nav fills its container
+  // and the ResizeObserver can detect width changes.
+  .nav-pills.nav-overflow {
+    display: flex;
+  }
+
+  // Inside a navbar the nav is a flex child that sizes to content by default;
+  // grow it so it fills remaining space and shrinks with the container.
+  .navbar-nav.nav-overflow {
+    flex: 1 1 0;
+  }
+
   // Container item for overflow
   .nav-overflow-item {
     flex-shrink: 0;

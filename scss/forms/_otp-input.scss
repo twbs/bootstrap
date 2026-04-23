@@ -1,8 +1,6 @@
 @use "../functions" as *;
-@use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
 
-// stylelint-disable custom-property-no-missing-var-function
 $otp-tokens: () !default;
 
 // scss-docs-start otp-tokens
@@ -16,7 +14,6 @@ $otp-tokens: defaults(
   $otp-tokens
 );
 // scss-docs-end otp-tokens
-// stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start otp-sizes
 $otp-sizes: () !default;
@@ -42,7 +39,6 @@ $otp-sizes: defaults(
       font-weight: 500;
       line-height: 1;
       text-align: center;
-      @include border-radius(var(--otp-border-radius, var(--btn-input-border-radius)));
 
       // Remove default number spinners
       &::-webkit-outer-spin-button,
@@ -79,13 +75,5 @@ $otp-sizes: defaults(
     font-size: var(--otp-font-size);
     color: var(--fg-4);
     user-select: none;
-  }
-
-  @each $size, $_ in $otp-sizes {
-    .otp-#{$size} {
-      --otp-size: var(--btn-input-#{$size}-min-height);
-      --otp-font-size: var(--btn-input-#{$size}-font-size);
-      --otp-border-radius: var(--btn-input-#{$size}-border-radius);
-    }
   }
 }
