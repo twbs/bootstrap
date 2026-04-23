@@ -1,8 +1,5 @@
-// NOTICE!!! Initially embedded in our docs this JavaScript
-// file contains elements that can help you create reproducible
-// use cases in StackBlitz for instance.
-// In a real project please adapt this content to your needs.
-// ++++++++++++++++++++++++++++++++++++++++++
+// NOTICE: Embedded as-is into StackBlitz playgrounds via `?raw` import.
+// Adapt to your needs in real projects.
 
 /*
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
@@ -16,7 +13,7 @@ import {
   Popover,
   Toast,
   Carousel
-} from '../../../../dist/js/bootstrap.bundle.js'
+} from '@bootstrap'
 
 export default () => {
   // --------

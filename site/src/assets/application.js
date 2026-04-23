@@ -1,6 +1,4 @@
-// NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-// IT'S ALL JUST JUNK FOR OUR DOCS!
-// ++++++++++++++++++++++++++++++++++++++++++
+// NOTICE: Internal docs helpers — not shipped in Bootstrap; not for reuse.
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)

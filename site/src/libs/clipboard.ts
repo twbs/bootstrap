@@ -1,5 +1,5 @@
 import ClipboardJS from 'clipboard'
-import { Tooltip } from '../../../dist/js/bootstrap.bundle.js'
+import { Tooltip } from '@bootstrap'
 
 const btnTitle = 'Copy'
 

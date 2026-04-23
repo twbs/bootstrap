@@ -28,13 +28,13 @@ const { name, type = 'info' } = Astro.props
 let Content: MarkdownInstance<{}>['Content'] | undefined
 
 if (name) {
-  const callout = await getCalloutByName(name) as any
+  const callout = (await getCalloutByName(name)) as any
 
   if (!callout) {
     throw new Error(`Could not find callout with name '${name}'.`)
   }
 
-  const namedCallout = await render(callout) as any
+  const namedCallout = (await render(callout)) as any
   Content = namedCallout.Content
 }
 ---

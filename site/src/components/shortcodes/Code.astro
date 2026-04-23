@@ -87,9 +87,7 @@ const {
   tabs
 } = Astro.props
 
-const fileUrl = file
-  ? `${getConfig().repo}/blob/v${getConfig().current_version}/${file}`.replaceAll('\\', '/')
-  : null
+const fileUrl = file ? `${getConfig().repo}/blob/v${getConfig().current_version}/${file}`.replaceAll('\\', '/') : null
 
 // Extract language from multiple possible sources (for markdown code blocks)
 // Priority: lang prop > data-language attribute > className pattern
@@ -103,14 +101,21 @@ if (!detectedLang && className) {
 
 // Format language for display (e.g., "html" -> "HTML", "javascript" -> "JavaScript")
 const displayLang = detectedLang
-  ? detectedLang === 'js' ? 'JavaScript'
-  : detectedLang === 'ts' ? 'TypeScript'
-  : detectedLang === 'html' ? 'HTML'
-  : detectedLang === 'css' ? 'CSS'
-  : detectedLang === 'scss' ? 'SCSS'
-  : detectedLang === 'bash' || detectedLang === 'sh' ? 'Shell'
-  : detectedLang === 'powershell' ? 'PowerShell'
-  : detectedLang.toUpperCase()
+  ? detectedLang === 'js'
+    ? 'JavaScript'
+    : detectedLang === 'ts'
+      ? 'TypeScript'
+      : detectedLang === 'html'
+        ? 'HTML'
+        : detectedLang === 'css'
+          ? 'CSS'
+          : detectedLang === 'scss'
+            ? 'SCSS'
+            : detectedLang === 'bash' || detectedLang === 'sh'
+              ? 'Shell'
+              : detectedLang === 'powershell'
+                ? 'PowerShell'
+                : detectedLang.toUpperCase()
   : ''
 
 let codeToDisplay = filePath
@@ -126,13 +131,10 @@ if (filePath && fileMatch && codeToDisplay) {
     throw new Error(`The file at ${filePath} does not contain a match for the regex '${fileMatch}'.`)
   }
 
-  codeToDisplay = matches.map(m => m[0]).join('\n\n')
+  codeToDisplay = matches.map((m) => m[0]).join('\n\n')
 }
 
-const diffTransformers = [
-  transformerNotationDiff(),
-  transformerNotationHighlight()
-]
+const diffTransformers = [transformerNotationDiff(), transformerNotationHighlight()]
 
 // Process tabs if provided
 let highlightedTabs: Array<{ label: string; code: string }> | null = null
@@ -140,22 +142,17 @@ if (tabs && tabs.length > 0) {
   highlightedTabs = await Promise.all(
     tabs.map(async (tab) => ({
       label: tab.label,
-      code: await highlightCode(
-        replaceConfigInText(tab.code),
-        tab.lang || detectedLang || 'bash',
-        diffTransformers
-      )
+      code: await highlightCode(replaceConfigInText(tab.code), tab.lang || detectedLang || 'bash', diffTransformers)
     }))
   )
 }
 
-const highlightedCode = codeToDisplay && detectedLang
-  ? await highlightCode(codeToDisplay, detectedLang, diffTransformers)
-  : null
+const highlightedCode =
+  codeToDisplay && detectedLang ? await highlightCode(codeToDisplay, detectedLang, diffTransformers) : null
 ---
 
 <script>
-  import { Tooltip } from '../../../../dist/js/bootstrap.bundle.js'
+  import { Tooltip } from '@bootstrap'
   import { initCopyButtons } from '@libs/clipboard'
 
   document.querySelectorAll('.btn-edit').forEach((btn) => {
@@ -165,9 +162,10 @@ const highlightedCode = codeToDisplay && detectedLang
   // Handle tab switching
   document.querySelectorAll('.code-tabs').forEach((tabContainer) => {
     const buttons = tabContainer.querySelectorAll('.code-tab-btn')
-    const parentContainer = tabContainer.closest('.bd-code-snippet') ||
-                           tabContainer.closest('.bd-example-snippet') ||
-                           tabContainer.parentElement?.parentElement
+    const parentContainer =
+      tabContainer.closest('.bd-code-snippet') ||
+      tabContainer.closest('.bd-example-snippet') ||
+      tabContainer.parentElement?.parentElement
     const codeBlocks = parentContainer?.querySelectorAll('.code-tab-content')
 
     buttons.forEach((button, index) => {
@@ -192,98 +190,108 @@ const highlightedCode = codeToDisplay && detectedLang
   })
 </script>
 
-{nestedInExample ? (
-  <>
-    {!noToolbar && (
-      <div class="hstack highlight-toolbar align-items-center">
-        {highlightedTabs ? (
-          <div class="code-tabs">
-            {highlightedTabs.map((tab, index) => (
-              <button
-                type="button"
-                class:list={['code-tab-btn', { active: index === 0 }]}
-              >
-                {tab.label}
+{
+  nestedInExample ? (
+    <>
+      {!noToolbar && (
+        <div class="hstack highlight-toolbar align-items-center">
+          {highlightedTabs ? (
+            <div class="code-tabs">
+              {highlightedTabs.map((tab, index) => (
+                <button type="button" class:list={['code-tab-btn', { active: index === 0 }]}>
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          ) : file ? (
+            <a
+              class="text-decoration-none font-monospace fs-xs fg-3"
+              href={fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {file}
+            </a>
+          ) : (
+            <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
+          )}
+          <div class="d-flex ms-auto">
+            {addStackblitzJs && (
+              <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
+                <svg class="bi" aria-hidden="true">
+                  <use href="#lightning-charge-fill" />
+                </svg>
               </button>
-            ))}
-          </div>
-        ) : file ? (
-          <a class="text-decoration-none font-monospace fs-xs fg-3" href={fileUrl} target="_blank" rel="noopener noreferrer">{file}</a>
-        ) : (
-          <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
-        )}
-        <div class="d-flex ms-auto">
-          {addStackblitzJs && (
-            <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
-              <svg class="bi" aria-hidden="true">
-                <use href="#lightning-charge-fill" />
+            )}
+            <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
+              <svg class="bi fs-md" aria-hidden="true">
+                <use href="#copy" />
               </svg>
             </button>
+          </div>
+        </div>
+      )}
+      {highlightedTabs ? (
+        <>
+          {highlightedTabs.map((tab, index) => (
+            <div class:list={['code-tab-content', { active: index === 0 }]}>
+              <Fragment set:html={tab.code} />
+            </div>
+          ))}
+        </>
+      ) : highlightedCode ? (
+        <Fragment set:html={highlightedCode} />
+      ) : (
+        /* prettier-ignore */ <pre class={className}><slot /></pre>
+      )}
+    </>
+  ) : (
+    <div class:list={['bd-code-snippet', containerClass]}>
+      {!noToolbar && (
+        <div class="hstack highlight-toolbar align-items-center">
+          {highlightedTabs ? (
+            <div class="code-tabs">
+              {highlightedTabs.map((tab, index) => (
+                <button type="button" class:list={['code-tab-btn', { active: index === 0 }]}>
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          ) : file ? (
+            <a
+              class="text-decoration-none font-monospace fs-xs fg-3"
+              href={fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {file}
+            </a>
+          ) : (
+            <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
           )}
-          <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
-            <svg class="bi fs-md" aria-hidden="true">
-              <use href="#copy" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    )}
-    {highlightedTabs ? (
-      <>
-        {highlightedTabs.map((tab, index) => (
-          <div class:list={['code-tab-content', { active: index === 0 }]}>
-            <Fragment set:html={tab.code} />
+          <div class="d-flex ms-auto">
+            <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
+              <svg class="bi fs-md" aria-hidden="true">
+                <use href="#copy" />
+              </svg>
+            </button>
           </div>
-        ))}
-      </>
-    ) : highlightedCode ? (
-      <Fragment set:html={highlightedCode} />
-    ) : (
-      /* prettier-ignore */ <pre class={className}><slot /></pre>
-    )}
-  </>
-) : (
-  <div class:list={["bd-code-snippet", containerClass]}>
-    {!noToolbar && (
-      <div class="hstack highlight-toolbar align-items-center">
-        {highlightedTabs ? (
-          <div class="code-tabs">
-            {highlightedTabs.map((tab, index) => (
-              <button
-                type="button"
-                class:list={['code-tab-btn', { active: index === 0 }]}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        ) : file ? (
-          <a class="text-decoration-none font-monospace fs-xs fg-3" href={fileUrl} target="_blank" rel="noopener noreferrer">{file}</a>
-        ) : (
-          <div class="font-monospace text-uppercase fs-xs fg-3">{displayLang}</div>
-        )}
-        <div class="d-flex ms-auto">
-          <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
-            <svg class="bi fs-md" aria-hidden="true">
-              <use href="#copy" />
-            </svg>
-          </button>
         </div>
-      </div>
-    )}
+      )}
 
-    {highlightedTabs ? (
-      <>
-        {highlightedTabs.map((tab, index) => (
-          <div class:list={['code-tab-content', { active: index === 0 }]}>
-            <Fragment set:html={tab.code} />
-          </div>
-        ))}
-      </>
-    ) : highlightedCode ? (
-      <Fragment set:html={highlightedCode} />
-    ) : (
-      /* prettier-ignore */ <pre class={className}><slot /></pre>
-    )}
-  </div>
-)}
+      {highlightedTabs ? (
+        <>
+          {highlightedTabs.map((tab, index) => (
+            <div class:list={['code-tab-content', { active: index === 0 }]}>
+              <Fragment set:html={tab.code} />
+            </div>
+          ))}
+        </>
+      ) : highlightedCode ? (
+        <Fragment set:html={highlightedCode} />
+      ) : (
+        /* prettier-ignore */ <pre class={className}><slot /></pre>
+      )}
+    </div>
+  )
+}

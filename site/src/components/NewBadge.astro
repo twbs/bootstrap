@@ -6,11 +6,7 @@ interface Props {
 const { version } = Astro.props
 ---
 
-<span
-  class="badge bg-3 ms-auto fg-3 fw-normal me--1"
-  data-bs-toggle="tooltip"
-  data-bs-title={`Added in v${version}`}
->
+<span class="badge bg-3 ms-auto fg-3 fw-normal me--1" data-bs-toggle="tooltip" data-bs-title={`Added in v${version}`}>
   New
   <span class="visually-hidden">{` (Added in v${version})`}</span>
 </span>

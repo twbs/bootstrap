@@ -17,7 +17,7 @@ const pageTitle = `${title} · ${getConfig().title} v${getConfig().docs_version}
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class:list={html_class} data-bs-theme="auto">
   <head>
     <meta charset="utf-8" />
@@ -29,9 +29,13 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 
     <link rel="canonical" href={canonicalUrl} />
 
+    {/* Loaded as `is:inline` (not via Vite) so the theme is applied before paint. */}
+    {/* The script lives in `site/static/docs/[version]/assets/js/` so it can */}
+    {/* render-block at this exact spot in the head without going through the */}
+    {/* bundler (which would defer it and cause a flash of the wrong theme). */}
     <script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
 
-    <Stylesheet layout="examples" />
+    <Stylesheet />
     <Favicons />
 
     <style is:global>
@@ -55,7 +59,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
         background-color: rgba(0, 0, 0, 0.1);
         border: solid rgba(0, 0, 0, 0.15);
         border-width: 1px 0;
-        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1), inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+        box-shadow:
+          inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
       }
 
       .b-example-vr {

@@ -24,19 +24,17 @@ const placements = [
       >
         <span>Default (static)</span>
         <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
-          <use href="#chevron-expand" />
+          <use href="#chevron-expand"></use>
         </svg>
       </button>
       <div class="menu">
-        {placements.map((p) => (
-          <a
-            class:list={['menu-item', { 'active': p.value === '' }]}
-            href="#"
-            data-placement={p.value}
-          >
-            {p.label}
-          </a>
-        ))}
+        {
+          placements.map((p) => (
+            <a class:list={['menu-item', { active: p.value === '' }]} href="#" data-placement={p.value}>
+              {p.label}
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
@@ -52,7 +50,7 @@ const placements = [
 />
 
 <script>
-  import { Menu } from '../../../../dist/js/bootstrap.bundle.js'
+  import { Menu } from '@bootstrap'
 
   const placementMenuButton = document.querySelector('#navbar-placement-menu') as HTMLButtonElement
   const placementMenuItems = document.querySelectorAll('#navbar-placement-menu + .menu .menu-item')
@@ -75,17 +73,19 @@ const placements = [
 
     const labelSpan = placementMenuButton.querySelector('span')
     if (labelSpan) {
-      labelSpan.textContent = placementLabels[placement] ? `${placementLabels[placement]}${placement ? '' : ' (static)'}` : 'Default (static)'
+      labelSpan.textContent = placementLabels[placement]
+        ? `${placementLabels[placement]}${placement ? '' : ' (static)'}`
+        : 'Default (static)'
     }
     placementMenuButton.dataset.placement = placement
 
-    placementMenuItems.forEach(item => {
+    placementMenuItems.forEach((item) => {
       const itemPlacement = (item as HTMLElement).dataset.placement
       item.classList.toggle('active', itemPlacement === placement)
     })
 
     // Remove all placement classes
-    placementClasses.forEach(cls => {
+    placementClasses.forEach((cls) => {
       previewNavbar.classList.remove(cls)
     })
 
@@ -123,7 +123,7 @@ const placements = [
   if (placementMenuButton) {
     const placementMenu = Menu.getOrCreateInstance(placementMenuButton)
 
-    placementMenuItems.forEach(item => {
+    placementMenuItems.forEach((item) => {
       item.addEventListener('click', (e) => {
         e.preventDefault()
         const placement = (item as HTMLElement).dataset.placement || ''
