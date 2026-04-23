@@ -3,7 +3,8 @@
   @if $color-mode-type == "media-query" {
     @if $root == true {
       @media (prefers-color-scheme: $mode) {
-        :root {
+        :root,
+        :host {
           @content;
         }
       }

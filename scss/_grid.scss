@@ -2,7 +2,8 @@
 //
 // Rows contain your columns.
 
-:root {
+:root,
+:host {
   @each $name, $value in $grid-breakpoints {
     --#{$prefix}breakpoint-#{$name}: #{$value};
   }
