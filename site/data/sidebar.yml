@@ -32,7 +32,6 @@
   icon: palette2
   icon_color: pink
   pages:
-    - title: Overview
     - title: Sass
     - title: Options
     - title: Color
