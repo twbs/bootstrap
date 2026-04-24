@@ -1,0 +1,38 @@
+{
+  "name": "prettier-plugin-bootstrap",
+  "version": "0.1.0",
+  "description": "A Prettier plugin for automatic Bootstrap class sorting",
+  "license": "MIT",
+  "type": "module",
+  "exports": "./src/index.mjs",
+  "main": "./src/index.mjs",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "prettier",
+    "plugin",
+    "bootstrap",
+    "css",
+    "class",
+    "sorting"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twbs/bootstrap.git",
+    "directory": "prettier-plugin-bootstrap"
+  },
+  "bugs": {
+    "url": "https://github.com/twbs/bootstrap/issues"
+  },
+  "homepage": "https://github.com/twbs/bootstrap/tree/main/prettier-plugin-bootstrap",
+  "peerDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.3"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  }
+}
