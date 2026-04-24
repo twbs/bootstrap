@@ -319,19 +319,41 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | — | — | `.fs-6xl` | `clamp(3.75rem, …, 5rem)` |
 </BsTable>
 
-- **Border radius scale updated.** The underlying CSS custom property values have increased, and the utility mapping has shifted:
+- **Border radius tokens replaced with a numeric scale.** The named `$border-radius-*` Sass variables and `--border-radius-*` CSS custom properties (`-xs`, `-sm`, default, `-lg`, `-xl`, `-2xl`) have been removed in favor of a numeric `$radii` Sass map (keyed `0`–`9`) that generates `--radius-0` through `--radius-9` tokens, plus `--radius-pill`. The scale is driven by a single `$radius: .5rem` base, so all steps move together when the base changes. To migrate any custom Sass or CSS that referenced the old tokens directly:
 
 <BsTable>
-| Utility class | v5 variable | v5 value | v6 variable | v6 value |
-|---|---|---|---|---|
-| `.rounded` | `$border-radius` | `0.375rem` | `--border-radius` | `0.5rem` |
-| `.rounded-0` | — | `0` | — | `0` |
-| `.rounded-1` | `$border-radius-sm` | `0.25rem` | `--border-radius-sm` | `0.5rem` |
-| `.rounded-2` | `$border-radius` | `0.375rem` | `--border-radius` | `0.5rem` |
-| `.rounded-3` | `$border-radius-lg` | `0.5rem` | `--border-radius-lg` | `0.75rem` |
-| `.rounded-4` | `$border-radius-xl` | `1rem` | `--border-radius-xl` | `1rem` |
-| `.rounded-5` | `$border-radius-xxl` | `2rem` | `--border-radius-2xl` | `2rem` |
+| v5 variable | v5 value | v6 token | v6 value |
+|---|---|---|---|
+| `$border-radius-xs` / `--border-radius-xs` | `0.25rem` | `--radius-3` | `0.25rem` |
+| `$border-radius-sm` / `--border-radius-sm` | `0.25rem` | `--radius-3` | `0.25rem` |
+| `$border-radius` / `--border-radius` | `0.375rem` | `--radius-4` | `0.375rem` |
+| `$border-radius-lg` / `--border-radius-lg` | `0.5rem` | `--radius-5` | `0.5rem` |
+| `$border-radius-xl` / `--border-radius-xl` | `1rem` | `--radius-8` | `1rem` |
+| `$border-radius-xxl` / `--border-radius-2xl` | `2rem` | — (closest: `--radius-9` `1.5rem`) |
+| `$border-radius-pill` / `--border-radius-pill` | `50rem` | `--radius-pill` | `50rem` |
 </BsTable>
+
+- **Border radius utilities expanded and remapped.** `.rounded-*` is now generated from the `$radii` map, so the scale spans `.rounded-0` through `.rounded-9` (previously `.rounded-0` through `.rounded-5`). The default `.rounded` still resolves to `0.5rem`, but the numbered classes now map to different values than v5:
+
+<BsTable>
+| Utility class | v5 value | v6 value | v6 token |
+|---|---|---|---|
+| `.rounded` | `0.375rem` | `0.5rem` | `var(--radius-5)` |
+| `.rounded-0` | `0` | `0` | `var(--radius-0)` |
+| `.rounded-1` | `0.25rem` | `0.125rem` | `var(--radius-1)` |
+| `.rounded-2` | `0.375rem` | `0.1875rem` | `var(--radius-2)` |
+| `.rounded-3` | `0.5rem` | `0.25rem` | `var(--radius-3)` |
+| `.rounded-4` | `1rem` | `0.375rem` | `var(--radius-4)` |
+| `.rounded-5` | `2rem` | `0.5rem` | `var(--radius-5)` |
+| `.rounded-6` | — | `0.625rem` | `var(--radius-6)` |
+| `.rounded-7` | — | `0.75rem` | `var(--radius-7)` |
+| `.rounded-8` | — | `1rem` | `var(--radius-8)` |
+| `.rounded-9` | — | `1.5rem` | `var(--radius-9)` |
+| `.rounded-circle` | `50%` | `50%` | — |
+| `.rounded-pill` | `50rem` | `50rem` | `var(--radius-pill)` |
+</BsTable>
+
+  To preserve v5 visual roundness, shift class numbers up the scale (e.g. `.rounded-1` &rarr; `.rounded-3`, `.rounded-2` &rarr; `.rounded-4`, `.rounded-3` &rarr; `.rounded-5`, `.rounded-4` &rarr; `.rounded-8`, `.rounded-5` &rarr; `.rounded-9`). The `.rounded-{top,end,bottom,start}-*` directional variants follow the same scale.
 
 - **Font weight additions.** Added `.fw-medium` (`500`) and `.fw-semibold` (`600`) utilities. v5 only had `lighter`, `light` (`300`), `normal` (`400`), `bold` (`700`), and `bolder`.
 - **Negative margins limited.** Negative spacers are reduced to only `-1` (`-0.25rem`) and `-2` (`-0.5rem`), and only applied to `margin-inline-start` (`.ms-n1`, `.ms-n2`) and `margin-inline-end` (`.me--1`, `.me--2`). The v5 full negative margin utilities across all sides have been removed.

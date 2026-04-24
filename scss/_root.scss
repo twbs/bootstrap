@@ -86,28 +86,28 @@ $root-tokens: defaults(
     --btn-input-padding-x: .75rem,
     --btn-input-font-size: var(--font-size-base),
     --btn-input-line-height: var(--line-height-base),
-    --btn-input-border-radius: var(--radius-2),
+    --btn-input-border-radius: var(--radius-5),
 
     --btn-input-xs-min-height: 1.5rem,
     --btn-input-xs-padding-y: .125rem,
     --btn-input-xs-padding-x: .5rem,
     --btn-input-xs-font-size: var(--font-size-xs),
     --btn-input-xs-line-height: 1.125,
-    --btn-input-xs-border-radius: var(--radius-2),
+    --btn-input-xs-border-radius: var(--radius-5),
 
     --btn-input-sm-min-height: 2rem,
     --btn-input-sm-padding-y: .25rem,
     --btn-input-sm-padding-x: .625rem,
     --btn-input-sm-font-size: var(--font-size-sm),
     --btn-input-sm-line-height: var(--line-height-sm),
-    --btn-input-sm-border-radius: var(--radius-2),
+    --btn-input-sm-border-radius: var(--radius-5),
 
     --btn-input-lg-min-height: 2.75rem,
     --btn-input-lg-padding-y: .5rem,
     --btn-input-lg-padding-x: 1rem,
     --btn-input-lg-font-size: var(--font-size-md),
     --btn-input-lg-line-height: var(--line-height-md),
-    --btn-input-lg-border-radius: var(--radius-3),
+    --btn-input-lg-border-radius: var(--radius-7),
     // scss-docs-end root-form-variables
   ),
   $root-tokens
@@ -153,12 +153,20 @@ $root-tokens: defaults(
 }
 
 // Generate spacer tokens
+// scss-docs-start root-spacer-loop
 @each $key, $value in $spacers {
   $root-tokens: map.set($root-tokens, --spacer-#{$key}, $value);
+}
+// scss-docs-end root-spacer-loop
+
+// Generate radius tokens
+// scss-docs-start root-radius-loop
+@each $key, $value in $radii {
   $root-tokens: map.set($root-tokens, --radius-#{$key}, $value);
 }
 // stylelint-disable-next-line scss/dollar-variable-default
 $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
+// scss-docs-end root-radius-loop
 
 :root {
   @include tokens($root-tokens);

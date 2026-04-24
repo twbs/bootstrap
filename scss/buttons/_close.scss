@@ -35,7 +35,7 @@ $btn-close-tokens: defaults(
     color: var(--btn-close-color);
     background: transparent; // for button elements
     border: 0; // for button elements
-    @include border-radius(var(--radius-2));
+    @include border-radius(var(--radius-5));
     opacity: var(--btn-close-opacity);
 
     > svg {

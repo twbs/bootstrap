@@ -16,7 +16,7 @@ $alert-tokens: defaults(
     --alert-color: var(--theme-fg, inherit),
     --alert-border-color: var(--theme-border, var(--border-color)),
     --alert-border: var(--border-width) solid var(--alert-border-color),
-    --alert-border-radius: var(--radius-2),
+    --alert-border-radius: var(--radius-5),
     --alert-link-color: inherit,
     --hr-border-color: var(--theme-border, var(--border-color)),
   ),

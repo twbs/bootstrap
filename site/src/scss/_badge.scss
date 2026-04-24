@@ -14,7 +14,7 @@
     line-height: 1.25rem;
     color: var(--bs-theme-fg, var(--bs-fg-2));
     background-color: var(--bs-theme-bg-subtle, var(--bs-gray-100));
-    @include border-radius(var(--radius-2));
+    @include border-radius(var(--radius-5));
   }
 
   .bd-meta-tooltip {

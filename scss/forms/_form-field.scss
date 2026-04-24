@@ -46,7 +46,7 @@
     padding: calc(var(--spacer) * .75);
     cursor: pointer;
     border: var(--border-width) solid transparent;
-    @include border-radius(var(--radius-3));
+    @include border-radius(var(--radius-7));
 
     &:hover {
       background-color: var(--bg-1);
