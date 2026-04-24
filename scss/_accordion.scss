@@ -19,7 +19,7 @@ $accordion-tokens: defaults(
     --accordion-transition: var(--accordion-transition-property) var(--accordion-timing),
     --accordion-border-color: var(--border-color),
     --accordion-border-width: var(--border-width),
-    --accordion-border-radius: var(--accordion-radius, var(--radius-3)),
+    --accordion-border-radius: var(--accordion-radius, var(--radius-7)),
     --accordion-btn-color: var(--fg-2),
     --accordion-btn-bg: var(--bg-body),
     --accordion-btn-icon-width: 1rem,

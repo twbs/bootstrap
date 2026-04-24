@@ -17,7 +17,7 @@
     background-color: var(--bd-callout-bg, var(--bs-gray-100));
     border: 1px solid var(--bd-callout-border, var(--bs-border-color));
     border-inline-start: .25rem solid var(--bd-callout-border, var(--bs-gray-300));
-    @include border-radius(var(--radius-2));
+    @include border-radius(var(--radius-5));
 
     h4 {
       margin-bottom: .25rem;

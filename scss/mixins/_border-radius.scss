@@ -20,7 +20,7 @@
 }
 
 // scss-docs-start border-radius-mixins
-@mixin border-radius($radius: var(--radius-2), $fallback-border-radius: false) {
+@mixin border-radius($radius: var(--radius-5), $fallback-border-radius: false) {
   @if $enable-rounded {
     border-radius: valid-radius($radius);
   }
@@ -29,53 +29,53 @@
   }
 }
 
-@mixin border-top-radius($radius: var(--radius-2)) {
+@mixin border-top-radius($radius: var(--radius-5)) {
   @if $enable-rounded {
     border-start-start-radius: valid-radius($radius);
     border-start-end-radius: valid-radius($radius);
   }
 }
 
-@mixin border-end-radius($radius: var(--radius-2)) {
+@mixin border-end-radius($radius: var(--radius-5)) {
   @if $enable-rounded {
     border-start-end-radius: valid-radius($radius);
     border-end-end-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-radius($radius: var(--radius-2)) {
+@mixin border-bottom-radius($radius: var(--radius-5)) {
   @if $enable-rounded {
     border-end-start-radius: valid-radius($radius);
     border-end-end-radius: valid-radius($radius);
   }
 }
 
-@mixin border-start-radius($radius: var(--radius-2)) {
+@mixin border-start-radius($radius: var(--radius-5)) {
   @if $enable-rounded {
     border-start-start-radius: valid-radius($radius);
     border-end-start-radius: valid-radius($radius);
   }
 }
 
-@mixin border-top-start-radius($radius: var(--radius-2)) {
+@mixin border-top-start-radius($radius: var(--radius-5)) {
   @if $enable-rounded {
     border-start-start-radius: valid-radius($radius);
   }
 }
 
-@mixin border-top-end-radius($radius: var(--radius-2)) {
+@mixin border-top-end-radius($radius: var(--radius-5)) {
   @if $enable-rounded {
     border-start-end-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-end-radius($radius: var(--radius-2)) {
+@mixin border-bottom-end-radius($radius: var(--radius-5)) {
   @if $enable-rounded {
     border-end-end-radius: valid-radius($radius);
   }
 }
 
-@mixin border-bottom-start-radius($radius: var(--radius-2)) {
+@mixin border-bottom-start-radius($radius: var(--radius-5)) {
   @if $enable-rounded {
     border-end-start-radius: valid-radius($radius);
   }

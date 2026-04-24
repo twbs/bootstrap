@@ -21,7 +21,7 @@ $menu-tokens: defaults(
     --menu-color: var(--fg-body),
     --menu-bg: var(--bg-body),
     // --menu-border-color: var(--border-color-translucent),
-    // --menu-border-radius: var(--radius-3),
+    // --menu-border-radius: var(--radius-7),
     // --menu-border-width: var(--border-width),
     --menu-box-shadow: var(--box-shadow),
     // --menu-max-height: none,
@@ -37,7 +37,7 @@ $menu-tokens: defaults(
     --menu-item-gap: .5rem,
     --menu-item-padding-x: .75rem,
     --menu-item-padding-y: .25rem,
-    --menu-item-border-radius: var(--radius-2),
+    --menu-item-border-radius: var(--radius-5),
     --menu-icon-size: 1rem,
     --menu-image-size: 1.5rem,
     --menu-description-font-size: var(--font-size-xs),
@@ -76,7 +76,7 @@ $menu-tokens: defaults(
     background-color: var(--menu-bg);
     background-clip: padding-box;
     border: var(--menu-border-width, var(--border-width)) solid var(--menu-border-color, var(--border-color-translucent));
-    @include border-radius(var(--menu-border-radius, var(--radius-3)));
+    @include border-radius(var(--menu-border-radius, var(--radius-7)));
     @include box-shadow(var(--menu-box-shadow));
     opacity: 0;
     transform: scale(.95);
@@ -206,7 +206,7 @@ $menu-tokens: defaults(
     width: var(--menu-image-size);
     height: var(--menu-image-size);
     object-fit: cover;
-    @include border-radius(var(--radius-2));
+    @include border-radius(var(--radius-5));
   }
 
   .menu-item-content {

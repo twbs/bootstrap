@@ -17,7 +17,7 @@ $reboot-kbd-tokens: defaults(
     --kbd-font-size: var(--font-size-xs),
     --kbd-color: var(--bg-body),
     --kbd-bg: var(--fg-2),
-    --kbd-border-radius: var(--radius-2),
+    --kbd-border-radius: var(--radius-5),
   ),
   $reboot-kbd-tokens
 );

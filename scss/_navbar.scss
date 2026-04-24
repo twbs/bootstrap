@@ -38,7 +38,7 @@ $navbar-tokens: defaults(
     --navbar-toggler-padding-x: .75rem,
     --navbar-toggler-font-size: var(--font-size-lg),
     --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
-    --navbar-toggler-border-radius: var(--radius-2),
+    --navbar-toggler-border-radius: var(--radius-5),
     --navbar-toggler-transition: box-shadow .15s ease-in-out,
   ),
   $navbar-tokens

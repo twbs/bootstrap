@@ -11,7 +11,7 @@
     padding: 1rem !important;
     background-color: var(--bs-bg-1) !important;
     border: 0 !important;
-    @include border-radius(var(--radius-3) !important);
+    @include border-radius(var(--radius-7) !important);
   }
   // #carbon-responsive a,
   // .carbon-description {
@@ -20,7 +20,7 @@
   .carbon-img {
     position: relative;
     overflow: hidden;
-    @include border-radius(var(--radius-2));
+    @include border-radius(var(--radius-5));
 
     &::after {
       position: absolute;
@@ -28,7 +28,7 @@
       display: block;
       content: "";
       border: 1px solid var(--bs-border-color-translucent);
-      @include border-radius(var(--radius-2));
+      @include border-radius(var(--radius-5));
     }
   }
 }

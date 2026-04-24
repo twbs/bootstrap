@@ -17,7 +17,7 @@
   font-size: 13px;
   line-height: 20px;
   background-color: var(--bd-pre-bg) !important; // stylelint-disable-line declaration-no-important
-  @include border-radius(calc(var(--radius-2) - 1px));
+  @include border-radius(calc(var(--radius-5) - 1px));
 
   > code {
     display: flex;
@@ -83,7 +83,7 @@
   color: var(--bs-fg-3);
   background: transparent;
   border: 0;
-  @include border-radius(var(--radius-2));
+  @include border-radius(var(--radius-5));
   @include transition(color .15s ease-in-out, background-color .15s ease-in-out);
 
   &:hover {

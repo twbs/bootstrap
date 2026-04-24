@@ -47,7 +47,7 @@ $toast-tokens: defaults(
     background-clip: padding-box;
     border: var(--toast-border-width) solid var(--theme-border, var(--toast-border-color));
     box-shadow: var(--toast-box-shadow);
-    @include border-radius(var(--toast-border-radius, var(--radius-3)));
+    @include border-radius(var(--toast-border-radius, var(--radius-7)));
 
     &.showing {
       opacity: 0;

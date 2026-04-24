@@ -12,7 +12,7 @@ $breadcrumb-tokens: defaults(
     --breadcrumb-margin-bottom: 1rem,
     --breadcrumb-font-size: inherit,
     --breadcrumb-bg: transparent,
-    --breadcrumb-border-radius: var(--radius-2),
+    --breadcrumb-border-radius: var(--radius-5),
     --breadcrumb-divider-color: var(--fg-4),
     --breadcrumb-link-padding-x: .75rem,
     --breadcrumb-link-padding-y: .25rem,
@@ -20,7 +20,7 @@ $breadcrumb-tokens: defaults(
     --breadcrumb-link-hover-color: var(--fg-2),
     --breadcrumb-link-hover-bg: var(--bg-1),
     --breadcrumb-link-active-color: var(--fg-1),
-    --breadcrumb-link-border-radius: var(--radius-3),
+    --breadcrumb-link-border-radius: var(--radius-7),
   ),
   $breadcrumb-tokens
 );
