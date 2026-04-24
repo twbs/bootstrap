@@ -10,7 +10,7 @@ Toasts are lightweight notifications designed to mimic the push notifications th
 
 Things to know when using the toast plugin:
 
-- Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
+- Toasts are opt-in for performance reasons, so **you must initialize them yourself**. Auto-initializing every toast on page load would register timers and event listeners even when no toasts are visible, adding unnecessary overhead on pages that create toasts dynamically or only in response to user actions.
 - Toasts will automatically hide if you do not specify `autohide: false`.
 
 <Callout name="info-prefersreducedmotion" />
