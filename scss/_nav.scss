@@ -41,7 +41,7 @@ $nav-tabs-tokens: defaults(
   (
     --nav-tabs-border-width: var(--border-width),
     --nav-tabs-border-color: var(--border-color),
-    --nav-tabs-border-radius: var(--border-radius),
+    --nav-tabs-border-radius: var(--radius-5),
     --nav-tabs-link-hover-border-color: var(--border-subtle),
     --nav-tabs-link-active-color: var(--fg-color),
     --nav-tabs-link-active-bg: var(--bg-body),
@@ -59,8 +59,10 @@ $nav-pills-tokens: defaults(
   (
     --nav-pills-bg: var(--bg-1),
     --nav-pills-padding: .25rem,
+    --nav-pills-border-radius: var(--radius-9),
     --nav-pills-link-active-color: var(--primary-contrast),
     --nav-pills-link-active-bg: var(--primary-bg),
+    --nav-pills-link-border-radius: var(--radius-9),
   ),
   $nav-pills-tokens
 );
@@ -114,7 +116,7 @@ $nav-underline-tokens: defaults(
     white-space: nowrap;
     background: none;
     border: var(--nav-link-border-width) solid transparent;
-    @include border-radius(var(--border-radius));
+    @include border-radius(var(--radius-5));
     @include transition(var(--nav-link-transition));
 
     &:hover,
@@ -192,16 +194,26 @@ $nav-underline-tokens: defaults(
     display: inline-flex;
     padding: var(--nav-pills-padding);
     background-color: var(--nav-pills-bg);
-    @include border-radius(var(--border-radius-pill));
+    @include border-radius(var(--nav-pills-border-radius));
 
     .nav-link {
-      @include border-radius(var(--border-radius-pill));
+      @include border-radius(var(--nav-pills-link-border-radius));
     }
 
     .nav-link.active,
     .show > .nav-link {
       color: var(--nav-pills-link-active-color);
       @include gradient-bg(var(--nav-pills-link-active-bg));
+    }
+  }
+
+  .nav-pills-vertical {
+    flex-direction: column;
+    align-items: stretch;
+
+    .nav-item,
+    .nav-link {
+      width: 100%;
     }
   }
 

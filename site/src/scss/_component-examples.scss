@@ -8,12 +8,12 @@
 @layer custom {
   .bd-code-snippet {
     --bd-example-padding: 1.25rem;
-    --bd-example-inner-radius: calc(var(--bs-border-radius) - 1px);
+    --bd-example-inner-radius: calc(var(--radius-5) - 1px);
 
     margin: 0;
     background-color: var(--bd-pre-bg);
     border: 1px solid var(--bs-border-color);
-    @include border-radius(var(--bs-border-radius));
+    @include border-radius(var(--radius-5));
 
     .bd-example {
       &:first-child {
@@ -40,7 +40,7 @@
     border-bottom: 1px solid var(--bs-border-color);
 
     &:first-child {
-      @include border-top-radius(calc(var(--bs-border-radius) - 1px));
+      @include border-top-radius(calc(var(--radius-5) - 1px));
     }
 
     &:not(:first-child) {
@@ -68,7 +68,7 @@
       min-height: 120px;
       padding: var(--bs-spacer);
       background-color: var(--bs-bg-1);
-      @include border-radius(var(--bs-border-radius));
+      @include border-radius(var(--radius-5));
     }
 
     > .menu.position-static {
@@ -201,7 +201,7 @@
       color: var(--bs-fg-3);
       background-color: var(--bs-bg-1);
       border: var(--bs-border-width) solid var(--bs-border-color);
-      @include border-radius(var(--bs-border-radius));
+      @include border-radius(var(--radius-5));
     }
   }
 
@@ -368,7 +368,7 @@
     resize: horizontal;
     background-color: var(--bs-bg-body);
     border: 1px dashed var(--bs-border-color);
-    @include border-radius(var(--bs-border-radius));
+    @include border-radius(var(--radius-5));
   }
 
   //

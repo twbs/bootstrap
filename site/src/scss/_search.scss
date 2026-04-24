@@ -79,7 +79,7 @@
 }
 
 .DocSearch-Form {
-  @include border-radius(var(--bs-border-radius));
+  @include border-radius(var(--radius-5));
 }
 
 .DocSearch-Hits {
@@ -99,11 +99,11 @@
   }
 
   &:first-child a {
-    @include border-top-radius(var(--bs-border-radius));
+    @include border-top-radius(var(--radius-5));
     border-top-width: 1px;
   }
   &:last-child a {
-    @include border-bottom-radius(var(--bs-border-radius));
+    @include border-bottom-radius(var(--radius-5));
   }
 }
 

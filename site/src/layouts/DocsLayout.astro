@@ -184,11 +184,11 @@ if (currentPageIndex < allPages.length - 1) {
 
         <slot />
 
-        <nav class="bd-links-nav py-5 mt-5 border-top">
-          <div class="d-flex flex-column md:flex-row justify-content-stretch gap-3 md:gap-5">
+        <nav class="bd-links-nav py-9 mt-9 border-top">
+          <div class="d-flex flex-column md:flex-row justify-content-stretch gap-3 md:gap-5 lh-1">
             {
               prevPage && (
-                <a href={prevPage.url} class="d-block p-3 text-decoration-none border rounded-3 flex-grow-1">
+                <a href={prevPage.url} class="d-flex flex-column gap-2 p-5 text-decoration-none border rounded-5 flex-grow-1">
                   <div class="fg-3">← Previous</div>
                   <div class="fs-5 fw-semibold">{prevPage.title}</div>
                   <div class="fg-3">{prevPage.groupTitle}</div>
@@ -197,7 +197,7 @@ if (currentPageIndex < allPages.length - 1) {
             }
             {
               nextPage && (
-                <a href={nextPage.url} class="d-block p-3 text-decoration-none text-end border rounded-3 flex-grow-1">
+                <a href={nextPage.url} class="d-flex flex-column gap-2 p-5 text-decoration-none text-end border rounded-5 flex-grow-1">
                   <div class="fg-3">Next →</div>
                   <div class="fs-5 fw-semibold">{nextPage.title}</div>
                   <div class="fg-3">{nextPage.groupTitle}</div>

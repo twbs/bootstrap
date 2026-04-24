@@ -1,4 +1,5 @@
 @use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
 
 @layer custom {
   .bd-toc {
@@ -52,15 +53,15 @@
       --bs-nav-link-hover-bg: transparent;
       --bs-nav-link-active-bg: transparent;
       --bs-nav-link-active-color: var(--bs-fg-body);
-      --bs-border-radius: 0;
 
-      .nav .nav-link{
+      .nav .nav-link {
         padding-inline-start: 1.75rem;
       }
     }
 
     .nav-link {
       border-inline-start: .125rem solid transparent;
+      @include border-radius(0);
 
       &.active {
         font-weight: 500;

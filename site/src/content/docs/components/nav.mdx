@@ -48,7 +48,7 @@ Where appropriate, you can also use `<button>` elements instead of `<a>` element
 <Example code={`<nav class="nav">
     <a class="nav-link active" aria-current="page" href="#">Active</a>
     <a class="nav-link" href="#">Link</a>
-    <button class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</button>
+    <button class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</button><!-- [!code highlight] -->
     <div class="menu">
       <a class="menu-item" href="#">Action</a>
       <a class="menu-item" href="#">Another action</a>
@@ -70,7 +70,7 @@ Change the style of `.nav`s component with modifiers and utilities. Mix and matc
 
 Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface.
 
-<Example code={`<ul class="nav nav-tabs">
+<Example code={`<ul class="nav nav-tabs"><!-- [!code highlight] -->
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -89,7 +89,24 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 
 Take that same HTML, but use `.nav-pills` instead for a more themed appearance.
 
-<Example code={`<ul class="nav nav-pills">
+<Example code={`<ul class="nav nav-pills"><!-- [!code highlight] -->
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>`} />
+
+Pill navigation can also go vertical with an additional modifier class, `.nav-pills-vertical`.
+
+<Example code={`<ul class="nav nav-pills nav-pills-vertical"><!-- [!code highlight] -->
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -108,7 +125,7 @@ Take that same HTML, but use `.nav-pills` instead for a more themed appearance.
 
 Take that same HTML, but use `.nav-underline` instead:
 
-<Example code={`<ul class="nav nav-underline">
+<Example code={`<ul class="nav nav-underline"><!-- [!code highlight] -->
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -131,7 +148,7 @@ Change the alignment of your nav with [flexbox utilities]([[docsref:/utilities/f
 
 Centered with `.justify-content-center`:
 
-<Example code={`<ul class="nav justify-content-center">
+<Example code={`<ul class="nav justify-content-center"><!-- [!code highlight] -->
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -148,7 +165,7 @@ Centered with `.justify-content-center`:
 
 Right-aligned with `.justify-content-end`:
 
-<Example code={`<ul class="nav justify-content-end">
+<Example code={`<ul class="nav justify-content-end"><!-- [!code highlight] -->
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -167,7 +184,7 @@ Right-aligned with `.justify-content-end`:
 
 Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.sm:flex-column`).
 
-<Example code={`<ul class="nav flex-column">
+<Example code={`<ul class="nav flex-column"><!-- [!code highlight] -->
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -195,7 +212,7 @@ As always, vertical navigation is possible without `<ul>`s, too.
 
 Force your `.nav`’s contents to extend the full available width with one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
-<Example code={`<ul class="nav nav-pills nav-fill">
+<Example code={`<ul class="nav nav-pills nav-fill"><!-- [!code highlight] -->
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
@@ -221,7 +238,7 @@ When using a `<nav>`-based navigation, you can safely omit `.nav-item` as only `
 
 For equal-width elements, use `.nav-justified`. All horizontal space will be occupied by nav links, but unlike the `.nav-fill` above, every nav item will be the same width.
 
-<Example code={`<ul class="nav nav-pills nav-justified">
+<Example code={`<ul class="nav nav-pills nav-justified"><!-- [!code highlight] -->
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="#">Active</a>
     </li>
