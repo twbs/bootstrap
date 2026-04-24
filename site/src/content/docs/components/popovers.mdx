@@ -10,7 +10,7 @@ Things to know when using the popover plugin:
 
 - Popovers rely on the third party library [Popper](https://popper.js.org/docs/v2/) for positioning. You must include [popper.min.js]([[config:cdn.popper]]) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Popper.
 - Popovers require the [popover plugin]([[docsref:/components/popovers]]) as a dependency.
-- Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
+- Popovers are opt-in for performance reasons, so **you must initialize them yourself**. Like tooltips, each popover creates a [Popper](https://popper.js.org/docs/v2/) instance that tracks scroll and resize events. Auto-initializing every popover on page load would add unnecessary overhead on pages where popovers are not used or where only a few elements need them.
 - Zero-length `title` and `content` values will never show a popover.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
 - Triggering popovers on hidden elements will not work.
