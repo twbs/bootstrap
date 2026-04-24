@@ -88,6 +88,11 @@ $accordion-tokens: defaults(
       border-block-start: 0;
     }
 
+    // Remove bottom border when followed by an open item (to avoid double border)
+    &:has(+ .accordion-item[open]) {
+      border-block-end: 0;
+    }
+
     // Only set a border-radius on the last item if the accordion is collapsed
     &:last-of-type {
       @include border-bottom-radius(var(--accordion-border-radius));
@@ -104,6 +109,11 @@ $accordion-tokens: defaults(
     // Open state - details[open] applies these styles
     &[open] {
       border-color: var(--theme-border, var(--accordion-border-color));
+
+      // Restore top border for non-first items when open
+      &:not(:first-of-type) {
+        border-block-start: var(--accordion-border-width) solid var(--theme-border, var(--accordion-border-color));
+      }
 
       > .accordion-header {
         color: var(--theme-fg, var(--accordion-active-color));
