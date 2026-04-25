@@ -244,7 +244,7 @@ export const body_class = 'bg-body-tertiary'
               <td>Cell</td>
               <td>Cell</td>
             </tr>`,
-            ...getData('theme-colors').map((themeColor) => `<tr class="table-${themeColor.name}">
+            ...getData('theme-colors').map((themeColor) => `<tr class="theme-${themeColor.name}">
                 <th scope="row">${themeColor.title}</th>
                 <td>Cell</td>
                 <td>Cell</td>
@@ -623,42 +623,33 @@ export const body_class = 'bg-body-tertiary'
       <div>
         <Example showMarkup={false} code={`
         <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h4 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
-              </button>
-            </h4>
-            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
+          <details class="accordion-item" name="accordionExample" open>
+            <summary class="accordion-header">
+              Accordion Item #1
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default because the <code>open</code> attribute is present. The native <code>&lt;details&gt;</code> element handles all the show/hide logic without any JavaScript. You can put any HTML content within the <code>.accordion-body</code>.
             </div>
-          </div>
-          <div class="accordion-item">
-            <h4 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
-              </button>
-            </h4>
-            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
+          </details>
+          <details class="accordion-item" name="accordionExample">
+            <summary class="accordion-header">
+              Accordion Item #2
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> The <code>name</code> attribute groups this with other accordion items. When you open this item, any other open item in the same group will close automatically.
             </div>
-          </div>
-          <div class="accordion-item">
-            <h4 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Accordion Item #3
-              </button>
-            </h4>
-            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
+          </details>
+          <details class="accordion-item" name="accordionExample">
+            <summary class="accordion-header">
+              Accordion Item #3
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> This exclusive accordion behavior is built into the browser—no Bootstrap JavaScript required. Just use matching <code>name</code> attributes on your <code>&lt;details&gt;</code> elements.
             </div>
-          </div>
+          </details>
         </div>
         `} />
       </div>
@@ -697,18 +688,18 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={`
-        <p class="h1">Example heading <span class="badge bg-primary">New</span></p>
-        <p class="h2">Example heading <span class="badge bg-secondary">New</span></p>
-        <p class="h3">Example heading <span class="badge bg-success">New</span></p>
-        <p class="h4">Example heading <span class="badge bg-danger">New</span></p>
-        <p class="h5">Example heading <span class="badge text-bg-warning">New</span></p>
-        <p class="h6">Example heading <span class="badge text-bg-info">New</span></p>
-        <p class="h6">Example heading <span class="badge text-bg-light">New</span></p>
-        <p class="h6">Example heading <span class="badge bg-dark">New</span></p>
+        <p class="h1">Example heading <span class="badge theme-primary">New</span></p>
+        <p class="h2">Example heading <span class="badge theme-secondary">New</span></p>
+        <p class="h3">Example heading <span class="badge theme-success">New</span></p>
+        <p class="h4">Example heading <span class="badge theme-danger">New</span></p>
+        <p class="h5">Example heading <span class="badge theme-warning">New</span></p>
+        <p class="h6">Example heading <span class="badge theme-info">New</span></p>
+        <p class="h6">Example heading <span class="badge theme-inverse">New</span></p>
+        <p class="h6">Example heading <span class="badge theme-secondary">New</span></p>
         `} />
 
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <span class="badge rounded-pill ${(themeColor.name === 'light' || themeColor.name === 'warning' || themeColor.name === 'info') ? 'text-' : ''}bg-${themeColor.name}">${themeColor.title}</span>
+        <span class="badge ${(themeColor.name === 'light' || themeColor.name === 'warning' || themeColor.name === 'info') ? 'text-' : ''}bg-${themeColor.name}">${themeColor.title}</span>
         `)} />
       </div>
     </article>
@@ -723,7 +714,7 @@ export const body_class = 'bg-body-tertiary'
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Library</a></li>
             <li class="breadcrumb-item active" aria-current="page">Data</li>
           </ol>
         </nav>
@@ -743,7 +734,11 @@ export const body_class = 'bg-body-tertiary'
           `<button type="button" class="btn-solid theme-link">Link</button>`]} />
 
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-          <button type="button" class="btn-solid theme-outline-${themeColor.name}">${themeColor.title}</button>
+          <button type="button" class="btn-outline theme-${themeColor.name}">${themeColor.title}</button>
+          `)} />
+
+        <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
+          <button type="button" class="btn-subtle theme-${themeColor.name}">${themeColor.title}</button>
           `)} />
 
         <Example showMarkup={false} code={`
@@ -1129,7 +1124,7 @@ export const body_class = 'bg-body-tertiary'
         <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>`,
           ...getData('theme-colors').map((themeColor) => `
-          <a href="#" class="list-group-item list-group-item-action list-group-item-${themeColor.name}">A simple ${themeColor.name} list group item</a>
+          <a href="#" class="list-group-item list-group-item-action theme-${themeColor.name}">A simple ${themeColor.name} list group item</a>
           `),
         `</div>
         `]} />
@@ -1202,7 +1197,7 @@ export const body_class = 'bg-body-tertiary'
               <a class="navbar-brand" href="#">
                 <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy" style="filter: invert(1) grayscale(100%) brightness(200%);">
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -1241,7 +1236,7 @@ export const body_class = 'bg-body-tertiary'
               <a class="navbar-brand" href="#">
                 <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy">
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
                 <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent2">
@@ -1450,13 +1445,13 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <div class="spinner-border text-${themeColor.name}" role="status">
+        <div class="spinner-border fg-${themeColor.name}" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
         `)} />
 
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <div class="spinner-grow text-${themeColor.name}" role="status">
+        <div class="spinner-grow fg-${themeColor.name}" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
         `)} />
