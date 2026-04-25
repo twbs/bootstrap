@@ -1,9 +1,13 @@
 ---
 title: Options
-description: Quickly customize Bootstrap with built-in variables to easily toggle global CSS preferences for controlling style and behavior.
+description: Quickly customize Bootstrap with built-in Sass variables that allow you to easily toggle global preferences for controlling some opinionated styles and behaviors.
 ---
 
-Customize Bootstrap with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable’s value and recompile with `npm run test` as needed.
+## How they work
+
+Across our code base, we use Sass variables to help us toggle global preferences for things like deprecation messages,reduced motion, shadows, gradients, and more. These variables allow us to toggle values, disable generation of classes, and more.
+
+Nearly all options variables start with `$enable-` and are booleans (meaning true or false), but some config strings, maps, and more. Override a variable’s value and recompile with `npm run test` to verify your changes.
 
 You can find and customize these variables for key global options in Bootstrap’s `scss/_config.scss` file.
 
