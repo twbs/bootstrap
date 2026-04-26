@@ -176,6 +176,7 @@ class Modal extends BaseComponent {
 
     this._element.style.display = 'block'
     this._element.removeAttribute('aria-hidden')
+    this._element.inert = false // allow modal to be focused again
     this._element.setAttribute('aria-modal', true)
     this._element.setAttribute('role', 'dialog')
     this._element.scrollTop = 0
@@ -243,6 +244,7 @@ class Modal extends BaseComponent {
   }
 
   _hideModal() {
+    this._element.inert = true // ensure that focus is removed and handled properly before hiding and setting aria-hidden
     this._element.style.display = 'none'
     this._element.setAttribute('aria-hidden', true)
     this._element.removeAttribute('aria-modal')
