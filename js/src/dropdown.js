@@ -420,7 +420,9 @@ class Dropdown extends BaseComponent {
 
     if (isUpOrDownEvent) {
       event.stopPropagation()
-      instance.show()
+      if(!instance._isShown()) {
+        instance.show()
+      }
       instance._selectMenuItem(event)
       return
     }
