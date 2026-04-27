@@ -186,14 +186,13 @@ class Tooltip extends BaseComponent {
       throw new Error('Please use show on visible elements')
     }
 
-    if (!(this._isWithContent() && this._isEnabled)) {
+    if (!((this._isWithContent() || this._newContent !== null) && this._isEnabled)) {
       return
     }
 
     const showEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_SHOW))
     const shadowRoot = findShadowRoot(this._element)
     const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element)
-
     if (showEvent.defaultPrevented || !isInTheDom) {
       return
     }
