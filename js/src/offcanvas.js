@@ -66,6 +66,7 @@ class Offcanvas extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
+    this._deleteDialogRoleWhenHiding = false
     this._isShown = false
     this._backdrop = this._initializeBackDrop()
     this._focustrap = this._initializeFocusTrap()
@@ -109,7 +110,12 @@ class Offcanvas extends BaseComponent {
     }
 
     this._element.setAttribute('aria-modal', true)
-    this._element.setAttribute('role', 'dialog')
+
+    if (this._element.getAttribute('role') !== 'dialog') {
+      this._deleteDialogRoleWhenHiding = true
+      this._element.setAttribute('role', 'dialog')
+    }
+
     this._element.classList.add(CLASS_NAME_SHOWING)
 
     const completeCallBack = () => {
@@ -145,7 +151,10 @@ class Offcanvas extends BaseComponent {
     const completeCallback = () => {
       this._element.classList.remove(CLASS_NAME_SHOW, CLASS_NAME_HIDING)
       this._element.removeAttribute('aria-modal')
-      this._element.removeAttribute('role')
+
+      if (this._deleteDialogRoleWhenHiding) {
+        this._element.removeAttribute('role')
+      }
 
       if (!this._config.scroll) {
         new ScrollBarHelper().reset()
