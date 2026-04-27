@@ -782,10 +782,43 @@ const myModalAlternative = new bootstrap.Modal('#myModal', options)
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `backdrop` | boolean, `’static'` | `true` | Includes a modal-backdrop element. Alternatively, specify `static` for a backdrop which doesn’t close the modal when clicked. |
-| `focus` | boolean | `true` | Puts the focus on the modal when initialized. |
-| `keyboard` | boolean | `true` | Closes the modal when escape key is pressed. |
+| `backdrop` | true, `’static'`, <br /> function | `true` | Includes a modal-backdrop element. Alternatively, specify `static` for a backdrop which doesn’t close the modal when clicked. |
+| `focus` | boolean, function | `true` | Puts the focus on the modal when initialized. |
+| `keyboard` | boolean, function | `true` | Closes the modal when escape key is pressed. |
 </BsTable>
+
+For example, if you want to prevent the user from closing the modal window using the Escape key to avoid accidental loss
+of important data if they are entered, you can use instead:
+
+```js
+const confirmInput = document.getElementById('confirmInput')
+const modalElement = document.getElementById('confirmModal')
+
+new bootstrap.Modal(modalElement, { keyboard: true })
+
+const keydownBlocker = event => {
+if (event.key === 'Escape' && confirmInput.value.toLowerCase() === 'save') {
+  event.stopPropagation()
+}
+}
+
+modalElement.addEventListener('show.bs.modal', () => {
+  document.addEventListener('keydown', keydownBlocker, true)
+})
+
+modalElement.addEventListener('hide.bs.modal', () => {
+  document.removeEventListener('keydown', keydownBlocker, true)
+})
+```
+
+The next option is to transfer the function:
+
+```js
+const confirmInput = document.getElementById('confirmInput')
+const modalElement = document.getElementById('confirmModal')
+
+new bootstrap.Modal(modalElement, { keyboard: () => confirmInput.value.toLowerCase() !== 'save' })
+```
 
 ### Methods
 
