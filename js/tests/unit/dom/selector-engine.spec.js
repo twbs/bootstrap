@@ -81,6 +81,28 @@ describe('SelectorEngine', () => {
     })
   })
 
+  describe('closest', () => {
+    it('should return one element when element with selector is the direct parent', () => {
+      const testId = 'test'
+      fixtureEl.innerHTML = `<div id="${testId}"><div id="element"></div></div>`
+
+      const element = fixtureEl.querySelector('#element')
+      const parent = fixtureEl.querySelector(`#${testId}`)
+
+      expect(SelectorEngine.closest(element, `#${testId}`)).toEqual(parent)
+    })
+
+    it('should return one element when element with selector is an ancestor', () => {
+      const testId = 'test'
+      fixtureEl.innerHTML = `<div id="${testId}"><div><div id="element"></div></div></div>`
+
+      const element = fixtureEl.querySelector('#element')
+      const ancestor = fixtureEl.querySelector(`#${testId}`)
+
+      expect(SelectorEngine.closest(element, `#${testId}`)).toEqual(ancestor)
+    })
+  })
+
   describe('prev', () => {
     it('should return previous element', () => {
       fixtureEl.innerHTML = '<div class="test"></div><button class="btn"></button>'
