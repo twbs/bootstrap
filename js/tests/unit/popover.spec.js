@@ -57,6 +57,17 @@ describe('Popover', () => {
     })
   })
 
+  describe('config', () => {
+    it('should accept "true"/"false" string content from data-bs-content as literal strings', () => {
+      fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="true">BS</a>'
+
+      const popoverEl = fixtureEl.querySelector('a')
+      const popover = new Popover(popoverEl)
+
+      expect(popover._config.content).toEqual('true')
+    })
+  })
+
   describe('show', () => {
     it('should toggle a popover after show', () => {
       return new Promise(resolve => {
