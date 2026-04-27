@@ -32,8 +32,9 @@
 }
 
 // Maximum breakpoint width.
-// The maximum value is reduced by 0.02px to work around the limitations of
-// `min-` and `max-` prefixes and viewports with fractional widths.
+// The maximum value is reduced by `$grid-breakpoint-max-offset` (0.02px)
+// to work around the limitations of `min-` and `max-` prefixes and viewports
+// with fractional widths.
 // See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
 // Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
 // See https://bugs.webkit.org/show_bug.cgi?id=178261
@@ -42,7 +43,7 @@
 //    767.98px
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
   $max: map-get($breakpoints, $name);
-  @return if($max and $max > 0, $max - .02, null);
+  @return if($max and $max > 0, $max - $grid-breakpoint-max-offset, null);
 }
 
 // Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
