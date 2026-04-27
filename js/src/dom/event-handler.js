@@ -101,22 +101,18 @@ function bootstrapHandler(element, fn) {
 
 function bootstrapDelegationHandler(element, selector, fn) {
   return function handler(event) {
-    const domElements = element.querySelectorAll(selector)
+    const { target } = event
 
-    for (let { target } = event; target && target !== this; target = target.parentNode) {
-      for (const domElement of domElements) {
-        if (domElement !== target) {
-          continue
-        }
+    const trigger = target.closest(selector)
 
-        hydrateObj(event, { delegateTarget: target })
+    if (trigger && element.contains(trigger)) {
+      hydrateObj(event, { delegateTarget: trigger })
 
-        if (handler.oneOff) {
-          EventHandler.off(element, event.type, selector, fn)
-        }
-
-        return fn.apply(target, [event])
+      if (handler.oneOff) {
+        EventHandler.off(element, event.type, selector, fn)
       }
+
+      return fn.apply(trigger, [event])
     }
   }
 }
