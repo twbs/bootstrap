@@ -7,4 +7,7 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
+// Vendored Pagefind Component UI CSS — loaded before `search` so our
+// `--pf-*` theme overrides win the cascade.
+@use "vendor/pagefind-component-ui";
 @use "search";

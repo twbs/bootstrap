@@ -1,6 +1,5 @@
 {
   "reject": [
-    "@docsearch/js",
     "karma-browserstack-launcher",
     "karma-rollup-preprocessor",
     "stylelint"

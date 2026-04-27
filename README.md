@@ -123,7 +123,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Bootstrap’s documentation, included in this repo in the root directory, is built with [Astro](https://astro.build/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/).
+Documentation search is powered by [Pagefind](https://pagefind.app/).
 
 ### Running documentation locally
 

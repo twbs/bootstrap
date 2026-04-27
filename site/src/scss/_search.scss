@@ -1,14 +1,28 @@
 @use "../../../scss/layout/breakpoints" as *;
-@use "../../../scss/mixins/border-radius" as *;
-
-// stylelint-disable selector-class-pattern
 
 // ============================================================
-// Search button — styled to match the former DocSearch button
+// Pagefind Component UI theming
+//
+// Pagefind's CSS is vendored into `vendor/_pagefind-component-ui.scss`
+// and `@use`'d ahead of this file from `docs_search.scss`, so a plain
+// `:root` selector here would already win on source order. We keep
+// the `:root[data-bs-theme]` selector below so Bootstrap-tied tokens
+// stay together with the dark-mode overrides for clarity.
+//
+// Note: Pagefind's `all: initial` / `all: revert` on host and
+// internal elements does NOT touch custom properties — `all`
+// excludes `--*` per CSS spec — so the `--pf-*` cascade flows
+// through their isolation just fine.
 // ============================================================
+
+// ------------------------------------------------------------
+// Layout: position the modal trigger inside the navbar
+// ------------------------------------------------------------
 
 .bd-search {
   position: relative;
+  display: flex;
+  align-items: center;
 
   @include media-breakpoint-up(lg) {
     position: absolute;
@@ -22,360 +36,79 @@
     width: 280px;
     margin-inline-start: -140px;
   }
-}
 
-.bd-search-btn {
-  display: flex;
-  gap: .5rem;
-  align-items: center;
-  width: 100%;
-  height: 36px;
-  padding-inline: 10px;
-  margin-left: 0;
-  font-size: .875rem;
-  color: var(--bs-body-color);
-  cursor: pointer;
-  background-color: var(--bs-bg-2);
-  border: 1px solid var(--bs-border-subtle);
-  @include border-radius(var(--bs-border-radius));
-
-  &:hover,
-  &:focus {
-    .bd-search-icon {
-      opacity: 1;
-    }
-  }
-}
-
-.bd-search-icon {
-  flex-shrink: 0;
-  opacity: .5;
-}
-
-.bd-search-placeholder {
-  flex: 1;
-  color: var(--bs-fg-4);
-  text-align: start;
-
-  @include media-breakpoint-down(lg) {
-    display: none;
-  }
-}
-
-.bd-search-keys {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  min-width: 0;
-  margin-top: .25rem;
-
-  @include media-breakpoint-down(lg) {
-    display: none;
-  }
-
-  kbd {
-    padding: .1rem .3rem;
-    font-size: var(--bs-font-size-sm);
-    color: var(--bs-fg-3);
-    background: none;
-    border: 0;
-    border-radius: 0; // stylelint-disable-line
-    box-shadow: none;
-  }
-}
-
-// ============================================================
-// Search dialog — replaces the former DocSearch modal overlay
-// ============================================================
-
-// stylelint-disable selector-max-id
-#bd-search-dialog {
-  &[open] {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1090;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+  pagefind-modal-trigger {
     width: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    padding: 1rem;
-    overflow: hidden;
-    background: transparent;
-    border: 0;
-
-    @include media-breakpoint-up(lg) {
-      padding-block-start: 4rem;
-    }
-  }
-
-  &::backdrop {
-    background: rgba(9, 10, 17, .8);
-  }
-
-  #bd-search {
-    --pagefind-ui-scale: 1;
-    --pagefind-ui-primary: var(--bs-indigo-500);
-    --pagefind-ui-text: var(--bs-body-color);
-    --pagefind-ui-background: var(--bs-bg-body);
-    --pagefind-ui-border: var(--bs-border-color);
-    --pagefind-ui-border-width: 1px;
-    --pagefind-ui-border-radius: var(--bs-border-radius);
-    --pagefind-ui-image-border-radius: var(--bs-border-radius);
-    --pagefind-ui-font: inherit;
-
-    width: min(100%, 600px);
-    max-height: 100dvh;
-    margin-inline: auto;
-    overflow-y: auto;
-    background: var(--bs-bg-body);
-    border: 1px solid var(--bs-border-color);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
-
-    @include media-breakpoint-up(lg) {
-      @include border-radius(var(--bs-border-radius));
-      max-height: calc(100dvh - 4rem);
-    }
-
-    .pagefind-ui__search-input {
-      height: 3.25rem;
-      padding-inline: 2.75rem 3rem;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--bs-body-color);
-      background: var(--bs-bg-body);
-      border: 1px solid var(--bs-border-subtle);
-      box-shadow: none;
-      @include border-radius(var(--bs-border-radius));
-
-      &::placeholder {
-        color: var(--bs-fg-3);
-        opacity: 1;
-      }
-
-      &:focus {
-        border-color: var(--bs-indigo-500);
-        outline: 0;
-        box-shadow: 0 0 0 .25rem rgba(119, 64, 255, .15);
-      }
-    }
-
-    .pagefind-ui {
-      position: relative;
-      background: var(--bs-bg-body);
-    }
-
-    .pagefind-ui__form {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      padding: 1rem;
-      margin: 0;
-      background: var(--bs-bg-body);
-      border-bottom: 1px solid var(--bs-border-color);
-
-      &::before {
-        position: absolute;
-        top: 50%;
-        left: 1.875rem;
-        width: 1rem;
-        height: 1rem;
-        pointer-events: none;
-        content: "";
-        background-color: var(--bs-fg-3);
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8.5 2a6.5 6.5 0 1 0 4.03 11.6l3.93 3.92 1.06-1.06-3.92-3.93A6.5 6.5 0 0 0 8.5 2Zm0 1.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z'/%3E%3C/svg%3E") center / 100% no-repeat;
-        transform: translateY(-50%);
-      }
-    }
-
-    .pagefind-ui__drawer {
-      display: block;
-      padding: .75rem 1rem 1rem;
-      margin-top: 0;
-      background: var(--bs-bg-body);
-      border: 0;
-    }
-
-    .pagefind-ui__message {
-      margin-bottom: .75rem;
-      font-size: .875rem;
-      color: var(--bs-fg-3);
-    }
-
-    .pagefind-ui__results {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .pagefind-ui__results-area {
-      min-width: 0;
-      margin-top: 0;
-    }
-
-    .pagefind-ui__result {
-      padding: 0;
-      background-color: var(--bs-bg-body);
-      border: solid var(--bs-border-color);
-      border-width: 0 0 1px;
-
-      &:only-child {
-        border-width: 0;
-      }
-
-      &:last-child {
-        border-bottom-width: 0;
-      }
-    }
-
-    .pagefind-ui__result-link {
-      color: var(--bs-emphasis-color);
-      text-decoration: none;
-    }
-
-    .pagefind-ui__result-title {
-      position: relative;
-      margin-bottom: 0;
-      font-size: 1rem;
-      line-height: 1.3;
-    }
-
-    .pagefind-ui__result-excerpt {
-      display: -webkit-box;
-      margin: 0;
-      overflow: hidden;
-      font-size: .875rem;
-      line-height: 1.4;
-      color: var(--bs-fg-2);
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      text-wrap: pretty;
-    }
-
-    .pagefind-ui__result-inner {
-      align-items: stretch;
-      margin-top: 0;
-
-      > .pagefind-ui__result-title {
-        padding: .875rem 1rem .25rem 2.5rem;
-
-        &::before {
-          position: absolute;
-          top: .9rem;
-          left: 1rem;
-          width: 1rem;
-          height: 1rem;
-          content: "";
-          background-color: var(--bs-fg-3);
-          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 2.5A1.5 1.5 0 0 0 3.5 4v12A1.5 1.5 0 0 0 5 17.5h10a1.5 1.5 0 0 0 1.5-1.5V7.56a1.5 1.5 0 0 0-.44-1.06l-3.5-3.5A1.5 1.5 0 0 0 11.5 2.5H5Zm0 1.5h6v2.5A1.5 1.5 0 0 0 12.5 8H15v8H5V4Zm3 5a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5H8Zm0 3a.75.75 0 0 0 0 1.5h4a.75.75 0 0 0 0-1.5H8Z'/%3E%3C/svg%3E") center / 100% no-repeat;
-        }
-      }
-
-      > .pagefind-ui__result-excerpt {
-        min-width: 0;
-        padding: 0 1rem .875rem 2.5rem;
-      }
-    }
-
-    .pagefind-ui__result-nested {
-      padding: .375rem 1rem .5rem 3rem;
-      border-top: 1px solid var(--bs-border-subtle);
-
-      .pagefind-ui__result-title {
-        padding-inline-start: 1.25rem;
-        font-size: .875rem;
-        font-weight: 400;
-
-        &::before {
-          position: absolute;
-          top: .2rem;
-          left: 0;
-          width: .875rem;
-          height: .875rem;
-          content: "";
-          background-color: var(--bs-fg-4);
-          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M8 4.5 13.5 10 8 15.5v-3.25H3v-4.5H8z'/%3E%3C/svg%3E") center / 100% no-repeat;
-        }
-      }
-
-      .pagefind-ui__result-excerpt {
-        padding-inline-start: 1.25rem;
-        font-size: .8125rem;
-      }
-    }
-
-    .pagefind-ui__button {
-      padding: .375rem .625rem;
-      color: var(--bs-body-color);
-      background-color: var(--bs-bg-2);
-      border: 1px solid var(--bs-border-color);
-      @include border-radius(var(--bs-border-radius));
-    }
-
-    .pagefind-ui__search-clear {
-      position: absolute;
-      top: 50%;
-      right: .5rem;
-      bottom: auto;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 2rem;
-      min-width: 2rem;
-      height: 2rem;
-      padding: 0;
-      overflow: hidden;
-      font-size: 0;
-      line-height: 1;
-      color: transparent;
-      appearance: none;
-      background-color: transparent;
-      border: 0;
-      box-shadow: none;
-      transform: translateY(-50%);
-      @include border-radius(999px);
-
-      &::before {
-        width: 100%;
-        height: 100%;
-        content: "";
-        background-color: var(--bs-fg-3);
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='m5.28 4.22 4.72 4.72 4.72-4.72 1.06 1.06L11.06 10l4.72 4.72-1.06 1.06L10 11.06l-4.72 4.72-1.06-1.06L8.94 10 4.22 5.28l1.06-1.06Z'/%3E%3C/svg%3E") center / .875rem .875rem no-repeat;
-      }
-
-      &:hover,
-      &:focus {
-        background-color: var(--bs-bg-1);
-        outline: 0;
-        box-shadow: none;
-
-        &::before {
-          background-color: var(--bs-body-color);
-        }
-      }
-    }
-
-    mark {
-      padding: 0;
-      color: var(--bs-indigo-500);
-      background-color: transparent;
-    }
   }
 }
 
-// stylelint-enable selector-max-id
+// ------------------------------------------------------------
+// Theme tokens — light mode (default)
+// ------------------------------------------------------------
 
-// Dev-mode message when pagefind index is unavailable
-.bd-search-unavailable {
-  padding: 1.5rem;
-  margin: 0;
-  font-size: .9rem;
-  color: var(--bs-fg-3);
-  text-align: center;
+.pf-trigger-btn,
+pagefind-modal,
+pagefind-input,
+.pf-result,
+pagefind-modal-body [class*="pf-"] {
+  --pf-text: var(--bs-fg-body);
+  --pf-text-secondary: var(--bs-fg-2);
+  --pf-text-muted: var(--bs-fg-3);
+  --pf-background: var(--bs-bg-body);
+  --pf-border: var(--bs-border-color);
+  --pf-border-focus: var(--bs-indigo-500);
+  --pf-skeleton: var(--bs-bg-1);
+  --pf-skeleton-shine: var(--bs-bg-2);
+  --pf-hover: var(--bs-bg-1);
+  --pf-mark: var(--bs-indigo-500);
+  --pf-scroll-shadow: rgba(9, 10, 17, .08);
 
-  code {
-    font-size: .875em;
-  }
+  --pf-shadow-sm: 0 2px 8px rgba(9, 10, 17, .06);
+  --pf-shadow-md: 0 4px 12px rgba(9, 10, 17, .1);
+  --pf-shadow-lg: 0 16px 48px rgba(9, 10, 17, .25);
+
+  --pf-outline-focus: var(--bs-indigo-500);
+  --pf-outline-width: 2px;
+  --pf-outline-offset: 2px;
+
+  --pf-font: inherit;
+  --pf-border-radius: var(--bs-border-radius-lg);
+
+  --pf-modal-backdrop: rgba(9, 10, 17, .8);
+  --pf-modal-max-width: 600px;
+  --pf-modal-max-height: min(80dvh, 800px);
+  --pf-modal-top: 4rem;
+
+  color-scheme: light dark !important;
+}
+
+pagefind-input {
+  border: 1px solid var(--bs-border-color) !important;
+  border-radius: var(--bs-border-radius) !important;
+}
+
+pagefind-modal-footer {
+  display: none !important;
+}
+
+.pf-modal {
+  border: 1px solid var(--bs-border-color) !important;
+}
+
+// ------------------------------------------------------------
+// Theme tokens — dark mode (bridge from Bootstrap's data attr)
+//
+// All Pagefind colors come from `--bs-*` tokens, which already
+// flip with `[data-bs-theme="dark"]`. We only need to override
+// the few hardcoded rgba shadows / backdrops that don't.
+// ------------------------------------------------------------
+
+[data-bs-theme="dark"] .pf-trigger-btn {
+  --pf-scroll-shadow: rgba(255, 255, 255, .1);
+
+  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, .3);
+  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, .4);
+  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, .5);
+
+  --pf-modal-backdrop: rgba(0, 0, 0, .8);
 }

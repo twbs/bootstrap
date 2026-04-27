@@ -92,9 +92,15 @@ class DialogBase extends BaseComponent {
     }
     this._isTransitioning = true;
     this._hideElement();
-    this._onAfterHide();
     this._queueCallback(() => {
+      // For subclasses that defer close() until the exit transition ends
+      // (so the dialog stays in the top layer with its ::backdrop), close()
+      // happens here instead of in _hideElement().
+      if (this._element.open) {
+        this._closeAndCleanup();
+      }
       this._element.classList.remove('hiding');
+      this._onAfterHide();
       this._isTransitioning = false;
       EventHandler.trigger(this._element, this.constructor.eventName('hidden'));
     }, this._element, this._isAnimated());
@@ -150,6 +156,20 @@ class DialogBase extends BaseComponent {
     // Without this, the navbar's `:not([open])` transition-kill rule
     // would prevent the slide-out animation.
     this._element.classList.add('hiding');
+
+    // Subclasses can defer close() until after the exit transition by
+    // returning true from _shouldDeferClose(). This is needed for the
+    // native modal <dialog> centered case: close() removes the dialog
+    // from the top layer immediately, which strips its auto-centering
+    // and the ::backdrop, breaking the exit animation.
+    if (!this._shouldDeferClose()) {
+      this._closeAndCleanup();
+    }
+  }
+
+  // Closes the native <dialog> and tears down body-scroll prevention.
+  // Safe to call multiple times — close() is a no-op on a closed dialog.
+  _closeAndCleanup() {
     this._element.close();
     this._openedAsModal = false;
 
@@ -157,6 +177,13 @@ class DialogBase extends BaseComponent {
     if (!document.querySelector('dialog[open]:modal')) {
       document.body.classList.remove(CLASS_NAME_OPEN);
     }
+  }
+
+  // Hook: return true to keep the dialog in the top layer (i.e., delay
+  // calling close()) until the exit transition completes. The base class
+  // closes synchronously; Dialog overrides this for animated modal cases.
+  _shouldDeferClose() {
+    return false;
   }
   _triggerBackdropTransition() {
     const hidePreventedEvent = EventHandler.trigger(this._element, this.constructor.eventName('hidePrevented'));

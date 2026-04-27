@@ -98,25 +98,13 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
       </ul>
     </div>
 
-    <div class="bd-search">
-      <button
-        type="button"
-        class="bd-search-btn"
-        id="bd-search-btn"
-        aria-haspopup="dialog"
-        aria-label="Search docs (Command+K)"
-      >
-        <svg class="bi bd-search-icon" aria-hidden="true" width={16} height={16}><use href="#search"></use></svg>
-        <span class="bd-search-placeholder">Search docs...</span>
-        <span class="bd-search-keys">
-          <kbd>⌘</kbd><kbd>K</kbd>
-        </span>
-      </button>
-    </div>
+    {layout === 'docs' && (
+      <div class="bd-search">
+        <pagefind-modal-trigger placeholder="Search docs..."></pagefind-modal-trigger>
+      </div>
+    )}
 
     <ul class="nav navbar-nav flex-row ms-auto">
-      <li class="nav-item nav-link px-1" id="docsearch" data-bd-docs-version={getConfig().docs_version}></li>
-
       <Versions layout={layout} addedIn={addedIn} />
 
       <LinkItem class="px-1 d-none lg:d-flex" href={getConfig().github_org} target="_blank" rel="noopener">
@@ -146,6 +134,4 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
   </nav>
 </header>
 
-<dialog id="bd-search-dialog" aria-label="Search Bootstrap documentation">
-  <div id="bd-search"></div>
-</dialog>
+{layout === 'docs' && <pagefind-modal reset-on-close></pagefind-modal>}
