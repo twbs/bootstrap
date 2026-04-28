@@ -6,7 +6,7 @@ interface Props {
   placeholder?: string
 }
 
-const { id = 'bdSearchDialog', placeholder = 'Search docs...' } = Astro.props
+const { id = 'bdSearchDialog', placeholder = 'Search docs…' } = Astro.props
 ---
 
 <dialog
@@ -42,20 +42,4 @@ const { id = 'bdSearchDialog', placeholder = 'Search docs...' } = Astro.props
   <div class="dialog-body bd-search-body">
     <bd-search-results></bd-search-results>
   </div>
-
-  <!-- <footer class="dialog-footer bd-search-hints" aria-hidden="true">
-    <span class="bd-search-hint">
-      <kbd class="bd-search-hint-key">↑</kbd>
-      <kbd class="bd-search-hint-key">↓</kbd>
-      <span class="bd-search-hint-label">to navigate</span>
-    </span>
-    <span class="bd-search-hint">
-      <kbd class="bd-search-hint-key">↵</kbd>
-      <span class="bd-search-hint-label">to select</span>
-    </span>
-    <span class="bd-search-hint">
-      <kbd class="bd-search-hint-key">esc</kbd>
-      <span class="bd-search-hint-label">to close</span>
-    </span>
-  </footer> -->
 </dialog>

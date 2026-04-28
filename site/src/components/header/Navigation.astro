@@ -101,9 +101,11 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
     </div>
 
     <ul class="nav navbar-nav flex-row ms-auto">
-      <div class="bd-search">
-        <SearchTrigger placeholder="Search docs…" />
-      </div>
+      {layout === 'docs' && (
+        <div class="bd-search">
+          <SearchTrigger placeholder="Search docs…" />
+        </div>
+      )}
 
       <Versions layout={layout} addedIn={addedIn} />
 
@@ -134,4 +136,4 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
   </nav>
 </header>
 
-{layout === 'docs' && <SearchDialog placeholder="Search docs..." />}
+{layout === 'docs' && <SearchDialog placeholder="Search docs…" />}

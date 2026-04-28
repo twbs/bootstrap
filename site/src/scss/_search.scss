@@ -3,28 +3,16 @@
 @use "../../../scss/mixins/focus-ring" as *;
 @use "../../../scss/mixins/transition" as *;
 
-// ============================================================
+//
 // Custom Pagefind search UI — Bootstrap-native styling
 //
-// All structural CSS for the search experience. The Pagefind
-// engine is loaded via `@pagefind/component-ui` for its JS API
-// only; no `<pagefind-*>` element is rendered, so all selectors
-// here target our own `.bd-search-*` classes and the Bootstrap
-// primitives they wrap (.dialog, .form-control, .list-group).
-// ============================================================
-
-// ------------------------------------------------------------
-// Navbar trigger slot
-// ------------------------------------------------------------
 
 .bd-search {
   display: flex;
   flex-shrink: 0;
   align-items: center;
 
-  // Below `md` the trigger is a borderless icon button living inline in the
-  // navbar. From `md` up it expands to a faux search input centered in the
-  // navbar with absolute positioning.
+  // Below `md` the trigger is a borderless icon button
   @include media-breakpoint-up(md) {
     position: absolute;
     top: .875rem;
@@ -61,7 +49,7 @@
   @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
 
   &:hover {
-    color: var(--bs-fg-body, var(--bs-body-color));
+    color: var(--bs-fg-body);
   }
 
   &:focus-visible {
@@ -71,11 +59,11 @@
   @include media-breakpoint-up(md) {
     width: 100%;
     padding: .375rem .5rem .375rem .75rem;
-    background-color: var(--bs-bg-1, var(--bs-tertiary-bg));
+    background-color: var(--bs-bg-1);
     border: var(--bs-border-width) solid var(--bs-border-color);
 
     &:hover {
-      background-color: var(--bs-bg-2, var(--bs-secondary-bg));
+      background-color: var(--bs-bg-2);
       border-color: var(--bs-border-color);
     }
   }
@@ -83,7 +71,7 @@
 
 .bd-search-trigger-icon {
   flex-shrink: 0;
-  color: var(--bs-fg-3, var(--bs-secondary-color));
+  color: var(--bs-fg-3);
 }
 
 .bd-search-trigger-label,
@@ -159,7 +147,7 @@
 
 .bd-search-form-icon {
   flex-shrink: 0;
-  color: var(--bs-fg-3, var(--bs-secondary-color));
+  color: var(--bs-fg-3);
 }
 
 bd-search-input {
@@ -262,7 +250,7 @@ bd-search-results:not(:focus-within) .bd-search-result:first-child > .bd-search-
 .bd-search-result-title,
 .bd-search-subresult-title {
   font-weight: 600;
-  color: var(--bs-fg-body, var(--bs-body-color));
+  color: var(--bs-fg-body);
 }
 
 .bd-search-result-excerpt,

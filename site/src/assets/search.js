@@ -75,13 +75,13 @@ class BdSearchInput extends HTMLElement {
 
     // Enter follows the first result link — this matches the command-palette
     // pattern where the top result is always the implicit Enter target.
+    // Always preventDefault so the surrounding `<form role="search">` never
+    // implicit-submits and reloads the page when no results are present
+    // (loading / empty / error / zero-results states).
     if (event.key === 'Enter') {
+      event.preventDefault()
       const dialogEl = this.closest('dialog')
-      const firstLink = dialogEl?.querySelector('.bd-search-result-link')
-      if (firstLink) {
-        event.preventDefault()
-        firstLink.click()
-      }
+      dialogEl?.querySelector('.bd-search-result-link')?.click()
     }
   }
 
