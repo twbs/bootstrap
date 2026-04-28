@@ -20,80 +20,81 @@
 // ------------------------------------------------------------
 
 .bd-search {
-  position: relative;
-  display: flex;
-  align-items: center;
 
-  @include media-breakpoint-up(lg) {
-    position: absolute;
-    top: .875rem;
-    left: 50%;
-    width: 200px;
-    margin-inline-start: -100px;
-  }
+  // @include media-breakpoint-up(lg){
+  position: absolute;
+  top: .875rem;
+  left: 50%;
+  // position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 240px;
+  margin-inline-start: -100px;
+  // }
 
   @include media-breakpoint-up(xl) {
     width: 280px;
     margin-inline-start: -140px;
   }
 
-  pagefind-modal-trigger {
-    width: 100%;
-  }
+  // pagefind-modal-trigger {
+  //   width: 100%;
+  // }
 }
 
 // ------------------------------------------------------------
 // Theme tokens — light mode (default)
 // ------------------------------------------------------------
 
-.pf-trigger-btn,
-pagefind-modal,
-pagefind-input,
-.pf-result,
-pagefind-modal-body [class*="pf-"] {
-  --pf-text: var(--bs-fg-body);
-  --pf-text-secondary: var(--bs-fg-2);
-  --pf-text-muted: var(--bs-fg-3);
-  --pf-background: var(--bs-bg-body);
-  --pf-border: var(--bs-border-color);
-  --pf-border-focus: var(--bs-indigo-500);
-  --pf-skeleton: var(--bs-bg-1);
-  --pf-skeleton-shine: var(--bs-bg-2);
-  --pf-hover: var(--bs-bg-1);
-  --pf-mark: var(--bs-indigo-500);
-  --pf-scroll-shadow: rgba(9, 10, 17, .08);
+// .pf-trigger-btn,
+// pagefind-modal,
+// pagefind-input,
+// .pf-result,
+// pagefind-modal-body [class*="pf-"] {
+//   --pf-text: var(--bs-fg-body);
+//   --pf-text-secondary: var(--bs-fg-2);
+//   --pf-text-muted: var(--bs-fg-3);
+//   --pf-background: var(--bs-bg-body);
+//   --pf-border: var(--bs-border-color);
+//   --pf-border-focus: var(--bs-indigo-500);
+//   --pf-skeleton: var(--bs-bg-1);
+//   --pf-skeleton-shine: var(--bs-bg-2);
+//   --pf-hover: var(--bs-bg-1);
+//   --pf-mark: var(--bs-indigo-500);
+//   --pf-scroll-shadow: rgba(9, 10, 17, .08);
 
-  --pf-shadow-sm: 0 2px 8px rgba(9, 10, 17, .06);
-  --pf-shadow-md: 0 4px 12px rgba(9, 10, 17, .1);
-  --pf-shadow-lg: 0 16px 48px rgba(9, 10, 17, .25);
+//   --pf-shadow-sm: 0 2px 8px rgba(9, 10, 17, .06);
+//   --pf-shadow-md: 0 4px 12px rgba(9, 10, 17, .1);
+//   --pf-shadow-lg: 0 16px 48px rgba(9, 10, 17, .25);
 
-  --pf-outline-focus: var(--bs-indigo-500);
-  --pf-outline-width: 2px;
-  --pf-outline-offset: 2px;
+//   --pf-outline-focus: var(--bs-indigo-500);
+//   --pf-outline-width: 2px;
+//   --pf-outline-offset: 2px;
 
-  --pf-font: inherit;
-  --pf-border-radius: var(--bs-border-radius-lg);
+//   --pf-font: inherit;
+//   --pf-border-radius: var(--bs-border-radius-lg);
 
-  --pf-modal-backdrop: rgba(9, 10, 17, .8);
-  --pf-modal-max-width: 600px;
-  --pf-modal-max-height: min(80dvh, 800px);
-  --pf-modal-top: 4rem;
+//   --pf-modal-backdrop: rgba(9, 10, 17, .8);
+//   --pf-modal-max-width: 600px;
+//   --pf-modal-max-height: min(80dvh, 800px);
+//   --pf-modal-top: 4rem;
 
-  color-scheme: light dark !important;
-}
+//   color-scheme: light dark;
+// }
 
-pagefind-input {
-  border: 1px solid var(--bs-border-color) !important;
-  border-radius: var(--bs-border-radius) !important;
-}
+// pagefind-input {
+//   border: 1px solid var(--bs-border-color) !important;
+//   border-radius: var(--bs-border-radius) !important;
+// }
 
-pagefind-modal-footer {
-  display: none !important;
-}
+// pagefind-modal-footer {
+//   display: none !important;
+// }
 
-.pf-modal {
-  border: 1px solid var(--bs-border-color) !important;
-}
+// .pf-modal {
+//   border: 1px solid var(--bs-border-color) !important;
+// }
 
 // ------------------------------------------------------------
 // Theme tokens — dark mode (bridge from Bootstrap's data attr)
@@ -103,12 +104,12 @@ pagefind-modal-footer {
 // the few hardcoded rgba shadows / backdrops that don't.
 // ------------------------------------------------------------
 
-[data-bs-theme="dark"] .pf-trigger-btn {
-  --pf-scroll-shadow: rgba(255, 255, 255, .1);
+// [data-bs-theme="dark"] .pf-trigger-btn {
+//   --pf-scroll-shadow: rgba(255, 255, 255, .1);
 
-  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, .3);
-  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, .4);
-  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, .5);
+//   --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, .3);
+//   --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, .4);
+//   --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, .5);
 
-  --pf-modal-backdrop: rgba(0, 0, 0, .8);
-}
+//   --pf-modal-backdrop: rgba(0, 0, 0, .8);
+// }
