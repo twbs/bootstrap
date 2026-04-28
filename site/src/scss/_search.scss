@@ -190,6 +190,17 @@ bd-search-results {
   }
 }
 
+// Default-active state: while focus is still in the search input (i.e. the
+// results list isn't `:focus-within`), the first result is visually
+// highlighted as the "Enter target", giving the dialog a command-palette
+// feel. Once the user arrow-keys into the list, `:focus-within` flips on,
+// the highlight drops, and the focus ring on the actually-focused row takes
+// over instead.
+bd-search-results:not(:focus-within) .bd-search-result:first-child > .bd-search-result-link {
+  background-color: var(--bs-bg-2);
+  box-shadow: inset 3px 0 0 0 var(--bs-indigo-500);
+}
+
 .bd-search-result-link,
 .bd-search-subresult {
   display: flex;

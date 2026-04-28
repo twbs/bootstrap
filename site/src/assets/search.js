@@ -70,6 +70,18 @@ class BdSearchInput extends HTMLElement {
     // ArrowDown jumps focus to the first link in the next results component.
     if (event.key === 'ArrowDown' && instance.focusNextResults(this)) {
       event.preventDefault()
+      return
+    }
+
+    // Enter follows the first result link — this matches the command-palette
+    // pattern where the top result is always the implicit Enter target.
+    if (event.key === 'Enter') {
+      const dialogEl = this.closest('dialog')
+      const firstLink = dialogEl?.querySelector('.bd-search-result-link')
+      if (firstLink) {
+        event.preventDefault()
+        firstLink.click()
+      }
     }
   }
 
