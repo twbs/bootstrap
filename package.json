@@ -109,7 +109,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
-    "@astrojs/markdown-remark": "^7.1.0",
+    "@astrojs/markdown-remark": "^7.1.1",
     "@astrojs/mdx": "4.3.14",
     "@astrojs/prism": "^4.0.1",
     "@astrojs/sitemap": "^3.7.2",
@@ -163,7 +163,7 @@
     "mime": "^4.1.0",
     "nodemon": "^3.1.14",
     "npm-run-all2": "^8.0.4",
-    "postcss": "^8.5.10",
+    "postcss": "^8.5.12",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
@@ -178,7 +178,7 @@
     "shelljs": "^0.10.0",
     "stylelint": "16.26.1",
     "stylelint-config-twbs-bootstrap": "^16.1.0",
-    "terser": "^5.46.1",
+    "terser": "^5.46.2",
     "unist-util-visit": "^5.1.0",
     "vnu-jar": "25.11.25",
     "zod": "^4.3.6"
