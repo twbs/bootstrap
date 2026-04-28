@@ -12,6 +12,8 @@ import XIcon from '@components/icons/XIcon.astro'
 import Versions from '@components/header/Versions.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
+import SearchTrigger from '@components/header/SearchTrigger.astro'
+import SearchDialog from '@components/header/SearchDialog.astro'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']
@@ -99,7 +101,11 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
     </div>
 
     <ul class="nav navbar-nav flex-row ms-auto">
-      <li class="nav-item nav-link px-1" id="docsearch" data-bd-docs-version={getConfig().docs_version}></li>
+      {layout === 'docs' && (
+        <div class="bd-search">
+          <SearchTrigger placeholder="Search docs…" />
+        </div>
+      )}
 
       <Versions layout={layout} addedIn={addedIn} />
 
@@ -129,3 +135,5 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
     }
   </nav>
 </header>
+
+{layout === 'docs' && <SearchDialog placeholder="Search docs…" />}

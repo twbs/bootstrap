@@ -1,0 +1,7 @@
+# Pagefind CLI configuration
+# https://pagefind.app/docs/config-options/
+
+# Index special characters that show up in CSS / Sass / HTML docs so
+# users can search for things like `$primary`, `--bs-primary`,
+# `&::before`, or `<head>`. Without this they're stripped at index time.
+include_characters: "$&-_<>:."

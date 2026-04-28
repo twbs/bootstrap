@@ -1,0 +1,31 @@
+---
+interface Props {
+  class?: string
+  placeholder?: string
+  target?: string
+}
+
+const {
+  class: className,
+  placeholder = 'Search docs…',
+  target = '#bdSearchDialog'
+} = Astro.props
+---
+
+<button
+  type="button"
+  class:list={['bd-search-trigger', className]}
+  data-bs-toggle="dialog"
+  data-bs-target={target}
+  aria-haspopup="dialog"
+  aria-keyshortcuts="Meta+K Control+K"
+  aria-label={placeholder}
+>
+  <svg class="bi bd-search-trigger-icon" width="16" height="16" aria-hidden="true">
+    <use href="#search"></use>
+  </svg>
+  <span class="bd-search-trigger-label">{placeholder}</span>
+  <span class="bd-search-trigger-shortcut" aria-hidden="true">
+    <kbd class="bd-search-trigger-key">⌘K</kbd>
+  </span>
+</button>

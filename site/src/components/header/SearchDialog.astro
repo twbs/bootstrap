@@ -1,0 +1,45 @@
+---
+import CloseButton from '@components/shortcodes/CloseButton.astro'
+
+interface Props {
+  id?: string
+  placeholder?: string
+}
+
+const { id = 'bdSearchDialog', placeholder = 'Search docs…' } = Astro.props
+---
+
+<dialog
+  class="dialog dialog-lg dialog-search dialog-scrollable"
+  id={id}
+  aria-labelledby={`${id}-label`}
+>
+  <form class="dialog-header bd-search-form" role="search" autocomplete="off">
+    <label class="visually-hidden" id={`${id}-label`} for={`${id}-input`}>
+      {placeholder}
+    </label>
+    <div class="form-control form-adorn">
+      <div class="form-adorn-icon">
+        <svg class="bi bd-search-form-icon" width="16" height="16" aria-hidden="true">
+          <use href="#search"></use>
+        </svg>
+      </div>
+      <bd-search-input>
+        <input
+          id={`${id}-input`}
+          type="search"
+          class="form-ghost bd-search-input"
+          placeholder={placeholder}
+          autocomplete="off"
+          spellcheck="false"
+          enterkeyhint="search"
+        />
+      </bd-search-input>
+    </div>
+    <CloseButton dismiss="dialog" class="bd-search-close" />
+  </form>
+
+  <div class="dialog-body bd-search-body">
+    <bd-search-results></bd-search-results>
+  </div>
+</dialog>
