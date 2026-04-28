@@ -18,14 +18,20 @@
 // ------------------------------------------------------------
 
 .bd-search {
-  position: absolute;
-  top: .875rem;
-  left: 50%;
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  width: 240px;
-  margin-inline-start: -100px;
+
+  // Below `md` the trigger is a borderless icon button living inline in the
+  // navbar. From `md` up it expands to a faux search input centered in the
+  // navbar with absolute positioning.
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    top: .875rem;
+    left: 50%;
+    width: 240px;
+    margin-inline-start: -100px;
+  }
 
   @include media-breakpoint-up(xl) {
     width: 280px;
@@ -34,38 +40,59 @@
 }
 
 // ------------------------------------------------------------
-// Trigger button — looks like an input, behaves like a button
+// Trigger button
+//
+// Mobile (< md): icon-only button, no chrome.
+// md+:           expands to a faux input with label + ⌘K shortcut.
 // ------------------------------------------------------------
 
 .bd-search-trigger {
   display: inline-flex;
   gap: .5rem;
   align-items: center;
-  width: 100%;
-  padding: .375rem .5rem .375rem .75rem;
+  padding: .375rem;
   font-size: var(--bs-font-size-sm);
   color: var(--bs-fg-3, var(--bs-secondary-color));
   text-align: start;
   cursor: pointer;
-  background-color: var(--bs-bg-1, var(--bs-tertiary-bg));
-  border: var(--bs-border-width) solid var(--bs-border-color);
+  background-color: transparent;
+  border: 0;
   @include border-radius(var(--bs-border-radius));
   @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
 
   &:hover {
     color: var(--bs-fg-body, var(--bs-body-color));
-    background-color: var(--bs-bg-2, var(--bs-secondary-bg));
-    border-color: var(--bs-border-color);
   }
 
   &:focus-visible {
     @include focus-ring(true);
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 100%;
+    padding: .375rem .5rem .375rem .75rem;
+    background-color: var(--bs-bg-1, var(--bs-tertiary-bg));
+    border: var(--bs-border-width) solid var(--bs-border-color);
+
+    &:hover {
+      background-color: var(--bs-bg-2, var(--bs-secondary-bg));
+      border-color: var(--bs-border-color);
+    }
   }
 }
 
 .bd-search-trigger-icon {
   flex-shrink: 0;
   color: var(--bs-fg-3, var(--bs-secondary-color));
+}
+
+.bd-search-trigger-label,
+.bd-search-trigger-shortcut {
+  display: none;
+
+  @include media-breakpoint-up(md) {
+    display: inline-flex;
+  }
 }
 
 .bd-search-trigger-label {
@@ -76,7 +103,6 @@
 }
 
 .bd-search-trigger-shortcut {
-  display: inline-flex;
   flex-shrink: 0;
   gap: .125rem;
 }
@@ -104,18 +130,18 @@
 // ------------------------------------------------------------
 
 .dialog-search {
+  --dialog-margin: 1.5rem;
   --dialog-padding: 0;
   --dialog-header-padding: .75rem;
   --dialog-footer-padding: .5rem .75rem;
 
   align-self: flex-start;
-  width: min(640px, calc(100% - 2 * var(--dialog-margin)));
+  width: 640px;
   max-height: min(80dvh, 720px);
-  margin-block-start: 4rem;
+  margin-block-start: 3rem;
 
   @include media-breakpoint-down(sm) {
-    max-height: calc(100dvh - 2rem);
-    margin-block-start: 1rem;
+    max-height: calc(100dvh - 4rem);
   }
 }
 
@@ -126,7 +152,7 @@
 .bd-search-form {
   display: flex;
   flex-wrap: nowrap;
-  gap: .5rem;
+  gap: .75rem;
   align-items: center;
   padding: var(--dialog-header-padding);
 }
@@ -280,12 +306,12 @@ bd-search-results:not(:focus-within) .bd-search-result:first-child > .bd-search-
 .bd-search-error {
   padding: 2rem 1rem;
   font-size: var(--bs-font-size-sm);
-  color: var(--bs-fg-2, var(--bs-secondary-color));
+  color: var(--bs-fg-3);
   text-align: center;
 }
 
 .bd-search-error {
-  color: var(--bs-danger-text-emphasis, var(--bs-danger));
+  color: var(--bs-danger-text-emphasis);
 }
 
 .bd-search-loading {
@@ -315,45 +341,3 @@ bd-search-results:not(:focus-within) .bd-search-result:first-child > .bd-search-
     height: .85rem;
   }
 }
-
-// ------------------------------------------------------------
-// Footer hints
-// ------------------------------------------------------------
-
-// .bd-search-hints {
-//   display: none;
-//   flex-wrap: wrap;
-//   gap: 1rem;
-//   align-items: center;
-//   font-size: .75rem;
-//   color: var(--bs-fg-3, var(--bs-secondary-color));
-
-//   @include media-breakpoint-up(md) {
-//     display: flex;
-//   }
-// }
-
-// .bd-search-hint {
-//   display: inline-flex;
-//   gap: .375rem;
-//   align-items: center;
-// }
-
-// .bd-search-hint-key {
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-//   min-width: 1.25rem;
-//   height: 1.25rem;
-//   padding: 0 .25rem;
-//   font-family: var(--bs-font-monospace);
-//   font-size: .75rem;
-//   color: var(--bs-fg-2, var(--bs-secondary-color));
-//   background-color: var(--bs-bg-1, var(--bs-tertiary-bg));
-//   border: var(--bs-border-width) solid var(--bs-border-color);
-//   @include border-radius(var(--bs-border-radius-sm));
-// }
-
-// .bd-search-hint-label {
-//   color: var(--bs-fg-3, var(--bs-secondary-color));
-// }

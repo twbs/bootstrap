@@ -100,13 +100,11 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
       </ul>
     </div>
 
-    {layout === 'docs' && (
+    <ul class="nav navbar-nav flex-row ms-auto">
       <div class="bd-search">
         <SearchTrigger placeholder="Search docs…" />
       </div>
-    )}
 
-    <ul class="nav navbar-nav flex-row ms-auto">
       <Versions layout={layout} addedIn={addedIn} />
 
       <LinkItem class="px-1 d-none lg:d-flex" href={getConfig().github_org} target="_blank" rel="noopener">
