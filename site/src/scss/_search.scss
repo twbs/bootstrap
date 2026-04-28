@@ -1,115 +1,348 @@
 @use "../../../scss/layout/breakpoints" as *;
+@use "../../../scss/mixins/border-radius" as *;
+@use "../../../scss/mixins/focus-ring" as *;
+@use "../../../scss/mixins/transition" as *;
 
 // ============================================================
-// Pagefind Component UI theming
+// Custom Pagefind search UI — Bootstrap-native styling
 //
-// Pagefind's CSS is vendored into `vendor/_pagefind-component-ui.scss`
-// and `@use`'d ahead of this file from `docs_search.scss`, so a plain
-// `:root` selector here would already win on source order. We keep
-// the `:root[data-bs-theme]` selector below so Bootstrap-tied tokens
-// stay together with the dark-mode overrides for clarity.
-//
-// Note: Pagefind's `all: initial` / `all: revert` on host and
-// internal elements does NOT touch custom properties — `all`
-// excludes `--*` per CSS spec — so the `--pf-*` cascade flows
-// through their isolation just fine.
+// All structural CSS for the search experience. The Pagefind
+// engine is loaded via `@pagefind/component-ui` for its JS API
+// only; no `<pagefind-*>` element is rendered, so all selectors
+// here target our own `.bd-search-*` classes and the Bootstrap
+// primitives they wrap (.dialog, .form-control, .list-group).
 // ============================================================
 
 // ------------------------------------------------------------
-// Layout: position the modal trigger inside the navbar
+// Navbar trigger slot
 // ------------------------------------------------------------
 
 .bd-search {
-
-  // @include media-breakpoint-up(lg){
   position: absolute;
   top: .875rem;
   left: 50%;
-  // position: relative;
   display: flex;
   flex-shrink: 0;
   align-items: center;
   width: 240px;
   margin-inline-start: -100px;
-  // }
 
   @include media-breakpoint-up(xl) {
     width: 280px;
     margin-inline-start: -140px;
   }
-
-  // pagefind-modal-trigger {
-  //   width: 100%;
-  // }
 }
 
 // ------------------------------------------------------------
-// Theme tokens — light mode (default)
+// Trigger button — looks like an input, behaves like a button
 // ------------------------------------------------------------
 
-// .pf-trigger-btn,
-// pagefind-modal,
-// pagefind-input,
-// .pf-result,
-// pagefind-modal-body [class*="pf-"] {
-//   --pf-text: var(--bs-fg-body);
-//   --pf-text-secondary: var(--bs-fg-2);
-//   --pf-text-muted: var(--bs-fg-3);
-//   --pf-background: var(--bs-bg-body);
-//   --pf-border: var(--bs-border-color);
-//   --pf-border-focus: var(--bs-indigo-500);
-//   --pf-skeleton: var(--bs-bg-1);
-//   --pf-skeleton-shine: var(--bs-bg-2);
-//   --pf-hover: var(--bs-bg-1);
-//   --pf-mark: var(--bs-indigo-500);
-//   --pf-scroll-shadow: rgba(9, 10, 17, .08);
+.bd-search-trigger {
+  display: inline-flex;
+  gap: .5rem;
+  align-items: center;
+  width: 100%;
+  padding: .375rem .5rem .375rem .75rem;
+  font-size: var(--bs-font-size-sm);
+  color: var(--bs-fg-3, var(--bs-secondary-color));
+  text-align: start;
+  cursor: pointer;
+  background-color: var(--bs-bg-1, var(--bs-tertiary-bg));
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  @include border-radius(var(--bs-border-radius));
+  @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
 
-//   --pf-shadow-sm: 0 2px 8px rgba(9, 10, 17, .06);
-//   --pf-shadow-md: 0 4px 12px rgba(9, 10, 17, .1);
-//   --pf-shadow-lg: 0 16px 48px rgba(9, 10, 17, .25);
+  &:hover {
+    color: var(--bs-fg-body, var(--bs-body-color));
+    background-color: var(--bs-bg-2, var(--bs-secondary-bg));
+    border-color: var(--bs-border-color);
+  }
 
-//   --pf-outline-focus: var(--bs-indigo-500);
-//   --pf-outline-width: 2px;
-//   --pf-outline-offset: 2px;
+  &:focus-visible {
+    @include focus-ring(true);
+  }
+}
 
-//   --pf-font: inherit;
-//   --pf-border-radius: var(--bs-border-radius-lg);
+.bd-search-trigger-icon {
+  flex-shrink: 0;
+  color: var(--bs-fg-3, var(--bs-secondary-color));
+}
 
-//   --pf-modal-backdrop: rgba(9, 10, 17, .8);
-//   --pf-modal-max-width: 600px;
-//   --pf-modal-max-height: min(80dvh, 800px);
-//   --pf-modal-top: 4rem;
+.bd-search-trigger-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-//   color-scheme: light dark;
-// }
+.bd-search-trigger-shortcut {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: .125rem;
+}
 
-// pagefind-input {
-//   border: 1px solid var(--bs-border-color) !important;
-//   border-radius: var(--bs-border-radius) !important;
-// }
-
-// pagefind-modal-footer {
-//   display: none !important;
-// }
-
-// .pf-modal {
-//   border: 1px solid var(--bs-border-color) !important;
-// }
+.bd-search-trigger-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  padding: 0 .25rem;
+  font-family: var(--bs-font-monospace);
+  font-size: .75rem;
+  color: var(--bs-fg-3, var(--bs-secondary-color));
+  background-color: var(--bs-bg-body);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  @include border-radius(var(--bs-border-radius-sm));
+}
 
 // ------------------------------------------------------------
-// Theme tokens — dark mode (bridge from Bootstrap's data attr)
+// Search dialog shell
 //
-// All Pagefind colors come from `--bs-*` tokens, which already
-// flip with `[data-bs-theme="dark"]`. We only need to override
-// the few hardcoded rgba shadows / backdrops that don't.
+// Top-aligned overlay that grows up to the viewport. Uses the
+// existing `.dialog` token surface; we only override sizing and
+// position so the dialog feels like a docs-style command palette.
 // ------------------------------------------------------------
 
-// [data-bs-theme="dark"] .pf-trigger-btn {
-//   --pf-scroll-shadow: rgba(255, 255, 255, .1);
+.dialog-search {
+  --dialog-padding: 0;
+  --dialog-header-padding: .75rem;
+  --dialog-footer-padding: .5rem .75rem;
 
-//   --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, .3);
-//   --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, .4);
-//   --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, .5);
+  align-self: flex-start;
+  width: min(640px, calc(100% - 2 * var(--dialog-margin)));
+  max-height: min(80dvh, 720px);
+  margin-block-start: 4rem;
 
-//   --pf-modal-backdrop: rgba(0, 0, 0, .8);
+  @include media-breakpoint-down(sm) {
+    max-height: calc(100dvh - 2rem);
+    margin-block-start: 1rem;
+  }
+}
+
+// ------------------------------------------------------------
+// Header / search form row
+// ------------------------------------------------------------
+
+.bd-search-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: .5rem;
+  align-items: center;
+  padding: var(--dialog-header-padding);
+}
+
+.bd-search-form-icon {
+  flex-shrink: 0;
+  color: var(--bs-fg-3, var(--bs-secondary-color));
+}
+
+bd-search-input {
+  width: 100%;
+}
+
+.bd-search-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+
+  &:focus {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.bd-search-close {
+  flex-shrink: 0;
+  margin-inline-start: 0;
+}
+
+// ------------------------------------------------------------
+// Body / results
+// ------------------------------------------------------------
+
+.bd-search-body {
+  padding: 0;
+}
+
+bd-search-results {
+  display: block;
+  min-height: 6rem;
+}
+
+.bd-search-results-list {
+  --bs-list-group-border-width: 0;
+  --bs-list-group-border-radius: 0;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.bd-search-result {
+  padding: 0;
+
+  & + & {
+    border-block-start: var(--bs-border-width) solid var(--bs-border-color);
+  }
+}
+
+.bd-search-result-link,
+.bd-search-subresult {
+  display: flex;
+  flex-direction: column;
+  gap: .125rem;
+  padding: .75rem 1rem;
+  text-decoration: none;
+  @include border-radius(0);
+
+  &:hover {
+    background-color: var(--bs-bg-1);
+  }
+
+  &:focus-visible {
+    --focus-ring-offset: -2px;
+
+    z-index: 1;
+    @include focus-ring(true);
+  }
+
+  mark {
+    padding: 0;
+    font-weight: 600;
+    color: light-dark(var(--bs-indigo-600), var(--bs-indigo-300));
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: light-dark(var(--bs-indigo-500), var(--bs-indigo-400));
+    text-underline-offset: 2px;
+    background-color: transparent;
+  }
+}
+
+.bd-search-result-title,
+.bd-search-subresult-title {
+  font-weight: 600;
+  color: var(--bs-fg-body, var(--bs-body-color));
+}
+
+.bd-search-result-excerpt,
+.bd-search-subresult-excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: var(--bs-font-size-sm);
+  line-height: 1.4;
+  color: var(--bs-fg-2, var(--bs-secondary-color));
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// Sub-results are nested inside their parent result row.
+.bd-search-subresults {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-block-start: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+.bd-search-subresult {
+  padding-inline-start: 2.25rem;
+  background-color: color-mix(in lab, var(--bs-bg-1), transparent);
+
+  & + & {
+    border-block-start: var(--bs-border-width) solid var(--bs-border-color);
+  }
+}
+
+.bd-search-subresult-title {
+  font-size: var(--bs-font-size-sm);
+  font-weight: 500;
+}
+
+// ------------------------------------------------------------
+// Empty / loading / error states
+// ------------------------------------------------------------
+
+.bd-search-empty,
+.bd-search-error {
+  padding: 2rem 1rem;
+  font-size: var(--bs-font-size-sm);
+  color: var(--bs-fg-2, var(--bs-secondary-color));
+  text-align: center;
+}
+
+.bd-search-error {
+  color: var(--bs-danger-text-emphasis, var(--bs-danger));
+}
+
+.bd-search-loading {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 0;
+}
+
+.bd-search-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: .375rem;
+  padding: .75rem 1rem;
+
+  & + & {
+    border-block-start: var(--bs-border-width) solid var(--bs-border-color);
+  }
+
+  .placeholder {
+    display: block;
+    height: .65rem;
+    @include border-radius(var(--bs-border-radius-sm));
+  }
+
+  .placeholder.col-4 {
+    height: .85rem;
+  }
+}
+
+// ------------------------------------------------------------
+// Footer hints
+// ------------------------------------------------------------
+
+// .bd-search-hints {
+//   display: none;
+//   flex-wrap: wrap;
+//   gap: 1rem;
+//   align-items: center;
+//   font-size: .75rem;
+//   color: var(--bs-fg-3, var(--bs-secondary-color));
+
+//   @include media-breakpoint-up(md) {
+//     display: flex;
+//   }
+// }
+
+// .bd-search-hint {
+//   display: inline-flex;
+//   gap: .375rem;
+//   align-items: center;
+// }
+
+// .bd-search-hint-key {
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   min-width: 1.25rem;
+//   height: 1.25rem;
+//   padding: 0 .25rem;
+//   font-family: var(--bs-font-monospace);
+//   font-size: .75rem;
+//   color: var(--bs-fg-2, var(--bs-secondary-color));
+//   background-color: var(--bs-bg-1, var(--bs-tertiary-bg));
+//   border: var(--bs-border-width) solid var(--bs-border-color);
+//   @include border-radius(var(--bs-border-radius-sm));
+// }
+
+// .bd-search-hint-label {
+//   color: var(--bs-fg-3, var(--bs-secondary-color));
 // }

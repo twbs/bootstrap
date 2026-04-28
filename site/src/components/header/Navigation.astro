@@ -12,6 +12,8 @@ import XIcon from '@components/icons/XIcon.astro'
 import Versions from '@components/header/Versions.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
+import SearchTrigger from '@components/header/SearchTrigger.astro'
+import SearchDialog from '@components/header/SearchDialog.astro'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']
@@ -100,7 +102,7 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
 
     {layout === 'docs' && (
       <div class="bd-search">
-        <pagefind-modal-trigger placeholder="Search docs..."></pagefind-modal-trigger>
+        <SearchTrigger placeholder="Search docs…" />
       </div>
     )}
 
@@ -134,4 +136,4 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
   </nav>
 </header>
 
-{layout === 'docs' && <pagefind-modal reset-on-close></pagefind-modal>}
+{layout === 'docs' && <SearchDialog placeholder="Search docs..." />}

@@ -7,7 +7,8 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-// Vendored Pagefind Component UI CSS — loaded before `search` so our
-// `--pf-*` theme overrides win the cascade.
-@use "vendor/pagefind-component-ui";
+// Custom search UI styling. We no longer ship Pagefind's vendored
+// component CSS — the search experience is built from Bootstrap
+// primitives (.dialog, .form-control, .list-group) and styled in
+// `_search.scss`.
 @use "search";
