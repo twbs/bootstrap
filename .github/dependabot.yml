@@ -7,6 +7,8 @@ updates:
       day: tuesday
       time: "12:00"
       timezone: Europe/Athens
+    cooldown:
+      default-days: 7
     groups:
       github-actions:
         patterns:
@@ -21,6 +23,8 @@ updates:
       day: tuesday
       time: "12:00"
       timezone: Europe/Athens
+    cooldown:
+      default-days: 7
     versioning-strategy: increase
     rebase-strategy: disabled
     ignore:
