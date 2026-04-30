@@ -1,13 +1,12 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@bootstrap": ["../dist/js/bootstrap.bundle.js"],
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@libs/*": ["src/libs/*"],
-      "@shortcodes/*": ["src/components/shortcodes/*"]
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@libs/*": ["./src/libs/*"],
+      "@shortcodes/*": ["./src/components/shortcodes/*"]
     }
   }
 }
