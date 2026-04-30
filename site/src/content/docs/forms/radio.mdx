@@ -10,7 +10,7 @@ import { getData } from '@libs/data'
 
 ## Basic radio
 
-Similar to checkboxes, radios are styled with the `.radio` class. However, there's no custom SVG as we pure CSS to style the input and its checked state.
+Similar to checkboxes, radios are styled with the `.radio` class. However, there's no custom SVG as we use pure CSS to style the input and its checked state.
 
 <Example code={`<input type="radio" id="radio" class="radio" />`} />
 
@@ -37,7 +37,7 @@ Add a description or other content after the label. We recommend wrapping the la
 
 ## Theme colors
 
-Modify the appearance of checked checkboxes by adding the `.theme-{color}` class to the `.radio` element. This will set the checked background and border color to the theme color.
+Modify the appearance of checked radios by adding the `.theme-{color}` class to the `.radio` element. This will set the checked background and border color to the theme color.
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<div class="form-field">
     <input type="radio" id="radio${themeColor.name}" class="radio theme-${themeColor.name}" checked />
