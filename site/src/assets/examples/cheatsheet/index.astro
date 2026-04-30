@@ -689,7 +689,7 @@ export const body_class = 'bg-body-tertiary'
       <div>
         <Example showMarkup={false} code={`
         <p class="h1">Example heading <span class="badge theme-primary">New</span></p>
-        <p class="h2">Example heading <span class="badge theme-secondary">New</span></p>
+        <p class="h2">Example heading <span class="badge theme-accent">New</span></p>
         <p class="h3">Example heading <span class="badge theme-success">New</span></p>
         <p class="h4">Example heading <span class="badge theme-danger">New</span></p>
         <p class="h5">Example heading <span class="badge theme-warning">New</span></p>
@@ -699,7 +699,7 @@ export const body_class = 'bg-body-tertiary'
         `} />
 
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <span class="badge ${(themeColor.name === 'light' || themeColor.name === 'warning' || themeColor.name === 'info') ? 'text-' : ''}bg-${themeColor.name}">${themeColor.title}</span>
+        <span class="badge theme-${themeColor.name}">${themeColor.title}</span>
         `)} />
       </div>
     </article>
@@ -713,9 +713,21 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={`
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li class="breadcrumb-item">
+              <a class="breadcrumb-link" href="#">Home</a>
+            </li>
+            <li class="breadcrumb-divider">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="breadcrumb-link" href="#">Library</a>
+            </li>
+            <li class="breadcrumb-divider">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </li>
+            <li class="breadcrumb-item" aria-current="page">
+              <a class="breadcrumb-link active" href="#">Data</a>
+            </li>
           </ol>
         </nav>
         `} />
