@@ -6,6 +6,10 @@
 
 @layer custom {
   .bd-content {
+    // font-size: 15px;
+    --bs-content-font-size: 15px;
+    --bs-content-line-height: calc(22/15);
+
     @media (width >= 1024px) {
       font-size: var(--font-size-md);
     }

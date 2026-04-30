@@ -11,7 +11,8 @@
     --link-hover-color: var(--bd-callout-color);
     --code-color: var(--bd-callout-code-color);
 
-    padding: 1.25rem;
+    container-type: inline-size;
+    padding: 1rem;
     font-size: .875rem;
     line-height: 1.5;
     background-color: var(--bd-callout-bg, var(--bs-gray-100));
@@ -31,6 +32,10 @@
 
     + .bd-callout {
       margin-top: -.25rem;
+    }
+
+    @container (width >= 768px) {
+      padding: 1.25rem;
     }
   }
 
