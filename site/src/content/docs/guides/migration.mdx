@@ -9,7 +9,7 @@ toc: true
 
 ## Upgrade
 
-Bootstrap 6 is a major release with many breaking changes to modernize our codebase, adopt newer build tools, and improve customization. Keep reading for a guide on how to migrate from v5 to v6, and a full changelog of what's new.
+Bootstrap 6 is a major release with many breaking changes to modernize our codebase, adopt newer build tools, and improve customization. Keep reading for a guide on how to migrate from v5 to v6, and a full changelog of what’s new.
 
 1. Bump your Bootstrap dependency:
 
@@ -21,13 +21,13 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
    }
    ```
 
-2. If using all of Bootstrap's Sass files, include it in your Sass using `@use`:
+2. If using all of Bootstrap’s Sass files, include it in your Sass using `@use`:
 
    ```scss
    @use "bootstrap/scss/bootstrap";
    ```
 
-   With this, you can then easily override Bootstrap's Sass variables and maps:
+   With this, you can then easily override Bootstrap’s Sass variables and maps:
 
    ```scss
    @use "bootstrap/scss/bootstrap" with (
@@ -36,7 +36,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
    );
    ```
 
-3. If using only certain parts of Bootstrap's Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
+3. If using only certain parts of Bootstrap’s Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
 
    ```scss
    @use "bootstrap/scss/forms";
@@ -61,10 +61,10 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `_variables.scss`, consolidating all variables into `_config.scss`
   - Added `_theme.scss` where we setup all our global theming for how colors are applied
 - **Updated lg, xl, and 2xl breakpoints and containers.**
-  - Increased the `lg` breakpoint from 992px to 1024px; it's container remains the same at 960px.
-  - Increased the `xl` breakpoint from 1200px to 1280px, and it's container from 1140px to 1200px.
+  - Increased the `lg` breakpoint from 992px to 1024px; it’s container remains the same at 960px.
+  - Increased the `xl` breakpoint from 1200px to 1280px, and it’s container from 1140px to 1200px.
   - Renamed `xxl` to `2xl` for better scaling with additional custom breakpoints
-  - Increased the `2xl` breakpoint from 1400px to 1536px, and it's container from 1320px to 1440px.
+  - Increased the `2xl` breakpoint from 1400px to 1536px, and it’s container from 1320px to 1440px.
 - **Adopted modern CSS color functions.** All Sass color variables now use `oklch()` notation (e.g., `$blue: oklch(60% 0.24 240)`) and tint/shade scales are generated with `color-mix(in lab, ...)` in the compiled CSS. The v5 `$*-rgb` CSS custom properties and `rgba()` patterns have been removed. This requires browser support for `color-mix()` and `oklch()`.
 - **New theme token system with `.theme-*` classes.** Per-component color variant classes (like `.alert-primary`, `.badge.bg-primary`, `.btn-primary`) are replaced by a composable `.theme-{name}` pattern. Adding `.theme-primary` to a component sets `--theme-bg`, `--theme-fg`, `--theme-border`, `--theme-contrast`, and other semantic CSS custom properties that the component reads. This applies across buttons, badges, alerts, cards, accordions, and more.
 - **Responsive and state classes now use a prefix instead of an infix or suffix.** Class names follow the Tailwind-style `prefix:class` pattern (e.g., `md:d-none` instead of `d-md-none`, `hover:opacity-50` instead of `opacity-50-hover`). In HTML, use the unescaped colon: `class="md:d-none"`. This applies to utilities, grid, pseudo-state variants, and all responsive components.
@@ -99,7 +99,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed `create-css-vars()` mixin (unused).
 - **Renamed `breakpoint-infix()` to `breakpoint-prefix()`.** The function now returns a prefix string (e.g., `"md\:"`) instead of an infix (e.g., `"-md"`). The `loop-breakpoints-up` and `loop-breakpoints-down` mixins now expose `$prefix` instead of `$infix`. Update any custom Sass that calls these functions or mixins.
 - **CSS variable prefixing now handled by PostCSS.** The `$prefix` Sass variable has been removed. CSS custom properties are now written without a prefix in the Sass source and prefixed automatically via `postcss-prefix-custom-properties` during the build. To customize the prefix, update your PostCSS configuration instead of Sass.
-- **Removed RFS (Responsive Font Sizes).** The `scss/vendor/_rfs.scss` file and all RFS mixins have been removed. Typography now uses fixed `rem` values and `clamp()` for responsive sizing. If you relied on RFS for automatic font scaling, you'll need to implement your own responsive typography or use `clamp()` directly.
+- **Removed RFS (Responsive Font Sizes).** The `scss/vendor/_rfs.scss` file and all RFS mixins have been removed. Typography now uses fixed `rem` values and `clamp()` for responsive sizing. If you relied on RFS for automatic font scaling, you’ll need to implement your own responsive typography or use `clamp()` directly.
 - **Renamed Sass files for consistency.** `_placeholders.scss` is now `_placeholder.scss` and `_spinners.scss` is now `_spinner.scss`. Update any individual `@use` imports for these files.
 - **Standardized focus styles with `focus-ring` mixin.** All component-specific `*-focus-box-shadow` Sass variables (e.g., `$btn-focus-box-shadow`, `$input-focus-box-shadow`, `$accordion-button-focus-box-shadow`) have been removed. Focus styles are now handled by a shared `@mixin focus-ring()` using `--focus-ring`, `--focus-ring-width`, `--focus-ring-offset`, and `--focus-ring-color` CSS custom properties. Customize focus styles by overriding these tokens in `_root.scss` instead of individual Sass variables.
 - **Renamed `$grid-breakpoints` to `$breakpoints`.**
@@ -126,12 +126,12 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 ### JavaScript
 
-- **Bootstrap's JavaScript is now ESM-only.** We no longer ship UMD bundles. All dist files (`bootstrap.js`, `bootstrap.bundle.js`, and their minified versions) are native ES modules. The plugin APIs themselves are unchanged—only how you load and reference them is different.
+- **Bootstrap’s JavaScript is now ESM-only.** We no longer ship UMD bundles. All dist files (`bootstrap.js`, `bootstrap.bundle.js`, and their minified versions) are native ES modules. The plugin APIs themselves are unchanged—only how you load and reference them is different.
   - CDN `<script>` tags must add `type="module"`:
     ```html
     <script type="module" src="bootstrap.bundle.min.js"></script>
     ```
-  - In v5, the UMD bundle automatically created a `window.bootstrap` global. ES modules don't do this, so there is no longer a `bootstrap` global object. If you called plugin APIs through the global namespace, you must update to explicit imports:
+  - In v5, the UMD bundle automatically created a `window.bootstrap` global. ES modules don’t do this, so there is no longer a `bootstrap` global object. If you called plugin APIs through the global namespace, you must update to explicit imports:
 
     **Before (v5):**
     ```js
@@ -161,7 +161,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for menu, tooltip, and popover positioning. The `popperConfig` option on Tooltip, Popover, and Menu (formerly Dropdown) has been renamed to `floatingConfig`. Update any custom positioning configuration accordingly.
 - Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component.
 - Removed the `jspm` configuration from `package.json`.
-- Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap's plugins register at the top level.
+- Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap’s plugins register at the top level.
 - Added `"exports"` map to `package.json` for explicit subpath access to source, dist, and Sass files.
 
 ### Components
@@ -201,7 +201,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Added `xs` button size (`.btn-xs`).
 - **Rebuilt accordion on native `<details>` / `<summary>`.** The markup structure has fundamentally changed:
   - v5: `.accordion-item` > `.accordion-header` > `button.accordion-button` + `.accordion-collapse` > `.accordion-body`, controlled by the Collapse JavaScript plugin.
-  - v6: `<details class="accordion-item">` > `<summary class="accordion-header">` + `<div class="accordion-body">`, using the browser's native disclosure widget. No JavaScript dependency for basic open/close behavior.
+  - v6: `<details class="accordion-item">` > `<summary class="accordion-header">` + `<div class="accordion-body">`, using the browser’s native disclosure widget. No JavaScript dependency for basic open/close behavior.
   - Exclusive accordion groups (only one item open) are handled via the HTML `name` attribute on `<details>` elements, replacing the `data-bs-parent` approach.
   - The `.accordion-button` and `.accordion-collapse` classes have been removed.
   - The expand/collapse icon now uses an `.accordion-icon` element (typically an SVG) inside the summary, replacing the CSS `background-image` approach.
@@ -224,7 +224,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Refactor checks, radios, and switches.**
   - Split apart `_form-check.scss` into separate stylesheets: `_checkbox.scss`, `_radio.scss`, and `_switch.scss`.
   - Also split apart the documentation pages for checks, radios, and switches.
-  - Added new CSS variables on each of these components. _Side note: we could've shared variables here, but chose not to for simplicity's sake._
+  - Added new CSS variables on each of these components. _Side note: we could’ve shared variables here, but chose not to for simplicity’s sake._
   - Removed several now unused Sass variables.
   - Checkboxes now have a wrapping element and an SVG in the DOM for checked and indeterminate states. Radios and switches do not.
   - Revamped layout for checks, radios, and switches with labels (and descriptions). We now have custom elements for layout that include basic flexbox styling.

@@ -31,15 +31,15 @@ Bootstrap 5 is increasingly making use of custom properties as local variables f
 
 Have a look at our table documentation for some [insight into how we’re using CSS variables]([[docsref:/content/tables#how-do-the-variants-and-accented-tables-work]]). Our [navbars also use CSS variables]([[docsref:/components/navbar#css]]) as of v5.2.0. We’re also using CSS variables across our grids—primarily for gutters the [new opt-in CSS grid]([[docsref:/layout/css-grid]])—with more component usage coming in the future.
 
-Whenever possible, we'll assign CSS variables at the base component level (e.g., `.navbar` for navbar and its sub-components). This reduces guessing on where and how to customize, and allows for easy modifications by our team in future updates.
+Whenever possible, we’ll assign CSS variables at the base component level (e.g., `.navbar` for navbar and its sub-components). This reduces guessing on where and how to customize, and allows for easy modifications by our team in future updates.
 
 ## Prefix
 
-Most CSS variables use a prefix to avoid collisions with your own codebase. This prefix is in addition to the `--` that's required on every CSS variable.
+Most CSS variables use a prefix to avoid collisions with your own codebase. This prefix is in addition to the `--` that’s required on every CSS variable.
 
 The `bs-` prefix is added automatically via [PostCSS](https://postcss.org/) using the `postcss-prefix-custom-properties` plugin during our build process. This means you write unprefixed custom properties in the source Sass (e.g., `--border-radius`) and they become prefixed in the compiled CSS (e.g., `--bs-border-radius`).
 
-If you're building your own custom version of Bootstrap's CSS and want to change the prefix, update the `prefix` option in your PostCSS configuration:
+If you’re building your own custom version of Bootstrap’s CSS and want to change the prefix, update the `prefix` option in your PostCSS configuration:
 
 ```js
 // postcss.config.js

@@ -12,7 +12,7 @@ js: required
 Drawer builds on the native `<dialog>` element and our Dialog component to manage hidden sidebars via JavaScript. These sidebars, or drawers, can appear from the left, right, top, or bottom edge of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and `data` attributes are used to invoke our JavaScript.
 
 - **Drawer shares the same base as [our Dialog component]([[docsref:/components/dialog]])**, using native `<dialog>` APIs for focus trapping, backdrop, and top-layer rendering.
-- **Use the `<dialog>` element**, not a `<div>`. Due to how CSS handles animations, don't apply `margin` or `translate` directly to `.drawer` — wrap it if you need those.
+- **Use the `<dialog>` element**, not a `<div>`. Due to how CSS handles animations, don’t apply `margin` or `translate` directly to `.drawer` — wrap it if you need those.
 - **Modal by default, or scroll-through** — the default opens the drawer modally with a backdrop; set `scroll: true` to render without a backdrop and without locking body scroll.
 - **Built-in backdrop** via `::backdrop` (modal only) closes the drawer on click; set `backdrop: "static"` to lock clicks outside, or `backdrop: false` to hide it.
 - **Escape key handling** closes the drawer by default; set `keyboard: false` to disable.
@@ -203,7 +203,7 @@ To make a responsive drawer, replace the `.drawer` base class with a responsive 
 
 ## Placement
 
-There's no default placement for drawer components, so you must add one of the modifier classes below.
+There’s no default placement for drawer components, so you must add one of the modifier classes below.
 
 - `.drawer-start` places drawer on the left of the viewport (shown above)
 - `.drawer-end` places drawer on the right of the viewport

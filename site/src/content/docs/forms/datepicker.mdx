@@ -16,7 +16,7 @@ The Bootstrap Datepicker is a wrapper around [Vanilla Calendar Pro](https://vani
 <Example code={`<label for="datepicker1" class="form-label">Datepicker</label>
   <input type="text" class="form-control w-12" id="datepicker1" data-bs-toggle="datepicker" placeholder="Choose date…">`} />
 
-Note that we're using a width utility of `.w-12` to ensure the input is wide enough to accommodate the date format and imply some affordance for the expected type of input.
+Note that we’re using a width utility of `.w-12` to ensure the input is wide enough to accommodate the date format and imply some affordance for the expected type of input.
 
 ## How it works
 
@@ -24,7 +24,7 @@ Note that we're using a width utility of `.w-12` to ensure the input is wide eno
 - Use `type="text"` to avoid conflicts with native browser date pickers
 - When focused, the calendar popup appears below the input
 - Selecting a date updates the input value and closes the picker
-- The picker respects Bootstrap's color modes (`data-bs-theme`)
+- The picker respects Bootstrap’s color modes (`data-bs-theme`)
 - Configurable with any [Vanilla Calendar Pro option](https://vanilla-calendar.pro/docs/reference/settings) via `vcpOptions` when initializing with JavaScript
 
 ## Examples
@@ -37,7 +37,7 @@ Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your
     <label for="datepicker2" class="form-label">Datepicker field</label>
     <input type="text" class="form-control w-12" id="datepicker2" data-bs-toggle="datepicker" placeholder="Choose date…">
     <div class="form-text">
-      We'll never share your email with anyone else.
+      We’ll never share your email with anyone else.
     </div>
   </div>`} />
 
@@ -186,7 +186,7 @@ const datepicker = new bootstrap.Datepicker(element, {
 
 ## Dark mode
 
-The datepicker automatically adapts to Bootstrap's color modes. When `data-bs-theme="dark"` is set on a parent element or the `<html>` tag, the calendar popup inherits that theme.
+The datepicker automatically adapts to Bootstrap’s color modes. When `data-bs-theme="dark"` is set on a parent element or the `<html>` tag, the calendar popup inherits that theme.
 
 ### Inherited from parent
 
@@ -199,7 +199,7 @@ When a parent element has a theme, both the input and calendar popup inherit it:
 
 ### Datepicker-only theme
 
-Use `data-bs-datepicker-theme` to set the datepicker popup's theme independently of the input. This is useful when you want a light input with a dark datepicker, or vice versa:
+Use `data-bs-datepicker-theme` to set the datepicker popup’s theme independently of the input. This is useful when you want a light input with a dark datepicker, or vice versa:
 
 <Example code={`<label for="datepickerTheme" class="form-label">Light input, dark datepicker</label>
 <input type="text" class="form-control w-12" id="datepickerTheme" data-bs-toggle="datepicker" data-bs-datepicker-theme="dark" placeholder="Select a date">`} />
@@ -262,7 +262,7 @@ const datepicker = new bootstrap.Datepicker(datepickerEl, {
 
 ### Advanced configuration
 
-For features not directly exposed by Bootstrap's options, use `vcpOptions` to pass any Vanilla Calendar Pro setting:
+For features not directly exposed by Bootstrap’s options, use `vcpOptions` to pass any Vanilla Calendar Pro setting:
 
 ```js
 const datepicker = new bootstrap.Datepicker(element, {

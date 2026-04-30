@@ -6,9 +6,9 @@ toc: true
 
 ## About Sass
 
-[Sass](https://sass-lang.com/) is a CSS preprocessor that adds features like variables, nesting, mixins, and functions to standard CSS. You write `.scss` files, compile them, and the output is plain CSS that browsers understand. If you're new to Sass, check out the [Sass documentation](https://sass-lang.com/guide/) to learn the basics.
+[Sass](https://sass-lang.com/) is a CSS preprocessor that adds features like variables, nesting, mixins, and functions to standard CSS. You write `.scss` files, compile them, and the output is plain CSS that browsers understand. If you’re new to Sass, check out the [Sass documentation](https://sass-lang.com/guide/) to learn the basics.
 
-Bootstrap is written in Sass. Our source `.scss` files use Sass maps to define design tokens, mixins to generate repetitive CSS patterns, and the `@use`/`@forward` module system to organize everything. When compiled, these Sass files produce the CSS that powers every Bootstrap component and utility. This lets you override token values, remove unused components, or extend the system with your own additions. If you don't need that level of control, you can skip Sass entirely and [customize via CSS custom properties]([[docsref:/getting-started/css-variables]]) at runtime instead.
+Bootstrap is written in Sass. Our source `.scss` files use Sass maps to define design tokens, mixins to generate repetitive CSS patterns, and the `@use`/`@forward` module system to organize everything. When compiled, these Sass files produce the CSS that powers every Bootstrap component and utility. This lets you override token values, remove unused components, or extend the system with your own additions. If you don’t need that level of control, you can skip Sass entirely and [customize via CSS custom properties]([[docsref:/getting-started/css-variables]]) at runtime instead.
 
 <Callout type="info">
 **New to working with Sass and Bootstrap?** Start with [our npm guide]([[docsref:/guides/npm]]) for a step-by-step setup, or check out our [examples repository](https://github.com/twbs/examples) for ready-to-use starter projects.
@@ -16,7 +16,7 @@ Bootstrap is written in Sass. Our source `.scss` files use Sass maps to define d
 
 ## File structure
 
-Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/), you'll have a file structure that looks like this:
+Whenever possible, avoid modifying Bootstrap’s core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you’re using a package manager like [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/), you’ll have a file structure that looks like this:
 
 ```text
 your-project/
@@ -29,7 +29,7 @@ your-project/
 └── index.html
 ```
 
-If you've downloaded our source files and aren't using a package manager, you'll want to manually create something similar to that structure, keeping Bootstrap's source files separate from your own.
+If you’ve downloaded our source files and aren’t using a package manager, you’ll want to manually create something similar to that structure, keeping Bootstrap’s source files separate from your own.
 
 ```text
 your-project/
@@ -43,7 +43,7 @@ your-project/
 
 ## Importing
 
-In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
+In your `custom.scss`, you’ll import Bootstrap’s source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
 
 ```scss
 // Custom.scss
@@ -105,7 +105,7 @@ Learn more about your options at [sass-lang.com/install](https://sass-lang.com/i
 
 ## Including
 
-Once your CSS is compiled, you can include it in your HTML files. Inside your `index.html` you'll want to include your compiled CSS file. Be sure to update the path to your compiled CSS file if you've changed it.
+Once your CSS is compiled, you can include it in your HTML files. Inside your `index.html` you’ll want to include your compiled CSS file. Be sure to update the path to your compiled CSS file if you’ve changed it.
 
 ```html
 <!doctype html>
@@ -134,11 +134,11 @@ The layers, from lowest to highest level:
 
 3. **Global tokens** (`_theme.scss` and `_root.scss`) — Semantic tokens for backgrounds (`$theme-bgs`), foregrounds (`$theme-fgs`), and borders (`$theme-borders`) are defined alongside the `$root-tokens` map, which aggregates everything into `:root` CSS custom properties.
 
-4. **Component tokens** (e.g., `_alert.scss`) — Each component defines its own `$*-tokens` map (e.g., `$alert-tokens`) that gets output as CSS custom properties scoped to the component's class.
+4. **Component tokens** (e.g., `_alert.scss`) — Each component defines its own `$*-tokens` map (e.g., `$alert-tokens`) that gets output as CSS custom properties scoped to the component’s class.
 
 ## Token defaults
 
-Every token map in Bootstrap includes the `!default` flag, allowing you to override values before Bootstrap's files are loaded. Since Bootstrap uses Sass modules (`@use`/`@forward`), you can override `!default` variables using the `with ()` syntax. For CSS custom property tokens, you have two customization paths:
+Every token map in Bootstrap includes the `!default` flag, allowing you to override values before Bootstrap’s files are loaded. Since Bootstrap uses Sass modules (`@use`/`@forward`), you can override `!default` variables using the `with ()` syntax. For CSS custom property tokens, you have two customization paths:
 
 1. **At compile time** — Override the Sass maps that generate the CSS custom properties.
 2. **At runtime** — Override the CSS custom properties directly in your stylesheet, no Sass required.
@@ -172,7 +172,7 @@ $alert-tokens: defaults(
 );
 ```
 
-The `() !default` declaration receives your `with()` overrides. Then `defaults()` merges your entries on top of the built-in defaults, so unspecified keys keep their original values. Any keys set to `null` are removed from the map entirely, letting you drop tokens you don't need.
+The `() !default` declaration receives your `with()` overrides. Then `defaults()` merges your entries on top of the built-in defaults, so unspecified keys keep their original values. Any keys set to `null` are removed from the map entirely, letting you drop tokens you don’t need.
 
 ### Runtime overrides
 
@@ -241,9 +241,9 @@ All root tokens are output to `:root` as CSS custom properties:
 
 ## Component tokens
 
-Each component defines its own token map that gets output as CSS custom properties scoped to the component's class. This makes components self-contained and easy to customize.
+Each component defines its own token map that gets output as CSS custom properties scoped to the component’s class. This makes components self-contained and easy to customize.
 
-Here's the alert component as an example:
+Here’s the alert component as an example:
 
 <ScssDocs name="alert-tokens" file="scss/_alert.scss" />
 
@@ -352,7 +352,7 @@ This removes the `.btn-text` and `.btn-subtle` classes from the compiled CSS whi
 
 ## Required keys
 
-Bootstrap assumes the presence of some specific keys within Sass maps as we use and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
+Bootstrap assumes the presence of some specific keys within Sass maps as we use and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map’s key is being used.
 
 For `$theme-colors`, the `primary`, `success`, and `danger` keys are required for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues.
 
@@ -360,7 +360,7 @@ For `$theme-colors`, the `primary`, `success`, and `danger` keys are required fo
 
 ### Defaults
 
-The `defaults()` function is the backbone of Bootstrap's customization system. It merges user overrides on top of built-in default tokens and strips any `null` entries from the result. Every token map, size map, and variant map uses it:
+The `defaults()` function is the backbone of Bootstrap’s customization system. It merges user overrides on top of built-in default tokens and strips any `null` entries from the result. Every token map, size map, and variant map uses it:
 
 ```scss
 @function defaults($defaults, $overrides) { ... }
@@ -374,7 +374,7 @@ It accepts either a map or a list as the first argument. Lists are automatically
 
 In order to meet the [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG/) contrast requirements, authors **must** provide a minimum [text color contrast of 4.5:1](https://www.w3.org/TR/WCAG/#contrast-minimum) and a minimum [non-text color contrast of 3:1](https://www.w3.org/TR/WCAG/#non-text-contrast), with very few exceptions.
 
-To help with this, we included the `color-contrast` function in Bootstrap. It uses the [WCAG contrast ratio algorithm](https://www.w3.org/TR/WCAG/#dfn-contrast-ratio) for calculating contrast thresholds based on [relative luminance](https://www.w3.org/TR/WCAG/#dfn-relative-luminance) in an `sRGB` color space to automatically return a light (`#fff`), dark (`#212529`) or black (`#000`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
+To help with this, we included the `color-contrast` function in Bootstrap. It uses the [WCAG contrast ratio algorithm](https://www.w3.org/TR/WCAG/#dfn-contrast-ratio) for calculating contrast thresholds based on [relative luminance](https://www.w3.org/TR/WCAG/#dfn-relative-luminance) in an `sRGB` color space to automatically return a light (`#fff`), dark (`#212529`) or black (`#000`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you’re generating multiple classes.
 
 For example, to generate color swatches from our `$theme-colors` map:
 
@@ -537,7 +537,7 @@ A shorthand mixin for the `prefers-color-scheme` media query is available with s
 
 ### Theme classes
 
-The `generate-theme-classes()` mixin loops over the `$theme-colors` map and outputs a `.theme-*` class for each color. Each class maps generic `--theme-*` custom properties to the color's specific values, so components can reference `--theme-base`, `--theme-bg`, etc., and pick up the right palette from a parent `.theme-*` class:
+The `generate-theme-classes()` mixin loops over the `$theme-colors` map and outputs a `.theme-*` class for each color. Each class maps generic `--theme-*` custom properties to the color’s specific values, so components can reference `--theme-base`, `--theme-bg`, etc., and pick up the right palette from a parent `.theme-*` class:
 
 ```scss
 @include generate-theme-classes();

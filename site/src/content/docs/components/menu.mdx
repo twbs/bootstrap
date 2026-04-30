@@ -14,7 +14,7 @@ deps:
 
 ## Overview
 
-Toggle menus with buttons whenever possible. Here's an example using a Bootstrap button:
+Toggle menus with buttons whenever possible. Here’s an example using a Bootstrap button:
 
 <Example code={`<button class="btn-solid theme-primary" type="button" data-bs-toggle="menu" aria-expanded="false">
     Toggle menu
@@ -25,13 +25,13 @@ Toggle menus with buttons whenever possible. Here's an example using a Bootstrap
     <a class="menu-item" href="#">Menu item 3</a>
   </div>`} />
 
-Menus are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap menu JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/blog/bootstrap-explained-dropdowns/).
+Menus are toggleable, contextual overlays for displaying lists of links and more. They’re made interactive with the included Bootstrap menu JavaScript plugin. They’re toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/blog/bootstrap-explained-dropdowns/).
 
-Menus are built on a third party library, [Floating UI](https://floating-ui.com/), which provides dynamic positioning and viewport detection. Use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which includes Floating UI, or include Floating UI separately via an [import map]([[docsref:/getting-started/javascript#using-bootstrap-as-a-module]]). Floating UI isn't used to position menus in navbars though as dynamic positioning isn't required.
+Menus are built on a third party library, [Floating UI](https://floating-ui.com/), which provides dynamic positioning and viewport detection. Use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which includes Floating UI, or include Floating UI separately via an [import map]([[docsref:/getting-started/javascript#using-bootstrap-as-a-module]]). Floating UI isn’t used to position menus in navbars though as dynamic positioning isn’t required.
 
 ## Examples
 
-While `<button>` is the recommended control for a menu toggle, there might be situations where you have to use an `<a>` element. If you do, we recommend adding a `role="button"` attribute to appropriately convey control's purpose to assistive technologies such as screen readers.
+While `<button>` is the recommended control for a menu toggle, there might be situations where you have to use an `<a>` element. If you do, we recommend adding a `role="button"` attribute to appropriately convey control’s purpose to assistive technologies such as screen readers.
 
 Use [button groups]([[docsref:/components/button-group]]) to create split button menus where the menu is displayed when a secondary button is clicked.
 
@@ -165,7 +165,7 @@ Resize your browser window to see the placement change at different breakpoints.
 You can use `<a>` or `<button>` elements as menu items.
 
 <Callout>
-We use utility classes to display menus in our docs examples, but they're not required for your own use.
+We use utility classes to display menus in our docs examples, but they’re not required for your own use.
 </Callout>
 
 <Example code={`<div class="menu show position-static">
@@ -330,12 +330,12 @@ Separate groups of related menu items with a divider.
 
 ### Text
 
-Place any freeform text within a menu with text and use [margin]([[docsref:/utilities/margin]]) and [padding]([[docsref:/utilities/padding]]) utilities. Note that you'll likely need additional sizing styles to constrain the menu width.
+Place any freeform text within a menu with text and use [margin]([[docsref:/utilities/margin]]) and [padding]([[docsref:/utilities/padding]]) utilities. Note that you’ll likely need additional sizing styles to constrain the menu width.
 
 <Example code={`<div class="menu show position-static p-3 fg-2"
        style="--bs-menu-min-width: 240px;">
     <p>
-      Some example text that's free-flowing within the menu.
+      Some example text that’s free-flowing within the menu.
     </p>
     <p class="mb-0">
       And this is more example text.
@@ -431,7 +431,7 @@ Wrap a `.menu-item` trigger and a nested `.menu` inside a `.submenu` element.
 
 ### Nested
 
-Submenus can be nested to multiple levels. Each level opens to the side and flips direction when there's not enough viewport space.
+Submenus can be nested to multiple levels. Each level opens to the side and flips direction when there’s not enough viewport space.
 
 <Example code={`<button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
     Multi-level menu
@@ -538,7 +538,7 @@ By default, the menu is closed when clicking inside or outside the menu. You can
 
 The [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr>](https://www.w3.org/TR/wai-aria/) standard defines an actual [`role="menu"` widget](https://www.w3.org/TR/wai-aria/#menu), but this is specific to application-like menus which trigger actions or functions. <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus can only contain menu items, checkbox menu items, radio button menu items, radio button groups, and sub-menus.
 
-Bootstrap's menus, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create menus that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the `role` and `aria-` attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.
+Bootstrap’s menus, on the other hand, are designed to be generic and applicable to a variety of situations and markup structures. For instance, it is possible to create menus that contain additional inputs and form controls, such as search fields or login forms. For this reason, Bootstrap does not expect (nor automatically add) any of the `role` and `aria-` attributes required for true <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus. Authors will have to include these more specific attributes themselves.
 
 ### Keyboard navigation
 
@@ -572,7 +572,7 @@ Menu items include at least one variable that is not set on `.menu`. This allows
 
 ## Usage
 
-Via data attributes or JavaScript, the menu plugin toggles hidden content (menus) by toggling the `.show` class on the `.menu`. The `data-bs-toggle="menu"` attribute is relied on for closing menus at an application level, so it's a good idea to always use it.
+Via data attributes or JavaScript, the menu plugin toggles hidden content (menus) by toggling the `.show` class on the `.menu`. The `data-bs-toggle="menu"` attribute is relied on for closing menus at an application level, so it’s a good idea to always use it.
 
 <Callout>
 On touch-enabled devices, opening a menu adds empty `mouseover` handlers to the immediate children of the `<body>` element. This admittedly ugly hack is necessary to work around a [quirk in iOS' event delegation](https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html), which would otherwise prevent a tap anywhere outside of the menu from triggering the code that closes the menu. Once the menu is closed, these additional empty `mouseover` handlers are removed.
@@ -612,7 +612,7 @@ const menuList = [...menuElementList].map(menuToggleEl => new bootstrap.Menu(men
 
 ### Dependencies
 
-The menu plugin requires the following JavaScript files if you're building Bootstrap's JS from source:
+The menu plugin requires the following JavaScript files if you’re building Bootstrap’s JS from source:
 
 <BsTable>
 | File | Description |
@@ -635,14 +635,14 @@ The menu plugin requires the following JavaScript files if you're building Boots
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `autoClose` | boolean, string | `true` | Configure the auto close behavior of the menu: <ul class="my-2"><li>`true` - the menu will be closed by clicking outside or inside the menu.</li><li>`false` - the menu will be closed by clicking the toggle button and manually calling `hide` or `toggle` method. (Also will not be closed by pressing <kbd>Esc</kbd> key)</li><li>`'inside'` - the menu will be closed (only) by clicking inside the menu.</li> <li>`'outside'` - the menu will be closed (only) by clicking outside the menu.</li></ul> Note: the menu can always be closed with the <kbd>Esc</kbd> key. |
-| `boundary` | string, element | `'clippingParents'` | Overflow constraint boundary of the menu (applies only to the shift middleware). By default it's `clippingParents` and can accept an HTMLElement reference (via JavaScript only). For more information refer to Floating UI's [shift docs](https://floating-ui.com/docs/shift). |
+| `boundary` | string, element | `'clippingParents'` | Overflow constraint boundary of the menu (applies only to the shift middleware). By default it’s `clippingParents` and can accept an HTMLElement reference (via JavaScript only). For more information refer to Floating UI’s [shift docs](https://floating-ui.com/docs/shift). |
 | `container` | string, element, boolean | `false` | Appends the menu to a specific element when shown. Use `'body'` or `true` to append to the document body, which helps escape containers with `overflow: hidden`. The menu is moved back to its original position when hidden. |
 | `display` | string | `'dynamic'` | By default, we use Floating UI for dynamic positioning. Disable this with `static`. |
-| `offset` | array, string, function | `[0, 2]` | Offset of the menu relative to its target. You can pass a string in data attributes with comma separated values like: `data-bs-offset="10,20"`. When a function is used to determine the offset, it is called with an object containing the placement, the reference, and floating rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: [skidding, distance]. For more information refer to Floating UI's [offset docs](https://floating-ui.com/docs/offset). |
-| `floatingConfig` | null, object, function | `null` | To change Bootstrap's default Floating UI config, see [Floating UI's configuration](https://floating-ui.com/docs/computePosition). When a function is used to create the Floating UI configuration, it's called with an object that contains the Bootstrap's default Floating UI configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Floating UI. |
+| `offset` | array, string, function | `[0, 2]` | Offset of the menu relative to its target. You can pass a string in data attributes with comma separated values like: `data-bs-offset="10,20"`. When a function is used to determine the offset, it is called with an object containing the placement, the reference, and floating rects as its first argument. The triggering element DOM node is passed as the second argument. The function must return an array with two numbers: [skidding, distance]. For more information refer to Floating UI’s [offset docs](https://floating-ui.com/docs/offset). |
+| `floatingConfig` | null, object, function | `null` | To change Bootstrap’s default Floating UI config, see [Floating UI’s configuration](https://floating-ui.com/docs/computePosition). When a function is used to create the Floating UI configuration, it’s called with an object that contains the Bootstrap’s default Floating UI configuration. It helps you use and merge the default with your own configuration. The function must return a configuration object for Floating UI. |
 | `placement` | string | `'bottom-start'` | Placement of the menu. Physical placements: `'top'`, `'bottom'`, `'left'`, `'right'`. Logical placements (RTL-aware): `'start'`, `'end'`. All support alignment modifiers: `-start`, `-end`. Supports responsive prefixes like `'bottom-start md:end'`. |
-| `reference` | string, element, object | `'toggle'` | Reference element of the menu. Accepts the values of `'toggle'`, `'parent'`, an HTMLElement reference or an object providing `getBoundingClientRect`. For more information refer to Floating UI's [virtual elements docs](https://floating-ui.com/docs/virtual-elements). |
-| `strategy` | string | `'absolute'` | Positioning strategy for the menu. Use `'absolute'` for default positioning, or `'fixed'` to escape containers with `overflow: hidden`. For more information refer to Floating UI's [strategy docs](https://floating-ui.com/docs/computePosition#strategy). |
+| `reference` | string, element, object | `'toggle'` | Reference element of the menu. Accepts the values of `'toggle'`, `'parent'`, an HTMLElement reference or an object providing `getBoundingClientRect`. For more information refer to Floating UI’s [virtual elements docs](https://floating-ui.com/docs/virtual-elements). |
+| `strategy` | string | `'absolute'` | Positioning strategy for the menu. Use `'absolute'` for default positioning, or `'fixed'` to escape containers with `overflow: hidden`. For more information refer to Floating UI’s [strategy docs](https://floating-ui.com/docs/computePosition#strategy). |
 | `submenuTrigger` | string | `'both'` | How submenus are triggered. Use `'click'` for click only, `'hover'` for hover only, or `'both'` for both click and hover activation. |
 | `submenuDelay` | number | `100` | Delay in milliseconds before closing a submenu when the mouse leaves. Provides a grace period for diagonal mouse movement toward the submenu. |
 </BsTable>
@@ -664,13 +664,13 @@ const menu = new bootstrap.Menu(element, {
 <BsTable>
 | Method | Description |
 | --- | --- |
-| `dispose` | Destroys an element's menu. (Removes stored data on the DOM element) |
+| `dispose` | Destroys an element’s menu. (Removes stored data on the DOM element) |
 | `getInstance` | Static method which allows you to get the menu instance associated to a DOM element, you can use it like this: `bootstrap.Menu.getInstance(element)`. |
-| `getOrCreateInstance` | Static method which returns a menu instance associated to a DOM element or create a new one in case it wasn't initialized. You can use it like this: `bootstrap.Menu.getOrCreateInstance(element)`. |
+| `getOrCreateInstance` | Static method which returns a menu instance associated to a DOM element or create a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Menu.getOrCreateInstance(element)`. |
 | `hide` | Hides the menu of a given navbar or tabbed navigation. |
 | `show` | Shows the menu of a given navbar or tabbed navigation. |
 | `toggle` | Toggles the menu of a given navbar or tabbed navigation. |
-| `update` | Updates the position of an element's menu. |
+| `update` | Updates the position of an element’s menu. |
 </BsTable>
 
 ### Events

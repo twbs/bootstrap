@@ -29,7 +29,7 @@ Sass is used for the following:
 
 ### CSS
 
-While you can use Sass to customize how Bootstrap looks, the preferred way now is to use CSS variables whenever possible, including when working with Sass. Here's how we use CSS:
+While you can use Sass to customize how Bootstrap looks, the preferred way now is to use CSS variables whenever possible, including when working with Sass. Here’s how we use CSS:
 
 - Customize individual global and component tokens like `--bs-border-radius`, `--bs-alert-padding-x`, etc.
 - Customize token values using Sass’s `with (...tokens)` syntax to override the default values.
@@ -38,7 +38,7 @@ While you can use Sass to customize how Bootstrap looks, the preferred way now i
 
 ### Examples
 
-Here's how we'd use a mix of Sass and CSS to customize Bootstrap. The Sass helps us manage features and gives us access to generative tokens, while the CSS allows us to customize individual tokens and values. In almost all our components, we setup a Sass map of "tokens" that are really just CSS variables. Using this map, we then generate the CSS custom properties on the component's class.
+Here’s how we’d use a mix of Sass and CSS to customize Bootstrap. The Sass helps us manage features and gives us access to generative tokens, while the CSS allows us to customize individual tokens and values. In almost all our components, we setup a Sass map of "tokens" that are really just CSS variables. Using this map, we then generate the CSS custom properties on the component’s class.
 
 For example, the alert component has a `$alert-tokens` map that is used to generate the CSS custom properties on the `.alert` class.
 
@@ -55,7 +55,7 @@ $alert-tokens: (
 }
 ```
 
-In practice for you and your projects, this means you can use Sass's module system to override the CSS variables at build-time for a specific component, or even globally.
+In practice for you and your projects, this means you can use Sass’s module system to override the CSS variables at build-time for a specific component, or even globally.
 
 ```scss
 @use "../node_modules/bootstrap/scss/bootstrap" with (
@@ -76,7 +76,7 @@ In practice for you and your projects, this means you can use Sass's module syst
 );
 ```
 
-Here's a Sass-specific example, where we cannot use CSS to easily achieve the same result. The following will remove the `text` and `subtle` variants from the `button-variants` map, and override the `button-sizes` map to only include `sm` and `lg` sizes.
+Here’s a Sass-specific example, where we cannot use CSS to easily achieve the same result. The following will remove the `text` and `subtle` variants from the `button-variants` map, and override the `button-sizes` map to only include `sm` and `lg` sizes.
 
 ```scss
 @use "../node_modules/bootstrap/scss/bootstrap" with (
@@ -91,7 +91,7 @@ Here's a Sass-specific example, where we cannot use CSS to easily achieve the sa
 );
 ```
 
-Here's an example of just using pure CSS to customize a CSS variables from the compiled CSS. Wherever `var(--bs-border-radius)` is used, it will be replaced with the value `.25rem`.
+Here’s an example of just using pure CSS to customize a CSS variables from the compiled CSS. Wherever `var(--bs-border-radius)` is used, it will be replaced with the value `.25rem`.
 
 ```css
 :root {
@@ -106,7 +106,7 @@ Bootstrap employs a handful of important global styles and settings geared towar
 
 ### Responsive design
 
-Responsive web design is the practice of building a website that responds to the viewport size of the device it's being viewed on. This is achieved by using range media queries to apply different styles to the website based on the viewport size.
+Responsive web design is the practice of building a website that responds to the viewport size of the device it’s being viewed on. This is achieved by using range media queries to apply different styles to the website based on the viewport size.
 
 ```css
 @media (width < 768px) {
@@ -178,7 +178,7 @@ We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intende
 
 ## Guiding principles
 
-Beyond what Bootstrap does, here's *why* we do it—our philosophy for building on the web. At a high level, here's what guides our approach:
+Beyond what Bootstrap does, here’s *why* we do it—our philosophy for building on the web. At a high level, here’s what guides our approach:
 
 - Components should be responsive and mobile-first
 - Components should be built with a base class and extended via modifier classes
@@ -191,7 +191,7 @@ These rules cannot always be followed to the letter, but we strive to follow the
 
 ### Responsive
 
-Bootstrap's styles are mobile-first—we add styles as the viewport grows rather than overriding them as it shrinks. Not every component must be fully responsive, but this approach reduces CSS overrides.
+Bootstrap’s styles are mobile-first—we add styles as the viewport grows rather than overriding them as it shrinks. Not every component must be fully responsive, but this approach reduces CSS overrides.
 
 We use range media queries (`width >= 768px`, for example) to apply styles at a specific breakpoint and carry up through the larger breakpoints. For example, a `.d-none` applies from `min-width: 0` to infinity. On the other hand, a `.md:d-none` applies from the medium breakpoint and up.
 
@@ -224,7 +224,7 @@ Learn more about this in our [`z-index` layout page]([[docsref:/layout/z-index]]
 
 ### HTML and CSS over JS
 
-Whenever possible, we prefer HTML and CSS over JavaScript—they're more accessible to people of all experience levels and faster in the browser. That's why our first-class JavaScript API is `data` attributes—it lets you write more HTML instead of JavaScript. Read more in [our JavaScript overview]([[docsref:/getting-started/javascript#data-attributes]]).
+Whenever possible, we prefer HTML and CSS over JavaScript—they’re more accessible to people of all experience levels and faster in the browser. That’s why our first-class JavaScript API is `data` attributes—it lets you write more HTML instead of JavaScript. Read more in [our JavaScript overview]([[docsref:/getting-started/javascript#data-attributes]]).
 
 Our styles build on fundamental browser behaviors. For example, while you can put `.btn` on nearly any element, we prefer `<button>`s and `<a>`s for their semantic value. Similarly, we use native `:valid`/`:invalid` pseudo-elements for form validation rather than custom plugins.
 

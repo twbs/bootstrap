@@ -15,7 +15,7 @@ import { getConfig } from '@libs/config'
 
 ## Example
 
-Here's a navbar that includes most supported sub-components and a responsive right drawer with [our Drawer plugin]([[docsref:/components/drawer]]). Use the lower-right corner grip to resize to preview responsive behavior.
+Here’s a navbar that includes most supported sub-components and a responsive right drawer with [our Drawer plugin]([[docsref:/components/drawer]]). Use the lower-right corner grip to resize to preview responsive behavior.
 
 <ResizableExample code={`<nav class="navbar md:navbar-expand bg-1">
     <div class="container-fluid">
@@ -66,7 +66,7 @@ Here's a navbar that includes most supported sub-components and a responsive rig
 
 ## How it works
 
-Here's what you need to know before getting started with the navbar:
+Here’s what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` with `.navbar-expand-{breakpoint}` for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
@@ -402,7 +402,7 @@ Add `.navbar-translucent` to blur and saturate the background of a navbar. This 
 
 ## Color schemes
 
-Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `data-bs-theme="dark"` to the `.navbar` parent for dark background colors. Then, customize with `.bg-*` and additional utilities.
+Navbar themes are easier than ever thanks to Bootstrap’s combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `data-bs-theme="dark"` to the `.navbar` parent for dark background colors. Then, customize with `.bg-*` and additional utilities.
 
 <ResizableExample className="d-flex flex-column gap-2" showMarkup={false} code={`
 <nav class="navbar md:navbar-expand" data-bs-theme="dark">
@@ -527,7 +527,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
 
 ## Containers
 
-Although it's not required, you can wrap a navbar in a `.container` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `.navbar` to only center the contents of a [fixed or static top navbar](#placement).
+Although it’s not required, you can wrap a navbar in a `.container` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `.navbar` to only center the contents of a [fixed or static top navbar](#placement).
 
 <Example code={`<div class="container">
     <nav class="navbar lg:navbar-expand bg-1 fg-2">
@@ -549,7 +549,7 @@ Use any of the responsive containers to change how wide the content in your navb
 
 Use our [position utilities]([[docsref:/utilities/position]]) to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, stickied to the top (scrolls with the page until it reaches the top, then stays there), or stickied to the bottom (scrolls with the page until it reaches the bottom, then stays there).
 
-Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
+Fixed navbars use `position: fixed`, meaning they’re pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
 
 <NavbarPlacementPlayground />
 
@@ -557,7 +557,7 @@ Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow
 
 Navbars can use `.navbar-toggler`, and `.lg:navbar-expand{-sm|-md|-lg|-xl|-2xl}` classes to determine when their content appears in an drawer drawer or inline. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
-For navbars that never collapse, add the `.lg:navbar-expand` class on the navbar. For navbars that always show the drawer drawer, don't add any `.lg:navbar-expand` class.
+For navbars that never collapse, add the `.lg:navbar-expand` class on the navbar. For navbars that always show the drawer drawer, don’t add any `.lg:navbar-expand` class.
 
 ### Drawer drawer
 
@@ -620,7 +620,7 @@ These examples omit the `.lg:navbar-expand` class to always show the drawer beha
 
 ### Toggler
 
-Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler.
+Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they’ll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler.
 
 These examples omit the `.lg:navbar-expand` class to always show the collapsed state with the toggler visible. Click the toggler to open the drawer drawer.
 
@@ -710,7 +710,7 @@ With a toggler on the left and brand name on the right:
 
 ### External content
 
-Sometimes you want to use the drawer plugin to trigger a container element for content that structurally sits outside of the `.navbar`. Because our plugin works on the `id` and `data-bs-target` matching, that's easily done!
+Sometimes you want to use the drawer plugin to trigger a container element for content that structurally sits outside of the `.navbar`. Because our plugin works on the `id` and `data-bs-target` matching, that’s easily done!
 
 <ResizableExample code={`<dialog class="drawer drawer-top" tabindex="-1" id="navbarToggleExternalContent" data-bs-theme="dark" aria-labelledby="navbarToggleExternalContentLabel">
     <div class="drawer-header">
@@ -729,7 +729,7 @@ Sometimes you want to use the drawer plugin to trigger a container element for c
     </div>
   </nav>`} />
 
-When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes *before* the toggler in the document's structure. We also recommend making sure that the toggler has the `aria-controls` attribute, pointing to the `id` of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.
+When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes *before* the toggler in the document’s structure. We also recommend making sure that the toggler has the `aria-controls` attribute, pointing to the `id` of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.
 
 ## CSS
 

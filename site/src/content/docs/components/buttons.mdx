@@ -141,7 +141,7 @@ Disabled buttons using the `<a>` element behave a bit different. Use the `.disab
 <Example code={`<a class="btn-solid theme-primary disabled" role="button" aria-disabled="true">Primary link</a>
 <a class="btn-solid theme-secondary disabled" role="button" aria-disabled="true">Link</a>`} />
 
-If there's an `href` attribute, add `tabindex="-1"` and `aria-disabled="true"` to prevent keyboard focus and assistive technologies from interacting with the link.
+If there’s an `href` attribute, add `tabindex="-1"` and `aria-disabled="true"` to prevent keyboard focus and assistive technologies from interacting with the link.
 
 <Example code={`<a href="#" class="btn-solid theme-primary disabled" tabindex="-1" role="button" aria-disabled="true">Primary link</a>
 <a href="#" class="btn-solid theme-secondary disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>`} />
@@ -311,7 +311,7 @@ Button sizes are defined in the `$button-sizes` Sass map. Each size specifies se
 
 #### Variants
 
-Button variants are defined in the `$button-variants` Sass map. Each variant specifies which theme color tokens to use for its base, hover, and active states. The map uses token names (like `"bg"`, `"contrast"`, `"border"`) that reference the current theme's color palette.
+Button variants are defined in the `$button-variants` Sass map. Each variant specifies which theme color tokens to use for its base, hover, and active states. The map uses token names (like `"bg"`, `"contrast"`, `"border"`) that reference the current theme’s color palette.
 
 <ScssDocs name="btn-variants" file="scss/buttons/_button.scss" />
 
@@ -343,7 +343,7 @@ To add a custom variant, extend the map before importing Bootstrap’s buttons:
 );
 ```
 
-To remove a variant you don't need, use Sass's `map.remove()`:
+To remove a variant you don’t need, use Sass’s `map.remove()`:
 
 ```scss
 @use "sass:map";

@@ -42,7 +42,7 @@ export const themeFgs = [
 
 ## How it works
 
-Theme colors are defined in the `$theme-colors` Sass map. This map is used to generate our theme color values. You'll find these values in the `_theme.scss` file. These are where we define our design tokens for Bootstrap, across both light and dark color modes.
+Theme colors are defined in the `$theme-colors` Sass map. This map is used to generate our theme color values. You’ll find these values in the `_theme.scss` file. These are where we define our design tokens for Bootstrap, across both light and dark color modes.
 
 Theme colors include the following semantic colors:
 
@@ -59,7 +59,7 @@ Theme colors include the following semantic colors:
 | `secondary` | <Swatch size="inline" bg="gray-300" /> `var(--bs-gray-300)` | Less prominent actions and states |
 </BsTable>
 
-And within each semantic theme color, you'll find the following keys, most of which are color-mode adaptive:
+And within each semantic theme color, you’ll find the following keys, most of which are color-mode adaptive:
 
 <BsTable>
 | Theme token | Description |
@@ -120,7 +120,7 @@ Not all colors can be used for all purposes due to accessibility, color contrast
 
 Color tokens that are used for foreground, background, and border colors are called **theme layer colors** in Bootstrap. These layer colors are configured outside the `$theme-colors` Sass map in their own respective Sass maps as they have more nuanced theming use cases.
 
-Tokens for these three themes are defined in the `$theme-fgs`, `$theme-bgs`, and `$theme-borders` Sass maps. These maps are used to generate color mode adaptive `color`, `background-color`, and `border-color` values that are then consumed by our utilities and components. You'll find these values in the `_theme.scss` file.
+Tokens for these three themes are defined in the `$theme-fgs`, `$theme-bgs`, and `$theme-borders` Sass maps. These maps are used to generate color mode adaptive `color`, `background-color`, and `border-color` values that are then consumed by our utilities and components. You’ll find these values in the `_theme.scss` file.
 
 ### Background
 
@@ -196,11 +196,11 @@ Here are some examples showing them together. Note
 
 ## Color modes
 
-Bootstrap's theme and layer colors are **color mode adaptive** thanks to our use of CSS’s `light-dark()` function. This lets us specify two colors at once for a component, one for light and one for dark mode. These colors are switched by using the `data-bs-theme` attribute to set the `color-scheme` property to `light` or `dark`.
+Bootstrap’s theme and layer colors are **color mode adaptive** thanks to our use of CSS’s `light-dark()` function. This lets us specify two colors at once for a component, one for light and one for dark mode. These colors are switched by using the `data-bs-theme` attribute to set the `color-scheme` property to `light` or `dark`.
 
 By default, `color-scheme: light dark` is set on the `:root` element, meaning Bootstrap respects the user’s system preference. You can override this at any level by setting `data-bs-theme="light"` or `data-bs-theme="dark"` on any element to force a specific mode for that subtree. Depending on the element, you may need to include `.bg-body`, `.fg-body`, or similar utilities to ensure correct color application.
 
-Here's the same set of components rendered in both light and dark modes side by side. Note the use of `.bg-body` for the backgrounds. Without it, the light mode demo wouldn’t have a white background—just light mode components on a dark background.
+Here’s the same set of components rendered in both light and dark modes side by side. Note the use of `.bg-body` for the backgrounds. Without it, the light mode demo wouldn’t have a white background—just light mode components on a dark background.
 
 <Example class="p-0 overflow-hidden" code={`<div class="row g-0">
     <div class="md:col-6 vstack gap-3 p-4 bg-body" data-bs-theme="light">
@@ -208,7 +208,7 @@ Here's the same set of components rendered in both light and dark modes side by 
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
         </div>
       </div>
       <div class="alert theme-primary"><p>This is a primary alert.</p></div>
@@ -233,7 +233,7 @@ Here's the same set of components rendered in both light and dark modes side by 
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
         </div>
       </div>
       <div class="alert theme-primary"><p>This is a primary alert.</p></div>
@@ -261,7 +261,7 @@ Under the hood, token values like `--bs-primary-fg` resolve differently dependin
 "fg": light-dark(var(--blue-600), var(--blue-400)),
 ```
 
-When `data-bs-theme="light"` is active (or the user's system preference is light), this resolves to `var(--blue-600)`. In dark mode, it resolves to `var(--blue-400)`—a lighter shade that maintains readability against dark backgrounds. The same pattern applies to backgrounds, borders, and all other adaptive tokens.
+When `data-bs-theme="light"` is active (or the user’s system preference is light), this resolves to `var(--blue-600)`. In dark mode, it resolves to `var(--blue-400)`—a lighter shade that maintains readability against dark backgrounds. The same pattern applies to backgrounds, borders, and all other adaptive tokens.
 
 For more details on toggling color modes globally, building custom modes, and JavaScript toggler examples, see the [color modes documentation]([[docsref:/customize/color-modes/]]).
 
@@ -299,7 +299,7 @@ And you can apply a theme color utility to a container and any theme-aware child
     </div>
   </div>`} />
 
-This also means you can override a container's theme color with another theme color on specific components.
+This also means you can override a container’s theme color with another theme color on specific components.
 
 <Example code={`<div class="vstack gap-3 theme-primary">
     <div class="alert"><p>Primary alert</p></div>

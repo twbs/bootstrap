@@ -8,7 +8,7 @@ js: required
 
 ## Overview
 
-OTP (One-Time Password) inputs are a common pattern for two-factor authentication, verification codes, and PIN entry. Bootstrap's OTP input component provides:
+OTP (One-Time Password) inputs are a common pattern for two-factor authentication, verification codes, and PIN entry. Bootstrap’s OTP input component provides:
 
 - **Auto-advance**: Focus moves to the next input after entering a digit
 - **Backspace navigation**: Pressing backspace in an empty field moves to the previous field
@@ -33,7 +33,7 @@ Wrap your inputs in a container with `.otp` and add `data-bs-otp` to enable the 
 
 ## Connected inputs
 
-Add `.input-group` to visually connect the inputs into a single cohesive field, leveraging Bootstrap's [input group]([[docsref:/forms/input-group]]) styles. We override the `width` to prevent stretching the inputs.
+Add `.input-group` to visually connect the inputs into a single cohesive field, leveraging Bootstrap’s [input group]([[docsref:/forms/input-group]]) styles. We override the `width` to prevent stretching the inputs.
 
 <Example code={`<div class="otp input-group" data-bs-otp>
     <input type="text" class="form-control" aria-label="Digit 1">
@@ -87,7 +87,7 @@ You can also use separators with connected inputs by wrapping each group in a ne
 
 ## Sizing
 
-Use `.otp-sm` or `.otp-lg` for different sizes. Don't use the input group size classes on the `.otp` container as we override specific CSS variables for sizing.
+Use `.otp-sm` or `.otp-lg` for different sizes. Don’t use the input group size classes on the `.otp` container as we override specific CSS variables for sizing.
 
 <Example class="vstack align-items-start gap-3" code={`<div class="otp input-group otp-sm" data-bs-otp>
     <input type="text" class="form-control" aria-label="Digit 1">
@@ -239,7 +239,7 @@ otpInput.clear()
 <BsTable>
 | Event | Description |
 | --- | --- |
-| `complete.bs.otp` | Fired when all inputs are filled. The event's `value` property contains the complete code. |
+| `complete.bs.otp` | Fired when all inputs are filled. The event’s `value` property contains the complete code. |
 | `input.bs.otp` | Fired on each input change. Includes `value` (current combined value) and `index` (changed input index). |
 </BsTable>
 

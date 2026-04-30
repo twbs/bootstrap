@@ -13,9 +13,9 @@ import { getDocsRelativePath } from '@libs/path'
 
 ## How it works
 
-Here's how form validation works with Bootstrap:
+Here’s how form validation works with Bootstrap:
 
-- **Client-side validation** uses CSS pseudo-classes scoped behind the `data-bs-validate` attribute. Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` styling—validation styles only appear **after the user interacts** with a control (e.g., typing and blurring, or attempting to submit), so required fields don't show up as invalid on page load.
+- **Client-side validation** uses CSS pseudo-classes scoped behind the `data-bs-validate` attribute. Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` styling—validation styles only appear **after the user interacts** with a control (e.g., typing and blurring, or attempting to submit), so required fields don’t show up as invalid on page load.
 - By default, **client-side validation only shows invalid styling.** To also show success styling for valid fields, set `data-bs-validate="valid"`.
 - **Server-side validation** uses the `.is-invalid` and `.is-valid` classes to indicate field state without requiring user interaction. These work globally—no `data-bs-validate` attribute needed.
 - Custom validation states beyond `valid`/`invalid` (e.g., `warning`) are supported via the `.is-*` class pattern and the `$validation-states` Sass map. There are no generated pseudo-classes for custom states.
@@ -27,7 +27,7 @@ With that in mind, consider the following demos for our custom form validation s
 
 ## Custom styles
 
-For custom Bootstrap form validation messages, add `data-bs-validate` and the `novalidate` boolean attribute to your `<form>`. The `data-bs-validate` attribute opts in to Bootstrap's `:user-invalid` styling, while `novalidate` disables the browser default feedback tooltips. Custom feedback styles apply custom colors, borders, and focus styles to better communicate feedback.
+For custom Bootstrap form validation messages, add `data-bs-validate` and the `novalidate` boolean attribute to your `<form>`. The `data-bs-validate` attribute opts in to Bootstrap’s `:user-invalid` styling, while `novalidate` disables the browser default feedback tooltips. Custom feedback styles apply custom colors, borders, and focus styles to better communicate feedback.
 
 Use `data-bs-validate="valid"` to also show success styling on valid fields. Add `required` to each form input and `.invalid-feedback` to provide field-specific error messages. If you enable valid styling, use `.valid-feedback` for success messages.
 
@@ -111,7 +111,7 @@ For example, try to submit the form below; our JavaScript will intercept the sub
 
 ## Browser defaults
 
-Not interested in custom validation feedback messages or writing JavaScript to change form behaviors? All good, you can use the browser defaults. Try submitting the form below. Depending on your browser and OS, you'll see a slightly different style of feedback.
+Not interested in custom validation feedback messages or writing JavaScript to change form behaviors? All good, you can use the browser defaults. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
@@ -492,7 +492,7 @@ This is the validation Sass map from `forms/_validation.scss`. Override or exten
 
 <ScssDocs name="form-validation-states" file="scss/forms/_validation.scss" />
 
-Each key in the map is a validation state name (e.g., `"valid"`) and the value is a theme color name (e.g., `"success"`). All styling is derived from the theme color's CSS custom properties.
+Each key in the map is a validation state name (e.g., `"valid"`) and the value is a theme color name (e.g., `"success"`). All styling is derived from the theme color’s CSS custom properties.
 
 ### Sass loops
 
@@ -502,4 +502,4 @@ Used to iterate over `$validation-states` map values to generate our validation 
 
 ### Customizing
 
-Validation states can be customized via Sass with the `$validation-states` map. Located in our `forms/_validation.scss` file, this Sass map pairs each state name to a theme color name. All styling is derived from the theme color's existing CSS custom properties (`--{theme}-fg`, `--{theme}-border`, `--{theme}-bg`, etc.). While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+Validation states can be customized via Sass with the `$validation-states` map. Located in our `forms/_validation.scss` file, this Sass map pairs each state name to a theme color name. All styling is derived from the theme color’s existing CSS custom properties (`--{theme}-fg`, `--{theme}-border`, `--{theme}-bg`, etc.). While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.

@@ -11,11 +11,11 @@ js: required
 
 ## How it works
 
-The Dialog component leverages the browser's native `<dialog>` element, providing built-in accessibility features, focus management, and backdrop handling without the complexity of custom implementations.
+The Dialog component leverages the browser’s native `<dialog>` element, providing built-in accessibility features, focus management, and backdrop handling without the complexity of custom implementations.
 
 Key features of the native dialog:
 
-- **Modal or inline** via `showModal()` / `show()` — `modal: true` (default) promotes the dialog to the browser's top layer with a backdrop and focus trapping; `modal: false` renders it inline.
+- **Modal or inline** via `showModal()` / `show()` — `modal: true` (default) promotes the dialog to the browser’s top layer with a backdrop and focus trapping; `modal: false` renders it inline.
 - **Built-in backdrop** using the `::backdrop` pseudo-element (modal only); set `backdrop: "static"` to lock clicks outside, or `backdrop: false` to hide it.
 - **Escape key handling** closes the dialog by default; set `keyboard: false` to disable.
 - **Accessibility** — focus is trapped inside modal dialogs and returned to the trigger on close, with native `<dialog>` ARIA semantics.
@@ -37,7 +37,7 @@ Toggle a dialog by clicking the button below. The dialog uses the native `showMo
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
-      <p>This is a native dialog element. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
+      <p>This is a native dialog element. It uses the browser’s built-in modal behavior for accessibility and focus management.</p>
     </div>
     <div class="dialog-footer">
       <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
@@ -59,7 +59,7 @@ To make a dialog dark, add `data-bs-theme="dark"` to the `<dialog>` element.
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
-      <p>This is a native dialog element, only it’s set to dark mode. It uses the browser's built-in modal behavior for accessibility and focus management.</p>
+      <p>This is a native dialog element, only it’s set to dark mode. It uses the browser’s built-in modal behavior for accessibility and focus management.</p>
     </div>
     <div class="dialog-footer">
       <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
@@ -90,9 +90,9 @@ When `backdrop` is set to `static`, the dialog will not close when clicking outs
 
 ## Overlays
 
-Tooltips, popovers, and toasts all work inside dialogs, but require some extra care. Since dialogs render in the browser's top layer, overlays appended to `<body>` will appear behind the dialog. Set `data-bs-container` to the dialog element so tooltips and popovers render inside it. Toasts already work as long as they're placed in the dialog markup.
+Tooltips, popovers, and toasts all work inside dialogs, but require some extra care. Since dialogs render in the browser’s top layer, overlays appended to `<body>` will appear behind the dialog. Set `data-bs-container` to the dialog element so tooltips and popovers render inside it. Toasts already work as long as they’re placed in the dialog markup.
 
-Tooltips, popovers, toasts, and menus all work inside modal dialogs. Modal dialogs use `showModal()`, which promotes the dialog to the browser's top layer -- a special rendering layer above everything else on the page.
+Tooltips, popovers, toasts, and menus all work inside modal dialogs. Modal dialogs use `showModal()`, which promotes the dialog to the browser’s top layer -- a special rendering layer above everything else on the page.
 
 <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#dialogWithComponents">
     Open dialog
@@ -228,7 +228,7 @@ Create a scrollable dialog that scrolls the dialog body while keeping the header
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
-      <p>This is some placeholder content to show the scrolling behavior for dialogs. We use repeated line breaks to demonstrate how content can exceed the dialog's inner height, showing scrolling within the body while the header and footer remain fixed.</p>
+      <p>This is some placeholder content to show the scrolling behavior for dialogs. We use repeated line breaks to demonstrate how content can exceed the dialog’s inner height, showing scrolling within the body while the header and footer remain fixed.</p>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -284,9 +284,9 @@ When a toggle trigger is inside an open dialog, clicking it will **swap** dialog
 By default, dialogs open as modals using the browser-native `showModal()` method. You can also open dialogs as non-modal using `show()` by setting `modal` to `false`. Non-modal dialogs:
 
 - Have no backdrop
-- Don't trap focus
-- Don't block interaction with the rest of the page
-- Don't render in the browser's top layer
+- Don’t trap focus
+- Don’t block interaction with the rest of the page
+- Don’t render in the browser’s top layer
 - Still respond to Escape key (if `keyboard: true`)
 
 <Example code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#nonModalDialog" data-bs-modal="false"><!-- [!code highlight] -->
@@ -299,7 +299,7 @@ By default, dialogs open as modals using the browser-native `showModal()` method
       <CloseButton dismiss="dialog" />
     </div>
     <div class="dialog-body">
-      <p>This dialog doesn't block the page. You can still interact with content behind it.</p>
+      <p>This dialog doesn’t block the page. You can still interact with content behind it.</p>
     </div>
     <div class="dialog-footer">
       <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
@@ -492,7 +492,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `backdrop` | boolean or `'static'` | `true` | For modal dialogs, clicking the backdrop dismisses the dialog. Specify `static` for a backdrop which doesn't close the dialog when clicked. Has no effect on non-modal dialogs. |
+| `backdrop` | boolean or `'static'` | `true` | For modal dialogs, clicking the backdrop dismisses the dialog. Specify `static` for a backdrop which doesn’t close the dialog when clicked. Has no effect on non-modal dialogs. |
 | `keyboard` | boolean | `true` | Closes the dialog when escape key is pressed. |
 | `modal` | boolean | `true` | When `true`, opens the dialog as a modal using `showModal()` with backdrop, focus trapping, and top layer rendering. When `false`, opens as a non-modal dialog using `show()` without backdrop or focus trapping. |
 </BsTable>
@@ -515,14 +515,14 @@ const myDialog = new bootstrap.Dialog('#myDialog', {
 | `hide` | Hides the dialog. **Returns to the caller before the dialog has actually been hidden** (i.e. before the `hidden.bs.dialog` event occurs). |
 | `toggle` | Toggles the dialog. **Returns to the caller before the dialog has actually been shown or hidden** (i.e. before the `shown.bs.dialog` or `hidden.bs.dialog` event occurs). |
 | `handleUpdate` | Provided for API consistency with Modal. Native dialogs handle their own positioning. |
-| `dispose` | Destroys an element's dialog. |
+| `dispose` | Destroys an element’s dialog. |
 | `getInstance` | Static method which allows you to get the dialog instance associated with a DOM element. |
-| `getOrCreateInstance` | Static method which allows you to get the dialog instance associated with a DOM element, or create a new one in case it wasn't initialized. |
+| `getOrCreateInstance` | Static method which allows you to get the dialog instance associated with a DOM element, or create a new one in case it wasn’t initialized. |
 </BsTable>
 
 ### Events
 
-Bootstrap's dialog class exposes a few events for hooking into dialog functionality.
+Bootstrap’s dialog class exposes a few events for hooking into dialog functionality.
 
 <BsTable>
 | Event | Description |
