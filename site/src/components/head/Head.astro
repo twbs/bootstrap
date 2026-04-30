@@ -35,13 +35,10 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 <meta name="description" content={description} />
 
 <meta name="author" content={getConfig().authors} />
+
 <meta name="generator" content={Astro.generator} />
-<meta name="docsearch:language" content="en" />
-<meta name="docsearch:version" content={getConfig().docs_version} />
 
 <link rel="canonical" href={canonicalUrl} />
-
-<link rel="preconnect" href=`https://${getConfig().algolia.app_id}-dsn.algolia.net` crossorigin />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

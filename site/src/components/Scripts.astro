@@ -11,10 +11,8 @@ const { layout } = Astro.props
 
 <script>
   import application from '../assets/application.js'
-  import search from '../assets/search.js'
 
   application()
-  search()
 </script>
 
-{layout === 'docs' && <DocsScripts />}
+<DocsScripts />

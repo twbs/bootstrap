@@ -111,7 +111,7 @@ $button-variants: defaults(
     "outline": (
       "base": (
         "bg": "transparent",
-        "color": "text",
+        "color": "fg",
         "border-color": "border"
       ),
       "hover": (
@@ -128,30 +128,30 @@ $button-variants: defaults(
     "subtle": (
       "base": (
         "bg": "bg-subtle",
-        "color": "text",
+        "color": "fg",
         "border-color": "transparent"
       ),
       "hover": (
         "bg": ("bg-muted", "bg-subtle"),
-        "color": "text-emphasis"
+        "color": "fg-emphasis"
       ),
       "active": (
         "bg": "bg-subtle",
-        "color": "text-emphasis"
+        "color": "fg-emphasis"
       )
     ),
     "text": (
       "base": (
-        "color": "text",
+        "color": "fg",
         "bg": "transparent",
         "border-color": "transparent"
       ),
       "hover": (
-        "color": "text",
+        "color": "fg",
         "bg": "bg-subtle"
       ),
       "active": (
-        "color": "text",
+        "color": "fg",
         "bg": "bg-subtle"
       )
     )

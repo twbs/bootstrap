@@ -41,6 +41,7 @@
         "content";
       grid-template-rows: auto auto 1fr;
       gap: inherit;
+      padding-top: .75rem;
     }
 
     @include media-breakpoint-up(lg) {

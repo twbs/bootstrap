@@ -25,12 +25,12 @@ $badge-tokens: defaults(
 // scss-docs-start badge-variants
 $badge-variants: (
   "subtle": (
-    "color": "text",
+    "color": "fg",
     "bg": "bg-subtle",
     "border-color": "transparent"
   ),
   "outline": (
-    "color": "text",
+    "color": "fg",
     "bg": "transparent",
     "border-color": "border"
   )

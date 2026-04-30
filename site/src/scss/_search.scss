@@ -1,119 +1,379 @@
 @use "../../../scss/layout/breakpoints" as *;
-@use "../../../scss/mixins/color-mode" as *;
 @use "../../../scss/mixins/border-radius" as *;
+@use "../../../scss/mixins/focus-ring" as *;
+@use "../../../scss/mixins/transition" as *;
 
-// stylelint-disable selector-class-pattern
+//
+// Custom Pagefind search UI w/ Bootstrap components
+//
 
-:root {
-  --docsearch-primary-color: var(--bs-indigo-500);
-  --docsearch-logo-color: var(--bs-indigo-500);
+.bd-search {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+
+  // Below `md` the trigger is a borderless icon button
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    top: .875rem;
+    left: 50%;
+    width: 240px;
+    margin-inline-start: -100px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 280px;
+    margin-inline-start: -140px;
+  }
 }
 
-@include color-mode(dark, true) {
-  // From here, the values are copied from https://cdn.jsdelivr.net/npm/@docsearch/css@3
-  // in html[data-theme="dark"] selector
-  // and are slightly modified for formatting purpose
-  // --docsearch-text-color: #f5f6f7;
-  --docsearch-container-background: rgba(9, 10, 17, .8);
-  --docsearch-modal-background: #15172a;
-  --docsearch-modal-shadow: inset 1px 1px 0 0 #2c2e40, 0 3px 8px 0 #000309;
-  // --docsearch-searchbox-background: #090a11;
-  // --docsearch-searchbox-focus-background: #000;
-  --docsearch-hit-color: #bec3c9;
-  --docsearch-hit-shadow: none;
-  --docsearch-hit-background: #090a11;
-  --docsearch-key-gradient: linear-gradient(-26.5deg, #565872, #31355b);
-  --docsearch-key-shadow: inset 0 -2px 0 0 #282d55, inset 0 0 1px 1px #51577d, 0 2px 2px 0 rgba(3, 4, 9, .3);
-  --docsearch-footer-background: #1e2136;
-  --docsearch-footer-shadow: inset 0 1px 0 0 rgba(73, 76, 106, .5), 0 -4px 8px 0 rgba(0, 0, 0, .2);
-  // --docsearch-muted-color: #7f8497;
-}
+// Trigger button
+//
+// Mobile (< md): icon-only button, no chrome.
+// md+:           expands to a faux input with label + ⌘K shortcut.
 
-.DocSearch-Button {
-  width: auto;
-  height: auto;
-  padding: var(--bs-nav-link-padding-y) 0;
-  margin-left: 0;
-  color: var(--bs-nav-link-color);
-  background-color: var(--bs-nav-link-bg);
+.bd-search-trigger {
+  display: inline-flex;
+  gap: .5rem;
+  align-items: center;
+  padding: .375rem;
+  font-size: var(--bs-font-size-sm);
+  color: var(--bs-fg-3, var(--bs-secondary-color));
+  text-align: start;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  @include border-radius(var(--bs-border-radius));
+  @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
 
   &:hover {
-    color: var(--bs-nav-link-hover-color);
-    background-color: var(--bs-nav-link-hover-bg);
+    color: var(--bs-fg-body);
+  }
+
+  &:focus-visible {
+    @include focus-ring(true);
+  }
+
+  @include media-breakpoint-up(md) {
+    width: 100%;
+    padding: .375rem .5rem .375rem .75rem;
+    background-color: var(--bs-bg-1);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+
+    &:hover {
+      background-color: var(--bs-bg-2);
+      border-color: var(--bs-border-color);
+    }
+  }
+}
+
+.bd-search-trigger-icon {
+  flex-shrink: 0;
+  color: var(--bs-fg-3);
+}
+
+.bd-search-trigger-label,
+.bd-search-trigger-shortcut {
+  display: none;
+
+  @include media-breakpoint-up(md) {
+    display: inline-flex;
+  }
+}
+
+.bd-search-trigger-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bd-search-trigger-shortcut {
+  flex-shrink: 0;
+  gap: .125rem;
+}
+
+.bd-search-trigger-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  padding: 0 .25rem;
+  font-family: var(--bs-font-monospace);
+  font-size: .75rem;
+  color: var(--bs-fg-3, var(--bs-secondary-color));
+  background-color: var(--bs-bg-body);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  @include border-radius(var(--bs-border-radius-sm));
+}
+
+// Search dialog shell
+//
+// Top-aligned overlay that grows up to the viewport. Uses the
+// existing `.dialog` token surface; we only override sizing and
+// position so the dialog feels like a docs-style command palette.
+
+.dialog-search {
+  --dialog-margin: 1.5rem;
+  --dialog-padding: .75rem;
+  --dialog-header-padding: .75rem;
+  --dialog-footer-padding: .5rem .75rem;
+  --dialog-border-radius: var(--border-radius-xl);
+
+  align-self: flex-start;
+  width: 640px;
+  max-height: min(80dvh, 720px);
+  margin-block-start: 3rem;
+  overflow: hidden;
+
+  @include media-breakpoint-down(sm) {
+    max-height: calc(100dvh - 4rem);
+  }
+}
+
+//
+// Header / search form row
+//
+
+.bd-search-form {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: .75rem;
+  align-items: center;
+  // padding: var(--dialog-header-padding);
+  padding: var(--spacer-6) var(--spacer-6) var(--spacer-4);
+  border-bottom: 0;
+}
+
+.bd-search-form-icon {
+  flex-shrink: 0;
+  color: var(--bs-fg-3);
+}
+
+bd-search-input {
+  width: 100%;
+}
+
+.bd-search-input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+
+  &:focus {
+    background-color: transparent;
+    border-color: transparent;
     box-shadow: none;
   }
+}
 
-  @include media-breakpoint-up(lg) {
-    padding-inline: calc(var(--bs-spacer) * .5);
+.bd-search-close {
+  flex-shrink: 0;
+  margin-inline-start: 0;
+}
+
+//
+// Body / results
+//
+
+.bd-search-body {
+  padding: 0 var(--spacer-6) var(--spacer-6);
+}
+
+bd-search-results {
+  display: block;
+  min-height: 6rem;
+}
+
+.bd-search-results-list {
+  --bs-list-group-border-width: 0;
+  --bs-list-group-border-radius: 0;
+
+  gap: var(--spacer-2);
+  padding-block-start: var(--spacer-1);
+  list-style: none;
+}
+
+.bd-search-result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-1);
+  padding: 0;
+}
+
+// Default-active state: while focus is still in the search input (i.e. the
+// results list isn't `:focus-within`), the first result is visually
+// highlighted as the "Enter target", giving the dialog a command-palette
+// feel. Once the user arrow-keys into the list, `:focus-within` flips on,
+// the highlight drops, and the focus ring on the actually-focused row takes
+// over instead.
+bd-search-results:not(:focus-within) .bd-search-result:first-child > .bd-search-item {
+  @include focus-ring(true, var(--bs-accent-focus-ring));
+  --focus-ring-offset: -2px;
+  background-color: var(--bs-bg-1);
+}
+
+// Single template for every clickable row: top-level results, nested
+// subresults, and recently visited items. Variants only differ by icon
+// (`#file-earmark-richtext` vs `#hash`) and a `-sub` modifier that nudges
+// the title down to `font-size-sm`.
+.bd-search-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: .5rem;
+  padding: .75rem;
+  text-decoration: none;
+  @include border-radius(var(--bs-border-radius-lg));
+
+  &:hover {
+    background-color: var(--bs-bg-1);
   }
-}
 
-.DocSearch-Search-Icon {
-  width: 16px;
-  height: 16px;
-  color: inherit !important; // stylelint-disable-line declaration-no-important
-}
+  &:focus-visible {
+    --focus-ring-offset: -2px;
 
-.DocSearch-Button-Placeholder {
-  display: none;
-  font-size: var(--bs-font-size-sm);
-  font-weight: var(--bs-font-weight-normal);
-  color: var(--bs-nav-link-color);
-}
-
-.DocSearch-Button-Keys {
-  display: none;
-}
-
-.DocSearch-Container {
-  --docsearch-muted-color: var(--bs-fg-3);
-  --docsearch-hit-shadow: none;
-
-  position: fixed;
-  z-index: 2000; // Make sure to be over all components showcased in the documentation
-  cursor: auto; // Needed because of [role="button"] in Algolia search modal. Remove once https://github.com/algolia/docsearch/issues/1370 is tackled.
-
-  @include media-breakpoint-up(lg) {
-    padding-block-start: 4rem;
+    z-index: 1;
+    @include focus-ring(true, var(--bs-accent-focus-ring));
   }
-}
 
-.DocSearch-Form {
-  @include border-radius(var(--bs-border-radius));
-}
+  &:not(.bd-search-item-sub) {
+    border: var(--border-width) solid var(--bs-border-color);
+  }
 
-.DocSearch-Hits {
   mark {
     padding: 0;
+    font-weight: 600;
+    color: light-dark(var(--bs-indigo-600), var(--bs-indigo-300));
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: light-dark(var(--bs-indigo-500), var(--bs-indigo-400));
+    text-underline-offset: 2px;
+    background-color: transparent;
   }
 }
 
-.DocSearch-Hit {
-  padding-block-end: 0;
-  @include border-radius(0);
+.bd-search-item-icon {
+  margin-block-start: .15rem;
+  color: var(--bs-fg-3);
+}
 
-  a {
-    @include border-radius(0);
-    border: solid var(--bs-border-color);
-    border-width: 0 1px 1px;
-  }
+.bd-search-item-title {
+  grid-column: 2;
+  font-weight: 600;
+  color: var(--bs-fg-body);
+}
 
-  &:first-child a {
-    @include border-top-radius(var(--bs-border-radius));
-    border-top-width: 1px;
-  }
-  &:last-child a {
-    @include border-bottom-radius(var(--bs-border-radius));
+.bd-search-item-excerpt {
+  display: -webkit-box;
+  grid-column: 2;
+  overflow: hidden;
+  font-size: var(--bs-font-size-sm);
+  line-height: 1.4;
+  color: var(--bs-fg-2);
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.bd-search-item-sub {
+  padding-inline-start: var(--spacer-3);
+  background-color: color-mix(in lab, var(--bs-bg-1), var(--bs-bg-body));
+
+  .bd-search-item-title {
+    font-size: var(--bs-font-size-sm);
+    font-weight: 500;
   }
 }
 
-.DocSearch-Hit-icon {
+// Sub-results are nested inside their parent result row.
+.bd-search-subresults {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: var(--spacer-1);
+  padding-inline-start: var(--spacer-6);
 }
 
-// Fix --docsearch-logo-color that doesn't do anything
-.DocSearch-Logo svg .cls-1,
-.DocSearch-Logo svg .cls-2 {
-  fill: var(--docsearch-logo-color);
+//
+// Recently visited
+//
+
+.bd-search-recent-header {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: .5rem;
+}
+
+.bd-search-recent-label {
+  font-size: var(--bs-font-size-xs);
+  font-weight: 600;
+  color: var(--bs-fg-3);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.bd-search-recent-clear {
+  padding: .125rem .375rem;
+  font-size: var(--bs-font-size-xs);
+  color: var(--bs-fg-3);
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  @include border-radius(var(--bs-border-radius-sm));
+  @include transition(color .15s ease-in-out, background-color .15s ease-in-out);
+
+  &:hover {
+    color: var(--bs-fg-body);
+    background-color: var(--bs-bg-1);
+  }
+
+  &:focus-visible {
+    @include focus-ring(true);
+  }
+}
+
+//
+// Empty / loading / error states
+//
+
+.bd-search-empty,
+.bd-search-error {
+  padding: 2rem 1rem;
+  font-size: var(--bs-font-size-sm);
+  color: var(--bs-fg-3);
+  text-align: center;
+}
+
+.bd-search-error {
+  color: var(--bs-danger-text-emphasis);
+}
+
+.bd-search-loading {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 0;
+}
+
+.bd-search-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: .375rem;
+  padding: .75rem 1rem;
+
+  & + & {
+    border-block-start: var(--bs-border-width) solid var(--bs-border-color);
+  }
+
+  .placeholder {
+    display: block;
+    height: .65rem;
+    @include border-radius(var(--bs-border-radius-sm));
+  }
+
+  .placeholder.col-4 {
+    height: .85rem;
+  }
 }

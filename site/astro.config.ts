@@ -8,7 +8,6 @@ import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/
 
 import { bootstrap } from './src/libs/astro'
 import { getConfig } from './src/libs/config'
-import { algoliaPlugin } from './src/plugins/algolia-plugin'
 import { stackblitzPlugin } from './src/plugins/stackblitz-plugin'
 
 // Resolve `@bootstrap` to the same on-disk Bootstrap bundle the docs ship, so
@@ -69,7 +68,7 @@ export default defineConfig({
   },
   site,
   vite: {
-    plugins: [algoliaPlugin(), stackblitzPlugin()],
+    plugins: [stackblitzPlugin()],
     resolve: {
       alias: {
         '@bootstrap': bootstrapBundlePath

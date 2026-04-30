@@ -12,6 +12,8 @@ import XIcon from '@components/icons/XIcon.astro'
 import Versions from '@components/header/Versions.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
+import SearchTrigger from '@components/header/SearchTrigger.astro'
+import SearchDialog from '@components/header/SearchDialog.astro'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']
@@ -114,7 +116,9 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
     </div>
 
     <ul class="nav navbar-nav flex-row ms-auto">
-      <li class="nav-item nav-link px-1" id="docsearch" data-bd-docs-version={getConfig().docs_version}></li>
+      <div class="bd-search">
+        <SearchTrigger placeholder="Search docs…" />
+      </div>
 
       <LinkItem class="px-1 d-none lg:d-flex" href={getConfig().github_org} target="_blank" rel="noopener">
         <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
@@ -144,3 +148,5 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
     }
   </nav>
 </header>
+
+<SearchDialog placeholder="Search docs…" />
