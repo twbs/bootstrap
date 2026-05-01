@@ -689,11 +689,13 @@ $utilities: map.merge(
       values: lowercase uppercase capitalize
     ),
     // scss-docs-end utils-text-transform
+    // scss-docs-start utils-text-wrap
     "text-wrap": (
       property: text-wrap,
       class: text,
       values: wrap nowrap balance pretty,
     ),
+    // scss-docs-end utils-text-wrap
     // scss-docs-start utils-text-break
     "word-wrap": (
       property: word-wrap word-break,
