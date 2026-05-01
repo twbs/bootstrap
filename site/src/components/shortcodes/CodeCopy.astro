@@ -35,36 +35,3 @@ const highlightedCode = await highlightCode(code, lang)
   </button>
 </div>
 
-<style>
-  .code-copy {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    min-height: 2.5rem;
-    margin: 0;
-    padding: 0.75rem 1rem;
-    font-size: var(--font-size-md);
-    background-color: var(--bg-1);
-    border: 1px solid var(--border-color-translucent);
-    border-radius: var(--border-radius-lg);
-  }
-
-  .code-copy :global(pre) {
-    margin: 0;
-    background-color: transparent !important;
-  }
-
-  .code-copy :global([data-bd-clipboard]) {
-    position: static;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    flex-shrink: 0;
-    padding: 0;
-    margin: -0.5rem -0.25rem -0.5rem 1rem;
-  }
-</style>
