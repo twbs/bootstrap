@@ -172,6 +172,9 @@ $root-tokens: map.set($root-tokens, --radius-pill, 50rem);
   @include tokens($root-tokens);
 
   color-scheme: light dark;
+  // Always reserve the viewport scrollbar gutter so layout doesn't shift
+  // when overflow: hidden is applied (e.g. when a dialog opens on Windows).
+  scrollbar-gutter: stable;
 }
 
 [data-bs-theme="dark"] {

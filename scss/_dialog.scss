@@ -62,7 +62,6 @@ $dialog-sizes: defaults(
   // Prevent body scroll when dialog is open
   .dialog-open {
     overflow: hidden;
-    scrollbar-gutter: stable;
   }
 
   .dialog {
