@@ -43,7 +43,7 @@
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  @include border-radius(var(--bs-border-radius));
+  @include border-radius(var(--bs-radius-6));
   @include transition(color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out);
 
   &:hover {
@@ -104,7 +104,7 @@
   color: var(--bs-fg-3, var(--bs-secondary-color));
   background-color: var(--bs-bg-body);
   border: var(--bs-border-width) solid var(--bs-border-color);
-  @include border-radius(var(--bs-border-radius-sm));
+  @include border-radius(var(--bs-radius-4));
 }
 
 // Search dialog shell
@@ -118,7 +118,7 @@
   --dialog-padding: .75rem;
   --dialog-header-padding: .75rem;
   --dialog-footer-padding: .5rem .75rem;
-  --dialog-border-radius: var(--border-radius-xl);
+  --dialog-border-radius: var(--bs-radius-8);
 
   align-self: flex-start;
   width: 640px;
@@ -225,7 +225,7 @@ bd-search-results:not(:focus-within) .bd-search-result:first-child > .bd-search-
   column-gap: .5rem;
   padding: .75rem;
   text-decoration: none;
-  @include border-radius(var(--bs-border-radius-lg));
+  @include border-radius(var(--bs-radius-6));
 
   &:hover {
     background-color: var(--bs-bg-1);
@@ -321,7 +321,7 @@ bd-search-results:not(:focus-within) .bd-search-result:first-child > .bd-search-
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  @include border-radius(var(--bs-border-radius-sm));
+  @include border-radius(var(--bs-radius-3));
   @include transition(color .15s ease-in-out, background-color .15s ease-in-out);
 
   &:hover {
@@ -370,7 +370,7 @@ bd-search-results:not(:focus-within) .bd-search-result:first-child > .bd-search-
   .placeholder {
     display: block;
     height: .65rem;
-    @include border-radius(var(--bs-border-radius-sm));
+    @include border-radius(var(--bs-radius-3));
   }
 
   .placeholder.col-4 {
