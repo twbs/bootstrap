@@ -1,14 +1,18 @@
 // check-unused-imports-disable — test infrastructure imports.
 @use "sass:map";
-@use "sass:meta";
 @use "../../config" as *;
 @use "../../functions" as *;
 @use "../../mixins/utilities" as *;
 
-// These tests verify the conditional loop logic that _api.scss applies when
-// iterating over $utilities. Rather than importing the api file (which can't
-// override @use-scoped variables via !global), we mirror the api's conditions
-// directly and call generate-utility with the appropriate prefix.
+// Integration-style tests for the utilities API loop.
+// Each test calls generate-utilities-loop — the same mixin that _api.scss calls — so
+// a logic change in the real loop is immediately caught here without any mirrored conditions.
+//
+// A minimal two-breakpoint map is used to keep output predictable and tests fast.
+$test-breakpoints: (
+  xs: 0,
+  sm: 576px,
+);
 
 @include describe("utilities/api loop conditions") {
   @include describe("enabled") {
@@ -27,11 +31,7 @@
 
       @include assert() {
         @include output() {
-          @each $key, $utility in $test-utilities {
-            @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false {
-              @include generate-utility($utility, "");
-            }
-          }
+          @include generate-utilities-loop($test-utilities, $test-breakpoints);
         }
 
         @include expect() {
@@ -52,17 +52,73 @@
 
       @include assert() {
         @include output() {
-          @each $key, $utility in $test-utilities {
-            @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false {
-              @include generate-utility($utility, "");
-            }
-          }
+          @include generate-utilities-loop($test-utilities, $test-breakpoints);
         }
 
         @include expect() {
           .opacity-25 {
             opacity: .25;
           }
+        }
+      }
+    }
+  }
+
+  @include describe("responsive") {
+    @include it("generates responsive classes only for utilities with responsive: true") {
+      $test-utilities: (
+        opacity: (
+          property: opacity,
+          responsive: true,
+          values: (50: .5)
+        ),
+        float: (
+          property: float,
+          values: (start: inline-start)
+        )
+      );
+
+      @include assert() {
+        @include output() {
+          @include generate-utilities-loop($test-utilities, $test-breakpoints);
+        }
+
+        @include expect() {
+          .opacity-50 {
+            opacity: .5;
+          }
+
+          .float-start {
+            float: inline-start;
+          }
+
+          @media (width >= 576px) {
+            .sm\:opacity-50 {
+              opacity: .5;
+            }
+          }
+        }
+      }
+    }
+
+    @include it("does not generate responsive classes for utilities without responsive: true") {
+      $test-utilities: (
+        float: (
+          property: float,
+          values: (start: inline-start)
+        )
+      );
+
+      @include assert() {
+        @include output() {
+          @include generate-utilities-loop($test-utilities, $test-breakpoints);
+        }
+
+        @include expect() {
+          .float-start {
+            float: inline-start;
+          }
+          // nothing at sm — responsive is not set
         }
       }
     }
@@ -85,21 +141,7 @@
 
       @include assert() {
         @include output() {
-          // Base classes for all enabled utilities (mirrors responsive loop at xs)
-          @each $key, $utility in $test-utilities {
-            @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false {
-              @include generate-utility($utility, "");
-            }
-          }
-
-          // Dark classes (mirrors dark media query block)
-          @media (prefers-color-scheme: dark) {
-            @each $key, $utility in $test-utilities {
-              @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false and map.get($utility, dark) == true {
-                @include generate-utility($utility, "dark\\:");
-              }
-            }
-          }
+          @include generate-utilities-loop($test-utilities, $test-breakpoints);
         }
 
         @include expect() {
@@ -138,17 +180,14 @@
 
       @include assert() {
         @include output() {
-          @media (prefers-color-scheme: dark) {
-            @each $key, $utility in $test-utilities {
-              @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false and map.get($utility, dark) == true {
-                @include generate-utility($utility, "dark\\:");
-              }
-            }
-          }
+          @include generate-utilities-loop($test-utilities, $test-breakpoints);
         }
 
         @include expect() {
-          // nothing — no dark classes without dark: true
+          .opacity-50 {
+            opacity: .5;
+          }
+          // nothing in @media (prefers-color-scheme: dark) — dark is not set
         }
       }
     }

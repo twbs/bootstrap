@@ -1,6 +1,7 @@
 @use "sass:list";
 @use "sass:map";
 @use "sass:meta";
+@use "../layout/breakpoints" as bp;
 
 // Utility generator
 
@@ -249,6 +250,42 @@
           @include generate-variables($utility, $value);
           @include generate-properties($utility, $property-map, $properties, $value);
         }
+      }
+    }
+  }
+}
+
+// Generates all utility classes: base, responsive, print, and dark.
+// Extracted so that tests can call this mixin directly with a custom $utilities map
+// rather than having to mirror the loop conditions inline.
+@mixin generate-utilities-loop($utilities, $breakpoints) {
+  // Base + responsive (one pass per breakpoint)
+  @each $breakpoint in map.keys($breakpoints) {
+    @include bp.media-breakpoint-up($breakpoint, $breakpoints) {
+      $prefix: bp.breakpoint-prefix($breakpoint, $breakpoints);
+
+      @each $key, $utility in $utilities {
+        @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false and (map.get($utility, responsive) or $prefix == "") {
+          @include generate-utility($utility, $prefix);
+        }
+      }
+    }
+  }
+
+  // Print utilities
+  @media print {
+    @each $key, $utility in $utilities {
+      @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false and map.get($utility, print) == true {
+        @include generate-utility($utility, "print\\:");
+      }
+    }
+  }
+
+  // Dark utilities
+  @media (prefers-color-scheme: dark) {
+    @each $key, $utility in $utilities {
+      @if meta.type-of($utility) == "map" and map.get($utility, enabled) != false and map.get($utility, dark) == true {
+        @include generate-utility($utility, "dark\\:");
       }
     }
   }
