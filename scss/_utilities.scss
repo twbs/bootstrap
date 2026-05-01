@@ -128,12 +128,12 @@ $utilities: map.merge(
       values: $position-values
     ),
     "start": (
-      property: left,
+      property: inset-inline-start,
       class: start,
       values: $position-values
     ),
     "end": (
-      property: right,
+      property: inset-inline-end,
       class: end,
       values: $position-values
     ),
@@ -188,6 +188,7 @@ $utilities: map.merge(
       )
     ),
     "border-y": (
+      class: border-y,
       property: border-block,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
@@ -195,6 +196,7 @@ $utilities: map.merge(
       )
     ),
     "border-x": (
+      class: border-x,
       property: border-inline,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
@@ -375,8 +377,8 @@ $utilities: map.merge(
       responsive: true,
       property: justify-self,
       values: (
-        start: flex-start,
-        end: flex-end,
+        start: start,
+        end: end,
         center: center,
       )
     ),
@@ -687,16 +689,8 @@ $utilities: map.merge(
       values: lowercase uppercase capitalize
     ),
     // scss-docs-end utils-text-transform
-    // "white-space": (
-    //   property: white-space,
-    //   class: text,
-    //   values: (
-    //     wrap: normal,
-    //     nowrap: nowrap,
-    //   )
-    // ),
     "text-wrap": (
-      property: white-space,
+      property: text-wrap,
       class: text,
       values: wrap nowrap balance pretty,
     ),
@@ -709,12 +703,6 @@ $utilities: map.merge(
     // scss-docs-end utils-text-break
     // scss-docs-end utils-text
     // scss-docs-start utils-color
-    // "color-attr": (
-    //   selector: "attr-includes",
-    //   class: "fg-",
-    //   property: color,
-    //   values: var(--fg),
-    // ),
     "fg": (
       property: (
         "--fg": null,
@@ -870,8 +858,23 @@ $utilities: map.merge(
     // scss-docs-end utils-interaction
     // scss-docs-start utils-border-radius
     "border-radius": (
-      property: border-radius,
+      property: (
+        "--rounded-size": null,
+        "border-radius": var(--rounded-size)
+      ),
       class: rounded,
+      values: map.merge(
+        $radii,
+        (
+          null: map.get($radii, 5),
+          circle: 50%,
+          pill: var(--radius-pill)
+        )
+      )
+    ),
+    "rounded-size": (
+      property: --rounded-size,
+      class: rounded-size,
       values: map.merge(
         $radii,
         (
@@ -887,43 +890,43 @@ $utilities: map.merge(
       values: map.merge(
         $radii,
         (
-          null: map.get($radii, 5),
+          null: var(--rounded-size, var(--radius-5)),
           circle: 50%,
           pill: var(--radius-pill)
         )
       )
     ),
     "rounded-end": (
-      property: border-end-end-radius border-end-start-radius,
+      property: border-start-end-radius border-end-end-radius,
       class: rounded-end,
       values: map.merge(
         $radii,
         (
-          null: map.get($radii, 5),
+          null: var(--rounded-size, var(--radius-5)),
           circle: 50%,
           pill: var(--radius-pill)
         )
       )
     ),
     "rounded-bottom": (
-      property: border-end-end-radius border-end-start-radius,
+      property: border-end-start-radius border-end-end-radius,
       class: rounded-bottom,
       values: map.merge(
         $radii,
         (
-          null: map.get($radii, 5),
+          null: var(--rounded-size, var(--radius-5)),
           circle: 50%,
           pill: var(--radius-pill)
         )
       )
     ),
     "rounded-start": (
-      property: border-start-start-radius border-start-end-radius,
+      property: border-start-start-radius border-end-start-radius,
       class: rounded-start,
       values: map.merge(
         $radii,
         (
-          null: map.get($radii, 5),
+          null: var(--rounded-size, var(--radius-5)),
           circle: 50%,
           pill: var(--radius-pill)
         )
