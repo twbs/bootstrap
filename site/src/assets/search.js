@@ -441,7 +441,7 @@ const isMac = () => {
 // flash of the wrong key.
 const setupTriggerShortcuts = () => {
   const mac = isMac()
-  const modifier = mac ? '⌘' : '⌃'
+  const modifier = mac ? '⌘' : 'Ctrl '
   const ariaKeyshortcut = mac ? 'Meta+K' : 'Control+K'
 
   for (const slot of document.querySelectorAll('.bd-search-trigger-shortcut')) {
