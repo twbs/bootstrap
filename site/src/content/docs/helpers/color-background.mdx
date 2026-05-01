@@ -12,9 +12,13 @@ import { getData } from '@libs/data'
 
 Color and background helpers combine the power of our [`.text-*` utilities]([[docsref:/utilities/colors]]) and [`.bg-*` utilities]([[docsref:/utilities/background]]) in one class. Using our Sass `color-contrast()` function, we automatically determine a contrasting `color` for a particular `background-color`.
 
+
+
 <Callout type="warning">
-**Heads up!** There’s currently no support for a CSS-native `color-contrast` function, so we use our own via Sass. This means that customizing our theme colors via CSS variables may cause color contrast issues with these utilities.
+**Heads up!** There’s currently limited support for the `contrast-color` function, [refer the mozilla doc]([[ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/contrast-color]])
 </Callout>
+
+
 
 <Example code={getData('theme-colors').map((themeColor) => `<div class="text-bg-${themeColor.name} p-3">${themeColor.title} with contrasting color</div>`)} />
 
