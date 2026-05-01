@@ -16,6 +16,11 @@ const { body_class, extra_css, extra_js, html_class, include_js, title = 'Exampl
 const pageTitle = `${title} · ${getConfig().title} v${getConfig().docs_version}`
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
 const bootstrapJsProps = getVersionedBsJsProps()
+const importMap = JSON.stringify({
+  imports: {
+    '@bootstrap': bootstrapJsProps.src
+  }
+})
 ---
 
 <!doctype html>
@@ -122,13 +127,7 @@ const bootstrapJsProps = getVersionedBsJsProps()
     {
       include_js !== false && (
         <Fragment>
-          <script type="importmap" is:inline>
-            {JSON.stringify({
-              imports: {
-                '@bootstrap': bootstrapJsProps.src
-              }
-            })}
-          </script>
+          <script type="importmap" is:inline set:html={importMap} />
           <script is:inline {...bootstrapJsProps} />
           {extra_js?.map((js) => (
             <script
