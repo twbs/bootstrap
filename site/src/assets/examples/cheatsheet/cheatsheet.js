@@ -1,4 +1,4 @@
-import { Tooltip, Popover, Toast } from '../../dist/js/bootstrap.bundle.js'
+import { Tooltip, Popover, Toast } from '@bootstrap'
 
 document.querySelectorAll('.tooltip-demo')
   .forEach(tooltip => {
