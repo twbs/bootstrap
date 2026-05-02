@@ -137,21 +137,17 @@ if (filePath && fileMatch && codeToDisplay) {
 
 <div class:list={[{ 'bd-code-snippet': !nestedInExample }, containerClass]}>
   {
-    nestedInExample
-      ? (<></>)
-      : Astro.slots.has('pre')
-        ? (
-          <slot name="pre" />
-        )
-        : (
-          <div class="bd-clipboard">
-            <button type="button" class="btn-clipboard">
-              <svg class="bi" role="img" aria-label="Copy">
-                <use xlink:href="#clipboard" />
-              </svg>
-            </button>
-          </div>
-        )
+    nestedInExample ? null : Astro.slots.has('pre') ? (
+      <slot name="pre" />
+    ) : (
+      <div class="bd-clipboard">
+        <button type="button" class="btn-clipboard">
+          <svg class="bi" role="img" aria-label="Copy">
+            <use xlink:href="#clipboard" />
+          </svg>
+        </button>
+      </div>
+    )
   }
   <div class="highlight">
     {
