@@ -44,7 +44,7 @@ Use the scaling classes for larger or smaller rounded corners. Sizes range from 
 
 ## Mixing
 
-Use `.rounded-size-{n}` to set the radius size without rounding all corners. Combine it with side classes like `.rounded-top` or `.rounded-end` to round only specific sides at that size.
+Use `.rounded-size-{n}` to set the radius size without rounding all corners. Combine it with side classes like `.rounded-top` or `.rounded-end` to round only specific sides at that size. Because these use CSS variables for sizing, you may need to apply additional classes to nested elements to prevent inheritance.
 
 <Example class="bd-example-rounded-utils" code={`<Placeholder width="75" height="75" class="rounded-size-6 rounded-top" title="Top corners only, size 6" />
 <Placeholder width="75" height="75" class="rounded-size-6 rounded-top rounded-end" title="Top and end corners, size 6" />
