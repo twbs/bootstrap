@@ -45,8 +45,8 @@ export default defineConfig({
     syntaxHighlight: 'shiki',
     shikiConfig: {
       themes: {
-        light: { ...bootstrapLight, name: '' },
-        dark: { ...bootstrapDark, name: '' }
+        light: { ...bootstrapLight, name: '', type: 'light' },
+        dark: { ...bootstrapDark, name: '', type: 'dark' }
       },
       transformers: [
         transformerNotationDiff(),
