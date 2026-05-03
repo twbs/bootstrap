@@ -58,9 +58,7 @@ Which outputs the following:
 .opacity-100 { opacity: 1; }
 ```
 
-### `property`
-
-<div class="badge fs-6 bg-accent mb-3">Required</div>
+### `property` <div class="badge badge-subtle theme-danger fs-sm fw-normal">Required</div>
 
 The `property` key must be set for any utility, and it must contain a valid CSS property. This property is used in the generated utility’s ruleset. When the `class` key is omitted, it also serves as the default class name. Consider the `text-decoration` utility:
 
@@ -112,6 +110,10 @@ Output:
 .bg-danger  { --bs-bg: var(--bs-red-500);  background-color: var(--bs-bg); }
 ```
 
+<Callout type="info">
+  Source CSS variables are used without a `--bs-` prefix, which is added in our compiled CSS with [our PostCSS plugin](https://github.com/twbs/postcss-prefix-custom-properties).
+</Callout>
+
 You can also set per-value overrides. When `values` contains a nested map whose keys match properties in the `property` map, those values are used for the matching property:
 
 ```scss
@@ -137,9 +139,7 @@ Output:
 .text-lg { font-size: 1.25rem; line-height: 1.75; }
 ```
 
-### `values`
-
-<div class="badge fs-6 bg-accent mb-3">Required</div>
+### `values` <div class="badge badge-subtle theme-danger fs-sm fw-normal">Required</div>
 
 Use the `values` key to specify which values for the specified `property` should be used in the generated class names and rules. Can be a list or map (set in the utilities or in a Sass variable).
 
