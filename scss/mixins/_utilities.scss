@@ -121,7 +121,7 @@
     @if map.has-key($utility, $bool-key) {
       $val: map.get($utility, $bool-key);
       @if $val != true and $val != false {
-        @warn "Utility key `#{$bool-key}` should be a boolean (true or false), got: #{$val}";
+        @error "Utility key `#{$bool-key}` should be a boolean (true or false), got: #{$val}";
       }
     }
   }
