@@ -182,7 +182,7 @@
     "npm-run-all2": "^8.0.4",
     "pagefind": "^1.5.0",
     "playwright": "^1.59.1",
-    "postcss": "^8.5.10",
+    "postcss": "^8.5.12",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
@@ -198,7 +198,7 @@
     "stylelint": "16.26.1",
     "stylelint-config-twbs-bootstrap": "^16.1.0",
     "stylelint-order": "^8.1.1",
-    "terser": "^5.46.1",
+    "terser": "^5.46.2",
     "unist-util-visit": "^5.1.0",
     "yaml": "^2.8.3",
     "zod": "^4.3.6"
