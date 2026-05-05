@@ -58,7 +58,8 @@ Which outputs the following:
 .opacity-100 { opacity: 1; }
 ```
 
-### `property` <div class="badge badge-subtle theme-danger fs-sm fw-normal">Required</div>
+### `property`
+<div class="badge badge-subtle theme-danger fs-sm fw-normal align-self-start">Required</div>
 
 The `property` key must be set for any utility, and it must contain a valid CSS property. This property is used in the generated utility’s ruleset. When the `class` key is omitted, it also serves as the default class name. Consider the `text-decoration` utility:
 
@@ -79,7 +80,7 @@ Output:
 .text-decoration-line-through { text-decoration: line-through; }
 ```
 
-### Property-Value Mapping
+#### Property value mapping
 
 The `property` key also accepts a **map** of CSS property names to default values. This lets a single utility class set multiple properties at once, and lets values override individual properties when the value is itself a map.
 
@@ -139,7 +140,8 @@ Output:
 .text-lg { font-size: 1.25rem; line-height: 1.75; }
 ```
 
-### `values` <div class="badge badge-subtle theme-danger fs-sm fw-normal">Required</div>
+### `values`
+<div class="badge badge-subtle theme-danger fs-sm fw-normal align-self-start">Required</div>
 
 Use the `values` key to specify which values for the specified `property` should be used in the generated class names and rules. Can be a list or map (set in the utilities or in a Sass variable).
 
