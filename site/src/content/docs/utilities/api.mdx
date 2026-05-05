@@ -614,17 +614,29 @@ This will generate utilities with `!important`:
 
 Now that you’re familiar with how the utilities API works, learn how to add your own custom classes and modify our default utilities.
 
+The examples below use two different import styles depending on the use case:
+
+- **`@use "bootstrap" with (...)`**—Use this when compiling the full Bootstrap framework from a single entrypoint. Configuration is passed via `with (...)` and Bootstrap handles merging in one step.
+- **`@use "bootstrap/scss/utilities" as *` + `@use "bootstrap/scss/utilities/api"`**—Use this for focused, utility-only builds where you need to read from or merge the existing `$utilities` map before passing it to the API layer. Using `as *` avoids a namespace prefix so you can reference `$utilities` directly.
+
 ### Override utilities
 
-Override existing utilities by using the same key. For example, if you want additional responsive overflow utility classes, you can do this:
+Override existing utilities by using the same key and passing the new definition via the `$utilities` configuration variable when loading Bootstrap. For example, take our existing overflow utility class definition:
+
+<ScssDocs name="utils-overflow" file="scss/_utilities.scss" />
+
+If you want to make those responsive, and adjust the values used, you can do this:
 
 ```scss
-$utilities: (
-  "overflow": (
-    responsive: true,
-    property: overflow,
-    values: visible hidden scroll auto,
-  ),
+// my-bootstrap.scss
+@use "bootstrap" with (
+  $utilities: (
+    "overflow": (
+      responsive: true,
+      // property: overflow,
+      values: visible hidden scroll auto,
+    ),
+  )
 );
 ```
 
@@ -651,17 +663,18 @@ New utilities can be added to the default `$utilities` map by passing them via t
 Modify existing utilities by passing a modified copy of the utility via the `$utilities` configuration variable. Use `map.get` and `map.merge` to build the new value from the existing definition. In the example below, we’re adding an additional value to the `width` utilities:
 
 ```scss
-// my-bootstrap.scss — must be defined before the $utilities map is built
-@use "bootstrap/scss/utilities" as bs-utils;
+// my-bootstrap.scss
+@use "sass:map";
+@use "bootstrap/scss/utilities" as *;
 
 $utilities: map.merge(
-  bs-utils.$utilities,
+  $utilities,
   (
     "width": map.merge(
-      map.get(bs-utils.$utilities, "width"),
+      map.get($utilities, "width"),
       (
         values: map.merge(
-          map.get(map.get(bs-utils.$utilities, "width"), "values"),
+          map.get(map.get($utilities, "width"), "values"),
           (10: 10%),
         ),
       ),
@@ -678,20 +691,19 @@ You can enable responsive classes for an existing set of utilities that are not 
 
 ```scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as bs-utils;
+@use "bootstrap/scss/utilities" as *;
 
 $utilities: map.merge(
-  bs-utils.$utilities,
+  $utilities,
   (
     "border": map.merge(
-      map.get(bs-utils.$utilities, "border"),
+      map.get($utilities, "border"),
       ( responsive: true ),
     ),
   )
 );
 
 @use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
-
 ```
 
 This will now generate responsive variations of `.border` and `.border-0` for each breakpoint. Your generated CSS will look like this:
@@ -732,20 +744,19 @@ Missing v4 utilities, or used to another naming convention? The utilities API ca
 
 ```scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as bs-utils;
+@use "bootstrap/scss/utilities" as *;
 
 $utilities: map.merge(
-  bs-utils.$utilities,
+  $utilities,
   (
     "margin-start": map.merge(
-      map.get(bs-utils.$utilities, "margin-start"),
+      map.get($utilities, "margin-start"),
       ( class: ml ),
     ),
   )
 );
 
 @use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
-
 ```
 
 ### Remove utilities
@@ -754,29 +765,27 @@ Remove any of the default utilities with the [`map.remove()` Sass function](http
 
 ```scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as bs-utils;
+@use "bootstrap/scss/utilities" as *;
 
-$utilities: map.remove(bs-utils.$utilities, "width", "float");
+$utilities: map.remove($utilities, "width", "float");
 
 @use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
-
 ```
 
 You can also use the [`map.merge()` Sass function](https://sass-lang.com/documentation/modules/map/#merge) and set the group key to `null` to remove the utility.
 
 ```scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as bs-utils;
+@use "bootstrap/scss/utilities" as *;
 
 $utilities: map.merge(
-  bs-utils.$utilities,
+  $utilities,
   (
     "width": null
   )
 );
 
 @use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
-
 ```
 
 ### Add, remove, modify
@@ -785,16 +794,16 @@ You can add, remove, and modify many utilities all at once with the [`map.merge(
 
 ```scss
 @use "sass:map";
-@use "bootstrap/scss/utilities" as bs-utils;
+@use "bootstrap/scss/utilities" as *;
 
 $utilities: map.merge(
-  bs-utils.$utilities,
+  $utilities,
   (
     // Remove the `width` utility
     "width": null,
     // Make an existing utility responsive
     "border": map.merge(
-      map.get(bs-utils.$utilities, "border"),
+      map.get($utilities, "border"),
       ( responsive: true ),
     ),
     // Add new utilities
@@ -808,5 +817,4 @@ $utilities: map.merge(
 );
 
 @use "bootstrap/scss/utilities/api" with ($utilities: $utilities);
-
 ```
