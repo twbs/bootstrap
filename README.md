@@ -6,6 +6,15 @@
 
 <h3 align="center">Bootstrap</h3>
 
+<h4> Nombre: Jimena </h4>
+<h4> Lista de pasos </h4>
+<p> 1. Realiza un fork de un repositorio de ejemplo y modificar un archivo
+2. Edita el README.md de tu fork y agrega:
+3. Activa el seguimiento (Watch) en el repositorio original.
+4. Crea una organización de prueba
+5. Permite automatizar acciones al ocurrir eventos en GitHub mediante un webhook</p>
+<h4>Link a la cuenta de GitHub: https://github.com/Jimena-CC </h4>
+
 <p align="center">
   Sleek, intuitive, and powerful front-end framework for faster and easier web development.
   <br>
