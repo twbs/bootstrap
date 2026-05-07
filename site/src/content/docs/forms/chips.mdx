@@ -1,6 +1,6 @@
 ---
 title: Chips
-description: Create tag-like inputs for multi-value fields like skills, categories, or email recipients using themed chips.
+description: Small interactive elements representing entities like people, places, tags, or values. Combine with inputs for multi-value fields like skills, categories, or email recipients using themed chips.
 toc: true
 css_layer: forms
 js: required
@@ -10,9 +10,10 @@ import { getData } from '@libs/data'
 
 ## Overview
 
-Chips are similar to badges, but they have a single size and more defined visual styles useful for indicating state and selection.
+Chips are small interactive elements representing entities. They can be used to group and select values in forms or other interactive contexts. They're similar to the older [Badges]([[docsref:/components/badge]]) component, but have some meaningful differences.
 
-- Chips are statically sized—they don't scale with the parent element by default.
+- Chips are interactive elements, not static like Badges.
+- Chips have one size—they don't scale with the parent `font-size` like Badges.
 - Chips can have icons, avatars, and dismiss buttons.
 - Chips can be themed, individually or as a group on the parent container. By default, chips use the `subtle` and `text` theme tokens, while active state uses the `bg` and `contrast` tokens.
 - Chips can be active or disabled.
@@ -21,7 +22,7 @@ Chips are similar to badges, but they have a single size and more defined visual
 
 See examples of all of this in action below.
 
-## Basic chips
+## Chips
 
 Use `.chip` for standalone chips. Add `.chip-icon` for a leading icon, `.chip-img` for an image like an avatar, and `.chip-dismiss` for a remove button. Note that we use an inline SVG for the dismiss button icon—you can modify this as needed. JavaScript users can use the `dismissIcon` option for passing a custom SVG.
 
@@ -69,6 +70,8 @@ Add `.active` to make chips use the solid appearance (bg/contrast). This is usef
 ## Chip input
 
 Wrap chips and a ghost input in `.chip-input` to create a tag input field. Add `data-bs-chips` to enable JavaScript behavior. Chips are grayscale by default, with primary blue for active states, but you can apply any theme color to the container so that chips within inherit the color of your choosing.
+
+Type into the input below and press <kbd>Enter</kbd> or <kbd>,</kbd> to add new chips. Use the <kbd>Backspace</kbd> or <kbd>Delete</kbd> keys to remove chips. See the [Keyboard behavior](#keyboard-behavior) section for more details.
 
 <Example code={`<div class="chip-input" data-bs-chips>
     <label class="chip-input-label" for="skillsInput">Skills:</label>
@@ -131,7 +134,7 @@ Use a form label for better accessibility.
     <div class="form-text">Press Enter or comma to add a skill.</div>
   </div>`} />
 
-## Disabled
+### Disabled
 
 Disable the ghost input to prevent adding new chips. Existing chips become non-interactive.
 
