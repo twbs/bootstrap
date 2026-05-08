@@ -88,7 +88,7 @@
     - title: Form adorn
       meta:
         - added: 6.0.0
-    - title: Chip input
+    - title: Chips
       meta:
         - added: 6.0.0
     - title: Combobox

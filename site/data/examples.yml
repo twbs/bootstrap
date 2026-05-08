@@ -55,8 +55,6 @@
       description: 'Extend list groups with utilities and custom styles for any content.'
     - name: Dialogs
       description: 'Transform dialogs to serve any purpose, from feature tours to confirmations.'
-    - name: Badges
-      description: 'Make badges work with custom inner HTML and new looks.'
     - name: Breadcrumbs
       description: 'Integrate custom icons and create stepper components.'
     - name: Buttons
