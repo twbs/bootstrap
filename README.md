@@ -100,10 +100,6 @@ Within the download you’ll find the following directories and files, logically
   │   ├── bootstrap-reboot.rtl.min.css
   │   ├── bootstrap-reboot.rtl.min.css.map
   │   ├── bootstrap-utilities.css
-  │   ├── bootstrap-utilities.css.map
-  │   ├── bootstrap-utilities.min.css
-  │   ├── bootstrap-utilities.min.css.map
-  │   ├── bootstrap-utilities.rtl.css
   │   ├── bootstrap-utilities.rtl.css.map
   │   ├── bootstrap-utilities.rtl.min.css
   │   ├── bootstrap-utilities.rtl.min.css.map
