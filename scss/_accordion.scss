@@ -50,6 +50,10 @@ $accordion-tokens: defaults(
     background-color: var(--accordion-btn-bg);
     @include transition(var(--accordion-transition));
 
+    &::-webkit-details-marker {
+      display: none;
+    }
+
     .accordion-icon {
       flex-shrink: 0;
       width: var(--accordion-btn-icon-width);
