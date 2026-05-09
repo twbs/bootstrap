@@ -180,6 +180,7 @@ if (currentPageIndex < allPages.length - 1) {
                 <a
                   href={prevPage.url}
                   class="d-flex flex-column gap-2 p-5 text-decoration-none border rounded-5 flex-grow-1"
+                  rel="prev"
                 >
                   <div class="fg-3">← Previous</div>
                   <div class="fs-5 fw-semibold">{prevPage.title}</div>
@@ -192,6 +193,7 @@ if (currentPageIndex < allPages.length - 1) {
                 <a
                   href={nextPage.url}
                   class="d-flex flex-column gap-2 p-5 text-decoration-none text-end border rounded-5 flex-grow-1"
+                  rel="next"
                 >
                   <div class="fg-3">Next →</div>
                   <div class="fs-5 fw-semibold">{nextPage.title}</div>
