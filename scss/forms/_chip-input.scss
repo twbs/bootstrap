@@ -60,6 +60,11 @@ $chip-input-tokens: defaults(
       background-color: var(--bg-2);
       opacity: 1;
 
+      &:focus-within {
+        border-color: var(--control-border-color);
+        outline: 0;
+      }
+
       > .chip {
         pointer-events: none;
         opacity: var(--control-disabled-opacity);
