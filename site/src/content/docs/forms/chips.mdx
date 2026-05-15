@@ -136,16 +136,16 @@ Use a form label for better accessibility.
 
 ### Disabled
 
-Disable the ghost input to prevent adding new chips. Existing chips become non-interactive.
+Disable the ghost input to prevent adding new chips, and disable the dismiss buttons on existing chips. Existing chips become non-interactive.
 
 <Example code={`<div class="chip-input theme-primary" data-bs-chips>
     <span class="chip">
       Read only
-      <button type="button" class="chip-dismiss" aria-label="Remove">
+      <button type="button" class="chip-dismiss" aria-label="Remove" disabled><!--[!code highlight]-->
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
       </button>
     </span>
-    <input type="text" class="form-ghost" placeholder="Disabled..." disabled>
+    <input type="text" class="form-ghost" placeholder="Disabled..." disabled><!--[!code highlight]-->
   </div>`} />
 
 ## Usage
