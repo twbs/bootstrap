@@ -157,7 +157,7 @@
     },
     "start": {
       "class": "start",
-      "property": "left",
+      "property": "inset-inline-start",
       "classes": [
         "start-0",
         "start-50",
@@ -166,7 +166,7 @@
     },
     "end": {
       "class": "end",
-      "property": "right",
+      "property": "inset-inline-end",
       "classes": [
         "end-0",
         "end-50",
@@ -985,7 +985,7 @@
     },
     "text-wrap": {
       "class": "text",
-      "property": "white-space",
+      "property": "text-wrap",
       "classes": [
         "text-wrap",
         "text-nowrap",
@@ -1245,7 +1245,6 @@
     },
     "border-radius": {
       "class": "rounded",
-      "property": "border-radius",
       "classes": [
         "rounded-0",
         "rounded-1",
@@ -1260,6 +1259,25 @@
         "rounded",
         "rounded-circle",
         "rounded-pill"
+      ]
+    },
+    "rounded-size": {
+      "class": "rounded-size",
+      "property": "--rounded-size",
+      "classes": [
+        "rounded-size-0",
+        "rounded-size-1",
+        "rounded-size-2",
+        "rounded-size-3",
+        "rounded-size-4",
+        "rounded-size-5",
+        "rounded-size-6",
+        "rounded-size-7",
+        "rounded-size-8",
+        "rounded-size-9",
+        "rounded-size",
+        "rounded-size-circle",
+        "rounded-size-pill"
       ]
     },
     "rounded-top": {
@@ -1283,7 +1301,7 @@
     },
     "rounded-end": {
       "class": "rounded-end",
-      "property": "border-end-end-radius border-end-start-radius",
+      "property": "border-start-end-radius border-end-end-radius",
       "classes": [
         "rounded-end-0",
         "rounded-end-1",
@@ -1302,7 +1320,7 @@
     },
     "rounded-bottom": {
       "class": "rounded-bottom",
-      "property": "border-end-end-radius border-end-start-radius",
+      "property": "border-end-start-radius border-end-end-radius",
       "classes": [
         "rounded-bottom-0",
         "rounded-bottom-1",
@@ -1321,7 +1339,7 @@
     },
     "rounded-start": {
       "class": "rounded-start",
-      "property": "border-start-start-radius border-start-end-radius",
+      "property": "border-start-start-radius border-end-start-radius",
       "classes": [
         "rounded-start-0",
         "rounded-start-1",

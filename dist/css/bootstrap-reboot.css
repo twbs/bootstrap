@@ -429,6 +429,7 @@
   --bs-radius-9: 1.5rem;
   --bs-radius-pill: 50rem;
   color-scheme: light dark;
+  scrollbar-gutter: stable;
 }
 
 [data-bs-theme=dark] {
@@ -447,11 +448,6 @@
   }
   :root {
     accent-color: var(--bs-primary-base);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    :root {
-      scroll-behavior: smooth;
-    }
   }
   body {
     margin: 0;
