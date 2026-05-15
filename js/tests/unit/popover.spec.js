@@ -58,6 +58,26 @@ describe('Popover', () => {
   })
 
   describe('show', () => {
+    it('should show a popover with no content after setContent', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#">BS twitter</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        const popover = Popover.getOrCreateInstance(popoverEl)
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          expect(document.querySelector('.popover')).not.toBeNull()
+          resolve()
+        })
+
+        popover.setContent({
+          '.popover-body': 'some content'
+        })
+
+        popover.show()
+      })
+    })
+
     it('should toggle a popover after show', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" title="Popover" data-bs-content="https://x.com/getbootstrap">BS X</a>'
