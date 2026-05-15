@@ -1,0 +1,19 @@
+@use "../../../scss/config" as *;
+@use "../../../scss/layout/breakpoints" as *;
+
+@layer custom {
+  .bd-subnavbar {
+    background-color: var(--bs-body-bg);
+
+    .nav {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-link {
+      white-space: nowrap;
+      padding-block: .5rem;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+---
+import { getData } from '@libs/data'
+import { getSlug } from '@libs/utils'
+import { getVersionedDocsPath } from '@libs/path'
+
+interface Props {
+  currentSlug: string
+}
+
+const { currentSlug } = Astro.props
+const sidebar = getData('sidebar')
+
+// Build ordered, deduplicated list of sections with their first-group info
+const seen = new Set<string>()
+const sections: { section: string; href: string }[] = []
+
+for (const group of sidebar) {
+  if (!group.section || seen.has(group.section)) continue
+  seen.add(group.section)
+
+  // Find the first linkable page in this group
+  const firstItem = group.pages?.find((p) => p.title && !p.href)
+  const href = firstItem?.title
+    ? getVersionedDocsPath(`${getSlug(group.title)}/${getSlug(firstItem.title)}/`)
+    : getVersionedDocsPath(`${getSlug(group.title)}/`)
+
+  sections.push({ section: group.section, href })
+}
+
+// Detect active section from the current slug (e.g. "getting-started/install" -> "getting-started")
+const currentDir = currentSlug?.split('/')[0] ?? ''
+const activeSection =
+  sidebar.find((g) => getSlug(g.title) === currentDir)?.section ?? null
+---
+
+<nav class="bd-subnavbar border-bottom" aria-label="Docs sections">
+  <div class="2xl:container bd-gutter">
+    <ul
+      class="nav navbar-nav navbar-expand"
+      data-bs-toggle="nav-overflow"
+      data-bs-collapse-below="md"
+      data-bs-more-text={activeSection ?? 'More'}
+      data-bs-menu-placement="bottom-start"
+    >
+      {
+        sections.map(({ section, href }) => (
+          <li class="nav-item">
+            <a class:list={['nav-link', { active: section === activeSection }]} href={href}>
+              {section}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
