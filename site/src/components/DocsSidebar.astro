@@ -6,33 +6,66 @@ import { getSlug } from '@libs/utils'
 import NewBadge from '@components/NewBadge.astro'
 
 const sidebar = getData('sidebar')
+
+// Derive active section from the current slug
+const { slug } = Astro.params
+const currentDir = (slug as string)?.split('/')[0] ?? ''
+const activeSection = sidebar.find((g) => getSlug(g.title) === currentDir)?.section
+
+// Only show groups that belong to the active section; fall back to all groups
+const visibleGroups = activeSection ? sidebar.filter((g) => g.section === activeSection) : sidebar
+
+// Skip group headings when there's only one group in the section
+const skipGroupHeading = visibleGroups.filter((g) => g.pages).length === 1
 ---
 
 <nav class="nav vstack bd-links w-100 pb-3 md:pb-2 lg:pe-2" id="bd-docs-nav" aria-label="Docs navigation">
   {
-    sidebar.map((group) => {
+    visibleGroups.map((group) => {
       const groupSlug = getSlug(group.title)
 
       if (group.pages) {
         return (
           <div class="vstack bd-links-group py-2">
-            <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
-              {group.icon && (
-                <svg
-                  class="bi me-2"
-                  style={
-                    group.icon_color &&
-                    `color: light-dark(var(--bs-${group.icon_color}-500), var(--bs-${group.icon_color}-400));`
-                  }
-                  aria-hidden="true"
-                >
-                  <use href={`#${group.icon}`} />
-                </svg>
-              )}
-              {group.title}
-            </strong>
+            {!skipGroupHeading && (
+              <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+                {group.icon && (
+                  <svg
+                    class="bi me-2"
+                    style={
+                      group.icon_color &&
+                      `color: light-dark(var(--bs-${group.icon_color}-500), var(--bs-${group.icon_color}-400));`
+                    }
+                    aria-hidden="true"
+                  >
+                    <use href={`#${group.icon}`} />
+                  </svg>
+                )}
+                {group.title}
+              </strong>
+            )}
             <ul class="nav flex-column bd-links-nav">
               {group.pages?.map((item: SidebarItem) => {
+                // Handle href-only items (e.g. Examples, Migration)
+                if (item.href && !item.title) {
+                  return null
+                }
+
+                if (item.href && item.title) {
+                  const active = Astro.params.slug === item.href.replace(/\/$/, '')
+                  return (
+                    <li>
+                      <a
+                        href={`/docs/${getConfig().docs_version}/${item.href}`}
+                        class:list={['nav-link bd-links-link border-0', { active }]}
+                        aria-current={active ? 'page' : undefined}
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  )
+                }
+
                 // Handle sub-groups
                 if (item.group && item.pages) {
                   return (

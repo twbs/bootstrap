@@ -33,10 +33,10 @@ const activeSection =
   sidebar.find((g) => getSlug(g.title) === currentDir)?.section ?? null
 ---
 
-<nav class="bd-subnavbar border-bottom" aria-label="Docs sections">
+<nav class="navbar navbar-expand bd-subnavbar border-bottom" aria-label="Docs sections">
   <div class="2xl:container bd-gutter">
     <ul
-      class="nav navbar-nav navbar-expand"
+      class="nav navbar-nav"
       data-bs-toggle="nav-overflow"
       data-bs-collapse-below="md"
       data-bs-more-text={activeSection ?? 'More'}
