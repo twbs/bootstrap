@@ -37,7 +37,7 @@ function getVersionsSortedDesc<TKey extends string, TVersions extends Record<TKe
                   return (
                     <a
                       class:list={[
-                        'list-group-item list-group-item-action py-2 text-primary',
+                        'list-group-item list-group-item-action py-2 fg-primary',
                         (isCurrentVersion || isAlpha) && 'd-flex justify-content-between align-items-center'
                       ]}
                       href={`${docsVersion.baseurl}/${version}/`}

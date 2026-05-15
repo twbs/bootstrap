@@ -40,7 +40,7 @@ This approach allows us to also easily support translucency with our `.bg-{opaci
 <div class="p-3 mb-2 bg-3">.bg-3</div>
 <div class="p-3 mb-2 bg-4">.bg-4</div>
 <div class="p-3 mb-2 bg-black fg-white">.bg-black</div>
-<div class="p-3 mb-2 bg-white fg-dark">.bg-white</div>
+<div class="p-3 mb-2 bg-white fg-black">.bg-white</div>
 <div class="p-3 mb-2 bg-transparent fg-body">.bg-transparent</div>`
 ]} />
 
@@ -59,22 +59,22 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 
 Change the opacity of a background color by using any of the `.bg-<percentage>` utilities which use `color-mix()` to mix the background color with `transparent`.
 
-<Example class="d-flex flex-column gap-2" code={`<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2 text-white bg-90">This is 90% opacity success background</div>
-<div class="bg-success p-2 text-white bg-80">This is 80% opacity success background</div>
-<div class="bg-success p-2 text-white bg-70">This is 70% opacity success background</div>
-<div class="bg-success p-2 text-white bg-60">This is 60% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-50">This is 50% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-40">This is 40% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-30">This is 30% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-20">This is 20% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-10">This is 10% opacity success background</div>`} />
+<Example class="d-flex flex-column gap-2" code={`<div class="bg-success p-2">This is default success background</div>
+<div class="bg-success p-2 bg-90">This is 90% opacity success background</div>
+<div class="bg-success p-2 bg-80">This is 80% opacity success background</div>
+<div class="bg-success p-2 bg-70">This is 70% opacity success background</div>
+<div class="bg-success p-2 bg-60">This is 60% opacity success background</div>
+<div class="bg-success p-2 bg-50">This is 50% opacity success background</div>
+<div class="bg-success p-2 bg-40">This is 40% opacity success background</div>
+<div class="bg-success p-2 bg-30">This is 30% opacity success background</div>
+<div class="bg-success p-2 bg-20">This is 20% opacity success background</div>
+<div class="bg-success p-2 bg-10">This is 10% opacity success background</div>`} />
 
 The same can be applied to subtle and muted background colors.
 
-<Example class="d-flex flex-column gap-2" code={`<div class="bg-subtle-success p-2 text-success">This is subtle success background</div>
-<div class="bg-muted-success bg-40 p-2 text-success">This is 40% success background</div>
-<div class="bg-muted-success bg-20 p-2 text-success">This is 20% success background</div>
+<Example class="d-flex flex-column gap-2" code={`<div class="bg-subtle-success p-2">This is subtle success background</div>
+<div class="bg-muted-success bg-40 p-2">This is 40% success background</div>
+<div class="bg-muted-success bg-20 p-2">This is 20% success background</div>
 `} />
 
 ## CSS
