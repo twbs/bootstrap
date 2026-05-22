@@ -30,17 +30,17 @@ Add the `object-fit-{value}` class to the [replaced element](https://developer.m
 
 ## Responsive
 
-Responsive variations also exist for each `object-fit` value using the format `.object-fit-{breakpoint}-{value}`, for the following breakpoint abbreviations: `sm`, `md`, `lg`, `xl`, and `2xl`. Classes can be combined for various effects as you need.
+Responsive variations also exist for each `object-fit` value using the format `.{breakpoint}:object-fit-{value}`, for the following breakpoint abbreviations: `sm`, `md`, `lg`, `xl`, and `2xl`. Classes can be combined for various effects as you need.
 
-<Example class="d-flex overflow-auto" code={`<Placeholder width="140" height="80" class="object-fit-sm-contain border rounded" text="Contain on sm" markup="img" />
-<Placeholder width="140" height="80" class="object-fit-md-contain border rounded" text="Contain on md" markup="img" />
-<Placeholder width="140" height="80" class="object-fit-lg-contain border rounded" text="Contain on lg" markup="img" />
-<Placeholder width="140" height="80" class="object-fit-xl-contain border rounded" text="Contain on xl" markup="img" />
-<Placeholder width="140" height="80" class="object-fit-2xl-contain border rounded" text="Contain on 2xl" markup="img" />`} />
+<Example class="d-flex overflow-auto" code={`<Placeholder width="140" height="80" class="sm:object-fit-contain border rounded" text="Contain on sm" markup="img" />
+<Placeholder width="140" height="80" class="md:object-fit-contain border rounded" text="Contain on md" markup="img" />
+<Placeholder width="140" height="80" class="lg:object-fit-contain border rounded" text="Contain on lg" markup="img" />
+<Placeholder width="140" height="80" class="xl:object-fit-contain border rounded" text="Contain on xl" markup="img" />
+<Placeholder width="140" height="80" class="2xl:object-fit-contain border rounded" text="Contain on 2xl" markup="img" />`} />
 
 ## Video
 
-The `.object-fit-{value}` and responsive `.object-fit-{breakpoint}-{value}` utilities also work on `<video>` elements.
+The `.object-fit-{value}` and responsive `.{breakpoint}:object-fit-{value}` utilities also work on `<video>` elements.
 
 ```html
 <video src="..." class="object-fit-contain" autoplay></video>

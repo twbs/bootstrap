@@ -43,8 +43,8 @@ function getVersionsSortedDesc<TKey extends string, TVersions extends Record<TKe
                       href={`${docsVersion.baseurl}/${version}/`}
                     >
                       {version}
-                      {isCurrentVersion && <span class="badge text-bg-primary">Latest</span>}
-                      {isAlpha && <span class="badge text-bg-warning">Alpha</span>}
+                      {isCurrentVersion && <span class="badge theme-primary">Latest</span>}
+                      {isAlpha && <span class="badge theme-warning">Alpha</span>}
                     </a>
                   )
                 })}
