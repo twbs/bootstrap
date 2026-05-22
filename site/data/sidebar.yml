@@ -242,7 +242,6 @@
         - title: Text transform
         - title: Text wrapping
         - title: Vertical align
-        - title: Word break
     - group: Borders
       pages:
         - title: Border
