@@ -61,10 +61,10 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `_variables.scss`, consolidating all variables into `_config.scss`
   - Added `_theme.scss` where we setup all our global theming for how colors are applied
 - **Updated lg, xl, and 2xl breakpoints and containers.**
-  - Increased the `lg` breakpoint from 992px to 1024px; it’s container remains the same at 960px.
-  - Increased the `xl` breakpoint from 1200px to 1280px, and it’s container from 1140px to 1200px.
+  - Increased the `lg` breakpoint from 992px to 1024px; its container remains the same at 960px.
+  - Increased the `xl` breakpoint from 1200px to 1280px, and its container from 1140px to 1200px.
   - Renamed `xxl` to `2xl` for better scaling with additional custom breakpoints
-  - Increased the `2xl` breakpoint from 1400px to 1536px, and it’s container from 1320px to 1440px.
+  - Increased the `2xl` breakpoint from 1400px to 1536px, and its container from 1320px to 1440px.
 - **Adopted modern CSS color functions.** All Sass color variables now use `oklch()` notation (e.g., `$blue: oklch(60% 0.24 240)`) and tint/shade scales are generated with `color-mix(in lab, ...)` in the compiled CSS. The v5 `$*-rgb` CSS custom properties and `rgba()` patterns have been removed. This requires browser support for `color-mix()` and `oklch()`.
 - **New theme token system with `.theme-*` classes.** Per-component color variant classes (like `.alert-primary`, `.badge.bg-primary`, `.btn-primary`) are replaced by a composable `.theme-{name}` pattern. Adding `.theme-primary` to a component sets `--theme-bg`, `--theme-fg`, `--theme-border`, `--theme-contrast`, and other semantic CSS custom properties that the component reads. This applies across buttons, badges, alerts, cards, accordions, and more.
 - **Responsive and state classes now use a prefix instead of an infix or suffix.** Class names follow the Tailwind-style `prefix:class` pattern (e.g., `md:d-none` instead of `d-md-none`, `hover:opacity-50` instead of `opacity-50-hover`). In HTML, use the unescaped colon: `class="md:d-none"`. This applies to utilities, grid, pseudo-state variants, and all responsive components.

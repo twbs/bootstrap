@@ -31,9 +31,9 @@ For example, `.bg-primary` sets the `--bs-bg` variable to `var(--bs-primary-bg)`
 This approach allows us to also easily support translucency with our `.bg-{opacity}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} color-on-${themeColor.name}">.bg-${themeColor.name}</div>
-<div class="p-3 mb-2 bg-muted-${themeColor.name} color-${themeColor.name}">.bg-muted-${themeColor.name}</div>
-<div class="p-3 mb-2 bg-subtle-${themeColor.name} color-${themeColor.name}">.bg-subtle-${themeColor.name}</div>`),
+  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} fg-contrast-${themeColor.name}">.bg-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-muted-${themeColor.name} fg-${themeColor.name}">.bg-muted-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-subtle-${themeColor.name} fg-${themeColor.name}">.bg-subtle-${themeColor.name}</div>`),
   `<div class="p-3 mb-2 bg-body fg-body">.bg-body</div>
 <div class="p-3 mb-2 bg-1">.bg-1</div>
 <div class="p-3 mb-2 bg-2">.bg-2</div>
@@ -52,7 +52,7 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 
 <Example class="d-flex flex-column gap-2" code={[
   ...getData('theme-colors').map((themeColor) => `<div class="p-3 bg-${themeColor.name} bg-gradient fg-contrast-${themeColor.name}">.bg-${themeColor.name}.bg-gradient</div>`),
-  `<div class="p-3 bg-black bg-gradient fg-contrast">.bg-black.bg-gradient</div>`
+  `<div class="p-3 bg-black bg-gradient fg-white">.bg-black.bg-gradient</div>`
 ]} />
 
 ## Opacity

@@ -17,7 +17,7 @@ import { getData } from '@libs/data'
 
 ## Overview
 
-Use margin utilities to control the outer space around elements. Margin utilities are built from a default Sass map ranging from `.25rem` to `3rem`. Use utilities like `.m-3` and `.m-5` to control the margin on all sides of an element:
+Use margin utilities to control the outer space around elements. Margin utilities are built from a default Sass map ranging from `0` to `3rem` (`.m-0` through `.m-9`). Use utilities like `.m-3` and `.m-5` to control the margin on all sides of an element:
 
 <Example class="d-flex align-items-center justify-content-center gap-4 text-center" showMarkup={false} code={`
   <div class="bd-pattern-diagonal rounded-3">
@@ -65,9 +65,13 @@ Where *size* is one of:
 - `0` - for classes that eliminate the `margin` by setting it to `0`
 - `1` - (by default) for classes that set the `margin` to `$spacer * .25`
 - `2` - (by default) for classes that set the `margin` to `$spacer * .5`
-- `3` - (by default) for classes that set the `margin` to `$spacer`
-- `4` - (by default) for classes that set the `margin` to `$spacer * 1.5`
-- `5` - (by default) for classes that set the `margin` to `$spacer * 3`
+- `3` - (by default) for classes that set the `margin` to `$spacer * .75`
+- `4` - (by default) for classes that set the `margin` to `$spacer`
+- `5` - (by default) for classes that set the `margin` to `$spacer * 1.25`
+- `6` - (by default) for classes that set the `margin` to `$spacer * 1.5`
+- `7` - (by default) for classes that set the `margin` to `$spacer * 2`
+- `8` - (by default) for classes that set the `margin` to `$spacer * 2.5`
+- `9` - (by default) for classes that set the `margin` to `$spacer * 3`
 - `auto` - for classes that set the `margin` to auto
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
@@ -168,15 +172,14 @@ Bootstrap includes an `.mx-auto` class for horizontally centering fixed-width bl
 
 ## Negative margin
 
-In CSS, `margin` properties can utilize negative values (`padding` cannot). These negative margins are **disabled by default**, but can be enabled in Sass by setting `$enable-negative-margins: true`.
+In CSS, `margin` properties can utilize negative values (`padding` cannot). In v6, negative margins are limited to `margin-inline-start` and `margin-inline-end` only, using spacers `-1` (`-0.25rem`) and `-2` (`-0.5rem`):
 
-The syntax is nearly the same as the default, positive margin utilities, but with the addition of `n` before the requested size. Here’s an example class that’s the opposite of `.mt-1`:
-
-```scss
-.mt-n1 {
-  margin-top: -0.25rem !important;
-}
+```html
+<div class="ms--1">.ms--1</div>
+<div class="me--2">.me--2</div>
 ```
+
+The v5 full negative margin utilities across all sides (like `.mt-n1`) have been removed.
 
 ## Responsive
 
@@ -185,7 +188,7 @@ All margin utilities are responsive and include all breakpoints.
 <ul>
 {getData('breakpoints').map((breakpoint) => {
   return (
-    <li><code>.{breakpoint.abbr}m-0</code> through <code>.{breakpoint.abbr}m-5</code> and <code>.{breakpoint.abbr}m-auto</code></li>
+    <li><code>.{breakpoint.abbr}m-0</code> through <code>.{breakpoint.abbr}m-9</code> and <code>.{breakpoint.abbr}m-auto</code></li>
   )
 })}
 </ul>
