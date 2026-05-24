@@ -10,17 +10,18 @@ permissions:
 jobs:
   issue-labeled:
     permissions:
-      # allow actions-cool/issues-helper to update issues and PRs
       issues: write
-      pull-requests: write
     if: github.repository == 'twbs/bootstrap'
     runs-on: ubuntu-latest
     steps:
       - name: awaiting reply
         if: github.event.label.name == 'needs-example'
-        uses: actions-cool/issues-helper@200c78641dbf33838311e5a1e0c31bbdb92d7cf0 # v3.8.0
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
-          actions: "create-comment"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            Hello @${{ github.event.issue.user.login }}. Bug reports must include a **live demo** of the issue. Per our [contributing guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md), please create a reduced test case on [CodePen](https://codepen.io/) or [StackBlitz](https://stackblitz.com/) and report back with your link, Bootstrap version, and specific browser and Operating System details.
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Hello @${context.payload.issue.user.login}. Bug reports must include a **live demo** of the issue. Per our [contributing guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md), please create a reduced test case on [CodePen](https://codepen.io/) or [StackBlitz](https://stackblitz.com/) and report back with your link, Bootstrap version, and specific browser and Operating System details.`
+            })
