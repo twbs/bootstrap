@@ -19,7 +19,7 @@ jobs:
         uses: actions/stale@eb5cf3af3ac0a1aa4c9c45633dd1ae542a27a899 # v10.3.0
         with:
           only-issue-labels: 'awaiting-reply'
-          days-before-stale: 1 # TODO: change to 14
+          days-before-stale: 14
           days-before-close: 0
           days-before-pr-stale: -1
           days-before-pr-close: -1
