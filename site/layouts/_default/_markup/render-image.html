@@ -1,8 +1,0 @@
-{{- $originalSrc := .Destination | safeURL -}}
-{{- $localImgPath := path.Join "/site/static/docs" site.Params.docs_version $originalSrc -}}
-{{- /* This shouldn't be needed but we have a weird folder structure with version included... */ -}}
-{{- $src := urls.JoinPath "/docs" site.Params.docs_version $originalSrc -}}
-{{- $config := imageConfig $localImgPath -}}
-{{- $classes := "d-block img-fluid" -}}
-
-<img src="{{ $src }}" class="{{ $classes }}" alt="{{ .Text }}" width="{{ $config.Width }}" height="{{ $config.Height }}" loading="lazy">

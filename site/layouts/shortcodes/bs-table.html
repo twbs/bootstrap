@@ -1,9 +1,0 @@
-{{- /*
-  Usage: `bs-table "class class-foo"`, where class can be any string
-*/ -}}
-
-{{- $css_class := .Get 0 | default "table" -}}
-{{- $html_table := .Inner | markdownify -}}
-{{- $html_table = replace $html_table "<table>" (printf `<div class="table-responsive"><table class="%s">` $css_class) -}}
-{{- $html_table = replace $html_table "</table>" "</table></div>" -}}
-{{- $html_table | safeHTML -}}

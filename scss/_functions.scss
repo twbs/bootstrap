@@ -157,7 +157,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 
   @each $color in $foregrounds {
     $contrast-ratio: contrast-ratio($background, $color);
-    @if $contrast-ratio > $min-contrast-ratio {
+    @if $contrast-ratio >= $min-contrast-ratio {
       @return $color;
     } @else if $contrast-ratio > $max-ratio {
       $max-ratio: $contrast-ratio;

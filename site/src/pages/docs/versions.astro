@@ -1,0 +1,53 @@
+---
+import SingleLayout from '@layouts/SingleLayout.astro'
+import { getConfig } from '@libs/config'
+import { getData } from '@libs/data'
+
+function getVersionsSortedDesc<TKey extends string, TVersions extends Record<TKey, string>>(
+  versions: TVersions[],
+  orderBy: TKey
+) {
+  return [...versions].sort((versionA, versionB) => {
+    return versionB[orderBy].localeCompare(versionA[orderBy])
+  })
+}
+---
+
+<SingleLayout
+  title="Versions"
+  description="An appendix of hosted documentation for nearly every release of Bootstrap, from v1 through v5."
+>
+  <div class="row">
+    {
+      getVersionsSortedDesc(getData('docs-versions'), 'group').map((docsVersion) => {
+        return (
+          <div class="col-md-6 col-lg-4 col-xl mb-4">
+            <h2>{docsVersion.group}</h2>
+            <p>{docsVersion.description}</p>
+            <div class="list-group">
+              {docsVersion.versions
+                .slice()
+                .sort((a, b) => b.localeCompare(a))
+                .map((version) => {
+                  const isCurrentVersion = version === getConfig().docs_version
+
+                  return (
+                    <a
+                      class:list={[
+                        'list-group-item list-group-item-action py-2 text-primary',
+                        isCurrentVersion && 'd-flex justify-content-between align-items-center'
+                      ]}
+                      href={`${docsVersion.baseurl}/${version}/`}
+                    >
+                      {version}
+                      {isCurrentVersion && <span class="badge text-bg-primary">Latest</span>}
+                    </a>
+                  )
+                })}
+            </div>
+          </div>
+        )
+      })
+    }
+  </div>
+</SingleLayout>

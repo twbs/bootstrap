@@ -127,7 +127,11 @@
 
   .btn-close {
     padding: calc(var(--#{$prefix}offcanvas-padding-y) * .5) calc(var(--#{$prefix}offcanvas-padding-x) * .5);
-    margin: calc(-.5 * var(--#{$prefix}offcanvas-padding-y)) calc(-.5 * var(--#{$prefix}offcanvas-padding-x)) calc(-.5 * var(--#{$prefix}offcanvas-padding-y)) auto;
+    // Split properties to avoid invalid calc() function if value is 0
+    margin-top: calc(-.5 * var(--#{$prefix}offcanvas-padding-y));
+    margin-right: calc(-.5 * var(--#{$prefix}offcanvas-padding-x));
+    margin-bottom: calc(-.5 * var(--#{$prefix}offcanvas-padding-y));
+    margin-left: auto;
   }
 }
 

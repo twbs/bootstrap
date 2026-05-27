@@ -99,6 +99,7 @@
   color: $carousel-control-color;
   text-align: center;
   background: none;
+  filter: var(--#{$prefix}carousel-control-icon-filter);
   border: 0;
   opacity: $carousel-control-opacity;
   @include transition($carousel-control-transition);
@@ -168,7 +169,7 @@
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
     cursor: pointer;
-    background-color: $carousel-indicator-active-bg;
+    background-color: var(--#{$prefix}carousel-indicator-active-bg);
     background-clip: padding-box;
     border: 0;
     // Use transparent borders to increase the hit area by 10px on top and bottom.
@@ -195,42 +196,31 @@
   left: (100% - $carousel-caption-width) * .5;
   padding-top: $carousel-caption-padding-y;
   padding-bottom: $carousel-caption-padding-y;
-  color: $carousel-caption-color;
+  color: var(--#{$prefix}carousel-caption-color);
   text-align: center;
 }
 
 // Dark mode carousel
 
 @mixin carousel-dark() {
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    filter: $carousel-dark-control-icon-filter;
-  }
-
-  .carousel-indicators [data-bs-target] {
-    background-color: $carousel-dark-indicator-active-bg;
-  }
-
-  .carousel-caption {
-    color: $carousel-dark-caption-color;
-  }
+  --#{$prefix}carousel-indicator-active-bg: #{$carousel-indicator-active-bg-dark};
+  --#{$prefix}carousel-caption-color: #{$carousel-caption-color-dark};
+  --#{$prefix}carousel-control-icon-filter: #{$carousel-control-icon-filter-dark};
 }
 
 .carousel-dark {
   @include carousel-dark();
 }
 
+:root,
+[data-bs-theme="light"] {
+  --#{$prefix}carousel-indicator-active-bg: #{$carousel-indicator-active-bg};
+  --#{$prefix}carousel-caption-color: #{$carousel-caption-color};
+  --#{$prefix}carousel-control-icon-filter: #{$carousel-control-icon-filter};
+}
+
 @if $enable-dark-mode {
-  @include color-mode(dark) {
-    @if $color-mode-type == "media-query" {
-      .carousel {
-        @include carousel-dark();
-      }
-    } @else {
-      .carousel,
-      &.carousel {
-        @include carousel-dark();
-      }
-    }
+  @include color-mode(dark, true) {
+    @include carousel-dark();
   }
 }

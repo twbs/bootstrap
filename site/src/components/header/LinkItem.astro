@@ -1,0 +1,24 @@
+---
+interface Props {
+  active?: boolean
+  class?: string
+  href: string
+  rel?: HTMLAnchorElement['rel']
+  target?: HTMLAnchorElement['target']
+  track?: boolean
+}
+
+const { active, class: className, track, ...props } = Astro.props
+
+const content = await Astro.slots.render('default')
+---
+
+<li class="nav-item col-6 col-lg-auto">
+  <a
+    aria-current={active ? true : undefined}
+    class:list={['nav-link py-2 px-0 px-lg-2', className, { active }]}
+    {...props}
+  >
+    <slot />
+  </a>
+</li>

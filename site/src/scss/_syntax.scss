@@ -1,0 +1,158 @@
+:root,
+[data-bs-theme="light"] {
+  // --base00: #fff;
+  // --base01: #f5f5f5;
+  --base02: #c8c8fa;
+  --base03: #565c64;
+  --base04: #666;
+  --base05: #333;
+  --base06: #fff;
+  --base07: #{$teal-700}; // #9a6700
+  --base08: #{mix($red-500, $red-600, 50%)}; // #bc4c00
+  --base09: #{$cyan-700}; // #087990
+  --base0A: #{$purple-500}; // #795da3
+  --base0B: #{$blue-700}; // #183691
+  --base0C: #{$blue-700}; // #183691
+  --base0D: #{$purple-500}; // #795da3
+  --base0E: #{$pink-600}; // #a71d5d
+  --base0F: #333;
+}
+
+@include color-mode(dark, true) {
+  // --base00: #282c34;
+  // --base01: #353b45;
+  --base02: #3e4451;
+  --base03: #868e96;
+  --base04: #868e96;
+  --base05: #abb2bf;
+  --base06: #b6bdca;
+  --base07: #{$orange-300}; // #d19a66
+  --base08: #{$cyan-300};
+  --base09: #{$orange-300}; // #d19a66
+  --base0A: #{$yellow-200}; // #e5c07b
+  --base0B: #{$teal-300}; // #98c379
+  --base0C: #{$teal-300}; // #56b6c2
+  --base0D: #{$blue-300}; // #61afef
+  --base0E: #{$indigo-200}; // #c678dd
+  --base0F: #{$red-300}; // #be5046
+}
+
+// Shell prompts
+.language-bash .line::before,
+.language-sh .line::before {
+  display: inline-block;
+  color: var(--base03);
+  content: "$ ";
+  user-select: none;
+}
+
+.language-powershell .line::before {
+  display: inline-block;
+  color: var(--base0C);
+  content: "PM> ";
+  user-select: none;
+}
+
+// Token styles
+.token {
+  &.comment,
+  &.prolog,
+  &.doctype,
+  &.cdata {
+    color: var(--base03);
+  }
+
+  &.punctuation {
+    color: var(--base05);
+  }
+
+  &.property {
+    color: var(--base0A);
+  }
+
+  &.tag {
+    color: var(--base08);
+  }
+
+  &.boolean,
+  &.number {
+    color: var(--base09);
+  }
+
+  &.constant,
+  &.symbol,
+  &.deleted {
+    color: var(--base08);
+  }
+
+  &.attr-name,
+  &.string,
+  &.char,
+  &.builtin,
+  &.inserted {
+    color: var(--base0C);
+  }
+
+  &.operator,
+  &.entity,
+  &.url {
+    color: var(--base05);
+  }
+
+  &.atrule,
+  &.attr-value,
+  &.keyword {
+    color: var(--base0E);
+  }
+
+  &.function {
+    color: var(--base0B);
+  }
+
+  &.selector,
+  &.class-name {
+    color: var(--base07);
+  }
+
+  &.regex,
+  &.important {
+    color: var(--base0A);
+  }
+
+  &.variable {
+    color: var(--base08);
+  }
+
+  &.important,
+  &.bold {
+    font-weight: $font-weight-bold;
+  }
+
+  &.italic {
+    font-style: italic;
+  }
+
+  &.entity {
+    cursor: help;
+  }
+}
+
+.language-diff {
+  .token {
+    &.deleted {
+      color: $red-400;
+      background-color: transparent;
+    }
+    &.inserted {
+      color: $green-400;
+      background-color: transparent;
+    }
+  }
+}
+
+.language-bash,
+.language-sh {
+  .token.comment {
+    color: var(--base03);
+  }
+}

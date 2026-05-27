@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap tooltip.js v5.3.3 (https://getbootstrap.com/)
-  * Copyright 2011-2024 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap tooltip.js v5.3.8 (https://getbootstrap.com/)
+  * Copyright 2011-2025 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -115,7 +115,7 @@
   class Tooltip extends BaseComponent {
     constructor(element, config) {
       if (typeof Popper__namespace === 'undefined') {
-        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
+        throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org/docs/v2/)');
       }
       super(element, config);
 
@@ -161,7 +161,6 @@
       if (!this._isEnabled) {
         return;
       }
-      this._activeTrigger.click = !this._activeTrigger.click;
       if (this._isShown()) {
         this._leave();
         return;
@@ -349,7 +348,7 @@
       return offset;
     }
     _resolvePossibleFunction(arg) {
-      return index_js.execute(arg, [this._element]);
+      return index_js.execute(arg, [this._element, this._element]);
     }
     _getPopperConfig(attachment) {
       const defaultBsPopperConfig = {
@@ -387,7 +386,7 @@
       };
       return {
         ...defaultBsPopperConfig,
-        ...index_js.execute(this._config.popperConfig, [defaultBsPopperConfig])
+        ...index_js.execute(this._config.popperConfig, [undefined, defaultBsPopperConfig])
       };
     }
     _setListeners() {
@@ -396,6 +395,7 @@
         if (trigger === 'click') {
           EventHandler.on(this._element, this.constructor.eventName(EVENT_CLICK), this._config.selector, event => {
             const context = this._initializeOnDelegatedTarget(event);
+            context._activeTrigger[TRIGGER_CLICK] = !(context._isShown() && context._activeTrigger[TRIGGER_CLICK]);
             context.toggle();
           });
         } else if (trigger !== TRIGGER_MANUAL) {

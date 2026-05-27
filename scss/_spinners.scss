@@ -5,6 +5,7 @@
 .spinner-grow,
 .spinner-border {
   display: inline-block;
+  flex-shrink: 0;
   width: var(--#{$prefix}spinner-width);
   height: var(--#{$prefix}spinner-height);
   vertical-align: var(--#{$prefix}spinner-vertical-align);

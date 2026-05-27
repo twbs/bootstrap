@@ -1,0 +1,10 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "always"
+  },
+  "editor.renderWhitespace": "all",
+  "scss.validate": false,
+  "stylelint.enable": true,
+  "stylelint.validate": ["scss"]
+}

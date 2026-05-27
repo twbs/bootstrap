@@ -1,0 +1,71 @@
+---
+import fs from 'node:fs'
+import { getConfig } from '@libs/config'
+import Code from '@shortcodes/Code.astro'
+
+// Prints everything between `// scss-docs-start "name"` and `// scss-docs-end "name"`
+// comments in the docs.
+
+interface Props {
+  /**
+   * Reference name used to find the content to display within the content of the `file` prop.
+   */
+  name: string
+  /**
+   * File path that contains the content to display relative to the root of the repository.
+   */
+  file: string
+}
+
+const { name, file } = Astro.props
+
+if (!name || !file) {
+  throw new Error(
+    `Missing required parameter(s) for the '<ScssDocs />' component, expected both 'name' and 'file' but got 'name: ${name}' and 'file: ${file}'.`
+  )
+}
+
+let content: string
+
+try {
+  const fileContent = fs.readFileSync(file, 'utf8')
+
+  const matches = fileContent.match(
+    new RegExp(`\/\/ scss-docs-start ${name}\n((?:.|\n)*)\/\/ scss-docs-end ${name}`, 'm')
+  )
+
+  if (!matches || !matches[1]) {
+    throw new Error(
+      `Failed to find the content named '${name}', make sure that '// scss-docs-start ${name}' and '// scss-docs-end ${name}' are defined.`
+    )
+  }
+
+  content = matches[1].replaceAll(' !default', '')
+
+  // Fix the indentation by removing extra spaces at the beginning of each line
+  const lines = content.split('\n')
+  const spaceCounts = lines.filter((line) => line.trim().length > 0).map((line) => line.match(/^ */)[0].length)
+  const minSpaces = spaceCounts.length ? Math.min(...spaceCounts) : 0
+  content = lines.map((line) => line.slice(minSpaces)).join('\n')
+} catch (error) {
+  throw new Error(`Failed to find the content to render in the '<ScssDocs />' component at '${file}'.`, {
+    cause: error
+  })
+}
+---
+
+<Code containerClass="bd-example-snippet bd-file-ref" code={content} lang="scss">
+  <div slot="pre" class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
+    <a
+      class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small"
+      href={`${getConfig().repo}/blob/v${getConfig().current_version}/${file}`.replaceAll('\\', '/')}
+    >
+      {file}
+    </a>
+    <div class="d-flex ms-auto">
+      <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+        <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
+      </button>
+    </div>
+  </div>
+</Code>

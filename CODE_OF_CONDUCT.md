@@ -31,7 +31,7 @@ Examples of unacceptable behavior include:
   any kind
 - Trolling, insulting or derogatory comments, and personal or political attacks
 - Public or private harassment
-- Publishing others' private information, such as a physical or email address,
+- Publishing others’ private information, such as a physical or email address,
   without their explicit permission
 - Other conduct which could reasonably be considered inappropriate in a
   professional setting
