@@ -38,16 +38,19 @@
 // scss-docs-start btn-outline-variant-mixin
 @mixin button-outline-variant(
   $color,
-  $color-hover: color-contrast($color),
-  $active-background: $color,
-  $active-border: $color,
+  $color-contrast: color-contrast($color),
+  $hover-background: if($color-contrast == $color-contrast-light, shade-color($color, $btn-hover-bg-shade-amount), tint-color($color, $btn-hover-bg-tint-amount)),
+  $hover-border: $hover-background,
+  $hover-color: color-contrast($hover-background),
+  $active-background: if($color-contrast == $color-contrast-light, shade-color($color, $btn-active-bg-shade-amount), tint-color($color, $btn-active-bg-tint-amount)),
+  $active-border: $active-background,
   $active-color: color-contrast($active-background)
 ) {
   --#{$prefix}btn-color: #{$color};
   --#{$prefix}btn-border-color: #{$color};
-  --#{$prefix}btn-hover-color: #{$color-hover};
-  --#{$prefix}btn-hover-bg: #{$active-background};
-  --#{$prefix}btn-hover-border-color: #{$active-border};
+  --#{$prefix}btn-hover-color: #{$hover-color};
+  --#{$prefix}btn-hover-bg: #{$hover-background};
+  --#{$prefix}btn-hover-border-color: #{$hover-border};
   --#{$prefix}btn-focus-shadow-rgb: #{to-rgb($color)};
   --#{$prefix}btn-active-color: #{$active-color};
   --#{$prefix}btn-active-bg: #{$active-background};
