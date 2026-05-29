@@ -43,7 +43,7 @@ $root-tokens: defaults(
     --link-decoration: #{$link-decoration},
     --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
 
-    --font-mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+    --font-mono: "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;",
     --code-font-size: 95%,
     --code-color: var(--fg-2),
 
