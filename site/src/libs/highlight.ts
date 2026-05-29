@@ -58,6 +58,7 @@ export async function highlightCode(
       light: { ...(bootstrapLight as any), name: '' },
       dark: { ...(bootstrapDark as any), name: '' }
     },
+    defaultColor: 'light-dark()',
     transformers
   })
 
