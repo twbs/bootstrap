@@ -2,7 +2,7 @@
 export const title = 'Dashboard Template'
 export const extra_css = ['dashboard.css']
 export const extra_js = [
-  { src: 'https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js', integrity: 'sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp'},
+  { src: 'https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.js', integrity: 'sha256-7MPNHuuMNNIXjj9Z/WPsWj2ENYwRcwrwuZWNyIbXZSo='},
   { src: 'dashboard.js'}
 ]
 ---
@@ -74,13 +74,13 @@ export const extra_js = [
   </ul>
 
   <div id="navbarSearch" class="navbar-search w-100 collapse">
-    <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+    <input class="form-control w-100 rounded-0 border-0" type="search" placeholder="Search" aria-label="Search">
   </div>
 </header>
 
 <div class="container-fluid">
   <div class="row">
-    <div class="sidebar border border-right md:col-3 lg:col-2 p-0 bg-body-tertiary">
+    <div class="sidebar border border-end md:col-3 lg:col-2 p-0 bg-body-tertiary">
       <dialog class="md:drawer drawer-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="drawer-header">
           <h5 class="drawer-title" id="sidebarMenuLabel">Company name</h5>
