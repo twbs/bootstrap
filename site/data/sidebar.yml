@@ -109,65 +109,54 @@
   icon: menu-button-wide-fill
   icon_color: cyan
   pages:
-    - group: Buttons
-      pages:
-        - title: Buttons
-        - title: Button group
-        - title: Close button
-    - group: Feedback
-      pages:
-        - title: Alert
-        - title: Badge
-        - title: Placeholder
-        - title: Progress
-        - title: Spinner
-    - group: Overlays
-      pages:
-        - title: Menu
-          meta:
-            - added: 6.0.0
-        - title: Dialog
-          meta:
-            - added: 6.0.0
-        - title: Drawer
-          meta:
-            - added: 6.0.0
-        - title: Popover
-        - title: Toasts
-        - title: Tooltip
-    - group: Navigation
-      pages:
-        - title: Breadcrumb
-        - title: Nav
-        - title: Tab
-        - title: Nav overflow
-          meta:
-            - added: 6.0.0
-        - title: Navbar
-          meta:
-            - added: 6.0.0
-        - title: Pagination
-        - title: Stepper
-            - added: 6.0.0
-    - group: Layout
-      pages:
-        - title: Card
-        - title: List group
-    - group: Interactions
-      pages:
-        - title: Accordion
-        - title: Carousel
-        - title: Collapse
-        - title: Scrollspy
-        - title: Toggler
-          meta:
-            - added: 6.0.0
+    - title: Accordion
+      meta:
+        - added: 6.0.0
+    - title: Alert
+    - title: Avatar
+      meta:
+        - added: 6.0.0
+    - title: Badge
+    - title: Breadcrumb
+    - title: Button
+    - title: Button group
+    - title: Card
+    - title: Carousel
+    - title: Close button
+    - title: Collapse
+    - title: Dialog
+      meta:
+        - added: 6.0.0
+    - title: Drawer
+      meta:
+        - added: 6.0.0
+    - title: List group
+    - title: Menu
+      meta:
+        - added: 6.0.0
+    - title: Nav
+    - title: Nav overflow
+      meta:
+        - added: 6.0.0
+    - title: Navbar
+      meta:
+        - added: 6.0.0
 
-    - group: Miscellaneous
-      pages:
-        - title: Avatar
-          meta:
-            - added: 6.0.0
+    - title: Pagination
+    - title: Placeholder
+    - title: Popover
+    - title: Progress
+    - title: Scrollspy
+    - title: Spinner
+    - title: Stepper
+      meta:
+        - added: 6.0.0
+    - title: Tab
+    - title: Toasts
+    - title: Toggler
+      meta:
+        - added: 6.0.0
+    - title: Tooltip
 
 - title: Helpers
   section: Helpers
