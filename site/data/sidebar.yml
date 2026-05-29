@@ -7,12 +7,10 @@
   icon_color: indigo
   pages:
     - title: Install
-    # - title: Introduction
     - title: Approach
     - title: CSS variables
     - title: JavaScript
     - title: Accessibility
-    # - title: Community
 
 - title: Guides
   section: Guides
