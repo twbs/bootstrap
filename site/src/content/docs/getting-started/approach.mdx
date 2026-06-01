@@ -23,7 +23,7 @@ Sass is used for the following:
 - Manage repetitive snippets of code with mixins and functions.
 - Toggle global options like `$enable-smooth-scroll`, `$enable-reduced-motion`, etc.
 - Configure and generate component variants (theme colors, sizes, etc) through Sass maps, loops, and more.
-- Bulk-generate CSS variables for all every tint and shade of our colors.
+- Bulk-generate CSS variables for every tint and shade of our colors.
 - Manage component token lists (e.g., `$alert-tokens`) and apply them to specific classes.
 - Power the utilities API to customize and generate utility classes.
 
@@ -197,9 +197,9 @@ We use range media queries (`width >= 768px`, for example) to apply styles at a 
 
 ### Classes
 
-Aside from [Reboot]([[docsref:content/reboot]]), we strive to use only classes as selectors. Where we can, we avoid type selectors and extraneous parent selectors for greater flexibility.
+Aside from [Reboot]([[docsref:/content/reboot]]), we strive to use only classes as selectors. Where we can, we avoid type selectors and extraneous parent selectors for greater flexibility.
 
-Components are typically built with a base class for shared property-value pairs. For example, `.btn` and `.btn-primary`. We use `.btn` for all the common styles like `display`, `padding`, and `border-width`. We then use modifiers like `.btn-solid` to add more styles.
+Components are typically built with a base class for shared property-value pairs. For example, `.btn`, `.btn-solid`, and `.theme-primary`. We use `.btn` for all the common styles like `display`, `padding`, and `border-width`. We then use variant and theme modifiers like `.btn-solid.theme-primary` to add more styles.
 
 This reduces complexity, streamlines code, and makes for more scalable systems.
 
