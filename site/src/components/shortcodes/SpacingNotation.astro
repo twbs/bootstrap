@@ -1,0 +1,132 @@
+---
+interface PropertyItem {
+  /**
+   * The class abbreviation, e.g. `p`, `m`, `gap`, `row-gap`.
+   */
+  class: string
+  /**
+   * The CSS property the class sets, e.g. `padding`, `margin`, `gap`.
+   */
+  property: string
+}
+
+interface SideItem {
+  /**
+   * The side abbreviation, e.g. `t`, `b`, `x`, `y`. Use `blank` to render the
+   * "blank" (all sides) entry without code formatting.
+   */
+  abbr: string
+  /**
+   * The trailing description rendered after the abbreviation. May contain HTML
+   * (e.g. `<code>` spans) and is injected as-is.
+   */
+  desc: string
+}
+
+interface Props {
+  /**
+   * The spacing noun used throughout the copy, e.g. `gap`, `padding`, `margin`.
+   */
+  noun: string
+  /**
+   * The class-name format, e.g. `{property}-{size}` or `{property}{sides}-{size}`.
+   */
+  format: string
+  /**
+   * The "Where *property* is" list entries.
+   */
+  properties: PropertyItem[]
+  /**
+   * The optional "Where *sides* is one of" list entries. Omit for utilities
+   * without sides (e.g. gap).
+   */
+  sides?: SideItem[]
+  /**
+   * Appends the `auto` entry to the size list (margin only).
+   * @default false
+   */
+  includeAuto?: boolean
+}
+
+const { noun, format, properties, sides, includeAuto = false } = Astro.props
+
+const capitalizedNoun = noun.charAt(0).toUpperCase() + noun.slice(1)
+
+// Multipliers for sizes `1` through `9`, mirroring the default `$spacers` map.
+const sizeValues = [
+  '$spacer * .25',
+  '$spacer * .5',
+  '$spacer * .75',
+  '$spacer',
+  '$spacer * 1.25',
+  '$spacer * 1.5',
+  '$spacer * 2',
+  '$spacer * 2.5',
+  '$spacer * 3'
+]
+---
+
+<p>
+  {capitalizedNoun} utilities that apply to all breakpoints, from <code>xs</code> to <code>2xl</code>, have no breakpoint
+  prefix in them. This is because those classes are applied from <code>min-width: 0</code> and up, and thus are not
+  bound by a media query. The remaining breakpoints, however, do include a breakpoint prefix.
+</p>
+
+<p>
+  The classes are named using the format <code>{format}</code> for <code>xs</code> and{' '}
+  <code>{`{breakpoint}:${format}`}</code> for <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and{' '}
+  <code>2xl</code>.
+</p>
+
+<p>Where <em>property</em> {properties.length > 1 ? 'is one of' : 'is'}:</p>
+
+<ul>
+  {
+    properties.map((item) => (
+      <li>
+        <code>{item.class}</code> - for classes that set <code>{item.property}</code>
+      </li>
+    ))
+  }
+</ul>
+
+{
+  sides && (
+    <Fragment>
+      <p>
+        Where <em>sides</em> is one of:
+      </p>
+      <ul>
+        {sides.map((side) => (
+          <li>
+            {side.abbr === 'blank' ? 'blank' : <code>{side.abbr}</code>} - <Fragment set:html={side.desc} />
+          </li>
+        ))}
+      </ul>
+    </Fragment>
+  )
+}
+
+<p>Where <em>size</em> is one of:</p>
+
+<ul>
+  <li>
+    <code>0</code> - for classes that eliminate the <code>{noun}</code> by setting it to <code>0</code>
+  </li>
+  {
+    sizeValues.map((value, index) => (
+      <li>
+        <code>{index + 1}</code> - (by default) for classes that set the <code>{noun}</code> to <code>{value}</code>
+      </li>
+    ))
+  }
+  {
+    includeAuto && (
+      <li>
+        <code>auto</code> - for classes that set the <code>{noun}</code> to auto
+      </li>
+    )
+  }
+</ul>
+
+<p>(You can add more sizes by adding entries to the <code>$spacers</code> Sass map variable.)</p>
