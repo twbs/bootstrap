@@ -13,8 +13,6 @@ utility:
   - padding-start
 ---
 
-import { getData } from '@libs/data'
-
 ## Overview
 
 Use padding utilities to control the inner space within elements. Padding utilities are built from a default Sass map ranging from `0` to `3rem` (`.p-0` through `.p-9`). Use utilities like `.p-3` and `.p-5` to control the padding on all sides of an element:
@@ -38,38 +36,20 @@ Use padding utilities to control the inner space within elements. Padding utilit
 
 ## Notation
 
-Padding utilities that apply to all breakpoints, from `xs` to `2xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
-
-The classes are named using the format `{property}{sides}-{size}` for `xs` and `{breakpoint}:{property}{sides}-{size}` for `sm`, `md`, `lg`, `xl`, and `2xl`.
-
-Where *property* is:
-
-- `p` - for classes that set `padding`
-
-Where *sides* is one of:
-
-- `t` - for classes that set `padding-block-start`
-- `b` - for classes that set `padding-block-end`
-- `s` - (start) for classes that set `padding-inline-start`
-- `e` - (end) for classes that set `padding-inline-end`
-- `x` - for classes that set `padding-inline`
-- `y` - for classes that set `padding-block`
-- blank - for classes that set a `padding` on all 4 sides of the element
-
-Where *size* is one of:
-
-- `0` - for classes that eliminate the `padding` by setting it to `0`
-- `1` - (by default) for classes that set the `padding` to `$spacer * .25`
-- `2` - (by default) for classes that set the `padding` to `$spacer * .5`
-- `3` - (by default) for classes that set the `padding` to `$spacer * .75`
-- `4` - (by default) for classes that set the `padding` to `$spacer`
-- `5` - (by default) for classes that set the `padding` to `$spacer * 1.25`
-- `6` - (by default) for classes that set the `padding` to `$spacer * 1.5`
-- `7` - (by default) for classes that set the `padding` to `$spacer * 2`
-- `8` - (by default) for classes that set the `padding` to `$spacer * 2.5`
-- `9` - (by default) for classes that set the `padding` to `$spacer * 3`
-
-(You can add more sizes by adding entries to the `$spacers` Sass map variable.)
+<SpacingNotation
+  noun="padding"
+  format="{property}{sides}-{size}"
+  properties={[{ class: 'p', property: 'padding' }]}
+  sides={[
+    { abbr: 't', desc: 'for classes that set <code>padding-block-start</code>' },
+    { abbr: 'b', desc: 'for classes that set <code>padding-block-end</code>' },
+    { abbr: 's', desc: '(start) for classes that set <code>padding-inline-start</code>' },
+    { abbr: 'e', desc: '(end) for classes that set <code>padding-inline-end</code>' },
+    { abbr: 'x', desc: 'for classes that set <code>padding-inline</code>' },
+    { abbr: 'y', desc: 'for classes that set <code>padding-block</code>' },
+    { abbr: 'blank', desc: 'for classes that set a <code>padding</code> on all 4 sides of the element' }
+  ]}
+/>
 
 ## Examples
 
@@ -152,13 +132,7 @@ Use utilities like `.py-3` and `.py-5` to control the vertical padding of an ele
 
 All padding utilities are responsive and include all breakpoints.
 
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <li><code>.{breakpoint.abbr}p-0</code> through <code>.{breakpoint.abbr}p-9</code></li>
-  )
-})}
-</ul>
+<SpacingResponsive classes={['p']} />
 
 ## CSS
 
@@ -166,47 +140,4 @@ All padding utilities are responsive and include all breakpoints.
 
 Padding utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-"padding": (
-  responsive: true,
-  property: padding,
-  class: p,
-  values: $spacers
-),
-"padding-x": (
-  responsive: true,
-  property: padding-inline,
-  class: px,
-  values: $spacers
-),
-"padding-y": (
-  responsive: true,
-  property: padding-block,
-  class: py,
-  values: $spacers
-),
-"padding-top": (
-  responsive: true,
-  property: padding-block-start,
-  class: pt,
-  values: $spacers
-),
-"padding-end": (
-  responsive: true,
-  property: padding-inline-end,
-  class: pe,
-  values: $spacers
-),
-"padding-bottom": (
-  responsive: true,
-  property: padding-block-end,
-  class: pb,
-  values: $spacers
-),
-"padding-start": (
-  responsive: true,
-  property: padding-inline-start,
-  class: ps,
-  values: $spacers
-),
-```
+<ScssDocs name="utils-padding" file="scss/_utilities.scss" />

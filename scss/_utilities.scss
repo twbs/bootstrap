@@ -471,6 +471,7 @@ $utilities: map.merge(
     // scss-docs-end utils-flex
     // Margin utilities
     // scss-docs-start utils-spacing
+    // scss-docs-start utils-margin
     "margin": (
       responsive: true,
       property: margin,
@@ -513,7 +514,9 @@ $utilities: map.merge(
       class: ms,
       values: map-merge-multiple($spacers, $negative-spacers, (auto: auto))
     ),
+    // scss-docs-end utils-margin
     // Padding utilities
+    // scss-docs-start utils-padding
     "padding": (
       responsive: true,
       property: padding,
@@ -556,7 +559,9 @@ $utilities: map.merge(
       class: ps,
       values: $spacers
     ),
+    // scss-docs-end utils-padding
     // Gap utility
+    // scss-docs-start utils-gap
     "gap": (
       responsive: true,
       property: gap,
@@ -575,6 +580,7 @@ $utilities: map.merge(
       class: column-gap,
       values: $spacers
     ),
+    // scss-docs-end utils-gap
     // scss-docs-end utils-spacing
     // scss-docs-start utils-space
     "space-x": (
