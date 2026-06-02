@@ -39,17 +39,8 @@
   background-color: color-mix(in oklch, var(--primary-bg) 10%, transparent);
 }
 
-// Dark mode theming for Shiki
-// When using dual themes, Shiki generates inline styles with CSS variables
-// We need to switch from the light theme vars to dark theme vars
 [data-bs-theme="dark"] {
   --shell-prompt-color: #868e96;
-
-  .astro-code span,
-  .astro-code-themes span {
-    // Override Shiki's inline color with the dark theme color
-    color: var(--shiki-dark) !important; // stylelint-disable-line declaration-no-important
-  }
 }
 
 // Shell prompts - these work with Shiki's transformer that adds .line class
