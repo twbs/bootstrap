@@ -13,11 +13,13 @@ Avatars are used to represent users or entities. They can display an image or in
 
 Use `.avatar` with an `.avatar-img` for image-based avatars. The parent `.avatar` element provides an easy wrapper for additional avatar features like status indicators and stacks. You’re welcome to use the `.avatar-img` class on its own if you only need a single HTML element.
 
-Always set `width` and `height` attributes on the `<img>` to match the avatar size (the default is `40` for `2.5rem`). While `.avatar-img` constrains the rendered size with CSS, the HTML attributes let the browser reserve layout space before the CSS or image has loaded, which improves rendering performance and avoids layout shift.
-
 <Example code={`<span class="avatar">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
   </span>`} />
+
+When used inside the `.avatar` wrapper, the image fills the wrapper and its size is set with `--avatar-size`. Used on its own, `.avatar-img` honors its own `width` and `height` instead, so set them to your desired size.
+
+<Example code={`<img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="50" height="50">`} />
 
 ### Initials
 
@@ -50,19 +52,25 @@ Use `.avatar-subtle` to create a subtle avatar.
 Avatars come in multiple sizes: extra small, small, default, large, and extra large.
 
 <Example code={`<span class="avatar avatar-xs">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="24" height="24">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
   </span>
   <span class="avatar avatar-sm">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="32" height="32">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
   </span>
   <span class="avatar">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
   </span>
   <span class="avatar avatar-lg">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="48" height="48">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
   </span>
   <span class="avatar avatar-xl">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="64" height="64">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
+  </span>`} />
+
+You can also use inline sizes alone with avatars instead of using a size modifier class.
+
+<Example code={`<span class="avatar">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="128" height="128">
   </span>`} />
 
 ## Status indicator
@@ -77,19 +85,19 @@ Add a `.avatar-status` element inside the avatar to show a status indicator. Eac
 Because the status is conveyed purely through color and shape, give each `.avatar-status` a `role="img"` and an `aria-label` (e.g. `Online`) so assistive technologies can announce it.
 
 <Example code={`<span class="avatar">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-online" role="img" aria-label="Online"></span>
   </span>
   <span class="avatar">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-offline" role="img" aria-label="Offline"></span>
   </span>
   <span class="avatar">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-busy" role="img" aria-label="Busy"></span>
   </span>
   <span class="avatar">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-away" role="img" aria-label="Away"></span>
   </span>`} />
 
@@ -98,23 +106,23 @@ Because the status is conveyed purely through color and shape, give each `.avata
 The status indicator scales with the avatar size.
 
 <Example code={`<span class="avatar avatar-xs">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="24" height="24">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-online" role="img" aria-label="Online"></span>
   </span>
   <span class="avatar avatar-sm">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="32" height="32">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-online" role="img" aria-label="Online"></span>
   </span>
   <span class="avatar">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-online" role="img" aria-label="Online"></span>
   </span>
   <span class="avatar avatar-lg">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="48" height="48">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-online" role="img" aria-label="Online"></span>
   </span>
   <span class="avatar avatar-xl">
-    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="64" height="64">
+    <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     <span class="avatar-status status-online" role="img" aria-label="Online"></span>
   </span>`} />
 
@@ -124,19 +132,19 @@ Use `.avatar-stack` to group multiple avatars together with overlapping effect. 
 
 <Example code={`<div class="avatar-stack">
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
   </div>`} />
 
@@ -146,61 +154,61 @@ As a shorthand, size classes are available for `.avatar-stack` and `.avatar`.
 
 <Example class="vstack align-items-start gap-3" code={`<div class="avatar-stack avatar-stack-xs">
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="24" height="24">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="24" height="24">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="24" height="24">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
   </div>
 
   <div class="avatar-stack avatar-stack-sm">
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="32" height="32">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="32" height="32">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="32" height="32">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
   </div>
 
   <div class="avatar-stack">
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
   </div>
 
   <div class="avatar-stack avatar-stack-lg">
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="48" height="48">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="48" height="48">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="48" height="48">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
   </div>
 
   <div class="avatar-stack avatar-stack-xl">
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="64" height="64">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="64" height="64">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="64" height="64">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
   </div>`} />
 
@@ -210,13 +218,26 @@ Combine with initials to show a count of additional users.
 
 <Example code={`<div class="avatar-stack">
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar">
-      <img class="avatar-img" src="https://i.pravatar.cc/150?img=34" alt="User avatar" width="40" height="40">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
+    </span>
+    <span class="avatar theme-secondary">+5</span>
+  </div>`} />
+
+<Example code={`<div class="avatar-stack avatar-stack-xl">
+    <span class="avatar">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
+    </span>
+    <span class="avatar">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
+    </span>
+    <span class="avatar">
+      <img class="avatar-img" src="https://github.com/mdo.png" alt="mdo">
     </span>
     <span class="avatar theme-secondary">+5</span>
   </div>`} />
