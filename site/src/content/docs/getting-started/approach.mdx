@@ -218,7 +218,7 @@ Components built with overlays also have a predefined z-index scale, beginning a
 
 <ScssDocs name="zindex-levels-map" file="scss/_config.scss" />
 
-Each overlay component increases its `z-index` value slightly in such a way that common UI principles allow user focused or hovered elements to remain in view at all times. For example, a modal is document blocking (e.g., you cannot take any other action save for the modal’s action), so we put that above our navbars.
+Each overlay component increases its `z-index` value slightly in such a way that common UI principles allow user focused or hovered elements to remain in view at all times. For example, a modal dialog is document blocking (e.g., you cannot take any other action save for the dialog’s action), so we put that above our navbars.
 
 Learn more about this in our [`z-index` layout page]([[docsref:/layout/z-index]]).
 
@@ -226,7 +226,7 @@ Learn more about this in our [`z-index` layout page]([[docsref:/layout/z-index]]
 
 Whenever possible, we prefer HTML and CSS over JavaScript—they’re more accessible to people of all experience levels and faster in the browser. That’s why our first-class JavaScript API is `data` attributes—it lets you write more HTML instead of JavaScript. Read more in [our JavaScript overview]([[docsref:/getting-started/javascript#data-attributes]]).
 
-Our styles build on fundamental browser behaviors. For example, while you can put `.btn` on nearly any element, we prefer `<button>`s and `<a>`s for their semantic value. Similarly, we use native `:valid`/`:invalid` pseudo-elements for form validation rather than custom plugins.
+Our styles build on fundamental browser behaviors. For example, while you can put `.btn` on nearly any element, we prefer `<button>`s and `<a>`s for their semantic value. For form validation, we scope styles behind `data-bs-validate` and use the `:user-invalid` pseudo-class so feedback appears only after user interaction—not on initial page load.
 
 ### Utilities
 

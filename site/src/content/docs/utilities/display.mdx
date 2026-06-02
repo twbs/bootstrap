@@ -17,7 +17,7 @@ Display utility classes that apply to all [breakpoints]([[docsref:/layout/breakp
 As such, the classes are named using the format:
 
 - `.d-{value}` for `xs`
-- `.d-{breakpoint}-{value}` for `sm`, `md`, `lg`, `xl`, and `2xl`.
+- `.{breakpoint}:d-{value}` for `sm`, `md`, `lg`, `xl`, and `2xl` (for example, `.md:d-none`).
 
 Where *value* is one of:
 
@@ -57,9 +57,9 @@ There’s no more clearfix helper in Bootstrap 6 as it’s an outdated technique
 
 For faster mobile-friendly development, use responsive display classes for showing and hiding elements by device. Avoid creating entirely different versions of the same site, instead hide elements responsively for each screen size.
 
-To hide elements simply use the `.d-none` class or one of the `.d-{sm,md,lg,xl,2xl}-none` classes for any responsive screen variation.
+To hide elements simply use the `.d-none` class or one of the `.{sm,md,lg,xl,2xl}:d-none` classes for any responsive screen variation.
 
-To show an element only on a given interval of screen sizes you can combine one `.d-*-none` class with a `.d-*-*` class, for example `.d-none .md:d-block .xl:d-none` will hide the element for all screen sizes except on medium and large devices.
+To show an element only on a given interval of screen sizes you can combine one `.{breakpoint}:d-none` class with a `.{breakpoint}:d-block` class, for example `.d-none .md:d-block .xl:d-none` will hide the element for all screen sizes except on medium and large devices.
 
 <BsTable>
 | Screen size | Class |
