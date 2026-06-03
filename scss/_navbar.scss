@@ -2,6 +2,7 @@
 @use "functions" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/box-shadow" as *;
+@use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
@@ -40,6 +41,8 @@ $navbar-tokens: defaults(
     --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
     --navbar-toggler-border-radius: var(--radius-5),
     --navbar-toggler-transition: box-shadow .15s ease-in-out,
+    --navbar-toggler-icon-size: 1.25rem,
+    --navbar-toggler-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path stroke='black' stroke-linecap='round' stroke-width='1' d='M1 3.5h14M1 8h14M1 12.5h14'/></svg>"))},
   ),
   $navbar-tokens
 );
@@ -180,6 +183,15 @@ $navbar-nav-tokens: defaults(
   .navbar-toggler {
     --btn-bg: transparent;
     --btn-hover-bg: var(--bg-2);
+  }
+
+  // Hamburger icon, rendered via CSS mask so it inherits the navbar color
+  .navbar-toggler-icon {
+    display: inline-block;
+    width: var(--navbar-toggler-icon-size);
+    height: var(--navbar-toggler-icon-size);
+    background-color: currentcolor;
+    @include mask-icon(var(--navbar-toggler-icon));
   }
 
   // scss-docs-start navbar-expand-loop

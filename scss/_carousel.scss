@@ -3,6 +3,7 @@
 @use "functions" as *;
 @use "mixins/transition" as *;
 @use "mixins/color-mode" as *;
+@use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
 
 $carousel-tokens: () !default;
@@ -30,8 +31,8 @@ $carousel-tokens: defaults(
     --carousel-caption-padding-y: 1.25rem,
     --carousel-caption-spacer: 1.25rem,
     --carousel-control-icon-width: 2rem,
-    --carousel-control-prev-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>"),
-    --carousel-control-next-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>"),
+    --carousel-control-prev-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>"),
+    --carousel-control-next-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>"),
     --carousel-transition-duration: .6s,
     --carousel-transition: transform .6s ease-in-out,
   ),
@@ -178,31 +179,30 @@ $carousel-dark-tokens: defaults(
     background-image: if(sass($enable-gradients): linear-gradient(270deg, rgb(0 0 0 / .25), rgb(0 0 0 / .001)); else: null);
   }
 
-  // Icons for within
+  // Icons for within, rendered via CSS mask so they inherit a configurable color
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     display: inline-block;
     width: var(--carousel-control-icon-width);
     height: var(--carousel-control-icon-width);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: 100% 100%;
+    background-color: var(--carousel-control-color);
+    @include mask-icon($size: 100% 100%, $position: 50%);
   }
 
   .carousel-control-prev-icon {
-    background-image: var(--carousel-control-prev-icon-bg);
+    mask-image: var(--carousel-control-prev-icon);
   }
 
   [dir="rtl"] .carousel-control-prev-icon {
-    background-image: var(--carousel-control-next-icon-bg);
+    mask-image: var(--carousel-control-next-icon);
   }
 
   .carousel-control-next-icon {
-    background-image: var(--carousel-control-next-icon-bg);
+    mask-image: var(--carousel-control-next-icon);
   }
 
   [dir="rtl"] .carousel-control-next-icon {
-    background-image: var(--carousel-control-prev-icon-bg);
+    mask-image: var(--carousel-control-prev-icon);
   }
 
   // Optional indicator pips/controls
