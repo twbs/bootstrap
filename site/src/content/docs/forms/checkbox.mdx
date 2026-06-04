@@ -10,36 +10,29 @@ import { getData } from '@libs/data'
 
 ## Basic checkbox
 
-All checkbox styling is contained to a wrapper class, `.check`. This does the following:
+All checkbox styling is applied with the `.check` class directly on the `<input>`. This does the following:
 
-- Adds a stacking grid layout that overlays the icon on the checkbox.
 - Overrides the default `<input>` appearance with themed colors.
-- Renders the `:checked` and indeterminate icons via a CSS `mask` on the `.check::after` pseudo-element, so the mark inherits the contrast color and no inline SVG is needed. The appropriate icon is shown based on the `<input>`’s state.
+- Renders the `:checked` and indeterminate icons via a CSS `mask` on the input’s `::before` pseudo-element, so the mark inherits the contrast color and no inline SVG is needed. The appropriate icon is shown based on the input’s state.
 
 For folks looking to replace our provided icons, override the `--bs-check-icon-checked` and `--bs-check-icon-indeterminate` CSS variables (or the `--check-icon-*` Sass tokens) with your own `mask-image` URLs.
 
-Checkbox layout and labels are handled with additional HTML and CSS.
+Labels and layout are handled with additional HTML and CSS.
 
-<Example code={`<div class="check">
-    <input type="checkbox" id="check" checked />
-  </div>`} />
+<Example code={`<input type="checkbox" id="check" class="check" checked />`} />
 
 ## Indeterminate
 
 Checkboxes can utilize the indeterminate pseudo class when manually set via JavaScript. There is no available HTML attribute for specifying it.
 
-<Example addStackblitzJs class="bd-example-indeterminate" code={`<div class="check">
-    <input type="checkbox" id="checkIndeterminate" />
-  </div>`} />
+<Example addStackblitzJs class="bd-example-indeterminate" code={`<input type="checkbox" id="checkIndeterminate" class="check" />`} />
 
 ## With form field
 
 Wrap the `.check` in a `.form-field` layout wrapper and add your label. The grid layout places the checkbox and label side by side.
 
 <Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="checkLabel" />
-    </div>
+    <input type="checkbox" id="checkLabel" class="check" />
     <label for="checkLabel">Example new checkbox</label>
   </div>`} />
 
@@ -48,9 +41,7 @@ Wrap the `.check` in a `.form-field` layout wrapper and add your label. The grid
 Add a description or other content after the label. We recommend wrapping the label and description in a `.form-field-content` to ensure appropriate spacing and alignment.
 
 <Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="checkDescription" />
-    </div>
+    <input type="checkbox" id="checkDescription" class="check" />
     <div class="form-field-content">
       <label for="checkDescription">Example new checkbox</label>
       <small class="form-text">Supporting description for the above label.</small>
@@ -62,9 +53,7 @@ Add a description or other content after the label. We recommend wrapping the la
 Modify the appearance of checked checkboxes by adding the `.theme-{color}` class to the `.check` element. This will set the checked background and border color to the theme color.
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<div class="form-field">
-    <div class="check theme-${themeColor.name}">
-      <input type="checkbox" id="check${themeColor.name}" checked />
-    </div>
+    <input type="checkbox" id="check${themeColor.name}" class="check theme-${themeColor.name}" checked />
     <label for="check${themeColor.name}">Example ${themeColor.name} checkbox</label>
   </div>`)} />
 
@@ -73,18 +62,14 @@ Modify the appearance of checked checkboxes by adding the `.theme-{color}` class
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
 <Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="checkDisabled" disabled />
-    </div>
+    <input type="checkbox" id="checkDisabled" class="check" disabled />
     <label for="checkDisabled">Example new checkbox</label>
   </div>`} />
 
 Applies to checked states, too.
 
 <Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="checkDisabledChecked" checked disabled />
-    </div>
+    <input type="checkbox" id="checkDisabledChecked" class="check" checked disabled />
     <label for="checkDisabledChecked">Example new checkbox</label>
   </div>`} />
 
@@ -92,15 +77,9 @@ Applies to checked states, too.
 
 Add `.check-sm` or `.check-lg` to make your checkbox appear smaller or larger.
 
-<Example class="d-flex flex-column gap-3" code={`<div class="check check-sm">
-    <input type="checkbox" id="checkSizeSm" checked />
-  </div>
-  <div class="check">
-    <input type="checkbox" id="checkSizeMd" checked />
-  </div>
-  <div class="check check-lg">
-    <input type="checkbox" id="checkSizeLg" checked />
-  </div>`} />
+<Example class="d-flex flex-column gap-3" code={`<input type="checkbox" id="checkSizeSm" class="check check-sm" checked />
+  <input type="checkbox" id="checkSizeMd" class="check" checked />
+  <input type="checkbox" id="checkSizeLg" class="check check-lg" checked />`} />
 
 ## CSS
 
