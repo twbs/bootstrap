@@ -17,9 +17,13 @@ const bootstrapBundlePath = fileURLToPath(new URL('../dist/js/bootstrap.bundle.j
 
 const isDev = process.env.NODE_ENV === 'development'
 
+// Allow the dev/preview server port to be overridden via `PORT` (falling back to
+// 9001) so multiple worktrees can run side by side without colliding.
+const port = Number.parseInt(process.env.PORT ?? '', 10) || 9001
+
 const site = isDev
   ? // In development mode, use the local dev server.
-    'http://localhost:9001'
+    `http://localhost:${port}`
   : process.env.DEPLOY_PRIME_URL !== undefined
     ? // If deploying on Netlify, use the `DEPLOY_PRIME_URL` environment variable.
       process.env.DEPLOY_PRIME_URL
@@ -65,6 +69,9 @@ export default defineConfig({
   },
   devToolbar: {
     enabled: false
+  },
+  server: {
+    port
   },
   site,
   vite: {
