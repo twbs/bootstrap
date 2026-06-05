@@ -229,16 +229,22 @@ Place Bootstrap’s checkboxes and radios within list group items and customize 
 
 <Example code={`<ul class="list-group">
     <li class="list-group-item">
-      <input class="radio me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
-      <label for="firstRadio">First radio</label>
+      <div class="form-field">
+        <input type="radio" name="listGroupRadio" value="" id="firstRadio" class="radio" checked>
+        <label for="firstRadio">First radio</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="radio me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
-      <label for="secondRadio">Second radio</label>
+      <div class="form-field">
+        <input type="radio" name="listGroupRadio" value="" id="secondRadio" class="radio">
+        <label for="secondRadio">Second radio</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="radio me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
-      <label for="thirdRadio">Third radio</label>
+      <div class="form-field">
+        <input type="radio" name="listGroupRadio" value="" id="thirdRadio" class="radio">
+        <label for="thirdRadio">Third radio</label>
+      </div>
     </li>
   </ul>`} />
 
