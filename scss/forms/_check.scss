@@ -1,5 +1,6 @@
 @use "../functions" as *;
 @use "../mixins/focus-ring" as *;
+@use "../mixins/mask-icon" as *;
 @use "../mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
@@ -14,6 +15,8 @@ $check-tokens: defaults(
     --check-bg: var(--bg-body),
     --check-border-color: var(--border-color),
     --check-border-radius: .375rem,
+    --check-icon-checked: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/></svg>"))},
+    --check-icon-indeterminate: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 10h8'/></svg>"))},
     --check-checked-bg: var(--control-checked-bg),
     --check-checked-border-color: var(--control-checked-border-color),
     --check-indeterminate-bg: var(--control-checked-bg),
@@ -29,48 +32,49 @@ $check-tokens: defaults(
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
+  // The class lives on the `<input>` itself; `appearance: none` controls render
+  // pseudo-elements, so the mark is drawn directly on the input — no wrapper.
   .check {
     @include tokens($check-tokens);
 
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    position: relative;
+    flex-shrink: 0;
+    width: var(--check-size);
+    height: var(--check-size);
     margin-block: var(--check-margin-block);
+    appearance: none;
+    // later: maybe set a tertiary bg color?
+    background-color: var(--theme-bg, var(--check-bg));
+    border: 1px solid var(--theme-bg, var(--check-border-color));
+    // stylelint-disable-next-line property-disallowed-list
+    border-radius: .3em;
 
-    :where(svg, input) {
-      flex-shrink: 0;
-      grid-row-start: 1;
-      grid-column-start: 1;
-      width: var(--check-size);
-      height: var(--check-size);
-    }
-
-    :where(input) {
-      appearance: none;
-      // later: maybe set a tertiary bg color?
-      background-color: var(--theme-bg, var(--check-bg));
-      border: 1px solid var(--theme-bg, var(--check-border-color));
-      // stylelint-disable-next-line property-disallowed-list
-      border-radius: .3em;
-    }
-
-    :where(input:checked, input:indeterminate) {
+    &:checked,
+    &:indeterminate {
       background-color: var(--theme-bg, var(--check-checked-bg));
       border-color: var(--theme-bg, var(--check-checked-border-color));
+
+      // Check/indeterminate mark, overlaid on the input and rendered via a CSS
+      // mask so it inherits the contrast color without an inline SVG.
+      &::before {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        content: "";
+        background-color: var(--theme-contrast, var(--primary-contrast));
+        @include mask-icon();
+      }
     }
 
-    :where(input:focus-visible) {
+    &:checked::before { mask-image: var(--check-icon-checked); }
+    &:indeterminate::before { mask-image: var(--check-icon-indeterminate); }
+
+    &:focus-visible {
       @include focus-ring(true);
       --focus-ring-offset: -1px;
     }
 
-    &:has(input:checked) .checked,
-    &:has(input:indeterminate) .indeterminate {
-      display: block;
-      color: var(--theme-contrast, var(--primary-contrast));
-      stroke: currentcolor;
-    }
-
-    &:has(input:disabled) {
+    &:disabled {
       --check-bg: var(--check-disabled-bg);
 
       ~ label {
@@ -78,16 +82,8 @@ $check-tokens: defaults(
         cursor: default;
       }
     }
-    &:has(input:disabled:checked) {
+    &:disabled:checked {
       opacity: var(--check-disabled-opacity);
-    }
-
-    :where(svg) {
-      pointer-events: none;
-    }
-
-    :where(svg path) {
-      display: none;
     }
   }
 

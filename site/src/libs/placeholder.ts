@@ -4,10 +4,6 @@ import * as htmlparser2 from 'htmlparser2'
 const placeholderRegex = /<Placeholder\s+([^>]+)\/>/g
 const closeButtonRegex = /([ \t]*)<CloseButton\s*([^>]*?)\/>/g
 
-// Close button SVG icon
-const CLOSE_BUTTON_SVG_PATH =
-  'M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z'
-
 /**
  * Generates all the placeholder attributes and options required to render a placeholder.
  * @see src/components/shortcodes/Placeholder.astro
@@ -64,19 +60,13 @@ export function getPlaceholder(userOptions: Partial<PlaceholderOptions>): Placeh
  * Renders a CloseButton component to its HTML string representation.
  * Supports optional `dismiss` and `class` attributes.
  */
-function renderCloseButtonToString(attributes: Record<string, string>, indent = ''): string {
+function renderCloseButtonToString(attributes: Record<string, string>): string {
   const dismiss = attributes.dismiss
   const extraClass = attributes.class
   const dismissAttr = dismiss ? ` data-bs-dismiss="${dismiss}"` : ''
   const classValue = extraClass ? `btn-close ${extraClass}` : 'btn-close'
 
-  return [
-    `<button type="button" class="${classValue}"${dismissAttr} aria-label="Close">`,
-    `${indent}  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">`,
-    `${indent}    <path fill="currentcolor" d="${CLOSE_BUTTON_SVG_PATH}"/>`,
-    `${indent}  </svg>`,
-    `${indent}</button>`
-  ].join('\n')
+  return `<button type="button" class="${classValue}"${dismissAttr} aria-label="Close"></button>`
 }
 
 /**
@@ -113,7 +103,7 @@ export function replacePlaceholdersInHtml(html: string) {
       throw new Error('Invalid CloseButton element.')
     }
 
-    return indent + renderCloseButtonToString(closeButtonElement.attribs as Record<string, string>, indent)
+    return indent + renderCloseButtonToString(closeButtonElement.attribs as Record<string, string>)
   })
 
   // Replace Placeholder components

@@ -546,3 +546,27 @@ The `generate-theme-classes()` mixin loops over the `$theme-colors` map and outp
 // .theme-success { --theme-base: var(--success-base); --theme-bg: var(--success-bg); ... }
 // ...
 ```
+
+### Mask icons
+
+The `mask-icon()` mixin renders an SVG icon via a CSS [`mask`](https://developer.mozilla.org/en-US/docs/Web/CSS/mask) so the shape is painted with the element’s `background-color`. This lets an icon inherit the current text color, enabling automatic dark mode without a separate SVG. We use this for the [close button]([[docsref:/components/close-button/]]), [navbar toggler]([[docsref:/components/navbar/]]), [checkbox marks]([[docsref:/forms/checkbox/]]), [breadcrumb dividers]([[docsref:/components/breadcrumb/]]), [datepicker arrows]([[docsref:/forms/datepicker/]]), and [carousel controls]([[docsref:/components/carousel/]]).
+
+Some form controls can’t use `mask` because they don’t support pseudo-elements and masking would clip the whole field. The `<select>` chevron and inputs using `.form-control-caret` are two examples, which keep separate light and dark `background-image` SVGs instead as non-masked background images.
+
+<ScssDocs name="mask-icon-mixin" file="scss/mixins/_mask-icon.scss" />
+
+Set `background-color` on the element yourself (the mixin only outputs the `mask-*` properties), then pass your icon as the mask image. Pass `null` for the icon when it’s applied conditionally, such as per state or direction.
+
+```scss
+.custom-icon {
+  // Declare a custom CSS variable for the icon. This could be on the same
+  // element, `:root`, or a parent element. We're using a custom × icon. Be
+  // sure to wrap in `escape-svg()` as well.
+  --custom-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='black' stroke-linecap='round' stroke-width='2' d='m4 4 8 8m0-8-8 8'/></svg>"))};
+
+  width: 1rem;
+  height: 1rem;
+  background-color: currentcolor;
+  @include mask-icon($icon: var(--custom-icon));
+}
+```

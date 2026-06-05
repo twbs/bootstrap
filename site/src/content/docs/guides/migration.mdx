@@ -106,7 +106,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `$nested-kbd-font-weight`, no replacement.
   - Removed `muted`, `black-50`, and `white-50` from text colors utilities map
   - Consolidated carousel dark variables, removing `$carousel-dark-indicator-active-bg`, `$carousel-dark-caption-color`, and `$carousel-dark-control-icon-filter` for their reassigned counterparts.
-  - Removed `$btn-close-white-filter` for `$btn-close-filter-dark`.
+  - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `currentcolor`, so it adapts to dark backgrounds automatically.
   - Removed `$border-radius-xxl`, use `$border-radius-2xl`.
   - Removed `$text-muted` for secondary color.
   - Removed `$hr-bg-color` for `$hr-border-color` and `$hr-height` for `$hr-border-width`.
@@ -206,10 +206,11 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - The expand/collapse icon now uses an `.accordion-icon` element (typically an SVG) inside the summary, replacing the CSS `background-image` approach.
   - Open state styling uses `details[open]` instead of JavaScript-toggled classes.
   - Theme coloring via `.theme-*` classes on the `.accordion` wrapper.
-- **Rebuilt close button markup.** `.btn-close` now expects a child `<svg>` element with `fill: currentcolor` instead of the v5 `background-image` encoded SVG. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance.
+- **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance, and the `.btn-close-white` class has been removed—on dark backgrounds (e.g., `.text-bg-dark`) the icon now inherits the contrast color automatically.
 - **Restructured cards.** Borders now live on `.card-body` and `.card-list` segments rather than a single outer `.card` border. Added `--card-box-shadow` and `--card-body-gap` tokens. New variant classes: `.card-translucent` (frosted glass effect) and `.card-subtle` (themed with subtle backgrounds). Horizontal cards use a new `.card-row` class.
 - **Reworked badge variants.** Badge color variants now use `.badge-subtle` and `.badge-outline` combined with `.theme-*` classes (e.g., `.badge-subtle .theme-primary`), replacing the v5 `.bg-primary` utility pattern on badges.
-- **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and `.breadcrumb-divider` as a visible separator element between items. The v5 `::before` pseudo-element divider pattern has been removed.
+- **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and explicit `.breadcrumb-divider` elements as separators between items. An empty `.breadcrumb-divider` renders a default chevron via a CSS `mask-image` (`--breadcrumb-divider-icon`) tinted with `background-color: currentcolor`; add your own SVG, text, or markup inside it to override. This replaces the v5 `--bs-breadcrumb-divider` content string on the `.breadcrumb-item::before` pseudo-element.
+- **Navbar toggler icon now uses a CSS mask.** `.navbar-toggler-icon` renders via `mask-image` (`--navbar-toggler-icon`) tinted with `background-color: currentcolor` instead of an embedded `background-image` SVG. The markup stays an empty `<span class="navbar-toggler-icon">`, but the icon now inherits the current text color (including dark mode), so the separate light/dark toggler SVGs are no longer needed.
 
 ### Reboot
 
@@ -225,7 +226,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Also split apart the documentation pages for checks, radios, and switches.
   - Added new CSS variables on each of these components. _Side note: we could’ve shared variables here, but chose not to for simplicity’s sake._
   - Removed several now unused Sass variables.
-  - Checkboxes now have a wrapping element and an SVG in the DOM for checked and indeterminate states. Radios and switches do not.
+  - Checkboxes apply the `.check` class directly on the `<input>` (no wrapping element) and draw the checked and indeterminate marks with a CSS `mask-image` on a `::before` pseudo-element tinted with the contrast color—no inline SVG in the DOM. Radios and switches are likewise styled without a wrapping element.
   - Revamped layout for checks, radios, and switches with labels (and descriptions). We now have custom elements for layout that include basic flexbox styling.
   - Refactored toggle buttons to use a nested input structure. The `.btn-check` class now goes on the label (not the input), with the input nested inside. This eliminates the need for `id`/`for` attributes and uses CSS `:has()` selector instead of sibling selectors. Example: `<label class="btn-check btn-solid theme-primary"><input type="checkbox">Toggle</label>`.
 - **Consolidate `.form-select` into `.form-control`.**

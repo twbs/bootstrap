@@ -5,7 +5,6 @@ import { getVersionedDocsPath } from '@libs/path'
 import type { Layout } from '@libs/layout'
 import BootstrapWhiteFillIcon from '@components/icons/BootstrapWhiteFillIcon.astro'
 import GitHubIcon from '@components/icons/GitHubIcon.astro'
-import HamburgerIcon from '@components/icons/HamburgerIcon.astro'
 import LinkItem from '@components/header/LinkItem.astro'
 import OpenCollectiveIcon from '@components/icons/OpenCollectiveIcon.astro'
 import XIcon from '@components/icons/XIcon.astro'
@@ -141,7 +140,7 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
           aria-controls="bdSidebar"
           aria-label="Toggle docs navigation"
         >
-          <HamburgerIcon class="navbar-toggler-icon" height={16} width={16} />
+          <span class="navbar-toggler-icon" aria-hidden="true" />
           <span class="d-none fs-6 pe-1">Browse</span>
         </button>
       )

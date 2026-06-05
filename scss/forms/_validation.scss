@@ -70,7 +70,7 @@ $validation-states: defaults(
   }
 
   // Checkbox — control-level styling (border, checked bg, focus ring).
-  .check input {
+  .check {
     @include form-validation-state-selector($state) {
       --check-border-color: var(--#{$theme}-border);
       --check-checked-bg: var(--#{$theme}-bg);
@@ -83,7 +83,7 @@ $validation-states: defaults(
   }
 
   // Checkbox — label color and feedback display via .form-field:has().
-  .form-field:has(.check input.is-#{$state}) {
+  .form-field:has(.check.is-#{$state}) {
     label { color: var(--#{$theme}-fg); }
 
     .#{$state}-feedback,
@@ -91,14 +91,14 @@ $validation-states: defaults(
   }
 
   @if $state == "invalid" {
-    [data-bs-validate] .form-field:has(.check input:user-invalid) {
+    [data-bs-validate] .form-field:has(.check:user-invalid) {
       label { color: var(--#{$theme}-fg); }
 
       .invalid-feedback,
       .invalid-tooltip { display: block; }
     }
   } @else if $state == "valid" {
-    [data-bs-validate~="valid"] .form-field:has(.check input:user-valid) {
+    [data-bs-validate~="valid"] .form-field:has(.check:user-valid) {
       label { color: var(--#{$theme}-fg); }
 
       .valid-feedback,

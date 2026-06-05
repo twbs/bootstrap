@@ -7,6 +7,17 @@
   --shell-prompt-color: #565c64;
 }
 
+// Geist Mono enables contextual ligatures/alternates (e.g. `--`, `->`, `==`)
+// which distort code. Render glyphs literally for code and inline code.
+code,
+kbd,
+samp,
+pre,
+.astro-code {
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
+}
+
 .astro-code {
   --bs-font-monospace: "Geist Mono";
 

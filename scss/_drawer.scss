@@ -266,11 +266,8 @@ $drawer-backdrop-tokens: defaults(
     @include dialog-header(var(--drawer-padding-y) var(--drawer-padding-x));
 
     .btn-close {
-      padding: calc(var(--drawer-padding-y) * .5) calc(var(--drawer-padding-x) * .5);
+      margin-block: calc(-.5 * var(--drawer-padding-y));
       margin-inline-start: auto;
-      margin-inline-end: calc(-.5 * var(--drawer-padding-x));
-      margin-top: calc(-.5 * var(--drawer-padding-y));
-      margin-bottom: calc(-.5 * var(--drawer-padding-y));
     }
   }
 

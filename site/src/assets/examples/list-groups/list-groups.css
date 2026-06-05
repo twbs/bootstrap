@@ -4,11 +4,11 @@
   margin-inline: 1.5rem;
 }
 
-.check:has(input:checked) + .form-checked-content {
+.check:checked + .form-checked-content {
   opacity: .5;
 }
 
-.check-input-placeholder input {
+.check-input-placeholder {
   border-style: dashed;
 }
 [contenteditable]:focus {
