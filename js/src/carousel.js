@@ -9,14 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import Manipulator from './dom/manipulator.js'
 import SelectorEngine from './dom/selector-engine.js'
-import {
-  getNextActiveElement,
-  isRTL,
-  isVisible,
-  reflow,
-  triggerTransitionEnd
-} from './util/index.js'
-import Swipe from './util/swipe.js'
+import { isRTL, isVisible } from './util/index.js'
 
 /**
  * Constants
@@ -29,10 +22,7 @@ const DATA_API_KEY = '.data-api'
 
 const ARROW_LEFT_KEY = 'ArrowLeft'
 const ARROW_RIGHT_KEY = 'ArrowRight'
-const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
 
-const ORDER_NEXT = 'next'
-const ORDER_PREV = 'prev'
 const DIRECTION_LEFT = 'left'
 const DIRECTION_RIGHT = 'right'
 
@@ -41,23 +31,20 @@ const EVENT_SLID = `slid${EVENT_KEY}`
 const EVENT_KEYDOWN = `keydown${EVENT_KEY}`
 const EVENT_MOUSEENTER = `mouseenter${EVENT_KEY}`
 const EVENT_MOUSELEAVE = `mouseleave${EVENT_KEY}`
-const EVENT_DRAG_START = `dragstart${EVENT_KEY}`
+const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY}`
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_CAROUSEL = 'carousel'
 const CLASS_NAME_ACTIVE = 'active'
-const CLASS_NAME_SLIDE = 'slide'
-const CLASS_NAME_END = 'carousel-item-end'
-const CLASS_NAME_START = 'carousel-item-start'
-const CLASS_NAME_NEXT = 'carousel-item-next'
-const CLASS_NAME_PREV = 'carousel-item-prev'
+const CLASS_NAME_FADE = 'carousel-fade'
+const CLASS_NAME_CENTER = 'carousel-center'
 const CLASS_NAME_PAUSED = 'paused'
 
 const SELECTOR_ACTIVE = '.active'
 const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM
-const SELECTOR_ITEM_IMG = '.carousel-item img'
+const SELECTOR_INNER = '.carousel-inner'
 const SELECTOR_INDICATORS = '.carousel-indicators'
 const SELECTOR_PLAY_PAUSE = '.carousel-control-play-pause'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
@@ -94,20 +81,32 @@ class Carousel extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
-    this._interval = null
-    this._activeElement = null
-    this._isSliding = false
-    this.touchTimeout = null
-    this._swipeHelper = null
-
-    // Runtime autoplay intent. Starts from the `autoplay` option, but is turned
-    // off as soon as the user takes control (clicks a control, uses the keyboard,
-    // swipes, or presses pause) so we don't resume against their wishes.
-    this._playing = this._config.autoplay
-
+    // The scroll viewport. The browser owns sliding, dragging, momentum, and
+    // keyboard scrolling; this controller only layers on autoplay, the
+    // prev/next/indicator controls, and active-slide syncing.
+    this._viewport = SelectorEngine.findOne(SELECTOR_INNER, this._element) || this._element
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._playPauseElement = SelectorEngine.findOne(SELECTOR_PLAY_PAUSE, this._element)
+
+    this._interval = null
+    this._observer = null
+    this._visibility = new Map()
+    // Runtime autoplay intent. Starts from the `autoplay` option, but is turned
+    // off once the user takes control (clicks a control, uses the keyboard,
+    // swipes/drags, or presses pause) so we don't move content out from under
+    // them (WCAG 2.2.2 Pause, Stop, Hide).
+    this._playing = this._config.autoplay
+
+    this._activeIndex = this._initialActiveIndex()
+
+    if (this._config.touch === false) {
+      // Disable horizontal swipe while keeping wheel/keyboard/button navigation
+      this._viewport.style.touchAction = 'pan-y'
+    }
+
     this._addEventListeners()
+    this._observeItems()
+    this._refreshActiveState()
 
     if (this._playing) {
       this.cycle()
@@ -131,34 +130,247 @@ class Carousel extends BaseComponent {
 
   // Public
   next() {
-    this._slide(ORDER_NEXT)
+    this.to(this._activeIndex + 1)
   }
 
   nextWhenVisible() {
-    // Don't call next when the page isn't visible
-    // or the carousel or its parent isn't visible
+    // Don't advance when the page or the carousel isn't visible
     if (document.visibilityState === 'visible' && isVisible(this._element)) {
       this.next()
     }
   }
 
   prev() {
-    this._slide(ORDER_PREV)
+    this.to(this._activeIndex - 1)
   }
 
   pause() {
-    if (this._isSliding) {
-      triggerTransitionEnd(this._element)
-    }
-
     this._clearInterval()
   }
 
   cycle() {
     this._clearInterval()
-    this._updateInterval()
+    this._scheduleAutoplay()
+  }
 
-    this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval)
+  to(index) {
+    const items = this._getItems()
+    const targetIndex = this._normalizeIndex(Number.parseInt(index, 10), items.length)
+
+    if (targetIndex === null || targetIndex === this._activeIndex) {
+      return
+    }
+
+    const slideEvent = EventHandler.trigger(this._element, EVENT_SLIDE, {
+      relatedTarget: items[targetIndex],
+      direction: this._direction(this._activeIndex, targetIndex),
+      from: this._activeIndex,
+      to: targetIndex
+    })
+
+    if (slideEvent.defaultPrevented) {
+      return
+    }
+
+    if (this._isFade()) {
+      this._fadeTo(targetIndex)
+      return
+    }
+
+    // Scroll mode: the IntersectionObserver fires `slid` and syncs state once
+    // the new slide settles into view.
+    this._scrollToIndex(targetIndex)
+  }
+
+  dispose() {
+    if (this._observer) {
+      this._observer.disconnect()
+    }
+
+    super.dispose()
+  }
+
+  // Private
+  _initialActiveIndex() {
+    const active = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+    const index = active ? this._getItems().indexOf(active) : 0
+    return Math.max(index, 0)
+  }
+
+  _addEventListeners() {
+    if (this._config.keyboard) {
+      EventHandler.on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
+    }
+
+    if (this._config.pause === 'hover') {
+      EventHandler.on(this._element, EVENT_MOUSEENTER, () => this.pause())
+      EventHandler.on(this._element, EVENT_MOUSELEAVE, () => this._maybeEnableCycle())
+    }
+
+    // Dragging, swiping, or tapping the track is an explicit interaction
+    EventHandler.on(this._viewport, EVENT_POINTERDOWN, () => this._pauseFromInteraction())
+  }
+
+  _keydown(event) {
+    if (/input|textarea/i.test(event.target.tagName)) {
+      return
+    }
+
+    const direction = KEY_TO_DIRECTION[event.key]
+    if (direction) {
+      event.preventDefault()
+      this._pauseFromInteraction()
+      if (direction === DIRECTION_RIGHT) {
+        this.prev()
+      } else {
+        this.next()
+      }
+    }
+  }
+
+  _observeItems() {
+    // Fade mode stacks slides instead of scrolling, so there's nothing to observe
+    if (this._isFade() || typeof IntersectionObserver === 'undefined') {
+      return
+    }
+
+    this._observer = new IntersectionObserver(
+      entries => this._handleIntersection(entries),
+      { root: this._viewport, threshold: [0, 0.25, 0.5, 0.75, 1] }
+    )
+
+    for (const item of this._getItems()) {
+      this._observer.observe(item)
+    }
+  }
+
+  _handleIntersection(entries) {
+    for (const entry of entries) {
+      this._visibility.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0)
+    }
+
+    let bestIndex = this._activeIndex
+    let bestRatio = -1
+
+    for (const [index, item] of this._getItems().entries()) {
+      const ratio = this._visibility.get(item) ?? 0
+      // Strict `>` keeps the left-most slide active when several are equally visible
+      if (ratio > bestRatio) {
+        bestRatio = ratio
+        bestIndex = index
+      }
+    }
+
+    this._setActive(bestIndex)
+  }
+
+  _scrollToIndex(index) {
+    const item = this._getItems()[index]
+    if (!item) {
+      return
+    }
+
+    item.scrollIntoView({
+      behavior: this._prefersReducedMotion() ? 'auto' : 'smooth',
+      block: 'nearest',
+      inline: this._element.classList.contains(CLASS_NAME_CENTER) ? 'center' : 'start'
+    })
+  }
+
+  _fadeTo(index) {
+    const swap = () => this._setActive(index)
+
+    if (document.startViewTransition && !this._prefersReducedMotion()) {
+      document.startViewTransition(swap)
+      return
+    }
+
+    swap()
+  }
+
+  _setActive(index) {
+    const items = this._getItems()
+    if (index === this._activeIndex || !items[index]) {
+      return
+    }
+
+    const from = this._activeIndex
+
+    this._activeIndex = index
+    this._refreshActiveState()
+
+    EventHandler.trigger(this._element, EVENT_SLID, {
+      relatedTarget: items[index],
+      direction: this._direction(from, index),
+      from,
+      to: index
+    })
+  }
+
+  _refreshActiveState() {
+    const items = this._getItems()
+
+    for (const [index, item] of items.entries()) {
+      item.classList.toggle(CLASS_NAME_ACTIVE, index === this._activeIndex)
+    }
+
+    this._setActiveIndicatorElement(this._activeIndex)
+  }
+
+  _setActiveIndicatorElement(index) {
+    if (!this._indicatorsElement) {
+      return
+    }
+
+    const active = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
+    if (active) {
+      active.classList.remove(CLASS_NAME_ACTIVE)
+      active.removeAttribute('aria-current')
+    }
+
+    const newActive = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement)
+    if (newActive) {
+      newActive.classList.add(CLASS_NAME_ACTIVE)
+      newActive.setAttribute('aria-current', 'true')
+    }
+  }
+
+  _normalizeIndex(index, length) {
+    if (Number.isNaN(index) || length === 0) {
+      return null
+    }
+
+    if (index < 0) {
+      return this._config.wrap ? length - 1 : null
+    }
+
+    if (index > length - 1) {
+      return this._config.wrap ? 0 : null
+    }
+
+    return index
+  }
+
+  _direction(from, to) {
+    const isNext = to > from
+    if (isRTL()) {
+      return isNext ? DIRECTION_RIGHT : DIRECTION_LEFT
+    }
+
+    return isNext ? DIRECTION_LEFT : DIRECTION_RIGHT
+  }
+
+  _scheduleAutoplay() {
+    this._interval = setTimeout(() => {
+      this.nextWhenVisible()
+      this._scheduleAutoplay()
+    }, this._activeItemInterval())
+  }
+
+  _activeItemInterval() {
+    const item = this._getItems()[this._activeIndex]
+    const interval = item ? Number.parseInt(item.getAttribute('data-bs-interval'), 10) : Number.NaN
+    return Number.isNaN(interval) ? this._config.interval : interval
   }
 
   _maybeEnableCycle() {
@@ -166,17 +378,10 @@ class Carousel extends BaseComponent {
       return
     }
 
-    if (this._isSliding) {
-      EventHandler.one(this._element, EVENT_SLID, () => this.cycle())
-      return
-    }
-
     this.cycle()
   }
 
-  // Turn autoplay off for good once the user interacts with the carousel, so we
-  // respect their intent and don't keep moving content out from under them
-  // (WCAG 2.2.2 Pause, Stop, Hide).
+  // Turn autoplay off for good once the user interacts with the carousel
   _pauseFromInteraction() {
     this._playing = false
     this.pause()
@@ -210,221 +415,14 @@ class Carousel extends BaseComponent {
     }
   }
 
-  to(index) {
-    const items = this._getItems()
-    if (index > items.length - 1 || index < 0) {
-      return
-    }
-
-    if (this._isSliding) {
-      EventHandler.one(this._element, EVENT_SLID, () => this.to(index))
-      return
-    }
-
-    const activeIndex = this._getItemIndex(this._getActive())
-    if (activeIndex === index) {
-      return
-    }
-
-    const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV
-
-    this._slide(order, items[index])
+  _isFade() {
+    return this._element.classList.contains(CLASS_NAME_FADE)
   }
 
-  dispose() {
-    if (this._swipeHelper) {
-      this._swipeHelper.dispose()
-    }
-
-    super.dispose()
-  }
-
-  // Private
-  _configAfterMerge(config) {
-    config.defaultInterval = config.interval
-    return config
-  }
-
-  _addEventListeners() {
-    if (this._config.keyboard) {
-      EventHandler.on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
-    }
-
-    if (this._config.pause === 'hover') {
-      EventHandler.on(this._element, EVENT_MOUSEENTER, () => this.pause())
-      EventHandler.on(this._element, EVENT_MOUSELEAVE, () => this._maybeEnableCycle())
-    }
-
-    if (this._config.touch && Swipe.isSupported()) {
-      this._addTouchEventListeners()
-    }
-  }
-
-  _addTouchEventListeners() {
-    for (const img of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)) {
-      EventHandler.on(img, EVENT_DRAG_START, event => event.preventDefault())
-    }
-
-    const endCallBack = () => {
-      if (this._config.pause !== 'hover') {
-        return
-      }
-
-      // If it's a touch-enabled device, mouseenter/leave are fired as
-      // part of the mouse compatibility events on first tap - the carousel
-      // would stop cycling until user tapped out of it;
-      // here, we listen for touchend, explicitly pause the carousel
-      // (as if it's the second time we tap on it, mouseenter compat event
-      // is NOT fired) and after a timeout (to allow for mouse compatibility
-      // events to fire) we explicitly restart cycling
-
-      this.pause()
-      if (this.touchTimeout) {
-        clearTimeout(this.touchTimeout)
-      }
-
-      this.touchTimeout = setTimeout(() => this._maybeEnableCycle(), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
-    }
-
-    const swipeConfig = {
-      leftCallback: () => {
-        this._pauseFromInteraction()
-        this._slide(this._directionToOrder(DIRECTION_LEFT))
-      },
-      rightCallback: () => {
-        this._pauseFromInteraction()
-        this._slide(this._directionToOrder(DIRECTION_RIGHT))
-      },
-      endCallback: endCallBack
-    }
-
-    this._swipeHelper = new Swipe(this._element, swipeConfig)
-  }
-
-  _keydown(event) {
-    if (/input|textarea/i.test(event.target.tagName)) {
-      return
-    }
-
-    const direction = KEY_TO_DIRECTION[event.key]
-    if (direction) {
-      event.preventDefault()
-      this._pauseFromInteraction()
-      this._slide(this._directionToOrder(direction))
-    }
-  }
-
-  _getItemIndex(element) {
-    return this._getItems().indexOf(element)
-  }
-
-  _setActiveIndicatorElement(index) {
-    if (!this._indicatorsElement) {
-      return
-    }
-
-    const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE, this._indicatorsElement)
-
-    activeIndicator.classList.remove(CLASS_NAME_ACTIVE)
-    activeIndicator.removeAttribute('aria-current')
-
-    const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${index}"]`, this._indicatorsElement)
-
-    if (newActiveIndicator) {
-      newActiveIndicator.classList.add(CLASS_NAME_ACTIVE)
-      newActiveIndicator.setAttribute('aria-current', 'true')
-    }
-  }
-
-  _updateInterval() {
-    const element = this._activeElement || this._getActive()
-
-    if (!element) {
-      return
-    }
-
-    const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10)
-
-    this._config.interval = elementInterval || this._config.defaultInterval
-  }
-
-  _slide(order, element = null) {
-    if (this._isSliding) {
-      return
-    }
-
-    const activeElement = this._getActive()
-    const isNext = order === ORDER_NEXT
-    const nextElement = element || getNextActiveElement(this._getItems(), activeElement, isNext, this._config.wrap)
-
-    if (nextElement === activeElement) {
-      return
-    }
-
-    const nextElementIndex = this._getItemIndex(nextElement)
-
-    const triggerEvent = eventName => {
-      return EventHandler.trigger(this._element, eventName, {
-        relatedTarget: nextElement,
-        direction: this._orderToDirection(order),
-        from: this._getItemIndex(activeElement),
-        to: nextElementIndex
-      })
-    }
-
-    const slideEvent = triggerEvent(EVENT_SLIDE)
-
-    if (slideEvent.defaultPrevented) {
-      return
-    }
-
-    if (!activeElement || !nextElement) {
-      // Some weirdness is happening, so we bail
-      return
-    }
-
-    const isCycling = Boolean(this._interval)
-    this.pause()
-
-    this._isSliding = true
-
-    this._setActiveIndicatorElement(nextElementIndex)
-    this._activeElement = nextElement
-
-    const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END
-    const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV
-
-    nextElement.classList.add(orderClassName)
-
-    reflow(nextElement)
-
-    activeElement.classList.add(directionalClassName)
-    nextElement.classList.add(directionalClassName)
-
-    const completeCallBack = () => {
-      nextElement.classList.remove(directionalClassName, orderClassName)
-      nextElement.classList.add(CLASS_NAME_ACTIVE)
-
-      activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
-
-      this._isSliding = false
-
-      triggerEvent(EVENT_SLID)
-    }
-
-    this._queueCallback(completeCallBack, activeElement, this._isAnimated())
-
-    if (isCycling) {
-      this.cycle()
-    }
-  }
-
-  _isAnimated() {
-    return this._element.classList.contains(CLASS_NAME_SLIDE)
-  }
-
-  _getActive() {
-    return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
+  _prefersReducedMotion() {
+    return typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
   }
 
   _getItems() {
@@ -433,25 +431,9 @@ class Carousel extends BaseComponent {
 
   _clearInterval() {
     if (this._interval) {
-      clearInterval(this._interval)
+      clearTimeout(this._interval)
       this._interval = null
     }
-  }
-
-  _directionToOrder(direction) {
-    if (isRTL()) {
-      return direction === DIRECTION_LEFT ? ORDER_PREV : ORDER_NEXT
-    }
-
-    return direction === DIRECTION_LEFT ? ORDER_NEXT : ORDER_PREV
-  }
-
-  _orderToDirection(order) {
-    if (isRTL()) {
-      return order === ORDER_PREV ? DIRECTION_LEFT : DIRECTION_RIGHT
-    }
-
-    return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT
   }
 }
 

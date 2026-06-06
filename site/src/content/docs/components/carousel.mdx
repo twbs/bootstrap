@@ -8,11 +8,11 @@ js: required
 
 ## How it works
 
-- The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.
+- The carousel is a slideshow for cycling through a series of content. It’s built on a native CSS [scroll-snap](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll_snap) container, so sliding, touch dragging, momentum, and keyboard scrolling all come from the browser. JavaScript only layers on autoplay, the previous/next controls, the indicators, and active-slide syncing. It works with a series of images, text, or custom markup.
 
-- For performance reasons, **carousels must be manually initialized** using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated a control or indicator.
+- Because the slides live in a real scroll container, the carousel can show **[more than one slide at a time](#multiple-slides-peeking-and-variable-widths)**, reveal a “peek” of the neighbouring slides, and mix variable-width slides—all controlled with CSS.
 
-  The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-autoplay="true"` attribute as these are initialized automatically on page load. If you’re using autoplaying carousels with the data attribute, **don’t explicitly initialize the same carousels with the constructor method.**
+- For the previous/next controls, indicators, and autoplay to work you must initialize the carousel with the [constructor method](#methods). The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-autoplay="true"` attribute, which are initialized automatically on page load. If you’re using autoplaying carousels with the data attribute, **don’t explicitly initialize the same carousels with the constructor method.**
 
 - Nested carousels are not supported. You should also be aware that carousels in general can often cause usability and accessibility challenges.
 
@@ -124,7 +124,7 @@ You can add captions to your slides with the `.carousel-caption` element within 
 
 ### Crossfade
 
-Add `.carousel-fade` to your carousel to animate slides with a fade transition instead of a slide. Depending on your carousel content (e.g., text only slides), you may want to add `.bg-body` or some custom CSS to the `.carousel-item`s for proper crossfading.
+Add `.carousel-fade` to your carousel to animate slides with a fade transition instead of a slide. Depending on your carousel content (e.g., text only slides), you may want to add `.bg-body` or some custom CSS to the `.carousel-item`s for proper crossfading. Where supported, the fade is upgraded to a [View Transition](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) automatically; elsewhere it falls back to a CSS opacity crossfade.
 
 <Example code={`<div id="carouselExampleFade" class="carousel slide carousel-fade">
     <div class="carousel-inner">
@@ -147,6 +147,65 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
       <span class="visually-hidden">Next</span>
     </button>
   </div>`} />
+
+## Multiple slides, peeking, and variable widths
+
+Because the carousel is a real scroll container, you can change how many slides are visible and how they’re sized with a few CSS custom properties on the `.carousel`—no JavaScript options required:
+
+- `--carousel-items`: the number of whole slides visible per view (default `1`).
+- `--carousel-gap`: the space between slides (default `0`).
+- `--carousel-peek`: how much of the neighbouring slides to reveal (default `0`).
+
+### Multiple slides
+
+Set `--carousel-items` to show several slides at once. Combine it with `--carousel-gap` for spacing.
+
+<Example code={`<div id="carouselMultiple" class="carousel slide" style="--carousel-items: 3; --carousel-gap: 1rem;">
+    <div class="carousel-inner">
+      <div class="carousel-item active"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#777" text="1" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#666" text="2" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#555" text="3" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#444" text="4" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#333" text="5" /></div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselMultiple" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselMultiple" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>`} />
+
+Use the responsive `.carousel-items-*` utilities to vary the count per breakpoint, e.g. `class="carousel carousel-items-1 md:carousel-items-3"`.
+
+### Peeking
+
+Set `--carousel-peek` to reveal a sliver of the previous and next slides, hinting that there’s more to scroll.
+
+<Example code={`<div id="carouselPeek" class="carousel slide" style="--carousel-peek: 3rem; --carousel-gap: 1rem;">
+    <div class="carousel-inner">
+      <div class="carousel-item active"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100" color="#fff" background="#777" text="First slide" /></div>
+      <div class="carousel-item"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100" color="#fff" background="#666" text="Second slide" /></div>
+      <div class="carousel-item"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100" color="#fff" background="#555" text="Third slide" /></div>
+    </div>
+  </div>`} />
+
+### Variable-width slides
+
+Add `.carousel-auto` and size each `.carousel-item` yourself (utilities or custom CSS). Snap points still land on every slide.
+
+<Example code={`<div id="carouselVariable" class="carousel carousel-auto" style="--carousel-gap: 1rem;">
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="width: 160px;"><Placeholder width="160" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#777" text="A" /></div>
+      <div class="carousel-item" style="width: 320px;"><Placeholder width="320" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#666" text="B" /></div>
+      <div class="carousel-item" style="width: 220px;"><Placeholder width="220" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#555" text="C" /></div>
+      <div class="carousel-item" style="width: 380px;"><Placeholder width="380" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#444" text="D" /></div>
+    </div>
+  </div>`} />
+
+Add `.carousel-center` to snap the active slide to the center of the viewport instead of its start—pairs nicely with `--carousel-peek`.
 
 ## Autoplaying carousels
 
@@ -349,10 +408,12 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 | `autoplay` | boolean | `false` | If set to `true`, autoplays the carousel on load. Otherwise the carousel does not autoplay. |
 | `interval` | number | `5000` | The amount of time to delay between automatically cycling an item. |
 | `keyboard` | boolean | `true` | Whether the carousel should react to keyboard events. |
-| `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won’t pause it. On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior. |
-| `touch` | boolean | `true` | Whether the carousel should support left/right swipe interactions on touchscreen devices. |
-| `wrap` | boolean | `true` | Whether the carousel should cycle continuously or have hard stops. |
+| `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes it on `mouseleave`. If set to `false`, hovering over the carousel won’t pause it. |
+| `touch` | boolean | `true` | Whether the carousel should support touch swipe gestures. When `false`, the viewport is given `touch-action: pan-y`, so touch can no longer swipe between slides while vertical page scrolling still works. |
+| `wrap` | boolean | `true` | Whether autoplay and the controls wrap around from the last slide back to the first (and vice versa), or stop at the ends. |
 </BsTable>
+
+The number of visible slides, the gap between them, and the peek of adjacent slides are controlled with CSS, not these options—see [Multiple slides, peeking, and variable widths](#multiple-slides-peeking-and-variable-widths).
 
 ### Methods
 
