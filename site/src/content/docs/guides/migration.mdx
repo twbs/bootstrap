@@ -211,6 +211,11 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Reworked badge variants.** Badge color variants now use `.badge-subtle` and `.badge-outline` combined with `.theme-*` classes (e.g., `.badge-subtle .theme-primary`), replacing the v5 `.bg-primary` utility pattern on badges.
 - **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and explicit `.breadcrumb-divider` elements as separators between items. An empty `.breadcrumb-divider` renders a default chevron via a CSS `mask-image` (`--breadcrumb-divider-icon`) tinted with `background-color: currentcolor`; add your own SVG, text, or markup inside it to override. This replaces the v5 `--bs-breadcrumb-divider` content string on the `.breadcrumb-item::before` pseudo-element.
 - **Navbar toggler icon now uses a CSS mask.** `.navbar-toggler-icon` renders via `mask-image` (`--navbar-toggler-icon`) tinted with `background-color: currentcolor` instead of an embedded `background-image` SVG. The markup stays an empty `<span class="navbar-toggler-icon">`, but the icon now inherits the current text color (including dark mode), so the separate light/dark toggler SVGs are no longer needed.
+- **Renamed the carousel `ride` option to `autoplay`, and made it a boolean.** Autoplay is now strictly opt-in: a carousel only autoplays when `autoplay` is `true` (set via `data-bs-autoplay="true"`). The old `ride` option and its string `"carousel"` value have been removed, as has the `ride="true"` behavior that started autoplaying only *after* the first user interaction.
+  - `data-bs-ride="carousel"` &rarr; `data-bs-autoplay="true"`
+  - `data-bs-ride="true"` &rarr; `data-bs-autoplay="true"` (it now autoplays on load like any other autoplaying carousel, instead of waiting for the first interaction)
+  - JavaScript: `new bootstrap.Carousel(el, { ride: 'carousel' })` &rarr; `new bootstrap.Carousel(el, { autoplay: true })`
+  - The auto-initialization-on-load selector changed accordingly from `[data-bs-ride="carousel"]` to `[data-bs-autoplay="true"]`.
 
 ### Reboot
 

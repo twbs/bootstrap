@@ -12,7 +12,7 @@ js: required
 
 - For performance reasons, **carousels must be manually initialized** using the [carousel constructor method](#methods). Without initialization, some of the event listeners (specifically, the events needed touch/swipe support) will not be registered until a user has explicitly activated a control or indicator.
 
-  The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-ride="carousel"` attribute as these are initialized automatically on page load. If you’re using autoplaying carousels with the data attribute, **don’t explicitly initialize the same carousels with the constructor method.**
+  The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-autoplay="true"` attribute as these are initialized automatically on page load. If you’re using autoplaying carousels with the data attribute, **don’t explicitly initialize the same carousels with the constructor method.**
 
 - Nested carousels are not supported. You should also be aware that carousels in general can often cause usability and accessibility challenges.
 
@@ -150,7 +150,7 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 
 ## Autoplaying carousels
 
-You can make your carousels autoplay on page load by setting the `ride` option to `carousel`. Autoplaying carousels automatically pause while hovered with the mouse. This behavior can be controlled with the `pause` option. In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-visibility/), the carousel will stop cycling when the webpage is not visible to the user (such as when the browser tab is inactive, or when the browser window is minimized).
+You can make your carousels autoplay on page load by setting the `autoplay` option to `true`. Autoplaying carousels automatically pause while hovered with the mouse. This behavior can be controlled with the `pause` option. In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-visibility/), the carousel will stop cycling when the webpage is not visible to the user (such as when the browser tab is inactive, or when the browser window is minimized).
 
 <Callout>
 For accessibility reasons, we recommend avoiding the use of autoplaying carousels. If your page does include an autoplaying carousel, we recommend providing an additional button or control to explicitly pause/stop the carousel.
@@ -158,7 +158,7 @@ For accessibility reasons, we recommend avoiding the use of autoplaying carousel
 See [WCAG 2.2 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG/#pause-stop-hide).
 </Callout>
 
-<Example code={`<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+<Example code={`<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-autoplay="true">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
@@ -180,35 +180,11 @@ See [WCAG 2.2 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/W
     </button>
   </div>`} />
 
-When the `ride` option is set to `true`, rather than `carousel`, the carousel won’t automatically start to cycle on page load. Instead, it will only start after the first user interaction.
-
-<Example code={`<div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
-      </div>
-      <div class="carousel-item">
-        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" />
-      </div>
-      <div class="carousel-item">
-        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>`} />
-
 ### Individual `.carousel-item` interval
 
 Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to delay between automatically cycling to the next item.
 
-<Example code={`<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+<Example code={`<div id="carouselExampleInterval" class="carousel slide" data-bs-autoplay="true">
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="10000">
         <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
@@ -234,7 +210,7 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
 
 Here’s a carousel with slides only. Note the presence of the `.d-block` and `.w-100` on carousel images to prevent browser default image alignment.
 
-<Example code={`<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+<Example code={`<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-autoplay="true">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
@@ -342,7 +318,7 @@ Use data attributes to easily control the position of the carousel. `data-bs-sli
 <BsTable>
 | Attribute | Description |
 | --- | --- |
-| `data-bs-ride` | Starts autoplay after the first manual cycle (`true`) or on load (`carousel`). |
+| `data-bs-autoplay` | Set to `true` to autoplay the carousel on load. |
 | `data-bs-slide` | `prev` or `next` to move the carousel relative to the current slide. |
 | `data-bs-slide-to` | Zero-based index of the slide to show. |
 | `data-bs-interval` | Autoplay interval in milliseconds between slides. |
@@ -363,10 +339,10 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
+| `autoplay` | boolean | `false` | If set to `true`, autoplays the carousel on load. Otherwise the carousel does not autoplay. |
 | `interval` | number | `5000` | The amount of time to delay between automatically cycling an item. |
 | `keyboard` | boolean | `true` | Whether the carousel should react to keyboard events. |
 | `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won’t pause it. On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior. |
-| `ride` | string, boolean | `false` | If set to `true`, autoplays the carousel after the user manually cycles the first item. If set to `"carousel"`, autoplays the carousel on load. |
 | `touch` | boolean | `true` | Whether the carousel should support left/right swipe interactions on touchscreen devices. |
 | `wrap` | boolean | `true` | Whether the carousel should cycle continuously or have hard stops. |
 </BsTable>
@@ -375,7 +351,7 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 
 <Callout name="danger-async-methods" type="danger" />
 
-You can create a carousel instance with the carousel constructor, and pass on any additional options. For example, to manually initialize an autoplaying carousel (assuming you’re not using the `data-bs-ride="carousel"` attribute in the markup itself) with a specific interval and with touch support disabled, you can use:
+You can create a carousel instance with the carousel constructor, and pass on any additional options. For example, to manually initialize an autoplaying carousel (assuming you’re not using the `data-bs-autoplay="true"` attribute in the markup itself) with a specific interval and with touch support disabled, you can use:
 
 ```js
 const myCarouselElement = document.querySelector('#myCarousel')

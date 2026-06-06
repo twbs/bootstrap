@@ -120,7 +120,7 @@ export default () => {
   // Carousels
   // --------
   // Instantiate all non-autoplaying carousels in docs or StackBlitz
-  document.querySelectorAll('.carousel:not([data-bs-ride="carousel"])')
+  document.querySelectorAll('.carousel:not([data-bs-autoplay="true"])')
     .forEach(carousel => {
       Carousel.getOrCreateInstance(carousel)
     })

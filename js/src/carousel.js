@@ -59,7 +59,7 @@ const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_INDICATORS = '.carousel-indicators'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
-const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
+const SELECTOR_DATA_AUTOPLAY = '[data-bs-autoplay="true"]'
 
 const KEY_TO_DIRECTION = {
   [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
@@ -67,19 +67,19 @@ const KEY_TO_DIRECTION = {
 }
 
 const Default = {
+  autoplay: false,
   interval: 5000,
   keyboard: true,
   pause: 'hover',
-  ride: false,
   touch: true,
   wrap: true
 }
 
 const DefaultType = {
+  autoplay: 'boolean',
   interval: 'number',
   keyboard: 'boolean',
   pause: '(string|boolean)',
-  ride: '(boolean|string)',
   touch: 'boolean',
   wrap: 'boolean'
 }
@@ -101,7 +101,7 @@ class Carousel extends BaseComponent {
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._addEventListeners()
 
-    if (this._config.ride === CLASS_NAME_CAROUSEL) {
+    if (this._config.autoplay) {
       this.cycle()
     }
   }
@@ -152,7 +152,7 @@ class Carousel extends BaseComponent {
   }
 
   _maybeEnableCycle() {
-    if (!this._config.ride) {
+    if (!this._config.autoplay) {
       return
     }
 
@@ -435,7 +435,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (e
 })
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
+  const carousels = SelectorEngine.find(SELECTOR_DATA_AUTOPLAY)
 
   for (const carousel of carousels) {
     Carousel.getOrCreateInstance(carousel)

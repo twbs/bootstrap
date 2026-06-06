@@ -65,15 +65,15 @@ describe('Carousel', () => {
       expect(carouselByElement._element).toEqual(carouselEl)
     })
 
-    it('should start cycling if `ride`===`carousel`', () => {
-      fixtureEl.innerHTML = '<div id="myCarousel" class="carousel slide" data-bs-ride="carousel"></div>'
+    it('should start cycling if `autoplay` is `true`', () => {
+      fixtureEl.innerHTML = '<div id="myCarousel" class="carousel slide" data-bs-autoplay="true"></div>'
 
       const carousel = new Carousel('#myCarousel')
       expect(carousel._interval).not.toBeNull()
     })
 
-    it('should not start cycling if `ride`!==`carousel`', () => {
-      fixtureEl.innerHTML = '<div id="myCarousel" class="carousel slide" data-bs-ride="true"></div>'
+    it('should not start cycling if `autoplay` is not `true`', () => {
+      fixtureEl.innerHTML = '<div id="myCarousel" class="carousel slide" data-bs-autoplay="false"></div>'
 
       const carousel = new Carousel('#myCarousel')
       expect(carousel._interval).toBeNull()
@@ -664,7 +664,7 @@ describe('Carousel', () => {
 
     it('should call `maybeEnableCycle` on mouse out with pause equal to hover', () => {
       return new Promise(resolve => {
-        fixtureEl.innerHTML = '<div class="carousel" data-bs-ride="true"></div>'
+        fixtureEl.innerHTML = '<div class="carousel" data-bs-autoplay="true"></div>'
 
         const carouselEl = fixtureEl.querySelector('.carousel')
         const carousel = new Carousel(carouselEl)
@@ -1380,8 +1380,8 @@ describe('Carousel', () => {
   })
 
   describe('data-api', () => {
-    it('should init carousels with data-bs-ride="carousel" on load', () => {
-      fixtureEl.innerHTML = '<div data-bs-ride="carousel"></div>'
+    it('should init carousels with data-bs-autoplay="true" on load', () => {
+      fixtureEl.innerHTML = '<div data-bs-autoplay="true"></div>'
 
       const carouselEl = fixtureEl.querySelector('div')
       const loadEvent = createEvent('load')
@@ -1446,7 +1446,7 @@ describe('Carousel', () => {
     it('should create carousel and go to the next slide on click with data-bs-slide-to', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
-          '<div id="myCarousel" class="carousel slide" data-bs-ride="true">',
+          '<div id="myCarousel" class="carousel slide" data-bs-autoplay="true">',
           '  <div class="carousel-inner">',
           '    <div class="carousel-item active">item 1</div>',
           '    <div id="item2" class="carousel-item">item 2</div>',
@@ -1464,6 +1464,32 @@ describe('Carousel', () => {
         setTimeout(() => {
           expect(item2).toHaveClass('active')
           expect(Carousel.getInstance('#myCarousel')._interval).not.toBeNull()
+          resolve()
+        }, 10)
+      })
+    })
+
+    it('should not start autoplaying after a user interaction unless `autoplay` is `true`', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="myCarousel" class="carousel slide" data-bs-autoplay="false">',
+          '  <div class="carousel-inner">',
+          '    <div class="carousel-item active">item 1</div>',
+          '    <div id="item2" class="carousel-item">item 2</div>',
+          '    <div class="carousel-item">item 3</div>',
+          '  </div>',
+          '  <div id="next" data-bs-target="#myCarousel" data-bs-slide-to="1"></div>',
+          '</div>'
+        ].join('')
+
+        const next = fixtureEl.querySelector('#next')
+        const item2 = fixtureEl.querySelector('#item2')
+
+        next.click()
+
+        setTimeout(() => {
+          expect(item2).toHaveClass('active')
+          expect(Carousel.getInstance('#myCarousel')._interval).toBeNull()
           resolve()
         }, 10)
       })
