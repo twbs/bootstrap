@@ -106,6 +106,8 @@ const localRules = {
   'unicorn/prefer-structured-clone': 'off',
   'unicorn/prevent-abbreviations': 'off',
   // Rules new/changed in ESLint 10 / updated plugins — disable to preserve old behaviour
+  'xo/import-specifier-newline': 'off',
+  '@eslint-community/eslint-comments/require-description': 'off',
   'import-x/no-anonymous-default-export': 'off',
   'import-x/no-extraneous-dependencies': 'off',
   'import-x/no-unassigned-import': 'off',
@@ -126,9 +128,7 @@ const localRules = {
 
 // Base config: xo/browser + unicorn + import-x for all JS/HTML/MD files
 const xoBrowserConfigs = eslintConfigXo({ browser: true, space: false })
-const xoBrowserConfig = xoBrowserConfigs.find(config =>
-  config.files?.includes('**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,vue,svelte,astro}')
-) ?? xoBrowserConfigs[0]
+const xoBrowserConfig = xoBrowserConfigs.find(config => config.name === 'xo/base') ?? xoBrowserConfigs[0]
 const unicornConfig = unicorn.configs['flat/recommended']
 
 const eslintConfig = [
