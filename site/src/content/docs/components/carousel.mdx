@@ -152,11 +152,13 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 
 You can make your carousels autoplay on page load by setting the `autoplay` option to `true`. Autoplaying carousels automatically pause while hovered with the mouse. This behavior can be controlled with the `pause` option. In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-visibility/), the carousel will stop cycling when the webpage is not visible to the user (such as when the browser tab is inactive, or when the browser window is minimized).
 
-<Callout>
-For accessibility reasons, we recommend avoiding the use of autoplaying carousels. If your page does include an autoplaying carousel, we recommend providing an additional button or control to explicitly pause/stop the carousel.
+As soon as a visitor takes control of an autoplaying carousel—clicking a control or indicator, navigating with the keyboard, or swiping—autoplay stops for good, so content isn’t moved out from under them.
 
-See [WCAG 2.2 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG/#pause-stop-hide).
+<Callout>
+For accessibility reasons, we recommend avoiding the use of autoplaying carousels. If your page does include one, provide a discoverable control to pause and resume it: add a `.carousel-control-play-pause` button (shown below). This satisfies [WCAG 2.2 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/WCAG/#pause-stop-hide), which a hover- or focus-only pause does not.
 </Callout>
+
+The play/pause button toggles autoplay and reflects the current state automatically—it shows a pause icon while playing and a play icon while stopped. Provide an accessible name for each state with the `data-bs-play-label` and `data-bs-pause-label` attributes.
 
 <Example code={`<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-autoplay="true">
     <div class="carousel-inner">
@@ -170,6 +172,9 @@ See [WCAG 2.2 Success Criterion 2.2.2 Pause, Stop, Hide](https://www.w3.org/TR/W
         <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
       </div>
     </div>
+    <button class="carousel-control-play-pause" type="button" data-bs-target="#carouselExampleAutoplaying" aria-label="Pause" data-bs-pause-label="Pause" data-bs-play-label="Play">
+      <span class="carousel-control-play-pause-icon" aria-hidden="true"></span>
+    </button>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -322,6 +327,8 @@ Use data attributes to easily control the position of the carousel. `data-bs-sli
 | `data-bs-slide` | `prev` or `next` to move the carousel relative to the current slide. |
 | `data-bs-slide-to` | Zero-based index of the slide to show. |
 | `data-bs-interval` | Autoplay interval in milliseconds between slides. |
+| `data-bs-play-label` | On a `.carousel-control-play-pause` button, the `aria-label` to apply while autoplay is stopped. |
+| `data-bs-pause-label` | On a `.carousel-control-play-pause` button, the `aria-label` to apply while autoplay is playing. |
 </BsTable>
 
 ### Via JavaScript

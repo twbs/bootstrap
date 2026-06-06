@@ -216,6 +216,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - `data-bs-ride="true"` &rarr; `data-bs-autoplay="true"` (it now autoplays on load like any other autoplaying carousel, instead of waiting for the first interaction)
   - JavaScript: `new bootstrap.Carousel(el, { ride: 'carousel' })` &rarr; `new bootstrap.Carousel(el, { autoplay: true })`
   - The auto-initialization-on-load selector changed accordingly from `[data-bs-ride="carousel"]` to `[data-bs-autoplay="true"]`.
+- **Autoplaying carousels now stop when the user interacts with them.** Clicking a control or indicator, navigating with the keyboard, or swiping permanently stops autoplay instead of resuming it, respecting the visitor’s intent ([WCAG 2.2.2](https://www.w3.org/TR/WCAG/#pause-stop-hide)). Previously these interactions kept the carousel cycling.
+- **New `.carousel-control-play-pause` control** provides a discoverable, accessible button to pause and resume an autoplaying carousel—the mechanism WCAG 2.2.2 requires (a hover-only pause does not qualify). It renders pause/play icons via CSS masks (`--carousel-control-pause-icon` / `--carousel-control-play-icon`), swaps its icon and `aria-label` with state, and can also start autoplay on an otherwise static carousel.
 
 ### Reboot
 

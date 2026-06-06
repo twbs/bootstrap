@@ -33,6 +33,9 @@ $carousel-tokens: defaults(
     --carousel-control-icon-width: 2rem,
     --carousel-control-prev-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>"),
     --carousel-control-next-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>"),
+    --carousel-control-play-pause-icon-width: 1.5rem,
+    --carousel-control-pause-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5'/></svg>"),
+    --carousel-control-play-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'/></svg>"),
     --carousel-transition-duration: .6s,
     --carousel-transition: transform .6s ease-in-out,
   ),
@@ -203,6 +206,52 @@ $carousel-dark-tokens: defaults(
 
   [dir="rtl"] .carousel-control-next-icon {
     mask-image: var(--carousel-control-prev-icon);
+  }
+
+  //
+  // Optional play/pause control
+  //
+  // A discoverable toggle so users can stop an autoplaying carousel, as required
+  // by WCAG 2.2.2 (Pause, Stop, Hide). Sits inside the top-end clear area, away
+  // from the full-height previous/next controls.
+
+  .carousel-control-play-pause {
+    position: absolute;
+    inset-block-start: 1rem;
+    inset-inline-end: var(--carousel-control-width);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .25rem;
+    color: var(--carousel-control-color);
+    background: none;
+    filter: var(--carousel-control-icon-filter);
+    border: 0;
+    opacity: var(--carousel-control-opacity);
+    @include transition(var(--carousel-control-transition));
+
+    &:hover,
+    &:focus {
+      color: var(--carousel-control-color);
+      outline: 0;
+      opacity: var(--carousel-control-hover-opacity);
+    }
+  }
+
+  // Icon rendered via CSS mask so it inherits a configurable color, swapping
+  // between the pause (playing) and play (paused) glyphs based on state.
+  .carousel-control-play-pause-icon {
+    display: inline-block;
+    width: var(--carousel-control-play-pause-icon-width);
+    height: var(--carousel-control-play-pause-icon-width);
+    background-color: var(--carousel-control-color);
+    mask-image: var(--carousel-control-pause-icon);
+    @include mask-icon($size: 100% 100%, $position: 50%);
+  }
+
+  .carousel-control-play-pause.paused .carousel-control-play-pause-icon {
+    mask-image: var(--carousel-control-play-icon);
   }
 
   // Optional indicator pips/controls

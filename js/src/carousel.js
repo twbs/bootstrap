@@ -52,12 +52,14 @@ const CLASS_NAME_END = 'carousel-item-end'
 const CLASS_NAME_START = 'carousel-item-start'
 const CLASS_NAME_NEXT = 'carousel-item-next'
 const CLASS_NAME_PREV = 'carousel-item-prev'
+const CLASS_NAME_PAUSED = 'paused'
 
 const SELECTOR_ACTIVE = '.active'
 const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ACTIVE_ITEM = SELECTOR_ACTIVE + SELECTOR_ITEM
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_INDICATORS = '.carousel-indicators'
+const SELECTOR_PLAY_PAUSE = '.carousel-control-play-pause'
 const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
 const SELECTOR_DATA_AUTOPLAY = '[data-bs-autoplay="true"]'
 
@@ -98,12 +100,20 @@ class Carousel extends BaseComponent {
     this.touchTimeout = null
     this._swipeHelper = null
 
+    // Runtime autoplay intent. Starts from the `autoplay` option, but is turned
+    // off as soon as the user takes control (clicks a control, uses the keyboard,
+    // swipes, or presses pause) so we don't resume against their wishes.
+    this._playing = this._config.autoplay
+
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
+    this._playPauseElement = SelectorEngine.findOne(SELECTOR_PLAY_PAUSE, this._element)
     this._addEventListeners()
 
-    if (this._config.autoplay) {
+    if (this._playing) {
       this.cycle()
     }
+
+    this._updatePlayPauseControl()
   }
 
   // Getters
@@ -152,7 +162,7 @@ class Carousel extends BaseComponent {
   }
 
   _maybeEnableCycle() {
-    if (!this._config.autoplay) {
+    if (!this._playing) {
       return
     }
 
@@ -162,6 +172,42 @@ class Carousel extends BaseComponent {
     }
 
     this.cycle()
+  }
+
+  // Turn autoplay off for good once the user interacts with the carousel, so we
+  // respect their intent and don't keep moving content out from under them
+  // (WCAG 2.2.2 Pause, Stop, Hide).
+  _pauseFromInteraction() {
+    this._playing = false
+    this.pause()
+    this._updatePlayPauseControl()
+  }
+
+  _togglePlayPause() {
+    if (this._playing) {
+      this._pauseFromInteraction()
+      return
+    }
+
+    this._playing = true
+    this.cycle()
+    this._updatePlayPauseControl()
+  }
+
+  _updatePlayPauseControl() {
+    if (!this._playPauseElement) {
+      return
+    }
+
+    this._playPauseElement.classList.toggle(CLASS_NAME_PAUSED, !this._playing)
+
+    const label = this._playPauseElement.getAttribute(
+      this._playing ? 'data-bs-pause-label' : 'data-bs-play-label'
+    )
+
+    if (label) {
+      this._playPauseElement.setAttribute('aria-label', label)
+    }
   }
 
   to(index) {
@@ -241,8 +287,14 @@ class Carousel extends BaseComponent {
     }
 
     const swipeConfig = {
-      leftCallback: () => this._slide(this._directionToOrder(DIRECTION_LEFT)),
-      rightCallback: () => this._slide(this._directionToOrder(DIRECTION_RIGHT)),
+      leftCallback: () => {
+        this._pauseFromInteraction()
+        this._slide(this._directionToOrder(DIRECTION_LEFT))
+      },
+      rightCallback: () => {
+        this._pauseFromInteraction()
+        this._slide(this._directionToOrder(DIRECTION_RIGHT))
+      },
       endCallback: endCallBack
     }
 
@@ -257,6 +309,7 @@ class Carousel extends BaseComponent {
     const direction = KEY_TO_DIRECTION[event.key]
     if (direction) {
       event.preventDefault()
+      this._pauseFromInteraction()
       this._slide(this._directionToOrder(direction))
     }
   }
@@ -416,22 +469,35 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, function (e
   event.preventDefault()
 
   const carousel = Carousel.getOrCreateInstance(target)
+
+  // Manually cycling the carousel is an explicit interaction, so stop autoplay
+  carousel._pauseFromInteraction()
+
   const slideIndex = this.getAttribute('data-bs-slide-to')
 
   if (slideIndex) {
     carousel.to(slideIndex)
-    carousel._maybeEnableCycle()
     return
   }
 
   if (Manipulator.getDataAttribute(this, 'slide') === 'next') {
     carousel.next()
-    carousel._maybeEnableCycle()
     return
   }
 
   carousel.prev()
-  carousel._maybeEnableCycle()
+})
+
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_PLAY_PAUSE, function (event) {
+  const target = SelectorEngine.getElementFromSelector(this)
+
+  if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
+    return
+  }
+
+  event.preventDefault()
+
+  Carousel.getOrCreateInstance(target)._togglePlayPause()
 })
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {

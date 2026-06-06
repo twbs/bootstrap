@@ -897,14 +897,14 @@ describe('Carousel', () => {
       const carousel = new Carousel(carouselEl)
       const nextSpy = spyOn(carousel, 'next')
       const prevSpy = spyOn(carousel, 'prev')
-      const spyEnable = spyOn(carousel, '_maybeEnableCycle')
+      const spyPause = spyOn(carousel, '_pauseFromInteraction')
 
       nextBtnEl.click()
       prevBtnEl.click()
 
       expect(nextSpy).toHaveBeenCalled()
       expect(prevSpy).toHaveBeenCalled()
-      expect(spyEnable).toHaveBeenCalled()
+      expect(spyPause).toHaveBeenCalled()
     })
   })
 
@@ -1443,7 +1443,7 @@ describe('Carousel', () => {
       })
     })
 
-    it('should create carousel and go to the next slide on click with data-bs-slide-to', () => {
+    it('should create carousel and go to the next slide on click with data-bs-slide-to, stopping autoplay', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div id="myCarousel" class="carousel slide" data-bs-autoplay="true">',
@@ -1463,7 +1463,8 @@ describe('Carousel', () => {
 
         setTimeout(() => {
           expect(item2).toHaveClass('active')
-          expect(Carousel.getInstance('#myCarousel')._interval).not.toBeNull()
+          // Interacting with the carousel stops autoplay (WCAG 2.2.2)
+          expect(Carousel.getInstance('#myCarousel')._interval).toBeNull()
           resolve()
         }, 10)
       })
@@ -1533,6 +1534,114 @@ describe('Carousel', () => {
       next.click()
 
       expect().nothing()
+    })
+  })
+
+  describe('play/pause control', () => {
+    it('should stop autoplay when the carousel is navigated with the keyboard', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div id="myCarousel" class="carousel slide" data-bs-autoplay="true">',
+          '  <div class="carousel-inner">',
+          '    <div class="carousel-item active">item 1</div>',
+          '    <div class="carousel-item">item 2</div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const carouselEl = fixtureEl.querySelector('#myCarousel')
+        const carousel = new Carousel(carouselEl)
+        expect(carousel._interval).not.toBeNull()
+
+        const keydown = createEvent('keydown')
+        keydown.key = 'ArrowRight'
+        carouselEl.dispatchEvent(keydown)
+
+        setTimeout(() => {
+          expect(carousel._playing).toBeFalse()
+          expect(carousel._interval).toBeNull()
+          resolve()
+        }, 10)
+      })
+    })
+
+    it('should reflect the playing state on the control on init', () => {
+      fixtureEl.innerHTML = [
+        '<div id="autoplayCarousel" class="carousel slide" data-bs-autoplay="true">',
+        '  <div class="carousel-inner"><div class="carousel-item active">item 1</div></div>',
+        '  <button class="carousel-control-play-pause" type="button" data-bs-target="#autoplayCarousel"><span class="carousel-control-play-pause-icon"></span></button>',
+        '</div>',
+        '<div id="staticCarousel" class="carousel slide">',
+        '  <div class="carousel-inner"><div class="carousel-item active">item 1</div></div>',
+        '  <button class="carousel-control-play-pause" type="button" data-bs-target="#staticCarousel"><span class="carousel-control-play-pause-icon"></span></button>',
+        '</div>'
+      ].join('')
+
+      // eslint-disable-next-line no-new
+      new Carousel('#autoplayCarousel')
+      // eslint-disable-next-line no-new
+      new Carousel('#staticCarousel')
+
+      const autoplayControl = fixtureEl.querySelector('#autoplayCarousel .carousel-control-play-pause')
+      const staticControl = fixtureEl.querySelector('#staticCarousel .carousel-control-play-pause')
+
+      expect(autoplayControl).not.toHaveClass('paused')
+      expect(staticControl).toHaveClass('paused')
+    })
+
+    it('should toggle autoplay and the control state when clicked', () => {
+      fixtureEl.innerHTML = [
+        '<div id="myCarousel" class="carousel slide" data-bs-autoplay="true">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active">item 1</div>',
+        '    <div class="carousel-item">item 2</div>',
+        '  </div>',
+        '  <button class="carousel-control-play-pause" type="button" data-bs-target="#myCarousel" data-bs-pause-label="Pause" data-bs-play-label="Play">',
+        '    <span class="carousel-control-play-pause-icon"></span>',
+        '  </button>',
+        '</div>'
+      ].join('')
+
+      const carousel = new Carousel('#myCarousel')
+      const control = fixtureEl.querySelector('.carousel-control-play-pause')
+
+      expect(carousel._interval).not.toBeNull()
+      expect(control).not.toHaveClass('paused')
+
+      control.click()
+      expect(carousel._interval).toBeNull()
+      expect(carousel._playing).toBeFalse()
+      expect(control).toHaveClass('paused')
+      expect(control.getAttribute('aria-label')).toEqual('Play')
+
+      control.click()
+      expect(carousel._interval).not.toBeNull()
+      expect(carousel._playing).toBeTrue()
+      expect(control).not.toHaveClass('paused')
+      expect(control.getAttribute('aria-label')).toEqual('Pause')
+    })
+
+    it('should let the control start autoplay on an otherwise static carousel', () => {
+      fixtureEl.innerHTML = [
+        '<div id="myCarousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active">item 1</div>',
+        '    <div class="carousel-item">item 2</div>',
+        '  </div>',
+        '  <button class="carousel-control-play-pause" type="button" data-bs-target="#myCarousel"><span class="carousel-control-play-pause-icon"></span></button>',
+        '</div>'
+      ].join('')
+
+      const carousel = new Carousel('#myCarousel')
+      const control = fixtureEl.querySelector('.carousel-control-play-pause')
+
+      expect(carousel._interval).toBeNull()
+      expect(control).toHaveClass('paused')
+
+      control.click()
+      expect(carousel._interval).not.toBeNull()
+      expect(carousel._playing).toBeTrue()
+      expect(control).not.toHaveClass('paused')
     })
   })
 })
