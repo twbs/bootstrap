@@ -1438,7 +1438,7 @@ describe('Menu', () => {
         fixtureEl.innerHTML = [
           '<div class="nav">',
           '  <div id="testmenu">',
-          '    <a class="btn" data-bs-toggle="menu" href="#testmenu">Test menu</a>',
+          '    <a class="btn" href="#testmenu" role="button" data-bs-toggle="menu" aria-expanded="false">Test menu</a>',
           '    <div class="menu">',
           '      <a class="menu-item" href="#sub1">Submenu 1</a>',
           '    </div>',
@@ -1489,7 +1489,7 @@ describe('Menu', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div>',
-          '  <a class="btn" data-bs-toggle="menu" href="#testmenu">Test menu</a>',
+          '  <a class="btn" href="#testmenu" role="button" data-bs-toggle="menu" aria-expanded="false">Test menu</a>',
           '  <div class="menu">',
           '    <a class="menu-item" href="#sub1">Submenu 1</a>',
           '  </div>',
