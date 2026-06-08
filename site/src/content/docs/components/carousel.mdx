@@ -10,17 +10,111 @@ js: required
 
 - The carousel is a slideshow for cycling through a series of content. It’s built on a native CSS [scroll-snap](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll_snap) container, so sliding, touch dragging, momentum, and keyboard scrolling all come from the browser. JavaScript only layers on autoplay, the previous/next controls, the indicators, and active-slide syncing. It works with a series of images, text, or custom markup.
 
-- Because the slides live in a real scroll container, the carousel can show **[more than one slide at a time](#multiple-slides-peeking-and-variable-widths)**, reveal a “peek” of the neighbouring slides, and mix variable-width slides—all controlled with CSS.
+- Because the slides live in a real scroll container, the carousel can show **[more than one slide at a time](#items)**, reveal a “peek” of the neighbouring slides, and mix variable-width slides—all controlled with CSS.
 
-- For the previous/next controls, indicators, and autoplay to work you must initialize the carousel with the [constructor method](#methods). The only exception are [autoplaying carousels](#autoplaying-carousels) with the `data-bs-autoplay="true"` attribute, which are initialized automatically on page load. If you’re using autoplaying carousels with the data attribute, **don’t explicitly initialize the same carousels with the constructor method.**
+- For the previous/next controls, indicators, and autoplay to work you must initialize the carousel with the [constructor method](#methods). The only exception are [autoplaying carousels](#autoplay) with the `data-bs-autoplay="true"` attribute, which are initialized automatically on page load. If you’re using autoplaying carousels with the data attribute, **don’t explicitly initialize the same carousels with the constructor method.**
 
 - Nested carousels are not supported. You should also be aware that carousels in general can often cause usability and accessibility challenges.
 
 <Callout name="info-prefersreducedmotion" />
 
-## Basic examples
+## Examples
 
 Here is a basic example of a carousel with three slides. Note the previous/next controls. We recommend using `<button>` elements, but you can also use `<a>` elements with `role="button"`.
+
+### Stacked top
+
+The new default carousel has a simpler design with the controls outside the carousel. Stacked carousels can have their controls at the top or bottom of the carousel, with any order of controls and any additional content you may need.
+
+<Example code={`<div id="carouselStacked" class="carousel carousel-stacked slide">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Top controls</h5>
+      <div>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselStacked" data-bs-slide="prev">
+          ←
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselStacked" data-bs-slide="next">
+          →
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="carousel-inner rounded-5">
+      <div class="carousel-item active">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
+      </div>
+    </div>
+  </div>`} />
+
+### Stacked bottom
+
+Similar to the stacked top, but with the controls at the bottom of the carousel and different content.
+
+<Example code={`<div id="carouselStackedBottom" class="carousel carousel-stacked slide">
+    <div class="carousel-inner rounded-5">
+      <div class="carousel-item active">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
+      </div>
+    </div>
+    <div>
+      <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselStackedBottom" data-bs-slide="prev">
+        ←
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselStackedBottom" data-bs-slide="next">
+        →
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>`} />
+
+### Stacked with indicators
+
+Add indicator buttons wherever you want them to reside.
+
+<Example code={`<div id="carouselStackedIndicators" class="carousel carousel-stacked slide">
+    <div class="carousel-inner rounded-5">
+      <div class="carousel-item active">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
+      </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselStackedIndicators" data-bs-slide="prev">
+          ←
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselStackedIndicators" data-bs-slide="next">
+          →
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="carousel-indicators carousel-indicators-dots">
+        <button type="button" data-bs-target="#carouselStackedIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselStackedIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselStackedIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>`} />
 
 <Example code={`<div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
@@ -148,66 +242,115 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
     </button>
   </div>`} />
 
-## Multiple slides, peeking, and variable widths
+## Items
 
-Because the carousel is a real scroll container, you can change how many slides are visible and how they’re sized with a few CSS custom properties on the `.carousel`—no JavaScript options required:
+Because the carousel is a real scroll container, you can change how many slides are visible and how they’re sized with a few CSS custom properties on the `.carousel` without writing any JavaScript.
 
-- `--carousel-items`: the number of whole slides visible per view (default `1`).
-- `--carousel-gap`: the space between slides (default `0`).
-- `--carousel-peek`: how much of the neighbouring slides to reveal (default `0`).
+- `--bs-carousel-items` sets the number of whole slides visible per view (default `1`).
+- `--bs-carousel-items-gap` sets the space between slides (default `0`).
+- `--bs-carousel-items-peek` sets how much of the neighboring slides to reveal (default `0`).
 
-### Multiple slides
+### Multiple items
 
-Set `--carousel-items` to show several slides at once. Combine it with `--carousel-gap` for spacing.
+Set `--bs-carousel-items` to show several slides at once. Combine it with `--bs-carousel-items-gap` for spacing.
 
-<Example code={`<div id="carouselMultiple" class="carousel slide" style="--carousel-items: 3; --carousel-gap: 1rem;">
-    <div class="carousel-inner">
-      <div class="carousel-item active"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#777" text="1" /></div>
-      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#666" text="2" /></div>
-      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#555" text="3" /></div>
-      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#444" text="4" /></div>
-      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#333" text="5" /></div>
+<Example code={`<div id="carouselMultiple" class="carousel carousel-stacked slide" data-bs-ends="stop" style="--bs-carousel-items: 3; --bs-carousel-items-gap: 1rem;"><!--[!code highlight]-->
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Three at a time</h5>
+      <div>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselMultiple" data-bs-slide="prev">
+          ←
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselMultiple" data-bs-slide="next">
+          →
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselMultiple" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselMultiple" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <div class="carousel-inner">
+      <div class="carousel-item active"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#777" text="1" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#6c6c6c" text="2" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#666" text="3" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#5c5c5c" text="4" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#555" text="5" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#4c4c4c" text="6" /></div>
+      <div class="carousel-item"><Placeholder width="260" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#444" text="7" /></div>
+    </div>
   </div>`} />
 
 Use the responsive `.carousel-items-*` utilities to vary the count per breakpoint, e.g. `class="carousel carousel-items-1 md:carousel-items-3"`.
 
 ### Peeking
 
-Set `--carousel-peek` to reveal a sliver of the previous and next slides, hinting that there’s more to scroll.
+Set `--bs-carousel-items-peek` to reveal a sliver of the previous and next slides, hinting that there’s more to scroll.
 
-<Example code={`<div id="carouselPeek" class="carousel slide" style="--carousel-peek: 3rem; --carousel-gap: 1rem;">
+<Example code={`<div id="carouselPeek" class="carousel carousel-stacked slide" data-bs-ends="stop" style="--bs-carousel-items-peek: 3rem; --bs-carousel-items-gap: 1rem;"><!--[!code highlight]-->
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Peek the neighbors</h5>
+      <div>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselPeek" data-bs-slide="prev">
+          ←
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselPeek" data-bs-slide="next">
+          →
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
     <div class="carousel-inner">
-      <div class="carousel-item active"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100" color="#fff" background="#777" text="First slide" /></div>
-      <div class="carousel-item"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100" color="#fff" background="#666" text="Second slide" /></div>
-      <div class="carousel-item"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100" color="#fff" background="#555" text="Third slide" /></div>
+      <div class="carousel-item active"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100 rounded-5" color="#fff" background="#777" text="First slide" /></div>
+      <div class="carousel-item"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100 rounded-5" color="#fff" background="#666" text="Second slide" /></div>
+      <div class="carousel-item"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100 rounded-5" color="#fff" background="#555" text="Third slide" /></div>
+      <div class="carousel-item"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100 rounded-5" color="#fff" background="#444" text="Fourth slide" /></div>
+      <div class="carousel-item"><Placeholder width="800" height="300" class="bd-placeholder-img-lg d-block w-100 rounded-5" color="#fff" background="#333" text="Fifth slide" /></div>
     </div>
   </div>`} />
 
-### Variable-width slides
+### Variable width
 
 Add `.carousel-auto` and size each `.carousel-item` yourself (utilities or custom CSS). Snap points still land on every slide.
 
-<Example code={`<div id="carouselVariable" class="carousel carousel-auto" style="--carousel-gap: 1rem;">
+<Example code={`<div id="carouselVariable" class="carousel carousel-stacked carousel-auto slide" data-bs-ends="stop" style="--bs-carousel-items-gap: 1rem;"><!--[!code highlight]-->
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Mixed widths</h5>
+      <div>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselVariable" data-bs-slide="prev">
+          ←
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselVariable" data-bs-slide="next">
+          →
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
     <div class="carousel-inner">
-      <div class="carousel-item active" style="width: 160px;"><Placeholder width="160" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#777" text="A" /></div>
-      <div class="carousel-item" style="width: 320px;"><Placeholder width="320" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#666" text="B" /></div>
-      <div class="carousel-item" style="width: 220px;"><Placeholder width="220" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#555" text="C" /></div>
-      <div class="carousel-item" style="width: 380px;"><Placeholder width="380" height="200" class="bd-placeholder-img d-block w-100" color="#fff" background="#444" text="D" /></div>
+      <div class="carousel-item active" style="width: 160px;"><!--[!code highlight]-->
+        <Placeholder width="160" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#777" text="A" />
+      </div>
+      <div class="carousel-item" style="width: 320px;"><!--[!code highlight]-->
+        <Placeholder width="320" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#666" text="B" />
+      </div>
+      <div class="carousel-item" style="width: 220px;"><!--[!code highlight]-->
+        <Placeholder width="220" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#555" text="C" />
+      </div>
+      <div class="carousel-item" style="width: 380px;"><!--[!code highlight]-->
+        <Placeholder width="380" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#4c4c4c" text="D" />
+      </div>
+      <div class="carousel-item" style="width: 200px;"><!--[!code highlight]-->
+        <Placeholder width="200" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#444" text="E" />
+      </div>
+      <div class="carousel-item" style="width: 300px;"><!--[!code highlight]-->
+        <Placeholder width="300" height="200" class="bd-placeholder-img d-block w-100 rounded-5" color="#fff" background="#333" text="F" />
+      </div>
     </div>
   </div>`} />
 
-Add `.carousel-center` to snap the active slide to the center of the viewport instead of its start—pairs nicely with `--carousel-peek`.
+Add `.carousel-center` to snap the active slide to the center of the viewport instead of its start—pairs nicely with `--bs-carousel-items-peek`.
 
-## Autoplaying carousels
+## Autoplay
 
 You can make your carousels autoplay on page load by setting the `autoplay` option to `true`. Autoplaying carousels automatically pause while hovered with the mouse. This behavior can be controlled with the `pause` option. In browsers that support the [Page Visibility API](https://www.w3.org/TR/page-visibility/), the carousel will stop cycling when the webpage is not visible to the user (such as when the browser tab is inactive, or when the browser window is minimized).
 
@@ -244,7 +387,7 @@ The play/pause button toggles autoplay and reflects the current state automatica
     </button>
   </div>`} />
 
-### Individual `.carousel-item` interval
+### Individual intervals
 
 Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to delay between automatically cycling to the next item.
 
@@ -270,7 +413,7 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
     </button>
   </div>`} />
 
-### Autoplaying carousels without controls
+### Without controls
 
 Here’s a carousel with slides only. Note the presence of the `.d-block` and `.w-100` on carousel images to prevent browser default image alignment.
 
@@ -312,6 +455,103 @@ Carousels support swiping left/right on touchscreen devices to move between slid
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+  </div>`} />
+
+## End behavior
+
+The `ends` option controls what happens at the first and last slide. Set it with `data-bs-ends` (or the `ends` option in JavaScript), choosing from `wrap` (the default), `stop`, or `loop`.
+
+### Wrap (default)
+
+With `data-bs-ends="wrap"` the carousel jumps from the last slide back to the first, and vice versa, so the controls never reach a dead end. This is the default, so it applies with or without the attribute.
+
+<Example code={`<div id="carouselEndsWrap" class="carousel carousel-stacked slide" data-bs-ends="wrap">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Wrap around</h5>
+      <div>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselEndsWrap" data-bs-slide="prev">
+          ←
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselEndsWrap" data-bs-slide="next">
+          →
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="carousel-inner rounded-5">
+      <div class="carousel-item active">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
+      </div>
+    </div>
+  </div>`} />
+
+### Stop
+
+With `data-bs-ends="stop"` the carousel hard-stops at the first and last slide. The previous control is automatically disabled on the first slide and the next control on the last (via the native `disabled` attribute on `<button>` controls); when a focused control becomes disabled, focus shifts to the opposite control so it isn’t lost.
+
+<Example code={`<div id="carouselEndsStop" class="carousel carousel-stacked slide" data-bs-ends="stop">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Stop at the ends</h5>
+      <div>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselEndsStop" data-bs-slide="prev">
+          ←
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselEndsStop" data-bs-slide="next">
+          →
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="carousel-inner rounded-5">
+      <div class="carousel-item active">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
+      </div>
+    </div>
+  </div>`} />
+
+### Loop
+
+With `data-bs-ends="loop"` the carousel scrolls seamlessly past the ends: stepping next from the last slide (or previous from the first) continues in the same direction into the destination slide instead of jumping back, for an endless conveyor effect. Seamless looping applies to single-slide carousels driven by the controls, keyboard, or autoplay; multi-item, peek, centered, and variable-width layouts—as well as users who prefer reduced motion—fall back to the `wrap` jump.
+
+<Example code={`<div id="carouselEndsLoop" class="carousel carousel-stacked slide" data-bs-ends="loop">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Loop</h5>
+      <div>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselEndsLoop" data-bs-slide="prev">
+          ←
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="btn-solid btn-sm" type="button" data-bs-target="#carouselEndsLoop" data-bs-slide="next">
+          →
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="carousel-inner rounded-5">
+      <div class="carousel-item active">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" />
+      </div>
+      <div class="carousel-item">
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
+      </div>
+    </div>
   </div>`} />
 
 ## Dark carousel
@@ -386,6 +626,7 @@ Use data attributes to easily control the position of the carousel. `data-bs-sli
 | `data-bs-slide` | `prev` or `next` to move the carousel relative to the current slide. |
 | `data-bs-slide-to` | Zero-based index of the slide to show. |
 | `data-bs-interval` | Autoplay interval in milliseconds between slides. |
+| `data-bs-ends` | How the carousel behaves at its ends: `stop`, `wrap`, or `loop`. |
 | `data-bs-play-label` | On a `.carousel-control-play-pause` button, the `aria-label` to apply while autoplay is stopped. |
 | `data-bs-pause-label` | On a `.carousel-control-play-pause` button, the `aria-label` to apply while autoplay is playing. |
 </BsTable>
@@ -406,14 +647,14 @@ const carousel = new bootstrap.Carousel('#myCarousel')
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `autoplay` | boolean | `false` | If set to `true`, autoplays the carousel on load. Otherwise the carousel does not autoplay. |
+| `ends` | string | `"wrap"` | How the carousel behaves at its ends. `"stop"` hard-stops at the first/last slide—and disables the previous control on the first slide and the next control on the last (via the native `disabled` attribute on `<button>` controls, so `<a>` controls aren’t affected). `"wrap"` jumps from the last slide back to the first (and vice versa), and `"loop"` scrolls seamlessly past the ends for single-slide carousels (falling back to `"wrap"` for multi-item/peek/centered/variable-width layouts and under reduced motion). |
 | `interval` | number | `5000` | The amount of time to delay between automatically cycling an item. |
 | `keyboard` | boolean | `true` | Whether the carousel should react to keyboard events. |
 | `pause` | string, boolean | `"hover"` | If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes it on `mouseleave`. If set to `false`, hovering over the carousel won’t pause it. |
 | `touch` | boolean | `true` | Whether the carousel should support touch swipe gestures. When `false`, the viewport is given `touch-action: pan-y`, so touch can no longer swipe between slides while vertical page scrolling still works. |
-| `wrap` | boolean | `true` | Whether autoplay and the controls wrap around from the last slide back to the first (and vice versa), or stop at the ends. |
 </BsTable>
 
-The number of visible slides, the gap between them, and the peek of adjacent slides are controlled with CSS, not these options—see [Multiple slides, peeking, and variable widths](#multiple-slides-peeking-and-variable-widths).
+The number of visible slides, the gap between them, and the peek of adjacent slides are controlled with CSS, not these options—see [Items](#items).
 
 ### Methods
 
