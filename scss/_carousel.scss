@@ -1,11 +1,89 @@
 @use "config" as *;
 @use "colors" as *;
 @use "functions" as *;
+@use "mixins/border-radius" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/transition" as *;
 @use "mixins/color-mode" as *;
 @use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
+
+// Carousel design plan
+//
+// Multiple base classes that determine carousel layout:
+// 1. .carousel (similar to existing, but with smaller buttons in the lower corners)
+// 2. .carousel-stacked (controls sit outside the inner container, either above or below, and in any other
+//
+// Examples:
+//
+// 1. Minimal, just arrows
+// ┌──────────────────────────────┐
+// │                              │
+// │                              │
+// │                              │
+// │                              │
+// │ ← →                          │
+// └──────────────────────────────┘
+//
+// 2. Overlay UI (overlay controls can be in any order)
+// ┌──────────────────────────────┐
+// │                              │
+// │                              │
+// │                              │
+// │                              │
+// │ ← →         ●●●●         ▶/⏸ │
+// └──────────────────────────────┘
+//
+// 3. Stacked
+// ┌──────────────────────────────┐
+// │                              │
+// │                              │
+// │                              │
+// │                              │
+// │                              │
+// └──────────────────────────────┘
+// ← →           ●●●●           ▶/⏸
+//
+// 3b. Stacked with UI first
+// ▶/⏸           ●●●●           ← →
+// ┌──────────────────────────────┐
+// │                              │
+// │                              │
+// │                              │
+// │                              │
+// │                              │
+// └──────────────────────────────┘
+//
+// 4. Peek previous and next slides
+// ─┐ ┌────────────────────────┐ ┌─
+//  │ │                        │ │
+//  │ │                        │ │
+//  │ │                        │ │
+//  │ │                        │ │
+//  │ │                        │ │
+// ─┘ └────────────────────────┘ └─
+// ▶/⏸           ●●●●           ← →
+//
+// 5. Multiple slides at once
+// ┌─────────────┐ ┌──────────────┐
+// │             │ │              │
+// │             │ │              │
+// │      1      │ │      2       │
+// │             │ │              │
+// │             │ │              │
+// └─────────────┘ └──────────────┘
+// ▶/⏸           ●●●●           ← →
+//
+// 6. Variable width
+// ┌──────┐ ┌────────────┐ ┌───────
+// │      │ │            │ │
+// │      │ │            │ │
+// │      │ │            │ │
+// │      │ │            │ │
+// │      │ │            │ │
+// └──────┘ └────────────┘ └───────
+// ▶/⏸           ●●●●           ← →
+
 
 $carousel-tokens: () !default;
 
@@ -14,6 +92,7 @@ $carousel-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $carousel-tokens: defaults(
   (
+    --carousel-gap: .75rem,
     --carousel-control-color: #{$white},
     --carousel-control-width: 15%,
     --carousel-control-opacity: .5,
@@ -38,10 +117,15 @@ $carousel-tokens: defaults(
     --carousel-control-play-pause-icon-width: 1.5rem,
     --carousel-control-pause-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5'/></svg>"),
     --carousel-control-play-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'/></svg>"),
-    // Scroll-snap engine
+    // Scroll-snap engine. `gap` must carry a length unit: it feeds the
+    // `.carousel-item` flex-basis `calc()`, and subtracting a unitless `0` from a
+    // percentage is invalid CSS (it would drop the whole declaration and collapse
+    // every slide to its content width). `peek` only feeds `padding-inline`/
+    // `scroll-padding-inline`, so a bare `0` would be valid there, but we keep it
+    // unit-bearing for consistency.
     --carousel-items: 1,
-    --carousel-gap: 0,
-    --carousel-peek: 0,
+    --carousel-items-gap: 0px,
+    --carousel-items-peek: 0px,
     --carousel-fade-duration: .6s,
   ),
   $carousel-tokens
@@ -71,25 +155,31 @@ $carousel-dark-tokens: defaults(
 //
 // Customize the layout with custom properties on `.carousel`:
 // - `--carousel-items`: number of whole slides visible per view (default 1)
-// - `--carousel-gap`:   space between slides (default 0)
-// - `--carousel-peek`:  amount of the neighbouring slides to reveal (default 0)
+// - `--carousel-items-gap`:   space between slides (default 0)
+// - `--carousel-items-peek`:  amount of the neighbouring slides to reveal (default 0)
 
 @layer components {
   .carousel {
-    position: relative;
     @include tokens($carousel-tokens);
+    position: relative;
+  }
+
+  .carousel-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: var(--carousel-gap);
   }
 
   // The scroll viewport
   .carousel-inner {
     display: flex;
-    gap: var(--carousel-gap);
+    gap: var(--carousel-items-gap);
     width: 100%;
-    padding-inline: var(--carousel-peek);
+    padding-inline: var(--carousel-items-peek);
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--carousel-peek);
+    scroll-padding-inline: var(--carousel-items-peek);
 
     // Hide the scrollbar without losing scrollability
     scrollbar-width: none;
@@ -107,7 +197,11 @@ $carousel-dark-tokens: defaults(
   }
 
   .carousel-item {
-    flex: 0 0 calc((100% - 2 * var(--carousel-peek) - (var(--carousel-items) - 1) * var(--carousel-gap)) / var(--carousel-items));
+    // `100%` here is `.carousel-inner`'s content box, which `padding-inline`
+    // has already inset by the peek on each side, so the peek must NOT be
+    // subtracted again — doing so makes every slide `2 * peek` too narrow and
+    // the peek lopsided. Only the inter-slide gaps need removing.
+    flex: 0 0 calc((100% - (var(--carousel-items) - 1) * var(--carousel-items-gap)) / var(--carousel-items));
     min-width: 0;
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -117,7 +211,7 @@ $carousel-dark-tokens: defaults(
   // Layout variants
   //
 
-  // Center the active slide in the viewport (pairs well with `--carousel-peek`)
+  // Center the active slide in the viewport (pairs well with `--carousel-items-peek`)
   .carousel-center {
     .carousel-item {
       scroll-snap-align: center;
@@ -293,15 +387,15 @@ $carousel-dark-tokens: defaults(
   // like a button) with data-bs-target for each slide your carousel holds.
 
   .carousel-indicators {
-    position: absolute;
-    inset: auto 0 0;
-    z-index: 2;
+    // position: absolute;
+    // inset: auto 0 0;
+    // z-index: 2;
     display: flex;
     justify-content: center;
-    padding: 0;
+    // padding: 0;
     // Use the .carousel-control's width as margin so we don't overlay those
-    margin-inline: var(--carousel-control-width);
-    margin-bottom: 1rem;
+    // margin-inline: var(--carousel-control-width);
+    // margin-bottom: 1rem;
 
     [data-bs-target] {
       box-sizing: content-box;
@@ -323,6 +417,22 @@ $carousel-dark-tokens: defaults(
 
     .active {
       opacity: var(--carousel-indicator-active-opacity);
+    }
+  }
+
+  .carousel-indicators-dots {
+    [data-bs-target] {
+      --carousel-indicator-width: 12px;
+      --carousel-indicator-height: 12px;
+      --carousel-indicator-spacer: 2px;
+      background-color: transparent;
+      background-clip: border-box;
+      border: 1px solid var(--carousel-indicator-active-bg);
+      @include border-radius(50%);
+    }
+    [data-bs-target].active {
+      background-color: var(--carousel-indicator-active-bg);
+      border-color: var(--carousel-indicator-active-bg);
     }
   }
 
