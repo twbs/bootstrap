@@ -241,7 +241,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Refactor checks, radios, and switches.**
   - Split apart `_form-check.scss` into separate stylesheets: `_checkbox.scss`, `_radio.scss`, and `_switch.scss`.
   - Also split apart the documentation pages for checks, radios, and switches.
-  - Added new CSS variables on each of these components. _Side note: we could’ve shared variables here, but chose not to for simplicity’s sake._
+  - Added new CSS variables on each of these components. *Side note: we could’ve shared variables here, but chose not to for simplicity’s sake.*
   - Removed several now unused Sass variables.
   - Checkboxes apply the `.check` class directly on the `<input>` (no wrapping element) and draw the checked and indeterminate marks with a CSS `mask-image` on a `::before` pseudo-element tinted with the contrast color—no inline SVG in the DOM. Radios and switches are likewise styled without a wrapping element.
   - Revamped layout for checks, radios, and switches with labels (and descriptions). We now have custom elements for layout that include basic flexbox styling.
