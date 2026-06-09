@@ -121,8 +121,8 @@ describe('Carousel', () => {
       expect(Carousel.Default.pause).toEqual('hover')
     })
 
-    it('should default `ends` to `wrap`', () => {
-      expect(Carousel.Default.ends).toEqual('wrap')
+    it('should default `ends` to `loop`', () => {
+      expect(Carousel.Default.ends).toEqual('loop')
     })
   })
 
@@ -257,7 +257,7 @@ describe('Carousel', () => {
     it('should wrap to the last item when going prev from the first (wrap: true)', () => {
       fixtureEl.innerHTML = basicMarkup()
 
-      const carousel = new Carousel('#myCarousel')
+      const carousel = new Carousel('#myCarousel', { ends: 'wrap' })
       stubLayout(carousel)
       carousel.prev()
 
@@ -1174,7 +1174,7 @@ describe('Carousel', () => {
 
     it('should go to the previous item with data-bs-slide="prev"', () => {
       fixtureEl.innerHTML = [
-        '<div id="myCarousel" class="carousel slide">',
+        '<div id="myCarousel" class="carousel slide" data-bs-ends="wrap">',
         '  <div class="carousel-inner">',
         '    <div id="item1" class="carousel-item active">item 1</div>',
         '    <div id="item2" class="carousel-item">item 2</div>',

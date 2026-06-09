@@ -87,7 +87,7 @@ const ENDS_LOOP = 'loop'
 
 const Default = {
   autoplay: false,
-  ends: ENDS_WRAP,
+  ends: ENDS_LOOP,
   interval: 5000,
   keyboard: true,
   pause: 'hover'
