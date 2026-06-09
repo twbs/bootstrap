@@ -8,7 +8,7 @@ js: required
 
 ## How it works
 
-- Carousel is built on CSS’s [scroll-snap](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll_snap), so sliding, touch dragging, momentum, and keyboard scrolling all come from the browser. JavaScript manages features autoplay, the previous/next controls, the indicators, and active-slide syncing.
+- Carousel is built on CSS’s [scroll-snap](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll_snap), so sliding, touch dragging, momentum, and keyboard scrolling all come from the browser. JavaScript manages autoplay, the previous/next controls, the indicators, and active-slide syncing.
 
 - Because the slides live in a real scroll container, the carousel can show [more than one slide at a time](#items), reveal a “peek” of the neighboring slides, and mix variable-width slides—all controlled with CSS.
 
@@ -110,7 +110,7 @@ Add indicator buttons wherever you want them to reside. When used with an [overl
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <div class="carousel-indicators carousel-indicators-dots">
+      <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselStackedIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselStackedIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselStackedIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -388,7 +388,7 @@ Add `data-bs-interval=""` to a `.carousel-item` to change the amount of time to 
         <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First: 2 seconds" />
       </div>
       <div class="carousel-item" data-bs-interval="4000">
-        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second: 3 seconds" />
+        <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second: 4 seconds" />
       </div>
       <div class="carousel-item" data-bs-interval="6000">
         <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third: 6 seconds" />
@@ -530,10 +530,6 @@ Add `data-bs-theme="dark"` to the `.carousel` for darker controls and indicators
       </button>
     </div>
   </div>`} />
-
-## Custom transition
-
-The transition duration of `.carousel-item` can be changed with the `$carousel-transition-duration` Sass variable before compiling or custom styles if you’re using the compiled CSS. If multiple transitions are applied, make sure the transform transition is defined first (e.g. `transition: transform 2s ease, opacity .5s ease-out`).
 
 ## CSS
 
