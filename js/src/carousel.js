@@ -42,6 +42,14 @@ const CLASS_NAME_CENTER = 'carousel-center'
 const CLASS_NAME_AUTO = 'carousel-auto'
 const CLASS_NAME_CLONE = 'carousel-item-clone'
 const CLASS_NAME_PAUSED = 'paused'
+// Added to the root while the autoplay timer is running, so CSS can fill the
+// active indicator like a progress bar over the current slide's interval.
+const CLASS_NAME_PLAYING = 'carousel-playing'
+
+// Shipped (`--bs-`-prefixed) custom property the indicator fill animation reads
+// for its duration. The build prefixes every custom property, so the bare
+// `--carousel-interval` used in the SCSS source becomes this at runtime.
+const PROPERTY_INTERVAL = '--bs-carousel-interval'
 
 // How many frames the scroll-settle watcher waits when no movement is ever
 // detected (clamped programmatic scroll, or `scrollBy` stubbed in tests) before
@@ -82,8 +90,7 @@ const Default = {
   ends: ENDS_WRAP,
   interval: 5000,
   keyboard: true,
-  pause: 'hover',
-  touch: true
+  pause: 'hover'
 }
 
 const DefaultType = {
@@ -91,8 +98,7 @@ const DefaultType = {
   ends: 'string',
   interval: 'number',
   keyboard: 'boolean',
-  pause: '(string|boolean)',
-  touch: 'boolean'
+  pause: '(string|boolean)'
 }
 
 /**
@@ -128,11 +134,6 @@ class Carousel extends BaseComponent {
     this._playing = this._config.autoplay
 
     this._activeIndex = this._initialActiveIndex()
-
-    if (this._config.touch === false) {
-      // Disable horizontal swipe while keeping wheel/keyboard/button navigation
-      this._viewport.style.touchAction = 'pan-y'
-    }
 
     this._addEventListeners()
     this._observeItems()
@@ -176,11 +177,15 @@ class Carousel extends BaseComponent {
 
   pause() {
     this._clearInterval()
+    // Freeze the indicator progress fill; it resets to empty until cycling
+    // resumes and `_scheduleAutoplay` restarts it from scratch.
+    this._element.classList.remove(CLASS_NAME_PLAYING)
   }
 
   cycle() {
     this._clearInterval()
     this._scheduleAutoplay()
+    this._element.classList.add(CLASS_NAME_PLAYING)
   }
 
   to(index) {
@@ -587,15 +592,14 @@ class Carousel extends BaseComponent {
     this._snapRestoreFrame = requestAnimationFrame(tick)
   }
 
+  // Fade mode just swaps the active class; the CSS opacity transition on
+  // `.carousel-item` performs the crossfade over `--carousel-fade-duration` (and
+  // collapses to an instant swap under reduced motion, via the `transition`
+  // mixin). It deliberately avoids the View Transition API: a view transition
+  // crossfades a page snapshot over its own (shorter) duration while this CSS
+  // fade also runs underneath, so the two animations overlap and visibly stutter.
   _fadeTo(index) {
-    const swap = () => this._setActive(index)
-
-    if (document.startViewTransition && !this._prefersReducedMotion()) {
-      document.startViewTransition(swap)
-      return
-    }
-
-    swap()
+    this._setActive(index)
   }
 
   _setActive(index) {
@@ -747,15 +751,31 @@ class Carousel extends BaseComponent {
     return isNext ? DIRECTION_LEFT : DIRECTION_RIGHT
   }
 
-  _scheduleAutoplay() {
+  _scheduleAutoplay(index = this._activeIndex) {
+    const interval = this._itemInterval(index)
+    // Expose the wait so the active indicator's CSS fill matches it.
+    this._element.style.setProperty(PROPERTY_INTERVAL, `${interval}ms`)
     this._interval = setTimeout(() => {
+      // Capture the slide the advance lands on *before* navigating: the active
+      // index only updates once the scroll settles (asynchronously), so reading
+      // it after `nextWhenVisible()` would schedule the next wait from the slide
+      // we're leaving — making per-item `data-bs-interval`s lag by one slide.
+      const upcoming = this._upcomingIndex()
       this.nextWhenVisible()
-      this._scheduleAutoplay()
-    }, this._activeItemInterval())
+      this._scheduleAutoplay(upcoming)
+    }, interval)
   }
 
-  _activeItemInterval() {
-    const item = this._getItems()[this._activeIndex]
+  // The slide the next autoplay tick will rest on, derived from the live scroll
+  // position (which still reflects the current slide when the timer fires).
+  // Falls back to the current slide when there's nowhere to advance (`ends: stop`).
+  _upcomingIndex() {
+    const index = this._normalizeIndex(this._navIndex() + 1, this._getItems().length)
+    return index === null ? this._activeIndex : index
+  }
+
+  _itemInterval(index = this._activeIndex) {
+    const item = this._getItems()[index]
     const interval = item ? Number.parseInt(item.getAttribute('data-bs-interval'), 10) : Number.NaN
     return Number.isNaN(interval) ? this._config.interval : interval
   }

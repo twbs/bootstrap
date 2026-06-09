@@ -183,13 +183,6 @@ describe('Carousel', () => {
       expect(carousel._interval).toBeNull()
     })
 
-    it('should set touch-action to pan-y when `touch` is `false`', () => {
-      fixtureEl.innerHTML = basicMarkup()
-
-      const carousel = new Carousel('#myCarousel', { touch: false })
-      expect(carousel._viewport.style.touchAction).toEqual('pan-y')
-    })
-
     it('should observe items for active syncing', () => {
       fixtureEl.innerHTML = basicMarkup()
 
@@ -895,35 +888,32 @@ describe('Carousel', () => {
   })
 
   describe('fade mode', () => {
-    it('should toggle the active class via a view transition', () => {
+    it('should crossfade by toggling the active class without scrolling', () => {
       fixtureEl.innerHTML = basicMarkup({ classes: 'carousel slide carousel-fade' })
-
-      spyOn(document, 'startViewTransition').and.callFake(callback => {
-        callback()
-        return { finished: Promise.resolve() }
-      })
 
       const carousel = new Carousel('#myCarousel')
       carousel.to(1)
 
-      expect(document.startViewTransition).toHaveBeenCalled()
       expect(fixtureEl.querySelector('#item2')).toHaveClass('active')
       expect(fixtureEl.querySelector('#item1')).not.toHaveClass('active')
       expect(scrollBySpy).not.toHaveBeenCalled()
     })
 
-    it('should fall back to a plain class swap when view transitions are unavailable', () => {
+    it('should not use the View Transition API for the fade', () => {
       fixtureEl.innerHTML = basicMarkup({ classes: 'carousel slide carousel-fade' })
 
-      const original = document.startViewTransition
-      document.startViewTransition = undefined
+      if (typeof document.startViewTransition === 'function') {
+        spyOn(document, 'startViewTransition').and.callThrough()
+      }
 
       const carousel = new Carousel('#myCarousel')
       carousel.to(1)
 
-      expect(fixtureEl.querySelector('#item2')).toHaveClass('active')
+      if (typeof document.startViewTransition === 'function') {
+        expect(document.startViewTransition).not.toHaveBeenCalled()
+      }
 
-      document.startViewTransition = original
+      expect(fixtureEl.querySelector('#item2')).toHaveClass('active')
     })
   })
 
@@ -954,20 +944,40 @@ describe('Carousel', () => {
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
         '    <div class="carousel-item active" data-bs-interval="2000">item 1</div>',
-        '    <div class="carousel-item">item 2</div>',
+        '    <div class="carousel-item" data-bs-interval="4000">item 2</div>',
         '  </div>',
         '</div>'
       ].join('')
 
       const carousel = new Carousel('#myCarousel', { interval: 5000 })
-      expect(carousel._activeItemInterval()).toEqual(2000)
+      expect(carousel._itemInterval()).toEqual(2000)
+      expect(carousel._itemInterval(1)).toEqual(4000)
     })
 
     it('should fall back to the configured interval when the item has none', () => {
       fixtureEl.innerHTML = basicMarkup()
 
       const carousel = new Carousel('#myCarousel', { interval: 4000 })
-      expect(carousel._activeItemInterval()).toEqual(4000)
+      expect(carousel._itemInterval()).toEqual(4000)
+    })
+
+    it('should schedule the next wait from the slide being navigated to, not the current one', () => {
+      // The slide we're leaving has a long interval, the one we advance to a
+      // short one. The next wait must use the upcoming slide's own interval.
+      fixtureEl.innerHTML = [
+        '<div id="myCarousel" class="carousel slide">',
+        '  <div class="carousel-inner">',
+        '    <div class="carousel-item active" data-bs-interval="10000">item 1</div>',
+        '    <div class="carousel-item" data-bs-interval="2000">item 2</div>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const carousel = new Carousel('#myCarousel', { interval: 5000 })
+      const upcoming = carousel._upcomingIndex()
+
+      expect(upcoming).toEqual(1)
+      expect(carousel._itemInterval(upcoming)).toEqual(2000)
     })
 
     it('should resume cycling on mouse leave only while playing', () => {
@@ -1086,7 +1096,8 @@ describe('Carousel', () => {
       '    <div class="carousel-item">item 2</div>',
       '  </div>',
       '  <button class="carousel-control-play-pause" type="button" data-bs-target="#myCarousel" data-bs-pause-label="Pause" data-bs-play-label="Play">',
-      '    <span class="carousel-control-play-pause-icon"></span>',
+      '    <span class="carousel-icon-pause"></span>',
+      '    <span class="carousel-icon-play"></span>',
       '  </button>',
       '</div>'
     ].join('')
