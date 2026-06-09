@@ -9,7 +9,7 @@ toc: true
 Things to know when using the tooltip plugin:
 
 - Tooltips rely on the third party library [Popper](https://popper.js.org/docs/v2/) for positioning. You must include [popper.min.js]([[config:cdn.popper]]) before `bootstrap.js`, or use one `bootstrap.bundle.min.js` which contains Popper.
-- Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
+- Tooltips are opt-in for performance reasons, so **you must initialize them yourself**. Unlike most other Bootstrap components, tooltips and popovers are not automatically initialized because each one creates a [Popper](https://popper.js.org/docs/v2/) instance that tracks scroll and resize events. Auto-initializing every tooltip on page load would add unnecessary overhead on pages where tooltips are not used or where only a few elements need them.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
 - Triggering tooltips on hidden elements will not work.
