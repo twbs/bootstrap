@@ -139,7 +139,7 @@ function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
   return [isDelegated, callable, typeEvent]
 }
 
-function addHandler(element, originalTypeEvent, handler, delegationFunction, oneOff) {
+function addHandler(element, originalTypeEvent, handler, delegationFunction, options) {
   if (typeof originalTypeEvent !== 'string' || !element) {
     return
   }
@@ -165,7 +165,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
   const previousFunction = findHandler(handlers, callable, isDelegated ? handler : null)
 
   if (previousFunction) {
-    previousFunction.oneOff = previousFunction.oneOff && oneOff
+    previousFunction.oneOff = previousFunction.oneOff && options.oneOff
 
     return
   }
@@ -177,21 +177,22 @@ function addHandler(element, originalTypeEvent, handler, delegationFunction, one
 
   fn.delegationSelector = isDelegated ? handler : null
   fn.callable = callable
-  fn.oneOff = oneOff
+  fn.oneOff = options.oneOff
   fn.uidEvent = uid
   handlers[uid] = fn
 
-  element.addEventListener(typeEvent, fn, isDelegated)
+  element.addEventListener(typeEvent, fn, options?.capture ?? false)
 }
 
-function removeHandler(element, events, typeEvent, handler, delegationSelector) {
+// eslint-disable-next-line max-params
+function removeHandler(element, events, typeEvent, handler, delegationSelector, options) {
   const fn = findHandler(events[typeEvent], handler, delegationSelector)
 
   if (!fn) {
     return
   }
 
-  element.removeEventListener(typeEvent, fn, Boolean(delegationSelector))
+  element.removeEventListener(typeEvent, fn, options?.capture ?? false)
   delete events[typeEvent][fn.uidEvent]
 }
 
@@ -212,15 +213,15 @@ function getTypeEvent(event) {
 }
 
 const EventHandler = {
-  on(element, event, handler, delegationFunction) {
-    addHandler(element, event, handler, delegationFunction, false)
+  on(element, event, handler, delegationFunction, options) {
+    addHandler(element, event, handler, delegationFunction, { ...options, oneOff: false })
   },
 
-  one(element, event, handler, delegationFunction) {
-    addHandler(element, event, handler, delegationFunction, true)
+  one(element, event, handler, delegationFunction, options) {
+    addHandler(element, event, handler, delegationFunction, { ...options, oneOff: true })
   },
 
-  off(element, originalTypeEvent, handler, delegationFunction) {
+  off(element, originalTypeEvent, handler, delegationFunction, options) {
     if (typeof originalTypeEvent !== 'string' || !element) {
       return
     }
@@ -237,7 +238,7 @@ const EventHandler = {
         return
       }
 
-      removeHandler(element, events, typeEvent, callable, isDelegated ? handler : null)
+      removeHandler(element, events, typeEvent, callable, isDelegated ? handler : null, options)
       return
     }
 
@@ -251,7 +252,7 @@ const EventHandler = {
       const handlerKey = keyHandlers.replace(stripUidRegex, '')
 
       if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
-        removeHandler(element, events, typeEvent, event.callable, event.delegationSelector)
+        removeHandler(element, events, typeEvent, event.callable, event.delegationSelector, options)
       }
     }
   },
