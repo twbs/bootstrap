@@ -17,7 +17,7 @@
 
       <p>The transition duration should be around 2s. Also, the carousel shouldn't slide when its window/tab is hidden. Check the console log.</p>
 
-      <div id="carousel-example-generic" class="carousel slide" data-bs-autoplay="true">
+      <div id="carousel-example-generic" class="carousel carousel-overlay slide" data-bs-autoplay="true">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carousel-example-generic" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carousel-example-generic" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -35,14 +35,15 @@
           </div>
         </div>
         <button class="carousel-control-play-pause" data-bs-target="#carousel-example-generic" type="button" aria-label="Pause" data-bs-pause-label="Pause" data-bs-play-label="Play">
-          <span class="carousel-control-play-pause-icon" aria-hidden="true"></span>
+          <span class="carousel-icon-pause" aria-hidden="true"></span>
+          <span class="carousel-icon-play" aria-hidden="true"></span>
         </button>
         <button class="carousel-control-prev" data-bs-target="#carousel-example-generic" type="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="carousel-icon-prev" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" data-bs-target="#carousel-example-generic" type="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="carousel-icon-next" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
