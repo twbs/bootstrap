@@ -640,8 +640,8 @@ describe('Carousel', () => {
         '  <div class="carousel-inner">',
         items,
         '  </div>',
-        '  <button id="prev" class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"></button>',
-        '  <button id="next" class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next"></button>',
+        '  <button id="prev" class="btn-icon btn-sm" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"></button>',
+        '  <button id="next" class="btn-icon btn-sm" type="button" data-bs-target="#myCarousel" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
     }
@@ -742,7 +742,7 @@ describe('Carousel', () => {
         '    <div class="carousel-item active">item 1</div>',
         '    <div class="carousel-item">item 2</div>',
         '  </div>',
-        '  <button id="prev" class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"></button>',
+        '  <button id="prev" class="btn-icon btn-sm" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"></button>',
         '</div>'
       ].join('')
 
@@ -1158,7 +1158,7 @@ describe('Carousel', () => {
         '    <div class="carousel-item active">item 1</div>',
         '    <div class="carousel-item">item 2</div>',
         '  </div>',
-        '  <button id="next" class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next"></button>',
+        '  <button id="next" class="btn-icon btn-sm" type="button" data-bs-target="#myCarousel" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
 
@@ -1179,7 +1179,7 @@ describe('Carousel', () => {
         '    <div id="item1" class="carousel-item active">item 1</div>',
         '    <div id="item2" class="carousel-item">item 2</div>',
         '  </div>',
-        '  <button id="prev" class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"></button>',
+        '  <button id="prev" class="btn-icon btn-sm" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"></button>',
         '</div>'
       ].join('')
 
@@ -1233,7 +1233,7 @@ describe('Carousel', () => {
       fixtureEl.innerHTML = [
         '<div id="myCarousel" class="slide">',
         '  <div class="carousel-inner"><div class="carousel-item active">item 1</div></div>',
-        '  <button id="next" class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next"></button>',
+        '  <button id="next" class="btn-icon btn-sm" type="button" data-bs-target="#myCarousel" data-bs-slide="next"></button>',
         '</div>'
       ].join('')
 
@@ -1259,6 +1259,37 @@ describe('Carousel', () => {
       const carousel = new Carousel('#myCarousel')
       expect(carousel._observer).toBeNull()
       expect(() => carousel.dispose()).not.toThrow()
+    })
+
+    it('should stop autoplay so no timer fires after dispose', () => {
+      jasmine.clock().install()
+
+      try {
+        fixtureEl.innerHTML = basicMarkup({ autoplay: true })
+
+        const carousel = new Carousel('#myCarousel')
+        const advanceSpy = spyOn(carousel, 'nextWhenVisible').and.callThrough()
+        expect(carousel._interval).not.toBeNull()
+
+        carousel.dispose()
+        // Without clearing the timer, the pending callback would fire here and
+        // throw on the now-null `_element`.
+        expect(() => jasmine.clock().tick(10000)).not.toThrow()
+        expect(advanceSpy).not.toHaveBeenCalled()
+      } finally {
+        jasmine.clock().uninstall()
+      }
+    })
+
+    it('should remove the viewport pointerdown listener on dispose', () => {
+      fixtureEl.innerHTML = basicMarkup({ autoplay: true })
+
+      const carousel = new Carousel('#myCarousel')
+      const { _viewport: viewport } = carousel
+
+      carousel.dispose()
+      // A late interaction on the detached viewport must not resurrect autoplay
+      expect(() => viewport.dispatchEvent(createEvent('pointerdown'))).not.toThrow()
     })
   })
 })

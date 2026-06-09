@@ -240,6 +240,10 @@ class Carousel extends BaseComponent {
   }
 
   dispose() {
+    // Stop autoplay first: otherwise a pending timer would fire after the
+    // instance is torn down and throw on the now-null `_element`.
+    this._clearInterval()
+
     if (this._observer) {
       this._observer.disconnect()
     }
@@ -255,6 +259,10 @@ class Carousel extends BaseComponent {
     }
 
     this._viewport.style.scrollSnapType = ''
+
+    // The pointerdown listener lives on the viewport (`.carousel-inner`), which
+    // `super.dispose()` doesn't clean up—it only drops listeners on `_element`.
+    EventHandler.off(this._viewport, EVENT_KEY)
 
     super.dispose()
   }
