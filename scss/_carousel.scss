@@ -1,10 +1,8 @@
 @use "config" as *;
-@use "colors" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/transition" as *;
-@use "mixins/color-mode" as *;
 @use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
 
@@ -16,12 +14,6 @@ $carousel-tokens: () !default;
 $carousel-tokens: defaults(
   (
     --carousel-gap: .75rem,
-    --carousel-control-color: #{$white},
-    --carousel-control-width: 15%,
-    --carousel-control-opacity: .5,
-    --carousel-control-hover-opacity: .9,
-    --carousel-control-transition: opacity .15s ease,
-    --carousel-control-icon-filter: none,
     --carousel-indicator-bg: var(--fg-3),
     --carousel-indicator-width: .75rem,
     --carousel-indicator-height: .75rem,
@@ -51,30 +43,6 @@ $carousel-tokens: defaults(
 );
 // scss-docs-end carousel-tokens
 // stylelint-enable custom-property-no-missing-var-function
-
-$carousel-dark-tokens: () !default;
-
-// scss-docs-start carousel-dark-tokens
-// stylelint-disable-next-line scss/dollar-variable-default
-$carousel-dark-tokens: defaults(
-  (
-    --carousel-indicator-active-bg: #{$black},
-    --carousel-control-icon-filter: invert(1) grayscale(100),
-  ),
-  $carousel-dark-tokens
-);
-// scss-docs-end carousel-dark-tokens
-
-// The carousel is a native horizontal scroll container with CSS scroll snap.
-// Sliding, touch dragging, momentum, and keyboard scrolling come from the
-// browser; JavaScript only layers on autoplay, the prev/next/indicator
-// controls, and active-slide syncing. Layout no longer relies on an `.active`
-// class — the scroll position is the source of truth.
-//
-// Customize the layout with custom properties on `.carousel`:
-// - `--carousel-items`: number of whole slides visible per view (default 1)
-// - `--carousel-items-gap`:   space between slides (default 0)
-// - `--carousel-items-peek`:  amount of the neighboring slides to reveal (default 0)
 
 @layer components {
   .carousel {
@@ -180,38 +148,6 @@ $carousel-dark-tokens: defaults(
     }
   }
 
-  //
-  // Left/right controls for nav
-  //
-  // Shared appearance only. Positioning (full-height side controls overlaying
-  // the slides) lives under `.carousel-overlay` below, so by default these sit
-  // in the flow of the stacked layout.
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    // Use flex for alignment (1-3)
-    display: flex; // 1. allow flex styles
-    align-items: center; // 2. vertically center contents
-    justify-content: center; // 3. horizontally center contents
-    padding: 0;
-    color: var(--carousel-control-color);
-    text-align: center;
-    background: none;
-    filter: var(--carousel-control-icon-filter);
-    border: 0;
-    opacity: var(--carousel-control-opacity);
-    @include transition(var(--carousel-control-transition));
-
-    // Hover/focus state
-    &:hover,
-    &:focus {
-      color: var(--carousel-control-color);
-      text-decoration: none;
-      outline: 0;
-      opacity: var(--carousel-control-hover-opacity);
-    }
-  }
-
   // Icons for within, rendered via CSS mask so they inherit the current text
   // color (white on the overlay controls, the button color inside `.btn-*`).
   .carousel-icon-prev,
@@ -229,16 +165,13 @@ $carousel-dark-tokens: defaults(
     mask-image: var(--carousel-control-prev-icon);
   }
 
-  [dir="rtl"] .carousel-icon-prev {
-    mask-image: var(--carousel-control-next-icon);
-  }
-
   .carousel-icon-next {
     mask-image: var(--carousel-control-next-icon);
   }
 
+  [dir="rtl"] .carousel-icon-prev,
   [dir="rtl"] .carousel-icon-next {
-    mask-image: var(--carousel-control-prev-icon);
+    transform: scaleX(-1);
   }
 
   .carousel-icon-pause {
@@ -249,7 +182,6 @@ $carousel-dark-tokens: defaults(
     mask-image: var(--carousel-control-play-icon);
   }
 
-  //
   // Optional play/pause control
   //
   // A discoverable toggle so users can stop an autoplaying carousel, as required
@@ -326,15 +258,13 @@ $carousel-dark-tokens: defaults(
     }
   }
 
-  //
   // Overlay layout
   //
   // Overlays the prev/next controls, play/pause button, and indicators on top of
   // the slides (the classic carousel look) instead of stacking them in the flow.
 
   .carousel-overlay {
-    --carousel-indicator-bg: var(--white);
-    // --carousel-control-icon-width: 2rem;
+    --carousel-indicator-bg: light-dark(var(--white), var(--black));
 
     .carousel-overlay-controls {
       position: absolute;
@@ -344,59 +274,6 @@ $carousel-dark-tokens: defaults(
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    // .carousel-control-prev,
-    // .carousel-control-next {
-    //   position: absolute;
-    //   inset-block: 0;
-    //   z-index: 1;
-    //   width: var(--carousel-control-width);
-    // }
-
-    // .carousel-control-prev {
-    //   inset-inline-start: 0;
-    //   // stylelint-disable-next-line scss/at-function-named-arguments, @stylistic/function-whitespace-after
-    //   background-image: if(sass($enable-gradients): linear-gradient(90deg, rgb(0 0 0 / .25), rgb(0 0 0 / .001)); else: null);
-    // }
-
-    // .carousel-control-next {
-    //   inset-inline-end: 0;
-    //   // stylelint-disable-next-line scss/at-function-named-arguments, @stylistic/function-whitespace-after
-    //   background-image: if(sass($enable-gradients): linear-gradient(270deg, rgb(0 0 0 / .25), rgb(0 0 0 / .001)); else: null);
-    // }
-
-    // // Sits inside the top-end clear area, away from the full-height prev/next controls.
-    // .carousel-control-play-pause {
-    //   position: absolute;
-    //   inset-block-start: 1rem;
-    //   inset-inline-end: var(--carousel-control-width);
-    //   z-index: 2;
-    // }
-
-    // .carousel-indicators {
-    //   position: absolute;
-    //   inset: auto 0 0;
-    //   z-index: 2;
-    //   // Use the .carousel-control's width as margin so we don't overlay those
-    //   margin-inline: var(--carousel-control-width);
-    //   margin-bottom: 1rem;
-    // }
-  }
-
-  // Dark mode carousel
-
-  @mixin carousel-dark() {
-    @include tokens($carousel-dark-tokens);
-  }
-
-  .carousel-dark {
-    @include carousel-dark();
-  }
-
-  @if $enable-dark-mode {
-    @include color-mode(dark, true) {
-      @include carousel-dark();
     }
   }
 }
