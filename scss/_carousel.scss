@@ -19,8 +19,6 @@ $carousel-tokens: defaults(
     --carousel-indicator-height: .75rem,
     --carousel-indicator-spacer: .25rem,
     --carousel-indicator-opacity: .5,
-    --carousel-indicator-active-width : null, // Defaults to wider value
-    --carousel-indicator-active-bg : null, // Defaults to --carousel-indicator-bg
     --carousel-indicator-transition: "opacity .6s ease, width .3s ease",
     --carousel-indicator-progress-bg: var(--carousel-indicator-bg),
     --carousel-control-icon-width: 1rem,
@@ -125,7 +123,7 @@ $carousel-tokens: defaults(
 
   // Fade can't ride scroll-snap (it stacks slides instead of scrolling), so it
   // becomes a JavaScript-driven mode: every slide is stacked and the active one
-  // is faded in. Where supported, the JS upgrades the swap to a View Transition.
+  // is faded in via a CSS opacity transition.
   .carousel-fade {
     .carousel-inner {
       display: grid;
@@ -221,9 +219,9 @@ $carousel-tokens: defaults(
     }
 
     .active {
-      width: var(--carousel-indicator-active-width, calc(var(--carousel-indicator-width) * 2.5));
-      background-color: var(--carousel-indicator-bg, var(--carousel-indicator-active-bg));
-      border-color: var(--carousel-indicator-bg, var(--carousel-indicator-active-bg));
+      width: calc(var(--carousel-indicator-width) * 2.5);
+      background-color: var(--carousel-indicator-bg);
+      border-color: var(--carousel-indicator-bg);
     }
   }
 
