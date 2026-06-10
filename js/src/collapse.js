@@ -115,7 +115,6 @@ class Collapse extends BaseComponent {
 
     let activeChildren = []
 
-    // find active children
     if (this._config.parent) {
       activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES)
         .filter(element => element !== this._element)
@@ -145,6 +144,15 @@ class Collapse extends BaseComponent {
     this._addAriaAndCollapsedClass(this._triggerArray, true)
     this._isTransitioning = true
 
+    // 🔧 Firefox scroll jump fix
+    const isFirefox = navigator.userAgent.toLowerCase().includes('firefox')
+    let originalScrollMarginTop = ''
+
+    if (isFirefox) {
+      originalScrollMarginTop = this._element.style.scrollMarginTop
+      this._element.style.scrollMarginTop = '0px'
+    }
+
     const complete = () => {
       this._isTransitioning = false
 
@@ -152,6 +160,11 @@ class Collapse extends BaseComponent {
       this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
       this._element.style[dimension] = ''
+
+      // ✅ Restore original scroll-margin-top
+      if (isFirefox) {
+        this._element.style.scrollMarginTop = originalScrollMarginTop
+      }
 
       EventHandler.trigger(this._element, EVENT_SHOWN)
     }
