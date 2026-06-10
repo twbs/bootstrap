@@ -102,10 +102,11 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Renamed Sass files for consistency.** `_placeholders.scss` is now `_placeholder.scss` and `_spinners.scss` is now `_spinner.scss`. Update any individual `@use` imports for these files.
 - **Standardized focus styles with `focus-ring` mixin.** All component-specific `*-focus-box-shadow` Sass variables (e.g., `$btn-focus-box-shadow`, `$input-focus-box-shadow`, `$accordion-button-focus-box-shadow`) have been removed. Focus styles are now handled by a shared `@mixin focus-ring()` using `--focus-ring`, `--focus-ring-width`, `--focus-ring-offset`, and `--focus-ring-color` CSS custom properties. Customize focus styles by overriding these tokens in `_root.scss` instead of individual Sass variables.
 - **Renamed `$grid-breakpoints` to `$breakpoints`.**
+- **Removed `$enable-dark-mode`.** Dark mode support is always compiled; control it at runtime with `data-bs-theme` (or the `color-mode()` mixin) instead of toggling a Sass flag.
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.
   - Removed `muted`, `black-50`, and `white-50` from text colors utilities map
-  - Consolidated carousel dark variables, removing `$carousel-dark-indicator-active-bg` and `$carousel-dark-control-icon-filter` for their reassigned counterparts. (Carousel captions were removed entirely—see the carousel changes below.)
+  - Removed the carousel dark Sass variables (`$carousel-dark-indicator-active-bg`, `$carousel-dark-control-icon-filter`) and the `.carousel-dark` class—they’re not reassigned. Dark carousels now use `data-bs-theme="dark"` (see the carousel changes below). Carousel captions were removed entirely too.
   - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `currentcolor`, so it adapts to dark backgrounds automatically.
   - Removed `$border-radius-xxl`, use `$border-radius-2xl`.
   - Removed `$text-muted` for secondary color.
@@ -228,6 +229,10 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Overlaid controls now require the `.carousel-overlay` modifier.** To overlay the prev/next controls, play/pause button, and indicators on top of the slides (the classic v5 look), add `.carousel-overlay` to the `.carousel` element. Without it, those elements lay out in the flow.
 - **Renamed the control-icon classes** `.carousel-control-prev-icon` &rarr; `.carousel-icon-prev` and `.carousel-control-next-icon` &rarr; `.carousel-icon-next`. The icons are now painted with `background-color: currentcolor`, so they inherit the surrounding text color (white on the overlay controls, the button color inside `.btn-*`). Size them with `--bs-carousel-control-icon-width`.
 - **Removed `.carousel-caption`** and its `--carousel-caption-*` tokens. Compose slide content from your own markup inside `.carousel-item` instead, styling and positioning it with utilities or custom CSS.
+- **Replaced the `wrap` option with `ends`.** v5's `wrap: true | false` is now `ends: "loop" | "wrap" | "stop"` (default `"loop"`). Map `wrap: true` to `ends: "wrap"` (or the new default `"loop"` for the seamless conveyor effect) and `wrap: false` to `ends: "stop"`. Set it via `data-bs-ends` or the `ends` option. Unknown values fall back to `"loop"`.
+- **Removed the `.carousel-control-prev` / `.carousel-control-next` button classes.** The absolute, full-height hover targets are gone. Compose a control from a button (e.g. `.btn-icon`) plus `data-bs-slide="prev"` / `data-bs-slide="next"` and a `.carousel-icon-prev` / `.carousel-icon-next` glyph, placed in the flow or inside `.carousel-overlay-controls`.
+- **Removed the `.carousel-dark` class.** Use `data-bs-theme="dark"` on the `.carousel` (typically alongside `.carousel-overlay`) for reversed contrast.
+- **Removed v5 carousel tokens** that no longer have an equivalent: `--carousel-caption-*`, `--carousel-control-color`, `--carousel-control-opacity` / `--carousel-control-hover-opacity`, `--carousel-control-icon-filter`, and `--carousel-transition`. Indicator, control, and fade styling now derive from the redesigned `--bs-carousel-*` tokens listed under [CSS variables]([[docsref:/components/carousel#variables]]).
 
 ### Reboot
 
