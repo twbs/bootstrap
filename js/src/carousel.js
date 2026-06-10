@@ -213,15 +213,20 @@ class Carousel extends BaseComponent {
     }
 
     const targetIndex = this._normalizeIndex(rawIndex, items.length)
+    // Measure "current" from the live scroll position: `_activeIndex` updates
+    // asynchronously, so an indicator/control used mid-scroll must compare
+    // against where the viewport actually rests (`_navIndex` returns the tracked
+    // active index for fade/non-scrollable layouts).
+    const currentIndex = this._navIndex()
 
-    if (targetIndex === null || targetIndex === this._activeIndex) {
+    if (targetIndex === null || targetIndex === currentIndex) {
       return
     }
 
     const slideEvent = EventHandler.trigger(this._element, EVENT_SLIDE, {
       relatedTarget: items[targetIndex],
-      direction: this._direction(this._activeIndex, targetIndex),
-      from: this._activeIndex,
+      direction: this._direction(currentIndex, targetIndex),
+      from: currentIndex,
       to: targetIndex
     })
 
@@ -268,6 +273,16 @@ class Carousel extends BaseComponent {
   }
 
   // Private
+  // Normalize an unknown `ends` value so navigation and end-control logic can't
+  // disagree about whether the carousel wraps.
+  _configAfterMerge(config) {
+    if (![ENDS_STOP, ENDS_WRAP, ENDS_LOOP].includes(config.ends)) {
+      config.ends = Default.ends
+    }
+
+    return config
+  }
+
   _initialActiveIndex() {
     const active = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const index = active ? this._getItems().indexOf(active) : 0
@@ -411,7 +426,7 @@ class Carousel extends BaseComponent {
       // still animate. `'instant'` forces an immediate, motion-free jump.
       behavior: this._prefersReducedMotion() ? 'instant' : 'smooth'
     })
-    this._restoreSnapWhenSettled(targetLeft)
+    this._restoreSnapWhenSettled(targetLeft, index)
   }
 
   // Horizontal distance to scroll the viewport so `element` rests where the
@@ -465,6 +480,12 @@ class Carousel extends BaseComponent {
     clone.classList.add(CLASS_NAME_CLONE)
     clone.classList.remove(CLASS_NAME_ACTIVE)
     clone.removeAttribute('id')
+    // Also strip ids from the cloned subtree to avoid duplicate ids while the
+    // clone is on screen.
+    for (const node of SelectorEngine.find('[id]', clone)) {
+      node.removeAttribute('id')
+    }
+
     clone.setAttribute('aria-hidden', 'true')
     clone.inert = true
 
@@ -529,9 +550,16 @@ class Carousel extends BaseComponent {
   // to the *nearest* snap point, so if we restored mid-animation the viewport
   // could jump back to the slide we came from — most visible stepping to the
   // first/last slide, where it looks like the control "doesn't work".
-  _restoreSnapWhenSettled(targetLeft) {
+  _restoreSnapWhenSettled(targetLeft, index) {
     this._afterScrollSettles(() => {
       this._viewport.style.scrollSnapType = ''
+      // Without IntersectionObserver nothing else fires `slid`/updates the active
+      // slide after a programmatic scroll, so do it here. With the observer
+      // present this is a no-op (it already moved the active index to `index`).
+      if (!this._observer && index !== undefined) {
+        this._setActive(index)
+      }
+
       // The IntersectionObserver doesn't fire once the viewport has stopped, so
       // refresh the end controls here to catch the final ~1px settle landing
       // exactly on the scroll extent (e.g. disabling `next` at the last view).
@@ -770,16 +798,23 @@ class Carousel extends BaseComponent {
       // we're leaving — making per-item `data-bs-interval`s lag by one slide.
       const upcoming = this._upcomingIndex()
       this.nextWhenVisible()
+
+      // Nothing comes after the last slide when `ends: 'stop'`; stop cycling
+      // instead of re-arming a timer that can never advance.
+      if (upcoming === null) {
+        this.pause()
+        return
+      }
+
       this._scheduleAutoplay(upcoming)
     }, interval)
   }
 
   // The slide the next autoplay tick will rest on, derived from the live scroll
   // position (which still reflects the current slide when the timer fires).
-  // Falls back to the current slide when there's nowhere to advance (`ends: stop`).
+  // Returns `null` when there's nowhere left to advance (`ends: stop` at the end).
   _upcomingIndex() {
-    const index = this._normalizeIndex(this._navIndex() + 1, this._getItems().length)
-    return index === null ? this._activeIndex : index
+    return this._normalizeIndex(this._navIndex() + 1, this._getItems().length)
   }
 
   _itemInterval(index = this._activeIndex) {

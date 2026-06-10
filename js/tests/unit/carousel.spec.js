@@ -124,6 +124,13 @@ describe('Carousel', () => {
     it('should default `ends` to `loop`', () => {
       expect(Carousel.Default.ends).toEqual('loop')
     })
+
+    it('should fall back to the default `ends` for unknown values', () => {
+      fixtureEl.innerHTML = basicMarkup()
+
+      const carousel = new Carousel('#myCarousel', { ends: 'nope' })
+      expect(carousel._config.ends).toEqual('loop')
+    })
   })
 
   describe('DATA_KEY', () => {
@@ -203,6 +210,20 @@ describe('Carousel', () => {
 
       const carousel = new Carousel('#myCarousel')
       expect(carousel._viewport).toEqual(carousel._element)
+    })
+
+    it('should not create an observer when IntersectionObserver is unavailable', () => {
+      const original = window.IntersectionObserver
+      window.IntersectionObserver = undefined
+
+      try {
+        fixtureEl.innerHTML = basicMarkup()
+
+        const carousel = new Carousel('#myCarousel')
+        expect(carousel._observer).toBeNull()
+      } finally {
+        window.IntersectionObserver = original
+      }
     })
   })
 
@@ -627,6 +648,30 @@ describe('Carousel', () => {
       expect(carousel._viewport.querySelector('.carousel-item-clone')).toBeNull()
       expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(200)
     })
+
+    it('should fall back to a plain wrap when a peek is configured', () => {
+      fixtureEl.innerHTML = basicMarkup()
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      carouselEl.style.setProperty('--bs-carousel-items-peek', '16px')
+
+      const carousel = new Carousel(carouselEl, { ends: 'loop' })
+      stubLayout(carousel)
+
+      carousel.prev()
+
+      expect(carousel._viewport.querySelector('.carousel-item-clone')).toBeNull()
+    })
+
+    it('should fall back to a plain wrap for variable-width (`.carousel-auto`) layouts', () => {
+      fixtureEl.innerHTML = basicMarkup({ classes: 'carousel slide carousel-auto' })
+
+      const carousel = new Carousel('#myCarousel', { ends: 'loop' })
+      stubLayout(carousel)
+
+      carousel.prev()
+
+      expect(carousel._viewport.querySelector('.carousel-item-clone')).toBeNull()
+    })
   })
 
   describe('disable end controls', () => {
@@ -885,6 +930,29 @@ describe('Carousel', () => {
 
       expect(carousel._activeIndex).toEqual(1)
     })
+
+    it('should sync the active slide and fire `slid` after settling when there is no observer', async () => {
+      const original = window.IntersectionObserver
+      window.IntersectionObserver = undefined
+
+      try {
+        fixtureEl.innerHTML = basicMarkup()
+        const carouselEl = fixtureEl.querySelector('#myCarousel')
+        const carousel = new Carousel(carouselEl)
+        stubLayout(carousel)
+
+        const slidSpy = jasmine.createSpy('slid')
+        EventHandler.on(carouselEl, 'slid.bs.carousel', slidSpy)
+
+        carousel.to(1)
+        await flushFrames()
+
+        expect(carousel._activeIndex).toEqual(1)
+        expect(slidSpy).toHaveBeenCalled()
+      } finally {
+        window.IntersectionObserver = original
+      }
+    })
   })
 
   describe('fade mode', () => {
@@ -914,6 +982,22 @@ describe('Carousel', () => {
       }
 
       expect(fixtureEl.querySelector('#item2')).toHaveClass('active')
+    })
+
+    it('should fire `slide` then `slid` once each', () => {
+      fixtureEl.innerHTML = basicMarkup({ classes: 'carousel slide carousel-fade' })
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carousel = new Carousel(carouselEl)
+
+      const slideSpy = jasmine.createSpy('slide')
+      const slidSpy = jasmine.createSpy('slid')
+      EventHandler.on(carouselEl, 'slide.bs.carousel', slideSpy)
+      EventHandler.on(carouselEl, 'slid.bs.carousel', slidSpy)
+
+      carousel.to(1)
+
+      expect(slideSpy).toHaveBeenCalledTimes(1)
+      expect(slidSpy).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -1002,6 +1086,60 @@ describe('Carousel', () => {
 
       carouselEl.dispatchEvent(createEvent('mouseout'))
       expect(cycleSpy).not.toHaveBeenCalled()
+    })
+
+    it('should pause on hover when `pause` is `hover`', () => {
+      fixtureEl.innerHTML = basicMarkup({ autoplay: true })
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carousel = new Carousel(carouselEl)
+      expect(carousel._interval).not.toBeNull()
+
+      // Bootstrap's EventHandler maps `mouseenter` listeners onto `mouseover`
+      carouselEl.dispatchEvent(createEvent('mouseover'))
+      expect(carousel._interval).toBeNull()
+    })
+
+    it('should not pause on hover when `pause` is `false`', () => {
+      fixtureEl.innerHTML = basicMarkup({ autoplay: true })
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carousel = new Carousel(carouselEl, { pause: false })
+
+      carouselEl.dispatchEvent(createEvent('mouseover'))
+      expect(carousel._interval).not.toBeNull()
+    })
+
+    it('should toggle the playing class and expose the interval while cycling', () => {
+      fixtureEl.innerHTML = basicMarkup({ autoplay: true })
+
+      const carouselEl = fixtureEl.querySelector('#myCarousel')
+      const carousel = new Carousel(carouselEl, { interval: 3000 })
+
+      expect(carouselEl).toHaveClass('carousel-playing')
+      expect(carouselEl.style.getPropertyValue('--bs-carousel-interval')).toEqual('3000ms')
+
+      carousel.pause()
+      expect(carouselEl).not.toHaveClass('carousel-playing')
+    })
+
+    it('should stop cycling at the last slide when `ends` is `stop`', () => {
+      jasmine.clock().install()
+
+      try {
+        fixtureEl.innerHTML = basicMarkup({ autoplay: true })
+
+        const carousel = new Carousel('#myCarousel', { ends: 'stop', interval: 1000 })
+        carousel._activeIndex = 2
+        carousel.cycle()
+        expect(carousel._interval).not.toBeNull()
+
+        jasmine.clock().tick(1001)
+
+        expect(carousel._interval).toBeNull()
+      } finally {
+        jasmine.clock().uninstall()
+      }
     })
   })
 
@@ -1290,6 +1428,21 @@ describe('Carousel', () => {
       carousel.dispose()
       // A late interaction on the detached viewport must not resurrect autoplay
       expect(() => viewport.dispatchEvent(createEvent('pointerdown'))).not.toThrow()
+    })
+
+    it('should remove the clone and cancel the pending frame when disposed mid-loop', () => {
+      fixtureEl.innerHTML = basicMarkup()
+
+      const carousel = new Carousel('#myCarousel', { ends: 'loop' })
+      stubLayout(carousel)
+      carousel._activeIndex = 2
+
+      carousel.next()
+      const { _viewport: viewport } = carousel
+      expect(viewport.querySelector('.carousel-item-clone')).not.toBeNull()
+
+      expect(() => carousel.dispose()).not.toThrow()
+      expect(viewport.querySelector('.carousel-item-clone')).toBeNull()
     })
   })
 })
