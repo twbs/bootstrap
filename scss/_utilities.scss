@@ -717,7 +717,10 @@ $utilities: map.merge(
         "color": var(--fg)
       ),
       class: fg,
-      values: map.merge(theme-color-refs("fg"), theme-token-refs($theme-fgs, "fg")),
+      values: map.merge(
+        map.merge(theme-color-refs("fg"), theme-token-refs($theme-fgs, "fg")),
+        (reset: inherit)
+      ),
     ),
     "fg-emphasis": (
       property: (
