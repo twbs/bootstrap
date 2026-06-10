@@ -211,7 +211,8 @@ included in the project:
 9. [Open a pull request](https://help.github.com/articles/about-pull-requests/)
    with a clear title and description against the `main` branch.
 
-**IMPORTANT**: By submitting a patch, you agree to allow the project owners to
+> [!IMPORTANT]
+> By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](../LICENSE) (if it
 includes code changes) and under the terms of the
 [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/)
