@@ -1,3 +1,4 @@
+import BaseComponent from '../../src/base-component.js'
 import EventHandler from '../../src/dom/event-handler.js'
 import Modal from '../../src/modal.js'
 import ScrollBarHelper from '../../src/util/scrollbar.js'
@@ -848,18 +849,48 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
-      const focustrap = modal._focustrap
-      const spyDeactivate = spyOn(focustrap, 'deactivate').and.callThrough()
-
-      expect(Modal.getInstance(modalEl)).toEqual(modal)
-
+      const spyHideModal = spyOn(modal, '_hideModal').and.callThrough()
+      const spyDeactivate = spyOn(modal._focustrap, 'deactivate')
+      const spyBackdropDispose = spyOn(modal._backdrop, 'dispose')
+      const spySuperDispose = spyOn(BaseComponent.prototype, 'dispose')
       const spyOff = spyOn(EventHandler, 'off')
 
       modal.dispose()
 
-      expect(Modal.getInstance(modalEl)).toBeNull()
-      expect(spyOff).toHaveBeenCalledTimes(3)
+      expect(spyHideModal).toHaveBeenCalled()
+      expect(spyOff).toHaveBeenCalledTimes(2)
       expect(spyDeactivate).toHaveBeenCalled()
+      expect(spyBackdropDispose).toHaveBeenCalled()
+      expect(spySuperDispose).toHaveBeenCalled()
+    })
+
+    it('should dispose a shown modal', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<div id="exampleModal" class="modal"><div class="modal-dialog"></div></div>'
+
+        const modalEl = fixtureEl.querySelector('.modal')
+        const modal = new Modal(modalEl)
+
+        modal.show()
+
+        const spyHideModal = spyOn(modal, '_hideModal').and.callThrough()
+        const spyDeactivate = spyOn(modal._focustrap, 'deactivate')
+        const spyBackdropDispose = spyOn(modal._backdrop, 'dispose')
+        const spySuperDispose = spyOn(BaseComponent.prototype, 'dispose')
+        const spyOff = spyOn(EventHandler, 'off')
+
+        modal.dispose()
+
+        expect(spyHideModal).toHaveBeenCalled()
+
+        setTimeout(() => {
+          expect(spyOff).toHaveBeenCalledTimes(2)
+          expect(spyDeactivate).toHaveBeenCalled()
+          expect(spyBackdropDispose).toHaveBeenCalled()
+          expect(spySuperDispose).toHaveBeenCalled()
+          resolve()
+        }, 20)
+      })
     })
   })
 
