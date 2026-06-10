@@ -741,15 +741,15 @@ $table-accent-bg:             transparent !default;
 
 $table-th-font-weight:        null !default;
 
-$table-striped-color:         $table-color !default;
+$table-striped-color:         inherit !default;
 $table-striped-bg-factor:     .05 !default;
 $table-striped-bg:            rgba(var(--#{$prefix}emphasis-color-rgb), $table-striped-bg-factor) !default;
 
-$table-active-color:          $table-color !default;
+$table-active-color:          inherit !default;
 $table-active-bg-factor:      .1 !default;
 $table-active-bg:             rgba(var(--#{$prefix}emphasis-color-rgb), $table-active-bg-factor) !default;
 
-$table-hover-color:           $table-color !default;
+$table-hover-color:           inherit !default;
 $table-hover-bg-factor:       .075 !default;
 $table-hover-bg:              rgba(var(--#{$prefix}emphasis-color-rgb), $table-hover-bg-factor) !default;
 
