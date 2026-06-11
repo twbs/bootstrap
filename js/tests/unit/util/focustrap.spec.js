@@ -115,6 +115,40 @@ describe('FocusTrap', () => {
       })
     })
 
+    it('should wrap focus around forward on tab when focus lands on the document', () => {
+      fixtureEl.innerHTML = [
+        '<div id="focustrap" tabindex="-1">',
+        '  <a href="#" id="first">first</a>',
+        '  <a href="#" id="inside">inside</a>',
+        '  <a href="#" id="last">last</a>',
+        '</div>'
+      ].join('')
+
+      const trapElement = fixtureEl.querySelector('div')
+      const focustrap = new FocusTrap({ trapElement })
+      focustrap.activate()
+
+      const first = document.getElementById('first')
+      const inside = document.getElementById('inside')
+      const last = document.getElementById('last')
+
+      spyOn(SelectorEngine, 'focusableChildren').and.callFake(() => [first, inside, last])
+      const spy = spyOn(first, 'focus')
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'Tab'
+      document.dispatchEvent(keydown)
+
+      const focusInEvent = createEvent('focusin', { bubbles: true })
+      Object.defineProperty(focusInEvent, 'target', {
+        value: document
+      })
+
+      document.dispatchEvent(focusInEvent)
+
+      expect(spy).toHaveBeenCalled()
+    })
+
     it('should wrap focus around backwards on shift-tab', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
