@@ -333,16 +333,15 @@ $validation-states: defaults(
     }
   }
 
-  // OTP — validation applies to the wrapper; inner .form-control inherits.
+  // OTP — validation applies to the wrapper; the visual slots inherit the state.
   .otp {
     @include form-validation-state-selector($state) {
-      .form-control {
-        --control-border-color: var(--#{$theme}-border);
+      .otp-slot {
+        --otp-slot-border-color: var(--#{$theme}-border);
       }
 
-      .form-control:focus {
+      .otp-slot-active {
         @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
-        --control-border-color: var(--#{$theme}-border);
       }
     }
   }
