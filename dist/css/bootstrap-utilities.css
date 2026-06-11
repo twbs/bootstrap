@@ -235,12 +235,12 @@
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-fg));
   --bs-link-decoration: underline;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
-  --bs-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;;
   --bs-code-font-size: 95%;
   --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
   --bs-border-style: solid;
-  --bs-border-color: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-700));
+  --bs-border-color: light-dark(var(--bs-gray-200), var(--bs-gray-700));
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
   --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -397,7 +397,7 @@
   --bs-border-bg: var(--bs-bg-body);
   --bs-border-body: light-dark(var(--bs-gray-300), var(--bs-gray-800));
   --bs-border-muted: light-dark(var(--bs-gray-200), var(--bs-gray-800));
-  --bs-border-subtle: light-dark(var(--bs-gray-100), var(--bs-gray-900));
+  --bs-border-subtle: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-900));
   --bs-border-emphasized: light-dark(var(--bs-gray-400), var(--bs-gray-600));
   --bs-border-white: var(--bs-white);
   --bs-border-black: var(--bs-black);
@@ -815,23 +815,18 @@
     float: none;
   }
   .object-fit-contain {
-    -o-object-fit: contain;
     object-fit: contain;
   }
   .object-fit-cover {
-    -o-object-fit: cover;
     object-fit: cover;
   }
   .object-fit-fill {
-    -o-object-fit: fill;
     object-fit: fill;
   }
   .object-fit-scale {
-    -o-object-fit: scale-down;
     object-fit: scale-down;
   }
   .object-fit-none {
-    -o-object-fit: none;
     object-fit: none;
   }
   .opacity-0 {
@@ -2000,43 +1995,33 @@
     row-gap: 3rem;
   }
   .column-gap-0 {
-    -moz-column-gap: 0;
     column-gap: 0;
   }
   .column-gap-1 {
-    -moz-column-gap: 0.25rem;
     column-gap: 0.25rem;
   }
   .column-gap-2 {
-    -moz-column-gap: 0.5rem;
     column-gap: 0.5rem;
   }
   .column-gap-3 {
-    -moz-column-gap: 0.75rem;
     column-gap: 0.75rem;
   }
   .column-gap-4 {
-    -moz-column-gap: 1rem;
     column-gap: 1rem;
   }
   .column-gap-5 {
-    -moz-column-gap: 1.25rem;
     column-gap: 1.25rem;
   }
   .column-gap-6 {
-    -moz-column-gap: 1.5rem;
     column-gap: 1.5rem;
   }
   .column-gap-7 {
-    -moz-column-gap: 2rem;
     column-gap: 2rem;
   }
   .column-gap-8 {
-    -moz-column-gap: 2.5rem;
     column-gap: 2.5rem;
   }
   .column-gap-9 {
-    -moz-column-gap: 3rem;
     column-gap: 3rem;
   }
   :where(.space-x-0 > :not(:last-child)) {
@@ -2331,6 +2316,10 @@
   }
   .fg-black {
     --bs-fg: var(--bs-fg-black);
+    color: var(--bs-fg);
+  }
+  .fg-reset {
+    --bs-fg: inherit;
     color: var(--bs-fg);
   }
   .fg-emphasis-primary {
@@ -3152,23 +3141,18 @@
       float: none;
     }
     .sm\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .sm\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .sm\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .sm\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .sm\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .sm\:d-inline {
@@ -3913,43 +3897,33 @@
       row-gap: 3rem;
     }
     .sm\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .sm\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .sm\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .sm\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .sm\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .sm\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .sm\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .sm\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .sm\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .sm\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.sm\:space-x-0 > :not(:last-child)) {
@@ -4045,23 +4019,18 @@
       float: none;
     }
     .md\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .md\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .md\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .md\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .md\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .md\:d-inline {
@@ -4806,43 +4775,33 @@
       row-gap: 3rem;
     }
     .md\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .md\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .md\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .md\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .md\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .md\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .md\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .md\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .md\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .md\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.md\:space-x-0 > :not(:last-child)) {
@@ -4938,23 +4897,18 @@
       float: none;
     }
     .lg\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .lg\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .lg\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .lg\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .lg\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .lg\:d-inline {
@@ -5699,43 +5653,33 @@
       row-gap: 3rem;
     }
     .lg\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .lg\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .lg\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .lg\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .lg\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .lg\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .lg\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .lg\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .lg\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .lg\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.lg\:space-x-0 > :not(:last-child)) {
@@ -5831,23 +5775,18 @@
       float: none;
     }
     .xl\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .xl\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .xl\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .xl\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .xl\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .xl\:d-inline {
@@ -6592,43 +6531,33 @@
       row-gap: 3rem;
     }
     .xl\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .xl\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .xl\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .xl\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .xl\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .xl\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .xl\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .xl\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .xl\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .xl\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.xl\:space-x-0 > :not(:last-child)) {
@@ -6724,23 +6653,18 @@
       float: none;
     }
     .\32 xl\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .\32 xl\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .\32 xl\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .\32 xl\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .\32 xl\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .\32 xl\:d-inline {
@@ -7485,43 +7409,33 @@
       row-gap: 3rem;
     }
     .\32 xl\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .\32 xl\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .\32 xl\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .\32 xl\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .\32 xl\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .\32 xl\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .\32 xl\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .\32 xl\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .\32 xl\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .\32 xl\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.\32 xl\:space-x-0 > :not(:last-child)) {

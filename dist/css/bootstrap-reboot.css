@@ -235,12 +235,12 @@
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-fg));
   --bs-link-decoration: underline;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
-  --bs-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;;
   --bs-code-font-size: 95%;
   --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
   --bs-border-style: solid;
-  --bs-border-color: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-700));
+  --bs-border-color: light-dark(var(--bs-gray-200), var(--bs-gray-700));
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
   --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -397,7 +397,7 @@
   --bs-border-bg: var(--bs-bg-body);
   --bs-border-body: light-dark(var(--bs-gray-300), var(--bs-gray-800));
   --bs-border-muted: light-dark(var(--bs-gray-200), var(--bs-gray-800));
-  --bs-border-subtle: light-dark(var(--bs-gray-100), var(--bs-gray-900));
+  --bs-border-subtle: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-900));
   --bs-border-emphasized: light-dark(var(--bs-gray-400), var(--bs-gray-600));
   --bs-border-white: var(--bs-white);
   --bs-border-black: var(--bs-black);
@@ -738,6 +738,7 @@
   ::-webkit-datetime-edit-second-field,
   ::-webkit-datetime-edit-minute-field,
   ::-webkit-datetime-edit-hour-field,
+  ::-webkit-datetime-edit-meridiem-field,
   ::-webkit-datetime-edit-ampm-field,
   ::-webkit-datetime-edit-day-field,
   ::-webkit-datetime-edit-week-field,
