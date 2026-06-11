@@ -77,9 +77,18 @@ Applies to checked states, too.
 
 Add `.check-sm` or `.check-lg` to make your checkbox appear smaller or larger.
 
-<Example class="d-flex flex-column gap-3" code={`<input type="checkbox" id="checkSizeSm" class="check check-sm" checked />
-  <input type="checkbox" id="checkSizeMd" class="check" checked />
-  <input type="checkbox" id="checkSizeLg" class="check check-lg" checked />`} />
+<Example class="d-flex flex-column gap-3" code={`<div class="form-field">
+    <input type="checkbox" id="checkSizeSm" class="check check-sm" checked />
+    <label for="checkSizeSm">Small checkbox</label>
+  </div>
+  <div class="form-field">
+    <input type="checkbox" id="checkSizeMd" class="check" checked />
+    <label for="checkSizeMd">Default checkbox</label>
+  </div>
+  <div class="form-field">
+    <input type="checkbox" id="checkSizeLg" class="check check-lg" checked />
+    <label for="checkSizeLg">Large checkbox</label>
+  </div>`} />
 
 ## CSS
 

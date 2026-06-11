@@ -14,7 +14,7 @@ $check-tokens: defaults(
     --check-margin-block: .125rem,
     --check-bg: var(--bg-body),
     --check-border-color: var(--border-color),
-    --check-border-radius: .375rem,
+    --check-border-radius: var(--radius-5),
     --check-icon-checked: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/></svg>"))},
     --check-icon-indeterminate: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 10h8'/></svg>"))},
     --check-checked-bg: var(--control-checked-bg),
@@ -47,7 +47,7 @@ $check-tokens: defaults(
     background-color: var(--theme-bg, var(--check-bg));
     border: 1px solid var(--theme-bg, var(--check-border-color));
     // stylelint-disable-next-line property-disallowed-list
-    border-radius: .3em;
+    border-radius: 33%;
 
     &:checked,
     &:indeterminate {
@@ -89,9 +89,17 @@ $check-tokens: defaults(
 
   .check-sm {
     --check-size: 1rem;
+
+    + label {
+      font-size: var(--font-size-sm);
+    }
   }
   .check-lg {
     --check-size: 1.5rem;
-    --check-margin-block: 0;
+    --check-margin-block: .375rem;
+
+    + label {
+      font-size: var(--font-size-lg);
+    }
   }
 }

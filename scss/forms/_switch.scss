@@ -98,9 +98,17 @@ $switch-tokens: defaults(
   }
   .switch-sm {
     --switch-height: 1rem;
+
+    + label {
+      font-size: var(--font-size-sm);
+    }
   }
   .switch-lg {
     --switch-height: 1.5rem;
-    --switch-margin-block: 0;
+    --switch-margin-block: .375rem;
+
+    + label {
+      font-size: var(--font-size-lg);
+    }
   }
 }

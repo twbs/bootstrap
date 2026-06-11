@@ -45,7 +45,7 @@ $radio-tokens: defaults(
 
       &::before {
         position: absolute;
-        inset: .25rem;
+        inset: calc(var(--radio-size) * .25);
         content: "";
         background-color: currentcolor;
         // stylelint-disable-next-line property-disallowed-list
@@ -69,9 +69,17 @@ $radio-tokens: defaults(
 
   .radio-sm {
     --radio-size: 1rem;
+
+    + label {
+      font-size: var(--font-size-sm);
+    }
   }
   .radio-lg {
     --radio-size: 1.5rem;
-    --radio-margin-block: 0;
+    --radio-margin-block: .375rem;
+
+    + label {
+      font-size: var(--font-size-lg);
+    }
   }
 }
