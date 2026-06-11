@@ -12,3 +12,4 @@ Firefox >= 132
 iOS >= 18.0
 Safari >= 18.0
 not kaios <= 2.5 # fix floating label issues in Firefox (see https://github.com/postcss/autoprefixer/issues/1533)
+not op_mini all # proxy browser we don't target; only source of redundant -o-object-fit prefixes
