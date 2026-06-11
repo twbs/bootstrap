@@ -76,7 +76,11 @@ $dialog-sizes: defaults(
     max-height: calc(100% - var(--dialog-margin) * 2);
     padding: 0;
     margin: auto;
-    overflow: visible;
+    // Scroll the whole dialog (header/footer included) when its content
+    // exceeds the max-height, instead of letting it overflow off-screen.
+    // Mirrors v5's default modal, where the entire dialog scrolls; the
+    // .dialog-scrollable variant keeps the header/footer fixed instead.
+    overflow: auto;
     color: var(--dialog-color);
     visibility: hidden;
     background-color: var(--dialog-bg);
@@ -121,7 +125,7 @@ $dialog-sizes: defaults(
       // the dialog in the top layer during the exit so the ::backdrop and
       // the browser's modal centering remain intact).
       &[open]:not(.hiding) {
-        overflow: visible;
+        overflow: auto;
         visibility: visible;
         opacity: 1;
         @include transition(
@@ -170,7 +174,7 @@ $dialog-sizes: defaults(
     // fall through to the base "exit" state — for instant dialogs, .hiding
     // is removed synchronously after close() so this still applies normally.
     &[open]:not(.hiding) {
-      overflow: visible;
+      overflow: auto;
       visibility: visible;
       opacity: 1;
       transform: none;
@@ -190,6 +194,9 @@ $dialog-sizes: defaults(
     // Scrollable dialog body (header/footer stay fixed)
     &.dialog-scrollable[open] {
       max-height: calc(100% - var(--dialog-margin) * 2);
+      // Keep the dialog itself from scrolling so only the body does,
+      // leaving the header and footer pinned.
+      overflow: hidden;
 
       .dialog-body {
         overflow-y: auto;
