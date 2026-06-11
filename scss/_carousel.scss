@@ -1,7 +1,6 @@
 @use "config" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
-@use "layout/breakpoints" as *;
 @use "mixins/transition" as *;
 @use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
@@ -101,18 +100,6 @@ $carousel-tokens: defaults(
   .carousel-auto {
     .carousel-item {
       flex-basis: auto;
-    }
-  }
-
-  // Responsive items-per-view helpers, e.g. `.carousel-items-2` or `.md:carousel-items-3`.
-  // Defined after `.carousel` so they win on equal specificity.
-  @include loop-breakpoints-up() using ($breakpoint, $prefix) {
-    @include media-breakpoint-up($breakpoint) {
-      @for $i from 1 through 6 {
-        .#{$prefix}carousel-items-#{$i} {
-          --carousel-items: #{$i};
-        }
-      }
     }
   }
 
