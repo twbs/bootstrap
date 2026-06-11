@@ -401,7 +401,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Stepper** — new `.stepper` component for multi-step workflows with `.stepper-item` and `.stepper-horizontal` variant. CSS-only.
 - **Avatar** — new `.avatar` component with sizes (`.avatar-xs` through `.avatar-xl`), status indicators (`.avatar-status .status-online|offline|busy|away`), subtle variant, and `.avatar-stack` for grouped avatars.
 - **Chip and Chip Input** — new `.chip` component for tags/tokens and `.chip-input` for interactive chip entry. `Chips` JavaScript plugin with events: `add.bs.chips`, `remove.bs.chips`, `change.bs.chips`.
-- **OTP Input** — new `.otp` component for one-time password fields. `OtpInput` JavaScript plugin with events: `input.bs.otp-input`, `complete.bs.otp-input`.
+- **OTP Input** — new `.otp` component for one-time password fields. Built on a single `<input>` rendered as separate digit slots for full accessibility. `OtpInput` JavaScript plugin with events: `input.bs.otpInput`, `complete.bs.otpInput` (both expose `event.value`).
 - **Password Strength** — `Strength` JavaScript plugin for password strength metering with `strengthChange.bs.strength` event.
 - **Toggler** — `Toggler` JavaScript plugin for toggling classes or attributes on elements via `data-bs-toggle="toggler"`.
 - **Datepicker** — `Datepicker` JavaScript plugin built on Vanilla Calendar Pro, with events: `change.bs.datepicker`, `show.bs.datepicker`, `hide.bs.datepicker`.
