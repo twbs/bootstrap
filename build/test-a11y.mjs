@@ -49,7 +49,10 @@ function validateConfig(entries) {
   const errors = []
   for (const [index, entry] of entries.entries()) {
     const where = entry.component ?? `entry #${index}`
-    if (!entry.component) errors.push(`${where}: missing \`component\``)
+    if (!entry.component) {
+      errors.push(`${where}: missing \`component\``)
+    }
+
     if (!Array.isArray(entry.criteria) || entry.criteria.length === 0) {
       errors.push(`${where}: must declare at least one criterion`)
       continue
@@ -82,20 +85,29 @@ function extractExamples(src) {
   while ((match = re.exec(src)) !== null) {
     // Skip snippets that rely on JS template interpolation — we can't render
     // those statically and don't want to feed `${...}` into axe as text.
-    if (!match[1].includes('${')) examples.push(match[1])
+    if (!match[1].includes('${')) {
+      examples.push(match[1])
+    }
   }
 
   return examples
 }
 
 function resolveExamples(entry) {
-  if (Array.isArray(entry.html)) return entry.html
-  if (typeof entry.html === 'string') return [entry.html]
+  if (Array.isArray(entry.html)) {
+    return entry.html
+  }
+
+  if (typeof entry.html === 'string') {
+    return [entry.html]
+  }
 
   const docId = entry.examplesFrom ?? entry.component
   for (const ext of ['.mdx', '.md']) {
     const file = path.join(docsDir, `${docId}${ext}`)
-    if (fs.existsSync(file)) return extractExamples(fs.readFileSync(file, 'utf8'))
+    if (fs.existsSync(file)) {
+      return extractExamples(fs.readFileSync(file, 'utf8'))
+    }
   }
 
   return []
@@ -104,12 +116,15 @@ function resolveExamples(entry) {
 const configErrors = validateConfig(a11yComponents)
 if (configErrors.length > 0) {
   console.error('Invalid a11y config (build/a11y.config.mjs):')
-  for (const error of configErrors) console.error(`  - ${error}`)
+  for (const error of configErrors) {
+    console.error(`  - ${error}`)
+  }
+
   process.exit(1)
 }
 
 const components = a11yComponents
-  .map((entry) => ({
+  .map(entry => ({
     id: entry.component,
     criteria: entry.criteria,
     examples: resolveExamples(entry)
@@ -162,11 +177,11 @@ async function runAxe(page, component, ruleIds) {
 const useColor = process.stdout.isTTY && !process.env.NO_COLOR
 const paint = (code, text) => (useColor ? `\u001B[${code}m${text}\u001B[0m` : text)
 const c = {
-  pass: (t) => paint('32', t),
-  fail: (t) => paint('31', t),
-  warn: (t) => paint('33', t),
-  dim: (t) => paint('90', t),
-  bold: (t) => paint('1', t)
+  pass: t => paint('32', t),
+  fail: t => paint('31', t),
+  warn: t => paint('33', t),
+  dim: t => paint('90', t),
+  bold: t => paint('1', t)
 }
 
 const VERDICTS = {
@@ -181,17 +196,26 @@ function classify(item, axeResults) {
   const status = item.status ?? 'author'
   const rules = wcagAxeRules[item.criterion] ?? []
 
-  if (status === 'author') return { verdict: 'author' }
-  if (rules.length === 0) return { verdict: 'manual' }
+  if (status === 'author') {
+    return { verdict: 'author' }
+  }
 
-  const violations = axeResults.violations.filter((v) => rules.includes(v.id))
-  if (violations.length > 0) return { verdict: 'fail', violations }
+  if (rules.length === 0) {
+    return { verdict: 'manual' }
+  }
 
-  const passed = axeResults.passes.some((p) => rules.includes(p.id))
+  const violations = axeResults.violations.filter(v => rules.includes(v.id))
+  if (violations.length > 0) {
+    return { verdict: 'fail', violations }
+  }
+
+  const passed = axeResults.passes.some(p => rules.includes(p.id))
   return { verdict: passed ? 'pass' : 'na' }
 }
 
-const totals = { pass: 0, fail: 0, manual: 0, author: 0, na: 0 }
+const totals = {
+  pass: 0, fail: 0, manual: 0, author: 0, na: 0
+}
 let failed = false
 
 const browser = await chromium.launch()
@@ -204,17 +228,20 @@ for (const component of components) {
   const ruleIds = [
     ...new Set(
       component.criteria
-        .filter((item) => (item.status ?? 'author') !== 'author')
-        .flatMap((item) => wcagAxeRules[item.criterion] ?? [])
+        .filter(item => (item.status ?? 'author') !== 'author')
+        .flatMap(item => wcagAxeRules[item.criterion] ?? [])
     )
   ]
 
-  let axeResults = { violations: [], passes: [], incomplete: [], inapplicable: [] }
+  let axeResults = {
+    violations: [], passes: [], incomplete: [], inapplicable: []
+  }
   if (ruleIds.length > 0) {
     if (component.examples.length === 0) {
       console.log(`${c.bold(component.id)} ${c.warn('— no renderable <Example> snippets; skipping axe')}`)
     } else {
       try {
+        // eslint-disable-next-line no-await-in-loop -- components share one page; run sequentially
         axeResults = await runAxe(page, component, ruleIds)
       } catch (error) {
         failed = true
@@ -230,7 +257,9 @@ for (const component of components) {
     const meta = wcagCriteria[item.criterion]
     const { verdict, violations } = classify(item, axeResults)
     totals[verdict]++
-    if (verdict === 'fail') failed = true
+    if (verdict === 'fail') {
+      failed = true
+    }
 
     const { label, color } = VERDICTS[verdict]
     const badge = color(label.padEnd(6))

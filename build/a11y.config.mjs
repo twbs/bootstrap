@@ -37,12 +37,12 @@ export const a11yComponents = [
       {
         criterion: '3.3.8',
         status: 'built-in',
-        note: "A single real input with autocomplete='one-time-code' never blocks copy/paste, so password managers and SMS autofill target it reliably."
+        note: 'A single real input with autocomplete=\'one-time-code\' never blocks copy/paste, so password managers and SMS autofill target it reliably.'
       },
       {
         criterion: '1.3.5',
         status: 'built-in',
-        note: "autocomplete='one-time-code' and inputmode identify the field's purpose."
+        note: 'autocomplete=\'one-time-code\' and inputmode identify the field\'s purpose.'
       },
       {
         criterion: '3.3.2',
@@ -62,7 +62,7 @@ export const a11yComponents = [
       {
         criterion: '3.3.7',
         status: 'author',
-        note: "Don't force re-entry of a code already provided in the same flow."
+        note: 'Don\'t force re-entry of a code already provided in the same flow.'
       }
     ]
   },
@@ -87,7 +87,7 @@ export const a11yComponents = [
       {
         criterion: '4.1.2',
         status: 'author',
-        note: "Menus are intentionally generic—add role='menu'/'menuitem' and aria-* yourself when building a true ARIA menu widget."
+        note: 'Menus are intentionally generic—add role=\'menu\'/\'menuitem\' and aria-* yourself when building a true ARIA menu widget.'
       }
     ]
   }
