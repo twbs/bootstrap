@@ -2,9 +2,13 @@
 
 last 2 major versions
 not dead
-Chrome >= 120
-Firefox >= 121
-iOS >= 15.6
-Safari >= 15.6
-not Explorer <= 11
+# Floors kept on versions with native CSS `light-dark()` (and nesting) so
+# Lightning CSS doesn't lower them to the brittle custom-property polyfill that
+# broke `data-bs-theme` dark mode. Raised as far as we can while staying above
+# 90% global coverage (~90.8%).
+Chrome >= 130
+Edge >= 130
+Firefox >= 132
+iOS >= 18.0
+Safari >= 18.0
 not kaios <= 2.5 # fix floating label issues in Firefox (see https://github.com/postcss/autoprefixer/issues/1533)
