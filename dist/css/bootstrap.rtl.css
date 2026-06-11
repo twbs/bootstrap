@@ -2149,6 +2149,12 @@ progress {
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
+@media (prefers-contrast: high) {
+  .form-control:focus {
+    outline: 2px solid;
+    outline-offset: 2px;
+  }
+}
 .form-control::-webkit-date-and-time-value {
   min-width: 85px;
   height: 1.5em;
@@ -3004,6 +3010,12 @@ textarea.form-control-lg {
   border-color: var(--bs-btn-hover-border-color);
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow);
+}
+@media (prefers-contrast: high) {
+  .btn:focus-visible {
+    outline: 2px solid;
+    outline-offset: 2px;
+  }
 }
 .btn-check:focus-visible + .btn {
   border-color: var(--bs-btn-hover-border-color);
