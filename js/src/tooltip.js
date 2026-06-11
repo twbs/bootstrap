@@ -35,6 +35,8 @@ import {
 const NAME = 'tooltip'
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
+const ESCAPE_KEY = 'Escape'
+
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_MODAL = 'modal'
 const CLASS_NAME_SHOW = 'show'
@@ -60,6 +62,7 @@ const EVENT_FOCUSIN = 'focusin'
 const EVENT_FOCUSOUT = 'focusout'
 const EVENT_MOUSEENTER = 'mouseenter'
 const EVENT_MOUSELEAVE = 'mouseleave'
+const EVENT_KEYDOWN = 'keydown'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -130,6 +133,7 @@ class Tooltip extends BaseComponent {
     this._isHovered = null
     this._activeTrigger = {}
     this._floatingCleanup = null
+    this._keydownHandler = null
     this._templateFactory = null
     this._newContent = null
     this._mediaQueryListeners = []
@@ -188,6 +192,8 @@ class Tooltip extends BaseComponent {
   dispose() {
     clearTimeout(this._timeout)
 
+    this._removeEscapeListener()
+
     EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
     if (this._element.getAttribute('data-bs-original-title')) {
@@ -237,6 +243,9 @@ class Tooltip extends BaseComponent {
 
     tip.classList.add(CLASS_NAME_SHOW)
 
+    // Allow dismissing the tooltip with the Escape key (WCAG 1.4.13)
+    this._setEscapeListener()
+
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
@@ -269,6 +278,8 @@ class Tooltip extends BaseComponent {
     if (hideEvent.defaultPrevented) {
       return
     }
+
+    this._removeEscapeListener()
 
     const tip = this._getTipElement()
     tip.classList.remove(CLASS_NAME_SHOW)
@@ -597,6 +608,41 @@ class Tooltip extends BaseComponent {
     }
 
     EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
+  }
+
+  _setEscapeListener() {
+    if (this._keydownHandler) {
+      return
+    }
+
+    this._keydownHandler = event => {
+      if (event.key !== ESCAPE_KEY || !this._isShown() || !this.tip.isConnected) {
+        return
+      }
+
+      // Dismiss the tooltip and consume the keystroke so it doesn't reach
+      // ancestor components (e.g. a parent dialog). This way the first Escape
+      // only closes the tooltip, and a subsequent one can close the dialog —
+      // matching the behavior of the dropdown menu.
+      event.preventDefault()
+      event.stopPropagation()
+      this.hide()
+    }
+
+    // Listen in the capture phase so this runs before the dialog's own keydown
+    // handler, and on the document so it works regardless of where focus is
+    // (e.g. for hover-triggered tooltips). EventHandler only uses the capture
+    // phase for delegated listeners, so attach natively here.
+    this._element.ownerDocument.addEventListener(EVENT_KEYDOWN, this._keydownHandler, true)
+  }
+
+  _removeEscapeListener() {
+    if (!this._keydownHandler) {
+      return
+    }
+
+    this._element.ownerDocument.removeEventListener(EVENT_KEYDOWN, this._keydownHandler, true)
+    this._keydownHandler = null
   }
 
   _fixTitle() {
