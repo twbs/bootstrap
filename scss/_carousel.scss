@@ -1,277 +1,276 @@
 @use "config" as *;
-@use "colors" as *;
 @use "functions" as *;
+@use "mixins/border-radius" as *;
+@use "layout/breakpoints" as *;
 @use "mixins/transition" as *;
-@use "mixins/color-mode" as *;
 @use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
 
 $carousel-tokens: () !default;
 
+// stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start carousel-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
 $carousel-tokens: defaults(
   (
-    --carousel-control-color: #{$white},
-    --carousel-control-width: 15%,
-    --carousel-control-opacity: .5,
-    --carousel-control-hover-opacity: .9,
-    --carousel-control-transition: opacity .15s ease,
-    --carousel-control-icon-filter: none,
-    --carousel-indicator-width: 30px,
-    --carousel-indicator-height: 3px,
-    --carousel-indicator-hit-area-height: 10px,
-    --carousel-indicator-spacer: 3px,
-    --carousel-indicator-opacity: .5,
-    --carousel-indicator-active-bg: var(--white),
-    --carousel-indicator-active-opacity: 1,
-    --carousel-indicator-transition: opacity .6s ease,
-    --carousel-caption-width: 70%,
-    --carousel-caption-color: var(--white),
-    --carousel-caption-padding-y: 1.25rem,
-    --carousel-caption-spacer: 1.25rem,
-    --carousel-control-icon-width: 2rem,
+    --carousel-gap: .75rem,
+    --carousel-indicator-bg: var(--fg-3),
+    --carousel-indicator-width: .75rem,
+    --carousel-indicator-height: .75rem,
+    --carousel-indicator-spacer: .25rem,
+    --carousel-indicator-transition: "opacity .6s ease, width .3s ease",
+    --carousel-indicator-progress-bg: var(--carousel-indicator-bg),
+    --carousel-control-icon-width: 1rem,
     --carousel-control-prev-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0'/></svg>"),
     --carousel-control-next-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708'/></svg>"),
-    --carousel-transition-duration: .6s,
-    --carousel-transition: transform .6s ease-in-out,
+    --carousel-control-pause-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5'/></svg>"),
+    --carousel-control-play-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'/></svg>"),
+    // Scroll-snap engine. `gap` must carry a length unit: it feeds the
+    // `.carousel-item` flex-basis `calc()`, and subtracting a unitless `0` from a
+    // percentage is invalid CSS (it would drop the whole declaration and collapse
+    // every slide to its content width). `peek` only feeds `padding-inline`/
+    // `scroll-padding-inline`, so a bare `0` would be valid there, but we keep it
+    // unit-bearing for consistency.
+    --carousel-items: 1,
+    --carousel-items-gap: 0px,
+    --carousel-items-peek: 0px,
+    --carousel-fade-duration: .6s,
   ),
   $carousel-tokens
 );
 // scss-docs-end carousel-tokens
-
-$carousel-dark-tokens: () !default;
-
-// scss-docs-start carousel-dark-tokens
-// stylelint-disable-next-line scss/dollar-variable-default
-$carousel-dark-tokens: defaults(
-  (
-    --carousel-indicator-active-bg: #{$black},
-    --carousel-caption-color: #{$black},
-    --carousel-control-icon-filter: invert(1) grayscale(100),
-  ),
-  $carousel-dark-tokens
-);
-// scss-docs-end carousel-dark-tokens
-
-// Notes on the classes:
-//
-// 1. .carousel.pointer-event should ideally be pan-y (to allow for users to scroll vertically)
-//    even when their scroll action started on a carousel, but for compatibility (with Firefox)
-//    we're preventing all actions instead
-// 2. The .carousel-item-start and .carousel-item-end is used to indicate where
-//    the active slide is heading.
-// 3. .active.carousel-item is the current slide.
-// 4. .active.carousel-item-start and .active.carousel-item-end is the current
-//    slide in its in-transition state. Only one of these occurs at a time.
-// 5. .carousel-item-next.carousel-item-start and .carousel-item-prev.carousel-item-end
-//    is the upcoming slide in transition.
+// stylelint-enable custom-property-no-missing-var-function
 
 @layer components {
   .carousel {
-    position: relative;
     @include tokens($carousel-tokens);
-  }
 
-  .carousel.pointer-event {
-    touch-action: pan-y;
-  }
-
-  .carousel-inner {
     position: relative;
-    display: flow-root;
+    display: flex;
+    flex-direction: column;
+    gap: var(--carousel-gap);
+  }
+
+  // The scroll viewport
+  .carousel-inner {
+    display: flex;
+    gap: var(--carousel-items-gap);
     width: 100%;
-    overflow: hidden;
+    padding-inline: var(--carousel-items-peek);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--carousel-items-peek);
+    scrollbar-width: none; // Hide the scrollbar without losing scrollability
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  // Smooth programmatic/keyboard scrolling, disabled under reduced-motion
+  @media (prefers-reduced-motion: no-preference) {
+    .carousel-inner {
+      scroll-behavior: smooth;
+    }
   }
 
   .carousel-item {
-    position: relative;
-    display: none;
-    float: inline-start;
-    width: 100%;
-    margin-inline-end: -100%;
-    backface-visibility: hidden;
-    @include transition(var(--carousel-transition));
+    // `100%` here is `.carousel-inner`'s content box, which `padding-inline`
+    // has already inset by the peek on each side, so the peek must NOT be
+    // subtracted again — doing so makes every slide `2 * peek` too narrow and
+    // the peek lopsided. Only the inter-slide gaps need removing.
+    flex: 0 0 calc((100% - (var(--carousel-items) - 1) * var(--carousel-items-gap)) / var(--carousel-items));
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
-  .carousel-item.active,
-  .carousel-item-next,
-  .carousel-item-prev {
-    display: block;
+  //
+  // Layout variants
+  //
+
+  // Center the active slide in the viewport (pairs well with `--carousel-items-peek`)
+  .carousel-center {
+    .carousel-item {
+      scroll-snap-align: center;
+    }
   }
 
-  .carousel-item-next:not(.carousel-item-start),
-  .active.carousel-item-end {
-    transform: translateX(100%);
+  // Let each slide size itself; snap points still land on every item
+  .carousel-auto {
+    .carousel-item {
+      flex-basis: auto;
+    }
   }
 
-  .carousel-item-prev:not(.carousel-item-end),
-  .active.carousel-item-start {
-    transform: translateX(-100%);
+  // Responsive items-per-view helpers, e.g. `.carousel-items-2` or `.md:carousel-items-3`.
+  // Defined after `.carousel` so they win on equal specificity.
+  @include loop-breakpoints-up() using ($breakpoint, $prefix) {
+    @include media-breakpoint-up($breakpoint) {
+      @for $i from 1 through 6 {
+        .#{$prefix}carousel-items-#{$i} {
+          --carousel-items: #{$i};
+        }
+      }
+    }
   }
 
   //
   // Alternate transitions
   //
 
+  // Fade can't ride scroll-snap (it stacks slides instead of scrolling), so it
+  // becomes a JavaScript-driven mode: every slide is stacked and the active one
+  // is faded in via a CSS opacity transition.
   .carousel-fade {
+    .carousel-inner {
+      display: grid;
+      overflow: hidden;
+      scroll-snap-type: none;
+    }
+
     .carousel-item {
+      grid-area: 1 / 1;
+      width: 100%;
+      visibility: hidden;
       opacity: 0;
-      transition-property: opacity;
-      transform: none;
+      @include transition(opacity var(--carousel-fade-duration) ease, visibility 0s linear var(--carousel-fade-duration));
     }
 
-    .carousel-item.active,
-    .carousel-item-next.carousel-item-start,
-    .carousel-item-prev.carousel-item-end {
-      z-index: 1;
+    .carousel-item.active {
+      visibility: visible;
       opacity: 1;
-    }
-
-    .active.carousel-item-start,
-    .active.carousel-item-end {
-      z-index: 0;
-      opacity: 0;
-      @include transition(opacity 0s var(--carousel-transition-duration));
+      @include transition(opacity var(--carousel-fade-duration) ease);
     }
   }
 
-  //
-  // Left/right controls for nav
-  //
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    position: absolute;
-    inset-block: 0;
-    z-index: 1;
-    // Use flex for alignment (1-3)
-    display: flex; // 1. allow flex styles
-    align-items: center; // 2. vertically center contents
-    justify-content: center; // 3. horizontally center contents
-    width: var(--carousel-control-width);
-    padding: 0;
-    color: var(--carousel-control-color);
-    text-align: center;
-    background: none;
-    filter: var(--carousel-control-icon-filter);
-    border: 0;
-    opacity: var(--carousel-control-opacity);
-    @include transition(var(--carousel-control-transition));
-
-    // Hover/focus state
-    &:hover,
-    &:focus {
-      color: var(--carousel-control-color);
-      text-decoration: none;
-      outline: 0;
-      opacity: var(--carousel-control-hover-opacity);
-    }
-  }
-  .carousel-control-prev {
-    inset-inline-start: 0;
-    // stylelint-disable-next-line scss/at-function-named-arguments, @stylistic/function-whitespace-after
-    background-image: if(sass($enable-gradients): linear-gradient(90deg, rgb(0 0 0 / .25), rgb(0 0 0 / .001)); else: null);
-  }
-  .carousel-control-next {
-    inset-inline-end: 0;
-    // stylelint-disable-next-line scss/at-function-named-arguments, @stylistic/function-whitespace-after
-    background-image: if(sass($enable-gradients): linear-gradient(270deg, rgb(0 0 0 / .25), rgb(0 0 0 / .001)); else: null);
-  }
-
-  // Icons for within, rendered via CSS mask so they inherit a configurable color
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
+  // Icons for within, rendered via CSS mask so they inherit the current text
+  // color (white on the overlay controls, the button color inside `.btn-*`).
+  .carousel-icon-prev,
+  .carousel-icon-next,
+  .carousel-icon-pause,
+  .carousel-icon-play {
     display: inline-block;
     width: var(--carousel-control-icon-width);
     height: var(--carousel-control-icon-width);
-    background-color: var(--carousel-control-color);
+    background-color: currentcolor;
     @include mask-icon($size: 100% 100%, $position: 50%);
   }
 
-  .carousel-control-prev-icon {
+  .carousel-icon-prev {
     mask-image: var(--carousel-control-prev-icon);
   }
 
-  [dir="rtl"] .carousel-control-prev-icon {
+  .carousel-icon-next {
     mask-image: var(--carousel-control-next-icon);
   }
 
-  .carousel-control-next-icon {
-    mask-image: var(--carousel-control-next-icon);
+  [dir="rtl"] .carousel-icon-prev,
+  [dir="rtl"] .carousel-icon-next {
+    transform: scaleX(-1);
   }
 
-  [dir="rtl"] .carousel-control-next-icon {
-    mask-image: var(--carousel-control-prev-icon);
+  .carousel-icon-pause {
+    mask-image: var(--carousel-control-pause-icon);
   }
 
-  // Optional indicator pips/controls
+  .carousel-icon-play {
+    mask-image: var(--carousel-control-play-icon);
+  }
+
+  // Optional play/pause control
   //
-  // Add a container (such as a list) with the following class and add an item (ideally a focusable control,
-  // like a button) with data-bs-target for each slide your carousel holds.
+  // A discoverable toggle so users can stop an autoplaying carousel, as required
+  // by WCAG 2.2.2 (Pause, Stop, Hide). `.carousel-control-play-pause` is only a
+  // behavior hook—JS toggles `.paused` on it and its appearance comes from the
+  // wrapping button (e.g. `.btn-icon`). The button holds both glyphs and we show
+  // whichever `.carousel-icon-*` matches the current state.
+  .carousel-control-play-pause .carousel-icon-play {
+    display: none;
+  }
+
+  .carousel-control-play-pause.paused {
+    .carousel-icon-pause {
+      display: none;
+    }
+
+    .carousel-icon-play {
+      display: inline-block;
+    }
+  }
 
   .carousel-indicators {
-    position: absolute;
-    inset: auto 0 0;
-    z-index: 2;
     display: flex;
+    gap: var(--carousel-indicator-spacer);
     justify-content: center;
-    padding: 0;
-    // Use the .carousel-control's width as margin so we don't overlay those
-    margin-inline: var(--carousel-control-width);
-    margin-bottom: 1rem;
 
     [data-bs-target] {
-      box-sizing: content-box;
       flex: 0 1 auto;
       width: var(--carousel-indicator-width);
       height: var(--carousel-indicator-height);
       padding: 0;
-      margin-inline: var(--carousel-indicator-spacer);
-      text-indent: -999px;
       cursor: pointer;
-      background-color: var(--carousel-indicator-active-bg);
-      background-clip: padding-box;
-      border: 0;
-      // Use transparent borders to increase the hit area by 10px on top and bottom.
-      border-block: var(--carousel-indicator-hit-area-height) solid transparent;
-      opacity: var(--carousel-indicator-opacity);
+      background-color: transparent;
+      border: 1px solid var(--carousel-indicator-bg);
+      @include border-radius(var(--carousel-indicator-width));
       @include transition(var(--carousel-indicator-transition));
     }
 
     .active {
-      opacity: var(--carousel-indicator-active-opacity);
+      width: calc(var(--carousel-indicator-width) * 2.5);
+      background-color: var(--carousel-indicator-bg);
+      border-color: var(--carousel-indicator-bg);
     }
   }
 
-  // Optional captions
+  // Autoplay progress: fill the active indicator like a progress bar over the
+  // current slide's interval. The JS adds `.carousel-playing` and sets
+  // `--carousel-interval` (shipped as `--bs-carousel-interval`) while autoplay is
+  // running. The fill restarts on its own each slide because `.active` moves to a
+  // fresh indicator, so its `::after` animation begins from scratch.
+  @if $enable-transitions {
+    @keyframes carousel-indicator-progress {
+      from { inline-size: 0; }
+      to { inline-size: 100%; }
+    }
+
+    .carousel-playing .carousel-indicators .active {
+      @media (prefers-reduced-motion: no-preference) {
+        position: relative;
+        overflow: hidden;
+        // Empty the pill so it reads as a track that the fill grows across.
+        background-color: transparent;
+
+        &::after {
+          position: absolute;
+          inset-block: 0;
+          inset-inline-start: 0;
+          inline-size: 0;
+          content: "";
+          background-color: var(--carousel-indicator-progress-bg);
+          animation: carousel-indicator-progress var(--carousel-interval, 5000ms) linear forwards;
+        }
+      }
+    }
+  }
+
+  // Overlay layout
   //
-  //
+  // Overlays the prev/next controls, play/pause button, and indicators on top of
+  // the slides (the classic carousel look) instead of stacking them in the flow.
 
-  .carousel-caption {
-    position: absolute;
-    right: calc((100% - var(--carousel-caption-width)) * .5);
-    bottom: var(--carousel-caption-spacer);
-    left: calc((100% - var(--carousel-caption-width)) * .5);
-    padding-top: var(--carousel-caption-padding-y);
-    padding-bottom: var(--carousel-caption-padding-y);
-    color: var(--carousel-caption-color);
-    text-align: center;
-  }
+  .carousel-overlay {
+    --carousel-indicator-bg: light-dark(var(--white), var(--black));
 
-  // Dark mode carousel
-
-  @mixin carousel-dark() {
-    @include tokens($carousel-dark-tokens);
-  }
-
-  .carousel-dark {
-    @include carousel-dark();
-  }
-
-  @if $enable-dark-mode {
-    @include color-mode(dark, true) {
-      @include carousel-dark();
+    .carousel-overlay-controls {
+      position: absolute;
+      inset-block-end: 1rem;
+      inset-inline: 1rem;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 }
