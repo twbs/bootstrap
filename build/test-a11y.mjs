@@ -35,7 +35,12 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const docsDir = path.join(rootDir, 'site/src/content/docs')
 const axePath = require.resolve('axe-core')
 const cssHref = pathToFileURL(path.join(rootDir, 'dist/css/bootstrap.css')).href
-const jsHref = pathToFileURL(path.join(rootDir, 'dist/js/bootstrap.bundle.js')).href
+// The dist bundle is an ES module. Browsers refuse to load `type="module"`
+// scripts over file:// (CORS), so inline the source into an inline module
+// script instead — its data-API side effects still register on evaluation.
+const jsSource = fs
+  .readFileSync(path.join(rootDir, 'dist/js/bootstrap.bundle.js'), 'utf8')
+  .replaceAll('</script', '<\\/script')
 
 const { wcagCriteria, a11yStatuses, a11yStatusLabels, wcagAxeRules } = await import(
   pathToFileURL(path.join(rootDir, 'site/src/data/wcag.ts')).href
@@ -68,6 +73,29 @@ function validateConfig(entries) {
         errors.push(`${where}: invalid status "${status}" for ${item.criterion}`)
       }
     }
+
+    if (entry.interactions !== undefined && !Array.isArray(entry.interactions)) {
+      errors.push(`${where}: \`interactions\` must be an array of steps`)
+    }
+
+    if (entry.assertions === undefined) {
+      continue
+    }
+
+    if (!Array.isArray(entry.assertions)) {
+      errors.push(`${where}: \`assertions\` must be an array`)
+      continue
+    }
+
+    for (const assertion of entry.assertions) {
+      if (!wcagCriteria[assertion.criterion]) {
+        errors.push(`${where}: assertion references unknown criterion "${assertion.criterion}"`)
+      }
+
+      if (typeof assertion.run !== 'string') {
+        errors.push(`${where}: assertion for ${assertion.criterion} must provide a \`run\` body (string)`)
+      }
+    }
   }
 
   return errors
@@ -85,6 +113,9 @@ function extractExamples(src) {
   while ((match = re.exec(src)) !== null) {
     // Skip snippets that rely on JS template interpolation — we can't render
     // those statically and don't want to feed `${...}` into axe as text.
+    // Components that need a specific rendered state (e.g. for `interactions`)
+    // should provide inline `html` in the config instead of relying on docs
+    // extraction (see build/a11y.config.mjs).
     if (!match[1].includes('${')) {
       examples.push(match[1])
     }
@@ -127,6 +158,8 @@ const components = a11yComponents
   .map(entry => ({
     id: entry.component,
     criteria: entry.criteria,
+    interactions: entry.interactions ?? [],
+    assertions: entry.assertions ?? [],
     examples: resolveExamples(entry)
   }))
   .sort((a, b) => a.id.localeCompare(b.id))
@@ -147,27 +180,105 @@ function pageHtml(examplesHtml) {
   </head>
   <body>
     <main id="${ROOT_ID}">${examplesHtml}</main>
-    <script src="${jsHref}"></script>
+    <script type="module">${jsSource}</script>
   </body>
 </html>`
 }
 
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'bs-a11y-'))
 
-async function runAxe(page, component, ruleIds) {
+const EMPTY_AXE = {
+  violations: [], passes: [], incomplete: [], inapplicable: []
+}
+
+// Drive scripted Playwright steps before auditing, so dynamic components can be
+// opened/operated and audited in their *interactive* state rather than collapsed.
+// Steps run sequentially because each depends on the state left by the previous.
+async function runSteps(page, steps = []) {
+  for (const step of steps) {
+    if (step.click) {
+      // eslint-disable-next-line no-await-in-loop -- ordered UI steps
+      await page.click(step.click)
+    } else if (step.focus) {
+      // eslint-disable-next-line no-await-in-loop -- ordered UI steps
+      await page.focus(step.focus)
+    } else if (step.type !== undefined) {
+      // eslint-disable-next-line no-await-in-loop -- ordered UI steps
+      await (step.on ? page.type(step.on, step.type) : page.keyboard.type(step.type))
+    } else if (step.press) {
+      // eslint-disable-next-line no-await-in-loop -- ordered UI steps
+      await (step.on ? page.press(step.on, step.press) : page.keyboard.press(step.press))
+    } else if (step.wait) {
+      // eslint-disable-next-line no-await-in-loop -- ordered UI steps
+      await page.waitForTimeout(step.wait)
+    }
+  }
+}
+
+// Run the config's custom assertions for criteria axe can't check statically
+// (keyboard operation, focus order/restore, status-message announcements). Each
+// assertion may carry its own `steps` (cumulative, on the live page) and a `run`
+// body evaluated in-page; the returned value is compared to `expect` (or treated
+// as a boolean when `expect` is omitted).
+async function runAssertions(page, assertions = []) {
+  const results = []
+  for (const assertion of assertions) {
+    if (assertion.steps) {
+      // eslint-disable-next-line no-await-in-loop -- assertions share one live page
+      await runSteps(page, assertion.steps)
+    }
+
+    let actual
+    let error
+    try {
+      // eslint-disable-next-line no-await-in-loop -- assertions share one live page
+      actual = await page.evaluate(body => {
+        // eslint-disable-next-line no-new-func -- assertion bodies come from the trusted local config
+        return new Function(body)()
+      }, assertion.run)
+    } catch (error_) {
+      error = error_.message
+    }
+
+    const pass = error === undefined &&
+      (assertion.expect === undefined ?
+        Boolean(actual) :
+        JSON.stringify(actual) === JSON.stringify(assertion.expect))
+
+    results.push({
+      criterion: assertion.criterion,
+      label: assertion.label ?? assertion.run,
+      pass,
+      actual,
+      expect: assertion.expect,
+      error
+    })
+  }
+
+  return results
+}
+
+async function evaluateComponent(page, component, ruleIds) {
   const html = pageHtml(component.examples.join('\n'))
   const file = path.join(tmpDir, `${component.id.replace(/\//g, '__')}.html`)
   fs.writeFileSync(file, html)
 
   await page.goto(pathToFileURL(file).href, { waitUntil: 'load' })
   await page.waitForTimeout(200) // let data-bs-* plugins auto-initialise
+  await runSteps(page, component.interactions)
   await page.addScriptTag({ path: axePath })
 
-  return page.evaluate(
-    async ({ rootId, rules }) =>
-      window.axe.run(`#${rootId}`, { runOnly: { type: 'rule', values: rules } }),
-    { rootId: ROOT_ID, rules: ruleIds }
-  )
+  const axeResults = ruleIds.length > 0 ?
+    await page.evaluate(
+      async ({ rootId, rules }) =>
+        window.axe.run(`#${rootId}`, { runOnly: { type: 'rule', values: rules } }),
+      { rootId: ROOT_ID, rules: ruleIds }
+    ) :
+    EMPTY_AXE
+
+  const assertionResults = await runAssertions(page, component.assertions)
+
+  return { axeResults, assertionResults }
 }
 
 // ---------------------------------------------------------------------------
@@ -192,25 +303,33 @@ const VERDICTS = {
   na: { label: 'N/A', color: c.dim }
 }
 
-function classify(item, axeResults) {
+function classify(item, axeResults, assertionResults) {
   const status = item.status ?? 'author'
-  const rules = wcagAxeRules[item.criterion] ?? []
 
   if (status === 'author') {
     return { verdict: 'author' }
   }
 
-  if (rules.length === 0) {
+  const rules = wcagAxeRules[item.criterion] ?? []
+  const assertions = assertionResults.filter(a => a.criterion === item.criterion)
+
+  // Neither machine-checkable by axe nor backed by a scripted assertion.
+  if (rules.length === 0 && assertions.length === 0) {
     return { verdict: 'manual' }
   }
 
   const violations = axeResults.violations.filter(v => rules.includes(v.id))
-  if (violations.length > 0) {
-    return { verdict: 'fail', violations }
+  const failedAssertions = assertions.filter(a => !a.pass)
+  if (violations.length > 0 || failedAssertions.length > 0) {
+    return { verdict: 'fail', violations, failedAssertions }
   }
 
-  const passed = axeResults.passes.some(p => rules.includes(p.id))
-  return { verdict: passed ? 'pass' : 'na' }
+  const axePassed = axeResults.passes.some(p => rules.includes(p.id))
+  if (axePassed || assertions.length > 0) {
+    return { verdict: 'pass' }
+  }
+
+  return { verdict: 'na' }
 }
 
 const totals = {
@@ -233,19 +352,20 @@ for (const component of components) {
     )
   ]
 
-  let axeResults = {
-    violations: [], passes: [], incomplete: [], inapplicable: []
-  }
-  if (ruleIds.length > 0) {
+  const needsBrowser = ruleIds.length > 0 || component.assertions.length > 0
+
+  let axeResults = EMPTY_AXE
+  let assertionResults = []
+  if (needsBrowser) {
     if (component.examples.length === 0) {
-      console.log(`${c.bold(component.id)} ${c.warn('— no renderable <Example> snippets; skipping axe')}`)
+      console.log(`${c.bold(component.id)} ${c.warn('— no renderable <Example> snippets; skipping checks')}`)
     } else {
       try {
         // eslint-disable-next-line no-await-in-loop -- components share one page; run sequentially
-        axeResults = await runAxe(page, component, ruleIds)
+        ({ axeResults, assertionResults } = await evaluateComponent(page, component, ruleIds))
       } catch (error) {
         failed = true
-        console.log(`${c.bold(component.id)} ${c.fail(`— axe run failed: ${error.message}`)}`)
+        console.log(`${c.bold(component.id)} ${c.fail(`— checks failed to run: ${error.message}`)}`)
         continue
       }
     }
@@ -255,7 +375,7 @@ for (const component of components) {
 
   for (const item of component.criteria) {
     const meta = wcagCriteria[item.criterion]
-    const { verdict, violations } = classify(item, axeResults)
+    const { verdict, violations, failedAssertions } = classify(item, axeResults, assertionResults)
     totals[verdict]++
     if (verdict === 'fail') {
       failed = true
@@ -270,8 +390,15 @@ for (const component of components) {
     console.log(`  ${badge} ${id} ${level} ${meta.title} ${c.dim('·')} ${statusLabel}`)
 
     if (verdict === 'fail') {
-      for (const violation of violations) {
+      for (const violation of violations ?? []) {
         console.log(`         ${c.fail('✗')} ${violation.id}: ${violation.help} (${violation.nodes.length} node(s))`)
+      }
+
+      for (const assertion of failedAssertions ?? []) {
+        const reason = assertion.error ?
+          `errored: ${assertion.error}` :
+          `expected ${JSON.stringify(assertion.expect ?? true)}, got ${JSON.stringify(assertion.actual)}`
+        console.log(`         ${c.fail('✗')} assertion "${assertion.label}" ${reason}`)
       }
     }
   }
