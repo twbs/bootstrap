@@ -7,7 +7,21 @@ import {
 describe('Carousel', () => {
   let fixtureEl
   let realIntersectionObserver
-  let scrollBySpy
+  let scrollToSpy
+  let animateScrollSpy
+  // Completion callback captured from the most recent stubbed `_animateScroll`,
+  // so a test can decide when the (otherwise instant in tests) scroll "settles".
+  let pendingScrollComplete
+
+  // Run the pending scroll's completion callback (clone teleport, active sync,
+  // snap restore, …), simulating the animation finishing.
+  const settleScroll = () => {
+    const complete = pendingScrollComplete
+    pendingScrollComplete = null
+    if (complete) {
+      complete()
+    }
+  }
 
   // A no-op IntersectionObserver so the real one doesn't fire during tests;
   // active-slide syncing is driven explicitly via `_handleIntersection`.
@@ -75,20 +89,6 @@ describe('Carousel', () => {
     carousel._handleIntersection(entries)
   }
 
-  // `scrollBy` is stubbed (no real movement), so the settle watcher never sees
-  // movement and falls back to its frame cap (SCROLL_SETTLE_MAX_FRAMES = 10).
-  // Await past that so the loop transition's teleport/`slid` step runs first.
-  const flushFrames = (count = 14) => {
-    let chain = Promise.resolve()
-    for (let i = 0; i < count; i++) {
-      chain = chain.then(() => new Promise(resolve => {
-        requestAnimationFrame(resolve)
-      }))
-    }
-
-    return chain
-  }
-
   beforeAll(() => {
     fixtureEl = getFixture()
   })
@@ -96,7 +96,18 @@ describe('Carousel', () => {
   beforeEach(() => {
     realIntersectionObserver = window.IntersectionObserver
     window.IntersectionObserver = MockIntersectionObserver
-    scrollBySpy = spyOn(Element.prototype, 'scrollBy')
+    // Stub `scrollBy` (used by the loop transition's instant teleport) so it
+    // doesn't move the fixture; assertions go through `scrollToSpy`/`animateScrollSpy`.
+    spyOn(Element.prototype, 'scrollBy')
+    scrollToSpy = spyOn(Element.prototype, 'scrollTo')
+    // Stub the JS scroll: record the target and capture the completion callback
+    // (run on demand via `settleScroll`) instead of waiting out the real rAF
+    // animation. Tests that exercise the real animator opt back in with
+    // `animateScrollSpy.and.callThrough()`.
+    pendingScrollComplete = null
+    animateScrollSpy = spyOn(Carousel.prototype, '_animateScroll').and.callFake((targetLeft, onComplete) => {
+      pendingScrollComplete = onComplete
+    })
   })
 
   afterEach(() => {
@@ -239,11 +250,10 @@ describe('Carousel', () => {
 
       carousel.next()
 
-      expect(scrollBySpy).toHaveBeenCalled()
-      // The viewport (not the item) is the element being scrolled
-      expect(scrollBySpy.calls.mostRecent().object).toEqual(carousel._viewport)
-      // item2 sits one item-width (100) to the right of the viewport's start
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(100)
+      expect(animateScrollSpy).toHaveBeenCalled()
+      // item2 sits one item-width (100) to the right of the viewport's start, so
+      // the absolute scroll target is 0 + 100
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(100)
       expect(slideSpy).toHaveBeenCalledTimes(1)
       expect(slideSpy.calls.mostRecent().args[0].to).toEqual(1)
       expect(slideSpy.calls.mostRecent().args[0].direction).toEqual('left')
@@ -272,7 +282,7 @@ describe('Carousel', () => {
 
       carousel.next()
 
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should wrap to the last item when going prev from the first (wrap: true)', () => {
@@ -283,7 +293,7 @@ describe('Carousel', () => {
       carousel.prev()
 
       // item3 is two item-widths (200) to the right — a full multi-slide jump
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(200)
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(200)
     })
 
     it('should not move past the ends when `ends` is `stop`', () => {
@@ -293,7 +303,7 @@ describe('Carousel', () => {
       stubLayout(carousel)
       carousel.prev()
 
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should center the active slide when `.carousel-center` is present', () => {
@@ -306,7 +316,7 @@ describe('Carousel', () => {
       // Center mode aligns the item's center to the viewport's center:
       // (itemLeft 200 + itemWidth/2 100) - (viewportLeft 0 + viewportWidth/2 150) = 150
       // (start alignment would instead be itemLeft - viewportLeft = 200)
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(150)
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(150)
     })
 
     it('should rest the slide at the scroll-padding (peek) offset', () => {
@@ -320,7 +330,7 @@ describe('Carousel', () => {
       carousel.next()
 
       // itemLeft 100 - (viewportLeft 0 + padStart 30) = 70 (vs 100 without peek)
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(70)
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(70)
     })
 
     it('should do nothing when navigating to the current index', () => {
@@ -330,7 +340,7 @@ describe('Carousel', () => {
       stubLayout(carousel)
       carousel.to(0)
 
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should not advance past the last item when `ends` is `stop`', () => {
@@ -341,7 +351,7 @@ describe('Carousel', () => {
       carousel._activeIndex = 2
       carousel.next()
 
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should ignore a non-numeric index', () => {
@@ -351,21 +361,7 @@ describe('Carousel', () => {
       stubLayout(carousel)
       carousel.to('not-a-number')
 
-      expect(scrollBySpy).not.toHaveBeenCalled()
-    })
-
-    it('should scroll without smooth behavior when reduced motion is preferred', () => {
-      fixtureEl.innerHTML = basicMarkup()
-
-      spyOn(window, 'matchMedia').and.returnValue({ matches: true })
-
-      const carousel = new Carousel('#myCarousel')
-      stubLayout(carousel)
-      carousel.next()
-
-      // `'instant'` rather than `'auto'`, which would defer to the CSS
-      // `scroll-behavior: smooth` and animate despite the user's preference.
-      expect(scrollBySpy.calls.mostRecent().args[0].behavior).toEqual('instant')
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should not scroll when the target item is missing', () => {
@@ -375,7 +371,7 @@ describe('Carousel', () => {
       stubLayout(carousel)
       carousel._scrollToIndex(99)
 
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should report mirrored slide directions in RTL', () => {
@@ -418,47 +414,114 @@ describe('Carousel', () => {
       // Navigation must measure from the real position (item 2), not the stale 0.
       expect(carousel._navIndex()).toEqual(2)
     })
+  })
 
-    it('should cancel a pending snap-restore frame when navigating again', () => {
+  // The real `_animateScroll` (the global spy is bypassed with `callThrough`).
+  // We drive a JS-owned rAF animation instead of `scrollBy({behavior:'smooth'})`
+  // because Safari mis-scales programmatic smooth scrolls under page zoom.
+  describe('scroll animation (`_animateScroll`)', () => {
+    // Run whatever rAF callbacks are queued, passing each a synthetic timestamp
+    // (ms) so the time-based animation advances deterministically (no real wait).
+    const tick = (frames, now) => {
+      for (const cb of frames.splice(0)) {
+        cb(now)
+      }
+    }
+
+    it('should step the viewport toward the target with eased, instant scrolls and finish on it', () => {
       fixtureEl.innerHTML = basicMarkup()
-
       const carousel = new Carousel('#myCarousel')
-      stubLayout(carousel)
-      const cancelSpy = spyOn(window, 'cancelAnimationFrame').and.callThrough()
+      animateScrollSpy.and.callThrough()
 
-      carousel.next() // schedules a snap-restore frame
-      carousel.to(2) // navigates again before it settles, cancelling the pending frame
+      const frames = []
+      spyOn(window, 'requestAnimationFrame').and.callFake(cb => frames.push(cb))
+      const onComplete = jasmine.createSpy('onComplete')
 
-      expect(cancelSpy).toHaveBeenCalled()
+      // SCROLL_DURATION is 300ms; the first frame seeds the start time.
+      carousel._animateScroll(500, onComplete)
+
+      tick(frames, 0) // progress 0 → eased position 0, instant scroll, not done
+      expect(scrollToSpy.calls.mostRecent().args[0].behavior).toEqual('instant')
+      expect(scrollToSpy.calls.mostRecent().args[0].left).toEqual(0)
+      expect(onComplete).not.toHaveBeenCalled()
+
+      tick(frames, 200) // progress ~0.67 → past the easing midpoint, partway there
+      const mid = scrollToSpy.calls.mostRecent().args[0].left
+      expect(mid).toBeGreaterThan(0)
+      expect(mid).toBeLessThan(500)
+      expect(onComplete).not.toHaveBeenCalled()
+
+      tick(frames, 400) // progress > 1 → land exactly on target and complete
+      expect(scrollToSpy.calls.mostRecent().args[0].left).toEqual(500)
+      expect(onComplete).toHaveBeenCalledTimes(1)
     })
 
-    it('should restore snapping immediately when requestAnimationFrame is unavailable', () => {
+    it('should cancel an in-flight animation frame when a new scroll starts', () => {
       fixtureEl.innerHTML = basicMarkup()
+      const carousel = new Carousel('#myCarousel')
+      animateScrollSpy.and.callThrough()
 
+      spyOn(window, 'requestAnimationFrame').and.returnValue(42)
+      const cancelSpy = spyOn(window, 'cancelAnimationFrame').and.callThrough()
+
+      carousel._animateScroll(100, () => {})
+      carousel._animateScroll(200, () => {}) // supersedes the first
+
+      expect(cancelSpy).toHaveBeenCalledWith(42)
+    })
+
+    it('should jump straight to the target under reduced motion', () => {
+      fixtureEl.innerHTML = basicMarkup()
+      spyOn(window, 'matchMedia').and.returnValue({ matches: true })
+      const carousel = new Carousel('#myCarousel')
+      animateScrollSpy.and.callThrough()
+
+      const rafSpy = spyOn(window, 'requestAnimationFrame')
+      const onComplete = jasmine.createSpy('onComplete')
+
+      carousel._animateScroll(500, onComplete)
+
+      // No animation frames scheduled; one instant scroll lands on target.
+      expect(rafSpy).not.toHaveBeenCalled()
+      expect(scrollToSpy).toHaveBeenCalledTimes(1)
+      expect(scrollToSpy.calls.mostRecent().args[0]).toEqual({ left: 500, behavior: 'instant' })
+      expect(onComplete).toHaveBeenCalledTimes(1)
+    })
+
+    it('should jump straight to the target when requestAnimationFrame is unavailable', () => {
+      fixtureEl.innerHTML = basicMarkup()
+      const carousel = new Carousel('#myCarousel')
+      animateScrollSpy.and.callThrough()
+
+      const original = window.requestAnimationFrame
+      window.requestAnimationFrame = undefined
+      const onComplete = jasmine.createSpy('onComplete')
+
+      try {
+        carousel._animateScroll(500, onComplete)
+      } finally {
+        window.requestAnimationFrame = original
+      }
+
+      expect(scrollToSpy.calls.mostRecent().args[0]).toEqual({ left: 500, behavior: 'instant' })
+      expect(onComplete).toHaveBeenCalledTimes(1)
+    })
+
+    it('should restore snapping once the navigation animation completes', () => {
+      fixtureEl.innerHTML = basicMarkup()
       const carousel = new Carousel('#myCarousel')
       stubLayout(carousel)
+      animateScrollSpy.and.callThrough()
       const original = window.requestAnimationFrame
       window.requestAnimationFrame = undefined
 
-      carousel.next()
-      expect(carousel._viewport.style.scrollSnapType).toEqual('')
+      try {
+        carousel.next()
+      } finally {
+        window.requestAnimationFrame = original
+      }
 
-      window.requestAnimationFrame = original
-    })
-
-    it('should restore snapping as soon as the viewport reaches the scroll target', async () => {
-      fixtureEl.innerHTML = basicMarkup()
-
-      const carousel = new Carousel('#myCarousel')
-      carousel._viewport.style.scrollSnapType = 'none'
-      // Pretend the viewport is already sitting on the destination snap point.
-      Object.defineProperty(carousel._viewport, 'scrollLeft', { configurable: true, get: () => 300 })
-
-      carousel._restoreSnapWhenSettled(300)
-      // Far fewer than SCROLL_SETTLE_MAX_FRAMES: only the target-reached branch
-      // can restore this quickly (the no-movement fallback waits the full cap).
-      await flushFrames(2)
-
+      // Snapping is suspended for the scroll, then restored on completion.
       expect(carousel._viewport.style.scrollSnapType).toEqual('')
     })
   })
@@ -471,11 +534,11 @@ describe('Carousel', () => {
       stubLayout(carousel)
 
       carousel.prev()
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
 
       carousel._activeIndex = 2
       carousel.next()
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should wrap around at both ends when `ends` is `wrap`', () => {
@@ -486,12 +549,12 @@ describe('Carousel', () => {
 
       carousel.prev()
       // wraps to the last item (item3), two item-widths (200) to the right
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(200)
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(200)
     })
   })
 
   describe('seamless loop (`ends: loop`)', () => {
-    it('should continue into a transient clone and teleport to the first slide when going next from the last', async () => {
+    it('should continue into a transient clone and teleport to the first slide when going next from the last', () => {
       fixtureEl.innerHTML = basicMarkup()
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
@@ -507,7 +570,7 @@ describe('Carousel', () => {
       expect(carousel._viewport.querySelector('.carousel-item-clone')).not.toBeNull()
       expect(carousel._looping).toBeTrue()
 
-      await flushFrames()
+      settleScroll()
 
       expect(carousel._viewport.querySelector('.carousel-item-clone')).toBeNull()
       expect(carousel._activeIndex).toEqual(0)
@@ -516,7 +579,7 @@ describe('Carousel', () => {
       expect(slidSpy.calls.mostRecent().args[0].direction).toEqual('left')
     })
 
-    it('should continue into a transient clone and teleport to the last slide when going prev from the first', async () => {
+    it('should continue into a transient clone and teleport to the last slide when going prev from the first', () => {
       fixtureEl.innerHTML = basicMarkup()
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
@@ -529,7 +592,7 @@ describe('Carousel', () => {
 
       expect(carousel._viewport.querySelector('.carousel-item-clone')).not.toBeNull()
 
-      await flushFrames()
+      settleScroll()
 
       expect(carousel._viewport.querySelector('.carousel-item-clone')).toBeNull()
       expect(carousel._activeIndex).toEqual(2)
@@ -537,7 +600,7 @@ describe('Carousel', () => {
       expect(slidSpy.calls.mostRecent().args[0].direction).toEqual('right')
     })
 
-    it('should report mirrored loop directions in RTL', async () => {
+    it('should report mirrored loop directions in RTL', () => {
       fixtureEl.innerHTML = basicMarkup()
       document.documentElement.dir = 'rtl'
 
@@ -549,7 +612,7 @@ describe('Carousel', () => {
 
       carousel._activeIndex = 2
       carousel.next()
-      await flushFrames()
+      settleScroll()
 
       expect(slidSpy.calls.mostRecent().args[0].direction).toEqual('right')
     })
@@ -577,7 +640,7 @@ describe('Carousel', () => {
 
       carousel.to(1)
 
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should not move the active index from intersection churn while looping', () => {
@@ -604,7 +667,7 @@ describe('Carousel', () => {
       carousel.prev()
 
       expect(carousel._viewport.querySelector('.carousel-item-clone')).toBeNull()
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(200)
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(200)
     })
 
     it('should fall back to a plain wrap for centered layouts', () => {
@@ -616,7 +679,7 @@ describe('Carousel', () => {
       carousel.prev()
 
       expect(carousel._viewport.querySelector('.carousel-item-clone')).toBeNull()
-      expect(scrollBySpy).toHaveBeenCalled()
+      expect(animateScrollSpy).toHaveBeenCalled()
     })
 
     it('should fall back to a plain wrap with fewer than two slides', () => {
@@ -646,7 +709,7 @@ describe('Carousel', () => {
       carousel.prev()
 
       expect(carousel._viewport.querySelector('.carousel-item-clone')).toBeNull()
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(200)
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(200)
     })
 
     it('should fall back to a plain wrap when a peek is configured', () => {
@@ -850,7 +913,7 @@ describe('Carousel', () => {
       expect(fixtureEl.querySelector('#next').disabled).toBeFalse()
     })
 
-    it('should refresh the end controls once a programmatic scroll settles at the extent', async () => {
+    it('should refresh the end controls once a programmatic scroll settles at the extent', () => {
       fixtureEl.innerHTML = controlsMarkup({ slides: 6 })
 
       const carousel = new Carousel('#myCarousel', { ends: 'stop' })
@@ -862,7 +925,7 @@ describe('Carousel', () => {
       expect(fixtureEl.querySelector('#next').disabled).toBeFalse()
 
       carousel._scrollToIndex(1)
-      await flushFrames()
+      settleScroll()
 
       expect(fixtureEl.querySelector('#next').disabled).toBeTrue()
     })
@@ -931,7 +994,7 @@ describe('Carousel', () => {
       expect(carousel._activeIndex).toEqual(1)
     })
 
-    it('should sync the active slide and fire `slid` after settling when there is no observer', async () => {
+    it('should sync the active slide and fire `slid` after settling when there is no observer', () => {
       const original = window.IntersectionObserver
       window.IntersectionObserver = undefined
 
@@ -945,7 +1008,7 @@ describe('Carousel', () => {
         EventHandler.on(carouselEl, 'slid.bs.carousel', slidSpy)
 
         carousel.to(1)
-        await flushFrames()
+        settleScroll()
 
         expect(carousel._activeIndex).toEqual(1)
         expect(slidSpy).toHaveBeenCalled()
@@ -964,7 +1027,7 @@ describe('Carousel', () => {
 
       expect(fixtureEl.querySelector('#item2')).toHaveClass('active')
       expect(fixtureEl.querySelector('#item1')).not.toHaveClass('active')
-      expect(scrollBySpy).not.toHaveBeenCalled()
+      expect(animateScrollSpy).not.toHaveBeenCalled()
     })
 
     it('should not use the View Transition API for the fade', () => {
@@ -1307,7 +1370,7 @@ describe('Carousel', () => {
 
       expect(carousel._playing).toBeFalse()
       expect(carousel._interval).toBeNull()
-      expect(scrollBySpy).toHaveBeenCalled()
+      expect(animateScrollSpy).toHaveBeenCalled()
     })
 
     it('should go to the previous item with data-bs-slide="prev"', () => {
@@ -1326,7 +1389,7 @@ describe('Carousel', () => {
 
       fixtureEl.querySelector('#prev').click()
       // wraps to the last item (item2), one item-width (100) to the right
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(100)
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(100)
     })
 
     it('should go to a given index with data-bs-slide-to', () => {
@@ -1338,7 +1401,7 @@ describe('Carousel', () => {
       fixtureEl.querySelector('[data-bs-slide-to="2"]').click()
 
       // item3 is two item-widths (200) to the right — a full multi-slide jump
-      expect(scrollBySpy.calls.mostRecent().args[0].left).toEqual(200)
+      expect(animateScrollSpy.calls.mostRecent().args[0]).toEqual(200)
     })
 
     it('should toggle play/pause via the data-api', () => {

@@ -51,10 +51,14 @@ const CLASS_NAME_PLAYING = 'carousel-playing'
 // `--carousel-interval` used in the SCSS source becomes this at runtime.
 const PROPERTY_INTERVAL = '--bs-carousel-interval'
 
-// How many frames the scroll-settle watcher waits when no movement is ever
-// detected (clamped programmatic scroll, or `scrollBy` stubbed in tests) before
-// it gives up and restores snapping anyway.
-const SCROLL_SETTLE_MAX_FRAMES = 10
+// Duration (ms) of the JS-driven slide animation used for programmatic
+// navigation (prev/next, indicators, wrap, and loop). We step `scrollLeft`
+// ourselves over this window instead of calling `scrollBy({behavior:'smooth'})`,
+// because Safari mis-scales programmatic smooth scrolls under page zoom — a
+// one-slide jump sails well past the target (by the zoom factor) and the
+// restored snap then visibly yanks the slide back. Animating by hand is immune
+// to that and gives every jump a consistent duration.
+const SCROLL_DURATION = 300
 
 // How far below the most-visible slide a slide's IntersectionRatio can be while
 // still counting as the active (left-most) slide. After a programmatic scroll
@@ -101,6 +105,12 @@ const DefaultType = {
   pause: '(string|boolean)'
 }
 
+// Standard ease-in-out cubic, so the JS-driven scroll accelerates and
+// decelerates like a native smooth scroll rather than moving linearly.
+const easeInOutCubic = progress => (progress < 0.5 ?
+  4 * progress * progress * progress :
+  1 - ((((-2 * progress) + 2) ** 3) / 2))
+
 /**
  * Class definition
  */
@@ -122,7 +132,8 @@ class Carousel extends BaseComponent {
 
     this._interval = null
     this._observer = null
-    this._snapRestoreFrame = null
+    // rAF handle for the in-flight JS-driven scroll animation (see `_animateScroll`).
+    this._scrollFrame = null
     // True while a seamless loop transition is animating, so the
     // IntersectionObserver and re-entrant navigation don't interfere.
     this._looping = false
@@ -253,8 +264,8 @@ class Carousel extends BaseComponent {
       this._observer.disconnect()
     }
 
-    if (this._snapRestoreFrame !== null) {
-      cancelAnimationFrame(this._snapRestoreFrame)
+    if (this._scrollFrame !== null) {
+      cancelAnimationFrame(this._scrollFrame)
     }
 
     // Tidy up any in-flight loop transition: drop a stray clone and restore
@@ -410,23 +421,76 @@ class Carousel extends BaseComponent {
       return
     }
 
-    // `scroll-snap-stop: always` keeps user wheel/touch flings to a single slide,
-    // but it also clamps *programmatic* scrolls to one snap point — which would
-    // break multi-slide jumps from an indicator click, `to()`, or wrapping from
-    // the last slide back to the first. Disable snapping for the duration of the
-    // programmatic scroll, then restore it once the scroll settles so the slide
-    // still rests precisely (honouring peek/gap).
+    // `scroll-snap-stop: always` would clamp a programmatic scroll to a single
+    // snap point, breaking multi-slide jumps (an indicator click, `to()`, or
+    // wrapping from the last slide back to the first). Suspend snapping while we
+    // animate, then restore it once we arrive so the slide rests precisely on the
+    // snap point (honouring peek/gap).
     const targetLeft = this._viewport.scrollLeft + left
     this._viewport.style.scrollSnapType = 'none'
-    this._viewport.scrollBy({
-      left,
-      top: 0,
-      // `'instant'` (not `'auto'`) for reduced motion: the viewport sets
-      // `scroll-behavior: smooth` in CSS, and `'auto'` defers to it, so it would
-      // still animate. `'instant'` forces an immediate, motion-free jump.
-      behavior: this._prefersReducedMotion() ? 'instant' : 'smooth'
+    this._animateScroll(targetLeft, () => {
+      this._viewport.style.scrollSnapType = ''
+      // Without IntersectionObserver nothing else fires `slid`/updates the active
+      // slide after a programmatic scroll, so do it here. With the observer
+      // present this is a no-op (it already moved the active index to `index`).
+      if (!this._observer) {
+        this._setActive(index)
+      }
+
+      // The IntersectionObserver doesn't fire once the viewport has stopped, so
+      // refresh the end controls here to catch the final settle landing exactly
+      // on the scroll extent (e.g. disabling `next` at the last view).
+      this._updateEndControls()
     })
-    this._restoreSnapWhenSettled(targetLeft, index)
+  }
+
+  // Animate `this._viewport.scrollLeft` to `targetLeft` over `SCROLL_DURATION`,
+  // stepping the position ourselves each frame (the caller suspends snapping
+  // first and restores it in `onComplete`). This replaces
+  // `scrollBy({behavior:'smooth'})`, whose Safari page-zoom bug made programmatic
+  // jumps overshoot the target and snap back. Because we set every frame's
+  // absolute position with an instant scroll, the animation can't overshoot and
+  // every jump takes the same time, in every browser.
+  _animateScroll(targetLeft, onComplete) {
+    if (this._scrollFrame !== null) {
+      cancelAnimationFrame(this._scrollFrame)
+      this._scrollFrame = null
+    }
+
+    const startLeft = this._viewport.scrollLeft
+    const distance = targetLeft - startLeft
+
+    // Reduced motion (or no rAF, e.g. unit tests): jump straight to the target.
+    if (this._prefersReducedMotion() || typeof requestAnimationFrame === 'undefined') {
+      this._viewport.scrollTo({ left: targetLeft, behavior: 'instant' })
+      onComplete()
+      return
+    }
+
+    let startTime = null
+    const step = now => {
+      if (startTime === null) {
+        startTime = now
+      }
+
+      const progress = Math.min((now - startTime) / SCROLL_DURATION, 1)
+      // `'instant'` (not the default) because the viewport sets
+      // `scroll-behavior: smooth` in CSS; without it each step would itself
+      // animate and fight this loop.
+      this._viewport.scrollTo({ left: startLeft + (distance * easeInOutCubic(progress)), behavior: 'instant' })
+
+      if (progress < 1) {
+        this._scrollFrame = requestAnimationFrame(step)
+        return
+      }
+
+      // Land exactly on target, guarding against floating-point drift.
+      this._viewport.scrollTo({ left: targetLeft, behavior: 'instant' })
+      this._scrollFrame = null
+      onComplete()
+    }
+
+    this._scrollFrame = requestAnimationFrame(step)
   }
 
   // Horizontal distance to scroll the viewport so `element` rests where the
@@ -500,13 +564,7 @@ class Carousel extends BaseComponent {
       this._jumpScroll(this._scrollDelta(items[fromIndex]))
     }
 
-    this._viewport.scrollBy({
-      left: this._scrollDelta(clone),
-      top: 0,
-      behavior: 'smooth'
-    })
-
-    this._afterScrollSettles(() => {
+    this._animateScroll(this._viewport.scrollLeft + this._scrollDelta(clone), () => {
       // Teleport to the real destination without animation. JS runs to
       // completion before the browser paints, so removing the clone and the
       // compensating scroll land in a single frame (no visible flash).
@@ -543,89 +601,6 @@ class Carousel extends BaseComponent {
   _jumpScroll(delta) {
     this._viewport.style.scrollSnapType = 'none'
     this._viewport.scrollBy({ left: delta, top: 0, behavior: 'instant' })
-  }
-
-  // Re-enable scroll snapping once the viewport reaches `targetLeft` (or stops
-  // moving). Passing the target matters: restoring `mandatory` snapping re-snaps
-  // to the *nearest* snap point, so if we restored mid-animation the viewport
-  // could jump back to the slide we came from — most visible stepping to the
-  // first/last slide, where it looks like the control "doesn't work".
-  _restoreSnapWhenSettled(targetLeft, index) {
-    this._afterScrollSettles(() => {
-      this._viewport.style.scrollSnapType = ''
-      // Without IntersectionObserver nothing else fires `slid`/updates the active
-      // slide after a programmatic scroll, so do it here. With the observer
-      // present this is a no-op (it already moved the active index to `index`).
-      if (!this._observer && index !== undefined) {
-        this._setActive(index)
-      }
-
-      // The IntersectionObserver doesn't fire once the viewport has stopped, so
-      // refresh the end controls here to catch the final ~1px settle landing
-      // exactly on the scroll extent (e.g. disabling `next` at the last view).
-      this._updateEndControls()
-    }, targetLeft)
-  }
-
-  // Invoke `callback` once the viewport stops moving. We watch the scroll
-  // position across frames instead of relying on the `scrollend` event, which
-  // isn't available across our supported browsers yet.
-  //
-  // Crucially, we only start counting "stable" frames once the scroll has
-  // actually moved. A smooth `scrollBy` doesn't update `scrollLeft` for the first
-  // frame or two, so naively treating those initial unchanged frames as
-  // "settled" would re-enable `mandatory` snapping mid-animation — which cancels
-  // the in-flight programmatic scroll and lands on the wrong slide (most visible
-  // in multi-item layouts). If the scroll never moves (delta clamped at an end,
-  // or `scrollBy` stubbed out in unit tests), we fall back to a short frame cap.
-  //
-  // When `targetLeft` is known we also finish the moment we arrive there, so the
-  // snap is restored exactly on the destination snap point and can't re-snap the
-  // viewport backwards (the failure mode where stepping to the first/last slide
-  // appears to do nothing).
-  _afterScrollSettles(callback, targetLeft) {
-    if (typeof requestAnimationFrame === 'undefined') {
-      callback()
-      return
-    }
-
-    if (this._snapRestoreFrame !== null) {
-      cancelAnimationFrame(this._snapRestoreFrame)
-    }
-
-    const startLeft = this._viewport.scrollLeft
-    let lastLeft = startLeft
-    let stableFrames = 0
-    let waited = 0
-    let hasMoved = false
-
-    const tick = () => {
-      const currentLeft = this._viewport.scrollLeft
-      const reachedTarget = targetLeft !== undefined && Math.abs(currentLeft - targetLeft) <= 1
-
-      if (Math.abs(currentLeft - startLeft) > 1) {
-        hasMoved = true
-      }
-
-      // Only accrue stable frames after movement begins, so the pre-animation
-      // and ease-in frames don't prematurely count as settled.
-      if (hasMoved) {
-        stableFrames = Math.abs(currentLeft - lastLeft) < 1 ? stableFrames + 1 : 0
-      }
-
-      lastLeft = currentLeft
-      waited += 1
-
-      if (reachedTarget || (hasMoved && stableFrames >= 3) || (!hasMoved && waited >= SCROLL_SETTLE_MAX_FRAMES)) {
-        this._snapRestoreFrame = null
-        callback()
-        return
-      }
-
-      this._snapRestoreFrame = requestAnimationFrame(tick)
-    }
-
-    this._snapRestoreFrame = requestAnimationFrame(tick)
   }
 
   // Fade mode just swaps the active class; the CSS opacity transition on
