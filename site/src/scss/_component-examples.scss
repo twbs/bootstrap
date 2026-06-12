@@ -8,11 +8,12 @@
 @layer custom {
   .bd-code-snippet {
     --bd-example-padding: 1.25rem;
+    --bd-example-border-color: var(--bs-border-subtle);
     --bd-example-inner-radius: calc(var(--radius-5) - 1px);
 
     margin: 0;
     background-color: var(--bd-pre-bg);
-    border: 1px solid var(--bs-border-color);
+    border: 1px solid var(--bd-example-border-color);
     @include border-radius(var(--radius-5));
 
     .bd-example {
@@ -37,14 +38,14 @@
     padding-inline-start: var(--bd-example-padding);
     padding-inline-end: calc(var(--bd-example-padding) - .5em);
     background-color: var(--bs-bg-1);
-    border-bottom: 1px solid var(--bs-border-color);
+    border-bottom: 1px solid var(--bd-example-border-color);
 
     &:first-child {
       @include border-top-radius(calc(var(--radius-5) - 1px));
     }
 
     &:not(:first-child) {
-      border-top: 1px solid var(--bs-border-color);
+      border-top: 1px solid var(--bd-example-border-color);
     }
   }
 

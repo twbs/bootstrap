@@ -50,7 +50,7 @@ $root-tokens: defaults(
     // scss-docs-start root-border-var
     --border-width: #{$border-width},
     --border-style: #{$border-style},
-    --border-color: light-dark(color-mix(in oklch, var(--gray-100), var(--gray-200)), var(--gray-700)),
+    --border-color: light-dark(var(--gray-200), var(--gray-700)),
     --border-color-translucent: color-mix(in oklch, var(--fg-body) 15%, transparent),
     // scss-docs-end root-border-var
 

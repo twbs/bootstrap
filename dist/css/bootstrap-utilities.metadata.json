@@ -1018,7 +1018,8 @@
         "fg-4",
         "fg-bg",
         "fg-white",
-        "fg-black"
+        "fg-black",
+        "fg-reset"
       ]
     },
     "fg-emphasis": {

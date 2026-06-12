@@ -197,7 +197,7 @@ $theme-borders: (
   "bg": var(--bg-body),
   "body": light-dark(var(--gray-300), var(--gray-800)),
   "muted": light-dark(var(--gray-200), var(--gray-800)),
-  "subtle": light-dark(var(--gray-100), var(--gray-900)),
+  "subtle": light-dark(color-mix(in oklch, var(--gray-100), var(--gray-200)), var(--gray-900)),
   "emphasized": light-dark(var(--gray-400), var(--gray-600)),
   "white": var(--white),
   "black": var(--black),

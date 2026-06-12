@@ -96,7 +96,7 @@ const DefaultType = {
  */
 
 class Menu extends BaseComponent {
-  static _openInstances = (() => new Set())();
+  static _openInstances = new Set();
   constructor(element, config) {
     if (typeof computePosition === 'undefined') {
       throw new TypeError('Bootstrap\'s menus require Floating UI (https://floating-ui.com)');
