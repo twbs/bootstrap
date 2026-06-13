@@ -50,9 +50,9 @@ describe('Dialog', () => {
 
       const dialogEl = fixtureEl.querySelector('.dialog')
       const dialogBySelector = new Dialog('#testDialog')
-      const dialogByElement = new Dialog(dialogEl)
-
       expect(dialogBySelector._element).toEqual(dialogEl)
+
+      const dialogByElement = new Dialog(dialogEl)
       expect(dialogByElement._element).toEqual(dialogEl)
     })
   })

@@ -52,9 +52,9 @@ describe('OtpInput', () => {
 
       const otpEl = fixtureEl.querySelector('.otp')
       const otpBySelector = new OtpInput('.otp')
-      const otpByElement = new OtpInput(otpEl)
-
       expect(otpBySelector._element).toEqual(otpEl)
+
+      const otpByElement = new OtpInput(otpEl)
       expect(otpByElement._element).toEqual(otpEl)
     })
 

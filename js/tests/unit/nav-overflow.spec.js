@@ -43,12 +43,11 @@ describe('NavOverflow', () => {
 
       const navEl = fixtureEl.querySelector('[data-bs-toggle="nav-overflow"]')
       const navBySelector = new NavOverflow('[data-bs-toggle="nav-overflow"]')
-      const navByElement = new NavOverflow(navEl)
-
       expect(navBySelector._element).toEqual(navEl)
+
+      const navByElement = new NavOverflow(navEl)
       expect(navByElement._element).toEqual(navEl)
 
-      navBySelector.dispose()
       navByElement.dispose()
     })
 

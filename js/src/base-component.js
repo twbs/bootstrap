@@ -32,6 +32,13 @@ class BaseComponent extends Config {
     this._element = element
     this._config = this._getConfig(config)
 
+    // Dispose any existing instance bound to this element before registering the new one,
+    // so its event listeners and timers are cleaned up instead of leaking
+    const existingInstance = Data.get(this._element, this.constructor.DATA_KEY)
+    if (existingInstance) {
+      existingInstance.dispose()
+    }
+
     Data.set(this._element, this.constructor.DATA_KEY, this)
   }
 
@@ -47,7 +54,14 @@ class BaseComponent extends Config {
 
   // Private
   _queueCallback(callback, element, isAnimated = true) {
-    executeAfterTransition(callback, element, isAnimated)
+    executeAfterTransition(() => {
+      // Don't run the completion callback if the instance was disposed mid-transition
+      if (!this._element) {
+        return
+      }
+
+      callback()
+    }, element, isAnimated)
   }
 
   _getConfig(config) {
