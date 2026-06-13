@@ -187,6 +187,7 @@
     --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text-emphasis);
     --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);
     --#{$prefix}list-group-border-color: var(--#{$prefix}#{$state}-border-subtle);
+    --#{$prefix}list-group-action-color: var(--#{$prefix}list-group-color);
     --#{$prefix}list-group-action-hover-color: var(--#{$prefix}emphasis-color);
     --#{$prefix}list-group-action-hover-bg: var(--#{$prefix}#{$state}-border-subtle);
     --#{$prefix}list-group-action-active-color: var(--#{$prefix}emphasis-color);
