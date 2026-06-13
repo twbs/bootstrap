@@ -53,9 +53,9 @@ describe('Menu', () => {
 
       const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
       const menuBySelector = new Menu('[data-bs-toggle="menu"]')
-      const menuByElement = new Menu(btnMenu)
-
       expect(menuBySelector._element).toEqual(btnMenu)
+
+      const menuByElement = new Menu(btnMenu)
       expect(menuByElement._element).toEqual(btnMenu)
     })
 
