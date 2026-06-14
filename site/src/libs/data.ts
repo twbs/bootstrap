@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import yaml from 'js-yaml'
 import { z } from 'zod'
-import { zLanguageCode, zPxSizeOrEmpty, zVersionMajorMinor, zVersionSemver } from './validation'
+import { zPxSizeOrEmpty, zVersionMajorMinor, zVersionSemver } from './validation'
 import { capitalizeFirstLetter } from './utils'
 
 // An object containing all the data types and their associated schema. The key should match the name of the data file
@@ -19,12 +19,6 @@ const dataDefinitions = {
   colors: z
     .object({
       name: z.string()
-    })
-    .array(),
-  'core-team': z
-    .object({
-      name: z.string(),
-      user: z.string()
     })
     .array(),
   'docs-versions': z
@@ -50,20 +44,6 @@ const dataDefinitions = {
         .array()
     })
     .array(),
-  icons: z.object({
-    preferred: z
-      .object({
-        name: z.string(),
-        website: z.url()
-      })
-      .array(),
-    more: z
-      .object({
-        name: z.string(),
-        website: z.url()
-      })
-      .array()
-  }),
   plugins: z
     .object({
       description: z.string(),
@@ -103,15 +83,7 @@ const dataDefinitions = {
     .transform((val) => {
       // Add a `title` property to each theme color object being the capitalized version of the `name` property.
       return val.map((themeColor) => ({ ...themeColor, title: capitalizeFirstLetter(themeColor.name) }))
-    }),
-  translations: z
-    .object({
-      name: z.string(),
-      code: zLanguageCode,
-      description: z.string(),
-      url: z.url()
     })
-    .array()
 } satisfies Record<string, DataSchema>
 
 // Inferred types for individual data files. Exported so consumers can avoid
