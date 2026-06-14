@@ -235,6 +235,9 @@ $card-tokens: defaults(
   // Card groups
   //
 
+  // Card groups lay out their cards in a row using a container query, so wrap the
+  // group in a query container (e.g., the `.contains-inline` utility) for the row
+  // layout to take effect. Without a query container the cards remain stacked.
   .card-group {
     // The child selector allows nested `.card` within `.card-group`
     // to display properly.
@@ -242,7 +245,7 @@ $card-tokens: defaults(
       margin-bottom: var(--card-group-margin);
     }
 
-    @include media-breakpoint-up(sm) {
+    @include container-breakpoint-up(sm) {
       display: flex;
       flex-flow: row wrap;
       // The child selector allows nested `.card` within `.card-group`
@@ -251,9 +254,14 @@ $card-tokens: defaults(
         flex: 1 0 0;
         margin-bottom: 0;
 
+        // Borders now live on the inner segments (header, body, list, footer)
+        // and the card images use outlines, so adjacent cards would otherwise
+        // render a doubled-up border at each seam. Pull subsequent cards back by
+        // one border width so their leading edges overlap the previous card's
+        // trailing edge, collapsing the seam into a single line. Gap can't be
+        // negative, so this relies on a negative margin.
         + .card {
-          margin-inline-start: 0;
-          border-inline-start: 0;
+          margin-inline-start: calc(-1 * var(--card-border-width));
         }
 
         // Handle rounded corners
