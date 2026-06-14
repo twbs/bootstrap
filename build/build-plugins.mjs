@@ -6,6 +6,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+import { rm } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { babel } from '@rollup/plugin-babel'
@@ -17,6 +18,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const sourcePath = path.resolve(__dirname, '../js/src/').replace(/\\/g, '/')
+const distPath = path.resolve(__dirname, '../js/dist/').replace(/\\/g, '/')
 const jsFiles = await globby(`${sourcePath}/**/*.js`)
 
 // Array which holds the resolved plugins
@@ -62,6 +64,10 @@ const build = async plugin => {
 
     console.log('Building individual plugins...')
     console.time(timeLabel)
+
+    // Wipe the output directory first so plugins removed from `js/src`
+    // don't leave orphaned files behind in `js/dist`.
+    await rm(distPath, { recursive: true, force: true })
 
     await Promise.all(Object.values(resolvedPlugins).map(plugin => build(plugin)))
 
