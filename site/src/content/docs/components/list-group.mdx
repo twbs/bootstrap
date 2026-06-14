@@ -3,7 +3,7 @@ title: List group
 description: List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.
 toc: true
 css_layer: components
-css_media: viewport
+css_media: container
 ---
 
 import { getData } from '@libs/data'
@@ -114,17 +114,29 @@ These work great with custom content as well.
 
 ## Horizontal
 
-Add `.list-group-horizontal` to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant `.{sm|md|lg|xl|2xl}:list-group-horizontal` to make a list group horizontal starting at that breakpoint’s `min-width`. Currently **horizontal list groups cannot be combined with flush list groups.**
+Add `.list-group-horizontal` to change the layout of list group items from vertical to horizontal across all container sizes. Alternatively, choose a responsive variant `.{sm|md|lg|xl|2xl}:list-group-horizontal` to make a list group horizontal starting at that breakpoint’s width.
+
+The responsive variants use [container queries]([[docsref:/layout/breakpoints#container-queries]]), so wrap the list group in a query container—add the `.contains-inline` utility to a parent element—for them to take effect. Currently **horizontal list groups cannot be combined with flush list groups.**
 
 **ProTip:** Want equal-width list group items when horizontal? Add `.flex-fill` to each list group item.
 
 <Example
   class="vstack gap-3"
-  code={getData('breakpoints').map((breakpoint) => `<ul class="list-group ${breakpoint.abbr}list-group-horizontal">
+  code={getData('breakpoints').map((breakpoint) => `<div class="contains-inline">
+    <ul class="list-group ${breakpoint.abbr}list-group-horizontal">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+  </div>`)} />
+
+Drag the handle to resize the container below and watch the list group switch between vertical and horizontal layouts as the container—not the viewport—crosses the `md` breakpoint.
+
+<ResizableExample class="contains-inline" code={`<ul class="list-group md:list-group-horizontal">
     <li class="list-group-item">An item</li>
     <li class="list-group-item">A second item</li>
     <li class="list-group-item">A third item</li>
-  </ul>`)} />
+  </ul>`} />
 
 ## Variants
 
