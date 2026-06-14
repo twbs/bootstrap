@@ -11,8 +11,12 @@ const { layout } = Astro.props
 
 <script>
   import application from '../assets/application.js'
+  import initSearch from '../assets/search.js'
 
   application()
+  // Search ships on every page so visitors can search from anywhere (homepage included).
+  initSearch()
 </script>
 
-<DocsScripts />
+{/* StackBlitz "Open in" buttons only exist on docs pages, so load its SDK there only. */}
+{layout === 'docs' && <DocsScripts />}
