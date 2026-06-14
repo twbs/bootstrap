@@ -3,7 +3,7 @@ title: Cards
 description: Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
 toc: true
 css_layer: components
-css_media: viewport
+css_media: container
 ---
 
 import { getData } from '@libs/data'
@@ -425,13 +425,16 @@ Add `.card-translucent` to blur and saturate the background of a card. Header an
 
 ## Card layout
 
-In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. For the time being, **these layout options are not yet responsive**.
+In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards.
 
 ### Card groups
 
 Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use `display: flex;` to become attached with uniform dimensions starting at the `sm` breakpoint.
 
-<Example code={`<div class="card-group">
+This layout uses [container queries]([[docsref:/layout/breakpoints#container-queries]]), so wrap the card group in a query container—add the `.contains-inline` utility to a parent element—for the row layout to take effect. Without a query container, the cards remain stacked.
+
+<Example code={`<div class="contains-inline">
+    <div class="card-group">
     <div class="card">
       <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
       <div class="card-body">
@@ -455,12 +458,14 @@ Use card groups to render cards as a single, attached element with equal width a
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
         <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
       </div>
+    </div>
     </div>
   </div>`} />
 
 When using card groups with footers, their content will automatically line up.
 
-<Example code={`<div class="card-group">
+<Example code={`<div class="contains-inline">
+    <div class="card-group">
     <div class="card">
       <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
       <div class="card-body">
@@ -490,6 +495,7 @@ When using card groups with footers, their content will automatically line up.
       <div class="card-footer">
         <small class="fg-2">Last updated 3 mins ago</small>
       </div>
+    </div>
     </div>
   </div>`} />
 
