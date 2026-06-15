@@ -91,6 +91,13 @@ $card-tokens: defaults(
     &:not(:first-child, :last-child) {
       border-block-end-width: var(--card-border-width);
     }
+
+    // The footer draws a full border (including its top edge), so a body/list
+    // segment that precedes it must not also draw a bottom border or the seam
+    // doubles up.
+    &:has(+ .card-footer) {
+      border-block-end-width: 0;
+    }
   }
 
   .card-title,
