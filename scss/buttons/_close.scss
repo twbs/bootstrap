@@ -31,8 +31,8 @@ $btn-close-tokens: defaults(
     @include tokens($btn-close-tokens);
 
     box-sizing: content-box;
-    width: var(--btn-close-size);
-    height: var(--btn-close-size);
+    min-width: var(--btn-close-size);
+    min-height: var(--btn-close-size);
     padding: 0;
     color: var(--btn-close-color);
     background-color: currentcolor;
