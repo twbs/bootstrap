@@ -76,13 +76,13 @@ Similarly, you can use [flexbox utilities]([[docsref:/utilities/flex]]) and [Boo
 Using the alert JavaScript plugin, it’s possible to dismiss any alert inline. Here’s how:
 
 - Be sure you’ve loaded the alert plugin, or the compiled Bootstrap JavaScript.
-- Add a [close button]([[docsref:/components/close-button]]) and the `.alert-dismissible` class, which adds extra padding to the right of the alert and positions the close button.
+- Add a [close button]([[docsref:/components/close-button]]) and use flexbox utilities (e.g. `ms-auto`) to position it within the alert.
 - On the close button, add the `data-bs-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
 - To animate alerts when dismissing them, be sure to add the `.fade` and `.show` classes.
 
 You can see this in action with a live demo:
 
-<Example code={`<div class="alert theme-warning alert-dismissible fade show" role="alert">
+<Example code={`<div class="alert theme-warning fade show" role="alert">
     <p>Something’s wrong, check the fields below and try again.</p>
     <CloseButton dismiss="alert" class="ms-auto" />
   </div>`} />
