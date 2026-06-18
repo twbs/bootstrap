@@ -45,10 +45,10 @@ By default, `<textarea>`s with `.form-control` will be the same height as `<inpu
     <label for="floatingTextarea">Comments</label>
   </div>`} />
 
-To set a custom height on your `<textarea>`, do not use the `rows` attribute. Instead, set an explicit `height` (either inline or via custom CSS).
+To set a custom height on your `<textarea>`, do not use the `rows` attribute. Instead, override the `--bs-form-floating-height` CSS variable on the `.form-floating` wrapper (either inline or via custom CSS) so the label floats correctly at any height.
 
-<Example code={`<div class="form-floating">
-    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+<Example code={`<div class="form-floating" style="--bs-form-floating-height: 100px">
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
     <label for="floatingTextarea2">Comments</label>
   </div>`} />
 
@@ -78,8 +78,8 @@ Add the `disabled` boolean attribute on an input, a textarea or a select to give
     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextareaDisabled" disabled></textarea>
     <label for="floatingTextareaDisabled">Comments</label>
   </div>
-  <div class="form-floating">
-    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled>Disabled textarea with some text inside</textarea>
+  <div class="form-floating" style="--bs-form-floating-height: 100px">
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" disabled>Disabled textarea with some text inside</textarea>
     <label for="floatingTextarea2Disabled">Comments</label>
   </div>
   <div class="form-floating">

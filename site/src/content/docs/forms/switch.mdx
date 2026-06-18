@@ -41,11 +41,18 @@ Modify the appearance of switches by adding the `.theme-{color}` class to the `.
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example class="d-flex flex-column gap-3" code={`<div class="form-field">
+<Example class="vstack gap-2" code={`<div class="form-field">
     <div class="switch">
       <input type="checkbox" value="" id="switchDisabledLabel" role="switch" switch disabled>
     </div>
     <label for="switchDisabledLabel">Disabled switch</label>
+  </div>
+
+  <div class="form-field">
+    <div class="switch">
+      <input type="checkbox" value="" id="switchCheckedDisabledLabel" role="switch" switch disabled checked>
+    </div>
+    <label for="switchCheckedDisabledLabel">Disabled checked switch</label>
   </div>`} />
 
 ## Sizes

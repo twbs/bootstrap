@@ -204,7 +204,7 @@ $form-control-sizes: defaults(
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  [data-bs-theme="dark"] {
     select.form-control,
     .form-control-caret {
       background-image: var(--control-select-bg-dark);
