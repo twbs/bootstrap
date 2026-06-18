@@ -18,7 +18,7 @@ $range-tokens: defaults(
     --range-track-bg: var(--bg-3),
     --range-track-border-radius: 1rem,
     --range-track-box-shadow: var(--box-shadow-inset),
-    --range-fill-bg: var(--primary-base),
+    --range-track-fill-bg: var(--primary-base),
     --range-thumb-width: 1rem,
     --range-thumb-height: var(--range-thumb-width),
     --range-thumb-bg: var(--primary-base),
@@ -67,6 +67,7 @@ $range-tokens: defaults(
   .form-range {
     @include tokens($range-tokens);
 
+    position: relative;
     width: 100%;
     height: calc(var(--range-thumb-height) + (var(--focus-ring-width) * 2));
     padding: 0; // Need to reset padding
@@ -130,34 +131,27 @@ $range-tokens: defaults(
     }
   }
 
-  // Opt-in fill / progress track (requires the Range JS plugin to publish `--bs-range-value`).
-  // Override only `background-image` so the track's base color, radius, and shadow are preserved.
-  // WebKit and Firefox pseudo-element selectors cannot be combined—each needs its own ruleset.
+  // Opt-in fill, driven by the `--range-value` the Range plugin keeps in sync.
+  // WebKit and Firefox track pseudo-elements can't be combined—each needs its own ruleset.
   [data-bs-range] {
     &::-webkit-slider-runnable-track {
       background-image:
         linear-gradient(
           to right,
-          var(--range-fill-bg) var(--bs-range-value, 0%),
-          transparent var(--bs-range-value, 0%)
+          var(--range-track-fill-bg) var(--range-value, 0%),
+          transparent var(--range-value, 0%)
         );
     }
     &::-moz-range-track {
       background-image:
         linear-gradient(
           to right,
-          var(--range-fill-bg) var(--bs-range-value, 0%),
-          transparent var(--bs-range-value, 0%)
+          var(--range-track-fill-bg) var(--range-value, 0%),
+          transparent var(--range-value, 0%)
         );
     }
   }
 
-  // Positioning context for the value bubble and tick marks (added by the JS plugin)
-  .range-anchored {
-    position: relative;
-  }
-
-  // Floating value bubble; the plugin sets inline `left`/`top` in pixels
   .range-bubble {
     position: absolute;
     z-index: 2;
@@ -167,10 +161,9 @@ $range-tokens: defaults(
     color: var(--primary-contrast);
     white-space: nowrap;
     pointer-events: none;
-    // Siblings of the input don't inherit its `--range-fill-bg` token; fall back to the global default.
-    // The plugin also copies the input's resolved value here so custom fills propagate.
-    background-color: var(--range-fill-bg, var(--primary-base));
-    // Centre horizontally on the thumb and sit just above the track
+    // Siblings of the input don't inherit its fill token; the plugin copies the resolved value here,
+    // and this fallback keeps them visible before the plugin runs.
+    background-color: var(--range-track-fill-bg, var(--primary-base));
     transform: translate(-50%, calc(-100% - .25rem));
     @include border-radius(var(--radius-4));
 
@@ -186,7 +179,6 @@ $range-tokens: defaults(
     }
   }
 
-  // Tick marks generated from a linked <datalist>; the plugin sets the container geometry
   .range-ticks {
     position: absolute;
     pointer-events: none;
@@ -201,7 +193,7 @@ $range-tokens: defaults(
     transform: translateX(-50%);
 
     &.active {
-      background-color: var(--range-fill-bg, var(--primary-base));
+      background-color: var(--range-track-fill-bg, var(--primary-base));
     }
   }
 

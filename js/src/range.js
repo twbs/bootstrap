@@ -28,7 +28,6 @@ const EVENT_CHANGE = 'change'
 
 const SELECTOR_DATA_RANGE = '[data-bs-range]'
 
-const CLASS_NAME_ANCHORED = 'range-anchored'
 const CLASS_NAME_BUBBLE = 'range-bubble'
 const CLASS_NAME_TICKS = 'range-ticks'
 const CLASS_NAME_TICK = 'range-tick'
@@ -39,7 +38,7 @@ const CLASS_NAME_ACTIVE = 'active'
 // the SCSS tokens, so the plugin must read/write the prefixed names to interoperate)
 const PROPERTY_VALUE = '--bs-range-value'
 const PROPERTY_THUMB_WIDTH = '--bs-range-thumb-width'
-const PROPERTY_FILL_BG = '--bs-range-fill-bg'
+const PROPERTY_TRACK_FILL_BG = '--bs-range-track-fill-bg'
 
 const Default = {
   bubble: false, // Show a floating value bubble above the thumb
@@ -70,10 +69,6 @@ class Range extends BaseComponent {
     this._ticks = null
     this._updateHandler = () => this._update()
     this._resizeHandler = null
-
-    if (this._config.bubble || this._config.ticks) {
-      this._element.parentNode?.classList.add(CLASS_NAME_ANCHORED)
-    }
 
     if (this._config.bubble) {
       this._createBubble()
@@ -114,15 +109,8 @@ class Range extends BaseComponent {
       EventHandler.off(window, EVENT_RESIZE, this._resizeHandler)
     }
 
-    const parent = this._element.parentNode
-
     this._bubble?.remove()
     this._ticks?.remove()
-
-    // Drop the positioning class only if no other range decorations remain
-    if (parent && !SelectorEngine.findOne(`.${CLASS_NAME_BUBBLE}, .${CLASS_NAME_TICKS}`, parent)) {
-      parent.classList.remove(CLASS_NAME_ANCHORED)
-    }
 
     super.dispose()
   }
@@ -216,12 +204,12 @@ class Range extends BaseComponent {
   }
 
   // The bubble and ticks are siblings of the input, so they don't inherit the input's
-  // `--bs-range-fill-bg` token. Copy its resolved value over so themed fills propagate.
+  // track fill color. Copy its resolved value over so themed fills propagate.
   _inheritFillColor(element) {
-    const fill = getComputedStyle(this._element).getPropertyValue(PROPERTY_FILL_BG).trim()
+    const fill = getComputedStyle(this._element).getPropertyValue(PROPERTY_TRACK_FILL_BG).trim()
 
     if (fill) {
-      element.style.setProperty(PROPERTY_FILL_BG, fill)
+      element.style.setProperty(PROPERTY_TRACK_FILL_BG, fill)
     }
   }
 

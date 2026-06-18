@@ -99,7 +99,6 @@ describe('Range', () => {
       const bubble = fixtureEl.querySelector('.range-bubble')
       expect(bubble).not.toBeNull()
       expect(bubble.textContent).toEqual('50')
-      expect(rangeEl.parentNode).toHaveClass('range-anchored')
     })
 
     it('should update the bubble text on input', () => {
@@ -208,7 +207,6 @@ describe('Range', () => {
       fixtureEl.innerHTML = getRangeHtml('data-bs-bubble="true"')
 
       const rangeEl = fixtureEl.querySelector('.form-range')
-      const parent = rangeEl.parentNode
       const range = new Range(rangeEl)
 
       expect(Range.getInstance(rangeEl)).not.toBeNull()
@@ -218,7 +216,6 @@ describe('Range', () => {
 
       expect(Range.getInstance(rangeEl)).toBeNull()
       expect(fixtureEl.querySelector('.range-bubble')).toBeNull()
-      expect(parent).not.toHaveClass('range-anchored')
     })
   })
 
