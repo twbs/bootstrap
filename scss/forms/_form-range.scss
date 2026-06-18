@@ -18,6 +18,7 @@ $range-tokens: defaults(
     --range-track-bg: var(--bg-3),
     --range-track-border-radius: 1rem,
     --range-track-box-shadow: var(--box-shadow-inset),
+    --range-fill-bg: var(--primary-base),
     --range-thumb-width: 1rem,
     --range-thumb-height: var(--range-thumb-width),
     --range-thumb-bg: var(--primary-base),
@@ -127,5 +128,90 @@ $range-tokens: defaults(
         background-color: var(--range-thumb-disabled-bg);
       }
     }
+  }
+
+  // Opt-in fill / progress track (requires the Range JS plugin to publish `--bs-range-value`).
+  // Override only `background-image` so the track's base color, radius, and shadow are preserved.
+  // WebKit and Firefox pseudo-element selectors cannot be combined—each needs its own ruleset.
+  [data-bs-range] {
+    &::-webkit-slider-runnable-track {
+      background-image:
+        linear-gradient(
+          to right,
+          var(--range-fill-bg) var(--bs-range-value, 0%),
+          transparent var(--bs-range-value, 0%)
+        );
+    }
+    &::-moz-range-track {
+      background-image:
+        linear-gradient(
+          to right,
+          var(--range-fill-bg) var(--bs-range-value, 0%),
+          transparent var(--bs-range-value, 0%)
+        );
+    }
+  }
+
+  // Positioning context for the value bubble and tick marks (added by the JS plugin)
+  .range-anchored {
+    position: relative;
+  }
+
+  // Floating value bubble; the plugin sets inline `left`/`top` in pixels
+  .range-bubble {
+    position: absolute;
+    z-index: 2;
+    padding: .125rem .375rem;
+    font-size: var(--font-size-xs);
+    line-height: 1.2;
+    color: var(--primary-contrast);
+    white-space: nowrap;
+    pointer-events: none;
+    // Siblings of the input don't inherit its `--range-fill-bg` token; fall back to the global default.
+    // The plugin also copies the input's resolved value here so custom fills propagate.
+    background-color: var(--range-fill-bg, var(--primary-base));
+    // Centre horizontally on the thumb and sit just above the track
+    transform: translate(-50%, calc(-100% - .25rem));
+    @include border-radius(var(--radius-4));
+
+    &::after {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: .5rem;
+      height: .5rem;
+      content: "";
+      background-color: inherit;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  // Tick marks generated from a linked <datalist>; the plugin sets the container geometry
+  .range-ticks {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .range-tick {
+    position: absolute;
+    top: .25rem;
+    width: var(--border-width);
+    height: .375rem;
+    background-color: var(--border-color);
+    transform: translateX(-50%);
+
+    &.active {
+      background-color: var(--range-fill-bg, var(--primary-base));
+    }
+  }
+
+  .range-tick-label {
+    position: absolute;
+    top: .5rem;
+    left: 50%;
+    font-size: var(--font-size-xs);
+    color: var(--fg-1);
+    white-space: nowrap;
+    transform: translateX(-50%);
   }
 }
