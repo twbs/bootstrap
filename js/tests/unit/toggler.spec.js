@@ -24,9 +24,9 @@ describe('Toggler', () => {
 
       const togglerEl = fixtureEl.querySelector('[data-bs-toggle="toggler"]')
       const togglerBySelector = new Toggler('[data-bs-toggle="toggler"]')
-      const togglerByElement = new Toggler(togglerEl)
-
       expect(togglerBySelector._element).toEqual(togglerEl)
+
+      const togglerByElement = new Toggler(togglerEl)
       expect(togglerByElement._element).toEqual(togglerEl)
     })
   })
