@@ -61,14 +61,12 @@ Modify the appearance of checked checkboxes by adding the `.theme-{color}` class
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example code={`<div class="form-field">
+<Example class="vstack gap-2" code={`<div class="form-field">
     <input type="checkbox" id="checkDisabled" class="check" disabled />
     <label for="checkDisabled">Example new checkbox</label>
-  </div>`} />
+  </div>
 
-Applies to checked states, too.
-
-<Example code={`<div class="form-field">
+  <div class="form-field">
     <input type="checkbox" id="checkDisabledChecked" class="check" checked disabled />
     <label for="checkDisabledChecked">Example new checkbox</label>
   </div>`} />
