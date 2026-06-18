@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "config" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
@@ -136,12 +135,12 @@ $list-group-tokens: defaults(
   // Horizontal
   //
   // Change the layout of list group items from vertical (default) to horizontal.
+  // The responsive variants use container queries, so wrap the list group in a
+  // query container (e.g., the `.contains-inline` utility) for them to take effect.
 
-  @each $breakpoint in map.keys($breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      $prefix: breakpoint-prefix($breakpoint, $breakpoints);
-
-      .#{$prefix}list-group-horizontal {
+  @include loop-breakpoints-up() using ($breakpoint, $prefix) {
+    .#{$prefix}list-group-horizontal {
+      @include container-breakpoint-up($breakpoint) {
         flex-direction: row;
 
         > .list-group-item {

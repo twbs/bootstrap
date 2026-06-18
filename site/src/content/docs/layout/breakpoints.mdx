@@ -183,6 +183,10 @@ The following components use container queries:
 
 - **[Stepper]([[docsref:/components/stepper]])** — The `.stepper-overflow` wrapper uses `container-type: inline-size` to establish a containment context for the horizontally scrolling stepper pattern.
 
+- **[List group]([[docsref:/components/list-group]])** — The `.*:list-group-horizontal` classes use `@container` queries so the list group switches between vertical and horizontal layouts based on the width of its query container rather than the viewport.
+
+- **[Card]([[docsref:/components/card]])** — The `.card-group` layout uses an `@container` query to attach cards into equal-width columns based on the width of its query container rather than the viewport.
+
 Here’s how the navbar implements container queries:
 
 ```scss
