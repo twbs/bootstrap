@@ -53,7 +53,7 @@ $otp-sizes: defaults(
     height: 100%;
     padding: 0;
     color: transparent;
-    text-align: center;
+    pointer-events: none; // clicks go to the slots; JS focuses and positions the caret
     cursor: default;
     caret-color: transparent;
     background-color: transparent;
@@ -71,7 +71,6 @@ $otp-sizes: defaults(
   .otp-slots {
     display: inline-flex;
     gap: var(--otp-gap);
-    pointer-events: none; // let clicks fall through to the input overlay
   }
 
   .otp-slot {
@@ -84,6 +83,7 @@ $otp-sizes: defaults(
     font-weight: 500;
     line-height: 1;
     color: var(--otp-slot-fg);
+    user-select: none; // decorative cells; the real input handles selection
     background-color: var(--otp-slot-bg);
     border: var(--otp-slot-border-width) solid var(--otp-slot-border-color);
     @include border-radius(var(--otp-slot-border-radius));
