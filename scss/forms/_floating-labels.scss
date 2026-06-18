@@ -54,6 +54,11 @@ $form-floating-tokens: defaults(
       @include transition(var(--form-floating-transition));
     }
 
+    // Anchor the label to the top for textareas so it floats correctly at any height
+    > textarea ~ label {
+      align-items: flex-start;
+    }
+
     > .form-control,
     > .form-control-plaintext {
       height: var(--form-floating-height);
