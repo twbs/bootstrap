@@ -48,11 +48,15 @@ Modify the appearance of checked radios by adding the `.theme-{color}` class to 
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example code={`<div class="form-field">
+<Example class="vstack gap-2" code={`<div class="form-field">
     <input type="radio" id="radioDisabled" class="radio" disabled />
     <label for="radioDisabled">Example new radio</label>
   </div>
-  `} />
+
+  <div class="form-field">
+    <input type="radio" id="radioCheckedDisabled" class="radio" disabled checked />
+    <label for="radioCheckedDisabled">Example checked disabled radio</label>
+  </div>`} />
 
 ## Sizes
 

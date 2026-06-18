@@ -61,6 +61,9 @@ $radio-tokens: defaults(
         cursor: default;
       }
     }
+    &:disabled:checked {
+      opacity: var(--radio-disabled-opacity);
+    }
 
     &:focus-visible {
       @include focus-ring(true);
