@@ -16,6 +16,11 @@ $form-floating-tokens: defaults(
     --form-floating-input-padding-t: 1.625rem,
     --form-floating-input-padding-b: .625rem,
     --form-floating-label-height: 1.5em,
+    // Backgrounds for the textarea label's masking pseudo-element. Mirrors
+    // `.form-control` here because the label is a sibling of the control, so it
+    // can't inherit the control's own `--control-bg`/`--control-disabled-bg`.
+    --form-floating-label-bg: var(--btn-input-bg),
+    --form-floating-label-disabled-bg: var(--bg-2),
     --form-floating-label-opacity: .65,
     --form-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem),
     --form-floating-label-disabled-color: var(--fg-3),
@@ -104,12 +109,12 @@ $form-floating-tokens: defaults(
         z-index: -1;
         height: var(--form-floating-label-height);
         content: "";
-        background-color: var(--control-bg);
+        background-color: var(--form-floating-label-bg);
         @include border-radius(var(--btn-input-border-radius));
       }
     }
     > textarea:disabled ~ label::after {
-      background-color: var(--control-disabled-bg);
+      background-color: var(--form-floating-label-disabled-bg);
     }
 
     > .form-control-plaintext {
