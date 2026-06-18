@@ -433,7 +433,7 @@ Use card groups to render cards as a single, attached element with equal width a
 
 This layout uses [container queries]([[docsref:/layout/breakpoints#container-queries]]), so wrap the card group in a query container—add the `.contains-inline` utility to a parent element—for the row layout to take effect. Without a query container, the cards remain stacked.
 
-<Example code={`<div class="contains-inline">
+<ResizableExample code={`<div class="contains-inline">
     <div class="card-group">
     <div class="card">
       <Placeholder width="100%" height="180" class="card-img-top" text="Image cap" />
