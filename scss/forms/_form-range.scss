@@ -6,6 +6,7 @@
 @use "../mixins/gradients" as *;
 @use "../mixins/tokens" as *;
 
+// stylelint-disable custom-property-no-missing-var-function
 $range-tokens: () !default;
 
 // scss-docs-start range-tokens
@@ -18,6 +19,7 @@ $range-tokens: defaults(
     --range-track-bg: var(--bg-3),
     --range-track-border-radius: 1rem,
     --range-track-fill-bg: var(--primary-base),
+    --range-track-disabled-bg: color-mix(in oklch, var(--bg-4), var(--fg-3)),
     --range-thumb-width: 1rem,
     --range-thumb-height: var(--range-thumb-width),
     --range-thumb-bg: var(--primary-base),
@@ -36,6 +38,7 @@ $range-tokens: defaults(
   $range-tokens
 );
 // scss-docs-end range-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start range-mixins
 @mixin range-thumb() {
@@ -144,6 +147,14 @@ $range-tokens: defaults(
       &::-moz-range-thumb {
         background-color: var(--range-thumb-disabled-bg);
       }
+
+      &::-webkit-slider-runnable-track {
+        --range-track-fill-bg: var(--range-track-disabled-bg);
+      }
+
+      &::-moz-range-track {
+        --range-track-fill-bg: var(--range-track-disabled-bg);
+      }
     }
   }
 
@@ -165,30 +176,34 @@ $range-tokens: defaults(
     }
   }
 
-  // Tick marks generated from the linked <datalist>. Each tick gets `--range-tick` (0–1) and is
-  // placed along the track, inset by half the thumb so the ends line up with the thumb travel.
+  // Tick marks generated from the linked <datalist>. The plugin builds `grid-template-columns`
+  // from the gaps between values so each tick lands on a grid line (handles uneven values),
+  // inset by half the thumb so the ends line up with the thumb travel.
   .form-range-ticks {
-    position: relative;
-    height: var(--range-tick-height);
+    display: grid;
+    padding-inline: calc(var(--range-thumb-width) * .5);
     margin-top: .25rem;
   }
 
   .form-range-tick {
-    position: absolute;
-    left: calc((var(--range-thumb-width) * .5) + var(--range-tick, 0) * (100% - var(--range-thumb-width)));
-    width: var(--range-tick-width);
-    height: var(--range-tick-height);
-    background-color: var(--range-tick-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: start;
     transform: translateX(-50%);
+
+    &::before {
+      width: var(--range-tick-width);
+      height: var(--range-tick-height);
+      content: "";
+      background-color: var(--range-tick-bg);
+    }
   }
 
   .form-range-tick-label {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    font-size: var(--font-size-xs);
-    color: var(--fg-1);
+    margin-top: .125rem;
+    font-size: var(--font-size-sm);
+    color: var(--fg-2);
     white-space: nowrap;
-    transform: translateX(-50%);
   }
 }

@@ -36,7 +36,6 @@ const CLASS_NAME_TICK_LABEL = 'form-range-tick-label'
 // Shipped (`--bs-`-prefixed) custom properties; the build prefixes the SCSS tokens, so the
 // plugin must write the prefixed names to interoperate with the rendered CSS.
 const PROPERTY_FILL = '--bs-range-fill'
-const PROPERTY_TICK = '--bs-range-tick'
 
 const Default = {
   bubble: false, // Show a value bubble above the thumb
@@ -182,25 +181,38 @@ class Range extends BaseComponent {
     const min = this._min()
     const span = this._max() - min || 1
 
+    const points = []
+    for (const option of SelectorEngine.find('option', datalist)) {
+      const value = Number.parseFloat(option.value)
+
+      if (!Number.isNaN(value)) {
+        points.push({ ratio: (value - min) / span, label: option.label })
+      }
+    }
+
+    if (points.length === 0) {
+      return
+    }
+
+    points.sort((a, b) => a.ratio - b.ratio)
+
     this._ticks = document.createElement('div')
     this._ticks.className = CLASS_NAME_TICKS
     this._ticks.setAttribute('aria-hidden', 'true')
 
-    for (const option of SelectorEngine.find('option', datalist)) {
-      const value = Number.parseFloat(option.value)
+    // Columns are the gaps between 0, each tick, and 1, so every tick lands on a grid line
+    const stops = [0, ...points.map(point => point.ratio), 1]
+    this._ticks.style.gridTemplateColumns = stops.slice(1).map((stop, index) => `${stop - stops[index]}fr`).join(' ')
 
-      if (Number.isNaN(value)) {
-        continue
-      }
-
+    for (const [index, point] of points.entries()) {
       const tick = document.createElement('span')
       tick.className = CLASS_NAME_TICK
-      tick.style.setProperty(PROPERTY_TICK, `${(value - min) / span}`)
+      tick.style.gridColumnStart = `${index + 2}`
 
-      if (option.label) {
+      if (point.label) {
         const label = document.createElement('span')
         label.className = CLASS_NAME_TICK_LABEL
-        label.textContent = option.label
+        label.textContent = point.label
         tick.append(label)
       }
 

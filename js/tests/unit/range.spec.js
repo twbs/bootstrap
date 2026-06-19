@@ -185,16 +185,20 @@ describe('Range', () => {
       expect(ticks.length).toEqual(3)
     })
 
-    it('should set the --bs-range-tick ratio per tick (handles uneven values)', () => {
+    it('should place each tick on a grid line via grid-template-columns (handles uneven values)', () => {
       fixtureEl.innerHTML = getTicksHtml()
 
       const rangeEl = fixtureEl.querySelector('.form-range')
       new Range(rangeEl) // eslint-disable-line no-new
 
+      // datalist values 0/10/100 -> gaps between 0, .1, 1, and 1
+      const ticksEl = fixtureEl.querySelector('.form-range-ticks')
+      expect(ticksEl.style.gridTemplateColumns).toEqual('0fr 0.1fr 0.9fr 0fr')
+
       const ticks = fixtureEl.querySelectorAll('.form-range-tick')
-      expect(ticks[0].style.getPropertyValue('--bs-range-tick')).toEqual('0')
-      expect(ticks[1].style.getPropertyValue('--bs-range-tick')).toEqual('0.1')
-      expect(ticks[2].style.getPropertyValue('--bs-range-tick')).toEqual('1')
+      expect(ticks[0].style.gridColumnStart).toEqual('2')
+      expect(ticks[1].style.gridColumnStart).toEqual('3')
+      expect(ticks[2].style.gridColumnStart).toEqual('4')
     })
 
     it('should render labels from the option label only', () => {
