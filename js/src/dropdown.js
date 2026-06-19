@@ -420,6 +420,10 @@ class Dropdown extends BaseComponent {
 
     if (isUpOrDownEvent) {
       event.stopPropagation()
+      if (this.matches(SELECTOR_DATA_TOGGLE)) {
+        Dropdown.clearMenus(event)
+      }
+
       instance.show()
       instance._selectMenuItem(event)
       return

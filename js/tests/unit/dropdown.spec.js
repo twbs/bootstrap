@@ -1763,6 +1763,60 @@ describe('Dropdown', () => {
       })
     })
 
+    it('should close sibling submenus when opening nested dropdowns with keyboard navigation', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button id="menuDemo" class="btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Demo</button>',
+          '  <ul class="dropdown-menu">',
+          '    <li class="dropend">',
+          '      <a id="subMenuDemo1" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#">Submenu 1</a>',
+          '      <ul id="subMenuDemo1Menu" class="dropdown-menu"><li>Menu Item 1A</li></ul>',
+          '    </li>',
+          '    <li class="dropend">',
+          '      <a id="subMenuDemo2" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#">Submenu 2</a>',
+          '      <ul id="subMenuDemo2Menu" class="dropdown-menu"><li>Menu Item 2A</li></ul>',
+          '    </li>',
+          '    <li class="dropend">',
+          '      <a id="subMenuDemo3" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#">Submenu 3</a>',
+          '      <ul id="subMenuDemo3Menu" class="dropdown-menu"><li>Menu Item 3A</li></ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const menuDemo = fixtureEl.querySelector('#menuDemo')
+        const subMenuDemo2 = fixtureEl.querySelector('#subMenuDemo2')
+        const subMenuDemo2Menu = fixtureEl.querySelector('#subMenuDemo2Menu')
+        const subMenuDemo3 = fixtureEl.querySelector('#subMenuDemo3')
+        const subMenuDemo3Menu = fixtureEl.querySelector('#subMenuDemo3Menu')
+
+        subMenuDemo3.addEventListener('shown.bs.dropdown', () => {
+          setTimeout(() => {
+            subMenuDemo2.focus()
+
+            const keydownArrowDown = createEvent('keydown', { bubbles: true })
+            keydownArrowDown.key = 'ArrowDown'
+            subMenuDemo2.dispatchEvent(keydownArrowDown)
+
+            setTimeout(() => {
+              expect(subMenuDemo2).toHaveClass('show')
+              expect(subMenuDemo2Menu).toHaveClass('show')
+              expect(subMenuDemo3).not.toHaveClass('show')
+              expect(subMenuDemo3Menu).not.toHaveClass('show')
+              resolve()
+            })
+          })
+        })
+
+        menuDemo.addEventListener('shown.bs.dropdown', () => {
+          subMenuDemo3.click()
+        })
+
+        menuDemo.click()
+      })
+    })
+
     it('should open the dropdown and focus on the last item when using ArrowUp for the first time', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
