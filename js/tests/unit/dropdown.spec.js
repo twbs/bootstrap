@@ -1875,6 +1875,39 @@ describe('Dropdown', () => {
       })
     })
 
+    it('should not close the dropdown if the user clicks on a form label within dropdown-menu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu">',
+          '    <form>',
+          '      <label for="dropdown-input">Label</label>',
+          '      <input id="dropdown-input" type="text">',
+          '    </form>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const label = fixtureEl.querySelector('label')
+
+        triggerDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(triggerDropdown).toHaveClass('show')
+          label.dispatchEvent(createEvent('click', {
+            bubbles: true
+          }))
+
+          setTimeout(() => {
+            expect(triggerDropdown).toHaveClass('show')
+            resolve()
+          })
+        })
+
+        triggerDropdown.click()
+      })
+    })
+
     it('should close the dropdown if the user clicks on a text field that is not contained within dropdown-menu', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -1896,6 +1929,37 @@ describe('Dropdown', () => {
 
         triggerDropdown.addEventListener('shown.bs.dropdown', () => {
           input.dispatchEvent(createEvent('click', {
+            bubbles: true
+          }))
+        })
+
+        triggerDropdown.click()
+      })
+    })
+
+    it('should close the dropdown if the user clicks on a form label that is not contained within dropdown-menu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div class="dropdown">',
+          '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown">Dropdown</button>',
+          '  <div class="dropdown-menu"></div>',
+          '</div>',
+          '<form>',
+          '  <label for="outside-input">Label</label>',
+          '  <input id="outside-input" type="text">',
+          '</form>'
+        ].join('')
+
+        const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const label = fixtureEl.querySelector('label')
+
+        triggerDropdown.addEventListener('hidden.bs.dropdown', () => {
+          expect(triggerDropdown).not.toHaveClass('show')
+          resolve()
+        })
+
+        triggerDropdown.addEventListener('shown.bs.dropdown', () => {
+          label.dispatchEvent(createEvent('click', {
             bubbles: true
           }))
         })
