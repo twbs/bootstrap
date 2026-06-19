@@ -97,7 +97,7 @@ $nav-underline-tokens: defaults(
     gap: var(--nav-gap);
     padding-inline-start: 0;
     margin-bottom: 0;
-    list-style: none;
+    list-style-type: "";
   }
 
   .nav-item {

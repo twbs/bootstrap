@@ -71,7 +71,7 @@ $menu-tokens: defaults(
     font-size: var(--menu-font-size);
     color: var(--menu-color);
     text-align: start;
-    list-style: none;
+    list-style-type: "";
     background-color: var(--menu-bg);
     background-clip: padding-box;
     border: var(--menu-border-width, var(--border-width)) solid var(--menu-border-color, var(--border-color-translucent));

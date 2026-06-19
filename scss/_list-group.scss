@@ -39,7 +39,7 @@ $list-group-tokens: defaults(
     display: flex;
     flex-direction: column;
 
-    // No need to set list-style: none; since .list-group-item is block level
+    // No need to set list-style-type: ""; since .list-group-item is block level
     padding-inline-start: 0; // reset padding because ul and ol
     margin-bottom: 0;
     @include border-radius(var(--list-group-border-radius));
