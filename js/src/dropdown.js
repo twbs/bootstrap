@@ -376,8 +376,9 @@ class Dropdown extends BaseComponent {
         continue
       }
 
-      const isFormChild = event.target && typeof event.target.closest === 'function' &&
+      const closestForm = event.target && typeof event.target.closest === 'function' &&
         event.target.closest('form')
+      const isFormChild = closestForm && context._menu.contains(closestForm)
 
       // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
       if (context._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) ||

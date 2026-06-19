@@ -1968,6 +1968,38 @@ describe('Dropdown', () => {
       })
     })
 
+    it('should close the dropdown if the user clicks a menu item within an outer form', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<form>',
+          '  <div class="dropdown">',
+          '    <button class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">Dropdown</button>',
+          '    <div class="dropdown-menu">',
+          '      <button class="dropdown-item" type="button">Secondary item</button>',
+          '    </div>',
+          '  </div>',
+          '</form>'
+        ].join('')
+
+        const triggerDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
+        const item = fixtureEl.querySelector('.dropdown-item')
+
+        triggerDropdown.addEventListener('hidden.bs.dropdown', () => {
+          expect(triggerDropdown).not.toHaveClass('show')
+          resolve()
+        })
+
+        triggerDropdown.addEventListener('shown.bs.dropdown', () => {
+          expect(triggerDropdown).toHaveClass('show')
+          item.dispatchEvent(createEvent('click', {
+            bubbles: true
+          }))
+        })
+
+        triggerDropdown.click()
+      })
+    })
+
     it('should ignore keyboard events for <input>s and <textarea>s within dropdown-menu, except for escape key', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
