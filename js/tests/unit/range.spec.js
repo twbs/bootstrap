@@ -12,8 +12,12 @@ describe('Range', () => {
     clearFixture()
   })
 
-  const getRangeHtml = (attributes = '') => {
-    return `<div><input type="range" class="form-range" min="0" max="100" value="50" data-bs-range ${attributes}></div>`
+  const getRangeHtml = (wrapperAttributes = '', inputAttributes = '') => {
+    return `
+      <div class="form-range" ${wrapperAttributes}>
+        <input type="range" class="form-range-input" min="0" max="100" value="50" ${inputAttributes}>
+      </div>
+    `
   }
 
   describe('VERSION', () => {
@@ -32,7 +36,6 @@ describe('Range', () => {
     it('should return default config', () => {
       expect(Range.Default).toEqual(jasmine.any(Object))
       expect(Range.Default.bubble).toBeFalse()
-      expect(Range.Default.ticks).toBeFalse()
     })
   })
 
@@ -56,84 +59,119 @@ describe('Range', () => {
       expect(rangeByElement._element).toEqual(rangeEl)
     })
 
-    it('should set the --bs-range-value custom property on init', () => {
+    it('should find the range input inside the wrapper', () => {
+      fixtureEl.innerHTML = getRangeHtml()
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const inputEl = fixtureEl.querySelector('.form-range-input')
+      const range = new Range(rangeEl)
+
+      expect(range._input).toEqual(inputEl)
+    })
+
+    it('should set the --bs-range-fill custom property on init', () => {
       fixtureEl.innerHTML = getRangeHtml()
 
       const rangeEl = fixtureEl.querySelector('.form-range')
       new Range(rangeEl) // eslint-disable-line no-new
 
-      expect(rangeEl.style.getPropertyValue('--bs-range-value')).toEqual('50%')
+      expect(rangeEl.style.getPropertyValue('--bs-range-fill')).toEqual('0.5')
     })
 
-    it('should honor min/max when computing the percentage', () => {
-      fixtureEl.innerHTML = '<div><input type="range" class="form-range" min="0" max="200" value="50" data-bs-range></div>'
+    it('should honor min/max when computing the fill ratio', () => {
+      fixtureEl.innerHTML = `
+        <div class="form-range">
+          <input type="range" class="form-range-input" min="0" max="200" value="50">
+        </div>
+      `
 
       const rangeEl = fixtureEl.querySelector('.form-range')
       new Range(rangeEl) // eslint-disable-line no-new
 
-      expect(rangeEl.style.getPropertyValue('--bs-range-value')).toEqual('25%')
+      expect(rangeEl.style.getPropertyValue('--bs-range-fill')).toEqual('0.25')
+    })
+
+    it('should do nothing when there is no range input', () => {
+      fixtureEl.innerHTML = '<div class="form-range"></div>'
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const range = new Range(rangeEl)
+
+      expect(range._input).toBeNull()
     })
   })
 
   describe('update', () => {
-    it('should update the --bs-range-value custom property on input', () => {
+    it('should update the --bs-range-fill custom property on input', () => {
+      fixtureEl.innerHTML = getRangeHtml()
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      const inputEl = fixtureEl.querySelector('.form-range-input')
+      new Range(rangeEl) // eslint-disable-line no-new
+
+      inputEl.value = '75'
+      inputEl.dispatchEvent(createEvent('input'))
+
+      expect(rangeEl.style.getPropertyValue('--bs-range-fill')).toEqual('0.75')
+    })
+  })
+
+  describe('bubble', () => {
+    it('should create a tooltip-based value bubble when enabled', () => {
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble')
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      new Range(rangeEl) // eslint-disable-line no-new
+
+      const bubble = fixtureEl.querySelector('.form-range-bubble')
+      expect(bubble).not.toBeNull()
+      expect(bubble).toHaveClass('tooltip')
+      expect(bubble.querySelector('.tooltip-inner').textContent).toEqual('50')
+    })
+
+    it('should not create a bubble by default', () => {
       fixtureEl.innerHTML = getRangeHtml()
 
       const rangeEl = fixtureEl.querySelector('.form-range')
       new Range(rangeEl) // eslint-disable-line no-new
 
-      rangeEl.value = '75'
-      rangeEl.dispatchEvent(createEvent('input'))
-
-      expect(rangeEl.style.getPropertyValue('--bs-range-value')).toEqual('75%')
-    })
-  })
-
-  describe('bubble', () => {
-    it('should create a value bubble when enabled', () => {
-      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble="true"')
-
-      const rangeEl = fixtureEl.querySelector('.form-range')
-      new Range(rangeEl) // eslint-disable-line no-new
-
-      const bubble = fixtureEl.querySelector('.range-bubble')
-      expect(bubble).not.toBeNull()
-      expect(bubble.textContent).toEqual('50')
+      expect(fixtureEl.querySelector('.form-range-bubble')).toBeNull()
     })
 
     it('should update the bubble text on input', () => {
-      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble="true"')
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble')
 
       const rangeEl = fixtureEl.querySelector('.form-range')
+      const inputEl = fixtureEl.querySelector('.form-range-input')
       new Range(rangeEl) // eslint-disable-line no-new
 
-      rangeEl.value = '80'
-      rangeEl.dispatchEvent(createEvent('input'))
+      inputEl.value = '80'
+      inputEl.dispatchEvent(createEvent('input'))
 
-      expect(fixtureEl.querySelector('.range-bubble').textContent).toEqual('80')
+      expect(fixtureEl.querySelector('.tooltip-inner').textContent).toEqual('80')
     })
 
     it('should format the bubble text with a custom formatter', () => {
-      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble="true"')
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble')
 
       const rangeEl = fixtureEl.querySelector('.form-range')
       new Range(rangeEl, { formatter: value => `${value}%` }) // eslint-disable-line no-new
 
-      expect(fixtureEl.querySelector('.range-bubble').textContent).toEqual('50%')
+      expect(fixtureEl.querySelector('.tooltip-inner').textContent).toEqual('50%')
     })
   })
 
   describe('ticks', () => {
     const getTicksHtml = () => {
       return `
-        <div>
-          <input type="range" class="form-range" min="0" max="100" value="50" list="ticksList" data-bs-range data-bs-ticks="true">
-          <datalist id="ticksList">
-            <option value="0" label="Low"></option>
-            <option value="50"></option>
-            <option value="100" label="High"></option>
-          </datalist>
+        <div class="form-range">
+          <input type="range" class="form-range-input" min="0" max="100" value="50" list="ticksList">
         </div>
+        <datalist id="ticksList">
+          <option value="0" label="Low"></option>
+          <option value="10"></option>
+          <option value="100" label="High"></option>
+        </datalist>
       `
     }
 
@@ -143,43 +181,42 @@ describe('Range', () => {
       const rangeEl = fixtureEl.querySelector('.form-range')
       new Range(rangeEl) // eslint-disable-line no-new
 
-      const ticks = fixtureEl.querySelectorAll('.range-tick')
+      const ticks = fixtureEl.querySelectorAll('.form-range-tick')
       expect(ticks.length).toEqual(3)
-      expect(ticks[0].style.left).toEqual('0%')
-      expect(ticks[2].style.left).toEqual('100%')
     })
 
-    it('should render labels from the option label/value', () => {
+    it('should set the --bs-range-tick ratio per tick (handles uneven values)', () => {
       fixtureEl.innerHTML = getTicksHtml()
 
       const rangeEl = fixtureEl.querySelector('.form-range')
       new Range(rangeEl) // eslint-disable-line no-new
 
-      const labels = fixtureEl.querySelectorAll('.range-tick-label')
+      const ticks = fixtureEl.querySelectorAll('.form-range-tick')
+      expect(ticks[0].style.getPropertyValue('--bs-range-tick')).toEqual('0')
+      expect(ticks[1].style.getPropertyValue('--bs-range-tick')).toEqual('0.1')
+      expect(ticks[2].style.getPropertyValue('--bs-range-tick')).toEqual('1')
+    })
+
+    it('should render labels from the option label only', () => {
+      fixtureEl.innerHTML = getTicksHtml()
+
+      const rangeEl = fixtureEl.querySelector('.form-range')
+      new Range(rangeEl) // eslint-disable-line no-new
+
+      const labels = fixtureEl.querySelectorAll('.form-range-tick-label')
+      expect(labels.length).toEqual(2)
       expect(labels[0].textContent).toEqual('Low')
-      expect(labels[2].textContent).toEqual('High')
-    })
-
-    it('should mark ticks at or below the current value as active', () => {
-      fixtureEl.innerHTML = getTicksHtml()
-
-      const rangeEl = fixtureEl.querySelector('.form-range')
-      new Range(rangeEl) // eslint-disable-line no-new
-
-      const ticks = fixtureEl.querySelectorAll('.range-tick')
-      expect(ticks[0]).toHaveClass('active')
-      expect(ticks[1]).toHaveClass('active')
-      expect(ticks[2]).not.toHaveClass('active')
+      expect(labels[1].textContent).toEqual('High')
     })
 
     it('should do nothing when there is no linked datalist', () => {
-      fixtureEl.innerHTML = getRangeHtml('data-bs-ticks="true"')
+      fixtureEl.innerHTML = getRangeHtml()
 
       const rangeEl = fixtureEl.querySelector('.form-range')
       const range = new Range(rangeEl)
 
       expect(range._ticks).toBeNull()
-      expect(fixtureEl.querySelector('.range-ticks')).toBeNull()
+      expect(fixtureEl.querySelector('.form-range-ticks')).toBeNull()
     })
   })
 
@@ -189,33 +226,34 @@ describe('Range', () => {
         fixtureEl.innerHTML = getRangeHtml()
 
         const rangeEl = fixtureEl.querySelector('.form-range')
+        const inputEl = fixtureEl.querySelector('.form-range-input')
         new Range(rangeEl) // eslint-disable-line no-new
 
-        rangeEl.addEventListener('changed.bs.range', event => {
+        inputEl.addEventListener('changed.bs.range', event => {
           expect(event.value).toEqual(90)
           resolve()
         })
 
-        rangeEl.value = '90'
-        rangeEl.dispatchEvent(createEvent('input'))
+        inputEl.value = '90'
+        inputEl.dispatchEvent(createEvent('input'))
       })
     })
   })
 
   describe('dispose', () => {
     it('should dispose the instance and remove decorations', () => {
-      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble="true"')
+      fixtureEl.innerHTML = getRangeHtml('data-bs-bubble')
 
       const rangeEl = fixtureEl.querySelector('.form-range')
       const range = new Range(rangeEl)
 
       expect(Range.getInstance(rangeEl)).not.toBeNull()
-      expect(fixtureEl.querySelector('.range-bubble')).not.toBeNull()
+      expect(fixtureEl.querySelector('.form-range-bubble')).not.toBeNull()
 
       range.dispose()
 
       expect(Range.getInstance(rangeEl)).toBeNull()
-      expect(fixtureEl.querySelector('.range-bubble')).toBeNull()
+      expect(fixtureEl.querySelector('.form-range-bubble')).toBeNull()
     })
   })
 

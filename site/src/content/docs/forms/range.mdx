@@ -1,62 +1,68 @@
 ---
 title: Range
-description: Use our custom range inputs for consistent cross-browser styling and built-in customization.
+description: Use our custom range inputs for consistent cross-browser styling with a filled track, value bubble, and tick marks.
 toc: true
 css_layer: forms
+js: required
 mdn: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range
 ---
 
 ## Overview
 
-Create custom `<input type="range">` controls with `.form-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers.
+The native `<input type="range">` is hard to style and can’t show a filled track in a consistent, cross-browser way using CSS alone—only Firefox offers `::-moz-range-progress`, and CSS can’t read an input’s value. So our range is a small **JavaScript component**: wrap an `<input class="form-range-input">` in `.form-range` and the plugin keeps a `--bs-range-fill` custom property (0–1) in sync, which the CSS uses to draw the fill, the value bubble, and tick marks.
 
-Browsers don’t expose a consistent, CSS-only way to “fill” the track up to the thumb—only Firefox offers `::-moz-range-progress`, while WebKit and Blink have no equivalent and CSS can’t read an input’s value. So our optional Range JavaScript plugin publishes the current value as a `--bs-range-value` custom property that the track gradient consumes, giving you a cross-browser [fill](#fill), [value bubble](#value-bubble), and [tick marks](#tick-marks). Opt in per input with `data-bs-range`; plain `.form-range` inputs are unaffected.
+The `.form-range` wrapper owns the component’s tokens, so the input and any decorations inherit them. Every `.form-range` on the page is initialized automatically.
 
 <Example code={`<label for="range1" class="form-label">Example range</label>
-<input type="range" class="form-range" id="range1">`} />
+<div class="form-range">
+    <input type="range" class="form-range-input" id="range1">
+  </div>`} />
 
 ## Disabled
 
-Add the `disabled` boolean attribute on an input to give it a grayed out appearance, remove pointer events, and prevent focusing.
+Add the `disabled` boolean attribute on the input to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
 <Example code={`<label for="disabledRange" class="form-label">Disabled range</label>
-<input type="range" class="form-range" id="disabledRange" disabled>`} />
+<div class="form-range">
+    <input type="range" class="form-range-input" id="disabledRange" disabled>
+  </div>`} />
 
 ## Min and max
 
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
 <Example code={`<label for="range2" class="form-label">Example range</label>
-<input type="range" class="form-range" min="0" max="5" id="range2">`} />
+<div class="form-range">
+    <input type="range" class="form-range-input" min="0" max="5" id="range2">
+  </div>`} />
 
 ## Steps
 
 By default, range inputs “snap” to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
 
 <Example code={`<label for="range3" class="form-label">Example range</label>
-<input type="range" class="form-range" min="0" max="5" step="0.5" id="range3">`} />
-
-## Fill
-
-Add `data-bs-range` to color the track up to the thumb. The plugin keeps a `--bs-range-value` custom property in sync with the input as it changes, and the track gradient uses it to render the fill consistently across browsers. Customize the color with the `--bs-range-track-fill-bg` CSS variable.
-
-<Example code={`<label for="rangeFill" class="form-label">Volume</label>
-<input type="range" class="form-range" min="0" max="100" value="40" id="rangeFill" data-bs-range>`} />
+<div class="form-range">
+    <input type="range" class="form-range-input" min="0" max="5" step="0.5" id="range3">
+  </div>`} />
 
 ## Value bubble
 
-Add `data-bs-bubble="true"` to show a floating bubble with the current value that follows the thumb.
+Add `data-bs-bubble` to the wrapper to show a value bubble that follows the thumb. The bubble reuses our [tooltip](/docs/[[config:docs_version]]/components/tooltips/) styles.
 
 <Example code={`<label for="rangeBubble" class="form-label">Brightness</label>
-<input type="range" class="form-range" min="0" max="100" value="60" id="rangeBubble" data-bs-range data-bs-bubble="true">`} />
+<div class="form-range" data-bs-bubble>
+    <input type="range" class="form-range-input" min="0" max="100" value="60" id="rangeBubble">
+  </div>`} />
 
 ## Tick marks
 
-Add `data-bs-ticks="true"` and link a `<datalist>` with the `list` attribute to render tick marks. Each `<option>` becomes a tick positioned at its value, and an `option`’s `label` (or `value`) is shown beneath it.
+Link a `<datalist>` to the input with the `list` attribute and the plugin renders a tick mark for each `<option>`, positioned at its value (even when the values are unevenly spaced). An `<option>`’s `label` is shown beneath its tick.
 
 <Example code={`<label for="rangeTicks" class="form-label">Temperature</label>
-<input type="range" class="form-range" min="0" max="100" step="25" value="50" list="rangeTicksList" id="rangeTicks" data-bs-range data-bs-ticks="true">
-<datalist id="rangeTicksList">
+<div class="form-range">
+    <input type="range" class="form-range-input" min="0" max="100" step="25" value="50" list="rangeTicksList" id="rangeTicks">
+  </div>
+  <datalist id="rangeTicksList">
     <option value="0" label="Cold"></option>
     <option value="25"></option>
     <option value="50" label="Mild"></option>
@@ -66,62 +72,41 @@ Add `data-bs-ticks="true"` and link a `<datalist>` with the `list` attribute to 
 
 ## With form field
 
-Wrap a `.form-range` in a `.form-field` to pair it with a label and description.
+Wrap the `.form-range` in a `.form-field` to pair it with a label and description.
 
 <Example code={`<div class="form-field">
     <label for="rangeField" class="form-label">Volume</label>
-    <input type="range" class="form-range" id="rangeField">
+    <div class="form-range" data-bs-bubble>
+      <input type="range" class="form-range-input" id="rangeField">
+    </div>
     <small class="form-text">Adjust the volume level.</small>
   </div>`} />
 
-## Output value
-
-For a value indicator that follows the thumb, prefer the built-in [value bubble](#value-bubble). If you’d rather render the value elsewhere, you can show it with an `output` element and a bit of JavaScript.
-
-<Example code={`<label for="range4" class="form-label">Example range</label>
-  <input type="range" class="form-range" min="0" max="100" value="50" id="range4">
-  <output for="range4" id="rangeValue" aria-hidden="true"></output>
-
-  <script>
-    // This is an example script, please modify as needed
-    const rangeInput = document.getElementById('range4');
-    const rangeOutput = document.getElementById('rangeValue');
-
-    // Set initial value
-    rangeOutput.textContent = rangeInput.value;
-
-    rangeInput.addEventListener('input', function() {
-      rangeOutput.textContent = this.value;
-    });
-  </script>`} />
-
 ## Usage
 
-The fill, value bubble, and tick marks are powered by an optional JavaScript plugin. It’s entirely opt-in: only inputs with `data-bs-range` are enhanced, and a plain `.form-range` stays CSS-only.
+Every `.form-range` is initialized automatically on page load—the component is JavaScript-driven, so the fill won’t render without the plugin.
 
 ### Via data attributes
-
-Add `data-bs-range` to an `<input type="range">` to initialize it automatically, then enable the extras you want.
 
 <BsTable>
 | Attribute | Description |
 | --- | --- |
-| `data-bs-range` | Initializes the plugin on the input and enables the [fill](#fill). |
-| `data-bs-bubble="true"` | Shows a [value bubble](#value-bubble) that tracks the thumb. |
-| `data-bs-ticks="true"` | Renders [tick marks](#tick-marks) from the input’s linked `<datalist>`. |
+| `data-bs-bubble` | Add to the `.form-range` wrapper to show a [value bubble](#value-bubble). |
+| `list` (on the input) + `<datalist>` | Renders [tick marks](#tick-marks) from the datalist options. |
 </BsTable>
 
 ```html
-<input type="range" class="form-range" min="0" max="100" value="40" data-bs-range data-bs-bubble="true">
+<div class="form-range" data-bs-bubble>
+  <input type="range" class="form-range-input" min="0" max="100" value="40">
+</div>
 ```
 
 ### Via JavaScript
 
 ```js
-const input = document.querySelector('#myRange')
-const range = new bootstrap.Range(input, {
+const element = document.querySelector('.form-range')
+const range = new bootstrap.Range(element, {
   bubble: true,
-  ticks: true,
   formatter: value => `${value}%`
 })
 ```
@@ -131,8 +116,7 @@ const range = new bootstrap.Range(input, {
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `bubble` | boolean | `false` | Show a floating value bubble above the thumb. |
-| `ticks` | boolean | `false` | Render tick marks from the input’s linked `<datalist>`. Has no effect without a `list` attribute. |
+| `bubble` | boolean | `false` | Show a value bubble above the thumb. |
 | `formatter` | function | `null` | `(value) => string` used for the bubble and tick label text. |
 </BsTable>
 
@@ -141,9 +125,9 @@ const range = new bootstrap.Range(input, {
 <BsTable>
 | Method | Description |
 | --- | --- |
-| `update()` | Recompute `--bs-range-value` and reposition the bubble and ticks. Useful after setting the value programmatically. |
+| `update()` | Recompute the fill from the input’s current value. Useful after setting the value programmatically. |
 | `dispose()` | Destroys the instance and removes the bubble and tick marks it created. |
-| `getInstance()` | Static method to get the instance associated with an input. |
+| `getInstance()` | Static method to get the instance associated with a `.form-range` element. |
 | `getOrCreateInstance()` | Static method to get the instance, or create one if it doesn’t exist. |
 </BsTable>
 
@@ -152,11 +136,11 @@ const range = new bootstrap.Range(input, {
 <BsTable>
 | Event | Description |
 | --- | --- |
-| `changed.bs.range` | Fired when the value updates (on `input` and `change`). The event’s `value` property holds the current numeric value. |
+| `changed.bs.range` | Fired on the input when the value updates (on `input` and `change`). The event’s `value` property holds the current numeric value. |
 </BsTable>
 
 ```js
-const input = document.querySelector('#myRange')
+const input = document.querySelector('.form-range-input')
 
 input.addEventListener('changed.bs.range', event => {
   console.log('Value:', event.value)
@@ -173,6 +157,6 @@ input.addEventListener('changed.bs.range', event => {
 
 ### Sass mixins
 
-Two mixins are used to style the range input to generate vendor-specific styles for the range’s track and thumb elements. Please be aware that selectors for pseudo-elements in WebKit and Firefox browsers cannot be combined—each must be used in a separate CSS rule otherwise the styles will not apply.
+Two mixins generate the vendor-specific styles for the range’s track and thumb. Note that selectors for pseudo-elements in WebKit and Firefox cannot be combined—each must be used in a separate CSS rule otherwise the styles will not apply.
 
 <ScssDocs name="range-mixins" file="scss/forms/_form-range.scss" />

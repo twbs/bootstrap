@@ -259,6 +259,11 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `.form-select`—use `.form-control` on `<select>` elements now. Too much abstraction and duplication at the same time.
   - Adds new CSS variables on `.form-control` for easier customization without Sass compilation.
   - `.form-control` now has a `min-height` at all times as opposed to just on `<textarea>` elements. This reduces some CSS for us.
+- **Range is now a JavaScript component.** The native range can’t draw a filled track cross-browser in CSS alone, so `.form-range` is JS-driven.
+  - `.form-range` is now a **wrapper** element; the `<input type="range">` takes `.form-range-input` (previously `.form-range` went directly on the input). The wrapper owns the component’s tokens, so the input and decorations inherit them. Every `.form-range` is initialized automatically.
+  - Draws a filled track by default, plus an optional value bubble (`data-bs-bubble`, which reuses the tooltip styles) and tick marks generated from a linked `<datalist>`.
+  - The fill amount is exposed as `--bs-range-fill` (`0`–`1`), kept in sync by the plugin; the fill color token is `--range-track-fill-bg`.
+  - Validation classes (`.is-invalid` / `.is-valid`) now go on `.form-range-input`.
 - **Added new Combobox form component.** A searchable, filterable select with single and multi-select modes, built on top of the Menu component. See the [Combobox docs]([[docsref:/forms/combobox]]).
 - **New `.form-field` layout component.** Replaces `.checkgroup` and `.radiogroup` wrappers with a unified grid-based layout primitive for label + control + help text + validation feedback. Use `.form-field`, `.form-field-content`, and `.form-field-card` for structured form layouts, and `.form-group` for grouping related fields. See the [Field docs]([[docsref:/forms/field]]).
 - **Overhauled form validation.**
@@ -407,6 +412,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Chip and Chip Input** — new `.chip` component for tags/tokens and `.chip-input` for interactive chip entry. `Chips` JavaScript plugin with events: `add.bs.chips`, `remove.bs.chips`, `change.bs.chips`.
 - **OTP Input** — new `.otp` component for one-time password fields. Built on a single `<input>` rendered as separate digit slots for full accessibility. `OtpInput` JavaScript plugin with events: `input.bs.otpInput`, `complete.bs.otpInput` (both expose `event.value`).
 - **Password Strength** — `Strength` JavaScript plugin for password strength metering with `strengthChange.bs.strength` event.
+- **Range** — `Range` JavaScript plugin that turns `.form-range` into a styled slider with a filled track, optional value bubble, and `<datalist>` tick marks, with a `changed.bs.range` event.
 - **Toggler** — `Toggler` JavaScript plugin for toggling classes or attributes on elements via `data-bs-toggle="toggler"`.
 - **Datepicker** — `Datepicker` JavaScript plugin built on Vanilla Calendar Pro, with events: `change.bs.datepicker`, `show.bs.datepicker`, `hide.bs.datepicker`.
 - **Form Adorn** — new `.form-adorn` component for adding icons or text decoration to form inputs.

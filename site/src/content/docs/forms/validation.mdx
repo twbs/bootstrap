@@ -271,7 +271,7 @@ Validation styles are available for the following form controls and components:
 - `.check` checkboxes
 - `.radio` radios
 - `.switch` switches
-- `.form-range` range inputs
+- `.form-range-input` range inputs
 - `.form-floating` floating labels
 - `.form-adorn` adorned inputs
 - `.chip-input` chip inputs
@@ -345,7 +345,9 @@ Validation styles are available for the following form controls and components:
 
     <div class="form-field">
       <label for="validationRange" class="form-label">Range</label>
-      <input type="range" class="form-range is-invalid" id="validationRange" min="0" max="5" required aria-describedby="validationRangeFeedback">
+      <div class="form-range">
+        <input type="range" class="form-range-input is-invalid" id="validationRange" min="0" max="5" required aria-describedby="validationRangeFeedback">
+      </div>
       <div id="validationRangeFeedback" class="invalid-feedback">Example invalid range feedback</div>
     </div>
 

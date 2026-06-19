@@ -19,36 +19,32 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const EVENT_CHANGED = `changed${EVENT_KEY}`
-const EVENT_RESIZE = `resize${EVENT_KEY}`
 const EVENT_DOM_CONTENT_LOADED = `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`
 
 // `input` is not in EventHandler's native-event list, so it can't be namespaced; bind it raw
 const EVENT_INPUT = 'input'
 const EVENT_CHANGE = 'change'
 
-const SELECTOR_DATA_RANGE = '[data-bs-range]'
+const SELECTOR_RANGE = '.form-range'
+const SELECTOR_INPUT = '.form-range-input'
 
-const CLASS_NAME_BUBBLE = 'range-bubble'
-const CLASS_NAME_TICKS = 'range-ticks'
-const CLASS_NAME_TICK = 'range-tick'
-const CLASS_NAME_TICK_LABEL = 'range-tick-label'
-const CLASS_NAME_ACTIVE = 'active'
+const CLASS_NAME_BUBBLE = 'form-range-bubble'
+const CLASS_NAME_TICKS = 'form-range-ticks'
+const CLASS_NAME_TICK = 'form-range-tick'
+const CLASS_NAME_TICK_LABEL = 'form-range-tick-label'
 
-// Shipped (`--bs-`-prefixed) custom properties the SCSS exposes (the build prefixes
-// the SCSS tokens, so the plugin must read/write the prefixed names to interoperate)
-const PROPERTY_VALUE = '--bs-range-value'
-const PROPERTY_THUMB_WIDTH = '--bs-range-thumb-width'
-const PROPERTY_TRACK_FILL_BG = '--bs-range-track-fill-bg'
+// Shipped (`--bs-`-prefixed) custom properties; the build prefixes the SCSS tokens, so the
+// plugin must write the prefixed names to interoperate with the rendered CSS.
+const PROPERTY_FILL = '--bs-range-fill'
+const PROPERTY_TICK = '--bs-range-tick'
 
 const Default = {
-  bubble: false, // Show a floating value bubble above the thumb
-  ticks: false, // Render tick marks from the input's linked <datalist>
-  formatter: null // (value) => string, for bubble + tick label text
+  bubble: false, // Show a value bubble above the thumb
+  formatter: null // (value) => string, for the bubble and tick labels
 }
 
 const DefaultType = {
   bubble: '(boolean|null)',
-  ticks: '(boolean|null)',
   formatter: '(function|null)'
 }
 
@@ -65,19 +61,22 @@ class Range extends BaseComponent {
       return
     }
 
+    this._input = SelectorEngine.findOne(SELECTOR_INPUT, this._element)
+
+    if (!this._input) {
+      return
+    }
+
     this._bubble = null
+    this._bubbleText = null
     this._ticks = null
     this._updateHandler = () => this._update()
-    this._resizeHandler = null
 
     if (this._config.bubble) {
       this._createBubble()
     }
 
-    if (this._config.ticks) {
-      this._createTicks()
-    }
-
+    this._createTicks()
     this._addEventListeners()
     this._update()
   }
@@ -101,13 +100,8 @@ class Range extends BaseComponent {
   }
 
   dispose() {
-    // These are bound with raw (non-namespaced) types, so remove them explicitly
-    EventHandler.off(this._element, EVENT_INPUT, this._updateHandler)
-    EventHandler.off(this._element, EVENT_CHANGE, this._updateHandler)
-
-    if (this._resizeHandler) {
-      EventHandler.off(window, EVENT_RESIZE, this._resizeHandler)
-    }
+    EventHandler.off(this._input, EVENT_INPUT, this._updateHandler)
+    EventHandler.off(this._input, EVENT_CHANGE, this._updateHandler)
 
     this._bubble?.remove()
     this._ticks?.remove()
@@ -117,36 +111,29 @@ class Range extends BaseComponent {
 
   // Private
   _configAfterMerge(config) {
-    // A bare `data-bs-bubble` / `data-bs-ticks` attribute normalizes to `null`; treat it as enabled
-    for (const key of ['bubble', 'ticks']) {
-      if (config[key] === null) {
-        config[key] = true
-      }
+    // A bare `data-bs-bubble` attribute normalizes to `null`; treat it as enabled
+    if (config.bubble === null) {
+      config.bubble = true
     }
 
     return config
   }
 
   _addEventListeners() {
-    EventHandler.on(this._element, EVENT_INPUT, this._updateHandler)
-    EventHandler.on(this._element, EVENT_CHANGE, this._updateHandler)
-
-    if (this._bubble || this._ticks) {
-      this._resizeHandler = () => this._reposition()
-      EventHandler.on(window, EVENT_RESIZE, this._resizeHandler)
-    }
+    EventHandler.on(this._input, EVENT_INPUT, this._updateHandler)
+    EventHandler.on(this._input, EVENT_CHANGE, this._updateHandler)
   }
 
   _min() {
-    return this._element.min === '' ? 0 : Number.parseFloat(this._element.min)
+    return this._input.min === '' ? 0 : Number.parseFloat(this._input.min)
   }
 
   _max() {
-    return this._element.max === '' ? 100 : Number.parseFloat(this._element.max)
+    return this._input.max === '' ? 100 : Number.parseFloat(this._input.max)
   }
 
   _value() {
-    return Number.parseFloat(this._element.value)
+    return Number.parseFloat(this._input.value)
   }
 
   _ratio() {
@@ -155,74 +142,37 @@ class Range extends BaseComponent {
   }
 
   _update() {
-    this._element.style.setProperty(PROPERTY_VALUE, `${this._ratio() * 100}%`)
-    this._reposition()
+    // The fill ratio drives the track gradient and the bubble/tick positions, all in CSS
+    this._element.style.setProperty(PROPERTY_FILL, `${this._ratio()}`)
 
-    EventHandler.trigger(this._element, EVENT_CHANGED, { value: this._value() })
-  }
-
-  _reposition() {
-    if (!this._bubble && !this._ticks) {
-      return
+    if (this._bubbleText) {
+      this._bubbleText.textContent = this._format(this._value())
     }
 
-    const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = this._element
-    const ratio = this._ratio()
-
-    if (this._bubble) {
-      this._bubble.textContent = this._format(this._value())
-      // Nudge by the thumb width so the bubble tracks the thumb centre, not just the track percentage
-      const x = offsetLeft + (ratio * offsetWidth) + ((0.5 - ratio) * this._thumbWidth())
-      this._bubble.style.left = `${x}px`
-      this._bubble.style.top = `${offsetTop}px`
-    }
-
-    if (this._ticks) {
-      this._ticks.style.left = `${offsetLeft}px`
-      this._ticks.style.top = `${offsetTop + offsetHeight}px`
-      this._ticks.style.width = `${offsetWidth}px`
-
-      const value = this._value()
-      for (const tick of SelectorEngine.find(`.${CLASS_NAME_TICK}`, this._ticks)) {
-        tick.classList.toggle(CLASS_NAME_ACTIVE, Number.parseFloat(tick.dataset.bsValue) <= value)
-      }
-    }
+    EventHandler.trigger(this._input, EVENT_CHANGED, { value: this._value() })
   }
 
   _format(value) {
     return typeof this._config.formatter === 'function' ? this._config.formatter(value) : String(value)
   }
 
-  _thumbWidth() {
-    const raw = getComputedStyle(this._element).getPropertyValue(PROPERTY_THUMB_WIDTH).trim()
-
-    if (raw.endsWith('rem')) {
-      return Number.parseFloat(raw) * Number.parseFloat(getComputedStyle(document.documentElement).fontSize)
-    }
-
-    return Number.parseFloat(raw) || 16
-  }
-
-  // The bubble and ticks are siblings of the input, so they don't inherit the input's
-  // track fill color. Copy its resolved value over so themed fills propagate.
-  _inheritFillColor(element) {
-    const fill = getComputedStyle(this._element).getPropertyValue(PROPERTY_TRACK_FILL_BG).trim()
-
-    if (fill) {
-      element.style.setProperty(PROPERTY_TRACK_FILL_BG, fill)
-    }
-  }
-
   _createBubble() {
-    this._bubble = document.createElement('span')
-    this._bubble.className = CLASS_NAME_BUBBLE
+    // Reuse the tooltip markup so we don't duplicate the pill and arrow styles
+    this._bubble = document.createElement('output')
+    this._bubble.className = `${CLASS_NAME_BUBBLE} tooltip bs-tooltip-top show`
     this._bubble.setAttribute('aria-hidden', 'true')
-    this._inheritFillColor(this._bubble)
-    this._element.insertAdjacentElement('afterend', this._bubble)
+
+    const arrow = document.createElement('span')
+    arrow.className = 'tooltip-arrow'
+    this._bubbleText = document.createElement('span')
+    this._bubbleText.className = 'tooltip-inner'
+    this._bubble.append(arrow, this._bubbleText)
+
+    this._input.insertAdjacentElement('afterend', this._bubble)
   }
 
   _createTicks() {
-    const listId = this._element.getAttribute('list')
+    const listId = this._input.getAttribute('list')
     const datalist = listId ? document.getElementById(listId) : null
 
     if (!datalist) {
@@ -235,7 +185,6 @@ class Range extends BaseComponent {
     this._ticks = document.createElement('div')
     this._ticks.className = CLASS_NAME_TICKS
     this._ticks.setAttribute('aria-hidden', 'true')
-    this._inheritFillColor(this._ticks)
 
     for (const option of SelectorEngine.find('option', datalist)) {
       const value = Number.parseFloat(option.value)
@@ -246,21 +195,19 @@ class Range extends BaseComponent {
 
       const tick = document.createElement('span')
       tick.className = CLASS_NAME_TICK
-      tick.dataset.bsValue = value
-      tick.style.left = `${((value - min) / span) * 100}%`
+      tick.style.setProperty(PROPERTY_TICK, `${(value - min) / span}`)
 
-      const labelText = option.label || option.value
-      if (labelText) {
+      if (option.label) {
         const label = document.createElement('span')
         label.className = CLASS_NAME_TICK_LABEL
-        label.textContent = labelText
+        label.textContent = option.label
         tick.append(label)
       }
 
       this._ticks.append(tick)
     }
 
-    this._element.insertAdjacentElement('afterend', this._ticks)
+    this._element.append(this._ticks)
   }
 }
 
@@ -269,7 +216,7 @@ class Range extends BaseComponent {
  */
 
 EventHandler.on(document, EVENT_DOM_CONTENT_LOADED, () => {
-  for (const element of SelectorEngine.find(SELECTOR_DATA_RANGE)) {
+  for (const element of SelectorEngine.find(SELECTOR_RANGE)) {
     Range.getOrCreateInstance(element)
   }
 })
