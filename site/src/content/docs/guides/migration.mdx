@@ -176,8 +176,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Events: `show.bs.modal` &rarr; `show.bs.dialog`, `shown.bs.modal` &rarr; `shown.bs.dialog`, `hide.bs.modal` &rarr; `hide.bs.dialog`, `hidden.bs.modal` &rarr; `hidden.bs.dialog`, `hidePrevented.bs.modal` &rarr; `hidePrevented.bs.dialog`.
   - Data key: `bs.modal` &rarr; `bs.dialog` (affects `Dialog.getInstance()` and `Dialog.getOrCreateInstance()`).
   - CSS variables: `--modal-*` &rarr; `--dialog-*`.
-  - Backdrop: The `.modal-backdrop` DOM element is gone — Dialog uses the native `::backdrop` pseudo-element with `backdrop-filter: blur()` support.
-  - Body scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the `<html>` element.
+  - Backdrop: The `.modal-backdrop` DOM element and the legacy `util/backdrop` helper are gone — Dialog uses the native `::backdrop` pseudo-element with `backdrop-filter: blur()` support.
+  - Body scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the `<body>` element.
   - New variant classes: `.dialog-slide-up`, `.dialog-slide-down` (slide animations), `.dialog-instant` (no animation), `.dialog-static` (static backdrop bounce), `.dialog-nonmodal` (non-modal positioning), `.dialog-scrollable`.
   - Non-modal support: Set `modal: false` or `data-bs-modal="false"` for non-modal dialogs.
   - Dialog swapping: Triggers inside an open dialog can open a new dialog and close the current one automatically.
