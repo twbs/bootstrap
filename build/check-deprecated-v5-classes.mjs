@@ -19,6 +19,7 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const ROOT = resolve(__dirname, '..')
+const onlyUsed = process.argv.includes('--only-used')
 
 // ─── Step 1: Compile CSS ──────────────────────────────────────────────────────
 
@@ -210,10 +211,17 @@ push(`  Files scanned .................. ${fileCount}`)
 push('')
 
 // Full list of deprecated classes (mark which ones are in use)
-push('ALL DEPRECATED CLASSES  [USED = found in this codebase]', HR)
-for (const cls of deprecatedClasses) {
-  const used = findings.has(cls)
-  push(`  ${used ? '[USED] ' : '       '}.${cls}`)
+if (onlyUsed) {
+  push('USED DEPRECATED CLASSES  [only classes still found in this codebase]', HR)
+  for (const [cls, usages] of [...findings.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+    push(`  .${cls}  (${usages.length} occurrence${usages.length === 1 ? '' : 's'})`)
+  }
+} else {
+  push('ALL DEPRECATED CLASSES  [USED = found in this codebase]', HR)
+  for (const cls of deprecatedClasses) {
+    const used = findings.has(cls)
+    push(`  ${used ? '[USED] ' : '       '}.${cls}`)
+  }
 }
 
 push('')
