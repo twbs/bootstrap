@@ -150,6 +150,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed jQuery support and the `js-test-jquery` test target.
 - **Replaced the Dropdown component with Menu.** All `.dropdown-*` classes are now `.menu-*` classes, and `data-bs-toggle="dropdown"` is now `data-bs-toggle="menu"`. See the [Menu docs]([[docsref:/components/menus]]) for full details.
   - Renamed CSS classes: `.dropdown-menu` to `.menu`, `.dropdown-item` to `.menu-item`, `.dropdown-divider` to `.menu-divider`, `.dropdown-header` to `.menu-header`, `.dropdown-submenu` to `.submenu`.
+  - Deprecated directional wrappers: `.dropstart`, `.dropend`, and `.dropup`. Use `data-bs-placement` to control direction instead (for example, `.dropup` becomes `data-bs-placement="top"`).
   - Removed the `.dropdown-toggle` class — menu toggles no longer require a toggle class.
   - Removed the `.dropdown` wrapper — no wrapper element is required. The toggle and `.menu` are direct siblings.
   - Simplified markup from `<ul><li><a class="dropdown-item">` to a flat `<div class="menu"><a class="menu-item">` structure.
