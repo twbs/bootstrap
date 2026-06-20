@@ -81,6 +81,33 @@ describe('SelectorEngine', () => {
     })
   })
 
+  describe('closest', () => {
+    it('should return the element itself when it matches the selector', () => {
+      fixtureEl.innerHTML = '<div id="test"><div id="element"></div></div>'
+
+      const element = fixtureEl.querySelector('#element')
+
+      expect(SelectorEngine.closest(element, '#element')).toEqual(element)
+    })
+
+    it('should return the closest ancestor matching the selector', () => {
+      fixtureEl.innerHTML = '<div id="test"><div><div id="element"></div></div></div>'
+
+      const element = fixtureEl.querySelector('#element')
+      const ancestor = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.closest(element, '#test')).toEqual(ancestor)
+    })
+
+    it('should return null when no ancestor matches the selector', () => {
+      fixtureEl.innerHTML = '<div><div id="element"></div></div>'
+
+      const element = fixtureEl.querySelector('#element')
+
+      expect(SelectorEngine.closest(element, '.missing')).toBeNull()
+    })
+  })
+
   describe('prev', () => {
     it('should return previous element', () => {
       fixtureEl.innerHTML = '<div class="test"></div><button class="btn"></button>'
