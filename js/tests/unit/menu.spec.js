@@ -3014,6 +3014,46 @@ describe('Menu', () => {
       })
     })
 
+    it('should keep the submenu transparent until it is positioned, then reveal it', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <ul class="menu">',
+          '    <li class="submenu">',
+          '      <button class="menu-item" type="button">More options</button>',
+          '      <ul class="menu" id="submenu">',
+          '        <li><a class="menu-item" href="#">Sub 1</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const submenuTrigger = fixtureEl.querySelector('.submenu > .menu-item')
+        const submenuWrapper = fixtureEl.querySelector('.submenu')
+        const submenu = fixtureEl.querySelector('#submenu')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          menu._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+
+          // Pinned transparent synchronously so it never paints at the fallback position
+          expect(submenu.style.opacity).toEqual('0')
+
+          // Revealed once Floating UI has applied the first position
+          setTimeout(() => {
+            expect(submenu.style.opacity).toEqual('')
+            expect(submenu.style.left).not.toEqual('')
+            resolve()
+          }, 50)
+        })
+
+        menu.show()
+      })
+    })
+
     it('should close all submenus when hiding menu', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -4069,6 +4109,46 @@ describe('Menu', () => {
       const menuEl = fixtureEl.querySelector('.menu')
       const menu = new Menu(btnMenu)
 
+      expect(menu._menu).toEqual(menuEl)
+    })
+
+    it('should resolve the wrapper and menu when the toggle is not a direct child of the wrapper', () => {
+      fixtureEl.innerHTML = [
+        '<div class="wrapper">',
+        '  <span>',
+        '    <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '  </span>',
+        '  <div class="menu">',
+        '    <a class="menu-item" href="#">Item</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const wrapperEl = fixtureEl.querySelector('.wrapper')
+      const menuEl = fixtureEl.querySelector('.menu')
+      const menu = new Menu(btnMenu)
+
+      expect(menu._parent).toEqual(wrapperEl)
+      expect(menu._menu).toEqual(menuEl)
+    })
+
+    it('should fall back to the direct parent when no ancestor contains a menu', () => {
+      fixtureEl.innerHTML = [
+        '<div class="wrapper">',
+        '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '</div>',
+        '<div class="external menu">',
+        '  <a class="menu-item" href="#">Item</a>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const wrapperEl = fixtureEl.querySelector('.wrapper')
+      const menuEl = fixtureEl.querySelector('.menu')
+      const menu = new Menu(btnMenu, { menu: menuEl })
+
+      expect(menu._parent).toEqual(wrapperEl)
       expect(menu._menu).toEqual(menuEl)
     })
   })
