@@ -39,7 +39,7 @@ $breadcrumb-tokens: defaults(
     align-items: center;
     padding: var(--breadcrumb-padding-y, 0) var(--breadcrumb-padding-x, 0);
     font-size: var(--breadcrumb-font-size);
-    list-style: none;
+    list-style-type: "";
     background-color: var(--breadcrumb-bg);
     @include border-radius(var(--breadcrumb-border-radius));
   }
