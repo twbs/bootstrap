@@ -6,6 +6,7 @@
 @use "../mixins/gradients" as *;
 @use "../mixins/tokens" as *;
 
+// stylelint-disable custom-property-no-missing-var-function
 $range-tokens: () !default;
 
 // scss-docs-start range-tokens
@@ -17,7 +18,8 @@ $range-tokens: defaults(
     --range-track-cursor: pointer,
     --range-track-bg: var(--bg-3),
     --range-track-border-radius: 1rem,
-    --range-track-box-shadow: var(--box-shadow-inset),
+    --range-track-fill-bg: var(--primary-base),
+    --range-track-disabled-bg: color-mix(in oklch, var(--bg-4), var(--fg-3)),
     --range-thumb-width: 1rem,
     --range-thumb-height: var(--range-thumb-width),
     --range-thumb-bg: var(--primary-base),
@@ -29,10 +31,14 @@ $range-tokens: defaults(
     --range-thumb-transition-property: "background-color, border-color, box-shadow",
     --range-thumb-transition-timing: .15s ease-in-out,
     --range-thumb-transition: var(--range-thumb-transition-property) var(--range-thumb-transition-timing),
+    --range-tick-width: var(--border-width),
+    --range-tick-height: .5rem,
+    --range-tick-bg: var(--border-color),
   ),
   $range-tokens
 );
 // scss-docs-end range-tokens
+// stylelint-enable custom-property-no-missing-var-function
 
 // scss-docs-start range-mixins
 @mixin range-thumb() {
@@ -53,10 +59,17 @@ $range-tokens: defaults(
 @mixin range-track() {
   width: var(--range-track-width);
   height: var(--range-track-height);
-  color: transparent; // Why?
+  color: transparent;
   cursor: var(--range-track-cursor);
+  // Fill (progress) up to the thumb. The Range plugin keeps `--range-fill` (0–1) in sync.
   background-color: var(--range-track-bg);
-  border-color: transparent; // Firefox specific?
+  background-image:
+    linear-gradient(
+      to right,
+      var(--range-track-fill-bg) calc(var(--range-fill, 0) * 100%),
+      transparent calc(var(--range-fill, 0) * 100%)
+    );
+  border-color: transparent;
   @include border-radius(var(--range-track-border-radius));
   @include box-shadow(var(--range-track-box-shadow));
 }
@@ -66,9 +79,16 @@ $range-tokens: defaults(
   .form-range {
     @include tokens($range-tokens);
 
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+
+  .form-range-input {
+    display: block;
     width: 100%;
     height: calc(var(--range-thumb-height) + (var(--focus-ring-width) * 2));
-    padding: 0; // Need to reset padding
+    padding: 0;
     appearance: none;
     background-color: transparent;
 
@@ -84,7 +104,6 @@ $range-tokens: defaults(
     &:focus-visible {
       outline: 0;
 
-      // Pseudo-elements must be split across multiple rulesets to have an effect.
       &::-webkit-slider-thumb {
         @include focus-ring(true);
         --focus-ring-offset: 0;
@@ -101,7 +120,7 @@ $range-tokens: defaults(
 
     &::-webkit-slider-thumb {
       @include range-thumb();
-      margin-top: calc((var(--range-track-height) - var(--range-thumb-height)) * .5); // Webkit specific
+      margin-top: calc((var(--range-track-height) - var(--range-thumb-height)) * .5);
     }
 
     &::-moz-range-thumb {
@@ -126,6 +145,72 @@ $range-tokens: defaults(
       &::-moz-range-thumb {
         background-color: var(--range-thumb-disabled-bg);
       }
+
+      &::-webkit-slider-runnable-track {
+        --range-track-fill-bg: var(--range-track-disabled-bg);
+      }
+
+      &::-moz-range-track {
+        --range-track-fill-bg: var(--range-track-disabled-bg);
+      }
     }
+  }
+
+  // Value bubble: reuses the tooltip styles (`.tooltip` markup) so we don't duplicate the
+  // pill and arrow. We only add the static positioning the Tooltip plugin would normally do.
+  .form-range-bubble {
+    position: absolute;
+    bottom: 100%;
+    left: calc((var(--range-thumb-width) * .5) + var(--range-fill, 0) * (100% - var(--range-thumb-width)));
+    margin-bottom: var(--tooltip-arrow-height);
+    pointer-events: none;
+    transform: translateX(-50%);
+
+    .tooltip-arrow {
+      position: absolute;
+      bottom: calc(-1 * var(--tooltip-arrow-height));
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  // Tick marks generated from the linked <datalist>. Plugin builds `grid-template-columns`
+  // from the gaps between values so each tick lands on a grid line (handles uneven values).
+  // Track is inset by 1/4th of the thumb width to keep alignment.
+  .form-range-ticks {
+    display: grid;
+    padding-inline: calc(var(--range-thumb-width) * .25);
+  }
+
+  .form-range-tick {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: start;
+    // Zero-width items so labels never widen their `fr` column; the tick line and label
+    // overflow centered on the grid line via `align-items`.
+    width: 0;
+
+    &::before {
+      width: var(--range-tick-width);
+      height: var(--range-tick-height);
+      content: "";
+      background-color: var(--range-tick-bg);
+    }
+
+    &:first-child {
+      align-items: flex-start;
+    }
+
+    &:last-child {
+      align-items: flex-end;
+    }
+  }
+
+  .form-range-tick-label {
+    margin-top: .125rem;
+    font-size: var(--font-size-sm);
+    color: var(--fg-2);
+    white-space: nowrap;
   }
 }

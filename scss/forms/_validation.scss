@@ -281,8 +281,9 @@ $validation-states: defaults(
     }
   }
 
-  // Range — .form-range IS the <input>, so the mixin applies directly.
-  .form-range {
+  // Range — the validation class lives on .form-range-input, while feedback sits outside
+  // the .form-range wrapper, so we use :has() to toggle it.
+  .form-range-input {
     @include form-validation-state-selector($state) {
       &::-webkit-slider-thumb { background: var(--#{$theme}-bg); }
       &::-moz-range-thumb { background: var(--#{$theme}-bg); }
@@ -295,10 +296,12 @@ $validation-states: defaults(
           @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
         }
       }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip { display: block; }
     }
+  }
+
+  .form-range:has(.form-range-input.is-#{$state}) {
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip { display: block; }
   }
 
   // Input group — feedback lives outside the input-group in the parent

@@ -81,6 +81,8 @@
     - title: Radio
     - title: Switch
     - title: Range
+      meta:
+        - added: 6.0.0
     - title: Input group
     - title: Floating labels
     - title: Form adorn
