@@ -32,7 +32,7 @@ $range-tokens: defaults(
     --range-thumb-transition-timing: .15s ease-in-out,
     --range-thumb-transition: var(--range-thumb-transition-property) var(--range-thumb-transition-timing),
     --range-tick-width: var(--border-width),
-    --range-tick-height: .375rem,
+    --range-tick-height: .5rem,
     --range-tick-bg: var(--border-color),
   ),
   $range-tokens
@@ -76,8 +76,6 @@ $range-tokens: defaults(
 // scss-docs-end range-mixins
 
 @layer forms {
-  // Wrapper: owns the tokens (so the input, bubble, and ticks all inherit them)
-  // and is the positioning context for the bubble and ticks.
   .form-range {
     @include tokens($range-tokens);
 
@@ -87,6 +85,7 @@ $range-tokens: defaults(
   }
 
   .form-range-input {
+    display: block;
     width: 100%;
     height: calc(var(--range-thumb-height) + (var(--focus-ring-width) * 2));
     padding: 0;
@@ -105,7 +104,6 @@ $range-tokens: defaults(
     &:focus-visible {
       outline: 0;
 
-      // Pseudo-elements must be split across multiple rulesets to have an effect.
       &::-webkit-slider-thumb {
         @include focus-ring(true);
         --focus-ring-offset: 0;
@@ -122,7 +120,7 @@ $range-tokens: defaults(
 
     &::-webkit-slider-thumb {
       @include range-thumb();
-      margin-top: calc((var(--range-track-height) - var(--range-thumb-height)) * .5); // Webkit specific
+      margin-top: calc((var(--range-track-height) - var(--range-thumb-height)) * .5);
     }
 
     &::-moz-range-thumb {
@@ -177,12 +175,12 @@ $range-tokens: defaults(
   }
 
   // Tick marks generated from the linked <datalist>. The plugin builds `grid-template-columns`
-  // from the gaps between values so each tick lands on a grid line (handles uneven values),
-  // inset by half the thumb so the ends line up with the thumb travel.
+  // from the gaps between values so each tick lands on a grid line (handles uneven values).
+  // The track is inset by half the thumb on each side so the grid region matches the thumb
+  // travel, which keeps every tick aligned with the value it represents.
   .form-range-ticks {
     display: grid;
-    padding-inline: calc(var(--range-thumb-width) * .5);
-    margin-top: .25rem;
+    padding-inline: calc(var(--range-thumb-width) * .25);
   }
 
   .form-range-tick {
@@ -190,13 +188,23 @@ $range-tokens: defaults(
     flex-direction: column;
     align-items: center;
     justify-self: start;
-    transform: translateX(-50%);
+    // Zero-width items so labels never widen their `fr` column; the tick line and label
+    // overflow centered on the grid line via `align-items`.
+    width: 0;
 
     &::before {
       width: var(--range-tick-width);
       height: var(--range-tick-height);
       content: "";
       background-color: var(--range-tick-bg);
+    }
+
+    &:first-child {
+      align-items: flex-start;
+    }
+
+    &:last-child {
+      align-items: flex-end;
     }
   }
 

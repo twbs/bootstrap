@@ -161,9 +161,11 @@ class Range extends BaseComponent {
     this._bubble.className = `${CLASS_NAME_BUBBLE} tooltip bs-tooltip-top show`
     this._bubble.setAttribute('aria-hidden', 'true')
 
-    const arrow = document.createElement('span')
+    // Match the Tooltip template's block-level markup: `.tooltip-inner` has no `display` rule,
+    // so an inline `<span>` would let its padding bleed outside the bubble and clip the arrow.
+    const arrow = document.createElement('div')
     arrow.className = 'tooltip-arrow'
-    this._bubbleText = document.createElement('span')
+    this._bubbleText = document.createElement('div')
     this._bubbleText.className = 'tooltip-inner'
     this._bubble.append(arrow, this._bubbleText)
 
@@ -186,7 +188,9 @@ class Range extends BaseComponent {
       const value = Number.parseFloat(option.value)
 
       if (!Number.isNaN(value)) {
-        points.push({ ratio: (value - min) / span, label: option.label })
+        // Clamp to [0, 1] so out-of-range options can't produce negative `fr` tracks
+        const ratio = Math.min(Math.max((value - min) / span, 0), 1)
+        points.push({ ratio, label: option.label })
       }
     }
 
