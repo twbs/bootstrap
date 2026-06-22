@@ -168,6 +168,13 @@ $form-control-sizes: defaults(
   // text (without any border, background color, focus indicator)
 
   .form-control-plaintext {
+    // Plaintext is a standalone class (not combined with `.form-control`), so it
+    // needs its own copy of the control tokens. Without them the `var(--control-*)`
+    // references below are invalid and fall back to their initial values (e.g.
+    // `border-width: medium`), which adds phantom inline borders and misaligns the
+    // text from a floating label.
+    @include tokens($form-control-tokens);
+
     display: block;
     width: 100%;
     padding: var(--control-padding-y) 0;

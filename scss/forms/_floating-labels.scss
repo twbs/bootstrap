@@ -9,9 +9,9 @@ $form-floating-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $form-floating-tokens: defaults(
   (
-    --form-floating-height: calc(3.5rem + (var(--border-width) * 2)),
+    --form-floating-height: calc(3.75rem + (var(--border-width) * 2)),
     --form-floating-line-height: 1.25,
-    --form-floating-padding-x: var(--btn-input-padding-x),
+    --form-floating-padding-x: calc(var(--btn-input-padding-x) * 1.25),
     --form-floating-padding-y: 1rem,
     --form-floating-input-padding-t: 1.625rem,
     --form-floating-input-padding-b: .625rem,
@@ -54,13 +54,13 @@ $form-floating-tokens: defaults(
       text-overflow: ellipsis;
       white-space: nowrap;
       pointer-events: none;
-      border: var(--input-btn-border-width) solid transparent; // Required for aligning label's text with the input as it affects inner box model
+      border: var(--border-width) solid transparent; // Required for aligning label's text with the input as it affects inner box model
       transform-origin: 0 0;
       @include transition(var(--form-floating-transition));
     }
 
     // Anchor the label to the top for textareas so it floats correctly at any height
-    > textarea ~ label {
+    > label:has(~ textarea) {
       align-items: flex-start;
     }
 
@@ -87,23 +87,23 @@ $form-floating-tokens: defaults(
       }
     }
 
-    > .form-control:focus,
-    > .form-control:not(:placeholder-shown),
-    > .form-control-plaintext {
-      ~ label {
-        transform: var(--form-floating-label-transform);
-      }
+    // The label precedes the control in the DOM so screen readers announce it
+    // before the field's value, so we look forward with `:has()` to react to the
+    // control's state (focus, value, disabled, etc.).
+    > label:has(~ .form-control:focus),
+    > label:has(~ .form-control:not(:placeholder-shown)),
+    > label:has(~ .form-control-plaintext) {
+      transform: var(--form-floating-label-transform);
     }
 
     // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
-    > .form-control:-webkit-autofill {
-      ~ label {
-        transform: var(--form-floating-label-transform);
-      }
+    > label:has(~ .form-control:-webkit-autofill) {
+      transform: var(--form-floating-label-transform);
     }
-    > textarea:focus,
-    > textarea:not(:placeholder-shown) {
-      ~ label::after {
+
+    > label:has(~ textarea:focus),
+    > label:has(~ textarea:not(:placeholder-shown)) {
+      &::after {
         position: absolute;
         inset: var(--form-floating-padding-y) calc(var(--form-floating-padding-x) * .5);
         z-index: -1;
@@ -113,18 +113,16 @@ $form-floating-tokens: defaults(
         @include border-radius(var(--btn-input-border-radius));
       }
     }
-    > textarea:disabled ~ label::after {
+    > label:has(~ textarea:disabled)::after {
       background-color: var(--form-floating-label-disabled-bg);
     }
 
-    > .form-control-plaintext {
-      ~ label {
-        border-width: var(--control-border-width) 0; // Required to properly position label text - as explained above
-      }
+    > label:has(~ .form-control-plaintext) {
+      border-width: var(--control-border-width) 0; // Required to properly position label text - as explained above
     }
 
-    > :disabled ~ label,
-    > .form-control:disabled ~ label { // Required for `.form-control`s because of specificity
+    > label:has(~ :disabled),
+    > label:has(~ .form-control:disabled) { // Required for `.form-control`s because of specificity
       color: var(--form-floating-label-disabled-color);
     }
   }
