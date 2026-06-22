@@ -174,10 +174,9 @@ $range-tokens: defaults(
     }
   }
 
-  // Tick marks generated from the linked <datalist>. The plugin builds `grid-template-columns`
+  // Tick marks generated from the linked <datalist>. Plugin builds `grid-template-columns`
   // from the gaps between values so each tick lands on a grid line (handles uneven values).
-  // The track is inset by half the thumb on each side so the grid region matches the thumb
-  // travel, which keeps every tick aligned with the value it represents.
+  // Track is inset by 1/4th of the thumb width to keep alignment.
   .form-range-ticks {
     display: grid;
     padding-inline: calc(var(--range-thumb-width) * .25);
