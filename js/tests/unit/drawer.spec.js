@@ -649,7 +649,7 @@ describe('Drawer', () => {
         })
         drawerEl.addEventListener('hidden.bs.drawer', () => {
           setTimeout(() => {
-            expect(spy).toHaveBeenCalled()
+            expect(spy).toHaveBeenCalledWith({ preventScroll: true })
             resolve()
           }, 5)
         })

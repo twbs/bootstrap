@@ -803,7 +803,7 @@ describe('Dialog', () => {
 
         const hideListener = () => {
           setTimeout(() => {
-            expect(spy).toHaveBeenCalled()
+            expect(spy).toHaveBeenCalledWith({ preventScroll: true })
             resolve()
           }, 20)
         }
