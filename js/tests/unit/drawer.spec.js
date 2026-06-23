@@ -16,7 +16,7 @@ describe('Drawer', () => {
 
   afterEach(() => {
     clearFixture()
-    document.body.classList.remove('dialog-open')
+    document.documentElement.classList.remove('dialog-open')
     clearBodyAndDocument()
 
     for (const dialog of document.querySelectorAll('dialog[open]')) {
@@ -255,7 +255,7 @@ describe('Drawer', () => {
   })
 
   describe('options', () => {
-    it('if scroll is enabled, should not add dialog-open class to body', () => {
+    it('if scroll is enabled, should not add dialog-open class to the root element', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
 
@@ -263,7 +263,7 @@ describe('Drawer', () => {
         const drawer = new Drawer(drawerEl, { scroll: true, backdrop: false })
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
-          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
           drawer.hide()
         })
         drawerEl.addEventListener('hidden.bs.drawer', () => {
@@ -273,7 +273,7 @@ describe('Drawer', () => {
       })
     })
 
-    it('if scroll is disabled, should add dialog-open class to body', () => {
+    it('if scroll is disabled, should add dialog-open class to the root element', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
 
@@ -281,11 +281,11 @@ describe('Drawer', () => {
         const drawer = new Drawer(drawerEl, { scroll: false })
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
-          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeTrue()
           drawer.hide()
         })
         drawerEl.addEventListener('hidden.bs.drawer', () => {
-          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
           resolve()
         })
         drawer.show()

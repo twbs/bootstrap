@@ -15,7 +15,7 @@ describe('Dialog', () => {
   afterEach(() => {
     clearFixture()
     clearBodyAndDocument()
-    document.body.classList.remove('dialog-open')
+    document.documentElement.classList.remove('dialog-open')
 
     for (const dialog of document.querySelectorAll('dialog[open]')) {
       dialog.close()
@@ -94,7 +94,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
           expect(dialogEl.open).toBeTrue()
-          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeTrue()
           resolve()
         })
 
@@ -251,7 +251,7 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('hidden.bs.dialog', () => {
           expect(dialogEl.open).toBeFalse()
-          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
           resolve()
         })
 
@@ -460,8 +460,8 @@ describe('Dialog', () => {
         dialogEl.addEventListener('shown.bs.dialog', () => {
           expect(dialogEl.open).toBeTrue()
           expect(dialogEl.classList.contains('dialog-nonmodal')).toBeTrue()
-          // Non-modal dialogs should not add dialog-open to body
-          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          // Non-modal dialogs should not add dialog-open to the root element
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
           resolve()
         })
 
@@ -1036,7 +1036,7 @@ describe('Dialog', () => {
   })
 
   describe('stacked modals', () => {
-    it('should keep dialog-open on body when closing one of two open modal dialogs', () => {
+    it('should keep dialog-open on the root element when closing one of two open modal dialogs', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<dialog id="dialog1" class="dialog"></dialog>',
@@ -1053,18 +1053,18 @@ describe('Dialog', () => {
         })
 
         dialog2El.addEventListener('shown.bs.dialog', () => {
-          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeTrue()
           dialog1.hide()
         })
 
         dialog1El.addEventListener('hidden.bs.dialog', () => {
           expect(dialog2El.open).toBeTrue()
-          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeTrue()
           dialog2.hide()
         })
 
         dialog2El.addEventListener('hidden.bs.dialog', () => {
-          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
           resolve()
         })
 
