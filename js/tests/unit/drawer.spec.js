@@ -570,6 +570,28 @@ describe('Drawer', () => {
       expect(Drawer.getInstance(drawerEl)).toBeNull()
       expect(spyOff).toHaveBeenCalled()
     })
+
+    it('should close the drawer and restore body scroll when disposed while open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="drawer"></dialog>'
+
+        const drawerEl = fixtureEl.querySelector('dialog')
+        const drawer = new Drawer(drawerEl)
+
+        drawerEl.addEventListener('shown.bs.drawer', () => {
+          expect(drawerEl.open).toBeTrue()
+          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+
+          drawer.dispose()
+
+          expect(drawerEl.open).toBeFalse()
+          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          resolve()
+        })
+
+        drawer.show()
+      })
+    })
   })
 
   describe('data-api', () => {
