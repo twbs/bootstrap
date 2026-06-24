@@ -916,7 +916,9 @@ class Menu extends BaseComponent {
   }
 
   static dataApiKeydownHandler(event) {
-    const isInput = /input|textarea/i.test(event.target.tagName)
+    // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
+    // menu doesn't hijack their arrow keys.
+    const isInput = /input|textarea/i.test(event.target.tagName) || event.target.isContentEditable
     const isEscapeEvent = event.key === ESCAPE_KEY
     const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
     const isLeftOrRightEvent = [ARROW_LEFT_KEY, ARROW_RIGHT_KEY].includes(event.key)
