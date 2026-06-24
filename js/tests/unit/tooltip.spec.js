@@ -90,6 +90,16 @@ describe('Tooltip', () => {
       expect(tooltip._config.content).toEqual('7')
     })
 
+    it('should convert title and content to string if booleans (e.g. data-bs-content="true")', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="true" data-bs-content="false"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      expect(tooltip._config.title).toEqual('true')
+      expect(tooltip._config.content).toEqual('false')
+    })
+
     it('should enable selector delegation', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div></div>'

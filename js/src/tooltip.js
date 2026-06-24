@@ -732,11 +732,14 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    if (typeof config.title === 'number') {
+    // Coerce number/boolean title and content to strings. `data-bs-title="true"`
+    // / `data-bs-content="false"` are auto-converted to booleans by the data-API,
+    // which would otherwise fail the (null|string|element|function) type check.
+    if (typeof config.title === 'number' || typeof config.title === 'boolean') {
       config.title = config.title.toString()
     }
 
-    if (typeof config.content === 'number') {
+    if (typeof config.content === 'number' || typeof config.content === 'boolean') {
       config.content = config.content.toString()
     }
 
