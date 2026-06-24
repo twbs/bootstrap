@@ -1932,6 +1932,36 @@ describe('Menu', () => {
       })
     })
 
+    it('should not close the menu if the user clicks a label inside a form within the menu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <form>',
+          '      <label for="menu-email">Email</label>',
+          '      <input type="text" id="menu-email">',
+          '    </form>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const triggerMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const label = fixtureEl.querySelector('label')
+
+        triggerMenu.addEventListener('shown.bs.menu', () => {
+          expect(triggerMenu).toHaveClass('show')
+          // clearMenus runs synchronously while this bubbling click reaches the
+          // document, so assert right after dispatch returns.
+          label.dispatchEvent(createEvent('click', { bubbles: true }))
+          expect(triggerMenu).toHaveClass('show')
+          resolve()
+        })
+
+        triggerMenu.click()
+      })
+    })
+
     it('should close the menu if the user clicks on a text field that is not contained within menu', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
