@@ -678,6 +678,34 @@ describe('Tooltip', () => {
       })
     })
 
+    it('should reset hover state when show is prevented so the tip can reopen', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        const preventOnce = ev => {
+          ev.preventDefault()
+          tooltipEl.removeEventListener('show.bs.tooltip', preventOnce)
+        }
+
+        tooltipEl.addEventListener('show.bs.tooltip', preventOnce)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          expect(document.querySelector('.tooltip')).not.toBeNull()
+          resolve()
+        })
+
+        // First show is prevented — `_isHovered` must not stay stuck true,
+        // otherwise the `_enter()` retry below would early-return and never reopen.
+        tooltip.show()
+        expect(tooltip._isHovered).toBeFalse()
+
+        tooltip._enter()
+      })
+    })
+
     it('should show tooltip if leave event hasn\'t occurred before delay expires', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'

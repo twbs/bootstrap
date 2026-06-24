@@ -219,6 +219,11 @@ class Tooltip extends BaseComponent {
     const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element)
 
     if (showEvent.defaultPrevented || !isInTheDom) {
+      // Reset the transient hover/active state so a prevented (or not-in-DOM)
+      // show doesn't leave `_isHovered` stuck true — otherwise a click-triggered
+      // tip would hit the `_enter()` early-return on every later click and never
+      // reopen.
+      this._isHovered = false
       return
     }
 
