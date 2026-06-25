@@ -1,6 +1,9 @@
 {
   "reject": [
     "@astrojs/mdx",
+    "@babel/cli",
+    "@babel/core",
+    "@babel/preset-env",
     "@docsearch/js",
     "astro",
     "eslint",
