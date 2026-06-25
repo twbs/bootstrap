@@ -31,6 +31,15 @@ updates:
       - dependency-name: "@astrojs/mdx"
         update-types:
           - "version-update:semver-major"
+      - dependency-name: "@babel/cli"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/core"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/preset-env"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "@docsearch/js"
         update-types:
           - "version-update:semver-major"
