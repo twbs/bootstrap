@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import yaml from 'js-yaml'
+import { load as yamlLoad } from 'js-yaml'
 import { z } from 'zod'
 import {
   zHexColor,
@@ -124,7 +124,7 @@ export function getData<TType extends DataType>(type: TType): z.infer<(typeof da
 
   try {
     // Load the data from the yml  file.
-    const rawData = yaml.load(fs.readFileSync(dataPath, 'utf8'))
+    const rawData = yamlLoad(fs.readFileSync(dataPath, 'utf8'))
 
     // Parse the data using the data schema to validate its content and get back a fully typed data object.
     const parsedData = dataDefinitions[type].parse(rawData)
