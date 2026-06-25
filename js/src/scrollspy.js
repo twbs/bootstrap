@@ -9,7 +9,7 @@ import BaseComponent from './base-component.js'
 import EventHandler from './dom/event-handler.js'
 import SelectorEngine from './dom/selector-engine.js'
 import {
-  getElement, isDisabled, isVisible
+  getElement, isDisabled, isVisible, parseSelector
 } from './util/index.js'
 
 /**
@@ -23,6 +23,8 @@ const DATA_API_KEY = '.data-api'
 
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`
 const EVENT_CLICK = `click${EVENT_KEY}`
+const EVENT_SCROLLEND = `scrollend${EVENT_KEY}`
+const EVENT_SCROLL = `scroll${EVENT_KEY}`
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_MENU_ITEM = 'menu-item'
@@ -37,18 +39,29 @@ const SELECTOR_LIST_ITEMS = '.list-group-item'
 const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`
 const SELECTOR_MENU_TOGGLE = '[data-bs-toggle="menu"]'
 
+// How long (ms) to wait after the last scroll event before settling, when the
+// native `scrollend` event is unavailable.
+const SCROLL_IDLE_TIMEOUT = 100
+
 const Default = {
-  rootMargin: '0px 0px -25%',
+  // `rootMargin` is an advanced override for the IntersectionObserver root box.
+  // When null it's derived from `topMargin` so the observer fires as sections
+  // cross the activation line. Prefer `topMargin` for everyday use.
+  rootMargin: null,
   smoothScroll: false,
   target: null,
-  threshold: [0.1, 0.5, 1]
+  threshold: [0],
+  // Position of the activation line, measured from the top of the scroll root.
+  // The active section is the deepest one whose top has scrolled to/above it.
+  topMargin: '12%'
 }
 
 const DefaultType = {
-  rootMargin: 'string',
+  rootMargin: '(string|null)',
   smoothScroll: 'boolean',
   target: 'element',
-  threshold: 'array'
+  threshold: 'array',
+  topMargin: 'string'
 }
 
 /**
@@ -65,10 +78,12 @@ class ScrollSpy extends BaseComponent {
     this._rootElement = getComputedStyle(this._element).overflowY === 'visible' ? null : this._element
     this._activeTarget = null
     this._observer = null
-    this._previousScrollData = {
-      visibleEntryTop: 0,
-      parentScrollTop: 0
-    }
+    this._pendingNavigation = null
+    this._scrollIdleTimeout = null
+    this._scrollRaf = null
+    this._settleHandler = () => this._onSettle()
+    this._scrollHandler = () => this._onScroll()
+
     this.refresh() // initialize
   }
 
@@ -90,19 +105,24 @@ class ScrollSpy extends BaseComponent {
     this._initializeTargetsAndObservables()
     this._maybeEnableSmoothScroll()
 
-    if (this._observer) {
-      this._observer.disconnect()
-    } else {
-      this._observer = this._getNewObserver()
-    }
+    this._observer?.disconnect()
+    this._observer = this._getNewObserver()
 
     for (const section of this._observableSections.values()) {
       this._observer.observe(section)
     }
+
+    // Drive live updates from scroll (rAF-throttled), with the observer as a
+    // supplementary trigger and `scrollend` for the settle (hash/focus). The
+    // observer fires an initial (async) callback that sets the first active
+    // state, so we don't compute it synchronously here.
+    this._addScrollListeners()
   }
 
   dispose() {
-    this._observer.disconnect()
+    this._observer?.disconnect()
+    this._removeScrollListeners()
+    EventHandler.off(this._config.target, EVENT_CLICK)
     super.dispose()
   }
 
@@ -122,23 +142,31 @@ class ScrollSpy extends BaseComponent {
       return
     }
 
-    // unregister any previous listeners
+    // Unregister any previous listener so refresh() doesn't stack them.
     EventHandler.off(this._config.target, EVENT_CLICK)
 
     EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, event => {
       const observableSection = this._observableSections.get(event.target.hash)
-      if (observableSection) {
-        event.preventDefault()
-        const root = this._rootElement || window
-        const height = observableSection.offsetTop - this._element.offsetTop
-        if (root.scrollTo) {
-          root.scrollTo({ top: height, behavior: 'smooth' })
-          return
-        }
-
-        // Chrome 60 doesn't support `scrollTo`
-        root.scrollTop = height
+      if (!observableSection || !this._element) {
+        return
       }
+
+      event.preventDefault()
+      const root = this._rootElement || window
+      const height = observableSection.offsetTop - this._element.offsetTop
+
+      // Defer the URL-hash and focus updates until the scroll settles, so we
+      // don't thrash the address bar mid-animation (and so the native hash
+      // navigation we just prevented is restored once we arrive).
+      this._pendingNavigation = { hash: event.target.hash, section: observableSection }
+
+      if (root.scrollTo) {
+        root.scrollTo({ top: height, behavior: 'smooth' })
+        return
+      }
+
+      // Older engines without `scrollTo`
+      root.scrollTop = height
     })
   }
 
@@ -146,49 +174,163 @@ class ScrollSpy extends BaseComponent {
     const options = {
       root: this._rootElement,
       threshold: this._config.threshold,
-      rootMargin: this._config.rootMargin
+      rootMargin: this._config.rootMargin ?? this._getDerivedRootMargin()
     }
 
-    return new IntersectionObserver(entries => this._observerCallback(entries), options)
+    return new IntersectionObserver(() => this._activateCurrentSection(), options)
   }
 
-  // The logic of selection
-  _observerCallback(entries) {
-    const targetElement = entry => this._targetLinks.get(`#${entry.target.id}`)
-    const activate = entry => {
-      this._previousScrollData.visibleEntryTop = entry.target.offsetTop
-      this._process(targetElement(entry))
+  // Collapse the observer root to a thin band at the top so it fires whenever a
+  // section crosses the activation line. The decision itself is geometric.
+  _getDerivedRootMargin() {
+    const bottom = 100 - this._getTopMarginPercent()
+    return `0px 0px -${bottom}% 0px`
+  }
+
+  _getTopMarginPercent() {
+    const value = String(this._config.topMargin)
+    return value.endsWith('%') ? Number.parseFloat(value) : 12
+  }
+
+  // The activation line position in pixels, relative to the top of the root.
+  _getActivationLine(rootHeight) {
+    const value = String(this._config.topMargin)
+    return value.endsWith('%') ?
+      (Number.parseFloat(value) / 100) * rootHeight :
+      (Number.parseFloat(value) || 0)
+  }
+
+  // Deterministic active-section selection, read fresh from layout — order- and
+  // direction-independent. The active section is the deepest one whose top has
+  // scrolled to/above the activation line; at the very bottom the last section
+  // wins; above the first section nothing is active.
+  _activateCurrentSection() {
+    // Guard against observer/settle callbacks that outlive a disposed or
+    // detached instance (e.g. fired while tearing down the DOM).
+    if (!this._element?.isConnected || !this._observableSections) {
+      return
     }
 
-    const parentScrollTop = (this._rootElement || document.documentElement).scrollTop
-    const userScrollsDown = parentScrollTop >= this._previousScrollData.parentScrollTop
-    this._previousScrollData.parentScrollTop = parentScrollTop
+    const sections = [...this._observableSections.values()]
+    if (sections.length === 0) {
+      return
+    }
 
-    for (const entry of entries) {
-      if (!entry.isIntersecting) {
-        this._activeTarget = null
-        this._clearActiveClass(targetElement(entry))
+    const rootTop = this._rootElement ? this._rootElement.getBoundingClientRect().top : 0
+    const rootHeight = this._rootElement ?
+      this._rootElement.clientHeight :
+      (document.documentElement.clientHeight || window.innerHeight)
+    const activationLine = this._getActivationLine(rootHeight)
 
-        continue
-      }
+    let active = null
 
-      const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop
-      // if we are scrolling down, pick the bigger offsetTop
-      if (userScrollsDown && entryIsLowerThanPrevious) {
-        activate(entry)
-        // if parent isn't scrolled, let's keep the first visible item, breaking the iteration
-        if (!parentScrollTop) {
-          return
+    if (this._isScrolledToBottom()) {
+      active = sections.at(-1)
+    } else {
+      let deepestTop = Number.NEGATIVE_INFINITY
+      for (const section of sections) {
+        const top = section.getBoundingClientRect().top - rootTop
+        if (top <= activationLine && top > deepestTop) {
+          deepestTop = top
+          active = section
         }
-
-        continue
-      }
-
-      // if we are scrolling up, pick the smallest offsetTop
-      if (!userScrollsDown && !entryIsLowerThanPrevious) {
-        activate(entry)
       }
     }
+
+    if (!active) {
+      // Scrolled above the first section — nothing is active.
+      this._clearActiveClass(this._config.target)
+      this._activeTarget = null
+      return
+    }
+
+    const targetLink = this._targetLinks.get(`#${active.id}`)
+    if (targetLink) {
+      this._process(targetLink)
+    }
+  }
+
+  _isScrolledToBottom() {
+    const scroller = this._rootElement || document.scrollingElement || document.documentElement
+
+    // Only meaningful when the content actually overflows its scroll container.
+    if (scroller.scrollHeight <= scroller.clientHeight) {
+      return false
+    }
+
+    return scroller.scrollHeight - (scroller.scrollTop + scroller.clientHeight) <= 1
+  }
+
+  _addScrollListeners() {
+    this._removeScrollListeners()
+
+    const target = this._getScrollTarget()
+    // Live updates as the user scrolls (rAF-throttled in _onScroll).
+    EventHandler.on(target, EVENT_SCROLL, this._scrollHandler)
+    // Settle (hash/focus) once scrolling finishes. Harmless where unsupported —
+    // _onScroll also schedules an idle settle as a fallback.
+    EventHandler.on(target, EVENT_SCROLLEND, this._settleHandler)
+  }
+
+  _removeScrollListeners() {
+    if (this._scrollIdleTimeout) {
+      clearTimeout(this._scrollIdleTimeout)
+      this._scrollIdleTimeout = null
+    }
+
+    if (this._scrollRaf) {
+      cancelAnimationFrame(this._scrollRaf)
+      this._scrollRaf = null
+    }
+
+    const target = this._getScrollTarget()
+    EventHandler.off(target, EVENT_SCROLL, this._scrollHandler)
+    EventHandler.off(target, EVENT_SCROLLEND, this._settleHandler)
+  }
+
+  _getScrollTarget() {
+    return this._rootElement || document
+  }
+
+  _onScroll() {
+    // Recompute the active section live, throttled to one read per frame.
+    if (!this._scrollRaf) {
+      this._scrollRaf = requestAnimationFrame(() => {
+        this._scrollRaf = null
+        this._activateCurrentSection()
+      })
+    }
+
+    // Settle fallback for engines without `scrollend` (and to finalize a
+    // pending smooth-scroll navigation's hash/focus once the scroll idles).
+    if (this._scrollIdleTimeout) {
+      clearTimeout(this._scrollIdleTimeout)
+    }
+
+    this._scrollIdleTimeout = setTimeout(() => this._onSettle(), SCROLL_IDLE_TIMEOUT)
+  }
+
+  _onSettle() {
+    this._activateCurrentSection()
+
+    if (!this._pendingNavigation) {
+      return
+    }
+
+    const { hash, section } = this._pendingNavigation
+    this._pendingNavigation = null
+
+    // Restore the URL hash (without adding a history entry) now that we've
+    // arrived, and move focus to the section for keyboard/AT users.
+    if (window.history?.replaceState) {
+      window.history.replaceState(null, '', hash)
+    }
+
+    if (!section.hasAttribute('tabindex')) {
+      section.setAttribute('tabindex', '-1')
+    }
+
+    section.focus({ preventScroll: true })
   }
 
   _initializeTargetsAndObservables() {
@@ -203,11 +345,14 @@ class ScrollSpy extends BaseComponent {
         continue
       }
 
-      const observableSection = SelectorEngine.findOne(decodeURI(anchor.hash), this._element)
+      const decodedHash = decodeURI(anchor.hash)
+      // Escape ids with special characters (dots, slashes, colons, …) so they
+      // don't throw when handed to querySelector.
+      const observableSection = SelectorEngine.findOne(parseSelector(decodedHash), this._element)
 
       // ensure that the observableSection exists & is visible
       if (isVisible(observableSection)) {
-        this._targetLinks.set(decodeURI(anchor.hash), anchor)
+        this._targetLinks.set(decodedHash, anchor)
         this._observableSections.set(anchor.hash, observableSection)
       }
     }

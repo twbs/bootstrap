@@ -483,7 +483,9 @@ describe('ScrollSpy', () => {
           expect(spy).toHaveBeenCalled()
 
           expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
-          expect(active().getAttribute('id')).toEqual('two-link')
+          // With the top activation line, scrolling section one's start to the
+          // top of the viewport activates one-link (the section you're now in).
+          expect(active().getAttribute('id')).toEqual('one-link')
           onScrollStop(() => {
             expect(active()).toBeNull()
             resolve()
@@ -614,6 +616,125 @@ describe('ScrollSpy', () => {
             })
           }
         })
+      })
+    })
+  })
+
+  describe('active section detection', () => {
+    it('activates the deepest section whose top has crossed the line when several are visible', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<nav class="navbar"><ul class="nav">',
+          '  <li class="nav-item"><a class="nav-link" id="a-1" href="#div-1">1</a></li>',
+          '  <li class="nav-item"><a class="nav-link" id="a-2" href="#div-2">2</a></li>',
+          '  <li class="nav-item"><a class="nav-link" id="a-3" href="#div-3">3</a></li>',
+          '</ul></nav>',
+          '<div class="content" style="overflow: auto; height: 100px">',
+          '  <div id="div-1" style="height: 80px">1</div>',
+          '  <div id="div-2" style="height: 80px">2</div>',
+          '  <div id="div-3" style="height: 200px">3</div>',
+          '</div>'
+        ].join('')
+
+        const contentEl = fixtureEl.querySelector('.content')
+        // eslint-disable-next-line no-new
+        new ScrollSpy(contentEl, { target: '.navbar' })
+
+        // At scrollTop 130, both div-2 and div-3 are visible, but only div-2's
+        // top has crossed the activation line — so div-2 (deepest crossed) wins.
+        onScrollStop(() => {
+          expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
+          expect(fixtureEl.querySelector('.active').id).toEqual('a-2')
+          resolve()
+        }, contentEl)
+
+        scrollTo(contentEl, 130)
+      })
+    })
+
+    it('activates the last section at the bottom even if its top never reaches the line', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<nav class="navbar"><ul class="nav">',
+          '  <li class="nav-item"><a class="nav-link" id="a-1" href="#div-1">1</a></li>',
+          '  <li class="nav-item"><a class="nav-link" id="a-2" href="#div-2">2</a></li>',
+          '</ul></nav>',
+          '<div class="content" style="overflow: auto; height: 200px">',
+          '  <div id="div-1" style="height: 400px">1</div>',
+          '  <div id="div-2" style="height: 30px">2</div>',
+          '</div>'
+        ].join('')
+
+        const contentEl = fixtureEl.querySelector('.content')
+        // eslint-disable-next-line no-new
+        new ScrollSpy(contentEl, { target: '.navbar' })
+
+        // Max scroll (230) puts div-2's top ~170px down — below the line — yet at
+        // the bottom it must still be the active section.
+        onScrollStop(() => {
+          expect(fixtureEl.querySelector('.active')?.id).toEqual('a-2')
+          resolve()
+        }, contentEl)
+
+        scrollTo(contentEl, 230)
+      })
+    })
+
+    it('does not throw and activates sections whose id contains special characters', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<nav class="navbar"><ul class="nav">',
+          '  <li class="nav-item"><a class="nav-link" id="a-1" href="#sec.one:1">1</a></li>',
+          '  <li class="nav-item"><a class="nav-link" id="a-2" href="#sec.two:2">2</a></li>',
+          '</ul></nav>',
+          '<div class="content" style="overflow: auto; height: 50px">',
+          '  <div id="sec.one:1" style="height: 100px">1</div>',
+          '  <div id="sec.two:2" style="height: 200px">2</div>',
+          '</div>'
+        ].join('')
+
+        const contentEl = fixtureEl.querySelector('.content')
+        expect(() => new ScrollSpy(contentEl, { target: '.navbar' })).not.toThrow()
+
+        onScrollStop(() => {
+          expect(fixtureEl.querySelector('.active')?.id).toEqual('a-2')
+          resolve()
+        }, contentEl)
+
+        scrollTo(contentEl, 100)
+      })
+    })
+
+    it('updates the URL hash and moves focus to the section when a smooth-scroll settles', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<nav class="navbar"><ul class="nav">',
+          '  <li class="nav-item"><a class="nav-link" id="a-1" href="#div-1">1</a></li>',
+          '  <li class="nav-item"><a class="nav-link" id="a-2" href="#div-2">2</a></li>',
+          '</ul></nav>',
+          '<div class="content" style="overflow: auto; height: 50px">',
+          '  <div id="div-1" style="height: 100px">1</div>',
+          '  <div id="div-2" style="height: 200px">2</div>',
+          '</div>'
+        ].join('')
+
+        const contentEl = fixtureEl.querySelector('.content')
+        const section2 = fixtureEl.querySelector('#div-2')
+        const scrollSpy = new ScrollSpy(contentEl, { target: '.navbar', smoothScroll: true })
+
+        const replaceSpy = spyOn(window.history, 'replaceState').and.callThrough()
+        const focusSpy = spyOn(section2, 'focus').and.callThrough()
+
+        // A smooth-scroll click records the pending navigation; the settle
+        // (scrollend) then restores the hash and moves focus.
+        scrollSpy._pendingNavigation = { hash: '#div-2', section: section2 }
+        scrollSpy._onSettle()
+
+        expect(replaceSpy).toHaveBeenCalledWith(null, '', '#div-2')
+        expect(focusSpy).toHaveBeenCalledWith({ preventScroll: true })
+        expect(section2.getAttribute('tabindex')).toEqual('-1')
+        expect(scrollSpy._pendingNavigation).toBeNull()
+        resolve()
       })
     })
   })
