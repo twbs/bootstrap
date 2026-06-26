@@ -15,15 +15,21 @@ interface Props {
    * File path that contains the content to display relative to the root of the repository.
    */
   file: string
+  /**
+   * Defines label to complete 'Copy JS to clipboard' button aria-label.
+   */
+  buttonLabel?: string
 }
 
-const { name, file } = Astro.props
+const { name, file, buttonLabel } = Astro.props
 
 if (!name || !file) {
   throw new Error(
     `Missing required parameter(s) for the '<JsDocs />' component, expected both 'name' and 'file' but got 'name: ${name}' and 'file: ${file}'.`
   )
 }
+
+const clipboardLabel = buttonLabel ? `Copy ${buttonLabel} JS to clipboard` : `Copy ${name} JS to clipboard`
 
 let content: string
 
@@ -52,7 +58,7 @@ try {
 }
 ---
 
-<Code containerClass="bd-example-snippet bd-code-snippet bd-file-ref" code={content} lang="js">
+<Code containerClass="bd-example-snippet bd-code-snippet bd-file-ref" code={content} lang="js" buttonLabel={buttonLabel}>
   <div slot="pre" class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
     <a
       class="font-monospace link-secondary link-underline-secondary link-underline-opacity-0 link-underline-opacity-100-hover small"
@@ -61,7 +67,7 @@ try {
       {file}
     </a>
     <div class="d-flex ms-auto">
-      <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
+      <button type="button" class="btn-clipboard mt-0 me-0" title={clipboardLabel}>
         <svg class="bi" aria-hidden="true"><use xlink:href="#clipboard"></use></svg>
       </button>
     </div>
