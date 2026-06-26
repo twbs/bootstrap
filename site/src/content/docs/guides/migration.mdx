@@ -391,6 +391,21 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Spacing and border utilities now use CSS logical properties.** `margin-top` &rarr; `margin-block-start`, `margin-right` &rarr; `margin-inline-end`, `padding-left` &rarr; `padding-inline-start`, `border-right` &rarr; `border-inline-end`, etc. Class names (`.mt-*`, `.me-*`, `.ps-*`, `.border-end`) remain the same, but the underlying CSS properties are now logical, improving RTL and writing-mode support.
 - **Text wrap additions.** Added `.text-balance` and `.text-pretty` values to the text-wrap utility.
 - **Color utility renames.** `.text-*` color utilities have been replaced by `.fg-*` (foreground) utilities. New `.fg-emphasis-*` and `.fg-contrast-*` variants. Background utilities now include `.bg-subtle-*` and `.bg-muted-*` in addition to `.bg-*`. Added `.fg-bg` and `.bg-fg` cross-reference utilities; removed `.fg-inherit` and `.bg-inherit`. Renamed `.bg-opacity-*` to `.bg-*`. Renamed `.text-reset` to `.fg-reset`.
+- **Link utilities are now part of text decoration utilities.** The v5 `link-*` utility family has been replaced by `underline-*` utilities documented under [Text decoration]([[docsref:/utilities/text-decoration]]). Update class names accordingly:
+
+<BsTable>
+| Category | Before (v5) | After (v6) |
+|---|---|---|
+| Link text opacity | `.link-opacity-*`, `.link-opacity-*-hover` | Removed (no dedicated `link-opacity-*` utility in v6) |
+| Underline offset | `.link-offset-1`, `.link-offset-2`, `.link-offset-3` | `.underline-offset-1`, `.underline-offset-2`, `.underline-offset-3` |
+| Underline color | `.link-underline-primary`, `.link-underline-secondary` | `.underline-primary`, `.underline-secondary` |
+| Underline opacity | `.link-underline-opacity-*` | `.underline-*` (10-step scale from `10` to `100`) |
+| Underline thickness | — | `.underline-thickness-1` through `.underline-thickness-5` |
+| Hover variants | `.link-offset-3-hover`, `.link-underline-opacity-75-hover` | `.hover:underline-offset-3`, `.hover:underline-70` or `.hover:underline-80` |
+</BsTable>
+
+  The helper `.link-underline` is no longer needed in v6.
+
 - **Display utilities:** added `flow-root` and `contents` options.
 - **Sizing utilities:**
   - Renamed `.mh-*`/`.mw-*` to `.max-h-*`/`.max-w-*`
