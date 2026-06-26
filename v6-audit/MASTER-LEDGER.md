@@ -106,7 +106,7 @@ Source tables: `AUDIT.md`/`BATCH2.md` (Dialog/Drawer), `components/TRIAGE.md` (T
 | ⬜ | [40525](https://github.com/twbs/bootstrap/issues/40525) | [#42551](https://github.com/twbs/bootstrap/pull/42551) | setContent→show fails `_isWithContent` gate |
 | ⬜ | [40993](https://github.com/twbs/bootstrap/issues/40993) | [#42550](https://github.com/twbs/bootstrap/pull/42550) | bottom popover arrow bg ≠ header |
 | ⬜ | [41021](https://github.com/twbs/bootstrap/issues/41021) | [#42550](https://github.com/twbs/bootstrap/pull/42550) | contenteditable arrow keys blocked in menu |
-| ⬜ | [41049](https://github.com/twbs/bootstrap/issues/41049) |  | menu width in collapsed navbar |
+| ✅ | [41049](https://github.com/twbs/bootstrap/issues/41049) |  | menu width in collapsed navbar |
 | ✅ | [41167](https://github.com/twbs/bootstrap/issues/41167) |  | arrow nav dead when toggle is `<input>` (maybe Combobox) |
 | ⬜ | [41630](https://github.com/twbs/bootstrap/issues/41630) |  | tabs + tab-menu keyboard nav |
 | ⬜ | [41670](https://github.com/twbs/bootstrap/issues/41670) |  | menu in table clipped by row stacking |
@@ -384,7 +384,7 @@ Source tables: `AUDIT.md`/`BATCH2.md` (Dialog/Drawer), `components/TRIAGE.md` (T
 | ✅ | [41883](https://github.com/twbs/bootstrap/issues/41883) |  | accordion double-open race (dup 35685/39385) |
 | ⬜ | [40997](https://github.com/twbs/bootstrap/issues/40997) |  | `parseSelector` over-escapes after # (breaks complex selectors) |
 | ⬜ | [39428](https://github.com/twbs/bootstrap/issues/39428) |  | legend float/clear reboot forces reflow (has-pr 39498) |
-| ⬜ | [39237](https://github.com/twbs/bootstrap/issues/39237) |  | `--toast-spacing` defined on .toast but consumed on container |
+| ✅ | [39237](https://github.com/twbs/bootstrap/issues/39237) |  | `--toast-spacing` defined on .toast but consumed on container |
 | ⬜ | [37478](https://github.com/twbs/bootstrap/issues/37478) |  | BrowserStack CI reliability |
 | ⬜ | [41438](https://github.com/twbs/bootstrap/issues/41438) |  | release-zip packages stray .DS_Store files |
 | ⬜ | [41810](https://github.com/twbs/bootstrap/issues/41810) |  | production dist min files still emit sourceMappingURL comments |
@@ -488,7 +488,6 @@ Source tables: `AUDIT.md`/`BATCH2.md` (Dialog/Drawer), `components/TRIAGE.md` (T
 | [40841](https://github.com/twbs/bootstrap/issues/40841) | JS (misc) |  | Collapse `aria-expanded` stuck true when trigger targets `.collapse` |
 | [38517](https://github.com/twbs/bootstrap/issues/38517) | JS (misc) |  | memory leak — `data.js` elementMap is Map not WeakMap |
 | [40702](https://github.com/twbs/bootstrap/issues/40702) | CSS |  | `.row > *` applies gutter margin-top to `.w-100` column breaks |
-| [36656](https://github.com/twbs/bootstrap/issues/36656) | CSS |  | input-group doesn't style `.form-control-plaintext` |
 | [39257](https://github.com/twbs/bootstrap/issues/39257) | CSS |  | floating label stuck raised for date/time inputs |
 | [39899](https://github.com/twbs/bootstrap/issues/39899) | CSS |  | floating label stays raised on cleared-but-:autofill (Firefox) |
 | [40879](https://github.com/twbs/bootstrap/issues/40879) | CSS |  | browser-autofilled values don't trigger `.was-validated` |
@@ -506,4 +505,3 @@ Source tables: `AUDIT.md`/`BATCH2.md` (Dialog/Drawer), `components/TRIAGE.md` (T
 | [37478](https://github.com/twbs/bootstrap/issues/37478) | Remaining |  | BrowserStack CI reliability |
 | [41438](https://github.com/twbs/bootstrap/issues/41438) | Remaining |  | release-zip packages stray .DS_Store files |
 | [41810](https://github.com/twbs/bootstrap/issues/41810) | Remaining |  | production dist min files still emit sourceMappingURL comments |
-
