@@ -451,7 +451,7 @@ describe('ScrollSpy', () => {
       })
     })
 
-    it('should clear selection if above the first section', () => {
+    it('should keep the first section active when scrolled above the first section', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div id="header" style="height: 500px;"></div>',
@@ -487,7 +487,10 @@ describe('ScrollSpy', () => {
           // top of the viewport activates one-link (the section you're now in).
           expect(active().getAttribute('id')).toEqual('one-link')
           onScrollStop(() => {
-            expect(active()).toBeNull()
+            // Scrolled back above the first section: the first link stays active
+            // rather than clearing.
+            expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
+            expect(active().getAttribute('id')).toEqual('one-link')
             resolve()
           }, contentEl)
           scrollTo(contentEl, 0)
@@ -736,6 +739,51 @@ describe('ScrollSpy', () => {
         expect(scrollSpy._pendingNavigation).toBeNull()
         resolve()
       })
+    })
+
+    it('keeps the first section active when scrolled above every section\'s activation line', () => {
+      fixtureEl.innerHTML = [
+        '<nav class="navbar"><ul class="nav">',
+        '  <li class="nav-item"><a class="nav-link" id="a-1" href="#div-1">1</a></li>',
+        '  <li class="nav-item"><a class="nav-link" id="a-2" href="#div-2">2</a></li>',
+        '</ul></nav>',
+        '<div class="content" style="overflow: auto; height: 100px">',
+        '  <div id="spacer" style="height: 40px"></div>',
+        '  <div id="div-1" style="height: 100px">1</div>',
+        '  <div id="div-2" style="height: 200px">2</div>',
+        '</div>'
+      ].join('')
+
+      const contentEl = fixtureEl.querySelector('.content')
+      const scrollSpy = new ScrollSpy(contentEl, { target: '.navbar' })
+
+      // At the top, div-1's top (40px) sits below the 12% activation line, so no
+      // section has crossed it — the first link stays active rather than clearing.
+      contentEl.scrollTop = 0
+      scrollSpy._activateCurrentSection()
+
+      expect(fixtureEl.querySelectorAll('.active')).toHaveSize(1)
+      expect(fixtureEl.querySelector('.active').id).toEqual('a-1')
+    })
+
+    it('uses a fixed pixel activation line that does not drift with the root height', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const contentEl = fixtureEl.querySelector('.content')
+      const scrollSpy = new ScrollSpy(contentEl, { target: '#navBar', topMargin: '96px' })
+
+      expect(scrollSpy._getActivationLine(1000)).toBe(96)
+      expect(scrollSpy._getActivationLine(2000)).toBe(96)
+    })
+
+    it('derives the activation line from the root height for a percentage topMargin', () => {
+      fixtureEl.innerHTML = getDummyFixture()
+
+      const contentEl = fixtureEl.querySelector('.content')
+      const scrollSpy = new ScrollSpy(contentEl, { target: '#navBar', topMargin: '10%' })
+
+      expect(scrollSpy._getActivationLine(1000)).toBe(100)
+      expect(scrollSpy._getActivationLine(2000)).toBe(200)
     })
   })
 

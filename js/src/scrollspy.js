@@ -180,30 +180,47 @@ class ScrollSpy extends BaseComponent {
     return new IntersectionObserver(() => this._activateCurrentSection(), options)
   }
 
+  // Single source of truth for the `topMargin` option: its numeric value and
+  // whether it's expressed as a percentage of the root height or in pixels.
+  _parseTopMargin() {
+    const value = String(this._config.topMargin)
+    return {
+      value: Number.parseFloat(value) || 0,
+      unit: value.endsWith('%') ? '%' : 'px'
+    }
+  }
+
   // Collapse the observer root to a thin band at the top so it fires whenever a
   // section crosses the activation line. The decision itself is geometric.
   _getDerivedRootMargin() {
-    const bottom = 100 - this._getTopMarginPercent()
-    return `0px 0px -${bottom}% 0px`
-  }
+    const { value, unit } = this._parseTopMargin()
+    let percent = value
 
-  _getTopMarginPercent() {
-    const value = String(this._config.topMargin)
-    return value.endsWith('%') ? Number.parseFloat(value) : 12
+    // Express a pixel activation line as a percentage of the root height so the
+    // supplementary observer band stays aligned with the geometric decision.
+    if (unit === 'px') {
+      const rootHeight = this._rootElement ?
+        this._rootElement.clientHeight :
+        (document.documentElement.clientHeight || window.innerHeight)
+      percent = rootHeight ? (value / rootHeight) * 100 : 12
+    }
+
+    // Clamp so the bottom inset stays a valid (non-negative) rootMargin even if
+    // the line sits outside the root box.
+    const bottom = Math.min(Math.max(100 - percent, 0), 100)
+    return `0px 0px -${bottom}% 0px`
   }
 
   // The activation line position in pixels, relative to the top of the root.
   _getActivationLine(rootHeight) {
-    const value = String(this._config.topMargin)
-    return value.endsWith('%') ?
-      (Number.parseFloat(value) / 100) * rootHeight :
-      (Number.parseFloat(value) || 0)
+    const { value, unit } = this._parseTopMargin()
+    return unit === '%' ? (value / 100) * rootHeight : value
   }
 
   // Deterministic active-section selection, read fresh from layout — order- and
   // direction-independent. The active section is the deepest one whose top has
   // scrolled to/above the activation line; at the very bottom the last section
-  // wins; above the first section nothing is active.
+  // wins; above the first section the first one stays active.
   _activateCurrentSection() {
     // Guard against observer/settle callbacks that outlive a disposed or
     // detached instance (e.g. fired while tearing down the DOM).
@@ -238,10 +255,9 @@ class ScrollSpy extends BaseComponent {
     }
 
     if (!active) {
-      // Scrolled above the first section — nothing is active.
-      this._clearActiveClass(this._config.target)
-      this._activeTarget = null
-      return
+      // Scrolled above the activation line for every section — keep the first
+      // section highlighted (matches expectations at the top of the page).
+      active = sections.at(0)
     }
 
     const targetLink = this._targetLinks.get(`#${active.id}`)
