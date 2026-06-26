@@ -1,0 +1,1 @@
+v6-dev bundles its positioning dependency from `js/src` rather than `node_modules`, so the `*.js.map` files no longer carry the broken vendor paths described here. Closing as resolved in v6-dev — please open a new issue if a map path is wrong there.

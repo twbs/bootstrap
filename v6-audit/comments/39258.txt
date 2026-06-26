@@ -1,0 +1,1 @@
+v6-dev drops our custom focus-trap for modals and relies on the native `<dialog>` element's built-in focus handling, so this conflict shouldn't occur. Closing — please open a new issue if you still see it in v6-dev.

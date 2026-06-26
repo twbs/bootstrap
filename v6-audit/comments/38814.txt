@@ -1,0 +1,1 @@
+v6-dev rebuilds modals on the native `<dialog>` element, so the old `.modal`/`.modal-dialog` container model (and this positioning case) no longer applies. Closing — please open a new issue if you need this in v6-dev.

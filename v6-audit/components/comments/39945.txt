@@ -1,0 +1,1 @@
+v6-dev wires tooltips with `aria-describedby` pointing at the tip (which has `role="tooltip"`), the standard pattern for exposing the text to assistive tech. Closing — please open a new issue if a specific screen reader still doesn't announce it in v6-dev (include the SR/browser/version).

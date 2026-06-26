@@ -1,0 +1,1 @@
+v6-dev rebuilds Carousel on native CSS scroll-snap, so swipe/drag is owned by the browser and no longer conflicts with autoplay (the old `touch`/`ride` options are gone). Closing — please open a new issue if swipe misbehaves in v6-dev.

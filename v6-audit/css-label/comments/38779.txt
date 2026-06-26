@@ -1,0 +1,1 @@
+v6-dev replaces the `text-bg-*`/contextual table classes with the `.theme-*` token system — `<tr class="theme-…">` recolors the row through theme tokens. Closing as resolved in v6-dev — please open a new issue if you hit a coloring gap there.

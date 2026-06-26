@@ -1,0 +1,1 @@
+v6-dev ignores re-entrant clicks while a drawer is transitioning, so a quick second click during the open animation no longer corrupts the state. Closing — please open a new issue if you can still reproduce in v6-dev.

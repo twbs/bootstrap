@@ -1,0 +1,1 @@
+A menu toggle is a toggle, not a navigation link — v6-dev intentionally suppresses the `href` on `data-bs-toggle="menu"` so the click opens the menu instead of navigating. Use a separate element if you need a real link. Closing as by-design — please open a new issue if you have a case this doesn't cover in v6-dev.

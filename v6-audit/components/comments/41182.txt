@@ -1,0 +1,1 @@
+The select's arrow is a background image, and the browser's autofill styling replaces the control's background, overwriting the arrow. That's a browser limitation we can't override from CSS on a form control. Closing as won't-fix — please open a new issue if you find a workable approach in v6-dev.

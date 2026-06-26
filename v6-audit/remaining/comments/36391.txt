@@ -1,0 +1,1 @@
+This tracked StackBlitz fixes for the v5 (Hugo) docs; v6-dev ships a fresh StackBlitz integration, so the per-example checklist here is obsolete. Closing — please open a new issue for any specific broken StackBlitz example in the v6-dev docs.

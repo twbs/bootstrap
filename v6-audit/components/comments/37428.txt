@@ -1,0 +1,1 @@
+v6-dev's Menu guards the keydown handler against a toggle with no associated menu, so Escape no longer throws. Closing — please open a new issue if you can still reproduce it in v6-dev.

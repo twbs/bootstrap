@@ -1,0 +1,1 @@
+v6-dev's drawer can run non-modal (`backdrop: false` with `scroll: true`), which uses the native `<dialog>` `show()` and leaves elements outside the drawer focusable — including popups from third-party widgets. Closing — please open a new issue if that doesn't cover your case in v6-dev.

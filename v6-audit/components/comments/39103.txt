@@ -1,0 +1,1 @@
+v6-dev ships a dedicated Combobox component for exactly this — a text input paired with a filterable menu. Closing in favor of Combobox — please open a new issue if it doesn't cover your use case in v6-dev.

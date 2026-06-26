@@ -1,0 +1,1 @@
+v6-dev rewrote form validation around `:user-invalid`/`:user-valid` (behind `[data-bs-validate]`) instead of `.was-validated` + `:valid`/`:invalid`, so a pre-filled value no longer auto-validates or overrides `.is-invalid`. Closing as resolved in v6-dev — please open a new issue if it persists there.

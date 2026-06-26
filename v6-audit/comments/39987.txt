@@ -1,0 +1,1 @@
+This was caused by our old JS backdrop receiving a duplicate pointer event. v6-dev uses the native `<dialog>` `::backdrop`, so there's no separate backdrop element to catch the stray event. Closing — please open a new issue if you can still reproduce it on a touch device in v6-dev.

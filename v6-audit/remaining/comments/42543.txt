@@ -1,0 +1,1 @@
+v6-dev migrated off Popper to Floating UI, and the docs link to floating-ui.com rather than popper.js.org. Closing as resolved in v6-dev — please open a new issue if you spot a stale Popper link there.

@@ -1,0 +1,1 @@
+v6-dev colors `.btn-close` with `currentcolor`, so `data-bs-theme="dark"` works whether it's on the button itself or a parent. Closing as resolved in v6-dev — please open a new issue if it persists there.

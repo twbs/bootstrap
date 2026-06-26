@@ -1,0 +1,1 @@
+This is a v5-line `.browserslistrc` update; v6-dev already targets far newer browsers, so it doesn't apply here — it belongs on the v5 branch. Closing.

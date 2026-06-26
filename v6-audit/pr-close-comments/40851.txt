@@ -1,0 +1,1 @@
+Fixed in v6-dev by #42551, which makes `show()` honor content supplied via `setContent()` (#40525) — the same issue this fixes. Closing in favor of the v6 work since it targets v5. Thanks!

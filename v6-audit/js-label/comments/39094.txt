@@ -1,0 +1,1 @@
+In v6-dev, function options are called with the attached element as both the first argument and the `this` reference (the documented behavior since 5.3). Closing as working-as-documented — please open a new issue if a specific option doesn't follow that contract in v6-dev.

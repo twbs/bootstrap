@@ -1,0 +1,1 @@
+v6-dev removed the jQuery plugin bridge entirely — Bootstrap's JS is ESM-only and is no longer registered as a jQuery plugin, so the `$.fn`-based usage this depends on isn't supported. Closing — please open a new issue if you hit a non-jQuery bundler problem in v6-dev.

@@ -1,0 +1,1 @@
+v6-dev binds the keydown/click listeners once when the instance is created rather than on each open, so they no longer stack up. Closing — please open a new issue if you still see duplicates in v6-dev.

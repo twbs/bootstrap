@@ -1,0 +1,1 @@
+v6-dev's utility generation now emits only the functional `hover:` variant (no redundant default class). Closing as resolved in v6-dev — please open a new issue if it persists there.

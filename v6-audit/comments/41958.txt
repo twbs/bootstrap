@@ -1,0 +1,1 @@
+This was our custom focus-trap; v6-dev uses the native `<dialog>` element's built-in focus handling, so there's no scripted refocus to scroll the body. Closing — please open a new issue if it persists in v6-dev.

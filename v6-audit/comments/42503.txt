@@ -1,0 +1,1 @@
+v6-dev uses the native `<dialog>` element's built-in focus handling, which doesn't depend on surrounding DOM order, so this case is covered. Closing — please open a new issue if it persists in v6-dev.

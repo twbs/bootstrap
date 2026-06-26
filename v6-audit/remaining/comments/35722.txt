@@ -1,0 +1,1 @@
+This advice is jQuery-era (`$(window).on('load')`) and tied to the v5 carousel init model; v6-dev's carousel uses a different (CSS scroll-snap) init, so the wording no longer applies (the original PRs were closed unmerged). Closing — please open a new issue if the v6-dev carousel docs need a specific clarification.

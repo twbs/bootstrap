@@ -1,0 +1,1 @@
+Fixed in v6-dev by #42551, which keeps the menu open for clicks inside a form within it (#41803) — the same fix as here. Closing in favor of the v6 work since it targets v5. Thanks!

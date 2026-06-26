@@ -1,0 +1,1 @@
+This comes from HTML semantics: a `<button>` inside a `<form>` defaults to `type="submit"`, so Enter in the input activates it. Set `type="button"` on the menu toggle. Closing as not a Bootstrap bug — please open a new issue if you see it with an explicit `type="button"` in v6-dev.

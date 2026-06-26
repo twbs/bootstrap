@@ -1,0 +1,1 @@
+v6-dev rebuilds offcanvas as a `drawer` on the native `<dialog>` element and no longer sets `aria-modal` itself — modality now comes from `showModal()` vs `show()`. A drawer with `backdrop: false` + `scroll: true` opens non-modal, so the content underneath stays accessible and the mismatch this describes is gone. Closing — please open a new issue if it persists in v6-dev.

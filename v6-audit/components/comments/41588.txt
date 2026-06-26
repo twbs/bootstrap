@@ -1,0 +1,1 @@
+v6-dev's Menu no longer throws when the toggle is removed from the DOM while open — verified by yanking the element mid-open and then closing. Closing — please open a new issue if you can still trigger it in v6-dev.

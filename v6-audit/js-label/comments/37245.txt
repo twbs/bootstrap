@@ -1,0 +1,1 @@
+v6-dev disposes any existing instance bound to an element before creating a new one (in the base component), so the faulty silent re-set is fixed. Closing — please open a new issue if you still see a stale instance in v6-dev.

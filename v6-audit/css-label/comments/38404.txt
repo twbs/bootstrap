@@ -1,0 +1,1 @@
+Same as the general `.col` overflow behavior: a flex column without `min-width: 0` lets wide `<pre>` content overflow — standard flexbox, fixable with `min-width: 0`/`overflow` on the column. Closing as by-design — please open a new issue if you see a regression in v6-dev.

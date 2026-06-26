@@ -1,0 +1,1 @@
+v6-dev opens modal drawers with the native `<dialog>` `showModal()`, which makes background content inert at the platform level rather than relying on `aria-modal`, so TalkBack should stay within the drawer. Closing — please open a new issue if it persists on Android in v6-dev.

@@ -1,0 +1,1 @@
+This came from initializing a component against a missing/invalid target, leaving its config undefined. v6-dev's base component returns early when the target element can't be resolved, so that specific crash path is gone. Closing — please open a new issue if you can reproduce a config error on a valid target in v6-dev.

@@ -1,0 +1,1 @@
+Addressed in v6-dev by #42550 (#40993), which fills the bottom popover arrow with the header background via `:has(+ .popover-header)`. Closing in favor of the v6 work; thanks for tackling this.

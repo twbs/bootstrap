@@ -1,0 +1,1 @@
+Menu on Floating UI supports `container` (render the menu elsewhere, e.g. on `<body>`), `boundary`, and `strategy: 'fixed'`, which covers positioning out of clipping/overflow ancestors. Closing — please open a new issue if these don't cover your case in v6-dev.

@@ -1,0 +1,1 @@
+In v6-dev the backdrop is the native `::backdrop` and transitions alongside the dialog in CSS, so the stagger is gone and timing is yours to control. Closing — please open a new issue if you need more here in v6-dev.

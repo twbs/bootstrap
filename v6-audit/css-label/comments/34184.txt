@@ -1,0 +1,1 @@
+Bootstrap's table cell styles are scoped via `> :not(caption) > * > *`, which requires a row group (`<thead>`/`<tbody>`/`<tfoot>`). A bare `<tr>` with no row group is out of scope. Closing as by-design — wrap rows in a `<tbody>`.

@@ -1,0 +1,1 @@
+v6-dev moves modals to the native `<dialog>` element, so we no longer toggle `aria-hidden` ourselves and this warning goes away. Closing — please open a new issue if you still see it in v6-dev.

@@ -1,0 +1,1 @@
+v6-dev sets `color-scheme` per theme on `:root`/`[data-bs-theme]`, so the browser scrollbars match the active theme. Closing as resolved in v6-dev — please open a new issue if it persists there.

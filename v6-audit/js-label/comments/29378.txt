@@ -1,0 +1,1 @@
+v6-dev auto-initializes tooltips and popovers via event delegation (`data-bs-toggle="tooltip"`/`"popover"`), so the manual "opt-in for performance" step no longer applies to them. Closing — please open a new issue if a specific component in v6-dev still needs this documented.

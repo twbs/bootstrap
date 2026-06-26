@@ -1,0 +1,1 @@
+The input-plus-menu pattern this targets is now served by the dedicated Combobox component in v6-dev, and Menu's focus handling is tied to its keyboard semantics, so we're not adding a focus opt-out to `show()`. Closing — Combobox is the recommended path; please open a new issue if it doesn't fit your case.

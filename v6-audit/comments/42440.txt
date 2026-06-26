@@ -1,0 +1,1 @@
+We're not changing this in v5. v6-dev rebuilds modals on the native `<dialog>` element, which uses the `[open]` attribute rather than inline `display` styles, so there's nothing to allow-list. Closing — please open a new issue if CSP is still a problem in v6-dev.

@@ -1,0 +1,1 @@
+v6-dev guards the transition-completion callback against a disposed instance, so hide() followed by dispose() no longer throws. Closing — please open a new issue if it persists in v6-dev.

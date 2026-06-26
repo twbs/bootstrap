@@ -1,0 +1,1 @@
+Same root as the initial-`.show` positioning case (#41148): a dropdown opened by hand-adding `.show` has no Menu instance, so the auto-close machinery (which only tracks menus it opened) can't close it. Open it via `show()` or the data API and `auto-close` works. Closing — please open a new issue if auto-close misbehaves on a normally-opened menu in v6-dev.

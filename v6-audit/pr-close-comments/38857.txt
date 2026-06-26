@@ -1,0 +1,1 @@
+v6-dev's Dialog/Drawer `dispose()` now closes the element and clears the body scroll-lock when disposed while open (#35934, in #42544), covering the body-attribute cleanup here. Closing in favor of the v6 work since this targets v5 and isn't slated for a v5.x release. Thanks!

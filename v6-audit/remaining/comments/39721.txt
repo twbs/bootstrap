@@ -1,0 +1,1 @@
+v6-dev rebuilds the carousel on native CSS scroll-snap, so the v5 transform/`deltaX` touch code behind the reversed iOS swipe is gone (and Safari 12 is below v6's browser baseline). Closing as resolved in v6-dev — please open a new issue if you see reversed swiping on a current iOS Safari there.

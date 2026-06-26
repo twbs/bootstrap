@@ -1,0 +1,1 @@
+Fixed in v6-dev by #42545, which moves the dialog scroll-lock to `:root` so it co-locates with `scrollbar-gutter: stable` (no content shift / white gutter) — the same #40659 this addresses. Closing in favor of the v6 work; thanks for the investigation here.

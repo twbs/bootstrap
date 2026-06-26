@@ -1,0 +1,1 @@
+v6-dev's outline buttons derive distinct hover and active backgrounds (different oklch lightness/chroma), so they're no longer identical. Closing as resolved in v6-dev — please open a new issue if it persists there. (Sticky-hover on touch is a separate concern.)

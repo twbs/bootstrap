@@ -1,0 +1,1 @@
+v6-dev rebuilds offcanvas as a `drawer` on the native `<dialog>` element, and Escape is handled in both the modal and non-modal cases, so `backdrop: false` still closes on Esc. Closing — please open a new issue if it persists in v6-dev.

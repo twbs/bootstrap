@@ -1,0 +1,1 @@
+v6-dev rebuilds modals on the native `<dialog>` element, so there's no separate backdrop node to leave behind. Closing as resolved there — please open a new issue if this persists for you in v6-dev.

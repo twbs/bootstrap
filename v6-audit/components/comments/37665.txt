@@ -1,0 +1,1 @@
+v6-dev's tooltip docs now cover this explicitly — there's a dedicated note on `data-bs-title` vs `title`, and either works (the plugin moves `title` to `data-bs-original-title` automatically). Closing as resolved in v6-dev — please open a new issue if a specific doc snippet is still wrong there.

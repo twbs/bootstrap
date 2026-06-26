@@ -1,0 +1,1 @@
+v6-dev's token system feeds non-null maps, so the compiled CSS no longer emits empty custom properties. Closing as resolved in v6-dev — please open a new issue if you find an empty `--var: ;` there.

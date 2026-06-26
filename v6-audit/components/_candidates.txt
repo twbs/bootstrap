@@ -1,0 +1,57 @@
+31088	[popover]	popovers: do not dismiss on next click inside
+33957	[dropdown]	Auto position does not work correctly when dropdown is in nav tag #v.5
+34110	[dropdown]	expose popper "strategy" config to dropdown
+34400	[dropdown]	Bootstrap dropdown toggle prevents links
+35774	[dropdown]	Dropdown position relatively to body with boundary option in BS5
+35793	[dropdown]	A11y: Closing a dropdown should return focus to the dropdown control
+36681	[menu]	OffCanvas menu with anchors: Chrome stopps scrolling
+36789	[dropdown]	Popper warning regarding .dropdown-menu margin usage when data-bs-display="static" 
+36944	[tooltip]	Popovers/tooltips not showing up on radio input on iOS and MacOS
+37042	[dropdown]	Bootstrap 5.2 - How to toggle a dropdown using javascript?
+37205	[dropdown]	Arrow Indicator for Dropdown Menus
+37206	[popover]	Popover setContent closes Popover after being opened with .show() or on hover
+37363	[tooltip]	Tooltip in Bootstrap v5.2.2 does not follow the 'placement' property; works correctly in v4.6.2 though
+37428	[dropdown]	Escape keydown gets TypeError on Dropdown elements
+37474	[tooltip]	function _isWithActiveTrigger in tooltip.js is causing an uncaught error
+37665	[tooltip]	There is an error in the usage instructions provided by the document *tooltip*
+37935	[tooltip]	Tooltips not working when inside the form-floating class
+37977	[dropdown]	Dropdown: add an option to prevent focus on toggler via js show()
+38200	[popover]	Popover arrow while zooming
+38414	[dropdown]	Dropdown opens and re-closes with one click in Firefox when emulating mobile device
+38597	[tooltip]	Tooltip goes over superimposed fixed components when active while scrolling
+38801	[dropdown]	DP Aria for the dropdowns
+38842	[dropdown]	Allow dropdowns to have a configurable container 
+38858	[tooltip]	Please log the affected DOM node to the console for error "Bootstrap doesn't allow more than one instance per element. Bound instance: bs.tooltip."
+38874	[tooltip]	Add CSS class for tooltip HTML mode
+39010	[popover]	Popovers: triggers click and focus can't be combined
+39026	[tooltip]	abbr[title] with tooltip is deleting dotted underline styling
+39081	[tooltip]	Tooltip (Popover) second call to .show() hides the tooltip
+39103	[dropdown]	Integrate custom dropdown combined with input (combobox)
+39182	[dropdown]	Bootstrap doesn't allow more than one instance per element. Bound instance: bs.dropdown
+39692	[tooltip]	Tooltips should be dismissible with the `Escape` key
+39861	[popover]	Popover event.preventDefault() for show.bs.popover: disables popover
+39945	[tooltip]	Tooltips: screen readers do not always read the textual content
+39984	[dropdown]	Dark dropdowns/navbars don't get dark variables with dark theme
+40524	[popover]	[Popover] Manually triggered popover hides when calling `setContent()`
+40525	[popover]	[Popover] Cannot show popover if its title or content was set dynamically
+40571	[popover]	Popover content option (passed as function) documentation issue
+40624	[popover]	Popover border overlaps arrow when placement is top in some resolutions
+40822	[tooltip]	Incorrect description for Tooltips getInstance method in documentation
+40993	[popover]	Popover arrow doesn't match the header background if placement is bottom
+40995	[dropdown]	a.dropdown-toggle should be button.dropdown-toggle
+41020	[tooltip]	Provide proper documentation for using Tooltip with selector
+41021	[dropdown]	Dropdown prevents default actions for contenteditable elements on Up/Down arrow keys
+41049	[dropdown]	navbar-collapse used with dropdown-toggle
+41148	[dropdown]	Dropdown with initial "show" does not seems to correctly place the dropdown if you are using some of the positioning classes 
+41167	[dropdown]	Dropdown: Key down not working if .dropdown-toggle is <input type="text">
+41182	[dropdown]	Disappearance of the Select Dropdown Arrow When Using Autocomplete
+41344	[dropdown]	Dropdown with initial "show" class and data-bs-auto-close="outside" doesn't close
+41354	[dropdown]	Submitting form on input focus (pressing enter) and dropdown is toggled instead of submitting
+41588	[dropdown]	dropdown.js: _completeHide results in uncaught TypeError
+41630	[dropdown]	Keyboard navigation for Tabs and Tab Dropdown Menues
+41670	[dropdown]	Dropdowns in Tables have z-index issues with subsequent rows
+41803	[dropdown]	Clicks within forms within dropdowns no longer ignored and close the dropdown
+41869	[dropdown]	Keyboard navigation in dropdowns with auto-close outside behavior leaves multiple dropdowns shown
+41925	[popover]	[Popover] data-bs-content="true"/"false" auto-converted to boolean causes TypeError, but "true"/"false" are valid string content.
+42065	[tooltip]	Popovers and tooltips should remain open when content is hovered
+42443	[tooltip]	Should data:text/html be allowed in tooltip or popover data-bs-title?

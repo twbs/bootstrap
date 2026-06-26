@@ -1,0 +1,1 @@
+Verified against the v6-dev build: a custom `border-bottom` on a table cell is respected (not clobbered by the cell background fill). Closing as resolved in v6-dev — please open a new issue if a specific case persists there.

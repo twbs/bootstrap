@@ -1,0 +1,1 @@
+Pinch-to-zoom rescaling of top-layer/fixed content is a browser (Safari) rendering behavior rather than something we control — v6-dev's move to the native `<dialog>` element doesn't change it, and we treat zoom artifacts as out of scope (see Browsers & devices). Closing — please open a new issue if you see this outside of pinch-zoom in v6-dev.

@@ -1,0 +1,1 @@
+v6-dev relies on the native `<dialog>` element's focus handling rather than our old focus-trap sentinels, so the stray stop on a hidden element shouldn't occur. Closing — please open a new issue if you still see it in v6-dev.

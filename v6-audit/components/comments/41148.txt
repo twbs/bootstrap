@@ -1,0 +1,1 @@
+A dropdown rendered with the `.show` class in markup never instantiates a Menu, so Floating UI positioning never runs — positioning only applies when the menu is opened via `show()` or the data API. This is by design. Closing — please open a new issue if positioning is wrong after opening a menu normally in v6-dev.

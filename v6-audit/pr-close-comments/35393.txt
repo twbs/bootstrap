@@ -1,0 +1,1 @@
+v6-dev rebuilds Modal as the native `<dialog>`-based Dialog, and #42544 restores focus to the trigger with `{ preventScroll: true }` on close — covering the same #35391 this fixes. Since this targets v5 and isn't slated for a v5.x release, closing in favor of the v6 work. Thanks for the fix.

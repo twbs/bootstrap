@@ -1,0 +1,1 @@
+v6-dev supports an instant, non-animated close via the `dialog-instant`/`drawer-instant` class, which skips the exit transition and closes synchronously. Closing — please open a new issue if you need more control in v6-dev.

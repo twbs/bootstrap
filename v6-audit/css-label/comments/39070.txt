@@ -1,0 +1,1 @@
+v6-dev removes the `$navbar-light/dark-*` variables; navbar color now uses theme-aware tokens (`--fg-body`/`light-dark()`), so the confusingly-named variable is gone. Closing as resolved in v6-dev — please open a new issue if it persists there.

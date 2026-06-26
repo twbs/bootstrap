@@ -1,0 +1,1 @@
+Menu (the v6 successor to Dropdown) is built on Floating UI and exposes the positioning strategy directly via the `strategy` option / `data-bs-strategy`, so you can set `fixed` without a custom config. Closing — please open a new issue if you need more control in v6-dev.

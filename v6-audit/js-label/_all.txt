@@ -1,0 +1,73 @@
+42443	Should data:text/html be allowed in tooltip or popover data-bs-title?	js
+42065	Popovers and tooltips should remain open when content is hovered	js,accessibility
+41925	[Popover] data-bs-content="true"/"false" auto-converted to boolean causes TypeError, but "true"/"false" are valid string content.	js
+41869	Keyboard navigation in dropdowns with auto-close outside behavior leaves multiple dropdowns shown	js
+41803	Clicks within forms within dropdowns no longer ignored and close the dropdown	js
+41650	[docs] Carousel `to` API incorrect (v4)	docs,js,v4,v5
+41615	[offcanvas] - triggers unexpected scroll to top when scroll-padding-top is set on html, body	js,confirmed
+41361	Scrollspy active elements are discontinuous	js,v5
+41188	Callback or Reliable API for Modal Transition Completion	js,feature
+41170	Provide a Bottom Sheet component	js,feature,css
+41167	Dropdown: Key down not working if .dropdown-toggle is <input type="text">	js
+41151	Can not trasition opacity for .collapse element	js
+41116	Simplify `bootstrapDelegationHandler` using `Element.closest`	js,feature,v5
+41021	Dropdown prevents default actions for contenteditable elements on Up/Down arrow keys	js,has-pr
+41020	Provide proper documentation for using Tooltip with selector	docs,js,enhancement
+41003	[v6/v5]: Is it possible to support shadow the use of the Bootstrap Javascript plugins within the context of the shadow DOM?	js,feature
+40841	Collapse’s `aria-expanded` attribute never leaves `true` state.	js,v5
+40571	Popover content option (passed as function) documentation issue	js,v5
+40526	Scrollspy: focus shift bug	js,v5
+40525	[Popover] Cannot show popover if its title or content was set dynamically	js,v5
+39910	Offcanvas - dispose() not reseting scrollbars	js,v5
+39540	Collapse adds an automatic closing behavior	js,feature
+39385	Two collapsible elements with the same parent can be opened at the same time.	js,v5
+39301	Ability to disable `EventHandler` automatic listener assignments	js,feature
+39290	[Modal] Allow dynamic configs by reevaluating its properties on show	js,feature
+39287	Offcanvas - Initial transition not happening when setting the placement in JS	js,v5
+39248	Use bootstrap ScrollSpy with anchor using dots?	js,feature
+39198	Scrollspy creates an invalid query selector	js,v5
+39094	The this context is not set when using function in component options	js,v5
+39026	abbr[title] with tooltip is deleting dotted underline styling	js,v5
+39010	Popovers: triggers click and focus can't be combined	js,v5
+38914	Bootstrap 5 not working with Vite and jQuery	docs,js,help wanted,v5
+38858	Please log the affected DOM node to the console for error "Bootstrap doesn't allow more than one instance per element. Bound instance: bs.tooltip."	js,feature,v5
+38806	Tabs not working with Shadow Root	js,v5
+38565	nav-link tabs are preventing default browser behavior for alt + left/right arrow keys	js,v5
+38517	Memory leak with dynamic html + All components	js,v5
+38373	Uncaught TypeError: Illegal invocation	js,v5
+38189	Next.js (13.2.3) - bootstrap@5.3.0-alpha1: Uncaught TypeError: Cannot read properties of undefined (reading 'backdrop')	js,v5
+38070	offcanvas scrolls back to trigger element on close	js,accessibility,v5
+38035	BDropdown autoClose false description inaccurate to actual behavior	js,v5
+37969	Carousel autoplay stops the touch swipe	js,v5
+37916	Make it optional to hide offcanvas when resizing the window	js,feature
+37858	SyntaxError: Failed to execute 'querySelector' on 'Element': '#div-2.1' is not a valid selector	js,v5
+37575	Tree shaking not working with RollupJS	js,v5
+37573	Make show/hide/toggle etc a Promise	js,feature,v6
+37265	toast.js : Cannot read properties of null (reading 'classList')	js,v5
+37245	JavaScript Instances registry, faulty re-set new instance	js,confirmed,v5,p3
+37206	Popover setContent closes Popover after being opened with .show() or on hover	js,v5
+37158	Add Modal's keyboard escape and focus options to Toasts	js,feature,v5
+37042	Bootstrap 5.2 - How to toggle a dropdown using javascript?	js,v5
+36962	data-bs-dismiss="offcanvas" doesn't work with responsive offcanvas (eg. offcanvas-lg)	js,v5,v6
+36931	Investigate switching to `mouseenter`/`pointerenter` events, instead of `mouseover` workarounds	js,feature,v6
+36918	Support modals embedded in Web Components	js,feature,v5
+36916	Bootstrap 5.2 - Any JS dependency changes?	js,confirmed,build
+36912	ScrollSpy root-margin gets disabeled by smoot-scroll set to false	js,v5
+36647	Offcanvas functionality should be combined with browser history (UX feature)	js,feature,v5
+36544	Carousel: change `interval` option to support only numbers	js,v6
+36431	ScrollSpy not behaving correctly	js,v5
+36399	add table to default sanitize allowlist	js,feature,v5
+36387	Enabling smooth scroll option in Scroll Spy prevents url hash change	js,v5
+35934	modal.dispose() does not fully clean up body element mutations	js,feature,v5
+35900	Navbar hides initial content when jumping to in-page anchor	js,css,v5
+35776	Bootstrap collapse close animation breaks when builiding in Angular's production mode	js,v5
+35685	Multiple sections can be expanded with Bootstrap 5.1 accordion	js,v5
+35664	Allow changing modal options after creation	js,feature
+35391	Restore focus to modal triggering element using { preventScroll: true }	js,feature,v5
+34836	Collapse: Remove `toggle` option	js,v6
+34299	Show collapsed content when linking directly to #fragment	js,feature
+34213	Can't hide modal before it is "shown?"	js,v5
+33761	Alert js closing event name, doesn't fit the rest naming convensions 	js,feature,v6
+31266	Ability to add listeners directly to objects like Modals/Collapse/etc 	js,feature,v5
+31088	popovers: do not dismiss on next click inside	js,feature
+29378	Expounding on "opt-in for performance reasons"	docs,js,help wanted,v5,v6

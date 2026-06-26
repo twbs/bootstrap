@@ -1,0 +1,1 @@
+v6-dev rewrites the breadcrumb divider as an SVG mask icon (no text value directive), so the RTLCSS-after-compression error no longer occurs. Closing as resolved in v6-dev — please open a new issue if it persists there.

@@ -1,0 +1,1 @@
+v6-dev's dialog/drawer no longer measure scrollbar width, so the forced reflow from that path is gone. Closing — please open a new issue with a reduced example if you still hit a slowdown in v6-dev.

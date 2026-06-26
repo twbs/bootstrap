@@ -1,0 +1,1 @@
+v6-dev uses the native `<dialog>` element, where Escape fires the native `cancel` event independently of any backdrop click, so Esc still closes a static-backdrop drawer. Closing — please open a new issue if it persists in v6-dev.

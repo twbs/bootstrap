@@ -1,0 +1,1 @@
+This is intentional: only one instance per component key is allowed, but different components use different keys (`bs.menu` vs `bs.tooltip`), so you can still attach both to one element — the message is a guard, not a hard limit. Closing — please open a new issue if you hit a genuine conflict in v6-dev.

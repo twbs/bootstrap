@@ -1,0 +1,1 @@
+v6-dev replaces the `$body-bg` Sass variable with the `--bg-body` CSS custom property — the whole color system is CSS-variable + `color-mix()`/`oklch()` based, so there's no Sass color function operating on a `var()` to break. Closing as resolved in v6-dev — please open a new issue if you hit a build error there.

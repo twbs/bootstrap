@@ -1,0 +1,1 @@
+v6-dev nests the `.btn-check` input inside its label, so `position: absolute` resolves against the label and the scroll-to-top focus jump is gone. Closing as resolved in v6-dev — please open a new issue if it persists there.

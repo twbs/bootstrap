@@ -1,0 +1,1 @@
+v6-dev moves to the native `<dialog>` element and its `::backdrop`, so there's no backdrop node or root to configure anymore. Closing — please open a new issue if you hit something similar in v6-dev.

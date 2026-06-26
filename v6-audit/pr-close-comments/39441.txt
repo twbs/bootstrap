@@ -1,0 +1,1 @@
+In v6-dev the `$navbar-light-*`/`$navbar-dark-*` Sass variables were removed entirely — navbar color now flows through the theme-token system (`--fg-body` / `light-dark()`), so the renamed aliases here no longer apply (#39070). Closing in favor of the v6 approach. Thanks for surfacing the naming issue.

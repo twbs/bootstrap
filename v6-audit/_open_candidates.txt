@@ -1,0 +1,44 @@
+31266	Ability to add listeners directly to objects like Modals/Collapse/etc 
+34213	Can't hide modal before it is "shown?"
+34584	Offcanvas with body scrolling - confusing/illogical focus behaviour and concept
+35391	Restore focus to modal triggering element using { preventScroll: true }
+35664	Allow changing modal options after creation
+35934	modal.dispose() does not fully clean up body element mutations
+36647	Offcanvas functionality should be combined with browser history (UX feature)
+36681	OffCanvas menu with anchors: Chrome stopps scrolling
+36918	Support modals embedded in Web Components
+36962	data-bs-dismiss="offcanvas" doesn't work with responsive offcanvas (eg. offcanvas-lg)
+37155	Offcanvas with static backdrop doesn't close on Esc if you click on the backdrop
+37158	Add Modal's keyboard escape and focus options to Toasts
+37613	Allow hiding modal synchronously after removing fade class
+37916	Make it optional to hide offcanvas when resizing the window
+38070	offcanvas scrolls back to trigger element on close
+38162	Offcanvas doesn't close on escape when `data-bs-backdrop` is set to false
+38447	Offcanvas with `backdrop: false` should have `aria-modal="false"`
+38515	Can't focus input field inside Toast when a Modal is shown
+38887	Offcanvas multiple same events
+38911	Responsive offcanvas placement
+39221	Offcanvas apparence causes a left displacement of 1px of some elements  
+39270	navbars-offcanvas uses translateY to cause abnormal page width performance
+39287	Offcanvas - Initial transition not happening when setting the placement in JS
+39290	[Modal] Allow dynamic configs by reevaluating its properties on show
+39408	Offcanvas outside focus
+39415	Non-standard offcanvas in Offcanvas navbar example?
+39433	modal-xxl size
+39780	Quick click issue when during offcanvas opening
+39900	Upon initial launch of the Bootstrap modal NVDA reads all the content of the modal
+39910	Offcanvas - dispose() not reseting scrollbars
+39972	Modal and offcanvas page content jumping vertically
+39987	Offcanvas and Modal open and close immediately on some touch devices
+40640	Add modal width breakpoints as CSS Variables
+40659	Opening a modal with scrollbar-gutter: stable shifts the page content and shows white (non grey-overlayed) gutters
+40908	In Safari, opening an offcanvas element from the side changes the window width, which can trigger a media query
+41059	Andriod TalkBack reads background content when Offcanvas is open on Android
+41188	Callback or Reliable API for Modal Transition Completion
+41307	modal scale and position is affected by pinch-to-zoom on iOS
+41430	modal.show() slow forced layout re-flow of large page
+41473	Offcanvas hide() then dispose() runs into "this._element is null"
+41580	Accessibility Improvement: Close buttons (for alerts, modals etc)
+41606	There is an extra focus stop on hidden element at the end of modal.
+41615	[offcanvas] - triggers unexpected scroll to top when scroll-padding-top is set on html, body
+42459	The content overflows when the dialog is resized to a smaller screen.

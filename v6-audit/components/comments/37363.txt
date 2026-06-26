@@ -1,0 +1,1 @@
+v6-dev positions tooltips with Floating UI; when there's room the requested `placement` is honored and it only flips when there isn't space (verified `placement: 'right'` stays on the right). Closing — please open a new issue if a tooltip ignores its placement with space available in v6-dev.

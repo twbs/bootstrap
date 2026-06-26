@@ -1,0 +1,1 @@
+v6-dev rebuilds dropdowns as the Menu component on Floating UI, which positions menus the same way everywhere — there's no longer a special case that skipped auto-positioning inside nav. Closing — please open a new issue if auto-placement misbehaves in a navbar in v6-dev.

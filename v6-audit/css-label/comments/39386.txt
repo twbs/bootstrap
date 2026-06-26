@@ -1,0 +1,1 @@
+A bare `.toast` has no positioning by design — toasts are meant to live inside a `.toast-container`, which owns position/z-index. Closing as by-design — please open a new issue if the container doesn't cover your case in v6-dev.

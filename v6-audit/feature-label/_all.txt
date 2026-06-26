@@ -1,0 +1,71 @@
+42330	Add MCP server for Bootstrap docs and component API	feature
+42098	On resizing, hide shown navigation	feature
+41907	Docs: Using the Speculation Rules API for faster page loads	docs,feature
+41900	Suggest a new Scrollspy fix for version 6.	feature
+41530	Purge CSS standalone application	docs,feature,enhancement
+41500	Pagination: `.page-text` (class for skipped/omitted pages) (v5.3)	feature,css
+41479	Support searchable accordions via hidden=until-found	feature,accessibility
+41371	Fix border shortcomings - separate border-bottom-2 - shorter class names: bb-2, bt-2, by-2	feature,css
+41227	Add :hover media query back	feature,css
+41188	Callback or Reliable API for Modal Transition Completion	js,feature
+41170	Provide a Bottom Sheet component	js,feature,css
+41116	Simplify `bootstrapDelegationHandler` using `Element.closest`	js,feature,v5
+41055	Introducing new viewport units 	feature,css,v6
+41047	add the fade transition to a css var	feature,css
+41035	Animation on Toasts	feature,design
+41003	[v6/v5]: Is it possible to support shadow the use of the Bootstrap Javascript plugins within the context of the shadow DOM?	js,feature
+40927	Breakpoint indicator label	feature,css
+40859	Visually-hidden breakpoints	feature,css,has-pr
+40827	Add `:focus-within` class like `.form-control:focus`	feature,css
+40725	Automatically provide "expand all" and "collapse all" for accordions	feature
+40567	Add extra classes to min-vh-*	feature,css
+39867	Floating Labels for File Input	feature,css
+39774	Support tables in cards (Gist provided)	feature
+39609	Support for out of the box `$custom-colors` variable being merged with `$theme-colors` map	feature,css
+39540	Collapse adds an automatic closing behavior	js,feature
+39506	Collapse: make it possible to add a root or scope for where to look for triggers	feature
+39433	modal-xxl size	feature,css,has-pr,v5
+39415	Non-standard offcanvas in Offcanvas navbar example?	feature
+39301	Ability to disable `EventHandler` automatic listener assignments	js,feature
+39290	[Modal] Allow dynamic configs by reevaluating its properties on show	js,feature
+39265	Have .nav-underline bottom aligned inside a .navbar container	feature,css
+39248	Use bootstrap ScrollSpy with anchor using dots?	js,feature
+39213	Feature request: add responsive btn-group-vertical classes	feature
+39212	[Docs] Link old pages to new ones	docs,feature
+39151	.list-group-item-action .list-group-item-link	feature
+38911	Responsive offcanvas placement	feature
+38858	Please log the affected DOM node to the console for error "Bootstrap doesn't allow more than one instance per element. Bound instance: bs.tooltip."	js,feature,v5
+38801	DP Aria for the dropdowns	feature,accessibility
+38712	Increase discoverability of "range" control by using the term "slider"	docs,feature
+38493	Document the best way to override the primary color site-wide at runtime	feature
+38397	Create a Bootstrap class ordering prettier	feature,help wanted
+38150	Transition and animation helpers/utilities	feature,css,v5
+38111	Create footer utlity for always at bottom- of page and after content	feature,examples
+37916	Make it optional to hide offcanvas when resizing the window	js,feature
+37807	Grid System should support CSS Container Queries for responsive column sizing	feature,v6,backport-to-v5
+37618	Accordion page does not demonstrate JavaScript implementation	docs,feature
+37573	Make show/hide/toggle etc a Promise	js,feature,v6
+37522	Simultaneous table-striped and table-hover aren't different enough (5.2)	feature
+37479	Add a CI action on every Dependabot branch, checking for dist files references	feature,help wanted,CI,github-actions,p4
+37390	Add custom classes on backdrops at DOM insertion	feature
+37205	Arrow Indicator for Dropdown Menus	feature
+37158	Add Modal's keyboard escape and focus options to Toasts	js,feature,v5
+36931	Investigate switching to `mouseenter`/`pointerenter` events, instead of `mouseover` workarounds	js,feature,v6
+36918	Support modals embedded in Web Components	js,feature,v5
+36857	Edit examples on StackBlitz	docs,feature,v5
+36688	Use `:host` in selectors to better support web components	feature,css
+36647	Offcanvas functionality should be combined with browser history (UX feature)	js,feature,v5
+36607	Don't display dotted underline on `abbr[title]` tags to browsers that don't support hover	feature,css,has-pr
+36399	add table to default sanitize allowlist	js,feature,v5
+36330	Finer control on utilities responsiveness	feature,css,utility API
+35945	Utilities map configuration functions	feature,v5,utility API
+35941	Windows High Contrast Mode / forced color adaptations	feature,accessibility,v6
+35934	modal.dispose() does not fully clean up body element mutations	js,feature,v5
+35664	Allow changing modal options after creation	js,feature
+35391	Restore focus to modal triggering element using { preventScroll: true }	js,feature,v5
+34299	Show collapsed content when linking directly to #fragment	js,feature
+33861	Generate %placeholder utilities to @extend from	feature,css
+33761	Alert js closing event name, doesn't fit the rest naming convensions 	js,feature,v6
+32649	Change default behaviour of carousels to make autoplay opt-in	feature,accessibility,v6
+31266	Ability to add listeners directly to objects like Modals/Collapse/etc 	js,feature,v5
+31088	popovers: do not dismiss on next click inside	js,feature

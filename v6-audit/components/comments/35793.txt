@@ -1,0 +1,1 @@
+v6-dev's Menu returns focus to the toggle when it's closed with the Escape key. Closing — please open a new issue if focus isn't restored as expected in v6-dev.

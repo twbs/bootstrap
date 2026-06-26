@@ -1,0 +1,1 @@
+v6-dev ships as ESM with named exports and an `exports` map rather than separately-loaded IIFE files, so the manual script load-order concerns from 5.2 no longer apply. Closing — please open a new issue if you hit a dependency problem in v6-dev.

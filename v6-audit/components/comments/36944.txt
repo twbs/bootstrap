@@ -1,0 +1,1 @@
+Tested on the WebKit (Safari) engine in v6-dev and tooltips show on a radio input. Closing — please reopen with a reduced case if you still see it on a current iOS/macOS Safari in v6-dev.

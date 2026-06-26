@@ -1,0 +1,1 @@
+Menu (the v6 Dropdown successor) now has a `container` option, so you can render the menu on `<body>` or another element to escape `overflow` ancestors. Closing — please open a new issue if you need more here in v6-dev.

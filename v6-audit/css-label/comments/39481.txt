@@ -1,0 +1,1 @@
+v6-dev's `.btn-close` is painted with a `currentcolor` CSS mask (`--btn-close-color: inherit`) instead of the old white-only filter, so its color is freely customizable and follows the theme. Closing as resolved in v6-dev — please open a new issue if it doesn't cover your case there.

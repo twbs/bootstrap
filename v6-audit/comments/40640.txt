@@ -1,0 +1,1 @@
+v6-dev exposes dialog width as a `--dialog-width` custom property, so you can set per-dialog widths (including via media queries) without recompiling Sass. Closing — please open a new issue if you need more here in v6-dev.

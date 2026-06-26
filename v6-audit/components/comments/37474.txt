@@ -1,0 +1,1 @@
+v6-dev always initializes the tooltip's active-trigger state, so `_isWithActiveTrigger` can no longer hit the undefined value it was choking on. Closing — please open a new issue if the error resurfaces in v6-dev.

@@ -1,0 +1,1 @@
+v6-dev's tooltips now dismiss on the Escape key (WCAG 1.4.13). Closing — please open a new issue if it doesn't work as expected in v6-dev.

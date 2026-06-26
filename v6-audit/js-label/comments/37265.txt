@@ -1,0 +1,1 @@
+v6-dev guards the transition-completion callback against a disposed instance (`if (!this._element) return`), so disposing a toast mid-transition no longer throws on `classList`. Closing — please open a new issue if you can still reproduce it in v6-dev.

@@ -1,0 +1,1 @@
+v6-dev's `setContent()` now updates a visible popover in place and keeps it shown rather than hiding it (verified against a build). Closing — please open a new issue if it persists in v6-dev.

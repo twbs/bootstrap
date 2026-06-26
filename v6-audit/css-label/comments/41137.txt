@@ -1,0 +1,1 @@
+v6-dev already exposes these as CSS variables (`--control-checked-bg` / `--control-checked-border-color`), so check/radio checked colors are themeable without a Sass rebuild. Closing as resolved in v6-dev — please open a new issue if it doesn't cover your case there.

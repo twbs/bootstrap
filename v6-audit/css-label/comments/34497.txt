@@ -1,0 +1,1 @@
+`.col` is a flex item (`flex: 1 1 0`) without `min-width: 0` by design, so wide content overflowing the grid is standard flexbox behavior — set `min-width: 0`/`overflow` on the column. Closing as by-design — please open a new issue if you see a genuine regression in v6-dev.

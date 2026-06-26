@@ -1,0 +1,1 @@
+The white iframe background comes from the embedded third-party content's own `color-scheme`/background — Bootstrap can't style cross-origin iframe internals. Closing as out of scope — please open a new issue if you find a Bootstrap-side cause in v6-dev.

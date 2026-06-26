@@ -1,0 +1,1 @@
+In v6-dev the body keeps its open class as long as any modal dialog is still open, so this is handled. Closing — please open a new issue if it resurfaces in v6-dev.

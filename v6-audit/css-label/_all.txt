@@ -1,0 +1,88 @@
+42546	There is a strange blank space on the far right side of the dist code in the v6-dev branch.	css,v6
+42485	Tab's border issue on negative zoom.	css,v5
+41806	.list-group-item-action.active shows on hover underline if you changed default link on hover to underline	css
+41790	Adding .visually-hidden to table results in it taking up space	css,accessibility
+41725	List group action items appear disabled	css,confirmed,accessibility
+41723	v5.3 regression: table clips container's rounded border	css,confirmed
+41670	Dropdowns in Tables have z-index issues with subsequent rows	css
+41596	Stacked progress bars don't use transitions when updated	css,confirmed,has-pr
+41554	visually-hidden text in table shows body scrollbar in Chrome	css,confirmed,accessibility
+41500	Pagination: `.page-text` (class for skipped/omitted pages) (v5.3)	feature,css
+41371	Fix border shortcomings - separate border-bottom-2 - shorter class names: bb-2, bt-2, by-2	feature,css
+41289	Where applicable, convert SVG usage from background-image to mask-image	feature,css
+41227	Add :hover media query back	feature,css
+41213	Using box-sizing: inherit in the Universal Selector	css,enhancement
+41192	Variable for subtract .02px	css,on-hold,has-pr,v5,revisit-browserslist
+41170	Provide a Bottom Sheet component	js,feature,css
+41137	Allow setting .form-check-input:checked colors with CSS variables	feature,css,has-pr
+41055	Introducing new viewport units 	feature,css,v6
+41049	navbar-collapse used with dropdown-toggle	css,v5,design
+41047	add the fade transition to a css var	feature,css
+40993	Popover arrow doesn't match the header background if placement is bottom	css,confirmed,has-pr,v5
+40962	dart-sass 1.80.0+ throwing a lot of deprecations	css,has-pr,v5
+40961	Make hover state in utility classes more relevant	feature,css
+40927	Breakpoint indicator label	feature,css
+40879	Form Validation does not work when browser saved data is used.	css,v5
+40872	Error when using `$body-bg` with a custom property	css,v5
+40859	Visually-hidden breakpoints	feature,css,has-pr
+40849	New deprecations in Sass 1.79	css,has-pr,v5
+40827	Add `:focus-within` class like `.form-control:focus`	feature,css
+40702	`.row` with `.g-*` class picks up extra `margin-top` using column break	css,v5
+40688	[hidden] rule in reboot CSS should be scoped to allow "until-found"	css,confirmed
+40659	Opening a modal with scrollbar-gutter: stable shifts the page content and shows white (non grey-overlayed) gutters	css
+40652	Use SAPC-APCA algorithm for color contrast	feature,css,accessibility
+40567	Add extra classes to min-vh-*	feature,css
+40557	Disabled buttons get colored on colorful background	css,design
+40414	Chrome/Edge default color-scheme scrollbars	css,has-pr,v5,color mode
+39899	Floating labels incorrectly positioned for inputs with autofill, but no value	css,v5
+39867	Floating Labels for File Input	feature,css
+39851	Range input slider thumb has default border radius from browsers	css,v5
+39727	`aria-disabled` buttons should have same CSS as `disabled`	css,accessibility
+39609	Support for out of the box `$custom-colors` variable being merged with `$theme-colors` map	feature,css
+39597	--bs-navbar-toggler-icon-bg variable not set for .navbar-icon-toggler in light mode	css,v5,color mode
+39522	Legend not formatted like an label in a vertical form	css,v5
+39507	Some length value variables cannot be `calc()` or `var()` expressions	css,enhancement
+39481	Can the close button change color now?	feature,css
+39433	modal-xxl size	feature,css,has-pr,v5
+39386	.toast class by itself does not pickup z-index	css,v5
+39270	navbars-offcanvas uses translateY to cause abnormal page width performance	css,v5
+39265	Have .nav-underline bottom aligned inside a .navbar container	feature,css
+39257	FloatingLabels not working for input date or input time	css,v5
+39239	Active style for checkbox buttons should also apply with checkboxes embedded in the label	css,accessibility,v5
+39199	Using the .form-text class with an inline form breaks the layout.	css,v5
+39150	Incorrect borders with .list-group-flush.list-group-horizontal	css,confirmed,v5
+39097	d-grid with checkbox or radio buttons causes scrolling in Chrome on button click	css,v5
+39085	Outline buttons have the same active and hover color	css,v5,design
+39070	Navbar color in dark mode uses the $navbar-light-color Sass variable	css,v5,color mode
+39053	Dark mode shadow	css,v5,color mode,design
+38980	Change to border-width in 5.3 affects table negatively	css,v6
+38973	data-bs-theme="dark" behaves differently compared to CSS class `navbar-dark`	css,v5,color mode
+38889	Suggestion to add functionality for border-color as gradient	feature,css
+38853	btn-close: dark mode data attribute only works when on parent, not when on button directly	css,v5,color mode
+38808	$form-feedback-valid-color and $form-feedback-invalid-color do not apply to box-shadow	css,v5
+38779	v5.3.0: Table rows can no longer be colored with text-bg-*	css,v5
+38750	5.3 data-bs-theme dark IFRAME white background	css,v5
+38651	Nesting grids in row-col combined with gutters deforms the nested columns in width	css,v5,v6
+38597	Tooltip goes over superimposed fixed components when active while scrolling	css,v5
+38480	Insufficient contrast on borders	css,accessibility,v5,color mode,design
+38479	Extra margin between <legend> and <div class="row g-3">	css,v5,v6
+38404	<pre> with wide content doesn't fit 'col' and causes horizontal scrollbar	css,v5
+38213	V5 Navbar: navbar-toggler should have a custom bg-color, hover-bg-color, hover-border-color	feature,css,v5
+38150	Transition and animation helpers/utilities	feature,css,v5
+38094	Disable smooth scrolling by default	feature,css,accessibility,v5
+37935	Tooltips not working when inside the form-floating class	css,v5
+37909	Breaking change for v6: fix overflow scrollbar for code block in reboot	css,v6
+37821	Progress bar text doesnt handle the 0% case	css,accessibility,v5
+37345	Numbered list-groups with `start` attribute do not count correctly.	css,v5
+36943	text-truncate adding extra height to display block elements	css,v5
+36688	Use `:host` in selectors to better support web components	feature,css
+36656	input-group renders differently for form-control-plaintext than with form-control	css,has-pr,v5
+36607	Don't display dotted underline on `abbr[title]` tags to browsers that don't support hover	feature,css,has-pr
+36595	Prevent `null` Sass variables from creating empty CSS variables	css,v5
+36330	Finer control on utilities responsiveness	feature,css,utility API
+36026	Form-floating form-control doesn't display placeholder	feature,css,has-pr,v5
+35988	breadcrumb-divider: applying RTLCSS after compressed Sass compiling results in error	css,build,v5,rtl
+35900	Navbar hides initial content when jumping to in-page anchor	js,css,v5
+34497	Auto-layout column (col with no number) allows wide content to break the grid	css,v5
+34184	Buttons do not show up properly in a table without a tbody	css,confirmed,has-pr,v5
+33861	Generate %placeholder utilities to @extend from	feature,css

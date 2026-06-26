@@ -1,0 +1,1 @@
+The floating-label placeholder is intentionally transparent — it drives the label's float transition via `:placeholder-shown`. An always-visible placeholder isn't supported by that pattern. Closing as by-design — please open a new issue if you have a different case in v6-dev.

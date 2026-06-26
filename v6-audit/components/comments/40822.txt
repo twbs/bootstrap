@@ -1,0 +1,1 @@
+The v6-dev docs already describe `getInstance` correctly — it returns the existing instance (or `null`) and does not create one; `getOrCreateInstance` is the method that creates. Closing as resolved in v6-dev — please open a new issue if you spot a remaining inaccuracy there.

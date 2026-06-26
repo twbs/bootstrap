@@ -1,0 +1,1 @@
+v6-dev applies checked styling to the input itself (`appearance: none` + `:checked`), and toggle buttons expect the input nested inside the label, so the embedded-checkbox pattern is supported. Closing as resolved in v6-dev — please open a new issue if it persists there.

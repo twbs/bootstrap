@@ -1,0 +1,1 @@
+v6-dev uses distinct tokens for action vs disabled list-group items (`--list-group-action-color` vs `--list-group-disabled-color`), so action items no longer look disabled. Closing as resolved in v6-dev — please open a new issue if it persists there.

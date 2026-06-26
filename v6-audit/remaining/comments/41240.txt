@@ -1,0 +1,1 @@
+The scroll landing mid-content when one accordion panel closes as another opens is the browser's scroll-anchoring behavior, not something Collapse controls — addressing it would mean animating page scroll, which is out of scope. Closing as won't-fix — please open a new issue if you can show a Collapse-side cause in v6-dev.

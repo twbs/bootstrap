@@ -1,0 +1,1 @@
+v6-dev removes `.navbar-dark` and reworks the navbar onto theme tokens — a dark navbar is `bg-primary` + `data-bs-theme="dark"`, and inner dropdowns can be scoped with their own `data-bs-theme`. The old divergence no longer applies. Closing as resolved in v6-dev — please open a new issue if it persists there.

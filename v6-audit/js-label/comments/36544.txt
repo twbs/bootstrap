@@ -1,0 +1,1 @@
+v6-dev's Carousel `interval` accepts only a number (`DefaultType.interval: 'number'`); pausing and autoplay are governed by the separate `pause`/`autoplay` options. Closing as done — please open a new issue if you need more here in v6-dev.

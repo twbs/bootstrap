@@ -1,0 +1,1 @@
+v6-dev handles the legend/gutter spacing with the gap-based layout that's now standard (the workaround noted here). Closing as resolved in v6-dev — please open a new issue if you hit a real gap problem there.

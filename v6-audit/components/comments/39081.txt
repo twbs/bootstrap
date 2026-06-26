@@ -1,0 +1,1 @@
+v6-dev's tooltip no longer toggles on `show()` — calling `show()` on an already-visible tooltip keeps it shown (verified against a build). Closing — please open a new issue if it persists in v6-dev.

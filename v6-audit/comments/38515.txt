@@ -1,0 +1,1 @@
+v6-dev's modal runs on the native `<dialog>` element, so content outside it is inert by design — place the toast inside the dialog, or run it non-modal (`modal: false`), to keep it focusable. Closing — please open a new issue if that doesn't cover your case in v6-dev.

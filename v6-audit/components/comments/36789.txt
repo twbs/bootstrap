@@ -1,0 +1,1 @@
+This warning came from Popper, which v6-dev no longer uses — Menu is built on Floating UI, so the `dropdown-menu` margin warning is gone. Closing — please open a new issue if you hit positioning problems in v6-dev.

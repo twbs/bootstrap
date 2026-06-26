@@ -1,0 +1,1 @@
+v6-dev already ships `$enable-smooth-scroll: false` as the default, so smooth scrolling is off out of the box. Closing as resolved in v6-dev.

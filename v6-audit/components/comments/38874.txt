@@ -1,0 +1,1 @@
+Rather than auto-adding a class for HTML tooltips, use `customClass` (`data-bs-custom-class`) to target them, together with the `--tooltip-max-width` custom property for sizing. Closing as working-as-intended — please open a new issue if that approach falls short in v6-dev.

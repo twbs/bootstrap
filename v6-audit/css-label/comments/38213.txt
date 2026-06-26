@@ -1,0 +1,1 @@
+v6-dev's navbar toggler is a `.btn` with `--btn-bg`/`--btn-hover-bg` tokens plus toggler border tokens, and its icon is a `currentcolor` mask — so background, hover, border, and icon color are all customizable. Closing as resolved in v6-dev — please open a new issue if you need more there.

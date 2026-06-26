@@ -1,0 +1,1 @@
+v6-dev's navbar toggler icon is a `currentcolor` mask, so it's visible in both light and dark without a separate light-mode variable. Closing as resolved in v6-dev — please open a new issue if a standalone toggler outside `.navbar` needs more there.

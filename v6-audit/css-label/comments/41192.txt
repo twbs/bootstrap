@@ -1,0 +1,1 @@
+v6-dev's breakpoint mixins use modern range syntax (`width < $max`) with no `-0.02px` subtraction, so there's no longer a value to factor into a variable. Closing as resolved in v6-dev — please open a new issue if something similar comes up there.

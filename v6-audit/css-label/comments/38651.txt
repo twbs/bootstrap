@@ -1,0 +1,1 @@
+Verified against the v6-dev build: nested `.row.row-cols-2.g-2` columns inside a `.col` render at equal widths with no deformation. Closing as resolved in v6-dev — please reopen with a reduced case if you still see it there.

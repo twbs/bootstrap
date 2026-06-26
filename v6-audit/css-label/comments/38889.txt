@@ -1,0 +1,1 @@
+Gradient borders require `border-image`, which isn't expressible through `border-color`; it's out of scope for a core utility but achievable with your own `border-image` CSS. Closing as won't-fix — please open a new issue if you have a token-based proposal for v6-dev.

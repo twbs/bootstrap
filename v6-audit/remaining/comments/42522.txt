@@ -1,0 +1,1 @@
+v6-dev's docs no longer include a Translations page (the community-translations listing was dropped), so there's nowhere to add this. Closing — please open a new issue if translation listings return to the v6-dev docs.

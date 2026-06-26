@@ -1,0 +1,1 @@
+In v6-dev, Menu (the Dropdown successor) is retokenized for color modes, and a navbar under a parent `data-bs-theme="dark"` renders with dark-appropriate colors (light text on a dark background). Closing — please open a new issue if a specific case still doesn't pick up the dark theme in v6-dev.

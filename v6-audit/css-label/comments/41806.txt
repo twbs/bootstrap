@@ -1,0 +1,1 @@
+v6-dev sets `text-decoration: none` on `.list-group-item-action` at the base level, so active items don't gain a hover underline even with underlined link-hover. Closing as resolved in v6-dev — please open a new issue if it persists there.

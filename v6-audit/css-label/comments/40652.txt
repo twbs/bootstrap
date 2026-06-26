@@ -1,0 +1,1 @@
+v6-dev no longer computes per-color foregrounds with a WCAG color-contrast Sass function — theme contrast tokens are author-defined under the oklch/token model, so switching the algorithm to APCA doesn't apply. Closing — please open a new issue if you'd like to discuss contrast tokens for v6-dev.

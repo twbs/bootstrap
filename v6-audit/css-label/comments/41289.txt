@@ -1,0 +1,1 @@
+v6-dev paints the relevant SVGs with `mask-image` + `currentcolor` via a shared `mask-icon` mixin (close button, navbar toggler, carousel controls). Closing as largely done in v6-dev — please open a new issue for any specific element still using a background-image there.
