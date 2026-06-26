@@ -13,6 +13,8 @@ import { isElement, toType } from './index.js'
  */
 
 class Config {
+  _config = {}
+
   // Getters
   static get Default() {
     return {}
@@ -26,10 +28,17 @@ class Config {
     throw new Error('You have to implement the static method "NAME", for each component!')
   }
 
-  _getConfig(config) {
+  setConfig(config) {
+    this._typeCheckConfig(config)
+    this._config = {
+      ...this._config,
+      ...(typeof config === 'object' ? config : {})
+    }
+  }
+
+  _getInitialConfig(config) {
     config = this._mergeConfigObj(config)
     config = this._configAfterMerge(config)
-    this._typeCheckConfig(config)
     return config
   }
 
