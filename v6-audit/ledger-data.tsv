@@ -1,0 +1,262 @@
+33727	Dialog/Drawer	CLOSE-RESOLVED		No separate backdrop div to leak (native `::backdrop`)
+34309	Dialog/Drawer	CLOSE-RESOLVED		Native `::backdrop` — no backdrop element/root to configure
+36463	Dialog/Drawer	CLOSE-RESOLVED		`_closeAndCleanup` keeps `dialog-open` while any modal dialog remains
+38814	Dialog/Drawer	CLOSE-RESOLVED		`.modal` container model gone; native dialog is the element
+39258	Dialog/Drawer	CLOSE-RESOLVED		Dialog/drawer no longer use the custom FocusTrap util
+39862	Dialog/Drawer	CLOSE-RESOLVED		Tab-cycle page scroll was custom focus-trap; native trap now
+40873	Dialog/Drawer	CLOSE-RESOLVED		`::backdrop` transitions with the dialog in CSS
+41005	Dialog/Drawer	CLOSE-RESOLVED		No manual `aria-hidden`; top layer + native inert
+41958	Dialog/Drawer	CLOSE-RESOLVED		Shift-Tab bg scroll was custom focus-trap; native trap
+42440	Dialog/Drawer	CLOSE-RESOLVED		Native dialog uses `[open]`, no inline `display` styles (CSP)
+42503	Dialog/Drawer	CLOSE-RESOLVED		Native focus trap; DOM order irrelevant
+38447	Dialog/Drawer	VERIFY		Non-modal `show()` gets no aria-modal; verify backdrop:false+scroll:false
+34213	Dialog/Drawer	KEEP-BUG		`hide()` still returns early while `_isTransitioning`
+36962	Dialog/Drawer	KEEP-BUG		Responsive `lg:drawer` dismiss `.closest('.drawer')` won't match (labeled v6)
+39900	Dialog/Drawer	KEEP-BUG		NVDA reads all modal content on launch; needs SR testing
+39972	Dialog/Drawer	KEEP-BUG	42545	`dialog-open` bare overflow:hidden, no gutter compensation → shift
+35664	Dialog/Drawer	KEEP-FEATURE		`setOptions()` after creation
+41188	Dialog/Drawer	KEEP-FEATURE		Reliable transition-complete callback/API
+38887	Dialog/Drawer	VERIFY		Listeners bound once in constructor, not per-open
+41473	Dialog/Drawer	VERIFY		`_queueCallback` guards null element
+38162	Dialog/Drawer	VERIFY		dialog-base non-modal Esc handler
+37155	Dialog/Drawer	VERIFY		Native `cancel` fires on Esc after backdrop click
+39408	Dialog/Drawer	VERIFY		`modal:false` → native non-modal allows outside focus
+38515	Dialog/Drawer	VERIFY		Native top-layer/inert by design; use `modal:false`
+39780	Dialog/Drawer	VERIFY		`_isTransitioning` blocks toggle mid-transition
+41606	Dialog/Drawer	VERIFY		Native dialog focus handling
+41059	Dialog/Drawer	VERIFY		`showModal()` native top-layer/inert
+34584	Dialog/Drawer	VERIFY		Native non-modal `show()` semantics
+37613	Dialog/Drawer	VERIFY		`dialog-instant` class → `_isAnimated()` false
+41430	Dialog/Drawer	VERIFY		No ScrollBarHelper / width measurement
+40640	Dialog/Drawer	VERIFY		`--dialog-width` token settable per element
+39987	Dialog/Drawer	VERIFY		Native `::backdrop`; verify manual-pointer-open case
+42459	Dialog/Drawer	KEEP-BUG		Dialog content overflows on resize (reported on v6-dev)
+38070	Dialog/Drawer	KEEP-BUG	42544	Close scrolls back to trigger (focus w/o `{preventScroll}`)
+41615	Dialog/Drawer	KEEP-BUG	42544	Close scrolls to top w/ `scroll-padding-top`
+35391	Dialog/Drawer	KEEP-BUG	42544	Restore focus with `{preventScroll:true}`
+36681	Dialog/Drawer	KEEP-BUG		Offcanvas anchor click stops scrolling (Chrome)
+35934	Dialog/Drawer	KEEP-BUG	42544	`dispose()` on open modal leaves body mutations
+39910	Dialog/Drawer	KEEP-BUG	42544	`dispose()` doesn't reset scrollbars
+39221	Dialog/Drawer	KEEP-BUG	42545	Offcanvas open 1px displacement (scrollbar)
+40659	Dialog/Drawer	KEEP-BUG	42545	`scrollbar-gutter:stable` shifts content + white gutters
+40908	Dialog/Drawer	KEEP-BUG	42545	Safari offcanvas open changes window width → media query
+39270	Dialog/Drawer	KEEP-BUG		navbar-offcanvas translateY page-width overflow (check)
+39287	Dialog/Drawer	KEEP-BUG		Initial transition missing when placement set via JS
+41307	Dialog/Drawer	KEEP-BUG		Modal scale/position w/ pinch-zoom iOS (likely wontfix)
+31266	Dialog/Drawer	KEEP-FEATURE		Chainable `.on()` listener method
+37158	Dialog/Drawer	KEEP-FEATURE		Keyboard-escape & focus options for Toasts
+38911	Dialog/Drawer	KEEP-FEATURE		Responsive offcanvas placement per breakpoint
+39290	Dialog/Drawer	KEEP-FEATURE		Re-evaluate modal configs on `show()`
+39433	Dialog/Drawer	KEEP-FEATURE		`modal-xxl` size (has-pr)
+41580	Dialog/Drawer	KEEP-FEATURE		Close-button a11y without CSS
+37916	Dialog/Drawer	KEEP-FEATURE		Make hide-on-window-resize optional
+36647	Dialog/Drawer	KEEP-FEATURE		Close offcanvas on browser back button
+39415	Dialog/Drawer	DOCS		offcanvas-navbar example uses non-standard `offcanvas-collapse`
+33957	Tooltip/Popover/Menu	CLOSE-RESOLVED		Menu always runs Floating UI (no nav exception)
+34110	Tooltip/Popover/Menu	CLOSE-RESOLVED		Menu now has a `strategy` option
+35774	Tooltip/Popover/Menu	CLOSE-RESOLVED		Menu `container` + `boundary` + `strategy:fixed`
+35793	Tooltip/Popover/Menu	CLOSE-RESOLVED		Menu Escape focuses the toggle
+36789	Tooltip/Popover/Menu	CLOSE-RESOLVED		Popper is gone (Floating UI)
+37428	Tooltip/Popover/Menu	CLOSE-RESOLVED		Escape keydown guarded (`if (!getToggleButton) return`)
+37474	Tooltip/Popover/Menu	CLOSE-RESOLVED		`_activeTrigger` always initialized
+38842	Tooltip/Popover/Menu	CLOSE-RESOLVED		Menu has a `container` option
+39103	Tooltip/Popover/Menu	CLOSE-RESOLVED		Now the dedicated Combobox component
+39692	Tooltip/Popover/Menu	CLOSE-RESOLVED		Tooltip Escape dismiss already implemented in v6
+37977	Tooltip/Popover/Menu	CLOSE-WONTFIX		input+toggle is Combobox's job; focus is integral
+38874	Tooltip/Popover/Menu	CLOSE-WONTFIX		use `customClass` + `--tooltip-max-width`
+39182	Tooltip/Popover/Menu	CLOSE-WONTFIX		One-instance-per-element intentional (different keys)
+41148	Tooltip/Popover/Menu	CLOSE-WONTFIX		manual `.show` class never inits Menu — by design (DUP 41344)
+41182	Tooltip/Popover/Menu	CLOSE-WONTFIX		select arrow vs autofill — browser limitation
+41344	Tooltip/Popover/Menu	CLOSE-WONTFIX		initial `.show` + autoClose — by design (DUP 41148)
+41354	Tooltip/Popover/Menu	CLOSE-WONTFIX		Enter submits form — `<button>` type=submit HTML behavior
+37042	Tooltip/Popover/Menu	DOCS	42552	toggle via JS docs
+37665	Tooltip/Popover/Menu	DOCS		tooltip usage snippet
+40571	Tooltip/Popover/Menu	DOCS	42550	content-function docs
+40822	Tooltip/Popover/Menu	DOCS		getInstance description
+40995	Tooltip/Popover/Menu	DOCS	42552	`a.dropdown-toggle` → `<button>`
+41020	Tooltip/Popover/Menu	DOCS	42552	tooltip `selector` docs
+34400	Tooltip/Popover/Menu	VERIFY		toggle still preventDefaults links — confirm v6 behavior
+37363	Tooltip/Popover/Menu	VERIFY		tooltip honors `placement` (Floating UI flip)
+38200	Tooltip/Popover/Menu	NEEDS-VERIFY		popover arrow at fractional zoom (visual 110/125%)
+38414	Tooltip/Popover/Menu	NEEDS-VERIFY		Firefox mobile-emulation double-toggle (no Firefox here)
+39081	Tooltip/Popover/Menu	VERIFY		second `.show()` keeps tooltip shown
+39945	Tooltip/Popover/Menu	VERIFY		SR announcement — `aria-label` added; test NVDA/VO
+39984	Tooltip/Popover/Menu	VERIFY		dark menu/navbar under dark wrapper
+40524	Tooltip/Popover/Menu	VERIFY		`setContent()` re-shows shown popover
+40624	Tooltip/Popover/Menu	NEEDS-VERIFY		popover border/arrow overlap (1080p visual)
+41588	Tooltip/Popover/Menu	VERIFY		`_completeHide` TypeError w/ DOM-removing widget
+36944	Tooltip/Popover/Menu	VERIFY		tooltip on radio (iOS Safari focus) — mostly browser
+37206	Tooltip/Popover/Menu	KEEP-BUG		setContent tears down shown popover
+37935	Tooltip/Popover/Menu	KEEP-BUG		tooltip dead in `.form-floating` (label pointer-events:none)
+38597	Tooltip/Popover/Menu	KEEP-BUG		tooltip z-index over fixed navbar
+39010	Tooltip/Popover/Menu	KEEP-BUG		click+focus can't combine to dismiss
+39026	Tooltip/Popover/Menu	KEEP-BUG		`abbr[title]` underline stripped by `_fixTitle`
+39861	Tooltip/Popover/Menu	KEEP-BUG	42548	preventDefault on show blocks reopening (`_isHovered` not reset)
+40525	Tooltip/Popover/Menu	KEEP-BUG	42551	setContent→show fails `_isWithContent` gate
+40993	Tooltip/Popover/Menu	KEEP-BUG	42550	bottom popover arrow bg ≠ header
+41021	Tooltip/Popover/Menu	KEEP-BUG	42550	contenteditable arrow keys blocked in menu
+41049	Tooltip/Popover/Menu	KEEP-BUG		menu width in collapsed navbar
+41167	Tooltip/Popover/Menu	KEEP-BUG		arrow nav dead when toggle is `<input>` (maybe Combobox)
+41630	Tooltip/Popover/Menu	KEEP-BUG		tabs + tab-menu keyboard nav
+41670	Tooltip/Popover/Menu	KEEP-BUG		menu in table clipped by row stacking
+41803	Tooltip/Popover/Menu	KEEP-BUG	42551	label click in form-in-menu closes menu
+41869	Tooltip/Popover/Menu	KEEP-BUG		autoClose:outside + keyboard leaves multiple shown
+41925	Tooltip/Popover/Menu	KEEP-BUG	42548	`data-bs-content` "true"/"false" coerced to boolean → TypeError
+42065	Tooltip/Popover/Menu	KEEP-BUG		tooltip/popover not hoverable (WCAG 1.4.13)
+42443	Tooltip/Popover/Menu	KEEP-BUG	42549	SECURITY: `data:text/html` passes the URL sanitizer
+31088	Tooltip/Popover/Menu	KEEP-FEATURE		don't dismiss popover on click-inside / allow text selection
+37205	Tooltip/Popover/Menu	KEEP-FEATURE		caret indicator for menus
+38801	Tooltip/Popover/Menu	KEEP-FEATURE		arrow-key cycling / menubar APG
+38858	Tooltip/Popover/Menu	KEEP-FEATURE		log offending DOM node on duplicate-instance error
+29378	JS (misc)	CLOSE-RESOLVED		tooltips/popovers auto-init via DATA_API delegation
+36431	JS (misc)	CLOSE-RESOLVED	42557	ScrollSpy rebuilt on IntersectionObserver
+36544	JS (misc)	CLOSE-RESOLVED		Carousel `interval` is number-only now
+36916	JS (misc)	CLOSE-RESOLVED		ESM named exports; no load-order problem
+37245	JS (misc)	CLOSE-RESOLVED		base-component disposes prior instance before re-set
+37265	JS (misc)	CLOSE-RESOLVED		Toast null-classList crash guarded
+37969	JS (misc)	CLOSE-RESOLVED		Carousel on CSS scroll-snap — old touch/ride conflict gone
+38914	JS (misc)	CLOSE-RESOLVED		jQuery plugin bridge removed entirely
+39094	JS (misc)	CLOSE-RESOLVED		function this/first-arg = element (documented contract)
+38189	JS (misc)	CLOSE-WONTFIX		bad/undefined target — base-component returns early now
+41650	JS (misc)	DOCS		Carousel `.to()` docs example passes strings; should be numbers
+35900	JS (misc)	DOCS		navbar anchor behind fixed bar → document `scroll-margin-top`
+38035	JS (misc)	DOCS	42553	dropdown `autoClose:false` description clarification
+38565	JS (misc)	KEEP-BUG	42553	tab `_keydown` preventDefaults arrows unconditionally (Alt+←/→)
+37858	ScrollSpy	KEEP-BUG	42557	invalid querySelector `#div-2.1` (selector escaping)
+39198	ScrollSpy	KEEP-BUG	42557	creates invalid query selector (selector escaping)
+39248	ScrollSpy	KEEP-BUG	42557	anchor using dots (selector escaping)
+35776	JS (misc)	KEEP-BUG		show()/hide() rely on getter side-effects a minifier can strip
+35685	JS (misc)	KEEP-BUG		accordion race — toggling siblings can open both (dup 39385)
+39385	JS (misc)	KEEP-BUG		accordion race (dup 35685)
+40841	JS (misc)	KEEP-BUG		Collapse `aria-expanded` stuck true when trigger targets `.collapse`
+40526	ScrollSpy	KEEP-BUG	42557	smooth-scroll doesn't move focus to target (a11y)
+36387	ScrollSpy	KEEP-BUG	42557	smoothScroll preventDefault → URL hash never updates
+36912	ScrollSpy	KEEP-BUG		root-margin disabled by smoothScroll off (cluster 35900)
+41361	ScrollSpy	KEEP-BUG		active items discontinuous (IO "only while intersecting")
+38517	JS (misc)	KEEP-BUG		memory leak — `data.js` elementMap is Map not WeakMap
+41900	ScrollSpy	KEEP-FEATURE		proposal: full ScrollSpy rewrite (superseded by #42557 approach)
+36399	JS (misc)	KEEP-FEATURE		add table/thead/tbody/tr/td/th to sanitizer allowlist
+33761	JS (misc)	KEEP-FEATURE		rename Alert close event to `hidden.bs.*` convention
+34299	JS (misc)	KEEP-FEATURE		auto-expand collapse/tab/accordion when id in URL fragment
+34836	JS (misc)	KEEP-FEATURE		remove Collapse `toggle` option (API cleanup)
+39540	JS (misc)	KEEP-FEATURE		Collapse auto-close on outside click
+41151	JS (misc)	KEEP-FEATURE		Collapse `before.show` lifecycle hook
+41170	JS (misc)	KEEP-FEATURE		new Bottom Sheet component
+37573	JS (misc)	KEEP-FEATURE		make show/hide/toggle return a Promise
+39301	JS (misc)	KEEP-FEATURE		option to disable EventHandler auto listener assignments
+41003	JS (misc)	KEEP-FEATURE		support Shadow DOM for JS plugins
+41116	JS (misc)	KEEP-FEATURE		simplify bootstrapDelegationHandler using Element.closest
+36931	JS (misc)	NEEDS-VERIFY		switch mouseenter→mouseover workaround to native?
+37575	JS (misc)	NEEDS-VERIFY		tree-shaking — verify `import { Button }` prunes others
+38373	JS (misc)	NEEDS-VERIFY		non-DOM object fails silently — should v6 throw? (overlaps 38189)
+41192	CSS	CLOSE-RESOLVED		range breakpoint mixins use `(width < $max)` — no -0.02px
+40961	CSS	CLOSE-RESOLVED		utility state generation emits only functional `hover:` variant
+41289	CSS	CLOSE-RESOLVED		mask-icon mixin in use — SVG→mask-image largely done
+38479	CSS	CLOSE-RESOLVED		gap-based layout is the v6 standard (docs-only report)
+39097	CSS	CLOSE-RESOLVED		`.btn-check` input nested in label → no scroll-to-(0,0) jump
+39239	CSS	CLOSE-RESOLVED		checkbox/radio checked styling via appearance:none+:checked
+39851	CSS	CLOSE-RESOLVED		range thumb radius is token-driven
+41137	CSS	CLOSE-RESOLVED		`--control-checked-bg/-border-color` already CSS vars
+38213	CSS	CLOSE-RESOLVED		navbar toggler is a `.btn` with tokens + currentcolor mask
+39085	CSS	CLOSE-RESOLVED		`.btn-outline` hover vs active now distinct (oklch)
+39481	CSS	CLOSE-RESOLVED		`.btn-close` currentcolor mask + `--btn-close-color:inherit`
+38853	CSS	CLOSE-RESOLVED		`.btn-close` colored by currentcolor → dark theme works
+38779	CSS	CLOSE-RESOLVED		tables read `--theme-*` tokens now
+41725	CSS	CLOSE-RESOLVED		list-group action vs disabled colors now distinct tokens
+41806	CSS	CLOSE-RESOLVED		`.list-group-item-action` text-decoration:none at base
+38973	CSS	CLOSE-RESOLVED		navbar reworked to theme tokens (`.navbar-dark` replaced)
+39070	CSS	CLOSE-RESOLVED		`$navbar-light/dark-*` removed; uses `--fg-body`/light-dark()
+40414	CSS	CLOSE-RESOLVED		`color-scheme` per theme → fixes dark scrollbars in light
+39597	CSS	CLOSE-RESOLVED		navbar toggler icon currentcolor mask → visible both modes
+35988	CSS	CLOSE-RESOLVED		breadcrumb divider SVG mask (RTLCSS issue gone)
+36595	CSS	CLOSE-RESOLVED		dist CSS has zero empty custom properties
+38094	CSS	CLOSE-RESOLVED		`$enable-smooth-scroll:false` already the v6 default
+40849	CSS	CLOSE-RESOLVED		node-sass dropped + `@use "sass:…"` → 1.79 deprecations gone
+40962	CSS	CLOSE-RESOLVED		`@use` throughout + namespaced fns → 1.80+ deprecations resolved
+34497	CSS	CLOSE-WONTFIX		`.col` flex 1 1 0 with no min-width:0 by design
+38404	CSS	CLOSE-WONTFIX		`.col` flex overflow is standard flexbox (user-side fix)
+33861	CSS	CLOSE-WONTFIX		no `%placeholder` utility gen; @extend-of-utilities anti-pattern
+36026	CSS	CLOSE-WONTFIX		floating-label placeholder intentionally transparent
+34184	CSS	CLOSE-WONTFIX		table cell scoping requires a row group by design
+38750	CSS	CLOSE-WONTFIX		white iframe = third-party color-scheme (can't style cross-origin)
+40652	CSS	CLOSE-WONTFIX		v6 contrast tokens author-defined (oklch); WCAG fn unused
+38889	CSS	CLOSE-WONTFIX		gradient borders need border-image — out of scope for core
+39386	CSS	CLOSE-WONTFIX		bare `.toast` has no position by design (toast-container)
+40702	CSS	KEEP-BUG		`.row > *` applies gutter margin-top to `.w-100` column breaks
+36656	CSS	KEEP-BUG		input-group doesn't style `.form-control-plaintext`
+39257	CSS	KEEP-BUG		floating label stuck raised for date/time inputs
+39899	CSS	KEEP-BUG		floating label stays raised on cleared-but-:autofill (Firefox)
+40879	CSS	KEEP-BUG		browser-autofilled values don't trigger `.was-validated`
+40557	CSS	KEEP-BUG		disabled buttons use opacity → tint against colored bg
+37821	CSS	KEEP-BUG		progress bar clips its text label at 0%/very-narrow
+41596	CSS	KEEP-BUG		`.progress-stacked` resizes instantly (transition only on inner)
+36943	CSS	KEEP-BUG		`text-truncate` adds extra height (no vertical-align) — 1-line fix
+37909	CSS	KEEP-BUG		`<pre>` horizontal scrollbar covers last code line
+39507	CSS	KEEP-BUG		length vars can't be runtime calc()/var() (compile-time multiply)
+42546	CSS	KEEP-BUG		v6-dev far-right blank strip = `scrollbar-gutter:stable` on :root (ties to #42545)
+36330	CSS	KEEP-FEATURE		utilities responsive subset
+40567	CSS	KEEP-FEATURE		min-vh-25/50/75
+40859	CSS	KEEP-FEATURE		visually-hidden breakpoints
+40927	CSS	KEEP-FEATURE		breakpoint indicator
+41055	CSS	KEEP-FEATURE		dvh/svh/lvh units
+41371	CSS	KEEP-FEATURE		per-side border-width utils
+41227	CSS	KEEP-FEATURE		hover media query
+39727	CSS	KEEP-FEATURE		aria-disabled = disabled CSS
+39867	CSS	KEEP-FEATURE		floating labels for file input
+37345	CSS	KEEP-FEATURE		numbered list-group `start`
+41500	CSS	KEEP-FEATURE		pagination `.page-text`
+39053	CSS	KEEP-FEATURE		dark-mode shadows
+39265	CSS	KEEP-FEATURE		nav-underline aligned to navbar bottom
+39609	CSS	KEEP-FEATURE		auto-merge `$custom-colors`
+36607	CSS	KEEP-FEATURE		abbr underline without hover
+36688	CSS	KEEP-FEATURE		`:host` for shadow DOM
+38150	CSS	KEEP-FEATURE		transition/animation utilities
+41047	CSS	KEEP-FEATURE		`--fade-transition` CSS var
+40688	CSS	KEEP-FEATURE		`[hidden]` scoped to allow until-found
+38651	CSS	NEEDS-VERIFY		nested grid gutter deform
+41213	CSS	NEEDS-VERIFY		box-sizing:inherit — design call
+38808	CSS	NEEDS-VERIFY		validation focus-ring color
+39199	CSS	NEEDS-VERIFY		form-text inline-form layout
+39522	CSS	NEEDS-VERIFY		legend in floating form
+40827	CSS	NEEDS-VERIFY		`.focus-within` helper
+38980	CSS	NEEDS-VERIFY		table directional border vs inset shadow
+41554	CSS	NEEDS-VERIFY		visually-hidden table Chrome scrollbar (dup 41790)
+41790	CSS	NEEDS-VERIFY		visually-hidden table Chrome scrollbar (dup 41554)
+41723	CSS	NEEDS-VERIFY		table bg clips rounded wrapper
+39150	CSS	NEEDS-VERIFY		list-group flush+horizontal borders
+38480	CSS	NEEDS-VERIFY		border contrast ratio (1.63:1)
+40872	CSS	NEEDS-VERIFY		`$body-bg` as var() build
+42485	CSS	NEEDS-VERIFY		tab border seam at fractional zoom
+36459	Remaining	CLOSE-RESOLVED		validation rewritten to :user-invalid/:user-valid
+39721	Remaining	CLOSE-RESOLVED		carousel rebuilt on CSS scroll-snap (Safari 12 below baseline)
+36391	Remaining	CLOSE-RESOLVED		v5-era StackBlitz tracking issue; v6 has fresh integration
+42543	Remaining	CLOSE-RESOLVED		docs no longer link popper.js.org → Floating UI
+37283	Remaining	CLOSE-RESOLVED		Popper bundled from js/src (broken vendor-path gone)
+41240	Remaining	CLOSE-WONTFIX		accordion scroll-jump is browser scroll-anchoring (out of scope)
+35722	Remaining	CLOSE-WONTFIX		jQuery-era window load carousel advice; v6 init model differs
+42522	Remaining	CLOSE-WONTFIX		v6 docs ship no Translations page
+41390	Remaining	CLOSE-WONTFIX		v5-only .browserslistrc bump; belongs on v5 line
+42328	Remaining	KEEP-BUG		toggle buttons don't set `aria-pressed="false"` at init (labeled v6)
+41883	Remaining	KEEP-BUG		accordion double-open race (dup 35685/39385)
+40997	Remaining	KEEP-BUG		`parseSelector` over-escapes after # (breaks complex selectors)
+39428	Remaining	KEEP-BUG		legend float/clear reboot forces reflow (has-pr 39498)
+39237	Remaining	KEEP-BUG		`--toast-spacing` defined on .toast but consumed on container
+37478	Remaining	KEEP-BUG		BrowserStack CI reliability
+41438	Remaining	KEEP-BUG		release-zip packages stray .DS_Store files
+41810	Remaining	KEEP-BUG		production dist min files still emit sourceMappingURL comments
+28968	Remaining	KEEP-FEATURE		unified enter/leave transition classes
+41380	Remaining	KEEP-FEATURE		maintainers' post-Astro docs tracking issue
+39776	Remaining	KEEP-FEATURE		`change-version.mjs` should rewrite docs content aliases
+41497	Remaining	KEEP-FEATURE		form-validation a11y — ARIA/aria-live wiring
+42422	Remaining	DOCS		homepage example references undefined `var(--bs-primary)` (white-on-white)
+40833	Remaining	DOCS		carousel-after-load needs manual init
+36978	Remaining	DOCS		`col-auto` docs
+37262	Remaining	DOCS		heroes screenshot
+37614	Remaining	DOCS		select `aria-hidden`
+38434	Remaining	DOCS		Sass utilities API section → reusable Astro component
+40769	Remaining	DOCS		valid/invalid-feedback docs
+41873	Remaining	DOCS		toast usability caution
+41895	Remaining	DOCS		nested collapse example
+41944	Remaining	DOCS		color-contrast note → mention native contrast-color()
+38847	Remaining	NEEDS-VERIFY		horizontal card → .card-row; recheck small-breakpoint corners
+39404	Remaining	NEEDS-VERIFY		dashboard example rebuilt sticky sidebar; recheck whole-page scroll
