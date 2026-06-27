@@ -1,5 +1,8 @@
 {
   "reject": [
+    "@babel/cli",
+    "@babel/core",
+    "@babel/preset-env",
     "karma-browserstack-launcher",
     "karma-rollup-preprocessor",
     "stylelint"

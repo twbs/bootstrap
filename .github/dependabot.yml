@@ -28,6 +28,15 @@ updates:
     versioning-strategy: increase
     rebase-strategy: disabled
     ignore:
+      - dependency-name: "@babel/cli"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/core"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/preset-env"
+        update-types:
+          - "version-update:semver-major"
       - dependency-name: "karma-browserstack-launcher"
         update-types:
           - "version-update:semver-major"

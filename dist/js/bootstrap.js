@@ -599,6 +599,13 @@ class BaseComponent extends Config {
     }
     this._element = element;
     this._config = this._getConfig(config);
+
+    // Dispose any existing instance bound to this element before registering the new one,
+    // so its event listeners and timers are cleaned up instead of leaking
+    const existingInstance = Data.get(this._element, this.constructor.DATA_KEY);
+    if (existingInstance) {
+      existingInstance.dispose();
+    }
     Data.set(this._element, this.constructor.DATA_KEY, this);
   }
 
@@ -613,7 +620,13 @@ class BaseComponent extends Config {
 
   // Private
   _queueCallback(callback, element, isAnimated = true) {
-    executeAfterTransition(callback, element, isAnimated);
+    executeAfterTransition(() => {
+      // Don't run the completion callback if the instance was disposed mid-transition
+      if (!this._element) {
+        return;
+      }
+      callback();
+    }, element, isAnimated);
   }
   _getConfig(config) {
     config = this._mergeConfigObj(config, this._element);
@@ -689,6 +702,9 @@ const SelectorEngine = {
       ancestor = ancestor.parentNode.closest(selector);
     }
     return parents;
+  },
+  closest(element, selector) {
+    return Element.prototype.closest.call(element, selector);
   },
   prev(element, selector) {
     let previous = element.previousElementSibling;
@@ -797,11 +813,11 @@ const eventAction = (onEvent, stringSelector, callback) => {
  * Constants
  */
 
-const NAME$k = 'alert';
-const DATA_KEY$g = 'bs.alert';
-const EVENT_KEY$h = `.${DATA_KEY$g}`;
-const EVENT_CLOSE = `close${EVENT_KEY$h}`;
-const EVENT_CLOSED = `closed${EVENT_KEY$h}`;
+const NAME$l = 'alert';
+const DATA_KEY$h = 'bs.alert';
+const EVENT_KEY$i = `.${DATA_KEY$h}`;
+const EVENT_CLOSE = `close${EVENT_KEY$i}`;
+const EVENT_CLOSED = `closed${EVENT_KEY$i}`;
 const CLASS_NAME_FADE$4 = 'fade';
 const CLASS_NAME_SHOW$6 = 'show';
 
@@ -812,7 +828,7 @@ const CLASS_NAME_SHOW$6 = 'show';
 class Alert extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$k;
+    return NAME$l;
   }
 
   // Public
@@ -852,13 +868,13 @@ enableDismissTrigger(Alert, 'close');
  * Constants
  */
 
-const NAME$j = 'button';
-const DATA_KEY$f = 'bs.button';
-const EVENT_KEY$g = `.${DATA_KEY$f}`;
-const DATA_API_KEY$b = '.data-api';
+const NAME$k = 'button';
+const DATA_KEY$g = 'bs.button';
+const EVENT_KEY$h = `.${DATA_KEY$g}`;
+const DATA_API_KEY$c = '.data-api';
 const CLASS_NAME_ACTIVE$4 = 'active';
 const SELECTOR_DATA_TOGGLE$a = '[data-bs-toggle="button"]';
-const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$g}${DATA_API_KEY$b}`;
+const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$h}${DATA_API_KEY$c}`;
 
 /**
  * Class definition
@@ -867,7 +883,7 @@ const EVENT_CLICK_DATA_API$8 = `click${EVENT_KEY$g}${DATA_API_KEY$b}`;
 class Button extends BaseComponent {
   // Getters
   static get NAME() {
-    return NAME$j;
+    return NAME$k;
   }
 
   // Public
@@ -900,22 +916,22 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$8, SELECTOR_DATA_TOGGLE$a, event 
  * Constants
  */
 
-const NAME$i = 'carousel';
-const DATA_KEY$e = 'bs.carousel';
-const EVENT_KEY$f = `.${DATA_KEY$e}`;
-const DATA_API_KEY$a = '.data-api';
+const NAME$j = 'carousel';
+const DATA_KEY$f = 'bs.carousel';
+const EVENT_KEY$g = `.${DATA_KEY$f}`;
+const DATA_API_KEY$b = '.data-api';
 const ARROW_LEFT_KEY$2 = 'ArrowLeft';
 const ARROW_RIGHT_KEY$2 = 'ArrowRight';
 const DIRECTION_LEFT = 'left';
 const DIRECTION_RIGHT = 'right';
-const EVENT_SLIDE = `slide${EVENT_KEY$f}`;
-const EVENT_SLID = `slid${EVENT_KEY$f}`;
-const EVENT_KEYDOWN$1 = `keydown${EVENT_KEY$f}`;
-const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$f}`;
-const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$f}`;
-const EVENT_POINTERDOWN$1 = `pointerdown${EVENT_KEY$f}`;
-const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$f}${DATA_API_KEY$a}`;
-const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$f}${DATA_API_KEY$a}`;
+const EVENT_SLIDE = `slide${EVENT_KEY$g}`;
+const EVENT_SLID = `slid${EVENT_KEY$g}`;
+const EVENT_KEYDOWN$2 = `keydown${EVENT_KEY$g}`;
+const EVENT_MOUSEENTER$2 = `mouseenter${EVENT_KEY$g}`;
+const EVENT_MOUSELEAVE$1 = `mouseleave${EVENT_KEY$g}`;
+const EVENT_POINTERDOWN$1 = `pointerdown${EVENT_KEY$g}`;
+const EVENT_LOAD_DATA_API$3 = `load${EVENT_KEY$g}${DATA_API_KEY$b}`;
+const EVENT_CLICK_DATA_API$7 = `click${EVENT_KEY$g}${DATA_API_KEY$b}`;
 const CLASS_NAME_CAROUSEL = 'carousel';
 const CLASS_NAME_ACTIVE$3 = 'active';
 const CLASS_NAME_FADE$3 = 'carousel-fade';
@@ -932,10 +948,14 @@ const CLASS_NAME_PLAYING = 'carousel-playing';
 // `--carousel-interval` used in the SCSS source becomes this at runtime.
 const PROPERTY_INTERVAL = '--bs-carousel-interval';
 
-// How many frames the scroll-settle watcher waits when no movement is ever
-// detected (clamped programmatic scroll, or `scrollBy` stubbed in tests) before
-// it gives up and restores snapping anyway.
-const SCROLL_SETTLE_MAX_FRAMES = 10;
+// Duration (ms) of the JS-driven slide animation used for programmatic
+// navigation (prev/next, indicators, wrap, and loop). We step `scrollLeft`
+// ourselves over this window instead of calling `scrollBy({behavior:'smooth'})`,
+// because Safari mis-scales programmatic smooth scrolls under page zoom — a
+// one-slide jump sails well past the target (by the zoom factor) and the
+// restored snap then visibly yanks the slide back. Animating by hand is immune
+// to that and gives every jump a consistent duration.
+const SCROLL_DURATION = 300;
 
 // How far below the most-visible slide a slide's IntersectionRatio can be while
 // still counting as the active (left-most) slide. After a programmatic scroll
@@ -962,20 +982,24 @@ const KEY_TO_DIRECTION = {
 const ENDS_STOP = 'stop';
 const ENDS_WRAP = 'wrap';
 const ENDS_LOOP = 'loop';
-const Default$h = {
+const Default$i = {
   autoplay: false,
   ends: ENDS_LOOP,
   interval: 5000,
   keyboard: true,
   pause: 'hover'
 };
-const DefaultType$h = {
+const DefaultType$i = {
   autoplay: 'boolean',
   ends: 'string',
   interval: 'number',
   keyboard: 'boolean',
   pause: '(string|boolean)'
 };
+
+// Standard ease-in-out cubic, so the JS-driven scroll accelerates and
+// decelerates like a native smooth scroll rather than moving linearly.
+const easeInOutCubic = progress => progress < 0.5 ? 4 * progress * progress * progress : 1 - (-2 * progress + 2) ** 3 / 2;
 
 /**
  * Class definition
@@ -997,7 +1021,8 @@ class Carousel extends BaseComponent {
     this._nextControls = SelectorEngine.find(SELECTOR_DATA_SLIDE_NEXT, this._element);
     this._interval = null;
     this._observer = null;
-    this._snapRestoreFrame = null;
+    // rAF handle for the in-flight JS-driven scroll animation (see `_animateScroll`).
+    this._scrollFrame = null;
     // True while a seamless loop transition is animating, so the
     // IntersectionObserver and re-entrant navigation don't interfere.
     this._looping = false;
@@ -1019,13 +1044,13 @@ class Carousel extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$h;
+    return Default$i;
   }
   static get DefaultType() {
-    return DefaultType$h;
+    return DefaultType$i;
   }
   static get NAME() {
-    return NAME$i;
+    return NAME$j;
   }
 
   // Public
@@ -1107,8 +1132,8 @@ class Carousel extends BaseComponent {
     if (this._observer) {
       this._observer.disconnect();
     }
-    if (this._snapRestoreFrame !== null) {
-      cancelAnimationFrame(this._snapRestoreFrame);
+    if (this._scrollFrame !== null) {
+      cancelAnimationFrame(this._scrollFrame);
     }
 
     // Tidy up any in-flight loop transition: drop a stray clone and restore
@@ -1120,7 +1145,7 @@ class Carousel extends BaseComponent {
 
     // The pointerdown listener lives on the viewport (`.carousel-inner`), which
     // `super.dispose()` doesn't clean up—it only drops listeners on `_element`.
-    EventHandler.off(this._viewport, EVENT_KEY$f);
+    EventHandler.off(this._viewport, EVENT_KEY$g);
     super.dispose();
   }
 
@@ -1129,7 +1154,7 @@ class Carousel extends BaseComponent {
   // disagree about whether the carousel wraps.
   _configAfterMerge(config) {
     if (![ENDS_STOP, ENDS_WRAP, ENDS_LOOP].includes(config.ends)) {
-      config.ends = Default$h.ends;
+      config.ends = Default$i.ends;
     }
     return config;
   }
@@ -1140,7 +1165,7 @@ class Carousel extends BaseComponent {
   }
   _addEventListeners() {
     if (this._config.keyboard) {
-      EventHandler.on(this._element, EVENT_KEYDOWN$1, event => this._keydown(event));
+      EventHandler.on(this._element, EVENT_KEYDOWN$2, event => this._keydown(event));
     }
     if (this._config.pause === 'hover') {
       EventHandler.on(this._element, EVENT_MOUSEENTER$2, () => this.pause());
@@ -1243,23 +1268,80 @@ class Carousel extends BaseComponent {
       return;
     }
 
-    // `scroll-snap-stop: always` keeps user wheel/touch flings to a single slide,
-    // but it also clamps *programmatic* scrolls to one snap point — which would
-    // break multi-slide jumps from an indicator click, `to()`, or wrapping from
-    // the last slide back to the first. Disable snapping for the duration of the
-    // programmatic scroll, then restore it once the scroll settles so the slide
-    // still rests precisely (honouring peek/gap).
+    // `scroll-snap-stop: always` would clamp a programmatic scroll to a single
+    // snap point, breaking multi-slide jumps (an indicator click, `to()`, or
+    // wrapping from the last slide back to the first). Suspend snapping while we
+    // animate, then restore it once we arrive so the slide rests precisely on the
+    // snap point (honouring peek/gap).
     const targetLeft = this._viewport.scrollLeft + left;
     this._viewport.style.scrollSnapType = 'none';
-    this._viewport.scrollBy({
-      left,
-      top: 0,
-      // `'instant'` (not `'auto'`) for reduced motion: the viewport sets
-      // `scroll-behavior: smooth` in CSS, and `'auto'` defers to it, so it would
-      // still animate. `'instant'` forces an immediate, motion-free jump.
-      behavior: this._prefersReducedMotion() ? 'instant' : 'smooth'
+    this._animateScroll(targetLeft, () => {
+      this._viewport.style.scrollSnapType = '';
+      // Without IntersectionObserver nothing else fires `slid`/updates the active
+      // slide after a programmatic scroll, so do it here. With the observer
+      // present this is a no-op (it already moved the active index to `index`).
+      if (!this._observer) {
+        this._setActive(index);
+      }
+
+      // The IntersectionObserver doesn't fire once the viewport has stopped, so
+      // refresh the end controls here to catch the final settle landing exactly
+      // on the scroll extent (e.g. disabling `next` at the last view).
+      this._updateEndControls();
     });
-    this._restoreSnapWhenSettled(targetLeft, index);
+  }
+
+  // Animate `this._viewport.scrollLeft` to `targetLeft` over `SCROLL_DURATION`,
+  // stepping the position ourselves each frame (the caller suspends snapping
+  // first and restores it in `onComplete`). This replaces
+  // `scrollBy({behavior:'smooth'})`, whose Safari page-zoom bug made programmatic
+  // jumps overshoot the target and snap back. Because we set every frame's
+  // absolute position with an instant scroll, the animation can't overshoot and
+  // every jump takes the same time, in every browser.
+  _animateScroll(targetLeft, onComplete) {
+    if (this._scrollFrame !== null) {
+      cancelAnimationFrame(this._scrollFrame);
+      this._scrollFrame = null;
+    }
+    const startLeft = this._viewport.scrollLeft;
+    const distance = targetLeft - startLeft;
+
+    // Reduced motion (or no rAF, e.g. unit tests): jump straight to the target.
+    if (this._prefersReducedMotion() || typeof requestAnimationFrame === 'undefined') {
+      this._viewport.scrollTo({
+        left: targetLeft,
+        behavior: 'instant'
+      });
+      onComplete();
+      return;
+    }
+    let startTime = null;
+    const step = now => {
+      if (startTime === null) {
+        startTime = now;
+      }
+      const progress = Math.min((now - startTime) / SCROLL_DURATION, 1);
+      // `'instant'` (not the default) because the viewport sets
+      // `scroll-behavior: smooth` in CSS; without it each step would itself
+      // animate and fight this loop.
+      this._viewport.scrollTo({
+        left: startLeft + distance * easeInOutCubic(progress),
+        behavior: 'instant'
+      });
+      if (progress < 1) {
+        this._scrollFrame = requestAnimationFrame(step);
+        return;
+      }
+
+      // Land exactly on target, guarding against floating-point drift.
+      this._viewport.scrollTo({
+        left: targetLeft,
+        behavior: 'instant'
+      });
+      this._scrollFrame = null;
+      onComplete();
+    };
+    this._scrollFrame = requestAnimationFrame(step);
   }
 
   // Horizontal distance to scroll the viewport so `element` rests where the
@@ -1321,12 +1403,7 @@ class Carousel extends BaseComponent {
       // current slide so the insertion doesn't flash before we animate.
       this._jumpScroll(this._scrollDelta(items[fromIndex]));
     }
-    this._viewport.scrollBy({
-      left: this._scrollDelta(clone),
-      top: 0,
-      behavior: 'smooth'
-    });
-    this._afterScrollSettles(() => {
+    this._animateScroll(this._viewport.scrollLeft + this._scrollDelta(clone), () => {
       // Teleport to the real destination without animation. JS runs to
       // completion before the browser paints, so removing the clone and the
       // compensating scroll land in a single frame (no visible flash).
@@ -1362,81 +1439,6 @@ class Carousel extends BaseComponent {
       top: 0,
       behavior: 'instant'
     });
-  }
-
-  // Re-enable scroll snapping once the viewport reaches `targetLeft` (or stops
-  // moving). Passing the target matters: restoring `mandatory` snapping re-snaps
-  // to the *nearest* snap point, so if we restored mid-animation the viewport
-  // could jump back to the slide we came from — most visible stepping to the
-  // first/last slide, where it looks like the control "doesn't work".
-  _restoreSnapWhenSettled(targetLeft, index) {
-    this._afterScrollSettles(() => {
-      this._viewport.style.scrollSnapType = '';
-      // Without IntersectionObserver nothing else fires `slid`/updates the active
-      // slide after a programmatic scroll, so do it here. With the observer
-      // present this is a no-op (it already moved the active index to `index`).
-      if (!this._observer && index !== undefined) {
-        this._setActive(index);
-      }
-
-      // The IntersectionObserver doesn't fire once the viewport has stopped, so
-      // refresh the end controls here to catch the final ~1px settle landing
-      // exactly on the scroll extent (e.g. disabling `next` at the last view).
-      this._updateEndControls();
-    }, targetLeft);
-  }
-
-  // Invoke `callback` once the viewport stops moving. We watch the scroll
-  // position across frames instead of relying on the `scrollend` event, which
-  // isn't available across our supported browsers yet.
-  //
-  // Crucially, we only start counting "stable" frames once the scroll has
-  // actually moved. A smooth `scrollBy` doesn't update `scrollLeft` for the first
-  // frame or two, so naively treating those initial unchanged frames as
-  // "settled" would re-enable `mandatory` snapping mid-animation — which cancels
-  // the in-flight programmatic scroll and lands on the wrong slide (most visible
-  // in multi-item layouts). If the scroll never moves (delta clamped at an end,
-  // or `scrollBy` stubbed out in unit tests), we fall back to a short frame cap.
-  //
-  // When `targetLeft` is known we also finish the moment we arrive there, so the
-  // snap is restored exactly on the destination snap point and can't re-snap the
-  // viewport backwards (the failure mode where stepping to the first/last slide
-  // appears to do nothing).
-  _afterScrollSettles(callback, targetLeft) {
-    if (typeof requestAnimationFrame === 'undefined') {
-      callback();
-      return;
-    }
-    if (this._snapRestoreFrame !== null) {
-      cancelAnimationFrame(this._snapRestoreFrame);
-    }
-    const startLeft = this._viewport.scrollLeft;
-    let lastLeft = startLeft;
-    let stableFrames = 0;
-    let waited = 0;
-    let hasMoved = false;
-    const tick = () => {
-      const currentLeft = this._viewport.scrollLeft;
-      const reachedTarget = targetLeft !== undefined && Math.abs(currentLeft - targetLeft) <= 1;
-      if (Math.abs(currentLeft - startLeft) > 1) {
-        hasMoved = true;
-      }
-
-      // Only accrue stable frames after movement begins, so the pre-animation
-      // and ease-in frames don't prematurely count as settled.
-      if (hasMoved) {
-        stableFrames = Math.abs(currentLeft - lastLeft) < 1 ? stableFrames + 1 : 0;
-      }
-      lastLeft = currentLeft;
-      waited += 1;
-      if (reachedTarget || hasMoved && stableFrames >= 3 || !hasMoved && waited >= SCROLL_SETTLE_MAX_FRAMES) {
-        this._snapRestoreFrame = null;
-        callback();
-        return;
-      }
-      this._snapRestoreFrame = requestAnimationFrame(tick);
-    };
-    this._snapRestoreFrame = requestAnimationFrame(tick);
   }
 
   // Fade mode just swaps the active class; the CSS opacity transition on
@@ -1706,15 +1708,15 @@ EventHandler.on(window, EVENT_LOAD_DATA_API$3, () => {
  * Constants
  */
 
-const NAME$h = 'collapse';
-const DATA_KEY$d = 'bs.collapse';
-const EVENT_KEY$e = `.${DATA_KEY$d}`;
-const DATA_API_KEY$9 = '.data-api';
-const EVENT_SHOW$7 = `show${EVENT_KEY$e}`;
-const EVENT_SHOWN$6 = `shown${EVENT_KEY$e}`;
-const EVENT_HIDE$6 = `hide${EVENT_KEY$e}`;
-const EVENT_HIDDEN$8 = `hidden${EVENT_KEY$e}`;
-const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
+const NAME$i = 'collapse';
+const DATA_KEY$e = 'bs.collapse';
+const EVENT_KEY$f = `.${DATA_KEY$e}`;
+const DATA_API_KEY$a = '.data-api';
+const EVENT_SHOW$7 = `show${EVENT_KEY$f}`;
+const EVENT_SHOWN$6 = `shown${EVENT_KEY$f}`;
+const EVENT_HIDE$6 = `hide${EVENT_KEY$f}`;
+const EVENT_HIDDEN$8 = `hidden${EVENT_KEY$f}`;
+const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$f}${DATA_API_KEY$a}`;
 const CLASS_NAME_SHOW$5 = 'show';
 const CLASS_NAME_COLLAPSE = 'collapse';
 const CLASS_NAME_COLLAPSING = 'collapsing';
@@ -1725,11 +1727,11 @@ const WIDTH = 'width';
 const HEIGHT = 'height';
 const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
 const SELECTOR_DATA_TOGGLE$9 = '[data-bs-toggle="collapse"]';
-const Default$g = {
+const Default$h = {
   parent: null,
   toggle: true
 };
-const DefaultType$g = {
+const DefaultType$h = {
   parent: '(null|element)',
   toggle: 'boolean'
 };
@@ -1762,13 +1764,13 @@ class Collapse extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$g;
+    return Default$h;
   }
   static get DefaultType() {
-    return DefaultType$g;
+    return DefaultType$h;
   }
   static get NAME() {
-    return NAME$h;
+    return NAME$i;
   }
 
   // Public
@@ -2034,11 +2036,11 @@ const disposeBreakpointListeners = listeners => {
  * Constants
  */
 
-const NAME$g = 'menu';
-const DATA_KEY$c = 'bs.menu';
-const EVENT_KEY$d = `.${DATA_KEY$c}`;
-const DATA_API_KEY$8 = '.data-api';
-const ESCAPE_KEY$1 = 'Escape';
+const NAME$h = 'menu';
+const DATA_KEY$d = 'bs.menu';
+const EVENT_KEY$e = `.${DATA_KEY$d}`;
+const DATA_API_KEY$9 = '.data-api';
+const ESCAPE_KEY$2 = 'Escape';
 const TAB_KEY$1 = 'Tab';
 const ARROW_UP_KEY$2 = 'ArrowUp';
 const ARROW_DOWN_KEY$2 = 'ArrowDown';
@@ -2050,13 +2052,13 @@ const ENTER_KEY$1 = 'Enter';
 const SPACE_KEY$1 = ' ';
 const RIGHT_MOUSE_BUTTON = 2;
 const SUBMENU_CLOSE_DELAY = 100;
-const EVENT_HIDE$5 = `hide${EVENT_KEY$d}`;
-const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$d}`;
-const EVENT_SHOW$6 = `show${EVENT_KEY$d}`;
-const EVENT_SHOWN$5 = `shown${EVENT_KEY$d}`;
-const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
-const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$d}${DATA_API_KEY$8}`;
-const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$d}${DATA_API_KEY$8}`;
+const EVENT_HIDE$5 = `hide${EVENT_KEY$e}`;
+const EVENT_HIDDEN$7 = `hidden${EVENT_KEY$e}`;
+const EVENT_SHOW$6 = `show${EVENT_KEY$e}`;
+const EVENT_SHOWN$5 = `shown${EVENT_KEY$e}`;
+const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$e}${DATA_API_KEY$9}`;
+const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$e}${DATA_API_KEY$9}`;
+const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$e}${DATA_API_KEY$9}`;
 const CLASS_NAME_SHOW$4 = 'show';
 const SELECTOR_DATA_TOGGLE$8 = '[data-bs-toggle="menu"]:not(.disabled):not(:disabled)';
 const SELECTOR_MENU$2 = '.menu';
@@ -2073,7 +2075,7 @@ const resolveLogicalPlacement = placement => {
   return placement.replace(/^start(?=-|$)/, 'left').replace(/^end(?=-|$)/, 'right');
 };
 const triangleSign = (p1, p2, p3) => (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
-const Default$f = {
+const Default$g = {
   autoClose: true,
   boundary: 'clippingParents',
   container: false,
@@ -2087,7 +2089,7 @@ const Default$f = {
   submenuTrigger: 'both',
   submenuDelay: SUBMENU_CLOSE_DELAY
 };
-const DefaultType$f = {
+const DefaultType$g = {
   autoClose: '(boolean|string)',
   boundary: '(string|element)',
   container: '(string|element|boolean)',
@@ -2116,12 +2118,20 @@ class Menu extends BaseComponent {
     this._floatingCleanup = null;
     this._mediaQueryListeners = [];
     this._responsivePlacements = null;
-    this._parent = this._element.parentNode;
-    this._isSubmenu = this._parent.classList?.contains('submenu');
+    this._parent = this._element.parentNode; // menu wrapper
     this._openSubmenus = new Map();
     this._submenuCloseTimeouts = new Map();
     this._hoverIntentData = null;
     this._menu = this._config.menu || this._findMenu();
+
+    // When the menu was discovered from the DOM, refine the wrapper to the closest
+    // ancestor that actually contains it, so the toggle doesn't have to be a direct
+    // sibling of `.menu` (e.g. when wrapped by web components). The wrapper still
+    // receives `.show` and acts as the `reference: 'parent'` positioning anchor.
+    if (!this._config.menu && this._menu) {
+      this._parent = this._findWrapper(this._menu);
+    }
+    this._isSubmenu = this._parent.classList?.contains('submenu');
     this._menuOriginalParent = this._menu?.parentNode;
     this._parseResponsivePlacements();
     this._setupSubmenuListeners();
@@ -2129,13 +2139,13 @@ class Menu extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$f;
+    return Default$g;
   }
   static get DefaultType() {
-    return DefaultType$f;
+    return DefaultType$g;
   }
   static get NAME() {
-    return NAME$g;
+    return NAME$h;
   }
 
   // Public
@@ -2198,7 +2208,17 @@ class Menu extends BaseComponent {
 
   // Private
   _findMenu() {
-    return SelectorEngine.next(this._element, SELECTOR_MENU$2)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU$2)[0] || SelectorEngine.findOne(SELECTOR_MENU$2, this._parent);
+    // Fall back to the closest ancestor that contains a menu so the toggle can be
+    // nested deeper than a direct sibling of `.menu`.
+    const wrapper = SelectorEngine.closest(this._element, `:has(${SELECTOR_MENU$2})`);
+    return SelectorEngine.next(this._element, SELECTOR_MENU$2)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU$2)[0] || SelectorEngine.findOne(SELECTOR_MENU$2, wrapper || this._parent);
+  }
+  _findWrapper(menu) {
+    let wrapper = this._element.parentNode;
+    while (wrapper instanceof Element && !wrapper.contains(menu)) {
+      wrapper = wrapper.parentNode;
+    }
+    return wrapper instanceof Element ? wrapper : this._element.parentNode;
   }
   _completeHide(relatedTarget) {
     const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$5, relatedTarget);
@@ -2227,7 +2247,7 @@ class Menu extends BaseComponent {
   _getConfig(config) {
     config = super._getConfig(config);
     if (typeof config.reference === 'object' && !isElement(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
-      throw new TypeError(`${NAME$g.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
+      throw new TypeError(`${NAME$h.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
     }
     return config;
   }
@@ -2485,6 +2505,12 @@ class Menu extends BaseComponent {
     }
     trigger.setAttribute('aria-expanded', 'true');
     trigger.setAttribute('aria-haspopup', 'true');
+
+    // Keep the submenu transparent until Floating UI applies the first position, so
+    // it doesn't flash at its CSS fallback position (top: 0, over the parent menu)
+    // before being moved into place. `opacity` (unlike `visibility`/`display`) keeps
+    // the submenu measurable for flip/shift and focusable for keyboard navigation.
+    submenu.style.opacity = '0';
     submenu.classList.add(CLASS_NAME_SHOW$4);
     submenuWrapper.classList.add(CLASS_NAME_SHOW$4);
     const cleanup = this._createSubmenuFloating(trigger, submenu, submenuWrapper);
@@ -2514,10 +2540,13 @@ class Menu extends BaseComponent {
     }
     submenu.classList.remove(CLASS_NAME_SHOW$4);
     submenuWrapper.classList.remove(CLASS_NAME_SHOW$4);
-    submenu.style.position = '';
-    submenu.style.left = '';
-    submenu.style.top = '';
-    submenu.style.margin = '';
+
+    // Keep the Floating UI position styles in place while the submenu fades out.
+    // Clearing them here would let the submenu snap back to its CSS fallback
+    // (`top: 0`, over the parent menu) for the duration of the close transition,
+    // causing it to flash over the parent. They get recomputed on the next open
+    // (and the opacity gate in `_openSubmenu` hides any stale position until then).
+    submenu.style.opacity = '';
   }
   _closeAllSubmenus() {
     for (const [submenu] of this._openSubmenus) {
@@ -2546,7 +2575,12 @@ class Menu extends BaseComponent {
     }), shift({
       padding: 8
     })];
-    const updatePosition = () => this._applyFloatingPosition(referenceElement, submenu, placement, middleware);
+    const updatePosition = () => this._applyFloatingPosition(referenceElement, submenu, placement, middleware).then(finalPlacement => {
+      // Reveal the submenu now that it has been positioned (see `_openSubmenu`);
+      // clearing the inline opacity lets the CSS fade-in transition take over.
+      submenu.style.opacity = '';
+      return finalPlacement;
+    });
     updatePosition();
     return autoUpdate(referenceElement, submenu, updatePosition);
   }
@@ -2728,7 +2762,7 @@ class Menu extends BaseComponent {
   }
   static dataApiKeydownHandler(event) {
     const isInput = /input|textarea/i.test(event.target.tagName);
-    const isEscapeEvent = event.key === ESCAPE_KEY$1;
+    const isEscapeEvent = event.key === ESCAPE_KEY$2;
     const isUpOrDownEvent = [ARROW_UP_KEY$2, ARROW_DOWN_KEY$2].includes(event.key);
     const isLeftOrRightEvent = [ARROW_LEFT_KEY$1, ARROW_RIGHT_KEY$1].includes(event.key);
     const isHomeOrEndEvent = [HOME_KEY$2, END_KEY$2].includes(event.key);
@@ -2799,11 +2833,11 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_TOGGLE$8, functi
  * Constants
  */
 
-const NAME$f = 'combobox';
-const DATA_KEY$b = 'bs.combobox';
-const EVENT_KEY$c = `.${DATA_KEY$b}`;
-const DATA_API_KEY$7 = '.data-api';
-const ESCAPE_KEY = 'Escape';
+const NAME$g = 'combobox';
+const DATA_KEY$c = 'bs.combobox';
+const EVENT_KEY$d = `.${DATA_KEY$c}`;
+const DATA_API_KEY$8 = '.data-api';
+const ESCAPE_KEY$1 = 'Escape';
 const TAB_KEY = 'Tab';
 const ARROW_UP_KEY$1 = 'ArrowUp';
 const ARROW_DOWN_KEY$1 = 'ArrowDown';
@@ -2811,12 +2845,12 @@ const HOME_KEY$1 = 'Home';
 const END_KEY$1 = 'End';
 const ENTER_KEY = 'Enter';
 const SPACE_KEY = ' ';
-const EVENT_CHANGE$2 = `change${EVENT_KEY$c}`;
-const EVENT_SHOW$5 = `show${EVENT_KEY$c}`;
-const EVENT_SHOWN$4 = `shown${EVENT_KEY$c}`;
-const EVENT_HIDE$4 = `hide${EVENT_KEY$c}`;
-const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$c}`;
-const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
+const EVENT_CHANGE$3 = `change${EVENT_KEY$d}`;
+const EVENT_SHOW$5 = `show${EVENT_KEY$d}`;
+const EVENT_SHOWN$4 = `shown${EVENT_KEY$d}`;
+const EVENT_HIDE$4 = `hide${EVENT_KEY$d}`;
+const EVENT_HIDDEN$6 = `hidden${EVENT_KEY$d}`;
+const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$d}${DATA_API_KEY$8}`;
 const CLASS_NAME_SHOW$3 = 'show';
 const CLASS_NAME_SELECTED = 'selected';
 const CLASS_NAME_PLACEHOLDER = 'combobox-placeholder';
@@ -2827,7 +2861,7 @@ const SELECTOR_VISIBLE_ITEMS = '.menu-item[data-bs-value]:not(.disabled):not(:di
 const SELECTOR_VALUE = '.combobox-value';
 const SELECTOR_SEARCH_INPUT = '.combobox-search-input';
 const SELECTOR_NO_RESULTS = '.combobox-no-results';
-const Default$e = {
+const Default$f = {
   boundary: 'clippingParents',
   multiple: false,
   name: null,
@@ -2837,7 +2871,7 @@ const Default$e = {
   search: false,
   searchNormalize: false
 };
-const DefaultType$e = {
+const DefaultType$f = {
   boundary: '(string|element)',
   multiple: 'boolean',
   name: '(string|null)',
@@ -2870,13 +2904,13 @@ class Combobox extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$e;
+    return Default$f;
   }
   static get DefaultType() {
-    return DefaultType$e;
+    return DefaultType$f;
   }
   static get NAME() {
-    return NAME$f;
+    return NAME$g;
   }
 
   // Public
@@ -2919,8 +2953,8 @@ class Combobox extends BaseComponent {
       this._hiddenInput.remove();
       this._hiddenInput = null;
     }
-    EventHandler.off(this._menu, EVENT_KEY$c);
-    EventHandler.off(this._toggle, EVENT_KEY$c);
+    EventHandler.off(this._menu, EVENT_KEY$d);
+    EventHandler.off(this._toggle, EVENT_KEY$d);
     super.dispose();
   }
 
@@ -2987,7 +3021,7 @@ class Combobox extends BaseComponent {
             items[0].focus();
           }
         }
-        if (event.key === ESCAPE_KEY) {
+        if (event.key === ESCAPE_KEY$1) {
           this.hide();
           this._toggle.focus();
         }
@@ -3010,7 +3044,7 @@ class Combobox extends BaseComponent {
     this._updateToggleText();
     this._updateHiddenInput();
     const value = this._config.multiple ? this._getSelectedItems().map(el => el.dataset.bsValue) : item.dataset.bsValue;
-    EventHandler.trigger(this._toggle, EVENT_CHANGE$2, {
+    EventHandler.trigger(this._toggle, EVENT_CHANGE$3, {
       value,
       item
     });
@@ -3105,7 +3139,7 @@ class Combobox extends BaseComponent {
       key,
       target
     } = event;
-    if (key === ESCAPE_KEY) {
+    if (key === ESCAPE_KEY$1) {
       event.preventDefault();
       event.stopPropagation();
       this.hide();
@@ -3184,21 +3218,21 @@ EventHandler.on(document, 'DOMContentLoaded', () => {
  * Constants
  */
 
-const NAME$e = 'datepicker';
-const DATA_KEY$a = 'bs.datepicker';
-const EVENT_KEY$b = `.${DATA_KEY$a}`;
-const DATA_API_KEY$6 = '.data-api';
-const EVENT_CHANGE$1 = `change${EVENT_KEY$b}`;
-const EVENT_SHOW$4 = `show${EVENT_KEY$b}`;
-const EVENT_SHOWN$3 = `shown${EVENT_KEY$b}`;
-const EVENT_HIDE$3 = `hide${EVENT_KEY$b}`;
-const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$b}`;
-const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$b}${DATA_API_KEY$6}`;
-const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$b}${DATA_API_KEY$6}`;
+const NAME$f = 'datepicker';
+const DATA_KEY$b = 'bs.datepicker';
+const EVENT_KEY$c = `.${DATA_KEY$b}`;
+const DATA_API_KEY$7 = '.data-api';
+const EVENT_CHANGE$2 = `change${EVENT_KEY$c}`;
+const EVENT_SHOW$4 = `show${EVENT_KEY$c}`;
+const EVENT_SHOWN$3 = `shown${EVENT_KEY$c}`;
+const EVENT_HIDE$3 = `hide${EVENT_KEY$c}`;
+const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$c}`;
+const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$c}${DATA_API_KEY$7}`;
+const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY$c}${DATA_API_KEY$7}`;
 const SELECTOR_DATA_TOGGLE$6 = '[data-bs-toggle="datepicker"]';
 const HIDE_DELAY = 100; // ms delay before hiding after selection
 
-const Default$d = {
+const Default$e = {
   datepickerTheme: null,
   // 'light', 'dark', 'auto' - explicit theme for datepicker popover only
   dateMin: null,
@@ -3223,7 +3257,7 @@ const Default$d = {
   // 'left', 'center', 'right', 'auto'
   vcpOptions: {} // Pass-through for any VCP option
 };
-const DefaultType$d = {
+const DefaultType$e = {
   datepickerTheme: '(null|string)',
   dateMin: '(null|string|number|object)',
   dateMax: '(null|string|number|object)',
@@ -3254,13 +3288,13 @@ class Datepicker extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$d;
+    return Default$e;
   }
   static get DefaultType() {
-    return DefaultType$d;
+    return DefaultType$e;
   }
   static get NAME() {
-    return NAME$e;
+    return NAME$f;
   }
 
   // Public
@@ -3502,7 +3536,7 @@ class Datepicker extends BaseComponent {
         this._displayElement.textContent = formattedDate;
       }
     }
-    EventHandler.trigger(this._element, EVENT_CHANGE$1, {
+    EventHandler.trigger(this._element, EVENT_CHANGE$2, {
       dates: selectedDates,
       event
     });
@@ -3594,7 +3628,7 @@ EventHandler.on(document, EVENT_FOCUSIN_DATA_API, SELECTOR_DATA_TOGGLE$6, functi
 });
 
 // Auto-initialize inline datepickers on DOMContentLoaded
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$b}${DATA_API_KEY$6}`, () => {
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$c}${DATA_API_KEY$7}`, () => {
   for (const element of document.querySelectorAll(`${SELECTOR_DATA_TOGGLE$6}[data-bs-inline="true"]`)) {
     Datepicker.getOrCreateInstance(element);
   }
@@ -3865,24 +3899,24 @@ class DialogBase extends BaseComponent {
  * Constants
  */
 
-const NAME$d = 'dialog';
-const DATA_KEY$9 = 'bs.dialog';
-const EVENT_KEY$a = `.${DATA_KEY$9}`;
-const DATA_API_KEY$5 = '.data-api';
-const EVENT_SHOW$3 = `show${EVENT_KEY$a}`;
-const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$a}`;
-const EVENT_CANCEL = `cancel${EVENT_KEY$a}`;
-const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$a}${DATA_API_KEY$5}`;
+const NAME$e = 'dialog';
+const DATA_KEY$a = 'bs.dialog';
+const EVENT_KEY$b = `.${DATA_KEY$a}`;
+const DATA_API_KEY$6 = '.data-api';
+const EVENT_SHOW$3 = `show${EVENT_KEY$b}`;
+const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$b}`;
+const EVENT_CANCEL = `cancel${EVENT_KEY$b}`;
+const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$b}${DATA_API_KEY$6}`;
 const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
 const CLASS_NAME_INSTANT = 'dialog-instant';
 const CLASS_NAME_SWAP_IN = 'dialog-swap-in';
 const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="dialog"]';
-const Default$c = {
+const Default$d = {
   backdrop: true,
   keyboard: true,
   modal: true
 };
-const DefaultType$c = {
+const DefaultType$d = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   modal: 'boolean'
@@ -3895,13 +3929,13 @@ const DefaultType$c = {
 class Dialog extends DialogBase {
   // Getters
   static get Default() {
-    return Default$c;
+    return Default$d;
   }
   static get DefaultType() {
-    return DefaultType$c;
+    return DefaultType$d;
   }
   static get NAME() {
-    return NAME$d;
+    return NAME$e;
   }
 
   // Public
@@ -3984,7 +4018,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$5, functi
     const newDialog = Dialog.getOrCreateInstance(target, config);
     target.classList.add(CLASS_NAME_SWAP_IN);
     newDialog.show(this);
-    EventHandler.one(target, `shown${EVENT_KEY$a}`, () => {
+    EventHandler.one(target, `shown${EVENT_KEY$b}`, () => {
       target.classList.remove(CLASS_NAME_SWAP_IN);
     });
     const currentInstance = Dialog.getInstance(currentDialog);
@@ -4018,11 +4052,11 @@ enableDismissTrigger(Dialog);
  * Constants
  */
 
-const NAME$c = 'navoverflow';
-const DATA_KEY$8 = 'bs.navoverflow';
-const EVENT_KEY$9 = `.${DATA_KEY$8}`;
-const EVENT_UPDATE = `update${EVENT_KEY$9}`;
-const EVENT_OVERFLOW = `overflow${EVENT_KEY$9}`;
+const NAME$d = 'navoverflow';
+const DATA_KEY$9 = 'bs.navoverflow';
+const EVENT_KEY$a = `.${DATA_KEY$9}`;
+const EVENT_UPDATE = `update${EVENT_KEY$a}`;
+const EVENT_OVERFLOW = `overflow${EVENT_KEY$a}`;
 const CLASS_NAME_OVERFLOW = 'nav-overflow';
 const CLASS_NAME_OVERFLOW_MENU = 'nav-overflow-menu';
 const CLASS_NAME_HIDDEN = 'd-none';
@@ -4032,7 +4066,7 @@ const SELECTOR_OVERFLOW_TOGGLE = '.nav-overflow-toggle';
 const SELECTOR_OVERFLOW_MENU = '.nav-overflow-menu';
 const SELECTOR_CUSTOM_ICON = '[data-bs-overflow-icon]';
 const CLASS_NAME_KEEP = 'nav-overflow-keep';
-const Default$b = {
+const Default$c = {
   collapseBelow: 0,
   iconPlacement: 'start',
   menuPlacement: 'bottom-end',
@@ -4040,7 +4074,7 @@ const Default$b = {
   moreIcon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/></svg>',
   threshold: 0 // Minimum items to keep visible before showing overflow
 };
-const DefaultType$b = {
+const DefaultType$c = {
   collapseBelow: '(number|string)',
   iconPlacement: 'string',
   menuPlacement: 'string',
@@ -4068,13 +4102,13 @@ class NavOverflow extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$b;
+    return Default$c;
   }
   static get DefaultType() {
-    return DefaultType$b;
+    return DefaultType$c;
   }
   static get NAME() {
-    return NAME$c;
+    return NAME$d;
   }
 
   // Public
@@ -4317,25 +4351,25 @@ EventHandler.on(document, 'DOMContentLoaded', () => {
  * Constants
  */
 
-const NAME$b = 'swipe';
-const EVENT_KEY$8 = '.bs.swipe';
-const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$8}`;
-const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$8}`;
-const EVENT_TOUCHEND = `touchend${EVENT_KEY$8}`;
-const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$8}`;
-const EVENT_POINTERUP = `pointerup${EVENT_KEY$8}`;
+const NAME$c = 'swipe';
+const EVENT_KEY$9 = '.bs.swipe';
+const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$9}`;
+const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$9}`;
+const EVENT_TOUCHEND = `touchend${EVENT_KEY$9}`;
+const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$9}`;
+const EVENT_POINTERUP = `pointerup${EVENT_KEY$9}`;
 const POINTER_TYPE_TOUCH = 'touch';
 const POINTER_TYPE_PEN = 'pen';
 const CLASS_NAME_POINTER_EVENT = 'pointer-event';
 const SWIPE_THRESHOLD = 40;
-const Default$a = {
+const Default$b = {
   endCallback: null,
   leftCallback: null,
   rightCallback: null,
   upCallback: null,
   downCallback: null
 };
-const DefaultType$a = {
+const DefaultType$b = {
   endCallback: '(function|null)',
   leftCallback: '(function|null)',
   rightCallback: '(function|null)',
@@ -4363,18 +4397,18 @@ class Swipe extends Config {
 
   // Getters
   static get Default() {
-    return Default$a;
+    return Default$b;
   }
   static get DefaultType() {
-    return DefaultType$a;
+    return DefaultType$b;
   }
   static get NAME() {
-    return NAME$b;
+    return NAME$c;
   }
 
   // Public
   dispose() {
-    EventHandler.off(this._element, EVENT_KEY$8);
+    EventHandler.off(this._element, EVENT_KEY$9);
   }
 
   // Private
@@ -4466,21 +4500,21 @@ class Swipe extends Config {
  * Constants
  */
 
-const NAME$a = 'drawer';
-const DATA_KEY$7 = 'bs.drawer';
-const EVENT_KEY$7 = `.${DATA_KEY$7}`;
-const DATA_API_KEY$4 = '.data-api';
-const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$7}${DATA_API_KEY$4}`;
-const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$7}`;
-const EVENT_RESIZE = `resize${EVENT_KEY$7}`;
-const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$7}${DATA_API_KEY$4}`;
+const NAME$b = 'drawer';
+const DATA_KEY$8 = 'bs.drawer';
+const EVENT_KEY$8 = `.${DATA_KEY$8}`;
+const DATA_API_KEY$5 = '.data-api';
+const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$8}${DATA_API_KEY$5}`;
+const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$8}`;
+const EVENT_RESIZE = `resize${EVENT_KEY$8}`;
+const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$8}${DATA_API_KEY$5}`;
 const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="drawer"]';
-const Default$9 = {
+const Default$a = {
   backdrop: true,
   keyboard: true,
   scroll: false
 };
-const DefaultType$9 = {
+const DefaultType$a = {
   backdrop: '(boolean|string)',
   keyboard: 'boolean',
   scroll: 'boolean'
@@ -4498,13 +4532,13 @@ class Drawer extends DialogBase {
 
   // Getters
   static get Default() {
-    return Default$9;
+    return Default$a;
   }
   static get DefaultType() {
-    return DefaultType$9;
+    return DefaultType$a;
   }
   static get NAME() {
-    return NAME$a;
+    return NAME$b;
   }
 
   // Public
@@ -4618,14 +4652,14 @@ enableDismissTrigger(Drawer);
  * Constants
  */
 
-const NAME$9 = 'strength';
-const DATA_KEY$6 = 'bs.strength';
-const EVENT_KEY$6 = `.${DATA_KEY$6}`;
-const DATA_API_KEY$3 = '.data-api';
-const EVENT_STRENGTH_CHANGE = `strengthChange${EVENT_KEY$6}`;
+const NAME$a = 'strength';
+const DATA_KEY$7 = 'bs.strength';
+const EVENT_KEY$7 = `.${DATA_KEY$7}`;
+const DATA_API_KEY$4 = '.data-api';
+const EVENT_STRENGTH_CHANGE = `strengthChange${EVENT_KEY$7}`;
 const SELECTOR_DATA_STRENGTH = '[data-bs-strength]';
 const STRENGTH_LEVELS = ['weak', 'fair', 'good', 'strong'];
-const Default$8 = {
+const Default$9 = {
   input: null,
   // Selector or element for password input
   minLength: 8,
@@ -4649,7 +4683,7 @@ const Default$8 = {
   // weak ≤2, fair ≤4, good ≤6, strong >6
   scorer: null // Custom scoring function (password) => number
 };
-const DefaultType$8 = {
+const DefaultType$9 = {
   input: '(string|element|null)',
   minLength: 'number',
   messages: 'object',
@@ -4678,13 +4712,13 @@ class Strength extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$8;
+    return Default$9;
   }
   static get DefaultType() {
-    return DefaultType$8;
+    return DefaultType$9;
   }
   static get NAME() {
-    return NAME$9;
+    return NAME$a;
   }
 
   // Public
@@ -4830,7 +4864,7 @@ class Strength extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$6}${DATA_API_KEY$3}`, () => {
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$7}${DATA_API_KEY$4}`, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_STRENGTH)) {
     Strength.getOrCreateInstance(element);
   }
@@ -4848,15 +4882,15 @@ EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$6}${DATA_API_KEY$3}`, () 
  * Constants
  */
 
-const NAME$8 = 'otpInput';
-const DATA_KEY$5 = 'bs.otpInput';
-const EVENT_KEY$5 = `.${DATA_KEY$5}`;
-const DATA_API_KEY$2 = '.data-api';
-const EVENT_COMPLETE = `complete${EVENT_KEY$5}`;
-const EVENT_INPUT = `input${EVENT_KEY$5}`;
-const EVENT_DOMCONTENT_LOADED = `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`;
+const NAME$9 = 'otpInput';
+const DATA_KEY$6 = 'bs.otpInput';
+const EVENT_KEY$6 = `.${DATA_KEY$6}`;
+const DATA_API_KEY$3 = '.data-api';
+const EVENT_COMPLETE = `complete${EVENT_KEY$6}`;
+const EVENT_INPUT$1 = `input${EVENT_KEY$6}`;
+const EVENT_DOMCONTENT_LOADED = `DOMContentLoaded${EVENT_KEY$6}${DATA_API_KEY$3}`;
 const SELECTOR_DATA_OTP = '[data-bs-otp]';
-const SELECTOR_INPUT = 'input';
+const SELECTOR_INPUT$1 = 'input';
 
 // Events that should refresh the active-slot highlight as the caret moves
 const SYNC_EVENTS = ['blur', 'keyup', 'click', 'select'];
@@ -4887,14 +4921,14 @@ const TYPES = {
     filter: /[^A-Za-z]/g
   }
 };
-const Default$7 = {
+const Default$8 = {
   groups: null,
   length: null,
   mask: false,
   separator: '·',
   type: 'numeric'
 };
-const DefaultType$7 = {
+const DefaultType$8 = {
   groups: '(array|null)',
   length: '(number|null)',
   mask: 'boolean',
@@ -4909,7 +4943,7 @@ const DefaultType$7 = {
 class OtpInput extends BaseComponent {
   constructor(element, config) {
     super(element, config);
-    this._input = SelectorEngine.findOne(SELECTOR_INPUT, this._element);
+    this._input = SelectorEngine.findOne(SELECTOR_INPUT$1, this._element);
     if (!this._input) {
       return;
     }
@@ -4924,13 +4958,13 @@ class OtpInput extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$7;
+    return Default$8;
   }
   static get DefaultType() {
-    return DefaultType$7;
+    return DefaultType$8;
   }
   static get NAME() {
-    return NAME$8;
+    return NAME$9;
   }
 
   // Public
@@ -5047,7 +5081,7 @@ class OtpInput extends BaseComponent {
       this._input.value = sanitized;
     }
     this._render();
-    EventHandler.trigger(this._element, EVENT_INPUT, {
+    EventHandler.trigger(this._element, EVENT_INPUT$1, {
       value: this._input.value
     });
     this._checkComplete();
@@ -5103,14 +5137,14 @@ EventHandler.on(document, EVENT_DOMCONTENT_LOADED, () => {
  * Constants
  */
 
-const NAME$7 = 'chips';
-const DATA_KEY$4 = 'bs.chips';
-const EVENT_KEY$4 = `.${DATA_KEY$4}`;
-const DATA_API_KEY$1 = '.data-api';
-const EVENT_ADD = `add${EVENT_KEY$4}`;
-const EVENT_REMOVE = `remove${EVENT_KEY$4}`;
-const EVENT_CHANGE = `change${EVENT_KEY$4}`;
-const EVENT_SELECT = `select${EVENT_KEY$4}`;
+const NAME$8 = 'chips';
+const DATA_KEY$5 = 'bs.chips';
+const EVENT_KEY$5 = `.${DATA_KEY$5}`;
+const DATA_API_KEY$2 = '.data-api';
+const EVENT_ADD = `add${EVENT_KEY$5}`;
+const EVENT_REMOVE = `remove${EVENT_KEY$5}`;
+const EVENT_CHANGE$1 = `change${EVENT_KEY$5}`;
+const EVENT_SELECT = `select${EVENT_KEY$5}`;
 const SELECTOR_DATA_CHIPS = '[data-bs-chips]';
 const SELECTOR_GHOST_INPUT = '.form-ghost';
 const SELECTOR_CHIP = '.chip';
@@ -5119,7 +5153,7 @@ const CLASS_NAME_CHIP = 'chip';
 const CLASS_NAME_CHIP_DISMISS = 'chip-dismiss';
 const CLASS_NAME_ACTIVE$2 = 'active';
 const DEFAULT_DISMISS_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>';
-const Default$6 = {
+const Default$7 = {
   separator: ',',
   allowDuplicates: false,
   maxChips: null,
@@ -5128,7 +5162,7 @@ const Default$6 = {
   dismissIcon: DEFAULT_DISMISS_ICON,
   createOnBlur: true
 };
-const DefaultType$6 = {
+const DefaultType$7 = {
   separator: '(string|null)',
   allowDuplicates: 'boolean',
   maxChips: '(number|null)',
@@ -5159,13 +5193,13 @@ class Chips extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$6;
+    return Default$7;
   }
   static get DefaultType() {
-    return DefaultType$6;
+    return DefaultType$7;
   }
   static get NAME() {
-    return NAME$7;
+    return NAME$8;
   }
 
   // Public
@@ -5194,7 +5228,7 @@ class Chips extends BaseComponent {
     const chip = this._createChip(trimmedValue);
     this._element.insertBefore(chip, this._input);
     this._chips.push(trimmedValue);
-    EventHandler.trigger(this._element, EVENT_CHANGE, {
+    EventHandler.trigger(this._element, EVENT_CHANGE$1, {
       values: this.getValues()
     });
     return chip;
@@ -5230,7 +5264,7 @@ class Chips extends BaseComponent {
     // Remove from DOM and array
     chip.remove();
     this._chips = this._chips.filter(v => v !== value);
-    EventHandler.trigger(this._element, EVENT_CHANGE, {
+    EventHandler.trigger(this._element, EVENT_CHANGE$1, {
       values: this.getValues()
     });
     return true;
@@ -5256,7 +5290,7 @@ class Chips extends BaseComponent {
     this._chips = [];
     this._selectedChips.clear();
     this._anchorChip = null;
-    EventHandler.trigger(this._element, EVENT_CHANGE, {
+    EventHandler.trigger(this._element, EVENT_CHANGE$1, {
       values: []
     });
   }
@@ -5659,7 +5693,7 @@ class Chips extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$4}${DATA_API_KEY$1}`, () => {
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY$5}${DATA_API_KEY$2}`, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_CHIPS)) {
     Chips.getOrCreateInstance(element);
   }
@@ -5772,8 +5806,8 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
  * Constants
  */
 
-const NAME$6 = 'TemplateFactory';
-const Default$5 = {
+const NAME$7 = 'TemplateFactory';
+const Default$6 = {
   allowList: DefaultAllowlist,
   content: {},
   // { selector : text ,  selector2 : text2 , }
@@ -5783,7 +5817,7 @@ const Default$5 = {
   sanitizeFn: null,
   template: '<div></div>'
 };
-const DefaultType$5 = {
+const DefaultType$6 = {
   allowList: 'object',
   content: 'object',
   extraClass: '(string|function)',
@@ -5809,13 +5843,13 @@ class TemplateFactory extends Config {
 
   // Getters
   static get Default() {
-    return Default$5;
+    return Default$6;
   }
   static get DefaultType() {
-    return DefaultType$5;
+    return DefaultType$6;
   }
   static get NAME() {
-    return NAME$6;
+    return NAME$7;
   }
 
   // Public
@@ -5908,8 +5942,9 @@ class TemplateFactory extends Config {
  * Constants
  */
 
-const NAME$5 = 'tooltip';
+const NAME$6 = 'tooltip';
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn']);
+const ESCAPE_KEY = 'Escape';
 const CLASS_NAME_FADE$2 = 'fade';
 const CLASS_NAME_MODAL = 'modal';
 const CLASS_NAME_SHOW$2 = 'show';
@@ -5931,6 +5966,7 @@ const EVENT_FOCUSIN$2 = 'focusin';
 const EVENT_FOCUSOUT$1 = 'focusout';
 const EVENT_MOUSEENTER$1 = 'mouseenter';
 const EVENT_MOUSELEAVE = 'mouseleave';
+const EVENT_KEYDOWN$1 = 'keydown';
 const AttachmentMap = {
   AUTO: 'auto',
   TOP: 'top',
@@ -5938,7 +5974,7 @@ const AttachmentMap = {
   BOTTOM: 'bottom',
   LEFT: isRTL() ? 'right' : 'left'
 };
-const Default$4 = {
+const Default$5 = {
   allowList: DefaultAllowlist,
   animation: true,
   boundary: 'clippingParents',
@@ -5957,7 +5993,7 @@ const Default$4 = {
   title: '',
   trigger: 'hover focus'
 };
-const DefaultType$4 = {
+const DefaultType$5 = {
   allowList: 'object',
   animation: 'boolean',
   boundary: '(string|element)',
@@ -5994,6 +6030,7 @@ class Tooltip extends BaseComponent {
     this._isHovered = null;
     this._activeTrigger = {};
     this._floatingCleanup = null;
+    this._keydownHandler = null;
     this._templateFactory = null;
     this._newContent = null;
     this._mediaQueryListeners = [];
@@ -6010,13 +6047,13 @@ class Tooltip extends BaseComponent {
 
   // Getters
   static get Default() {
-    return Default$4;
+    return Default$5;
   }
   static get DefaultType() {
-    return DefaultType$4;
+    return DefaultType$5;
   }
   static get NAME() {
-    return NAME$5;
+    return NAME$6;
   }
 
   // Public
@@ -6041,6 +6078,7 @@ class Tooltip extends BaseComponent {
   }
   dispose() {
     clearTimeout(this._timeout);
+    this._removeEscapeListener();
     EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
     if (this._element.getAttribute('data-bs-original-title')) {
       this._element.setAttribute('title', this._element.getAttribute('data-bs-original-title'));
@@ -6079,6 +6117,9 @@ class Tooltip extends BaseComponent {
     await this._createFloating(tip);
     tip.classList.add(CLASS_NAME_SHOW$2);
 
+    // Allow dismissing the tooltip with the Escape key (WCAG 1.4.13)
+    this._setEscapeListener();
+
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
@@ -6105,6 +6146,7 @@ class Tooltip extends BaseComponent {
     if (hideEvent.defaultPrevented) {
       return;
     }
+    this._removeEscapeListener();
     const tip = this._getTipElement();
     tip.classList.remove(CLASS_NAME_SHOW$2);
 
@@ -6389,6 +6431,37 @@ class Tooltip extends BaseComponent {
     };
     EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
   }
+  _setEscapeListener() {
+    if (this._keydownHandler) {
+      return;
+    }
+    this._keydownHandler = event => {
+      if (event.key !== ESCAPE_KEY || !this._isShown() || !this.tip.isConnected) {
+        return;
+      }
+
+      // Dismiss the tooltip and consume the keystroke so it doesn't reach
+      // ancestor components (e.g. a parent dialog). This way the first Escape
+      // only closes the tooltip, and a subsequent one can close the dialog —
+      // matching the behavior of the dropdown menu.
+      event.preventDefault();
+      event.stopPropagation();
+      this.hide();
+    };
+
+    // Listen in the capture phase so this runs before the dialog's own keydown
+    // handler, and on the document so it works regardless of where focus is
+    // (e.g. for hover-triggered tooltips). EventHandler only uses the capture
+    // phase for delegated listeners, so attach natively here.
+    this._element.ownerDocument.addEventListener(EVENT_KEYDOWN$1, this._keydownHandler, true);
+  }
+  _removeEscapeListener() {
+    if (!this._keydownHandler) {
+      return;
+    }
+    this._element.ownerDocument.removeEventListener(EVENT_KEYDOWN$1, this._keydownHandler, true);
+    this._keydownHandler = null;
+  }
   _fixTitle() {
     const title = this._element.getAttribute('title');
     if (!title) {
@@ -6525,14 +6598,14 @@ EventHandler.on(document, EVENT_MOUSEENTER$1, SELECTOR_DATA_TOGGLE$3, initToolti
  * Constants
  */
 
-const NAME$4 = 'popover';
+const NAME$5 = 'popover';
 const SELECTOR_TITLE = '.popover-header';
 const SELECTOR_CONTENT = '.popover-body';
 const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="popover"]';
 const EVENT_CLICK$2 = 'click';
 const EVENT_FOCUSIN$1 = 'focusin';
 const EVENT_MOUSEENTER = 'mouseenter';
-const Default$3 = {
+const Default$4 = {
   ...Tooltip.Default,
   content: '',
   offset: [0, 8],
@@ -6540,7 +6613,7 @@ const Default$3 = {
   template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>',
   trigger: 'click'
 };
-const DefaultType$3 = {
+const DefaultType$4 = {
   ...Tooltip.DefaultType,
   content: '(null|string|element|function)'
 };
@@ -6552,13 +6625,13 @@ const DefaultType$3 = {
 class Popover extends Tooltip {
   // Getters
   static get Default() {
-    return Default$3;
+    return Default$4;
   }
   static get DefaultType() {
-    return DefaultType$3;
+    return DefaultType$4;
   }
   static get NAME() {
-    return NAME$4;
+    return NAME$5;
   }
 
   // Overrides
@@ -6604,6 +6677,209 @@ const initPopover = event => {
 EventHandler.on(document, EVENT_CLICK$2, SELECTOR_DATA_TOGGLE$2, initPopover);
 EventHandler.on(document, EVENT_FOCUSIN$1, SELECTOR_DATA_TOGGLE$2, initPopover);
 EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE$2, initPopover);
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap range.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * --------------------------------------------------------------------------
+ */
+
+
+/**
+ * Constants
+ */
+
+const NAME$4 = 'range';
+const DATA_KEY$4 = 'bs.range';
+const EVENT_KEY$4 = `.${DATA_KEY$4}`;
+const DATA_API_KEY$1 = '.data-api';
+const EVENT_CHANGED = `changed${EVENT_KEY$4}`;
+const EVENT_DOM_CONTENT_LOADED = `DOMContentLoaded${EVENT_KEY$4}${DATA_API_KEY$1}`;
+
+// `input` is not in EventHandler's native-event list, so it can't be namespaced; bind it raw
+const EVENT_INPUT = 'input';
+const EVENT_CHANGE = 'change';
+const SELECTOR_RANGE = '.form-range';
+const SELECTOR_INPUT = '.form-range-input';
+const CLASS_NAME_BUBBLE = 'form-range-bubble';
+const CLASS_NAME_TICKS = 'form-range-ticks';
+const CLASS_NAME_TICK = 'form-range-tick';
+const CLASS_NAME_TICK_LABEL = 'form-range-tick-label';
+
+// Shipped (`--bs-`-prefixed) custom properties; the build prefixes the SCSS tokens, so the
+// plugin must write the prefixed names to interoperate with the rendered CSS.
+const PROPERTY_FILL = '--bs-range-fill';
+const Default$3 = {
+  bubble: false,
+  // Show a value bubble above the thumb
+  formatter: null // (value) => string, for the bubble and tick labels
+};
+const DefaultType$3 = {
+  bubble: '(boolean|null)',
+  formatter: '(function|null)'
+};
+
+/**
+ * Class definition
+ */
+
+class Range extends BaseComponent {
+  constructor(element, config) {
+    super(element, config);
+
+    // BaseComponent bails (no `_element`) when the element can't be resolved
+    if (!this._element) {
+      return;
+    }
+    this._input = SelectorEngine.findOne(SELECTOR_INPUT, this._element);
+    if (!this._input) {
+      return;
+    }
+    this._bubble = null;
+    this._bubbleText = null;
+    this._ticks = null;
+    this._updateHandler = () => this._update();
+    if (this._config.bubble) {
+      this._createBubble();
+    }
+    this._createTicks();
+    this._addEventListeners();
+    this._update();
+  }
+
+  // Getters
+  static get Default() {
+    return Default$3;
+  }
+  static get DefaultType() {
+    return DefaultType$3;
+  }
+  static get NAME() {
+    return NAME$4;
+  }
+
+  // Public
+  update() {
+    this._update();
+  }
+  dispose() {
+    EventHandler.off(this._input, EVENT_INPUT, this._updateHandler);
+    EventHandler.off(this._input, EVENT_CHANGE, this._updateHandler);
+    this._bubble?.remove();
+    this._ticks?.remove();
+    super.dispose();
+  }
+
+  // Private
+  _configAfterMerge(config) {
+    // A bare `data-bs-bubble` attribute normalizes to `null`; treat it as enabled
+    if (config.bubble === null) {
+      config.bubble = true;
+    }
+    return config;
+  }
+  _addEventListeners() {
+    EventHandler.on(this._input, EVENT_INPUT, this._updateHandler);
+    EventHandler.on(this._input, EVENT_CHANGE, this._updateHandler);
+  }
+  _min() {
+    return this._input.min === '' ? 0 : Number.parseFloat(this._input.min);
+  }
+  _max() {
+    return this._input.max === '' ? 100 : Number.parseFloat(this._input.max);
+  }
+  _value() {
+    return Number.parseFloat(this._input.value);
+  }
+  _ratio() {
+    const span = this._max() - this._min();
+    return span > 0 ? (this._value() - this._min()) / span : 0;
+  }
+  _update() {
+    // The fill ratio drives the track gradient and the bubble/tick positions, all in CSS
+    this._element.style.setProperty(PROPERTY_FILL, `${this._ratio()}`);
+    if (this._bubbleText) {
+      this._bubbleText.textContent = this._format(this._value());
+    }
+    EventHandler.trigger(this._input, EVENT_CHANGED, {
+      value: this._value()
+    });
+  }
+  _format(value) {
+    return typeof this._config.formatter === 'function' ? this._config.formatter(value) : String(value);
+  }
+  _createBubble() {
+    // Reuse the tooltip markup so we don't duplicate the pill and arrow styles
+    this._bubble = document.createElement('output');
+    this._bubble.className = `${CLASS_NAME_BUBBLE} tooltip bs-tooltip-top show`;
+    this._bubble.setAttribute('aria-hidden', 'true');
+
+    // Match the Tooltip template's block-level markup: `.tooltip-inner` has no `display` rule,
+    // so an inline `<span>` would let its padding bleed outside the bubble and clip the arrow.
+    const arrow = document.createElement('div');
+    arrow.className = 'tooltip-arrow';
+    this._bubbleText = document.createElement('div');
+    this._bubbleText.className = 'tooltip-inner';
+    this._bubble.append(arrow, this._bubbleText);
+    this._input.insertAdjacentElement('afterend', this._bubble);
+  }
+  _createTicks() {
+    const listId = this._input.getAttribute('list');
+    const datalist = listId ? document.getElementById(listId) : null;
+    if (!datalist) {
+      return;
+    }
+    const min = this._min();
+    const span = this._max() - min || 1;
+    const points = [];
+    for (const option of SelectorEngine.find('option', datalist)) {
+      const value = Number.parseFloat(option.value);
+      if (!Number.isNaN(value)) {
+        // Clamp to [0, 1] so out-of-range options can't produce negative `fr` tracks
+        const ratio = Math.min(Math.max((value - min) / span, 0), 1);
+        points.push({
+          ratio,
+          label: option.label
+        });
+      }
+    }
+    if (points.length === 0) {
+      return;
+    }
+    points.sort((a, b) => a.ratio - b.ratio);
+    this._ticks = document.createElement('div');
+    this._ticks.className = CLASS_NAME_TICKS;
+    this._ticks.setAttribute('aria-hidden', 'true');
+
+    // Columns are the gaps between 0, each tick, and 1, so every tick lands on a grid line
+    const stops = [0, ...points.map(point => point.ratio), 1];
+    this._ticks.style.gridTemplateColumns = stops.slice(1).map((stop, index) => `${stop - stops[index]}fr`).join(' ');
+    for (const [index, point] of points.entries()) {
+      const tick = document.createElement('span');
+      tick.className = CLASS_NAME_TICK;
+      tick.style.gridColumnStart = `${index + 2}`;
+      if (point.label) {
+        const label = document.createElement('span');
+        label.className = CLASS_NAME_TICK_LABEL;
+        label.textContent = point.label;
+        tick.append(label);
+      }
+      this._ticks.append(tick);
+    }
+    this._element.append(this._ticks);
+  }
+}
+
+/**
+ * Data API implementation
+ */
+
+EventHandler.on(document, EVENT_DOM_CONTENT_LOADED, () => {
+  for (const element of SelectorEngine.find(SELECTOR_RANGE)) {
+    Range.getOrCreateInstance(element);
+  }
+});
 
 /**
  * --------------------------------------------------------------------------
@@ -7334,5 +7610,5 @@ class Toggler extends BaseComponent {
 
 eventActionOnPlugin(Toggler, EVENT_CLICK, SELECTOR_DATA_TOGGLE, 'toggle');
 
-export { Alert, Button, Carousel, Chips, Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, NavOverflow, OtpInput, Popover, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
+export { Alert, Button, Carousel, Chips, Collapse, Combobox, Datepicker, Dialog, Drawer, Menu, NavOverflow, OtpInput, Popover, Range, ScrollSpy, Strength, Tab, Toast, Toggler, Tooltip };
 //# sourceMappingURL=bootstrap.js.map

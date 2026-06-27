@@ -59,8 +59,11 @@ $dialog-sizes: defaults(
 // scss-docs-end dialog-sizes
 
 @layer components {
-  // Prevent body scroll when dialog is open
-  .dialog-open {
+  // Prevent page scroll when a dialog is open. Applied to the root element so
+  // `overflow: hidden` sits on the same element as `scrollbar-gutter: stable`
+  // (see _root.scss): the gutter stays reserved while the scrollbar is hidden,
+  // so the page doesn't shift when a dialog opens.
+  :root.dialog-open {
     overflow: hidden;
   }
 

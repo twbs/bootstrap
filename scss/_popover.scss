@@ -136,6 +136,12 @@ $popover-tokens: defaults(
         top: var(--popover-border-width);
         border-block-end-color: var(--popover-bg);
       }
+
+      // When the popover has a header, the bottom arrow points into the header,
+      // so its fill should match the header background, not the body background.
+      &:has(+ .popover-header)::after {
+        border-block-end-color: var(--popover-header-bg);
+      }
     }
 
     // This will remove the popover-header's border just below the arrow
