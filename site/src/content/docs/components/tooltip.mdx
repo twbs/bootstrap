@@ -171,6 +171,16 @@ const tooltip = new bootstrap.Tooltip('#example', {
 
 </Callout>
 
+### Delegated tooltips
+
+To enable tooltips on many triggers at once—including elements added to the DOM later—initialize a single instance on a parent element and pass the [`selector` option](#options). Any matching descendant gets a tooltip without re-initializing:
+
+```js
+const tooltip = new bootstrap.Tooltip(document.body, {
+  selector: '[data-bs-toggle="tooltip"]'
+})
+```
+
 ### Via data attributes
 
 <BsTable>

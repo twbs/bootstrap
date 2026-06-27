@@ -606,6 +606,17 @@ const menuElementList = document.querySelectorAll('[data-bs-toggle="menu"]')
 const menuList = [...menuElementList].map(menuToggleEl => new bootstrap.Menu(menuToggleEl))
 ```
 
+To open, close, or toggle a menu programmatically, get its instance from the trigger element (the one with `data-bs-toggle="menu"`) and call the corresponding method:
+
+```js
+const menuToggleEl = document.querySelector('#myMenuToggle')
+const menu = bootstrap.Menu.getOrCreateInstance(menuToggleEl)
+
+menu.show()
+menu.hide()
+menu.toggle()
+```
+
 ### Dependencies
 
 The menu plugin requires the following JavaScript files if you’re building Bootstrap’s JS from source:
