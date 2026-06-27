@@ -901,7 +901,11 @@ class Menu extends BaseComponent {
         continue
       }
 
-      if (instance._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+      // Don't auto-close when interacting with a form inside the menu — clicks
+      // on a form's labels, buttons, etc. (not just inputs) should keep it open.
+      const formAncestor = event.target.closest?.('form')
+      const isInsideMenuForm = Boolean(formAncestor) && instance._menu.contains(formAncestor)
+      if (instance._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName) || isInsideMenuForm)) {
         continue
       }
 

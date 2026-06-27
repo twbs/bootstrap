@@ -326,7 +326,15 @@ class Tooltip extends BaseComponent {
 
   // Protected
   _isWithContent() {
-    return Boolean(this._getTitle())
+    return Boolean(this._getTitle()) || this._hasNewContent()
+  }
+
+  // Content supplied via setContent() (a `{ selector: content }` map) overrides
+  // the configured title/content when rendering, so it should also satisfy the
+  // show() gate — otherwise a tip whose content is only set via setContent()
+  // can never be shown.
+  _hasNewContent() {
+    return Boolean(this._newContent) && Object.values(this._newContent).some(Boolean)
   }
 
   _getTipElement() {
