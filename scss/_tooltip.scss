@@ -117,3 +117,12 @@
   background-color: var(--#{$prefix}tooltip-bg);
   @include border-radius(var(--#{$prefix}tooltip-border-radius));
 }
+
+// Workaround for abbr when tooltip substitutes title for data-bs-original-title
+//
+// This matches the abbr styling in _reboot.scss
+abbr[data-bs-original-title] {
+  text-decoration: underline dotted;
+  cursor: help;
+  text-decoration-skip-ink: none;
+}
