@@ -484,6 +484,8 @@ Use `data-bs-offset` or `data-bs-reference` to change the location of the menu. 
 
 By default, the menu is closed when clicking inside or outside the menu. You can use the `autoClose` option to change this behavior of the menu.
 
+Regardless of the `autoClose` setting, pressing <kbd>Esc</kbd> while focus is within the menu (its toggle or items) closes the menu and returns focus to the toggle.
+
 <Example class="d-flex flex-wrap gap-2" code={`<div class="btn-group">
     <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-auto-close="true" aria-expanded="false">
       Default menu
