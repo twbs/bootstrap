@@ -170,7 +170,11 @@ class DialogBase extends BaseComponent {
     }
 
     if (preventBodyScroll) {
-      document.body.classList.add(CLASS_NAME_OPEN)
+      // Lock scroll on the root element (not <body>) so it lands on the same
+      // element that carries `scrollbar-gutter: stable`. Co-locating them keeps
+      // the gutter reserved while the scrollbar is hidden, so the page doesn't
+      // shift (and the ::backdrop covers the gutter instead of leaving a strip).
+      document.documentElement.classList.add(CLASS_NAME_OPEN)
     }
   }
 
@@ -192,15 +196,15 @@ class DialogBase extends BaseComponent {
     }
   }
 
-  // Closes the native <dialog> and tears down body-scroll prevention.
+  // Closes the native <dialog> and tears down scroll prevention.
   // Safe to call multiple times — close() is a no-op on a closed dialog.
   _closeAndCleanup() {
     this._element.close()
     this._openedAsModal = false
 
-    // Only restore body scroll if no other modal dialogs are open
+    // Only restore scroll if no other modal dialogs are open
     if (!document.querySelector('dialog[open]:modal')) {
-      document.body.classList.remove(CLASS_NAME_OPEN)
+      document.documentElement.classList.remove(CLASS_NAME_OPEN)
     }
   }
 
