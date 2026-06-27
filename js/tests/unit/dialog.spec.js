@@ -723,12 +723,12 @@ describe('Dialog', () => {
 
         dialogEl.addEventListener('shown.bs.dialog', () => {
           expect(dialogEl.open).toBeTrue()
-          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeTrue()
 
           dialog.dispose()
 
           expect(dialogEl.open).toBeFalse()
-          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
           resolve()
         })
 
