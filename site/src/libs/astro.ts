@@ -1,14 +1,9 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import type { AstroIntegration } from 'astro'
-import type { Element, Text } from 'hast'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { getConfig } from './config'
-import { rehypeBsTable } from './rehype'
-import { remarkBsConfig, remarkBsDocsref } from './remark'
 import {
   docsDirectory,
   getDocsFsPath,
@@ -26,8 +21,6 @@ const staticFileAliases = {
 // A list of pages that will be excluded from the sitemap.
 const sitemapExcludes = ['/404', '/docs', `/docs/${getConfig().docs_version}`]
 
-const headingsRangeRegex = new RegExp(`^h[${getConfig().anchors.min}-${getConfig().anchors.max}]$`)
-
 export function bootstrap(): AstroIntegration[] {
   const sitemapExcludedUrls = sitemapExcludes.map((url) => `${getConfig().baseURL}${url}/`)
 
@@ -35,32 +28,9 @@ export function bootstrap(): AstroIntegration[] {
     {
       name: 'bootstrap-integration',
       hooks: {
-        'astro:config:setup': ({ addWatchFile, updateConfig }) => {
+        'astro:config:setup': ({ addWatchFile }) => {
           // Reload the config when the integration is modified.
           addWatchFile(path.join(getDocsFsPath(), 'src/libs/astro.ts'))
-
-          // Add the remark and rehype plugins.
-          updateConfig({
-            markdown: {
-              rehypePlugins: [
-                rehypeHeadingIds,
-                [
-                  rehypeAutolinkHeadings,
-                  {
-                    behavior: 'append',
-                    content: [{ type: 'text', value: ' ' }],
-                    properties: (element: Element) => ({
-                      class: 'anchor-link',
-                      ariaLabel: `Link to this section: ${(element.children[0] as Text).value}`
-                    }),
-                    test: (element: Element) => element.tagName.match(headingsRangeRegex)
-                  }
-                ],
-                rehypeBsTable
-              ],
-              remarkPlugins: [remarkBsConfig, remarkBsDocsref]
-            }
-          })
         },
         'astro:config:done': () => {
           cleanPublicDirectory()
