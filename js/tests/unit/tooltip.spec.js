@@ -90,6 +90,16 @@ describe('Tooltip', () => {
       expect(tooltip._config.content).toEqual('7')
     })
 
+    it('should convert title and content to string if booleans (e.g. data-bs-content="true")', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="true" data-bs-content="false"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      expect(tooltip._config.title).toEqual('true')
+      expect(tooltip._config.content).toEqual('false')
+    })
+
     it('should enable selector delegation', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<div></div>'
@@ -675,6 +685,34 @@ describe('Tooltip', () => {
         })
 
         tooltip.show()
+      })
+    })
+
+    it('should reset hover state when show is prevented so the tip can reopen', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        const preventOnce = ev => {
+          ev.preventDefault()
+          tooltipEl.removeEventListener('show.bs.tooltip', preventOnce)
+        }
+
+        tooltipEl.addEventListener('show.bs.tooltip', preventOnce)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          expect(document.querySelector('.tooltip')).not.toBeNull()
+          resolve()
+        })
+
+        // First show is prevented — `_isHovered` must not stay stuck true,
+        // otherwise the `_enter()` retry below would early-return and never reopen.
+        tooltip.show()
+        expect(tooltip._isHovered).toBeFalse()
+
+        tooltip._enter()
       })
     })
 
