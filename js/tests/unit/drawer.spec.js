@@ -580,12 +580,12 @@ describe('Drawer', () => {
 
         drawerEl.addEventListener('shown.bs.drawer', () => {
           expect(drawerEl.open).toBeTrue()
-          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeTrue()
 
           drawer.dispose()
 
           expect(drawerEl.open).toBeFalse()
-          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          expect(document.documentElement.classList.contains('dialog-open')).toBeFalse()
           resolve()
         })
 
