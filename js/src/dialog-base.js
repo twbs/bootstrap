@@ -117,6 +117,17 @@ class DialogBase extends BaseComponent {
     }, this._element, this._isAnimated())
   }
 
+  dispose() {
+    // If disposed while still open, close the native <dialog> and restore body
+    // scroll. Otherwise `dialog-open` (overflow: hidden) would stay stuck on the
+    // body — e.g. when an SPA tears the component down mid-navigation.
+    if (this._element.open) {
+      this._closeAndCleanup()
+    }
+
+    super.dispose()
+  }
+
   // Protected — hooks for subclasses to override
 
   _getShowOptions() {

@@ -713,6 +713,28 @@ describe('Dialog', () => {
       expect(Dialog.getInstance(dialogEl)).toBeNull()
       expect(spyOff).toHaveBeenCalled()
     })
+
+    it('should close the dialog and restore body scroll when disposed while open', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<dialog class="dialog" id="exampleDialog"></dialog>'
+
+        const dialogEl = fixtureEl.querySelector('.dialog')
+        const dialog = new Dialog(dialogEl)
+
+        dialogEl.addEventListener('shown.bs.dialog', () => {
+          expect(dialogEl.open).toBeTrue()
+          expect(document.body.classList.contains('dialog-open')).toBeTrue()
+
+          dialog.dispose()
+
+          expect(dialogEl.open).toBeFalse()
+          expect(document.body.classList.contains('dialog-open')).toBeFalse()
+          resolve()
+        })
+
+        dialog.show()
+      })
+    })
   })
 
   describe('data-api', () => {
@@ -803,7 +825,7 @@ describe('Dialog', () => {
 
         const hideListener = () => {
           setTimeout(() => {
-            expect(spy).toHaveBeenCalled()
+            expect(spy).toHaveBeenCalledWith({ preventScroll: true })
             resolve()
           }, 20)
         }
