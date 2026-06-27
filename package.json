@@ -180,7 +180,7 @@
     "nodemon": "^3.1.14",
     "npm-run-all2": "^9.0.2",
     "pagefind": "^1.5.2",
-    "playwright": "^1.60.0",
+    "playwright": "^1.61.0",
     "postcss": "^8.5.12",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.8.4",
