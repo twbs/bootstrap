@@ -31,11 +31,10 @@
       </button>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js" type="module"></script>
-    <script>
-      /* global bootstrap: false */
+    <script type="module">
+      import { Popover } from '../../../dist/js/bootstrap.bundle.js'
 
-      document.querySelectorAll('[data-bs-toggle="popover"]').forEach(popoverEl => new bootstrap.Popover(popoverEl))
+      document.querySelectorAll('[data-bs-toggle="popover"]').forEach(popoverEl => new Popover(popoverEl))
     </script>
   </body>
 </html>

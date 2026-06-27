@@ -83,9 +83,17 @@
       </div>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js" type="module"></script>
     <script>
-      /* global bootstrap: false */
+      function duplicateButtons() {
+        const buttonsBlock = document.querySelector('.selectorButtonsBlock') // get first
+        const buttonsBlockClone = buttonsBlock.cloneNode(true)
+        buttonsBlockClone.innerHTML += new Date().toLocaleString()
+        document.querySelector('#wrapperTriggeredBySelector').append(buttonsBlockClone)
+      }
+    </script>
+
+    <script type="module">
+      import { Tooltip } from '../../../dist/js/bootstrap.bundle.js'
 
       if (typeof document.body.attachShadow === 'function') {
         const shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
@@ -97,41 +105,28 @@
           '  Tooltip on top in a shadow dom' +
           '</button>'
 
-        new bootstrap.Tooltip(shadowRoot.firstChild)
-        new bootstrap.Tooltip(shadowRoot.getElementById('secondShadowTooltip'), {
+        new Tooltip(shadowRoot.firstChild)
+        new Tooltip(shadowRoot.getElementById('secondShadowTooltip'), {
           container: shadowRoot
         })
       }
 
-      new bootstrap.Tooltip('#tooltipElement', {
+      new Tooltip('#tooltipElement', {
         container: '#customContainer'
       })
 
-      const targetTooltip = new bootstrap.Tooltip('#target', {
+      const targetTooltip = new Tooltip('#target', {
         placement: 'top',
         trigger: 'manual'
       })
       targetTooltip.show()
 
-      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => new bootstrap.Tooltip(tooltipEl))
-    </script>
+      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => new Tooltip(tooltipEl))
 
-    <script>
-      /* global bootstrap: false */
-
-      new bootstrap.Tooltip('#wrapperTriggeredBySelector', {
+      new Tooltip('#wrapperTriggeredBySelector', {
         animation: false,
         selector: '.bs-dynamic-tooltip'
       })
-
-      /* eslint-disable no-unused-vars */
-      function duplicateButtons() {
-        const buttonsBlock = document.querySelector('.selectorButtonsBlock')// get first
-        const buttonsBlockClone = buttonsBlock.cloneNode(true)
-        buttonsBlockClone.innerHTML += new Date().toLocaleString()
-        document.querySelector('#wrapperTriggeredBySelector').append(buttonsBlockClone)
-      }
-      /* eslint-enable no-unused-vars */
     </script>
 
   </body>

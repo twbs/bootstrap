@@ -111,13 +111,12 @@
 
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js" type="module"></script>
-    <script>
-      /* global bootstrap: false */
+    <script type="module">
+      import { Datepicker } from '../../../dist/js/bootstrap.bundle.js'
 
       // Initialize via JavaScript
       const jsDatepickerEl = document.getElementById('jsDatepicker')
-      const jsDatepicker = new bootstrap.Datepicker(jsDatepickerEl, {
+      const jsDatepicker = new Datepicker(jsDatepickerEl, {
         firstWeekday: 1,
         selectedDates: ['2026-01-15']
       })

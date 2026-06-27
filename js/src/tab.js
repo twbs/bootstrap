@@ -155,6 +155,12 @@ class Tab extends BaseComponent {
       return
     }
 
+    // Don't hijack modifier+arrow shortcuts (e.g. Alt+Left/Right for browser
+    // history navigation); only the bare keys drive tablist navigation.
+    if (event.altKey || event.ctrlKey || event.metaKey) {
+      return
+    }
+
     event.stopPropagation()// stopPropagation/preventDefault both added to support up/down keys without scrolling the page
     event.preventDefault()
 
