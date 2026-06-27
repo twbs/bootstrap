@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url'
 
 import { defineConfig } from 'astro/config'
+import { unified } from '@astrojs/markdown-remark'
 import astroBrokenLinksChecker from 'astro-broken-links-checker'
 import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
 import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
@@ -45,7 +46,9 @@ export default defineConfig({
     })
   ],
   markdown: {
-    smartypants: false,
+    processor: unified({
+      smartypants: false
+    }),
     syntaxHighlight: 'shiki',
     shikiConfig: {
       themes: {
