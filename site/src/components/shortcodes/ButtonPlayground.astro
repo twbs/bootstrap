@@ -156,6 +156,7 @@ const rounded = ['default', 'pill', 'square']
 
 <script>
   import { Menu } from '@bootstrap'
+  import { highlightCode } from '@libs/highlight'
 
   const colorMenuButton = document.querySelector('#btn-color-menu') as HTMLButtonElement
   const colorMenuItems = document.querySelectorAll('#btn-color-menu + .menu .menu-item')
@@ -164,11 +165,11 @@ const rounded = ['default', 'pill', 'square']
   const styleInputs = document.querySelectorAll('input[name="btn-style"]')
   const roundedInputs = document.querySelectorAll('input[name="btn-rounded"]')
   const previewButtons = document.querySelectorAll('#button-preview button')
-  // Find the code snippet inside the Example component
-  const codeSnippet = document
+  // Find the code snippet pre element inside the Example component
+  let codeSnippetPre = document
     .querySelector('#button-preview')
     ?.closest('.bd-example-snippet')
-    ?.querySelector('.highlight code') as HTMLElement
+    ?.querySelector('.astro-code') as HTMLElement | null
 
   // Get all theme color names for removal
   const themeColorNames = Array.from(colorMenuItems).map((item) => (item as HTMLElement).dataset.color || '')
@@ -202,15 +203,20 @@ const rounded = ['default', 'pill', 'square']
     return html
   }
 
-  function updateCodeSnippet() {
-    if (!codeSnippet) return
+  async function updateCodeSnippet() {
+    if (!codeSnippetPre) return
 
     const htmlSnippets = Array.from(previewButtons).map((button) => generateHTML(button as HTMLElement))
     const htmlCode = htmlSnippets.join('\n\n')
 
-    // Update the code content
-    codeSnippet.className = 'language-html'
-    codeSnippet.textContent = htmlCode
+    const highlighted = await highlightCode(htmlCode, 'html')
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(highlighted, 'text/html')
+    const newPre = doc.querySelector('pre')
+    if (newPre) {
+      codeSnippetPre.replaceWith(newPre)
+      codeSnippetPre = newPre
+    }
   }
 
   function updateButtons() {
