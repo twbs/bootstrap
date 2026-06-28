@@ -53,7 +53,10 @@ $otp-sizes: defaults(
     height: 100%;
     padding: 0;
     color: transparent;
-    pointer-events: none; // clicks go to the slots; JS focuses and positions the caret
+    // The input sits on top and receives taps itself, so a touch focuses it
+    // natively (raising the on-screen keyboard via a genuine user gesture).
+    // The JS maps the tap's position to a slot and sets the caret.
+    pointer-events: auto;
     cursor: default;
     caret-color: transparent;
     background-color: transparent;
@@ -71,6 +74,7 @@ $otp-sizes: defaults(
   .otp-slots {
     display: inline-flex;
     gap: var(--otp-gap);
+    pointer-events: none; // purely visual; the overlaid input handles interaction
   }
 
   .otp-slot {

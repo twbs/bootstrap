@@ -220,7 +220,7 @@ describe('OtpInput', () => {
   })
 
   describe('interaction', () => {
-    it('should position the active slot when a slot is clicked', () => {
+    it('should position the active slot from the tapped coordinate', () => {
       fixtureEl.innerHTML = getOtpHtml()
 
       const otpEl = fixtureEl.querySelector('.otp')
@@ -229,7 +229,13 @@ describe('OtpInput', () => {
       otp.setValue('123456')
 
       const slots = otpEl.querySelectorAll('.otp-slot')
-      slots[0].dispatchEvent(new Event('pointerdown', { bubbles: true, cancelable: true }))
+      // The input is already focused (keyboard up), so a tap repositions the
+      // caret immediately based on its x-coordinate
+      input.focus()
+      const { left, width } = slots[0].getBoundingClientRect()
+      input.dispatchEvent(new MouseEvent('pointerdown', {
+        bubbles: true, cancelable: true, clientX: left + (width / 2)
+      }))
 
       expect(input.selectionStart).toEqual(0)
       // A filled slot is selected so the next keystroke overwrites it
