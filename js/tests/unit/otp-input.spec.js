@@ -219,6 +219,97 @@ describe('OtpInput', () => {
     })
   })
 
+  describe('interaction', () => {
+    it('should position the active slot from the tapped coordinate', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      const slots = otpEl.querySelectorAll('.otp-slot')
+      // The input is already focused (keyboard up), so a tap repositions the
+      // caret immediately based on its x-coordinate
+      input.focus()
+      const { left, width } = slots[0].getBoundingClientRect()
+      input.dispatchEvent(new MouseEvent('pointerdown', {
+        bubbles: true, cancelable: true, clientX: left + (width / 2)
+      }))
+
+      expect(input.selectionStart).toEqual(0)
+      // A filled slot is selected so the next keystroke overwrites it
+      expect(input.selectionEnd).toEqual(1)
+      expect(slots[0]).toHaveClass('otp-slot-active')
+    })
+
+    it('should overwrite the active slot instead of inserting', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123456')
+
+      input.focus()
+      input.setSelectionRange(2, 3)
+      input.dispatchEvent(new InputEvent('beforeinput', {
+        inputType: 'insertText', data: '9', bubbles: true, cancelable: true
+      }))
+
+      expect(input.value).toEqual('129456')
+      // Caret advances to the next slot
+      expect(input.selectionStart).toEqual(3)
+    })
+
+    it('should delete the previous character on backspace', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('123')
+
+      input.focus()
+      input.setSelectionRange(3, 3)
+      input.dispatchEvent(new InputEvent('beforeinput', { inputType: 'deleteContentBackward', bubbles: true, cancelable: true }))
+
+      expect(input.value).toEqual('12')
+      expect(input.selectionStart).toEqual(2)
+    })
+
+    it('should focus the first empty slot on keyboard focus', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      const otp = new OtpInput(otpEl)
+      const input = otpEl.querySelector('input')
+      otp.setValue('12')
+
+      input.focus()
+
+      expect(input.selectionStart).toEqual(2)
+      expect(otpEl.querySelectorAll('.otp-slot')[2]).toHaveClass('otp-slot-active')
+    })
+
+    it('should swallow a disallowed character on beforeinput', () => {
+      fixtureEl.innerHTML = getOtpHtml()
+
+      const otpEl = fixtureEl.querySelector('.otp')
+      new OtpInput(otpEl) // eslint-disable-line no-new
+      const input = otpEl.querySelector('input')
+
+      input.focus()
+      const event = new InputEvent('beforeinput', {
+        inputType: 'insertText', data: 'a', bubbles: true, cancelable: true
+      })
+      input.dispatchEvent(event)
+
+      expect(input.value).toEqual('')
+      expect(event.defaultPrevented).toBeTrue()
+    })
+  })
+
   describe('mask', () => {
     it('should render the mask character but keep the real value', () => {
       fixtureEl.innerHTML = getOtpHtml('data-bs-mask="true"')
