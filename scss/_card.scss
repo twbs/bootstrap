@@ -171,7 +171,7 @@ $card-tokens: defaults(
   // Combined selector because of specificity match with `.nav` base class
   .nav.card-header-tabs {
     margin-inline: calc(-.5 * var(--card-cap-padding-x));
-    margin-bottom: calc(-1 * var(--card-cap-padding-y));
+    margin-bottom: calc(-1 * var(--card-cap-padding-y) - var(--nav-tabs-border-width));
     border-block-end: 0;
 
     .nav-link.active {
