@@ -135,9 +135,9 @@ New button variants: `.btn-solid`, `.btn-outline`, `.btn-subtle`, `.btn-text`, `
 
 ### Font size classes
 
-v6 replaces numeric scale with t-shirt sizes (ascending order).
+v6 replaces the numeric scale with t-shirt sizes (ascending). The full v6 scale is `xs sm md lg xl 2xl 3xl 4xl 5xl 6xl`. The rem values below are the **v5** sizes, shown only to help you match each class.
 
-| v5 | v6 |
+| v5 (size) | v6 |
 |---|---|
 | `.fs-1` (2.5rem) | `.fs-4xl` |
 | `.fs-2` (2rem) | `.fs-3xl` |
@@ -145,6 +145,8 @@ v6 replaces numeric scale with t-shirt sizes (ascending order).
 | `.fs-4` (1.5rem) | `.fs-xl` |
 | `.fs-5` (1.25rem) | `.fs-lg` |
 | `.fs-6` (1rem) | `.fs-md` |
+
+Note: in v6, `lg` and larger are **fluid `clamp()` values** that scale with the viewport between a min and a max (e.g. `4xl` is `clamp(2.25rem, 1.75rem + 2.5vw, 3rem)`); `xs`/`sm`/`md` stay fixed. So sizes won't match v5 exactly — the mapping preserves the relative scale, not the precise rem.
 
 ### Spacer scale
 
@@ -197,9 +199,7 @@ Remove the `.modal-dialog` and `.modal-content` wrappers. Use a single `<dialog>
 <dialog class="dialog" id="exampleDialog">
   <div class="dialog-header">
     <h5 class="dialog-title">Title</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentcolor">...</svg>
-    </button>
+    <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
   </div>
   <div class="dialog-body">Content</div>
   <div class="dialog-footer">
@@ -265,19 +265,14 @@ Remove `.dropdown` wrapper and `.dropdown-toggle`. Flatten `<ul><li><a>` to `<di
 
 ### Close button
 
-Replace the empty `.btn-close` (which used `background-image`) with a child SVG using `fill="currentcolor"`.
+The markup does **not** change — `.btn-close` stays an empty element. Do **not** add a child SVG (that double-renders the icon). What changed is internal: v6 draws the icon with a CSS `mask` (`--btn-close-icon`) over `background-color: currentcolor`, so the button now inherits the current text `color` instead of a fixed image.
 
 ```html
-<!-- v5 -->
+<!-- v5 and v6 — identical markup -->
 <button type="button" class="btn-close" aria-label="Close"></button>
-
-<!-- v6 -->
-<button type="button" class="btn-close" aria-label="Close">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
-    <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
-  </svg>
-</button>
 ```
+
+Because the icon is `currentcolor`, the v5 `.btn-close-white` variant is **removed** — to get a light close button, set the text color (e.g. place it in a dark `.theme-*` context or add a `.fg-*` / `color` utility) instead.
 
 ### Checkbox
 
@@ -438,7 +433,7 @@ document.querySelectorAll('form[data-bs-validate]')
 | v5 | v6 |
 |---|---|
 | `$grid-breakpoints` | `$breakpoints` |
-| `$border-radius-xxl` | `$border-radius-2xl` |
+| `$border-radius`, `$border-radius-sm/lg/xl/xxl`, `$border-radius-pill` | Removed — see the radius scale below |
 | `$text-muted` | Use secondary color |
 | `$hr-bg-color` | `$hr-border-color` |
 | `$hr-height` | `$hr-border-width` |
@@ -450,6 +445,16 @@ document.querySelectorAll('form[data-bs-validate]')
 | `breakpoint-infix()` | `breakpoint-prefix()` (returns `"md\:"` not `"-md"`) |
 | `$infix` (in loop mixins) | `$prefix` |
 | `$prefix` (CSS var prefix) | Removed — use PostCSS instead |
+
+### Border radius scale
+
+The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem` and a `$radii` map (keys `0`–`9`, e.g. `5: $radius`, `9: $radius * 3`), exposed as `--radius-*` CSS custom properties. Override the base or the map entries rather than the old per-size variables:
+
+```scss
+@use "bootstrap/scss/bootstrap" with (
+  $radius: .375rem // scales the whole map
+);
+```
 
 ### Removed (no replacement)
 
@@ -472,6 +477,36 @@ Removed `css-var`, `css-variable-name`, and `local-vars` options. Use `property`
 
 ---
 
+## Rebuilt behavior & new components
+
+Beyond the renames above, several things changed how a v5 project behaves or what's available. Check the docs for full markup/options.
+
+### Rebuilt components
+
+- **Carousel → CSS scroll-snap.** Autoplay is now **opt-in**: the default is `autoplay: false`. Enable per-carousel with `data-bs-autoplay="true"` (or `autoplay: true`). A v5 carousel that auto-advanced will now sit still until you opt in.
+- **ScrollSpy → IntersectionObserver.** Rebuilt internally; active-section detection differs from the v5 scroll-position math. The `data-bs-spy="scroll"` data-API is intact, but verify active states if you depended on the old timing.
+
+### New components (didn't exist in v5)
+
+| Component | Trigger / hook | Purpose |
+|---|---|---|
+| Combobox | `data-bs-toggle="combobox"` | Filterable/autocomplete select built on Menu |
+| Chips | `data-bs-chips` | Token / tag input |
+| Datepicker | `data-bs-toggle="datepicker"` | Date picker (peer dep `vanilla-calendar-pro`) |
+| Range | `.form-range` (+ `data-bs-bubble`, ticks) | Enhanced range slider with a value bubble |
+| Strength | `data-bs-strength` | Password-strength meter |
+| OTP input | `data-bs-otp` | One-time-code input |
+| Nav overflow | `.nav-overflow` | Collapses overflowing nav items into a menu |
+| Toggler | `data-bs-toggle="toggler"` | Generic show/hide toggler |
+
+### Removed / changed internals
+
+- **`util/backdrop.js` removed.** Dialog and Drawer use the native `<dialog>` element, so the backdrop is the native `::backdrop` (no JS backdrop, no manual `aria-hidden`/focus-trap/scrollbar handling). If you imported `bootstrap/js/src/util/backdrop` directly, it's gone.
+- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Unlayered author CSS now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
+- **`--bs-*-rgb` variables removed.** The `$*-rgb` Sass vars and `--bs-*-rgb` custom properties are gone. Replace `rgba(var(--bs-primary-rgb), .5)` with `color-mix(in oklab, var(--bs-primary), transparent 50%)` (or use the color directly).
+
+---
+
 ## Phase 6: Verify
 
 1. Build the project and fix any compilation errors.
@@ -487,4 +522,10 @@ Removed `css-var`, `css-variable-name`, and `local-vars` options. Use `property`
    - `was-validated`, `needs-validation` (should be `data-bs-validate`)
    - `popperConfig` (should be `floatingConfig`)
    - `form-check` (should be `check`, `radio`, or `switch`)
+   - `var(--bs-*-rgb)` / `rgba(var(--bs-…-rgb)` (removed — use `color-mix()`)
+   - `$border-radius` Sass vars (removed — use `$radius` / `$radii` / `--radius-*`)
+   - child `<svg>` inside `.btn-close` (should be empty — icon is a CSS mask)
+   - `.btn-close-white` (removed — set text `color` instead)
+   - `carousel` with `data-bs-ride` but no `data-bs-autoplay` (autoplay is now opt-in)
+   - `.fs-1`–`.fs-6` (should be `.fs-4xl` … `.fs-md`)
 3. Test in browser — v6 requires support for `oklch()` and `color-mix()`.
