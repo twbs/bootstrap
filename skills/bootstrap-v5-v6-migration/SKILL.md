@@ -370,11 +370,14 @@ All dist files are now ES modules. No more UMD bundles or `window.bootstrap` glo
 Replace global namespace access with imports:
 
 ```js
-// v5
+// v5 — global namespace
 const tooltip = bootstrap.Tooltip.getOrCreateInstance(el)
+```
 
-// v6
+```js
+// v6 — explicit import
 import { Tooltip } from './bootstrap.bundle.min.js'
+
 const tooltip = Tooltip.getOrCreateInstance(el)
 ```
 
@@ -509,8 +512,8 @@ The markup (`.carousel` → `.carousel-inner` → `.carousel-item`) and the JS A
 
 ### Removed / changed internals
 
-- **`util/backdrop.js`, `util/focustrap.js`, and `util/scrollbar.js` removed.** Dialog and Drawer use the native `<dialog>` element, which provides the backdrop (`::backdrop`), the focus trap, and top-layer inerting; the body scroll-lock is now CSS (`:root.dialog-open`). If you imported `bootstrap/js/src/util/backdrop`, `.../focustrap`, or `.../scrollbar` directly, they're gone.
-- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Unlayered author CSS now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
+- **`util/backdrop.js`, `util/focustrap.js`, and `util/scrollbar.js` removed.** Dialog and Drawer use the native `<dialog>` element, which provides the backdrop (`::backdrop`), the focus trap, and an inert top layer; the body scroll-lock is now CSS (`:root.dialog-open`). If you imported `bootstrap/js/src/util/backdrop`, `.../focustrap`, or `.../scrollbar` directly, they're gone.
+- **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Author CSS outside any layer now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
 - **`--bs-*-rgb` variables removed.** The `$*-rgb` Sass vars and `--bs-*-rgb` custom properties are gone. Replace `rgba(var(--bs-primary-rgb), .5)` with `color-mix(in oklab, var(--bs-primary), transparent 50%)` (or use the color directly).
 
 ---
