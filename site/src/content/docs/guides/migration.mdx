@@ -108,7 +108,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `muted`, `black-50`, and `white-50` from text colors utilities map
   - Removed the carousel dark Sass variables (`$carousel-dark-indicator-active-bg`, `$carousel-dark-control-icon-filter`) and the `.carousel-dark` class—they’re not reassigned. Dark carousels now use `data-bs-theme="dark"` (see the carousel changes below). Carousel captions were removed entirely too.
   - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `currentcolor`, so it adapts to dark backgrounds automatically.
-  - Removed `$border-radius-xxl`, use `$border-radius-2xl`.
+  - Removed all `$border-radius-*` variables (`-xs`, `-sm`, default, `-lg`, `-xl`, `-xxl`, `-pill`) in favor of the numeric `$radii` map and `--radius-*` tokens—see [Border radius tokens](#utilities) under Utilities.
   - Removed `$text-muted` for secondary color.
   - Removed `$hr-bg-color` for `$hr-border-color` and `$hr-height` for `$hr-border-width`.
   - Renamed `$zindex-dropdown` to `$zindex-menu`.
@@ -148,6 +148,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed the separate `bootstrap.esm.js` and `bootstrap.esm.min.js` files — `bootstrap.js` is now the ESM entry point.
 - Removed `js/index.umd.js` entry point.
 - Removed jQuery support and the `js-test-jquery` test target.
+- **Removed the internal `util/backdrop`, `util/focustrap`, and `util/scrollbar` helpers.** They’re obsolete now that Dialog and Drawer build on the native `<dialog>` element—the browser provides the backdrop (`::backdrop`), focus trap, and an inert top layer, and the body scroll-lock is handled in CSS (`:root.dialog-open` with `scrollbar-gutter: stable`). If you imported any of these modules directly from `bootstrap/js/src/util/`, they’re gone.
 - **Replaced the Dropdown component with Menu.** All `.dropdown-*` classes are now `.menu-*` classes, and `data-bs-toggle="dropdown"` is now `data-bs-toggle="menu"`. See the [Menu docs]([[docsref:/components/menus]]) for full details.
   - Renamed CSS classes: `.dropdown-menu` to `.menu`, `.dropdown-item` to `.menu-item`, `.dropdown-divider` to `.menu-divider`, `.dropdown-header` to `.menu-header`, `.dropdown-submenu` to `.submenu`.
   - Deprecated directional wrappers: `.dropstart`, `.dropend`, and `.dropup`. Use `data-bs-placement` to control direction instead (for example, `.dropup` becomes `data-bs-placement="top"`).
