@@ -901,7 +901,11 @@ class Menu extends BaseComponent {
         continue
       }
 
-      if (instance._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+      // Don't auto-close when interacting with a form inside the menu — clicks
+      // on a form's labels, buttons, etc. (not just inputs) should keep it open.
+      const formAncestor = event.target.closest?.('form')
+      const isInsideMenuForm = Boolean(formAncestor) && instance._menu.contains(formAncestor)
+      if (instance._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName) || isInsideMenuForm)) {
         continue
       }
 
@@ -916,7 +920,9 @@ class Menu extends BaseComponent {
   }
 
   static dataApiKeydownHandler(event) {
-    const isInput = /input|textarea/i.test(event.target.tagName)
+    // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
+    // menu doesn't hijack their arrow keys.
+    const isInput = /input|textarea/i.test(event.target.tagName) || event.target.isContentEditable
     const isEscapeEvent = event.key === ESCAPE_KEY
     const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
     const isLeftOrRightEvent = [ARROW_LEFT_KEY, ARROW_RIGHT_KEY].includes(event.key)
