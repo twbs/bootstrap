@@ -2,6 +2,8 @@
 title: Toasts
 description: Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.
 toc: true
+css_layer: components
+js: required
 ---
 
 Toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They’re built with flexbox, so they’re easy to align and position.
@@ -23,7 +25,7 @@ To encourage extensible and predictable toasts, we recommend a header and body. 
 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your “toasted” content and strongly encourage a dismiss button.
 
-<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<Example class="bg-1" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
@@ -58,11 +60,11 @@ Click the button below to show a toast (positioned with our utilities in the low
 </div>
 
 <Example showMarkup={false} code={`
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+<button type="button" class="btn-solid theme-primary" id="liveToastBtn">Show live toast</button>
 `} />
 
 ```html
-<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+<button type="button" class="btn-solid theme-primary" id="liveToastBtn">Show live toast</button>
 
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -87,15 +89,29 @@ We use the following JavaScript to trigger our live toast demo:
 
 Toasts are slightly translucent to blend in with what’s below them.
 
-<Example class="bg-dark" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<Example class="bg-1" code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
       <strong class="me-auto">Bootstrap</strong>
-      <small class="text-body-secondary">11 mins ago</small>
+      <small class="fg-2">11 mins ago</small>
       <CloseButton dismiss="toast" />
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
+    </div>
+  </div>`} />
+
+Add `.toast-translucent` to enhance the translucency with a backdrop blur and saturation filter.
+
+<Example class="bg-dark" code={`<div class="toast toast-translucent" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="fg-2">11 mins ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a translucent toast message.
     </div>
   </div>`} />
 
@@ -108,7 +124,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
       <div class="toast-header">
         <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
         <strong class="me-auto">Bootstrap</strong>
-        <small class="text-body-secondary">just now</small>
+        <small class="fg-2">just now</small>
         <CloseButton dismiss="toast" />
       </div>
       <div class="toast-body">
@@ -120,7 +136,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
       <div class="toast-header">
         <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
         <strong class="me-auto">Bootstrap</strong>
-        <small class="text-body-secondary">2 seconds ago</small>
+        <small class="fg-2">2 seconds ago</small>
         <CloseButton dismiss="toast" />
       </div>
       <div class="toast-body">
@@ -129,16 +145,72 @@ You can stack toasts by wrapping them in a toast container, which will verticall
     </div>
   </div>`} />
 
+### Dark toasts
+
+Set a toast to dark mode by adding the `data-bs-theme="dark"` attribute to the `.toast` element.
+
+<Example class="vstack gap-3" code={`<div class="toast" data-bs-theme="dark" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="opacity-60">2 seconds ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      This toast is in dark mode by default.
+      <div class="hstack gap-2 mt-2">
+        <button type="button" class="btn-solid theme-primary btn-sm">Take action</button>
+        <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+      </div>
+    </div>
+  </div>`} />
+
+### Variants
+
+Toasts can be themed with our [theme color utilities]([[docsref:/customize/theme]]). Apply to the entire toast or individual elements within the toast.
+
+<Example class="vstack gap-3" code={`<div class="toast theme-primary" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="opacity-60">2 seconds ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      This toast is a primary themed toast.
+      <div class="hstack gap-2 mt-2">
+        <button type="button" class="btn-solid btn-sm">Take action</button>
+        <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast theme-accent" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
+      <strong class="me-auto">Bootstrap</strong>
+      <small class="opacity-60">2 seconds ago</small>
+      <CloseButton dismiss="toast" />
+    </div>
+    <div class="toast-body">
+      This toast is an accent-themed toast.
+      <div class="hstack gap-2 mt-2">
+        <button type="button" class="btn-solid btn-sm">Take action</button>
+        <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+      </div>
+    </div>
+  </div>`} />
+
 ### Custom content
 
 Customize your toasts by removing sub-components, tweaking them with [utilities]([[docsref:/utilities/api]]), or by adding your own markup. Here we’ve created a simpler toast by removing the default `.toast-header`, adding a custom hide icon from [Bootstrap Icons]([[config:icons]]), and using some [flexbox utilities]([[docsref:/utilities/flex]]) to adjust the layout.
 
-<Example code={`<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
+<Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex justify-content-between">
       <div class="toast-body">
         Hello, world! This is a toast message.
       </div>
-      <CloseButton dismiss="toast" class="me-2 m-auto" />
+      <CloseButton dismiss="toast" class="me-3 m-auto" />
     </div>
   </div>`} />
 
@@ -146,24 +218,12 @@ Alternatively, you can also add additional controls and components to toasts.
 
 <Example code={`<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body">
-      Hello, world! This is a toast message.
-      <div class="mt-2 pt-2 border-top">
-        <button type="button" class="btn btn-primary btn-sm">Take action</button>
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+      This is a custom toast message with additional content like a horizontal rule and buttons.
+      <hr class="my-3" />
+      <div class="hstack gap-2">
+        <button type="button" class="btn-solid theme-primary btn-sm">Take action</button>
+        <button type="button" class="btn-solid theme-secondary btn-sm" data-bs-dismiss="toast">Close</button>
       </div>
-    </div>
-  </div>`} />
-
-### Color schemes
-
-Building on the above example, you can create different toast color schemes with our [color]([[docsref:/utilities/colors]]) and [background]([[docsref:/utilities/background]]) utilities. Here we’ve added `.text-bg-primary` to the `.toast`. For a crisp edge, we remove the default border with `.border-0`.
-
-<Example code={`<div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="d-flex">
-      <div class="toast-body">
-        Hello, world! This is a toast message.
-      </div>
-      <CloseButton dismiss="toast" class="me-2 m-auto" />
     </div>
   </div>`} />
 
@@ -174,8 +234,8 @@ Place toasts with custom CSS as you need them. The top right is often used for n
 <Example addStackblitzJs code={`<form>
     <div class="mb-3">
       <label for="selectToastPlacement">Toast placement</label>
-      <select class="form-select mt-2" id="selectToastPlacement">
-        <option value="" selected>Select a position...</option>
+      <select class="form-control mt-2" id="selectToastPlacement">
+        <option value="" selected disabled>Select a position...</option>
         <option value="top-0 start-0">Top left</option>
         <option value="top-0 start-50 translate-middle-x">Top center</option>
         <option value="top-0 end-0">Top right</option>
@@ -217,7 +277,7 @@ For systems that generate more notifications, consider using a wrapping element 
         <div class="toast-header">
           <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
           <strong class="me-auto">Bootstrap</strong>
-          <small class="text-body-secondary">just now</small>
+          <small class="fg-2">just now</small>
           <CloseButton dismiss="toast" />
         </div>
         <div class="toast-body">
@@ -229,7 +289,7 @@ For systems that generate more notifications, consider using a wrapping element 
         <div class="toast-header">
           <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
           <strong class="me-auto">Bootstrap</strong>
-          <small class="text-body-secondary">2 seconds ago</small>
+          <small class="fg-2">2 seconds ago</small>
           <CloseButton dismiss="toast" />
         </div>
         <div class="toast-body">
@@ -306,6 +366,17 @@ Initialize toasts via JavaScript:
 const toastElList = document.querySelectorAll('.toast')
 const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
 ```
+
+### Via data attributes
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-dismiss="toast"` | On a close control, dismisses the toast when activated. |
+| `data-bs-autohide` | Whether the toast hides automatically after the delay. |
+| `data-bs-delay` | Time in milliseconds before hiding (when autohide is enabled). |
+| `data-bs-animation` | Whether to use the fade transition when showing and hiding. |
+</BsTable>
 
 ### Triggers
 

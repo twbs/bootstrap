@@ -35,6 +35,8 @@ import {
 const NAME = 'tooltip'
 const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn'])
 
+const ESCAPE_KEY = 'Escape'
+
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_MODAL = 'modal'
 const CLASS_NAME_SHOW = 'show'
@@ -60,6 +62,7 @@ const EVENT_FOCUSIN = 'focusin'
 const EVENT_FOCUSOUT = 'focusout'
 const EVENT_MOUSEENTER = 'mouseenter'
 const EVENT_MOUSELEAVE = 'mouseleave'
+const EVENT_KEYDOWN = 'keydown'
 
 const AttachmentMap = {
   AUTO: 'auto',
@@ -130,6 +133,7 @@ class Tooltip extends BaseComponent {
     this._isHovered = null
     this._activeTrigger = {}
     this._floatingCleanup = null
+    this._keydownHandler = null
     this._templateFactory = null
     this._newContent = null
     this._mediaQueryListeners = []
@@ -188,6 +192,8 @@ class Tooltip extends BaseComponent {
   dispose() {
     clearTimeout(this._timeout)
 
+    this._removeEscapeListener()
+
     EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
 
     if (this._element.getAttribute('data-bs-original-title')) {
@@ -213,6 +219,11 @@ class Tooltip extends BaseComponent {
     const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element)
 
     if (showEvent.defaultPrevented || !isInTheDom) {
+      // Reset the transient hover/active state so a prevented (or not-in-DOM)
+      // show doesn't leave `_isHovered` stuck true — otherwise a click-triggered
+      // tip would hit the `_enter()` early-return on every later click and never
+      // reopen.
+      this._isHovered = false
       return
     }
 
@@ -222,7 +233,11 @@ class Tooltip extends BaseComponent {
 
     this._element.setAttribute('aria-describedby', tip.getAttribute('id'))
 
-    const { container } = this._config
+    let { container } = this._config
+    const closestDialog = this._element.closest('dialog[open]')
+    if (closestDialog && container === document.body) {
+      container = closestDialog
+    }
 
     if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
       container.append(tip)
@@ -233,12 +248,15 @@ class Tooltip extends BaseComponent {
 
     tip.classList.add(CLASS_NAME_SHOW)
 
+    // Allow dismissing the tooltip with the Escape key (WCAG 1.4.13)
+    this._setEscapeListener()
+
     // If this is a touch-enabled device we add extra
     // empty mouseover listeners to the body's immediate children;
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.on(element, 'mouseover', noop)
       }
     }
@@ -266,13 +284,15 @@ class Tooltip extends BaseComponent {
       return
     }
 
+    this._removeEscapeListener()
+
     const tip = this._getTipElement()
     tip.classList.remove(CLASS_NAME_SHOW)
 
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.off(element, 'mouseover', noop)
       }
     }
@@ -306,7 +326,15 @@ class Tooltip extends BaseComponent {
 
   // Protected
   _isWithContent() {
-    return Boolean(this._getTitle())
+    return Boolean(this._getTitle()) || this._hasNewContent()
+  }
+
+  // Content supplied via setContent() (a `{ selector: content }` map) overrides
+  // the configured title/content when rendering, so it should also satisfy the
+  // show() gate — otherwise a tip whose content is only set via setContent()
+  // can never be shown.
+  _hasNewContent() {
+    return Boolean(this._newContent) && Object.values(this._newContent).some(Boolean)
   }
 
   _getTipElement() {
@@ -595,6 +623,41 @@ class Tooltip extends BaseComponent {
     EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler)
   }
 
+  _setEscapeListener() {
+    if (this._keydownHandler) {
+      return
+    }
+
+    this._keydownHandler = event => {
+      if (event.key !== ESCAPE_KEY || !this._isShown() || !this.tip.isConnected) {
+        return
+      }
+
+      // Dismiss the tooltip and consume the keystroke so it doesn't reach
+      // ancestor components (e.g. a parent dialog). This way the first Escape
+      // only closes the tooltip, and a subsequent one can close the dialog —
+      // matching the behavior of the dropdown menu.
+      event.preventDefault()
+      event.stopPropagation()
+      this.hide()
+    }
+
+    // Listen in the capture phase so this runs before the dialog's own keydown
+    // handler, and on the document so it works regardless of where focus is
+    // (e.g. for hover-triggered tooltips). EventHandler only uses the capture
+    // phase for delegated listeners, so attach natively here.
+    this._element.ownerDocument.addEventListener(EVENT_KEYDOWN, this._keydownHandler, true)
+  }
+
+  _removeEscapeListener() {
+    if (!this._keydownHandler) {
+      return
+    }
+
+    this._element.ownerDocument.removeEventListener(EVENT_KEYDOWN, this._keydownHandler, true)
+    this._keydownHandler = null
+  }
+
   _fixTitle() {
     const title = this._element.getAttribute('title')
 
@@ -677,11 +740,14 @@ class Tooltip extends BaseComponent {
       }
     }
 
-    if (typeof config.title === 'number') {
+    // Coerce number/boolean title and content to strings. `data-bs-title="true"`
+    // / `data-bs-content="false"` are auto-converted to booleans by the data-API,
+    // which would otherwise fail the (null|string|element|function) type check.
+    if (typeof config.title === 'number' || typeof config.title === 'boolean') {
       config.title = config.title.toString()
     }
 
-    if (typeof config.content === 'number') {
+    if (typeof config.content === 'number' || typeof config.content === 'boolean') {
       config.content = config.content.toString()
     }
 
@@ -729,16 +795,17 @@ const initTooltip = event => {
     return
   }
 
-  // Get or create instance and trigger the appropriate action
-  const tooltip = Tooltip.getOrCreateInstance(target)
-
-  // For focus events, manually trigger enter to show
-  if (event.type === 'focusin') {
-    tooltip._activeTrigger.focus = true
-    tooltip._enter()
-  }
+  // Lazily create the instance. The instance's own `_setListeners()` registers
+  // the appropriate listeners on the element for the configured triggers
+  // (hover/focus by default), so we don't mutate `_activeTrigger` or call
+  // `_enter` here — doing so would show tooltips for triggers the user didn't
+  // opt into (e.g. `focusin` firing for click-focused buttons in Chromium,
+  // even when `trigger="hover"` or `trigger="manual"`) and leave stale state
+  // on `_activeTrigger`.
+  Tooltip.getOrCreateInstance(target)
 }
 
+// Auto-initialize tooltips on first interaction for hover and focus triggers
 EventHandler.on(document, EVENT_FOCUSIN, SELECTOR_DATA_TOGGLE, initTooltip)
 EventHandler.on(document, EVENT_MOUSEENTER, SELECTOR_DATA_TOGGLE, initTooltip)
 

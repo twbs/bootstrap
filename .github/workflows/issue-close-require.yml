@@ -10,17 +10,20 @@ permissions:
 jobs:
   issue-close-require:
     permissions:
-      # allow actions-cool/issues-helper to update issues and PRs
       issues: write
       pull-requests: write
     runs-on: ubuntu-latest
     if: github.repository == 'twbs/bootstrap'
     steps:
       - name: awaiting reply
-        uses: actions-cool/issues-helper@d1d51fccf39469b5458203b1369060db0ff0c0db # v3.7.4
+        uses: actions/stale@eb5cf3af3ac0a1aa4c9c45633dd1ae542a27a899 # v10.3.0
         with:
-          actions: "close-issues"
-          labels: "awaiting-reply"
-          inactive-day: 14
-          body: |
+          only-issue-labels: 'awaiting-reply'
+          days-before-stale: 14
+          days-before-close: 0
+          days-before-pr-stale: -1
+          days-before-pr-close: -1
+          stale-issue-message: ''
+          close-issue-message: |
             As the issue was labeled with `awaiting-reply`, but there has been no response in 14 days, this issue will be closed. If you have any questions, you can comment/reply.
+          close-issue-reason: not_planned

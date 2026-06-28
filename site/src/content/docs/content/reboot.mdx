@@ -1,8 +1,12 @@
 ---
 title: Reboot
 description: Reboot, a collection of element-specific CSS changes in a single file, kickstart Bootstrap to provide an elegant, consistent, and simple baseline to build upon.
-aliases: "/docs/[[config:docs_version]]/content/"
+aliases:
+ - "/docs/[[config:docs_version]]/content/"
+ - "/docs/content/"
+ - "/content/"
 toc: true
+css_layer: reboot
 ---
 
 import { getData } from '@libs/data'
@@ -80,6 +84,8 @@ This `font-family` is applied to the `<body>` and automatically inherited global
 
 All heading elements—`<h1>`—`<h6>` have their `margin-top` removed, `margin-bottom: .5rem` set, and `line-height` tightened. While headings inherit their `color` by default, you can also override it via optional CSS variable, `--bs-heading-color`.
 
+You can also use the `.h1`–`.h6` classes to style headings without using the HTML elements.
+
 <BsTable>
 | Heading | Example |
 | --- | --- |
@@ -121,7 +127,7 @@ The `<hr>` element has been simplified. Similar to browser defaults, `<hr>`s are
 
 <Example code={`<hr>
 
-  <div class="text-success">
+  <div class="fg-success">
     <hr>
   </div>
 
@@ -187,7 +193,7 @@ For indicating variables use the `<var>` tag.
 Use the `<kbd>` to indicate input that is typically entered via keyboard.
 
 <Example code={`To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
-To edit settings, press <kbd><kbd>Ctrl</kbd> + <kbd>,</kbd></kbd>`} />
+To edit settings, press <kbd>Ctrl</kbd> + <kbd>,</kbd>`} />
 
 ## Sample output
 

@@ -7,6 +7,17 @@
   --shell-prompt-color: #565c64;
 }
 
+// Geist Mono enables contextual ligatures/alternates (e.g. `--`, `->`, `==`)
+// which distort code. Render glyphs literally for code and inline code.
+code,
+kbd,
+samp,
+pre,
+.astro-code {
+  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: none;
+}
+
 .astro-code {
   --bs-font-monospace: "Geist Mono";
 
@@ -17,14 +28,19 @@
   font-size: 13px;
   line-height: 20px;
   background-color: var(--bd-pre-bg) !important; // stylelint-disable-line declaration-no-important
-  @include border-radius(calc(var(--bs-border-radius) - 1px));
+  @include border-radius(calc(var(--radius-5) - 1px));
 
   > code {
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
-    width: 100%;
-  }
+    width: max-content;
+    min-width: 100%;
 
+    .line:empty {
+      min-height: 1lh;
+    }
+  }
 }
 
 .astro-code .line.highlighted {
@@ -34,17 +50,8 @@
   background-color: color-mix(in oklch, var(--primary-bg) 10%, transparent);
 }
 
-// Dark mode theming for Shiki
-// When using dual themes, Shiki generates inline styles with CSS variables
-// We need to switch from the light theme vars to dark theme vars
 [data-bs-theme="dark"] {
   --shell-prompt-color: #868e96;
-
-  .astro-code span,
-  .astro-code-themes span {
-    // Override Shiki's inline color with the dark theme color
-    color: var(--shiki-dark) !important; // stylelint-disable-line declaration-no-important
-  }
 }
 
 // Shell prompts - these work with Shiki's transformer that adds .line class
@@ -78,7 +85,7 @@
   color: var(--bs-fg-3);
   background: transparent;
   border: 0;
-  @include border-radius(var(--bs-border-radius-sm));
+  @include border-radius(var(--radius-5));
   @include transition(color .15s ease-in-out, background-color .15s ease-in-out);
 
   &:hover {

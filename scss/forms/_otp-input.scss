@@ -1,17 +1,25 @@
 @use "../functions" as *;
 @use "../mixins/border-radius" as *;
+@use "../mixins/box-shadow" as *;
+@use "../mixins/focus-ring" as *;
 @use "../mixins/tokens" as *;
+@use "../mixins/transition" as *;
 
-// stylelint-disable custom-property-no-missing-var-function
 $otp-tokens: () !default;
 
 // scss-docs-start otp-tokens
+// stylelint-disable custom-property-no-missing-var-function
 // stylelint-disable-next-line scss/dollar-variable-default
 $otp-tokens: defaults(
   (
     --otp-size: var(--btn-input-lg-min-height),
     --otp-font-size: var(--btn-input-font-size),
     --otp-gap: .5rem,
+    --otp-slot-fg: var(--btn-input-fg),
+    --otp-slot-bg: var(--btn-input-bg),
+    --otp-slot-border-width: var(--border-width),
+    --otp-slot-border-color: var(--border-color),
+    --otp-slot-border-radius: var(--radius-5),
   ),
   $otp-tokens
 );
@@ -31,64 +39,94 @@ $otp-sizes: defaults(
   .otp {
     @include tokens($otp-tokens);
 
-    display: inline-flex;
-    gap: var(--otp-gap);
+    position: relative;
+    display: flex;
+  }
 
-    .form-control {
-      width: var(--otp-size);
-      min-height: var(--otp-size);
-      padding: 0;
-      font-size: var(--otp-font-size);
-      font-weight: 500;
-      line-height: 1;
-      text-align: center;
-      @include border-radius(var(--otp-border-radius, var(--btn-input-border-radius)));
+  // A single real input backs the whole control. Once the JS renders the
+  // visual slots (`.otp-rendered`), the input becomes a transparent overlay
+  // that captures all interaction while the slots display the value.
+  .otp-rendered .otp-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    text-align: center;
+    cursor: default;
+    caret-color: transparent;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
 
-      // Remove default number spinners
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        margin: 0;
-        appearance: none;
-      }
-
-      &[type="number"] {
-        appearance: textfield;
-      }
-
-      &:focus,
-      &:focus-visible {
-        z-index: 1;
-      }
-    }
-
-    &.is-valid .form-control,
-    .was-validated &:valid .form-control {
-      border-color: var(--form-valid-border-color);
-
-      &:focus {
-        --focus-ring-color: rgba(var(--success-rgb), .25);
-        border-color: var(--form-valid-border-color);
-      }
-    }
-
-    &.is-invalid .form-control,
-    .was-validated &:invalid .form-control {
-      border-color: var(--form-invalid-border-color);
-
-      &:focus {
-        --focus-ring-color: rgba(var(--danger-rgb), .25);
-        border-color: var(--form-invalid-border-color);
-      }
+    // Never reveal the underlying characters, even on selection
+    &::selection {
+      color: transparent;
+      background-color: transparent;
     }
   }
 
-  // When used with .input-group, disable the gap and prevent inputs from stretching
-  .otp.input-group {
-    gap: 0;
-    width: auto; // Override input-group's width: 100%
+  .otp-slots {
+    display: inline-flex;
+    gap: var(--otp-gap);
+    pointer-events: none; // let clicks fall through to the input overlay
+  }
 
-    .form-control {
-      flex: 0 0 auto; // Don't grow or shrink, use fixed width
+  .otp-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--otp-size);
+    min-height: var(--otp-size);
+    font-size: var(--otp-font-size);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--otp-slot-fg);
+    background-color: var(--otp-slot-bg);
+    border: var(--otp-slot-border-width) solid var(--otp-slot-border-color);
+    @include border-radius(var(--otp-slot-border-radius));
+    @include box-shadow(var(--box-shadow-inset));
+    @include transition(border-color .15s ease-in-out, box-shadow .15s ease-in-out);
+  }
+
+  // The slot at the caret gets the focus ring; empty active slots show a
+  // blinking caret so the entry point is obvious.
+  .otp-slot-active {
+    --focus-ring-offset: -1px;
+    z-index: 1;
+    @include focus-ring(true);
+
+    &:not(.otp-slot-filled)::after {
+      width: 1px;
+      height: 50%;
+      content: "";
+      background-color: var(--otp-slot-fg);
+      animation: otp-caret-blink 1s step-end infinite;
+    }
+  }
+
+  // Disabled state mirrors disabled form controls
+  .otp-input:disabled ~ .otp-slots .otp-slot {
+    background-color: var(--bg-2);
+  }
+
+  // Connected slots share borders for a single cohesive field
+  .otp-connected .otp-slots {
+    gap: 0;
+  }
+  .otp-connected .otp-slot {
+    border-radius: 0; // stylelint-disable-line property-disallowed-list
+
+    &:not(:first-child) {
+      margin-inline-start: calc(var(--otp-slot-border-width) * -1);
+    }
+    &:first-child {
+      @include border-start-radius(var(--otp-slot-border-radius));
+    }
+    &:last-child {
+      @include border-end-radius(var(--otp-slot-border-radius));
     }
   }
 
@@ -101,11 +139,21 @@ $otp-sizes: defaults(
     user-select: none;
   }
 
+  // OTP input sizing — keep in sync with `$form-control-sizes`.
   @each $size, $_ in $otp-sizes {
     .otp-#{$size} {
       --otp-size: var(--btn-input-#{$size}-min-height);
       --otp-font-size: var(--btn-input-#{$size}-font-size);
-      --otp-border-radius: var(--btn-input-#{$size}-border-radius);
     }
+  }
+}
+
+@keyframes otp-caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }

@@ -1,0 +1,21 @@
+// Mask icon
+//
+// Renders an SVG icon via a CSS mask so the shape is painted with the
+// element's `background-color` and therefore inherits theme/dark-mode color.
+// Set `background-color` on the element itself; pass `null` for `$icon` when
+// the mask image is applied conditionally (e.g. per state or direction).
+
+// scss-docs-start mask-icon-mixin
+@mixin mask-icon($icon: null, $size: contain, $position: center) {
+  @if $icon != null {
+    mask-image: $icon;
+  }
+  mask-repeat: no-repeat;
+  @if $position != null {
+    mask-position: $position;
+  }
+  @if $size != null {
+    mask-size: $size;
+  }
+}
+// scss-docs-end mask-icon-mixin

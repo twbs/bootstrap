@@ -1,9 +1,7 @@
-/* eslint-disable import/extensions, import/no-unassigned-import */
-
-import Tooltip from '../../dist/tooltip'
-import '../../dist/carousel'
+import Tooltip from '../../dist/tooltip.js'
+import '../../dist/carousel.js' // eslint-disable-line import/no-unassigned-import
 
 window.addEventListener('load', () => {
-  [].concat(...document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  [...document.querySelectorAll('[data-bs-toggle="tooltip"]')]
     .map(tooltipNode => new Tooltip(tooltipNode))
 })

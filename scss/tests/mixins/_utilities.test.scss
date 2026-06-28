@@ -1,5 +1,5 @@
 // check-unused-imports-disable — test infrastructure imports.
-@use "../../variables" as *;
+@use "../../config" as *;
 @use "../../functions" as *;
 @use "../../mixins/utilities" as *;
 
@@ -177,29 +177,41 @@ $true-terminal-output: false;
       }
     }
 
-    // @include describe("state") {
-    //   @include it("Generates selectors for each states") {
-    //     @include test-generate-utility(
-    //       (
-    //         property: padding,
-    //         values: 1rem,
-    //         state: hover focus,
-    //       )
-    //     ) {
-    //       .padding-1rem {
-    //         padding: 1rem;
-    //       }
+    @include describe("state") {
+      @include it("generates prefix-style selectors for each state") {
+        @include test-generate-utility(
+          (
+            property: padding,
+            values: (small: .5rem, large: 2rem),
+            state: hover focus,
+          )
+        ) {
+          .padding-small {
+            padding: .5rem;
+          }
 
-    //       .padding-1rem-hover:hover {
-    //         padding: 1rem;
-    //       }
+          .hover\:padding-small:hover {
+            padding: .5rem;
+          }
 
-    //       .padding-1rem-focus:focus {
-    //         padding: 1rem;
-    //       }
-    //     }
-    //   }
-    // }
+          .focus\:padding-small:focus {
+            padding: .5rem;
+          }
+
+          .padding-large {
+            padding: 2rem;
+          }
+
+          .hover\:padding-large:hover {
+            padding: 2rem;
+          }
+
+          .focus\:padding-large:focus {
+            padding: 2rem;
+          }
+        }
+      }
+    }
 
     // @include describe("css-var"){
     //   @include it("sets a CSS variable instead of the property") {
@@ -293,27 +305,6 @@ $true-terminal-output: false;
     //   }
     // }
 
-    // @include describe("rtl") {
-    //   @include it("sets up RTLCSS for removal when false") {
-    //     @include test-generate-utility(
-    //       (
-    //         property: padding,
-    //         values: 1rem,
-    //         rtl: false
-    //       )
-    //     ) {
-    //       /* rtl:begin:remove */
-
-    //       .padding-1rem {
-    //         padding: 1rem;
-    //       }
-
-    //       /* rtl:end:remove */
-
-    //     }
-    //   }
-    // }
-
     // @include describe("rfs") {
     //   @include it("sets the fluid value when not inside media query") {
     //     @include test-generate-utility(
@@ -346,49 +337,258 @@ $true-terminal-output: false;
     // }
   }
 
-  // @include describe("$infix") {
-  //   @include it("inserts the given infix") {
-  //     @include test-generate-utility(
-  //       (
-  //         property: "padding",
-  //         values: (null: 1rem, small: .5rem, large: 2rem)
-  //       ),
-  //       $infix: -sm
-  //     ) {
-  //       .padding-sm {
-  //         padding: 1rem;
-  //       }
+  @include describe("$prefix") {
+    @include it("prepends the given prefix") {
+      @include test-generate-utility(
+        (
+          property: "padding",
+          values: (null: 1rem, small: .5rem, large: 2rem)
+        ),
+        $prefix: "sm\\:"
+      ) {
+        .sm\:padding {
+          padding: 1rem;
+        }
 
-  //       .padding-sm-small {
-  //         padding: .5rem;
-  //       }
+        .sm\:padding-small {
+          padding: .5rem;
+        }
 
-  //       .padding-sm-large {
-  //         padding: 2rem;
-  //       }
-  //     }
-  //   }
+        .sm\:padding-large {
+          padding: 2rem;
+        }
+      }
+    }
 
-  //   @include it("strips leading - if class is null") {
-  //     @include test-generate-utility(
-  //       (
-  //         property: visibility,
-  //         class: null,
-  //         values: (
-  //           visible: visible,
-  //           invisible: hidden,
-  //         )
-  //       ),
-  //       -sm
-  //     ) {
-  //       .sm-visible {
-  //         visibility: visible;
-  //       }
+    @include it("works with null class") {
+      @include test-generate-utility(
+        (
+          property: visibility,
+          class: null,
+          values: (
+            visible: visible,
+            invisible: hidden,
+          )
+        ),
+        "sm\\:"
+      ) {
+        .sm\:visible {
+          visibility: visible;
+        }
 
-  //       .sm-invisible {
-  //         visibility: hidden;
-  //       }
-  //     }
-  //   }
-  // }
+        .sm\:invisible {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+
+  @include describe("selector") {
+    @include it("generates an attr-starts selector") {
+      @include test-generate-utility(
+        (
+          selector: "attr-starts",
+          class: "ratio-",
+          property: aspect-ratio,
+          values: var(--ratio),
+        )
+      ) {
+        [class^="ratio-"] {
+          aspect-ratio: var(--ratio);
+        }
+      }
+    }
+
+    @include it("generates an attr-includes selector") {
+      @include test-generate-utility(
+        (
+          selector: "attr-includes",
+          class: "ratio-",
+          property: aspect-ratio,
+          values: var(--ratio),
+        )
+      ) {
+        [class*="ratio-"] {
+          aspect-ratio: var(--ratio);
+        }
+      }
+    }
+  }
+
+  @include describe("child-selector") {
+    @include it("wraps the selector in :where() with the child selector appended") {
+      @include test-generate-utility(
+        (
+          property: margin-inline-end,
+          class: space-x,
+          child-selector: "> :not(:last-child)",
+          values: (1: .25rem, 2: .5rem)
+        )
+      ) {
+        :where(.space-x-1 > :not(:last-child)) {
+          margin-inline-end: .25rem;
+        }
+
+        :where(.space-x-2 > :not(:last-child)) {
+          margin-inline-end: .5rem;
+        }
+      }
+    }
+
+    @include it("wraps state variant selectors in :where() as well") {
+      @include test-generate-utility(
+        (
+          property: margin-inline-end,
+          class: space-x,
+          child-selector: "> :not(:last-child)",
+          state: hover,
+          values: (1: .25rem)
+        )
+      ) {
+        :where(.space-x-1 > :not(:last-child)) {
+          margin-inline-end: .25rem;
+        }
+
+        :where(.hover\:space-x-1:hover > :not(:last-child)) {
+          margin-inline-end: .25rem;
+        }
+      }
+    }
+  }
+
+  @include describe("variables") {
+    @include it("emits each list variable with the utility value") {
+      @include test-generate-utility(
+        (
+          property: color,
+          class: link,
+          variables: link-color,
+          values: (10: 10%, 50: 50%)
+        )
+      ) {
+        .link-10 {
+          --link-color: 10%;
+          color: 10%;
+        }
+
+        .link-50 {
+          --link-color: 50%;
+          color: 50%;
+        }
+      }
+    }
+
+    @include it("emits each map variable with its static value") {
+      @include test-generate-utility(
+        (
+          property: text-decoration-color,
+          class: link-underline,
+          variables: ("link-underline-opacity": 1),
+          values: (primary: #06c, danger: #c00)
+        )
+      ) {
+        .link-underline-primary {
+          --link-underline-opacity: 1;
+          text-decoration-color: #06c;
+        }
+
+        .link-underline-danger {
+          --link-underline-opacity: 1;
+          text-decoration-color: #c00;
+        }
+      }
+    }
+
+    @include it("emits variables in state variant blocks too") {
+      @include test-generate-utility(
+        (
+          property: color,
+          class: link,
+          variables: link-color,
+          state: hover,
+          values: (10: 10%)
+        )
+      ) {
+        .link-10 {
+          --link-color: 10%;
+          color: 10%;
+        }
+
+        .hover\:link-10:hover {
+          --link-color: 10%;
+          color: 10%;
+        }
+      }
+    }
+  }
+
+  @include describe("property map") {
+    @include it("uses null default to pass the utility value to a property") {
+      @include test-generate-utility(
+        (
+          property: (
+            "--bg": null,
+            "background-color": var(--bg)
+          ),
+          class: bg,
+          values: (primary: #06c, danger: #c00)
+        )
+      ) {
+        .bg-primary {
+          --bg: #06c;
+          background-color: var(--bg);
+        }
+
+        .bg-danger {
+          --bg: #c00;
+          background-color: var(--bg);
+        }
+      }
+    }
+
+    @include it("uses a per-value map to override individual properties") {
+      @include test-generate-utility(
+        (
+          property: (
+            "font-size": 1rem,
+            "line-height": 1.5
+          ),
+          class: text,
+          values: (
+            "sm": ("font-size": .875rem, "line-height": 1.25),
+            "lg": ("font-size": 1.25rem, "line-height": 1.75),
+          )
+        )
+      ) {
+        .text-sm {
+          font-size: .875rem;
+          line-height: 1.25;
+        }
+
+        .text-lg {
+          font-size: 1.25rem;
+          line-height: 1.75;
+        }
+      }
+    }
+
+    @include it("applies !important to all mapped properties") {
+      @include test-generate-utility(
+        (
+          property: (
+            "--bg": null,
+            "background-color": var(--bg)
+          ),
+          class: bg,
+          important: true,
+          values: (primary: #06c)
+        )
+      ) {
+        .bg-primary {
+          --bg: #06c !important;
+          background-color: var(--bg) !important;
+        }
+      }
+    }
+  }
 }

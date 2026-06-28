@@ -1,6 +1,5 @@
 ---
 import fs from 'node:fs'
-import { getConfig } from '@libs/config'
 import Code from '@shortcodes/Code.astro'
 
 // Prints everything between `// scss-docs-start "name"` and `// scss-docs-end "name"`
@@ -54,20 +53,4 @@ try {
 }
 ---
 
-<Code containerClass="bd-example-snippet" code={content} lang="scss">
-  <div slot="pre" class="d-flex align-items-center highlight-toolbar ps-3 pe-2 py-1 border-bottom">
-    <a
-      class="text-decoration-none color-body"
-      href={`${getConfig().repo}/blob/v${getConfig().current_version}/${file}`.replaceAll('\\', '/')}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {file}
-    </a>
-    <div class="d-flex ms-auto">
-      <button type="button" class="btn-clipboard mt-0 me-0" title="Copy to clipboard">
-        <svg class="bi" aria-hidden="true"><use href="#clipboard"></use></svg>
-      </button>
-    </div>
-  </div>
-</Code>
+<Code containerClass="bd-example-snippet" file={file} code={content} lang="scss" />

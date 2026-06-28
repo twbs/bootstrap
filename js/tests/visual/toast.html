@@ -18,9 +18,9 @@
       <h1>Toast <small>Bootstrap Visual Test</small></h1>
 
       <div class="row mt-3">
-        <div class="col-md-12">
-          <button id="btnShowToast" class="btn btn-primary">Show toast</button>
-          <button id="btnHideToast" class="btn btn-primary">Hide toast</button>
+        <div class="md:col-12">
+          <button id="btnShowToast" class="btn-solid theme-primary">Show toast</button>
+          <button id="btnHideToast" class="btn-solid theme-primary">Hide toast</button>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
         <div class="toast-header">
           <span class="d-block bg-primary rounded me-2" style="width: 20px; height: 20px;"></span>
           <strong class="me-auto">Bootstrap</strong>
-          <small class="text-body-secondary">2 seconds ago</small>
+          <small class="fg-2">2 seconds ago</small>
           <button type="button" class="ms-2 mb-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body">
@@ -50,19 +50,18 @@
       </div>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js"></script>
-    <script>
-      /* global bootstrap: false */
+    <script type="module">
+      import { Toast } from '../../../dist/js/bootstrap.bundle.js'
 
       window.addEventListener('load', () => {
-        document.querySelectorAll('.toast').forEach(toastEl => new bootstrap.Toast(toastEl))
+        document.querySelectorAll('.toast').forEach(toastEl => new Toast(toastEl))
 
         document.getElementById('btnShowToast').addEventListener('click', () => {
-          document.querySelectorAll('.toast').forEach(toastEl => bootstrap.Toast.getInstance(toastEl).show())
+          document.querySelectorAll('.toast').forEach(toastEl => Toast.getInstance(toastEl).show())
         })
 
         document.getElementById('btnHideToast').addEventListener('click', () => {
-          document.querySelectorAll('.toast').forEach(toastEl => bootstrap.Toast.getInstance(toastEl).hide())
+          document.querySelectorAll('.toast').forEach(toastEl => Toast.getInstance(toastEl).hide())
         })
       })
     </script>

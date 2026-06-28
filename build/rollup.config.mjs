@@ -9,10 +9,9 @@ import banner from './banner.mjs'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const BUNDLE = process.env.BUNDLE === 'true'
-const ESM = process.env.ESM === 'true'
 
-let destinationFile = `bootstrap${ESM ? '.esm' : ''}`
-const external = ['@floating-ui/dom']
+let destinationFile = 'bootstrap'
+const external = ['@floating-ui/dom', 'vanilla-calendar-pro']
 const plugins = [
   babel({
     // Only transpile our source code
@@ -21,15 +20,11 @@ const plugins = [
     babelHelpers: 'bundled'
   })
 ]
-const globals = {
-  '@floating-ui/dom': 'FloatingUIDOM'
-}
 
 if (BUNDLE) {
   destinationFile += '.bundle'
-  // Remove last entry in external array to bundle Floating UI
-  external.pop()
-  delete globals['@floating-ui/dom']
+  // Bundle all dependencies (Floating UI, Vanilla Calendar Pro, etc.)
+  external.length = 0
   plugins.push(
     replace({
       'process.env.NODE_ENV': '"production"',
@@ -40,20 +35,15 @@ if (BUNDLE) {
 }
 
 const rollupConfig = {
-  input: path.resolve(__dirname, `../js/index.${ESM ? 'esm' : 'umd'}.js`),
+  input: path.resolve(__dirname, '../js/index.js'),
   output: {
     banner: banner(),
     file: path.resolve(__dirname, `../dist/js/${destinationFile}.js`),
-    format: ESM ? 'esm' : 'umd',
-    globals,
+    format: 'esm',
     generatedCode: 'es2015'
   },
   external,
   plugins
-}
-
-if (!ESM) {
-  rollupConfig.output.name = 'bootstrap'
 }
 
 export default rollupConfig

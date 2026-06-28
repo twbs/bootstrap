@@ -1,0 +1,49 @@
+// Shared mixins for Dialog and Drawer sub-components.
+// Both components use identical header/footer/body/title patterns
+// with different token namespaces.
+
+@use "transition" as *;
+
+// Header: flex row with close button alignment
+@mixin dialog-header($padding) {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  padding: $padding;
+}
+
+// Footer: flex row with end-aligned actions
+@mixin dialog-footer($padding, $gap, $border-width, $border-color) {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: $gap;
+  align-items: center;
+  justify-content: flex-end;
+  padding: $padding;
+  border-block-start: $border-width solid $border-color;
+}
+
+// Body: flexible scrollable content area
+@mixin dialog-body($padding) {
+  flex: 1 1 auto;
+  padding: $padding;
+}
+
+// Title: reset margin, set line-height
+@mixin dialog-title($line-height: 1.5) {
+  margin-bottom: 0;
+  line-height: $line-height;
+}
+
+// Backdrop transitions for ::backdrop pseudo-element.
+// Both Dialog and Drawer use identical allow-discrete transitions
+// on display and overlay to keep ::backdrop in the top layer.
+@mixin backdrop-transitions($duration, $timing) {
+  @include transition(
+    background-color $duration $timing,
+    backdrop-filter $duration $timing,
+    display $duration allow-discrete,
+    overlay $duration allow-discrete
+  );
+}

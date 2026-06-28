@@ -17,13 +17,13 @@ import { getData } from '@libs/data'
 
 ## Colors
 
-Change the `background-color` using utilities built on our theme colors using `.bg-{color}`, `.bg-muted-{color}`, and `.bg-subtle-{color}`. All these background color utilities set the `background-color` property to a local CSS variable, `--bs-bg`, which has the value of the theme color. Most color values also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
+Change the `background-color` using utilities built on our theme colors using `.bg-{color}`, `.bg-muted-{color}`, and `.bg-subtle-{color}`. All these background color utilities set the `background-color` property to a local CSS variable, `--bs-bg`, which has the value of the theme color. The root color tokens also use `light-dark()` to ensure sufficient contrast in both light and dark color modes.
 
-For example, `.bg-primary` sets the `--bs-bg` variable to `var(--bs-primary-500)`:
+For example, `.bg-primary` sets the `--bs-bg` variable to `var(--bs-primary-bg)`:
 
 ```css
 .bg-primary {
-  --bs-bg: var(--bs-primary-500);
+  --bs-bg: var(--bs-primary-bg);
   background-color: var(--bs-bg);
 }
 ```
@@ -31,16 +31,16 @@ For example, `.bg-primary` sets the `--bs-bg` variable to `var(--bs-primary-500)
 This approach allows us to also easily support translucency with our `.bg-{opacity}` utilities as we can use `color-mix()` with the CSS variable to generate the appropriate color. See the [opacity section](#opacity) for more details.
 
 <Example code={[
-  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} color-on-${themeColor.name}">.bg-${themeColor.name}</div>
-<div class="p-3 mb-2 bg-muted-${themeColor.name} color-${themeColor.name}">.bg-muted-${themeColor.name}</div>
-<div class="p-3 mb-2 bg-subtle-${themeColor.name} color-${themeColor.name}">.bg-subtle-${themeColor.name}</div>`),
+  ...getData('theme-colors').map((themeColor) => `<div class="p-3 mb-2 bg-${themeColor.name} fg-contrast-${themeColor.name}">.bg-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-muted-${themeColor.name} fg-${themeColor.name}">.bg-muted-${themeColor.name}</div>
+<div class="p-3 mb-2 bg-subtle-${themeColor.name} fg-${themeColor.name}">.bg-subtle-${themeColor.name}</div>`),
   `<div class="p-3 mb-2 bg-body fg-body">.bg-body</div>
 <div class="p-3 mb-2 bg-1">.bg-1</div>
 <div class="p-3 mb-2 bg-2">.bg-2</div>
 <div class="p-3 mb-2 bg-3">.bg-3</div>
 <div class="p-3 mb-2 bg-4">.bg-4</div>
 <div class="p-3 mb-2 bg-black fg-white">.bg-black</div>
-<div class="p-3 mb-2 bg-white fg-dark">.bg-white</div>
+<div class="p-3 mb-2 bg-white fg-black">.bg-white</div>
 <div class="p-3 mb-2 bg-transparent fg-body">.bg-transparent</div>`
 ]} />
 
@@ -52,45 +52,52 @@ Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-
 
 <Example class="d-flex flex-column gap-2" code={[
   ...getData('theme-colors').map((themeColor) => `<div class="p-3 bg-${themeColor.name} bg-gradient fg-contrast-${themeColor.name}">.bg-${themeColor.name}.bg-gradient</div>`),
-  `<div class="p-3 bg-black bg-gradient fg-contrast">.bg-black.bg-gradient</div>`
+  `<div class="p-3 bg-black bg-gradient fg-white">.bg-black.bg-gradient</div>`
 ]} />
 
 ## Opacity
 
 Change the opacity of a background color by using any of the `.bg-<percentage>` utilities which use `color-mix()` to mix the background color with `transparent`.
 
-<Example class="d-flex flex-column gap-2" code={`<div class="bg-success p-2 text-white">This is default success background</div>
-<div class="bg-success p-2 text-white bg-90">This is 90% opacity success background</div>
-<div class="bg-success p-2 text-white bg-80">This is 80% opacity success background</div>
-<div class="bg-success p-2 text-white bg-70">This is 70% opacity success background</div>
-<div class="bg-success p-2 text-white bg-60">This is 60% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-50">This is 50% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-40">This is 40% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-30">This is 30% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-20">This is 20% opacity success background</div>
-<div class="bg-success p-2 text-dark bg-10">This is 10% opacity success background</div>`} />
+<Example class="d-flex flex-column gap-2" code={`<div class="bg-success p-2">This is default success background</div>
+<div class="bg-success p-2 bg-90">This is 90% opacity success background</div>
+<div class="bg-success p-2 bg-80">This is 80% opacity success background</div>
+<div class="bg-success p-2 bg-70">This is 70% opacity success background</div>
+<div class="bg-success p-2 bg-60">This is 60% opacity success background</div>
+<div class="bg-success p-2 bg-50">This is 50% opacity success background</div>
+<div class="bg-success p-2 bg-40">This is 40% opacity success background</div>
+<div class="bg-success p-2 bg-30">This is 30% opacity success background</div>
+<div class="bg-success p-2 bg-20">This is 20% opacity success background</div>
+<div class="bg-success p-2 bg-10">This is 10% opacity success background</div>`} />
+
+The same can be applied to subtle and muted background colors.
+
+<Example class="d-flex flex-column gap-2" code={`<div class="bg-subtle-success p-2">This is subtle success background</div>
+<div class="bg-muted-success bg-40 p-2">This is 40% success background</div>
+<div class="bg-muted-success bg-20 p-2">This is 20% success background</div>
+`} />
 
 ## CSS
 
-In addition to the following Sass functionality, consider reading about our included [CSS custom properties]([[docsref:/customize/css-variables]]) (aka CSS variables) for colors and more.
+In addition to the following Sass functionality, consider reading about our included [CSS custom properties]([[docsref:/getting-started/css-variables]]) (aka CSS variables) for colors and more.
 
 ### Sass variables
 
 Most `background-color` utilities are generated by our theme colors, reassigned from our generic color palette variables.
 
-{/*<ScssDocs name="color-variables" file="scss/_variables.scss" />*/}
+{/*<ScssDocs name="color-variables" file="scss/_config.scss" />*/}
 
-{/* <ScssDocs name="theme-color-variables" file="scss/_variables.scss" /> */}
+{/* <ScssDocs name="theme-color-variables" file="scss/_config.scss" /> */}
 
-<ScssDocs name="variable-gradient" file="scss/_variables.scss" />
+<ScssDocs name="variable-gradient" file="scss/_config.scss" />
 
 Grayscale colors are also available, but only a subset are used to generate any utilities.
 
-{/*<ScssDocs name="gray-color-variables" file="scss/_variables.scss" />*/}
+{/*<ScssDocs name="gray-color-variables" file="scss/_config.scss" />*/}
 
 Variables for setting `background-color` in `.bg-*-subtle` utilities in light and dark mode:
 
-{/* <ScssDocs name="theme-bg-subtle-variables" file="scss/_variables.scss" /> */}
+{/* <ScssDocs name="theme-bg-subtle-variables" file="scss/_config.scss" /> */}
 
 {/* <ScssDocs name="theme-bg-subtle-dark-variables" file="scss/_variables-dark.scss" /> */}
 
@@ -98,11 +105,11 @@ Variables for setting `background-color` in `.bg-*-subtle` utilities in light an
 
 Theme colors are then put into a Sass map so we can loop over them to generate our utilities, component modifiers, and more.
 
-{/* <ScssDocs name="theme-colors-map" file="scss/_variables.scss" /> */}
+{/* <ScssDocs name="theme-colors-map" file="scss/_config.scss" /> */}
 
 Grayscale colors are also available as a Sass map. **This map is not used to generate any utilities.**
 
-{/*<ScssDocs name="gray-colors-map" file="scss/_variables.scss" />*/}
+{/*<ScssDocs name="gray-colors-map" file="scss/_config.scss" />*/}
 
 ### Sass mixins
 

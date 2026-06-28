@@ -32,7 +32,7 @@
 // Useful for "Skip to main content" links; see https://www.w3.org/WAI/WCAG22/Techniques/general/G1.html
 
 @mixin visually-hidden-focusable() {
-  &:not(:focus):not(:focus-within) {
+  &:not(:focus, :focus-within) {
     @include visually-hidden();
   }
 }

@@ -1,6 +1,5 @@
 @use "sass:map";
 @use "../config" as *;
-@use "../variables" as *;
 @use "../functions" as *;
 @use "../layout/breakpoints" as *;
 @use "../mixins/tokens" as *;
@@ -22,13 +21,13 @@ $table-tokens: defaults(
     --table-border-color: var(--border-color),
     --table-group-separator-color: currentcolor,
     --table-striped-color: var(--table-color),
-    --table-striped-bg-factor: .05,
+    --table-striped-bg-factor: 5%,
     --table-striped-bg: color-mix(in srgb, var(--table-color) var(--table-striped-bg-factor), transparent),
     --table-active-color: var(--table-color),
-    --table-active-bg-factor: .1,
+    --table-active-bg-factor: 10%,
     --table-active-bg: color-mix(in srgb, var(--table-color) var(--table-active-bg-factor), transparent),
     --table-hover-color: var(--table-color),
-    --table-hover-bg-factor: .075,
+    --table-hover-bg-factor: 7.5%,
     --table-hover-bg: color-mix(in srgb, var(--table-color) var(--table-hover-bg-factor), transparent),
   ),
   $table-tokens
@@ -55,7 +54,7 @@ $table-striped-columns-order: even !default;
     // End of reset
 
     width: 100%;
-    margin-bottom: $spacer;
+    margin-bottom: var(--spacer);
     vertical-align: var(--table-cell-vertical-align);
     border-color: var(--theme-border, var(--table-border-color));
 
@@ -67,7 +66,7 @@ $table-striped-columns-order: even !default;
     > :not(caption) > * > * {
       padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
       // Following the precept of cascades: https://codepen.io/miriamsuzanne/full/vYNgodb
-      color: var(--table-color-state, var(--table-color-type, var(--theme-text, var(--table-color))));
+      color: var(--table-color-state, var(--table-color-type, var(--theme-fg, var(--table-color))));
       background-color: var(--theme-bg-subtle, var(--table-bg));
       border-block-end-width: var(--table-border-width);
       box-shadow: inset 0 0 0 9999px var(--table-bg-state, var(--table-bg-type, var(--theme-bg-subtle, var(--table-accent-bg))));
@@ -144,16 +143,16 @@ $table-striped-columns-order: even !default;
   // For rows
   .table-striped {
     > tbody > tr:nth-of-type(#{$table-striped-order}) > * {
-      --table-color-type: var(--theme-text, var(--table-striped-color));
-      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-striped-bg-factor), transparent);
+      --table-color-type: var(--theme-fg, var(--table-striped-color));
+      --table-bg-type: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-striped-bg-factor), transparent);
     }
   }
 
   // For columns
   .table-striped-columns {
     > :not(caption) > tr > :nth-child(#{$table-striped-columns-order}) {
-      --table-color-type: var(--theme-text, var(--table-striped-color));
-      --table-bg-type: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-striped-bg-factor), transparent);
+      --table-color-type: var(--theme-fg, var(--table-striped-color));
+      --table-bg-type: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-striped-bg-factor), transparent);
     }
   }
 
@@ -162,8 +161,8 @@ $table-striped-columns-order: even !default;
   // The `.table-active` class can be added to highlight rows or cells
 
   .table-active {
-    --table-color-state: var(--theme-text, var(--table-active-color));
-    --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-active-bg-factor), transparent);
+    --table-color-state: var(--theme-fg, var(--table-active-color));
+    --table-bg-state: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-active-bg-factor), transparent);
   }
 
   // Hover effect
@@ -172,23 +171,84 @@ $table-striped-columns-order: even !default;
 
   .table-hover {
     > tbody > tr:hover > * {
-      --table-color-state: var(--theme-text, var(--table-hover-color));
-      --table-bg-state: color-mix(in srgb, var(--theme-text, var(--table-color)) var(--table-hover-bg-factor), transparent);
+      --table-color-state: var(--theme-fg, var(--table-hover-color));
+      --table-bg-state: color-mix(in srgb, var(--theme-fg, var(--table-color)) var(--table-hover-bg-factor), transparent);
     }
   }
 
   // Responsive tables
   //
-  // Generate series of `.table-responsive-*` classes for configuring the screen
-  // size of where your table will overflow.
+  // Generate `.table-responsive` classes that act as container query contexts
+  // and enable horizontal scrolling when table content overflows.
 
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  @each $breakpoint in map.keys($breakpoints) {
+    $prefix: breakpoint-prefix($breakpoint, $breakpoints);
 
-    @include media-breakpoint-down($breakpoint) {
-      .table-responsive#{$infix} {
+    .#{$prefix}table-responsive {
+      container-type: inline-size;
+
+      @include media-breakpoint-down($breakpoint) {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+      }
+    }
+  }
+
+  // Stacked tables
+  //
+  // Generate `.table-stacked` classes that convert table rows into stacked
+  // blocks using container queries. Requires a `.table-responsive` ancestor
+  // and `data-cell` attributes on `<td>` elements for column labels.
+
+  @each $breakpoint in map.keys($breakpoints) {
+    $prefix: breakpoint-prefix($breakpoint, $breakpoints);
+
+    @include container-breakpoint-down($breakpoint) {
+      .#{$prefix}table-stacked {
+        > thead {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+
+        > tbody > tr {
+          display: block;
+          padding-block: var(--table-cell-padding-y);
+
+          + tr {
+            border-block-start: var(--table-border-width) solid var(--table-border-color);
+          }
+
+          > td {
+            display: block;
+            padding: calc(var(--table-cell-padding-y) * .25) calc(var(--table-cell-padding-x) * 2);
+            border: 0;
+
+            &:first-child {
+              font-weight: var(--font-weight-bold);
+            }
+
+            // + td::before {
+            //   margin-block-start: .25rem;
+            // }
+
+            &[data-cell]:not(:first-child)::before {
+              display: block;
+              font-weight: var(--font-weight-semibold);
+              content: attr(data-cell);
+            }
+          }
+
+          > td:not(:first-child) + td::before {
+            margin-block-start: .25rem;
+          }
+        }
       }
     }
   }

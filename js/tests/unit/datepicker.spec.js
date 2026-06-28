@@ -67,9 +67,9 @@ describe('Datepicker', () => {
 
       const inputEl = fixtureEl.querySelector('#datepickerEl')
       const datepickerBySelector = new Datepicker('#datepickerEl')
-      const datepickerByElement = new Datepicker(inputEl)
-
       expect(datepickerBySelector._element).toEqual(inputEl)
+
+      const datepickerByElement = new Datepicker(inputEl)
       expect(datepickerByElement._element).toEqual(inputEl)
     })
 

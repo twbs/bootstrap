@@ -10,39 +10,43 @@
     <div class="container">
       <h1>Alert <small>Bootstrap Visual Test</small></h1>
 
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <div class="alert theme-warning fade show" role="alert">
+        <p><strong>Holy guacamole!</strong> You should check in on some of those fields below.</p>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <p>
-          <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-        </p>
-        <p>
-          <button type="button" class="btn btn-danger">Danger</button>
-          <button type="button" class="btn btn-secondary">Secondary</button>
-        </p>
+      <div class="alert theme-danger fade show" role="alert">
+        <div>
+          <p>
+            <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+          </p>
+          <p>
+            <button type="button" class="btn-solid theme-danger">Danger</button>
+            <button type="button" class="btn-solid theme-secondary">Secondary</button>
+          </p>
+        </div>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <p>
-          <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
-        </p>
-        <p>
-          <button type="button" class="btn btn-danger">Take this action</button>
-          <button type="button" class="btn btn-primary">Or do this</button>
-        </p>
+      <div class="alert theme-danger fade show" role="alert">
+        <div>
+          <p>
+            <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+          </p>
+          <p>
+            <button type="button" class="btn-solid theme-danger">Take this action</button>
+            <button type="button" class="btn-solid theme-primary">Or do this</button>
+          </p>
+        </div>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 
-      <div class="alert alert-warning alert-dismissible fade show" role="alert" style="transition-duration: 5s;">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        This alert will take 5 seconds to fade out.
+      <div class="alert theme-warning fade show" role="alert" style="transition-duration: 5s;">
+        <p>This alert will take 5 seconds to fade out.</p>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js" type="module"></script>
   </body>
 </html>

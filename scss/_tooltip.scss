@@ -1,6 +1,5 @@
 @use "config" as *;
 @use "functions" as *;
-@use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/reset-text" as *;
 @use "mixins/tokens" as *;
@@ -13,12 +12,12 @@ $tooltip-tokens: defaults(
   (
     --tooltip-zindex: #{$zindex-tooltip},
     --tooltip-max-width: 200px,
-    --tooltip-padding-x: #{$spacer * .75},
-    --tooltip-padding-y: #{$spacer * .375},
+    --tooltip-padding-x: var(--spacer-3),
+    --tooltip-padding-y: calc(var(--spacer) * .375),
     --tooltip-font-size: var(--font-size-sm),
     --tooltip-color: var(--bg-body),
     --tooltip-bg: var(--fg-body),
-    --tooltip-border-radius: var(--border-radius),
+    --tooltip-border-radius: var(--radius-5),
     --tooltip-opacity: .95,
     --tooltip-arrow-width: .8rem,
     --tooltip-arrow-height: .4rem,
@@ -26,16 +25,6 @@ $tooltip-tokens: defaults(
   $tooltip-tokens
 );
 // scss-docs-end tooltip-tokens
-
-// Form tooltips must come after regular tooltips
-// scss-docs-start tooltip-feedback-variables
-$form-feedback-tooltip-padding-y:     var(--tooltip-padding-y) !default;
-$form-feedback-tooltip-padding-x:     var(--tooltip-padding-x) !default;
-$form-feedback-tooltip-font-size:     var(--tooltip-font-size) !default;
-$form-feedback-tooltip-line-height:   null !default;
-$form-feedback-tooltip-opacity:       var(--tooltip-opacity) !default;
-$form-feedback-tooltip-border-radius: var(--tooltip-border-radius) !default;
-// scss-docs-end tooltip-feedback-variables
 
 @layer components {
   .tooltip {

@@ -104,10 +104,6 @@ Within the download you’ll find the following directories and files, logically
       ├── bootstrap.bundle.js.map
       ├── bootstrap.bundle.min.js
       ├── bootstrap.bundle.min.js.map
-      ├── bootstrap.esm.js
-      ├── bootstrap.esm.js.map
-      ├── bootstrap.esm.min.js
-      ├── bootstrap.esm.min.js.map
       ├── bootstrap.js
       ├── bootstrap.js.map
       ├── bootstrap.min.js
@@ -115,7 +111,7 @@ Within the download you’ll find the following directories and files, logically
   ```
 </details>
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Floating UI](https://floating-ui.com/). All CSS files work for both LTR and RTL layouts thanks to logical properties—simply set `dir="rtl"` on your HTML element.
+We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Floating UI](https://floating-ui.com/) and [Vanilla Calendar Pro](https://vanilla-calendar.pro/). All CSS files work for both LTR and RTL layouts thanks to logical properties—simply set `dir="rtl"` on your HTML element.
 
 
 ## Bugs and feature requests
@@ -127,7 +123,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Bootstrap’s documentation, included in this repo in the root directory, is built with [Astro](https://astro.build/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://docsearch.algolia.com/).
+Documentation search is powered by [Pagefind](https://pagefind.app/).
 
 ### Running documentation locally
 
@@ -160,7 +156,7 @@ Get updates on Bootstrap’s development and chat with the project maintainers a
 
 - Follow [@getbootstrap on X](https://x.com/getbootstrap).
 - Read and subscribe to [The Official Bootstrap Blog](https://blog.getbootstrap.com/).
-- Ask questions and explore [our GitHub Discussions](https://github.com/twbs/bootstrap/discussions).
+- Ask questions and explore [our GitHub Discussions](https://github.com/orgs/twbs/discussions).
 - Discuss, ask questions, and more on [the community Discord](https://discord.gg/bZUvakRU3M) or [Bootstrap subreddit](https://www.reddit.com/r/bootstrap/).
 - Chat with fellow Bootstrappers in IRC. On the `irc.libera.chat` server, in the `#bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5)).

@@ -1,10 +1,10 @@
 ---
-import type { InferGetStaticPropsType } from 'astro'
+import type { AstroInstance, InferGetStaticPropsType } from 'astro'
 import RedirectLayout from '@layouts/RedirectLayout.astro'
 import { getVersionedDocsPath } from '@libs/path'
 import { trimLeadingAndTrailingSlashes } from '@libs/utils'
 import { replaceConfigInText } from '@libs/remark'
-import { aliasedDocsPages } from '@libs/content'
+import { aliasedDocsPages, getDocsPageSlug } from '@libs/content'
 import { getAliasedExamplesPages, getExampleNameFromPagePath } from '@libs/examples'
 
 export async function getStaticPaths() {
@@ -19,12 +19,7 @@ export async function getStaticPaths() {
   const staticPaths = []
 
   const examplesPageModules = import.meta.glob('../assets/examples/**/*.astro', { eager: true })
-  const examplesPages = Object.entries(examplesPageModules).map(([file, module]) => {
-    return {
-      file,
-      ...module
-    }
-  })
+  const examplesPages = Object.values(examplesPageModules) as AstroInstance[]
   const aliasedExamplesPages = getAliasedExamplesPages(examplesPages)
 
   // Generate static paths for all examples pages with aliases.
@@ -41,7 +36,7 @@ export async function getStaticPaths() {
     const aliases = normalizeAliases(aliasedDocsPage.data.aliases)
 
     for (const alias of aliases) {
-      staticPaths.push(getAliasStaticPath(alias, aliasedDocsPage.slug))
+      staticPaths.push(getAliasStaticPath(alias, getDocsPageSlug(aliasedDocsPage.id)))
     }
   }
 

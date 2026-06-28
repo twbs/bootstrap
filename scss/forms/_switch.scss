@@ -1,4 +1,3 @@
-@use "../colors" as *;
 @use "../functions" as *;
 @use "../mixins/focus-ring" as *;
 @use "../mixins/tokens" as *;
@@ -11,13 +10,15 @@ $switch-tokens: () !default;
 $switch-tokens: defaults(
   (
     --switch-height: 1.25rem,
-    --switch-width: calc(var(--switch-height) * 1.5),
+    --switch-width: calc(var(--switch-height) * 1.75),
     --switch-padding: .0625rem,
     --switch-margin-block: .125rem,
     --switch-bg: var(--bg-3),
     --switch-border-width: var(--border-width),
     --switch-border-color: var(--border-color),
     --switch-indicator-bg: var(--white),
+    --switch-indicator-width: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2),
+    --switch-indicator-height: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2),
     --switch-checked-bg: var(--control-checked-bg),
     --switch-checked-border-color: var(--switch-checked-bg),
     --switch-checked-indicator-bg: var(--white),
@@ -34,10 +35,7 @@ $switch-tokens: defaults(
     @include tokens($switch-tokens);
 
     position: relative;
-    display: flex;
     flex-shrink: 0;
-    align-items: stretch;
-    justify-content: flex-start;
     width: var(--switch-width);
     height: var(--switch-height);
     padding: var(--switch-padding);
@@ -46,20 +44,23 @@ $switch-tokens: defaults(
     border: var(--switch-border-width) solid var(--switch-border-color);
     // stylelint-disable-next-line property-disallowed-list
     border-radius: 10rem;
-    box-shadow: inset 0 1px 2px rgba($black, .05);
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / .05);
     // stylelint-disable-next-line property-disallowed-list
-    transition: .15s ease-in-out;
-    transition-property: padding-inline-start, background-color;
+    transition: background-color .15s ease-in-out;
 
     &::before {
-      flex-shrink: 0;
-      width: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2);
-      height: calc(var(--switch-height) - calc(var(--switch-padding) * 2) - var(--switch-border-width) * 2);
+      position: absolute;
+      inset-block: var(--switch-padding);
+      inset-inline-start: var(--switch-padding);
+      width: var(--switch-indicator-width);
+      height: var(--switch-indicator-height);
       content: "";
       background-color: var(--theme-contrast, var(--switch-indicator-bg));
       // stylelint-disable-next-line property-disallowed-list
-      border-radius: 50%;
-      box-shadow: 0 1px 2px rgba($black, .1);
+      border-radius: 10rem;
+      box-shadow: 0 1px 2px rgb(0 0 0 / .1);
+      // stylelint-disable-next-line property-disallowed-list
+      transition: inset-inline-start .15s ease-in-out;
     }
 
     input {
@@ -74,29 +75,49 @@ $switch-tokens: defaults(
       @include focus-ring(true);
     }
 
-    &:has(input:checked) {
-      padding-inline-start: calc(var(--switch-height) / 2 + var(--switch-padding));
-      background-color: var(--theme-bg, var(--switch-checked-bg));
-      border-color: var(--theme-bg, var(--switch-checked-border-color));
-    }
-
-    &:has(input:disabled) {
+    &:has(input:disabled:not(:checked)) {
       --switch-bg: var(--switch-disabled-bg);
       --switch-indicator-bg: var(--switch-disabled-indicator-bg);
 
       &::before { opacity: .4; }
 
       ~ label {
-        color: var(--secondary-text);
+        color: var(--fg-3);
+        cursor: default;
+      }
+    }
+
+    &:has(input:checked) {
+      background-color: var(--theme-bg, var(--switch-checked-bg));
+      border-color: var(--theme-bg, var(--switch-checked-border-color));
+
+      &::before {
+        inset-inline-start: calc(100% - var(--switch-indicator-width) - var(--switch-padding));
+      }
+    }
+
+    &:has(input:checked:disabled) {
+      opacity: .65;
+
+      ~ label {
+        color: var(--fg-3);
         cursor: default;
       }
     }
   }
   .switch-sm {
     --switch-height: 1rem;
+
+    + label {
+      font-size: var(--font-size-sm);
+    }
   }
   .switch-lg {
     --switch-height: 1.5rem;
-    --switch-margin-block: 0;
+    --switch-margin-block: .375rem;
+
+    + label {
+      font-size: var(--font-size-lg);
+    }
   }
 }

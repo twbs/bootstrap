@@ -11,7 +11,7 @@ $radio-tokens: defaults(
   (
     --radio-size: 1.25rem,
     --radio-margin-block: .125rem,
-    --radio-bg: transparent,
+    --radio-bg: var(--bg-body),
     --radio-border-color: var(--border-color),
     --radio-checked-bg: var(--control-checked-bg),
     --radio-checked-border-color: var(--control-checked-border-color),
@@ -24,16 +24,6 @@ $radio-tokens: defaults(
 // stylelint-enable custom-property-no-missing-var-function
 
 @layer forms {
-  .radiogroup {
-    display: flex;
-    gap: var(--gap, .5rem);
-    align-items: var(--align-items, start);
-
-    .description {
-      color: var(--fg-3);
-    }
-  }
-
   .radio {
     @include tokens($radio-tokens);
 
@@ -55,7 +45,7 @@ $radio-tokens: defaults(
 
       &::before {
         position: absolute;
-        inset: .25rem;
+        inset: calc(var(--radio-size) * .25);
         content: "";
         background-color: currentcolor;
         // stylelint-disable-next-line property-disallowed-list
@@ -67,9 +57,12 @@ $radio-tokens: defaults(
       --radio-bg: var(--radio-disabled-bg);
 
       ~ label {
-        color: var(--secondary-text);
+        color: var(--secondary-fg);
         cursor: default;
       }
+    }
+    &:disabled:checked {
+      opacity: var(--radio-disabled-opacity);
     }
 
     &:focus-visible {
@@ -79,9 +72,17 @@ $radio-tokens: defaults(
 
   .radio-sm {
     --radio-size: 1rem;
+
+    + label {
+      font-size: var(--font-size-sm);
+    }
   }
   .radio-lg {
     --radio-size: 1.5rem;
-    --radio-margin-block: 0;
+    --radio-margin-block: .375rem;
+
+    + label {
+      font-size: var(--font-size-lg);
+    }
   }
 }

@@ -1,0 +1,47 @@
+---
+import { getData } from '@libs/data'
+
+interface Props {
+  /**
+   * The class abbreviations to document, one `<ul>` per entry. For example
+   * `['gap', 'row-gap', 'column-gap']` or `['p']`.
+   */
+  classes: string[]
+  /**
+   * Appends `and .{abbr}{class}-auto` to each entry (margin only).
+   * @default false
+   */
+  includeAuto?: boolean
+}
+
+const { classes, includeAuto = false } = Astro.props
+
+const breakpoints = getData('breakpoints')
+---
+
+{
+  classes.map((className) => (
+    <ul>
+      {breakpoints.map((breakpoint) => (
+        <li>
+          {/* prettier-ignore */}
+          <code>.{breakpoint.abbr}{className}-0</code> through{' '}
+          <code>
+            .{breakpoint.abbr}
+            {className}-9
+          </code>
+          {includeAuto && (
+            <Fragment>
+              {' '}
+              and{' '}
+              <code>
+                .{breakpoint.abbr}
+                {className}-auto
+              </code>
+            </Fragment>
+          )}
+        </li>
+      ))}
+    </ul>
+  ))
+}

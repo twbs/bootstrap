@@ -4,7 +4,6 @@
 
 @use "config" as *;
 @use "functions" as *;
-// @use "maps" as *;
 
 @forward "utilities"; // Make utilities available downstream
 @use "utilities" as *; // Bring utilities into the current namespace
@@ -18,6 +17,12 @@ $utilities: map-get-multiple(
   (
     "display",
     "order",
+    "grid-column-counts",
+    "grid-columns",
+    "grid-auto-flow",
+    "gap",
+    "row-gap",
+    "column-gap",
     "flex",
     "flex-direction",
     "flex-grow",
@@ -55,3 +60,9 @@ $utilities: map-get-multiple(
 
 // check-unused-imports-disable-next-line — side-effect import: generates utility CSS.
 @use "utilities/api";
+
+:root {
+  @each $name, $value in $breakpoints {
+    --breakpoint-#{$name}: #{$value};
+  }
+}

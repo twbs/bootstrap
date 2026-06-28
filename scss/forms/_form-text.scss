@@ -11,7 +11,7 @@ $form-text-tokens: defaults(
     --form-text-font-size: var(--font-size-sm),
     --form-text-font-style: null,
     --form-text-font-weight: null,
-    --form-text-color: var(--fg-3),
+    --form-text-color: var(--fg-2),
   ),
   $form-text-tokens
 );
@@ -21,7 +21,7 @@ $form-text-tokens: defaults(
   .form-text {
     @include tokens($form-text-tokens);
 
-    margin-top: var(--form-text-margin-top);
+    // margin-top: var(--form-text-margin-top);
     font-size: var(--form-text-font-size);
     font-style: var(--form-text-font-style);
     font-weight: var(--form-text-font-weight);

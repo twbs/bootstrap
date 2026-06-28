@@ -27,7 +27,7 @@ $button-tokens: defaults(
     --btn-white-space: nowrap,
     --btn-border-width: var(--border-width),
     --btn-border-color: transparent,
-    --btn-border-radius: var(--border-radius),
+    --btn-border-radius: var(--radius-5),
     --btn-hover-border-color: transparent,
     --btn-disabled-opacity: .65,
     --btn-transition-timing: .15s ease-in-out,
@@ -72,7 +72,7 @@ $button-styled-tokens: defaults(
     --btn-border-hover-mix-amount: 12.5%,
     --btn-border-active-mix-amount: 20%,
     --btn-shadow: "0 1px 2px rgb(0 0 0 / 15%), inset 0 1px 0 rgb(255 255 255 / 10%)",
-    --btn-active-shadow: inset 0 2px 4px rgba(0, 0, 0, .15) ,
+    --btn-active-shadow: inset 0 2px 4px rgb(0 0 0 / .15) ,
   ),
   $button-styled-tokens
 );
@@ -111,7 +111,7 @@ $button-variants: defaults(
     "outline": (
       "base": (
         "bg": "transparent",
-        "color": "text",
+        "color": "fg",
         "border-color": "border"
       ),
       "hover": (
@@ -128,30 +128,30 @@ $button-variants: defaults(
     "subtle": (
       "base": (
         "bg": "bg-subtle",
-        "color": "text",
+        "color": "fg",
         "border-color": "transparent"
       ),
       "hover": (
         "bg": ("bg-muted", "bg-subtle"),
-        "color": "text-emphasis"
+        "color": "fg-emphasis"
       ),
       "active": (
         "bg": "bg-subtle",
-        "color": "text-emphasis"
+        "color": "fg-emphasis"
       )
     ),
     "text": (
       "base": (
-        "color": "text",
+        "color": "fg",
         "bg": "transparent",
         "border-color": "transparent"
       ),
       "hover": (
-        "color": "text",
+        "color": "fg",
         "bg": "bg-subtle"
       ),
       "active": (
-        "color": "text",
+        "color": "fg",
         "bg": "bg-subtle"
       )
     )
@@ -165,13 +165,14 @@ $button-variants: defaults(
 // Base styles
 //
 
-$btn-variant-selectors: () !default;
+// scss-docs-start btn-variant-selectors
+$btn-variant-selectors: (string.unquote(".btn"), string.unquote(".btn-link"), string.unquote(".btn-icon")) !default;
 @each $variant, $config in $button-variants {
   $btn-variant-selectors: list.append($btn-variant-selectors, string.unquote(".btn-#{$variant}"), comma);
 }
+// scss-docs-end btn-variant-selectors
 
 @layer components {
-  .btn,
   #{$btn-variant-selectors} {
     @include tokens($button-tokens);
 
@@ -320,7 +321,7 @@ $btn-variant-selectors: () !default;
   .btn-link {
     @include tokens($button-link-tokens);
 
-    color: var(--theme-text, var(--btn-color));
+    color: var(--theme-fg, var(--btn-color));
     text-decoration: var(--link-decoration);
 
     @if $enable-gradients {
@@ -328,11 +329,11 @@ $btn-variant-selectors: () !default;
     }
 
     &:focus-visible {
-      color: var(--theme-text, var(--btn-color));
+      color: var(--theme-fg, var(--btn-color));
     }
 
     &:hover {
-      color: var(--theme-text-emphasis, var(--btn-hover-color));
+      color: var(--theme-fg-emphasis, var(--btn-hover-color));
     }
 
     // No need for an active state here

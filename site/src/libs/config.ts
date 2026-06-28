@@ -1,15 +1,10 @@
 import fs from 'node:fs'
-import yaml from 'js-yaml'
+import { load as yamlLoad } from 'js-yaml'
 import { z } from 'zod'
 import { zPrefixedVersionSemver, zVersionMajorMinor, zVersionSemver } from './validation'
 
 // The config schema used to validate the config file content and ensure all values required by the site are valid.
 const configSchema = z.object({
-  algolia: z.object({
-    api_key: z.string(),
-    app_id: z.string(),
-    index_name: z.string()
-  }),
   analytics: z.object({
     fathom_site: z.string()
   }),
@@ -18,18 +13,17 @@ const configSchema = z.object({
     max: z.number()
   }),
   authors: z.string(),
-  baseURL: z.string().url(),
-  blog: z.string().url(),
+  baseURL: z.url(),
+  blog: z.url(),
   cdn: z.object({
-    css: z.string().url(),
+    css: z.url(),
     css_hash: z.string(),
-    js: z.string().url(),
+    js: z.url(),
     js_hash: z.string(),
-    js_bundle: z.string().url(),
+    js_bundle: z.url(),
     js_bundle_hash: z.string(),
-    floating_ui: z.string().url(),
-    floating_ui_esm: z.string().url(),
-    floating_ui_hash: z.string()
+    floating_ui_esm: z.url(),
+    vanilla_calendar_pro_esm: z.url()
   }),
   current_version: zVersionSemver,
   current_ruby_version: zVersionSemver,
@@ -37,17 +31,17 @@ const configSchema = z.object({
   docs_version: zVersionMajorMinor,
   docsDir: z.string(),
   download: z.object({
-    dist: z.string().url(),
-    dist_examples: z.string().url(),
-    source: z.string().url()
+    dist: z.url(),
+    dist_examples: z.url(),
+    source: z.url()
   }),
-  github_org: z.string().url(),
-  icons: z.string().url(),
-  opencollective: z.string().url(),
-  repo: z.string().url(),
+  github_org: z.url(),
+  icons: z.url(),
+  opencollective: z.url(),
+  repo: z.url(),
   rfs_version: zPrefixedVersionSemver,
   subtitle: z.string(),
-  swag: z.string().url(),
+  swag: z.url(),
   title: z.string(),
   toc: z.object({
     min: z.number(),
@@ -68,7 +62,7 @@ export function getConfig(): Config {
 
   try {
     // Load the config from the `config.yml` file.
-    const rawConfig = yaml.load(fs.readFileSync('./config.yml', 'utf8'))
+    const rawConfig = yamlLoad(fs.readFileSync('./config.yml', 'utf8'))
 
     // Parse the config using the config schema to validate its content and get back a fully typed config object.
     config = configSchema.parse(rawConfig)

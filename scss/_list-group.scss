@@ -1,7 +1,5 @@
-@use "sass:map";
 @use "config" as *;
 @use "functions" as *;
-@use "variables" as *;
 @use "mixins/border-radius" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/tokens" as *;
@@ -16,9 +14,9 @@ $list-group-tokens: defaults(
     --list-group-bg: var(--bg-body),
     --list-group-border-color: var(--border-color),
     --list-group-border-width: var(--border-width),
-    --list-group-border-radius: var(--border-radius),
-    --list-group-item-padding-x: #{$spacer},
-    --list-group-item-padding-y: #{$spacer * .5},
+    --list-group-border-radius: var(--radius-5),
+    --list-group-item-padding-x: var(--spacer),
+    --list-group-item-padding-y: var(--spacer-2),
     --list-group-action-color: var(--fg-2),
     --list-group-action-hover-color: var(--fg-1),
     --list-group-action-hover-bg: var(--bg-1),
@@ -41,7 +39,7 @@ $list-group-tokens: defaults(
     display: flex;
     flex-direction: column;
 
-    // No need to set list-style: none; since .list-group-item is block level
+    // No need to set list-style-type: ""; since .list-group-item is block level
     padding-inline-start: 0; // reset padding because ul and ol
     margin-bottom: 0;
     @include border-radius(var(--list-group-border-radius));
@@ -66,7 +64,7 @@ $list-group-tokens: defaults(
     position: relative;
     display: block;
     padding: var(--list-group-item-padding-y) var(--list-group-item-padding-x);
-    color: var(--theme-text, var(--list-group-color));
+    color: var(--theme-fg, var(--list-group-color));
     // stylelint-disable-next-line scss/at-function-named-arguments
     text-decoration: if(sass($link-decoration == none): null);
     background-color: var(--theme-bg-subtle, var(--list-group-bg));
@@ -113,7 +111,7 @@ $list-group-tokens: defaults(
 
   .list-group-item-action {
     width: 100%; // For `<button>`s (anchors become 100% by default though)
-    color: var(--theme-text, var(--list-group-action-color));
+    color: var(--theme-fg, var(--list-group-action-color));
     text-align: inherit; // For `<button>`s (anchors inherit)
     text-decoration: none;
 
@@ -122,13 +120,13 @@ $list-group-tokens: defaults(
       &:hover,
       &:focus {
         z-index: 1; // Place hover/focus items above their siblings for proper border styling
-        color: var(--theme-text-emphasis, var(--list-group-action-hover-color));
+        color: var(--theme-fg-emphasis, var(--list-group-action-hover-color));
         text-decoration: none;
         background-color: var(--theme-bg-muted, var(--list-group-action-hover-bg));
       }
 
       &:active {
-        color: var(--theme-text-emphasis, var(--list-group-action-active-color));
+        color: var(--theme-fg-emphasis, var(--list-group-action-active-color));
         background-color: var(--theme-bg-muted, var(--list-group-action-active-bg));
       }
     }
@@ -137,12 +135,12 @@ $list-group-tokens: defaults(
   // Horizontal
   //
   // Change the layout of list group items from vertical (default) to horizontal.
+  // The responsive variants use container queries, so wrap the list group in a
+  // query container (e.g., the `.contains-inline` utility) for them to take effect.
 
-  @each $breakpoint in map.keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-      .list-group-horizontal#{$infix} {
+  @include loop-breakpoints-up() using ($breakpoint, $prefix) {
+    .#{$prefix}list-group-horizontal {
+      @include container-breakpoint-up($breakpoint) {
         flex-direction: row;
 
         > .list-group-item {

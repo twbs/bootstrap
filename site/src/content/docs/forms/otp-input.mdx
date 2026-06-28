@@ -1,166 +1,104 @@
 ---
 title: OTP input
-description: Create connected input fields for one-time passwords, PIN codes, and verification codes with automatic focus advancement.
+description: Collect one-time passwords, PIN codes, and verification codes with a single accessible input rendered as separate digit slots.
 toc: true
+css_layer: components
+js: required
 ---
 
 ## Overview
 
-OTP (One-Time Password) inputs are a common pattern for two-factor authentication, verification codes, and PIN entry. Bootstrap's OTP input component provides:
+OTP (One-Time Password) inputs are a common pattern for two-factor authentication, verification codes, and PIN entry. Bootstrap's OTP input is built around a **single real text field** that is visually rendered as separate digit slots. This keeps the control simple and fully accessible—screen readers, password managers, and SMS autofill all treat it like any other text input—while still giving you the familiar multi-box appearance.
 
-- **Auto-advance**: Focus moves to the next input after entering a digit
-- **Backspace navigation**: Pressing backspace in an empty field moves to the previous field
-- **Paste support**: Paste a full code and it distributes across all inputs
-- **Browser autofill**: Supports the `autocomplete="one-time-code"` attribute for SMS/email code autofill
-- **Keyboard navigation**: Use arrow keys to move between inputs
+- **One accessible control**: a single `<input>` backs the whole field, so assistive technology announces one field, not one per digit
+- **Browser autofill**: supports `autocomplete="one-time-code"` for SMS/email code autofill
+- **Paste support**: paste a full code—even a formatted one like `123-456`—and the extra characters are stripped automatically
+- **Keyboard navigation**: all native text editing (typing, arrows, backspace, delete, selection) works out of the box
+- **Masking and types**: optionally mask the value, and restrict input to numeric, alphanumeric, or alphabetic characters
 
-OTP input is built on [form controls]([[docsref:/forms/form-control]]) and, when using connected inputs, leverages our [input group]([[docsref:/forms/input-group]]) styles.
+OTP input is built on [form controls]([[docsref:/forms/form-control]]) and shares its sizing tokens.
 
-## Basic example
+## How it works
 
-Wrap your inputs in a container with `.otp` and add `data-bs-otp` to enable the JavaScript behavior. Each input should have `.form-control` for styling and be a single-character field.
+Wrap a single `<input>` in a container with `.otp` and add `data-bs-otp` to enable the JavaScript. The plugin reads the input's `maxlength` to determine how many slots to render, hides the real input behind transparent overlay styling, and draws one `.otp-slot` per character. Give the input an accessible name with `aria-label` or an associated `<label>`.
 
 <Example code={`<div class="otp" data-bs-otp>
-    <input type="text" class="form-control" aria-label="Digit 1">
-    <input type="text" class="form-control" aria-label="Digit 2">
-    <input type="text" class="form-control" aria-label="Digit 3">
-    <input type="text" class="form-control" aria-label="Digit 4">
-    <input type="text" class="form-control" aria-label="Digit 5">
-    <input type="text" class="form-control" aria-label="Digit 6">
+    <input type="text" class="otp-input" maxlength="6" aria-label="Verification code">
   </div>`} />
 
 ## Connected inputs
 
-Add `.input-group` to visually connect the inputs into a single cohesive field, leveraging Bootstrap's [input group](/docs/forms/input-group/) styles. We override the `width` to prevent stretching the inputs.
+Add `.otp-connected` to merge the slots into a single cohesive field with shared borders.
 
-<Example code={`<div class="otp input-group" data-bs-otp>
-    <input type="text" class="form-control" aria-label="Digit 1">
-    <input type="text" class="form-control" aria-label="Digit 2">
-    <input type="text" class="form-control" aria-label="Digit 3">
-    <input type="text" class="form-control" aria-label="Digit 4">
-    <input type="text" class="form-control" aria-label="Digit 5">
-    <input type="text" class="form-control" aria-label="Digit 6">
+<Example code={`<div class="otp otp-connected" data-bs-otp>
+    <input type="text" class="otp-input" maxlength="6" aria-label="Verification code">
   </div>`} />
 
 ## Four-digit PIN
 
-You can use any number of inputs you want—the plugin will automatically detect the number of inputs and adjust accordingly. For example, you can use fewer inputs for shorter codes like 4-digit PINs.
+Set the input's `maxlength` to control the number of slots—use fewer for shorter codes like a 4-digit PIN.
 
-<Example code={`<div class="otp input-group" data-bs-otp>
-    <input type="text" class="form-control" aria-label="Digit 1">
-    <input type="text" class="form-control" aria-label="Digit 2">
-    <input type="text" class="form-control" aria-label="Digit 3">
-    <input type="text" class="form-control" aria-label="Digit 4">
+<Example code={`<div class="otp otp-connected" data-bs-otp>
+    <input type="text" class="otp-input" maxlength="4" aria-label="PIN">
   </div>`} />
 
 ## With separator
 
-Add a `.otp-separator` element between inputs to create grouped codes like "123-456". The separator is purely visual—the plugin ignores non-input elements.
+Use `data-bs-groups` with an array of group sizes to split the slots into groups separated by a visual divider—handy for codes like "123-456". The separator is decorative and never becomes part of the value.
 
-<Example code={`<div class="otp" data-bs-otp>
-    <input type="text" class="form-control" aria-label="Digit 1">
-    <input type="text" class="form-control" aria-label="Digit 2">
-    <input type="text" class="form-control" aria-label="Digit 3">
-    <span class="otp-separator">–</span>
-    <input type="text" class="form-control" aria-label="Digit 4">
-    <input type="text" class="form-control" aria-label="Digit 5">
-    <input type="text" class="form-control" aria-label="Digit 6">
+<Example code={`<div class="otp" data-bs-otp data-bs-groups="[3,3]">
+    <input type="text" class="otp-input" maxlength="6" aria-label="Verification code">
   </div>`} />
 
-You can also use separators with connected inputs by wrapping each group in a nested `.input-group`:
+## Sizes
 
-<Example code={`<div class="otp" data-bs-otp>
-    <div class="input-group">
-      <input type="text" class="form-control" aria-label="Digit 1">
-      <input type="text" class="form-control" aria-label="Digit 2">
-      <input type="text" class="form-control" aria-label="Digit 3">
-    </div>
-    <span class="otp-separator">–</span>
-    <div class="input-group">
-      <input type="text" class="form-control" aria-label="Digit 4">
-      <input type="text" class="form-control" aria-label="Digit 5">
-      <input type="text" class="form-control" aria-label="Digit 6">
-    </div>
+Add `.otp-sm` or `.otp-lg` to the container to change the slot size.
+
+<Example code={`<div class="otp otp-sm mb-3" data-bs-otp>
+    <input type="text" class="otp-input" maxlength="6" aria-label="Small verification code">
+  </div>
+  <div class="otp otp-lg" data-bs-otp>
+    <input type="text" class="otp-input" maxlength="6" aria-label="Large verification code">
   </div>`} />
 
-## Sizing
+## Alphanumeric and masking
 
-Use `.otp-sm` or `.otp-lg` for different sizes. Don't use the input group size classes on the `.otp` container as we override specific CSS variables for sizing.
+By default only digits are accepted. Set `data-bs-type` to `alphanumeric` or `alpha` to accept letters, and `data-bs-mask="true"` to obscure the entered value while keeping it a normal text field (no `type="password"`, so the numeric keyboard and autofill still work).
 
-<Example class="vstack align-items-start gap-3" code={`<div class="otp input-group otp-sm" data-bs-otp>
-    <input type="text" class="form-control" aria-label="Digit 1">
-    <input type="text" class="form-control" aria-label="Digit 2">
-    <input type="text" class="form-control" aria-label="Digit 3">
-    <input type="text" class="form-control" aria-label="Digit 4">
-    <input type="text" class="form-control" aria-label="Digit 5">
-    <input type="text" class="form-control" aria-label="Digit 6">
+<Example code={`<div class="otp otp-connected mb-3" data-bs-otp data-bs-type="alphanumeric">
+    <input type="text" class="otp-input" maxlength="6" aria-label="Alphanumeric code">
   </div>
-
-  <div class="otp input-group" data-bs-otp>
-    <input type="text" class="form-control" aria-label="Digit 1">
-    <input type="text" class="form-control" aria-label="Digit 2">
-    <input type="text" class="form-control" aria-label="Digit 3">
-    <input type="text" class="form-control" aria-label="Digit 4">
-    <input type="text" class="form-control" aria-label="Digit 5">
-    <input type="text" class="form-control" aria-label="Digit 6">
-  </div>
-
-  <div class="otp input-group otp-lg" data-bs-otp>
-    <input type="text" class="form-control" aria-label="Digit 1">
-    <input type="text" class="form-control" aria-label="Digit 2">
-    <input type="text" class="form-control" aria-label="Digit 3">
-    <input type="text" class="form-control" aria-label="Digit 4">
-    <input type="text" class="form-control" aria-label="Digit 5">
-    <input type="text" class="form-control" aria-label="Digit 6">
+  <div class="otp otp-connected" data-bs-otp data-bs-mask="true">
+    <input type="text" class="otp-input" maxlength="6" aria-label="Masked code">
   </div>`} />
 
 ## Disabled
 
-Add the `disabled` attribute to each input to prevent interaction.
+Add the `disabled` attribute to the input to prevent interaction.
 
-<Example code={`<div class="otp input-group" data-bs-otp>
-    <input type="text" class="form-control" aria-label="Digit 1" disabled>
-    <input type="text" class="form-control" aria-label="Digit 2" disabled>
-    <input type="text" class="form-control" aria-label="Digit 3" disabled>
-    <input type="text" class="form-control" aria-label="Digit 4" disabled>
-    <input type="text" class="form-control" aria-label="Digit 5" disabled>
-    <input type="text" class="form-control" aria-label="Digit 6" disabled>
+<Example code={`<div class="otp otp-connected" data-bs-otp>
+    <input type="text" class="otp-input" maxlength="6" aria-label="Verification code" disabled>
   </div>`} />
 
 ## Validation
 
 Add `.is-valid` or `.is-invalid` to the container to show validation states.
 
-<Example code={`<div class="otp input-group is-valid mb-3" data-bs-otp>
-    <input type="text" class="form-control" value="1" aria-label="Digit 1">
-    <input type="text" class="form-control" value="2" aria-label="Digit 2">
-    <input type="text" class="form-control" value="3" aria-label="Digit 3">
-    <input type="text" class="form-control" value="4" aria-label="Digit 4">
-    <input type="text" class="form-control" value="5" aria-label="Digit 5">
-    <input type="text" class="form-control" value="6" aria-label="Digit 6">
+<Example code={`<div class="otp otp-connected is-valid mb-3" data-bs-otp>
+    <input type="text" class="otp-input" maxlength="6" value="123456" aria-label="Verification code">
   </div>
-  <div class="otp input-group is-invalid" data-bs-otp>
-    <input type="text" class="form-control" value="1" aria-label="Digit 1">
-    <input type="text" class="form-control" value="2" aria-label="Digit 2">
-    <input type="text" class="form-control" value="3" aria-label="Digit 3">
-    <input type="text" class="form-control" aria-label="Digit 4">
-    <input type="text" class="form-control" aria-label="Digit 5">
-    <input type="text" class="form-control" aria-label="Digit 6">
+  <div class="otp otp-connected is-invalid" data-bs-otp>
+    <input type="text" class="otp-input" maxlength="6" value="123" aria-label="Verification code">
   </div>`} />
 
-## With form labels
+## With form label
 
-Use a form label and help text for better accessibility.
+Associate a `<label>` with the input and add help text with `aria-describedby` for better accessibility.
 
 <Example code={`<div class="vstack gap-2">
-    <label class="form-label" id="otpLabel">Verification code</label>
-    <div class="otp" data-bs-otp aria-labelledby="otpLabel" aria-describedby="otpHelp">
-      <input type="text" class="form-control" aria-label="Digit 1">
-      <input type="text" class="form-control" aria-label="Digit 2">
-      <input type="text" class="form-control" aria-label="Digit 3">
-      <input type="text" class="form-control" aria-label="Digit 4">
-      <input type="text" class="form-control" aria-label="Digit 5">
-      <input type="text" class="form-control" aria-label="Digit 6">
+    <label class="form-label" for="otpCode">Verification code</label>
+    <div class="otp" data-bs-otp>
+      <input type="text" class="otp-input" id="otpCode" maxlength="6" aria-describedby="otpHelp">
     </div>
     <div id="otpHelp" class="form-text">Enter the 6-digit code sent to your phone.</div>
   </div>`} />
@@ -169,14 +107,22 @@ Use a form label and help text for better accessibility.
 
 ### Via data attributes
 
-Add `data-bs-otp` to your container element to automatically initialize the OTP input behavior.
+Add `data-bs-otp` to a container wrapping a single `<input>` to automatically initialize the OTP input behavior.
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-otp` | Initializes the OTP input on the container. |
+| `data-bs-length` | Number of slots. Defaults to the input's `maxlength`. |
+| `data-bs-type` | `numeric` (default), `alphanumeric`, or `alpha`. |
+| `data-bs-mask` | When `true`, masks the entered value with a dot in each slot. |
+| `data-bs-groups` | Array of group sizes (e.g. `[3,3]`) to insert separators between groups. |
+| `data-bs-separator` | Character used for the separator between groups. |
+</BsTable>
 
 ```html
 <div class="otp" data-bs-otp>
-  <input type="text" class="form-control">
-  <input type="text" class="form-control">
-  <input type="text" class="form-control">
-  <input type="text" class="form-control">
+  <input type="text" class="otp-input" maxlength="6" aria-label="Verification code">
 </div>
 ```
 
@@ -196,7 +142,11 @@ Options can be passed via data attributes or JavaScript:
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `mask` | boolean | `false` | If `true`, inputs will use `type="password"` to hide the entered values. |
+| `length` | number, null | `null` | Number of slots. When `null`, it is read from the input's `maxlength`. |
+| `type` | string | `'numeric'` | Allowed characters: `numeric`, `alphanumeric`, or `alpha`. Sets `inputmode` and `pattern` accordingly. |
+| `mask` | boolean | `false` | If `true`, slots display a dot (`•`) instead of the entered character. |
+| `groups` | array, null | `null` | Group sizes used to insert separators (e.g. `[3, 3]`). |
+| `separator` | string | `'·'` | Character rendered between groups. |
 </BsTable>
 
 ### Methods
@@ -205,10 +155,10 @@ Options can be passed via data attributes or JavaScript:
 | Method | Description |
 | --- | --- |
 | `getValue()` | Returns the complete OTP value as a string. |
-| `setValue(value)` | Sets the OTP value, distributing characters across inputs. |
-| `clear()` | Clears all inputs and focuses the first one. |
-| `focus()` | Focuses the first empty input, or the last input if all are filled. |
-| `dispose()` | Destroys the component instance. |
+| `setValue(value)` | Sets the value, sanitizing it against the configured type. |
+| `clear()` | Clears the value and focuses the input. |
+| `focus()` | Focuses the input and places the caret after the last character. |
+| `dispose()` | Destroys the component instance and removes the generated slots. |
 </BsTable>
 
 ```js
@@ -221,7 +171,7 @@ console.log(otpInput.getValue()) // "123456"
 // Set a value programmatically
 otpInput.setValue('654321')
 
-// Clear all inputs
+// Clear the value
 otpInput.clear()
 ```
 
@@ -230,30 +180,31 @@ otpInput.clear()
 <BsTable>
 | Event | Description |
 | --- | --- |
-| `complete.bs.otp` | Fired when all inputs are filled. The event's `value` property contains the complete code. |
-| `input.bs.otp` | Fired on each input change. Includes `value` (current combined value) and `index` (changed input index). |
+| `complete.bs.otpInput` | Fired when every slot is filled. The event's `value` property contains the complete code. |
+| `input.bs.otpInput` | Fired on each change. The event's `value` property contains the current value. |
 </BsTable>
 
 ```js
 const otpElement = document.querySelector('.otp')
 
-otpElement.addEventListener('complete.bs.otp', event => {
+otpElement.addEventListener('complete.bs.otpInput', event => {
   console.log('OTP complete:', event.value)
   // Submit the form or validate the code
 })
 
-otpElement.addEventListener('input.bs.otp', event => {
-  console.log('Current value:', event.value, 'Changed index:', event.index)
+otpElement.addEventListener('input.bs.otpInput', event => {
+  console.log('Current value:', event.value)
 })
 ```
 
 ## Accessibility
 
-- Each input should have an `aria-label` describing its position (e.g., "Digit 1")
-- Use a form label with `aria-labelledby` on the container
-- Add help text with `aria-describedby` for additional context
-- The component automatically sets `inputmode="numeric"` for mobile keyboards
-- Arrow keys allow navigation between inputs
+Because the control is a single text input, it exposes one accessible name, role, and value—so assistive technology announces it as one ordinary text field instead of one edit field per digit. The visual slots are decorative and marked `aria-hidden`, and no per-digit `aria-label`s are needed.
+
+- Give the input a single accessible name with `aria-label` or an associated `<label>`, and add context with `aria-describedby`.
+- The component sets `autocomplete="one-time-code"` and an appropriate `inputmode` so codes can be autofilled and the right mobile keyboard appears. This supports [WCAG 1.3.5 Identify Input Purpose](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html).
+- Copy, paste, and autofill are never blocked, which keeps the control compliant with [WCAG 3.3.8 Accessible Authentication (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html)—a single input is also what password managers and SMS autofill target reliably.
+- For the verification flow itself, give codes a generous expiry ([WCAG 2.2.1 Timing Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html)) and avoid forcing users to re-enter a code already provided in the same process ([WCAG 3.3.7 Redundant Entry](https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry.html)).
 
 ## CSS
 

@@ -1,8 +1,5 @@
-// NOTICE!!! Initially embedded in our docs this JavaScript
-// file contains elements that can help you create reproducible
-// use cases in StackBlitz for instance.
-// In a real project please adapt this content to your needs.
-// ++++++++++++++++++++++++++++++++++++++++++
+// NOTICE: Embedded as-is into StackBlitz playgrounds via `?raw` import.
+// Adapt to your needs in real projects.
 
 /*
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
@@ -11,7 +8,12 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global bootstrap: false */
+import {
+  Tooltip,
+  Popover,
+  Toast,
+  Carousel
+} from '@bootstrap'
 
 export default () => {
   // --------
@@ -20,7 +22,7 @@ export default () => {
   // Instantiate all tooltips in a docs or StackBlitz
   document.querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach(tooltip => {
-      new bootstrap.Tooltip(tooltip)
+      new Tooltip(tooltip)
     })
 
   // --------
@@ -29,7 +31,7 @@ export default () => {
   // Instantiate all popovers in docs or StackBlitz
   document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(popover => {
-      new bootstrap.Popover(popover)
+      new Popover(popover)
     })
 
   // -------------------------------
@@ -48,9 +50,16 @@ export default () => {
   }
 
   // Instantiate all toasts in docs pages only
+  // Skip toasts inside <dialog> elements; those are shown explicitly
+  // via their own trigger (e.g. the "Show toast" button in the dialog
+  // overlays example) and shouldn't auto-appear when the dialog opens.
   document.querySelectorAll('.bd-example .toast')
     .forEach(toastNode => {
-      const toast = new bootstrap.Toast(toastNode, {
+      if (toastNode.closest('dialog')) {
+        return
+      }
+
+      const toast = new Toast(toastNode, {
         autohide: false
       })
 
@@ -63,12 +72,22 @@ export default () => {
   const toastLiveExample = document.getElementById('liveToast')
 
   if (toastTrigger) {
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    const toastBootstrap = Toast.getOrCreateInstance(toastLiveExample)
     toastTrigger.addEventListener('click', () => {
       toastBootstrap.show()
     })
   }
   // js-docs-end live-toast
+
+  const dialogToastTrigger = document.getElementById('dialogToastBtn')
+  const dialogToastEl = document.getElementById('dialogToast')
+
+  if (dialogToastTrigger) {
+    const dialogToast = Toast.getOrCreateInstance(dialogToastEl)
+    dialogToastTrigger.addEventListener('click', () => {
+      dialogToast.show()
+    })
+  }
 
   // -------------------------------
   // Alerts
@@ -80,9 +99,9 @@ export default () => {
   const appendAlert = (message, type) => {
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
-      `<div class="alert theme-${type} alert-dismissible" role="alert">`,
-      `   <div>${message}</div>`,
-      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      `<div class="alert theme-${type}" role="alert">`,
+      `   <p>${message}</p>`,
+      '   <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>',
       '</div>'
     ].join('')
 
@@ -101,9 +120,9 @@ export default () => {
   // Carousels
   // --------
   // Instantiate all non-autoplaying carousels in docs or StackBlitz
-  document.querySelectorAll('.carousel:not([data-bs-ride="carousel"])')
+  document.querySelectorAll('.carousel:not([data-bs-autoplay="true"])')
     .forEach(carousel => {
-      bootstrap.Carousel.getOrCreateInstance(carousel)
+      Carousel.getOrCreateInstance(carousel)
     })
 
   // -------------------------------
@@ -129,13 +148,13 @@ export default () => {
     })
 
   // -------------------------------
-  // Offcanvas
+  // Drawer
   // -------------------------------
-  // 'Offcanvas components' example in docs only
-  const myOffcanvas = document.querySelectorAll('.bd-example-offcanvas .offcanvas')
-  if (myOffcanvas) {
-    myOffcanvas.forEach(offcanvas => {
-      offcanvas.addEventListener('show.bs.offcanvas', event => {
+  // 'Drawer components' example in docs only
+  const myDrawer = document.querySelectorAll('.bd-example-drawer .drawer')
+  if (myDrawer) {
+    myDrawer.forEach(drawer => {
+      drawer.addEventListener('show.bs.drawer', event => {
         event.preventDefault()
       }, false)
     })

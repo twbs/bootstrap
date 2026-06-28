@@ -1,14 +1,8 @@
 import type { HTMLAttributes } from 'astro/types'
 import * as htmlparser2 from 'htmlparser2'
-import { getData } from './data'
 
 const placeholderRegex = /<Placeholder\s+([^>]+)\/>/g
-const closeButtonRegex = /<CloseButton\s*([^>]*?)\/>/g
-
-// Close button SVG icon
-const CLOSE_BUTTON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="none">
-      <path fill="currentcolor" d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z"/>
-    </svg>`
+const closeButtonRegex = /([ \t]*)<CloseButton\s*([^>]*?)\/>/g
 
 /**
  * Generates all the placeholder attributes and options required to render a placeholder.
@@ -72,9 +66,7 @@ function renderCloseButtonToString(attributes: Record<string, string>): string {
   const dismissAttr = dismiss ? ` data-bs-dismiss="${dismiss}"` : ''
   const classValue = extraClass ? `btn-close ${extraClass}` : 'btn-close'
 
-  return `<button type="button" class="${classValue}"${dismissAttr} aria-label="Close">
-      ${CLOSE_BUTTON_SVG}
-    </button>`
+  return `<button type="button" class="${classValue}"${dismissAttr} aria-label="Close"></button>`
 }
 
 /**
@@ -96,8 +88,10 @@ function renderCloseButtonToString(attributes: Record<string, string>): string {
  */
 export function replacePlaceholdersInHtml(html: string) {
   // Replace CloseButton components
-  html = html.replace(closeButtonRegex, (match) => {
-    const document = htmlparser2.parseDocument(match, { xmlMode: true })
+  html = html.replace(closeButtonRegex, (match, indent) => {
+    // Strip the captured indent from the match before parsing
+    const tagOnly = match.slice(indent.length)
+    const document = htmlparser2.parseDocument(tagOnly, { xmlMode: true })
     const closeButtonElement = document.firstChild
 
     if (
@@ -109,7 +103,7 @@ export function replacePlaceholdersInHtml(html: string) {
       throw new Error('Invalid CloseButton element.')
     }
 
-    return renderCloseButtonToString(closeButtonElement.attribs as Record<string, string>)
+    return indent + renderCloseButtonToString(closeButtonElement.attribs as Record<string, string>)
   })
 
   // Replace Placeholder components
@@ -166,8 +160,8 @@ function getOptionsWithDefaults(options: Partial<PlaceholderOptions>) {
   const optionsWithDefaults = Object.assign(
     {},
     {
-      background: '#adb5bd',
-      color: '#e9ecef',
+      background: 'var(--bs-bg-2)',
+      color: 'var(--bs-fg-4)',
       height: '180',
       markup: 'svg',
       title: 'Placeholder',
@@ -193,7 +187,7 @@ function getPlaceholderSrc(
   const textColor = color.replace(/^#/, '')
 
   // Build the raw SVG string first
-  let svg = `<svg style='font-size: 1.125rem; font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; -webkit-user-select: none; -moz-user-select: none; user-select: none; text-anchor: middle;' width='200' height='200' xmlns='http://www.w3.org/2000/svg'>`
+  let svg = `<svg style='font-size: 1.125rem; font-family:system-ui; -webkit-user-select: none; -moz-user-select: none; user-select: none; text-anchor: middle;' width='200' height='200' xmlns='http://www.w3.org/2000/svg'>`
 
   if (showTitle) {
     svg += `<title>${title}</title>`

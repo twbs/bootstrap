@@ -1,0 +1,119 @@
+---
+title: Space
+description: Control the margin between direct children of an element in non-flex and non-grid layouts.
+toc: true
+mdn: https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+utility:
+  - space-x
+  - space-y
+---
+
+import { getData } from '@libs/data'
+
+## Example
+
+Unlike [gap utilities]([[docsref:/utilities/gap]]) which require flexbox or grid, space utilities work on any parent element by applying margins to children.
+
+<Example class="d-flex align-items-center justify-content-center gap-4 text-center" code={`
+  <div class="d-flex space-x-3 p-3 bd-pattern-diagonal rounded-3">
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 1</div>
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 2</div>
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 3</div>
+  </div>`} />
+
+The selectors generated for space utilities are wrapped in `:where()` for zero specificity, making them easy to override with additional utilities or custom CSS.
+
+## Notation
+
+Space utilities that apply to all breakpoints, from `xs` to `2xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format `{property}-{size}` for `xs` and `{property}-{breakpoint}-{size}` for `sm`, `md`, `lg`, `xl`, and `2xl`.
+
+Where *property* is one of:
+
+- `space-x` - for classes that set horizontal spacing via `margin-inline-end`
+- `space-y` - for classes that set vertical spacing via `margin-block-end`
+
+Where *size* is one of:
+
+- `0` - for classes that eliminate the spacing by setting it to `0`
+- `1` - (by default) for classes that set the spacing to `$spacer * .25`
+- `2` - (by default) for classes that set the spacing to `$spacer * .5`
+- `3` - (by default) for classes that set the spacing to `$spacer`
+- `4` - (by default) for classes that set the spacing to `$spacer * 1.5`
+- `5` - (by default) for classes that set the spacing to `$spacer * 3`
+
+(You can add more sizes by adding entries to the `$spacers` Sass map variable.)
+
+## Horizontal
+
+Use `space-x-*` utilities to control the horizontal space between children:
+
+<Example showMarkup={false} class="d-flex align-items-center justify-content-center text-center" code={`
+  <div class="d-flex space-x-3 bd-pattern-diagonal rounded-3">
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 1</div>
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 2</div>
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 3</div>
+  </div>`} />
+
+```html
+<div class="d-flex space-x-3">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</div>
+```
+
+## Vertical
+
+Use `space-y-*` utilities to control the vertical space between children:
+
+<Example showMarkup={false} class="d-flex align-items-center justify-content-center text-center" code={`
+  <div class="space-y-3 bd-pattern-diagonal rounded-3 d-inline-block p-3">
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 1</div>
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 2</div>
+    <div class="p-3 bg-subtle-accent fg-accent rounded-3">Item 3</div>
+  </div>`} />
+
+```html
+<div class="space-y-3">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</div>
+```
+
+## How it works
+
+Space utilities apply `margin-inline-end` or `margin-block-end` to every direct child except the last one via the selector `:where(.space-x-3 > :not(:last-child))`. The `:where()` wrapper keeps specificity at zero, so you can easily override individual children with standard margin utilities.
+
+```css
+:where(.space-x-3 > :not(:last-child)) {
+  margin-inline-end: 1rem;
+}
+```
+
+## CSS
+
+### Sass utilities API
+
+Space utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
+
+```scss
+// scss-docs-start utils-space
+"space-x": (
+  responsive: true,
+  property: margin-inline-end,
+  class: space-x,
+  child-selector: "> :not(:last-child)",
+  values: $spacers
+),
+"space-y": (
+  responsive: true,
+  property: margin-block-end,
+  class: space-y,
+  child-selector: "> :not(:last-child)",
+  values: $spacers
+),
+// scss-docs-end utils-space
+```

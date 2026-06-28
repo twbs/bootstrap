@@ -8,14 +8,11 @@ html {
 }
 
 main {
-  height: 100vh;
   height: -webkit-fill-available;
   max-height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 
-.dropdown-toggle { outline: 0; }
+.menu-toggle { outline: 0; }
 
 .btn-toggle {
   padding: .25rem .5rem;

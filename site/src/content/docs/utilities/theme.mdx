@@ -43,7 +43,7 @@ And with borders:
 
 ## Comparison
 
-Here's a side-by-side comparison of all three styles for each theme color:
+Here’s a side-by-side comparison of all three styles for each theme color:
 
 <Example code={getData('theme-colors').map((themeColor) => `<div class="d-flex gap-2 mb-2">
     <div class="theme-${themeColor.name} theme-contrast p-3 flex-fill text-center rounded">${themeColor.title} contrast</div>
@@ -92,12 +92,12 @@ The theme style classes generate the following CSS:
 
 .theme-subtle {
   background-color: var(--theme-bg-subtle);
-  color: var(--theme-text);
+  color: var(--theme-fg);
 }
 
 .theme-muted {
   background-color: var(--theme-bg-muted);
-  color: var(--theme-text-emphasis);
+  color: var(--theme-fg-emphasis);
 }
 ```
 

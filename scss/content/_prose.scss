@@ -9,8 +9,9 @@ $prose-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $prose-tokens: defaults(
   (
-    --content-font-size: var(--font-size-sm),
-    --content-gap: 20px,
+    --content-font-size: 1rem,
+    --content-line-height: 1.5,
+    --content-gap: calc(var(--content-font-size) * var(--content-line-height)),
     --heading-color: light-dark(var(--gray-900), var(--white)),
   ),
   $prose-tokens
@@ -28,18 +29,19 @@ $prose-tokens: defaults(
     max-width: 1000px;
     margin-inline: auto;
     font-size: var(--content-font-size);
-    line-height: 1.5;
+    line-height: var(--content-line-height);
 
     @media (width >= 1024px) {
       --content-font-size: var(--font-size-md);
-      --content-gap: 24px;
+      --content-line-height: 1.625;
+      // --content-gap: calc(var(--content-font-size) * var(--content-line-height));
     }
 
     :where(p, ul, ol, dl, pre, table, blockquote):not(:where(.not-prose, .not-prose *)) {
       margin-block: 0;
     }
 
-    :where(ul, ol):not([class]):not(:where(.not-prose, .not-prose *)) li:not(:last-child) {
+    :where(ul, ol):not([class], :where(.not-prose, .not-prose *)) li:not(:last-child) {
       margin-bottom: calc(var(--content-gap) / 4);
     }
 
@@ -53,7 +55,7 @@ $prose-tokens: defaults(
       border-block-start: var(--border-width) solid var(--hr-border-color);
     }
 
-    :where(h1, h2, h3, h4, h5, h6):not([class]):not(:where(.not-prose, .not-prose *)) {
+    :where(h1, h2, h3, h4, h5, h6):not([class], :where(.not-prose, .not-prose *)) {
       margin-top: 0;
       margin-bottom: calc(var(--content-gap) / -2);
       font-weight: 500;
@@ -65,11 +67,11 @@ $prose-tokens: defaults(
       }
     }
 
-    :where(h1, h2):not(:first-child):not(:where(.not-prose, .not-prose *)) {
+    :where(h1, h2):not(:first-child, :where(.not-prose, .not-prose *)) {
       margin-top: calc(var(--content-gap) * .75);
     }
 
-    :where(h3, h4, h5, h6):not(:first-child):not(:where(.not-prose, .not-prose *)) {
+    :where(h3, h4, h5, h6):not(:first-child, :where(.not-prose, .not-prose *)) {
       margin-top: calc(var(--content-gap) * .5);
     }
 

@@ -8,7 +8,7 @@
 import { isRTL } from './index.js'
 
 /**
- * Breakpoints for responsive placement (matches SCSS $grid-breakpoints)
+ * Breakpoints for responsive placement (matches SCSS $breakpoints)
  */
 export const BREAKPOINTS = {
   sm: 576,
