@@ -19,7 +19,7 @@ thumbnail: guides/bootstrap-parcel@2x.png
 
 We’re building a Parcel project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
-1. **Create a project folder and set up npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
+1. **Create a project folder and set up npm.** We’ll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
    ```sh
    mkdir my-project && cd my-project
@@ -32,7 +32,7 @@ We’re building a Parcel project with Bootstrap from scratch, so there are some
    npm i --save-dev parcel
    ```
 
-3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using menus, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
+3. **Install Bootstrap.** Now we can install Bootstrap. We’ll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using menus, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
 
    ```sh
    npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
@@ -42,7 +42,7 @@ Now that we have all the necessary dependencies installed, we can get to work cr
 
 ## Project structure
 
-We’ve already created the `my-project` folder and initialized npm. Now we'll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
+We’ve already created the `my-project` folder and initialized npm. Now we’ll also create our `src` folder, stylesheet, and JavaScript file to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
 
 ```sh
 mkdir {src,src/js,src/scss}
@@ -94,7 +94,7 @@ With dependencies installed and our project folder ready for us to start coding,
 
    Parcel will automatically detect we’re using Sass and install the [Sass Parcel plugin](https://parceljs.org/languages/sass/) to support it. However, if you wish, you can also manually run `npm i --save-dev @parcel/transformer-sass`.
 
-2. **Add the Parcel npm scripts.** Open the `package.json` and add the following `start` script to the `scripts` object. We'll use this script to start our Parcel development server and render the HTML file we created after it’s compiled into the `dist` directory.
+2. **Add the Parcel npm scripts.** Open the `package.json` and add the following `start` script to the `scripts` object. We’ll use this script to start our Parcel development server and render the HTML file we created after it’s compiled into the `dist` directory.
 
    ```json
    {
@@ -115,7 +115,7 @@ With dependencies installed and our project folder ready for us to start coding,
 
    <img class="img-fluid" src="/docs/[[config:docs_version]]/assets/img/guides/parcel-dev-server.png" alt="Parcel dev server running" />
 
-In the next and final section to this guide, we'll import all of Bootstrap’s CSS and JavaScript.
+In the next and final section to this guide, we’ll import all of Bootstrap’s CSS and JavaScript.
 
 ## Import Bootstrap
 

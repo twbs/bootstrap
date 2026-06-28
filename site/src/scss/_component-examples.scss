@@ -1,4 +1,3 @@
-@use "../../../scss/config" as *;
 @use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
 
@@ -9,12 +8,13 @@
 @layer custom {
   .bd-code-snippet {
     --bd-example-padding: 1.25rem;
-    --bd-example-inner-radius: calc(var(--bs-border-radius) - 1px);
+    --bd-example-border-color: var(--bs-border-subtle);
+    --bd-example-inner-radius: calc(var(--radius-5) - 1px);
 
     margin: 0;
     background-color: var(--bd-pre-bg);
-    border: 1px solid var(--bs-border-color);
-    @include border-radius(var(--bs-border-radius));
+    border: 1px solid var(--bd-example-border-color);
+    @include border-radius(var(--radius-5));
 
     .bd-example {
       &:first-child {
@@ -38,14 +38,14 @@
     padding-inline-start: var(--bd-example-padding);
     padding-inline-end: calc(var(--bd-example-padding) - .5em);
     background-color: var(--bs-bg-1);
-    border-bottom: 1px solid var(--bs-border-color);
+    border-bottom: 1px solid var(--bd-example-border-color);
 
     &:first-child {
-      @include border-top-radius(calc(var(--bs-border-radius) - 1px));
+      @include border-top-radius(calc(var(--radius-5) - 1px));
     }
 
     &:not(:first-child) {
-      border-top: 1px solid var(--bs-border-color);
+      border-top: 1px solid var(--bd-example-border-color);
     }
   }
 
@@ -69,7 +69,7 @@
       min-height: 120px;
       padding: var(--bs-spacer);
       background-color: var(--bs-bg-1);
-      @include border-radius(var(--bs-border-radius));
+      @include border-radius(var(--radius-5));
     }
 
     > .menu.position-static {
@@ -82,7 +82,7 @@
     }
 
     > hr:last-child {
-      margin-bottom: $spacer;
+      margin-bottom: var(--spacer);
     }
 
     // Images
@@ -202,15 +202,15 @@
       color: var(--bs-fg-3);
       background-color: var(--bs-bg-1);
       border: var(--bs-border-width) solid var(--bs-border-color);
-      @include border-radius(var(--bs-border-radius));
+      @include border-radius(var(--radius-5));
     }
   }
 
   .bd-example-drawer {
     .drawer {
       position: static;
-      display: block;
-      height: 200px;
+      display: flex;
+      height: 400px;
       margin: var(--drawer-inset);
       visibility: visible;
       transform: translate(0);
@@ -318,7 +318,7 @@
 
   // Toasts
   .bd-example-toasts {
-    min-height: 240px;
+    min-height: 300px;
   }
 
   .bd-example-zindex-levels {
@@ -369,7 +369,7 @@
     resize: horizontal;
     background-color: var(--bs-bg-body);
     border: 1px dashed var(--bs-border-color);
-    @include border-radius(var(--bs-border-radius));
+    @include border-radius(var(--radius-5));
   }
 
   //

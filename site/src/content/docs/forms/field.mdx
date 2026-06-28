@@ -15,7 +15,7 @@ The Field component provides essential layout, spacing, and functionality for yo
     <label for="fieldText" class="form-label">Email address</label>
     <input type="email" class="form-control" id="fieldText" placeholder="name@example.com">
     <div class="form-text">
-      We'll never share your email with anyone else.
+      We’ll never share your email with anyone else.
     </div>
   </div>`} />
 
@@ -61,13 +61,7 @@ Works the same way with `<textarea>` elements. Descriptions are optional.
 When a `.check` is a direct child, the grid switches to a two-column layout with the checkbox in column 1 and the label in column 2.
 
 <Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="fieldCheck" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-      </svg>
-    </div>
+    <input type="checkbox" id="fieldCheck" class="check" />
     <label for="fieldCheck">Remember me</label>
   </div>`} />
 
@@ -163,13 +157,7 @@ When a check, radio, or switch needs a field title above it, add a `.form-label`
 
 <Example code={`<div class="form-field">
     <label class="form-label">Terms and conditions</label>
-    <div class="check">
-      <input type="checkbox" id="fieldOverheadCheck" required />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-      </svg>
-    </div>
+    <input type="checkbox" id="fieldOverheadCheck" class="check" required />
     <div class="form-field-content">
       <label for="fieldOverheadCheck">I agree to the terms</label>
       <small class="form-text">Please read before agreeing.</small>
@@ -181,16 +169,10 @@ When a check, radio, or switch needs a field title above it, add a `.form-label`
 Add a `<small class="form-text">` after the label and wrap it in a `.form-field-content` to ensure appropriate spacing and alignment.
 
 <Example class="d-flex flex-column gap-3" code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="fieldCheckDesc" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-      </svg>
-    </div>
+    <input type="checkbox" id="fieldCheckDesc" class="check" />
     <div class="form-field-content">
       <label for="fieldCheckDesc">Subscribe to updates</label>
-      <small class="form-text">We'll send you a weekly digest of what's new.</small>
+      <small class="form-text">We’ll send you a weekly digest of what’s new.</small>
     </div>
   </div>
   <div class="form-field">
@@ -222,13 +204,7 @@ Add `data-bs-validate` to your `<form>` to opt in to `:user-invalid` styling. Th
       <div class="valid-feedback">Looks good!</div>
     </div>
     <div class="form-field">
-      <div class="check">
-        <input type="checkbox" id="fieldValidateCheck" required>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-          <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-          <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-        </svg>
-      </div>
+      <input type="checkbox" id="fieldValidateCheck" class="check" required>
       <div class="form-field-content">
         <label for="fieldValidateCheck">Agree to terms and conditions</label>
         <div class="invalid-feedback">You must agree before submitting.</div>
@@ -252,13 +228,7 @@ Apply `.is-invalid` or `.is-valid` directly to the control for server-side valid
     <div class="valid-feedback">Looks good!</div>
   </div>
   <div class="form-field mb-3">
-    <div class="check">
-      <input type="checkbox" id="fieldServerCheck" class="is-invalid" required>
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-      </svg>
-    </div>
+    <input type="checkbox" id="fieldServerCheck" class="check is-invalid" required>
     <label for="fieldServerCheck">Agree to terms and conditions</label>
     <div class="invalid-feedback">You must agree before submitting.</div>
   </div>

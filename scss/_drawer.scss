@@ -24,7 +24,7 @@ $drawer-tokens: defaults(
     --drawer-bg: var(--bg-body),
     --drawer-border-width: var(--border-width),
     --drawer-border-color: var(--border-color-translucent),
-    --drawer-border-radius: var(--border-radius-lg),
+    --drawer-border-radius: var(--radius-7),
     --drawer-box-shadow: var(--box-shadow-lg),
     --drawer-transition-duration: .3s,
     --drawer-transition-timing: cubic-bezier(.22, 1, .36, 1),
@@ -266,11 +266,8 @@ $drawer-backdrop-tokens: defaults(
     @include dialog-header(var(--drawer-padding-y) var(--drawer-padding-x));
 
     .btn-close {
-      padding: calc(var(--drawer-padding-y) * .5) calc(var(--drawer-padding-x) * .5);
+      margin-block: calc(-.5 * var(--drawer-padding-y));
       margin-inline-start: auto;
-      margin-inline-end: calc(-.5 * var(--drawer-padding-x));
-      margin-top: calc(-.5 * var(--drawer-padding-y));
-      margin-bottom: calc(-.5 * var(--drawer-padding-y));
     }
   }
 

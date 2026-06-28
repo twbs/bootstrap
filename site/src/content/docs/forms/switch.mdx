@@ -28,7 +28,7 @@ Wrap the `.switch` in a `.form-field` layout wrapper and add your label. The gri
 
 ## Theme colors
 
-Modify the appearance of checked checkboxes by adding the `.checked-{color}` class to the `.switch` element. This will set the checked background and border color to the theme color.
+Modify the appearance of switches by adding the `.theme-{color}` class to the `.switch` element. This will set the checked background and border color to the theme color.
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => ` <div class="form-field">
     <div class="switch theme-${themeColor.name}">
@@ -41,11 +41,18 @@ Modify the appearance of checked checkboxes by adding the `.checked-{color}` cla
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example class="d-flex flex-column gap-3" code={`<div class="form-field">
+<Example class="vstack gap-2" code={`<div class="form-field">
     <div class="switch">
       <input type="checkbox" value="" id="switchDisabledLabel" role="switch" switch disabled>
     </div>
     <label for="switchDisabledLabel">Disabled switch</label>
+  </div>
+
+  <div class="form-field">
+    <div class="switch">
+      <input type="checkbox" value="" id="switchCheckedDisabledLabel" role="switch" switch disabled checked>
+    </div>
+    <label for="switchCheckedDisabledLabel">Disabled checked switch</label>
   </div>`} />
 
 ## Sizes
@@ -54,7 +61,7 @@ Add a size modifier class to make your switch appear smaller or larger.
 
 <Example class="d-flex flex-column gap-3" code={`<div class="form-field">
     <div class="switch switch-sm">
-    <input type="checkbox" value="" id="switchSizeSm" role="switch" switch>
+      <input type="checkbox" value="" id="switchSizeSm" role="switch" switch>
     </div>
     <label for="switchSizeSm">Small switch</label>
   </div>

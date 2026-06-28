@@ -122,13 +122,7 @@ Place any checkbox or radio within an input group’s addon instead of text.
 
 <Example code={`<div class="input-group mb-3">
     <div class="input-group-text">
-      <div class="check">
-        <input type="checkbox" aria-label="Checkbox for following text input">
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-          <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-          <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-        </svg>
-      </div>
+      <input type="checkbox" class="check" aria-label="Checkbox for following text input">
     </div>
     <input type="text" class="form-control" aria-label="Text input with checkbox">
   </div>
@@ -145,6 +139,12 @@ Place any checkbox or radio within an input group’s addon instead of text.
 While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
 
 <Example class="vstack gap-3" code={`<div class="input-group">
+    <input type="text" aria-label="First name" class="form-control">
+    <input type="text" aria-label="Middle name" class="form-control">
+    <input type="text" aria-label="Last name" class="form-control">
+  </div>
+
+  <div class="input-group">
     <span class="input-group-text">First and last name</span>
     <input type="text" aria-label="First name" class="form-control">
     <input type="text" aria-label="Last name" class="form-control">
@@ -284,7 +284,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 
 ## Border radius
 
-Sometimes building these components gets complicated, and CSS selectors can only do so much. We've accounted for most of the common use cases, but in case you need to provide an extra element and skip the border-radius logic, add the `.input-group-ignore` class to the element.
+Sometimes building these components gets complicated, and CSS selectors can only do so much. We’ve accounted for most of the common use cases, but in case you need to provide an extra element and skip the border-radius logic, add the `.input-group-ignore` class to the element.
 
 Consider this extra hidden input example:
 

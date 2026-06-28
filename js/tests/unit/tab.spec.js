@@ -33,9 +33,9 @@ describe('Tab', () => {
 
       const tabEl = fixtureEl.querySelector('[href="#home"]')
       const tabBySelector = new Tab('[href="#home"]')
-      const tabByElement = new Tab(tabEl)
-
       expect(tabBySelector._element).toEqual(tabEl)
+
+      const tabByElement = new Tab(tabEl)
       expect(tabByElement._element).toEqual(tabEl)
     })
 
@@ -547,6 +547,30 @@ describe('Tab', () => {
       expect(spyPrevent).not.toHaveBeenCalled()
     })
 
+    it('if arrow key is pressed with a modifier (e.g. Alt+Left), ignore it', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav">',
+        '  <li class="nav-link" data-bs-toggle="tab"></li>',
+        '</ul>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('.nav-link')
+      const tab = new Tab(tabEl)
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowLeft'
+      keydown.altKey = true
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyGet = spyOn(tab, '_getChildren')
+
+      tabEl.dispatchEvent(keydown)
+
+      expect(spyGet).not.toHaveBeenCalled()
+      expect(spyStop).not.toHaveBeenCalled()
+      expect(spyPrevent).not.toHaveBeenCalled()
+    })
+
     it('if keydown event is right/down arrow, handle it', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
@@ -897,7 +921,7 @@ describe('Tab', () => {
         '  <li class="nav-item"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
         '  <li class="nav-item"><a class="nav-link" href="#profile" data-bs-toggle="tab">Profile</a></li>',
         '  <li class="nav-item">',
-        '    <a class="nav-link active" data-bs-toggle="menu" href="#">Menu</a>',
+        '    <a class="nav-link active" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
         '    <div class="menu">',
         '      <a class="menu-item active" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
         '      <a class="menu-item" href="#menu2" id="menu2-tab" data-bs-toggle="tab">@mdo</a>',
@@ -919,7 +943,7 @@ describe('Tab', () => {
         '<ul class="nav nav-tabs" id="nav1">',
         '  <li class="nav-item active"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
         '  <li class="nav-item">',
-        '    <a class="nav-link" data-bs-toggle="menu" href="#">Menu</a>',
+        '    <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
         '    <div class="menu">',
         '      <a class="menu-item" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
         '    </div>',
@@ -930,7 +954,7 @@ describe('Tab', () => {
         '<ul class="nav nav-tabs" id="nav2">',
         '  <li class="nav-item active"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
         '  <li class="nav-item">',
-        '    <a class="nav-link" data-bs-toggle="menu" href="#">Menu</a>',
+        '    <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
         '    <div class="menu">',
         '      <a class="menu-item" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
         '    </div>',
@@ -955,7 +979,7 @@ describe('Tab', () => {
         '  <li class="nav-item"><a class="nav-link active" href="#home" data-bs-toggle="tab">Home</a></li>',
         '  <li class="nav-item"><a class="nav-link" href="#profile" data-bs-toggle="tab">Profile</a></li>',
         '  <li class="nav-item">',
-        '    <a class="nav-link" data-bs-toggle="menu" href="#">Menu</a>',
+        '    <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
         '    <div class="menu">',
         '      <a class="menu-item" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
         '      <a class="menu-item" href="#menu2" id="menu2-tab" data-bs-toggle="tab">@mdo</a>',

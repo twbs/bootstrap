@@ -28,7 +28,7 @@
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" data-bs-toggle="menu" aria-expanded="false">Menu</a>
+              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>
               <div class="menu">
                 <a class="menu-item" href="#">Action</a>
                 <a class="menu-item" href="#">Another action</a>
@@ -50,7 +50,7 @@
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle="menu" aria-expanded="false">Menu</a>
+          <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>
           <div class="menu">
             <a class="menu-item" href="#">Action</a>
             <a class="menu-item" href="#">Another action</a>
@@ -60,7 +60,7 @@
       </ul>
 
       <div class="row">
-        <div class="col-sm-12 mt-4">
+        <div class="sm:col-12 mt-4">
           <div>
             <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" aria-expanded="false">Menu</button>
             <div class="menu">
@@ -80,7 +80,7 @@
           </div>
         </div>
 
-        <div class="col-sm-12 mt-4">
+        <div class="sm:col-12 mt-4">
           <div class="btn-group">
             <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" data-bs-placement="top-start" aria-expanded="false">Menu (top)</button>
             <div class="menu">
@@ -102,7 +102,7 @@
           </div>
         </div>
 
-        <div class="col-sm-12 mt-4">
+        <div class="sm:col-12 mt-4">
           <div class="btn-group">
             <a href="#" class="btn-solid theme-secondary">Menu (top) split align end</a>
             <button type="button" id="menu-page-subheader-button-3" class="btn-solid theme-secondary menu-toggle-split" data-bs-toggle="menu" data-bs-placement="top-end" aria-expanded="false">
@@ -124,7 +124,7 @@
           </div>
         </div>
 
-        <div class="col-sm-12 mt-4">
+        <div class="sm:col-12 mt-4">
           <div class="btn-group">
             <a href="#" class="btn-solid theme-secondary">Menu (end) split</a>
             <button type="button" id="menu-page-subheader-button-4" class="btn-solid theme-secondary menu-toggle-split" data-bs-toggle="menu" data-bs-placement="right-start" aria-expanded="false">
@@ -171,7 +171,7 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-3 mt-4">
+        <div class="sm:col-3 mt-4">
           <div class="btn-group">
             <button type="button" class="btn-solid theme-secondary">Menu reference</button>
             <button type="button" class="btn-solid theme-secondary" data-bs-toggle="menu" aria-expanded="false" data-bs-reference="parent">
@@ -184,7 +184,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-3 mt-4">
+        <div class="sm:col-3 mt-4">
           <div>
             <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" data-bs-display="static" aria-expanded="false">
               Menu with static display
@@ -199,6 +199,6 @@
       </div>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js" type="module"></script>
   </body>
 </html>

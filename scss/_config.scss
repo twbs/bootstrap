@@ -31,15 +31,13 @@ $enable-shadows:              true !default;
 $enable-gradients:            true !default;
 $enable-transitions:          true !default;
 $enable-reduced-motion:       true !default;
-$enable-smooth-scroll:        true !default;
+$enable-smooth-scroll:        false !default;
 $enable-grid-classes:         true !default;
 $enable-container-classes:    true !default;
 $enable-cssgrid:              true !default;
 $enable-button-pointers:      true !default;
 // $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
-
-$enable-dark-mode:            true !default;
 
 $color-mode-type:          "media-query" !default;
 $color-contrast-dark:      #000 !default;
@@ -69,17 +67,31 @@ $negative-spacers: (
 
 $sizes: (
   1: $spacer,
-  2: calc($spacer * 2),
-  3: calc($spacer * 3),
-  4: calc($spacer * 4),
-  5: calc($spacer * 5),
-  6: calc($spacer * 6),
-  7: calc($spacer * 7),
-  8: calc($spacer * 8),
-  9: calc($spacer * 9),
-  10: calc($spacer * 10),
-  11: calc($spacer * 11),
-  12: calc($spacer * 12),
+  2: $spacer * 2,
+  3: $spacer * 3,
+  4: $spacer * 4,
+  5: $spacer * 5,
+  6: $spacer * 6,
+  7: $spacer * 7,
+  8: $spacer * 8,
+  9: $spacer * 9,
+  10: $spacer * 10,
+  11: $spacer * 11,
+  12: $spacer * 12,
+) !default;
+
+$radius: .5rem !default;
+$radii: (
+  0: 0,
+  1: $radius * .25,
+  2: $radius * .375,
+  3: $radius * .5,
+  4: $radius * .75,
+  5: $radius,
+  6: $radius * 1.25,
+  7: $radius * 1.5,
+  8: $radius * 2,
+  9: $radius * 3,
 ) !default;
 
 // Breakpoints
@@ -290,7 +302,7 @@ $font-sizes: defaults(
 // scss-docs-end font-sizes
 
 // scss-docs-start headings-variables
-$headings-margin-bottom:      $spacer * .5 !default;
+$headings-margin-bottom:      var(--spacer-2) !default;
 $headings-font-family:        null !default;
 $headings-font-style:         null !default;
 $headings-font-weight:        500 !default;

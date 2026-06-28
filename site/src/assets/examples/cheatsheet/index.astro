@@ -10,15 +10,15 @@ export const extra_js = [{ src: 'cheatsheet.js' }]
 export const body_class = 'bg-body-tertiary'
 ---
 
-<header class="bd-header bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
+<header class="bd-header bg-black bg-90 py-3 d-flex align-items-stretch border-bottom border-dark">
   <div class="container-fluid d-flex align-items-center">
-    <h1 class="d-flex align-items-center fs-4 text-white mb-0">
+    <h1 class="d-flex align-items-center fs-xl fg-white mb-0">
       <img src={getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')} width="38" height="30" class="me-3" alt="Bootstrap">
       Cheatsheet
     </h1>
   </div>
 </header>
-<aside class="bd-aside xl:sticky-top text-body-secondary align-self-start mb-3 xl:mb-5 px-2">
+<aside class="bd-aside xl:sticky-top fg-2 align-self-start mb-3 xl:mb-5 px-2">
   <h2 class="h6 pt-4 pb-3 mb-4 border-bottom">On this page</h2>
   <nav class="small" id="toc">
     <ul class="list-unstyled">
@@ -198,7 +198,7 @@ export const body_class = 'bg-body-tertiary'
           </table>`} />
 
         <Example showMarkup={false} code={`
-          <table class="table table-dark table-borderless">
+          <table class="table table-borderless" data-bs-theme="dark">
             <thead>
             <tr>
               <th scope="col">#</th>
@@ -244,7 +244,7 @@ export const body_class = 'bg-body-tertiary'
               <td>Cell</td>
               <td>Cell</td>
             </tr>`,
-            ...getData('theme-colors').map((themeColor) => `<tr class="table-${themeColor.name}">
+            ...getData('theme-colors').map((themeColor) => `<tr class="theme-${themeColor.name}">
                 <th scope="row">${themeColor.title}</th>
                 <td>Cell</td>
                 <td>Cell</td>
@@ -332,32 +332,36 @@ export const body_class = 'bg-body-tertiary'
               <option value="3">Three</option>
             </select>
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <div class="mb-3 form-field">
+            <input type="checkbox" id="exampleCheck1" class="check">
+            <label for="exampleCheck1">Check me out</label>
           </div>
           <fieldset class="mb-3">
             <legend>Radios buttons</legend>
-            <div class="form-check">
-              <input type="radio" name="radios" class="form-check-input" id="exampleRadio1">
-              <label class="form-check-label" for="exampleRadio1">Default radio</label>
+            <div class="form-field">
+              <input type="radio" name="radios" class="radio" id="exampleRadio1">
+              <label for="exampleRadio1">Default radio</label>
             </div>
-            <div class="mb-3 form-check">
-              <input type="radio" name="radios" class="form-check-input" id="exampleRadio2">
-              <label class="form-check-label" for="exampleRadio2">Another radio</label>
+            <div class="mb-3 form-field">
+              <input type="radio" name="radios" class="radio" id="exampleRadio2">
+              <label for="exampleRadio2">Another radio</label>
             </div>
           </fieldset>
           <div class="mb-3">
             <label class="form-label" for="customFile">Upload</label>
             <input type="file" class="form-control" id="customFile">
           </div>
-          <div class="mb-3 form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" checked>
-            <label class="form-check-label" for="switchCheckChecked">Checked switch checkbox input</label>
+          <div class="mb-3 form-field">
+            <div class="switch">
+              <input type="checkbox" role="switch" id="switchCheckChecked" checked>
+            </div>
+            <label for="switchCheckChecked">Checked switch checkbox input</label>
           </div>
           <div class="mb-3">
             <label for="customRange3" class="form-label">Example range</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+            <div class="form-range">
+              <input type="range" class="form-range-input" min="0" max="5" step="0.5" id="customRange3">
+            </div>
           </div>
           <button type="submit" class="btn-solid theme-primary">Submit</button>
         </form>`} />
@@ -383,36 +387,38 @@ export const body_class = 'bg-body-tertiary'
                 <option>Disabled select</option>
               </select>
             </div>
-            <div class="mb-3">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-                <label class="form-check-label" for="disabledFieldsetCheck">
-                  Can't check this
-                </label>
-              </div>
+            <div class="mb-3 form-field">
+              <input type="checkbox" id="disabledFieldsetCheck" class="check" disabled>
+              <label for="disabledFieldsetCheck">
+                Can't check this
+              </label>
             </div>
             <fieldset class="mb-3">
               <legend>Disabled radios buttons</legend>
-              <div class="form-check">
-                <input type="radio" name="radios" class="form-check-input" id="disabledRadio1" disabled>
-                <label class="form-check-label" for="disabledRadio1">Disabled radio</label>
+              <div class="form-field">
+                <input type="radio" name="radios" class="radio" id="disabledRadio1" disabled>
+                <label for="disabledRadio1">Disabled radio</label>
               </div>
-              <div class="mb-3 form-check">
-                <input type="radio" name="radios" class="form-check-input" id="disabledRadio2" disabled>
-                <label class="form-check-label" for="disabledRadio2">Another radio</label>
+              <div class="mb-3 form-field">
+                <input type="radio" name="radios" class="radio" id="disabledRadio2" disabled>
+                <label for="disabledRadio2">Another radio</label>
               </div>
             </fieldset>
             <div class="mb-3">
               <label class="form-label" for="disabledCustomFile">Upload</label>
               <input type="file" class="form-control" id="disabledCustomFile" disabled>
             </div>
-            <div class="mb-3 form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="disabledSwitchCheckChecked" checked disabled>
-              <label class="form-check-label" for="disabledSwitchCheckChecked">Disabled checked switch checkbox input</label>
+            <div class="mb-3 form-field">
+              <div class="switch">
+                <input type="checkbox" role="switch" id="disabledSwitchCheckChecked" checked disabled>
+              </div>
+              <label for="disabledSwitchCheckChecked">Disabled checked switch checkbox input</label>
             </div>
             <div class="mb-3">
               <label for="disabledRange" class="form-label">Disabled range</label>
-              <input type="range" class="form-range" min="0" max="5" step="0.5" id="disabledRange">
+              <div class="form-range">
+                <input type="range" class="form-range-input" min="0" max="5" step="0.5" id="disabledRange">
+              </div>
             </div>
             <button type="submit" class="btn-solid theme-primary">Submit</button>
           </fieldset>
@@ -503,12 +509,12 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={`
         <form>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
           </div>
         </form>
         `} />
@@ -539,7 +545,7 @@ export const body_class = 'bg-body-tertiary'
           </div>
           <div class="md:col-4">
             <label for="validationServerUsername" class="form-label">Username</label>
-            <div class="input-group has-validation">
+            <div class="input-group">
               <span class="input-group-text" id="inputGroupPrepend3">@</span>
               <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
               <div class="invalid-feedback">
@@ -572,9 +578,9 @@ export const body_class = 'bg-body-tertiary'
             </div>
           </div>
           <div class="col-12">
-            <div class="form-check">
-              <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-              <label class="form-check-label" for="invalidCheck3">
+            <div class="form-field">
+              <input class="check is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+              <label for="invalidCheck3">
                 Agree to terms and conditions
               </label>
               <div class="invalid-feedback">
@@ -603,42 +609,33 @@ export const body_class = 'bg-body-tertiary'
       <div>
         <Example showMarkup={false} code={`
         <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h4 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1
-              </button>
-            </h4>
-            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
+          <details class="accordion-item" name="accordionExample" open>
+            <summary class="accordion-header">
+              Accordion Item #1
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default because the <code>open</code> attribute is present. The native <code>&lt;details&gt;</code> element handles all the show/hide logic without any JavaScript. You can put any HTML content within the <code>.accordion-body</code>.
             </div>
-          </div>
-          <div class="accordion-item">
-            <h4 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
-              </button>
-            </h4>
-            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
+          </details>
+          <details class="accordion-item" name="accordionExample">
+            <summary class="accordion-header">
+              Accordion Item #2
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> The <code>name</code> attribute groups this with other accordion items. When you open this item, any other open item in the same group will close automatically.
             </div>
-          </div>
-          <div class="accordion-item">
-            <h4 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Accordion Item #3
-              </button>
-            </h4>
-            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
+          </details>
+          <details class="accordion-item" name="accordionExample">
+            <summary class="accordion-header">
+              Accordion Item #3
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> This exclusive accordion behavior is built into the browser—no Bootstrap JavaScript required. Just use matching <code>name</code> attributes on your <code>&lt;details&gt;</code> elements.
             </div>
-          </div>
+          </details>
         </div>
         `} />
       </div>
@@ -651,9 +648,9 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <div class="alert theme-${themeColor.name} alert-dismissible fade show mb-3" role="alert">
+        <div class="alert theme-${themeColor.name} fade show mb-3" role="alert">
           <p>A simple ${themeColor.name} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.</p>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         `)} />
 
@@ -677,18 +674,18 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={`
-        <p class="h1">Example heading <span class="badge bg-primary">New</span></p>
-        <p class="h2">Example heading <span class="badge bg-secondary">New</span></p>
-        <p class="h3">Example heading <span class="badge bg-success">New</span></p>
-        <p class="h4">Example heading <span class="badge bg-danger">New</span></p>
-        <p class="h5">Example heading <span class="badge text-bg-warning">New</span></p>
-        <p class="h6">Example heading <span class="badge text-bg-info">New</span></p>
-        <p class="h6">Example heading <span class="badge text-bg-light">New</span></p>
-        <p class="h6">Example heading <span class="badge bg-dark">New</span></p>
+        <p class="h1">Example heading <span class="badge theme-primary">New</span></p>
+        <p class="h2">Example heading <span class="badge theme-accent">New</span></p>
+        <p class="h3">Example heading <span class="badge theme-success">New</span></p>
+        <p class="h4">Example heading <span class="badge theme-danger">New</span></p>
+        <p class="h5">Example heading <span class="badge theme-warning">New</span></p>
+        <p class="h6">Example heading <span class="badge theme-info">New</span></p>
+        <p class="h6">Example heading <span class="badge theme-inverse">New</span></p>
+        <p class="h6">Example heading <span class="badge theme-secondary">New</span></p>
         `} />
 
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <span class="badge rounded-pill ${(themeColor.name === 'light' || themeColor.name === 'warning' || themeColor.name === 'info') ? 'text-' : ''}bg-${themeColor.name}">${themeColor.title}</span>
+        <span class="badge theme-${themeColor.name}">${themeColor.title}</span>
         `)} />
       </div>
     </article>
@@ -702,9 +699,21 @@ export const body_class = 'bg-body-tertiary'
         <Example showMarkup={false} code={`
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li class="breadcrumb-item">
+              <a class="breadcrumb-link" href="#">Home</a>
+            </li>
+            <li class="breadcrumb-divider">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="breadcrumb-link" href="#">Library</a>
+            </li>
+            <li class="breadcrumb-divider">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 16" width="6" height="12"><path d="M2 2l4 6-4 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </li>
+            <li class="breadcrumb-item" aria-current="page">
+              <a class="breadcrumb-link active" href="#">Data</a>
+            </li>
           </ol>
         </nav>
         `} />
@@ -723,7 +732,11 @@ export const body_class = 'bg-body-tertiary'
           `<button type="button" class="btn-solid theme-link">Link</button>`]} />
 
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-          <button type="button" class="btn-solid theme-outline-${themeColor.name}">${themeColor.title}</button>
+          <button type="button" class="btn-outline theme-${themeColor.name}">${themeColor.title}</button>
+          `)} />
+
+        <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
+          <button type="button" class="btn-subtle theme-${themeColor.name}">${themeColor.title}</button>
           `)} />
 
         <Example showMarkup={false} code={`
@@ -789,7 +802,7 @@ export const body_class = 'bg-body-tertiary'
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   <a href="#" class="btn-solid theme-primary">Go somewhere</a>
                 </div>
-                <div class="card-footer text-body-secondary">
+                <div class="card-footer fg-2">
                   2 days ago
                 </div>
               </div>
@@ -800,14 +813,14 @@ export const body_class = 'bg-body-tertiary'
                   <h5 class="card-title">Card title</h5>
                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush card-list">
                   <li class="list-group-item">An item</li>
                   <li class="list-group-item">A second item</li>
                   <li class="list-group-item">A third item</li>
                 </ul>
-                <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
+                <div class="card-body flex-row gap-4">
+                  <a href="#">Card link</a>
+                  <a href="#">Another link</a>
                 </div>
               </div>
             </div>
@@ -821,7 +834,7 @@ export const body_class = 'bg-body-tertiary'
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                      <p class="card-text"><small class="fg-2">Last updated 3 mins ago</small></p>
                     </div>
                   </div>
                 </div>
@@ -839,43 +852,35 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={`
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
+        <div id="carouselExample" class="carousel slide">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" />
-              <div class="carousel-caption d-none md:d-block">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
-              </div>
+              <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100 rounded-5" color="#555" background="#777" text="First slide" />
             </div>
             <div class="carousel-item">
-              <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" />
-              <div class="carousel-caption d-none md:d-block">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
-              </div>
+              <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100 rounded-5" color="#444" background="#666" text="Second slide" />
             </div>
             <div class="carousel-item">
-              <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" />
-              <div class="carousel-caption d-none md:d-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
-              </div>
+              <Placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100 rounded-5" color="#333" background="#555" text="Third slide" />
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div>
+              <button class="btn-icon btn-sm" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-icon-prev" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="btn-icon btn-sm" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-icon-next" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
         </div>
         `} />
       </div>
@@ -1109,7 +1114,7 @@ export const body_class = 'bg-body-tertiary'
         <div class="list-group">
           <a href="#" class="list-group-item list-group-item-action">A simple default list group item</a>`,
           ...getData('theme-colors').map((themeColor) => `
-          <a href="#" class="list-group-item list-group-item-action list-group-item-${themeColor.name}">A simple ${themeColor.name} list group item</a>
+          <a href="#" class="list-group-item list-group-item-action theme-${themeColor.name}">A simple ${themeColor.name} list group item</a>
           `),
         `</div>
         `]} />
@@ -1182,8 +1187,8 @@ export const body_class = 'bg-body-tertiary'
               <a class="navbar-brand" href="#">
                 <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy" style="filter: invert(1) grayscale(100%) brightness(200%);">
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+              <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" aria-hidden="true"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 lg:mb-0">
@@ -1216,13 +1221,13 @@ export const body_class = 'bg-body-tertiary'
             </div>
           </nav>
 
-          <nav class="navbar lg:navbar-expand navbar-dark bg-primary mt-5">
+          <nav class="navbar lg:navbar-expand bg-primary mt-5" data-bs-theme="dark">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
                 <img src="${getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')}" width="38" height="30" class="d-inline-block align-top" alt="Bootstrap" loading="lazy">
               </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-                <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+              <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" aria-hidden="true"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent2">
                 <ul class="navbar-nav me-auto mb-2 lg:mb-0">
@@ -1354,16 +1359,16 @@ export const body_class = 'bg-body-tertiary'
           <div class="progress-bar">0%</div>
         </div>
         <div class="progress mb-3" role="progressbar" aria-label="Success example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-          <div class="progress-bar bg-success w-25">25%</div>
+          <div class="progress-bar theme-success w-25">25%</div>
         </div>
         <div class="progress mb-3" role="progressbar" aria-label="Info example with label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-          <div class="progress-bar text-bg-info w-50">50%</div>
+          <div class="progress-bar theme-info w-50">50%</div>
         </div>
         <div class="progress mb-3" role="progressbar" aria-label="Warning example with label" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-          <div class="progress-bar text-bg-warning w-75">75%</div>
+          <div class="progress-bar theme-warning w-75">75%</div>
         </div>
         <div class="progress" role="progressbar" aria-label="Danger example with label" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-          <div class="progress-bar bg-danger w-100">100%</div>
+          <div class="progress-bar theme-danger w-100">100%</div>
         </div>
         `} />
 
@@ -1397,7 +1402,7 @@ export const body_class = 'bg-body-tertiary'
               <a class="nav-link" href="#scrollspyHeading2">Second</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="menu" href="#" role="button" aria-expanded="false">Menu</a>
+              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>
               <div class="menu">
                 <a class="menu-item" href="#scrollspyHeading3">Third</a>
                 <a class="menu-item" href="#scrollspyHeading4">Fourth</a>
@@ -1430,13 +1435,13 @@ export const body_class = 'bg-body-tertiary'
 
       <div>
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <div class="spinner-border text-${themeColor.name}" role="status">
+        <div class="spinner-border fg-${themeColor.name}" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
         `)} />
 
         <Example showMarkup={false} code={getData('theme-colors').map((themeColor) => `
-        <div class="spinner-grow text-${themeColor.name}" role="status">
+        <div class="spinner-grow fg-${themeColor.name}" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
         `)} />
@@ -1454,7 +1459,7 @@ export const body_class = 'bg-body-tertiary'
           <div class="toast-header">
             <Placeholder width="20" height="20" background="#007aff" class="rounded me-2" text={false} title={false} />
             <strong class="me-auto">Bootstrap</strong>
-            <small class="text-body-secondary">11 mins ago</small>
+            <small class="fg-2">11 mins ago</small>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
           <div class="toast-body">
@@ -1485,7 +1490,7 @@ export const body_class = 'bg-body-tertiary'
 
 <dialog class="dialog" id="exampleDialog">
   <div class="dialog-header">
-    <h1 class="dialog-title fs-5">Dialog title</h1>
+    <h1 class="dialog-title fs-lg">Dialog title</h1>
     <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
   </div>
   <div class="dialog-body">
@@ -1499,7 +1504,7 @@ export const body_class = 'bg-body-tertiary'
 
 <dialog class="dialog" id="staticBackdropDialog" data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="dialog-header">
-    <h1 class="dialog-title fs-5">Static backdrop</h1>
+    <h1 class="dialog-title fs-lg">Static backdrop</h1>
     <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
   </div>
   <div class="dialog-body">

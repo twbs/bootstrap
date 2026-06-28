@@ -17,16 +17,16 @@ $popover-tokens: defaults(
     --popover-bg: var(--bg-body),
     --popover-border-width: var(--border-width),
     --popover-border-color: var(--border-color-translucent),
-    --popover-border-radius: var(--border-radius-lg),
-    --popover-inner-border-radius: calc(var(--border-radius-lg) - var(--border-width)),
+    --popover-border-radius: var(--radius-7),
+    --popover-inner-border-radius: calc(var(--radius-7) - var(--border-width)),
     --popover-box-shadow: var(--box-shadow),
-    --popover-header-padding-x: #{$spacer},
-    --popover-header-padding-y: #{$spacer * .75},
+    --popover-header-padding-x: var(--spacer),
+    --popover-header-padding-y: var(--spacer-3),
     --popover-header-font-size: var(--font-size-sm),
     --popover-header-color: #{$headings-color},
     --popover-header-bg: var(--bg-1),
-    --popover-body-padding-x: #{$spacer},
-    --popover-body-padding-y: #{$spacer * .75},
+    --popover-body-padding-x: var(--spacer),
+    --popover-body-padding-y: var(--spacer-3),
     --popover-body-color: var(--fg-body),
     --popover-arrow-width: 1rem,
     --popover-arrow-height: .5rem,
@@ -135,6 +135,12 @@ $popover-tokens: defaults(
       &::after {
         top: var(--popover-border-width);
         border-block-end-color: var(--popover-bg);
+      }
+
+      // When the popover has a header, the bottom arrow points into the header,
+      // so its fill should match the header background, not the body background.
+      &:has(+ .popover-header)::after {
+        border-block-end-color: var(--popover-header-bg);
       }
     }
 

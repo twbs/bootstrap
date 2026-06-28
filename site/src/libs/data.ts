@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import yaml from 'js-yaml'
+import { load as yamlLoad } from 'js-yaml'
 import { z } from 'zod'
 import { zLanguageCode, zPxSizeOrEmpty, zVersionMajorMinor, zVersionSemver } from './validation'
 import { capitalizeFirstLetter } from './utils'
@@ -114,6 +114,13 @@ const dataDefinitions = {
     .array()
 } satisfies Record<string, DataSchema>
 
+// Inferred types for individual data files. Exported so consumers can avoid
+// re-deriving them via `ReturnType<typeof getData<'sidebar'>>` and don't have
+// to fall back to `any` when iterating nested arrays.
+export type SidebarGroup = z.infer<typeof dataDefinitions.sidebar>[number]
+export type SidebarItem = NonNullable<SidebarGroup['pages']>[number]
+export type SidebarSubItem = NonNullable<SidebarItem['pages']>[number]
+
 let data = new Map<DataType, z.infer<DataSchema>>()
 
 // A helper to get data loaded fom a yml file in the `./site/data/` directory. If the data does not match its associated
@@ -129,7 +136,7 @@ export function getData<TType extends DataType>(type: TType): z.infer<(typeof da
 
   try {
     // Load the data from the yml  file.
-    const rawData = yaml.load(fs.readFileSync(dataPath, 'utf8'))
+    const rawData = yamlLoad(fs.readFileSync(dataPath, 'utf8'))
 
     // Parse the data using the data schema to validate its content and get back a fully typed data object.
     const parsedData = dataDefinitions[type].parse(rawData) as z.infer<(typeof dataDefinitions)[TType]>

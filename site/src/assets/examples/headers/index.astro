@@ -34,10 +34,10 @@ export const extra_css = ['headers.css']
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 md:mb-0 md:me-auto link-body-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
-        <span class="fs-4">Simple header</span>
+        <span class="fs-xl">Simple header</span>
       </a>
 
-      <ul class="nav nav-pills">
+      <ul class="nav">
         <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
@@ -72,7 +72,7 @@ export const extra_css = ['headers.css']
       </div>
 
       <ul class="nav col-12 md:col-auto mb-2 justify-content-center md:mb-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="#" class="nav-link px-2 theme-secondary">Home</a></li>
         <li><a href="#" class="nav-link px-2">Features</a></li>
         <li><a href="#" class="nav-link px-2">Pricing</a></li>
         <li><a href="#" class="nav-link px-2">FAQs</a></li>
@@ -91,16 +91,16 @@ export const extra_css = ['headers.css']
   <header class="p-3 bg-body fg-body" data-bs-theme="dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center lg:justify-content-start">
-        <a href="/" class="d-flex align-items-center mb-2 lg:mb-0 text-white text-decoration-none">
+        <a href="/" class="d-flex align-items-center mb-2 lg:mb-0 fg-white text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use href="#bootstrap"/></svg>
         </a>
 
         <ul class="nav col-12 lg:col-auto lg:me-auto mb-2 justify-content-center md:mb-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+          <li><a href="#" class="nav-link px-2 fg-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 fg-white">Features</a></li>
+          <li><a href="#" class="nav-link px-2 fg-white">Pricing</a></li>
+          <li><a href="#" class="nav-link px-2 fg-white">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 fg-white">About</a></li>
         </ul>
 
         <form class="col-12 lg:col-auto mb-3 lg:mb-0 lg:me-3" role="search">
@@ -125,7 +125,7 @@ export const extra_css = ['headers.css']
         </a>
 
         <ul class="nav col-12 lg:col-auto lg:me-auto mb-2 justify-content-center md:mb-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
+          <li><a href="#" class="nav-link px-2 theme-secondary">Overview</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
@@ -136,10 +136,10 @@ export const extra_css = ['headers.css']
         </form>
 
         <div class="text-end">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none" data-bs-toggle="menu" aria-expanded="false">
+          <a class="d-block link-body-emphasis text-decoration-none" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
-          <div class="menu text-small">
+          <div class="menu">
             <a class="menu-item" href="#">New project...</a>
             <a class="menu-item" href="#">Settings</a>
             <a class="menu-item" href="#">Profile</a>
@@ -156,10 +156,10 @@ export const extra_css = ['headers.css']
   <header class="py-3 mb-3 border-bottom">
     <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
       <div>
-        <a href="#" class="d-flex align-items-center lg:col-4 mb-2 lg:mb-0 link-body-emphasis text-decoration-none" data-bs-toggle="menu" aria-expanded="false" aria-label="Bootstrap menu">
+        <a class="d-flex align-items-center lg:col-4 mb-2 lg:mb-0 link-body-emphasis text-decoration-none" href="#" role="button" data-bs-toggle="menu" aria-expanded="false" aria-label="Bootstrap menu">
           <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
         </a>
-        <div class="menu text-small shadow">
+        <div class="menu shadow">
           <a class="menu-item active" href="#" aria-current="page">Overview</a>
           <a class="menu-item" href="#">Inventory</a>
           <a class="menu-item" href="#">Customers</a>
@@ -176,10 +176,10 @@ export const extra_css = ['headers.css']
         </form>
 
         <div class="flex-shrink-0">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none" data-bs-toggle="menu" aria-expanded="false">
+          <a class="d-block link-body-emphasis text-decoration-none" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
-          <div class="menu text-small shadow">
+          <div class="menu shadow">
             <a class="menu-item" href="#">New project...</a>
             <a class="menu-item" href="#">Settings</a>
             <a class="menu-item" href="#">Profile</a>
@@ -223,7 +223,7 @@ export const extra_css = ['headers.css']
     <div class="container d-flex flex-wrap justify-content-center">
       <a href="/" class="d-flex align-items-center mb-3 lg:mb-0 lg:me-auto link-body-emphasis text-decoration-none">
         <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
-        <span class="fs-4">Double header</span>
+        <span class="fs-xl">Double header</span>
       </a>
       <form class="col-12 lg:col-auto mb-3 lg:mb-0" role="search">
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
@@ -234,41 +234,41 @@ export const extra_css = ['headers.css']
   <div class="b-example-divider"></div>
 
   <header>
-    <div class="px-3 py-2 text-bg-dark border-bottom">
+    <div class="px-3 py-2 fg-white bg-black border-bottom" data-bs-theme="dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center lg:justify-content-start">
-          <a href="/" class="d-flex align-items-center my-2 lg:my-0 lg:me-auto text-white text-decoration-none">
+          <a href="/" class="d-flex align-items-center my-2 lg:my-0 lg:me-auto fg-body text-decoration-none">
             <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use href="#bootstrap"/></svg>
           </a>
 
-          <ul class="nav col-12 lg:col-auto my-2 justify-content-center md:my-0 text-small">
+          <ul class="nav col-12 lg:col-auto my-2 justify-content-center md:my-0">
             <li>
-              <a href="#" class="nav-link text-secondary">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24" aria-hidden="true"><use href="#home"/></svg>
+              <a href="#" class="nav-link fg-secondary flex-column">
+                <svg class="bi d-block mx-auto" width="24" height="24" aria-hidden="true"><use href="#home"/></svg>
                 Home
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24" aria-hidden="true"><use href="#speedometer2"/></svg>
+              <a href="#" class="nav-link fg-white flex-column">
+                <svg class="bi d-block mx-auto" width="24" height="24" aria-hidden="true"><use href="#speedometer2"/></svg>
                 Dashboard
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24" aria-hidden="true"><use href="#table"/></svg>
+              <a href="#" class="nav-link fg-white flex-column">
+                <svg class="bi d-block mx-auto" width="24" height="24" aria-hidden="true"><use href="#table"/></svg>
                 Orders
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24" aria-hidden="true"><use href="#grid"/></svg>
+              <a href="#" class="nav-link fg-white flex-column">
+                <svg class="bi d-block mx-auto" width="24" height="24" aria-hidden="true"><use href="#grid"/></svg>
                 Products
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24" aria-hidden="true"><use href="#people-circle"/></svg>
+              <a href="#" class="nav-link fg-white flex-column">
+                <svg class="bi d-block mx-auto" width="24" height="24" aria-hidden="true"><use href="#people-circle"/></svg>
                 Customers
               </a>
             </li>

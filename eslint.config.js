@@ -95,17 +95,19 @@ const localRules = {
   'unicorn/no-unused-properties': 'error',
   'unicorn/numeric-separators-style': 'off',
   'unicorn/prefer-array-flat': 'off',
-  'unicorn/prefer-at': 'off',
+  'unicorn/prefer-at': 'error',
   'unicorn/prefer-dom-node-dataset': 'off',
   'unicorn/prefer-global-this': 'off',
   'unicorn/prefer-module': 'off',
   'unicorn/prefer-query-selector': 'off',
-  'unicorn/prefer-spread': 'off',
+  'unicorn/prefer-spread': 'error',
   'unicorn/prefer-string-raw': 'off',
   'unicorn/prefer-string-replace-all': 'off',
   'unicorn/prefer-structured-clone': 'off',
   'unicorn/prevent-abbreviations': 'off',
   // Rules new/changed in ESLint 10 / updated plugins — disable to preserve old behaviour
+  'xo/import-specifier-newline': 'off',
+  '@eslint-community/eslint-comments/require-description': 'off',
   'import-x/no-anonymous-default-export': 'off',
   'import-x/no-extraneous-dependencies': 'off',
   'import-x/no-unassigned-import': 'off',
@@ -120,15 +122,63 @@ const localRules = {
   '@stylistic/indent-binary-ops': 'off',
   '@stylistic/curly-newline': 'off',
   '@stylistic/function-paren-newline': 'off',
+  'unicorn/better-dom-traversing': 'off',
+  'unicorn/class-reference-in-static-methods': 'off',
+  'unicorn/consistent-boolean-name': 'off',
+  'unicorn/consistent-class-member-order': 'off',
+  'unicorn/consistent-compound-words': 'off',
+  'unicorn/consistent-conditional-object-spread': 'off',
+  'unicorn/default-export-style': 'off',
+  'unicorn/dom-node-dataset': 'off',
+  'unicorn/explicit-timer-delay': 'off',
+  'unicorn/logical-assignment-operators': 'off',
+  'unicorn/max-nested-calls': 'off',
+  'unicorn/name-replacements': 'off',
+  'unicorn/no-break-in-nested-loop': 'off',
+  'unicorn/no-computed-property-existence-check': 'off',
+  'unicorn/no-declarations-before-early-exit': 'off',
+  'unicorn/no-duplicate-if-branches': 'off',
+  'unicorn/no-for-each': 'off',
+  'unicorn/no-global-object-property-assignment': 'off',
+  'unicorn/no-incorrect-query-selector': 'off',
+  'unicorn/no-return-array-push': 'off',
+  'unicorn/no-this-outside-of-class': 'off',
+  'unicorn/no-unnecessary-splice': 'off',
+  'unicorn/no-unused-array-method-return': 'off',
+  'unicorn/no-unreadable-for-of-expression': 'off',
+  'unicorn/no-subtraction-comparison': 'off',
+  'unicorn/prefer-add-event-listener-options': 'off',
+  'unicorn/prefer-array-from-map': 'off',
+  'unicorn/prefer-await': 'off',
+  'unicorn/prefer-classlist-toggle': 'off',
+  'unicorn/prefer-continue': 'off',
+  'unicorn/prefer-early-return': 'off',
+  'unicorn/prefer-global-number-constants': 'off',
+  'unicorn/prefer-includes-over-repeated-comparisons': 'off',
+  'unicorn/prefer-iterator-to-array': 'off',
+  'unicorn/prefer-minimal-ternary': 'off',
+  'unicorn/prefer-number-coercion': 'off',
+  'unicorn/prefer-object-define-properties': 'off',
+  'unicorn/prefer-object-iterable-methods': 'off',
+  'unicorn/prefer-private-class-fields': 'off',
+  'unicorn/prefer-scoped-selector': 'off',
+  'unicorn/prefer-split-limit': 'off',
+  'unicorn/prefer-string-repeat': 'off',
+  'unicorn/prefer-ternary': 'off',
+  'unicorn/prefer-unicode-code-point-escapes': 'off',
   'unicorn/no-array-sort': 'off',
-  'unicorn/prefer-classlist-toggle': 'off'
+  'unicorn/no-top-level-assignment-in-function': 'off',
+  'unicorn/no-top-level-side-effects': 'off',
+  'unicorn/no-useless-coercion': 'off',
+  'unicorn/no-useless-template-literals': 'off',
+  'unicorn/no-unsafe-string-replacement': 'off',
+  'unicorn/require-array-sort-compare': 'off',
+  'unicorn/require-css-escape': 'off'
 }
 
 // Base config: xo/browser + unicorn + import-x for all JS/HTML/MD files
 const xoBrowserConfigs = eslintConfigXo({ browser: true, space: false })
-const xoBrowserConfig = xoBrowserConfigs.find(config =>
-  config.files?.includes('**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,vue,svelte,astro}')
-) ?? xoBrowserConfigs[0]
+const xoBrowserConfig = xoBrowserConfigs.find(config => config.name === 'xo/base') ?? xoBrowserConfigs[0]
 const unicornConfig = unicorn.configs['flat/recommended']
 
 const eslintConfig = [
@@ -266,17 +316,14 @@ const eslintConfig = [
     }
   },
 
-  // site/** — browser, script mode, older ecmaVersion
+  // site/** — browser, script mode
   {
     files: ['site/**'],
     languageOptions: {
       globals: {
         ...globals.browser
       },
-      sourceType: 'script',
-      parserOptions: {
-        ecmaVersion: 2019
-      }
+      sourceType: 'script'
     },
     rules: {
       'no-new': 'off',
@@ -291,15 +338,11 @@ const eslintConfig = [
       'site/src/assets/application.js',
       'site/src/assets/partials/*.js',
       'site/src/assets/search.js',
-      'site/src/assets/snippets.js',
       'site/src/assets/stackblitz.js',
       'site/src/plugins/*.js'
     ],
     languageOptions: {
-      sourceType: 'module',
-      parserOptions: {
-        ecmaVersion: 2020
-      }
+      sourceType: 'module'
     },
     // These files may have eslint-disable directives for the old import plugin
     linterOptions: {
@@ -322,10 +365,7 @@ const eslintConfig = [
       'site/src/assets/examples/sidebars/sidebars.js'
     ],
     languageOptions: {
-      sourceType: 'module',
-      parserOptions: {
-        ecmaVersion: 2020
-      }
+      sourceType: 'module'
     },
     rules: {
       'import/no-unresolved': 'off'

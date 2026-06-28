@@ -21,7 +21,7 @@ $form-control-tokens: defaults(
     --control-bg: var(--btn-input-bg),
     --control-border-width: var(--border-width),
     --control-border-color: var(--border-color),
-    --control-border-radius: var(--border-radius),
+    --control-border-radius: var(--radius-5),
     --control-box-shadow: var(--box-shadow-inset),
     --control-action-bg: var(--bg-1),
     --control-action-hover-bg: var(--bg-2),
@@ -168,6 +168,13 @@ $form-control-sizes: defaults(
   // text (without any border, background color, focus indicator)
 
   .form-control-plaintext {
+    // Plaintext is a standalone class (not combined with `.form-control`), so it
+    // needs its own copy of the control tokens. Without them the `var(--control-*)`
+    // references below are invalid and fall back to their initial values (e.g.
+    // `border-width: medium`), which adds phantom inline borders and misaligns the
+    // text from a floating label.
+    @include tokens($form-control-tokens);
+
     display: block;
     width: 100%;
     padding: var(--control-padding-y) 0;
@@ -204,7 +211,7 @@ $form-control-sizes: defaults(
     }
   }
 
-  @media (prefers-color-scheme: dark) {
+  [data-bs-theme="dark"] {
     select.form-control,
     .form-control-caret {
       background-image: var(--control-select-bg-dark);
@@ -239,12 +246,12 @@ $form-control-sizes: defaults(
 
     &::-moz-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius(var(--border-radius-sm));
+      @include border-radius(var(--radius-5));
     }
 
     &::-webkit-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius(var(--border-radius-sm));
+      @include border-radius(var(--radius-5));
     }
   }
 

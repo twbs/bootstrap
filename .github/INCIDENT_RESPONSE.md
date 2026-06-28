@@ -145,7 +145,7 @@ Bootstrap follows a responsible disclosure approach:
 
 | Purpose | Channel |
 |----------|----------|
-| Private reporting | Email address in [`SECURITY.md`](./SECURITY.md) or GitHub advisory form |
+| Private reporting | Email address in [`SECURITY.md`](../SECURITY.md) or GitHub advisory form |
 | General updates | [blog.getbootstrap.com/](https://blog.getbootstrap.com/) blog |
 | Security advisories | GitHub Security Advisory dashboard |
 | Social alerts | [@getbootstrap](https://x.com/getbootstrap) |

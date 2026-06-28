@@ -46,4 +46,37 @@
     margin-inline-end: .5rem;
     margin-top: .5rem;
   }
+
+  .code-copy {
+    position: relative;
+    display: inline-flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: .75rem 1rem;
+    margin: 0;
+    font-size: var(--bs-font-size-md);
+    background-color: var(--bs-bg-1);
+    border: 1px solid var(--bs-border-color-translucent);
+    @include border-radius(var(--bs-radius-7));
+
+    pre {
+      margin: 0;
+      font-size: var(--bs-font-size-md) !important; // stylelint-disable-line declaration-no-important
+      background-color: transparent !important; // stylelint-disable-line declaration-no-important
+    }
+
+    [data-bd-clipboard] {
+      position: static;
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      padding: 0;
+      margin: -.5rem -.25rem -.5rem 1rem;
+    }
+  }
 }

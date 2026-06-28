@@ -10,48 +10,29 @@ import { getData } from '@libs/data'
 
 ## Basic checkbox
 
-All checkbox styling is contained to a wrapper class, `.check`. This does the following:
+All checkbox styling is applied with the `.check` class directly on the `<input>`. This does the following:
 
-- Adds a stacking grid layout for the checkbox and custom SVG icon.
 - Overrides the default `<input>` appearance with themed colors.
-- Handles the toggling of separate paths in our custom SVG for the `:checked` and indeterminate states. Two `<path>`s are included in the SVG, one for each state, and the appropriate `<path>` is shown based on the `<input>`’s state.
+- Renders the `:checked` and indeterminate icons via a CSS `mask` on the input’s `::before` pseudo-element, so the mark inherits the contrast color and no inline SVG is needed. The appropriate icon is shown based on the input’s state.
 
-For folks looking to replace our provided icons, you'll need to add the `.checked` and `.indeterminate` classes to the `<path>`s and use them in a single `<svg>` element.
+For folks looking to replace our provided icons, override the `--bs-check-icon-checked` and `--bs-check-icon-indeterminate` CSS variables (or the `--check-icon-*` Sass tokens) with your own `mask-image` URLs.
 
-Checkbox layout and labels are handled with additional HTML and CSS.
+Labels and layout are handled with additional HTML and CSS.
 
-<Example code={`<div class="check">
-    <input type="checkbox" id="check" checked />
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-    </svg>
-  </div>`} />
+<Example code={`<input type="checkbox" id="check" class="check" checked />`} />
 
 ## Indeterminate
 
 Checkboxes can utilize the indeterminate pseudo class when manually set via JavaScript. There is no available HTML attribute for specifying it.
 
-<Example addStackblitzJs class="bd-example-indeterminate" code={`<div class="check">
-    <input type="checkbox" id="checkIndeterminate" />
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-    </svg>
-  </div>`} />
+<Example addStackblitzJs class="bd-example-indeterminate" code={`<input type="checkbox" id="checkIndeterminate" class="check" />`} />
 
 ## With form field
 
 Wrap the `.check` in a `.form-field` layout wrapper and add your label. The grid layout places the checkbox and label side by side.
 
 <Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="checkLabel" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
-      </svg>
-    </div>
+    <input type="checkbox" id="checkLabel" class="check" />
     <label for="checkLabel">Example new checkbox</label>
   </div>`} />
 
@@ -60,13 +41,7 @@ Wrap the `.check` in a `.form-field` layout wrapper and add your label. The grid
 Add a description or other content after the label. We recommend wrapping the label and description in a `.form-field-content` to ensure appropriate spacing and alignment.
 
 <Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="checkDescription" />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
-      </svg>
-    </div>
+    <input type="checkbox" id="checkDescription" class="check" />
     <div class="form-field-content">
       <label for="checkDescription">Example new checkbox</label>
       <small class="form-text">Supporting description for the above label.</small>
@@ -78,13 +53,7 @@ Add a description or other content after the label. We recommend wrapping the la
 Modify the appearance of checked checkboxes by adding the `.theme-{color}` class to the `.check` element. This will set the checked background and border color to the theme color.
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<div class="form-field">
-    <div class="check theme-${themeColor.name}">
-      <input type="checkbox" id="check${themeColor.name}" checked />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
-      </svg>
-    </div>
+    <input type="checkbox" id="check${themeColor.name}" class="check theme-${themeColor.name}" checked />
     <label for="check${themeColor.name}">Example ${themeColor.name} checkbox</label>
   </div>`)} />
 
@@ -92,27 +61,13 @@ Modify the appearance of checked checkboxes by adding the `.theme-{color}` class
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="checkDisabled" disabled />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
-      </svg>
-    </div>
+<Example class="vstack gap-2" code={`<div class="form-field">
+    <input type="checkbox" id="checkDisabled" class="check" disabled />
     <label for="checkDisabled">Example new checkbox</label>
-  </div>`} />
+  </div>
 
-Applies to checked states, too.
-
-<Example code={`<div class="form-field">
-    <div class="check">
-      <input type="checkbox" id="checkDisabledChecked" checked disabled />
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'>
-        <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 8 3 3 5-5'/>
-        <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4.5 8.5h6'/>
-      </svg>
-    </div>
+  <div class="form-field">
+    <input type="checkbox" id="checkDisabledChecked" class="check" checked disabled />
     <label for="checkDisabledChecked">Example new checkbox</label>
   </div>`} />
 
@@ -120,26 +75,17 @@ Applies to checked states, too.
 
 Add `.check-sm` or `.check-lg` to make your checkbox appear smaller or larger.
 
-<Example class="d-flex flex-column gap-3" code={`<div class="check check-sm">
-    <input type="checkbox" id="checkSizeSm" checked />
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-    </svg>
+<Example class="d-flex flex-column gap-3" code={`<div class="form-field">
+    <input type="checkbox" id="checkSizeSm" class="check check-sm" checked />
+    <label for="checkSizeSm">Small checkbox</label>
   </div>
-  <div class="check">
-    <input type="checkbox" id="checkSizeMd" checked />
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-    </svg>
+  <div class="form-field">
+    <input type="checkbox" id="checkSizeMd" class="check" checked />
+    <label for="checkSizeMd">Default checkbox</label>
   </div>
-  <div class="check check-lg">
-    <input type="checkbox" id="checkSizeLg" checked />
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-      <path class="checked" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m5.5 10 3 3 6-6'/>
-      <path class="indeterminate" fill='none' stroke='currentcolor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.5 10.5h8'/>
-    </svg>
+  <div class="form-field">
+    <input type="checkbox" id="checkSizeLg" class="check check-lg" checked />
+    <label for="checkSizeLg">Large checkbox</label>
   </div>`} />
 
 ## CSS

@@ -1,15 +1,10 @@
 import fs from 'node:fs'
-import yaml from 'js-yaml'
+import { load as yamlLoad } from 'js-yaml'
 import { z } from 'zod'
 import { zPrefixedVersionSemver, zVersionMajorMinor, zVersionSemver } from './validation'
 
 // The config schema used to validate the config file content and ensure all values required by the site are valid.
 const configSchema = z.object({
-  algolia: z.object({
-    api_key: z.string(),
-    app_id: z.string(),
-    index_name: z.string()
-  }),
   analytics: z.object({
     fathom_site: z.string()
   }),
@@ -67,7 +62,7 @@ export function getConfig(): Config {
 
   try {
     // Load the config from the `config.yml` file.
-    const rawConfig = yaml.load(fs.readFileSync('./config.yml', 'utf8'))
+    const rawConfig = yamlLoad(fs.readFileSync('./config.yml', 'utf8'))
 
     // Parse the config using the config schema to validate its content and get back a fully typed config object.
     config = configSchema.parse(rawConfig)

@@ -10,7 +10,7 @@
     --alert-color: var(--theme-fg, inherit),
     --alert-border-color: var(--theme-border, var(--border-color)),
     --alert-border: var(--border-width) solid var(--alert-border-color),
-    --alert-border-radius: var(--border-radius),
+    --alert-border-radius: var(--radius-2),
     --alert-link-color: #0a58ca,
     --hr-border-color: var(--theme-border, var(--border-color)),
   )
@@ -52,7 +52,7 @@ $true-terminal-output: false;
             padding-y: 1rem;
             padding-x: 1rem;
             // stylelint-disable-next-line property-disallowed-list
-            border-radius: var(--border-radius);
+            border-radius: var(--radius-2);
           }
         }
       }

@@ -53,9 +53,9 @@ describe('Menu', () => {
 
       const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
       const menuBySelector = new Menu('[data-bs-toggle="menu"]')
-      const menuByElement = new Menu(btnMenu)
-
       expect(menuBySelector._element).toEqual(btnMenu)
+
+      const menuByElement = new Menu(btnMenu)
       expect(menuByElement._element).toEqual(btnMenu)
     })
 
@@ -1438,7 +1438,7 @@ describe('Menu', () => {
         fixtureEl.innerHTML = [
           '<div class="nav">',
           '  <div id="testmenu">',
-          '    <a class="btn" data-bs-toggle="menu" href="#testmenu">Test menu</a>',
+          '    <a class="btn" href="#testmenu" role="button" data-bs-toggle="menu" aria-expanded="false">Test menu</a>',
           '    <div class="menu">',
           '      <a class="menu-item" href="#sub1">Submenu 1</a>',
           '    </div>',
@@ -1489,7 +1489,7 @@ describe('Menu', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
           '<div>',
-          '  <a class="btn" data-bs-toggle="menu" href="#testmenu">Test menu</a>',
+          '  <a class="btn" href="#testmenu" role="button" data-bs-toggle="menu" aria-expanded="false">Test menu</a>',
           '  <div class="menu">',
           '    <a class="menu-item" href="#sub1">Submenu 1</a>',
           '  </div>',
@@ -1712,6 +1712,36 @@ describe('Menu', () => {
       })
     })
 
+    it('should ignore keyboard events within contenteditable elements', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <a class="menu-item" href="#sub1">Submenu 1</a>',
+          '    <div class="editor" contenteditable="true"></div>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const triggerMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const editor = fixtureEl.querySelector('.editor')
+
+        triggerMenu.addEventListener('shown.bs.menu', () => {
+          editor.focus()
+          const keydown = createEvent('keydown')
+
+          keydown.key = 'ArrowUp'
+          editor.dispatchEvent(keydown)
+
+          expect(document.activeElement).toEqual(editor, 'contenteditable still focused')
+          resolve()
+        })
+
+        triggerMenu.click()
+      })
+    })
+
     it('should skip disabled element when using keyboard navigation', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -1926,6 +1956,36 @@ describe('Menu', () => {
         triggerMenu.addEventListener('shown.bs.menu', () => {
           expect(triggerMenu).toHaveClass('show')
           textarea.dispatchEvent(createEvent('click'))
+        })
+
+        triggerMenu.click()
+      })
+    })
+
+    it('should not close the menu if the user clicks a label inside a form within the menu', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <div class="menu">',
+          '    <form>',
+          '      <label for="menu-email">Email</label>',
+          '      <input type="text" id="menu-email">',
+          '    </form>',
+          '  </div>',
+          '</div>'
+        ].join('')
+
+        const triggerMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const label = fixtureEl.querySelector('label')
+
+        triggerMenu.addEventListener('shown.bs.menu', () => {
+          expect(triggerMenu).toHaveClass('show')
+          // clearMenus runs synchronously while this bubbling click reaches the
+          // document, so assert right after dispatch returns.
+          label.dispatchEvent(createEvent('click', { bubbles: true }))
+          expect(triggerMenu).toHaveClass('show')
+          resolve()
         })
 
         triggerMenu.click()
@@ -3014,6 +3074,46 @@ describe('Menu', () => {
       })
     })
 
+    it('should keep the submenu transparent until it is positioned, then reveal it', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = [
+          '<div>',
+          '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+          '  <ul class="menu">',
+          '    <li class="submenu">',
+          '      <button class="menu-item" type="button">More options</button>',
+          '      <ul class="menu" id="submenu">',
+          '        <li><a class="menu-item" href="#">Sub 1</a></li>',
+          '      </ul>',
+          '    </li>',
+          '  </ul>',
+          '</div>'
+        ].join('')
+
+        const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+        const submenuTrigger = fixtureEl.querySelector('.submenu > .menu-item')
+        const submenuWrapper = fixtureEl.querySelector('.submenu')
+        const submenu = fixtureEl.querySelector('#submenu')
+        const menu = new Menu(btnMenu)
+
+        btnMenu.addEventListener('shown.bs.menu', () => {
+          menu._openSubmenu(submenuTrigger, submenu, submenuWrapper)
+
+          // Pinned transparent synchronously so it never paints at the fallback position
+          expect(submenu.style.opacity).toEqual('0')
+
+          // Revealed once Floating UI has applied the first position
+          setTimeout(() => {
+            expect(submenu.style.opacity).toEqual('')
+            expect(submenu.style.left).not.toEqual('')
+            resolve()
+          }, 50)
+        })
+
+        menu.show()
+      })
+    })
+
     it('should close all submenus when hiding menu', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = [
@@ -4069,6 +4169,46 @@ describe('Menu', () => {
       const menuEl = fixtureEl.querySelector('.menu')
       const menu = new Menu(btnMenu)
 
+      expect(menu._menu).toEqual(menuEl)
+    })
+
+    it('should resolve the wrapper and menu when the toggle is not a direct child of the wrapper', () => {
+      fixtureEl.innerHTML = [
+        '<div class="wrapper">',
+        '  <span>',
+        '    <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '  </span>',
+        '  <div class="menu">',
+        '    <a class="menu-item" href="#">Item</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const wrapperEl = fixtureEl.querySelector('.wrapper')
+      const menuEl = fixtureEl.querySelector('.menu')
+      const menu = new Menu(btnMenu)
+
+      expect(menu._parent).toEqual(wrapperEl)
+      expect(menu._menu).toEqual(menuEl)
+    })
+
+    it('should fall back to the direct parent when no ancestor contains a menu', () => {
+      fixtureEl.innerHTML = [
+        '<div class="wrapper">',
+        '  <button class="btn" data-bs-toggle="menu">Menu</button>',
+        '</div>',
+        '<div class="external menu">',
+        '  <a class="menu-item" href="#">Item</a>',
+        '</div>'
+      ].join('')
+
+      const btnMenu = fixtureEl.querySelector('[data-bs-toggle="menu"]')
+      const wrapperEl = fixtureEl.querySelector('.wrapper')
+      const menuEl = fixtureEl.querySelector('.menu')
+      const menu = new Menu(btnMenu, { menu: menuEl })
+
+      expect(menu._parent).toEqual(wrapperEl)
       expect(menu._menu).toEqual(menuEl)
     })
   })

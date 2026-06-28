@@ -15,7 +15,9 @@ import ResponsiveImage from '@layouts/partials/ResponsiveImage.astro'
         rel="noopener"
         target="_blank"
       >
-        <span class="sm:d-inline-flex align-items-center gap-1 py-2 px-3 me-2 mb-2 lg:mb-0 rounded-5 masthead-notice theme-subtle theme-warning ">
+        <span
+          class="sm:d-inline-flex align-items-center gap-1 py-2 px-3 me-2 mb-2 lg:mb-0 rounded-5 masthead-notice theme-subtle theme-warning"
+        >
           Get Security Updates for Bootstrap 3 &amp; 4
           <svg class="bi" style="width: 20px; height: 20px; margin-block: -2px;" aria-hidden="true"
             ><use href="#arrow-right-short"></use></svg
@@ -45,12 +47,12 @@ import ResponsiveImage from '@layouts/partials/ResponsiveImage.astro'
           Read the docs
         </a>
       </div>
-      <p class="text-body-secondary mb-0">
+      <p class="fg-2 mb-0">
         Currently <strong>v{getConfig().current_version}</strong>
         <span class="px-1">&middot;</span>
-        <a href={getVersionedDocsPath('getting-started/install')} class="link-secondary">Download</a>
+        <a href={getVersionedDocsPath('getting-started/install')} class="theme-secondary">Download</a>
         <span class="px-1">&middot;</span>
-        <a href="/docs/versions/" class="link-secondary text-nowrap">All releases</a>
+        <a href="/docs/versions/" class="theme-secondary text-nowrap">All releases</a>
       </p>
       <Ads />
     </div>

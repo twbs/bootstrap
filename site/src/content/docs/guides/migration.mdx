@@ -9,7 +9,7 @@ toc: true
 
 ## Upgrade
 
-Bootstrap 6 is a major release with many breaking changes to modernize our codebase, adopt newer build tools, and improve customization. Keep reading for a guide on how to migrate from v5 to v6, and a full changelog of what's new.
+Bootstrap 6 is a major release with many breaking changes to modernize our codebase, adopt newer build tools, and improve customization. Keep reading for a guide on how to migrate from v5 to v6, and a full changelog of what’s new.
 
 1. Bump your Bootstrap dependency:
 
@@ -21,13 +21,13 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
    }
    ```
 
-2. If using all of Bootstrap's Sass files, include it in your Sass using `@use`:
+2. If using all of Bootstrap’s Sass files, include it in your Sass using `@use`:
 
    ```scss
    @use "bootstrap/scss/bootstrap";
    ```
 
-   With this, you can then easily override Bootstrap's Sass variables and maps:
+   With this, you can then easily override Bootstrap’s Sass variables and maps:
 
    ```scss
    @use "bootstrap/scss/bootstrap" with (
@@ -36,7 +36,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
    );
    ```
 
-3. If using only certain parts of Bootstrap's Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
+3. If using only certain parts of Bootstrap’s Sass files, you can use `@use` to import them individually. Be aware that our Sass file structure has changed and you may need to adjust your imports accordingly.
 
    ```scss
    @use "bootstrap/scss/forms";
@@ -61,12 +61,12 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Removed `_variables.scss`, consolidating all variables into `_config.scss`
   - Added `_theme.scss` where we setup all our global theming for how colors are applied
 - **Updated lg, xl, and 2xl breakpoints and containers.**
-  - Increased the `lg` breakpoint from 992px to 1024px; it's container remains the same at 960px.
-  - Increased the `xl` breakpoint from 1200px to 1280px, and it's container from 1140px to 1200px.
+  - Increased the `lg` breakpoint from 992px to 1024px; its container remains the same at 960px.
+  - Increased the `xl` breakpoint from 1200px to 1280px, and its container from 1140px to 1200px.
   - Renamed `xxl` to `2xl` for better scaling with additional custom breakpoints
-  - Increased the `2xl` breakpoint from 1400px to 1536px, and it's container from 1320px to 1440px.
+  - Increased the `2xl` breakpoint from 1400px to 1536px, and its container from 1320px to 1440px.
 - **Adopted modern CSS color functions.** All Sass color variables now use `oklch()` notation (e.g., `$blue: oklch(60% 0.24 240)`) and tint/shade scales are generated with `color-mix(in lab, ...)` in the compiled CSS. The v5 `$*-rgb` CSS custom properties and `rgba()` patterns have been removed. This requires browser support for `color-mix()` and `oklch()`.
-- **New theme token system with `.theme-*` classes.** Per-component color variant classes (like `.alert-primary`, `.badge.bg-primary`, `.btn-primary`) are replaced by a composable `.theme-{name}` pattern. Adding `.theme-primary` to a component sets `--theme-bg`, `--theme-fg`, `--theme-border`, `--theme-contrast`, and other semantic CSS custom properties that the component reads. This applies across buttons, badges, alerts, cards, accordions, and more.
+- **New theme token system with `.theme-*` classes.** Per-component color variant classes (like `.alert-primary`, `.badge.bg-primary`, `.btn-primary`, `.table-primary`) are replaced by a composable `.theme-{name}` pattern. Adding `.theme-primary` to a component sets `--theme-bg`, `--theme-fg`, `--theme-border`, `--theme-contrast`, and other semantic CSS custom properties that the component reads. This applies across buttons, badges, alerts, tables, cards, accordions, and more.
 - **Responsive and state classes now use a prefix instead of an infix or suffix.** Class names follow the Tailwind-style `prefix:class` pattern (e.g., `md:d-none` instead of `d-md-none`, `hover:opacity-50` instead of `opacity-50-hover`). In HTML, use the unescaped colon: `class="md:d-none"`. This applies to utilities, grid, pseudo-state variants, and all responsive components.
 
 <BsTable>
@@ -86,7 +86,6 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | List group | `.list-group-horizontal-md` | `.md:list-group-horizontal` |
 | Sticky | `.sticky-md-top` | `.md:sticky-top` |
 | Stacks | `.vstack-md` | `.md:vstack` |
-| Stepper | `.stepper-horizontal-md` | `.md:stepper-horizontal` |
 | Dialog | `.dialog-fullscreen-sm-down` | `.sm-down:dialog-fullscreen` |
 | Print | `.d-print-none` | `.print:d-none` |
 </BsTable>
@@ -99,15 +98,16 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed `create-css-vars()` mixin (unused).
 - **Renamed `breakpoint-infix()` to `breakpoint-prefix()`.** The function now returns a prefix string (e.g., `"md\:"`) instead of an infix (e.g., `"-md"`). The `loop-breakpoints-up` and `loop-breakpoints-down` mixins now expose `$prefix` instead of `$infix`. Update any custom Sass that calls these functions or mixins.
 - **CSS variable prefixing now handled by PostCSS.** The `$prefix` Sass variable has been removed. CSS custom properties are now written without a prefix in the Sass source and prefixed automatically via `postcss-prefix-custom-properties` during the build. To customize the prefix, update your PostCSS configuration instead of Sass.
-- **Removed RFS (Responsive Font Sizes).** The `scss/vendor/_rfs.scss` file and all RFS mixins have been removed. Typography now uses fixed `rem` values and `clamp()` for responsive sizing. If you relied on RFS for automatic font scaling, you'll need to implement your own responsive typography or use `clamp()` directly.
+- **Removed RFS (Responsive Font Sizes).** The `scss/vendor/_rfs.scss` file and all RFS mixins have been removed. Typography now uses fixed `rem` values and `clamp()` for responsive sizing. If you relied on RFS for automatic font scaling, you’ll need to implement your own responsive typography or use `clamp()` directly.
 - **Renamed Sass files for consistency.** `_placeholders.scss` is now `_placeholder.scss` and `_spinners.scss` is now `_spinner.scss`. Update any individual `@use` imports for these files.
 - **Standardized focus styles with `focus-ring` mixin.** All component-specific `*-focus-box-shadow` Sass variables (e.g., `$btn-focus-box-shadow`, `$input-focus-box-shadow`, `$accordion-button-focus-box-shadow`) have been removed. Focus styles are now handled by a shared `@mixin focus-ring()` using `--focus-ring`, `--focus-ring-width`, `--focus-ring-offset`, and `--focus-ring-color` CSS custom properties. Customize focus styles by overriding these tokens in `_root.scss` instead of individual Sass variables.
 - **Renamed `$grid-breakpoints` to `$breakpoints`.**
+- **Removed `$enable-dark-mode`.** Dark mode support is always compiled; control it at runtime with `data-bs-theme` (or the `color-mode()` mixin) instead of toggling a Sass flag.
 - **Removes all deprecated Sass variables and values:**
   - Removed `$nested-kbd-font-weight`, no replacement.
   - Removed `muted`, `black-50`, and `white-50` from text colors utilities map
-  - Consolidated carousel dark variables, removing `$carousel-dark-indicator-active-bg`, `$carousel-dark-caption-color`, and `$carousel-dark-control-icon-filter` for their reassigned counterparts.
-  - Removed `$btn-close-white-filter` for `$btn-close-filter-dark`.
+  - Removed the carousel dark Sass variables (`$carousel-dark-indicator-active-bg`, `$carousel-dark-control-icon-filter`) and the `.carousel-dark` class—they’re not reassigned. Dark carousels now use `data-bs-theme="dark"` (see the carousel changes below). Carousel captions were removed entirely too.
+  - Removed `$btn-close-white-filter`. The close button no longer uses a filter—its icon is a CSS mask painted with `currentcolor`, so it adapts to dark backgrounds automatically.
   - Removed `$border-radius-xxl`, use `$border-radius-2xl`.
   - Removed `$text-muted` for secondary color.
   - Removed `$hr-bg-color` for `$hr-border-color` and `$hr-height` for `$hr-border-width`.
@@ -126,12 +126,12 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 
 ### JavaScript
 
-- **Bootstrap's JavaScript is now ESM-only.** We no longer ship UMD bundles. All dist files (`bootstrap.js`, `bootstrap.bundle.js`, and their minified versions) are native ES modules. The plugin APIs themselves are unchanged—only how you load and reference them is different.
+- **Bootstrap’s JavaScript is now ESM-only.** We no longer ship UMD bundles. All dist files (`bootstrap.js`, `bootstrap.bundle.js`, and their minified versions) are native ES modules. The plugin APIs themselves are unchanged—only how you load and reference them is different.
   - CDN `<script>` tags must add `type="module"`:
     ```html
     <script type="module" src="bootstrap.bundle.min.js"></script>
     ```
-  - In v5, the UMD bundle automatically created a `window.bootstrap` global. ES modules don't do this, so there is no longer a `bootstrap` global object. If you called plugin APIs through the global namespace, you must update to explicit imports:
+  - In v5, the UMD bundle automatically created a `window.bootstrap` global. ES modules don’t do this, so there is no longer a `bootstrap` global object. If you called plugin APIs through the global namespace, you must update to explicit imports:
 
     **Before (v5):**
     ```js
@@ -150,6 +150,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed jQuery support and the `js-test-jquery` test target.
 - **Replaced the Dropdown component with Menu.** All `.dropdown-*` classes are now `.menu-*` classes, and `data-bs-toggle="dropdown"` is now `data-bs-toggle="menu"`. See the [Menu docs]([[docsref:/components/menus]]) for full details.
   - Renamed CSS classes: `.dropdown-menu` to `.menu`, `.dropdown-item` to `.menu-item`, `.dropdown-divider` to `.menu-divider`, `.dropdown-header` to `.menu-header`, `.dropdown-submenu` to `.submenu`.
+  - Deprecated directional wrappers: `.dropstart`, `.dropend`, and `.dropup`. Use `data-bs-placement` to control direction instead (for example, `.dropup` becomes `data-bs-placement="top"`).
   - Removed the `.dropdown-toggle` class — menu toggles no longer require a toggle class.
   - Removed the `.dropdown` wrapper — no wrapper element is required. The toggle and `.menu` are direct siblings.
   - Simplified markup from `<ul><li><a class="dropdown-item">` to a flat `<div class="menu"><a class="menu-item">` structure.
@@ -161,7 +162,7 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Replaced Popper.js (`@popperjs/core`) with [Floating UI](https://floating-ui.com/) (`@floating-ui/dom`) for menu, tooltip, and popover positioning. The `popperConfig` option on Tooltip, Popover, and Menu (formerly Dropdown) has been renamed to `floatingConfig`. Update any custom positioning configuration accordingly.
 - Added [Vanilla Calendar Pro](https://vanilla-calendar.pro/) (`vanilla-calendar-pro`) as a peer dependency for the new Datepicker component.
 - Removed the `jspm` configuration from `package.json`.
-- Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap's plugins register at the top level.
+- Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap’s plugins register at the top level.
 - Added `"exports"` map to `package.json` for explicit subpath access to source, dist, and Sass files.
 
 ### Components
@@ -175,9 +176,9 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Events: `show.bs.modal` &rarr; `show.bs.dialog`, `shown.bs.modal` &rarr; `shown.bs.dialog`, `hide.bs.modal` &rarr; `hide.bs.dialog`, `hidden.bs.modal` &rarr; `hidden.bs.dialog`, `hidePrevented.bs.modal` &rarr; `hidePrevented.bs.dialog`.
   - Data key: `bs.modal` &rarr; `bs.dialog` (affects `Dialog.getInstance()` and `Dialog.getOrCreateInstance()`).
   - CSS variables: `--modal-*` &rarr; `--dialog-*`.
-  - Backdrop: The `.modal-backdrop` DOM element is gone — Dialog uses the native `::backdrop` pseudo-element with `backdrop-filter: blur()` support.
-  - Body scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the `<html>` element.
-  - New variant classes: `.dialog-slide-up`, `.dialog-slide-down` (slide animations), `.dialog-instant` (no animation), `.dialog-static` (static backdrop bounce), `.dialog-nonmodal` (non-modal positioning), `.dialog-scrollable`, `.dialog-overflow`.
+  - Backdrop: The `.modal-backdrop` DOM element and the legacy `util/backdrop` helper are gone — Dialog uses the native `::backdrop` pseudo-element with `backdrop-filter: blur()` support.
+  - Scroll prevention: `.modal-open` on `<body>` &rarr; `.dialog-open` on the root (`<html>`) element, so it pairs with `scrollbar-gutter: stable` and the page doesn't shift when a dialog opens.
+  - New variant classes: `.dialog-slide-up`, `.dialog-slide-down` (slide animations), `.dialog-instant` (no animation), `.dialog-static` (static backdrop bounce), `.dialog-nonmodal` (non-modal positioning), `.dialog-scrollable`.
   - Non-modal support: Set `modal: false` or `data-bs-modal="false"` for non-modal dialogs.
   - Dialog swapping: Triggers inside an open dialog can open a new dialog and close the current one automatically.
   - See the [Dialog docs]([[docsref:/components/dialog]]) for full details.
@@ -201,16 +202,41 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
   - Added `xs` button size (`.btn-xs`).
 - **Rebuilt accordion on native `<details>` / `<summary>`.** The markup structure has fundamentally changed:
   - v5: `.accordion-item` > `.accordion-header` > `button.accordion-button` + `.accordion-collapse` > `.accordion-body`, controlled by the Collapse JavaScript plugin.
-  - v6: `<details class="accordion-item">` > `<summary class="accordion-header">` + `<div class="accordion-body">`, using the browser's native disclosure widget. No JavaScript dependency for basic open/close behavior.
+  - v6: `<details class="accordion-item">` > `<summary class="accordion-header">` + `<div class="accordion-body">`, using the browser’s native disclosure widget. No JavaScript dependency for basic open/close behavior.
   - Exclusive accordion groups (only one item open) are handled via the HTML `name` attribute on `<details>` elements, replacing the `data-bs-parent` approach.
   - The `.accordion-button` and `.accordion-collapse` classes have been removed.
   - The expand/collapse icon now uses an `.accordion-icon` element (typically an SVG) inside the summary, replacing the CSS `background-image` approach.
   - Open state styling uses `details[open]` instead of JavaScript-toggled classes.
   - Theme coloring via `.theme-*` classes on the `.accordion` wrapper.
-- **Rebuilt close button markup.** `.btn-close` now expects a child `<svg>` element with `fill: currentcolor` instead of the v5 `background-image` encoded SVG. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance.
-- **Restructured cards.** Borders now live on `.card-body` and `.card-list` segments rather than a single outer `.card` border. Added `--card-box-shadow` and `--card-body-gap` tokens. New variant classes: `.card-translucent` (frosted glass effect) and `.card-subtle` (themed with subtle backgrounds). Horizontal cards use a new `.card-row` class.
+- **Rebuilt close button markup.** `.btn-close` now renders its icon via a CSS `mask-image` (`--btn-close-icon`) tinted with `background-color: currentcolor`, so the button is self-contained—no child `<svg>` is required. The filter-based dark mode approach (`$btn-close-white-filter`) has been replaced by `currentcolor` inheritance, and the `.btn-close-white` class has been removed—on dark backgrounds (e.g., `.text-bg-dark`) the icon now inherits the contrast color automatically.
+- **Removed `.alert-dismissible`.** Dismissible alerts no longer require the `.alert-dismissible` modifier class. Place a `.btn-close` directly inside the alert—the alert's flex layout positions it automatically. Remove any `.alert-dismissible` class from your markup.
+- **Restructured cards.** Borders now live on `.card-body` and `.card-list` segments rather than a single outer `.card` border. Added `--card-box-shadow` and `--card-body-gap` tokens. New variant classes: `.card-translucent` (frosted glass effect) and `.card-subtle` (themed with subtle backgrounds). Horizontal cards use a new `.card-row` class. Removed `.card-link` class.
+- **Card groups now use container queries.** `.card-group` switches to its attached, equal-width row layout with a `@container` query instead of a viewport `@media` query, so it responds to the width of a parent query container rather than the viewport. Wrap the card group in a query container—e.g. add the `.contains-inline` utility to a parent element—or the cards stay stacked.
+- **List group horizontal variants now use container queries.** The `.*:list-group-horizontal` classes switch between vertical and horizontal layouts with `@container` queries instead of viewport `@media` queries, responding to a parent query container rather than the viewport. Wrap the list group in a query container (e.g. `.contains-inline`) for the responsive variants to take effect.
 - **Reworked badge variants.** Badge color variants now use `.badge-subtle` and `.badge-outline` combined with `.theme-*` classes (e.g., `.badge-subtle .theme-primary`), replacing the v5 `.bg-primary` utility pattern on badges.
-- **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and `.breadcrumb-divider` as a visible separator element between items. The v5 `::before` pseudo-element divider pattern has been removed.
+- **Updated breadcrumb markup.** Breadcrumbs now use `.breadcrumb-link` as an interactive element with padding, min-height, and hover background, and explicit `.breadcrumb-divider` elements as separators between items. An empty `.breadcrumb-divider` renders a default chevron via a CSS `mask-image` (`--breadcrumb-divider-icon`) tinted with `background-color: currentcolor`; add your own SVG, text, or markup inside it to override. This replaces the v5 `--bs-breadcrumb-divider` content string on the `.breadcrumb-item::before` pseudo-element.
+- **Navbar toggler icon now uses a CSS mask.** `.navbar-toggler-icon` renders via `mask-image` (`--navbar-toggler-icon`) tinted with `background-color: currentcolor` instead of an embedded `background-image` SVG. The markup stays an empty `<span class="navbar-toggler-icon">`, but the icon now inherits the current text color (including dark mode), so the separate light/dark toggler SVGs are no longer needed.
+- **Rebuilt the carousel on CSS scroll snap.** The slide engine no longer uses `float` + `translateX` class juggling or a custom swipe handler—`.carousel-inner` is now a native horizontal scroll-snap container, so sliding, touch dragging, momentum, and keyboard scrolling come from the browser. The markup is unchanged (`.carousel` &rarr; `.carousel-inner` &rarr; `.carousel-item`), and the public JavaScript API (`next`, `prev`, `to`, `cycle`, `pause`) plus the `slide.bs.carousel` / `slid.bs.carousel` events are preserved.
+  - **New capabilities:** show multiple slides at once, reveal a “peek” of adjacent slides, gaps, center mode, and variable-width slides—all via CSS custom properties (`--carousel-items`, `--carousel-items-gap`, `--carousel-items-peek`) and the `.carousel-center` / `.carousel-auto` variants.
+  - **Removed transitional classes** `.carousel-item-start`, `.carousel-item-end`, `.carousel-item-next`, and `.carousel-item-prev`, plus the `.carousel.pointer-event` helper—the browser tracks scroll position instead of an `.active` layout class. (The active slide still gets `.active` for styling.)
+  - **`.carousel-fade`** is now a stacked-opacity (grid) crossfade animated with a CSS opacity transition over `--bs-carousel-fade-duration` (it collapses to an instant swap under reduced motion).
+  - **Removed the `touch` option.** Because `.carousel-inner` is a native scroll-snap container, horizontal touch dragging is part of the browser’s native scrolling and is no longer toggled by JavaScript.
+  - Active-slide syncing uses an `IntersectionObserver`; as a result `slid.bs.carousel` fires when the new slide settles into view, and a multi-slide `to()` jump may emit intermediate `slid` events as it scrolls past.
+- **Renamed the carousel `ride` option to `autoplay`, and made it a boolean.** Autoplay is now strictly opt-in: a carousel only autoplays when `autoplay` is `true` (set via `data-bs-autoplay="true"`). The old `ride` option and its string `"carousel"` value have been removed, as has the `ride="true"` behavior that started autoplaying only *after* the first user interaction.
+  - `data-bs-ride="carousel"` &rarr; `data-bs-autoplay="true"`
+  - `data-bs-ride="true"` &rarr; `data-bs-autoplay="true"` (it now autoplays on load like any other autoplaying carousel, instead of waiting for the first interaction)
+  - JavaScript: `new bootstrap.Carousel(el, { ride: 'carousel' })` &rarr; `new bootstrap.Carousel(el, { autoplay: true })`
+  - The auto-initialization-on-load selector changed accordingly from `[data-bs-ride="carousel"]` to `[data-bs-autoplay="true"]`.
+- **Autoplaying carousels now stop when the user interacts with them.** Clicking a control or indicator, navigating with the keyboard, or swiping permanently stops autoplay instead of resuming it, respecting the visitor’s intent ([WCAG 2.2.2](https://www.w3.org/TR/WCAG/#pause-stop-hide)). Previously these interactions kept the carousel cycling.
+- **New `.carousel-control-play-pause` control** provides a discoverable, accessible button to pause and resume an autoplaying carousel—the mechanism WCAG 2.2.2 requires (a hover-only pause does not qualify). It renders pause/play icons via CSS masks (`--carousel-control-pause-icon` / `--carousel-control-play-icon`), swaps its icon and `aria-label` with state, and can also start autoplay on an otherwise static carousel.
+- **Stacked is now the default carousel layout.** `.carousel` is a flex column, so prev/next controls, indicators, and any custom content sit in the flow above or below the slides. The old `.carousel-stacked` class was removed—it’s now the default, so drop it from your markup.
+- **Overlaid controls now require the `.carousel-overlay` modifier.** To overlay the prev/next controls, play/pause button, and indicators on top of the slides (the classic v5 look), add `.carousel-overlay` to the `.carousel` element. Without it, those elements lay out in the flow.
+- **Renamed the control-icon classes** `.carousel-control-prev-icon` &rarr; `.carousel-icon-prev` and `.carousel-control-next-icon` &rarr; `.carousel-icon-next`. The icons are now painted with `background-color: currentcolor`, so they inherit the surrounding text color (white on the overlay controls, the button color inside `.btn-*`). Size them with `--bs-carousel-control-icon-width`.
+- **Removed `.carousel-caption`** and its `--carousel-caption-*` tokens. Compose slide content from your own markup inside `.carousel-item` instead, styling and positioning it with utilities or custom CSS.
+- **Replaced the `wrap` option with `ends`.** v5's `wrap: true | false` is now `ends: "loop" | "wrap" | "stop"` (default `"loop"`). Map `wrap: true` to `ends: "wrap"` (or the new default `"loop"` for the seamless conveyor effect) and `wrap: false` to `ends: "stop"`. Set it via `data-bs-ends` or the `ends` option. Unknown values fall back to `"loop"`.
+- **Removed the `.carousel-control-prev` / `.carousel-control-next` button classes.** The absolute, full-height hover targets are gone. Compose a control from a button (e.g. `.btn-icon`) plus `data-bs-slide="prev"` / `data-bs-slide="next"` and a `.carousel-icon-prev` / `.carousel-icon-next` glyph, placed in the flow or inside `.carousel-overlay-controls`.
+- **Removed the `.carousel-dark` class.** Use `data-bs-theme="dark"` on the `.carousel` (typically alongside `.carousel-overlay`) for reversed contrast.
+- **Removed v5 carousel tokens** that no longer have an equivalent: `--carousel-caption-*`, `--carousel-control-color`, `--carousel-control-opacity` / `--carousel-control-hover-opacity`, `--carousel-control-icon-filter`, and `--carousel-transition`. Indicator, control, and fade styling now derive from the redesigned `--bs-carousel-*` tokens listed under [CSS variables]([[docsref:/components/carousel#variables]]).
 
 ### Reboot
 
@@ -224,15 +250,20 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Refactor checks, radios, and switches.**
   - Split apart `_form-check.scss` into separate stylesheets: `_checkbox.scss`, `_radio.scss`, and `_switch.scss`.
   - Also split apart the documentation pages for checks, radios, and switches.
-  - Added new CSS variables on each of these components. _Side note: we could've shared variables here, but chose not to for simplicity's sake._
+  - Added new CSS variables on each of these components. *Side note: we could’ve shared variables here, but chose not to for simplicity’s sake.*
   - Removed several now unused Sass variables.
-  - Checkboxes now have a wrapping element and an SVG in the DOM for checked and indeterminate states. Radios and switches do not.
+  - Checkboxes apply the `.check` class directly on the `<input>` (no wrapping element) and draw the checked and indeterminate marks with a CSS `mask-image` on a `::before` pseudo-element tinted with the contrast color—no inline SVG in the DOM. Radios and switches are likewise styled without a wrapping element.
   - Revamped layout for checks, radios, and switches with labels (and descriptions). We now have custom elements for layout that include basic flexbox styling.
   - Refactored toggle buttons to use a nested input structure. The `.btn-check` class now goes on the label (not the input), with the input nested inside. This eliminates the need for `id`/`for` attributes and uses CSS `:has()` selector instead of sibling selectors. Example: `<label class="btn-check btn-solid theme-primary"><input type="checkbox">Toggle</label>`.
 - **Consolidate `.form-select` into `.form-control`.**
   - Removed `.form-select`—use `.form-control` on `<select>` elements now. Too much abstraction and duplication at the same time.
   - Adds new CSS variables on `.form-control` for easier customization without Sass compilation.
   - `.form-control` now has a `min-height` at all times as opposed to just on `<textarea>` elements. This reduces some CSS for us.
+- **Range is now a JavaScript component.** The native range can’t draw a filled track cross-browser in CSS alone, so `.form-range` is JS-driven.
+  - `.form-range` is now a **wrapper** element; the `<input type="range">` takes `.form-range-input` (previously `.form-range` went directly on the input). The wrapper owns the component’s tokens, so the input and decorations inherit them. Every `.form-range` is initialized automatically.
+  - Draws a filled track by default, plus an optional value bubble (`data-bs-bubble`, which reuses the tooltip styles) and tick marks generated from a linked `<datalist>`.
+  - The fill amount is exposed as `--bs-range-fill` (`0`–`1`), kept in sync by the plugin; the fill color token is `--range-track-fill-bg`.
+  - Validation classes (`.is-invalid` / `.is-valid`) now go on `.form-range-input`.
 - **Added new Combobox form component.** A searchable, filterable select with single and multi-select modes, built on top of the Menu component. See the [Combobox docs]([[docsref:/forms/combobox]]).
 - **New `.form-field` layout component.** Replaces `.checkgroup` and `.radiogroup` wrappers with a unified grid-based layout primitive for label + control + help text + validation feedback. Use `.form-field`, `.form-field-content`, and `.form-field-card` for structured form layouts, and `.form-group` for grouping related fields. See the [Field docs]([[docsref:/forms/field]]).
 - **Overhauled form validation.**
@@ -319,25 +350,62 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | — | — | `.fs-6xl` | `clamp(3.75rem, …, 5rem)` |
 </BsTable>
 
-- **Border radius scale updated.** The underlying CSS custom property values have increased, and the utility mapping has shifted:
+- **Border radius tokens replaced with a numeric scale.** The named `$border-radius-*` Sass variables and `--border-radius-*` CSS custom properties (`-xs`, `-sm`, default, `-lg`, `-xl`, `-2xl`) have been removed in favor of a numeric `$radii` Sass map (keyed `0`–`9`) that generates `--radius-0` through `--radius-9` tokens, plus `--radius-pill`. The scale is driven by a single `$radius: .5rem` base, so all steps move together when the base changes. To migrate any custom Sass or CSS that referenced the old tokens directly:
 
 <BsTable>
-| Utility class | v5 variable | v5 value | v6 variable | v6 value |
-|---|---|---|---|---|
-| `.rounded` | `$border-radius` | `0.375rem` | `--border-radius` | `0.5rem` |
-| `.rounded-0` | — | `0` | — | `0` |
-| `.rounded-1` | `$border-radius-sm` | `0.25rem` | `--border-radius-sm` | `0.5rem` |
-| `.rounded-2` | `$border-radius` | `0.375rem` | `--border-radius` | `0.5rem` |
-| `.rounded-3` | `$border-radius-lg` | `0.5rem` | `--border-radius-lg` | `0.75rem` |
-| `.rounded-4` | `$border-radius-xl` | `1rem` | `--border-radius-xl` | `1rem` |
-| `.rounded-5` | `$border-radius-xxl` | `2rem` | `--border-radius-2xl` | `2rem` |
+| v5 variable | v5 value | v6 token | v6 value |
+|---|---|---|---|
+| `$border-radius-xs` / `--border-radius-xs` | `0.25rem` | `--radius-3` | `0.25rem` |
+| `$border-radius-sm` / `--border-radius-sm` | `0.25rem` | `--radius-3` | `0.25rem` |
+| `$border-radius` / `--border-radius` | `0.375rem` | `--radius-4` | `0.375rem` |
+| `$border-radius-lg` / `--border-radius-lg` | `0.5rem` | `--radius-5` | `0.5rem` |
+| `$border-radius-xl` / `--border-radius-xl` | `1rem` | `--radius-8` | `1rem` |
+| `$border-radius-xxl` / `--border-radius-2xl` | `2rem` | — (closest: `--radius-9` `1.5rem`) |
+| `$border-radius-pill` / `--border-radius-pill` | `50rem` | `--radius-pill` | `50rem` |
 </BsTable>
+
+- **Border radius utilities expanded and remapped.** `.rounded-*` is now generated from the `$radii` map, so the scale spans `.rounded-0` through `.rounded-9` (previously `.rounded-0` through `.rounded-5`). The default `.rounded` still resolves to `0.5rem`, but the numbered classes now map to different values than v5:
+
+<BsTable>
+| Utility class | v5 value | v6 value | v6 token |
+|---|---|---|---|
+| `.rounded` | `0.375rem` | `0.5rem` | `var(--radius-5)` |
+| `.rounded-0` | `0` | `0` | `var(--radius-0)` |
+| `.rounded-1` | `0.25rem` | `0.125rem` | `var(--radius-1)` |
+| `.rounded-2` | `0.375rem` | `0.1875rem` | `var(--radius-2)` |
+| `.rounded-3` | `0.5rem` | `0.25rem` | `var(--radius-3)` |
+| `.rounded-4` | `1rem` | `0.375rem` | `var(--radius-4)` |
+| `.rounded-5` | `2rem` | `0.5rem` | `var(--radius-5)` |
+| `.rounded-6` | — | `0.625rem` | `var(--radius-6)` |
+| `.rounded-7` | — | `0.75rem` | `var(--radius-7)` |
+| `.rounded-8` | — | `1rem` | `var(--radius-8)` |
+| `.rounded-9` | — | `1.5rem` | `var(--radius-9)` |
+| `.rounded-circle` | `50%` | `50%` | — |
+| `.rounded-pill` | `50rem` | `50rem` | `var(--radius-pill)` |
+</BsTable>
+
+  To preserve v5 visual roundness, shift class numbers up the scale (e.g. `.rounded-1` &rarr; `.rounded-3`, `.rounded-2` &rarr; `.rounded-4`, `.rounded-3` &rarr; `.rounded-5`, `.rounded-4` &rarr; `.rounded-8`, `.rounded-5` &rarr; `.rounded-9`). The `.rounded-{top,end,bottom,start}-*` directional variants follow the same scale.
 
 - **Font weight additions.** Added `.fw-medium` (`500`) and `.fw-semibold` (`600`) utilities. v5 only had `lighter`, `light` (`300`), `normal` (`400`), `bold` (`700`), and `bolder`.
 - **Negative margins limited.** Negative spacers are reduced to only `-1` (`-0.25rem`) and `-2` (`-0.5rem`), and only applied to `margin-inline-start` (`.ms-n1`, `.ms-n2`) and `margin-inline-end` (`.me--1`, `.me--2`). The v5 full negative margin utilities across all sides have been removed.
 - **Spacing and border utilities now use CSS logical properties.** `margin-top` &rarr; `margin-block-start`, `margin-right` &rarr; `margin-inline-end`, `padding-left` &rarr; `padding-inline-start`, `border-right` &rarr; `border-inline-end`, etc. Class names (`.mt-*`, `.me-*`, `.ps-*`, `.border-end`) remain the same, but the underlying CSS properties are now logical, improving RTL and writing-mode support.
 - **Text wrap additions.** Added `.text-balance` and `.text-pretty` values to the text-wrap utility.
-- **Color utility renames.** `.text-*` color utilities have been replaced by `.fg-*` (foreground) utilities. New `.fg-emphasis-*` and `.fg-contrast-*` variants. Background utilities now include `.bg-subtle-*` and `.bg-muted-*` in addition to `.bg-*`. Added `.fg-bg` and `.bg-fg` cross-reference utilities; removed `.fg-inherit` and `.bg-inherit`.
+- **Color utility renames.** `.text-*` color utilities have been replaced by `.fg-*` (foreground) utilities. New `.fg-emphasis-*` and `.fg-contrast-*` variants. Background utilities now include `.bg-subtle-*` and `.bg-muted-*` in addition to `.bg-*`. Added `.fg-bg` and `.bg-fg` cross-reference utilities; removed `.fg-inherit` and `.bg-inherit`. Renamed `.bg-opacity-*` to `.bg-*`. Renamed `.text-reset` to `.fg-reset`.
+- **Link utilities are now part of text decoration utilities.** The v5 `link-*` utility family has been replaced by `underline-*` utilities documented under [Text decoration]([[docsref:/utilities/text-decoration]]). Update class names accordingly:
+
+<BsTable>
+| Category | Before (v5) | After (v6) |
+|---|---|---|
+| Link text opacity | `.link-opacity-*`, `.link-opacity-*-hover` | Removed (no dedicated `link-opacity-*` utility in v6) |
+| Underline offset | `.link-offset-1`, `.link-offset-2`, `.link-offset-3` | `.underline-offset-1`, `.underline-offset-2`, `.underline-offset-3` |
+| Underline color | `.link-underline-primary`, `.link-underline-secondary` | `.underline-primary`, `.underline-secondary` |
+| Underline opacity | `.link-underline-opacity-*` | `.underline-*` (10-step scale from `10` to `100`) |
+| Underline thickness | — | `.underline-thickness-1` through `.underline-thickness-5` |
+| Hover variants | `.link-offset-3-hover`, `.link-underline-opacity-75-hover` | `.hover:underline-offset-3`, `.hover:underline-70` or `.hover:underline-80` |
+</BsTable>
+
+  The helper `.link-underline` is no longer needed in v6.
+
 - **Display utilities:** added `flow-root` and `contents` options.
 - **Sizing utilities:**
   - Renamed `.mh-*`/`.mw-*` to `.max-h-*`/`.max-w-*`
@@ -356,15 +424,16 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - **Dialog** — replaces Modal, built on the native `<dialog>` element. See the Components section above for the full migration.
 - **Stepper** — new `.stepper` component for multi-step workflows with `.stepper-item` and `.stepper-horizontal` variant. CSS-only.
 - **Avatar** — new `.avatar` component with sizes (`.avatar-xs` through `.avatar-xl`), status indicators (`.avatar-status .status-online|offline|busy|away`), subtle variant, and `.avatar-stack` for grouped avatars.
-- **Chip and Chip Input** — new `.chip` component for tags/tokens and `.chip-input` for interactive chip entry. `ChipInput` JavaScript plugin with events: `add.bs.chip-input`, `remove.bs.chip-input`, `change.bs.chip-input`.
-- **OTP Input** — new `.otp` component for one-time password fields. `OtpInput` JavaScript plugin with events: `input.bs.otp-input`, `complete.bs.otp-input`.
+- **Chip and Chip Input** — new `.chip` component for tags/tokens and `.chip-input` for interactive chip entry. `Chips` JavaScript plugin with events: `add.bs.chips`, `remove.bs.chips`, `change.bs.chips`.
+- **OTP Input** — new `.otp` component for one-time password fields. Built on a single `<input>` rendered as separate digit slots for full accessibility. `OtpInput` JavaScript plugin with events: `input.bs.otpInput`, `complete.bs.otpInput` (both expose `event.value`).
 - **Password Strength** — `Strength` JavaScript plugin for password strength metering with `strengthChange.bs.strength` event.
+- **Range** — `Range` JavaScript plugin that turns `.form-range` into a styled slider with a filled track, optional value bubble, and `<datalist>` tick marks, with a `changed.bs.range` event.
 - **Toggler** — `Toggler` JavaScript plugin for toggling classes or attributes on elements via `data-bs-toggle="toggler"`.
 - **Datepicker** — `Datepicker` JavaScript plugin built on Vanilla Calendar Pro, with events: `change.bs.datepicker`, `show.bs.datepicker`, `hide.bs.datepicker`.
 - **Form Adorn** — new `.form-adorn` component for adding icons or text decoration to form inputs.
 - **Prose** — new `.prose` class for rich typography scoping and `.not-prose` to opt out of prose styles within a prose container.
 - **NavOverflow** — `NavOverflow` JavaScript plugin for handling overflowing navigation items.
-- **Submenu** — nested menu support via `.submenu` class within Menu, with `submenuTrigger` (`hover`, `click`, or `both`) and `submenuDelay` options. Mobile-friendly stacking with `.submenu-stacked` and `.submenu-back`.
+- **Submenu** — nested menu support via `.submenu` class within Menu, with `submenuTrigger` (`hover`, `click`, or `both`) and `submenuDelay` options.
 
 ### Docs
 

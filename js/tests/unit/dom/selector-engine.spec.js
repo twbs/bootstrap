@@ -68,7 +68,7 @@ describe('SelectorEngine', () => {
       ].join('')
 
       const list = fixtureEl.querySelector('ul')
-      const liList = [].concat(...fixtureEl.querySelectorAll('li'))
+      const liList = [...fixtureEl.querySelectorAll('li')]
       const result = SelectorEngine.children(list, 'li')
 
       expect(result).toEqual(liList)
@@ -78,6 +78,33 @@ describe('SelectorEngine', () => {
   describe('parents', () => {
     it('should return parents', () => {
       expect(SelectorEngine.parents(fixtureEl, 'body')).toHaveSize(1)
+    })
+  })
+
+  describe('closest', () => {
+    it('should return the element itself when it matches the selector', () => {
+      fixtureEl.innerHTML = '<div id="test"><div id="element"></div></div>'
+
+      const element = fixtureEl.querySelector('#element')
+
+      expect(SelectorEngine.closest(element, '#element')).toEqual(element)
+    })
+
+    it('should return the closest ancestor matching the selector', () => {
+      fixtureEl.innerHTML = '<div id="test"><div><div id="element"></div></div></div>'
+
+      const element = fixtureEl.querySelector('#element')
+      const ancestor = fixtureEl.querySelector('#test')
+
+      expect(SelectorEngine.closest(element, '#test')).toEqual(ancestor)
+    })
+
+    it('should return null when no ancestor matches the selector', () => {
+      fixtureEl.innerHTML = '<div><div id="element"></div></div>'
+
+      const element = fixtureEl.querySelector('#element')
+
+      expect(SelectorEngine.closest(element, '.missing')).toBeNull()
     })
   })
 
@@ -356,7 +383,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual([...fixtureEl.querySelectorAll('.target')])
     })
 
     it('should get elements if several ids are given', () => {
@@ -368,7 +395,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual([...fixtureEl.querySelectorAll('.target')])
     })
 
     it('should get elements if several ids with special chars are given', () => {
@@ -380,7 +407,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual([...fixtureEl.querySelectorAll('.target')])
     })
 
     it('should get elements in array, from href if no data-bs-target set', () => {
@@ -392,7 +419,7 @@ describe('SelectorEngine', () => {
 
       const testEl = fixtureEl.querySelector('#test')
 
-      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual(Array.from(fixtureEl.querySelectorAll('.target')))
+      expect(SelectorEngine.getMultipleElementsFromSelector(testEl)).toEqual([...fixtureEl.querySelectorAll('.target')])
     })
 
     it('should return empty array if elements not found', () => {

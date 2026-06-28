@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap chip-input.js
+ * Bootstrap chips.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -13,8 +13,8 @@ import SelectorEngine from './dom/selector-engine.js'
  * Constants
  */
 
-const NAME = 'chipInput'
-const DATA_KEY = 'bs.chip-input'
+const NAME = 'chips'
+const DATA_KEY = 'bs.chips'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
@@ -23,7 +23,7 @@ const EVENT_REMOVE = `remove${EVENT_KEY}`
 const EVENT_CHANGE = `change${EVENT_KEY}`
 const EVENT_SELECT = `select${EVENT_KEY}`
 
-const SELECTOR_DATA_CHIP_INPUT = '[data-bs-chip-input]'
+const SELECTOR_DATA_CHIPS = '[data-bs-chips]'
 const SELECTOR_GHOST_INPUT = '.form-ghost'
 const SELECTOR_CHIP = '.chip'
 const SELECTOR_CHIP_DISMISS = '.chip-dismiss'
@@ -58,7 +58,7 @@ const DefaultType = {
  * Class definition
  */
 
-class ChipInput extends BaseComponent {
+class Chips extends BaseComponent {
   constructor(element, config) {
     super(element, config)
 
@@ -625,9 +625,9 @@ class ChipInput extends BaseComponent {
  */
 
 EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
-  for (const element of SelectorEngine.find(SELECTOR_DATA_CHIP_INPUT)) {
-    ChipInput.getOrCreateInstance(element)
+  for (const element of SelectorEngine.find(SELECTOR_DATA_CHIPS)) {
+    Chips.getOrCreateInstance(element)
   }
 })
 
-export default ChipInput
+export default Chips

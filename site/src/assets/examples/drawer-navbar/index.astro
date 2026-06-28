@@ -9,11 +9,11 @@ export const aliases = '/docs/[[config:docs_version]]/examples/drawer/'
 import Placeholder from "@shortcodes/Placeholder.astro"
 ---
 
-<nav class="navbar lg:navbar-expand fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+<nav class="navbar lg:navbar-expand fixed-top" data-bs-theme="dark" aria-label="Main navigation">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Drawer navbar</a>
     <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
-      <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+      <span class="navbar-toggler-icon" aria-hidden="true"></span>
     </button>
 
     <div class="navbar-collapse drawer-collapse" id="navbarsExampleDefault">
@@ -31,7 +31,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
           <a class="nav-link" href="#">Switch account</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle="menu" aria-expanded="false">Settings</a>
+          <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Settings</a>
           <div class="menu">
             <a class="menu-item" href="#">Action</a>
             <a class="menu-item" href="#">Another action</a>
@@ -52,7 +52,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
     <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
     <a class="nav-link" href="#">
       Friends
-      <span class="badge text-bg-light rounded-pill align-text-bottom">27</span>
+      <span class="badge theme-secondary rounded-pill align-text-bottom">27</span>
     </a>
     <a class="nav-link" href="#">Explore</a>
     <a class="nav-link" href="#">Suggestions</a>
@@ -65,31 +65,31 @@ import Placeholder from "@shortcodes/Placeholder.astro"
 </div>
 
 <main class="container">
-  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+  <div class="d-flex align-items-center p-3 my-3 fg-white bg-purple rounded shadow-sm">
     <img class="me-3" src={getVersionedDocsPath('/assets/brand/bootstrap-logo-white.svg')} alt="" width="48" height="38">
     <div class="lh-1">
-      <h1 class="h6 mb-0 text-white lh-1">Bootstrap</h1>
+      <h1 class="h6 mb-0 fg-white lh-1">Bootstrap</h1>
       <small>Since 2011</small>
     </div>
   </div>
 
   <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
-    <div class="d-flex text-body-secondary pt-3">
+    <div class="d-flex fg-2 pt-3">
       <Placeholder width="32" height="32" background="#007bff" color="#007bff" class="flex-shrink-0 me-2 rounded" />
       <p class="pb-3 mb-0 small lh-sm border-bottom">
         <strong class="d-block text-gray-dark">@username</strong>
         Some representative placeholder content, with some information about this user. Imagine this being some sort of status update, perhaps?
       </p>
     </div>
-    <div class="d-flex text-body-secondary pt-3">
+    <div class="d-flex fg-2 pt-3">
       <Placeholder width="32" height="32" background="#e83e8c" color="#e83e8c" class="flex-shrink-0 me-2 rounded" />
       <p class="pb-3 mb-0 small lh-sm border-bottom">
         <strong class="d-block text-gray-dark">@username</strong>
         Some more representative placeholder content, related to this other user. Another status update, perhaps.
       </p>
     </div>
-    <div class="d-flex text-body-secondary pt-3">
+    <div class="d-flex fg-2 pt-3">
       <Placeholder width="32" height="32" background="#6f42c1" color="#6f42c1" class="flex-shrink-0 me-2 rounded" />
       <p class="pb-3 mb-0 small lh-sm border-bottom">
         <strong class="d-block text-gray-dark">@username</strong>
@@ -103,7 +103,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
 
   <div class="my-3 p-3 bg-body rounded shadow-sm">
     <h6 class="border-bottom pb-2 mb-0">Suggestions</h6>
-    <div class="d-flex text-body-secondary pt-3">
+    <div class="d-flex fg-2 pt-3">
       <Placeholder width="32" height="32" background="#007bff" color="#007bff" class="flex-shrink-0 me-2 rounded" />
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
@@ -113,7 +113,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
         <span class="d-block">@username</span>
       </div>
     </div>
-    <div class="d-flex text-body-secondary pt-3">
+    <div class="d-flex fg-2 pt-3">
       <Placeholder width="32" height="32" background="#007bff" color="#007bff" class="flex-shrink-0 me-2 rounded" />
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
@@ -123,7 +123,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
         <span class="d-block">@username</span>
       </div>
     </div>
-    <div class="d-flex text-body-secondary pt-3">
+    <div class="d-flex fg-2 pt-3">
       <Placeholder width="32" height="32" background="#007bff" color="#007bff" class="flex-shrink-0 me-2 rounded" />
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">

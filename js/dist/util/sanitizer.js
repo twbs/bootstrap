@@ -80,15 +80,15 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
   }
   const domParser = new window.DOMParser();
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
-  const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
+  const elements = [...createdDocument.body.querySelectorAll('*')];
   for (const element of elements) {
     const elementName = element.nodeName.toLowerCase();
     if (!Object.keys(allowList).includes(elementName)) {
       element.remove();
       continue;
     }
-    const attributeList = [].concat(...element.attributes);
-    const allowedAttributes = [].concat(allowList['*'] || [], allowList[elementName] || []);
+    const attributeList = [...element.attributes];
+    const allowedAttributes = [...(allowList['*'] || []), ...(allowList[elementName] || [])];
     for (const attribute of attributeList) {
       if (!allowedAttribute(attribute, allowedAttributes)) {
         element.removeAttribute(attribute.nodeName);

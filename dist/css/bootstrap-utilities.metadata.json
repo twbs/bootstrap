@@ -126,20 +126,6 @@
         "shadow-none"
       ]
     },
-    "focus-ring": {
-      "class": "focus-ring",
-      "property": "--focus-ring-color",
-      "classes": [
-        "focus-ring-primary",
-        "focus-ring-accent",
-        "focus-ring-success",
-        "focus-ring-danger",
-        "focus-ring-warning",
-        "focus-ring-info",
-        "focus-ring-inverse",
-        "focus-ring-secondary"
-      ]
-    },
     "position": {
       "class": "position",
       "property": "position",
@@ -171,7 +157,7 @@
     },
     "start": {
       "class": "start",
-      "property": "left",
+      "property": "inset-inline-start",
       "classes": [
         "start-0",
         "start-50",
@@ -180,7 +166,7 @@
     },
     "end": {
       "class": "end",
-      "property": "right",
+      "property": "inset-inline-end",
       "classes": [
         "end-0",
         "end-50",
@@ -999,7 +985,7 @@
     },
     "text-wrap": {
       "class": "text",
-      "property": "white-space",
+      "property": "text-wrap",
       "classes": [
         "text-wrap",
         "text-nowrap",
@@ -1032,7 +1018,8 @@
         "fg-4",
         "fg-bg",
         "fg-white",
-        "fg-black"
+        "fg-black",
+        "fg-reset"
       ]
     },
     "fg-emphasis": {
@@ -1259,75 +1246,113 @@
     },
     "border-radius": {
       "class": "rounded",
-      "property": "border-radius",
       "classes": [
-        "rounded",
         "rounded-0",
         "rounded-1",
         "rounded-2",
         "rounded-3",
         "rounded-4",
         "rounded-5",
+        "rounded-6",
+        "rounded-7",
+        "rounded-8",
+        "rounded-9",
+        "rounded",
         "rounded-circle",
         "rounded-pill"
+      ]
+    },
+    "rounded-size": {
+      "class": "rounded-size",
+      "property": "--rounded-size",
+      "classes": [
+        "rounded-size-0",
+        "rounded-size-1",
+        "rounded-size-2",
+        "rounded-size-3",
+        "rounded-size-4",
+        "rounded-size-5",
+        "rounded-size-6",
+        "rounded-size-7",
+        "rounded-size-8",
+        "rounded-size-9",
+        "rounded-size",
+        "rounded-size-circle",
+        "rounded-size-pill"
       ]
     },
     "rounded-top": {
       "class": "rounded-top",
       "property": "border-start-start-radius border-start-end-radius",
       "classes": [
-        "rounded-top",
         "rounded-top-0",
         "rounded-top-1",
         "rounded-top-2",
         "rounded-top-3",
         "rounded-top-4",
         "rounded-top-5",
+        "rounded-top-6",
+        "rounded-top-7",
+        "rounded-top-8",
+        "rounded-top-9",
+        "rounded-top",
         "rounded-top-circle",
         "rounded-top-pill"
       ]
     },
     "rounded-end": {
       "class": "rounded-end",
-      "property": "border-end-end-radius border-end-start-radius",
+      "property": "border-start-end-radius border-end-end-radius",
       "classes": [
-        "rounded-end",
         "rounded-end-0",
         "rounded-end-1",
         "rounded-end-2",
         "rounded-end-3",
         "rounded-end-4",
         "rounded-end-5",
+        "rounded-end-6",
+        "rounded-end-7",
+        "rounded-end-8",
+        "rounded-end-9",
+        "rounded-end",
         "rounded-end-circle",
         "rounded-end-pill"
       ]
     },
     "rounded-bottom": {
       "class": "rounded-bottom",
-      "property": "border-end-end-radius border-end-start-radius",
+      "property": "border-end-start-radius border-end-end-radius",
       "classes": [
-        "rounded-bottom",
         "rounded-bottom-0",
         "rounded-bottom-1",
         "rounded-bottom-2",
         "rounded-bottom-3",
         "rounded-bottom-4",
         "rounded-bottom-5",
+        "rounded-bottom-6",
+        "rounded-bottom-7",
+        "rounded-bottom-8",
+        "rounded-bottom-9",
+        "rounded-bottom",
         "rounded-bottom-circle",
         "rounded-bottom-pill"
       ]
     },
     "rounded-start": {
       "class": "rounded-start",
-      "property": "border-start-start-radius border-start-end-radius",
+      "property": "border-start-start-radius border-end-start-radius",
       "classes": [
-        "rounded-start",
         "rounded-start-0",
         "rounded-start-1",
         "rounded-start-2",
         "rounded-start-3",
         "rounded-start-4",
         "rounded-start-5",
+        "rounded-start-6",
+        "rounded-start-7",
+        "rounded-start-8",
+        "rounded-start-9",
+        "rounded-start",
         "rounded-start-circle",
         "rounded-start-pill"
       ]

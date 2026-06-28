@@ -35,13 +35,13 @@ const getSelector = element => {
 };
 const SelectorEngine = {
   find(selector, element = document.documentElement) {
-    return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
+    return [...Element.prototype.querySelectorAll.call(element, selector)];
   },
   findOne(selector, element = document.documentElement) {
     return Element.prototype.querySelector.call(element, selector);
   },
   children(element, selector) {
-    return [].concat(...element.children).filter(child => child.matches(selector));
+    return [...element.children].filter(child => child.matches(selector));
   },
   parents(element, selector) {
     const parents = [];
@@ -51,6 +51,9 @@ const SelectorEngine = {
       ancestor = ancestor.parentNode.closest(selector);
     }
     return parents;
+  },
+  closest(element, selector) {
+    return Element.prototype.closest.call(element, selector);
   },
   prev(element, selector) {
     let previous = element.previousElementSibling;

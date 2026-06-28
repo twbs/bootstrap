@@ -149,7 +149,7 @@ class Tab extends BaseComponent {
     const children = this._getChildren().filter(element => !isDisabled(element));
     let nextActiveElement;
     if ([HOME_KEY, END_KEY].includes(event.key)) {
-      nextActiveElement = children[event.key === HOME_KEY ? 0 : children.length - 1];
+      nextActiveElement = event.key === HOME_KEY ? children[0] : children.at(-1);
     } else {
       const isNext = [ARROW_RIGHT_KEY, ARROW_DOWN_KEY].includes(event.key);
       nextActiveElement = getNextActiveElement(children, event.target, isNext, true);

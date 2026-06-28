@@ -19,20 +19,20 @@ thumbnail: guides/bootstrap-webpack@2x.png
 
 We’re building a Webpack project with Bootstrap from scratch, so there are some prerequisites and upfront steps before we can really get started. This guide requires you to have Node.js installed and some familiarity with the terminal.
 
-1. **Create a project folder and set up npm.** We'll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
+1. **Create a project folder and set up npm.** We’ll create the `my-project` folder and initialize npm with the `-y` argument to avoid it asking us all the interactive questions.
 
    ```sh
    mkdir my-project && cd my-project
    npm init -y
    ```
 
-2. **Install Webpack.** Next we need to install our Webpack development dependencies: `webpack` for the core of Webpack, `webpack-cli` so we can run Webpack commands from the terminal, and `webpack-dev-server` so we can run a local development server. Additionally, we'll install `html-webpack-plugin` to be able to store our `index.html` in `src` directory instead of the default `dist` one. We use `--save-dev` to signal that these dependencies are only for development use and not for production.
+2. **Install Webpack.** Next we need to install our Webpack development dependencies: `webpack` for the core of Webpack, `webpack-cli` so we can run Webpack commands from the terminal, and `webpack-dev-server` so we can run a local development server. Additionally, we’ll install `html-webpack-plugin` to be able to store our `index.html` in `src` directory instead of the default `dist` one. We use `--save-dev` to signal that these dependencies are only for development use and not for production.
 
    ```sh
    npm i --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin
    ```
 
-3. **Install Bootstrap.** Now we can install Bootstrap. We'll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using menus, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
+3. **Install Bootstrap.** Now we can install Bootstrap. We’ll also install Floating UI and Vanilla Calendar Pro since some of our components depend on them. If you don’t plan on using menus, popovers, or tooltips, you can omit Floating UI. If you don’t plan on using the datepicker, you can omit Vanilla Calendar Pro.
 
    ```sh
    npm i --save bootstrap @floating-ui/dom vanilla-calendar-pro
@@ -48,7 +48,7 @@ Now that we have all the necessary dependencies installed, we can get to work cr
 
 ## Project structure
 
-We’ve already created the `my-project` folder and initialized npm. Now we'll also create our `src` and `dist` folders to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
+We’ve already created the `my-project` folder and initialized npm. Now we’ll also create our `src` and `dist` folders to round out the project structure. Run the following from `my-project`, or manually create the folder and file structure shown below.
 
 ```sh
 mkdir {src,src/js,src/scss}
@@ -76,7 +76,7 @@ At this point, everything is in the right place, but Webpack won’t work becaus
 
 With dependencies installed and our project folder ready for us to start coding, we can now configure Webpack and run our project locally.
 
-1. **Open `webpack.config.js` in your editor.** Since it’s blank, we'll need to add some boilerplate config to it so we can start our server. This part of the config tells Webpack where to look for our project’s JavaScript, where to output the compiled code to (`dist`), and how the development server should behave (pulling from the `dist` folder with hot reload).
+1. **Open `webpack.config.js` in your editor.** Since it’s blank, we’ll need to add some boilerplate config to it so we can start our server. This part of the config tells Webpack where to look for our project’s JavaScript, where to output the compiled code to (`dist`), and how the development server should behave (pulling from the `dist` folder with hot reload).
 
    ```js
    'use strict'
@@ -102,7 +102,7 @@ With dependencies installed and our project folder ready for us to start coding,
    }
    ```
 
-2. **Next we fill in our `src/index.html`.** This is the HTML page Webpack will load in the browser to utilize the bundled CSS and JS we'll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
+2. **Next we fill in our `src/index.html`.** This is the HTML page Webpack will load in the browser to utilize the bundled CSS and JS we’ll add to it in later steps. Before we can do that, we have to give it something to render and include the `output` JS from the previous step.
 
    ```html
    <!doctype html>
@@ -123,7 +123,7 @@ With dependencies installed and our project folder ready for us to start coding,
 
    We’re including a little bit of Bootstrap styling here with the `div class="container"` and `<button>` so that we see when Bootstrap’s CSS is loaded by Webpack.
 
-3. **Now we need an npm script to run Webpack.** Open `package.json` and add the `start` script shown below (you should already have the test script). We'll use this script to start our local Webpack dev server. You can also add a `build` script shown below to build your project.
+3. **Now we need an npm script to run Webpack.** Open `package.json` and add the `start` script shown below (you should already have the test script). We’ll use this script to start our local Webpack dev server. You can also add a `build` script shown below to build your project.
 
    ```json
    {
@@ -145,7 +145,7 @@ With dependencies installed and our project folder ready for us to start coding,
 
    <img class="img-fluid" src="/docs/[[config:docs_version]]/assets/img/guides/webpack-dev-server.png" alt="Webpack dev server running"/>
 
-In the next and final section to this guide, we'll set up the Webpack loaders and import all of Bootstrap’s CSS and JavaScript.
+In the next and final section to this guide, we’ll set up the Webpack loaders and import all of Bootstrap’s CSS and JavaScript.
 
 ## Import Bootstrap
 

@@ -3,7 +3,7 @@ title: List group
 description: List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.
 toc: true
 css_layer: components
-css_media: viewport
+css_media: container
 ---
 
 import { getData } from '@libs/data'
@@ -114,15 +114,31 @@ These work great with custom content as well.
 
 ## Horizontal
 
-Add `.list-group-horizontal` to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant `.list-group-horizontal-{sm|md|lg|xl|2xl}` to make a list group horizontal starting at that breakpoint’s `min-width`. Currently **horizontal list groups cannot be combined with flush list groups.**
+Add `.list-group-horizontal` to change the layout of list group items from vertical to horizontal across all container sizes. Alternatively, choose a responsive variant `.{sm|md|lg|xl|2xl}:list-group-horizontal` to make a list group horizontal starting at that breakpoint’s width.
+
+The responsive variants use [container queries]([[docsref:/layout/breakpoints#container-queries]]), so wrap the list group in a query container—add the `.contains-inline` utility to a parent element—for them to take effect. Currently **horizontal list groups cannot be combined with flush list groups.**
 
 **ProTip:** Want equal-width list group items when horizontal? Add `.flex-fill` to each list group item.
 
-<Example code={getData('breakpoints').map((breakpoint) => `<ul class="list-group list-group-horizontal${breakpoint.abbr}">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>`)} />
+<Example
+  class="vstack gap-3"
+  code={getData('breakpoints').map((breakpoint) => `<div class="contains-inline">
+    <ul class="list-group ${breakpoint.abbr}list-group-horizontal">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+  </div>`)} />
+
+Drag the handle to resize the container below and watch the list group switch between vertical and horizontal layouts as the container—not the viewport—crosses the `md` breakpoint.
+
+<ResizableExample code={`<div class="contains-inline">
+    <ul class="list-group md:list-group-horizontal">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+  </div>`} />
 
 ## Variants
 
@@ -185,18 +201,18 @@ Add nearly any HTML within, even for linked list groups like the one below, with
     <a href="#" class="list-group-item list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">List group item heading</h5>
-        <small class="text-body-secondary">3 days ago</small>
+        <small class="fg-2">3 days ago</small>
       </div>
       <p class="mb-1">Some placeholder content in a paragraph.</p>
-      <small class="text-body-secondary">And some muted small print.</small>
+      <small class="fg-2">And some muted small print.</small>
     </a>
     <a href="#" class="list-group-item list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">List group item heading</h5>
-        <small class="text-body-secondary">3 days ago</small>
+        <small class="fg-2">3 days ago</small>
       </div>
       <p class="mb-1">Some placeholder content in a paragraph.</p>
-      <small class="text-body-secondary">And some muted small print.</small>
+      <small class="fg-2">And some muted small print.</small>
     </a>
   </div>`} />
 
@@ -206,31 +222,43 @@ Place Bootstrap’s checkboxes and radios within list group items and customize 
 
 <Example code={`<ul class="list-group">
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
-      <label class="form-check-label" for="firstCheckbox">First checkbox</label>
+      <div class="form-field">
+        <input type="checkbox" value="" id="firstCheckbox" class="check">
+        <label for="firstCheckbox">First checkbox</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
-      <label class="form-check-label" for="secondCheckbox">Second checkbox</label>
+      <div class="form-field">
+        <input type="checkbox" value="" id="secondCheckbox" class="check">
+        <label for="secondCheckbox">Second checkbox</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
-      <label class="form-check-label" for="thirdCheckbox">Third checkbox</label>
+      <div class="form-field">
+        <input type="checkbox" value="" id="thirdCheckbox" class="check">
+        <label for="thirdCheckbox">Third checkbox</label>
+      </div>
     </li>
   </ul>`} />
 
 <Example code={`<ul class="list-group">
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
-      <label class="form-check-label" for="firstRadio">First radio</label>
+      <div class="form-field">
+        <input type="radio" name="listGroupRadio" value="" id="firstRadio" class="radio" checked>
+        <label for="firstRadio">First radio</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="secondRadio">
-      <label class="form-check-label" for="secondRadio">Second radio</label>
+      <div class="form-field">
+        <input type="radio" name="listGroupRadio" value="" id="secondRadio" class="radio">
+        <label for="secondRadio">Second radio</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="thirdRadio">
-      <label class="form-check-label" for="thirdRadio">Third radio</label>
+      <div class="form-field">
+        <input type="radio" name="listGroupRadio" value="" id="thirdRadio" class="radio">
+        <label for="thirdRadio">Third radio</label>
+      </div>
     </li>
   </ul>`} />
 
@@ -238,16 +266,22 @@ You can use `.stretched-link` on `<label>`s to make the whole list group item cl
 
 <Example code={`<ul class="list-group">
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">
-      <label class="form-check-label stretched-link" for="firstCheckboxStretched">First checkbox</label>
+      <div class="form-field">
+        <input type="checkbox" value="" id="firstCheckboxStretched" class="check">
+        <label class="stretched-link" for="firstCheckboxStretched">First checkbox</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckboxStretched">
-      <label class="form-check-label stretched-link" for="secondCheckboxStretched">Second checkbox</label>
+      <div class="form-field">
+        <input type="checkbox" value="" id="secondCheckboxStretched" class="check">
+        <label class="stretched-link" for="secondCheckboxStretched">Second checkbox</label>
+      </div>
     </li>
     <li class="list-group-item">
-      <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckboxStretched">
-      <label class="form-check-label stretched-link" for="thirdCheckboxStretched">Third checkbox</label>
+      <div class="form-field">
+        <input type="checkbox" value="" id="thirdCheckboxStretched" class="check">
+        <label class="stretched-link" for="thirdCheckboxStretched">Third checkbox</label>
+      </div>
     </li>
   </ul>`} />
 

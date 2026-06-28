@@ -20,7 +20,7 @@
     <div class="container">
       <h1>Tooltip <small>Bootstrap Visual Test</small></h1>
 
-      <p class="text-body-secondary">Tight pants next level keffiyeh <a href="#" data-bs-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-bs-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-bs-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-bs-toggle="tooltip" title="The last tip!">freegan cred</a> raw denim single-origin coffee viral.</p>
+      <p class="fg-2">Tight pants next level keffiyeh <a href="#" data-bs-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-bs-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-bs-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-bs-toggle="tooltip" title="The last tip!">freegan cred</a> raw denim single-origin coffee viral.</p>
 
       <hr>
 
@@ -83,9 +83,17 @@
       </div>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js"></script>
     <script>
-      /* global bootstrap: false */
+      function duplicateButtons() {
+        const buttonsBlock = document.querySelector('.selectorButtonsBlock') // get first
+        const buttonsBlockClone = buttonsBlock.cloneNode(true)
+        buttonsBlockClone.innerHTML += new Date().toLocaleString()
+        document.querySelector('#wrapperTriggeredBySelector').append(buttonsBlockClone)
+      }
+    </script>
+
+    <script type="module">
+      import { Tooltip } from '../../../dist/js/bootstrap.bundle.js'
 
       if (typeof document.body.attachShadow === 'function') {
         const shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
@@ -97,41 +105,28 @@
           '  Tooltip on top in a shadow dom' +
           '</button>'
 
-        new bootstrap.Tooltip(shadowRoot.firstChild)
-        new bootstrap.Tooltip(shadowRoot.getElementById('secondShadowTooltip'), {
+        new Tooltip(shadowRoot.firstChild)
+        new Tooltip(shadowRoot.getElementById('secondShadowTooltip'), {
           container: shadowRoot
         })
       }
 
-      new bootstrap.Tooltip('#tooltipElement', {
+      new Tooltip('#tooltipElement', {
         container: '#customContainer'
       })
 
-      const targetTooltip = new bootstrap.Tooltip('#target', {
+      const targetTooltip = new Tooltip('#target', {
         placement: 'top',
         trigger: 'manual'
       })
       targetTooltip.show()
 
-      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => new bootstrap.Tooltip(tooltipEl))
-    </script>
+      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => new Tooltip(tooltipEl))
 
-    <script>
-      /* global bootstrap: false */
-
-      new bootstrap.Tooltip('#wrapperTriggeredBySelector', {
+      new Tooltip('#wrapperTriggeredBySelector', {
         animation: false,
         selector: '.bs-dynamic-tooltip'
       })
-
-      /* eslint-disable no-unused-vars */
-      function duplicateButtons() {
-        const buttonsBlock = document.querySelector('.selectorButtonsBlock')// get first
-        const buttonsBlockClone = buttonsBlock.cloneNode(true)
-        buttonsBlockClone.innerHTML += new Date().toLocaleString()
-        document.querySelector('#wrapperTriggeredBySelector').append(buttonsBlockClone)
-      }
-      /* eslint-enable no-unused-vars */
     </script>
 
   </body>

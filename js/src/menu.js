@@ -135,13 +135,22 @@ class Menu extends BaseComponent {
     this._floatingCleanup = null
     this._mediaQueryListeners = []
     this._responsivePlacements = null
-    this._parent = this._element.parentNode
-    this._isSubmenu = this._parent.classList?.contains('submenu')
+    this._parent = this._element.parentNode // menu wrapper
     this._openSubmenus = new Map()
     this._submenuCloseTimeouts = new Map()
     this._hoverIntentData = null
 
     this._menu = this._config.menu || this._findMenu()
+
+    // When the menu was discovered from the DOM, refine the wrapper to the closest
+    // ancestor that actually contains it, so the toggle doesn't have to be a direct
+    // sibling of `.menu` (e.g. when wrapped by web components). The wrapper still
+    // receives `.show` and acts as the `reference: 'parent'` positioning anchor.
+    if (!this._config.menu && this._menu) {
+      this._parent = this._findWrapper(this._menu)
+    }
+
+    this._isSubmenu = this._parent.classList?.contains('submenu')
 
     this._menuOriginalParent = this._menu?.parentNode
 
@@ -186,7 +195,7 @@ class Menu extends BaseComponent {
     this._createFloating()
 
     if ('ontouchstart' in document.documentElement && !this._parent.closest(SELECTOR_NAVBAR_NAV)) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.on(element, 'mouseover', noop)
       }
     }
@@ -235,9 +244,21 @@ class Menu extends BaseComponent {
 
   // Private
   _findMenu() {
+    // Fall back to the closest ancestor that contains a menu so the toggle can be
+    // nested deeper than a direct sibling of `.menu`.
+    const wrapper = SelectorEngine.closest(this._element, `:has(${SELECTOR_MENU})`)
     return SelectorEngine.next(this._element, SELECTOR_MENU)[0] ||
       SelectorEngine.prev(this._element, SELECTOR_MENU)[0] ||
-      SelectorEngine.findOne(SELECTOR_MENU, this._parent)
+      SelectorEngine.findOne(SELECTOR_MENU, wrapper || this._parent)
+  }
+
+  _findWrapper(menu) {
+    let wrapper = this._element.parentNode
+    while (wrapper instanceof Element && !wrapper.contains(menu)) {
+      wrapper = wrapper.parentNode
+    }
+
+    return wrapper instanceof Element ? wrapper : this._element.parentNode
   }
 
   _completeHide(relatedTarget) {
@@ -249,7 +270,7 @@ class Menu extends BaseComponent {
     this._closeAllSubmenus()
 
     if ('ontouchstart' in document.documentElement) {
-      for (const element of [].concat(...document.body.children)) {
+      for (const element of document.body.children) {
         EventHandler.off(element, 'mouseover', noop)
       }
     }
@@ -594,6 +615,11 @@ class Menu extends BaseComponent {
     trigger.setAttribute('aria-expanded', 'true')
     trigger.setAttribute('aria-haspopup', 'true')
 
+    // Keep the submenu transparent until Floating UI applies the first position, so
+    // it doesn't flash at its CSS fallback position (top: 0, over the parent menu)
+    // before being moved into place. `opacity` (unlike `visibility`/`display`) keeps
+    // the submenu measurable for flip/shift and focusable for keyboard navigation.
+    submenu.style.opacity = '0'
     submenu.classList.add(CLASS_NAME_SHOW)
     submenuWrapper.classList.add(CLASS_NAME_SHOW)
 
@@ -633,10 +659,12 @@ class Menu extends BaseComponent {
     submenu.classList.remove(CLASS_NAME_SHOW)
     submenuWrapper.classList.remove(CLASS_NAME_SHOW)
 
-    submenu.style.position = ''
-    submenu.style.left = ''
-    submenu.style.top = ''
-    submenu.style.margin = ''
+    // Keep the Floating UI position styles in place while the submenu fades out.
+    // Clearing them here would let the submenu snap back to its CSS fallback
+    // (`top: 0`, over the parent menu) for the duration of the close transition,
+    // causing it to flash over the parent. They get recomputed on the next open
+    // (and the opacity gate in `_openSubmenu` hides any stale position until then).
+    submenu.style.opacity = ''
   }
 
   _closeAllSubmenus() {
@@ -674,6 +702,12 @@ class Menu extends BaseComponent {
     ]
 
     const updatePosition = () => this._applyFloatingPosition(referenceElement, submenu, placement, middleware)
+      .then(finalPlacement => {
+        // Reveal the submenu now that it has been positioned (see `_openSubmenu`);
+        // clearing the inline opacity lets the CSS fade-in transition take over.
+        submenu.style.opacity = ''
+        return finalPlacement
+      })
 
     updatePosition()
     return autoUpdate(referenceElement, submenu, updatePosition)
@@ -837,7 +871,7 @@ class Menu extends BaseComponent {
         .filter(element => isVisible(element))
 
       if (items.length) {
-        const targetItem = key === HOME_KEY ? items[0] : items[items.length - 1]
+        const targetItem = key === HOME_KEY ? items[0] : items.at(-1)
         targetItem.focus()
       }
 
@@ -867,7 +901,11 @@ class Menu extends BaseComponent {
         continue
       }
 
-      if (instance._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+      // Don't auto-close when interacting with a form inside the menu — clicks
+      // on a form's labels, buttons, etc. (not just inputs) should keep it open.
+      const formAncestor = event.target.closest?.('form')
+      const isInsideMenuForm = Boolean(formAncestor) && instance._menu.contains(formAncestor)
+      if (instance._menu.contains(event.target) && ((event.type === 'keyup' && event.key === TAB_KEY) || /input|select|option|textarea|form/i.test(event.target.tagName) || isInsideMenuForm)) {
         continue
       }
 
@@ -882,7 +920,9 @@ class Menu extends BaseComponent {
   }
 
   static dataApiKeydownHandler(event) {
-    const isInput = /input|textarea/i.test(event.target.tagName)
+    // Treat contenteditable hosts (e.g. rich-text editors) like inputs so the
+    // menu doesn't hijack their arrow keys.
+    const isInput = /input|textarea/i.test(event.target.tagName) || event.target.isContentEditable
     const isEscapeEvent = event.key === ESCAPE_KEY
     const isUpOrDownEvent = [ARROW_UP_KEY, ARROW_DOWN_KEY].includes(event.key)
     const isLeftOrRightEvent = [ARROW_LEFT_KEY, ARROW_RIGHT_KEY].includes(event.key)

@@ -10,7 +10,7 @@ $switch-tokens: () !default;
 $switch-tokens: defaults(
   (
     --switch-height: 1.25rem,
-    --switch-width: calc(var(--switch-height) * 1.5),
+    --switch-width: calc(var(--switch-height) * 1.75),
     --switch-padding: .0625rem,
     --switch-margin-block: .125rem,
     --switch-bg: var(--bg-3),
@@ -75,6 +75,18 @@ $switch-tokens: defaults(
       @include focus-ring(true);
     }
 
+    &:has(input:disabled:not(:checked)) {
+      --switch-bg: var(--switch-disabled-bg);
+      --switch-indicator-bg: var(--switch-disabled-indicator-bg);
+
+      &::before { opacity: .4; }
+
+      ~ label {
+        color: var(--fg-3);
+        cursor: default;
+      }
+    }
+
     &:has(input:checked) {
       background-color: var(--theme-bg, var(--switch-checked-bg));
       border-color: var(--theme-bg, var(--switch-checked-border-color));
@@ -84,23 +96,28 @@ $switch-tokens: defaults(
       }
     }
 
-    &:has(input:disabled) {
-      --switch-bg: var(--switch-disabled-bg);
-      --switch-indicator-bg: var(--switch-disabled-indicator-bg);
-
-      &::before { opacity: .4; }
+    &:has(input:checked:disabled) {
+      opacity: .65;
 
       ~ label {
-        color: var(--secondary-fg);
+        color: var(--fg-3);
         cursor: default;
       }
     }
   }
   .switch-sm {
     --switch-height: 1rem;
+
+    + label {
+      font-size: var(--font-size-sm);
+    }
   }
   .switch-lg {
     --switch-height: 1.5rem;
-    --switch-margin-block: 0;
+    --switch-margin-block: .375rem;
+
+    + label {
+      font-size: var(--font-size-lg);
+    }
   }
 }

@@ -9,7 +9,7 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
-import { transform, browserslistToTargets } from 'lightningcss'
+import { transform, browserslistToTargets, Features } from 'lightningcss'
 
 const distDir = path.join(process.cwd(), 'dist/css')
 
@@ -48,7 +48,11 @@ for (const file of cssFiles) {
       minify: true,
       sourceMap: true,
       inputSourceMap: inputMap ? JSON.stringify(inputMap) : undefined,
-      targets
+      targets,
+      // Never lower `light-dark()`: its custom-property polyfill breaks our
+      // `data-bs-theme` dark mode. We bumped browser support to versions with
+      // native support to fix this, but this guards against a regression.
+      exclude: Features.LightDark
     })
 
     // Write minified CSS with source map reference

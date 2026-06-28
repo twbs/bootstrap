@@ -61,7 +61,7 @@ $stepper-tokens: defaults(
     grid-auto-flow: row;
     gap: var(--stepper-gap);
     padding-inline-start: 0;
-    list-style: none;
+    list-style-type: "";
     counter-reset: stepper;
   }
 

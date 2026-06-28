@@ -1,159 +1,158 @@
 ---
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 interface Props {
-  utility: string | string[]; // The utility key(s) from the metadata (e.g., "font-size" or ["font-size", "text-size"])
-  className?: string;
+  utility: string | string[] // The utility key(s) from the metadata (e.g., "font-size" or ["font-size", "text-size"])
+  className?: string
 }
 
-const {
-  utility,
-  className = "table reference-table"
-} = Astro.props;
+const { utility, className = 'table reference-table' } = Astro.props
 
 // Normalize to array
-const utilities = Array.isArray(utility) ? utility : [utility];
+const utilities = Array.isArray(utility) ? utility : [utility]
 
 // Parse CSS variables from _root.scss at build time
 function parseCSSVariables(): Record<string, string> {
   try {
-    const projectRoot = process.cwd();
-    const rootScssPath = join(projectRoot, 'scss/_root.scss');
-    const scssContent = readFileSync(rootScssPath, 'utf-8');
+    const projectRoot = process.cwd()
+    const rootScssPath = join(projectRoot, 'scss/_root.scss')
+    const scssContent = readFileSync(rootScssPath, 'utf-8')
 
-    const cssVarValues: Record<string, string> = {};
-    const varRegex = /--#\{\$prefix\}([a-z0-9-]+):\s*([^;]+);/gi;
-    let match;
+    const cssVarValues: Record<string, string> = {}
+    const varRegex = /--#\{\$prefix\}([a-z0-9-]+):\s*([^;]+);/gi
+    let match
 
     while ((match = varRegex.exec(scssContent)) !== null) {
-      const varName = `--bs-${match[1]}`;
-      let value = match[2].trim();
-      value = value.replace(/#\{[^}]+\}/g, '').trim();
-      value = value.replace(/\/\/.*$/gm, '').trim();
+      const varName = `--bs-${match[1]}`
+      let value = match[2].trim()
+      value = value.replace(/#\{[^}]+\}/g, '').trim()
+      value = value.replace(/\/\/.*$/gm, '').trim()
 
       if (value) {
-        cssVarValues[varName] = value;
+        cssVarValues[varName] = value
       }
     }
 
-    return cssVarValues;
+    return cssVarValues
   } catch (error) {
-    console.warn('Could not parse CSS variables from _root.scss:', error);
-    return {};
+    console.warn('Could not parse CSS variables from _root.scss:', error)
+    return {}
   }
 }
 
 // Load utilities metadata
 function loadUtilitiesMetadata(): any {
   try {
-    const projectRoot = process.cwd();
-    const metadataPath = join(projectRoot, 'dist/css/bootstrap-utilities.metadata.json');
-    const metadataContent = readFileSync(metadataPath, 'utf-8');
-    return JSON.parse(metadataContent);
+    const projectRoot = process.cwd()
+    const metadataPath = join(projectRoot, 'dist/css/bootstrap-utilities.metadata.json')
+    const metadataContent = readFileSync(metadataPath, 'utf-8')
+    return JSON.parse(metadataContent)
   } catch (error) {
-    console.warn('Could not load utilities metadata:', error);
-    return { utilities: {} };
+    console.warn('Could not load utilities metadata:', error)
+    return { utilities: {} }
   }
 }
 
 // Parse compiled CSS to extract styles for given class selectors
 function parseCompiledCSS(classNames: string[]): Record<string, string[]> {
   try {
-    const projectRoot = process.cwd();
-    const bootstrapCssPath = join(projectRoot, 'dist/css/bootstrap.css');
-    const cssContent = readFileSync(bootstrapCssPath, 'utf-8');
+    const projectRoot = process.cwd()
+    const bootstrapCssPath = join(projectRoot, 'dist/css/bootstrap.css')
+    const cssContent = readFileSync(bootstrapCssPath, 'utf-8')
 
-    const classStyles: Record<string, string[]> = {};
+    const classStyles: Record<string, string[]> = {}
 
-    classNames.forEach(className => {
+    classNames.forEach((className) => {
       // Match class selectors, including :where() wrapped child-selector utilities
-      const escapedClass = className.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const escapedClass = className.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
       const selectorRegex = new RegExp(
         `(?:^|\\n)\\s*(?::where\\()?\\s*\\.${escapedClass}(?:\\s[^{]*)?\\)?\\s*\\{([^}]+)\\}`,
         'gm'
-      );
+      )
 
-      let match;
-      let foundDeclarations: string[] = [];
+      let match
+      let foundDeclarations: string[] = []
 
       while ((match = selectorRegex.exec(cssContent)) !== null) {
         const declarations = match[1]
           .split(';')
-          .map(decl => decl.trim())
-          .filter(decl => decl.length > 0)
-          .map(decl => `${decl};`);
+          .map((decl) => decl.trim())
+          .filter((decl) => decl.length > 0)
+          .map((decl) => `${decl};`)
 
         if (declarations.length > 0) {
-          foundDeclarations = declarations;
-          break;
+          foundDeclarations = declarations
+          break
         }
       }
 
-      classStyles[className] = foundDeclarations;
-    });
+      classStyles[className] = foundDeclarations
+    })
 
-    return classStyles;
+    return classStyles
   } catch (error) {
-    console.warn('Could not parse compiled CSS:', error);
-    return {};
+    console.warn('Could not parse compiled CSS:', error)
+    return {}
   }
 }
 
-const cssVarValues = parseCSSVariables();
-const metadata = loadUtilitiesMetadata();
+const cssVarValues = parseCSSVariables()
+const metadata = loadUtilitiesMetadata()
 
 // Collect classes from all specified utilities
-let allClasses: string[] = [];
+let allClasses: string[] = []
 
-utilities.forEach(util => {
-  const utilityMeta = metadata.utilities[util];
+utilities.forEach((util) => {
+  const utilityMeta = metadata.utilities[util]
 
   if (!utilityMeta) {
-    console.warn(`Utility "${util}" not found in metadata. Available utilities: ${Object.keys(metadata.utilities).join(', ')}`);
-    return;
+    console.warn(
+      `Utility "${util}" not found in metadata. Available utilities: ${Object.keys(metadata.utilities).join(', ')}`
+    )
+    return
   }
 
-  const classes = utilityMeta.classes || [];
-  allClasses = allClasses.concat(classes);
-});
+  const classes = utilityMeta.classes || []
+  allClasses = allClasses.concat(classes)
+})
 
 if (allClasses.length === 0) {
-  throw new Error(`No classes found for utilities: ${utilities.join(', ')}`);
+  throw new Error(`No classes found for utilities: ${utilities.join(', ')}`)
 }
 
-const classStyles = parseCompiledCSS(allClasses);
+const classStyles = parseCompiledCSS(allClasses)
 
 // Function to add CSS variable value comments
 function addVarComments(cssValue: string): string {
-  const comments: string[] = [];
+  const comments: string[] = []
 
   cssValue.replace(/var\((--[a-z0-9-]+)\)/gi, (match, varName) => {
-    const resolvedValue = cssVarValues[varName];
+    const resolvedValue = cssVarValues[varName]
     if (resolvedValue) {
-      comments.push(`<span class="fg-3">/* ${resolvedValue} */</span>`);
+      comments.push(`<span class="fg-3">/* ${resolvedValue} */</span>`)
     }
-    return match;
-  });
+    return match
+  })
 
   if (comments.length > 0) {
-    const hasSemicolon = cssValue.trimEnd().endsWith(';');
-    return `${cssValue}${hasSemicolon ? '' : ';'} ${comments.join(' ')}`;
+    const hasSemicolon = cssValue.trimEnd().endsWith(';')
+    return `${cssValue}${hasSemicolon ? '' : ';'} ${comments.join(' ')}`
   }
 
-  return cssValue;
+  return cssValue
 }
 
 // Build table data
-const tableData = allClasses.map(cls => {
-  const styles = classStyles[cls] || [];
-  const formattedStyles = styles.map(style => addVarComments(style)).join('<br/>');
+const tableData = allClasses.map((cls) => {
+  const styles = classStyles[cls] || []
+  const formattedStyles = styles.map((style) => addVarComments(style)).join('<br/>')
 
   return {
     class: `.${cls}`,
     styles: formattedStyles || '<em>Not found</em>'
-  };
-});
+  }
+})
 ---
 
 <div class="table-responsive bd-reference-table">
@@ -165,12 +164,16 @@ const tableData = allClasses.map(cls => {
       </tr>
     </thead>
     <tbody>
-      {tableData.map((row) => (
-        <tr>
-          <td>{row.class}</td>
-          <td><Fragment set:html={row.styles} /></td>
-        </tr>
-      ))}
+      {
+        tableData.map((row) => (
+          <tr>
+            <td>{row.class}</td>
+            <td>
+              <Fragment set:html={row.styles} />
+            </td>
+          </tr>
+        ))
+      }
     </tbody>
   </table>
 </div>

@@ -37,9 +37,9 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div.my-collapse')
       const collapseBySelector = new Collapse('div.my-collapse')
-      const collapseByElement = new Collapse(collapseEl)
-
       expect(collapseBySelector._element).toEqual(collapseEl)
+
+      const collapseByElement = new Collapse(collapseEl)
       expect(collapseByElement._element).toEqual(collapseEl)
     })
 
@@ -130,7 +130,7 @@ describe('Collapse', () => {
         const collapseEl1 = fixtureEl.querySelector('#collapse1')
         const collapseEl2 = fixtureEl.querySelector('#collapse2')
 
-        const collapseList = [].concat(...fixtureEl.querySelectorAll('.collapse'))
+        const collapseList = [...fixtureEl.querySelectorAll('.collapse')]
           .map(el => new Collapse(el, {
             parent,
             toggle: false
@@ -257,14 +257,14 @@ describe('Collapse', () => {
           '  <div class="accordion-header">',
           '    <button data-bs-target="#parentContent" data-bs-toggle="collapse" class="accordion-toggle">Parent</button>',
           '  </div>',
-          '  <div id="parentContent" class="accordion-collapse collapse" data-bs-parent="#parentGroup">',
+          '  <div id="parentContent" class="collapse" data-bs-parent="#parentGroup">',
           '    <div class="accordion-body">',
           '      <div id="childGroup" class="accordion">',
           '        <div class="accordion-item">',
           '          <div class="accordion-header">',
           '            <button data-bs-target="#childContent1" data-bs-toggle="collapse" class="accordion-toggle">Child 1</button>',
           '          </div>',
-          '          <div id="childContent1" class="accordion-collapse collapse" data-bs-parent="#childGroup">',
+          '          <div id="childContent1" class="collapse" data-bs-parent="#childGroup">',
           '            <div>content</div>',
           '          </div>',
           '        </div>',
@@ -272,7 +272,7 @@ describe('Collapse', () => {
           '          <div class="accordion-header">',
           '            <button data-bs-target="#childContent2" data-bs-toggle="collapse" class="accordion-toggle">Child 2</button>',
           '          </div>',
-          '          <div id="childContent2" class="accordion-collapse collapse" data-bs-parent="#childGroup">',
+          '          <div id="childContent2" class="collapse" data-bs-parent="#childGroup">',
           '            <div>content</div>',
           '          </div>',
           '        </div>',
@@ -316,11 +316,11 @@ describe('Collapse', () => {
           '<div class="accordion" id="accordionExample">',
           '  <div class="accordion-item">',
           '    <h2 class="accordion-header">',
-          '      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">',
+          '      <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">',
           '        Accordion Item #1',
           '      </button>',
           '    </h2>',
-          '    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">',
+          '    <div id="collapseOne" class="collapse show" data-bs-parent="#accordionExample">',
           '      <div class="accordion-body">',
           '        <nav>',
           '          <div class="nav nav-tabs" id="nav-tab" role="tablist">',

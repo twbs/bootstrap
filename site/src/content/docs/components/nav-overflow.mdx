@@ -8,9 +8,9 @@ js: required
 
 ## How it works
 
-The nav overflow component (also known as the "Priority+" pattern) automatically detects when navigation items don't fit within their container and moves them into a menu. This provides a responsive navigation experience without requiring different markup for different screen sizes.
+The nav overflow component (also known as the "Priority+" pattern) automatically detects when navigation items don’t fit within their container and moves them into a menu. This provides a responsive navigation experience without requiring different markup for different screen sizes.
 
-Here's what you need to know before getting started:
+Here’s what you need to know before getting started:
 
 - Add `data-bs-toggle="nav-overflow"` to any `.nav` element to enable automatic overflow detection.
 - **Responds to container size**, not viewport size. The component uses a ResizeObserver to monitor its own width, so it works perfectly in embedded contexts, documentation examples, and responsive containers.
@@ -22,7 +22,7 @@ Here's what you need to know before getting started:
 
 ## Examples
 
-Add `data-bs-toggle="nav-overflow"` to your nav element. When items don't fit, they'll automatically move to a "More" menu. Drag the right edge of the container below to see how nav items automatically move to the "More" menu as space becomes limited.
+Add `data-bs-toggle="nav-overflow"` to your nav element. When items don’t fit, they’ll automatically move to a "More" menu. Drag the right edge of the container below to see how nav items automatically move to the "More" menu as space becomes limited.
 
 <ResizableExample code={`<ul class="nav nav-pills" data-bs-toggle="nav-overflow">
     <li class="nav-item">
@@ -244,7 +244,7 @@ new bootstrap.NavOverflow(nav, {
 
 ### Collapse all
 
-Use the `collapseBelow` option to force all items into the overflow dropdown when the nav element's width is below a threshold. Pass a breakpoint name to resolve the value from `--bs-breakpoint-{name}`, or a number for a direct pixel value.
+Use the `collapseBelow` option to force all items into the overflow dropdown when the nav element’s width is below a threshold. Pass a breakpoint name to resolve the value from `--bs-breakpoint-{name}`, or a number for a direct pixel value.
 
 ```html
 <ul class="nav nav-pills" data-bs-toggle="nav-overflow" data-bs-collapse-below="md">
@@ -336,7 +336,7 @@ const navOverflow = new bootstrap.NavOverflow('#myNav', {
 
 ### Events
 
-Bootstrap's nav overflow component exposes events for hooking into overflow functionality.
+Bootstrap’s nav overflow component exposes events for hooking into overflow functionality.
 
 <BsTable>
 | Event type | Description |

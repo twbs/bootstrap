@@ -17,29 +17,29 @@ Use `align-items` utilities on flexbox containers to change the alignment of fle
 
 <div class="bd-example bd-example-flex">
   <div class="d-flex align-items-start mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 w-5">Align</div>
+    <div class="p-2 w-5">Items</div>
+    <div class="p-2 w-5">Start</div>
   </div>
   <div class="d-flex align-items-end mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 w-5">Align</div>
+    <div class="p-2 w-5">Items</div>
+    <div class="p-2 w-5">End</div>
   </div>
   <div class="d-flex align-items-center mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 w-5">Align</div>
+    <div class="p-2 w-5">Items</div>
+    <div class="p-2 w-5">Center</div>
   </div>
   <div class="d-flex align-items-baseline mb-3" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 w-5">Align</div>
+    <div class="p-2 w-5">Items</div>
+    <div class="p-2 w-5">Baseline</div>
   </div>
   <div class="d-flex align-items-stretch" style="height: 100px">
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
-    <div class="p-2">Flex item</div>
+    <div class="p-2 w-5">Align</div>
+    <div class="p-2 w-5">Items</div>
+    <div class="p-2 w-5">Stretch</div>
   </div>
 </div>
 
@@ -59,11 +59,11 @@ Responsive variations also exist for `align-items`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.align-items{breakpoint.abbr}-start</code></li>
-      <li><code>.align-items{breakpoint.abbr}-end</code></li>
-      <li><code>.align-items{breakpoint.abbr}-center</code></li>
-      <li><code>.align-items{breakpoint.abbr}-baseline</code></li>
-      <li><code>.align-items{breakpoint.abbr}-stretch</code></li>
+      <li><code>.{breakpoint.abbr}align-items-start</code></li>
+      <li><code>.{breakpoint.abbr}align-items-end</code></li>
+      <li><code>.{breakpoint.abbr}align-items-center</code></li>
+      <li><code>.{breakpoint.abbr}align-items-baseline</code></li>
+      <li><code>.{breakpoint.abbr}align-items-stretch</code></li>
     </Fragment>
   )
 })}

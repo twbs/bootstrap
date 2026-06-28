@@ -28,16 +28,16 @@ export const extra_js = [{src: 'sidebars.js'}]
   </symbol>
 </svg>
 
-<main class="d-flex flex-nowrap">
+<main class="d-flex flex-nowrap overflow-x-auto overflow-y-hidden max-h-100 vh-100">
   <h1 class="visually-hidden">Sidebars examples</h1>
 
-  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 md:mb-0 md:me-auto text-white text-decoration-none">
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-black" style="width: 280px;" data-bs-theme="dark">
+    <a href="/" class="d-flex align-items-center mb-3 md:mb-0 md:me-auto fg-white text-decoration-none">
       <svg class="bi pe-none me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
-      <span class="fs-4">Sidebar</span>
+      <span class="fs-xl">Sidebar</span>
     </a>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <ul class="nav flex-column align-items-start mb-auto">
       <li class="nav-item">
         <a href="#" class="nav-link active" aria-current="page">
           <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true"><use href="#home"/></svg>
@@ -45,25 +45,25 @@ export const extra_js = [{src: 'sidebars.js'}]
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="#" class="nav-link fg-white">
           <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true"><use href="#speedometer2"/></svg>
           Dashboard
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="#" class="nav-link fg-white">
           <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true"><use href="#table"/></svg>
           Orders
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="#" class="nav-link fg-white">
           <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true"><use href="#grid"/></svg>
           Products
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link text-white">
+        <a href="#" class="nav-link fg-white">
           <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true"><use href="#people-circle"/></svg>
           Customers
         </a>
@@ -71,11 +71,11 @@ export const extra_js = [{src: 'sidebars.js'}]
     </ul>
     <hr>
     <div>
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none" data-bs-toggle="menu" aria-expanded="false">
+      <a class="d-flex align-items-center fg-white text-decoration-none" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
         <strong>mdo</strong>
       </a>
-      <div class="menu text-small shadow">
+      <div class="menu shadow">
         <a class="menu-item" href="#">New project...</a>
         <a class="menu-item" href="#">Settings</a>
         <a class="menu-item" href="#">Profile</a>
@@ -90,10 +90,10 @@ export const extra_js = [{src: 'sidebars.js'}]
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 md:mb-0 md:me-auto link-body-emphasis text-decoration-none">
       <svg class="bi pe-none me-2" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
-      <span class="fs-4">Sidebar</span>
+      <span class="fs-xl">Sidebar</span>
     </a>
     <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <ul class="nav flex-column align-items-start mb-auto">
       <li class="nav-item">
         <a href="#" class="nav-link active" aria-current="page">
           <svg class="bi pe-none me-2" width="16" height="16" aria-hidden="true"><use href="#home"/></svg>
@@ -127,11 +127,11 @@ export const extra_js = [{src: 'sidebars.js'}]
     </ul>
     <hr>
     <div>
-      <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none" data-bs-toggle="menu" aria-expanded="false">
+      <a class="d-flex align-items-center fg-body text-decoration-none" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
         <strong>mdo</strong>
       </a>
-      <div class="menu text-small shadow">
+      <div class="menu shadow">
         <a class="menu-item" href="#">New project...</a>
         <a class="menu-item" href="#">Settings</a>
         <a class="menu-item" href="#">Profile</a>
@@ -148,9 +148,9 @@ export const extra_js = [{src: 'sidebars.js'}]
       <svg class="bi pe-none" width="40" height="32" aria-hidden="true"><use href="#bootstrap"/></svg>
       <span class="visually-hidden">Icon-only</span>
     </a>
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+    <ul class="nav nav-flush flex-column mb-auto text-center">
       <li class="nav-item">
-        <a href="#" class="nav-link active py-3 border-bottom rounded-0" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+        <a href="#" class="nav-link active py-3 border-bottom rounded-0 flex-fill" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
           <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Home"><use href="#home"/></svg>
         </a>
       </li>
@@ -176,10 +176,10 @@ export const extra_js = [{src: 'sidebars.js'}]
       </li>
     </ul>
     <div class="border-top">
-      <a href="#" class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none" data-bs-toggle="menu" aria-expanded="false">
+      <a class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
         <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
       </a>
-      <div class="menu text-small shadow">
+      <div class="menu shadow">
         <a class="menu-item" href="#">New project...</a>
         <a class="menu-item" href="#">Settings</a>
         <a class="menu-item" href="#">Profile</a>
@@ -194,7 +194,7 @@ export const extra_js = [{src: 'sidebars.js'}]
   <div class="flex-shrink-0 p-3" style="width: 280px;">
     <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
       <svg class="bi pe-none me-2" width="30" height="24" aria-hidden="true"><use href="#bootstrap"/></svg>
-      <span class="fs-5 fw-semibold">Collapsible</span>
+      <span class="fs-lg fw-semibold">Collapsible</span>
     </a>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
@@ -257,7 +257,7 @@ export const extra_js = [{src: 'sidebars.js'}]
   <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style="width: 380px;">
     <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
       <svg class="bi pe-none me-2" width="30" height="24" aria-hidden="true"><use href="#bootstrap"/></svg>
-      <span class="fs-5 fw-semibold">List group</span>
+      <span class="fs-lg fw-semibold">List group</span>
     </a>
     <div class="list-group list-group-flush border-bottom scrollarea">
       <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
@@ -270,14 +270,14 @@ export const extra_js = [{src: 'sidebars.js'}]
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
+          <small class="fg-2">Tues</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
+          <small class="fg-2">Mon</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
@@ -285,63 +285,63 @@ export const extra_js = [{src: 'sidebars.js'}]
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
+          <small class="fg-2">Wed</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
+          <small class="fg-2">Tues</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
+          <small class="fg-2">Mon</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
+          <small class="fg-2">Wed</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
+          <small class="fg-2">Tues</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
+          <small class="fg-2">Mon</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
+          <small class="fg-2">Wed</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
+          <small class="fg-2">Tues</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>
       <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
         <div class="d-flex w-100 align-items-center justify-content-between">
           <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
+          <small class="fg-2">Mon</small>
         </div>
         <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.</div>
       </a>

@@ -38,7 +38,7 @@
     }
 
     .nav-link {
-      margin-inline-start: 1rem;
+      margin-inline-start: .75rem;
     }
 
     @include media-breakpoint-between(xs, lg) {
@@ -65,7 +65,7 @@
   }
 
   .bd-links-subgroup {
-    margin-inline-start: 1.75rem;
+    margin-inline-start: 1.5rem;
     color: var(--bs-fg-body);
   }
 

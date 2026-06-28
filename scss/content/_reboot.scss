@@ -17,7 +17,7 @@ $reboot-kbd-tokens: defaults(
     --kbd-font-size: var(--font-size-xs),
     --kbd-color: var(--bg-body),
     --kbd-bg: var(--fg-2),
-    --kbd-border-radius: var(--border-radius-sm),
+    --kbd-border-radius: var(--radius-5),
   ),
   $reboot-kbd-tokens
 );
@@ -531,7 +531,8 @@ $reboot-mark-tokens: defaults(
   ::-webkit-datetime-edit-second-field,
   ::-webkit-datetime-edit-minute-field,
   ::-webkit-datetime-edit-hour-field,
-  ::-webkit-datetime-edit-ampm-field,
+  ::-webkit-datetime-edit-meridiem-field, // WebKit
+  ::-webkit-datetime-edit-ampm-field, // Chromium
   ::-webkit-datetime-edit-day-field,
   ::-webkit-datetime-edit-week-field,
   ::-webkit-datetime-edit-month-field,

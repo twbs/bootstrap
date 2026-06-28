@@ -21,7 +21,7 @@ $menu-tokens: defaults(
     --menu-color: var(--fg-body),
     --menu-bg: var(--bg-body),
     // --menu-border-color: var(--border-color-translucent),
-    // --menu-border-radius: var(--border-radius-lg),
+    // --menu-border-radius: var(--radius-7),
     // --menu-border-width: var(--border-width),
     --menu-box-shadow: var(--box-shadow),
     // --menu-max-height: none,
@@ -37,9 +37,8 @@ $menu-tokens: defaults(
     --menu-item-gap: .5rem,
     --menu-item-padding-x: .75rem,
     --menu-item-padding-y: .25rem,
-    --menu-item-border-radius: var(--border-radius),
+    --menu-item-border-radius: var(--radius-5),
     --menu-icon-size: 1rem,
-    --menu-image-size: 1.5rem,
     --menu-description-font-size: var(--font-size-xs),
     --menu-check-color: currentcolor,
     --menu-header-color: var(--fg-3),
@@ -72,11 +71,11 @@ $menu-tokens: defaults(
     font-size: var(--menu-font-size);
     color: var(--menu-color);
     text-align: start;
-    list-style: none;
+    list-style-type: "";
     background-color: var(--menu-bg);
     background-clip: padding-box;
     border: var(--menu-border-width, var(--border-width)) solid var(--menu-border-color, var(--border-color-translucent));
-    @include border-radius(var(--menu-border-radius, var(--border-radius-lg)));
+    @include border-radius(var(--menu-border-radius, var(--radius-7)));
     @include box-shadow(var(--menu-box-shadow));
     opacity: 0;
     transform: scale(.95);
@@ -202,13 +201,6 @@ $menu-tokens: defaults(
     margin-top: .125rem;
   }
 
-  .menu-image {
-    width: var(--menu-image-size);
-    height: var(--menu-image-size);
-    object-fit: cover;
-    @include border-radius(var(--border-radius-sm));
-  }
-
   .menu-item-content {
     display: flex;
     flex: 1;
@@ -291,59 +283,6 @@ $menu-tokens: defaults(
     &.show > .menu-item {
       color: var(--menu-item-hover-color);
       background-color: var(--menu-item-hover-bg);
-    }
-  }
-
-  // Mobile stacking: submenu covers the parent menu in-place
-  @media (max-width: 575.98px) {
-    .submenu:has(.submenu-stacked) {
-      position: static;
-    }
-
-    .submenu-stacked {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--menu-gap);
-      min-width: 0;
-      padding: var(--menu-padding-y) var(--menu-padding-x);
-      background-color: var(--menu-bg);
-      border: 0;
-      @include border-radius(0);
-      box-shadow: none;
-    }
-
-    .submenu-back {
-      display: flex;
-      gap: var(--menu-item-gap);
-      align-items: center;
-      padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
-      font-weight: var(--font-weight-semibold, 600);
-      color: var(--menu-item-color);
-
-      &::before {
-        display: inline-block;
-        flex-shrink: 0;
-        width: .375em;
-        height: .375em;
-        content: "";
-        border-color: currentcolor;
-        border-style: solid;
-        border-width: .125em 0 0 .125em;
-        transform: rotate(-45deg);
-
-        [dir="rtl"] & {
-          border-width: 0 .125em .125em 0;
-        }
-      }
-    }
-
-    .submenu-dimmed {
-      pointer-events: none;
-      filter: blur(2px);
-      opacity: .3;
     }
   }
   // scss-docs-end submenu

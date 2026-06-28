@@ -19,7 +19,7 @@ $accordion-tokens: defaults(
     --accordion-transition: var(--accordion-transition-property) var(--accordion-timing),
     --accordion-border-color: var(--border-color),
     --accordion-border-width: var(--border-width),
-    --accordion-border-radius: var(--accordion-radius, var(--border-radius-lg)),
+    --accordion-border-radius: var(--accordion-radius, var(--radius-7)),
     --accordion-btn-color: var(--fg-2),
     --accordion-btn-bg: var(--bg-body),
     --accordion-btn-icon-width: 1rem,
@@ -50,6 +50,10 @@ $accordion-tokens: defaults(
     background-color: var(--accordion-btn-bg);
     @include transition(var(--accordion-transition));
 
+    &::-webkit-details-marker {
+      display: none;
+    }
+
     .accordion-icon {
       flex-shrink: 0;
       width: var(--accordion-btn-icon-width);
@@ -75,6 +79,16 @@ $accordion-tokens: defaults(
     color: var(--accordion-color);
     background-color: var(--accordion-bg);
     border: var(--accordion-border-width) solid var(--accordion-border-color);
+
+    @media (prefers-reduced-motion: no-preference) {
+      interpolate-size: allow-keywords;
+    }
+
+    &::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      @include transition(content-visibility .2s allow-discrete, block-size .2s);
+    }
 
     &:first-of-type {
       @include border-top-radius(var(--accordion-border-radius));
@@ -103,7 +117,11 @@ $accordion-tokens: defaults(
 
     // Open state - details[open] applies these styles
     &[open] {
+
       border-color: var(--theme-border, var(--accordion-border-color));
+      &::details-content {
+        block-size: auto;
+      }
 
       > .accordion-header {
         color: var(--theme-fg, var(--accordion-active-color));

@@ -235,20 +235,13 @@
   --bs-link-color: light-dark(var(--bs-primary-base), var(--bs-primary-fg));
   --bs-link-decoration: underline;
   --bs-link-hover-color: color-mix(in oklch, var(--bs-link-color) 90%, #000);
-  --bs-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --bs-font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;;
   --bs-code-font-size: 95%;
   --bs-code-color: var(--bs-fg-2);
   --bs-border-width: 1px;
   --bs-border-style: solid;
-  --bs-border-color: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-700));
+  --bs-border-color: light-dark(var(--bs-gray-200), var(--bs-gray-700));
   --bs-border-color-translucent: color-mix(in oklch, var(--bs-fg-body) 15%, transparent);
-  --bs-border-radius: 0.5rem;
-  --bs-border-radius-xs: 0.375rem;
-  --bs-border-radius-sm: 0.5rem;
-  --bs-border-radius-lg: 0.75rem;
-  --bs-border-radius-xl: 1rem;
-  --bs-border-radius-2xl: 2rem;
-  --bs-border-radius-pill: 50rem;
   --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
@@ -271,25 +264,25 @@
   --bs-btn-input-padding-x: 0.75rem;
   --bs-btn-input-font-size: var(--bs-font-size-base);
   --bs-btn-input-line-height: var(--bs-line-height-base);
-  --bs-btn-input-border-radius: var(--bs-border-radius);
+  --bs-btn-input-border-radius: var(--bs-radius-5);
   --bs-btn-input-xs-min-height: 1.5rem;
   --bs-btn-input-xs-padding-y: 0.125rem;
   --bs-btn-input-xs-padding-x: 0.5rem;
   --bs-btn-input-xs-font-size: var(--bs-font-size-xs);
   --bs-btn-input-xs-line-height: 1.125;
-  --bs-btn-input-xs-border-radius: var(--bs-border-radius-xs);
+  --bs-btn-input-xs-border-radius: var(--bs-radius-5);
   --bs-btn-input-sm-min-height: 2rem;
   --bs-btn-input-sm-padding-y: 0.25rem;
   --bs-btn-input-sm-padding-x: 0.625rem;
   --bs-btn-input-sm-font-size: var(--bs-font-size-sm);
   --bs-btn-input-sm-line-height: var(--bs-line-height-sm);
-  --bs-btn-input-sm-border-radius: var(--bs-border-radius-sm);
+  --bs-btn-input-sm-border-radius: var(--bs-radius-5);
   --bs-btn-input-lg-min-height: 2.75rem;
   --bs-btn-input-lg-padding-y: 0.5rem;
   --bs-btn-input-lg-padding-x: 1rem;
   --bs-btn-input-lg-font-size: var(--bs-font-size-md);
   --bs-btn-input-lg-line-height: var(--bs-line-height-md);
-  --bs-btn-input-lg-border-radius: var(--bs-border-radius-lg);
+  --bs-btn-input-lg-border-radius: var(--bs-radius-7);
   --bs-font-size-xs: 0.75rem;
   --bs-line-height-xs: 1.25;
   --bs-font-size-sm: 0.875rem;
@@ -404,7 +397,7 @@
   --bs-border-bg: var(--bs-bg-body);
   --bs-border-body: light-dark(var(--bs-gray-300), var(--bs-gray-800));
   --bs-border-muted: light-dark(var(--bs-gray-200), var(--bs-gray-800));
-  --bs-border-subtle: light-dark(var(--bs-gray-100), var(--bs-gray-900));
+  --bs-border-subtle: light-dark(color-mix(in oklch, var(--bs-gray-100), var(--bs-gray-200)), var(--bs-gray-900));
   --bs-border-emphasized: light-dark(var(--bs-gray-400), var(--bs-gray-600));
   --bs-border-white: var(--bs-white);
   --bs-border-black: var(--bs-black);
@@ -414,7 +407,29 @@
   --bs-breakpoint-lg: 1024px;
   --bs-breakpoint-xl: 1280px;
   --bs-breakpoint-2xl: 1536px;
+  --bs-spacer-0: 0;
+  --bs-spacer-1: 0.25rem;
+  --bs-spacer-2: 0.5rem;
+  --bs-spacer-3: 0.75rem;
+  --bs-spacer-4: 1rem;
+  --bs-spacer-5: 1.25rem;
+  --bs-spacer-6: 1.5rem;
+  --bs-spacer-7: 2rem;
+  --bs-spacer-8: 2.5rem;
+  --bs-spacer-9: 3rem;
+  --bs-radius-0: 0;
+  --bs-radius-1: 0.125rem;
+  --bs-radius-2: 0.1875rem;
+  --bs-radius-3: 0.25rem;
+  --bs-radius-4: 0.375rem;
+  --bs-radius-5: 0.5rem;
+  --bs-radius-6: 0.625rem;
+  --bs-radius-7: 0.75rem;
+  --bs-radius-8: 1rem;
+  --bs-radius-9: 1.5rem;
+  --bs-radius-pill: 50rem;
   color-scheme: light dark;
+  scrollbar-gutter: stable;
 }
 
 [data-bs-theme=dark] {
@@ -427,7 +442,7 @@
 
 @layer helpers {
   .focus-ring:focus-visible {
-    outline: var(--bs-focus-ring);
+    outline: var(--bs-focus-ring-width) solid var(--bs-theme-focus-ring, var(--bs-focus-ring-color));
   }
 }
 @layer helpers {
@@ -800,23 +815,18 @@
     float: none;
   }
   .object-fit-contain {
-    -o-object-fit: contain;
     object-fit: contain;
   }
   .object-fit-cover {
-    -o-object-fit: cover;
     object-fit: cover;
   }
   .object-fit-fill {
-    -o-object-fit: fill;
     object-fit: fill;
   }
   .object-fit-scale {
-    -o-object-fit: scale-down;
     object-fit: scale-down;
   }
   .object-fit-none {
-    -o-object-fit: none;
     object-fit: none;
   }
   .opacity-0 {
@@ -927,30 +937,6 @@
   .shadow-none {
     box-shadow: none;
   }
-  .focus-ring-primary {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-blue-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-blue-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-accent {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-indigo-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-indigo-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-success {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-green-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-green-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-danger {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-red-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-red-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-warning {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-yellow-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-yellow-400) 85%, var(--bs-bg-body)));
-  }
-  .focus-ring-info {
-    --bs-focus-ring-color: light-dark(color-mix(in oklch, var(--bs-cyan-500) 50%, var(--bs-bg-body)), color-mix(in oklch, var(--bs-cyan-500) 75%, var(--bs-bg-body)));
-  }
-  .focus-ring-inverse {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-gray-900), var(--bs-gray-100)) 50%, var(--bs-bg-body));
-  }
-  .focus-ring-secondary {
-    --bs-focus-ring-color: color-mix(in oklch, light-dark(var(--bs-gray-500), var(--bs-gray-300)) 50%, var(--bs-bg-body));
-  }
   .position-static {
     position: static;
   }
@@ -985,22 +971,22 @@
     bottom: 100%;
   }
   .start-0 {
-    left: 0;
+    inset-inline-start: 0;
   }
   .start-50 {
-    left: 50%;
+    inset-inline-start: 50%;
   }
   .start-100 {
-    left: 100%;
+    inset-inline-start: 100%;
   }
   .end-0 {
-    right: 0;
+    inset-inline-end: 0;
   }
   .end-50 {
-    right: 50%;
+    inset-inline-end: 50%;
   }
   .end-100 {
-    right: 100%;
+    inset-inline-end: 100%;
   }
   .translate-middle {
     transform: translate(-50%, -50%);
@@ -1041,16 +1027,16 @@
   .border-start-0 {
     border-inline-start: 0;
   }
-  .border-block {
+  .border-y {
     border-block: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
   }
-  .border-block-0 {
+  .border-y-0 {
     border-block: 0;
   }
-  .border-inline {
+  .border-x {
     border-inline: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color);
   }
-  .border-inline-0 {
+  .border-x-0 {
     border-inline: 0;
   }
   .border-primary {
@@ -1373,10 +1359,10 @@
     justify-items: stretch;
   }
   .justify-self-start {
-    justify-self: flex-start;
+    justify-self: start;
   }
   .justify-self-end {
-    justify-self: flex-end;
+    justify-self: end;
   }
   .justify-self-center {
     justify-self: center;
@@ -2009,43 +1995,33 @@
     row-gap: 3rem;
   }
   .column-gap-0 {
-    -moz-column-gap: 0;
     column-gap: 0;
   }
   .column-gap-1 {
-    -moz-column-gap: 0.25rem;
     column-gap: 0.25rem;
   }
   .column-gap-2 {
-    -moz-column-gap: 0.5rem;
     column-gap: 0.5rem;
   }
   .column-gap-3 {
-    -moz-column-gap: 0.75rem;
     column-gap: 0.75rem;
   }
   .column-gap-4 {
-    -moz-column-gap: 1rem;
     column-gap: 1rem;
   }
   .column-gap-5 {
-    -moz-column-gap: 1.25rem;
     column-gap: 1.25rem;
   }
   .column-gap-6 {
-    -moz-column-gap: 1.5rem;
     column-gap: 1.5rem;
   }
   .column-gap-7 {
-    -moz-column-gap: 2rem;
     column-gap: 2rem;
   }
   .column-gap-8 {
-    -moz-column-gap: 2.5rem;
     column-gap: 2.5rem;
   }
   .column-gap-9 {
-    -moz-column-gap: 3rem;
     column-gap: 3rem;
   }
   :where(.space-x-0 > :not(:last-child)) {
@@ -2263,16 +2239,16 @@
     text-transform: capitalize;
   }
   .text-wrap {
-    white-space: wrap;
+    text-wrap: wrap;
   }
   .text-nowrap {
-    white-space: nowrap;
+    text-wrap: nowrap;
   }
   .text-balance {
-    white-space: balance;
+    text-wrap: balance;
   }
   .text-pretty {
-    white-space: pretty;
+    text-wrap: pretty;
   }
   .text-break {
     word-wrap: break-word;
@@ -2340,6 +2316,10 @@
   }
   .fg-black {
     --bs-fg: var(--bs-fg-black);
+    color: var(--bs-fg);
+  }
+  .fg-reset {
+    --bs-fg: inherit;
     color: var(--bs-fg);
   }
   .fg-emphasis-primary {
@@ -2830,176 +2810,304 @@
   .pe-auto {
     pointer-events: auto;
   }
-  .rounded {
-    border-radius: var(--bs-border-radius);
-  }
   .rounded-0 {
-    border-radius: 0;
+    --bs-rounded-size: 0;
+    border-radius: var(--bs-rounded-size);
   }
   .rounded-1 {
-    border-radius: var(--bs-border-radius-sm);
+    --bs-rounded-size: 0.125rem;
+    border-radius: var(--bs-rounded-size);
   }
   .rounded-2 {
-    border-radius: var(--bs-border-radius);
+    --bs-rounded-size: 0.1875rem;
+    border-radius: var(--bs-rounded-size);
   }
   .rounded-3 {
-    border-radius: var(--bs-border-radius-lg);
+    --bs-rounded-size: 0.25rem;
+    border-radius: var(--bs-rounded-size);
   }
   .rounded-4 {
-    border-radius: var(--bs-border-radius-xl);
+    --bs-rounded-size: 0.375rem;
+    border-radius: var(--bs-rounded-size);
   }
   .rounded-5 {
-    border-radius: var(--bs-border-radius-2xl);
+    --bs-rounded-size: 0.5rem;
+    border-radius: var(--bs-rounded-size);
+  }
+  .rounded-6 {
+    --bs-rounded-size: 0.625rem;
+    border-radius: var(--bs-rounded-size);
+  }
+  .rounded-7 {
+    --bs-rounded-size: 0.75rem;
+    border-radius: var(--bs-rounded-size);
+  }
+  .rounded-8 {
+    --bs-rounded-size: 1rem;
+    border-radius: var(--bs-rounded-size);
+  }
+  .rounded-9 {
+    --bs-rounded-size: 1.5rem;
+    border-radius: var(--bs-rounded-size);
+  }
+  .rounded {
+    --bs-rounded-size: 0.5rem;
+    border-radius: var(--bs-rounded-size);
   }
   .rounded-circle {
-    border-radius: 50%;
+    --bs-rounded-size: 50%;
+    border-radius: var(--bs-rounded-size);
   }
   .rounded-pill {
-    border-radius: var(--bs-border-radius-pill);
+    --bs-rounded-size: var(--bs-radius-pill);
+    border-radius: var(--bs-rounded-size);
   }
-  .rounded-top {
-    border-start-start-radius: var(--bs-border-radius);
-    border-start-end-radius: var(--bs-border-radius);
+  .rounded-size-0 {
+    --bs-rounded-size: 0;
+  }
+  .rounded-size-1 {
+    --bs-rounded-size: 0.125rem;
+  }
+  .rounded-size-2 {
+    --bs-rounded-size: 0.1875rem;
+  }
+  .rounded-size-3 {
+    --bs-rounded-size: 0.25rem;
+  }
+  .rounded-size-4 {
+    --bs-rounded-size: 0.375rem;
+  }
+  .rounded-size-5 {
+    --bs-rounded-size: 0.5rem;
+  }
+  .rounded-size-6 {
+    --bs-rounded-size: 0.625rem;
+  }
+  .rounded-size-7 {
+    --bs-rounded-size: 0.75rem;
+  }
+  .rounded-size-8 {
+    --bs-rounded-size: 1rem;
+  }
+  .rounded-size-9 {
+    --bs-rounded-size: 1.5rem;
+  }
+  .rounded-size {
+    --bs-rounded-size: 0.5rem;
+  }
+  .rounded-size-circle {
+    --bs-rounded-size: 50%;
+  }
+  .rounded-size-pill {
+    --bs-rounded-size: var(--bs-radius-pill);
   }
   .rounded-top-0 {
     border-start-start-radius: 0;
     border-start-end-radius: 0;
   }
   .rounded-top-1 {
-    border-start-start-radius: var(--bs-border-radius-sm);
-    border-start-end-radius: var(--bs-border-radius-sm);
+    border-start-start-radius: 0.125rem;
+    border-start-end-radius: 0.125rem;
   }
   .rounded-top-2 {
-    border-start-start-radius: var(--bs-border-radius);
-    border-start-end-radius: var(--bs-border-radius);
+    border-start-start-radius: 0.1875rem;
+    border-start-end-radius: 0.1875rem;
   }
   .rounded-top-3 {
-    border-start-start-radius: var(--bs-border-radius-lg);
-    border-start-end-radius: var(--bs-border-radius-lg);
+    border-start-start-radius: 0.25rem;
+    border-start-end-radius: 0.25rem;
   }
   .rounded-top-4 {
-    border-start-start-radius: var(--bs-border-radius-xl);
-    border-start-end-radius: var(--bs-border-radius-xl);
+    border-start-start-radius: 0.375rem;
+    border-start-end-radius: 0.375rem;
   }
   .rounded-top-5 {
-    border-start-start-radius: var(--bs-border-radius-2xl);
-    border-start-end-radius: var(--bs-border-radius-2xl);
+    border-start-start-radius: 0.5rem;
+    border-start-end-radius: 0.5rem;
+  }
+  .rounded-top-6 {
+    border-start-start-radius: 0.625rem;
+    border-start-end-radius: 0.625rem;
+  }
+  .rounded-top-7 {
+    border-start-start-radius: 0.75rem;
+    border-start-end-radius: 0.75rem;
+  }
+  .rounded-top-8 {
+    border-start-start-radius: 1rem;
+    border-start-end-radius: 1rem;
+  }
+  .rounded-top-9 {
+    border-start-start-radius: 1.5rem;
+    border-start-end-radius: 1.5rem;
+  }
+  .rounded-top {
+    border-start-start-radius: var(--bs-rounded-size, var(--bs-radius-5));
+    border-start-end-radius: var(--bs-rounded-size, var(--bs-radius-5));
   }
   .rounded-top-circle {
     border-start-start-radius: 50%;
     border-start-end-radius: 50%;
   }
   .rounded-top-pill {
-    border-start-start-radius: var(--bs-border-radius-pill);
-    border-start-end-radius: var(--bs-border-radius-pill);
-  }
-  .rounded-end {
-    border-end-end-radius: var(--bs-border-radius);
-    border-end-start-radius: var(--bs-border-radius);
+    border-start-start-radius: var(--bs-radius-pill);
+    border-start-end-radius: var(--bs-radius-pill);
   }
   .rounded-end-0 {
+    border-start-end-radius: 0;
     border-end-end-radius: 0;
-    border-end-start-radius: 0;
   }
   .rounded-end-1 {
-    border-end-end-radius: var(--bs-border-radius-sm);
-    border-end-start-radius: var(--bs-border-radius-sm);
+    border-start-end-radius: 0.125rem;
+    border-end-end-radius: 0.125rem;
   }
   .rounded-end-2 {
-    border-end-end-radius: var(--bs-border-radius);
-    border-end-start-radius: var(--bs-border-radius);
+    border-start-end-radius: 0.1875rem;
+    border-end-end-radius: 0.1875rem;
   }
   .rounded-end-3 {
-    border-end-end-radius: var(--bs-border-radius-lg);
-    border-end-start-radius: var(--bs-border-radius-lg);
+    border-start-end-radius: 0.25rem;
+    border-end-end-radius: 0.25rem;
   }
   .rounded-end-4 {
-    border-end-end-radius: var(--bs-border-radius-xl);
-    border-end-start-radius: var(--bs-border-radius-xl);
+    border-start-end-radius: 0.375rem;
+    border-end-end-radius: 0.375rem;
   }
   .rounded-end-5 {
-    border-end-end-radius: var(--bs-border-radius-2xl);
-    border-end-start-radius: var(--bs-border-radius-2xl);
+    border-start-end-radius: 0.5rem;
+    border-end-end-radius: 0.5rem;
+  }
+  .rounded-end-6 {
+    border-start-end-radius: 0.625rem;
+    border-end-end-radius: 0.625rem;
+  }
+  .rounded-end-7 {
+    border-start-end-radius: 0.75rem;
+    border-end-end-radius: 0.75rem;
+  }
+  .rounded-end-8 {
+    border-start-end-radius: 1rem;
+    border-end-end-radius: 1rem;
+  }
+  .rounded-end-9 {
+    border-start-end-radius: 1.5rem;
+    border-end-end-radius: 1.5rem;
+  }
+  .rounded-end {
+    border-start-end-radius: var(--bs-rounded-size, var(--bs-radius-5));
+    border-end-end-radius: var(--bs-rounded-size, var(--bs-radius-5));
   }
   .rounded-end-circle {
+    border-start-end-radius: 50%;
     border-end-end-radius: 50%;
-    border-end-start-radius: 50%;
   }
   .rounded-end-pill {
-    border-end-end-radius: var(--bs-border-radius-pill);
-    border-end-start-radius: var(--bs-border-radius-pill);
-  }
-  .rounded-bottom {
-    border-end-end-radius: var(--bs-border-radius);
-    border-end-start-radius: var(--bs-border-radius);
+    border-start-end-radius: var(--bs-radius-pill);
+    border-end-end-radius: var(--bs-radius-pill);
   }
   .rounded-bottom-0 {
-    border-end-end-radius: 0;
     border-end-start-radius: 0;
+    border-end-end-radius: 0;
   }
   .rounded-bottom-1 {
-    border-end-end-radius: var(--bs-border-radius-sm);
-    border-end-start-radius: var(--bs-border-radius-sm);
+    border-end-start-radius: 0.125rem;
+    border-end-end-radius: 0.125rem;
   }
   .rounded-bottom-2 {
-    border-end-end-radius: var(--bs-border-radius);
-    border-end-start-radius: var(--bs-border-radius);
+    border-end-start-radius: 0.1875rem;
+    border-end-end-radius: 0.1875rem;
   }
   .rounded-bottom-3 {
-    border-end-end-radius: var(--bs-border-radius-lg);
-    border-end-start-radius: var(--bs-border-radius-lg);
+    border-end-start-radius: 0.25rem;
+    border-end-end-radius: 0.25rem;
   }
   .rounded-bottom-4 {
-    border-end-end-radius: var(--bs-border-radius-xl);
-    border-end-start-radius: var(--bs-border-radius-xl);
+    border-end-start-radius: 0.375rem;
+    border-end-end-radius: 0.375rem;
   }
   .rounded-bottom-5 {
-    border-end-end-radius: var(--bs-border-radius-2xl);
-    border-end-start-radius: var(--bs-border-radius-2xl);
+    border-end-start-radius: 0.5rem;
+    border-end-end-radius: 0.5rem;
+  }
+  .rounded-bottom-6 {
+    border-end-start-radius: 0.625rem;
+    border-end-end-radius: 0.625rem;
+  }
+  .rounded-bottom-7 {
+    border-end-start-radius: 0.75rem;
+    border-end-end-radius: 0.75rem;
+  }
+  .rounded-bottom-8 {
+    border-end-start-radius: 1rem;
+    border-end-end-radius: 1rem;
+  }
+  .rounded-bottom-9 {
+    border-end-start-radius: 1.5rem;
+    border-end-end-radius: 1.5rem;
+  }
+  .rounded-bottom {
+    border-end-start-radius: var(--bs-rounded-size, var(--bs-radius-5));
+    border-end-end-radius: var(--bs-rounded-size, var(--bs-radius-5));
   }
   .rounded-bottom-circle {
-    border-end-end-radius: 50%;
     border-end-start-radius: 50%;
+    border-end-end-radius: 50%;
   }
   .rounded-bottom-pill {
-    border-end-end-radius: var(--bs-border-radius-pill);
-    border-end-start-radius: var(--bs-border-radius-pill);
-  }
-  .rounded-start {
-    border-start-start-radius: var(--bs-border-radius);
-    border-start-end-radius: var(--bs-border-radius);
+    border-end-start-radius: var(--bs-radius-pill);
+    border-end-end-radius: var(--bs-radius-pill);
   }
   .rounded-start-0 {
     border-start-start-radius: 0;
-    border-start-end-radius: 0;
+    border-end-start-radius: 0;
   }
   .rounded-start-1 {
-    border-start-start-radius: var(--bs-border-radius-sm);
-    border-start-end-radius: var(--bs-border-radius-sm);
+    border-start-start-radius: 0.125rem;
+    border-end-start-radius: 0.125rem;
   }
   .rounded-start-2 {
-    border-start-start-radius: var(--bs-border-radius);
-    border-start-end-radius: var(--bs-border-radius);
+    border-start-start-radius: 0.1875rem;
+    border-end-start-radius: 0.1875rem;
   }
   .rounded-start-3 {
-    border-start-start-radius: var(--bs-border-radius-lg);
-    border-start-end-radius: var(--bs-border-radius-lg);
+    border-start-start-radius: 0.25rem;
+    border-end-start-radius: 0.25rem;
   }
   .rounded-start-4 {
-    border-start-start-radius: var(--bs-border-radius-xl);
-    border-start-end-radius: var(--bs-border-radius-xl);
+    border-start-start-radius: 0.375rem;
+    border-end-start-radius: 0.375rem;
   }
   .rounded-start-5 {
-    border-start-start-radius: var(--bs-border-radius-2xl);
-    border-start-end-radius: var(--bs-border-radius-2xl);
+    border-start-start-radius: 0.5rem;
+    border-end-start-radius: 0.5rem;
+  }
+  .rounded-start-6 {
+    border-start-start-radius: 0.625rem;
+    border-end-start-radius: 0.625rem;
+  }
+  .rounded-start-7 {
+    border-start-start-radius: 0.75rem;
+    border-end-start-radius: 0.75rem;
+  }
+  .rounded-start-8 {
+    border-start-start-radius: 1rem;
+    border-end-start-radius: 1rem;
+  }
+  .rounded-start-9 {
+    border-start-start-radius: 1.5rem;
+    border-end-start-radius: 1.5rem;
+  }
+  .rounded-start {
+    border-start-start-radius: var(--bs-rounded-size, var(--bs-radius-5));
+    border-end-start-radius: var(--bs-rounded-size, var(--bs-radius-5));
   }
   .rounded-start-circle {
     border-start-start-radius: 50%;
-    border-start-end-radius: 50%;
+    border-end-start-radius: 50%;
   }
   .rounded-start-pill {
-    border-start-start-radius: var(--bs-border-radius-pill);
-    border-start-end-radius: var(--bs-border-radius-pill);
+    border-start-start-radius: var(--bs-radius-pill);
+    border-end-start-radius: var(--bs-radius-pill);
   }
   .visible {
     visibility: visible;
@@ -3033,23 +3141,18 @@
       float: none;
     }
     .sm\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .sm\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .sm\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .sm\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .sm\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .sm\:d-inline {
@@ -3158,10 +3261,10 @@
       justify-items: stretch;
     }
     .sm\:justify-self-start {
-      justify-self: flex-start;
+      justify-self: start;
     }
     .sm\:justify-self-end {
-      justify-self: flex-end;
+      justify-self: end;
     }
     .sm\:justify-self-center {
       justify-self: center;
@@ -3794,43 +3897,33 @@
       row-gap: 3rem;
     }
     .sm\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .sm\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .sm\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .sm\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .sm\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .sm\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .sm\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .sm\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .sm\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .sm\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.sm\:space-x-0 > :not(:last-child)) {
@@ -3926,23 +4019,18 @@
       float: none;
     }
     .md\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .md\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .md\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .md\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .md\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .md\:d-inline {
@@ -4051,10 +4139,10 @@
       justify-items: stretch;
     }
     .md\:justify-self-start {
-      justify-self: flex-start;
+      justify-self: start;
     }
     .md\:justify-self-end {
-      justify-self: flex-end;
+      justify-self: end;
     }
     .md\:justify-self-center {
       justify-self: center;
@@ -4687,43 +4775,33 @@
       row-gap: 3rem;
     }
     .md\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .md\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .md\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .md\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .md\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .md\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .md\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .md\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .md\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .md\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.md\:space-x-0 > :not(:last-child)) {
@@ -4819,23 +4897,18 @@
       float: none;
     }
     .lg\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .lg\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .lg\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .lg\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .lg\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .lg\:d-inline {
@@ -4944,10 +5017,10 @@
       justify-items: stretch;
     }
     .lg\:justify-self-start {
-      justify-self: flex-start;
+      justify-self: start;
     }
     .lg\:justify-self-end {
-      justify-self: flex-end;
+      justify-self: end;
     }
     .lg\:justify-self-center {
       justify-self: center;
@@ -5580,43 +5653,33 @@
       row-gap: 3rem;
     }
     .lg\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .lg\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .lg\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .lg\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .lg\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .lg\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .lg\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .lg\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .lg\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .lg\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.lg\:space-x-0 > :not(:last-child)) {
@@ -5712,23 +5775,18 @@
       float: none;
     }
     .xl\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .xl\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .xl\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .xl\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .xl\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .xl\:d-inline {
@@ -5837,10 +5895,10 @@
       justify-items: stretch;
     }
     .xl\:justify-self-start {
-      justify-self: flex-start;
+      justify-self: start;
     }
     .xl\:justify-self-end {
-      justify-self: flex-end;
+      justify-self: end;
     }
     .xl\:justify-self-center {
       justify-self: center;
@@ -6473,43 +6531,33 @@
       row-gap: 3rem;
     }
     .xl\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .xl\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .xl\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .xl\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .xl\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .xl\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .xl\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .xl\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .xl\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .xl\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.xl\:space-x-0 > :not(:last-child)) {
@@ -6605,23 +6653,18 @@
       float: none;
     }
     .\32 xl\:object-fit-contain {
-      -o-object-fit: contain;
       object-fit: contain;
     }
     .\32 xl\:object-fit-cover {
-      -o-object-fit: cover;
       object-fit: cover;
     }
     .\32 xl\:object-fit-fill {
-      -o-object-fit: fill;
       object-fit: fill;
     }
     .\32 xl\:object-fit-scale {
-      -o-object-fit: scale-down;
       object-fit: scale-down;
     }
     .\32 xl\:object-fit-none {
-      -o-object-fit: none;
       object-fit: none;
     }
     .\32 xl\:d-inline {
@@ -6730,10 +6773,10 @@
       justify-items: stretch;
     }
     .\32 xl\:justify-self-start {
-      justify-self: flex-start;
+      justify-self: start;
     }
     .\32 xl\:justify-self-end {
-      justify-self: flex-end;
+      justify-self: end;
     }
     .\32 xl\:justify-self-center {
       justify-self: center;
@@ -7366,43 +7409,33 @@
       row-gap: 3rem;
     }
     .\32 xl\:column-gap-0 {
-      -moz-column-gap: 0;
       column-gap: 0;
     }
     .\32 xl\:column-gap-1 {
-      -moz-column-gap: 0.25rem;
       column-gap: 0.25rem;
     }
     .\32 xl\:column-gap-2 {
-      -moz-column-gap: 0.5rem;
       column-gap: 0.5rem;
     }
     .\32 xl\:column-gap-3 {
-      -moz-column-gap: 0.75rem;
       column-gap: 0.75rem;
     }
     .\32 xl\:column-gap-4 {
-      -moz-column-gap: 1rem;
       column-gap: 1rem;
     }
     .\32 xl\:column-gap-5 {
-      -moz-column-gap: 1.25rem;
       column-gap: 1.25rem;
     }
     .\32 xl\:column-gap-6 {
-      -moz-column-gap: 1.5rem;
       column-gap: 1.5rem;
     }
     .\32 xl\:column-gap-7 {
-      -moz-column-gap: 2rem;
       column-gap: 2rem;
     }
     .\32 xl\:column-gap-8 {
-      -moz-column-gap: 2.5rem;
       column-gap: 2.5rem;
     }
     .\32 xl\:column-gap-9 {
-      -moz-column-gap: 3rem;
       column-gap: 3rem;
     }
     :where(.\32 xl\:space-x-0 > :not(:last-child)) {

@@ -15,15 +15,13 @@ import { getConfig } from '@libs/config'
 
 ## Example
 
-Here's a navbar that includes most supported sub-components and a responsive right drawer with [our Drawer plugin]([[docsref:/components/drawer]]). Use the lower-right corner grip to resize to preview responsive behavior.
+Here’s a navbar that includes most supported sub-components and a responsive right drawer with [our Drawer plugin]([[docsref:/components/drawer]]). Use the lower-right corner grip to resize to preview responsive behavior.
 
 <ResizableExample code={`<nav class="navbar md:navbar-expand bg-1">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer" aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
-          <path d="M1 3.5h14M1 8h14M1 12.5h14"/>
-        </svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
         <div class="drawer-header">
@@ -39,9 +37,9 @@ Here's a navbar that includes most supported sub-components and a responsive rig
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+              <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
                 Menu
-              </a>
+              </button>
               <div class="menu">
                 <a class="menu-item" href="#">Action</a>
                 <a class="menu-item" href="#">Another action</a>
@@ -66,9 +64,9 @@ Here's a navbar that includes most supported sub-components and a responsive rig
 
 ## How it works
 
-Here's what you need to know before getting started with the navbar:
+Here’s what you need to know before getting started with the navbar:
 
-- Navbars require a wrapping `.navbar` with `.navbar-expand-{breakpoint}` for responsive collapsing and [color scheme](#color-schemes) classes.
+- Navbars require a wrapping `.navbar` with `.{breakpoint}:navbar-expand` (e.g. `.md:navbar-expand`) for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
 - Use our [margin]([[docsref:/utilities/margin]]), [padding]([[docsref:/utilities/padding]]), and [flex]([[docsref:/utilities/flex]]) utility classes for controlling spacing and alignment within navbars.
 - Navbars are responsive by default using our **drawer component**. On mobile, navigation links slide in from the side as a drawer.
@@ -146,7 +144,7 @@ Please note that you should also add the `aria-current` attribute on the active 
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
         <div class="drawer-header">
@@ -179,7 +177,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarNavAltMarkup" aria-labelledby="navbarNavAltMarkupLabel">
         <div class="drawer-header">
@@ -204,7 +202,7 @@ You can also use menus in your navbar. Menus require a wrapping element for posi
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarNavMenu" aria-controls="navbarNavMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarNavMenu" aria-labelledby="navbarNavMenuLabel">
         <div class="drawer-header">
@@ -223,9 +221,9 @@ You can also use menus in your navbar. Menus require a wrapping element for posi
               <a class="nav-link" href="#">Pricing</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+              <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
                 Menu link
-              </a>
+              </button>
               <div class="menu">
                 <a class="menu-item" href="#">Action</a>
                 <a class="menu-item" href="#">Another action</a>
@@ -246,7 +244,7 @@ Place various form controls and components within a navbar:
     <div class="container-fluid">
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn-outline theme-success" type="submit">Search</button>
       </form>
     </div>
   </nav>`} />
@@ -258,7 +256,7 @@ Immediate child elements of `.navbar` use flex layout and will default to `justi
       <a class="navbar-brand">Navbar</a>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn-outline theme-success" type="submit">Search</button>
       </form>
     </div>
   </nav>`} />
@@ -278,8 +276,8 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 
 <Example code={`<nav class="navbar bg-1 fg-2">
     <form class="container-fluid justify-content-start">
-      <button class="btn btn-outline-success me-2" type="button">Main button</button>
-      <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
+      <button class="btn-outline theme-success me-2" type="button">Main button</button>
+      <button class="btn-outline theme-secondary btn-sm" type="button">Smaller button</button>
     </form>
   </nav>`} />
 
@@ -301,7 +299,7 @@ Mix and match with other components and utilities as needed.
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar w/ text</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarText" aria-labelledby="navbarTextLabel">
         <div class="drawer-header">
@@ -336,9 +334,7 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Dark navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDarkDrawer" aria-controls="navbarDarkDrawer" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round">
-          <path d="M1 3.5h14M1 8h14M1 12.5h14"/>
-        </svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarDarkDrawer" aria-labelledby="navbarDarkDrawerLabel">
         <div class="drawer-header">
@@ -354,9 +350,9 @@ To make a navbar dark, add `data-bs-theme="dark"` to the `.navbar` element.
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+              <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
                 Menu
-              </a>
+              </button>
               <div class="menu">
                 <a class="menu-item" href="#">Action</a>
                 <a class="menu-item" href="#">Another action</a>
@@ -402,14 +398,14 @@ Add `.navbar-translucent` to blur and saturate the background of a navbar. This 
 
 ## Color schemes
 
-Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `data-bs-theme="dark"` to the `.navbar` parent for dark background colors. Then, customize with `.bg-*` and additional utilities.
+Navbar themes are easier than ever thanks to Bootstrap’s combination of Sass and CSS variables. The default is our "light navbar" for use with light background colors, but you can also apply `data-bs-theme="dark"` to the `.navbar` parent for dark background colors. Then, customize with `.bg-*` and additional utilities.
 
 <ResizableExample className="d-flex flex-column gap-2" showMarkup={false} code={`
 <nav class="navbar md:navbar-expand" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+      <span class="navbar-toggler-icon" aria-hidden="true"></span>
     </button>
     <dialog class="drawer drawer-end" tabindex="-1" id="navbarColor01" aria-labelledby="navbarColor01Label">
       <div class="drawer-header">
@@ -433,7 +429,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline theme-secondary" type="submit">Search</button>
+          <button class="btn-outline theme-secondary" type="submit">Search</button>
         </form>
       </div>
     </dialog>
@@ -444,7 +440,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+      <span class="navbar-toggler-icon" aria-hidden="true"></span>
     </button>
     <dialog class="drawer drawer-end" tabindex="-1" id="navbarColor02" aria-labelledby="navbarColor02Label">
       <div class="drawer-header">
@@ -468,7 +464,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" data-bs-theme="light" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-solid theme-inverse" type="submit">Search</button>
+          <button class="btn-solid theme-inverse" type="submit">Search</button>
         </form>
       </div>
     </dialog>
@@ -479,7 +475,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-      <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+      <span class="navbar-toggler-icon" aria-hidden="true"></span>
     </button>
     <dialog class="drawer drawer-end" tabindex="-1" id="navbarColor03" aria-labelledby="navbarColor03Label">
       <div class="drawer-header">
@@ -503,7 +499,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button class="btn btn-outline-primary" type="submit">Search</button>
+          <button class="btn-outline theme-primary" type="submit">Search</button>
         </form>
       </div>
     </dialog>
@@ -527,7 +523,7 @@ Navbar themes are easier than ever thanks to Bootstrap's combination of Sass and
 
 ## Containers
 
-Although it's not required, you can wrap a navbar in a `.container` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `.navbar` to only center the contents of a [fixed or static top navbar](#placement).
+Although it’s not required, you can wrap a navbar in a `.container` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `.navbar` to only center the contents of a [fixed or static top navbar](#placement).
 
 <Example code={`<div class="container">
     <nav class="navbar lg:navbar-expand bg-1 fg-2">
@@ -549,17 +545,17 @@ Use any of the responsive containers to change how wide the content in your navb
 
 Use our [position utilities]([[docsref:/utilities/position]]) to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, stickied to the top (scrolls with the page until it reaches the top, then stays there), or stickied to the bottom (scrolls with the page until it reaches the bottom, then stays there).
 
-Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
+Fixed navbars use `position: fixed`, meaning they’re pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
 
 <NavbarPlacementPlayground />
 
 ## Responsive behaviors
 
-Navbars can use `.navbar-toggler`, and `.lg:navbar-expand{-sm|-md|-lg|-xl|-2xl}` classes to determine when their content appears in an drawer drawer or inline. In combination with other utilities, you can easily choose when to show or hide particular elements.
+Navbars can use `.navbar-toggler`, and `.lg:navbar-expand{-sm|-md|-lg|-xl|-2xl}` classes to determine when their content appears in a drawer or inline. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
-For navbars that never collapse, add the `.lg:navbar-expand` class on the navbar. For navbars that always show the drawer drawer, don't add any `.lg:navbar-expand` class.
+For navbars that never collapse, add the `.lg:navbar-expand` class on the navbar. For navbars that always show the drawer, don’t add any `.lg:navbar-expand` class.
 
-### Drawer drawer
+### Drawer
 
 By default, navbars use the [drawer component]([[docsref:/components/drawer]]) for their responsive behavior. This provides a modern drawer-style menu that slides in from any side of the screen.
 
@@ -578,7 +574,7 @@ These examples omit the `.lg:navbar-expand` class to always show the drawer beha
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Left Drawer</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarLeftDrawer" aria-controls="navbarLeftDrawer" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-start" tabindex="-1" id="navbarLeftDrawer" aria-labelledby="navbarLeftDrawerLabel">
         <div class="drawer-header">
@@ -600,7 +596,7 @@ These examples omit the `.lg:navbar-expand` class to always show the drawer beha
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Top Drawer</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarTopDrawer" aria-controls="navbarTopDrawer" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-top" tabindex="-1" id="navbarTopDrawer" aria-labelledby="navbarTopDrawerLabel">
         <div class="drawer-header">
@@ -620,16 +616,16 @@ These examples omit the `.lg:navbar-expand` class to always show the drawer beha
 
 ### Toggler
 
-Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler.
+Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they’ll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler.
 
-These examples omit the `.lg:navbar-expand` class to always show the collapsed state with the toggler visible. Click the toggler to open the drawer drawer.
+These examples omit the `.lg:navbar-expand` class to always show the collapsed state with the toggler visible. Click the toggler to open the drawer.
 
 With no `.navbar-brand` shown (hidden inside the drawer):
 
 <ResizableExample code={`<nav class="navbar md:navbar-expand bg-1 fg-2">
     <div class="container-fluid">
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarTogglerDemo01" aria-labelledby="navbarTogglerDemo01Label">
         <div class="drawer-header">
@@ -645,7 +641,7 @@ With no `.navbar-brand` shown (hidden inside the drawer):
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn-outline theme-success" type="submit">Search</button>
           </form>
         </div>
       </dialog>
@@ -658,7 +654,7 @@ With a brand name shown on the left and toggler on the right:
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarTogglerDemo02" aria-labelledby="navbarTogglerDemo02Label">
         <div class="drawer-header">
@@ -673,7 +669,7 @@ With a brand name shown on the left and toggler on the right:
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn-outline theme-success" type="submit">Search</button>
           </form>
         </div>
       </dialog>
@@ -685,7 +681,7 @@ With a toggler on the left and brand name on the right:
 <ResizableExample code={`<nav class="navbar bg-1 fg-2">
     <div class="container-fluid">
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
       <a class="navbar-brand" href="#">Navbar</a>
       <dialog class="drawer drawer-end" tabindex="-1" id="navbarTogglerDemo03" aria-labelledby="navbarTogglerDemo03Label">
@@ -701,7 +697,7 @@ With a toggler on the left and brand name on the right:
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn-outline theme-success" type="submit">Search</button>
           </form>
         </div>
       </dialog>
@@ -710,7 +706,7 @@ With a toggler on the left and brand name on the right:
 
 ### External content
 
-Sometimes you want to use the drawer plugin to trigger a container element for content that structurally sits outside of the `.navbar`. Because our plugin works on the `id` and `data-bs-target` matching, that's easily done!
+Sometimes you want to use the drawer plugin to trigger a container element for content that structurally sits outside of the `.navbar`. Because our plugin works on the `id` and `data-bs-target` matching, that’s easily done!
 
 <ResizableExample code={`<dialog class="drawer drawer-top" tabindex="-1" id="navbarToggleExternalContent" data-bs-theme="dark" aria-labelledby="navbarToggleExternalContentLabel">
     <div class="drawer-header">
@@ -718,18 +714,18 @@ Sometimes you want to use the drawer plugin to trigger a container element for c
       <CloseButton dismiss="drawer" />
     </div>
     <div class="drawer-body">
-      <span class="text-body-secondary">Toggleable via the navbar toggler.</span>
+      <span class="fg-2">Toggleable via the navbar toggler.</span>
     </div>
   </dialog>
   <nav class="navbar bg-body" data-bs-theme="dark">
     <div class="container-fluid">
       <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
     </div>
   </nav>`} />
 
-When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes *before* the toggler in the document's structure. We also recommend making sure that the toggler has the `aria-controls` attribute, pointing to the `id` of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.
+When you do this, we recommend including additional JavaScript to move the focus programmatically to the container when it is opened. Otherwise, keyboard users and users of assistive technologies will likely have a hard time finding the newly revealed content - particularly if the container that was opened comes *before* the toggler in the document’s structure. We also recommend making sure that the toggler has the `aria-controls` attribute, pointing to the `id` of the content container. In theory, this allows assistive technology users to jump directly from the toggler to the container it controls–but support for this is currently quite patchy.
 
 ## CSS
 

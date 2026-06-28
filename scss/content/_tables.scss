@@ -54,7 +54,7 @@ $table-striped-columns-order: even !default;
     // End of reset
 
     width: 100%;
-    margin-bottom: $spacer;
+    margin-bottom: var(--spacer);
     vertical-align: var(--table-cell-vertical-align);
     border-color: var(--theme-border, var(--table-border-color));
 

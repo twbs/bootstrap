@@ -7,12 +7,10 @@
   icon_color: indigo
   pages:
     - title: Install
-    # - title: Introduction
     - title: Approach
     - title: CSS variables
     - title: JavaScript
     - title: Accessibility
-    # - title: Community
 
 - title: Guides
   section: Guides
@@ -83,12 +81,14 @@
     - title: Radio
     - title: Switch
     - title: Range
+      meta:
+        - added: 6.0.0
     - title: Input group
     - title: Floating labels
     - title: Form adorn
       meta:
         - added: 6.0.0
-    - title: Chip input
+    - title: Chips
       meta:
         - added: 6.0.0
     - title: Combobox
@@ -111,64 +111,54 @@
   icon: menu-button-wide-fill
   icon_color: cyan
   pages:
-    - group: Buttons
-      pages:
-        - title: Buttons
-        - title: Button group
-        - title: Close button
-    - group: Feedback
-      pages:
-        - title: Alert
-        - title: Badge
-        - title: Placeholder
-        - title: Progress
-        - title: Spinner
-    - group: Overlays
-      pages:
-        - title: Menu
-          meta:
-            - added: 6.0.0
-        - title: Dialog
-          meta:
-            - added: 6.0.0
-        - title: Drawer
-          meta:
-            - added: 6.0.0
-        - title: Popover
-        - title: Toasts
-        - title: Tooltip
-    - group: Navigation
-      pages:
-        - title: Breadcrumb
-        - title: Nav
-        - title: Tab
-        - title: Nav overflow
-          meta:
-            - added: 6.0.0
-        - title: Navbar
-          meta:
-            - added: 6.0.0
-        - title: Pagination
-        - title: Stepper
-    - group: Layout
-      pages:
-        - title: Card
-        - title: List group
-    - group: Interactions
-      pages:
-        - title: Accordion
-        - title: Carousel
-        - title: Collapse
-        - title: Scrollspy
-        - title: Toggler
-          meta:
-            - added: 6.0.0
+    - title: Accordion
+      meta:
+        - added: 6.0.0
+    - title: Alert
+    - title: Avatar
+      meta:
+        - added: 6.0.0
+    - title: Badge
+    - title: Breadcrumb
+    - title: Button
+    - title: Button group
+    - title: Card
+    - title: Carousel
+    - title: Close button
+    - title: Collapse
+    - title: Dialog
+      meta:
+        - added: 6.0.0
+    - title: Drawer
+      meta:
+        - added: 6.0.0
+    - title: List group
+    - title: Menu
+      meta:
+        - added: 6.0.0
+    - title: Nav
+    - title: Nav overflow
+      meta:
+        - added: 6.0.0
+    - title: Navbar
+      meta:
+        - added: 6.0.0
 
-    - group: Miscellaneous
-      pages:
-        - title: Avatar
-          meta:
-            - added: 6.0.0
+    - title: Pagination
+    - title: Placeholder
+    - title: Popover
+    - title: Progress
+    - title: Scrollspy
+    - title: Spinner
+    - title: Stepper
+      meta:
+        - added: 6.0.0
+    - title: Tab
+    - title: Toasts
+    - title: Toggler
+      meta:
+        - added: 6.0.0
+    - title: Tooltip
 
 - title: Helpers
   section: Helpers
@@ -242,7 +232,6 @@
         - title: Text transform
         - title: Text wrapping
         - title: Vertical align
-        - title: Word break
     - group: Borders
       pages:
         - title: Border
@@ -257,13 +246,3 @@
       pages:
         - title: Opacity
         - title: Shadows
-# - title: About
-#   section: About
-#   icon: globe2
-#   icon_color: indigo
-#   pages:
-#     - title: Overview
-#     - title: Team
-#     - title: Brand
-#     - title: License
-#     - title: Translations

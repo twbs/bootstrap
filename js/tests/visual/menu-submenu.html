@@ -44,7 +44,7 @@
   </head>
   <body>
     <div class="container py-4">
-      <h1 class="mb-4">Menu Submenus <small class="text-body-secondary">Bootstrap Visual Test</small></h1>
+      <h1 class="mb-4">Menu Submenus <small class="fg-2">Bootstrap Visual Test</small></h1>
 
       <div class="alert theme-info">
         <strong>Keyboard Navigation:</strong>
@@ -59,7 +59,7 @@
       <!-- Basic Submenu -->
       <section class="test-section">
         <h2>Basic Submenu</h2>
-        <p class="text-body-secondary">Single level submenu with hover and click activation.</p>
+        <p class="fg-2">Single level submenu with hover and click activation.</p>
 
         <div class="demo-box">
           <div>
@@ -89,7 +89,7 @@
       <!-- Nested Submenus -->
       <section class="test-section">
         <h2>Nested Submenus (Multi-level)</h2>
-        <p class="text-body-secondary">Three levels of nested submenus.</p>
+        <p class="fg-2">Three levels of nested submenus.</p>
 
         <div class="demo-box">
           <div>
@@ -126,7 +126,7 @@
       <!-- Multiple Submenus -->
       <section class="test-section">
         <h2>Multiple Submenus at Same Level</h2>
-        <p class="text-body-secondary">Multiple submenu triggers in the same menu - opening one closes the other.</p>
+        <p class="fg-2">Multiple submenu triggers in the same menu - opening one closes the other.</p>
 
         <div class="demo-box">
           <div>
@@ -175,7 +175,7 @@
       <!-- Viewport Flipping Test -->
       <section class="test-section">
         <h2>Viewport Detection (Flipping)</h2>
-        <p class="text-body-secondary">Submenus flip to the opposite side when there's not enough space. Try the one on the right.</p>
+        <p class="fg-2">Submenus flip to the opposite side when there's not enough space. Try the one on the right.</p>
 
         <div class="demo-box" style="justify-content: space-between;">
           <div>
@@ -220,7 +220,7 @@
       <!-- Navbar Integration -->
       <section class="test-section">
         <h2>Navbar Integration</h2>
-        <p class="text-body-secondary">Submenus work within navbar menus.</p>
+        <p class="fg-2">Submenus work within navbar menus.</p>
 
         <nav class="navbar lg:navbar-expand bg-body-tertiary rounded">
           <div class="container-fluid">
@@ -229,7 +229,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSubmenu">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav me-auto mb-2 lg:mb-0">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
@@ -271,15 +271,15 @@
         </nav>
       </section>
 
-      <!-- Dropup with Submenus -->
+      <!-- Submenus with Top Placement -->
       <section class="test-section">
-        <h2>Dropup with Submenus</h2>
-        <p class="text-body-secondary">Submenus work with dropup direction.</p>
+        <h2>Submenus with Top Placement</h2>
+        <p class="fg-2">Submenus work in upward direction.</p>
 
         <div class="demo-box demo-box-center" style="min-height: 200px;">
-          <div class="btn-group dropup">
-            <button type="button" class="btn-solid theme-warning" data-bs-toggle="menu" aria-expanded="false">
-              Dropup Menu
+          <div class="btn-group">
+            <button type="button" class="btn-solid theme-warning" data-bs-toggle="menu" data-bs-placement="top" aria-expanded="false">
+              Menu (opens top)
             </button>
             <div class="menu">
               <a class="menu-item" href="#">Action</a>
@@ -301,7 +301,7 @@
       <!-- With Icons -->
       <section class="test-section">
         <h2>With Icons</h2>
-        <p class="text-body-secondary">Submenus with icons in menu items.</p>
+        <p class="fg-2">Submenus with icons in menu items.</p>
 
         <div class="demo-box">
           <div>
@@ -345,7 +345,7 @@
       <!-- Mobile Test -->
       <section class="test-section">
         <h2>Mobile Mode</h2>
-        <p class="text-body-secondary">
+        <p class="fg-2">
           Resize your browser to &lt;768px width to see slide-over behavior.
           On mobile, submenus slide in from the side with a back button.
         </p>
@@ -384,7 +384,7 @@
       <!-- Disabled Items -->
       <section class="test-section">
         <h2>With Disabled Items</h2>
-        <p class="text-body-secondary">Keyboard navigation skips disabled items.</p>
+        <p class="fg-2">Keyboard navigation skips disabled items.</p>
 
         <div class="demo-box">
           <div>
@@ -413,7 +413,7 @@
       <section class="test-section">
         <h2>Feature Summary</h2>
         <div class="row">
-          <div class="col-md-6">
+          <div class="md:col-6">
             <h5>Mouse Interaction</h5>
             <ul class="feature-list">
               <li>✅ Hover to open submenus</li>
@@ -423,7 +423,7 @@
               <li>✅ Sibling submenus auto-close</li>
             </ul>
           </div>
-          <div class="col-md-6">
+          <div class="md:col-6">
             <h5>Keyboard Navigation</h5>
             <ul class="feature-list">
               <li>✅ Arrow Up/Down - navigate items</li>
@@ -434,7 +434,7 @@
               <li>✅ Home/End - jump to first/last item</li>
             </ul>
           </div>
-          <div class="col-md-6">
+          <div class="md:col-6">
             <h5>Viewport Detection</h5>
             <ul class="feature-list">
               <li>✅ Default: opens to inline-end (right in LTR)</li>
@@ -443,7 +443,7 @@
               <li>✅ Auto-update on scroll/resize</li>
             </ul>
           </div>
-          <div class="col-md-6">
+          <div class="md:col-6">
             <h5>Mobile Mode</h5>
             <ul class="feature-list">
               <li>✅ Slide-over animation</li>
@@ -452,7 +452,7 @@
               <li>✅ Configurable breakpoint</li>
             </ul>
           </div>
-          <div class="col-md-6">
+          <div class="md:col-6">
             <h5>Accessibility</h5>
             <ul class="feature-list">
               <li>✅ aria-haspopup on submenu triggers</li>
@@ -461,7 +461,7 @@
               <li>✅ Focus returns to trigger on close</li>
             </ul>
           </div>
-          <div class="col-md-6">
+          <div class="md:col-6">
             <h5>Configuration Options</h5>
             <ul class="feature-list">
               <li>✅ submenuTrigger: 'click' | 'hover' | 'both'</li>
@@ -473,6 +473,6 @@
       </section>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js" type="module"></script>
   </body>
 </html>

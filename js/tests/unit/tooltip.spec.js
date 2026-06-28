@@ -62,9 +62,9 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('#tooltipEl')
       const tooltipBySelector = new Tooltip('#tooltipEl')
-      const tooltipByElement = new Tooltip(tooltipEl)
-
       expect(tooltipBySelector._element).toEqual(tooltipEl)
+
+      const tooltipByElement = new Tooltip(tooltipEl)
       expect(tooltipByElement._element).toEqual(tooltipEl)
     })
 
@@ -88,6 +88,16 @@ describe('Tooltip', () => {
 
       expect(tooltip._config.title).toEqual('1')
       expect(tooltip._config.content).toEqual('7')
+    })
+
+    it('should convert title and content to string if booleans (e.g. data-bs-content="true")', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" data-bs-title="true" data-bs-content="false"></a>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl)
+
+      expect(tooltip._config.title).toEqual('true')
+      expect(tooltip._config.content).toEqual('false')
     })
 
     it('should enable selector delegation', () => {
@@ -678,6 +688,34 @@ describe('Tooltip', () => {
       })
     })
 
+    it('should reset hover state when show is prevented so the tip can reopen', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        const preventOnce = ev => {
+          ev.preventDefault()
+          tooltipEl.removeEventListener('show.bs.tooltip', preventOnce)
+        }
+
+        tooltipEl.addEventListener('show.bs.tooltip', preventOnce)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          expect(document.querySelector('.tooltip')).not.toBeNull()
+          resolve()
+        })
+
+        // First show is prevented — `_isHovered` must not stay stuck true,
+        // otherwise the `_enter()` retry below would early-return and never reopen.
+        tooltip.show()
+        expect(tooltip._isHovered).toBeFalse()
+
+        tooltip._enter()
+      })
+    })
+
     it('should show tooltip if leave event hasn\'t occurred before delay expires', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
@@ -1041,6 +1079,109 @@ describe('Tooltip', () => {
       } catch {
         throw new Error('should not throw error')
       }
+    })
+
+    it('should hide a tooltip when the Escape key is pressed', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          expect(document.querySelector('.tooltip')).not.toBeNull()
+
+          const keydownEscape = createEvent('keydown', { bubbles: true })
+          keydownEscape.key = 'Escape'
+          document.dispatchEvent(keydownEscape)
+        })
+
+        tooltipEl.addEventListener('hidden.bs.tooltip', () => {
+          expect(document.querySelector('.tooltip')).toBeNull()
+          expect(tooltipEl.getAttribute('aria-describedby')).toBeNull()
+          resolve()
+        })
+
+        tooltip.show()
+      })
+    })
+
+    it('should stop the Escape keystroke from reaching ancestor components (e.g. a dialog)', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+        const ancestorSpy = jasmine.createSpy('ancestor keydown')
+
+        // A parent dialog handles Escape on the bubble phase; it should not run
+        // while a tooltip is open, so the first Escape only closes the tooltip.
+        fixtureEl.addEventListener('keydown', ancestorSpy)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          const keydownEscape = createEvent('keydown', { bubbles: true, cancelable: true })
+          keydownEscape.key = 'Escape'
+          tooltipEl.dispatchEvent(keydownEscape)
+
+          expect(ancestorSpy).not.toHaveBeenCalled()
+          expect(keydownEscape.defaultPrevented).toBeTrue()
+        })
+
+        tooltipEl.addEventListener('hidden.bs.tooltip', () => {
+          fixtureEl.removeEventListener('keydown', ancestorSpy)
+          resolve()
+        })
+
+        tooltip.show()
+      })
+    })
+
+    it('should not hide a tooltip when a non-Escape key is pressed', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => {
+          const spy = spyOn(tooltip, 'hide').and.callThrough()
+
+          const keydownEnter = createEvent('keydown', { bubbles: true })
+          keydownEnter.key = 'Enter'
+          document.dispatchEvent(keydownEnter)
+
+          setTimeout(() => {
+            expect(spy).not.toHaveBeenCalled()
+            expect(document.querySelector('.tooltip')).not.toBeNull()
+            resolve()
+          }, 20)
+        })
+
+        tooltip.show()
+      })
+    })
+
+    it('should remove the Escape keydown listener once the tooltip is hidden', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
+
+        const tooltipEl = fixtureEl.querySelector('a')
+        const tooltip = new Tooltip(tooltipEl)
+
+        tooltipEl.addEventListener('shown.bs.tooltip', () => tooltip.hide())
+        tooltipEl.addEventListener('hidden.bs.tooltip', () => {
+          const spy = spyOn(tooltip, 'hide')
+
+          const keydownEscape = createEvent('keydown', { bubbles: true })
+          keydownEscape.key = 'Escape'
+          document.dispatchEvent(keydownEscape)
+
+          expect(spy).not.toHaveBeenCalled()
+          resolve()
+        })
+
+        tooltip.show()
+      })
     })
   })
 

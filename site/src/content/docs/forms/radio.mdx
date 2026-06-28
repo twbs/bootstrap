@@ -10,7 +10,7 @@ import { getData } from '@libs/data'
 
 ## Basic radio
 
-Similar to checkboxes, radios are styled with the `.radio` class. However, there's no custom SVG as we pure CSS to style the input and its checked state.
+Similar to checkboxes, radios are styled with the `.radio` class. However, there’s no custom SVG as we use pure CSS to style the input and its checked state.
 
 <Example code={`<input type="radio" id="radio" class="radio" />`} />
 
@@ -37,7 +37,7 @@ Add a description or other content after the label. We recommend wrapping the la
 
 ## Theme colors
 
-Modify the appearance of checked checkboxes by adding the `.theme-{color}` class to the `.radio` element. This will set the checked background and border color to the theme color.
+Modify the appearance of checked radios by adding the `.theme-{color}` class to the `.radio` element. This will set the checked background and border color to the theme color.
 
 <Example class="d-flex flex-column gap-2" code={getData('theme-colors').map((themeColor) => `<div class="form-field">
     <input type="radio" id="radio${themeColor.name}" class="radio theme-${themeColor.name}" checked />
@@ -48,11 +48,32 @@ Modify the appearance of checked checkboxes by adding the `.theme-{color}` class
 
 Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input’s state.
 
-<Example code={`<div class="form-field">
+<Example class="vstack gap-2" code={`<div class="form-field">
     <input type="radio" id="radioDisabled" class="radio" disabled />
     <label for="radioDisabled">Example new radio</label>
   </div>
-  `} />
+
+  <div class="form-field">
+    <input type="radio" id="radioCheckedDisabled" class="radio" disabled checked />
+    <label for="radioCheckedDisabled">Example checked disabled radio</label>
+  </div>`} />
+
+## Sizes
+
+Add `.radio-sm` or `.radio-lg` to make your radio appear smaller or larger.
+
+<Example class="d-flex flex-column gap-3" code={`<div class="form-field">
+    <input type="radio" id="radioSizeSm" class="radio radio-sm" checked />
+    <label for="radioSizeSm">Small radio</label>
+  </div>
+  <div class="form-field">
+    <input type="radio" id="radioSizeMd" class="radio" checked />
+    <label for="radioSizeMd">Default radio</label>
+  </div>
+  <div class="form-field">
+    <input type="radio" id="radioSizeLg" class="radio radio-lg" checked />
+    <label for="radioSizeLg">Large radio</label>
+  </div>`} />
 
 ## CSS
 

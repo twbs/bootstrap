@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "config" as *;
 @use "functions" as *;
 @use "mixins/border-radius" as *;
@@ -15,9 +14,9 @@ $list-group-tokens: defaults(
     --list-group-bg: var(--bg-body),
     --list-group-border-color: var(--border-color),
     --list-group-border-width: var(--border-width),
-    --list-group-border-radius: var(--border-radius),
-    --list-group-item-padding-x: #{$spacer},
-    --list-group-item-padding-y: #{$spacer * .5},
+    --list-group-border-radius: var(--radius-5),
+    --list-group-item-padding-x: var(--spacer),
+    --list-group-item-padding-y: var(--spacer-2),
     --list-group-action-color: var(--fg-2),
     --list-group-action-hover-color: var(--fg-1),
     --list-group-action-hover-bg: var(--bg-1),
@@ -40,7 +39,7 @@ $list-group-tokens: defaults(
     display: flex;
     flex-direction: column;
 
-    // No need to set list-style: none; since .list-group-item is block level
+    // No need to set list-style-type: ""; since .list-group-item is block level
     padding-inline-start: 0; // reset padding because ul and ol
     margin-bottom: 0;
     @include border-radius(var(--list-group-border-radius));
@@ -136,12 +135,12 @@ $list-group-tokens: defaults(
   // Horizontal
   //
   // Change the layout of list group items from vertical (default) to horizontal.
+  // The responsive variants use container queries, so wrap the list group in a
+  // query container (e.g., the `.contains-inline` utility) for them to take effect.
 
-  @each $breakpoint in map.keys($breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      $prefix: breakpoint-prefix($breakpoint, $breakpoints);
-
-      .#{$prefix}list-group-horizontal {
+  @include loop-breakpoints-up() using ($breakpoint, $prefix) {
+    .#{$prefix}list-group-horizontal {
+      @include container-breakpoint-up($breakpoint) {
         flex-direction: row;
 
         > .list-group-item {

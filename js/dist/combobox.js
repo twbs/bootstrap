@@ -312,7 +312,7 @@ class Combobox extends BaseComponent {
       }
       const items = this._getVisibleItems();
       if (items.length > 0) {
-        const target = key === ARROW_DOWN_KEY ? items[0] : items[items.length - 1];
+        const target = key === ARROW_DOWN_KEY ? items[0] : items.at(-1);
         target.focus();
       }
       return;
@@ -351,7 +351,7 @@ class Combobox extends BaseComponent {
       event.preventDefault();
       const items = this._getVisibleItems();
       if (items.length > 0) {
-        const targetItem = key === HOME_KEY ? items[0] : items[items.length - 1];
+        const targetItem = key === HOME_KEY ? items[0] : items.at(-1);
         targetItem.focus();
       }
       return;

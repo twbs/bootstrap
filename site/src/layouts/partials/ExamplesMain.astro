@@ -22,7 +22,7 @@ import { getSlug } from '@libs/utils'
                   <div>
                     <h3 class="h5 mb-1">
                       <a
-                        class="d-block link-offset-1"
+                        class="d-block underline-offset-1"
                         href={`${getConfig().github_org}${example.url}/`}
                         target="_blank"
                         rel="noopener"
@@ -31,10 +31,10 @@ import { getSlug } from '@libs/utils'
                         {example.name}
                       </a>
                     </h3>
-                    <p class="text-body-secondary">{example.description}</p>
+                    <p class="fg-2">{example.description}</p>
                     <p>
                       <a
-                        class="icon-link small link-secondary link-offset-1"
+                        class="icon-link small theme-secondary underline-offset-1"
                         href={`https://stackblitz.com/github/twbs${example.url}?file=${
                           example.indexPath ? example.indexPath : 'index.html'
                         }`}
@@ -56,7 +56,7 @@ import { getSlug } from '@libs/utils'
             return (
               <article class="sm:col-6 md:col-3 mb-3">
                 <a
-                  class="d-block link-offset-1"
+                  class="d-block underline-offset-1"
                   href={`/docs/${getConfig().docs_version}/examples/${getSlug(example.name)}/`}
                 >
                   <img
@@ -80,7 +80,7 @@ import { getSlug } from '@libs/utils'
                   />
                   <h3 class="h5 mb-1">{example.name}</h3>
                 </a>
-                <p class="text-body-secondary">{example.description}</p>
+                <p class="fg-2">{example.description}</p>
               </article>
             )
           })}

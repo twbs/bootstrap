@@ -6,7 +6,11 @@
 
 @layer custom {
   .bd-content {
+    --bs-content-font-size: 15px;
+    --bs-content-line-height: calc(22 / 15);
+
     @media (width >= 1024px) {
+      --bs-content-line-height: 1.625;
       font-size: var(--font-size-md);
     }
 
@@ -41,7 +45,7 @@
       }
 
       td {
-        font-family: var(--bs-font-monospace);
+        font-family: var(--bs-font-mono);
 
         &:first-child {
           padding-inline-end: 1.5rem;

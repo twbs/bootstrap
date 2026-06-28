@@ -4,13 +4,13 @@ description: Keep your projects lean, responsive, and maintainable so you can de
 toc: true
 ---
 
-## Lean Sass imports
+## Lean Sass setup
 
-When using Sass in your asset pipeline, make sure you optimize Bootstrap by only `@import`ing the components you need. Your largest optimizations will likely come from the `Layout & Components` section of our `bootstrap.scss`.
+When using Sass in your asset pipeline, make sure you optimize Bootstrap by only `@use`ing the partials you need. Your largest optimizations will likely come from the `Layout & Components` section of our `bootstrap.scss`.
 
 <ScssDocs name="import-stack" file="scss/bootstrap.scss" />
 
-If you’re not using a component, comment it out or delete it entirely. For example, if you’re not using the carousel, remove that import to save some file size in your compiled CSS. Keep in mind there are some dependencies across Sass imports that may make it more difficult to omit a file.
+If you’re not using a component, comment it out or delete its `@forward` entry entirely. For example, if you’re not using the carousel, remove that line to save file size in your compiled CSS. Keep in mind there are some dependencies across Sass partials that may make it more difficult to omit a file.
 
 ## Lean JavaScript
 

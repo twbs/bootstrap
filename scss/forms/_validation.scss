@@ -70,7 +70,7 @@ $validation-states: defaults(
   }
 
   // Checkbox — control-level styling (border, checked bg, focus ring).
-  .check input {
+  .check {
     @include form-validation-state-selector($state) {
       --check-border-color: var(--#{$theme}-border);
       --check-checked-bg: var(--#{$theme}-bg);
@@ -83,7 +83,7 @@ $validation-states: defaults(
   }
 
   // Checkbox — label color and feedback display via .form-field:has().
-  .form-field:has(.check input.is-#{$state}) {
+  .form-field:has(.check.is-#{$state}) {
     label { color: var(--#{$theme}-fg); }
 
     .#{$state}-feedback,
@@ -91,14 +91,14 @@ $validation-states: defaults(
   }
 
   @if $state == "invalid" {
-    [data-bs-validate] .form-field:has(.check input:user-invalid) {
+    [data-bs-validate] .form-field:has(.check:user-invalid) {
       label { color: var(--#{$theme}-fg); }
 
       .invalid-feedback,
       .invalid-tooltip { display: block; }
     }
   } @else if $state == "valid" {
-    [data-bs-validate~="valid"] .form-field:has(.check input:user-valid) {
+    [data-bs-validate~="valid"] .form-field:has(.check:user-valid) {
       label { color: var(--#{$theme}-fg); }
 
       .valid-feedback,
@@ -281,8 +281,9 @@ $validation-states: defaults(
     }
   }
 
-  // Range — .form-range IS the <input>, so the mixin applies directly.
-  .form-range {
+  // Range — the validation class lives on .form-range-input, while feedback sits outside
+  // the .form-range wrapper, so we use :has() to toggle it.
+  .form-range-input {
     @include form-validation-state-selector($state) {
       &::-webkit-slider-thumb { background: var(--#{$theme}-bg); }
       &::-moz-range-thumb { background: var(--#{$theme}-bg); }
@@ -295,10 +296,12 @@ $validation-states: defaults(
           @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
         }
       }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip { display: block; }
     }
+  }
+
+  .form-range:has(.form-range-input.is-#{$state}) {
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip { display: block; }
   }
 
   // Input group — feedback lives outside the input-group in the parent
@@ -333,16 +336,15 @@ $validation-states: defaults(
     }
   }
 
-  // OTP — validation applies to the wrapper; inner .form-control inherits.
+  // OTP — validation applies to the wrapper; the visual slots inherit the state.
   .otp {
     @include form-validation-state-selector($state) {
-      .form-control {
-        --control-border-color: var(--#{$theme}-border);
+      .otp-slot {
+        --otp-slot-border-color: var(--#{$theme}-border);
       }
 
-      .form-control:focus {
+      .otp-slot-active {
         @include focus-ring(true, $color: var(--#{$theme}-focus-ring));
-        --control-border-color: var(--#{$theme}-border);
       }
     }
   }

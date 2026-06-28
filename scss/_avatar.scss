@@ -44,10 +44,12 @@ $avatar-sizes: defaults(
     "lg": (
       size: 3rem,
       status-size: 1rem,
+      border-width: 3px,
     ),
     "xl": (
       size: 4rem,
       status-size: 1.25rem,
+      border-width: 4px,
     ),
   ),
   $avatar-sizes
@@ -72,6 +74,12 @@ $avatar-sizes: defaults(
     vertical-align: middle;
     background-color: var(--theme-bg, var(--avatar-bg));
     @include border-radius(var(--avatar-border-radius));
+
+    > .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .avatar-subtle {
@@ -80,10 +88,7 @@ $avatar-sizes: defaults(
   }
 
   .avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    @include border-radius(inherit);
+    @include border-radius(var(--avatar-border-radius, 50%));
   }
 
   .avatar-status {
@@ -139,11 +144,15 @@ $avatar-sizes: defaults(
 
   @each $size, $tokens in $avatar-sizes {
     .avatar-#{$size},
-    .avatar-stack-#{$size} {
+    .avatar-stack-#{$size} > .avatar {
       --avatar-size: #{map.get($tokens, size)};
 
       @if map.has-key($tokens, status-size) {
         --avatar-status-size: #{map.get($tokens, status-size)};
+      }
+
+      @if map.has-key($tokens, border-width) {
+        --avatar-border-width: #{map.get($tokens, border-width)};
       }
     }
   }
