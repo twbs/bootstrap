@@ -80,6 +80,8 @@ class OtpInput extends BaseComponent {
     // Tracks whether focus was triggered by a click so we can respect the
     // clicked slot instead of jumping to the first empty one
     this._pointerActive = false
+    // Slot index from the most recent tap, applied once focus settles
+    this._pointerIndex = 0
 
     this._setupInput()
     this._renderSlots()
@@ -128,7 +130,7 @@ class OtpInput extends BaseComponent {
     EventHandler.off(this._input, 'input', this._onInput)
     EventHandler.off(this._input, 'beforeinput', this._onBeforeInput)
     EventHandler.off(this._input, 'focus', this._onFocus)
-    EventHandler.off(this._slotsContainer, 'pointerdown', this._onPointerDown)
+    EventHandler.off(this._input, 'pointerdown', this._onPointerDown)
     EventHandler.off(document, 'selectionchange', this._onSelectionChange)
     for (const type of SYNC_EVENTS) {
       EventHandler.off(this._input, type, this._onSync)
@@ -216,8 +218,11 @@ class OtpInput extends BaseComponent {
     this._onPointerDown = event => this._handlePointerDown(event)
     this._onFocus = () => {
       if (this._pointerActive) {
-        // A click already positioned the caret; just refresh the highlight
+        // A tap focused the input natively; position the caret on the clicked
+        // slot now that focus has settled (doing this before native focus would
+        // make iOS/iPadOS raise then immediately dismiss the keyboard)
         this._pointerActive = false
+        this._selectSlot(this._pointerIndex)
         this._render()
         return
       }
@@ -237,7 +242,7 @@ class OtpInput extends BaseComponent {
     EventHandler.on(this._input, 'input', this._onInput)
     EventHandler.on(this._input, 'beforeinput', this._onBeforeInput)
     EventHandler.on(this._input, 'focus', this._onFocus)
-    EventHandler.on(this._slotsContainer, 'pointerdown', this._onPointerDown)
+    EventHandler.on(this._input, 'pointerdown', this._onPointerDown)
     EventHandler.on(document, 'selectionchange', this._onSelectionChange)
 
     // Keep the active-slot highlight in sync with the caret
@@ -311,24 +316,39 @@ class OtpInput extends BaseComponent {
   }
 
   _handlePointerDown(event) {
-    const slot = event.target.closest(`.${CLASS_NAME_SLOT}`)
-    if (!slot) {
+    const index = this._slotIndexFromPoint(event.clientX)
+    if (index === null) {
       return
     }
 
-    const index = this._slots.indexOf(slot)
-    if (index === -1) {
-      return
-    }
-
-    // Take over caret placement from the browser
-    event.preventDefault()
-
-    this._pointerActive = true
-    this._input.focus()
     // Don't let the caret land past the first empty slot
-    this._selectSlot(Math.min(index, this._firstEmptyIndex()))
-    this._render()
+    const target = Math.min(index, this._firstEmptyIndex())
+
+    if (document.activeElement === this._input) {
+      // Already focused (keyboard is up): take over caret placement from the
+      // browser. Safe to preventDefault here — it won't dismiss the keyboard.
+      event.preventDefault()
+      this._selectSlot(target)
+      this._render()
+      return
+    }
+
+    // Not yet focused: let the browser focus the input natively so the
+    // on-screen keyboard is raised by the user's tap. Position the caret in the
+    // focus handler once focus settles.
+    this._pointerActive = true
+    this._pointerIndex = target
+  }
+
+  // Map a viewport x-coordinate to the slot under it, clamped to the last slot
+  _slotIndexFromPoint(x) {
+    for (const [index, slot] of this._slots.entries()) {
+      if (x <= slot.getBoundingClientRect().right || index === this._slots.length - 1) {
+        return index
+      }
+    }
+
+    return null
   }
 
   _afterValueChange() {
