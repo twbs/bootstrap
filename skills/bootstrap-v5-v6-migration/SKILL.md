@@ -448,7 +448,7 @@ document.querySelectorAll('form[data-bs-validate]')
 
 ### Border radius scale
 
-The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem` and a `$radii` map (keys `0`–`9`, e.g. `5: $radius`, `9: $radius * 3`), exposed as `--radius-*` CSS custom properties. Override the base or the map entries rather than the old per-size variables:
+The `$border-radius-*` variables are gone. v6 uses a single base `$radius: .5rem` and a `$radii` map (keys `0`–`9`, e.g. `5: $radius`, `9: $radius * 3`), exposed as `--radius-0`–`--radius-9` tokens (plus `--radius-pill`). The `.rounded-*` utilities now span `0`–`9` and map to different values than v5, so shift class numbers up to keep the same roundness (e.g. `.rounded-1` → `.rounded-3`, `.rounded-3` → `.rounded-5`). Override the base or the map entries rather than the old per-size variables:
 
 ```scss
 @use "bootstrap/scss/bootstrap" with (
@@ -481,23 +481,31 @@ Removed `css-var`, `css-variable-name`, and `local-vars` options. Use `property`
 
 Beyond the renames above, several things changed how a v5 project behaves or what's available. Check the docs for full markup/options.
 
-### Rebuilt components
+### Carousel — rebuilt on CSS scroll-snap
 
-- **Carousel → CSS scroll-snap.** Autoplay is now **opt-in**: the default is `autoplay: false`. Enable per-carousel with `data-bs-autoplay="true"` (or `autoplay: true`). A v5 carousel that auto-advanced will now sit still until you opt in.
-- **ScrollSpy → IntersectionObserver.** Rebuilt internally; active-section detection differs from the v5 scroll-position math. The `data-bs-spy="scroll"` data-API is intact, but verify active states if you depended on the old timing.
+The markup (`.carousel` → `.carousel-inner` → `.carousel-item`) and the JS API (`next`/`prev`/`to`/`cycle`/`pause`, `slide`/`slid` events) are preserved, but several things changed:
+
+- **`ride` → `autoplay` (boolean, opt-in).** `data-bs-ride="carousel"` becomes `data-bs-autoplay="true"`; `{ ride: 'carousel' }` becomes `{ autoplay: true }`. Default is `autoplay: false`, so a v5 carousel that auto-advanced now sits still until you opt in. Interacting with an autoplaying carousel now **permanently stops** it (WCAG 2.2.2).
+- **`wrap` → `ends`.** `wrap: true` → `ends: "wrap"` (or the new default `"loop"`); `wrap: false` → `ends: "stop"`. Set via `data-bs-ends`. The `touch` option is removed (native scroll handles it).
+- **Removed classes:** `.carousel-control-prev/next` (compose a `.btn-icon` + `data-bs-slide` + `.carousel-icon-prev/next`), `.carousel-caption` (use your own markup), `.carousel-dark` (use `data-bs-theme="dark"`), `.carousel-stacked` (now the default), and the transitional `.carousel-item-start/end/next/prev`. Overlaid controls now require `.carousel-overlay`. Control-icon classes renamed `.carousel-control-prev-icon` → `.carousel-icon-prev` (and `-next`).
 
 ### New components (didn't exist in v5)
 
 | Component | Trigger / hook | Purpose |
 |---|---|---|
 | Combobox | `data-bs-toggle="combobox"` | Filterable/autocomplete select built on Menu |
-| Chips | `data-bs-chips` | Token / tag input |
+| Chip / Chip input | `.chip`, `.chip-input` (`data-bs-chips`) | Tags / tokens + interactive entry |
 | Datepicker | `data-bs-toggle="datepicker"` | Date picker (peer dep `vanilla-calendar-pro`) |
 | Range | `.form-range` (+ `data-bs-bubble`, ticks) | Enhanced range slider with a value bubble |
 | Strength | `data-bs-strength` | Password-strength meter |
 | OTP input | `data-bs-otp` | One-time-code input |
 | Nav overflow | `.nav-overflow` | Collapses overflowing nav items into a menu |
-| Toggler | `data-bs-toggle="toggler"` | Generic show/hide toggler |
+| Toggler | `data-bs-toggle="toggler"` | Generic class/attribute toggler |
+| Submenu | `.submenu` (within Menu) | Nested menus (`submenuTrigger`, `submenuDelay`) |
+| Stepper | `.stepper` | Multi-step workflow (CSS-only) |
+| Avatar | `.avatar` | Avatars with sizes, status, `.avatar-stack` (CSS-only) |
+| Form adorn | `.form-adorn` | Icon/text decoration on inputs (CSS-only) |
+| Prose | `.prose` / `.not-prose` | Rich-typography scoping (CSS-only) |
 
 ### Removed / changed internals
 
@@ -526,6 +534,8 @@ Beyond the renames above, several things changed how a v5 project behaves or wha
    - `$border-radius` Sass vars (removed — use `$radius` / `$radii` / `--radius-*`)
    - child `<svg>` inside `.btn-close` (should be empty — icon is a CSS mask)
    - `.btn-close-white` (removed — set text `color` instead)
-   - `carousel` with `data-bs-ride` but no `data-bs-autoplay` (autoplay is now opt-in)
+   - `data-bs-ride` (renamed to `data-bs-autoplay`); `wrap:` carousel option (now `ends:`)
+   - `.carousel-control-prev/next`, `.carousel-caption`, `.carousel-dark`, `.carousel-stacked` (all removed)
    - `.fs-1`–`.fs-6` (should be `.fs-4xl` … `.fs-md`)
+   - `.link-offset-*` / `.link-underline-*` (now `.underline-offset-*` / `.underline-*`)
 3. Test in browser — v6 requires support for `oklch()` and `color-mix()`.
