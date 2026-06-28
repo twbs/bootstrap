@@ -15,14 +15,14 @@ import { getSlug } from '@libs/utils'
           {examples.map((example, index) => {
             if (external) {
               return (
-                <article class="col-md-6 col-lg-4 mb-3 d-flex gap-3">
+                <article class="md:col-6 lg:col-4 mb-3 d-flex gap-3">
                   <svg class="bi fs-5 flex-shrink-0 mt-1" aria-hidden="true">
                     <use href="#box-seam" />
                   </svg>
                   <div>
                     <h3 class="h5 mb-1">
                       <a
-                        class="d-block link-offset-1"
+                        class="d-block underline-offset-1"
                         href={`${getConfig().github_org}${example.url}/`}
                         target="_blank"
                         rel="noopener"
@@ -31,10 +31,10 @@ import { getSlug } from '@libs/utils'
                         {example.name}
                       </a>
                     </h3>
-                    <p class="text-body-secondary">{example.description}</p>
+                    <p class="fg-2">{example.description}</p>
                     <p>
                       <a
-                        class="icon-link small link-secondary link-offset-1"
+                        class="icon-link small theme-secondary underline-offset-1"
                         href={`https://stackblitz.com/github/twbs${example.url}?file=${
                           example.indexPath ? example.indexPath : 'index.html'
                         }`}
@@ -54,13 +54,21 @@ import { getSlug } from '@libs/utils'
             }
 
             return (
-              <article class="col-sm-6 col-md-3 mb-3">
+              <article class="sm:col-6 md:col-3 mb-3">
                 <a
-                  class="d-block link-offset-1"
+                  class="d-block underline-offset-1"
                   href={`/docs/${getConfig().docs_version}/examples/${getSlug(example.name)}/`}
                 >
                   <img
-                    class="img-thumbnail mb-3"
+                    class="img-thumbnail mb-3 examples-thumb"
+                    data-light-src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}
+                    data-light-srcset={`${getVersionedDocsPath(
+                      `/assets/img/examples/${getSlug(example.name)}.png`
+                    )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
+                    data-dark-src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}-dark.png`)}
+                    data-dark-srcset={`${getVersionedDocsPath(
+                      `/assets/img/examples/${getSlug(example.name)}-dark.png`
+                    )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}-dark@2x.png`)} 2x`}
                     srcset={`${getVersionedDocsPath(
                       `/assets/img/examples/${getSlug(example.name)}.png`
                     )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
@@ -72,7 +80,7 @@ import { getSlug } from '@libs/utils'
                   />
                   <h3 class="h5 mb-1">{example.name}</h3>
                 </a>
-                <p class="text-body-secondary">{example.description}</p>
+                <p class="fg-2">{example.description}</p>
               </article>
             )
           })}
@@ -81,3 +89,30 @@ import { getSlug } from '@libs/utils'
     )
   })
 }
+
+<script is:inline>
+  const applyExamplesThumbTheme = () => {
+    const isDark = document.documentElement.getAttribute('data-bs-theme') === 'dark'
+    const thumbs = document.querySelectorAll('.examples-thumb')
+
+    thumbs.forEach((thumb) => {
+      const src = isDark ? thumb.dataset.darkSrc : thumb.dataset.lightSrc
+      const srcset = isDark ? thumb.dataset.darkSrcset : thumb.dataset.lightSrcset
+
+      if (src && thumb.getAttribute('src') !== src) {
+        thumb.setAttribute('src', src)
+      }
+
+      if (srcset && thumb.getAttribute('srcset') !== srcset) {
+        thumb.setAttribute('srcset', srcset)
+      }
+    })
+  }
+
+  applyExamplesThumbTheme()
+
+  new MutationObserver(applyExamplesThumbTheme).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-bs-theme']
+  })
+</script>

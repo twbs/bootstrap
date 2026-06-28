@@ -2,11 +2,12 @@
 title: Scrollspy
 description: Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
 toc: true
+js: required
 ---
 
 ## How it works
 
-Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the element with the `id` referenced by the anchor’s `href` is scrolled into view. Scrollspy is best used in conjunction with a Bootstrap [nav component]([[docsref:/components/navs-tabs]]) or [list group]([[docsref:/components/list-group]]), but it will also work with any anchor elements in the current page. Here’s how it works.
+Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the element with the `id` referenced by the anchor’s `href` is scrolled into view. Scrollspy is best used in conjunction with a Bootstrap [nav component]([[docsref:/components/nav]]) or [list group]([[docsref:/components/list-group]]), but it will also work with any anchor elements in the current page. Here’s how it works.
 
 - To start, scrollspy requires two things: a navigation, list group, or a simple set of links, plus a scrollable container. The scrollable container can be the `<body>` or a custom element with a set `height` and `overflow-y: scroll`.
 
@@ -20,7 +21,7 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 
 ### Navbar
 
-Scroll the area below the navbar and watch the active class change. Open the dropdown menu and watch the dropdown items be highlighted as well.
+Scroll the area below the navbar and watch the active class change. Open the menu and watch the menu items be highlighted as well.
 
 <Example showMarkup={false} code={`<nav id="navbar-example2" class="navbar bg-1 px-3 mb-3 rounded-2">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -31,14 +32,14 @@ Scroll the area below the navbar and watch the active class change. Open the dro
       <li class="nav-item">
         <a class="nav-link" href="#scrollspyHeading2">Second</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-          <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-        </ul>
+      <li class="nav-item">
+        <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>
+        <div class="menu">
+          <a class="menu-item" href="#scrollspyHeading3">Third</a>
+          <a class="menu-item" href="#scrollspyHeading4">Fourth</a>
+          <hr class="menu-divider">
+          <a class="menu-item" href="#scrollspyHeading5">Fifth</a>
+        </div>
       </li>
     </ul>
   </nav>
@@ -65,14 +66,14 @@ Scroll the area below the navbar and watch the active class change. Open the dro
     <li class="nav-item">
       <a class="nav-link" href="#scrollspyHeading2">Second</a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
-        <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-      </ul>
+    <li class="nav-item">
+      <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>
+      <div class="menu">
+        <a class="menu-item" href="#scrollspyHeading3">Third</a>
+        <a class="menu-item" href="#scrollspyHeading4">Fourth</a>
+        <hr class="menu-divider">
+        <a class="menu-item" href="#scrollspyHeading5">Fifth</a>
+      </div>
     </li>
   </ul>
 </nav>
@@ -343,6 +344,13 @@ document.querySelectorAll('#nav-tab>[data-bs-toggle="tab"]').forEach(el => {
 ### Via data attributes
 
 To easily add scrollspy behavior to your topbar navigation, add `data-bs-spy="scroll"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-bs-target` attribute with the `id` or class name of the parent element of any Bootstrap `.nav` component.
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-spy="scroll"` | Enables ScrollSpy on the scrollable element (often `<body>`). |
+| `data-bs-target` | CSS selector for the nav whose links match sections in the spied element. |
+</BsTable>
 
 ```html
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">

@@ -4,7 +4,7 @@
 @use "sass:math";
 @use "sass:meta";
 @use "sass:string";
-// @use "variables" as *;
+@forward "config" show defaults;
 @use "config" as *;
 
 // Bootstrap functions
@@ -19,7 +19,7 @@
   @each $key, $num in $map {
     @if $prev-num == null or math.unit($num) == "%" or math.unit($prev-num) == "%" {
       // Do nothing
-    } @else if not comparable($prev-num, $num) {
+    } @else if not math.compatible($prev-num, $num) {
       @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
     } @else if $prev-num >= $num {
       @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
@@ -79,26 +79,6 @@
     }
   }
   @return $result;
-}
-
-// Merge overrides on top of defaults, stripping null entries.
-// Null values let users remove map keys via @use ... with().
-// Accepts a list as $defaults (converted to a map with `true` values).
-@function defaults($defaults, $overrides) {
-  @if meta.type-of($defaults) == "list" {
-    $map: ();
-    @each $key in $defaults {
-      $map: map.merge($map, ($key: true));
-    }
-    $defaults: $map;
-  }
-  $merged: map.merge($defaults, $overrides);
-  @each $key, $value in $merged {
-    @if $value == null {
-      $merged: map.remove($merged, $key);
-    }
-  }
-  @return $merged;
 }
 
 // Merge multiple maps
@@ -202,7 +182,7 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 }
 
 // Return opaque color
-// opaque(#fff, rgba(0, 0, 0, .5)) => #808080
+// opaque(#fff, rgb(0 0 0 / .5)) => #808080
 @function opaque($background, $foreground) {
   @return color-mix(in srgb, rgba($foreground, 1), $background, color.opacity($foreground) * 100%);
 }

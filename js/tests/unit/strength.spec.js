@@ -71,9 +71,9 @@ describe('Strength', () => {
 
       const strengthEl = fixtureEl.querySelector('.strength')
       const strengthBySelector = new Strength('.strength')
-      const strengthByElement = new Strength(strengthEl)
-
       expect(strengthBySelector._element).toEqual(strengthEl)
+
+      const strengthByElement = new Strength(strengthEl)
       expect(strengthByElement._element).toEqual(strengthEl)
     })
 

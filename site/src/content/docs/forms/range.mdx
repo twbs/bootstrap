@@ -1,57 +1,151 @@
 ---
 title: Range
-description: Use our custom range inputs for consistent cross-browser styling and built-in customization.
+description: Use our custom range inputs for consistent cross-browser styling with a filled track, value bubble, and tick marks.
 toc: true
+css_layer: forms
+js: required
+mdn: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range
 ---
 
 ## Overview
 
-Create custom `<input type="range">` controls with `.form-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Firefox supports “filling” their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
+The native `<input type="range">` is hard to style and can’t show a filled track in a consistent, cross-browser way using CSS alone—only Firefox offers `::-moz-range-progress`, and CSS can’t read an input’s value. So our range is a small **JavaScript component**: wrap an `<input class="form-range-input">` in `.form-range` and the plugin keeps a `--bs-range-fill` custom property (0–1) in sync, which the CSS uses to draw the fill, the value bubble, and tick marks.
+
+The `.form-range` wrapper owns the component’s tokens, so the input and any decorations inherit them. Every `.form-range` on the page is initialized automatically.
 
 <Example code={`<label for="range1" class="form-label">Example range</label>
-<input type="range" class="form-range" id="range1">`} />
+<div class="form-range">
+    <input type="range" class="form-range-input" id="range1">
+  </div>`} />
 
 ## Disabled
 
-Add the `disabled` boolean attribute on an input to give it a grayed out appearance, remove pointer events, and prevent focusing.
+Add the `disabled` boolean attribute on the input to give it a grayed out appearance, remove pointer events, and prevent focusing.
 
 <Example code={`<label for="disabledRange" class="form-label">Disabled range</label>
-<input type="range" class="form-range" id="disabledRange" disabled>`} />
+<div class="form-range">
+    <input type="range" class="form-range-input" id="disabledRange" disabled>
+  </div>`} />
 
 ## Min and max
 
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
 <Example code={`<label for="range2" class="form-label">Example range</label>
-<input type="range" class="form-range" min="0" max="5" id="range2">`} />
+<div class="form-range">
+    <input type="range" class="form-range-input" min="0" max="5" id="range2">
+  </div>`} />
 
 ## Steps
 
 By default, range inputs “snap” to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
 
 <Example code={`<label for="range3" class="form-label">Example range</label>
-<input type="range" class="form-range" min="0" max="5" step="0.5" id="range3">`} />
+<div class="form-range">
+    <input type="range" class="form-range-input" min="0" max="5" step="0.5" id="range3">
+  </div>`} />
 
-## Output value
+## Value bubble
 
-The value of the range input can be shown using the `output` element and a bit of JavaScript.
+Add `data-bs-bubble` to the wrapper to show a value bubble that follows the thumb. The bubble reuses our [tooltip](/docs/[[config:docs_version]]/components/tooltips/) styles.
 
-<Example code={`<label for="range4" class="form-label">Example range</label>
-  <input type="range" class="form-range" min="0" max="100" value="50" id="range4">
-  <output for="range4" id="rangeValue" aria-hidden="true"></output>
+<Example code={`<label for="rangeBubble" class="form-label">Brightness</label>
+<div class="form-range" data-bs-bubble>
+    <input type="range" class="form-range-input" min="0" max="100" value="60" id="rangeBubble">
+  </div>`} />
 
-  <script>
-    // This is an example script, please modify as needed
-    const rangeInput = document.getElementById('range4');
-    const rangeOutput = document.getElementById('rangeValue');
+## Tick marks
 
-    // Set initial value
-    rangeOutput.textContent = rangeInput.value;
+Link a `<datalist>` to the input with the `list` attribute and the plugin renders a tick mark for each `<option>`, positioned at its value (even when the values are unevenly spaced). An `<option>`’s `label` is shown beneath its tick.
 
-    rangeInput.addEventListener('input', function() {
-      rangeOutput.textContent = this.value;
-    });
-  </script>`} />
+<Example code={`<label for="rangeTicks" class="form-label">Temperature</label>
+<div class="form-range">
+    <input type="range" class="form-range-input" min="0" max="100" step="25" value="50" list="rangeTicksList" id="rangeTicks">
+  </div>
+  <datalist id="rangeTicksList">
+    <option value="0" label="Cold"></option>
+    <option value="25"></option>
+    <option value="50" label="Mild"></option>
+    <option value="75"></option>
+    <option value="100" label="Hot"></option>
+  </datalist>`} />
+
+## With form field
+
+Wrap the `.form-range` in a `.form-field` to pair it with a label and description.
+
+<Example code={`<div class="form-field">
+    <label for="rangeField" class="form-label">Volume</label>
+    <div class="form-range" data-bs-bubble>
+      <input type="range" class="form-range-input" id="rangeField">
+    </div>
+    <small class="form-text">Adjust the volume level.</small>
+  </div>`} />
+
+## Usage
+
+Every `.form-range` is initialized automatically on page load—the component is JavaScript-driven, so the fill won’t render without the plugin.
+
+### Via data attributes
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-bubble` | Add to the `.form-range` wrapper to show a [value bubble](#value-bubble). |
+| `list` (on the input) + `<datalist>` | Renders [tick marks](#tick-marks) from the datalist options. |
+</BsTable>
+
+```html
+<div class="form-range" data-bs-bubble>
+  <input type="range" class="form-range-input" min="0" max="100" value="40">
+</div>
+```
+
+### Via JavaScript
+
+```js
+const element = document.querySelector('.form-range')
+const range = new bootstrap.Range(element, {
+  bubble: true,
+  formatter: value => `${value}%`
+})
+```
+
+### Options
+
+<BsTable>
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `bubble` | boolean | `false` | Show a value bubble above the thumb. |
+| `formatter` | function | `null` | `(value) => string` used for the bubble and tick label text. |
+</BsTable>
+
+### Methods
+
+<BsTable>
+| Method | Description |
+| --- | --- |
+| `update()` | Recompute the fill from the input’s current value. Useful after setting the value programmatically. |
+| `dispose()` | Destroys the instance and removes the bubble and tick marks it created. |
+| `getInstance()` | Static method to get the instance associated with a `.form-range` element. |
+| `getOrCreateInstance()` | Static method to get the instance, or create one if it doesn’t exist. |
+</BsTable>
+
+### Events
+
+<BsTable>
+| Event | Description |
+| --- | --- |
+| `changed.bs.range` | Fired on the input when the value updates (on `input` and `change`). The event’s `value` property holds the current numeric value. |
+</BsTable>
+
+```js
+const input = document.querySelector('.form-range-input')
+
+input.addEventListener('changed.bs.range', event => {
+  console.log('Value:', event.value)
+})
+```
 
 ## CSS
 
@@ -63,6 +157,6 @@ The value of the range input can be shown using the `output` element and a bit o
 
 ### Sass mixins
 
-Two mixins are used to style the range input to generate vendor-specific styles for the range’s track and thumb elements. Please be aware that selectors for pseudo-elements in WebKit and Firefox browsers cannot be combined—each must be used in a separate CSS rule otherwise the styles will not apply.
+Two mixins generate the vendor-specific styles for the range’s track and thumb. Note that selectors for pseudo-elements in WebKit and Firefox cannot be combined—each must be used in a separate CSS rule otherwise the styles will not apply.
 
 <ScssDocs name="range-mixins" file="scss/forms/_form-range.scss" />

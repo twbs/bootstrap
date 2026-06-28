@@ -89,6 +89,14 @@
         "overflow-y-scroll"
       ]
     },
+    "container": {
+      "class": "contains",
+      "property": "container-type",
+      "classes": [
+        "contains-inline",
+        "contains-size"
+      ]
+    },
     "display": {
       "class": "d",
       "property": "display",
@@ -116,20 +124,6 @@
         "shadow-sm",
         "shadow-lg",
         "shadow-none"
-      ]
-    },
-    "focus-ring": {
-      "class": "focus-ring",
-      "property": "--focus-ring-color",
-      "classes": [
-        "focus-ring-primary",
-        "focus-ring-accent",
-        "focus-ring-success",
-        "focus-ring-danger",
-        "focus-ring-warning",
-        "focus-ring-info",
-        "focus-ring-inverse",
-        "focus-ring-secondary"
       ]
     },
     "position": {
@@ -163,7 +157,7 @@
     },
     "start": {
       "class": "start",
-      "property": "left",
+      "property": "inset-inline-start",
       "classes": [
         "start-0",
         "start-50",
@@ -172,7 +166,7 @@
     },
     "end": {
       "class": "end",
-      "property": "right",
+      "property": "inset-inline-end",
       "classes": [
         "end-0",
         "end-50",
@@ -522,8 +516,10 @@
     },
     "grid-column-counts": {
       "class": "grid-cols",
-      "property": "--columns",
+      "property": "grid-template-columns",
       "classes": [
+        "grid-cols-1",
+        "grid-cols-2",
         "grid-cols-3",
         "grid-cols-4",
         "grid-cols-6"
@@ -563,14 +559,16 @@
       "class": "m",
       "property": "margin",
       "classes": [
-        "m--2",
-        "m--1",
         "m-0",
         "m-1",
         "m-2",
         "m-3",
         "m-4",
         "m-5",
+        "m-6",
+        "m-7",
+        "m-8",
+        "m-9",
         "m-auto"
       ]
     },
@@ -578,14 +576,16 @@
       "class": "mx",
       "property": "margin-inline",
       "classes": [
-        "mx--2",
-        "mx--1",
         "mx-0",
         "mx-1",
         "mx-2",
         "mx-3",
         "mx-4",
         "mx-5",
+        "mx-6",
+        "mx-7",
+        "mx-8",
+        "mx-9",
         "mx-auto"
       ]
     },
@@ -593,14 +593,16 @@
       "class": "my",
       "property": "margin-block",
       "classes": [
-        "my--2",
-        "my--1",
         "my-0",
         "my-1",
         "my-2",
         "my-3",
         "my-4",
         "my-5",
+        "my-6",
+        "my-7",
+        "my-8",
+        "my-9",
         "my-auto"
       ]
     },
@@ -608,14 +610,16 @@
       "class": "mt",
       "property": "margin-block-start",
       "classes": [
-        "mt--2",
-        "mt--1",
         "mt-0",
         "mt-1",
         "mt-2",
         "mt-3",
         "mt-4",
         "mt-5",
+        "mt-6",
+        "mt-7",
+        "mt-8",
+        "mt-9",
         "mt-auto"
       ]
     },
@@ -623,14 +627,18 @@
       "class": "me",
       "property": "margin-inline-end",
       "classes": [
-        "me--2",
-        "me--1",
         "me-0",
         "me-1",
         "me-2",
         "me-3",
         "me-4",
         "me-5",
+        "me-6",
+        "me-7",
+        "me-8",
+        "me-9",
+        "me--1",
+        "me--2",
         "me-auto"
       ]
     },
@@ -638,14 +646,16 @@
       "class": "mb",
       "property": "margin-block-end",
       "classes": [
-        "mb--2",
-        "mb--1",
         "mb-0",
         "mb-1",
         "mb-2",
         "mb-3",
         "mb-4",
         "mb-5",
+        "mb-6",
+        "mb-7",
+        "mb-8",
+        "mb-9",
         "mb-auto"
       ]
     },
@@ -653,14 +663,18 @@
       "class": "ms",
       "property": "margin-inline-start",
       "classes": [
-        "ms--2",
-        "ms--1",
         "ms-0",
         "ms-1",
         "ms-2",
         "ms-3",
         "ms-4",
         "ms-5",
+        "ms-6",
+        "ms-7",
+        "ms-8",
+        "ms-9",
+        "ms--1",
+        "ms--2",
         "ms-auto"
       ]
     },
@@ -668,140 +682,208 @@
       "class": "p",
       "property": "padding",
       "classes": [
-        "p--2",
-        "p--1",
         "p-0",
         "p-1",
         "p-2",
         "p-3",
         "p-4",
-        "p-5"
+        "p-5",
+        "p-6",
+        "p-7",
+        "p-8",
+        "p-9"
       ]
     },
     "padding-x": {
       "class": "px",
       "property": "padding-inline",
       "classes": [
-        "px--2",
-        "px--1",
         "px-0",
         "px-1",
         "px-2",
         "px-3",
         "px-4",
-        "px-5"
+        "px-5",
+        "px-6",
+        "px-7",
+        "px-8",
+        "px-9"
       ]
     },
     "padding-y": {
       "class": "py",
       "property": "padding-block",
       "classes": [
-        "py--2",
-        "py--1",
         "py-0",
         "py-1",
         "py-2",
         "py-3",
         "py-4",
-        "py-5"
+        "py-5",
+        "py-6",
+        "py-7",
+        "py-8",
+        "py-9"
       ]
     },
     "padding-top": {
       "class": "pt",
       "property": "padding-block-start",
       "classes": [
-        "pt--2",
-        "pt--1",
         "pt-0",
         "pt-1",
         "pt-2",
         "pt-3",
         "pt-4",
-        "pt-5"
+        "pt-5",
+        "pt-6",
+        "pt-7",
+        "pt-8",
+        "pt-9"
       ]
     },
     "padding-end": {
       "class": "pe",
       "property": "padding-inline-end",
       "classes": [
-        "pe--2",
-        "pe--1",
         "pe-0",
         "pe-1",
         "pe-2",
         "pe-3",
         "pe-4",
-        "pe-5"
+        "pe-5",
+        "pe-6",
+        "pe-7",
+        "pe-8",
+        "pe-9"
       ]
     },
     "padding-bottom": {
       "class": "pb",
       "property": "padding-block-end",
       "classes": [
-        "pb--2",
-        "pb--1",
         "pb-0",
         "pb-1",
         "pb-2",
         "pb-3",
         "pb-4",
-        "pb-5"
+        "pb-5",
+        "pb-6",
+        "pb-7",
+        "pb-8",
+        "pb-9"
       ]
     },
     "padding-start": {
       "class": "ps",
       "property": "padding-inline-start",
       "classes": [
-        "ps--2",
-        "ps--1",
         "ps-0",
         "ps-1",
         "ps-2",
         "ps-3",
         "ps-4",
-        "ps-5"
+        "ps-5",
+        "ps-6",
+        "ps-7",
+        "ps-8",
+        "ps-9"
       ]
     },
     "gap": {
       "class": "gap",
       "property": "gap",
       "classes": [
-        "gap--2",
-        "gap--1",
         "gap-0",
         "gap-1",
         "gap-2",
         "gap-3",
         "gap-4",
-        "gap-5"
+        "gap-5",
+        "gap-6",
+        "gap-7",
+        "gap-8",
+        "gap-9"
       ]
     },
     "row-gap": {
       "class": "row-gap",
       "property": "row-gap",
       "classes": [
-        "row-gap--2",
-        "row-gap--1",
         "row-gap-0",
         "row-gap-1",
         "row-gap-2",
         "row-gap-3",
         "row-gap-4",
-        "row-gap-5"
+        "row-gap-5",
+        "row-gap-6",
+        "row-gap-7",
+        "row-gap-8",
+        "row-gap-9"
       ]
     },
     "column-gap": {
       "class": "column-gap",
       "property": "column-gap",
       "classes": [
-        "column-gap--2",
-        "column-gap--1",
         "column-gap-0",
         "column-gap-1",
         "column-gap-2",
         "column-gap-3",
         "column-gap-4",
-        "column-gap-5"
+        "column-gap-5",
+        "column-gap-6",
+        "column-gap-7",
+        "column-gap-8",
+        "column-gap-9"
+      ]
+    },
+    "space-x": {
+      "class": "space-x",
+      "property": "margin-inline-end",
+      "classes": [
+        "space-x-0",
+        "space-x-1",
+        "space-x-2",
+        "space-x-3",
+        "space-x-4",
+        "space-x-5",
+        "space-x-6",
+        "space-x-7",
+        "space-x-8",
+        "space-x-9"
+      ]
+    },
+    "space-y": {
+      "class": "space-y",
+      "property": "margin-block-end",
+      "classes": [
+        "space-y-0",
+        "space-y-1",
+        "space-y-2",
+        "space-y-3",
+        "space-y-4",
+        "space-y-5",
+        "space-y-6",
+        "space-y-7",
+        "space-y-8",
+        "space-y-9"
+      ]
+    },
+    "divide-x": {
+      "class": "divide-x",
+      "property": "border-inline-start",
+      "classes": [
+        "divide-x",
+        "divide-x-0"
+      ]
+    },
+    "divide-y": {
+      "class": "divide-y",
+      "property": "border-block-start",
+      "classes": [
+        "divide-y",
+        "divide-y-0"
       ]
     },
     "font-family": {
@@ -903,7 +985,7 @@
     },
     "text-wrap": {
       "class": "text",
-      "property": "white-space",
+      "property": "text-wrap",
       "classes": [
         "text-wrap",
         "text-nowrap",
@@ -934,9 +1016,10 @@
         "fg-2",
         "fg-3",
         "fg-4",
+        "fg-bg",
         "fg-white",
         "fg-black",
-        "fg-inherit"
+        "fg-reset"
       ]
     },
     "fg-emphasis": {
@@ -1063,10 +1146,10 @@
         "bg-2",
         "bg-3",
         "bg-4",
+        "bg-fg",
         "bg-white",
         "bg-black",
-        "bg-transparent",
-        "bg-inherit"
+        "bg-transparent"
       ]
     },
     "bg-color-subtle": {
@@ -1149,6 +1232,7 @@
       "classes": [
         "user-select-all",
         "user-select-auto",
+        "user-select-text",
         "user-select-none"
       ]
     },
@@ -1162,75 +1246,113 @@
     },
     "border-radius": {
       "class": "rounded",
-      "property": "border-radius",
       "classes": [
-        "rounded",
         "rounded-0",
         "rounded-1",
         "rounded-2",
         "rounded-3",
         "rounded-4",
         "rounded-5",
+        "rounded-6",
+        "rounded-7",
+        "rounded-8",
+        "rounded-9",
+        "rounded",
         "rounded-circle",
         "rounded-pill"
+      ]
+    },
+    "rounded-size": {
+      "class": "rounded-size",
+      "property": "--rounded-size",
+      "classes": [
+        "rounded-size-0",
+        "rounded-size-1",
+        "rounded-size-2",
+        "rounded-size-3",
+        "rounded-size-4",
+        "rounded-size-5",
+        "rounded-size-6",
+        "rounded-size-7",
+        "rounded-size-8",
+        "rounded-size-9",
+        "rounded-size",
+        "rounded-size-circle",
+        "rounded-size-pill"
       ]
     },
     "rounded-top": {
       "class": "rounded-top",
       "property": "border-start-start-radius border-start-end-radius",
       "classes": [
-        "rounded-top",
         "rounded-top-0",
         "rounded-top-1",
         "rounded-top-2",
         "rounded-top-3",
         "rounded-top-4",
         "rounded-top-5",
+        "rounded-top-6",
+        "rounded-top-7",
+        "rounded-top-8",
+        "rounded-top-9",
+        "rounded-top",
         "rounded-top-circle",
         "rounded-top-pill"
       ]
     },
     "rounded-end": {
       "class": "rounded-end",
-      "property": "border-end-end-radius border-end-start-radius",
+      "property": "border-start-end-radius border-end-end-radius",
       "classes": [
-        "rounded-end",
         "rounded-end-0",
         "rounded-end-1",
         "rounded-end-2",
         "rounded-end-3",
         "rounded-end-4",
         "rounded-end-5",
+        "rounded-end-6",
+        "rounded-end-7",
+        "rounded-end-8",
+        "rounded-end-9",
+        "rounded-end",
         "rounded-end-circle",
         "rounded-end-pill"
       ]
     },
     "rounded-bottom": {
       "class": "rounded-bottom",
-      "property": "border-end-end-radius border-end-start-radius",
+      "property": "border-end-start-radius border-end-end-radius",
       "classes": [
-        "rounded-bottom",
         "rounded-bottom-0",
         "rounded-bottom-1",
         "rounded-bottom-2",
         "rounded-bottom-3",
         "rounded-bottom-4",
         "rounded-bottom-5",
+        "rounded-bottom-6",
+        "rounded-bottom-7",
+        "rounded-bottom-8",
+        "rounded-bottom-9",
+        "rounded-bottom",
         "rounded-bottom-circle",
         "rounded-bottom-pill"
       ]
     },
     "rounded-start": {
       "class": "rounded-start",
-      "property": "border-start-start-radius border-start-end-radius",
+      "property": "border-start-start-radius border-end-start-radius",
       "classes": [
-        "rounded-start",
         "rounded-start-0",
         "rounded-start-1",
         "rounded-start-2",
         "rounded-start-3",
         "rounded-start-4",
         "rounded-start-5",
+        "rounded-start-6",
+        "rounded-start-7",
+        "rounded-start-8",
+        "rounded-start-9",
+        "rounded-start",
         "rounded-start-circle",
         "rounded-start-pill"
       ]

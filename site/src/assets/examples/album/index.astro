@@ -6,67 +6,67 @@ import Placeholder from "@shortcodes/Placeholder.astro"
 ---
 
 <header data-bs-theme="dark">
-  <div class="collapse text-bg-dark" id="navbarHeader">
+  <div class="collapse bg-black" id="navbarHeader">
     <div class="container">
       <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4>About</h4>
-          <p class="text-body-secondary">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+        <div class="sm:col-8 md:col-7 py-4">
+          <h4 class="fg-white">About</h4>
+          <p class="fg-2">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
         </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4>Contact</h4>
+        <div class="sm:col-4 md:offset-1 py-4">
+          <h4 class="fg-white">Contact</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on X</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
+            <li><a href="#" class="fg-white">Follow on X</a></li>
+            <li><a href="#" class="fg-white">Like on Facebook</a></li>
+            <li><a href="#" class="fg-white">Email me</a></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
+  <nav class="navbar bg-black shadow-sm" aria-label="Album navigation">
     <div class="container">
       <a href="#" class="navbar-brand d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         <strong>Album</strong>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
       </button>
     </div>
-  </div>
+  </nav>
 </header>
 
 <main>
 
   <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
+    <div class="row lg:py-5">
+      <div class="lg:col-6 md:col-8 mx-auto">
         <h1 class="fw-light">Album example</h1>
-        <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+        <p class="lead fg-2">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
         <p>
-          <a href="#" class="btn-solid theme-primary my-2">Main call to action</a>
-          <a href="#" class="btn-solid theme-secondary my-2">Secondary action</a>
+          <a href="#" class="btn-solid theme-primary m-2">Main call to action</a>
+          <a href="#" class="btn-solid theme-secondary m-2">Secondary action</a>
         </p>
       </div>
     </div>
   </section>
 
-  <div class="album py-5 bg-body-tertiary">
+  <div class="album py-5 bg-1">
     <div class="container">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="row row-cols-1 sm:row-cols-2 md:row-cols-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
             <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center w-100">
                 <div class="btn-group">
                   <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
                   <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
                 </div>
-                <small class="text-body-secondary">9 mins</small>
+                <small class="fg-2">9 mins</small>
               </div>
             </div>
           </div>
@@ -76,12 +76,12 @@ import Placeholder from "@shortcodes/Placeholder.astro"
             <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center w-100">
                 <div class="btn-group">
                   <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
                   <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
                 </div>
-                <small class="text-body-secondary">9 mins</small>
+                <small class="fg-2">9 mins</small>
               </div>
             </div>
           </div>
@@ -91,58 +91,12 @@ import Placeholder from "@shortcodes/Placeholder.astro"
             <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center w-100">
                 <div class="btn-group">
                   <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
                   <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
                 </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
-                  <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
-                  <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
-                  <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
-                </div>
-                <small class="text-body-secondary">9 mins</small>
+                <small class="fg-2">9 mins</small>
               </div>
             </div>
           </div>
@@ -153,12 +107,12 @@ import Placeholder from "@shortcodes/Placeholder.astro"
             <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center w-100">
                 <div class="btn-group">
                   <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
                   <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
                 </div>
-                <small class="text-body-secondary">9 mins</small>
+                <small class="fg-2">9 mins</small>
               </div>
             </div>
           </div>
@@ -168,12 +122,12 @@ import Placeholder from "@shortcodes/Placeholder.astro"
             <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center w-100">
                 <div class="btn-group">
                   <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
                   <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
                 </div>
-                <small class="text-body-secondary">9 mins</small>
+                <small class="fg-2">9 mins</small>
               </div>
             </div>
           </div>
@@ -183,12 +137,58 @@ import Placeholder from "@shortcodes/Placeholder.astro"
             <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center w-100">
                 <div class="btn-group">
                   <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
                   <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
                 </div>
-                <small class="text-body-secondary">9 mins</small>
+                <small class="fg-2">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="btn-group">
+                  <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
+                  <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
+                </div>
+                <small class="fg-2">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="btn-group">
+                  <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
+                  <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
+                </div>
+                <small class="fg-2">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card shadow-sm">
+            <Placeholder width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" />
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="btn-group">
+                  <button type="button" class="btn-outline theme-secondary btn-sm">View</button>
+                  <button type="button" class="btn-outline theme-secondary btn-sm">Edit</button>
+                </div>
+                <small class="fg-2">9 mins</small>
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
 
 </main>
 
-<footer class="text-body-secondary py-5">
+<footer class="fg-2 py-5">
   <div class="container">
     <p class="float-end mb-1">
       <a href="#">Back to top</a>

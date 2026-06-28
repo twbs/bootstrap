@@ -1,18 +1,19 @@
 # This file holds all sidebar menu's entries.
-# The logic for the sidebar generation is in "site/layouts/partials/docs-sidebar.html".
+# Each group has a `section` field that determines which sub-navbar tab it belongs to.
 
 - title: Getting started
+  section: Getting Started
   icon: book-half
   icon_color: indigo
   pages:
     - title: Install
-    # - title: Introduction
     - title: Approach
+    - title: CSS variables
     - title: JavaScript
     - title: Accessibility
-    # - title: Community
 
 - title: Guides
+  section: Guides
   icon: map
   icon_color: green
   pages:
@@ -22,8 +23,10 @@
     - title: Parcel
     - title: Vite
     - title: Contribute
+    - title: Migration
 
 - title: Customize
+  section: Guides
   icon: palette2
   icon_color: pink
   pages:
@@ -34,11 +37,11 @@
     - title: Theme
     - title: Color modes
     - title: Components
-    - title: CSS variables
     - title: RTL
     - title: Optimize
 
 - title: Layout
+  section: Base
   icon: grid-fill
   icon_color: teal
   pages:
@@ -52,6 +55,7 @@
     - title: CSS Grid
 
 - title: Content
+  section: Base
   icon: file-earmark-richtext
   icon_color: gray
   pages:
@@ -60,75 +64,104 @@
     - title: Images
     - title: Tables
     - title: Prose
+      meta:
+        - added: 6.0.0
 
 - title: Forms
+  section: Forms
   icon: ui-radios
   icon_color: blue
   pages:
     - title: Overview
+    - title: Field
+      meta:
+        - added: 6.0.0
     - title: Form control
     - title: Checkbox
     - title: Radio
     - title: Switch
     - title: Range
+      meta:
+        - added: 6.0.0
     - title: Input group
     - title: Floating labels
-    - title: Datepicker
-    - title: OTP input
-    - title: Password strength
-    - title: Chip input
     - title: Form adorn
+      meta:
+        - added: 6.0.0
+    - title: Chips
+      meta:
+        - added: 6.0.0
+    - title: Combobox
+      meta:
+        - added: 6.0.0
+    - title: Datepicker
+      meta:
+        - added: 6.0.0
+    - title: OTP input
+      meta:
+        - added: 6.0.0
+    - title: Password strength
+      meta:
+        - added: 6.0.0
     - title: Layout
     - title: Validation
 
 - title: Components
+  section: Components
   icon: menu-button-wide-fill
   icon_color: cyan
   pages:
-    - group: Feedback
-      pages:
-        - title: Alert
-        - title: Badge
-        - title: Placeholder
-        - title: Progress
-        - title: Scrollspy
-        - title: Spinner
-        - title: Toasts
-    - group: Overlays
-      pages:
-        - title: Dialog
-        - title: Offcanvas
-        - title: Popover
-        - title: Tooltip
-    - group: Buttons
-      pages:
-        - title: Buttons
-        - title: Button group
-        - title: Close button
-    - group: Navigation
-      pages:
-        - title: Breadcrumb
-        - title: Dropdown
-        - title: Navs & tabs
-        - title: Nav overflow
-        - title: Navbar
-        - title: Pagination
-        - title: Stepper
-    - group: Layout
-      pages:
-        - title: Card
-        - title: List group
-    - group: Interactions
-      pages:
-        - title: Accordion
-        - title: Carousel
-        - title: Collapse
-        - title: Toggler
-    - group: Miscellaneous
-      pages:
-        - title: Avatar
+    - title: Accordion
+      meta:
+        - added: 6.0.0
+    - title: Alert
+    - title: Avatar
+      meta:
+        - added: 6.0.0
+    - title: Badge
+    - title: Breadcrumb
+    - title: Button
+    - title: Button group
+    - title: Card
+    - title: Carousel
+    - title: Close button
+    - title: Collapse
+    - title: Dialog
+      meta:
+        - added: 6.0.0
+    - title: Drawer
+      meta:
+        - added: 6.0.0
+    - title: List group
+    - title: Menu
+      meta:
+        - added: 6.0.0
+    - title: Nav
+    - title: Nav overflow
+      meta:
+        - added: 6.0.0
+    - title: Navbar
+      meta:
+        - added: 6.0.0
+
+    - title: Pagination
+    - title: Placeholder
+    - title: Popover
+    - title: Progress
+    - title: Scrollspy
+    - title: Spinner
+    - title: Stepper
+      meta:
+        - added: 6.0.0
+    - title: Tab
+    - title: Toasts
+    - title: Toggler
+      meta:
+        - added: 6.0.0
+    - title: Tooltip
 
 - title: Helpers
+  section: Helpers
   icon: magic
   icon_color: orange
   pages:
@@ -142,6 +175,7 @@
     - title: Visually hidden
 
 - title: Utilities
+  section: Utilities
   icon: braces-asterisk
   icon_color: red
   pages:
@@ -151,6 +185,8 @@
         - title: Colors
         - title: Background
         - title: Theme
+          meta:
+            - added: 6.0.0
     - group: Layout
       pages:
         - title: Aspect ratio
@@ -180,6 +216,9 @@
       pages:
         - title: Margin
         - title: Padding
+        - title: Space
+          meta:
+            - added: 6.0.0
     - group: Type
       pages:
         - title: Font family
@@ -193,12 +232,12 @@
         - title: Text transform
         - title: Text wrapping
         - title: Vertical align
-        - title: Word break
     - group: Borders
       pages:
         - title: Border
         - title: Border color
         - title: Border radius
+        - title: Divide
     - group: Interactions
       pages:
         - title: Pointer events
@@ -207,15 +246,3 @@
       pages:
         - title: Opacity
         - title: Shadows
-
-- title: About
-  icon: globe2
-  icon_color: indigo
-  pages:
-    - title: Overview
-    - title: Team
-    - title: Brand
-    - title: License
-    - title: Translations
-
-- title: Migration

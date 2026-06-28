@@ -33,9 +33,9 @@ describe('Tab', () => {
 
       const tabEl = fixtureEl.querySelector('[href="#home"]')
       const tabBySelector = new Tab('[href="#home"]')
-      const tabByElement = new Tab(tabEl)
-
       expect(tabBySelector._element).toEqual(tabEl)
+
+      const tabByElement = new Tab(tabEl)
       expect(tabByElement._element).toEqual(tabEl)
     })
 
@@ -547,6 +547,30 @@ describe('Tab', () => {
       expect(spyPrevent).not.toHaveBeenCalled()
     })
 
+    it('if arrow key is pressed with a modifier (e.g. Alt+Left), ignore it', () => {
+      fixtureEl.innerHTML = [
+        '<ul class="nav">',
+        '  <li class="nav-link" data-bs-toggle="tab"></li>',
+        '</ul>'
+      ].join('')
+
+      const tabEl = fixtureEl.querySelector('.nav-link')
+      const tab = new Tab(tabEl)
+
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowLeft'
+      keydown.altKey = true
+      const spyStop = spyOn(Event.prototype, 'stopPropagation').and.callThrough()
+      const spyPrevent = spyOn(Event.prototype, 'preventDefault').and.callThrough()
+      const spyGet = spyOn(tab, '_getChildren')
+
+      tabEl.dispatchEvent(keydown)
+
+      expect(spyGet).not.toHaveBeenCalled()
+      expect(spyStop).not.toHaveBeenCalled()
+      expect(spyPrevent).not.toHaveBeenCalled()
+    })
+
     it('if keydown event is right/down arrow, handle it', () => {
       fixtureEl.innerHTML = [
         '<div class="nav">',
@@ -891,16 +915,16 @@ describe('Tab', () => {
       })
     })
 
-    it('selected tab should deactivate previous selected link in dropdown', () => {
+    it('selected tab should deactivate previous selected link in menu', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs">',
         '  <li class="nav-item"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
         '  <li class="nav-item"><a class="nav-link" href="#profile" data-bs-toggle="tab">Profile</a></li>',
-        '  <li class="nav-item dropdown">',
-        '    <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#">Dropdown</a>',
-        '    <div class="dropdown-menu">',
-        '      <a class="dropdown-item active" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
-        '      <a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-bs-toggle="tab">@mdo</a>',
+        '  <li class="nav-item">',
+        '    <a class="nav-link active" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
+        '    <div class="menu">',
+        '      <a class="menu-item active" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
+        '      <a class="menu-item" href="#menu2" id="menu2-tab" data-bs-toggle="tab">@mdo</a>',
         '    </div>',
         '  </li>',
         '</ul>'
@@ -910,18 +934,18 @@ describe('Tab', () => {
 
       firstLiLinkEl.click()
       expect(firstLiLinkEl).toHaveClass('active')
-      expect(fixtureEl.querySelector('li:last-child a')).not.toHaveClass('active')
-      expect(fixtureEl.querySelector('li:last-child .dropdown-menu a:first-child')).not.toHaveClass('active')
+      expect(fixtureEl.querySelector('li:last-child > [data-bs-toggle="menu"]')).not.toHaveClass('active')
+      expect(fixtureEl.querySelector('li:last-child .menu a:first-child')).not.toHaveClass('active')
     })
 
-    it('selecting a dropdown tab does not activate another', () => {
+    it('selecting a menu tab does not activate another', () => {
       const nav1 = [
         '<ul class="nav nav-tabs" id="nav1">',
         '  <li class="nav-item active"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
-        '  <li class="nav-item dropdown">',
-        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
-        '    <div class="dropdown-menu">',
-        '      <a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
+        '  <li class="nav-item">',
+        '    <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
+        '    <div class="menu">',
+        '      <a class="menu-item" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
         '    </div>',
         '  </li>',
         '</ul>'
@@ -929,10 +953,10 @@ describe('Tab', () => {
       const nav2 = [
         '<ul class="nav nav-tabs" id="nav2">',
         '  <li class="nav-item active"><a class="nav-link" href="#home" data-bs-toggle="tab">Home</a></li>',
-        '  <li class="nav-item dropdown">',
-        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
-        '    <div class="dropdown-menu">',
-        '      <a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a>',
+        '  <li class="nav-item">',
+        '    <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
+        '    <div class="menu">',
+        '      <a class="menu-item" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
         '    </div>',
         '  </li>',
         '</ul>'
@@ -940,35 +964,35 @@ describe('Tab', () => {
 
       fixtureEl.innerHTML = nav1 + nav2
 
-      const firstDropItem = fixtureEl.querySelector('#nav1 .dropdown-item')
+      const firstMenuItem = fixtureEl.querySelector('#nav1 .menu-item')
 
-      firstDropItem.click()
-      expect(firstDropItem).toHaveClass('active')
-      expect(fixtureEl.querySelector('#nav1 .dropdown-toggle')).toHaveClass('active')
-      expect(fixtureEl.querySelector('#nav2 .dropdown-toggle')).not.toHaveClass('active')
-      expect(fixtureEl.querySelector('#nav2 .dropdown-item')).not.toHaveClass('active')
+      firstMenuItem.click()
+      expect(firstMenuItem).toHaveClass('active')
+      expect(fixtureEl.querySelector('#nav1 [data-bs-toggle="menu"]')).toHaveClass('active')
+      expect(fixtureEl.querySelector('#nav2 [data-bs-toggle="menu"]')).not.toHaveClass('active')
+      expect(fixtureEl.querySelector('#nav2 .menu-item')).not.toHaveClass('active')
     })
 
-    it('should support li > .dropdown-item', () => {
+    it('should support li > .menu-item', () => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs">',
         '  <li class="nav-item"><a class="nav-link active" href="#home" data-bs-toggle="tab">Home</a></li>',
         '  <li class="nav-item"><a class="nav-link" href="#profile" data-bs-toggle="tab">Profile</a></li>',
-        '  <li class="nav-item dropdown">',
-        '    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Dropdown</a>',
-        '    <ul class="dropdown-menu">',
-        '      <li><a class="dropdown-item" href="#dropdown1" id="dropdown1-tab" data-bs-toggle="tab">@fat</a></li>',
-        '      <li><a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-bs-toggle="tab">@mdo</a></li>',
-        '    </ul>',
+        '  <li class="nav-item">',
+        '    <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>',
+        '    <div class="menu">',
+        '      <a class="menu-item" href="#menu1" id="menu1-tab" data-bs-toggle="tab">@fat</a>',
+        '      <a class="menu-item" href="#menu2" id="menu2-tab" data-bs-toggle="tab">@mdo</a>',
+        '    </div>',
         '  </li>',
         '</ul>'
       ].join('')
 
-      const dropItems = fixtureEl.querySelectorAll('.dropdown-item')
+      const menuItems = fixtureEl.querySelectorAll('.menu-item')
 
-      dropItems[1].click()
-      expect(dropItems[0]).not.toHaveClass('active')
-      expect(dropItems[1]).toHaveClass('active')
+      menuItems[1].click()
+      expect(menuItems[0]).not.toHaveClass('active')
+      expect(menuItems[1]).toHaveClass('active')
       expect(fixtureEl.querySelector('.nav-link')).not.toHaveClass('active')
     })
 

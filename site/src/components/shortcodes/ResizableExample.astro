@@ -47,23 +47,29 @@ const containerClass = className || classFromClass
 let markup = Array.isArray(code) ? code.join('\n') : code
 markup = replacePlaceholdersInHtml(markup)
 
-const simplifiedMarkup = markup
-  .replace(
-    /<svg.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>/g,
-    (match, classes) => `<img src="..."${classes ? ` class="${classes}"` : ''} alt="...">`
-  )
+// The resizable container needs `overflow: hidden` for the CSS `resize` handle
+// to work, which clips popovers like menus/dropdowns when they open. Render them
+// with a fixed positioning strategy in the live preview only so they can spill
+// outside the container. The displayed markup below is left untouched.
+const previewMarkup = markup.replace(
+  /data-bs-toggle="(menu|dropdown)"(?![^>]*\bdata-bs-strategy=)/g,
+  'data-bs-toggle="$1" data-bs-strategy="fixed"'
+)
+
+const simplifiedMarkup = markup.replace(
+  /<svg.*class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>/g,
+  (match, classes) => `<img src="..."${classes ? ` class="${classes}"` : ''} alt="...">`
+)
 ---
 
-<div class="bd-example-snippet bd-code-snippet">
+<div class="bd-example-snippet bd-code-snippet" data-pagefind-ignore>
   <div class="bd-example bd-example-resizable p-2">
     <div
       class:list={['bd-resizable-container', containerClass]}
       style={`width: ${initialWidth}; min-width: ${minWidth};`}
     >
-      <Fragment set:html={markup} />
+      <Fragment set:html={previewMarkup} />
     </div>
   </div>
-  {showMarkup && (
-    <Code code={simplifiedMarkup} lang="html" nestedInExample={true} />
-  )}
+  {showMarkup && <Code code={simplifiedMarkup} lang="html" nestedInExample={true} />}
 </div>

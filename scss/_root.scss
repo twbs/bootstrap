@@ -2,11 +2,8 @@
 @use "colors" as *;
 @use "config" as *;
 @use "functions" as *;
-@use "variables" as *;
 @use "theme" as *;
 @use "mixins/tokens" as *;
-@use "forms/form-variables" as *;
-
 // mdo-do: do we need theme?
 @layer colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities;
 
@@ -21,31 +18,6 @@ $root-tokens: defaults(
     --white: #{$white},
 
     --gradient: #{$gradient},
-
-    // scss-docs-start root-font-size-variables
-    --font-size-base: 1rem,
-    --font-size-xs: .75rem,
-    --font-size-sm: .875rem,
-    --font-size-md: 1rem,
-    --font-size-lg: clamp(1.25rem, 1rem + .625vw, 1.5rem),
-    --font-size-xl: clamp(1.5rem, 1.1rem + .75vw, 1.75rem),
-    --font-size-2xl: clamp(1.75rem, 1.3rem + 1vw, 2rem),
-    --font-size-3xl: clamp(2rem, 1.5rem + 1.875vw, 2.5rem),
-    --font-size-4xl: clamp(2.25rem, 1.75rem + 2.5vw, 3rem),
-    --font-size-5xl: clamp(3rem, 2rem + 5vw, 4rem),
-    --font-size-6xl: clamp(3.75rem, 2.5rem + 6.25vw, 5rem),
-
-    --line-height-xs: 1.25,
-    --line-height-sm: 1.5,
-    --line-height-md: 1.5,
-    --line-height-lg: 1.5,
-    --line-height-xl: calc(2.5 / 1.75),
-    --line-height-2xl: calc(3 / 2.25),
-    --line-height-3xl: 1.2,
-    --line-height-4xl: 1.1,
-    --line-height-5xl: 1.1,
-    --line-height-6xl: 1,
-    // scss-docs-end root-font-size-variables
 
     // scss-docs-start root-font-weight-variables
     --font-weight-lighter: lighter,
@@ -67,30 +39,20 @@ $root-tokens: defaults(
 
     --hr-border-color: var(--border-color),
 
-    --link-color: light-dark(var(--primary-base), var(--primary-text)),
+    --link-color: light-dark(var(--primary-base), var(--primary-fg)),
     --link-decoration: #{$link-decoration},
     --link-hover-color: color-mix(in oklch, var(--link-color) 90%, #000),
 
-    --font-mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+    --font-mono: "ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Monaco, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;",
     --code-font-size: 95%,
     --code-color: var(--fg-2),
 
     // scss-docs-start root-border-var
     --border-width: #{$border-width},
     --border-style: #{$border-style},
-    --border-color: light-dark(color-mix(in oklch, var(--gray-100), var(--gray-200)), var(--gray-700)),
+    --border-color: light-dark(var(--gray-200), var(--gray-700)),
     --border-color-translucent: color-mix(in oklch, var(--fg-body) 15%, transparent),
     // scss-docs-end root-border-var
-
-    // scss-docs-start root-border-radius-var
-    --border-radius: .5rem,
-    --border-radius-xs: .375rem,
-    --border-radius-sm: .5rem,
-    --border-radius-lg: .75rem,
-    --border-radius-xl: 1rem,
-    --border-radius-2xl: 2rem,
-    --border-radius-pill: 50rem,
-    // scss-docs-end root-border-radius-var
 
     // scss-docs-start root-box-shadow-variables
     --box-shadow: 0 .5rem 1rem rgb(0 0 0 / 15%),
@@ -124,41 +86,42 @@ $root-tokens: defaults(
     --btn-input-padding-x: .75rem,
     --btn-input-font-size: var(--font-size-base),
     --btn-input-line-height: var(--line-height-base),
-    --btn-input-border-radius: var(--border-radius),
+    --btn-input-border-radius: var(--radius-5),
 
     --btn-input-xs-min-height: 1.5rem,
     --btn-input-xs-padding-y: .125rem,
     --btn-input-xs-padding-x: .5rem,
     --btn-input-xs-font-size: var(--font-size-xs),
     --btn-input-xs-line-height: 1.125,
-    --btn-input-xs-border-radius: var(--border-radius-xs),
+    --btn-input-xs-border-radius: var(--radius-5),
 
     --btn-input-sm-min-height: 2rem,
     --btn-input-sm-padding-y: .25rem,
     --btn-input-sm-padding-x: .625rem,
     --btn-input-sm-font-size: var(--font-size-sm),
     --btn-input-sm-line-height: var(--line-height-sm),
-    --btn-input-sm-border-radius: var(--border-radius-sm),
+    --btn-input-sm-border-radius: var(--radius-5),
 
     --btn-input-lg-min-height: 2.75rem,
     --btn-input-lg-padding-y: .5rem,
     --btn-input-lg-padding-x: 1rem,
     --btn-input-lg-font-size: var(--font-size-md),
     --btn-input-lg-line-height: var(--line-height-md),
-    --btn-input-lg-border-radius: var(--border-radius-lg),
+    --btn-input-lg-border-radius: var(--radius-7),
     // scss-docs-end root-form-variables
-
-    // scss-docs-start root-form-validation-variables
-    --form-valid-color: #{$form-valid-color},
-    --form-valid-border-color: #{$form-valid-border-color},
-    --form-invalid-color: #{$form-invalid-color},
-    --form-invalid-border-color: #{$form-invalid-border-color},
-    // scss-docs-end root-form-validation-variables
   ),
   $root-tokens
 );
 // stylelint-enable @stylistic/value-list-max-empty-lines, @stylistic/function-max-empty-lines
 // scss-docs-end root-tokens
+
+// scss-docs-start root-font-size-loop
+// Generate font-size and line-height tokens
+@each $name, $props in $font-sizes {
+  $root-tokens: map.set($root-tokens, --font-size-#{$name}, map.get($props, "font-size"));
+  $root-tokens: map.set($root-tokens, --line-height-#{$name}, map.get($props, "line-height"));
+}
+// scss-docs-end root-font-size-loop
 
 // scss-docs-start root-theme-tokens
 // Generate semantic theme colors
@@ -189,10 +152,29 @@ $root-tokens: defaults(
   $root-tokens: map.set($root-tokens, --breakpoint-#{$name}, $value);
 }
 
+// Generate spacer tokens
+// scss-docs-start root-spacer-loop
+@each $key, $value in $spacers {
+  $root-tokens: map.set($root-tokens, --spacer-#{$key}, $value);
+}
+// scss-docs-end root-spacer-loop
+
+// Generate radius tokens
+// scss-docs-start root-radius-loop
+@each $key, $value in $radii {
+  $root-tokens: map.set($root-tokens, --radius-#{$key}, $value);
+}
+// stylelint-disable-next-line scss/dollar-variable-default
+$root-tokens: map.set($root-tokens, --radius-pill, 50rem);
+// scss-docs-end root-radius-loop
+
 :root {
   @include tokens($root-tokens);
 
   color-scheme: light dark;
+  // Always reserve the viewport scrollbar gutter so layout doesn't shift
+  // when overflow: hidden is applied (e.g. when a dialog opens on Windows).
+  scrollbar-gutter: stable;
 }
 
 [data-bs-theme="dark"] {

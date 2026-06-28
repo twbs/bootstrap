@@ -3,7 +3,7 @@
   * Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
-import BaseComponent from './base-component.js';
+import DialogBase from './dialog-base.js';
 import EventHandler from './dom/event-handler.js';
 import Manipulator from './dom/manipulator.js';
 import SelectorEngine from './dom/selector-engine.js';
@@ -27,22 +27,17 @@ const DATA_KEY = 'bs.dialog';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 const EVENT_SHOW = `show${EVENT_KEY}`;
-const EVENT_SHOWN = `shown${EVENT_KEY}`;
-const EVENT_HIDE = `hide${EVENT_KEY}`;
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
-const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY}`;
 const EVENT_CANCEL = `cancel${EVENT_KEY}`;
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
-const CLASS_NAME_STATIC = 'dialog-static';
-const CLASS_NAME_OPEN = 'dialog-open';
 const CLASS_NAME_NONMODAL = 'dialog-nonmodal';
+const CLASS_NAME_INSTANT = 'dialog-instant';
+const CLASS_NAME_SWAP_IN = 'dialog-swap-in';
 const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="dialog"]';
-const SELECTOR_OPEN_MODAL_DIALOG = 'dialog.dialog[open]:not(.dialog-nonmodal)';
 const Default = {
   backdrop: true,
-  // true (click dismisses) or 'static' (click does nothing) - only applies to modal dialogs
   keyboard: true,
-  modal: true // true uses showModal(), false uses show() for non-modal dialogs
+  modal: true
 };
 const DefaultType = {
   backdrop: '(boolean|string)',
@@ -54,13 +49,7 @@ const DefaultType = {
  * Class definition
  */
 
-class Dialog extends BaseComponent {
-  constructor(element, config) {
-    super(element, config);
-    this._isTransitioning = false;
-    this._addEventListeners();
-  }
-
+class Dialog extends DialogBase {
   // Getters
   static get Default() {
     return Default;
@@ -73,124 +62,38 @@ class Dialog extends BaseComponent {
   }
 
   // Public
-  toggle(relatedTarget) {
-    return this._element.open ? this.hide() : this.show(relatedTarget);
-  }
-  show(relatedTarget) {
-    if (this._element.open || this._isTransitioning) {
-      return;
-    }
-    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
-      relatedTarget
-    });
-    if (showEvent.defaultPrevented) {
-      return;
-    }
-    this._isTransitioning = true;
-    if (this._config.modal) {
-      // Modal dialog: use showModal() for focus trapping, backdrop, and top layer
-      this._element.showModal();
-      // Prevent body scroll for modal dialogs
-      document.body.classList.add(CLASS_NAME_OPEN);
-    } else {
-      // Non-modal dialog: use show() - no backdrop, no focus trap, no top layer
-      this._element.classList.add(CLASS_NAME_NONMODAL);
-      this._element.show();
-    }
-    this._queueCallback(() => {
-      this._isTransitioning = false;
-      EventHandler.trigger(this._element, EVENT_SHOWN, {
-        relatedTarget
-      });
-    }, this._element, this._isAnimated());
-  }
-  hide() {
-    if (!this._element.open || this._isTransitioning) {
-      return;
-    }
-    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE);
-    if (hideEvent.defaultPrevented) {
-      return;
-    }
-    this._isTransitioning = true;
-    this._queueCallback(() => this._hideDialog(), this._element, this._isAnimated());
-  }
-  dispose() {
-    EventHandler.off(this._element, EVENT_KEY);
-    super.dispose();
-  }
   handleUpdate() {
     // Provided for API consistency with Modal.
-    // Native dialogs handle their own positioning.
   }
 
-  // Private
-  _hideDialog() {
-    this._element.close();
+  // Protected — hook overrides
+
+  _getShowOptions() {
+    return {
+      modal: this._config.modal,
+      preventBodyScroll: this._config.modal
+    };
+  }
+  _onBeforeShow() {
+    if (!this._config.modal) {
+      this._element.classList.add(CLASS_NAME_NONMODAL);
+    }
+  }
+  _onAfterHide() {
     this._element.classList.remove(CLASS_NAME_NONMODAL);
-    this._isTransitioning = false;
-
-    // Only restore body scroll if no other modal dialogs are open
-    if (!document.querySelector(SELECTOR_OPEN_MODAL_DIALOG)) {
-      document.body.classList.remove(CLASS_NAME_OPEN);
-    }
-    EventHandler.trigger(this._element, EVENT_HIDDEN);
   }
-  _isAnimated() {
-    return this._element.classList.contains('fade');
+
+  // Keep the dialog in the top layer until the exit transition ends. This
+  // preserves the browser's modal centering and the native ::backdrop, both
+  // of which disappear synchronously the moment close() is called. Without
+  // this, the dialog would jump to the top of the page and the backdrop
+  // blur would vanish instantly while the dialog faded — making the exit
+  // animation appear to skip entirely.
+  _shouldDeferClose() {
+    return this._isAnimated();
   }
-  _triggerBackdropTransition() {
-    const hidePreventedEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
-    if (hidePreventedEvent.defaultPrevented) {
-      return;
-    }
-    this._element.classList.add(CLASS_NAME_STATIC);
-    this._queueCallback(() => {
-      this._element.classList.remove(CLASS_NAME_STATIC);
-    }, this._element);
-  }
-  _addEventListeners() {
-    // Handle native cancel event (Escape key) - only fires for modal dialogs
-    EventHandler.on(this._element, 'cancel', event => {
-      // Prevent native close behavior - we'll handle it
-      event.preventDefault();
-      if (!this._config.keyboard) {
-        this._triggerBackdropTransition();
-        return;
-      }
-      EventHandler.trigger(this._element, EVENT_CANCEL);
-      this.hide();
-    });
-
-    // Handle Escape key for non-modal dialogs (native cancel doesn't fire for show())
-    EventHandler.on(this._element, 'keydown', event => {
-      if (event.key !== 'Escape' || this._config.modal) {
-        return;
-      }
-      event.preventDefault();
-      if (!this._config.keyboard) {
-        return;
-      }
-      EventHandler.trigger(this._element, EVENT_CANCEL);
-      this.hide();
-    });
-
-    // Handle backdrop clicks (only applies to modal dialogs)
-    // Native <dialog> fires click on the dialog element when backdrop is clicked
-    EventHandler.on(this._element, 'click', event => {
-      // Only handle clicks directly on the dialog (backdrop area)
-      // Non-modal dialogs don't have a backdrop
-      if (event.target !== this._element || !this._config.modal) {
-        return;
-      }
-      if (this._config.backdrop === 'static') {
-        this._triggerBackdropTransition();
-        return;
-      }
-
-      // Default: click backdrop to dismiss
-      this.hide();
-    });
+  _onCancel() {
+    EventHandler.trigger(this._element, EVENT_CANCEL);
   }
 }
 
@@ -217,17 +120,40 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   // Get config from trigger's data attributes
   const config = Manipulator.getDataAttributes(this);
 
-  // Check if trigger is inside an open dialog
+  // Check if trigger is inside an open dialog (dialog swapping)
   const currentDialog = this.closest('dialog[open]');
   const shouldSwap = currentDialog && currentDialog !== target;
   if (shouldSwap) {
-    // Open new dialog first (its backdrop appears over current)
+    // Swap strategy (seamless backdrop, no flash):
+    //   1. Mark the incoming dialog with .dialog-swap-in so its ::backdrop
+    //      skips the @starting-style fade-in and appears fully opaque on
+    //      its very first frame in the top layer.
+    //   2. Open the incoming dialog (showModal).
+    //   3. Close the outgoing dialog synchronously — no exit transition, no
+    //      .hiding — so its ::backdrop is removed in the same frame the
+    //      incoming dialog's backdrop appears. Since both backdrops render
+    //      the same color, the user sees one continuous backdrop. Two
+    //      simultaneously-visible backdrops would composite to ~75% darker,
+    //      and a fading-out + fading-in pair would dip to ~75% opacity —
+    //      either would look like a flash.
+    //   4. Clean up the .dialog-swap-in flag once the incoming dialog
+    //      finishes its entry transition.
     const newDialog = Dialog.getOrCreateInstance(target, config);
+    target.classList.add(CLASS_NAME_SWAP_IN);
     newDialog.show(this);
-
-    // Close the current dialog (no backdrop flash since new one is already open)
+    EventHandler.one(target, `shown${EVENT_KEY}`, () => {
+      target.classList.remove(CLASS_NAME_SWAP_IN);
+    });
     const currentInstance = Dialog.getInstance(currentDialog);
     if (currentInstance) {
+      // Force synchronous close: .dialog-instant makes _isAnimated() false,
+      // which makes _shouldDeferClose() false, so hide() calls close()
+      // immediately (no deferred .hiding path). The class is removed after
+      // the (now-synchronous) hidden event fires.
+      currentDialog.classList.add(CLASS_NAME_INSTANT);
+      EventHandler.one(currentDialog, EVENT_HIDDEN, () => {
+        currentDialog.classList.remove(CLASS_NAME_INSTANT);
+      });
       currentInstance.hide();
     }
     return;

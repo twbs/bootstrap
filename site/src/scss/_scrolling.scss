@@ -11,7 +11,7 @@
     h3,
     h4,
     [tabindex="0"] {
-      scroll-margin-block-start: 80px;
+      scroll-margin-block-start: var(--bd-navbar-offset);
       scroll-margin-block-end: 100px;
     }
   }

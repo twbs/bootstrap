@@ -1,42 +1,38 @@
-@use "../../../scss/colors" as *;
 @use "../../../scss/mixins" as *;
 @use "../../../scss/layout/breakpoints" as *;
 
-:root {
-  --bs-font-sans-serif: "Geist", sans-serif;
-  --bs-font-monospace: "Geist Mono", monospace;
-}
-
 @layer custom {
+  :root {
+    --bd-navbar-offset: 5.75rem;
+  }
+
+  body {
+    font-family: Geist, var(--bs-body-font-family);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  code,
+  pre {
+    font-family: "Geist Mono", var(--bs-font-mono);
+  }
+
   .bd-sticky-navbar.is-stuck {
-    box-shadow: 0 .125rem .5rem rgba($black, .05);
+    box-shadow: 0 .125rem .5rem rgb(0 0 0 / .05);
   }
 
   .bd-navbar {
+    --bs-navbar-padding-x: 0;
+    --bs-navbar-padding-y: .75rem;
     --bs-border-color: color-mix(in oklch, var(--bs-fg-body) 12%, transparent);
-    padding: .75rem 0;
     margin-bottom: -1px;
+    background-color: transparent;
     background-clip: padding-box;
 
-    .bd-navbar-toggle {
-      @include media-breakpoint-down(lg) {
-        width: 4.25rem;
-      }
-    }
-
-    .navbar-toggler {
+    .navbar-btn-icon {
       padding: 0;
       margin-inline-end: -.5rem;
+      background-color: transparent;
       border: 0;
-
-      &:first-child {
-        margin-inline-start: -.5rem;
-      }
-
-      .bi {
-        width: 1.5rem;
-        height: 1.5rem;
-      }
 
       &:focus {
         box-shadow: none;
@@ -44,7 +40,6 @@
     }
 
     .navbar-brand {
-      // color: $white;
       @include transition(transform .2s ease-in-out);
 
       &:hover {
@@ -57,64 +52,41 @@
       --bs-nav-link-active-bg: transparent;
     }
 
-    .navbar-toggler,
     .nav-link {
-      font-size: var(--font-size-sm);
-      // padding-inline: $spacer * .25;
-      // color: rgba($white, .85);
-
-      // &:hover,
-      // &:focus {
-      //   color: $white;
-      // }
+      @include media-breakpoint-up(lg) {
+        font-size: var(--font-size-sm);
+      }
 
       &.active {
         font-weight: 600;
-        // color: $white;
       }
     }
 
-    .navbar-nav-svg {
-      display: inline-block;
-      vertical-align: -.125rem;
-    }
-
-    .offcanvas-lg {
-      background-color: var(--bd-violet-bg);
-      border-inline-start: 0;
-
-      @include media-breakpoint-down(lg) {
-        box-shadow: var(--box-shadow-lg);
-      }
-    }
-
-    .dropdown-toggle {
+    [data-bs-toggle="menu"] {
       &:focus:not(:focus-visible) {
         outline: 0;
       }
     }
 
-    .dropdown-menu {
-      --bs-dropdown-min-width: 12rem;
-      --bs-dropdown-padding-x: .25rem;
-      --bs-dropdown-padding-y: .25rem;
-      --bs-dropdown-link-hover-bg: color-mix(in srgb, var(--bd-violet), transparent 90%);
-      --bs-dropdown-link-active-bg: var(--bd-violet);
-      // @include rfs(.875rem, --bs-dropdown-font-size);
-      // @include font-size(.875rem);
-      // @include border-radius(.5rem);
-      box-shadow: var(--dropdown-box-shadow);
+    .menu {
+      --menu-min-width: 12rem;
+      --menu-padding-x: .25rem;
+      --menu-padding-y: .25rem;
+      --menu-item-hover-color: var(--bs-accent-fg-emphasis);
+      --menu-item-hover-bg: var(--bs-accent-bg-subtle);
+      --menu-item-active-bg: var(--bs-accent-bg);
 
-      li + li {
-        margin-top: .125rem;
-      }
+      .menu-item {
+        .bi {
+          filter: brightness(.65);
+        }
 
-      .dropdown-item {
-        @include border-radius(.25rem);
-
-        &:active {
+        &:active,
+        &.active {
+          // stylelint-disable-next-line selector-max-class
           .bi {
             color: inherit !important; // stylelint-disable-line declaration-no-important
+            filter: brightness(1);
           }
         }
       }
@@ -126,16 +98,6 @@
           display: block !important; // stylelint-disable-line declaration-no-important
         }
       }
-    }
-
-    .dropdown-menu-end {
-      --bs-dropdown-min-width: 8rem;
-    }
-  }
-
-  @include color-mode(dark) {
-    .bd-navbar {
-      box-shadow: 0 .5rem 1rem rgba($black, .15), inset 0 -1px 0 rgba($white, .15);
     }
   }
 }

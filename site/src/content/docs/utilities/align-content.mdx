@@ -11,7 +11,7 @@ import { getData } from '@libs/data'
 
 ## Overview
 
-Use `align-content` utilities on flexbox containers to align flex items _together_ on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
+Use `align-content` utilities on flexbox containers to align flex items _together_ on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we’ve enforced `flex-wrap: wrap` and increased the number of flex items.
 
 **Heads up!** This property has no effect on single rows of flex items.
 
@@ -181,12 +181,12 @@ Responsive variations also exist for `align-content`.
 {getData('breakpoints').map((breakpoint) => {
   return (
     <Fragment>
-      <li><code>.align-content{breakpoint.abbr}-start</code></li>
-      <li><code>.align-content{breakpoint.abbr}-end</code></li>
-      <li><code>.align-content{breakpoint.abbr}-center</code></li>
-      <li><code>.align-content{breakpoint.abbr}-between</code></li>
-      <li><code>.align-content{breakpoint.abbr}-around</code></li>
-      <li><code>.align-content{breakpoint.abbr}-stretch</code></li>
+      <li><code>.{breakpoint.abbr}align-content-start</code></li>
+      <li><code>.{breakpoint.abbr}align-content-end</code></li>
+      <li><code>.{breakpoint.abbr}align-content-center</code></li>
+      <li><code>.{breakpoint.abbr}align-content-between</code></li>
+      <li><code>.{breakpoint.abbr}align-content-around</code></li>
+      <li><code>.{breakpoint.abbr}align-content-stretch</code></li>
     </Fragment>
   )
 })}

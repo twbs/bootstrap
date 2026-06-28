@@ -20,20 +20,57 @@ import SelectorEngine from './dom/selector-engine.js';
  */
 
 const NAME = 'otpInput';
-const DATA_KEY = 'bs.otp-input';
+const DATA_KEY = 'bs.otpInput';
 const EVENT_KEY = `.${DATA_KEY}`;
 const DATA_API_KEY = '.data-api';
 const EVENT_COMPLETE = `complete${EVENT_KEY}`;
 const EVENT_INPUT = `input${EVENT_KEY}`;
+const EVENT_DOMCONTENT_LOADED = `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`;
 const SELECTOR_DATA_OTP = '[data-bs-otp]';
 const SELECTOR_INPUT = 'input';
+
+// Events that should refresh the active-slot highlight as the caret moves
+const SYNC_EVENTS = ['blur', 'keyup', 'click', 'select'];
+const CLASS_NAME_INPUT = 'otp-input';
+const CLASS_NAME_RENDERED = 'otp-rendered';
+const CLASS_NAME_SLOTS = 'otp-slots';
+const CLASS_NAME_SLOT = 'otp-slot';
+const CLASS_NAME_SLOT_FILLED = 'otp-slot-filled';
+const CLASS_NAME_SLOT_ACTIVE = 'otp-slot-active';
+const CLASS_NAME_SEPARATOR = 'otp-separator';
+const MASK_CHARACTER = '•';
+
+// Per-type input mode, validation pattern, and a filter that strips disallowed characters
+const TYPES = {
+  numeric: {
+    inputmode: 'numeric',
+    pattern: '[0-9]*',
+    filter: /[^0-9]/g
+  },
+  alphanumeric: {
+    inputmode: 'text',
+    pattern: '[A-Za-z0-9]*',
+    filter: /[^A-Za-z0-9]/g
+  },
+  alpha: {
+    inputmode: 'text',
+    pattern: '[A-Za-z]*',
+    filter: /[^A-Za-z]/g
+  }
+};
 const Default = {
-  length: 6,
-  mask: false
+  groups: null,
+  length: null,
+  mask: false,
+  separator: '·',
+  type: 'numeric'
 };
 const DefaultType = {
-  length: 'number',
-  mask: 'boolean'
+  groups: '(array|null)',
+  length: '(number|null)',
+  mask: 'boolean',
+  separator: 'string',
+  type: 'string'
 };
 
 /**
@@ -43,9 +80,17 @@ const DefaultType = {
 class OtpInput extends BaseComponent {
   constructor(element, config) {
     super(element, config);
-    this._inputs = SelectorEngine.find(SELECTOR_INPUT, this._element);
-    this._setupInputs();
+    this._input = SelectorEngine.findOne(SELECTOR_INPUT, this._element);
+    if (!this._input) {
+      return;
+    }
+    this._type = TYPES[this._config.type] || TYPES.numeric;
+    this._length = this._resolveLength();
+    this._slots = [];
+    this._setupInput();
+    this._renderSlots();
     this._addEventListeners();
+    this._render();
   }
 
   // Getters
@@ -61,158 +106,145 @@ class OtpInput extends BaseComponent {
 
   // Public
   getValue() {
-    return this._inputs.map(input => input.value).join('');
+    return this._input.value;
   }
   setValue(value) {
-    const chars = String(value).split('');
-    for (const [index, input] of this._inputs.entries()) {
-      input.value = chars[index] || '';
-    }
+    this._input.value = this._sanitize(String(value));
+    this._render();
     this._checkComplete();
   }
   clear() {
-    for (const input of this._inputs) {
-      input.value = '';
-    }
-    this._inputs[0]?.focus();
+    this._input.value = '';
+    this._render();
+    this._input.focus();
   }
   focus() {
-    // Focus first empty input, or last input if all filled
-    const emptyInput = this._inputs.find(input => !input.value);
-    if (emptyInput) {
-      emptyInput.focus();
-    } else {
-      this._inputs.at(-1)?.focus();
+    this._input.focus();
+    // Place the caret after the last entered character
+    const end = this._input.value.length;
+    this._input.setSelectionRange(end, end);
+    this._render();
+  }
+  dispose() {
+    EventHandler.off(this._input, 'input', this._onInput);
+    EventHandler.off(this._input, 'focus', this._onFocus);
+    for (const type of SYNC_EVENTS) {
+      EventHandler.off(this._input, type, this._onSync);
     }
+    this._slotsContainer?.remove();
+    this._element.classList.remove(CLASS_NAME_RENDERED);
+    super.dispose();
   }
 
   // Private
-  _setupInputs() {
-    for (const input of this._inputs) {
-      // Set attributes for proper OTP handling
-      input.setAttribute('maxlength', '1');
-      input.setAttribute('inputmode', 'numeric');
-      input.setAttribute('pattern', '\\d*');
+  _resolveLength() {
+    if (this._config.length) {
+      return this._config.length;
+    }
+    const maxLength = Number.parseInt(this._input.getAttribute('maxlength'), 10);
+    return Number.isNaN(maxLength) || maxLength < 1 ? 6 : maxLength;
+  }
+  _setupInput() {
+    const input = this._input;
 
-      // First input gets autocomplete for browser OTP autofill
-      if (input === this._inputs[0]) {
-        input.setAttribute('autocomplete', 'one-time-code');
-      } else {
-        input.setAttribute('autocomplete', 'off');
-      }
+    // A single text field backs the whole control so screen readers, password
+    // managers, and SMS autofill treat it like any other input.
+    if (input.type === 'number' || input.type === 'password') {
+      input.type = 'text';
+    }
+    input.classList.add(CLASS_NAME_INPUT);
+    input.setAttribute('maxlength', String(this._length));
+    input.setAttribute('inputmode', this._type.inputmode);
+    input.setAttribute('pattern', this._type.pattern);
+    if (!input.getAttribute('autocomplete')) {
+      input.setAttribute('autocomplete', 'one-time-code');
+    }
 
-      // Mask input if configured
-      if (this._config.mask) {
-        input.setAttribute('type', 'password');
+    // Filter any pre-filled value through the configured type
+    if (input.value) {
+      input.value = this._sanitize(input.value);
+    }
+  }
+  _renderSlots() {
+    const container = document.createElement('div');
+    container.className = CLASS_NAME_SLOTS;
+    container.setAttribute('aria-hidden', 'true');
+    const {
+      groups
+    } = this._config;
+    let groupIndex = 0;
+    let inGroup = 0;
+    for (let i = 0; i < this._length; i++) {
+      const slot = document.createElement('div');
+      slot.className = CLASS_NAME_SLOT;
+      container.append(slot);
+      this._slots.push(slot);
+
+      // Insert a visual separator between configured groups
+      if (Array.isArray(groups) && groups.length > 0) {
+        inGroup++;
+        if (inGroup === groups[groupIndex] && i < this._length - 1) {
+          const separator = document.createElement('div');
+          separator.className = CLASS_NAME_SEPARATOR;
+          separator.textContent = this._config.separator;
+          container.append(separator);
+          groupIndex = Math.min(groupIndex + 1, groups.length - 1);
+          inGroup = 0;
+        }
       }
     }
+    this._slotsContainer = container;
+    this._element.append(container);
+    this._element.classList.add(CLASS_NAME_RENDERED);
   }
   _addEventListeners() {
-    for (const [index, input] of this._inputs.entries()) {
-      EventHandler.on(input, 'input', event => this._handleInput(event, index));
-      EventHandler.on(input, 'keydown', event => this._handleKeydown(event, index));
-      EventHandler.on(input, 'paste', event => this._handlePaste(event));
-      EventHandler.on(input, 'focus', event => this._handleFocus(event));
+    // Listeners are attached with bare event names (not namespaced) because
+    // `input` is not in EventHandler's native-events list; we keep references
+    // so they can be removed on dispose.
+    this._onInput = () => this._handleInput();
+    this._onFocus = () => this.focus();
+    this._onSync = () => this._render();
+    EventHandler.on(this._input, 'input', this._onInput);
+    EventHandler.on(this._input, 'focus', this._onFocus);
+
+    // Keep the active-slot highlight in sync with the caret
+    for (const type of SYNC_EVENTS) {
+      EventHandler.on(this._input, type, this._onSync);
     }
   }
-  _handleInput(event, index) {
-    const input = event.target;
-
-    // Only allow digits
-    if (!/^\d*$/.test(input.value)) {
-      input.value = input.value.replace(/\D/g, '');
+  _handleInput() {
+    const sanitized = this._sanitize(this._input.value);
+    if (sanitized !== this._input.value) {
+      this._input.value = sanitized;
     }
-    const {
-      value
-    } = input;
-
-    // Handle multi-character input (some browsers/autofill)
-    if (value.length > 1) {
-      // Distribute characters across inputs
-      const chars = value.split('');
-      input.value = chars[0] || '';
-      for (let i = 1; i < chars.length && index + i < this._inputs.length; i++) {
-        this._inputs[index + i].value = chars[i];
-      }
-
-      // Focus appropriate input
-      const nextIndex = Math.min(index + chars.length, this._inputs.length - 1);
-      this._inputs[nextIndex].focus();
-    } else if (value && index < this._inputs.length - 1) {
-      // Auto-advance to next input
-      this._inputs[index + 1].focus();
-    }
+    this._render();
     EventHandler.trigger(this._element, EVENT_INPUT, {
-      value: this.getValue(),
-      index
+      value: this._input.value
     });
     this._checkComplete();
   }
-  _handleKeydown(event, index) {
+  _sanitize(value) {
+    return value.replace(this._type.filter, '').slice(0, this._length);
+  }
+  _render() {
     const {
-      key
-    } = event;
-    switch (key) {
-      case 'Backspace':
-        {
-          if (!this._inputs[index].value && index > 0) {
-            // Move to previous input and clear it
-            event.preventDefault();
-            this._inputs[index - 1].value = '';
-            this._inputs[index - 1].focus();
-          }
-          break;
-        }
-      case 'Delete':
-        {
-          // Clear current and shift remaining values left
-          event.preventDefault();
-          for (let i = index; i < this._inputs.length - 1; i++) {
-            this._inputs[i].value = this._inputs[i + 1].value;
-          }
-          this._inputs.at(-1).value = '';
-          break;
-        }
-      case 'ArrowLeft':
-        {
-          if (index > 0) {
-            event.preventDefault();
-            this._inputs[index - 1].focus();
-          }
-          break;
-        }
-      case 'ArrowRight':
-        {
-          if (index < this._inputs.length - 1) {
-            event.preventDefault();
-            this._inputs[index + 1].focus();
-          }
-          break;
-        }
-
-      // No default
+      value
+    } = this._input;
+    const isFocused = document.activeElement === this._input;
+    // The active slot follows the caret, clamped to the last slot when the value is full
+    const caret = Math.min(this._input.selectionStart ?? value.length, this._length - 1);
+    for (const [index, slot] of this._slots.entries()) {
+      const char = value[index] ?? '';
+      slot.textContent = char && this._config.mask ? MASK_CHARACTER : char;
+      slot.classList.toggle(CLASS_NAME_SLOT_FILLED, Boolean(char));
+      slot.classList.toggle(CLASS_NAME_SLOT_ACTIVE, isFocused && index === caret);
     }
-  }
-  _handlePaste(event) {
-    event.preventDefault();
-    const pastedData = (event.clipboardData || window.clipboardData).getData('text');
-    const digits = pastedData.replace(/\D/g, '').slice(0, this._inputs.length);
-    if (digits) {
-      this.setValue(digits);
-
-      // Focus last filled input or last input
-      const lastIndex = Math.min(digits.length, this._inputs.length) - 1;
-      this._inputs[lastIndex].focus();
-    }
-  }
-  _handleFocus(event) {
-    // Select the content on focus for easy replacement
-    event.target.select();
   }
   _checkComplete() {
-    const value = this.getValue();
-    const isComplete = value.length === this._inputs.length && this._inputs.every(input => input.value !== '');
-    if (isComplete) {
+    const {
+      value
+    } = this._input;
+    if (value.length === this._length) {
       EventHandler.trigger(this._element, EVENT_COMPLETE, {
         value
       });
@@ -224,7 +256,7 @@ class OtpInput extends BaseComponent {
  * Data API implementation
  */
 
-EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
+EventHandler.on(document, EVENT_DOMCONTENT_LOADED, () => {
   for (const element of SelectorEngine.find(SELECTOR_DATA_OTP)) {
     OtpInput.getOrCreateInstance(element);
   }

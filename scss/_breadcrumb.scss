@@ -1,5 +1,6 @@
 @use "functions" as *;
 @use "mixins/border-radius" as *;
+@use "mixins/mask-icon" as *;
 @use "mixins/transition" as *;
 @use "mixins/tokens" as *;
 
@@ -12,15 +13,18 @@ $breadcrumb-tokens: defaults(
     --breadcrumb-margin-bottom: 1rem,
     --breadcrumb-font-size: inherit,
     --breadcrumb-bg: transparent,
-    --breadcrumb-border-radius: var(--border-radius),
+    --breadcrumb-border-radius: var(--radius-5),
     --breadcrumb-divider-color: var(--fg-4),
+    --breadcrumb-divider-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 16'><path fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M2 2l4 6-4 6'/></svg>"))},
+    --breadcrumb-divider-width: .375rem,
+    --breadcrumb-divider-height: .75rem,
     --breadcrumb-link-padding-x: .75rem,
     --breadcrumb-link-padding-y: .25rem,
     --breadcrumb-link-color: var(--fg-3),
     --breadcrumb-link-hover-color: var(--fg-2),
     --breadcrumb-link-hover-bg: var(--bg-1),
     --breadcrumb-link-active-color: var(--fg-1),
-    --breadcrumb-link-border-radius: var(--border-radius-lg),
+    --breadcrumb-link-border-radius: var(--radius-7),
   ),
   $breadcrumb-tokens
 );
@@ -35,7 +39,7 @@ $breadcrumb-tokens: defaults(
     align-items: center;
     padding: var(--breadcrumb-padding-y, 0) var(--breadcrumb-padding-x, 0);
     font-size: var(--breadcrumb-font-size);
-    list-style: none;
+    list-style-type: "";
     background-color: var(--breadcrumb-bg);
     @include border-radius(var(--breadcrumb-border-radius));
   }
@@ -47,6 +51,18 @@ $breadcrumb-tokens: defaults(
   .breadcrumb-divider {
     margin-inline: calc(var(--breadcrumb-link-padding-x) / 4);
     color: var(--breadcrumb-divider-color);
+
+    // Render a default chevron, painted with `currentcolor` via a mask, when the
+    // divider has no explicit content. Any content (an inline SVG, a text
+    // character, etc.) added to the element overrides this default.
+    &:empty::before {
+      display: block;
+      width: var(--breadcrumb-divider-width);
+      height: var(--breadcrumb-divider-height);
+      content: "";
+      background-color: currentcolor;
+      @include mask-icon(var(--breadcrumb-divider-icon));
+    }
   }
 
   .breadcrumb-link {

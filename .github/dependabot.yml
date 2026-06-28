@@ -7,6 +7,8 @@ updates:
       day: tuesday
       time: "12:00"
       timezone: Europe/Athens
+    cooldown:
+      default-days: 7
     groups:
       github-actions:
         patterns:
@@ -15,14 +17,38 @@ updates:
     directory: "/"
     labels:
       - dependencies
-      - v5
+      - v6
     schedule:
       interval: weekly
       day: tuesday
       time: "12:00"
       timezone: Europe/Athens
+    cooldown:
+      default-days: 7
     versioning-strategy: increase
     rebase-strategy: disabled
+    ignore:
+      - dependency-name: "@babel/cli"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/core"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "@babel/preset-env"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "karma-browserstack-launcher"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "karma-rollup-preprocessor"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+      - dependency-name: "stylelint"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
     groups:
       production-dependencies:
         dependency-type: "production"

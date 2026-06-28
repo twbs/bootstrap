@@ -1,6 +1,5 @@
 @use "sass:map";
 @use "config" as *;
-@use "variables" as *;
 @use "functions" as *;
 @use "theme" as *;
 
@@ -87,6 +86,14 @@ $utilities: map.merge(
       values: auto hidden visible scroll,
     ),
     // scss-docs-end utils-overflow
+    "container": (
+      property: container-type,
+      class: contains,
+      values: (
+        "inline": inline-size,
+        "size": size,
+      )
+    ),
     // scss-docs-start utils-display
     "display": (
       responsive: true,
@@ -107,14 +114,6 @@ $utilities: map.merge(
       )
     ),
     // scss-docs-end utils-shadow
-    // scss-docs-start utils-focus-ring
-    "focus-ring": (
-      // css-var: true,
-      property: --focus-ring-color,
-      class: focus-ring,
-      values: theme-color-values("focus-ring"),
-    ),
-    // scss-docs-end utils-focus-ring
     // scss-docs-start utils-position
     "position": (
       property: position,
@@ -129,12 +128,12 @@ $utilities: map.merge(
       values: $position-values
     ),
     "start": (
-      property: left,
+      property: inset-inline-start,
       class: start,
       values: $position-values
     ),
     "end": (
-      property: right,
+      property: inset-inline-end,
       class: end,
       values: $position-values
     ),
@@ -189,6 +188,7 @@ $utilities: map.merge(
       )
     ),
     "border-y": (
+      class: border-y,
       property: border-block,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
@@ -196,6 +196,7 @@ $utilities: map.merge(
       )
     ),
     "border-x": (
+      class: border-x,
       property: border-inline,
       values: (
         null: var(--border-width) var(--border-style) var(--border-color),
@@ -210,7 +211,7 @@ $utilities: map.merge(
         "border-color": var(--border-color)
       ),
       class: border,
-      values: map.merge(theme-color-values("bg"), $theme-borders),
+      values: map.merge(theme-color-refs("bg"), theme-token-refs($theme-borders, "border")),
     ),
     "border-color-subtle": (
       property: (
@@ -218,7 +219,7 @@ $utilities: map.merge(
         "border-color": var(--border-color)
       ),
       class: border-subtle,
-      values: theme-color-values("border"),
+      values: theme-color-refs("border"),
     ),
     "border-width": (
       property: border-width,
@@ -376,8 +377,8 @@ $utilities: map.merge(
       responsive: true,
       property: justify-self,
       values: (
-        start: flex-start,
-        end: flex-end,
+        start: start,
+        end: end,
         center: center,
       )
     ),
@@ -428,12 +429,15 @@ $utilities: map.merge(
     ),
     "grid-column-counts": (
       responsive: true,
-      property: --columns,
+      // property: --columns,
+      property: grid-template-columns,
       class: grid-cols,
       values: (
-        3,
-        4,
-        6
+        "1": 1fr,
+        "2": repeat(2, 1fr),
+        "3": repeat(3, 1fr),
+        "4": repeat(4, 1fr),
+        "6": repeat(6, 1fr),
       )
     ),
     "grid-columns": (
@@ -467,6 +471,7 @@ $utilities: map.merge(
     // scss-docs-end utils-flex
     // Margin utilities
     // scss-docs-start utils-spacing
+    // scss-docs-start utils-margin
     "margin": (
       responsive: true,
       property: margin,
@@ -495,7 +500,7 @@ $utilities: map.merge(
       responsive: true,
       property: margin-inline-end,
       class: me,
-      values: map.merge($spacers, (auto: auto))
+      values: map-merge-multiple($spacers, $negative-spacers, (auto: auto))
     ),
     "margin-bottom": (
       responsive: true,
@@ -507,52 +512,11 @@ $utilities: map.merge(
       responsive: true,
       property: margin-inline-start,
       class: ms,
-      values: map.merge($spacers, (auto: auto))
+      values: map-merge-multiple($spacers, $negative-spacers, (auto: auto))
     ),
-    // Negative margin utilities
-    // "negative-margin": (
-    //   responsive: true,
-    //   property: margin,
-    //   class: m,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-x": (
-    //   responsive: true,
-    //   property: margin-inline,
-    //   class: mx,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-y": (
-    //   responsive: true,
-    //   property: margin-block,
-    //   class: my,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-top": (
-    //   responsive: true,
-    //   property: margin-block-start,
-    //   class: mt,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-end": (
-    //   responsive: true,
-    //   property: margin-inline-end,
-    //   class: me,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-bottom": (
-    //   responsive: true,
-    //   property: margin-block-end,
-    //   class: mb,
-    //   values: $negative-spacers
-    // ),
-    // "negative-margin-start": (
-    //   responsive: true,
-    //   property: margin-inline-start,
-    //   class: ms,
-    //   values: $negative-spacers
-    // ),
+    // scss-docs-end utils-margin
     // Padding utilities
+    // scss-docs-start utils-padding
     "padding": (
       responsive: true,
       property: padding,
@@ -595,7 +559,9 @@ $utilities: map.merge(
       class: ps,
       values: $spacers
     ),
+    // scss-docs-end utils-padding
     // Gap utility
+    // scss-docs-start utils-gap
     "gap": (
       responsive: true,
       property: gap,
@@ -614,7 +580,46 @@ $utilities: map.merge(
       class: column-gap,
       values: $spacers
     ),
+    // scss-docs-end utils-gap
     // scss-docs-end utils-spacing
+    // scss-docs-start utils-space
+    "space-x": (
+      responsive: true,
+      property: margin-inline-end,
+      class: space-x,
+      child-selector: "> :not(:last-child)",
+      values: $spacers
+    ),
+    "space-y": (
+      responsive: true,
+      property: margin-block-end,
+      class: space-y,
+      child-selector: "> :not(:last-child)",
+      values: $spacers
+    ),
+    // scss-docs-end utils-space
+    // scss-docs-start utils-divide
+    "divide-x": (
+      responsive: true,
+      property: border-inline-start,
+      class: divide-x,
+      child-selector: "> :not(:first-child)",
+      values: (
+        null: var(--border-width) var(--border-style) var(--border-color),
+        0: 0,
+      )
+    ),
+    "divide-y": (
+      responsive: true,
+      property: border-block-start,
+      class: divide-y,
+      child-selector: "> :not(:first-child)",
+      values: (
+        null: var(--border-width) var(--border-style) var(--border-color),
+        0: 0,
+      )
+    ),
+    // scss-docs-end utils-divide
     // Text
     // scss-docs-start utils-font-family
     "font-family": (
@@ -690,19 +695,13 @@ $utilities: map.merge(
       values: lowercase uppercase capitalize
     ),
     // scss-docs-end utils-text-transform
-    // "white-space": (
-    //   property: white-space,
-    //   class: text,
-    //   values: (
-    //     wrap: normal,
-    //     nowrap: nowrap,
-    //   )
-    // ),
+    // scss-docs-start utils-text-wrap
     "text-wrap": (
-      property: white-space,
+      property: text-wrap,
       class: text,
       values: wrap nowrap balance pretty,
     ),
+    // scss-docs-end utils-text-wrap
     // scss-docs-start utils-text-break
     "word-wrap": (
       property: word-wrap word-break,
@@ -712,19 +711,16 @@ $utilities: map.merge(
     // scss-docs-end utils-text-break
     // scss-docs-end utils-text
     // scss-docs-start utils-color
-    // "color-attr": (
-    //   selector: "attr-includes",
-    //   class: "fg-",
-    //   property: color,
-    //   values: var(--fg),
-    // ),
     "fg": (
       property: (
         "--fg": null,
         "color": var(--fg)
       ),
       class: fg,
-      values: map.merge(theme-color-values("text"), $theme-fgs),
+      values: map.merge(
+        map.merge(theme-color-refs("fg"), theme-token-refs($theme-fgs, "fg")),
+        (reset: inherit)
+      ),
     ),
     "fg-emphasis": (
       property: (
@@ -732,7 +728,7 @@ $utilities: map.merge(
         "color": var(--fg)
       ),
       class: fg-emphasis,
-      values: theme-color-values("text-emphasis"),
+      values: theme-color-refs("fg-emphasis"),
     ),
     "fg-contrast": (
       property: (
@@ -740,7 +736,7 @@ $utilities: map.merge(
         "color": var(--fg)
       ),
       class: fg-contrast,
-      values: theme-color-values("contrast"),
+      values: theme-color-refs("contrast"),
     ),
     "fg-opacity": (
       class: fg,
@@ -771,7 +767,7 @@ $utilities: map.merge(
     "underline-color": (
       property: text-decoration-color,
       class: underline,
-      values: theme-color-values("text"),
+      values: theme-color-values("fg"),
     ),
     "underline-opacity": (
       property: text-decoration-color,
@@ -799,7 +795,7 @@ $utilities: map.merge(
         "background-color": var(--bg)
       ),
       class: bg,
-      values: map.merge(theme-color-values("bg"), $theme-bgs),
+      values: map.merge(theme-color-refs("bg"), theme-token-refs($theme-bgs, "bg")),
     ),
     "bg-color-subtle": (
       property: (
@@ -807,7 +803,7 @@ $utilities: map.merge(
         "background-color": var(--bg)
       ),
       class: bg-subtle,
-      values: theme-color-values("bg-subtle"),
+      values: theme-color-refs("bg-subtle"),
     ),
     "bg-color-muted": (
       property: (
@@ -815,7 +811,7 @@ $utilities: map.merge(
         "background-color": var(--bg)
       ),
       class: bg-muted,
-      values: theme-color-values("bg-muted"),
+      values: theme-color-refs("bg-muted"),
     ),
     "bg-opacity": (
       class: bg,
@@ -836,7 +832,7 @@ $utilities: map.merge(
     "theme-subtle": (
       property: (
         "background-color": var(--theme-bg-subtle),
-        "color": var(--theme-text)
+        "color": var(--theme-fg)
       ),
       class: theme-subtle,
       values: (null: null)
@@ -844,7 +840,7 @@ $utilities: map.merge(
     "theme-muted": (
       property: (
         "background-color": var(--theme-bg-muted),
-        "color": var(--theme-text-emphasis)
+        "color": var(--theme-fg-emphasis)
       ),
       class: theme-muted,
       values: (null: null)
@@ -863,7 +859,7 @@ $utilities: map.merge(
     // scss-docs-start utils-interaction
     "user-select": (
       property: user-select,
-      values: all auto none
+      values: all auto text none
     ),
     "pointer-events": (
       property: pointer-events,
@@ -873,78 +869,78 @@ $utilities: map.merge(
     // scss-docs-end utils-interaction
     // scss-docs-start utils-border-radius
     "border-radius": (
-      property: border-radius,
+      property: (
+        "--rounded-size": null,
+        "border-radius": var(--rounded-size)
+      ),
       class: rounded,
-      values: (
-        null: var(--border-radius),
-        0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
-        circle: 50%,
-        pill: var(--border-radius-pill)
+      values: map.merge(
+        $radii,
+        (
+          null: map.get($radii, 5),
+          circle: 50%,
+          pill: var(--radius-pill)
+        )
+      )
+    ),
+    "rounded-size": (
+      property: --rounded-size,
+      class: rounded-size,
+      values: map.merge(
+        $radii,
+        (
+          null: map.get($radii, 5),
+          circle: 50%,
+          pill: var(--radius-pill)
+        )
       )
     ),
     "rounded-top": (
       property: border-start-start-radius border-start-end-radius,
       class: rounded-top,
-      values: (
-        null: var(--border-radius),
-        0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
-        circle: 50%,
-        pill: var(--border-radius-pill)
+      values: map.merge(
+        $radii,
+        (
+          null: var(--rounded-size, var(--radius-5)),
+          circle: 50%,
+          pill: var(--radius-pill)
+        )
       )
     ),
     "rounded-end": (
-      property: border-end-end-radius border-end-start-radius,
+      property: border-start-end-radius border-end-end-radius,
       class: rounded-end,
-      values: (
-        null: var(--border-radius),
-        0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
-        circle: 50%,
-        pill: var(--border-radius-pill)
+      values: map.merge(
+        $radii,
+        (
+          null: var(--rounded-size, var(--radius-5)),
+          circle: 50%,
+          pill: var(--radius-pill)
+        )
       )
     ),
     "rounded-bottom": (
-      property: border-end-end-radius border-end-start-radius,
+      property: border-end-start-radius border-end-end-radius,
       class: rounded-bottom,
-      values: (
-        null: var(--border-radius),
-        0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
-        circle: 50%,
-        pill: var(--border-radius-pill)
+      values: map.merge(
+        $radii,
+        (
+          null: var(--rounded-size, var(--radius-5)),
+          circle: 50%,
+          pill: var(--radius-pill)
+        )
       )
     ),
     "rounded-start": (
-      property: border-start-start-radius border-start-end-radius,
+      property: border-start-start-radius border-end-start-radius,
       class: rounded-start,
-      values: (
-        null: var(--border-radius),
-        0: 0,
-        1: var(--border-radius-sm),
-        2: var(--border-radius),
-        3: var(--border-radius-lg),
-        4: var(--border-radius-xl),
-        5: var(--border-radius-2xl),
-        circle: 50%,
-        pill: var(--border-radius-pill)
+      values: map.merge(
+        $radii,
+        (
+          null: var(--rounded-size, var(--radius-5)),
+          circle: 50%,
+          pill: var(--radius-pill)
+        )
       )
     ),
     // scss-docs-end utils-border-radius

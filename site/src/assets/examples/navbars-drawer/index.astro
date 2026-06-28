@@ -1,0 +1,141 @@
+---
+import { getVersionedDocsPath } from '@libs/path'
+
+export const title = 'Navbar Template'
+export const extra_css = ['navbars-drawer.css']
+---
+
+<main>
+  <nav class="navbar" data-bs-theme="dark" aria-label="Dark drawer navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Dark drawer navbar</a>
+      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#drawerNavbarDark" aria-controls="drawerNavbarDark" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
+      </button>
+      <dialog class="drawer drawer-end text-bg-dark" tabindex="-1" id="drawerNavbarDark" aria-labelledby="drawerNavbarDarkLabel">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="drawerNavbarDarkLabel">Drawer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+                Menu
+              </a>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn-outline theme-success" type="submit">Search</button>
+          </form>
+        </div>
+      </dialog>
+    </div>
+  </nav>
+
+  <nav class="navbar bg-body-tertiary" aria-label="Light drawer navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Light drawer navbar</a>
+      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#drawerNavbarLight" aria-controls="drawerNavbarLight" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
+      </button>
+      <dialog class="drawer drawer-end" tabindex="-1" id="drawerNavbarLight" aria-labelledby="drawerNavbarLightLabel">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="drawerNavbarLightLabel">Drawer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+                Menu
+              </a>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn-outline theme-success" type="submit">Search</button>
+          </form>
+        </div>
+      </dialog>
+    </div>
+  </nav>
+
+  <nav class="navbar lg:navbar-expand" data-bs-theme="dark" aria-label="Drawer navbar large">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Responsive drawer navbar</a>
+      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#drawerNavbar2" aria-controls="drawerNavbar2" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" aria-hidden="true"></span>
+      </button>
+      <dialog class="drawer drawer-end text-bg-dark" tabindex="-1" id="drawerNavbar2" aria-labelledby="drawerNavbar2Label">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="drawerNavbar2Label">Drawer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">
+                Menu
+              </a>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <hr class="menu-divider">
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <form class="d-flex mt-3 lg:mt-0" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn-outline theme-success" type="submit">Search</button>
+          </form>
+        </div>
+      </dialog>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="bg-body-tertiary p-5 rounded">
+      <div class="sm:col-8 py-5 mx-auto">
+        <h1 class="display-5 fw-normal">Navbar with drawer examples</h1>
+        <p class="fs-lg">This example shows how responsive drawer menus work within the navbar. For positioning of navbars, checkout the <a href={getVersionedDocsPath('/examples/navbar-static/')}>top</a> and <a href={getVersionedDocsPath('/examples/navbar-fixed/')}>fixed top</a> examples.</p>
+        <p>From the top down, you'll see a dark navbar, light navbar and a responsive navbar—each with drawers built in. Resize your browser window to the large breakpoint to see the toggle for the drawer.</p>
+        <p>
+          <a class="btn-solid theme-primary" href={getVersionedDocsPath('/components/navbar#drawer')} role="button">Learn more about drawer navbars &raquo;</a>
+        </p>
+    </div>
+    </div>
+  </div>
+</main>

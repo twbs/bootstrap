@@ -46,17 +46,15 @@
     - name: Features
       description: 'Explain the features, benefits, or other details in your marketing content.'
     - name: Sidebars
-      description: 'Common navigation patterns ideal for offcanvas or multi-column layouts.'
+      description: 'Common navigation patterns ideal for drawer or multi-column layouts.'
     - name: Footers
       description: 'Finish every page strong with an awesome footer, big or small.'
-    - name: Dropdowns
-      description: 'Enhance your dropdowns with filters, icons, custom styles, and more.'
+    # - name: Menus
+    #   description: 'Enhance your menus with filters, icons, custom styles, and more.'
     - name: List groups
       description: 'Extend list groups with utilities and custom styles for any content.'
     - name: Dialogs
       description: 'Transform dialogs to serve any purpose, from feature tours to confirmations.'
-    - name: Badges
-      description: 'Make badges work with custom inner HTML and new looks.'
     - name: Breadcrumbs
       description: 'Integrate custom icons and create stepper components.'
     - name: Buttons
@@ -107,16 +105,14 @@
   examples:
     - name: Navbars
       description: 'Demonstration of all responsive and container options for the navbar.'
-    - name: Navbars offcanvas
-      description: 'Same as the Navbars example, but with our offcanvas component.'
+    - name: Navbars drawer
+      description: 'Same as the Navbars example, but with our drawer component.'
     - name: Navbar static
       description: 'Single navbar example of a static top navbar along with some additional content.'
     - name: Navbar fixed
       description: 'Single navbar example with a fixed top navbar along with some additional content.'
     - name: Navbar bottom
       description: 'Single navbar example with a bottom navbar along with some additional content.'
-    - name: Offcanvas navbar
-      description: "Turn your expandable navbar into a sliding offcanvas menu (doesn't use our offcanvas component)."
 
 - category: Integrations
   description: 'Integrations with external libraries.'

@@ -9,7 +9,7 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
-import { transform, browserslistToTargets } from 'lightningcss'
+import { transform, browserslistToTargets, Features } from 'lightningcss'
 
 const distDir = path.join(process.cwd(), 'dist/css')
 
@@ -17,8 +17,17 @@ const distDir = path.join(process.cwd(), 'dist/css')
 const cssFiles = fs.readdirSync(distDir)
   .filter(file => file.endsWith('.css') && !file.endsWith('.min.css'))
 
-// Target browsers (matching Bootstrap's browser support)
-const targets = browserslistToTargets(['> 0.5%', 'last 2 versions', 'Firefox ESR', 'not dead'])
+// Target browsers (read from .browserslistrc when available)
+let targets
+try {
+  // eslint-disable-next-line import/no-extraneous-dependencies
+  const { default: browserslist } = await import('browserslist')
+  const browsers = browserslist()
+  console.log('Target browsers from .browserslistrc:', browsers)
+  targets = browserslistToTargets(browsers)
+} catch {
+  console.error('Could not load browserslist')
+}
 
 for (const file of cssFiles) {
   const inputPath = path.join(distDir, file)
@@ -39,7 +48,11 @@ for (const file of cssFiles) {
       minify: true,
       sourceMap: true,
       inputSourceMap: inputMap ? JSON.stringify(inputMap) : undefined,
-      targets
+      targets,
+      // Never lower `light-dark()`: its custom-property polyfill breaks our
+      // `data-bs-theme` dark mode. We bumped browser support to versions with
+      // native support to fix this, but this guards against a regression.
+      exclude: Features.LightDark
     })
 
     // Write minified CSS with source map reference

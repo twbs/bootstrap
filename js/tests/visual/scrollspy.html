@@ -10,7 +10,7 @@
     </style>
   </head>
   <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar md:navbar-expand fixed-top" data-bs-theme="dark">
       <a class="navbar-brand" href="#">Scrollspy test</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,14 +23,14 @@
           <li class="nav-item">
             <a class="nav-link" href="#mdo">@mdo</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#one">One</a></li>
-              <li><a class="dropdown-item" href="#two">Two</a></li>
-              <li><a class="dropdown-item" href="#three">Three</a></li>
-              <li><a class="dropdown-item" href="#présentation">Présentation</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="#" role="button" data-bs-toggle="menu" aria-expanded="false">Menu</a>
+            <div class="menu">
+              <a class="menu-item" href="#one">One</a>
+              <a class="menu-item" href="#two">Two</a>
+              <a class="menu-item" href="#three">Three</a>
+              <a class="menu-item" href="#présentation">Présentation</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#final">Final</a>
@@ -95,6 +95,6 @@
       <p>Ad leggings keytar, brunch id art party dolor labore.</p>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.js" type="module"></script>
   </body>
 </html>

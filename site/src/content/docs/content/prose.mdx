@@ -2,11 +2,12 @@
 title: Prose
 description: Use the `.prose` wrapper class to make long form content more easily without the need for specifying Bootstrap classes on every element. Especially useful for converting Markdown or MDX to HTML, or simply for making content heavy pages more readable.
 toc: true
+css_layer: content
 ---
 
 ## How it works
 
-Wrap your content in the `.prose` class to get modified font-size, line-height, and spacing specifically designed for long form content that originals from source Markdown files or WYSIWYG editors. Here's what we do with that class:
+Wrap your content in the `.prose` class to get modified font-size, line-height, and spacing specifically designed for long form content that originates from source Markdown files or WYSIWYG editors. Here’s what we do with that class:
 
 - Set a base `font-size`, `line-height`, and some local CSS variables on the parent element.
 - Normalize the spacing of lists
@@ -15,14 +16,14 @@ Wrap your content in the `.prose` class to get modified font-size, line-height, 
 - Style blockquotes, code, and other inline elements.
 
 <Callout>
-  The `.not-prose` utility class can be used to opt out of `.prose` typography styles in specific elements. This is useful for components that have their own styling, such as code snippets or examples. Adding a `.prose` within a `.not-prose` won't work.
+  The `.not-prose` utility class can be used to opt out of `.prose` typography styles in specific elements. This is useful for components that have their own styling, such as code snippets or examples. Adding a `.prose` within a `.not-prose` won’t work.
 </Callout>
 
 ## Example
 
 Below is an example of Markdown demonstrating several types of HTML content supported in the `.prose` class.
 
-<div class="prose border rounded-3 p-3 p-lg-5 max-w-100">
+<div class="prose border rounded-3 p-3 lg:p-5 max-w-100">
 # Getting started with documentation
 Writing clear and effective documentation is essential for any project. When you create content that others will read and use, [proper formatting](#) makes all the difference. *Good documentation* helps users understand complex concepts quickly and efficiently.
 
@@ -67,7 +68,7 @@ Code examples should be practical and directly related to the concepts being exp
 
 ### Lists
 
-When presenting information in lists, consider whether the order matters. Use numbered lists for sequential steps and bullet points for related items that don't require a specific order.
+When presenting information in lists, consider whether the order matters. Use numbered lists for sequential steps and bullet points for related items that don’t require a specific order.
 
 - Write clear, concise list items that focus on one concept each.
 - Use parallel structure across all items in your list.
@@ -118,11 +119,11 @@ Visual elements enhance understanding by providing concrete examples of abstract
 Tables work best for comparing related data points or presenting structured information that benefits from a grid layout.
 
 | Name    | Up-votes | Down-votes |
-|---------|---------|-----------|
-| Alice   | 10      | 11        |
-| Bob     | 4       | 3         |
-| Charlie | 7       | 9         |
-| Totals  | 21      | 23        |
+|---------|----------|------------|
+| Alice   | 10       | 11         |
+| Bob     | 4        | 3          |
+| Charlie | 7        | 9          |
+| Totals  | 21       | 23         |
 
 Keep table headers descriptive and consider the reading order when arranging columns. Simple tables are easier to understand and maintain than complex ones.
 

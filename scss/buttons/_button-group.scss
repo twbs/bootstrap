@@ -29,6 +29,44 @@
     }
   }
 
+  .btn-group-divider {
+    > [class*="btn-"] + [class*="btn-"] {
+      &::before {
+        position: absolute;
+        // top: 25%;
+        // bottom: 25%;
+        // left: calc(var(--btn-border-width) * -1);
+        z-index: 3;
+        // width: var(--btn-border-width);
+        content: "";
+        background-color: var(--btn-color);
+        opacity: .25;
+      }
+    }
+  }
+
+  .btn-group:where(.btn-group-divider) {
+    > [class*="btn-"] + [class*="btn-"] {
+      &::before {
+        top: 25%;
+        bottom: 25%;
+        left: calc(var(--btn-border-width) * -1);
+        width: var(--btn-border-width);
+      }
+    }
+  }
+
+  .btn-group-vertical:where(.btn-group-divider) {
+    > [class*="btn-"] + [class*="btn-"] {
+      &::before {
+        top: calc(var(--btn-border-width) * -1);
+        right: var(--btn-padding-x);
+        left: var(--btn-padding-x);
+        height: var(--btn-border-width);
+      }
+    }
+  }
+
   // Optional: Group multiple button groups together for a toolbar
   .btn-toolbar {
     display: flex;
@@ -51,7 +89,7 @@
     }
 
     // Reset rounded corners
-    > [class*="btn-"]:not(:last-child):not(.dropdown-toggle),
+    > [class*="btn-"]:not(:last-child, :has(+ .menu)),
     > .btn-group:not(:last-child) > [class*="btn-"] {
       @include border-end-radius(0);
     }
@@ -60,24 +98,6 @@
     > [class*="btn-"]:not(:first-child),
     > .btn-group:not(:first-child) > [class*="btn-"] {
       @include border-start-radius(0);
-    }
-  }
-
-  //
-  // Split button dropdowns
-  //
-
-  .dropdown-toggle-split {
-    padding-inline: calc(var(--btn-padding-x) * .75);
-
-    &::after,
-    .dropup &::after,
-    .dropend &::after {
-      margin-inline-start: 0;
-    }
-
-    .dropstart &::before {
-      margin-inline-end: 0;
     }
   }
 
@@ -101,7 +121,7 @@
     }
 
     // Reset rounded corners
-    > [class*="btn-"]:not(:last-child):not(.dropdown-toggle),
+    > [class*="btn-"]:not(:last-child, :has(+ .menu)),
     > .btn-group:not(:last-child) > [class*="btn-"] {
       @include border-bottom-radius(0);
     }

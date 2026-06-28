@@ -2,17 +2,20 @@
 @use "functions" as *;
 @use "layout/breakpoints" as *;
 @use "mixins/box-shadow" as *;
-@use "mixins/gradients" as *;
+@use "mixins/mask-icon" as *;
 @use "mixins/tokens" as *;
 @use "mixins/transition" as *;
 
 // mdo-do: fix nav-link-height and navbar-brand-height, which we previously calculated with font-size, line-height, and block padding
 
+// stylelint-disable custom-property-no-missing-var-function
 // scss-docs-start navbar-breakpoints
 $navbar-breakpoints: $breakpoints !default;
 // scss-docs-end navbar-breakpoints
 
 $navbar-tokens: () !default;
+$navbar-dark-tokens: () !default;
+$navbar-nav-tokens: () !default;
 
 // scss-docs-start navbar-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -36,14 +39,14 @@ $navbar-tokens: defaults(
     --navbar-toggler-padding-x: .75rem,
     --navbar-toggler-font-size: var(--font-size-lg),
     --navbar-toggler-border-color: color-mix(in oklch, var(--fg-body) 15%, transparent),
-    --navbar-toggler-border-radius: var(--border-radius),
+    --navbar-toggler-border-radius: var(--radius-5),
     --navbar-toggler-transition: box-shadow .15s ease-in-out,
+    --navbar-toggler-icon-size: 1.25rem,
+    --navbar-toggler-icon: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path stroke='black' stroke-linecap='round' stroke-width='1' d='M1 3.5h14M1 8h14M1 12.5h14'/></svg>"))},
   ),
   $navbar-tokens
 );
 // scss-docs-end navbar-tokens
-
-$navbar-dark-tokens: () !default;
 
 // scss-docs-start navbar-dark-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -61,6 +64,28 @@ $navbar-dark-tokens: defaults(
 );
 // scss-docs-end navbar-dark-tokens
 
+// scss-docs-start navbar-nav-tokens
+// stylelint-disable-next-line scss/dollar-variable-default
+$navbar-nav-tokens: defaults(
+  (
+    --nav-gap: .25rem,
+    --nav-link-gap: .5rem,
+    --nav-link-padding-x: .5rem,
+    --nav-link-padding-y: .375rem,
+    --nav-link-color: var(--navbar-color),
+    --nav-link-border-width: var(--border-width),
+    //--nav-link-border-color: var(--border-color),
+    --nav-link-hover-color: var(--navbar-hover-color),
+    --nav-link-hover-bg: transparent,
+    --nav-link-active-color: var(--navbar-active-color),
+    --nav-link-active-bg: transparent,
+    --nav-link-disabled-color: var(--navbar-disabled-color),
+  ),
+  $navbar-nav-tokens
+);
+// scss-docs-end navbar-nav-tokens
+// stylelint-enable custom-property-no-missing-var-function
+
 @layer components {
   // Base navbar
   .navbar {
@@ -73,7 +98,9 @@ $navbar-dark-tokens: defaults(
     justify-content: space-between;
     padding: var(--navbar-padding-y) var(--navbar-padding-x);
     @include set-container();
-    @include gradient-bg();
+    color: var(--navbar-color, var(--fg-body));
+    background-color: var(--navbar-bg, var(--bg-body));
+    // @include gradient-bg(var(--navbar-bg, var(--bg-body)));
 
     // Container properties for nested containers
     %container-flex-properties {
@@ -89,7 +116,7 @@ $navbar-dark-tokens: defaults(
     }
 
     @each $breakpoint, $container-max-width in $container-max-widths {
-      > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
+      > .#{breakpoint-prefix($breakpoint, $container-max-widths)}container {
         @extend %container-flex-properties;
       }
     }
@@ -119,31 +146,20 @@ $navbar-dark-tokens: defaults(
   //
   // Relies on `.nav` base class.
   .navbar-nav {
-    // scss-docs-start navbar-nav-css-vars
-    // Set all nav-link variables for self-contained styling
-    --nav-gap: .25rem;
-    --nav-link-gap: .5rem;
-    --nav-link-padding-x: .5rem;
-    --nav-link-padding-y: .5rem;
-    --nav-link-color: var(--navbar-color);
-    --nav-link-hover-color: var(--navbar-hover-color);
-    --nav-link-hover-bg: transparent;
-    --nav-link-active-color: var(--navbar-active-color);
-    --nav-link-active-bg: transparent;
-    --nav-link-disabled-color: var(--navbar-disabled-color);
-    // scss-docs-end navbar-nav-css-vars
+    @include tokens($navbar-nav-tokens);
 
     display: flex;
     flex-direction: column;
     gap: var(--nav-gap);
     padding-inline-start: 0;
     margin-bottom: 0;
-    list-style: none;
+    list-style-type: "";
 
     .nav-link {
       &.active,
       &.show {
         color: var(--navbar-active-color);
+        border: var(--nav-link-border-width) solid var(--nav-link-border-color, transparent);
       }
     }
   }
@@ -169,8 +185,17 @@ $navbar-dark-tokens: defaults(
     --btn-hover-bg: var(--bg-2);
   }
 
+  // Hamburger icon, rendered via CSS mask so it inherits the navbar color
+  .navbar-toggler-icon {
+    display: inline-block;
+    width: var(--navbar-toggler-icon-size);
+    height: var(--navbar-toggler-icon-size);
+    background-color: currentcolor;
+    @include mask-icon(var(--navbar-toggler-icon));
+  }
+
   // scss-docs-start navbar-expand-loop
-  // Generate series of `.navbar-expand-*` responsive classes for configuring
+  // Generate series of responsive `.navbar-expand` classes for configuring
   // where your navbar collapses and expands. Uses container queries so the
   // navbar responds to its own width, not the viewport width.
 
@@ -193,13 +218,22 @@ $navbar-dark-tokens: defaults(
       display: none !important; // stylelint-disable-line declaration-no-important
     }
 
-    .offcanvas {
+    [class*="drawer"] {
       // stylelint-disable declaration-no-important
-      position: static;
+      // Reset native <dialog> UA styles and below-breakpoint drawer styles.
+      // Must use !important to override both UA <dialog> defaults and the
+      // responsive drawer styles from media-breakpoint-down().
+      position: static !important;
+      inset: auto !important;
       z-index: auto;
+      display: flex !important;
       flex-grow: 1;
       width: auto !important;
+      max-width: none !important;
       height: auto !important;
+      max-height: none !important;
+      padding: 0;
+      margin: 0;
       visibility: visible !important;
       background-color: transparent !important;
       border: 0 !important;
@@ -208,13 +242,13 @@ $navbar-dark-tokens: defaults(
       @include transition(none);
       // stylelint-enable declaration-no-important
 
-      .offcanvas-header {
-        display: none;
+      .drawer-header {
+        display: none !important; // stylelint-disable-line declaration-no-important
       }
 
-      .offcanvas-body {
+      .drawer-body {
         display: flex;
-        flex-grow: 0;
+        flex-grow: 1;
         flex-direction: row;
         align-items: center;
         padding: 0;
@@ -233,9 +267,9 @@ $navbar-dark-tokens: defaults(
   }
 
   // Responsive navbar expand classes using container queries
-  @include loop-breakpoints-down($navbar-breakpoints) using ($breakpoint, $next, $infix) {
+  @include loop-breakpoints-down($navbar-breakpoints) using ($breakpoint, $next, $prefix) {
     @if $next {
-      .navbar-expand#{$infix} {
+      .#{$prefix}navbar-expand {
         @include container-breakpoint-up($next) {
           @include navbar-expanded();
         }
@@ -243,6 +277,34 @@ $navbar-dark-tokens: defaults(
     }
   }
   // scss-docs-end navbar-expand-loop
+
+  // Prevent drawer flash on breakpoint crossing.
+  // When the navbar crosses from expanded (inline) to collapsed (drawer),
+  // the drawer transitions from visibility:visible to visibility:hidden.
+  // Without this override, the slide transition plays — briefly showing the
+  // panel sliding away. Disabling transitions when not [open] ensures only
+  // intentional show/hide actions animate.
+  // stylelint-disable-next-line no-duplicate-selectors
+  .navbar {
+    [class*="drawer"]:not([open], .hiding) {
+      @include transition(none !important);
+    }
+  }
+
+  .navbar-translucent {
+    position: relative;
+    background-color: transparent;
+
+    &::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      background-color: color-mix(in oklch, var(--navbar-bg, var(--bg-body)) 80%, transparent);
+      background-image: none;
+      backdrop-filter: blur(5px) saturate(180%);
+    }
+  }
 
   .navbar[data-bs-theme="dark"] {
     @include tokens($navbar-dark-tokens);

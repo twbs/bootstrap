@@ -1,13 +1,14 @@
 ---
-import { getData } from '@libs/data'
+import { getData, type SidebarItem, type SidebarSubItem } from '@libs/data'
 import { getConfig } from '@libs/config'
-import { docsPages } from '@libs/content'
+import { docsPages, getDocsPageSlug } from '@libs/content'
 import { getSlug } from '@libs/utils'
+import NewBadge from '@components/NewBadge.astro'
 
 const sidebar = getData('sidebar')
 ---
 
-<nav class="nav vstack bd-links w-100 pb-3 pb-md-2 pe-lg-2" id="bd-docs-nav" aria-label="Docs navigation">
+<nav class="nav vstack bd-links w-100 pb-3 md:pb-2 lg:pe-2" id="bd-docs-nav" aria-label="Docs navigation">
   {
     sidebar.map((group) => {
       const groupSlug = getSlug(group.title)
@@ -18,8 +19,11 @@ const sidebar = getData('sidebar')
             <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
               {group.icon && (
                 <svg
-                  class="bi me-2"
-                  style={group.icon_color && `color: light-dark(var(--bs-${group.icon_color}-500), var(--bs-${group.icon_color}-400));`}
+                  class="bi me-1"
+                  style={
+                    group.icon_color &&
+                    `color: light-dark(var(--bs-${group.icon_color}-500), var(--bs-${group.icon_color}-400));`
+                  }
                   aria-hidden="true"
                 >
                   <use href={`#${group.icon}`} />
@@ -28,22 +32,20 @@ const sidebar = getData('sidebar')
               {group.title}
             </strong>
             <ul class="nav flex-column bd-links-nav">
-              {group.pages?.map((item: any) => {
+              {group.pages?.map((item: SidebarItem) => {
                 // Handle sub-groups
                 if (item.group && item.pages) {
                   return (
                     <>
-                      <li class="bd-links-subgroup fw-semibold mt-3">
-                        {item.group}
-                      </li>
-                      {item.pages.map((page: any) => {
+                      <li class="bd-links-subgroup fw-semibold mt-3">{item.group}</li>
+                      {item.pages.map((page: SidebarSubItem) => {
                         const docSlug = getSlug(page.title)
                         const unversionedPageSlug = `${groupSlug}/${docSlug}`
 
                         const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
                         const active = Astro.params.slug === unversionedPageSlug
 
-                        const generatedPage = docsPages.find((page) => page.slug === unversionedPageSlug)
+                        const generatedPage = docsPages.find((page) => getDocsPageSlug(page.id) === unversionedPageSlug)
 
                         // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
                         if (!generatedPage) {
@@ -51,6 +53,8 @@ const sidebar = getData('sidebar')
                             `The page '${page.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`
                           )
                         }
+
+                        const addedMeta = page.meta?.find((m) => m.added)
 
                         return (
                           <li>
@@ -60,6 +64,7 @@ const sidebar = getData('sidebar')
                               aria-current={active ? 'page' : undefined}
                             >
                               {page.title}
+                              {addedMeta && <NewBadge version={addedMeta.added} />}
                             </a>
                           </li>
                         )
@@ -69,13 +74,17 @@ const sidebar = getData('sidebar')
                 }
 
                 // Handle regular pages
+                if (!item.title) {
+                  return null
+                }
+
                 const docSlug = getSlug(item.title)
                 const unversionedPageSlug = `${groupSlug}/${docSlug}`
 
                 const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
                 const active = Astro.params.slug === unversionedPageSlug
 
-                const generatedPage = docsPages.find((page) => page.slug === unversionedPageSlug)
+                const generatedPage = docsPages.find((page) => getDocsPageSlug(page.id) === unversionedPageSlug)
 
                 // This test should not be necessary, see comments for `getSlug()` in `src/libs/utils.ts`.
                 if (!generatedPage) {
@@ -83,6 +92,8 @@ const sidebar = getData('sidebar')
                     `The page '${item.title}' referenced in 'site/data/sidebar.yml' does not exist at '${url}'.`
                   )
                 }
+
+                const itemAddedMeta = item.meta?.find((m) => m.added)
 
                 return (
                   <li>
@@ -92,6 +103,7 @@ const sidebar = getData('sidebar')
                       aria-current={active ? 'page' : undefined}
                     >
                       {item.title}
+                      {itemAddedMeta && <NewBadge version={itemAddedMeta.added} />}
                     </a>
                   </li>
                 )

@@ -1,0 +1,376 @@
+---
+title: Button
+description: Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.
+aliases:
+ - "/docs/[[config:docs_version]]/components/buttons/"
+toc: true
+css_layer: components
+---
+
+import { getData } from '@libs/data'
+
+## Base class
+
+Buttons have a standard `.btn` class that sets up basic styles such as padding and content alignment, along with fallback visual styles for basic accessibility. Change this class to another button class to apply different visual styles for a specific button variant and theme.
+
+<Example code={`<button type="button" class="btn">Base class</button>`} />
+
+The `.btn` class is intended to be a starting point for your own custom button styles, while our provided button variants can be used alongside `.theme-*` classes or as a basis for your own custom styles.
+
+## Playground
+
+Bootstrap includes several button variants, each serving its own semantic purpose, with a few extras thrown in for more control. Combined with our utilities, you have a very powerful set of defaults to choose from.
+
+<ButtonPlayground />
+
+## Variants
+
+Compare all button variants and styles at once:
+
+<Example class="bd-example-buttons md:justify-items-start" code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn-solid theme-${themeColor.name}">${themeColor.title}</button>
+<button type="button" class="btn-outline theme-${themeColor.name}">${themeColor.title}</button>
+<button type="button" class="btn-subtle theme-${themeColor.name}">${themeColor.title}</button>
+<button type="button" class="btn-text theme-${themeColor.name}">${themeColor.title}</button>`)]} />
+
+<Details name="warning-color-assistive-technologies" />
+
+## Link buttons
+
+Use the `.btn-link` class to create a button that looks like a link.
+
+<Example code={`<button type="button" class="btn btn-link">Link</button>`} />
+
+Link buttons can also be styled with the theme colors.
+
+<Example code={[...getData('theme-colors').map((themeColor) => `<button type="button" class="btn btn-link theme-${themeColor.name}">${themeColor.title}</button>`)]} />
+
+## Styled buttons
+
+Add visual depth to solid buttons with gradients and shadows using the `.btn-styled` modifier class. This provides a more three-dimensional appearance that can be customized further with CSS variables.
+
+<Example class="d-flex flex-wrap gap-2" code={[...getData('theme-colors').map((themeColor) => `<button class="btn-solid btn-styled theme-${themeColor.name}">${themeColor.title}</button>`)]} />
+
+The gradient and shadow can be customized via CSS variables:
+
+<BsTable>
+| Variable | Description |
+| --- | --- |
+| `--bs-btn-gradient-start` | Top of gradient (default: `rgb(255 255 255 / 12.5%)`) |
+| `--bs-btn-gradient-end` | Bottom of gradient (default: `rgb(0 0 0 / 7.5%)`) |
+| `--bs-btn-border-mix-color` | Color to mix with the button background (default: `#000`) |
+| `--bs-btn-border-mix-amount` | Amount of color to mix with the button background (default: `10%`) |
+| `--bs-btn-border-hover-mix-amount` | Amount of color to mix with the button background on hover (default: `12.5%`) |
+| `--bs-btn-border-active-mix-amount` | Amount of color to mix with the button background on active (default: `20%`) |
+| `--bs-btn-shadow` | Resting state shadow |
+| `--bs-btn-active-shadow` | Pressed/active state shadow |
+</BsTable>
+
+## Button tags
+
+The `.btn` classes are designed to be used with the `<button>` element. However, you can also use these classes on `<a>` or `<input>` elements (though some browsers may apply a slightly different rendering).
+
+When using button classes on `<a>` elements that are used to trigger in-page functionality (like collapsing content), rather than linking to new pages or sections within the current page, these links should be given a `role="button"` to appropriately convey their purpose to assistive technologies such as screen readers.
+
+<Example class="d-flex flex-wrap gap-2" code={`<a class="btn-solid theme-primary" href="#" role="button">Link</a>
+<button class="btn-solid theme-primary" type="submit">Button</button>
+<input class="btn-solid theme-primary" type="button" value="Input">
+<input class="btn-solid theme-primary" type="submit" value="Submit">
+<input class="btn-solid theme-primary" type="reset" value="Reset">`} />
+
+## Sizes
+
+Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
+
+<Example code={`<button type="button" class="btn-solid theme-primary btn-lg">Large button</button>
+<button type="button" class="btn-solid theme-secondary btn-lg">Large button</button>`} />
+
+<Example code={`<button type="button" class="btn-solid theme-primary btn-sm">Small button</button>
+<button type="button" class="btn-solid theme-secondary btn-sm">Small button</button>`} />
+
+<Example code={`<button type="button" class="btn-solid theme-primary btn-xs">Extra small button</button>
+<button type="button" class="btn-solid theme-secondary btn-xs">Extra small button</button>`} />
+
+You can even roll your own custom sizing with CSS variables:
+
+<Example code={`<button type="button" class="btn-solid theme-primary"
+          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+    Custom button
+  </button>`} />
+
+## Icon buttons
+
+Use `.btn-icon` for square buttons that contain only an icon. This class sets `aspect-ratio: 1` and removes padding, making the button perfectly square based on its `min-height`. Always include an `aria-label` attribute on icon-only buttons to ensure they are accessible to screen reader users.
+
+<Example code={`<button type="button" class="btn-icon" aria-label="Magic">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#magic"></use></svg>
+  </button>
+  <button type="button" class="btn-solid theme-primary btn-icon" aria-label="Confirm">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button type="button" class="btn-outline theme-secondary btn-icon" aria-label="Auto theme">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#circle-half"></use></svg>
+  </button>
+  <button type="button" class="btn-subtle theme-warning btn-icon" aria-label="Light theme">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#sun-fill"></use></svg>
+  </button>`} />
+
+Combine with size classes for different icon button sizes:
+
+<Example code={`<button type="button" class="btn-solid theme-primary btn-icon btn-xs" aria-label="Confirm">
+    <svg class="bi" width="12" height="12" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button type="button" class="btn-solid theme-primary btn-icon btn-sm" aria-label="Confirm">
+    <svg class="bi" width="14" height="14" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button type="button" class="btn-solid theme-primary btn-icon" aria-label="Confirm">
+    <svg class="bi" width="16" height="16" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>
+  <button type="button" class="btn-solid theme-primary btn-icon btn-lg" aria-label="Confirm">
+    <svg class="bi" width="20" height="20" fill="currentColor" aria-hidden="true"><use href="#check2"></use></svg>
+  </button>`} />
+
+## Disabled state
+
+Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element. Disabled buttons have `pointer-events: none`, preventing hover and active states from triggering, and some additional styling to indicate the disabled state.
+
+<Example class="d-flex flex-wrap gap-2" code={`<button type="button" class="btn-solid theme-primary" disabled>Primary button</button>
+<button type="button" class="btn-solid theme-secondary" disabled>Button</button>
+<button type="button" class="btn-outline theme-primary" disabled>Primary button</button>
+<button type="button" class="btn-outline theme-secondary" disabled>Button</button>`} />
+
+Disabled buttons using the `<a>` element behave a bit different. Use the `.disabled` class instead of the attribute on `<a>` elements to make them visually appear disabled. If you need to keep the `href` attribute, you may need additional HTML to fully disable the link functionality.
+
+<Example code={`<a class="btn-solid theme-primary disabled" role="button" aria-disabled="true">Primary link</a>
+<a class="btn-solid theme-secondary disabled" role="button" aria-disabled="true">Link</a>`} />
+
+If there’s an `href` attribute, add `tabindex="-1"` and `aria-disabled="true"` to prevent keyboard focus and assistive technologies from interacting with the link.
+
+<Example code={`<a href="#" class="btn-solid theme-primary disabled" tabindex="-1" role="button" aria-disabled="true">Primary link</a>
+<a href="#" class="btn-solid theme-secondary disabled" tabindex="-1" role="button" aria-disabled="true">Link</a>`} />
+
+You may also want to use custom JavaScript to disable the link functionality altogether.
+
+## Block buttons
+
+Use the `.d-grid` utility to create responsive stacks of full-width “block buttons”. Space them out with gap utilities.
+
+<Example code={`<div class="d-grid gap-2">
+    <button class="btn-solid theme-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
+  </div>`} />
+
+Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoint, where `.md:d-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
+
+<Example code={`<div class="d-grid gap-2 md:d-block">
+    <button class="btn-solid theme-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
+  </div>`} />
+
+You can adjust the width of your block buttons with grid column width classes. For example, for a half-width “block button”, use `.col-6`. Center it horizontally with `.mx-auto`, too.
+
+<Example code={`<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn-solid theme-primary" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
+  </div>`} />
+
+Additional utilities can be used to adjust the alignment of buttons when horizontal. Here we’ve taken our previous responsive example and added some flex utilities and a margin utility on the button to right-align the buttons when they’re no longer stacked.
+
+<Example code={`<div class="d-grid gap-2 md:d-flex md:justify-content-end">
+    <button class="btn-solid theme-primary md:me-2" type="button">Button</button>
+    <button class="btn-solid theme-primary" type="button">Button</button>
+  </div>`} />
+
+## Toggle buttons
+
+Create button-like checkboxes and radio buttons by adding `.btn-check` to a `<label>` element with button classes, with a checkbox or radio input nested inside. The input is visually hidden while the label provides the button appearance. These toggle buttons can further be grouped in a [button group]([[docsref:/components/button-group]]) if needed.
+
+<Callout>
+Visually, these toggle buttons are identical to our [JavaScript toggle buttons](#button-plugin), but are conveyed differently by assistive technologies. Checkbox toggles will be announced by screen readers as "checked"/"not checked"as they are checkboxes under the hood. The JavaScript toggle buttons are announced as "button"/"button pressed". It’s up to you to decide which approach makes more sense for your use case.
+</Callout>
+
+### Checkboxes
+
+Checkboxes can be checked, unchecked, or disabled. Checkbox-based toggle buttons only toggle a single button’s state.
+
+<Example class="d-flex flex-wrap gap-2" code={`<label class="btn-check btn-solid theme-primary">
+    <input type="checkbox" checked autocomplete="off">
+    Checked
+  </label>
+
+  <label class="btn-check btn-solid theme-primary">
+    <input type="checkbox" autocomplete="off">
+    Toggle
+  </label>
+
+  <label class="btn-check btn-solid theme-primary">
+    <input type="checkbox" disabled autocomplete="off">
+    Disabled
+  </label>`} />
+
+### Radios
+
+Radios can be checked, unchecked, or disabled. Use radio-based toggle buttons to toggle states between a set of buttons that include input elements with the same `name` attribute value.
+
+<Example class="d-flex flex-wrap gap-2" code={`<label class="btn-check btn-solid theme-primary">
+    <input type="radio" name="options" autocomplete="off" checked>
+    Checked
+  </label>
+
+  <label class="btn-check btn-solid theme-primary">
+    <input type="radio" name="options" autocomplete="off">
+    Toggle
+  </label>
+
+  <label class="btn-check btn-solid theme-primary">
+    <input type="radio" name="options" disabled autocomplete="off">
+    Disabled
+  </label>
+
+  <label class="btn-check btn-solid theme-primary">
+    <input type="radio" name="options" autocomplete="off">
+    Toggle
+  </label>`} />
+
+## Button plugin
+
+The button plugin allows you to create simple on/off toggle buttons.
+
+<Callout>
+Visually, these toggle buttons are identical to our [input toggle buttons](#toggle-buttons), but are conveyed differently by assistive technologies. Checkbox toggles will be announced by screen readers as "checked"/"not checked"as they are checkboxes under the hood. The JavaScript toggle buttons are announced as "button"/"button pressed". It’s up to you to decide which approach makes more sense for your use case.
+</Callout>
+
+### Toggle states
+
+Add `data-bs-toggle="button"` to toggle a button’s `active` state. If you’re pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to ensure that it is conveyed appropriately to assistive technologies.
+
+<Example class="d-flex flex-wrap gap-2"  code={`<button type="button" class="btn-solid theme-primary" data-bs-toggle="button">Toggle button</button>
+  <button type="button" class="btn-solid theme-primary active" data-bs-toggle="button" aria-pressed="true">Active toggle button</button>
+  <button type="button" class="btn-solid theme-primary" disabled data-bs-toggle="button">Disabled toggle button</button>`} />
+
+<Example class="d-flex flex-wrap gap-2" code={`<a href="#" class="btn-solid theme-primary" role="button" data-bs-toggle="button">Toggle link</a>
+  <a href="#" class="btn-solid theme-primary active" role="button" data-bs-toggle="button" aria-pressed="true">Active toggle link</a>
+  <a class="btn-solid theme-primary disabled" aria-disabled="true" role="button" data-bs-toggle="button">Disabled toggle link</a>`} />
+
+### Via data attributes
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="button"` | Toggles the button’s active (`pressed`) state via the Button plugin. |
+</BsTable>
+
+### Methods
+
+You can create a button instance with the button constructor, for example:
+
+```js
+const bsButton = new bootstrap.Button('#myButton')
+```
+
+<BsTable>
+| Method | Description |
+| --- | --- |
+| `dispose` | Destroys an element’s button. (Removes stored data on the DOM element) |
+| `getInstance` | Static method which allows you to get the button instance associated with a DOM element, you can use it like this: `bootstrap.Button.getInstance(element)`. |
+| `getOrCreateInstance` | Static method which returns a button instance associated with a DOM element or creates a new one in case it wasn’t initialized. You can use it like this: `bootstrap.Button.getOrCreateInstance(element)`. |
+| `toggle` | Toggles push state. Gives the button the appearance that it has been activated. |
+</BsTable>
+
+For example, to toggle all buttons
+
+```js
+document.querySelectorAll('.btn').forEach(buttonElement => {
+  const button = bootstrap.Button.getOrCreateInstance(buttonElement)
+  button.toggle()
+})
+```
+
+## CSS
+
+### Variables
+
+Buttons use CSS variables for real-time customization. These are set on the base `.btn` class and inherited by all button variants.
+
+<ScssDocs name="btn-tokens" file="scss/buttons/_button.scss" />
+
+Each variant class (`.btn-solid`, `.btn-outline`, etc.) updates these variables based on the current theme color, allowing buttons to adapt automatically when used with `.theme-*` classes.
+
+Styled buttons use the `$button-styled-tokens` Sass map.
+
+<ScssDocs name="button-styled-tokens" file="scss/buttons/_button.scss" />
+
+Link buttons use the `$button-link-tokens` Sass map.
+
+<ScssDocs name="button-link-tokens" file="scss/buttons/_button.scss" />
+
+### Sass maps
+
+#### Sizes
+
+Button sizes are defined in the `$button-sizes` Sass map. Each size specifies several variables through a Sass loop. These mostly line up with textual form controls.
+
+<ScssDocs name="button-sizes" file="scss/buttons/_button.scss" />
+
+#### Variants
+
+Button variants are defined in the `$button-variants` Sass map. Each variant specifies which theme color tokens to use for its base, hover, and active states. The map uses token names (like `"bg"`, `"contrast"`, `"border"`) that reference the current theme’s color palette.
+
+<ScssDocs name="btn-variants" file="scss/buttons/_button.scss" />
+
+To add a custom variant, extend the map before importing Bootstrap’s buttons:
+
+```scss
+@use "bootstrap/scss/buttons/button" with (
+  $button-variants: (
+    "solid": ( /* ... */ ),
+    "outline": ( /* ... */ ),
+    "subtle": ( /* ... */ ),
+    "text": ( /* ... */ ),
+    "ghost": (
+      "base": (
+        "bg": "transparent",
+        "color": "text",
+        "border-color": "transparent"
+      ),
+      "hover": (
+        "bg": "bg-subtle",
+        "color": "text-emphasis"
+      ),
+      "active": (
+        "bg": "bg-subtle",
+        "color": "text-emphasis"
+      )
+    )
+  )
+);
+```
+
+To remove a variant you don’t need, use Sass’s `map.remove()`:
+
+```scss
+@use "sass:map";
+
+@use "bootstrap/scss/buttons/button" as *button* with (
+  $button-variants: map.remove($button-variants, "text", "subtle")
+);
+```
+
+#### Selectors
+
+The `$btn-variant-selectors` list controls which selectors receive the base button styles (tokens, display, padding, font, etc.). By default it includes `.btn`, `.btn-link`, `.btn-icon`, and all classes generated from the `$button-variants` map. This means variant classes like `.btn-solid` work standalone without requiring `.btn`.
+
+<ScssDocs name="btn-variant-selectors" file="scss/buttons/_button.scss" />
+
+### Sass loops
+
+#### Variant loop
+
+The variant loop iterates over `$button-variants` to generate each variant class. It sets CSS variables for base, hover, active, and disabled states using the theme color tokens defined in the map.
+
+<ScssDocs name="btn-variant-mixin" file="scss/buttons/_button.scss" />
+
+#### Size loop
+
+The size loop iterates over `$button-sizes` to generate size modifier classes, setting the appropriate CSS variables for each size, including for button groups.
+
+<ScssDocs name="btn-sizes-loop" file="scss/buttons/_button.scss" />

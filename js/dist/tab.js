@@ -39,16 +39,15 @@ const END_KEY = 'End';
 const CLASS_NAME_ACTIVE = 'active';
 const CLASS_NAME_FADE = 'fade';
 const CLASS_NAME_SHOW = 'show';
-const CLASS_DROPDOWN = 'dropdown';
-const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
-const SELECTOR_DROPDOWN_MENU = '.dropdown-menu';
-const NOT_SELECTOR_DROPDOWN_TOGGLE = `:not(${SELECTOR_DROPDOWN_TOGGLE})`;
+const SELECTOR_MENU_TOGGLE = '[data-bs-toggle="menu"]';
+const SELECTOR_MENU = '.menu';
+const NOT_SELECTOR_MENU_TOGGLE = `:not(${SELECTOR_MENU_TOGGLE})`;
 const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]';
 const SELECTOR_OUTER = '.nav-item, .list-group-item';
-const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_DROPDOWN_TOGGLE}, .list-group-item${NOT_SELECTOR_DROPDOWN_TOGGLE}, [role="tab"]${NOT_SELECTOR_DROPDOWN_TOGGLE}`;
-const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'; // TODO: could only be `tab` in v6
+const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_MENU_TOGGLE}, .list-group-item${NOT_SELECTOR_MENU_TOGGLE}, [role="tab"]${NOT_SELECTOR_MENU_TOGGLE}`;
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"]';
 const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`;
-const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="pill"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="list"]`;
+const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"]`;
 
 /**
  * Class definition
@@ -112,7 +111,7 @@ class Tab extends BaseComponent {
       }
       element.removeAttribute('tabindex');
       element.setAttribute('aria-selected', true);
-      this._toggleDropDown(element, true);
+      this._toggleMenu(element, true);
       EventHandler.trigger(element, EVENT_SHOWN, {
         relatedTarget: relatedElem
       });
@@ -134,7 +133,7 @@ class Tab extends BaseComponent {
       }
       element.setAttribute('aria-selected', false);
       element.setAttribute('tabindex', '-1');
-      this._toggleDropDown(element, false);
+      this._toggleMenu(element, false);
       EventHandler.trigger(element, EVENT_HIDDEN, {
         relatedTarget: relatedElem
       });
@@ -150,7 +149,7 @@ class Tab extends BaseComponent {
     const children = this._getChildren().filter(element => !isDisabled(element));
     let nextActiveElement;
     if ([HOME_KEY, END_KEY].includes(event.key)) {
-      nextActiveElement = children[event.key === HOME_KEY ? 0 : children.length - 1];
+      nextActiveElement = event.key === HOME_KEY ? children[0] : children.at(-1);
     } else {
       const isNext = [ARROW_RIGHT_KEY, ARROW_DOWN_KEY].includes(event.key);
       nextActiveElement = getNextActiveElement(children, event.target, isNext, true);
@@ -201,20 +200,18 @@ class Tab extends BaseComponent {
       this._setAttributeIfNotExists(target, 'aria-labelledby', `${child.id}`);
     }
   }
-  _toggleDropDown(element, open) {
+  _toggleMenu(element, open) {
     const outerElem = this._getOuterElement(element);
-    if (!outerElem.classList.contains(CLASS_DROPDOWN)) {
+    const menuToggle = SelectorEngine.findOne(SELECTOR_MENU_TOGGLE, outerElem);
+    if (!menuToggle) {
       return;
     }
-    const toggle = (selector, className) => {
-      const element = SelectorEngine.findOne(selector, outerElem);
-      if (element) {
-        element.classList.toggle(className, open);
-      }
-    };
-    toggle(SELECTOR_DROPDOWN_TOGGLE, CLASS_NAME_ACTIVE);
-    toggle(SELECTOR_DROPDOWN_MENU, CLASS_NAME_SHOW);
-    outerElem.setAttribute('aria-expanded', open);
+    const menu = SelectorEngine.findOne(SELECTOR_MENU, outerElem);
+    menuToggle.classList.toggle(CLASS_NAME_ACTIVE, open);
+    if (menu) {
+      menu.classList.toggle(CLASS_NAME_SHOW, open);
+    }
+    menuToggle.setAttribute('aria-expanded', open);
   }
   _setAttributeIfNotExists(element, attribute, value) {
     if (!element.hasAttribute(attribute)) {

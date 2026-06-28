@@ -2,23 +2,24 @@
 title: Form adorn
 description: Decorate inputs with icons, text, and more using a custom wrapper that easily handles styling and positioning.
 toc: true
+css_layer: forms
 ---
 
 ## How it works
 
-The `.form-adorn` wrapper replicates `.form-control` styling (border, background, focus states) while using flexbox to position adornments alongside a "ghost input," a form control that has virtually no visual styling. The `.form-ghost` input inside is transparent and inherits styles from the wrapper.
+Apply both `.form-control` and `.form-adorn` to a wrapper element. `.form-control` provides the border, background, padding, and focus states; `.form-adorn` uses flexbox to position adornments alongside a "ghost input," a form control that has virtually no visual styling. The `.form-ghost` input inside is transparent and inherits styles from the wrapper.
 
 See the [form control]([[docsref:/forms/form-control]]) documentation for more information on the `.form-control` and `.form-ghost` classes.
 
 ## Example
 
-Wrap an icon and a `.form-ghost` input inside `.form-adorn`. Place the adornment before the input in the DOM for start position (left in LTR).
+Wrap an icon and a `.form-ghost` input inside a `<div>` with `.form-control` and `.form-adorn`. Place the adornment before the input in the DOM for start position (left in LTR).
 
 <Example code={`<div class="form-control form-adorn">
     <div class="form-adorn-icon">
       <svg class="bi" width="16" height="16"><use href="#search" /></svg>
     </div>
-    <input type="text" class="form-ghost" placeholder="Search...">
+    <input type="search" class="form-ghost" placeholder="Search...">
   </div>`} />
 
 Use `.form-adorn-end` to position the adornment on the trailing side (keeps DOM order, uses CSS to flip visually):
@@ -40,7 +41,7 @@ Add a label outside the `.form-adorn` wrapper for proper form semantics:
       <div class="form-adorn-icon">
         <svg class="bi" width="16" height="16"><use href="#search" /></svg>
       </div>
-      <input type="text" class="form-ghost" id="searchInput" placeholder="Search...">
+      <input type="search" class="form-ghost" id="searchInput" placeholder="Search...">
     </div>
   </div>
   <div>
@@ -51,6 +52,21 @@ Add a label outside the `.form-adorn` wrapper for proper form semantics:
       </div>
       <input type="email" class="form-ghost" id="emailInput" placeholder="you@example.com">
     </div>
+  </div>`} />
+
+## With form field
+
+Wrap a `.form-adorn` in a `.form-field` to pair it with a label and description text.
+
+<Example code={`<div class="form-field">
+    <label for="adornField" class="form-label">Search</label>
+    <div class="form-control form-adorn">
+      <div class="form-adorn-icon">
+        <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+      </div>
+      <input type="search" class="form-ghost" id="adornField" placeholder="Search...">
+    </div>
+    <small class="form-text">Search across all pages and posts.</small>
   </div>`} />
 
 ## Text adornments

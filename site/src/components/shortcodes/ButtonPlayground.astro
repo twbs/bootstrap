@@ -15,13 +15,21 @@ const rounded = ['default', 'pill', 'square']
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
   <symbol id="arrow-left" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+    <path
+      fill-rule="evenodd"
+      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+    ></path>
   </symbol>
   <symbol id="arrow-right" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+    <path
+      fill-rule="evenodd"
+      d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+    ></path>
   </symbol>
   <symbol id="plus-lg" viewBox="0 0 16 16">
-    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+    <path
+      fill-rule="evenodd"
+      d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"></path>
   </symbol>
 </svg>
 
@@ -29,120 +37,112 @@ const rounded = ['default', 'pill', 'square']
   <div class="d-flex flex-wrap gap-3">
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Color</label>
-      <div class="dropdown">
+      <div>
         <button
           type="button"
-          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
-          id="btn-color-dropdown"
-          data-bs-toggle="dropdown"
+          class="btn-outline theme-secondary btn-sm w-100 justify-content-between"
+          id="btn-color-menu"
+          data-bs-toggle="menu"
           aria-expanded="false"
           data-color="primary"
         >
           <span>Primary</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
-            <use href="#chevron-expand" />
+            <use href="#chevron-expand"></use>
           </svg>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="btn-color-dropdown">
-          {themeColors.map((themeColor) => (
-            <li>
+        <div class="menu">
+          {
+            themeColors.map((themeColor) => (
               <a
-                class:list={['dropdown-item', { 'active': themeColor.name === 'primary' }]}
+                class:list={['menu-item', { active: themeColor.name === 'primary' }]}
                 href="#"
                 data-color={themeColor.name}
                 data-selected={themeColor.name === 'primary'}
               >
                 {themeColor.title}
               </a>
-            </li>
-          ))}
-        </ul>
+            ))
+          }
+        </div>
       </div>
     </div>
 
     <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Style</label>
       <div class="btn-group text-capitalize btn-group-sm" role="group" aria-label="Button style">
-        {styles.map((style) => (
-          <label class="btn-check btn-outline theme-secondary">
-            <input
-              type="radio"
-              name="btn-style"
-              value={style}
-              checked={style === 'styled'}
-              data-style={style}
-            />
-            {style || 'default'}
-          </label>
-        ))}
+        {
+          styles.map((style) => (
+            <label class="btn-check btn-outline theme-secondary">
+              <input type="radio" name="btn-style" value={style} checked={style === 'styled'} data-style={style} />
+              {style || 'default'}
+            </label>
+          ))
+        }
       </div>
     </div>
 
     <div class="vstack gap-1">
       <label class="form-label fw-semibold mb-0">Size</label>
-      <div class="dropdown">
+      <div>
         <button
           type="button"
-          class="btn-outline theme-secondary btn-sm dropdown-toggle w-100 justify-content-between"
-          id="btn-size-dropdown"
-          data-bs-toggle="dropdown"
+          class="btn-outline theme-secondary btn-sm w-100 justify-content-between"
+          id="btn-size-menu"
+          data-bs-toggle="menu"
           aria-expanded="false"
           data-size=""
         >
           <span>Medium</span>
           <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
-            <use href="#chevron-expand" />
+            <use href="#chevron-expand"></use>
           </svg>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="btn-size-dropdown">
-          {sizes.map((size) => (
-            <li>
+        <div class="menu">
+          {
+            sizes.map((size) => (
               <a
-                class:list={['dropdown-item', { 'active': size.value === '' }]}
+                class:list={['menu-item', { active: size.value === '' }]}
                 href="#"
                 data-size={size.value}
                 data-selected={size.value === ''}
               >
                 {size.label}
               </a>
-            </li>
-          ))}
-        </ul>
+            ))
+          }
+        </div>
       </div>
     </div>
 
     <div class="vstack gap-1 flex-grow-0">
       <label class="form-label fw-semibold mb-0">Rounded</label>
       <div class="btn-group text-capitalize btn-group-sm" role="group" aria-label="Button rounded">
-        {rounded.map((round) => (
-          <label class="btn-check btn-outline theme-secondary">
-            <input
-              type="radio"
-              name="btn-rounded"
-              value={round}
-              checked={round === 'default'}
-              data-rounded={round}
-            />
-            {round}
-          </label>
-        ))}
+        {
+          rounded.map((round) => (
+            <label class="btn-check btn-outline theme-secondary">
+              <input type="radio" name="btn-rounded" value={round} checked={round === 'default'} data-rounded={round} />
+              {round}
+            </label>
+          ))
+        }
       </div>
     </div>
   </div>
 </div>
 
 <Example
-  class="d-flex align-items-start gap-2"
+  class="d-flex flex-wrap align-items-start gap-2"
   code={`<button type="button" class="btn-solid theme-primary btn-sm" data-button-type="text">Button</button>
 <button type="button" class="btn-solid theme-primary" data-button-type="left-icon">
-  <svg class="bi me-1" width="16" height="16" aria-hidden="true">
+  <svg class="bi" width="16" height="16" aria-hidden="true">
     <use href="#arrow-left" />
   </svg>
   Left icon
 </button>
 <button type="button" class="btn-solid theme-primary btn-sm" data-button-type="right-icon">
   Right icon
-  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+  <svg class="bi" width="16" height="16" aria-hidden="true">
     <use href="#arrow-right" />
   </svg>
 </button>
@@ -155,25 +155,28 @@ const rounded = ['default', 'pill', 'square']
 />
 
 <script>
-  import { Dropdown } from '../../../../dist/js/bootstrap.bundle.js'
+  import { Menu } from '@bootstrap'
 
-  const colorDropdownButton = document.querySelector('#btn-color-dropdown') as HTMLButtonElement
-  const colorDropdownItems = document.querySelectorAll('#btn-color-dropdown + .dropdown-menu .dropdown-item')
-  const sizeDropdownButton = document.querySelector('#btn-size-dropdown') as HTMLButtonElement
-  const sizeDropdownItems = document.querySelectorAll('#btn-size-dropdown + .dropdown-menu .dropdown-item')
+  const colorMenuButton = document.querySelector('#btn-color-menu') as HTMLButtonElement
+  const colorMenuItems = document.querySelectorAll('#btn-color-menu + .menu .menu-item')
+  const sizeMenuButton = document.querySelector('#btn-size-menu') as HTMLButtonElement
+  const sizeMenuItems = document.querySelectorAll('#btn-size-menu + .menu .menu-item')
   const styleInputs = document.querySelectorAll('input[name="btn-style"]')
   const roundedInputs = document.querySelectorAll('input[name="btn-rounded"]')
   const previewButtons = document.querySelectorAll('#button-preview button')
   // Find the code snippet inside the Example component
-  const codeSnippet = document.querySelector('#button-preview')?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+  const codeSnippet = document
+    .querySelector('#button-preview')
+    ?.closest('.bd-example-snippet')
+    ?.querySelector('.highlight code') as HTMLElement
 
   // Get all theme color names for removal
-  const themeColorNames = Array.from(colorDropdownItems).map(item => (item as HTMLElement).dataset.color || '')
+  const themeColorNames = Array.from(colorMenuItems).map((item) => (item as HTMLElement).dataset.color || '')
 
   function generateHTML(button: HTMLElement): string {
-    const classes = Array.from(button.classList).filter(cls =>
-      cls === 'btn' || cls.startsWith('btn-') || cls.startsWith('theme-') || cls.startsWith('rounded')
-    ).join(' ')
+    const classes = Array.from(button.classList)
+      .filter((cls) => cls === 'btn' || cls.startsWith('btn-') || cls.startsWith('theme-') || cls.startsWith('rounded'))
+      .join(' ')
     const buttonType = button.getAttribute('data-button-type')
     const ariaLabel = button.getAttribute('aria-label')
 
@@ -186,9 +189,11 @@ const rounded = ['default', 'pill', 'square']
     if (buttonType === 'text') {
       html += 'Click me'
     } else if (buttonType === 'left-icon') {
-      html += '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-left" />\n  </svg>\n  With left icon'
+      html +=
+        '\n  <svg class="bi me-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-left" />\n  </svg>\n  With left icon'
     } else if (buttonType === 'right-icon') {
-      html += 'With right icon\n  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-right" />\n  </svg>'
+      html +=
+        'With right icon\n  <svg class="bi ms-1" width="16" height="16" aria-hidden="true">\n    <use href="#arrow-right" />\n  </svg>'
     } else if (buttonType === 'icon-only') {
       html += '\n  <svg class="bi" width="16" height="16" aria-hidden="true">\n    <use href="#plus-lg" />\n  </svg>'
     }
@@ -200,29 +205,25 @@ const rounded = ['default', 'pill', 'square']
   function updateCodeSnippet() {
     if (!codeSnippet) return
 
-    const htmlSnippets = Array.from(previewButtons).map(button => generateHTML(button as HTMLElement))
+    const htmlSnippets = Array.from(previewButtons).map((button) => generateHTML(button as HTMLElement))
     const htmlCode = htmlSnippets.join('\n\n')
 
     // Update the code content
     codeSnippet.className = 'language-html'
     codeSnippet.textContent = htmlCode
-
-    // Trigger Prism highlighting if available
-    // Prism from @astrojs/prism is server-side, but we can try to use Prism.js if loaded
-    if (typeof window !== 'undefined' && (window as any).Prism) {
-      (window as any).Prism.highlightElement(codeSnippet)
-    }
   }
 
   function updateButtons() {
-    const selectedColor = colorDropdownButton?.dataset.color || 'primary'
-    const selectedStyle = (document.querySelector('input[name="btn-style"]:checked') as HTMLInputElement)?.value || 'solid'
-    const selectedSize = sizeDropdownButton?.dataset.size || ''
-    const selectedRounded = (document.querySelector('input[name="btn-rounded"]:checked') as HTMLInputElement)?.value || 'default'
+    const selectedColor = colorMenuButton?.dataset.color || 'primary'
+    const selectedStyle =
+      (document.querySelector('input[name="btn-style"]:checked') as HTMLInputElement)?.value || 'solid'
+    const selectedSize = sizeMenuButton?.dataset.size || ''
+    const selectedRounded =
+      (document.querySelector('input[name="btn-rounded"]:checked') as HTMLInputElement)?.value || 'default'
 
     previewButtons.forEach((button) => {
       // Remove all theme color classes
-      themeColorNames.forEach(color => button.classList.remove(`theme-${color}`))
+      themeColorNames.forEach((color) => button.classList.remove(`theme-${color}`))
       // Add selected theme color
       button.classList.add(`theme-${selectedColor}`)
 
@@ -246,7 +247,7 @@ const rounded = ['default', 'pill', 'square']
 
       // Handle rounded - remove all rounded classes first
       const roundedClasses = ['rounded-pill', 'rounded-0', 'rounded']
-      roundedClasses.forEach(cls => button.classList.remove(cls))
+      roundedClasses.forEach((cls) => button.classList.remove(cls))
 
       if (selectedRounded === 'pill') {
         button.classList.add('rounded-pill')
@@ -260,66 +261,53 @@ const rounded = ['default', 'pill', 'square']
     updateCodeSnippet()
   }
 
-  // Initialize Bootstrap dropdowns
-  if (colorDropdownButton) {
-    const colorDropdown = Dropdown.getOrCreateInstance(colorDropdownButton)
+  if (colorMenuButton) {
+    const colorMenu = Menu.getOrCreateInstance(colorMenuButton)
 
-    // Handle dropdown item clicks
-    colorDropdownItems.forEach((item) => {
+    colorMenuItems.forEach((item) => {
       item.addEventListener('click', (e) => {
         e.preventDefault()
         const colorName = (item as HTMLElement).dataset.color || 'primary'
         const colorTitle = item.textContent?.trim() || 'Primary'
 
-        // Update button text and data attribute
-        const labelSpan = colorDropdownButton.querySelector('span')
+        const labelSpan = colorMenuButton.querySelector('span')
         if (labelSpan) labelSpan.textContent = colorTitle
-        colorDropdownButton.dataset.color = colorName
+        colorMenuButton.dataset.color = colorName
 
-        // Update selected state
-        colorDropdownItems.forEach((i) => {
+        colorMenuItems.forEach((i) => {
           i.classList.remove('active')
           i.setAttribute('data-selected', 'false')
         })
         item.classList.add('active')
         item.setAttribute('data-selected', 'true')
 
-        // Hide dropdown
-        colorDropdown.hide()
-
-        // Update buttons
+        colorMenu.hide()
         updateButtons()
       })
     })
   }
 
-  if (sizeDropdownButton) {
-    const sizeDropdown = Dropdown.getOrCreateInstance(sizeDropdownButton)
+  if (sizeMenuButton) {
+    const sizeMenu = Menu.getOrCreateInstance(sizeMenuButton)
 
-    // Handle dropdown item clicks
-    sizeDropdownItems.forEach((item) => {
+    sizeMenuItems.forEach((item) => {
       item.addEventListener('click', (e) => {
         e.preventDefault()
         const sizeValue = (item as HTMLElement).dataset.size || ''
         const sizeLabel = item.textContent?.trim() || 'Medium'
 
-        // Update button text and data attribute
-        const labelSpan = sizeDropdownButton.querySelector('span')
+        const labelSpan = sizeMenuButton.querySelector('span')
         if (labelSpan) labelSpan.textContent = sizeLabel
-        sizeDropdownButton.dataset.size = sizeValue
+        sizeMenuButton.dataset.size = sizeValue
 
-        // Update selected state
-        sizeDropdownItems.forEach((i) => {
+        sizeMenuItems.forEach((i) => {
           i.classList.remove('active')
           i.setAttribute('data-selected', 'false')
         })
         item.classList.add('active')
         item.setAttribute('data-selected', 'true')
 
-        // Hide dropdown
-        sizeDropdown.hide()
-
-        // Update buttons
+        sizeMenu.hide()
         updateButtons()
       })
     })

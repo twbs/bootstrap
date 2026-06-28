@@ -151,7 +151,7 @@
           <button type="button" class="btn-solid theme-info btn-lg" data-bs-toggle="dialog" data-bs-target="#nonModalDialog" data-bs-modal="false">
             Launch non-modal dialog
           </button>
-          <small class="text-muted">(uses <code>show()</code> instead of <code>showModal()</code>)</small>
+          <small class="fg-secondary">(uses <code>show()</code> instead of <code>showModal()</code>)</small>
         </div>
 
         <div>
@@ -174,13 +174,12 @@
       </div>
     </div>
 
-    <script src="../../../dist/js/bootstrap.bundle.js"></script>
-    <script>
-      /* global bootstrap: false */
+    <script type="module">
+      import { Dialog, Popover, Tooltip } from '../../../dist/js/bootstrap.bundle.js'
 
-      document.querySelectorAll('[data-bs-toggle="popover"]').forEach(popoverEl => new bootstrap.Popover(popoverEl))
+      document.querySelectorAll('[data-bs-toggle="popover"]').forEach(popoverEl => new Popover(popoverEl))
 
-      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => new bootstrap.Tooltip(tooltipEl))
+      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(tooltipEl => new Tooltip(tooltipEl))
 
       const tall = document.getElementById('tall')
       document.getElementById('tall-toggle').addEventListener('click', () => {
@@ -190,7 +189,7 @@
       // Test JavaScript API
       document.getElementById('jsOpen').addEventListener('click', () => {
         const dialogEl = document.getElementById('myDialog')
-        const dialog = bootstrap.Dialog.getOrCreateInstance(dialogEl)
+        const dialog = Dialog.getOrCreateInstance(dialogEl)
         dialog.show()
       })
 

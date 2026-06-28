@@ -1,5 +1,6 @@
 @use "sass:list";
 @use "sass:map";
+@use "sass:string";
 @use "../config" as *;
 
 // Breakpoint viewport sizes and media queries.
@@ -55,46 +56,67 @@
   @return if(sass($max and $max > 0): $max; else: null);
 }
 
-// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
-// Useful for making responsive utilities.
-//
-//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px))
-//    ""  (Returns a blank string)
-//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px))
-//    "-sm"
-@function breakpoint-infix($name, $breakpoints: $breakpoints) {
-  @return if(sass(breakpoint-min($name, $breakpoints) == null): ""; else: "-#{$name}");
+// Escape a name for use at the start of a CSS identifier.
+// Leading digits are hex-escaped (e.g., 2xl becomes \32 xl).
+@function css-escape-ident($name) {
+  $name-str: "#{$name}";
+  $digits: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9";
+  $first: string.slice($name-str, 1, 1);
+
+  @if list.index($digits, $first) {
+    @return "\\3#{$first} #{string.slice($name-str, 2)}";
+  }
+
+  @return $name-str;
 }
 
-// Iterate all breakpoints and provide the current name and infix.
+// Returns a blank string if smallest breakpoint, otherwise returns the name
+// with an escaped colon as a Tailwind-style prefix for responsive class names.
+// Leading digits are CSS-escaped (e.g., 2xl becomes \32 xl) for valid identifiers.
 //
-//    @include loop-breakpoints-up() using ($breakpoint, $infix) {
+//    >> breakpoint-prefix(xs, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-prefix(sm, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px))
+//    "sm\:"
+//    >> breakpoint-prefix(2xl, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px))
+//    "\32 xl\:"
+@function breakpoint-prefix($name, $breakpoints: $breakpoints) {
+  @if breakpoint-min($name, $breakpoints) == null {
+    @return "";
+  }
+
+  @return "#{css-escape-ident($name)}\\:";
+}
+
+// Iterate all breakpoints and provide the current name and prefix.
+//
+//    @include loop-breakpoints-up() using ($breakpoint, $prefix) {
 //      // ...
 //    }
 @mixin loop-breakpoints-up($breakpoints: $breakpoints) {
   @each $breakpoint in map.keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
-    @content($breakpoint, $infix);
+    $prefix: breakpoint-prefix($breakpoint, $breakpoints);
+    @content($breakpoint, $prefix);
   }
 }
 
-// Iterate all breakpoints and provide the current name, next name, and next infix.
+// Iterate all breakpoints and provide the current name, next name, and next prefix.
 //
-//    @include loop-breakpoints-down() using ($breakpoint, $next, $infix) {
+//    @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
 //      // ...
 //    }
 @mixin loop-breakpoints-down($breakpoints: $breakpoints) {
   @each $breakpoint in map.keys($breakpoints) {
     $next: breakpoint-next($breakpoint, $breakpoints);
-    $infix: breakpoint-infix($next, $breakpoints);
-    @content($breakpoint, $next, $infix);
+    $prefix: breakpoint-prefix($next, $breakpoints);
+    @content($breakpoint, $next, $prefix);
   }
 }
 
 // Backwards-compatible alias for next/down breakpoint loops.
 @mixin loop-breakpoints($breakpoints: $breakpoints) {
-  @include loop-breakpoints-down($breakpoints) using ($breakpoint, $next, $infix) {
-    @content($breakpoint, $next, $infix);
+  @include loop-breakpoints-down($breakpoints) using ($breakpoint, $next, $prefix) {
+    @content($breakpoint, $next, $prefix);
   }
 }
 

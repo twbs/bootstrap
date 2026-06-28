@@ -2,7 +2,6 @@
 @use "../mixins/border-radius" as *;
 @use "../mixins/box-shadow" as *;
 @use "../mixins/focus-ring" as *;
-@use "../mixins/gradients" as *;
 @use "../mixins/tokens" as *;
 @use "../mixins/transition" as *;
 
@@ -22,7 +21,7 @@ $form-control-tokens: defaults(
     --control-bg: var(--btn-input-bg),
     --control-border-width: var(--border-width),
     --control-border-color: var(--border-color),
-    --control-border-radius: var(--border-radius),
+    --control-border-radius: var(--radius-5),
     --control-box-shadow: var(--box-shadow-inset),
     --control-action-bg: var(--bg-1),
     --control-action-hover-bg: var(--bg-2),
@@ -36,7 +35,7 @@ $form-control-tokens: defaults(
     --control-select-bg: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#00000080' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
     --control-select-bg-position: right .75rem center,
     --control-select-bg-size: 16px 12px,
-    --control-select-bg-dark: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
+    --control-select-bg-dark: #{escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#ffffff80' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"))},
   ),
   $form-control-tokens
 );
@@ -137,7 +136,7 @@ $form-control-sizes: defaults(
     &[type="file"] {
       overflow: hidden; // prevent pseudo element button overlap
 
-      &:not(:disabled):not([readonly]) {
+      &:not(:disabled, [readonly]) {
         cursor: pointer;
       }
     }
@@ -147,8 +146,9 @@ $form-control-sizes: defaults(
       margin: calc(var(--control-padding-y) * -1) calc(var(--control-padding-x) * -1);
       margin-inline-end: var(--control-padding-x);
       color: var(--control-fg);
-      @include gradient-bg(var(--control-action-bg));
+      // @include gradient-bg(var(--control-action-bg));
       pointer-events: none;
+      background-color: var(--control-action-bg);
       border-color: inherit;
       border-style: solid;
       border-width: 0;
@@ -157,7 +157,7 @@ $form-control-sizes: defaults(
       @include transition(var(--control-transition));
     }
 
-    &:hover:not(:disabled):not([readonly])::file-selector-button {
+    &:hover:not(:disabled, [readonly])::file-selector-button {
       background-color: var(--control-action-hover-bg);
     }
   }
@@ -168,6 +168,13 @@ $form-control-sizes: defaults(
   // text (without any border, background color, focus indicator)
 
   .form-control-plaintext {
+    // Plaintext is a standalone class (not combined with `.form-control`), so it
+    // needs its own copy of the control tokens. Without them the `var(--control-*)`
+    // references below are invalid and fall back to their initial values (e.g.
+    // `border-width: medium`), which adds phantom inline borders and misaligns the
+    // text from a floating label.
+    @include tokens($form-control-tokens);
+
     display: block;
     width: 100%;
     padding: var(--control-padding-y) 0;
@@ -189,7 +196,8 @@ $form-control-sizes: defaults(
   }
 
   // stylelint-disable selector-no-qualifying-type
-  select.form-control {
+  select.form-control,
+  .form-control-caret {
     padding-inline-end: calc(var(--control-padding-x) * 3);
     background-image: var(--control-select-bg);
     background-repeat: no-repeat;
@@ -203,8 +211,9 @@ $form-control-sizes: defaults(
     }
   }
 
-  @media (prefers-color-scheme: dark) {
-    select.form-control {
+  [data-bs-theme="dark"] {
+    select.form-control,
+    .form-control-caret {
       background-image: var(--control-select-bg-dark);
     }
   }
@@ -231,18 +240,18 @@ $form-control-sizes: defaults(
     width: var(--control-min-height);
     padding: var(--control-padding-y);
 
-    &:not(:disabled):not([readonly]) {
+    &:not(:disabled, [readonly]) {
       cursor: pointer;
     }
 
     &::-moz-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius(var(--border-radius-sm));
+      @include border-radius(var(--radius-5));
     }
 
     &::-webkit-color-swatch {
       border: 0 !important; // stylelint-disable-line declaration-no-important
-      @include border-radius(var(--border-radius-sm));
+      @include border-radius(var(--radius-5));
     }
   }
 

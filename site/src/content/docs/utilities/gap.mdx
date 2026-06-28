@@ -9,11 +9,9 @@ utility:
   - column-gap
 ---
 
-import { getData } from '@libs/data'
-
 ## Overview
 
-Use gap utilities to control the space between children in flexbox and grid layouts. Gap utilities are built from a default Sass map ranging from `.25rem` to `3rem`. Use utilities like `.gap-3` and `.gap-5` to control the gap between all children:
+Use gap utilities to control the space between children in flexbox and grid layouts. Gap utilities are built from a default Sass map ranging from `0` to `3rem` (`.gap-0` through `.gap-9`). Use utilities like `.gap-3` and `.gap-5` to control the gap between all children:
 
 <Example class="d-flex align-items-center justify-content-center gap-4 text-center" showMarkup={false} code={`
   <div class="d-flex gap-3 p-3 bd-pattern-diagonal rounded-3">
@@ -36,26 +34,15 @@ Use gap utilities to control the space between children in flexbox and grid layo
 
 ## Notation
 
-Gap utilities that apply to all breakpoints, from `xs` to `2xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
-
-The classes are named using the format `{property}-{size}` for `xs` and `{property}-{breakpoint}-{size}` for `sm`, `md`, `lg`, `xl`, and `2xl`.
-
-Where *property* is one of:
-
-- `gap` - for classes that set `gap`
-- `row-gap` - for classes that set `row-gap`
-- `column-gap` - for classes that set `column-gap`
-
-Where *size* is one of:
-
-- `0` - for classes that eliminate the `gap` by setting it to `0`
-- `1` - (by default) for classes that set the `gap` to `$spacer * .25`
-- `2` - (by default) for classes that set the `gap` to `$spacer * .5`
-- `3` - (by default) for classes that set the `gap` to `$spacer`
-- `4` - (by default) for classes that set the `gap` to `$spacer * 1.5`
-- `5` - (by default) for classes that set the `gap` to `$spacer * 3`
-
-(You can add more sizes by adding entries to the `$spacers` Sass map variable.)
+<SpacingNotation
+  noun="gap"
+  format="{property}-{size}"
+  properties={[
+    { class: 'gap', property: 'gap' },
+    { class: 'row-gap', property: 'row-gap' },
+    { class: 'column-gap', property: 'column-gap' }
+  ]}
+/>
 
 ## Examples
 
@@ -151,29 +138,7 @@ You can also use `row-gap` and `column-gap` utilities with flexbox layouts that 
 
 All gap utilities are responsive and include all breakpoints.
 
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <li><code>.gap{breakpoint.abbr}-0</code> through <code>.gap{breakpoint.abbr}-5</code></li>
-  )
-})}
-</ul>
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <li><code>.row-gap{breakpoint.abbr}-0</code> through <code>.row-gap{breakpoint.abbr}-5</code></li>
-  )
-})}
-</ul>
-
-<ul>
-{getData('breakpoints').map((breakpoint) => {
-  return (
-    <li><code>.column-gap{breakpoint.abbr}-0</code> through <code>.column-gap{breakpoint.abbr}-5</code></li>
-  )
-})}
-</ul>
+<SpacingResponsive classes={['gap', 'row-gap', 'column-gap']} />
 
 ## CSS
 
@@ -181,23 +146,4 @@ All gap utilities are responsive and include all breakpoints.
 
 Gap utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
-```scss
-"gap": (
-  responsive: true,
-  property: gap,
-  class: gap,
-  values: $spacers
-),
-"row-gap": (
-  responsive: true,
-  property: row-gap,
-  class: row-gap,
-  values: $spacers
-),
-"column-gap": (
-  responsive: true,
-  property: column-gap,
-  class: column-gap,
-  values: $spacers
-),
-```
+<ScssDocs name="utils-gap" file="scss/_utilities.scss" />

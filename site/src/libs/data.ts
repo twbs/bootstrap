@@ -1,5 +1,5 @@
 import fs from 'node:fs'
-import yaml from 'js-yaml'
+import { load as yamlLoad } from 'js-yaml'
 import { z } from 'zod'
 import { zLanguageCode, zPxSizeOrEmpty, zVersionMajorMinor, zVersionSemver } from './validation'
 import { capitalizeFirstLetter } from './utils'
@@ -30,7 +30,7 @@ const dataDefinitions = {
   'docs-versions': z
     .object({
       group: z.string(),
-      baseurl: z.string().url(),
+      baseurl: z.url(),
       description: z.string(),
       versions: z.union([zVersionSemver, zVersionMajorMinor]).array()
     })
@@ -54,13 +54,13 @@ const dataDefinitions = {
     preferred: z
       .object({
         name: z.string(),
-        website: z.string().url()
+        website: z.url()
       })
       .array(),
     more: z
       .object({
         name: z.string(),
-        website: z.string().url()
+        website: z.url()
       })
       .array()
   }),
@@ -74,15 +74,19 @@ const dataDefinitions = {
   sidebar: z
     .object({
       title: z.string(),
+      section: z.string().optional(),
       icon: z.string().optional(),
       icon_color: z.string().optional(),
       pages: z
         .object({
           title: z.string().optional(),
+          href: z.string().optional(),
           group: z.string().optional(),
+          meta: z.object({ added: z.string() }).array().optional(),
           pages: z
             .object({
-              title: z.string()
+              title: z.string(),
+              meta: z.object({ added: z.string() }).array().optional()
             })
             .array()
             .optional()
@@ -105,10 +109,17 @@ const dataDefinitions = {
       name: z.string(),
       code: zLanguageCode,
       description: z.string(),
-      url: z.string().url()
+      url: z.url()
     })
     .array()
 } satisfies Record<string, DataSchema>
+
+// Inferred types for individual data files. Exported so consumers can avoid
+// re-deriving them via `ReturnType<typeof getData<'sidebar'>>` and don't have
+// to fall back to `any` when iterating nested arrays.
+export type SidebarGroup = z.infer<typeof dataDefinitions.sidebar>[number]
+export type SidebarItem = NonNullable<SidebarGroup['pages']>[number]
+export type SidebarSubItem = NonNullable<SidebarItem['pages']>[number]
 
 let data = new Map<DataType, z.infer<DataSchema>>()
 
@@ -125,7 +136,7 @@ export function getData<TType extends DataType>(type: TType): z.infer<(typeof da
 
   try {
     // Load the data from the yml  file.
-    const rawData = yaml.load(fs.readFileSync(dataPath, 'utf8'))
+    const rawData = yamlLoad(fs.readFileSync(dataPath, 'utf8'))
 
     // Parse the data using the data schema to validate its content and get back a fully typed data object.
     const parsedData = dataDefinitions[type].parse(rawData) as z.infer<(typeof dataDefinitions)[TType]>

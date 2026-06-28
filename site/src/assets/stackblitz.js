@@ -1,8 +1,5 @@
-// NOTICE!!! Initially embedded in our docs this JavaScript
-// file contains elements that can help you create reproducible
-// use cases in StackBlitz for instance.
-// In a real project please adapt this content to your needs.
-// ++++++++++++++++++++++++++++++++++++++++++
+// NOTICE: Drives the "Open in StackBlitz" button on docs examples; bundles
+// `partials/snippets.js` as raw text into the generated playground.
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
@@ -12,7 +9,6 @@
  */
 
 import sdk from '@stackblitz/sdk'
-// eslint-disable-next-line import/no-unresolved
 import snippetsContent from './partials/snippets.js?raw'
 
 // These values will be replaced by Astro's Vite plugin
@@ -23,19 +19,21 @@ const CONFIG = {
 }
 
 // Open in StackBlitz logic
-document.querySelectorAll('.btn-edit').forEach(btn => {
-  btn.addEventListener('click', event => {
-    const codeSnippet = event.target.closest('.bd-code-snippet')
-    const exampleEl = codeSnippet.querySelector('.bd-example')
+export default () => {
+  document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', event => {
+      const codeSnippet = event.target.closest('.bd-code-snippet')
+      const exampleEl = codeSnippet.querySelector('.bd-example')
 
-    const htmlSnippet = exampleEl.innerHTML
-    const jsSnippet = codeSnippet.querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
-    // Get extra classes for this example
-    const classes = Array.from(exampleEl.classList).join(' ')
+      const htmlSnippet = exampleEl.innerHTML
+      const jsSnippet = codeSnippet.querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
+      // Get extra classes for this example
+      const classes = [...exampleEl.classList].join(' ')
 
-    openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
+      openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
+    })
   })
-})
+}
 
 const openBootstrapSnippet = (htmlSnippet, jsSnippet, classes) => {
   const indexHtml = `<!doctype html>

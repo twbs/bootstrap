@@ -28,13 +28,17 @@ const SWIPE_THRESHOLD = 40
 const Default = {
   endCallback: null,
   leftCallback: null,
-  rightCallback: null
+  rightCallback: null,
+  upCallback: null,
+  downCallback: null
 }
 
 const DefaultType = {
   endCallback: '(function|null)',
   leftCallback: '(function|null)',
-  rightCallback: '(function|null)'
+  rightCallback: '(function|null)',
+  upCallback: '(function|null)',
+  downCallback: '(function|null)'
 }
 
 /**
@@ -52,6 +56,7 @@ class Swipe extends Config {
 
     this._config = this._getConfig(config)
     this._deltaX = 0
+    this._deltaY = 0
     this._supportPointerEvents = Boolean(window.PointerEvent)
     this._initEvents()
   }
@@ -78,18 +83,21 @@ class Swipe extends Config {
   _start(event) {
     if (!this._supportPointerEvents) {
       this._deltaX = event.touches[0].clientX
+      this._deltaY = event.touches[0].clientY
 
       return
     }
 
     if (this._eventIsPointerPenTouch(event)) {
       this._deltaX = event.clientX
+      this._deltaY = event.clientY
     }
   }
 
   _end(event) {
     if (this._eventIsPointerPenTouch(event)) {
       this._deltaX = event.clientX - this._deltaX
+      this._deltaY = event.clientY - this._deltaY
     }
 
     this._handleSwipe()
@@ -97,27 +105,46 @@ class Swipe extends Config {
   }
 
   _move(event) {
-    this._deltaX = event.touches && event.touches.length > 1 ?
-      0 :
-      event.touches[0].clientX - this._deltaX
+    if (event.touches && event.touches.length > 1) {
+      this._deltaX = 0
+      this._deltaY = 0
+      return
+    }
+
+    this._deltaX = event.touches[0].clientX - this._deltaX
+    this._deltaY = event.touches[0].clientY - this._deltaY
   }
 
   _handleSwipe() {
     const absDeltaX = Math.abs(this._deltaX)
+    const absDeltaY = Math.abs(this._deltaY)
 
-    if (absDeltaX <= SWIPE_THRESHOLD) {
+    // Determine primary axis: whichever has greater movement wins
+    if (absDeltaY > absDeltaX && absDeltaY > SWIPE_THRESHOLD) {
+      // Vertical swipe
+      const direction = this._deltaY > 0 ? 'down' : 'up'
+      this._deltaX = 0
+      this._deltaY = 0
+      execute(direction === 'down' ? this._config.downCallback : this._config.upCallback)
       return
     }
 
-    const direction = absDeltaX / this._deltaX
+    if (absDeltaX > SWIPE_THRESHOLD) {
+      // Horizontal swipe
+      const direction = absDeltaX / this._deltaX
+      this._deltaX = 0
+      this._deltaY = 0
+
+      if (!direction) {
+        return
+      }
+
+      execute(direction > 0 ? this._config.rightCallback : this._config.leftCallback)
+      return
+    }
 
     this._deltaX = 0
-
-    if (!direction) {
-      return
-    }
-
-    execute(direction > 0 ? this._config.rightCallback : this._config.leftCallback)
+    this._deltaY = 0
   }
 
   _initEvents() {

@@ -4,13 +4,13 @@ description: Keep your projects lean, responsive, and maintainable so you can de
 toc: true
 ---
 
-## Lean Sass imports
+## Lean Sass setup
 
-When using Sass in your asset pipeline, make sure you optimize Bootstrap by only `@import`ing the components you need. Your largest optimizations will likely come from the `Layout & Components` section of our `bootstrap.scss`.
+When using Sass in your asset pipeline, make sure you optimize Bootstrap by only `@use`ing the partials you need. Your largest optimizations will likely come from the `Layout & Components` section of our `bootstrap.scss`.
 
 <ScssDocs name="import-stack" file="scss/bootstrap.scss" />
 
-If you’re not using a component, comment it out or delete it entirely. For example, if you’re not using the carousel, remove that import to save some file size in your compiled CSS. Keep in mind there are some dependencies across Sass imports that may make it more difficult to omit a file.
+If you’re not using a component, comment it out or delete its `@forward` entry entirely. For example, if you’re not using the carousel, remove that line to save file size in your compiled CSS. Keep in mind there are some dependencies across Sass partials that may make it more difficult to omit a file.
 
 ## Lean JavaScript
 
@@ -26,8 +26,8 @@ For instance, assuming you’re using your own JavaScript bundler like Webpack, 
 // import 'bootstrap/js/dist/carousel';
 // import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/dialog';
-// import 'bootstrap/js/dist/dropdown';
-// import 'bootstrap/js/dist/offcanvas';
+// import 'bootstrap/js/dist/menu';
+// import 'bootstrap/js/dist/drawer';
 // import 'bootstrap/js/dist/popover';
 // import 'bootstrap/js/dist/scrollspy';
 // import 'bootstrap/js/dist/tab';
@@ -35,7 +35,7 @@ import 'bootstrap/js/dist/dialog';
 // import 'bootstrap/js/dist/tooltip';
 ```
 
-This way, you’re not including any JavaScript you don’t intend to use for components like buttons, carousels, and tooltips. If you’re importing dropdowns, tooltips or popovers, be sure to list the Floating UI dependency in your `package.json` file. If you’re using the datepicker, be sure to also list the Vanilla Calendar Pro dependency.
+This way, you’re not including any JavaScript you don’t intend to use for components like buttons, carousels, and tooltips. If you’re importing menus, tooltips or popovers, be sure to list the Floating UI dependency in your `package.json` file. If you’re using the datepicker, be sure to also list the Vanilla Calendar Pro dependency.
 
 <Callout>
 **Heads up!** Files in `bootstrap/js/dist` use the **default export**. To use them, do the following:
@@ -48,7 +48,7 @@ const dialog = new Dialog(document.getElementById('myDialog'))
 
 ## Autoprefixer .browserslistrc
 
-Bootstrap depends on Autoprefixer to automatically add browser prefixes to certain CSS properties. Prefixes are dictated by our `.browserslistrc` file, found in the root of the Bootstrap repo. Customizing this list of browsers and recompiling the Sass will automatically remove some CSS from your compiled CSS, if there are vendor prefixes unique to that browser or version.
+Bootstrap depends on Autoprefixer to automatically add browser prefixes to certain CSS properties. Prefixes are dictated by our `.browserslistrc` file, found in the root of the Bootstrap repo and at the root of the npm package (`node_modules/bootstrap/.browserslistrc`). Customizing this list of browsers and recompiling the Sass will automatically remove some CSS from your compiled CSS, if there are vendor prefixes unique to that browser or version.
 
 ## Unused CSS
 

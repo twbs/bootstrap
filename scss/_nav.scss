@@ -1,5 +1,5 @@
 @use "functions" as *;
-@use "variables" as *;
+@use "config" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/focus-ring" as *;
 @use "mixins/gradients" as *;
@@ -41,7 +41,7 @@ $nav-tabs-tokens: defaults(
   (
     --nav-tabs-border-width: var(--border-width),
     --nav-tabs-border-color: var(--border-color),
-    --nav-tabs-border-radius: var(--border-radius),
+    --nav-tabs-border-radius: var(--radius-5),
     --nav-tabs-link-hover-border-color: var(--border-subtle),
     --nav-tabs-link-active-color: var(--fg-color),
     --nav-tabs-link-active-bg: var(--bg-body),
@@ -57,8 +57,12 @@ $nav-pills-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $nav-pills-tokens: defaults(
   (
+    --nav-pills-bg: var(--bg-1),
+    --nav-pills-padding: .25rem,
+    --nav-pills-border-radius: var(--radius-9),
     --nav-pills-link-active-color: var(--primary-contrast),
     --nav-pills-link-active-bg: var(--primary-bg),
+    --nav-pills-link-border-radius: var(--radius-9),
   ),
   $nav-pills-tokens
 );
@@ -93,7 +97,7 @@ $nav-underline-tokens: defaults(
     gap: var(--nav-gap);
     padding-inline-start: 0;
     margin-bottom: 0;
-    list-style: none;
+    list-style-type: "";
   }
 
   .nav-item {
@@ -112,8 +116,7 @@ $nav-underline-tokens: defaults(
     white-space: nowrap;
     background: none;
     border: var(--nav-link-border-width) solid transparent;
-    @include border-radius(var(--border-radius));
-    // @include font-size(var(--nav-link-font-size));
+    @include border-radius(var(--radius-5));
     @include transition(var(--nav-link-transition));
 
     &:hover,
@@ -175,10 +178,8 @@ $nav-underline-tokens: defaults(
       border-bottom-color: var(--nav-tabs-link-active-bg);
     }
 
-    .dropdown-menu {
-      // Make dropdown border overlap tab border
+    .menu {
       margin-top: calc(-1 * var(--nav-tabs-border-width));
-      // Remove the top rounded corners here since there is a hard edge above the menu
       @include border-top-radius(0);
     }
   }
@@ -188,14 +189,31 @@ $nav-underline-tokens: defaults(
   //
 
   .nav-pills {
-    // scss-docs-start nav-pills-css-vars
     @include tokens($nav-pills-tokens);
-    // scss-docs-end nav-pills-css-vars
+
+    display: inline-flex;
+    padding: var(--nav-pills-padding);
+    background-color: var(--nav-pills-bg);
+    @include border-radius(var(--nav-pills-border-radius));
+
+    .nav-link {
+      @include border-radius(var(--nav-pills-link-border-radius));
+    }
 
     .nav-link.active,
     .show > .nav-link {
       color: var(--nav-pills-link-active-color);
       @include gradient-bg(var(--nav-pills-link-active-bg));
+    }
+  }
+
+  .nav-pills-vertical {
+    flex-direction: column;
+    align-items: stretch;
+
+    .nav-item,
+    .nav-link {
+      width: 100%;
     }
   }
 

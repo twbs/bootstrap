@@ -4,6 +4,7 @@ description: Indicate the loading state of a component or page with Bootstrap sp
 toc: true
 aliases:
   - /docs/[[config:docs_version]]/components/spinners/
+css_layer: components
 ---
 
 import { getData } from '@libs/data'
@@ -81,7 +82,7 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 #### Floats
 
-<Example code={`<div class="clearfix">
+<Example code={`<div class="d-flow-root">
     <div class="spinner-border float-end" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>

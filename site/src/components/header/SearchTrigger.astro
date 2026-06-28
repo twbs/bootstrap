@@ -1,0 +1,29 @@
+---
+interface Props {
+  class?: string
+  placeholder?: string
+  target?: string
+}
+
+const { class: className, placeholder = 'Search docs…', target = '#bdSearchDialog' } = Astro.props
+---
+
+<button
+  type="button"
+  class:list={['bd-search-trigger', className]}
+  data-bs-toggle="dialog"
+  data-bs-target={target}
+  aria-haspopup="dialog"
+  aria-label={placeholder}
+>
+  <svg class="bi bd-search-trigger-icon" width="16" height="16" aria-hidden="true">
+    <use href="#search"></use>
+  </svg>
+  <span class="bd-search-trigger-label">{placeholder}</span>
+  {
+    /* Shortcut hint is empty + hidden until search.js detects the platform and
+      fills in either ⌘K (Mac) or Ctrl K (other). Without JS the shortcut
+      itself doesn't work, so showing nothing is more honest than guessing. */
+  }
+  <span class="bd-search-trigger-shortcut" aria-hidden="true" hidden></span>
+</button>

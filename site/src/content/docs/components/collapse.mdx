@@ -2,6 +2,8 @@
 title: Collapse
 description: Toggle the visibility of content across your project with a few classes and our JavaScript plugins.
 toc: true
+css_layer: components
+js: required
 ---
 
 ## How it works
@@ -94,7 +96,7 @@ Note that Bootstrap’s current implementation does not cover the various *optio
 
 ### Sass variables
 
-<ScssDocs name="collapse-transition" file="scss/_variables.scss" />
+<ScssDocs name="collapse-transition" file="scss/_config.scss" />
 
 ### Classes
 
@@ -117,6 +119,14 @@ These classes can be found in `_transitions.scss`.
 Just add `data-bs-toggle="collapse"` and a `data-bs-target` to the element to automatically assign control of one or more collapsible elements. The `data-bs-target` attribute accepts a CSS selector to apply the collapse to. Be sure to add the class `collapse` to the collapsible element. If you’d like it to default open, add the additional class `show`.
 
 To add accordion-like group management to a collapsible area, add the data attribute `data-bs-parent="#selector"`. Refer to the [accordion page]([[docsref:/components/accordion]]) for more information.
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="collapse"` | Initializes the collapse plugin on the trigger element. |
+| `data-bs-target` | CSS selector for the element(s) to expand and collapse. |
+| `data-bs-parent` | When set on the collapsible element, closes sibling collapses under the same parent (accordion behavior). |
+</BsTable>
 
 ### Via JavaScript
 

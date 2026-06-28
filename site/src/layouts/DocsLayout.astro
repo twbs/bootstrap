@@ -12,11 +12,9 @@ import TableOfContents from '@components/TableOfContents.astro'
 import ReferenceTable from '@components/ReferenceTable.astro'
 import UtilityReferenceTable from '@components/UtilityReferenceTable.astro'
 import HelperReferenceTable from '@components/HelperReferenceTable.astro'
-import { getData } from '@libs/data'
-import GitHubIcon from '@components/icons/GitHubIcon.astro'
-import MdnIcon from '@components/icons/MdnIcon.astro'
-import CssTricksIcon from '@components/icons/CssTricksIcon.astro'
+import { getData, type SidebarItem, type SidebarSubItem } from '@libs/data'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
+import PageMeta from '@components/PageMeta.astro'
 
 interface NavigationPage {
   title: string
@@ -53,31 +51,32 @@ let nextPage: NavigationPage | undefined
 // Create a flat array of all pages with their groups, handling nested groups
 const allPages: NavigationPage[] = sidebar.flatMap((group) => {
   if (!group.pages) return []
-  return group.pages.flatMap((item: any) => {
+  return group.pages.flatMap((item: SidebarItem) => {
     // Handle nested groups (e.g., Utilities > Borders > Border)
     if (item.group && item.pages) {
-      return item.pages.map((page: any) => ({
+      const subgroupTitle = item.group
+      return item.pages.map((page: SidebarSubItem) => ({
         title: page.title,
         url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(page.title)}/`,
-        groupTitle: item.group
+        groupTitle: subgroupTitle
       }))
     }
     // Handle direct pages
     if (item.title) {
-      return [{
-        title: item.title,
-        url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(item.title)}/`,
-        groupTitle: group.title
-      }]
+      return [
+        {
+          title: item.title,
+          url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(item.title)}/`,
+          groupTitle: group.title
+        }
+      ]
     }
     return []
   })
 })
 
 // Find the current page index
-const currentPageIndex = allPages.findIndex(
-  (page) => page.url === `/docs/${getConfig().docs_version}/${slug}/`
-)
+const currentPageIndex = allPages.findIndex((page) => page.url === `/docs/${getConfig().docs_version}/${slug}/`)
 
 if (currentPageIndex > 0) {
   prevPage = allPages[currentPageIndex - 1]
@@ -89,110 +88,68 @@ if (currentPageIndex < allPages.length - 1) {
 ---
 
 <BaseLayout {...Astro.props} layout="docs" overrides={{ body: bodyProps }}>
-  <div slot="main" class="container-2xl bd-gutter mt-3 my-md-4 bd-layout">
+  <div slot="main" class="2xl:container bd-gutter mt-3 md:my-4 bd-layout">
     <aside class="bd-sidebar">
-      <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
-        <div class="offcanvas-header border-bottom">
-          <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse docs</h5>
-          <CloseButton dismiss="offcanvas" target="#bdSidebar" />
+      <dialog class="lg:drawer drawer-bottom" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarDrawerLabel">
+        <div class="drawer-header border-bottom">
+          <h5 class="drawer-title" id="bdSidebarDrawerLabel">Browse docs</h5>
+          <CloseButton dismiss="drawer" target="#bdSidebar" />
         </div>
 
-        <div class="offcanvas-body">
+        <div class="drawer-body">
           <DocsSidebar />
         </div>
-      </div>
+      </dialog>
     </aside>
 
     <main class="bd-main order-1">
-      <div class="bd-intro pt-2 ps-lg-2">
+      <div class="bd-intro pt-2 lg:ps-2">
         <h1 class="bd-title mb-0" id="content">{frontmatter.title}</h1>
         <div class="bd-subtitle">
           {frontmatter.description && <Fragment set:html={processMarkdownToHtml(frontmatter.description)} />}
         </div>
-        <div class="mb-3 mb-md-0 d-flex gap-2 text-nowrap">
-          {
-            frontmatter.added &&
-              ((frontmatter.added.show_badge !== undefined && frontmatter.added.show_badge === true) ||
-                frontmatter.added.show_badge === undefined) && (
-                <small class="d-inline-flex px-2 py-1 fw-semibold text-success-emphasis bg-success-subtle border border-success-subtle rounded-2 me-2">
-                  Added in v{frontmatter.added.version}
-                </small>
-              )
-          }
-          <a
-            class="btn-subtle btn-sm theme-secondary"
-            href={`${getConfig().repo}/blob/v${getConfig().current_version}/site/src/content/docs/${id}`}
-            title="View and edit this file on GitHub"
-            target="_blank"
-            rel="noopener"
-          >
-            <GitHubIcon height={16} width={16} class="bi" />
-            Edit on GitHub
-          </a>
-          {
-            frontmatter.mdn && (
-              <a
-                class="btn-subtle btn-sm theme-secondary"
-                href={frontmatter.mdn}
-                title="View on MDN"
-                target="_blank"
-                rel="noopener"
-              >
-                <MdnIcon height={16} width={16} class="bi" />
-                MDN
-              </a>
-            )
-          }
-          {
-            frontmatter.csstricks && (
-              <a
-                class="btn-secondary-text btn-sm"
-                href={typeof frontmatter.csstricks === 'string' ? frontmatter.csstricks : frontmatter.csstricks.url}
-                title="View on CSS-Tricks"
-                target="_blank"
-                rel="noopener"
-              >
-                <CssTricksIcon height={16} width={16} class="bi" />
-                {typeof frontmatter.csstricks === 'string' ? 'CSS-Tricks' : (frontmatter.csstricks.label || 'CSS-Tricks')}
-              </a>
-            )
-          }
+        <div class="mb-3 md:mb-0 d-flex gap-2 text-nowrap">
+          <PageMeta frontmatter={frontmatter} id={id} parentDirectory={parentDirectory} />
         </div>
       </div>
 
+      <div class="lg:d-none d-flex justify-content-center bd-toc-toggle">
+        <button
+          class="btn-solid theme-inverse rounded-pill px-5"
+          type="button"
+          data-bs-toggle="drawer"
+          data-bs-target="#bdTocSidebar"
+          aria-controls="bdTocSidebar"
+        >
+          <svg class="bi" aria-hidden="true"><use href="#list"></use></svg>
+          On this page…
+        </button>
+      </div>
 
-      <div class="vstack bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 fg-3">
-        <div class="overflow-y-auto">
-        {
-          frontmatter.toc && headings && (
-            <button
-              class="btn-sm btn-subtle mb-2 bd-toc-toggle d-lg-none"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#tocContents"
-              aria-expanded="false"
-              aria-controls="tocContents"
-            >
-              On this page
-              <svg class="bi d-lg-none ms-2" aria-hidden="true">
-                <use href="#chevron-expand" />
-              </svg>
-            </button>
-            <div class="collapse bd-toc-collapse" id="tocContents">
-              <nav id="TableOfContents" aria-labelledby="docs-tocs">
-                <TableOfContents headings={headings} />
-              </nav>
-            </div>
-          )
-        }
-        </div>
+      <div class="bd-toc mt-3 mb-5 lg:my-0 lg:mb-5 sm:px-1">
+        <dialog class="lg:drawer drawer-bottom" tabindex="-1" id="bdTocSidebar" aria-labelledby="bdTocDrawerLabel">
+          <div class="drawer-header border-bottom">
+            <h5 class="drawer-title" id="bdTocDrawerLabel">On this page</h5>
+            <CloseButton dismiss="drawer" target="#bdTocSidebar" />
+          </div>
+
+          <div class="drawer-body">
+            {
+              frontmatter.toc && headings && (
+                <nav id="TableOfContents" aria-label="Table of contents">
+                  <TableOfContents headings={headings} />
+                </nav>
+              )
+            }
+          </div>
+        </dialog>
         <Ads />
       </div>
 
-      <div class="bd-content prose ps-lg-2">
+      <div class="bd-content prose lg:ps-2 lg:pt-4" data-pagefind-body>
         {
           frontmatter.sections && (
-            <div class="grid grid-cols-3 mb-5">
+            <div class="grid grid-cols-1 lg:grid-cols-3 mb-5">
               {frontmatter.sections.map((section) => (
                 <a
                   class="d-block text-decoration-none bg-1 hover-bg-2 rounded-3 p-3"
@@ -208,31 +165,23 @@ if (currentPageIndex < allPages.length - 1) {
           )
         }
 
-        {
-          frontmatter.reference && (
-            <ReferenceTable reference={frontmatter.reference} />
-          )
-        }
+        {frontmatter.reference && <ReferenceTable reference={frontmatter.reference} />}
 
-        {
-          frontmatter.utility && (
-            <UtilityReferenceTable utility={frontmatter.utility} />
-          )
-        }
+        {frontmatter.utility && <UtilityReferenceTable utility={frontmatter.utility} />}
 
-        {
-          frontmatter.classes && (
-            <HelperReferenceTable classes={frontmatter.classes} />
-          )
-        }
+        {frontmatter.classes && <HelperReferenceTable classes={frontmatter.classes} />}
 
         <slot />
 
-        <nav class="bd-links-nav py-5 mt-5 border-top">
-          <div class="d-flex flex-column flex-md-row justify-content-stretch gap-3 gap-md-5">
+        <nav class="bd-links-nav py-9 mt-9 border-top">
+          <div class="d-flex flex-column md:flex-row justify-content-stretch gap-3 md:gap-5 lh-1">
             {
               prevPage && (
-                <a href={prevPage.url} class="d-block p-3 text-decoration-none border rounded-3 flex-grow-1">
+                <a
+                  href={prevPage.url}
+                  class="d-flex flex-column gap-2 p-5 text-decoration-none border rounded-5 flex-grow-1"
+                  rel="prev"
+                >
                   <div class="fg-3">← Previous</div>
                   <div class="fs-5 fw-semibold">{prevPage.title}</div>
                   <div class="fg-3">{prevPage.groupTitle}</div>
@@ -241,7 +190,11 @@ if (currentPageIndex < allPages.length - 1) {
             }
             {
               nextPage && (
-                <a href={nextPage.url} class="d-block p-3 text-decoration-none text-end border rounded-3 flex-grow-1">
+                <a
+                  href={nextPage.url}
+                  class="d-flex flex-column gap-2 p-5 text-decoration-none text-end border rounded-5 flex-grow-1"
+                  rel="next"
+                >
                   <div class="fg-3">Next →</div>
                   <div class="fs-5 fw-semibold">{nextPage.title}</div>
                   <div class="fg-3">{nextPage.groupTitle}</div>

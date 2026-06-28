@@ -21,7 +21,7 @@ function getVersionsSortedDesc<TKey extends string, TVersions extends Record<TKe
     {
       getVersionsSortedDesc(getData('docs-versions'), 'group').map((docsVersion) => {
         return (
-          <div class="col-md-6 col-lg-4 col-xl mb-4">
+          <div class="md:col-6 lg:col-4 xl:col mb-4">
             <h2>{docsVersion.group}</h2>
             <p>{docsVersion.description}</p>
             <div class="list-group">
@@ -37,14 +37,14 @@ function getVersionsSortedDesc<TKey extends string, TVersions extends Record<TKe
                   return (
                     <a
                       class:list={[
-                        'list-group-item list-group-item-action py-2 text-primary',
+                        'list-group-item list-group-item-action py-2 fg-primary',
                         (isCurrentVersion || isAlpha) && 'd-flex justify-content-between align-items-center'
                       ]}
                       href={`${docsVersion.baseurl}/${version}/`}
                     >
                       {version}
-                      {isCurrentVersion && <span class="badge text-bg-primary">Latest</span>}
-                      {isAlpha && <span class="badge text-bg-warning">Alpha</span>}
+                      {isCurrentVersion && <span class="badge theme-primary">Latest</span>}
+                      {isAlpha && <span class="badge theme-warning">Alpha</span>}
                     </a>
                   )
                 })}

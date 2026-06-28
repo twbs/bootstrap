@@ -22,11 +22,6 @@ swag:                   "https://cottonbureau.com/people/bootstrap"
 analytics:
   fathom_site:          "ITUSEYJG"
 
-algolia:
-  app_id:                "AK7KMZKZHQ"
-  api_key:               "3151f502c7b9e9dafd5e6372b691a24e"
-  index_name:            "bootstrap"
-
 download:
   source:               "https://github.com/twbs/bootstrap/archive/v6.0.0-alpha1.zip"
   dist:                 "https://github.com/twbs/bootstrap/releases/download/v6.0.0-alpha1/bootstrap-6.0.0-alpha1-dist.zip"
@@ -40,7 +35,7 @@ cdn:
   js_hash:              "sha384-Php492snRLTR5p+hMyxpV6gYwp1avWXn4AaX31MgANrvsjr9Dpodl3Nw60L7Pewl"
   js_bundle:            "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha1/dist/js/bootstrap.bundle.min.js"
   js_bundle_hash:       "sha384-I2J4jlw924JZXHU9un9Mcuixq/rKhd5A8/B1NQ6ifPAiBFacZjwNcec8d6L38jQv"
-  floating_ui_esm:      "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.0/dist/floating-ui.dom.esm.min.js"
+  floating_ui_esm:      "https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.7.6/dist/floating-ui.dom.esm.min.js"
   vanilla_calendar_pro_esm: "https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@3.1.0/index.mjs"
 
 anchors:

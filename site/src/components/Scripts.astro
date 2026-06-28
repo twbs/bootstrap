@@ -9,7 +9,10 @@ interface Props {
 const { layout } = Astro.props
 ---
 
-<script src="../assets/application.js"></script>
-<script src="../assets/search.js"></script>
+<script>
+  import application from '../assets/application.js'
 
-{layout === 'docs' && <DocsScripts />}
+  application()
+</script>
+
+<DocsScripts />

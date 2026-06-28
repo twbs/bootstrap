@@ -2,6 +2,7 @@
 title: Images
 description: Documentation and examples for opting images into responsive behavior (so they never become wider than their parent) and add lightweight styles to them—all via classes.
 toc: true
+css_layer: content
 ---
 
 ## Responsive images
@@ -31,19 +32,19 @@ Align images with the [helper float classes]([[docsref:/utilities/float]]) or [t
 
 ## Figures
 
-Anytime you need to display a piece of content—like an image with an optional caption, consider using a `<figure>` Figures are flex containers in Bootstrap, so you can easily modify the layout and alignment with our [flex utilities]([[docsref:/utilities/flex]]).
+Anytime you need to display a piece of content—like an image with an optional caption, consider using a `<figure>` element. Figures are flex containers in Bootstrap, so you can easily modify the layout and alignment with our [flex utilities]([[docsref:/utilities/flex]]).
 
-Use the included `.figure`, `.figure-img` and `.figure-caption` classes to provide some baseline styles for the HTML5 `<figure>` and `<figcaption>` elements. Images in figures have no explicit size, so be sure to add the `.img-fluid` class to your `<img>` to make it responsive.
+Use the included `.figure` and `.figure-caption` classes to provide some baseline styles for the HTML5 `<figure>` and `<figcaption>` elements. Images in figures have no explicit size, so be sure to add the `.img-fluid` class to your `<img>` to make it responsive.
 
 <Example code={`<figure class="figure">
-    <Placeholder width="400" height="300" class="figure-img img-fluid rounded-3" />
+    <Placeholder width="400" height="300" class="img-fluid rounded-3" />
     <figcaption class="figure-caption">A caption for the above image.</figcaption>
   </figure>`} />
 
 And with a reverse alignment:
 
 <Example code={`<figure class="figure align-items-end"><!-- [!code highlight] -->
-    <Placeholder width="400" height="300" class="figure-img img-fluid rounded-3" />
+    <Placeholder width="400" height="300" class="img-fluid rounded-3" />
     <figcaption class="figure-caption">A caption for the above image.</figcaption>
   </figure>`} />
 

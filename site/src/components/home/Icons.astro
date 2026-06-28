@@ -4,8 +4,8 @@ import CircleSquareIcon from '@components/icons/CircleSquareIcon.astro'
 import ResponsiveImage from '@layouts/partials/ResponsiveImage.astro'
 ---
 
-<section class="row g-3 g-md-5 pb-md-5 mb-5 align-items-center">
-  <div class="col-lg-6">
+<section class="row g-3 md:g-5 md:pb-5 mb-5 align-items-center">
+  <div class="lg:col-6">
     <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-teal-rgb);">
       <CircleSquareIcon height={32} width={32} />
     </div>
@@ -15,14 +15,14 @@ import ResponsiveImage from '@layouts/partials/ResponsiveImage.astro'
       more added every release. They're designed to work in any project, whether you use Bootstrap itself or not. Use them
       as SVGs or icon fonts—both options give you vector scaling and easy customization via CSS.
     </p>
-    <p class="d-flex lead fw-normal mb-md-0">
+    <p class="d-flex lead fw-normal md:mb-0">
       <a href={getConfig().icons} class="icon-link icon-link-hover fw-semibold">
         Get Bootstrap Icons
         <svg class="bi" aria-hidden="true"><use href="#arrow-right"></use></svg>
       </a>
     </p>
   </div>
-  <div class="col-lg-6">
+  <div class="lg:col-6">
     <ResponsiveImage imgPath="/assets/img/bootstrap-icons.png" alt="Bootstrap Icons" classes="mx-auto d-block mt-3" />
   </div>
 </section>

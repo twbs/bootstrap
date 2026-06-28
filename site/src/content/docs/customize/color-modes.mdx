@@ -1,6 +1,6 @@
 ---
 title: Color modes
-description: Bootstrap now supports color modes, or themes, as of v5.3.0. Explore our default light color mode and the new dark mode, or create your own using our styles as your template.
+description: Bootstrap supports light and dark color modes. Dark mode is available globally by default, but can also be applied to specific components and elements via `data-bs-theme` attribute.
 toc: true
 ---
 
@@ -18,34 +18,34 @@ Alternatively, you can also switch to a media query implementation thanks to our
 
 ## Example
 
-For example, to change the color mode of a dropdown menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent `.dropdown`. Now, no matter the global color mode, these dropdowns will display with the specified theme value.
+For example, to change the color mode of a menu, add `data-bs-theme="light"` or `data-bs-theme="dark"` to the parent element. Now, no matter the global color mode, these menus will display with the specified theme value.
 
-<Example class="d-flex justify-content-between" code={`<div class="dropdown" data-bs-theme="light">
-    <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonLight" data-bs-toggle="dropdown" aria-expanded="false">
-      Default dropdown
+<Example class="d-flex justify-content-between" code={`<div data-bs-theme="light">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+      Default menu
     </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonLight">
-      <li><a class="dropdown-item active" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+    <div class="menu">
+      <a class="menu-item active" href="#">Action</a>
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
   </div>
 
-  <div class="dropdown" data-bs-theme="dark">
-    <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDark" data-bs-toggle="dropdown" aria-expanded="false">
-      Dark dropdown
+  <div data-bs-theme="dark">
+    <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+      Dark menu
     </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonDark">
-      <li><a class="dropdown-item active" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
+    <div class="menu">
+      <a class="menu-item active" href="#">Action</a>
+      <a class="menu-item" href="#">Action</a>
+      <a class="menu-item" href="#">Another action</a>
+      <a class="menu-item" href="#">Something else here</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">Separated link</a>
+    </div>
   </div>`} />
 
 ## How it works
@@ -89,7 +89,7 @@ Bootstrap does not yet ship with a built-in color mode picker, but you can use t
 
 ### Building with Sass
 
-Our new dark mode option is available to use for all users of Bootstrap, but it’s controlled via data attributes instead of media queries and does not automatically toggle your project’s color mode. You can disable our dark mode entirely via Sass by changing `$enable-dark-mode` to `false`.
+Our new dark mode option is available to use for all users of Bootstrap, but it’s controlled via data attributes instead of media queries and does not automatically toggle your project’s color mode.
 
 We use a custom Sass mixin, `color-mode()`, to help you control _how_ color modes are applied. By default, we use a `data` attribute approach, allowing you to create more user-friendly experiences where your visitors can choose to have an automatic dark mode or control their preference (like in our own docs here). This is also an easy and scalable way to add different themes and more custom color modes beyond light and dark.
 
@@ -100,7 +100,7 @@ $color-mode-type: data;
 
 @include color-mode(dark) {
   .element {
-    color: var(--bs-primary-text-emphasis);
+    color: var(--bs-primary-fg-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
@@ -110,7 +110,7 @@ Outputs to:
 
 ```css
 [data-bs-theme=dark] .element {
-  color: var(--bs-primary-text-emphasis);
+  color: var(--bs-primary-fg-emphasis);
   background-color: var(--bs-primary-bg-subtle);
 }
 ```
@@ -122,7 +122,7 @@ $color-mode-type: media-query;
 
 @include color-mode(dark) {
   .element {
-    color: var(--bs-primary-text-emphasis);
+    color: var(--bs-primary-fg-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
@@ -133,7 +133,7 @@ Outputs to:
 ```css
 @media (prefers-color-scheme: dark) {
   .element {
-    color: var(--bs-primary-text-emphasis);
+    color: var(--bs-primary-fg-emphasis);
     background-color: var(--bs-primary-bg-subtle);
   }
 }
@@ -147,27 +147,25 @@ For example, you can create a “blue theme” with the selector `data-bs-theme=
 
 <ScssDocs name="custom-color-mode" file="site/src/scss/_content.scss" />
 
-<Example showMarkup={false} code={`<div data-bs-theme="blue">
-    <div class="bd-example fg-body bg-body">
+<Example showMarkup={false} code={`<div class="p-5 fg-body bg-body rounded-3" data-bs-theme="blue">
       <div class="h4">Example blue theme</div>
       <p>Some paragraph text to show how the blue theme might look with written copy.</p>
 
       <hr class="my-4"/>
 
-      <div class="dropdown">
-        <button class="btn-solid theme-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCustom" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown button
+      <div>
+        <button class="btn-solid theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
+          Menu
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonCustom">
-          <li><a class="dropdown-item active" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Separated link</a></li>
-        </ul>
+        <div class="menu">
+          <a class="menu-item active" href="#">Action</a>
+          <a class="menu-item" href="#">Action</a>
+          <a class="menu-item" href="#">Another action</a>
+          <a class="menu-item" href="#">Something else here</a>
+          <hr class="menu-divider">
+          <a class="menu-item" href="#">Separated link</a>
+        </div>
       </div>
-    </div>
   </div>`} />
 
 ```html
@@ -196,7 +194,7 @@ Dozens of root level CSS variables are repeated as overrides for dark mode. Thes
 
 CSS variables for our dark color mode are partially generated from dark mode specific Sass variables in `_variables-dark.scss`. This also includes some custom overrides for changing the colors of embedded SVGs used throughout our components.
 
-{/* <ScssDocs name="sass-dark-mode-vars" file="scss/_variables.scss" /> */}
+{/* <ScssDocs name="sass-dark-mode-vars" file="scss/_config.scss" /> */}
 
 ### Sass mixins
 

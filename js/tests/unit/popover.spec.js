@@ -193,6 +193,27 @@ describe('Popover', () => {
       })
     })
 
+    it('should show a popover whose content was set only via setContent()', () => {
+      return new Promise(resolve => {
+        fixtureEl.innerHTML = '<a href="#">Nice link</a>'
+
+        const popoverEl = fixtureEl.querySelector('a')
+        const popover = new Popover(popoverEl, {})
+
+        popover.setContent({ '.popover-header': 'Late header', '.popover-body': 'Late content' })
+
+        popoverEl.addEventListener('shown.bs.popover', () => {
+          const popoverDisplayed = document.querySelector('.popover')
+
+          expect(popoverDisplayed).not.toBeNull()
+          expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Late content')
+          resolve()
+        })
+
+        popover.show()
+      })
+    })
+
     it('should show a popover with just title without having body', () => {
       return new Promise(resolve => {
         fixtureEl.innerHTML = '<a href="#">Nice link</a>'

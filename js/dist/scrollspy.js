@@ -27,7 +27,7 @@ const DATA_API_KEY = '.data-api';
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`;
 const EVENT_CLICK = `click${EVENT_KEY}`;
 const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`;
-const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
+const CLASS_NAME_MENU_ITEM = 'menu-item';
 const CLASS_NAME_ACTIVE = 'active';
 const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
 const SELECTOR_TARGET_LINKS = '[href]';
@@ -36,8 +36,7 @@ const SELECTOR_NAV_LINKS = '.nav-link';
 const SELECTOR_NAV_ITEMS = '.nav-item';
 const SELECTOR_LIST_ITEMS = '.list-group-item';
 const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_NAV_ITEMS} > ${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`;
-const SELECTOR_DROPDOWN = '.dropdown';
-const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
+const SELECTOR_MENU_TOGGLE = '[data-bs-toggle="menu"]';
 const Default = {
   rootMargin: '0px 0px -25%',
   smoothScroll: false,
@@ -208,9 +207,12 @@ class ScrollSpy extends BaseComponent {
     });
   }
   _activateParents(target) {
-    // Activate dropdown parents
-    if (target.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, target.closest(SELECTOR_DROPDOWN)).classList.add(CLASS_NAME_ACTIVE);
+    // Activate menu parents
+    if (target.classList.contains(CLASS_NAME_MENU_ITEM)) {
+      const menuToggle = target.closest('.menu')?.previousElementSibling;
+      if (menuToggle?.matches(SELECTOR_MENU_TOGGLE)) {
+        menuToggle.classList.add(CLASS_NAME_ACTIVE);
+      }
       return;
     }
     for (const listGroup of SelectorEngine.parents(target, SELECTOR_NAV_LIST_GROUP)) {

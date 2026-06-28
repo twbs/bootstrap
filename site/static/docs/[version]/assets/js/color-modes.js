@@ -16,14 +16,22 @@
       return storedTheme
     }
 
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return 'auto'
+  }
+
+  const resolveTheme = theme => {
+    if (theme === 'auto') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    return theme
   }
 
   const setTheme = theme => {
-    if (theme === 'auto') {
-      document.documentElement.setAttribute('data-bs-theme', (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'))
-    } else {
-      document.documentElement.setAttribute('data-bs-theme', theme)
+    const resolved = resolveTheme(theme)
+
+    if (document.documentElement.getAttribute('data-bs-theme') !== resolved) {
+      document.documentElement.setAttribute('data-bs-theme', resolved)
     }
   }
 
@@ -36,7 +44,6 @@
       return
     }
 
-    const themeSwitcherText = document.querySelector('#bd-theme-text')
     const activeThemeIcon = document.querySelector('.theme-icon-active use')
     const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
     const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
@@ -49,8 +56,7 @@
     btnToActive.classList.add('active')
     btnToActive.setAttribute('aria-pressed', 'true')
     activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-    const themeSwitcherLabel = `${themeSwitcherText.textContent} (${btnToActive.dataset.bsThemeValue})`
-    themeSwitcher.setAttribute('aria-label', themeSwitcherLabel)
+    themeSwitcher.setAttribute('aria-label', `Toggle theme (${btnToActive.dataset.bsThemeValue})`)
 
     if (focus) {
       themeSwitcher.focus()
@@ -72,8 +78,11 @@
         toggle.addEventListener('click', () => {
           const theme = toggle.getAttribute('data-bs-theme-value')
           setStoredTheme(theme)
-          setTheme(theme)
-          showActiveTheme(theme, true)
+
+          requestAnimationFrame(() => {
+            setTheme(theme)
+            showActiveTheme(theme)
+          })
         })
       })
   })

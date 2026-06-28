@@ -1,14 +1,11 @@
 ---
 title: Toggler
-description: Toggle attributes or classes using nothing but data attributes.
+description: Toggle attributes or classes on click using only data attributes and our JavaScript plugin. Works with any attribute except `id`.
 toc: true
+js: required
 ---
 
 Toggler is a pure JavaScript component that can be used to avoid writing small or one-off JavaScript snippets to create interactive elements. Instead of writing custom JavaScript, use data attributes to toggle attribute values, changes classes, and more on `click` events.
-
-<Callout type="warning">
-Toggler handles any attribute except `id`.
-</Callout>
 
 ## Examples
 
@@ -80,11 +77,20 @@ You could also use this to toggle the `disabled` attribute on a `fieldset` eleme
 
 ### Via data attributes
 
-Add `data-bs-toggle="toggler"` to the element to automatically. The `data-bs-target` is optional, and attribute accepts a CSS selector to apply the toggler functionality to. Be sure to add the `data-bs-attribute` and `data-bs-value` attributes to the toggled element's markup.
+Add `data-bs-toggle="toggler"` to the element to automatically. The `data-bs-target` is optional, and attribute accepts a CSS selector to apply the toggler functionality to. Be sure to add the `data-bs-attribute` and `data-bs-value` attributes to the toggled element’s markup.
+
+<BsTable>
+| Attribute | Description |
+| --- | --- |
+| `data-bs-toggle="toggler"` | Initializes the toggler on the trigger element. |
+| `data-bs-target` | Optional CSS selector for the element whose attribute is toggled. |
+| `data-bs-attribute` | Name of the HTML attribute to toggle (e.g. `hidden`, `disabled`). |
+| `data-bs-value` | Value to set when the attribute is “on” (often paired with removal when “off”). |
+</BsTable>
 
 ### Via JavaScript
 
-We don't recommend using this component programmatically, as the initial purpose of it is to avoid using JavaScript. However, you can enable manually with:
+We don’t recommend using this component programmatically, as the initial purpose of it is to avoid using JavaScript. However, you can enable manually with:
 
 ```js
 var togglerElementList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="toggler"]'))
@@ -118,18 +124,18 @@ var bsToggler = new bootstrap.Toggler(myToggler)
 | --- | --- |
 | `toggle` | Toggles a toggler element chosen attribute |
 | `getInstance` | *Static* method which allows you to get the toggler instance associated with a DOM element |
-| `getOrCreateInstance` | *Static* method which allows you to get the toggler instance associated with a DOM element, or create a new one in case it wasn't initialized |
+| `getOrCreateInstance` | *Static* method which allows you to get the toggler instance associated with a DOM element, or create a new one in case it wasn’t initialized |
 </BsTable>
 
 ### Events
 
-Bootstrap's toggler class exposes a few events for hooking into toggler functionality.
+Bootstrap’s toggler class exposes a few events for hooking into toggler functionality.
 
 <BsTable>
 | Event type | Description |
 | --- | --- |
 | `toggle.bs.toggler` | This event fires immediately when the `toggle` instance method is called. |
-| `toggled.bs.toggler` | This event is fired when the instance's element attribute has been changed. |
+| `toggled.bs.toggler` | This event is fired when the instance’s element attribute has been changed. |
 </BsTable>
 
 ```js

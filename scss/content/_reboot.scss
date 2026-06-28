@@ -1,13 +1,12 @@
-@use "../colors" as *;
 @use "../config" as *;
 @use "../functions" as *;
-@use "../variables" as *;
 @use "../mixins/border-radius" as *;
 @use "../mixins/tokens" as *;
 
 // stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
 $reboot-kbd-tokens: () !default;
+$reboot-mark-tokens: () !default;
 
 // scss-docs-start reboot-kbd-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -18,13 +17,11 @@ $reboot-kbd-tokens: defaults(
     --kbd-font-size: var(--font-size-xs),
     --kbd-color: var(--bg-body),
     --kbd-bg: var(--fg-2),
-    --kbd-border-radius: var(--border-radius-sm),
+    --kbd-border-radius: var(--radius-5),
   ),
   $reboot-kbd-tokens
 );
 // scss-docs-end reboot-kbd-tokens
-
-$reboot-mark-tokens: () !default;
 
 // scss-docs-start reboot-mark-tokens
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -90,7 +87,7 @@ $reboot-mark-tokens: defaults(
     text-align: var(--body-text-align);
     background-color: var(--bg-body); // 2
     -webkit-text-size-adjust: 100%; // 3
-    -webkit-tap-highlight-color: rgba($black, 0); // 4
+    -webkit-tap-highlight-color: transparent; // 4
   }
   // scss-docs-end reboot-body-rules
 
@@ -119,37 +116,37 @@ $reboot-mark-tokens: defaults(
   h1,
   .h1 {
     @extend %heading;
-    font-size: $h1-font-size;
+    font-size: var(--font-size-3xl);
   }
 
   h2,
   .h2 {
     @extend %heading;
-    font-size: $h2-font-size;
+    font-size: var(--font-size-2xl);
   }
 
   h3,
   .h3 {
     @extend %heading;
-    font-size: $h3-font-size;
+    font-size: var(--font-size-xl);
   }
 
   h4,
   .h4 {
     @extend %heading;
-    font-size: $h4-font-size;
+    font-size: var(--font-size-lg);
   }
 
   h5,
   .h5 {
     @extend %heading;
-    font-size: $h5-font-size;
+    font-size: var(--font-size-md);
   }
 
   h6,
   .h6 {
     @extend %heading;
-    font-size: $h6-font-size;
+    font-size: var(--font-size-sm);
   }
 
   // Reset margins on paragraphs
@@ -270,14 +267,14 @@ $reboot-mark-tokens: defaults(
   // Links
 
   a {
-    color: var(--theme-text, var(--link-color));
+    color: var(--theme-fg, var(--link-color));
     text-decoration: var(--link-decoration);
     text-underline-offset: $link-underline-offset;
 
     &:hover {
       // --link-color: var(--link-hover-color);
       // --link-decoration: var(--link-hover-decoration, var(--link-decoration));
-      color: var(--theme-text-emphasis, var(--link-hover-color));
+      color: var(--theme-fg-emphasis, var(--link-hover-color));
       text-decoration: var(--link-hover-decoration, var(--link-decoration));
     }
   }
@@ -287,7 +284,7 @@ $reboot-mark-tokens: defaults(
   // causes specificity issues in many other styles that are too complex to fix.
   // See https://github.com/twbs/bootstrap/issues/19402
 
-  a:not([href]):not([class]) {
+  a:not([href], [class]) {
     &,
     &:hover {
       color: inherit;
@@ -443,11 +440,6 @@ $reboot-mark-tokens: defaults(
     line-height: inherit;
   }
 
-  // Remove the inheritance of text transform in Firefox
-  button,
-  select {
-    text-transform: none;
-  }
   // Set the cursor for non-`<button>` buttons
   //
   // Details at https://github.com/twbs/bootstrap/pull/30562
@@ -469,7 +461,7 @@ $reboot-mark-tokens: defaults(
   // Remove the dropdown arrow only from text type inputs built with datalists in Chrome.
   // See https://stackoverflow.com/a/54997118
 
-  [list]:not([type="date"]):not([type="datetime-local"]):not([type="month"]):not([type="week"]):not([type="time"])::-webkit-calendar-picker-indicator {
+  [list]:not([type="date"], [type="datetime-local"], [type="month"], [type="week"], [type="time"])::-webkit-calendar-picker-indicator {
     display: none !important;
   }
 
@@ -489,13 +481,6 @@ $reboot-mark-tokens: defaults(
         cursor: pointer; // 3
       }
     }
-  }
-
-  // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
-
-  ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
   }
 
   // 1. Textareas should really only resize vertically so they don't break their (horizontal) containers.
@@ -546,7 +531,8 @@ $reboot-mark-tokens: defaults(
   ::-webkit-datetime-edit-second-field,
   ::-webkit-datetime-edit-minute-field,
   ::-webkit-datetime-edit-hour-field,
-  ::-webkit-datetime-edit-ampm-field,
+  ::-webkit-datetime-edit-meridiem-field, // WebKit
+  ::-webkit-datetime-edit-ampm-field, // Chromium
   ::-webkit-datetime-edit-day-field,
   ::-webkit-datetime-edit-week-field,
   ::-webkit-datetime-edit-month-field,
@@ -554,7 +540,8 @@ $reboot-mark-tokens: defaults(
     padding: 0;
   }
 
-  ::-webkit-inner-spin-button {
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
     height: auto;
   }
 

@@ -5,13 +5,14 @@ import { getVersionedDocsPath } from '@libs/path'
 import type { Layout } from '@libs/layout'
 import BootstrapWhiteFillIcon from '@components/icons/BootstrapWhiteFillIcon.astro'
 import GitHubIcon from '@components/icons/GitHubIcon.astro'
-import HamburgerIcon from '@components/icons/HamburgerIcon.astro'
 import LinkItem from '@components/header/LinkItem.astro'
 import OpenCollectiveIcon from '@components/icons/OpenCollectiveIcon.astro'
 import XIcon from '@components/icons/XIcon.astro'
 import Versions from '@components/header/Versions.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
+import SearchTrigger from '@components/header/SearchTrigger.astro'
+import SearchDialog from '@components/header/SearchDialog.astro'
 
 interface Props {
   addedIn?: CollectionEntry<'docs'>['data']['added']
@@ -20,109 +21,131 @@ interface Props {
 }
 
 const { addedIn, layout, title } = Astro.props
+
+const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Docs'
 ---
 
-<header class="navbar navbar-expand-lg bg-body bd-navbar border-bottom sticky-top bd-sticky-navbar">
-  <nav class="container-2xl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
-    {/* Docs sidebar toggle - only shown on docs pages */}
+<header class="navbar lg:navbar-expand bd-navbar border-bottom">
+  <nav class="2xl:container bd-gutter flex-wrap lg:flex-nowrap justify-content-start" aria-label="Main navigation">
+    <div class="d-flex align-items-center gap-2 lg:gap-1">
+      <a class="navbar-brand p-0 me-0 lg:me-2" href="/" aria-label="Bootstrap" style="color: var(--bs-indigo-500);">
+        <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
+      </a>
+
+      <span class="lg:d-none fg-4">/</span>
+
+      {/* Mobile breadcrumb dropdown - visible below lg */}
+      <div class="nav-item lg:d-none">
+        <button
+          class="nav-link fs-5 fw-medium d-inline-flex align-items-center gap-1 px-0"
+          type="button"
+          data-bs-toggle="menu"
+          aria-expanded="false"
+        >
+          {activeSection}
+          <svg class="bi bi-sm" aria-hidden="true"><use href="#chevron-expand"></use></svg>
+        </button>
+        <div class="menu">
+          <a class:list={['menu-item', { active: !layout }]} href="/">
+            Home
+            {
+              !layout && (
+                <svg class="bi ms-auto" aria-hidden="true">
+                  <use href="#check2" />
+                </svg>
+              )
+            }
+          </a>
+          <a
+            class:list={['menu-item', { active: layout === 'docs' }]}
+            href={getVersionedDocsPath('getting-started/install/')}
+          >
+            Docs
+            {
+              layout === 'docs' && (
+                <svg class="bi ms-auto" aria-hidden="true">
+                  <use href="#check2" />
+                </svg>
+              )
+            }
+          </a>
+          <a class:list={['menu-item', { active: title === 'Examples' }]} href={getVersionedDocsPath('examples/')}>
+            Examples
+            {
+              title === 'Examples' && (
+                <svg class="bi ms-auto" aria-hidden="true">
+                  <use href="#check2" />
+                </svg>
+              )
+            }
+          </a>
+          <a class="menu-item" href={getConfig().icons} target="_blank" rel="noopener">
+            Icons
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+          </a>
+          <a class="menu-item" href={getConfig().blog} target="_blank" rel="noopener">
+            Blog
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+          </a>
+          <hr class="menu-divider" />
+          <a class="menu-item" href={getConfig().github_org} target="_blank" rel="noopener">
+            GitHub
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+          </a>
+          <a class="menu-item" href={getConfig().opencollective} target="_blank" rel="noopener">
+            OpenCollective
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+          </a>
+          <a class="menu-item" href={`https://x.com/${getConfig().x}`} target="_blank" rel="noopener">
+            Twitter/X
+            <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#box-arrow-up-right"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Desktop nav links - visible at lg+ */}
+      <ul class="nav navbar-nav flex-row d-none lg:d-flex bd-navbar-nav">
+        <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/install/')} track>
+          Docs
+        </LinkItem>
+        <LinkItem active={title === 'Examples'} href={getVersionedDocsPath('examples/')} track>Examples</LinkItem>
+        <LinkItem href={getConfig().icons} target="_blank" rel="noopener" track>Icons</LinkItem>
+        <LinkItem href={getConfig().blog} target="_blank" rel="noopener" track>Blog</LinkItem>
+      </ul>
+    </div>
+
+    <ul class="nav navbar-nav flex-row ms-auto">
+      <div class="bd-search">
+        <SearchTrigger placeholder="Search docs…" />
+      </div>
+
+      <LinkItem class="px-1 d-none lg:d-flex" href={getConfig().github_org} target="_blank" rel="noopener">
+        <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
+      </LinkItem>
+
+      <Versions layout={layout} addedIn={addedIn} />
+
+      <li class="nav-item">
+        <ThemeToggler layout={layout} />
+      </li>
+    </ul>
+
     {
       layout === 'docs' && (
         <button
-          class="btn-icon navbar-btn-icon d-lg-none ms--2"
+          class="btn-icon btn-sm navbar-btn-icon lg:d-none ms-2"
           type="button"
-          data-bs-toggle="offcanvas"
+          data-bs-toggle="drawer"
           data-bs-target="#bdSidebar"
           aria-controls="bdSidebar"
           aria-label="Toggle docs navigation"
         >
-          <HamburgerIcon class="navbar-toggler-icon" height={20} width={20} />
+          <span class="navbar-toggler-icon" aria-hidden="true" />
           <span class="d-none fs-6 pe-1">Browse</span>
         </button>
       )
     }
-    {layout !== 'docs' && <div class="d-lg-none" style="width: 4.25rem;" />}
-
-    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap" style="color: var(--bs-indigo-500);">
-      <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
-    </a>
-
-    {/* Search and main nav toggle */}
-    <div class="d-flex">
-      <div class="bd-search" id="docsearch" data-bd-docs-version={getConfig().docs_version}></div>
-
-      <button
-        class="btn-icon navbar-btn-icon d-lg-none order-3 me--2"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#bdNavbar"
-        aria-controls="bdNavbar"
-        aria-label="Toggle navigation"
-      >
-        <svg class="bi" aria-hidden="true"><use href="#three-dots"></use></svg>
-      </button>
-    </div>
-
-    {/* Main navigation - offcanvas on mobile, inline on desktop */}
-    <div
-      class="offcanvas-lg offcanvas-end flex-grow-1"
-      tabindex="-1"
-      id="bdNavbar"
-      aria-labelledby="bdNavbarOffcanvasLabel"
-    >
-      <div class="offcanvas-header px-4 pb-0">
-        <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap</h5>
-        <CloseButton dismiss="offcanvas" target="#bdNavbar" />
-      </div>
-
-      <div class="offcanvas-body p-4 pt-0 p-lg-0">
-        <hr class="d-lg-none text-white-50" />
-        <ul class="nav navbar-nav flex-row flex-wrap bd-navbar-nav">
-          <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/install/')} track>
-            Docs
-          </LinkItem>
-          <LinkItem active={title === 'Examples'} href={getVersionedDocsPath('examples/')} track>Examples</LinkItem>
-          <LinkItem href={getConfig().icons} target="_blank" rel="noopener" track>Icons</LinkItem>
-          <LinkItem href={getConfig().blog} target="_blank" rel="noopener" track>Blog</LinkItem>
-        </ul>
-
-        <hr class="d-lg-none text-white-50" />
-
-        <ul class="nav navbar-nav flex-row flex-wrap ms-md-auto">
-          <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().github_org} target="_blank" rel="noopener">
-            <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none ms-2">GitHub</small>
-          </LinkItem>
-          <LinkItem
-            class="nav-link py-2 px-0 px-lg-2"
-            href={`https://x.com/${getConfig().x}`}
-            target="_blank"
-            rel="noopener"
-          >
-            <XIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none ms-2">X</small>
-          </LinkItem>
-          <LinkItem class="nav-link py-2 px-0 px-lg-2" href={getConfig().opencollective} target="_blank" rel="noopener">
-            <OpenCollectiveIcon class="navbar-nav-svg" height={16} width={16} />
-            <small class="d-lg-none ms-2">Open Collective</small>
-          </LinkItem>
-
-          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-            <div class="vr d-none d-lg-flex mx-lg-2 my-auto"></div>
-            <hr class="d-lg-none my-2" />
-          </li>
-
-          <Versions layout={layout} addedIn={addedIn} />
-
-          <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-            <div class="vr d-none d-lg-flex mx-lg-2 my-auto"></div>
-            <hr class="d-lg-none my-2" />
-          </li>
-
-          <li class="nav-item dropdown">
-            <ThemeToggler layout={layout} />
-          </li>
-        </ul>
-      </div>
-    </div>
   </nav>
 </header>
+
+<SearchDialog placeholder="Search docs…" />

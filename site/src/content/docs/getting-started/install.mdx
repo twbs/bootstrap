@@ -10,9 +10,11 @@ aliases:
 
 ## Install
 
-Pull in Bootstrap’s **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a [Sass compiler]([[docsref:/guides/contribute#sass]]) and [Autoprefixer](https://github.com/postcss/autoprefixer)** for a setup that matches our official compiled versions.
+Pull in Bootstrap’s **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a [Sass compiler]([[docsref:/guides/contribute#sass]]) and [PostCSS]([[docsref:/guides/contribute#postcss]])** for a setup that matches our official compiled versions.
 
-Package managed installs don't include documentation or our full build scripts. You can also [use any demo from our Examples repo](https://github.com/twbs/examples) to quickly jumpstart Bootstrap projects.
+Package managed installs don’t include documentation or our full build scripts. You can also [use any demo from our Examples repo](https://github.com/twbs/examples) to quickly jumpstart Bootstrap projects.
+
+After installing, head to [our npm guide]([[docsref:/guides/npm]]) for a full setup guide.
 
 <Code
   tabs={[
@@ -41,6 +43,8 @@ Bootstrap’s `package.json` contains some additional metadata under the followi
 
 - `sass` - path to Bootstrap’s main [Sass](https://sass-lang.com/) source file
 - `style` - path to Bootstrap’s non-minified CSS that’s been compiled using the default settings (no customization)
+
+Additionally, Bootstrap ships a `.browserslistrc` file at the package root, which defines browser targets for tools like Browserslist and Autoprefixer.
 
 ### Using Yarn
 
@@ -143,7 +147,7 @@ You can also do the old fashioned thing and download Bootstrap manually. Choose 
 <BsTable>
 | Type | Description | Link |
 | --- | --- | --- |
-| <strong class="text-nowrap">Distribution files</strong> | Ready-to-use compiled and minified CSS and JavaScript files. Doesn't include documentation, source files, or dependencies like Floating UI and Vanilla Calendar Pro. | <a href="[[config:download.dist]]" class="btn-subtle theme-accent btn-sm">Download</a> |
+| <strong class="text-nowrap">Distribution files</strong> | Ready-to-use compiled and minified CSS and JavaScript files. Doesn’t include documentation, source files, or dependencies like Floating UI and Vanilla Calendar Pro. | <a href="[[config:download.dist]]" class="btn-subtle theme-accent btn-sm">Download</a> |
 | <strong class="text-nowrap">Source files</strong> | Sass, JavaScript, and documentation files for compiling with your own asset pipeline. Requires [Sass compiler]([[docsref:/guides/contribute#sass]]), [Autoprefixer](https://github.com/postcss/autoprefixer), and a JavaScript bundler like [Rollup](https://rollupjs.org/) or [Webpack](https://webpack.js.org/). | <a href="[[config:download.source]]" class="btn-subtle theme-accent btn-sm">Download</a> |
 </BsTable>
 

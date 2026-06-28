@@ -1,8 +1,7 @@
 import { slug } from 'github-slugger'
-import fromMarkdown from 'mdast-util-from-markdown'
-import toString from 'mdast-util-to-string'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
+import type { Node, Parent } from 'unist'
 
 export function capitalizeFirstLetter(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)
@@ -33,12 +32,28 @@ export function trimLeadingAndTrailingSlashes(str: string) {
   return str.replace(/^\/+|\/+$/g, '')
 }
 
+// Single shared `remark` pipeline for every markdown helper below — keeps the
+// dependency list to just `remark` + `remark-html` (no transitively-resolved
+// `mdast-util-*` imports) and avoids paying parser setup cost per call.
+const markdownParser = remark()
+const htmlProcessor = remark().use(remarkHtml)
+
+function nodeToText(node: Node): string {
+  if ('value' in node && typeof node.value === 'string') {
+    return node.value
+  }
+
+  if ('children' in node) {
+    return (node as Parent).children.map((child) => nodeToText(child)).join('')
+  }
+
+  return ''
+}
+
 export function stripMarkdown(str: string) {
-  return toString(fromMarkdown(str))
+  return nodeToText(markdownParser.parse(str))
 }
 
 export function processMarkdownToHtml(markdown: string): string {
-  // Use remark to process markdown to HTML
-  const result = remark().use(remarkHtml).processSync(markdown)
-  return result.toString()
+  return htmlProcessor.processSync(markdown).toString()
 }
