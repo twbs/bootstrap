@@ -509,7 +509,7 @@ The markup (`.carousel` → `.carousel-inner` → `.carousel-item`) and the JS A
 
 ### Removed / changed internals
 
-- **`util/backdrop.js` removed.** Dialog and Drawer use the native `<dialog>` element, so the backdrop is the native `::backdrop` (no JS backdrop, no manual `aria-hidden`/focus-trap/scrollbar handling). If you imported `bootstrap/js/src/util/backdrop` directly, it's gone.
+- **`util/backdrop.js`, `util/focustrap.js`, and `util/scrollbar.js` removed.** Dialog and Drawer use the native `<dialog>` element, which provides the backdrop (`::backdrop`), the focus trap, and top-layer inerting; the body scroll-lock is now CSS (`:root.dialog-open`). If you imported `bootstrap/js/src/util/backdrop`, `.../focustrap`, or `.../scrollbar` directly, they're gone.
 - **CSS `@layer`.** Component styles are wrapped in cascade layers (`colors, theme, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`). Unlayered author CSS now wins over Bootstrap regardless of source order — if your v5 overrides relied on specificity or load order, re-check them.
 - **`--bs-*-rgb` variables removed.** The `$*-rgb` Sass vars and `--bs-*-rgb` custom properties are gone. Replace `rgba(var(--bs-primary-rgb), .5)` with `color-mix(in oklab, var(--bs-primary), transparent 50%)` (or use the color directly).
 
