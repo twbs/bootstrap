@@ -119,7 +119,6 @@
   },
   "peerDependencies": {
     "@floating-ui/dom": "^1.7.6",
-    "postcss-prefix-custom-properties": "^0.1.0",
     "vanilla-calendar-pro": "^3.1.0"
   },
   "devDependencies": {
@@ -183,6 +182,7 @@
     "playwright": "^1.61.0",
     "postcss": "^8.5.12",
     "postcss-cli": "^11.0.1",
+    "postcss-prefix-custom-properties": "^0.1.0",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
     "rehype-autolink-headings": "^7.1.0",
