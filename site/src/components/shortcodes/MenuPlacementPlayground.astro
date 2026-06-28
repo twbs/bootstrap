@@ -103,13 +103,16 @@ const logicalPlacements = [
 
 <script>
   import { Menu } from '@bootstrap'
+  import { highlightCode } from '@libs/highlight'
 
   const selectorButton = document.querySelector('#menu-placement-selector') as HTMLButtonElement
   const selectorItems = document.querySelectorAll('#menu-placement-selector-menu .menu-item')
   const placementTypeInputs = document.querySelectorAll('input[name="menu-placement-type"]')
   const previewContainer = document.querySelector('#menu-placement-preview')
   const previewToggle = previewContainer?.querySelector('[data-bs-toggle="menu"]') as HTMLButtonElement
-  const codeSnippet = previewContainer?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+  let codeSnippetPre = previewContainer
+    ?.closest('.bd-example-snippet')
+    ?.querySelector('.astro-code') as HTMLElement | null
 
   function updateSelectorItems() {
     const selectedType =
@@ -155,8 +158,8 @@ const logicalPlacements = [
     updateCodeSnippet(placement)
   }
 
-  function updateCodeSnippet(placement: string) {
-    if (!codeSnippet) return
+  async function updateCodeSnippet(placement: string) {
+    if (!codeSnippetPre) return
 
     const htmlCode = `<button class="btn-solid theme-primary" type="button" data-bs-toggle="menu" data-bs-placement="${placement}" aria-expanded="false">
   Toggle menu
@@ -167,8 +170,14 @@ const logicalPlacements = [
   <button class="menu-item" type="button">Something else here</button>
 </div>`
 
-    codeSnippet.className = 'language-html'
-    codeSnippet.textContent = htmlCode
+    const highlighted = await highlightCode(htmlCode, 'html')
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(highlighted, 'text/html')
+    const newPre = doc.querySelector('pre')
+    if (newPre) {
+      codeSnippetPre.replaceWith(newPre)
+      codeSnippetPre = newPre
+    }
   }
 
   if (selectorButton) {

@@ -51,12 +51,15 @@ const placements = [
 
 <script>
   import { Menu } from '@bootstrap'
+  import { highlightCode } from '@libs/highlight'
 
   const placementMenuButton = document.querySelector('#navbar-placement-menu') as HTMLButtonElement
   const placementMenuItems = document.querySelectorAll('#navbar-placement-menu + .menu .menu-item')
   const previewContainer = document.querySelector('#navbar-placement-preview') as HTMLElement
   const previewNavbar = previewContainer?.querySelector('.navbar') as HTMLElement
-  const codeSnippet = previewContainer?.closest('.bd-example-snippet')?.querySelector('.highlight code') as HTMLElement
+  let codeSnippetPre = previewContainer
+    ?.closest('.bd-example-snippet')
+    ?.querySelector('.astro-code') as HTMLElement | null
 
   const placementClasses = ['fixed-top', 'fixed-bottom', 'sticky-top', 'sticky-bottom']
 
@@ -104,8 +107,8 @@ const placements = [
     updateCodeSnippet(placement)
   }
 
-  function updateCodeSnippet(placement: string) {
-    if (!codeSnippet) return
+  async function updateCodeSnippet(placement: string) {
+    if (!codeSnippetPre) return
 
     const placementClass = placement ? ` ${placement}` : ''
     const label = placementLabels[placement] || 'Default'
@@ -116,8 +119,14 @@ const placements = [
   </div>
 </nav>`
 
-    codeSnippet.className = 'language-html'
-    codeSnippet.textContent = htmlCode
+    const highlighted = await highlightCode(htmlCode, 'html')
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(highlighted, 'text/html')
+    const newPre = doc.querySelector('pre')
+    if (newPre) {
+      codeSnippetPre.replaceWith(newPre)
+      codeSnippetPre = newPre
+    }
   }
 
   if (placementMenuButton) {

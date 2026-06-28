@@ -12,10 +12,6 @@
     display: none;
     float: inline-end;
 
-    // + .highlight {
-    //   margin-top: 0;
-    // }
-
     @include media-breakpoint-up(md) {
       display: block;
     }

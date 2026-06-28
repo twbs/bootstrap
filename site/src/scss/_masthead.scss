@@ -25,32 +25,6 @@
       color: var(--bs-fg-3);
     }
 
-    .bd-code-snippet {
-      margin: 0;
-      border-color: var(--bs-border-color-translucent);
-      border-width: 1px;
-      @include border-radius(.5rem);
-    }
-
-    .highlight {
-      width: 100%;
-      padding: .5rem 1rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      background-color: color-mix(in oklch, var(--bs-fg-body) #{math.percentage(.075)}, transparent);
-      @include border-radius(calc(.5rem - 1px));
-
-      @include media-breakpoint-up(lg) {
-        padding-inline-end: 4rem;
-      }
-
-      pre {
-        padding: 0;
-        margin: .625rem 0;
-        overflow: hidden;
-      }
-    }
     .btn-clipboard {
       position: absolute;
       top: -.625rem;
