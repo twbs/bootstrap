@@ -78,6 +78,7 @@ export default defineConfig({
         light: { ...bootstrapLight, name: '', type: 'light' },
         dark: { ...bootstrapDark, name: '', type: 'dark' }
       },
+      defaultColor: 'light-dark()',
       transformers: [
         transformerNotationDiff(),
         transformerNotationHighlight(),
