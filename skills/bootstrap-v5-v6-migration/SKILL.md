@@ -49,7 +49,7 @@ v6 moves breakpoints and pseudo-states from infix/suffix to prefix with colon. A
 **Pattern:** `.{class}-{bp}-{value}` becomes `.{bp}:{class}-{value}` and `.{class}-{bp}` becomes `.{bp}:{class}`
 
 | v5 | v6 |
-|---|---|
+| --- | --- |
 | `.d-md-none`, `.p-lg-3` | `.md:d-none`, `.lg:p-3` |
 | `.col-md-6` | `.md:col-6` |
 | `.row-cols-md-3` | `.md:row-cols-3` |
@@ -71,10 +71,10 @@ v6 moves breakpoints and pseudo-states from infix/suffix to prefix with colon. A
 
 Three components have been fully renamed. Find-and-replace these prefixes across classes, data attributes, events, JS imports, and CSS variables.
 
-**Modal -> Dialog**
+#### Modal -> Dialog
 
 | Scope | v5 | v6 |
-|---|---|---|
+| --- | --- | --- |
 | Classes | `.modal`, `.modal-header/body/footer/title` | `.dialog`, `.dialog-header/body/footer/title` |
 | Sizes | `.modal-sm/lg/xl/fullscreen` | `.dialog-sm/lg/xl/fullscreen` |
 | Data attrs | `data-bs-toggle="modal"`, `data-bs-dismiss="modal"` | `data-bs-toggle="dialog"`, `data-bs-dismiss="dialog"` |
@@ -85,10 +85,10 @@ Three components have been fully renamed. Find-and-replace these prefixes across
 
 Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Phase 3.
 
-**Offcanvas -> Drawer**
+#### Offcanvas -> Drawer
 
 | Scope | v5 | v6 |
-|---|---|---|
+| --- | --- | --- |
 | Classes | `.offcanvas`, `.offcanvas-start/end/top/bottom/header/body/title` | `.drawer`, `.drawer-start/end/top/bottom/header/body/title` |
 | Data attrs | `data-bs-toggle="offcanvas"`, `data-bs-dismiss="offcanvas"` | `data-bs-toggle="drawer"`, `data-bs-dismiss="drawer"` |
 | JS export | `Offcanvas` | `Drawer` |
@@ -96,10 +96,10 @@ Remove `.modal-dialog` and `.modal-content` wrappers entirely — see Phase 3.
 | CSS vars | `--offcanvas-*` | `--drawer-*` |
 | Sass | `$zindex-offcanvas` | `$zindex-drawer` |
 
-**Dropdown -> Menu**
+#### Dropdown -> Menu
 
 | Scope | v5 | v6 |
-|---|---|---|
+| --- | --- | --- |
 | Classes | `.dropdown-menu`, `.dropdown-item`, `.dropdown-divider`, `.dropdown-header` | `.menu`, `.menu-item`, `.menu-divider`, `.menu-header` |
 | Data attrs | `data-bs-toggle="dropdown"` | `data-bs-toggle="menu"` |
 | JS export | `Dropdown` | `Menu` |
@@ -113,7 +113,7 @@ Also remove: `.dropdown-toggle` (no longer needed), `.dropdown` wrapper, `.dropd
 Per-color classes are replaced by variant + `.theme-*` composition. Apply to all colors (`primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`).
 
 | v5 | v6 |
-|---|---|
+| --- | --- |
 | `.btn-primary` | `.btn-solid .theme-primary` |
 | `.btn-outline-primary` | `.btn-outline .theme-primary` |
 | `.alert-primary` | `.alert .theme-primary` |
@@ -124,7 +124,7 @@ New button variants: `.btn-solid`, `.btn-outline`, `.btn-subtle`, `.btn-text`, `
 ### Utility class renames
 
 | v5 | v6 |
-|---|---|
+| --- | --- |
 | `.text-primary`, `.text-danger`, etc. | `.fg-primary`, `.fg-danger`, etc. |
 | `.text-muted` | `.fg-secondary` |
 | `.mh-*` | `.max-h-*` |
@@ -138,7 +138,7 @@ New button variants: `.btn-solid`, `.btn-outline`, `.btn-subtle`, `.btn-text`, `
 v6 replaces the numeric scale with t-shirt sizes (ascending). The full v6 scale is `xs sm md lg xl 2xl 3xl 4xl 5xl 6xl`. The rem values below are the **v5** sizes, shown only to help you match each class.
 
 | v5 (size) | v6 |
-|---|---|
+| --- | --- |
 | `.fs-1` (2.5rem) | `.fs-4xl` |
 | `.fs-2` (2rem) | `.fs-3xl` |
 | `.fs-3` (1.75rem) | `.fs-2xl` |
@@ -153,7 +153,7 @@ Note: in v6, `lg` and larger are **fluid `clamp()` values** that scale with the 
 Keys 3-5 have changed values. To preserve v5 spacing: `.p-3` (1rem) -> `.p-4`, `.p-4` (1.5rem) -> `.p-6`, `.p-5` (3rem) -> `.p-9`.
 
 | Key | v5 | v6 |
-|---|---|---|
+| --- | --- | --- |
 | 3 | `1rem` | `0.75rem` |
 | 4 | `1.5rem` | `1rem` |
 | 5 | `3rem` | `1.25rem` |
@@ -162,7 +162,7 @@ Keys 3-5 have changed values. To preserve v5 spacing: `.p-3` (1rem) -> `.p-4`, `
 ### Form validation
 
 | v5 | v6 |
-|---|---|
+| --- | --- |
 | `.needs-validation` on `<form>` | `data-bs-validate` on `<form>` |
 | `.was-validated` via JS | Remove — `:user-invalid` handles it |
 | `<div class="valid-tooltip">` | `<div class="tooltip valid-tooltip">` |
@@ -386,7 +386,7 @@ Data attribute APIs (`data-bs-toggle`, etc.) are unchanged — just add `type="m
 ### Renamed JS exports
 
 | v5 | v6 |
-|---|---|
+| --- | --- |
 | `Modal` | `Dialog` |
 | `Offcanvas` | `Drawer` |
 | `Dropdown` | `Menu` |
@@ -420,7 +420,7 @@ document.querySelectorAll('form[data-bs-validate]')
 ### Renamed files
 
 | v5 | v6 |
-|---|---|
+| --- | --- |
 | `_variables.scss` | `_config.scss` |
 | `_variables-dark.scss` | Removed (merged into `_theme.scss`) |
 | `_maps.scss` | Removed |
@@ -434,7 +434,7 @@ document.querySelectorAll('form[data-bs-validate]')
 ### Renamed variables and functions
 
 | v5 | v6 |
-|---|---|
+| --- | --- |
 | `$grid-breakpoints` | `$breakpoints` |
 | `$border-radius`, `$border-radius-sm/lg/xl/xxl`, `$border-radius-pill` | Removed — see the radius scale below |
 | `$text-muted` | Use secondary color |
@@ -495,7 +495,7 @@ The markup (`.carousel` → `.carousel-inner` → `.carousel-item`) and the JS A
 ### New components (didn't exist in v5)
 
 | Component | Trigger / hook | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Combobox | `data-bs-toggle="combobox"` | Filterable/autocomplete select built on Menu |
 | Chip / Chip input | `.chip`, `.chip-input` (`data-bs-chips`) | Tags / tokens + interactive entry |
 | Datepicker | `data-bs-toggle="datepicker"` | Date picker (peer dep `vanilla-calendar-pro`) |
