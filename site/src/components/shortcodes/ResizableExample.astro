@@ -30,6 +30,12 @@ interface Props {
    * @default true
    */
   showMarkup?: boolean
+  /**
+   * Whether to show a floating badge indicating the active container query
+   * breakpoint for the resized container.
+   * @default false
+   */
+  showBreakpoint?: boolean
 }
 
 const {
@@ -38,7 +44,8 @@ const {
   className,
   initialWidth = '100%',
   minWidth = '200px',
-  showMarkup = true
+  showMarkup = true,
+  showBreakpoint = false
 } = Astro.props
 
 // Support both class and className props
@@ -69,7 +76,58 @@ const simplifiedMarkup = markup.replace(
       style={`width: ${initialWidth}; min-width: ${minWidth};`}
     >
       <Fragment set:html={previewMarkup} />
+      {
+        showBreakpoint && (
+          <output class="bd-resizable-badge" data-resizable-badge aria-live="polite" />
+        )
+      }
     </div>
   </div>
   {showMarkup && <Code code={simplifiedMarkup} lang="html" nestedInExample={true} />}
 </div>
+
+<script>
+  // Breakpoints mirror `$breakpoints` in scss/_config.scss. Container queries are
+  // evaluated against the content-box inline size of the nearest query container.
+  const breakpoints = [
+    { name: 'xs', min: 0 },
+    { name: 'sm', min: 576 },
+    { name: 'md', min: 768 },
+    { name: 'lg', min: 1024 },
+    { name: 'xl', min: 1280 },
+    { name: '2xl', min: 1536 }
+  ]
+
+  function activeBreakpoint(width: number) {
+    let active = breakpoints[0]
+    for (const bp of breakpoints) {
+      if (width >= bp.min) active = bp
+    }
+    return active
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-resizable-badge]').forEach((badge) => {
+    const container = badge.closest<HTMLElement>('.bd-resizable-container')
+    if (!container) return
+
+    // Measure the actual query container (e.g. `.grid`) when present so the badge
+    // matches what `@container` evaluates; otherwise fall back to the container.
+    const target =
+      container.querySelector<HTMLElement>(':scope > *:not(.bd-resizable-badge)') ?? container
+
+    const update = (width: number) => {
+      const bp = activeBreakpoint(width)
+      badge.dataset.breakpoint = bp.name
+      badge.textContent = `${bp.name} · ${Math.round(width)}px`
+    }
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const inlineSize = entry.contentBoxSize?.[0]?.inlineSize ?? entry.contentRect.width
+        update(inlineSize)
+      }
+    })
+
+    observer.observe(target, { box: 'content-box' })
+  })
+</script>
