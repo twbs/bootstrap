@@ -2,6 +2,7 @@
 title: CSS Grid
 description: Learn how to enable, use, and customize our alternate layout system built on CSS Grid with examples and code snippets.
 toc: true
+js: required
 csstricks:
   url: https://css-tricks.com/snippets/css/complete-guide-grid/
   label: CSS Grid Guide
@@ -25,7 +26,7 @@ Bootstrap includes an optional grid system built on CSS Grid, but with a Bootstr
 
 - **Columns and gutter sizes are set via CSS variables.** Set these on the parent `.grid` and customize however you want, inline or in a stylesheet, with `--bs-columns` and `--bs-gap`.
 
-In the future, Bootstrap will likely shift to a hybrid solution as the `gap` property has achieved nearly full browser support for flexbox.
+- **Responsive classes use container queries.** Each `.grid` is a query container (`container-type: inline-size`), so responsive `.g-col-*` and `.g-start-*` classes respond to the width of the `.grid` itself rather than the viewport.
 
 ## Key differences
 
@@ -45,7 +46,7 @@ Compared to the default grid system:
 
 ### Three columns
 
-Three equal-width columns across all viewports and devices can be created by using the `.g-col-4` classes. Add [responsive classes](#responsive) to change the layout by viewport size.
+Three equal-width columns across all container sizes and devices can be created by using the `.g-col-4` classes. Add [responsive classes](#responsive) to change the layout by the `.grid` container’s width.
 
 <Example class="bd-example-cssgrid" code={`<div class="grid text-center">
     <div class="g-col-4">.g-col-4</div>
@@ -61,20 +62,70 @@ Three equal-width columns across all viewports and devices can be created by usi
 
 ### Responsive
 
-Use responsive classes to adjust your layout across viewports. Here we start with two columns on the narrowest viewports, and then grow to three columns on medium viewports and above.
+Use responsive classes to adjust your layout across breakpoints. Here we start with two columns on the narrowest containers, and then grow to three columns on medium containers and above. Drag the example’s handle to resize the `.grid` and watch the columns reflow based on its width rather than the viewport.
 
-<Example class="bd-example-cssgrid" code={`<div class="grid text-center">
+<Callout>
+Responsive `.g-col-*` and `.g-start-*` classes are powered by [container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries) rather than media queries. The `.grid` is set as a query container (`container-type: inline-size`), so its grid items respond to the width of the `.grid` itself instead of the viewport. This means a `.grid` placed inside a narrow column will switch layouts based on that column’s width, not the size of the browser window.
+</Callout>
+
+<ResizableExample class="bd-example-cssgrid" showBreakpoint code={`<div class="grid text-center">
     <div class="g-col-6 md:g-col-4">.g-col-6 .md:g-col-4</div>
     <div class="g-col-6 md:g-col-4">.g-col-6 .md:g-col-4</div>
     <div class="g-col-6 md:g-col-4">.g-col-6 .md:g-col-4</div>
   </div>`} />
 
-Compare that to this two column layout at all viewports.
+Compare that to this two column layout at all container sizes.
 
 <Example class="bd-example-cssgrid" code={`<div class="grid text-center">
     <div class="g-col-6">.g-col-6</div>
     <div class="g-col-6">.g-col-6</div>
   </div>`} />
+
+### Playground
+
+The examples above are constrained by the width of this page, so you can only resize them up to the `sm` range before running out of room. Open the fullscreen demo below to drag a set of grids across the full range of breakpoints and watch each layout reflow based on the container's width rather than the viewport.
+
+<button type="button" class="btn-solid theme-primary" data-bs-toggle="dialog" data-bs-target="#gridPlaygroundDialog">
+  Open fullscreen grid demo
+</button>
+
+<dialog class="dialog dialog-fullscreen dialog-scrollable" id="gridPlaygroundDialog">
+  <div class="dialog-header">
+    <h1 class="dialog-title">CSS Grid container queries</h1>
+    <CloseButton dismiss="dialog" />
+  </div>
+  <div class="dialog-body">
+    <p>Drag the handle on the right edge of the example to resize it. The badge shows the active container-query breakpoint, and every grid below responds to the example's width&mdash;not the size of the browser window.</p>
+    <ResizableExample class="bd-example-cssgrid" showBreakpoint showMarkup={false} code={`<div class="grid text-center">
+      <div class="g-col-12 sm:g-col-6 md:g-col-4 lg:g-col-3 xl:g-col-2">cell</div>
+      <div class="g-col-12 sm:g-col-6 md:g-col-4 lg:g-col-3 xl:g-col-2">cell</div>
+      <div class="g-col-12 sm:g-col-6 md:g-col-4 lg:g-col-3 xl:g-col-2">cell</div>
+      <div class="g-col-12 sm:g-col-6 md:g-col-4 lg:g-col-3 xl:g-col-2">cell</div>
+      <div class="g-col-12 sm:g-col-6 md:g-col-4 lg:g-col-3 xl:g-col-2">cell</div>
+      <div class="g-col-12 sm:g-col-6 md:g-col-4 lg:g-col-3 xl:g-col-2">cell</div>
+    </div>
+    <div class="grid text-center">
+      <div class="g-col-6 md:g-col-3">card</div>
+      <div class="g-col-6 md:g-col-3">card</div>
+      <div class="g-col-6 md:g-col-3">card</div>
+      <div class="g-col-6 md:g-col-3">card</div>
+    </div>
+    <div class="grid text-center">
+      <div class="g-col-12 lg:g-col-3">sidebar</div>
+      <div class="g-col-12 lg:g-col-9">main content</div>
+    </div>
+    <div class="grid text-center">
+      <div class="g-col-12 lg:g-col-8">primary</div>
+      <div class="g-col-12 lg:g-col-4">secondary</div>
+    </div>
+    <div class="grid text-center">
+      <div class="g-col-12 md:g-col-6 md:g-start-4">centered with .md:g-start-4</div>
+    </div>`} />
+  </div>
+  <div class="dialog-footer">
+    <button type="button" class="btn-solid theme-secondary" data-bs-dismiss="dialog">Close</button>
+  </div>
+</dialog>
 
 ## Wrapping
 
