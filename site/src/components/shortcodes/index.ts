@@ -15,6 +15,7 @@ export { default as MenuPlacementPlayground } from './MenuPlacementPlayground.as
 export { default as NavbarPlacementPlayground } from './NavbarPlacementPlayground.astro'
 export { default as Placeholder } from './Placeholder.astro'
 export { default as ResizableExample } from './ResizableExample.astro'
+export { default as ScrollspyDebug } from './ScrollspyDebug.astro'
 export { default as ScssDocs } from './ScssDocs.astro'
 export { default as SpacingNotation } from './SpacingNotation.astro'
 export { default as SpacingResponsive } from './SpacingResponsive.astro'

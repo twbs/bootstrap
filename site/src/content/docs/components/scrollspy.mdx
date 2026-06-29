@@ -17,6 +17,21 @@ Scrollspy toggles the `.active` class on anchor (`<a>`) elements when the elemen
 
 - Target elements that are not visible will be ignored. See the [Non-visible elements](#non-visible-elements) section below.
 
+- Target `id`s are matched with `getElementById`, so ids containing special or percent-encoded characters (for example `#item.1`, `#section:overview`, or `#%2Fpath`) resolve correctly.
+
+### Detection
+
+Scrollspy uses an [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) to track sections without `scroll-position` polling. Detection is deterministic and driven entirely by an activation line near the top of the scroll container.
+
+- The active section is the deepest one whose top has scrolled past the activation line, like the section you’re currently reading.
+- While scrolling through the gap between two headings, the last activated section stays active until the next one crosses the line.
+- At the very top of the container, before any section crosses the line, the first section stays active.
+- At the very bottom of the container, the last section is activated even if its top never reaches the line (handy for short final sections).
+
+Set where the activation line sits with `topMargin` (a more user-friendly `%` or `px` value from the top of the scroll root, such as `96px` to sit below a stickied navbar), or take full control with the raw IntersectionObserver `rootMargin` string. See [Options](#options).
+
+Jump to the [debug overlay](#debug-overlay) section to visualize the activation line in action.
+
 ## Examples
 
 ### Navbar
@@ -281,7 +296,7 @@ Scrollspy is not limited to nav components and list groups, so it will work on a
     </div>
   </div>
   <div class="col-8">
-    <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+    <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
       <h4 id="simple-list-item-1">Item 1</h4>
       <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It’s repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
       <h4 id="simple-list-item-2">Item 2</h4>
@@ -309,7 +324,7 @@ Scrollspy is not limited to nav components and list groups, so it will work on a
     </div>
   </div>
   <div class="col-8">
-    <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+    <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
       <h4 id="simple-list-item-1">Item 1</h4>
       <p>...</p>
       <h4 id="simple-list-item-2">Item 2</h4>
@@ -324,6 +339,17 @@ Scrollspy is not limited to nav components and list groups, so it will work on a
   </div>
 </div>
 ```
+
+## Debug overlay
+
+It can be hard to picture exactly where Scrollspy decides a section is active. Since our documentation pages use Scrollspy on our table of contents (the navigation on the right), you can enable a debug overlay to draw red guides over the viewport to illustrate the behavior.
+
+- **The red dashed line near the top is the activation line.** A section becomes active as its heading scrolls above this line. On these docs it sits at `96px`, just below the navbar with a little room to breathe.
+- **The red bottom zone lights up when you reach the bottom of the page.** This is where the last section stays active even if its heading never reaches the activation line.
+
+Scroll the page and watch the highlighted item in table of contents change as headings cross the line. Guide positions are computed from the same `topMargin`/`rootMargin` [detection](#detection) math the plugin uses.
+
+<ScrollspyDebug />
 
 ## Non-visible elements
 
@@ -379,19 +405,13 @@ const scrollSpy = new bootstrap.ScrollSpy(document.body, {
 <BsTable>
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| `rootMargin` | string | `0px 0px -25%` | Intersection Observer [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin) valid units, when calculating scroll position. |
-| `smoothScroll` | boolean | `false` | Enables smooth scrolling when a user clicks on a link that refers to ScrollSpy observables. |
+| `rootMargin` | string, null | `null` | Advanced override for the IntersectionObserver [rootMargin](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin). When set it **takes precedence over `topMargin`** and is passed straight to the observer (for example `0px 0px -40%`). Leave `null` to derive the activation line from `topMargin`. |
+| `smoothScroll` | boolean | `false` | Enables smooth scrolling when a user clicks on a link that refers to ScrollSpy observables. Once the scroll settles, the URL hash and focus are moved to the target section. |
 | `target` | string, DOM element | `null` | Specifies element to apply Scrollspy plugin. |
-| `threshold` | array | `[0.1, 0.5, 1]` | `IntersectionObserver` [threshold](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#threshold) valid input, when calculating scroll position. |
+| `threshold` | array | `[0]` | `IntersectionObserver` [threshold](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#threshold) valid input, when calculating scroll position. |
+| `topMargin` | string | `12%` | Position of the [activation line](#detection), measured from the top of the scroll root. Accepts a percentage (`12%`) or pixels (`96px`, e.g. to sit below a sticky navbar). Ignored when `rootMargin` is set. |
 
 </BsTable>
-
-<Callout type="warning">
-**Deprecated Options**
-
-Up until v5.1.3 we were using `offset` & `method` options, which are now deprecated and replaced by `rootMargin`.
-To keep backwards compatibility, we will continue to parse a given `offset` to `rootMargin`, but this feature will be removed in **v6**.
-</Callout>
 
 ### Methods
 

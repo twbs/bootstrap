@@ -1,0 +1,141 @@
+---
+// Debug overlay for THIS page's ScrollSpy (the right-rail TOC, driven by the
+// `<body data-bs-spy="scroll">`). Toggling the switch draws fixed red guides
+// over the viewport: the activation line (top) and the bottom zone that decide
+// the active section. Positions are derived from the same `topMargin` /
+// `rootMargin` math the plugin uses.
+
+// The native `switch` boolean attribute isn't in Astro's input typings; pass it
+// through a spread so the markup still matches the Switch component docs.
+const switchAttr: Record<string, boolean> = { switch: true }
+---
+
+<div class="form-field bd-scrollspy-debug bg-subtle-danger bg-50 p-4 rounded-7">
+  <div class="switch theme-danger">
+    <input type="checkbox" id="scrollspy-debug-toggle" role="switch" {...switchAttr} data-scrollspy-debug-toggle />
+  </div>
+  <label for="scrollspy-debug-toggle">Debug overlay</label>
+</div>
+
+<script>
+  const RED = 'rgb(220, 53, 69)'
+  const ZONE_HEIGHT = 24
+  const Z_INDEX = '1090'
+
+  const toggle = document.querySelector<HTMLInputElement>('[data-scrollspy-debug-toggle]')
+
+  // The page's ScrollSpy element (the `<body>` on docs pages with a TOC).
+  const spy = document.querySelector<HTMLElement>('[data-bs-spy="scroll"]')
+
+  if (toggle && spy) {
+    let enabled = false
+
+    const labelStyle = 'position:absolute;inset-inline-end:.5rem;white-space:nowrap;'
+
+    const line = document.createElement('div')
+    line.style.cssText = `position:fixed;z-index:${Z_INDEX};pointer-events:none;border-top:1px dashed ${RED};`
+    const lineLabel = document.createElement('span')
+    lineLabel.className = 'badge theme-danger'
+    lineLabel.style.cssText = `${labelStyle}inset-block-start:.25rem;`
+    lineLabel.textContent = 'Activation line'
+    line.append(lineLabel)
+
+    const zone = document.createElement('div')
+    zone.style.cssText = `position:fixed;z-index:${Z_INDEX};pointer-events:none;border-top:1px solid ${RED};`
+    const zoneLabel = document.createElement('span')
+    zoneLabel.className = 'badge theme-danger'
+    zoneLabel.style.cssText = `${labelStyle}inset-block-end:100%;margin-block-end:.25rem;`
+    zone.append(zoneLabel)
+
+    // The scroll root: the element itself, unless its overflow is visible (then
+    // the viewport scrolls the page, e.g. `<body>`).
+    const usesViewport = () => getComputedStyle(spy).overflowY === 'visible'
+
+    const rootRect = () => {
+      if (usesViewport()) {
+        const doc = document.documentElement
+        return { top: 0, left: 0, width: doc.clientWidth, height: doc.clientHeight }
+      }
+
+      const r = spy.getBoundingClientRect()
+      return { top: r.top, left: r.left, width: spy.clientWidth, height: spy.clientHeight }
+    }
+
+    // Activation-line offset (px from the top of the scroll root), matching the
+    // plugin precedence: an explicit `rootMargin` (its bottom inset) wins,
+    // otherwise `topMargin`; both accept `%` and `px`.
+    const activationOffset = (rootHeight: number) => {
+      const rootMargin = spy.getAttribute('data-bs-root-margin')
+
+      if (rootMargin) {
+        const bottom = rootMargin.trim().split(/\s+/)[2] ?? '0'
+        const inset = bottom.endsWith('%')
+          ? (rootHeight * Math.abs(Number.parseFloat(bottom))) / 100
+          : Math.abs(Number.parseFloat(bottom))
+        return rootHeight - inset
+      }
+
+      const topMargin = spy.getAttribute('data-bs-top-margin') ?? '12%'
+      return topMargin.endsWith('%') ? (rootHeight * Number.parseFloat(topMargin)) / 100 : Number.parseFloat(topMargin)
+    }
+
+    const isAtBottom = () => {
+      const scroller = usesViewport() ? document.scrollingElement || document.documentElement : spy
+      if (scroller.scrollHeight <= scroller.clientHeight) {
+        return false
+      }
+
+      return scroller.scrollHeight - (scroller.scrollTop + scroller.clientHeight) <= 1
+    }
+
+    const reposition = () => {
+      if (!enabled) {
+        return
+      }
+
+      const rect = rootRect()
+      const offset = activationOffset(rect.height)
+
+      line.style.top = `${rect.top + offset}px`
+      line.style.left = `${rect.left}px`
+      line.style.width = `${rect.width}px`
+
+      zone.style.top = `${rect.top + rect.height - ZONE_HEIGHT}px`
+      zone.style.left = `${rect.left}px`
+      zone.style.width = `${rect.width}px`
+      zone.style.height = `${ZONE_HEIGHT}px`
+    }
+
+    const updateZone = () => {
+      const atBottom = isAtBottom()
+
+      zone.style.background = atBottom ? 'rgba(220, 53, 69, 0.35)' : 'rgba(220, 53, 69, 0.12)'
+      zoneLabel.textContent = atBottom ? 'At bottom — last section active' : 'Bottom zone'
+    }
+
+    const onScroll = () => {
+      reposition()
+      updateZone()
+    }
+
+    toggle.addEventListener('change', () => {
+      enabled = toggle.checked
+
+      if (enabled) {
+        document.body.append(line, zone)
+        window.addEventListener('scroll', onScroll, { passive: true })
+        window.addEventListener('resize', onScroll)
+      } else {
+        line.remove()
+        zone.remove()
+        window.removeEventListener('scroll', onScroll)
+        window.removeEventListener('resize', onScroll)
+      }
+
+      reposition()
+      updateZone()
+    })
+
+    spy.addEventListener('activate.bs.scrollspy', updateZone)
+  }
+</script>

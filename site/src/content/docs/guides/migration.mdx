@@ -165,6 +165,13 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 - Removed the `jspm` configuration from `package.json`.
 - Added `"sideEffects"` metadata to `package.json` to enable tree shaking in bundlers while preserving the Data API event listeners that Bootstrap’s plugins register at the top level.
 - Added `"exports"` map to `package.json` for explicit subpath access to source, dist, and Sass files.
+- **Rewrote ScrollSpy to be deterministic and `IntersectionObserver`-native.** Detection is now driven entirely by an activation line (no scroll-position polling), so the active section is always the one you’re reading, with stable behavior at the top and bottom of the container.
+  - Removed the long-deprecated `offset` and `method` options (deprecated since v5.1.3). They are no longer parsed.
+  - Added the `topMargin` option (default `12%`) to position the activation line as a friendly `%` or `px` value from the top of the scroll root (for example `96px` to sit below a sticky navbar).
+  - `rootMargin` is now an advanced override that takes precedence over `topMargin` and is passed straight to the observer; its default is `null` (the activation line is derived from `topMargin`).
+  - Changed the default `threshold` from `[0.1, 0.5, 1]` to `[0]`.
+  - With `smoothScroll` enabled, clicking a link now restores the URL hash (via `history.replaceState`) and moves focus to the target section once the scroll settles, improving keyboard and assistive-technology navigation.
+  - Target `id`s are resolved with `getElementById`, so ids containing dots, colons, slashes, or percent-encoded characters now work without manual escaping.
 
 ### Components
 
