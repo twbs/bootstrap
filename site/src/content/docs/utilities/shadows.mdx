@@ -10,10 +10,36 @@ utility:
 
 While shadows on components are disabled by default in Bootstrap and can be enabled via `$enable-shadows`, you can also quickly add or remove a shadow with our `box-shadow` utility classes. Includes support for `.shadow-none` and three default sizes (which have associated variables to match).
 
-<Example class="overflow-hidden" code={`<div class="shadow-none p-3 mb-5 bg-1 rounded">No shadow</div>
-<div class="shadow-sm p-3 mb-5 bg-1 rounded">Small shadow</div>
-<div class="shadow p-3 mb-5 bg-1 rounded">Regular shadow</div>
-<div class="shadow-lg p-3 mb-5 bg-1 rounded">Larger shadow</div>`} />
+Each size is a layered, multi-stop `box-shadow` for a smoother, more natural falloff, and every layer derives its color from a single `--shadow-color` token—so you can retint shadows in one place. A global `--shadow-strength` token (`light-dark(1, 2.4)`) deepens every shadow in dark mode and doubles as a knob to scale all shadows at once.
+
+<Example class="overflow-hidden vstack gap-7 p-7" code={`<div class="shadow-none p-3 bg-1 rounded">No shadow</div>
+<div class="shadow-sm p-3 bg-1 rounded">Small shadow</div>
+<div class="shadow p-3 bg-1 rounded">Regular shadow</div>
+<div class="shadow-lg p-3 bg-1 rounded">Larger shadow</div>
+<div class="shadow-xl p-3 bg-1 rounded">Extra large shadow</div>`} />
+
+### Shadow color
+
+Change the color of a shadow with `.shadow-{color}` utilities for any theme color, plus `.shadow-current` (matches the element’s `color`), `.shadow-black`, and `.shadow-white`. Pair a color utility with a size utility. Colored shadows are intentionally subtle—use a larger size like `.shadow-xl` for a more visible tint.
+
+<Example class="overflow-hidden hstack gap-5 flex-wrap p-7" code={`<div class="shadow-xl shadow-primary p-3 bg-1 rounded">Primary</div>
+<div class="shadow-xl shadow-success p-3 bg-1 rounded">Success</div>
+<div class="shadow-xl shadow-danger p-3 bg-1 rounded">Danger</div>
+<div class="shadow-xl shadow-black p-3 bg-1 rounded">Black</div>`} />
+
+### Shadow opacity
+
+Scale a shadow’s strength with `.shadow-opacity-{10-100}` utilities. Opacity is treated as a midpoint, not a ceiling: the default shadow matches `.shadow-opacity-50`, so lower values lighten it while higher values—up to `.shadow-opacity-100`—deepen it. This works with any size or color utility.
+
+<Example class="overflow-hidden hstack gap-5 flex-wrap p-7" code={`<div class="shadow-xl shadow-opacity-20 p-3 bg-1 rounded">20%</div>
+<div class="shadow-xl shadow-opacity-50 p-3 bg-1 rounded">50% (default)</div>
+<div class="shadow-xl shadow-opacity-100 p-3 bg-1 rounded">100%</div>`} />
+
+Even works with custom shadow colors:
+
+<Example class="overflow-hidden hstack gap-5 flex-wrap p-7" code={`<div class="shadow-xl shadow-opacity-20 shadow-primary p-3 bg-1 rounded">20%</div>
+<div class="shadow-xl shadow-opacity-50 shadow-primary p-3 bg-1 rounded">50% (default)</div>
+<div class="shadow-xl shadow-opacity-100 shadow-primary p-3 bg-1 rounded">100%</div>`} />
 
 ## CSS
 
@@ -26,3 +52,7 @@ While shadows on components are disabled by default in Bootstrap and can be enab
 Shadow utilities are declared in our utilities API in `scss/_utilities.scss`. [Learn how to use the utilities API.]([[docsref:/utilities/api#using-the-api]])
 
 <ScssDocs name="utils-shadow" file="scss/_utilities.scss" />
+
+<ScssDocs name="utils-shadow-color" file="scss/_utilities.scss" />
+
+<ScssDocs name="utils-shadow-opacity" file="scss/_utilities.scss" />
