@@ -1,5 +1,4 @@
 @use "sass:math";
-@use "../../../scss/layout/breakpoints" as *;
 @use "../../../scss/mixins/border-radius" as *;
 @use "../../../scss/mixins/transition" as *;
 
@@ -19,12 +18,6 @@
       font-size: var(--bs-font-size-4xl);
     }
 
-    .lead {
-      font-size: 1.125rem;
-      font-weight: 400;
-      color: var(--bs-fg-3);
-    }
-
     .btn-clipboard {
       position: absolute;
       top: -.625rem;
@@ -37,12 +30,6 @@
       margin-block: 2rem;
       margin-inline: auto;
     }
-
-    @include media-breakpoint-up(md) {
-      .lead {
-        font-size: 1.25rem;
-      }
-    }
   }
 
   .masthead-followup {
@@ -50,16 +37,6 @@
     h3,
     h4 {
       --bs-heading-color: var(--bs-fg-body);
-    }
-
-    .lead {
-      font-size: 1rem;
-    }
-
-    @include media-breakpoint-up(md) {
-      .lead {
-        font-size: 1.25rem;
-      }
     }
   }
 

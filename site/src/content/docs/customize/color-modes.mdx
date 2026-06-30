@@ -61,7 +61,7 @@ For example, to change the color mode of a menu, add `data-bs-theme="light"` or 
   }
   ```
 
-- We use a custom `_variables-dark.scss` to power those shared global CSS variable overrides for dark mode. This file isn’t required for your own custom color modes, but it’s required for our dark mode for two reasons. First, it’s better to have a single place to reset global colors. Second, some Sass variables had to be overridden for background images embedded in our CSS for accordions, form components, and more.
+- Dark mode overrides live in `_root.scss` (via the `color-mode()` mixin) and `_theme.scss`, which adjust global and theme color tokens. You don’t need these files for your own custom color modes, but they give Bootstrap a single place to reset colors for built-in dark mode.
 
 ## Usage
 
@@ -141,7 +141,7 @@ Outputs to:
 
 ## Custom color modes
 
-While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own `data-bs-theme` selector with a custom value as the name of your color mode, then modify our Sass and CSS variables as needed. We opted to create a separate `_variables-dark.scss` stylesheet to house Bootstrap’s dark mode specific Sass variables, but that’s not required for you.
+While the primary use case for color modes is light and dark mode, custom color modes are also possible. Create your own `data-bs-theme` selector with a custom value as the name of your color mode, then modify our Sass and CSS variables as needed. Bootstrap’s built-in dark mode uses `_root.scss` and `_theme.scss`, but you can follow the same pattern in your own stylesheet.
 
 For example, you can create a “blue theme” with the selector `data-bs-theme="blue"`. In your custom Sass or CSS file, add the new selector and override any global or component CSS variables as needed. If you’re using Sass, you can also use Sass’s functions within your CSS variable overrides.
 
@@ -192,7 +192,7 @@ Dozens of root level CSS variables are repeated as overrides for dark mode. Thes
 
 ### Sass variables
 
-CSS variables for our dark color mode are partially generated from dark mode specific Sass variables in `_variables-dark.scss`. This also includes some custom overrides for changing the colors of embedded SVGs used throughout our components.
+CSS variables for our dark color mode are generated from Sass in `_root.scss` and `_theme.scss`, including overrides for components that embed SVG data URIs in CSS—primarily via `mask-image` (carousel controls, close buttons, and similar icons), with select dropdown arrows as a remaining `background-image` case.
 
 {/* <ScssDocs name="sass-dark-mode-vars" file="scss/_config.scss" /> */}
 

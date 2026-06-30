@@ -37,18 +37,18 @@ import Placeholder from "@shortcodes/Placeholder.astro"
 
   <div class="nav-scroller py-1 mb-3 border-bottom">
     <nav class="nav nav-underline justify-content-between">
-      <a class="nav-item nav-link link-body-emphasis active" href="#">World</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">U.S.</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Technology</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Culture</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Politics</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Opinion</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Science</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Health</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Style</a>
-      <a class="nav-item nav-link link-body-emphasis" href="#">Travel</a>
+      <a class="nav-item nav-link theme-inverse active" href="#">World</a>
+      <a class="nav-item nav-link theme-inverse" href="#">U.S.</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Technology</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Design</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Culture</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Business</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Politics</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Opinion</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Science</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Health</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Style</a>
+      <a class="nav-item nav-link theme-inverse" href="#">Travel</a>
     </nav>
   </div>
 </div>
@@ -57,8 +57,8 @@ import Placeholder from "@shortcodes/Placeholder.astro"
   <div class="p-4 md:p-5 mb-4 rounded text-body-emphasis bg-body-secondary">
     <div class="lg:col-6 px-0">
       <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+      <p class="fs-lg fw-light my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+      <p class="fs-lg fw-light mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
     </div>
   </div>
 
@@ -106,7 +106,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
       </h3>
 
       <article class="blog-post">
-        <h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
+        <h2 class="display-5 fg-emphasis-inverse mb-1">Sample blog post</h2>
         <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
 
         <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
@@ -160,7 +160,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
       </article>
 
       <article class="blog-post">
-        <h2 class="display-5 link-body-emphasis mb-1">Another blog post</h2>
+        <h2 class="display-5 fg-emphasis-inverse mb-1">Another blog post</h2>
         <p class="blog-post-meta">December 23, 2020 by <a href="#">Jacob</a></p>
 
         <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
@@ -208,7 +208,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
       </article>
 
       <article class="blog-post">
-        <h2 class="display-5 link-body-emphasis mb-1">New feature</h2>
+        <h2 class="display-5 fg-emphasis-inverse mb-1">New feature</h2>
         <p class="blog-post-meta">December 14, 2020 by <a href="#">Chris</a></p>
 
         <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
@@ -238,7 +238,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
           <h4 class="fst-italic">Recent posts</h4>
           <ul class="list-unstyled">
             <li>
-              <a class="d-flex flex-column lg:flex-row gap-3 align-items-start lg:align-items-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+              <a class="d-flex flex-column lg:flex-row gap-3 align-items-start lg:align-items-center py-3 theme-inverse text-decoration-none border-top" href="#">
                 <Placeholder width="100%" height="96" background="#777" color="#777" text={false} title={false} />
                 <div class="lg:col-8">
                   <h6 class="mb-0">Example blog post title</h6>
@@ -247,7 +247,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
               </a>
             </li>
             <li>
-              <a class="d-flex flex-column lg:flex-row gap-3 align-items-start lg:align-items-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+              <a class="d-flex flex-column lg:flex-row gap-3 align-items-start lg:align-items-center py-3 theme-inverse text-decoration-none border-top" href="#">
                 <Placeholder width="100%" height="96" background="#777" color="#777" text={false} title={false} />
                 <div class="lg:col-8">
                   <h6 class="mb-0">This is another blog post title</h6>
@@ -256,7 +256,7 @@ import Placeholder from "@shortcodes/Placeholder.astro"
               </a>
             </li>
             <li>
-              <a class="d-flex flex-column lg:flex-row gap-3 align-items-start lg:align-items-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+              <a class="d-flex flex-column lg:flex-row gap-3 align-items-start lg:align-items-center py-3 theme-inverse text-decoration-none border-top" href="#">
                 <Placeholder width="100%" height="96" background="#777" color="#777" text={false} title={false} />
                 <div class="lg:col-8">
                   <h6 class="mb-0">Longer blog post title: This one has multiple lines!</h6>
