@@ -69,6 +69,16 @@ $reboot-mark-tokens: defaults(
     }
   }
 
+  // Reset iframe color-scheme
+  //
+  // If the color scheme of an iframe differs from parent document, iframe gets
+  // an opaque canvas background appropriate (resulting in a white background
+  // on the iframe when in a page with a dark color scheme).
+  iframe {
+    color-scheme: light dark;
+    border: 0;
+  }
+
   // Body
   //
   // 1. Remove the margin in all browsers.
@@ -596,12 +606,6 @@ $reboot-mark-tokens: defaults(
 
   output {
     display: inline-block;
-  }
-
-  // Remove border from iframe
-
-  iframe {
-    border: 0;
   }
 
   // Summary
