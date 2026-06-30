@@ -898,6 +898,84 @@ describe('ScrollSpy', () => {
     })
   })
 
+  describe('activation line options', () => {
+    const getContainerFixture = (style = '') => {
+      fixtureEl.innerHTML = [
+        '<nav id="navBar" class="navbar">',
+        '  <ul class="nav">',
+        '    <li class="nav-item"><a class="nav-link" href="#div-1">div 1</a></li>',
+        '  </ul>',
+        '</nav>',
+        `<div class="content" data-bs-target="#navBar" style="${style}">`,
+        '  <div id="div-1">div 1</div>',
+        '</div>'
+      ].join('')
+      return fixtureEl.querySelector('.content')
+    }
+
+    it('should parse a percentage topMargin', () => {
+      const scrollSpy = new ScrollSpy(getContainerFixture(), { topMargin: '10%' })
+
+      expect(scrollSpy._parseTopMargin()).toEqual({ value: 10, unit: '%' })
+      expect(scrollSpy._usesPixelMargin()).toBeFalse()
+    })
+
+    it('should parse a pixel topMargin and derive a rootMargin from an explicit scroll root', () => {
+      const scrollSpy = new ScrollSpy(getContainerFixture('overflow-y: auto; height: 200px'), { topMargin: '50px' })
+
+      expect(scrollSpy._rootElement).not.toBeNull()
+      expect(scrollSpy._parseTopMargin()).toEqual({ value: 50, unit: 'px' })
+      expect(scrollSpy._usesPixelMargin()).toBeTrue()
+      expect(scrollSpy._getDerivedRootMargin()).toMatch(/^0px 0px -\d/)
+    })
+
+    it('should derive a rootMargin from the viewport when there is no scroll root', () => {
+      // overflow:visible (default) means _rootElement is null, so viewport height is used
+      const scrollSpy = new ScrollSpy(getContainerFixture(), { topMargin: '50px' })
+
+      expect(scrollSpy._rootElement).toBeNull()
+      expect(scrollSpy._getDerivedRootMargin()).toMatch(/^0px 0px -\d/)
+    })
+
+    it('should treat a non-numeric topMargin as 0', () => {
+      const scrollSpy = new ScrollSpy(getContainerFixture(), { topMargin: 'auto' })
+
+      expect(scrollSpy._parseTopMargin().value).toEqual(0)
+    })
+
+    it('should not derive a pixel margin when an explicit rootMargin is set', () => {
+      const scrollSpy = new ScrollSpy(getContainerFixture(), { rootMargin: '0px 0px -50% 0px', topMargin: '50px' })
+
+      expect(scrollSpy._usesPixelMargin()).toBeFalse()
+    })
+
+    it('should report a boolean overflow state from the scroll root', () => {
+      const scrollSpy = new ScrollSpy(getContainerFixture('overflow-y: auto; height: 50px'))
+
+      expect(typeof scrollSpy._isOverflowing()).toEqual('boolean')
+    })
+
+    it('should no-op rebuilding the observer when there is none', () => {
+      const scrollSpy = new ScrollSpy(getContainerFixture())
+
+      scrollSpy._observer.disconnect()
+      scrollSpy._observer = null
+
+      expect(() => scrollSpy._rebuildObserver()).not.toThrow()
+    })
+
+    it('should add a resize listener for pixel margins and remove it on dispose', () => {
+      const spy = spyOn(EventHandler, 'off').and.callThrough()
+      const scrollSpy = new ScrollSpy(getContainerFixture(), { topMargin: '50px' })
+
+      expect(scrollSpy._resizeHandler).not.toBeNull()
+
+      scrollSpy.dispose()
+
+      expect(spy).toHaveBeenCalled()
+    })
+  })
+
   describe('getInstance', () => {
     it('should return scrollspy instance', () => {
       fixtureEl.innerHTML = getDummyFixture()
