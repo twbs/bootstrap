@@ -104,12 +104,14 @@ const SKIP_DIRS = new Set([
   '_site', // built docs output
   'dist', // built Bootstrap assets
   '.cache',
-  'coverage'
+  'coverage',
+  'skills'
 ])
 
 // Files to skip (relative to ROOT, using forward slashes)
 const SKIP_FILES = new Set([
-  'site/src/content/docs/guides/migration.mdx'
+  'site/src/content/docs/guides/migration.mdx',
+  'AGENTS.md'
 ])
 
 function * walkDir(dir) {
@@ -213,7 +215,7 @@ push('')
 // Full list of deprecated classes (mark which ones are in use)
 if (onlyUsed) {
   push('USED DEPRECATED CLASSES  [only classes still found in this codebase]', HR)
-  for (const [cls, usages] of [...findings.entries()].sort(([a], [b]) => a.localeCompare(b))) {
+  for (const [cls, usages] of [...findings].sort(([a], [b]) => a.localeCompare(b))) {
     push(`  .${cls}  (${usages.length} occurrence${usages.length === 1 ? '' : 's'})`)
   }
 } else {
@@ -232,7 +234,7 @@ push('DETAILED FINDINGS', HR)
 if (findings.size === 0) {
   push('  No deprecated classes were found in the codebase. 🎉')
 } else {
-  const sortedFindings = [...findings.entries()].sort(([a], [b]) => a.localeCompare(b))
+  const sortedFindings = [...findings].sort(([a], [b]) => a.localeCompare(b))
   for (const [cls, usages] of sortedFindings) {
     push('')
     push(`  .${cls}  (${usages.length} occurrence${usages.length === 1 ? '' : 's'})`)
