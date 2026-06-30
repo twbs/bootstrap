@@ -76,11 +76,7 @@ const simplifiedMarkup = markup.replace(
       style={`width: ${initialWidth}; min-width: ${minWidth};`}
     >
       <Fragment set:html={previewMarkup} />
-      {
-        showBreakpoint && (
-          <output class="bd-resizable-badge" data-resizable-badge aria-live="polite" />
-        )
-      }
+      {showBreakpoint && <output class="bd-resizable-badge" data-resizable-badge aria-live="polite" />}
     </div>
   </div>
   {showMarkup && <Code code={simplifiedMarkup} lang="html" nestedInExample={true} />}
@@ -112,8 +108,7 @@ const simplifiedMarkup = markup.replace(
 
     // Measure the actual query container (e.g. `.grid`) when present so the badge
     // matches what `@container` evaluates; otherwise fall back to the container.
-    const target =
-      container.querySelector<HTMLElement>(':scope > *:not(.bd-resizable-badge)') ?? container
+    const target = container.querySelector<HTMLElement>(':scope > *:not(.bd-resizable-badge)') ?? container
 
     const update = (width: number) => {
       const bp = activeBreakpoint(width)
