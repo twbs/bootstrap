@@ -395,9 +395,9 @@ We use the `escape-svg` function to escape the `<`, `>` and `#` characters for S
 $icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#00000080' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
 
 // After escape-svg(), the <, >, and # characters are percent-encoded
-// so the data URI works reliably as a CSS background-image
+// so the data URI works reliably in CSS (e.g. as a mask-image or background-image)
 .element {
-  background-image: escape-svg($icon);
+  mask-image: escape-svg($icon);
 }
 ```
 
