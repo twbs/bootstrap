@@ -49,6 +49,7 @@ $root-tokens: defaults(
 
     // scss-docs-start root-border-var
     --border-width: #{$border-width},
+    --border-width-keyline: .5px,
     --border-style: #{$border-style},
     --border-color: light-dark(var(--gray-200), var(--gray-700)),
     --border-color-translucent: color-mix(in oklch, var(--fg-body) 15%, transparent),
