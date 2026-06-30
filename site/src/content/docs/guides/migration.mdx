@@ -351,6 +351,8 @@ Bootstrap 6 is a major release with many breaking changes to modernize our codeb
 | — | — | `.fs-6xl` | `clamp(3.75rem, …, 5rem)` |
 </BsTable>
 
+- **Removed `.lead` utility.** The v5 `.lead` class no longer exists in v6, and there is no exact one-class replacement. If you want a similar effect with utilities, use `.fs-lg` associated to `.fw-light`.
+
 - **Border radius tokens replaced with a numeric scale.** The named `$border-radius-*` Sass variables and `--border-radius-*` CSS custom properties (`-xs`, `-sm`, default, `-lg`, `-xl`, `-2xl`) have been removed in favor of a numeric `$radii` Sass map (keyed `0`–`9`) that generates `--radius-0` through `--radius-9` tokens, plus `--radius-pill`. The scale is driven by a single `$radius: .5rem` base, so all steps move together when the base changes. To migrate any custom Sass or CSS that referenced the old tokens directly:
 
 <BsTable>
