@@ -163,7 +163,7 @@
     "image-size": "^2.0.2",
     "ip": "^2.0.1",
     "jasmine": "^6.3.0",
-    "js-yaml": "^5.1.0",
+    "js-yaml": "^5.2.0",
     "karma": "^6.4.4",
     "karma-browserstack-launcher": "1.4.0",
     "karma-chrome-launcher": "^3.2.0",
