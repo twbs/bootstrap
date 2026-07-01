@@ -366,12 +366,29 @@
   }
 
   .bd-resizable-container {
+    position: relative;
     max-width: 100%;
     padding: 1rem;
     overflow: hidden;
     resize: horizontal;
     background-color: var(--bs-bg-body);
     @include border-radius(var(--radius-4));
+  }
+
+  .bd-resizable-badge {
+    position: absolute;
+    inset-block-start: .5rem;
+    inset-inline-end: .5rem;
+    z-index: 2;
+    padding: .125rem .5rem;
+    font-family: var(--bs-font-mono);
+    font-size: .75rem;
+    line-height: 1.5;
+    color: var(--bs-fg-2);
+    pointer-events: none;
+    background-color: var(--bs-bg-body);
+    border: 1px solid var(--bs-border-color);
+    @include border-radius(var(--radius-3));
   }
 
   //
