@@ -14,11 +14,44 @@ Check out [our Sass maps and loops docs]([[docsref:/customize/sass#maps-and-loop
 
 ## Theme variants
 
-Themeable components don’t hard-code their colors. Instead they read the generic `--bs-theme-*` tokens—`--bs-theme-bg`, `--bs-theme-fg`, `--bs-theme-border`, `--bs-theme-contrast`, and so on—each with a fallback to the component’s own default token. When no theme class is present the fallback applies; add a `.theme-*` class and the component picks up that theme’s colors instead.
+Themeable components support **theme variants**—a single family of composable `.theme-*` classes that recolor a component without hard-coded, per-component color classes. This replaces the previous pattern of baking color into each component (`.btn-primary`, `.alert-success`, `.bg-warning`, and so on) with one consistent API.
 
-The [`.theme-{name}` classes]([[docsref:/customize/theme#theme-utility-classes]]) are generated from the `$theme-colors` map and simply remap the semantic role tokens onto the generic ones—`.theme-primary`, for example, sets `--bs-theme-bg: var(--bs-primary-bg)` and `--bs-theme-contrast: var(--bs-primary-contrast)`.
+Themeable components read a shared set of generic `--bs-theme-*` tokens for their background, foreground, border, and focus styles—each with a fallback to the component’s own default token. When no theme class is present, the fallback applies. Add a `.theme-*` class to the component (or to an ancestor) and it picks up that theme’s colors instead.
 
-Here’s how the badge consumes them in `scss/_badge.scss`. Its `color` and `background-color` each read a theme token first, falling back to the badge’s own default (CSS variables are written without the `--bs-` prefix in Sass source; PostCSS adds it at build):
+<BsTable class="table">
+| Token | Description |
+| --- | --- |
+| `--bs-theme-base` | The raw base color the theme is derived from |
+| `--bs-theme-bg` | Solid background color, e.g., a solid button or badge |
+| `--bs-theme-bg-subtle` | Subtle background tint for low-emphasis surfaces |
+| `--bs-theme-bg-muted` | Muted background, between subtle and solid |
+| `--bs-theme-fg` | Foreground/text color on default surfaces |
+| `--bs-theme-fg-emphasis` | Higher-contrast foreground color |
+| `--bs-theme-border` | Border color |
+| `--bs-theme-contrast` | Contrasting color for text/icons sitting on a solid `--bs-theme-bg` |
+| `--bs-theme-focus-ring` | Focus ring color |
+</BsTable>
+
+The [`.theme-{name}` classes]([[docsref:/customize/theme#theme-utility-classes]]) mirror our semantic [theme colors]([[docsref:/customize/theme#theme-colors]])—`.theme-primary`, `.theme-secondary`, `.theme-success`, `.theme-danger`, etc. They’re generated from the `$theme-colors` Sass map, so adding or renaming a theme color automatically produces a matching `.theme-*` class. Each entry defines the tokens above for both light and dark mode via `light-dark()`:
+
+```scss
+// …
+// One entry from $theme-colors in scss/_theme.scss
+"primary": (
+  "base": var(--blue-500),
+  "fg": light-dark(var(--blue-600), var(--blue-400)),
+  "fg-emphasis": light-dark(var(--blue-800), var(--blue-200)),
+  "bg": var(--blue-500),
+  "bg-subtle": light-dark(var(--blue-100), var(--blue-900)),
+  "bg-muted": light-dark(var(--blue-200), var(--blue-800)),
+  "border": light-dark(var(--blue-300), var(--blue-600)),
+  "focus-ring": light-dark(color-mix(in oklch, var(--blue-500) 50%, var(--bg-body)), color-mix(in oklch, var(--blue-500) 75%, var(--bg-body))),
+  "contrast": var(--white)
+),
+// …
+```
+
+To see how a component consumes these tokens, here’s the badge in `scss/_badge.scss`. Its `color` and `background-color` each read a theme token first, falling back to the badge’s own default (CSS variables are written without the `--bs-` prefix in Sass source; PostCSS adds it at build):
 
 ```scss
 .badge {
@@ -32,6 +65,21 @@ With no theme class, the badge uses its own defaults (`--badge-bg`, `--badge-col
 
 <Example code={`<span class="badge">Default badge</span>
   <span class="badge theme-success">Success badge</span>`} />
+
+For components with variants, combine a variant class with a theme class to color it. For buttons, that means pairing a variant like `.btn-solid` or `.btn-outline` with a theme:
+
+<Example class="d-flex gap-2" code={`<button type="button" class="btn-solid theme-primary">Primary</button>
+<button type="button" class="btn-outline theme-success">Success</button>
+<button type="button" class="btn-subtle theme-danger">Danger</button>`} />
+
+Because the theme tokens are plain CSS variables, you can also scope a theme to a container and let everything inside inherit it, or override individual tokens for one-off styling—no Sass compilation required:
+
+```css
+.my-brand {
+  --bs-theme-bg: #6f42c1;
+  --bs-theme-contrast: #fff;
+}
+```
 
 To make one of your own components themeable, follow the same pattern: read `var(--theme-{role}, var(--my-component-{role}))` for each color property, and it will respond to any `.theme-*` class set on it or an ancestor. See the [Theme page]([[docsref:/customize/theme]]) for the full list of role tokens and recommended pairings.
 
