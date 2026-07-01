@@ -42,6 +42,11 @@ const bodyProps: LayoutOverridesHTMLAttributes<'body'> = {}
 if (frontmatter.toc) {
   bodyProps['data-bs-spy'] = 'scroll'
   bodyProps['data-bs-target'] = '#TableOfContents'
+  // Align the activation line with the sticky navbar offset (--bd-navbar-offset
+  // is 5.75rem ~= 92px) so a heading highlights right as it settles below the
+  // navbar, plus a small epsilon. A fixed px value avoids the viewport-height
+  // drift of a percentage-based top margin.
+  bodyProps['data-bs-top-margin'] = '96px'
 }
 
 // Find previous and next pages for navigation

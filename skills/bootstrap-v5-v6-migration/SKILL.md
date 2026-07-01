@@ -492,6 +492,17 @@ The markup (`.carousel` → `.carousel-inner` → `.carousel-item`) and the JS A
 - **`wrap` → `ends`.** `wrap: true` → `ends: "wrap"` (or the new default `"loop"`); `wrap: false` → `ends: "stop"`. Set via `data-bs-ends`. The `touch` option is removed (native scroll handles it).
 - **Removed classes:** `.carousel-control-prev/next` (compose a `.btn-icon` + `data-bs-slide` + `.carousel-icon-prev/next`), `.carousel-caption` (use your own markup), `.carousel-dark` (use `data-bs-theme="dark"`), `.carousel-stacked` (now the default), and the transitional `.carousel-item-start/end/next/prev`. Overlaid controls now require `.carousel-overlay`. Control-icon classes renamed `.carousel-control-prev-icon` → `.carousel-icon-prev` (and `-next`).
 
+### ScrollSpy — rebuilt on IntersectionObserver
+
+The `data-bs-spy="scroll"` markup and the `activate.bs.scrollspy` event are unchanged, but detection is now driven by an **activation line** (no scroll-position polling), and the options changed:
+
+- **Removed the deprecated `offset` and `method` options** (deprecated since v5.1.3) — no longer parsed.
+- **Added `topMargin`** (default `12%`) — positions the activation line as a `%` or `px` value from the top of the scroll root (e.g. `96px` to sit below a sticky navbar). This is the everyday knob; use it instead of `rootMargin`.
+- **`rootMargin`** is now an advanced override (default `null`, was `'0px 0px -25%'`); when set it takes precedence over `topMargin` and is passed straight to the observer.
+- **`threshold`** default changed from `[0.1, 0.5, 1]` to `[0]`.
+- With **`smoothScroll`**, clicking a link now restores the URL hash (`history.replaceState`) and moves focus to the target once the scroll settles (better keyboard/AT nav).
+- Target `id`s are resolved with `getElementById`, so ids with dots, colons, slashes, or percent-encoding work without manual escaping.
+
 ### New components (didn't exist in v5)
 
 | Component | Trigger / hook | Purpose |
@@ -541,4 +552,5 @@ The markup (`.carousel` → `.carousel-inner` → `.carousel-item`) and the JS A
    - `.carousel-control-prev/next`, `.carousel-caption`, `.carousel-dark`, `.carousel-stacked` (all removed)
    - `.fs-1`–`.fs-6` (should be `.fs-4xl` … `.fs-md`)
    - `.link-offset-*` / `.link-underline-*` (now `.underline-offset-*` / `.underline-*`)
+   - ScrollSpy `offset` / `method` options (removed — use `topMargin`)
 3. Test in browser — v6 requires support for `oklch()` and `color-mix()`.
