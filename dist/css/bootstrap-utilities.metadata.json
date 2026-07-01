@@ -121,6 +121,7 @@
       "property": "box-shadow",
       "classes": [
         "shadow",
+        "shadow-xs",
         "shadow-sm",
         "shadow-lg",
         "shadow-none"
