@@ -1,5 +1,6 @@
 @use "functions" as *;
 @use "config" as *;
+@use "layout/breakpoints" as *;
 @use "mixins/border-radius" as *;
 @use "mixins/box-shadow" as *;
 @use "mixins/dialog-shared" as *;
@@ -29,6 +30,8 @@ $drawer-tokens: defaults(
     --drawer-transition-duration: .3s,
     --drawer-transition-timing: cubic-bezier(.22, 1, .36, 1),
     --drawer-title-line-height: 1.5,
+    --drawer-backdrop-bg: color-mix(in oklch, var(--bg-body) 25%, transparent),
+    --drawer-backdrop-blur: 8px,
   ),
   $drawer-tokens
 );
@@ -217,14 +220,9 @@ $drawer-backdrop-tokens: defaults(
     }
   }
 
-  // Native ::backdrop for modal drawer.
-  // ::backdrop lives in the top layer outside the DOM tree, so it does NOT
-  // inherit custom properties from the element. Tokens must be applied directly.
   @include loop-breakpoints-down() using ($breakpoint, $next, $prefix) {
     .#{$prefix}drawer::backdrop {
-      @include tokens($drawer-backdrop-tokens);
-      @include tokens($drawer-tokens);
-      background-color: color-mix(in oklch, var(--drawer-backdrop-bg) var(--drawer-backdrop-opacity), transparent);
+      background-color: var(--drawer-backdrop-bg);
       backdrop-filter: blur(var(--drawer-backdrop-blur));
       @include backdrop-transitions(var(--drawer-transition-duration), var(--drawer-transition-timing));
     }
@@ -255,10 +253,18 @@ $drawer-backdrop-tokens: defaults(
   // Overrides tokens so placement transforms (which use calc() with --drawer-inset)
   // automatically position the drawer at the viewport edge.
   .drawer-sheet {
-    --drawer-inset: 0;
-    --drawer-border-radius: 0;
-    --drawer-border-width: 0;
-    --drawer-box-shadow: none;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    margin-inline: auto;
+    margin-bottom: calc(-1 * var(--drawer-border-width));
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+
+    @include media-breakpoint-up(lg) {
+      max-width: var(--drawer-sheet-width, 760px);
+    }
   }
 
   // Header with close button
